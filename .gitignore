@@ -1,0 +1,9 @@
+.DS_Store
+
+# Claude Code personal settings
+.claude/settings.local.json
+
+# Obsidian per-device state
+docs/.obsidian/workspace*.json
+docs/.obsidian/cache
+docs/.trash/

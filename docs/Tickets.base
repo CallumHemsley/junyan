@@ -1,0 +1,24 @@
+filters:
+  and:
+    - file.inFolder("tickets")
+    - file.name != "README"
+views:
+  - type: table
+    name: Open
+    filters:
+      and:
+        - status != "done"
+    order:
+      - id
+      - title
+      - status
+      - priority
+      - type
+  - type: table
+    name: All
+    order:
+      - id
+      - title
+      - status
+      - priority
+      - type
