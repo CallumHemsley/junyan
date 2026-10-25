@@ -1,0 +1,180 @@
+{
+ "model": "test",
+ "backend": "file",
+ "known": "507",
+ "n": 5,
+ "scene": "orders",
+ "passes": [
+  {
+   "pass": 0,
+   "n_lines": 5,
+   "n_clean": 2,
+   "token_oov_rate": 0.11538461538461539,
+   "char_oov_rate": 0.17647058823529413,
+   "distinct_ratio": 1.0,
+   "lines_with_target": 4,
+   "target_counts": {
+    "冰": 0,
+    "根": 0,
+    "油条": 0,
+    "碗": 1,
+    "粥": 1,
+    "老板": 1,
+    "老样子": 0,
+    "豆浆": 1,
+    "饺子": 1,
+    "馒头": 0
+   },
+   "light_word_share": 0.038461538461538464,
+   "jieba_token_oov_rate": 0.3333333333333333
+  },
+  {
+   "pass": 1,
+   "n_lines": 5,
+   "n_clean": 5,
+   "token_oov_rate": 0.0,
+   "char_oov_rate": 0.0,
+   "distinct_ratio": 1.0,
+   "lines_with_target": 4,
+   "target_counts": {
+    "冰": 0,
+    "根": 0,
+    "油条": 0,
+    "碗": 1,
+    "粥": 1,
+    "老板": 1,
+    "老样子": 0,
+    "豆浆": 1,
+    "饺子": 1,
+    "馒头": 0
+   },
+   "light_word_share": 0.07407407407407407,
+   "jieba_token_oov_rate": 0.17391304347826086
+  }
+ ],
+ "dropped_after_max_passes": [],
+ "kept": [
+  "老板早！来两个包子。",
+  "给我一个鸡蛋。",
+  "来一杯豆浆，要热的。",
+  "有饺子吗？",
+  "一碗粥，要热的。"
+ ],
+ "usage": {
+  "input": 2167,
+  "output": 49,
+  "calls": 2,
+  "seconds": 0.0
+ },
+ "cost_usd": null,
+ "final": {
+  "n_lines": 5,
+  "n_clean": 5,
+  "token_oov_rate": 0.0,
+  "char_oov_rate": 0.0,
+  "distinct_ratio": 1.0,
+  "lines_with_target": 4,
+  "target_counts": {
+   "冰": 0,
+   "根": 0,
+   "油条": 0,
+   "碗": 1,
+   "粥": 1,
+   "老板": 1,
+   "老样子": 0,
+   "豆浆": 1,
+   "饺子": 1,
+   "馒头": 0
+  },
+  "light_word_share": 0.07407407407407407,
+  "jieba_token_oov_rate": 0.17391304347826086
+ },
+ "rows": [
+  {
+   "line": "老板早！来两个包子。",
+   "tokens": [
+    "老板",
+    "早",
+    "来",
+    "两",
+    "个",
+    "包子"
+   ],
+   "n_tokens": 6,
+   "oov_tokens": [],
+   "oov_chars": [],
+   "targets_used": [
+    "老板"
+   ],
+   "clean": true
+  },
+  {
+   "line": "给我一个鸡蛋。",
+   "tokens": [
+    "给",
+    "我",
+    "一",
+    "个",
+    "鸡蛋"
+   ],
+   "n_tokens": 5,
+   "oov_tokens": [],
+   "oov_chars": [],
+   "targets_used": [],
+   "clean": true
+  },
+  {
+   "line": "来一杯豆浆，要热的。",
+   "tokens": [
+    "来",
+    "一",
+    "杯",
+    "豆浆",
+    "要",
+    "热",
+    "的"
+   ],
+   "n_tokens": 7,
+   "oov_tokens": [],
+   "oov_chars": [],
+   "targets_used": [
+    "豆浆"
+   ],
+   "clean": true
+  },
+  {
+   "line": "有饺子吗？",
+   "tokens": [
+    "有",
+    "饺子",
+    "吗"
+   ],
+   "n_tokens": 3,
+   "oov_tokens": [],
+   "oov_chars": [],
+   "targets_used": [
+    "饺子"
+   ],
+   "clean": true
+  },
+  {
+   "line": "一碗粥，要热的。",
+   "tokens": [
+    "一",
+    "碗",
+    "粥",
+    "要",
+    "热",
+    "的"
+   ],
+   "n_tokens": 6,
+   "oov_tokens": [],
+   "oov_chars": [],
+   "targets_used": [
+    "碗",
+    "粥"
+   ],
+   "clean": true
+  }
+ ]
+}

@@ -1,7 +1,7 @@
 ---
 id: 3
 title: Spike the generate-grade-rewrite loop against a 300-word whitelist
-status: todo
+status: done
 priority: high
 type: explore
 created: 2026-10-25
@@ -24,3 +24,11 @@ Hand-authored dialogue is what killed every comparable project. The design depen
 - Expect over-use of light words ("thing", "do") under tight constraints; measure it.
 - Use `/pstack:poteto-mode` for the spike; it is the riskiest technical assumption in the project.
 - Depends on ticket 1 for the language, but the French path can start immediately since the tooling is known.
+
+## Learned
+
+- Go. Whitelist adherence was a non-problem: 180 generated lines, two models, 507- and 300-word lists, zero OOV tokens; the rewrite loop never fired (verified separately on synthetic violations). Write-up: [[ideas/spike-constrained-generation]].
+- The real gate is semantic: role confusion (vendor lines in the customer's mouth), forced target words, setup-free corrections, textbook register. Blind LLM-judge naturalness: Opus 4.60, Haiku 3.76 on orders; Haiku small talk under 300 words 2.67. Add a rubric judge; generate inside scene state; use Opus-class for generation.
+- jieba flags 23–40% of tokens as OOV on every clean batch: grade with a whitelist-constrained segmenter, never a general one.
+- Not done: API-backed run (no credentials on this machine; the `claude` CLI is not logged in from the shell), so cost and latency are estimates from token counts and list prices. The SDK backend is written and untested. `/pstack:poteto-mode` could not be invoked by the agent; it is user-invoked only.
+- Model calls went through Claude Code subagents pinned to Haiku 5.5 / Opus 5.5, not bare API calls.
