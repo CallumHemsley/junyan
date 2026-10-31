@@ -1,7 +1,7 @@
 ---
 id: 2
 title: Paper-prototype one shop counter in the target language
-status: doing
+status: done
 priority: high
 type: explore
 created: 2026-10-25
@@ -23,3 +23,7 @@ The core hypothesis is that "understand the request, hand over the right thing" 
 - Hypothesis and design rationale in [[ideas/design-directions]] ("Recommended starting hypothesis", "How the player gets help").
 - Teaching patterns to try in the scene: demonstration before use, one new word per request, repetition with variation, scaffolding after failure ([[ideas/research-game-design-patterns]] §1, §5).
 - Can start before ticket 1 is decided by prototyping in both languages, but is cheaper after it.
+
+## Learned
+
+- Not played. On 2026-10-31 Callum chose to skip the paper prototype and go straight to a playable MVP. The kit (scene, 45 words, 31 scripted visits, four regulars, audio) stays as the content spec for the first in-engine scene; the questions in [[ideas/prototype-counter]] move to the MVP playtest.
