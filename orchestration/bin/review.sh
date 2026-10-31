@@ -11,11 +11,9 @@ out="$root/orchestration/log/review-$name.md"
 basesha="$(git rev-parse "$base")"
 echo "[$(date -u +%FT%TZ)] review start $name base=$basesha" >> "$root/orchestration/log/journal.md"
 set +e
-( cd "$dir" && codex review --ephemeral --skip-git-repo-check \
-    -c 'approval_policy="never"' -c 'sandbox_mode="read-only"' \
-    -c 'notify=[]' -c 'features.hooks=false' -c 'features.apps=false' \
-    -m gpt-6-astra -c model_reasoning_effort=medium \
-    --base "$basesha" ) > "$out" 2>&1
+( cd "$dir" && sh "$root/orchestration/bin/codex-run.sh" review \
+    -c 'sandbox_mode="read-only"' -m gpt-6-astra -c model_reasoning_effort=medium \
+    --base "$basesha" < /dev/null ) > "$out" 2>&1
 code=$?
 set -e
 echo "[$(date -u +%FT%TZ)] review end $name exit=$code -> $out" >> "$root/orchestration/log/journal.md"

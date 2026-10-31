@@ -12,11 +12,11 @@ prompt="You are the fun grader for the Junyan MVP. Read orchestration/grading-ru
 echo "[$(date -u +%FT%TZ)] grade start ($n screenshots)" >> orchestration/log/journal.md
 set +e
 # shellcheck disable=SC2086
-codex exec --ephemeral --skip-git-repo-check -C "$root" -s read-only \
-  -c 'approval_policy="never"' -c 'notify=[]' -c 'features.hooks=false' -c 'features.apps=false' \
+printf '%s' "$prompt" > "orchestration/log/grade-$stamp.prompt.txt"
+sh "$root/orchestration/bin/codex-run.sh" exec --ephemeral -C "$root" -s read-only \
   -m gpt-6-astra -c model_reasoning_effort=high \
   --output-schema orchestration/bin/grade.schema.json \
-  -o "orchestration/log/grade-$stamp.json" $imgs "$prompt" > "orchestration/log/grade-$stamp.jsonl" 2>&1
+  -o "orchestration/log/grade-$stamp.json" $imgs - < "orchestration/log/grade-$stamp.prompt.txt" > "orchestration/log/grade-$stamp.jsonl" 2>&1
 code=$?
 set -e
 echo "[$(date -u +%FT%TZ)] grade end exit=$code -> orchestration/log/grade-$stamp.json" >> orchestration/log/journal.md
