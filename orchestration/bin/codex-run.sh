@@ -6,7 +6,7 @@ cmd="$1"; shift
 extra=""; [ "$cmd" = "exec" ] && extra="--skip-git-repo-check"
 # shellcheck disable=SC2086
 exec codex "$cmd" $extra \
-  -c 'approval_policy="never"' -c 'notify=[]' -c 'features.hooks=false' -c 'features.apps=false' \
+  -c 'approval_policy="never"' -c 'service_tier="priority"' -c 'notify=[]' -c 'features.hooks=false' -c 'features.apps=false' \
   -c 'mcp_servers.playwright.enabled=false' -c 'mcp_servers.figma.enabled=false' \
   -c 'mcp_servers.maestro.enabled=false' -c 'mcp_servers.paper.enabled=false' \
   -c 'mcp_servers.node_repl.enabled=false' -c 'mcp_servers.sentry.enabled=false' \
