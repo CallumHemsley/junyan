@@ -1,0 +1,111 @@
+/* 君言 Junyan design tokens, 晨雾 Morning Steam, v0.1.0.
+   Generated from docs/design/tokens.json; edit the JSON, not this file.
+   Theme: data-theme="morning" (default) | "evening" on the root element. */
+
+:root,
+[data-theme="morning"] {
+  /* Colour */
+  --surface-card: #fbf7ef;
+  --surface-raised: #f4eee4;
+  --surface-control: #f1eadd;
+  --surface-sunk: #e8dfcf;
+  --hairline: #241d161a;
+  --hairline-strong: #241d163d;
+  --slot-edge: #241d1673;
+  --text-primary: #241d16;
+  --text-secondary: #5e554a;
+  --text-muted: #7b7266;
+  --accent: #b5462b;
+  --accent-ink: #9c3a22;
+  --word-marker: #b5462b;
+  --chop: #b5462b;
+  --jade: #6f9a86;
+  --steam: #fffaf0;
+  --window-cool: #9eafbc;
+  --lamp-glow: #ffd492;
+
+  /* Type families */
+  --font-sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-serif: "Noto Serif SC", "Songti SC", serif;
+
+  /* Type styles: Interface (sans) */
+  --caption-font-size: 12px;
+  --caption-line-height: 16px;
+  --caption-font-weight: 500;
+  --label-font-size: 14px;
+  --label-line-height: 20px;
+  --label-font-weight: 500;
+  --body-font-size: 16px;
+  --body-line-height: 24px;
+  --body-font-weight: 400;
+  --title-font-size: 20px;
+  --title-line-height: 28px;
+  --title-font-weight: 500;
+
+  /* Type styles: Spoken (serif) */
+  --spoken-font-size: 40px;
+  --spoken-line-height: 60px;
+  --spoken-font-weight: 500;
+  --spoken-compact-font-size: 32px;
+  --spoken-compact-line-height: 44px;
+  --spoken-compact-font-weight: 500;
+  --board-font-size: 20px;
+  --board-line-height: 32px;
+  --board-font-weight: 500;
+  --seal-font-size: 20px;
+  --seal-line-height: 20px;
+  --seal-font-weight: 600;
+
+  /* Spacing */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+
+  /* Radius */
+  --radius-panel: 16px;
+  --radius-chip: 10px;
+  --radius-tile: 8px;
+  --radius-receipt: 4px;
+
+  /* Shadow */
+  --shadow-panel: 0 8px 24px rgba(36,29,22,.18);
+  --shadow-chip: 0 1px 2px rgba(36,29,22,.12);
+
+  /* Motion (from design-system.md; not in tokens.json) */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-press: 120ms;
+  --duration-move: 200ms;
+  --duration-arrive: 320ms;
+}
+
+[data-theme="evening"] {
+  --surface-card: #2b221a;
+  --surface-raised: #342920;
+  --surface-control: #3a2e24;
+  --surface-sunk: #1f1913;
+  --hairline: #f4ead81f;
+  --hairline-strong: #f4ead83d;
+  --slot-edge: #f4ead873;
+  --text-primary: #f4ead8;
+  --text-secondary: #cbbda7;
+  --text-muted: #9a8d7b;
+  --accent: #dd6f4f;
+  --accent-ink: #ec9475;
+  --word-marker: #e57a55;
+  --chop: #dd6f4f;
+  --jade: #5b8573;
+  --steam: #f6dcb4;
+  --window-cool: #4a5878;
+  --lamp-glow: #ffb86a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-move: 120ms;
+    --duration-arrive: 120ms;
+  }
+}
