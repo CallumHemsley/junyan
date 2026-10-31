@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["scores", "average", "meets_bar", "top_fixes", "verdict"],
+  "properties": {
+    "scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["feel_and_juice", "readability", "cozy_charm", "challenge_rhythm", "language_is_the_game", "sound_and_voice", "polish", "comparison"],
+      "properties": {
+        "feel_and_juice": {"$ref": "#/$defs/dim"},
+        "readability": {"$ref": "#/$defs/dim"},
+        "cozy_charm": {"$ref": "#/$defs/dim"},
+        "challenge_rhythm": {"$ref": "#/$defs/dim"},
+        "language_is_the_game": {"$ref": "#/$defs/dim"},
+        "sound_and_voice": {"$ref": "#/$defs/dim"},
+        "polish": {"$ref": "#/$defs/dim"},
+        "comparison": {"$ref": "#/$defs/dim"}
+      }
+    },
+    "average": {"type": "number"},
+    "meets_bar": {"type": "boolean"},
+    "verdict": {"type": "string"},
+    "top_fixes": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "steps"],
+        "properties": {
+          "title": {"type": "string"},
+          "steps": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "string"}}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "dim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score", "reason"],
+      "properties": {
+        "score": {"type": "integer", "minimum": 1, "maximum": 10},
+        "reason": {"type": "string"}
+      }
+    }
+  }
+}

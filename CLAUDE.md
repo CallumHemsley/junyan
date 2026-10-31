@@ -1,22 +1,20 @@
-# Junyan
+@AGENTS.md
 
-Early setup. The plan hasn't been written down yet, so don't scaffold an app or pick a stack until it's in `docs/ideas/` and the choice lands in `docs/decisions/`.
+# Junyan (Claude-specific notes)
+
+State as of 2026-10-31: research done, decisions 0001 (Mandarin first) and 0002 (web first, TypeScript and DOM dialogue, illustrated 2D) accepted, design direction chosen (`docs/design/`). The MVP build runs under `orchestration/RUNBOOK.md`: a Codex orchestrator with Codex workers; Claude Code reviews, researches and keeps `docs/` coherent.
 
 ## Layout
 
 - `docs/tickets/` — the backlog. Conventions in `docs/tickets/README.md`.
 - `docs/ideas/` — exploratory notes and research.
 - `docs/decisions/` — decisions that are costly to reverse.
+- `docs/design/` — the chosen mock-up and the design system.
+- `spikes/` — throwaway experiments, never imported by the app.
+- `orchestration/` — the MVP build runbook, scripts and logs.
 
 `docs/` doubles as an Obsidian vault, so keep notes as plain Markdown with YAML frontmatter.
 
-## Working on a ticket
-
-1. Set `status: doing` when you start.
-2. Do the work on a branch, one ticket per branch.
-3. Set `status: done` in the same change that completes it, and note anything learned in the ticket.
-4. New work you discover becomes a new ticket, not scope creep.
-
 ## Tooling
 
-pstack is enabled for this project (`.claude/settings.json`). Use `/pstack:poteto-mode` for anything that needs rigor.
+pstack is enabled for this project (`.claude/settings.json`). Use `/pstack:poteto-mode` for anything that needs rigor (user-invoked only).

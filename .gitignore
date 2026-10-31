@@ -7,3 +7,6 @@
 docs/.obsidian/workspace*.json
 docs/.obsidian/cache
 docs/.trash/
+.worktrees/
+node_modules/
+verify/
