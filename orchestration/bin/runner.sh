@@ -4,6 +4,8 @@
 #
 # Protocol (all paths relative to the repo root):
 #   orchestration/queue/<id>.job      one line: "worker <ticket> <slug>" | "review <ticket> <slug> [base]" | "verify" | "grade"
+#                                     | "commit" (message in <id>.msg; commits everything in the root)
+#                                     | "merge <ticket> <slug>" (fetches the worker clone's branch, merges --no-ff, removes the clone)
 #   orchestration/queue/<id>.started  written when the job starts (contains the pid)
 #   orchestration/queue/<id>.done     written when it ends: "exit <code>" and the log path
 #   orchestration/queue/STOP          stops the runner after running jobs finish
@@ -24,6 +26,8 @@ run_job() { # id kind args...
       review) sh "$root/orchestration/bin/review.sh" "$@" ;;
       verify) sh "$root/orchestration/bin/verify.sh" ;;
       grade)  sh "$root/orchestration/bin/grade.sh" ;;
+      commit) cd "$root" && git add -A && if [ -f "$id.msg" ]; then git -c user.name="codex orchestrator" -c user.email="codex@local" commit -q -F "$id.msg"; else git -c user.name="codex orchestrator" -c user.email="codex@local" commit -q -m "orchestrator: $(basename "$id")"; fi && git log --oneline -1 ;;
+      merge)  cd "$root" && name="$1-$2" && git fetch -q ".worktrees/$name" "codex/$name" && git -c user.name="codex orchestrator" -c user.email="codex@local" merge --no-ff -m "Merge ticket $1 ($2)" FETCH_HEAD && rm -rf ".worktrees/$name" && git log --oneline -1 ;;
       *) echo "unknown kind $kind"; exit 2 ;;
     esac
     code=$?
@@ -43,7 +47,8 @@ while :; do
     case "$kind" in
       worker) [ "$(count_running worker)" -lt "$MAX_WORKERS" ] || continue; [ $# -ge 2 ] || { printf 'exit 2\nlog worker needs ticket and slug\n' > "$id.done"; echo "pid 0" > "$id.started"; continue; } ;;
       review) [ "$(count_running review)" -lt 1 ] || continue; [ $# -ge 2 ] || { printf 'exit 2\nlog review needs ticket and slug\n' > "$id.done"; echo "pid 0" > "$id.started"; continue; } ;;
-      verify|grade) [ "$(count_running "$kind")" -lt 1 ] || continue ;;
+      verify|grade|commit) [ "$(count_running "$kind")" -lt 1 ] || continue ;;
+      merge) [ "$(count_running merge)" -lt 1 ] || continue; [ $# -ge 2 ] || { printf 'exit 2\nlog merge needs ticket and slug\n' > "$id.done"; echo "pid 0" > "$id.started"; continue; } ;;
       *) printf 'exit 2\nlog unknown kind %s\n' "$kind" > "$id.done"; echo "pid 0" > "$id.started"; continue ;;
     esac
     run_job "$id" "$kind" "$@"

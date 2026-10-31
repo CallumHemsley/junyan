@@ -30,6 +30,10 @@ sh "$root/orchestration/bin/codex-run.sh" exec --json --ephemeral \
   -m gpt-6.1-sol -c model_reasoning_effort=high \
   -o "$out" - < "$prompt" > "$log" 2>&1
 code=$?
+# The worker's sandbox cannot write .git, so commit its output here on its behalf.
+if [ -n "$(git -C "$dir" status --porcelain)" ]; then
+  git -C "$dir" add -A && git -C "$dir" -c user.name="codex worker" -c user.email="codex@local" commit -q -m "Ticket $ticket ($slug): worker output" && echo "[$(date -u +%FT%TZ)] committed $name $(git -C "$dir" rev-parse --short HEAD)" >> "$root/orchestration/log/journal.md"
+fi
 set -e
 echo "[$(date -u +%FT%TZ)] worker end $name exit=$code" >> "$root/orchestration/log/journal.md"
 echo "exit $code" >> "$log"

@@ -15,7 +15,7 @@ Your Vite port: [518X]. Set `server.port` to it with `strictPort: true`; point P
 
 Rules that fail review if broken: Chinese only in the UI, no pinyin on screen, no English; accent colour only on the new-word dot and the 多谢 chop; rules pure and tested; real DOM text for Chinese; tokens from tokens.css, never ad hoc colours; 44px touch targets; respect prefers-reduced-motion; no paid APIs; no global installs.
 
-Work in small commits on your branch. Run `pnpm verify` (or the subset that exists: typecheck, test, build) before you finish. If something you need is missing from another ticket, stub it minimally behind the agreed interface and say so in your final message.
+Do not run git commit (your sandbox cannot write .git; the harness commits your work when you finish). Run `pnpm verify` (or the subset that exists: typecheck, test, build) before you finish. If something you need is missing from another ticket, stub it minimally behind the agreed interface and say so in your final message.
 
-When done: set the ticket's status to done in docs/tickets/[NNNN-slug].md with a Learned section (what you built, what you stubbed, what is unverified), commit, and reply with: what you built, how you verified it (exact commands and results), what is stubbed, and anything the reviewer should look at first.
+When done: set the ticket's status to done in docs/tickets/[NNNN-slug].md with a Learned section (what you built, what you stubbed, what is unverified), and reply with: what you built, how you verified it (exact commands and results), what is stubbed, and anything the reviewer should look at first.
 ```
