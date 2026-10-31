@@ -3,7 +3,9 @@
 # usage: codex-run.sh <exec|review> [codex args...]   (feed prompts via `- < file`, or stdin is closed)
 cmd="$1"; shift
 [ -t 0 ] && exec < /dev/null
-exec codex "$cmd" --skip-git-repo-check \
+extra=""; [ "$cmd" = "exec" ] && extra="--skip-git-repo-check"
+# shellcheck disable=SC2086
+exec codex "$cmd" $extra \
   -c 'approval_policy="never"' -c 'notify=[]' -c 'features.hooks=false' -c 'features.apps=false' \
   -c 'mcp_servers.playwright.enabled=false' -c 'mcp_servers.figma.enabled=false' \
   -c 'mcp_servers.maestro.enabled=false' -c 'mcp_servers.paper.enabled=false' \
