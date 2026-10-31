@@ -17,8 +17,10 @@ fi
 log="$root/orchestration/log/worker-$name.jsonl"; out="$root/orchestration/log/worker-$name.md"
 echo "[$(date -u +%FT%TZ)] worker start $name" >> "$root/orchestration/log/journal.md"
 set +e
+roots="[\"$root/.git\",\"$HOME/Library/pnpm\",\"$HOME/.cache\",\"$HOME/.npm\",\"$HOME/Library/Caches/ms-playwright\"]"
 sh "$root/orchestration/bin/codex-run.sh" exec --json --ephemeral \
   -C "$dir" -s workspace-write -c 'sandbox_workspace_write.network_access=true' \
+  -c "sandbox_workspace_write.writable_roots=$roots" \
   -m gpt-6.1-sol -c model_reasoning_effort=high \
   -o "$out" - < "$prompt" > "$log" 2>&1
 code=$?
