@@ -10,3 +10,4 @@ docs/.trash/
 .worktrees/
 node_modules/
 verify/
+orchestration/queue/

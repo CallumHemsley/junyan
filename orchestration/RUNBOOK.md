@@ -1,6 +1,16 @@
 # MVP build runbook (for the orchestrator)
 
-You are the orchestrator of the Junyan MVP build. You run as `codex exec` on `gpt-6-astra`, inside a dedicated clone of the repository, with workspace-write access and network. You plan, spawn workers, review, verify, grade, and loop until the game is fun. You do not write application code yourself except to unblock a stuck worker with a small, clearly-logged fix.
+You are the orchestrator of the Junyan MVP build. You run as `codex exec` on `gpt-6-astra`, inside a dedicated clone of the repository, with workspace-write access and network. You plan, dispatch workers, review, verify, grade, and loop until the game is fun. You do not write application code yourself except to unblock a stuck worker with a small, clearly-logged fix.
+
+**You cannot run `codex` yourself** (your sandbox blocks nested Codex processes). A job runner outside your sandbox executes the four scripts for you. To run one, write a job file and wait for its result:
+
+```
+printf 'worker 9 scaffold\n' > orchestration/queue/j001.job     # or: review 9 scaffold | verify | grade
+# the runner writes orchestration/queue/j001.started, then orchestration/queue/j001.done ("exit <code>" and the log path)
+while [ ! -f orchestration/queue/j001.done ]; do sleep 30; done; cat orchestration/queue/j001.done
+```
+
+Use short unique ids (j001, j002, ...). The runner keeps at most three `worker` jobs running and one `review`, `verify` or `grade` at a time; a job that cannot start yet simply waits in the queue. Worker output lands in `orchestration/log/worker-<ticket>-<slug>.md` and `.jsonl`, reviews in `orchestration/log/review-<ticket>-<slug>.md`, verify logs and screenshots in `orchestration/log/verify-*.log` and `verify/`, grades in `orchestration/log/grade-*.json`. Poll with `sleep 60` between checks; do not busy-loop.
 
 ## Goal
 
@@ -17,21 +27,21 @@ In this order: `AGENTS.md`; `docs/tickets/0006-breakfast-stall-vertical-slice.md
 | role | how | model |
 |---|---|---|
 | orchestrator (you) | this process | gpt-6-astra, effort high |
-| worker | `orchestration/bin/worker.sh` | gpt-6.1-sol, effort high |
-| code reviewer | `orchestration/bin/review.sh` | gpt-6-astra, effort medium |
-| verifier | you, running `orchestration/bin/verify.sh` and reading its screenshots and logs | you |
-| fun grader | `orchestration/bin/grade.sh` | gpt-6-astra, effort high, with screenshots |
+| worker | `worker` job (`orchestration/bin/worker.sh`) | gpt-6.1-sol, effort high |
+| code reviewer | `review` job (`orchestration/bin/review.sh`) | gpt-6-astra, effort medium |
+| verifier | `verify` job, then you reading its screenshots and logs | you |
+| fun grader | `grade` job (`orchestration/bin/grade.sh`) | gpt-6-astra, effort high, with screenshots |
 
 At most **3 workers at a time**. Workers never share files: split tickets so each owns distinct paths; serialize anything touching `package.json`, the lockfile, shared schemas or `src/rules/` types (one worker at a time on those).
 
 ## The loop
 
 0. **Plan.** Split ticket 6 into sub-tickets in `docs/tickets/` (numbers from 9 upward; set `status: todo`, `type: feature`, parent note "part of 0006"). Aim for 6 to 10 tickets the size of a few hours each. A good first split: (a) scaffold with Vite, React, TypeScript, pnpm, Vitest, Playwright, tokens.css wired, the test hooks, and a `pnpm verify` script that builds, tests, runs the Playwright journey and writes screenshots to `verify/`; (b) content pipeline: lines JSON schema (Zod) with tokens, the 45-word set and 31 visits from the kit, audio manifest mapping to the existing clips; (c) the rules: game state, orders, change-making, day cycle, word model with re-encounter scheduling, director picking the next visit, all pure and tested; (d) the scene: background layers, portraits with blink/talk/hand-over, steam, time-of-day grade, the cat; (e) the counter UI: spoken line with word tokens, price board, item tray, money row, receipt and chop, chips, journal; (f) juice: transitions, item hand-over animation, receipt stamp animation, coin sounds, day-end tally, a title screen in Chinese; (g) PWA manifest and deploy build. Commit the plan.
-1. **Dispatch.** For each ready ticket (dependencies met, paths disjoint), write a worker prompt from `worker-prompt-template.md` into `orchestration/prompts/<ticket>.md` and run `orchestration/bin/worker.sh <ticket> <slug>` in the background. Keep three running. Log every start and finish in `orchestration/log/journal.md` with timestamps.
-2. **Review.** When a worker finishes, run `orchestration/bin/review.sh <ticket>`. If the review finds defects, write them into the ticket Notes and re-dispatch the same worker branch with a prompt that lists the findings. Two rounds maximum, then merge what is acceptable and open a follow-up ticket for the rest.
+1. **Dispatch.** For each ready ticket (dependencies met, paths disjoint), write a worker prompt from `worker-prompt-template.md` into `orchestration/prompts/<ticket>.md` and enqueue `worker <ticket> <slug>`. Keep three running. The runner and the scripts log starts and finishes in `orchestration/log/journal.md`; add your own decisions there too.
+2. **Review.** When a worker's `.done` appears, enqueue `review <ticket> <slug>` and read the review file. If the review finds defects, write them into the ticket Notes and re-dispatch the same worker branch with a prompt that lists the findings. Two rounds maximum, then merge what is acceptable and open a follow-up ticket for the rest.
 3. **Merge.** Merge the worker branch into the integration branch (`codex/0006-mvp`) with `--no-ff`, remove its worktree, mark the ticket `done` in the same commit.
-4. **Verify.** After every merge, run `orchestration/bin/verify.sh`. Read the output, the Playwright report and the screenshots in `verify/` yourself. If the build, tests or journey fail, open a fix ticket and dispatch it before anything else.
-5. **Grade.** Whenever the game is playable end to end (a customer appears, speaks, the player serves and gives change, a receipt confirms, the day ends), run `orchestration/bin/grade.sh`. Record the scores in `orchestration/log/grades.md`. If the grade is below the bar, turn the grader's top three complaints into tickets (juice, animation, feedback, readability, charm) and go to step 1. If it meets the bar twice in a row with no regressions, stop.
+4. **Verify.** After every merge, enqueue `verify`. Read the output, the Playwright report and the screenshots in `verify/` yourself. If the build, tests or journey fail, open a fix ticket and dispatch it before anything else.
+5. **Grade.** Whenever the game is playable end to end (a customer appears, speaks, the player serves and gives change, a receipt confirms, the day ends), enqueue `grade`. Record the scores in `orchestration/log/grades.md`. If the grade is below the bar, turn the grader's top three complaints into tickets (juice, animation, feedback, readability, charm) and go to step 1. If it meets the bar twice in a row with no regressions, stop.
 6. **Report.** Append a status entry to `orchestration/log/journal.md` after every loop: tickets done, open, grade, what is next. At the end write `orchestration/log/FINAL.md`: what shipped, how to run it, the last grade, and what you would do next.
 
 ## Hard rules
