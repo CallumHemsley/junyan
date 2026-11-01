@@ -1,0 +1,61 @@
+.restaurant-scene {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 7;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--surface-sunk, #e8dfcf);
+  border-radius: var(--radius-panel, 16px);
+  box-shadow: inset 0 0 0 1px var(--hairline, #241d161a);
+}
+.restaurant-scene canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.restaurant-scene .scene-target {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 4px 7px;
+  border: 0;
+  border-radius: var(--radius-tile, 8px);
+  background: transparent;
+  color: var(--text-primary, #241d16);
+  font: 500 14px/20px var(--font-sans, sans-serif);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.restaurant-scene .scene-target span,
+.restaurant-scene .scene-kitchen {
+  text-shadow: 0 1px 0 #fbf7ef;
+}
+.restaurant-scene .scene-target:hover,
+.restaurant-scene .scene-target:focus-visible,
+.restaurant-scene .scene-target[aria-pressed="true"] {
+  background: var(--surface-card, #fbf7ef);
+  box-shadow: 0 0 0 1px var(--hairline-strong, #241d163d), var(--shadow-chip, 0 1px 2px #241d161f);
+}
+.restaurant-scene .scene-target:focus-visible {
+  outline: 2px solid var(--text-secondary, #5e554a);
+  outline-offset: 3px;
+}
+.restaurant-scene .scene-table i {
+  width: 4px;
+  height: 4px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+.restaurant-scene .scene-table[data-phase="ordered"] i,
+.restaurant-scene .scene-table[data-phase="checkout"] i { background: currentColor; }
+.restaurant-scene .scene-table[data-phase="served"] i,
+.restaurant-scene .scene-table[data-phase="empty"] i { visibility: hidden; }
