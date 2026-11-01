@@ -34,3 +34,5 @@ Under decision 0001 the audio carries the tones, so voice quality is core, not p
 - Shared 20-line corpus extracted to `scripts/voice-samples/lines.json`; plain Hanzi first pass, pronunciation notes remain reviewer metadata. Secure credential request timed out; no paid calls made. Three provider agents are running.
 
 - User steered toward local open source models. Cancelled API-provider prep; tickets 0016–0017 cover real Qwen3-TTS and Kokoro synthesis on this Mac without API keys.
+
+- Kokoro delivered: 40 real local WAVs, two voices × twenty lines. Integrated generator commit `7658d4e`; independently decoded WAVs, verified hashes/corpus, silence/clipping limits and built a provider-blind standalone listening page plus CSV export under `output/voice-samples/review/`. JavaScript syntax and CSV Unicode/escaping checks passed. Native listening is still pending; known G2P concerns remain in the provider README. Qwen generation is still in progress.
