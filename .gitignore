@@ -11,3 +11,8 @@ docs/.trash/
 node_modules/
 verify/
 orchestration/queue/
+dist/
+output/
+test-results/
+playwright-report/
+*.tsbuildinfo
