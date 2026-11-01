@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import content from "../src/content/content.json" with { type: "json" };
 
-test.use({ baseURL: "http://127.0.0.1:5177/junyan/" });
+test.use({ baseURL: process.env.AUDIO_PREVIEW_URL || "http://127.0.0.1:5177/junyan/" });
 
 test("production keeps the restaurant and Mandarin audio available offline", async ({
   page,

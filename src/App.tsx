@@ -15,6 +15,7 @@ import RestaurantScene from "./scene/RestaurantScene";
 import FoodArt from "./FoodArt";
 import { loadGame, saveGame } from "./save";
 import { route } from "./navigation";
+import { createPlayback, type PlaybackError } from "./audio/playback";
 
 const testMode =
   import.meta.env.DEV &&
@@ -61,22 +62,27 @@ export default function App() {
   const wordOpen = word !== null;
   const [change, setChange] = useState(0);
   const [moving, setMoving] = useState(false);
-  const [audioError, setAudioError] = useState(false);
+  const [audioError, setAudioError] = useState<PlaybackError>(null);
   const dayEndOpen = state.ended && panel === "none" && !word;
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const playback = useRef<ReturnType<typeof createPlayback> | null>(null);
+  if (!playback.current)
+    playback.current = createPlayback((url) => new Audio(url), setAudioError);
   const motion = useRef<{ path: Position[]; arrive?: () => void } | null>(null);
   const dispatch = useCallback(
     (action: Action) => setState((s) => reduceGame(s, action, content)),
     [],
   );
   const play = useCallback((url: string) => {
-    audioRef.current?.pause();
-    const audio = new Audio(import.meta.env.BASE_URL + url.slice(1));
-    audioRef.current = audio;
-    setAudioError(false);
-    audio.play().catch(() => setAudioError(true));
+    playback.current!.play(import.meta.env.BASE_URL + url.slice(1));
   }, []);
-  useEffect(() => () => audioRef.current?.pause(), []);
+  useEffect(() => () => playback.current!.stop(), []);
+  useEffect(() => {
+    if (panel !== "table") playback.current!.stop();
+  }, [panel]);
+  useEffect(() => {
+    if (!word) playback.current!.stop();
+  }, [word]);
+  useEffect(() => playback.current!.stop(), [state.day]);
   useEffect(() => {
     if (state.feedback === "wrong-food" || state.feedback === "wrong-change") {
       const order = getOrder(state, state.activeTable ?? 1, content);
@@ -760,7 +766,9 @@ export default function App() {
             )}
             {audioError && (
               <p className="save-note" role="status">
-                声音暂时没有播出，再点一次听听。
+                {audioError === "policy"
+                  ? "点一下喇叭，再听一遍。"
+                  : "声音暂时没有播出，再点一次听听。"}
               </p>
             )}
           </section>
