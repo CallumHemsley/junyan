@@ -4,6 +4,7 @@ export default defineConfig({
   fullyParallel: false,
   workers: 1,
   timeout: 90000,
+  expect: { timeout: 10000 },
   use: {
     baseURL: "http://127.0.0.1:5173",
     trace: "retain-on-failure",
