@@ -1,7 +1,7 @@
 ---
 id: 13
 title: Prepare MiniMax voice samples
-status: doing
+status: blocked
 priority: medium
 type: explore
 created: 2026-11-01
@@ -20,3 +20,5 @@ Support ticket 0008 with authentic provider samples for native Mandarin listenin
 ## Notes
 
 - Reserved centrally by the orchestrator before parallel work. Owner: Sol 6.1 medium provider agent; separate delegated worktree. No dev server needed.
+
+- Paused 2026-11-01 after user steered comparison toward local open source TTS. No API credentials supplied or billable calls made.
