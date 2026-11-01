@@ -57,6 +57,8 @@ export default function App() {
   >("help");
   const [table, setTable] = useState(1);
   const [word, setWord] = useState<Word | null>(null);
+  const wordTrigger = useRef<HTMLButtonElement | null>(null);
+  const wordOpen = word !== null;
   const [change, setChange] = useState(0);
   const [moving, setMoving] = useState(false);
   const [audioError, setAudioError] = useState(false);
@@ -178,20 +180,43 @@ export default function App() {
     else walk({ x: KITCHEN.x, y: KITCHEN.y + 1.3 }, open);
   }, [walk]);
   useEffect(() => {
-    if (panel === "none" && !dayEndOpen) return;
+    if (panel === "none" && !wordOpen) return;
+    motion.current = null;
+    setMoving(false);
+  }, [panel, wordOpen]);
+  useEffect(() => {
+    if (!ready || (panel === "none" && !dayEndOpen)) return;
     const previous = document.activeElement;
     const dialog = document.querySelector<HTMLElement>(".paper-panel");
     dialog?.querySelector<HTMLButtonElement>("button")?.focus();
+    return () => {
+      if (previous instanceof HTMLElement) previous.focus();
+    };
+  }, [panel, dayEndOpen, ready]);
+  useEffect(() => {
+    if (!wordOpen) return;
+    const previous = wordTrigger.current;
+    document.querySelector<HTMLButtonElement>(".word-popover button")?.focus();
+    return () => previous?.focus();
+  }, [wordOpen]);
+  useEffect(() => {
+    const dialog = document.querySelector<HTMLElement>(
+      wordOpen ? ".word-popover" : ".paper-panel",
+    );
+    if (!dialog) return;
     const trap = (event: KeyboardEvent) => {
-      if (event.key !== "Tab" || word) return;
+      if (event.key !== "Tab") return;
       const controls = [
-        ...(dialog?.querySelectorAll<HTMLElement>(
+        ...dialog.querySelectorAll<HTMLElement>(
           "button:not(:disabled),a[href],input",
-        ) || []),
+        ),
       ];
       const first = controls[0],
         last = controls.at(-1);
-      if (event.shiftKey && document.activeElement === first) {
+      if (!dialog.contains(document.activeElement)) {
+        event.preventDefault();
+        (event.shiftKey ? last : first)?.focus();
+      } else if (event.shiftKey && document.activeElement === first) {
         event.preventDefault();
         last?.focus();
       } else if (!event.shiftKey && document.activeElement === last) {
@@ -202,14 +227,13 @@ export default function App() {
     document.addEventListener("keydown", trap);
     return () => {
       document.removeEventListener("keydown", trap);
-      if (previous instanceof HTMLElement) previous.focus();
     };
-  }, [panel, word, dayEndOpen]);
+  }, [panel, wordOpen, dayEndOpen, ready]);
   useEffect(() => {
     const key = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setPanel("none");
-        setWord(null);
+        if (word) setWord(null);
+        else setPanel("none");
         return;
       }
       if (
@@ -275,7 +299,8 @@ export default function App() {
       delete (window as Window & { __TEST__?: typeof hooks }).__TEST__;
     };
   }, [dispatch]);
-  const lookup = (w: Word) => {
+  const lookup = (w: Word, trigger: HTMLButtonElement) => {
+    wordTrigger.current = trigger;
     setWord(w);
     dispatch({ type: "lookup", wordId: w.id, now: Date.now() });
     play(w.audio);
@@ -286,7 +311,7 @@ export default function App() {
         <button
           key={`${w.id}-${i}`}
           className={`word ${!state.journal[w.id] ? "new-word" : ""}`}
-          onClick={() => lookup(w)}
+          onClick={(event) => lookup(w, event.currentTarget)}
         >
           {w.hanzi}
         </button>
@@ -315,8 +340,8 @@ export default function App() {
   if (!ready) return <main className="loading">早安，小馆正在开门。</main>;
   return (
     <div className="app-shell">
-      <header className="topbar">
-        <a className="brand" href="/" aria-label="君言首页">
+      <header className="topbar" inert={panel !== "none" || wordOpen || dayEndOpen}>
+        <a className="brand" href={import.meta.env.BASE_URL} aria-label="君言首页">
           <span className="brand-seal">
             君<br />言
           </span>
@@ -346,7 +371,7 @@ export default function App() {
           </button>
         </nav>
       </header>
-      <main>
+      <main inert={panel !== "none" || wordOpen || dayEndOpen}>
         <div className="day-heading">
           <div>
             <p className="eyebrow">
@@ -450,7 +475,7 @@ export default function App() {
                     return (
                       <button
                         key={`${id}-${i}`}
-                        onClick={() => lookup(food.word)}
+                        onClick={(event) => lookup(food.word, event.currentTarget)}
                         className="tray-item"
                         aria-label={`查看${food.word.hanzi}`}
                       >
@@ -487,7 +512,7 @@ export default function App() {
         )}
       </main>
       {panel !== "none" && (
-        <div className="modal-backdrop" onClick={close}>
+        <div className="modal-backdrop" onClick={close} inert={wordOpen}>
           <section
             className={`paper-panel ${panel === "kitchen" ? "kitchen-panel" : ""}`}
             role="dialog"
@@ -562,7 +587,7 @@ export default function App() {
                         )!;
                         return (
                           <p key={item.foodId}>
-                            <button onClick={() => lookup(f.word)}>
+                            <button onClick={(event) => lookup(f.word, event.currentTarget)}>
                               {f.word.hanzi}
                             </button>
                             <span>×{item.quantity}</span>
@@ -669,7 +694,7 @@ export default function App() {
                       <button
                         className="food-listen"
                         aria-label={`听${food.word.hanzi}`}
-                        onClick={() => lookup(food.word)}
+                        onClick={(event) => lookup(food.word, event.currentTarget)}
                       >
                         <Speaker />
                       </button>
@@ -713,7 +738,7 @@ export default function App() {
                 ) : (
                   <div className="journal-list">
                     {words.map((w) => (
-                      <button key={w.id} onClick={() => lookup(w)}>
+                      <button key={w.id} onClick={(event) => lookup(w, event.currentTarget)}>
                         <span>{w.hanzi}</span>
                         <small>听过 {state.journal[w.id].lookups} 次</small>
                         <Speaker />
@@ -735,6 +760,7 @@ export default function App() {
         <div
           className="word-popover"
           role="dialog"
+          aria-modal="true"
           aria-label={`${word.hanzi}的意思`}
         >
           <button
