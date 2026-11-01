@@ -410,7 +410,7 @@ export default function App() {
             />
             <div className="world-footer">
               <span className="next-hint" role="status">{moving ? "走过去…" : ""}</span>
-              <button className="primary next-action" disabled={!needsKitchen && !nextTable} aria-label={needsKitchen ? "去厨房取餐" : `招呼${nextTable?.table ?? ""}桌`} onClick={() => needsKitchen ? visitKitchen() : nextTable && visitTable(nextTable.table)}>
+              <button className="primary next-action" disabled={!needsKitchen && !nextTable} onClick={() => needsKitchen ? visitKitchen() : nextTable && visitTable(nextTable.table)}>
                 {needsKitchen ? "去厨房取餐" : nextTable ? `${nextTable.table}桌 · ${nextTable.phase === "checkout" ? "找零" : nextTable.phase === "ordered" ? "上菜" : "听点餐"}` : "多谢"}<span aria-hidden="true">→</span>
               </button>
             </div>

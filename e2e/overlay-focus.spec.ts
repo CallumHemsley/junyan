@@ -21,7 +21,7 @@ for (const build of ["development", "production"]) {
         page.on("console", message => {
           if (message.type() === "error") errors.push(message.text());
         });
-        const tableTrigger = page.getByRole("button", { name: /^1桌 / });
+        const tableTrigger = page.getByRole("group", { name: "今日客人", exact: true }).getByRole("button", { name: /^1桌 / });
         await tableTrigger.click();
         const tableDialog = page.getByRole("dialog", { name: "1桌点餐" });
         const parentClose = tableDialog.getByRole("button", { name: "关闭", exact: true });
@@ -68,7 +68,7 @@ for (const build of ["development", "production"]) {
 
     for (const helpButton of [".help-button"]) {
       test(`Help cancels an in-flight table arrival (${helpButton})`, async ({ page, isMobile }, info) => {
-        await page.getByRole("button", { name: /^4桌 / }).click();
+        await page.getByRole("group", { name: "今日客人", exact: true }).getByRole("button", { name: /^4桌 / }).click();
         await expect(page.locator(".world-footer")).toContainText("走过去");
         await page.locator(helpButton).click();
         const help = page.getByRole("dialog", { name: "怎么玩" });
@@ -79,7 +79,7 @@ for (const build of ["development", "production"]) {
         await expect(page.getByRole("dialog", { name: "4桌点餐" })).toHaveCount(0);
         await page.screenshot({ path: `output/playwright/0025/${info.project.name}-${build}-${helpButton.includes("world-footer") ? "footer" : "header"}-help-stable.png`, fullPage: true });
         await page.keyboard.press("Escape");
-        await page.getByRole("button", { name: /^4桌 / }).click();
+        await page.getByRole("group", { name: "今日客人", exact: true }).getByRole("button", { name: /^4桌 / }).click();
         await expect(page.getByRole("dialog", { name: "4桌点餐" })).toBeVisible();
       });
     }
@@ -115,7 +115,7 @@ test("receipt word targets are at least 44px and restore focus", async ({ page }
     const total = order.items.reduce((sum, item) => sum + hooks.content.foods.find(food => food.id === item.foodId)!.price * item.quantity, 0);
     hooks.dispatch({ type: "pay", table: 1, change: order.paid - total });
   });
-  await page.getByRole("button", { name: /^1桌 / }).click();
+  await page.getByRole("group", { name: "今日客人", exact: true }).getByRole("button", { name: /^1桌 / }).click();
   const receiptWords = page.locator(".receipt button");
   await expect(receiptWords.first()).toBeVisible();
   for (const button of await receiptWords.all()) {
@@ -133,7 +133,7 @@ test("receipt word targets are at least 44px and restore focus", async ({ page }
 test("kitchen, tray, and journal word cards restore their own triggers", async ({ page }) => {
   await page.goto("/?test=1&seed=42");
   await page.getByRole("button", { name: "开门迎客" }).click();
-  await page.getByRole("button", { name: /^1桌 / }).click();
+  await page.getByRole("group", { name: "今日客人", exact: true }).getByRole("button", { name: /^1桌 / }).click();
   await page.getByRole("button", { name: "去厨房", exact: true }).click();
   const kitchen = page.getByRole("dialog", { name: "厨房" });
   const kitchenWord = kitchen.locator(".food-listen").first();

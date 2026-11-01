@@ -134,7 +134,7 @@ test("walking connects a keyboard position beside a table without stalling", asy
 test("browser saves and reloads a looked-up word", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: "开门迎客" }).click();
-  await page.getByRole("button", { name: /^1桌 / }).click();
+  await page.getByRole("group", { name: "今日客人", exact: true }).getByRole("button", { name: /^1桌 / }).click();
   await expect(page.locator(".spoken .word").first()).toBeVisible();
   const word = await page.locator(".spoken .word").first().innerText();
   await page.locator(".spoken .word").first().click();

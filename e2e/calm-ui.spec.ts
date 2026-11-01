@@ -34,6 +34,7 @@ for (const viewport of [
     await page.mouse.move(0, 0);
     await expect(page.locator("main .primary")).toHaveCount(1);
     await expect(page.locator(".customer-row")).toHaveCount(4);
+    await expect(page.locator(".next-action")).toHaveAccessibleName("1桌 · 听点餐");
     await expect(page.locator(".tray-section")).toContainText("0 / 6");
     await expect(page.locator(".help-button")).toBeVisible();
     const scene = await page.getByTestId("restaurant-scene").boundingBox();
@@ -69,6 +70,7 @@ for (const viewport of [
     await page.keyboard.press("Escape");
     await expect(page.locator(".next-action")).toBeFocused();
     await expect(page.locator(".next-action")).toHaveText("去厨房取餐→");
+    await expect(page.locator(".next-action")).toHaveAccessibleName("去厨房取餐");
     for (const food of foodNames) await expect(page.locator("main")).not.toContainText(food);
     await page.locator(".next-action").click();
     const kitchen = page.getByRole("dialog", { name: "厨房" });
@@ -77,6 +79,7 @@ for (const viewport of [
     await kitchen.getByRole("button", { name: "端好了，去上菜" }).click();
     await expect(page.locator(".tray-item")).toHaveCount(6);
     await expect(page.locator(".next-action")).toHaveText("1桌 · 上菜→");
+    await expect(page.locator(".next-action")).toHaveAccessibleName("1桌 · 上菜");
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.mouse.move(0, 0);
     await page.screenshot({ path: `output/playwright/0028/${viewport.name}-full-tray.png`, fullPage: true, scale: "css" });
@@ -101,7 +104,7 @@ test("the next service action follows the last visited waiting table without che
   await page.goto("/?test=1&seed=42");
   await page.getByRole("button", { name: "开门迎客" }).click();
   for (const table of [1, 4]) {
-    await page.getByRole("button", { name: new RegExp(`^${table}桌 `) }).click();
+    await page.getByRole("group", { name: "今日客人", exact: true }).getByRole("button", { name: new RegExp(`^${table}桌 `) }).click();
     await expect(page.getByRole("dialog", { name: `${table}桌点餐` })).toBeVisible();
     await page.keyboard.press("Escape");
   }
@@ -125,4 +128,30 @@ test("reduced motion keeps disclosures and scene navigation usable", async ({ pa
   await page.locator(".next-action").click();
   await expect(page.getByRole("dialog", { name: "1桌点餐" })).toBeVisible();
   await page.screenshot({ path: "output/playwright/0028/reduced-motion-dialogue.png", scale: "css" });
+});
+
+test("primary action names the checkout phase", async ({ page }) => {
+  await page.goto("/?test=1&seed=42");
+  await page.getByRole("button", { name: "开门迎客" }).click();
+  await page.locator(".next-action").click();
+  await expect(page.getByRole("dialog", { name: "1桌点餐" })).toBeVisible();
+  await page.keyboard.press("Escape");
+  await page.locator(".next-action").click();
+  const kitchen = page.getByRole("dialog", { name: "厨房" });
+  const foods = await page.evaluate(() => {
+    const hooks = (window as Window & { __TEST__?: { content: Content; getState: () => GameState } }).__TEST__!;
+    const order = hooks.content.orders.find(entry => entry.id === hooks.getState().customers[0].orderId)!;
+    return order.items.map(item => ({ name: hooks.content.foods.find(food => food.id === item.foodId)!.word.hanzi, quantity: item.quantity }));
+  });
+  for (const food of foods) {
+    for (let i = 0; i < food.quantity; i++) await kitchen.getByRole("button", { name: `拿${food.name}`, exact: true }).click();
+  }
+  await kitchen.getByRole("button", { name: "端好了，去上菜" }).click();
+  await page.getByRole("button", { name: "1桌 · 上菜", exact: true }).click();
+  await expect(page.getByRole("dialog", { name: "1桌点餐" })).toBeVisible();
+  await page.getByRole("button", { name: "上菜", exact: false }).last().click();
+  await page.keyboard.press("Escape");
+  await expect(page.locator(".next-action")).toHaveAccessibleName("1桌 · 找零");
+  await page.getByRole("button", { name: "1桌 · 找零", exact: true }).click();
+  await expect(page.getByRole("button", { name: "递上找零" })).toBeVisible();
 });
