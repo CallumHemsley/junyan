@@ -36,3 +36,11 @@ Under decision 0001 the audio carries the tones, so voice quality is core, not p
 - User steered toward local open source models. Cancelled API-provider prep; tickets 0016–0017 cover real Qwen3-TTS and Kokoro synthesis on this Mac without API keys.
 
 - Kokoro delivered: 40 real local WAVs, two voices × twenty lines. Integrated generator commit `7658d4e`; independently decoded WAVs, verified hashes/corpus, silence/clipping limits and built a provider-blind standalone listening page plus CSV export under `output/voice-samples/review/`. JavaScript syntax and CSV Unicode/escaping checks passed. Native listening is still pending; known G2P concerns remain in the provider README. Qwen generation is still in progress.
+
+### Local sample pack delivered — 2026-11-01
+
+- Complete audition: 80 authentic clips, 20 shared lines × four stock voices across Qwen3-TTS 0.6B CustomVoice 4-bit and Kokoro82M. All generated on this Mac without provider keys or paid calls.
+- Qwen runner integrated from `ae3ef1240f3005f1e26f0062f0a3d4da944bec6a`. Model revision and per-take retries remain in original provenance.
+- `output/voice-samples/review/listen.html` embeds every clip, works offline, uses anonymous labels A–D, rotates presentation order, and exports Chinese reviewers' scores as CSV. `reviewer-pack.zip` omits the organizer identity key. Earlier Kokoro A/B labels retained.
+- Independent packaging checks: original hashes/transcripts/complete voice sets; all 80 embedded mono PCM16 24 kHz WAVs decoded; durations, finite/silent/clipped samples; malformed/float WAV conversion checks; JavaScript syntax; 80-row scoring sheet; ZIP integrity and key exclusion. Float32 Qwen originals are preserved; review copies are PCM16 without gain adjustment. No browser interaction test was run.
+- Native listening, corrected pronunciation, casting and production provider choice remain open. Keep ticket doing until native results are recorded; samples do not replace approved game audio.

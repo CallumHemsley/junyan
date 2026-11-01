@@ -8,6 +8,8 @@ import base64
 import csv
 import hashlib
 import html
+import io
+import math
 import json
 from pathlib import Path
 import struct
@@ -17,6 +19,48 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[2]
 
 
+def prepare_audio(data):
+    """Validate original PCM16/float32 WAV and encode browser-safe PCM16 without gain."""
+    if data[:4] != b'RIFF' or data[8:12] != b'WAVE':
+        raise ValueError('Expected RIFF WAV')
+    offset, fmt, payload = 12, None, None
+    while offset + 8 <= len(data):
+        name, size = struct.unpack_from('<4sI', data, offset)
+        start = offset + 8
+        if start + size > len(data):
+            raise ValueError('Truncated WAV chunk')
+        if name == b'fmt ':
+            if size < 16:
+                raise ValueError('Invalid WAV format chunk')
+            fmt = struct.unpack_from('<HHIIHH', data, start)
+        elif name == b'data':
+            payload = data[start:start + size]
+        offset = start + size + size % 2
+    if fmt is None or payload is None:
+        raise ValueError('Missing WAV format/audio')
+    kind, channels, rate, byte_rate, alignment, bits = fmt
+    if channels != 1 or rate != 24000 or (kind, bits) not in [(1, 16), (3, 32)]:
+        raise ValueError('Expected mono PCM16 or float32 WAV at 24 kHz')
+    width = bits // 8
+    if alignment != width or byte_rate != rate * width or len(payload) % width:
+        raise ValueError('Invalid WAV frame alignment')
+    values = struct.unpack('<' + str(len(payload) // width) + ('h' if kind == 1 else 'f'), payload)
+    samples = [value / 32768 if kind == 1 else value for value in values]
+    if not samples or not all(math.isfinite(v) for v in samples):
+        raise ValueError('Empty or nonfinite WAV')
+    peak = max(map(abs, samples))
+    if not 0.2 <= len(samples) / rate <= 30 or peak < 4 / 32768 or peak >= 32767 / 32768:
+        raise ValueError('Silent, clipped or invalid-duration WAV')
+    if kind == 1:
+        return data
+    pcm = struct.pack('<' + str(len(samples)) + 'h', *(round(v * 32768) for v in samples))
+    output = io.BytesIO()
+    with wave.open(output, 'wb') as wav:
+        wav.setparams((1, 2, rate, 0, 'NONE', 'not compressed'))
+        wav.writeframes(pcm)
+    return output.getvalue()
+
+
 def read_clips(manifest_paths, lines):
     variants = {}
     for manifest_path in manifest_paths:
@@ -24,7 +68,7 @@ def read_clips(manifest_paths, lines):
         if manifest.get('complete') is not True:
             raise ValueError(f'Incomplete generation: {manifest_path}')
         for clip in manifest['clips']:
-            line_id, voice = clip['line_id'], clip['voice']
+            line_id, voice = clip.get('line_id', clip.get('id')), clip['voice']
             if line_id not in lines or clip['text'] != lines[line_id]['text']:
                 raise ValueError('Audio transcript does not match shared corpus')
             path = (manifest_path.parent / clip['filename']).resolve()
@@ -33,12 +77,7 @@ def read_clips(manifest_paths, lines):
             data = path.read_bytes()
             if hashlib.sha256(data).hexdigest() != clip['sha256']:
                 raise ValueError(f'Audio hash mismatch: {path.name}')
-            with wave.open(str(path), 'rb') as wav:
-                if (wav.getnchannels(), wav.getsampwidth(), wav.getframerate()) != (1, 2, 24000):
-                    raise ValueError('Expected mono PCM16 WAV at 24 kHz')
-                samples = struct.unpack('<' + str(wav.getnframes()) + 'h', wav.readframes(wav.getnframes()))
-                if not samples or max(map(abs, samples)) < 4 or max(map(abs, samples)) >= 32767:
-                    raise ValueError('Empty, silent or clipped WAV')
+            data = prepare_audio(data)
             key = (manifest['model_id'], voice)
             group = variants.setdefault(key, {'manifest': str(manifest_path), 'clips': {}})
             if line_id in group['clips']:
@@ -72,7 +111,7 @@ def build(manifest_paths, output):
     assert list(lines) == [f'T{i:02}' for i in range(1, 21)]
     variants = read_clips(manifest_paths, lines)
     # Stable opaque voice labels. Model and voice identifiers stay in a separate organizer key.
-    order = sorted(variants, key=lambda key: hashlib.sha256('|'.join(key).encode()).hexdigest())
+    order = sorted(variants, key=lambda key: (key[0], hashlib.sha256('|'.join(key).encode()).hexdigest()))
     labels = {key: chr(65 + i) for i, key in enumerate(order)}
     pack_id = hashlib.sha256(json.dumps([(key, hashlib.sha256(variants[key]['clips']['T01']).hexdigest()) for key in order]).encode()).hexdigest()[:16]
     sections = []
@@ -96,9 +135,9 @@ def build(manifest_paths, output):
         for line_id, line in lines.items():
             for key in order:
                 writer.writerow(['', line_id, line['text'], labels[key], '', '', '', ''])
-    answer = {labels[key]: {'model':key[0], 'voice':key[1], 'manifest':variants[key]['manifest']} for key in order}
+    answer = {labels[key]: {'model':key[0], 'voice':key[1], 'manifest':variants[key]['manifest'], 'review_encoding':'PCM16 at 24 kHz; float32 sources quantized without gain changes'} for key in order}
     (output / 'organizer-key.json').write_text(json.dumps(answer, ensure_ascii=False, indent=2)+'\n')
-    (output / 'README.txt').write_text('Open listen.html in a browser. It contains all audio and works offline. Send listen.html to reviewers; keep organizer-key.json separate until scores are submitted. Export the CSV to return scores. No native pronunciation approval is implied.\n')
+    (output / 'README.txt').write_text('Open listen.html in a browser. It contains all audio and works offline. Send listen.html to reviewers; keep organizer-key.json separate until scores are submitted. Export the CSV to return scores. Audio is presented as mono PCM16 at 24 kHz; float32 sources were quantized without gain or loudness normalization. No native pronunciation approval is implied.\n')
     with zipfile.ZipFile(output / 'reviewer-pack.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
         for name in ['listen.html', 'review-sheet.csv', 'README.txt']:
             archive.write(output / name, name)
