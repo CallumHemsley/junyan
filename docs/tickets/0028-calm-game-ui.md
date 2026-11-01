@@ -22,6 +22,6 @@ Callum finds the information around the restaurant overwhelming and explicitly r
 ## Notes
 
 - Reserved centrally by parent on `codex/0018-character-voices`; owner Sol 6.1 medium implementation worker in an isolated worktree.
-- Audio orchestrator is still working on playback lifecycle in `src/App.tsx`; UI ownership is limited to layout/markup/styles and disclosure state. Preserve the existing playback wrapper and effects, save loader, movement logic and fixed focus/inert/one-layer Escape behavior.
-- Baseline includes tickets 0025/0026/0027 and accepted renderer 0022. Use strict isolated ports 5191 (dev) / 5192 (preview). All browser launches must be explicitly silent, without changing system volume.
+- The reviewed audio fix is now integrated in `src/App.tsx` and `src/audio/playback.ts`; UI ownership is limited to layout/markup/styles and disclosure state. Preserve the existing playback wrapper and effects, save loader, movement logic and fixed focus/inert/one-layer Escape behavior.
+- Baseline includes tickets 0025/0026/0027, accepted renderer 0022 and reviewed audio lifecycle 0021. Use strict isolated ports 5191 (dev) / 5192 (preview). All browser launches must be explicitly silent, without changing system volume.
 - Cross-review and parent integration required before publication. Do not push, open a PR or deploy.
