@@ -84,16 +84,9 @@ export default function App() {
   useEffect(() => {
     if (testMode) return;
     let cancelled = false;
-    loadGame()
+    loadGame(content)
       .then((saved) => {
-        if (
-          !cancelled &&
-          saved &&
-          saved.customers.every((c) =>
-            content.orders.some((o) => o.id === c.orderId),
-          ) &&
-          saved.tray.every((id) => content.foods.some((f) => f.id === id))
-        )
+        if (!cancelled && saved)
           setState(saved);
       })
       .catch(() => setSaveError(true))
