@@ -346,7 +346,12 @@ describe("determinism, journal and content safety", () => {
     for (const wordId of ["greeting-only", "thanks-only", "retry-only"]) {
       state = reduceGame(state, {type: "lookup", wordId, now: 123}, withCharacters);
       expect(state.journal[wordId]).toEqual({lookups: 1, lastSeen: 123});
+      state = reduceGame(state, {type: "lookup", wordId, now: 456}, withCharacters);
+      expect(state.journal[wordId]).toEqual({lookups: 2, lastSeen: 456});
     }
+    const nextDay = reduceGame(finishDay(state), {type: "next-day"}, withCharacters);
+    expect(nextDay.day).toBe(state.day + 1);
+    expect(nextDay.journal).toEqual(state.journal);
   });
 
   it("records only known words using injected timestamps and keeps the journal across days", () => {
