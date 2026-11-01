@@ -215,8 +215,11 @@ export default function App() {
         return;
       }
       if (
-        event.target instanceof HTMLElement &&
-        /INPUT|TEXTAREA|BUTTON/.test(event.target.tagName)
+        panel !== "none" ||
+        word ||
+        (event.target instanceof HTMLElement &&
+          (/INPUT|TEXTAREA|SELECT/.test(event.target.tagName) ||
+            event.target.isContentEditable))
       )
         return;
       const directions: Record<string, [number, number]> = {
@@ -243,6 +246,8 @@ export default function App() {
         });
       }
       if (event.key === " " || event.key.toLowerCase() === "e") {
+        if (event.key === " " && event.target instanceof HTMLButtonElement)
+          return;
         event.preventDefault();
         if (canVisitKitchen(stateRef.current)) visitKitchen();
         else {
@@ -253,7 +258,7 @@ export default function App() {
     };
     window.addEventListener("keydown", key);
     return () => window.removeEventListener("keydown", key);
-  }, [dispatch, visitTable, visitKitchen]);
+  }, [dispatch, visitTable, visitKitchen, panel, word]);
   useEffect(() => {
     if (!testMode) return;
     const hooks = {
@@ -584,7 +589,7 @@ export default function App() {
                 ) : customer.phase === "checkout" ? (
                   <>
                     <p className="checkout-title">
-                      一共 {total}块，给你 {order.paid}块。
+                      共 {total}块 · 收到 {order.paid}块
                     </p>
                     <p className="subtle">找零</p>
                     <div className="change-display">
@@ -639,7 +644,7 @@ export default function App() {
                 <h2>刚才，客人点了什么？</h2>
                 <p className="subtle">
                   {state.customers.some((c) => c.phase === "ordered")
-                    ? "点菜放上托盘，最多六份。"
+                    ? "一次先送一桌，托盘最多六份。"
                     : "先去桌边，听听客人点什么。"}
                 </p>
                 <div className="food-grid">
