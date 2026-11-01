@@ -67,3 +67,9 @@ git diff --check
 - Review limits: eight sampled yaw directions, not continuous-angle proof; Chromium emulation only, without real-hardware, WebKit or Firefox coverage; no ticket 0028 integration verification. These limits remain explicit despite acceptance.
 - Learned: connected, overlapping crown/temple geometry avoids exposed scalp and detached hair lumps. Larger eyes need to sit within cheek depth and be checked at rear-quarter angles, not only straight rear. Exact isolated elder geometry and RGBA comparisons prove exclusion without conflating changes to neighbouring characters.
 - Finalization changes only this ticket; production geometry remains at the accepted implementation. No expensive tests rerun for this documentation-only update. Owned dev/preview servers were stopped at implementation handoff; no servers started for finalization. No root writes, push, PR, merge or deployment.
+
+## Parent integration
+
+- Integrated accepted geometry and review record with ticket 0028's calmer UI and its resolved accessible-name finding. Parent independently regenerated all paired cast evidence and the silent turntable; the helper's elder geometry/RGBA and rear-eye assertions pass. Native and enlarged heads, plus final desktop/phone scenes, were visually inspected.
+- Combined source verification: 88 unit tests and production build pass; all 23 muted integration browser checks pass (calmer UI, accessible service phases, full customer/change/journal journeys, saved word reload, production offline audio and reduced-motion pixel stability). The audio implementation and content are unchanged by this art integration; the preceding UI integration passed all 18 native Chromium/WebKit audio regressions.
+- Root evidence: `output/playwright/final-release/` (ignored). Publication is recorded in ticket 0020. All captures/tests remained silent; no physical-device or Mandarin pronunciation approval is claimed.
