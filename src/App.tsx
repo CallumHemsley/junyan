@@ -170,7 +170,7 @@ export default function App() {
           play(order.line.audio);
       };
       if (isNear(stateRef.current.player, target)) open();
-      else walk({ x: target.x, y: Math.min(10, target.y + 1.3) }, open);
+      else walk({ x: target.x + 1.4, y: target.y }, open);
     },
     [dispatch, play, walk],
   );

@@ -84,7 +84,7 @@ function startDay(content: Content, seed: number, day: number): GameState {
     seed,
     day,
     level,
-    player: { ...KITCHEN },
+    player: { x: KITCHEN.x, y: KITCHEN.y + 1.5 },
     customers,
     tray: [],
     served: 0,
