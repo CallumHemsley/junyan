@@ -33,6 +33,12 @@ export type Character = {
   retry: Line;
 };
 export type Content = {
+  help: {
+    welcome: Line;
+    lookup: Line;
+    steps: { id: "order" | "kitchen" | "deliver"; line: Line }[];
+    pace: Line;
+  };
   characters: Character[];
   foods: Food[];
   orders: Order[];

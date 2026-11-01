@@ -532,36 +532,46 @@ export default function App() {
               ×
             </button>
             {panel === "help" && (
-              <>
-                <p className="eyebrow">欢迎来小馆</p>
-                <h2>早安，今天你来招呼。</h2>
-                <div className="help-steps">
-                  <p>
-                    <b>一</b>
-                    <span>
-                      走到桌边，听客人点餐。<small>点桌子就会走过去。</small>
-                    </span>
-                  </p>
-                  <p>
-                    <b>二</b>
-                    <span>
-                      记住菜名，去厨房取餐。
-                      <small>点一下汉字，听一听、看一看。</small>
-                    </span>
-                  </p>
-                  <p>
-                    <b>三</b>
-                    <span>
-                      把早饭送对桌，再找零。
-                      <small>每天四桌，菜会慢慢变多。</small>
-                    </span>
-                  </p>
-                </div>
+              <div className="learning-help">
+                {[content.help.welcome, content.help.lookup].map((line) => (
+                  <div className="help-line" key={line.id}>
+                    {tokens(line)}
+                    <button className="round-button" aria-label={`听${line.tokens.map((token) => token.hanzi).join("")}`} onClick={() => play(line.audio)}><Speaker /></button>
+                  </div>
+                ))}
+                <ol className="learning-help-steps">
+                  {content.help.steps.map((step, index) => (
+                    <li key={step.id} data-help-step={step.id}>
+                      <span className="help-step-number" aria-hidden="true">{["一", "二", "三"][index]}</span>
+                      <svg className="help-picture" viewBox="0 0 240 76" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        {step.id === "order" ? <>
+                          <circle cx="35" cy="17" r="9" /><path d="M20 42q0-18 15-18t15 18M12 46h66M22 46v22m45-22v22" />
+                          <path d="M60 15h53v26H86l-10 9v-9H60zM125 39h25m-7-7 7 7-7 7M164 19h54v39h-54zM174 30h34m-34 10h25m-25 10h30" />
+                          <path d="m47 70-6-10q-3-6 1-6l6 5V42q0-5 5-3v17l8-2q5 0 5 5v11" />
+                        </> : step.id === "kitchen" ? <>
+                          <path d="M12 46h81v21H12zM20 46V28h64v18M18 28q34-25 68 0M35 14q-5-5 0-10m16 9q-5-5 0-10m16 11q-5-5 0-10M108 39h25m-7-7 7 7-7 7M151 56h77l-8 10h-61z" />
+                          <ellipse cx="178" cy="43" rx="17" ry="12" /><path d="M165 41q13-22 26 0m-15-9 2 10M205 29h15l-2 25h-11z" />
+                        </> : <>
+                          <path d="M8 42h65l-7 10H15zM18 41q0-20 20-20t20 20M30 23l8 10 8-10M85 39h22m-7-7 7 7-7 7M122 50h64m-55 0v18m46-18v18" />
+                          <ellipse cx="152" cy="42" rx="17" ry="6" /><circle cx="169" cy="14" r="8" /><path d="M157 32q0-11 12-11t12 11M204 13v20m-5-7 5 7 5-7" />
+                          <circle cx="204" cy="46" r="10" /><circle cx="220" cy="61" r="10" /><path d="M201 43h6m-6 6h6m10 9h6m-6 6h6" />
+                        </>}
+                      </svg>
+                      <div className="help-line">
+                        {tokens(step.line)}
+                        <button className="round-button" aria-label={`听${step.line.tokens.map((token) => token.hanzi).join("")}`} onClick={() => play(step.line.audio)}><Speaker /></button>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
                 <button className="primary" onClick={close}>
                   开门迎客 <span>→</span>
                 </button>
-                <p className="help-foot">没有倒计时，慢慢听就好。</p>
-              </>
+                <div className="help-line">
+                  {tokens(content.help.pace)}
+                  <button className="round-button" aria-label="听慢慢来" onClick={() => play(content.help.pace.audio)}><Speaker /></button>
+                </div>
+              </div>
             )}
             {panel === "table" && order && customer && character && (
               <>
@@ -787,7 +797,6 @@ export default function App() {
             />
           )}
           <p className="pinyin">{word.pinyin}</p>
-          <p className="gloss">{word.gloss}</p>
         </div>
       )}
       {dayEndOpen && (

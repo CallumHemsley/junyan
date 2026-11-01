@@ -479,6 +479,46 @@ kbd {
   font-size: 12px;
   margin: 16px 0 0;
 }
+.learning-help {
+  padding-top: 24px;
+}
+.learning-help .help-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.learning-help .spoken {
+  flex: 1;
+  min-width: 0;
+  font-size: 28px;
+  margin: 8px 0;
+}
+.learning-help .round-button {
+  flex-shrink: 0;
+}
+.learning-help-steps {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+.learning-help-steps li {
+  position: relative;
+  padding: 12px 0;
+  border-top: 1px solid var(--hairline);
+}
+.learning-help .help-step-number {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  font-family: var(--font-serif);
+}
+.learning-help .help-picture {
+  display: block;
+  width: min(100%, 280px);
+  height: 64px;
+  margin: auto;
+  color: var(--text-secondary);
+}
 .dialogue-heading {
   display: flex;
   align-items: center;

@@ -388,6 +388,16 @@ def self_check():
     assert len(jobs) == 4
     assert all(job["voice"]["speaker"] == "Serena" for job in jobs if job["kind"] == "word")
     assert len(next(job for job in jobs if job["voice"]["speaker"] == "Uncle_Fu")["targets"]) == 4
+    with_help = copy.deepcopy(content)
+    help_word = {"id": "table", "hanzi": "桌子", "pinyin": "zhuōzi", "audio": "/old.wav"}
+    with_help["help"] = {"steps": [{"id": "order", "line": {
+        "id": "help-order", "tokens": [help_word], "audio": "/old-line.wav"}}]}
+    help_jobs = collect_jobs(with_help, config)
+    original_names = {job["filename"] for job in jobs}
+    assert original_names <= {job["filename"] for job in help_jobs}
+    added = [job for job in help_jobs if job["filename"] not in original_names]
+    assert len(added) == 2 and {job["kind"] for job in added} == {"line", "word"}
+    assert all(job["voice"] == config["voices"][config["wordVoice"]] for job in added)
     for field, value in (("speaker", "Other"), ("revision", "b" * 40), ("instructions", "Warm"),
                          ("model", "test/other"), ("language", "auto"), ("extra", "future-setting")):
         changed = copy.deepcopy(config)

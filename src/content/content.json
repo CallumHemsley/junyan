@@ -1,4 +1,186 @@
 {
+  "help": {
+    "welcome": {
+      "id": "help-welcome",
+      "tokens": [
+        {
+          "id": "good-morning",
+          "hanzi": "早上好",
+          "pinyin": "zǎoshang hǎo",
+          "gloss": "good morning",
+          "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+        }
+      ],
+      "audio": "/audio/line-8a50ca14f11eee0701d2721f2dc27ce9ed97cb9428e6cb711ca0b77a3f8bdda2.wav"
+    },
+    "lookup": {
+      "id": "help-lookup",
+      "tokens": [
+        {
+          "id": "tap",
+          "hanzi": "点",
+          "pinyin": "diǎn",
+          "gloss": "tap",
+          "audio": "/audio/word-0d57aff14239ab09fcb2d467b7c121c9b4588b2a3ff94e8f476741d484a5d83b.wav"
+        },
+        {
+          "id": "characters",
+          "hanzi": "汉字",
+          "pinyin": "hànzì",
+          "gloss": "Chinese characters",
+          "audio": "/audio/word-067b16166eac3745fd761c516e1accb491e6139a18c14612db73127864379f2e.wav"
+        },
+        {
+          "id": "listen-a-little",
+          "hanzi": "听一听",
+          "pinyin": "tīng yi tīng",
+          "gloss": "listen",
+          "audio": "/audio/word-d62a07dc86a5a5918b3c414219d24eb339d31806b04f60bb0127520d6ad3a093.wav"
+        }
+      ],
+      "audio": "/audio/line-fc19ef54dce936e1433f83c0b200baa6260cfa42633d92ebb5921ca0e40407bd.wav"
+    },
+    "steps": [
+      {
+        "id": "order",
+        "line": {
+          "id": "help-order",
+          "tokens": [
+            {
+              "id": "tap",
+              "hanzi": "点",
+              "pinyin": "diǎn",
+              "gloss": "tap",
+              "audio": "/audio/word-0d57aff14239ab09fcb2d467b7c121c9b4588b2a3ff94e8f476741d484a5d83b.wav"
+            },
+            {
+              "id": "table",
+              "hanzi": "桌子",
+              "pinyin": "zhuōzi",
+              "gloss": "table",
+              "audio": "/audio/word-526c55e9729de39d0be36dab6d84afdbcd1450f29ab2f9ede22d7eea165cab0f.wav"
+            },
+            {
+              "id": "listen",
+              "hanzi": "听",
+              "pinyin": "tīng",
+              "gloss": "listen",
+              "audio": "/audio/word-a8b213f08f35df6edd2291efa7dbb6fe6bbe2aee73b7f644e4301fbd3560ad19.wav"
+            },
+            {
+              "id": "customer",
+              "hanzi": "客人",
+              "pinyin": "kèrén",
+              "gloss": "customer",
+              "audio": "/audio/word-d63567585486c5e4413e93dd743d7879e578ede09e94944a1f43addc3c14281b.wav"
+            },
+            {
+              "id": "order",
+              "hanzi": "点餐",
+              "pinyin": "diǎncān",
+              "gloss": "order food",
+              "audio": "/audio/word-483dd271859bd652c1d85af9732812b5ea2c212a3dd091ee2267a43c48380b0e.wav"
+            }
+          ],
+          "audio": "/audio/line-1508a51cd25f86a9a62cd303d4b04d0c692108da953f7c4e6c9df10a86c70e29.wav"
+        }
+      },
+      {
+        "id": "kitchen",
+        "line": {
+          "id": "help-kitchen",
+          "tokens": [
+            {
+              "id": "go",
+              "hanzi": "去",
+              "pinyin": "qù",
+              "gloss": "go",
+              "audio": "/audio/word-3a4103f578e96269384daedcdb02cb62801509c742311c1b0994ff760d10dca1.wav"
+            },
+            {
+              "id": "kitchen",
+              "hanzi": "厨房",
+              "pinyin": "chúfáng",
+              "gloss": "kitchen",
+              "audio": "/audio/word-f05bcc2728792738ac336702ecf842dda6c5754cdfa9213072681f557913d7cc.wav"
+            },
+            {
+              "id": "take",
+              "hanzi": "拿",
+              "pinyin": "ná",
+              "gloss": "take",
+              "audio": "/audio/word-7b7768ff4a48d7df024147e19292627da83001c01537964166bb6d51ebb54bde.wav"
+            },
+            {
+              "id": "breakfast",
+              "hanzi": "早饭",
+              "pinyin": "zǎofàn",
+              "gloss": "breakfast",
+              "audio": "/audio/word-f656bbb93f1fdc2e8afc895cadb0593bd86e1645dacaae14142350c626160181.wav"
+            }
+          ],
+          "audio": "/audio/line-7fe068331b80b55ec10456fed3cdeeeaeca25df08e6acc901a293f33aa0afe81.wav"
+        }
+      },
+      {
+        "id": "deliver",
+        "line": {
+          "id": "help-deliver",
+          "tokens": [
+            {
+              "id": "deliver",
+              "hanzi": "送",
+              "pinyin": "sòng",
+              "gloss": "deliver",
+              "audio": "/audio/word-2b6c14460f897f84e9ef0e7bb140f991a3784a5035770bf109269857b3025b93.wav"
+            },
+            {
+              "id": "breakfast",
+              "hanzi": "早饭",
+              "pinyin": "zǎofàn",
+              "gloss": "breakfast",
+              "audio": "/audio/word-f656bbb93f1fdc2e8afc895cadb0593bd86e1645dacaae14142350c626160181.wav"
+            },
+            {
+              "id": "again",
+              "hanzi": "再",
+              "pinyin": "zài",
+              "gloss": "again",
+              "audio": "/audio/word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav"
+            },
+            {
+              "id": "change",
+              "hanzi": "找零",
+              "pinyin": "zhǎolíng",
+              "gloss": "give change",
+              "audio": "/audio/word-3647a485267e27a7574198c14f39c9b2dbf047afbc6e7af215041dd84fde054f.wav"
+            }
+          ],
+          "audio": "/audio/line-287527b509cccc924e07b910b24b5b46e95e928647682f5878b973d1107d069b.wav"
+        }
+      }
+    ],
+    "pace": {
+      "id": "help-pace",
+      "tokens": [
+        {
+          "id": "slowly",
+          "hanzi": "慢慢",
+          "pinyin": "mànmàn",
+          "gloss": "slowly",
+          "audio": "/audio/word-ef14b361f5b6171148b04fadee9960e934852b8c33a59e67f44a79c0546f6ba3.wav"
+        },
+        {
+          "id": "bring",
+          "hanzi": "来",
+          "pinyin": "lái",
+          "gloss": "bring; come",
+          "audio": "/audio/word-ed529f5d1bf010905a815ac250dc4c043f1f704e66accb8731753957b1971f28.wav"
+        }
+      ],
+      "audio": "/audio/line-4abd953c59583664de17321ace200c06b8fbfc764e76f43bd3493319e99929a4.wav"
+    }
+  },
   "foods": [
     {
       "id": "bun",

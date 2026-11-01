@@ -87,6 +87,12 @@ Every dictionary word, including all nested line tokens and food words, uses
 `wordVoice`. Legacy top-level `thanks`/`retry` lines use `wordVoice`. Recursive
 walking discovers additional nested words/lines without changes to the script;
 objects with `tokens` are lines, objects with `id`/`hanzi`/`audio` are words.
+`help.welcome`, `help.lookup`, `help.steps[].line` and `help.pace` use that same
+shared narrator (currently Serena), including each presegmented dictionary word.
+Add Help content without changing `VERSION`: the recursive walker discovers it
+and retains existing clip identities. `contentWords` must enumerate Help tokens
+too so journal lookups survive saved-state validation. Glosses are authoring
+metadata only; the player sees Hanzi, tapped pinyin and food/sequence pictures.
 Identical text/preset/pronunciation within one asset kind deduplicates across
 all references. IDs and glosses are not spoken and do not invalidate audio.
 

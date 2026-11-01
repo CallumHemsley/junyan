@@ -48,6 +48,14 @@ const characterSchema: z.ZodType<Character> = z.strictObject({
 });
 
 export const contentSchema = z.strictObject({
+  help: z.strictObject({
+    welcome: lineSchema, lookup: lineSchema, pace: lineSchema,
+    steps: z.tuple([
+      z.strictObject({id: z.literal('order'), line: lineSchema}),
+      z.strictObject({id: z.literal('kitchen'), line: lineSchema}),
+      z.strictObject({id: z.literal('deliver'), line: lineSchema}),
+    ]),
+  }),
   characters: z.array(characterSchema).min(1),
   foods: z.array(foodSchema).min(1), orders: z.array(orderSchema).min(1),
   thanks: lineSchema, retry: lineSchema,

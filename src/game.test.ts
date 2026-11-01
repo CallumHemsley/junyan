@@ -19,6 +19,9 @@ const word: Word = {
 };
 const line = { id: "line", tokens: [word], audio: "/line.wav" };
 const content: Content = {
+  help: {welcome: line, lookup: line, pace: line, steps: [
+    {id: "order", line}, {id: "kitchen", line}, {id: "deliver", line},
+  ]},
   characters: [],
   foods: [
     { id: "bun", word, price: 2, kind: "bun" },

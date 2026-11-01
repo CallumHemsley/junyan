@@ -2,8 +2,11 @@ import { readFileSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { content, contentSchema, voices, voicesSchema } from './index';
+import { contentWords } from './words';
+import { createGame, reduceGame } from '../game';
 
 const lines = [...content.orders.map(order => order.line), content.thanks, content.retry,
+  content.help.welcome, content.help.lookup, content.help.pace, ...content.help.steps.map(step => step.line),
   ...content.characters.flatMap(c => [c.greeting, c.thanks, c.retry])];
 const words = [...content.foods.map(food => food.word), ...lines.flatMap(line => line.tokens)];
 
@@ -22,10 +25,27 @@ describe('offline Mandarin content', () => {
       (copy: typeof content) => { copy.characters.push(copy.characters[0]); },
       (copy: typeof content) => { copy.characters[0].voiceId = 'missing'; },
       (copy: typeof content) => { copy.orders[0].customer = '不存在'; },
+      (copy: typeof content) => { copy.help.lookup.tokens = []; },
+      (copy: typeof content) => { copy.help.steps.reverse(); },
+      (copy: typeof content) => { copy.help.pace.audio = 'https://example.com/help.wav'; },
     ]) {
       const copy = structuredClone(content);
       modify(copy);
       expect(contentSchema.safeParse(copy).success).toBe(false);
+    }
+  });
+
+  it('authors the complete help sequence and journals its vocabulary', () => {
+    expect(content.help.steps.map(step => [step.id, step.line.tokens.map(word => word.hanzi).join('')])).toEqual([
+      ['order', '点桌子听客人点餐'], ['kitchen', '去厨房拿早饭'], ['deliver', '送早饭再找零'],
+    ]);
+    const knownWords = contentWords(content);
+    for (const line of [content.help.welcome, content.help.lookup, content.help.pace, ...content.help.steps.map(step => step.line)]) {
+      for (const word of line.tokens) {
+        expect(knownWords).toContainEqual(word);
+        const state = reduceGame(createGame(content, 42), {type: 'lookup', wordId: word.id, now: 123}, content);
+        expect(state.journal[word.id]).toEqual({lookups: 1, lastSeen: 123});
+      }
     }
   });
 
@@ -129,7 +149,8 @@ describe('offline Mandarin content', () => {
       ...[character.greeting, character.thanks, character.retry],
       ...content.orders.filter(order => order.customer === character.name).map(order => order.line),
     ].map(line => ({entry: line, voiceId: character.voiceId, text: line.tokens.map(word => word.hanzi).join('')})));
-    expected.push(...[content.thanks, content.retry].map(line => ({entry: line, voiceId: voices.wordVoice, text: line.tokens.map(word => word.hanzi).join('')})));
+    expected.push(...[content.thanks, content.retry, content.help.welcome, content.help.lookup, content.help.pace,
+      ...content.help.steps.map(step => step.line)].map(line => ({entry: line, voiceId: voices.wordVoice, text: line.tokens.map(word => word.hanzi).join('')})));
     for (const {entry, voiceId, text} of expected) {
       expect(records.get(entry.audio)?.text).toBe(text);
       expect(records.get(entry.audio)?.voice).toEqual(voices.voices[voiceId]);
