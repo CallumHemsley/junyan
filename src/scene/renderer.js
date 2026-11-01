@@ -36,6 +36,118 @@ export function groundPosition(left, top) {
   return {x: Math.max(0, Math.min(12, (u+v)/R2+6)),
     y: Math.max(0, Math.min(10, (v-u)/R2+5))};
 }
+export const COLORS = {
+  cream: [245,232,202], jade: [111,154,134], ink: [48,43,42],
+  skin: [232,183,143], cheek: [208,149,117], hair: [65,48,39],
+  wood: [115,86,58], shoe: [66,68,65], brass: [190,157,97],
+};
+
+export function customerPose(phase, accessory) {
+  const served = phase === 'served', eating = phase === 'checkout' || served;
+  return {crouch:1.05,scale:.88,armR:eating?.85:.35,armL:.3,greeting:!eating,
+    lean:served?.1:accessory==='glasses'?.08:0};
+}
+
+export function characterFigure(px, py, yaw, pose, palette, addBone) {
+  const forwardX = Math.cos(yaw), forwardY = Math.sin(yaw);
+  const sideX = -forwardY, sideY = forwardX, scale = pose.scale || 1;
+  const base = pose.z || 0, seated = Boolean(pose.crouch), kind = palette.accessory || 'waiter';
+  const local = (forward, side, height) => [px + (forwardX*forward + sideX*side)*scale, py + (forwardY*forward + sideY*side)*scale, base + height*scale];
+  const bone = (start, end, startRadius, endRadius, color) => addBone(local(...start), local(...end), startRadius*scale, endRadius*scale, () => color);
+  const dot = (position, radius, color) => bone(position, position, radius, radius, color);
+  const skin = palette.skin || COLORS.skin, hair = palette.hair || COLORS.hair;
+  const shirt = palette.shirt || COLORS.cream, trousers = palette.legs || COLORS.shoe;
+  const hip = seated ? .76 : .92, shoulder = seated ? 1.47 : 1.59;
+  const headHeight = seated ? 1.97 : 2.09, lean = pose.lean || 0;
+  const headForward = .025 + lean*.65;
+  const stride = pose.stance || 0;
+  for (const side of [-1,1]) {
+    const footForward = seated ? .39 : stride*side;
+    bone([0,side*.17,hip],[seated?.36:footForward*.4,side*.19,seated?.46:.48],.19,.15,trousers);
+    bone([seated?.36:footForward*.4,side*.19,seated?.46:.48],[footForward,side*.19,.13],.15,.12,trousers);
+    bone([footForward-.035,side*.19,.12],[footForward+.20,side*.19,.10],.13,.115,COLORS.shoe);
+  }
+  bone([0,0,hip],[lean*.25,0,shoulder],kind==='bun'?.36:.32,kind==='bun'?.38:.35,shirt);
+  bone([headForward,0,shoulder+.02],[headForward,0,headHeight-.20],.13,.14,skin);
+  dot([headForward,0,headHeight],.37,skin);
+  dot([headForward+.12,0,headHeight-.035],.30,[239,191,152]);
+  for (const side of [-1,1]) dot([headForward-.015,side*.31,headHeight-.035],.085,skin);
+  if (kind === 'glasses') {
+    dot([headForward-.13,0,headHeight+.18],.31,hair);
+    bone([headForward+.12,-.22,headHeight+.27],[headForward+.20,.12,headHeight+.23],.14,.10,hair);
+    for (const side of [-1,1]) bone([headForward-.10,side*.27,headHeight+.10],[headForward-.08,side*.31,headHeight-.06],.12,.10,hair);
+  } else {
+    dot([headForward-.145,0,headHeight+.17],.30,hair);
+    bone([headForward+.10,-.22,headHeight+.27],[headForward+.20,.09,headHeight+.26],.13,.095,hair);
+    bone([headForward-.03,-.28,headHeight+.10],[headForward-.045,-.30,headHeight-.07],.11,.095,hair);
+    if (kind === 'bun') {
+      for (const side of [-1,1]) bone([headForward-.10,side*.255,headHeight+.06],[headForward-.16,side*.26,headHeight-.24],.14,.125,hair);
+      dot([headForward-.28,.18,headHeight+.34],.19,hair);
+      dot([headForward-.28,.18,headHeight+.40],.055,COLORS.jade);
+    }
+    if (kind === 'backpack') {
+      dot([headForward-.29,-.29,headHeight+.17],.16,hair);
+      bone([headForward-.28,-.29,headHeight+.12],[headForward-.40,-.43,headHeight-.19],.14,.10,hair);
+      dot([headForward-.28,-.29,headHeight+.17],.067,COLORS.brass);
+    }
+  }
+  for (const side of [-1,1]) {
+    dot([headForward+.367,side*.19,headHeight-.07],.06,COLORS.cheek);
+    if (kind === 'glasses') {
+      dot([headForward+.40,side*.135,headHeight+.04],.085,COLORS.wood);
+      dot([headForward+.45,side*.135,headHeight+.045],.059,[237,222,189]);
+      dot([headForward+.493,side*.13,headHeight+.04],.028,COLORS.ink);
+    } else {
+      dot([headForward+.402,side*.13,headHeight+.04],.038,COLORS.ink);
+      if (kind === 'tie') bone([headForward+.38,side*.10,headHeight+.145],[headForward+.365,side*.165,headHeight+.13],.021,.018,hair);
+    }
+  }
+  dot([headForward+.44,0,headHeight-.025],.055,skin);
+  bone([headForward+.40,-.055,headHeight-.14],[headForward+.42,0,headHeight-.155],.018,.021,[176,119,88]);
+  bone([headForward+.42,0,headHeight-.155],[headForward+.40,.055,headHeight-.14],.021,.018,[176,119,88]);
+  if (kind === 'glasses') bone([headForward+.42,-.07,headHeight+.045],[headForward+.42,.07,headHeight+.045],.023,.023,COLORS.wood);
+  if (kind === 'tie' || kind === 'glasses' || kind === 'bun') {
+    bone([.295,-.11,shoulder-.04],[.30,0,shoulder-.25],.073,.065,COLORS.cream);
+    bone([.295,.11,shoulder-.04],[.30,0,shoulder-.25],.073,.065,COLORS.cream);
+  }
+  if (kind === 'tie') bone([.35,0,shoulder-.20],[.34,0,shoulder-.49],.043,.055,COLORS.wood);
+  if (kind === 'bun') bone([.34,0,hip+.13],[.35,0,shoulder-.28],.18,.16,COLORS.cream);
+  if (kind === 'backpack') {
+    bone([-.29,0,hip+.07],[-.31,0,shoulder-.13],.29,.25,COLORS.brass);
+    for (const side of [-1,1]) bone([.08,side*.29,shoulder-.02],[.28,side*.25,hip+.13],.055,.055,COLORS.brass);
+  }
+  for (const side of [-1,1]) {
+    const wave = kind === 'backpack' && side === -1 && !pose.carry && pose.greeting !== false;
+    const arm = side === 1 ? pose.armR : pose.armL;
+    const lift = Math.sin(arm || 0);
+    const shoulderPoint = [lean*.25,side*.34,shoulder-.06];
+    const elbow = side===1 && pose.elbowR ? pose.elbowR : pose.carry ? [.26,side*.43,1.12] : wave ? [.12,side*.48,1.39] : [.13+lift*.22,side*.41,shoulder-.40+lift*.12];
+    const hand = side===1 && pose.handR ? pose.handR : pose.carry ? [.57,side*.34,1.22] : wave ? [.26,side*.49,1.74] : [seated?.50:.20,side*.38,arm == null ? (seated?1.20:1.00) : (seated?1.08:.90)+lift*.40];
+    bone(shoulderPoint,elbow,.16,.125,shirt);
+    dot(elbow,.132,COLORS.cream);
+    bone(elbow,hand,.105,.09,skin);
+    dot(hand,.12,skin);
+  }
+  if (pose.carry) {
+    bone([.28,0,.85],[.32,0,shoulder-.14],.245,.22,COLORS.jade);
+    bone([.45,-.12,1.12],[.45,.12,1.12],.035,.035,[160,190,165]);
+    for (const side of [-1,1]) bone([.03,side*.24,shoulder+.01],[.32,side*.18,shoulder-.30],.045,.045,COLORS.jade);
+    bone([-.30,-.17,1.12],[-.30,.17,1.12],.035,.035,COLORS.cream);
+  }
+  return {local,bone,dot,headHeight};
+}
+
+export function characterTray(rig, foods, addBox) {
+  const {bone,dot} = rig;
+  addBox([.43,-.43,1.245],[1.01,.43,1.30],COLORS.wood,rig.local);
+  for (const side of [-1,1]) bone([.43,side*.43,1.32],[1.01,side*.43,1.32],.035,.035,COLORS.brass);
+  for (const forward of [.43,1.01]) bone([forward,-.43,1.32],[forward,.43,1.32],.035,.035,COLORS.brass);
+  foods.slice(0,6).forEach((food,index) => {
+    const forward = .58+Math.floor(index/3)*.27, side=(index%3-1)*.26;
+    dot([forward,side,1.41],.12,COLORS.jade);
+    dot([forward+.005,side,1.46],.10,COLORS.cream);
+  });
+}
 export function createRenderer(canvas, tables, appearances = {}) {
 const W = WIDTH, H = HEIGHT, SHADOW_X = .7, SHADOW_Y = .3;
 canvas.width = W; canvas.height = H;
@@ -124,10 +236,10 @@ function capsule(a, b, r0, r1, colorOf, mode) {
     sphere(lerp(a[0], b[0], t), lerp(a[1], b[1], t), z, lerp(r0, r1, t), colorOf(z), mode);
   }
 }
-function box(x0, y0, z0, x1, y1, z1, c, seed = 0) {
+function box(x0, y0, z0, x1, y1, z1, c, seed = 0, transform = null) {
   const ramp = rampOf(c);
   const paint = (x, y, z, base, grain) => {
-    const p = project(x, y, z), ix = p.sx | 0, iy = p.sy | 0;
+    const p = project(...(transform ? transform(x,y,z) : [x,y,z])), ix = p.sx | 0, iy = p.sy | 0;
     if (ix < 0 || iy < 0 || ix >= W || iy >= H) return;
     const i = iy * W + ix;
     if (p.d <= zb[i]) return;
@@ -140,6 +252,11 @@ function box(x0, y0, z0, x1, y1, z1, c, seed = 0) {
   }
   for (let a = x0; a <= x1; a += step) for (let b = z0; b <= z1; b += step) paint(a, y1, b, 2.3, noise(a * .8 + seed, b * 9));
   for (let a = y0; a <= y1; a += step) for (let b = z0; b <= z1; b += step) paint(x1, a, b, 1.2, noise(a * .8 + seed, b * 9));
+  if (transform) {
+    for (let a = x0; a <= x1; a += step) for (let b = z0; b <= z1; b += step) paint(a, y0, b, 2.3, noise(a * .8 + seed, b * 9));
+    for (let a = y0; a <= y1; a += step) for (let b = z0; b <= z1; b += step) paint(x0, a, b, 1.2, noise(a * .8 + seed, b * 9));
+    for (let a = x0; a <= x1; a += step) for (let b = y0; b <= y1; b += step) paint(a, b, z0, 1.2, noise(a * .8 + seed, b * 9));
+  }
 }
 function castShadow(x, y, z, r, strength = 1, dither = .4) {
   const p = project(x + SHADOW_X * z, y + SHADOW_Y * z, 0);
@@ -181,48 +298,6 @@ function shadeEdges() {
   }
 }
 
-function figure(px, py, yaw, pose, palette, addBone) {
-  const fx = Math.cos(yaw), fy = Math.sin(yaw), sx = -fy, sy = fx, base = pose.z || 0, k = pose.scale || 1;
-  const P = (a, b, c) => [px + (fx * a + sx * b) * k, py + (fy * a + sy * b) * k, c * k + base];
-  const add = (a, b, r0, r1, f) => addBone(a, b, r0 * k, r1 * k, f);
-  const t = palette;
-  const shirt = z => (Math.floor(z * 3.2) % 2 ? t.shirt : t.stripe); // about 3px bands: thinner ones read as noise
-  const legs = () => t.legs, skin = () => t.skin;
-  const crouch = pose.crouch || 0, lean = pose.lean || 0;
-  const hipZ = 1.28 - crouch * .4;
-  const hipA = -crouch * .15;
-  const shA = hipA + Math.sin(lean) * .95, shZ = hipZ + Math.cos(lean) * .95;
-  const neck = P(shA, 0, shZ + .08), head = P(shA + Math.sin(lean) * .32, 0, shZ + .36);
-  const stance = pose.stance == null ? .2 : pose.stance;
-  const footB = P(-stance * 1.2, .2, .12), footF = P(stance * 2, -.2, .12);
-  const kneeB = P(-stance * .4 + crouch * .12, .22, .68 - crouch * .1);
-  const kneeF = P(stance * 1.2 + crouch * .34, -.22, .72 - crouch * .08);
-  const hipB = P(hipA, .15, hipZ), hipF = P(hipA, -.15, hipZ);
-  add(hipB, kneeB, .17, .13, legs); add(kneeB, footB, .13, .1, legs);
-  add(hipF, kneeF, .17, .13, legs); add(kneeF, footF, .13, .1, legs);
-  add(footB, P(-stance * 1.2 + .16, .2, .08), .1, .09, () => SHOE);
-  add(footF, P(stance * 2 + .16, -.2, .08), .1, .09, () => SHOE);
-  add(P(hipA, 0, hipZ), neck, .3, .32, shirt);
-  add(neck, head, .11, .12, skin);
-  sphere2(add, head, .24, t.skin);
-  sphere2(add, [head[0] - fx * .06, head[1] - fy * .06, head[2] + .08], .205, t.hair);
-  if (t.accessory === 'bun') sphere2(add, [head[0]-fx*.18,head[1]-fy*.18,head[2]+.18], .14, t.hair);
-  if (t.accessory === 'glasses') {
-    for (const side of [-1,1]) sphere2(add,[head[0]+fx*.22+sx*side*.1,head[1]+fy*.22+sy*side*.1,head[2]+.02],.065,darkWood);
-  }
-  if (t.accessory === 'tie') add(P(shA+.3,0,shZ-.1),P(shA+.3,0,shZ-.55),.055,.035,()=>darkWood);
-  if (t.accessory === 'backpack') add(P(hipA-.28,0,hipZ+.2),P(shA-.3,0,shZ-.1),.29,.26,()=>jade);
-  const shR = P(shA, .36, shZ - .03), shL = P(shA, -.36, shZ - .03);
-  const armR = pose.armR == null ? 0 : pose.armR, armL = pose.armL == null ? .08 : pose.armL;
-  const elbowR = P(shA + Math.sin(armR) * .46, .4, shZ - .03 - Math.cos(armR) * .46);
-  const handR = P(shA + Math.sin(armR + .18) * .95, .42, shZ - .03 - Math.cos(armR + .18) * .95);
-  const elbowL = P(shA + Math.sin(armL) * .46, -.42, shZ - .03 - Math.cos(armL) * .46);
-  const handL = P(shA + Math.sin(armL + .2) * .9, -.43, shZ - .03 - Math.cos(armL + .2) * .9);
-  add(shR, elbowR, .12, .1, shirt); add(elbowR, handR, .09, .08, skin);
-  add(shL, elbowL, .12, .1, shirt); add(elbowL, handL, .09, .08, skin);
-  return handR;
-}
-function sphere2(add, c, r, color) { add(c, c, r, r, () => color); }
 const dynamicAdd = (a, b, r0, r1, f) => { capsule(a, b, r0, r1, f, 'solid'); pendingShadows.push(a, r0, b, r1); };
 const pendingShadows = [];
 function flushShadows() {
@@ -240,7 +315,7 @@ function flushShadows() {
 // Scene palette follows Morning Steam: dough, tea wood, jade and a cool window.
 const wood = [156, 111, 70], darkWood = [92, 69, 48], cream = [239, 220, 182];
 const jade = [111, 154, 134], cool = [158, 175, 188], steam = [255, 250, 240];
-const waiter = {shirt:[245,232,202], stripe:[245,232,202], legs:[63,78,74], hair:[54,43,34], skin:[228,177,132]};
+const waiter = {shirt:[245,232,202], legs:[63,78,74], hair:[54,43,34], skin:[228,177,132]};
 function bowl(x,y,z,filled = true) {
   sphere(x,y,z,.28,jade,'solid');
   sphere(x-.035,y-.035,z+.13,.22,filled ? cream : [218,223,209],'solid');
@@ -335,18 +410,14 @@ function draw(state, player, time, moving) {
     const x=t.x-6,y=t.y-5;
     const served=customer.phase==='served', eating=customer.phase==='checkout'||served;
     const appearance = appearances[customer.orderId];
-    const palette = {...waiter, ...appearance, stripe:appearance?.shirt ?? waiter.stripe};
-    figure(x,y-1.2,Math.PI/2,{crouch:1.05,scale:.88,armR:eating?.85:.35,armL:.3,lean:served?.1:appearance?.accessory==='glasses'?.08:0},palette,dynamicAdd);
+    const palette = {...waiter, ...appearance};
+    characterFigure(x,y-1.2,Math.PI/2,customerPose(customer.phase,appearance?.accessory),palette,dynamicAdd);
     if(eating) { bowl(x-.35,y,1.43,!served); sphere(x+.3,y+.12,1.43,.21,cream,'solid'); }
     else bowl(x+.45,y+.3,1.42,false);
   }
   const x=player.x-6,y=player.y-5;
-  figure(x,y,player.yaw,{stance:moving?Math.sin(time*12)*.17:.05,armR:1.18,armL:.3},waiter,dynamicAdd);
-  // Apron and tray are geometry attached to the visual player, never state rules.
-  const fx=Math.cos(player.yaw),fy=Math.sin(player.yaw);
-  capsule([x+fx*.28,y+fy*.28,1.04],[x+fx*.29,y+fy*.29,1.9],.26,.22,()=>jade,'solid');
-  box(x+.2,y+.2,1.72,x+1.18,y+.9,1.8,darkWood);
-  state.tray.slice(0,6).forEach((_,i)=>bowl(x+.4+(i%3)*.25,y+.4+Math.floor(i/3)*.27,1.9));
+  const rig=characterFigure(x,y,player.yaw,{stance:moving?Math.sin(time*12)*.17:.05,carry:true},waiter,dynamicAdd);
+  characterTray(rig,state.tray,(start,end,color,transform)=>box(...start,...end,color,0,transform));
   flushShadows(); applyShadows(bakedZ); shadeEdges();
   // Pixel wisps, stepped gently like the upstream wind animation.
   for(const source of [-2.8,-1.3]) for(let k=0;k<3;k++) {

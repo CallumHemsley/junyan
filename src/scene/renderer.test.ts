@@ -1,6 +1,6 @@
 import {describe, expect, it} from 'vitest';
-import {TABLES, type GameState} from '../contracts';
-import {createRenderer, groundPosition, projectPosition, WIDTH, HEIGHT} from './renderer.js';
+import {TABLES, type GameState, type Phase} from '../contracts';
+import {characterFigure, characterTray, COLORS, createRenderer, customerPose, groundPosition, projectPosition, WIDTH, HEIGHT, type ScenePoint} from './renderer.js';
 
 describe('restaurant projection',()=>{
   it('round trips every logical floor coordinate through the overlay projection',()=>{
@@ -19,6 +19,150 @@ describe('restaurant projection',()=>{
       expect(p.x).toBeGreaterThanOrEqual(0); expect(p.x).toBeLessThanOrEqual(12);
       expect(p.y).toBeGreaterThanOrEqual(0); expect(p.y).toBeLessThanOrEqual(10);
     }
+  });
+});
+
+describe('facing-relative carrying geometry',()=>{
+  type Bone={start:ScenePoint;end:ScenePoint;startRadius:number;endRadius:number;color:number[]};
+  const geometry=(yaw=0,x=0,y=0)=>{
+    const bones:Bone[]=[];
+    const rig=characterFigure(x,y,yaw,{carry:true},{},(start,end,startRadius,endRadius,colorOf)=>{
+      bones.push({start,end,startRadius,endRadius,color:colorOf(start[2])});
+    });
+    const body=bones.slice();
+    const surfaces:ScenePoint[]=[];
+    characterTray(rig,Array(6).fill('bun'),(start,end,color,transform)=>{
+      expect(color).toBe(COLORS.wood);
+      for(const forward of [start[0],end[0]]) for(const side of [start[1],end[1]]) for(const height of [start[2],end[2]]) surfaces.push(transform(forward,side,height));
+    });
+    return {body,tray:bones.slice(body.length),bones,surfaces};
+  };
+  it('rigidly rotates every body, hand, apron, tray and food primitive through eight yaws',()=>{
+    const reference=geometry();
+    for(let direction=0;direction<8;direction++) {
+      const yaw=direction*Math.PI/4,rotated=geometry(yaw,1,3);
+      expect(rotated.bones).toHaveLength(reference.bones.length);
+      reference.bones.forEach((bone,index)=>{
+        for(const endpoint of ['start','end'] as const) {
+          const [forward,side,height]=bone[endpoint];
+          expect(rotated.bones[index][endpoint][0]).toBeCloseTo(1+Math.cos(yaw)*forward-Math.sin(yaw)*side,10);
+          expect(rotated.bones[index][endpoint][1]).toBeCloseTo(3+Math.sin(yaw)*forward+Math.cos(yaw)*side,10);
+          expect(rotated.bones[index][endpoint][2]).toBe(height);
+        }
+        expect(rotated.bones[index].startRadius).toBe(bone.startRadius);
+        expect(rotated.bones[index].color).toEqual(bone.color);
+      });
+      reference.surfaces.forEach(([forward,side,height],index)=>{
+        expect(rotated.surfaces[index][0]).toBeCloseTo(1+Math.cos(yaw)*forward-Math.sin(yaw)*side,10);
+        expect(rotated.surfaces[index][1]).toBeCloseTo(3+Math.sin(yaw)*forward+Math.cos(yaw)*side,10);
+        expect(rotated.surfaces[index][2]).toBe(height);
+      });
+    }
+  });
+  it('connects both bent arms to palms supporting the tray, with all six food slots above it',()=>{
+    const {body,tray}=geometry();
+    const palms=body.filter(bone=>bone.startRadius===.12&&bone.start.every((value,index)=>value===bone.end[index]));
+    for(const side of [-1,1]) {
+      const forearm=body.find(bone=>bone.end[0]===.57&&bone.end[1]===side*.34&&bone.startRadius===.105)!;
+      const upperArm=body.find(bone=>bone.end.every((value,index)=>value===forearm.start[index])&&bone.startRadius===.16)!;
+      expect(upperArm).toBeDefined();
+      const palm=palms.find(bone=>bone.start.every((value,index)=>value===forearm.end[index]));
+      expect(palm).toBeDefined();
+      expect(Math.hypot(...forearm.end.map((value,index)=>value-forearm.start[index]))).toBeLessThan(.5);
+      expect(forearm.end[2]).toBeLessThan(1.28);
+      expect(forearm.end[2]+.12).toBeGreaterThan(1.28);
+    }
+    const food=tray.filter(bone=>bone.color===COLORS.jade);
+    expect(food).toHaveLength(6);
+    expect(new Set(food.map(bone=>bone.start.slice(0,2).join(','))).size).toBe(6);
+    for(const bowl of food) expect(bowl.start[2]).toBeGreaterThan(1.32);
+    expect(Math.max(...body.map(bone=>Math.max(bone.start[2]+bone.startRadius,bone.end[2]+bone.endRadius)))).toBeLessThan(2.6);
+  });
+  it('places facial features only on the forward face, never on the back of the head',()=>{
+    const eyes=geometry().body.filter(bone=>bone.color===COLORS.ink);
+    expect(eyes).toHaveLength(2);
+    for(const eye of eyes) expect(eye.start[0]).toBeGreaterThan(.3);
+  });
+  it('raises the eating arm from the ordered pose without relying on a food raster difference',()=>{
+    const hands=(phase:Phase,greeting=false)=>{
+      const points:ScenePoint[]=[];
+      const pose={...customerPose(phase,'backpack'),greeting};
+      characterFigure(0,0,0,pose,{accessory:'backpack'},(start,end,radius)=>{
+        if(radius===.12*pose.scale&&start.every((value,index)=>value===end[index])) points.push(start);
+      });
+      return points;
+    };
+    const ordered=hands('ordered'),eating=hands('checkout'),served=hands('served');
+    expect(ordered).toHaveLength(2);
+    expect(eating).toHaveLength(2);
+    expect(eating[0]).toEqual(ordered[0]);
+    expect(eating[1][2]).toBeGreaterThan(ordered[1][2]+.12);
+    expect(served[1][2]).toBe(eating[1][2]);
+    expect(hands('ordered',true)[0][2]).toBeGreaterThan(ordered[0][2]);
+    expect(customerPose('ordered','backpack').greeting).toBe(true);
+    expect(customerPose('checkout','backpack').greeting).toBe(false);
+  });
+  it('overrides the common right-arm chain without adding a third hand',()=>{
+    const hands:ScenePoint[]=[];
+    const handR:ScenePoint=[.73,.35,1.55],elbowR:ScenePoint=[.33,.45,1.36];
+    const ends:ScenePoint[]=[];
+    characterFigure(0,0,0,{elbowR,handR},{},(start,end,radius)=>{
+      ends.push(end);
+      if(radius===.12&&start.every((value,index)=>value===end[index])) hands.push(start);
+    });
+    expect(hands).toHaveLength(2);
+    expect(hands).toContainEqual(handR);
+    expect(ends).toContainEqual(elbowR);
+  });
+});
+
+describe('actual raster depth and walking',()=>{
+  const renderHarness=()=>{
+    let pixels=new Uint8ClampedArray();
+    const canvas={getContext:()=>({
+      createImageData:(width:number,height:number)=>({data:new Uint8ClampedArray(width*height*4)}),
+      putImageData:(image:ImageData)=>{pixels=image.data.slice();},
+    })} as unknown as HTMLCanvasElement;
+    const renderer=createRenderer(canvas,[]);
+    const state:GameState={seed:42,day:1,level:1,player:{x:6,y:6},customers:[],tray:[],served:0,earnings:0,mistakes:0,activeTable:null,feedback:'none',receipt:null,journal:{},ended:false};
+    return (yaw:number,tray:string[]=[],time=0,moving=false)=>{
+      renderer.draw({...state,tray},{...state.player,yaw},time,moving);
+      return pixels;
+    };
+  };
+  it('partially occludes rear-facing food with the body without hiding the whole tray',()=>{
+    const render=renderHarness();
+    const changedPixels=(yaw:number)=>{
+      const empty=render(yaw),full=render(yaw,Array(6).fill('bun'));
+      let count=0;
+      for(let index=0;index<full.length;index+=4) {
+        if(full[index]!==empty[index]||full[index+1]!==empty[index+1]||full[index+2]!==empty[index+2]) count++;
+      }
+      return count;
+    };
+    const front=changedPixels(Math.PI/4),rear=changedPixels(Math.PI*1.25);
+    expect(front).toBeGreaterThan(30);
+    expect(rear).toBeGreaterThan(0);
+    expect(rear).toBeLessThan(front*.85);
+    expect(render(Math.PI*1.25,['bun','bun'])).toEqual(render(Math.PI*1.25,['bun']));
+    expect(render(Math.PI/4,['bun','bun'])).not.toEqual(render(Math.PI/4,['bun']));
+  });
+  it('walks deterministically from supplied time and freezes at reduced-motion inputs',()=>{
+    const render=renderHarness();
+    const feet=(image:Uint8ClampedArray)=>{
+      const pixels=[];
+      for(let row=150;row<180;row++) for(let column=165;column<200;column++) {
+        const start=(row*WIDTH+column)*4;
+        pixels.push(...image.subarray(start,start+4));
+      }
+      return pixels;
+    };
+    const first=render(Math.PI/2,[],.1,true);
+    expect(feet(render(Math.PI/2,[],.35,true))).not.toEqual(feet(first));
+    expect(render(Math.PI/2,[],.1,true)).toEqual(first);
+    const still=render(Math.PI/2,[],0,false);
+    render(Math.PI,Array(6).fill('bun'),1,true);
+    expect(render(Math.PI/2,[],0,false)).toEqual(still);
   });
 });
 
