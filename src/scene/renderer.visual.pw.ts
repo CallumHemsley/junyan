@@ -24,7 +24,7 @@ test('playable-scale cast and trays stay still under reduced motion',async({page
   await dispatch({type:'interact',table:1});
   await dispatch({type:'move',position:{x:6,y:6}});
   await frames(page);
-  await page.screenshot({path:`output/playwright/0022-v3-integrated/${info.project.name}-playable-empty.png`,fullPage:true,scale:'css'});
+  await page.screenshot({path:`output/playwright/0029/${info.project.name}-playable-empty.png`,fullPage:true,scale:'css'});
   await dispatch({type:'move',position:{x:6,y:1}});
   const foodId=await page.evaluate(()=>{
     const hooks=(window as unknown as {__TEST__:{content:{foods:{id:string}[]}}}).__TEST__;
@@ -41,6 +41,6 @@ test('playable-scale cast and trays stay still under reduced motion',async({page
   await frames(page,45);
   expect(await canvas.evaluate(element=>(element as HTMLCanvasElement).toDataURL())).toBe(before);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);
-  await page.screenshot({path:`output/playwright/0022-v3-integrated/${info.project.name}-playable-full.png`,fullPage:true,scale:'css'});
+  await page.screenshot({path:`output/playwright/0029/${info.project.name}-playable-full.png`,fullPage:true,scale:'css'});
   expect(errors).toEqual([]);
 });

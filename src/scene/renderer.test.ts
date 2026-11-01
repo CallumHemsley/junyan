@@ -1,4 +1,6 @@
 import {describe, expect, it} from 'vitest';
+import {createHash} from 'node:crypto';
+import {content} from '../content';
 import {TABLES, type GameState, type Phase} from '../contracts';
 import {characterFigure, characterTray, COLORS, createRenderer, customerPose, groundPosition, projectPosition, WIDTH, HEIGHT, type ScenePoint} from './renderer.js';
 
@@ -113,6 +115,62 @@ describe('facing-relative carrying geometry',()=>{
     expect(hands).toHaveLength(2);
     expect(hands).toContainEqual(handR);
     expect(ends).toContainEqual(elbowR);
+  });
+});
+
+describe('four-character hair and eyes',()=>{
+  const geometry=(accessory?:string,pose={})=>{
+    const bones:{start:ScenePoint;end:ScenePoint;startRadius:number;endRadius:number;color:number[]}[]=[];
+    characterFigure(0,0,0,pose,{accessory,hair:[17,19,23]},(start,end,startRadius,endRadius,colorOf)=>{
+      bones.push({start,end,startRadius,endRadius,color:colorOf(start[2])});
+    });
+    return bones;
+  };
+  it('authors distinct connected crowns with coverage down both temples',()=>{
+    const silhouettes=[];
+    for(const accessory of [undefined,'bun','tie','backpack']) {
+      const hair=geometry(accessory).filter(bone=>bone.color.join(',')==='17,19,23'&&bone.startRadius>.075);
+      silhouettes.push(JSON.stringify(hair));
+      for(const side of [-1,1]) expect(hair.some(bone=>bone.end[1]*side>.30&&bone.end[2]<2.09)).toBe(true);
+      const connected=new Set([0]);
+      for(let pass=0;pass<hair.length;pass++) hair.forEach((bone,index)=>{
+        if([...connected].some(other=>{
+          const neighbour=hair[other];
+          return [bone.start,bone.end].some(point=>[neighbour.start,neighbour.end].some(target=>
+            Math.hypot(...point.map((value,axis)=>value-target[axis]))<bone.startRadius+neighbour.startRadius));
+        })) connected.add(index);
+      });
+      expect(connected.size).toBe(hair.length);
+    }
+    expect(new Set(silhouettes).size).toBe(4);
+  });
+  it('enlarges eyes vertically while keeping their depth close to the cheek plane',()=>{
+    for(const accessory of [undefined,'bun','tie','backpack']) {
+      const bones=geometry(accessory);
+      const whites=bones.filter(bone=>bone.startRadius===.065&&bone.color===COLORS.cream);
+      const pupils=bones.filter(bone=>bone.startRadius===.04);
+      expect(whites).toHaveLength(2);
+      expect(pupils).toHaveLength(2);
+      for(const eye of whites) {
+        expect(eye.end[2]-eye.start[2]+2*eye.startRadius).toBeGreaterThan(.038*2);
+        expect(eye.start[0]+eye.startRadius).toBeLessThan(.48);
+      }
+      expect(pupils[1].start[1]-pupils[0].start[1]).toBeCloseTo(.24);
+    }
+  });
+  it('keeps all elder primitives byte-identical to eeeb18d at eight angles and five poses',()=>{
+    const elder=content.characters.find(character=>character.appearance.accessory==='glasses')!;
+    const hashes=[];
+    const poses=[{carry:false,stance:.05},customerPose('ordered','glasses'),customerPose('served','glasses'),
+      {carry:false,stance:Math.sin(.1*12)*.17},{carry:false,stance:Math.sin(.35*12)*.17}];
+    for(const pose of poses) for(let direction=0;direction<8;direction++) {
+      const bones:unknown[]=[];
+      characterFigure(0,0,direction*Math.PI/4,pose,elder.appearance,(start,end,startRadius,endRadius,colorOf)=>{
+        bones.push({start,end,startRadius,endRadius,color:colorOf(start[2])});
+      });
+      hashes.push(createHash('sha256').update(JSON.stringify(bones)).digest('hex'));
+    }
+    expect(createHash('sha256').update(hashes.join('\n')).digest('hex')).toBe('824e30c925418d53769643f021066e081d42a8c185364fa448fa40722bd7ad21');
   });
 });
 

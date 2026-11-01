@@ -77,18 +77,28 @@ export function characterFigure(px, py, yaw, pose, palette, addBone) {
     bone([headForward+.12,-.22,headHeight+.27],[headForward+.20,.12,headHeight+.23],.14,.10,hair);
     for (const side of [-1,1]) bone([headForward-.10,side*.27,headHeight+.10],[headForward-.08,side*.31,headHeight-.06],.12,.10,hair);
   } else {
-    dot([headForward-.145,0,headHeight+.17],.30,hair);
-    bone([headForward+.10,-.22,headHeight+.27],[headForward+.20,.09,headHeight+.26],.13,.095,hair);
-    bone([headForward-.03,-.28,headHeight+.10],[headForward-.045,-.30,headHeight-.07],.11,.095,hair);
-    if (kind === 'bun') {
-      for (const side of [-1,1]) bone([headForward-.10,side*.255,headHeight+.06],[headForward-.16,side*.26,headHeight-.24],.14,.125,hair);
-      dot([headForward-.28,.18,headHeight+.34],.19,hair);
-      dot([headForward-.28,.18,headHeight+.40],.055,COLORS.jade);
+    dot([headForward-.08,0,headHeight+.14],kind==='tie'?.33:.355,hair);
+    bone([headForward-.19,-.12,headHeight+.03],[headForward-.19,.12,headHeight+.03],.24,.24,hair);
+    for (const side of [-1,1]) {
+      bone([headForward+.10,side*.27,headHeight+.17],[headForward+.035,side*.315,headHeight-.10],.135,.095,hair);
     }
-    if (kind === 'backpack') {
-      dot([headForward-.29,-.29,headHeight+.17],.16,hair);
-      bone([headForward-.28,-.29,headHeight+.12],[headForward-.40,-.43,headHeight-.19],.14,.10,hair);
-      dot([headForward-.28,-.29,headHeight+.17],.067,COLORS.brass);
+    if (kind === 'bun') {
+      bone([headForward+.24,-.21,headHeight+.29],[headForward+.25,.21,headHeight+.29],.12,.12,hair);
+      bone([headForward+.17,0,headHeight+.32],[headForward-.32,0,headHeight+.22],.17,.19,hair);
+      dot([headForward-.36,0,headHeight+.32],.20,hair);
+      dot([headForward-.45,0,headHeight+.40],.055,COLORS.jade);
+    } else if (kind === 'tie') {
+      bone([headForward+.23,-.22,headHeight+.25],[headForward+.30,.07,headHeight+.30],.135,.115,hair);
+      bone([headForward+.28,.17,headHeight+.31],[headForward+.12,.29,headHeight+.19],.10,.11,hair);
+    } else if (kind === 'backpack') {
+      bone([headForward+.27,-.21,headHeight+.25],[headForward+.29,.19,headHeight+.24],.115,.115,hair);
+      for (const side of [-1,1]) bone([headForward+.16,side*.28,headHeight+.10],[headForward+.10,side*.32,headHeight-.19],.115,.085,hair);
+      bone([headForward-.27,0,headHeight+.14],[headForward-.43,0,headHeight+.01],.18,.15,hair);
+      bone([headForward-.43,0,headHeight+.01],[headForward-.49,0,headHeight-.33],.15,.095,hair);
+      dot([headForward-.44,0,headHeight+.05],.065,COLORS.brass);
+    } else {
+      bone([headForward+.26,-.22,headHeight+.27],[headForward+.29,.02,headHeight+.24],.13,.12,hair);
+      bone([headForward+.29,.02,headHeight+.24],[headForward+.23,.22,headHeight+.27],.12,.12,hair);
     }
   }
   for (const side of [-1,1]) {
@@ -98,8 +108,8 @@ export function characterFigure(px, py, yaw, pose, palette, addBone) {
       dot([headForward+.45,side*.135,headHeight+.045],.059,[237,222,189]);
       dot([headForward+.493,side*.13,headHeight+.04],.028,COLORS.ink);
     } else {
-      dot([headForward+.402,side*.13,headHeight+.04],.038,COLORS.ink);
-      if (kind === 'tie') bone([headForward+.38,side*.10,headHeight+.145],[headForward+.365,side*.165,headHeight+.13],.021,.018,hair);
+      bone([headForward+.33,side*.12,headHeight],[headForward+.33,side*.12,headHeight+.075],.065,.065,COLORS.cream);
+      bone([headForward+.36,side*.12,headHeight+.005],[headForward+.36,side*.12,headHeight+.070],.04,.04,COLORS.ink);
     }
   }
   dot([headForward+.44,0,headHeight-.025],.055,skin);

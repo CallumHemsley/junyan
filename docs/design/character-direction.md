@@ -41,7 +41,7 @@ Positive local `a` is the face/apron/tray side, not world `+x` or screen right. 
 | Torso | hip radius `.32` to shoulder `.35`, shoulder `z=1.59`; 林姐 uses `.36→.38` for a softer cardigan silhouette |
 | Neck / head | head centre `a=.025,z=2.09`; head sphere radius `.37` versus old `.24`; short neck radius `.13→.14` |
 | Face plane | second skin sphere at `headForward+.12,0,headHeight-.035`, radius `.30`; warm highlight `[239,191,152]` |
-| Eyes | `a=headForward+.402,b=±.13,z=headHeight+.04`, radius `.038`; intentionally about one native pixel, not oversized black dots |
+| Eyes (V3 baseline; four-character override below) | `a=headForward+.402,b=±.13,z=headHeight+.04`, radius `.038`; originally about one native pixel |
 | Cheeks / nose | cheeks `a=+.367,b=±.19,z=-.07`, radius `.06`, muted `[208,149,117]`; nose `a=+.44,z=-.025`, radius `.055` |
 | Mouth | two short warm `[176,119,88]` segments, `b=-.055→0→+.055,z=-.14→-.155→-.14`; no dark moustache band |
 | Hair | rear cap `a=-.145,z=+.17,r=.30`; swept asymmetric fringe at `z=+.27→+.26`, leaving the eyes clear |
@@ -137,3 +137,23 @@ Three inspected passes removed the first version's muddy brow, strengthened hair
 ### Honest limits and remaining gate
 
 This is a design-only commit. No production implementation, rules test suite, full-app Playwright journey, console check, persistence test or pronunciation check is claimed. At native 360×280, a face is about a dozen pixels wide: identity must primarily survive through hair, clothing and gesture, not detailed portrait expression. Phone/desktop outputs validate scene scaling, not final DOM overlay composition. The production worker/orchestrator must inspect the integrated scene, loaded/empty eight-direction sheets, walking/served poses and reduced motion, then run the appropriate game and browser checks silently before publication.
+
+## Ticket 0029 — four-character production refinement
+
+Callum's 2026-11-01 instruction supersedes the intentionally small V3 eyes and cap-like hair **for the waiter, 林姐, 小李 and 小周 only**. The Pixel Plays V3 renderer, head/body proportions, authored colours, gestures and carrying rig remain governing. 张老师's complete geometry, silver hair, glasses, lenses and pupils stay exactly on the `eeeb18d` baseline, not merely visually similar.
+
+The four crowns now overlap a continuous rear mass and both temple chains. The waiter has a shallow, soft two-part fringe; 林姐's higher swept forehead continues back into a centred attached bun with jade pin; 小李 has a flatter crown and asymmetric side part; 小周 has a lower fringe, longer connected side locks and a rear ponytail with brass tie. Ears may show; disconnected temple gaps and exposed unintended scalp are not part of the direction. Different silhouettes come from actual local-space geometry, not accessory sprites.
+
+The four eyes use a warm cream vertical socket (`a=+.33,b=±.12,z=0→+.075,r=.065`) and a shallow dark pupil (`a=+.36,z=+.005→+.070,r=.04`). These overlap the cheek rather than becoming protruding eyeballs. 小李's old tiny brow primitives are removed so they do not merge with the larger eyes into a black band. Both eye layers enter the original depth buffer: there is no yaw-based hiding, camera-facing decal or replacement rasterizer. At front yaw `π/4`, removing the actual eye geometry changes 9–10 native standing pixels versus 2 before, and 8 seated/served pixels versus 4 before, for each of the four. At all three rear directions (`π`, `5π/4`, `3π/2`), removing the eyes changes zero pixels in all five poses: 60 current-render comparisons. Rear-quarter testing caught and corrected an initially over-forward eye placement before handoff.
+
+Reproduce the paired production-renderer evidence from the worktree root with `node src/scene/render-character-evidence.mjs output/playwright/0029 eeeb18d` (local Playwright Chromium plus `ffmpeg`/`ffprobe` required). It reuses the existing offscreen raster and PNG encoder, exposes an evidence-only portrait hook in ignored copies, and compares the baseline with the current source. No portrait hook is shipped in production. `renderer.d.ts` needs no change because the production interface is unchanged.
+
+Evidence under `output/playwright/0029/`:
+
+- `head-closeups-1x.png` / `head-closeups-4x.png`: native and nearest-neighbour enlarged before/after heads, all five through eight directions; `before-*-native-360x280.png` / `after-*-native-360x280.png` retain full native front rasters.
+- `{standing,seated,served,walk-a,walk-b}-{1x,3x}.png`: 200 paired cast views; walking uses production stance inputs at `.1s` and `.35s`. `empty-tray-{1x,3x}.png` pairs eight empty waiter trays with the loaded standing coverage.
+- `all-five-silent-turntable.mp4`: 10 seconds, H.264, five figures together; ordered standing/seated/served/walk-a/walk-b, each rotating `0°…315°`. Cast order is waiter / 林姐 / 小李 / 张老师 / 小周. `video-probe.json` verifies one video stream and no audio stream.
+- `elder-proof.json`: exact geometry and full 360×280 isolated RGBA equality for all 40 elder pose/yaw pairs, SHA-256 digests, unchanged non-hair/eye body geometry, larger native eye footprints and natural rear-eye occlusion. Whole restaurant frames intentionally differ.
+- `0029-{phone,desktop}-playable-{empty,full}.png`: real app screens at 390px and 1440px widths, including reduced-motion frame stability and clean console assertions. These use the current checkout UI; ticket 0028 is not integrated here.
+
+Implementation self-checks pass (88 unit tests, 17 muted Chromium browser tests, TypeScript/Vite build). Screenshots were inspected during refinement. Independent cross-review and parent visual acceptance remain pending; this section does not self-certify either gate. No WebKit or Firefox coverage is claimed.
