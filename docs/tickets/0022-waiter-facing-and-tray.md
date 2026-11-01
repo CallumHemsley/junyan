@@ -1,7 +1,7 @@
 ---
 id: 22
 title: Improve waiter proportions and facing-relative carried objects
-status: doing
+status: done
 priority: high
 type: bug
 created: 2026-11-01
@@ -28,4 +28,5 @@ Callum's first public playtest requests reliable first-dialogue audio, better ch
 - Silent actual-app demo: `waiter-loaded-walk-silent.mp4` in that evidence directory, 15.44 seconds at 1200x1000, showing six-item tray movement away/toward and all four seated regulars. `ffprobe` confirms video only, no audio stream; metadata and clean-console result are in `demo-verification.json`. Reproduce with the worktree's strict dev server running: `SCENE_DEMO_URL=http://127.0.0.1:5182 node src/scene/record-demo.mjs` (requires local ffmpeg/ffprobe). Setup uses legal test-hook actions; recorded movement uses actual canvas clicks and normal scene interpolation.
 - Every capture/test Chromium launch explicitly includes `--mute-audio`; no global/system volume changes or weakened real audio assertions. Scoped checked-in Playwright config starts only strict ports 5182/5186, with explicit worktree cwd. Shared configuration is untouched. Offline test excluded because its source hardcodes another worktree's preview port; no claim of offline validation.
 - Integration baseline remains `536f9d9`; parent reports `cb01704` containing unrelated UI/save work, not merged here. Scope contains renderer, declarations, scene tests/helpers and this ticket only. No App/audio/UI/schema/dependency/lockfile/launch configuration writes. First-pass evidence remains separately under `output/playwright/0022-first-pass/` for comparison.
-- Verification complete and scoped commit ready for parent review/cherry-pick; status remains **doing** until independent integrated-renderer review is accepted and any resulting fixes are resolved. V3 direction acceptance is not represented as completed production cross-review. No push/PR/merge/deploy.
+- Independent cross-review receipt: Astra accepted production commit `b9aa9fc5cba6f7edcf5894c2571b701122d11620` with no blocking renderer defects. Reviewed renderer, declarations, tests/config, cast and 32-frame direction/walking sheets, plus natural phone/desktop loaded-tray screenshots. Astra independently reran `pnpm test` (45/45 passed), regenerated 32 scene frames and 20 portraits from final production source under `/tmp/junyan-0022-astra-review`, and confirmed all 52 decoded pixel buffers match the implementation evidence (compressed PNG bytes differ only by encoding). Independent `ffprobe` confirmed the 15.44-second demo is video-only with no audio stream. Scope and working tree were clean at review.
+- Completion limitations: optional chef omitted; offline test not rerun; integration with parent `cb01704` was not tested in this isolated baseline worktree. Implementation verification and independent renderer review are complete; parent owns cherry-pick and combined integration checks. This ticket-only completion receipt adds no code changes or new test claims. No servers/browser playback, push/PR/merge/deploy for this follow-up.
