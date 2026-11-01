@@ -19,7 +19,7 @@ pnpm test:e2e
 pnpm build
 ```
 
-Playwright requires Chromium (`pnpm exec playwright install chromium`). The browser suite uses explicit port 5173 with `strictPort`. Use `VITE_PORT=5174 pnpm dev` for a separate worktree. Serve `dist/` on HTTPS or localhost for the installable PWA and offline cache; audio and content are bundled locally. No backend, account, live generation or paid API is needed.
+Playwright requires Chromium (`pnpm exec playwright install chromium`). The browser suite uses explicit ports 5173 (development) and 5177 (production preview) with `strictPort`. Use `VITE_PORT=5174 pnpm dev` for a separate worktree. Serve `dist/` on HTTPS or localhost for the installable PWA and offline cache; audio and content are bundled locally. No backend, account, live generation or paid API is needed.
 
 ## Structure
 
