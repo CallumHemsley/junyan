@@ -59,6 +59,7 @@ export default function App() {
   const [change, setChange] = useState(0);
   const [moving, setMoving] = useState(false);
   const [audioError, setAudioError] = useState(false);
+  const dayEndOpen = state.ended && panel === "none" && !word;
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const motion = useRef<{ path: Position[]; arrive?: () => void } | null>(null);
   const dispatch = useCallback(
@@ -180,7 +181,7 @@ export default function App() {
     else walk({ x: KITCHEN.x, y: KITCHEN.y + 1.3 }, open);
   }, [walk]);
   useEffect(() => {
-    if (panel === "none") return;
+    if (panel === "none" && !dayEndOpen) return;
     const previous = document.activeElement;
     const dialog = document.querySelector<HTMLElement>(".paper-panel");
     dialog?.querySelector<HTMLButtonElement>("button")?.focus();
@@ -206,7 +207,7 @@ export default function App() {
       document.removeEventListener("keydown", trap);
       if (previous instanceof HTMLElement) previous.focus();
     };
-  }, [panel, word]);
+  }, [panel, word, dayEndOpen]);
   useEffect(() => {
     const key = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -764,7 +765,7 @@ export default function App() {
           <p className="gloss">{word.gloss}</p>
         </div>
       )}
-      {state.ended && panel === "none" && !word && (
+      {dayEndOpen && (
         <div className="modal-backdrop">
           <section
             className="paper-panel day-end"

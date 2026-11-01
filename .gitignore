@@ -16,3 +16,4 @@ output/
 test-results/
 playwright-report/
 *.tsbuildinfo
+.playwright-cli/

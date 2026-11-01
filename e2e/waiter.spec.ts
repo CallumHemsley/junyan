@@ -80,6 +80,11 @@ test("collect, recall, deliver, give change, journal, and progress", async ({
   expect(overflow).toBe(false);
   for (const table of [1, 2, 3, 4]) await serve(page, table);
   await expect(page.getByRole("dialog", { name: "今日小结" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "明天见" })).toBeFocused();
+  await page.keyboard.press("Tab");
+  await expect(page.getByRole("button", { name: "明天见" })).toBeFocused();
+  await page.keyboard.press("Shift+Tab");
+  await expect(page.getByRole("button", { name: "明天见" })).toBeFocused();
   await page.getByRole("button", { name: "明天见" }).click();
   const { state, content } = await data(page);
   expect(state.day).toBe(2);
@@ -97,6 +102,26 @@ test("collect, recall, deliver, give change, journal, and progress", async ({
     fullPage: true,
   });
   expect(errors).toEqual([]);
+});
+
+test("walking connects a keyboard position beside a table without stalling", async ({
+  page,
+}) => {
+  await page.goto("/?test=1&seed=42");
+  await page.getByRole("button", { name: "开门迎客" }).click();
+  await page.evaluate(() =>
+    (window as any).__TEST__.dispatch({
+      type: "move",
+      position: { x: 1.95, y: 3.85 },
+    }),
+  );
+  await page.getByTestId("table-3").click();
+  await expect(page.getByRole("dialog", { name: "3桌点餐" })).toBeVisible();
+  await page.getByRole("button", { name: "关闭", exact: true }).click();
+  const before = (await data(page)).state.player;
+  await page.getByTestId("table-3").focus();
+  await page.keyboard.press("ArrowRight");
+  expect((await data(page)).state.player).not.toEqual(before);
 });
 
 test("browser saves and reloads a looked-up word", async ({ page }) => {

@@ -1,7 +1,24 @@
 import { describe, it, expect } from "vitest";
-import { canStand, route } from "./navigation";
+import { canStand, canWalk, route } from "./navigation";
 import { TABLES } from "./contracts";
 describe("restaurant walking", () => {
+  it("safely connects off-grid starts and destinations beside furniture", () => {
+    for (const from of [
+      { x: 1.95, y: 3.85 },
+      { x: 4.05, y: 4.01 },
+      { x: 2.2, y: 3.3 },
+    ]) {
+      const to = { x: 4.4, y: 8 };
+      const path = route(from, to);
+      expect(path.at(-1)).toEqual(to);
+      let previous = from;
+      for (const point of path) {
+        expect(canWalk(previous, point)).toBe(true);
+        previous = point;
+      }
+    }
+    expect(canWalk({ x: 1.95, y: 3.85 }, { x: 2, y: 4.5 })).toBe(false);
+  });
   it("routes around furniture instead of through a table", () => {
     const path = route({ x: 3, y: 1 }, { x: 3, y: 6 });
     expect(path.length).toBeGreaterThan(0);
