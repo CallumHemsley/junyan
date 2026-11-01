@@ -36,7 +36,7 @@ export function groundPosition(left, top) {
   return {x: Math.max(0, Math.min(12, (u+v)/R2+6)),
     y: Math.max(0, Math.min(10, (v-u)/R2+5))};
 }
-export function createRenderer(canvas, tables) {
+export function createRenderer(canvas, tables, appearances = {}) {
 const W = WIDTH, H = HEIGHT, SHADOW_X = .7, SHADOW_Y = .3;
 canvas.width = W; canvas.height = H;
 const ctx = canvas.getContext('2d');
@@ -206,6 +206,12 @@ function figure(px, py, yaw, pose, palette, addBone) {
   add(neck, head, .11, .12, skin);
   sphere2(add, head, .24, t.skin);
   sphere2(add, [head[0] - fx * .06, head[1] - fy * .06, head[2] + .08], .205, t.hair);
+  if (t.accessory === 'bun') sphere2(add, [head[0]-fx*.18,head[1]-fy*.18,head[2]+.18], .14, t.hair);
+  if (t.accessory === 'glasses') {
+    for (const side of [-1,1]) sphere2(add,[head[0]+fx*.22+sx*side*.1,head[1]+fy*.22+sy*side*.1,head[2]+.02],.065,darkWood);
+  }
+  if (t.accessory === 'tie') add(P(shA+.3,0,shZ-.1),P(shA+.3,0,shZ-.55),.055,.035,()=>darkWood);
+  if (t.accessory === 'backpack') add(P(hipA-.28,0,hipZ+.2),P(shA-.3,0,shZ-.1),.29,.26,()=>jade);
   const shR = P(shA, .36, shZ - .03), shL = P(shA, -.36, shZ - .03);
   const armR = pose.armR == null ? 0 : pose.armR, armL = pose.armL == null ? .08 : pose.armL;
   const elbowR = P(shA + Math.sin(armR) * .46, .4, shZ - .03 - Math.cos(armR) * .46);
@@ -234,12 +240,6 @@ function flushShadows() {
 // Scene palette follows Morning Steam: dough, tea wood, jade and a cool window.
 const wood = [156, 111, 70], darkWood = [92, 69, 48], cream = [239, 220, 182];
 const jade = [111, 154, 134], cool = [158, 175, 188], steam = [255, 250, 240];
-const palettes = [
-  {shirt:[142,157,119], stripe:[142,157,119], legs:[74,68,59], hair:[189,185,166], skin:[226,181,143]},
-  {shirt:[81,108,132], stripe:[81,108,132], legs:[55,61,72], hair:[43,37,34], skin:[215,167,126]},
-  {shirt:[193,158,85], stripe:[193,158,85], legs:[83,74,66], hair:[69,49,36], skin:[232,185,143]},
-  {shirt:[135,116,150], stripe:[135,116,150], legs:[61,67,66], hair:[46,39,35], skin:[204,151,113]},
-];
 const waiter = {shirt:[245,232,202], stripe:[245,232,202], legs:[63,78,74], hair:[54,43,34], skin:[228,177,132]};
 function bowl(x,y,z,filled = true) {
   sphere(x,y,z,.28,jade,'solid');
@@ -334,9 +334,9 @@ function draw(state, player, time, moving) {
     if (!customer) continue;
     const x=t.x-6,y=t.y-5;
     const served=customer.phase==='served', eating=customer.phase==='checkout'||served;
-    figure(x,y-1.2,Math.PI/2,{crouch:1.05,scale:.88,armR:eating?.85:.35,armL:.3,lean:served?.1:0},palettes[(t.table-1)%4],dynamicAdd);
-    if(t.table===1) sphere(x-.09,y-1.33,2.18,.17,palettes[0].hair,'solid');
-    if(t.table===3) sphere(x,y-1.2,2.32,.28,[193,158,85],'solid');
+    const appearance = appearances[customer.orderId];
+    const palette = {...waiter, ...appearance, stripe:appearance?.shirt ?? waiter.stripe};
+    figure(x,y-1.2,Math.PI/2,{crouch:1.05,scale:.88,armR:eating?.85:.35,armL:.3,lean:served?.1:appearance?.accessory==='glasses'?.08:0},palette,dynamicAdd);
     if(eating) { bowl(x-.35,y,1.43,!served); sphere(x+.3,y+.12,1.43,.21,cream,'solid'); }
     else bowl(x+.45,y+.3,1.42,false);
   }

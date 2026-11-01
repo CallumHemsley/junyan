@@ -1,3 +1,4 @@
+import { contentWords } from "./content/words";
 import { KITCHEN, TABLES, TRAY_CAPACITY } from "./contracts";
 import type {
   Action,
@@ -135,12 +136,7 @@ export function reduceGame(
   content: Content,
 ): GameState {
   if (action.type === "lookup") {
-    const words = [
-      ...content.foods.map((food) => food.word),
-      ...content.orders.flatMap((order) => order.line.tokens),
-      ...content.thanks.tokens,
-      ...content.retry.tokens,
-    ];
+    const words = contentWords(content);
     if (
       !Number.isFinite(action.now) ||
       action.now < 0 ||

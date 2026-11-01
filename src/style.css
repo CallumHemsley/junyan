@@ -273,7 +273,7 @@ kbd {
   background: #c9a585;
   top: 8px;
   left: 10px;
-  box-shadow: 0 -5px 0 -1px #7f7b70;
+  box-shadow: 0 -5px 0 -1px currentColor;
 }
 .portrait i {
   position: absolute;
@@ -284,24 +284,11 @@ kbd {
   left: 4px;
   border-radius: 10px 10px 0 0;
 }
-.portrait-2:before {
-  box-shadow: 0 -6px 0 0 #443a32;
-}
-.portrait-2 i {
-  background: #bda36a;
-}
-.portrait-3:before {
-  box-shadow: 0 -4px 0 0 #625445;
-}
-.portrait-3 i {
-  background: #7e929d;
-}
-.portrait-4:before {
-  box-shadow: 0 -5px 0 1px #493a30;
-}
-.portrait-4 i {
-  background: #a48c78;
-}
+.portrait:after { content: ""; position: absolute; }
+.portrait[data-accessory="bun"]:after { background: currentColor; width: 9px; height: 9px; border-radius: 50%; top: 2px; right: 5px; }
+.portrait[data-accessory="glasses"]:after { width: 48%; height: 5px; border: 1px solid #443a32; border-radius: 2px; left: 25%; top: 14px; }
+.portrait[data-accessory="tie"]:after { width: 3px; height: 11px; background: #443a32; left: 48%; bottom: 3px; }
+.portrait[data-accessory="backpack"]:after { width: 48%; height: 11px; border: 2px solid var(--jade, #758e82); border-bottom: 0; left: 25%; bottom: 1px; }
 .tray-section {
   margin-top: 29px;
 }
@@ -1079,3 +1066,7 @@ kbd {
     scroll-behavior: auto !important;
   }
 }
+
+.character-greeting { display: flex; align-items: center; gap: var(--space-8, 8px); margin-bottom: var(--space-12, 12px); }
+.character-greeting .spoken { margin: 0; }
+.character-greeting .word { font-size: 28px; line-height: 44px; }

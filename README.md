@@ -21,6 +21,10 @@ pnpm build
 
 Playwright requires Chromium (`pnpm exec playwright install chromium`). The browser suite uses explicit ports 5173 (development) and 5177 (production preview) with `strictPort`. Use `VITE_PORT=5174 pnpm dev` for a separate worktree. Serve `dist/` on HTTPS or localhost for the installable PWA and offline cache; audio and content are bundled locally. No backend, account, live generation or paid API is needed.
 
+## Characters and content
+
+Four regulars use four local voices: Serena (林姐, warm neighbour), Yunxi (小李, office worker), Uncle_Fu (张老师, retired teacher), and Xiaobei (小周, student). Each has their own dialogue and Pixel Plays appearance. See [the cast](docs/characters.md) and [the content/audio workflow](docs/content-audio.md) to add lines, characters or voices. Native pronunciation review remains pending.
+
 ## Structure
 
 - `src/game.ts`: deterministic rules over explicit state; no browser dependencies.

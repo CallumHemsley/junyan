@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import content from "../src/content/content.json" with { type: "json" };
 
 test.use({ baseURL: "http://127.0.0.1:5177" });
 
@@ -19,16 +20,18 @@ test("production keeps the restaurant and Mandarin audio available offline", asy
   await page.getByRole("button", { name: "开门迎客" }).click();
   await page.getByTestId("table-1").click();
   await expect(page.getByRole("dialog", { name: "1桌点餐" })).toBeVisible();
-  const duration = await page.evaluate(
-    () =>
-      new Promise<number>((resolve, reject) => {
-        const audio = new Audio("/audio/order-01.m4a");
+  const paths = content.orders.filter(order => order.level === 1).map(order => order.line.audio);
+  paths.push(content.foods[0].word.audio);
+  for (const path of paths) {
+    const duration = await page.evaluate(
+      path => new Promise<number>((resolve, reject) => {
+        const audio = new Audio(path);
         audio.oncanplaythrough = () => resolve(audio.duration);
-        audio.onerror = () =>
-          reject(Error("Mandarin audio unavailable offline"));
+        audio.onerror = () => reject(Error(`Mandarin audio unavailable offline: ${path}`));
         audio.load();
-      }),
-  );
-  expect(duration).toBeGreaterThan(0);
+      }), path,
+    );
+    expect(duration).toBeGreaterThan(0);
+  }
   expect(errors).toEqual([]);
 });

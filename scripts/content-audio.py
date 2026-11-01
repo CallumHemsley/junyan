@@ -135,8 +135,8 @@ def collect_jobs(content, config):
 
 
 def validate_samples(samples, sample_rate, text):
-    if not isinstance(sample_rate, int) or not 8000 <= sample_rate <= 192000 or not len(samples):
-        raise ValueError("Expected nonempty mono audio and a valid sample rate")
+    if sample_rate != 24000 or not len(samples):
+        raise ValueError("Expected nonempty mono audio at 24 kHz")
     if any(not math.isfinite(sample) for sample in samples):
         raise ValueError("Audio contains NaN or infinity")
     peak = max(abs(sample) for sample in samples)
@@ -467,7 +467,7 @@ def self_check():
                 raise AssertionError("Concurrent content edit was overwritten")
             assert read_json(source)["unrelated"]["parent_edit"] is True
             assert run(args, fake) == 0
-        for samples, rate in (([0.0] * 4800, 24000), ([1.0] * 4800, 24000),
+        for samples, rate in (([0.1] * 4800, 22050), ([0.0] * 4800, 24000), ([1.0] * 4800, 24000),
                               ([float("nan")] * 4800, 24000), ([0.1] * 10, 24000),
                               ([0.1] * 120000, 24000)):
             try:

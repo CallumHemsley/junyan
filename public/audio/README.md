@@ -1,18 +1,18 @@
-# Offline Mandarin prototype audio
+# Offline character speech
 
-Regenerate from the committed, pre-segmented `src/content/content.json` with
-`node scripts/make-audio.mjs` on macOS with the installed `Tingting` (`zh_CN`)
-voice. No network or paid service is used. Output is mono AAC in M4A containers.
-Every food word, dialogue token and complete line has its own local clip;
-repeated words share a stable recording and lookup ID.
+Game clips are generated locally from `src/content/content.json` and the pinned
+presets in `src/content/voices.json`. Each character has a stable voice for full
+orders, greetings, thanks and corrections. Word lookups share Serena's voice.
 
-Whole-line speech uses the concatenated authored Hanzi, allowing the synthesizer
-to supply connected-speech prosody. Word pinyin uses dictionary tones; speech may
-apply contextual tone sandhi. These are prototype recordings, not vendor-quality
-or native-speaker-reviewed learning audio. All four regulars currently share the
-same voice. The older counter audio was not reused because none of the newly
-authored complete lines or individual words exactly match its recorded text.
+Use the reusable pipeline documented in [`docs/content-audio.md`](../../docs/content-audio.md).
+The pipeline writes content-addressed mono PCM16 24 kHz WAVs and a provenance
+manifest. It verifies cached files and regenerates only missing or changed clips.
+No runtime generation, paid API, key or voice cloning is involved.
 
-`饺子` is ordered by the bowl; one game item is one bowl. `bread` denotes 馒头
-(plain steamed bread), while `milk` denotes 豆浆 (soy milk). English glosses and
-pinyin are lookup metadata for tap reveal, never parallel dialogue text.
+Whole-line input is the concatenated authored Hanzi. Pinyin on word cards records
+dictionary tones; connected speech can apply tone sandhi. All Chinese dialogue
+stays tappable DOM text. Native pronunciation review remains pending, especially
+Kokoro polyphones and tone sandhi. These clips are not yet approved teaching audio.
+
+`饺子` is ordered by the bowl; one game item is one bowl. `bread` denotes 馒头,
+while `milk` denotes 豆浆. Glosses and pinyin appear only on lookup.

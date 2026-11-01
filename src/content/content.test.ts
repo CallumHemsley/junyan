@@ -1,8 +1,10 @@
 import { readFileSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
-import { content, contentSchema } from './index';
+import { content, contentSchema, voices, voicesSchema } from './index';
 
-const lines = [...content.orders.map(order => order.line), content.thanks, content.retry];
+const lines = [...content.orders.map(order => order.line), content.thanks, content.retry,
+  ...content.characters.flatMap(c => [c.greeting, c.thanks, c.retry])];
 const words = [...content.foods.map(food => food.word), ...lines.flatMap(line => line.tokens)];
 
 describe('offline Mandarin content', () => {
@@ -17,10 +19,26 @@ describe('offline Mandarin content', () => {
       (copy: typeof content) => { copy.orders[0].paid = 1; },
       (copy: typeof content) => { copy.foods.push(copy.foods[0]); },
       (copy: typeof content) => { copy.orders.push(copy.orders[0]); },
+      (copy: typeof content) => { copy.characters.push(copy.characters[0]); },
+      (copy: typeof content) => { copy.characters[0].voiceId = 'missing'; },
+      (copy: typeof content) => { copy.orders[0].customer = '不存在'; },
     ]) {
       const copy = structuredClone(content);
       modify(copy);
       expect(contentSchema.safeParse(copy).success).toBe(false);
+    }
+  });
+
+  it('casts each regular with a stable voice, unique reactions and data-driven appearance', () => {
+    expect(voicesSchema.safeParse(voices).success).toBe(true);
+    expect(voicesSchema.safeParse({...voices, wordVoice: 'missing'}).success).toBe(false);
+    expect(content.characters.map(c => [c.name, c.voiceId, c.appearance.accessory])).toEqual([
+      ['林姐', 'serena', 'bun'], ['小李', 'yunxi', 'tie'],
+      ['张老师', 'uncle-fu', 'glasses'], ['小周', 'xiaobei', 'backpack'],
+    ]);
+    for (const kind of ['greeting', 'thanks', 'retry'] as const) {
+      expect(new Set(content.characters.map(c => c[kind].tokens.map(w => w.hanzi).join(''))).size).toBe(4);
+      expect(new Set(content.characters.map(c => c[kind].audio)).size).toBe(4);
     }
   });
 
@@ -34,7 +52,7 @@ describe('offline Mandarin content', () => {
   });
 
   it('keeps the four regulars at fixed tables at every level', () => {
-    const customers = ['王奶奶', '小李', '张老师', '小周'];
+    const customers = ['林姐', '小李', '张老师', '小周'];
     for (const level of [1, 2, 3]) {
       const orders = content.orders.filter(order => order.level === level);
       expect(orders).toHaveLength(4);
@@ -75,7 +93,8 @@ describe('offline Mandarin content', () => {
         numbers[item.quantity], measures[item.foodId],
         content.foods.find(food => food.id === item.foodId)!.word.hanzi,
       ].join('')).join('和');
-      expect(order.line.tokens.map(word => word.hanzi).join('')).toBe(`我要${requested}`);
+      const prefix = {1: '我想要', 2: '来', 3: '请给我', 4: '我要'}[order.table];
+      expect(order.line.tokens.map(word => word.hanzi).join('')).toBe(`${prefix}${requested}`);
       for (const item of order.items) {
         expect(order.line.tokens).toContainEqual(content.foods.find(food => food.id === item.foodId)!.word);
       }
@@ -96,14 +115,41 @@ describe('offline Mandarin content', () => {
     }
   });
 
-  it('resolves every full line and word to a nonempty local M4A file', () => {
+  it('matches each generated line to its character voice and every word to the dictionary voice', () => {
+    const manifest = JSON.parse(readFileSync(new URL('../../public/audio/manifest.json', import.meta.url), 'utf8'));
+    const records = new Map<string, {text: string; voice: unknown; sha256: string}>(manifest.clips.map((clip: {filename: string}) => [`/audio/${clip.filename}`, clip]));
+    const expected = content.characters.flatMap(character => [
+      ...[character.greeting, character.thanks, character.retry],
+      ...content.orders.filter(order => order.customer === character.name).map(order => order.line),
+    ].map(line => ({entry: line, voiceId: character.voiceId, text: line.tokens.map(word => word.hanzi).join('')})));
+    expected.push(...[content.thanks, content.retry].map(line => ({entry: line, voiceId: voices.wordVoice, text: line.tokens.map(word => word.hanzi).join('')})));
+    for (const {entry, voiceId, text} of expected) {
+      expect(records.get(entry.audio)?.text).toBe(text);
+      expect(records.get(entry.audio)?.voice).toEqual(voices.voices[voiceId]);
+    }
+    for (const word of words) {
+      expect(records.get(word.audio)?.text).toBe(word.hanzi);
+      expect(records.get(word.audio)?.voice).toEqual(voices.voices[voices.wordVoice]);
+    }
+    for (const path of new Set([...words, ...lines].map(entry => entry.audio))) {
+      const bytes = readFileSync(new URL(`../../public${path}`, import.meta.url));
+      expect(createHash('sha256').update(bytes).digest('hex')).toBe(records.get(path)?.sha256);
+    }
+  });
+
+  it('resolves every full line and word to a real mono PCM16 24kHz WAV', () => {
     const audio = new Set([...words, ...lines].map(entry => entry.audio));
     for (const path of audio) {
       const file = new URL(`../../public${path}`, import.meta.url);
       expect(statSync(file).size, path).toBeGreaterThan(100);
       const bytes = readFileSync(file);
-      expect(bytes.subarray(4, 8).toString(), path).toBe('ftyp');
-      expect(bytes.includes(Buffer.from('mp4a')), path).toBe(true);
+      expect(path).toMatch(/^\/audio\/(line|word)-[a-f0-9]+\.wav$/);
+      expect(bytes.subarray(0, 4).toString(), path).toBe('RIFF');
+      expect(bytes.subarray(8, 12).toString(), path).toBe('WAVE');
+      expect(bytes.readUInt16LE(20), path).toBe(1);
+      expect(bytes.readUInt16LE(22), path).toBe(1);
+      expect(bytes.readUInt32LE(24), path).toBe(24000);
+      expect(bytes.readUInt16LE(34), path).toBe(16);
     }
   });
 });

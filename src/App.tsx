@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Action, GameState, Line, Position, Word } from "./contracts";
 import { KITCHEN, TABLES } from "./contracts";
-import { content } from "./content";
+import { characterFor, content } from "./content";
+import { contentWords } from "./content/words";
 import {
   createGame,
   reduceGame,
@@ -75,8 +76,11 @@ export default function App() {
   }, []);
   useEffect(() => () => audioRef.current?.pause(), []);
   useEffect(() => {
-    if (state.feedback === "wrong-food") play(content.retry.audio);
-  }, [state.feedback, state.mistakes, play]);
+    if (state.feedback === "wrong-food" || state.feedback === "wrong-change") {
+      const order = getOrder(state, state.activeTable ?? 1, content);
+      if (order) play(characterFor(order.customer).retry.audio);
+    }
+  }, [state.feedback, state.mistakes, state.activeTable, play]);
   useEffect(() => {
     if (testMode) return;
     let cancelled = false;
@@ -297,14 +301,10 @@ export default function App() {
     </div>
   );
   const order = getOrder(state, table, content);
+  const character = order ? characterFor(order.customer) : undefined;
   const customer = state.customers.find((c) => c.table === table);
   const total = order ? orderTotal(order, content) : 0;
-  const allWords = [
-    ...content.foods.map((f) => f.word),
-    ...content.orders.flatMap((o) => o.line.tokens),
-    ...content.thanks.tokens,
-    ...content.retry.tokens,
-  ];
+  const allWords = contentWords(content);
   const words = [
     ...new Map(
       allWords.filter((w) => state.journal[w.id]).map((w) => [w.id, w]),
@@ -317,7 +317,7 @@ export default function App() {
   const completePayment = () => {
     if (!order) return;
     dispatch({ type: "pay", table, change });
-    if (change === order.paid - total) play(content.thanks.audio);
+    if (change === order.paid - total) play(characterFor(order.customer).thanks.audio);
   };
   if (!ready) return <main className="loading">早安，小馆正在开门。</main>;
   return (
@@ -415,6 +415,7 @@ export default function App() {
             <div className="customer-list">
               {state.customers.map((c) => {
                 const o = getOrder(state, c.table, content);
+                const appearance = o ? characterFor(o.customer).appearance : undefined;
                 return (
                   <button
                     key={c.table}
@@ -423,10 +424,12 @@ export default function App() {
                     aria-label={`${c.table}桌 ${o?.customer} ${phases[c.phase]}`}
                   >
                     <span
-                      className={`portrait portrait-${c.table}`}
+                      className="portrait"
+                      data-accessory={appearance?.accessory}
+                      style={{color: `rgb(${appearance?.hair.join(",")})`}}
                       aria-hidden="true"
                     >
-                      <i />
+                      <i style={{background: `rgb(${appearance?.shirt.join(",")})`}} />
                     </span>
                     <span className="customer-info">
                       <b>{o?.customer}</b>
@@ -542,21 +545,19 @@ export default function App() {
                 <p className="help-foot">没有倒计时，慢慢听就好。</p>
               </>
             )}
-            {panel === "table" && order && customer && (
+            {panel === "table" && order && customer && character && (
               <>
                 <div className="dialogue-heading">
                   <span>
                     {table}桌 · {order.customer}
                   </span>
-                  {customer.phase !== "served" && (
-                    <button
+                  <button
                       className="round-button"
                       aria-label="再听一遍"
-                      onClick={() => play(order.line.audio)}
+                      onClick={() => play(customer.phase === "served" ? character.thanks.audio : order.line.audio)}
                     >
                       <Speaker />
                     </button>
-                  )}
                 </div>
                 {customer.phase === "served" ? (
                   <>
@@ -582,7 +583,7 @@ export default function App() {
                       </p>
                       <span className="thanks-chop">多谢</span>
                     </div>
-                    {tokens(content.thanks)}
+                    {tokens(character.thanks)}
                     <button className="primary" onClick={close}>
                       继续招呼 <span>→</span>
                     </button>
@@ -606,9 +607,10 @@ export default function App() {
                       <button onClick={() => setChange(0)}>重来</button>
                     </div>
                     {state.feedback === "wrong-change" && (
-                      <p role="status" className="gentle-feedback">
-                        再算一算，慢慢来。
-                      </p>
+                      <div role="status" className="gentle-feedback">
+                        {tokens(character.retry)}
+                        <p>再算一算，慢慢来。</p>
+                      </div>
                     )}
                     <button className="primary" onClick={completePayment}>
                       递上找零 <span>→</span>
@@ -616,11 +618,15 @@ export default function App() {
                   </>
                 ) : (
                   <>
+                    <div className="character-greeting">
+                      {tokens(character.greeting)}
+                      <button className="round-button" aria-label="听招呼" onClick={() => play(character.greeting.audio)}><Speaker /></button>
+                    </div>
                     {tokens(order.line)}
                     <p className="subtle">点字听词 · 记住后去厨房取餐</p>
                     {state.feedback === "wrong-food" && (
                       <div className="gentle-feedback" role="status">
-                        {tokens(content.retry)}
+                        {tokens(character.retry)}
                         <p>可以回厨房放下，再拿一次。</p>
                       </div>
                     )}

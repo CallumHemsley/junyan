@@ -17,3 +17,6 @@ test-results/
 playwright-report/
 *.tsbuildinfo
 .playwright-cli/
+
+# Local audio writer lock
+public/audio/.content-audio.lock

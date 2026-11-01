@@ -22,7 +22,18 @@ export type Order = {
   items: { foodId: string; quantity: number }[];
   paid: number;
 };
+export type Character = {
+  id: string;
+  name: string;
+  voiceId: string;
+  personality: string;
+  appearance: { shirt: [number, number, number]; hair: [number, number, number]; accessory: "bun" | "tie" | "glasses" | "backpack" };
+  greeting: Line;
+  thanks: Line;
+  retry: Line;
+};
 export type Content = {
+  characters: Character[];
   foods: Food[];
   orders: Order[];
   thanks: Line;

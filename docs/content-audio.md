@@ -70,7 +70,9 @@ content. Never write production content pointing at an ignored smoke directory.
    affected assets to get new names. Changing an editorial voice ID alone does
    not change the audio identity. `wordVoice` selects shared dictionary speech.
 2. **Character:** add `{id, name, voiceId, personality, greeting, thanks, retry}`
-   to `content.characters`. `personality` is editorial English, not model input.
+   to `content.characters`. `personality` is editorial English, not model input. Also provide `appearance`
+   with RGB `shirt` and `hair` tuples and a supported `accessory` (`bun`, `tie`,
+   `glasses`, or `backpack`); the game renders these through Pixel Plays.
    Match each order's `customer` to exactly one character's display `name`.
 3. **Line:** author `{id, tokens: Word[], audio}` in the appropriate character or
    order. Tokens retain authored `id`, `hanzi`, `pinyin`, `gloss`, `audio`.
@@ -135,7 +137,7 @@ Each accepted asset saves manifest provenance atomically before its references
 become eligible. No cache garbage collection runs: old content-addressed clips
 remain so another content version can still reference them.
 
-Both engines save native-rate PCM16. Qwen float samples are quantized directly;
+Both engines save native-rate mono PCM16 at 24 kHz; other sample rates are rejected. Qwen float samples are quantized directly;
 there is **no** gain change, loudness normalization, trimming or resampling.
 Checks reject nonfinite samples, silence/near-silence, clipping, PCM boundary
 saturation, truncated WAVs, takes shorter than 120ms and abnormal long takes

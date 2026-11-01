@@ -19,6 +19,7 @@ const word: Word = {
 };
 const line = { id: "line", tokens: [word], audio: "/line.wav" };
 const content: Content = {
+  characters: [],
   foods: [
     { id: "bun", word, price: 2, kind: "bun" },
     {
@@ -330,6 +331,21 @@ describe("determinism, journal and content safety", () => {
       expect(state.customers.every((entry) => entry.phase === "seated")).toBe(
         true,
       );
+    }
+  });
+
+  it("journals words that appear only in character greetings and reactions", () => {
+    const withCharacters: Content = {...content, characters: [{
+      id: "teacher", name: "张老师", voiceId: "uncle-fu", personality: "Patient teacher",
+      appearance: {shirt: [193,158,85], hair: [190,188,177], accessory: "glasses"},
+      greeting: {...line, tokens: [{...word, id: "greeting-only"}]},
+      thanks: {...line, tokens: [{...word, id: "thanks-only"}]},
+      retry: {...line, tokens: [{...word, id: "retry-only"}]},
+    }]};
+    let state = createGame(withCharacters, 42);
+    for (const wordId of ["greeting-only", "thanks-only", "retry-only"]) {
+      state = reduceGame(state, {type: "lookup", wordId, now: 123}, withCharacters);
+      expect(state.journal[wordId]).toEqual({lookups: 1, lastSeen: 123});
     }
   });
 

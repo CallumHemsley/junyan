@@ -2,6 +2,7 @@ import {useEffect, useRef} from 'react';
 import {KITCHEN, TABLES, type GameState, type Position} from '../contracts';
 import {createRenderer, groundPosition, projectPosition} from './renderer.js';
 import './scene.css';
+import {characterFor, content} from '../content';
 
 export {projectPosition} from './renderer.js';
 export type RestaurantSceneProps = {
@@ -17,7 +18,7 @@ export default function RestaurantScene({state,onMove,onTable,onKitchen}:Restaur
   useEffect(()=>{current.current=state;},[state]);
   useEffect(()=>{
     if (!canvas.current) return;
-    const renderer=createRenderer(canvas.current,TABLES);
+    const renderer=createRenderer(canvas.current,TABLES,Object.fromEntries(content.orders.map(order => [order.id, characterFor(order.customer).appearance])));
     const preference=window.matchMedia('(prefers-reduced-motion: reduce)');
     const player={...current.current.player,yaw:Math.PI/2};
     let frame=0, last=0, lastDraw=-Infinity;
