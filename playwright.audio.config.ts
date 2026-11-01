@@ -2,6 +2,7 @@ import { defineConfig, devices } from "@playwright/test";
 
 process.env.AUDIO_PREVIEW_URL ??= "http://127.0.0.1:5185/junyan/";
 process.env.JUNYAN_PREVIEW_URL ??= "http://127.0.0.1:5185/junyan/";
+process.env.JUNYAN_HELP_PREVIEW_URL ??= "http://127.0.0.1:5185/junyan/";
 
 export default defineConfig({
   testDir: "./e2e", workers: 1, timeout: 90000,
@@ -15,11 +16,11 @@ export default defineConfig({
       use: { ...devices["Desktop Chrome"], launchOptions: { args: ["--mute-audio", "--autoplay-policy=user-gesture-required"] } },
     },
     {
-      name: "audio-desktop-journey", testMatch: ["waiter.spec.ts", "offline.spec.ts", "overlay-focus.spec.ts", "save.spec.ts"],
+      name: "audio-desktop-journey", testMatch: ["waiter.spec.ts", "offline.spec.ts", "overlay-focus.spec.ts", "save.spec.ts", "learning-help.spec.ts"],
       use: { ...devices["Desktop Chrome"], viewport: { width: 1440, height: 1000 }, launchOptions: { args: ["--mute-audio"] } },
     },
     {
-      name: "audio-phone-journey", testMatch: ["waiter.spec.ts", "overlay-focus.spec.ts", "save.spec.ts"],
+      name: "audio-phone-journey", testMatch: ["waiter.spec.ts", "overlay-focus.spec.ts", "save.spec.ts", "learning-help.spec.ts"],
       use: { ...devices["iPhone 13"], browserName: "chromium", launchOptions: { args: ["--mute-audio"] } },
     },
   ],

@@ -1,6 +1,9 @@
 import { test, expect, type Page } from "@playwright/test";
 import { probeAudio, silentResponse, silentWav } from "./audio-fixtures";
 import { readdir, readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import content from "../src/content/content.json" with { type: "json" };
+import manifest from "../public/audio/manifest.json" with { type: "json" };
 import { KITCHEN, TABLES, type Order } from "../src/contracts";
 
 const failure = "声音暂时没有播出，再点一次听听。";
@@ -114,6 +117,7 @@ test("day reset invalidates pending audio without polluting the next dialogue", 
 });
 
 test("expired walking gesture reports native policy rejection and direct replay recovers", async ({ page }, info) => {
+  test.skip(!["audio-webkit", "audio-chromium"].includes(info.project.name), "Requires the dedicated WebKit or strict-autoplay Chromium audio project");
   await page.addInitScript(() => {
     const frame = window.requestAnimationFrame.bind(window);
     window.requestAnimationFrame = callback => frame(() => setTimeout(() => callback(performance.now()), 600));
@@ -189,15 +193,25 @@ test("advancing the day invalidates audio even with the table panel still open",
 test("raw repository WAVs contain PCM samples and silent fixtures preserve headers and duration", async () => {
   const directory = new URL("../public/audio/", import.meta.url);
   const files = (await readdir(directory)).filter(name => name.endsWith(".wav"));
-  expect(files).toHaveLength(67);
+  expect(files).toHaveLength(85);
+  expect(files.sort()).toEqual(manifest.clips.map(clip => clip.filename).sort());
+  const referenced = new Set<string>();
+  const collectAudio = (value: unknown) => {
+    if (typeof value === "string" && value.startsWith("/audio/")) referenced.add(value.slice(7));
+    else if (value && typeof value === "object") Object.values(value).forEach(collectAudio);
+  };
+  collectAudio(content);
+  expect([...referenced].sort()).toEqual(files);
   for (const file of files) {
     const original = await readFile(new URL(file, directory));
+    expect(createHash("sha256").update(original).digest("hex")).toBe(manifest.clips.find(clip => clip.filename === file)!.sha256);
     const silent = silentWav(original);
     expect(silent.length).toBe(original.length);
     let dataBytes = 0;
     for (let offset = 12; offset + 8 <= original.length;) {
       const size = original.readUInt32LE(offset + 4);
       if (original.toString("ascii", offset, offset + 4) === "data") {
+        expect(silent.subarray(offset, offset + 8)).toEqual(original.subarray(offset, offset + 8));
         expect(original.subarray(offset + 8, offset + 8 + size).some(sample => sample !== 0)).toBe(true);
         expect(silent.subarray(offset + 8, offset + 8 + size).every(sample => sample === 0)).toBe(true);
         dataBytes += size;
