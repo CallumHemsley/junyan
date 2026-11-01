@@ -69,7 +69,7 @@ export default function App() {
   );
   const play = useCallback((url: string) => {
     audioRef.current?.pause();
-    const audio = new Audio(url);
+    const audio = new Audio(import.meta.env.BASE_URL + url.slice(1));
     audioRef.current = audio;
     setAudioError(false);
     audio.play().catch(() => setAudioError(true));

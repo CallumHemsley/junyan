@@ -1,20 +1,30 @@
 import { test, expect } from "@playwright/test";
 import content from "../src/content/content.json" with { type: "json" };
 
-test.use({ baseURL: "http://127.0.0.1:5177" });
+test.use({ baseURL: "http://127.0.0.1:5177/junyan/" });
 
 test("production keeps the restaurant and Mandarin audio available offline", async ({
   page,
   context,
 }) => {
   const errors: string[] = [];
+  const audioRequests: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto("/?test=1&seed=42");
+  page.on("request", request => {
+    if (request.url().endsWith(".wav")) audioRequests.push(request.url());
+  });
+  await page.goto("./?test=1&seed=42");
   await expect(page.getByRole("button", { name: "开门迎客" })).toBeVisible();
   await page.waitForFunction(() => Boolean(navigator.serviceWorker.controller));
   expect(await page.evaluate(() => typeof (window as any).__TEST__)).toBe(
     "undefined",
   );
+  expect(await page.evaluate(async () => {
+    const manifestUrl = document.querySelector<HTMLLinkElement>('link[rel="manifest"]')!.href;
+    const manifest = await (await fetch(manifestUrl)).json();
+    return [manifest.start_url, manifest.scope, manifest.icons[0].src]
+      .map(path => new URL(path, manifestUrl).pathname);
+  })).toEqual(["/junyan/", "/junyan/", "/junyan/icon.svg"]);
   await context.setOffline(true);
   await page.reload();
   await page.getByRole("button", { name: "开门迎客" }).click();
@@ -29,9 +39,11 @@ test("production keeps the restaurant and Mandarin audio available offline", asy
         audio.oncanplaythrough = () => resolve(audio.duration);
         audio.onerror = () => reject(Error(`Mandarin audio unavailable offline: ${path}`));
         audio.load();
-      }), path,
+      }), `/junyan${path}`,
     );
     expect(duration).toBeGreaterThan(0);
   }
+  expect(audioRequests.length).toBeGreaterThan(0);
+  expect(audioRequests.every(url => new URL(url).pathname.startsWith("/junyan/audio/"))).toBe(true);
   expect(errors).toEqual([]);
 });

@@ -36,3 +36,9 @@ Four regulars use four local voices: Serena (林姐, warm neighbour), Yunxi (小
 `?test=1&seed=42` exposes `window.__TEST__` only in development builds. Production builds do not expose it.
 
 The change in game direction is recorded in [decision 3](docs/decisions/0003-pixel-waiter.md). Backlog and design notes remain under [`docs/`](docs/).
+
+## GitHub Pages
+
+The sharing address is https://callumhemsley.github.io/junyan/ once Pages is enabled. The `gh-pages` branch contains only the compiled static game. In repository **Settings → Pages**, select **Deploy from a branch**, **gh-pages**, **/(root)**, then **Save**. No source merge, backend, custom domain or paid service is required. Future source pushes do not automatically rebuild this publication; rebuild and publish the static branch when updating the shared game.
+
+`pnpm build` uses relative asset URLs, so the same output works at `/` or `/junyan/`. To test the deployment subpath locally, run `pnpm exec vite preview --base /junyan/ --host 127.0.0.1 --port 5177 --strictPort` and open http://127.0.0.1:5177/junyan/. The production offline browser test uses this path and checks all four character voices plus word audio. Bundled dependency notices are distributed in `THIRD-PARTY-NOTICES.txt`.

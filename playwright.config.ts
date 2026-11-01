@@ -33,8 +33,8 @@ export default defineConfig({
     },
     {
       command:
-        "pnpm build && pnpm exec vite preview --host 127.0.0.1 --port 5177 --strictPort",
-      url: "http://127.0.0.1:5177",
+        "pnpm build && pnpm exec vite preview --base /junyan/ --host 127.0.0.1 --port 5177 --strictPort",
+      url: "http://127.0.0.1:5177/junyan/",
       reuseExistingServer: !process.env.CI,
       timeout: 30000,
     },

@@ -22,7 +22,7 @@ export function offline(): Plugin {
         "dist/sw.js",
         `
 const CACHE=${JSON.stringify(cache)};
-const FILES=${JSON.stringify(["/", ...files.map((file) => `/${file}`)])};
+const FILES=${JSON.stringify(["./", ...files])}.map(file=>new URL(file,self.registration.scope).href);
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('junyan-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
 // Static same-origin assets have identical content regardless of Vary: Origin.
