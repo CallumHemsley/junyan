@@ -57,6 +57,8 @@ export default function App() {
     "none" | "table" | "kitchen" | "journal" | "help"
   >("help");
   const [table, setTable] = useState(1);
+  const [helpExpanded, setHelpExpanded] = useState(false);
+  const [dayExpanded, setDayExpanded] = useState(false);
   const [word, setWord] = useState<Word | null>(null);
   const wordTrigger = useRef<HTMLButtonElement | null>(null);
   const wordOpen = word !== null;
@@ -343,6 +345,14 @@ export default function App() {
     dispatch({ type: "pay", table, change });
     if (change === order.paid - total) play(characterFor(order.customer).thanks.audio);
   };
+  const activeCustomer = state.customers.find((entry) => entry.table === state.activeTable);
+  const waitingCustomer = activeCustomer?.phase === "ordered"
+    ? activeCustomer
+    : state.customers.find((entry) => entry.phase === "ordered");
+  const nextCustomer = state.customers.find((entry) => entry.phase === "checkout")
+    ?? (state.tray.length > 0 ? waitingCustomer : undefined);
+  const needsKitchen = !nextCustomer && Boolean(waitingCustomer);
+  const nextTable = nextCustomer ?? state.customers.find((entry) => entry.phase === "seated");
   if (!ready) return <main className="loading">早安，小馆正在开门。</main>;
   return (
     <div className="app-shell">
@@ -355,7 +365,7 @@ export default function App() {
             君言<span className="brand-divider"> / </span>早安小馆
           </span>
         </a>
-        <nav>
+        <nav aria-label="小馆">
           <button
             onClick={() => {
               motion.current = null;
@@ -373,47 +383,24 @@ export default function App() {
             aria-label="怎么玩"
             onClick={() => setPanel("help")}
           >
-            ?
+            怎么玩
           </button>
         </nav>
       </header>
       <main inert={panel !== "none" || wordOpen || dayEndOpen}>
-        <div className="day-heading">
-          <div>
-            <p className="eyebrow">
-              {dayNames[state.day] || `第${state.day}天`} <span>·</span> 早市
-            </p>
-            <h1>一桌一味，慢慢记住。</h1>
-          </div>
-          <div className="day-stats">
-            <span>
-              <b>{state.served}</b> / 4 桌
-            </span>
-            <span>
-              <b>{state.earnings}</b> 块
-            </span>
-          </div>
-        </div>
         <div className="play-layout">
           <section className="world-panel" aria-label="早安小馆餐厅">
             <div className="world-caption">
-              <span className="sun-mark">
+              <button className="day-toggle" aria-expanded={dayExpanded} aria-controls="day-details" onClick={() => setDayExpanded(!dayExpanded)}>
                 <Sun />
-              </span>
-              <span>
-                {state.level === 1
-                  ? "先从一道菜开始。"
-                  : state.level === 2
-                    ? "记住数量，再去取餐。"
-                    : "多了几道菜，慢慢听。"}
-              </span>
-              <span className="level">
-                {state.level === 1
-                  ? "一道菜"
-                  : state.level === 2
-                    ? "两样菜"
-                    : "三样菜"}
-              </span>
+                <span>{dayNames[state.day] || `第${state.day}天`} · 早市</span>
+                <span aria-hidden="true">{dayExpanded ? "−" : "+"}</span>
+              </button>
+              <span className="day-progress" aria-label={`招呼客人 ${state.served} / 4 桌`}>{state.served} / 4 桌</span>
+            </div>
+            <div className="day-details" id="day-details" hidden={!dayExpanded}>
+              <span>小馆进账 {state.earnings} 块</span>
+              <span>{state.level === 1 ? "一道菜" : state.level === 2 ? "两样菜" : "三样菜"}</span>
             </div>
             <RestaurantScene
               state={state}
@@ -422,24 +409,16 @@ export default function App() {
               onKitchen={visitKitchen}
             />
             <div className="world-footer">
-              <span>{moving ? "走过去…" : "点桌子听点餐 · 点厨房取餐"}</span>
-              <span className="keyboard-hint">
-                ↑ ↓ ← → 走动 <kbd>E</kbd> 招呼
-              </span>
-              <button className="small-link" onClick={() => setPanel("help")}>
-                怎么玩
+              <span className="next-hint" role="status">{moving ? "走过去…" : ""}</span>
+              <button className="primary next-action" disabled={!needsKitchen && !nextTable} aria-label={needsKitchen ? "去厨房取餐" : `招呼${nextTable?.table ?? ""}桌`} onClick={() => needsKitchen ? visitKitchen() : nextTable && visitTable(nextTable.table)}>
+                {needsKitchen ? "去厨房取餐" : nextTable ? `${nextTable.table}桌 · ${nextTable.phase === "checkout" ? "找零" : nextTable.phase === "ordered" ? "上菜" : "听点餐"}` : "多谢"}<span aria-hidden="true">→</span>
               </button>
             </div>
           </section>
-          <aside className="side-panel">
-            <div className="section-label">
-              <span>今日客人</span>
-              <span>四位老朋友</span>
-            </div>
-            <div className="customer-list">
+          <section className="service-strip" aria-label="今日客人和托盘">
+            <div className="customer-list" role="group" aria-label="今日客人">
               {state.customers.map((c) => {
                 const o = getOrder(state, c.table, content);
-                const appearance = o ? characterFor(o.customer).appearance : undefined;
                 return (
                   <button
                     key={c.table}
@@ -447,36 +426,22 @@ export default function App() {
                     onClick={() => visitTable(c.table)}
                     aria-label={`${c.table}桌 ${o?.customer} ${phases[c.phase]}`}
                   >
-                    <span
-                      className="portrait"
-                      data-accessory={appearance?.accessory}
-                      style={{color: `rgb(${appearance?.hair.join(",")})`}}
-                      aria-hidden="true"
-                    >
-                      <i style={{background: `rgb(${appearance?.shirt.join(",")})`}} />
-                    </span>
+                    <span className="table-number">{c.table}桌</span>
                     <span className="customer-info">
                       <b>{o?.customer}</b>
                       <small>{phases[c.phase]}</small>
                     </span>
-                    <span className="table-number">{c.table}桌</span>
                   </button>
                 );
               })}
             </div>
-            <div className="tray-section">
+            <div className="tray-section" role="group" aria-label="托盘">
               <div className="section-label">
                 <span>托盘</span>
                 <span>{state.tray.length} / 6</span>
               </div>
               <div className="tray">
-                {state.tray.length === 0 ? (
-                  <div className="empty-tray">
-                    <span className="tray-line" />
-                    <p>听完点餐，去厨房看看。</p>
-                  </div>
-                ) : (
-                  state.tray.map((id, i) => {
+                {state.tray.map((id, i) => {
                     const food = content.foods.find((f) => f.id === id)!;
                     return (
                       <button
@@ -489,28 +454,14 @@ export default function App() {
                         <span>{food.word.hanzi}</span>
                       </button>
                     );
-                  })
-                )}
+                  })}
               </div>
-              <button className="kitchen-link" onClick={visitKitchen}>
-                去厨房取餐 <span>↗</span>
+              <button className="kitchen-link" aria-label="厨房" onClick={visitKitchen}>
+                厨房 <span aria-hidden="true">↗</span>
               </button>
             </div>
-            <div className="learning-note">
-              <span className="note-mark">言</span>
-              <p>
-                听见一个词，
-                <br />
-                也记住一道早饭。
-              </p>
-              <small>不认识的字，点一下。</small>
-            </div>
-          </aside>
+          </section>
         </div>
-        <footer className="page-footer">
-          <span>早餐热着，慢慢来。</span>
-          <span>君言 · 语言在生活里</span>
-        </footer>
         {saveError && (
           <p role="status" className="save-note">
             本次进度暂时无法保存，请保持页面打开。
@@ -539,43 +490,54 @@ export default function App() {
             </button>
             {panel === "help" && (
               <div className="learning-help">
-                {[content.help.welcome, content.help.lookup].map((line) => (
-                  <div className="help-line" key={line.id}>
-                    {tokens(line)}
-                    <button className="round-button" aria-label={`听${line.tokens.map((token) => token.hanzi).join("")}`} onClick={() => play(line.audio)}><Speaker /></button>
-                  </div>
-                ))}
-                <ol className="learning-help-steps">
-                  {content.help.steps.map((step, index) => (
-                    <li key={step.id} data-help-step={step.id}>
-                      <span className="help-step-number" aria-hidden="true">{["一", "二", "三"][index]}</span>
-                      <svg className="help-picture" viewBox="0 0 240 76" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        {step.id === "order" ? <>
-                          <circle cx="35" cy="17" r="9" /><path d="M20 42q0-18 15-18t15 18M12 46h66M22 46v22m45-22v22" />
-                          <path d="M60 15h53v26H86l-10 9v-9H60zM125 39h25m-7-7 7 7-7 7M164 19h54v39h-54zM174 30h34m-34 10h25m-25 10h30" />
-                          <path d="m47 70-6-10q-3-6 1-6l6 5V42q0-5 5-3v17l8-2q5 0 5 5v11" />
-                        </> : step.id === "kitchen" ? <>
-                          <path d="M12 46h81v21H12zM20 46V28h64v18M18 28q34-25 68 0M35 14q-5-5 0-10m16 9q-5-5 0-10m16 11q-5-5 0-10M108 39h25m-7-7 7 7-7 7M151 56h77l-8 10h-61z" />
-                          <ellipse cx="178" cy="43" rx="17" ry="12" /><path d="M165 41q13-22 26 0m-15-9 2 10M205 29h15l-2 25h-11z" />
-                        </> : <>
-                          <path d="M8 42h65l-7 10H15zM18 41q0-20 20-20t20 20M30 23l8 10 8-10M85 39h22m-7-7 7 7-7 7M122 50h64m-55 0v18m46-18v18" />
-                          <ellipse cx="152" cy="42" rx="17" ry="6" /><circle cx="169" cy="14" r="8" /><path d="M157 32q0-11 12-11t12 11M204 13v20m-5-7 5 7 5-7" />
-                          <circle cx="204" cy="46" r="10" /><circle cx="220" cy="61" r="10" /><path d="M201 43h6m-6 6h6m10 9h6m-6 6h6" />
-                        </>}
-                      </svg>
-                      <div className="help-line">
-                        {tokens(step.line)}
-                        <button className="round-button" aria-label={`听${step.line.tokens.map((token) => token.hanzi).join("")}`} onClick={() => play(step.line.audio)}><Speaker /></button>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
+                <div className="help-line">
+                  {tokens(content.help.welcome)}
+                  <button className="round-button" aria-label={`听${content.help.welcome.tokens.map((token) => token.hanzi).join("")}`} onClick={() => play(content.help.welcome.audio)}><Speaker /></button>
+                </div>
                 <button className="primary" onClick={close}>
                   开门迎客 <span>→</span>
                 </button>
-                <div className="help-line">
-                  {tokens(content.help.pace)}
-                  <button className="round-button" aria-label="听慢慢来" onClick={() => play(content.help.pace.audio)}><Speaker /></button>
+                <button className="help-disclosure" aria-expanded={helpExpanded} aria-controls="help-details" onClick={() => setHelpExpanded(!helpExpanded)}>
+                  怎么玩 <span aria-hidden="true">{helpExpanded ? "−" : "+"}</span>
+                </button>
+                <div id="help-details">
+                  {helpExpanded && (
+                    <>
+                      <div className="help-line">
+                        {tokens(content.help.lookup)}
+                        <button className="round-button" aria-label={`听${content.help.lookup.tokens.map((token) => token.hanzi).join("")}`} onClick={() => play(content.help.lookup.audio)}><Speaker /></button>
+                      </div>
+                      <ol className="learning-help-steps">
+                        {content.help.steps.map((step, index) => (
+                          <li key={step.id} data-help-step={step.id}>
+                            <span className="help-step-number" aria-hidden="true">{["一", "二", "三"][index]}</span>
+                            <svg className="help-picture" viewBox="0 0 240 76" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                              {step.id === "order" ? <>
+                                <circle cx="35" cy="17" r="9" /><path d="M20 42q0-18 15-18t15 18M12 46h66M22 46v22m45-22v22" />
+                                <path d="M60 15h53v26H86l-10 9v-9H60zM125 39h25m-7-7 7 7-7 7M164 19h54v39h-54zM174 30h34m-34 10h25m-25 10h30" />
+                                <path d="m47 70-6-10q-3-6 1-6l6 5V42q0-5 5-3v17l8-2q5 0 5 5v11" />
+                              </> : step.id === "kitchen" ? <>
+                                <path d="M12 46h81v21H12zM20 46V28h64v18M18 28q34-25 68 0M35 14q-5-5 0-10m16 9q-5-5 0-10m16 11q-5-5 0-10M108 39h25m-7-7 7 7-7 7M151 56h77l-8 10h-61z" />
+                                <ellipse cx="178" cy="43" rx="17" ry="12" /><path d="M165 41q13-22 26 0m-15-9 2 10M205 29h15l-2 25h-11z" />
+                              </> : <>
+                                <path d="M8 42h65l-7 10H15zM18 41q0-20 20-20t20 20M30 23l8 10 8-10M85 39h22m-7-7 7 7-7 7M122 50h64m-55 0v18m46-18v18" />
+                                <ellipse cx="152" cy="42" rx="17" ry="6" /><circle cx="169" cy="14" r="8" /><path d="M157 32q0-11 12-11t12 11M204 13v20m-5-7 5 7 5-7" />
+                                <circle cx="204" cy="46" r="10" /><circle cx="220" cy="61" r="10" /><path d="M201 43h6m-6 6h6m10 9h6m-6 6h6" />
+                              </>}
+                            </svg>
+                            <div className="help-line">
+                              {tokens(step.line)}
+                              <button className="round-button" aria-label={`听${step.line.tokens.map((token) => token.hanzi).join("")}`} onClick={() => play(step.line.audio)}><Speaker /></button>
+                            </div>
+                          </li>
+                        ))}
+                      </ol>
+                      <div className="help-line">
+                        {tokens(content.help.pace)}
+                        <button className="round-button" aria-label="听慢慢来" onClick={() => play(content.help.pace.audio)}><Speaker /></button>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             )}

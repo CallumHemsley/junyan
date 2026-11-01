@@ -66,9 +66,8 @@ for (const build of ["development", "production"]) {
       });
     }
 
-    for (const helpButton of [".help-button", ".world-footer .small-link"]) {
+    for (const helpButton of [".help-button"]) {
       test(`Help cancels an in-flight table arrival (${helpButton})`, async ({ page, isMobile }, info) => {
-        test.skip(isMobile && helpButton === ".help-button", "Phone uses the footer Help control; the header control is intentionally hidden.");
         await page.getByRole("button", { name: /^4桌 / }).click();
         await expect(page.locator(".world-footer")).toContainText("走过去");
         await page.locator(helpButton).click();

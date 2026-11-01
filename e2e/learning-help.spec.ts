@@ -10,6 +10,9 @@ test("help narrates authored tokens, shows the sequence and journals lookups wit
   await page.goto("/?test=1&seed=42");
   const help = page.getByRole("dialog", { name: "怎么玩" });
   await expect(help).toBeVisible();
+  await expect(help.getByRole("button", { name: "怎么玩", exact: true })).toHaveAttribute("aria-expanded", "false");
+  await expect(help.locator("[data-help-step]")).toHaveCount(0);
+  await help.getByRole("button", { name: "怎么玩", exact: true }).click();
   await expect(help.locator("[data-help-step]")).toHaveCount(3);
   await expect(help.locator(".help-picture")).toHaveCount(3);
   await expect(help.locator(".pinyin, .gloss")).toHaveCount(0);
@@ -75,6 +78,7 @@ test("small-phone help stays within the viewport and food aids retain pictures w
 test("help-only vocabulary survives a real saved-game reload", async ({ page }) => {
   await page.goto("/");
   const help = page.getByRole("dialog", { name: "怎么玩" });
+  await help.getByRole("button", { name: "怎么玩", exact: true }).click();
   await help.getByRole("button", { name: "厨房", exact: true }).click();
   await page.getByRole("button", { name: "关闭词卡" }).click();
   await expect.poll(() => page.evaluate(async () => {
@@ -103,7 +107,9 @@ test("production precaches every help line and word for offline replay", async (
   await page.waitForFunction(() => Boolean(navigator.serviceWorker.controller));
   await context.setOffline(true);
   await page.reload();
-  await expect(page.getByRole("dialog", { name: "怎么玩" })).toBeVisible();
+  const help = page.getByRole("dialog", { name: "怎么玩" });
+  await expect(help).toBeVisible();
+  await help.getByRole("button", { name: "怎么玩", exact: true }).click();
   const lines = [content.help.welcome, content.help.lookup, ...content.help.steps.map(step => step.line), content.help.pace];
   const paths = [...new Set(lines.flatMap(line => [line.audio, ...line.tokens.map(word => word.audio)]))];
   for (const path of paths) {
@@ -115,6 +121,6 @@ test("production precaches every help line and word for offline replay", async (
     }), path);
     expect(duration).toBeGreaterThan(0);
   }
-  await page.getByRole("button", { name: "厨房", exact: true }).click();
+  await help.getByRole("button", { name: "厨房", exact: true }).click();
   await expect(page.locator(".word-popover .pinyin")).toHaveText("chúfáng");
 });
