@@ -32,6 +32,13 @@ describe('offline Mandarin content', () => {
   it('casts each regular with a stable voice, unique reactions and data-driven appearance', () => {
     expect(voicesSchema.safeParse(voices).success).toBe(true);
     expect(voicesSchema.safeParse({...voices, wordVoice: 'missing'}).success).toBe(false);
+    for (const [voiceId, update] of [
+      ['serena', {speed: 1.2}], ['yunxi', {instructions: 'Speak warmly'}], ['xiaobei', {revision: 'main'}],
+    ] as const) {
+      expect(voicesSchema.safeParse({...voices, voices: {...voices.voices,
+        [voiceId]: {...voices.voices[voiceId], ...update},
+      }}).success).toBe(false);
+    }
     expect(content.characters.map(c => [c.name, c.voiceId, c.appearance.accessory])).toEqual([
       ['林姐', 'serena', 'bun'], ['小李', 'yunxi', 'tie'],
       ['张老师', 'uncle-fu', 'glasses'], ['小周', 'xiaobei', 'backpack'],

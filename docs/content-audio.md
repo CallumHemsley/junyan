@@ -195,3 +195,11 @@ assets with zero generation and zero pending. These ignored fixtures live in
 `output/content-audio-smoke/` in the audio worker checkout; no production content
 or audition worktree files were modified. This is a technical smoke test, not
 native listening approval or whole-corpus verification.
+
+Parent integration on 2026-11-01: all 67 game assets generated (26 full lines,
+41 shared dictionary words; 136.41 seconds). The four character voices are
+referenced by the live content. Byte hashes, speaker routing, PCM format and
+shared-word identity pass content tests. A Python-stdlib-only rerun reused all
+67 clips with zero attempts and zero pending. The production offline browser
+check loads each of the four voices plus a dictionary word with networking off.
+Native listening review remains pending.
