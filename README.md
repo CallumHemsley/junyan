@@ -39,6 +39,6 @@ The change in game direction is recorded in [decision 3](docs/decisions/0003-pix
 
 ## GitHub Pages
 
-The sharing address is https://callumhemsley.github.io/junyan/ once Pages is enabled. The `gh-pages` branch contains only the compiled static game. In repository **Settings → Pages**, select **Deploy from a branch**, **gh-pages**, **/(root)**, then **Save**. No source merge, backend, custom domain or paid service is required. Future source pushes do not automatically rebuild this publication; rebuild and publish the static branch when updating the shared game.
+Play at https://callumhemsley.github.io/junyan/. The `gh-pages` branch contains only the compiled static game; its first push automatically started GitHub's Pages deployment. If Pages ever needs re-enabling, in repository **Settings → Pages**, select **Deploy from a branch**, **gh-pages**, **/(root)**, then **Save**. No source merge, backend, custom domain or paid service is required. Future source pushes do not automatically rebuild this publication; rebuild and publish the static branch when updating the shared game.
 
 `pnpm build` uses relative asset URLs, so the same output works at `/` or `/junyan/`. To test the deployment subpath locally, run `pnpm exec vite preview --base /junyan/ --host 127.0.0.1 --port 5177 --strictPort` and open http://127.0.0.1:5177/junyan/. The production offline browser test uses this path and checks all four character voices plus word audio. Bundled dependency notices are distributed in `THIRD-PARTY-NOTICES.txt`.
