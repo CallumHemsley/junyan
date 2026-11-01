@@ -1,0 +1,126 @@
+{
+  "language": "zh-CN",
+  "purpose": "Native Mandarin voice comparison; pronunciation notes are proposed targets for human review, not input markup.",
+  "lines": [
+    {
+      "id": "T01",
+      "character": "Teacher",
+      "text": "你好，来一杯茶。",
+      "reviewPronunciation": "你好 `ni2 hao3` / 来 `lai2` / 一杯 `yi4 bei1` / 茶 `cha2`"
+    },
+    {
+      "id": "T02",
+      "character": "Grandmother",
+      "text": "老板，来一碗粥。",
+      "reviewPronunciation": "老板 `lao2 ban3` / 来 `lai2` / 一碗 `yi4 wan3` / 粥 `zhou1`"
+    },
+    {
+      "id": "T03",
+      "character": "Child",
+      "text": "来一个包子。",
+      "reviewPronunciation": "来 `lai2` / 一个 `yi2 ge5` / 包子 `bao1 zi5`"
+    },
+    {
+      "id": "T04",
+      "character": "Office worker",
+      "text": "不是冰的，要热的。",
+      "reviewPronunciation": "不是 `bu2 shi4` / 冰 `bing1` / 的 `de5` / 要 `yao4` / 热 `re4` / 的 `de5`"
+    },
+    {
+      "id": "T05",
+      "character": "Child",
+      "text": "不喝茶，要豆浆。",
+      "reviewPronunciation": "不 `bu4` / 喝 `he1` / 茶 `cha2` / 要 `yao4` / 豆浆 `dou4 jiang1`"
+    },
+    {
+      "id": "T06",
+      "character": "Grandmother",
+      "text": "一杯豆浆，一个馒头。",
+      "reviewPronunciation": "一杯 `yi4 bei1` / 豆浆 `dou4 jiang1` / 一个 `yi2 ge5` / 馒头 `man2 tou5`"
+    },
+    {
+      "id": "T07",
+      "character": "Office worker",
+      "text": "这样行吗？",
+      "reviewPronunciation": "这样 `zhe4 yang4` / 行 `xing2` / 吗 `ma5`"
+    },
+    {
+      "id": "T08",
+      "character": "Teacher",
+      "text": "银行就在对面。",
+      "reviewPronunciation": "银行 `yin2 hang2` / 就 `jiu4` / 在 `zai4` / 对面 `dui4 mian4`"
+    },
+    {
+      "id": "T09",
+      "character": "Office worker",
+      "text": "今天得上班。",
+      "reviewPronunciation": "今天 `jin1 tian1` / 得 `dei3` / 上班 `shang4 ban1`"
+    },
+    {
+      "id": "T10",
+      "character": "Grandmother",
+      "text": "包子做得真香。",
+      "reviewPronunciation": "包子 `bao1 zi5` / 做 `zuo4` / 得 `de5` / 真 `zhen1` / 香 `xiang1`"
+    },
+    {
+      "id": "T11",
+      "character": "Teacher",
+      "text": "这次得分很高。",
+      "reviewPronunciation": "这次 `zhe4 ci4` / 得分 `de2 fen1` / 很 `hen3` / 高 `gao1`"
+    },
+    {
+      "id": "T12",
+      "character": "Child",
+      "text": "我吃完了。",
+      "reviewPronunciation": "我 `wo3` / 吃 `chi1` / 完 `wan2` / 了 `le5`"
+    },
+    {
+      "id": "T13",
+      "character": "Teacher",
+      "text": "现在了解了。",
+      "reviewPronunciation": "现在 `xian4 zai4` / 了解 `liao2 jie3` / 了 `le5`"
+    },
+    {
+      "id": "T14",
+      "character": "Grandmother",
+      "text": "还要一根油条。",
+      "reviewPronunciation": "还 `hai2` / 要 `yao4` / 一根 `yi4 gen1` / 油条 `you2 tiao2`"
+    },
+    {
+      "id": "T15",
+      "character": "Child",
+      "text": "杯子明天还。",
+      "reviewPronunciation": "杯子 `bei1 zi5` / 明天 `ming2 tian1` / 还 `huan2`"
+    },
+    {
+      "id": "T16",
+      "character": "Child",
+      "text": "我要长高。",
+      "reviewPronunciation": "我 `wo3` / 要 `yao4` / 长高 `zhang3 gao1`"
+    },
+    {
+      "id": "T17",
+      "character": "Office worker",
+      "text": "队伍太长了。",
+      "reviewPronunciation": "队伍 `dui4 wu5` / 太 `tai4` / 长 `chang2` / 了 `le5`"
+    },
+    {
+      "id": "T18",
+      "character": "Grandmother",
+      "text": "这个袋子太重了。",
+      "reviewPronunciation": "这个 `zhe4 ge5` / 袋子 `dai4 zi5` / 太 `tai4` / 重 `zhong4` / 了 `le5`"
+    },
+    {
+      "id": "T19",
+      "character": "Teacher",
+      "text": "请重新说一遍。",
+      "reviewPronunciation": "请 `qing3` / 重新 `chong2 xin1` / 说 `shuo1` / 一遍 `yi2 bian4`"
+    },
+    {
+      "id": "T20",
+      "character": "Office worker",
+      "text": "还要一杯，杯子明天还。",
+      "reviewPronunciation": "还 `hai2` / 要 `yao4` / 一杯 `yi4 bei1` / 杯子 `bei1 zi5` / 明天 `ming2 tian1` / 还 `huan2`"
+    }
+  ]
+}
