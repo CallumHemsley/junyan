@@ -1,7 +1,7 @@
 ---
 id: 8
 title: Mandarin voice bake-off and the TTS pipeline
-status: todo
+status: doing
 priority: medium
 type: explore
 created: 2026-10-31
@@ -24,3 +24,9 @@ Under decision 0001 the audio carries the tones, so voice quality is core, not p
 - Comparison table and API details in [[ideas/research-ai-assets]] §6.
 - Fish bills per UTF-8 byte, so Chinese costs three times the headline rate.
 - Can run through Codex; it is self-contained.
+
+### Sample preparation — 2026-11-01
+
+- Owner: Codex orchestrator; branch `codex/0008-voice-bakeoff`; worktree `/Users/callumhemsley/Personal/junyan`. No dev server needed for offline audio preparation.
+- User requested real MiniMax, Fish Audio and OpenAI samples for native Mandarin review. Provider work reserved as tickets 0013–0015, using Sol 6.1 medium agents in separate worktrees.
+- No provider credentials were present in the process environment at start. Never substitute prototype/system speech for missing provider output.
