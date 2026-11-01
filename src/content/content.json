@@ -1,0 +1,1091 @@
+{
+  "foods": [
+    {
+      "id": "bun",
+      "word": {
+        "id": "bun",
+        "hanzi": "包子",
+        "pinyin": "bāozi",
+        "gloss": "stuffed steamed bun",
+        "audio": "/audio/word-bun.m4a"
+      },
+      "price": 2,
+      "kind": "bun"
+    },
+    {
+      "id": "bread",
+      "word": {
+        "id": "bread",
+        "hanzi": "馒头",
+        "pinyin": "mántou",
+        "gloss": "plain steamed bun",
+        "audio": "/audio/word-bread.m4a"
+      },
+      "price": 1,
+      "kind": "bread"
+    },
+    {
+      "id": "egg",
+      "word": {
+        "id": "egg",
+        "hanzi": "鸡蛋",
+        "pinyin": "jīdàn",
+        "gloss": "egg",
+        "audio": "/audio/word-egg.m4a"
+      },
+      "price": 2,
+      "kind": "egg"
+    },
+    {
+      "id": "milk",
+      "word": {
+        "id": "milk",
+        "hanzi": "豆浆",
+        "pinyin": "dòujiāng",
+        "gloss": "soy milk",
+        "audio": "/audio/word-milk.m4a"
+      },
+      "price": 3,
+      "kind": "milk"
+    },
+    {
+      "id": "porridge",
+      "word": {
+        "id": "porridge",
+        "hanzi": "粥",
+        "pinyin": "zhōu",
+        "gloss": "rice porridge",
+        "audio": "/audio/word-porridge.m4a"
+      },
+      "price": 3,
+      "kind": "porridge"
+    },
+    {
+      "id": "youtiao",
+      "word": {
+        "id": "youtiao",
+        "hanzi": "油条",
+        "pinyin": "yóutiáo",
+        "gloss": "fried dough stick",
+        "audio": "/audio/word-youtiao.m4a"
+      },
+      "price": 2,
+      "kind": "youtiao"
+    },
+    {
+      "id": "dumpling",
+      "word": {
+        "id": "dumpling",
+        "hanzi": "饺子",
+        "pinyin": "jiǎozi",
+        "gloss": "dumplings",
+        "audio": "/audio/word-dumpling.m4a"
+      },
+      "price": 6,
+      "kind": "dumpling"
+    }
+  ],
+  "orders": [
+    {
+      "id": "order-01",
+      "level": 1,
+      "customer": "王奶奶",
+      "table": 1,
+      "line": {
+        "id": "order-01",
+        "tokens": [
+          {
+            "id": "i",
+            "hanzi": "我",
+            "pinyin": "wǒ",
+            "gloss": "I; me",
+            "audio": "/audio/word-i.m4a"
+          },
+          {
+            "id": "want",
+            "hanzi": "要",
+            "pinyin": "yào",
+            "gloss": "want",
+            "audio": "/audio/word-want.m4a"
+          },
+          {
+            "id": "one",
+            "hanzi": "一",
+            "pinyin": "yī",
+            "gloss": "one",
+            "audio": "/audio/word-one.m4a"
+          },
+          {
+            "id": "piece",
+            "hanzi": "个",
+            "pinyin": "gè",
+            "gloss": "measure word for individual items",
+            "audio": "/audio/word-piece.m4a"
+          },
+          {
+            "id": "bun",
+            "hanzi": "包子",
+            "pinyin": "bāozi",
+            "gloss": "stuffed steamed bun",
+            "audio": "/audio/word-bun.m4a"
+          }
+        ],
+        "audio": "/audio/order-01.m4a"
+      },
+      "items": [
+        {
+          "foodId": "bun",
+          "quantity": 1
+        }
+      ],
+      "paid": 5
+    },
+    {
+      "id": "order-02",
+      "level": 1,
+      "customer": "小李",
+      "table": 2,
+      "line": {
+        "id": "order-02",
+        "tokens": [
+          {
+            "id": "i",
+            "hanzi": "我",
+            "pinyin": "wǒ",
+            "gloss": "I; me",
+            "audio": "/audio/word-i.m4a"
+          },
+          {
+            "id": "want",
+            "hanzi": "要",
+            "pinyin": "yào",
+            "gloss": "want",
+            "audio": "/audio/word-want.m4a"
+          },
+          {
+            "id": "one",
+            "hanzi": "一",
+            "pinyin": "yī",
+            "gloss": "one",
+            "audio": "/audio/word-one.m4a"
+          },
+          {
+            "id": "cup",
+            "hanzi": "杯",
+            "pinyin": "bēi",
+            "gloss": "cup; cupful",
+            "audio": "/audio/word-cup.m4a"
+          },
+          {
+            "id": "milk",
+            "hanzi": "豆浆",
+            "pinyin": "dòujiāng",
+            "gloss": "soy milk",
+            "audio": "/audio/word-milk.m4a"
+          }
+        ],
+        "audio": "/audio/order-02.m4a"
+      },
+      "items": [
+        {
+          "foodId": "milk",
+          "quantity": 1
+        }
+      ],
+      "paid": 5
+    },
+    {
+      "id": "order-03",
+      "level": 1,
+      "customer": "张老师",
+      "table": 3,
+      "line": {
+        "id": "order-03",
+        "tokens": [
+          {
+            "id": "i",
+            "hanzi": "我",
+            "pinyin": "wǒ",
+            "gloss": "I; me",
+            "audio": "/audio/word-i.m4a"
+          },
+          {
+            "id": "want",
+            "hanzi": "要",
+            "pinyin": "yào",
+            "gloss": "want",
+            "audio": "/audio/word-want.m4a"
+          },
+          {
+            "id": "one",
+            "hanzi": "一",
+            "pinyin": "yī",
+            "gloss": "one",
+            "audio": "/audio/word-one.m4a"
+          },
+          {
+            "id": "bowl",
+            "hanzi": "碗",
+            "pinyin": "wǎn",
+            "gloss": "bowl; bowlful",
+            "audio": "/audio/word-bowl.m4a"
+          },
+          {
+            "id": "porridge",
+            "hanzi": "粥",
+            "pinyin": "zhōu",
+            "gloss": "rice porridge",
+            "audio": "/audio/word-porridge.m4a"
+          }
+        ],
+        "audio": "/audio/order-03.m4a"
+      },
+      "items": [
+        {
+          "foodId": "porridge",
+          "quantity": 1
+        }
+      ],
+      "paid": 5
+    },
+    {
+      "id": "order-04",
+      "level": 1,
+      "customer": "小周",
+      "table": 4,
+      "line": {
+        "id": "order-04",
+        "tokens": [
+          {
+            "id": "i",
+            "hanzi": "我",
+            "pinyin": "wǒ",
+            "gloss": "I; me",
+            "audio": "/audio/word-i.m4a"
+          },
+          {
+            "id": "want",
+            "hanzi": "要",
+            "pinyin": "yào",
+            "gloss": "want",
+            "audio": "/audio/word-want.m4a"
+          },
+          {
+            "id": "one",
+            "hanzi": "一",
+            "pinyin": "yī",
+            "gloss": "one",
+            "audio": "/audio/word-one.m4a"
+          },
+          {
+            "id": "stick",
+            "hanzi": "根",
+            "pinyin": "gēn",
+            "gloss": "measure word for long thin items",
+            "audio": "/audio/word-stick.m4a"
+          },
+          {
+            "id": "youtiao",
+            "hanzi": "油条",
+            "pinyin": "yóutiáo",
+            "gloss": "fried dough stick",
+            "audio": "/audio/word-youtiao.m4a"
+          }
+        ],
+        "audio": "/audio/order-04.m4a"
+      },
+      "items": [
+        {
+          "foodId": "youtiao",
+          "quantity": 1
+        }
+      ],
+      "paid": 5
+    },
+    {
+      "id": "order-05",
+      "level": 2,
+      "customer": "王奶奶",
+      "table": 1,
+      "line": {
+        "id": "order-05",
+        "tokens": [
+          {
+            "id": "i",
+            "hanzi": "我",
+            "pinyin": "wǒ",
+            "gloss": "I; me",
+            "audio": "/audio/word-i.m4a"
+          },
+          {
+            "id": "want",
+            "hanzi": "要",
+            "pinyin": "yào",
+            "gloss": "want",
+            "audio": "/audio/word-want.m4a"
+          },
+          {
+            "id": "two",
+            "hanzi": "两",
+            "pinyin": "liǎng",
+            "gloss": "two (before a measure word)",
+            "audio": "/audio/word-two.m4a"
+          },
+          {
+            "id": "piece",
+            "hanzi": "个",
+            "pinyin": "gè",
+            "gloss": "measure word for individual items",
+            "audio": "/audio/word-piece.m4a"
+          },
+          {
+            "id": "bread",
+            "hanzi": "馒头",
+            "pinyin": "mántou",
+            "gloss": "plain steamed bun",
+            "audio": "/audio/word-bread.m4a"
+          }
+        ],
+        "audio": "/audio/order-05.m4a"
+      },
+      "items": [
+        {
+          "foodId": "bread",
+          "quantity": 2
+        }
+      ],
+      "paid": 5
+    },
+    {
+      "id": "order-06",
+      "level": 2,
+      "customer": "小李",
+      "table": 2,
+      "line": {
+        "id": "order-06",
+        "tokens": [
+          {
+            "id": "i",
+            "hanzi": "我",
+            "pinyin": "wǒ",
+            "gloss": "I; me",
+            "audio": "/audio/word-i.m4a"
+          },
+          {
+            "id": "want",
+            "hanzi": "要",
+            "pinyin": "yào",
+            "gloss": "want",
+            "audio": "/audio/word-want.m4a"
+          },
+          {
+            "id": "two",
+            "hanzi": "两",
+            "pinyin": "liǎng",
+            "gloss": "two (before a measure word)",
+            "audio": "/audio/word-two.m4a"
+          },
+          {
+            "id": "piece",
+            "hanzi": "个",
+            "pinyin": "gè",
+            "gloss": "measure word for individual items",
+            "audio": "/audio/word-piece.m4a"
+          },
+          {
+            "id": "egg",
+            "hanzi": "鸡蛋",
+            "pinyin": "jīdàn",
+            "gloss": "egg",
+            "audio": "/audio/word-egg.m4a"
+          }
+        ],
+        "audio": "/audio/order-06.m4a"
+      },
+      "items": [
+        {
+          "foodId": "egg",
+          "quantity": 2
+        }
+      ],
+      "paid": 5
+    },
+    {
+      "id": "order-07",
+      "level": 2,
+      "customer": "张老师",
+      "table": 3,
+      "line": {
+        "id": "order-07",
+        "tokens": [
+          {
+            "id": "i",
+            "hanzi": "我",
+            "pinyin": "wǒ",
+            "gloss": "I; me",
+            "audio": "/audio/word-i.m4a"
+          },
+          {
+            "id": "want",
+            "hanzi": "要",
+            "pinyin": "yào",
+            "gloss": "want",
+            "audio": "/audio/word-want.m4a"
+          },
+          {
+            "id": "one",
+            "hanzi": "一",
+            "pinyin": "yī",
+            "gloss": "one",
+            "audio": "/audio/word-one.m4a"
+          },
+          {
+            "id": "bowl",
+            "hanzi": "碗",
+            "pinyin": "wǎn",
+            "gloss": "bowl; bowlful",
+            "audio": "/audio/word-bowl.m4a"
+          },
+          {
+            "id": "dumpling",
+            "hanzi": "饺子",
+            "pinyin": "jiǎozi",
+            "gloss": "dumplings",
+            "audio": "/audio/word-dumpling.m4a"
+          },
+          {
+            "id": "and",
+            "hanzi": "和",
+            "pinyin": "hé",
+            "gloss": "and",
+            "audio": "/audio/word-and.m4a"
+          },
+          {
+            "id": "one",
+            "hanzi": "一",
+            "pinyin": "yī",
+            "gloss": "one",
+            "audio": "/audio/word-one.m4a"
+          },
+          {
+            "id": "cup",
+            "hanzi": "杯",
+            "pinyin": "bēi",
+            "gloss": "cup; cupful",
+            "audio": "/audio/word-cup.m4a"
+          },
+          {
+            "id": "milk",
+            "hanzi": "豆浆",
+            "pinyin": "dòujiāng",
+            "gloss": "soy milk",
+            "audio": "/audio/word-milk.m4a"
+          }
+        ],
+        "audio": "/audio/order-07.m4a"
+      },
+      "items": [
+        {
+          "foodId": "dumpling",
+          "quantity": 1
+        },
+        {
+          "foodId": "milk",
+          "quantity": 1
+        }
+      ],
+      "paid": 10
+    },
+    {
+      "id": "order-08",
+      "level": 2,
+      "customer": "小周",
+      "table": 4,
+      "line": {
+        "id": "order-08",
+        "tokens": [
+          {
+            "id": "i",
+            "hanzi": "我",
+            "pinyin": "wǒ",
+            "gloss": "I; me",
+            "audio": "/audio/word-i.m4a"
+          },
+          {
+            "id": "want",
+            "hanzi": "要",
+            "pinyin": "yào",
+            "gloss": "want",
+            "audio": "/audio/word-want.m4a"
+          },
+          {
+            "id": "one",
+            "hanzi": "一",
+            "pinyin": "yī",
+            "gloss": "one",
+            "audio": "/audio/word-one.m4a"
+          },
+          {
+            "id": "bowl",
+            "hanzi": "碗",
+            "pinyin": "wǎn",
+            "gloss": "bowl; bowlful",
+            "audio": "/audio/word-bowl.m4a"
+          },
+          {
+            "id": "porridge",
+            "hanzi": "粥",
+            "pinyin": "zhōu",
+            "gloss": "rice porridge",
+            "audio": "/audio/word-porridge.m4a"
+          },
+          {
+            "id": "and",
+            "hanzi": "和",
+            "pinyin": "hé",
+            "gloss": "and",
+            "audio": "/audio/word-and.m4a"
+          },
+          {
+            "id": "one",
+            "hanzi": "一",
+            "pinyin": "yī",
+            "gloss": "one",
+            "audio": "/audio/word-one.m4a"
+          },
+          {
+            "id": "piece",
+            "hanzi": "个",
+            "pinyin": "gè",
+            "gloss": "measure word for individual items",
+            "audio": "/audio/word-piece.m4a"
+          },
+          {
+            "id": "bread",
+            "hanzi": "馒头",
+            "pinyin": "mántou",
+            "gloss": "plain steamed bun",
+            "audio": "/audio/word-bread.m4a"
+          }
+        ],
+        "audio": "/audio/order-08.m4a"
+      },
+      "items": [
+        {
+          "foodId": "porridge",
+          "quantity": 1
+        },
+        {
+          "foodId": "bread",
+          "quantity": 1
+        }
+      ],
+      "paid": 5
+    },
+    {
+      "id": "order-09",
+      "level": 3,
+      "customer": "王奶奶",
+      "table": 1,
+      "line": {
+        "id": "order-09",
+        "tokens": [
+          {
+            "id": "i",
+            "hanzi": "我",
+            "pinyin": "wǒ",
+            "gloss": "I; me",
+            "audio": "/audio/word-i.m4a"
+          },
+          {
+            "id": "want",
+            "hanzi": "要",
+            "pinyin": "yào",
+            "gloss": "want",
+            "audio": "/audio/word-want.m4a"
+          },
+          {
+            "id": "two",
+            "hanzi": "两",
+            "pinyin": "liǎng",
+            "gloss": "two (before a measure word)",
+            "audio": "/audio/word-two.m4a"
+          },
+          {
+            "id": "piece",
+            "hanzi": "个",
+            "pinyin": "gè",
+            "gloss": "measure word for individual items",
+            "audio": "/audio/word-piece.m4a"
+          },
+          {
+            "id": "bun",
+            "hanzi": "包子",
+            "pinyin": "bāozi",
+            "gloss": "stuffed steamed bun",
+            "audio": "/audio/word-bun.m4a"
+          },
+          {
+            "id": "and",
+            "hanzi": "和",
+            "pinyin": "hé",
+            "gloss": "and",
+            "audio": "/audio/word-and.m4a"
+          },
+          {
+            "id": "one",
+            "hanzi": "一",
+            "pinyin": "yī",
+            "gloss": "one",
+            "audio": "/audio/word-one.m4a"
+          },
+          {
+            "id": "piece",
+            "hanzi": "个",
+            "pinyin": "gè",
+            "gloss": "measure word for individual items",
+            "audio": "/audio/word-piece.m4a"
+          },
+          {
+            "id": "egg",
+            "hanzi": "鸡蛋",
+            "pinyin": "jīdàn",
+            "gloss": "egg",
+            "audio": "/audio/word-egg.m4a"
+          },
+          {
+            "id": "and",
+            "hanzi": "和",
+            "pinyin": "hé",
+            "gloss": "and",
+            "audio": "/audio/word-and.m4a"
+          },
+          {
+            "id": "one",
+            "hanzi": "一",
+            "pinyin": "yī",
+            "gloss": "one",
+            "audio": "/audio/word-one.m4a"
+          },
+          {
+            "id": "cup",
+            "hanzi": "杯",
+            "pinyin": "bēi",
+            "gloss": "cup; cupful",
+            "audio": "/audio/word-cup.m4a"
+          },
+          {
+            "id": "milk",
+            "hanzi": "豆浆",
+            "pinyin": "dòujiāng",
+            "gloss": "soy milk",
+            "audio": "/audio/word-milk.m4a"
+          }
+        ],
+        "audio": "/audio/order-09.m4a"
+      },
+      "items": [
+        {
+          "foodId": "bun",
+          "quantity": 2
+        },
+        {
+          "foodId": "egg",
+          "quantity": 1
+        },
+        {
+          "foodId": "milk",
+          "quantity": 1
+        }
+      ],
+      "paid": 10
+    },
+    {
+      "id": "order-10",
+      "level": 3,
+      "customer": "小李",
+      "table": 2,
+      "line": {
+        "id": "order-10",
+        "tokens": [
+          {
+            "id": "i",
+            "hanzi": "我",
+            "pinyin": "wǒ",
+            "gloss": "I; me",
+            "audio": "/audio/word-i.m4a"
+          },
+          {
+            "id": "want",
+            "hanzi": "要",
+            "pinyin": "yào",
+            "gloss": "want",
+            "audio": "/audio/word-want.m4a"
+          },
+          {
+            "id": "two",
+            "hanzi": "两",
+            "pinyin": "liǎng",
+            "gloss": "two (before a measure word)",
+            "audio": "/audio/word-two.m4a"
+          },
+          {
+            "id": "stick",
+            "hanzi": "根",
+            "pinyin": "gēn",
+            "gloss": "measure word for long thin items",
+            "audio": "/audio/word-stick.m4a"
+          },
+          {
+            "id": "youtiao",
+            "hanzi": "油条",
+            "pinyin": "yóutiáo",
+            "gloss": "fried dough stick",
+            "audio": "/audio/word-youtiao.m4a"
+          },
+          {
+            "id": "and",
+            "hanzi": "和",
+            "pinyin": "hé",
+            "gloss": "and",
+            "audio": "/audio/word-and.m4a"
+          },
+          {
+            "id": "two",
+            "hanzi": "两",
+            "pinyin": "liǎng",
+            "gloss": "two (before a measure word)",
+            "audio": "/audio/word-two.m4a"
+          },
+          {
+            "id": "cup",
+            "hanzi": "杯",
+            "pinyin": "bēi",
+            "gloss": "cup; cupful",
+            "audio": "/audio/word-cup.m4a"
+          },
+          {
+            "id": "milk",
+            "hanzi": "豆浆",
+            "pinyin": "dòujiāng",
+            "gloss": "soy milk",
+            "audio": "/audio/word-milk.m4a"
+          },
+          {
+            "id": "and",
+            "hanzi": "和",
+            "pinyin": "hé",
+            "gloss": "and",
+            "audio": "/audio/word-and.m4a"
+          },
+          {
+            "id": "one",
+            "hanzi": "一",
+            "pinyin": "yī",
+            "gloss": "one",
+            "audio": "/audio/word-one.m4a"
+          },
+          {
+            "id": "piece",
+            "hanzi": "个",
+            "pinyin": "gè",
+            "gloss": "measure word for individual items",
+            "audio": "/audio/word-piece.m4a"
+          },
+          {
+            "id": "egg",
+            "hanzi": "鸡蛋",
+            "pinyin": "jīdàn",
+            "gloss": "egg",
+            "audio": "/audio/word-egg.m4a"
+          }
+        ],
+        "audio": "/audio/order-10.m4a"
+      },
+      "items": [
+        {
+          "foodId": "youtiao",
+          "quantity": 2
+        },
+        {
+          "foodId": "milk",
+          "quantity": 2
+        },
+        {
+          "foodId": "egg",
+          "quantity": 1
+        }
+      ],
+      "paid": 20
+    },
+    {
+      "id": "order-11",
+      "level": 3,
+      "customer": "张老师",
+      "table": 3,
+      "line": {
+        "id": "order-11",
+        "tokens": [
+          {
+            "id": "i",
+            "hanzi": "我",
+            "pinyin": "wǒ",
+            "gloss": "I; me",
+            "audio": "/audio/word-i.m4a"
+          },
+          {
+            "id": "want",
+            "hanzi": "要",
+            "pinyin": "yào",
+            "gloss": "want",
+            "audio": "/audio/word-want.m4a"
+          },
+          {
+            "id": "one",
+            "hanzi": "一",
+            "pinyin": "yī",
+            "gloss": "one",
+            "audio": "/audio/word-one.m4a"
+          },
+          {
+            "id": "bowl",
+            "hanzi": "碗",
+            "pinyin": "wǎn",
+            "gloss": "bowl; bowlful",
+            "audio": "/audio/word-bowl.m4a"
+          },
+          {
+            "id": "dumpling",
+            "hanzi": "饺子",
+            "pinyin": "jiǎozi",
+            "gloss": "dumplings",
+            "audio": "/audio/word-dumpling.m4a"
+          },
+          {
+            "id": "and",
+            "hanzi": "和",
+            "pinyin": "hé",
+            "gloss": "and",
+            "audio": "/audio/word-and.m4a"
+          },
+          {
+            "id": "one",
+            "hanzi": "一",
+            "pinyin": "yī",
+            "gloss": "one",
+            "audio": "/audio/word-one.m4a"
+          },
+          {
+            "id": "bowl",
+            "hanzi": "碗",
+            "pinyin": "wǎn",
+            "gloss": "bowl; bowlful",
+            "audio": "/audio/word-bowl.m4a"
+          },
+          {
+            "id": "porridge",
+            "hanzi": "粥",
+            "pinyin": "zhōu",
+            "gloss": "rice porridge",
+            "audio": "/audio/word-porridge.m4a"
+          },
+          {
+            "id": "and",
+            "hanzi": "和",
+            "pinyin": "hé",
+            "gloss": "and",
+            "audio": "/audio/word-and.m4a"
+          },
+          {
+            "id": "two",
+            "hanzi": "两",
+            "pinyin": "liǎng",
+            "gloss": "two (before a measure word)",
+            "audio": "/audio/word-two.m4a"
+          },
+          {
+            "id": "piece",
+            "hanzi": "个",
+            "pinyin": "gè",
+            "gloss": "measure word for individual items",
+            "audio": "/audio/word-piece.m4a"
+          },
+          {
+            "id": "bread",
+            "hanzi": "馒头",
+            "pinyin": "mántou",
+            "gloss": "plain steamed bun",
+            "audio": "/audio/word-bread.m4a"
+          }
+        ],
+        "audio": "/audio/order-11.m4a"
+      },
+      "items": [
+        {
+          "foodId": "dumpling",
+          "quantity": 1
+        },
+        {
+          "foodId": "porridge",
+          "quantity": 1
+        },
+        {
+          "foodId": "bread",
+          "quantity": 2
+        }
+      ],
+      "paid": 20
+    },
+    {
+      "id": "order-12",
+      "level": 3,
+      "customer": "小周",
+      "table": 4,
+      "line": {
+        "id": "order-12",
+        "tokens": [
+          {
+            "id": "i",
+            "hanzi": "我",
+            "pinyin": "wǒ",
+            "gloss": "I; me",
+            "audio": "/audio/word-i.m4a"
+          },
+          {
+            "id": "want",
+            "hanzi": "要",
+            "pinyin": "yào",
+            "gloss": "want",
+            "audio": "/audio/word-want.m4a"
+          },
+          {
+            "id": "three",
+            "hanzi": "三",
+            "pinyin": "sān",
+            "gloss": "three",
+            "audio": "/audio/word-three.m4a"
+          },
+          {
+            "id": "piece",
+            "hanzi": "个",
+            "pinyin": "gè",
+            "gloss": "measure word for individual items",
+            "audio": "/audio/word-piece.m4a"
+          },
+          {
+            "id": "bun",
+            "hanzi": "包子",
+            "pinyin": "bāozi",
+            "gloss": "stuffed steamed bun",
+            "audio": "/audio/word-bun.m4a"
+          },
+          {
+            "id": "and",
+            "hanzi": "和",
+            "pinyin": "hé",
+            "gloss": "and",
+            "audio": "/audio/word-and.m4a"
+          },
+          {
+            "id": "two",
+            "hanzi": "两",
+            "pinyin": "liǎng",
+            "gloss": "two (before a measure word)",
+            "audio": "/audio/word-two.m4a"
+          },
+          {
+            "id": "stick",
+            "hanzi": "根",
+            "pinyin": "gēn",
+            "gloss": "measure word for long thin items",
+            "audio": "/audio/word-stick.m4a"
+          },
+          {
+            "id": "youtiao",
+            "hanzi": "油条",
+            "pinyin": "yóutiáo",
+            "gloss": "fried dough stick",
+            "audio": "/audio/word-youtiao.m4a"
+          },
+          {
+            "id": "and",
+            "hanzi": "和",
+            "pinyin": "hé",
+            "gloss": "and",
+            "audio": "/audio/word-and.m4a"
+          },
+          {
+            "id": "one",
+            "hanzi": "一",
+            "pinyin": "yī",
+            "gloss": "one",
+            "audio": "/audio/word-one.m4a"
+          },
+          {
+            "id": "cup",
+            "hanzi": "杯",
+            "pinyin": "bēi",
+            "gloss": "cup; cupful",
+            "audio": "/audio/word-cup.m4a"
+          },
+          {
+            "id": "milk",
+            "hanzi": "豆浆",
+            "pinyin": "dòujiāng",
+            "gloss": "soy milk",
+            "audio": "/audio/word-milk.m4a"
+          }
+        ],
+        "audio": "/audio/order-12.m4a"
+      },
+      "items": [
+        {
+          "foodId": "bun",
+          "quantity": 3
+        },
+        {
+          "foodId": "youtiao",
+          "quantity": 2
+        },
+        {
+          "foodId": "milk",
+          "quantity": 1
+        }
+      ],
+      "paid": 20
+    }
+  ],
+  "thanks": {
+    "id": "thanks",
+    "tokens": [
+      {
+        "id": "thanks",
+        "hanzi": "多谢",
+        "pinyin": "duōxiè",
+        "gloss": "many thanks",
+        "audio": "/audio/word-thanks.m4a"
+      }
+    ],
+    "audio": "/audio/thanks.m4a"
+  },
+  "retry": {
+    "id": "retry",
+    "tokens": [
+      {
+        "id": "again",
+        "hanzi": "再",
+        "pinyin": "zài",
+        "gloss": "again",
+        "audio": "/audio/word-again.m4a"
+      },
+      {
+        "id": "try",
+        "hanzi": "试试",
+        "pinyin": "shìshi",
+        "gloss": "give it a try",
+        "audio": "/audio/word-try.m4a"
+      }
+    ],
+    "audio": "/audio/retry.m4a"
+  }
+}
