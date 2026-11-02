@@ -1,6 +1,6 @@
 # Pstack overnight improvement pass
 
-Status: ten background tasks accepted and running. Integration and final verification pending.
+Status: nine of ten original tasks have returned. Independent review of the first product-fix batch and the remaining App/fast-reload fix are running. Combined verification and publication remain pending.
 
 Baseline product commit: `5dfad15`. Reserved-task baseline: `21a4faa`. Parent branch: `codex/0030-overnight-pstack`.
 
@@ -32,4 +32,17 @@ All ten use `gpt-6.1-sol` with `reasoningEffort=medium`, isolated T3-managed wor
 
 ## Integration queue
 
-No worker result has been received yet. Do not infer completion from this task ledger. Product deployment remains gated by combined verification.
+| Slice | Result and integration state |
+| --- | --- |
+| 0031 verification helper | Parent independently executed launch, doctor, two real UI persistence proofs and cleanup. Imported; review in `docs/reviews/0031-verification-parent.md`. |
+| 0032 rules | No proven defect; audit report imported. 81,984 transitions and 120 completed days checked. |
+| 0033 save recovery | Fix committed at `0b79e33`; independent review pending before import. |
+| 0034 native audio errors | Fix committed at `d3b027d`; independent review pending before import. |
+| 0035 offline | No runtime defect; production offline regression suite imported. |
+| 0036 phone | No demonstrated layout defect; five-viewport regression suite imported. |
+| 0037 keyboard / 0042 persistence | App writer still working, including the independently reproduced immediate-reload word loss. |
+| 0038 content audio tooling | Fix committed at `cac4d9c`; independent review pending before import. Parent must supply missing frontend checks. |
+| 0039 renderer | Review imported. One proven static/offscreen scheduling defect; parent fix `e99da37` awaits independent review as 0041. |
+| 0040 adversarial journey | Review imported. One P2 word-loss defect reproduced six times across Chromium/WebKit; other real service and offline paths passed. |
+
+Workers' passing checks apply to their recorded commits, not automatically to the combined branch. Product deployment remains gated by independent review and combined verification. All evidence stays silent; listening quality and physical-device Safari remain unverified.

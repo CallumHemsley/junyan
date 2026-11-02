@@ -31,3 +31,5 @@ The assigned slice has reproducible evidence, scoped changes where warranted, an
 
 - 0036 phone regression source independently reviewed by parent and imported. Product CSS unchanged; five viewport journeys exercise real controls, derive expected orders through read-only test hooks and assert touch dimensions, text size, overflow, reachability and console cleanliness. Runtime rerun will be part of combined verification.
 - 0039 read-only renderer report imported; its baseline scheduling finding remains tracked by0041. No additional art correction warranted.
+
+- 0040 adversarial report imported at929d8ea: six independent no-hook immediate-reload reproductions across desktop/phone Chromium and phone WebKit. Findings assigned to0042; completed service/offline paths are retained as baseline evidence, not proof of the later correction.
