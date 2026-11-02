@@ -40,7 +40,7 @@ All ten use `gpt-6.1-sol` with `reasoningEffort=medium`, isolated T3-managed wor
 | 0034 native audio errors | Fix `d3b027d` accepted by0043 and imported as997ae38. |
 | 0035 offline | No runtime defect; production offline regression suite imported. |
 | 0036 phone | No demonstrated layout defect; five-viewport regression suite imported. |
-| 0037 keyboard / 0042 persistence | Writer c1a4fb7 returned; independent0044 review covers keyboard/focus and real production immediate reload. |
+| 0037 keyboard / 0042 persistence | Imported6d49290 after0044 independently accepted immediate-reload behavior. Two inherited findings were fixed by0045 and accepted by0046. |
 | 0038 content audio tooling | Fix `cac4d9c` accepted by0043 and imported as47ccb9c. Parent110unit/build and tooling self-check passed. |
 | 0039 renderer | Review imported. Parent fix `e99da37` accepted by0043 and imported as9852ae0; physical hidden-tab restoration remains unverified. |
 | 0040 adversarial journey | Review imported. One P2 word-loss defect reproduced six times across Chromium/WebKit; other real service and offline paths passed. |
@@ -49,4 +49,18 @@ Workers' passing checks apply to their recorded commits, not automatically to th
 
 ## Parent combined first-batch evidence
 
-At integrated product c305242 (later commits only update docs/harness),110unit tests and build passed. Tooling self-check passed; real plan resolves85/85cached jobs; all85WAVbytes exactly match5dfad15. Browser scope:26passes/2opt-in rebuilt-release skips plus20native Chromium/WebKit audio passes. First nested native-runner attempt failed before tests due to config cwd; corrected and rerun successfully. Logs and hash receipt are under `output/verification/overnight-first-batch/`. Phone/desktop scene screenshots inspected; strict ports5244/5245 released. Final App correction and overall release still await0044 review and final integrated verification.
+At integrated product c305242 (later commits only update docs/harness),110unit tests and build passed. Tooling self-check passed; real plan resolves85/85cached jobs; all85WAVbytes exactly match5dfad15. Browser scope:26passes/2opt-in rebuilt-release skips plus20native Chromium/WebKit audio passes. First nested native-runner attempt failed before tests due to config cwd; corrected and rerun successfully. Logs and hash receipt are under `output/verification/overnight-first-batch/`. Phone/desktop scene screenshots inspected; strict ports5244/5245 released. 0044 accepted immediate-reload behavior and identified two inherited startup/focus defects.0045 corrects those;0046 independently accepts the correction. Final combined evidence is below.
+
+## Final combined gate
+
+- Accepted product:3a74ba9, imported unchanged as7967bcf. Review-only0046 receipt ffae5a3 imported64188d0. No actionable defect remained in the final review. Exact App behavior and original negative controls are recorded in `docs/reviews/0046-startup-focus-recheck.md`.
+- Parent full suite:119passed/4skipped in10.1minutes. Two native-policy cases are intentionally skipped in the default Chromium projects and pass in the dedicated native run. Two rebuilt-release cases require their separate opt-in/exclusive port; prior0035 release-replacement evidence applies to unchanged service-worker generation.
+- Parent native Chromium/WebKit audio:20/20passed in58.5seconds. Parent110units/build and independent0046's110units/build pass. Independent recovery16/16 plus48additional storage/StrictMode probes and57affected checks are separate evidence, not summed into the parent full-suite count.
+- Content tooling self-check and verification-helper safety3/3pass.85/85cache jobs resolve. All85WAVfiles are byte-identical to accepted5dfad15.
+- Normal production desktop1200×1000 and phone390×844 journeys, without game-state hooks: tap包子→immediate reload→journal retains包子; serve all4customers, give change, enter day2. Both pass with clean consoles. Desktop produces26.48second H.264 video with no audio stream. Phone/desktop scene, order, receipt and recovered-journal screenshots inspected.
+- Root evidence:`output/verification/overnight-final/` includes full-browser.log, native-audio.log, audio-preservation.json, real-journey-results.json, demo-source.json, video-proof.json, screenshots, traces and junyan-overnight-silent.mp4. Real demo captured at3a74ba9; integrated runtime bytes must remain identical.
+- Final helper identity/drive/cleanup and public publication receipt remain pending under0030.
+
+## Material limits
+
+Silent checks do not approve Mandarin pronunciation or native listening quality. Physical iOS/Safari, OS-level hidden-tab restoration and long-term multi-tab write conflicts remain unverified. The explicit1500ms startup policy without a usable checkpoint can start fresh and overwrite the inaccessible old durable save on autosave; it is not lossless recovery. Actual Pixel Plays, accepted cast including unchanged ZhangLaoshi, calm Mandarin UI and all85WAVs remain preserved.

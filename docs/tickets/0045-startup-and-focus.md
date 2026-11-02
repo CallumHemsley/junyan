@@ -1,7 +1,7 @@
 ---
 id: 45
 title: Bound startup recovery and retain modal openers
-status: doing
+status: done
 priority: high
 type: bug
 created: 2026-11-02
@@ -25,4 +25,5 @@ Reproduce both before fixing; playable startup has a bounded fallback with late-
 - Fix: restore validated checkpoints immediately; otherwise bound startup to1500ms, retain the existing save warning on fallback and fence all late reads. Capture background opener on focus/click before inert changes and preserve it across walks/replacement panels.
 - Tradeoff: when there is no checkpoint and IndexedDB cannot return within1500ms, play starts fresh with the save warning. The inaccessible old snapshot is ignored for this mount rather than overwriting later play; no promise of salvaging inaccessible bytes. Pending IDB operations still close naturally if they eventually settle.
 - Candidate proof:110unit tests/build pass;16/16 real Chromium/WebKit desktop/phone checks pass, including eight nested keyboard cycles per context, kitchen/Help closure, checkpoint/no-checkpoint native queues, and delayed native read-completion delivery. Screenshots inspected. Normal-browser regression command retained as playwright.recovery.config.ts. Silence uses launch-muted Chromium and valid PCM responses in WebKit; no stored audio edits.
-- Source/test candidate awaits0046 independent review; no push/deployment.
+- Independent0046 review accepted candidate3a74ba9 without actionable findings: review-only receipt ffae5a3, imported64188d0. Reviewer reproduced baseline failures, then passed110units/build,16recovery checks,48additional storage/StrictMode checks and57affected regressions. Parent combined suite separately passed119browser checks/4deliberate skips plus20nativeaudio checks.
+- Confirmed recovery policy: with no usable checkpoint, timeout starts fresh and the next normal save may overwrite the inaccessible old durable save. This is availability recovery, not lossless recovery. Product bytes match accepted3a74ba9 after integration. Publication is tracked by0030.
