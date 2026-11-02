@@ -1,16 +1,13 @@
 import { defineConfig, devices } from "@playwright/test";
-
-process.env.AUDIO_PREVIEW_URL ??= "http://127.0.0.1:5185/junyan/";
-process.env.JUNYAN_PREVIEW_URL ??= "http://127.0.0.1:5185/junyan/";
-process.env.JUNYAN_HELP_PREVIEW_URL ??= "http://127.0.0.1:5185/junyan/";
+import base, { devURL } from "./playwright.config";
 
 export default defineConfig({
   testDir: "./e2e", workers: 1, timeout: 90000,
   expect: { timeout: 10000 },
   outputDir: "output/playwright/audio-results",
-  use: { baseURL: "http://localhost:5181", trace: "retain-on-failure" },
+  use: { baseURL: devURL, trace: "retain-on-failure", launchOptions: { args: ["--mute-audio"] } },
   projects: [
-    { name: "audio-webkit", testMatch: "audio.spec.ts", use: { ...devices["iPhone 13"], browserName: "webkit" } },
+    { name: "audio-webkit", testMatch: "audio.spec.ts", use: { ...devices["iPhone 13"], browserName: "webkit", launchOptions: { args: [] } } },
     {
       name: "audio-chromium", testMatch: "audio.spec.ts",
       use: { ...devices["Desktop Chrome"], launchOptions: { args: ["--mute-audio", "--autoplay-policy=user-gesture-required"] } },
@@ -24,11 +21,5 @@ export default defineConfig({
       use: { ...devices["iPhone 13"], browserName: "chromium", launchOptions: { args: ["--mute-audio"] } },
     },
   ],
-  webServer: [
-    { command: "pnpm dev --config vite.audio.config.ts --port 5181 --strictPort", url: "http://localhost:5181", reuseExistingServer: true },
-    {
-      command: "pnpm build && pnpm exec vite preview --config vite.audio.config.ts --base /junyan/ --host 127.0.0.1 --port 5185 --strictPort",
-      url: "http://127.0.0.1:5185/junyan/", reuseExistingServer: true,
-    },
-  ],
+  webServer: base.webServer,
 });
