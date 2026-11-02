@@ -1,7 +1,7 @@
 ---
 id: 30
 title: Integrate and verify the overnight improvement pass
-status: doing
+status: done
 priority: medium
 type: chore
 created: 2026-11-02
@@ -40,3 +40,7 @@ The assigned slice has reproducible evidence, scoped changes where warranted, an
 
 - Final0044review accepted immediate-reload correction; inherited startup/focus findings corrected by0045 and independently accepted by0046(ffae5a3). Imported reviewed product7967bcf/review64188d0. Parent full suite119passes/4deliberate skips, native20/20, normal production desktop/phone four-customer+reload+day2 journeys pass;26.48second silent H.264 demo captured and inspected. Exact85WAVbytes preserved.
 - Final helper a492df9: doctor identity, two real normalUI word/journal/reload proofs and cleanup pass;11evidence files retained. Canonical native/recovery configs now block service-worker bypass of valid silentPCM routing; affected native20/20 and recovery16/16reruns pass. All product bytes still match reviewed3a74ba9. Full evidence and explicit timeout tradeoff are in docs/verification/2026-11-02-overnight.md. GitHub publication/live proof remains pending.
+
+- Publication complete: source dbfdc8f on codex/0030-overnight-pstack; static gh-pages c4d639f607bf8d5e2e06a288b4b7fc5ec929b15d. GitHub Pages run41374909162 completed successfully at2026-11-02T01:55:10Z. Existing public URL:https://callumhemsley.github.io/junyan/.
+- Live verification:95served files match the exact demonstrated build, including85/85WAVhashes. Fresh normal-mode desktop and390px phone sessions preserve包子after immediate reload, complete4customers/change/journal/day2 with zero console/page errors. Live26.92second H.264 demo has no audio stream. Live scene/journal screenshots inspected. Evidence:output/verification/overnight-live/{assets.json,real-journey-results.json,video-proof.json,junyan-overnight-silent.mp4}.
+- All10original workers completed; warranted fixes integrated after independent review, focused fixes rerun and final combined/local/live gates pass. No AWS operations, source audio changes or system-volume changes. Owned verification ports5244/5245 stopped. User-owned .claude/launch.json and existing5173/5177servers untouched.

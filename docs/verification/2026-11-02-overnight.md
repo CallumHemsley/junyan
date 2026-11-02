@@ -60,8 +60,18 @@ At integrated product c305242 (later commits only update docs/harness),110unit t
 - Normal production desktop1200×1000 and phone390×844 journeys, without game-state hooks: tap包子→immediate reload→journal retains包子; serve all4customers, give change, enter day2. Both pass with clean consoles. Desktop produces26.48second H.264 video with no audio stream. Phone/desktop scene, order, receipt and recovered-journal screenshots inspected.
 - Root evidence:`output/verification/overnight-final/` includes full-browser.log, native-audio.log, audio-preservation.json, real-journey-results.json, demo-source.json, video-proof.json, screenshots, traces and junyan-overnight-silent.mp4. Real demo captured at3a74ba9; integrated runtime bytes must remain identical.
 - Final helper at a492df9: launch, doctor, real normal-mode desktop/phone word-save/reload2/2 and cleanup pass. Eleven evidence PNG/JSON files survive cleanup with checksums; both viewports inspected and consoles clean. Evidence:`output/verification/overnight-accepted/` and `overnight-final/helper-evidence-checksums.json`.
-- The reviewer isolated valid silentPCM from service-worker interception. The parent carried that harness-only safeguard into both canonical configs, then reran native20/20 and recovery16/16 successfully. Canonical logs:`overnight-final/native-audio-canonical.log` and `recovery-canonical.log`. Product sources/assets remain identical to reviewed3a74ba9; public publication receipt remains pending under0030.
+- The reviewer isolated valid silentPCM from service-worker interception. The parent carried that harness-only safeguard into both canonical configs, then reran native20/20 and recovery16/16 successfully. Canonical logs:`overnight-final/native-audio-canonical.log` and `recovery-canonical.log`. Product sources/assets remain identical to reviewed3a74ba9; public publication receipt is below.
 
 ## Material limits
 
 Silent checks do not approve Mandarin pronunciation or native listening quality. Physical iOS/Safari, OS-level hidden-tab restoration and long-term multi-tab write conflicts remain unverified. The explicit1500ms startup policy without a usable checkpoint can start fresh and overwrite the inaccessible old durable save on autosave; it is not lossless recovery. Actual Pixel Plays, accepted cast including unchanged ZhangLaoshi, calm Mandarin UI and all85WAVs remain preserved.
+
+## Publication and live receipt
+
+Source branch:`codex/0030-overnight-pstack`, runtime source commit:`dbfdc8f7a764289e811c542e2ab5c2badf171642`. Static branch:`gh-pages`, publish commit:`c4d639f607bf8d5e2e06a288b4b7fc5ec929b15d`. Source/runtime/build files remain identical to independently reviewed3a74ba9; later receipt-only commits do not change the public artifact. The static tree exactly matches the locally demonstrated build.
+
+GitHub's Pages workflow[41374909162](https://github.com/CallumHemsley/junyan/actions/runs/41374909162) completed successfully at2026-11-02T01:55:10Z. Public game:[Junyan](https://callumhemsley.github.io/junyan/). Source and static branches are pushed; no PR/default-branch merge was required.
+
+Live proof:`output/verification/overnight-live/`.95runtime/support files match local SHA256s, including all85WAVs; `.nojekyll`is a deployment control file and excluded from the HTTP comparison. Fresh normal production desktop and phone journeys both pass immediate-reload word retention,4customer service/change, journal andday2; console/page errors are empty. Phone scene and desktop recovered-journal screenshots inspected. Live H.264 demo is26.92seconds and has only a video stream. Local proof remains separately retained underovernight-final.
+
+All owned verification servers/browsers stopped; helper cleanup retains its11verified evidence files. User-owned untracked launcher and existing development servers were left alone.0030integration task complete; material limits above remain explicit.
