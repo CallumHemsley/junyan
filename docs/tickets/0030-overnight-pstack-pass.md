@@ -33,3 +33,5 @@ The assigned slice has reproducible evidence, scoped changes where warranted, an
 - 0039 read-only renderer report imported; its baseline scheduling finding remains tracked by0041. No additional art correction warranted.
 
 - 0040 adversarial report imported at929d8ea: six independent no-hook immediate-reload reproductions across desktop/phone Chromium and phone WebKit. Findings assigned to0042; completed service/offline paths are retained as baseline evidence, not proof of the later correction.
+
+- 0043 accepted the four exact product fixes without actionable defects. Imported0033/0034/0038/0041 plus reviewreceipt c305242. Parent110units/build, tooling selfcheck, helper3/3 and exact85WAVbaseline comparisons pass; scoped browser matrix running. 0044 independently reviewing c1a4fb7 App changes before integration.

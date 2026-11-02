@@ -1,7 +1,7 @@
 ---
 id: 41
 title: Stop static and offscreen scene redraws
-status: doing
+status: done
 priority: medium
 type: bug
 created: 2026-11-02
@@ -25,3 +25,5 @@ A static reduced-motion scene stops drawing, state changes paint once, offscreen
 - Matching 600ms measurements after correction: zero visible static reduced-motion draws and zero offscreen draws, identical pixels. Browser regressions prove input-driven repaint, offscreen pause, return-to-view repaint and motion preference toggle recovery.
 - Desktop and phone screenshots inspected at output/playwright/0041/{desktop,phone}-restored.png. Physical background-tab behavior remains for independent review; document visibility handler is implemented.
 - Awaiting independent review before integration; no deployment.
+
+- Independently accepted by0043 review aa0038f: combined110units/build,35silentbrowserchecks and four scene rechecks. Physical OS hidden-tab restoration remains unverified; synthetic visibility passed. Integrated as9852ae0; renderer geometry and approved WAVs unchanged.
