@@ -28,3 +28,6 @@ The assigned slice has reproducible evidence, scoped changes where warranted, an
 - 0032 rules audit and0035 offline regression suite imported after parent diff review. No product changes were warranted in those slices.
 - Parent scene scheduling correction is committed on codex/0041-scene-scheduling at e99da37 and awaits0043 independent review together with0033save,0034audio and0038tooling corrections.
 - 0042 reserved for production immediate-reload word-loss, assigned to0037App.tsx writer. Other original tasks continue autonomously.
+
+- 0036 phone regression source independently reviewed by parent and imported. Product CSS unchanged; five viewport journeys exercise real controls, derive expected orders through read-only test hooks and assert touch dimensions, text size, overflow, reachability and console cleanliness. Runtime rerun will be part of combined verification.
+- 0039 read-only renderer report imported; its baseline scheduling finding remains tracked by0041. No additional art correction warranted.
