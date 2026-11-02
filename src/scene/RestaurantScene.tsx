@@ -15,14 +15,23 @@ export type RestaurantSceneProps = {
 export default function RestaurantScene({state,onMove,onTable,onKitchen}:RestaurantSceneProps) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const current = useRef(state);
-  useEffect(()=>{current.current=state;},[state]);
+  const invalidate = useRef<() => void>(() => {});
+  useEffect(()=>{current.current=state; invalidate.current();},[state]);
   useEffect(()=>{
     if (!canvas.current) return;
     const renderer=createRenderer(canvas.current,TABLES,Object.fromEntries(content.orders.map(order => [order.id, characterFor(order.customer).appearance])));
     const preference=window.matchMedia('(prefers-reduced-motion: reduce)');
     const player={...current.current.player,yaw:Math.PI/2};
-    let frame=0, last=0, lastDraw=-Infinity;
+    let frame=0, last=0, lastDraw=-Infinity, dirty=true;
+    const bounds=canvas.current.getBoundingClientRect();
+    let inViewport=bounds.bottom>0 && bounds.top<innerHeight && bounds.right>0 && bounds.left<innerWidth;
+    const visible=()=>inViewport && !document.hidden;
+    const schedule=()=>{
+      if(!frame && visible() && (dirty || !preference.matches)) frame=requestAnimationFrame(draw);
+    };
     const draw=(now:number)=>{
+      frame=0;
+      if(!visible()) return;
       const dt=last?Math.min((now-last)/1000,.05):0;
       last=now;
       const target=current.current.player;
@@ -31,14 +40,39 @@ export default function RestaurantScene({state,onMove,onTable,onKitchen}:Restaur
       if(moving) player.yaw=Math.atan2(dy,dx);
       const blend=preference.matches?1:1-Math.exp(-dt*13);
       player.x+=dx*blend; player.y+=dy*blend;
-      if(now-lastDraw>=1000/30) {
+      if(preference.matches || now-lastDraw>=1000/30) {
         renderer.draw(current.current,player,preference.matches?0:now/1000,moving&&!preference.matches);
         lastDraw=now;
+        dirty=false;
       }
-      frame=requestAnimationFrame(draw);
+      schedule();
     };
-    frame=requestAnimationFrame(draw);
-    return ()=>cancelAnimationFrame(frame);
+    const refresh=()=>{
+      dirty=true;
+      last=0;
+      lastDraw=-Infinity;
+      if(!visible()) {
+        cancelAnimationFrame(frame);
+        frame=0;
+      }
+      schedule();
+    };
+    const observer=new IntersectionObserver(entries=>{
+      inViewport=entries[0].isIntersecting;
+      refresh();
+    });
+    observer.observe(canvas.current);
+    preference.addEventListener('change',refresh);
+    document.addEventListener('visibilitychange',refresh);
+    invalidate.current=()=>{dirty=true; schedule();};
+    schedule();
+    return ()=>{
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      preference.removeEventListener('change',refresh);
+      document.removeEventListener('visibilitychange',refresh);
+      invalidate.current=()=>{};
+    };
   },[]);
   return <div className="restaurant-scene" data-testid="restaurant-scene">
     <canvas ref={canvas} width={360} height={280} aria-hidden="true"
