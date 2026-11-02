@@ -23,3 +23,8 @@ The assigned slice has reproducible evidence, scoped changes where warranted, an
 - Browser ports: 5244 dev, 5245 preview. Strict port binding required.
 - All browser runs must be silent. Chromium uses `--mute-audio`. WebKit uses the repository's valid silent PCM response fixture. Never change system volume.
 - Preserve actual Pixel Plays engine, approved characters, Mandarin-only visible content, 85 WAVs, and calm UI. No dependencies, schema, lockfile, AWS, push or deployment changes in workers.
+
+- 0031 verification skill independently reviewed and executed by parent: helper3/3, real browser2/2, doctor/cleanup passed, eleven evidence artifacts retained. Review docs/reviews/0031-verification-parent.md.
+- 0032 rules audit and0035 offline regression suite imported after parent diff review. No product changes were warranted in those slices.
+- Parent scene scheduling correction is committed on codex/0041-scene-scheduling at e99da37 and awaits0043 independent review together with0033save,0034audio and0038tooling corrections.
+- 0042 reserved for production immediate-reload word-loss, assigned to0037App.tsx writer. Other original tasks continue autonomously.
