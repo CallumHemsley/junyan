@@ -46,3 +46,7 @@ All ten use `gpt-6.1-sol` with `reasoningEffort=medium`, isolated T3-managed wor
 | 0040 adversarial journey | Review imported. One P2 word-loss defect reproduced six times across Chromium/WebKit; other real service and offline paths passed. |
 
 Workers' passing checks apply to their recorded commits, not automatically to the combined branch. Product deployment remains gated by independent review and combined verification. All evidence stays silent; listening quality and physical-device Safari remain unverified.
+
+## Parent combined first-batch evidence
+
+At integrated product c305242 (later commits only update docs/harness),110unit tests and build passed. Tooling self-check passed; real plan resolves85/85cached jobs; all85WAVbytes exactly match5dfad15. Browser scope:26passes/2opt-in rebuilt-release skips plus20native Chromium/WebKit audio passes. First nested native-runner attempt failed before tests due to config cwd; corrected and rerun successfully. Logs and hash receipt are under `output/verification/overnight-first-batch/`. Phone/desktop scene screenshots inspected; strict ports5244/5245 released. Final App correction and overall release still await0044 review and final integrated verification.
