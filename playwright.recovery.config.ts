@@ -4,6 +4,8 @@ import base from './playwright.config';
 // startup-focus.spec.ts routes every playable WAV through valid silent PCM.
 export default defineConfig({
   ...base,
+  // Production service workers must not bypass valid silent-PCM WAV routing.
+  use: { ...base.use, serviceWorkers: 'block' },
   testMatch: 'startup-focus.spec.ts',
   outputDir: 'output/playwright/recovery-results',
   projects: [

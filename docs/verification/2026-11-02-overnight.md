@@ -59,7 +59,8 @@ At integrated product c305242 (later commits only update docs/harness),110unit t
 - Content tooling self-check and verification-helper safety3/3pass.85/85cache jobs resolve. All85WAVfiles are byte-identical to accepted5dfad15.
 - Normal production desktop1200×1000 and phone390×844 journeys, without game-state hooks: tap包子→immediate reload→journal retains包子; serve all4customers, give change, enter day2. Both pass with clean consoles. Desktop produces26.48second H.264 video with no audio stream. Phone/desktop scene, order, receipt and recovered-journal screenshots inspected.
 - Root evidence:`output/verification/overnight-final/` includes full-browser.log, native-audio.log, audio-preservation.json, real-journey-results.json, demo-source.json, video-proof.json, screenshots, traces and junyan-overnight-silent.mp4. Real demo captured at3a74ba9; integrated runtime bytes must remain identical.
-- Final helper identity/drive/cleanup and public publication receipt remain pending under0030.
+- Final helper at a492df9: launch, doctor, real normal-mode desktop/phone word-save/reload2/2 and cleanup pass. Eleven evidence PNG/JSON files survive cleanup with checksums; both viewports inspected and consoles clean. Evidence:`output/verification/overnight-accepted/` and `overnight-final/helper-evidence-checksums.json`.
+- The reviewer isolated valid silentPCM from service-worker interception. The parent carried that harness-only safeguard into both canonical configs, then reran native20/20 and recovery16/16 successfully. Canonical logs:`overnight-final/native-audio-canonical.log` and `recovery-canonical.log`. Product sources/assets remain identical to reviewed3a74ba9; public publication receipt remains pending under0030.
 
 ## Material limits
 

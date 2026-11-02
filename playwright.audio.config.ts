@@ -7,10 +7,10 @@ export default defineConfig({
   outputDir: "output/playwright/audio-results",
   use: { baseURL: devURL, trace: "retain-on-failure", launchOptions: { args: ["--mute-audio"] } },
   projects: [
-    { name: "audio-webkit", testMatch: ["audio.spec.ts", "overnight-audio.spec.ts"], use: { ...devices["iPhone 13"], browserName: "webkit", launchOptions: { args: [] } } },
+    { name: "audio-webkit", testMatch: ["audio.spec.ts", "overnight-audio.spec.ts"], use: { ...devices["iPhone 13"], browserName: "webkit", serviceWorkers: "block", launchOptions: { args: [] } } },
     {
       name: "audio-chromium", testMatch: ["audio.spec.ts", "overnight-audio.spec.ts"],
-      use: { ...devices["Desktop Chrome"], launchOptions: { args: ["--mute-audio", "--autoplay-policy=user-gesture-required"] } },
+      use: { ...devices["Desktop Chrome"], serviceWorkers: "block", launchOptions: { args: ["--mute-audio", "--autoplay-policy=user-gesture-required"] } },
     },
     {
       name: "audio-desktop-journey", testMatch: ["waiter.spec.ts", "offline.spec.ts", "overlay-focus.spec.ts", "save.spec.ts", "learning-help.spec.ts"],
