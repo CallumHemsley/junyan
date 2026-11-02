@@ -13,7 +13,7 @@ import {
 } from "./game";
 import RestaurantScene from "./scene/RestaurantScene";
 import FoodArt from "./FoodArt";
-import { loadGame, saveGame } from "./save";
+import { loadGame, saveGame, validateSavedGame } from "./save";
 import { route } from "./navigation";
 import { createPlayback, type PlaybackError } from "./audio/playback";
 
@@ -21,6 +21,7 @@ const testMode =
   import.meta.env.DEV &&
   new URLSearchParams(location.search).get("test") === "1";
 const seed = Number(new URLSearchParams(location.search).get("seed") || 42);
+const checkpointKey = "junyan-waiter-pending-v1";
 const phases = {
   seated: "等候点餐",
   ordered: "等候上菜",
@@ -71,7 +72,22 @@ export default function App() {
     playback.current = createPlayback((url) => new Audio(url), setAudioError);
   const motion = useRef<{ path: Position[]; arrive?: () => void } | null>(null);
   const dispatch = useCallback(
-    (action: Action) => setState((s) => reduceGame(s, action, content)),
+    (action: Action) => {
+      const next = reduceGame(stateRef.current, action, content);
+      if (next === stateRef.current) return;
+      if (!testMode && action.type !== "move") {
+        try {
+          localStorage.setItem(checkpointKey, JSON.stringify(next));
+        } catch {
+          try {
+            localStorage.removeItem(checkpointKey);
+          } catch {}
+          setSaveError(true);
+        }
+      }
+      stateRef.current = next;
+      setState(next);
+    },
     [],
   );
   const play = useCallback((url: string) => {
@@ -94,12 +110,24 @@ export default function App() {
   useEffect(() => {
     if (testMode) return;
     let cancelled = false;
+    let checkpoint: GameState | null = null;
+    try {
+      const pending = localStorage.getItem(checkpointKey);
+      if (pending) checkpoint = validateSavedGame(JSON.parse(pending), content);
+    } catch {
+      setSaveError(true);
+    }
     loadGame(content)
       .then((saved) => {
-        if (!cancelled && saved)
-          setState(saved);
+        const restored = checkpoint ?? saved;
+        if (!cancelled && restored) setState(restored);
       })
-      .catch(() => setSaveError(true))
+      .catch(() => {
+        if (!cancelled) {
+          if (checkpoint) setState(checkpoint);
+          setSaveError(true);
+        }
+      })
       .finally(() => {
         if (!cancelled) setReady(true);
       });
@@ -110,7 +138,13 @@ export default function App() {
   useEffect(() => {
     if (!ready || testMode) return;
     const timer = setTimeout(() => {
-      saveGame(state).catch(() => setSaveError(true));
+      const checkpoint = JSON.stringify(state);
+      saveGame(state)
+        .then(() => {
+          if (localStorage.getItem(checkpointKey) === checkpoint)
+            localStorage.removeItem(checkpointKey);
+        })
+        .catch(() => setSaveError(true));
     }, 350);
     return () => clearTimeout(timer);
   }, [state, ready]);
@@ -212,6 +246,9 @@ export default function App() {
       wordOpen ? ".word-popover" : ".paper-panel",
     );
     if (!dialog) return;
+    if (!dialog.contains(document.activeElement)) {
+      dialog.querySelector<HTMLButtonElement>("button")?.focus();
+    }
     const trap = (event: KeyboardEvent) => {
       if (event.key !== "Tab") return;
       const controls = [
@@ -236,15 +273,25 @@ export default function App() {
     return () => {
       document.removeEventListener("keydown", trap);
     };
-  }, [panel, wordOpen, dayEndOpen, ready]);
+  }, [panel, wordOpen, dayEndOpen, ready, state.customers]);
   useEffect(() => {
     const key = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         if (word) setWord(null);
-        else setPanel("none");
+        else {
+          motion.current = null;
+          setMoving(false);
+          setPanel("none");
+        }
         return;
       }
       if (
+        !ready ||
+        dayEndOpen ||
+        event.defaultPrevented ||
+        event.altKey ||
+        event.ctrlKey ||
+        event.metaKey ||
         panel !== "none" ||
         word ||
         (event.target instanceof HTMLElement &&
@@ -288,7 +335,7 @@ export default function App() {
     };
     window.addEventListener("keydown", key);
     return () => window.removeEventListener("keydown", key);
-  }, [dispatch, visitTable, visitKitchen, panel, word]);
+  }, [dispatch, visitTable, visitKitchen, panel, word, ready, dayEndOpen]);
   useEffect(() => {
     if (!testMode) return;
     const hooks = {
