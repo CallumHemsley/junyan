@@ -103,8 +103,16 @@ export function validateSavedGame(
 function database(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open("junyan-waiter", 1);
+    let blocked = false;
     request.onupgradeneeded = () => request.result.createObjectStore("saves");
-    request.onsuccess = () => resolve(request.result);
+    request.onsuccess = () => {
+      if (blocked) request.result.close();
+      else resolve(request.result);
+    };
+    request.onblocked = () => {
+      blocked = true;
+      reject(new DOMException("Save database is blocked", "InvalidStateError"));
+    };
     request.onerror = () => reject(request.error);
   });
 }
@@ -112,10 +120,13 @@ export async function loadGame(content: Content): Promise<GameState | null> {
   const db = await database();
   try {
     return await new Promise((resolve, reject) => {
-      const request = db.transaction("saves").objectStore("saves").get("v1");
-      request.onsuccess = () => {
+      const transaction = db.transaction("saves");
+      const request = transaction.objectStore("saves").get("v1");
+      transaction.oncomplete = () => {
         resolve(validateSavedGame(request.result, content));
       };
+      transaction.onabort = () => reject(transaction.error);
+      transaction.onerror = () => reject(transaction.error);
       request.onerror = () => reject(request.error);
     });
   } finally {

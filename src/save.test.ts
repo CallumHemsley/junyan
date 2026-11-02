@@ -1,8 +1,174 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { content } from "./content";
 import { KITCHEN, TABLES, type Action, type Content, type GameState } from "./contracts";
 import { createGame, getOrder, orderTotal, reduceGame } from "./game";
-import { validateSavedGame } from "./save";
+import { loadGame, saveGame, validateSavedGame } from "./save";
+
+function storageBoundary(value: unknown = createGame(content)) {
+  const error = new DOMException("Storage unavailable", "UnknownError");
+  const request = {
+    result: value,
+    error,
+    onsuccess: null as (() => void) | null,
+    onerror: null as (() => void) | null,
+  };
+  const transaction = {
+    error,
+    oncomplete: null as (() => void) | null,
+    onerror: null as (() => void) | null,
+    onabort: null as (() => void) | null,
+    objectStore: () => ({ get: () => request, put: () => request }),
+  };
+  const db = { transaction: () => transaction, close: vi.fn() };
+  const open = {
+    result: db,
+    error,
+    onsuccess: null as (() => void) | null,
+    onerror: null as (() => void) | null,
+    onblocked: null as (() => void) | null,
+  };
+  vi.stubGlobal("indexedDB", { open: () => open });
+  const connect = async () => {
+    open.onsuccess?.();
+    await Promise.resolve();
+  };
+  return { request, transaction, db, open, error, connect };
+}
+
+describe("IndexedDB recovery", () => {
+  afterEach(() => vi.unstubAllGlobals());
+
+  it.each([loadGame, () => saveGame(createGame(content))])("reports database open failure", async (operation) => {
+    const storage = storageBoundary();
+    const pending = operation(content);
+    const rejected = expect(pending).rejects.toBe(storage.error);
+    storage.open.onerror?.();
+    await rejected;
+  });
+
+  it.each([loadGame, () => saveGame(createGame(content))])("reports a blocked open and releases a late connection", async (operation) => {
+    const storage = storageBoundary();
+    const pending = operation(content);
+    const rejected = expect(pending).rejects.toBeInstanceOf(DOMException);
+    storage.open.onblocked?.();
+    await rejected;
+    await storage.connect();
+    expect(storage.db.close).toHaveBeenCalledOnce();
+  });
+
+  it("does not restore a read from an aborted transaction", async () => {
+    const storage = storageBoundary();
+    const pending = loadGame(content);
+    const rejected = expect(pending).rejects.toBe(storage.error);
+    await storage.connect();
+    storage.request.onsuccess?.();
+    storage.transaction.onabort?.();
+    await rejected;
+    expect(storage.db.close).toHaveBeenCalledOnce();
+  });
+
+  it("reports an aborted read even without a request error", async () => {
+    const storage = storageBoundary();
+    const pending = loadGame(content);
+    const rejected = expect(pending).rejects.toBe(storage.error);
+    await storage.connect();
+    storage.transaction.onabort?.();
+    await rejected;
+    expect(storage.db.close).toHaveBeenCalledOnce();
+  });
+
+  it.each(["onerror", "onabort"] as const)("reports write %s without claiming progress was saved", async (event) => {
+    const storage = storageBoundary();
+    const pending = saveGame(createGame(content));
+    const rejected = expect(pending).rejects.toBe(storage.error);
+    await storage.connect();
+    storage.transaction[event]?.();
+    await rejected;
+    expect(storage.db.close).toHaveBeenCalledOnce();
+  });
+
+  it("reports a failed read and releases its connection", async () => {
+    const storage = storageBoundary();
+    const pending = loadGame(content);
+    const rejected = expect(pending).rejects.toBe(storage.error);
+    await storage.connect();
+    storage.request.onerror?.();
+    await rejected;
+    expect(storage.db.close).toHaveBeenCalledOnce();
+  });
+
+  it.each([null, {}, { ...createGame(content), ended: true }])("returns no saved game for missing or corrupt data: %j", async (value) => {
+    const storage = storageBoundary(value);
+    const pending = loadGame(content);
+    await storage.connect();
+    storage.request.onsuccess?.();
+    storage.transaction.oncomplete?.();
+    expect(await pending).toBeNull();
+    expect(storage.db.close).toHaveBeenCalledOnce();
+  });
+
+  it.each([loadGame, () => saveGame(createGame(content))])("reports missing object stores and releases the connection", async (operation) => {
+    const storage = storageBoundary();
+    storage.db.transaction = () => { throw new DOMException("Missing store", "NotFoundError"); };
+    const pending = operation(content);
+    const rejected = expect(pending).rejects.toMatchObject({ name: "NotFoundError" });
+    await storage.connect();
+    await rejected;
+    expect(storage.db.close).toHaveBeenCalledOnce();
+  });
+
+  it("confirms a write only after its transaction completes", async () => {
+    const storage = storageBoundary();
+    let saved = false;
+    const pending = saveGame(createGame(content)).then(() => { saved = true; });
+    await storage.connect();
+    storage.request.onsuccess?.();
+    await Promise.resolve();
+    expect(saved).toBe(false);
+    storage.transaction.oncomplete?.();
+    await pending;
+    expect(saved).toBe(true);
+    expect(storage.db.close).toHaveBeenCalledOnce();
+  });
+
+  it("returns the committed read with its journal and stale receipt intact", async () => {
+    let state = createGame(content);
+    const apply = (action: Action) => { state = reduceGame(state, action, content); };
+    serve(state, 1, apply);
+    apply({ type: "move", position: KITCHEN });
+    state.journal["retired-word"] = { lookups: 3, lastSeen: 1.5 };
+    const storage = storageBoundary(state);
+    const pending = loadGame(content);
+    await storage.connect();
+    storage.request.onsuccess?.();
+    storage.transaction.oncomplete?.();
+    expect(await pending).toEqual(state);
+    expect(storage.db.close).toHaveBeenCalledOnce();
+  });
+
+  it("restores the v1 progress format from product baseline 5dfad15", async () => {
+    const historical: GameState = {
+      seed: 955863294, day: 1, level: 1,
+      player: { x: 3, y: 2.5 },
+      customers: [
+        { table: 1, orderId: "order-01", phase: "served" },
+        { table: 2, orderId: "order-02", phase: "seated" },
+        { table: 3, orderId: "order-03", phase: "seated" },
+        { table: 4, orderId: "order-04", phase: "seated" },
+      ],
+      tray: [], served: 1, earnings: 2, mistakes: 0,
+      activeTable: 1, feedback: "thanks",
+      receipt: { table: 1, total: 2, change: 3 },
+      journal: { bun: { lookups: 2, lastSeen: 1.5 } }, ended: false,
+    };
+    const storage = storageBoundary(historical);
+    const pending = loadGame(content);
+    await storage.connect();
+    storage.request.onsuccess?.();
+    storage.transaction.oncomplete?.();
+    expect(await pending).toEqual(historical);
+  });
+});
 
 function serve(state: GameState, table: number, apply: (action: Action) => void) {
   const position = TABLES.find((entry) => entry.table === table)!;
@@ -68,6 +234,22 @@ describe("saved-state domain validation", () => {
   it("retains old journal word IDs and non-integer finite timestamps", () => {
     const state = createGame(content);
     state.journal["retired-word"] = { lookups: 2, lastSeen: 1.5 };
+    expect(validateSavedGame(state, content)).toEqual(state);
+  });
+
+  it("retains an earlier receipt while another customer rejects the change", () => {
+    let state = createGame(content);
+    const apply = (action: Action) => { state = reduceGame(state, action, content); };
+    serve(state, 2, (action) => {
+      if (action.type !== "pay") apply(action);
+    });
+    serve(state, 1, apply);
+    apply({ type: "move", position: { x: 9, y: 2.5 } });
+    const order = getOrder(state, 2, content)!;
+    apply({ type: "pay", table: 2, change: order.paid - orderTotal(order, content) + 1 });
+    expect(state.feedback).toBe("wrong-change");
+    expect(state.activeTable).toBe(2);
+    expect(state.receipt?.table).toBe(1);
     expect(validateSavedGame(state, content)).toEqual(state);
   });
 
