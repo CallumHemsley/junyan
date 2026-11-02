@@ -82,6 +82,13 @@ content. Never write production content pointing at an ignored smoke directory.
 4. **Generate:** run the plan, then each affected engine with `--write-content`.
    Listen to changed lines and dictionary words before shipping them.
 
+For a tooling-only extension check, use disposable copies of both JSON files and
+an empty temporary audio directory with `--plan`. Add a nested line/word or a
+voice alias there: new Hanzi/pinyin/presets should introduce pending assets,
+while a renamed editorial voice ID with an identical preset should retain asset
+names. Planning does not validate the game's complete Zod schema; validate
+authored game content separately. Do not use real synthesis to test discovery.
+
 Character greetings/reactions and their order lines use that character's voice.
 Every dictionary word, including all nested line tokens and food words, uses
 `wordVoice`. Legacy top-level `thanks`/`retry` lines use `wordVoice`. Recursive
@@ -135,10 +142,20 @@ Names are flat lowercase `/audio/line-<sha256>.wav` or
 and authored pinyin. A pinyin edit invalidates the cache even though automatic
 pronunciation overrides are currently disabled.
 
-A cache hit requires the manifest's matching content digest, matching WAV byte
-SHA-256, and a decodable mono PCM16 file passing signal checks. Missing files,
+A cache hit requires the manifest's matching content digest and recorded identity
+(generator version, kind, text, full voice preset and pronunciation), matching WAV
+byte SHA-256, and a decodable mono PCM16 file passing signal checks. Missing files,
 corrupt bytes, invalid format and stale metadata regenerate; an unrecorded file
 is not trusted. Existing manifest fields and other engines' clips are preserved.
+Malformed clip records or duplicate filenames fail before generation/planning
+output instead of silently dropping or choosing provenance. Resolve those records
+explicitly before retrying; the script does not guess which duplicate is valid.
+Recorded `voice_ids` describe the generating run, not every current editorial
+alias; use the plan for current IDs/reference counts. Package versions and review
+notes are provenance, not proof of pronunciation or part of the audio identity.
+When changing generator behavior (including engine settings), bump `VERSION`;
+when changing the pronunciation policy, update `PRONUNCIATION`. Do not bump either
+for editorial aliases or unrelated tooling fixes: that would invalidate all clips.
 Each accepted asset saves manifest provenance atomically before its references
 become eligible. No cache garbage collection runs: old content-addressed clips
 remain so another content version can still reference them.
@@ -153,10 +170,16 @@ that reaches its token cap. Retakes change only the seed, never the text.
 Failures print the asset and cause, exit nonzero and leave that asset's original
 reference untouched. Successfully verified assets can still update when other
 assets fail. A failed run does not repair pre-existing broken legacy references.
-If content changes while synthesis runs, the script refuses to overwrite it;
-rerun to apply the cached assets to the latest content. JSON writes use a
-same-directory temporary plus atomic replace. The script is single-writer local
-tooling, not a distributed transaction with concurrent content editors.
+If content or voice configuration changes while synthesis runs, the script
+refuses the content update; rerun against both latest inputs. Already accepted
+audio/manifest entries remain available for that rerun. JSON writes use a
+same-directory temporary plus atomic replace. WAV, manifest and content writes
+are individually atomic, not one transaction: an interruption after WAV replace
+but before manifest save can leave an untrusted orphan WAV. Rerun normally; it
+must pass manifest/hash/signal checks before any reference is updated. The script
+is single-writer local tooling, not a distributed transaction with concurrent
+content editors. Input comparisons happen just before content update; do not edit
+inputs concurrently or run writers to different outputs against the same content.
 
 ## Pronunciation investigation and limits
 
@@ -188,10 +211,20 @@ checks and bounded retries are not a pronunciation or transcription test.
 `--self-check` uses temporary files and mocked synthesis; it checks voice routing,
 dictionary deduplication, preset/pinyin cache invalidation, no-write planning,
 mixed-engine manifest preservation, cache hits, missing/corrupt assets, stale
-digest rejection, failure-safe content updates and signal guards. It requires
+digest/identity rejection, malformed/duplicate manifest refusal, output locking,
+attempt limits, interrupted atomic content writes, content/voice edit guards and
+signal guards. Subprocess checks drive the actual plan CLI (including
+`--write-content`, engine and limit flags) and assert file bytes stay unchanged.
+It requires
 no third-party packages and asserts that model modules were never imported.
-The real game corpus remains a separate integration/listening check after the
-parent's character/content schema is ready.
+The real game corpus remains a separate integration/listening check.
+
+Tooling audit on 2026-11-02: baseline `21a4faaa8887dc8091f8d34ee70ad462ea472096`
+accepted contradictory voice provenance as cached, duplicate/filename-less
+manifest records, and content updates after concurrent voice-preset edits in
+disposable fixtures. Regression checks now reject those states. The real
+read-only plan still reports all 85 current assets cached; no generation or
+playback is needed for this audit. These checks do not approve native pronunciation.
 
 Worker verification on 2026-11-01: real offline-cache inference generated five
 PCM16 smoke assets for `多谢` (Serena line + dictionary word, Uncle_Fu line,

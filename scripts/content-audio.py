@@ -175,6 +175,9 @@ def cache_valid(job, output, records):
     try:
         if not entry or entry.get("content_digest") != job["content_digest"]:
             return False
+        if any(entry.get(key) != job[key] for key in
+               ("generator_version", "kind", "text", "voice", "pronunciation")):
+            return False
         if entry.get("sha256") != digest(path.read_bytes()):
             return False
         inspect_wav(path, job["text"])
@@ -306,17 +309,25 @@ def output_lock(output):
 def run(args, generator=None):
     original = args.content.read_bytes()
     content = json.loads(original)
-    jobs = collect_jobs(content, read_json(args.voices))
+    original_voices = args.voices.read_bytes()
+    jobs = collect_jobs(content, json.loads(original_voices))
     manifest_path = args.output / "manifest.json"
 
     def load_manifest():
         manifest = read_json(manifest_path) if manifest_path.exists() else {"clips": []}
         if not isinstance(manifest, dict) or not isinstance(manifest.get("clips"), list):
             raise ValueError("Manifest must be an object with a clips list; refusing to discard provenance")
+        filenames = set()
+        for entry in manifest["clips"]:
+            if not isinstance(entry, dict) or not isinstance(entry.get("filename"), str) or not entry["filename"]:
+                raise ValueError("Each manifest clip must have a filename; refusing to discard provenance")
+            if entry["filename"] in filenames:
+                raise ValueError(f"Duplicate manifest filename: {entry['filename']}; resolve provenance before retrying")
+            filenames.add(entry["filename"])
         return manifest
 
     def records_for(manifest):
-        return {entry["filename"]: entry for entry in manifest["clips"] if "filename" in entry}
+        return {entry["filename"]: entry for entry in manifest["clips"]}
 
     if args.plan:
         records = records_for(load_manifest())
@@ -356,6 +367,8 @@ def run(args, generator=None):
         if args.write_content:
             if args.content.read_bytes() != original:
                 raise ValueError("Content changed during generation; rerun to apply cached assets safely")
+            if args.voices.read_bytes() != original_voices:
+                raise ValueError("Voices changed during generation; rerun to apply cached assets safely")
             for job in available:
                 for target in job["targets"]:
                     target["audio"] = f"/audio/{job['filename']}"
@@ -370,6 +383,7 @@ def self_check():
     import contextlib
     import copy
     import io
+    import subprocess
     from unittest.mock import patch
 
     preset = {"engine": "qwen", "model": "test/model", "revision": "a" * 40,
@@ -408,6 +422,10 @@ def self_check():
     assert collect_jobs(changed, config)[0]["filename"] != jobs[0]["filename"]
     changed["foods"][0]["word"]["hanzi"] = "二"
     assert collect_jobs(changed, config)[0]["filename"] != jobs[0]["filename"]
+    renamed = copy.deepcopy(config)
+    renamed["voices"]["dictionary"] = renamed["voices"].pop("serena")
+    renamed["wordVoice"] = "dictionary"
+    assert [job["filename"] for job in collect_jobs(content, renamed)] == [job["filename"] for job in jobs]
     for setting in ("VERSION", "PRONUNCIATION"):
         with patch.dict(globals(), {setting: "changed"}):
             assert collect_jobs(content, config)[0]["filename"] != jobs[0]["filename"]
@@ -486,8 +504,92 @@ def self_check():
                 pass
             else:
                 raise AssertionError("Invalid signal accepted")
+    with tempfile.TemporaryDirectory() as temporary:
+        directory = Path(temporary)
+        source, voices, output = directory / "content.json", directory / "voices.json", directory / "audio"
+        write_json(source, content)
+        write_json(voices, config)
+        args = argparse.Namespace(content=source, voices=voices, output=output, plan=False,
+                                  engine="qwen", limit=1, write_content=True)
+        calls.clear()
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            with output_lock(output):
+                try:
+                    run(args, fake)
+                except BlockingIOError:
+                    pass
+                else:
+                    raise AssertionError("Competing output writer accepted")
+            assert not calls and read_json(source) == content
+            assert run(args, fake) == 0 and len(calls) == 1
+            assert len(list(output.glob("*.wav"))) == 1
+            manifest_path = output / "manifest.json"
+            original_manifest = read_json(manifest_path)
+            snapshot = {path: path.read_bytes() for path in directory.rglob("*") if path.is_file()}
+            command = [sys.executable, str(Path(__file__).resolve()), "--content", str(source),
+                       "--voices", str(voices), "--output", str(output), "--plan", "--write-content",
+                       "--engine", "kokoro", "--limit", "1"]
+            result = subprocess.run(command, capture_output=True, text=True)
+            rows = [json.loads(row) for row in result.stdout.splitlines()]
+            assert result.returncode == 0 and not result.stderr
+            assert len(rows) == 4 and sum(row["cached"] for row in rows) == 1
+            assert {path: path.read_bytes() for path in directory.rglob("*") if path.is_file()} == snapshot
+            for field, value in (("voice", preset | {"speaker": "Wrong"}), ("text", "二"),
+                                 ("kind", "line"), ("generator_version", "wrong"),
+                                 ("pronunciation", {})):
+                altered = copy.deepcopy(original_manifest)
+                altered["clips"][0][field] = value
+                write_json(manifest_path, altered)
+                result = subprocess.run(command, capture_output=True, text=True)
+                assert result.returncode == 0 and not any(json.loads(row)["cached"] for row in result.stdout.splitlines())
+            for entries in ([None], [{}], ["bad"], [{"filename": []}],
+                            original_manifest["clips"] * 2):
+                write_json(manifest_path, {"clips": entries})
+                before = manifest_path.read_bytes()
+                result = subprocess.run(command, capture_output=True, text=True)
+                assert result.returncode == 1 and not result.stdout
+                assert "ERROR:" in result.stderr and "Traceback" not in result.stderr
+                assert manifest_path.read_bytes() == before
+            write_json(manifest_path, original_manifest | {"editor_note": "preserve"})
+            args.limit = None
+            before = source.read_bytes()
+
+            def edit_voices(job, seed):
+                latest = copy.deepcopy(config)
+                latest["voices"]["serena"]["speaker"] = "Changed"
+                write_json(voices, latest)
+                return fake(job, seed)
+
+            try:
+                run(args, edit_voices)
+            except ValueError as error:
+                assert "Voices changed" in str(error)
+            else:
+                raise AssertionError("Changed voice configuration updated content")
+            assert source.read_bytes() == before
+            write_json(voices, config)
+            replace = os.replace
+
+            def fail_content_replace(temporary, destination):
+                if destination == source:
+                    raise OSError("Fixture interruption before content replace")
+                return replace(temporary, destination)
+
+            with patch.object(os, "replace", fail_content_replace):
+                try:
+                    run(args, fake)
+                except OSError:
+                    pass
+                else:
+                    raise AssertionError("Interrupted content write succeeded")
+            assert source.read_bytes() == before
+            assert not list(directory.glob(".content.json.*"))
+            calls_before_retry = len(calls)
+            assert run(args, fake) == 0 and len(calls) == calls_before_retry
+            assert read_json(source)["foods"][0]["word"]["audio"] == "/audio/" + original_manifest["clips"][0]["filename"]
+            assert read_json(manifest_path)["editor_note"] == "preserve"
     assert not any(name in sys.modules for name in ("numpy", "torch", "mlx", "kokoro", "mlx_audio"))
-    print("Self-check passed: routing, deduplication, invalidation, plan, mixed-engine cache, missing/corrupt assets, failure safety, signal guards")
+    print("Self-check passed: routing, deduplication, invalidation, plan CLI, mixed-engine cache, missing/corrupt assets, provenance, locking, limits, interrupted writes, input edit guards, signal guards")
 
 
 def main():
