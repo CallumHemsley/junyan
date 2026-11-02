@@ -62,6 +62,7 @@ export default function App() {
   const [dayExpanded, setDayExpanded] = useState(false);
   const [word, setWord] = useState<Word | null>(null);
   const wordTrigger = useRef<HTMLButtonElement | null>(null);
+  const panelTrigger = useRef<HTMLElement | null>(null);
   const wordOpen = word !== null;
   const [change, setChange] = useState(0);
   const [moving, setMoving] = useState(false);
@@ -117,22 +118,28 @@ export default function App() {
     } catch {
       setSaveError(true);
     }
-    loadGame(content)
-      .then((saved) => {
-        const restored = checkpoint ?? saved;
-        if (!cancelled && restored) setState(restored);
-      })
-      .catch(() => {
-        if (!cancelled) {
-          if (checkpoint) setState(checkpoint);
-          setSaveError(true);
-        }
-      })
-      .finally(() => {
-        if (!cancelled) setReady(true);
-      });
+    // Recovery is already validated and must not wait behind another tab's IDB work.
+    if (checkpoint) {
+      setState(checkpoint);
+      setReady(true);
+      return;
+    }
+    let settled = false;
+    const finish = (saved: GameState | null, failed = false) => {
+      if (cancelled || settled) return;
+      settled = true;
+      clearTimeout(timeout);
+      if (saved) setState(saved);
+      if (failed) setSaveError(true);
+      setReady(true);
+    };
+    // Queued native opens may emit neither blocked nor error. Once play starts,
+    // a late snapshot must never replace the player's newer state.
+    const timeout = setTimeout(() => finish(null, true), 1500);
+    loadGame(content).then((saved) => finish(saved)).catch(() => finish(null, true));
     return () => {
       cancelled = true;
+      clearTimeout(timeout);
     };
   }, []);
   useEffect(() => {
@@ -228,11 +235,11 @@ export default function App() {
   }, [panel, wordOpen]);
   useEffect(() => {
     if (!ready || (panel === "none" && !dayEndOpen)) return;
-    const previous = document.activeElement;
+    const previous = panelTrigger.current;
     const dialog = document.querySelector<HTMLElement>(".paper-panel");
     dialog?.querySelector<HTMLButtonElement>("button")?.focus();
     return () => {
-      if (previous instanceof HTMLElement) previous.focus();
+      if (previous?.isConnected && !previous.closest("[inert]")) previous.focus();
     };
   }, [panel, dayEndOpen, ready]);
   useEffect(() => {
@@ -400,9 +407,14 @@ export default function App() {
     ?? (state.tray.length > 0 ? waitingCustomer : undefined);
   const needsKitchen = !nextCustomer && Boolean(waitingCustomer);
   const nextTable = nextCustomer ?? state.customers.find((entry) => entry.phase === "seated");
+  const rememberPanelTrigger = (event: { target: EventTarget | null }) => {
+    if (!(event.target instanceof Element)) return;
+    const trigger = event.target.closest<HTMLElement>(".topbar button, .topbar a, main button");
+    if (trigger) panelTrigger.current = trigger;
+  };
   if (!ready) return <main className="loading">早安，小馆正在开门。</main>;
   return (
-    <div className="app-shell">
+    <div className="app-shell" onFocusCapture={rememberPanelTrigger} onClickCapture={rememberPanelTrigger}>
       <header className="topbar" inert={panel !== "none" || wordOpen || dayEndOpen}>
         <a className="brand" href={import.meta.env.BASE_URL} aria-label="君言首页">
           <span className="brand-seal">
