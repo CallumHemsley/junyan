@@ -1,0 +1,281 @@
+{
+  "opening": {
+    "cast": [
+      {
+        "id": "doctor",
+        "name": "王医生",
+        "voices": {
+          "zh": "ryan-zh",
+          "en": "ryan-en"
+        }
+      },
+      {
+        "id": "nurse",
+        "name": "护士",
+        "voices": {
+          "zh": "vivian"
+        }
+      },
+      {
+        "id": "elder",
+        "name": "老爷爷",
+        "voices": {
+          "zh": "uncle-fu-levelled"
+        }
+      },
+      {
+        "id": "aunt",
+        "name": "小姨",
+        "voices": {
+          "zh": "serena-levelled"
+        }
+      }
+    ],
+    "tray": [
+      "milk"
+    ],
+    "steps": [
+      {
+        "type": "say-en",
+        "who": "doctor",
+        "en": "Ah, you're awake. Don't try to sit up yet.",
+        "audio": "/audio/pending.wav"
+      },
+      {
+        "type": "say",
+        "who": "doctor",
+        "line": {
+          "id": "doctor-awake",
+          "tokens": [
+            {
+              "id": "person",
+              "hanzi": "人",
+              "pinyin": "rén",
+              "gloss": "person",
+              "audio": "/audio/pending.wav"
+            },
+            {
+              "id": "wake",
+              "hanzi": "醒",
+              "pinyin": "xǐng",
+              "gloss": "wake up",
+              "audio": "/audio/pending.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/pending.wav"
+            }
+          ],
+          "audio": "/audio/pending.wav",
+          "text": "人醒了。"
+        },
+        "recover": []
+      },
+      {
+        "type": "say",
+        "who": "nurse",
+        "line": {
+          "id": "nurse-okay",
+          "tokens": [
+            {
+              "id": "okay",
+              "hanzi": "好的",
+              "pinyin": "hǎo de",
+              "gloss": "okay",
+              "audio": "/audio/pending.wav"
+            },
+            {
+              "id": "wang",
+              "hanzi": "王",
+              "pinyin": "Wáng",
+              "gloss": "Wang (surname)",
+              "audio": "/audio/pending.wav"
+            },
+            {
+              "id": "doctor",
+              "hanzi": "医生",
+              "pinyin": "yīshēng",
+              "gloss": "doctor",
+              "audio": "/audio/pending.wav"
+            }
+          ],
+          "audio": "/audio/pending.wav",
+          "text": "好的，王医生。"
+        },
+        "recover": []
+      },
+      {
+        "type": "request",
+        "who": "elder",
+        "line": {
+          "id": "elder-milk",
+          "tokens": [
+            {
+              "id": "i",
+              "hanzi": "我",
+              "pinyin": "wǒ",
+              "gloss": "I; me",
+              "audio": "/audio/pending.wav"
+            },
+            {
+              "id": "want",
+              "hanzi": "要",
+              "pinyin": "yào",
+              "gloss": "want",
+              "audio": "/audio/pending.wav"
+            },
+            {
+              "id": "milk",
+              "hanzi": "豆浆",
+              "pinyin": "dòujiāng",
+              "gloss": "soy milk",
+              "audio": "/audio/pending.wav"
+            }
+          ],
+          "audio": "/audio/pending.wav",
+          "text": "我要豆浆。"
+        },
+        "want": "milk",
+        "wrong": {
+          "id": "elder-wrong",
+          "tokens": [
+            {
+              "id": "no",
+              "hanzi": "不",
+              "pinyin": "bù",
+              "gloss": "not",
+              "audio": "/audio/pending.wav"
+            },
+            {
+              "id": "right",
+              "hanzi": "对",
+              "pinyin": "duì",
+              "gloss": "right; correct",
+              "audio": "/audio/pending.wav"
+            },
+            {
+              "id": "i",
+              "hanzi": "我",
+              "pinyin": "wǒ",
+              "gloss": "I; me",
+              "audio": "/audio/pending.wav"
+            },
+            {
+              "id": "want",
+              "hanzi": "要",
+              "pinyin": "yào",
+              "gloss": "want",
+              "audio": "/audio/pending.wav"
+            },
+            {
+              "id": "milk",
+              "hanzi": "豆浆",
+              "pinyin": "dòujiāng",
+              "gloss": "soy milk",
+              "audio": "/audio/pending.wav"
+            }
+          ],
+          "audio": "/audio/pending.wav",
+          "text": "不对，我要豆浆。"
+        },
+        "ok": {
+          "id": "elder-thanks",
+          "tokens": [
+            {
+              "id": "thank-you",
+              "hanzi": "谢谢",
+              "pinyin": "xièxie",
+              "gloss": "thank you",
+              "audio": "/audio/pending.wav"
+            },
+            {
+              "id": "you",
+              "hanzi": "你",
+              "pinyin": "nǐ",
+              "gloss": "you",
+              "audio": "/audio/pending.wav"
+            }
+          ],
+          "audio": "/audio/pending.wav",
+          "text": "谢谢你！"
+        },
+        "recover": [
+          "milk"
+        ]
+      },
+      {
+        "type": "reply",
+        "who": "aunt",
+        "options": [
+          {
+            "word": {
+              "id": "good",
+              "hanzi": "好",
+              "pinyin": "hǎo",
+              "gloss": "good, okay",
+              "audio": "/audio/pending.wav"
+            },
+            "answer": {
+              "id": "aunt-great",
+              "tokens": [
+                {
+                  "id": "great",
+                  "hanzi": "太好了",
+                  "pinyin": "tài hǎo le",
+                  "gloss": "great",
+                  "audio": "/audio/pending.wav"
+                },
+                {
+                  "id": "tomorrow",
+                  "hanzi": "明天",
+                  "pinyin": "míngtiān",
+                  "gloss": "tomorrow",
+                  "audio": "/audio/pending.wav"
+                },
+                {
+                  "id": "see",
+                  "hanzi": "见",
+                  "pinyin": "jiàn",
+                  "gloss": "see; meet",
+                  "audio": "/audio/pending.wav"
+                }
+              ],
+              "audio": "/audio/pending.wav",
+              "text": "太好了！明天见。"
+            },
+            "recover": [
+              "good"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "end",
+        "title": {
+          "id": "end-title",
+          "tokens": [
+            {
+              "id": "day-one",
+              "hanzi": "第一天",
+              "pinyin": "dì yī tiān",
+              "gloss": "day one",
+              "audio": "/audio/pending.wav"
+            },
+            {
+              "id": "shop-name",
+              "hanzi": "早安小馆",
+              "pinyin": "Zǎo'ān Xiǎoguǎn",
+              "gloss": "Good Morning Diner",
+              "audio": "/audio/pending.wav"
+            }
+          ],
+          "audio": "/audio/pending.wav",
+          "text": "第一天·早安小馆"
+        }
+      }
+    ]
+  }
+}
