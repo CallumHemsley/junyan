@@ -47,6 +47,7 @@ export type Content = {
 };
 export type Phase = "seated" | "ordered" | "checkout" | "served";
 export type Customer = { table: number; orderId: string; phase: Phase };
+export type JournalEntry = { lookups: number; lastSeen: number; recovered: boolean };
 export type GameState = {
   seed: number;
   day: number;
@@ -60,7 +61,7 @@ export type GameState = {
   activeTable: number | null;
   feedback: "none" | "wrong-food" | "wrong-change" | "thanks" | "full";
   receipt: { table: number; total: number; change: number } | null;
-  journal: Record<string, { lookups: number; lastSeen: number }>;
+  journal: Record<string, JournalEntry>;
   ended: boolean;
 };
 export type Action =

@@ -130,6 +130,23 @@ function matchesTray(tray: string[], order: Order): boolean {
   return [...counts.values()].every((count) => count === 0);
 }
 
+export function recoverWords(
+  journal: GameState["journal"],
+  wordIds: readonly string[],
+  now: number,
+): GameState["journal"] {
+  const pending = wordIds.filter(
+    (id) => !(Object.hasOwn(journal, id) && journal[id].recovered),
+  );
+  if (pending.length === 0) return journal;
+  const next = { ...journal };
+  for (const id of pending) {
+    const previous = Object.hasOwn(journal, id) ? journal[id] : undefined;
+    next[id] = { lookups: 0, lastSeen: now, ...previous, recovered: true };
+  }
+  return next;
+}
+
 export function reduceGame(
   state: GameState,
   action: Action,
@@ -151,8 +168,10 @@ export function reduceGame(
       journal: {
         ...state.journal,
         [action.wordId]: {
+          ...previous,
           lookups: (previous?.lookups ?? 0) + 1,
           lastSeen: action.now,
+          recovered: previous?.recovered ?? false,
         },
       },
     };
