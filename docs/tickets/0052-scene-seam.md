@@ -1,7 +1,7 @@
 ---
 id: 52
 title: Let the renderer take a scene object and move the restaurant into one
-status: todo
+status: doing
 priority: high
 type: chore
 created: 2026-11-03
@@ -26,6 +26,7 @@ created: 2026-11-03
 ## Notes
 
 - Depends on: 0047.
+- Owner: Claude Code (autopilot-stack owner, took over from a stopped owner). Branch `claude/0052-scene-seam`, worktree `.claude/worktrees/agent-af2d6e670b50bd24f`, based on `claude/0047-opening-rules-docs` at 6c34555. Ports 5310 (dev) and 5311 (preview); the visual config keeps its fixed 5182 and 5186.
 - Owns: `src/scene/renderer.js`, `src/scene/renderer.d.ts`, `src/scene/renderer.test.ts`, `src/scene/RestaurantScene.tsx`, `src/scene/render-evidence.mjs`, `src/scene/render-character-evidence.mjs`, and a new restaurant scene module in `src/scene/`.
 - Must not touch: `src/scene/record-demo.mjs` and `src/scene/renderer.visual.pw.ts` (0054 edits them), `src/App.tsx`, `src/content/`, `e2e/`. Do not change `characterFigure` or any character art.
 - Ports: `JUNYAN_DEV_PORT=5310`, `JUNYAN_PREVIEW_PORT=5311`, strict. The existing visual evidence scripts use ports 5182 and 5186. Pass this ticket's ports instead.
