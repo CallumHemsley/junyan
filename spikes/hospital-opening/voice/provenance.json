@@ -1,0 +1,4317 @@
+{
+  "cast": {
+    "doctor": "Ryan",
+    "nurse": "Vivian",
+    "grandpa": "Uncle_Fu",
+    "aunt": "Serena",
+    "word": "Serena"
+  },
+  "clips": [
+    {
+      "filename": "00-doctor-en.wav",
+      "key": "Ah, you're awake. Don't try to sit up yet.",
+      "who": "doctor",
+      "text": "Ah, you're awake. Don't try to sit up yet.",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Ryan",
+        "language": "English",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 1233068570,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 4.24,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 97920,
+        "duration_seconds": 4.08,
+        "peak_absolute": 0.449249267578125,
+        "rms": 0.061786597868695795
+      },
+      "level": {
+        "gain_db": 2.9,
+        "before": {
+          "file": "00-doctor-en.wav",
+          "duration_s": 4.08,
+          "speech_s": 3.06,
+          "peak_dbfs": -7.0,
+          "rms_dbfs": -24.200000762939453,
+          "active_rms_dbfs": -22.899999618530273,
+          "lead_s": 0.48,
+          "tail_s": 0.54,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 133.0
+        },
+        "after": {
+          "file": "00-doctor-en.wav",
+          "duration_s": 4.08,
+          "speech_s": 3.06,
+          "peak_dbfs": -4.099999904632568,
+          "rms_dbfs": -21.299999237060547,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.48,
+          "tail_s": 0.54,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 133.0
+        }
+      },
+      "engine_details": {
+        "token_count": 51,
+        "max_tokens": 736,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:01.122118+00:00"
+    },
+    {
+      "filename": "01-doctor-en.wav",
+      "key": "You came off your bike three days ago and hit your head.",
+      "who": "doctor",
+      "text": "You came off your bike three days ago and hit your head.",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Ryan",
+        "language": "English",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3067960675,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.56,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 111360,
+        "duration_seconds": 4.64,
+        "peak_absolute": 0.444427490234375,
+        "rms": 0.05922514496641768
+      },
+      "level": {
+        "gain_db": 3.5,
+        "before": {
+          "file": "01-doctor-en.wav",
+          "duration_s": 4.64,
+          "speech_s": 3.75,
+          "peak_dbfs": -7.0,
+          "rms_dbfs": -24.5,
+          "active_rms_dbfs": -23.5,
+          "lead_s": 0.42,
+          "tail_s": 0.45,
+          "speech_ratio": 0.97,
+          "longest_pause_s": 0.06,
+          "median_f0_hz": 146.0
+        },
+        "after": {
+          "file": "01-doctor-en.wav",
+          "duration_s": 4.64,
+          "speech_s": 3.75,
+          "peak_dbfs": -3.5,
+          "rms_dbfs": -21.0,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.42,
+          "tail_s": 0.45,
+          "speech_ratio": 0.97,
+          "longest_pause_s": 0.06,
+          "median_f0_hz": 146.0
+        }
+      },
+      "engine_details": {
+        "token_count": 58,
+        "max_tokens": 960,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:02.685659+00:00"
+    },
+    {
+      "filename": "02-doctor-en.wav",
+      "key": "Your aunt tells me you used to speak Mandarin. For now, it's gone.",
+      "who": "doctor",
+      "text": "Your aunt tells me you used to speak Mandarin. For now, it's gone.",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Ryan",
+        "language": "English",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 672958361,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 2.57,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 178560,
+        "duration_seconds": 7.44,
+        "peak_absolute": 0.849639892578125,
+        "rms": 0.10540573419762941
+      },
+      "level": {
+        "gain_db": -1.9,
+        "before": {
+          "file": "02-doctor-en.wav",
+          "duration_s": 7.44,
+          "speech_s": 6.36,
+          "peak_dbfs": -1.399999976158142,
+          "rms_dbfs": -19.5,
+          "active_rms_dbfs": -18.100000381469727,
+          "lead_s": 0.48,
+          "tail_s": 0.6,
+          "speech_ratio": 0.83,
+          "longest_pause_s": 0.39,
+          "median_f0_hz": 257.0
+        },
+        "after": {
+          "file": "02-doctor-en.wav",
+          "duration_s": 7.44,
+          "speech_s": 6.36,
+          "peak_dbfs": -3.299999952316284,
+          "rms_dbfs": -21.399999618530273,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.48,
+          "tail_s": 0.6,
+          "speech_ratio": 0.83,
+          "longest_pause_s": 0.39,
+          "median_f0_hz": 257.0
+        }
+      },
+      "engine_details": {
+        "token_count": 93,
+        "max_tokens": 1120,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:05.250449+00:00"
+    },
+    {
+      "filename": "03-doctor-en.wav",
+      "key": "It'll come back if you listen and use it. So from now on, no more English.",
+      "who": "doctor",
+      "text": "It'll come back if you listen and use it. So from now on, no more English.",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Ryan",
+        "language": "English",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 1264584488,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 2.86,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 205440,
+        "duration_seconds": 8.56,
+        "peak_absolute": 0.69171142578125,
+        "rms": 0.08149043310143678
+      },
+      "level": {
+        "gain_db": 0.9,
+        "before": {
+          "file": "03-doctor-en.wav",
+          "duration_s": 8.56,
+          "speech_s": 7.62,
+          "peak_dbfs": -3.200000047683716,
+          "rms_dbfs": -21.799999237060547,
+          "active_rms_dbfs": -20.899999618530273,
+          "lead_s": 0.45,
+          "tail_s": 0.48,
+          "speech_ratio": 0.91,
+          "longest_pause_s": 0.09,
+          "median_f0_hz": 165.0
+        },
+        "after": {
+          "file": "03-doctor-en.wav",
+          "duration_s": 8.56,
+          "speech_s": 7.62,
+          "peak_dbfs": -2.299999952316284,
+          "rms_dbfs": -20.899999618530273,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.45,
+          "tail_s": 0.48,
+          "speech_ratio": 0.91,
+          "longest_pause_s": 0.09,
+          "median_f0_hz": 164.0
+        }
+      },
+      "engine_details": {
+        "token_count": 107,
+        "max_tokens": 1248,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:08.107936+00:00"
+    },
+    {
+      "filename": "04-doctor-zh.wav",
+      "key": "人 醒 了 。 我 明天 再 来 看看 。",
+      "who": "doctor",
+      "text": "人醒了。我明天再来看看。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Ryan",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 67676951,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 2.14,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 88320,
+        "duration_seconds": 3.68,
+        "peak_absolute": 0.669769287109375,
+        "rms": 0.0732963738171364
+      },
+      "level": {
+        "gain_db": 0.9,
+        "before": {
+          "file": "04-doctor-zh.wav",
+          "duration_s": 3.68,
+          "speech_s": 2.7,
+          "peak_dbfs": -3.5,
+          "rms_dbfs": -22.700000762939453,
+          "active_rms_dbfs": -20.899999618530273,
+          "lead_s": 0.48,
+          "tail_s": 0.48,
+          "speech_ratio": 0.91,
+          "longest_pause_s": 0.18,
+          "median_f0_hz": 108.0
+        },
+        "after": {
+          "file": "04-doctor-zh.wav",
+          "duration_s": 3.68,
+          "speech_s": 2.7,
+          "peak_dbfs": -2.5999999046325684,
+          "rms_dbfs": -21.799999237060547,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.48,
+          "tail_s": 0.48,
+          "speech_ratio": 0.91,
+          "longest_pause_s": 0.18,
+          "median_f0_hz": 108.0
+        }
+      },
+      "engine_details": {
+        "token_count": 46,
+        "max_tokens": 256,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:10.233210+00:00"
+    },
+    {
+      "filename": "05-nurse-zh.wav",
+      "key": "好的 ， 王 医生 。",
+      "who": "nurse",
+      "text": "好的，王医生。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Vivian",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3394394476,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.77,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 49920,
+        "duration_seconds": 2.08,
+        "peak_absolute": 0.79669189453125,
+        "rms": 0.11076782424829541
+      },
+      "level": {
+        "gain_db": -2.8,
+        "before": {
+          "file": "05-nurse-zh.wav",
+          "duration_s": 2.08,
+          "speech_s": 1.35,
+          "peak_dbfs": -2.0,
+          "rms_dbfs": -19.100000381469727,
+          "active_rms_dbfs": -17.200000762939453,
+          "lead_s": 0.45,
+          "tail_s": 0.27,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 194.0
+        },
+        "after": {
+          "file": "05-nurse-zh.wav",
+          "duration_s": 2.08,
+          "speech_s": 1.35,
+          "peak_dbfs": -4.800000190734863,
+          "rms_dbfs": -21.899999618530273,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.45,
+          "tail_s": 0.27,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 194.0
+        }
+      },
+      "engine_details": {
+        "token_count": 26,
+        "max_tokens": 176,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:11.013836+00:00"
+    },
+    {
+      "filename": "06-grandpa-zh.wav",
+      "key": "早上好 ， 年轻人 。 请 给 我 一 杯 豆浆 。",
+      "who": "grandpa",
+      "text": "早上好，年轻人。请给我一杯豆浆。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Uncle_Fu",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 2974403725,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.53,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 113280,
+        "duration_seconds": 4.72,
+        "peak_absolute": 0.57470703125,
+        "rms": 0.08599039282239493
+      },
+      "level": {
+        "gain_db": -0.2,
+        "before": {
+          "file": "06-grandpa-zh.wav",
+          "duration_s": 4.72,
+          "speech_s": 3.84,
+          "peak_dbfs": -4.800000190734863,
+          "rms_dbfs": -21.299999237060547,
+          "active_rms_dbfs": -19.799999237060547,
+          "lead_s": 0.39,
+          "tail_s": 0.48,
+          "speech_ratio": 0.86,
+          "longest_pause_s": 0.54,
+          "median_f0_hz": 110.0
+        },
+        "after": {
+          "file": "06-grandpa-zh.wav",
+          "duration_s": 4.72,
+          "speech_s": 3.84,
+          "peak_dbfs": -5.0,
+          "rms_dbfs": -21.5,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.39,
+          "tail_s": 0.48,
+          "speech_ratio": 0.86,
+          "longest_pause_s": 0.54,
+          "median_f0_hz": 110.0
+        }
+      },
+      "engine_details": {
+        "token_count": 59,
+        "max_tokens": 320,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:12.543912+00:00"
+    },
+    {
+      "filename": "07-grandpa-zh.wav",
+      "key": "不 对 ， 我 要 豆浆 。",
+      "who": "grandpa",
+      "text": "不对，我要豆浆。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Uncle_Fu",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3501455465,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.96,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 65280,
+        "duration_seconds": 2.72,
+        "peak_absolute": 0.502105712890625,
+        "rms": 0.06122382289051234
+      },
+      "level": {
+        "gain_db": 0.4,
+        "before": {
+          "file": "07-grandpa-zh.wav",
+          "duration_s": 2.72,
+          "speech_s": 1.65,
+          "peak_dbfs": -6.0,
+          "rms_dbfs": -24.299999237060547,
+          "active_rms_dbfs": -20.399999618530273,
+          "lead_s": 0.54,
+          "tail_s": 0.51,
+          "speech_ratio": 0.67,
+          "longest_pause_s": 0.54,
+          "median_f0_hz": 92.0
+        },
+        "after": {
+          "file": "07-grandpa-zh.wav",
+          "duration_s": 2.72,
+          "speech_s": 1.65,
+          "peak_dbfs": -5.599999904632568,
+          "rms_dbfs": -23.899999618530273,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.54,
+          "tail_s": 0.51,
+          "speech_ratio": 0.67,
+          "longest_pause_s": 0.54,
+          "median_f0_hz": 92.0
+        }
+      },
+      "engine_details": {
+        "token_count": 34,
+        "max_tokens": 192,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:13.508515+00:00"
+    },
+    {
+      "filename": "08-grandpa-zh.wav",
+      "key": "谢谢 你 ！",
+      "who": "grandpa",
+      "text": "谢谢你！",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Uncle_Fu",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 2593925296,
+          "accepted": false,
+          "error": "Abnormal audio duration: 5.60s"
+        },
+        {
+          "seed": 2593926296,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 2.48,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 30720,
+        "duration_seconds": 1.28,
+        "peak_absolute": 0.5758056640625,
+        "rms": 0.0777375721564993
+      },
+      "level": {
+        "gain_db": -1.3,
+        "before": {
+          "file": "08-grandpa-zh.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.57,
+          "peak_dbfs": -4.800000190734863,
+          "rms_dbfs": -22.200000762939453,
+          "active_rms_dbfs": -18.700000762939453,
+          "lead_s": 0.33,
+          "tail_s": 0.36,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 164.0
+        },
+        "after": {
+          "file": "08-grandpa-zh.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.57,
+          "peak_dbfs": -6.099999904632568,
+          "rms_dbfs": -23.5,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.33,
+          "tail_s": 0.36,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 164.0
+        }
+      },
+      "engine_details": {
+        "token_count": 16,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:15.988827+00:00"
+    },
+    {
+      "filename": "09-grandpa-zh.wav",
+      "key": "我 还 想 要 一 个 鸡蛋 。",
+      "who": "grandpa",
+      "text": "我还想要一个鸡蛋。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Uncle_Fu",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 25608097,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.79,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 126720,
+        "duration_seconds": 5.28,
+        "peak_absolute": 0.493011474609375,
+        "rms": 0.05894632625901878
+      },
+      "level": {
+        "gain_db": 3.3,
+        "before": {
+          "file": "09-grandpa-zh.wav",
+          "duration_s": 5.28,
+          "speech_s": 3.99,
+          "peak_dbfs": -6.099999904632568,
+          "rms_dbfs": -24.600000381469727,
+          "active_rms_dbfs": -23.299999237060547,
+          "lead_s": 0.72,
+          "tail_s": 0.57,
+          "speech_ratio": 0.99,
+          "longest_pause_s": 0.03,
+          "median_f0_hz": 150.0
+        },
+        "after": {
+          "file": "09-grandpa-zh.wav",
+          "duration_s": 5.28,
+          "speech_s": 3.99,
+          "peak_dbfs": -2.799999952316284,
+          "rms_dbfs": -21.299999237060547,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.72,
+          "tail_s": 0.57,
+          "speech_ratio": 0.99,
+          "longest_pause_s": 0.03,
+          "median_f0_hz": 150.0
+        }
+      },
+      "engine_details": {
+        "token_count": 66,
+        "max_tokens": 208,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:17.781524+00:00"
+    },
+    {
+      "filename": "10-grandpa-zh.wav",
+      "key": "不 对 ， 我 要 鸡蛋 。",
+      "who": "grandpa",
+      "text": "不对，我要鸡蛋。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Uncle_Fu",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 2365537619,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.92,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 59520,
+        "duration_seconds": 2.48,
+        "peak_absolute": 0.6859130859375,
+        "rms": 0.0656108124106858
+      },
+      "level": {
+        "gain_db": 0.3,
+        "before": {
+          "file": "10-grandpa-zh.wav",
+          "duration_s": 2.48,
+          "speech_s": 1.74,
+          "peak_dbfs": -3.299999952316284,
+          "rms_dbfs": -23.700000762939453,
+          "active_rms_dbfs": -20.299999237060547,
+          "lead_s": 0.39,
+          "tail_s": 0.33,
+          "speech_ratio": 0.66,
+          "longest_pause_s": 0.6,
+          "median_f0_hz": 251.0
+        },
+        "after": {
+          "file": "10-grandpa-zh.wav",
+          "duration_s": 2.48,
+          "speech_s": 1.74,
+          "peak_dbfs": -3.0,
+          "rms_dbfs": -23.399999618530273,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.39,
+          "tail_s": 0.33,
+          "speech_ratio": 0.66,
+          "longest_pause_s": 0.6,
+          "median_f0_hz": 251.0
+        }
+      },
+      "engine_details": {
+        "token_count": 31,
+        "max_tokens": 192,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:18.702760+00:00"
+    },
+    {
+      "filename": "11-grandpa-zh.wav",
+      "key": "谢谢 ， 谢谢 ！",
+      "who": "grandpa",
+      "text": "谢谢，谢谢！",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Uncle_Fu",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 2718334324,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.11,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 78720,
+        "duration_seconds": 3.28,
+        "peak_absolute": 0.449462890625,
+        "rms": 0.04896169302286098
+      },
+      "level": {
+        "gain_db": 3.4,
+        "before": {
+          "file": "11-grandpa-zh.wav",
+          "duration_s": 3.28,
+          "speech_s": 2.52,
+          "peak_dbfs": -6.900000095367432,
+          "rms_dbfs": -26.200000762939453,
+          "active_rms_dbfs": -23.399999618530273,
+          "lead_s": 0.42,
+          "tail_s": 0.33,
+          "speech_ratio": 0.68,
+          "longest_pause_s": 0.48,
+          "median_f0_hz": 162.0
+        },
+        "after": {
+          "file": "11-grandpa-zh.wav",
+          "duration_s": 3.28,
+          "speech_s": 2.52,
+          "peak_dbfs": -3.5,
+          "rms_dbfs": -22.799999237060547,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.42,
+          "tail_s": 0.33,
+          "speech_ratio": 0.68,
+          "longest_pause_s": 0.48,
+          "median_f0_hz": 162.0
+        }
+      },
+      "engine_details": {
+        "token_count": 41,
+        "max_tokens": 160,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:19.817440+00:00"
+    },
+    {
+      "filename": "12-aunt-zh.wav",
+      "key": "你 醒 了 ！ 还 记得 我 吗 ？ 我 是 你 小姨 。",
+      "who": "aunt",
+      "text": "你醒了！还记得我吗？我是你小姨。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 1939629193,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.61,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 117120,
+        "duration_seconds": 4.88,
+        "peak_absolute": 0.33074951171875,
+        "rms": 0.0443064827084884
+      },
+      "level": {
+        "gain_db": 5.9,
+        "before": {
+          "file": "12-aunt-zh.wav",
+          "duration_s": 4.88,
+          "speech_s": 4.35,
+          "peak_dbfs": -9.600000381469727,
+          "rms_dbfs": -27.100000381469727,
+          "active_rms_dbfs": -25.899999618530273,
+          "lead_s": 0.24,
+          "tail_s": 0.27,
+          "speech_ratio": 0.86,
+          "longest_pause_s": 0.3,
+          "median_f0_hz": 329.0
+        },
+        "after": {
+          "file": "12-aunt-zh.wav",
+          "duration_s": 4.88,
+          "speech_s": 4.35,
+          "peak_dbfs": -3.700000047683716,
+          "rms_dbfs": -21.200000762939453,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.24,
+          "tail_s": 0.27,
+          "speech_ratio": 0.86,
+          "longest_pause_s": 0.3,
+          "median_f0_hz": 329.0
+        }
+      },
+      "engine_details": {
+        "token_count": 61,
+        "max_tokens": 320,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:21.425296+00:00"
+    },
+    {
+      "filename": "13-aunt-zh.wav",
+      "key": "别 担心 ， 慢慢 来 。",
+      "who": "aunt",
+      "text": "别担心，慢慢来。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 1128950544,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.86,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 55680,
+        "duration_seconds": 2.32,
+        "peak_absolute": 0.370086669921875,
+        "rms": 0.04697804556834339
+      },
+      "level": {
+        "gain_db": 4.0,
+        "before": {
+          "file": "13-aunt-zh.wav",
+          "duration_s": 2.32,
+          "speech_s": 1.77,
+          "peak_dbfs": -8.600000381469727,
+          "rms_dbfs": -26.600000381469727,
+          "active_rms_dbfs": -24.0,
+          "lead_s": 0.24,
+          "tail_s": 0.3,
+          "speech_ratio": 0.73,
+          "longest_pause_s": 0.48,
+          "median_f0_hz": 312.0
+        },
+        "after": {
+          "file": "13-aunt-zh.wav",
+          "duration_s": 2.32,
+          "speech_s": 1.77,
+          "peak_dbfs": -4.599999904632568,
+          "rms_dbfs": -22.600000381469727,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.24,
+          "tail_s": 0.3,
+          "speech_ratio": 0.73,
+          "longest_pause_s": 0.48,
+          "median_f0_hz": 312.0
+        }
+      },
+      "engine_details": {
+        "token_count": 29,
+        "max_tokens": 192,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:22.289923+00:00"
+    },
+    {
+      "filename": "14-aunt-zh.wav",
+      "key": "明天 来 店 里 帮 我 ， 好 吗 ？",
+      "who": "aunt",
+      "text": "明天来店里帮我，好吗？",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3852297707,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.82,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 57600,
+        "duration_seconds": 2.4,
+        "peak_absolute": 0.293365478515625,
+        "rms": 0.05965337442940879
+      },
+      "level": {
+        "gain_db": 3.3,
+        "before": {
+          "file": "14-aunt-zh.wav",
+          "duration_s": 2.4,
+          "speech_s": 1.83,
+          "peak_dbfs": -10.699999809265137,
+          "rms_dbfs": -24.5,
+          "active_rms_dbfs": -23.299999237060547,
+          "lead_s": 0.3,
+          "tail_s": 0.27,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 300.0
+        },
+        "after": {
+          "file": "14-aunt-zh.wav",
+          "duration_s": 2.4,
+          "speech_s": 1.83,
+          "peak_dbfs": -7.400000095367432,
+          "rms_dbfs": -21.200000762939453,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.3,
+          "tail_s": 0.27,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 300.0
+        }
+      },
+      "engine_details": {
+        "token_count": 30,
+        "max_tokens": 240,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:23.109688+00:00"
+    },
+    {
+      "filename": "15-aunt-zh.wav",
+      "key": "太好了 ！ 明天 见 。",
+      "who": "aunt",
+      "text": "太好了！明天见。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 850824384,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.25,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 92160,
+        "duration_seconds": 3.84,
+        "peak_absolute": 0.286163330078125,
+        "rms": 0.027234492021028057
+      },
+      "level": {
+        "gain_db": 9.0,
+        "before": {
+          "file": "15-aunt-zh.wav",
+          "duration_s": 3.84,
+          "speech_s": 3.21,
+          "peak_dbfs": -10.899999618530273,
+          "rms_dbfs": -31.299999237060547,
+          "active_rms_dbfs": -29.0,
+          "lead_s": 0.33,
+          "tail_s": 0.3,
+          "speech_ratio": 0.71,
+          "longest_pause_s": 0.36,
+          "median_f0_hz": 257.0
+        },
+        "after": {
+          "file": "15-aunt-zh.wav",
+          "duration_s": 3.84,
+          "speech_s": 3.21,
+          "peak_dbfs": -1.899999976158142,
+          "rms_dbfs": -22.299999237060547,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.33,
+          "tail_s": 0.3,
+          "speech_ratio": 0.71,
+          "longest_pause_s": 0.36,
+          "median_f0_hz": 257.0
+        }
+      },
+      "engine_details": {
+        "token_count": 48,
+        "max_tokens": 192,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:24.362585+00:00"
+    },
+    {
+      "filename": "16-aunt-zh.wav",
+      "key": "谢 什么 呀 ！ 明天 见 。",
+      "who": "aunt",
+      "text": "谢什么呀！明天见。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 754351131,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.69,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 49920,
+        "duration_seconds": 2.08,
+        "peak_absolute": 0.2257080078125,
+        "rms": 0.034244741933224195
+      },
+      "level": {
+        "gain_db": 7.0,
+        "before": {
+          "file": "16-aunt-zh.wav",
+          "duration_s": 2.08,
+          "speech_s": 1.59,
+          "peak_dbfs": -12.899999618530273,
+          "rms_dbfs": -29.299999237060547,
+          "active_rms_dbfs": -27.0,
+          "lead_s": 0.21,
+          "tail_s": 0.27,
+          "speech_ratio": 0.77,
+          "longest_pause_s": 0.36,
+          "median_f0_hz": 220.0
+        },
+        "after": {
+          "file": "16-aunt-zh.wav",
+          "duration_s": 2.08,
+          "speech_s": 1.59,
+          "peak_dbfs": -5.900000095367432,
+          "rms_dbfs": -22.299999237060547,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.21,
+          "tail_s": 0.27,
+          "speech_ratio": 0.77,
+          "longest_pause_s": 0.36,
+          "median_f0_hz": 220.0
+        }
+      },
+      "engine_details": {
+        "token_count": 26,
+        "max_tokens": 208,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:25.055662+00:00"
+    },
+    {
+      "filename": "w00.wav",
+      "key": "人",
+      "who": "word",
+      "text": "人",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3146381699,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.58,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 36480,
+        "duration_seconds": 1.52,
+        "peak_absolute": 0.561767578125,
+        "rms": 0.10996004766613643
+      },
+      "level": {
+        "gain_db": -3.6,
+        "before": {
+          "file": "w00.wav",
+          "duration_s": 1.52,
+          "speech_s": 0.81,
+          "peak_dbfs": -5.0,
+          "rms_dbfs": -19.200000762939453,
+          "active_rms_dbfs": -16.399999618530273,
+          "lead_s": 0.3,
+          "tail_s": 0.39,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 333.0
+        },
+        "after": {
+          "file": "w00.wav",
+          "duration_s": 1.52,
+          "speech_s": 0.81,
+          "peak_dbfs": -8.600000381469727,
+          "rms_dbfs": -22.799999237060547,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.3,
+          "tail_s": 0.39,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 333.0
+        }
+      },
+      "engine_details": {
+        "token_count": 19,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:25.635990+00:00"
+    },
+    {
+      "filename": "w01.wav",
+      "key": "醒",
+      "who": "word",
+      "text": "醒",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 612606631,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.44,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 30720,
+        "duration_seconds": 1.28,
+        "peak_absolute": 0.212127685546875,
+        "rms": 0.03259829772832097
+      },
+      "level": {
+        "gain_db": 7.1,
+        "before": {
+          "file": "w01.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.69,
+          "peak_dbfs": -13.5,
+          "rms_dbfs": -29.700000762939453,
+          "active_rms_dbfs": -27.100000381469727,
+          "lead_s": 0.3,
+          "tail_s": 0.27,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 230.0
+        },
+        "after": {
+          "file": "w01.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.69,
+          "peak_dbfs": -6.400000095367432,
+          "rms_dbfs": -22.600000381469727,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.3,
+          "tail_s": 0.27,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 230.0
+        }
+      },
+      "engine_details": {
+        "token_count": 16,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:26.076142+00:00"
+    },
+    {
+      "filename": "w03.wav",
+      "key": "我",
+      "who": "word",
+      "text": "我",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 2077733132,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.39,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 26880,
+        "duration_seconds": 1.12,
+        "peak_absolute": 0.417755126953125,
+        "rms": 0.08019669863198002
+      },
+      "level": {
+        "gain_db": -1.0,
+        "before": {
+          "file": "w03.wav",
+          "duration_s": 1.12,
+          "speech_s": 0.57,
+          "peak_dbfs": -7.599999904632568,
+          "rms_dbfs": -21.899999618530273,
+          "active_rms_dbfs": -19.0,
+          "lead_s": 0.27,
+          "tail_s": 0.27,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 231.0
+        },
+        "after": {
+          "file": "w03.wav",
+          "duration_s": 1.12,
+          "speech_s": 0.57,
+          "peak_dbfs": -8.600000381469727,
+          "rms_dbfs": -22.899999618530273,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.27,
+          "tail_s": 0.27,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 231.0
+        }
+      },
+      "engine_details": {
+        "token_count": 14,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:30.577611+00:00"
+    },
+    {
+      "filename": "w04.wav",
+      "key": "明天",
+      "who": "word",
+      "text": "明天",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3676019343,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.44,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 30720,
+        "duration_seconds": 1.28,
+        "peak_absolute": 0.09442138671875,
+        "rms": 0.016615303507058542
+      },
+      "level": {
+        "gain_db": 12.9,
+        "before": {
+          "file": "w04.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.69,
+          "peak_dbfs": -20.5,
+          "rms_dbfs": -35.599998474121094,
+          "active_rms_dbfs": -32.900001525878906,
+          "lead_s": 0.39,
+          "tail_s": 0.18,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 255.0
+        },
+        "after": {
+          "file": "w04.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.69,
+          "peak_dbfs": -7.599999904632568,
+          "rms_dbfs": -22.700000762939453,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.39,
+          "tail_s": 0.18,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 255.0
+        }
+      },
+      "engine_details": {
+        "token_count": 16,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:31.014090+00:00"
+    },
+    {
+      "filename": "w05.wav",
+      "key": "再",
+      "who": "word",
+      "text": "再",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3539160592,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.38,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 26880,
+        "duration_seconds": 1.12,
+        "peak_absolute": 0.4122314453125,
+        "rms": 0.04444703314587449
+      },
+      "level": {
+        "gain_db": 3.6,
+        "before": {
+          "file": "w05.wav",
+          "duration_s": 1.12,
+          "speech_s": 0.51,
+          "peak_dbfs": -7.699999809265137,
+          "rms_dbfs": -27.0,
+          "active_rms_dbfs": -23.600000381469727,
+          "lead_s": 0.24,
+          "tail_s": 0.36,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 226.0
+        },
+        "after": {
+          "file": "w05.wav",
+          "duration_s": 1.12,
+          "speech_s": 0.51,
+          "peak_dbfs": -4.099999904632568,
+          "rms_dbfs": -23.399999618530273,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.24,
+          "tail_s": 0.36,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 226.0
+        }
+      },
+      "engine_details": {
+        "token_count": 14,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:31.398484+00:00"
+    },
+    {
+      "filename": "w06.wav",
+      "key": "来",
+      "who": "word",
+      "text": "来",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 2675529838,
+          "accepted": false,
+          "error": "Qwen returned multiple chunks or reached token cap"
+        },
+        {
+          "seed": 2675530838,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 3.71,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 24960,
+        "duration_seconds": 1.04,
+        "peak_absolute": 0.070526123046875,
+        "rms": 0.011480493655824844
+      },
+      "level": {
+        "gain_db": 16.2,
+        "before": {
+          "file": "w06.wav",
+          "duration_s": 1.04,
+          "speech_s": 0.57,
+          "peak_dbfs": -23.0,
+          "rms_dbfs": -38.79999923706055,
+          "active_rms_dbfs": -36.20000076293945,
+          "lead_s": 0.18,
+          "tail_s": 0.27,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 238.0
+        },
+        "after": {
+          "file": "w06.wav",
+          "duration_s": 1.04,
+          "speech_s": 0.57,
+          "peak_dbfs": -6.800000190734863,
+          "rms_dbfs": -22.600000381469727,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.18,
+          "tail_s": 0.27,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 238.0
+        }
+      },
+      "engine_details": {
+        "token_count": 13,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:35.109525+00:00"
+    },
+    {
+      "filename": "w07.wav",
+      "key": "看看",
+      "who": "word",
+      "text": "看看",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3506982260,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.35,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 23040,
+        "duration_seconds": 0.96,
+        "peak_absolute": 0.397216796875,
+        "rms": 0.04741921167130523
+      },
+      "level": {
+        "gain_db": 3.5,
+        "before": {
+          "file": "w07.wav",
+          "duration_s": 0.96,
+          "speech_s": 0.48,
+          "peak_dbfs": -8.0,
+          "rms_dbfs": -26.5,
+          "active_rms_dbfs": -23.5,
+          "lead_s": 0.45,
+          "tail_s": 0.03,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 364.0
+        },
+        "after": {
+          "file": "w07.wav",
+          "duration_s": 0.96,
+          "speech_s": 0.48,
+          "peak_dbfs": -4.5,
+          "rms_dbfs": -23.0,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.45,
+          "tail_s": 0.03,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 364.0
+        }
+      },
+      "engine_details": {
+        "token_count": 12,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:35.463180+00:00"
+    },
+    {
+      "filename": "w08.wav",
+      "key": "好的",
+      "who": "word",
+      "text": "好的",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 4081410068,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.59,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 36480,
+        "duration_seconds": 1.52,
+        "peak_absolute": 0.4320068359375,
+        "rms": 0.04415223589456649
+      },
+      "level": {
+        "gain_db": 2.8,
+        "before": {
+          "file": "w08.wav",
+          "duration_s": 1.52,
+          "speech_s": 0.57,
+          "peak_dbfs": -7.300000190734863,
+          "rms_dbfs": -27.100000381469727,
+          "active_rms_dbfs": -22.799999237060547,
+          "lead_s": 0.6,
+          "tail_s": 0.33,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 239.0
+        },
+        "after": {
+          "file": "w08.wav",
+          "duration_s": 1.52,
+          "speech_s": 0.57,
+          "peak_dbfs": -4.5,
+          "rms_dbfs": -24.299999237060547,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.6,
+          "tail_s": 0.33,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 239.0
+        }
+      },
+      "engine_details": {
+        "token_count": 19,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:36.051944+00:00"
+    },
+    {
+      "filename": "w09.wav",
+      "key": "王",
+      "who": "word",
+      "text": "王",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 505013931,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.46,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 32640,
+        "duration_seconds": 1.36,
+        "peak_absolute": 0.561614990234375,
+        "rms": 0.08364545311691869
+      },
+      "level": {
+        "gain_db": -2.0,
+        "before": {
+          "file": "w09.wav",
+          "duration_s": 1.36,
+          "speech_s": 0.63,
+          "peak_dbfs": -5.0,
+          "rms_dbfs": -21.600000381469727,
+          "active_rms_dbfs": -18.0,
+          "lead_s": 0.42,
+          "tail_s": 0.3,
+          "speech_ratio": 0.95,
+          "longest_pause_s": 0.03,
+          "median_f0_hz": 302.0
+        },
+        "after": {
+          "file": "w09.wav",
+          "duration_s": 1.36,
+          "speech_s": 0.63,
+          "peak_dbfs": -7.0,
+          "rms_dbfs": -23.600000381469727,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.42,
+          "tail_s": 0.3,
+          "speech_ratio": 0.95,
+          "longest_pause_s": 0.03,
+          "median_f0_hz": 302.0
+        }
+      },
+      "engine_details": {
+        "token_count": 17,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:36.513113+00:00"
+    },
+    {
+      "filename": "w10.wav",
+      "key": "医生",
+      "who": "word",
+      "text": "医生",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3585320969,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.54,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 38400,
+        "duration_seconds": 1.6,
+        "peak_absolute": 0.486175537109375,
+        "rms": 0.0991351042409534
+      },
+      "level": {
+        "gain_db": -1.5,
+        "before": {
+          "file": "w10.wav",
+          "duration_s": 1.6,
+          "speech_s": 1.11,
+          "peak_dbfs": -6.300000190734863,
+          "rms_dbfs": -20.100000381469727,
+          "active_rms_dbfs": -18.5,
+          "lead_s": 0.24,
+          "tail_s": 0.24,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 364.0
+        },
+        "after": {
+          "file": "w10.wav",
+          "duration_s": 1.6,
+          "speech_s": 1.11,
+          "peak_dbfs": -7.800000190734863,
+          "rms_dbfs": -21.600000381469727,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.24,
+          "tail_s": 0.24,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 364.0
+        }
+      },
+      "engine_details": {
+        "token_count": 20,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:37.048918+00:00"
+    },
+    {
+      "filename": "w11.wav",
+      "key": "你",
+      "who": "word",
+      "text": "你",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3226905945,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.78,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 55680,
+        "duration_seconds": 2.32,
+        "peak_absolute": 0.2457275390625,
+        "rms": 0.0182935499935774
+      },
+      "level": {
+        "gain_db": 7.6,
+        "before": {
+          "file": "w11.wav",
+          "duration_s": 2.32,
+          "speech_s": 0.45,
+          "peak_dbfs": -12.199999809265137,
+          "rms_dbfs": -34.79999923706055,
+          "active_rms_dbfs": -27.600000381469727,
+          "lead_s": 0.81,
+          "tail_s": 1.05,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 224.0
+        },
+        "after": {
+          "file": "w11.wav",
+          "duration_s": 2.32,
+          "speech_s": 0.45,
+          "peak_dbfs": -4.599999904632568,
+          "rms_dbfs": -27.200000762939453,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.81,
+          "tail_s": 1.05,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 224.0
+        }
+      },
+      "engine_details": {
+        "token_count": 29,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:37.824604+00:00"
+    },
+    {
+      "filename": "w12.wav",
+      "key": "别",
+      "who": "word",
+      "text": "别",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 1923312913,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.51,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.643310546875,
+        "rms": 0.056337330853654305
+      },
+      "level": {
+        "gain_db": -1.0,
+        "before": {
+          "file": "w12.wav",
+          "duration_s": 1.44,
+          "speech_s": 0.36,
+          "peak_dbfs": -3.799999952316284,
+          "rms_dbfs": -25.0,
+          "active_rms_dbfs": -19.0,
+          "lead_s": 0.21,
+          "tail_s": 0.87,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 320.0
+        },
+        "after": {
+          "file": "w12.wav",
+          "duration_s": 1.44,
+          "speech_s": 0.36,
+          "peak_dbfs": -4.800000190734863,
+          "rms_dbfs": -26.0,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.21,
+          "tail_s": 0.87,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 320.0
+        }
+      },
+      "engine_details": {
+        "token_count": 18,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:38.330664+00:00"
+    },
+    {
+      "filename": "w13.wav",
+      "key": "怕",
+      "who": "word",
+      "text": "怕",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 1993376917,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.48,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.132598876953125,
+        "rms": 0.020112311252558263
+      },
+      "level": {
+        "gain_db": 9.9,
+        "before": {
+          "file": "w13.wav",
+          "duration_s": 1.44,
+          "speech_s": 0.57,
+          "peak_dbfs": -17.5,
+          "rms_dbfs": -33.900001525878906,
+          "active_rms_dbfs": -29.899999618530273,
+          "lead_s": 0.51,
+          "tail_s": 0.36,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 258.0
+        },
+        "after": {
+          "file": "w13.wav",
+          "duration_s": 1.44,
+          "speech_s": 0.57,
+          "peak_dbfs": -7.599999904632568,
+          "rms_dbfs": -24.0,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.51,
+          "tail_s": 0.36,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 258.0
+        }
+      },
+      "engine_details": {
+        "token_count": 18,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:38.812448+00:00"
+    },
+    {
+      "filename": "w14.wav",
+      "key": "是",
+      "who": "word",
+      "text": "是",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 2745715906,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.31,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 21120,
+        "duration_seconds": 0.88,
+        "peak_absolute": 0.326995849609375,
+        "rms": 0.04013515063291923
+      },
+      "level": {
+        "gain_db": 4.4,
+        "before": {
+          "file": "w14.wav",
+          "duration_s": 0.88,
+          "speech_s": 0.39,
+          "peak_dbfs": -9.699999809265137,
+          "rms_dbfs": -27.899999618530273,
+          "active_rms_dbfs": -24.399999618530273,
+          "lead_s": 0.18,
+          "tail_s": 0.3,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 323.0
+        },
+        "after": {
+          "file": "w14.wav",
+          "duration_s": 0.88,
+          "speech_s": 0.39,
+          "peak_dbfs": -5.300000190734863,
+          "rms_dbfs": -23.5,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.18,
+          "tail_s": 0.3,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 323.0
+        }
+      },
+      "engine_details": {
+        "token_count": 11,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:39.121995+00:00"
+    },
+    {
+      "filename": "w15.wav",
+      "key": "听得懂",
+      "who": "word",
+      "text": "听得懂",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3767886715,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.54,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 38400,
+        "duration_seconds": 1.6,
+        "peak_absolute": 0.720245361328125,
+        "rms": 0.15676343539541576
+      },
+      "level": {
+        "gain_db": -5.4,
+        "before": {
+          "file": "w15.wav",
+          "duration_s": 1.6,
+          "speech_s": 1.14,
+          "peak_dbfs": -2.9000000953674316,
+          "rms_dbfs": -16.100000381469727,
+          "active_rms_dbfs": -14.600000381469727,
+          "lead_s": 0.18,
+          "tail_s": 0.27,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 216.0
+        },
+        "after": {
+          "file": "w15.wav",
+          "duration_s": 1.6,
+          "speech_s": 1.14,
+          "peak_dbfs": -8.300000190734863,
+          "rms_dbfs": -21.5,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.18,
+          "tail_s": 0.27,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 216.0
+        }
+      },
+      "engine_details": {
+        "token_count": 20,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:39.659453+00:00"
+    },
+    {
+      "filename": "w16.wav",
+      "key": "吗",
+      "who": "word",
+      "text": "吗",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 1145182060,
+          "accepted": false,
+          "error": "Abnormal audio duration: 5.44s"
+        },
+        {
+          "seed": 1145183060,
+          "accepted": false,
+          "error": "Abnormal audio duration: 7.04s"
+        },
+        {
+          "seed": 1145184060,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 4.62,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 36480,
+        "duration_seconds": 1.52,
+        "peak_absolute": 0.325714111328125,
+        "rms": 0.030861224934136865
+      },
+      "level": {
+        "gain_db": 5.5,
+        "before": {
+          "file": "w16.wav",
+          "duration_s": 1.52,
+          "speech_s": 0.51,
+          "peak_dbfs": -9.699999809265137,
+          "rms_dbfs": -30.200000762939453,
+          "active_rms_dbfs": -25.5,
+          "lead_s": 0.36,
+          "tail_s": 0.63,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 387.0
+        },
+        "after": {
+          "file": "w16.wav",
+          "duration_s": 1.52,
+          "speech_s": 0.51,
+          "peak_dbfs": -4.199999809265137,
+          "rms_dbfs": -24.700000762939453,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.36,
+          "tail_s": 0.63,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 387.0
+        }
+      },
+      "engine_details": {
+        "token_count": 19,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:44.279682+00:00"
+    },
+    {
+      "filename": "w17.wav",
+      "key": "没关系",
+      "who": "word",
+      "text": "没关系",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 4294957304,
+          "accepted": false,
+          "error": "Abnormal audio duration: 6.24s"
+        },
+        {
+          "seed": 4294958304,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 2.67,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.4395751953125,
+        "rms": 0.051590937643910095
+      },
+      "level": {
+        "gain_db": 3.1,
+        "before": {
+          "file": "w17.wav",
+          "duration_s": 1.44,
+          "speech_s": 0.78,
+          "peak_dbfs": -7.099999904632568,
+          "rms_dbfs": -25.700000762939453,
+          "active_rms_dbfs": -23.100000381469727,
+          "lead_s": 0.27,
+          "tail_s": 0.39,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 259.0
+        },
+        "after": {
+          "file": "w17.wav",
+          "duration_s": 1.44,
+          "speech_s": 0.78,
+          "peak_dbfs": -4.0,
+          "rms_dbfs": -22.600000381469727,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.27,
+          "tail_s": 0.39,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 259.0
+        }
+      },
+      "engine_details": {
+        "token_count": 18,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:46.952409+00:00"
+    },
+    {
+      "filename": "w19.wav",
+      "key": "早上好",
+      "who": "word",
+      "text": "早上好",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 233857009,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.65,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 40320,
+        "duration_seconds": 1.68,
+        "peak_absolute": 0.46221923828125,
+        "rms": 0.07550664316067968
+      },
+      "level": {
+        "gain_db": 1.2,
+        "before": {
+          "file": "w19.wav",
+          "duration_s": 1.68,
+          "speech_s": 1.26,
+          "peak_dbfs": -6.699999809265137,
+          "rms_dbfs": -22.399999618530273,
+          "active_rms_dbfs": -21.200000762939453,
+          "lead_s": 0.24,
+          "tail_s": 0.18,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 258.0
+        },
+        "after": {
+          "file": "w19.wav",
+          "duration_s": 1.68,
+          "speech_s": 1.26,
+          "peak_dbfs": -5.5,
+          "rms_dbfs": -21.200000762939453,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.24,
+          "tail_s": 0.18,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 258.0
+        }
+      },
+      "engine_details": {
+        "token_count": 21,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:53.538851+00:00"
+    },
+    {
+      "filename": "w20.wav",
+      "key": "年轻人",
+      "who": "word",
+      "text": "年轻人",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3953474294,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.82,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 59520,
+        "duration_seconds": 2.48,
+        "peak_absolute": 0.343719482421875,
+        "rms": 0.04579798532241132
+      },
+      "level": {
+        "gain_db": 2.2,
+        "before": {
+          "file": "w20.wav",
+          "duration_s": 2.48,
+          "speech_s": 0.87,
+          "peak_dbfs": -9.300000190734863,
+          "rms_dbfs": -26.799999237060547,
+          "active_rms_dbfs": -22.200000762939453,
+          "lead_s": 0.57,
+          "tail_s": 1.02,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 300.0
+        },
+        "after": {
+          "file": "w20.wav",
+          "duration_s": 2.48,
+          "speech_s": 0.87,
+          "peak_dbfs": -7.099999904632568,
+          "rms_dbfs": -24.600000381469727,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.57,
+          "tail_s": 1.02,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 300.0
+        }
+      },
+      "engine_details": {
+        "token_count": 31,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:54.355035+00:00"
+    },
+    {
+      "filename": "w21.wav",
+      "key": "请",
+      "who": "word",
+      "text": "请",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 1007606122,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.48,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.367706298828125,
+        "rms": 0.07018818134566915
+      },
+      "level": {
+        "gain_db": 1.2,
+        "before": {
+          "file": "w21.wav",
+          "duration_s": 1.44,
+          "speech_s": 0.93,
+          "peak_dbfs": -8.699999809265137,
+          "rms_dbfs": -23.100000381469727,
+          "active_rms_dbfs": -21.200000762939453,
+          "lead_s": 0.21,
+          "tail_s": 0.3,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 253.0
+        },
+        "after": {
+          "file": "w21.wav",
+          "duration_s": 1.44,
+          "speech_s": 0.93,
+          "peak_dbfs": -7.5,
+          "rms_dbfs": -21.899999618530273,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.21,
+          "tail_s": 0.3,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 253.0
+        }
+      },
+      "engine_details": {
+        "token_count": 18,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:47:54.840264+00:00"
+    },
+    {
+      "filename": "w24.wav",
+      "key": "杯",
+      "who": "word",
+      "text": "杯",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 2524716148,
+          "accepted": false,
+          "error": "Abnormal audio duration: 5.52s"
+        },
+        {
+          "seed": 2524717148,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.96,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 11520,
+        "duration_seconds": 0.48,
+        "peak_absolute": 0.31988525390625,
+        "rms": 0.06077846677742283
+      },
+      "level": {
+        "gain_db": 2.3,
+        "before": {
+          "file": "w24.wav",
+          "duration_s": 0.48,
+          "speech_s": 0.3,
+          "peak_dbfs": -9.899999618530273,
+          "rms_dbfs": -24.299999237060547,
+          "active_rms_dbfs": -22.299999237060547,
+          "lead_s": 0.06,
+          "tail_s": 0.12,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 231.0
+        },
+        "after": {
+          "file": "w24.wav",
+          "duration_s": 0.48,
+          "speech_s": 0.3,
+          "peak_dbfs": -7.599999904632568,
+          "rms_dbfs": -22.0,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.06,
+          "tail_s": 0.12,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 231.0
+        }
+      },
+      "engine_details": {
+        "token_count": 6,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:48:06.271258+00:00"
+    },
+    {
+      "filename": "w25.wav",
+      "key": "豆浆",
+      "who": "word",
+      "text": "豆浆",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 1747610421,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.6,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 38400,
+        "duration_seconds": 1.6,
+        "peak_absolute": 0.400421142578125,
+        "rms": 0.047698429317188616
+      },
+      "level": {
+        "gain_db": 2.6,
+        "before": {
+          "file": "w25.wav",
+          "duration_s": 1.6,
+          "speech_s": 0.66,
+          "peak_dbfs": -7.900000095367432,
+          "rms_dbfs": -26.399999618530273,
+          "active_rms_dbfs": -22.600000381469727,
+          "lead_s": 0.6,
+          "tail_s": 0.33,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 300.0
+        },
+        "after": {
+          "file": "w25.wav",
+          "duration_s": 1.6,
+          "speech_s": 0.66,
+          "peak_dbfs": -5.400000095367432,
+          "rms_dbfs": -23.799999237060547,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.6,
+          "tail_s": 0.33,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 300.0
+        }
+      },
+      "engine_details": {
+        "token_count": 20,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:48:06.872161+00:00"
+    },
+    {
+      "filename": "w26.wav",
+      "key": "不",
+      "who": "word",
+      "text": "不",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3171312311,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.31,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 21120,
+        "duration_seconds": 0.88,
+        "peak_absolute": 0.11151123046875,
+        "rms": 0.016099402249246473
+      },
+      "level": {
+        "gain_db": 12.3,
+        "before": {
+          "file": "w26.wav",
+          "duration_s": 0.88,
+          "speech_s": 0.39,
+          "peak_dbfs": -19.100000381469727,
+          "rms_dbfs": -35.900001525878906,
+          "active_rms_dbfs": -32.29999923706055,
+          "lead_s": 0.27,
+          "tail_s": 0.21,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 247.0
+        },
+        "after": {
+          "file": "w26.wav",
+          "duration_s": 0.88,
+          "speech_s": 0.39,
+          "peak_dbfs": -6.800000190734863,
+          "rms_dbfs": -23.600000381469727,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.27,
+          "tail_s": 0.21,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 247.0
+        }
+      },
+      "engine_details": {
+        "token_count": 11,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:48:07.182529+00:00"
+    },
+    {
+      "filename": "w27.wav",
+      "key": "对",
+      "who": "word",
+      "text": "对",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3886358241,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.36,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 24960,
+        "duration_seconds": 1.04,
+        "peak_absolute": 0.25628662109375,
+        "rms": 0.03183969924760063
+      },
+      "level": {
+        "gain_db": 5.0,
+        "before": {
+          "file": "w27.wav",
+          "duration_s": 1.04,
+          "speech_s": 0.33,
+          "peak_dbfs": -11.800000190734863,
+          "rms_dbfs": -29.899999618530273,
+          "active_rms_dbfs": -25.0,
+          "lead_s": 0.33,
+          "tail_s": 0.36,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 265.0
+        },
+        "after": {
+          "file": "w27.wav",
+          "duration_s": 1.04,
+          "speech_s": 0.33,
+          "peak_dbfs": -6.800000190734863,
+          "rms_dbfs": -24.899999618530273,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.33,
+          "tail_s": 0.36,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 265.0
+        }
+      },
+      "engine_details": {
+        "token_count": 13,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:48:07.546648+00:00"
+    },
+    {
+      "filename": "w28.wav",
+      "key": "要",
+      "who": "word",
+      "text": "要",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 1696394415,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.43,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 30720,
+        "duration_seconds": 1.28,
+        "peak_absolute": 0.17864990234375,
+        "rms": 0.020798936906721747
+      },
+      "level": {
+        "gain_db": 9.6,
+        "before": {
+          "file": "w28.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.63,
+          "peak_dbfs": -15.0,
+          "rms_dbfs": -33.599998474121094,
+          "active_rms_dbfs": -29.600000381469727,
+          "lead_s": 0.33,
+          "tail_s": 0.3,
+          "speech_ratio": 0.81,
+          "longest_pause_s": 0.12,
+          "median_f0_hz": 267.0
+        },
+        "after": {
+          "file": "w28.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.63,
+          "peak_dbfs": -5.400000095367432,
+          "rms_dbfs": -24.0,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.33,
+          "tail_s": 0.3,
+          "speech_ratio": 0.81,
+          "longest_pause_s": 0.12,
+          "median_f0_hz": 267.0
+        }
+      },
+      "engine_details": {
+        "token_count": 16,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:48:07.978998+00:00"
+    },
+    {
+      "filename": "w29.wav",
+      "key": "谢谢",
+      "who": "word",
+      "text": "谢谢",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3864464809,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.45,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 30720,
+        "duration_seconds": 1.28,
+        "peak_absolute": 0.177001953125,
+        "rms": 0.036161710613425456
+      },
+      "level": {
+        "gain_db": 7.0,
+        "before": {
+          "file": "w29.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.84,
+          "peak_dbfs": -15.0,
+          "rms_dbfs": -28.799999237060547,
+          "active_rms_dbfs": -27.0,
+          "lead_s": 0.21,
+          "tail_s": 0.21,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 324.0
+        },
+        "after": {
+          "file": "w29.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.84,
+          "peak_dbfs": -8.0,
+          "rms_dbfs": -21.799999237060547,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.21,
+          "tail_s": 0.21,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 324.0
+        }
+      },
+      "engine_details": {
+        "token_count": 16,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:48:08.424105+00:00"
+    },
+    {
+      "filename": "w30.wav",
+      "key": "还",
+      "who": "word",
+      "text": "还",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3092174848,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.28,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 19200,
+        "duration_seconds": 0.8,
+        "peak_absolute": 0.27978515625,
+        "rms": 0.03951246162858549
+      },
+      "level": {
+        "gain_db": 4.6,
+        "before": {
+          "file": "w30.wav",
+          "duration_s": 0.8,
+          "speech_s": 0.36,
+          "peak_dbfs": -11.100000381469727,
+          "rms_dbfs": -28.100000381469727,
+          "active_rms_dbfs": -24.600000381469727,
+          "lead_s": 0.21,
+          "tail_s": 0.21,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 247.0
+        },
+        "after": {
+          "file": "w30.wav",
+          "duration_s": 0.8,
+          "speech_s": 0.36,
+          "peak_dbfs": -6.5,
+          "rms_dbfs": -23.5,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.21,
+          "tail_s": 0.21,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 247.0
+        }
+      },
+      "engine_details": {
+        "token_count": 10,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:48:08.705084+00:00"
+    },
+    {
+      "filename": "w33.wav",
+      "key": "鸡蛋",
+      "who": "word",
+      "text": "鸡蛋",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3425140203,
+          "accepted": false,
+          "error": "Abnormal audio duration: 5.28s"
+        },
+        {
+          "seed": 3425141203,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 2.19,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 30720,
+        "duration_seconds": 1.28,
+        "peak_absolute": 0.288665771484375,
+        "rms": 0.04062398126853594
+      },
+      "level": {
+        "gain_db": 5.3,
+        "before": {
+          "file": "w33.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.75,
+          "peak_dbfs": -10.800000190734863,
+          "rms_dbfs": -27.799999237060547,
+          "active_rms_dbfs": -25.299999237060547,
+          "lead_s": 0.24,
+          "tail_s": 0.27,
+          "speech_ratio": 0.96,
+          "longest_pause_s": 0.03,
+          "median_f0_hz": 304.0
+        },
+        "after": {
+          "file": "w33.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.75,
+          "peak_dbfs": -5.5,
+          "rms_dbfs": -22.5,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.24,
+          "tail_s": 0.27,
+          "speech_ratio": 0.96,
+          "longest_pause_s": 0.03,
+          "median_f0_hz": 304.0
+        }
+      },
+      "engine_details": {
+        "token_count": 16,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:48:16.179295+00:00"
+    },
+    {
+      "filename": "w35.wav",
+      "key": "记得",
+      "who": "word",
+      "text": "记得",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 3339573619,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.72,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 51840,
+        "duration_seconds": 2.16,
+        "peak_absolute": 0.30316162109375,
+        "rms": 0.048867504850892515
+      },
+      "level": {
+        "gain_db": 2.6,
+        "before": {
+          "file": "w35.wav",
+          "duration_s": 2.16,
+          "speech_s": 0.93,
+          "peak_dbfs": -10.399999618530273,
+          "rms_dbfs": -26.200000762939453,
+          "active_rms_dbfs": -22.600000381469727,
+          "lead_s": 0.51,
+          "tail_s": 0.72,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 279.0
+        },
+        "after": {
+          "file": "w35.wav",
+          "duration_s": 2.16,
+          "speech_s": 0.93,
+          "peak_dbfs": -7.800000190734863,
+          "rms_dbfs": -23.600000381469727,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.51,
+          "tail_s": 0.72,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 279.0
+        }
+      },
+      "engine_details": {
+        "token_count": 27,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:48:21.063973+00:00"
+    },
+    {
+      "filename": "w36.wav",
+      "key": "小姨",
+      "who": "word",
+      "text": "小姨",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 4237965656,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.44,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 30720,
+        "duration_seconds": 1.28,
+        "peak_absolute": 0.26959228515625,
+        "rms": 0.049180168910756945
+      },
+      "level": {
+        "gain_db": 3.8,
+        "before": {
+          "file": "w36.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.75,
+          "peak_dbfs": -11.399999618530273,
+          "rms_dbfs": -26.200000762939453,
+          "active_rms_dbfs": -23.799999237060547,
+          "lead_s": 0.24,
+          "tail_s": 0.27,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 200.0
+        },
+        "after": {
+          "file": "w36.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.75,
+          "peak_dbfs": -7.599999904632568,
+          "rms_dbfs": -22.399999618530273,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.24,
+          "tail_s": 0.27,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 200.0
+        }
+      },
+      "engine_details": {
+        "token_count": 16,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:48:21.506136+00:00"
+    },
+    {
+      "filename": "w37.wav",
+      "key": "担心",
+      "who": "word",
+      "text": "担心",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 2156761229,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.43,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 30720,
+        "duration_seconds": 1.28,
+        "peak_absolute": 0.3778076171875,
+        "rms": 0.034709899575809174
+      },
+      "level": {
+        "gain_db": 4.9,
+        "before": {
+          "file": "w37.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.48,
+          "peak_dbfs": -8.5,
+          "rms_dbfs": -29.200000762939453,
+          "active_rms_dbfs": -24.899999618530273,
+          "lead_s": 0.45,
+          "tail_s": 0.33,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 393.0
+        },
+        "after": {
+          "file": "w37.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.48,
+          "peak_dbfs": -3.5999999046325684,
+          "rms_dbfs": -24.299999237060547,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.45,
+          "tail_s": 0.33,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 393.0
+        }
+      },
+      "engine_details": {
+        "token_count": 16,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:48:21.938233+00:00"
+    },
+    {
+      "filename": "w38.wav",
+      "key": "店",
+      "who": "word",
+      "text": "店",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 1819368140,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.51,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 36480,
+        "duration_seconds": 1.52,
+        "peak_absolute": 0.256195068359375,
+        "rms": 0.05797593983981762
+      },
+      "level": {
+        "gain_db": 3.3,
+        "before": {
+          "file": "w38.wav",
+          "duration_s": 1.52,
+          "speech_s": 1.08,
+          "peak_dbfs": -11.800000190734863,
+          "rms_dbfs": -24.700000762939453,
+          "active_rms_dbfs": -23.299999237060547,
+          "lead_s": 0.21,
+          "tail_s": 0.21,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 233.0
+        },
+        "after": {
+          "file": "w38.wav",
+          "duration_s": 1.52,
+          "speech_s": 1.08,
+          "peak_dbfs": -8.5,
+          "rms_dbfs": -21.399999618530273,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.21,
+          "tail_s": 0.21,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 233.0
+        }
+      },
+      "engine_details": {
+        "token_count": 19,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:48:22.450878+00:00"
+    },
+    {
+      "filename": "w41.wav",
+      "key": "好",
+      "who": "word",
+      "text": "好",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 2027864577,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.36,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 24960,
+        "duration_seconds": 1.04,
+        "peak_absolute": 0.34820556640625,
+        "rms": 0.045391321703916195
+      },
+      "level": {
+        "gain_db": 2.9,
+        "before": {
+          "file": "w41.wav",
+          "duration_s": 1.04,
+          "speech_s": 0.42,
+          "peak_dbfs": -9.199999809265137,
+          "rms_dbfs": -26.899999618530273,
+          "active_rms_dbfs": -22.899999618530273,
+          "lead_s": 0.27,
+          "tail_s": 0.33,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 304.0
+        },
+        "after": {
+          "file": "w41.wav",
+          "duration_s": 1.04,
+          "speech_s": 0.42,
+          "peak_dbfs": -6.300000190734863,
+          "rms_dbfs": -24.0,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.27,
+          "tail_s": 0.33,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 304.0
+        }
+      },
+      "engine_details": {
+        "token_count": 13,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:48:31.484084+00:00"
+    },
+    {
+      "filename": "w42.wav",
+      "key": "太好了",
+      "who": "word",
+      "text": "太好了",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 1971550879,
+          "accepted": false,
+          "error": "Abnormal audio duration: 8.96s"
+        },
+        {
+          "seed": 1971551879,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 3.38,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 30720,
+        "duration_seconds": 1.28,
+        "peak_absolute": 0.4014892578125,
+        "rms": 0.053420483938464575
+      },
+      "level": {
+        "gain_db": 2.8,
+        "before": {
+          "file": "w42.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.69,
+          "peak_dbfs": -7.900000095367432,
+          "rms_dbfs": -25.399999618530273,
+          "active_rms_dbfs": -22.799999237060547,
+          "lead_s": 0.3,
+          "tail_s": 0.27,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 250.0
+        },
+        "after": {
+          "file": "w42.wav",
+          "duration_s": 1.28,
+          "speech_s": 0.69,
+          "peak_dbfs": -5.099999904632568,
+          "rms_dbfs": -22.600000381469727,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.3,
+          "tail_s": 0.27,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 250.0
+        }
+      },
+      "engine_details": {
+        "token_count": 16,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:48:34.858965+00:00"
+    },
+    {
+      "filename": "w43.wav",
+      "key": "见",
+      "who": "word",
+      "text": "见",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 322921494,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.56,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 40320,
+        "duration_seconds": 1.68,
+        "peak_absolute": 0.4212646484375,
+        "rms": 0.04199163659732162
+      },
+      "level": {
+        "gain_db": 4.7,
+        "before": {
+          "file": "w43.wav",
+          "duration_s": 1.68,
+          "speech_s": 0.87,
+          "peak_dbfs": -7.5,
+          "rms_dbfs": -27.5,
+          "active_rms_dbfs": -24.700000762939453,
+          "lead_s": 0.42,
+          "tail_s": 0.39,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 282.0
+        },
+        "after": {
+          "file": "w43.wav",
+          "duration_s": 1.68,
+          "speech_s": 0.87,
+          "peak_dbfs": -2.799999952316284,
+          "rms_dbfs": -22.799999237060547,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.42,
+          "tail_s": 0.39,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 282.0
+        }
+      },
+      "engine_details": {
+        "token_count": 21,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:48:35.421713+00:00"
+    },
+    {
+      "filename": "w44.wav",
+      "key": "谢",
+      "who": "word",
+      "text": "谢",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 1028904174,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.33,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 23040,
+        "duration_seconds": 0.96,
+        "peak_absolute": 0.517181396484375,
+        "rms": 0.05930632606032308
+      },
+      "level": {
+        "gain_db": 1.5,
+        "before": {
+          "file": "w44.wav",
+          "duration_s": 0.96,
+          "speech_s": 0.48,
+          "peak_dbfs": -5.699999809265137,
+          "rms_dbfs": -24.5,
+          "active_rms_dbfs": -21.5,
+          "lead_s": 0.27,
+          "tail_s": 0.21,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 364.0
+        },
+        "after": {
+          "file": "w44.wav",
+          "duration_s": 0.96,
+          "speech_s": 0.48,
+          "peak_dbfs": -4.199999809265137,
+          "rms_dbfs": -23.0,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.27,
+          "tail_s": 0.21,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 364.0
+        }
+      },
+      "engine_details": {
+        "token_count": 12,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:48:35.756398+00:00"
+    },
+    {
+      "filename": "w45.wav",
+      "key": "什么",
+      "who": "word",
+      "text": "什么",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "attempts": [
+        {
+          "seed": 1528407765,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.53,
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 38400,
+        "duration_seconds": 1.6,
+        "peak_absolute": 0.135650634765625,
+        "rms": 0.03436407445389295
+      },
+      "level": {
+        "gain_db": 7.2,
+        "before": {
+          "file": "w45.wav",
+          "duration_s": 1.6,
+          "speech_s": 0.99,
+          "peak_dbfs": -17.399999618530273,
+          "rms_dbfs": -29.299999237060547,
+          "active_rms_dbfs": -27.200000762939453,
+          "lead_s": 0.3,
+          "tail_s": 0.3,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 231.0
+        },
+        "after": {
+          "file": "w45.wav",
+          "duration_s": 1.6,
+          "speech_s": 0.99,
+          "peak_dbfs": -10.199999809265137,
+          "rms_dbfs": -22.100000381469727,
+          "active_rms_dbfs": -20.0,
+          "lead_s": 0.3,
+          "tail_s": 0.3,
+          "speech_ratio": 1.0,
+          "longest_pause_s": 0.0,
+          "median_f0_hz": 231.0
+        }
+      },
+      "engine_details": {
+        "token_count": 20,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "created_at": "2026-11-03T21:48:36.288136+00:00"
+    }
+  ]
+}
