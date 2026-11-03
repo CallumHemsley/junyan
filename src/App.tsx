@@ -115,6 +115,8 @@ export default function App() {
     try {
       const pending = localStorage.getItem(checkpointKey);
       if (pending) checkpoint = validateSavedGame(JSON.parse(pending), content);
+      if (checkpoint)
+        localStorage.setItem(checkpointKey, JSON.stringify(checkpoint));
     } catch {
       setSaveError(true);
     }
