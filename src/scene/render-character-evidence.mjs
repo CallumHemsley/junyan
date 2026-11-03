@@ -5,6 +5,8 @@ import {mkdir, readFile, writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {chromium} from '@playwright/test';
+import * as head from './renderer.js';
+import {portraitScene} from './portrait-scene.js';
 import {png} from './png.mjs';
 
 const directory=resolve(process.argv[2] || 'output/playwright/0029');
@@ -19,31 +21,21 @@ const images={before:[],after:[]},geometry={before:[],after:[]},eyeEvidence=[];
 const poseFor=(name,accessory)=>name==='seated'||name==='served'
   ? {crouch:1.05,scale:.88,armR:name==='served'?.85:.35,armL:.3,greeting:name!=='served',lean:name==='served'?.1:accessory==='glasses'?.08:0}
   : {carry:!accessory,stance:name==='walk-a'?Math.sin(.1*12)*.17:name==='walk-b'?Math.sin(.35*12)*.17:.05};
-for(const [version,source] of Object.entries(sources)) {
-  assert(source.includes('return {draw};'));
-  const instrumented=source.replace('return {draw};',`function portrait(palette,yaw,pose,foods,withoutEyes=false) {
-    pix.fill(rgb(235,225,207)); zb.fill(-1e9); groundZ.fill(-1e9); ground.fill(0); pendingShadows.length=0;
-    const rig=characterFigure(0,0,yaw,pose,palette,(start,end,startRadius,endRadius,color)=>{
-      const eye=[.038,.065,.04].some(radius=>Math.abs(startRadius/(pose.scale||1)-radius)<1e-10)&&[COLORS.cream,COLORS.ink].includes(color(start[2]));
-      if(!withoutEyes||!eye) dynamicAdd(start,end,startRadius,endRadius,color);
-    });
-    if(pose.carry) characterTray(rig,foods,(start,end,color,transform)=>box(...start,...end,color,0,transform));
-    shadeEdges(); ctx.putImageData(image,0,0);
-  } return {draw,portrait};`);
-  const modulePath=resolve(directory,`${version}-renderer.mjs`);
-  await writeFile(modulePath,instrumented);
-  const module=await import(pathToFileURL(modulePath).href+`?v=${Date.now()}`);
+const baselinePath=resolve(directory,'before-renderer.mjs');
+await writeFile(baselinePath,sources.before);
+const figures={before:await import(pathToFileURL(baselinePath).href+`?v=${Date.now()}`),after:head};
+for(const [version,module] of Object.entries(figures)) {
   let frame;
-  const renderer=module.createRenderer({getContext:()=>({createImageData:(width,height)=>({data:new Uint8ClampedArray(width*height*4)}),putImageData:image=>{frame=image.data.slice();}})},[]);
+  const renderer=head.createRenderer({getContext:()=>({createImageData:(width,height)=>({data:new Uint8ClampedArray(width*height*4)}),putImageData:image=>{frame=image.data.slice();}})},portraitScene(module));
   for(const poseName of poses) for(let direction=0;direction<8;direction++) for(const character of cast) {
     const yaw=direction*Math.PI/4,pose=poseFor(poseName,character.appearance.accessory),bones=[];
     module.characterFigure(0,0,yaw,pose,character.appearance,(start,end,startRadius,endRadius,colorOf)=>bones.push({start,end,startRadius,endRadius,color:colorOf(start[2])}));
-    renderer.portrait(character.appearance,yaw,pose,Array(6).fill('bun'));
+    renderer.draw(character.appearance,yaw,pose,Array(6).fill('bun'));
     images[version].push({pose:poseName,direction,id:character.id,pixels:frame});
     geometry[version].push({pose:poseName,direction,id:character.id,bones});
     if(character.appearance.accessory!=='glasses'&&[1,4,5,6].includes(direction)) {
       const withEyes=frame;
-      renderer.portrait(character.appearance,yaw,pose,Array(6).fill('bun'),true);
+      renderer.draw(character.appearance,yaw,pose,Array(6).fill('bun'),true);
       let changedPixels=0;
       for(let offset=0;offset<frame.length;offset+=4) if(frame.subarray(offset,offset+4).some((value,index)=>value!==withEyes[offset+index])) changedPixels++;
       if(direction===5||(version==='after'&&direction!==1)) assert.equal(changedPixels,0,`${version} ${character.id} ${poseName} ${direction*45}°: rear eyes must be naturally hidden`);
@@ -51,7 +43,7 @@ for(const [version,source] of Object.entries(sources)) {
     }
   }
   for(let direction=0;direction<8;direction++) {
-    renderer.portrait(cast[0].appearance,direction*Math.PI/4,poseFor('standing'),[]);
+    renderer.draw(cast[0].appearance,direction*Math.PI/4,poseFor('standing'),[]);
     images[version].push({pose:'empty-tray',direction,id:'waiter',pixels:frame});
   }
 }
