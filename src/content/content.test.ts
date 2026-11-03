@@ -59,6 +59,17 @@ describe('offline Mandarin content', () => {
         [voiceId]: {...voices.voices[voiceId], ...update},
       }}).success).toBe(false);
     }
+    const levelled = voices.voices['ryan-en'];
+    expect(levelled.loudness).toEqual({targetActiveRmsDbfs: -20, peakCeilingDbfs: -1});
+    expect(voicesSchema.safeParse({wordVoice: 'ryan-en', voices: {'ryan-en': levelled}}).success).toBe(true);
+    for (const loudness of [
+      {targetActiveRmsDbfs: 0, peakCeilingDbfs: -1}, {targetActiveRmsDbfs: -20, peakCeilingDbfs: 1},
+      {targetActiveRmsDbfs: -20, peakCeilingDbfs: -1, gain: 3},
+    ]) {
+      expect(voicesSchema.safeParse({...voices, voices: {...voices.voices,
+        'ryan-en': {...levelled, loudness},
+      }}).success).toBe(false);
+    }
     expect(content.characters.map(c => [c.name, c.voiceId, c.appearance.accessory])).toEqual([
       ['林姐', 'serena', 'bun'], ['小李', 'yunxi', 'tie'],
       ['张老师', 'uncle-fu', 'glasses'], ['小周', 'xiaobei', 'backpack'],
