@@ -3,6 +3,7 @@ import {createHash} from 'node:crypto';
 import {content} from '../content';
 import {TABLES, type GameState, type Phase} from '../contracts';
 import {characterFigure, characterTray, COLORS, createRenderer, customerPose, groundPosition, projectPosition, WIDTH, HEIGHT, type ScenePoint} from './renderer.js';
+import {captureCanvas, restaurantFrames, sha256, TABLES as FRAME_TABLES} from './scene-frame-hashes.mjs';
 
 describe('restaurant projection',()=>{
   it('round trips every logical floor coordinate through the overlay projection',()=>{
@@ -244,4 +245,12 @@ it('renders independently without DOM globals and reflects customer/tray state',
   expect(snapshots[2]).not.toEqual(snapshots[0]);
   second.draw(state,player,0,false);
   expect(snapshots[3]).toEqual(snapshots[0]);
+});
+
+it('keeps 30 restaurant frames byte-identical to trunk 6c34555',()=>{
+  const {appearances,frames}=restaurantFrames(content,30);
+  const canvas=captureCanvas();
+  const renderer=createRenderer(canvas as unknown as HTMLCanvasElement,FRAME_TABLES,appearances);
+  const hashes=frames.map(args=>{renderer.draw(...args); return sha256(canvas.frame);});
+  expect(sha256(hashes.join('\n'))).toBe('27c76c1d6ef69d474067fe6aaafed198ecb85b3c18ab43169cb829c0cdefa4f6');
 });
