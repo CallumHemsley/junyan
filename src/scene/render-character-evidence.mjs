@@ -5,6 +5,7 @@ import {mkdir, readFile, writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {chromium} from '@playwright/test';
+import {png} from './png.mjs';
 
 const directory=resolve(process.argv[2] || 'output/playwright/0029');
 const baseline=process.argv[3] || 'eeeb18d';
@@ -76,10 +77,6 @@ for(let index=0;index<geometry.before.length;index++) {
     assert.deepEqual(unchanged(after.bones),unchanged(before.bones));
   }
 }
-const pngSource=await readFile(new URL('./render-evidence.mjs',import.meta.url),'utf8');
-const pngModule=resolve(directory,'png.mjs');
-await writeFile(pngModule,`import {deflateSync} from 'node:zlib'; const WIDTH=360,HEIGHT=280;\n${pngSource.slice(pngSource.indexOf('function chunk('),pngSource.indexOf('const cards=[];'))}\nexport {png};`);
-const {png}=await import(pathToFileURL(pngModule).href);
 function crop(pixels,left,top,width,height) {
   const result=new Uint8ClampedArray(width*height*4);
   for(let row=0;row<height;row++) result.set(pixels.subarray(((top+row)*360+left)*4,((top+row)*360+left+width)*4),row*width*4);

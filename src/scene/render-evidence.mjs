@@ -1,9 +1,9 @@
 import {mkdir, readFile, writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
-import {deflateSync} from 'node:zlib';
 import {chromium} from '@playwright/test';
-import {createRenderer, WIDTH, HEIGHT} from './renderer.js';
+import {createRenderer, WIDTH} from './renderer.js';
+import {png} from './png.mjs';
 
 const directory = resolve(process.argv[2] ?? 'output/playwright/0022-first-pass');
 await mkdir(directory, {recursive:true});
@@ -13,23 +13,6 @@ const appearances = Object.fromEntries(content.orders.map(order => [order.id,con
 const state = {seed:42,day:1,level:1,player:{x:6,y:6},customers:tables.map(table => ({table:table.table,orderId:content.orders.find(order => order.level===1 && order.table===table.table).id,phase:'seated'})),tray:[],served:0,earnings:0,mistakes:0,activeTable:null,feedback:'none',receipt:null,journal:{},ended:false};
 let frame;
 const renderer = createRenderer({getContext:()=>({createImageData:(width,height)=>({data:new Uint8ClampedArray(width*height*4)}),putImageData:image=>{frame=image.data.slice();}})},tables,appearances);
-function chunk(kind, bytes) {
-  const data=Buffer.concat([Buffer.from(kind),bytes]);
-  let checksum=0xffffffff;
-  for(const byte of data) {
-    checksum^=byte;
-    for(let bit=0;bit<8;bit++) checksum=(checksum>>>1)^((checksum&1)?0xedb88320:0);
-  }
-  const size=Buffer.alloc(4),crc=Buffer.alloc(4);
-  size.writeUInt32BE(bytes.length); crc.writeUInt32BE((checksum^0xffffffff)>>>0);
-  return Buffer.concat([size,data,crc]);
-}
-function png(pixels,width=WIDTH,height=HEIGHT) {
-  const header=Buffer.alloc(13); header.writeUInt32BE(width); header.writeUInt32BE(height,4); header[8]=8; header[9]=6;
-  const rows=Buffer.alloc(height*(width*4+1));
-  for(let row=0;row<height;row++) rows.set(pixels.subarray(row*width*4,(row+1)*width*4),row*(width*4+1)+1);
-  return Buffer.concat([Buffer.from([137,80,78,71,13,10,26,10]),chunk('IHDR',header),chunk('IDAT',deflateSync(rows)),chunk('IEND',Buffer.alloc(0))]);
-}
 const cards=[];
 for(const [mode,tray,time,moving] of [['empty',[],0,false],['full',Array(6).fill('bun'),0,false],['walk-a',Array(6).fill('bun'),.1,true],['walk-b',Array(6).fill('bun'),.35,true]]) {
   for(const [direction,yaw] of [['east',0],['south-east',Math.PI/4],['south',Math.PI/2],['south-west',Math.PI*.75],['west',Math.PI],['north-west',Math.PI*1.25],['north',Math.PI*1.5],['north-east',Math.PI*1.75]]) {
