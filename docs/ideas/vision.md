@@ -17,7 +17,7 @@ So the thing we are really building is a world whose language is tuned to the pl
 
 ## What the player experiences
 
-- The game is in the target language from the first second. No English UI, no translations, no "tap to see the meaning" as the primary path.
+- The game is in the target language from the first second, apart from the opening's English premise lines (decision 0004). No English UI, no translations, no "tap to see the meaning" as the primary path.
 - The world starts tiny, and so does the vocabulary. One domain, maybe a flat and a shop. Everything in it is nameable, repeatable, and visually obvious.
 - New domains open progressively, as in a life-sim: home, food, shopping, work, friends, sport, travel. Each domain brings its vocabulary, and the game only opens a domain when the player is ready for it.
 - Understanding is rewarded by the game itself. Grasping what the baker said gets you the bread. Misreading a sign gets you lost. The language is the interface to the goals, not a quiz layered on top.

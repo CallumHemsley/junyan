@@ -51,7 +51,7 @@ It also carries four risks:
 
 Accepting this amends [[decisions/0001-first-language]] point 2 for the opening only, and 0001 should gain a line that links here. The waiter loop from [[decisions/0003-pixel-waiter]] keeps its rules, and its `deliver` action also records recovery. This decision supersedes nothing.
 
-**Rule text to amend.** This draft does not edit these files.
+**Rule text to amend.** Ticket 0047 applied these amendments.
 
 - In `AGENTS.md`, "What the game is" says "No English, no pinyin on screen (pinyin only on tap)". It needs an exception for the opening's premise lines.
 - The same section says "The player runs a breakfast stall (早餐店)". It needs to say that a one-minute hospital opening comes first.

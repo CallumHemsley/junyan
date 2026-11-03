@@ -9,7 +9,7 @@ Read by Claude Code (via `CLAUDE.md`) and Codex. Keep it short; detail lives in 
 - `docs/design/`: the chosen mock-up and the design system tokens. Ideas are exploratory; accepted decisions govern.
 
 ## What the game is
-A cozy Mandarin-learning web game. The player runs a breakfast stall (早餐店); customers order in Mandarin only, voiced; the player hands over items and change; a receipt and the customer's reaction confirm. No English, no pinyin on screen (pinyin only on tap), every Chinese line is tappable word tokens, a journal collects words, four regulars return, a day has light and a tally. Learning is a side effect of a game that must be fun on its own.
+A cozy Mandarin-learning web game. The player wakes on a hospital ward for a one-minute opening (decision 0004), then runs a breakfast stall (早餐店); customers order in Mandarin only, voiced; the player hands over items and change; a receipt and the customer's reaction confirm. No English after the opening's premise lines, which decision 0004 bounds, and no pinyin on screen (pinyin only on tap), every Chinese line is tappable word tokens, a journal collects words, four regulars return, a day has light and a tally. Learning is a side effect of a game that must be fun on its own.
 
 ## Architecture rules (not optional)
 - Game rules are pure functions over explicit state; inject RNG and time. Test them without React, DOM, storage or network.
@@ -36,7 +36,7 @@ TypeScript, Vite, React, DOM for all dialogue and UI, layered PNG/SVG with CSS a
 
 ## Verification
 - Until scaffolding exists, report missing commands; never claim a check passed that did not run.
-- For game changes: rules tests green, the Playwright journey green (open, serve three customers, give change, journal a word), screenshots at phone and desktop widths inspected, console clean.
+- For game changes: rules tests green, the Playwright journey green (open, play the opening, serve three customers, give change, journal a word), screenshots at phone and desktop widths inspected, console clean.
 - Each worktree has its own explicit Vite port with `strictPort: true`; Playwright points at that port.
 
 ## Review

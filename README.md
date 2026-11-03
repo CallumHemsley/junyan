@@ -11,7 +11,7 @@ pnpm install
 pnpm dev
 ```
 
-Open http://localhost:5173. Click tables and the kitchen to walk there, or use arrows/WASD and E/Space to interact. There is no time limit. All game text is simplified Chinese; tap a word for pinyin, audio and food pictures. English glosses remain internal authoring metadata, never visible game text.
+Open http://localhost:5173. Click tables and the kitchen to walk there, or use arrows/WASD and E/Space to interact. There is no time limit. All game text is simplified Chinese, apart from the opening's four voiced English premise lines (decision 0004); tap a word for pinyin, audio and food pictures. English glosses remain internal authoring metadata, never visible game text.
 
 ```sh
 pnpm test
