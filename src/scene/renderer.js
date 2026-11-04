@@ -132,11 +132,13 @@ export function characterFigure(px, py, yaw, pose, palette, addBone) {
   if (kind === 'tie') bone([.35,0,shoulder-.20],[.34,0,shoulder-.49],.043,.055,COLORS.wood);
   if (kind === 'doctor') {
     for (const side of [-1,1]) {
-      bone([.24,side*.13,shoulder-.02],[.33,side*.06,shoulder-.30],.075,.065,[226,214,186]);
-      bone([.27,side*.20,shoulder-.06],[.36,side*.12,shoulder-.42],.03,.03,COLORS.ink);
+      bone([.24,side*.13,shoulder-.02],[.30,side*.08,shoulder-.16],.075,.065,[226,214,186]);
       bone([0,side*.22,hip+.05],[.02,side*.27,hip-.42],.24,.27,shirt);
     }
-    dot([.38,.10,shoulder-.47],.055,[176,180,180]);
+    const tube = [[.27,-.21,shoulder-.06],[.34,-.18,shoulder-.32],[.37,-.08,shoulder-.42],[.37,.04,shoulder-.42],[.34,.15,shoulder-.32],[.27,.21,shoulder-.06]];
+    for (let k=1;k<tube.length;k++) bone(tube[k-1],tube[k],.03,.03,COLORS.ink);
+    bone([.35,.16,shoulder-.34],[.38,.20,shoulder-.56],.03,.03,COLORS.ink);
+    dot([.39,.21,shoulder-.60],.065,[128,134,136]);
   }
   if (kind === 'nurse') bone([.30,-.12,shoulder-.06],[.33,0,shoulder-.22],.05,.05,COLORS.cream);
   if (kind === 'aunt') {
