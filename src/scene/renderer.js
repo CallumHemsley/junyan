@@ -101,6 +101,15 @@ export function characterFigure(px, py, yaw, pose, palette, addBone) {
       bone([headForward+.29,.02,headHeight+.24],[headForward+.23,.22,headHeight+.27],.12,.12,hair);
     }
   }
+  if (kind === 'nurse') {
+    dot([headForward-.34,0,headHeight-.12],.17,hair);
+    bone([headForward-.02,-.24,headHeight+.37],[headForward-.02,.24,headHeight+.37],.11,.11,COLORS.cream);
+    bone([headForward+.10,-.25,headHeight+.31],[headForward+.10,.25,headHeight+.31],.045,.045,COLORS.jade);
+  } else if (kind === 'aunt') {
+    for (const side of [-1,1]) bone([headForward-.05,side*.31,headHeight+.12],[headForward-.06,side*.36,headHeight-.30],.17,.15,hair);
+    bone([headForward-.30,-.22,headHeight-.04],[headForward-.30,.22,headHeight-.04],.22,.22,hair);
+    bone([headForward-.24,-.26,headHeight-.28],[headForward-.24,.26,headHeight-.28],.15,.15,hair);
+  }
   for (const side of [-1,1]) {
     dot([headForward+.367,side*.19,headHeight-.07],.06,COLORS.cheek);
     if (kind === 'glasses') {
@@ -121,6 +130,19 @@ export function characterFigure(px, py, yaw, pose, palette, addBone) {
     bone([.295,.11,shoulder-.04],[.30,0,shoulder-.25],.073,.065,COLORS.cream);
   }
   if (kind === 'tie') bone([.35,0,shoulder-.20],[.34,0,shoulder-.49],.043,.055,COLORS.wood);
+  if (kind === 'doctor') {
+    for (const side of [-1,1]) {
+      bone([.24,side*.13,shoulder-.02],[.33,side*.06,shoulder-.30],.075,.065,[226,214,186]);
+      bone([.27,side*.20,shoulder-.06],[.36,side*.12,shoulder-.42],.03,.03,COLORS.ink);
+      bone([0,side*.22,hip+.05],[.02,side*.27,hip-.42],.24,.27,shirt);
+    }
+    dot([.38,.10,shoulder-.47],.055,[176,180,180]);
+  }
+  if (kind === 'nurse') bone([.30,-.12,shoulder-.06],[.33,0,shoulder-.22],.05,.05,COLORS.cream);
+  if (kind === 'aunt') {
+    bone([.30,0,hip+.15],[.31,0,shoulder-.10],.13,.12,COLORS.cream);
+    bone([.27,-.24,shoulder-.02],[.30,.24,hip+.10],.04,.04,COLORS.wood);
+  }
   if (kind === 'bun') bone([.34,0,hip+.13],[.35,0,shoulder-.28],.18,.16,COLORS.cream);
   if (kind === 'backpack') {
     bone([-.29,0,hip+.07],[-.31,0,shoulder-.13],.29,.25,COLORS.brass);
@@ -131,8 +153,8 @@ export function characterFigure(px, py, yaw, pose, palette, addBone) {
     const arm = side === 1 ? pose.armR : pose.armL;
     const lift = Math.sin(arm || 0);
     const shoulderPoint = [lean*.25,side*.34,shoulder-.06];
-    const elbow = side===1 && pose.elbowR ? pose.elbowR : pose.carry ? [.26,side*.43,1.12] : wave ? [.12,side*.48,1.39] : [.13+lift*.22,side*.41,shoulder-.40+lift*.12];
-    const hand = side===1 && pose.handR ? pose.handR : pose.carry ? [.57,side*.34,1.22] : wave ? [.26,side*.49,1.74] : [seated?.50:.20,side*.38,arm == null ? (seated?1.20:1.00) : (seated?1.08:.90)+lift*.40];
+    const elbow = side===1 && pose.elbowR ? pose.elbowR : pose.lying ? [.03,side*.42,shoulder-.42] : pose.carry ? [.26,side*.43,1.12] : wave ? [.12,side*.48,1.39] : [.13+lift*.22,side*.41,shoulder-.40+lift*.12];
+    const hand = side===1 && pose.handR ? pose.handR : pose.lying ? [.05,side*.38,hip+.05] : pose.carry ? [.57,side*.34,1.22] : wave ? [.26,side*.49,1.74] : [seated?.50:.20,side*.38,arm == null ? (seated?1.20:1.00) : (seated?1.08:.90)+lift*.40];
     bone(shoulderPoint,elbow,.16,.125,shirt);
     dot(elbow,.132,COLORS.cream);
     bone(elbow,hand,.105,.09,skin);

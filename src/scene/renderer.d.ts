@@ -9,6 +9,7 @@ export const COLORS: Record<string, Color>;
 export function customerPose(phase:Phase, accessory?:Character['appearance']['accessory']): {
   crouch:number; scale:number; armR:number; armL:number; greeting:boolean; lean:number;
 };
+export type FigureKind = Character['appearance']['accessory'] | 'doctor' | 'nurse' | 'aunt';
 export type CharacterRig = {
   local(forward:number, side:number, height:number): ScenePoint;
   bone(start:ScenePoint, end:ScenePoint, startRadius:number, endRadius:number, color:Color):void;
@@ -16,7 +17,7 @@ export type CharacterRig = {
   headHeight:number;
 };
 export function characterFigure(x:number, y:number, yaw:number,
-  pose:{scale?:number; z?:number; crouch?:number; lean?:number; stance?:number; carry?:boolean; armR?:number; armL?:number; greeting?:boolean; elbowR?:ScenePoint; handR?:ScenePoint},
+  pose:{scale?:number; z?:number; crouch?:number; lean?:number; stance?:number; carry?:boolean; armR?:number; armL?:number; greeting?:boolean; elbowR?:ScenePoint; handR?:ScenePoint; lying?:boolean},
   palette:{shirt?:Color; hair?:Color; skin?:Color; legs?:Color; accessory?:string},
   addBone:(start:ScenePoint, end:ScenePoint, startRadius:number, endRadius:number, colorOf:(height:number)=>Color)=>void,
 ):CharacterRig;

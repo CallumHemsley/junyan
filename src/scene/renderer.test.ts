@@ -272,3 +272,38 @@ it('keeps 30 restaurant frames byte-identical to trunk 6c34555',()=>{
   const hashes=frames.map(args=>{renderer.draw(...args); return sha256(canvas.frame);});
   expect(sha256(hashes.join('\n'))).toBe('27c76c1d6ef69d474067fe6aaafed198ecb85b3c18ab43169cb829c0cdefa4f6');
 });
+
+describe('ward figure kinds and bed poses',()=>{
+  const bonesOf=(accessory:string,pose:Parameters<typeof characterFigure>[3]={stance:.05})=>{
+    const bones:{start:ScenePoint;end:ScenePoint;startRadius:number;endRadius:number;color:number[]}[]=[];
+    characterFigure(0,0,Math.PI/4,pose,{accessory,hair:[17,19,23]},(start,end,startRadius,endRadius,colorOf)=>{
+      bones.push({start,end,startRadius,endRadius,color:colorOf(start[2])});
+    });
+    return bones;
+  };
+  it('gives doctor, nurse and aunt distinct primitives',()=>{
+    const lists=['doctor','nurse','aunt','bun'].map(kind=>JSON.stringify(bonesOf(kind)));
+    expect(new Set(lists).size).toBe(4);
+    const waiter=bonesOf('waiter').length;
+    for(const kind of ['doctor','nurse','aunt']) expect(bonesOf(kind).length).toBeGreaterThan(waiter);
+  });
+  it('bed-seated is the seated pose raised',()=>{
+    const seated=bonesOf('glasses',{crouch:1,scale:.88}),raised=bonesOf('glasses',{crouch:1,scale:.88,z:.23});
+    expect(raised).toHaveLength(seated.length);
+    seated.forEach((bone,index)=>{
+      for(const endpoint of ['start','end'] as const) {
+        expect(raised[index][endpoint][0]).toBe(bone[endpoint][0]);
+        expect(raised[index][endpoint][1]).toBe(bone[endpoint][1]);
+        expect(raised[index][endpoint][2]).toBeCloseTo(bone[endpoint][2]+.23,10);
+      }
+    });
+  });
+  it('lays lying arms along the body and keeps lying legs straight',()=>{
+    const lying=bonesOf('waiter',{lying:true});
+    const hands=lying.filter(bone=>bone.startRadius===.12&&bone.color===COLORS.skin);
+    expect(hands).toHaveLength(2);
+    for(const hand of hands) expect(hand.start[2]).toBeCloseTo(.97,10);
+    const shoes=(pose:Parameters<typeof characterFigure>[3])=>JSON.stringify(bonesOf('waiter',pose).filter(bone=>bone.color===COLORS.shoe));
+    expect(shoes({lying:true})).toBe(shoes({stance:0}));
+  });
+});
