@@ -13,6 +13,7 @@ from pathlib import Path
 import re
 import sys
 import tempfile
+import time
 import unicodedata
 import wave
 
@@ -22,6 +23,10 @@ VERSION = "content-audio-v1"
 PRONUNCIATION = "unicode-nfc-native-frontend-no-sandhi-overrides-v1"
 QWEN_SETTINGS = {"temperature": 0.9, "top_k": 50, "top_p": 1.0,
                  "repetition_penalty": 1.05, "stream": False, "verbose": False}
+MAX_ATTEMPTS = 8
+FRAME_SECONDS = 0.03
+ACTIVE_WITHIN_DB = 35
+UNPROCESSED = "PCM16 quantization only; no gain, normalization, trim or resampling"
 
 
 def digest(data):
@@ -76,6 +81,15 @@ def validate_presets(config):
             raise ValueError(f"Invalid instructions: {voice_id}")
         if preset["engine"] == "kokoro" and preset["instructions"] is not None:
             raise ValueError("Kokoro does not support instructions")
+        if "loudness" in preset:
+            loudness = preset["loudness"]
+            if (not isinstance(loudness, dict)
+                    or loudness.keys() != {"targetActiveRmsDbfs", "peakCeilingDbfs"}
+                    or any(isinstance(value, bool) or not isinstance(value, (int, float))
+                           for value in loudness.values())
+                    or not -40 <= loudness["targetActiveRmsDbfs"] <= -6
+                    or not -12 <= loudness["peakCeilingDbfs"] < 0):
+                raise ValueError(f"Invalid loudness: {voice_id}")
 
 
 def collect_jobs(content, config):
@@ -91,14 +105,18 @@ def collect_jobs(content, config):
     def add(target, kind, voice_id):
         if voice_id not in voices:
             raise ValueError(f"Unknown voiceId: {voice_id}")
-        text = ("".join(token["hanzi"] for token in target["tokens"])
-                if kind == "line" else target["hanzi"])
+        if kind == "english":
+            text, pinyin = target["en"], None
+        elif kind == "line":
+            text = (target["text"] if "text" in target
+                    else "".join(token["hanzi"] for token in target["tokens"]))
+            pinyin = [token.get("pinyin") for token in target["tokens"]]
+        else:
+            text, pinyin = target["hanzi"], [target.get("pinyin")]
         text = unicodedata.normalize("NFC", text)
         if not text.strip() or len(text) > 180:
             raise ValueError("Audio text must contain 1–180 characters")
-        pronunciation = {"normalization": PRONUNCIATION,
-                         "authored_pinyin": ([token.get("pinyin") for token in target["tokens"]]
-                                             if kind == "line" else [target.get("pinyin")])}
+        pronunciation = {"normalization": PRONUNCIATION, "authored_pinyin": pinyin}
         identity = {"generator_version": VERSION, "kind": kind, "text": text,
                     "voice": voices[voice_id], "pronunciation": pronunciation}
         content_digest = digest(canonical(identity))
@@ -123,7 +141,7 @@ def collect_jobs(content, config):
                     walk(item, voice_id)
 
     for key, value in content.items():
-        if key not in ("characters", "orders"):
+        if key not in ("characters", "orders", "opening"):
             walk(value, word_voice)
     for character in characters:
         walk(character, character["voiceId"])
@@ -131,6 +149,25 @@ def collect_jobs(content, config):
         if order["customer"] not in names:
             raise ValueError(f"No character matches order customer {order['customer']!r}")
         walk(order, names[order["customer"]]["voiceId"])
+    if "opening" in content:
+        cast = {member["id"]: member["voices"] for member in content["opening"]["cast"]}
+        for member_voices in cast.values():
+            for voice_id in member_voices.values():
+                if voice_id not in voices:
+                    raise ValueError(f"Unknown voiceId: {voice_id}")
+        for step in content["opening"]["steps"]:
+            if step["type"] == "end":
+                walk(step, word_voice)
+                continue
+            if step["who"] not in cast:
+                raise ValueError(f"No cast member matches who {step['who']!r}")
+            speaker = cast[step["who"]]
+            if step["type"] == "say-en":
+                if "en" not in speaker:
+                    raise ValueError(f"Cast member {step['who']!r} has no English voice")
+                add(step, "english", speaker["en"])
+            else:
+                walk(step, speaker["zh"])
     return list(jobs.values())
 
 
@@ -150,7 +187,37 @@ def validate_samples(samples, sample_rate, text):
             "peak_absolute": peak, "rms": rms}
 
 
-def inspect_wav(path, text):
+def speech_metrics(samples, sample_rate):
+    size = int(FRAME_SECONDS * sample_rate)
+    energies = [sum(sample * sample for sample in samples[start:start + size]) / size
+                for start in range(0, len(samples) // size * size, size)]
+    levels = [20 * math.log10(math.sqrt(energy) + 1e-9) for energy in energies]
+    loudest = max(levels)
+    active = [index for index, level in enumerate(levels) if level > loudest - ACTIVE_WITHIN_DB]
+    active_energy = sum(energies[index] for index in active) / len(active)
+    return {"active_rms_dbfs": 10 * math.log10(active_energy),
+            "peak_dbfs": 20 * math.log10(max(abs(sample) for sample in samples)),
+            "speech_seconds": (active[-1] - active[0] + 1) * FRAME_SECONDS}
+
+
+def level(samples, sample_rate, preset):
+    if "loudness" not in preset:
+        return samples, None
+    before = speech_metrics(samples, sample_rate)
+    gain_db = min(preset["loudness"]["targetActiveRmsDbfs"] - before["active_rms_dbfs"],
+                  preset["loudness"]["peakCeilingDbfs"] - before["peak_dbfs"])
+    factor = 10 ** (gain_db / 20)
+    levelled = [sample * factor for sample in samples]
+    return levelled, {"gain_db": gain_db, "before": before,
+                      "after": speech_metrics(levelled, sample_rate)}
+
+
+def syllables(text):
+    return sum(unicodedata.name(character, "").startswith("CJK UNIFIED IDEOGRAPH")
+               for character in text)
+
+
+def read_wav(path):
     with wave.open(str(path), "rb") as audio:
         if audio.getnchannels() != 1 or audio.getsampwidth() != 2 or audio.getcomptype() != "NONE":
             raise ValueError("Expected mono PCM16 WAV")
@@ -166,7 +233,11 @@ def inspect_wav(path, text):
         samples.byteswap()
     if any(sample in (-32768, 32767) for sample in samples):
         raise ValueError("PCM16 audio reaches clipping boundary")
-    return validate_samples([sample / 32768 for sample in samples], sample_rate, text)
+    return [sample / 32768 for sample in samples], sample_rate
+
+
+def inspect_wav(path, text):
+    return validate_samples(*read_wav(path), text)
 
 
 def cache_valid(job, output, records):
@@ -192,7 +263,8 @@ class LocalEngines:
 
     def __call__(self, job, seed):
         preset = job["voice"]
-        key = (preset["engine"], preset["model"], preset["revision"], preset["language"])
+        key = (preset["engine"], preset["model"], preset["revision"],
+               preset["language"] if preset["engine"] == "kokoro" else None)
         os.environ["HF_HUB_DISABLE_IMPLICIT_TOKEN"] = "1"
         if preset["engine"] == "qwen":
             import mlx.core as mx
@@ -257,12 +329,19 @@ def package_versions(engine):
 
 def generate_clip(job, output, generator):
     attempts = []
-    for attempt in range(3):
+    started = time.perf_counter()
+    for attempt in range(MAX_ATTEMPTS):
         seed = (int(job["content_digest"][:8], 16) + attempt * 1000) % (2 ** 32)
         temporary = None
         try:
             samples, sample_rate, details = generator(job, seed)
             raw_metrics = validate_samples(samples, sample_rate, job["text"])
+            if job["kind"] == "word":
+                span = speech_metrics(samples, sample_rate)["speech_seconds"]
+                limit = 0.6 + 0.5 * syllables(job["text"])
+                if span > limit:
+                    raise ValueError(f"Word speech lasts {span:.2f}s, over {limit:.2f}s")
+            samples, levelled = level(samples, sample_rate, job["voice"])
             pcm = array("h", (round(sample * 32768) for sample in samples))
             if sys.byteorder != "little":
                 pcm.byteswap()
@@ -276,13 +355,21 @@ def generate_clip(job, output, generator):
             metrics = inspect_wav(temporary, job["text"])
             os.replace(temporary, output / job["filename"])
             attempts.append({"seed": seed, "accepted": True})
-            return {key: value for key, value in job.items() if key != "targets"} | {
+            entry = {key: value for key, value in job.items() if key != "targets"} | {
                 "sha256": digest((output / job["filename"]).read_bytes()),
                 "created_at": datetime.now(timezone.utc).isoformat(), "attempts": attempts,
+                "generation_seconds": time.perf_counter() - started,
                 "packages": package_versions(job["voice"]["engine"]), "python": sys.version,
                 "raw_metrics": raw_metrics, "wav_metrics": metrics, "engine_details": details,
-                "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+                "postprocessing": UNPROCESSED,
                 "review_status": "Native Mandarin exact-text/pronunciation listening review pending"}
+            if levelled:
+                loudness = job["voice"]["loudness"]
+                entry["level"] = levelled
+                entry["postprocessing"] = (
+                    f"Gain to {loudness['targetActiveRmsDbfs']} dBFS active speech RMS, capped at a "
+                    f"{loudness['peakCeilingDbfs']} dBFS peak, then PCM16 quantization; no trim or resampling")
+            return entry
         except (ImportError, ModuleNotFoundError):
             raise
         except Exception as error:
@@ -290,7 +377,7 @@ def generate_clip(job, output, generator):
         finally:
             if temporary:
                 Path(temporary).unlink(missing_ok=True)
-    raise ValueError(f"Three rejected takes: {attempts}")
+    raise ValueError(f"{MAX_ATTEMPTS} rejected takes: {attempts}")
 
 
 @contextmanager
@@ -588,8 +675,107 @@ def self_check():
             assert run(args, fake) == 0 and len(calls) == calls_before_retry
             assert read_json(source)["foods"][0]["word"]["audio"] == "/audio/" + original_manifest["clips"][0]["filename"]
             assert read_json(manifest_path)["editor_note"] == "preserve"
+    assert [job["filename"] for job in jobs] == [
+        "word-7e74569e111d5796e0021ddea68de2acc254d5665fdadbaf48c303adfe769b4f.wav",
+        "line-fb40307898f32a24f17172d272f87caa1492ba38c8f4a8a2b4118976cc763f52.wav",
+        "line-6c1df98a97304591afc3dffd7986eea0cb2c32cdb7336331bca604a43170253e.wav",
+        "line-23bbd166dd9017ceb97db29825f9749bccc2490a197587e5b47c3fabc12b3c9a.wav"]
+
+    opening = read_json(ROOT / "scripts/fixtures/opening-audio.json")
+    shipped = read_json(ROOT / "src/content/voices.json")
+    opening_jobs = collect_jobs(opening, shipped)
+    by_text = {job["text"]: job for job in opening_jobs}
+    english = [job for job in opening_jobs if job["kind"] == "english"]
+    assert len(english) == 1 and english[0]["voice_ids"] == ["ryan-en"]
+    assert english[0]["text"] == "Ah, you're awake. Don't try to sit up yet."
+    assert english[0]["filename"].startswith("english-")
+    assert english[0]["pronunciation"] == {"normalization": PRONUNCIATION, "authored_pinyin": None}
+    for text, voice_id in (("人醒了。", "ryan-zh"), ("好的，王医生。", "vivian"),
+                           ("我要豆浆。", "uncle-fu-levelled"), ("不对，我要豆浆。", "uncle-fu-levelled"),
+                           ("谢谢你！", "uncle-fu-levelled"), ("太好了！明天见。", "serena-levelled"),
+                           ("第一天·早安小馆", shipped["wordVoice"])):
+        assert by_text[text]["kind"] == "line" and by_text[text]["voice_ids"] == [voice_id]
+    words = [job for job in opening_jobs if job["kind"] == "word"]
+    assert len(words) == 19 and len(opening_jobs) == 27 and "好" in by_text
+    assert all(job["voice_ids"] == [shipped["wordVoice"]] for job in words)
+    for edit, message in ((lambda cast: cast[0]["voices"].pop("en"), "no English voice"),
+                          (lambda cast: cast.pop(1), "No cast member"),
+                          (lambda cast: cast[2]["voices"].update(zh="missing"), "Unknown voiceId")):
+        broken_opening = copy.deepcopy(opening)
+        edit(broken_opening["opening"]["cast"])
+        try:
+            collect_jobs(broken_opening, shipped)
+        except ValueError as error:
+            assert message in str(error), error
+        else:
+            raise AssertionError(f"Opening accepted without raising {message}")
+
+    def tone(seconds, rms_dbfs, lead=0.0, spikes=False):
+        amplitude = 10 ** (rms_dbfs / 20) * math.sqrt(2)
+        samples = [0.0] * int(lead * 24000) + [
+            amplitude * math.sin(2 * math.pi * 220 * index / 24000) for index in range(int(seconds * 24000))]
+        if spikes:
+            for index in range(len(samples) // 2, len(samples), 2400):
+                samples[index] = 0.5
+        return samples
+
+    levelled_preset = preset | {"loudness": {"targetActiveRmsDbfs": -20, "peakCeilingDbfs": -1}}
+    for loudness in ({"targetActiveRmsDbfs": 0, "peakCeilingDbfs": -1},
+                     {"targetActiveRmsDbfs": -20, "peakCeilingDbfs": 0},
+                     {"targetActiveRmsDbfs": -20}, {"targetActiveRmsDbfs": True, "peakCeilingDbfs": -1}):
+        try:
+            validate_presets({"wordVoice": "v", "voices": {"v": preset | {"loudness": loudness}}})
+        except ValueError:
+            pass
+        else:
+            raise AssertionError(f"Invalid loudness accepted: {loudness}")
+    level_config = {"wordVoice": "serena", "voices": {"serena": preset, "levelled": levelled_preset}}
+    level_content = {"characters": [{"id": "fu", "name": "阿福", "voiceId": "levelled", "greeting": line}]}
+    levelled_job, plain_job = sorted(collect_jobs(level_content, level_config),
+                                     key=lambda job: job["kind"] == "word")
+    with tempfile.TemporaryDirectory() as temporary:
+        output = Path(temporary)
+        entry = generate_clip(levelled_job, output, lambda job, seed: (tone(1, -30), 24000, {}))
+        measured = speech_metrics(read_wav(output / levelled_job["filename"])[0], 24000)
+        assert abs(measured["active_rms_dbfs"] + 20) < 0.2, measured
+        assert abs(entry["level"]["gain_db"] - 10) < 0.2 and "-20 dBFS" in entry["postprocessing"]
+        assert entry["generation_seconds"] >= 0
+        generate_clip(levelled_job, output, lambda job, seed: (tone(1, -30, spikes=True), 24000, {}))
+        measured = speech_metrics(read_wav(output / levelled_job["filename"])[0], 24000)
+        assert abs(measured["peak_dbfs"] + 1) < 0.05 and measured["active_rms_dbfs"] < -21, measured
+        plain = tone(0.5, -30)
+        entry = generate_clip(plain_job, output, lambda job, seed: (plain, 24000, {}))
+        assert read_wav(output / plain_job["filename"])[0] == [round(sample * 32768) / 32768 for sample in plain]
+        assert "level" not in entry and entry["postprocessing"] == UNPROCESSED
+        seeds = []
+
+        def babble_then_speak(job, seed):
+            seeds.append(seed)
+            return tone(2.5 if len(seeds) <= 4 else 0.4, -30), 24000, {}
+
+        entry = generate_clip(plain_job, output, babble_then_speak)
+        assert [attempt["accepted"] for attempt in entry["attempts"]] == [False] * 4 + [True]
+        assert "Word speech lasts" in entry["attempts"][0]["error"]
+        assert seeds[1] - seeds[0] == 1000
+        entry = generate_clip(plain_job, output, lambda job, seed: (tone(0.5, -30, lead=1), 24000, {}))
+        assert len(entry["attempts"]) == 1
+        source, voices, audio = output / "content.json", output / "voices.json", output / "audio"
+        write_json(source, {"foods": [{"word": word}]})
+        write_json(voices, config)
+        before = source.read_bytes()
+        args = argparse.Namespace(content=source, voices=voices, output=audio, plan=False,
+                                  engine="qwen", limit=None, write_content=True)
+        errors = io.StringIO()
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(errors):
+            assert run(args, lambda job, seed: (tone(2.5, -30), 24000, {})) == 1
+        assert f"{MAX_ATTEMPTS} rejected takes" in errors.getvalue() and source.read_bytes() == before
+        args.plan = True
+        plan = io.StringIO()
+        with contextlib.redirect_stdout(plan):
+            assert run(args) == 0
+        assert [json.loads(row)["cached"] for row in plan.getvalue().splitlines()] == [False]
     assert not any(name in sys.modules for name in ("numpy", "torch", "mlx", "kokoro", "mlx_audio"))
-    print("Self-check passed: routing, deduplication, invalidation, plan CLI, mixed-engine cache, missing/corrupt assets, provenance, locking, limits, interrupted writes, input edit guards, signal guards")
+    print("Self-check passed: routing, deduplication, invalidation, plan CLI, mixed-engine cache, missing/corrupt assets, provenance, locking, limits, interrupted writes, input edit guards, signal guards, english routing, cast presets, loudness, syllable duration, eight seeds")
 
 
 def main():

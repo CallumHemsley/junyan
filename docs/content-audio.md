@@ -1,6 +1,7 @@
 # Local content audio
 
-Generate game speech without keys or paid services. The script reads
+Generate game speech without keys or paid services. Mandarin is the game's
+language; English is voiced only for the opening's `say-en` steps. The script reads
 `src/content/content.json` and `src/content/voices.json`; it never edits the voice
 presets. Native Mandarin review is still required: technical validation cannot
 prove that a take says exactly the authored text or has correct tones.
@@ -32,9 +33,20 @@ output/content-qwen-venv/bin/python scripts/content-audio.py --engine qwen --lim
 output/content-kokoro-venv/bin/python scripts/content-audio.py --engine kokoro --limit 1
 ```
 
+The pinned Qwen model is already in the local Hugging Face cache on Callum's Mac.
+The requirements file that matches it lives in the main checkout at
+`output/voice-samples/qwen/runtime-requirements.txt`, which is untracked, so a
+worktree must use its absolute path. Run every real-model command offline:
+
+```sh
+python3.12 -m venv /tmp/junyan-qwen-venv
+/tmp/junyan-qwen-venv/bin/python -m pip install -r /Users/callumhemsley/Personal/junyan/output/voice-samples/qwen/runtime-requirements.txt
+HF_HUB_OFFLINE=1 /tmp/junyan-qwen-venv/bin/python scripts/content-audio.py --engine qwen --write-content
+```
+
 Use Apple Silicon for MLX/Qwen; Kokoro runs on CPU. `--limit N` limits attempted
 new/replacement assets, not cached assets or model retries. Each asset has at most
-three attempts. Omit the limit for the full batch. Generation writes audio and
+`MAX_ATTEMPTS` (8) attempts. Omit the limit for the full batch. Generation writes audio and
 manifest by default, but only `--write-content` changes JSON references:
 
 ```sh
@@ -103,14 +115,65 @@ metadata only; the player sees Hanzi, tapped pinyin and food/sequence pictures.
 Identical text/preset/pronunciation within one asset kind deduplicates across
 all references. IDs and glosses are not spoken and do not invalidate audio.
 
+## The opening: English lines and cast voices
+
+`content.opening` is not walked like the rest of the content. Its `cast` lists
+`{id, name, voices: {zh, en?}}`, where each voice is a preset ID. The script
+routes each step by `type` and `who`:
+
+- A `say-en` step is one asset of kind `english`, file `english-<sha256>.wav`.
+  It speaks `step.en` with the speaker's `voices.en` preset. Its pronunciation
+  records no pinyin.
+- An `end` step walks with `wordVoice`, so the end title uses the narrator.
+- Every other step walks with the speaker's `voices.zh` preset. Its phrases use
+  that preset; their tokens and any option `word` use `wordVoice`.
+
+An unknown `who`, a `say-en` speaker with no `voices.en`, or a cast voice that
+names no preset fails before any synthesis. A phrase carries `text`, the spoken
+line with punctuation such as `，。！` folded in, and the script speaks `text`
+when it is present. Lines without `text` still speak their joined token Hanzi
+and keep their old names. `scripts/fixtures/opening-audio.json` is the reference
+shape: 8 line assets (one English) and 19 words. Smoke it into a scratch copy:
+
+```sh
+mkdir -p /tmp/opening-smoke && cp scripts/fixtures/opening-audio.json /tmp/opening-smoke/content.json
+HF_HUB_OFFLINE=1 /tmp/junyan-qwen-venv/bin/python scripts/content-audio.py --content /tmp/opening-smoke/content.json --voices src/content/voices.json --output /tmp/opening-smoke/audio --engine qwen --write-content
+```
+
+## Loudness and the word duration check
+
+A preset may carry `loudness: {targetActiveRmsDbfs, peakCeilingDbfs}`. The
+target must lie in -40 to -6 and the ceiling in -12 up to, but not including, 0.
+The script measures speech in 30 ms frames, counts a frame as active within
+35 dB of the loudest frame, and applies one gain of
+`min(target - active RMS, ceiling - peak)` before PCM16 quantization. The
+manifest records `level` (`gain_db`, `before`, `after`) and a `postprocessing`
+string naming the target and ceiling. A preset without `loudness` writes the
+model's samples unchanged. `loudness` is part of the preset and so of each
+asset's identity: adding it to an existing preset renames every clip on it.
+That is why levelled cast presets are new IDs (`uncle-fu-levelled`,
+`serena-levelled`) beside the unlevelled restaurant ones.
+
+A `word` take whose speech span (first to last active frame) exceeds
+`0.6 + 0.5 × Han characters` seconds is a babble and is rejected, and the next
+seed is tried. The check runs only when a take is accepted, never on cached
+clips. Each accepted clip records `generation_seconds` across all its takes.
+A clip that fails all `MAX_ATTEMPTS` takes exits nonzero and names the file;
+its references stay untouched and it stays pending in `--plan`.
+
 ## Auditioned presets and offline caching
 
 | IDs | Engine/model | Pinned revision | Speaker/language |
 | --- | --- | --- | --- |
 | `serena`, `uncle-fu` | `qwen`, `mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit` | `08c72cad5e2fd0f41730c8bd1f28149585e46361` | `Serena`, `Uncle_Fu` / `Chinese` |
 | `yunxi`, `xiaobei` | `kokoro`, `hexgrad/Kokoro-82M` | `f3ff3571791e39611d31c381e3a41a3af07b4987` | `zm_yunxi`, `zf_xiaobei` / `z` |
+| `ryan-en`, `ryan-zh` | `qwen`, same model | same revision | `Ryan` / `English`, `Chinese` |
+| `vivian`, `uncle-fu-levelled`, `serena-levelled` | `qwen`, same model | same revision | `Vivian`, `Uncle_Fu`, `Serena` / `Chinese` |
 
-All four use speed `1` and instructions `null`. Qwen's CustomVoice adapter
+The five opening presets level to -20 dBFS active RMS with a -1 dBFS peak cap.
+The casting (doctor Ryan, nurse Vivian, 老爷爷 Uncle_Fu, 小姨 Serena) comes from
+`spikes/hospital-opening/voice/provenance.json`. All presets use speed `1` and
+instructions `null`. Qwen's CustomVoice adapter
 rejects other speeds instead of pretending to apply an unsupported setting.
 Kokoro rejects non-null instructions. Qwen sampling uses temperature 0.9,
 top-k 50, top-p 1, repetition penalty 1.05, no streaming; seeds are derived from
@@ -160,8 +223,9 @@ Each accepted asset saves manifest provenance atomically before its references
 become eligible. No cache garbage collection runs: old content-addressed clips
 remain so another content version can still reference them.
 
-Both engines save native-rate mono PCM16 at 24 kHz; other sample rates are rejected. Qwen float samples are quantized directly;
-there is **no** gain change, loudness normalization, trimming or resampling.
+Both engines save native-rate mono PCM16 at 24 kHz; other sample rates are rejected. Qwen float samples are quantized directly
+unless the preset has `loudness`, which applies one gain first. There is no
+trimming or resampling.
 Checks reject nonfinite samples, silence/near-silence, clipping, PCM boundary
 saturation, truncated WAVs, takes shorter than 120ms and abnormal long takes
 (a text-length-derived bound, never over 120 seconds). Qwen also rejects a take
@@ -213,7 +277,9 @@ dictionary deduplication, preset/pinyin cache invalidation, no-write planning,
 mixed-engine manifest preservation, cache hits, missing/corrupt assets, stale
 digest/identity rejection, malformed/duplicate manifest refusal, output locking,
 attempt limits, interrupted atomic content writes, content/voice edit guards and
-signal guards. Subprocess checks drive the actual plan CLI (including
+signal guards. It also checks opening routing against the committed fixture and
+the shipped presets, cast errors, levelling of mock tones, the word duration
+bound and the eight-seed failure path. Subprocess checks drive the actual plan CLI (including
 `--write-content`, engine and limit flags) and assert file bytes stay unchanged.
 It requires
 no third-party packages and asserts that model modules were never imported.

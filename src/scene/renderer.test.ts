@@ -2,7 +2,9 @@ import {describe, expect, it} from 'vitest';
 import {createHash} from 'node:crypto';
 import {content} from '../content';
 import {TABLES, type GameState, type Phase} from '../contracts';
-import {characterFigure, characterTray, COLORS, createRenderer, customerPose, groundPosition, projectPosition, WIDTH, HEIGHT, type ScenePoint} from './renderer.js';
+import {characterFigure, characterTray, COLORS, createRenderer, customerPose, groundPosition, projectPosition, WIDTH, HEIGHT, type SceneApi, type ScenePoint} from './renderer.js';
+import {restaurantScene} from './restaurant-scene.js';
+import {captureCanvas, restaurantFrames, sha256, TABLES as FRAME_TABLES} from './scene-frame-hashes.mjs';
 
 describe('restaurant projection',()=>{
   it('round trips every logical floor coordinate through the overlay projection',()=>{
@@ -181,7 +183,7 @@ describe('actual raster depth and walking',()=>{
       createImageData:(width:number,height:number)=>({data:new Uint8ClampedArray(width*height*4)}),
       putImageData:(image:ImageData)=>{pixels=image.data.slice();},
     })} as unknown as HTMLCanvasElement;
-    const renderer=createRenderer(canvas,[]);
+    const renderer=createRenderer(canvas,restaurantScene([]));
     const state:GameState={seed:42,day:1,level:1,player:{x:6,y:6},customers:[],tray:[],served:0,earnings:0,mistakes:0,activeTable:null,feedback:'none',receipt:null,journal:{},ended:false};
     return (yaw:number,tray:string[]=[],time=0,moving=false)=>{
       renderer.draw({...state,tray},{...state.player,yaw},time,moving);
@@ -231,7 +233,7 @@ it('renders independently without DOM globals and reflects customer/tray state',
     putImageData:(data:ImageData)=>snapshots.push(data.data.slice()),
   })}) as unknown as HTMLCanvasElement;
   const firstCanvas=canvas(), secondCanvas=canvas();
-  const first=createRenderer(firstCanvas,TABLES),second=createRenderer(secondCanvas,TABLES);
+  const first=createRenderer(firstCanvas,restaurantScene(TABLES)),second=createRenderer(secondCanvas,restaurantScene(TABLES));
   const state:GameState={seed:42,day:1,level:1,player:{x:6,y:6},customers:[
     {table:1,orderId:'one',phase:'ordered'}, {table:2,orderId:'two',phase:'checkout'},
   ],tray:[],served:0,earnings:0,mistakes:0,activeTable:null,feedback:'none',receipt:null,journal:{},ended:false};
@@ -244,4 +246,64 @@ it('renders independently without DOM globals and reflects customer/tray state',
   expect(snapshots[2]).not.toEqual(snapshots[0]);
   second.draw(state,player,0,false);
   expect(snapshots[3]).toEqual(snapshots[0]);
+});
+
+it('bakes the scene once at construction and forwards draw arguments verbatim',()=>{
+  const calls:{method:string;keys:string[];args:unknown[]}[]=[];
+  const renderer=createRenderer(captureCanvas() as unknown as HTMLCanvasElement,{
+    bake:(api:SceneApi)=>{calls.push({method:'bake',keys:Object.keys(api),args:[]});},
+    draw:(api:SceneApi,...args:[unknown,number])=>{calls.push({method:'draw',keys:Object.keys(api),args});},
+  });
+  expect(calls.map(call=>call.method)).toEqual(['bake']);
+  const token={};
+  renderer.draw('first',1);
+  renderer.draw(token,2);
+  expect(calls.map(call=>call.method)).toEqual(['bake','draw','draw']);
+  expect(calls[1].args).toEqual(['first',1]);
+  expect(calls[2].args[0]).toBe(token);
+  for(const call of calls) expect(call.keys).toEqual(['W','H','R2','COS','pix','zb','ground','groundZ','bakedZ','rgb','hash','project','unproject',
+    'box','sphere','capsule','castShadow','applyShadows','flushShadows','shadeEdges','dynamicAdd']);
+});
+
+it('keeps 30 restaurant frames byte-identical to trunk 6c34555',()=>{
+  const {appearances,frames}=restaurantFrames(content,30);
+  const canvas=captureCanvas();
+  const renderer=createRenderer(canvas as unknown as HTMLCanvasElement,restaurantScene(FRAME_TABLES,appearances));
+  const hashes=frames.map(args=>{renderer.draw(...args); return sha256(canvas.frame);});
+  expect(sha256(hashes.join('\n'))).toBe('27c76c1d6ef69d474067fe6aaafed198ecb85b3c18ab43169cb829c0cdefa4f6');
+});
+
+describe('ward figure kinds and bed poses',()=>{
+  const bonesOf=(accessory:string,pose:Parameters<typeof characterFigure>[3]={stance:.05})=>{
+    const bones:{start:ScenePoint;end:ScenePoint;startRadius:number;endRadius:number;color:number[]}[]=[];
+    characterFigure(0,0,Math.PI/4,pose,{accessory,hair:[17,19,23]},(start,end,startRadius,endRadius,colorOf)=>{
+      bones.push({start,end,startRadius,endRadius,color:colorOf(start[2])});
+    });
+    return bones;
+  };
+  it('gives doctor, nurse and aunt distinct primitives',()=>{
+    const lists=['doctor','nurse','aunt','bun'].map(kind=>JSON.stringify(bonesOf(kind)));
+    expect(new Set(lists).size).toBe(4);
+    const waiter=bonesOf('waiter').length;
+    for(const kind of ['doctor','nurse','aunt']) expect(bonesOf(kind).length).toBeGreaterThan(waiter);
+  });
+  it('bed-seated is the seated pose raised',()=>{
+    const seated=bonesOf('glasses',{crouch:1,scale:.88}),raised=bonesOf('glasses',{crouch:1,scale:.88,z:.23});
+    expect(raised).toHaveLength(seated.length);
+    seated.forEach((bone,index)=>{
+      for(const endpoint of ['start','end'] as const) {
+        expect(raised[index][endpoint][0]).toBe(bone[endpoint][0]);
+        expect(raised[index][endpoint][1]).toBe(bone[endpoint][1]);
+        expect(raised[index][endpoint][2]).toBeCloseTo(bone[endpoint][2]+.23,10);
+      }
+    });
+  });
+  it('lays lying arms along the body and keeps lying legs straight',()=>{
+    const lying=bonesOf('waiter',{lying:true});
+    const hands=lying.filter(bone=>bone.startRadius===.12&&bone.color===COLORS.skin);
+    expect(hands).toHaveLength(2);
+    for(const hand of hands) expect(hand.start[2]).toBeCloseTo(.97,10);
+    const shoes=(pose:Parameters<typeof characterFigure>[3])=>JSON.stringify(bonesOf('waiter',pose).filter(bone=>bone.color===COLORS.shoe));
+    expect(shoes({lying:true})).toBe(shoes({stance:0}));
+  });
 });

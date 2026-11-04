@@ -157,3 +157,17 @@ Evidence under `output/playwright/0029/`:
 - `0029-{phone,desktop}-playable-{empty,full}.png`: real app screens at 390px and 1440px widths, including reduced-motion frame stability and clean console assertions. These use the current checkout UI; ticket 0028 is not integrated here.
 
 Implementation self-checks pass (88 unit tests, 17 muted Chromium browser tests, TypeScript/Vite build). Screenshots were inspected during refinement. Independent cross-review and parent visual acceptance remain pending; this section does not self-certify either gate. No WebKit or Firefox coverage is claimed.
+
+## Ward cast (ticket 0053)
+
+The hospital ward (`src/scene/ward.js`) draws its cast with the same `characterFigure` rig as the restaurant. Their looks live in `WARD_CAST` in `src/scene/ward.js`, keyed by cast id. The shared accessory enum in `src/content/index.ts` is unchanged. The renderer accepts three extra figure kinds, typed as `FigureKind` in `src/scene/renderer.d.ts`.
+
+- 王医生 (`doctor`). A white knee-length coat over dark trousers, cream lapels, an ink stethoscope round the neck with a steel chest piece, and the waiter's short fringe in near-black.
+- The nurse (`nurse`). Pale jade scrubs top and bottom, hair tied low at the nape, and a small cream cap with a jade band.
+- 小姨 (`aunt`). A shoulder-length bob that hangs to the jaw at both sides and the back, a mustard cardigan over a cream shirt, and a wood bag strap across the chest. She has no high rear bun, so her outline does not read as 林姐's. In the ward she holds a bag of buns on her lap and a jade thermos stands at her feet.
+- 老爷爷 reuses the `glasses` kind with a pale blue pyjama palette and grey hair.
+- The player is the default kind in the same pyjamas, with no tray.
+
+Two poses serve the beds. Bed-seated is the existing seated pose raised with `pose.z` so the hips rest on the mattress, and a flat blanket box covers the lap. `lying` straightens the legs (toes point along the rig's forward axis, which the ward turns upward) and lays the arms along the body with the hands at the hips. The ward lays the rig on the mattress with its own point transform, inclined about 20 degrees like a raised bed back, and draws the pillow wedge and the blanket through the same transform. Hands and shoes stay inside the blanket; only the shoulders and the head show.
+
+The camera faces the two back walls, so every ward figure takes a yaw in `[0, π/2]`. A yaw of `π/4` faces the camera. Standing cast stand to the left of the bed they address and face `+x`, so their faces read three-quarter on.

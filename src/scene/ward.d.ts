@@ -1,0 +1,16 @@
+import type {FigureKind, Scene, ScenePoint} from './renderer.js';
+type Color = [number, number, number];
+export type WardFood = 'milk' | 'egg' | 'bread';
+export type WardCastId = 'doctor' | 'nurse' | 'aunt';
+export type WardPose = 'lying' | 'sitting';
+export type WardFrame = {elder:WardPose; player:WardPose; present:WardCastId[]; table:WardFood[]; held:WardFood | null};
+export type WardBed = {x:number; top:number; foot:number; head:number};
+type WardFigureId = WardCastId | 'elder' | 'player';
+export const BEDS: Record<'elder' | 'player', WardBed>;
+export const FIGURES: Record<WardFigureId, {x:number; y:number; yaw:number; pose?:Record<string, unknown>}>;
+export const WARD_CAST: Record<WardFigureId, {shirt:Color; legs:Color; hair:Color; accessory?:FigureKind}>;
+export const LYING_BLANKET: Record<'forward' | 'side' | 'height', [number, number]>;
+export function sittingBlanket(bed:WardBed): [number, number, number, number, number, number];
+export function lyingTransform(bed:WardBed): (point:ScenePoint) => ScenePoint;
+export function wardMotionBounds(): Array<[number, number, number, number]>;
+export const wardScene: Scene<[frame:WardFrame, time:number]>;
