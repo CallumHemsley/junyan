@@ -1,5 +1,5 @@
 import { test, expect, type Page } from "@playwright/test";
-import { withSkip } from "./opening";
+import { playOpening, withSkip } from "./opening";
 import type { Content, GameState } from "../src/contracts";
 
 async function data(page: Page) {
@@ -67,16 +67,28 @@ async function serve(page: Page, table: number) {
   await page.getByRole("button", { name: "继续招呼" }).click();
 }
 
-test("collect, recall, deliver, give change, journal, and progress", async ({
+test("wake in the ward, then collect, recall, deliver, give change, journal, and progress", async ({
   page,
 }, info) => {
+  test.setTimeout(180_000);
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   page.on("console", (m) => {
     if (m.type() === "error") errors.push(m.text());
   });
-  await page.goto(withSkip("/?test=1&seed=42"));
+  await page.goto("/?test=1&seed=42&opening=play");
+  await playOpening(page, {
+    shot: (name) => page.screenshot({
+      path: `output/playwright/${info.project.name}-opening-${name}.png`,
+    }),
+    afterHandover: async () =>
+      expect(await page.locator(".app-shell").innerText()).not.toMatch(/[a-z]/i),
+  });
   await page.getByRole("button", { name: "开门迎客" }).click();
+  await page.getByRole("button", { name: /本子/ }).click();
+  for (const word of ["豆浆", "鸡蛋", "谢谢", "好"])
+    await expect(page.locator(".journal-list")).toContainText(word);
+  await page.getByRole("button", { name: "关闭", exact: true }).click();
   await expect(page.locator("canvas")).toBeVisible();
   await page.screenshot({
     path: `output/playwright/${info.project.name}-restaurant.png`,
