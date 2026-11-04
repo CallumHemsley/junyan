@@ -46,6 +46,13 @@ const CABINET_TOP = 1.05, CLOTH = .03;
 
 const DRIP = {x:4.2, y:-4.25, z:2.25};
 const MONITOR = {x0:4.12, x1:4.88, y:-4.88, z:1.55};
+const PULSE = [0,0,0,0,.02,-.04,.16,-.08,0,0,.03,0];
+const pulseAt = t => { const k = Math.min(10, Math.floor(t*11)), f = t*11-k; return PULSE[k]+(PULSE[k+1]-PULSE[k])*f; };
+const monitorPoint = t => [MONITOR.x0+(MONITOR.x1-MONITOR.x0)*t, MONITOR.y, MONITOR.z+pulseAt(t)];
+const plot = ({W,pix,rgb,project}, x, y, z, color) => {
+  const p=project(x,y,z), ix=Math.round(p.sx), iy=Math.round(p.sy);
+  if (ix>=0 && iy>=0 && ix<W && iy*W+ix<pix.length) pix[iy*W+ix]=rgb(...color);
+};
 const SWAY = {x:1.78, y:-5.25, z0:1.25, z1:1.85};
 
 export function wardMotionBounds() {
@@ -56,7 +63,7 @@ export function wardMotionBounds() {
   };
   return [
     rect([at(DRIP.x,DRIP.y,DRIP.z), at(DRIP.x,DRIP.y,DRIP.z-.5)]),
-    rect([at(MONITOR.x0,MONITOR.y,MONITOR.z+.15), at(MONITOR.x1,MONITOR.y,MONITOR.z-.15)]),
+    rect([at(MONITOR.x0,MONITOR.y,MONITOR.z+.2), at(MONITOR.x1,MONITOR.y,MONITOR.z-.2)]),
     rect([at(SWAY.x,SWAY.y,SWAY.z0), at(SWAY.x,SWAY.y,SWAY.z1), at(SWAY.x,SWAY.y,SWAY.z0)]),
   ];
 }
@@ -161,6 +168,7 @@ bake(api) {
   box(4.05,-5.35,.95,4.95,-4.55,1.05,metal);
   box(4.05,-5.25,1.05,4.95,-4.95,1.95,[78,84,80]);
   box(4.12,-4.96,1.15,4.88,-4.9,1.85,screen);
+  for (let t=0;t<=1;t+=.01) plot(api,...monitorPoint(t),[84,128,108]);
   plant(-5.7,-4.85);
   plant(5.75,4.75);
   box(5.0,-1.2,0,6.2,-.1,.85,[214,206,190]);
@@ -197,14 +205,11 @@ draw(api, frame, time) {
     }
   }
   flushShadows(); applyShadows(bakedZ); shadeEdges();
-  const put = (x,y,z,color) => {
-    const p=project(x,y,z), ix=Math.round(p.sx), iy=Math.round(p.sy);
-    if (ix>=0 && iy>=0 && ix<W && iy*W+ix<pix.length) pix[iy*W+ix]=rgb(...color);
-  };
+  const put = (x,y,z,color) => plot(api,x,y,z,color);
   const drop=(time*1.6)%1;
   put(DRIP.x,DRIP.y+.06,2.28-drop*.3,[150,196,214]);
   const blip=Math.floor(time*6)%12;
-  put(MONITOR.x0+(MONITOR.x1-MONITOR.x0)*blip/11,MONITOR.y,MONITOR.z+(blip%4===1?.12:0),[168,230,196]);
+  put(...monitorPoint(blip/11),[178,214,196]);
   if (Math.sin(time*1.7)>.2) for (let z=SWAY.z0;z<SWAY.z0+.6;z+=.05) put(SWAY.x,SWAY.y,z,[176,202,188]);
 },
 };
