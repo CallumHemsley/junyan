@@ -1,4 +1,5 @@
 import type { GameState, JournalEntry } from "./contracts";
+import type { SessionAction } from "./opening";
 import type { TokenLook } from "./opening-view";
 
 export function freshWords(
@@ -18,4 +19,21 @@ export function wordState(
 ): TokenLook {
   if (!entry?.recovered) return "fogged";
   return fresh ? "dot" : "plain";
+}
+
+// The dot marks the words the latest correct serve recovered. Each correct
+// serve replaces the set, even with nothing, and a new day clears it.
+export function nextDots(
+  dots: string[],
+  previous: GameState,
+  action: SessionAction,
+  next: GameState,
+): string[] {
+  if (next === previous) return dots;
+  if (action.type === "next-day") return [];
+  if (action.type !== "deliver") return dots;
+  const served = (state: GameState) =>
+    state.customers.find((entry) => entry.table === action.table)?.phase;
+  if (served(previous) !== "ordered" || served(next) !== "checkout") return dots;
+  return freshWords(previous.journal, next.journal);
 }

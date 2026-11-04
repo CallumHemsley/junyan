@@ -253,6 +253,8 @@ export function reduceGame(
       );
       const order = getOrder(state, action.table, content);
       if (
+        !Number.isFinite(action.now) ||
+        action.now < 0 ||
         customer?.phase !== "ordered" ||
         !nearTable(state, action.table) ||
         !order ||

@@ -559,6 +559,17 @@ describe("recovery in the restaurant", () => {
     });
   });
 
+  it("a deliver with an invalid time changes nothing", () => {
+    let state = ordered();
+    for (const item of getOrder(state, 1, twoWords)!.items)
+      for (let count = 0; count < item.quantity; count++)
+        state = play(state, { type: "pickup", foodId: item.foodId });
+    const table = TABLES.find((entry) => entry.table === 1)!;
+    const near = play(state, { type: "move", position: { x: table.x, y: table.y + 1.3 } });
+    for (const now of [Number.NaN, -1, Number.POSITIVE_INFINITY])
+      expect(play(near, { type: "deliver", table: 1, now })).toBe(near);
+  });
+
   it("a wrong-food deliver recovers nothing", () => {
     let state = ordered({ bun: { lookups: 1, lastSeen: 5, recovered: false } });
     const order = getOrder(state, 1, twoWords)!;

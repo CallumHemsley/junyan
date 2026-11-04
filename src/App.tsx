@@ -17,7 +17,7 @@ import { createSession, reduceSession, type Session, type SessionAction } from "
 import { startSession, type StartupRead } from "./startup";
 import HospitalOpening from "./HospitalOpening";
 import WordToken from "./WordToken";
-import { freshWords, wordState } from "./recovery";
+import { nextDots, wordState } from "./recovery";
 import { Speaker } from "./icons";
 import { route } from "./navigation";
 import { createPlayback, type PlaybackError } from "./audio/playback";
@@ -85,8 +85,9 @@ export default function App() {
       const next = reduceSession(previous, action, content);
       if (next === previous) return next;
       if (previous.phase === "day" && next.phase === "day") {
-        const recovered = freshWords(previous.game.journal, next.game.journal);
-        if (recovered.length > 0) setFresh(recovered);
+        const { game: before } = previous;
+        const { game: after } = next;
+        setFresh((dots) => nextDots(dots, before, action, after));
       }
       if (!testMode && action.type !== "move" && next.phase === "day") {
         try {
