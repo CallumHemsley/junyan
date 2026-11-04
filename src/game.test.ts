@@ -424,6 +424,12 @@ describe("determinism, journal and content safety", () => {
     expect(recoverWords(journal, [], 30)).toBe(journal);
   });
 
+  it("recoverWords ignores a time that is not finite and non-negative", () => {
+    const journal = freeze({});
+    for (const now of [NaN, Infinity, -1])
+      expect(recoverWords(journal, ["egg"], now)).toBe(journal);
+  });
+
   it("does not mutate frozen state or content through an entire day", () => {
     let state = freeze(createGame(content));
     for (const { table } of TABLES) state = freeze(serve(state, table));

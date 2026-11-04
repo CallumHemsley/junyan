@@ -138,7 +138,7 @@ export function recoverWords(
   const pending = wordIds.filter(
     (id) => !(Object.hasOwn(journal, id) && journal[id].recovered),
   );
-  if (pending.length === 0) return journal;
+  if (pending.length === 0 || !Number.isFinite(now) || now < 0) return journal;
   const next = { ...journal };
   for (const id of pending) {
     const previous = Object.hasOwn(journal, id) ? journal[id] : undefined;
@@ -147,34 +147,39 @@ export function recoverWords(
   return next;
 }
 
+export function recordLookup(
+  journal: GameState["journal"],
+  action: Extract<Action, { type: "lookup" }>,
+  content: Content,
+): GameState["journal"] {
+  if (
+    !Number.isFinite(action.now) ||
+    action.now < 0 ||
+    !contentWords(content).some((word) => word.id === action.wordId)
+  )
+    return journal;
+  const previous = Object.hasOwn(journal, action.wordId)
+    ? journal[action.wordId]
+    : undefined;
+  return {
+    ...journal,
+    [action.wordId]: {
+      ...previous,
+      lookups: (previous?.lookups ?? 0) + 1,
+      lastSeen: action.now,
+      recovered: previous?.recovered ?? false,
+    },
+  };
+}
+
 export function reduceGame(
   state: GameState,
   action: Action,
   content: Content,
 ): GameState {
   if (action.type === "lookup") {
-    const words = contentWords(content);
-    if (
-      !Number.isFinite(action.now) ||
-      action.now < 0 ||
-      !words.some((word) => word.id === action.wordId)
-    )
-      return state;
-    const previous = Object.hasOwn(state.journal, action.wordId)
-      ? state.journal[action.wordId]
-      : undefined;
-    return {
-      ...state,
-      journal: {
-        ...state.journal,
-        [action.wordId]: {
-          ...previous,
-          lookups: (previous?.lookups ?? 0) + 1,
-          lastSeen: action.now,
-          recovered: previous?.recovered ?? false,
-        },
-      },
-    };
+    const journal = recordLookup(state.journal, action, content);
+    return journal === state.journal ? state : { ...state, journal };
   }
   if (action.type === "next-day") {
     if (!state.ended) return state;
