@@ -17,7 +17,7 @@ page.on('pageerror', error => errors.push(error.message));
 page.on('console', message => { if (message.type()==='error') errors.push(message.text()); });
 let video;
 try {
-  await page.goto(`${url}/?test=1&seed=42`);
+  await page.goto(`${url}/?test=1&seed=42&opening=skip`);
   const steps = await page.evaluate(async () => {
     const {createRenderer} = await import('/src/scene/renderer.js');
     const {wardScene} = await import('/src/scene/ward.js');

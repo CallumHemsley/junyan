@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { withSkip } from "./opening";
 import type { Content, GameState } from "../src/contracts";
 
 test.use({ launchOptions: { args: ["--mute-audio"] } });
@@ -14,7 +15,7 @@ for (const viewport of [
     page.on("pageerror", error => errors.push(error.message));
     page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
     await page.setViewportSize(viewport);
-    await page.goto("/?test=1&seed=42");
+    await page.goto(withSkip("/?test=1&seed=42"));
     const help = page.getByRole("dialog", { name: "怎么玩" });
     const disclosure = help.getByRole("button", { name: "怎么玩", exact: true });
     await expect(disclosure).toHaveAttribute("aria-expanded", "false");
@@ -101,7 +102,7 @@ for (const viewport of [
 }
 
 test("the next service action follows the last visited waiting table without checking the food", async ({ page }) => {
-  await page.goto("/?test=1&seed=42");
+  await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   for (const table of [1, 4]) {
     await page.getByRole("group", { name: "今日客人", exact: true }).getByRole("button", { name: new RegExp(`^${table}桌 `) }).click();
@@ -120,7 +121,7 @@ test("the next service action follows the last visited waiting table without che
 
 test("reduced motion keeps disclosures and scene navigation usable", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/?test=1&seed=42");
+  await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   await page.locator(".day-toggle").click();
   await expect(page.locator("#day-details")).toBeVisible();
@@ -131,7 +132,7 @@ test("reduced motion keeps disclosures and scene navigation usable", async ({ pa
 });
 
 test("primary action names the checkout phase", async ({ page }) => {
-  await page.goto("/?test=1&seed=42");
+  await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   await page.locator(".next-action").click();
   await expect(page.getByRole("dialog", { name: "1桌点餐" })).toBeVisible();

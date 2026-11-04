@@ -1,4 +1,5 @@
 import { test, expect, type Page } from "@playwright/test";
+import { withSkip } from "./opening";
 import type { Content, GameState } from "../src/contracts";
 
 async function data(page: Page) {
@@ -74,7 +75,7 @@ test("collect, recall, deliver, give change, journal, and progress", async ({
   page.on("console", (m) => {
     if (m.type() === "error") errors.push(m.text());
   });
-  await page.goto("/?test=1&seed=42");
+  await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   await expect(page.locator("canvas")).toBeVisible();
   await page.screenshot({
@@ -114,7 +115,7 @@ test("collect, recall, deliver, give change, journal, and progress", async ({
 test("walking connects a keyboard position beside a table without stalling", async ({
   page,
 }) => {
-  await page.goto("/?test=1&seed=42");
+  await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   await page.evaluate(() =>
     (window as any).__TEST__.dispatch({
@@ -132,7 +133,7 @@ test("walking connects a keyboard position beside a table without stalling", asy
 });
 
 test("browser saves and reloads a looked-up word", async ({ page }) => {
-  await page.goto("/");
+  await page.goto(withSkip("/"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   await page.getByRole("group", { name: "今日客人", exact: true }).getByRole("button", { name: /^1桌 / }).click();
   await expect(page.locator(".spoken .word").first()).toBeVisible();

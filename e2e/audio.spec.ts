@@ -1,4 +1,5 @@
 import { test, expect, type Page } from "@playwright/test";
+import { withSkip } from "./opening";
 import { probeAudio, silentResponse, silentWav } from "./audio-fixtures";
 import { readdir, readFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
@@ -9,7 +10,7 @@ import { KITCHEN, TABLES, type Order } from "../src/contracts";
 const failure = "声音暂时没有播出，再点一次听听。";
 const diagnostics = new WeakMap<Page, { pageErrors: string[]; consoleErrors: string[] }>();
 async function openTable(page: Page) {
-  await page.goto("/?test=1&seed=42");
+  await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   await page.getByTestId("table-1").click();
   await expect(page.getByRole("dialog", { name: "1桌点餐" })).toBeVisible();
@@ -123,7 +124,7 @@ test("expired walking gesture reports native policy rejection and direct replay 
     window.requestAnimationFrame = callback => frame(() => setTimeout(() => callback(performance.now()), 600));
   });
   await page.route("**/*.wav", route => silentResponse(route));
-  await page.goto("/?test=1&seed=42");
+  await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   await page.getByTestId("table-1").click();
   await page.waitForTimeout(10000);
@@ -141,7 +142,7 @@ test("expired walking gesture reports native policy rejection and direct replay 
 
 test("autosaving a word does not invalidate its pending playback", async ({ page }) => {
   await page.route("**/*.wav", route => silentResponse(route, 1200));
-  await page.goto("/");
+  await page.goto(withSkip("/"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   await page.getByTestId("table-1").click();
   await page.locator(".spoken .word").first().click();

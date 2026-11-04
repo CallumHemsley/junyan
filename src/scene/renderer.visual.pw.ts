@@ -13,7 +13,7 @@ test('playable-scale cast and trays stay still under reduced motion',async({page
   const errors:string[]=[];
   page.on('pageerror',error=>errors.push(error.message));
   page.on('console',message=>{if(message.type()==='error') errors.push(message.text());});
-  await page.goto('/?test=1&seed=42');
+  await page.goto('/?test=1&seed=42&opening=skip');
   await page.getByRole('button',{name:'开门迎客'}).click();
   await expect(page.locator('canvas')).toBeVisible();
   const dispatch=async(action:Action)=>page.evaluate(action=>{

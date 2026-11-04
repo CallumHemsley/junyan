@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { seedDayOne, withSkip } from "./opening";
 import type { Action, Content, GameState } from "../src/contracts";
 
 test.use({ launchOptions: { args: ["--mute-audio"] } });
@@ -6,10 +7,13 @@ test.use({ launchOptions: { args: ["--mute-audio"] } });
 for (const build of ["development", "production"]) {
   test.describe(build, () => {
     test.beforeEach(async ({ page }) => {
-      const url = build === "production"
-        ? process.env.JUNYAN_PREVIEW_URL || "http://127.0.0.1:5177/junyan/"
-        : "/";
-      await page.goto(`${url}?test=1&seed=42`);
+      if (build === "production") {
+        const url = process.env.JUNYAN_PREVIEW_URL || "http://127.0.0.1:5177/junyan/";
+        await seedDayOne(page, url);
+        await page.goto(`${url}?test=1&seed=42`);
+      } else {
+        await page.goto(withSkip("/?test=1&seed=42"));
+      }
       await expect(page.getByRole("button", { name: "关闭", exact: true })).toBeFocused();
       await page.getByRole("button", { name: "开门迎客" }).click();
     });
@@ -88,6 +92,7 @@ for (const build of ["development", "production"]) {
 
 test("production home navigation stays within the configured game subpath", async ({ page }) => {
   const base = process.env.JUNYAN_PREVIEW_URL || "http://127.0.0.1:5177/junyan/";
+  await seedDayOne(page, base);
   await page.goto(`${base}?test=1&seed=42`);
   await page.getByRole("button", { name: "开门迎客" }).click();
   const brand = page.getByRole("link", { name: "君言首页" });
@@ -99,7 +104,7 @@ test("production home navigation stays within the configured game subpath", asyn
 });
 
 test("receipt word targets are at least 44px and restore focus", async ({ page }, info) => {
-  await page.goto("/?test=1&seed=42");
+  await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   await page.evaluate(() => {
     const hooks = (window as Window & { __TEST__?: { content: Content; getState: () => GameState; dispatch: (action: Action) => void } }).__TEST__!;
@@ -131,7 +136,7 @@ test("receipt word targets are at least 44px and restore focus", async ({ page }
 });
 
 test("kitchen, tray, and journal word cards restore their own triggers", async ({ page }) => {
-  await page.goto("/?test=1&seed=42");
+  await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   await page.getByRole("group", { name: "今日客人", exact: true }).getByRole("button", { name: /^1桌 / }).click();
   await page.getByRole("button", { name: "去厨房", exact: true }).click();

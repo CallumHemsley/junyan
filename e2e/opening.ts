@@ -7,7 +7,7 @@ export function withSkip(path: string) {
   return `${path}${path.includes("?") ? "&" : "?"}opening=skip`;
 }
 
-export async function seedDayOne(page: Page, base: string, state: GameState = createGame(data as Content, 42)) {
+export async function seedDayOne(page: Page, base: string, state: object = createGame(data as Content, 42)) {
   await page.goto(new URL("audio/manifest.json", base).href);
   await page.evaluate(async (save) => {
     const db = await new Promise<IDBDatabase>((resolve, reject) => {

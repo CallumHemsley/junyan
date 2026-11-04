@@ -1,4 +1,5 @@
 import { test, expect, type Page, type Locator } from "@playwright/test";
+import { withSkip } from "./opening";
 import type { Content, GameState } from "../src/contracts";
 
 test.use({ launchOptions: { args: ["--mute-audio"] } });
@@ -55,7 +56,7 @@ for (const viewport of [
     const screenshot = async (name: string) => {
       await page.screenshot({ path: `output/playwright/0036/${viewport.width}x${viewport.height}-${name}.png`, scale: "css" });
     };
-    await page.goto("/?test=1&seed=42");
+    await page.goto(withSkip("/?test=1&seed=42"));
     await expect(page.getByRole("dialog", { name: "怎么玩" })).toBeVisible();
     await checkLayout(page, page.getByRole("dialog"));
     await screenshot("welcome");
