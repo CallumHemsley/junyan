@@ -273,6 +273,11 @@ export function reduceGame(
         feedback: "none",
         receipt: null,
         customers: setPhase(state, action.table, "checkout"),
+        journal: recoverWords(
+          state.journal,
+          order.line.tokens.map((token) => token.id),
+          action.now,
+        ),
       };
     }
     case "pay": {

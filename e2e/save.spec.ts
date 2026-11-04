@@ -21,7 +21,7 @@ function completedDay() {
       }
     }
     state = reduceGame(state, { type: "move", position: { x: position.x, y: position.y - 1.5 } }, content);
-    state = reduceGame(state, { type: "deliver", table }, content);
+    state = reduceGame(state, { type: "deliver", table, now: 1 }, content);
     state = reduceGame(state, { type: "pay", table, change: order.paid - orderTotal(order, content) }, content);
   }
   return state;

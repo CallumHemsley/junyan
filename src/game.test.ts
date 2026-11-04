@@ -92,6 +92,7 @@ function checkout(state: GameState, table = 1): GameState {
   return act(visit(loadOrder(takeOrder(state, table), table), table), {
     type: "deliver",
     table,
+    now: 1,
   });
 }
 function serve(state: GameState, table: number): GameState {
@@ -130,7 +131,7 @@ describe("waiter journey", () => {
       ).toBe("ordered");
       const order = getOrder(state, table, content)!;
       state = loadOrder(state, table);
-      state = act(visit(state, table), { type: "deliver", table });
+      state = act(visit(state, table), { type: "deliver", table, now: 1 });
       expect(state.tray).toEqual([]);
       expect(
         state.customers.find((entry) => entry.table === table)?.phase,
@@ -158,13 +159,13 @@ describe("waiter journey", () => {
     const wrong = order.items[0].foodId === "bun" ? "milk" : "bun";
     state = act(state, { type: "move", position: KITCHEN });
     state = act(state, { type: "pickup", foodId: wrong });
-    state = act(visit(state, 1), { type: "deliver", table: 1 });
+    state = act(visit(state, 1), { type: "deliver", table: 1, now: 1 });
     expect(state.feedback).toBe("wrong-food");
     expect(state.tray).toEqual([wrong]);
     expect(state.customers[0].phase).toBe("ordered");
     state = act(state, { type: "move", position: KITCHEN });
     state = act(state, { type: "return-food", index: 0 });
-    state = act(visit(loadOrder(state, 1), 1), { type: "deliver", table: 1 });
+    state = act(visit(loadOrder(state, 1), 1), { type: "deliver", table: 1, now: 1 });
     state = act(state, { type: "pay", table: 1, change: 0 });
     expect(state.feedback).toBe("wrong-change");
     expect(state.customers[0].phase).toBe("checkout");
@@ -197,13 +198,13 @@ describe("waiter journey", () => {
     ]) {
       const wrong = act(
         { ...state, tray: invalid },
-        { type: "deliver", table: 1 },
+        { type: "deliver", table: 1, now: 1 },
       );
       expect(wrong.feedback).toBe("wrong-food");
       expect(wrong.customers[0].phase).toBe("ordered");
     }
     expect(
-      act({ ...state, tray: tray.reverse() }, { type: "deliver", table: 1 })
+      act({ ...state, tray: tray.reverse() }, { type: "deliver", table: 1, now: 1 })
         .customers[0].phase,
     ).toBe("checkout");
   });
@@ -244,7 +245,7 @@ describe("movement and action guards", () => {
     for (const action of [
       { type: "interact", table: 1 },
       { type: "interact", table: 99 },
-      { type: "deliver", table: 1 },
+      { type: "deliver", table: 1, now: 1 },
       { type: "pay", table: 1, change: 18 },
       { type: "pickup", foodId: "bun" },
       { type: "next-day" },
@@ -260,7 +261,7 @@ describe("movement and action guards", () => {
     expect(reselected.activeTable).toBe(1);
     expect(reselected.customers[0].phase).toBe("ordered");
     const loaded = loadOrder(ordered, 1);
-    expect(act(loaded, { type: "deliver", table: 1 })).toBe(loaded);
+    expect(act(loaded, { type: "deliver", table: 1, now: 1 })).toBe(loaded);
     expect(act(loaded, { type: "pickup", foodId: "missing" })).toBe(loaded);
     expect(
       act(visit(loaded, 1), { type: "return-food", index: 0 }).tray,
@@ -269,7 +270,7 @@ describe("movement and action guards", () => {
     const farBill = act(bill, { type: "move", position: KITCHEN });
     expect(act(farBill, { type: "pay", table: 1, change: 18 })).toBe(farBill);
     expect(act(farBill, { type: "pickup", foodId: "bun" })).toBe(farBill);
-    expect(act(bill, { type: "deliver", table: 1 })).toBe(bill);
+    expect(act(bill, { type: "deliver", table: 1, now: 1 })).toBe(bill);
     expect(act(bill, { type: "interact", table: 1 }).customers[0].phase).toBe(
       "checkout",
     );
@@ -354,9 +355,10 @@ describe("determinism, journal and content safety", () => {
       state = reduceGame(state, {type: "lookup", wordId, now: 456}, withCharacters);
       expect(state.journal[wordId]).toEqual({lookups: 2, lastSeen: 456, recovered: false});
     }
-    const nextDay = reduceGame(finishDay(state), {type: "next-day"}, withCharacters);
+    const finished = finishDay(state);
+    const nextDay = reduceGame(finished, {type: "next-day"}, withCharacters);
     expect(nextDay.day).toBe(state.day + 1);
-    expect(nextDay.journal).toEqual(state.journal);
+    expect(nextDay.journal).toEqual(finished.journal);
   });
 
   it("records only known words using injected timestamps and keeps the journal across days", () => {
@@ -378,7 +380,7 @@ describe("determinism, journal and content safety", () => {
     expect(state.journal.thanks.lookups).toBe(1);
     const completed = freeze(finishDay(state));
     const next = act(completed, { type: "next-day" });
-    expect(next.journal).toEqual(state.journal);
+    expect(next.journal).toEqual(completed.journal);
     expect(
       act(completed, { type: "lookup", wordId: "retry", now: 125 }).journal
         .retry.lookups,
@@ -468,7 +470,7 @@ describe("determinism, journal and content safety", () => {
     }
     const missing = { ...content, orders: [] };
     const ordered = takeOrder(state);
-    expect(reduceGame(ordered, { type: "deliver", table: 1 }, missing)).toBe(
+    expect(reduceGame(ordered, { type: "deliver", table: 1, now: 1 }, missing)).toBe(
       ordered,
     );
     const bill = checkout(state);
@@ -507,9 +509,71 @@ describe("determinism, journal and content safety", () => {
     expect(
       reduceGame(
         { ...state, tray: ["milk", "bun", "bun", "bun"] },
-        { type: "deliver", table: 1 },
+        { type: "deliver", table: 1, now: 1 },
         duplicate,
       ).customers[0].phase,
     ).toBe("checkout");
+  });
+});
+
+describe("recovery in the restaurant", () => {
+  const soy = { ...word, id: "soy", hanzi: "豆浆" };
+  const spoken = { ...line, tokens: [word, soy, word] };
+  const twoWords: Content = {
+    ...content,
+    orders: content.orders.map((order) => ({ ...order, line: spoken })),
+  };
+  const play = (state: GameState, action: Action) =>
+    reduceGame(state, action, twoWords);
+  function ordered(journal: GameState["journal"] = {}) {
+    const state = { ...createGame(twoWords), journal };
+    const table = TABLES.find((entry) => entry.table === 1)!;
+    const near = play(state, {
+      type: "move",
+      position: { x: table.x, y: table.y + 1.3 },
+    });
+    return play(play(near, { type: "interact", table: 1 }), {
+      type: "move",
+      position: KITCHEN,
+    });
+  }
+  function deliver(state: GameState) {
+    const table = TABLES.find((entry) => entry.table === 1)!;
+    const near = play(state, {
+      type: "move",
+      position: { x: table.x, y: table.y + 1.3 },
+    });
+    return play(near, { type: "deliver", table: 1, now: 40 });
+  }
+
+  it("a correct deliver recovers every word of the order line and keeps lookups", () => {
+    let state = ordered({ bun: { lookups: 2, lastSeen: 5, recovered: false } });
+    for (const item of getOrder(state, 1, twoWords)!.items)
+      for (let count = 0; count < item.quantity; count++)
+        state = play(state, { type: "pickup", foodId: item.foodId });
+    state = deliver(state);
+    expect(state.customers[0].phase).toBe("checkout");
+    expect(state.journal).toEqual({
+      bun: { lookups: 2, lastSeen: 5, recovered: true },
+      soy: { lookups: 0, lastSeen: 40, recovered: true },
+    });
+  });
+
+  it("a wrong-food deliver recovers nothing", () => {
+    let state = ordered({ bun: { lookups: 1, lastSeen: 5, recovered: false } });
+    const order = getOrder(state, 1, twoWords)!;
+    state = play(state, {
+      type: "pickup",
+      foodId: order.items[0].foodId === "bun" ? "milk" : "bun",
+    });
+    const before = state.journal;
+    state = deliver(state);
+    expect(state.feedback).toBe("wrong-food");
+    expect(state.journal).toBe(before);
+  });
+
+  it("a lookup on an unrecovered word counts it and leaves it unrecovered", () => {
+    const state = play(ordered(), { type: "lookup", wordId: "soy", now: 7 });
+    expect(state.journal.soy).toEqual({ lookups: 1, lastSeen: 7, recovered: false });
   });
 });

@@ -80,7 +80,7 @@ export type Action =
   | { type: "interact"; table: number }
   | { type: "pickup"; foodId: string }
   | { type: "return-food"; index: number }
-  | { type: "deliver"; table: number }
+  | { type: "deliver"; table: number; now: number }
   | { type: "pay"; table: number; change: number }
   | { type: "lookup"; wordId: string; now: number }
   | { type: "next-day" };

@@ -149,7 +149,7 @@ export default function HospitalOpening({
       case "request": {
         const give = (foodId: string) => {
           dispatch({ type: "pickup", foodId });
-          const next = dispatch({ type: "deliver", table: NEXT_BED });
+          const next = dispatch({ type: "deliver", table: NEXT_BED, now: Date.now() });
           setOffered((previous) => ({ food: foodId, tries: (previous?.tries ?? 0) + 1 }));
           if (next.phase !== "opening") return;
           if (next.opening.feedback === "thanks") play(step.ok.audio);

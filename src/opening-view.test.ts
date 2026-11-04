@@ -10,7 +10,7 @@ const run = (state: OpeningState, ...actions: OpeningAction[]) =>
 const advance: OpeningAction = { type: "advance", now: 1 };
 const give = (foodId: string): OpeningAction[] => [
   { type: "pickup", foodId },
-  { type: "deliver", table: NEXT_BED },
+  { type: "deliver", table: NEXT_BED, now: 1 },
 ];
 
 describe("wardFrame", () => {

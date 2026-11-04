@@ -766,7 +766,7 @@ export default function App() {
                       </button>
                       <button
                         className="primary"
-                        onClick={() => dispatch({ type: "deliver", table })}
+                        onClick={() => dispatch({ type: "deliver", table, now: Date.now() })}
                       >
                         上菜 <span>→</span>
                       </button>

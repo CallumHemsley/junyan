@@ -179,7 +179,7 @@ test("advancing the day invalidates audio even with the table panel still open",
         for (let count = 0; count < item.quantity; count++) hooks.dispatch({ type: "pickup", foodId: item.foodId });
       }
       hooks.dispatch({ type: "move", position: { x: target.x + 1.4, y: target.y } });
-      hooks.dispatch({ type: "deliver", table: target.table });
+      hooks.dispatch({ type: "deliver", table: target.table, now: 1 });
       hooks.dispatch({ type: "pay", table: target.table, change: order.paid - total });
     }
   }, { kitchen: KITCHEN, tables: TABLES });

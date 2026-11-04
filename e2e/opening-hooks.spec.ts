@@ -77,7 +77,7 @@ test("__TEST__.reset() returns the day-1 state after a served table", async ({ p
     { type: "move", position: KITCHEN },
     ...order.items.flatMap(item => Array.from({ length: item.quantity }, (): Action => ({ type: "pickup", foodId: item.foodId }))),
     { type: "move", position: beside },
-    { type: "deliver", table: position.table },
+    { type: "deliver", table: position.table, now: 1 },
     { type: "pay", table: position.table, change: order.paid - orderTotal(order, content) },
   ];
   const state = () => page.evaluate(() => (window as unknown as { __TEST__: { getState(): GameState } }).__TEST__.getState());
