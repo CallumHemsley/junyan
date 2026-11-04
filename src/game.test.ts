@@ -64,6 +64,7 @@ const content: Content = {
     id: "retry",
     tokens: [{ ...word, id: "retry", hanzi: "再试试" }],
   },
+  opening: { cast: [], tray: [], steps: [] },
 };
 
 function act(state: GameState, action: Action): GameState {

@@ -1,7 +1,8 @@
 import { z } from 'zod';
-import type { Character, Content, Food, Line, Order, Word } from '../contracts';
+import type { CastMember, Character, Content, Food, Line, Opening, OpeningStep, Order, Phrase, Word } from '../contracts';
 import data from './content.json';
 import voiceData from './voices.json';
+import { stepPhrasePaths } from './words';
 
 const id = z.string().regex(/^[a-z][a-z0-9-]*$/);
 const voicePreset = z.strictObject({
@@ -28,6 +29,26 @@ const wordSchema: z.ZodType<Word> = z.strictObject({
 const lineSchema: z.ZodType<Line> = z.strictObject({
   id, tokens: z.array(wordSchema).min(1), audio,
 });
+const punctuation = /[，。！？·]/gu;
+const phraseSchema: z.ZodType<Phrase> = z.strictObject({
+  id, tokens: z.array(wordSchema).min(1), audio, text: z.string().regex(/^[\p{Script=Han}，。！？·]+$/u),
+});
+const castSchema: z.ZodType<CastMember> = z.strictObject({
+  id, name: z.string().regex(/^[\p{Script=Han}]+$/u), voices: z.strictObject({ zh: id, en: id.optional() }),
+});
+const staging = { enter: z.array(id).optional(), leave: z.array(id).optional() };
+const recover = z.array(id);
+const openingStepSchema: z.ZodType<OpeningStep> = z.discriminatedUnion('type', [
+  z.strictObject({ type: z.literal('say-en'), who: id, en: z.string(), audio, ...staging }),
+  z.strictObject({ type: z.literal('say'), who: id, line: phraseSchema, recover, ...staging }),
+  z.strictObject({ type: z.literal('request'), who: id, line: phraseSchema, want: id, wrong: phraseSchema, ok: phraseSchema, recover, ...staging }),
+  z.strictObject({ type: z.literal('reply'), who: id, options: z.array(z.strictObject({ word: wordSchema, answer: phraseSchema, recover })), ...staging }),
+  z.strictObject({ type: z.literal('end'), title: phraseSchema }),
+]);
+const openingSchema: z.ZodType<Opening> = z.strictObject({
+  cast: z.array(castSchema).min(1), tray: z.array(id).min(1), steps: z.array(openingStepSchema).min(1),
+});
+
 const foodSchema: z.ZodType<Food> = z.strictObject({
   id, word: wordSchema, price: z.number().int().positive(),
   kind: z.enum(['bun', 'bread', 'egg', 'milk', 'porridge', 'youtiao', 'dumpling']),
@@ -60,6 +81,7 @@ export const contentSchema = z.strictObject({
   characters: z.array(characterSchema).min(1),
   foods: z.array(foodSchema).min(1), orders: z.array(orderSchema).min(1),
   thanks: lineSchema, retry: lineSchema,
+  opening: openingSchema,
 }).superRefine((value, ctx) => {
   const names = new Set(value.characters.map(character => character.name));
   if (names.size !== value.characters.length || new Set(value.characters.map(c => c.id)).size !== value.characters.length) {
@@ -90,7 +112,70 @@ export const contentSchema = z.strictObject({
       ctx.addIssue({ code: 'custom', message: 'Payment does not cover order', path: ['orders', index, 'paid'] });
     }
   });
+  refineOpening(value.opening, foods, ctx);
 });
+
+function refineOpening(opening: Opening, foods: Map<string, Food>, ctx: z.RefinementCtx) {
+  const issue = (message: string, ...path: (string | number)[]) => ctx.addIssue({ code: 'custom', message, path: ['opening', ...path] });
+  const cast = new Map(opening.cast.map(member => [member.id, member]));
+  if (cast.size !== opening.cast.length) issue('Duplicate cast IDs', 'cast');
+  opening.cast.forEach((member, index) => {
+    for (const [slot, language] of [['zh', 'Chinese'], ['en', 'English']] as const) {
+      const voiceId = member.voices[slot];
+      if (voiceId === undefined) continue;
+      if (voices.voices[voiceId]?.language !== language) issue(`Cast ${slot} voice must be a known ${language} preset`, 'cast', index, 'voices', slot);
+    }
+  });
+  opening.tray.forEach((foodId, index) => {
+    if (!foods.has(foodId)) issue('Unknown tray food', 'tray', index);
+  });
+  const firstChinese = opening.steps.findIndex(step => step.type !== 'say-en');
+  opening.steps.forEach((step, index) => {
+    const phrases = stepPhrasePaths(step);
+    for (const [path, phrase] of phrases) {
+      if (phrase.text.replace(punctuation, '') !== phrase.tokens.map(word => word.hanzi).join('')) {
+        issue('Phrase text must equal its tokens plus punctuation', 'steps', index, ...path, 'text');
+      }
+    }
+    if (step.type === 'end') {
+      if (index !== opening.steps.length - 1) issue('The end step must be last', 'steps', index);
+      return;
+    }
+    if (!cast.has(step.who)) issue('Unknown cast member', 'steps', index, 'who');
+    for (const key of ['enter', 'leave'] as const) {
+      step[key]?.forEach((castId, castIndex) => {
+        if (!cast.has(castId)) issue('Unknown cast member', 'steps', index, key, castIndex);
+      });
+    }
+    if (step.type === 'say-en') {
+      if (!cast.get(step.who)?.voices.en) issue('An English step needs a speaker with an English voice', 'steps', index, 'who');
+      if (!/^[\x20-\x7E]{1,180}$/.test(step.en)) issue('English text must be 1 to 180 printable ASCII characters', 'steps', index, 'en');
+      if (firstChinese !== -1 && index > firstChinese) issue('English steps must come before the first Chinese step', 'steps', index);
+      return;
+    }
+    const stepWords = new Set(phrases.flatMap(([, phrase]) => phrase.tokens.map(word => word.id)));
+    const recovers = step.type === 'reply' ? step.options.map((option, optionIndex) => {
+      stepWords.add(option.word.id);
+      return [['options', optionIndex, 'recover'], option.recover] as const;
+    }) : [[['recover'], step.recover] as const];
+    for (const [path, ids] of recovers) {
+      ids.forEach((wordId, wordIndex) => {
+        if (!stepWords.has(wordId)) issue('Recovered word is not in this step', 'steps', index, ...path, wordIndex);
+      });
+    }
+    if (step.type === 'request') {
+      const wanted = foods.get(step.want)?.word.id;
+      if (!opening.tray.includes(step.want)) issue('Wanted food is not on the tray', 'steps', index, 'want');
+      if (!step.line.tokens.some(word => word.id === wanted) || !step.wrong.tokens.some(word => word.id === wanted)) {
+        issue('Wanted food must be named in the request and the correction', 'steps', index, 'want');
+      }
+    }
+    if (step.type === 'reply' && (step.options.length < 2 || new Set(step.options.map(option => option.word.id)).size !== step.options.length)) {
+      issue('A reply needs at least two options with distinct words', 'steps', index, 'options');
+    }
+  });
+  if (opening.steps.filter(step => step.type === 'end').length !== 1) issue('The opening needs exactly one end step', 'steps');
+}
 
 export const content: Content = contentSchema.parse(data);
 

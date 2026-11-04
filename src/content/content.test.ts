@@ -1,14 +1,18 @@
-import { readFileSync, statSync } from 'node:fs';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { content, contentSchema, voices, voicesSchema } from './index';
-import { contentWords } from './words';
+import { contentLines, contentWords, stepPhrases } from './words';
 import { createGame, reduceGame } from '../game';
+import type { Content, OpeningStep } from '../contracts';
 
-const lines = [...content.orders.map(order => order.line), content.thanks, content.retry,
-  content.help.welcome, content.help.lookup, content.help.pace, ...content.help.steps.map(step => step.line),
-  ...content.characters.flatMap(c => [c.greeting, c.thanks, c.retry])];
-const words = [...content.foods.map(food => food.word), ...lines.flatMap(line => line.tokens)];
+const lines = contentLines(content);
+const words = contentWords(content);
+const opening = content.opening;
+const englishSteps = opening.steps.flatMap(step => step.type === 'say-en' ? [step] : []);
+const restaurantWords = contentWords({...content, opening: {...opening, steps: []}});
+const nth = <T extends OpeningStep['type']>(copy: Content, type: T) =>
+  copy.opening.steps.find((step): step is Extract<OpeningStep, {type: T}> => step.type === type)!;
 
 describe('offline Mandarin content', () => {
   it('validates the shared contract and rejects malformed or unsafe content', () => {
@@ -28,10 +32,22 @@ describe('offline Mandarin content', () => {
       (copy: typeof content) => { copy.help.lookup.tokens = []; },
       (copy: typeof content) => { copy.help.steps.reverse(); },
       (copy: typeof content) => { copy.help.pace.audio = 'https://example.com/help.wav'; },
+      (copy: Content) => { copy.opening.steps.splice(5, 0, copy.opening.steps.shift()!); },
+      (copy: Content) => { nth(copy, 'say').who = 'ghost'; },
+      (copy: Content) => { nth(copy, 'say-en').who = 'nurse'; },
+      (copy: Content) => { copy.opening.cast[0].voices.zh = 'ryan-en'; },
+      (copy: Content) => { nth(copy, 'say').line.text = 'OK人醒了。我明天再来看看。'; },
+      (copy: Content) => { nth(copy, 'say').line.text = '人醒了。'; },
+      (copy: Content) => { nth(copy, 'say').line.tokens[2].hanzi = '。'; },
+      (copy: Content) => { nth(copy, 'request').recover = ['bun']; },
+      (copy: Content) => { nth(copy, 'request').want = 'bun'; },
+      (copy: Content) => { copy.opening.steps.splice(-2, 0, copy.opening.steps.pop()!); },
+      (copy: Content) => { copy.opening.steps.push(structuredClone(copy.opening.steps.at(-1)!)); },
+      (copy: Content) => { copy.opening.cast.push(structuredClone(copy.opening.cast[1])); },
     ]) {
       const copy = structuredClone(content);
       modify(copy);
-      expect(contentSchema.safeParse(copy).success).toBe(false);
+      expect(contentSchema.safeParse(copy).success, modify.toString()).toBe(false);
     }
   });
 
@@ -141,6 +157,32 @@ describe('offline Mandarin content', () => {
     expect(content.retry.tokens.map(word => word.hanzi).join('')).toBe('再试试');
   });
 
+  it('keeps English inside the premise steps', () => {
+    const displayed = [
+      ...lines.flatMap(line => ['text' in line ? line.text : '', ...line.tokens.map(word => word.hanzi)]),
+      ...opening.steps.flatMap(step => step.type === 'reply' ? step.options.map(option => option.word.hanzi) : []),
+      ...opening.cast.map(member => member.name),
+    ];
+    expect(displayed.filter(text => /[A-Za-z]/.test(text))).toEqual([]);
+    expect(opening.steps.flatMap((step, index) => step.type === 'say-en' ? [index] : [])).toEqual([0, 1, 2, 3]);
+  });
+
+  it('reuses restaurant words and adds 22', () => {
+    const tokens = new Map(opening.steps.flatMap(stepPhrases).flatMap(phrase => phrase.tokens).map(word => [word.hanzi, word]));
+    const restaurant = new Map(restaurantWords.map(word => [word.id, word]));
+    for (const [hanzi, id] of [['来', 'bring'], ['想', 'think'], ['个', 'piece'], ['呀', 'ha'], ['豆浆', 'milk'], ['鸡蛋', 'egg']]) {
+      expect(tokens.get(hanzi)).toEqual(restaurant.get(id));
+    }
+    expect(opening.tray.map(id => content.foods.find(food => food.id === id)!.word))
+      .toEqual(['milk', 'egg', 'bread'].map(id => restaurant.get(id)));
+    expect(new Set(words.filter(word => !restaurant.has(word.id)).map(word => word.id)).size).toBe(22);
+  });
+
+  it('journals an opening word through the game rules', () => {
+    const state = reduceGame(createGame(content, 42), {type: 'lookup', wordId: 'doctor', now: 123}, content);
+    expect(state.journal.doctor).toMatchObject({lookups: 1, lastSeen: 123});
+  });
+
   it('uses stable word IDs and lookup metadata without English or pinyin in display text', () => {
     const seen = new Map<string, typeof words[number]>();
     expect(new Set(lines.map(line => line.id)).size).toBe(lines.length);
@@ -162,6 +204,15 @@ describe('offline Mandarin content', () => {
     ].map(line => ({entry: line, voiceId: character.voiceId, text: line.tokens.map(word => word.hanzi).join('')})));
     expected.push(...[content.thanks, content.retry, content.help.welcome, content.help.lookup, content.help.pace,
       ...content.help.steps.map(step => step.line)].map(line => ({entry: line, voiceId: voices.wordVoice, text: line.tokens.map(word => word.hanzi).join('')})));
+    const cast = new Map(opening.cast.map(member => [member.id, member.voices]));
+    for (const step of opening.steps) {
+      if (step.type === 'say-en') {
+        expect(records.get(step.audio)?.text).toBe(step.en);
+        expect(records.get(step.audio)?.voice).toEqual(voices.voices[cast.get(step.who)!.en!]);
+      }
+      const voiceId = step.type === 'end' ? voices.wordVoice : cast.get(step.who)!.zh;
+      expected.push(...stepPhrases(step).map(phrase => ({entry: phrase, voiceId, text: phrase.text})));
+    }
     for (const {entry, voiceId, text} of expected) {
       expect(records.get(entry.audio)?.text).toBe(text);
       expect(records.get(entry.audio)?.voice).toEqual(voices.voices[voiceId]);
@@ -170,19 +221,19 @@ describe('offline Mandarin content', () => {
       expect(records.get(word.audio)?.text).toBe(word.hanzi);
       expect(records.get(word.audio)?.voice).toEqual(voices.voices[voices.wordVoice]);
     }
-    for (const path of new Set([...words, ...lines].map(entry => entry.audio))) {
+    for (const path of new Set([...words, ...lines, ...englishSteps].map(entry => entry.audio))) {
       const bytes = readFileSync(new URL(`../../public${path}`, import.meta.url));
       expect(createHash('sha256').update(bytes).digest('hex')).toBe(records.get(path)?.sha256);
     }
   });
 
   it('resolves every full line and word to a real mono PCM16 24kHz WAV', () => {
-    const audio = new Set([...words, ...lines].map(entry => entry.audio));
+    const audio = new Set([...words, ...lines, ...englishSteps].map(entry => entry.audio));
     for (const path of audio) {
       const file = new URL(`../../public${path}`, import.meta.url);
       expect(statSync(file).size, path).toBeGreaterThan(100);
       const bytes = readFileSync(file);
-      expect(path).toMatch(/^\/audio\/(line|word)-[a-f0-9]+\.wav$/);
+      expect(path).toMatch(/^\/audio\/(english|line|word)-[a-f0-9]+\.wav$/);
       expect(bytes.subarray(0, 4).toString(), path).toBe('RIFF');
       expect(bytes.subarray(8, 12).toString(), path).toBe('WAVE');
       expect(bytes.readUInt16LE(20), path).toBe(1);
@@ -190,5 +241,14 @@ describe('offline Mandarin content', () => {
       expect(bytes.readUInt32LE(24), path).toBe(24000);
       expect(bytes.readUInt16LE(34), path).toBe(16);
     }
+  });
+
+  it('ships exactly the WAVs that content references and the manifest records', () => {
+    const manifest = JSON.parse(readFileSync(new URL('../../public/audio/manifest.json', import.meta.url), 'utf8'));
+    const referenced = new Set([...words, ...lines, ...englishSteps].map(entry => entry.audio.slice('/audio/'.length)));
+    const files = readdirSync(new URL('../../public/audio/', import.meta.url)).filter(name => name.endsWith('.wav'));
+    expect(files.length).toBe(manifest.clips.length);
+    expect(new Set(files)).toEqual(referenced);
+    expect(new Set(manifest.clips.map((clip: {filename: string}) => clip.filename))).toEqual(referenced);
   });
 });
