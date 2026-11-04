@@ -811,8 +811,12 @@ h2 {
   *:before,
   *:after {
     animation: none !important;
-    transition: none !important;
     scroll-behavior: auto !important;
+  }
+  *:not(.word),
+  *:before,
+  *:after {
+    transition: none !important;
   }
 }
 
@@ -962,8 +966,4 @@ h2 {
 }
 @media (prefers-reduced-motion: reduce) {
   .tile.given { transform: none; }
-  .word {
-    transition-property: color, filter, opacity !important;
-    transition-duration: var(--duration-arrive) !important;
-  }
 }
