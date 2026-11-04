@@ -254,6 +254,18 @@ describe("saved-state domain validation", () => {
     });
   });
 
+  it("treats a journal word saved without a recovery flag as recovered", () => {
+    const state = createGame(content);
+    const journal: LegacyJournal = {
+      legacy: { lookups: 4, lastSeen: 2 },
+      unrecovered: { lookups: 1, lastSeen: 3, recovered: false },
+    };
+    expect(validateSavedGame({ ...state, journal }, content)?.journal).toEqual({
+      legacy: { lookups: 4, lastSeen: 2, recovered: true },
+      unrecovered: { lookups: 1, lastSeen: 3, recovered: false },
+    });
+  });
+
   it("retains an earlier receipt while another customer rejects the change", () => {
     let state = createGame(content);
     const apply = (action: Action) => { state = reduceGame(state, action, content); };
