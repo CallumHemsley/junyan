@@ -3,6 +3,7 @@ import { content } from "./content";
 import { KITCHEN, TABLES, type Action, type Content, type GameState } from "./contracts";
 import { createGame, getOrder, orderTotal, reduceGame } from "./game";
 import { loadGame, saveGame, validateSavedGame } from "./save";
+import { wordState } from "./recovery";
 
 type LegacyJournal = Record<string, { lookups: number; lastSeen: number; recovered?: unknown }>;
 
@@ -188,7 +189,7 @@ function serve(state: GameState, table: number, apply: (action: Action) => void)
     for (let count = 0; count < item.quantity; count++) apply({ type: "pickup", foodId: item.foodId });
   }
   apply({ type: "move", position: { x: position.x, y: position.y - 1.5 } });
-  apply({ type: "deliver", table });
+  apply({ type: "deliver", table, now: 1 });
   apply({ type: "pay", table, change: order.paid - orderTotal(order, content) + 1 });
   apply({ type: "pay", table, change: order.paid - orderTotal(order, content) });
 }
@@ -225,7 +226,7 @@ describe("saved-state domain validation", () => {
     }
     serve(state, 1, apply);
     apply({ type: "move", position: { x: 9, y: 2.5 } });
-    apply({ type: "deliver", table: 2 });
+    apply({ type: "deliver", table: 2, now: 1 });
     expect(state.activeTable).toBe(2);
     expect(state.receipt?.table).toBe(1);
     apply({ type: "move", position: KITCHEN });
@@ -235,7 +236,7 @@ describe("saved-state domain validation", () => {
     apply({ type: "return-food", index: 0 });
     apply({ type: "move", position: { x: 9, y: 2.5 } });
     apply({ type: "interact", table: 2 });
-    apply({ type: "deliver", table: 2 });
+    apply({ type: "deliver", table: 2, now: 1 });
     expect(state.feedback).toBe("wrong-food");
   });
 
@@ -264,6 +265,17 @@ describe("saved-state domain validation", () => {
       legacy: { lookups: 4, lastSeen: 2, recovered: true },
       unrecovered: { lookups: 1, lastSeen: 3, recovered: false },
     });
+  });
+
+  it("renders every word of a legacy journal plain", () => {
+    const journal: LegacyJournal = {
+      bun: { lookups: 2, lastSeen: 1.5 },
+      thanks: { lookups: 0, lastSeen: 3 },
+    };
+    const loaded = validateSavedGame({ ...createGame(content), journal }, content)!;
+    expect(
+      Object.keys(journal).map((id) => wordState(loaded.journal[id], false)),
+    ).toEqual(["plain", "plain"]);
   });
 
   it("retains an earlier receipt while another customer rejects the change", () => {

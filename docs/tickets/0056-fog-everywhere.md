@@ -1,7 +1,7 @@
 ---
 id: 56
 title: Recover words in the restaurant and fog them everywhere
-status: todo
+status: doing
 priority: high
 type: feature
 created: 2026-11-03
@@ -37,3 +37,16 @@ created: 2026-11-03
   - D4. In the restaurant, a correct deliver recovers every word of the order's line, a lookup alone does not, and the fog applies everywhere. Legacy saves count every journal word as recovered.
   - D5. Three token states (fogged, dot, plain) replace the old "not in the journal" dot. The journal shows recovered and looked-up words.
 - Pointers: `src/game.ts:226-253` `deliver`; `src/App.tsx:370-382` `tokens()` and `:375` the old dot rule; `src/style.css:408-417` `.word`; `:418-427` `.new-word:before`; `:809-817` reduced motion.
+
+## Progress (2026-11-04)
+
+- Owner: Claude Code (Opus 5.5), branch `claude/0056-fog-everywhere`, base `codex/0030-overnight-pstack`, ports 5318 and 5319. Status stays `doing` until Callum reviews the screenshots and video.
+- Built: a correct deliver recovers every token of the order line (`src/game.ts`). `freshWords` and `wordState` live in `src/recovery.ts`. `tokens()` renders the shared `WordToken`. The dot set is App presentation state and is never saved. The 本子 shows 听过 N 次 only after a lookup. The fog rule applies to every `.word`.
+- The `deliver` action now carries `now`, so a word first met in a served order gets an injected `lastSeen`. The opening ignores it.
+- The order line stays on screen from 上菜 into checkout. Before this, checkout replaced the line, so the player never saw it sharpen.
+- The dot set follows `nextDots` in `src/recovery.ts`, a pure rule with unit tests. Each correct serve replaces the set with the words it recovered, even when that is none, and `next-day` clears it. Wrong serves, lookups and pays keep it. So a dot lasts exactly one serve. The first build kept the latest non-empty set, which could leave a dot up for a whole day. The verifier caught it, and the plan's line 899 wording allowed both readings.
+- `deliver` now rejects a non-finite or negative `now`, the same way `lookup` does (verifier finding).
+- Fog values are unchanged from 0055 (`text-muted`, 55% opacity, 1.2px blur). On the review screenshots a fully fogged day 1 line stays readable at phone and desktop widths.
+- Under reduced motion the global reset no longer removes the `.word` transition, so the sharpening is a 120ms fade (`--duration-arrive` under reduced motion). The dot does not scale in.
+- Perf at phone 390x844, 4x CPU, production preview, 20 alternating opens per side: table dialog open-to-painted median 22.9ms at trunk and 21.4ms at head. Style plus layout median 1.94ms at trunk and 1.83ms at head. Sharpening frames over 10 serves: p95 16.7ms, max 33.4ms.
+- Review media: `docs/design/review/0056-review-*.png` and `docs/design/review/0056-review.mp4`.

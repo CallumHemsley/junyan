@@ -253,6 +253,8 @@ export function reduceGame(
       );
       const order = getOrder(state, action.table, content);
       if (
+        !Number.isFinite(action.now) ||
+        action.now < 0 ||
         customer?.phase !== "ordered" ||
         !nearTable(state, action.table) ||
         !order ||
@@ -273,6 +275,11 @@ export function reduceGame(
         feedback: "none",
         receipt: null,
         customers: setPhase(state, action.table, "checkout"),
+        journal: recoverWords(
+          state.journal,
+          order.line.tokens.map((token) => token.id),
+          action.now,
+        ),
       };
     }
     case "pay": {

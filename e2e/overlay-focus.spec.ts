@@ -116,7 +116,7 @@ test("receipt word targets are at least 44px and restore focus", async ({ page }
       for (let count = 0; count < item.quantity; count++) hooks.dispatch({ type: "pickup", foodId: item.foodId });
     }
     hooks.dispatch({ type: "move", position: { x: 4.4, y: 4 } });
-    hooks.dispatch({ type: "deliver", table: 1 });
+    hooks.dispatch({ type: "deliver", table: 1, now: 1 });
     const total = order.items.reduce((sum, item) => sum + hooks.content.foods.find(food => food.id === item.foodId)!.price * item.quantity, 0);
     hooks.dispatch({ type: "pay", table: 1, change: order.paid - total });
   });

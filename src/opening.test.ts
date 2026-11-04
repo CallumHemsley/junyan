@@ -40,7 +40,7 @@ function settle(index: number, replyWord: string): OpeningAction[] {
     case "request":
       return [
         { type: "pickup", foodId: step.want },
-        { type: "deliver", table: NEXT_BED },
+        { type: "deliver", table: NEXT_BED, now: 1 },
         { type: "advance", now: 100 + index },
       ];
     case "reply":
@@ -89,7 +89,7 @@ function completedDay(): Action[] {
     for (const item of order.items)
       for (let count = 0; count < item.quantity; count++) push({ type: "pickup", foodId: item.foodId });
     push({ type: "move", position: { x: position.x, y: position.y - 1.5 } });
-    push({ type: "deliver", table });
+    push({ type: "deliver", table, now: 1 });
     push({ type: "pay", table, change: order.paid - orderTotal(order, content) });
   }
   expect(state.ended).toBe(true);
@@ -145,12 +145,12 @@ describe("opening rules", () => {
     const before = openingAt(milkStep);
     let state = reduceOpening(before, { type: "pickup", foodId: "bread" }, content);
     expect(state.tray).toEqual(["bread"]);
-    state = reduceOpening(state, { type: "deliver", table: NEXT_BED }, content);
+    state = reduceOpening(state, { type: "deliver", table: NEXT_BED, now: 1 }, content);
     expect(state).toEqual({ ...before, feedback: "wrong-food" });
     expect(reduceOpening(state, { type: "advance", now: 1 }, content)).toBe(state);
     state = reduceOpening(state, { type: "pickup", foodId: "milk" }, content);
     expect(state.feedback).toBe("none");
-    state = reduceOpening(state, { type: "deliver", table: NEXT_BED }, content);
+    state = reduceOpening(state, { type: "deliver", table: NEXT_BED, now: 1 }, content);
     expect(state.feedback).toBe("thanks");
     expect(state.tray).toEqual([]);
     expect(state.recovered).toEqual({ ...before.recovered, milk: milkStep });
@@ -200,14 +200,14 @@ describe("opening rules", () => {
     const holding = reduceOpening(request, { type: "pickup", foodId: "milk" }, content);
     expect(reduceOpening(holding, { type: "advance", now: 1 }, content)).toBe(holding);
     expect(reduceOpening(holding, { type: "pickup", foodId: "egg" }, content)).toBe(holding);
-    expect(reduceOpening(holding, { type: "deliver", table: NEXT_BED + 1 }, content)).toBe(holding);
+    expect(reduceOpening(holding, { type: "deliver", table: NEXT_BED + 1, now: 1 }, content)).toBe(holding);
     expect(reduceOpening(holding, { type: "return-food", index: 1 }, content)).toBe(holding);
     expect(reduceOpening(holding, { type: "return-food", index: 0 }, content)).toEqual(request);
     expect(reduceOpening(request, { type: "pickup", foodId: "porridge" }, content)).toBe(request);
     expect(reduceOpening(request, { type: "pickup", foodId: "nope" }, content)).toBe(request);
-    expect(reduceOpening(request, { type: "deliver", table: NEXT_BED }, content)).toBe(request);
+    expect(reduceOpening(request, { type: "deliver", table: NEXT_BED, now: 1 }, content)).toBe(request);
     expect(reduceOpening(request, { type: "reply", option: 0 }, content)).toBe(request);
-    const settled = reduceOpening(holding, { type: "deliver", table: NEXT_BED }, content);
+    const settled = reduceOpening(holding, { type: "deliver", table: NEXT_BED, now: 1 }, content);
     expect(reduceOpening(settled, { type: "pickup", foodId: "egg" }, content)).toBe(settled);
 
     const reply = openingAt(replyStep);
@@ -215,7 +215,7 @@ describe("opening rules", () => {
 
     const start = createOpening(content, 42);
     expect(reduceOpening(start, { type: "pickup", foodId: "milk" }, content)).toBe(start);
-    expect(reduceOpening(start, { type: "deliver", table: NEXT_BED }, content)).toBe(start);
+    expect(reduceOpening(start, { type: "deliver", table: NEXT_BED, now: 1 }, content)).toBe(start);
     expect(reduceOpening(start, { type: "reply", option: 0 }, content)).toBe(start);
     for (const now of [NaN, -1, Infinity])
       expect(reduceOpening(start, { type: "advance", now }, content)).toBe(start);

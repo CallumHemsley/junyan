@@ -41,7 +41,7 @@ The neutrals lean toward rice paper and dough. Nothing here is a cool grey excep
 
 `accent` (#b5462b) is the vermilion of a shop chop, and **it only ever touches words.** It has two jobs:
 
-1. `word-marker`: the dot over a new word, 馒头 in 王奶奶's 老板早。一碗粥，一个馒头。
+1. `word-marker`: the dot over a recovered word, 馒头 in 王奶奶's 老板早。一碗粥，一个馒头。
 2. `chop`: the 多谢 stamp that confirms the order on the receipt.
 
 `accent-ink` sets vermilion characters under 24px, such as a new word's headword in the 本子. Vermilion is never a button, a tick, a progress bar or a "correct". The next action is always neutral: 继续 is a `text-primary` circle.
@@ -71,7 +71,7 @@ A 4px grid, `space-4` to `space-48`. The gutter is `space-24` (screen edge to pa
 
 ### Motion
 
-Only the steam loops (a 6s rise, staggered). Everything else moves once, in answer to the player, on one easing, `cubic-bezier(0.22, 1, 0.36, 1)`: **120ms** for a press, **200ms** for an item sliding to the counter or a coin landing, **320ms** for the receipt arriving and the chop pressing down (1.08 to 1, no bounce). Under `prefers-reduced-motion: reduce` the steam holds still at about 50% opacity and transitions become fades of 120ms or less.
+Only the steam loops (a 6s rise, staggered). Everything else moves once, in answer to the player, on one easing, `cubic-bezier(0.22, 1, 0.36, 1)`: **120ms** for a press, **200ms** for an item sliding to the counter or a coin landing, **320ms** for the receipt arriving, the chop pressing down (1.08 to 1, no bounce) and a fogged word sharpening (a `--duration-arrive` fade). Under `prefers-reduced-motion: reduce` the steam holds still at about 50% opacity and transitions become fades of 120ms or less.
 
 ## Iconography
 
@@ -83,7 +83,7 @@ Icons are Lucide-style line icons: a 24 viewBox drawn at **20px**, stroke **1.75
 - Something picked up is `surface-raised` + `radius-tile`, no border.
 - A slot to fill is transparent with a dashed `slot-edge`, labelled in `text-secondary` (找零).
 - A tile whose item is on the counter goes transparent with a dashed `hairline-strong` edge, art at 35%, its word in `text-secondary`.
-- Word tokens are real buttons with a 2px `hairline` underline. A newly recovered word adds the `word-marker` dot and nothing else (no colour, no bold, no gloss). An unrecovered word wears the fog style, which ticket 0056 adds to the tokens.
+- Word tokens are real buttons with a 2px `hairline` underline, in one of three looks. An unrecovered word is fogged: `text-muted` at 55% opacity with a 1.2px blur. It stays a 44px button that opens its card, and it drops the blur under keyboard focus. A word recovered by the latest correct serve adds the `word-marker` dot and nothing else (no colour, no bold, no gloss). The next correct serve replaces the dots, even when it recovers nothing new, and a new day clears them. The dot is never saved, so a reload shows the word plain. Any other recovered word is plain. The word card headword, the kitchen tile labels, the receipt and the 本子 are never fogged.
 - One dark filled control per screen: the 继续 circle. Replay sits beside it in `surface-control`.
 - `text-muted` never sets text under 24px.
 - Touch targets are 44px minimum; a 40px phone circle gets a 44px hit area.
@@ -110,6 +110,6 @@ Set `font-family: var(--font-sans)` on `body` and `var(--font-serif)` only on th
 1. **The engine renders all Chinese text.** No characters inside images, sprites or canvas bitmaps. Dialogue, the board, item names and the receipt are live DOM text built from word data, so every word can be a token.
 2. **The accent only touches words.** `accent`, `accent-ink`, `word-marker` and `chop` are used for the new-word dot, the 多谢 chop and vermilion headwords. They never colour a button, a state, a tick, a border on a control, or feedback of any kind. Never add a success green.
 3. **Touch targets are at least 44×44px.** That covers tokens, tiles, money, the replay and 继续 buttons, and any chip that becomes a button. Pad the hit area if the visible shape is smaller.
-4. **Respect reduced motion.** Under `prefers-reduced-motion: reduce`, stop the steam loop (static at about 50% opacity), drop translate and scale, and keep only fades of 120ms or less. Use only `--ease`, and only the three durations.
+4. **Respect reduced motion.** Under `prefers-reduced-motion: reduce`, stop the steam loop (static at about 50% opacity), drop translate and scale, and keep only fades of 120ms or less. A fogged word sharpens with a 120ms fade, and the dot appears without scaling. Use only `--ease`, and only the three durations.
 5. **Every icon-only control has a Chinese `aria-label`**, and decorative SVG is `aria-hidden="true"`.
 6. **No English, pinyin or emoji in the game UI.** The opening's English premise lines are story text, not UI, and decision 0004 bounds them. Pinyin appears only in the tap-to-reveal word card.

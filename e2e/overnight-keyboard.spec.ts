@@ -75,7 +75,7 @@ test("day summary blocks movement and interaction shortcuts", async ({ page }) =
       }
     }
     await dispatch(page, { type: "move", position });
-    await dispatch(page, { type: "deliver", table: customer.table });
+    await dispatch(page, { type: "deliver", table: customer.table, now: 1 });
     const total = order.items.reduce((sum, item) => sum + item.quantity * content.foods.find((food) => food.id === item.foodId)!.price, 0);
     await dispatch(page, { type: "pay", table: customer.table, change: order.paid - total });
   }
