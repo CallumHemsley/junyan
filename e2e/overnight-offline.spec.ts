@@ -4,6 +4,7 @@ import { createHash } from "node:crypto";
 import { readdirSync, readFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { silentWav } from "./audio-fixtures";
+import manifest from "../public/audio/manifest.json" with { type: "json" };
 
 const test = base.extend({
   launchOptions: async ({ browserName }, use) => {
@@ -48,7 +49,7 @@ test("fresh production install completes before offline reload and preserves eve
     await page.setViewportSize(viewport);
     await page.screenshot({ path: info.outputPath(`offline-${viewport.width}.png`), fullPage: true });
   }
-  expect(audioFiles).toHaveLength(85);
+  expect(audioFiles).toEqual(manifest.clips.map(clip => clip.filename).sort());
   for (const name of audioFiles) {
     const received = await page.evaluate(async name => {
       const response = await fetch(`./audio/${name}`, { cache: "no-store" });

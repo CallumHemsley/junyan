@@ -194,7 +194,7 @@ test("advancing the day invalidates audio even with the table panel still open",
 test("raw repository WAVs contain PCM samples and silent fixtures preserve headers and duration", async () => {
   const directory = new URL("../public/audio/", import.meta.url);
   const files = (await readdir(directory)).filter(name => name.endsWith(".wav"));
-  expect(files).toHaveLength(85);
+  expect(files).toHaveLength(manifest.clips.length);
   expect(files.sort()).toEqual(manifest.clips.map(clip => clip.filename).sort());
   const referenced = new Set<string>();
   const collectAudio = (value: unknown) => {
