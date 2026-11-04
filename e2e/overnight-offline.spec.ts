@@ -1,8 +1,10 @@
 import { test as base, expect } from "@playwright/test";
+import { seedDayOne } from "./opening";
 import { createHash } from "node:crypto";
 import { readdirSync, readFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { silentWav } from "./audio-fixtures";
+import manifest from "../public/audio/manifest.json" with { type: "json" };
 
 const test = base.extend({
   launchOptions: async ({ browserName }, use) => {
@@ -17,7 +19,8 @@ test.use({
 const audioFiles = readdirSync("public/audio").filter(name => name.endsWith(".wav")).sort();
 const hash = (bytes: Buffer) => createHash("sha256").update(bytes).digest("hex");
 
-test("fresh production install completes before offline reload and preserves every audio byte", async ({ page, context, browserName }, info) => {
+test("fresh production install completes before offline reload and preserves every audio byte", async ({ page, context, browserName, baseURL }, info) => {
+  await seedDayOne(page, baseURL!);
   const errors: string[] = [];
   const requestedPaths: string[] = [];
   page.on("pageerror", error => errors.push(error.message));
@@ -46,7 +49,7 @@ test("fresh production install completes before offline reload and preserves eve
     await page.setViewportSize(viewport);
     await page.screenshot({ path: info.outputPath(`offline-${viewport.width}.png`), fullPage: true });
   }
-  expect(audioFiles).toHaveLength(85);
+  expect(audioFiles).toEqual(manifest.clips.map(clip => clip.filename).sort());
   for (const name of audioFiles) {
     const received = await page.evaluate(async name => {
       const response = await fetch(`./audio/${name}`, { cache: "no-store" });
@@ -77,9 +80,10 @@ test("fresh production install completes before offline reload and preserves eve
   });
 });
 
-test("a real rebuilt release replaces the old cache and remains usable offline", async ({ page, context }, info) => {
+test("a real rebuilt release replaces the old cache and remains usable offline", async ({ page, context, baseURL }, info) => {
   test.skip(process.env.OFFLINE_RELEASE_REBUILD !== "1", "Opt in: rebuilds ignored dist while using an exclusive local production preview.");
   expect(process.env.AUDIO_PREVIEW_URL).toBe("http://127.0.0.1:5217/junyan/");
+  await seedDayOne(page, baseURL!);
   const errors: string[] = [];
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });

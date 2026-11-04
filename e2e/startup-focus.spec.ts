@@ -1,4 +1,5 @@
 import {test,expect,type Page,type Locator} from '@playwright/test';
+import {seedDayOne} from './opening';
 import {silentResponse} from './audio-fixtures';
 const url=()=>`${process.env.JUNYAN_PREVIEW_URL}?seed=42`;
 const customer=(page:Page)=>page.locator('.customer-row').first();
@@ -9,7 +10,7 @@ async function activate(page:Page,control:Locator){
   }
   await expect(control).toBeFocused();await page.keyboard.press('Enter');
 }
-test.beforeEach(async({page})=>{await page.route('**/*.wav',route=>silentResponse(route));});
+test.beforeEach(async({page})=>{await seedDayOne(page,process.env.JUNYAN_PREVIEW_URL!);await page.route('**/*.wav',route=>silentResponse(route));});
 test('a real queued database open cannot strand a valid recovery checkpoint',async({page,context},info)=>{
   await page.goto(url());await page.getByRole('button',{name:'开门迎客'}).click();
   await customer(page).click();await expect(page.getByRole('dialog',{name:'1桌点餐'})).toBeVisible();

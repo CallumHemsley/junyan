@@ -1,4 +1,5 @@
 import { test, expect, type Locator, type Page } from "@playwright/test";
+import { seedDayOne, withSkip } from "./opening";
 import { KITCHEN, TABLES, type Action, type Content, type GameState } from "../src/contracts";
 
 test.use({ launchOptions: { args: ["--mute-audio"] } });
@@ -37,7 +38,7 @@ test.beforeEach(async ({ page }) => {
   page.on("console", (message) => {
     if (message.type() === "error") errors.push(message.text());
   });
-  await page.goto("/?test=1&seed=42");
+  await page.goto(withSkip("/?test=1&seed=42"));
   await activate(page, page.getByRole("button", { name: "开门迎客" }));
 });
 
@@ -171,6 +172,7 @@ test("keyboard journey keeps named controls and focus across a full day", async 
 
 test("production keyboard interruption does not reopen a cancelled table", async ({ page }) => {
   const preview = process.env.JUNYAN_PREVIEW_URL || "http://127.0.0.1:5177/junyan/";
+  await seedDayOne(page, preview);
   await page.goto(`${preview}?test=1&seed=42`);
   await activate(page, page.getByRole("button", { name: "开门迎客" }));
   await activate(page, page.getByRole("group", { name: "今日客人", exact: true })
@@ -195,7 +197,7 @@ for (const abortWrites of [false, true]) {
         };
       });
     }
-    await page.goto("/?seed=42");
+    await page.goto(withSkip("/?seed=42"));
     await page.getByRole("button", { name: "开门迎客" }).click();
     await page.getByRole("group", { name: "今日客人", exact: true })
       .getByRole("button", { name: /^1桌 / }).click();
@@ -220,7 +222,7 @@ for (const abortWrites of [false, true]) {
 
 for (const invalid of ["{", "{}"] as const) {
   test(`invalid recovery checkpoint falls back to IndexedDB: ${invalid}`, async ({ page }) => {
-    await page.goto("/?seed=42");
+    await page.goto(withSkip("/?seed=42"));
     await page.getByRole("button", { name: "开门迎客" }).click();
     await page.getByRole("group", { name: "今日客人", exact: true })
       .getByRole("button", { name: /^1桌 / }).click();
@@ -236,7 +238,7 @@ for (const invalid of ["{", "{}"] as const) {
 }
 
 test("a failed checkpoint write cannot override a later successful IndexedDB save", async ({ page }) => {
-  await page.goto("/?seed=42");
+  await page.goto(withSkip("/?seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   await page.getByRole("group", { name: "今日客人", exact: true })
     .getByRole("button", { name: /^1桌 / }).click();

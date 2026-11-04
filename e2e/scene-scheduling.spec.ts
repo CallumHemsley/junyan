@@ -1,4 +1,5 @@
 import {test,expect,type Page} from '@playwright/test';
+import {withSkip} from './opening';
 
 test.use({launchOptions:{args:['--mute-audio']}});
 const draws=(page:Page)=>page.evaluate(()=>(window as unknown as {sceneDraws:number}).sceneDraws);
@@ -21,7 +22,7 @@ test.beforeEach(async({page})=>{
 test('reduced motion draws on input, then stays idle and restores after scrolling',async({page},info)=>{
   await page.emulateMedia({reducedMotion:'reduce'});
   const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
-  await page.goto('/?test=1&seed=42');
+  await page.goto(withSkip('/?test=1&seed=42'));
   await page.getByRole('button',{name:'开门迎客'}).click();
   await expect.poll(()=>draws(page)).toBeGreaterThan(0);await settle(page);
   const before=await draws(page);
@@ -46,7 +47,7 @@ test('reduced motion draws on input, then stays idle and restores after scrollin
 
 test('animated scene suspends offscreen and resumes on visibility and preference changes',async({page})=>{
   await page.emulateMedia({reducedMotion:'no-preference'});
-  await page.goto('/?test=1&seed=42');await page.getByRole('button',{name:'开门迎客'}).click();
+  await page.goto(withSkip('/?test=1&seed=42'));await page.getByRole('button',{name:'开门迎客'}).click();
   await expect.poll(()=>draws(page)).toBeGreaterThan(3);
   await scrollAway(page);const paused=await draws(page);
   await page.waitForTimeout(350);expect(await draws(page)).toBe(paused);

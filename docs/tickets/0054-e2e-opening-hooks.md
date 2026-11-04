@@ -1,7 +1,7 @@
 ---
 id: 54
 title: Prepare the test suite to start past the opening
-status: todo
+status: done
 priority: high
 type: chore
 created: 2026-11-03
@@ -13,13 +13,13 @@ Once [[decisions/0004-hospital-opening]] ships, every new player sees the openin
 
 ## Done when
 
-- [ ] The app reads an `opening=skip` URL parameter, gated on `import.meta.env.DEV` only (not on `test=1`). Until 0055 lands, the parameter does nothing.
-- [ ] A new `e2e/opening.ts` exports a helper that writes a seeded day-1 save before the page loads, copied from `installSave` in `e2e/save.spec.ts:4,46-65`.
-- [ ] Every spec that runs against the production preview uses that helper: the production branch of `overlay-focus`, all 8 of `startup-focus`, `offline`, `overnight-offline`, `overnight-keyboard` at `:174`, `:198`, `:223` and `:239` (which assert that `__TEST__` is undefined), and `learning-help` at `:106`.
-- [ ] Every dev spec passes `opening=skip`.
-- [ ] `e2e/audio.spec.ts:196` and `e2e/overnight-offline.spec.ts:51` count WAVs from `public/audio/manifest.json` instead of the literal 85.
-- [ ] `src/scene/record-demo.mjs:22` and `src/scene/renderer.visual.pw.ts:16` pass `opening=skip`.
-- [ ] Unit tests: none needed beyond the existing suite. `pnpm test` and `pnpm build` are green.
+- [x] The app reads an `opening=skip` URL parameter, gated on `import.meta.env.DEV` only (not on `test=1`). Until 0055 lands, the parameter does nothing.
+- [x] A new `e2e/opening.ts` exports a helper that writes a seeded day-1 save before the page loads, copied from `installSave` in `e2e/save.spec.ts:4,46-65`.
+- [x] Every spec that runs against the production preview uses that helper: the production branch of `overlay-focus`, all 8 of `startup-focus`, `offline`, `overnight-offline`, `overnight-keyboard` at `:174`, `:198`, `:223` and `:239` (which assert that `__TEST__` is undefined), and `learning-help` at `:106`.
+- [x] Every dev spec passes `opening=skip`.
+- [x] `e2e/audio.spec.ts:196` and `e2e/overnight-offline.spec.ts:51` count WAVs from `public/audio/manifest.json` instead of the literal 85.
+- [x] `src/scene/record-demo.mjs:22` and `src/scene/renderer.visual.pw.ts:16` pass `opening=skip`.
+- [x] Unit tests: none needed beyond the existing suite. `pnpm test` and `pnpm build` are green.
 - [ ] Live check: run `pnpm test:e2e` (123 tests) and the audio (61), save (14), recovery (16) and visual (8) configs on this ticket's ports. All pass with the same counts as before.
 - [ ] Perf budget: the main e2e suite's wall time stays within 10% of the baseline run on this branch.
 
@@ -34,3 +34,23 @@ Once [[decisions/0004-hospital-opening]] ships, every new player sees the openin
 - Product default this ticket implements, which Callum may overrule:
   - D7. `opening=skip` is gated on `import.meta.env.DEV` only and lands on today's first screen. Production specs use the shared `e2e/opening.ts` seeded-save helper. (The `__TEST__.reset()` part of D7 lands in 0055.)
 - Pointers: `src/App.tsx:20-22` test mode; `src/App.tsx:346-363` `window.__TEST__`; `playwright.config.ts:11-12` port variables; main journey `e2e/waiter.spec.ts:69-112`.
+
+### Progress (2026-11-04)
+
+- Owner: Claude Code, PR owner in the opening autopilot stack. Branch `claude/0054-e2e-opening-hooks` on `claude/0047-opening-rules-docs`. Ports `5314`/`5315`. `playwright.save.config.ts` still hard-codes `5184`.
+- `pnpm test:e2e`: 127 passed, 4 skipped. The parent link has 119 passed and 4 skipped. The 8 added tests are the four `e2e/opening-hooks.spec.ts` cases on desktop and phone.
+- Audio config 61 passed, save config 14 passed, recovery config 16 passed. Vitest 110 passed. `pnpm build` is green.
+- Not run here: the visual config, because `src/scene/playwright.visual.config.ts` holds fixed ports `5182`/`5186` that another agent may use, and the perf medians. One head run of `pnpm test:e2e` took 627 s wall time. No parent run on this machine gives a baseline, so the perf box stays open for the root's verify lanes.
+
+### Rebase onto 0053 (2026-11-04)
+
+- Rebased onto `claude/0053-ward-scene` (3fceb9e), which carries 0047, 0048, 0049 and 0052. One conflict, in `e2e/save.spec.ts`: 0048's legacy-save cases now load through `seedDayOne` and `withSkip`, and the local `installSave` stays deleted. `seedDayOne` takes any `object`, so it can write a legacy save that lacks `recovered`. The legacy checkpoint case still starts with no IndexedDB save. `src/scene/record-ward.mjs` from 0053 now loads with `opening=skip` as well.
+- Vitest 125 passed. `pnpm build` is green. `pnpm test:e2e`: 131 passed, 4 skipped (the 127 from before plus 0048's two legacy cases on desktop and phone). Save config 18 passed.
+
+### What was learned
+
+- `seedDayOne` opens `audio/manifest.json` on the target origin, so it writes IndexedDB without running app code. WebKit renders that JSON page and accepts the write, so the recovery config's WebKit projects pass.
+- A seeded `createGame(content, 42)` save boots the same as fresh storage today, because the app always opens on the help panel. The production specs notice the seed only once 0055 shows the opening to players with no save.
+- `overnight-keyboard` at `:198`, `:223` and `:239` load the dev server, so they take `withSkip` per the plan, not `seedDayOne`.
+- `src/scene/renderer.visual.pw.ts` and `src/scene/record-demo.mjs` use the literal `opening=skip`, not `withSkip`. `tsconfig.json` type-checks `src`, and an import from `e2e/` would pull the Playwright helpers into the app's type check.
+- The preview case in `e2e/opening-hooks.spec.ts` compares the accessibility tree of `?opening=skip` with a plain load in a fresh context, not a fixed screen. It stays valid when 0055 changes what a fresh player sees.

@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { seedDayOne } from "./opening";
 import content from "../src/content/content.json" with { type: "json" };
 
 test.use({ baseURL: process.env.AUDIO_PREVIEW_URL || "http://127.0.0.1:5177/junyan/" });
@@ -6,7 +7,9 @@ test.use({ baseURL: process.env.AUDIO_PREVIEW_URL || "http://127.0.0.1:5177/juny
 test("production keeps the restaurant and Mandarin audio available offline", async ({
   page,
   context,
+  baseURL,
 }) => {
+  await seedDayOne(page, baseURL!);
   const errors: string[] = [];
   const audioRequests: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));

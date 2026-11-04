@@ -19,7 +19,7 @@ page.on('pageerror',error=>errors.push(error.message));
 page.on('console',message=>{if(message.type()==='error') errors.push(message.text());});
 let video;
 try {
-  await page.goto(`${url}/?test=1&seed=42`);
+  await page.goto(`${url}/?test=1&seed=42&opening=skip`);
   await page.getByRole('button',{name:'开门迎客'}).click();
   await page.locator('canvas').waitFor({state:'visible'});
   await page.evaluate(()=>{

@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { seedDayOne, withSkip } from "./opening";
 import content from "../src/content/content.json" with { type: "json" };
 
 test.use({ launchOptions: { args: ["--mute-audio"] } });
@@ -7,7 +8,7 @@ test("help narrates authored tokens, shows the sequence and journals lookups wit
   const errors: string[] = [];
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
-  await page.goto("/?test=1&seed=42");
+  await page.goto(withSkip("/?test=1&seed=42"));
   const help = page.getByRole("dialog", { name: "怎么玩" });
   await expect(help).toBeVisible();
   await expect(help.getByRole("button", { name: "怎么玩", exact: true })).toHaveAttribute("aria-expanded", "false");
@@ -49,7 +50,7 @@ test("help narrates authored tokens, shows the sequence and journals lookups wit
 
 test("small-phone help stays within the viewport and food aids retain pictures without glosses", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 568 });
-  await page.goto("/?test=1&seed=42");
+  await page.goto(withSkip("/?test=1&seed=42"));
   const help = page.getByRole("dialog", { name: "怎么玩" });
   const box = await help.boundingBox();
   expect(box).not.toBeNull();
@@ -76,7 +77,7 @@ test("small-phone help stays within the viewport and food aids retain pictures w
 });
 
 test("help-only vocabulary survives a real saved-game reload", async ({ page }) => {
-  await page.goto("/");
+  await page.goto(withSkip("/"));
   const help = page.getByRole("dialog", { name: "怎么玩" });
   await help.getByRole("button", { name: "怎么玩", exact: true }).click();
   await help.getByRole("button", { name: "厨房", exact: true }).click();
@@ -103,6 +104,7 @@ test("help-only vocabulary survives a real saved-game reload", async ({ page }) 
 
 test("production precaches every help line and word for offline replay", async ({ page, context }) => {
   const preview = process.env.JUNYAN_HELP_PREVIEW_URL ?? "http://127.0.0.1:5177/junyan/";
+  await seedDayOne(page, preview);
   await page.goto(preview);
   await page.waitForFunction(() => Boolean(navigator.serviceWorker.controller));
   await context.setOffline(true);
