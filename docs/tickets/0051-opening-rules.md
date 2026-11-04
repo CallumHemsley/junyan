@@ -1,7 +1,7 @@
 ---
 id: 51
 title: Write the opening's pure rules and the hand-off to day 1
-status: todo
+status: doing
 priority: high
 type: feature
 created: 2026-11-03
@@ -35,3 +35,4 @@ created: 2026-11-03
 - Product default this ticket implements, which Callum may overrule:
   - D4 (opening part). In the opening, words recover from each step's `recover` list, and a lookup alone recovers nothing.
 - Pointers: `src/contracts.ts:48-74` GameState, Customer and Action; `src/game.ts:133` `reduceGame`; `src/game.ts:66-100` seeded RNG in `startDay`; `src/game.ts:197-211` `pickup` and `src/game.ts:226-253` `deliver` for the action shapes; `spikes/hospital-opening/app.js` for the prototype state machine.
+- Progress (2026-11-04): owner Claude Code (Opus 5.5), branch `claude/0051-opening-rules` stacked on `claude/0050-opening-content`, worktree `.claude/worktrees/agent-a1616e29af83a9cbb`, ports 5308 and 5309. Baseline `pnpm test` at the 0050 head: 7 files, 129 tests.
