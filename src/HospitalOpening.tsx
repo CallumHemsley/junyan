@@ -72,6 +72,9 @@ export default function HospitalOpening({
   useEffect(() => {
     talk.current?.querySelector<HTMLElement>("[data-step-focus]")?.focus();
   }, [woke, opening.step, settled]);
+  useEffect(() => {
+    if (offered) talk.current?.querySelector('[role="status"]')?.scrollIntoView({ block: "nearest" });
+  }, [offered]);
 
   const wake = () => {
     const clip = entryClip(step);
@@ -110,21 +113,22 @@ export default function HospitalOpening({
       <Speaker />
     </button>
   );
-  const controls = (clip: string, next = true) => (
-    <div className="opening-controls">
+  const heading = (speaker: string, clip: string) => (
+    <div className="opening-heading">
+      <span className="speaker">{who(speaker)}</span>
       {replay(clip)}
-      {next && (
-        <button className="continue-button" aria-label="继续" data-step-focus onClick={advance}>
-          <Arrow />
-        </button>
-      )}
     </div>
+  );
+  const proceed = (
+    <button className="continue-button" aria-label="继续" data-step-focus onClick={advance}>
+      <Arrow />
+    </button>
   );
   const speech = (speaker: string, line: Line, next = true) => (
     <div className="opening-line">
-      <span className="speaker">{who(speaker)}</span>
+      {heading(speaker, line.audio)}
       {tokens(line)}
-      {controls(line.audio, next)}
+      {next && <div className="opening-controls">{proceed}</div>}
     </div>
   );
   const foods = content.opening.tray.map((id) => content.foods.find((food) => food.id === id)!);
@@ -138,9 +142,9 @@ export default function HospitalOpening({
       case "say-en":
         return (
           <div className="paper-card opening-line">
-            <span className="speaker">{who(step.who)}</span>
+            {heading(step.who, step.audio)}
             <p className="english" lang="en">“{step.en}”</p>
-            {controls(step.audio)}
+            <div className="opening-controls">{proceed}</div>
           </div>
         );
       case "say":
@@ -240,7 +244,10 @@ export default function HospitalOpening({
                 <WordToken key={word.id} word={word} look={tokenLook(opening, word.id)} onLookup={lookup} />
               ))}
             </div>
-            {controls(step.title.audio)}
+            <div className="opening-controls">
+              {replay(step.title.audio)}
+              {proceed}
+            </div>
           </div>
         );
     }

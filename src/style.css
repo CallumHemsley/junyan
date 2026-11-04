@@ -902,6 +902,7 @@ h2 {
 .opening .word.fogged:focus-visible { filter: none; }
 .opening .new-word:before { animation: dot-in var(--duration-arrive) var(--ease); }
 @keyframes dot-in { from { transform: scale(0); } }
+.opening-heading { display: flex; align-items: center; justify-content: space-between; gap: var(--space-12); }
 .opening-controls { display: flex; justify-content: flex-end; gap: var(--space-12); }
 .opening-controls .round-button { width: 48px; height: 48px; }
 .continue-button {
