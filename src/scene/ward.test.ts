@@ -1,6 +1,6 @@
 import {describe, expect, it} from 'vitest';
 import {readFileSync} from 'node:fs';
-import {characterFigure, COLORS, createRenderer, WIDTH, type SceneApi, type ScenePoint} from './renderer.js';
+import {characterFigure, COLORS, createRenderer, HEIGHT, projectPosition, WIDTH, type SceneApi, type ScenePoint} from './renderer.js';
 import {BEDS, LYING_BLANKET, lyingTransform, WARD_CAST, wardMotionBounds, wardScene, type WardFrame} from './ward.js';
 import {WARD_STEPS} from './ward-steps.js';
 import {captureCanvas, sha256} from './scene-frame-hashes.mjs';
@@ -87,6 +87,38 @@ describe('ward scene', () => {
         expect(offset.reduce((sum, value, axis) => sum+value*camera[axis], 0)).toBeGreaterThan(0);
       });
     }
+  });
+
+  it('shows at least two eye pixels on every face in every step', () => {
+    const headsOf = (frame:WardFrame) => {
+      const heads:ScenePoint[] = [];
+      const api = new Proxy({}, {get:(_, key) => key==='dynamicAdd'
+        ? (start:ScenePoint,end:ScenePoint,radius:number,_r:number,colorOf:(z:number)=>number[]) => {
+          if (start.every((value,axis) => value===end[axis]) && colorOf(start[2])===COLORS.skin && radius>.3) heads.push(start);
+        }
+        : key==='project' ? () => ({sx:-1,sy:-1,d:0}) : key==='pix' ? new Uint32Array(0) : () => {}}) as unknown as SceneApi;
+      wardScene.draw(api, frame, 0);
+      return heads;
+    };
+    const ink = COLORS.ink;
+    COLORS.ink = [255,0,255];
+    try {
+      const render = harness();
+      for (const [step, frame] of WARD_STEPS) {
+        const pixels = render(frame, 0);
+        const names = ['elder','player',...frame.present];
+        headsOf(frame).forEach(([x,y,z], index) => {
+          const head = projectPosition({x:x+6,y:y+5}, z);
+          const cx = Math.round(head.left/100*WIDTH), cy = Math.round(head.top/100*HEIGHT);
+          let eyes = 0;
+          for (let py=cy-6;py<=cy+5;py++) for (let px=cx-7;px<=cx+7;px++) {
+            const at = (py*WIDTH+px)*4, [r,g,b] = [pixels[at],pixels[at+1],pixels[at+2]];
+            if ((r+b)/2-g>70 && Math.abs(r-b)<90) eyes++;
+          }
+          expect(eyes, `${step} ${names[index]}`).toBeGreaterThanOrEqual(2);
+        });
+      }
+    } finally { COLORS.ink = ink; }
   });
 
   it('draws no vermilion', () => {

@@ -26,7 +26,7 @@ export function lyingTransform(bed) {
 }
 
 export const FIGURES = {
-  doctor: {x:1.0, y:-3.8, yaw:0, pose:{stance:.05, armR:.2}},
+  doctor: {x:1.0, y:-3.8, yaw:Math.PI/6, pose:{stance:.05, armR:.2}},
   nurse: {x:-4.6, y:-.6, yaw:Math.PI/4, pose:{stance:.05, armL:.25}},
   aunt: {x:.25, y:-2.85, yaw:0, pose:{crouch:1, scale:.88, armR:.6, armL:.6}},
   elder: {x:-3, y:-4.55, yaw:Math.PI/4},
