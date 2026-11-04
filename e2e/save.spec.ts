@@ -103,6 +103,29 @@ test("legacy IndexedDB journal loads as recovered and keeps counting lookups", a
   await expect.poll(async () => (await stored(page))?.journal.bun).toMatchObject({ lookups: 3, recovered: true });
 });
 
+test("legacy journal words render plain in the order line and the rest stay fogged", async ({ page, baseURL }) => {
+  const state = createGame(content);
+  const line = getOrder(state, 1, content)!.line.tokens;
+  const known = line.slice(0, Math.ceil(line.length / 2)).map((word) => word.id);
+  const journal = Object.fromEntries(known.map((id) => [id, { lookups: 1, lastSeen: 1.5 }]));
+  await seedDayOne(page, baseURL!, { ...state, journal });
+  await page.goto(withSkip("/?seed=42"));
+  await page.getByRole("button", { name: "开门迎客" }).click();
+  await page.getByTestId("table-1").click();
+  const words = page.locator(".paper-panel > .spoken .word");
+  await expect(words).toHaveCount(line.length);
+  const looks = await words.evaluateAll((buttons) => buttons.map((button) => button.className));
+  line.forEach((word, index) => {
+    if (known.includes(word.id)) expect(looks[index]).toBe("word");
+    else expect(looks[index]).toContain("fogged");
+  });
+  await expect(page.locator(".save-note")).toHaveCount(0);
+  await page.getByRole("button", { name: "关闭", exact: true }).click();
+  await page.getByRole("button", { name: /本子/ }).click();
+  await expect(page.locator(".journal-list button")).toHaveCount(new Set(known).size);
+  await expect(page.locator(".journal-list .fogged")).toHaveCount(0);
+});
+
 test("legacy checkpoint is rewritten and cleared after autosave", async ({ page }) => {
   await page.goto(withSkip("/?test=1"));
   await page.evaluate((state) => localStorage.setItem("junyan-waiter-pending-v1", JSON.stringify(state)), legacyDay());

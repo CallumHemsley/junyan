@@ -16,6 +16,8 @@ import { loadGame, saveGame, validateSavedGame } from "./save";
 import { createSession, reduceSession, type Session, type SessionAction } from "./opening";
 import { startSession, type StartupRead } from "./startup";
 import HospitalOpening from "./HospitalOpening";
+import WordToken from "./WordToken";
+import { freshWords, wordState } from "./recovery";
 import { Speaker } from "./icons";
 import { route } from "./navigation";
 import { createPlayback, type PlaybackError } from "./audio/playback";
@@ -65,6 +67,7 @@ export default function App() {
   const [helpExpanded, setHelpExpanded] = useState(false);
   const [dayExpanded, setDayExpanded] = useState(false);
   const [word, setWord] = useState<Word | null>(null);
+  const [fresh, setFresh] = useState<string[]>([]);
   const wordTrigger = useRef<HTMLButtonElement | null>(null);
   const panelTrigger = useRef<HTMLElement | null>(null);
   const wordOpen = word !== null;
@@ -78,8 +81,13 @@ export default function App() {
   const motion = useRef<{ path: Position[]; arrive?: () => void } | null>(null);
   const dispatch = useCallback(
     (action: SessionAction) => {
-      const next = reduceSession(sessionRef.current, action, content);
-      if (next === sessionRef.current) return next;
+      const previous = sessionRef.current;
+      const next = reduceSession(previous, action, content);
+      if (next === previous) return next;
+      if (previous.phase === "day" && next.phase === "day") {
+        const recovered = freshWords(previous.game.journal, next.game.journal);
+        if (recovered.length > 0) setFresh(recovered);
+      }
       if (!testMode && action.type !== "move" && next.phase === "day") {
         try {
           localStorage.setItem(checkpointKey, JSON.stringify(next.game));
@@ -370,6 +378,7 @@ export default function App() {
         sessionRef.current = next;
         setSession(next);
         setOpeningRun((run) => run + 1);
+        setFresh([]);
         setWord(null);
         setPanel("none");
       },
@@ -389,13 +398,12 @@ export default function App() {
   const tokens = (line: Line) => (
     <div className="spoken">
       {line.tokens.map((w, i) => (
-        <button
+        <WordToken
           key={`${w.id}-${i}`}
-          className={`word ${!state.journal[w.id] ? "new-word" : ""}`}
-          onClick={(event) => lookup(w, event.currentTarget)}
-        >
-          {w.hanzi}
-        </button>
+          word={w}
+          look={wordState(state.journal[w.id], fresh.includes(w.id))}
+          onLookup={lookup}
+        />
       ))}
     </div>
   );
@@ -718,59 +726,65 @@ export default function App() {
                       继续招呼 <span>→</span>
                     </button>
                   </>
-                ) : customer.phase === "checkout" ? (
-                  <>
-                    <p className="checkout-title">
-                      共 {total}块 · 收到 {order.paid}块
-                    </p>
-                    <p className="subtle">找零</p>
-                    <div className="change-display">
-                      {change}
-                      <span> 块</span>
-                    </div>
-                    <div className="money-buttons">
-                      {[1, 2, 5, 10].map((n) => (
-                        <button key={n} onClick={() => setChange((c) => c + n)}>
-                          +{n}块
-                        </button>
-                      ))}
-                      <button onClick={() => setChange(0)}>重来</button>
-                    </div>
-                    {state.feedback === "wrong-change" && (
-                      <div role="status" className="gentle-feedback">
-                        {tokens(character.retry)}
-                        <p>再算一算，慢慢来。</p>
-                      </div>
-                    )}
-                    <button className="primary" onClick={completePayment}>
-                      递上找零 <span>→</span>
-                    </button>
-                  </>
                 ) : (
                   <>
-                    <div className="character-greeting">
-                      {tokens(character.greeting)}
-                      <button className="round-button" aria-label="听招呼" onClick={() => play(character.greeting.audio)}><Speaker /></button>
-                    </div>
-                    {tokens(order.line)}
-                    <p className="subtle">点字听词 · 记住后去厨房取餐</p>
-                    {state.feedback === "wrong-food" && (
-                      <div className="gentle-feedback" role="status">
-                        {tokens(character.retry)}
-                        <p>可以回厨房放下，再拿一次。</p>
+                    {customer.phase === "ordered" && (
+                      <div className="character-greeting">
+                        {tokens(character.greeting)}
+                        <button className="round-button" aria-label="听招呼" onClick={() => play(character.greeting.audio)}><Speaker /></button>
                       </div>
                     )}
-                    <div className="dialogue-actions">
-                      <button className="secondary" onClick={visitKitchen}>
-                        去厨房
-                      </button>
-                      <button
-                        className="primary"
-                        onClick={() => dispatch({ type: "deliver", table, now: Date.now() })}
-                      >
-                        上菜 <span>→</span>
-                      </button>
-                    </div>
+                    {tokens(order.line)}
+                    {customer.phase === "checkout" ? (
+                      <>
+                        <p className="checkout-title">
+                          共 {total}块 · 收到 {order.paid}块
+                        </p>
+                        <p className="subtle">找零</p>
+                        <div className="change-display">
+                          {change}
+                          <span> 块</span>
+                        </div>
+                        <div className="money-buttons">
+                          {[1, 2, 5, 10].map((n) => (
+                            <button key={n} onClick={() => setChange((c) => c + n)}>
+                              +{n}块
+                            </button>
+                          ))}
+                          <button onClick={() => setChange(0)}>重来</button>
+                        </div>
+                        {state.feedback === "wrong-change" && (
+                          <div role="status" className="gentle-feedback">
+                            {tokens(character.retry)}
+                            <p>再算一算，慢慢来。</p>
+                          </div>
+                        )}
+                        <button className="primary" onClick={completePayment}>
+                          递上找零 <span>→</span>
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <p className="subtle">点字听词 · 记住后去厨房取餐</p>
+                        {state.feedback === "wrong-food" && (
+                          <div className="gentle-feedback" role="status">
+                            {tokens(character.retry)}
+                            <p>可以回厨房放下，再拿一次。</p>
+                          </div>
+                        )}
+                        <div className="dialogue-actions">
+                          <button className="secondary" onClick={visitKitchen}>
+                            去厨房
+                          </button>
+                          <button
+                            className="primary"
+                            onClick={() => dispatch({ type: "deliver", table, now: Date.now() })}
+                          >
+                            上菜 <span>→</span>
+                          </button>
+                        </div>
+                      </>
+                    )}
                   </>
                 )}
               </>
@@ -852,7 +866,9 @@ export default function App() {
                     {words.map((w) => (
                       <button key={w.id} onClick={(event) => lookup(w, event.currentTarget)}>
                         <span>{w.hanzi}</span>
-                        <small>听过 {state.journal[w.id].lookups} 次</small>
+                        {state.journal[w.id].lookups > 0 && (
+                          <small>听过 {state.journal[w.id].lookups} 次</small>
+                        )}
                         <Speaker />
                       </button>
                     ))}

@@ -51,7 +51,25 @@ async function serve(page: Page, table: number) {
   await expect(
     page.getByRole("dialog", { name: `${table}桌点餐` }),
   ).toBeVisible();
+  const line = page.locator(".paper-panel > .spoken .word");
+  const looks = () =>
+    line.evaluateAll((words) =>
+      words.map((word) =>
+        word.classList.contains("fogged") ? "fogged" : word.classList.contains("new-word") ? "dot" : "plain",
+      ),
+    );
+  const before = await looks();
+  if (table === 1) {
+    expect(before).toContain("fogged");
+    expect(before).not.toContain("dot");
+  }
   await page.getByRole("button", { name: "上菜", exact: false }).last().click();
+  await expect(page.getByRole("button", { name: "递上找零" })).toBeVisible();
+  const after = await looks();
+  expect(after).not.toContain("fogged");
+  before.forEach((look, index) => {
+    if (look === "fogged") expect(after[index]).toBe("dot");
+  });
   const total = order.items.reduce(
     (sum, item) =>
       sum +
