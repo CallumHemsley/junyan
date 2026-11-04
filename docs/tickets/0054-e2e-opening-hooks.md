@@ -42,6 +42,11 @@ Once [[decisions/0004-hospital-opening]] ships, every new player sees the openin
 - Audio config 61 passed, save config 14 passed, recovery config 16 passed. Vitest 110 passed. `pnpm build` is green.
 - Not run here: the visual config, because `src/scene/playwright.visual.config.ts` holds fixed ports `5182`/`5186` that another agent may use, and the perf medians. One head run of `pnpm test:e2e` took 627 s wall time. No parent run on this machine gives a baseline, so the perf box stays open for the root's verify lanes.
 
+### Rebase onto 0053 (2026-11-04)
+
+- Rebased onto `claude/0053-ward-scene` (3fceb9e), which carries 0047, 0048, 0049 and 0052. One conflict, in `e2e/save.spec.ts`: 0048's legacy-save cases now load through `seedDayOne` and `withSkip`, and the local `installSave` stays deleted. `seedDayOne` takes any `object`, so it can write a legacy save that lacks `recovered`. The legacy checkpoint case still starts with no IndexedDB save. `src/scene/record-ward.mjs` from 0053 now loads with `opening=skip` as well.
+- Vitest 125 passed. `pnpm build` is green. `pnpm test:e2e`: 131 passed, 4 skipped (the 127 from before plus 0048's two legacy cases on desktop and phone). Save config 18 passed.
+
 ### What was learned
 
 - `seedDayOne` opens `audio/manifest.json` on the target origin, so it writes IndexedDB without running app code. WebKit renders that JSON page and accepts the write, so the recovery config's WebKit projects pass.
