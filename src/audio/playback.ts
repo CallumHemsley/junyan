@@ -19,7 +19,7 @@ export function createPlayback(
     report(null);
   };
 
-  const play = (url: string) => {
+  const play = (url: string, onEnded?: () => void) => {
     stop();
     const attempt = request;
     const audio = createAudio(url);
@@ -31,6 +31,10 @@ export function createPlayback(
     };
     current = { audio, onError };
     audio.addEventListener("error", onError);
+    if (onEnded)
+      audio.addEventListener("ended", () => {
+        if (attempt === request) onEnded();
+      });
     audio.play().then(
       () => {
         if (attempt === request && !failed) report(null);

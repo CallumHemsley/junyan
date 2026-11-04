@@ -97,8 +97,8 @@ export default function App() {
     },
     [],
   );
-  const play = useCallback((url: string) => {
-    playback.current!.play(import.meta.env.BASE_URL + url.slice(1));
+  const play = useCallback((url: string, onEnded?: () => void) => {
+    playback.current!.play(import.meta.env.BASE_URL + url.slice(1), onEnded);
   }, []);
   useEffect(() => () => playback.current!.stop(), []);
   useEffect(() => {

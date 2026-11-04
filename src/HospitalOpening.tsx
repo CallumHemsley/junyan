@@ -46,7 +46,7 @@ export default function HospitalOpening({
   opening: OpeningState;
   content: Content;
   dispatch: (action: SessionAction) => Session;
-  play: (url: string) => void;
+  play: (url: string, onEnded?: () => void) => void;
   lookup: (word: Word, trigger: HTMLButtonElement) => void;
   onFinish: () => void;
   inert: boolean;
@@ -54,7 +54,6 @@ export default function HospitalOpening({
   const [woke, setWoke] = useState(false);
   const [offered, setOffered] = useState<{ food: string; tries: number } | null>(null);
   const talk = useRef<HTMLElement>(null);
-  const answerTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
   const steps = content.opening.steps;
   const step = steps[opening.step];
   const frame = useMemo(
@@ -63,7 +62,6 @@ export default function HospitalOpening({
   );
   const settled = opening.feedback === "thanks" || opening.reply !== null;
 
-  useEffect(() => () => clearTimeout(answerTimer.current), []);
   useEffect(() => {
     if (!woke) return;
     const clip = entryClip(steps[opening.step]);
@@ -82,7 +80,6 @@ export default function HospitalOpening({
     setWoke(true);
   };
   const advance = () => {
-    clearTimeout(answerTimer.current);
     setOffered(null);
     if (step.type === "end") onFinish();
     else dispatch({ type: "advance", now: Date.now() });
@@ -197,9 +194,7 @@ export default function HospitalOpening({
         const choice = opening.reply === null ? null : step.options[opening.reply];
         const answer = (option: number) => {
           dispatch({ type: "reply", option });
-          play(step.options[option].word.audio);
-          clearTimeout(answerTimer.current);
-          answerTimer.current = setTimeout(() => play(step.options[option].answer.audio), 900);
+          play(step.options[option].word.audio, () => play(step.options[option].answer.audio));
         };
         return (
           <>
