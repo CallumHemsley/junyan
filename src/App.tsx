@@ -20,6 +20,7 @@ import { createPlayback, type PlaybackError } from "./audio/playback";
 const testMode =
   import.meta.env.DEV &&
   new URLSearchParams(location.search).get("test") === "1";
+const opening = import.meta.env.DEV ? new URLSearchParams(location.search).get("opening") : null;
 const seed = Number(new URLSearchParams(location.search).get("seed") || 42);
 const checkpointKey = "junyan-waiter-pending-v1";
 const phases = {
