@@ -1,7 +1,7 @@
 ---
 id: 55
 title: Play the hospital opening on first run
-status: todo
+status: doing
 priority: high
 type: feature
 created: 2026-11-03
@@ -46,3 +46,12 @@ This ticket makes [[decisions/0004-hospital-opening]] playable. A new player wak
   - D7 (reset part). `__TEST__.reset()` returns to day 1 unless `opening=play`.
   - D9 (journey part). The journey asserts no Latin letters after the handover.
 - Pointers: `src/App.tsx:55` and `:415` ready and loading; `:57-59` help panel default; `:79-88` checkpoint write; `:111-144` startup with the 1500 ms IndexedDB fallback at `:138`; `:145-157` autosave 350 ms after ready; `:236-283` and `:410-449` focus, inert and modal handling; `:349-355` `__TEST__.reset`; `:370-382` `tokens()`; `src/style.css:408-427` `.word` and `.new-word:before`; `:809-817` reduced motion. The spike `spikes/hospital-opening/app.js` and `shots/` show the intended flow.
+
+## Progress
+
+- 2026-11-04. Owner Claude Code (PR owner in the autopilot stack). Branch `claude/0055-opening-ui` on `claude/0051-opening-rules`. Ports 5316 (dev) and 5317 (preview). Status stays `doing` until Callum reviews the media.
+- Built: `src/startup.ts` (`startSession`), `src/opening-view.ts` (`tokenLook`, `wardFrame`), `src/HospitalOpening.tsx`, `src/WordToken.tsx`, `src/scene/WardScene.tsx`, `src/icons.tsx`, the Session in `src/App.tsx`, the opening styles, and an `onEnded` follow-up in `src/audio/playback.ts` so the aunt answers when the player's reply clip ends.
+- Tests: `src/startup.test.ts` covers every start branch. `src/opening-view.test.ts` plays the script through `reduceOpening` and matches 0053's `WARD_STEPS` frame for frame. `e2e/waiter.spec.ts` plays the whole opening first. `e2e/opening-start.spec.ts` covers the start rules on the preview and the test-mode reset.
+- Review media: `docs/design/review/0055-review-*.png` (phone and desktop) and `docs/design/review/0055-review.mp4` (47 s, phone).
+- Perf, phone 390x844, preview, CPU throttle 4x, 5 runs, medians: navigation to 醒来 193 ms; returning player to 开门迎客 227 ms; 醒来 to the first `playing` 240 ms; end card 继续 to the 怎么玩 panel 124 ms, longest task 94 ms (the first, cold run had 314 ms). 醒来 to the first request is 50.9 s, over the 35 s budget: the six clips before it last 40.1 s, 32.1 s of that is the four English lines. The fix is in the content (0050), not the UI.
+- Learned: the help panel focuses its 关闭 button today (`e2e/calm-ui.spec.ts:33` pins it), not 开门迎客 as the plan says. Day 1 after the opening keeps that behaviour. Tokens carry no punctuation, so the opening lines show no 。 or ，, as in the restaurant.
