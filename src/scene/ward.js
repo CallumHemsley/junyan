@@ -33,13 +33,16 @@ export const FIGURES = {
   player: {x:2.6, y:-4.55, yaw:Math.PI/2},
 };
 const BED_SEATED_Z = .23;
-const TABLE_SLOTS = [[-1.3,-4.95],[-.95,-4.7],[-.65,-5.05]];
+const TABLE_SLOTS = {milk:[-1.3,-4.95], egg:[-.95,-4.7], bread:[-.65,-5.05]};
 const FOOD = {
-  milk: (api, x, y, z) => { api.capsule([x,y,z+.02],[x,y,z+.3],.14,.14,()=>sheet,'solid'); api.sphere(x,y,z+.33,.1,[214,190,148],'solid'); },
-  egg: (api, x, y, z) => api.sphere(x,y,z+.12,.12,[236,214,176],'solid'),
-  bread: (api, x, y, z) => { api.sphere(x,y,z+.12,.17,[250,246,236],'solid'); api.sphere(x+.02,y+.02,z+.22,.1,[255,252,244],'solid'); },
+  milk: (api, x, y, z) => {
+    api.capsule([x,y,z+.02],[x,y,z+.3],.14,.14,h => h<z+.23 ? jade : [232,216,182],'solid');
+    api.sphere(x,y,z+.33,.1,[150,108,70],'solid');
+  },
+  egg: (api, x, y, z) => api.sphere(x,y,z+.13,.13,[206,158,108],'solid'),
+  bread: (api, x, y, z) => { api.sphere(x,y,z+.12,.17,[196,138,74],'solid'); api.sphere(x+.02,y+.02,z+.22,.1,[226,176,108],'solid'); },
 };
-const CABINET_TOP = 1.05;
+const CABINET_TOP = 1.05, CLOTH = .03;
 
 const DRIP = {x:4.2, y:-4.25, z:2.25};
 const MONITOR = {x0:4.12, x1:4.88, y:-4.88, z:1.55};
@@ -144,6 +147,7 @@ bake(api) {
   box(-1.55,-5.4,0,-.45,-4.45,1.0,wood);
   box(-1.6,-5.45,1.0,-.4,-4.4,CABINET_TOP,[187,143,91]);
   box(-1.5,-4.47,.55,-.5,-4.43,.58,darkWood);
+  box(-1.48,-5.25,CABINET_TOP,-.48,-4.5,CABINET_TOP+CLOTH,[244,236,216]);
   chair(.25,-2.85);
   chair(-4.4,4.4);
   capsule([DRIP.x,DRIP.y,.06],[DRIP.x,DRIP.y,2.95],.035,.035,()=>metal,'solid');
@@ -166,7 +170,7 @@ bake(api) {
 },
 draw(api, frame, time) {
   const {W,pix,rgb,project,box,sphere,capsule,bakedZ,flushShadows,applyShadows,shadeEdges,dynamicAdd} = api;
-  frame.table.slice(0,3).forEach((food,index) => FOOD[food]?.(api,...TABLE_SLOTS[index],CABINET_TOP));
+  for (const food of frame.table) FOOD[food](api,...TABLE_SLOTS[food],CABINET_TOP+CLOTH);
   const elder = FIGURES.elder, player = FIGURES.player;
   if (frame.elder === 'lying') lie(api, BEDS.elder, WARD_CAST.elder);
   else {

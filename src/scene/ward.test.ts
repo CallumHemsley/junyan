@@ -121,6 +121,27 @@ describe('ward scene', () => {
     } finally { COLORS.ink = ink; }
   });
 
+  it('keeps each bedside item in its own place when another is taken', () => {
+    const render = harness(), base = {...frameOf('ask-milk'), held:null};
+    const changed = (a:Uint8ClampedArray, b:Uint8ClampedArray) => {
+      const out = new Set<number>();
+      for (let index = 0; index < a.length; index += 4) {
+        if (a[index]!==b[index] || a[index+1]!==b[index+1] || a[index+2]!==b[index+2]) out.add(index/4);
+      }
+      return out;
+    };
+    const empty = render({...base, table:[]});
+    for (const food of ['milk','egg','bread'] as const) {
+      const own = changed(empty, render({...base, table:[food]}));
+      const taken = changed(render({...base, table:['milk','egg','bread']}), render({...base, table:['milk','egg','bread'].filter(item => item!==food) as WardFrame['table']}));
+      expect(taken.size).toBeGreaterThan(0);
+      for (const pixel of taken) {
+        const near = [0,-1,1,-WIDTH,WIDTH].some(offset => own.has(pixel+offset));
+        expect(near, `${food} pixel ${pixel%WIDTH},${Math.floor(pixel/WIDTH)}`).toBe(true);
+      }
+    }
+  });
+
   it('draws no vermilion', () => {
     const tokens = JSON.parse(readFileSync(new URL('../../docs/design/tokens.json', import.meta.url), 'utf8'));
     const hex:string = JSON.stringify(tokens).match(/"accent","value":\{"morning":"(#[0-9a-f]{6})"/)![1];
