@@ -7,6 +7,16 @@ export type Word = {
   audio: string;
 };
 export type Line = { id: string; tokens: Word[]; audio: string };
+export type Phrase = Line & { text: string };
+export type CastMember = { id: string; name: string; voices: { zh: string; en?: string } };
+type Staging = { enter?: string[]; leave?: string[] };
+export type OpeningStep =
+  | ({ type: "say-en"; who: string; en: string; audio: string } & Staging)
+  | ({ type: "say"; who: string; line: Phrase; recover: string[] } & Staging)
+  | ({ type: "request"; who: string; line: Phrase; want: string; wrong: Phrase; ok: Phrase; recover: string[] } & Staging)
+  | ({ type: "reply"; who: string; options: { word: Word; answer: Phrase; recover: string[] }[] } & Staging)
+  | { type: "end"; title: Phrase };
+export type Opening = { cast: CastMember[]; tray: string[]; steps: OpeningStep[] };
 export type Food = {
   id: string;
   word: Word;
@@ -44,6 +54,7 @@ export type Content = {
   orders: Order[];
   thanks: Line;
   retry: Line;
+  opening: Opening;
 };
 export type Phase = "seated" | "ordered" | "checkout" | "served";
 export type Customer = { table: number; orderId: string; phase: Phase };

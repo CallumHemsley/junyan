@@ -1706,5 +1706,765 @@
         "audio": "/audio/line-3d78662da910760c1bc12114b94e6383f4befa56d9c7a925657e94433763d727.wav"
       }
     }
-  ]
+  ],
+  "opening": {
+    "cast": [
+      {
+        "id": "doctor",
+        "name": "王医生",
+        "voices": {
+          "zh": "ryan-zh",
+          "en": "ryan-en"
+        }
+      },
+      {
+        "id": "nurse",
+        "name": "护士",
+        "voices": {
+          "zh": "vivian"
+        }
+      },
+      {
+        "id": "elder",
+        "name": "老爷爷",
+        "voices": {
+          "zh": "uncle-fu-levelled"
+        }
+      },
+      {
+        "id": "aunt",
+        "name": "小姨",
+        "voices": {
+          "zh": "serena-levelled"
+        }
+      }
+    ],
+    "tray": [
+      "milk",
+      "egg",
+      "bread"
+    ],
+    "steps": [
+      {
+        "type": "say-en",
+        "who": "doctor",
+        "en": "Ah, you're awake. Don't try to sit up yet.",
+        "audio": "/audio/english-f9b11c8015d7a584d7e02ac2b69c557785903a990952acc5ee9f27742f73a4e7.wav",
+        "enter": [
+          "doctor",
+          "elder"
+        ]
+      },
+      {
+        "type": "say-en",
+        "who": "doctor",
+        "en": "You came off your bike three days ago and hit your head.",
+        "audio": "/audio/english-c09ddba8ca1fd7d8ca1e5ac85074fc254814b74a84b05e512debcaef6a89012f.wav"
+      },
+      {
+        "type": "say-en",
+        "who": "doctor",
+        "en": "Your aunt tells me you used to speak Mandarin. For now, it's gone.",
+        "audio": "/audio/english-90fc2bf76764ab26398717d27301795c872dd6c4fdd0f563d51174ae55825547.wav"
+      },
+      {
+        "type": "say-en",
+        "who": "doctor",
+        "en": "It'll come back if you listen and use it. So from now on, no more English.",
+        "audio": "/audio/english-094e0770245ef03bea0c6d00caad33816c4c344496ca2d52e756a780681d5453.wav"
+      },
+      {
+        "type": "say",
+        "who": "doctor",
+        "line": {
+          "id": "doctor-awake",
+          "tokens": [
+            {
+              "id": "person",
+              "hanzi": "人",
+              "pinyin": "rén",
+              "gloss": "person",
+              "audio": "/audio/word-03a3f9b77183178c16231186250a7d8e6484d17e198af5a9f7adbdf39f8bf49b.wav"
+            },
+            {
+              "id": "wake",
+              "hanzi": "醒",
+              "pinyin": "xǐng",
+              "gloss": "wake up",
+              "audio": "/audio/word-13bb534bdc9c7a41ef1279463d3d767bcfe66b3b7d796e6acd19ddee9e73f9a5.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            },
+            {
+              "id": "i",
+              "hanzi": "我",
+              "pinyin": "wǒ",
+              "gloss": "I; me",
+              "audio": "/audio/word-c0e774d684d9d9828e53aa520e6da612aa7f6113fd9bcbe898f6b718970a13a9.wav"
+            },
+            {
+              "id": "tomorrow",
+              "hanzi": "明天",
+              "pinyin": "míngtiān",
+              "gloss": "tomorrow",
+              "audio": "/audio/word-9b5989153cc3e2163b827b05dd634a14260068f1103ccf09c897650cfa6e92ea.wav"
+            },
+            {
+              "id": "again",
+              "hanzi": "再",
+              "pinyin": "zài",
+              "gloss": "again",
+              "audio": "/audio/word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav"
+            },
+            {
+              "id": "bring",
+              "hanzi": "来",
+              "pinyin": "lái",
+              "gloss": "bring; come",
+              "audio": "/audio/word-ed529f5d1bf010905a815ac250dc4c043f1f704e66accb8731753957b1971f28.wav"
+            },
+            {
+              "id": "look",
+              "hanzi": "看看",
+              "pinyin": "kànkan",
+              "gloss": "take a look",
+              "audio": "/audio/word-4d253f356b3a9045ad43aa48d02890cb6eb7f37f4051b46c45561259a4657f77.wav"
+            }
+          ],
+          "audio": "/audio/line-cb15d212f2341ac9961bd5df6a1538e103b3bcf6e644012eda45edecbbda6b43.wav",
+          "text": "人醒了。我明天再来看看。"
+        },
+        "recover": [],
+        "enter": [
+          "nurse"
+        ]
+      },
+      {
+        "type": "say",
+        "who": "nurse",
+        "line": {
+          "id": "nurse-okay",
+          "tokens": [
+            {
+              "id": "okay",
+              "hanzi": "好的",
+              "pinyin": "hǎo de",
+              "gloss": "okay",
+              "audio": "/audio/word-c73f3fce87d67e26c44650ae732bd25d6761b66e0126d0a3a0f26984ce8747e3.wav"
+            },
+            {
+              "id": "wang",
+              "hanzi": "王",
+              "pinyin": "Wáng",
+              "gloss": "Wang (surname)",
+              "audio": "/audio/word-e6812447e1bf2b0bfa37facc9e78ca3c0b6aaa01b442f7b48f6c294a04edd9a1.wav"
+            },
+            {
+              "id": "doctor",
+              "hanzi": "医生",
+              "pinyin": "yīshēng",
+              "gloss": "doctor",
+              "audio": "/audio/word-738a61ed4bd5319bc879abc1a6621b5df60fa262f2344ea527806d9afa9feafe.wav"
+            }
+          ],
+          "audio": "/audio/line-90e476270f3b2a916a2521db11f50ef25d592a7a7be165e8f693179d2e9626f4.wav",
+          "text": "好的，王医生。"
+        },
+        "recover": [],
+        "leave": [
+          "doctor",
+          "nurse"
+        ]
+      },
+      {
+        "type": "request",
+        "who": "elder",
+        "line": {
+          "id": "elder-milk",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            },
+            {
+              "id": "young-person",
+              "hanzi": "年轻人",
+              "pinyin": "niánqīngrén",
+              "gloss": "young person",
+              "audio": "/audio/word-15a993ad75fea8ca7a077fd9a29f02717b6158cfce7d03e3d6a9c908824617a6.wav"
+            },
+            {
+              "id": "please",
+              "hanzi": "请",
+              "pinyin": "qǐng",
+              "gloss": "please",
+              "audio": "/audio/word-54a0c55ebdeaa1155b3de601dfa998d53b4a2326a23de0e75e1e363701dfd461.wav"
+            },
+            {
+              "id": "give",
+              "hanzi": "给",
+              "pinyin": "gěi",
+              "gloss": "give",
+              "audio": "/audio/word-0ba6b6f23f23cfc1f9a01442d9c2dd7dfcfa1593a3529fe82eba81feed7c9067.wav"
+            },
+            {
+              "id": "i",
+              "hanzi": "我",
+              "pinyin": "wǒ",
+              "gloss": "I; me",
+              "audio": "/audio/word-c0e774d684d9d9828e53aa520e6da612aa7f6113fd9bcbe898f6b718970a13a9.wav"
+            },
+            {
+              "id": "one",
+              "hanzi": "一",
+              "pinyin": "yī",
+              "gloss": "one",
+              "audio": "/audio/word-78e501faee156f728112ac3d42c0a6eabb09afaa3172d71ee446cf7f985aeddf.wav"
+            },
+            {
+              "id": "cup",
+              "hanzi": "杯",
+              "pinyin": "bēi",
+              "gloss": "cup; cupful",
+              "audio": "/audio/word-9f1ef037d3deef145c2554c352cd8c800814dfc28892d133eb70445bb169345c.wav"
+            },
+            {
+              "id": "milk",
+              "hanzi": "豆浆",
+              "pinyin": "dòujiāng",
+              "gloss": "soy milk",
+              "audio": "/audio/word-c6e670b83388a7d774e8edc0712633362c0de24639021888d16f5a597e7f3c93.wav"
+            }
+          ],
+          "audio": "/audio/line-a670df6a70911e37ddebcda28d5fd57ea3b7181a035c3359ec45e0c481e5ded3.wav",
+          "text": "早上好，年轻人。请给我一杯豆浆。"
+        },
+        "want": "milk",
+        "wrong": {
+          "id": "elder-milk-wrong",
+          "tokens": [
+            {
+              "id": "no",
+              "hanzi": "不",
+              "pinyin": "bù",
+              "gloss": "not",
+              "audio": "/audio/word-87ff64a00c0e6c135b269796a1283550b2c2058bf404f6ba168c03230be9e413.wav"
+            },
+            {
+              "id": "right",
+              "hanzi": "对",
+              "pinyin": "duì",
+              "gloss": "right; correct",
+              "audio": "/audio/word-f928a8326001efd3f6a2e1a60ecc92f11ddfb068a6cbd232a6916175133c08fa.wav"
+            },
+            {
+              "id": "i",
+              "hanzi": "我",
+              "pinyin": "wǒ",
+              "gloss": "I; me",
+              "audio": "/audio/word-c0e774d684d9d9828e53aa520e6da612aa7f6113fd9bcbe898f6b718970a13a9.wav"
+            },
+            {
+              "id": "want",
+              "hanzi": "要",
+              "pinyin": "yào",
+              "gloss": "want",
+              "audio": "/audio/word-6b55265d16db9a1acb8582ef1e5c3da4479a8eef988168069671324cf54a8113.wav"
+            },
+            {
+              "id": "milk",
+              "hanzi": "豆浆",
+              "pinyin": "dòujiāng",
+              "gloss": "soy milk",
+              "audio": "/audio/word-c6e670b83388a7d774e8edc0712633362c0de24639021888d16f5a597e7f3c93.wav"
+            }
+          ],
+          "audio": "/audio/line-ff7c0510f7ece45b819b0ca456d7bd1f6d1a5139dc4eed17870dcfe6390997af.wav",
+          "text": "不对，我要豆浆。"
+        },
+        "ok": {
+          "id": "elder-milk-thanks",
+          "tokens": [
+            {
+              "id": "thank-you",
+              "hanzi": "谢谢",
+              "pinyin": "xièxie",
+              "gloss": "thank you",
+              "audio": "/audio/word-d4eb416293ad391775ce523d94ce0483868103313ae19eac4e0f80c7401b5165.wav"
+            },
+            {
+              "id": "you",
+              "hanzi": "你",
+              "pinyin": "nǐ",
+              "gloss": "you",
+              "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
+            }
+          ],
+          "audio": "/audio/line-39dd06cc1fd4e39d934b4459422c2221e0e92016cd072b004af233e76e8b9397.wav",
+          "text": "谢谢你！"
+        },
+        "recover": [
+          "milk"
+        ]
+      },
+      {
+        "type": "request",
+        "who": "elder",
+        "line": {
+          "id": "elder-egg",
+          "tokens": [
+            {
+              "id": "i",
+              "hanzi": "我",
+              "pinyin": "wǒ",
+              "gloss": "I; me",
+              "audio": "/audio/word-c0e774d684d9d9828e53aa520e6da612aa7f6113fd9bcbe898f6b718970a13a9.wav"
+            },
+            {
+              "id": "still",
+              "hanzi": "还",
+              "pinyin": "hái",
+              "gloss": "still, also",
+              "audio": "/audio/word-5bd736dd0ec196c857bff0710d236b3b6223905fc1cf5cbf5ecde87e7e78fe59.wav"
+            },
+            {
+              "id": "think",
+              "hanzi": "想",
+              "pinyin": "xiǎng",
+              "gloss": "would like",
+              "audio": "/audio/word-80a3e0fb4d1afe8d1be689db3ced3b496ffa4d278ea80a5c68a3e23acd687137.wav"
+            },
+            {
+              "id": "want",
+              "hanzi": "要",
+              "pinyin": "yào",
+              "gloss": "want",
+              "audio": "/audio/word-6b55265d16db9a1acb8582ef1e5c3da4479a8eef988168069671324cf54a8113.wav"
+            },
+            {
+              "id": "one",
+              "hanzi": "一",
+              "pinyin": "yī",
+              "gloss": "one",
+              "audio": "/audio/word-78e501faee156f728112ac3d42c0a6eabb09afaa3172d71ee446cf7f985aeddf.wav"
+            },
+            {
+              "id": "piece",
+              "hanzi": "个",
+              "pinyin": "gè",
+              "gloss": "measure word for individual items",
+              "audio": "/audio/word-e85bccd8e89af93075b3eb4d984abd7b51936c58b86e3bb71d663d39d55ae114.wav"
+            },
+            {
+              "id": "egg",
+              "hanzi": "鸡蛋",
+              "pinyin": "jīdàn",
+              "gloss": "egg",
+              "audio": "/audio/word-8ad579fcce318a0e4ba2893f5cf540c93fd2c43b5e65ac515219c82b1b9b0486.wav"
+            }
+          ],
+          "audio": "/audio/line-56285c5a5283b3e3a6c638fa3432f3f75faa6eff286eb86f28d57c4e5fb707e0.wav",
+          "text": "我还想要一个鸡蛋。"
+        },
+        "want": "egg",
+        "wrong": {
+          "id": "elder-egg-wrong",
+          "tokens": [
+            {
+              "id": "no",
+              "hanzi": "不",
+              "pinyin": "bù",
+              "gloss": "not",
+              "audio": "/audio/word-87ff64a00c0e6c135b269796a1283550b2c2058bf404f6ba168c03230be9e413.wav"
+            },
+            {
+              "id": "right",
+              "hanzi": "对",
+              "pinyin": "duì",
+              "gloss": "right; correct",
+              "audio": "/audio/word-f928a8326001efd3f6a2e1a60ecc92f11ddfb068a6cbd232a6916175133c08fa.wav"
+            },
+            {
+              "id": "i",
+              "hanzi": "我",
+              "pinyin": "wǒ",
+              "gloss": "I; me",
+              "audio": "/audio/word-c0e774d684d9d9828e53aa520e6da612aa7f6113fd9bcbe898f6b718970a13a9.wav"
+            },
+            {
+              "id": "want",
+              "hanzi": "要",
+              "pinyin": "yào",
+              "gloss": "want",
+              "audio": "/audio/word-6b55265d16db9a1acb8582ef1e5c3da4479a8eef988168069671324cf54a8113.wav"
+            },
+            {
+              "id": "egg",
+              "hanzi": "鸡蛋",
+              "pinyin": "jīdàn",
+              "gloss": "egg",
+              "audio": "/audio/word-8ad579fcce318a0e4ba2893f5cf540c93fd2c43b5e65ac515219c82b1b9b0486.wav"
+            }
+          ],
+          "audio": "/audio/line-bd3820b8749d5b9dd14d96a58903443132c19876df3d825e4011a084d6c81cf2.wav",
+          "text": "不对，我要鸡蛋。"
+        },
+        "ok": {
+          "id": "elder-egg-thanks",
+          "tokens": [
+            {
+              "id": "thank-you",
+              "hanzi": "谢谢",
+              "pinyin": "xièxie",
+              "gloss": "thank you",
+              "audio": "/audio/word-d4eb416293ad391775ce523d94ce0483868103313ae19eac4e0f80c7401b5165.wav"
+            },
+            {
+              "id": "thank-you",
+              "hanzi": "谢谢",
+              "pinyin": "xièxie",
+              "gloss": "thank you",
+              "audio": "/audio/word-d4eb416293ad391775ce523d94ce0483868103313ae19eac4e0f80c7401b5165.wav"
+            }
+          ],
+          "audio": "/audio/line-d5536fa2f1404d9c8d08737fdc29156d517c0a8878b03425c8c0ad2df25e6a83.wav",
+          "text": "谢谢，谢谢！"
+        },
+        "recover": [
+          "egg",
+          "thank-you"
+        ]
+      },
+      {
+        "type": "say",
+        "who": "aunt",
+        "line": {
+          "id": "aunt-awake",
+          "tokens": [
+            {
+              "id": "you",
+              "hanzi": "你",
+              "pinyin": "nǐ",
+              "gloss": "you",
+              "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
+            },
+            {
+              "id": "wake",
+              "hanzi": "醒",
+              "pinyin": "xǐng",
+              "gloss": "wake up",
+              "audio": "/audio/word-13bb534bdc9c7a41ef1279463d3d767bcfe66b3b7d796e6acd19ddee9e73f9a5.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            },
+            {
+              "id": "still",
+              "hanzi": "还",
+              "pinyin": "hái",
+              "gloss": "still, also",
+              "audio": "/audio/word-5bd736dd0ec196c857bff0710d236b3b6223905fc1cf5cbf5ecde87e7e78fe59.wav"
+            },
+            {
+              "id": "remember",
+              "hanzi": "记得",
+              "pinyin": "jìde",
+              "gloss": "remember",
+              "audio": "/audio/word-0f7d9d97a2686fbff87d22f665754f20bb0bbe2005654aea5a0d7204c53adedc.wav"
+            },
+            {
+              "id": "i",
+              "hanzi": "我",
+              "pinyin": "wǒ",
+              "gloss": "I; me",
+              "audio": "/audio/word-c0e774d684d9d9828e53aa520e6da612aa7f6113fd9bcbe898f6b718970a13a9.wav"
+            },
+            {
+              "id": "ma",
+              "hanzi": "吗",
+              "pinyin": "ma",
+              "gloss": "(question)",
+              "audio": "/audio/word-2cef3d3b77dd2fd8b39f35e41c02097ab0c9d650643e6fdec509da05751d1bad.wav"
+            },
+            {
+              "id": "i",
+              "hanzi": "我",
+              "pinyin": "wǒ",
+              "gloss": "I; me",
+              "audio": "/audio/word-c0e774d684d9d9828e53aa520e6da612aa7f6113fd9bcbe898f6b718970a13a9.wav"
+            },
+            {
+              "id": "be",
+              "hanzi": "是",
+              "pinyin": "shì",
+              "gloss": "am, is",
+              "audio": "/audio/word-695b5d8d018e831d3c45da307d25204edbad27869c2a461c14051b50216545d5.wav"
+            },
+            {
+              "id": "you",
+              "hanzi": "你",
+              "pinyin": "nǐ",
+              "gloss": "you",
+              "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
+            },
+            {
+              "id": "aunt",
+              "hanzi": "小姨",
+              "pinyin": "xiǎoyí",
+              "gloss": "aunt",
+              "audio": "/audio/word-750cb41a6b67582455f010335b6fef423d551f12774cb4163eea58a100c98b16.wav"
+            }
+          ],
+          "audio": "/audio/line-415ee408485a84b18d42973ab6656bacd01093a8526eec3dbf5d73b5c1a00bfb.wav",
+          "text": "你醒了！还记得我吗？我是你小姨。"
+        },
+        "recover": [],
+        "enter": [
+          "aunt"
+        ]
+      },
+      {
+        "type": "say",
+        "who": "aunt",
+        "line": {
+          "id": "aunt-worry",
+          "tokens": [
+            {
+              "id": "dont",
+              "hanzi": "别",
+              "pinyin": "bié",
+              "gloss": "don't",
+              "audio": "/audio/word-5be08a42ea399b6c01acbe5b9f72e9dda89f775c839b721e451c55f1a23155de.wav"
+            },
+            {
+              "id": "worry",
+              "hanzi": "担心",
+              "pinyin": "dānxīn",
+              "gloss": "worry",
+              "audio": "/audio/word-bfdc19ec6353b16c5b463438d9df2f83f247e6303b2108747a6ecb3c33f57454.wav"
+            },
+            {
+              "id": "slowly",
+              "hanzi": "慢慢",
+              "pinyin": "mànmàn",
+              "gloss": "slowly",
+              "audio": "/audio/word-ef14b361f5b6171148b04fadee9960e934852b8c33a59e67f44a79c0546f6ba3.wav"
+            },
+            {
+              "id": "bring",
+              "hanzi": "来",
+              "pinyin": "lái",
+              "gloss": "bring; come",
+              "audio": "/audio/word-ed529f5d1bf010905a815ac250dc4c043f1f704e66accb8731753957b1971f28.wav"
+            }
+          ],
+          "audio": "/audio/line-fe9a2148bde5c6362d962173b6c4c215ae28e9f9b593e61392e835575e61290f.wav",
+          "text": "别担心，慢慢来。"
+        },
+        "recover": []
+      },
+      {
+        "type": "say",
+        "who": "aunt",
+        "line": {
+          "id": "aunt-shop",
+          "tokens": [
+            {
+              "id": "tomorrow",
+              "hanzi": "明天",
+              "pinyin": "míngtiān",
+              "gloss": "tomorrow",
+              "audio": "/audio/word-9b5989153cc3e2163b827b05dd634a14260068f1103ccf09c897650cfa6e92ea.wav"
+            },
+            {
+              "id": "bring",
+              "hanzi": "来",
+              "pinyin": "lái",
+              "gloss": "bring; come",
+              "audio": "/audio/word-ed529f5d1bf010905a815ac250dc4c043f1f704e66accb8731753957b1971f28.wav"
+            },
+            {
+              "id": "shop",
+              "hanzi": "店",
+              "pinyin": "diàn",
+              "gloss": "shop",
+              "audio": "/audio/word-88dcd886dbda175e84d3de4f173b7ad9e954c83d9912a609d1dcb3f6d971c1e7.wav"
+            },
+            {
+              "id": "inside",
+              "hanzi": "里",
+              "pinyin": "lǐ",
+              "gloss": "in",
+              "audio": "/audio/word-0cea5f02d9cb3c2340392c264f21c3db7e1d1833f81e4bb5ee3f3afa0a82ff6a.wav"
+            },
+            {
+              "id": "help",
+              "hanzi": "帮",
+              "pinyin": "bāng",
+              "gloss": "help",
+              "audio": "/audio/word-98dadd11368c038b0179ee110b28fc25f11f9e2ad836147f76fab15908be8ab6.wav"
+            },
+            {
+              "id": "i",
+              "hanzi": "我",
+              "pinyin": "wǒ",
+              "gloss": "I; me",
+              "audio": "/audio/word-c0e774d684d9d9828e53aa520e6da612aa7f6113fd9bcbe898f6b718970a13a9.wav"
+            },
+            {
+              "id": "good",
+              "hanzi": "好",
+              "pinyin": "hǎo",
+              "gloss": "good, okay",
+              "audio": "/audio/word-19be6bbebac3dbb7894517bbd13de46a628667976c0f109d45525b89ef1012f7.wav"
+            },
+            {
+              "id": "ma",
+              "hanzi": "吗",
+              "pinyin": "ma",
+              "gloss": "(question)",
+              "audio": "/audio/word-2cef3d3b77dd2fd8b39f35e41c02097ab0c9d650643e6fdec509da05751d1bad.wav"
+            }
+          ],
+          "audio": "/audio/line-ef0ccd086af0852f76641f13674a0201588795d4affc459517fde7d15d994f33.wav",
+          "text": "明天来店里帮我，好吗？"
+        },
+        "recover": []
+      },
+      {
+        "type": "reply",
+        "who": "aunt",
+        "options": [
+          {
+            "word": {
+              "id": "good",
+              "hanzi": "好",
+              "pinyin": "hǎo",
+              "gloss": "good, okay",
+              "audio": "/audio/word-19be6bbebac3dbb7894517bbd13de46a628667976c0f109d45525b89ef1012f7.wav"
+            },
+            "answer": {
+              "id": "aunt-great",
+              "tokens": [
+                {
+                  "id": "great",
+                  "hanzi": "太好了",
+                  "pinyin": "tài hǎo le",
+                  "gloss": "great",
+                  "audio": "/audio/word-ab00cdea1e4cd8b0bfe24057ae8371ae5fc659fcaa3c7e690aafd180e759a559.wav"
+                },
+                {
+                  "id": "tomorrow",
+                  "hanzi": "明天",
+                  "pinyin": "míngtiān",
+                  "gloss": "tomorrow",
+                  "audio": "/audio/word-9b5989153cc3e2163b827b05dd634a14260068f1103ccf09c897650cfa6e92ea.wav"
+                },
+                {
+                  "id": "see",
+                  "hanzi": "见",
+                  "pinyin": "jiàn",
+                  "gloss": "see; meet",
+                  "audio": "/audio/word-cf24122f0185367cd42a13acdc2015ae3a376169f9c4d4bdd608c20d03ea55f3.wav"
+                }
+              ],
+              "audio": "/audio/line-975aa18414a1d110b21a741333eff15de46220f50c0d235d17002500117a7dba.wav",
+              "text": "太好了！明天见。"
+            },
+            "recover": [
+              "good"
+            ]
+          },
+          {
+            "word": {
+              "id": "thank-you",
+              "hanzi": "谢谢",
+              "pinyin": "xièxie",
+              "gloss": "thank you",
+              "audio": "/audio/word-d4eb416293ad391775ce523d94ce0483868103313ae19eac4e0f80c7401b5165.wav"
+            },
+            "answer": {
+              "id": "aunt-welcome",
+              "tokens": [
+                {
+                  "id": "thank",
+                  "hanzi": "谢",
+                  "pinyin": "xiè",
+                  "gloss": "thank",
+                  "audio": "/audio/word-41ebaa59fcf0b617393c64e2790b4515d19089e18be93df26e51c84b4ff46d2c.wav"
+                },
+                {
+                  "id": "what",
+                  "hanzi": "什么",
+                  "pinyin": "shénme",
+                  "gloss": "what",
+                  "audio": "/audio/word-1ade548cd84c4f1a1fed936142b32a9b4aecdafdf96c65c4eb989b7f2adcc6f4.wav"
+                },
+                {
+                  "id": "ha",
+                  "hanzi": "呀",
+                  "pinyin": "ya",
+                  "gloss": "friendly exclamation",
+                  "audio": "/audio/word-410bcf510b3962aa9d0de24d9e0c134653a7f12d878fd7718ab5f696b8b45115.wav"
+                },
+                {
+                  "id": "tomorrow",
+                  "hanzi": "明天",
+                  "pinyin": "míngtiān",
+                  "gloss": "tomorrow",
+                  "audio": "/audio/word-9b5989153cc3e2163b827b05dd634a14260068f1103ccf09c897650cfa6e92ea.wav"
+                },
+                {
+                  "id": "see",
+                  "hanzi": "见",
+                  "pinyin": "jiàn",
+                  "gloss": "see; meet",
+                  "audio": "/audio/word-cf24122f0185367cd42a13acdc2015ae3a376169f9c4d4bdd608c20d03ea55f3.wav"
+                }
+              ],
+              "audio": "/audio/line-92804f722c2bd97ef0285fce737db4404f28a31d358a91b0555bd06840635068.wav",
+              "text": "谢什么呀！明天见。"
+            },
+            "recover": []
+          }
+        ]
+      },
+      {
+        "type": "end",
+        "title": {
+          "id": "end-title",
+          "tokens": [
+            {
+              "id": "day-one",
+              "hanzi": "第一天",
+              "pinyin": "dì yī tiān",
+              "gloss": "day one",
+              "audio": "/audio/word-f06fba63d3f8750d5a2607f2a5ca3a9d6dcc4175e0ba828c4e84ca647474b97e.wav"
+            },
+            {
+              "id": "shop-name",
+              "hanzi": "早安小馆",
+              "pinyin": "Zǎo'ān Xiǎoguǎn",
+              "gloss": "Good Morning Diner",
+              "audio": "/audio/word-dafa801742196472d4b0aaf97eb250fbbcc944a3c5d9605663c1bf5f9e321eb3.wav"
+            }
+          ],
+          "audio": "/audio/line-822420cdb693503c25a930e8f1ee5225bc2b2ce2c53027ff2ffce78b3cb4e785.wav",
+          "text": "第一天·早安小馆"
+        }
+      }
+    ]
+  }
 }
