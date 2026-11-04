@@ -21,6 +21,19 @@ function setup() {
 }
 
 describe("playback ownership", () => {
+  it("runs the follow-up when the current clip ends, and drops it once another clip starts", () => {
+    const { playback, attempts } = setup();
+    const next = vi.fn();
+    playback.play("first.wav", next);
+    attempts[0].dispatchEvent(new Event("ended"));
+    expect(next).toHaveBeenCalledTimes(1);
+    const stale = vi.fn();
+    playback.play("second.wav", stale);
+    playback.play("third.wav");
+    attempts[1].dispatchEvent(new Event("ended"));
+    expect(stale).not.toHaveBeenCalled();
+  });
+
   it("reports a media failure after playback starts and recovers on retry", async () => {
     const { playback, attempts, report } = setup();
     playback.play("first.wav");

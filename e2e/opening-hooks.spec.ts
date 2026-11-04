@@ -26,7 +26,7 @@ async function stored(page: Page) {
 }
 
 async function landing(page: Page) {
-  await expect(page.getByRole("dialog").first()).toBeVisible();
+  await expect(page.getByRole("button", { name: "醒来" })).toBeVisible();
   return {
     tree: await page.locator("body").ariaSnapshot(),
     hasTestHooks: await page.evaluate(() => "__TEST__" in window),

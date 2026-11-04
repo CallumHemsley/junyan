@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { Action, GameState, Line, Position, Word } from "./contracts";
+import type { Line, Position, Word } from "./contracts";
 import { KITCHEN, TABLES } from "./contracts";
 import { characterFor, content } from "./content";
 import { contentWords } from "./content/words";
 import {
   createGame,
-  reduceGame,
   getOrder,
   orderTotal,
   isNear,
@@ -14,6 +13,10 @@ import {
 import RestaurantScene from "./scene/RestaurantScene";
 import FoodArt from "./FoodArt";
 import { loadGame, saveGame, validateSavedGame } from "./save";
+import { createSession, reduceSession, type Session, type SessionAction } from "./opening";
+import { startSession, type StartupRead } from "./startup";
+import HospitalOpening from "./HospitalOpening";
+import { Speaker } from "./icons";
 import { route } from "./navigation";
 import { createPlayback, type PlaybackError } from "./audio/playback";
 
@@ -21,7 +24,9 @@ const testMode =
   import.meta.env.DEV &&
   new URLSearchParams(location.search).get("test") === "1";
 const opening = import.meta.env.DEV ? new URLSearchParams(location.search).get("opening") : null;
-const seed = Number(new URLSearchParams(location.search).get("seed") || 42);
+const requestedSeed = Number(new URLSearchParams(location.search).get("seed") || 42);
+const seed = Number.isFinite(requestedSeed) ? requestedSeed : 42;
+const testStart = () => createSession(content, seed, opening === "play" ? "opening" : "day");
 const checkpointKey = "junyan-waiter-pending-v1";
 const phases = {
   seated: "等候点餐",
@@ -30,11 +35,6 @@ const phases = {
   served: "多谢",
 };
 const dayNames = ["", "第一天", "第二天", "第三天", "第四天", "第五天"];
-const Speaker = () => (
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M4 9h4l5-4v14l-5-4H4Zm12-1q4 4 0 8m3-11q7 7 0 14" />
-  </svg>
-);
 const Book = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true">
     <path d="M4 4h7q3 0 3 3v14q-1-2-3-2H4Zm16 0h-3q-3 0-3 3m0 14q1-2 3-2h3Z" />
@@ -48,9 +48,12 @@ const Sun = () => (
 );
 
 export default function App() {
-  const [state, setState] = useState<GameState>(() =>
-    createGame(content, Number.isFinite(seed) ? seed : 42),
-  );
+  const [session, setSession] = useState<Session>(testStart);
+  const sessionRef = useRef(session);
+  sessionRef.current = session;
+  const [idle] = useState(() => createGame(content, seed));
+  const [openingRun, setOpeningRun] = useState(0);
+  const state = session.phase === "day" ? session.game : idle;
   const stateRef = useRef(state);
   stateRef.current = state;
   const [ready, setReady] = useState(testMode);
@@ -74,12 +77,12 @@ export default function App() {
     playback.current = createPlayback((url) => new Audio(url), setAudioError);
   const motion = useRef<{ path: Position[]; arrive?: () => void } | null>(null);
   const dispatch = useCallback(
-    (action: Action) => {
-      const next = reduceGame(stateRef.current, action, content);
-      if (next === stateRef.current) return;
-      if (!testMode && action.type !== "move") {
+    (action: SessionAction) => {
+      const next = reduceSession(sessionRef.current, action, content);
+      if (next === sessionRef.current) return next;
+      if (!testMode && action.type !== "move" && next.phase === "day") {
         try {
-          localStorage.setItem(checkpointKey, JSON.stringify(next));
+          localStorage.setItem(checkpointKey, JSON.stringify(next.game));
         } catch {
           try {
             localStorage.removeItem(checkpointKey);
@@ -87,13 +90,15 @@ export default function App() {
           setSaveError(true);
         }
       }
-      stateRef.current = next;
-      setState(next);
+      sessionRef.current = next;
+      if (next.phase === "day") stateRef.current = next.game;
+      setSession(next);
+      return next;
     },
     [],
   );
-  const play = useCallback((url: string) => {
-    playback.current!.play(import.meta.env.BASE_URL + url.slice(1));
+  const play = useCallback((url: string, onEnded?: () => void) => {
+    playback.current!.play(import.meta.env.BASE_URL + url.slice(1), onEnded);
   }, []);
   useEffect(() => () => playback.current!.stop(), []);
   useEffect(() => {
@@ -112,29 +117,34 @@ export default function App() {
   useEffect(() => {
     if (testMode) return;
     let cancelled = false;
-    let checkpoint: GameState | null = null;
+    let checkpoint = null;
+    let localFailed = false;
     try {
       const pending = localStorage.getItem(checkpointKey);
       if (pending) checkpoint = validateSavedGame(JSON.parse(pending), content);
       if (checkpoint)
         localStorage.setItem(checkpointKey, JSON.stringify(checkpoint));
     } catch {
-      setSaveError(true);
+      localFailed = true;
     }
+    const start = (read: StartupRead) => {
+      const started = startSession(read, content, seed, opening === "skip");
+      sessionRef.current = started.session;
+      setSession(started.session);
+      if (started.saveError) setSaveError(true);
+      setReady(true);
+    };
     // Recovery is already validated and must not wait behind another tab's IDB work.
     if (checkpoint) {
-      setState(checkpoint);
-      setReady(true);
+      start({ checkpoint, saved: null, failed: localFailed });
       return;
     }
     let settled = false;
-    const finish = (saved: GameState | null, failed = false) => {
+    const finish = (saved: StartupRead["saved"], failed = false) => {
       if (cancelled || settled) return;
       settled = true;
       clearTimeout(timeout);
-      if (saved) setState(saved);
-      if (failed) setSaveError(true);
-      setReady(true);
+      start({ checkpoint: null, saved, failed: failed || localFailed });
     };
     // Queued native opens may emit neither blocked nor error. Once play starts,
     // a late snapshot must never replace the player's newer state.
@@ -146,7 +156,7 @@ export default function App() {
     };
   }, []);
   useEffect(() => {
-    if (!ready || testMode) return;
+    if (!ready || testMode || session.phase !== "day") return;
     const timer = setTimeout(() => {
       const checkpoint = JSON.stringify(state);
       saveGame(state)
@@ -157,7 +167,7 @@ export default function App() {
         .catch(() => setSaveError(true));
     }, 350);
     return () => clearTimeout(timer);
-  }, [state, ready]);
+  }, [state, ready, session.phase]);
   useEffect(() => {
     let frame: number;
     let previous = 0;
@@ -244,7 +254,7 @@ export default function App() {
     return () => {
       if (previous?.isConnected && !previous.closest("[inert]")) previous.focus();
     };
-  }, [panel, dayEndOpen, ready]);
+  }, [panel, dayEndOpen, ready, session.phase]);
   useEffect(() => {
     if (!wordOpen) return;
     const previous = wordTrigger.current;
@@ -283,12 +293,12 @@ export default function App() {
     return () => {
       document.removeEventListener("keydown", trap);
     };
-  }, [panel, wordOpen, dayEndOpen, ready, state.customers]);
+  }, [panel, wordOpen, dayEndOpen, ready, state.customers, session.phase]);
   useEffect(() => {
     const key = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         if (word) setWord(null);
-        else {
+        else if (sessionRef.current.phase === "day") {
           motion.current = null;
           setMoving(false);
           setPanel("none");
@@ -297,6 +307,7 @@ export default function App() {
       }
       if (
         !ready ||
+        sessionRef.current.phase !== "day" ||
         dayEndOpen ||
         event.defaultPrevented ||
         event.altKey ||
@@ -349,12 +360,17 @@ export default function App() {
   useEffect(() => {
     if (!testMode) return;
     const hooks = {
-      getState: () => stateRef.current,
+      getState: () => (sessionRef.current.phase === "day" ? sessionRef.current.game : null),
+      getSession: () => sessionRef.current,
       dispatch,
       reset: () => {
         motion.current = null;
         setMoving(false);
-        setState(createGame(content, seed));
+        const next = testStart();
+        sessionRef.current = next;
+        setSession(next);
+        setOpeningRun((run) => run + 1);
+        setWord(null);
         setPanel("none");
       },
       content,
@@ -416,17 +432,73 @@ export default function App() {
     if (trigger) panelTrigger.current = trigger;
   };
   if (!ready) return <main className="loading">早安，小馆正在开门。</main>;
+  const wordCard = word && (
+    <div
+      className="word-popover"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${word.hanzi}的意思`}
+    >
+      <button
+        className="close-button"
+        onClick={() => setWord(null)}
+        aria-label="关闭词卡"
+      >
+        ×
+      </button>
+      <span className="eyebrow">记在本子里</span>
+      <div className="word-card-title">
+        <h2>{word.hanzi}</h2>
+        <button
+          className="round-button"
+          aria-label="听这个词"
+          onClick={() => play(word.audio)}
+        >
+          <Speaker />
+        </button>
+      </div>
+      {content.foods.find((f) => f.word.id === word.id) && (
+        <FoodArt
+          kind={content.foods.find((f) => f.word.id === word.id)!.kind}
+        />
+      )}
+      <p className="pinyin">{word.pinyin}</p>
+    </div>
+  );
+  const brand = (
+    <a className="brand" href={import.meta.env.BASE_URL} aria-label="君言首页">
+      <span className="brand-seal">
+        君<br />言
+      </span>
+      <span>
+        君言<span className="brand-divider"> / </span>早安小馆
+      </span>
+    </a>
+  );
+  if (session.phase === "opening")
+    return (
+      <div className="app-shell">
+        <header className="topbar" inert={wordOpen}>{brand}</header>
+        <HospitalOpening
+          key={openingRun}
+          opening={session.opening}
+          content={content}
+          dispatch={dispatch}
+          play={play}
+          lookup={lookup}
+          inert={wordOpen}
+          onFinish={() => {
+            dispatch({ type: "advance", now: Date.now() });
+            setPanel("help");
+          }}
+        />
+        {wordCard}
+      </div>
+    );
   return (
     <div className="app-shell" onFocusCapture={rememberPanelTrigger} onClickCapture={rememberPanelTrigger}>
       <header className="topbar" inert={panel !== "none" || wordOpen || dayEndOpen}>
-        <a className="brand" href={import.meta.env.BASE_URL} aria-label="君言首页">
-          <span className="brand-seal">
-            君<br />言
-          </span>
-          <span>
-            君言<span className="brand-divider"> / </span>早安小馆
-          </span>
-        </a>
+        {brand}
         <nav aria-label="小馆">
           <button
             onClick={() => {
@@ -798,39 +870,7 @@ export default function App() {
           </section>
         </div>
       )}
-      {word && (
-        <div
-          className="word-popover"
-          role="dialog"
-          aria-modal="true"
-          aria-label={`${word.hanzi}的意思`}
-        >
-          <button
-            className="close-button"
-            onClick={() => setWord(null)}
-            aria-label="关闭词卡"
-          >
-            ×
-          </button>
-          <span className="eyebrow">记在本子里</span>
-          <div className="word-card-title">
-            <h2>{word.hanzi}</h2>
-            <button
-              className="round-button"
-              aria-label="听这个词"
-              onClick={() => play(word.audio)}
-            >
-              <Speaker />
-            </button>
-          </div>
-          {content.foods.find((f) => f.word.id === word.id) && (
-            <FoodArt
-              kind={content.foods.find((f) => f.word.id === word.id)!.kind}
-            />
-          )}
-          <p className="pinyin">{word.pinyin}</p>
-        </div>
-      )}
+      {wordCard}
       {dayEndOpen && (
         <div className="modal-backdrop">
           <section
