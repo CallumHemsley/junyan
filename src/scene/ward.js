@@ -107,6 +107,11 @@ bake(api) {
     let c=seam ? [190,186,170] : tile ? [222,220,206] : [234,231,218];
     const lit=g.x-(g.y+5.6)*.45, reach=g.y+5.6;
     if (reach>0 && reach<4.2 && lit>-1.75 && lit<1.15 && (reach<3.6 || hash(ix,iy)>(reach-3.6)/.6)) c=c.map((v,k)=>v*[1.04,1.02,.94][k]+[6,4,0][k]);
+    const rx=g.x-.9, ry=g.y-1.7;
+    if (Math.abs(rx)<2.3 && Math.abs(ry)<1.5) {
+      const edge=Math.min(2.3-Math.abs(rx),1.5-Math.abs(ry));
+      c = edge<.14 ? [214,190,148] : edge<.3 ? [176,118,78] : edge<.38 ? [226,204,160] : (Math.floor((rx+ry)/.38)&1) ? [204,164,112] : [196,154,104];
+    }
     const fleck=(hash(ix,iy)-.5)*6;
     pix[i]=rgb(c[0]+fleck,c[1]+fleck,c[2]+fleck);
     ground[i]=1; zb[i]=(g.x+g.y)/R2*COS;
@@ -171,9 +176,20 @@ bake(api) {
   for (let t=0;t<=1;t+=.01) plot(api,...monitorPoint(t),[84,128,108]);
   plant(-5.7,-4.85);
   plant(5.75,4.75);
-  box(5.0,-1.2,0,6.2,-.1,.85,[214,206,190]);
-  box(4.95,-1.25,.85,6.25,-.05,.92,cream);
-  for (let k=0;k<3;k++) box(5.15,-1.05+k*.32,.92,6.05,-.82+k*.32,1.08,[210,226,218]);
+  for (const x of [5.0,6.1]) for (const y of [-1.2,-.2]) {
+    capsule([x+.05,y+.05,.1],[x+.05,y+.05,.88],.035,.035,()=>metal,'solid');
+    sphere(x+.05,y+.05,.06,.06,steel,'solid');
+  }
+  box(4.98,-1.22,.28,6.22,-.08,.34,wood);
+  box(4.95,-1.25,.85,6.25,-.05,.92,wood);
+  for (const [y0,y1] of [[-1.12,-.66],[-.6,-.16]]) {
+    box(5.1,y0,.34,6.05,y1,.5,blanket);
+    box(5.12,y0+.02,.5,6.02,y1-.02,.64,[148,186,164]);
+  }
+  [[sheet,0],[[232,226,210],.04],[sheet,.02],[pillow,.06]].forEach(([color,inset],k) => {
+    box(5.1+inset,-1.1+inset,.92+k*.09,6.08-inset,-.2-inset,1.0+k*.09,color);
+  });
+  box(5.25,-1.1,1.27,5.95,-.2,1.31,[198,220,206]);
   castShadow(-3,-3.8,.4,1.3); castShadow(2.6,-3.8,.4,1.3); castShadow(-5,2.6,.4,1.2);
 },
 draw(api, frame, time) {
