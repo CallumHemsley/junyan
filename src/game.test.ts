@@ -7,6 +7,7 @@ import {
   getOrder,
   isNear,
   orderTotal,
+  recoverWords,
   reduceGame,
 } from "./game";
 
@@ -348,9 +349,9 @@ describe("determinism, journal and content safety", () => {
     let state = createGame(withCharacters, 42);
     for (const wordId of ["greeting-only", "thanks-only", "retry-only"]) {
       state = reduceGame(state, {type: "lookup", wordId, now: 123}, withCharacters);
-      expect(state.journal[wordId]).toEqual({lookups: 1, lastSeen: 123});
+      expect(state.journal[wordId]).toEqual({lookups: 1, lastSeen: 123, recovered: false});
       state = reduceGame(state, {type: "lookup", wordId, now: 456}, withCharacters);
-      expect(state.journal[wordId]).toEqual({lookups: 2, lastSeen: 456});
+      expect(state.journal[wordId]).toEqual({lookups: 2, lastSeen: 456, recovered: false});
     }
     const nextDay = reduceGame(finishDay(state), {type: "next-day"}, withCharacters);
     expect(nextDay.day).toBe(state.day + 1);
@@ -368,7 +369,11 @@ describe("determinism, journal and content safety", () => {
     state = act(state, { type: "lookup", wordId: "bun", now: 100 });
     state = act(freeze(state), { type: "lookup", wordId: "bun", now: 123 });
     state = act(state, { type: "lookup", wordId: "thanks", now: 124 });
-    expect(state.journal.bun).toEqual({ lookups: 2, lastSeen: 123 });
+    expect(state.journal.bun).toEqual({
+      lookups: 2,
+      lastSeen: 123,
+      recovered: false,
+    });
     expect(state.journal.thanks.lookups).toBe(1);
     const completed = freeze(finishDay(state));
     const next = act(completed, { type: "next-day" });
@@ -377,6 +382,45 @@ describe("determinism, journal and content safety", () => {
       act(completed, { type: "lookup", wordId: "retry", now: 125 }).journal
         .retry.lookups,
     ).toBe(1);
+  });
+
+  it("lookup keeps a recovered word recovered and counts the lookup", () => {
+    const state = freeze({
+      ...createGame(content),
+      journal: { bun: { lookups: 0, lastSeen: 5, recovered: true } },
+    });
+    expect(
+      act(state, { type: "lookup", wordId: "bun", now: 9 }).journal.bun,
+    ).toEqual({ lookups: 1, lastSeen: 9, recovered: true });
+  });
+
+  it("a lookup alone never recovers a word", () => {
+    let state = createGame(content);
+    for (let now = 1; now <= 10; now++)
+      state = act(state, { type: "lookup", wordId: "bun", now });
+    expect(state.journal.bun).toEqual({
+      lookups: 10,
+      lastSeen: 10,
+      recovered: false,
+    });
+  });
+
+  it("recoverWords marks words recovered without touching lookups", () => {
+    const journal = freeze({
+      bun: { lookups: 3, lastSeen: 7, recovered: false },
+      milk: { lookups: 1, lastSeen: 2, recovered: true },
+    });
+    const next = recoverWords(journal, ["bun", "egg", "milk"], 20);
+    expect(next).toEqual({
+      bun: { lookups: 3, lastSeen: 7, recovered: true },
+      egg: { lookups: 0, lastSeen: 20, recovered: true },
+      milk: { lookups: 1, lastSeen: 2, recovered: true },
+    });
+    expect(next.milk).toBe(journal.milk);
+    expect(journal.bun.recovered).toBe(false);
+    expect(journal).not.toHaveProperty("egg");
+    expect(recoverWords(next, ["bun", "egg", "milk"], 30)).toBe(next);
+    expect(recoverWords(journal, [], 30)).toBe(journal);
   });
 
   it("does not mutate frozen state or content through an entire day", () => {

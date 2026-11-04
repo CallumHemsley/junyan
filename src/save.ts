@@ -34,7 +34,11 @@ const stateSchema = z.object({
     .nullable(),
   journal: z.record(
     z.string(),
-    z.object({ lookups: z.number().int().nonnegative(), lastSeen: boundedNumber }),
+    z.object({
+      lookups: z.number().int().nonnegative(),
+      lastSeen: boundedNumber,
+      recovered: z.boolean().default(true),
+    }),
   ),
   ended: z.boolean(),
 });

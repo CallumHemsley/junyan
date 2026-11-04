@@ -43,7 +43,7 @@ async function stored(page: Page): Promise<GameState> {
   });
 }
 
-async function installSave(page: Page, state: GameState) {
+async function installSave(page: Page, state: object) {
   await page.goto("/?test=1");
   await page.evaluate(async (save) => {
     const db = await new Promise<IDBDatabase>((resolve, reject) => {
@@ -104,4 +104,24 @@ test("completed IndexedDB save advances days and preserves journal and earnings"
   await page.getByRole("button", { name: /本子/ }).click();
   await expect(page.locator(".journal-list")).toContainText(content.foods[0].word.hanzi);
   await page.screenshot({ path: `output/playwright/save-${info.project.name}-journal-next-day.png`, fullPage: true });
+});
+
+function legacyDay() {
+  return { ...createGame(content), journal: { bun: { lookups: 2, lastSeen: 1.5 } } };
+}
+
+test("legacy IndexedDB journal loads as recovered and keeps counting lookups", async ({ page }) => {
+  await installSave(page, legacyDay());
+  await expect.poll(async () => (await stored(page))?.journal.bun).toEqual({ lookups: 2, lastSeen: 1.5, recovered: true });
+  await page.getByRole("button", { name: /本子/ }).click();
+  await page.locator(".journal-list button", { hasText: "包子" }).click();
+  await expect.poll(async () => (await stored(page))?.journal.bun).toMatchObject({ lookups: 3, recovered: true });
+});
+
+test("legacy checkpoint is rewritten and cleared after autosave", async ({ page }) => {
+  await page.goto("/?test=1");
+  await page.evaluate((state) => localStorage.setItem("junyan-waiter-pending-v1", JSON.stringify(state)), legacyDay());
+  await page.goto("/?seed=42");
+  await expect.poll(() => page.evaluate(() => localStorage.getItem("junyan-waiter-pending-v1"))).toBeNull();
+  expect((await stored(page)).journal.bun).toEqual({ lookups: 2, lastSeen: 1.5, recovered: true });
 });

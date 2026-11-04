@@ -44,7 +44,7 @@ describe('offline Mandarin content', () => {
       for (const word of line.tokens) {
         expect(knownWords).toContainEqual(word);
         const state = reduceGame(createGame(content, 42), {type: 'lookup', wordId: word.id, now: 123}, content);
-        expect(state.journal[word.id]).toEqual({lookups: 1, lastSeen: 123});
+        expect(state.journal[word.id]).toEqual({lookups: 1, lastSeen: 123, recovered: false});
       }
     }
   });

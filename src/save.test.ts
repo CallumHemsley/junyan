@@ -4,6 +4,8 @@ import { KITCHEN, TABLES, type Action, type Content, type GameState } from "./co
 import { createGame, getOrder, orderTotal, reduceGame } from "./game";
 import { loadGame, saveGame, validateSavedGame } from "./save";
 
+type LegacyJournal = Record<string, { lookups: number; lastSeen: number; recovered?: unknown }>;
+
 function storageBoundary(value: unknown = createGame(content)) {
   const error = new DOMException("Storage unavailable", "UnknownError");
   const request = {
@@ -136,18 +138,21 @@ describe("IndexedDB recovery", () => {
     const apply = (action: Action) => { state = reduceGame(state, action, content); };
     serve(state, 1, apply);
     apply({ type: "move", position: KITCHEN });
-    state.journal["retired-word"] = { lookups: 3, lastSeen: 1.5 };
-    const storage = storageBoundary(state);
+    const journal: LegacyJournal = { ...state.journal, "retired-word": { lookups: 3, lastSeen: 1.5 } };
+    const storage = storageBoundary({ ...state, journal });
     const pending = loadGame(content);
     await storage.connect();
     storage.request.onsuccess?.();
     storage.transaction.oncomplete?.();
-    expect(await pending).toEqual(state);
+    expect(await pending).toEqual({
+      ...state,
+      journal: { ...state.journal, "retired-word": { lookups: 3, lastSeen: 1.5, recovered: true } },
+    });
     expect(storage.db.close).toHaveBeenCalledOnce();
   });
 
   it("restores the v1 progress format from product baseline 5dfad15", async () => {
-    const historical: GameState = {
+    const historical = {
       seed: 955863294, day: 1, level: 1,
       player: { x: 3, y: 2.5 },
       customers: [
@@ -166,7 +171,10 @@ describe("IndexedDB recovery", () => {
     await storage.connect();
     storage.request.onsuccess?.();
     storage.transaction.oncomplete?.();
-    expect(await pending).toEqual(historical);
+    expect(await pending).toEqual({
+      ...historical,
+      journal: { bun: { lookups: 2, lastSeen: 1.5, recovered: true } },
+    });
   });
 });
 
@@ -233,8 +241,29 @@ describe("saved-state domain validation", () => {
 
   it("retains old journal word IDs and non-integer finite timestamps", () => {
     const state = createGame(content);
-    state.journal["retired-word"] = { lookups: 2, lastSeen: 1.5 };
-    expect(validateSavedGame(state, content)).toEqual(state);
+    const journal: LegacyJournal = {
+      "retired-word": { lookups: 2, lastSeen: 1.5 },
+      "looked-up": { lookups: 0, lastSeen: 0, recovered: false },
+    };
+    expect(validateSavedGame({ ...state, journal }, content)).toEqual({
+      ...state,
+      journal: {
+        "retired-word": { lookups: 2, lastSeen: 1.5, recovered: true },
+        "looked-up": { lookups: 0, lastSeen: 0, recovered: false },
+      },
+    });
+  });
+
+  it("treats a journal word saved without a recovery flag as recovered", () => {
+    const state = createGame(content);
+    const journal: LegacyJournal = {
+      legacy: { lookups: 4, lastSeen: 2 },
+      unrecovered: { lookups: 1, lastSeen: 3, recovered: false },
+    };
+    expect(validateSavedGame({ ...state, journal }, content)?.journal).toEqual({
+      legacy: { lookups: 4, lastSeen: 2, recovered: true },
+      unrecovered: { lookups: 1, lastSeen: 3, recovered: false },
+    });
   });
 
   it("retains an earlier receipt while another customer rejects the change", () => {
@@ -269,7 +298,8 @@ describe("saved-state domain validation", () => {
     ["seated active table", (state) => { state.activeTable = 1; }],
     ["unserved receipt", (state) => { state.receipt = { table: 1, total: 0, change: 0 }; }],
     ["blocked player", (state) => { state.player = { x: 3, y: 4 }; }],
-    ["negative timestamp", (state) => { state.journal.word = { lookups: 1, lastSeen: -1 }; }],
+    ["negative timestamp", (state) => { state.journal.word = { lookups: 1, lastSeen: -1, recovered: false }; }],
+    ["non-boolean recovered flag", (state) => { (state.journal as LegacyJournal).word = { lookups: 1, lastSeen: 0, recovered: "yes" }; }],
     ["unsafe counter", (state) => { state.mistakes = Number.MAX_SAFE_INTEGER + 1; }],
     ["negative seed", (state) => { state.seed = -1; }],
     ["out-of-range seed", (state) => { state.seed = 0x100000000; }],
@@ -299,6 +329,8 @@ describe("saved-state domain validation", () => {
     expect(validateSavedGame({ ...state, player: { x: invalid, y: 2 } }, content)).toBeNull();
     expect(validateSavedGame({ ...state, journal: { word: { lookups: invalid, lastSeen: 0 } } }, content)).toBeNull();
     expect(validateSavedGame({ ...state, journal: { word: { lookups: 1, lastSeen: invalid } } }, content)).toBeNull();
+    expect(validateSavedGame({ ...state, journal: { word: { lookups: invalid, lastSeen: 0, recovered: true } } }, content)).toBeNull();
+    expect(validateSavedGame({ ...state, journal: { word: { lookups: 1, lastSeen: invalid, recovered: true } } }, content)).toBeNull();
   });
 
   it("rejects orders made unplayable by current content", () => {
