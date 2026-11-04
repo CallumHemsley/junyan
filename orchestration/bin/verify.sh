@@ -16,7 +16,7 @@ echo "[$(date -u +%FT%TZ)] verify start" >> orchestration/log/journal.md
     grep -q '"typecheck"' package.json && { pnpm typecheck 2>&1 || code=1; }
     grep -q '"test"' package.json && { pnpm test 2>&1 || code=1; }
     grep -q '"build"' package.json && { pnpm build 2>&1 || code=1; }
-    grep -q '"e2e"' package.json && { pnpm e2e 2>&1 || code=1; }
+    grep -q '"test:e2e"' package.json && { pnpm test:e2e 2>&1 || code=1; }
   fi
   echo "verify exit $code"
   ls -la verify 2>/dev/null

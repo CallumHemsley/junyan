@@ -13,7 +13,7 @@ Your paths (you own these; do not edit anything else): [list of files and folder
 Interfaces you must keep: [types, schema files, function signatures other tickets rely on].
 Your Vite port: [518X]. Set `server.port` to it with `strictPort: true`; point Playwright's baseURL at it.
 
-Rules that fail review if broken: Chinese only in the UI, no pinyin on screen, no English; accent colour only on the new-word dot and the 多谢 chop; rules pure and tested; real DOM text for Chinese; tokens from tokens.css, never ad hoc colours; 44px touch targets; respect prefers-reduced-motion; no paid APIs; no global installs.
+Rules that fail review if broken: Chinese only in the UI, no pinyin on screen, no English except the hospital opening's premise lines that decision 0004 bounds; accent colour only on the new-word dot and the 多谢 chop; rules pure and tested; real DOM text for Chinese; tokens from tokens.css, never ad hoc colours; 44px touch targets; respect prefers-reduced-motion; no paid APIs; no global installs.
 
 Do not run git commit (your sandbox cannot write .git; the harness commits your work when you finish). Run `pnpm verify` (or the subset that exists: typecheck, test, build) before you finish. If something you need is missing from another ticket, stub it minimally behind the agreed interface and say so in your final message.
 

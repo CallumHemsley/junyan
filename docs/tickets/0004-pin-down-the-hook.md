@@ -16,7 +16,7 @@ created: 2026-10-25
 - A one-page pitch in `docs/ideas/pitch.md`: the setting, what the player wants, the core loop in one paragraph, the shape of a 20-minute session, and why tomorrow's session is desirable.
 - A sketch of how domains branch (which domain is first, what opens the second and third, in-fiction).
 - Three concrete scenes for a vertical slice.
-- Explicit list of what the game is *not* (no streaks, no XP, no comprehension percentage, no English).
+- Explicit list of what the game is *not* (no streaks, no XP, no comprehension percentage, no English after the opening).
 
 ## Notes
 

@@ -12,7 +12,7 @@ A breakfast stall on a cold morning: an 早餐店 with steam rising off the bask
 
 ## Content fundamentals
 
-**Chinese only.** No English, no pinyin. Every string is simplified Chinese and every spoken line is voiced. Pinyin appears only when a word is tapped, beside its picture, and the tap is logged as a lookup ([[decisions/0001-first-language]]).
+**Chinese only.** No English, no pinyin. Every string is simplified Chinese and every spoken line is voiced. The one exception is the hospital opening's voiced English premise lines ([[decisions/0004-hospital-opening]]). Pinyin appears only when a word is tapped, beside its picture, and the tap is logged as a lookup ([[decisions/0001-first-language]]).
 
 **Labels are what the stall would say.** 找零, not 退款按钮. 本子, not 词汇表. 下一位 小李, not 队列. 第二天, not 第 2 关. If a label would need a word the player hasn't met, it becomes an icon.
 
@@ -83,7 +83,7 @@ Icons are Lucide-style line icons: a 24 viewBox drawn at **20px**, stroke **1.75
 - Something picked up is `surface-raised` + `radius-tile`, no border.
 - A slot to fill is transparent with a dashed `slot-edge`, labelled in `text-secondary` (找零).
 - A tile whose item is on the counter goes transparent with a dashed `hairline-strong` edge, art at 35%, its word in `text-secondary`.
-- Word tokens are real buttons with a 2px `hairline` underline. A new word adds the `word-marker` dot and nothing else: no colour, no bold, no gloss.
+- Word tokens are real buttons with a 2px `hairline` underline. A newly recovered word adds the `word-marker` dot and nothing else (no colour, no bold, no gloss). An unrecovered word wears the fog style, which ticket 0056 adds to the tokens.
 - One dark filled control per screen: the 继续 circle. Replay sits beside it in `surface-control`.
 - `text-muted` never sets text under 24px.
 - Touch targets are 44px minimum; a 40px phone circle gets a 44px hit area.
@@ -112,4 +112,4 @@ Set `font-family: var(--font-sans)` on `body` and `var(--font-serif)` only on th
 3. **Touch targets are at least 44×44px.** That covers tokens, tiles, money, the replay and 继续 buttons, and any chip that becomes a button. Pad the hit area if the visible shape is smaller.
 4. **Respect reduced motion.** Under `prefers-reduced-motion: reduce`, stop the steam loop (static at about 50% opacity), drop translate and scale, and keep only fades of 120ms or less. Use only `--ease`, and only the three durations.
 5. **Every icon-only control has a Chinese `aria-label`**, and decorative SVG is `aria-hidden="true"`.
-6. **No English, pinyin or emoji in the game UI.** Pinyin appears only in the tap-to-reveal word card.
+6. **No English, pinyin or emoji in the game UI.** The opening's English premise lines are story text, not UI, and decision 0004 bounds them. Pinyin appears only in the tap-to-reveal word card.

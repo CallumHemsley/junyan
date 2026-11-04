@@ -16,7 +16,7 @@ Use short unique ids (j001, j002, ...). The runner keeps at most three `worker` 
 
 ## Goal
 
-A playable first slice of Junyan, "the breakfast stall, day one", that **feels like a fun, animated, interactive game** when a person opens it in a browser on a phone or a laptop. Not a demo of a dialogue box: a game with juice, feedback, rhythm and charm, in the chosen art direction, with no English or pinyin anywhere in the interface.
+A playable first slice of Junyan, "the breakfast stall, day one", that **feels like a fun, animated, interactive game** when a person opens it in a browser on a phone or a laptop. Not a demo of a dialogue box: a game with juice, feedback, rhythm and charm, in the chosen art direction, with no English or pinyin anywhere in the interface. The only English is the hospital opening's voiced premise lines, bounded by decision 0004.
 
 Done means ticket 6 (`docs/tickets/0006-breakfast-stall-vertical-slice.md`) is satisfied **and** the fun grade (below) reaches the bar. Until both, keep looping.
 
@@ -48,7 +48,7 @@ At most **3 workers at a time**. Workers never share files: split tickets so eac
 
 ## Hard rules
 
-- Everything is Chinese in the game UI. A worker that adds English or pinyin to the interface has failed review.
+- Everything is Chinese in the game UI. The one exception is the hospital opening's English premise lines as decision 0004 bounds them, DOM text with lang="en", voiced, and all before the first Chinese line. A worker that adds English anywhere else, or pinyin to the interface, has failed review.
 - The accent colour only ever touches words (new-word dot, 多谢 chop). No ticks, no green "correct".
 - Rules are pure and tested; rendering is thin; content is Zod-validated JSON; real DOM text for all Chinese.
 - Use the design tokens, not ad hoc colours. Use the existing audio clips in `docs/ideas/prototype-counter/audio/` (copy them into `public/audio/`); do not call any paid API.
