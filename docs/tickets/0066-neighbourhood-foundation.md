@@ -36,4 +36,4 @@ Owner `/root/foundation_writer`. Branch `codex/0066-neighbourhood-foundation`. C
 
 The coordinator approved the optional embedded neighbourhood envelope. See [integration plan](../evidence/0066/integration-plan.md) for the state comparison, runtime flow, throughput checkpoint, and exact shared patches. Existing shared-file leases remain blocked until explicit handoff.
 
-Standalone contracts, per-feature save validation, navigation, gift idempotency, and the DOM token line are implemented. Integrated verification and independent review remain incomplete.
+Standalone contracts, per-feature save validation, navigation, gift idempotency, and the DOM token line are implemented. Independent `/root/foundation_review` found no concrete defects in the first standalone unit at `8939b42` and reran all ten focused tests successfully. The content-registry unit and integrated verification remain incomplete pending independent review and shared-file handoff. Draft [PR 19](https://github.com/CallumHemsley/junyan/pull/19) records the current scope.
