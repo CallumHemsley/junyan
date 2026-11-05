@@ -1,0 +1,59 @@
+{
+  "runtimeHead": "77795742da738de2b93506b73a9f40d98717a243",
+  "status": "PASS",
+  "limits": "Focused native-browser layout supplement. No listening or final independent approval claimed.",
+  "results": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 320
+      },
+      "pane": {
+        "x": 58,
+        "y": 56,
+        "width": 250,
+        "height": 126
+      },
+      "toggle": {
+        "x": 75,
+        "y": 73,
+        "width": 216,
+        "height": 44
+      },
+      "slider": {
+        "x": 117.015625,
+        "y": 119,
+        "width": 171.984375,
+        "height": 44
+      },
+      "screenshot": "docs/evidence/0063/screenshots/short-320x320.png",
+      "errors": []
+    },
+    {
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "pane": {
+        "x": 306,
+        "y": 56,
+        "width": 250,
+        "height": 126
+      },
+      "toggle": {
+        "x": 323,
+        "y": 73,
+        "width": 216,
+        "height": 44
+      },
+      "slider": {
+        "x": 365.015625,
+        "y": 119,
+        "width": 171.984375,
+        "height": 44
+      },
+      "screenshot": "docs/evidence/0063/screenshots/short-568x320.png",
+      "errors": []
+    }
+  ]
+}
