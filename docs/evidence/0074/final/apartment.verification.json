@@ -1,0 +1,81 @@
+{
+  "sourceSha": "7b27ca44a7ed5c9a0eebb45a6a06145beb381287",
+  "video": "/private/tmp/junyan-neighbourhood-demos/output/playwright/neighbourhood-tour/apartment.mp4",
+  "videoSha256": "257696167059e5c465766a2fbd7fbe75bb9b11ea22410120b5dc57bcb4061cb0",
+  "durationSeconds": 15.938,
+  "audioRmsAt2000Hz": 0.04016185593224462,
+  "audioPeakAt2000Hz": 0.4669148623943329,
+  "speechMatches": [
+    {
+      "src": "/audio/apartment/line-welcome.wav",
+      "sha256": "de6e355392681a38fe75d2e788feb038055af3e8b3dc5a7b493bd947751a20f8",
+      "atSeconds": 0.5580000000000069,
+      "complete": true,
+      "label": "apartment",
+      "normalizedWaveformCorrelation": 0.9997730460368435,
+      "matchedSourceStartSeconds": 0.5395,
+      "alignmentDifferenceSeconds": -0.0185
+    },
+    {
+      "src": "/audio/apartment/line-okay.wav",
+      "sha256": "0c0f28b0af44002f1f18906e6790ebfd6e2170b87f3becd1e926fe07550f3e12",
+      "atSeconds": 14.27600000000001,
+      "complete": true,
+      "label": "late",
+      "normalizedWaveformCorrelation": 0.9067271729950105,
+      "matchedSourceStartSeconds": 14.257,
+      "alignmentDifferenceSeconds": -0.019
+    }
+  ],
+  "actualPlayingEvents": [
+    {
+      "src": "/audio/apartment/line-welcome.wav",
+      "sha256": "de6e355392681a38fe75d2e788feb038055af3e8b3dc5a7b493bd947751a20f8",
+      "atSeconds": 0.5580000000000069,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-window.wav",
+      "sha256": "6c63baa5158ab3ef6c19f4f6d954e74a9339ccd22f3130d6fca28b4f9f7ccd01",
+      "atSeconds": 3.193000000000012,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-window.wav",
+      "sha256": "6c63baa5158ab3ef6c19f4f6d954e74a9339ccd22f3130d6fca28b4f9f7ccd01",
+      "atSeconds": 6.060000000000002,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-okay.wav",
+      "sha256": "0c0f28b0af44002f1f18906e6790ebfd6e2170b87f3becd1e926fe07550f3e12",
+      "atSeconds": 10.293000000000006,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-rotate.wav",
+      "sha256": "c11a9fa1a9617d542470713cf562d11b4943d1099df8548a815880de66d1b042",
+      "atSeconds": 12.444000000000003,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-okay.wav",
+      "sha256": "0c0f28b0af44002f1f18906e6790ebfd6e2170b87f3becd1e926fe07550f3e12",
+      "atSeconds": 14.27600000000001,
+      "complete": true
+    }
+  ],
+  "sourceSegmentsSeconds": [
+    [
+      71.478,
+      87.416
+    ]
+  ],
+  "browserErrors": [],
+  "method": "Native game HTMLMediaElement output routed to WebAudio MediaRecorder. Timed browser screenshots muxed with the live recorded audio. No replacement audio or speech synthesis. Normal browser autoplay policy. Dev hooks only read state; rehearsal skips opening.",
+  "limits": [
+    "Runtime audio routing is instrumented.",
+    "Timed screenshots do not capture every display frame.",
+    "No independent physical speaker audition or Mandarin pronunciation review claimed."
+  ]
+}

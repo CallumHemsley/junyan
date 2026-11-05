@@ -1,0 +1,471 @@
+{
+  "sourceSha": "7b27ca44a7ed5c9a0eebb45a6a06145beb381287",
+  "video": "/private/tmp/junyan-neighbourhood-demos/output/playwright/neighbourhood-tour/walkthrough.mp4",
+  "videoSha256": "327f4172035289837d949c4ce7326812bff1a35866f4d79f74e34754b8cc1037",
+  "durationSeconds": 296.433333,
+  "audioRmsAt2000Hz": 0.056302463096519366,
+  "audioPeakAt2000Hz": 1.0481265783309937,
+  "speechMatches": [
+    {
+      "src": "/audio/apartment/line-welcome.wav",
+      "sha256": "de6e355392681a38fe75d2e788feb038055af3e8b3dc5a7b493bd947751a20f8",
+      "atSeconds": 72.036,
+      "complete": true,
+      "label": "apartment",
+      "normalizedWaveformCorrelation": 0.9997736075042788,
+      "matchedSourceStartSeconds": 72.0205,
+      "alignmentDifferenceSeconds": -0.0155
+    },
+    {
+      "src": "/audio/cats/line-clue.wav",
+      "sha256": "42db022a8e8d49976d841beefa25e7ed5db4df26048fe00f1f406c0bf882541e",
+      "atSeconds": 87.962,
+      "complete": true,
+      "label": "cats",
+      "normalizedWaveformCorrelation": 0.8585284764260531,
+      "matchedSourceStartSeconds": 87.946,
+      "alignmentDifferenceSeconds": -0.016
+    },
+    {
+      "src": "/audio/repairs/line-lamp-intro.wav",
+      "sha256": "71d41fc395b5a7c1ae683b99bf1d18a02dbb633dc39cf1bd8103edab5064e8c2",
+      "atSeconds": 121.631,
+      "complete": true,
+      "label": "repairs",
+      "normalizedWaveformCorrelation": 0.9478554355083407,
+      "matchedSourceStartSeconds": 121.615,
+      "alignmentDifferenceSeconds": -0.016
+    },
+    {
+      "src": "/audio/garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+      "sha256": "cd8559de9a0c904899bd4f8b0cc1143df9343f9960f9328ed40c952e1b290bb8",
+      "atSeconds": 171.701,
+      "complete": true,
+      "label": "garden",
+      "normalizedWaveformCorrelation": 0.9997326840291948,
+      "matchedSourceStartSeconds": 171.6845,
+      "alignmentDifferenceSeconds": -0.0165
+    },
+    {
+      "src": "/audio/apartment/line-gift.wav",
+      "sha256": "971dfc1ae522c0e8347cc7c94aec1985540b393a079ded55b42d353fa2b00dbb",
+      "atSeconds": 292.675,
+      "complete": true,
+      "label": "late",
+      "normalizedWaveformCorrelation": 0.9998534640744322,
+      "matchedSourceStartSeconds": 292.6605,
+      "alignmentDifferenceSeconds": -0.0145
+    }
+  ],
+  "actualPlayingEvents": [
+    {
+      "src": "/audio/english-6943a193437e386984125593e818597c260bb560291655e0bdc00a4216645699.wav",
+      "sha256": "4db85c527882990e6d76c2e8a66e455a2dea28223b792bd546190af44a193501",
+      "atSeconds": 0.572,
+      "complete": true
+    },
+    {
+      "src": "/audio/english-43f6e07bb0dded0b2c1749943ace0f969c9114a050da92befd5ab01ebe3bbb24.wav",
+      "sha256": "d183860a562c1f517b2abb6debb7da19c55d715fa52cd39ac39f4c8f61e05fe9",
+      "atSeconds": 6.29,
+      "complete": true
+    },
+    {
+      "src": "/audio/english-4265e3caa9e44db5b6233d1b144c34ab00974e8920452a2243c7dbb18900c5cb.wav",
+      "sha256": "e16cff6619fb9e673486a7edefcda7110469fe0fedcad431b4ae2e225ebd0d47",
+      "atSeconds": 11.055,
+      "complete": true
+    },
+    {
+      "src": "/audio/english-2a80e2a0c137b91d7de37cb1b82f30b6e208448a302292cc7e7c846005dca422.wav",
+      "sha256": "44355f244c358246dc361c551ad06bc7b07d52ba03c1c3f2bcd45f43e03449a9",
+      "atSeconds": 16.79,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-a67bca4ef54afdc7a84aec2dac9f74b2fea9a4d1bfcf317e8e56f193495a9067.wav",
+      "sha256": "97e88e936326ed1c16c27cdcaff6153b629d2977ef212bd3f819cade799277ec",
+      "atSeconds": 23.388,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-90e476270f3b2a916a2521db11f50ef25d592a7a7be165e8f693179d2e9626f4.wav",
+      "sha256": "d4ef74c5ecbec667095675e7ee38342cfd6b45df8abc499eacd99873d9299000",
+      "atSeconds": 27.904,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-2cefc3fe62be59203c6ef07c91f4342efc18641473fa68dacd7f54f31a90aa1b.wav",
+      "sha256": "c711c6bec0097b01d74d90839a4d6c29a8790647bbd3afeec280774ad75a3909",
+      "atSeconds": 31.472,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-aa4ed24a26a593973279ebe664cfff1b1241682cf17d0e2fee03508224ecde88.wav",
+      "sha256": "bad3e4e2d9c83246b6ac71672339b6d472cd38e5062b78043d6332ae123b219f",
+      "atSeconds": 37.037,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-60ee82fdaf489803f5b64b4578ec054294c5b240d1f13d1c4c485ebbfde4b834.wav",
+      "sha256": "5575c662f354cc96d3a3296635168beaf33160bfee1f1bec9a2b76dbc41971bf",
+      "atSeconds": 38.953,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-f8c7a10d6944e2c84304d52a08300578d078efc600b295e85527303f6a5b7292.wav",
+      "sha256": "dd2dd017bb62acee753d73678219a548e4bc131f6f94b379d9a6191ed5c05cc4",
+      "atSeconds": 42.453,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-415ee408485a84b18d42973ab6656bacd01093a8526eec3dbf5d73b5c1a00bfb.wav",
+      "sha256": "e4c90f056b2bbeb7bd270c6f1063c12643385f84d706d7646a4bb48d4c5e9060",
+      "atSeconds": 45.404,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-fe9a2148bde5c6362d962173b6c4c215ae28e9f9b593e61392e835575e61290f.wav",
+      "sha256": "d42c0b6579ad2034cd4789dcf95b283be2a26ce15aefd84b085ddc484e5c54ca",
+      "atSeconds": 50.719,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-ef0ccd086af0852f76641f13674a0201588795d4affc459517fde7d15d994f33.wav",
+      "sha256": "d88c1a273515886687f7e0c1fd72dd6d1076a5939742b674096981b1d36836c5",
+      "atSeconds": 54.52,
+      "complete": true
+    },
+    {
+      "src": "/audio/word-19be6bbebac3dbb7894517bbd13de46a628667976c0f109d45525b89ef1012f7.wav",
+      "sha256": "b2364cef66b62c07c8b2051c874b9cf074aadcbbd8f6a5c60ead4132668ba3ad",
+      "atSeconds": 61.352,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-975aa18414a1d110b21a741333eff15de46220f50c0d235d17002500117a7dba.wav",
+      "sha256": "3bd38c819bd5eaec34fa1382c9eaa1bb3d536160fa8dc98cc266e8c5d9c88cab",
+      "atSeconds": 62.714,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-822420cdb693503c25a930e8f1ee5225bc2b2ce2c53027ff2ffce78b3cb4e785.wav",
+      "sha256": "fd3c302e1c46d7227f01d2b03fdb97aeb6b7535f768d8b185093767574fc0a34",
+      "atSeconds": 65.355,
+      "complete": true
+    },
+    {
+      "src": "/audio/ambience/breakfast.mp3",
+      "sha256": "c0f60e4c71c3fbbfabf2863495e44749c02394d05015216da89ad95d576459f1",
+      "atSeconds": 69.018,
+      "complete": false
+    },
+    {
+      "src": "/audio/apartment/line-welcome.wav",
+      "sha256": "de6e355392681a38fe75d2e788feb038055af3e8b3dc5a7b493bd947751a20f8",
+      "atSeconds": 72.036,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-window.wav",
+      "sha256": "6c63baa5158ab3ef6c19f4f6d954e74a9339ccd22f3130d6fca28b4f9f7ccd01",
+      "atSeconds": 74.671,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-window.wav",
+      "sha256": "6c63baa5158ab3ef6c19f4f6d954e74a9339ccd22f3130d6fca28b4f9f7ccd01",
+      "atSeconds": 77.538,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-okay.wav",
+      "sha256": "0c0f28b0af44002f1f18906e6790ebfd6e2170b87f3becd1e926fe07550f3e12",
+      "atSeconds": 81.771,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-rotate.wav",
+      "sha256": "c11a9fa1a9617d542470713cf562d11b4943d1099df8548a815880de66d1b042",
+      "atSeconds": 83.922,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-okay.wav",
+      "sha256": "0c0f28b0af44002f1f18906e6790ebfd6e2170b87f3becd1e926fe07550f3e12",
+      "atSeconds": 85.754,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-clue.wav",
+      "sha256": "42db022a8e8d49976d841beefa25e7ed5db4df26048fe00f1f406c0bf882541e",
+      "atSeconds": 87.962,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-bicycle-clue.wav",
+      "sha256": "5decb5d63ba1ebb276a39707b2770083e759d64d271053fe9755b1082c1c5753",
+      "atSeconds": 90.755,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-gentle.wav",
+      "sha256": "d50c026222a7696eda001ba4f85bfd7d3a1afdb432c2113cfecfc3ff475bc912",
+      "atSeconds": 94.187,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-crouched.wav",
+      "sha256": "c55458bda9c3ae17b3fab7bd72f3b81aafcdbee28b83e6deaf8115a24b53bf3a",
+      "atSeconds": 98.337,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-emerged.wav",
+      "sha256": "519dd3028d939f4ea4d0f984344aa0aa26c8a783b1b449d5d49aa5787f700066",
+      "atSeconds": 102.404,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-invited.wav",
+      "sha256": "c5fc8073e2c8e3b59a1ae0c87f7a89248147c7f0a755b38e0c7665dbb9e34ec6",
+      "atSeconds": 105.918,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-doorway.wav",
+      "sha256": "9b826e9f5f480feea16a4eb226f6c55e2826e6cea603eb67304741385fe50105",
+      "atSeconds": 110.636,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-reunion.wav",
+      "sha256": "076e9809cffd40e137029ade60ffeda5ef72ef006cbc6e5e02500827528b04a4",
+      "atSeconds": 113.269,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-gift.wav",
+      "sha256": "971dfc1ae522c0e8347cc7c94aec1985540b393a079ded55b42d353fa2b00dbb",
+      "atSeconds": 119.428,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-lamp-intro.wav",
+      "sha256": "71d41fc395b5a7c1ae683b99bf1d18a02dbb633dc39cf1bd8103edab5064e8c2",
+      "atSeconds": 121.631,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-lamp-tight.wav",
+      "sha256": "3bebbe46d87007e016deb8858bbb5fbe715994128d524edb0825a7ffa55c974c",
+      "atSeconds": 126.919,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-lamp-steady.wav",
+      "sha256": "3dee7aefc2ec58b49f266b456ef4a188474c89e5dd3f9c71d5fbb8bfd7ce8c59",
+      "atSeconds": 131.553,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-lamp-returned.wav",
+      "sha256": "f60d966803b8404cd23c03b8e689d2a13bfda2133b9946078dd2f5040af396a0",
+      "atSeconds": 134.669,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-closed.wav",
+      "sha256": "70da1247737c78f4e7c4856dfaca761fec77962e41e7fa7591255bc0504c63e2",
+      "atSeconds": 137.069,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-open.wav",
+      "sha256": "85626cf8bceda79abc28fe4f7ab4dab0dfc6caf6759b3ef5e085881ac24bb98f",
+      "atSeconds": 141.867,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-connect.wav",
+      "sha256": "ec1e16101f9884da8f2989664b78d6ae120c2a36ac68de9cb03436bb9b18ebbf",
+      "atSeconds": 146.467,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-cell.wav",
+      "sha256": "5096a18112a11be723fa7130eabaa07146ba125aba528aabdb08c65e45f880ab",
+      "atSeconds": 151.183,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-closed.wav",
+      "sha256": "70da1247737c78f4e7c4856dfaca761fec77962e41e7fa7591255bc0504c63e2",
+      "atSeconds": 156.299,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-moving.wav",
+      "sha256": "64c5326698a24c21dec0b793c6e70f3c95ab9f66c1c9ce8e6be882c5dd9d084b",
+      "atSeconds": 159.717,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-all-complete.wav",
+      "sha256": "d6288256b0c28bb1358d16f8e88fa256e0b3505120b12b5f2bbac14cfb29754d",
+      "atSeconds": 162.915,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-gift.wav",
+      "sha256": "971dfc1ae522c0e8347cc7c94aec1985540b393a079ded55b42d353fa2b00dbb",
+      "atSeconds": 168.113,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+      "sha256": "cd8559de9a0c904899bd4f8b0cc1143df9343f9960f9328ed40c952e1b290bb8",
+      "atSeconds": 171.701,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-c686ce578b68292f0f70784b43dd8dbf7989e1dbf9c4ad925445822942220c3b.wav",
+      "sha256": "dc42001469fe9acefd948e3c3d4e976d46575abe757b62a7e54532375605e8a8",
+      "atSeconds": 178.014,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+      "sha256": "cd8559de9a0c904899bd4f8b0cc1143df9343f9960f9328ed40c952e1b290bb8",
+      "atSeconds": 181.218,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-c686ce578b68292f0f70784b43dd8dbf7989e1dbf9c4ad925445822942220c3b.wav",
+      "sha256": "dc42001469fe9acefd948e3c3d4e976d46575abe757b62a7e54532375605e8a8",
+      "atSeconds": 185.298,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+      "sha256": "cd8559de9a0c904899bd4f8b0cc1143df9343f9960f9328ed40c952e1b290bb8",
+      "atSeconds": 188.503,
+      "complete": true
+    },
+    {
+      "src": "/audio/ambience/breakfast.mp3",
+      "sha256": "c0f60e4c71c3fbbfabf2863495e44749c02394d05015216da89ad95d576459f1",
+      "atSeconds": 192.645,
+      "complete": false
+    },
+    {
+      "src": "/audio/line-bc2aada2cb0ccd83e698c6b0e9eca6bf96fc96aad382bcabb1fe7a82b8d105ca.wav",
+      "sha256": "617553ae2df324c92baa103f9430f97ba08be753f3417803706c5adfefcd7211",
+      "atSeconds": 194.557,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-bc2aada2cb0ccd83e698c6b0e9eca6bf96fc96aad382bcabb1fe7a82b8d105ca.wav",
+      "sha256": "617553ae2df324c92baa103f9430f97ba08be753f3417803706c5adfefcd7211",
+      "atSeconds": 203.401,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-7cec562dce16587a3d3072fb7e37ef728c1e652e315d18c300266abffb223067.wav",
+      "sha256": "8f3fb8e9abef8e79b94a0c79c4fb3c075b06a954f51c66fdacb1f0d15c9b3cdd",
+      "atSeconds": 213.264,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-7429c0cef3ad319cb9b11fb2cf220d473810047abf41ff67f82439e159ea431c.wav",
+      "sha256": "8f8c5cb197028ff35104149759c16d5d2d4c739b0dbb42ee6b288f6d3a3d2f3c",
+      "atSeconds": 221.203,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-7429c0cef3ad319cb9b11fb2cf220d473810047abf41ff67f82439e159ea431c.wav",
+      "sha256": "8f8c5cb197028ff35104149759c16d5d2d4c739b0dbb42ee6b288f6d3a3d2f3c",
+      "atSeconds": 228.584,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-c580881e4df4be3b391064df89d91425a0c4762362e4fdef90362f82c81635ba.wav",
+      "sha256": "10f42b88d68b9b1d479cacc50f84fb6a9d155471f9d8afecd0e8fa9b634d38a9",
+      "atSeconds": 234.93,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-0e301eac01478dc861304da61bfb916ab6360a4fa6c73f3df2e23acf756db299.wav",
+      "sha256": "d2475bbefafd476764da7fb0e661e090a73ef518eb8e2385421f502c710d5b4a",
+      "atSeconds": 241.946,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-0e301eac01478dc861304da61bfb916ab6360a4fa6c73f3df2e23acf756db299.wav",
+      "sha256": "d2475bbefafd476764da7fb0e661e090a73ef518eb8e2385421f502c710d5b4a",
+      "atSeconds": 249.415,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-f69b1fac2105310de9b77d39194a5024432b2523a9b0fcc4bd0d9f8b455a1fbf.wav",
+      "sha256": "8649120737cfff80ed07a43a9138a111d50a25e2564b3acdbde2a72ef25274dd",
+      "atSeconds": 256.346,
+      "complete": true
+    },
+    {
+      "src": "/audio/ambience/breakfast.mp3",
+      "sha256": "c0f60e4c71c3fbbfabf2863495e44749c02394d05015216da89ad95d576459f1",
+      "atSeconds": 262.717,
+      "complete": false
+    },
+    {
+      "src": "/audio/line-105b924034f77f52b94832eeba25277f34cb90c2eb8051c514b36946088de3ed.wav",
+      "sha256": "d4190523c655ec64e7cf995fa9f641d7d6391390563c7b7d54b87842729d3609",
+      "atSeconds": 263.345,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-105b924034f77f52b94832eeba25277f34cb90c2eb8051c514b36946088de3ed.wav",
+      "sha256": "d4190523c655ec64e7cf995fa9f641d7d6391390563c7b7d54b87842729d3609",
+      "atSeconds": 272.129,
+      "complete": true
+    },
+    {
+      "src": "/audio/line-35edebfeb057c9643ee59691d94516ef3f2da7d0ec49e446d64dca9970698a30.wav",
+      "sha256": "0eb67d665f44db0c8c813fd5f6cef44f370d91451416cce57f7934b9b319817f",
+      "atSeconds": 280.479,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-a00e19fb6fd7917efaf080a2e4c986d10c77627dd24af902cfaeb9d0a58a009f.wav",
+      "sha256": "3e3ab6193042b0cc8674fde178af181026afac8a6f8dd559b810a522c87b613d",
+      "atSeconds": 286.915,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-a00e19fb6fd7917efaf080a2e4c986d10c77627dd24af902cfaeb9d0a58a009f.wav",
+      "sha256": "3e3ab6193042b0cc8674fde178af181026afac8a6f8dd559b810a522c87b613d",
+      "atSeconds": 289.799,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-gift.wav",
+      "sha256": "971dfc1ae522c0e8347cc7c94aec1985540b393a079ded55b42d353fa2b00dbb",
+      "atSeconds": 292.675,
+      "complete": true
+    }
+  ],
+  "sourceSegmentsSeconds": [
+    [
+      0,
+      296.647
+    ]
+  ],
+  "browserErrors": [],
+  "method": "Native game HTMLMediaElement output routed to WebAudio MediaRecorder. Timed browser screenshots muxed with the live recorded audio. No replacement audio or speech synthesis. Normal browser autoplay policy. Dev hooks only read state; rehearsal skips opening.",
+  "limits": [
+    "Runtime audio routing is instrumented.",
+    "Timed screenshots do not capture every display frame.",
+    "No independent physical speaker audition or Mandarin pronunciation review claimed."
+  ]
+}

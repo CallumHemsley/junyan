@@ -1,0 +1,301 @@
+{
+  "sourceSha": "7b27ca44a7ed5c9a0eebb45a6a06145beb381287",
+  "video": "/private/tmp/junyan-neighbourhood-demos/output/playwright/neighbourhood-tour/neighbourhood-combined.mp4",
+  "videoSha256": "20b6333808a29343c36ca5ec81dcb9b4eae98452a830ee4126b00dab8cbec579",
+  "durationSeconds": 130.7,
+  "audioRmsAt2000Hz": 0.04319834161360521,
+  "audioPeakAt2000Hz": 0.4669148623943329,
+  "speechMatches": [
+    {
+      "src": "/audio/apartment/line-welcome.wav",
+      "sha256": "de6e355392681a38fe75d2e788feb038055af3e8b3dc5a7b493bd947751a20f8",
+      "atSeconds": 0.5580000000000069,
+      "complete": true,
+      "label": "apartment",
+      "normalizedWaveformCorrelation": 0.9997730460368435,
+      "matchedSourceStartSeconds": 0.5395,
+      "alignmentDifferenceSeconds": -0.0185
+    },
+    {
+      "src": "/audio/cats/line-clue.wav",
+      "sha256": "42db022a8e8d49976d841beefa25e7ed5db4df26048fe00f1f406c0bf882541e",
+      "atSeconds": 16.48400000000001,
+      "complete": true,
+      "label": "cats",
+      "normalizedWaveformCorrelation": 0.85862791812491,
+      "matchedSourceStartSeconds": 16.465,
+      "alignmentDifferenceSeconds": -0.019
+    },
+    {
+      "src": "/audio/repairs/line-lamp-intro.wav",
+      "sha256": "71d41fc395b5a7c1ae683b99bf1d18a02dbb633dc39cf1bd8103edab5064e8c2",
+      "atSeconds": 50.15299999999999,
+      "complete": true,
+      "label": "repairs",
+      "normalizedWaveformCorrelation": 0.9479185871952602,
+      "matchedSourceStartSeconds": 50.134,
+      "alignmentDifferenceSeconds": -0.019
+    },
+    {
+      "src": "/audio/garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+      "sha256": "cd8559de9a0c904899bd4f8b0cc1143df9343f9960f9328ed40c952e1b290bb8",
+      "atSeconds": 100.22299999999998,
+      "complete": true,
+      "label": "garden",
+      "normalizedWaveformCorrelation": 0.9997306883415454,
+      "matchedSourceStartSeconds": 100.2035,
+      "alignmentDifferenceSeconds": -0.0195
+    },
+    {
+      "src": "/audio/apartment/line-gift.wav",
+      "sha256": "971dfc1ae522c0e8347cc7c94aec1985540b393a079ded55b42d353fa2b00dbb",
+      "atSeconds": 126.95200000000006,
+      "complete": true,
+      "label": "late",
+      "normalizedWaveformCorrelation": 0.877041647061582,
+      "matchedSourceStartSeconds": 126.943,
+      "alignmentDifferenceSeconds": -0.009
+    }
+  ],
+  "actualPlayingEvents": [
+    {
+      "src": "/audio/apartment/line-welcome.wav",
+      "sha256": "de6e355392681a38fe75d2e788feb038055af3e8b3dc5a7b493bd947751a20f8",
+      "atSeconds": 0.5580000000000069,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-window.wav",
+      "sha256": "6c63baa5158ab3ef6c19f4f6d954e74a9339ccd22f3130d6fca28b4f9f7ccd01",
+      "atSeconds": 3.193000000000012,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-window.wav",
+      "sha256": "6c63baa5158ab3ef6c19f4f6d954e74a9339ccd22f3130d6fca28b4f9f7ccd01",
+      "atSeconds": 6.060000000000002,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-okay.wav",
+      "sha256": "0c0f28b0af44002f1f18906e6790ebfd6e2170b87f3becd1e926fe07550f3e12",
+      "atSeconds": 10.293000000000006,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-rotate.wav",
+      "sha256": "c11a9fa1a9617d542470713cf562d11b4943d1099df8548a815880de66d1b042",
+      "atSeconds": 12.444000000000003,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-okay.wav",
+      "sha256": "0c0f28b0af44002f1f18906e6790ebfd6e2170b87f3becd1e926fe07550f3e12",
+      "atSeconds": 14.27600000000001,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-clue.wav",
+      "sha256": "42db022a8e8d49976d841beefa25e7ed5db4df26048fe00f1f406c0bf882541e",
+      "atSeconds": 16.48400000000001,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-bicycle-clue.wav",
+      "sha256": "5decb5d63ba1ebb276a39707b2770083e759d64d271053fe9755b1082c1c5753",
+      "atSeconds": 19.277,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-gentle.wav",
+      "sha256": "d50c026222a7696eda001ba4f85bfd7d3a1afdb432c2113cfecfc3ff475bc912",
+      "atSeconds": 22.709000000000003,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-crouched.wav",
+      "sha256": "c55458bda9c3ae17b3fab7bd72f3b81aafcdbee28b83e6deaf8115a24b53bf3a",
+      "atSeconds": 26.85900000000001,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-emerged.wav",
+      "sha256": "519dd3028d939f4ea4d0f984344aa0aa26c8a783b1b449d5d49aa5787f700066",
+      "atSeconds": 30.926000000000002,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-invited.wav",
+      "sha256": "c5fc8073e2c8e3b59a1ae0c87f7a89248147c7f0a755b38e0c7665dbb9e34ec6",
+      "atSeconds": 34.44000000000001,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-doorway.wav",
+      "sha256": "9b826e9f5f480feea16a4eb226f6c55e2826e6cea603eb67304741385fe50105",
+      "atSeconds": 39.158,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-reunion.wav",
+      "sha256": "076e9809cffd40e137029ade60ffeda5ef72ef006cbc6e5e02500827528b04a4",
+      "atSeconds": 41.791,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-gift.wav",
+      "sha256": "971dfc1ae522c0e8347cc7c94aec1985540b393a079ded55b42d353fa2b00dbb",
+      "atSeconds": 47.94999999999999,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-lamp-intro.wav",
+      "sha256": "71d41fc395b5a7c1ae683b99bf1d18a02dbb633dc39cf1bd8103edab5064e8c2",
+      "atSeconds": 50.15299999999999,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-lamp-tight.wav",
+      "sha256": "3bebbe46d87007e016deb8858bbb5fbe715994128d524edb0825a7ffa55c974c",
+      "atSeconds": 55.441,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-lamp-steady.wav",
+      "sha256": "3dee7aefc2ec58b49f266b456ef4a188474c89e5dd3f9c71d5fbb8bfd7ce8c59",
+      "atSeconds": 60.07500000000002,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-lamp-returned.wav",
+      "sha256": "f60d966803b8404cd23c03b8e689d2a13bfda2133b9946078dd2f5040af396a0",
+      "atSeconds": 63.191,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-closed.wav",
+      "sha256": "70da1247737c78f4e7c4856dfaca761fec77962e41e7fa7591255bc0504c63e2",
+      "atSeconds": 65.59099999999998,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-open.wav",
+      "sha256": "85626cf8bceda79abc28fe4f7ab4dab0dfc6caf6759b3ef5e085881ac24bb98f",
+      "atSeconds": 70.38899999999998,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-connect.wav",
+      "sha256": "ec1e16101f9884da8f2989664b78d6ae120c2a36ac68de9cb03436bb9b18ebbf",
+      "atSeconds": 74.989,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-cell.wav",
+      "sha256": "5096a18112a11be723fa7130eabaa07146ba125aba528aabdb08c65e45f880ab",
+      "atSeconds": 79.70500000000001,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-closed.wav",
+      "sha256": "70da1247737c78f4e7c4856dfaca761fec77962e41e7fa7591255bc0504c63e2",
+      "atSeconds": 84.821,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-moving.wav",
+      "sha256": "64c5326698a24c21dec0b793c6e70f3c95ab9f66c1c9ce8e6be882c5dd9d084b",
+      "atSeconds": 88.239,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-all-complete.wav",
+      "sha256": "d6288256b0c28bb1358d16f8e88fa256e0b3505120b12b5f2bbac14cfb29754d",
+      "atSeconds": 91.43699999999998,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-gift.wav",
+      "sha256": "971dfc1ae522c0e8347cc7c94aec1985540b393a079ded55b42d353fa2b00dbb",
+      "atSeconds": 96.63500000000002,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+      "sha256": "cd8559de9a0c904899bd4f8b0cc1143df9343f9960f9328ed40c952e1b290bb8",
+      "atSeconds": 100.22299999999998,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-c686ce578b68292f0f70784b43dd8dbf7989e1dbf9c4ad925445822942220c3b.wav",
+      "sha256": "dc42001469fe9acefd948e3c3d4e976d46575abe757b62a7e54532375605e8a8",
+      "atSeconds": 106.53600000000003,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+      "sha256": "cd8559de9a0c904899bd4f8b0cc1143df9343f9960f9328ed40c952e1b290bb8",
+      "atSeconds": 109.73999999999998,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-c686ce578b68292f0f70784b43dd8dbf7989e1dbf9c4ad925445822942220c3b.wav",
+      "sha256": "dc42001469fe9acefd948e3c3d4e976d46575abe757b62a7e54532375605e8a8",
+      "atSeconds": 113.82000000000002,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+      "sha256": "cd8559de9a0c904899bd4f8b0cc1143df9343f9960f9328ed40c952e1b290bb8",
+      "atSeconds": 117.025,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-a00e19fb6fd7917efaf080a2e4c986d10c77627dd24af902cfaeb9d0a58a009f.wav",
+      "sha256": "3e3ab6193042b0cc8674fde178af181026afac8a6f8dd559b810a522c87b613d",
+      "atSeconds": 121.19200000000006,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-a00e19fb6fd7917efaf080a2e4c986d10c77627dd24af902cfaeb9d0a58a009f.wav",
+      "sha256": "3e3ab6193042b0cc8674fde178af181026afac8a6f8dd559b810a522c87b613d",
+      "atSeconds": 124.07600000000002,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-gift.wav",
+      "sha256": "971dfc1ae522c0e8347cc7c94aec1985540b393a079ded55b42d353fa2b00dbb",
+      "atSeconds": 126.95200000000006,
+      "complete": true
+    }
+  ],
+  "sourceSegmentsSeconds": [
+    [
+      71.478,
+      87.416
+    ],
+    [
+      87.416,
+      121.083
+    ],
+    [
+      121.083,
+      169.761
+    ],
+    [
+      169.761,
+      192.119
+    ],
+    [
+      286.364,
+      296.647
+    ]
+  ],
+  "browserErrors": [],
+  "method": "Native game HTMLMediaElement output routed to WebAudio MediaRecorder. Timed browser screenshots muxed with the live recorded audio. No replacement audio or speech synthesis. Normal browser autoplay policy. Dev hooks only read state; rehearsal skips opening.",
+  "limits": [
+    "Runtime audio routing is instrumented.",
+    "Timed screenshots do not capture every display frame.",
+    "No independent physical speaker audition or Mandarin pronunciation review claimed."
+  ]
+}

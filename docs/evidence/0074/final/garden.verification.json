@@ -1,0 +1,97 @@
+{
+  "sourceSha": "7b27ca44a7ed5c9a0eebb45a6a06145beb381287",
+  "video": "/private/tmp/junyan-neighbourhood-demos/output/playwright/neighbourhood-tour/garden.mp4",
+  "videoSha256": "5335c0c4ec7f4f834dd375a24b5a98390c8ab4a0a46c556ad3874316b43a4ada",
+  "durationSeconds": 32.433333,
+  "audioRmsAt2000Hz": 0.03767015626902184,
+  "audioPeakAt2000Hz": 0.2828509509563446,
+  "speechMatches": [
+    {
+      "src": "/audio/garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+      "sha256": "cd8559de9a0c904899bd4f8b0cc1143df9343f9960f9328ed40c952e1b290bb8",
+      "atSeconds": 1.9399999999999977,
+      "complete": true,
+      "label": "garden",
+      "normalizedWaveformCorrelation": 0.9997271451833644,
+      "matchedSourceStartSeconds": 1.9225,
+      "alignmentDifferenceSeconds": -0.0175
+    },
+    {
+      "src": "/audio/apartment/line-gift.wav",
+      "sha256": "971dfc1ae522c0e8347cc7c94aec1985540b393a079ded55b42d353fa2b00dbb",
+      "atSeconds": 28.66900000000004,
+      "complete": true,
+      "label": "late",
+      "normalizedWaveformCorrelation": 0.8771008146349282,
+      "matchedSourceStartSeconds": 28.662,
+      "alignmentDifferenceSeconds": -0.007
+    }
+  ],
+  "actualPlayingEvents": [
+    {
+      "src": "/audio/garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+      "sha256": "cd8559de9a0c904899bd4f8b0cc1143df9343f9960f9328ed40c952e1b290bb8",
+      "atSeconds": 1.9399999999999977,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-c686ce578b68292f0f70784b43dd8dbf7989e1dbf9c4ad925445822942220c3b.wav",
+      "sha256": "dc42001469fe9acefd948e3c3d4e976d46575abe757b62a7e54532375605e8a8",
+      "atSeconds": 8.253000000000014,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+      "sha256": "cd8559de9a0c904899bd4f8b0cc1143df9343f9960f9328ed40c952e1b290bb8",
+      "atSeconds": 11.456999999999994,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-c686ce578b68292f0f70784b43dd8dbf7989e1dbf9c4ad925445822942220c3b.wav",
+      "sha256": "dc42001469fe9acefd948e3c3d4e976d46575abe757b62a7e54532375605e8a8",
+      "atSeconds": 15.537000000000006,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+      "sha256": "cd8559de9a0c904899bd4f8b0cc1143df9343f9960f9328ed40c952e1b290bb8",
+      "atSeconds": 18.74199999999999,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-a00e19fb6fd7917efaf080a2e4c986d10c77627dd24af902cfaeb9d0a58a009f.wav",
+      "sha256": "3e3ab6193042b0cc8674fde178af181026afac8a6f8dd559b810a522c87b613d",
+      "atSeconds": 22.90900000000005,
+      "complete": true
+    },
+    {
+      "src": "/audio/garden/line-a00e19fb6fd7917efaf080a2e4c986d10c77627dd24af902cfaeb9d0a58a009f.wav",
+      "sha256": "3e3ab6193042b0cc8674fde178af181026afac8a6f8dd559b810a522c87b613d",
+      "atSeconds": 25.793000000000006,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-gift.wav",
+      "sha256": "971dfc1ae522c0e8347cc7c94aec1985540b393a079ded55b42d353fa2b00dbb",
+      "atSeconds": 28.66900000000004,
+      "complete": true
+    }
+  ],
+  "sourceSegmentsSeconds": [
+    [
+      169.761,
+      192.119
+    ],
+    [
+      286.364,
+      296.647
+    ]
+  ],
+  "browserErrors": [],
+  "method": "Native game HTMLMediaElement output routed to WebAudio MediaRecorder. Timed browser screenshots muxed with the live recorded audio. No replacement audio or speech synthesis. Normal browser autoplay policy. Dev hooks only read state; rehearsal skips opening.",
+  "limits": [
+    "Runtime audio routing is instrumented.",
+    "Timed screenshots do not capture every display frame.",
+    "No independent physical speaker audition or Mandarin pronunciation review claimed."
+  ]
+}
