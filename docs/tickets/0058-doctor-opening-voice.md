@@ -1,7 +1,7 @@
 ---
 id: 58
 title: Give the opening doctor a calm, reassuring voice
-status: doing
+status: blocked
 priority: high
 type: bug
 created: 2026-11-05
@@ -34,3 +34,5 @@ Callum reports that the doctor's voice when waking up in the hospital opening so
 - Strict ports: dev 5400, preview 5401 (`JUNYAN_DEV_PORT=5400 JUNYAN_PREVIEW_PORT=5401`).
 - Append-only evidence and Mac synthesis/listening handoff: [[evidence/0058/doctor-voice]].
 - Production content/audio remain unchanged until real synthesis and listening establish a preferred take.
+
+- Cloud synthesis blocked: Linux x86_64 cannot import MLX. Draft PR #13 publishes exact audition inputs and Mac handoff; parent confirmed a working local runtime. Await actual clips, listening comparison and Callum acceptance before implementation completion. No production audio changes selected.
