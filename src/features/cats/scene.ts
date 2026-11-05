@@ -63,7 +63,11 @@ function cat(api: SceneApi, x: number, y: number, black: boolean, relaxed: boole
 export function visualPose(state: State, day: number) {
   const white = whitePosition(state, day);
   const blackFriend = state.selected === 'black' && state.cats.black.satTogether;
-  const whiteFriend = state.selected === 'white' && state.cats.white.rested;
+  const whiteLocation = sceneFacts(state, day).white;
+  const whiteTarget = state.selected === 'white'
+    || state.selected === 'door' && whiteLocation === 'door'
+    || state.selected === 'window' && whiteLocation === 'window';
+  const whiteFriend = whiteTarget && state.cats.white.rested;
   const following = state.story.node === 'doorway' || state.story.node === 'reunited' || state.repeat.status === 'active' && state.repeat.encounter.kind === 'route' && state.repeat.encounter.step === 'invite';
   const player = state.feedback === 'space' ? { x: white.x + 2.8, y: white.y + 1.5 } : blackFriend ? { x: 8.15, y: 6.1 }
     : whiteFriend ? { x: white.x + 1.6, y: white.y - .8 }

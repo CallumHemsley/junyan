@@ -145,3 +145,60 @@ test('repeat detours keep patient actions and visible companions consistent', as
   await action(page, 'sit');
   expect((await state(page)).cats.black.satTogether).toBe(true);
 });
+
+test('companion landmark aliases preserve the rendered seated pose after reload', async ({ page }, info) => {
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  const pixels = () => page.locator('.cats-scene canvas').evaluate(async element => {
+    await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+    return (element as HTMLCanvasElement).toDataURL();
+  });
+  const restore = async (saved: State, day: number) => {
+    await page.goto(`${harness}&day=${day}&state=${encodeURIComponent(JSON.stringify(saved))}`);
+    await expect(page.getByTestId('cats-view')).toBeVisible();
+  };
+  await page.goto(harness);
+  await reunite(page);
+  const reunited = await state(page);
+  await page.evaluate(() => window.__CATS_HARNESS__.day(3));
+  await action(page, 'begin');
+  await page.getByTestId('cats-white').click();
+  await action(page, 'follow');
+  await page.getByTestId('cats-window').click();
+  await page.evaluate(() => window.__CATS_HARNESS__.day(4));
+  await action(page, 'approach');
+  const windowSaved = await state(page);
+  await restore(windowSaved, 4);
+  expect((await state(page)).cats.white.rested).toBe(true);
+  const windowAlias = await pixels();
+  await page.screenshot({ path: `evidence/0068/${info.project.name}-window-alias-reload.png`, fullPage: true });
+  await restore({ ...windowSaved, selected: 'white' }, 4);
+  expect(windowAlias === await pixels()).toBe(true);
+  await restore({ ...windowSaved, selected: 'door' }, 4);
+  expect(windowAlias === await pixels()).toBe(false);
+  await restore(reunited, 1);
+  await page.getByTestId('cats-white').click();
+  await action(page, 'wait');
+  const familiar = await state(page);
+  let familiarRain: State | undefined;
+  for (const target of ['white', 'door'] as const) {
+    await restore(familiar, 2);
+    await action(page, 'begin');
+    await page.getByTestId(`cats-${target}`).click();
+    await action(page, 'space');
+    expect((await state(page)).cats.white.gaveSpace).toBe(true);
+    expect(await page.evaluate(() => window.__CATS_HARNESS__.events.recover.flat())).toContain('cats.back');
+    await action(page, 'wait');
+    const saved = await state(page);
+    await restore(saved, 2);
+    const rendered = await pixels();
+    await restore({ ...saved, selected: 'white' }, 2);
+    expect(rendered === await pixels()).toBe(true);
+    familiarRain = saved;
+  }
+  await restore(familiarRain!, 2);
+  await page.screenshot({ path: `evidence/0068/${info.project.name}-door-alias-reload.png`, fullPage: true });
+  expect(errors).toEqual([]);
+});

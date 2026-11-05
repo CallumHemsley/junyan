@@ -181,3 +181,33 @@ describe('reviewed action and scene consistency', () => {
     expect(sceneFacts(saved, 5).white).toBe('door');
   });
 });
+
+
+describe('companion landmark aliases', () => {
+  it.each(['white', 'window'] as const)('keeps late route completion seated through reload when targeting %s', target => {
+    const followed = run([{ type: 'begin' }, { type: 'select', target: 'white' }, { type: 'follow' }, { type: 'select', target }], 3, reunion());
+    const completed = reduce(followed, { type: 'approach' }, 4);
+    const restored = validate(JSON.parse(JSON.stringify(completed)))!;
+    expect(restored.cats.white.rested).toBe(true);
+    expect(sceneFacts(restored, 4).white).toBe('window');
+    expect(visualPose(restored, 4).sitting).toBe(true);
+    expect(visualPose(restored, 4)).toEqual(visualPose({ ...restored, selected: 'white' }, 4));
+    expect(visualPose({ ...restored, selected: 'door' }, 4).sitting).toBe(false);
+    expect(visualPose({ ...restored, selected: 'black' }, 4).sitting).toBe(false);
+  });
+  it.each(['white', 'door'] as const)('retains familiar rainy companionship through %s after giving space', target => {
+    const familiar = run([{ type: 'select', target: 'white' }, { type: 'wait' }], 1, reunion());
+    expect(familiar.cats.white.rested).toBe(true);
+    const sheltered = run([{ type: 'begin' }, { type: 'select', target }], 2, familiar);
+    const spaced = reduce(sheltered, { type: 'space' }, 2);
+    expect(spaced.cats.white.gaveSpace).toBe(true);
+    expect(recoveryForTransition(sheltered, spaced)).toContain('cats.back');
+    expect(visualPose(spaced, 2).sitting).toBe(false);
+    const completed = reduce(spaced, { type: 'wait' }, 2);
+    const restored = validate(JSON.parse(JSON.stringify(completed)))!;
+    expect(visualPose(restored, 2).sitting).toBe(true);
+    expect(visualPose(restored, 2)).toEqual(visualPose({ ...restored, selected: 'white' }, 2));
+    expect(visualPose({ ...restored, selected: 'window' }, 2).sitting).toBe(false);
+    expect(visualPose({ ...restored, selected: 'black' }, 2).sitting).toBe(false);
+  });
+});
