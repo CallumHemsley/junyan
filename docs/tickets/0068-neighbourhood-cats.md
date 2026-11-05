@@ -17,7 +17,7 @@ Deliver the selected apartment-building ensemble while preserving the hospital a
 - [ ] Pure rules tests and build pass; existing opening, customers, change and journal journey remains green.
 - [ ] Feature journey, reload/migration, offline voices/assets and clean console are evidenced; phone and desktop screenshots visually inspected.
 - [ ] Mandarin content is segmented/schema validated, voiced offline, tappable and journalled; pixel art remains consistent and controls accessible.
-- [ ] Different agent reviews without edits; resolved findings and draft PR are recorded. Do not merge main.
+- [ ] Different agent reviews without edits; resolved findings and reviewable PR are recorded. Central lead merges only after independent review, polish and integrated verification; then verifies main.
 
 ## Dependencies and ownership
 
