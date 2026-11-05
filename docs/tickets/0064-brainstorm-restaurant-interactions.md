@@ -1,7 +1,7 @@
 ---
 id: 64
 title: Explore more playful interactions in the restaurant
-status: todo
+status: doing
 priority: medium
 type: explore
 created: 2026-11-05
@@ -25,3 +25,8 @@ Callum wants the player to have more things to do in the café/canteen and asks 
 - Context: [[decisions/0003-pixel-waiter]], [[ideas/build-recommendation]], [[tickets/0002-paper-prototype-one-counter]], [[tickets/0004-pin-down-the-hook]] and the existing pickup, delivery, change, journal and day-progression interactions.
 - Respect pure rules over explicit state, injected time/RNG, tappable DOM Mandarin, offline content and audio, and touch targets. Any costly-to-reverse proposal needs a decision for Callum to accept.
 - Coordinate with [[tickets/0062-natural-customer-performances]] and [[tickets/0063-restaurant-background-sounds]] so the brainstorm builds on the desired atmosphere without duplicating those tickets.
+
+### Execution evidence (append-only)
+
+- 2026-11-05: Owner Codex ticket 0064; branch `codex/0064-restaurant-interactions`; isolated checkout `/workspace/junyan-0064`; base `66ac123` (current origin/main at start). Strict dev/preview ports `5406` / `5407`. Only this ticket and `docs/ideas/restaurant-interactions.md` are writable deliverables; runtime evidence stays outside tracked files.
+- Read shared guidance, ticket conventions, accepted decisions 0001–0004, Morning Steam design guidance/tokens and build recommendation. Decision 0003 governs the current pixel waiter surface over the earlier counter mockups. No bundled pstack playbooks found in workspace; following the supplied poteto-mode/autopilot-full harness steps, adapted to exploration. No new mechanic, implementation ticket, dependency or schema changes are authorized here. Parent assigns independent review; no merge by this writer.
