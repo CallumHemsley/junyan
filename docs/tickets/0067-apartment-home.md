@@ -22,7 +22,7 @@ Deliver the selected apartment-building ensemble while preserving the hospital a
 ## Dependencies and ownership
 
 Central ledger: [[plans/neighbourhood-coordination]]. Depends on published 0065 contract; integrated completion depends on 0066 and existing shared-file lease handoffs.
-One writer/branch/cloud checkout and strict port as assigned there. No edits outside assigned files. Domain lead refines this ticket before implementation.
+One writer/branch/cloud checkout and strict port as assigned there. No edits outside assigned files. Detailed specification: [[plans/neighbourhood-apartment]]. Implement its starter bundle, free placement/rotation/store/undo, reversible colour choice and resident suggestions. Owned files are src/features/apartment/**, public/audio/apartment/**, e2e/apartment.spec.ts and docs/evidence/0067/**. Add rules tests for geometry and idempotent gifts, schema/content/audio verification and a deterministic isolated harness while App lease is pending. Exact voice generation is required for completion; report unavailable synthesis.
 
 ## Notes
 
