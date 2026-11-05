@@ -1,0 +1,69 @@
+{
+  "method": "Original accepted PCM concatenated with 350 ms gaps. No speech processing. A playback artifact, not a listening approval.",
+  "clips": [
+    {
+      "filename": "public/audio/apartment/line-window.wav",
+      "sha256": "6c63baa5158ab3ef6c19f4f6d954e74a9339ccd22f3130d6fca28b4f9f7ccd01",
+      "text": "桌子放在窗户旁边。",
+      "speaker": "Serena",
+      "start_seconds": 0.0,
+      "duration_seconds": 2.08
+    },
+    {
+      "filename": "public/audio/apartment/word-chair.wav",
+      "sha256": "08d9c3824bd5a60ab1bf3cc78a622fc43f63b13ecafe2e7435e94c97ffe0f904",
+      "text": "椅子",
+      "speaker": "Serena",
+      "start_seconds": 2.43,
+      "duration_seconds": 2.08
+    },
+    {
+      "filename": "public/audio/cats/line-bicycle-clue.wav",
+      "sha256": "5decb5d63ba1ebb276a39707b2770083e759d64d271053fe9755b1082c1c5753",
+      "text": "白猫在自行车下面。",
+      "speaker": "Serena",
+      "start_seconds": 4.86,
+      "duration_seconds": 2.64
+    },
+    {
+      "filename": "public/audio/cats/word-white-name.wav",
+      "sha256": "768b9e7a6a01081920e32044009d450bb1357ddc3cbd1fb340265b3a61e24a44",
+      "text": "小白",
+      "speaker": "Serena",
+      "start_seconds": 7.85,
+      "duration_seconds": 1.36
+    },
+    {
+      "filename": "public/audio/repairs/line-toy-intro.wav",
+      "sha256": "e859d3d6989c6662e37d8b2f526565174eca413ba896fa31ad47bf9abbaec209",
+      "text": "这个玩具不动了。",
+      "speaker": "zf_xiaobei",
+      "start_seconds": 9.56,
+      "duration_seconds": 2.85
+    },
+    {
+      "filename": "public/audio/repairs/word-bulb.wav",
+      "sha256": "b620abe47edeef6641582050e3d6e4f50f26ec59e1b45bd432ab223cc813228d",
+      "text": "灯泡",
+      "speaker": "Serena",
+      "start_seconds": 12.76,
+      "duration_seconds": 1.12
+    },
+    {
+      "filename": "public/audio/garden/line-c686ce578b68292f0f70784b43dd8dbf7989e1dbf9c4ad925445822942220c3b.wav",
+      "sha256": "dc42001469fe9acefd948e3c3d4e976d46575abe757b62a7e54532375605e8a8",
+      "text": "这盆土干了浇一点水",
+      "speaker": "Serena",
+      "start_seconds": 14.23,
+      "duration_seconds": 2.4
+    },
+    {
+      "filename": "public/audio/garden/word-1fe33bbc755214e1f6e9798012007d41eadcff0d7648c5838e99be7ab398d163.wav",
+      "sha256": "45bad1e421df06ae2e8ed2915e7648ba46c0195bb2873e48b3d3cc3869b17afe",
+      "text": "水",
+      "speaker": "Serena",
+      "start_seconds": 16.98,
+      "duration_seconds": 1.2
+    }
+  ]
+}

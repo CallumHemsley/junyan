@@ -1,0 +1,21 @@
+/private/tmp/junyan-0062-kokoro-env/lib/python3.12/site-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.2 and num_layers=1
+  warnings.warn(
+/private/tmp/junyan-0062-kokoro-env/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+Building prefix dict from the default dictionary ...
+Loading model from cache /var/folders/vp/l5v7sxnn5cj7n6vxq75bm1880000gn/T/jieba.cache
+Loading model cost 0.227 seconds.
+Prefix dict has been built successfully.
+AVAILABLE repairs/line-toy-intro.wav zf_xiaobei 这个玩具不动了。 attempted=1 reused=0 elapsed=4s
+AVAILABLE repairs/line-toy-open.wav zf_xiaobei 打开了。 attempted=2 reused=0 elapsed=4s
+AVAILABLE repairs/line-toy-closed.wav zf_xiaobei 盖上了。试试。 attempted=3 reused=0 elapsed=5s
+AVAILABLE repairs/line-toy-connect.wav zf_xiaobei 线接上了。 attempted=4 reused=0 elapsed=5s
+AVAILABLE repairs/line-toy-disconnect.wav zf_xiaobei 线拔下了。 attempted=5 reused=0 elapsed=6s
+AVAILABLE repairs/line-toy-cell.wav zf_xiaobei 换上新电池了。 attempted=6 reused=0 elapsed=6s
+AVAILABLE repairs/line-toy-old-cell.wav zf_xiaobei 旧电池放回了。 attempted=7 reused=0 elapsed=6s
+AVAILABLE repairs/line-toy-still.wav zf_xiaobei 还是不动。再打开。 attempted=8 reused=0 elapsed=7s
+AVAILABLE repairs/line-toy-moving.wav zf_xiaobei 好了，动了。 attempted=9 reused=0 elapsed=7s
+AVAILABLE repairs/line-open-first.wav zf_xiaobei 先打开盖子。 attempted=10 reused=0 elapsed=8s
+AVAILABLE repairs/line-close-first.wav zf_xiaobei 先盖上，再试试。 attempted=11 reused=0 elapsed=8s
+AVAILABLE repairs/line-toy-returned.wav zf_xiaobei 玩具修好了。 attempted=12 reused=0 elapsed=8s
+12 attempted, 0 reused, 0 failures, 0 pending

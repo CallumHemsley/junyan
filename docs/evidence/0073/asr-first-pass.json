@@ -1,0 +1,73 @@
+{
+  "model": "openai/whisper-small",
+  "revision": "973afd24965f72e36ca33b3055d56a652f456b4d",
+  "method": "Local CPU ASR. Language and task only. No expected-text prompt and no audio upload. Not a listening, tone or naturalness judgement.",
+  "clips": [
+    {
+      "filename": "apartment/line-welcome.wav",
+      "sha256": "fe25df45f201f5b0fccdb4e54f7a39ca214218db914fc7b0bdbec66f9bd1949b",
+      "expected": "桌子和椅子给你。",
+      "recognized": "追滴走叮叮"
+    },
+    {
+      "filename": "apartment/line-window.wav",
+      "sha256": "6c63baa5158ab3ef6c19f4f6d954e74a9339ccd22f3130d6fca28b4f9f7ccd01",
+      "expected": "桌子放在窗户旁边。",
+      "recognized": "桌子放在窗戶旁边"
+    },
+    {
+      "filename": "apartment/line-left.wav",
+      "sha256": "e6a41b45d30c121f540ba3fda98a05ffca248a2f751b0b0f6577b56258ca9f7a",
+      "expected": "椅子放在左边。",
+      "recognized": "椅子放在左边。"
+    },
+    {
+      "filename": "apartment/line-right.wav",
+      "sha256": "77681bc2c456dcb56d4222c88bec5445cd14c6ed64e65b24a7407bad0d89c704",
+      "expected": "放在右边也可以。",
+      "recognized": "放在右边也可以。"
+    },
+    {
+      "filename": "apartment/line-large.wav",
+      "sha256": "db8eeac009dbf7ec4b9694b403345cb772518f8e5d69ca027214b9bcb1ea5bcf",
+      "expected": "这个太大了。",
+      "recognized": "这个太大了"
+    },
+    {
+      "filename": "apartment/line-rotate.wav",
+      "sha256": "c3ec9a63fe20778831856b90a3cc3dd39510f1934c52a9a103d3a0eb35fb7f43",
+      "expected": "转一下。",
+      "recognized": "站一下"
+    },
+    {
+      "filename": "apartment/line-okay.wav",
+      "sha256": "0c0f28b0af44002f1f18906e6790ebfd6e2170b87f3becd1e926fe07550f3e12",
+      "expected": "这样可以。",
+      "recognized": "这样可以。"
+    },
+    {
+      "filename": "apartment/line-blocked.wav",
+      "sha256": "0acff301079fe19d81aaacf33cc3d13323c219a8bb96c1415353f50c2259c0f2",
+      "expected": "这里先不放。",
+      "recognized": "这里先不放。"
+    },
+    {
+      "filename": "apartment/line-stored.wav",
+      "sha256": "2831a7d56dca3b5ff8a4aff497d7071afa4a1b8e1b77df2c939cb8b235323bd4",
+      "expected": "先收起来。",
+      "recognized": "先收起来"
+    },
+    {
+      "filename": "apartment/line-gift.wav",
+      "sha256": "a68f279abc032e762651a17a6b449f51d0a510159f9c299d104eea99e1163332",
+      "expected": "这个给你。",
+      "recognized": "祝福你"
+    },
+    {
+      "filename": "apartment/line-colour.wav",
+      "sha256": "6bcde0e2c8cc594791e405a289630163e26986bcd855a07796dd7711529c143e",
+      "expected": "换一个靠垫。",
+      "recognized": "換一個靠墊。"
+    }
+  ]
+}
