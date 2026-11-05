@@ -101,10 +101,9 @@ Intentionally left out: new food, recipes, inventories, economy, penalties, time
 
 Primary sources: [[../decisions/0001-first-language]], [[../decisions/0002-platform-stack-and-art]], [[../decisions/0003-pixel-waiter]] (supersedes the earlier counter art/layout), [[../decisions/0004-hospital-opening]], [[../design/design-system]], [[build-recommendation]], [[../tickets/0064-brainstorm-restaurant-interactions]], current `src/contracts.ts`, `src/App.tsx` and `e2e/waiter.spec.ts`. No external research or comparative game claims are used.
 
-Runtime evidence is local to the cloud checkout, not committed assets; retain/export it before environment cleanup:
+Supporting evidence is committed in [docs/evidence/0064](../evidence/0064/README.md), exported from the original run. The [observation JSON](../evidence/0064/exploration.json) retains reported timings and dialog text; the [portable driver](../evidence/0064/explore.mjs) repeats the same desktop controls. Timings are one-run wall-clock samples including automation overhead, not a performance benchmark.
 
-- Exploration controls, timings and clean captured console: `/workspace/evidence-0064/exploration.json`; reproducible driver `/workspace/evidence-0064/explore.mjs`.
-- Inspected order/kitchen/receipt/revisit: `/workspace/evidence-0064/desktop-{order,kitchen,receipt,revisit}.png` (four separate files).
-- Inspected desktop and phone restaurant/journal: `/workspace/junyan-0064/output/playwright/{desktop,phone}-{restaurant,journal}.png` (four separate files).
-- Full silent journey recordings: `/workspace/evidence-0064/test-results/waiter-wake-in-the-ward-th-bc2de-change-journal-and-progress-{desktop,phone}/video.webm`. Recordings exist; screenshots and browser actions underpin these findings, not an audio audition or a claim of full video review.
-- Check logs: `/workspace/evidence-0064/unit.log`, `/workspace/evidence-0064/journey.log`. See ticket evidence for exact commands and outcomes.
+- Inspected [order](../evidence/0064/desktop-order.png), [kitchen](../evidence/0064/desktop-kitchen.png), [receipt](../evidence/0064/desktop-receipt.png) and [served-table revisit](../evidence/0064/desktop-revisit.png).
+- Inspected [desktop restaurant](../evidence/0064/desktop-restaurant.png), [phone restaurant](../evidence/0064/phone-restaurant.png), [desktop journal](../evidence/0064/desktop-journal.png) and [phone journal](../evidence/0064/phone-journal.png). These support visible layout observations, not human touch or screen-reader usability claims.
+- Bulk recordings remain local: `/workspace/evidence-0064/test-results/waiter-wake-in-the-ward-th-bc2de-change-journal-and-progress-{desktop,phone}/video.webm`. Recordings exist; screenshots and browser actions underpin these findings, not an audio audition or a claim of full video review.
+- Check logs remain local: `/workspace/evidence-0064/unit.log`, `/workspace/evidence-0064/unit-node22.log`, `/workspace/evidence-0064/journey.log`, `/workspace/evidence-0064/build.log`. See ticket evidence for exact commands and reported outcomes; these are historical execution reports, not retained reviewer-accessible logs.
