@@ -1,7 +1,7 @@
 ---
 id: 60
 title: Make Grandpa's hospital performance frail and subdued
-status: doing
+status: done
 priority: medium
 type: bug
 created: 2026-11-05
@@ -13,11 +13,11 @@ Callum reports that Grandpa (老爷爷) is too excited and exaggerated in the ho
 
 ## Done when
 
-- [ ] Review Grandpa's breakfast requests, wrong-item reactions and thanks in the playable opening, assessing both voice delivery and visible gestures/posture. Record which parts create the excessive excitement.
-- [ ] Give his lines a quieter, gentler, less animated delivery with natural pauses and clear Mandarin. Convey frailty through the performance while keeping speech comfortably audible and understandable; avoid exaggerated trembling, wheezing or other caricature.
-- [ ] Keep his pose and movements consistent with a patient resting in bed: small, unhurried gestures and restrained reactions. Adjust movement where it contributes to the reported exaggeration.
-- [ ] Callum reviews the revised scene with sound and confirms Grandpa feels frail, subdued and believable. Regenerate any changed audio through the offline pipeline and update content paths and the manifest; keep the existing breakfast interactions and script intact.
-- [ ] Run the relevant rules/content and scene tests, audio/offline checks if clips change, and the Playwright opening-to-restaurant journey. Inspect phone and desktop screenshots and a short video with sound, including reduced-motion behavior, and confirm a clean console. Record commands and results in Notes.
+- [x] Review Grandpa's breakfast requests, wrong-item reactions and thanks in the playable opening, assessing both voice delivery and visible gestures/posture. Record which parts create the excessive excitement.
+- [x] Give his lines a quieter, gentler, less animated delivery with natural pauses and clear Mandarin. Convey frailty through the performance while keeping speech comfortably audible and understandable; avoid exaggerated trembling, wheezing or other caricature.
+- [x] Keep his pose and movements consistent with a patient resting in bed: small, unhurried gestures and restrained reactions. Adjust movement where it contributes to the reported exaggeration.
+- [x] Callum selects the believable delivery direction through the A/B audition; complete the selected pipeline clips and authorized self-verification, updating content paths/manifest while keeping the existing breakfast script intact. (User selected A with “A feels right” and explicitly authorized completion without another full-scene human approval gate; no full-scene human listening claim.)
+- [x] Run the relevant rules/content and scene tests, audio/offline checks if clips change, and the Playwright opening-to-restaurant journey. Inspect phone and desktop screenshots and a short video with sound, including reduced-motion behavior, and confirm a clean console. Record commands and results in Notes.
 
 ## Notes
 
@@ -41,3 +41,11 @@ Callum reports that Grandpa (老爷爷) is too excited and exaggerated in the ho
 - **Incomplete / BLOCKED** on original voice delivery, supported synthesis choice, actual listening comparison and Callum acceptance. Visual portion is independently inspected and implemented; no merge authorization inferred.
 
 - 2026-11-05 completion phase: user selected neutral A with “A feels right” on original two-line preview. Root granted exclusive import lease on main `196f88c`. Imported selected full-six support `cfaa2fd`, retaining the two heard WAVs byte-exact, four SHA-bound/ASR-checked remaining clips, and existing hospital preset ID. Tokens/script/doctor/customer/Help/assets preserved; current checks and independent final-head review underway. Historical BLOCKED entries above describe earlier gates, now resolved by selection and explicit self-verification authorization.
+
+### Completion — selected A
+
+- Completed on current main `196f88c`: exact two user-heard neutral 1.7B Uncle_Fu WAVs reused; four remaining SHA-bound/ASR-aligned clips imported from support `cfaa2fd`. Existing exclusive elder preset only; six refs, six WAVs and manifest replacement; subdued ward pose retained. No other production scope changed.
+- Final verification: **206/206 unit tests**, build, audio pipeline self-check, **126/126 cached audio jobs**. **4/4 actual UI opening→four-customer-day journeys** on phone/desktop normal/reduced motion passed (3.9m), including change, journal, next day, clean console. Both wrong-item reactions and all six native replays separately exercised. Production offline reload preserved journal and all126 audio assets; all six Grandpa clips played to native completion while offline.
+- User accepted A's original two-line delivery preview, not a claimed full-scene human audition. Cloud worker did not listen. Full support ASR checks word sequences, not tone/affect/naturalness. Explicit user authorization accepts self-verification for the remaining completion gate.
+- Selected final screenshots, actual ward video with captured speech (browser output muted), replay/offline receipts and honest quality review: [[evidence/0060/selected-A-final/README]]. Independent exact implementation review at `a2b94f8` passed; final evidence-only head confirmation requested. Root also relayed independent206unit/build and6/6actual Chrome cases passing. Root owns merge; writer has not merged.
+- Learned: Qwen0.6B's adapter drops instructions; model capability must be verified before prompt tuning. Existing pipeline content hashes change sampling seeds with preset edits, so audition preference is not isolated evidence of prompt causality. 1.7B neutral was the user-selected direction.

@@ -1,0 +1,14 @@
+{
+  "errors": [],
+  "offlineAssets": 126,
+  "offlineGrandpaPlayed": [
+    "line-2cefc3fe62be59203c6ef07c91f4342efc18641473fa68dacd7f54f31a90aa1b.wav",
+    "line-e756047972fc829165e2ca4f0f9f13c40c1b02f8dc94e8116180e111a396816c.wav",
+    "line-aa4ed24a26a593973279ebe664cfff1b1241682cf17d0e2fee03508224ecde88.wav",
+    "line-60ee82fdaf489803f5b64b4578ec054294c5b240d1f13d1c4c485ebbfde4b834.wav",
+    "line-781984e84c2d96144788e190c7527bab41486694e474141d82437bcb01f377ca.wav",
+    "line-f8c7a10d6944e2c84304d52a08300578d078efc600b295e85527303f6a5b7292.wav"
+  ],
+  "recoveredJournalPersisted": true,
+  "subjectiveListening": false
+}
