@@ -1,0 +1,10 @@
+
+ RUN  v3.2.7 /workspace/junyan-foundation
+
+ ✓ src/neighbourhood/content.test.ts (6 tests) 13ms
+ ✓ src/neighbourhood/state.test.ts (10 tests) 26ms
+
+ Test Files  2 passed (2)
+      Tests  16 passed (16)
+   Start at  19:07:44
+   Duration  566ms (transform 156ms, setup 0ms, collect 359ms, tests 39ms, environment 0ms, prepare 189ms)

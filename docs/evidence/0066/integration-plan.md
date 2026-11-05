@@ -34,6 +34,8 @@ A separate key in the same IndexedDB transaction could preserve database atomici
 
 ## Verification status
 
+The standalone content registry validates existing `Word` and `Line` shapes, canonical word reuse, feature namespaces, declared tokens, duplicate IDs, and local nested audio URLs. It enumerates audio references without claiming files exist. Six content tests and ten state tests pass.
+
 Standalone state tests cover legacy initialization, independent payload recovery, valid claim preservation, navigation identity, immutable gift receipt updates, retries after reload, missing receipt recovery, and claimed gift restoration after apartment corruption.
 
 Integrated journeys, offline audio, feature screenshots, and console checks remain incomplete until features and shared leases arrive.
