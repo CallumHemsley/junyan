@@ -68,6 +68,7 @@ def main():
         raise ValueError("Source elder is not routed to selected voice")
     voices["voices"][PRODUCTION_VOICE] = copy.deepcopy(preset)
     next(c for c in content["opening"]["cast"] if c["id"] == "elder")["voices"]["zh"] = PRODUCTION_VOICE
+    retired = {Path(line["audio"]).name for line in targets.values()}
     for line_id, line in targets.items():
         other = incoming[line_id]
         if {k:v for k,v in line.items() if k != "audio"} != {k:v for k,v in other.items() if k != "audio"}:
@@ -90,9 +91,14 @@ def main():
     for job in jobs:
         if PRODUCTION_VOICE not in job["voice_ids"] and not audio.cache_valid(job, ROOT / "public/audio", current_records):
             raise ValueError("Unrelated current-main clip is not cached: " + job["filename"])
-    # Stage complete current-main files, adding only the selected six clip records.
+    retired -= {job["filename"] for job in jobs}
+    for name in retired:
+        current_records.pop(name, None)
+    # Stage complete current-main files; retire only replaced, unreferenced elder clips.
     out.mkdir()
     shutil.copytree(ROOT / "public/audio", out / "audio")
+    for name in retired:
+        (out / "audio" / name).unlink(missing_ok=True)
     for job in selected:
         shutil.copyfile(source / "audio" / job["filename"], out / "audio" / job["filename"])
     manifest["clips"] = list(current_records.values())
