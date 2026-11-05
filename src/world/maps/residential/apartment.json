@@ -1,0 +1,579 @@
+{
+  "version": 1,
+  "id": "apartment",
+  "bounds": {
+    "width": 30,
+    "height": 26
+  },
+  "defaultSpawn": {
+    "x": 25,
+    "y": 20,
+    "facing": "north"
+  },
+  "walkable": [
+    {
+      "x": 2,
+      "y": 2,
+      "width": 26,
+      "height": 22
+    }
+  ],
+  "colliders": [
+    {
+      "id": "apartment.kitchen-counter",
+      "rect": {
+        "x": 21,
+        "y": 2,
+        "width": 6,
+        "height": 2
+      }
+    },
+    {
+      "id": "apartment.bath-divider",
+      "rect": {
+        "x": 20,
+        "y": 7,
+        "width": 0.4,
+        "height": 6
+      }
+    },
+    {
+      "id": "apartment.bath-wall",
+      "rect": {
+        "x": 21,
+        "y": 7,
+        "width": 6,
+        "height": 0.4
+      }
+    },
+    {
+      "id": "apartment.bath-screen",
+      "rect": {
+        "x": 25,
+        "y": 8,
+        "width": 2,
+        "height": 3
+      }
+    },
+    {
+      "id": "apartment.storage",
+      "rect": {
+        "x": 2,
+        "y": 14,
+        "width": 2,
+        "height": 2
+      }
+    },
+    {
+      "id": "apartment.books",
+      "rect": {
+        "x": 2,
+        "y": 2,
+        "width": 1,
+        "height": 2
+      }
+    },
+    {
+      "id": "apartment.window-one",
+      "rect": {
+        "x": 5,
+        "y": 2,
+        "width": 5,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "apartment.window-two",
+      "rect": {
+        "x": 12,
+        "y": 2,
+        "width": 5,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "apartment.tea-corner",
+      "rect": {
+        "x": 6,
+        "y": 18,
+        "width": 3,
+        "height": 2
+      }
+    },
+    {
+      "id": "apartment.tea-stool",
+      "rect": {
+        "x": 10,
+        "y": 19,
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "id": "apartment.balcony-plant",
+      "rect": {
+        "x": 3,
+        "y": 21,
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "id": "apartment.laundry-basket",
+      "rect": {
+        "x": 22,
+        "y": 9,
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "id": "apartment.entry-shoes",
+      "rect": {
+        "x": 24,
+        "y": 22.5,
+        "width": 2,
+        "height": 1
+      }
+    },
+    {
+      "id": "apartment.coat-hook",
+      "rect": {
+        "x": 27,
+        "y": 15,
+        "width": 0.5,
+        "height": 2
+      }
+    }
+  ],
+  "occluders": [
+    {
+      "id": "apartment.bath-divider",
+      "rect": {
+        "x": 20,
+        "y": 7,
+        "width": 0.4,
+        "height": 6
+      },
+      "height": 2.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "apartment.bath-wall",
+      "rect": {
+        "x": 21,
+        "y": 7,
+        "width": 6,
+        "height": 0.4
+      },
+      "height": 2.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "apartment.storage",
+      "rect": {
+        "x": 2,
+        "y": 14,
+        "width": 2,
+        "height": 2
+      },
+      "height": 2.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "apartment.books",
+      "rect": {
+        "x": 2,
+        "y": 2,
+        "width": 1,
+        "height": 2
+      },
+      "height": 2.5,
+      "fadeWhenPlayerBehind": true
+    }
+  ],
+  "entrances": [
+    {
+      "id": "from-residential-stairs",
+      "position": {
+        "x": 25,
+        "y": 20
+      },
+      "facing": "west"
+    }
+  ],
+  "exits": [
+    {
+      "id": "to-residential-stairs",
+      "rect": {
+        "x": 27,
+        "y": 20,
+        "width": 1,
+        "height": 3
+      },
+      "targetMapId": "residential-stairs",
+      "targetEntranceId": "from-apartment",
+      "kind": "door"
+    }
+  ],
+  "anchors": [
+    {
+      "id": "apartment.furnish",
+      "position": {
+        "x": 17.5,
+        "y": 13.5
+      },
+      "radius": 2,
+      "featureId": "apartment",
+      "interactionId": "existing-apartment-activity"
+    }
+  ],
+  "terrain": [
+    {
+      "id": "apartment.timber",
+      "rect": {
+        "x": 2,
+        "y": 2,
+        "width": 18,
+        "height": 15
+      },
+      "material": "timber",
+      "variant": 0
+    },
+    {
+      "id": "apartment.kitchen",
+      "rect": {
+        "x": 20,
+        "y": 2,
+        "width": 8,
+        "height": 6
+      },
+      "material": "glazed-tile",
+      "variant": 0
+    },
+    {
+      "id": "apartment.bathroom",
+      "rect": {
+        "x": 21,
+        "y": 8,
+        "width": 7,
+        "height": 6
+      },
+      "material": "glazed-tile",
+      "variant": 1
+    },
+    {
+      "id": "apartment.entry",
+      "rect": {
+        "x": 20,
+        "y": 14,
+        "width": 8,
+        "height": 10
+      },
+      "material": "terrazzo",
+      "variant": 0
+    },
+    {
+      "id": "apartment.sunroom",
+      "rect": {
+        "x": 2,
+        "y": 17,
+        "width": 18,
+        "height": 7
+      },
+      "material": "timber",
+      "variant": 1
+    },
+    {
+      "id": "apartment.door-mat",
+      "rect": {
+        "x": 24,
+        "y": 20,
+        "width": 3,
+        "height": 2
+      },
+      "material": "woven",
+      "variant": 1
+    }
+  ],
+  "props": [
+    {
+      "id": "apartment.kitchen-counter",
+      "kind": "kitchen",
+      "position": {
+        "x": 21,
+        "y": 2
+      },
+      "width": 6,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.bath-divider",
+      "kind": "partition",
+      "position": {
+        "x": 20,
+        "y": 7
+      },
+      "width": 0.4,
+      "height": 6,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.bath-wall",
+      "kind": "partition",
+      "position": {
+        "x": 21,
+        "y": 7
+      },
+      "width": 6,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.bath-screen",
+      "kind": "screen",
+      "position": {
+        "x": 25,
+        "y": 8
+      },
+      "width": 2,
+      "height": 3,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.storage",
+      "kind": "wardrobe",
+      "position": {
+        "x": 2,
+        "y": 14
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.books",
+      "kind": "bookcase",
+      "position": {
+        "x": 2,
+        "y": 2
+      },
+      "width": 1,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.window-one",
+      "kind": "window",
+      "position": {
+        "x": 5,
+        "y": 2
+      },
+      "width": 5,
+      "height": 0.25,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.window-two",
+      "kind": "window",
+      "position": {
+        "x": 12,
+        "y": 2
+      },
+      "width": 5,
+      "height": 0.25,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "apartment.tea-corner",
+      "kind": "tea-table",
+      "position": {
+        "x": 6,
+        "y": 18
+      },
+      "width": 3,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.tea-stool",
+      "kind": "stool",
+      "position": {
+        "x": 10,
+        "y": 19
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.balcony-plant",
+      "kind": "plant",
+      "position": {
+        "x": 3,
+        "y": 21
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.laundry-basket",
+      "kind": "basket",
+      "position": {
+        "x": 22,
+        "y": 9
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.entry-shoes",
+      "kind": "shoe-rack",
+      "position": {
+        "x": 24,
+        "y": 22.5
+      },
+      "width": 2,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.coat-hook",
+      "kind": "coat-hook",
+      "position": {
+        "x": 27,
+        "y": 15
+      },
+      "width": 0.5,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.window-sun",
+      "kind": "sunlight",
+      "position": {
+        "x": 7,
+        "y": 3
+      },
+      "width": 7,
+      "height": 9,
+      "layer": "ground",
+      "variant": 0
+    }
+  ],
+  "palette": {
+    "cream": [
+      245,
+      232,
+      202
+    ],
+    "jade": [
+      111,
+      154,
+      134
+    ],
+    "ink": [
+      48,
+      43,
+      42
+    ],
+    "wood": [
+      115,
+      86,
+      58
+    ],
+    "brass": [
+      190,
+      157,
+      97
+    ],
+    "plaster": [
+      224,
+      210,
+      177
+    ],
+    "terrazzo": [
+      160,
+      169,
+      158
+    ],
+    "window": [
+      158,
+      175,
+      188
+    ],
+    "linen": [
+      218,
+      208,
+      176
+    ]
+  },
+  "npcHooks": [],
+  "landmarks": [
+    {
+      "id": "apartment.personal-floor",
+      "position": {
+        "x": 16,
+        "y": 13
+      },
+      "kind": "furniture-region"
+    },
+    {
+      "id": "apartment.window-light",
+      "position": {
+        "x": 11,
+        "y": 4
+      },
+      "kind": "window"
+    },
+    {
+      "id": "apartment.tea-nook",
+      "position": {
+        "x": 9,
+        "y": 21
+      },
+      "kind": "tea-corner"
+    },
+    {
+      "id": "apartment.kitchen-approach",
+      "position": {
+        "x": 23,
+        "y": 5.5
+      },
+      "kind": "kitchen"
+    },
+    {
+      "id": "apartment.bathroom",
+      "position": {
+        "x": 23,
+        "y": 12
+      },
+      "kind": "washroom"
+    },
+    {
+      "id": "apartment.home-door",
+      "position": {
+        "x": 25,
+        "y": 20
+      },
+      "kind": "entrance"
+    }
+  ]
+}
