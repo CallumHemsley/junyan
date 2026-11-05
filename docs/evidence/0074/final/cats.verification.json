@@ -1,0 +1,99 @@
+{
+  "sourceSha": "7b27ca44a7ed5c9a0eebb45a6a06145beb381287",
+  "video": "/private/tmp/junyan-neighbourhood-demos/output/playwright/neighbourhood-tour/cats.mp4",
+  "videoSha256": "2ce8ed2e469ca63c4bbcf6f8e96665b404870c49dc07de7406ad834d17d4d736",
+  "durationSeconds": 33.667,
+  "audioRmsAt2000Hz": 0.040520364281708326,
+  "audioPeakAt2000Hz": 0.376251220703125,
+  "speechMatches": [
+    {
+      "src": "/audio/cats/line-clue.wav",
+      "sha256": "42db022a8e8d49976d841beefa25e7ed5db4df26048fe00f1f406c0bf882541e",
+      "atSeconds": 0.5460000000000065,
+      "complete": true,
+      "label": "cats",
+      "normalizedWaveformCorrelation": 0.85863403787137,
+      "matchedSourceStartSeconds": 0.529,
+      "alignmentDifferenceSeconds": -0.017
+    },
+    {
+      "src": "/audio/apartment/line-gift.wav",
+      "sha256": "971dfc1ae522c0e8347cc7c94aec1985540b393a079ded55b42d353fa2b00dbb",
+      "atSeconds": 32.012,
+      "complete": true,
+      "label": "late",
+      "normalizedWaveformCorrelation": 0.9998520329245352,
+      "matchedSourceStartSeconds": 31.9955,
+      "alignmentDifferenceSeconds": -0.0165
+    }
+  ],
+  "actualPlayingEvents": [
+    {
+      "src": "/audio/cats/line-clue.wav",
+      "sha256": "42db022a8e8d49976d841beefa25e7ed5db4df26048fe00f1f406c0bf882541e",
+      "atSeconds": 0.5460000000000065,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-bicycle-clue.wav",
+      "sha256": "5decb5d63ba1ebb276a39707b2770083e759d64d271053fe9755b1082c1c5753",
+      "atSeconds": 3.3389999999999986,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-gentle.wav",
+      "sha256": "d50c026222a7696eda001ba4f85bfd7d3a1afdb432c2113cfecfc3ff475bc912",
+      "atSeconds": 6.771000000000001,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-crouched.wav",
+      "sha256": "c55458bda9c3ae17b3fab7bd72f3b81aafcdbee28b83e6deaf8115a24b53bf3a",
+      "atSeconds": 10.921000000000006,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-emerged.wav",
+      "sha256": "519dd3028d939f4ea4d0f984344aa0aa26c8a783b1b449d5d49aa5787f700066",
+      "atSeconds": 14.988,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-invited.wav",
+      "sha256": "c5fc8073e2c8e3b59a1ae0c87f7a89248147c7f0a755b38e0c7665dbb9e34ec6",
+      "atSeconds": 18.50200000000001,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-doorway.wav",
+      "sha256": "9b826e9f5f480feea16a4eb226f6c55e2826e6cea603eb67304741385fe50105",
+      "atSeconds": 23.22,
+      "complete": true
+    },
+    {
+      "src": "/audio/cats/line-reunion.wav",
+      "sha256": "076e9809cffd40e137029ade60ffeda5ef72ef006cbc6e5e02500827528b04a4",
+      "atSeconds": 25.85300000000001,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-gift.wav",
+      "sha256": "971dfc1ae522c0e8347cc7c94aec1985540b393a079ded55b42d353fa2b00dbb",
+      "atSeconds": 32.012,
+      "complete": true
+    }
+  ],
+  "sourceSegmentsSeconds": [
+    [
+      87.416,
+      121.083
+    ]
+  ],
+  "browserErrors": [],
+  "method": "Native game HTMLMediaElement output routed to WebAudio MediaRecorder. Timed browser screenshots muxed with the live recorded audio. No replacement audio or speech synthesis. Normal browser autoplay policy. Dev hooks only read state; rehearsal skips opening.",
+  "limits": [
+    "Runtime audio routing is instrumented.",
+    "Timed screenshots do not capture every display frame.",
+    "No independent physical speaker audition or Mandarin pronunciation review claimed."
+  ]
+}
