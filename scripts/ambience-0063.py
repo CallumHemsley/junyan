@@ -64,5 +64,5 @@ with tempfile.TemporaryDirectory() as tmp:
         wav.setparams((1, 2, RATE, 0, 'NONE', 'not compressed'))
         wav.writeframes(array('h', (round(max(-1, min(1, v)) * 32767) for v in mix)).tobytes())
     subprocess.run(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-i', source,
-                    '-c:a', 'libvorbis', '-q:a', '3', str(out / 'breakfast.ogg')], check=True)
-print(f'{out / "breakfast.ogg"}: {(out / "breakfast.ogg").stat().st_size} bytes')
+                    '-c:a', 'libmp3lame', '-b:a', '48k', str(out / 'breakfast.mp3')], check=True)
+print(f'{out / "breakfast.mp3"}: {(out / "breakfast.mp3").stat().st_size} bytes')

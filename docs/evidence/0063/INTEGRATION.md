@@ -1,0 +1,13 @@
+# Integration contract (pending 0061 lease release)
+
+Keep one `createAmbience` owner for the mounted application, separate from `createPlayback`. Factory: `new Audio(import.meta.env.BASE_URL + ambienceAsset)`. Import the asset constant without a leading slash so production `/junyan/` works offline.
+
+Feed restaurant presence from the actual app phase, not panel presence: the sound continues while looking at the kitchen, journal or word card, and stops during the hospital/opening and after leaving the restaurant. On `visibilitychange`, supply `visible: !document.hidden`; on pagehide pause too, and on pageshow recalculate phase/visibility. Dispose on owner teardown. StrictMode must recreate the owner after teardown rather than reuse a disposed ref.
+
+Call `gesture()` synchronously in a real user action; do not defer through a React effect or a promise. On initial opening gestures the controller can unlock without creating media while `restaurant` is false. A policy/load failure requires a fresh gesture to retry. Repeated gesture calls while playing do not restart.
+
+Foreground playback should publish one speaking boolean at its ownership boundary: true before the current speech `play()`, false on current ended, stop, error or rejection; stale completions must not clear a newer speech attempt. Feed that boolean to `update({speaking})`. Ducking only changes the ambience element. Never route speech through the ambience controller, change its volume or stop speech from ambience error callbacks.
+
+Keep ambience preference independent of speech/game-save schema. Persist only `{muted, level}` in a separate versioned local preference key with finite/clamped parsing and storage failure fallback. Do not persist unlocked/restaurant/visible/speaking or runtime failure state. Restore preferences before any possible start. Reuse existing neutral UI tokens, Chinese DOM labels (`环境声`, `关闭环境声` / `开启环境声`, `环境声音量`), minimum 44px targets, and a native labelled range input. A fresh volume/mute user action may call gesture to retry failed policy playback.
+
+Required final verification after wiring: actual app phase and document lifecycle, speech start/end/stop/replacement/failure ducking, saved mute/level reload and unavailable storage, no duplicate media after leave/return or mount teardown, offline subpath decode, opening + three customers + change + journal at phone/desktop, controls/screenshots inspected and console clean. Current standalone driver supplies lifecycle/speech flags directly and must not be described as app integration proof. Subjective balance, resemblance, loop seam and ordinary-session Callum approval remain unverified until actual listening occurs.

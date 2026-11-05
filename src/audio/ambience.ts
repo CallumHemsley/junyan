@@ -10,7 +10,7 @@ export type AmbienceError = "policy" | "load" | null;
 type Media = Pick<HTMLAudioElement,
   "play" | "pause" | "volume" | "loop" | "preload" | "addEventListener" | "removeEventListener">;
 
-export const ambienceAsset = "audio/ambience/breakfast.ogg";
+export const ambienceAsset = "audio/ambience/breakfast.mp3";
 export const initialAmbience: AmbienceState = {
   restaurant: false, visible: true, unlocked: false,
   muted: false, level: 0.35, speaking: false,
