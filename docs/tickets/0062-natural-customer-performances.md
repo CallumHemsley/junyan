@@ -1,7 +1,7 @@
 ---
 id: 62
 title: Make all four restaurant customers sound and behave naturally
-status: doing
+status: done
 priority: medium
 type: bug
 created: 2026-11-05
@@ -13,11 +13,13 @@ Callum likes that the four customers have different voices, but their performanc
 
 ## Done when
 
-- [ ] Listen to greetings, orders, wrong-order reactions and thanks for all four regulars: 林姐, 小李, 张老师 and 小周. Review their visible reactions alongside the speech and record concrete examples of what feels unnatural for each person.
-- [ ] Refine the affected performances for conversational pacing, believable emphasis and restrained reactions, consistent with each character's personality. Keep four recognizably different voices, clear Mandarin and comfortably audible speech.
-- [ ] Compare before and after samples in the playable restaurant, including transitions between customers. Callum reviews all four and confirms they feel more like people ordering in a café.
-- [ ] Generate changed clips through the offline pipeline, update content paths and the manifest, and retain unchanged assets where possible. Check replay and offline playback; coordinate loudness changes with ticket 0057.
-- [ ] Run relevant rules/content, audio, offline and Playwright journey checks; inspect phone and desktop screenshots and a short video with sound, and confirm a clean console. Record listening findings, commands and results in Notes.
+Completion scope clarified by root on 2026-11-05: Callum accepted all four representative revised thanks; use that same-cast punctuation direction with self-verification, reject the incomplete teacher retry, and do not create a new full-corpus human approval gate. This does not claim Callum heard every final line or that an agent subjectively listened.
+
+- [x] Review all four regulars across greetings/orders/retry/thanks using complete inventories, supplied raw ASR/baseline comparison, user auditions of four thanks and actual restaurant journeys/reactions. Record listening limits honestly.
+- [x] Import 23 same-cast punctuation performances with unchanged visible tokens/presets. Retain original 张老师 retry because the candidate omitted a clause in ASR.
+- [x] Preserve the four user-accepted thanks WAVs byte-for-byte and play through customer transitions, change and journal. No full23 human listening claim.
+- [x] Update line paths, verified WAVs and complete manifest together; retire only22unreferenced replaced clips after full reference analysis, preserving Help's shared greeting. No loudness/preset change or ticket0057 completion.
+- [x] Pass rules/content, pipeline, build, full phone/desktop normal/reduced journeys, persistence, offline and all23 native playback. Inspect actual screenshots and sampled muted video; retain real WAV audition pairs separately. Record exact checks/evidence.
 
 ## Notes
 
@@ -33,3 +35,5 @@ Callum likes that the four customers have different voices, but their performanc
 - User directly accepted all four revised thanks samples. Same-cast punctuation direction selected; remaining 20 final lines not yet user-reviewed. Immediate isolated 0066 bridge handoff: [[evidence/0062/foundation-bridge-handoff]]. Production awaits current-main doctor import, explicit lease and final artifacts; preserve shared Help greeting references.
 - Full24 support set `64edaa7` technically staged without production writes:24targetlines/4acceptedthanksunchanged/126cached/0pending, old clips retained. Root ASR did NOT clear all24: HOLD `zhang-retry` for possible omitted 再看看 clause; short greeting/retry transcriptions uncertain. Staging cannot be promoted until clearance, updated main doctor+bridge and explicit lease.
 - Resolved root selection:23punctuationchanges; reject new `zhang-retry`71cc826b for possible missing clause, keep original retry/audio/no-text unchanged. Updated dry-run importer proves original object preserved/rejectedWAVabsent and126cached/0pending. Short Kokoro ASR ambiguities also occur on baseline; no all24-ASR-pass claim. Await revised package/raw proof and lease.
+
+- Implementation complete on currentmain9545141 with23selected changes;193unit tests, pipeline self-check,126cached/0pending and15browser checks passed(3duplicate-native skips). Independent production patch review PASS atda831e5; final exact-head follow-up requested. Compact final evidence: [[evidence/0062/final-review]]. Root merges after independent final review; no agent listening/full-corpus user approval claimed.

@@ -11,6 +11,7 @@ import io
 ROOT = Path(__file__).resolve().parents[2]
 REF = 'bf90baa2d266d59368829573c3d4f73c2c0fe05b'
 PREFIX = 'docs/evidence/0062/local-probes/'
+BASELINE_REF = '66ac123fa377f0cdbfb30f5c8bad07edf28790e4'
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--output', type=Path, required=True)
 args = parser.parse_args()
@@ -23,10 +24,13 @@ def support(path):
 
 inventory = json.loads(support('inventory.json'))
 manifest = json.loads(support('candidate-manifest-entries.json'))
-content = json.loads((ROOT / 'src/content/content.json').read_text())
-voices = json.loads((ROOT / 'src/content/voices.json').read_text())['voices']
+def baseline_file(path):
+    return subprocess.check_output(['git', 'show', BASELINE_REF + ':' + path], cwd=ROOT)
+
+content = json.loads(baseline_file('src/content/content.json'))
+voices = json.loads(baseline_file('src/content/voices.json'))['voices']
 records = {clip['filename']: clip for clip in manifest['clips']}
-baseline_records = {clip['filename']: clip for clip in json.loads((ROOT / 'public/audio/manifest.json').read_text())['clips']}
+baseline_records = {clip['filename']: clip for clip in json.loads(baseline_file('public/audio/manifest.json'))['clips']}
 characters = {character['id']: character for character in content['characters']}
 if len(inventory) != 4 or {row['characterId'] for row in inventory} != set(characters):
     raise ValueError('Expected exactly one probe for each regular')
@@ -47,8 +51,8 @@ for row in inventory:
     baseline = (ROOT / 'public' / line['audio'].lstrip('/')).resolve()
     if not baseline.is_relative_to(ROOT / 'public/audio'):
         raise ValueError('Invalid baseline path')
-    pair = [('before', baseline.read_bytes()), ('after', support('audio/' + candidate))]
-    review = {**row, 'supportCommit': REF, 'voiceId': character['voiceId'], 'listening': 'NOT REVIEWED'}
+    pair = [('before', baseline_file('public' + line['audio'])), ('after', support('audio/' + candidate))]
+    review = {**row, 'supportCommit': REF, 'baselineCommit': BASELINE_REF, 'voiceId': character['voiceId'], 'listening': 'NOT REVIEWED'}
     sections.append('<section><h2>' + html.escape(row['name']) + '</h2><p>' + html.escape(row['text']) + '</p>')
     for label, data in pair:
         checksum = sha256(data).hexdigest()
