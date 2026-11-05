@@ -1,0 +1,15 @@
+ts	phase	decision	why	evidence	result
+2026-11-05T19:08:00Z	start	Started canonical skill-format trail; prior choices are in decisions.tsv	Correct historical format without erasing it	evidence/0069/decisions.tsv	open
+2026-11-05T19:08:01Z	rules	Store both physical jobs and allow free switching	An unfinished lamp must not gate toy repair	src/features/repairs/rules.test.ts	tests green
+2026-11-05T19:08:02Z	content	Separate object return from both-complete gift line	Toy may be returned first; materials appear naturally	src/features/repairs/content.json	open
+2026-11-05T19:22:00Z	review	Use neutral reopened dialogue and validate feedback semantics	Physical state must support the spoken claim	commit dc2f075	tests green
+2026-11-05T19:22:01Z	ui	Enlarge pixel objects and move labels to leader rings	Players must see bulb seating and toy contacts	evidence/0069/phone-toy-exposed.png	inspected
+2026-11-05T19:22:02Z	ui	Use one content speaker function for resident and dialogue	Both return orders must show the person whose voice plays	e2e/repairs.spec.ts	9 isolated checks passed
+2026-11-05T19:22:03Z	verification	Run existing desktop and phone waiter journey	Repair code must preserve the original game	evidence/0069/baseline.config.ts	6 checks passed
+2026-11-05T19:22:04Z	audio	Fail the asset inventory until exact natural voices exist	Callback-only harness does not prove audio	evidence/0069/audio-inventory.json	64 clips missing
+2026-11-05T19:27:00Z	branch	Rebase only repair commits onto current main	Exclude already squash-merged coordination commits	5c90ba4b7421755fee3dd5d12e777f70dd34f226	no shared code changes
+2026-11-05T19:27:01Z	verification	Repeat the full required check sequence after rebase	Review the exact source against current shared code	06e34bffa7682027efbb89d2915491e3c9d9a9b8	181 rules; build;9 repair;6 baseline checks passed
+2026-11-05T19:30:00Z	review	Make powered-turn feedback neutral for both directions	A requested loosen must not instruct tightening	src/features/repairs/rules.test.ts	13 repair rules;build;3 browser journeys passed
+2026-11-05T19:30:01Z	audio	Regenerate exact manifest for the shorter Serena line	Voice output must match the displayed segmented line	evidence/0069/audio-plan.json	64 required clips still missing
+2026-11-05T19:35:00Z	review	Record final independent isolated PASS	Focused review resolves the full UI review's sole finding	36b0b77aabe2ccbba58e0b4e7825122913b1262d;/root/repair_final_check	13 rules;desktop1440/390/320;clean console;audio-plan hash reproduced
+2026-11-05T19:35:01Z	blockers	Retain blocked status after isolated review	64 natural clips and shared integration gates still lack evidence	https://github.com/CallumHemsley/junyan/pull/22	BLOCKED audio and0066 route/save/offline/cross-feature checks

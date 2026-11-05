@@ -1,0 +1,89 @@
+[WebServer] (node:36413) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:36432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop] › e2e/ambience.spec.ts:240:1 › foreground resource failure releases ducking and direct replay recovers (3.4s)
+(node:36587) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 [desktop] › e2e/overnight-keyboard.spec.ts:115:1 › keyboard journey keeps named controls and focus across a full day (17.2s)
+(node:36750) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 [phone] › e2e/ambience.spec.ts:240:1 › foreground resource failure releases ducking and direct replay recovers (3.1s)
+(node:36900) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 [phone] › e2e/overnight-keyboard.spec.ts:115:1 › keyboard journey keeps named controls and focus across a full day (18.7s)
+
+
+  1) [desktop] › e2e/overnight-keyboard.spec.ts:115:1 › keyboard journey keeps named controls and focus across a full day 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 10000ms exceeded while waiting on the predicate
+
+      162 |     await activate(page, dialog.getByRole("button", { name: "递上找零" }));
+      163 |     await expect(dialog.locator(".thanks-chop")).toBeVisible();
+    > 164 |     await expect.poll(() => dialog.evaluate((element) => element.contains(document.activeElement))).toBe(true);
+          |                                                                                                     ^
+      165 |     await activate(page, dialog.getByRole("button", { name: "继续招呼" }));
+      166 |   }
+      167 |   const summary = page.getByRole("dialog", { name: "今日小结" });
+        at /workspace/junyan-foundation/e2e/overnight-keyboard.spec.ts:164:101
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    output/neighbourhood/results/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: output/neighbourhood/results/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-desktop/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    output/neighbourhood/results/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-desktop/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace output/neighbourhood/results/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [phone] › e2e/overnight-keyboard.spec.ts:115:1 › keyboard journey keeps named controls and focus across a full day 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 10000ms exceeded while waiting on the predicate
+
+      162 |     await activate(page, dialog.getByRole("button", { name: "递上找零" }));
+      163 |     await expect(dialog.locator(".thanks-chop")).toBeVisible();
+    > 164 |     await expect.poll(() => dialog.evaluate((element) => element.contains(document.activeElement))).toBe(true);
+          |                                                                                                     ^
+      165 |     await activate(page, dialog.getByRole("button", { name: "继续招呼" }));
+      166 |   }
+      167 |   const summary = page.getByRole("dialog", { name: "今日小结" });
+        at /workspace/junyan-foundation/e2e/overnight-keyboard.spec.ts:164:101
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    output/neighbourhood/results/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-phone/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: output/neighbourhood/results/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-phone/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    output/neighbourhood/results/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-phone/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace output/neighbourhood/results/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-phone/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [desktop] › e2e/overnight-keyboard.spec.ts:115:1 › keyboard journey keeps named controls and focus across a full day 
+    [phone] › e2e/overnight-keyboard.spec.ts:115:1 › keyboard journey keeps named controls and focus across a full day 
+  2 passed (48.5s)

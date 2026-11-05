@@ -120,7 +120,7 @@ test("wake in the ward, then collect, recall, deliver, give change, journal, and
   await expect(page.getByRole("dialog", { name: "今日小结" })).toBeVisible();
   await expect(page.getByRole("button", { name: "明天见" })).toBeFocused();
   await page.keyboard.press("Tab");
-  await expect(page.getByRole("button", { name: "明天见" })).toBeFocused();
+  await expect(page.getByRole("button", { name: "回家看看" })).toBeFocused();
   await page.keyboard.press("Shift+Tab");
   await expect(page.getByRole("button", { name: "明天见" })).toBeFocused();
   await page.getByRole("button", { name: "明天见" }).click();

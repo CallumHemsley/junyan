@@ -1,0 +1,259 @@
+{
+  "model": "openai/whisper-small",
+  "revision": "973afd24965f72e36ca33b3055d56a652f456b4d",
+  "method": "Local CPU ASR. Language and task only. No expected-text prompt and no audio upload. Not a listening, tone or naturalness judgement.",
+  "clips": [
+    {
+      "filename": "cats/line-clue.wav",
+      "sha256": "42db022a8e8d49976d841beefa25e7ed5db4df26048fe00f1f406c0bf882541e",
+      "expected": "你看见小白了吗？",
+      "recognized": "你看见小白了吗"
+    },
+    {
+      "filename": "cats/line-bicycle-clue.wav",
+      "sha256": "5decb5d63ba1ebb276a39707b2770083e759d64d271053fe9755b1082c1c5753",
+      "expected": "白猫在自行车下面。",
+      "recognized": "白貓在自行車下面"
+    },
+    {
+      "filename": "cats/line-wrong-cat.wav",
+      "sha256": "18d319b494ede61c014eccfa4835b73afacec231cf2593b72aa32ff38cb34598",
+      "expected": "不是黑猫，是白猫。",
+      "recognized": "不是黑猫是白猫"
+    },
+    {
+      "filename": "cats/line-gentle.wav",
+      "sha256": "d50c026222a7696eda001ba4f85bfd7d3a1afdb432c2113cfecfc3ff475bc912",
+      "expected": "慢慢来，蹲下，等一等。",
+      "recognized": "慢慢來 蹲下 等等"
+    },
+    {
+      "filename": "cats/line-crouched.wav",
+      "sha256": "c55458bda9c3ae17b3fab7bd72f3b81aafcdbee28b83e6deaf8115a24b53bf3a",
+      "expected": "好，等一等。",
+      "recognized": "好 等等"
+    },
+    {
+      "filename": "cats/line-space.wav",
+      "sha256": "bf2466dbd9fc63298efbd0f2cde5a0ef89d4e96b5bf0290380e4995ebce6d703",
+      "expected": "退后，小白安静了。",
+      "recognized": "退后小白安静了"
+    },
+    {
+      "filename": "cats/line-emerged.wav",
+      "sha256": "519dd3028d939f4ea4d0f984344aa0aa26c8a783b1b449d5d49aa5787f700066",
+      "expected": "小白出来了。",
+      "recognized": "小白出来了"
+    },
+    {
+      "filename": "cats/line-invited.wav",
+      "sha256": "c5fc8073e2c8e3b59a1ae0c87f7a89248147c7f0a755b38e0c7665dbb9e34ec6",
+      "expected": "跟着小白走。",
+      "recognized": "跟着小白走"
+    },
+    {
+      "filename": "cats/line-doorway.wav",
+      "sha256": "2e052554e2ec694b0732c64bb5b3aae8e69cf3e411cc90bfc346f0b31c9b1b3d",
+      "expected": "她在门口。",
+      "recognized": "哈哈哈哈他在門口"
+    },
+    {
+      "filename": "cats/line-reunion.wav",
+      "sha256": "076e9809cffd40e137029ade60ffeda5ef72ef006cbc6e5e02500827528b04a4",
+      "expected": "找到了，谢谢你。这个垫子送给你。",
+      "recognized": "找到了。谢谢你。这个电子送给你。"
+    },
+    {
+      "filename": "cats/line-black-greeting.wav",
+      "sha256": "bf951c5e0e9766734271c9e16e7e6c14b86667dbee3874bfdb3c9e8579af3096",
+      "expected": "小黑，你好。",
+      "recognized": "小黑,你好!"
+    },
+    {
+      "filename": "cats/line-black-sitting.wav",
+      "sha256": "86ae9fe66126c1c890acd5d87ee3c1bd0c2b2f31e9f33bb7d1578a6a06048e2a",
+      "expected": "小黑和你一起坐下。",
+      "recognized": "小黑和你一起坐下"
+    },
+    {
+      "filename": "cats/line-black-clue.wav",
+      "sha256": "8f88945155c0e4d7e569a9b2c0087873e138e06b24773e49f059b8bf8f581d2b",
+      "expected": "小黑在椅子旁边。",
+      "recognized": "小黑在椅子旁边。"
+    },
+    {
+      "filename": "cats/line-sunny.wav",
+      "sha256": "dd09aa383d74711a5cad708738eae3a90ca6d12d36be91c904b40bbab49659d2",
+      "expected": "太阳出来了。小黑在椅子旁边。",
+      "recognized": "太阳出来了,小黑在椅子旁边。"
+    },
+    {
+      "filename": "cats/line-rainy.wav",
+      "sha256": "315aa5a58fccbb93448e2de482f52445ff665828fb69c4779c894a08f1c764e0",
+      "expected": "下雨了。小白在门口。",
+      "recognized": "下雨了,想白在门口"
+    },
+    {
+      "filename": "cats/line-empty-bicycle.wav",
+      "sha256": "2473407049ef62c63d11a7fd2c7bfc4dac9e1c161d383f88f7727cc287dde85e",
+      "expected": "小白不在自行车下面。",
+      "recognized": "小白不再自行车下面"
+    },
+    {
+      "filename": "cats/line-rain-found.wav",
+      "sha256": "e6ff82eafe8386d16702893afd0df993e52bc65774b12686edd0bb2976d72284",
+      "expected": "找到小白了。一起等一等。",
+      "recognized": "找到小白了一起等一等"
+    },
+    {
+      "filename": "cats/line-route.wav",
+      "sha256": "dddab3cf80e48568f9fe29b1b4a8e118985c78c63294631a298f0f22b9cf89e9",
+      "expected": "小白去窗边。跟着小白走。",
+      "recognized": "小白去窗边跟着小白走"
+    },
+    {
+      "filename": "cats/line-window-found.wav",
+      "sha256": "23226ed739abee81a142bd2dbf8e963f02b8a658812f34426bd1049ac496e47b",
+      "expected": "小白在窗边。",
+      "recognized": "小白在窗边"
+    },
+    {
+      "filename": "cats/line-visit-complete.wav",
+      "sha256": "5e621aa62b6a1236146df7289139c8eac76d4d8c3a80e2e23a7d353020edda84",
+      "expected": "好朋友，明天见。",
+      "recognized": "好朋友,明天见!"
+    },
+    {
+      "filename": "cats/line-return.wav",
+      "sha256": "a977433b16b05cccd530011e0c8d547c079966644a29cbedb8ae7bbe2c0a77e0",
+      "expected": "小白，小黑，你好。",
+      "recognized": "小白 小黑 你好"
+    },
+    {
+      "filename": "cats/line-later.wav",
+      "sha256": "3347038294e28b73c28c44c9ad87ebc215e868a7de24c3028662626230a7c136",
+      "expected": "今天已经见了。明天再来。",
+      "recognized": "今天已经见了,明天再来。"
+    },
+    {
+      "filename": "cats/line-label-courtyard.wav",
+      "sha256": "b6f5fd91d5de95edb9b77d1b74cdc7a8984412ff95cb55edbd7d5a07cc729c07",
+      "expected": "院子",
+      "recognized": "院子"
+    },
+    {
+      "filename": "cats/line-label-white.wav",
+      "sha256": "21ed8366f6ff75b7fbe0820c540d48354ccc59c9941f4014adefb716ad6d6d74",
+      "expected": "小白",
+      "recognized": "哎呀 小白"
+    },
+    {
+      "filename": "cats/line-label-black.wav",
+      "sha256": "0b4ad0b1dce76e228388fc443d5d97f1c7df82de961eac5c14cf5d2aaa5b6738",
+      "expected": "小黑",
+      "recognized": "小黑"
+    },
+    {
+      "filename": "cats/line-label-bicycle.wav",
+      "sha256": "885297749565d7ea552b35fbe3913576b1882f7fb393c527a08e1d8c7286b97a",
+      "expected": "自行车",
+      "recognized": "自行车"
+    },
+    {
+      "filename": "cats/line-label-bench.wav",
+      "sha256": "0f3b02ba944fc10d0e5847635809687f1b317668c3d3b398450b54f27c0bc9a2",
+      "expected": "椅子",
+      "recognized": "一你吃"
+    },
+    {
+      "filename": "cats/line-label-door.wav",
+      "sha256": "f06e0747cb1c9cf506da8622b841623a9c2538660a260d7d9f39578e56e72e34",
+      "expected": "门口",
+      "recognized": "猛卡"
+    },
+    {
+      "filename": "cats/line-label-window.wav",
+      "sha256": "bf72b2a80b1a2908ac38ef36e487e60dc2ebc6f01bbea064a80bb2297e3ea0fa",
+      "expected": "窗边",
+      "recognized": "窗邊"
+    },
+    {
+      "filename": "cats/line-label-aunt.wav",
+      "sha256": "d7f949142acec298e4a3a1480b449fd1ccb6a5c9308d5825f934d51a4913170f",
+      "expected": "阿姨",
+      "recognized": "阿姨"
+    },
+    {
+      "filename": "cats/line-action-look.wav",
+      "sha256": "4b51bfc1c6e0e21d4c95f83dc7d1a0cfd3c25d83cad4aa516a17e569e4ca3174",
+      "expected": "看看",
+      "recognized": "看看"
+    },
+    {
+      "filename": "cats/line-action-crouch.wav",
+      "sha256": "ad8993acea7f2091f622f7071972f08933cd95b665b9bf663217268644b8e63b",
+      "expected": "蹲下",
+      "recognized": "蹲下"
+    },
+    {
+      "filename": "cats/line-action-wait.wav",
+      "sha256": "19560391bc4f62e28385582b380710516570cf2e5597803d5a896490e1f87382",
+      "expected": "等一等",
+      "recognized": "等一等"
+    },
+    {
+      "filename": "cats/line-action-space.wav",
+      "sha256": "26587fb83cba4188a4279a0b8217e2659be6b4fbe93238dabe6e7a2ebe144a2d",
+      "expected": "退后",
+      "recognized": "退後"
+    },
+    {
+      "filename": "cats/line-action-approach.wav",
+      "sha256": "a502c700575441745cb077086be368db5ecc040e2170dc45115f8869da90a650",
+      "expected": "过来",
+      "recognized": "过来"
+    },
+    {
+      "filename": "cats/line-action-follow.wav",
+      "sha256": "dbbdff473dc2e805bb52b3d1090ac45776e5aaad854845dd495cc157957f4633",
+      "expected": "跟着小白走",
+      "recognized": "跟这小白走"
+    },
+    {
+      "filename": "cats/line-action-call.wav",
+      "sha256": "3f129ba63cd6b35cdc3466bee0f7f0a5ba3433e9423864c5d29597509066fdc7",
+      "expected": "叫阿姨",
+      "recognized": "叫阿姨"
+    },
+    {
+      "filename": "cats/line-action-greet.wav",
+      "sha256": "3e316e81c54b507210eebf5a6c99a9095296571357e153eafd69205fdc957886",
+      "expected": "你好",
+      "recognized": "你好"
+    },
+    {
+      "filename": "cats/line-action-sit.wav",
+      "sha256": "24ef773b1b0955b8b737c9c2321ce578112fe37f650148f71d9da6245c2412a7",
+      "expected": "坐下",
+      "recognized": "坐下"
+    },
+    {
+      "filename": "cats/line-action-begin.wav",
+      "sha256": "8a3ef661bca68349cca0a461805a06e6f052b3b6de5e49e17ce5fe254f2acced",
+      "expected": "看看院子",
+      "recognized": "看看燕子"
+    },
+    {
+      "filename": "cats/line-action-replay.wav",
+      "sha256": "76a473e7eb1107a7c56e421a067d0a8224f41fe16540be394b4130ab149462f6",
+      "expected": "再听",
+      "recognized": "再聽。"
+    },
+    {
+      "filename": "cats/line-white-sitting.wav",
+      "sha256": "59cc68669b28aa86c191859bae1ff955da2728597f209644d8d8177c55d3a930",
+      "expected": "小白和你一起坐下。",
+      "recognized": "小白和你一起坐下"
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+[WebServer] (node:31655) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 72 tests using 1 worker
+
+(node:31675) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [desktop] › e2e/ambience.spec.ts:44:1 › settings preserve independent mute and level, keyboard never moves the waiter (3.1s)
+  ✓   2 [desktop] › e2e/ambience.spec.ts:84:1 › native ambience survives panel changes and pauses/resumes through app lifecycle listeners (1.3s)
+  ✓   3 [desktop] › e2e/ambience.spec.ts:110:1 › real foreground speech ducks the bed and restores on native end, stop and word cancellation (6.7s)
+  ✓   4 [desktop] › e2e/ambience.spec.ts:130:1 › resource failure retries the same ambience owner without disturbing speech (2.9s)
+  ✓   5 [desktop] › e2e/ambience.spec.ts:166:1 › unavailable preference storage keeps current-session controls functional (1.4s)
+  ✓   6 [desktop] › e2e/ambience.spec.ts:181:1 › opening stays silent then transitions to one bed, reset stops it (8.8s)
+  ✓   7 [desktop] › e2e/ambience.spec.ts:194:1 › reduced-motion settings remain usable and contained (1.4s)
+  ✓   8 [desktop] › e2e/ambience.spec.ts:229:3 › touch activation › a genuine touch gesture starts the bed on first entry (1.3s)
+  ✘   9 [desktop] › e2e/ambience.spec.ts:240:1 › foreground resource failure releases ducking and direct replay recovers (2.3s)
+(node:32211) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  10 [desktop] › e2e/ambience.spec.ts:255:1 › narrow phone settings keep every control inside screen gutters (1.3s)
+  ✓  11 [desktop] › e2e/cumulative-earnings.spec.ts:5:1 › two days label lifetime receipts without changing the running total (51.2s)
+  ✓  12 [desktop] › e2e/waiter.spec.ts:88:1 › wake in the ward, then collect, recall, deliver, give change, journal, and progress (37.4s)
+  ✓  13 [desktop] › e2e/waiter.spec.ts:145:1 › walking connects a keyboard position beside a table without stalling (3.6s)
+  ✓  14 [desktop] › e2e/waiter.spec.ts:165:1 › browser saves and reloads a looked-up word (3.5s)
+  ✓  15 [desktop] › e2e/word-switch.spec.ts:39:3 › development: Help and restaurant switch directly with top-only Escape (4.2s)
+  ✓  16 [desktop] › e2e/word-switch.spec.ts:58:1 › hospital words switch without advancing the opening (4.0s)
+  ✓  17 [desktop] › e2e/word-switch.spec.ts:68:1 › kitchen, tray, journal and receipt sources keep switching (7.9s)
+  ✓  18 [desktop] › e2e/word-switch.spec.ts:109:1 › rapid keyboard/pointer selection records once and cancels prior native audio (4.8s)
+(node:32837) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  19 [desktop] › e2e/learning-help.spec.ts:10:1 › help narrates authored tokens, shows the sequence and journals lookups without English (6.6s)
+  ✓  20 [desktop] › e2e/learning-help.spec.ts:54:1 › small-phone help stays within the viewport and food aids retain pictures without glosses (2.4s)
+  ✓  21 [desktop] › e2e/learning-help.spec.ts:82:1 › help-only vocabulary survives a real saved-game reload (2.3s)
+(node:33085) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  22 [desktop] › e2e/overlay-focus.spec.ts:25:7 › development › word card shares focus with lookup sources and restores both layers (pointer) (2.6s)
+  ✓  23 [desktop] › e2e/overlay-focus.spec.ts:25:7 › development › word card shares focus with lookup sources and restores both layers (keyboard) (2.3s)
+  ✓  24 [desktop] › e2e/overlay-focus.spec.ts:76:7 › development › Help cancels an in-flight table arrival (.help-button) (7.0s)
+  ✓  25 [desktop] › e2e/overlay-focus.spec.ts:108:1 › receipt word targets are at least 44px and restore focus (1.9s)
+  ✓  26 [desktop] › e2e/overlay-focus.spec.ts:140:1 › kitchen, tray, and journal word cards restore their own triggers (3.7s)
+(node:33405) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  27 [desktop] › e2e/overnight-keyboard.spec.ts:51:1 › Escape interrupts walking without a delayed table opening (5.6s)
+  ✓  28 [desktop] › e2e/overnight-keyboard.spec.ts:63:1 › day summary blocks movement and interaction shortcuts (2.3s)
+  ✓  29 [desktop] › e2e/overnight-keyboard.spec.ts:94:1 › kitchen closes back to the original table trigger after walking (3.9s)
+  ✓  30 [desktop] › e2e/overnight-keyboard.spec.ts:105:1 › modified arrow shortcuts do not move the waiter (1.4s)
+  ✘  31 [desktop] › e2e/overnight-keyboard.spec.ts:115:1 › keyboard journey keeps named controls and focus across a full day (13.0s)
+(node:33747) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  32 [desktop] › e2e/overnight-keyboard.spec.ts:189:3 › non-test word survives immediate reload (aborted IndexedDB: false) (4.7s)
+  ✓  33 [desktop] › e2e/overnight-keyboard.spec.ts:189:3 › non-test word survives immediate reload (aborted IndexedDB: true) (5.0s)
+  ✓  34 [desktop] › e2e/overnight-keyboard.spec.ts:224:3 › invalid recovery checkpoint falls back to IndexedDB: { (3.6s)
+  ✓  35 [desktop] › e2e/overnight-keyboard.spec.ts:224:3 › invalid recovery checkpoint falls back to IndexedDB: {} (3.9s)
+  ✓  36 [desktop] › e2e/overnight-keyboard.spec.ts:240:1 › a failed checkpoint write cannot override a later successful IndexedDB save (4.1s)
+(node:34125) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  37 [phone] › e2e/ambience.spec.ts:44:1 › settings preserve independent mute and level, keyboard never moves the waiter (2.6s)
+  ✓  38 [phone] › e2e/ambience.spec.ts:84:1 › native ambience survives panel changes and pauses/resumes through app lifecycle listeners (1.4s)
+  ✓  39 [phone] › e2e/ambience.spec.ts:110:1 › real foreground speech ducks the bed and restores on native end, stop and word cancellation (7.2s)
+  ✓  40 [phone] › e2e/ambience.spec.ts:130:1 › resource failure retries the same ambience owner without disturbing speech (3.0s)
+  ✓  41 [phone] › e2e/ambience.spec.ts:166:1 › unavailable preference storage keeps current-session controls functional (1.3s)
+  ✓  42 [phone] › e2e/ambience.spec.ts:181:1 › opening stays silent then transitions to one bed, reset stops it (8.2s)
+  ✓  43 [phone] › e2e/ambience.spec.ts:194:1 › reduced-motion settings remain usable and contained (1.4s)
+  ✓  44 [phone] › e2e/ambience.spec.ts:229:3 › touch activation › a genuine touch gesture starts the bed on first entry (1.2s)
+  ✓  45 [phone] › e2e/ambience.spec.ts:240:1 › foreground resource failure releases ducking and direct replay recovers (2.7s)
+  ✓  46 [phone] › e2e/ambience.spec.ts:255:1 › narrow phone settings keep every control inside screen gutters (1.5s)
+  ✓  47 [phone] › e2e/cumulative-earnings.spec.ts:5:1 › two days label lifetime receipts without changing the running total (50.6s)
+  ✓  48 [phone] › e2e/waiter.spec.ts:88:1 › wake in the ward, then collect, recall, deliver, give change, journal, and progress (38.8s)
+  ✓  49 [phone] › e2e/waiter.spec.ts:145:1 › walking connects a keyboard position beside a table without stalling (3.6s)
+  ✓  50 [phone] › e2e/waiter.spec.ts:165:1 › browser saves and reloads a looked-up word (4.1s)
+  ✓  51 [phone] › e2e/word-switch.spec.ts:39:3 › development: Help and restaurant switch directly with top-only Escape (4.2s)
+  ✓  52 [phone] › e2e/word-switch.spec.ts:58:1 › hospital words switch without advancing the opening (4.5s)
+  ✓  53 [phone] › e2e/word-switch.spec.ts:68:1 › kitchen, tray, journal and receipt sources keep switching (8.0s)
+  ✓  54 [phone] › e2e/word-switch.spec.ts:109:1 › rapid keyboard/pointer selection records once and cancels prior native audio (5.4s)
+(node:35125) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  55 [phone] › e2e/learning-help.spec.ts:10:1 › help narrates authored tokens, shows the sequence and journals lookups without English (7.4s)
+  ✓  56 [phone] › e2e/learning-help.spec.ts:54:1 › small-phone help stays within the viewport and food aids retain pictures without glosses (2.8s)
+  ✓  57 [phone] › e2e/learning-help.spec.ts:82:1 › help-only vocabulary survives a real saved-game reload (2.4s)
+(node:35366) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  58 [phone] › e2e/overlay-focus.spec.ts:25:7 › development › word card shares focus with lookup sources and restores both layers (pointer) (3.1s)
+  ✓  59 [phone] › e2e/overlay-focus.spec.ts:25:7 › development › word card shares focus with lookup sources and restores both layers (keyboard) (2.9s)
+  ✓  60 [phone] › e2e/overlay-focus.spec.ts:76:7 › development › Help cancels an in-flight table arrival (.help-button) (7.8s)
+  ✓  61 [phone] › e2e/overlay-focus.spec.ts:108:1 › receipt word targets are at least 44px and restore focus (2.2s)
+  ✓  62 [phone] › e2e/overlay-focus.spec.ts:140:1 › kitchen, tray, and journal word cards restore their own triggers (3.6s)
+(node:35688) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  63 [phone] › e2e/overnight-keyboard.spec.ts:51:1 › Escape interrupts walking without a delayed table opening (6.5s)
+  ✓  64 [phone] › e2e/overnight-keyboard.spec.ts:63:1 › day summary blocks movement and interaction shortcuts (2.5s)
+  ✓  65 [phone] › e2e/overnight-keyboard.spec.ts:94:1 › kitchen closes back to the original table trigger after walking (3.8s)
+  ✓  66 [phone] › e2e/overnight-keyboard.spec.ts:105:1 › modified arrow shortcuts do not move the waiter (1.7s)
+  ✘  67 [phone] › e2e/overnight-keyboard.spec.ts:115:1 › keyboard journey keeps named controls and focus across a full day (13.7s)
+(node:36025) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  68 [phone] › e2e/overnight-keyboard.spec.ts:189:3 › non-test word survives immediate reload (aborted IndexedDB: false) (5.3s)
+  ✓  69 [phone] › e2e/overnight-keyboard.spec.ts:189:3 › non-test word survives immediate reload (aborted IndexedDB: true) (5.0s)
+  ✓  70 [phone] › e2e/overnight-keyboard.spec.ts:224:3 › invalid recovery checkpoint falls back to IndexedDB: { (3.7s)
+  ✓  71 [phone] › e2e/overnight-keyboard.spec.ts:224:3 › invalid recovery checkpoint falls back to IndexedDB: {} (3.9s)
+  ✓  72 [phone] › e2e/overnight-keyboard.spec.ts:240:1 › a failed checkpoint write cannot override a later successful IndexedDB save (5.2s)
+
+
+  1) [desktop] › e2e/ambience.spec.ts:240:1 › foreground resource failure releases ducking and direct replay recovers 
+
+    Error: apiResponse.body: Response has been disposed
+
+       at audio-fixtures.ts:26
+
+      24 | export async function silentResponse(route: Route, delay = 0) {
+      25 |   const response = await route.fetch({ headers: { ...route.request().headers(), range: "bytes=0-" } });
+    > 26 |   const body = silentWav(await response.body());
+         |                                         ^
+      27 |   if (delay) await new Promise(resolve => setTimeout(resolve, delay));
+      28 |   await route.fulfill({ status: 200, contentType: "audio/wav", body });
+      29 | }
+        at silentResponse (/workspace/junyan-foundation/e2e/audio-fixtures.ts:26:41)
+
+    Error Context: output/neighbourhood/results/ambience-foreground-resour-0087d--and-direct-replay-recovers-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    output/neighbourhood/results/ambience-foreground-resour-0087d--and-direct-replay-recovers-desktop/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace output/neighbourhood/results/ambience-foreground-resour-0087d--and-direct-replay-recovers-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop] › e2e/overnight-keyboard.spec.ts:115:1 › keyboard journey keeps named controls and focus across a full day 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('.modal-backdrop')
+    Expected: ""
+    Received: serializes to the same string
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('.modal-backdrop') with timeout 10000ms
+      - waiting for locator('.modal-backdrop')
+        24 × locator resolved to <div class="modal-backdrop">…</div>
+           - unexpected value "null"
+
+
+      129 |       const card = page.getByRole("dialog", { name: /的意思$/ });
+      130 |       await expect(card.getByRole("button", { name: "关闭词卡" })).toBeFocused();
+    > 131 |       await expect(page.locator(".modal-backdrop")).toHaveAttribute("inert", "");
+          |                                                     ^
+      132 |       await page.keyboard.press("Shift+Tab");
+      133 |       await expect(card.getByRole("button", { name: "听这个词" })).toBeFocused();
+      134 |       await page.keyboard.press("Tab");
+        at /workspace/junyan-foundation/e2e/overnight-keyboard.spec.ts:131:53
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    output/neighbourhood/results/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: output/neighbourhood/results/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-desktop/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    output/neighbourhood/results/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-desktop/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace output/neighbourhood/results/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [phone] › e2e/overnight-keyboard.spec.ts:115:1 › keyboard journey keeps named controls and focus across a full day 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('.modal-backdrop')
+    Expected: ""
+    Received: serializes to the same string
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('.modal-backdrop') with timeout 10000ms
+      - waiting for locator('.modal-backdrop')
+        24 × locator resolved to <div class="modal-backdrop">…</div>
+           - unexpected value "null"
+
+
+      129 |       const card = page.getByRole("dialog", { name: /的意思$/ });
+      130 |       await expect(card.getByRole("button", { name: "关闭词卡" })).toBeFocused();
+    > 131 |       await expect(page.locator(".modal-backdrop")).not.toHaveAttribute("inert", "");
+          |                                                     ^
+      132 |       await expect(page.locator("main")).toHaveAttribute("inert", "");
+      133 |       const sourceWords = dialog.locator("[data-word-lookup]");
+      134 |       await page.keyboard.press("Shift+Tab");
+        at /workspace/junyan-foundation/e2e/overnight-keyboard.spec.ts:131:53
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    output/neighbourhood/results/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-phone/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: output/neighbourhood/results/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-phone/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    output/neighbourhood/results/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-phone/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace output/neighbourhood/results/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-phone/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    [desktop] › e2e/ambience.spec.ts:240:1 › foreground resource failure releases ducking and direct replay recovers 
+    [desktop] › e2e/overnight-keyboard.spec.ts:115:1 › keyboard journey keeps named controls and focus across a full day 
+    [phone] › e2e/overnight-keyboard.spec.ts:115:1 › keyboard journey keeps named controls and focus across a full day 
+  69 passed (7.9m)

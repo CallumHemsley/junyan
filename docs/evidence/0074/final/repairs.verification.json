@@ -1,0 +1,117 @@
+{
+  "sourceSha": "7b27ca44a7ed5c9a0eebb45a6a06145beb381287",
+  "video": "/private/tmp/junyan-neighbourhood-demos/output/playwright/neighbourhood-tour/repairs.mp4",
+  "videoSha256": "f79357b3112533d39ab6e1ae9110761f75242b43803f8f053dc29720310d5a5f",
+  "durationSeconds": 48.678,
+  "audioRmsAt2000Hz": 0.04900558329303744,
+  "audioPeakAt2000Hz": 0.4070899188518524,
+  "speechMatches": [
+    {
+      "src": "/audio/repairs/line-lamp-intro.wav",
+      "sha256": "71d41fc395b5a7c1ae683b99bf1d18a02dbb633dc39cf1bd8103edab5064e8c2",
+      "atSeconds": 0.5480000000000018,
+      "complete": true,
+      "label": "repairs",
+      "normalizedWaveformCorrelation": 0.9478282156677617,
+      "matchedSourceStartSeconds": 0.531,
+      "alignmentDifferenceSeconds": -0.017
+    },
+    {
+      "src": "/audio/apartment/line-gift.wav",
+      "sha256": "971dfc1ae522c0e8347cc7c94aec1985540b393a079ded55b42d353fa2b00dbb",
+      "atSeconds": 47.03,
+      "complete": true,
+      "label": "late",
+      "normalizedWaveformCorrelation": 0.8774380829576162,
+      "matchedSourceStartSeconds": 47.011,
+      "alignmentDifferenceSeconds": -0.019
+    }
+  ],
+  "actualPlayingEvents": [
+    {
+      "src": "/audio/repairs/line-lamp-intro.wav",
+      "sha256": "71d41fc395b5a7c1ae683b99bf1d18a02dbb633dc39cf1bd8103edab5064e8c2",
+      "atSeconds": 0.5480000000000018,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-lamp-tight.wav",
+      "sha256": "3bebbe46d87007e016deb8858bbb5fbe715994128d524edb0825a7ffa55c974c",
+      "atSeconds": 5.8359999999999985,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-lamp-steady.wav",
+      "sha256": "3dee7aefc2ec58b49f266b456ef4a188474c89e5dd3f9c71d5fbb8bfd7ce8c59",
+      "atSeconds": 10.469999999999999,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-lamp-returned.wav",
+      "sha256": "f60d966803b8404cd23c03b8e689d2a13bfda2133b9946078dd2f5040af396a0",
+      "atSeconds": 13.586000000000013,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-closed.wav",
+      "sha256": "70da1247737c78f4e7c4856dfaca761fec77962e41e7fa7591255bc0504c63e2",
+      "atSeconds": 15.98599999999999,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-open.wav",
+      "sha256": "85626cf8bceda79abc28fe4f7ab4dab0dfc6caf6759b3ef5e085881ac24bb98f",
+      "atSeconds": 20.783999999999992,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-connect.wav",
+      "sha256": "ec1e16101f9884da8f2989664b78d6ae120c2a36ac68de9cb03436bb9b18ebbf",
+      "atSeconds": 25.384000000000015,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-cell.wav",
+      "sha256": "5096a18112a11be723fa7130eabaa07146ba125aba528aabdb08c65e45f880ab",
+      "atSeconds": 30.099999999999994,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-closed.wav",
+      "sha256": "70da1247737c78f4e7c4856dfaca761fec77962e41e7fa7591255bc0504c63e2",
+      "atSeconds": 35.21600000000001,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-toy-moving.wav",
+      "sha256": "64c5326698a24c21dec0b793c6e70f3c95ab9f66c1c9ce8e6be882c5dd9d084b",
+      "atSeconds": 38.634000000000015,
+      "complete": true
+    },
+    {
+      "src": "/audio/repairs/line-all-complete.wav",
+      "sha256": "d6288256b0c28bb1358d16f8e88fa256e0b3505120b12b5f2bbac14cfb29754d",
+      "atSeconds": 41.831999999999994,
+      "complete": true
+    },
+    {
+      "src": "/audio/apartment/line-gift.wav",
+      "sha256": "971dfc1ae522c0e8347cc7c94aec1985540b393a079ded55b42d353fa2b00dbb",
+      "atSeconds": 47.03,
+      "complete": true
+    }
+  ],
+  "sourceSegmentsSeconds": [
+    [
+      121.083,
+      169.761
+    ]
+  ],
+  "browserErrors": [],
+  "method": "Native game HTMLMediaElement output routed to WebAudio MediaRecorder. Timed browser screenshots muxed with the live recorded audio. No replacement audio or speech synthesis. Normal browser autoplay policy. Dev hooks only read state; rehearsal skips opening.",
+  "limits": [
+    "Runtime audio routing is instrumented.",
+    "Timed screenshots do not capture every display frame.",
+    "No independent physical speaker audition or Mandarin pronunciation review claimed."
+  ]
+}

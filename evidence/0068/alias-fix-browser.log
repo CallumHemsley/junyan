@@ -1,0 +1,43 @@
+[WebServer] (node:10120) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:10133) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:10158) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:10184) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/regexes.js (74:0): A comment
+[WebServer] 
+[WebServer] "/** Anchors a pattern source. The interpolation lives here rather than at the call site because
+[WebServer]  * esbuild will not drop a `@__PURE__` call whose own argument interpolates a variable, but it
+[WebServer]  * will drop `anchor(dateSource)`. Keeping it inline pinned `date` into every bundle. */"
+[WebServer] 
+[WebServer] in "node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+[WebServer] node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/util.js (400:0): A comment
+[WebServer] 
+[WebServer] "// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+[WebServer] 
+[WebServer] in "node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+[WebServer] (node:10210) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:10222) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 10 tests using 1 worker
+
+(node:10247) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [desktop] › e2e/cats.spec.ts:14:3 › isolated cats contract surface › wrong cat, patient recovery, reunion, repeats, and serialized restoration (2.7s)
+  ✓   2 [desktop] › e2e/cats.spec.ts:62:3 › isolated cats contract surface › complete keyboard journey, tap-only pinyin, replay and recovery callbacks (1.7s)
+  ✓   3 [desktop] › e2e/cats.spec.ts:92:1 › courtyard motion pauses while hidden and respects reduced motion (1.3s)
+  ✓   4 [desktop] › e2e/cats.spec.ts:116:1 › repeat detours keep patient actions and visible companions consistent (2.0s)
+  ✓   5 [desktop] › e2e/cats.spec.ts:149:1 › companion landmark aliases preserve the rendered seated pose after reload (4.6s)
+(node:10558) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   6 [phone] › e2e/cats.spec.ts:14:3 › isolated cats contract surface › wrong cat, patient recovery, reunion, repeats, and serialized restoration (3.1s)
+  ✓   7 [phone] › e2e/cats.spec.ts:62:3 › isolated cats contract surface › complete keyboard journey, tap-only pinyin, replay and recovery callbacks (1.7s)
+  ✓   8 [phone] › e2e/cats.spec.ts:92:1 › courtyard motion pauses while hidden and respects reduced motion (1.2s)
+  ✓   9 [phone] › e2e/cats.spec.ts:116:1 › repeat detours keep patient actions and visible companions consistent (2.0s)
+  ✓  10 [phone] › e2e/cats.spec.ts:149:1 › companion landmark aliases preserve the rendered seated pose after reload (4.7s)
+
+  10 passed (35.4s)

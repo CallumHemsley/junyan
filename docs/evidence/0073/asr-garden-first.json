@@ -1,0 +1,85 @@
+{
+  "model": "openai/whisper-small",
+  "revision": "973afd24965f72e36ca33b3055d56a652f456b4d",
+  "method": "Local CPU ASR. Language and task only. No expected-text prompt and no audio upload. Not a listening, tone or naturalness judgement.",
+  "clips": [
+    {
+      "filename": "garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+      "sha256": "cd8559de9a0c904899bd4f8b0cc1143df9343f9960f9328ed40c952e1b290bb8",
+      "expected": "土还是湿的先别浇水",
+      "recognized": "圖還是施的,先別澆水。"
+    },
+    {
+      "filename": "garden/line-c686ce578b68292f0f70784b43dd8dbf7989e1dbf9c4ad925445822942220c3b.wav",
+      "sha256": "dc42001469fe9acefd948e3c3d4e976d46575abe757b62a7e54532375605e8a8",
+      "expected": "这盆土干了浇一点水",
+      "recognized": "这盆土干了浇一点水。"
+    },
+    {
+      "filename": "garden/line-3125a7aba176c3d13785023d1b928ad0464fbc088c698e8662b41d5be4cb76ce.wav",
+      "sha256": "658b2e70696423fe3426f37ab2013d3002719d4f42d043ca092cc5d438fa97dd",
+      "expected": "把花放在阴凉的地方",
+      "recognized": "把花放在音量的地方。"
+    },
+    {
+      "filename": "garden/line-9dd2d735c288f33afe9803c894d817af72b82578925051f8ed2513e157b4c3b1.wav",
+      "sha256": "21c834f9302c96bfb5e3df88ccde55e914bf3b1b45cd5b162388834a759230eb",
+      "expected": "今天下雨不用浇水",
+      "recognized": "今天下雨不用澆水。"
+    },
+    {
+      "filename": "garden/line-bc72bf497b3379d64e1a92171c8f25986f3c8e84b27c9e983f645d92d995ecc8.wav",
+      "sha256": "129b1f9b0c8833230519d033078ad4f8b46ded1df53279ee2eb51a2dca0f9785",
+      "expected": "水太多了明天再看看",
+      "recognized": "水太多了,明天再看看。"
+    },
+    {
+      "filename": "garden/line-a00e19fb6fd7917efaf080a2e4c986d10c77627dd24af902cfaeb9d0a58a009f.wav",
+      "sha256": "8acc1ade1e795864ef4b63c6bc39cb5bda4ca3120ebbb371f68e125e1474a71a",
+      "expected": "比昨天高一点了",
+      "recognized": "你昨天高一点啊"
+    },
+    {
+      "filename": "garden/line-94071bc83fe7641966cc896d246319a6c75345dcea1a620f270acadab78a9f7d.wav",
+      "sha256": "f15f1663c9252758a211d3e8367b6c8f530c2f61876c73db9e3506fb4620f209",
+      "expected": "花开了小鸟也来了",
+      "recognized": "啊 啊 还带来小牛也来了"
+    },
+    {
+      "filename": "garden/line-2cea4d50190cb01e1a44e330696dd7124a5c1ab61dece866b1f7fbe6c1aa0291.wav",
+      "sha256": "bbfda6319e36f91381ba4e4e82b92627aea452d857a691d3fdbb4d59a204e507",
+      "expected": "小馆忙完明天再来",
+      "recognized": "小馆,忙完明天再来。"
+    },
+    {
+      "filename": "garden/line-c61aedfc4ce042069a0a01ddbba2f4dc50559dd85b1faf06c96888082a540afe.wav",
+      "sha256": "2fbcbb53e98c4fcd2249492ae365c7dd33aec81050354474c2ae8b2911cf04c3",
+      "expected": "选盆再选空位",
+      "recognized": "選盆再選空位"
+    },
+    {
+      "filename": "garden/line-48aacdeab5f7e8a7335c3864d4c9c3187dcf7880a85b7b9a40f55b9b7151c9ce.wav",
+      "sha256": "2d2247c7e86b824bfc39c721d0fafab1af22def73fe5af61f054c603d8a77c52",
+      "expected": "选空位放遮阳架",
+      "recognized": "顯坑位放遮陽架。"
+    },
+    {
+      "filename": "garden/line-ce36743c91d7ca45682de08e7b0d48f58657df6eff2b8bc3dddfc523e5a49ddf.wav",
+      "sha256": "f9a5b586899e6b0212ae97b5fe3ad832fbee41564453b42d7c8416c556461585",
+      "expected": "先等一等明天再看看",
+      "recognized": "先等一等明天再看看"
+    },
+    {
+      "filename": "garden/line-4719b9919a41cc0e925411d4731f35eaa6913df3166c033ea094b0beadb19f3e.wav",
+      "sha256": "1064e8d6e5ef090ff262b44f90828cc41a1e346c0549c3b51405e8547fac4061",
+      "expected": "先歇一歇明天再看看",
+      "recognized": "先歇一歇,明天再看看。"
+    },
+    {
+      "filename": "garden/line-acdfe74a12a9984f5e9918aebba8e90f12fdf6941eb78ed60303320ea810105e.wav",
+      "sha256": "a7b110728dd530ba83c0fa0273a972c4c34f3eed89ace46ecee0e7f6b4eb23a7",
+      "expected": "天热把花放在阴凉的地方",
+      "recognized": "天热,把花放在阴凉的地方。"
+    }
+  ]
+}

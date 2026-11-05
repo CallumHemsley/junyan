@@ -1,0 +1,339 @@
+{
+  "config": {
+    "argv": [
+      "/workspace/.junyan-tools/node_modules/node/bin/node",
+      "/workspace/garden-0070/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "src/features/garden/playwright.config.ts"
+    ],
+    "configFile": "/workspace/garden-0070/src/features/garden/playwright.config.ts",
+    "rootDir": "/workspace/garden-0070/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/garden-0070/evidence/0070/browser-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "garden-desktop",
+        "name": "garden-desktop",
+        "testDir": "/workspace/garden-0070/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "garden.spec.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/workspace/garden-0070/evidence/0070/browser-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "garden-phone",
+        "name": "garden-phone",
+        "testDir": "/workspace/garden-0070/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "garden.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/garden-0070/evidence/0070/browser-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "garden-desktop",
+        "testDir": "/workspace/garden-0070/e2e",
+        "snapshotDir": "/workspace/garden-0070/e2e",
+        "testIgnore": [],
+        "testMatch": "garden.spec.ts",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5470",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "serviceWorkers": "block",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "garden-desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/garden-0070/evidence/0070/browser-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "garden-phone",
+        "testDir": "/workspace/garden-0070/e2e",
+        "snapshotDir": "/workspace/garden-0070/e2e",
+        "testIgnore": [],
+        "testMatch": "garden.spec.ts",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5470",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "serviceWorkers": "block",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "garden-phone"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/workspace/garden-0070/evidence/0070//browser-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "garden.spec.ts",
+      "file": "garden.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "isolated garden care, deliberate mistake, recovery, placement and vocabulary",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "garden-desktop",
+              "projectName": "garden-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4070,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T19:29:40.657Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "isolated garden verification",
+                      "contentType": "application/json",
+                      "body": "ewogICJtZXRyaWNzIjogewogICAgIm92ZXJmbG93IjogZmFsc2UsCiAgICAidW5kZXJzaXplZCI6IFtdLAogICAgInNwb2tlbiI6ICIzMHB4IgogIH0sCiAgImVycm9ycyI6IFtdLAogICJzdGF0ZSI6IHsKICAgICJ2ZXJzaW9uIjogMSwKICAgICJkYXkiOiA4LAogICAgInJlc3RvcmVkIjogdHJ1ZSwKICAgICJzaGFkZSI6IDAsCiAgICAicGxhbnRzIjogewogICAgICAiZmxvd2VyIjogewogICAgICAgICJzaXRlIjogMCwKICAgICAgICAiY2FyZSI6ICJkcnkiLAogICAgICAgICJncm93dGgiOiAzLAogICAgICAgICJkcm9vcGluZyI6IGZhbHNlLAogICAgICAgICJ3YWl0ZWQiOiBmYWxzZSwKICAgICAgICAicmVzdWx0IjogewogICAgICAgICAgImJlZm9yZSI6IDMsCiAgICAgICAgICAiYWZ0ZXIiOiAzLAogICAgICAgICAgIm91dGNvbWUiOiAicmVzdGVkIiwKICAgICAgICAgICJvYnNlcnZlZCI6IGZhbHNlCiAgICAgICAgfQogICAgICB9LAogICAgICAiY2xpbWJlciI6IHsKICAgICAgICAic2l0ZSI6IDIsCiAgICAgICAgImNhcmUiOiAicmVhZHkiLAogICAgICAgICJncm93dGgiOiAzLAogICAgICAgICJkcm9vcGluZyI6IGZhbHNlLAogICAgICAgICJ3YWl0ZWQiOiBmYWxzZSwKICAgICAgICAicmVzdWx0IjogewogICAgICAgICAgImJlZm9yZSI6IDMsCiAgICAgICAgICAiYWZ0ZXIiOiAzLAogICAgICAgICAgIm91dGNvbWUiOiAicmVzdGVkIiwKICAgICAgICAgICJvYnNlcnZlZCI6IGZhbHNlCiAgICAgICAgfQogICAgICB9LAogICAgICAidHJlZSI6IHsKICAgICAgICAic2l0ZSI6IDQsCiAgICAgICAgImNhcmUiOiAicmVhZHkiLAogICAgICAgICJncm93dGgiOiAzLAogICAgICAgICJkcm9vcGluZyI6IGZhbHNlLAogICAgICAgICJ3YWl0ZWQiOiBmYWxzZSwKICAgICAgICAicmVzdWx0IjogewogICAgICAgICAgImJlZm9yZSI6IDMsCiAgICAgICAgICAiYWZ0ZXIiOiAzLAogICAgICAgICAgIm91dGNvbWUiOiAicmVzdGVkIiwKICAgICAgICAgICJvYnNlcnZlZCI6IGZhbHNlCiAgICAgICAgfQogICAgICB9CiAgICB9LAogICAgInBsYW50ZXJFYXJuZWQiOiB0cnVlCiAgfSwKICAibGltaXRhdGlvbnMiOiBbCiAgICAiQ2FsbGJhY2tzIG9ic2VydmVkIGluIGRldmVsb3BtZW50LW9ubHkgaGFybmVzcyIsCiAgICAiU25hcHNob3QgcmVzdG9yZSBpcyBub3QgY2VudHJhbCBJbmRleGVkREIgcGVyc2lzdGVuY2UiLAogICAgIk5vIGFjdHVhbCBnYXJkZW4gdm9pY2UgYXNzZXRzIG9yIGxpc3RlbmluZyB2ZXJpZmljYXRpb24iCiAgXQp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8d392b78b326e6f8de96-03b1077a7d506ad84995",
+          "file": "garden.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "rain advice follows the selected pot soil and shelter",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "garden-desktop",
+              "projectName": "garden-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1387,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T19:29:44.890Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8d392b78b326e6f8de96-9cefbab17cd2ac5a3bbe",
+          "file": "garden.spec.ts",
+          "line": 127,
+          "column": 1
+        },
+        {
+          "title": "isolated garden care, deliberate mistake, recovery, placement and vocabulary",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "garden-phone",
+              "projectName": "garden-phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4327,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T19:29:46.658Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "isolated garden verification",
+                      "contentType": "application/json",
+                      "body": "ewogICJtZXRyaWNzIjogewogICAgIm92ZXJmbG93IjogZmFsc2UsCiAgICAidW5kZXJzaXplZCI6IFtdLAogICAgInNwb2tlbiI6ICIyOHB4IgogIH0sCiAgImVycm9ycyI6IFtdLAogICJzdGF0ZSI6IHsKICAgICJ2ZXJzaW9uIjogMSwKICAgICJkYXkiOiA4LAogICAgInJlc3RvcmVkIjogdHJ1ZSwKICAgICJzaGFkZSI6IDAsCiAgICAicGxhbnRzIjogewogICAgICAiZmxvd2VyIjogewogICAgICAgICJzaXRlIjogMCwKICAgICAgICAiY2FyZSI6ICJkcnkiLAogICAgICAgICJncm93dGgiOiAzLAogICAgICAgICJkcm9vcGluZyI6IGZhbHNlLAogICAgICAgICJ3YWl0ZWQiOiBmYWxzZSwKICAgICAgICAicmVzdWx0IjogewogICAgICAgICAgImJlZm9yZSI6IDMsCiAgICAgICAgICAiYWZ0ZXIiOiAzLAogICAgICAgICAgIm91dGNvbWUiOiAicmVzdGVkIiwKICAgICAgICAgICJvYnNlcnZlZCI6IGZhbHNlCiAgICAgICAgfQogICAgICB9LAogICAgICAiY2xpbWJlciI6IHsKICAgICAgICAic2l0ZSI6IDIsCiAgICAgICAgImNhcmUiOiAicmVhZHkiLAogICAgICAgICJncm93dGgiOiAzLAogICAgICAgICJkcm9vcGluZyI6IGZhbHNlLAogICAgICAgICJ3YWl0ZWQiOiBmYWxzZSwKICAgICAgICAicmVzdWx0IjogewogICAgICAgICAgImJlZm9yZSI6IDMsCiAgICAgICAgICAiYWZ0ZXIiOiAzLAogICAgICAgICAgIm91dGNvbWUiOiAicmVzdGVkIiwKICAgICAgICAgICJvYnNlcnZlZCI6IGZhbHNlCiAgICAgICAgfQogICAgICB9LAogICAgICAidHJlZSI6IHsKICAgICAgICAic2l0ZSI6IDQsCiAgICAgICAgImNhcmUiOiAicmVhZHkiLAogICAgICAgICJncm93dGgiOiAzLAogICAgICAgICJkcm9vcGluZyI6IGZhbHNlLAogICAgICAgICJ3YWl0ZWQiOiBmYWxzZSwKICAgICAgICAicmVzdWx0IjogewogICAgICAgICAgImJlZm9yZSI6IDMsCiAgICAgICAgICAiYWZ0ZXIiOiAzLAogICAgICAgICAgIm91dGNvbWUiOiAicmVzdGVkIiwKICAgICAgICAgICJvYnNlcnZlZCI6IGZhbHNlCiAgICAgICAgfQogICAgICB9CiAgICB9LAogICAgInBsYW50ZXJFYXJuZWQiOiB0cnVlCiAgfSwKICAibGltaXRhdGlvbnMiOiBbCiAgICAiQ2FsbGJhY2tzIG9ic2VydmVkIGluIGRldmVsb3BtZW50LW9ubHkgaGFybmVzcyIsCiAgICAiU25hcHNob3QgcmVzdG9yZSBpcyBub3QgY2VudHJhbCBJbmRleGVkREIgcGVyc2lzdGVuY2UiLAogICAgIk5vIGFjdHVhbCBnYXJkZW4gdm9pY2UgYXNzZXRzIG9yIGxpc3RlbmluZyB2ZXJpZmljYXRpb24iCiAgXQp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8d392b78b326e6f8de96-41f1aea1769240f1aebd",
+          "file": "garden.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "rain advice follows the selected pot soil and shelter",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "garden-phone",
+              "projectName": "garden-phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1394,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T19:29:51.146Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8d392b78b326e6f8de96-42e0f14424d6abe9cdd9",
+          "file": "garden.spec.ts",
+          "line": 127,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-05T19:29:40.160Z",
+    "duration": 12459.517,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

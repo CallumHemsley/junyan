@@ -1,0 +1,251 @@
+{
+  "candidate": "7b27ca44a7ed5c9a0eebb45a6a06145beb381287",
+  "stats": {
+    "startTime": "2026-11-05T23:17:30.253Z",
+    "duration": 70818.159,
+    "expected": 34,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "title": "settings preserve independent mute and level, keyboard never moves the waiter",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 993,
+      "errors": []
+    },
+    {
+      "title": "native ambience survives panel changes and pauses/resumes through app lifecycle listeners",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 596,
+      "errors": []
+    },
+    {
+      "title": "real foreground speech ducks the bed and restores on native end, stop and word cancellation",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 5377,
+      "errors": []
+    },
+    {
+      "title": "resource failure retries the same ambience owner without disturbing speech",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 1642,
+      "errors": []
+    },
+    {
+      "title": "unavailable preference storage keeps current-session controls functional",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 568,
+      "errors": []
+    },
+    {
+      "title": "opening stays silent then transitions to one bed, reset stops it",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 7068,
+      "errors": []
+    },
+    {
+      "title": "reduced-motion settings remain usable and contained",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 546,
+      "errors": []
+    },
+    {
+      "title": "production ambience plays and preserves mute offline under a relative subpath",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 1215,
+      "errors": []
+    },
+    {
+      "title": "foreground resource failure releases ducking and direct replay recovers",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 1656,
+      "errors": []
+    },
+    {
+      "title": "narrow phone settings keep every control inside screen gutters",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 475,
+      "errors": []
+    },
+    {
+      "title": "settings preserve independent mute and level, keyboard never moves the waiter",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 1103,
+      "errors": []
+    },
+    {
+      "title": "native ambience survives panel changes and pauses/resumes through app lifecycle listeners",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 521,
+      "errors": []
+    },
+    {
+      "title": "real foreground speech ducks the bed and restores on native end, stop and word cancellation",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 5308,
+      "errors": []
+    },
+    {
+      "title": "resource failure retries the same ambience owner without disturbing speech",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 1589,
+      "errors": []
+    },
+    {
+      "title": "unavailable preference storage keeps current-session controls functional",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 559,
+      "errors": []
+    },
+    {
+      "title": "opening stays silent then transitions to one bed, reset stops it",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 6984,
+      "errors": []
+    },
+    {
+      "title": "reduced-motion settings remain usable and contained",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 519,
+      "errors": []
+    },
+    {
+      "title": "production ambience plays and preserves mute offline under a relative subpath",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 936,
+      "errors": []
+    },
+    {
+      "title": "foreground resource failure releases ducking and direct replay recovers",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 1654,
+      "errors": []
+    },
+    {
+      "title": "narrow phone settings keep every control inside screen gutters",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 530,
+      "errors": []
+    },
+    {
+      "title": "a genuine touch gesture starts the bed on first entry",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 492,
+      "errors": []
+    },
+    {
+      "title": "a genuine touch gesture starts the bed on first entry",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 437,
+      "errors": []
+    },
+    {
+      "title": "a native resource error after playback starts stays visible until replay",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 1645,
+      "errors": []
+    },
+    {
+      "title": "a native resource error after playback starts stays visible until replay",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 1751,
+      "errors": []
+    },
+    {
+      "title": "development: Help and restaurant switch directly with top-only Escape",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 1805,
+      "errors": []
+    },
+    {
+      "title": "production: Help and restaurant switch directly with top-only Escape",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 1737,
+      "errors": []
+    },
+    {
+      "title": "hospital words switch without advancing the opening",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 2458,
+      "errors": []
+    },
+    {
+      "title": "kitchen, tray, journal and receipt sources keep switching",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 3208,
+      "errors": []
+    },
+    {
+      "title": "rapid keyboard/pointer selection records once and cancels prior native audio",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 2190,
+      "errors": []
+    },
+    {
+      "title": "development: Help and restaurant switch directly with top-only Escape",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 1905,
+      "errors": []
+    },
+    {
+      "title": "production: Help and restaurant switch directly with top-only Escape",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 1888,
+      "errors": []
+    },
+    {
+      "title": "hospital words switch without advancing the opening",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 2530,
+      "errors": []
+    },
+    {
+      "title": "kitchen, tray, journal and receipt sources keep switching",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 3532,
+      "errors": []
+    },
+    {
+      "title": "rapid keyboard/pointer selection records once and cancels prior native audio",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 2940,
+      "errors": []
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+Fetching 14 files:   0%|          | 0/14 [00:00<?, ?it/s]Fetching 14 files: 100%|██████████| 14/14 [00:00<00:00, 4094.57it/s]
+[transformers] You are using a model of type `qwen3_tts` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+  Initialized encoder codebooks
+Loaded speech tokenizer from /Users/callumhemsley/.cache/huggingface/hub/models--mlx-community--Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit/snapshots/08c72cad5e2fd0f41730c8bd1f28149585e46361/speech_tokenizer
+AVAILABLE apartment/line-gift.wav Serena 这个给你。 attempted=1 reused=0 elapsed=3s
+1 attempted, 0 reused, 0 failures, 0 pending

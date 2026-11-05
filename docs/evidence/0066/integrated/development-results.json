@@ -1,0 +1,481 @@
+{
+  "config": {
+    "argv": [
+      "/workspace/.junyan-tools/node_modules/node/bin/node",
+      "/workspace/junyan-foundation/node_modules/@playwright/test/cli.js",
+      "test",
+      "e2e/neighbourhood.spec.ts",
+      "e2e/neighbourhood-save.spec.ts",
+      "--config",
+      "playwright.neighbourhood.config.ts"
+    ],
+    "configFile": "/workspace/junyan-foundation/playwright.neighbourhood.config.ts",
+    "rootDir": "/workspace/junyan-foundation/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/junyan-foundation/output/neighbourhood/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/junyan-foundation/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 180000
+      },
+      {
+        "outputDir": "/workspace/junyan-foundation/output/neighbourhood/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/junyan-foundation/e2e",
+        "testIgnore": [
+          "**/offline.spec.ts",
+          "**/overnight-offline.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan-foundation/output/neighbourhood/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "/workspace/junyan-foundation/e2e",
+        "snapshotDir": "/workspace/junyan-foundation/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5466",
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan-foundation/output/neighbourhood/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "phone",
+        "testDir": "/workspace/junyan-foundation/e2e",
+        "snapshotDir": "/workspace/junyan-foundation/e2e",
+        "testIgnore": [
+          "**/offline.spec.ts",
+          "**/overnight-offline.spec.ts"
+        ],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5466",
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "phone"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "output/neighbourhood/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "node node_modules/vite/bin/vite.js  --host 127.0.0.1 --port 5466 --strictPort",
+      "url": "http://127.0.0.1:5466",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "neighbourhood-save.spec.ts",
+      "file": "neighbourhood-save.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "focused saved-fixture migration with native PCM feature responses",
+          "file": "neighbourhood-save.spec.ts",
+          "line": 21,
+          "column": 6,
+          "specs": [
+            {
+              "title": "a real old IndexedDB v1 row restores its journal and initializes locations without the hospital",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2901,
+                      "errors": [],
+                      "retry": 0,
+                      "startTime": "2026-11-05T22:04:09.630Z",
+                      "annotations": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4997ca757468c2e6243f-41f0d3c6c8f537717d88",
+              "file": "neighbourhood-save.spec.ts",
+              "line": 28,
+              "column": 3
+            },
+            {
+              "title": "corrupt feature fields reset independently while real IndexedDB receipts restore gifts",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2091,
+                      "errors": [],
+                      "retry": 0,
+                      "startTime": "2026-11-05T22:04:12.844Z",
+                      "annotations": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4997ca757468c2e6243f-e47ff140265828327fd4",
+              "file": "neighbourhood-save.spec.ts",
+              "line": 45,
+              "column": 3
+            },
+            {
+              "title": "a real old IndexedDB v1 row restores its journal and initializes locations without the hospital",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2732,
+                      "errors": [],
+                      "retry": 0,
+                      "startTime": "2026-11-05T22:05:01.041Z",
+                      "annotations": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4997ca757468c2e6243f-114562a8e141f5bd5865",
+              "file": "neighbourhood-save.spec.ts",
+              "line": 28,
+              "column": 3
+            },
+            {
+              "title": "corrupt feature fields reset independently while real IndexedDB receipts restore gifts",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2263,
+                      "errors": [],
+                      "retry": 0,
+                      "startTime": "2026-11-05T22:05:03.994Z",
+                      "annotations": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4997ca757468c2e6243f-240c8f0c8a251d3041ba",
+              "file": "neighbourhood-save.spec.ts",
+              "line": 45,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "neighbourhood.spec.ts",
+      "file": "neighbourhood.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real missing feature voice reports native failure without a substitute",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1303,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:04:58.942Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55eae7f7786b9c2e4078-87138a8e091ac1f3792d",
+          "file": "neighbourhood.spec.ts",
+          "line": 193,
+          "column": 1
+        },
+        {
+          "title": "real missing feature voice reports native failure without a substitute",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1251,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:05:49.140Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55eae7f7786b9c2e4078-05a6493c7c3fc0a82bc9",
+          "file": "neighbourhood.spec.ts",
+          "line": 193,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "interaction-only routes with native PCM responses for missing feature voices",
+          "file": "neighbourhood.spec.ts",
+          "line": 67,
+          "column": 6,
+          "specs": [
+            {
+              "title": "normal opening, all four real locations, learning, gifts, reload and restaurant-only next day",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 43961,
+                      "errors": [],
+                      "retry": 0,
+                      "startTime": "2026-11-05T22:04:14.970Z",
+                      "annotations": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "55eae7f7786b9c2e4078-c4c3eb0ee92cb28ec677",
+              "file": "neighbourhood.spec.ts",
+              "line": 69,
+              "column": 3
+            },
+            {
+              "title": "normal opening, all four real locations, learning, gifts, reload and restaurant-only next day",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 42833,
+                      "errors": [],
+                      "retry": 0,
+                      "startTime": "2026-11-05T22:05:06.289Z",
+                      "annotations": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "55eae7f7786b9c2e4078-370a4d6b4aa263c93f07",
+              "file": "neighbourhood.spec.ts",
+              "line": 69,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-05T22:04:07.660Z",
+    "duration": 102928.187,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

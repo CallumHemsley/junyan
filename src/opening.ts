@@ -1,3 +1,4 @@
+import { isNeighbourhoodAction, reduceNeighbourhoodGame, type NeighbourhoodAction } from "./neighbourhood/transitions";
 import type { Action, Content, GameState } from "./contracts";
 import { createGame, recordLookup, recoverWords, reduceGame } from "./game";
 
@@ -17,7 +18,7 @@ export type OpeningAction =
   | Extract<Action, { type: "pickup" | "return-food" | "deliver" | "lookup" }>
   | { type: "advance"; now: number }
   | { type: "reply"; option: number };
-export type SessionAction = Action | OpeningAction;
+export type SessionAction = Action | OpeningAction | NeighbourhoodAction;
 
 export const NEXT_BED = 1;
 
@@ -137,6 +138,11 @@ export function reduceSession(
   action: SessionAction,
   content: Content,
 ): Session {
+  if (isNeighbourhoodAction(action)) {
+    if (session.phase !== "day") return session;
+    const game = reduceNeighbourhoodGame(session.game, action, content);
+    return game === session.game ? session : { phase: "day", game };
+  }
   if (session.phase === "day") {
     if (action.type === "advance" || action.type === "reply") return session;
     const game = reduceGame(session.game, action, content);

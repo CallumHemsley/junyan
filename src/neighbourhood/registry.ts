@@ -1,0 +1,14 @@
+import { content as restaurantContent } from "../content";
+import * as apartment from "../features/apartment/content";
+import * as cats from "../features/cats/content";
+import * as repairs from "../features/repairs/content";
+import * as garden from "../features/garden/content";
+import { attachFeatureContent } from "./content";
+
+export const featureContent = {
+  apartment: { words: apartment.words, lines: apartment.lines },
+  cats: { words: cats.words, lines: cats.lines },
+  repairs: { words: repairs.words, lines: repairs.lines },
+  garden: { words: garden.words, lines: garden.lines },
+};
+export const content = attachFeatureContent(restaurantContent, featureContent);

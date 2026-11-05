@@ -1,0 +1,39 @@
+---
+id: 73
+title: Finish genuine neighbourhood voices locally
+status: done
+priority: high
+type: feature
+created: 2026-11-05
+---
+
+## Why
+
+Callum authorized finishing the four cloud features on the laptop. Cloud model downloads prevented the real Mandarin voice assets from being generated.
+
+## Done when
+
+- Every apartment, cats, repairs and garden line and word references a genuine, validated offline clip generated with the existing approved voice pipeline and presets.
+- Asset/text/voice provenance, cache and signal checks pass without changing accepted restaurant or hospital voices.
+- Representative speech is screened by unprompted ASR, audible samples and technical limits are provided, and an independent reviewer checks the actual assets. Native listening is tracked separately in 0076.
+- All changes are committed for integration with 0066; no silent substitutes or browser speech synthesis.
+
+## Notes
+
+- Owner: local audio Sol Medium worker. Branch `codex/0073-neighbourhood-local-voices`; worktree `/private/tmp/junyan-neighbourhood-voices`; port 5473 (strict).
+- Exclusive ownership: feature content JSON audio references, new feature audio assets/manifests and narrowly needed synthesis tooling. Coordinate before any shared content or preset change.
+- Central reservation: 0073 voices, 0074 playable demos, 0075 independent verification. Existing 0066 remains the single shared application integration writer.
+
+- Local pinned Qwen synthesis started successfully on the Apple M4 GPU with `HF_HUB_OFFLINE=1`. Existing Kokoro CPU environment is ready. The adapter preserves raw JSON and stable URLs, routes repairs through approved character presets and stores per-feature manifests.
+- Both standard-library self-checks pass. Feature audit now requires exact text/preset/pronunciation identity, byte hashes and core signal checks. Bounded new seed windows preserve default behavior and reject known bad hashes across copied feature assets.
+- Independent tooling review starts while the real batch continues. Asset completion, final ASR screening and parent-owned audible demos/review remain open. See [[evidence/0073/README]].
+
+- Local generation and technical verification complete. All 278 new feature clips exist; all 313 references pass exact identity/hash/signal audit. Twenty exact-identity copies retain provenance. Content JSON, approved cast and accepted canonical files are unchanged. Final 87-line current-byte ASR receipts and 15 rejected originals are recorded. Native listening is not claimed.
+- Parent reports independent tooling review of `67b212b` passed and independently confirmed final gift SHA `971dfc1a…`. The parent owns final audible demos, release review and integration. Ticket remains doing until those parent-owned gates are recorded.
+
+
+## Local completion
+
+Finished locally after the cloud handoff. The integrated game preserves restaurant progress across apartment, courtyard, workshop and rooftop visits, with shared journal, gifts and saves. Genuine offline voices are committed. Candidate `7b27ca4` passed 308 unit tests, a production build, 12 real production/offline cases and 34 original media/word-card regressions, all with zero skips or failures. Separate reviewers checked source, state recovery, real native playback and exact audio provenance. Actual gameplay demos with audio are verified. See [[evidence/0075/README]] for scope and receipts.
+
+Automated signal, transcript and recorded-playback checks do not certify native Mandarin pronunciation. A separate listening pass is tracked by 0076; no native-listening approval is claimed.

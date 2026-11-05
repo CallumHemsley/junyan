@@ -1,0 +1,26 @@
+{
+  "recordedAt": "2026-11-05T19:31:04.203091+00:00",
+  "headBeforeEvidenceCommit": "19acc466edb313c135374bd00629a31a880d5c81",
+  "baseMain": "5c90ba4b7421755fee3dd5d12e777f70dd34f226",
+  "node": "v22.23.4",
+  "chromium": "Chromium 155.0.8059.79 built on Debian GNU/Linux 13 (trixie)",
+  "devPort": 5470,
+  "previewPortAllocated": 5471,
+  "sourceHashes": {
+    "src/features/garden/GardenScene.tsx": "7856914988ce53973ea42702fc5961a35ee41a00a554ed81a42ca39e144c58a4",
+    "src/features/garden/audio-plan.py": "69a6dd61131b66cb9779d1e84c8031831265d97858e34ada54196bc303027ed0",
+    "src/features/garden/content.json": "9e1ec7c7d28422e59ece488d6563f9ce176256a1d9196634aa9e63eb5f1599a6",
+    "src/features/garden/content.test.ts": "a66e26ee852824538dc4b670237305bb25f7de6f2348171b6536f62420cb4d0c",
+    "src/features/garden/content.ts": "33378290538a96761697ac5acdac2d57033687c3b06fc7a8c0b34936b8a38d4c",
+    "src/features/garden/garden.css": "c0879b5d9ef5fb716e140f5a6860bb4aa0144d080dfc2241ac10f11b2f8e881e",
+    "src/features/garden/harness.html": "0f7527c43850785ee3c3b08fe40ee04df3c9ecc3276448ac72d9af9a84f84e82",
+    "src/features/garden/harness.tsx": "74a8e7e3254143c5dda3cc17b64f1cf264c7d099580fd99c45107332aa5336c1",
+    "src/features/garden/index.tsx": "4afe42e98f3ebfcf0605e01238ac3f84e4ec5de87e97d5fa6b51d095182aba1f",
+    "src/features/garden/playwright.config.ts": "30beb61991a582f69a6eb360ac870478aaa83f20e2e0c25d95951aca2d559cf9",
+    "src/features/garden/rules.test.ts": "a87c387a1e351e77896beea83d833b916f5ed18e59784c6e77f4785dd91afc3d",
+    "src/features/garden/rules.ts": "9dea8765f6d9327d54d5214dbd905a1e4ad9b3016402115d2c1889453ba553f3",
+    "src/features/garden/scene.ts": "92e57c2022cea6ea72fc1616361d11f01be82b9a67bc7c380d9a016208d79f5a"
+  },
+  "lockSha256": "ce332aee7a001da4488597eb3099ac37dddeadf3036ef5c8cade8979cbe55028",
+  "verificationNotes": "Rain-advice behavior has four passing browser journeys. The subsequent readonly-only prop widening passed TypeScript; runtime behavior is unchanged."
+}

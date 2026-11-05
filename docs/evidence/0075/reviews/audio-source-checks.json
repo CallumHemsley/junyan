@@ -1,0 +1,45 @@
+{
+  "apartment": {
+    "references": 93,
+    "unique_urls": 54,
+    "identities": 54,
+    "shared_urls": 7
+  },
+  "cats": {
+    "references": 223,
+    "unique_urls": 96,
+    "identities": 96,
+    "shared_urls": 11
+  },
+  "repairs": {
+    "references": 152,
+    "unique_urls": 72,
+    "identities": 72,
+    "shared_urls": 8
+  },
+  "garden": {
+    "references": 166,
+    "unique_urls": 91,
+    "identities": 91,
+    "shared_urls": 9
+  },
+  "adversarial_checks": [
+    "valid PCM16 fixture accepted",
+    "text tamper rejected",
+    "content_digest tamper rejected",
+    "voice tamper rejected",
+    "pronunciation tamper rejected",
+    "sha256 tamper rejected",
+    "generator_version tamper rejected",
+    "truncation rejected",
+    "global rejected SHA rejected",
+    "copied rejected SHA rejected"
+  ],
+  "unchanged_main_paths": 132,
+  "head": "67b212bed2718b9529e638a8085ef7c4e75b839e",
+  "tooling_sha256": {
+    "scripts/neighbourhood-audio.py": "29d9e22b55ddedd9d018fb7d497f79ee91fbf7d108d9cae7c3c1ecf118de1306",
+    "scripts/neighbourhood-audio-audit.py": "21833ff9bfbaba3f23d2f27662117d0ae4f383fbf94486de008d8ffa1864a4cf",
+    "scripts/content-audio.py": "f3e9eea230f6af00a77dfa6156ac17ce7c5b7ba92b4a559ff65bf7a3b75522bf"
+  }
+}

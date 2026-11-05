@@ -1,0 +1,97 @@
+{
+  "candidate": "7b27ca44a7ed5c9a0eebb45a6a06145beb381287",
+  "stats": {
+    "startTime": "2026-11-05T23:15:11.714Z",
+    "duration": 122525.567,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "title": "all five doctor lines play and replay offline in the production opening",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 3214,
+      "errors": []
+    },
+    {
+      "title": "all five doctor lines play and replay offline in the production opening",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 3010,
+      "errors": []
+    },
+    {
+      "title": "real cached speech and words play in all four locations and saved furniture reloads offline",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 10217,
+      "errors": []
+    },
+    {
+      "title": "real cached speech and words play in all four locations and saved furniture reloads offline",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 10067,
+      "errors": []
+    },
+    {
+      "title": "a real old IndexedDB v1 row restores its journal and initializes locations without the hospital",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 1254,
+      "errors": []
+    },
+    {
+      "title": "corrupt feature fields reset independently while real IndexedDB receipts restore gifts",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 817,
+      "errors": []
+    },
+    {
+      "title": "a real old IndexedDB v1 row restores its journal and initializes locations without the hospital",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 1281,
+      "errors": []
+    },
+    {
+      "title": "corrupt feature fields reset independently while real IndexedDB receipts restore gifts",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 825,
+      "errors": []
+    },
+    {
+      "title": "an explicitly unavailable feature voice reports failure and a real replay recovers",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 7053,
+      "errors": []
+    },
+    {
+      "title": "an explicitly unavailable feature voice reports failure and a real replay recovers",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 7163,
+      "errors": []
+    },
+    {
+      "title": "normal opening, all four real locations, learning, gifts, reload and restaurant-only next day",
+      "project": "desktop",
+      "status": "expected",
+      "durationMs": 36041,
+      "errors": []
+    },
+    {
+      "title": "normal opening, all four real locations, learning, gifts, reload and restaurant-only next day",
+      "project": "phone",
+      "status": "expected",
+      "durationMs": 36239,
+      "errors": []
+    }
+  ]
+}

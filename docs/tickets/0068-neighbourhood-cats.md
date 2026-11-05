@@ -1,7 +1,7 @@
 ---
 id: 68
 title: Build the recurring neighbourhood cats slice
-status: todo
+status: done
 priority: high
 type: feature
 created: 2026-11-05
@@ -9,22 +9,48 @@ created: 2026-11-05
 
 ## Why
 
-Deliver the selected apartment-building ensemble while preserving the hospital and breakfast restaurant.
+Let the player meet individual cats, infer Mandarin clues from their behaviour, earn trust, and reunite a resident with her companion. The courtyard extends the apartment-building ensemble while preserving the hospital and breakfast restaurant.
 
 ## Done when
 
-- [ ] Implement the bounded vertical slice described in the domain plan and central contract, with visible action consequences, repeatable choices and reversible mistakes.
-- [ ] Pure rules tests and build pass; existing opening, customers, change and journal journey remains green.
-- [ ] Feature journey, reload/migration, offline voices/assets and clean console are evidenced; phone and desktop screenshots visually inspected.
-- [ ] Mandarin content is segmented/schema validated, voiced offline, tappable and journalled; pixel art remains consistent and controls accessible.
-- [ ] Different agent reviews without edits; resolved findings and reviewable PR are recorded. Central lead merges only after independent review, polish and integrated verification; then verifies main.
+- [x] The courtyard shows a white cat under a recognisable bicycle and a black cat beside a bench, with distinct silhouettes and contextual DOM targets.
+- [x] Either cat can be inspected first. Distinct patient actions produce visible trust consequences. Wrong-cat and impatient actions recover gently without hunger, punishment or quiz gates.
+- [x] The white cat follows an observable route to a resident reunion. `gifts(state)` yields `cats.cushion` only after earned completion and repeated actions cannot duplicate trust or rewards.
+- [x] Three bounded repeat encounters use deterministic restaurant-day routines/weather. Active encounter facts survive reload and cannot reroll or dead-end across a day change.
+- [x] `initialState`, `reduce`, `validate`, `gifts`, default React view, `words` and `lines` match the published central contract. Pure rules cover invalid actions/saves, repeated actions, story prerequisites and day boundaries.
+- [x] Every line uses schema-validated presegmented Mandarin, tappable real DOM text, accurate offline voice clips and replay. Lookup and successful recovery reach the shared journal. Pinyin stays tap-only; no English returns after opening.
+- [x] Pixel/isometric art matches current renderer patterns. Controls support touch and keyboard, visible focus, 44px targets and reduced motion. Hidden tabs suspend animation. No placeholders, silent dialogue or missing assets remain.
+- [x] Build and rule tests pass. The existing hospital to three customers to change to journal journey remains green. Cats completion, wrong-cat recovery, repeats, shared navigation, apartment gift, save/reload/migration, offline audio and clean console have actual evidence.
+- [x] Phone and desktop screenshots are inspected and actual voices listened to. Independent reviewer reports defects without edits. Writer resolves findings; material fixes receive fresh review.
+- [x] A PR and verification evidence reach the central apartment lead. Coordinated merge and post-merge checks complete before status becomes done.
 
 ## Dependencies and ownership
 
-Central ledger: [[plans/neighbourhood-coordination]]. Depends on published 0065 contract; integrated completion depends on 0066 and existing shared-file lease handoffs.
-One writer/branch/cloud checkout and strict port as assigned there. No edits outside assigned files. Domain lead refines this ticket before implementation.
+Depends on 0065 contract. Integrated completion depends on 0066 and existing shared-file lease handoffs. Lead writes the initial plan and ticket before the implementation owner takes exclusive writes.
+
+Allowed files: `src/features/cats/**`, `public/audio/cats/**`, `e2e/cats.spec.ts`, `docs/plans/neighbourhood-cats.md`, `evidence/0068/**`, this ticket. No shared schemas, App, save, content registry, renderer, dependency or lockfile edits. Request central integration changes through the lead.
+
+Branch `codex/0068-neighbourhood-cats`. Cloud checkout `/workspace/cats-0068`. Dev port `5468`, preview port `5568`, both strict with server reuse disabled. Existing Playwright configuration accepts `JUNYAN_DEV_PORT` and `JUNYAN_PREVIEW_PORT`. Use only GitHub connector operations and git push. No gh, local-device work or manual deployment.
 
 ## Notes
 
-Estimate: 1–2 engineering days for a bounded slice plus review; synthesis access may block completion.
-Owner, worker ID, branch, checkout, exact commands, evidence and remaining blockers must be recorded here by writer.
+Detailed design: [[plans/neighbourhood-cats]]. Estimated effort: 1–2 engineering days plus review and voice access. The human granted merge authority after the initial coordination ledger; the central apartment lead alone serializes landing. Draft-only language in the initial ticket is superseded. Quality and real evidence remain conditions of merge.
+
+Planning workers `/root/cats_design_a` and `/root/cats_design_b` used requested GPT-6.1 Sol medium with read-only cloud access. Implementation owner will record worker ID, commits, checks and remaining blockers here. Do not mark missing checks passed or status done on a feature-only test page.
+
+Known dependency: Qwen synthesis imports Apple MLX. Linux voice generation and listening remain blocked. Shared recovered/fresh word props were agreed and implemented; actual shared registration and integration remain pending.
+
+Implementation owner `/root/cats_writer` is working in the assigned checkout and branch. Pure story/relationship/repeat rules, schema-validated segmented Mandarin, pixel courtyard, thin callback view, dev-only harness and behavior tests are implemented. Canonical shared words are reused. Optional shared `recoveredWordIds`/`freshWordIds` props are adopted. Rain shelter supports direct discovery; empty bicycle is optional evidence. All 194 pure tests and 10 desktop/phone browser checks (cats plus existing waiter journeys) passed before final visual polish. Evidence is in `evidence/0068`. Actual feature audio and shared integrated navigation/save/gift/offline checks remain open. No completion or merge claim is made.
+
+Rebased cats-only commits onto main `5c90ba4`. Final-base checks before review fixes passed 195 rules and 12 desktop/phone browser checks. Independent review of `99df4df` found rain give-space, selected-cat detour and completed-route pose mismatches; writer fixed all three with 28 focused rules/content/pose tests and a green build. Fresh independent review and review-fix browser checks remain pending. The active repeat save now records its actual completion day to keep the window visit visible across same-day reload.
+
+Fresh `0e07106` verification passed 28 focused tests, build and 14 browser checks, but independent alternate-path probes found an alias pose mismatch for window-target route invitations and familiar doorway-target rain visits. Writer fixed the scene's semantic target interpretation using the cat's actual location, preserving unrelated cat/landmark detours. Focused suite now passes 32 tests; build passes. The failing-head report and original probe evidence are preserved under `evidence/0068/review-0e07106*`. All 10 cats desktop/phone browser checks pass, including new rendered-pose alias regressions after reload. Ticket remains doing and release remains blocked by audio and foundation integration.
+
+Final independent material-fix review of exact source `384b3ca9ce62cd640b7cffa3ac4aabe54fb4e503` is isolated PASS. The reviewer passed 32 focused tests, build, 12 independent probes, two authored canvas-parity cases and two negative-detour cases. Authored and negative tests collected no page or console errors. Six fresh phone/desktop captures were inspected. Verbatim report and small original probe evidence are archived under `evidence/0068/review-384b3ca*`. Historical failing reports remain intact. This evidence-only update changes no source or tests. Release remains BLOCKED by genuine new voice assets and central 0066 integration pending the 0063 lease. Actual shared save/migration, offline and gift delivery are unverified. Ticket stays doing; no merge is authorized from this isolated verdict.
+
+
+## Local completion
+
+Finished locally after the cloud handoff. The integrated game preserves restaurant progress across apartment, courtyard, workshop and rooftop visits, with shared journal, gifts and saves. Genuine offline voices are committed. Candidate `7b27ca4` passed 308 unit tests, a production build, 12 real production/offline cases and 34 original media/word-card regressions, all with zero skips or failures. Separate reviewers checked source, state recovery, real native playback and exact audio provenance. Actual gameplay demos with audio are verified. See [[evidence/0075/README]] for scope and receipts.
+
+Automated signal, transcript and recorded-playback checks do not certify native Mandarin pronunciation. A separate listening pass is tracked by 0076; no native-listening approval is claimed.

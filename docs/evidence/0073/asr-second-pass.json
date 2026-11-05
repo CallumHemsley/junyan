@@ -1,0 +1,529 @@
+{
+  "model": "openai/whisper-small",
+  "revision": "973afd24965f72e36ca33b3055d56a652f456b4d",
+  "method": "Local CPU ASR. Language and task only. No expected-text prompt and no audio upload. Not a listening, tone or naturalness judgement.",
+  "clips": [
+    {
+      "filename": "apartment/line-welcome.wav",
+      "sha256": "de6e355392681a38fe75d2e788feb038055af3e8b3dc5a7b493bd947751a20f8",
+      "expected": "桌子和椅子给你。",
+      "recognized": "桌子和椅子给你"
+    },
+    {
+      "filename": "apartment/line-window.wav",
+      "sha256": "6c63baa5158ab3ef6c19f4f6d954e74a9339ccd22f3130d6fca28b4f9f7ccd01",
+      "expected": "桌子放在窗户旁边。",
+      "recognized": "桌子放在窗戶旁边"
+    },
+    {
+      "filename": "apartment/line-left.wav",
+      "sha256": "e6a41b45d30c121f540ba3fda98a05ffca248a2f751b0b0f6577b56258ca9f7a",
+      "expected": "椅子放在左边。",
+      "recognized": "椅子放在左边。"
+    },
+    {
+      "filename": "apartment/line-right.wav",
+      "sha256": "77681bc2c456dcb56d4222c88bec5445cd14c6ed64e65b24a7407bad0d89c704",
+      "expected": "放在右边也可以。",
+      "recognized": "放在右边也可以。"
+    },
+    {
+      "filename": "apartment/line-large.wav",
+      "sha256": "db8eeac009dbf7ec4b9694b403345cb772518f8e5d69ca027214b9bcb1ea5bcf",
+      "expected": "这个太大了。",
+      "recognized": "这个太大了"
+    },
+    {
+      "filename": "apartment/line-rotate.wav",
+      "sha256": "c11a9fa1a9617d542470713cf562d11b4943d1099df8548a815880de66d1b042",
+      "expected": "转一下。",
+      "recognized": "转一下。"
+    },
+    {
+      "filename": "apartment/line-okay.wav",
+      "sha256": "0c0f28b0af44002f1f18906e6790ebfd6e2170b87f3becd1e926fe07550f3e12",
+      "expected": "这样可以。",
+      "recognized": "这样可以。"
+    },
+    {
+      "filename": "apartment/line-blocked.wav",
+      "sha256": "0acff301079fe19d81aaacf33cc3d13323c219a8bb96c1415353f50c2259c0f2",
+      "expected": "这里先不放。",
+      "recognized": "这里先不放。"
+    },
+    {
+      "filename": "apartment/line-stored.wav",
+      "sha256": "2831a7d56dca3b5ff8a4aff497d7071afa4a1b8e1b77df2c939cb8b235323bd4",
+      "expected": "先收起来。",
+      "recognized": "先收起来"
+    },
+    {
+      "filename": "apartment/line-gift.wav",
+      "sha256": "a8aee0d81483575981a2e766ca9a53b13d7df130f78e9384cc707c506fccf57a",
+      "expected": "这个给你。",
+      "recognized": "卓丽丽"
+    },
+    {
+      "filename": "apartment/line-colour.wav",
+      "sha256": "6bcde0e2c8cc594791e405a289630163e26986bcd855a07796dd7711529c143e",
+      "expected": "换一个靠垫。",
+      "recognized": "換一個靠墊。"
+    },
+    {
+      "filename": "cats/line-clue.wav",
+      "sha256": "42db022a8e8d49976d841beefa25e7ed5db4df26048fe00f1f406c0bf882541e",
+      "expected": "你看见小白了吗？",
+      "recognized": "你看见小白了吗"
+    },
+    {
+      "filename": "cats/line-bicycle-clue.wav",
+      "sha256": "5decb5d63ba1ebb276a39707b2770083e759d64d271053fe9755b1082c1c5753",
+      "expected": "白猫在自行车下面。",
+      "recognized": "白貓在自行車下面"
+    },
+    {
+      "filename": "cats/line-wrong-cat.wav",
+      "sha256": "18d319b494ede61c014eccfa4835b73afacec231cf2593b72aa32ff38cb34598",
+      "expected": "不是黑猫，是白猫。",
+      "recognized": "不是黑猫是白猫"
+    },
+    {
+      "filename": "cats/line-gentle.wav",
+      "sha256": "d50c026222a7696eda001ba4f85bfd7d3a1afdb432c2113cfecfc3ff475bc912",
+      "expected": "慢慢来，蹲下，等一等。",
+      "recognized": "慢慢來 蹲下 等等"
+    },
+    {
+      "filename": "cats/line-crouched.wav",
+      "sha256": "c55458bda9c3ae17b3fab7bd72f3b81aafcdbee28b83e6deaf8115a24b53bf3a",
+      "expected": "好，等一等。",
+      "recognized": "好 等等"
+    },
+    {
+      "filename": "cats/line-space.wav",
+      "sha256": "bf2466dbd9fc63298efbd0f2cde5a0ef89d4e96b5bf0290380e4995ebce6d703",
+      "expected": "退后，小白安静了。",
+      "recognized": "退后小白安静了"
+    },
+    {
+      "filename": "cats/line-emerged.wav",
+      "sha256": "519dd3028d939f4ea4d0f984344aa0aa26c8a783b1b449d5d49aa5787f700066",
+      "expected": "小白出来了。",
+      "recognized": "小白出来了"
+    },
+    {
+      "filename": "cats/line-invited.wav",
+      "sha256": "c5fc8073e2c8e3b59a1ae0c87f7a89248147c7f0a755b38e0c7665dbb9e34ec6",
+      "expected": "跟着小白走。",
+      "recognized": "跟着小白走"
+    },
+    {
+      "filename": "cats/line-doorway.wav",
+      "sha256": "9b826e9f5f480feea16a4eb226f6c55e2826e6cea603eb67304741385fe50105",
+      "expected": "她在门口。",
+      "recognized": "他在门口"
+    },
+    {
+      "filename": "cats/line-reunion.wav",
+      "sha256": "076e9809cffd40e137029ade60ffeda5ef72ef006cbc6e5e02500827528b04a4",
+      "expected": "找到了，谢谢你。这个垫子送给你。",
+      "recognized": "找到了。谢谢你。这个电子送给你。"
+    },
+    {
+      "filename": "cats/line-black-greeting.wav",
+      "sha256": "bf951c5e0e9766734271c9e16e7e6c14b86667dbee3874bfdb3c9e8579af3096",
+      "expected": "小黑，你好。",
+      "recognized": "小黑,你好!"
+    },
+    {
+      "filename": "cats/line-black-sitting.wav",
+      "sha256": "86ae9fe66126c1c890acd5d87ee3c1bd0c2b2f31e9f33bb7d1578a6a06048e2a",
+      "expected": "小黑和你一起坐下。",
+      "recognized": "小黑和你一起坐下"
+    },
+    {
+      "filename": "cats/line-black-clue.wav",
+      "sha256": "8f88945155c0e4d7e569a9b2c0087873e138e06b24773e49f059b8bf8f581d2b",
+      "expected": "小黑在椅子旁边。",
+      "recognized": "小黑在椅子旁边。"
+    },
+    {
+      "filename": "cats/line-sunny.wav",
+      "sha256": "dd09aa383d74711a5cad708738eae3a90ca6d12d36be91c904b40bbab49659d2",
+      "expected": "太阳出来了。小黑在椅子旁边。",
+      "recognized": "太阳出来了,小黑在椅子旁边。"
+    },
+    {
+      "filename": "cats/line-rainy.wav",
+      "sha256": "315aa5a58fccbb93448e2de482f52445ff665828fb69c4779c894a08f1c764e0",
+      "expected": "下雨了。小白在门口。",
+      "recognized": "下雨了,想白在门口"
+    },
+    {
+      "filename": "cats/line-empty-bicycle.wav",
+      "sha256": "2473407049ef62c63d11a7fd2c7bfc4dac9e1c161d383f88f7727cc287dde85e",
+      "expected": "小白不在自行车下面。",
+      "recognized": "小白不再自行车下面"
+    },
+    {
+      "filename": "cats/line-rain-found.wav",
+      "sha256": "e6ff82eafe8386d16702893afd0df993e52bc65774b12686edd0bb2976d72284",
+      "expected": "找到小白了。一起等一等。",
+      "recognized": "找到小白了一起等一等"
+    },
+    {
+      "filename": "cats/line-route.wav",
+      "sha256": "dddab3cf80e48568f9fe29b1b4a8e118985c78c63294631a298f0f22b9cf89e9",
+      "expected": "小白去窗边。跟着小白走。",
+      "recognized": "小白去窗边跟着小白走"
+    },
+    {
+      "filename": "cats/line-window-found.wav",
+      "sha256": "23226ed739abee81a142bd2dbf8e963f02b8a658812f34426bd1049ac496e47b",
+      "expected": "小白在窗边。",
+      "recognized": "小白在窗边"
+    },
+    {
+      "filename": "cats/line-visit-complete.wav",
+      "sha256": "5e621aa62b6a1236146df7289139c8eac76d4d8c3a80e2e23a7d353020edda84",
+      "expected": "好朋友，明天见。",
+      "recognized": "好朋友,明天见!"
+    },
+    {
+      "filename": "cats/line-return.wav",
+      "sha256": "a977433b16b05cccd530011e0c8d547c079966644a29cbedb8ae7bbe2c0a77e0",
+      "expected": "小白，小黑，你好。",
+      "recognized": "小白 小黑 你好"
+    },
+    {
+      "filename": "cats/line-later.wav",
+      "sha256": "3347038294e28b73c28c44c9ad87ebc215e868a7de24c3028662626230a7c136",
+      "expected": "今天已经见了。明天再来。",
+      "recognized": "今天已经见了,明天再来。"
+    },
+    {
+      "filename": "cats/line-label-courtyard.wav",
+      "sha256": "b6f5fd91d5de95edb9b77d1b74cdc7a8984412ff95cb55edbd7d5a07cc729c07",
+      "expected": "院子",
+      "recognized": "院子"
+    },
+    {
+      "filename": "cats/line-label-white.wav",
+      "sha256": "3ddb25f740945fec101e8c18453a462aa447bbe4cd31dc3f006d3ba3246d9abf",
+      "expected": "小白",
+      "recognized": "小白"
+    },
+    {
+      "filename": "cats/line-label-black.wav",
+      "sha256": "0b4ad0b1dce76e228388fc443d5d97f1c7df82de961eac5c14cf5d2aaa5b6738",
+      "expected": "小黑",
+      "recognized": "小黑"
+    },
+    {
+      "filename": "cats/line-label-bicycle.wav",
+      "sha256": "885297749565d7ea552b35fbe3913576b1882f7fb393c527a08e1d8c7286b97a",
+      "expected": "自行车",
+      "recognized": "自行车"
+    },
+    {
+      "filename": "cats/line-label-bench.wav",
+      "sha256": "1eb8ec71b2dd78b5b33e4d18fed425ba7159eb08c1028238a8d1a62a509c4439",
+      "expected": "椅子",
+      "recognized": "椅子"
+    },
+    {
+      "filename": "cats/line-label-door.wav",
+      "sha256": "49b2257a498c417008fc3e3ac46c7c8563474f40940503e73a27045dec25db94",
+      "expected": "门口",
+      "recognized": "门口"
+    },
+    {
+      "filename": "cats/line-label-window.wav",
+      "sha256": "bf72b2a80b1a2908ac38ef36e487e60dc2ebc6f01bbea064a80bb2297e3ea0fa",
+      "expected": "窗边",
+      "recognized": "窗邊"
+    },
+    {
+      "filename": "cats/line-label-aunt.wav",
+      "sha256": "d7f949142acec298e4a3a1480b449fd1ccb6a5c9308d5825f934d51a4913170f",
+      "expected": "阿姨",
+      "recognized": "阿姨"
+    },
+    {
+      "filename": "cats/line-action-look.wav",
+      "sha256": "4b51bfc1c6e0e21d4c95f83dc7d1a0cfd3c25d83cad4aa516a17e569e4ca3174",
+      "expected": "看看",
+      "recognized": "看看"
+    },
+    {
+      "filename": "cats/line-action-crouch.wav",
+      "sha256": "ad8993acea7f2091f622f7071972f08933cd95b665b9bf663217268644b8e63b",
+      "expected": "蹲下",
+      "recognized": "蹲下"
+    },
+    {
+      "filename": "cats/line-action-wait.wav",
+      "sha256": "19560391bc4f62e28385582b380710516570cf2e5597803d5a896490e1f87382",
+      "expected": "等一等",
+      "recognized": "等一等"
+    },
+    {
+      "filename": "cats/line-action-space.wav",
+      "sha256": "26587fb83cba4188a4279a0b8217e2659be6b4fbe93238dabe6e7a2ebe144a2d",
+      "expected": "退后",
+      "recognized": "退後"
+    },
+    {
+      "filename": "cats/line-action-approach.wav",
+      "sha256": "a502c700575441745cb077086be368db5ecc040e2170dc45115f8869da90a650",
+      "expected": "过来",
+      "recognized": "过来"
+    },
+    {
+      "filename": "cats/line-action-follow.wav",
+      "sha256": "dbbdff473dc2e805bb52b3d1090ac45776e5aaad854845dd495cc157957f4633",
+      "expected": "跟着小白走",
+      "recognized": "跟这小白走"
+    },
+    {
+      "filename": "cats/line-action-call.wav",
+      "sha256": "3f129ba63cd6b35cdc3466bee0f7f0a5ba3433e9423864c5d29597509066fdc7",
+      "expected": "叫阿姨",
+      "recognized": "叫阿姨"
+    },
+    {
+      "filename": "cats/line-action-greet.wav",
+      "sha256": "3e316e81c54b507210eebf5a6c99a9095296571357e153eafd69205fdc957886",
+      "expected": "你好",
+      "recognized": "你好"
+    },
+    {
+      "filename": "cats/line-action-sit.wav",
+      "sha256": "24ef773b1b0955b8b737c9c2321ce578112fe37f650148f71d9da6245c2412a7",
+      "expected": "坐下",
+      "recognized": "坐下"
+    },
+    {
+      "filename": "cats/line-action-begin.wav",
+      "sha256": "f4a51d376b0bc30419ee9a79327e6a034595af083d6a731a336bffc7310c6f26",
+      "expected": "看看院子",
+      "recognized": "看看院子"
+    },
+    {
+      "filename": "cats/line-action-replay.wav",
+      "sha256": "76a473e7eb1107a7c56e421a067d0a8224f41fe16540be394b4130ab149462f6",
+      "expected": "再听",
+      "recognized": "再聽。"
+    },
+    {
+      "filename": "cats/line-white-sitting.wav",
+      "sha256": "59cc68669b28aa86c191859bae1ff955da2728597f209644d8d8177c55d3a930",
+      "expected": "小白和你一起坐下。",
+      "recognized": "小白和你一起坐下"
+    },
+    {
+      "filename": "repairs/line-lamp-intro.wav",
+      "sha256": "71d41fc395b5a7c1ae683b99bf1d18a02dbb633dc39cf1bd8103edab5064e8c2",
+      "expected": "能亮，但是一直闪。",
+      "recognized": "能量,但是一直闪"
+    },
+    {
+      "filename": "repairs/line-lamp-unstable.wav",
+      "sha256": "00ba269e535e94b2851b87551ec0a8b894010391f0ce8a14732d3d6b371edfe6",
+      "expected": "还是不稳。",
+      "recognized": "还是不稳"
+    },
+    {
+      "filename": "repairs/line-lamp-steady.wav",
+      "sha256": "3dee7aefc2ec58b49f266b456ef4a188474c89e5dd3f9c71d5fbb8bfd7ce8c59",
+      "expected": "好了，现在亮了。",
+      "recognized": "好了 现在亮了"
+    },
+    {
+      "filename": "repairs/line-power-first.wav",
+      "sha256": "4b984786d8b00c658600777e2e79b24beb3c49236889d934219ab3f60ea0c75c",
+      "expected": "先关掉。",
+      "recognized": "先关掉。"
+    },
+    {
+      "filename": "repairs/line-lamp-tight.wav",
+      "sha256": "3bebbe46d87007e016deb8858bbb5fbe715994128d524edb0825a7ffa55c974c",
+      "expected": "灯泡拧紧了。再试试。",
+      "recognized": "登泡凝锦呢?再试试!"
+    },
+    {
+      "filename": "repairs/line-lamp-loose.wav",
+      "sha256": "ead3f4b340bcd4310b462390fb1249b29bbc36240fa8b9124980802baa6c984e",
+      "expected": "灯泡松了。",
+      "recognized": "等好松了"
+    },
+    {
+      "filename": "repairs/line-lamp-returned.wav",
+      "sha256": "f60d966803b8404cd23c03b8e689d2a13bfda2133b9946078dd2f5040af396a0",
+      "expected": "台灯修好了。",
+      "recognized": "台灯修好了。"
+    },
+    {
+      "filename": "repairs/line-lamp-off.wav",
+      "sha256": "a74f374728b302fc32d7027f9c395fa9cc8e3ea47d1e3f8d3fa631a307c7ea7c",
+      "expected": "关掉了。",
+      "recognized": "关掉了。"
+    },
+    {
+      "filename": "repairs/line-all-complete.wav",
+      "sha256": "d6288256b0c28bb1358d16f8e88fa256e0b3505120b12b5f2bbac14cfb29754d",
+      "expected": "都修好了。这个木头凳子给你。",
+      "recognized": "都修好了这个木头凳子给你"
+    },
+    {
+      "filename": "repairs/line-toy-intro.wav",
+      "sha256": "e859d3d6989c6662e37d8b2f526565174eca413ba896fa31ad47bf9abbaec209",
+      "expected": "这个玩具不动了。",
+      "recognized": "这个玩具不动了。"
+    },
+    {
+      "filename": "repairs/line-toy-open.wav",
+      "sha256": "85626cf8bceda79abc28fe4f7ab4dab0dfc6caf6759b3ef5e085881ac24bb98f",
+      "expected": "打开了。",
+      "recognized": "打开了。"
+    },
+    {
+      "filename": "repairs/line-toy-closed.wav",
+      "sha256": "70da1247737c78f4e7c4856dfaca761fec77962e41e7fa7591255bc0504c63e2",
+      "expected": "盖上了。试试。",
+      "recognized": "該上了試試。"
+    },
+    {
+      "filename": "repairs/line-toy-connect.wav",
+      "sha256": "ec1e16101f9884da8f2989664b78d6ae120c2a36ac68de9cb03436bb9b18ebbf",
+      "expected": "线接上了。",
+      "recognized": "先解上了。"
+    },
+    {
+      "filename": "repairs/line-toy-disconnect.wav",
+      "sha256": "c810a9f03440cda616ae1cc6eb55bfcdc10e4d5b4d38668a5d28f4c24ebc4d35",
+      "expected": "线拔下了。",
+      "recognized": "先拔下了。"
+    },
+    {
+      "filename": "repairs/line-toy-cell.wav",
+      "sha256": "5096a18112a11be723fa7130eabaa07146ba125aba528aabdb08c65e45f880ab",
+      "expected": "换上新电池了。",
+      "recognized": "換上新電池了。"
+    },
+    {
+      "filename": "repairs/line-toy-old-cell.wav",
+      "sha256": "5c88ebb7080fe116a5e44734c93df8a81f28effbb0dc64312cc4a7373e4f2638",
+      "expected": "旧电池放回了。",
+      "recognized": "就电池放回了。"
+    },
+    {
+      "filename": "repairs/line-toy-still.wav",
+      "sha256": "f4fdd6088dbca366730a533b7811a57e8aed9bc7c0aeffa7835c69cbb596e66d",
+      "expected": "还是不动。再打开。",
+      "recognized": "还是不动再打开。"
+    },
+    {
+      "filename": "repairs/line-toy-moving.wav",
+      "sha256": "64c5326698a24c21dec0b793c6e70f3c95ab9f66c1c9ce8e6be882c5dd9d084b",
+      "expected": "好了，动了。",
+      "recognized": "耗了动了。"
+    },
+    {
+      "filename": "repairs/line-open-first.wav",
+      "sha256": "d52cb938ecc49269060c18d656f1a5251fd83ad1798d02e2ccea67a3466ee84f",
+      "expected": "先打开盖子。",
+      "recognized": "先打开盖子。"
+    },
+    {
+      "filename": "repairs/line-close-first.wav",
+      "sha256": "731b507921420cf533d053e667f73314538660644301a45223ce0e6b29604a43",
+      "expected": "先盖上，再试试。",
+      "recognized": "先盖上再试试。"
+    },
+    {
+      "filename": "repairs/line-toy-returned.wav",
+      "sha256": "3b8b3eb2d37159b019f1c0c1754f33f883bfc1265a11ecd31eaf62f96f121e67",
+      "expected": "玩具修好了。",
+      "recognized": "完预修好了。"
+    },
+    {
+      "filename": "garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+      "sha256": "cd8559de9a0c904899bd4f8b0cc1143df9343f9960f9328ed40c952e1b290bb8",
+      "expected": "土还是湿的先别浇水",
+      "recognized": "圖還是施的,先別澆水。"
+    },
+    {
+      "filename": "garden/line-c686ce578b68292f0f70784b43dd8dbf7989e1dbf9c4ad925445822942220c3b.wav",
+      "sha256": "dc42001469fe9acefd948e3c3d4e976d46575abe757b62a7e54532375605e8a8",
+      "expected": "这盆土干了浇一点水",
+      "recognized": "这盆土干了浇一点水。"
+    },
+    {
+      "filename": "garden/line-3125a7aba176c3d13785023d1b928ad0464fbc088c698e8662b41d5be4cb76ce.wav",
+      "sha256": "658b2e70696423fe3426f37ab2013d3002719d4f42d043ca092cc5d438fa97dd",
+      "expected": "把花放在阴凉的地方",
+      "recognized": "把花放在音量的地方。"
+    },
+    {
+      "filename": "garden/line-9dd2d735c288f33afe9803c894d817af72b82578925051f8ed2513e157b4c3b1.wav",
+      "sha256": "21c834f9302c96bfb5e3df88ccde55e914bf3b1b45cd5b162388834a759230eb",
+      "expected": "今天下雨不用浇水",
+      "recognized": "今天下雨不用澆水。"
+    },
+    {
+      "filename": "garden/line-bc72bf497b3379d64e1a92171c8f25986f3c8e84b27c9e983f645d92d995ecc8.wav",
+      "sha256": "129b1f9b0c8833230519d033078ad4f8b46ded1df53279ee2eb51a2dca0f9785",
+      "expected": "水太多了明天再看看",
+      "recognized": "水太多了,明天再看看。"
+    },
+    {
+      "filename": "garden/line-a00e19fb6fd7917efaf080a2e4c986d10c77627dd24af902cfaeb9d0a58a009f.wav",
+      "sha256": "3e3ab6193042b0cc8674fde178af181026afac8a6f8dd559b810a522c87b613d",
+      "expected": "比昨天高一点了",
+      "recognized": "比昨天高一点了"
+    },
+    {
+      "filename": "garden/line-94071bc83fe7641966cc896d246319a6c75345dcea1a620f270acadab78a9f7d.wav",
+      "sha256": "0c68046296e41579e625805ceb2ed060020ec3680e68a19117554b48727a44d4",
+      "expected": "花开了小鸟也来了",
+      "recognized": "花开了小鸟也来了"
+    },
+    {
+      "filename": "garden/line-2cea4d50190cb01e1a44e330696dd7124a5c1ab61dece866b1f7fbe6c1aa0291.wav",
+      "sha256": "bbfda6319e36f91381ba4e4e82b92627aea452d857a691d3fdbb4d59a204e507",
+      "expected": "小馆忙完明天再来",
+      "recognized": "小馆,忙完明天再来。"
+    },
+    {
+      "filename": "garden/line-c61aedfc4ce042069a0a01ddbba2f4dc50559dd85b1faf06c96888082a540afe.wav",
+      "sha256": "2fbcbb53e98c4fcd2249492ae365c7dd33aec81050354474c2ae8b2911cf04c3",
+      "expected": "选盆再选空位",
+      "recognized": "選盆再選空位"
+    },
+    {
+      "filename": "garden/line-48aacdeab5f7e8a7335c3864d4c9c3187dcf7880a85b7b9a40f55b9b7151c9ce.wav",
+      "sha256": "df7de0e19424ebf627d63a76e45ef13c3c129f409e819aae4a02c92e97b3e605",
+      "expected": "选空位放遮阳架",
+      "recognized": "先空位放着羊架"
+    },
+    {
+      "filename": "garden/line-ce36743c91d7ca45682de08e7b0d48f58657df6eff2b8bc3dddfc523e5a49ddf.wav",
+      "sha256": "f9a5b586899e6b0212ae97b5fe3ad832fbee41564453b42d7c8416c556461585",
+      "expected": "先等一等明天再看看",
+      "recognized": "先等一等明天再看看"
+    },
+    {
+      "filename": "garden/line-4719b9919a41cc0e925411d4731f35eaa6913df3166c033ea094b0beadb19f3e.wav",
+      "sha256": "1064e8d6e5ef090ff262b44f90828cc41a1e346c0549c3b51405e8547fac4061",
+      "expected": "先歇一歇明天再看看",
+      "recognized": "先歇一歇,明天再看看。"
+    },
+    {
+      "filename": "garden/line-acdfe74a12a9984f5e9918aebba8e90f12fdf6941eb78ed60303320ea810105e.wav",
+      "sha256": "a7b110728dd530ba83c0fa0273a972c4c34f3eed89ace46ecee0e7f6b4eb23a7",
+      "expected": "天热把花放在阴凉的地方",
+      "recognized": "天热,把花放在阴凉的地方。"
+    }
+  ]
+}

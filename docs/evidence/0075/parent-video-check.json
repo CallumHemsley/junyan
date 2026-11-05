@@ -1,0 +1,64 @@
+[
+  {
+    "video": "apartment",
+    "seconds": 15.938,
+    "rms": 0.04016185593224462,
+    "independentMatches": [
+      {
+        "correlation": 0.9997730460368435,
+        "offsetSeconds": -0.018500000000006955
+      }
+    ],
+    "sha256": "257696167059e5c465766a2fbd7fbe75bb9b11ea22410120b5dc57bcb4061cb0"
+  },
+  {
+    "video": "cats",
+    "seconds": 33.667,
+    "rms": 0.040520364281708326,
+    "independentMatches": [
+      {
+        "correlation": 0.85863403787137,
+        "offsetSeconds": -0.017000000000006454
+      }
+    ],
+    "sha256": "2ce8ed2e469ca63c4bbcf6f8e96665b404870c49dc07de7406ad834d17d4d736"
+  },
+  {
+    "video": "repairs",
+    "seconds": 48.678,
+    "rms": 0.04900558329303744,
+    "independentMatches": [
+      {
+        "correlation": 0.9478282156677617,
+        "offsetSeconds": -0.01700000000000179
+      }
+    ],
+    "sha256": "f79357b3112533d39ab6e1ae9110761f75242b43803f8f053dc29720310d5a5f"
+  },
+  {
+    "video": "garden",
+    "seconds": 32.433333,
+    "rms": 0.03767015626902184,
+    "independentMatches": [
+      {
+        "correlation": 0.9997271451833644,
+        "offsetSeconds": -0.01749999999999763
+      }
+    ],
+    "sha256": "5335c0c4ec7f4f834dd375a24b5a98390c8ab4a0a46c556ad3874316b43a4ada"
+  },
+  {
+    "video": "neighbourhood-combined",
+    "seconds": 130.7,
+    "rms": 0.04319834161360521,
+    "independentMatches": [],
+    "sha256": "20b6333808a29343c36ca5ec81dcb9b4eae98452a830ee4126b00dab8cbec579"
+  },
+  {
+    "video": "walkthrough",
+    "seconds": 296.433333,
+    "rms": 0.056302463096519366,
+    "independentMatches": [],
+    "sha256": "327f4172035289837d949c4ce7326812bff1a35866f4d79f74e34754b8cc1037"
+  }
+]

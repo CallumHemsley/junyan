@@ -1,7 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Line, Position, Word } from "./contracts";
 import { KITCHEN, TABLES } from "./contracts";
-import { characterFor, content } from "./content";
+import { characterFor } from "./content";
+import { content } from "./neighbourhood/registry";
+import Neighbourhood, { LocationNavigation, NeighbourhoodGifts } from "./neighbourhood/Neighbourhood";
+import FeatureLine from "./neighbourhood/FeatureLine";
+import { lineById as apartmentLines } from "./features/apartment/content";
+import { createNeighbourhood } from "./neighbourhood/model";
+import type { LocationId } from "./neighbourhood/contracts";
 import { contentWords } from "./content/words";
 import {
   createGame,
@@ -75,8 +81,11 @@ export default function App() {
   const [change, setChange] = useState(0);
   const [moving, setMoving] = useState(false);
   const [audioError, setAudioError] = useState<PlaybackError>(null);
-  const dayEndOpen = state.ended && panel === "none" && !word;
-  const ambience = useAmbience(ready && session.phase === "day");
+  const neighbourhood = state.neighbourhood ?? createNeighbourhood(state.day);
+  const locationId = neighbourhood.location;
+  const [giftNotice, setGiftNotice] = useState(false);
+  const dayEndOpen = locationId === "restaurant" && state.ended && panel === "none" && !word;
+  const ambience = useAmbience(ready && session.phase === "day" && locationId === "restaurant");
   const playback = useRef<ReturnType<typeof createPlayback> | null>(null);
   if (!playback.current)
     playback.current = createPlayback((url) => new Audio(url), setAudioError, ambience.speaking);
@@ -90,6 +99,15 @@ export default function App() {
         const { game: before } = previous;
         const { game: after } = next;
         setFresh((dots) => nextDots(dots, before, action, after));
+        if (before.neighbourhood?.location !== after.neighbourhood?.location) {
+          motion.current = null;
+          playback.current?.stop();
+          setMoving(false);
+          setWord(null);
+          setPanel("none");
+          setGiftNotice(false);
+        }
+        if (action.type === "claim-neighbourhood-gift") setGiftNotice(true);
       }
       if (!testMode && action.type !== "move" && next.phase === "day") {
         try {
@@ -111,6 +129,8 @@ export default function App() {
   const play = useCallback((url: string, onEnded?: () => void) => {
     playback.current!.play(import.meta.env.BASE_URL + url.slice(1), onEnded);
   }, []);
+  const playLine = useCallback((line: Line) => play(line.audio), [play]);
+  const acknowledgeRecovery = useCallback(() => {}, []);
   useEffect(() => () => playback.current!.stop(), []);
   useEffect(() => {
     if (panel !== "table") playback.current!.stop();
@@ -120,11 +140,11 @@ export default function App() {
   }, [word]);
   useEffect(() => playback.current!.stop(), [state.day]);
   useEffect(() => {
-    if (state.feedback === "wrong-food" || state.feedback === "wrong-change") {
+    if (locationId === "restaurant" && (state.feedback === "wrong-food" || state.feedback === "wrong-change")) {
       const order = getOrder(state, state.activeTable ?? 1, content);
       if (order) play(characterFor(order.customer).retry.audio);
     }
-  }, [state.feedback, state.mistakes, state.activeTable, play]);
+  }, [state.feedback, state.mistakes, state.activeTable, play, locationId]);
   useEffect(() => {
     if (testMode) return;
     let cancelled = false;
@@ -142,6 +162,7 @@ export default function App() {
       const started = startSession(read, content, seed, opening === "skip");
       sessionRef.current = started.session;
       setSession(started.session);
+      if (started.session.phase === "day" && (started.session.game.neighbourhood?.location ?? "restaurant") !== "restaurant") setPanel("none");
       if (started.saveError) setSaveError(true);
       setReady(true);
     };
@@ -316,6 +337,7 @@ export default function App() {
       if (
         !ready ||
         sessionRef.current.phase !== "day" ||
+        locationId !== "restaurant" ||
         dayEndOpen ||
         event.defaultPrevented ||
         event.altKey ||
@@ -364,7 +386,7 @@ export default function App() {
     };
     window.addEventListener("keydown", key);
     return () => window.removeEventListener("keydown", key);
-  }, [dispatch, visitTable, visitKitchen, panel, word, ready, dayEndOpen]);
+  }, [dispatch, visitTable, visitKitchen, panel, word, ready, dayEndOpen, locationId]);
   useEffect(() => {
     if (!testMode) return;
     const hooks = {
@@ -389,6 +411,11 @@ export default function App() {
       delete (window as Window & { __TEST__?: typeof hooks }).__TEST__;
     };
   }, [dispatch]);
+  useEffect(() => {
+    if (!ready || session.phase !== "day") return;
+    document.querySelector<HTMLElement>("[data-location-heading]")?.focus();
+  }, [locationId, ready, session.phase]);
+  const visitLocation = (location: LocationId) => dispatch({type:"visit-location",location});
   const lookup = (w: Word, trigger: HTMLButtonElement) => {
     wordTrigger.current = trigger;
     setWord(w);
@@ -447,6 +474,7 @@ export default function App() {
     }
   };
   if (!ready) return <main className="loading">早安，小馆正在开门。</main>;
+  const audioNotice = audioError && <p className="save-note" role="status">{audioError === "policy" ? "点一下喇叭，再听一遍。" : "声音暂时没有播出，再点一次听听。"}</p>;
   const wordCard = word && (
     <div
       className="word-popover"
@@ -537,8 +565,9 @@ export default function App() {
           </button>
         </nav>
       </header>
-      <main inert={panel !== "none" || dayEndOpen}>
-        <div className="play-layout">
+      <main inert={panel !== "none" || dayEndOpen} data-location={locationId}>
+        <LocationNavigation location={locationId} onVisit={visitLocation}/>
+        {locationId === "restaurant" ? <div className="play-layout">
           <section className="world-panel" aria-label="早安小馆餐厅">
             <div className="world-caption">
               <button className="day-toggle" aria-expanded={dayExpanded} aria-controls="day-details" onClick={() => setDayExpanded(!dayExpanded)}>
@@ -612,6 +641,16 @@ export default function App() {
             </div>
           </section>
         </div>
+        : <Neighbourhood state={neighbourhood} day={state.day} onAction={dispatch} onLookup={lookup} onPlay={playLine} onRecover={acknowledgeRecovery}
+            recoveredWordIds={Object.keys(state.journal).filter(id => state.journal[id].recovered)} freshWordIds={fresh}/>}
+        <NeighbourhoodGifts state={neighbourhood} onClaim={giftId => {
+          const before = sessionRef.current;
+          const next = dispatch({type:"claim-neighbourhood-gift",giftId});
+          if (next !== before) playLine(apartmentLines.gift);
+        }}/>
+        {giftNotice && <div className="neighbourhood-gift-note" role="status"><FeatureLine line={apartmentLines.gift} onLookup={lookup} onPlay={playLine}
+          recoveredWordIds={Object.keys(state.journal).filter(id => state.journal[id].recovered)} freshWordIds={fresh}/></div>}
+        {locationId !== "restaurant" && panel === "none" && audioNotice}
         {saveError && (
           <p role="status" className="save-note">
             本次进度暂时无法保存，请保持页面打开。
@@ -730,7 +769,7 @@ export default function App() {
                       <span className="thanks-chop">多谢</span>
                     </div>
                     {tokens(character.thanks)}
-                    <button className="primary" onClick={close}>
+                    <button className="primary" autoFocus onClick={close}>
                       继续招呼 <span>→</span>
                     </button>
                   </>
@@ -863,7 +902,7 @@ export default function App() {
             {panel === "journal" && (
               <>
                 <p className="eyebrow">我的本子</p>
-                <h2>在小馆遇见的词。</h2>
+                <h2>慢慢想起的词。</h2>
                 <p className="subtle">{words.length} 个词 · 点一下，再听一遍</p>
                 {words.length === 0 ? (
                   <p className="journal-empty">
@@ -884,13 +923,7 @@ export default function App() {
                 )}
               </>
             )}
-            {audioError && (
-              <p className="save-note" role="status">
-                {audioError === "policy"
-                  ? "点一下喇叭，再听一遍。"
-                  : "声音暂时没有播出，再点一次听听。"}
-              </p>
-            )}
+            {audioNotice}
           </section>
         </div>
       )}
@@ -935,6 +968,7 @@ export default function App() {
             >
               明天见 <span>→</span>
             </button>
+            <button className="secondary" onClick={() => visitLocation("apartment")}>回家看看</button>
           </section>
         </div>
       )}

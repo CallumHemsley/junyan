@@ -1,0 +1,2585 @@
+{
+  "config": {
+    "argv": [
+      "/workspace/.junyan-tools/node_modules/node/bin/node",
+      "/workspace/junyan-foundation/node_modules/@playwright/test/cli.js",
+      "test",
+      "e2e/waiter.spec.ts",
+      "e2e/word-switch.spec.ts",
+      "e2e/ambience.spec.ts",
+      "e2e/cumulative-earnings.spec.ts",
+      "e2e/overnight-keyboard.spec.ts",
+      "e2e/learning-help.spec.ts",
+      "e2e/overlay-focus.spec.ts",
+      "--config",
+      "playwright.neighbourhood.config.ts",
+      "--grep-invert",
+      "production|offline"
+    ],
+    "configFile": "/workspace/junyan-foundation/playwright.neighbourhood.config.ts",
+    "rootDir": "/workspace/junyan-foundation/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/junyan-foundation/output/neighbourhood/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/junyan-foundation/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 180000
+      },
+      {
+        "outputDir": "/workspace/junyan-foundation/output/neighbourhood/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/junyan-foundation/e2e",
+        "testIgnore": [
+          "**/offline.spec.ts",
+          "**/overnight-offline.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan-foundation/output/neighbourhood/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "/workspace/junyan-foundation/e2e",
+        "snapshotDir": "/workspace/junyan-foundation/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5466",
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan-foundation/output/neighbourhood/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "phone",
+        "testDir": "/workspace/junyan-foundation/e2e",
+        "snapshotDir": "/workspace/junyan-foundation/e2e",
+        "testIgnore": [
+          "**/offline.spec.ts",
+          "**/overnight-offline.spec.ts"
+        ],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5466",
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "phone"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "output/neighbourhood/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "node node_modules/vite/bin/vite.js  --host 127.0.0.1 --port 5466 --strictPort",
+      "url": "http://127.0.0.1:5466",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "ambience.spec.ts",
+      "file": "ambience.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "settings preserve independent mute and level, keyboard never moves the waiter",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3136,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:25:01.247Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-889cb41aa28dc1ad6250",
+          "file": "ambience.spec.ts",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "native ambience survives panel changes and pauses/resumes through app lifecycle listeners",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1339,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:25:04.798Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-6fcde5909cb85ccf09ea",
+          "file": "ambience.spec.ts",
+          "line": 84,
+          "column": 1
+        },
+        {
+          "title": "real foreground speech ducks the bed and restores on native end, stop and word cancellation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6683,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:25:06.153Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-c33f8077300a77331b49",
+          "file": "ambience.spec.ts",
+          "line": 110,
+          "column": 1
+        },
+        {
+          "title": "resource failure retries the same ambience owner without disturbing speech",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2868,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:25:12.851Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-cdb6158ade21d52caa98",
+          "file": "ambience.spec.ts",
+          "line": 130,
+          "column": 1
+        },
+        {
+          "title": "unavailable preference storage keeps current-session controls functional",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1411,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:25:15.735Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-7dfdb511c35029a923f1",
+          "file": "ambience.spec.ts",
+          "line": 166,
+          "column": 1
+        },
+        {
+          "title": "opening stays silent then transitions to one bed, reset stops it",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8752,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:25:17.160Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-a165c5bcdd3fe4dcb48d",
+          "file": "ambience.spec.ts",
+          "line": 181,
+          "column": 1
+        },
+        {
+          "title": "reduced-motion settings remain usable and contained",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1392,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:25:25.926Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-1ad1c8153b10cb1b0d42",
+          "file": "ambience.spec.ts",
+          "line": 194,
+          "column": 1
+        },
+        {
+          "title": "foreground resource failure releases ducking and direct replay recovers",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2272,
+                  "error": {
+                    "message": "Error: apiResponse.body: Response has been disposed",
+                    "stack": "Error: apiResponse.body: Response has been disposed\n    at silentResponse (/workspace/junyan-foundation/e2e/audio-fixtures.ts:26:41)",
+                    "location": {
+                      "file": "/workspace/junyan-foundation/e2e/audio-fixtures.ts",
+                      "column": 41,
+                      "line": 26
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39maudio-fixtures.ts:26\n\n  24 | export async function silentResponse(route: Route, delay = 0) {\n  25 |   const response = await route.fetch({ headers: { ...route.request().headers(), range: \"bytes=0-\" } });\n> 26 |   const body = silentWav(await response.body());\n     |                                         ^\n  27 |   if (delay) await new Promise(resolve => setTimeout(resolve, delay));\n  28 |   await route.fulfill({ status: 200, contentType: \"audio/wav\", body });\n  29 | }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/junyan-foundation/e2e/audio-fixtures.ts",
+                        "column": 41,
+                        "line": 26
+                      },
+                      "message": "Error: apiResponse.body: Response has been disposed\n\n   at audio-fixtures.ts:26\n\n  24 | export async function silentResponse(route: Route, delay = 0) {\n  25 |   const response = await route.fetch({ headers: { ...route.request().headers(), range: \"bytes=0-\" } });\n> 26 |   const body = silentWav(await response.body());\n     |                                         ^\n  27 |   if (delay) await new Promise(resolve => setTimeout(resolve, delay));\n  28 |   await route.fulfill({ status: 200, contentType: \"audio/wav\", body });\n  29 | }\n    at silentResponse (/workspace/junyan-foundation/e2e/audio-fixtures.ts:26:41)"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:25:28.633Z",
+                  "annotations": [],
+                  "errorLocation": {
+                    "file": "/workspace/junyan-foundation/e2e/audio-fixtures.ts",
+                    "column": 41,
+                    "line": 26
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-4785501929dded4b9f5d",
+          "file": "ambience.spec.ts",
+          "line": 240,
+          "column": 1
+        },
+        {
+          "title": "narrow phone settings keep every control inside screen gutters",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1324,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:25:31.604Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-3a4b8e2cda6fddc2b254",
+          "file": "ambience.spec.ts",
+          "line": 255,
+          "column": 1
+        },
+        {
+          "title": "settings preserve independent mute and level, keyboard never moves the waiter",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2589,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:28:51.345Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-e754a0cb6d96531eb525",
+          "file": "ambience.spec.ts",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "native ambience survives panel changes and pauses/resumes through app lifecycle listeners",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1391,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:28:54.202Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-7438c5ca5d084adebacb",
+          "file": "ambience.spec.ts",
+          "line": 84,
+          "column": 1
+        },
+        {
+          "title": "real foreground speech ducks the bed and restores on native end, stop and word cancellation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7246,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:28:55.607Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-5748a24dceaa3bd67ea3",
+          "file": "ambience.spec.ts",
+          "line": 110,
+          "column": 1
+        },
+        {
+          "title": "resource failure retries the same ambience owner without disturbing speech",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3012,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:29:02.870Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-1a2daa0fd4dc437e78b3",
+          "file": "ambience.spec.ts",
+          "line": 130,
+          "column": 1
+        },
+        {
+          "title": "unavailable preference storage keeps current-session controls functional",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1348,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:29:05.904Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-6220949ac66226b7e17f",
+          "file": "ambience.spec.ts",
+          "line": 166,
+          "column": 1
+        },
+        {
+          "title": "opening stays silent then transitions to one bed, reset stops it",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8246,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:29:07.272Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-e757ff3fe661f127f121",
+          "file": "ambience.spec.ts",
+          "line": 181,
+          "column": 1
+        },
+        {
+          "title": "reduced-motion settings remain usable and contained",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1437,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:29:15.529Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-60206778c15175b55179",
+          "file": "ambience.spec.ts",
+          "line": 194,
+          "column": 1
+        },
+        {
+          "title": "foreground resource failure releases ducking and direct replay recovers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2720,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:29:18.199Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-8d1e53065e44e8703e35",
+          "file": "ambience.spec.ts",
+          "line": 240,
+          "column": 1
+        },
+        {
+          "title": "narrow phone settings keep every control inside screen gutters",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1521,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:29:20.937Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6aa6d254b9837f75d79e-d8b035075690c926ee9b",
+          "file": "ambience.spec.ts",
+          "line": 255,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "touch activation",
+          "file": "ambience.spec.ts",
+          "line": 227,
+          "column": 6,
+          "specs": [
+            {
+              "title": "a genuine touch gesture starts the bed on first entry",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1282,
+                      "errors": [],
+                      "retry": 0,
+                      "startTime": "2026-11-05T22:25:27.332Z",
+                      "annotations": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6aa6d254b9837f75d79e-a2ef599239e7f72a6bb7",
+              "file": "ambience.spec.ts",
+              "line": 229,
+              "column": 3
+            },
+            {
+              "title": "a genuine touch gesture starts the bed on first entry",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1193,
+                      "errors": [],
+                      "retry": 0,
+                      "startTime": "2026-11-05T22:29:16.981Z",
+                      "annotations": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6aa6d254b9837f75d79e-f8920297c1884421a7ef",
+              "file": "ambience.spec.ts",
+              "line": 229,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "cumulative-earnings.spec.ts",
+      "file": "cumulative-earnings.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "two days label lifetime receipts without changing the running total",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 51233,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:25:33.176Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5912849007d79031024e-0c5d41357eee9fa96c41",
+          "file": "cumulative-earnings.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "two days label lifetime receipts without changing the running total",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 50624,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:29:22.487Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5912849007d79031024e-dd42f3262fe57b0a8be7",
+          "file": "cumulative-earnings.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "learning-help.spec.ts",
+      "file": "learning-help.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "help narrates authored tokens, shows the sequence and journals lookups without English",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6552,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:27:30.756Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d1033915b3e71a0af93d-c71434bd26af26314636",
+          "file": "learning-help.spec.ts",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "small-phone help stays within the viewport and food aids retain pictures without glosses",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2409,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:27:37.523Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d1033915b3e71a0af93d-df4c3264556c6a1c9d3c",
+          "file": "learning-help.spec.ts",
+          "line": 54,
+          "column": 1
+        },
+        {
+          "title": "help-only vocabulary survives a real saved-game reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2336,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:27:39.948Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d1033915b3e71a0af93d-b6d4bca701e41bbf39c1",
+          "file": "learning-help.spec.ts",
+          "line": 82,
+          "column": 1
+        },
+        {
+          "title": "help narrates authored tokens, shows the sequence and journals lookups without English",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7376,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:31:23.148Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d1033915b3e71a0af93d-f503ee26421c93ac4d22",
+          "file": "learning-help.spec.ts",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "small-phone help stays within the viewport and food aids retain pictures without glosses",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2804,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:31:30.794Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d1033915b3e71a0af93d-4b01c078dc8b80346af5",
+          "file": "learning-help.spec.ts",
+          "line": 54,
+          "column": 1
+        },
+        {
+          "title": "help-only vocabulary survives a real saved-game reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2444,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:31:33.611Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d1033915b3e71a0af93d-aa5d7da00a6c638e3c58",
+          "file": "learning-help.spec.ts",
+          "line": 82,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "overlay-focus.spec.ts",
+      "file": "overlay-focus.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "receipt word targets are at least 44px and restore focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1914,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:27:55.036Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "39a9e775973a7fc8f063-0564719d3911746a1b72",
+          "file": "overlay-focus.spec.ts",
+          "line": 108,
+          "column": 1
+        },
+        {
+          "title": "kitchen, tray, and journal word cards restore their own triggers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3673,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:27:56.972Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "39a9e775973a7fc8f063-201aaba785b0e142922b",
+          "file": "overlay-focus.spec.ts",
+          "line": 140,
+          "column": 1
+        },
+        {
+          "title": "receipt word targets are at least 44px and restore focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2249,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:31:50.746Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "39a9e775973a7fc8f063-37c08f51f675a6b5f912",
+          "file": "overlay-focus.spec.ts",
+          "line": 108,
+          "column": 1
+        },
+        {
+          "title": "kitchen, tray, and journal word cards restore their own triggers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3601,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:31:53.014Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "39a9e775973a7fc8f063-85207a4119c6c6deb69d",
+          "file": "overlay-focus.spec.ts",
+          "line": 140,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "development",
+          "file": "overlay-focus.spec.ts",
+          "line": 11,
+          "column": 8,
+          "specs": [
+            {
+              "title": "word card shares focus with lookup sources and restores both layers (pointer)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2599,
+                      "errors": [],
+                      "retry": 0,
+                      "startTime": "2026-11-05T22:27:42.867Z",
+                      "annotations": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "39a9e775973a7fc8f063-4c01cc06a37bcbdd0ff7",
+              "file": "overlay-focus.spec.ts",
+              "line": 25,
+              "column": 7
+            },
+            {
+              "title": "word card shares focus with lookup sources and restores both layers (keyboard)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2336,
+                      "errors": [],
+                      "retry": 0,
+                      "startTime": "2026-11-05T22:27:45.673Z",
+                      "annotations": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "39a9e775973a7fc8f063-af99dc1d5066ab8ef39b",
+              "file": "overlay-focus.spec.ts",
+              "line": 25,
+              "column": 7
+            },
+            {
+              "title": "Help cancels an in-flight table arrival (.help-button)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7001,
+                      "errors": [],
+                      "retry": 0,
+                      "startTime": "2026-11-05T22:27:48.021Z",
+                      "annotations": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "39a9e775973a7fc8f063-223517dbd712954581e2",
+              "file": "overlay-focus.spec.ts",
+              "line": 76,
+              "column": 7
+            },
+            {
+              "title": "word card shares focus with lookup sources and restores both layers (pointer)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3118,
+                      "errors": [],
+                      "retry": 0,
+                      "startTime": "2026-11-05T22:31:36.642Z",
+                      "annotations": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "39a9e775973a7fc8f063-f96070605ad142594a8d",
+              "file": "overlay-focus.spec.ts",
+              "line": 25,
+              "column": 7
+            },
+            {
+              "title": "word card shares focus with lookup sources and restores both layers (keyboard)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2906,
+                      "errors": [],
+                      "retry": 0,
+                      "startTime": "2026-11-05T22:31:39.983Z",
+                      "annotations": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "39a9e775973a7fc8f063-c1146fc6d131ddef20b0",
+              "file": "overlay-focus.spec.ts",
+              "line": 25,
+              "column": 7
+            },
+            {
+              "title": "Help cancels an in-flight table arrival (.help-button)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "phone",
+                  "projectName": "phone",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7810,
+                      "errors": [],
+                      "retry": 0,
+                      "startTime": "2026-11-05T22:31:42.902Z",
+                      "annotations": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "39a9e775973a7fc8f063-4587d26e9cec196c9088",
+              "file": "overlay-focus.spec.ts",
+              "line": 76,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "overnight-keyboard.spec.ts",
+      "file": "overnight-keyboard.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Escape interrupts walking without a delayed table opening",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5589,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:28:01.208Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-e6c9fd11f8263e1e7f7f",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "day summary blocks movement and interaction shortcuts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2347,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:28:06.998Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-2e27aac2f47ac8f662d4",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 63,
+          "column": 1
+        },
+        {
+          "title": "kitchen closes back to the original table trigger after walking",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3880,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:28:09.361Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-2c17a565f346a8d5f126",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 94,
+          "column": 1
+        },
+        {
+          "title": "modified arrow shortcuts do not move the waiter",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1372,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:28:13.258Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-2ead8ae7ae9b3c903238",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 105,
+          "column": 1
+        },
+        {
+          "title": "keyboard journey keeps named controls and focus across a full day",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 13006,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.modal-backdrop')\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: serializes to the same string\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.modal-backdrop') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.modal-backdrop')\u001b[22m\n\u001b[2m    24 \u00d7 locator resolved to <div class=\"modal-backdrop\">\u2026</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.modal-backdrop')\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: serializes to the same string\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.modal-backdrop') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.modal-backdrop')\u001b[22m\n\u001b[2m    24 \u00d7 locator resolved to <div class=\"modal-backdrop\">\u2026</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n    at /workspace/junyan-foundation/e2e/overnight-keyboard.spec.ts:131:53",
+                    "location": {
+                      "file": "/workspace/junyan-foundation/e2e/overnight-keyboard.spec.ts",
+                      "column": 53,
+                      "line": 131
+                    },
+                    "snippet": "  129 |       const card = page.getByRole(\"dialog\", { name: /\u7684\u610f\u601d$/ });\n  130 |       await expect(card.getByRole(\"button\", { name: \"\u5173\u95ed\u8bcd\u5361\" })).toBeFocused();\n> 131 |       await expect(page.locator(\".modal-backdrop\")).toHaveAttribute(\"inert\", \"\");\n      |                                                     ^\n  132 |       await page.keyboard.press(\"Shift+Tab\");\n  133 |       await expect(card.getByRole(\"button\", { name: \"\u542c\u8fd9\u4e2a\u8bcd\" })).toBeFocused();\n  134 |       await page.keyboard.press(\"Tab\");"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/junyan-foundation/e2e/overnight-keyboard.spec.ts",
+                        "column": 53,
+                        "line": 131
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.modal-backdrop')\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: serializes to the same string\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.modal-backdrop') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.modal-backdrop')\u001b[22m\n\u001b[2m    24 \u00d7 locator resolved to <div class=\"modal-backdrop\">\u2026</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n\n  129 |       const card = page.getByRole(\"dialog\", { name: /\u7684\u610f\u601d$/ });\n  130 |       await expect(card.getByRole(\"button\", { name: \"\u5173\u95ed\u8bcd\u5361\" })).toBeFocused();\n> 131 |       await expect(page.locator(\".modal-backdrop\")).toHaveAttribute(\"inert\", \"\");\n      |                                                     ^\n  132 |       await page.keyboard.press(\"Shift+Tab\");\n  133 |       await expect(card.getByRole(\"button\", { name: \"\u542c\u8fd9\u4e2a\u8bcd\" })).toBeFocused();\n  134 |       await page.keyboard.press(\"Tab\");\n    at /workspace/junyan-foundation/e2e/overnight-keyboard.spec.ts:131:53"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:28:14.648Z",
+                  "annotations": [],
+                  "errorLocation": {
+                    "file": "/workspace/junyan-foundation/e2e/overnight-keyboard.spec.ts",
+                    "column": 53,
+                    "line": 131
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-94409843a4e9004d571c",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 115,
+          "column": 1
+        },
+        {
+          "title": "non-test word survives immediate reload (aborted IndexedDB: false)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4700,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:28:28.757Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-5de1bd8bd9205de870d5",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 189,
+          "column": 3
+        },
+        {
+          "title": "non-test word survives immediate reload (aborted IndexedDB: true)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5028,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:28:33.673Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-3bcfe1d526ad33ff3465",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 189,
+          "column": 3
+        },
+        {
+          "title": "invalid recovery checkpoint falls back to IndexedDB: {",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3584,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:28:38.716Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-8d9f457b871a8510dfc7",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 224,
+          "column": 3
+        },
+        {
+          "title": "invalid recovery checkpoint falls back to IndexedDB: {}",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3869,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:28:42.347Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-a374decc346fe6c0e712",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 224,
+          "column": 3
+        },
+        {
+          "title": "a failed checkpoint write cannot override a later successful IndexedDB save",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4080,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:28:46.236Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-4ab6a2805c7731ec796f",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 240,
+          "column": 1
+        },
+        {
+          "title": "Escape interrupts walking without a delayed table opening",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6518,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:31:57.274Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-81922a685a6c8c5e7028",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "day summary blocks movement and interaction shortcuts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2531,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:32:04.043Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-883a978b9d569e6ccb60",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 63,
+          "column": 1
+        },
+        {
+          "title": "kitchen closes back to the original table trigger after walking",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3819,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:32:06.595Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-52e7c44053f1b31163e2",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 94,
+          "column": 1
+        },
+        {
+          "title": "modified arrow shortcuts do not move the waiter",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1703,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:32:10.431Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-7642e3eb81fd7511ac08",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 105,
+          "column": 1
+        },
+        {
+          "title": "keyboard journey keeps named controls and focus across a full day",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 13700,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.modal-backdrop')\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: serializes to the same string\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.modal-backdrop') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.modal-backdrop')\u001b[22m\n\u001b[2m    24 \u00d7 locator resolved to <div class=\"modal-backdrop\">\u2026</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.modal-backdrop')\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: serializes to the same string\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.modal-backdrop') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.modal-backdrop')\u001b[22m\n\u001b[2m    24 \u00d7 locator resolved to <div class=\"modal-backdrop\">\u2026</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n    at /workspace/junyan-foundation/e2e/overnight-keyboard.spec.ts:131:53",
+                    "location": {
+                      "file": "/workspace/junyan-foundation/e2e/overnight-keyboard.spec.ts",
+                      "column": 53,
+                      "line": 131
+                    },
+                    "snippet": "  129 |       const card = page.getByRole(\"dialog\", { name: /\u7684\u610f\u601d$/ });\n  130 |       await expect(card.getByRole(\"button\", { name: \"\u5173\u95ed\u8bcd\u5361\" })).toBeFocused();\n> 131 |       await expect(page.locator(\".modal-backdrop\")).not.toHaveAttribute(\"inert\", \"\");\n      |                                                     ^\n  132 |       await expect(page.locator(\"main\")).toHaveAttribute(\"inert\", \"\");\n  133 |       const sourceWords = dialog.locator(\"[data-word-lookup]\");\n  134 |       await page.keyboard.press(\"Shift+Tab\");"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/junyan-foundation/e2e/overnight-keyboard.spec.ts",
+                        "column": 53,
+                        "line": 131
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.modal-backdrop')\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: serializes to the same string\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.modal-backdrop') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('.modal-backdrop')\u001b[22m\n\u001b[2m    24 \u00d7 locator resolved to <div class=\"modal-backdrop\">\u2026</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n\n  129 |       const card = page.getByRole(\"dialog\", { name: /\u7684\u610f\u601d$/ });\n  130 |       await expect(card.getByRole(\"button\", { name: \"\u5173\u95ed\u8bcd\u5361\" })).toBeFocused();\n> 131 |       await expect(page.locator(\".modal-backdrop\")).not.toHaveAttribute(\"inert\", \"\");\n      |                                                     ^\n  132 |       await expect(page.locator(\"main\")).toHaveAttribute(\"inert\", \"\");\n  133 |       const sourceWords = dialog.locator(\"[data-word-lookup]\");\n  134 |       await page.keyboard.press(\"Shift+Tab\");\n    at /workspace/junyan-foundation/e2e/overnight-keyboard.spec.ts:131:53"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:32:12.149Z",
+                  "annotations": [],
+                  "errorLocation": {
+                    "file": "/workspace/junyan-foundation/e2e/overnight-keyboard.spec.ts",
+                    "column": 53,
+                    "line": 131
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-066ff774c88417f2f986",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 115,
+          "column": 1
+        },
+        {
+          "title": "non-test word survives immediate reload (aborted IndexedDB: false)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5350,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:32:27.270Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-ceb87c2b4f689f5d62f8",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 189,
+          "column": 3
+        },
+        {
+          "title": "non-test word survives immediate reload (aborted IndexedDB: true)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4976,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:32:32.921Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-f570523ac9105fcb029e",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 189,
+          "column": 3
+        },
+        {
+          "title": "invalid recovery checkpoint falls back to IndexedDB: {",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3735,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:32:37.920Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-00fc835ec9ae3abcadb6",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 224,
+          "column": 3
+        },
+        {
+          "title": "invalid recovery checkpoint falls back to IndexedDB: {}",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3892,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:32:41.671Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-0a261dfd6317da2b15e5",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 224,
+          "column": 3
+        },
+        {
+          "title": "a failed checkpoint write cannot override a later successful IndexedDB save",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5248,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:32:45.586Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "62769c0eb595b2f6cf18-ae584cec5efd38a98c3a",
+          "file": "overnight-keyboard.spec.ts",
+          "line": 240,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "waiter.spec.ts",
+      "file": "waiter.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "wake in the ward, then collect, recall, deliver, give change, journal, and progress",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 37380,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:26:24.439Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a3bc38fb9c3488469ad2-6a434f5ff6f80b4c28a5",
+          "file": "waiter.spec.ts",
+          "line": 88,
+          "column": 1
+        },
+        {
+          "title": "walking connects a keyboard position beside a table without stalling",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3566,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:27:01.832Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a3bc38fb9c3488469ad2-1f48b222371616fa2843",
+          "file": "waiter.spec.ts",
+          "line": 145,
+          "column": 1
+        },
+        {
+          "title": "browser saves and reloads a looked-up word",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3498,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:27:05.412Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a3bc38fb9c3488469ad2-c8cb5b2c067f4b867342",
+          "file": "waiter.spec.ts",
+          "line": 165,
+          "column": 1
+        },
+        {
+          "title": "wake in the ward, then collect, recall, deliver, give change, journal, and progress",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 38828,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:30:13.135Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a3bc38fb9c3488469ad2-8dd9f8713bf61900286b",
+          "file": "waiter.spec.ts",
+          "line": 88,
+          "column": 1
+        },
+        {
+          "title": "walking connects a keyboard position beside a table without stalling",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3647,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:30:51.977Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a3bc38fb9c3488469ad2-e057f34437072b0a4ff9",
+          "file": "waiter.spec.ts",
+          "line": 145,
+          "column": 1
+        },
+        {
+          "title": "browser saves and reloads a looked-up word",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4149,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:30:55.637Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a3bc38fb9c3488469ad2-9f552db8a4ee994563b9",
+          "file": "waiter.spec.ts",
+          "line": 165,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "word-switch.spec.ts",
+      "file": "word-switch.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "development: Help and restaurant switch directly with top-only Escape",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4198,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:27:08.944Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97f3d388917fe372afcc-8e3d2c32418cc4233c1a",
+          "file": "word-switch.spec.ts",
+          "line": 39,
+          "column": 3
+        },
+        {
+          "title": "hospital words switch without advancing the opening",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4000,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:27:13.154Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97f3d388917fe372afcc-c78216d79147be6c44fc",
+          "file": "word-switch.spec.ts",
+          "line": 58,
+          "column": 1
+        },
+        {
+          "title": "kitchen, tray, journal and receipt sources keep switching",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7851,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:27:17.170Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97f3d388917fe372afcc-a3ed1c949f622ce36dc4",
+          "file": "word-switch.spec.ts",
+          "line": 68,
+          "column": 1
+        },
+        {
+          "title": "rapid keyboard/pointer selection records once and cancels prior native audio",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4842,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:27:25.038Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97f3d388917fe372afcc-4fd6cbb2ae9fd777e16d",
+          "file": "word-switch.spec.ts",
+          "line": 109,
+          "column": 1
+        },
+        {
+          "title": "development: Help and restaurant switch directly with top-only Escape",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4237,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:30:59.819Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97f3d388917fe372afcc-0e45c1d17d920eb1629e",
+          "file": "word-switch.spec.ts",
+          "line": 39,
+          "column": 3
+        },
+        {
+          "title": "hospital words switch without advancing the opening",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4488,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:31:04.078Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97f3d388917fe372afcc-eb993d6310a1cdf030a3",
+          "file": "word-switch.spec.ts",
+          "line": 58,
+          "column": 1
+        },
+        {
+          "title": "kitchen, tray, journal and receipt sources keep switching",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8014,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:31:08.595Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97f3d388917fe372afcc-1d933db61eaa67c5b64b",
+          "file": "word-switch.spec.ts",
+          "line": 68,
+          "column": 1
+        },
+        {
+          "title": "rapid keyboard/pointer selection records once and cancels prior native audio",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5405,
+                  "errors": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T22:31:16.626Z",
+                  "annotations": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97f3d388917fe372afcc-976414003b44424dd61c",
+          "file": "word-switch.spec.ts",
+          "line": 109,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-05T22:24:59.180Z",
+    "duration": 471820.236,
+    "expected": 69,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

@@ -21,8 +21,6 @@ export function wordState(
   return fresh ? "dot" : "plain";
 }
 
-// The dot marks the words the latest correct serve recovered. Each correct
-// serve replaces the set, even with nothing, and a new day clears it.
 export function nextDots(
   dots: string[],
   previous: GameState,
@@ -30,7 +28,8 @@ export function nextDots(
   next: GameState,
 ): string[] {
   if (next === previous) return dots;
-  if (action.type === "next-day") return [];
+  if (action.type === "next-day" || action.type === "visit-location") return [];
+  if (action.type === "feature-action") return previous.journal === next.journal ? dots : freshWords(previous.journal, next.journal);
   if (action.type !== "deliver") return dots;
   const served = (state: GameState) =>
     state.customers.find((entry) => entry.table === action.table)?.phase;

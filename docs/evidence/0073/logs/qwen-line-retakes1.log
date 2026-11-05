@@ -1,0 +1,16 @@
+Fetching 14 files:   0%|          | 0/14 [00:00<?, ?it/s]Fetching 14 files: 100%|██████████| 14/14 [00:00<00:00, 6091.94it/s]
+[transformers] You are using a model of type `qwen3_tts` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+  Initialized encoder codebooks
+Loaded speech tokenizer from /Users/callumhemsley/.cache/huggingface/hub/models--mlx-community--Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit/snapshots/08c72cad5e2fd0f41730c8bd1f28149585e46361/speech_tokenizer
+AVAILABLE apartment/line-welcome.wav Serena 桌子和椅子给你。 attempted=1 reused=0 elapsed=3s
+AVAILABLE apartment/line-rotate.wav Serena 转一下。 attempted=2 reused=0 elapsed=4s
+AVAILABLE apartment/line-gift.wav Serena 这个给你。 attempted=3 reused=0 elapsed=6s
+AVAILABLE cats/line-doorway.wav Serena 她在门口。 attempted=4 reused=0 elapsed=7s
+AVAILABLE cats/line-label-white.wav Serena 小白 attempted=5 reused=0 elapsed=8s
+AVAILABLE cats/line-label-bench.wav Serena 椅子 attempted=6 reused=0 elapsed=9s
+AVAILABLE cats/line-label-door.wav Serena 门口 attempted=7 reused=0 elapsed=9s
+AVAILABLE cats/line-action-begin.wav Serena 看看院子 attempted=8 reused=0 elapsed=12s
+AVAILABLE garden/line-a00e19fb6fd7917efaf080a2e4c986d10c77627dd24af902cfaeb9d0a58a009f.wav Serena 比昨天高一点了 attempted=9 reused=0 elapsed=13s
+AVAILABLE garden/line-94071bc83fe7641966cc896d246319a6c75345dcea1a620f270acadab78a9f7d.wav Serena 花开了小鸟也来了 attempted=10 reused=0 elapsed=21s
+AVAILABLE garden/line-48aacdeab5f7e8a7335c3864d4c9c3187dcf7880a85b7b9a40f55b9b7151c9ce.wav Serena 选空位放遮阳架 attempted=11 reused=0 elapsed=23s
+11 attempted, 0 reused, 0 failures, 0 pending

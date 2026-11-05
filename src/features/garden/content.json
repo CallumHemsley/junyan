@@ -1,0 +1,1235 @@
+{
+  "words": [
+    {
+      "id": "garden.soil",
+      "hanzi": "土",
+      "pinyin": "tǔ",
+      "gloss": "soil",
+      "audio": "/audio/garden/word-5b6b098b5cab9ae29a7e5e74141e9f42eac7cb7288581c7c7332b88fda595138.wav"
+    },
+    {
+      "id": "garden.still",
+      "hanzi": "还是",
+      "pinyin": "háishi",
+      "gloss": "still",
+      "audio": "/audio/garden/word-0135de542524c686ec51d7a11ff61605e23361060130938bd8738f9a978f4a7a.wav"
+    },
+    {
+      "id": "garden.wet",
+      "hanzi": "湿",
+      "pinyin": "shī",
+      "gloss": "wet",
+      "audio": "/audio/garden/word-852eb787b581ef88dd5821deef82c695eebf4619325792e1e7049eddb2bcaa02.wav"
+    },
+    {
+      "id": "garden.particle",
+      "hanzi": "的",
+      "pinyin": "de",
+      "gloss": "possessive or descriptive particle",
+      "audio": "/audio/garden/word-b7ed15dd64e9e9c683a3259434e499fc834316afd15d5ae76e3604ec821dcef2.wav"
+    },
+    {
+      "id": "garden.first",
+      "hanzi": "先",
+      "pinyin": "xiān",
+      "gloss": "first",
+      "audio": "/audio/garden/word-af500505f4c818aa314831b5ca895e111ed89cb9bfb8cc1eb490f44d00059ae8.wav"
+    },
+    {
+      "id": "dont",
+      "hanzi": "别",
+      "pinyin": "bié",
+      "gloss": "don't",
+      "audio": "/audio/word-5be08a42ea399b6c01acbe5b9f72e9dda89f775c839b721e451c55f1a23155de.wav"
+    },
+    {
+      "id": "garden.water-verb",
+      "hanzi": "浇水",
+      "pinyin": "jiāo shuǐ",
+      "gloss": "water plants",
+      "audio": "/audio/garden/word-86fc06193d4ace47b49476781d3e992792f988ff3ef5d44bdc3efe3a11d38592.wav"
+    },
+    {
+      "id": "garden.pour",
+      "hanzi": "浇",
+      "pinyin": "jiāo",
+      "gloss": "pour water",
+      "audio": "/audio/garden/word-31c04a1b45828cd0b9aa67a82f263cc498e2478bc444adb3b3a08a7125d95498.wav"
+    },
+    {
+      "id": "garden.this",
+      "hanzi": "这",
+      "pinyin": "zhè",
+      "gloss": "this",
+      "audio": "/audio/garden/word-6f5e4c23b5fd88b31235b97156118b672ffc6dccfac0a6c63401e55127daf4b0.wav"
+    },
+    {
+      "id": "garden.pot",
+      "hanzi": "盆",
+      "pinyin": "pén",
+      "gloss": "pot",
+      "audio": "/audio/garden/word-2269bc3719e6e90ed53bbb67afd056717e9ebdbf4920874bfece2d2ef40c30c1.wav"
+    },
+    {
+      "id": "garden.dry",
+      "hanzi": "干",
+      "pinyin": "gān",
+      "gloss": "dry",
+      "audio": "/audio/garden/word-6a32f93cc8191f66f85ecbf682da2bf0158c57a38078884d0e51c2110b9f3700.wav"
+    },
+    {
+      "id": "le",
+      "hanzi": "了",
+      "pinyin": "le",
+      "gloss": "completed action particle",
+      "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+    },
+    {
+      "id": "garden.little",
+      "hanzi": "一点",
+      "pinyin": "yīdiǎn",
+      "gloss": "a little",
+      "audio": "/audio/garden/word-3281ea7858459ba0c115b0e9b7dfe6f37f33fac9ae8f16a87688ecb0ac84c401.wav"
+    },
+    {
+      "id": "garden.water",
+      "hanzi": "水",
+      "pinyin": "shuǐ",
+      "gloss": "water",
+      "audio": "/audio/garden/word-1fe33bbc755214e1f6e9798012007d41eadcff0d7648c5838e99be7ab398d163.wav"
+    },
+    {
+      "id": "garden.ba",
+      "hanzi": "把",
+      "pinyin": "bǎ",
+      "gloss": "marks the object of an action",
+      "audio": "/audio/garden/word-0044f163327f187ca35e55e72f38874539909251c73516a453dd64c84f14a6bc.wav"
+    },
+    {
+      "id": "garden.flower",
+      "hanzi": "花",
+      "pinyin": "huā",
+      "gloss": "flower",
+      "audio": "/audio/garden/word-f09891fbd72f69038f845e71f9fd794d4db3fc1705683977741a64547dcabb23.wav"
+    },
+    {
+      "id": "garden.put",
+      "hanzi": "放",
+      "pinyin": "fàng",
+      "gloss": "put",
+      "audio": "/audio/garden/word-e64f12a5d84b2759b095946a9f7936de0ba48be5dd3b28e549f15e96e0daa824.wav"
+    },
+    {
+      "id": "garden.at",
+      "hanzi": "在",
+      "pinyin": "zài",
+      "gloss": "at; in",
+      "audio": "/audio/garden/word-d6372f4994466ff1ae8c580244270539eff72d788f633a135c50d0ab36d27995.wav"
+    },
+    {
+      "id": "garden.shade",
+      "hanzi": "阴凉",
+      "pinyin": "yīnliáng",
+      "gloss": "shade; cool and sheltered",
+      "audio": "/audio/garden/word-6be1b7c34d97cf85a69e227da869f1d6645039aee032cef1ecd60f4d0ef320e8.wav"
+    },
+    {
+      "id": "garden.place",
+      "hanzi": "地方",
+      "pinyin": "dìfang",
+      "gloss": "place",
+      "audio": "/audio/garden/word-c79090b6babecdc298ae4ff68f457499cc391e001722d94fa12c77212a620784.wav"
+    },
+    {
+      "id": "garden.today",
+      "hanzi": "今天",
+      "pinyin": "jīntiān",
+      "gloss": "today",
+      "audio": "/audio/garden/word-28c33b5b14d27e18efd935caf81ef575386b60e7c8fc6589bd167363012589b1.wav"
+    },
+    {
+      "id": "garden.rain",
+      "hanzi": "下雨",
+      "pinyin": "xià yǔ",
+      "gloss": "rain",
+      "audio": "/audio/garden/word-09960b18e73b5fc44f514f89525d70bddac9614a96581ee18878cbdfa780b283.wav"
+    },
+    {
+      "id": "garden.no-need",
+      "hanzi": "不用",
+      "pinyin": "bú yòng",
+      "gloss": "no need to",
+      "audio": "/audio/garden/word-fac0164550893d6cf7c257af5cd4a8b3d1461b842790024a00b42518275268b5.wav"
+    },
+    {
+      "id": "garden.too-much",
+      "hanzi": "太多",
+      "pinyin": "tài duō",
+      "gloss": "too much",
+      "audio": "/audio/garden/word-3d7ffd4c484bbe6e16f4214acf06651d64da9c024b9ee1faf432746118b4f6eb.wav"
+    },
+    {
+      "id": "tomorrow",
+      "hanzi": "明天",
+      "pinyin": "míngtiān",
+      "gloss": "tomorrow",
+      "audio": "/audio/word-9b5989153cc3e2163b827b05dd634a14260068f1103ccf09c897650cfa6e92ea.wav"
+    },
+    {
+      "id": "again",
+      "hanzi": "再",
+      "pinyin": "zài",
+      "gloss": "again",
+      "audio": "/audio/word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav"
+    },
+    {
+      "id": "look",
+      "hanzi": "看看",
+      "pinyin": "kànkan",
+      "gloss": "take a look",
+      "audio": "/audio/word-4d253f356b3a9045ad43aa48d02890cb6eb7f37f4051b46c45561259a4657f77.wav"
+    },
+    {
+      "id": "garden.than",
+      "hanzi": "比",
+      "pinyin": "bǐ",
+      "gloss": "compared with",
+      "audio": "/audio/garden/word-e0d55dddafa8c4d2dc13988c417a31b0ee3738c678c9ca2ee9998c7dfb76ef83.wav"
+    },
+    {
+      "id": "garden.yesterday",
+      "hanzi": "昨天",
+      "pinyin": "zuótiān",
+      "gloss": "yesterday",
+      "audio": "/audio/garden/word-26be5fcc24fd88cb1330d35dcda7ac2dbed404c2b8dde76574f78706c587820c.wav"
+    },
+    {
+      "id": "garden.tall",
+      "hanzi": "高",
+      "pinyin": "gāo",
+      "gloss": "tall",
+      "audio": "/audio/garden/word-19daa595cb7d41d08ad11323a39e9c37ffdc96eedca5c320319f26ce49b79f24.wav"
+    },
+    {
+      "id": "garden.bloom",
+      "hanzi": "开",
+      "pinyin": "kāi",
+      "gloss": "open; bloom",
+      "audio": "/audio/garden/word-151398bbcfb310e3ded034c226143c8f104f3ca112c490c23b68847198509f25.wav"
+    },
+    {
+      "id": "garden.bird",
+      "hanzi": "小鸟",
+      "pinyin": "xiǎoniǎo",
+      "gloss": "little bird",
+      "audio": "/audio/garden/word-2b9f8434c10c079e90477668ea870af3d61ef5dffe2f2cc93275060248c9aedf.wav"
+    },
+    {
+      "id": "garden.also",
+      "hanzi": "也",
+      "pinyin": "yě",
+      "gloss": "also",
+      "audio": "/audio/garden/word-a61ecce872fb7729280946a79f82f8da81dfed0439c3415526fa849bd98d5262.wav"
+    },
+    {
+      "id": "bring",
+      "hanzi": "来",
+      "pinyin": "lái",
+      "gloss": "bring; come",
+      "audio": "/audio/word-ed529f5d1bf010905a815ac250dc4c043f1f704e66accb8731753957b1971f28.wav"
+    },
+    {
+      "id": "garden.roof",
+      "hanzi": "屋顶",
+      "pinyin": "wūdǐng",
+      "gloss": "rooftop",
+      "audio": "/audio/garden/word-5f61230f47665ce56a07ee6e5907dcf64f09ded0bc72867e817cc485184ea1d7.wav"
+    },
+    {
+      "id": "garden.garden",
+      "hanzi": "花园",
+      "pinyin": "huāyuán",
+      "gloss": "garden",
+      "audio": "/audio/garden/word-21b8f9ba991ee4f343a12b13823f5e385fab12ba7a8d6cdee5d22fbc59367f23.wav"
+    },
+    {
+      "id": "garden.lin",
+      "hanzi": "林姐",
+      "pinyin": "Lín jiě",
+      "gloss": "Sister Lin",
+      "audio": "/audio/garden/word-f648e54efdd3552470b9ea19a334e81c4a486fc6d74864bbc61d6a80acfa685c.wav"
+    },
+    {
+      "id": "garden.climber",
+      "hanzi": "藤",
+      "pinyin": "téng",
+      "gloss": "climbing vine",
+      "audio": "/audio/garden/word-6b48f953676172c0e62485ffe79f1e2703ea43ed3af0fd6ced13274db21708fc.wav"
+    },
+    {
+      "id": "garden.tree",
+      "hanzi": "小树",
+      "pinyin": "xiǎoshù",
+      "gloss": "small tree",
+      "audio": "/audio/garden/word-070131031f82771607e4c4efdc54eba1feb6562218269fdea5b880303f94dbbc.wav"
+    },
+    {
+      "id": "garden.clear",
+      "hanzi": "晴天",
+      "pinyin": "qíngtiān",
+      "gloss": "clear weather",
+      "audio": "/audio/garden/word-d31e97934ac0b017c4e5b88f9f5a2f59898deef089f8c91b9d8ec6d9e27a21a2.wav"
+    },
+    {
+      "id": "garden.hot",
+      "hanzi": "天热",
+      "pinyin": "tiān rè",
+      "gloss": "hot weather",
+      "audio": "/audio/garden/word-aa30ec4a786814be786ecb900e80900ee03f4f62b7f5aa86839ccbbeb1b6bdf4.wav"
+    },
+    {
+      "id": "garden.tidy",
+      "hanzi": "收拾",
+      "pinyin": "shōushi",
+      "gloss": "tidy up",
+      "audio": "/audio/garden/word-75a9bbe96d9b1356373da4f77fbc74fa53f84f6176e23db732682d3132833e9b.wav"
+    },
+    {
+      "id": "garden.crates",
+      "hanzi": "木箱",
+      "pinyin": "mùxiāng",
+      "gloss": "wooden crates",
+      "audio": "/audio/garden/word-bcb3f9637f6f74f6e5e7e336d8ba73fa2627d273e4a6febd6cdb4d242fcef478.wav"
+    },
+    {
+      "id": "garden.return",
+      "hanzi": "放回",
+      "pinyin": "fàng huí",
+      "gloss": "put back",
+      "audio": "/audio/garden/word-5123a17666a17b6b23227f68a3181b105ce87a239d7f7eb31a8215d00bc2cea5.wav"
+    },
+    {
+      "id": "garden.shade-screen",
+      "hanzi": "遮阳架",
+      "pinyin": "zhēyángjià",
+      "gloss": "sunshade",
+      "audio": "/audio/garden/word-d600871031183c49e75cbf29125336a81285d507e3781665a99008338beaf561.wav"
+    },
+    {
+      "id": "garden.cancel",
+      "hanzi": "取消",
+      "pinyin": "qǔxiāo",
+      "gloss": "cancel",
+      "audio": "/audio/garden/word-f89c140cd27c0d055eba844f94d1f5f7060f875a85a96f621dd870ec038bcf1b.wav"
+    },
+    {
+      "id": "garden.select",
+      "hanzi": "选",
+      "pinyin": "xuǎn",
+      "gloss": "select",
+      "audio": "/audio/garden/word-e9faaadca453013d7dcc7badb693bfa375ecaa0ed2005b933310c1db3501023f.wav"
+    },
+    {
+      "id": "garden.empty",
+      "hanzi": "空位",
+      "pinyin": "kōngwèi",
+      "gloss": "empty space",
+      "audio": "/audio/garden/word-510d8181a824d15090e6c697b31408183c1777d1ae33f8bcaf6bb2c78d5aba0c.wav"
+    },
+    {
+      "id": "garden.move",
+      "hanzi": "搬",
+      "pinyin": "bān",
+      "gloss": "move something",
+      "audio": "/audio/garden/word-2a4238827f151b2abb98feedbd5a6e04fa70dec799ad1763446bfe82db882c94.wav"
+    },
+    {
+      "id": "garden.observe",
+      "hanzi": "看一看",
+      "pinyin": "kàn yi kàn",
+      "gloss": "have a look",
+      "audio": "/audio/garden/word-df1b9ddac575eec41efd6c5ab62771360b8abc1aafe8541af1cf859f1c5c81ae.wav"
+    },
+    {
+      "id": "garden.wait",
+      "hanzi": "等一等",
+      "pinyin": "děng yi děng",
+      "gloss": "wait a little",
+      "audio": "/audio/garden/word-1495ade9cf0e91483b39dfef1011e5ccfba48c5595ebe91308145406754530b9.wav"
+    },
+    {
+      "id": "garden.anyway",
+      "hanzi": "还是浇",
+      "pinyin": "háishi jiāo",
+      "gloss": "water anyway",
+      "audio": "/audio/garden/word-54e2e60a6271f1072754db3aeae5d05a1e9f6dc2742ad934f2bf1fbcef7b9110.wav"
+    },
+    {
+      "id": "garden.keep-waiting",
+      "hanzi": "先等",
+      "pinyin": "xiān děng",
+      "gloss": "wait first",
+      "audio": "/audio/garden/word-1f7b5173f57013cd593e56015a1ae720ed5c054264f3c98ad3e211eabf7bb269.wav"
+    },
+    {
+      "id": "garden.recover",
+      "hanzi": "缓过来了",
+      "pinyin": "huǎn guò lái le",
+      "gloss": "has recovered",
+      "audio": "/audio/garden/word-078959888c3d02bcc9067266069e85cde2c071740d58ebff9ea0c0e0524b2964.wav"
+    },
+    {
+      "id": "garden.rest",
+      "hanzi": "歇一歇",
+      "pinyin": "xiē yi xiē",
+      "gloss": "rest a little",
+      "audio": "/audio/garden/word-a5bf3da31ddaf0bed9c8247298e1d81622a7c16e7f8ee98c7e5689af37b3e7bb.wav"
+    },
+    {
+      "id": "garden.grown",
+      "hanzi": "长大",
+      "pinyin": "zhǎng dà",
+      "gloss": "grow bigger",
+      "audio": "/audio/garden/word-9e9b8255ffcb05d0afeb48beeee4a9b5da39055b7d6834276b2d52aed712646f.wav"
+    },
+    {
+      "id": "garden.planter",
+      "hanzi": "花盆",
+      "pinyin": "huāpén",
+      "gloss": "flowerpot",
+      "audio": "/audio/garden/word-fbfc9aeb0b5acc83674bf2073ccd9297134e382b460b1218e7b7a2178f9dabf9.wav"
+    },
+    {
+      "id": "garden.home",
+      "hanzi": "带回家",
+      "pinyin": "dài huí jiā",
+      "gloss": "take home",
+      "audio": "/audio/garden/word-3350d8ca69b8c4e21add5ba9a6e897003afe0fc6aedf36d7b1758d1b4fb251df.wav"
+    },
+    {
+      "id": "garden.next-day",
+      "hanzi": "明天再来",
+      "pinyin": "míngtiān zài lái",
+      "gloss": "come back tomorrow",
+      "audio": "/audio/garden/word-0fb176d6b86dadd9352ae1e8ffccae6fc2e97cafc887d83d31f490a37047ed4b.wav"
+    },
+    {
+      "id": "garden.working",
+      "hanzi": "忙完",
+      "pinyin": "máng wán",
+      "gloss": "finish work",
+      "audio": "/audio/garden/word-be079dd0f98046102532e203c8875ecd4ad59bf8835ec5a6025d1e3b84ce5b23.wav"
+    },
+    {
+      "id": "garden.shop",
+      "hanzi": "小馆",
+      "pinyin": "xiǎoguǎn",
+      "gloss": "small restaurant",
+      "audio": "/audio/garden/word-fa375c6ef1c493512d61b1948dcc36cb1d05c5ef971ce51da0114bf45b3adf0a.wav"
+    },
+    {
+      "id": "garden.then",
+      "hanzi": "再来",
+      "pinyin": "zài lái",
+      "gloss": "come again",
+      "audio": "/audio/garden/word-b643917736e97e48b9f054e6680743dd8e7b9fbf4567ba938879c52b37e4df9a.wav"
+    },
+    {
+      "id": "garden.bench",
+      "hanzi": "坐一坐",
+      "pinyin": "zuò yi zuò",
+      "gloss": "sit a little",
+      "audio": "/audio/garden/word-74364bab3c98948f6de9fbfa82975273014aa33871abe458b20ab043b0cdb9ad.wav"
+    },
+    {
+      "id": "one",
+      "hanzi": "一",
+      "pinyin": "yī",
+      "gloss": "one",
+      "audio": "/audio/word-78e501faee156f728112ac3d42c0a6eabb09afaa3172d71ee446cf7f985aeddf.wav"
+    },
+    {
+      "id": "garden.two",
+      "hanzi": "二",
+      "pinyin": "èr",
+      "gloss": "two",
+      "audio": "/audio/garden/word-a0344bdfda5403c935ece74e192fe571075a3ee79bec87a15b90e62a8ae3c0e5.wav"
+    },
+    {
+      "id": "three",
+      "hanzi": "三",
+      "pinyin": "sān",
+      "gloss": "three",
+      "audio": "/audio/word-19a02f8d1fff427998a2ac091669a0ccc834c84ad961cdb8eee16aacf8d478a7.wav"
+    },
+    {
+      "id": "garden.four",
+      "hanzi": "四",
+      "pinyin": "sì",
+      "gloss": "four",
+      "audio": "/audio/garden/word-d47427117057d3ccdea7e5df125bd04b4487cbe09d7f775e86a0d8282a2432a7.wav"
+    },
+    {
+      "id": "garden.five",
+      "hanzi": "五",
+      "pinyin": "wǔ",
+      "gloss": "five",
+      "audio": "/audio/garden/word-e666f98953496f86d96be83c333ce81896109f8ee5f8b40b85b770720dae0b15.wav"
+    },
+    {
+      "id": "garden.six",
+      "hanzi": "六",
+      "pinyin": "liù",
+      "gloss": "six",
+      "audio": "/audio/garden/word-dcf86b3d02a198baf2f527b6917da57cc7430c9ee0cc683bc3411a33f6b899e3.wav"
+    },
+    {
+      "id": "listen",
+      "hanzi": "听",
+      "pinyin": "tīng",
+      "gloss": "listen",
+      "audio": "/audio/word-a8b213f08f35df6edd2291efa7dbb6fe6bbe2aee73b7f644e4301fbd3560ad19.wav"
+    },
+    {
+      "id": "garden.selected",
+      "hanzi": "已选",
+      "pinyin": "yǐ xuǎn",
+      "gloss": "selected",
+      "audio": "/audio/garden/word-908f12bd1b8d16742290f3dff12984347c2ce7e999ae7411e429919175a6f335.wav"
+    },
+    {
+      "id": "garden.before",
+      "hanzi": "原来",
+      "pinyin": "yuánlái",
+      "gloss": "before",
+      "audio": "/audio/garden/word-b837ca8325b33ceb2b43e4fb199adafeb89987109ee768b795615e6fc89baaab.wav"
+    },
+    {
+      "id": "garden.now",
+      "hanzi": "现在",
+      "pinyin": "xiànzài",
+      "gloss": "now",
+      "audio": "/audio/garden/word-5817d4a89147e97a388f16b51b2a63401909de9418b4b0ad0d6f75e523e57255.wav"
+    },
+    {
+      "id": "garden.pooled",
+      "hanzi": "积水",
+      "pinyin": "jīshuǐ",
+      "gloss": "pooled water",
+      "audio": "/audio/garden/word-6d37349e803bddbd28644013255e3486ae8395378bbbe940d3bbb95d690b1b74.wav"
+    },
+    {
+      "id": "garden.drooping",
+      "hanzi": "垂下来了",
+      "pinyin": "chuí xià lái le",
+      "gloss": "has drooped",
+      "audio": "/audio/garden/word-de7d66c97eef3e7858b53199861d6eefebf904dca1cf5630aa8fdabe637cb433.wav"
+    },
+    {
+      "id": "garden.ready",
+      "hanzi": "土湿了",
+      "pinyin": "tǔ shī le",
+      "gloss": "the soil is wet",
+      "audio": "/audio/garden/word-2beaa9d0db791aa6e889ab4e196257f122e088602153fd619f4de0c076e7194a.wav"
+    },
+    {
+      "id": "garden.moved",
+      "hanzi": "搬好了",
+      "pinyin": "bān hǎo le",
+      "gloss": "moved into place",
+      "audio": "/audio/garden/word-7313532652e85fdd97cae626587bdaf8a75b1f49e15bc0ae833023b3ce5b87f6.wav"
+    },
+    {
+      "id": "garden.shade-done",
+      "hanzi": "遮好了",
+      "pinyin": "zhē hǎo le",
+      "gloss": "shade is in place",
+      "audio": "/audio/garden/word-dc2b8f0aac0f7c6c8c494fdc18e341f432b805ffa3a26d203f5239c320e639d8.wav"
+    }
+  ],
+  "lines": [
+    {
+      "id": "garden.wet-warning",
+      "tokens": [
+        {
+          "id": "garden.soil",
+          "hanzi": "土",
+          "pinyin": "tǔ",
+          "gloss": "soil",
+          "audio": "/audio/garden/word-5b6b098b5cab9ae29a7e5e74141e9f42eac7cb7288581c7c7332b88fda595138.wav"
+        },
+        {
+          "id": "garden.still",
+          "hanzi": "还是",
+          "pinyin": "háishi",
+          "gloss": "still",
+          "audio": "/audio/garden/word-0135de542524c686ec51d7a11ff61605e23361060130938bd8738f9a978f4a7a.wav"
+        },
+        {
+          "id": "garden.wet",
+          "hanzi": "湿",
+          "pinyin": "shī",
+          "gloss": "wet",
+          "audio": "/audio/garden/word-852eb787b581ef88dd5821deef82c695eebf4619325792e1e7049eddb2bcaa02.wav"
+        },
+        {
+          "id": "garden.particle",
+          "hanzi": "的",
+          "pinyin": "de",
+          "gloss": "possessive or descriptive particle",
+          "audio": "/audio/garden/word-b7ed15dd64e9e9c683a3259434e499fc834316afd15d5ae76e3604ec821dcef2.wav"
+        },
+        {
+          "id": "garden.first",
+          "hanzi": "先",
+          "pinyin": "xiān",
+          "gloss": "first",
+          "audio": "/audio/garden/word-af500505f4c818aa314831b5ca895e111ed89cb9bfb8cc1eb490f44d00059ae8.wav"
+        },
+        {
+          "id": "dont",
+          "hanzi": "别",
+          "pinyin": "bié",
+          "gloss": "don't",
+          "audio": "/audio/word-5be08a42ea399b6c01acbe5b9f72e9dda89f775c839b721e451c55f1a23155de.wav"
+        },
+        {
+          "id": "garden.water-verb",
+          "hanzi": "浇水",
+          "pinyin": "jiāo shuǐ",
+          "gloss": "water plants",
+          "audio": "/audio/garden/word-86fc06193d4ace47b49476781d3e992792f988ff3ef5d44bdc3efe3a11d38592.wav"
+        }
+      ],
+      "audio": "/audio/garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav"
+    },
+    {
+      "id": "garden.dry-advice",
+      "tokens": [
+        {
+          "id": "garden.this",
+          "hanzi": "这",
+          "pinyin": "zhè",
+          "gloss": "this",
+          "audio": "/audio/garden/word-6f5e4c23b5fd88b31235b97156118b672ffc6dccfac0a6c63401e55127daf4b0.wav"
+        },
+        {
+          "id": "garden.pot",
+          "hanzi": "盆",
+          "pinyin": "pén",
+          "gloss": "pot",
+          "audio": "/audio/garden/word-2269bc3719e6e90ed53bbb67afd056717e9ebdbf4920874bfece2d2ef40c30c1.wav"
+        },
+        {
+          "id": "garden.soil",
+          "hanzi": "土",
+          "pinyin": "tǔ",
+          "gloss": "soil",
+          "audio": "/audio/garden/word-5b6b098b5cab9ae29a7e5e74141e9f42eac7cb7288581c7c7332b88fda595138.wav"
+        },
+        {
+          "id": "garden.dry",
+          "hanzi": "干",
+          "pinyin": "gān",
+          "gloss": "dry",
+          "audio": "/audio/garden/word-6a32f93cc8191f66f85ecbf682da2bf0158c57a38078884d0e51c2110b9f3700.wav"
+        },
+        {
+          "id": "le",
+          "hanzi": "了",
+          "pinyin": "le",
+          "gloss": "completed action particle",
+          "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+        },
+        {
+          "id": "garden.pour",
+          "hanzi": "浇",
+          "pinyin": "jiāo",
+          "gloss": "pour water",
+          "audio": "/audio/garden/word-31c04a1b45828cd0b9aa67a82f263cc498e2478bc444adb3b3a08a7125d95498.wav"
+        },
+        {
+          "id": "garden.little",
+          "hanzi": "一点",
+          "pinyin": "yīdiǎn",
+          "gloss": "a little",
+          "audio": "/audio/garden/word-3281ea7858459ba0c115b0e9b7dfe6f37f33fac9ae8f16a87688ecb0ac84c401.wav"
+        },
+        {
+          "id": "garden.water",
+          "hanzi": "水",
+          "pinyin": "shuǐ",
+          "gloss": "water",
+          "audio": "/audio/garden/word-1fe33bbc755214e1f6e9798012007d41eadcff0d7648c5838e99be7ab398d163.wav"
+        }
+      ],
+      "audio": "/audio/garden/line-c686ce578b68292f0f70784b43dd8dbf7989e1dbf9c4ad925445822942220c3b.wav"
+    },
+    {
+      "id": "garden.shade-advice",
+      "tokens": [
+        {
+          "id": "garden.ba",
+          "hanzi": "把",
+          "pinyin": "bǎ",
+          "gloss": "marks the object of an action",
+          "audio": "/audio/garden/word-0044f163327f187ca35e55e72f38874539909251c73516a453dd64c84f14a6bc.wav"
+        },
+        {
+          "id": "garden.flower",
+          "hanzi": "花",
+          "pinyin": "huā",
+          "gloss": "flower",
+          "audio": "/audio/garden/word-f09891fbd72f69038f845e71f9fd794d4db3fc1705683977741a64547dcabb23.wav"
+        },
+        {
+          "id": "garden.put",
+          "hanzi": "放",
+          "pinyin": "fàng",
+          "gloss": "put",
+          "audio": "/audio/garden/word-e64f12a5d84b2759b095946a9f7936de0ba48be5dd3b28e549f15e96e0daa824.wav"
+        },
+        {
+          "id": "garden.at",
+          "hanzi": "在",
+          "pinyin": "zài",
+          "gloss": "at; in",
+          "audio": "/audio/garden/word-d6372f4994466ff1ae8c580244270539eff72d788f633a135c50d0ab36d27995.wav"
+        },
+        {
+          "id": "garden.shade",
+          "hanzi": "阴凉",
+          "pinyin": "yīnliáng",
+          "gloss": "shade; cool and sheltered",
+          "audio": "/audio/garden/word-6be1b7c34d97cf85a69e227da869f1d6645039aee032cef1ecd60f4d0ef320e8.wav"
+        },
+        {
+          "id": "garden.particle",
+          "hanzi": "的",
+          "pinyin": "de",
+          "gloss": "possessive or descriptive particle",
+          "audio": "/audio/garden/word-b7ed15dd64e9e9c683a3259434e499fc834316afd15d5ae76e3604ec821dcef2.wav"
+        },
+        {
+          "id": "garden.place",
+          "hanzi": "地方",
+          "pinyin": "dìfang",
+          "gloss": "place",
+          "audio": "/audio/garden/word-c79090b6babecdc298ae4ff68f457499cc391e001722d94fa12c77212a620784.wav"
+        }
+      ],
+      "audio": "/audio/garden/line-3125a7aba176c3d13785023d1b928ad0464fbc088c698e8662b41d5be4cb76ce.wav"
+    },
+    {
+      "id": "garden.rain-advice",
+      "tokens": [
+        {
+          "id": "garden.today",
+          "hanzi": "今天",
+          "pinyin": "jīntiān",
+          "gloss": "today",
+          "audio": "/audio/garden/word-28c33b5b14d27e18efd935caf81ef575386b60e7c8fc6589bd167363012589b1.wav"
+        },
+        {
+          "id": "garden.rain",
+          "hanzi": "下雨",
+          "pinyin": "xià yǔ",
+          "gloss": "rain",
+          "audio": "/audio/garden/word-09960b18e73b5fc44f514f89525d70bddac9614a96581ee18878cbdfa780b283.wav"
+        },
+        {
+          "id": "garden.no-need",
+          "hanzi": "不用",
+          "pinyin": "bú yòng",
+          "gloss": "no need to",
+          "audio": "/audio/garden/word-fac0164550893d6cf7c257af5cd4a8b3d1461b842790024a00b42518275268b5.wav"
+        },
+        {
+          "id": "garden.water-verb",
+          "hanzi": "浇水",
+          "pinyin": "jiāo shuǐ",
+          "gloss": "water plants",
+          "audio": "/audio/garden/word-86fc06193d4ace47b49476781d3e992792f988ff3ef5d44bdc3efe3a11d38592.wav"
+        }
+      ],
+      "audio": "/audio/garden/line-9dd2d735c288f33afe9803c894d817af72b82578925051f8ed2513e157b4c3b1.wav"
+    },
+    {
+      "id": "garden.extra-result",
+      "tokens": [
+        {
+          "id": "garden.water",
+          "hanzi": "水",
+          "pinyin": "shuǐ",
+          "gloss": "water",
+          "audio": "/audio/garden/word-1fe33bbc755214e1f6e9798012007d41eadcff0d7648c5838e99be7ab398d163.wav"
+        },
+        {
+          "id": "garden.too-much",
+          "hanzi": "太多",
+          "pinyin": "tài duō",
+          "gloss": "too much",
+          "audio": "/audio/garden/word-3d7ffd4c484bbe6e16f4214acf06651d64da9c024b9ee1faf432746118b4f6eb.wav"
+        },
+        {
+          "id": "le",
+          "hanzi": "了",
+          "pinyin": "le",
+          "gloss": "completed action particle",
+          "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+        },
+        {
+          "id": "tomorrow",
+          "hanzi": "明天",
+          "pinyin": "míngtiān",
+          "gloss": "tomorrow",
+          "audio": "/audio/word-9b5989153cc3e2163b827b05dd634a14260068f1103ccf09c897650cfa6e92ea.wav"
+        },
+        {
+          "id": "again",
+          "hanzi": "再",
+          "pinyin": "zài",
+          "gloss": "again",
+          "audio": "/audio/word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav"
+        },
+        {
+          "id": "look",
+          "hanzi": "看看",
+          "pinyin": "kànkan",
+          "gloss": "take a look",
+          "audio": "/audio/word-4d253f356b3a9045ad43aa48d02890cb6eb7f37f4051b46c45561259a4657f77.wav"
+        }
+      ],
+      "audio": "/audio/garden/line-bc72bf497b3379d64e1a92171c8f25986f3c8e84b27c9e983f645d92d995ecc8.wav"
+    },
+    {
+      "id": "garden.growth-result",
+      "tokens": [
+        {
+          "id": "garden.than",
+          "hanzi": "比",
+          "pinyin": "bǐ",
+          "gloss": "compared with",
+          "audio": "/audio/garden/word-e0d55dddafa8c4d2dc13988c417a31b0ee3738c678c9ca2ee9998c7dfb76ef83.wav"
+        },
+        {
+          "id": "garden.yesterday",
+          "hanzi": "昨天",
+          "pinyin": "zuótiān",
+          "gloss": "yesterday",
+          "audio": "/audio/garden/word-26be5fcc24fd88cb1330d35dcda7ac2dbed404c2b8dde76574f78706c587820c.wav"
+        },
+        {
+          "id": "garden.tall",
+          "hanzi": "高",
+          "pinyin": "gāo",
+          "gloss": "tall",
+          "audio": "/audio/garden/word-19daa595cb7d41d08ad11323a39e9c37ffdc96eedca5c320319f26ce49b79f24.wav"
+        },
+        {
+          "id": "garden.little",
+          "hanzi": "一点",
+          "pinyin": "yīdiǎn",
+          "gloss": "a little",
+          "audio": "/audio/garden/word-3281ea7858459ba0c115b0e9b7dfe6f37f33fac9ae8f16a87688ecb0ac84c401.wav"
+        },
+        {
+          "id": "le",
+          "hanzi": "了",
+          "pinyin": "le",
+          "gloss": "completed action particle",
+          "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+        }
+      ],
+      "audio": "/audio/garden/line-a00e19fb6fd7917efaf080a2e4c986d10c77627dd24af902cfaeb9d0a58a009f.wav"
+    },
+    {
+      "id": "garden.mature-result",
+      "tokens": [
+        {
+          "id": "garden.flower",
+          "hanzi": "花",
+          "pinyin": "huā",
+          "gloss": "flower",
+          "audio": "/audio/garden/word-f09891fbd72f69038f845e71f9fd794d4db3fc1705683977741a64547dcabb23.wav"
+        },
+        {
+          "id": "garden.bloom",
+          "hanzi": "开",
+          "pinyin": "kāi",
+          "gloss": "open; bloom",
+          "audio": "/audio/garden/word-151398bbcfb310e3ded034c226143c8f104f3ca112c490c23b68847198509f25.wav"
+        },
+        {
+          "id": "le",
+          "hanzi": "了",
+          "pinyin": "le",
+          "gloss": "completed action particle",
+          "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+        },
+        {
+          "id": "garden.bird",
+          "hanzi": "小鸟",
+          "pinyin": "xiǎoniǎo",
+          "gloss": "little bird",
+          "audio": "/audio/garden/word-2b9f8434c10c079e90477668ea870af3d61ef5dffe2f2cc93275060248c9aedf.wav"
+        },
+        {
+          "id": "garden.also",
+          "hanzi": "也",
+          "pinyin": "yě",
+          "gloss": "also",
+          "audio": "/audio/garden/word-a61ecce872fb7729280946a79f82f8da81dfed0439c3415526fa849bd98d5262.wav"
+        },
+        {
+          "id": "bring",
+          "hanzi": "来",
+          "pinyin": "lái",
+          "gloss": "bring; come",
+          "audio": "/audio/word-ed529f5d1bf010905a815ac250dc4c043f1f704e66accb8731753957b1971f28.wav"
+        },
+        {
+          "id": "le",
+          "hanzi": "了",
+          "pinyin": "le",
+          "gloss": "completed action particle",
+          "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+        }
+      ],
+      "audio": "/audio/garden/line-94071bc83fe7641966cc896d246319a6c75345dcea1a620f270acadab78a9f7d.wav"
+    },
+    {
+      "id": "garden.day-help",
+      "tokens": [
+        {
+          "id": "garden.shop",
+          "hanzi": "小馆",
+          "pinyin": "xiǎoguǎn",
+          "gloss": "small restaurant",
+          "audio": "/audio/garden/word-fa375c6ef1c493512d61b1948dcc36cb1d05c5ef971ce51da0114bf45b3adf0a.wav"
+        },
+        {
+          "id": "garden.working",
+          "hanzi": "忙完",
+          "pinyin": "máng wán",
+          "gloss": "finish work",
+          "audio": "/audio/garden/word-be079dd0f98046102532e203c8875ecd4ad59bf8835ec5a6025d1e3b84ce5b23.wav"
+        },
+        {
+          "id": "tomorrow",
+          "hanzi": "明天",
+          "pinyin": "míngtiān",
+          "gloss": "tomorrow",
+          "audio": "/audio/word-9b5989153cc3e2163b827b05dd634a14260068f1103ccf09c897650cfa6e92ea.wav"
+        },
+        {
+          "id": "garden.then",
+          "hanzi": "再来",
+          "pinyin": "zài lái",
+          "gloss": "come again",
+          "audio": "/audio/garden/word-b643917736e97e48b9f054e6680743dd8e7b9fbf4567ba938879c52b37e4df9a.wav"
+        }
+      ],
+      "audio": "/audio/garden/line-2cea4d50190cb01e1a44e330696dd7124a5c1ab61dece866b1f7fbe6c1aa0291.wav"
+    },
+    {
+      "id": "garden.select-help",
+      "tokens": [
+        {
+          "id": "garden.select",
+          "hanzi": "选",
+          "pinyin": "xuǎn",
+          "gloss": "select",
+          "audio": "/audio/garden/word-e9faaadca453013d7dcc7badb693bfa375ecaa0ed2005b933310c1db3501023f.wav"
+        },
+        {
+          "id": "garden.pot",
+          "hanzi": "盆",
+          "pinyin": "pén",
+          "gloss": "pot",
+          "audio": "/audio/garden/word-2269bc3719e6e90ed53bbb67afd056717e9ebdbf4920874bfece2d2ef40c30c1.wav"
+        },
+        {
+          "id": "again",
+          "hanzi": "再",
+          "pinyin": "zài",
+          "gloss": "again",
+          "audio": "/audio/word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav"
+        },
+        {
+          "id": "garden.select",
+          "hanzi": "选",
+          "pinyin": "xuǎn",
+          "gloss": "select",
+          "audio": "/audio/garden/word-e9faaadca453013d7dcc7badb693bfa375ecaa0ed2005b933310c1db3501023f.wav"
+        },
+        {
+          "id": "garden.empty",
+          "hanzi": "空位",
+          "pinyin": "kōngwèi",
+          "gloss": "empty space",
+          "audio": "/audio/garden/word-510d8181a824d15090e6c697b31408183c1777d1ae33f8bcaf6bb2c78d5aba0c.wav"
+        }
+      ],
+      "audio": "/audio/garden/line-c61aedfc4ce042069a0a01ddbba2f4dc50559dd85b1faf06c96888082a540afe.wav"
+    },
+    {
+      "id": "garden.shade-help",
+      "tokens": [
+        {
+          "id": "garden.select",
+          "hanzi": "选",
+          "pinyin": "xuǎn",
+          "gloss": "select",
+          "audio": "/audio/garden/word-e9faaadca453013d7dcc7badb693bfa375ecaa0ed2005b933310c1db3501023f.wav"
+        },
+        {
+          "id": "garden.empty",
+          "hanzi": "空位",
+          "pinyin": "kōngwèi",
+          "gloss": "empty space",
+          "audio": "/audio/garden/word-510d8181a824d15090e6c697b31408183c1777d1ae33f8bcaf6bb2c78d5aba0c.wav"
+        },
+        {
+          "id": "garden.put",
+          "hanzi": "放",
+          "pinyin": "fàng",
+          "gloss": "put",
+          "audio": "/audio/garden/word-e64f12a5d84b2759b095946a9f7936de0ba48be5dd3b28e549f15e96e0daa824.wav"
+        },
+        {
+          "id": "garden.shade-screen",
+          "hanzi": "遮阳架",
+          "pinyin": "zhēyángjià",
+          "gloss": "sunshade",
+          "audio": "/audio/garden/word-d600871031183c49e75cbf29125336a81285d507e3781665a99008338beaf561.wav"
+        }
+      ],
+      "audio": "/audio/garden/line-48aacdeab5f7e8a7335c3864d4c9c3187dcf7880a85b7b9a40f55b9b7151c9ce.wav"
+    },
+    {
+      "id": "garden.wait-help",
+      "tokens": [
+        {
+          "id": "garden.first",
+          "hanzi": "先",
+          "pinyin": "xiān",
+          "gloss": "first",
+          "audio": "/audio/garden/word-af500505f4c818aa314831b5ca895e111ed89cb9bfb8cc1eb490f44d00059ae8.wav"
+        },
+        {
+          "id": "garden.wait",
+          "hanzi": "等一等",
+          "pinyin": "děng yi děng",
+          "gloss": "wait a little",
+          "audio": "/audio/garden/word-1495ade9cf0e91483b39dfef1011e5ccfba48c5595ebe91308145406754530b9.wav"
+        },
+        {
+          "id": "tomorrow",
+          "hanzi": "明天",
+          "pinyin": "míngtiān",
+          "gloss": "tomorrow",
+          "audio": "/audio/word-9b5989153cc3e2163b827b05dd634a14260068f1103ccf09c897650cfa6e92ea.wav"
+        },
+        {
+          "id": "again",
+          "hanzi": "再",
+          "pinyin": "zài",
+          "gloss": "again",
+          "audio": "/audio/word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav"
+        },
+        {
+          "id": "look",
+          "hanzi": "看看",
+          "pinyin": "kànkan",
+          "gloss": "take a look",
+          "audio": "/audio/word-4d253f356b3a9045ad43aa48d02890cb6eb7f37f4051b46c45561259a4657f77.wav"
+        }
+      ],
+      "audio": "/audio/garden/line-ce36743c91d7ca45682de08e7b0d48f58657df6eff2b8bc3dddfc523e5a49ddf.wav"
+    },
+    {
+      "id": "garden.rest-result",
+      "tokens": [
+        {
+          "id": "garden.first",
+          "hanzi": "先",
+          "pinyin": "xiān",
+          "gloss": "first",
+          "audio": "/audio/garden/word-af500505f4c818aa314831b5ca895e111ed89cb9bfb8cc1eb490f44d00059ae8.wav"
+        },
+        {
+          "id": "garden.rest",
+          "hanzi": "歇一歇",
+          "pinyin": "xiē yi xiē",
+          "gloss": "rest a little",
+          "audio": "/audio/garden/word-a5bf3da31ddaf0bed9c8247298e1d81622a7c16e7f8ee98c7e5689af37b3e7bb.wav"
+        },
+        {
+          "id": "tomorrow",
+          "hanzi": "明天",
+          "pinyin": "míngtiān",
+          "gloss": "tomorrow",
+          "audio": "/audio/word-9b5989153cc3e2163b827b05dd634a14260068f1103ccf09c897650cfa6e92ea.wav"
+        },
+        {
+          "id": "again",
+          "hanzi": "再",
+          "pinyin": "zài",
+          "gloss": "again",
+          "audio": "/audio/word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav"
+        },
+        {
+          "id": "look",
+          "hanzi": "看看",
+          "pinyin": "kànkan",
+          "gloss": "take a look",
+          "audio": "/audio/word-4d253f356b3a9045ad43aa48d02890cb6eb7f37f4051b46c45561259a4657f77.wav"
+        }
+      ],
+      "audio": "/audio/garden/line-4719b9919a41cc0e925411d4731f35eaa6913df3166c033ea094b0beadb19f3e.wav"
+    },
+    {
+      "id": "garden.shade-result",
+      "tokens": [
+        {
+          "id": "garden.hot",
+          "hanzi": "天热",
+          "pinyin": "tiān rè",
+          "gloss": "hot weather",
+          "audio": "/audio/garden/word-aa30ec4a786814be786ecb900e80900ee03f4f62b7f5aa86839ccbbeb1b6bdf4.wav"
+        },
+        {
+          "id": "garden.ba",
+          "hanzi": "把",
+          "pinyin": "bǎ",
+          "gloss": "marks the object of an action",
+          "audio": "/audio/garden/word-0044f163327f187ca35e55e72f38874539909251c73516a453dd64c84f14a6bc.wav"
+        },
+        {
+          "id": "garden.flower",
+          "hanzi": "花",
+          "pinyin": "huā",
+          "gloss": "flower",
+          "audio": "/audio/garden/word-f09891fbd72f69038f845e71f9fd794d4db3fc1705683977741a64547dcabb23.wav"
+        },
+        {
+          "id": "garden.put",
+          "hanzi": "放",
+          "pinyin": "fàng",
+          "gloss": "put",
+          "audio": "/audio/garden/word-e64f12a5d84b2759b095946a9f7936de0ba48be5dd3b28e549f15e96e0daa824.wav"
+        },
+        {
+          "id": "garden.at",
+          "hanzi": "在",
+          "pinyin": "zài",
+          "gloss": "at; in",
+          "audio": "/audio/garden/word-d6372f4994466ff1ae8c580244270539eff72d788f633a135c50d0ab36d27995.wav"
+        },
+        {
+          "id": "garden.shade",
+          "hanzi": "阴凉",
+          "pinyin": "yīnliáng",
+          "gloss": "shade; cool and sheltered",
+          "audio": "/audio/garden/word-6be1b7c34d97cf85a69e227da869f1d6645039aee032cef1ecd60f4d0ef320e8.wav"
+        },
+        {
+          "id": "garden.particle",
+          "hanzi": "的",
+          "pinyin": "de",
+          "gloss": "possessive or descriptive particle",
+          "audio": "/audio/garden/word-b7ed15dd64e9e9c683a3259434e499fc834316afd15d5ae76e3604ec821dcef2.wav"
+        },
+        {
+          "id": "garden.place",
+          "hanzi": "地方",
+          "pinyin": "dìfang",
+          "gloss": "place",
+          "audio": "/audio/garden/word-c79090b6babecdc298ae4ff68f457499cc391e001722d94fa12c77212a620784.wav"
+        }
+      ],
+      "audio": "/audio/garden/line-acdfe74a12a9984f5e9918aebba8e90f12fdf6941eb78ed60303320ea810105e.wav"
+    }
+  ],
+  "labels": {
+    "soil": "garden.soil",
+    "still": "garden.still",
+    "wet": "garden.wet",
+    "particle": "garden.particle",
+    "first": "garden.first",
+    "dont": "dont",
+    "water-verb": "garden.water-verb",
+    "pour": "garden.pour",
+    "this": "garden.this",
+    "pot": "garden.pot",
+    "dry": "garden.dry",
+    "change": "le",
+    "little": "garden.little",
+    "water": "garden.water",
+    "ba": "garden.ba",
+    "flower": "garden.flower",
+    "put": "garden.put",
+    "at": "garden.at",
+    "shade": "garden.shade",
+    "place": "garden.place",
+    "today": "garden.today",
+    "rain": "garden.rain",
+    "no-need": "garden.no-need",
+    "too-much": "garden.too-much",
+    "tomorrow": "tomorrow",
+    "again": "again",
+    "look": "look",
+    "than": "garden.than",
+    "yesterday": "garden.yesterday",
+    "tall": "garden.tall",
+    "bloom": "garden.bloom",
+    "bird": "garden.bird",
+    "also": "garden.also",
+    "come": "bring",
+    "roof": "garden.roof",
+    "garden": "garden.garden",
+    "lin": "garden.lin",
+    "climber": "garden.climber",
+    "tree": "garden.tree",
+    "clear": "garden.clear",
+    "hot": "garden.hot",
+    "tidy": "garden.tidy",
+    "crates": "garden.crates",
+    "return": "garden.return",
+    "shade-screen": "garden.shade-screen",
+    "cancel": "garden.cancel",
+    "select": "garden.select",
+    "empty": "garden.empty",
+    "move": "garden.move",
+    "observe": "garden.observe",
+    "wait": "garden.wait",
+    "anyway": "garden.anyway",
+    "keep-waiting": "garden.keep-waiting",
+    "recover": "garden.recover",
+    "rest": "garden.rest",
+    "grown": "garden.grown",
+    "planter": "garden.planter",
+    "home": "garden.home",
+    "next-day": "garden.next-day",
+    "working": "garden.working",
+    "shop": "garden.shop",
+    "then": "garden.then",
+    "bench": "garden.bench",
+    "one": "one",
+    "two": "garden.two",
+    "three": "three",
+    "four": "garden.four",
+    "five": "garden.five",
+    "six": "garden.six",
+    "listen": "listen",
+    "selected": "garden.selected",
+    "before": "garden.before",
+    "now": "garden.now",
+    "pooled": "garden.pooled",
+    "drooping": "garden.drooping",
+    "ready": "garden.ready",
+    "moved": "garden.moved",
+    "shade-done": "garden.shade-done"
+  }
+}

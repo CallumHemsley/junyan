@@ -1,0 +1,73 @@
+{
+  "generator_version": "content-audio-v1",
+  "kind": "line",
+  "text": "灯泡松了。",
+  "voice": {
+    "engine": "qwen",
+    "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+    "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+    "speaker": "Serena",
+    "language": "Chinese",
+    "speed": 1,
+    "instructions": null
+  },
+  "pronunciation": {
+    "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+    "authored_pinyin": [
+      "dēngpào",
+      "sōng",
+      "le"
+    ]
+  },
+  "content_digest": "fe6cde0c82cc4b5be38b2df01bec2f50881f6b502dcf73d536da2d535aede85f",
+  "filename": "repairs/line-lamp-loose.wav",
+  "voice_ids": [
+    "serena"
+  ],
+  "sha256": "d664d16e78f12b6a68a2fc6bf043a00b2916869cf4d106b1c16925a94c4206e2",
+  "created_at": "2026-11-05T23:06:23.786543+00:00",
+  "attempts": [
+    {
+      "seed": 4268547596,
+      "accepted": true
+    }
+  ],
+  "generation_seconds": 0.6900750840432011,
+  "packages": {
+    "mlx-audio": "0.6.3",
+    "mlx": "0.32.4",
+    "numpy": "2.5.4",
+    "soundfile": "0.14.0",
+    "transformers": "5.22.1",
+    "huggingface-hub": "2.4.0"
+  },
+  "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+  "raw_metrics": {
+    "sample_rate": 24000,
+    "samples": 38400,
+    "duration_seconds": 1.6,
+    "peak_absolute": 0.6508210301399231,
+    "rms": 0.07330465226189686
+  },
+  "wav_metrics": {
+    "sample_rate": 24000,
+    "samples": 38400,
+    "duration_seconds": 1.6,
+    "peak_absolute": 0.65081787109375,
+    "rms": 0.07330466782882726
+  },
+  "engine_details": {
+    "token_count": 20,
+    "max_tokens": 144,
+    "settings": {
+      "temperature": 0.9,
+      "top_k": 50,
+      "top_p": 1.0,
+      "repetition_penalty": 1.05,
+      "stream": false,
+      "verbose": false
+    }
+  },
+  "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+  "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+}

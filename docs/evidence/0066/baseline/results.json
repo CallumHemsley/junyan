@@ -1,0 +1,193 @@
+{
+  "command": "PATH=/workspace/.junyan-tools/node_modules/node/bin:$PATH JUNYAN_BROWSER_PATH=/usr/bin/chromium pnpm --config.verify-deps-before-run=false exec playwright test e2e/waiter.spec.ts e2e/word-switch.spec.ts --config playwright.neighbourhood.config.ts --grep 'wake in the ward|development:|hospital words|kitchen, tray|rapid keyboard'",
+  "sourceCommit": "16f5ba1",
+  "sourceHashes": {
+    "src/contracts.ts": "1ca9bc27105ec6e78767be2fb5e2f74b729b705fb2c9febf40c9f216bacc62f7",
+    "src/content/index.ts": "fc79dd31233047879cf7fdf5bba334a34c904837895967331ec36c6048a5c075",
+    "src/content/words.ts": "7eccb5358d90295002a33ab1b2c1a302d6438a67b83789a81feb7a41b2c253ab",
+    "src/neighbourhood/content.ts": "deb3a964da96ab950333a914073aeeee1a120bbb0270606a94268e87d048a46a",
+    "src/neighbourhood/content.test.ts": "6a97f5babf3fa70ff4899a3c1dc00c42c1a2ffefe9fb30416c4280e179d09833",
+    "playwright.neighbourhood.config.ts": "3e56ba0bd06881f01ff421764458d78750896b3514e91642d8af1c4fd6262698",
+    "src/App.tsx": "eb4793a4e5b7178ab7fd5685a188ab59f111ad052256434b2d54a3a8cae22e06",
+    "src/WordToken.tsx": "46db924be9a70bdca54f9d2b34beb942726b41fb0b543861a79cf7336816c427",
+    "src/style.css": "6b4022e4e553f1372902575efb6753ba33e9293087f19fa99d879f2ecab1139d"
+  },
+  "scope": "Current-main original hospital/restaurant journey and affected development word-card checks. Production word-card cases were excluded from this development server. No neighbourhood views are wired.",
+  "stats": {
+    "startTime": "2026-11-05T19:26:57.134Z",
+    "duration": 126960.936,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "specs": [
+    {
+      "title": "wake in the ward, then collect, recall, deliver, give change, journal, and progress",
+      "tests": [
+        {
+          "projectName": "desktop",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 40121,
+              "errors": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "wake in the ward, then collect, recall, deliver, give change, journal, and progress",
+      "tests": [
+        {
+          "projectName": "phone",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 37967,
+              "errors": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "development: Help and restaurant switch directly with top-only Escape",
+      "tests": [
+        {
+          "projectName": "desktop",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4010,
+              "errors": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "hospital words switch without advancing the opening",
+      "tests": [
+        {
+          "projectName": "desktop",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3841,
+              "errors": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "kitchen, tray, journal and receipt sources keep switching",
+      "tests": [
+        {
+          "projectName": "desktop",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7627,
+              "errors": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "rapid keyboard/pointer selection records once and cancels prior native audio",
+      "tests": [
+        {
+          "projectName": "desktop",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4201,
+              "errors": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "development: Help and restaurant switch directly with top-only Escape",
+      "tests": [
+        {
+          "projectName": "phone",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4813,
+              "errors": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "hospital words switch without advancing the opening",
+      "tests": [
+        {
+          "projectName": "phone",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4402,
+              "errors": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "kitchen, tray, journal and receipt sources keep switching",
+      "tests": [
+        {
+          "projectName": "phone",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 10740,
+              "errors": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "rapid keyboard/pointer selection records once and cancels prior native audio",
+      "tests": [
+        {
+          "projectName": "phone",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4963,
+              "errors": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "port": 5466,
+  "serverCommand": "node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 5466 --strictPort",
+  "serverPid": 14865,
+  "cleanup": "Playwright completed and its owned strict-port server exited.",
+  "console": "Both original journey cases assert no pageerror or console error.",
+  "visualInspection": "Desktop and phone restaurant and journal images inspected. No horizontal overflow; phone journal scrolls within modal.",
+  "releasedMainAncestor": "5c90ba4b7421755fee3dd5d12e777f70dd34f226"
+}

@@ -15,7 +15,7 @@ Baseline inspected 2026-11-05: remote main `66ac123fa377f0cdbfb30f5c8bad07edf287
 Branches use `codex/NNNN-slug`; each writer creates its own cloud checkout. No dependencies change. All four features only; no postperson or coffee shop implementation. The human now authorizes central coordinated merges after independent review, full verification and polish. Feature leads deliver ready PRs; only the central lead lands them and verifies main afterward. No manual deployments.
 
 ## Existing leases
-0061 currently edits App.tsx/word-card focus; 0063 awaits that lease for ambience integration. 0058/0060/0062 own shared voice/content work; 0059 owns ward renderer. 0066 may build isolated foundation files now but MUST wait for explicit lease handoff before changing overlapping files. Parent must relay handoffs: this runtime has no send-message-to-thread tool. Do not overwrite their work or assume main contains their PRs.
+Current shared ownership, 2026-11-05. Ticket 0063 merged at `74b81952` and released App, styles, and foreground playback. Ticket 0071 merged at `196f88c` with both cumulative-earnings labels complete, so 0066 is now the sole shared integration writer. Ticket 0062 merged at `cdb8498` and closed the existing content, voices, manifest, and clip lease. Preserve all 126 accepted existing WAV files and current presets. Ticket 0060 merged the selected Grandpa A six-clip atomic import and three ward pose lines at `dd3cc11`; its existing content, voices, manifest, and ward lease is closed. The integration branch preserves this accepted import and all other existing audio. Ticket 0072's served-food implementation merged as `bca768d`; the restaurant renderer stays maintenance-owned. Keep the accepted single ambience owner, default level .35, foreground/background gains .042/.1575, and actual-location restaurant presence. The four namespaced feature voice inventories still lack 278 real clips; no substitution or completed offline-voice claim is permitted.
 
 ## Minimal integration contract v1
 
@@ -50,3 +50,14 @@ Every completed feature needs pure Vitest tests, build, existing opening→3+ cu
 - `/root/coordination_review`: independent no-edit design review, inherited lead model.
 - `/root/cloud_audio_probe`: read-only cloud synthesis capability check, requested gpt-6.1-sol medium.
 All received the updated conditional merge authority and quality policy. Progress review threshold is 30 minutes without a commit or concrete evidence, excluding explicit lease waits.
+
+## Maintenance craft allocations, 2026-11-05
+
+Remote branch inspection still ends at 0070. Central owner reserves exactly two requested follow-ups. These refine existing restaurant craft and do not add a fifth feature or new economy.
+
+| Ticket | Owner | Branch | Port | Files and dependencies |
+|---|---|---|---|---|
+|0071|central lead assigns one Sol Medium writer after 0063 App handoff|codex/0071-cumulative-earnings-label|5471|App summary label and focused regression only; no earnings/save changes; serialize with 0066|
+|0072|maintenance lead and one Sol Medium writer|codex/0072-served-food-props|5472|src/scene/restaurant-scene.js and focused scene tests/evidence; exclusive lease granted for this scene file; shared SceneFrame typing through 0066 only|
+
+0072 uses representative food/drink from actual order data and existing drawing primitives. Existing orders are already available to the scene adapter; inspect before requesting a type change. The separate restaurant renderer and ward stay outside this lease. 0071 labels the existing lifetime total explicitly; it does not reset earnings per day.

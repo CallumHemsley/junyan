@@ -88,7 +88,7 @@ test("day summary blocks movement and interaction shortcuts", async ({ page }) =
   await expect(page.getByRole("button", { name: "明天见" })).toBeFocused();
   await page.keyboard.press("Escape");
   await page.keyboard.press("Shift+Tab");
-  await expect(page.getByRole("button", { name: "明天见" })).toBeFocused();
+  await expect(page.getByRole("button", { name: "回家看看" })).toBeFocused();
 });
 
 test("kitchen closes back to the original table trigger after walking", async ({ page }) => {
@@ -128,11 +128,17 @@ test("keyboard journey keeps named controls and focus across a full day", async 
       await activate(page, word);
       const card = page.getByRole("dialog", { name: /的意思$/ });
       await expect(card.getByRole("button", { name: "关闭词卡" })).toBeFocused();
-      await expect(page.locator(".modal-backdrop")).toHaveAttribute("inert", "");
+      await expect(page.locator(".modal-backdrop")).not.toHaveAttribute("inert", "");
+      await expect(page.locator("main")).toHaveAttribute("inert", "");
+      const sourceWords = dialog.locator("[data-word-lookup]");
       await page.keyboard.press("Shift+Tab");
-      await expect(card.getByRole("button", { name: "听这个词" })).toBeFocused();
+      await expect(sourceWords.last()).toBeFocused();
       await page.keyboard.press("Tab");
       await expect(card.getByRole("button", { name: "关闭词卡" })).toBeFocused();
+      await page.keyboard.press("Tab");
+      await expect(card.getByRole("button", { name: "听这个词" })).toBeFocused();
+      await page.keyboard.press("Tab");
+      await expect(sourceWords.first()).toBeFocused();
       await page.screenshot({ path: `output/playwright/0037/${info.project.name}-word-card.png`, fullPage: true });
       await page.keyboard.press("Escape");
       await expect(word).toBeFocused();
@@ -155,13 +161,20 @@ test("keyboard journey keeps named controls and focus across a full day", async 
     }
     await activate(page, dialog.getByRole("button", { name: "递上找零" }));
     await expect(dialog.locator(".thanks-chop")).toBeVisible();
+    const continueServing = dialog.getByRole("button", { name: "继续招呼" });
+    await expect(continueServing).toBeFocused();
     await expect.poll(() => dialog.evaluate((element) => element.contains(document.activeElement))).toBe(true);
-    await activate(page, dialog.getByRole("button", { name: "继续招呼" }));
+    const receiptWord = dialog.locator(".receipt [data-word-lookup]").first();
+    await activate(page, receiptWord);
+    await expect(page.getByRole("button", { name: "关闭词卡" })).toBeFocused();
+    await page.keyboard.press("Escape");
+    await expect(receiptWord).toBeFocused();
+    await activate(page, continueServing);
   }
   const summary = page.getByRole("dialog", { name: "今日小结" });
   await expect(summary.getByRole("button", { name: "明天见" })).toBeFocused();
   await page.keyboard.press("Tab");
-  await expect(summary.getByRole("button", { name: "明天见" })).toBeFocused();
+  await expect(summary.getByRole("button", { name: "回家看看" })).toBeFocused();
   await page.screenshot({ path: `output/playwright/0037/${info.project.name}-summary.png`, fullPage: true });
   await activate(page, summary.getByRole("button", { name: "明天见" }));
   expect((await snapshot(page)).state.day).toBe(2);

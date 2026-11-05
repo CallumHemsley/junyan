@@ -21,10 +21,11 @@ export function contentLines(content: Content): (Line | Phrase)[] {
     ...content.orders.map(order => order.line), content.thanks, content.retry,
     ...content.characters.flatMap(character => [character.greeting, character.thanks, character.retry]),
     ...content.opening.steps.flatMap(stepPhrases),
+    ...(content.neighbourhood?.lines ?? []),
   ];
 }
 
 export function contentWords(content: Content): Word[] {
   const replyWords = content.opening.steps.flatMap(step => step.type === 'reply' ? step.options.map(option => option.word) : []);
-  return [...content.foods.map(food => food.word), ...contentLines(content).flatMap(line => line.tokens), ...replyWords];
+  return [...content.foods.map(food => food.word), ...contentLines(content).flatMap(line => line.tokens), ...replyWords, ...(content.neighbourhood?.words ?? [])];
 }

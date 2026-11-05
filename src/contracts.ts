@@ -1,3 +1,5 @@
+import type { NeighbourhoodState } from "./neighbourhood/model";
+
 export type Position = { x: number; y: number };
 export type Word = {
   id: string;
@@ -43,6 +45,7 @@ export type Character = {
   retry: Line;
 };
 export type Content = {
+  neighbourhood?: { words: Word[]; lines: (Line & { text?: string })[] };
   help: {
     welcome: Line;
     lookup: Line;
@@ -60,6 +63,7 @@ export type Phase = "seated" | "ordered" | "checkout" | "served";
 export type Customer = { table: number; orderId: string; phase: Phase };
 export type JournalEntry = { lookups: number; lastSeen: number; recovered: boolean };
 export type GameState = {
+  neighbourhood?: NeighbourhoodState;
   seed: number;
   day: number;
   level: number;

@@ -1,0 +1,77 @@
+{
+  "generator_version": "content-audio-v1",
+  "kind": "line",
+  "text": "转一下。",
+  "voice": {
+    "engine": "qwen",
+    "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+    "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+    "speaker": "Serena",
+    "language": "Chinese",
+    "speed": 1,
+    "instructions": null
+  },
+  "pronunciation": {
+    "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+    "authored_pinyin": [
+      "zhuǎn",
+      "yí xià"
+    ]
+  },
+  "content_digest": "86098bf9cc347d479314aba26dc5f6675ac92e59d45f717ed43f8212d2c061c8",
+  "filename": "apartment/line-rotate.wav",
+  "voice_ids": [
+    "serena"
+  ],
+  "sha256": "c3ec9a63fe20778831856b90a3cc3dd39510f1934c52a9a103d3a0eb35fb7f43",
+  "created_at": "2026-11-05T23:03:08.588158+00:00",
+  "attempts": [
+    {
+      "seed": 2248772601,
+      "accepted": false,
+      "error": "Abnormal audio duration: 4.72s"
+    },
+    {
+      "seed": 2248773601,
+      "accepted": true
+    }
+  ],
+  "generation_seconds": 3.0125015000230633,
+  "packages": {
+    "mlx-audio": "0.6.3",
+    "mlx": "0.32.4",
+    "numpy": "2.5.4",
+    "soundfile": "0.14.0",
+    "transformers": "5.22.1",
+    "huggingface-hub": "2.4.0"
+  },
+  "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+  "raw_metrics": {
+    "sample_rate": 24000,
+    "samples": 36480,
+    "duration_seconds": 1.52,
+    "peak_absolute": 0.13542722165584564,
+    "rms": 0.02506848419087403
+  },
+  "wav_metrics": {
+    "sample_rate": 24000,
+    "samples": 36480,
+    "duration_seconds": 1.52,
+    "peak_absolute": 0.13543701171875,
+    "rms": 0.025068572371453525
+  },
+  "engine_details": {
+    "token_count": 19,
+    "max_tokens": 128,
+    "settings": {
+      "temperature": 0.9,
+      "top_k": 50,
+      "top_p": 1.0,
+      "repetition_penalty": 1.05,
+      "stream": false,
+      "verbose": false
+    }
+  },
+  "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+  "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+}

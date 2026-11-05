@@ -1,0 +1,29 @@
+
+> junyan@0.1.0 test /workspace/cats-0068
+> vitest run
+
+
+ RUN  v3.2.7 /workspace/cats-0068
+
+ ✓ src/save.test.ts (52 tests) 233ms
+ ✓ src/scene/ward.test.ts (8 tests) 1005ms
+ ✓ src/content/content.test.ts (14 tests) 220ms
+ ✓ src/navigation.test.ts (4 tests) 28ms
+ ✓ src/features/cats/rules.test.ts (21 tests) 118ms
+ ✓ src/game.test.ts (30 tests) 27ms
+ ✓ src/features/cats/content.test.ts (4 tests) 40ms
+ ✓ src/audio/playback.test.ts (13 tests) 15ms
+ ✓ src/opening.test.ts (11 tests) 27ms
+ ✓ src/recovery.test.ts (11 tests) 6ms
+ ✓ src/startup.test.ts (7 tests) 8ms
+ ✓ src/opening-view.test.ts (2 tests) 4ms
+ ✓ src/scene/renderer.test.ts (18 tests) 6139ms
+   ✓ actual raster depth and walking > partially occludes rear-facing food with the body without hiding the whole tray  1537ms
+   ✓ actual raster depth and walking > walks deterministically from supplied time and freezes at reduced-motion inputs  2228ms
+   ✓ renders independently without DOM globals and reflects customer/tray state  2181ms
+
+ Test Files  13 passed (13)
+      Tests  195 passed (195)
+   Start at  19:21:12
+   Duration  6.65s (transform 603ms, setup 0ms, collect 1.92s, tests 7.87s, environment 3ms, prepare 1.23s)
+

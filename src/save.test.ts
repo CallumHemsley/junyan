@@ -1,3 +1,4 @@
+import { createNeighbourhood } from "./neighbourhood/model";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { content } from "./content";
 import { KITCHEN, TABLES, type Action, type Content, type GameState } from "./contracts";
@@ -174,6 +175,7 @@ describe("IndexedDB recovery", () => {
     storage.transaction.oncomplete?.();
     expect(await pending).toEqual({
       ...historical,
+      neighbourhood: createNeighbourhood(historical.day),
       journal: { bun: { lookups: 2, lastSeen: 1.5, recovered: true } },
     });
   });
