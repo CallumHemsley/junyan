@@ -1,0 +1,431 @@
+{
+  "status": "blocked",
+  "reason": "Pinned Qwen synthesis requires Apple MLX; central Linux probe found no cached model and required model hosts return proxy 403. No fabricated audio or browser TTS fallback.",
+  "clips": [
+    {
+      "id": "cats.see",
+      "text": "看见",
+      "path": "/audio/cats/word-see.wav"
+    },
+    {
+      "id": "cats.white-name",
+      "text": "小白",
+      "path": "/audio/cats/word-white-name.wav"
+    },
+    {
+      "id": "cats.black-name",
+      "text": "小黑",
+      "path": "/audio/cats/word-black-name.wav"
+    },
+    {
+      "id": "cats.white",
+      "text": "白",
+      "path": "/audio/cats/word-white.wav"
+    },
+    {
+      "id": "cats.black",
+      "text": "黑",
+      "path": "/audio/cats/word-black.wav"
+    },
+    {
+      "id": "cats.cat",
+      "text": "猫",
+      "path": "/audio/cats/word-cat.wav"
+    },
+    {
+      "id": "cats.at",
+      "text": "在",
+      "path": "/audio/cats/word-at.wav"
+    },
+    {
+      "id": "cats.bicycle",
+      "text": "自行车",
+      "path": "/audio/cats/word-bicycle.wav"
+    },
+    {
+      "id": "cats.under",
+      "text": "下面",
+      "path": "/audio/cats/word-under.wav"
+    },
+    {
+      "id": "cats.not",
+      "text": "不是",
+      "path": "/audio/cats/word-not.wav"
+    },
+    {
+      "id": "cats.crouch",
+      "text": "蹲下",
+      "path": "/audio/cats/word-crouch.wav"
+    },
+    {
+      "id": "cats.wait",
+      "text": "等一等",
+      "path": "/audio/cats/word-wait.wav"
+    },
+    {
+      "id": "cats.emerge",
+      "text": "出来",
+      "path": "/audio/cats/word-emerge.wav"
+    },
+    {
+      "id": "cats.follow",
+      "text": "跟着",
+      "path": "/audio/cats/word-follow.wav"
+    },
+    {
+      "id": "cats.walk",
+      "text": "走",
+      "path": "/audio/cats/word-walk.wav"
+    },
+    {
+      "id": "cats.she",
+      "text": "她",
+      "path": "/audio/cats/word-she.wav"
+    },
+    {
+      "id": "cats.door",
+      "text": "门口",
+      "path": "/audio/cats/word-door.wav"
+    },
+    {
+      "id": "cats.found",
+      "text": "找到",
+      "path": "/audio/cats/word-found.wav"
+    },
+    {
+      "id": "cats.this",
+      "text": "这个",
+      "path": "/audio/cats/word-this.wav"
+    },
+    {
+      "id": "cats.cushion",
+      "text": "垫子",
+      "path": "/audio/cats/word-cushion.wav"
+    },
+    {
+      "id": "cats.give",
+      "text": "送给",
+      "path": "/audio/cats/word-give.wav"
+    },
+    {
+      "id": "cats.rain",
+      "text": "下雨",
+      "path": "/audio/cats/word-rain.wav"
+    },
+    {
+      "id": "cats.bench",
+      "text": "椅子",
+      "path": "/audio/cats/word-bench.wav"
+    },
+    {
+      "id": "cats.beside",
+      "text": "旁边",
+      "path": "/audio/cats/word-beside.wav"
+    },
+    {
+      "id": "cats.hello",
+      "text": "你好",
+      "path": "/audio/cats/word-hello.wav"
+    },
+    {
+      "id": "cats.sit",
+      "text": "坐下",
+      "path": "/audio/cats/word-sit.wav"
+    },
+    {
+      "id": "cats.go",
+      "text": "去",
+      "path": "/audio/cats/word-go.wav"
+    },
+    {
+      "id": "cats.window",
+      "text": "窗边",
+      "path": "/audio/cats/word-window.wav"
+    },
+    {
+      "id": "cats.sun",
+      "text": "太阳",
+      "path": "/audio/cats/word-sun.wav"
+    },
+    {
+      "id": "cats.empty",
+      "text": "不在",
+      "path": "/audio/cats/word-empty.wav"
+    },
+    {
+      "id": "cats.look",
+      "text": "看看",
+      "path": "/audio/cats/word-look.wav"
+    },
+    {
+      "id": "cats.back",
+      "text": "退后",
+      "path": "/audio/cats/word-back.wav"
+    },
+    {
+      "id": "cats.call",
+      "text": "叫",
+      "path": "/audio/cats/word-call.wav"
+    },
+    {
+      "id": "cats.aunt",
+      "text": "阿姨",
+      "path": "/audio/cats/word-aunt.wav"
+    },
+    {
+      "id": "cats.courtyard",
+      "text": "院子",
+      "path": "/audio/cats/word-courtyard.wav"
+    },
+    {
+      "id": "cats.together",
+      "text": "一起",
+      "path": "/audio/cats/word-together.wav"
+    },
+    {
+      "id": "cats.today",
+      "text": "今天",
+      "path": "/audio/cats/word-today.wav"
+    },
+    {
+      "id": "cats.tomorrow",
+      "text": "明天",
+      "path": "/audio/cats/word-tomorrow.wav"
+    },
+    {
+      "id": "cats.meet",
+      "text": "见",
+      "path": "/audio/cats/word-meet.wav"
+    },
+    {
+      "id": "cats.invite",
+      "text": "过来",
+      "path": "/audio/cats/word-invite.wav"
+    },
+    {
+      "id": "cats.quiet",
+      "text": "安静",
+      "path": "/audio/cats/word-quiet.wav"
+    },
+    {
+      "id": "cats.already",
+      "text": "已经",
+      "path": "/audio/cats/word-already.wav"
+    },
+    {
+      "id": "cats.friend",
+      "text": "朋友",
+      "path": "/audio/cats/word-friend.wav"
+    },
+    {
+      "id": "cats.clue",
+      "text": "你看见小白了吗？",
+      "path": "/audio/cats/line-clue.wav"
+    },
+    {
+      "id": "cats.bicycle-clue",
+      "text": "白猫在自行车下面。",
+      "path": "/audio/cats/line-bicycle-clue.wav"
+    },
+    {
+      "id": "cats.wrong-cat",
+      "text": "不是黑猫，是白猫。",
+      "path": "/audio/cats/line-wrong-cat.wav"
+    },
+    {
+      "id": "cats.gentle",
+      "text": "慢慢来，蹲下，等一等。",
+      "path": "/audio/cats/line-gentle.wav"
+    },
+    {
+      "id": "cats.crouched",
+      "text": "好，等一等。",
+      "path": "/audio/cats/line-crouched.wav"
+    },
+    {
+      "id": "cats.space",
+      "text": "退后，小白安静了。",
+      "path": "/audio/cats/line-space.wav"
+    },
+    {
+      "id": "cats.emerged",
+      "text": "小白出来了。",
+      "path": "/audio/cats/line-emerged.wav"
+    },
+    {
+      "id": "cats.invited",
+      "text": "跟着小白走。",
+      "path": "/audio/cats/line-invited.wav"
+    },
+    {
+      "id": "cats.doorway",
+      "text": "她在门口。",
+      "path": "/audio/cats/line-doorway.wav"
+    },
+    {
+      "id": "cats.reunion",
+      "text": "找到了，谢谢你。这个垫子送给你。",
+      "path": "/audio/cats/line-reunion.wav"
+    },
+    {
+      "id": "cats.black-greeting",
+      "text": "小黑，你好。",
+      "path": "/audio/cats/line-black-greeting.wav"
+    },
+    {
+      "id": "cats.black-sitting",
+      "text": "小黑和你一起坐下。",
+      "path": "/audio/cats/line-black-sitting.wav"
+    },
+    {
+      "id": "cats.black-clue",
+      "text": "小黑在椅子旁边。",
+      "path": "/audio/cats/line-black-clue.wav"
+    },
+    {
+      "id": "cats.sunny",
+      "text": "太阳出来了。小黑在椅子旁边。",
+      "path": "/audio/cats/line-sunny.wav"
+    },
+    {
+      "id": "cats.rainy",
+      "text": "下雨了。小白在门口。",
+      "path": "/audio/cats/line-rainy.wav"
+    },
+    {
+      "id": "cats.empty-bicycle",
+      "text": "小白不在自行车下面。",
+      "path": "/audio/cats/line-empty-bicycle.wav"
+    },
+    {
+      "id": "cats.rain-found",
+      "text": "找到小白了。一起等一等。",
+      "path": "/audio/cats/line-rain-found.wav"
+    },
+    {
+      "id": "cats.route",
+      "text": "小白去窗边。跟着小白走。",
+      "path": "/audio/cats/line-route.wav"
+    },
+    {
+      "id": "cats.window-found",
+      "text": "小白在窗边。",
+      "path": "/audio/cats/line-window-found.wav"
+    },
+    {
+      "id": "cats.visit-complete",
+      "text": "好朋友，明天见。",
+      "path": "/audio/cats/line-visit-complete.wav"
+    },
+    {
+      "id": "cats.return",
+      "text": "小白，小黑，你好。",
+      "path": "/audio/cats/line-return.wav"
+    },
+    {
+      "id": "cats.later",
+      "text": "今天已经见了。明天再来。",
+      "path": "/audio/cats/line-later.wav"
+    },
+    {
+      "id": "cats.label-courtyard",
+      "text": "院子",
+      "path": "/audio/cats/line-label-courtyard.wav"
+    },
+    {
+      "id": "cats.label-white",
+      "text": "小白",
+      "path": "/audio/cats/line-label-white.wav"
+    },
+    {
+      "id": "cats.label-black",
+      "text": "小黑",
+      "path": "/audio/cats/line-label-black.wav"
+    },
+    {
+      "id": "cats.label-bicycle",
+      "text": "自行车",
+      "path": "/audio/cats/line-label-bicycle.wav"
+    },
+    {
+      "id": "cats.label-bench",
+      "text": "椅子",
+      "path": "/audio/cats/line-label-bench.wav"
+    },
+    {
+      "id": "cats.label-door",
+      "text": "门口",
+      "path": "/audio/cats/line-label-door.wav"
+    },
+    {
+      "id": "cats.label-window",
+      "text": "窗边",
+      "path": "/audio/cats/line-label-window.wav"
+    },
+    {
+      "id": "cats.label-aunt",
+      "text": "阿姨",
+      "path": "/audio/cats/line-label-aunt.wav"
+    },
+    {
+      "id": "cats.action-look",
+      "text": "看看",
+      "path": "/audio/cats/line-action-look.wav"
+    },
+    {
+      "id": "cats.action-crouch",
+      "text": "蹲下",
+      "path": "/audio/cats/line-action-crouch.wav"
+    },
+    {
+      "id": "cats.action-wait",
+      "text": "等一等",
+      "path": "/audio/cats/line-action-wait.wav"
+    },
+    {
+      "id": "cats.action-space",
+      "text": "退后",
+      "path": "/audio/cats/line-action-space.wav"
+    },
+    {
+      "id": "cats.action-approach",
+      "text": "过来",
+      "path": "/audio/cats/line-action-approach.wav"
+    },
+    {
+      "id": "cats.action-follow",
+      "text": "跟着小白走",
+      "path": "/audio/cats/line-action-follow.wav"
+    },
+    {
+      "id": "cats.action-call",
+      "text": "叫阿姨",
+      "path": "/audio/cats/line-action-call.wav"
+    },
+    {
+      "id": "cats.action-greet",
+      "text": "你好",
+      "path": "/audio/cats/line-action-greet.wav"
+    },
+    {
+      "id": "cats.action-sit",
+      "text": "坐下",
+      "path": "/audio/cats/line-action-sit.wav"
+    },
+    {
+      "id": "cats.action-begin",
+      "text": "看看院子",
+      "path": "/audio/cats/line-action-begin.wav"
+    },
+    {
+      "id": "cats.action-replay",
+      "text": "再听",
+      "path": "/audio/cats/line-action-replay.wav"
+    },
+    {
+      "id": "cats.white-sitting",
+      "text": "小白和你一起坐下。",
+      "path": "/audio/cats/line-white-sitting.wav"
+    }
+  ]
+}

@@ -1,0 +1,1567 @@
+{
+  "words": [
+    {
+      "id": "you",
+      "hanzi": "你",
+      "pinyin": "nǐ",
+      "gloss": "you",
+      "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
+    },
+    {
+      "id": "cats.see",
+      "hanzi": "看见",
+      "pinyin": "kàn jiàn",
+      "gloss": "see",
+      "audio": "/audio/cats/word-see.wav"
+    },
+    {
+      "id": "cats.white-name",
+      "hanzi": "小白",
+      "pinyin": "xiǎo bái",
+      "gloss": "Xiaobai",
+      "audio": "/audio/cats/word-white-name.wav"
+    },
+    {
+      "id": "cats.black-name",
+      "hanzi": "小黑",
+      "pinyin": "xiǎo hēi",
+      "gloss": "Xiaohei",
+      "audio": "/audio/cats/word-black-name.wav"
+    },
+    {
+      "id": "le",
+      "hanzi": "了",
+      "pinyin": "le",
+      "gloss": "completed action particle",
+      "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+    },
+    {
+      "id": "ma",
+      "hanzi": "吗",
+      "pinyin": "ma",
+      "gloss": "(question)",
+      "audio": "/audio/word-2cef3d3b77dd2fd8b39f35e41c02097ab0c9d650643e6fdec509da05751d1bad.wav"
+    },
+    {
+      "id": "cats.white",
+      "hanzi": "白",
+      "pinyin": "bái",
+      "gloss": "white",
+      "audio": "/audio/cats/word-white.wav"
+    },
+    {
+      "id": "cats.black",
+      "hanzi": "黑",
+      "pinyin": "hēi",
+      "gloss": "black",
+      "audio": "/audio/cats/word-black.wav"
+    },
+    {
+      "id": "cats.cat",
+      "hanzi": "猫",
+      "pinyin": "māo",
+      "gloss": "cat",
+      "audio": "/audio/cats/word-cat.wav"
+    },
+    {
+      "id": "cats.at",
+      "hanzi": "在",
+      "pinyin": "zài",
+      "gloss": "at",
+      "audio": "/audio/cats/word-at.wav"
+    },
+    {
+      "id": "cats.bicycle",
+      "hanzi": "自行车",
+      "pinyin": "zì xíng chē",
+      "gloss": "bicycle",
+      "audio": "/audio/cats/word-bicycle.wav"
+    },
+    {
+      "id": "cats.under",
+      "hanzi": "下面",
+      "pinyin": "xià miàn",
+      "gloss": "under",
+      "audio": "/audio/cats/word-under.wav"
+    },
+    {
+      "id": "cats.not",
+      "hanzi": "不是",
+      "pinyin": "bú shì",
+      "gloss": "is not",
+      "audio": "/audio/cats/word-not.wav"
+    },
+    {
+      "id": "be",
+      "hanzi": "是",
+      "pinyin": "shì",
+      "gloss": "am, is",
+      "audio": "/audio/word-695b5d8d018e831d3c45da307d25204edbad27869c2a461c14051b50216545d5.wav"
+    },
+    {
+      "id": "slowly",
+      "hanzi": "慢慢",
+      "pinyin": "mànmàn",
+      "gloss": "slowly",
+      "audio": "/audio/word-ef14b361f5b6171148b04fadee9960e934852b8c33a59e67f44a79c0546f6ba3.wav"
+    },
+    {
+      "id": "bring",
+      "hanzi": "来",
+      "pinyin": "lái",
+      "gloss": "bring; come",
+      "audio": "/audio/word-ed529f5d1bf010905a815ac250dc4c043f1f704e66accb8731753957b1971f28.wav"
+    },
+    {
+      "id": "cats.crouch",
+      "hanzi": "蹲下",
+      "pinyin": "dūn xià",
+      "gloss": "crouch down",
+      "audio": "/audio/cats/word-crouch.wav"
+    },
+    {
+      "id": "cats.wait",
+      "hanzi": "等一等",
+      "pinyin": "děng yi děng",
+      "gloss": "wait a moment",
+      "audio": "/audio/cats/word-wait.wav"
+    },
+    {
+      "id": "cats.emerge",
+      "hanzi": "出来",
+      "pinyin": "chū lái",
+      "gloss": "come out",
+      "audio": "/audio/cats/word-emerge.wav"
+    },
+    {
+      "id": "cats.follow",
+      "hanzi": "跟着",
+      "pinyin": "gēn zhe",
+      "gloss": "follow",
+      "audio": "/audio/cats/word-follow.wav"
+    },
+    {
+      "id": "cats.walk",
+      "hanzi": "走",
+      "pinyin": "zǒu",
+      "gloss": "walk",
+      "audio": "/audio/cats/word-walk.wav"
+    },
+    {
+      "id": "cats.she",
+      "hanzi": "她",
+      "pinyin": "tā",
+      "gloss": "she",
+      "audio": "/audio/cats/word-she.wav"
+    },
+    {
+      "id": "cats.door",
+      "hanzi": "门口",
+      "pinyin": "mén kǒu",
+      "gloss": "doorway",
+      "audio": "/audio/cats/word-door.wav"
+    },
+    {
+      "id": "cats.found",
+      "hanzi": "找到",
+      "pinyin": "zhǎo dào",
+      "gloss": "find",
+      "audio": "/audio/cats/word-found.wav"
+    },
+    {
+      "id": "thank-you",
+      "hanzi": "谢谢",
+      "pinyin": "xièxie",
+      "gloss": "thank you",
+      "audio": "/audio/word-d4eb416293ad391775ce523d94ce0483868103313ae19eac4e0f80c7401b5165.wav"
+    },
+    {
+      "id": "cats.this",
+      "hanzi": "这个",
+      "pinyin": "zhè ge",
+      "gloss": "this",
+      "audio": "/audio/cats/word-this.wav"
+    },
+    {
+      "id": "cats.cushion",
+      "hanzi": "垫子",
+      "pinyin": "diàn zi",
+      "gloss": "cushion",
+      "audio": "/audio/cats/word-cushion.wav"
+    },
+    {
+      "id": "cats.give",
+      "hanzi": "送给",
+      "pinyin": "sòng gěi",
+      "gloss": "give as a gift",
+      "audio": "/audio/cats/word-give.wav"
+    },
+    {
+      "id": "cats.rain",
+      "hanzi": "下雨",
+      "pinyin": "xià yǔ",
+      "gloss": "rain",
+      "audio": "/audio/cats/word-rain.wav"
+    },
+    {
+      "id": "cats.bench",
+      "hanzi": "椅子",
+      "pinyin": "yǐ zi",
+      "gloss": "bench",
+      "audio": "/audio/cats/word-bench.wav"
+    },
+    {
+      "id": "cats.beside",
+      "hanzi": "旁边",
+      "pinyin": "páng biān",
+      "gloss": "beside",
+      "audio": "/audio/cats/word-beside.wav"
+    },
+    {
+      "id": "cats.hello",
+      "hanzi": "你好",
+      "pinyin": "nǐ hǎo",
+      "gloss": "hello",
+      "audio": "/audio/cats/word-hello.wav"
+    },
+    {
+      "id": "cats.sit",
+      "hanzi": "坐下",
+      "pinyin": "zuò xià",
+      "gloss": "sit down",
+      "audio": "/audio/cats/word-sit.wav"
+    },
+    {
+      "id": "good",
+      "hanzi": "好",
+      "pinyin": "hǎo",
+      "gloss": "good, okay",
+      "audio": "/audio/word-19be6bbebac3dbb7894517bbd13de46a628667976c0f109d45525b89ef1012f7.wav"
+    },
+    {
+      "id": "cats.go",
+      "hanzi": "去",
+      "pinyin": "qù",
+      "gloss": "go to",
+      "audio": "/audio/cats/word-go.wav"
+    },
+    {
+      "id": "cats.window",
+      "hanzi": "窗边",
+      "pinyin": "chuāng biān",
+      "gloss": "by the window",
+      "audio": "/audio/cats/word-window.wav"
+    },
+    {
+      "id": "cats.sun",
+      "hanzi": "太阳",
+      "pinyin": "tài yáng",
+      "gloss": "sun",
+      "audio": "/audio/cats/word-sun.wav"
+    },
+    {
+      "id": "cats.empty",
+      "hanzi": "不在",
+      "pinyin": "bú zài",
+      "gloss": "is not here",
+      "audio": "/audio/cats/word-empty.wav"
+    },
+    {
+      "id": "cats.look",
+      "hanzi": "看看",
+      "pinyin": "kàn kan",
+      "gloss": "take a look",
+      "audio": "/audio/cats/word-look.wav"
+    },
+    {
+      "id": "cats.back",
+      "hanzi": "退后",
+      "pinyin": "tuì hòu",
+      "gloss": "step back",
+      "audio": "/audio/cats/word-back.wav"
+    },
+    {
+      "id": "again",
+      "hanzi": "再",
+      "pinyin": "zài",
+      "gloss": "again",
+      "audio": "/audio/word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav"
+    },
+    {
+      "id": "cats.call",
+      "hanzi": "叫",
+      "pinyin": "jiào",
+      "gloss": "call",
+      "audio": "/audio/cats/word-call.wav"
+    },
+    {
+      "id": "cats.aunt",
+      "hanzi": "阿姨",
+      "pinyin": "ā yí",
+      "gloss": "auntie",
+      "audio": "/audio/cats/word-aunt.wav"
+    },
+    {
+      "id": "cats.courtyard",
+      "hanzi": "院子",
+      "pinyin": "yuàn zi",
+      "gloss": "courtyard",
+      "audio": "/audio/cats/word-courtyard.wav"
+    },
+    {
+      "id": "cats.together",
+      "hanzi": "一起",
+      "pinyin": "yì qǐ",
+      "gloss": "together",
+      "audio": "/audio/cats/word-together.wav"
+    },
+    {
+      "id": "cats.today",
+      "hanzi": "今天",
+      "pinyin": "jīn tiān",
+      "gloss": "today",
+      "audio": "/audio/cats/word-today.wav"
+    },
+    {
+      "id": "cats.tomorrow",
+      "hanzi": "明天",
+      "pinyin": "míng tiān",
+      "gloss": "tomorrow",
+      "audio": "/audio/cats/word-tomorrow.wav"
+    },
+    {
+      "id": "cats.meet",
+      "hanzi": "见",
+      "pinyin": "jiàn",
+      "gloss": "see",
+      "audio": "/audio/cats/word-meet.wav"
+    },
+    {
+      "id": "listen",
+      "hanzi": "听",
+      "pinyin": "tīng",
+      "gloss": "listen",
+      "audio": "/audio/word-a8b213f08f35df6edd2291efa7dbb6fe6bbe2aee73b7f644e4301fbd3560ad19.wav"
+    },
+    {
+      "id": "cats.invite",
+      "hanzi": "过来",
+      "pinyin": "guò lái",
+      "gloss": "come over",
+      "audio": "/audio/cats/word-invite.wav"
+    },
+    {
+      "id": "cats.quiet",
+      "hanzi": "安静",
+      "pinyin": "ān jìng",
+      "gloss": "quiet",
+      "audio": "/audio/cats/word-quiet.wav"
+    },
+    {
+      "id": "cats.already",
+      "hanzi": "已经",
+      "pinyin": "yǐ jīng",
+      "gloss": "already",
+      "audio": "/audio/cats/word-already.wav"
+    },
+    {
+      "id": "cats.friend",
+      "hanzi": "朋友",
+      "pinyin": "péng you",
+      "gloss": "friend",
+      "audio": "/audio/cats/word-friend.wav"
+    },
+    {
+      "id": "and",
+      "hanzi": "和",
+      "pinyin": "hé",
+      "gloss": "and",
+      "audio": "/audio/word-3a31214de3ca0c356664730581b3b93c7bfda6c9d6cb6f6894621ee94d3b4a3e.wav"
+    }
+  ],
+  "lines": [
+    {
+      "id": "cats.clue",
+      "text": "你看见小白了吗？",
+      "tokens": [
+        {
+          "id": "you",
+          "hanzi": "你",
+          "pinyin": "nǐ",
+          "gloss": "you",
+          "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
+        },
+        {
+          "id": "cats.see",
+          "hanzi": "看见",
+          "pinyin": "kàn jiàn",
+          "gloss": "see",
+          "audio": "/audio/cats/word-see.wav"
+        },
+        {
+          "id": "cats.white-name",
+          "hanzi": "小白",
+          "pinyin": "xiǎo bái",
+          "gloss": "Xiaobai",
+          "audio": "/audio/cats/word-white-name.wav"
+        },
+        {
+          "id": "le",
+          "hanzi": "了",
+          "pinyin": "le",
+          "gloss": "completed action particle",
+          "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+        },
+        {
+          "id": "ma",
+          "hanzi": "吗",
+          "pinyin": "ma",
+          "gloss": "(question)",
+          "audio": "/audio/word-2cef3d3b77dd2fd8b39f35e41c02097ab0c9d650643e6fdec509da05751d1bad.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-clue.wav"
+    },
+    {
+      "id": "cats.bicycle-clue",
+      "text": "白猫在自行车下面。",
+      "tokens": [
+        {
+          "id": "cats.white",
+          "hanzi": "白",
+          "pinyin": "bái",
+          "gloss": "white",
+          "audio": "/audio/cats/word-white.wav"
+        },
+        {
+          "id": "cats.cat",
+          "hanzi": "猫",
+          "pinyin": "māo",
+          "gloss": "cat",
+          "audio": "/audio/cats/word-cat.wav"
+        },
+        {
+          "id": "cats.at",
+          "hanzi": "在",
+          "pinyin": "zài",
+          "gloss": "at",
+          "audio": "/audio/cats/word-at.wav"
+        },
+        {
+          "id": "cats.bicycle",
+          "hanzi": "自行车",
+          "pinyin": "zì xíng chē",
+          "gloss": "bicycle",
+          "audio": "/audio/cats/word-bicycle.wav"
+        },
+        {
+          "id": "cats.under",
+          "hanzi": "下面",
+          "pinyin": "xià miàn",
+          "gloss": "under",
+          "audio": "/audio/cats/word-under.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-bicycle-clue.wav"
+    },
+    {
+      "id": "cats.wrong-cat",
+      "text": "不是黑猫，是白猫。",
+      "tokens": [
+        {
+          "id": "cats.not",
+          "hanzi": "不是",
+          "pinyin": "bú shì",
+          "gloss": "is not",
+          "audio": "/audio/cats/word-not.wav"
+        },
+        {
+          "id": "cats.black",
+          "hanzi": "黑",
+          "pinyin": "hēi",
+          "gloss": "black",
+          "audio": "/audio/cats/word-black.wav"
+        },
+        {
+          "id": "cats.cat",
+          "hanzi": "猫",
+          "pinyin": "māo",
+          "gloss": "cat",
+          "audio": "/audio/cats/word-cat.wav"
+        },
+        {
+          "id": "be",
+          "hanzi": "是",
+          "pinyin": "shì",
+          "gloss": "am, is",
+          "audio": "/audio/word-695b5d8d018e831d3c45da307d25204edbad27869c2a461c14051b50216545d5.wav"
+        },
+        {
+          "id": "cats.white",
+          "hanzi": "白",
+          "pinyin": "bái",
+          "gloss": "white",
+          "audio": "/audio/cats/word-white.wav"
+        },
+        {
+          "id": "cats.cat",
+          "hanzi": "猫",
+          "pinyin": "māo",
+          "gloss": "cat",
+          "audio": "/audio/cats/word-cat.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-wrong-cat.wav"
+    },
+    {
+      "id": "cats.gentle",
+      "text": "慢慢来，蹲下，等一等。",
+      "tokens": [
+        {
+          "id": "slowly",
+          "hanzi": "慢慢",
+          "pinyin": "mànmàn",
+          "gloss": "slowly",
+          "audio": "/audio/word-ef14b361f5b6171148b04fadee9960e934852b8c33a59e67f44a79c0546f6ba3.wav"
+        },
+        {
+          "id": "bring",
+          "hanzi": "来",
+          "pinyin": "lái",
+          "gloss": "bring; come",
+          "audio": "/audio/word-ed529f5d1bf010905a815ac250dc4c043f1f704e66accb8731753957b1971f28.wav"
+        },
+        {
+          "id": "cats.crouch",
+          "hanzi": "蹲下",
+          "pinyin": "dūn xià",
+          "gloss": "crouch down",
+          "audio": "/audio/cats/word-crouch.wav"
+        },
+        {
+          "id": "cats.wait",
+          "hanzi": "等一等",
+          "pinyin": "děng yi děng",
+          "gloss": "wait a moment",
+          "audio": "/audio/cats/word-wait.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-gentle.wav"
+    },
+    {
+      "id": "cats.crouched",
+      "text": "好，等一等。",
+      "tokens": [
+        {
+          "id": "good",
+          "hanzi": "好",
+          "pinyin": "hǎo",
+          "gloss": "good, okay",
+          "audio": "/audio/word-19be6bbebac3dbb7894517bbd13de46a628667976c0f109d45525b89ef1012f7.wav"
+        },
+        {
+          "id": "cats.wait",
+          "hanzi": "等一等",
+          "pinyin": "děng yi děng",
+          "gloss": "wait a moment",
+          "audio": "/audio/cats/word-wait.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-crouched.wav"
+    },
+    {
+      "id": "cats.space",
+      "text": "退后，小白安静了。",
+      "tokens": [
+        {
+          "id": "cats.back",
+          "hanzi": "退后",
+          "pinyin": "tuì hòu",
+          "gloss": "step back",
+          "audio": "/audio/cats/word-back.wav"
+        },
+        {
+          "id": "cats.white-name",
+          "hanzi": "小白",
+          "pinyin": "xiǎo bái",
+          "gloss": "Xiaobai",
+          "audio": "/audio/cats/word-white-name.wav"
+        },
+        {
+          "id": "cats.quiet",
+          "hanzi": "安静",
+          "pinyin": "ān jìng",
+          "gloss": "quiet",
+          "audio": "/audio/cats/word-quiet.wav"
+        },
+        {
+          "id": "le",
+          "hanzi": "了",
+          "pinyin": "le",
+          "gloss": "completed action particle",
+          "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-space.wav"
+    },
+    {
+      "id": "cats.emerged",
+      "text": "小白出来了。",
+      "tokens": [
+        {
+          "id": "cats.white-name",
+          "hanzi": "小白",
+          "pinyin": "xiǎo bái",
+          "gloss": "Xiaobai",
+          "audio": "/audio/cats/word-white-name.wav"
+        },
+        {
+          "id": "cats.emerge",
+          "hanzi": "出来",
+          "pinyin": "chū lái",
+          "gloss": "come out",
+          "audio": "/audio/cats/word-emerge.wav"
+        },
+        {
+          "id": "le",
+          "hanzi": "了",
+          "pinyin": "le",
+          "gloss": "completed action particle",
+          "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-emerged.wav"
+    },
+    {
+      "id": "cats.invited",
+      "text": "跟着小白走。",
+      "tokens": [
+        {
+          "id": "cats.follow",
+          "hanzi": "跟着",
+          "pinyin": "gēn zhe",
+          "gloss": "follow",
+          "audio": "/audio/cats/word-follow.wav"
+        },
+        {
+          "id": "cats.white-name",
+          "hanzi": "小白",
+          "pinyin": "xiǎo bái",
+          "gloss": "Xiaobai",
+          "audio": "/audio/cats/word-white-name.wav"
+        },
+        {
+          "id": "cats.walk",
+          "hanzi": "走",
+          "pinyin": "zǒu",
+          "gloss": "walk",
+          "audio": "/audio/cats/word-walk.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-invited.wav"
+    },
+    {
+      "id": "cats.doorway",
+      "text": "她在门口。",
+      "tokens": [
+        {
+          "id": "cats.she",
+          "hanzi": "她",
+          "pinyin": "tā",
+          "gloss": "she",
+          "audio": "/audio/cats/word-she.wav"
+        },
+        {
+          "id": "cats.at",
+          "hanzi": "在",
+          "pinyin": "zài",
+          "gloss": "at",
+          "audio": "/audio/cats/word-at.wav"
+        },
+        {
+          "id": "cats.door",
+          "hanzi": "门口",
+          "pinyin": "mén kǒu",
+          "gloss": "doorway",
+          "audio": "/audio/cats/word-door.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-doorway.wav"
+    },
+    {
+      "id": "cats.reunion",
+      "text": "找到了，谢谢你。这个垫子送给你。",
+      "tokens": [
+        {
+          "id": "cats.found",
+          "hanzi": "找到",
+          "pinyin": "zhǎo dào",
+          "gloss": "find",
+          "audio": "/audio/cats/word-found.wav"
+        },
+        {
+          "id": "le",
+          "hanzi": "了",
+          "pinyin": "le",
+          "gloss": "completed action particle",
+          "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+        },
+        {
+          "id": "thank-you",
+          "hanzi": "谢谢",
+          "pinyin": "xièxie",
+          "gloss": "thank you",
+          "audio": "/audio/word-d4eb416293ad391775ce523d94ce0483868103313ae19eac4e0f80c7401b5165.wav"
+        },
+        {
+          "id": "you",
+          "hanzi": "你",
+          "pinyin": "nǐ",
+          "gloss": "you",
+          "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
+        },
+        {
+          "id": "cats.this",
+          "hanzi": "这个",
+          "pinyin": "zhè ge",
+          "gloss": "this",
+          "audio": "/audio/cats/word-this.wav"
+        },
+        {
+          "id": "cats.cushion",
+          "hanzi": "垫子",
+          "pinyin": "diàn zi",
+          "gloss": "cushion",
+          "audio": "/audio/cats/word-cushion.wav"
+        },
+        {
+          "id": "cats.give",
+          "hanzi": "送给",
+          "pinyin": "sòng gěi",
+          "gloss": "give as a gift",
+          "audio": "/audio/cats/word-give.wav"
+        },
+        {
+          "id": "you",
+          "hanzi": "你",
+          "pinyin": "nǐ",
+          "gloss": "you",
+          "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-reunion.wav"
+    },
+    {
+      "id": "cats.black-greeting",
+      "text": "小黑，你好。",
+      "tokens": [
+        {
+          "id": "cats.black-name",
+          "hanzi": "小黑",
+          "pinyin": "xiǎo hēi",
+          "gloss": "Xiaohei",
+          "audio": "/audio/cats/word-black-name.wav"
+        },
+        {
+          "id": "cats.hello",
+          "hanzi": "你好",
+          "pinyin": "nǐ hǎo",
+          "gloss": "hello",
+          "audio": "/audio/cats/word-hello.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-black-greeting.wav"
+    },
+    {
+      "id": "cats.black-sitting",
+      "text": "小黑和你一起坐下。",
+      "tokens": [
+        {
+          "id": "cats.black-name",
+          "hanzi": "小黑",
+          "pinyin": "xiǎo hēi",
+          "gloss": "Xiaohei",
+          "audio": "/audio/cats/word-black-name.wav"
+        },
+        {
+          "id": "and",
+          "hanzi": "和",
+          "pinyin": "hé",
+          "gloss": "and",
+          "audio": "/audio/word-3a31214de3ca0c356664730581b3b93c7bfda6c9d6cb6f6894621ee94d3b4a3e.wav"
+        },
+        {
+          "id": "you",
+          "hanzi": "你",
+          "pinyin": "nǐ",
+          "gloss": "you",
+          "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
+        },
+        {
+          "id": "cats.together",
+          "hanzi": "一起",
+          "pinyin": "yì qǐ",
+          "gloss": "together",
+          "audio": "/audio/cats/word-together.wav"
+        },
+        {
+          "id": "cats.sit",
+          "hanzi": "坐下",
+          "pinyin": "zuò xià",
+          "gloss": "sit down",
+          "audio": "/audio/cats/word-sit.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-black-sitting.wav"
+    },
+    {
+      "id": "cats.black-clue",
+      "text": "小黑在椅子旁边。",
+      "tokens": [
+        {
+          "id": "cats.black-name",
+          "hanzi": "小黑",
+          "pinyin": "xiǎo hēi",
+          "gloss": "Xiaohei",
+          "audio": "/audio/cats/word-black-name.wav"
+        },
+        {
+          "id": "cats.at",
+          "hanzi": "在",
+          "pinyin": "zài",
+          "gloss": "at",
+          "audio": "/audio/cats/word-at.wav"
+        },
+        {
+          "id": "cats.bench",
+          "hanzi": "椅子",
+          "pinyin": "yǐ zi",
+          "gloss": "bench",
+          "audio": "/audio/cats/word-bench.wav"
+        },
+        {
+          "id": "cats.beside",
+          "hanzi": "旁边",
+          "pinyin": "páng biān",
+          "gloss": "beside",
+          "audio": "/audio/cats/word-beside.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-black-clue.wav"
+    },
+    {
+      "id": "cats.sunny",
+      "text": "太阳出来了。小黑在椅子旁边。",
+      "tokens": [
+        {
+          "id": "cats.sun",
+          "hanzi": "太阳",
+          "pinyin": "tài yáng",
+          "gloss": "sun",
+          "audio": "/audio/cats/word-sun.wav"
+        },
+        {
+          "id": "cats.emerge",
+          "hanzi": "出来",
+          "pinyin": "chū lái",
+          "gloss": "come out",
+          "audio": "/audio/cats/word-emerge.wav"
+        },
+        {
+          "id": "le",
+          "hanzi": "了",
+          "pinyin": "le",
+          "gloss": "completed action particle",
+          "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+        },
+        {
+          "id": "cats.black-name",
+          "hanzi": "小黑",
+          "pinyin": "xiǎo hēi",
+          "gloss": "Xiaohei",
+          "audio": "/audio/cats/word-black-name.wav"
+        },
+        {
+          "id": "cats.at",
+          "hanzi": "在",
+          "pinyin": "zài",
+          "gloss": "at",
+          "audio": "/audio/cats/word-at.wav"
+        },
+        {
+          "id": "cats.bench",
+          "hanzi": "椅子",
+          "pinyin": "yǐ zi",
+          "gloss": "bench",
+          "audio": "/audio/cats/word-bench.wav"
+        },
+        {
+          "id": "cats.beside",
+          "hanzi": "旁边",
+          "pinyin": "páng biān",
+          "gloss": "beside",
+          "audio": "/audio/cats/word-beside.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-sunny.wav"
+    },
+    {
+      "id": "cats.rainy",
+      "text": "下雨了。小白在门口。",
+      "tokens": [
+        {
+          "id": "cats.rain",
+          "hanzi": "下雨",
+          "pinyin": "xià yǔ",
+          "gloss": "rain",
+          "audio": "/audio/cats/word-rain.wav"
+        },
+        {
+          "id": "le",
+          "hanzi": "了",
+          "pinyin": "le",
+          "gloss": "completed action particle",
+          "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+        },
+        {
+          "id": "cats.white-name",
+          "hanzi": "小白",
+          "pinyin": "xiǎo bái",
+          "gloss": "Xiaobai",
+          "audio": "/audio/cats/word-white-name.wav"
+        },
+        {
+          "id": "cats.at",
+          "hanzi": "在",
+          "pinyin": "zài",
+          "gloss": "at",
+          "audio": "/audio/cats/word-at.wav"
+        },
+        {
+          "id": "cats.door",
+          "hanzi": "门口",
+          "pinyin": "mén kǒu",
+          "gloss": "doorway",
+          "audio": "/audio/cats/word-door.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-rainy.wav"
+    },
+    {
+      "id": "cats.empty-bicycle",
+      "text": "小白不在自行车下面。",
+      "tokens": [
+        {
+          "id": "cats.white-name",
+          "hanzi": "小白",
+          "pinyin": "xiǎo bái",
+          "gloss": "Xiaobai",
+          "audio": "/audio/cats/word-white-name.wav"
+        },
+        {
+          "id": "cats.empty",
+          "hanzi": "不在",
+          "pinyin": "bú zài",
+          "gloss": "is not here",
+          "audio": "/audio/cats/word-empty.wav"
+        },
+        {
+          "id": "cats.bicycle",
+          "hanzi": "自行车",
+          "pinyin": "zì xíng chē",
+          "gloss": "bicycle",
+          "audio": "/audio/cats/word-bicycle.wav"
+        },
+        {
+          "id": "cats.under",
+          "hanzi": "下面",
+          "pinyin": "xià miàn",
+          "gloss": "under",
+          "audio": "/audio/cats/word-under.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-empty-bicycle.wav"
+    },
+    {
+      "id": "cats.rain-found",
+      "text": "找到小白了。一起等一等。",
+      "tokens": [
+        {
+          "id": "cats.found",
+          "hanzi": "找到",
+          "pinyin": "zhǎo dào",
+          "gloss": "find",
+          "audio": "/audio/cats/word-found.wav"
+        },
+        {
+          "id": "cats.white-name",
+          "hanzi": "小白",
+          "pinyin": "xiǎo bái",
+          "gloss": "Xiaobai",
+          "audio": "/audio/cats/word-white-name.wav"
+        },
+        {
+          "id": "le",
+          "hanzi": "了",
+          "pinyin": "le",
+          "gloss": "completed action particle",
+          "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+        },
+        {
+          "id": "cats.together",
+          "hanzi": "一起",
+          "pinyin": "yì qǐ",
+          "gloss": "together",
+          "audio": "/audio/cats/word-together.wav"
+        },
+        {
+          "id": "cats.wait",
+          "hanzi": "等一等",
+          "pinyin": "děng yi děng",
+          "gloss": "wait a moment",
+          "audio": "/audio/cats/word-wait.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-rain-found.wav"
+    },
+    {
+      "id": "cats.route",
+      "text": "小白去窗边。跟着小白走。",
+      "tokens": [
+        {
+          "id": "cats.white-name",
+          "hanzi": "小白",
+          "pinyin": "xiǎo bái",
+          "gloss": "Xiaobai",
+          "audio": "/audio/cats/word-white-name.wav"
+        },
+        {
+          "id": "cats.go",
+          "hanzi": "去",
+          "pinyin": "qù",
+          "gloss": "go to",
+          "audio": "/audio/cats/word-go.wav"
+        },
+        {
+          "id": "cats.window",
+          "hanzi": "窗边",
+          "pinyin": "chuāng biān",
+          "gloss": "by the window",
+          "audio": "/audio/cats/word-window.wav"
+        },
+        {
+          "id": "cats.follow",
+          "hanzi": "跟着",
+          "pinyin": "gēn zhe",
+          "gloss": "follow",
+          "audio": "/audio/cats/word-follow.wav"
+        },
+        {
+          "id": "cats.white-name",
+          "hanzi": "小白",
+          "pinyin": "xiǎo bái",
+          "gloss": "Xiaobai",
+          "audio": "/audio/cats/word-white-name.wav"
+        },
+        {
+          "id": "cats.walk",
+          "hanzi": "走",
+          "pinyin": "zǒu",
+          "gloss": "walk",
+          "audio": "/audio/cats/word-walk.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-route.wav"
+    },
+    {
+      "id": "cats.window-found",
+      "text": "小白在窗边。",
+      "tokens": [
+        {
+          "id": "cats.white-name",
+          "hanzi": "小白",
+          "pinyin": "xiǎo bái",
+          "gloss": "Xiaobai",
+          "audio": "/audio/cats/word-white-name.wav"
+        },
+        {
+          "id": "cats.at",
+          "hanzi": "在",
+          "pinyin": "zài",
+          "gloss": "at",
+          "audio": "/audio/cats/word-at.wav"
+        },
+        {
+          "id": "cats.window",
+          "hanzi": "窗边",
+          "pinyin": "chuāng biān",
+          "gloss": "by the window",
+          "audio": "/audio/cats/word-window.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-window-found.wav"
+    },
+    {
+      "id": "cats.visit-complete",
+      "text": "好朋友，明天见。",
+      "tokens": [
+        {
+          "id": "good",
+          "hanzi": "好",
+          "pinyin": "hǎo",
+          "gloss": "good, okay",
+          "audio": "/audio/word-19be6bbebac3dbb7894517bbd13de46a628667976c0f109d45525b89ef1012f7.wav"
+        },
+        {
+          "id": "cats.friend",
+          "hanzi": "朋友",
+          "pinyin": "péng you",
+          "gloss": "friend",
+          "audio": "/audio/cats/word-friend.wav"
+        },
+        {
+          "id": "cats.tomorrow",
+          "hanzi": "明天",
+          "pinyin": "míng tiān",
+          "gloss": "tomorrow",
+          "audio": "/audio/cats/word-tomorrow.wav"
+        },
+        {
+          "id": "cats.meet",
+          "hanzi": "见",
+          "pinyin": "jiàn",
+          "gloss": "see",
+          "audio": "/audio/cats/word-meet.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-visit-complete.wav"
+    },
+    {
+      "id": "cats.return",
+      "text": "小白，小黑，你好。",
+      "tokens": [
+        {
+          "id": "cats.white-name",
+          "hanzi": "小白",
+          "pinyin": "xiǎo bái",
+          "gloss": "Xiaobai",
+          "audio": "/audio/cats/word-white-name.wav"
+        },
+        {
+          "id": "cats.black-name",
+          "hanzi": "小黑",
+          "pinyin": "xiǎo hēi",
+          "gloss": "Xiaohei",
+          "audio": "/audio/cats/word-black-name.wav"
+        },
+        {
+          "id": "cats.hello",
+          "hanzi": "你好",
+          "pinyin": "nǐ hǎo",
+          "gloss": "hello",
+          "audio": "/audio/cats/word-hello.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-return.wav"
+    },
+    {
+      "id": "cats.later",
+      "text": "今天已经见了。明天再来。",
+      "tokens": [
+        {
+          "id": "cats.today",
+          "hanzi": "今天",
+          "pinyin": "jīn tiān",
+          "gloss": "today",
+          "audio": "/audio/cats/word-today.wav"
+        },
+        {
+          "id": "cats.already",
+          "hanzi": "已经",
+          "pinyin": "yǐ jīng",
+          "gloss": "already",
+          "audio": "/audio/cats/word-already.wav"
+        },
+        {
+          "id": "cats.meet",
+          "hanzi": "见",
+          "pinyin": "jiàn",
+          "gloss": "see",
+          "audio": "/audio/cats/word-meet.wav"
+        },
+        {
+          "id": "le",
+          "hanzi": "了",
+          "pinyin": "le",
+          "gloss": "completed action particle",
+          "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+        },
+        {
+          "id": "cats.tomorrow",
+          "hanzi": "明天",
+          "pinyin": "míng tiān",
+          "gloss": "tomorrow",
+          "audio": "/audio/cats/word-tomorrow.wav"
+        },
+        {
+          "id": "again",
+          "hanzi": "再",
+          "pinyin": "zài",
+          "gloss": "again",
+          "audio": "/audio/word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav"
+        },
+        {
+          "id": "bring",
+          "hanzi": "来",
+          "pinyin": "lái",
+          "gloss": "bring; come",
+          "audio": "/audio/word-ed529f5d1bf010905a815ac250dc4c043f1f704e66accb8731753957b1971f28.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-later.wav"
+    },
+    {
+      "id": "cats.label-courtyard",
+      "text": "院子",
+      "tokens": [
+        {
+          "id": "cats.courtyard",
+          "hanzi": "院子",
+          "pinyin": "yuàn zi",
+          "gloss": "courtyard",
+          "audio": "/audio/cats/word-courtyard.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-label-courtyard.wav"
+    },
+    {
+      "id": "cats.label-white",
+      "text": "小白",
+      "tokens": [
+        {
+          "id": "cats.white-name",
+          "hanzi": "小白",
+          "pinyin": "xiǎo bái",
+          "gloss": "Xiaobai",
+          "audio": "/audio/cats/word-white-name.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-label-white.wav"
+    },
+    {
+      "id": "cats.label-black",
+      "text": "小黑",
+      "tokens": [
+        {
+          "id": "cats.black-name",
+          "hanzi": "小黑",
+          "pinyin": "xiǎo hēi",
+          "gloss": "Xiaohei",
+          "audio": "/audio/cats/word-black-name.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-label-black.wav"
+    },
+    {
+      "id": "cats.label-bicycle",
+      "text": "自行车",
+      "tokens": [
+        {
+          "id": "cats.bicycle",
+          "hanzi": "自行车",
+          "pinyin": "zì xíng chē",
+          "gloss": "bicycle",
+          "audio": "/audio/cats/word-bicycle.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-label-bicycle.wav"
+    },
+    {
+      "id": "cats.label-bench",
+      "text": "椅子",
+      "tokens": [
+        {
+          "id": "cats.bench",
+          "hanzi": "椅子",
+          "pinyin": "yǐ zi",
+          "gloss": "bench",
+          "audio": "/audio/cats/word-bench.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-label-bench.wav"
+    },
+    {
+      "id": "cats.label-door",
+      "text": "门口",
+      "tokens": [
+        {
+          "id": "cats.door",
+          "hanzi": "门口",
+          "pinyin": "mén kǒu",
+          "gloss": "doorway",
+          "audio": "/audio/cats/word-door.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-label-door.wav"
+    },
+    {
+      "id": "cats.label-window",
+      "text": "窗边",
+      "tokens": [
+        {
+          "id": "cats.window",
+          "hanzi": "窗边",
+          "pinyin": "chuāng biān",
+          "gloss": "by the window",
+          "audio": "/audio/cats/word-window.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-label-window.wav"
+    },
+    {
+      "id": "cats.label-aunt",
+      "text": "阿姨",
+      "tokens": [
+        {
+          "id": "cats.aunt",
+          "hanzi": "阿姨",
+          "pinyin": "ā yí",
+          "gloss": "auntie",
+          "audio": "/audio/cats/word-aunt.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-label-aunt.wav"
+    },
+    {
+      "id": "cats.action-look",
+      "text": "看看",
+      "tokens": [
+        {
+          "id": "cats.look",
+          "hanzi": "看看",
+          "pinyin": "kàn kan",
+          "gloss": "take a look",
+          "audio": "/audio/cats/word-look.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-action-look.wav"
+    },
+    {
+      "id": "cats.action-crouch",
+      "text": "蹲下",
+      "tokens": [
+        {
+          "id": "cats.crouch",
+          "hanzi": "蹲下",
+          "pinyin": "dūn xià",
+          "gloss": "crouch down",
+          "audio": "/audio/cats/word-crouch.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-action-crouch.wav"
+    },
+    {
+      "id": "cats.action-wait",
+      "text": "等一等",
+      "tokens": [
+        {
+          "id": "cats.wait",
+          "hanzi": "等一等",
+          "pinyin": "děng yi děng",
+          "gloss": "wait a moment",
+          "audio": "/audio/cats/word-wait.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-action-wait.wav"
+    },
+    {
+      "id": "cats.action-space",
+      "text": "退后",
+      "tokens": [
+        {
+          "id": "cats.back",
+          "hanzi": "退后",
+          "pinyin": "tuì hòu",
+          "gloss": "step back",
+          "audio": "/audio/cats/word-back.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-action-space.wav"
+    },
+    {
+      "id": "cats.action-approach",
+      "text": "过来",
+      "tokens": [
+        {
+          "id": "cats.invite",
+          "hanzi": "过来",
+          "pinyin": "guò lái",
+          "gloss": "come over",
+          "audio": "/audio/cats/word-invite.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-action-approach.wav"
+    },
+    {
+      "id": "cats.action-follow",
+      "text": "跟着小白走",
+      "tokens": [
+        {
+          "id": "cats.follow",
+          "hanzi": "跟着",
+          "pinyin": "gēn zhe",
+          "gloss": "follow",
+          "audio": "/audio/cats/word-follow.wav"
+        },
+        {
+          "id": "cats.white-name",
+          "hanzi": "小白",
+          "pinyin": "xiǎo bái",
+          "gloss": "Xiaobai",
+          "audio": "/audio/cats/word-white-name.wav"
+        },
+        {
+          "id": "cats.walk",
+          "hanzi": "走",
+          "pinyin": "zǒu",
+          "gloss": "walk",
+          "audio": "/audio/cats/word-walk.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-action-follow.wav"
+    },
+    {
+      "id": "cats.action-call",
+      "text": "叫阿姨",
+      "tokens": [
+        {
+          "id": "cats.call",
+          "hanzi": "叫",
+          "pinyin": "jiào",
+          "gloss": "call",
+          "audio": "/audio/cats/word-call.wav"
+        },
+        {
+          "id": "cats.aunt",
+          "hanzi": "阿姨",
+          "pinyin": "ā yí",
+          "gloss": "auntie",
+          "audio": "/audio/cats/word-aunt.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-action-call.wav"
+    },
+    {
+      "id": "cats.action-greet",
+      "text": "你好",
+      "tokens": [
+        {
+          "id": "cats.hello",
+          "hanzi": "你好",
+          "pinyin": "nǐ hǎo",
+          "gloss": "hello",
+          "audio": "/audio/cats/word-hello.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-action-greet.wav"
+    },
+    {
+      "id": "cats.action-sit",
+      "text": "坐下",
+      "tokens": [
+        {
+          "id": "cats.sit",
+          "hanzi": "坐下",
+          "pinyin": "zuò xià",
+          "gloss": "sit down",
+          "audio": "/audio/cats/word-sit.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-action-sit.wav"
+    },
+    {
+      "id": "cats.action-begin",
+      "text": "看看院子",
+      "tokens": [
+        {
+          "id": "cats.look",
+          "hanzi": "看看",
+          "pinyin": "kàn kan",
+          "gloss": "take a look",
+          "audio": "/audio/cats/word-look.wav"
+        },
+        {
+          "id": "cats.courtyard",
+          "hanzi": "院子",
+          "pinyin": "yuàn zi",
+          "gloss": "courtyard",
+          "audio": "/audio/cats/word-courtyard.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-action-begin.wav"
+    },
+    {
+      "id": "cats.action-replay",
+      "text": "再听",
+      "tokens": [
+        {
+          "id": "again",
+          "hanzi": "再",
+          "pinyin": "zài",
+          "gloss": "again",
+          "audio": "/audio/word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav"
+        },
+        {
+          "id": "listen",
+          "hanzi": "听",
+          "pinyin": "tīng",
+          "gloss": "listen",
+          "audio": "/audio/word-a8b213f08f35df6edd2291efa7dbb6fe6bbe2aee73b7f644e4301fbd3560ad19.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-action-replay.wav"
+    },
+    {
+      "id": "cats.white-sitting",
+      "text": "小白和你一起坐下。",
+      "tokens": [
+        {
+          "id": "cats.white-name",
+          "hanzi": "小白",
+          "pinyin": "xiǎo bái",
+          "gloss": "Xiaobai",
+          "audio": "/audio/cats/word-white-name.wav"
+        },
+        {
+          "id": "and",
+          "hanzi": "和",
+          "pinyin": "hé",
+          "gloss": "and",
+          "audio": "/audio/word-3a31214de3ca0c356664730581b3b93c7bfda6c9d6cb6f6894621ee94d3b4a3e.wav"
+        },
+        {
+          "id": "you",
+          "hanzi": "你",
+          "pinyin": "nǐ",
+          "gloss": "you",
+          "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
+        },
+        {
+          "id": "cats.together",
+          "hanzi": "一起",
+          "pinyin": "yì qǐ",
+          "gloss": "together",
+          "audio": "/audio/cats/word-together.wav"
+        },
+        {
+          "id": "cats.sit",
+          "hanzi": "坐下",
+          "pinyin": "zuò xià",
+          "gloss": "sit down",
+          "audio": "/audio/cats/word-sit.wav"
+        }
+      ],
+      "audio": "/audio/cats/line-white-sitting.wav"
+    }
+  ]
+}

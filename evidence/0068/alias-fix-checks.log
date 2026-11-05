@@ -1,0 +1,11 @@
+
+ RUN  v3.2.7 /workspace/cats-0068
+
+ ✓ src/features/cats/content.test.ts (4 tests) 44ms
+ ✓ src/features/cats/rules.test.ts (28 tests) 80ms
+
+ Test Files  2 passed (2)
+      Tests  32 passed (32)
+   Start at  19:33:49
+   Duration  631ms (transform 253ms, setup 0ms, collect 483ms, tests 124ms, environment 1ms, prepare 192ms)
+

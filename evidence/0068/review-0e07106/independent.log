@@ -1,0 +1,89 @@
+[WebServer] (node:8783) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:8811) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/regexes.js (74:0): A comment
+[WebServer] 
+[WebServer] "/** Anchors a pattern source. The interpolation lives here rather than at the call site because
+[WebServer]  * esbuild will not drop a `@__PURE__` call whose own argument interpolates a variable, but it
+[WebServer]  * will drop `anchor(dateSource)`. Keeping it inline pinned `date` into every bundle. */"
+[WebServer] 
+[WebServer] in "node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+[WebServer] node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/util.js (400:0): A comment
+[WebServer] 
+[WebServer] "// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+[WebServer] 
+[WebServer] in "node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+[WebServer] (node:8832) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:8851) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"target":"white","observations":{"pose":{"white":{"x":8.4,"y":2.3},"player":{"x":10,"y":1.4999999999999998},"sitting":true},"today":{"routine":"sunny","white":"window","crouched":false,"close":true},"tomorrow":{"routine":"rainy","white":"door","crouched":false,"close":true},"recovery":[],"gifts":["cats.cushion"]}}
+  ✓  1 [desktop] › ../scratch/cats-final-review/independent.spec.ts:3:46 › late completion restored with white selected (2.1s)
+{"target":"window","observations":{"pose":{"white":{"x":8.4,"y":2.3},"player":{"x":10.05,"y":1.4499999999999997},"sitting":false},"today":{"routine":"sunny","white":"window","crouched":false,"close":true},"tomorrow":{"routine":"rainy","white":"door","crouched":false,"close":true},"recovery":[],"gifts":["cats.cushion"]}}
+  ✘  2 [desktop] › ../scratch/cats-final-review/independent.spec.ts:3:46 › late completion restored with window selected (2.1s)
+(node:9034) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"target":"white","observations":{"pose":{"white":{"x":8.4,"y":2.3},"player":{"x":10,"y":1.4999999999999998},"sitting":true},"today":{"routine":"sunny","white":"window","crouched":false,"close":true},"tomorrow":{"routine":"rainy","white":"door","crouched":false,"close":true},"recovery":[],"gifts":["cats.cushion"]}}
+  ✓  3 [phone] › ../scratch/cats-final-review/independent.spec.ts:3:46 › late completion restored with white selected (1.6s)
+{"target":"window","observations":{"pose":{"white":{"x":8.4,"y":2.3},"player":{"x":10.05,"y":1.4499999999999997},"sitting":false},"today":{"routine":"sunny","white":"window","crouched":false,"close":true},"tomorrow":{"routine":"rainy","white":"door","crouched":false,"close":true},"recovery":[],"gifts":["cats.cushion"]}}
+  ✘  4 [phone] › ../scratch/cats-final-review/independent.spec.ts:3:46 › late completion restored with window selected (1.6s)
+
+
+  1) [desktop] › ../scratch/cats-final-review/independent.spec.ts:3:46 › late completion restored with window selected 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      31 |  expect(observations.today.white).toBe('window'); expect(observations.tomorrow.white).toBe('door');
+      32 |  expect(observations.recovery).toEqual([]); expect(observations.gifts).toEqual(['cats.cushion']); expect(errors).toEqual([]);
+    > 33 |  expect(observations.pose.sitting).toBe(true);
+         |                                    ^
+      34 | });
+      35 |
+        at /workspace/scratch/cats-final-review/independent.spec.ts:33:36
+
+    Error Context: ../scratch/cats-final-review/playwright/independent-late-completion-restored-with-window-selected-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../scratch/cats-final-review/playwright/independent-late-completion-restored-with-window-selected-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace ../scratch/cats-final-review/playwright/independent-late-completion-restored-with-window-selected-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [phone] › ../scratch/cats-final-review/independent.spec.ts:3:46 › late completion restored with window selected 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      31 |  expect(observations.today.white).toBe('window'); expect(observations.tomorrow.white).toBe('door');
+      32 |  expect(observations.recovery).toEqual([]); expect(observations.gifts).toEqual(['cats.cushion']); expect(errors).toEqual([]);
+    > 33 |  expect(observations.pose.sitting).toBe(true);
+         |                                    ^
+      34 | });
+      35 |
+        at /workspace/scratch/cats-final-review/independent.spec.ts:33:36
+
+    Error Context: ../scratch/cats-final-review/playwright/independent-late-completion-restored-with-window-selected-phone/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../scratch/cats-final-review/playwright/independent-late-completion-restored-with-window-selected-phone/trace.zip
+    Usage:
+
+        npx playwright show-trace ../scratch/cats-final-review/playwright/independent-late-completion-restored-with-window-selected-phone/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [desktop] › ../scratch/cats-final-review/independent.spec.ts:3:46 › late completion restored with window selected 
+    [phone] › ../scratch/cats-final-review/independent.spec.ts:3:46 › late completion restored with window selected 
+  2 passed (16.5s)
