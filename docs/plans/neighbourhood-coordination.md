@@ -50,3 +50,14 @@ Every completed feature needs pure Vitest tests, build, existing opening→3+ cu
 - `/root/coordination_review`: independent no-edit design review, inherited lead model.
 - `/root/cloud_audio_probe`: read-only cloud synthesis capability check, requested gpt-6.1-sol medium.
 All received the updated conditional merge authority and quality policy. Progress review threshold is 30 minutes without a commit or concrete evidence, excluding explicit lease waits.
+
+## Maintenance craft allocations, 2026-11-05
+
+Remote branch inspection still ends at 0070. Central owner reserves exactly two requested follow-ups. These refine existing restaurant craft and do not add a fifth feature or new economy.
+
+| Ticket | Owner | Branch | Port | Files and dependencies |
+|---|---|---|---|---|
+|0071|central lead assigns one Sol Medium writer after 0063 App handoff|codex/0071-cumulative-earnings-label|5471|App summary label and focused regression only; no earnings/save changes; serialize with 0066|
+|0072|maintenance lead and one Sol Medium writer|codex/0072-served-food-props|5472|src/scene/restaurant-scene.js and focused scene tests/evidence; exclusive lease granted for this scene file; shared SceneFrame typing through 0066 only|
+
+0072 uses representative food/drink from actual order data and existing drawing primitives. Existing orders are already available to the scene adapter; inspect before requesting a type change. The separate restaurant renderer and ward stay outside this lease. 0071 labels the existing lifetime total explicitly; it does not reset earnings per day.
