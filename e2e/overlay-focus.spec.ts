@@ -19,7 +19,7 @@ for (const build of ["development", "production"]) {
     });
 
     for (const activation of ["pointer", "keyboard"]) {
-      test(`word card contains focus and restores both layers (${activation})`, async ({ page, isMobile }, info) => {
+      test(`word card shares focus with lookup sources and restores both layers (${activation})`, async ({ page, isMobile }, info) => {
         const errors: string[] = [];
         page.on("pageerror", error => errors.push(error.message));
         page.on("console", message => {
@@ -44,18 +44,17 @@ for (const build of ["development", "production"]) {
         const wordClose = wordCard.getByRole("button", { name: "关闭词卡" });
         const replay = wordCard.getByRole("button", { name: "听这个词" });
         await expect(wordClose).toBeFocused();
-        await expect(page.locator(".modal-backdrop")).toHaveAttribute("inert", "");
+        await expect(page.locator(".modal-backdrop")).not.toHaveAttribute("inert", "");
         await expect(page.locator("main")).toHaveAttribute("inert", "");
-        for (let cycle = 0; cycle < 2; cycle++) {
-          await page.keyboard.press("Shift+Tab");
-          await expect(replay).toBeFocused();
-          await page.keyboard.press("Tab");
-          await expect(wordClose).toBeFocused();
-          await page.keyboard.press("Tab");
-          await expect(replay).toBeFocused();
-          await page.keyboard.press("Tab");
-          await expect(wordClose).toBeFocused();
-        }
+        const sourceWords = tableDialog.locator("[data-word-lookup]");
+        await page.keyboard.press("Shift+Tab");
+        await expect(sourceWords.last()).toBeFocused();
+        await page.keyboard.press("Tab");
+        await expect(wordClose).toBeFocused();
+        await page.keyboard.press("Tab");
+        await expect(replay).toBeFocused();
+        await page.keyboard.press("Tab");
+        await expect(sourceWords.first()).toBeFocused();
         await page.screenshot({ path: `output/playwright/0025/${info.project.name}-${build}-${activation}-word-focus.png`, fullPage: true });
         await page.keyboard.press("Escape");
         await expect(wordCard).toHaveCount(0);
