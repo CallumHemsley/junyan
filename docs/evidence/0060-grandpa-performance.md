@@ -73,3 +73,7 @@ Self-review scores (scoped visual portion, not voice acceptance): presentation *
 Verdict: **BLOCKED** for ticket completion. Visual portion implemented and self-verified; no merge, no listening or Callum approval claimed.
 
 Final rebased journey result: **4/4 passed (3.6 min)** — desktop, desktop-reduced, phone, phone-reduced. No further implementation edits after the tested pose. Offline/persistence result: `errors: []`, `offlineAssets: 125`, `recoveredJournalPersisted: true`, `subjectiveListening: false`.
+
+## 2026-11-05 — supported 1.7B two-line handoff
+
+Root verified actual 1b7/custom_voice loadability at revision `f35faf19b0cc2160865af64ecf0f22f83d335135` on Mac; no user preference/quality approval yet. Prepared owned `scripts/0060-prepare-grandpa-audition.py` and [[0060-grandpa-1b7-handoff]]. Candidate uses Uncle_Fu, exact milk request + repeated egg thanks, original tokens/pinyin and loudness target, unique hospital audition preset and ordinary low-energy instructions. Local stdlib preparation/real pipeline plan passed: **2 pending / 119 cached**, production hashes unchanged, no synthesis. Complete cached baseline and old comparison WAVs copied into ignored output. Candidate paths are pending, not generated clips. Production files untouched; ticket remains incomplete until actual audition choice, coordinated generation and listening acceptance.
