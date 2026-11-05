@@ -10,7 +10,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 REVISION = "f35faf19b0cc2160865af64ecf0f22f83d335135"
-VOICE = "hospital-elder-1b7-conversational-audition"
+VOICE_PREFIX = "hospital-elder-1b7"
 INSTRUCTION = (
     "用普通日常交谈的语气轻声说话，语调平缓，语速从容，停顿自然，吐字清楚。"
     "像在病床上休息的人一样，不要兴奋，不要表演，不要耳语，不要颤抖或喘息。"
@@ -20,11 +20,13 @@ INSTRUCTION = (
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model-id", required=True, help="Exact parent-verified 1.7B CustomVoice repository ID")
-    parser.add_argument("--output", type=Path, default=ROOT / "output/0060-1b7-audition")
+    parser.add_argument("--direction", required=True, choices=("neutral", "conversational"))
+    parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     if "1.7B-CustomVoice" not in args.model_id:
         parser.error("Use the verified 1.7B CustomVoice model, not 0.6B/Base/VoiceDesign")
-    out = args.output.resolve()
+    voice_id = f"{VOICE_PREFIX}-{args.direction}-audition"
+    out = (args.output or ROOT / f"output/0060-1b7-{args.direction}").resolve()
     if not out.is_relative_to(ROOT / "output"):
         parser.error("Audition output must stay under this checkout's ignored output/")
     out.mkdir(parents=True, exist_ok=False)
@@ -36,9 +38,9 @@ def main():
     preset = copy.deepcopy(voices["voices"][elder["voices"]["zh"]])
     assert preset["speaker"] == "Uncle_Fu" and preset["speed"] == 1
     assert preset["loudness"] == {"targetActiveRmsDbfs": -20, "peakCeilingDbfs": -1}
-    preset.update(model=args.model_id, revision=REVISION, instructions=INSTRUCTION)
-    voices["voices"][VOICE] = preset
-    elder["voices"]["zh"] = VOICE
+    preset.update(model=args.model_id, revision=REVISION, instructions=None if args.direction == "neutral" else INSTRUCTION)
+    voices["voices"][voice_id] = preset
+    elder["voices"]["zh"] = voice_id
     requests = [s for s in original["opening"]["steps"] if s.get("who") == "elder"]
     selected = [requests[0]["line"], requests[1]["ok"]]
     assert [line["id"] for line in selected] == ["elder-milk", "elder-egg-thanks"]
@@ -57,7 +59,7 @@ def main():
     (out / "plan.jsonl").write_text(result.stdout)
     rows = [json.loads(row) for row in result.stdout.splitlines()]
     pending = [row for row in rows if not row["cached"]]
-    assert len(pending) == 2 and all(row["voice_ids"] == [VOICE] for row in pending), pending
+    assert len(pending) == 2 and all(row["voice_ids"] == [voice_id] for row in pending), pending
     assert {row["text"] for row in pending} == {line["text"] for line in selected}
     assert all(before[p] == hashlib.sha256(p.read_bytes()).hexdigest() for p in before)
     comparisons = [{"id": line["id"], "text": line["text"], "authored_pinyin": [t["pinyin"] for t in line["tokens"]],
