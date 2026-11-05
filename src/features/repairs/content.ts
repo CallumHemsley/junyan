@@ -23,3 +23,7 @@ export function lineFor(feedback: string): Line {
 export function wordFor(hanzi: string): Word {
   return words.find(word => word.hanzi === hanzi)!;
 }
+
+export function speakerFor(feedback: string) {
+  return content.characters.find(character => character.lines.some(line => line.id === `repairs.${feedback}`))!;
+}

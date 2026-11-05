@@ -17,6 +17,7 @@ describe('repair workshop physical rules', () => {
     expect(currentBench(loose)).toMatchObject({ fitting: 'loose', power: 'on', test: 'unstable' });
     const blocked = act(loose, { type: 'turn', job: 'lamp', direction: 'tighten' });
     expect(blocked.feedback).toBe('power-first');
+    expect(act(blocked, { type: 'test', job: 'lamp' }).feedback).toBe('lamp-unstable');
     expect(currentBench(blocked)).toEqual(currentBench(loose));
     expect(recovered(loose, { type: 'turn', job: 'lamp', direction: 'tighten' }, blocked)).toEqual([]);
     const fixed = act(blocked, { type: 'power-off', job: 'lamp' }, { type: 'turn', job: 'lamp', direction: 'tighten' });

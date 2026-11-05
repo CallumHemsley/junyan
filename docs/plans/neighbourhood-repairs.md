@@ -14,7 +14,7 @@ All operations use DOM targets at least 44px. Select a visible part, then choose
 
 ## Mandarin and inference
 
-Bounded action vocabulary includes 灯泡, 电池, 线, 拧紧, 转松, 接上, 拔下, 换, 打开, 盖上, 试试, 先, 再, 好了 and 不动. “先关掉，再拧紧。” follows an attempted powered manipulation. “线接上了。电池呢？” follows connecting the lead while the old battery remains. “电池换好了。线呢？” follows replacing the cell while the lead remains loose. Feedback names visible outcomes. It does not grade the player. All lines and words are segmented JSON and validated against feature-local schemas permitting dotted IDs and nested audio paths. Pinyin and gloss stay in lookup data. Existing genuinely identical canonical words are reused.
+Bounded action vocabulary includes 灯泡, 电池, 线, 拧紧, 转松, 接上, 拔下, 换, 打开, 盖上, 试试, 先, 再, 好了 and 不动. “先关掉，再拧紧。” follows an attempted powered manipulation. “线接上了。” follows connecting the lead. “换上新电池了。” follows replacing the cell. “还是不动。再打开。” follows a failed closed-cover test. Opening dialogue stays neutral because either part may already be repaired. Feedback names visible outcomes. It does not grade the player. All lines and words are segmented JSON and validated against feature-local schemas permitting dotted IDs and nested audio paths. Pinyin and gloss stay in lookup data. Existing genuinely identical canonical words are reused.
 
 ## Architecture and persistence
 
@@ -39,3 +39,18 @@ Offline natural voices are mandatory. Existing Linux audit found no usable synth
 ## Release boundary
 
 Only lamp and toy. Radios, umbrellas, soldering, material crafting, extra faults, time limits, tool shops and additional rewards are deferred. Practice provides repetition without a new economy. Ticket remains doing or blocked while required audio or integrated checks are incomplete.
+
+## Implemented data flow
+
+```mermaid
+flowchart LR
+  Parts[DOM part and action controls] --> Rules[Pure repair reducer]
+  Rules --> Jobs[Saved lamp and toy physical records]
+  Jobs --> Scene[Pixel workbench and visible outcomes]
+  Jobs --> Return[Fresh test then guarded return]
+  Return --> Completed[Unique completed object IDs]
+  Completed --> Gift[Derived repairs.stool gift]
+  Rules --> Recovery[Matching transition recovery callback]
+  Content[Validated segmented content] --> Tokens[Shared WordToken and playback callbacks]
+  Jobs -. integration pending .-> Save[Central neighbourhood save envelope]
+```

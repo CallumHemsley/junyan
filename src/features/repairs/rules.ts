@@ -64,7 +64,7 @@ export function reduce(state: State, action: Action, _day: number): State {
     }
     if (action.type === 'test') {
       const test = bench.fitting === 'seated' ? 'steady' : 'unstable';
-      if (bench.test === test && bench.power === 'on') return state;
+      if (bench.test === test && bench.power === 'on' && state.feedback === (test === 'steady' ? 'lamp-steady' : 'lamp-unstable')) return state;
       return update(state, { ...bench, power: 'on', test }, test === 'steady' ? 'lamp-steady' : 'lamp-unstable');
     }
     if (action.type !== 'turn' || state.selected !== 'bulb' || !['tighten', 'loosen'].includes(action.direction)) return state;
@@ -76,7 +76,7 @@ export function reduce(state: State, action: Action, _day: number): State {
   if (action.type === 'test') {
     if (bench.cover === 'open') return state.feedback === 'close-first' ? state : { ...state, feedback: 'close-first' };
     const test = bench.lead === 'connected' && bench.cell === 'fresh' ? 'moving' : 'still';
-    if (bench.test === test) return state;
+    if (bench.test === test && state.feedback === (test === 'moving' ? 'toy-moving' : 'toy-still')) return state;
     return update(state, { ...bench, test }, test === 'moving' ? 'toy-moving' : 'toy-still');
   }
   if (action.type === 'cover') {

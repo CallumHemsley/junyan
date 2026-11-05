@@ -8,8 +8,8 @@
   - [x] Shared mutable state. No shared production file writes. Feature state travels through controlled props and the central save envelope.
   - [x] Smallest safe decomposition. One feature writer owns coupled rules, content, scene and UI. Parent manages separate read-only reviewers. No extra writers.
 - [x] Delegate code-writing. This worker is the sole parent-delegated implementation owner. Feature step 4 explicitly permits a subagent forbidden to spawn to own the diff with review separation.
-- [ ] Verify on the matching surface.
-- [ ] Rebase into small, ordered commits. Sequence Work into Verifiable Units controls ordering.
+- [x] Verify on the matching surface. Isolated desktop, 390px and 320px browser journeys pass. Integrated journey and audio are separately pending.
+- [x] Rebase into small, ordered commits. Checked rules/content, switching, truthful feedback and UI are separate commits. Rebase onto current main remains a central integration step.
 - [ ] If the design is contested, interrogate before shipping. No unresolved contested choice in the supplied synthesis.
 - [ ] Run Opening a PR. Central lead owns connector operations and asks when ready.
 
@@ -20,3 +20,19 @@ Mandatory audio and integrated navigation/save/offline verification remain pendi
 First rules/content unit passed `pnpm test -- src/features/repairs/rules.test.ts` on 2026-11-05. This repository command runs the full suite. 12 files and 179 tests passed, including 10 repair tests. Audio pipeline `--plan` succeeded with exact authored content. No audio generated. Parent subsequently requested free switching between both unfinished jobs; implement that as the next checked unit before UI.
 
 Architecture comparison evidence. Candidate A offered object-state unions with guarded return and test invalidation. Candidate B offered a bounded parts table with freely ordered reversible manipulation. Root Astra compared them because a different-model-family arena judge was unavailable within the requested Sol-medium worker policy. Synthesis takes guarded test/return from A and freely ordered toy interventions from B. Explicit actions replace a generic circuit interpreter.
+
+## Code-ready checkpoint
+
+`pnpm test` passed 12 files and 180 tests. `pnpm build` passed. Existing dependency annotation warnings came from reused installed Zod, with no source or lock changes. `pnpm exec playwright test --config evidence/0069/playwright.config.ts` passed 9 checks across desktop, 390px phone and 320px phone. Three explicitly skipped checks record integrated navigation/save/offline/audio pending, rather than passes.
+
+Baseline command `PLAYWRIGHT_BROWSERS_PATH=/workspace/.junyan-tools/browsers JUNYAN_DEV_PORT=5469 JUNYAN_PREVIEW_PORT=5569 pnpm exec playwright test --config evidence/0069/baseline.config.ts` passed all 6 desktop/phone tests. These include the actual hospital opening, customer service, change, journal, day progression, keyboard walking and browser-save reload. First attempt lacked ffmpeg because the preinstalled browser-tools path was omitted; it failed before page creation. Correcting that environment variable resolved it.
+
+The isolated harness records onPlay callbacks and does not pretend to play unavailable voices. It uses URL-encoded state to check the controlled save boundary. It does not test IndexedDB or shared routes. Shared journal and word-card integration remain central responsibilities. Audio inventory fails honestly with 64 missing clips out of 72 unique references. Eight canonical dictionary clips already exist.
+
+Writer inspected actual desktop, phone and 320px screenshots. Labels now sit outside the bulb/fitting and toy parts, with leader rings. The lamp is enlarged and visibly seats lower, then casts warm steady light. The toy exposes its old striped cell and metal lead and moves after both fixes. Reduced motion uses fixed time and static visible differences. All visible button boxes meet 44px width/height in browser assertions. Spoken text stays at least 28px. Return moves keyboard focus to practice.
+
+Root separately drove 320x740 UI through tighten, steady test, attempted powered loosening and retest. Root confirmed correct restored test feedback, no console/page errors and document width equal to viewport width. Root inspected its own /tmp/repairs-root320.png. This is additional isolated evidence only.
+
+Independent rules/content review by parent-appointed reviewer found and writer fixed false reopened-part dialogue, forged feedback saves and repeat-test feedback. Parent reported exhaustive 2,717-state /73,359-transition validation with no failures before the retest patch. Parent UI notes led to 28px phone speech, practice focus, truthful material labels and shared speaker source for visible resident, label and onPlay. Full independent final UI/diff review is still pending. No nested reviewer was spawned because this writer is explicitly forbidden to spawn. No application comments, TypeScript suppressions or any-casts were introduced.
+
+Remaining gates are final independent review, exact offline audio generation/listening, integration into 0066 routes/word registry/save/offline enumeration, real cross-feature/day transitions, old-save migration, feature IndexedDB reload and offline playback. Ticket is blocked by those concrete dependencies, not complete.

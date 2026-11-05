@@ -2,3 +2,8 @@ ts	phase	decision	why	evidence	result
 2026-11-05T19:08:00Z	start	Started canonical skill-format trail; prior choices are in decisions.tsv	Correct historical format without erasing it	evidence/0069/decisions.tsv	open
 2026-11-05T19:08:01Z	rules	Store both physical jobs and allow free switching	An unfinished lamp must not gate toy repair	src/features/repairs/rules.test.ts	tests green
 2026-11-05T19:08:02Z	content	Separate object return from both-complete gift line	Toy may be returned first; materials appear naturally	src/features/repairs/content.json	open
+2026-11-05T19:22:00Z	review	Use neutral reopened dialogue and validate feedback semantics	Physical state must support the spoken claim	commit dc2f075	tests green
+2026-11-05T19:22:01Z	ui	Enlarge pixel objects and move labels to leader rings	Players must see bulb seating and toy contacts	evidence/0069/phone-toy-exposed.png	inspected
+2026-11-05T19:22:02Z	ui	Use one content speaker function for resident and dialogue	Both return orders must show the person whose voice plays	e2e/repairs.spec.ts	9 isolated checks passed
+2026-11-05T19:22:03Z	verification	Run existing desktop and phone waiter journey	Repair code must preserve the original game	evidence/0069/baseline.config.ts	6 checks passed
+2026-11-05T19:22:04Z	audio	Fail the asset inventory until exact natural voices exist	Callback-only harness does not prove audio	evidence/0069/audio-inventory.json	64 clips missing
