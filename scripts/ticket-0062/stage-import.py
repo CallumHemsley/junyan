@@ -1,4 +1,4 @@
-"""Stage a targeted 24-line import against this checkout. Never write production files."""
+"""Stage a targeted 23-line import against this checkout. Never write production files."""
 import argparse
 from copy import deepcopy
 from hashlib import sha256
@@ -33,12 +33,13 @@ manifest = json.loads((ROOT / 'public/audio/manifest.json').read_text())
 records = {entry['filename']: entry for entry in manifest['clips']}
 if len(records) != len(manifest['clips']):
     raise ValueError('Duplicate production manifest filenames')
-rows = json.loads(support('inventory.json'))
-entries = json.loads(support('manifest-entries.json'))['clips']
+rejected = 'line-71cc826bfe95375cd38207f20368356df6c5fefc9fb79f99b309065b8fb382d9.wav'
+rows = [row for row in json.loads(support('inventory.json')) if row['lineId'] != 'zhang-retry']
+entries = [entry for entry in json.loads(support('manifest-entries.json'))['clips'] if entry['filename'] != rejected]
 selected = {entry['filename']: entry for entry in entries}
 lines = {line['id']: line for line in restaurant(content)}
-if len(rows) != 24 or len(selected) != 24 or len(lines) != 24 or {r['lineId'] for r in rows} != set(lines):
-    raise ValueError('Expected exactly 24 distinct matching restaurant line IDs/assets')
+if len(rows) != 23 or len(selected) != 23 or len(lines) != 24 or {r['lineId'] for r in rows} != set(lines) - {'zhang-retry'}:
+    raise ValueError('Expected 23 distinct target lines; original zhang-retry must be retained')
 for row in rows:
     line = lines[row['lineId']]
     if ''.join(c for c in row['text'] if c not in '，。！？·') != ''.join(t['hanzi'] for t in line['tokens']):
@@ -76,6 +77,8 @@ accepted = json.loads(subprocess.check_output(['git', 'show', 'bf90baa2d266d5936
 for row in accepted:
     if sha256(files[Path(row['candidateAudio']).name]).hexdigest() != row['sha256']:
         raise ValueError('Accepted thanks take changed')
+if lines['zhang-retry'] != next(line for line in restaurant(original) if line['id'] == 'zhang-retry'):
+    raise ValueError('Original teacher retry was modified')
 new_entries = [entry for entry in entries if entry['filename'] not in records]
 manifest['clips'].extend(new_entries)
 out.mkdir(parents=True)
@@ -88,9 +91,9 @@ for name, data in files.items():
 (out / 'voices.json').write_bytes((ROOT / 'src/content/voices.json').read_bytes())
 (out / 'audio/manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
 report = dict(supportCommit=REF, checkoutHead=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
-              targetedLines=24, acceptedThanksUnchanged=4, addedManifestRecords=len(new_entries),
-              retiredFiles=0, productionWritten=False, approvalStatus="CANDIDATES_NOT_CLEARED",
-              heldLineIds=["zhang-retry"], holdReason="Root investigating possible omitted 再看看 clause; short greetings/retries also have ASR uncertainty",
+              targetedLines=23, acceptedThanksUnchanged=4, addedManifestRecords=len(new_entries),
+              retiredFiles=0, productionWritten=False, approvalStatus="ROOT_SELECTED_23_PENDING_LEASE_AND_FINAL_REVIEW",
+              retainedOriginalLineIds=["zhang-retry"], rejectedCandidate=rejected,
               inputHashes={str(p):sha256((ROOT/p).read_bytes()).hexdigest() for p in ('src/content/content.json','src/content/voices.json','public/audio/manifest.json')})
 (out / 'import-report.json').write_text(json.dumps(report, indent=2) + '\n')
 print(json.dumps(report, indent=2))
