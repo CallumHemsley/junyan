@@ -1,0 +1,109 @@
+{
+  "clips": [
+    {
+      "filename": "apartment/line-welcome.wav",
+      "sha256": "fe25df45f201f5b0fccdb4e54f7a39ca214218db914fc7b0bdbec66f9bd1949b",
+      "content_digest": "b23fb6c5e80c60719bc0a659231bd75c4fa907870ffe7e70258cfb40882b8b16",
+      "text": "桌子和椅子给你。",
+      "reason": "Full-line ASR mismatch; bounded retake requested."
+    },
+    {
+      "filename": "apartment/line-rotate.wav",
+      "sha256": "c3ec9a63fe20778831856b90a3cc3dd39510f1934c52a9a103d3a0eb35fb7f43",
+      "content_digest": "86098bf9cc347d479314aba26dc5f6675ac92e59d45f717ed43f8212d2c061c8",
+      "text": "转一下。",
+      "reason": "Full-line ASR mismatch; bounded retake requested."
+    },
+    {
+      "filename": "apartment/line-gift.wav",
+      "sha256": "a68f279abc032e762651a17a6b449f51d0a510159f9c299d104eea99e1163332",
+      "content_digest": "21b5028350b6ea1a1518b1460a7b1fde200c74692b03dc5cdbec312cbe866cfc",
+      "text": "这个给你。",
+      "reason": "Full-line ASR mismatch; bounded retake requested."
+    },
+    {
+      "filename": "cats/line-doorway.wav",
+      "sha256": "2e052554e2ec694b0732c64bb5b3aae8e69cf3e411cc90bfc346f0b31c9b1b3d",
+      "content_digest": "7372818f054bb46094fe0ec6c18486eaffe8c74478fc7cc6e2e24134b422243f",
+      "text": "她在门口。",
+      "reason": "Full-line ASR mismatch; bounded retake requested."
+    },
+    {
+      "filename": "cats/line-label-white.wav",
+      "sha256": "21ed8366f6ff75b7fbe0820c540d48354ccc59c9941f4014adefb716ad6d6d74",
+      "content_digest": "913c9130bc42181f955142bc5d75e5ac88911397cd19861a140b688726716914",
+      "text": "小白",
+      "reason": "Full-line ASR mismatch; bounded retake requested."
+    },
+    {
+      "filename": "cats/line-label-bench.wav",
+      "sha256": "0f3b02ba944fc10d0e5847635809687f1b317668c3d3b398450b54f27c0bc9a2",
+      "content_digest": "a803da16769d954456724113ee70799dabde91e4bb76609f37f9f1a2eb6385dc",
+      "text": "椅子",
+      "reason": "Full-line ASR mismatch; bounded retake requested."
+    },
+    {
+      "filename": "cats/line-label-door.wav",
+      "sha256": "f06e0747cb1c9cf506da8622b841623a9c2538660a260d7d9f39578e56e72e34",
+      "content_digest": "7f2e4d4c46ba17210a4d5a13d8d39ee9c9b9738c62a6b8c13c26419ce54ee169",
+      "text": "门口",
+      "reason": "Full-line ASR mismatch; bounded retake requested."
+    },
+    {
+      "filename": "cats/line-action-begin.wav",
+      "sha256": "8a3ef661bca68349cca0a461805a06e6f052b3b6de5e49e17ce5fe254f2acced",
+      "content_digest": "bd46d213ff561601d21bf0f0852be8d59808dc2c7f7bfec39c9b2e9e1661481e",
+      "text": "看看院子",
+      "reason": "Full-line ASR mismatch; bounded retake requested."
+    },
+    {
+      "filename": "garden/line-a00e19fb6fd7917efaf080a2e4c986d10c77627dd24af902cfaeb9d0a58a009f.wav",
+      "sha256": "8acc1ade1e795864ef4b63c6bc39cb5bda4ca3120ebbb371f68e125e1474a71a",
+      "content_digest": "a00e19fb6fd7917efaf080a2e4c986d10c77627dd24af902cfaeb9d0a58a009f",
+      "text": "比昨天高一点了",
+      "reason": "Full-line ASR mismatch; bounded retake requested."
+    },
+    {
+      "filename": "garden/line-94071bc83fe7641966cc896d246319a6c75345dcea1a620f270acadab78a9f7d.wav",
+      "sha256": "f15f1663c9252758a211d3e8367b6c8f530c2f61876c73db9e3506fb4620f209",
+      "content_digest": "94071bc83fe7641966cc896d246319a6c75345dcea1a620f270acadab78a9f7d",
+      "text": "花开了小鸟也来了",
+      "reason": "Full-line ASR mismatch; bounded retake requested."
+    },
+    {
+      "filename": "garden/line-48aacdeab5f7e8a7335c3864d4c9c3187dcf7880a85b7b9a40f55b9b7151c9ce.wav",
+      "sha256": "2d2247c7e86b824bfc39c721d0fafab1af22def73fe5af61f054c603d8a77c52",
+      "content_digest": "48aacdeab5f7e8a7335c3864d4c9c3187dcf7880a85b7b9a40f55b9b7151c9ce",
+      "text": "选空位放遮阳架",
+      "reason": "Full-line ASR mismatch; bounded retake requested."
+    },
+    {
+      "filename": "repairs/line-lamp-tight.wav",
+      "sha256": "50975938907eaf1e5f68684fb680e1f2e3268f20260f297a23e124e55a3b13c5",
+      "content_digest": "85e40968ef410cae1e0cb0115c3675ff640ffe7e40d1ad712a59e2d5789c5925",
+      "text": "灯泡拧紧了。再试试。",
+      "reason": "Full-line ASR mismatch; bounded retake requested."
+    },
+    {
+      "filename": "repairs/line-lamp-loose.wav",
+      "sha256": "d664d16e78f12b6a68a2fc6bf043a00b2916869cf4d106b1c16925a94c4206e2",
+      "content_digest": "fe6cde0c82cc4b5be38b2df01bec2f50881f6b502dcf73d536da2d535aede85f",
+      "text": "灯泡松了。",
+      "reason": "Full-line ASR mismatch; bounded retake requested."
+    },
+    {
+      "filename": "repairs/line-lamp-returned.wav",
+      "sha256": "b659078db8c1c9e75f7188bae75d8fc49e3c3865e023f5eb8607d90c8a08c263",
+      "content_digest": "547bd209128e8394a940228254e7d990d16b45dbaa30c60166d683bbaa37a424",
+      "text": "台灯修好了。",
+      "reason": "Full-line ASR mismatch; bounded retake requested."
+    },
+    {
+      "filename": "apartment/line-gift.wav",
+      "sha256": "a8aee0d81483575981a2e766ca9a53b13d7df130f78e9384cc707c506fccf57a",
+      "content_digest": "21b5028350b6ea1a1518b1460a7b1fde200c74692b03dc5cdbec312cbe866cfc",
+      "text": "这个给你。",
+      "reason": "Full-line ASR mismatch; bounded retake requested."
+    }
+  ]
+}

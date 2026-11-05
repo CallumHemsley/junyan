@@ -1,0 +1,27 @@
+{
+  "status": "PROVENANCE_AND_SIGNAL_PASS_NOT_LISTENING_APPROVAL",
+  "missing": 0,
+  "invalid": 0,
+  "features": {
+    "apartment": {
+      "references": 54,
+      "missing": [],
+      "invalid": []
+    },
+    "cats": {
+      "references": 96,
+      "missing": [],
+      "invalid": []
+    },
+    "repairs": {
+      "references": 72,
+      "missing": [],
+      "invalid": []
+    },
+    "garden": {
+      "references": 91,
+      "missing": [],
+      "invalid": []
+    }
+  }
+}
