@@ -7,3 +7,5 @@ ts	phase	decision	why	evidence	result
 2026-11-05T19:22:02Z	ui	Use one content speaker function for resident and dialogue	Both return orders must show the person whose voice plays	e2e/repairs.spec.ts	9 isolated checks passed
 2026-11-05T19:22:03Z	verification	Run existing desktop and phone waiter journey	Repair code must preserve the original game	evidence/0069/baseline.config.ts	6 checks passed
 2026-11-05T19:22:04Z	audio	Fail the asset inventory until exact natural voices exist	Callback-only harness does not prove audio	evidence/0069/audio-inventory.json	64 clips missing
+2026-11-05T19:27:00Z	branch	Rebase only repair commits onto current main	Exclude already squash-merged coordination commits	5c90ba4b7421755fee3dd5d12e777f70dd34f226	no shared code changes
+2026-11-05T19:27:01Z	verification	Repeat the full required check sequence after rebase	Review the exact source against current shared code	06e34bffa7682027efbb89d2915491e3c9d9a9b8	181 rules; build;9 repair;6 baseline checks passed
