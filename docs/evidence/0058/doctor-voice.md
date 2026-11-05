@@ -71,3 +71,83 @@ Result: **38 passed, 2 skipped, 1 did not run; exit 1** in 2.7 minutes. One erro
 Also inspected `output/playwright/phone-restaurant.png` and `phone-journal.png`; game layout and journal controls remain visible. Screenshot artifact root: `/workspace/junyan-0058/output/playwright/`. Traces/error context: `/workspace/junyan-0058/output/0058-test-results/`. No listening or audio/video recording available from this cloud run.
 
 Verdict: **BLOCKED** for implementation completion. Exact candidate handoff is published; await Mac artifacts and actual baseline/candidate listening with recorded notes, then Callum's in-scene approval, final audio/offline checks and parent's independent exact-head review. Ticket status is blocked. No production source/audio, dependencies, schemas, restaurant or other cast changed; no AWS writes and no merge.
+
+## 2026-11-05 — user rejects both original auditions
+
+Direct user feedback relayed by parent: listened to **both** local auditions and said “neither sounds right. Why does it not sound like a normal doctor”. Both `ryan-calm` and `aiden` are **REJECTED**. Parent reports each real synthesis finished with 5 attempted / 0 failed / 125 available / 0 pending. Audition-only artifacts are on support branch `codex/0058-synthesis-support` at `e62a5c0`; this writer has not imported that branch or its clips. Do not import either as a fix; do not merge PR13. Successful signal checks and user rejection coexist: the failure is perceived performance quality.
+
+### Matched adapter diagnosis
+
+Downloaded, but did not install, the exact pinned PyPI wheel `mlx_audio-0.6.3-py3-none-any.whl`, SHA256 `2cfaef542f29c0eb0f58bb3823eafbb9acf9df9b01a7f45a9bbf3b4b5d44dab9`. Source path inside wheel: `mlx_audio/tts/models/qwen3_tts/qwen3_tts.py`, lines 2167–2169, explicitly discards the instruction:
+
+```python
+if self.config.tts_model_size == "0b6":
+    instruct = None
+```
+
+The production adapter calls this exact `generate_custom_voice` function. Therefore the original `ryan-calm` text **never reached style conditioning** for the pinned 0.6B model. Changed preset hashes also change sampling seeds; any audible difference cannot be attributed to that ignored instruction. This is an established capability limit, not a diagnosis of every audible defect. I should have checked the exact pinned adapter before offering this candidate.
+
+Official [Qwen inference source](https://github.com/QwenLM/Qwen3-TTS/blob/main/qwen_tts/inference/qwen3_tts_model.py), fetched through GitHub connector at blob `f4d33bf3d60c404ee540e58488545ccf5347e25f`, lines 799–800, also discards instructions for 0b6. The [official README matrix](https://github.com/QwenLM/Qwen3-TTS/blob/main/README.md) agrees. The [official 0.6B Hugging Face model card](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice) contradicts those sources by claiming natural-language style control and showing an instruct example. Prioritise actual matched adapter behavior over that model-card claim. Parent should confirm the installed function via `inspect.getsource(type(model).generate_custom_voice)`; cloud wheel inspection is not a claim to have inspected the Mac's installed files.
+
+Performance approach diagnosis: switching fixed 0.6B timbres does not provide control over ordinary conversational delivery; a role-heavy reassurance prompt was both unsupported and poorly targeted to the user's request. Each authored line is generated independently without surrounding dialogue, so continuity is also a plausible risk; no listening evidence isolates that risk yet. There is no evidence here that loudness, punctuation, quantization or a particular accent caused the complaint. Do not apply speculative pitch/time processing, rewrite lines or hunt seeds blindly.
+
+### Materially different comparison: supported style conditioning
+
+Audition-only checkpoint: [MLX 1.7B CustomVoice](https://huggingface.co/mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit), exact [revision](https://huggingface.co/mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit/commit/f35faf19b0cc2160865af64ecf0f22f83d335135) `f35faf19b0cc2160865af64ecf0f22f83d335135`. Reviewed model config identifies `tts_model_size: 1b7`, `tts_model_type: custom_voice`, four-bit quantization and Ryan speaker support. Official matrix marks 1.7B CustomVoice instruction control supported; pinned adapter preserves instructions when size is 1b7. This establishes a materially different mechanism, **not a promise of naturalness**. Cloud cannot synthesize; Mac currently caches only 0.6B, so one explicit pinned download is needed. No production model/dependency change.
+
+`prepare-supported-auditions.py` makes two isolated full-content copies:
+
+- `larger-neutral`: Ryan, larger model, null instructions. Tests capacity without performance direction.
+- `larger-conversation`: identical larger model and Ryan, with: `Speak to one person beside you in an ordinary conversational voice. Use matter-of-fact phrasing, relaxed everyday pacing and light natural warmth.`
+
+This avoids an archetypal “reassuring doctor” performance request. Keep all four English texts and Mandarin handover verbatim, both languages on Ryan, current speed 1, -20/-1 loudness, native-rate pipeline, sampling and bounded validation unchanged. Changing identities changes deterministic seeds, so this is a quality comparison, not a controlled causal measurement of the prompt alone. No more 0.6B variants.
+
+### Precise Mac handoff — round 2 (supersedes round 1)
+
+First, download **only this explicitly pinned audition model** using the existing runtime (online download, no inference). Keep its returned snapshot path and command log:
+
+```sh
+/tmp/junyan-qwen-venv-0049/bin/python - <<'PY'
+from huggingface_hub import snapshot_download
+print(snapshot_download('mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit',
+    revision='f35faf19b0cc2160865af64ecf0f22f83d335135', token=False))
+PY
+```
+
+Then preflight offline, before spending time on takes:
+
+```sh
+HF_HUB_OFFLINE=1 /tmp/junyan-qwen-venv-0049/bin/python - <<'PY'
+import inspect
+from pathlib import Path
+from huggingface_hub import snapshot_download
+from mlx_audio.tts.utils import load_model
+model = load_model(Path(snapshot_download(
+    'mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit',
+    revision='f35faf19b0cc2160865af64ecf0f22f83d335135', token=False)))
+assert model.config.tts_model_size == '1b7'
+assert model.config.tts_model_type == 'custom_voice'
+print(model.config.tts_model_size, model.config.tts_model_type)
+print(model.get_supported_speakers())
+print(inspect.getsource(type(model).generate_custom_voice))
+PY
+```
+
+If load/compatibility/memory fails, report the exact failure; do not install packages, change weights, lift memory limits or fall back to another model silently. If preflight succeeds:
+
+```sh
+python3 docs/evidence/0058/prepare-supported-auditions.py output/0058-supported-auditions
+for candidate in larger-neutral larger-conversation; do
+  HF_HUB_OFFLINE=1 /tmp/junyan-qwen-venv-0049/bin/python scripts/content-audio.py \
+    --content "output/0058-supported-auditions/$candidate/content.json" \
+    --voices "output/0058-supported-auditions/$candidate/voices.json" \
+    --output "output/0058-supported-auditions/$candidate/audio" \
+    --engine qwen --write-content || break
+done
+```
+
+Cloud validation of both prepared copies: each plan has 120 cached / exactly 5 pending (4 English + 1 Mandarin); content equals production exactly and only the two doctor presets differ. No synthesis or quality pass claimed. No need to rerun unchanged game tests for this documentation/preparer-only checkpoint.
+
+Return the same artifact contract as round 1 plus model preflight output and runtime version. Present two anonymous labels in the same wake scene, at the same volume, to the user. First compare the first English line and Mandarin handover; stop if both still sound unnatural. Only a promising voice proceeds to the complete four-line premise and nurse transition. Ask for ordinary believable conversation, exact words, clear Mandarin and consistent identity; avoid prompting the listener to favour “calmness”. Record what they reject or prefer in their own words and retain actual listening/scene capture paths. Root cannot hear audio and must not invent listening notes. Both larger takes remain hypotheses, not production choices.
+
+If supported conversational direction still fails, stop expanding synthetic preset variants. Next materially different strategy is a short performance-led bilingual human recording of the exact script (or a consensually supplied reference with a separately evaluated local cloning model). That would establish natural conversational timing directly rather than extrapolating from preset names. No human recording, reference use, model change or paid service has occurred or been silently authorized by this plan. Discuss that route with the user based on the round-2 evidence.
