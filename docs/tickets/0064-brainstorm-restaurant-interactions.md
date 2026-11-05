@@ -1,7 +1,7 @@
 ---
 id: 64
 title: Explore more playful interactions in the restaurant
-status: doing
+status: done
 priority: medium
 type: explore
 created: 2026-11-05
@@ -13,11 +13,11 @@ Callum wants the player to have more things to do in the café/canteen and asks 
 
 ## Done when
 
-- [ ] Play the current restaurant loop and identify where the player is waiting, repeating actions without a meaningful choice, or wanting to interact with the scene. Record observations separately from ideas.
-- [ ] Produce a focused shortlist of up to five distinct ideas. Possible starting points include preparing or pouring a drink, helping with a small customer request, clearing or arranging a table, responding to a regular, or choosing how to improve the stall. These are prompts for exploration, not committed features.
-- [ ] For each idea, describe the player's concrete action, an example moment, why it could be fun, how it fits Mandarin learning without becoming an exercise, and its likely implementation effort. Consider phone controls, accessibility and the gentle pace.
-- [ ] Recommend the smallest promising experiment and define how a short playtest would tell whether it adds enjoyment rather than busywork. Describe the minimum prototype, its success criteria and the parts intentionally left out.
-- [ ] Save the brainstorm and recommendation in `docs/ideas/restaurant-interactions.md` with the project's idea/research frontmatter. Present the shortlist to Callum for selection before creating implementation tickets or building a prototype.
+- [x] Play the current restaurant loop and identify where the player is waiting, repeating actions without a meaningful choice, or wanting to interact with the scene. Record observations separately from ideas.
+- [x] Produce a focused shortlist of up to five distinct ideas. Possible starting points include preparing or pouring a drink, helping with a small customer request, clearing or arranging a table, responding to a regular, or choosing how to improve the stall. These are prompts for exploration, not committed features.
+- [x] For each idea, describe the player's concrete action, an example moment, why it could be fun, how it fits Mandarin learning without becoming an exercise, and its likely implementation effort. Consider phone controls, accessibility and the gentle pace.
+- [x] Recommend the smallest promising experiment and define how a short playtest would tell whether it adds enjoyment rather than busywork. Describe the minimum prototype, its success criteria and the parts intentionally left out.
+- [x] Save the brainstorm and recommendation in `docs/ideas/restaurant-interactions.md` with the project's idea/research frontmatter. Present the shortlist to Callum for selection before creating implementation tickets or building a prototype.
 
 ## Notes
 
@@ -30,3 +30,8 @@ Callum wants the player to have more things to do in the café/canteen and asks 
 
 - 2026-11-05: Owner Codex ticket 0064; branch `codex/0064-restaurant-interactions`; isolated checkout `/workspace/junyan-0064`; base `66ac123` (current origin/main at start). Strict dev/preview ports `5406` / `5407`. Only this ticket and `docs/ideas/restaurant-interactions.md` are writable deliverables; runtime evidence stays outside tracked files.
 - Read shared guidance, ticket conventions, accepted decisions 0001–0004, Morning Steam design guidance/tokens and build recommendation. Decision 0003 governs the current pixel waiter surface over the earlier counter mockups. No bundled pstack playbooks found in workspace; following the supplied poteto-mode/autopilot-full harness steps, adapted to exploration. No new mechanic, implementation ticket, dependency or schema changes are authorized here. Parent assigns independent review; no merge by this writer.
+
+- 2026-11-05: Draft PR opened early: https://github.com/CallumHemsley/junyan/pull/12. Actual muted browser exploration served three customers through scene controls and revisited a served table; JSON records dialog text, click-to-dialog timings (0.88–2.40s, including automation overhead) and no captured console/page errors. Existing journey completed the opening, four customers, change, lookup/journal and day-two progression on desktop and phone: **2 passed**. Inspected desktop/phone restaurant and journal screenshots plus desktop order, kitchen, receipt and revisit screenshots. Full silent WebM recordings retained; no subjective listening or full-video-review claim.
+- 2026-11-05: Compared five interaction boundaries: preparation, optional post-service favour, departed-table arrangement, regular conversation and closing decoration. Recommended one optional napkin favour as the smallest experiment, with reviewed Mandarin/audio required if selected, a named isolated state shape, rough effort, comparison protocol, enjoyment/obligation thresholds and explicit exclusions. This is an untested hypothesis; Callum selects before any implementation ticket/prototype. No shared-file needs for this deliverable; future content/audio/save needs are estimates in the idea note, not edits.
+- 2026-11-05: Validation: `pnpm test` passed **169 tests / 11 files** (initial run on inherited Node 24; repeated with Node 22.23.4 in `unit-node22.log`); `JUNYAN_DEV_PORT=5406 JUNYAN_PREVIEW_PORT=5407 PLAYWRIGHT_BROWSERS_PATH=/workspace/.junyan-tools/browsers pnpm exec playwright test --config /workspace/evidence-0064/playwright.config.ts e2e/waiter.spec.ts -g 'wake in the ward'` passed **2/2**. External config only sets isolated paths, system Chromium and video capture, retaining `--mute-audio`, strict ports and no server reuse. Playwright preview ran `pnpm build`; standalone Node 22 `pnpm build` also passed. Build emitted dependency annotation warnings; browser journey console assertions remained clean. No dependency/lockfile/schema/product changes.
+- 2026-11-05: Evidence root `/workspace/evidence-0064/`: `explore.mjs`, `exploration.json`, `desktop-order.png`, `desktop-kitchen.png`, `desktop-receipt.png`, `desktop-revisit.png`, `unit.log`, `unit-node22.log`, `journey.log`, `build.log`, and `test-results/waiter-wake-in-the-ward-th-bc2de-change-journal-and-progress-{desktop,phone}/video.webm`. Existing journey screenshots are `/workspace/junyan-0064/output/playwright/{desktop,phone}-{restaurant,journal}.png`. Local runtime artifacts are not committed; preserve before teardown. Independent review remains assigned by parent; this writer has not merged or claimed approval. Exploration delivered; mechanic selection remains open.
