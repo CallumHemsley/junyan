@@ -265,12 +265,12 @@ it('bakes the scene once at construction and forwards draw arguments verbatim',(
     'box','sphere','capsule','castShadow','applyShadows','flushShadows','shadeEdges','dynamicAdd']);
 });
 
-it('keeps 30 restaurant frames byte-identical to trunk 6c34555',()=>{
+it('keeps 30 order-aware restaurant frames deterministic',()=>{
   const {appearances,frames}=restaurantFrames(content,30);
   const canvas=captureCanvas();
-  const renderer=createRenderer(canvas as unknown as HTMLCanvasElement,restaurantScene(FRAME_TABLES,appearances));
+  const renderer=createRenderer(canvas as unknown as HTMLCanvasElement,restaurantScene(FRAME_TABLES,appearances,Object.fromEntries(content.orders.map(order=>[order.id,order.items]))));
   const hashes=frames.map(args=>{renderer.draw(...args); return sha256(canvas.frame);});
-  expect(sha256(hashes.join('\n'))).toBe('27c76c1d6ef69d474067fe6aaafed198ecb85b3c18ab43169cb829c0cdefa4f6');
+  expect(sha256(hashes.join('\n'))).toBe('de9d731bac3154e426f8fe253b13bb0bd0f276519f66cf2609ff003589537213');
 });
 
 describe('ward figure kinds and bed poses',()=>{
