@@ -1,0 +1,1029 @@
+{
+  "status": "blocked-pending-synthesis",
+  "reason": "Linux cloud lacks MLX/Qwen and Kokoro runtime/models. No substitutions authorized.",
+  "wordVoice": "serena",
+  "words": [
+    {
+      "id": "repairs.wood",
+      "hanzi": "木头",
+      "pinyin": "mùtou",
+      "gloss": "wood",
+      "audio": "/audio/repairs/word-wood.wav"
+    },
+    {
+      "id": "repairs.metal",
+      "hanzi": "金属",
+      "pinyin": "jīnshǔ",
+      "gloss": "metal",
+      "audio": "/audio/repairs/word-metal.wav"
+    },
+    {
+      "id": "repairs.lamp",
+      "hanzi": "台灯",
+      "pinyin": "táidēng",
+      "gloss": "table lamp",
+      "audio": "/audio/repairs/word-lamp.wav"
+    },
+    {
+      "id": "repairs.bulb",
+      "hanzi": "灯泡",
+      "pinyin": "dēngpào",
+      "gloss": "light bulb",
+      "audio": "/audio/repairs/word-bulb.wav"
+    },
+    {
+      "id": "repairs.toy",
+      "hanzi": "玩具",
+      "pinyin": "wánjù",
+      "gloss": "toy",
+      "audio": "/audio/repairs/word-toy.wav"
+    },
+    {
+      "id": "repairs.battery",
+      "hanzi": "电池",
+      "pinyin": "diànchí",
+      "gloss": "battery",
+      "audio": "/audio/repairs/word-battery.wav"
+    },
+    {
+      "id": "repairs.wire",
+      "hanzi": "线",
+      "pinyin": "xiàn",
+      "gloss": "wire",
+      "audio": "/audio/repairs/word-wire.wav"
+    },
+    {
+      "id": "repairs.cover",
+      "hanzi": "盖子",
+      "pinyin": "gàizi",
+      "gloss": "cover",
+      "audio": "/audio/repairs/word-cover.wav"
+    },
+    {
+      "id": "repairs.tighten",
+      "hanzi": "拧紧",
+      "pinyin": "nǐngjǐn",
+      "gloss": "tighten",
+      "audio": "/audio/repairs/word-tighten.wav"
+    },
+    {
+      "id": "repairs.loosen",
+      "hanzi": "转松",
+      "pinyin": "zhuǎnsōng",
+      "gloss": "turn to loosen",
+      "audio": "/audio/repairs/word-loosen.wav"
+    },
+    {
+      "id": "repairs.connect",
+      "hanzi": "接上",
+      "pinyin": "jiēshàng",
+      "gloss": "connect",
+      "audio": "/audio/repairs/word-connect.wav"
+    },
+    {
+      "id": "repairs.disconnect",
+      "hanzi": "拔下",
+      "pinyin": "báxià",
+      "gloss": "disconnect",
+      "audio": "/audio/repairs/word-disconnect.wav"
+    },
+    {
+      "id": "repairs.replace",
+      "hanzi": "换",
+      "pinyin": "huàn",
+      "gloss": "replace",
+      "audio": "/audio/repairs/word-replace.wav"
+    },
+    {
+      "id": "repairs.open",
+      "hanzi": "打开",
+      "pinyin": "dǎkāi",
+      "gloss": "open",
+      "audio": "/audio/repairs/word-open.wav"
+    },
+    {
+      "id": "repairs.close",
+      "hanzi": "盖上",
+      "pinyin": "gàishàng",
+      "gloss": "close the cover",
+      "audio": "/audio/repairs/word-close.wav"
+    },
+    {
+      "id": "repairs.off",
+      "hanzi": "关掉",
+      "pinyin": "guāndiào",
+      "gloss": "switch off",
+      "audio": "/audio/repairs/word-off.wav"
+    },
+    {
+      "id": "repairs.return",
+      "hanzi": "放回",
+      "pinyin": "fànghuí",
+      "gloss": "put back",
+      "audio": "/audio/repairs/word-return.wav"
+    },
+    {
+      "id": "repairs.reset",
+      "hanzi": "重新来",
+      "pinyin": "chóngxīn lái",
+      "gloss": "start again",
+      "audio": "/audio/repairs/word-reset.wav"
+    },
+    {
+      "id": "repairs.practice",
+      "hanzi": "再修一次",
+      "pinyin": "zài xiū yí cì",
+      "gloss": "repair again",
+      "audio": "/audio/repairs/word-practice.wav"
+    },
+    {
+      "id": "repairs.workshop",
+      "hanzi": "修理间",
+      "pinyin": "xiūlǐjiān",
+      "gloss": "workshop",
+      "audio": "/audio/repairs/word-workshop.wav"
+    },
+    {
+      "id": "repairs.can",
+      "hanzi": "能",
+      "pinyin": "néng",
+      "gloss": "can",
+      "audio": "/audio/repairs/word-can.wav"
+    },
+    {
+      "id": "repairs.light",
+      "hanzi": "亮",
+      "pinyin": "liàng",
+      "gloss": "light up",
+      "audio": "/audio/repairs/word-light.wav"
+    },
+    {
+      "id": "repairs.but",
+      "hanzi": "但是",
+      "pinyin": "dànshì",
+      "gloss": "but",
+      "audio": "/audio/repairs/word-but.wav"
+    },
+    {
+      "id": "repairs.always",
+      "hanzi": "一直",
+      "pinyin": "yìzhí",
+      "gloss": "continuously",
+      "audio": "/audio/repairs/word-always.wav"
+    },
+    {
+      "id": "repairs.flicker",
+      "hanzi": "闪",
+      "pinyin": "shǎn",
+      "gloss": "flicker",
+      "audio": "/audio/repairs/word-flicker.wav"
+    },
+    {
+      "id": "repairs.this",
+      "hanzi": "这个",
+      "pinyin": "zhège",
+      "gloss": "this",
+      "audio": "/audio/repairs/word-this.wav"
+    },
+    {
+      "id": "repairs.move",
+      "hanzi": "动",
+      "pinyin": "dòng",
+      "gloss": "move",
+      "audio": "/audio/repairs/word-move.wav"
+    },
+    {
+      "id": "repairs.first",
+      "hanzi": "先",
+      "pinyin": "xiān",
+      "gloss": "first",
+      "audio": "/audio/repairs/word-first.wav"
+    },
+    {
+      "id": "repairs.steady",
+      "hanzi": "稳",
+      "pinyin": "wěn",
+      "gloss": "steady",
+      "audio": "/audio/repairs/word-steady.wav"
+    },
+    {
+      "id": "repairs.now",
+      "hanzi": "现在",
+      "pinyin": "xiànzài",
+      "gloss": "now",
+      "audio": "/audio/repairs/word-now.wav"
+    },
+    {
+      "id": "repairs.tight",
+      "hanzi": "紧",
+      "pinyin": "jǐn",
+      "gloss": "tight",
+      "audio": "/audio/repairs/word-tight.wav"
+    },
+    {
+      "id": "repairs.loose",
+      "hanzi": "松",
+      "pinyin": "sōng",
+      "gloss": "loose",
+      "audio": "/audio/repairs/word-loose.wav"
+    },
+    {
+      "id": "repairs.still",
+      "hanzi": "还是",
+      "pinyin": "háishi",
+      "gloss": "still",
+      "audio": "/audio/repairs/word-still.wav"
+    },
+    {
+      "id": "repairs.not-yet",
+      "hanzi": "还没",
+      "pinyin": "hái méi",
+      "gloss": "not yet",
+      "audio": "/audio/repairs/word-not-yet.wav"
+    },
+    {
+      "id": "repairs.on",
+      "hanzi": "上",
+      "pinyin": "shàng",
+      "gloss": "on",
+      "audio": "/audio/repairs/word-on.wav"
+    },
+    {
+      "id": "repairs.old",
+      "hanzi": "旧",
+      "pinyin": "jiù",
+      "gloss": "old",
+      "audio": "/audio/repairs/word-old.wav"
+    },
+    {
+      "id": "repairs.new",
+      "hanzi": "新",
+      "pinyin": "xīn",
+      "gloss": "new",
+      "audio": "/audio/repairs/word-new.wav"
+    },
+    {
+      "id": "repairs.together",
+      "hanzi": "一起",
+      "pinyin": "yìqǐ",
+      "gloss": "together",
+      "audio": "/audio/repairs/word-together.wav"
+    },
+    {
+      "id": "repairs.sit",
+      "hanzi": "坐",
+      "pinyin": "zuò",
+      "gloss": "sit",
+      "audio": "/audio/repairs/word-sit.wav"
+    },
+    {
+      "id": "repairs.stool",
+      "hanzi": "凳子",
+      "pinyin": "dèngzi",
+      "gloss": "stool",
+      "audio": "/audio/repairs/word-stool.wav"
+    },
+    {
+      "id": "repairs.hear",
+      "hanzi": "再听",
+      "pinyin": "zài tīng",
+      "gloss": "listen again",
+      "audio": "/audio/repairs/word-hear.wav"
+    },
+    {
+      "id": "repairs.done",
+      "hanzi": "修好",
+      "pinyin": "xiūhǎo",
+      "gloss": "repair successfully",
+      "audio": "/audio/repairs/word-done.wav"
+    },
+    {
+      "id": "repairs.all",
+      "hanzi": "都",
+      "pinyin": "dōu",
+      "gloss": "both",
+      "audio": "/audio/repairs/word-all.wav"
+    }
+  ],
+  "speakers": [
+    {
+      "name": "林姐",
+      "voiceId": "serena",
+      "lines": [
+        {
+          "id": "repairs.lamp-intro",
+          "text": "能亮，但是一直闪。",
+          "tokens": [
+            {
+              "id": "repairs.can",
+              "hanzi": "能",
+              "pinyin": "néng",
+              "gloss": "can",
+              "audio": "/audio/repairs/word-can.wav"
+            },
+            {
+              "id": "repairs.light",
+              "hanzi": "亮",
+              "pinyin": "liàng",
+              "gloss": "light up",
+              "audio": "/audio/repairs/word-light.wav"
+            },
+            {
+              "id": "repairs.but",
+              "hanzi": "但是",
+              "pinyin": "dànshì",
+              "gloss": "but",
+              "audio": "/audio/repairs/word-but.wav"
+            },
+            {
+              "id": "repairs.always",
+              "hanzi": "一直",
+              "pinyin": "yìzhí",
+              "gloss": "continuously",
+              "audio": "/audio/repairs/word-always.wav"
+            },
+            {
+              "id": "repairs.flicker",
+              "hanzi": "闪",
+              "pinyin": "shǎn",
+              "gloss": "flicker",
+              "audio": "/audio/repairs/word-flicker.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-lamp-intro.wav"
+        },
+        {
+          "id": "repairs.lamp-unstable",
+          "text": "还是不稳。",
+          "tokens": [
+            {
+              "id": "repairs.still",
+              "hanzi": "还是",
+              "pinyin": "háishi",
+              "gloss": "still",
+              "audio": "/audio/repairs/word-still.wav"
+            },
+            {
+              "id": "no",
+              "hanzi": "不",
+              "pinyin": "bù",
+              "gloss": "not",
+              "audio": "/audio/word-87ff64a00c0e6c135b269796a1283550b2c2058bf404f6ba168c03230be9e413.wav"
+            },
+            {
+              "id": "repairs.steady",
+              "hanzi": "稳",
+              "pinyin": "wěn",
+              "gloss": "steady",
+              "audio": "/audio/repairs/word-steady.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-lamp-unstable.wav"
+        },
+        {
+          "id": "repairs.lamp-steady",
+          "text": "好了，现在亮了。",
+          "tokens": [
+            {
+              "id": "good",
+              "hanzi": "好",
+              "pinyin": "hǎo",
+              "gloss": "good, okay",
+              "audio": "/audio/word-19be6bbebac3dbb7894517bbd13de46a628667976c0f109d45525b89ef1012f7.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            },
+            {
+              "id": "repairs.now",
+              "hanzi": "现在",
+              "pinyin": "xiànzài",
+              "gloss": "now",
+              "audio": "/audio/repairs/word-now.wav"
+            },
+            {
+              "id": "repairs.light",
+              "hanzi": "亮",
+              "pinyin": "liàng",
+              "gloss": "light up",
+              "audio": "/audio/repairs/word-light.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-lamp-steady.wav"
+        },
+        {
+          "id": "repairs.power-first",
+          "text": "先关掉。",
+          "tokens": [
+            {
+              "id": "repairs.first",
+              "hanzi": "先",
+              "pinyin": "xiān",
+              "gloss": "first",
+              "audio": "/audio/repairs/word-first.wav"
+            },
+            {
+              "id": "repairs.off",
+              "hanzi": "关掉",
+              "pinyin": "guāndiào",
+              "gloss": "switch off",
+              "audio": "/audio/repairs/word-off.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-power-first.wav"
+        },
+        {
+          "id": "repairs.lamp-tight",
+          "text": "灯泡拧紧了。再试试。",
+          "tokens": [
+            {
+              "id": "repairs.bulb",
+              "hanzi": "灯泡",
+              "pinyin": "dēngpào",
+              "gloss": "light bulb",
+              "audio": "/audio/repairs/word-bulb.wav"
+            },
+            {
+              "id": "repairs.tighten",
+              "hanzi": "拧紧",
+              "pinyin": "nǐngjǐn",
+              "gloss": "tighten",
+              "audio": "/audio/repairs/word-tighten.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            },
+            {
+              "id": "again",
+              "hanzi": "再",
+              "pinyin": "zài",
+              "gloss": "again",
+              "audio": "/audio/word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav"
+            },
+            {
+              "id": "try",
+              "hanzi": "试试",
+              "pinyin": "shìshi",
+              "gloss": "give it a try",
+              "audio": "/audio/word-6639b6f2bd2a82154aad82aac652ff9b392c19e5a5d39fbef92fb423c8cb87f1.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-lamp-tight.wav"
+        },
+        {
+          "id": "repairs.lamp-loose",
+          "text": "灯泡松了。",
+          "tokens": [
+            {
+              "id": "repairs.bulb",
+              "hanzi": "灯泡",
+              "pinyin": "dēngpào",
+              "gloss": "light bulb",
+              "audio": "/audio/repairs/word-bulb.wav"
+            },
+            {
+              "id": "repairs.loose",
+              "hanzi": "松",
+              "pinyin": "sōng",
+              "gloss": "loose",
+              "audio": "/audio/repairs/word-loose.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-lamp-loose.wav"
+        },
+        {
+          "id": "repairs.lamp-returned",
+          "text": "台灯修好了。",
+          "tokens": [
+            {
+              "id": "repairs.lamp",
+              "hanzi": "台灯",
+              "pinyin": "táidēng",
+              "gloss": "table lamp",
+              "audio": "/audio/repairs/word-lamp.wav"
+            },
+            {
+              "id": "repairs.done",
+              "hanzi": "修好",
+              "pinyin": "xiūhǎo",
+              "gloss": "repair successfully",
+              "audio": "/audio/repairs/word-done.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-lamp-returned.wav"
+        },
+        {
+          "id": "repairs.lamp-off",
+          "text": "关掉了。",
+          "tokens": [
+            {
+              "id": "repairs.off",
+              "hanzi": "关掉",
+              "pinyin": "guāndiào",
+              "gloss": "switch off",
+              "audio": "/audio/repairs/word-off.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-lamp-off.wav"
+        },
+        {
+          "id": "repairs.all-complete",
+          "text": "都修好了。这个木头凳子给你。",
+          "tokens": [
+            {
+              "id": "repairs.all",
+              "hanzi": "都",
+              "pinyin": "dōu",
+              "gloss": "both",
+              "audio": "/audio/repairs/word-all.wav"
+            },
+            {
+              "id": "repairs.done",
+              "hanzi": "修好",
+              "pinyin": "xiūhǎo",
+              "gloss": "repair successfully",
+              "audio": "/audio/repairs/word-done.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            },
+            {
+              "id": "repairs.this",
+              "hanzi": "这个",
+              "pinyin": "zhège",
+              "gloss": "this",
+              "audio": "/audio/repairs/word-this.wav"
+            },
+            {
+              "id": "repairs.wood",
+              "hanzi": "木头",
+              "pinyin": "mùtou",
+              "gloss": "wood",
+              "audio": "/audio/repairs/word-wood.wav"
+            },
+            {
+              "id": "repairs.stool",
+              "hanzi": "凳子",
+              "pinyin": "dèngzi",
+              "gloss": "stool",
+              "audio": "/audio/repairs/word-stool.wav"
+            },
+            {
+              "id": "give",
+              "hanzi": "给",
+              "pinyin": "gěi",
+              "gloss": "give",
+              "audio": "/audio/word-0ba6b6f23f23cfc1f9a01442d9c2dd7dfcfa1593a3529fe82eba81feed7c9067.wav"
+            },
+            {
+              "id": "you",
+              "hanzi": "你",
+              "pinyin": "nǐ",
+              "gloss": "you",
+              "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-all-complete.wav"
+        }
+      ]
+    },
+    {
+      "name": "小周",
+      "voiceId": "xiaobei",
+      "lines": [
+        {
+          "id": "repairs.toy-intro",
+          "text": "这个玩具不动了。",
+          "tokens": [
+            {
+              "id": "repairs.this",
+              "hanzi": "这个",
+              "pinyin": "zhège",
+              "gloss": "this",
+              "audio": "/audio/repairs/word-this.wav"
+            },
+            {
+              "id": "repairs.toy",
+              "hanzi": "玩具",
+              "pinyin": "wánjù",
+              "gloss": "toy",
+              "audio": "/audio/repairs/word-toy.wav"
+            },
+            {
+              "id": "no",
+              "hanzi": "不",
+              "pinyin": "bù",
+              "gloss": "not",
+              "audio": "/audio/word-87ff64a00c0e6c135b269796a1283550b2c2058bf404f6ba168c03230be9e413.wav"
+            },
+            {
+              "id": "repairs.move",
+              "hanzi": "动",
+              "pinyin": "dòng",
+              "gloss": "move",
+              "audio": "/audio/repairs/word-move.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-toy-intro.wav"
+        },
+        {
+          "id": "repairs.toy-open",
+          "text": "打开了。",
+          "tokens": [
+            {
+              "id": "repairs.open",
+              "hanzi": "打开",
+              "pinyin": "dǎkāi",
+              "gloss": "open",
+              "audio": "/audio/repairs/word-open.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-toy-open.wav"
+        },
+        {
+          "id": "repairs.toy-closed",
+          "text": "盖上了。试试。",
+          "tokens": [
+            {
+              "id": "repairs.close",
+              "hanzi": "盖上",
+              "pinyin": "gàishàng",
+              "gloss": "close the cover",
+              "audio": "/audio/repairs/word-close.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            },
+            {
+              "id": "try",
+              "hanzi": "试试",
+              "pinyin": "shìshi",
+              "gloss": "give it a try",
+              "audio": "/audio/word-6639b6f2bd2a82154aad82aac652ff9b392c19e5a5d39fbef92fb423c8cb87f1.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-toy-closed.wav"
+        },
+        {
+          "id": "repairs.toy-connect",
+          "text": "线接上了。",
+          "tokens": [
+            {
+              "id": "repairs.wire",
+              "hanzi": "线",
+              "pinyin": "xiàn",
+              "gloss": "wire",
+              "audio": "/audio/repairs/word-wire.wav"
+            },
+            {
+              "id": "repairs.connect",
+              "hanzi": "接上",
+              "pinyin": "jiēshàng",
+              "gloss": "connect",
+              "audio": "/audio/repairs/word-connect.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-toy-connect.wav"
+        },
+        {
+          "id": "repairs.toy-disconnect",
+          "text": "线拔下了。",
+          "tokens": [
+            {
+              "id": "repairs.wire",
+              "hanzi": "线",
+              "pinyin": "xiàn",
+              "gloss": "wire",
+              "audio": "/audio/repairs/word-wire.wav"
+            },
+            {
+              "id": "repairs.disconnect",
+              "hanzi": "拔下",
+              "pinyin": "báxià",
+              "gloss": "disconnect",
+              "audio": "/audio/repairs/word-disconnect.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-toy-disconnect.wav"
+        },
+        {
+          "id": "repairs.toy-cell",
+          "text": "换上新电池了。",
+          "tokens": [
+            {
+              "id": "repairs.replace",
+              "hanzi": "换",
+              "pinyin": "huàn",
+              "gloss": "replace",
+              "audio": "/audio/repairs/word-replace.wav"
+            },
+            {
+              "id": "repairs.on",
+              "hanzi": "上",
+              "pinyin": "shàng",
+              "gloss": "on",
+              "audio": "/audio/repairs/word-on.wav"
+            },
+            {
+              "id": "repairs.new",
+              "hanzi": "新",
+              "pinyin": "xīn",
+              "gloss": "new",
+              "audio": "/audio/repairs/word-new.wav"
+            },
+            {
+              "id": "repairs.battery",
+              "hanzi": "电池",
+              "pinyin": "diànchí",
+              "gloss": "battery",
+              "audio": "/audio/repairs/word-battery.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-toy-cell.wav"
+        },
+        {
+          "id": "repairs.toy-old-cell",
+          "text": "旧电池放回了。",
+          "tokens": [
+            {
+              "id": "repairs.old",
+              "hanzi": "旧",
+              "pinyin": "jiù",
+              "gloss": "old",
+              "audio": "/audio/repairs/word-old.wav"
+            },
+            {
+              "id": "repairs.battery",
+              "hanzi": "电池",
+              "pinyin": "diànchí",
+              "gloss": "battery",
+              "audio": "/audio/repairs/word-battery.wav"
+            },
+            {
+              "id": "repairs.return",
+              "hanzi": "放回",
+              "pinyin": "fànghuí",
+              "gloss": "put back",
+              "audio": "/audio/repairs/word-return.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-toy-old-cell.wav"
+        },
+        {
+          "id": "repairs.toy-still",
+          "text": "还是不动。再打开。",
+          "tokens": [
+            {
+              "id": "repairs.still",
+              "hanzi": "还是",
+              "pinyin": "háishi",
+              "gloss": "still",
+              "audio": "/audio/repairs/word-still.wav"
+            },
+            {
+              "id": "no",
+              "hanzi": "不",
+              "pinyin": "bù",
+              "gloss": "not",
+              "audio": "/audio/word-87ff64a00c0e6c135b269796a1283550b2c2058bf404f6ba168c03230be9e413.wav"
+            },
+            {
+              "id": "repairs.move",
+              "hanzi": "动",
+              "pinyin": "dòng",
+              "gloss": "move",
+              "audio": "/audio/repairs/word-move.wav"
+            },
+            {
+              "id": "again",
+              "hanzi": "再",
+              "pinyin": "zài",
+              "gloss": "again",
+              "audio": "/audio/word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav"
+            },
+            {
+              "id": "repairs.open",
+              "hanzi": "打开",
+              "pinyin": "dǎkāi",
+              "gloss": "open",
+              "audio": "/audio/repairs/word-open.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-toy-still.wav"
+        },
+        {
+          "id": "repairs.toy-moving",
+          "text": "好了，动了。",
+          "tokens": [
+            {
+              "id": "good",
+              "hanzi": "好",
+              "pinyin": "hǎo",
+              "gloss": "good, okay",
+              "audio": "/audio/word-19be6bbebac3dbb7894517bbd13de46a628667976c0f109d45525b89ef1012f7.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            },
+            {
+              "id": "repairs.move",
+              "hanzi": "动",
+              "pinyin": "dòng",
+              "gloss": "move",
+              "audio": "/audio/repairs/word-move.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-toy-moving.wav"
+        },
+        {
+          "id": "repairs.open-first",
+          "text": "先打开盖子。",
+          "tokens": [
+            {
+              "id": "repairs.first",
+              "hanzi": "先",
+              "pinyin": "xiān",
+              "gloss": "first",
+              "audio": "/audio/repairs/word-first.wav"
+            },
+            {
+              "id": "repairs.open",
+              "hanzi": "打开",
+              "pinyin": "dǎkāi",
+              "gloss": "open",
+              "audio": "/audio/repairs/word-open.wav"
+            },
+            {
+              "id": "repairs.cover",
+              "hanzi": "盖子",
+              "pinyin": "gàizi",
+              "gloss": "cover",
+              "audio": "/audio/repairs/word-cover.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-open-first.wav"
+        },
+        {
+          "id": "repairs.close-first",
+          "text": "先盖上，再试试。",
+          "tokens": [
+            {
+              "id": "repairs.first",
+              "hanzi": "先",
+              "pinyin": "xiān",
+              "gloss": "first",
+              "audio": "/audio/repairs/word-first.wav"
+            },
+            {
+              "id": "repairs.close",
+              "hanzi": "盖上",
+              "pinyin": "gàishàng",
+              "gloss": "close the cover",
+              "audio": "/audio/repairs/word-close.wav"
+            },
+            {
+              "id": "again",
+              "hanzi": "再",
+              "pinyin": "zài",
+              "gloss": "again",
+              "audio": "/audio/word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav"
+            },
+            {
+              "id": "try",
+              "hanzi": "试试",
+              "pinyin": "shìshi",
+              "gloss": "give it a try",
+              "audio": "/audio/word-6639b6f2bd2a82154aad82aac652ff9b392c19e5a5d39fbef92fb423c8cb87f1.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-close-first.wav"
+        },
+        {
+          "id": "repairs.toy-returned",
+          "text": "玩具修好了。",
+          "tokens": [
+            {
+              "id": "repairs.toy",
+              "hanzi": "玩具",
+              "pinyin": "wánjù",
+              "gloss": "toy",
+              "audio": "/audio/repairs/word-toy.wav"
+            },
+            {
+              "id": "repairs.done",
+              "hanzi": "修好",
+              "pinyin": "xiūhǎo",
+              "gloss": "repair successfully",
+              "audio": "/audio/repairs/word-done.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-toy-returned.wav"
+        }
+      ]
+    }
+  ]
+}

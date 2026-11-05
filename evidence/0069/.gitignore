@@ -1,0 +1,12 @@
+browser-results/
+baseline-results/
+*.png
+!desktop-lamp-steady.png
+!desktop-shelf.png
+!desktop-toy-exposed.png
+!phone-initial.png
+!phone-lamp-steady.png
+!phone-reduced-motion.png
+!phone-shelf.png
+!phone-toy-exposed.png
+!small-phone-shelf.png
