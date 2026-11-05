@@ -1,0 +1,9 @@
+{
+  "candidate": "7b27ca44a7ed5c9a0eebb45a6a06145beb381287",
+  "node": "22.23.4",
+  "files": {
+    "dist/sw.js": "16fcad6d3c479f9623f7362d4c3e2aad0fda652045c9a7247873143627b0c79e",
+    "dist/assets/index-Cwxs8DCX.js": "d983055a1f4220575f07f7d74ba862da12a3aee3bd5eafde0146f93b21dde382",
+    "dist/assets/index-Cas24eZy.css": "d761a27d5556644776fef42adfbb4394a18f3ad8d6ea1fc128739f5dd5745afc"
+  }
+}

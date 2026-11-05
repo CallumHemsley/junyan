@@ -1,0 +1,334 @@
+[
+  {
+    "title": "real cached speech and words play in all four locations and saved furniture reloads offline",
+    "project": "desktop",
+    "attachment": "real-offline-speech",
+    "data": [
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/apartment/line-window.wav",
+        "at": 58.60000002384186,
+        "active": true,
+        "sinceClick": 58.60000002384186,
+        "muted": false,
+        "volume": 1,
+        "status": "AbortError"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/apartment/line-window.wav",
+        "at": 129,
+        "active": true,
+        "sinceClick": 0.09999996423721313,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/cats/line-clue.wav",
+        "at": 265.60000002384186,
+        "active": true,
+        "sinceClick": 1.699999988079071,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/cats/line-clue.wav",
+        "at": 430.60000002384186,
+        "active": true,
+        "sinceClick": 0.19999998807907104,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav",
+        "at": 564.4000000357628,
+        "active": true,
+        "sinceClick": 0.30000001192092896,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav",
+        "at": 712.8000000119209,
+        "active": true,
+        "sinceClick": 0,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/repairs/line-lamp-intro.wav",
+        "at": 890.6999999880791,
+        "active": true,
+        "sinceClick": 12.299999952316284,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/repairs/line-lamp-intro.wav",
+        "at": 928.3000000119209,
+        "active": true,
+        "sinceClick": 0.10000002384185791,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/repairs/word-can.wav",
+        "at": 1063.5,
+        "active": true,
+        "sinceClick": 0.19999998807907104,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/repairs/word-can.wav",
+        "at": 1195.300000011921,
+        "active": true,
+        "sinceClick": 0.19999998807907104,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+        "at": 1413.300000011921,
+        "active": true,
+        "sinceClick": 1.300000011920929,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+        "at": 1562.9000000357628,
+        "active": true,
+        "sinceClick": 0.20000004768371582,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/garden/word-5b6b098b5cab9ae29a7e5e74141e9f42eac7cb7288581c7c7332b88fda595138.wav",
+        "at": 1695.9000000357628,
+        "active": true,
+        "sinceClick": 0.20000004768371582,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/garden/word-5b6b098b5cab9ae29a7e5e74141e9f42eac7cb7288581c7c7332b88fda595138.wav",
+        "at": 1849.199999988079,
+        "active": true,
+        "sinceClick": 0.19999998807907104,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      }
+    ]
+  },
+  {
+    "title": "real cached speech and words play in all four locations and saved furniture reloads offline",
+    "project": "phone",
+    "attachment": "real-offline-speech",
+    "data": [
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/apartment/line-window.wav",
+        "at": 46,
+        "active": true,
+        "sinceClick": 46,
+        "muted": false,
+        "volume": 1,
+        "status": "AbortError"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/apartment/line-window.wav",
+        "at": 108.10000002384186,
+        "active": true,
+        "sinceClick": 0,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/cats/line-clue.wav",
+        "at": 241.80000001192093,
+        "active": true,
+        "sinceClick": 1.100000023841858,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/cats/line-clue.wav",
+        "at": 375.60000002384186,
+        "active": true,
+        "sinceClick": 0,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav",
+        "at": 507.80000001192093,
+        "active": true,
+        "sinceClick": 0.19999998807907104,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav",
+        "at": 641.3000000119209,
+        "active": true,
+        "sinceClick": 0.19999998807907104,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/repairs/line-lamp-intro.wav",
+        "at": 819.5,
+        "active": true,
+        "sinceClick": 12.399999976158142,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/repairs/line-lamp-intro.wav",
+        "at": 857.5,
+        "active": true,
+        "sinceClick": 0.09999996423721313,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/repairs/word-can.wav",
+        "at": 993,
+        "active": true,
+        "sinceClick": 0.09999996423721313,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/repairs/word-can.wav",
+        "at": 1124.1000000238419,
+        "active": true,
+        "sinceClick": 0,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+        "at": 1342.1000000238419,
+        "active": true,
+        "sinceClick": 1,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+        "at": 1475.699999988079,
+        "active": true,
+        "sinceClick": 0,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/garden/word-5b6b098b5cab9ae29a7e5e74141e9f42eac7cb7288581c7c7332b88fda595138.wav",
+        "at": 1607.6000000238419,
+        "active": true,
+        "sinceClick": 0.10000002384185791,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      },
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/garden/word-5b6b098b5cab9ae29a7e5e74141e9f42eac7cb7288581c7c7332b88fda595138.wav",
+        "at": 1740.9000000357628,
+        "active": true,
+        "sinceClick": 0.09999996423721313,
+        "muted": false,
+        "volume": 1,
+        "status": "playing"
+      }
+    ]
+  },
+  {
+    "title": "an explicitly unavailable feature voice reports failure and a real replay recovers",
+    "project": "desktop",
+    "attachment": "injected-unavailable-audio",
+    "data": {
+      "nativeFailures": [
+        {
+          "src": "http://127.0.0.1:5566/junyan/audio/apartment/line-welcome.wav",
+          "code": 4,
+          "message": "MEDIA_ELEMENT_ERROR: Format error"
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_FAILED"
+      ]
+    }
+  },
+  {
+    "title": "an explicitly unavailable feature voice reports failure and a real replay recovers",
+    "project": "phone",
+    "attachment": "injected-unavailable-audio",
+    "data": {
+      "nativeFailures": [
+        {
+          "src": "http://127.0.0.1:5566/junyan/audio/apartment/line-welcome.wav",
+          "code": 4,
+          "message": "MEDIA_ELEMENT_ERROR: Format error"
+        }
+      ],
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_FAILED"
+      ]
+    }
+  },
+  {
+    "title": "normal opening, all four real locations, learning, gifts, reload and restaurant-only next day",
+    "project": "desktop",
+    "attachment": "real-native-speech",
+    "data": [
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/garden/line-c686ce578b68292f0f70784b43dd8dbf7989e1dbf9c4ad925445822942220c3b.wav",
+        "at": 50.09999996423721,
+        "active": false,
+        "sinceClick": 50.09999996423721,
+        "muted": false,
+        "volume": 1,
+        "status": "NotAllowedError"
+      }
+    ]
+  },
+  {
+    "title": "normal opening, all four real locations, learning, gifts, reload and restaurant-only next day",
+    "project": "phone",
+    "attachment": "real-native-speech",
+    "data": [
+      {
+        "src": "http://127.0.0.1:5566/junyan/audio/garden/line-c686ce578b68292f0f70784b43dd8dbf7989e1dbf9c4ad925445822942220c3b.wav",
+        "at": 48.89999997615814,
+        "active": false,
+        "sinceClick": 48.89999997615814,
+        "muted": false,
+        "volume": 1,
+        "status": "NotAllowedError"
+      }
+    ]
+  }
+]
