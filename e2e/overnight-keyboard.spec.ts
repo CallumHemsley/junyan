@@ -161,8 +161,15 @@ test("keyboard journey keeps named controls and focus across a full day", async 
     }
     await activate(page, dialog.getByRole("button", { name: "递上找零" }));
     await expect(dialog.locator(".thanks-chop")).toBeVisible();
+    const continueServing = dialog.getByRole("button", { name: "继续招呼" });
+    await expect(continueServing).toBeFocused();
     await expect.poll(() => dialog.evaluate((element) => element.contains(document.activeElement))).toBe(true);
-    await activate(page, dialog.getByRole("button", { name: "继续招呼" }));
+    const receiptWord = dialog.locator(".receipt [data-word-lookup]").first();
+    await activate(page, receiptWord);
+    await expect(page.getByRole("button", { name: "关闭词卡" })).toBeFocused();
+    await page.keyboard.press("Escape");
+    await expect(receiptWord).toBeFocused();
+    await activate(page, continueServing);
   }
   const summary = page.getByRole("dialog", { name: "今日小结" });
   await expect(summary.getByRole("button", { name: "明天见" })).toBeFocused();

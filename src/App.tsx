@@ -769,7 +769,7 @@ export default function App() {
                       <span className="thanks-chop">多谢</span>
                     </div>
                     {tokens(character.thanks)}
-                    <button className="primary" onClick={close}>
+                    <button className="primary" autoFocus onClick={close}>
                       继续招呼 <span>→</span>
                     </button>
                   </>
