@@ -1,7 +1,7 @@
 ---
 id: 60
 title: Make Grandpa's hospital performance frail and subdued
-status: todo
+status: doing
 priority: medium
 type: bug
 created: 2026-11-05
@@ -25,3 +25,10 @@ Callum reports that Grandpa (老爷爷) is too excited and exaggerated in the ho
 - Opening cast ID: `elder`, display name 老爷爷, voice preset `uncle-fu-levelled` in `src/content/voices.json`. His requests and reactions are in `src/content/content.json`; ward poses and step states are in `src/scene/ward.js` and `src/scene/ward-steps.js`.
 - Starting points: `scripts/content-audio.py`, `docs/content-audio.md`, [[tickets/0050-opening-content]], [[tickets/0053-ward-scene]], [[decisions/0004-hospital-opening]].
 - Scope is Grandpa in the hospital opening. Check preset consumers before editing shared voices so the restaurant's Uncle Fu is not inadvertently recast. Serialize edits to shared content, voice presets and the manifest with [[tickets/0058-doctor-opening-voice]] and [[tickets/0057-relevel-restaurant-audio]].
+
+### Worker progress — 2026-11-05
+
+- Owner: Codex cloud worker, ticket 0060 only. Branch: `codex/0060-subdue-grandpa-opening`; isolated checkout: `/workspace/junyan-0060`; base: `66ac123`; strict ports: dev `5408`, preview `5409`.
+- Evidence and append-only decisions: [[evidence/0060-grandpa-performance]].
+- Shared-file leases: 0058 owns voices/content/audio manifest; 0059 owns scene files. No production edits until root releases ownership.
+- Investigating actual opening requests, both wrong choices and thanks; no listening acceptance claimed.
