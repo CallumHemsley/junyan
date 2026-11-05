@@ -21,6 +21,7 @@ import { nextDots, wordState } from "./recovery";
 import { Speaker } from "./icons";
 import { route } from "./navigation";
 import { createPlayback, type PlaybackError } from "./audio/playback";
+import { useAmbience, AmbienceControls } from "./audio/AmbienceControls";
 
 const testMode =
   import.meta.env.DEV &&
@@ -75,9 +76,10 @@ export default function App() {
   const [moving, setMoving] = useState(false);
   const [audioError, setAudioError] = useState<PlaybackError>(null);
   const dayEndOpen = state.ended && panel === "none" && !word;
+  const ambience = useAmbience(ready && session.phase === "day");
   const playback = useRef<ReturnType<typeof createPlayback> | null>(null);
   if (!playback.current)
-    playback.current = createPlayback((url) => new Audio(url), setAudioError);
+    playback.current = createPlayback((url) => new Audio(url), setAudioError, ambience.speaking);
   const motion = useRef<{ path: Position[]; arrive?: () => void } | null>(null);
   const dispatch = useCallback(
     (action: SessionAction) => {
@@ -509,6 +511,7 @@ export default function App() {
       <header className="topbar" inert={panel !== "none" || wordOpen || dayEndOpen}>
         {brand}
         <nav aria-label="小馆">
+          <AmbienceControls ambience={ambience} />
           <button
             onClick={() => {
               motion.current = null;

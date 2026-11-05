@@ -33,6 +33,8 @@ export async function probeAudio(page: Page) {
     const probe = window as any;
     probe.__audioProbe = [];
     probe.__audioElements = [];
+    probe.__ambienceProbe = [];
+    probe.__ambienceElements = [];
     probe.__lastClickAt = 0;
     document.addEventListener("click", () => { probe.__lastClickAt = performance.now(); }, true);
     const original = HTMLMediaElement.prototype.play;
@@ -42,9 +44,14 @@ export async function probeAudio(page: Page) {
         sinceClick: performance.now() - probe.__lastClickAt,
         muted: this.muted, volume: this.volume, status: "pending",
       };
-      probe.__audioProbe.push(row);
-      probe.__audioElements.push(this);
-      probe.__lastAudio = this;
+      if (new URL(this.src, location.href).pathname.includes("/audio/ambience/")) {
+        probe.__ambienceProbe.push(row);
+        if (!probe.__ambienceElements.includes(this)) probe.__ambienceElements.push(this);
+      } else {
+        probe.__audioProbe.push(row);
+        probe.__audioElements.push(this);
+        probe.__lastAudio = this;
+      }
       return original.call(this).then(
         () => { row.status = "playing"; },
         error => { row.status = error.name; throw error; },

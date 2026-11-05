@@ -1,0 +1,21 @@
+.ambience-settings { position: relative; color: var(--text-secondary); }
+.ambience-settings summary {
+  display: flex; align-items: center; justify-content: center; gap: var(--space-8);
+  min-width: 44px; min-height: 44px; padding: 0 var(--space-8); cursor: pointer;
+  list-style: none; border-radius: var(--radius-chip);
+}
+.ambience-settings summary::-webkit-details-marker { display: none; }
+.ambience-settings summary:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 2px; }
+.ambience-settings[open] summary { background: var(--surface-control); }
+.ambience-options {
+  position: absolute; right: 0; top: 100%; z-index: 20; width: min(250px, 80vw);
+  padding: var(--space-16); background: var(--surface-card); border: 1px solid var(--hairline);
+  border-radius: var(--radius-panel); box-shadow: var(--shadow-panel);
+}
+.ambience-options label { display: flex; align-items: center; gap: var(--space-8); min-height: 44px; }
+.ambience-options input { min-height: 44px; accent-color: var(--text-primary); }
+.ambience-options input[type="checkbox"] { min-width: 44px; }
+.ambience-options input[type="range"] { width: 100%; min-width: 44px; }
+.ambience-options p { margin: var(--space-8) 0; }
+.ambience-options button { min-height: 44px; }
+@media (max-width: 600px) { .ambience-label { display: none; } }

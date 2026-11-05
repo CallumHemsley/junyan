@@ -8,7 +8,7 @@ export type AmbienceState = {
 };
 export type AmbienceError = "policy" | "load" | null;
 type Media = Pick<HTMLAudioElement,
-  "play" | "pause" | "volume" | "loop" | "preload" | "addEventListener" | "removeEventListener">;
+  "play" | "pause" | "load" | "volume" | "loop" | "preload" | "addEventListener" | "removeEventListener">;
 
 export const ambienceAsset = "audio/ambience/breakfast.mp3";
 export const initialAmbience: AmbienceState = {
@@ -30,6 +30,7 @@ export function createAmbience(
   let media: Media | null = null;
   let requested = false;
   let blocked = false;
+  let reload = false;
   let disposed = false;
   let generation = 0;
 
@@ -42,7 +43,9 @@ export function createAmbience(
   const fail = (error: unknown) => {
     blocked = true;
     halt();
-    report(error instanceof Error && error.name === "NotAllowedError" ? "policy" : "load");
+    const policy = error instanceof Error && error.name === "NotAllowedError";
+    reload = !policy;
+    report(policy ? "policy" : "load");
   };
   const onError = () => { if (requested && !disposed) fail(null); };
   const sync = () => {
@@ -80,6 +83,8 @@ export function createAmbience(
     },
     gesture() {
       state.unlocked = true;
+      if (blocked && reload) media?.load();
+      reload = false;
       blocked = false;
       sync();
     },

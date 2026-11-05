@@ -7,7 +7,7 @@ function setup() {
   const media = Object.assign(new EventTarget(), {
     volume: 1, loop: false, preload: "auto" as const,
     play: vi.fn(() => new Promise<void>((yes, no) => { resolve = yes; reject = no; })),
-    pause: vi.fn(),
+    pause: vi.fn(), load: vi.fn(),
   });
   const factory = vi.fn(() => media);
   const report = vi.fn();
@@ -63,6 +63,7 @@ describe("restaurant ambience ownership", () => {
     s.control.update({ visible: true });
     expect(s.media.play).toHaveBeenCalledOnce();
     s.control.gesture();
+    expect(s.media.load).not.toHaveBeenCalled();
     expect(s.media.play).toHaveBeenCalledTimes(2);
     s.resolve();
     await Promise.resolve();
@@ -96,6 +97,7 @@ describe("restaurant ambience ownership", () => {
     await Promise.resolve();
     expect(s.report).toHaveBeenLastCalledWith("load");
     s.control.gesture();
+    expect(s.media.load).toHaveBeenCalledOnce();
     s.control.dispose();
     s.control.dispose();
     s.control.gesture();
