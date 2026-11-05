@@ -34,6 +34,9 @@ Owner, worker ID, branch, checkout, exact commands, evidence and remaining block
 
 Owner `/root/foundation_writer`. Branch `codex/0066-neighbourhood-foundation`. Cloud worktree `/workspace/junyan-foundation`. Strict development port `5466`.
 
-The coordinator approved the optional embedded neighbourhood envelope. See [integration plan](../evidence/0066/integration-plan.md) for the state comparison, runtime flow, throughput checkpoint, and exact shared patches. Existing shared-file leases remain blocked until explicit handoff.
+The coordinator approved the optional embedded neighbourhood envelope. See [integration plan](../evidence/0066/integration-plan.md) for the state comparison, runtime flow, throughput checkpoint, and exact shared patches. The contracts and content enumeration lease has been released. App, styles, and playback remain leased to 0063.
 
-Standalone contracts, per-feature save validation, navigation, gift idempotency, and the DOM token line are implemented. Independent `/root/foundation_review` found no concrete defects in the first standalone unit at `8939b42` and reran all ten focused tests successfully. The content-registry unit and integrated verification remain incomplete pending independent review and shared-file handoff. Draft [PR 19](https://github.com/CallumHemsley/junyan/pull/19) records the current scope.
+Standalone contracts, per-feature save validation, navigation, gift idempotency, and the DOM token line are implemented. Independent `/root/foundation_review` found no concrete defects in the first standalone unit at `8939b42` and reran all ten focused tests successfully. The final Phrase-preserving content bridge at `e094dfb` awaits fresh exact-head review. Integrated verification remains incomplete pending feature imports, real voices, and the remaining shared-file handoff. Draft [PR 19](https://github.com/CallumHemsley/junyan/pull/19) records the current scope.
+
+
+Standalone checkpoint and exact commands are in [checkpoint](../evidence/0066/checkpoint.md). Node 22 passed 188 tests and the production build. The original hospital-to-four-customers journey passed on desktop and phone with inspected restaurant and journal screenshots. These are existing-game baselines. Feature integration, actual offline voices, new feature journeys, and final independent verification remain incomplete.

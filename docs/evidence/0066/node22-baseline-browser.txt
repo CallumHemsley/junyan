@@ -1,0 +1,13 @@
+[WebServer] (node:10096) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:10117) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop] › e2e/waiter.spec.ts:88:1 › wake in the ward, then collect, recall, deliver, give change, journal, and progress (41.7s)
+(node:10710) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 [phone] › e2e/waiter.spec.ts:88:1 › wake in the ward, then collect, recall, deliver, give change, journal, and progress (44.9s)
+
+  2 passed (1.5m)

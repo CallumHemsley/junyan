@@ -4,7 +4,7 @@ The player can visit four optional locations after the hospital opening and retu
 
 ## Throughput checkpoint
 
-- Blocking first steps. Establish contracts and pure save rules before feature imports. Wait for explicit shared-file lease handoff.
+- Blocking first steps. Establish contracts and pure save rules before feature imports. Contracts and content enumeration are released. Wait for the remaining App lease.
 - Independent workstreams. Feature teams own their folders and audio. The foundation owns shared integration.
 - Shared mutable state. Keep one restaurant snapshot with an optional versioned neighbourhood envelope. Retain the existing pending checkpoint and IndexedDB transaction.
 - Smallest safe decomposition. One foundation writer owns state, save, journal, navigation, and gift bookkeeping because they must commit together.
@@ -34,11 +34,11 @@ A separate key in the same IndexedDB transaction could preserve database atomici
 
 ## Verification status
 
-The standalone content registry validates existing `Word` and `Line` shapes, canonical word reuse, feature namespaces, declared tokens, duplicate IDs, and local nested audio URLs. It enumerates audio references without claiming files exist. Six content tests and ten state tests pass.
+The released `Content.neighbourhood` bridge and standalone content registry validate existing `Word` and `Line` shapes, canonical word reuse, feature namespaces, declared tokens, duplicate IDs, and local nested audio URLs. It enumerates audio references without claiming files exist. Eight content tests and ten state tests pass.
 
 Standalone state tests cover legacy initialization, independent payload recovery, valid claim preservation, navigation identity, immutable gift receipt updates, retries after reload, missing receipt recovery, and claimed gift restoration after apartment corruption.
 
-Integrated journeys, offline audio, feature screenshots, and console checks remain incomplete until features and shared leases arrive.
+The original opening, four-customer, change, journal, and day-two journey passes on desktop and phone after the content bridge. The new feature journeys, offline voices, feature screenshots, and feature console checks remain incomplete until features and the remaining shared lease arrive.
 
 ## Skills and overrides
 

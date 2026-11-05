@@ -1,0 +1,61 @@
+{
+  "command": "PATH=/workspace/.junyan-tools/node_modules/node/bin:$PATH JUNYAN_BROWSER_PATH=/usr/bin/chromium pnpm --config.verify-deps-before-run=false exec playwright test e2e/waiter.spec.ts --config playwright.neighbourhood.config.ts --grep 'wake in the ward'",
+  "sourceCommit": "e094dfb",
+  "sourceHashes": {
+    "src/contracts.ts": "1ca9bc27105ec6e78767be2fb5e2f74b729b705fb2c9febf40c9f216bacc62f7",
+    "src/content/index.ts": "fc79dd31233047879cf7fdf5bba334a34c904837895967331ec36c6048a5c075",
+    "src/content/words.ts": "7eccb5358d90295002a33ab1b2c1a302d6438a67b83789a81feb7a41b2c253ab",
+    "src/neighbourhood/content.ts": "deb3a964da96ab950333a914073aeeee1a120bbb0270606a94268e87d048a46a",
+    "src/neighbourhood/content.test.ts": "6a97f5babf3fa70ff4899a3c1dc00c42c1a2ffefe9fb30416c4280e179d09833",
+    "playwright.neighbourhood.config.ts": "3e56ba0bd06881f01ff421764458d78750896b3514e91642d8af1c4fd6262698"
+  },
+  "scope": "Original hospital and restaurant baseline after the content bridge. No neighbourhood views are wired.",
+  "stats": {
+    "startTime": "2026-11-05T19:19:36.327Z",
+    "duration": 90564.346,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "specs": [
+    {
+      "title": "wake in the ward, then collect, recall, deliver, give change, journal, and progress",
+      "tests": [
+        {
+          "projectName": "desktop",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 41681,
+              "errors": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "wake in the ward, then collect, recall, deliver, give change, journal, and progress",
+      "tests": [
+        {
+          "projectName": "phone",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 44902,
+              "errors": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "port": 5466,
+  "serverCommand": "node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 5466 --strictPort",
+  "serverPid": 10096,
+  "cleanup": "Playwright completed and owned server PID10096 terminated.",
+  "console": "Both original journey cases assert no pageerror or console error.",
+  "visualInspection": "Desktop and phone restaurant and journal images inspected. No horizontal overflow; phone journal scrolls within modal."
+}

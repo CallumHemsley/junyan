@@ -15,7 +15,7 @@ Baseline inspected 2026-11-05: remote main `66ac123fa377f0cdbfb30f5c8bad07edf287
 Branches use `codex/NNNN-slug`; each writer creates its own cloud checkout. No dependencies change. All four features only; no postperson or coffee shop implementation. The human now authorizes central coordinated merges after independent review, full verification and polish. Feature leads deliver ready PRs; only the central lead lands them and verifies main afterward. No manual deployments.
 
 ## Existing leases
-0061 currently edits App.tsx/word-card focus; 0063 awaits that lease for ambience integration. 0058/0060/0062 own shared voice/content work; 0059 owns ward renderer. 0066 may build isolated foundation files now but MUST wait for explicit lease handoff before changing overlapping files. Parent must relay handoffs: this runtime has no send-message-to-thread tool. Do not overwrite their work or assume main contains their PRs.
+Maintenance handoff received 2026-11-05. Ticket 0061 is merged on main at `5c90ba4`. Ticket 0063 retains the exclusive App.tsx, shared styles, and foreground playback integration lease until its final review handoff. Ticket 0066 now owns the released `contracts.ts`, `src/content/index.ts`, and `src/content/words.ts` schema and registry changes. Existing `voices.json`, `content.json`, `public/audio/manifest.json`, and existing clips remain maintenance-owned for atomic voice imports. Namespaced feature content and feature audio stay with their allocated writers. Navigation must deactivate restaurant ambience on departure even while the restaurant session remains active. Parent relays further handoffs; do not assume another worker's unfinished changes are available.
 
 ## Minimal integration contract v1
 
