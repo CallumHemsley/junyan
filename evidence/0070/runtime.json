@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-11-05T19:27:55.559822+00:00",
+  "recordedAt": "2026-11-05T19:29:57.793575+00:00",
   "headBeforeEvidenceCommit": "14672f55250c71ab614375533788edfe2566fd7b",
   "baseMain": "5c90ba4b7421755fee3dd5d12e777f70dd34f226",
   "node": "v22.23.4",
@@ -15,7 +15,7 @@
     "src/features/garden/garden.css": "c0879b5d9ef5fb716e140f5a6860bb4aa0144d080dfc2241ac10f11b2f8e881e",
     "src/features/garden/harness.html": "0f7527c43850785ee3c3b08fe40ee04df3c9ecc3276448ac72d9af9a84f84e82",
     "src/features/garden/harness.tsx": "74a8e7e3254143c5dda3cc17b64f1cf264c7d099580fd99c45107332aa5336c1",
-    "src/features/garden/index.tsx": "b8ada84457e09cb49599195b01e1cd20264907c17cee7741f53f6fdce9a84da4",
+    "src/features/garden/index.tsx": "3c11025f7b5d1e8d2703f57ce3efe874b561d45909041e22fb148a207f2747c3",
     "src/features/garden/playwright.config.ts": "30beb61991a582f69a6eb360ac870478aaa83f20e2e0c25d95951aca2d559cf9",
     "src/features/garden/rules.test.ts": "a87c387a1e351e77896beea83d833b916f5ed18e59784c6e77f4785dd91afc3d",
     "src/features/garden/rules.ts": "9dea8765f6d9327d54d5214dbd905a1e4ad9b3016402115d2c1889453ba553f3",

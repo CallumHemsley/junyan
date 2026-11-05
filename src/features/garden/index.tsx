@@ -83,7 +83,7 @@ export default function Garden(props: GardenProps) {
   };
   const speak = notice ?? (moving === 'shade' ? 'shade-help' : moving === 'pot' ? 'select-help' : pot.result && !pot.result.observed ?
     pot.result.outcome === 'grew' ? (state.plants.flower.growth === 3 && state.plants.tree.growth === 3 ? 'mature-result' : 'growth-result') : pot.result.outcome === 'drooped' ? 'extra-result' : pot.result.outcome === 'shade' ? 'shade-result' : 'rest-result' :
-    weather(state.day) === 'rain' ? 'rain-advice' : pot.care === 'extra' ? 'extra-result' : pot.care === 'ready' ? 'wet-warning' : 'dry-advice');
+    weather(state.day) === 'rain' && pot.care === 'ready' && pot.site !== state.shade ? 'rain-advice' : pot.care === 'extra' ? 'extra-result' : pot.care === 'ready' ? 'wet-warning' : 'dry-advice');
   const playback = useRef(onPlay);
   playback.current = onPlay;
   useEffect(() => {if (state.restored) playback.current(line(speak));}, [speak, state.restored]);
