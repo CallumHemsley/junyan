@@ -103,10 +103,11 @@ export function gardenScene(): Scene<[state: State, time: number]> {
           sphere(x + Math.cos(a) * .32 + lean, y + Math.sin(a) * .32, top - .12 + (crown % 2) * .18, .29 + pot.growth * .025, crown % 2 ? leaf : jade, 'solid');
         }
         if (id === 'tree' && pot.growth === 3) {
-          sphere(x + .45, y, top + .21, .15, [192, 179, 138], 'solid');
-          sphere(x + .57, y, top + .33, .1, dark, 'solid');
-          capsule([x + .4, y, top + .2], [x + .15, y + .1, top + .3 + sway], .1, .025, () => dark, 'solid');
-          sphere(x + .67, y, top + .32, .045, [211, 180, 99], 'solid');
+          capsule([x + .3, y, top - .1], [x + .94, y, top + .03], .055, .03, () => dark, 'solid');
+          sphere(x + .86, y, top + .2, .16, [215, 203, 161], 'solid');
+          sphere(x + .99, y, top + .32, .105, dark, 'solid');
+          capsule([x + .8, y, top + .19], [x + .58, y + .1, top + .32 + sway], .1, .025, () => dark, 'solid');
+          sphere(x + 1.09, y, top + .31, .045, [211, 180, 99], 'solid');
         }
         castShadow(x, y, .3, .55);
       }

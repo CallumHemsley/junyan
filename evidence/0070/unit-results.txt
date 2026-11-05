@@ -1,25 +1,25 @@
 
  RUN  v3.2.7 /workspace/garden-0070
 
- ✓ src/content/content.test.ts (14 tests) 139ms
- ✓ src/scene/ward.test.ts (7 tests) 474ms
- ✓ src/save.test.ts (52 tests) 120ms
- ✓ src/game.test.ts (30 tests) 19ms
+ ✓ src/content/content.test.ts (14 tests) 154ms
+ ✓ src/scene/ward.test.ts (8 tests) 676ms
+ ✓ src/save.test.ts (52 tests) 129ms
+ ✓ src/game.test.ts (30 tests) 17ms
+ ✓ src/navigation.test.ts (4 tests) 20ms
+ ✓ src/opening.test.ts (11 tests) 13ms
  ✓ src/features/garden/rules.test.ts (11 tests) 12ms
- ✓ src/navigation.test.ts (4 tests) 19ms
- ✓ src/audio/playback.test.ts (13 tests) 12ms
- ✓ src/opening.test.ts (11 tests) 15ms
+ ✓ src/audio/playback.test.ts (13 tests) 9ms
  ✓ src/startup.test.ts (7 tests) 6ms
- ✓ src/features/garden/content.test.ts (4 tests) 6ms
  ✓ src/recovery.test.ts (11 tests) 4ms
+ ✓ src/features/garden/content.test.ts (4 tests) 6ms
  ✓ src/opening-view.test.ts (2 tests) 3ms
- ✓ src/scene/renderer.test.ts (18 tests) 3951ms
-   ✓ actual raster depth and walking > partially occludes rear-facing food with the body without hiding the whole tray  910ms
-   ✓ actual raster depth and walking > walks deterministically from supplied time and freezes at reduced-motion inputs  1419ms
-   ✓ renders independently without DOM globals and reflects customer/tray state  1459ms
+ ✓ src/scene/renderer.test.ts (18 tests) 4294ms
+   ✓ actual raster depth and walking > partially occludes rear-facing food with the body without hiding the whole tray  935ms
+   ✓ actual raster depth and walking > walks deterministically from supplied time and freezes at reduced-motion inputs  1615ms
+   ✓ renders independently without DOM globals and reflects customer/tray state  1577ms
 
  Test Files  13 passed (13)
-      Tests  184 passed (184)
-   Start at  19:22:36
-   Duration  4.38s (transform 382ms, setup 0ms, collect 1.26s, tests 4.78s, environment 2ms, prepare 630ms)
+      Tests  185 passed (185)
+   Start at  19:24:43
+   Duration  4.70s (transform 437ms, setup 0ms, collect 1.25s, tests 5.35s, environment 2ms, prepare 649ms)
 

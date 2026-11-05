@@ -1,7 +1,7 @@
 {
   "config": {
     "argv": [
-      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/.junyan-tools/node_modules/node/bin/node",
       "/workspace/garden-0070/node_modules/@playwright/test/cli.js",
       "test",
       "--config",
@@ -151,7 +151,7 @@
       [
         "json",
         {
-          "outputFile": "evidence/0070/existing-results.json"
+          "outputFile": "/workspace/garden-0070/evidence/0070/existing-results.json"
         }
       ]
     ],
@@ -190,12 +190,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 33115,
+                  "duration": 32903,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-05T19:18:33.312Z",
+                  "startTime": "2026-11-05T19:25:04.223Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -224,12 +224,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2755,
+                  "duration": 2752,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-05T19:19:06.589Z",
+                  "startTime": "2026-11-05T19:25:37.285Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -258,12 +258,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2756,
+                  "duration": 2495,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-05T19:19:09.354Z",
+                  "startTime": "2026-11-05T19:25:40.053Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -292,12 +292,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 33538,
+                  "duration": 34054,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-05T19:19:12.676Z",
+                  "startTime": "2026-11-05T19:25:42.981Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -326,12 +326,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2600,
+                  "duration": 2639,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-05T19:19:46.437Z",
+                  "startTime": "2026-11-05T19:26:17.189Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -360,12 +360,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2239,
+                  "duration": 2233,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-05T19:19:49.046Z",
+                  "startTime": "2026-11-05T19:26:19.839Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -383,8 +383,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-05T19:18:32.853Z",
-    "duration": 78534.968,
+    "startTime": "2026-11-05T19:25:03.878Z",
+    "duration": 78312.254,
     "expected": 6,
     "skipped": 0,
     "unexpected": 0,

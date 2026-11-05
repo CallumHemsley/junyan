@@ -40,8 +40,11 @@ export default function Garden(props: GardenProps) {
   const ready = state.day === day;
   const pot = state.plants[selected];
   const recovered = new Set(recoveredWordIds), fresh = new Set(freshWordIds);
-  const text = (value: Pick<Line, 'id' | 'tokens'>) => value.tokens.map((word, index) => <WordToken key={`${word.id}-${index}`} word={word}
-    look={fresh.has(word.id) ? 'dot' : value.id.startsWith('garden.label-') || recovered.has(word.id) ? 'plain' : 'fogged'} onLookup={onLookup}/>);
+  const text = (value: Pick<Line, 'id' | 'tokens'>, punctuation = false) => value.tokens.map((word, index) => {
+    const token = <WordToken key={`${word.id}-${index}`} word={word}
+      look={fresh.has(word.id) ? 'dot' : value.id.startsWith('garden.label-') || recovered.has(word.id) ? 'plain' : 'fogged'} onLookup={onLookup}/>;
+    return punctuation && index === value.tokens.length - 1 ? <span className="garden-final-token" key={`${word.id}-${index}`}>{token}。</span> : token;
+  });
   const name = (id: string) => label(id).tokens.map(word => word.hanzi).join('');
   useEffect(() => {if (!ready) onAction({type: 'sync'});}, [day, ready, onAction]);
   useEffect(() => {setNotice(null); setConfirm(null); setMoving(null);}, [day]);
@@ -140,7 +143,7 @@ export default function Garden(props: GardenProps) {
       </div>
       <div className="garden-conversation" aria-live="polite">
         <div className="garden-speaker">{text(label('lin'))}<button type="button" aria-label={name('listen')} className="garden-replay" onClick={() => onPlay(line(speak))}><Icon kind="listen"/></button></div>
-        <p className="garden-spoken" data-testid="garden-dialogue">{text(line(speak))}<span aria-hidden="true">。</span></p>
+        <p className="garden-spoken" data-testid="garden-dialogue">{text(line(speak), true)}</p>
       </div>
       <footer className="garden-footer">
         <p>{text(line('day-help'))}</p>

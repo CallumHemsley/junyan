@@ -45,3 +45,5 @@ Owner: garden lead, then one GPT-6.1 Sol medium implementation owner. Branch cod
 Implementation worker /root/garden_writer. Requested model GPT-6.1 Sol, medium. Cloud /workspace/garden-0070, branch codex/0070-rooftop-garden. Strict Vite 5470 and preview 5471. Existing plan and refinements retained.
 
 Draft PR [20](https://github.com/CallumHemsley/junyan/pull/20) is parent-managed. First published rules/design commit 6b0bb47. Feature-local browser harness is development-only and does not close shared navigation, IndexedDB, journal, offline or voice gates.
+
+Code-ready head 14672f5 rebased onto main 5c90ba4. Final checks use Node 22.23.4. All 185 unit tests, build, isolated garden desktop/phone 2/2 and existing hospital/restaurant/save desktop/phone 6/6 pass. Final screenshots inspected. Audio manifest has 91 pinned jobs with 82 missing assets. Shared integration, actual offline garden playback/listening and independent integrated review remain open. Evidence: `evidence/0070/verification.md` and `runtime.json`.

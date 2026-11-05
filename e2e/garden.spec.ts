@@ -109,6 +109,7 @@ test('isolated garden care, deliberate mistake, recovery, placement and vocabula
     await nextDay(page);
     await expect.poll(async () => (await state(page)).day).toBe(snapshot.day + i + 1);
   }
+  await expect.poll(() => page.evaluate(() => window.__GARDEN_TEST__!.plays())).toContain('garden.mature-result');
   await page.screenshot({path: `evidence/0070/${info.project.name}-retreat.png`, fullPage: true});
   const metrics = await page.evaluate(() => ({
     overflow: document.documentElement.scrollWidth > innerWidth,

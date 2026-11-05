@@ -37,6 +37,7 @@
 .garden-conversation {padding: 20px 24px; background: var(--surface-card); border-radius: var(--radius-panel); margin-top: 16px; box-shadow: var(--shadow-chip);}
 .garden-speaker {display: flex; align-items: center; justify-content: space-between; color: var(--text-secondary); font-size: 16px;}
 .garden-spoken {font-family: var(--font-serif); font-size: 30px; line-height: 1.6; margin: 8px 0 0;}
+.garden-final-token {display: inline-flex; align-items: baseline; white-space: nowrap;}
 .garden-replay {background: transparent; border-color: transparent;}
 .garden-footer {display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; color: var(--text-secondary); font-size: 14px; padding: 8px;}
 .garden-footer p {margin: 0;}
