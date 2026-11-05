@@ -1,7 +1,7 @@
 ---
 id: 59
 title: Fix the rendering flicker in the hospital opening
-status: todo
+status: doing
 priority: high
 type: bug
 created: 2026-11-05
@@ -26,3 +26,5 @@ Callum reports a distracting flicker in the hospital opening and supplied the cl
 - Exact reproduction conditions and root cause are unverified. Do not assume depth ordering, clipping or animation is responsible from the still alone.
 - Starting points: `src/scene/renderer.js`, `src/scene/ward.js`, `src/scene/ward-steps.js`, `src/scene/ward.test.ts` and [[tickets/0053-ward-scene]].
 - [[tickets/0058-doctor-opening-voice]] tracks the separate voice issue in the same opening.
+
+- Owner: cloud Codex ticket 0059; branch `codex/0059-ward-scene-flicker`; checkout `/workspace/junyan-0059`; strict ports 5402 (dev), 5403 (preview). Evidence: `docs/evidence/0059-ward-scene-flicker.md`.
