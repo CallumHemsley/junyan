@@ -167,10 +167,12 @@ its references stay untouched and it stays pending in `--plan`.
 | --- | --- | --- | --- |
 | `serena`, `uncle-fu` | `qwen`, `mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit` | `08c72cad5e2fd0f41730c8bd1f28149585e46361` | `Serena`, `Uncle_Fu` / `Chinese` |
 | `yunxi`, `xiaobei` | `kokoro`, `hexgrad/Kokoro-82M` | `f3ff3571791e39611d31c381e3a41a3af07b4987` | `zm_yunxi`, `zf_xiaobei` / `z` |
-| `ryan-en`, `ryan-zh` | `qwen`, same model | same revision | `Ryan` / `English`, `Chinese` |
+| `ryan-en`, `ryan-zh` | `qwen`, `mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit` | `f35faf19b0cc2160865af64ecf0f22f83d335135` | `Ryan` / `English`, `Chinese` |
 | `vivian`, `uncle-fu-levelled`, `serena-levelled` | `qwen`, same model | same revision | `Vivian`, `Uncle_Fu`, `Serena` / `Chinese` |
 
-The five opening presets level to -20 dBFS active RMS with a -1 dBFS peak cap.
+The doctor uses the 1.7B checkpoint selected after the two-line listening comparison
+in ticket 0058; his instructions remain null. Other cast presets retain their
+existing models. The five opening presets level to -20 dBFS active RMS with a -1 dBFS peak cap.
 The casting (doctor Ryan, nurse Vivian, 老爷爷 Uncle_Fu, 小姨 Serena) comes from
 `spikes/hospital-opening/voice/provenance.json`. All presets use speed `1` and
 instructions `null`. Qwen's CustomVoice adapter

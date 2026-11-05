@@ -4,6 +4,7 @@ export type PlaybackError = "policy" | "load" | null;
 export function createPlayback(
   createAudio: (url: string) => Media,
   report: (error: PlaybackError) => void,
+  speaking: (active: boolean) => void = () => {},
 ) {
   let current: { audio: Media; onError: () => void } | null = null;
   let request = 0;
@@ -16,6 +17,7 @@ export function createPlayback(
       previous.audio.removeEventListener("error", previous.onError);
       previous.audio.pause();
     }
+    speaking(false);
     report(null);
   };
 
@@ -27,20 +29,24 @@ export function createPlayback(
     const onError = () => {
       if (attempt !== request) return;
       failed = true;
+      speaking(false);
       report("load");
     };
     current = { audio, onError };
     audio.addEventListener("error", onError);
-    if (onEnded)
-      audio.addEventListener("ended", () => {
-        if (attempt === request) onEnded();
-      });
+    audio.addEventListener("ended", () => {
+      if (attempt !== request) return;
+      speaking(false);
+      onEnded?.();
+    });
+    speaking(true);
     audio.play().then(
       () => {
         if (attempt === request && !failed) report(null);
       },
       (error: unknown) => {
         if (attempt !== request) return;
+        speaking(false);
         report(
           error instanceof Error && error.name === "NotAllowedError"
             ? "policy"

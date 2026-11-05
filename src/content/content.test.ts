@@ -51,6 +51,48 @@ describe('offline Mandarin content', () => {
     }
   });
 
+  it.each(['，', '。', '！', '？', '·'])('preserves optional authored line text with %s', punctuation => {
+    const copy = structuredClone(content);
+    const spoken = copy.help.welcome.tokens.map(word => word.hanzi).join('');
+    copy.help.welcome.text = `${spoken}${punctuation}`;
+    expect(contentSchema.parse(copy).help.welcome.text).toBe(copy.help.welcome.text);
+  });
+
+  it('retains legacy token-only lines and accepts punctuation between tokens', () => {
+    expect(contentSchema.parse(content).help.welcome.text).toBeUndefined();
+    const copy = structuredClone(content);
+    copy.help.welcome.text = copy.help.welcome.tokens.map(word => word.hanzi).join('，') + '。';
+    expect(contentSchema.parse(copy).help.welcome.text).toBe(copy.help.welcome.text);
+  });
+
+  it.each(['', '。', '你好', 'Hello', 'hǎo', '一1', '，Hello。'])('rejects invalid authored speech text %j', text => {
+    const copy = structuredClone(content);
+    copy.help.welcome.text = text;
+    expect(contentSchema.safeParse(copy).success).toBe(false);
+  });
+
+  it.each([',', '.', '!', '?', '：', '…', '\n', ' '])('rejects unsupported speech punctuation %j', punctuation => {
+    const copy = structuredClone(content);
+    copy.help.welcome.text = copy.help.welcome.tokens.map(word => word.hanzi).join('') + punctuation;
+    expect(contentSchema.safeParse(copy).success).toBe(false);
+  });
+
+  it('requires authored speech text to match its segmented Hanzi', () => {
+    const copy = structuredClone(content);
+    copy.help.welcome.text = copy.help.welcome.tokens.map(word => word.hanzi).join('') + '。';
+    copy.help.welcome.tokens[0].hanzi = '错';
+    expect(contentSchema.safeParse(copy).success).toBe(false);
+  });
+
+  it('keeps opening Phrase text required', () => {
+    const copy = structuredClone(content);
+    const step = nth(copy, 'say');
+    const { text, ...withoutText } = step.line;
+    const raw = { ...copy, opening: { ...copy.opening, steps: copy.opening.steps.map(entry => entry === step ? { ...step, line: withoutText } : entry) } };
+    expect(text).toBeTruthy();
+    expect(contentSchema.safeParse(raw).success).toBe(false);
+  });
+
   it('authors the complete help sequence and journals its vocabulary', () => {
     expect(content.help.steps.map(step => [step.id, step.line.tokens.map(word => word.hanzi).join('')])).toEqual([
       ['order', '点桌子听客人点餐'], ['kitchen', '去厨房拿早饭'], ['deliver', '送早饭再找零'],
@@ -159,7 +201,7 @@ describe('offline Mandarin content', () => {
 
   it('keeps English inside the premise steps', () => {
     const displayed = [
-      ...lines.flatMap(line => ['text' in line ? line.text : '', ...line.tokens.map(word => word.hanzi)]),
+      ...lines.flatMap(line => [line.text ?? '', ...line.tokens.map(word => word.hanzi)]),
       ...opening.steps.flatMap(step => step.type === 'reply' ? step.options.map(option => option.word.hanzi) : []),
       ...opening.cast.map(member => member.name),
     ];
@@ -201,9 +243,9 @@ describe('offline Mandarin content', () => {
     const expected = content.characters.flatMap(character => [
       ...[character.greeting, character.thanks, character.retry],
       ...content.orders.filter(order => order.customer === character.name).map(order => order.line),
-    ].map(line => ({entry: line, voiceId: character.voiceId, text: line.tokens.map(word => word.hanzi).join('')})));
+    ].map(line => ({entry: line, voiceId: character.voiceId, text: line.text ?? line.tokens.map(word => word.hanzi).join('')})));
     expected.push(...[content.thanks, content.retry, content.help.welcome, content.help.lookup, content.help.pace,
-      ...content.help.steps.map(step => step.line)].map(line => ({entry: line, voiceId: voices.wordVoice, text: line.tokens.map(word => word.hanzi).join('')})));
+      ...content.help.steps.map(step => step.line)].map(line => ({entry: line, voiceId: voices.wordVoice, text: line.text ?? line.tokens.map(word => word.hanzi).join('')})));
     const cast = new Map(opening.cast.map(member => [member.id, member.voices]));
     for (const step of opening.steps) {
       if (step.type === 'say-en') {

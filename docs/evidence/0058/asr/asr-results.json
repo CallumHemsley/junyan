@@ -1,0 +1,37 @@
+{
+  "model": "openai/whisper-small",
+  "revision": "973afd24965f72e36ca33b3055d56a652f456b4d",
+  "method": "Local CPU transcription with language/task only; no expected script prompt; no audio uploaded. ASR is not a listening, naturalness or tone judgement.",
+  "clips": [
+    {
+      "file": "english-6943a193437e386984125593e818597c260bb560291655e0bdc00a4216645699.wav",
+      "sha256": "4db85c527882990e6d76c2e8a66e455a2dea28223b792bd546190af44a193501",
+      "expected": "Ah, you're awake. Don't try to sit up yet.",
+      "recognized": "Ah, you're awake. Don't try to sit up yet."
+    },
+    {
+      "file": "english-43f6e07bb0dded0b2c1749943ace0f969c9114a050da92befd5ab01ebe3bbb24.wav",
+      "sha256": "d183860a562c1f517b2abb6debb7da19c55d715fa52cd39ac39f4c8f61e05fe9",
+      "expected": "You came off your bike three days ago and hit your head.",
+      "recognized": "You came off your bike three days ago and hit your head."
+    },
+    {
+      "file": "english-4265e3caa9e44db5b6233d1b144c34ab00974e8920452a2243c7dbb18900c5cb.wav",
+      "sha256": "e16cff6619fb9e673486a7edefcda7110469fe0fedcad431b4ae2e225ebd0d47",
+      "expected": "Your aunt tells me you used to speak Mandarin. For now, it's gone.",
+      "recognized": "Your aunt tells me you used to speak Mandarin. For now, it's gone."
+    },
+    {
+      "file": "english-2a80e2a0c137b91d7de37cb1b82f30b6e208448a302292cc7e7c846005dca422.wav",
+      "sha256": "44355f244c358246dc361c551ad06bc7b07d52ba03c1c3f2bcd45f43e03449a9",
+      "expected": "It'll come back if you listen and use it. So from now on, no more English.",
+      "recognized": "It'll come back if you listen and use it, so from now on, no more English."
+    },
+    {
+      "file": "line-a67bca4ef54afdc7a84aec2dac9f74b2fea9a4d1bfcf317e8e56f193495a9067.wav",
+      "sha256": "97e88e936326ed1c16c27cdcaff6153b629d2977ef212bd3f819cade799277ec",
+      "expected": "人醒了。我明天再来看看。",
+      "recognized": "人醒了 我明天再来看看"
+    }
+  ]
+}

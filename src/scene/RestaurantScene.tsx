@@ -24,7 +24,7 @@ export default function RestaurantScene({state,onMove,onTable,onKitchen}:Restaur
     const pending=requestAnimationFrame(()=>{timer=window.setTimeout(()=>{stop=start();});});
     const start=()=>{
       if (!canvas.current) return ()=>{};
-      const renderer=createRenderer(canvas.current,restaurantScene(TABLES,Object.fromEntries(content.orders.map(order => [order.id, characterFor(order.customer).appearance]))));
+      const renderer=createRenderer(canvas.current,restaurantScene(TABLES,Object.fromEntries(content.orders.map(order => [order.id, characterFor(order.customer).appearance])),Object.fromEntries(content.orders.map(order => [order.id, order.items]))));
       const preference=window.matchMedia('(prefers-reduced-motion: reduce)');
       const player={...current.current.player,yaw:Math.PI/2};
       let frame=0, last=0, lastDraw=-Infinity, dirty=true;
@@ -90,7 +90,7 @@ export default function RestaurantScene({state,onMove,onTable,onKitchen}:Restaur
     {TABLES.map(table=>{
       const customer=state.customers.find(c=>c.table===table.table);
       return <button key={table.table} type="button"
-        className="scene-target scene-table" style={percentPosition(table,1.3)}
+        className="scene-target scene-table" style={percentPosition(table,-.8)}
         data-testid={`table-${table.table}`} data-phase={customer?.phase ?? 'empty'}
         aria-pressed={state.activeTable===table.table} onClick={()=>onTable(table.table)}>
         <span>{table.table}桌</span><i aria-hidden="true"/>

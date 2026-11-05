@@ -1,0 +1,281 @@
+{
+  "scope": "Final six focused repetitions. Intermediate stale-error/pending-second-attempt assertions are explicit in the passing test; these observations capture the final state.",
+  "cases": [
+    {
+      "project": "desktop",
+      "title": "resource failure retries the same ambience owner without disturbing speech",
+      "native": {
+        "count": 1,
+        "starts": 3,
+        "paused": false,
+        "volume": 0.041999999999999996,
+        "time": 1.028553,
+        "duration": 73,
+        "loop": true,
+        "events": [
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 692.8000000007451,
+            "active": true,
+            "sinceClick": 0.30000000074505806,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "NotSupportedError"
+          },
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 871.5,
+            "active": true,
+            "sinceClick": 0.19999999925494194,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "NotSupportedError"
+          },
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 1051.4000000003725,
+            "active": true,
+            "sinceClick": 0.09999999962747097,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "playing"
+          }
+        ]
+      },
+      "console": [
+        "Failed to load resource: net::ERR_FAILED (http://127.0.0.1:5414/audio/ambience/breakfast.mp3)",
+        "Failed to load resource: net::ERR_FAILED (http://127.0.0.1:5414/audio/ambience/breakfast.mp3)"
+      ]
+    },
+    {
+      "project": "desktop",
+      "title": "resource failure retries the same ambience owner without disturbing speech",
+      "native": {
+        "count": 1,
+        "starts": 3,
+        "paused": false,
+        "volume": 0.041999999999999996,
+        "time": 1.026983,
+        "duration": 73,
+        "loop": true,
+        "events": [
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 655,
+            "active": true,
+            "sinceClick": 0.30000000074505806,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "NotSupportedError"
+          },
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 839.6999999992549,
+            "active": true,
+            "sinceClick": 0.2999999988824129,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "NotSupportedError"
+          },
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 1039,
+            "active": true,
+            "sinceClick": 0.19999999925494194,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "playing"
+          }
+        ]
+      },
+      "console": [
+        "Failed to load resource: net::ERR_FAILED (http://127.0.0.1:5414/audio/ambience/breakfast.mp3)",
+        "Failed to load resource: net::ERR_FAILED (http://127.0.0.1:5414/audio/ambience/breakfast.mp3)"
+      ]
+    },
+    {
+      "project": "desktop",
+      "title": "resource failure retries the same ambience owner without disturbing speech",
+      "native": {
+        "count": 1,
+        "starts": 3,
+        "paused": false,
+        "volume": 0.041999999999999996,
+        "time": 0.983796,
+        "duration": 73,
+        "loop": true,
+        "events": [
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 750.5,
+            "active": true,
+            "sinceClick": 0.40000000037252903,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "NotSupportedError"
+          },
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 944.3000000007451,
+            "active": true,
+            "sinceClick": 0.5,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "NotSupportedError"
+          },
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 1144.2000000011176,
+            "active": true,
+            "sinceClick": 0.30000000074505806,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "playing"
+          }
+        ]
+      },
+      "console": [
+        "Failed to load resource: net::ERR_FAILED (http://127.0.0.1:5414/audio/ambience/breakfast.mp3)",
+        "Failed to load resource: net::ERR_FAILED (http://127.0.0.1:5414/audio/ambience/breakfast.mp3)"
+      ]
+    },
+    {
+      "project": "phone",
+      "title": "resource failure retries the same ambience owner without disturbing speech",
+      "native": {
+        "count": 1,
+        "starts": 3,
+        "paused": false,
+        "volume": 0.041999999999999996,
+        "time": 1.014713,
+        "duration": 73,
+        "loop": true,
+        "events": [
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 608.7000000011176,
+            "active": true,
+            "sinceClick": 0.40000000037252903,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "NotSupportedError"
+          },
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 706,
+            "active": true,
+            "sinceClick": 0.2999999988824129,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "NotSupportedError"
+          },
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 924.5999999996275,
+            "active": true,
+            "sinceClick": 0.3999999985098839,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "playing"
+          }
+        ]
+      },
+      "console": [
+        "Failed to load resource: net::ERR_FAILED (http://127.0.0.1:5414/audio/ambience/breakfast.mp3)",
+        "Failed to load resource: net::ERR_FAILED (http://127.0.0.1:5414/audio/ambience/breakfast.mp3)"
+      ]
+    },
+    {
+      "project": "phone",
+      "title": "resource failure retries the same ambience owner without disturbing speech",
+      "native": {
+        "count": 1,
+        "starts": 3,
+        "paused": false,
+        "volume": 0.041999999999999996,
+        "time": 1.033127,
+        "duration": 73,
+        "loop": true,
+        "events": [
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 610.1999999992549,
+            "active": true,
+            "sinceClick": 0.40000000037252903,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "NotSupportedError"
+          },
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 701.5999999996275,
+            "active": true,
+            "sinceClick": 0.30000000074505806,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "NotSupportedError"
+          },
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 901.8999999985099,
+            "active": true,
+            "sinceClick": 0.19999999925494194,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "playing"
+          }
+        ]
+      },
+      "console": [
+        "Failed to load resource: net::ERR_FAILED (http://127.0.0.1:5414/audio/ambience/breakfast.mp3)",
+        "Failed to load resource: net::ERR_FAILED (http://127.0.0.1:5414/audio/ambience/breakfast.mp3)"
+      ]
+    },
+    {
+      "project": "phone",
+      "title": "resource failure retries the same ambience owner without disturbing speech",
+      "native": {
+        "count": 1,
+        "starts": 3,
+        "paused": false,
+        "volume": 0.041999999999999996,
+        "time": 1.023925,
+        "duration": 73,
+        "loop": true,
+        "events": [
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 602.2000000011176,
+            "active": true,
+            "sinceClick": 0.30000000074505806,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "NotSupportedError"
+          },
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 680.8000000007451,
+            "active": true,
+            "sinceClick": 0.40000000037252903,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "NotSupportedError"
+          },
+          {
+            "src": "http://127.0.0.1:5414/audio/ambience/breakfast.mp3",
+            "at": 863.5,
+            "active": true,
+            "sinceClick": 0.2999999988824129,
+            "muted": false,
+            "volume": 0.1575,
+            "status": "playing"
+          }
+        ]
+      },
+      "console": [
+        "Failed to load resource: net::ERR_FAILED (http://127.0.0.1:5414/audio/ambience/breakfast.mp3)",
+        "Failed to load resource: net::ERR_FAILED (http://127.0.0.1:5414/audio/ambience/breakfast.mp3)"
+      ]
+    }
+  ]
+}

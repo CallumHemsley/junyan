@@ -27,12 +27,14 @@ const wordSchema: z.ZodType<Word> = z.strictObject({
   gloss: z.string().trim().min(1),
   audio,
 });
-const lineSchema: z.ZodType<Line> = z.strictObject({
-  id: contentId, tokens: z.array(wordSchema).min(1), audio,
-});
 const punctuation = /[，。！？·]/gu;
+const speechText = z.string().regex(/^[\p{Script=Han}，。！？·]+$/u);
+const lineSchema: z.ZodType<Line> = z.strictObject({
+  id: contentId, tokens: z.array(wordSchema).min(1), audio, text: speechText.optional(),
+}).refine(line => line.text === undefined || line.text.replace(punctuation, '') === line.tokens.map(word => word.hanzi).join(''),
+  'Line text must equal its tokens plus punctuation');
 const phraseSchema: z.ZodType<Phrase> = z.strictObject({
-  id: contentId, tokens: z.array(wordSchema).min(1), audio, text: z.string().regex(/^[\p{Script=Han}，。！？·]+$/u),
+  id: contentId, tokens: z.array(wordSchema).min(1), audio, text: speechText,
 });
 const castSchema: z.ZodType<CastMember> = z.strictObject({
   id, name: z.string().regex(/^[\p{Script=Han}]+$/u), voices: z.strictObject({ zh: id, en: id.optional() }),
@@ -73,10 +75,7 @@ const characterSchema: z.ZodType<Character> = z.strictObject({
 export const contentSchema = z.strictObject({
   neighbourhood: z.strictObject({
     words: z.array(wordSchema),
-    lines: z.array(z.union([lineSchema, phraseSchema.refine(
-      phrase => phrase.text.replace(punctuation, '') === phrase.tokens.map(word => word.hanzi).join(''),
-      'Phrase text must equal its tokens plus punctuation',
-    )])),
+    lines: z.array(lineSchema),
   }).optional(),
   help: z.strictObject({
     welcome: lineSchema, lookup: lineSchema, pace: lineSchema,

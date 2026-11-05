@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "checks": [
+    "strict server 5414 available",
+    "strict server 5415 available",
+    "no ambience created before gesture",
+    "real MP3 decodes and plays once after gesture",
+    "speech state ducks native element volume to .042",
+    "hidden/visible: native playback paused",
+    "hidden/visible: one reused native element",
+    "leave/return: native playback paused",
+    "leave/return: one reused native element",
+    "mute/unmute: native playback paused",
+    "mute/unmute: one reused native element",
+    "zero/restore: native playback paused",
+    "zero/restore: one reused native element",
+    "five deliberate starts, no duplicate starts or media failures",
+    "disposal pauses real playback",
+    "desktop reduced-motion baseline has no horizontal overflow",
+    "phone reduced-motion baseline has no horizontal overflow",
+    "offline production subpath asset cached and decodable (438572 bytes, 73 seconds)",
+    "browser page errors absent (0)"
+  ],
+  "offline": {
+    "bytes": 438572,
+    "duration": 73
+  },
+  "limits": "Silent automated run. Controller supplied lifecycle/speech state directly; game wiring, visible controls and subjective listening are not verified."
+}

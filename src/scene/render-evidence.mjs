@@ -13,7 +13,7 @@ const tables = [{table:1,x:3,y:4},{table:2,x:9,y:4},{table:3,x:3,y:8},{table:4,x
 const appearances = Object.fromEntries(content.orders.map(order => [order.id,content.characters.find(character => character.name === order.customer).appearance]));
 const state = {seed:42,day:1,level:1,player:{x:6,y:6},customers:tables.map(table => ({table:table.table,orderId:content.orders.find(order => order.level===1 && order.table===table.table).id,phase:'seated'})),tray:[],served:0,earnings:0,mistakes:0,activeTable:null,feedback:'none',receipt:null,journal:{},ended:false};
 let frame;
-const renderer = createRenderer({getContext:()=>({createImageData:(width,height)=>({data:new Uint8ClampedArray(width*height*4)}),putImageData:image=>{frame=image.data.slice();}})},restaurantScene(tables,appearances));
+const renderer = createRenderer({getContext:()=>({createImageData:(width,height)=>({data:new Uint8ClampedArray(width*height*4)}),putImageData:image=>{frame=image.data.slice();}})},restaurantScene(tables,appearances,Object.fromEntries(content.orders.map(order=>[order.id,order.items]))));
 const cards=[];
 for(const [mode,tray,time,moving] of [['empty',[],0,false],['full',Array(6).fill('bun'),0,false],['walk-a',Array(6).fill('bun'),.1,true],['walk-b',Array(6).fill('bun'),.35,true]]) {
   for(const [direction,yaw] of [['east',0],['south-east',Math.PI/4],['south',Math.PI/2],['south-west',Math.PI*.75],['west',Math.PI],['north-west',Math.PI*1.25],['north',Math.PI*1.5],['north-east',Math.PI*1.75]]) {

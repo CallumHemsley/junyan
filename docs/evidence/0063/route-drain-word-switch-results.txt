@@ -1,0 +1,45 @@
+[WebServer] (node:22440) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ vite --host 0.0.0.0 --host 127.0.0.1 --port 5414 --strictPort
+[WebServer] (node:22455) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:22480) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ tsc -b && vite build
+[WebServer] (node:22509) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/util.js (400:0): A comment
+[WebServer] 
+[WebServer] "// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+[WebServer] 
+[WebServer] in "node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+[WebServer] node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/regexes.js (74:0): A comment
+[WebServer] 
+[WebServer] "/** Anchors a pattern source. The interpolation lives here rather than at the call site because
+[WebServer]  * esbuild will not drop a `@__PURE__` call whose own argument interpolates a variable, but it
+[WebServer]  * will drop `anchor(dateSource)`. Keeping it inline pinned `date` into every bundle. */"
+[WebServer] 
+[WebServer] in "node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+[WebServer] (node:22535) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:22549) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 10 tests using 1 worker
+
+(node:22573) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [desktop] › e2e/word-switch.spec.ts:39:3 › development: Help and restaurant switch directly with top-only Escape (3.7s)
+  ✓   2 [desktop] › e2e/word-switch.spec.ts:39:3 › production: Help and restaurant switch directly with top-only Escape (3.6s)
+  ✓   3 [desktop] › e2e/word-switch.spec.ts:58:1 › hospital words switch without advancing the opening (3.4s)
+  ✓   4 [desktop] › e2e/word-switch.spec.ts:68:1 › kitchen, tray, journal and receipt sources keep switching (6.2s)
+  ✓   5 [desktop] › e2e/word-switch.spec.ts:109:1 › rapid keyboard/pointer selection records once and cancels prior native audio (4.0s)
+(node:22880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   6 [phone] › e2e/word-switch.spec.ts:39:3 › development: Help and restaurant switch directly with top-only Escape (3.3s)
+  ✓   7 [phone] › e2e/word-switch.spec.ts:39:3 › production: Help and restaurant switch directly with top-only Escape (3.8s)
+  ✓   8 [phone] › e2e/word-switch.spec.ts:58:1 › hospital words switch without advancing the opening (3.4s)
+  ✓   9 [phone] › e2e/word-switch.spec.ts:68:1 › kitchen, tray, journal and receipt sources keep switching (5.6s)
+  ✓  10 [phone] › e2e/word-switch.spec.ts:109:1 › rapid keyboard/pointer selection records once and cancels prior native audio (3.7s)
+
+  10 passed (53.3s)

@@ -6,7 +6,7 @@ export type Word = {
   gloss: string;
   audio: string;
 };
-export type Line = { id: string; tokens: Word[]; audio: string };
+export type Line = { id: string; tokens: Word[]; audio: string; text?: string };
 export type Phrase = Line & { text: string };
 export type CastMember = { id: string; name: string; voices: { zh: string; en?: string } };
 type Staging = { enter?: string[]; leave?: string[] };
