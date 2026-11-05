@@ -1,6 +1,6 @@
 # 0063 integrated handoff
 
-**Code complete; BLOCKED from merge on listening acceptance and root's exact-patch/product review.** Ticket remains doing because realistic texture/seams/balance and Callum's ordinary-session review have not occurred. No user listening, enjoyment or human approval is claimed.
+**Code complete; awaiting root's final native/visual and exact-patch/product review.** Root relayed the user's direct **“Works at this level”** acceptance of a 20-second representative preview at actual default gain .1575 / ducked .042 during two shipped LinJie lines. Preserve default level .35 and the calibrated source exactly. See `USER-LISTENING.md` for scope. This does not claim full 73-second loop/day listening, worker auditory perception, enjoyment or final merge approval. Ticket remains doing pending root acceptance.
 
 Branch: `codex/0063-restaurant-background-sounds`. PR: https://github.com/CallumHemsley/junyan/pull/17 . Reviewed current main **5c90ba4b7421755fee3dd5d12e777f70dd34f226** is merged (0061 direct word-switch preserved). Isolated checkout `/workspace/junyan-0063`, strict dev/preview ports **5414/5415**. Final committed SHA is reported in the handoff; `verified-source-sha256.json` binds runtime/test/asset files to the verified source independently of subsequent documentation commits.
 
@@ -26,7 +26,7 @@ Raw candidate: `public/audio/ambience/breakfast.mp3`, original CC0 synthesized n
 
 Human preview: `listening-comparison.mp3` (42 s), an **offline deterministic render**, not a browser recording or listening result. Sections: 0–14 s speech only; 14–28 default ambience; 28–42 maximum ambience. Same existing voice clip starts at 4/9 s within each section, unchanged in level; real controller gains are applied to ambience around it. JSON records source hashes/timing/provenance. Separate raw asset is needed to audition full repeated loop boundaries.
 
-Listening is necessary to evaluate ceramic realism versus musical tones, pouring versus chirps, appropriate breakfast preparation character, perceived masking, scene level, fatigue and seams. No model here can perceive the audio. These dimensions cannot honestly be marked passed from native playback, metering or file existence.
+The user has accepted the representative 20-second mix at its actual default/ducked level, as relayed by root in USER-LISTENING.md. The full 73-second loop, full-session fatigue/seams and broader realism were not auditioned in that reported acceptance. No model here can perceive the audio; those broader dimensions are not marked passed from native playback, metering, file existence or the narrower user quote.
 
 ## Product-quality self-review
 
@@ -37,7 +37,7 @@ Listening is necessary to evaluate ceramic realism versus musical tones, pouring
 | Usability | **8/10** | Independent mute/level, persistence/failure fallback, touch/keyboard and narrow layout verified. Controls follow the existing inert header while a modal is open; editing settings requires closing that modal. Physical-device/screen-reader testing absent. |
 | Contribution to fun / interest | **Unscored, hypothesis only** | No human enjoyment/retention evidence and no auditory perception. A background layer may help atmosphere; that is not a demonstrated player outcome. |
 
-All dimensions apply, so none are marked N/A. No inflated overall 8/10 or READY claim is made while relevant audio dimensions cannot be evaluated. Known technical defects found within this scope were fixed; remaining acceptance gaps are precise, material and listed above. The game is a short vertical slice, not a release-quality Steam game. Self-scores are not independent approval.
+All dimensions apply, so none are marked N/A. No inflated overall 8/10 or READY claim is made for audio dimensions beyond the user-accepted representative level. Known technical defects found within this scope were fixed; remaining acceptance gaps are precise, material and listed above. The game is a short vertical slice, not a release-quality Steam game. Self-scores are not independent approval.
 
 ## Foundation / ownership handoff
 

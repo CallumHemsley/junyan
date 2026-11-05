@@ -17,3 +17,7 @@ Record actual listener, device/output, level, A/B conditions, timestamp and conc
 - 28–42 seconds: the same line plus maximum ambience, including ducking.
 
 Within each section the identical unaltered voice clip starts at 4 and 9 seconds. The original ambience timeline restarts at each section so cups/pours can be compared consistently. `listening-comparison.json` records source paths/hashes, section timing, gains and limitations. Regenerate with `python3 scripts/ambience-0063-preview.py`. The speech retains its existing source terms; the composite is not labelled CC0 as a whole. Use the 73-second raw asset separately for full-loop-boundary listening. No one has listened to or approved this render in this worker's evidence.
+
+## 2026-11-05 user acceptance update
+
+Root relayed the direct user response **“Works at this level”** after a 20-second preview simulation using the calibrated asset at actual default .1575 and ducked .042 gain during two shipped LinJie lines. Preserve exact level .35 and calibrated source. This supersedes earlier pending-level-listening statements only within that representative excerpt's scope; it does not claim full 73-second loop/day listening, this worker's perception or final approval. See USER-LISTENING.md. No further mix changes made; root native/visual/exact-review gates remain pending.
