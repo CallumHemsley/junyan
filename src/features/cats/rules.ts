@@ -25,7 +25,7 @@ const stateSchema = z.strictObject({
   repeat: z.discriminatedUnion('status', [
     z.strictObject({ status: z.literal('idle') }),
     z.strictObject({ status: z.literal('active'), encounter: activeSchema }),
-    z.strictObject({ status: z.literal('complete'), day: daySchema, kind: z.enum(kinds) }),
+    z.strictObject({ status: z.literal('complete'), day: daySchema, finishedDay: daySchema, kind: z.enum(kinds) }),
   ]),
   completedKinds: z.array(z.enum(kinds)).max(3),
   lastCompletedDay: daySchema.nullable(),
@@ -54,6 +54,7 @@ const stateSchema = z.strictObject({
     if (encounter.day <= Math.max(state.story.day, state.lastCompletedDay ?? 0) || encounter.kind !== routineForDay(encounter.day)) issue('Invalid anchored encounter');
   }
   if (state.repeat.status === 'complete') {
+    if (state.repeat.finishedDay < state.repeat.day) issue('Completion cannot precede the encounter');
     if (state.repeat.day !== state.lastCompletedDay || !state.completedKinds.includes(state.repeat.kind) || state.repeat.kind !== routineForDay(state.repeat.day)) issue('Invalid completion');
   }
 });
@@ -113,17 +114,20 @@ export function reduce(state: State, action: Action, day: number): State {
   }
   if (state.repeat.status === 'active') {
     const e = state.repeat.encounter;
-    const finish = (next = state): State => ({ ...next, repeat: { status: 'complete', day: e.day, kind: e.kind },
+    const finish = (next = state): State => ({ ...next, repeat: { status: 'complete', day: e.day, finishedDay: Math.max(day, e.day), kind: e.kind },
       completedKinds: state.completedKinds.includes(e.kind) ? state.completedKinds : [...state.completedKinds, e.kind],
       lastCompletedDay: e.day, feedback: 'visit-complete' });
-    if (e.kind === 'sunny' && e.step === 'greet' && action.type === 'greet')
+    if (e.kind === 'sunny' && e.step === 'greet' && state.selected === 'black' && action.type === 'greet')
       return { ...state, cats: { ...state.cats, black: { ...state.cats.black, greeted: true } }, repeat: { status: 'active', encounter: { ...e, step: 'sit' } }, feedback: 'black-greeting' };
-    if (e.kind === 'sunny' && e.step === 'sit' && action.type === 'sit')
+    if (e.kind === 'sunny' && e.step === 'sit' && state.selected === 'black' && action.type === 'sit')
       return finish({ ...state, cats: { ...state.cats, black: { greeted: true, satTogether: true } } });
-    if (e.kind === 'rainy' && e.step === 'wait' && action.type === 'wait') return finish();
-    if (e.kind === 'route' && e.step === 'follow' && action.type === 'follow')
+    if (e.kind === 'rainy' && e.step === 'wait' && (state.selected === 'white' || state.selected === 'door') && action.type === 'wait') return finish();
+    if (e.kind === 'rainy' && e.step === 'wait' && (state.selected === 'white' || state.selected === 'door') && action.type === 'space')
+      return { ...state, cats: { ...state.cats, white: { ...state.cats.white, gaveSpace: true } }, feedback: 'space' };
+    if (e.kind === 'route' && e.step === 'follow' && state.selected === 'white' && action.type === 'follow')
       return { ...state, repeat: { status: 'active', encounter: { ...e, step: 'invite' } }, feedback: 'window-found' };
-    if (e.kind === 'route' && e.step === 'invite' && action.type === 'approach') return finish();
+    if (e.kind === 'route' && e.step === 'invite' && (state.selected === 'white' || state.selected === 'window') && action.type === 'approach')
+      return finish({ ...state, cats: { ...state.cats, white: { ...state.cats.white, rested: true } } });
     if (action.type === 'space' || action.type === 'approach') return { ...state, feedback: 'gentle' };
     return state;
   }
@@ -150,11 +154,11 @@ export function choices(state: State): Choice[] {
   const choice = (type: Exclude<Action['type'], 'select'>, label: string = type): Choice => ({ action: { type }, label: `action-${label}` });
   if (state.repeat.status === 'active') {
     const e = state.repeat.encounter;
-    if (e.kind === 'sunny' && e.step === 'greet') return [choice('greet')];
-    if (e.kind === 'sunny' && e.step === 'sit') return [choice('sit')];
-    if (e.kind === 'rainy' && e.step === 'wait') return [choice('wait'), choice('space')];
-    if (e.kind === 'route' && e.step === 'follow') return [choice('follow')];
-    if (e.kind === 'route' && e.step === 'invite') return [choice('approach')];
+    if (e.kind === 'sunny' && e.step === 'greet' && state.selected === 'black') return [choice('greet')];
+    if (e.kind === 'sunny' && e.step === 'sit' && state.selected === 'black') return [choice('sit')];
+    if (e.kind === 'rainy' && e.step === 'wait' && (state.selected === 'white' || state.selected === 'door')) return [choice('wait'), choice('space')];
+    if (e.kind === 'route' && e.step === 'follow' && state.selected === 'white') return [choice('follow')];
+    if (e.kind === 'route' && e.step === 'invite' && (state.selected === 'white' || state.selected === 'window')) return [choice('approach')];
     return [];
   }
   const result: Choice[] = [];
@@ -197,8 +201,10 @@ export function recoveryForTransition(before: State, after: State): string[] {
 export function sceneFacts(state: State, day: number) {
   const routine = state.repeat.status === 'active' ? state.repeat.encounter.kind
     : state.story.node === 'reunited' ? routineForDay(Math.max(1, day)) : 'sunny';
-  const white = state.story.node === 'doorway' || state.story.node === 'reunited' && (routine === 'rainy' || state.repeat.status === 'idle' && day === state.story.day) ? 'door'
-    : state.repeat.status === 'active' && state.repeat.encounter.kind === 'route' && state.repeat.encounter.step === 'invite' ? 'window'
+  const routeAtWindow = state.repeat.status === 'active' && state.repeat.encounter.kind === 'route' && state.repeat.encounter.step === 'invite'
+    || state.repeat.status === 'complete' && state.repeat.kind === 'route' && state.repeat.finishedDay === day;
+  const white = routeAtWindow ? 'window' : state.story.node === 'doorway' || state.story.node === 'reunited' && (routine === 'rainy' || state.repeat.status === 'idle' && day === state.story.day) ? 'door'
+
     : state.story.node === 'invited' ? 'path' : ['emerged', 'reunited'].includes(state.story.node) ? 'open' : 'bicycle';
   return { routine, white, crouched: state.story.node === 'crouched', close: !['search', 'crouched'].includes(state.story.node) };
 }

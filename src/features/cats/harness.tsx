@@ -6,12 +6,11 @@ import type { Word } from '../../contracts';
 import '../../../docs/design/tokens.css';
 import '../../style.css';
 
-// Development-only surface. The production shell owns journal, saves, navigation and audio.
 if (!import.meta.env.DEV || new URLSearchParams(location.search).get('test') !== '1') throw new Error('Development harness only');
 const params = new URLSearchParams(location.search);
 let initial = initialState();
 if (params.has('state')) {
-  try { initial = validate(JSON.parse(params.get('state')!)) ?? initial; } catch { /* Invalid test input starts fresh. */ }
+  try { initial = validate(JSON.parse(params.get('state')!)) ?? initial; } catch {}
 }
 let setSaved: (state: State) => void;
 let setDay: (day: number) => void;

@@ -65,12 +65,12 @@ export function visualPose(state: State, day: number) {
   const blackFriend = state.selected === 'black' && state.cats.black.satTogether;
   const whiteFriend = state.selected === 'white' && state.cats.white.rested;
   const following = state.story.node === 'doorway' || state.story.node === 'reunited' || state.repeat.status === 'active' && state.repeat.encounter.kind === 'route' && state.repeat.encounter.step === 'invite';
-  const player = blackFriend ? { x: 8.15, y: 6.1 }
+  const player = state.feedback === 'space' ? { x: white.x + 2.8, y: white.y + 1.5 } : blackFriend ? { x: 8.15, y: 6.1 }
     : whiteFriend ? { x: white.x + 1.6, y: white.y - .8 }
     : following ? { x: white.x + 1.65, y: white.y - .85 }
-    : state.feedback === 'space' ? { x: 5.1, y: 8.3 }
+
     : state.story.node === 'crouched' ? { x: 4.5, y: 5.5 } : { x: white.x + 1.8, y: white.y - .8 };
-  return { white, player, sitting: blackFriend || whiteFriend || state.story.node === 'crouched' };
+  return { white, player, sitting: state.feedback !== 'space' && (blackFriend || whiteFriend || state.story.node === 'crouched') };
 }
 export type VisualPose = ReturnType<typeof visualPose>;
 export const courtyardScene: Scene<[State, number, number, VisualPose]> = {

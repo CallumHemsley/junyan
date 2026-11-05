@@ -112,3 +112,36 @@ test('courtyard motion pauses while hidden and respects reduced motion', async (
   await page.waitForTimeout(250);
   expect(await page.evaluate(() => (window as unknown as { __catsPaints: number }).__catsPaints)).toBe(reduced);
 });
+
+test('repeat detours keep patient actions and visible companions consistent', async ({ page }, info) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto(harness);
+  await reunite(page);
+  await page.evaluate(() => window.__CATS_HARNESS__.day(2));
+  await action(page, 'begin');
+  await page.getByTestId('cats-white').click();
+  await action(page, 'space');
+  expect((await state(page)).cats.white.gaveSpace).toBe(true);
+  expect(await page.evaluate(() => window.__CATS_HARNESS__.events.recover.flat())).toContain('cats.back');
+  await page.screenshot({ path: `evidence/0068/${info.project.name}-rain-space.png`, fullPage: true });
+  await action(page, 'wait');
+  await page.evaluate(() => window.__CATS_HARNESS__.day(3));
+  await action(page, 'begin');
+  await page.getByTestId('cats-white').click();
+  await action(page, 'follow');
+  await action(page, 'approach');
+  expect((await state(page)).cats.white.rested).toBe(true);
+  await page.screenshot({ path: `evidence/0068/${info.project.name}-window-friend.png`, fullPage: true });
+  await page.evaluate(() => window.__CATS_HARNESS__.day(4));
+  await action(page, 'begin');
+  await page.getByTestId('cats-black').click();
+  await page.getByTestId('cats-white').click();
+  await expect(page.getByTestId('cats-action-greet')).toHaveCount(0);
+  await page.getByTestId('cats-black').click();
+  await action(page, 'greet');
+  await page.getByTestId('cats-white').click();
+  await expect(page.getByTestId('cats-action-sit')).toHaveCount(0);
+  await page.getByTestId('cats-black').click();
+  await action(page, 'sit');
+  expect((await state(page)).cats.black.satTogether).toBe(true);
+});

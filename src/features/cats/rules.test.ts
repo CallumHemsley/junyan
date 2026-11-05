@@ -1,3 +1,4 @@
+import { visualPose } from './scene';
 import { describe, expect, it } from 'vitest';
 import { choices, gifts, initialState, recoveryForTransition, recoveredWords, reduce, routineForDay, sceneFacts, validate, type Action, type State } from './rules';
 
@@ -62,7 +63,7 @@ describe('anchored repeat routines', () => {
     let state = reunion();
     for (const day of [2, 3, 4]) {
       state = finishRepeat(state, day);
-      expect(state.repeat).toEqual({ status: 'complete', day, kind: routineForDay(day) });
+      expect(state.repeat).toEqual({ status: 'complete', day, finishedDay: day, kind: routineForDay(day) });
       expect(validate(state)).toEqual(state);
     }
     expect(state.completedKinds).toEqual(['rainy', 'route', 'sunny']);
@@ -138,5 +139,45 @@ describe('save boundary', () => {
       expect(validate(state)).toEqual(state);
       for (const choice of choices(state)) expect(validate(reduce(state, choice.action, 1 + Math.floor(n / 40)))).not.toBeNull();
     }
+  });
+});
+
+
+describe('reviewed action and scene consistency', () => {
+  it('giving space during rain moves back and records only demonstrated recovery', () => {
+    const before = run([{ type: 'begin' }, { type: 'select', target: 'white' }], 2, reunion());
+    expect(recoveredWords(before)).not.toContain('cats.back');
+    const after = reduce(before, { type: 'space' }, 2);
+    expect(after.cats.white.gaveSpace).toBe(true);
+    expect(after.repeat).toEqual(before.repeat);
+    expect(recoveryForTransition(before, after)).toContain('cats.back');
+    const distance = (state: State) => { const pose = visualPose(state, 2); return Math.hypot(pose.player.x - pose.white.x, pose.player.y - pose.white.y); };
+    expect(distance(after)).toBeGreaterThan(distance(before));
+    expect(reduce(after, { type: 'wait' }, 2).repeat.status).toBe('complete');
+  });
+  it('sunny black-cat actions require the selected black cat after a detour', () => {
+    const noticed = run([{ type: 'begin' }, { type: 'select', target: 'black' }], 4, reunion());
+    const detour = reduce(noticed, { type: 'select', target: 'white' }, 4);
+    expect(choices(detour).map(choice => choice.action.type)).not.toContain('greet');
+    expect(reduce(detour, { type: 'greet' }, 4)).toEqual(detour);
+    const greeted = run([{ type: 'select', target: 'black' }, { type: 'greet' }], 4, detour);
+    const secondDetour = reduce(greeted, { type: 'select', target: 'white' }, 4);
+    expect(choices(secondDetour).map(choice => choice.action.type)).not.toContain('sit');
+    expect(reduce(secondDetour, { type: 'sit' }, 4)).toEqual(secondDetour);
+    const together = run([{ type: 'select', target: 'black' }, { type: 'sit' }], 4, secondDetour);
+    expect(together.cats.black.satTogether).toBe(true);
+    expect(visualPose(together, 4).sitting).toBe(true);
+    expect(visualPose(together, 4).player.x).toBeGreaterThan(7);
+  });
+  it('a completed invitation retains window companionship through reload for its completion day', () => {
+    const followed = run([{ type: 'begin' }, { type: 'select', target: 'white' }, { type: 'follow' }], 3, reunion());
+    const before = visualPose(followed, 3);
+    const done = reduce(followed, { type: 'approach' }, 4);
+    const saved = validate(JSON.parse(JSON.stringify(done)))!;
+    expect(saved.cats.white.rested).toBe(true);
+    expect(sceneFacts(saved, 4).white).toBe('window');
+    expect(visualPose(saved, 4).white).toEqual(before.white);
+    expect(visualPose(saved, 4).sitting).toBe(true);
+    expect(sceneFacts(saved, 5).white).toBe('door');
   });
 });
