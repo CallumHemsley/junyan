@@ -4,6 +4,20 @@
   "wordVoice": "serena",
   "words": [
     {
+      "id": "repairs.wood",
+      "hanzi": "木头",
+      "pinyin": "mùtou",
+      "gloss": "wood",
+      "audio": "/audio/repairs/word-wood.wav"
+    },
+    {
+      "id": "repairs.metal",
+      "hanzi": "金属",
+      "pinyin": "jīnshǔ",
+      "gloss": "metal",
+      "audio": "/audio/repairs/word-metal.wav"
+    },
+    {
       "id": "repairs.lamp",
       "hanzi": "台灯",
       "pinyin": "táidēng",
@@ -540,6 +554,69 @@
             }
           ],
           "audio": "/audio/repairs/line-lamp-returned.wav"
+        },
+        {
+          "id": "repairs.all-complete",
+          "text": "都修好了。这个木头凳子给你。",
+          "tokens": [
+            {
+              "id": "repairs.all",
+              "hanzi": "都",
+              "pinyin": "dōu",
+              "gloss": "both",
+              "audio": "/audio/repairs/word-all.wav"
+            },
+            {
+              "id": "repairs.done",
+              "hanzi": "修好",
+              "pinyin": "xiūhǎo",
+              "gloss": "repair successfully",
+              "audio": "/audio/repairs/word-done.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            },
+            {
+              "id": "repairs.this",
+              "hanzi": "这个",
+              "pinyin": "zhège",
+              "gloss": "this",
+              "audio": "/audio/repairs/word-this.wav"
+            },
+            {
+              "id": "repairs.wood",
+              "hanzi": "木头",
+              "pinyin": "mùtou",
+              "gloss": "wood",
+              "audio": "/audio/repairs/word-wood.wav"
+            },
+            {
+              "id": "repairs.stool",
+              "hanzi": "凳子",
+              "pinyin": "dèngzi",
+              "gloss": "stool",
+              "audio": "/audio/repairs/word-stool.wav"
+            },
+            {
+              "id": "give",
+              "hanzi": "给",
+              "pinyin": "gěi",
+              "gloss": "give",
+              "audio": "/audio/word-0ba6b6f23f23cfc1f9a01442d9c2dd7dfcfa1593a3529fe82eba81feed7c9067.wav"
+            },
+            {
+              "id": "you",
+              "hanzi": "你",
+              "pinyin": "nǐ",
+              "gloss": "you",
+              "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-all-complete.wav"
         }
       ]
     },
@@ -955,14 +1032,14 @@
         },
         {
           "id": "repairs.toy-returned",
-          "text": "都修好了。这个凳子给你。",
+          "text": "玩具修好了。",
           "tokens": [
             {
-              "id": "repairs.all",
-              "hanzi": "都",
-              "pinyin": "dōu",
-              "gloss": "both",
-              "audio": "/audio/repairs/word-all.wav"
+              "id": "repairs.toy",
+              "hanzi": "玩具",
+              "pinyin": "wánjù",
+              "gloss": "toy",
+              "audio": "/audio/repairs/word-toy.wav"
             },
             {
               "id": "repairs.done",
@@ -977,34 +1054,6 @@
               "pinyin": "le",
               "gloss": "completed action particle",
               "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
-            },
-            {
-              "id": "repairs.this",
-              "hanzi": "这个",
-              "pinyin": "zhège",
-              "gloss": "this",
-              "audio": "/audio/repairs/word-this.wav"
-            },
-            {
-              "id": "repairs.stool",
-              "hanzi": "凳子",
-              "pinyin": "dèngzi",
-              "gloss": "stool",
-              "audio": "/audio/repairs/word-stool.wav"
-            },
-            {
-              "id": "give",
-              "hanzi": "给",
-              "pinyin": "gěi",
-              "gloss": "give",
-              "audio": "/audio/word-0ba6b6f23f23cfc1f9a01442d9c2dd7dfcfa1593a3529fe82eba81feed7c9067.wav"
-            },
-            {
-              "id": "you",
-              "hanzi": "你",
-              "pinyin": "nǐ",
-              "gloss": "you",
-              "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
             }
           ],
           "audio": "/audio/repairs/line-toy-returned.wav"

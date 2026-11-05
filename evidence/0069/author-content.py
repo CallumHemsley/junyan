@@ -10,7 +10,7 @@ def walk(v):
   for item in v:walk(item)
 walk(json.loads((root/'src/content/content.json').read_text()))
 entries=[
-('lamp','台灯','táidēng','table lamp'),('bulb','灯泡','dēngpào','light bulb'),('toy','玩具','wánjù','toy'),('battery','电池','diànchí','battery'),('wire','线','xiàn','wire'),('cover','盖子','gàizi','cover'),
+('wood','木头','mùtou','wood'),('metal','金属','jīnshǔ','metal'),('lamp','台灯','táidēng','table lamp'),('bulb','灯泡','dēngpào','light bulb'),('toy','玩具','wánjù','toy'),('battery','电池','diànchí','battery'),('wire','线','xiàn','wire'),('cover','盖子','gàizi','cover'),
 ('tighten','拧紧','nǐngjǐn','tighten'),('loosen','转松','zhuǎnsōng','turn to loosen'),('connect','接上','jiēshàng','connect'),('disconnect','拔下','báxià','disconnect'),('replace','换','huàn','replace'),('open','打开','dǎkāi','open'),('close','盖上','gàishàng','close the cover'),('off','关掉','guāndiào','switch off'),('return','放回','fànghuí','put back'),('reset','重新来','chóngxīn lái','start again'),('practice','再修一次','zài xiū yí cì','repair again'),('workshop','修理间','xiūlǐjiān','workshop'),
 ('can','能','néng','can'),('light','亮','liàng','light up'),('but','但是','dànshì','but'),('always','一直','yìzhí','continuously'),('flicker','闪','shǎn','flicker'),('this','这个','zhège','this'),('move','动','dòng','move'),('first','先','xiān','first'),('steady','稳','wěn','steady'),('now','现在','xiànzài','now'),('tight','紧','jǐn','tight'),('loose','松','sōng','loose'),('still','还是','háishi','still'),('not-yet','还没','hái méi','not yet'),('on','上','shàng','on'),('old','旧','jiù','old'),('new','新','xīn','new'),('together','一起','yìqǐ','together'),('sit','坐','zuò','sit'),('stool','凳子','dèngzi','stool'),('take','拿','ná','take'),('you','你','nǐ','you'),('hear','再听','zài tīng','listen again'),('done','修好','xiūhǎo','repair successfully'),('good','好','hǎo','good'),('le','了','le','completed action'),('no','不','bù','not'),('again','再','zài','again'),('try','试试','shìshi','try'),('all','都','dōu','both'),('give','给','gěi','give')]
 words=[]
@@ -36,8 +36,8 @@ specs=[
 ('open-first','toy','先打开盖子。',['先','打开','盖子']),
 ('close-first','toy','先盖上，再试试。',['先','盖上','再','试试']),
 ('lamp-returned','lamp','台灯修好了。',['台灯','修好','了']),
-('toy-returned','toy','都修好了。这个凳子给你。',['都','修好','了','这个','凳子','给','你'])]
-# Exact surface forms are carried by tokens; punctuation is not a word.
+('toy-returned','toy','玩具修好了。',['玩具','修好','了']),
+('all-complete','lamp','都修好了。这个木头凳子给你。',['都','修好','了','这个','木头','凳子','给','你'])]
 specs[2]=('lamp-steady','lamp','好了，现在亮了。',['好','了','现在','亮','了'])
 specs[7]=('toy-open','toy','打开了。线松了，电池旧了。',['打开','了','线','松','了','电池','旧','了'])
 specs[13]=('toy-still','toy','还是不动。再打开。',['还是','不','动','再','打开'])

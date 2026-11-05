@@ -13,7 +13,7 @@
 - [ ] If the design is contested, interrogate before shipping. No unresolved contested choice in the supplied synthesis.
 - [ ] Run Opening a PR. Central lead owns connector operations and asks when ready.
 
-Applied skills read locally from PSTACK include poteto-mode, feature playbook, how, architect, Model the Domain, Prove It Works, Sequence Work into Verifiable Units, deslop and control-ui. Model the Domain chose explicit object state. Prove It Works requires actual browser evidence. Sequence Work into Verifiable Units separates checked rules from checked UI. Native tools replace Cursor-specific tool names. User-selected model and connector override skill defaults. Show-me-your-work was unavailable in parent discovery; no claim of using it.
+Applied skills read locally from PSTACK include poteto-mode, feature playbook, how, architect, Model the Domain, Prove It Works, Sequence Work into Verifiable Units, deslop and control-ui. Model the Domain chose explicit object state. Prove It Works requires actual browser evidence. Sequence Work into Verifiable Units separates checked rules from checked UI. Native tools replace Cursor-specific tool names. User-selected model and connector override skill defaults. The separate show-me visual skill is unavailable. Show-me-your-work exists and was read during this run; its canonical six-column TSV trail is evidence/0069/decision-trail.tsv. The earlier four-column decisions.tsv is retained as historical evidence. Parent owns independent trail review because this writer may not spawn.
 
 Mandatory audio and integrated navigation/save/offline verification remain pending. No harness result will be described as integrated completion.
 

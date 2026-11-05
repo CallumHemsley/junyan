@@ -1,0 +1,4 @@
+ts	phase	decision	why	evidence	result
+2026-11-05T19:08:00Z	start	Started canonical skill-format trail; prior choices are in decisions.tsv	Correct historical format without erasing it	evidence/0069/decisions.tsv	open
+2026-11-05T19:08:01Z	rules	Store both physical jobs and allow free switching	An unfinished lamp must not gate toy repair	src/features/repairs/rules.test.ts	tests green
+2026-11-05T19:08:02Z	content	Separate object return from both-complete gift line	Toy may be returned first; materials appear naturally	src/features/repairs/content.json	open
