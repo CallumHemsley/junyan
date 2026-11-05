@@ -81,6 +81,8 @@ export function reduce(state: State, action: Action, day: number): State {
       if (!state.selected || !state.draft) return state;
       const p: Placement = { id: state.selected, ...state.draft, x: action.x ?? state.draft.x, y: action.y ?? state.draft.y };
       if (!Number.isInteger(p.x) || !Number.isInteger(p.y) || !legal(state, p)) return { ...state, notice: 'blocked' };
+      const previous = state.placements.find(other => other.id === p.id);
+      if (previous && previous.x === p.x && previous.y === p.y && previous.rotation === p.rotation) return { ...state, selected: null, draft: null, notice: 'okay' };
       const table = state.placements.find(p => p.id === 'table');
       const screenCentre = (p: Placement) => { const [w,h] = footprint(p.id,p.rotation,state.rugSize); return p.x + w/2 - p.y - h/2; };
       const difference = table ? screenCentre(p)-screenCentre(table) : 0;
@@ -90,6 +92,7 @@ export function reduce(state: State, action: Action, day: number): State {
     case 'cancel': return { ...state, selected: null, draft: null, notice: 'okay' };
     case 'store': {
       if (!state.selected) return state;
+      if (!state.placements.some(p => p.id === state.selected)) return { ...state, selected: null, draft: null, notice: 'stored' };
       return { ...state, placements: state.placements.filter(p => p.id !== state.selected), selected: null, draft: null, undo: remember(state), notice: 'stored' };
     }
     case 'undo': return state.undo ? { ...state, ...state.undo, undo: null, selected: null, draft: null, notice: 'okay' } : state;

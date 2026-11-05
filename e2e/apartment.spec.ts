@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 test('isolated apartment: arrange, rotate, reject, undo and look up', async ({page},info) => {
-  const errors:string[]=[]; page.on('pageerror',e=>errors.push(e.message));
+  const errors:string[]=[]; page.on('pageerror',e=>errors.push(e.message)); page.on('console',message=>{if(message.type()==='error') errors.push(message.text());});
   await page.goto('/src/features/apartment/harness.html?test=1&seed=42');
   await page.getByRole('button',{name:'收下',exact:true}).click();
   await page.getByRole('button',{name:/桌子.*收着/}).click();
@@ -26,6 +26,7 @@ test('isolated apartment: arrange, rotate, reject, undo and look up', async ({pa
 });
 
 test('direct floor tapping, keyboard placement and callback accuracy', async ({page},info)=>{
+  const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));page.on('console',message=>{if(message.type()==='error') errors.push(message.text());});
   await page.goto('/src/features/apartment/harness.html?test=1&seed=42');
   await page.getByRole('button',{name:'收下',exact:true}).click();
   await page.getByRole('button',{name:/桌子.*收着/}).click();
@@ -37,6 +38,7 @@ test('direct floor tapping, keyboard placement and callback accuracy', async ({p
   if(info.project.name==='phone') await floor.tap({position:local}); else await floor.click({position:local});
   await page.getByRole('button',{name:'转一下',exact:true}).click();
   await floor.focus();await page.keyboard.press('ArrowRight');await page.keyboard.press('Enter');
+  await expect(page.getByRole('button',{name:/桌子.*屋里/})).toBeFocused();
   const snapshot=()=>page.evaluate(()=>{const hook=(window as unknown as {__APARTMENT_TEST__:{getState:()=>unknown;getRecovered:()=>string[];getPlayed:()=>string[]}}).__APARTMENT_TEST__;return {state:hook.getState(),recovered:hook.getRecovered(),played:hook.getPlayed()};});
   const placed=await snapshot();
   expect((placed.state as {placements:unknown[]}).placements).toContainEqual({id:'table',x:4,y:1,rotation:1});
@@ -59,9 +61,13 @@ test('direct floor tapping, keyboard placement and callback accuracy', async ({p
   await page.getByRole('button',{name:'米色',exact:true}).click();
   expect((await snapshot()).recovered).toEqual(cream.recovered);
   await page.getByRole('button',{name:/椅子.*收着/}).click();
+  await page.getByRole('button',{name:'选格子',exact:true}).click();
+  await floor.focus();
+  for(const key of ['ArrowLeft','ArrowLeft','ArrowUp','ArrowRight','ArrowRight','ArrowDown','ArrowLeft','ArrowUp','ArrowRight','ArrowDown']) await page.keyboard.press(key);
   await expect(page.locator('.apartment-scene canvas')).toHaveAttribute('data-rendered','true');
   await page.screenshot({path:`docs/evidence/0067/${info.project.name}-arranging.png`,fullPage:true});
   const sizes=await page.locator('.apartment button:visible').evaluateAll(buttons=>buttons.map(b=>({width:b.getBoundingClientRect().width,height:b.getBoundingClientRect().height})));
   expect(sizes.every(size=>size.width>=44 && size.height>=44)).toBe(true);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);
+  expect(errors).toEqual([]);
 });

@@ -32,3 +32,5 @@ Owner, worker ID, branch, checkout, exact commands, evidence and remaining block
 Worker: `/root/apartment_writer`; requested model `gpt-6.1-sol`, reasoning `medium` (runtime has no independent model introspection). Branch `codex/0067-apartment-home`, cloud checkout `/workspace/junyan-apartment`, strict Vite port `5467`.
 
 Checkpoint implementation is present; release is blocked by 47 missing new voice references and pending shared route/save integration. See `docs/evidence/0067/README.md` for exact runs, screenshot inspections, ownership boundaries and remaining checks. No feature completion or native playback claim.
+
+Draft PR: https://github.com/CallumHemsley/junyan/pull/21 . Final Node 22 verification passed 184 Vitest tests, TypeScript, production build and ten desktop/phone browser tests. Independent no-edit pixel review reproduced and confirmed the keyboard focus fix. New voices, integrated feature reload/migration and offline playback remain incomplete.

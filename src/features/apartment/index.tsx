@@ -15,6 +15,7 @@ export const itemNames: Record<ItemId, string> = { bed: '床', table: '桌子', 
 const itemVocabulary = (id: ItemId) => id === 'cats.cushion' ? ['猫', '靠垫'] : [itemNames[id]];
 export default function Apartment({ state, day, onAction, onLookup, onRecover, onPlay, recoveredWordIds = [], freshWordIds = [] }: Props) {
   const [showGrid,setShowGrid]=useState(false);
+  const itemButtons=useRef(new Map<ItemId,HTMLButtonElement>());
   const welcome=useRef({play:onPlay,line:lineById[state.notice]});
   useEffect(()=>{welcome.current.play(welcome.current.line);},[]);
   const line = lineById[state.notice];
@@ -23,6 +24,7 @@ export default function Apartment({ state, day, onAction, onLookup, onRecover, o
   function act(action: Action, recover: string[] = []) {
     const next = reduce(state, action, day);
     onAction(action);
+    if (state.selected && !next.selected) { const id=state.selected; requestAnimationFrame(()=>itemButtons.current.get(id)?.focus()); }
     if(next !== state) onPlay(lineById[next.notice]);
     const changed = next.colour !== state.colour || next.owned.length !== state.owned.length || JSON.stringify(next.placements) !== JSON.stringify(state.placements);
     if (changed && recover.length) onRecover(recover.map(hanzi => wordByHanzi[hanzi].id));
@@ -42,7 +44,7 @@ export default function Apartment({ state, day, onAction, onLookup, onRecover, o
     </section>}
     <div className="apartment-speech" aria-live="polite"><div className="apartment-line">{line.tokens.map(token)}<span>。</span></div><button type="button" aria-label="再听一遍" onClick={() => onPlay(line)}>再听</button></div>
     {!state.starterClaimed && <div className="apartment-delivery"><div className="apartment-parcel" aria-hidden="true"/><span>桌子 · 椅子 · 地毯 · 靠垫</span><button type="button" onClick={() => act({ type: 'accept-starter' }, ['桌子', '椅子'])}>收下</button><button type="button" onClick={() => onPlay(lineById.welcome)}>先看看</button></div>}
-    {state.owned.length>1 && <section className="apartment-inventory" aria-label="家具"><h2>家具</h2><div className="apartment-items">{state.owned.filter(id => id !== 'bed').map(id => <button type="button" key={id} aria-pressed={state.selected === id} onClick={() => act({ type: 'select', id })}><span>{itemNames[id]}</span><span className="apartment-item-position">{state.placements.some(p => p.id === id) ? '屋里' : '收着'}</span></button>)}</div></section>}
+    {state.owned.length>1 && <section className="apartment-inventory" aria-label="家具"><h2>家具</h2><div className="apartment-items">{state.owned.filter(id => id !== 'bed').map(id => <button type="button" key={id} ref={node=>{if(node) itemButtons.current.set(id,node);else itemButtons.current.delete(id);}} aria-pressed={state.selected === id} onClick={() => act({ type: 'select', id })}><span>{itemNames[id]}</span><span className="apartment-item-position">{state.placements.some(p => p.id === id) ? '屋里' : '收着'}</span></button>)}</div></section>}
     {state.starterClaimed && <section className="apartment-options" aria-label="换个样子"><div role="group" aria-label="靠垫颜色"><span>靠垫</span>{(['blue','cream'] as const).map(colour => <button type="button" key={colour} aria-pressed={state.colour === colour} onClick={() => act({ type: 'choose-colour', colour }, colour === 'blue' ? ['蓝色', '靠垫'] : ['米色', '靠垫'])}><i className={`apartment-swatch ${colour}`} aria-hidden="true"/>{colour === 'blue' ? '蓝色' : '米色'}</button>)}</div><div role="group" aria-label="地毯大小"><span>地毯</span>{(['small','large'] as const).map(size => <button type="button" key={size} aria-pressed={state.rugSize === size} onClick={() => act({ type: 'choose-rug', size })}>{size === 'small' ? '小' : '大'}</button>)}</div></section>}
     {state.lastGiftDay < day && dailyFinds.some(id => !state.owned.includes(id)) && <div className="apartment-find"><span>林姐</span><button type="button" onClick={() => act({ type: 'claim-gift' })}>今日小礼物</button></div>}
   </section>;

@@ -1,0 +1,15 @@
+[
+  {
+    "type": "console",
+    "messageType": "error",
+    "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "args": [],
+    "location": {
+      "url": "http://127.0.0.1:5467/favicon.ico",
+      "lineNumber": 0,
+      "columnNumber": 0
+    },
+    "time": 4027.196,
+    "pageId": "page@6793be35a170a6ccdc24ccb921cf36ae"
+  }
+]

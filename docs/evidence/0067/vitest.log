@@ -1,0 +1,27 @@
+
+ RUN  v3.2.7 /workspace/junyan-apartment
+
+ ✓ src/content/content.test.ts (14 tests) 287ms
+ ✓ src/features/apartment/scene-data.test.ts (2 tests) 171ms
+ ✓ src/scene/ward.test.ts (8 tests) 1105ms
+   ✓ ward scene > renders every step frame without DOM globals and is deterministic  354ms
+ ✓ src/navigation.test.ts (4 tests) 36ms
+ ✓ src/save.test.ts (52 tests) 190ms
+ ✓ src/features/apartment/rules.test.ts (11 tests) 36ms
+ ✓ src/game.test.ts (30 tests) 28ms
+ ✓ src/startup.test.ts (7 tests) 12ms
+ ✓ src/opening.test.ts (11 tests) 42ms
+ ✓ src/audio/playback.test.ts (13 tests) 13ms
+ ✓ src/recovery.test.ts (11 tests) 5ms
+ ✓ src/features/apartment/content.test.ts (1 test) 5ms
+ ✓ src/opening-view.test.ts (2 tests) 8ms
+ ✓ src/scene/renderer.test.ts (18 tests) 6446ms
+   ✓ actual raster depth and walking > partially occludes rear-facing food with the body without hiding the whole tray  1652ms
+   ✓ actual raster depth and walking > walks deterministically from supplied time and freezes at reduced-motion inputs  2509ms
+   ✓ renders independently without DOM globals and reflects customer/tray state  2030ms
+
+ Test Files  14 passed (14)
+      Tests  184 passed (184)
+   Start at  19:24:58
+   Duration  7.17s (transform 705ms, setup 0ms, collect 1.97s, tests 8.38s, environment 3ms, prepare 1.16s)
+

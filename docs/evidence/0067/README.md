@@ -17,14 +17,15 @@ The view uses callbacks for actions, word lookups, recovery and line playback. I
 - Shared mutable state: no shared application, schema, dependency or renderer file was edited. Integration callbacks retain central save and journal ownership.
 - Smallest safe decomposition: one writer owns the feature reducer, content and view so its transitions and UI stay consistent. A separate agent reviews without edits.
 
-## Verification so far
+## Verification
 
-- Installed Vitest, TypeScript and Vite binaries ran directly. The shared `node_modules` symlink causes `pnpm` to attempt an unsafe reinstall, which pnpm refused. Dependencies and lockfile did not change.
-- Full baseline plus initial apartment suite passed 178 tests on Node 24.22.1. The refined apartment suite passed 13 tests on required Node 22.23.4.
-- Original first-run hospital, four customers, change, journal and save/reload journeys passed on desktop and phone using cloud Chromium. This was eight browser tests before the final renderer revision.
-- Final isolated apartment journeys passed four browser tests on Node 22 with direct phone touch, desktop clicks, keyboard placement, invalid placement recovery, callback agreement, 44px targets and no page overflow. The first journey checks page exceptions; final full-console checks remain part of integrated verification.
-- TypeScript and production build passed before the final scene adapter revision. Final checks after rebasing current main are recorded below when complete.
-- Desktop and phone screenshots were opened and inspected. The first vector draft was rejected. The current screenshots show the existing pixel renderer, visible resident, compact tray and direct selection outline.
+- Final full suite passed 184 tests on Node 22.23.4. The feature contributes 14 geometry, undo, gift, content, projection and actual raster tests. `vitest.log` records the run.
+- Final TypeScript and Vite production build passed on Node 22. The installed dependencies produce two upstream Zod annotation warnings; no build errors occurred.
+- All ten desktop and phone browser tests passed after rebasing main `5c90ba4`. `full-browser-results.json` records the original hospital, four customers, change, journal, browser save/reload and isolated apartment journeys.
+- The isolated apartment checks cover direct phone touch, desktop clicks, repeated keyboard movement, Enter placement, returned focus, invalid placement without recovery, playback callback agreement, 44px controls, no overflow and clean console output.
+- A stricter console run first failed because the isolated page requested missing `favicon.ico`. `favicon-failure.json` retains the actual trace event. Linking the existing icon fixed the request; no errors were filtered.
+- Desktop and phone screenshots were opened and inspected. The vector draft was rejected and replaced by the existing pixel renderer. The arranging screenshots show the primary editor with its optional grid closed.
+- Installed Vitest, TypeScript, Vite and Playwright binaries ran directly. The shared `node_modules` symlink causes `pnpm` to attempt an unsafe reinstall, which pnpm refused. Dependencies and lockfile did not change. The symlink is untracked.
 
 Reproduce the browser checks with `PATH=/workspace/.junyan-tools/node_modules/node/bin:$PATH node_modules/.bin/playwright test --config docs/evidence/0067/playwright.config.ts`. The config uses only strict port 5467 and the installed `/usr/bin/chromium`. Chromium transport is muted. This is not a listening test.
 
@@ -34,4 +35,4 @@ Reproduce the browser checks with `PATH=/workspace/.junyan-tools/node_modules/no
 
 The shared apartment route, leaving and returning, actual IndexedDB feature reload, legacy-save migration, offline caching and new native voice playback are not verified by this isolated harness. A person has not assessed enjoyment. The requested show-me visual skill was absent from the cloud plugin copy. Screenshots and an append-only decision trail are provided without claiming that skill ran.
 
-Model request: `gpt-6.1-sol`, reasoning `medium`. Worker `/root/apartment_writer`. Runtime has no independent model metadata. Pstack Model the Domain shaped the explicit reducer and validated room state. Control UI shaped direct browser evidence; technical-writing, unslop and deslop shaped this checkpoint. Independent review is recorded after the reviewer responds.
+Model request: `gpt-6.1-sol`, reasoning `medium`. Worker `/root/apartment_writer`. Runtime has no independent model metadata. Pstack Model the Domain shaped the explicit reducer and validated room state. Control UI shaped direct browser evidence; technical-writing, unslop and deslop shaped this checkpoint. Independent no-edit review by `/root/apartment_pixel_review` reproduced the keyboard focus defect, then verified the corrected live flow and inspected desktop and phone images. The reviewer reported the previous rug draw order, playback mismatch and direction defects resolved. Release remains blocked by the gates above.

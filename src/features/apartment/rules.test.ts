@@ -64,3 +64,10 @@ it('rejects partial starter inventories and inconsistent daily acquisition histo
   expect(validate({...initialState(),owned:['bed','table']})).toBeNull();
   expect(validate({...starter(),owned:[...starter().owned,'vase']})).toBeNull();
 });
+it('preserves the last useful undo across storing an unplaced item or confirming an unchanged placement',()=>{
+  const first=put(starter(),'table',2,1);const moved=put(first,'table',3,2);
+  const unchanged=run(moved,{type:'select',id:'table'},{type:'place'});
+  expect(reduce(unchanged,{type:'undo'},1).placements).toEqual(first.placements);
+  const unplaced=run(moved,{type:'select',id:'chair'},{type:'store'});
+  expect(reduce(unplaced,{type:'undo'},1).placements).toEqual(first.placements);
+});
