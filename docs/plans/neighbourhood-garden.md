@@ -69,3 +69,13 @@ Defer larger roofs, freeform construction, seasons, plant breeding, inventories,
 - Independent workstreams. Read-only design and review can run in parallel. This cohesive feature has one implementation owner.
 - Shared mutable state. Central ticket 0066 alone owns App, save envelope, journal registry, offline enumeration and shared contracts. Garden exports a narrow interface.
 - Smallest safe decomposition. One 0070 writer owns rules, scene, content and tests because their state and feedback evolve together. Additional ticket IDs require central allocation.
+
+## Implemented daily order
+
+The four-day weather cycle uses shared day modulo four. Day 0 is rain, day 3 is hot, and days 1 and 2 are clear. First binding assigns the current day without growth and applies that day's rain to exposed pots. A first visit during rain therefore begins with wet exposed pots; other first visits retain the authored flower-wet and climber/tree-dry contrast.
+
+On a later day, settle stored care once using the previous day's weather and current arrangement. Extra care causes droop. Ready care grows one stage unless an unshaded flower was in hot weather. Other dry plants rest without stage loss. Then apply the destination day's rain to exposed pots; other pots become dry. Reset daily care acknowledgement. A large day jump performs that same single settlement. It does not replay intervening weather. All growth caps at three.
+
+Dry pots can explicitly wait for rain. Only waiting on wet soil recovers wet-soil advice. Outcomes recover related words only when the player observes them. A feature view queues recovery proof and emits it only after its parent supplies the exact resulting state. Sync, mount, lookup, failed movement and declined watering do not recover words.
+
+Confirmation uses an ordinary DOM modal with focus containment and a backdrop below the shared word card. A native top-layer dialog would hide the shared word card. Confirmation remains mounted during lookup, so the shared card restores its exact token trigger on close.

@@ -4,8 +4,8 @@
 - [x] `architect` for parallel design exploration. Parent supplied synthesized snapshot and ledger comparison. No nested workers under explicit ownership instruction.
 - [x] Write the throughput checkpoint as four todo items. See domain plan.
 - [x] Delegate code-writing to a subagent using your configured feature model. This worker owns the diff. Parent performs independent review.
-- [ ] Verify on the matching surface.
-- [ ] Rebase into small, ordered commits. Stack follow-ups.
+- [x] Verify on the matching surface. Isolated garden desktop/phone pass. Integrated checks remain open.
+- [x] Rebase into small, ordered commits. Stack follow-ups. Rules unit published first; complete feature follows.
 - [ ] If the design is contested, `interrogate` before shipping. No contested design currently.
 - [ ] Run **Opening a PR**. Parent owns GitHub connector operations.
 

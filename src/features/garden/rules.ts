@@ -44,7 +44,11 @@ export function weather(day: number | null): 'rain' | 'hot' | 'clear' {
   return day !== null && day % 4 === 0 ? 'rain' : day !== null && day % 4 === 3 ? 'hot' : 'clear';
 }
 function synchronize(state: State, day: number): State {
-  if (state.day === null) return {...state, day};
+  if (state.day === null) {
+    const next = {...state, day};
+    if (weather(day) !== 'rain') return next;
+    return {...next, plants: Object.fromEntries(plantIds.map(id => [id, {...state.plants[id], care: state.plants[id].site !== state.shade ? 'ready' : state.plants[id].care}])) as State['plants']};
+  }
   if (day <= state.day) return state;
   const next = structuredClone(state);
   next.day = day;
@@ -66,7 +70,6 @@ function synchronize(state: State, day: number): State {
 
 export function reduce(state: State, action: Action, day: number): State {
   if (!dayValue.safeParse(day).success || (state.day !== null && day < state.day)) return state;
-  // Day reconciliation is its own command so an old action cannot silently settle an unseen day.
   if (action.type === 'sync') return synchronize(state, day);
   if (state.day !== day) return state;
   if (action.type === 'tidy') return action.value === state.restored ? state : {...state, restored: action.value};
@@ -83,7 +86,7 @@ export function reduce(state: State, action: Action, day: number): State {
       if (pot.care === 'ready') changed = {...pot, care: 'extra', waited: false};
       break;
     case 'wait':
-      if (pot.care === 'ready' && !pot.waited) changed = {...pot, waited: true};
+      if (pot.care !== 'extra' && !pot.waited) changed = {...pot, waited: true};
       break;
     case 'observe':
       if (pot.result && !pot.result.observed) changed = {...pot, result: {...pot.result, observed: true}};
@@ -103,7 +106,7 @@ export function recoveryForTransition(before: State, after: State, action: Actio
   if (action.type === 'move') return ['garden.put', 'garden.place'];
   if (action.type === 'shade') return ['garden.shade', 'garden.place'];
   if (action.type === 'water') return ['garden.dry', 'garden.water-verb', 'garden.little', 'garden.water'];
-  if (action.type === 'wait') return ['garden.soil', 'garden.wet', 'garden.first', 'dont'];
+  if (action.type === 'wait') return before.plants[action.plant].care === 'ready' ? ['garden.soil', 'garden.wet', 'garden.first', 'dont'] : ['garden.wait'];
   if (action.type === 'observe') {
     const outcome = after.plants[action.plant].result?.outcome;
     return outcome === 'grew' ? ['garden.than', 'garden.yesterday', 'garden.tall'] : outcome === 'drooped' ? ['garden.too-much', 'tomorrow', 'again'] : outcome === 'shade' ? ['garden.flower', 'garden.shade', 'garden.place'] : [];

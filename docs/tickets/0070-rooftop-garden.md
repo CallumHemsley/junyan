@@ -43,3 +43,5 @@ Plan: [[plans/neighbourhood-garden]]. The requested plan filename takes preceden
 Owner: garden lead, then one GPT-6.1 Sol medium implementation owner. Branch codex/0070-rooftop-garden. Cloud checkout /workspace/garden-0070. Vite 5470 with --strictPort; preview 5471. Estimate 1–2 days plus synthesis and integration review. Dependency 0065 is published at da361c3. Dependency 0066 and existing shared leases remain open.
 
 Implementation worker /root/garden_writer. Requested model GPT-6.1 Sol, medium. Cloud /workspace/garden-0070, branch codex/0070-rooftop-garden. Strict Vite 5470 and preview 5471. Existing plan and refinements retained.
+
+Draft PR [20](https://github.com/CallumHemsley/junyan/pull/20) is parent-managed. First published rules/design commit 6b0bb47. Feature-local browser harness is development-only and does not close shared navigation, IndexedDB, journal, offline or voice gates.

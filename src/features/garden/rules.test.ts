@@ -10,6 +10,12 @@ describe('rooftop care', () => {
     expect(state.plants.flower.growth).toBe(0);
     expect(sync(state, 1_000_000)).toBe(state);
   });
+  it('wets exposed pots on a rainy first arrival without growing them', () => {
+    const state = sync(initialState(), 400);
+    expect(state.plants.climber.care).toBe('ready');
+    expect(state.plants.tree.care).toBe('ready');
+    expect(state.plants.tree.growth).toBe(0);
+  });
   it('keeps wet advice safe from accidental repeated water commands', () => {
     const state = start();
     expect(reduce(state, {type: 'water', plant: 'flower'}, 1)).toBe(state);
@@ -38,7 +44,10 @@ describe('rooftop care', () => {
     expect(reduce(state, {type: 'water', plant: 'tree'}, 2)).toBe(state);
   });
   it('rains on exposed pots after settling care and permits waiting for rain', () => {
-    const state = sync(start(3), 4);
+    const waiting = reduce(start(3), {type: 'wait', plant: 'tree'}, 3);
+    expect(waiting.plants.tree.waited).toBe(true);
+    expect(recoveryForTransition(start(3), waiting, {type: 'wait', plant: 'tree'})).toEqual(['garden.wait']);
+    const state = sync(waiting, 4);
     expect(state.plants.flower.care).toBe('dry');
     expect(state.plants.tree.care).toBe('ready');
     expect(sync(state, 5).plants.tree.growth).toBe(1);
