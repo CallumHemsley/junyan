@@ -1,3 +1,4 @@
+import { restoreNeighbourhood } from "./neighbourhood/model";
 import { z } from "zod";
 import { TABLES, TRAY_CAPACITY, type Content, type GameState } from "./contracts";
 import { getOrder, orderTotal } from "./game";
@@ -7,6 +8,7 @@ const boundedNumber = z.number().nonnegative().max(Number.MAX_SAFE_INTEGER);
 const tableSchema = z.number().int().min(1).max(TABLES.length);
 
 const stateSchema = z.object({
+  neighbourhood: z.unknown().optional(),
   seed: z.number().int().min(0).max(0xffffffff),
   day: z.number().int().positive(),
   level: z.number().int().min(1).max(3),
@@ -49,7 +51,7 @@ export function validateSavedGame(
 ): GameState | null {
   const result = stateSchema.safeParse(value);
   if (!result.success) return null;
-  const state = result.data;
+  const { neighbourhood, ...state } = result.data;
   if (
     new Set(state.customers.map((customer) => customer.table)).size !==
       TABLES.length ||
@@ -101,7 +103,7 @@ export function validateSavedGame(
     const total = orderTotal(order, content);
     if (receipt.total !== total || receipt.change !== order.paid - total) return null;
   }
-  return state;
+  return { ...state, neighbourhood: restoreNeighbourhood(neighbourhood, state.day) };
 }
 
 function database(): Promise<IDBDatabase> {

@@ -1,3 +1,4 @@
+import { advanceNeighbourhood, createNeighbourhood } from "./neighbourhood/model";
 import { contentWords } from "./content/words";
 import { KITCHEN, TABLES, TRAY_CAPACITY } from "./contracts";
 import type {
@@ -100,7 +101,7 @@ function startDay(content: Content, seed: number, day: number): GameState {
 }
 
 export function createGame(content: Content, seed = 42): GameState {
-  return startDay(content, Number.isFinite(seed) ? seed >>> 0 : 42, 1);
+  return { ...startDay(content, Number.isFinite(seed) ? seed >>> 0 : 42, 1), neighbourhood: createNeighbourhood(1) };
 }
 
 function nearTable(state: GameState, table: number): boolean {
@@ -181,12 +182,14 @@ export function reduceGame(
     const journal = recordLookup(state.journal, action, content);
     return journal === state.journal ? state : { ...state, journal };
   }
+  if (state.neighbourhood && state.neighbourhood.location !== "restaurant") return state;
   if (action.type === "next-day") {
     if (!state.ended) return state;
     return {
       ...startDay(content, state.seed, state.day + 1),
       journal: state.journal,
       earnings: state.earnings,
+      neighbourhood: advanceNeighbourhood(state.neighbourhood ?? createNeighbourhood(state.day), state.day + 1),
     };
   }
   if (state.ended) return state;
