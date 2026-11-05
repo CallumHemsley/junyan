@@ -1,32 +1,33 @@
-"""Audit real neighbourhood voice files. Missing or invalid assets fail the audit."""
+"""Audit neighbourhood speech against exact authored text, approved presets and byte provenance."""
+import importlib.util
 import json
 from pathlib import Path
 import sys
-import wave
 
-root = Path(__file__).resolve().parents[1]
+sys.dont_write_bytecode = True
+
+spec = importlib.util.spec_from_file_location('neighbourhood_audio', Path(__file__).with_name('neighbourhood-audio.py'))
+local = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(local)
+audio = local.audio
+root = local.ROOT
+output = root / 'public/audio'
+config = audio.read_json(root / 'src/content/voices.json')
+records = local.records_from(output / 'manifest.json')
+for feature in local.FEATURES:
+    records.update(local.records_from(output / feature / 'manifest.json', feature + '/'))
 report = {}
-for feature in ["apartment", "cats", "repairs", "garden"]:
-    content = json.loads((root / f"src/features/{feature}/content.json").read_text())
-    lines = [line for character in content["characters"] for line in character["lines"]] if feature == "repairs" else content["lines"]
-    paths = sorted({entry["audio"] for entry in content["words"] + lines})
+for feature in local.FEATURES:
+    jobs = local.jobs_for(feature, config)
     missing, invalid = [], []
-    for url in paths:
-        path = root / "public" / url.removeprefix("/")
-        if not path.is_file():
-            missing.append(url)
-            continue
-        try:
-            with wave.open(str(path), "rb") as source:
-                if source.getnchannels() != 1 or source.getsampwidth() != 2 or source.getframerate() != 24000:
-                    raise ValueError("Expected mono PCM16 24kHz")
-                frames = source.readframes(source.getnframes())
-                if not frames or not any(frames):
-                    raise ValueError("Empty or silent PCM")
-        except (wave.Error, ValueError, EOFError) as error:
-            invalid.append({"path": url, "error": str(error)})
-    report[feature] = {"references": len(paths), "missing": missing, "invalid": invalid}
-missing = sum(len(feature["missing"]) for feature in report.values())
-invalid = sum(len(feature["invalid"]) for feature in report.values())
-print(json.dumps({"status": "FAIL" if missing or invalid else "FILES_PRESENT_NOT_LISTENING_APPROVAL", "missing": missing, "invalid": invalid, "features": report}, ensure_ascii=False, indent=2))
+    for job in jobs:
+        if not (output / job['filename']).is_file():
+            missing.append('/audio/' + job['filename'])
+        elif not local.cache_valid(job, output, records):
+            invalid.append('/audio/' + job['filename'])
+    report[feature] = {'references': len(jobs), 'missing': missing, 'invalid': invalid}
+missing = sum(len(value['missing']) for value in report.values())
+invalid = sum(len(value['invalid']) for value in report.values())
+print(json.dumps({'status': 'FAIL' if missing or invalid else 'PROVENANCE_AND_SIGNAL_PASS_NOT_LISTENING_APPROVAL',
+                  'missing': missing, 'invalid': invalid, 'features': report}, ensure_ascii=False, indent=2))
 sys.exit(1 if missing or invalid else 0)

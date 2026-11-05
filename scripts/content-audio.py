@@ -327,11 +327,11 @@ def package_versions(engine):
     return versions
 
 
-def generate_clip(job, output, generator):
+def generate_clip(job, output, generator, seed_offset=0):
     attempts = []
     started = time.perf_counter()
     for attempt in range(MAX_ATTEMPTS):
-        seed = (int(job["content_digest"][:8], 16) + attempt * 1000) % (2 ** 32)
+        seed = (int(job["content_digest"][:8], 16) + seed_offset + attempt * 1000) % (2 ** 32)
         temporary = None
         try:
             samples, sample_rate, details = generator(job, seed)

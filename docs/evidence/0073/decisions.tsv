@@ -1,0 +1,3 @@
+ts	phase	decision	why	evidence	result
+2026-11-05T23:03:01.216268+00:00	generation	Preserve authored URLs and accepted voice presets with a feature adapter.	The existing generator already validates exact text and complete preset identity.	scripts/neighbourhood-audio.py	First real GPU clips generated.
+2026-11-05T23:03:01.216369+00:00	verification	Require exact manifest identity and byte hashes in the feature audit.	A decodable non-silent WAV alone cannot establish the authored speaker or text.	scripts/neighbourhood-audio-audit.py	Core and adapter self-checks pass.
