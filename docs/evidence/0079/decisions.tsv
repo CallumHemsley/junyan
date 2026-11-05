@@ -1,0 +1,3 @@
+ts	phase	decision	why	evidence	result
+2026-11-05T23:59:00Z	ownership	Use central contract v1 and town-only paths	Prevent competing edits to engine and shared schemas	docs/world-program/contract-v1.md	open
+2026-11-05T23:59:00Z	layout	Reject regular road grid after spatial study	Repeated long streets and green setbacks lacked distinctive places	/workspace/scratch/town-layout-study.png	choose staggered street composition
