@@ -1,0 +1,63 @@
+.garden {max-width: 1000px; margin: 0 auto; color: var(--text-primary); font-family: var(--font-sans); padding: var(--space-16);}
+.garden button {font: inherit; color: inherit; touch-action: manipulation; user-select: none;}
+.garden button:focus-visible {outline: 3px solid var(--text-secondary); outline-offset: 4px;}
+.garden .word {min-width: 44px; min-height: 44px; padding: 4px 3px; font-size: inherit; line-height: 1.5;}
+.garden-heading {display: flex; justify-content: space-between; align-items: center; gap: 12px;}
+.garden-heading h1 {margin: 0; font-family: var(--font-serif); font-size: 24px; font-weight: 500;}
+.garden-weather {font-size: 16px; border-bottom: 1px solid var(--hairline-strong);}
+.garden-scene {position: relative; width: 100%; aspect-ratio: 360 / 280; overflow: hidden; border-radius: var(--radius-panel); background: var(--surface-sunk); margin: 8px 0 0;}
+.garden-scene canvas {display: block; width: 100%; height: 100%; image-rendering: pixelated;}
+.garden-site {position: absolute; transform: translate(-50%, -25%); width: 52px; height: 44px; border: 1px dashed var(--text-muted); border-radius: 50%; background: transparent; cursor: pointer;}
+.garden-site.occupied {border-color: transparent;}
+.garden-site.selected {border: 2px solid var(--text-secondary); background: #fbf7ef30;}
+.garden-site:hover {border-color: var(--text-primary);}
+.garden-pots {display: grid; grid-template-columns: repeat(3, 1fr); max-width: 520px; margin: -20px auto 12px; position: relative; gap: 8px;}
+.garden-pot-card {display: flex; align-items: center; justify-content: center; flex-wrap: wrap; background: var(--surface-card); border: 1px solid var(--hairline-strong); border-radius: var(--radius-chip); padding: 4px 8px; box-shadow: var(--shadow-chip);}
+.garden-pot-card.active {border-color: var(--text-secondary); box-shadow: inset 0 -3px var(--text-secondary);}
+.garden-pot-select {display: flex; gap: 6px; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; background: transparent; border: 0; cursor: pointer;}
+.garden-pot-name {font-family: var(--font-serif); font-size: 20px;}
+.garden-stages {display: flex; gap: 3px;}
+.garden-stages i {display: block; width: 5px; height: 13px; background: var(--surface-sunk); border: 1px solid var(--hairline-strong);}
+.garden-stages i[data-grown=true] {background: var(--text-secondary);}
+.garden-sprig {display: block; width: 18px; height: 30px; position: relative; border-bottom: 9px solid var(--text-muted);}
+.garden-sprig::before {content: ''; position: absolute; width: 2px; height: 20px; background: var(--text-secondary); left: 8px;}
+.garden-sprig i {position: absolute; width: 8px; height: 5px; background: var(--jade); left: 1px; top: 4px; transform: rotate(25deg);}
+.garden-sprig i:nth-child(2) {left: 9px; top: 9px; transform: rotate(-25deg);}
+.garden-sprig i:nth-child(3) {top: 15px;}
+.garden-workbench {display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--hairline-strong);}
+.garden-selection {display: flex; align-items: center; gap: 8px; flex-wrap: wrap;}
+.garden-selection strong {font-family: var(--font-serif); font-size: 24px; font-weight: 500;}
+.garden-selection > span {font-size: 16px; color: var(--text-secondary);}
+.garden-tools {display: flex; gap: 12px; flex-wrap: wrap;}
+.garden-tool {display: flex; align-items: center; gap: 2px;}
+.garden-tool-button,.garden-replay {display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; border: 1px solid var(--hairline-strong); border-radius: var(--radius-chip); background: var(--surface-control); cursor: pointer;}
+.garden-tool-button[aria-pressed=true] {background: var(--surface-sunk); outline: 2px solid var(--text-secondary);}
+.garden-tool-button:disabled {opacity: .4; cursor: default;}
+.garden-tool-label {font-size: 16px;}
+.garden-conversation {padding: 20px 24px; background: var(--surface-card); border-radius: var(--radius-panel); margin-top: 16px; box-shadow: var(--shadow-chip);}
+.garden-speaker {display: flex; align-items: center; justify-content: space-between; color: var(--text-secondary); font-size: 16px;}
+.garden-spoken {font-family: var(--font-serif); font-size: 30px; line-height: 1.6; margin: 8px 0 0;}
+.garden-final-token {display: inline-flex; align-items: baseline; white-space: nowrap;}
+.garden-replay {background: transparent; border-color: transparent;}
+.garden-footer {display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; color: var(--text-secondary); font-size: 14px; padding: 8px;}
+.garden-footer p {margin: 0;}
+.garden-footer .garden-tool {margin-left: auto;}
+.garden-comparison {display: flex; align-items: center; gap: 8px; color: var(--text-secondary); font-size: 14px;}
+.garden-comparison > span {display: inline-flex; align-items: center; gap: 4px;}
+.garden-comparison i {display: block; height: 16px; width: 18px; background: linear-gradient(to right, var(--text-secondary) 0 25%, transparent 25% 37%, var(--text-secondary) 37% 62%, transparent 62% 74%, var(--text-secondary) 74%); opacity: .35;}
+.garden-comparison i[data-growth='0'] {background: var(--surface-sunk);}
+.garden-comparison i[data-growth='1'] {clip-path: inset(0 70% 0 0); opacity: 1;}
+.garden-comparison i[data-growth='2'] {clip-path: inset(0 35% 0 0); opacity: 1;}
+.garden-comparison i[data-growth='3'] {opacity: 1;}
+.garden-arrival {display: flex; align-items: center; justify-content: center; gap: 16px; padding: 24px; font-size: 20px;}
+.garden-arrival p {margin: 0;}
+.garden-confirm {color: var(--text-primary); background: var(--surface-card); border: 1px solid var(--hairline-strong); border-radius: var(--radius-panel); max-width: min(540px, calc(100vw - 40px)); padding: 24px; box-shadow: var(--shadow-panel);}
+.garden-confirm-backdrop {position: fixed; inset: 0; z-index: 15; display: flex; align-items: center; justify-content: center; padding: 20px; background: #241d1680;}
+.garden-confirm {max-height: calc(100dvh - 40px); overflow: auto; box-sizing: border-box;}
+.garden-confirm h2 {font-family: var(--font-serif); font-size: 28px; font-weight: 500; margin: 0;}
+.garden-confirm p {color: var(--text-secondary); font-size: 20px;}
+.garden-confirm-actions {display: flex; justify-content: flex-end; gap: 12px; padding-top: 12px;}
+.garden-confirm-actions > button {min-height: 48px; min-width: 88px; padding: 8px 16px; border: 1px solid var(--hairline-strong); border-radius: var(--radius-chip); background: var(--surface-control); cursor: pointer;}
+@media (min-width: 760px) {.garden-scene {max-width: 720px; margin-left: auto; margin-right: auto;} }
+@media (max-width: 600px) {.garden {padding: 8px;} .garden-heading h1 {font-size: 20px;} .garden-pots {margin-top: -8px;} .garden-pot-card {padding: 2px;} .garden-pot-name {font-size: 18px;} .garden-workbench {padding: 8px 4px;} .garden-tools {gap: 8px;} .garden-tool {gap: 0;} .garden-tool-label {font-size: 14px;} .garden-conversation {padding: 12px 16px;} .garden-spoken {font-size: 28px;} .garden-footer {padding: 4px;} .garden-footer .word {font-size: 14px;} }
+@media (prefers-reduced-motion: reduce) {.garden *, .garden *::before, .garden *::after {transition: none !important; animation: none !important;} }
