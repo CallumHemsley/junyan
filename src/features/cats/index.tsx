@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import type { Line, Word } from '../../contracts';
 import WordToken from '../../WordToken';
 import Courtyard from './Courtyard';
@@ -18,9 +19,20 @@ export type Props = {
   freshWordIds?: readonly string[];
 };
 export default function Cats({ state, day, onAction, onLookup, onRecover, onPlay, recoveredWordIds = [], freshWordIds = [] }: Props) {
+  const welcome = useRef({ play: onPlay, line: lineFor(state.feedback) });
+  const actionControls = useRef<HTMLDivElement>(null);
+  const actionTrigger = useRef<HTMLButtonElement | null>(null);
+  useEffect(() => { welcome.current.play(welcome.current.line); }, []);
+  useEffect(() => {
+    const trigger = actionTrigger.current;
+    actionTrigger.current = null;
+    if (trigger && !trigger.isConnected) actionControls.current?.querySelector<HTMLButtonElement>('.cats-action > button')?.focus();
+  }, [state]);
   const act = (action: Action) => {
     const next = reduce(state, action, day);
     const recovered = recoveryForTransition(state, next);
+    const focused = document.activeElement;
+    if (next !== state && focused instanceof HTMLButtonElement && actionControls.current?.contains(focused)) actionTrigger.current = focused;
     onAction(action);
     if (recovered.length) onRecover(recovered);
     if (next !== state && (next.feedback !== state.feedback || action.type === 'select')) onPlay(lineFor(next.feedback));
@@ -40,7 +52,7 @@ export default function Cats({ state, day, onAction, onLookup, onRecover, onPlay
       <div className="cats-speech">{tokens(state.feedback)}</div>
       <div className="cats-dialogue-controls">
         <button type="button" className="cats-replay" aria-label={lineFor('action-replay').text} onClick={() => onPlay(lineFor(state.feedback))}>↻</button>
-        <div className="cats-actions">
+        <div className="cats-actions" ref={actionControls}>
           {choices(state).map(choice => <div className="cats-action" key={choice.action.type}>
             <span className="cats-action-words">{tokens(choice.label)}</span>
             <button type="button" aria-label={lineFor(choice.label).text} data-testid={`cats-action-${choice.action.type}`} onClick={() => act(choice.action)}>→</button>

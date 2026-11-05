@@ -63,6 +63,7 @@ test.describe('isolated cats contract surface', () => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(harness);
     await expect(page.getByTestId('cats-white')).toBeVisible();
+    expect(await page.evaluate(() => window.__CATS_HARNESS__.events.play)).toEqual(['cats.clue']);
     const press = async (testId: string) => {
       const target = page.getByTestId(testId);
       for (let n = 0; n < 100; n++) {
@@ -75,7 +76,10 @@ test.describe('isolated cats contract surface', () => {
       throw new Error(`Keyboard cannot reach ${testId}`);
     };
     await press('cats-white');
-    for (const type of ['crouch', 'wait', 'approach', 'follow', 'reunite']) await press(`cats-action-${type}`);
+    for (const type of ['crouch', 'wait', 'approach', 'follow', 'reunite']) {
+      await press(`cats-action-${type}`);
+      await expect(page.locator('.cats-actions > .cats-action > button').first()).toBeFocused();
+    }
     expect((await state(page)).story.node).toBe('reunited');
     await page.locator('.cats-speech .word').first().click();
     await expect(page.getByRole('dialog')).toContainText('zhǎo dào');
