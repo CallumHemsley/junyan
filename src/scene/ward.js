@@ -49,9 +49,14 @@ const MONITOR = {x0:4.12, x1:4.88, y:-4.88, z:1.55};
 const PULSE = [0,0,0,0,.02,-.04,.16,-.08,0,0,.03,0];
 const pulseAt = t => { const k = Math.min(10, Math.floor(t*11)), f = t*11-k; return PULSE[k]+(PULSE[k+1]-PULSE[k])*f; };
 const monitorPoint = t => [MONITOR.x0+(MONITOR.x1-MONITOR.x0)*t, MONITOR.y, MONITOR.z+pulseAt(t)];
-const plot = ({W,pix,rgb,project}, x, y, z, color) => {
+const plot = ({W,pix,zb,rgb,project}, x, y, z, color) => {
   const p=project(x,y,z), ix=Math.round(p.sx), iy=Math.round(p.sy);
-  if (ix>=0 && iy>=0 && ix<W && iy*W+ix<pix.length) pix[iy*W+ix]=rgb(...color);
+  if (ix<0 || iy<0 || ix>=W || iy*W+ix>=pix.length) return;
+  const i=iy*W+ix;
+  // Points sit on rasterized surfaces; allow the depth spread within one pixel.
+  const depth=p.d+.08;
+  if (depth<=zb[i]) return;
+  pix[i]=rgb(...color);
 };
 const SWAY = {x:1.78, y:-5.25, z0:1.25, z1:1.85};
 
