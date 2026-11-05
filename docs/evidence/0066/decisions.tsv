@@ -1,0 +1,3 @@
+ts	phase	decision	why	evidence	result
+2026-11-05T19:00:00Z	design	Keep the neighbourhood envelope inside the restaurant snapshot	The existing pending checkpoint must preserve restaurant, gifts and journal together	docs/evidence/0066/integration-plan.md	approved by coordinator
+2026-11-05T19:04:00Z	rules	Restore claimed gifts after apartment payload recovery	A corrupt apartment must not discard retained gifts while keeping their receipts	src/neighbourhood/state.test.ts	covered by regression

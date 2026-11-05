@@ -1,7 +1,7 @@
 ---
 id: 66
 title: Integrate saved neighbourhood locations and shared learning
-status: todo
+status: doing
 priority: high
 type: feature
 created: 2026-11-05
@@ -28,3 +28,12 @@ One writer/branch/cloud checkout and strict port as assigned there. No edits out
 
 Estimate: 1–2 engineering days for a bounded slice plus review; synthesis access may block completion.
 Owner, worker ID, branch, checkout, exact commands, evidence and remaining blockers must be recorded here by writer.
+
+
+### Foundation work
+
+Owner `/root/foundation_writer`. Branch `codex/0066-neighbourhood-foundation`. Cloud worktree `/workspace/junyan-foundation`. Strict development port `5466`.
+
+The coordinator approved the optional embedded neighbourhood envelope. See [integration plan](../evidence/0066/integration-plan.md) for the state comparison, runtime flow, throughput checkpoint, and exact shared patches. Existing shared-file leases remain blocked until explicit handoff.
+
+Standalone contracts, per-feature save validation, navigation, gift idempotency, and the DOM token line are implemented. Integrated verification and independent review remain incomplete.
