@@ -70,3 +70,14 @@ Pstack source was fetched from configured `cursor/plugins` into `/workspace/curs
 - Residential compared gallery and switchback prototypes, provisionally preferring switchback. Requested safe-position recovery after furniture edits. Foundation must account for dynamic colliders without duplicating apartment state.
 - Independent review reported baseline P1 gaps in button-only travel, movement outside restaurant, per-place persistence and button-driven journey coverage. These match foundation and integrated-review assignments. Reviewer did not claim runtime evidence.
 - Root corrected runtime authorization. Review can now run in the attached managed cloud runtime. Contract example `example-module.ts` provides the initial typed data shape; foundation still owns production types and schema.
+
+## Verification and next actions
+
+- `node node_modules/typescript/bin/tsc --noEmit --skipLibCheck --target es2022 docs/world-program/example-module.ts` passed.
+- `python -m json.tool docs/world-program/example-map.json` passed. `git diff --check` passed.
+- The first `pnpm exec tsc` attempt stopped in pnpm's dependency reinstall wrapper before compilation. The direct installed compiler then passed. No lockfile or dependency changes were made.
+- A subsequent native wait snapshot confirmed foundation and reviewer have active turns. The earlier idle observation is superseded; no restart is needed on the evidence currently available.
+- Foundation next publishes executable contract import paths, renderer adapter, map validation and camera/input proof under 0078, then integrates owner artifacts.
+- Reviewer next reviews PR 27's ownership/contract and produces the independent baseline evidence under 0088. Its runtime identifier blocker has been resolved by parent clarification.
+- Each builder next records its branch head, checkout, process handle and first artifact in its own evidence directory. Coordinator compares actual diffs and integration instructions before accepting delivery.
+- The full goal remains ACTIVE. There is no integrated game head, runtime acceptance verdict or merge from this program yet.
