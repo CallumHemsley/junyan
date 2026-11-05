@@ -998,79 +998,6 @@
     },
     {
       "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "麻烦你了谢谢",
-      "voice": {
-        "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
-        "speaker": "Serena",
-        "language": "Chinese",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "máfan",
-          "nǐ",
-          "le",
-          "xièxie"
-        ]
-      },
-      "content_digest": "507e44f48e492464ffea30119a65b4a1ea81aa2659586d891fcd76f92892369b",
-      "filename": "line-507e44f48e492464ffea30119a65b4a1ea81aa2659586d891fcd76f92892369b.wav",
-      "voice_ids": [
-        "serena"
-      ],
-      "sha256": "b3178f9f4b674027cde92d13b42de0e6fd201440370767e4f1f12c336cdc7813",
-      "created_at": "2026-11-01T20:29:02.761586+00:00",
-      "attempts": [
-        {
-          "seed": 1350452468,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "mlx-audio": "0.6.3",
-        "mlx": "0.32.4",
-        "numpy": "2.5.4",
-        "soundfile": "0.14.0",
-        "transformers": "5.22.1",
-        "huggingface-hub": "2.4.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 57600,
-        "duration_seconds": 2.4,
-        "peak_absolute": 0.17778757214546204,
-        "rms": 0.02848156448663933
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 57600,
-        "duration_seconds": 2.4,
-        "peak_absolute": 0.17779541015625,
-        "rms": 0.028481539520359506
-      },
-      "engine_details": {
-        "token_count": 30,
-        "max_tokens": 160,
-        "settings": {
-          "temperature": 0.9,
-          "top_k": 50,
-          "top_p": 1.0,
-          "repetition_penalty": 1.05,
-          "stream": false,
-          "verbose": false
-        }
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
       "kind": "word",
       "text": "麻烦",
       "voice": {
@@ -1347,79 +1274,6 @@
       "engine_details": {
         "token_count": 13,
         "max_tokens": 128,
-        "settings": {
-          "temperature": 0.9,
-          "top_k": 50,
-          "top_p": 1.0,
-          "repetition_penalty": 1.05,
-          "stream": false,
-          "verbose": false
-        }
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "不急慢慢来",
-      "voice": {
-        "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
-        "speaker": "Serena",
-        "language": "Chinese",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "bù",
-          "jí",
-          "mànmàn",
-          "lái"
-        ]
-      },
-      "content_digest": "eda20c64be21bed5e1c2da94ffece29c9675f438435dad5b5c9415e6141b66c7",
-      "filename": "line-eda20c64be21bed5e1c2da94ffece29c9675f438435dad5b5c9415e6141b66c7.wav",
-      "voice_ids": [
-        "serena"
-      ],
-      "sha256": "8f5d9743317b9cfbe49cd7962e9306e4c6682d0f06ad9e6b7c394c6a410e1909",
-      "created_at": "2026-11-01T20:29:14.615242+00:00",
-      "attempts": [
-        {
-          "seed": 3986820196,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "mlx-audio": "0.6.3",
-        "mlx": "0.32.4",
-        "numpy": "2.5.4",
-        "soundfile": "0.14.0",
-        "transformers": "5.22.1",
-        "huggingface-hub": "2.4.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 55680,
-        "duration_seconds": 2.32,
-        "peak_absolute": 0.1851644217967987,
-        "rms": 0.03518896827066722
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 55680,
-        "duration_seconds": 2.32,
-        "peak_absolute": 0.185150146484375,
-        "rms": 0.03518901154470779
-      },
-      "engine_details": {
-        "token_count": 29,
-        "max_tokens": 144,
         "settings": {
           "temperature": 0.9,
           "top_k": 50,
@@ -2154,87 +2008,6 @@
     },
     {
       "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "早上好呀",
-      "voice": {
-        "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
-        "speaker": "Uncle_Fu",
-        "language": "Chinese",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "zǎoshang hǎo",
-          "ya"
-        ]
-      },
-      "content_digest": "f49cbeffd925ab91f4eb2836656d1ceb57ad2c8064b74634ceb0097eda6a3c72",
-      "filename": "line-f49cbeffd925ab91f4eb2836656d1ceb57ad2c8064b74634ceb0097eda6a3c72.wav",
-      "voice_ids": [
-        "uncle-fu"
-      ],
-      "sha256": "b52066ee55be8a4c7825993d489e40ec7ee175ae21ea318d8b09b10702e85166",
-      "created_at": "2026-11-01T20:29:40.952334+00:00",
-      "attempts": [
-        {
-          "seed": 4103913215,
-          "accepted": false,
-          "error": "Abnormal audio duration: 5.92s"
-        },
-        {
-          "seed": 4103914215,
-          "accepted": false,
-          "error": "Qwen returned multiple chunks or reached token cap"
-        },
-        {
-          "seed": 4103915215,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "mlx-audio": "0.6.3",
-        "mlx": "0.32.4",
-        "numpy": "2.5.4",
-        "soundfile": "0.14.0",
-        "transformers": "5.22.1",
-        "huggingface-hub": "2.4.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 49920,
-        "duration_seconds": 2.08,
-        "peak_absolute": 0.3130256235599518,
-        "rms": 0.021637365056956594
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 49920,
-        "duration_seconds": 2.08,
-        "peak_absolute": 0.313018798828125,
-        "rms": 0.021637399176878222
-      },
-      "engine_details": {
-        "token_count": 26,
-        "max_tokens": 128,
-        "settings": {
-          "temperature": 0.9,
-          "top_k": 50,
-          "top_p": 1.0,
-          "repetition_penalty": 1.05,
-          "stream": false,
-          "verbose": false
-        }
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
       "kind": "word",
       "text": "呀",
       "voice": {
@@ -2296,83 +2069,6 @@
       "engine_details": {
         "token_count": 18,
         "max_tokens": 128,
-        "settings": {
-          "temperature": 0.9,
-          "top_k": 50,
-          "top_p": 1.0,
-          "repetition_penalty": 1.05,
-          "stream": false,
-          "verbose": false
-        }
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "辛苦了谢谢",
-      "voice": {
-        "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
-        "speaker": "Uncle_Fu",
-        "language": "Chinese",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "xīnkǔ",
-          "le",
-          "xièxie"
-        ]
-      },
-      "content_digest": "c9862d0b5a71642d69e5ac086bcb5a1477b32c5ccab7c8d24407055ea195865f",
-      "filename": "line-c9862d0b5a71642d69e5ac086bcb5a1477b32c5ccab7c8d24407055ea195865f.wav",
-      "voice_ids": [
-        "uncle-fu"
-      ],
-      "sha256": "244e9a4cebda27fa1833800d920c24b65218dce95b85b4753587e7e19d330c12",
-      "created_at": "2026-11-01T20:29:48.934140+00:00",
-      "attempts": [
-        {
-          "seed": 3381013771,
-          "accepted": false,
-          "error": "Qwen returned multiple chunks or reached token cap"
-        },
-        {
-          "seed": 3381014771,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "mlx-audio": "0.6.3",
-        "mlx": "0.32.4",
-        "numpy": "2.5.4",
-        "soundfile": "0.14.0",
-        "transformers": "5.22.1",
-        "huggingface-hub": "2.4.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 88320,
-        "duration_seconds": 3.68,
-        "peak_absolute": 0.15943823754787445,
-        "rms": 0.023326072359924
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 88320,
-        "duration_seconds": 3.68,
-        "peak_absolute": 0.159423828125,
-        "rms": 0.023326108765508464
-      },
-      "engine_details": {
-        "token_count": 46,
-        "max_tokens": 144,
         "settings": {
           "temperature": 0.9,
           "top_k": 50,
@@ -2586,86 +2282,6 @@
       "engine_details": {
         "token_count": 11,
         "max_tokens": 128,
-        "settings": {
-          "temperature": 0.9,
-          "top_k": 50,
-          "top_p": 1.0,
-          "repetition_penalty": 1.05,
-          "stream": false,
-          "verbose": false
-        }
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "我想要一个包子",
-      "voice": {
-        "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
-        "speaker": "Serena",
-        "language": "Chinese",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "wǒ",
-          "xiǎng",
-          "yào",
-          "yī",
-          "gè",
-          "bāozi"
-        ]
-      },
-      "content_digest": "0d403a21ba4967b24612e8318b6c9e6c639e8869cbb9b0106d8b4784bdc03f15",
-      "filename": "line-0d403a21ba4967b24612e8318b6c9e6c639e8869cbb9b0106d8b4784bdc03f15.wav",
-      "voice_ids": [
-        "serena"
-      ],
-      "sha256": "89e6d861ade211e9d77035a1ab7b8b54077d4d900267bc9f3ab60011af40754f",
-      "created_at": "2026-11-01T20:29:55.673902+00:00",
-      "attempts": [
-        {
-          "seed": 222312993,
-          "accepted": false,
-          "error": "Abnormal audio duration: 9.28s"
-        },
-        {
-          "seed": 222313993,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "mlx-audio": "0.6.3",
-        "mlx": "0.32.4",
-        "numpy": "2.5.4",
-        "soundfile": "0.14.0",
-        "transformers": "5.22.1",
-        "huggingface-hub": "2.4.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 55680,
-        "duration_seconds": 2.32,
-        "peak_absolute": 0.3428647518157959,
-        "rms": 0.04434051968820522
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 55680,
-        "duration_seconds": 2.32,
-        "peak_absolute": 0.342864990234375,
-        "rms": 0.04434048112759423
-      },
-      "engine_details": {
-        "token_count": 29,
-        "max_tokens": 176,
         "settings": {
           "temperature": 0.9,
           "top_k": 50,
@@ -3105,81 +2721,6 @@
     },
     {
       "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "请给我一碗粥",
-      "voice": {
-        "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
-        "speaker": "Uncle_Fu",
-        "language": "Chinese",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "qǐng",
-          "gěi",
-          "wǒ",
-          "yī",
-          "wǎn",
-          "zhōu"
-        ]
-      },
-      "content_digest": "864200e3e7729826ec24ffe35e32c6180190c1e916b07680457fb32e96927d2e",
-      "filename": "line-864200e3e7729826ec24ffe35e32c6180190c1e916b07680457fb32e96927d2e.wav",
-      "voice_ids": [
-        "uncle-fu"
-      ],
-      "sha256": "7d36629d0d53b59dd42c5c3656c8d4861a5c4caac06411b8b804e819d7c3ff27",
-      "created_at": "2026-11-01T20:30:03.920645+00:00",
-      "attempts": [
-        {
-          "seed": 2252472547,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "mlx-audio": "0.6.3",
-        "mlx": "0.32.4",
-        "numpy": "2.5.4",
-        "soundfile": "0.14.0",
-        "transformers": "5.22.1",
-        "huggingface-hub": "2.4.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 84480,
-        "duration_seconds": 3.52,
-        "peak_absolute": 0.8314942717552185,
-        "rms": 0.08698007785378667
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 84480,
-        "duration_seconds": 3.52,
-        "peak_absolute": 0.83148193359375,
-        "rms": 0.08698006307796838
-      },
-      "engine_details": {
-        "token_count": 44,
-        "max_tokens": 160,
-        "settings": {
-          "temperature": 0.9,
-          "top_k": 50,
-          "top_p": 1.0,
-          "repetition_penalty": 1.05,
-          "stream": false,
-          "verbose": false
-        }
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
       "kind": "word",
       "text": "请",
       "voice": {
@@ -3460,81 +3001,6 @@
     },
     {
       "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "我想要两个馒头",
-      "voice": {
-        "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
-        "speaker": "Serena",
-        "language": "Chinese",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "wǒ",
-          "xiǎng",
-          "yào",
-          "liǎng",
-          "gè",
-          "mántou"
-        ]
-      },
-      "content_digest": "232e121aff2a7f43559df9126fb157f5d5d1052b02305961f9386410aa9bbfa3",
-      "filename": "line-232e121aff2a7f43559df9126fb157f5d5d1052b02305961f9386410aa9bbfa3.wav",
-      "voice_ids": [
-        "serena"
-      ],
-      "sha256": "130b2448e3389c8b51b73733be71e2875fcc9ec9442b670367baa794b3275112",
-      "created_at": "2026-11-01T20:30:07.228921+00:00",
-      "attempts": [
-        {
-          "seed": 590221850,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "mlx-audio": "0.6.3",
-        "mlx": "0.32.4",
-        "numpy": "2.5.4",
-        "soundfile": "0.14.0",
-        "transformers": "5.22.1",
-        "huggingface-hub": "2.4.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 49920,
-        "duration_seconds": 2.08,
-        "peak_absolute": 0.31238874793052673,
-        "rms": 0.050931892130368764
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 49920,
-        "duration_seconds": 2.08,
-        "peak_absolute": 0.3123779296875,
-        "rms": 0.05093186722044048
-      },
-      "engine_details": {
-        "token_count": 26,
-        "max_tokens": 176,
-        "settings": {
-          "temperature": 0.9,
-          "top_k": 50,
-          "top_p": 1.0,
-          "repetition_penalty": 1.05,
-          "stream": false,
-          "verbose": false
-        }
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
       "kind": "word",
       "text": "两",
       "voice": {
@@ -3596,85 +3062,6 @@
       "engine_details": {
         "token_count": 14,
         "max_tokens": 128,
-        "settings": {
-          "temperature": 0.9,
-          "top_k": 50,
-          "top_p": 1.0,
-          "repetition_penalty": 1.05,
-          "stream": false,
-          "verbose": false
-        }
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "请给我一碗饺子和一杯豆浆",
-      "voice": {
-        "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
-        "speaker": "Uncle_Fu",
-        "language": "Chinese",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "qǐng",
-          "gěi",
-          "wǒ",
-          "yī",
-          "wǎn",
-          "jiǎozi",
-          "hé",
-          "yī",
-          "bēi",
-          "dòujiāng"
-        ]
-      },
-      "content_digest": "bee54feba146395a09fe922ac9f1457a2b96f92e5eb6ecc384c9e9c59c26e3b6",
-      "filename": "line-bee54feba146395a09fe922ac9f1457a2b96f92e5eb6ecc384c9e9c59c26e3b6.wav",
-      "voice_ids": [
-        "uncle-fu"
-      ],
-      "sha256": "92ea7958d9c73b664b3e2c300e56794a50225c0692ea2c604fbb1b19e7d14112",
-      "created_at": "2026-11-01T20:30:11.723131+00:00",
-      "attempts": [
-        {
-          "seed": 3202699243,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "mlx-audio": "0.6.3",
-        "mlx": "0.32.4",
-        "numpy": "2.5.4",
-        "soundfile": "0.14.0",
-        "transformers": "5.22.1",
-        "huggingface-hub": "2.4.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 130560,
-        "duration_seconds": 5.44,
-        "peak_absolute": 0.5121774673461914,
-        "rms": 0.055171782401852325
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 130560,
-        "duration_seconds": 5.44,
-        "peak_absolute": 0.512176513671875,
-        "rms": 0.05517178479095099
-      },
-      "engine_details": {
-        "token_count": 68,
-        "max_tokens": 256,
         "settings": {
           "temperature": 0.9,
           "top_k": 50,
@@ -3759,172 +3146,6 @@
     },
     {
       "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "我想要两个包子和一个鸡蛋和一杯豆浆",
-      "voice": {
-        "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
-        "speaker": "Serena",
-        "language": "Chinese",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "wǒ",
-          "xiǎng",
-          "yào",
-          "liǎng",
-          "gè",
-          "bāozi",
-          "hé",
-          "yī",
-          "gè",
-          "jīdàn",
-          "hé",
-          "yī",
-          "bēi",
-          "dòujiāng"
-        ]
-      },
-      "content_digest": "663e703a859c00714976312323af2e12852669b5826e94809f2c9a6e1c5525d6",
-      "filename": "line-663e703a859c00714976312323af2e12852669b5826e94809f2c9a6e1c5525d6.wav",
-      "voice_ids": [
-        "serena"
-      ],
-      "sha256": "5b6188bc0930eff2fb5665eb57c7874cbbe023140af5a4a0fe68a0cbda34be39",
-      "created_at": "2026-11-01T20:30:14.687582+00:00",
-      "attempts": [
-        {
-          "seed": 1715367994,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "mlx-audio": "0.6.3",
-        "mlx": "0.32.4",
-        "numpy": "2.5.4",
-        "soundfile": "0.14.0",
-        "transformers": "5.22.1",
-        "huggingface-hub": "2.4.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 165120,
-        "duration_seconds": 6.88,
-        "peak_absolute": 0.22270838916301727,
-        "rms": 0.025438024878093726
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 165120,
-        "duration_seconds": 6.88,
-        "peak_absolute": 0.22271728515625,
-        "rms": 0.025438026316684608
-      },
-      "engine_details": {
-        "token_count": 86,
-        "max_tokens": 336,
-        "settings": {
-          "temperature": 0.9,
-          "top_k": 50,
-          "top_p": 1.0,
-          "repetition_penalty": 1.05,
-          "stream": false,
-          "verbose": false
-        }
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "请给我一碗饺子和一碗粥和两个馒头",
-      "voice": {
-        "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
-        "speaker": "Uncle_Fu",
-        "language": "Chinese",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "qǐng",
-          "gěi",
-          "wǒ",
-          "yī",
-          "wǎn",
-          "jiǎozi",
-          "hé",
-          "yī",
-          "wǎn",
-          "zhōu",
-          "hé",
-          "liǎng",
-          "gè",
-          "mántou"
-        ]
-      },
-      "content_digest": "a6fca631fffd5fee65c129c929f57de1918bd86929208ba842ecdf581df37026",
-      "filename": "line-a6fca631fffd5fee65c129c929f57de1918bd86929208ba842ecdf581df37026.wav",
-      "voice_ids": [
-        "uncle-fu"
-      ],
-      "sha256": "6a613a37d8507b9ee3b112f16a18502dc1b3497f070429a5c42cfee77ad7a93d",
-      "created_at": "2026-11-01T20:30:16.672979+00:00",
-      "attempts": [
-        {
-          "seed": 2801575473,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "mlx-audio": "0.6.3",
-        "mlx": "0.32.4",
-        "numpy": "2.5.4",
-        "soundfile": "0.14.0",
-        "transformers": "5.22.1",
-        "huggingface-hub": "2.4.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 134400,
-        "duration_seconds": 5.6,
-        "peak_absolute": 0.8160608410835266,
-        "rms": 0.1076144813502142
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 134400,
-        "duration_seconds": 5.6,
-        "peak_absolute": 0.816070556640625,
-        "rms": 0.10761449217947054
-      },
-      "engine_details": {
-        "token_count": 70,
-        "max_tokens": 320,
-        "settings": {
-          "temperature": 0.9,
-          "top_k": 50,
-          "top_p": 1.0,
-          "repetition_penalty": 1.05,
-          "stream": false,
-          "verbose": false
-        }
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
       "kind": "word",
       "text": "三",
       "voice": {
@@ -3989,829 +3210,6 @@
           "stream": false,
           "verbose": false
         }
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "早",
-      "voice": {
-        "engine": "kokoro",
-        "model": "hexgrad/Kokoro-82M",
-        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
-        "speaker": "zm_yunxi",
-        "language": "z",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "zǎo"
-        ]
-      },
-      "content_digest": "8b03f88459ad642e62ad8227d2794ab397a72345a3328970502bc8e558d4c5d2",
-      "filename": "line-8b03f88459ad642e62ad8227d2794ab397a72345a3328970502bc8e558d4c5d2.wav",
-      "voice_ids": [
-        "yunxi"
-      ],
-      "sha256": "fce957e9e9fd422b65af06e12f9fd55fce127aa060169454f8b93f69bd9e254d",
-      "created_at": "2026-11-01T20:32:43.106490+00:00",
-      "attempts": [
-        {
-          "seed": 2332293252,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "kokoro": "0.9.4",
-        "misaki": "0.9.4",
-        "pypinyin": "0.55.0",
-        "torch": "2.8.0",
-        "numpy": "2.3.4",
-        "transformers": "4.57.1",
-        "huggingface-hub": "0.36.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 42600,
-        "duration_seconds": 1.775,
-        "peak_absolute": 0.41096532344818115,
-        "rms": 0.03682242695233151
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 42600,
-        "duration_seconds": 1.775,
-        "peak_absolute": 0.410980224609375,
-        "rms": 0.036822538555389715
-      },
-      "engine_details": {
-        "phonemes": [
-          "ʦau↓"
-        ]
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "谢谢明天见",
-      "voice": {
-        "engine": "kokoro",
-        "model": "hexgrad/Kokoro-82M",
-        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
-        "speaker": "zm_yunxi",
-        "language": "z",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "xièxie",
-          "míngtiān",
-          "jiàn"
-        ]
-      },
-      "content_digest": "c5e1c76bb942749b03367adb0506c7cc114e6679108b7c3d825c0e335515e0d5",
-      "filename": "line-c5e1c76bb942749b03367adb0506c7cc114e6679108b7c3d825c0e335515e0d5.wav",
-      "voice_ids": [
-        "yunxi"
-      ],
-      "sha256": "0f06cadb911d3fef653c5ff9b2f23d22dedee5c8f176d08a81e1cced720251d0",
-      "created_at": "2026-11-01T20:32:43.526630+00:00",
-      "attempts": [
-        {
-          "seed": 3319908203,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "kokoro": "0.9.4",
-        "misaki": "0.9.4",
-        "pypinyin": "0.55.0",
-        "torch": "2.8.0",
-        "numpy": "2.3.4",
-        "transformers": "4.57.1",
-        "huggingface-hub": "0.36.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 61200,
-        "duration_seconds": 2.55,
-        "peak_absolute": 0.5710332989692688,
-        "rms": 0.053509727772243575
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 61200,
-        "duration_seconds": 2.55,
-        "peak_absolute": 0.571044921875,
-        "rms": 0.053509720177015586
-      },
-      "engine_details": {
-        "phonemes": [
-          "ɕje↘ɕje↘ mi↗ŋtʰjɛ→n ʨjɛ↘n"
-        ]
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "不对再看看吧",
-      "voice": {
-        "engine": "kokoro",
-        "model": "hexgrad/Kokoro-82M",
-        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
-        "speaker": "zm_yunxi",
-        "language": "z",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "bù",
-          "duì",
-          "zài",
-          "kànkan",
-          "ba"
-        ]
-      },
-      "content_digest": "5ac1be2a8b78cdfee1ad851249e2c7acb65608b235c34e853fb9cf5f793f842b",
-      "filename": "line-5ac1be2a8b78cdfee1ad851249e2c7acb65608b235c34e853fb9cf5f793f842b.wav",
-      "voice_ids": [
-        "yunxi"
-      ],
-      "sha256": "9756050fb2b2d0995b016588afaa69f43489fce9ea095f1513833ccfe7d57d2e",
-      "created_at": "2026-11-01T20:32:43.816365+00:00",
-      "attempts": [
-        {
-          "seed": 1522646570,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "kokoro": "0.9.4",
-        "misaki": "0.9.4",
-        "pypinyin": "0.55.0",
-        "torch": "2.8.0",
-        "numpy": "2.3.4",
-        "transformers": "4.57.1",
-        "huggingface-hub": "0.36.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 49200,
-        "duration_seconds": 2.05,
-        "peak_absolute": 0.4263749122619629,
-        "rms": 0.05297604132600735
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 49200,
-        "duration_seconds": 2.05,
-        "peak_absolute": 0.426361083984375,
-        "rms": 0.052976060260130325
-      },
-      "engine_details": {
-        "phonemes": [
-          "pu↘ twei↘ ʦai↘ kʰa↘nkʰa↘n pa"
-        ]
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "你好呀",
-      "voice": {
-        "engine": "kokoro",
-        "model": "hexgrad/Kokoro-82M",
-        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
-        "speaker": "zf_xiaobei",
-        "language": "z",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "nǐ hǎo",
-          "ya"
-        ]
-      },
-      "content_digest": "5c9d9b4b5fec7d014d938ace809cce98c12ebd97add1465475bf0a992e707468",
-      "filename": "line-5c9d9b4b5fec7d014d938ace809cce98c12ebd97add1465475bf0a992e707468.wav",
-      "voice_ids": [
-        "xiaobei"
-      ],
-      "sha256": "5442314ad75e74b29a9aaf4b8c380e760fd6f6325d90536f9e9784efe5b63187",
-      "created_at": "2026-11-01T20:32:44.073700+00:00",
-      "attempts": [
-        {
-          "seed": 1553832779,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "kokoro": "0.9.4",
-        "misaki": "0.9.4",
-        "pypinyin": "0.55.0",
-        "torch": "2.8.0",
-        "numpy": "2.3.4",
-        "transformers": "4.57.1",
-        "huggingface-hub": "0.36.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 36600,
-        "duration_seconds": 1.525,
-        "peak_absolute": 0.23658788204193115,
-        "rms": 0.0482433250361006
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 36600,
-        "duration_seconds": 1.525,
-        "peak_absolute": 0.236602783203125,
-        "rms": 0.048243346778148524
-      },
-      "engine_details": {
-        "phonemes": [
-          "ni↓xau↓ ja"
-        ]
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "谢谢你呀",
-      "voice": {
-        "engine": "kokoro",
-        "model": "hexgrad/Kokoro-82M",
-        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
-        "speaker": "zf_xiaobei",
-        "language": "z",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "xièxie",
-          "nǐ",
-          "ya"
-        ]
-      },
-      "content_digest": "138e39cfc4c58300ceb3a8de0cb23e4eaee5e57cfa3cdaa317d214e4ab8cebd4",
-      "filename": "line-138e39cfc4c58300ceb3a8de0cb23e4eaee5e57cfa3cdaa317d214e4ab8cebd4.wav",
-      "voice_ids": [
-        "xiaobei"
-      ],
-      "sha256": "e5d6db704cad16f33fdcc86e057c7618d6c034512ad79db97f2f02755ea13f15",
-      "created_at": "2026-11-01T20:32:44.369929+00:00",
-      "attempts": [
-        {
-          "seed": 328088015,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "kokoro": "0.9.4",
-        "misaki": "0.9.4",
-        "pypinyin": "0.55.0",
-        "torch": "2.8.0",
-        "numpy": "2.3.4",
-        "transformers": "4.57.1",
-        "huggingface-hub": "0.36.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 49200,
-        "duration_seconds": 2.05,
-        "peak_absolute": 0.2706781029701233,
-        "rms": 0.04966181475393024
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 49200,
-        "duration_seconds": 2.05,
-        "peak_absolute": 0.27069091796875,
-        "rms": 0.04966185940883775
-      },
-      "engine_details": {
-        "phonemes": [
-          "ɕje↘ɕje↘ ni↓ ja"
-        ]
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "不对呀再看看吧",
-      "voice": {
-        "engine": "kokoro",
-        "model": "hexgrad/Kokoro-82M",
-        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
-        "speaker": "zf_xiaobei",
-        "language": "z",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "bù",
-          "duì",
-          "ya",
-          "zài",
-          "kànkan",
-          "ba"
-        ]
-      },
-      "content_digest": "3d78662da910760c1bc12114b94e6383f4befa56d9c7a925657e94433763d727",
-      "filename": "line-3d78662da910760c1bc12114b94e6383f4befa56d9c7a925657e94433763d727.wav",
-      "voice_ids": [
-        "xiaobei"
-      ],
-      "sha256": "81345548063b19d4c87080c8ceaa478b30b8927898389012471a9a28115bb256",
-      "created_at": "2026-11-01T20:32:44.837892+00:00",
-      "attempts": [
-        {
-          "seed": 1031300653,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "kokoro": "0.9.4",
-        "misaki": "0.9.4",
-        "pypinyin": "0.55.0",
-        "torch": "2.8.0",
-        "numpy": "2.3.4",
-        "transformers": "4.57.1",
-        "huggingface-hub": "0.36.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 62400,
-        "duration_seconds": 2.6,
-        "peak_absolute": 0.30332422256469727,
-        "rms": 0.051552977082857464
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 62400,
-        "duration_seconds": 2.6,
-        "peak_absolute": 0.303314208984375,
-        "rms": 0.0515528915124657
-      },
-      "engine_details": {
-        "phonemes": [
-          "pu↘ twei↘ ja ʦai↘ kʰa↘nkʰa↘n pa"
-        ]
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "来一杯豆浆",
-      "voice": {
-        "engine": "kokoro",
-        "model": "hexgrad/Kokoro-82M",
-        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
-        "speaker": "zm_yunxi",
-        "language": "z",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "lái",
-          "yī",
-          "bēi",
-          "dòujiāng"
-        ]
-      },
-      "content_digest": "b8178fc6ac1348ce44c59b5aa977dea291baef3a156e471ed237f0d30c9952a1",
-      "filename": "line-b8178fc6ac1348ce44c59b5aa977dea291baef3a156e471ed237f0d30c9952a1.wav",
-      "voice_ids": [
-        "yunxi"
-      ],
-      "sha256": "8f5ca7ac09fa40da7147e9abd713b73488243f0abd8332b9bc39ca0b98793902",
-      "created_at": "2026-11-01T20:32:45.222382+00:00",
-      "attempts": [
-        {
-          "seed": 3088551878,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "kokoro": "0.9.4",
-        "misaki": "0.9.4",
-        "pypinyin": "0.55.0",
-        "torch": "2.8.0",
-        "numpy": "2.3.4",
-        "transformers": "4.57.1",
-        "huggingface-hub": "0.36.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 56400,
-        "duration_seconds": 2.35,
-        "peak_absolute": 0.6192139387130737,
-        "rms": 0.04943834856482246
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 56400,
-        "duration_seconds": 2.35,
-        "peak_absolute": 0.61920166015625,
-        "rms": 0.04943828320981049
-      },
-      "engine_details": {
-        "phonemes": [
-          "lai↗ i→pei→ tou↘ʨja→ŋ"
-        ]
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "我要一根油条",
-      "voice": {
-        "engine": "kokoro",
-        "model": "hexgrad/Kokoro-82M",
-        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
-        "speaker": "zf_xiaobei",
-        "language": "z",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "wǒ",
-          "yào",
-          "yī",
-          "gēn",
-          "yóutiáo"
-        ]
-      },
-      "content_digest": "f9e61c0954c1ab3a7750de630105e814ae91d3cf4cc130a4413a5655a9638fb3",
-      "filename": "line-f9e61c0954c1ab3a7750de630105e814ae91d3cf4cc130a4413a5655a9638fb3.wav",
-      "voice_ids": [
-        "xiaobei"
-      ],
-      "sha256": "74bfddc386ee1641d55d1bca888072d5f17742d61be92e5f6048fb2b0e784f36",
-      "created_at": "2026-11-01T20:32:45.626655+00:00",
-      "attempts": [
-        {
-          "seed": 4192607241,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "kokoro": "0.9.4",
-        "misaki": "0.9.4",
-        "pypinyin": "0.55.0",
-        "torch": "2.8.0",
-        "numpy": "2.3.4",
-        "transformers": "4.57.1",
-        "huggingface-hub": "0.36.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 65400,
-        "duration_seconds": 2.725,
-        "peak_absolute": 0.3855489194393158,
-        "rms": 0.05785425702162349
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 65400,
-        "duration_seconds": 2.725,
-        "peak_absolute": 0.38555908203125,
-        "rms": 0.05785419509236794
-      },
-      "engine_details": {
-        "phonemes": [
-          "wo↓jau↘ i→kə→n jou↗tʰjau↗"
-        ]
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "来两个鸡蛋",
-      "voice": {
-        "engine": "kokoro",
-        "model": "hexgrad/Kokoro-82M",
-        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
-        "speaker": "zm_yunxi",
-        "language": "z",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "lái",
-          "liǎng",
-          "gè",
-          "jīdàn"
-        ]
-      },
-      "content_digest": "3942f49ce8d61739ec69bb55521bb15bf389d0b090973b3dace741f70678710a",
-      "filename": "line-3942f49ce8d61739ec69bb55521bb15bf389d0b090973b3dace741f70678710a.wav",
-      "voice_ids": [
-        "yunxi"
-      ],
-      "sha256": "7391c5e68cadd703972ca038a35279c1c183ee4e8d23222d60a9c693912f75b3",
-      "created_at": "2026-11-01T20:32:46.005391+00:00",
-      "attempts": [
-        {
-          "seed": 960689308,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "kokoro": "0.9.4",
-        "misaki": "0.9.4",
-        "pypinyin": "0.55.0",
-        "torch": "2.8.0",
-        "numpy": "2.3.4",
-        "transformers": "4.57.1",
-        "huggingface-hub": "0.36.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 54600,
-        "duration_seconds": 2.275,
-        "peak_absolute": 0.4535667896270752,
-        "rms": 0.04929931466941341
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 54600,
-        "duration_seconds": 2.275,
-        "peak_absolute": 0.45355224609375,
-        "rms": 0.049299372079589725
-      },
-      "engine_details": {
-        "phonemes": [
-          "lai↗ lja↓ŋkɤ↘ ʨi→ta↘n"
-        ]
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "我要一碗粥和一个馒头",
-      "voice": {
-        "engine": "kokoro",
-        "model": "hexgrad/Kokoro-82M",
-        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
-        "speaker": "zf_xiaobei",
-        "language": "z",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "wǒ",
-          "yào",
-          "yī",
-          "wǎn",
-          "zhōu",
-          "hé",
-          "yī",
-          "gè",
-          "mántou"
-        ]
-      },
-      "content_digest": "74e98a7b3c2422391a7faad15e55a3849047656a74a040f687b6739aa854b0ce",
-      "filename": "line-74e98a7b3c2422391a7faad15e55a3849047656a74a040f687b6739aa854b0ce.wav",
-      "voice_ids": [
-        "xiaobei"
-      ],
-      "sha256": "165fcff71e4c7c4d4b0eaa14200158aedc24364a1b5abe243863aaceb9c38387",
-      "created_at": "2026-11-01T20:32:46.536122+00:00",
-      "attempts": [
-        {
-          "seed": 1961462395,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "kokoro": "0.9.4",
-        "misaki": "0.9.4",
-        "pypinyin": "0.55.0",
-        "torch": "2.8.0",
-        "numpy": "2.3.4",
-        "transformers": "4.57.1",
-        "huggingface-hub": "0.36.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 79800,
-        "duration_seconds": 3.325,
-        "peak_absolute": 0.3748864531517029,
-        "rms": 0.058504972193182514
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 79800,
-        "duration_seconds": 3.325,
-        "peak_absolute": 0.3748779296875,
-        "rms": 0.05850492625815181
-      },
-      "engine_details": {
-        "phonemes": [
-          "wo↓jau↘ i→wa↓n ꭧou→ xɤ↗ i↗kɤ↘ ma↗ntʰou"
-        ]
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "来两根油条和两杯豆浆和一个鸡蛋",
-      "voice": {
-        "engine": "kokoro",
-        "model": "hexgrad/Kokoro-82M",
-        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
-        "speaker": "zm_yunxi",
-        "language": "z",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "lái",
-          "liǎng",
-          "gēn",
-          "yóutiáo",
-          "hé",
-          "liǎng",
-          "bēi",
-          "dòujiāng",
-          "hé",
-          "yī",
-          "gè",
-          "jīdàn"
-        ]
-      },
-      "content_digest": "a76596542daab2cde92ead7ecba1110845a2465ebdf90079a1fd16449f614240",
-      "filename": "line-a76596542daab2cde92ead7ecba1110845a2465ebdf90079a1fd16449f614240.wav",
-      "voice_ids": [
-        "yunxi"
-      ],
-      "sha256": "005b754defb75fe4075e32771d3455d45a1ee14557b7fc4cdf7a997571aa43c9",
-      "created_at": "2026-11-01T20:32:47.240671+00:00",
-      "attempts": [
-        {
-          "seed": 2808452692,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "kokoro": "0.9.4",
-        "misaki": "0.9.4",
-        "pypinyin": "0.55.0",
-        "torch": "2.8.0",
-        "numpy": "2.3.4",
-        "transformers": "4.57.1",
-        "huggingface-hub": "0.36.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 95400,
-        "duration_seconds": 3.975,
-        "peak_absolute": 0.6306557059288025,
-        "rms": 0.052082799669537674
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 95400,
-        "duration_seconds": 3.975,
-        "peak_absolute": 0.630645751953125,
-        "rms": 0.052082831524659784
-      },
-      "engine_details": {
-        "phonemes": [
-          "lai↗ lja↓ŋkə→n jou↗tʰjau↗ xɤ↗ lja↓ŋpei→ tou↘ʨja→ŋ xɤ↗ i↗kɤ↘ ʨi→ta↘n"
-        ]
-      },
-      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "我要三个包子和两根油条和一杯豆浆",
-      "voice": {
-        "engine": "kokoro",
-        "model": "hexgrad/Kokoro-82M",
-        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
-        "speaker": "zf_xiaobei",
-        "language": "z",
-        "speed": 1,
-        "instructions": null
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "wǒ",
-          "yào",
-          "sān",
-          "gè",
-          "bāozi",
-          "hé",
-          "liǎng",
-          "gēn",
-          "yóutiáo",
-          "hé",
-          "yī",
-          "bēi",
-          "dòujiāng"
-        ]
-      },
-      "content_digest": "67c8486fb820a5876a87a9fe49fe3d95aa324adf7b4350b1de508e26ff330ca9",
-      "filename": "line-67c8486fb820a5876a87a9fe49fe3d95aa324adf7b4350b1de508e26ff330ca9.wav",
-      "voice_ids": [
-        "xiaobei"
-      ],
-      "sha256": "c0a5c4506dfdba709bdfd7499a6d700b3cb860294cd2691832288bc27248dea0",
-      "created_at": "2026-11-01T20:32:48.078921+00:00",
-      "attempts": [
-        {
-          "seed": 1741178991,
-          "accepted": true
-        }
-      ],
-      "packages": {
-        "kokoro": "0.9.4",
-        "misaki": "0.9.4",
-        "pypinyin": "0.55.0",
-        "torch": "2.8.0",
-        "numpy": "2.3.4",
-        "transformers": "4.57.1",
-        "huggingface-hub": "0.36.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 123000,
-        "duration_seconds": 5.125,
-        "peak_absolute": 0.41253963112831116,
-        "rms": 0.06436925431765919
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 123000,
-        "duration_seconds": 5.125,
-        "peak_absolute": 0.41253662109375,
-        "rms": 0.06436923959956752
-      },
-      "engine_details": {
-        "phonemes": [
-          "wo↓jau↘ sa→nkɤ↘ pau→ʦɨ xɤ↗ lja↓ŋkə→n jou↗tʰjau↗ xɤ↗ i→pei→ tou↘ʨja→ŋ"
-        ]
       },
       "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
       "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
@@ -9360,6 +7758,1686 @@
           "stream": false,
           "verbose": false
         }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "麻烦你了，谢谢。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "máfan",
+          "nǐ",
+          "le",
+          "xièxie"
+        ]
+      },
+      "content_digest": "7cec562dce16587a3d3072fb7e37ef728c1e652e315d18c300266abffb223067",
+      "filename": "line-7cec562dce16587a3d3072fb7e37ef728c1e652e315d18c300266abffb223067.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "8f3fb8e9abef8e79b94a0c79c4fb3c075b06a954f51c66fdacb1f0d15c9b3cdd",
+      "created_at": "2026-11-05T19:08:19.859410+00:00",
+      "attempts": [
+        {
+          "seed": 2095863341,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 4.27123654197203,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 90240,
+        "duration_seconds": 3.76,
+        "peak_absolute": 0.3003756105899811,
+        "rms": 0.044888066831596164
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 90240,
+        "duration_seconds": 3.76,
+        "peak_absolute": 0.300384521484375,
+        "rms": 0.04488809387395514
+      },
+      "engine_details": {
+        "token_count": 47,
+        "max_tokens": 192,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "辛苦了，谢谢。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Uncle_Fu",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xīnkǔ",
+          "le",
+          "xièxie"
+        ]
+      },
+      "content_digest": "f69b1fac2105310de9b77d39194a5024432b2523a9b0fcc4bd0d9f8b455a1fbf",
+      "filename": "line-f69b1fac2105310de9b77d39194a5024432b2523a9b0fcc4bd0d9f8b455a1fbf.wav",
+      "voice_ids": [
+        "uncle-fu"
+      ],
+      "sha256": "8649120737cfff80ed07a43a9138a111d50a25e2564b3acdbde2a72ef25274dd",
+      "created_at": "2026-11-05T19:08:21.398551+00:00",
+      "attempts": [
+        {
+          "seed": 4137361324,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.4986201249994338,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 67200,
+        "duration_seconds": 2.8,
+        "peak_absolute": 0.6241938471794128,
+        "rms": 0.08410204207138366
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 67200,
+        "duration_seconds": 2.8,
+        "peak_absolute": 0.62420654296875,
+        "rms": 0.0841020222739252
+      },
+      "engine_details": {
+        "token_count": 35,
+        "max_tokens": 176,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "谢谢，明天见。",
+      "voice": {
+        "engine": "kokoro",
+        "model": "hexgrad/Kokoro-82M",
+        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+        "speaker": "zm_yunxi",
+        "language": "z",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xièxie",
+          "míngtiān",
+          "jiàn"
+        ]
+      },
+      "content_digest": "c580881e4df4be3b391064df89d91425a0c4762362e4fdef90362f82c81635ba",
+      "filename": "line-c580881e4df4be3b391064df89d91425a0c4762362e4fdef90362f82c81635ba.wav",
+      "voice_ids": [
+        "yunxi"
+      ],
+      "sha256": "10f42b88d68b9b1d479cacc50f84fb6a9d155471f9d8afecd0e8fa9b634d38a9",
+      "created_at": "2026-11-05T19:09:54.148626+00:00",
+      "attempts": [
+        {
+          "seed": 3313535006,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 15.436005708994344,
+      "packages": {
+        "kokoro": "0.9.4",
+        "misaki": "0.9.4",
+        "pypinyin": "0.55.0",
+        "torch": "2.8.0",
+        "numpy": "2.3.4",
+        "transformers": "4.57.1",
+        "huggingface-hub": "0.36.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 63000,
+        "duration_seconds": 2.625,
+        "peak_absolute": 0.5409759879112244,
+        "rms": 0.05283308127337487
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 63000,
+        "duration_seconds": 2.625,
+        "peak_absolute": 0.540985107421875,
+        "rms": 0.05283301581505201
+      },
+      "engine_details": {
+        "phonemes": [
+          "ɕje↘ɕje↘, mi↗ŋtʰjɛ→n ʨjɛ↘n."
+        ]
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "谢谢你呀。",
+      "voice": {
+        "engine": "kokoro",
+        "model": "hexgrad/Kokoro-82M",
+        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+        "speaker": "zf_xiaobei",
+        "language": "z",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xièxie",
+          "nǐ",
+          "ya"
+        ]
+      },
+      "content_digest": "35edebfeb057c9643ee59691d94516ef3f2da7d0ec49e446d64dca9970698a30",
+      "filename": "line-35edebfeb057c9643ee59691d94516ef3f2da7d0ec49e446d64dca9970698a30.wav",
+      "voice_ids": [
+        "xiaobei"
+      ],
+      "sha256": "0eb67d665f44db0c8c813fd5f6cef44f370d91451416cce57f7934b9b319817f",
+      "created_at": "2026-11-05T19:09:54.535423+00:00",
+      "attempts": [
+        {
+          "seed": 904784894,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.35866829100996256,
+      "packages": {
+        "kokoro": "0.9.4",
+        "misaki": "0.9.4",
+        "pypinyin": "0.55.0",
+        "torch": "2.8.0",
+        "numpy": "2.3.4",
+        "transformers": "4.57.1",
+        "huggingface-hub": "0.36.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 58800,
+        "duration_seconds": 2.45,
+        "peak_absolute": 0.27612754702568054,
+        "rms": 0.05172377825607104
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 58800,
+        "duration_seconds": 2.45,
+        "peak_absolute": 0.276123046875,
+        "rms": 0.05172381205422414
+      },
+      "engine_details": {
+        "phonemes": [
+          "ɕje↘ɕje↘ ni↓ ja."
+        ]
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "早上好。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "zǎoshang hǎo"
+        ]
+      },
+      "content_digest": "63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14",
+      "filename": "line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "e5a3c7f15c3400880f2a048f2f70bb7407a5baec7a75ae8d85387308d68f7719",
+      "created_at": "2026-11-05T20:56:37.035386+00:00",
+      "attempts": [
+        {
+          "seed": 1675265182,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 3.7812460840214044,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 32640,
+        "duration_seconds": 1.36,
+        "peak_absolute": 0.37598830461502075,
+        "rms": 0.07063596985367211
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 32640,
+        "duration_seconds": 1.36,
+        "peak_absolute": 0.3759765625,
+        "rms": 0.07063594638660016
+      },
+      "engine_details": {
+        "token_count": 17,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "不急，慢慢来。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "bù",
+          "jí",
+          "mànmàn",
+          "lái"
+        ]
+      },
+      "content_digest": "3d7917d1b4dd4058dfa03a998c4bb84c36c7048473e17b76b4050630a2d3ccd9",
+      "filename": "line-3d7917d1b4dd4058dfa03a998c4bb84c36c7048473e17b76b4050630a2d3ccd9.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "69e1be7ba95c2095b1fa8a050b5d9df357900060d4008c5af4213d9efdbdf595",
+      "created_at": "2026-11-05T20:56:40.265023+00:00",
+      "attempts": [
+        {
+          "seed": 1031346129,
+          "accepted": false,
+          "error": "Abnormal audio duration: 6.72s"
+        },
+        {
+          "seed": 1031347129,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 3.183811584021896,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 57600,
+        "duration_seconds": 2.4,
+        "peak_absolute": 0.08667737990617752,
+        "rms": 0.015213667815228636
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 57600,
+        "duration_seconds": 2.4,
+        "peak_absolute": 0.086669921875,
+        "rms": 0.015213657569226269
+      },
+      "engine_details": {
+        "token_count": 30,
+        "max_tokens": 176,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "早上好呀。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Uncle_Fu",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "zǎoshang hǎo",
+          "ya"
+        ]
+      },
+      "content_digest": "52fd645089c1ecdba676a87e53edd59f2945994e43c193930f3ca3cc97d86e2f",
+      "filename": "line-52fd645089c1ecdba676a87e53edd59f2945994e43c193930f3ca3cc97d86e2f.wav",
+      "voice_ids": [
+        "uncle-fu"
+      ],
+      "sha256": "f64ce09b92d130bbbbe6aa2d26571dda272ea93814e6dd09280f6f06930e6078",
+      "created_at": "2026-11-05T20:56:40.965379+00:00",
+      "attempts": [
+        {
+          "seed": 1392338000,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.6526275419746526,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 46080,
+        "duration_seconds": 1.92,
+        "peak_absolute": 0.48645156621932983,
+        "rms": 0.04699390444571811
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 46080,
+        "duration_seconds": 1.92,
+        "peak_absolute": 0.4864501953125,
+        "rms": 0.04699397694250633
+      },
+      "engine_details": {
+        "token_count": 24,
+        "max_tokens": 144,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "我想要一个包子。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "wǒ",
+          "xiǎng",
+          "yào",
+          "yī",
+          "gè",
+          "bāozi"
+        ]
+      },
+      "content_digest": "bc2aada2cb0ccd83e698c6b0e9eca6bf96fc96aad382bcabb1fe7a82b8d105ca",
+      "filename": "line-bc2aada2cb0ccd83e698c6b0e9eca6bf96fc96aad382bcabb1fe7a82b8d105ca.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "617553ae2df324c92baa103f9430f97ba08be753f3417803706c5adfefcd7211",
+      "created_at": "2026-11-05T20:56:43.668388+00:00",
+      "attempts": [
+        {
+          "seed": 3156913570,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.0121475409832783,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 69120,
+        "duration_seconds": 2.88,
+        "peak_absolute": 0.30008038878440857,
+        "rms": 0.03133894961734892
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 69120,
+        "duration_seconds": 2.88,
+        "peak_absolute": 0.300079345703125,
+        "rms": 0.031338972500460076
+      },
+      "engine_details": {
+        "token_count": 36,
+        "max_tokens": 192,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "请给我一碗粥。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Uncle_Fu",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "qǐng",
+          "gěi",
+          "wǒ",
+          "yī",
+          "wǎn",
+          "zhōu"
+        ]
+      },
+      "content_digest": "0e301eac01478dc861304da61bfb916ab6360a4fa6c73f3df2e23acf756db299",
+      "filename": "line-0e301eac01478dc861304da61bfb916ab6360a4fa6c73f3df2e23acf756db299.wav",
+      "voice_ids": [
+        "uncle-fu"
+      ],
+      "sha256": "d2475bbefafd476764da7fb0e661e090a73ef518eb8e2385421f502c710d5b4a",
+      "created_at": "2026-11-05T20:56:44.657398+00:00",
+      "attempts": [
+        {
+          "seed": 238034604,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.9499740419560112,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 69120,
+        "duration_seconds": 2.88,
+        "peak_absolute": 0.7817654013633728,
+        "rms": 0.12406306875755421
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 69120,
+        "duration_seconds": 2.88,
+        "peak_absolute": 0.781768798828125,
+        "rms": 0.12406305915921136
+      },
+      "engine_details": {
+        "token_count": 36,
+        "max_tokens": 176,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "我想要两个馒头。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "wǒ",
+          "xiǎng",
+          "yào",
+          "liǎng",
+          "gè",
+          "mántou"
+        ]
+      },
+      "content_digest": "fad506807e7e24624ff6df945e25f97a6ecab99dabbe3708f1b625279ba3f7ac",
+      "filename": "line-fad506807e7e24624ff6df945e25f97a6ecab99dabbe3708f1b625279ba3f7ac.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "3eb8ac0ef4b9b83650a694e3ec7a9827bfb33e985b9d409eaad028e47c8e9424",
+      "created_at": "2026-11-05T20:56:45.414688+00:00",
+      "attempts": [
+        {
+          "seed": 4208264832,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.7273429169435985,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 51840,
+        "duration_seconds": 2.16,
+        "peak_absolute": 0.17303797602653503,
+        "rms": 0.0360167219107368
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 51840,
+        "duration_seconds": 2.16,
+        "peak_absolute": 0.17303466796875,
+        "rms": 0.03601678274619157
+      },
+      "engine_details": {
+        "token_count": 27,
+        "max_tokens": 192,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "请给我一碗饺子和一杯豆浆。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Uncle_Fu",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "qǐng",
+          "gěi",
+          "wǒ",
+          "yī",
+          "wǎn",
+          "jiǎozi",
+          "hé",
+          "yī",
+          "bēi",
+          "dòujiāng"
+        ]
+      },
+      "content_digest": "e307cb717e1da43f533955969fd05f035aec9227e2f286a5239e0643b11f4c66",
+      "filename": "line-e307cb717e1da43f533955969fd05f035aec9227e2f286a5239e0643b11f4c66.wav",
+      "voice_ids": [
+        "uncle-fu"
+      ],
+      "sha256": "cfe60f0aad569d39d78807a95ccfddd7ea74797ed5782ff1d1b2ade1a35e68db",
+      "created_at": "2026-11-05T20:56:46.342472+00:00",
+      "attempts": [
+        {
+          "seed": 3808938865,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.9078502079937607,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 65280,
+        "duration_seconds": 2.72,
+        "peak_absolute": 0.6562398672103882,
+        "rms": 0.1023294051263133
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 65280,
+        "duration_seconds": 2.72,
+        "peak_absolute": 0.65625,
+        "rms": 0.10232939499754953
+      },
+      "engine_details": {
+        "token_count": 34,
+        "max_tokens": 272,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "我想要两个包子和一个鸡蛋和一杯豆浆。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "wǒ",
+          "xiǎng",
+          "yào",
+          "liǎng",
+          "gè",
+          "bāozi",
+          "hé",
+          "yī",
+          "gè",
+          "jīdàn",
+          "hé",
+          "yī",
+          "bēi",
+          "dòujiāng"
+        ]
+      },
+      "content_digest": "9deb9de51f574978c1980e7e79ce6c252cd9187391d0a883f1dabed647f8864f",
+      "filename": "line-9deb9de51f574978c1980e7e79ce6c252cd9187391d0a883f1dabed647f8864f.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "b2b0ee1ce491df13524912375c1f55da1fbaf88316d5862b2ede019eacb3f94a",
+      "created_at": "2026-11-05T20:56:49.835495+00:00",
+      "attempts": [
+        {
+          "seed": 2649464293,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 3.473512666998431,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 241920,
+        "duration_seconds": 10.08,
+        "peak_absolute": 0.36462873220443726,
+        "rms": 0.02977679663175275
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 241920,
+        "duration_seconds": 10.08,
+        "peak_absolute": 0.3646240234375,
+        "rms": 0.029776785532582176
+      },
+      "engine_details": {
+        "token_count": 126,
+        "max_tokens": 352,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "请给我一碗饺子和一碗粥和两个馒头。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Uncle_Fu",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "qǐng",
+          "gěi",
+          "wǒ",
+          "yī",
+          "wǎn",
+          "jiǎozi",
+          "hé",
+          "yī",
+          "wǎn",
+          "zhōu",
+          "hé",
+          "liǎng",
+          "gè",
+          "mántou"
+        ]
+      },
+      "content_digest": "4dad7dbbc0da925447dca3a48fc986464a5b97f09f3870c72a2606a8bba37690",
+      "filename": "line-4dad7dbbc0da925447dca3a48fc986464a5b97f09f3870c72a2606a8bba37690.wav",
+      "voice_ids": [
+        "uncle-fu"
+      ],
+      "sha256": "2391cb5b7807b51607c108b798b3f59e1a9e73f77b4baf1f80e45e2bf1dadca9",
+      "created_at": "2026-11-05T20:56:51.624294+00:00",
+      "attempts": [
+        {
+          "seed": 1303215547,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.7810015419963747,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 126720,
+        "duration_seconds": 5.28,
+        "peak_absolute": 0.722213864326477,
+        "rms": 0.06849228736339052
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 126720,
+        "duration_seconds": 5.28,
+        "peak_absolute": 0.72222900390625,
+        "rms": 0.06849226764275397
+      },
+      "engine_details": {
+        "token_count": 66,
+        "max_tokens": 336,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "早。",
+      "voice": {
+        "engine": "kokoro",
+        "model": "hexgrad/Kokoro-82M",
+        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+        "speaker": "zm_yunxi",
+        "language": "z",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "zǎo"
+        ]
+      },
+      "content_digest": "4645e9d319dffae8ba4e60bdf21c4da0b4b8f04ff9a9a685ef5ab8aad0428990",
+      "filename": "line-4645e9d319dffae8ba4e60bdf21c4da0b4b8f04ff9a9a685ef5ab8aad0428990.wav",
+      "voice_ids": [
+        "yunxi"
+      ],
+      "sha256": "d9ccf4e50cee1f1bfe71301f5b8bcf7cc81480bb4553edd6038643ffaaddbee5",
+      "created_at": "2026-11-05T21:06:06.470809+00:00",
+      "attempts": [
+        {
+          "seed": 1178986963,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 3.740033250011038,
+      "packages": {
+        "kokoro": "0.9.4",
+        "misaki": "0.9.4",
+        "pypinyin": "0.55.0",
+        "torch": "2.8.0",
+        "numpy": "2.3.4",
+        "transformers": "4.57.1",
+        "huggingface-hub": "0.36.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 36000,
+        "duration_seconds": 1.5,
+        "peak_absolute": 0.3966938555240631,
+        "rms": 0.03663424715668327
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 36000,
+        "duration_seconds": 1.5,
+        "peak_absolute": 0.396697998046875,
+        "rms": 0.0366342735966416
+      },
+      "engine_details": {
+        "phonemes": [
+          "ʦau↓."
+        ]
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "不对，再看看吧。",
+      "voice": {
+        "engine": "kokoro",
+        "model": "hexgrad/Kokoro-82M",
+        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+        "speaker": "zm_yunxi",
+        "language": "z",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "bù",
+          "duì",
+          "zài",
+          "kànkan",
+          "ba"
+        ]
+      },
+      "content_digest": "cef95ca46aae69f97040d9deaf01e8be98e20cd8bff0471ed19d960de7691b7a",
+      "filename": "line-cef95ca46aae69f97040d9deaf01e8be98e20cd8bff0471ed19d960de7691b7a.wav",
+      "voice_ids": [
+        "yunxi"
+      ],
+      "sha256": "d8392765e548e37ac2c8159db60400655044a3550536ac42d357a34ac24b9006",
+      "created_at": "2026-11-05T21:06:06.823309+00:00",
+      "attempts": [
+        {
+          "seed": 3472448676,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.329532207979355,
+      "packages": {
+        "kokoro": "0.9.4",
+        "misaki": "0.9.4",
+        "pypinyin": "0.55.0",
+        "torch": "2.8.0",
+        "numpy": "2.3.4",
+        "transformers": "4.57.1",
+        "huggingface-hub": "0.36.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 59400,
+        "duration_seconds": 2.475,
+        "peak_absolute": 0.4868635833263397,
+        "rms": 0.055815470707932836
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 59400,
+        "duration_seconds": 2.475,
+        "peak_absolute": 0.48687744140625,
+        "rms": 0.05581542807706621
+      },
+      "engine_details": {
+        "phonemes": [
+          "pu↘ twei↘, ʦai↘ kʰa↘nkʰa↘n pa."
+        ]
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "你好呀。",
+      "voice": {
+        "engine": "kokoro",
+        "model": "hexgrad/Kokoro-82M",
+        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+        "speaker": "zf_xiaobei",
+        "language": "z",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "nǐ hǎo",
+          "ya"
+        ]
+      },
+      "content_digest": "5f96eb1c67e3dd102a831876d26d9aa209cffa79ff7df4081e54b4bb10d53071",
+      "filename": "line-5f96eb1c67e3dd102a831876d26d9aa209cffa79ff7df4081e54b4bb10d53071.wav",
+      "voice_ids": [
+        "xiaobei"
+      ],
+      "sha256": "9a071809076d70b70eb890da9621cdf81f37b17cf0958bccdb9cdb2d86ac2dd0",
+      "created_at": "2026-11-05T21:06:07.158677+00:00",
+      "attempts": [
+        {
+          "seed": 1603726108,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.2861882909783162,
+      "packages": {
+        "kokoro": "0.9.4",
+        "misaki": "0.9.4",
+        "pypinyin": "0.55.0",
+        "torch": "2.8.0",
+        "numpy": "2.3.4",
+        "transformers": "4.57.1",
+        "huggingface-hub": "0.36.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 53400,
+        "duration_seconds": 2.225,
+        "peak_absolute": 0.2438245564699173,
+        "rms": 0.048079595401818255
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 53400,
+        "duration_seconds": 2.225,
+        "peak_absolute": 0.24383544921875,
+        "rms": 0.04807958154354222
+      },
+      "engine_details": {
+        "phonemes": [
+          "ni↓xau↓ ja."
+        ]
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "不对呀，再看看吧。",
+      "voice": {
+        "engine": "kokoro",
+        "model": "hexgrad/Kokoro-82M",
+        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+        "speaker": "zf_xiaobei",
+        "language": "z",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "bù",
+          "duì",
+          "ya",
+          "zài",
+          "kànkan",
+          "ba"
+        ]
+      },
+      "content_digest": "33a142ffd8e7d3eadaaa222b63deed34dc497bd8520d2ce1a052415b725a541a",
+      "filename": "line-33a142ffd8e7d3eadaaa222b63deed34dc497bd8520d2ce1a052415b725a541a.wav",
+      "voice_ids": [
+        "xiaobei"
+      ],
+      "sha256": "fc480c4a80bfe42c17c88e0e433bf70f86a16d52512aaf6693d4d21c35fa29ee",
+      "created_at": "2026-11-05T21:06:07.574468+00:00",
+      "attempts": [
+        {
+          "seed": 866206463,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.3999837079900317,
+      "packages": {
+        "kokoro": "0.9.4",
+        "misaki": "0.9.4",
+        "pypinyin": "0.55.0",
+        "torch": "2.8.0",
+        "numpy": "2.3.4",
+        "transformers": "4.57.1",
+        "huggingface-hub": "0.36.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 74400,
+        "duration_seconds": 3.1,
+        "peak_absolute": 0.31164297461509705,
+        "rms": 0.053006819410359333
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 74400,
+        "duration_seconds": 3.1,
+        "peak_absolute": 0.3116455078125,
+        "rms": 0.05300676764520258
+      },
+      "engine_details": {
+        "phonemes": [
+          "pu↘ twei↘ ja, ʦai↘ kʰa↘nkʰa↘n pa."
+        ]
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "来一杯豆浆。",
+      "voice": {
+        "engine": "kokoro",
+        "model": "hexgrad/Kokoro-82M",
+        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+        "speaker": "zm_yunxi",
+        "language": "z",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "lái",
+          "yī",
+          "bēi",
+          "dòujiāng"
+        ]
+      },
+      "content_digest": "7429c0cef3ad319cb9b11fb2cf220d473810047abf41ff67f82439e159ea431c",
+      "filename": "line-7429c0cef3ad319cb9b11fb2cf220d473810047abf41ff67f82439e159ea431c.wav",
+      "voice_ids": [
+        "yunxi"
+      ],
+      "sha256": "8f8c5cb197028ff35104149759c16d5d2d4c739b0dbb42ee6b288f6d3a3d2f3c",
+      "created_at": "2026-11-05T21:06:07.903673+00:00",
+      "attempts": [
+        {
+          "seed": 1948893390,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.2960868750233203,
+      "packages": {
+        "kokoro": "0.9.4",
+        "misaki": "0.9.4",
+        "pypinyin": "0.55.0",
+        "torch": "2.8.0",
+        "numpy": "2.3.4",
+        "transformers": "4.57.1",
+        "huggingface-hub": "0.36.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 55800,
+        "duration_seconds": 2.325,
+        "peak_absolute": 0.6198368668556213,
+        "rms": 0.04869178974879149
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 55800,
+        "duration_seconds": 2.325,
+        "peak_absolute": 0.619842529296875,
+        "rms": 0.04869184326524578
+      },
+      "engine_details": {
+        "phonemes": [
+          "lai↗ i→pei→ tou↘ʨja→ŋ."
+        ]
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "我要一根油条。",
+      "voice": {
+        "engine": "kokoro",
+        "model": "hexgrad/Kokoro-82M",
+        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+        "speaker": "zf_xiaobei",
+        "language": "z",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "wǒ",
+          "yào",
+          "yī",
+          "gēn",
+          "yóutiáo"
+        ]
+      },
+      "content_digest": "105b924034f77f52b94832eeba25277f34cb90c2eb8051c514b36946088de3ed",
+      "filename": "line-105b924034f77f52b94832eeba25277f34cb90c2eb8051c514b36946088de3ed.wav",
+      "voice_ids": [
+        "xiaobei"
+      ],
+      "sha256": "d4190523c655ec64e7cf995fa9f641d7d6391390563c7b7d54b87842729d3609",
+      "created_at": "2026-11-05T21:06:08.296063+00:00",
+      "attempts": [
+        {
+          "seed": 274436672,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.3495828330051154,
+      "packages": {
+        "kokoro": "0.9.4",
+        "misaki": "0.9.4",
+        "pypinyin": "0.55.0",
+        "torch": "2.8.0",
+        "numpy": "2.3.4",
+        "transformers": "4.57.1",
+        "huggingface-hub": "0.36.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 66600,
+        "duration_seconds": 2.775,
+        "peak_absolute": 0.4007374346256256,
+        "rms": 0.057433732762005
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 66600,
+        "duration_seconds": 2.775,
+        "peak_absolute": 0.400726318359375,
+        "rms": 0.0574337535155254
+      },
+      "engine_details": {
+        "phonemes": [
+          "wo↓jau↘ i→kə→n jou↗tʰjau↗."
+        ]
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "来两个鸡蛋。",
+      "voice": {
+        "engine": "kokoro",
+        "model": "hexgrad/Kokoro-82M",
+        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+        "speaker": "zm_yunxi",
+        "language": "z",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "lái",
+          "liǎng",
+          "gè",
+          "jīdàn"
+        ]
+      },
+      "content_digest": "917133517bb496b86b923ca14d1dbf9784ead47b65deff05856e6665b634238f",
+      "filename": "line-917133517bb496b86b923ca14d1dbf9784ead47b65deff05856e6665b634238f.wav",
+      "voice_ids": [
+        "yunxi"
+      ],
+      "sha256": "8641643084d038e80c86db5b5fca373bc2f3bb73c9f6ba7b26bb4c752ce22f41",
+      "created_at": "2026-11-05T21:06:08.624330+00:00",
+      "attempts": [
+        {
+          "seed": 2440115025,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.3014999169972725,
+      "packages": {
+        "kokoro": "0.9.4",
+        "misaki": "0.9.4",
+        "pypinyin": "0.55.0",
+        "torch": "2.8.0",
+        "numpy": "2.3.4",
+        "transformers": "4.57.1",
+        "huggingface-hub": "0.36.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 56400,
+        "duration_seconds": 2.35,
+        "peak_absolute": 0.4531690776348114,
+        "rms": 0.04850063900343459
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 56400,
+        "duration_seconds": 2.35,
+        "peak_absolute": 0.453155517578125,
+        "rms": 0.0485006224497715
+      },
+      "engine_details": {
+        "phonemes": [
+          "lai↗ lja↓ŋkɤ↘ ʨi→ta↘n."
+        ]
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "我要一碗粥和一个馒头。",
+      "voice": {
+        "engine": "kokoro",
+        "model": "hexgrad/Kokoro-82M",
+        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+        "speaker": "zf_xiaobei",
+        "language": "z",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "wǒ",
+          "yào",
+          "yī",
+          "wǎn",
+          "zhōu",
+          "hé",
+          "yī",
+          "gè",
+          "mántou"
+        ]
+      },
+      "content_digest": "dd214215037e18257689436d57a7445b18cb84cb3a75f7362f5245f8895fe672",
+      "filename": "line-dd214215037e18257689436d57a7445b18cb84cb3a75f7362f5245f8895fe672.wav",
+      "voice_ids": [
+        "xiaobei"
+      ],
+      "sha256": "b7e4481d038e9345440083ec764d171f71184a9a6141fb82e0de471a42c2088b",
+      "created_at": "2026-11-05T21:06:09.095364+00:00",
+      "attempts": [
+        {
+          "seed": 3709944341,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.44389708299422637,
+      "packages": {
+        "kokoro": "0.9.4",
+        "misaki": "0.9.4",
+        "pypinyin": "0.55.0",
+        "torch": "2.8.0",
+        "numpy": "2.3.4",
+        "transformers": "4.57.1",
+        "huggingface-hub": "0.36.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 83400,
+        "duration_seconds": 3.475,
+        "peak_absolute": 0.41695931553840637,
+        "rms": 0.059477611896291624
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 83400,
+        "duration_seconds": 3.475,
+        "peak_absolute": 0.416961669921875,
+        "rms": 0.05947762508864024
+      },
+      "engine_details": {
+        "phonemes": [
+          "wo↓jau↘ i→wa↓n ꭧou→ xɤ↗ i↗kɤ↘ ma↗ntʰou."
+        ]
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "来两根油条和两杯豆浆和一个鸡蛋。",
+      "voice": {
+        "engine": "kokoro",
+        "model": "hexgrad/Kokoro-82M",
+        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+        "speaker": "zm_yunxi",
+        "language": "z",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "lái",
+          "liǎng",
+          "gēn",
+          "yóutiáo",
+          "hé",
+          "liǎng",
+          "bēi",
+          "dòujiāng",
+          "hé",
+          "yī",
+          "gè",
+          "jīdàn"
+        ]
+      },
+      "content_digest": "aa52384df0e73ac76b61fda8a013858fae0aab4ebe882d6142102f8a681d4867",
+      "filename": "line-aa52384df0e73ac76b61fda8a013858fae0aab4ebe882d6142102f8a681d4867.wav",
+      "voice_ids": [
+        "yunxi"
+      ],
+      "sha256": "60d99975c1d901ce29eb6a6ee8c861ff94634f69f5a264691421e95d26e2b20d",
+      "created_at": "2026-11-05T21:06:09.705981+00:00",
+      "attempts": [
+        {
+          "seed": 2857515085,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.5792292499681935,
+      "packages": {
+        "kokoro": "0.9.4",
+        "misaki": "0.9.4",
+        "pypinyin": "0.55.0",
+        "torch": "2.8.0",
+        "numpy": "2.3.4",
+        "transformers": "4.57.1",
+        "huggingface-hub": "0.36.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 97800,
+        "duration_seconds": 4.075,
+        "peak_absolute": 0.612579882144928,
+        "rms": 0.05142429647937461
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 97800,
+        "duration_seconds": 4.075,
+        "peak_absolute": 0.612579345703125,
+        "rms": 0.05142431045523128
+      },
+      "engine_details": {
+        "phonemes": [
+          "lai↗ lja↓ŋkə→n jou↗tʰjau↗ xɤ↗ lja↓ŋpei→ tou↘ʨja→ŋ xɤ↗ i↗kɤ↘ ʨi→ta↘n."
+        ]
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "我要三个包子和两根油条和一杯豆浆。",
+      "voice": {
+        "engine": "kokoro",
+        "model": "hexgrad/Kokoro-82M",
+        "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+        "speaker": "zf_xiaobei",
+        "language": "z",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "wǒ",
+          "yào",
+          "sān",
+          "gè",
+          "bāozi",
+          "hé",
+          "liǎng",
+          "gēn",
+          "yóutiáo",
+          "hé",
+          "yī",
+          "bēi",
+          "dòujiāng"
+        ]
+      },
+      "content_digest": "57774764ba67309e2b91e97ae32fe0e1f318b4f80ff9b054e509e4a8b1bf3687",
+      "filename": "line-57774764ba67309e2b91e97ae32fe0e1f318b4f80ff9b054e509e4a8b1bf3687.wav",
+      "voice_ids": [
+        "xiaobei"
+      ],
+      "sha256": "526739607da1a5d728cd943236a764f3ebb03e54582f7ef636e6158ef85fb6f4",
+      "created_at": "2026-11-05T21:06:10.404547+00:00",
+      "attempts": [
+        {
+          "seed": 1467434852,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.677141499996651,
+      "packages": {
+        "kokoro": "0.9.4",
+        "misaki": "0.9.4",
+        "pypinyin": "0.55.0",
+        "torch": "2.8.0",
+        "numpy": "2.3.4",
+        "transformers": "4.57.1",
+        "huggingface-hub": "0.36.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 123600,
+        "duration_seconds": 5.15,
+        "peak_absolute": 0.39974281191825867,
+        "rms": 0.06416851500058102
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 123600,
+        "duration_seconds": 5.15,
+        "peak_absolute": 0.399749755859375,
+        "rms": 0.06416852857732307
+      },
+      "engine_details": {
+        "phonemes": [
+          "wo↓jau↘ sa→nkɤ↘ pau→ʦɨ xɤ↗ lja↓ŋkə→n jou↗tʰjau↗ xɤ↗ i→pei→ tou↘ʨja→ŋ."
+        ]
       },
       "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
       "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
