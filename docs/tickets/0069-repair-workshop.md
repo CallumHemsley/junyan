@@ -47,4 +47,12 @@ After rebase onto main `5c90ba4`, the full required sequence passed again. Rules
 
 ## Independent final review
 
-Central lead opened [draft PR 22](https://github.com/CallumHemsley/junyan/pull/22). Independent final reviewer confirmed the isolated browser journeys, rules, 44px targets, 28px text and desktop/390px/320px layouts with clean console. Reviewer found that powered loosening incorrectly requested tightening. The focused correction changes the shared feedback to neutral “先关掉。” and tests both powered directions. Review recheck remains pending. Audio and integrated route/save/offline checks still block completion.
+Central lead opened [draft PR 22](https://github.com/CallumHemsley/junyan/pull/22). Independent final reviewer confirmed the isolated browser journeys, rules, 44px targets, 28px text and desktop/390px/320px layouts with clean console. Reviewer found that powered loosening incorrectly requested tightening. The focused correction changes the shared feedback to neutral “先关掉。” and tests both powered directions. The focused independent recheck passed at `36b0b77`. Audio and integrated route/save/offline checks still block completion.
+
+## Final independent isolated review passed
+
+Central lead relayed PASS from `/root/repair_final_check` at `36b0b77`. The reviewer passed all 13 repair rules tests, drove powered loosening, replay and retest at desktop 1440px and phone 390px/320px, verified unchanged physical jobs/completion/recovery, and observed a clean console. The reviewer inspected fresh screenshots and independently reproduced the neutral warning audio-plan hash. `/root/repair_ui_review` passed the remaining isolated behavior; its only finding is resolved.
+
+Every worker below was requested as GPT-6.1 Sol with medium reasoning. Writer was `/root/repair_writer`. Rules reviewers were `/root/repair_rules_review` and `/root/repair_rules_rereview`. Full UI reviewer was `/root/repair_ui_review`; focused final reviewer was `/root/repair_final_check`. Read-only design workers were `/root/repair_design_a` and `/root/repair_design_b`. Cloud capability probe was `/root/cloud_probe`. These requested model settings are recorded without claiming independent runtime model verification.
+
+[Draft PR 22](https://github.com/CallumHemsley/junyan/pull/22) remains blocked by 64 required natural voice clips and shared 0066 route/save/offline/cross-feature verification. Feature IndexedDB reload, old-save migration, shared lookup/journal recovery and day preservation still need integrated evidence. Isolated review PASS does not complete these gates. Ticket stays `blocked`. Central lead owns integration and any eventual merge.
