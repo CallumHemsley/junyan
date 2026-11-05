@@ -44,6 +44,24 @@ describe('ward scene', () => {
     expect(changed).toBeGreaterThan(0);
   });
 
+  it('keeps the seated player face stable across the ambient cycle and step transitions', () => {
+    const render = harness();
+    const face = (pixels:Uint8ClampedArray) => {
+      const crop:number[] = [];
+      for (let y=99;y<=113;y++) for (let x=264;x<=278;x++) {
+        const at=(y*WIDTH+x)*4;
+        crop.push(...pixels.subarray(at,at+4));
+      }
+      return crop;
+    };
+    const baseline = face(render(frameOf('ask-milk'), 0));
+    for (const [step, frame] of WARD_STEPS.filter(([, frame]) => frame.player==='sitting')) {
+      for (const time of [0,.2,.4,.8,1.3,2.4,3.7]) {
+        expect(face(render(frame, time)), `${step} at ${time}s`).toEqual(baseline);
+      }
+    }
+  });
+
   it('keeps lying hands and shoes inside the blanket', () => {
     for (const bed of [BEDS.player, BEDS.elder]) {
       const to = lyingTransform(bed), parts:{point:ScenePoint;radius:number}[] = [];
