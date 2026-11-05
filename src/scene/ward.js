@@ -204,9 +204,9 @@ draw(api, frame, time) {
   if (frame.elder === 'lying') lie(api, BEDS.elder, WARD_CAST.elder);
   else {
     const held = frame.held && FOOD[frame.held];
-    const rig = characterFigure(elder.x,elder.y,elder.yaw,{crouch:1,scale:.88,z:BED_SEATED_Z,lean:.08,armL:.3,
-      ...(held ? {elbowR:[.32,.36,1.22],handR:[.58,.24,1.5]} : {armR:.35})},WARD_CAST.elder,dynamicAdd);
-    if (held) held(api,...rig.local(.62,.24,1.42));
+    const rig = characterFigure(elder.x,elder.y,elder.yaw,{crouch:1,scale:.88,z:BED_SEATED_Z,lean:.12,armL:.12,
+      ...(held ? {elbowR:[.24,.28,1.10],handR:[.48,.22,1.22]} : {armR:.12})},WARD_CAST.elder,dynamicAdd);
+    if (held) held(api,...rig.local(.52,.22,1.14));
   }
   if (frame.elder === 'sitting') box(...sittingBlanket(BEDS.elder), blanket);
   if (frame.player === 'lying') lie(api, BEDS.player, WARD_CAST.player);

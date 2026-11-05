@@ -32,3 +32,7 @@ Callum reports that Grandpa (老爷爷) is too excited and exaggerated in the ho
 - Evidence and append-only decisions: [[evidence/0060-grandpa-performance]].
 - Shared-file leases: 0058 owns voices/content/audio manifest; 0059 owns scene files. No production edits until root releases ownership.
 - Investigating actual opening requests, both wrong choices and thanks; no listening acceptance claimed.
+
+- 2026-11-05: root authorized ward-local implementation while PR11 is reviewed. Applied only three pose lines in `wardScene.draw`: relaxed arms, slightly forward rest, lowered held hand/food together. Compared PR11 exact head `992f73628c80d6a2829173431a4180ccbbd2499c`; it changes `plot`, avoiding these lines. No merge/rebase.
+- Pinned MLX 0.6.3 **discards instructions for 0b6**, confirmed in upstream release source; do not synthesize prompt-only candidates. Voice performance/listening remains blocked.
+- 48 silent actual-opening captures cover both requests, both wrong bread reactions, both thanks, desktop/phone and normal/reduced motion; selected screenshots in `docs/evidence/0060/`. See evidence for exact checks and environment limits.
