@@ -1,0 +1,20 @@
+{
+  "pid": 7074,
+  "sessionId": 95041,
+  "cwd": "/workspace/garden-0070",
+  "executable": "/workspace/.junyan-tools/node_modules/node/bin/node",
+  "command": [
+    "node",
+    "./node_modules/.bin/../vite/bin/vite.js",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "5470",
+    "--strictPort"
+  ],
+  "startTicks": "196721",
+  "stoppedAt": "2026-11-05T19:35:05.077162+00:00",
+  "signal": "SIGTERM",
+  "port5470Closed": true,
+  "worktreeRetained": true
+}

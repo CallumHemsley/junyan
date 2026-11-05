@@ -1,7 +1,7 @@
 ---
 id: 70
 title: Build the rooftop garden slice
-status: doing
+status: blocked
 priority: high
 type: feature
 created: 2026-11-05
@@ -14,7 +14,7 @@ Deliver the selected apartment-building ensemble while preserving the hospital a
 ## Done when
 
 - [ ] Implement the bounded vertical slice described in the domain plan and central contract, with visible action consequences, repeatable choices and reversible mistakes.
-- [ ] Pure rules tests and build pass; existing opening, customers, change and journal journey remains green.
+- [x] Pure rules tests and build pass; existing opening, customers, change and journal journey remains green.
 - [ ] Feature journey, reload/migration, offline voices/assets and clean console are evidenced; phone and desktop screenshots visually inspected.
 - [ ] Mandarin content is segmented/schema validated, voiced offline, tappable and journalled; pixel art remains consistent and controls accessible.
 - [ ] Different agent reviews without edits; resolved findings and reviewable PR are recorded. Central lead merges only after independent review, polish and integrated verification; then verifies main.
@@ -48,4 +48,6 @@ Draft PR [20](https://github.com/CallumHemsley/junyan/pull/20) is parent-managed
 
 Latest product head 19acc46 is based on main 5c90ba4. Final checks use Node 22.23.4. All 185 unit tests, build, isolated garden desktop/phone 4/4 and existing hospital/restaurant/save desktop/phone 6/6 pass. Final screenshots inspected. Audio manifest has 91 pinned jobs with 82 missing assets. Shared integration, actual offline garden playback/listening and independent integrated review remain open. Evidence: `evidence/0070/verification.md` and `runtime.json`.
 
-Independent review findings P2 rainy shaded-soil advice and P3 readonly vocabulary props are fixed in 3adf7e2 and 19acc46. Final independent recheck remains open.
+Independent review findings P2 rainy shaded-soil advice and P3 readonly vocabulary props are fixed in 3adf7e2 and 19acc46. Independent recheck passed at b12db58. The unchanged [review report](../../evidence/0070/independent-review.md) records scoped implementation PASS and full release BLOCKED. Supporting reviewer results and the historical P2 reproduction screenshot are preserved under `evidence/0070/review/`.
+
+Release remains blocked by 82 missing pinned voice jobs, actual listening and offline playback, and 0066 integration. Central lead retains conditional merge authority and post-merge verification. No merge or deployment performed.
