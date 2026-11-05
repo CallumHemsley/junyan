@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
 import type { Word } from "../contracts";
-import { registerFeatureContent, type FeatureContent } from "./content";
+import { attachFeatureContent, registerFeatureContent, type FeatureContent } from "./content";
 import type { FeatureId } from "./contracts";
+import { content, contentSchema } from "../content";
+import { contentLines, contentWords } from "../content/words";
+import { recordLookup } from "../game";
 
 const canonical: Word = { id: "hao", hanzi: "好", pinyin: "hǎo", gloss: "good", audio: "/audio/word-hao.wav" };
 const room: Word = { id: "apartment.room", hanzi: "房间", pinyin: "fáng jiān", gloss: "room", audio: "/audio/apartment/word-room.wav" };
@@ -18,6 +21,18 @@ describe("feature content registration", () => {
     expect(registered.words).toEqual([canonical, room]);
     expect(registered.lines).toHaveLength(1);
     expect(registered.audio).toEqual([canonical.audio, room.audio, "/audio/apartment/line-room-ready.wav"]);
+  });
+
+  it("preserves authored Phrase text for audio provenance", () => {
+    const features = bundles();
+    const phrase = { ...features.apartment.lines[0], text: "房间好。" };
+    features.apartment = { words: features.apartment.words, lines: [phrase] };
+    const registered = registerFeatureContent([canonical], features);
+    expect(registered.lines).toEqual([phrase]);
+    expect(registered.lines[0].text).toBe("房间好。");
+    const mismatched = { ...phrase, text: "房间坏。" };
+    features.apartment = { words: features.apartment.words, lines: [mismatched] };
+    expect(() => registerFeatureContent([canonical], features)).toThrow("Phrase text must equal its tokens");
   });
 
   it("rejects conflicting canonical words instead of changing existing journal meaning", () => {
@@ -60,4 +75,17 @@ describe("feature content registration", () => {
     features.apartment = { words: [{ ...room, hanzi: "房间 room" }], lines: [] };
     expect(() => registerFeatureContent([canonical], features)).toThrow();
   });
+});
+
+it("registers namespaced words for shared learning without changing base content", () => {
+  const features = bundles();
+  const openingWord = content.opening.steps.flatMap(step => step.type === "reply" ? step.options.map(option => option.word) : [])[0];
+  features.apartment = { words: [room, openingWord], lines: [{ id: "apartment.room", tokens: [room, openingWord], audio: "/audio/apartment/line-room.wav" }] };
+  const connected = attachFeatureContent(content, features);
+  expect(content.neighbourhood).toBeUndefined();
+  expect(contentWords(connected)).toContainEqual(room);
+  expect(contentWords(connected)).toContainEqual(openingWord);
+  expect(contentLines(connected)).toContainEqual(features.apartment.lines[0]);
+  expect(recordLookup({}, { type: "lookup", wordId: room.id, now: 12 }, connected)).toEqual({ [room.id]: { lookups: 1, recovered: false, lastSeen: 12 } });
+  expect(contentSchema.parse(connected).neighbourhood?.words).toContainEqual(room);
 });

@@ -1,6 +1,7 @@
 import { z } from "zod";
-import type { Line, Word } from "../contracts";
+import type { Content, Line, Word } from "../contracts";
 import { featureIds, type FeatureId } from "./contracts";
+import { contentWords } from "../content/words";
 
 const id = z.string().regex(/^[a-z][a-z0-9-]*(?:\.[a-z][a-z0-9-]*)*$/);
 const audio = z.string().regex(/^\/audio\/(?:[a-z0-9-]+\/)*[a-z0-9-]+\.(m4a|wav)$/);
@@ -11,9 +12,11 @@ export const wordSchema: z.ZodType<Word> = z.strictObject({
   gloss: z.string().trim().min(1),
   audio,
 });
-export const lineSchema: z.ZodType<Line> = z.strictObject({
+export type RegisteredLine = Line & { text?: string };
+export const lineSchema: z.ZodType<RegisteredLine> = z.strictObject({
   id, tokens: z.array(wordSchema).min(1), audio,
-});
+  text: z.string().regex(/^[\p{Script=Han}，。！？·]+$/u).optional(),
+}).refine(line => line.text === undefined || line.text.replace(/[，。！？·]/gu, "") === line.tokens.map(word => word.hanzi).join(""), "Phrase text must equal its tokens plus punctuation");
 export const featureContentSchema = z.strictObject({
   words: z.array(wordSchema),
   lines: z.array(lineSchema),
@@ -27,9 +30,9 @@ function sameWord(left: Word, right: Word): boolean {
 export function registerFeatureContent(
   canonicalWords: readonly Word[],
   features: Record<FeatureId, FeatureContent>,
-): { words: Word[]; lines: Line[]; audio: string[] } {
+): { words: Word[]; lines: RegisteredLine[]; audio: string[] } {
   const words = new Map<string, Word>();
-  const lines = new Map<string, Line>();
+  const lines = new Map<string, RegisteredLine>();
   for (const word of canonicalWords) {
     const previous = words.get(word.id);
     if (previous && !sameWord(previous, word)) throw new Error(`Conflicting canonical word: ${word.id}`);
@@ -62,4 +65,9 @@ export function registerFeatureContent(
     lines: [...lines.values()],
     audio: [...new Set([...words.values(), ...lines.values()].map(value => value.audio))],
   };
+}
+
+export function attachFeatureContent(base: Content, features: Record<FeatureId, FeatureContent>): Content {
+  const registered = registerFeatureContent(contentWords({ ...base, neighbourhood: undefined }), features);
+  return { ...base, neighbourhood: { words: registered.words, lines: registered.lines } };
 }

@@ -43,6 +43,7 @@ export type Character = {
   retry: Line;
 };
 export type Content = {
+  neighbourhood?: { words: Word[]; lines: (Line & { text?: string })[] };
   help: {
     welcome: Line;
     lookup: Line;
