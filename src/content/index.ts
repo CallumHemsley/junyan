@@ -26,12 +26,14 @@ const wordSchema: z.ZodType<Word> = z.strictObject({
   gloss: z.string().trim().min(1),
   audio,
 });
-const lineSchema: z.ZodType<Line> = z.strictObject({
-  id, tokens: z.array(wordSchema).min(1), audio,
-});
 const punctuation = /[，。！？·]/gu;
+const speechText = z.string().regex(/^[\p{Script=Han}，。！？·]+$/u);
+const lineSchema: z.ZodType<Line> = z.strictObject({
+  id, tokens: z.array(wordSchema).min(1), audio, text: speechText.optional(),
+}).refine(line => line.text === undefined || line.text.replace(punctuation, '') === line.tokens.map(word => word.hanzi).join(''),
+  'Line text must equal its tokens plus punctuation');
 const phraseSchema: z.ZodType<Phrase> = z.strictObject({
-  id, tokens: z.array(wordSchema).min(1), audio, text: z.string().regex(/^[\p{Script=Han}，。！？·]+$/u),
+  id, tokens: z.array(wordSchema).min(1), audio, text: speechText,
 });
 const castSchema: z.ZodType<CastMember> = z.strictObject({
   id, name: z.string().regex(/^[\p{Script=Han}]+$/u), voices: z.strictObject({ zh: id, en: id.optional() }),

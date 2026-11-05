@@ -489,6 +489,25 @@ def self_check():
     assert len(jobs) == 4
     assert all(job["voice"]["speaker"] == "Serena" for job in jobs if job["kind"] == "word")
     assert len(next(job for job in jobs if job["voice"]["speaker"] == "Uncle_Fu")["targets"]) == 4
+    plain_speech = {"thanks": copy.deepcopy(line)}
+    plain_jobs = collect_jobs(plain_speech, config)
+    plain_line = next(job for job in plain_jobs if job["kind"] == "line")
+    assert plain_line["text"] == "一"
+    punctuated_names = set()
+    for punctuation in "，。！？·":
+        authored = copy.deepcopy(plain_speech)
+        authored["thanks"]["text"] = "一" + punctuation
+        authored_jobs = collect_jobs(authored, config)
+        authored_line = next(job for job in authored_jobs if job["kind"] == "line")
+        assert authored_line["text"] == authored["thanks"]["text"]
+        assert authored_line["filename"] != plain_line["filename"]
+        assert [job["filename"] for job in authored_jobs if job["kind"] == "word"] == [
+            job["filename"] for job in plain_jobs if job["kind"] == "word"]
+        punctuated_names.add(authored_line["filename"])
+        del authored["thanks"]["text"]
+        assert [job["filename"] for job in collect_jobs(authored, config)] == [
+            job["filename"] for job in plain_jobs]
+    assert len(punctuated_names) == 5
     with_help = copy.deepcopy(content)
     help_word = {"id": "table", "hanzi": "桌子", "pinyin": "zhuōzi", "audio": "/old.wav"}
     with_help["help"] = {"steps": [{"id": "order", "line": {
