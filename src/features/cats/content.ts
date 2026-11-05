@@ -1,9 +1,7 @@
 import { z } from 'zod';
 import type { Line, Word } from '../../contracts';
 import data from './content.json';
-import { content as sharedContent } from '../../content';
-import { contentWords } from '../../content/words';
-const canonical = new Map(contentWords(sharedContent).map(word => [word.id, word]));
+import sharedData from '../../content/content.json';
 
 const id = z.string().regex(/^(cats\.)?[a-z][a-z0-9-]*$/);
 const audio = z.string().regex(/^\/audio\/(cats\/)?[a-z0-9-]+\.(wav|m4a)$/);
@@ -11,6 +9,16 @@ const wordSchema = z.strictObject({
   id, hanzi: z.string().regex(/^[\p{Script=Han}]+$/u),
   pinyin: z.string().min(1), gloss: z.string().min(1), audio,
 });
+const canonical = new Map<string, Word>();
+function readSharedWords(value: unknown) {
+  if (Array.isArray(value)) { value.forEach(readSharedWords); return; }
+  if (!value || typeof value !== 'object') return;
+  const word = wordSchema.safeParse(value);
+  if (word.success) canonical.set(word.data.id, word.data);
+  else Object.values(value).forEach(readSharedWords);
+}
+readSharedWords(sharedData);
+
 export const contentSchema = z.strictObject({
   words: z.array(wordSchema),
   lines: z.array(z.strictObject({

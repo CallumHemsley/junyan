@@ -23,7 +23,7 @@ export default function Cats({ state, day, onAction, onLookup, onRecover, onPlay
     const recovered = recoveryForTransition(state, next);
     onAction(action);
     if (recovered.length) onRecover(recovered);
-    if (next.feedback !== state.feedback) onPlay(lineFor(next.feedback));
+    if (next !== state && (next.feedback !== state.feedback || action.type === 'select')) onPlay(lineFor(next.feedback));
   };
   const tokens = (key: string) => lineFor(key).tokens.map((word, index) => <WordToken key={`${word.id}-${index}`} word={word}
     look={freshWordIds.includes(word.id) ? 'dot' : recoveredWordIds.includes(word.id) ? 'plain' : 'fogged'} onLookup={onLookup} />);
