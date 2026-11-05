@@ -14,8 +14,9 @@
 }
 .ambience-options label { display: flex; align-items: center; gap: var(--space-8); min-height: 44px; }
 .ambience-options input { min-height: 44px; accent-color: var(--text-primary); }
-.ambience-options input[type="checkbox"] { min-width: 44px; }
-.ambience-options input[type="range"] { width: 100%; min-width: 44px; }
+.ambience-options input[type="checkbox"] { width: 20px; height: 20px; min-width: 20px; min-height: 20px; margin: 0; }
+.ambience-level-label { flex-shrink: 0; white-space: nowrap; }
+.ambience-options input[type="range"] { flex: 1; min-width: 44px; width: 0; }
 .ambience-options p { margin: var(--space-8) 0; }
 .ambience-options button { min-height: 44px; }
 @media (max-width: 600px) { .ambience-label { display: none; } }

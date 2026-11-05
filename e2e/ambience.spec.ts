@@ -1,3 +1,4 @@
+import { appendFileSync } from "node:fs";
 import { test, expect, type Page } from "@playwright/test";
 import { probeAudio, silentResponse } from "./audio-fixtures";
 import { playOpening, seedDayOne, withSkip } from "./opening";
@@ -25,10 +26,12 @@ test.beforeEach(async ({ page }) => {
   const errors: string[] = [];
   diagnostics.set(page, errors);
   page.on("pageerror", error => errors.push(error.message));
-  page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
+  page.on("console", message => { if (message.type() === "error") errors.push(`${message.text()} (${message.location().url})`); });
 });
 test.afterEach(async ({ page }, info) => {
-  await info.attach("ambience-native-evidence", { body: JSON.stringify(await native(page), null, 2), contentType: "application/json" });
+  const evidence = await native(page);
+  appendFileSync("docs/evidence/0063/integrated-native-events.jsonl", JSON.stringify({ project: info.project.name, title: info.title, native: evidence, console: diagnostics.get(page) }) + "\n");
+  await info.attach("ambience-native-evidence", { body: JSON.stringify(evidence, null, 2), contentType: "application/json" });
   if (!info.title.includes("resource failure")) expect(diagnostics.get(page)).toEqual([]);
 });
 
@@ -60,7 +63,7 @@ test("settings preserve independent mute and level, keyboard never moves the wai
   await expect.poll(async () => (await native(page)).paused).toBe(false);
   expect((await native(page)).count).toBe(1);
   await page.screenshot({ path: `docs/evidence/0063/screenshots/${info.project.name}-integrated-settings.png`, fullPage: true });
-  for (const target of [settings(page), checkbox(page), slider]) {
+  for (const target of [settings(page), checkbox(page).locator(".."), slider]) {
     const box = await target.boundingBox();
     expect(box!.height).toBeGreaterThanOrEqual(44);
     expect(box!.width).toBeGreaterThanOrEqual(44);
@@ -98,7 +101,7 @@ test("native ambience survives panel changes and pauses/resumes through app life
   expect((await native(page)).starts).toBe(5);
 });
 
-test("real foreground speech ducks the bed and restores on native end, stop and failure", async ({ page }) => {
+test("real foreground speech ducks the bed and restores on native end, stop and word cancellation", async ({ page }) => {
   await page.route("**/*.wav", route => silentResponse(route, 300));
   await start(page);
   await page.getByTestId("table-1").click();
@@ -175,6 +178,9 @@ test("reduced-motion settings remain usable and contained", async ({ page }, inf
 
 test("production ambience plays and preserves mute offline under a relative subpath", async ({ page, context }) => {
   const base = process.env.AUDIO_PREVIEW_URL!;
+  // The JSON-only save bootstrap has no icon link; this is its implicit favicon,
+  // not an app asset (the application explicitly loads icon.svg).
+  await page.route("**/favicon.ico", route => route.fulfill({ status: 204, body: "" }));
   await seedDayOne(page, base);
   await page.goto(base);
   await page.waitForFunction(() => Boolean(navigator.serviceWorker.controller));
@@ -192,4 +198,43 @@ test("production ambience plays and preserves mute offline under a relative subp
   await settings(page).click();
   await expect(checkbox(page)).not.toBeChecked();
   expect((await native(page)).count).toBe(0);
+});
+
+test.describe("touch activation", () => {
+  test.use({ hasTouch: true });
+  test("a genuine touch gesture starts the bed on first entry", async ({ page }) => {
+    await page.goto(withSkip("/?test=1&seed=42"));
+    expect((await native(page)).count).toBe(0);
+    await page.getByRole("button", { name: "开门迎客" }).tap();
+    await expect.poll(async () => (await native(page)).time ?? 0).toBeGreaterThan(0);
+    expect((await native(page)).events.every((event: any) => event.status === "playing")).toBe(true);
+    expect((await native(page)).count).toBe(1);
+  });
+});
+
+
+test("foreground resource failure releases ducking and direct replay recovers", async ({ page }) => {
+  await start(page);
+  await page.route("**/*.wav", route => route.abort("failed"));
+  await page.getByTestId("table-1").click();
+  await expect(page.getByText("声音暂时没有播出，再点一次听听。")).toBeVisible();
+  await expect.poll(async () => (await native(page)).volume).toBeCloseTo(.1575);
+  await page.unroute("**/*.wav");
+  await page.route("**/*.wav", route => silentResponse(route, 300));
+  await page.getByRole("button", { name: "再听一遍", exact: true }).click();
+  await expect.poll(async () => (await native(page)).volume).toBeCloseTo(.042);
+  await expect(page.getByText("声音暂时没有播出，再点一次听听。")).toBeHidden();
+  expect((await native(page)).count).toBe(1);
+  expect(diagnostics.get(page)!.every(message => message.startsWith("Failed to load resource:"))).toBe(true);
+});
+
+test("narrow phone settings keep every control inside screen gutters", async ({ page }, info) => {
+  await page.setViewportSize({ width: 320, height: 740 });
+  await start(page);
+  await settings(page).click();
+  const box = await page.locator(".ambience-options").boundingBox();
+  expect(box!.x).toBeGreaterThanOrEqual(12);
+  expect(box!.x + box!.width).toBeLessThanOrEqual(308);
+  await expect(checkbox(page)).toBeVisible();
+  await page.screenshot({ path: `docs/evidence/0063/screenshots/${info.project.name}-integrated-narrow-320.png`, fullPage: true });
 });

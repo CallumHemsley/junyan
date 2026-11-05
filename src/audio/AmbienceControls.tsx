@@ -25,13 +25,13 @@ export function useAmbience(restaurant: boolean) {
     const gesture = (event: Event) => { if (event.isTrusted) control.gesture(); };
     const visibility = () => control.update({ visible: !document.hidden });
     const hide = () => control.update({ visible: false });
-    document.addEventListener("pointerdown", gesture, true);
+    document.addEventListener("click", gesture, true);
     document.addEventListener("keydown", gesture, true);
     document.addEventListener("visibilitychange", visibility);
     window.addEventListener("pagehide", hide);
     window.addEventListener("pageshow", visibility);
     return () => {
-      document.removeEventListener("pointerdown", gesture, true);
+      document.removeEventListener("click", gesture, true);
       document.removeEventListener("keydown", gesture, true);
       document.removeEventListener("visibilitychange", visibility);
       window.removeEventListener("pagehide", hide);
@@ -64,11 +64,14 @@ export function AmbienceControls({ ambience }: { ambience: ReturnType<typeof use
         event.currentTarget.querySelector("summary")?.focus();
       }
     }}>
-      <summary aria-label="环境声设置"><Speaker /><span className="ambience-label">环境声</span></summary>
+      <summary aria-label="环境声设置" aria-description={preference.muted ? "环境声已关闭" : "环境声已开启"}>
+        {preference.muted ? <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4Zm12 0 5 6m0-6-5 6" /></svg> : <Speaker />}
+        <span className="ambience-label">环境声</span>
+      </summary>
       <div className="ambience-options">
         <label><input type="checkbox" checked={!preference.muted}
           onChange={event => update({ ...preference, muted: !event.target.checked })} />环境声</label>
-        <label>音量<input type="range" aria-label="环境声音量" min="0" max="1" step="0.05"
+        <label><span className="ambience-level-label">音量</span><input type="range" aria-label="环境声音量" min="0" max="1" step="0.05"
           value={preference.level}
           onChange={event => update({ ...preference, level: Number(event.target.value) })} /></label>
         {error && !preference.muted && preference.level > 0 && <div role="status"><p>环境声暂时没有播出。</p><button type="button" onClick={ambience.retry}>重试</button></div>}

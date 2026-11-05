@@ -9,6 +9,9 @@ import wave
 
 RATE = 24000
 SECONDS = 73
+# Sparse events were suppressed twice by source and controller gain. Measured
+# calibration restores event headroom; user level/ducking remain independent.
+SOURCE_GAIN = 8
 rng = random.Random(63)
 mix = array('f', [0]) * (RATE * SECONDS)
 # Very low steam/room preparation texture; periodic envelope has matched endpoints.
@@ -56,13 +59,15 @@ for i in range(RATE // 8):
     fade = i / (RATE // 8)
     mix[i] *= fade
     mix[-i - 1] *= fade
+if max(abs(v * SOURCE_GAIN) for v in mix) >= 1:
+    raise ValueError('Source calibration would clip; revise the palette balance')
 out = Path('public/audio/ambience')
 out.mkdir(parents=True, exist_ok=True)
 with tempfile.TemporaryDirectory() as tmp:
     source = str(Path(tmp) / 'breakfast.wav')
     with wave.open(source, 'wb') as wav:
         wav.setparams((1, 2, RATE, 0, 'NONE', 'not compressed'))
-        wav.writeframes(array('h', (round(max(-1, min(1, v)) * 32767) for v in mix)).tobytes())
+        wav.writeframes(array('h', (round(v * SOURCE_GAIN * 32767) for v in mix)).tobytes())
     subprocess.run(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-i', source,
                     '-c:a', 'libmp3lame', '-b:a', '48k', str(out / 'breakfast.mp3')], check=True)
 print(f'{out / "breakfast.mp3"}: {(out / "breakfast.mp3").stat().st_size} bytes')
