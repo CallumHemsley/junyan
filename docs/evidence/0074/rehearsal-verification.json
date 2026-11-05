@@ -1,0 +1,46 @@
+{
+  "speechMatch": {
+    "src": "/audio/line-bc2aada2cb0ccd83e698c6b0e9eca6bf96fc96aad382bcabb1fe7a82b8d105ca.wav",
+    "normalizedWaveformCorrelation": 0.9995230235572595,
+    "loggedPlayingSeconds": 2.66,
+    "matchedSourceStartSeconds": 2.6435,
+    "alignmentDifferenceSeconds": -0.0165
+  },
+  "sourceSha": "986be57a96a64bec4a8048ca41e8b7e4f6e6a3b6",
+  "video": "/private/tmp/junyan-neighbourhood-demos/output/playwright/neighbourhood-rehearsal/walkthrough.mp4",
+  "durationSeconds": 29.476,
+  "frameCount": 430,
+  "measuredFramesPerSecond": 14.58813950332474,
+  "audioRms": 0.02946492408823332,
+  "audioPeak": 0.4188353419303894,
+  "firstFrameAudioTrimSeconds": 0.003,
+  "actualPlayingEvents": [
+    {
+      "src": "/audio/ambience/breakfast.mp3",
+      "atSeconds": 0.775,
+      "sha256": "c0f60e4c71c3fbbfabf2863495e44749c02394d05015216da89ad95d576459f1"
+    },
+    {
+      "src": "/audio/line-bc2aada2cb0ccd83e698c6b0e9eca6bf96fc96aad382bcabb1fe7a82b8d105ca.wav",
+      "atSeconds": 2.66,
+      "sha256": "617553ae2df324c92baa103f9430f97ba08be753f3417803706c5adfefcd7211"
+    },
+    {
+      "src": "/audio/line-bc2aada2cb0ccd83e698c6b0e9eca6bf96fc96aad382bcabb1fe7a82b8d105ca.wav",
+      "atSeconds": 11.659,
+      "sha256": "617553ae2df324c92baa103f9430f97ba08be753f3417803706c5adfefcd7211"
+    },
+    {
+      "src": "/audio/line-7cec562dce16587a3d3072fb7e37ef728c1e652e315d18c300266abffb223067.wav",
+      "atSeconds": 21.757,
+      "sha256": "8f3fb8e9abef8e79b94a0c79c4fb3c075b06a954f51c66fdacb1f0d15c9b3cdd"
+    }
+  ],
+  "browserErrors": [],
+  "method": "Native game HTMLMediaElement output routed to WebAudio MediaRecorder. Timed browser screenshots muxed with the live recorded audio. No replacement audio or speech synthesis. Normal browser autoplay policy. Dev hooks only read state; rehearsal skips opening.",
+  "limits": [
+    "Runtime audio routing is instrumented.",
+    "Screenshot cadence measures visual motion; 30FPS encoding does not add motion detail.",
+    "Signal checks establish nonzero output; independent Mandarin pronunciation and physical-speaker listening remain separate checks."
+  ]
+}
