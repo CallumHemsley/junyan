@@ -20,7 +20,7 @@ test('isolated repair journey preserves physical causes, reversible choices and 
   await expect(page.getByTestId('repair-scene')).toHaveAttribute('data-test', 'unstable');
   await part(page, 'bulb');
   await action(page, '拧紧');
-  await expect(page.getByTestId('repair-feedback')).toHaveText('先关掉再拧紧');
+  await expect(page.getByTestId('repair-feedback')).toHaveText('先关掉');
   expect((await read(page)).recoveries).toEqual([]);
   await main(page, '关掉');
   await action(page, '拧紧');
@@ -39,6 +39,15 @@ test('isolated repair journey preserves physical causes, reversible choices and 
   await switchJob(page, 'lamp');
   await main(page, '试试');
   await expect(page.getByTestId('repair-scene')).toHaveAttribute('data-test', 'steady');
+  await part(page, 'bulb');
+  const recoveredBeforeLoosening = (await read(page)).recoveries.length;
+  await action(page, '转松');
+  await expect(page.getByTestId('repair-feedback')).toHaveText('先关掉');
+  expect((await read(page)).plays.at(-1)).toBe('repairs.power-first');
+  expect((await read(page)).state.jobs.lamp).toMatchObject({ fitting: 'seated', test: 'steady' });
+  expect((await read(page)).recoveries).toHaveLength(recoveredBeforeLoosening);
+  await main(page, '试试');
+  await expect(page.getByTestId('repair-feedback')).toHaveText('好了现在亮了');
   await page.screenshot({ path: `evidence/0069/${info.project.name}-lamp-steady.png`, fullPage: true });
   await main(page, '放回');
   expect((await read(page)).state.completed).toEqual(['lamp']);

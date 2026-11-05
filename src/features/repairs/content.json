@@ -478,7 +478,7 @@
         },
         {
           "id": "repairs.power-first",
-          "text": "先关掉，再拧紧。",
+          "text": "先关掉。",
           "tokens": [
             {
               "id": "repairs.first",
@@ -493,20 +493,6 @@
               "pinyin": "guāndiào",
               "gloss": "switch off",
               "audio": "/audio/repairs/word-off.wav"
-            },
-            {
-              "id": "again",
-              "hanzi": "再",
-              "pinyin": "zài",
-              "gloss": "again",
-              "audio": "/audio/word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav"
-            },
-            {
-              "id": "repairs.tighten",
-              "hanzi": "拧紧",
-              "pinyin": "nǐngjǐn",
-              "gloss": "tighten",
-              "audio": "/audio/repairs/word-tighten.wav"
             }
           ],
           "audio": "/audio/repairs/line-power-first.wav"

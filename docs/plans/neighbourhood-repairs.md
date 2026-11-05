@@ -14,7 +14,7 @@ All operations use DOM targets at least 44px. Select a visible part, then choose
 
 ## Mandarin and inference
 
-Bounded action vocabulary includes 灯泡, 电池, 线, 拧紧, 转松, 接上, 拔下, 换, 打开, 盖上, 试试, 先, 再, 好了 and 不动. “先关掉，再拧紧。” follows an attempted powered manipulation. “线接上了。” follows connecting the lead. “换上新电池了。” follows replacing the cell. “还是不动。再打开。” follows a failed closed-cover test. Opening dialogue stays neutral because either part may already be repaired. Feedback names visible outcomes. It does not grade the player. All lines and words are segmented JSON and validated against feature-local schemas permitting dotted IDs and nested audio paths. Pinyin and gloss stay in lookup data. Existing genuinely identical canonical words are reused.
+Bounded action vocabulary includes 灯泡, 电池, 线, 拧紧, 转松, 接上, 拔下, 换, 打开, 盖上, 试试, 先, 再, 好了 and 不动. “先关掉。” follows either attempted powered turn direction. “线接上了。” follows connecting the lead. “换上新电池了。” follows replacing the cell. “还是不动。再打开。” follows a failed closed-cover test. Opening dialogue stays neutral because either part may already be repaired. Feedback names visible outcomes. It does not grade the player. All lines and words are segmented JSON and validated against feature-local schemas permitting dotted IDs and nested audio paths. Pinyin and gloss stay in lookup data. Existing genuinely identical canonical words are reused.
 
 ## Architecture and persistence
 

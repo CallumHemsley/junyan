@@ -44,3 +44,7 @@ Built both reversible repairs, free switching with both partial states retained,
 Full rules suite passed 180 tests. Build passed. Isolated browser checks passed 9 tests on desktop, 390px and 320px phones. Existing hospital/restaurant/change/journal/day/save checks passed all 6 desktop/phone tests. See [verification evidence](../../evidence/0069/progress.md). Voice inventory currently fails with 64 missing required clips. Integrated route, feature IndexedDB reload/migration, word-card/journal and offline voice checks remain pending. Final independent UI review is parent-owned. Do not mark done until those gates close.
 
 After rebase onto main `5c90ba4`, the full required sequence passed again. Rules now pass 181 tests because main added a ward regression. Build, 9 isolated repair checks and 6 existing desktop/phone journey/save checks passed. Rebase removed inherited coordination commits and preserved central review wording.
+
+## Independent final review
+
+Central lead opened [draft PR 22](https://github.com/CallumHemsley/junyan/pull/22). Independent final reviewer confirmed the isolated browser journeys, rules, 44px targets, 28px text and desktop/390px/320px layouts with clean console. Reviewer found that powered loosening incorrectly requested tightening. The focused correction changes the shared feedback to neutral “先关掉。” and tests both powered directions. Review recheck remains pending. Audio and integrated route/save/offline checks still block completion.

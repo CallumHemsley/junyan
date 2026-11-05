@@ -9,9 +9,9 @@
   - [x] Smallest safe decomposition. One feature writer owns coupled rules, content, scene and UI. Parent manages separate read-only reviewers. No extra writers.
 - [x] Delegate code-writing. This worker is the sole parent-delegated implementation owner. Feature step 4 explicitly permits a subagent forbidden to spawn to own the diff with review separation.
 - [x] Verify on the matching surface. Isolated desktop, 390px and 320px browser journeys pass. Integrated journey and audio are separately pending.
-- [x] Rebase into small, ordered commits. Checked rules/content, switching, truthful feedback and UI are separate commits. Rebase onto current main remains a central integration step.
+- [x] Rebase into small, ordered commits. Checked rules/content, switching, truthful feedback and UI are separate commits. Repair-only rebase onto main 5c90ba4 completed and was fully reverified.
 - [ ] If the design is contested, interrogate before shipping. No unresolved contested choice in the supplied synthesis.
-- [ ] Run Opening a PR. Central lead owns connector operations and asks when ready.
+- [x] Run Opening a PR. Central lead opened [draft PR 22](https://github.com/CallumHemsley/junyan/pull/22). Central lead owns review and landing.
 
 Applied skills read locally from PSTACK include poteto-mode, feature playbook, how, architect, Model the Domain, Prove It Works, Sequence Work into Verifiable Units, deslop and control-ui. Model the Domain chose explicit object state. Prove It Works requires actual browser evidence. Sequence Work into Verifiable Units separates checked rules from checked UI. Native tools replace Cursor-specific tool names. User-selected model and connector override skill defaults. The separate show-me visual skill is unavailable. Show-me-your-work exists and was read during this run; its canonical six-column TSV trail is evidence/0069/decision-trail.tsv. The earlier four-column decisions.tsv is retained as historical evidence. Parent owns independent trail review because this writer may not spawn.
 
@@ -42,3 +42,13 @@ Remaining gates are final independent review, exact offline audio generation/lis
 Replayed only the four repair commits after original base `37b5d22` onto current main `5c90ba4b7421755fee3dd5d12e777f70dd34f226`. Original published feature head was `e67b2ad4aea28eed218acbf658f02f8b57989220`, verified equal to the remote feature branch before rewriting. The only conflict was this ticket's review/merge wording. Main's stronger central verification requirement was preserved. No shared files changed. Rebased source head was `06e34bffa7682027efbb89d2915491e3c9d9a9b8`.
 
 The complete required check sequence ran once on that rebased source. `pnpm test` passed 12 files and 181 tests, including main's additional ward regression. `pnpm build` passed. Isolated repair browser tests passed all 9 checks, with 3 explicit integrated/audio skips. Baseline waiter browser tests passed all 6 desktop/phone checks. Selected screenshots were refreshed and inspected on that source. Audio remains blocked with the same 64 missing exact clips; this rebase does not establish integrated feature or voice completion.
+
+## Final review correction
+
+Independent final UI review confirmed the browser journeys, rules, 44px targets, 28px spoken text and inspected desktop/390px/320px layouts with clean console. It found one concrete wording defect. Both powered turn directions shared “先关掉，再拧紧。”, which contradicted an attempt to loosen the fitting. The content now says neutral “先关掉。” for either direction. Mechanics are unchanged.
+
+The exact segmented source, authoring script and pending/audio-plan manifests agree. The new Serena line content-address is `line-997547a133ff6c8c0c7ad6aa692fb658f213b26886aafadb7d178a948674a19e.wav`. Required clip count remains 64 missing, with no generated or substituted audio.
+
+`pnpm exec vitest run src/features/repairs/rules.test.ts` passed all 13 tests, including both powered-direction regressions. `pnpm build` passed. `pnpm exec playwright test --config evidence/0069/playwright.config.ts --grep 'isolated repair journey'` passed all 3 desktop/390px/320px journeys. They assert neutral visible feedback, matching playback callback, unchanged physical state/recovery, and restoration of steady test feedback. The updated selected-lamp screenshots were visually inspected. The baseline restaurant journey was not repeated for this content-only correction; its 6-check post-rebase pass remains recorded above.
+
+Draft PR is https://github.com/CallumHemsley/junyan/pull/22. Independent review recheck of this focused fix remains pending. Audio and shared route/save/offline integration still block completion.

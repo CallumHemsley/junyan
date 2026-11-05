@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { canReturn, currentBench, gifts, initialState, recovered, reduce, validate, type Action, type State } from './rules';
-import { content, contentSchema, lines, words } from './content';
+import { content, contentSchema, lineFor, lines, words } from './content';
 
 const act = (state: State, ...actions: Action[]) => actions.reduce((current, action) => reduce(current, action, 1), state);
 const fixedLamp = () => act(initialState(), { type: 'select', job: 'lamp', part: 'bulb' }, { type: 'turn', job: 'lamp', direction: 'tighten' }, { type: 'test', job: 'lamp' });
@@ -23,6 +23,16 @@ describe('repair workshop physical rules', () => {
     const fixed = act(blocked, { type: 'power-off', job: 'lamp' }, { type: 'turn', job: 'lamp', direction: 'tighten' });
     expect(canReturn(currentBench(fixed))).toBe(false);
     expect(canReturn(currentBench(act(fixed, { type: 'test', job: 'lamp' })))).toBe(true);
+  });
+  for (const direction of ['tighten', 'loosen'] as const) it(`gives neutral power-off feedback before a powered ${direction}`, () => {
+    const before = direction === 'tighten' ? act(initialState(), { type: 'select', job: 'lamp', part: 'bulb' }, { type: 'test', job: 'lamp' }) : fixedLamp();
+    const action: Action = { type: 'turn', job: 'lamp', direction };
+    const after = reduce(before, action, 1);
+    expect(after.feedback).toBe('power-first');
+    expect(lineFor(after.feedback).tokens.map(word => word.hanzi).join('')).toBe('先关掉');
+    expect(currentBench(after)).toEqual(currentBench(before));
+    expect(recovered(before, action, after)).toEqual([]);
+    expect(validate(after)).toEqual(after);
   });
   it('invalidates the successful lamp test when switching off or loosening', () => {
     const off = act(fixedLamp(), { type: 'power-off', job: 'lamp' });
