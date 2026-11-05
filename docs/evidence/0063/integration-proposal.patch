@@ -1,0 +1,258 @@
+--- a/src/App.tsx
++++ b/src/App.tsx
+@@ -21,6 +21,7 @@
+ import { Speaker } from "./icons";
+ import { route } from "./navigation";
+ import { createPlayback, type PlaybackError } from "./audio/playback";
++import { useAmbience, AmbienceControls } from "./audio/AmbienceControls";
+ 
+ const testMode =
+   import.meta.env.DEV &&
+@@ -75,9 +76,10 @@
+   const [moving, setMoving] = useState(false);
+   const [audioError, setAudioError] = useState<PlaybackError>(null);
+   const dayEndOpen = state.ended && panel === "none" && !word;
++  const ambience = useAmbience(ready && session.phase === "day");
+   const playback = useRef<ReturnType<typeof createPlayback> | null>(null);
+   if (!playback.current)
+-    playback.current = createPlayback((url) => new Audio(url), setAudioError);
++    playback.current = createPlayback((url) => new Audio(url), setAudioError, ambience.speaking);
+   const motion = useRef<{ path: Position[]; arrive?: () => void } | null>(null);
+   const dispatch = useCallback(
+     (action: SessionAction) => {
+@@ -509,6 +511,7 @@
+       <header className="topbar" inert={panel !== "none" || wordOpen || dayEndOpen}>
+         {brand}
+         <nav aria-label="小馆">
++          <AmbienceControls ambience={ambience} />
+           <button
+             onClick={() => {
+               motion.current = null;
+--- a/src/audio/playback.ts
++++ b/src/audio/playback.ts
+@@ -4,6 +4,7 @@
+ export function createPlayback(
+   createAudio: (url: string) => Media,
+   report: (error: PlaybackError) => void,
++  speaking: (active: boolean) => void = () => {},
+ ) {
+   let current: { audio: Media; onError: () => void } | null = null;
+   let request = 0;
+@@ -16,6 +17,7 @@
+       previous.audio.removeEventListener("error", previous.onError);
+       previous.audio.pause();
+     }
++    speaking(false);
+     report(null);
+   };
+ 
+@@ -27,20 +29,24 @@
+     const onError = () => {
+       if (attempt !== request) return;
+       failed = true;
++      speaking(false);
+       report("load");
+     };
+     current = { audio, onError };
+     audio.addEventListener("error", onError);
+-    if (onEnded)
+-      audio.addEventListener("ended", () => {
+-        if (attempt === request) onEnded();
+-      });
++    audio.addEventListener("ended", () => {
++      if (attempt !== request) return;
++      speaking(false);
++      onEnded?.();
++    });
++    speaking(true);
+     audio.play().then(
+       () => {
+         if (attempt === request && !failed) report(null);
+       },
+       (error: unknown) => {
+         if (attempt !== request) return;
++        speaking(false);
+         report(
+           error instanceof Error && error.name === "NotAllowedError"
+             ? "policy"
+--- /dev/null
++++ b/src/audio/ambience-preferences.ts
+@@ -0,0 +1,26 @@
++export type AmbiencePreference = { muted: boolean; level: number };
++export const ambiencePreferenceKey = "junyan-ambience-v1";
++const defaults: AmbiencePreference = { muted: false, level: 0.35 };
++
++export function parseAmbiencePreference(raw: string | null): AmbiencePreference {
++  try {
++    const value: unknown = JSON.parse(raw ?? "null");
++    if (!value || typeof value !== "object") return { ...defaults };
++    const record = value as Record<string, unknown>;
++    return {
++      muted: typeof record.muted === "boolean" ? record.muted : defaults.muted,
++      level: typeof record.level === "number" && Number.isFinite(record.level)
++        ? Math.max(0, Math.min(1, record.level)) : defaults.level,
++    };
++  } catch { return { ...defaults }; }
++}
++
++export function readAmbiencePreference(): AmbiencePreference {
++  try { return parseAmbiencePreference(localStorage.getItem(ambiencePreferenceKey)); }
++  catch { return { ...defaults }; }
++}
++
++export function saveAmbiencePreference(preference: AmbiencePreference) {
++  try { localStorage.setItem(ambiencePreferenceKey, JSON.stringify(preference)); }
++  catch { /* A storage failure must not disable the current-session control. */ }
++}
+--- /dev/null
++++ b/src/audio/AmbienceControls.tsx
+@@ -0,0 +1,72 @@
++import { useCallback, useEffect, useRef, useState } from "react";
++import { Speaker } from "../icons";
++import { ambienceAsset, createAmbience, type AmbienceError } from "./ambience";
++import { readAmbiencePreference, saveAmbiencePreference } from "./ambience-preferences";
++import "./ambience-controls.css";
++
++export function useAmbience(restaurant: boolean) {
++  const [preference, setPreference] = useState(readAmbiencePreference);
++  const [error, setError] = useState<AmbienceError>(null);
++  const owner = useRef<ReturnType<typeof createAmbience> | null>(null);
++  const inputs = useRef({ restaurant, preference, speaking: false });
++  inputs.current.restaurant = restaurant;
++  inputs.current.preference = preference;
++  useEffect(() => {
++    const control = createAmbience(
++      () => new Audio(import.meta.env.BASE_URL + ambienceAsset), setError,
++    );
++    owner.current = control;
++    control.update({
++      restaurant: inputs.current.restaurant,
++      speaking: inputs.current.speaking,
++      visible: !document.hidden,
++      ...inputs.current.preference,
++    });
++    const gesture = (event: Event) => { if (event.isTrusted) control.gesture(); };
++    const visibility = () => control.update({ visible: !document.hidden });
++    const hide = () => control.update({ visible: false });
++    document.addEventListener("pointerdown", gesture, true);
++    document.addEventListener("keydown", gesture, true);
++    document.addEventListener("visibilitychange", visibility);
++    window.addEventListener("pagehide", hide);
++    window.addEventListener("pageshow", visibility);
++    return () => {
++      document.removeEventListener("pointerdown", gesture, true);
++      document.removeEventListener("keydown", gesture, true);
++      document.removeEventListener("visibilitychange", visibility);
++      window.removeEventListener("pagehide", hide);
++      window.removeEventListener("pageshow", visibility);
++      owner.current = null;
++      control.dispose();
++    };
++  }, []);
++  useEffect(() => { owner.current?.update({ restaurant, ...preference }); }, [restaurant, preference]);
++  const speaking = useCallback((active: boolean) => {
++    inputs.current.speaking = active;
++    owner.current?.update({ speaking: active });
++  }, []);
++  const update = (next: typeof preference) => {
++    owner.current?.update(next);
++    owner.current?.gesture();
++    setPreference(next);
++    saveAmbiencePreference(next);
++  };
++  return { preference, error, update, speaking, retry: () => owner.current?.gesture() };
++}
++
++export function AmbienceControls({ ambience }: { ambience: ReturnType<typeof useAmbience> }) {
++  const { preference, update, error } = ambience;
++  return (
++    <details className="ambience-settings">
++      <summary aria-label="环境声设置"><Speaker /><span className="ambience-label">环境声</span></summary>
++      <div className="ambience-options">
++        <label><input type="checkbox" checked={!preference.muted}
++          onChange={event => update({ ...preference, muted: !event.target.checked })} />环境声</label>
++        <label>音量<input type="range" aria-label="环境声音量" min="0" max="1" step="0.05"
++          value={preference.level}
++          onChange={event => update({ ...preference, level: Number(event.target.value) })} /></label>
++        {error && <div role="status"><p>环境声暂时没有播出。</p><button type="button" onClick={ambience.retry}>重试</button></div>}
++      </div>
++    </details>
++  );
++}
+--- /dev/null
++++ b/src/audio/ambience-controls.css
+@@ -0,0 +1,21 @@
++.ambience-settings { position: relative; color: var(--text-secondary); }
++.ambience-settings summary {
++  display: flex; align-items: center; justify-content: center; gap: var(--space-8);
++  min-width: 44px; min-height: 44px; padding: 0 var(--space-8); cursor: pointer;
++  list-style: none; border-radius: var(--radius-chip);
++}
++.ambience-settings summary::-webkit-details-marker { display: none; }
++.ambience-settings summary:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 2px; }
++.ambience-settings[open] summary { background: var(--surface-control); }
++.ambience-options {
++  position: absolute; right: 0; top: 100%; z-index: 20; width: min(250px, 80vw);
++  padding: var(--space-16); background: var(--surface-card); border: 1px solid var(--hairline);
++  border-radius: var(--radius-panel); box-shadow: var(--shadow-panel);
++}
++.ambience-options label { display: flex; align-items: center; gap: var(--space-8); min-height: 44px; }
++.ambience-options input { min-height: 44px; accent-color: var(--text-primary); }
++.ambience-options input[type="checkbox"] { min-width: 44px; }
++.ambience-options input[type="range"] { width: 100%; min-width: 44px; }
++.ambience-options p { margin: var(--space-8) 0; }
++.ambience-options button { min-height: 44px; }
++@media (max-width: 600px) { .ambience-label { display: none; } }
+--- /dev/null
++++ b/src/audio/ambience-preferences.test.ts
+@@ -0,0 +1,13 @@
++import { expect, it } from "vitest";
++import { parseAmbiencePreference } from "./ambience-preferences";
++
++it("reads only finite independent preferences and tolerates corrupt storage", () => {
++  for (const raw of [null, "bad", "null", "0", "[]"])
++    expect(parseAmbiencePreference(raw)).toEqual({ muted: false, level: .35 });
++  expect(parseAmbiencePreference('{"muted":true,"level":0.2,"unlocked":true}'))
++    .toEqual({ muted: true, level: .2 });
++  expect(parseAmbiencePreference('{"muted":"yes","level":9}'))
++    .toEqual({ muted: false, level: 1 });
++  expect(parseAmbiencePreference('{"level":-1}').level).toBe(0);
++  expect(parseAmbiencePreference('{"level":1e999}').level).toBe(.35);
++});
+--- /dev/null
++++ b/src/audio/ambience-speech.test.ts
+@@ -0,0 +1,34 @@
++import { expect, it, vi } from "vitest";
++import { createPlayback } from "./playback";
++
++it("publishes speech ownership through current end/error/stop and ignores stale settlements", async () => {
++  const clips: (EventTarget & { reject: (error: unknown) => void })[] = [];
++  const speaking = vi.fn();
++  const playback = createPlayback(() => {
++    let reject!: (error: unknown) => void;
++    const pending = new Promise<void>((_, no) => { reject = no; });
++    const audio = Object.assign(new EventTarget(), { play: () => pending, pause: vi.fn(), reject });
++    clips.push(audio);
++    return audio;
++  }, () => {}, speaking);
++  playback.play("first");
++  expect(speaking).toHaveBeenLastCalledWith(true);
++  playback.play("second");
++  speaking.mockClear();
++  clips[0].dispatchEvent(new Event("ended"));
++  clips[0].reject(new DOMException("stale", "AbortError"));
++  await Promise.resolve();
++  expect(speaking).not.toHaveBeenCalled();
++  clips[1].dispatchEvent(new Event("ended"));
++  expect(speaking).toHaveBeenLastCalledWith(false);
++  playback.play("third");
++  clips[2].dispatchEvent(new Event("error"));
++  expect(speaking).toHaveBeenLastCalledWith(false);
++  playback.play("fourth");
++  clips[3].reject(new DOMException("failed", "NotSupportedError"));
++  await Promise.resolve();
++  expect(speaking).toHaveBeenLastCalledWith(false);
++  playback.play("fifth");
++  playback.stop();
++  expect(speaking).toHaveBeenLastCalledWith(false);
++});
