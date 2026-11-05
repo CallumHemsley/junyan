@@ -1,0 +1,145 @@
+{
+  "errors": [],
+  "state": {
+    "seed": 2146095206,
+    "day": 3,
+    "level": 3,
+    "player": {
+      "x": 6,
+      "y": 2.5
+    },
+    "customers": [
+      {
+        "table": 1,
+        "orderId": "order-09",
+        "phase": "seated"
+      },
+      {
+        "table": 2,
+        "orderId": "order-10",
+        "phase": "seated"
+      },
+      {
+        "table": 3,
+        "orderId": "order-11",
+        "phase": "seated"
+      },
+      {
+        "table": 4,
+        "orderId": "order-12",
+        "phase": "seated"
+      }
+    ],
+    "tray": [],
+    "served": 0,
+    "earnings": 29,
+    "mistakes": 0,
+    "activeTable": null,
+    "feedback": "none",
+    "receipt": null,
+    "journal": {
+      "i": {
+        "lookups": 0,
+        "lastSeen": 1793908366220,
+        "recovered": true
+      },
+      "think": {
+        "lookups": 0,
+        "lastSeen": 1793908366220,
+        "recovered": true
+      },
+      "want": {
+        "lookups": 0,
+        "lastSeen": 1793908366220,
+        "recovered": true
+      },
+      "one": {
+        "lookups": 0,
+        "lastSeen": 1793908366220,
+        "recovered": true
+      },
+      "piece": {
+        "lookups": 0,
+        "lastSeen": 1793908366220,
+        "recovered": true
+      },
+      "bun": {
+        "lookups": 0,
+        "lastSeen": 1793908366220,
+        "recovered": true
+      },
+      "bring": {
+        "lookups": 0,
+        "lastSeen": 1793908372900,
+        "recovered": true
+      },
+      "cup": {
+        "lookups": 0,
+        "lastSeen": 1793908372900,
+        "recovered": true
+      },
+      "milk": {
+        "lookups": 0,
+        "lastSeen": 1793908372900,
+        "recovered": true
+      },
+      "please": {
+        "lookups": 0,
+        "lastSeen": 1793908381222,
+        "recovered": true
+      },
+      "give": {
+        "lookups": 0,
+        "lastSeen": 1793908381222,
+        "recovered": true
+      },
+      "bowl": {
+        "lookups": 0,
+        "lastSeen": 1793908381222,
+        "recovered": true
+      },
+      "porridge": {
+        "lookups": 0,
+        "lastSeen": 1793908381222,
+        "recovered": true
+      },
+      "stick": {
+        "lookups": 0,
+        "lastSeen": 1793908389742,
+        "recovered": true
+      },
+      "youtiao": {
+        "lookups": 0,
+        "lastSeen": 1793908389742,
+        "recovered": true
+      },
+      "two": {
+        "lookups": 0,
+        "lastSeen": 1793908393964,
+        "recovered": true
+      },
+      "bread": {
+        "lookups": 0,
+        "lastSeen": 1793908393964,
+        "recovered": true
+      },
+      "egg": {
+        "lookups": 0,
+        "lastSeen": 1793908400144,
+        "recovered": true
+      },
+      "dumpling": {
+        "lookups": 0,
+        "lastSeen": 1793908408357,
+        "recovered": true
+      },
+      "and": {
+        "lookups": 0,
+        "lastSeen": 1793908408357,
+        "recovered": true
+      }
+    },
+    "ended": false
+  },
+  "overflow": false
+}

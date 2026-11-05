@@ -30,12 +30,12 @@ export function captureCanvas() {
   return canvas;
 }
 
-async function loadRoot(root, appearances) {
+async function loadRoot(root, appearances, orderItems) {
   const scene = resolve(root,'src/scene');
   const {createRenderer} = await import(pathToFileURL(resolve(scene,'renderer.js')).href);
   if(!existsSync(resolve(scene,'restaurant-scene.js'))) return canvas => createRenderer(canvas,TABLES,appearances);
   const {restaurantScene} = await import(pathToFileURL(resolve(scene,'restaurant-scene.js')).href);
-  return canvas => createRenderer(canvas,restaurantScene(TABLES,appearances));
+  return canvas => createRenderer(canvas,restaurantScene(TABLES,appearances,orderItems));
 }
 
 const percentile = (values, p) => {
@@ -49,7 +49,7 @@ async function main([trunkRoot, headRoot, outDirectory]) {
   await mkdir(out,{recursive:true});
   const content = JSON.parse(await readFile(resolve(headRoot,'src/content/content.json'),'utf8'));
   const {appearances, frames} = restaurantFrames(content);
-  const roots = {trunk:await loadRoot(trunkRoot,appearances), head:await loadRoot(headRoot,appearances)};
+  const roots = {trunk:await loadRoot(trunkRoot,appearances,Object.fromEntries(content.orders.map(order=>[order.id,order.items]))), head:await loadRoot(headRoot,appearances,Object.fromEntries(content.orders.map(order=>[order.id,order.items])))};
   const result = {trunk:{bake:[],draw:[],hashes:null}, head:{bake:[],draw:[],hashes:null}};
   const firstLast = {};
   for(let round=0;round<10;round++) {

@@ -22,7 +22,40 @@ function stool(x,y) {
 }
 return {bowl,plant,stool};
 }
-export function restaurantScene(tables, appearances = {}) {
+function servedFood({box,sphere,capsule}, kind, x, y) {
+  const gold = [220,174,90];
+  const stroke = (a,b,r,color) => capsule(a,b,r,r,()=>color,'solid');
+  if(kind==='porridge' || kind==='dumpling') {
+    sphere(x,y,1.49,.27,jade,'solid');
+    sphere(x-.025,y-.025,1.61,.22,cream,'solid');
+    if(kind==='dumpling') for(const dx of [-.12,.12]) {
+      stroke([x+dx,y-.09,1.69],[x+dx,y+.09,1.69],.10,steam);
+    }
+  } else if(kind==='milk') {
+    stroke([x,y,1.45],[x,y,1.73],.18,jade);
+    sphere(x,y,1.77,.16,cream,'solid');
+    stroke([x+.04,y,1.8],[x+.12,y,2.02],.025,darkWood);
+  } else {
+    box(x-.27,y-.24,1.28,x+.27,y+.24,1.32,cream);
+    if(kind==='bun') {
+      sphere(x,y,1.53,.23,cream,'solid');
+      sphere(x,y,1.73,.07,[197,164,107],'solid');
+    } else if(kind==='bread') {
+      box(x-.22,y-.17,1.32,x+.22,y+.17,1.64,cream);
+      stroke([x-.12,y-.18,1.65],[x-.12,y+.18,1.65],.025,[197,164,107]);
+      stroke([x+.1,y-.18,1.65],[x+.1,y+.18,1.65],.025,[197,164,107]);
+    } else if(kind==='egg') {
+      stroke([x-.10,y,1.42],[x+.10,y,1.42],.16,steam);
+      sphere(x,y,1.55,.10,gold,'solid');
+    } else if(kind==='youtiao') for(const dx of [-.10,.10]) {
+      stroke([x+dx,y-.27,1.43],[x+dx,y+.27,1.43],.09,gold);
+    }
+  }
+}
+export function restaurantScene(tables, appearances = {}, orderItems = {}) {
+  // One representative per food kind; the receipt remains authoritative for quantities.
+  const meals = Object.fromEntries(Object.entries(orderItems).map(([id,items]) =>
+    [id,[...new Set(items.map(item=>item.foodId))]]));
 return {
 bake(api) {
   const {W,H,R2,COS,pix,zb,ground,groundZ,rgb,hash,unproject,box,sphere,capsule,castShadow} = api;
@@ -105,7 +138,10 @@ draw(api, state, player, time, moving) {
     const appearance = appearances[customer.orderId];
     const palette = {...waiter, ...appearance};
     characterFigure(x,y-1.2,Math.PI/2,customerPose(customer.phase,appearance?.accessory),palette,dynamicAdd);
-    if(eating) { bowl(x-.35,y,1.43,!served); sphere(x+.3,y+.12,1.43,.21,cream,'solid'); }
+    if(eating) {
+      const meal=meals[customer.orderId] ?? [];
+      meal.forEach((kind,index)=>servedFood(api,kind,x+(index-(meal.length-1)/2)*.58,y+.38));
+    }
     else bowl(x+.45,y+.3,1.42,false);
   }
   const x=player.x-6,y=player.y-5;
