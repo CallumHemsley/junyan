@@ -1,0 +1,200 @@
+{
+  "characters": [
+    {
+      "id": "lin-jie",
+      "name": "林姐",
+      "voiceId": "serena",
+      "personality": "Warm adult neighbour in her thirties or forties. Familiar, considerate and unhurried; uses 我想要 and 麻烦你了.",
+      "appearance": {
+        "shirt": [
+          142,
+          157,
+          119
+        ],
+        "hair": [
+          67,
+          48,
+          36
+        ],
+        "accessory": "bun"
+      },
+      "thanks": {
+        "id": "lin-thanks",
+        "tokens": [
+          {
+            "id": "trouble",
+            "hanzi": "麻烦",
+            "pinyin": "máfan",
+            "gloss": "trouble",
+            "audio": "/audio/word-94e90b572bb8d0c63f608c7ddba4ce4b925ce4e8f35222c26aa425bc1e151dcd.wav"
+          },
+          {
+            "id": "you",
+            "hanzi": "你",
+            "pinyin": "nǐ",
+            "gloss": "you",
+            "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
+          },
+          {
+            "id": "le",
+            "hanzi": "了",
+            "pinyin": "le",
+            "gloss": "completed action particle",
+            "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+          },
+          {
+            "id": "thank-you",
+            "hanzi": "谢谢",
+            "pinyin": "xièxie",
+            "gloss": "thank you",
+            "audio": "/audio/word-d4eb416293ad391775ce523d94ce0483868103313ae19eac4e0f80c7401b5165.wav"
+          }
+        ],
+        "audio": "/audio/line-7cec562dce16587a3d3072fb7e37ef728c1e652e315d18c300266abffb223067.wav",
+        "text": "麻烦你了，谢谢。"
+      }
+    },
+    {
+      "id": "xiao-li",
+      "name": "小李",
+      "voiceId": "yunxi",
+      "personality": "Young adult office worker in his twenties. Brisk, practical and polite; short 来 orders and a quick 谢谢. Never rude or impatient with mistakes.",
+      "appearance": {
+        "shirt": [
+          81,
+          108,
+          132
+        ],
+        "hair": [
+          43,
+          37,
+          34
+        ],
+        "accessory": "tie"
+      },
+      "thanks": {
+        "id": "li-thanks",
+        "tokens": [
+          {
+            "id": "thank-you",
+            "hanzi": "谢谢",
+            "pinyin": "xièxie",
+            "gloss": "thank you",
+            "audio": "/audio/word-d4eb416293ad391775ce523d94ce0483868103313ae19eac4e0f80c7401b5165.wav"
+          },
+          {
+            "id": "tomorrow",
+            "hanzi": "明天",
+            "pinyin": "míngtiān",
+            "gloss": "tomorrow",
+            "audio": "/audio/word-9b5989153cc3e2163b827b05dd634a14260068f1103ccf09c897650cfa6e92ea.wav"
+          },
+          {
+            "id": "see",
+            "hanzi": "见",
+            "pinyin": "jiàn",
+            "gloss": "see; meet",
+            "audio": "/audio/word-cf24122f0185367cd42a13acdc2015ae3a376169f9c4d4bdd608c20d03ea55f3.wav"
+          }
+        ],
+        "audio": "/audio/line-c580881e4df4be3b391064df89d91425a0c4762362e4fdef90362f82c81635ba.wav",
+        "text": "谢谢，明天见。"
+      }
+    },
+    {
+      "id": "zhang-laoshi",
+      "name": "张老师",
+      "voiceId": "uncle-fu",
+      "personality": "Older retired teacher in his sixties or seventies. Mellow, precise and patient; 请给我 orders, reassuring corrections and a measured delivery.",
+      "appearance": {
+        "shirt": [
+          193,
+          158,
+          85
+        ],
+        "hair": [
+          190,
+          188,
+          177
+        ],
+        "accessory": "glasses"
+      },
+      "thanks": {
+        "id": "zhang-thanks",
+        "tokens": [
+          {
+            "id": "thanks-hard-work",
+            "hanzi": "辛苦",
+            "pinyin": "xīnkǔ",
+            "gloss": "thanks for your hard work",
+            "audio": "/audio/word-d14dc1062e622aa2ee31b58534dcef53e931585f90fd8ef05c8fd9b81aa7d90c.wav"
+          },
+          {
+            "id": "le",
+            "hanzi": "了",
+            "pinyin": "le",
+            "gloss": "completed action particle",
+            "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+          },
+          {
+            "id": "thank-you",
+            "hanzi": "谢谢",
+            "pinyin": "xièxie",
+            "gloss": "thank you",
+            "audio": "/audio/word-d4eb416293ad391775ce523d94ce0483868103313ae19eac4e0f80c7401b5165.wav"
+          }
+        ],
+        "audio": "/audio/line-f69b1fac2105310de9b77d39194a5024432b2523a9b0fcc4bd0d9f8b455a1fbf.wav",
+        "text": "辛苦了，谢谢。"
+      }
+    },
+    {
+      "id": "xiao-zhou",
+      "name": "小周",
+      "voiceId": "xiaobei",
+      "personality": "Young adult student around twenty. Bright, curious and sociable; direct 我要 orders, an upbeat 你好呀 and friendly reactions.",
+      "appearance": {
+        "shirt": [
+          135,
+          116,
+          150
+        ],
+        "hair": [
+          46,
+          39,
+          35
+        ],
+        "accessory": "backpack"
+      },
+      "thanks": {
+        "id": "zhou-thanks",
+        "tokens": [
+          {
+            "id": "thank-you",
+            "hanzi": "谢谢",
+            "pinyin": "xièxie",
+            "gloss": "thank you",
+            "audio": "/audio/word-d4eb416293ad391775ce523d94ce0483868103313ae19eac4e0f80c7401b5165.wav"
+          },
+          {
+            "id": "you",
+            "hanzi": "你",
+            "pinyin": "nǐ",
+            "gloss": "you",
+            "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
+          },
+          {
+            "id": "ha",
+            "hanzi": "呀",
+            "pinyin": "ya",
+            "gloss": "friendly exclamation",
+            "audio": "/audio/word-410bcf510b3962aa9d0de24d9e0c134653a7f12d878fd7718ab5f696b8b45115.wav"
+          }
+        ],
+        "audio": "/audio/line-35edebfeb057c9643ee59691d94516ef3f2da7d0ec49e446d64dca9970698a30.wav",
+        "text": "谢谢你呀。"
+      }
+    }
+  ],
+  "orders": []
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "characterId": "lin-jie",
+    "name": "林姐",
+    "lineId": "lin-thanks",
+    "text": "麻烦你了，谢谢。",
+    "baselineAudio": "/audio/line-507e44f48e492464ffea30119a65b4a1ea81aa2659586d891fcd76f92892369b.wav",
+    "candidateAudio": "/audio/line-7cec562dce16587a3d3072fb7e37ef728c1e652e315d18c300266abffb223067.wav",
+    "sha256": "8f3fb8e9abef8e79b94a0c79c4fb3c075b06a954f51c66fdacb1f0d15c9b3cdd"
+  },
+  {
+    "characterId": "xiao-li",
+    "name": "小李",
+    "lineId": "li-thanks",
+    "text": "谢谢，明天见。",
+    "baselineAudio": "/audio/line-c5e1c76bb942749b03367adb0506c7cc114e6679108b7c3d825c0e335515e0d5.wav",
+    "candidateAudio": "/audio/line-c580881e4df4be3b391064df89d91425a0c4762362e4fdef90362f82c81635ba.wav",
+    "sha256": "10f42b88d68b9b1d479cacc50f84fb6a9d155471f9d8afecd0e8fa9b634d38a9"
+  },
+  {
+    "characterId": "zhang-laoshi",
+    "name": "张老师",
+    "lineId": "zhang-thanks",
+    "text": "辛苦了，谢谢。",
+    "baselineAudio": "/audio/line-c9862d0b5a71642d69e5ac086bcb5a1477b32c5ccab7c8d24407055ea195865f.wav",
+    "candidateAudio": "/audio/line-f69b1fac2105310de9b77d39194a5024432b2523a9b0fcc4bd0d9f8b455a1fbf.wav",
+    "sha256": "8649120737cfff80ed07a43a9138a111d50a25e2564b3acdbde2a72ef25274dd"
+  },
+  {
+    "characterId": "xiao-zhou",
+    "name": "小周",
+    "lineId": "zhou-thanks",
+    "text": "谢谢你呀。",
+    "baselineAudio": "/audio/line-138e39cfc4c58300ceb3a8de0cb23e4eaee5e57cfa3cdaa317d214e4ab8cebd4.wav",
+    "candidateAudio": "/audio/line-35edebfeb057c9643ee59691d94516ef3f2da7d0ec49e446d64dca9970698a30.wav",
+    "sha256": "0eb67d665f44db0c8c813fd5f6cef44f370d91451416cce57f7934b9b319817f"
+  }
+]
