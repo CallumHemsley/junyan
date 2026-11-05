@@ -66,3 +66,45 @@ Run sequentially. Kokoro must use its separate existing runtime, with the pinned
 - Hashes and review inventory: `/workspace/junyan-0062/output/0062-audition/baseline.json`.
 - No candidate WAVs, screenshots or video yet. No listening approval.
 - BLOCKED for ticket completion: Mac model-capability inspection and real auditions/listening; shared production ownership release; Callum all-four review; contextual browser evidence and independent exact-patch review. This preparation checkpoint is reviewable but does not implement or complete 0062.
+
+## 2026-11-05 follow-up: played baseline and concrete punctuation experiment
+
+This entry supersedes the earlier checkpoint's statement that no browser runs or screenshots existed. Still no candidate synthesis or subjective listening.
+
+- Added owned `scripts/ticket-0062/playwright.config.ts`: extends existing journeys, records video, runs desktop/phone with normal/reduced motion; explicit optional `JUNYAN_CHROMIUM_PATH`. No shared test/config edit.
+- Browser setup initially failed: pnpm's implicit dependency check tried to reinstall; explicit CLI flags fixed it. Then Playwright 1.64.1 expected an absent bundled Chromium. Used existing `/usr/bin/chromium`; no browser/model/dependency download. Repro command below uses the final portable config (during executed run the identical executable path was literal).
+
+```sh
+JUNYAN_DEV_PORT=5412 JUNYAN_PREVIEW_PORT=5413 JUNYAN_CHROMIUM_PATH=/usr/bin/chromium PLAYWRIGHT_BROWSERS_PATH=/workspace/.junyan-tools/browsers node_modules/.bin/playwright test --config scripts/ticket-0062/playwright.config.ts --grep 'wake in the ward|browser saves|production keeps'
+```
+
+Result: **10 passed in 2.4m**. Four full opening → four-customer day → change → tally → next day/journal runs (desktop, desktop-reduced, phone, phone-reduced); four looked-up-word save/reload runs; two desktop production offline/audio runs. The main journeys click actual UI controls for wake, dialogue advance, wrong/right hospital request, reply, restaurant greeting/replay, food pickup, delivery, change and journal. Their test hook reads order/state to choose actions; it does not dispatch gameplay or seed/skip the opening. The separate offline test seeds day-one state, explicitly a supplementary fixture check, not evidence of playing the opening offline. Journey console/page-error assertions passed. Browser audio was muted via launch flag; video has no listening evidence.
+
+Inspected actual screenshots with image tools: desktop opening request, restaurant and journal; desktop reduced restaurant; phone opening request, restaurant and journal; phone reduced restaurant and journal. Paths: `/workspace/junyan-0062/output/playwright/{desktop,desktop-reduced,phone,phone-reduced}-{restaurant,journal}.png` and `*-opening-07-request.png`. These are preserved ignored local artifacts. Normal/reduced layouts are stable in the inspected views. Phone journal uses a scrollable single column; the partial next word at the bottom is a scroll boundary, not horizontal overflow. Restaurant controls, identities and progress are readable. No new layout defect established in these views.
+
+Captured muted videos under `/workspace/junyan-0062/output/0062-browser/waiter-wake-in-the-ward-th-bc2de-change-journal-and-progress-{desktop,desktop-reduced,phone,phone-reduced}/video.webm`. Inspected sampled contact sheets of desktop and phone video (every 3s): `/workspace/junyan-0062/output/0062-browser/{desktop,phone}-video-contact.png`. This is sampled visual inspection, not continuous full-video watching or listening. No screenshot of all four retries yet; that remains a specific contextual audition requirement.
+
+### Supported audition hypothesis and fixture
+
+Root independently raised the same punctuation hypothesis. Added `punctuation.json` with explicit ordinary sentence endings for all orders/greetings, and comma boundaries for multi-clause retry/thanks, avoiding exclamations. `prepare-punctuation.py` exports disposable generator fixtures, preserving visible tokens and voice preset bytes. It validates each synthesis text equals tokens after removing the opening contract's existing punctuation whitelist `，。！？·`. No generated clip or production/schema change is implied.
+
+```sh
+python3 scripts/ticket-0062/prepare-punctuation.py --output output/0062-punctuation
+python3 scripts/content-audio.py --content output/0062-punctuation/content.json --voices output/0062-punctuation/voices.json --output output/0062-punctuation/audio --plan > output/0062-punctuation/plan.jsonl
+```
+
+Executed both successfully. A separate direct comparison through primary `collect_jobs` verified 24 changed line synthesis texts/cache identities, unchanged speaker presets and pronunciation metadata, and identical dictionary asset identities. Mac handoff step 3 can now run this exporter instead of manually authoring fixture punctuation. The sequential offline Qwen/Kokoro generation commands above apply unchanged. Start by selecting one retry/thanks per customer in copied fixture inputs if limiting synthesis cost; the full 24-line inventory is ready, not a recommendation for mass regeneration.
+
+Production integration proposal **only if listening supports it**: `Line` in `src/contracts.ts:9` lacks `text`; `Phrase` extends it. Strict `lineSchema` in `src/content/index.ts:29` rejects the fixture field. The current token/text equivalence refinement at lines 135–138 applies only to opening phrases; reuse its punctuation whitelist/validation for any extended restaurant shape. Update restaurant voice-provenance expectations in `src/content/content.test.ts:204` to use authored text when present. Renderer and gameplay consume tokens/audio, so preserve those fields and line IDs. Primary `scripts/content-audio.py` already selects line `text` when present; no generator change/VERSION bump required. Content/types/schema/test edits need root's shared-file lease and listening evidence first. Do not make restaurant schema changes merely to ship this experiment.
+
+### Scoped quality review (self-review, not independent approval)
+
+| Dimension | Score | Evidence and limit |
+| --- | --- | --- |
+| Naturalness / performance | Not scoreable yet (BLOCKED) | No model-generated candidate or actual listening; a number would fabricate the ticket's central result. Applies to the ticket, so this is not N/A. |
+| Presentation of review materials | 7/10 | All 24 baseline lines labelled with identities, hashes and manual controls. Lacks paired generated A/B playback, in-game candidate context and human notes; cannot reach 8 yet. |
+| Immersion contribution | N/A for preparation-only patch | No shipped experience changed; baseline visuals are coherent, but voice contribution cannot be assessed without listening. |
+| Usability of review workflow | 7/10 | Reproducible one-command baseline/candidate preparation and actual multi-layout journey evidence; still requires separate Mac runtimes/manual comparison and no candidate comparison UI. |
+| Fun/interest contribution | N/A for preparation-only patch | No validated gameplay/performance improvement delivered. Any benefit from more natural regulars is a hypothesis pending human playtests. |
+
+Known scoped blockers: missing audible A/B, all-four retry context, user approval and ownership release. Static candidate defect to investigate: punctuation may produce excessive pauses; do not assume any punctuation change is better. No proven production defect was fixed in this checkpoint. The working short vertical slice and clean mechanics are not release-quality Steam validation, retention evidence or proof of player enjoyment. Remains **BLOCKED**, not READY; root still assigns independent product and exact-patch review.
