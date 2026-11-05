@@ -2,3 +2,6 @@ ts	phase	decision	why	evidence	result
 2026-11-05T23:54:09.581110+00:00	start	Established active full-world program ledger	Native persistent-goal tool is unavailable	docs/world-program/ledger.md	active
 2026-11-05T23:54:09.581110+00:00	allocation	Reserved 0077 through 0088 after all-remote ticket scan	Prevent concurrent builder allocation conflicts	docs/tickets/0077-world-program.md	publication pending
 2026-11-05T23:54:09.581110+00:00	contract	Separate map and art ownership from foundation integration	Ten builders need one validated shared world contract	docs/world-program/contract-v1.md	proposed seam awaiting foundation confirmation
+2026-11-05T23:56:14.345267+00:00	publication	Published allocation and example contract, then opened PR 27	Builders need durable ownership before integration	https://github.com/CallumHemsley/junyan/pull/27	open; independent review pending
+2026-11-05T23:56:14.345279+00:00	runtime	Accepted parent clarification of cloud identifier types	The attached managed runtime is authorized and repository baseline verified	docs/world-program/ledger.md	cloud execution available
+2026-11-05T23:56:55.064832+00:00	verification	Checked typed example with installed compiler after pnpm wrapper stopped	Verify the contract artifact without modifying dependencies	docs/world-program/example-module.ts	type check and JSON parse passed; game gates open
