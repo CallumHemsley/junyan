@@ -45,7 +45,7 @@ for (const viewport of [
     await day.focus();
     await page.keyboard.press("Space");
     await expect(page.locator("#day-details")).toBeVisible();
-    await expect(page.locator("#day-details")).toContainText("小馆进账 0 块");
+    await expect(page.locator("#day-details")).toContainText("累计进账 0 块");
     await day.press("Space");
     await expect(page.locator("#day-details")).toBeHidden();
     for (const selector of [".help-button", "nav button", ".day-toggle", ".next-action", ".customer-row", ".kitchen-link"]) {

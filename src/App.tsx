@@ -549,7 +549,7 @@ export default function App() {
               <span className="day-progress" aria-label={`招呼客人 ${state.served} / 4 桌`}>{state.served} / 4 桌</span>
             </div>
             <div className="day-details" id="day-details" hidden={!dayExpanded}>
-              <span>小馆进账 {state.earnings} 块</span>
+              <span>累计进账 {state.earnings} 块</span>
               <span>{state.level === 1 ? "一道菜" : state.level === 2 ? "两样菜" : "三样菜"}</span>
             </div>
             <RestaurantScene
@@ -911,7 +911,7 @@ export default function App() {
                 <b>4 桌</b>
               </p>
               <p>
-                <span>小馆进账</span>
+                <span>累计进账</span>
                 <b>{state.earnings} 块</b>
               </p>
               <p>
