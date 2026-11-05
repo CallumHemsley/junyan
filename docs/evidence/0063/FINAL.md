@@ -1,6 +1,6 @@
 # 0063 integrated handoff
 
-**Code complete; awaiting root's final native/visual and exact-patch/product review.** Root relayed the user's direct **“Works at this level”** acceptance of a 20-second representative preview at actual default gain .1575 / ducked .042 during two shipped LinJie lines. Preserve default level .35 and the calibrated source exactly. See `USER-LISTENING.md` for scope. This does not claim full 73-second loop/day listening, worker auditory perception, enjoyment or final merge approval. Ticket remains doing pending root acceptance.
+**Code complete; root native/unit/build checks reported complete after an isolated rerun; awaiting root's final delta/current-main review.** Root relayed the user's direct **“Works at this level”** acceptance of a 20-second representative preview at actual default gain .1575 / ducked .042 during two shipped LinJie lines. Preserve default level .35 and the calibrated source exactly. See `USER-LISTENING.md` for scope. This does not claim full 73-second loop/day listening, worker auditory perception, enjoyment or final merge approval. Ticket remains doing pending root acceptance.
 
 Branch: `codex/0063-restaurant-background-sounds`. PR: https://github.com/CallumHemsley/junyan/pull/17 . Reviewed current main **5c90ba4b7421755fee3dd5d12e777f70dd34f226** is merged (0061 direct word-switch preserved). Isolated checkout `/workspace/junyan-0063`, strict dev/preview ports **5414/5415**. Final committed SHA is reported in the handoff; `verified-source-sha256.json` binds runtime/test/asset files to the verified source independently of subsequent documentation commits.
 
@@ -42,3 +42,9 @@ All dimensions apply, so none are marked N/A. No inflated overall 8/10 or READY 
 ## Foundation / ownership handoff
 
 Read `INTEGRATION.md`: 0066 must add `location === "restaurant"` to the current day-phase presence predicate when adding routes, retain a single shell-level ambience owner, pause on all other locations and opening, and regression-test leaving/return/no duplication. No future route or schema was implemented here. 0063 retains the current App/playback lease until root independently accepts this patch and explicitly hands ownership to 0066. No merge, retarget, deployment or automatic tracking was performed.
+
+## Final targeted cleanup and root verification update
+
+See ROOT-VERIFICATION.md: root's initial muted Mac Chrome selection was35/38, not green; the three isolated reruns on exact7779574 passed3/3 in43.3s after fresh per-archive Vite caches and removal of concurrent inference. No product defect or specific causal performance diagnosis is established. Root178unit/build passed.
+
+Root authorized one targeted test-only cleanup: e2e/word-switch.spec.ts afterEach now drains page routes with unrouteAll({behavior:"wait"}) before the unchanged clean-console assertion. No errors are suppressed, and no assertion/timeout/product/mix changes are made. Focused desktop/phone word-switch regression:10/10 PASS in53.3s, actual output route-drain-word-switch-results.txt. Accepted calibrated source, preference .35 and runtime gains .1575/.042 remain unchanged. Root owns final delta/current-main review, central merge and App/styles/playback handoff.
