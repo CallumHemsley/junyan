@@ -1,2 +1,7 @@
 ts	phase	decision	why	evidence	result
 2026-11-05T19:01:48Z	design	Choose explicit cat relationships and a reunion state union	Both cats stay interesting without a general quest engine	docs/plans/neighbourhood-cats.md	implementation pending
+2026-11-05T19:18:10Z	start	Started sole cats implementation under updated completion policy	One writer owns the feature while a different reviewer checks the actual experience	/root/cats_writer; docs/tickets/0068-neighbourhood-cats.md	open
+2026-11-05T19:18:10Z	domain	Used reunion union plus independent cat relationships and anchored repeats	Prevent story bypass, reward farming, or day changes moving an unfinished target	src/features/cats/rules.ts; src/features/cats/rules.test.ts	25 feature tests passed
+2026-11-05T19:18:10Z	audio	Kept exact absent voice clips in a blocked manifest	Central probe found no cached model and required model hosts return proxy403; Qwen needs Apple MLX	evidence/0068/missing-audio.json	BLOCKED
+2026-11-05T19:18:10Z	design	Accepted direct rain shelter discovery and retained empty bicycle as optional evidence	Reward noticing the visible cat without a required ordered clue checklist	src/features/cats/rules.test.ts	both routes tested
+2026-11-05T19:18:10Z	verification	Ran full rules plus desktop and phone cats and mandatory waiter journeys	Actual behavior and screenshots establish feature progress while integrated and audio evidence stay open	evidence/0068/rule-checks.log; evidence/0068/browser-checks.log	194 rule tests and 10 browser checks passed

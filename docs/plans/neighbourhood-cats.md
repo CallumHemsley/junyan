@@ -111,3 +111,22 @@ Score against the task's rubric, with 1 weak and 3 strong: reducer/story union v
 2. Independent workstreams. One cats implementation owner writes the coupled rules, scene and content. Other feature owners work on their disjoint directories. Read-only reviewers can inspect independently.
 3. Shared mutable state. Cats never writes shared App, save, content index, dependencies or renderer. The 0066 writer owns those invariants and final integration.
 4. Smallest safe decomposition. One ticket and one writer avoid a scene/content/rules merge inside this small feature. A separate reviewer supplies defect and experience checks without becoming another writer.
+
+## Implementation checkpoint, 2026-11-05
+
+Owner `/root/cats_writer` implements the reserved slice directly. No further code writers were spawned. The independent reviewer and central lead retain review and merge ownership under the full human completion policy in `/workspace/scratch/cats-completion-policy.md`.
+
+Throughput checkpoint:
+
+- **Blocking first steps.** Read policy, ticket, accepted decisions, contract, renderer, content, tokens and Pstack feature/domain/proof/UI guidance before writes. Two competing designs were completed by the lead.
+- **Independent workstreams.** Pure rules, authored content and feature-local scene remain within one bounded slice. Foundation owns shell/save/content registration. Voice generation is blocked independently.
+- **Shared mutable state.** No shared source, schema, dependency or lockfile edits. Existing canonical vocabulary is reused. Only feature payload and reducer transitions own story facts.
+- **Smallest safe decomposition.** One writer owns the coupled story, relationships, view and scene. A different reviewer inspects without edits. No nested writers.
+
+The reunion is a discriminated story union. Each cat keeps independent durable relationship facts. Repeats record their authored day and routine until completion. Rain shelter accepts direct discovery of the cat or doorway. Inspecting the empty bicycle is optional, and its comprehension evidence is stored separately. Patient actions grant only demonstrated vocabulary. The shell's approved optional `recoveredWordIds` and `freshWordIds` props resolve the earlier journal contract question. No feature-local production journal or save exists.
+
+The development-only isolated surface is `/src/features/cats/harness.html?test=1`. It records callback IDs instead of pretending to play missing speech. Serialized state in its URL exercises the feature save boundary; it does not establish IndexedDB migration, shared gift delivery, navigation or offline integration.
+
+Measured checks and captures live under `evidence/0068`. The first production build and all 194 rule tests passed. Both desktop and phone mandatory hospital, four customers, change, journal, movement and looked-up-word reload checks passed. Both isolated cats mouse/touch and keyboard journeys passed, including wrong-cat friendship, impatient recovery, reunion, three repeats, callback recovery and serialized restoration across a day change. Initial screenshots were inspected and actor/label spacing is being refined before independent review.
+
+Audio remains a release blocker. The central Linux probe found no cached models and model hosts returned proxy 403. Qwen's shared pipeline requires Apple MLX. `evidence/0068/missing-audio.json` lists exact authored clips still absent. No placeholder audio, unrelated relabeling or browser speech fallback was added. Actual voice generation, listening and offline decode/playback are unverified. Shared navigation, real saves/migration, apartment gift reconciliation and production offline feature registration await foundation integration. Ticket remains doing.
