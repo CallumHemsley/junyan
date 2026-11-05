@@ -1,0 +1,43 @@
+{
+  "model": "openai/whisper-small",
+  "revision": "973afd24965f72e36ca33b3055d56a652f456b4d",
+  "method": "Local CPU transcription with language/task only; no expected script prompt; no audio uploaded. ASR is not a listening, naturalness or tone judgement.",
+  "clips": [
+    {
+      "file": "line-2cefc3fe62be59203c6ef07c91f4342efc18641473fa68dacd7f54f31a90aa1b.wav",
+      "sha256": "c711c6bec0097b01d74d90839a4d6c29a8790647bbd3afeec280774ad75a3909",
+      "expected": "早上好，年轻人。请给我一杯豆浆。",
+      "recognized": "早上好年轻人请给我一杯豆浆"
+    },
+    {
+      "file": "line-e756047972fc829165e2ca4f0f9f13c40c1b02f8dc94e8116180e111a396816c.wav",
+      "sha256": "37f62966310a6627956505404ceab7ff5697c2101e2af2e432b6c274a626d1cd",
+      "expected": "不对，我要豆浆。",
+      "recognized": "不对 我要豆浆"
+    },
+    {
+      "file": "line-aa4ed24a26a593973279ebe664cfff1b1241682cf17d0e2fee03508224ecde88.wav",
+      "sha256": "bad3e4e2d9c83246b6ac71672339b6d472cd38e5062b78043d6332ae123b219f",
+      "expected": "谢谢你！",
+      "recognized": "謝謝你"
+    },
+    {
+      "file": "line-60ee82fdaf489803f5b64b4578ec054294c5b240d1f13d1c4c485ebbfde4b834.wav",
+      "sha256": "09b00ea614a466598885d7102721ca0fda4f40357c088657d63aeec42669dc94",
+      "expected": "我还想要一个鸡蛋。",
+      "recognized": "我还想要一个祭炭"
+    },
+    {
+      "file": "line-781984e84c2d96144788e190c7527bab41486694e474141d82437bcb01f377ca.wav",
+      "sha256": "9f8a573e0818ffa63eb9ed85f0b2157874d4aeb39065cf29ff85e06c8e24159a",
+      "expected": "不对，我要鸡蛋。",
+      "recognized": "我要鰭蛋"
+    },
+    {
+      "file": "line-f8c7a10d6944e2c84304d52a08300578d078efc600b295e85527303f6a5b7292.wav",
+      "sha256": "dd2dd017bb62acee753d73678219a548e4bc131f6f94b379d9a6191ed5c05cc4",
+      "expected": "谢谢，谢谢！",
+      "recognized": "谢谢 谢谢"
+    }
+  ]
+}
