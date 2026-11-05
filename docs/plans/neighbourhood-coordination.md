@@ -1,0 +1,36 @@
+# Neighbourhood coordination
+
+Central owner: apartment lead. Published branch: `codex/0065-neighbourhood-coordination`.
+Baseline inspected 2026-11-05: remote main `66ac123fa377f0cdbfb30f5c8bad07edf28790e4`; remote branches/PRs reserve through 0064. Only this owner allocates further IDs.
+
+| Ticket | Owner | Branch slug | Strict Vite port | Exclusive files |
+|---|---|---|---|---|
+|0065|apartment lead|neighbourhood-coordination|5465|this ledger, apartment plan, initial tickets 0065–0070|
+|0066|one Sol medium integration writer|neighbourhood-foundation|5466|src/neighbourhood shared contracts/shell/save/content registry; App.tsx, contracts.ts, game.ts, save.ts, opening.ts, content/index.ts and words.ts, shared styles, offline tooling and integration tests|
+|0067|apartment Sol medium writer|apartment-home|5467|src/features/apartment/**, public/audio/apartment/**, e2e/apartment.spec.ts, evidence/0067 and ticket 0067|
+|0068|cats lead + one Sol medium writer|neighbourhood-cats|5468|src/features/cats/**, public/audio/cats/**, e2e/cats.spec.ts, docs/plans/neighbourhood-cats.md, evidence/0068 and ticket 0068|
+|0069|repairs lead + one Sol medium writer|repair-workshop|5469|src/features/repairs/**, public/audio/repairs/**, e2e/repairs.spec.ts, docs/plans/repair-workshop.md, evidence/0069 and ticket 0069|
+|0070|garden lead + one Sol medium writer|rooftop-garden|5470|src/features/garden/**, public/audio/garden/**, e2e/garden.spec.ts, docs/plans/rooftop-garden.md, evidence/0070 and ticket 0070|
+
+Branches use `codex/NNNN-slug`; each writer creates its own cloud checkout. No dependencies change. All four features only; no postperson or coffee shop implementation. Main stays untouched; draft PRs only. Cross-review by a different agent without edits before any future authorized merge.
+
+## Existing leases
+0061 currently edits App.tsx/word-card focus; 0063 awaits that lease for ambience integration. 0058/0060/0062 own shared voice/content work; 0059 owns ward renderer. 0066 may build isolated foundation files now but MUST wait for explicit lease handoff before changing overlapping files. Parent must relay handoffs: this runtime has no send-message-to-thread tool. Do not overwrite their work or assume main contains their PRs.
+
+## Minimal integration contract v1
+
+- Location IDs: `restaurant | apartment | cats | repairs | garden`. Hospital remains the mandatory opening. After opening, an optional home/location control permits visiting the building without resetting the restaurant session. Returning restores its exact state. No navigation during the opening.
+- Existing restaurant `GameState.day` remains authoritative. Only existing completed-day progression advances it. Feature visits/actions never advance time or add a second clock. Pass `day: number` to each feature; per-day opportunities use stored last-claimed day, not wall time. Free decorating always remains available.
+- No new currency or global generic inventory in this tranche. Restaurant earnings unchanged. Feature-owned inventories hold local items. Cross-feature rewards are idempotent gift IDs: `repairs.stool`, `garden.planter`, `cats.cushion`; apartment accepts each once and retains it. These are optional enrichment, never gates for other features. Integration owns delivery/claim bookkeeping.
+- Shared saved neighbourhood envelope is version 1 with location and feature fields (`apartment`, `cats`, `repairs`, `garden`) plus claimed gift IDs. Keep existing IndexedDB restaurant save and migration behavior; add backward-compatible optional neighbourhood state. Old valid restaurant saves initialize empty neighbourhood state, without replaying opening. Invalid feature payload resets only that feature, preserving valid restaurant progress and other features. No independent feature storage or localStorage.
+- Each feature exports default React view from `src/features/<id>/index.tsx` and pure reducer/initial state/validation from `rules.ts`. View props: `{state, day, onAction, onLookup, onRecover, onPlay}`; callbacks: action object, `(word: Word, trigger: HTMLButtonElement)`, `(wordIds: string[])`, `(line: Line)`. Feature exports `initialState()`, `reduce(state, action, day)`, `validate(value): State | null`, and `gifts(state): string[]`. Integration imports feature types directly; do not edit central types from feature branches.
+- Each feature owns schema-validated `content.json` and `content.ts` exporting `words: Word[]` and `lines: Line[]`. IDs and line IDs are prefixed `apartment.`, `cats.`, `repairs.`, `garden.`. Reuse existing canonical words where genuinely identical. Integration registers words for shared journal/lookups and offline enumeration. Spoken content uses existing Word/Line schema shape and committed accurate offline clips. No browser TTS, silent placeholder clips, or unrelated clip relabeling. Report unavailable cloud synthesis as a blocker.
+- Existing WordToken/fog/recovery and single playback controller are reused via props. Successful meaningful actions recover only related words; lookup remains lookup. No decorating vocabulary gate. Shared journal and word card remain DOM text, pinyin tap-only, no English after premise.
+- Pixel/isometric style is mandatory (decision 0003 supersedes 0002 art). Feature-local scenes may import existing renderer primitives but cannot edit restaurant/ward renderer. All labels/dialogue real segmented DOM; tokens govern UI, 44px controls, reduced-motion and hidden-tab suspension.
+- Integration tests require actual route accessibility, reload/old-save migration and all four feature journeys; feature workers provide isolated harnesses if shared App integration is waiting. Harness completion is not integrated completion.
+
+## Capability and verification
+Native collaboration spawn accepted `gpt-6.1-sol` / `medium` / fresh context; probe `/root/cloud_probe` confirmed Linux `/workspace` and `/workspace/junyan`. Child has no independent model metadata. No local workers. Current managed cloud configuration ID differs from requested saved runnable Codex configuration; current checkout and cloud filesystem are verified, configuration equivalence is not claimed.
+Executor skill discovery returned no skills; show-me skill not found yet. PRs must explicitly report this if discovery remains unsuccessful and include accurate GitHub-compatible visuals without claiming skill use.
+
+Every completed feature needs pure Vitest tests, build, existing opening→3+ customers→change→journal journey, feature journey, inspected phone/desktop screenshots, clean console, offline assets/audio, reload and migration evidence. Missing verification stays listed as incomplete. No AWS writes, deploys, main merges or GitHub CLI.
