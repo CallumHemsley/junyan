@@ -9,7 +9,7 @@ import shutil
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[2]
-REF = '64edaa7fe7d83264bbaac14b445d7ad1d9b94f13'
+REF = '10d34263df55efb14d28b5c3cc21f915f01b98e1'
 PREFIX = 'docs/evidence/0062/selected-punctuation/'
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--output', type=Path, required=True)
@@ -34,7 +34,7 @@ records = {entry['filename']: entry for entry in manifest['clips']}
 if len(records) != len(manifest['clips']):
     raise ValueError('Duplicate production manifest filenames')
 rejected = 'line-71cc826bfe95375cd38207f20368356df6c5fefc9fb79f99b309065b8fb382d9.wav'
-rows = [row for row in json.loads(support('inventory.json')) if row['lineId'] != 'zhang-retry']
+rows = json.loads(support('selected-inventory.json'))
 entries = [entry for entry in json.loads(support('manifest-entries.json'))['clips'] if entry['filename'] != rejected]
 selected = {entry['filename']: entry for entry in entries}
 lines = {line['id']: line for line in restaurant(content)}
@@ -81,8 +81,21 @@ if lines['zhang-retry'] != next(line for line in restaurant(original) if line['i
     raise ValueError('Original teacher retry was modified')
 new_entries = [entry for entry in entries if entry['filename'] not in records]
 manifest['clips'].extend(new_entries)
+def audio_refs(value):
+    if isinstance(value, dict):
+        return set().union(*(audio_refs(item) for item in value.values())) if value else set()
+    if isinstance(value, list):
+        return set().union(*(audio_refs(item) for item in value)) if value else set()
+    return {value.removeprefix('/audio/')} if isinstance(value, str) and value.startswith('/audio/') else set()
+references = audio_refs(content)
+original_lines = {line['id']: line for line in restaurant(original)}
+replaced_old = {Path(original_lines[row['lineId']]['audio']).name for row in rows}
+retired = sorted(replaced_old - references)
+manifest['clips'] = [entry for entry in manifest['clips'] if entry['filename'] not in retired]
 out.mkdir(parents=True)
 shutil.copytree(ROOT / 'public/audio', out / 'audio')
+for name in retired:
+    (out / 'audio' / name).unlink()
 for name, data in files.items():
     (out / 'audio' / name).write_bytes(data)
     if not pipeline['cache_valid'](jobs[name], out / 'audio', selected):
@@ -92,7 +105,7 @@ for name, data in files.items():
 (out / 'audio/manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
 report = dict(supportCommit=REF, checkoutHead=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
               targetedLines=23, acceptedThanksUnchanged=4, addedManifestRecords=len(new_entries),
-              retiredFiles=0, productionWritten=False, approvalStatus="ROOT_SELECTED_23_PENDING_LEASE_AND_FINAL_REVIEW",
+              retiredFiles=retired, productionWritten=False, approvalStatus="ROOT_SELECTED_23_PENDING_LEASE_AND_FINAL_REVIEW",
               retainedOriginalLineIds=["zhang-retry"], rejectedCandidate=rejected,
               inputHashes={str(p):sha256((ROOT/p).read_bytes()).hexdigest() for p in ('src/content/content.json','src/content/voices.json','public/audio/manifest.json')})
 (out / 'import-report.json').write_text(json.dumps(report, indent=2) + '\n')
