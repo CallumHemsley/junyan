@@ -967,3 +967,30 @@ h2 {
 @media (prefers-reduced-motion: reduce) {
   .tile.given { transform: none; }
 }
+
+/* Keep the lookup sources in a separate scroll area above the word card. */
+.word-card-open { --word-card-space: 200px; }
+.word-card-open .modal-backdrop { bottom: var(--word-card-space); }
+.word-card-open .paper-panel { max-height: 100%; }
+.word-card-open > main {
+  max-height: calc(100dvh - 100px - var(--word-card-space));
+  overflow-y: auto;
+}
+.word-card-open .word-popover {
+  bottom: var(--space-12);
+  right: var(--space-16);
+  width: min(360px, calc(100vw - 32px));
+  height: 176px;
+  padding: var(--space-16) var(--space-24);
+  overflow: auto;
+}
+.word-card-open .word-card-title { margin-top: var(--space-4); padding-right: var(--space-24); }
+.word-card-open .word-card-title h2 { margin: 0; }
+.word-card-open .word-popover .food-art {
+  position: absolute;
+  right: var(--space-24);
+  bottom: var(--space-12);
+  width: 64px;
+  height: 48px;
+  margin: 0;
+}

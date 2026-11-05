@@ -1,7 +1,7 @@
 ---
 id: 61
 title: Switch the open word card when another word is tapped
-status: todo
+status: doing
 priority: medium
 type: bug
 created: 2026-11-05
@@ -25,3 +25,5 @@ Tapping a word correctly opens its card and speaks it aloud, but Callum cannot t
 - Expected interaction: tap A → card A + audio A → tap B → card B + audio B, with no close step.
 - Starting points: `src/App.tsx` (`lookup`, `wordCard`, overlay focus and inert handling), `src/HospitalOpening.tsx`, `e2e/overlay-focus.spec.ts`, `e2e/learning-help.spec.ts` and the audio browser suite.
 - [[tickets/0025-word-card-focus]] introduced the existing nested-overlay focus rules. Adapt those rules deliberately for direct word switching and keep parent-panel dismissal and focus restoration correct.
+
+- Owner: Codex ticket 0061 worker; branch `codex/0061-switch-word-card-directly`; checkout `/workspace/junyan-0061`; strict dev/preview ports `5404`/`5405`; evidence `docs/evidence/0061-switch-word-card-directly.md`.
