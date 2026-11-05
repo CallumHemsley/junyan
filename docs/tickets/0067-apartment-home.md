@@ -1,7 +1,7 @@
 ---
 id: 67
 title: Make a freely furnished apartment home playable
-status: todo
+status: blocked
 priority: high
 type: feature
 created: 2026-11-05
@@ -28,3 +28,7 @@ One writer/branch/cloud checkout and strict port as assigned there. No edits out
 
 Estimate: 1–2 engineering days for a bounded slice plus review; synthesis access may block completion.
 Owner, worker ID, branch, checkout, exact commands, evidence and remaining blockers must be recorded here by writer.
+
+Worker: `/root/apartment_writer`; requested model `gpt-6.1-sol`, reasoning `medium` (runtime has no independent model introspection). Branch `codex/0067-apartment-home`, cloud checkout `/workspace/junyan-apartment`, strict Vite port `5467`.
+
+Checkpoint implementation is present; release is blocked by 47 missing new voice references and pending shared route/save integration. See `docs/evidence/0067/README.md` for exact runs, screenshot inspections, ownership boundaries and remaining checks. No feature completion or native playback claim.

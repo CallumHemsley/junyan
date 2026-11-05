@@ -1,0 +1,657 @@
+{
+  "words": [
+    {
+      "id": "table",
+      "hanzi": "桌子",
+      "pinyin": "zhuōzi",
+      "gloss": "table",
+      "audio": "/audio/word-526c55e9729de39d0be36dab6d84afdbcd1450f29ab2f9ede22d7eea165cab0f.wav"
+    },
+    {
+      "id": "apartment.chair",
+      "hanzi": "椅子",
+      "pinyin": "yǐ zi",
+      "gloss": "chair",
+      "audio": "/audio/apartment/word-chair.wav"
+    },
+    {
+      "id": "apartment.window",
+      "hanzi": "窗户",
+      "pinyin": "chuāng hu",
+      "gloss": "window",
+      "audio": "/audio/apartment/word-window.wav"
+    },
+    {
+      "id": "apartment.beside",
+      "hanzi": "旁边",
+      "pinyin": "páng biān",
+      "gloss": "beside",
+      "audio": "/audio/apartment/word-beside.wav"
+    },
+    {
+      "id": "apartment.left",
+      "hanzi": "左边",
+      "pinyin": "zuǒ biān",
+      "gloss": "left side",
+      "audio": "/audio/apartment/word-left.wav"
+    },
+    {
+      "id": "apartment.right",
+      "hanzi": "右边",
+      "pinyin": "yòu biān",
+      "gloss": "right side",
+      "audio": "/audio/apartment/word-right.wav"
+    },
+    {
+      "id": "apartment.small",
+      "hanzi": "小",
+      "pinyin": "xiǎo",
+      "gloss": "small",
+      "audio": "/audio/apartment/word-small.wav"
+    },
+    {
+      "id": "apartment.large",
+      "hanzi": "大",
+      "pinyin": "dà",
+      "gloss": "large",
+      "audio": "/audio/apartment/word-large.wav"
+    },
+    {
+      "id": "apartment.blue",
+      "hanzi": "蓝色",
+      "pinyin": "lán sè",
+      "gloss": "blue",
+      "audio": "/audio/apartment/word-blue.wav"
+    },
+    {
+      "id": "apartment.cream",
+      "hanzi": "米色",
+      "pinyin": "mǐ sè",
+      "gloss": "cream colour",
+      "audio": "/audio/apartment/word-cream.wav"
+    },
+    {
+      "id": "apartment.put",
+      "hanzi": "放",
+      "pinyin": "fàng",
+      "gloss": "put",
+      "audio": "/audio/apartment/word-put.wav"
+    },
+    {
+      "id": "apartment.turn",
+      "hanzi": "转",
+      "pinyin": "zhuǎn",
+      "gloss": "rotate",
+      "audio": "/audio/apartment/word-turn.wav"
+    },
+    {
+      "id": "apartment.store",
+      "hanzi": "收起来",
+      "pinyin": "shōu qǐ lái",
+      "gloss": "put away",
+      "audio": "/audio/apartment/word-store.wav"
+    },
+    {
+      "id": "apartment.can",
+      "hanzi": "可以",
+      "pinyin": "kě yǐ",
+      "gloss": "can; okay",
+      "audio": "/audio/apartment/word-can.wav"
+    },
+    {
+      "id": "apartment.here",
+      "hanzi": "这里",
+      "pinyin": "zhè lǐ",
+      "gloss": "here",
+      "audio": "/audio/apartment/word-here.wav"
+    },
+    {
+      "id": "apartment.at",
+      "hanzi": "在",
+      "pinyin": "zài",
+      "gloss": "at",
+      "audio": "/audio/apartment/word-at.wav"
+    },
+    {
+      "id": "apartment.also",
+      "hanzi": "也",
+      "pinyin": "yě",
+      "gloss": "also",
+      "audio": "/audio/apartment/word-also.wav"
+    },
+    {
+      "id": "apartment.this",
+      "hanzi": "这个",
+      "pinyin": "zhè ge",
+      "gloss": "this one",
+      "audio": "/audio/apartment/word-this.wav"
+    },
+    {
+      "id": "apartment.too",
+      "hanzi": "太",
+      "pinyin": "tài",
+      "gloss": "too",
+      "audio": "/audio/apartment/word-too.wav"
+    },
+    {
+      "id": "le",
+      "hanzi": "了",
+      "pinyin": "le",
+      "gloss": "completed action particle",
+      "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+    },
+    {
+      "id": "apartment.once",
+      "hanzi": "一下",
+      "pinyin": "yí xià",
+      "gloss": "a little; once",
+      "audio": "/audio/apartment/word-once.wav"
+    },
+    {
+      "id": "apartment.thus",
+      "hanzi": "这样",
+      "pinyin": "zhè yàng",
+      "gloss": "like this",
+      "audio": "/audio/apartment/word-thus.wav"
+    },
+    {
+      "id": "and",
+      "hanzi": "和",
+      "pinyin": "hé",
+      "gloss": "and",
+      "audio": "/audio/word-3a31214de3ca0c356664730581b3b93c7bfda6c9d6cb6f6894621ee94d3b4a3e.wav"
+    },
+    {
+      "id": "give",
+      "hanzi": "给",
+      "pinyin": "gěi",
+      "gloss": "give",
+      "audio": "/audio/word-0ba6b6f23f23cfc1f9a01442d9c2dd7dfcfa1593a3529fe82eba81feed7c9067.wav"
+    },
+    {
+      "id": "you",
+      "hanzi": "你",
+      "pinyin": "nǐ",
+      "gloss": "you",
+      "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
+    },
+    {
+      "id": "apartment.bed",
+      "hanzi": "床",
+      "pinyin": "chuáng",
+      "gloss": "bed",
+      "audio": "/audio/apartment/word-bed.wav"
+    },
+    {
+      "id": "apartment.rug",
+      "hanzi": "地毯",
+      "pinyin": "dì tǎn",
+      "gloss": "rug",
+      "audio": "/audio/apartment/word-rug.wav"
+    },
+    {
+      "id": "apartment.cushion",
+      "hanzi": "靠垫",
+      "pinyin": "kào diàn",
+      "gloss": "cushion",
+      "audio": "/audio/apartment/word-cushion.wav"
+    },
+    {
+      "id": "apartment.stool",
+      "hanzi": "凳子",
+      "pinyin": "dèng zi",
+      "gloss": "stool",
+      "audio": "/audio/apartment/word-stool.wav"
+    },
+    {
+      "id": "apartment.plant",
+      "hanzi": "盆栽",
+      "pinyin": "pén zāi",
+      "gloss": "potted plant",
+      "audio": "/audio/apartment/word-plant.wav"
+    },
+    {
+      "id": "apartment.cat",
+      "hanzi": "猫",
+      "pinyin": "māo",
+      "gloss": "cat",
+      "audio": "/audio/apartment/word-cat.wav"
+    },
+    {
+      "id": "apartment.vase",
+      "hanzi": "花瓶",
+      "pinyin": "huā píng",
+      "gloss": "vase",
+      "audio": "/audio/apartment/word-vase.wav"
+    },
+    {
+      "id": "apartment.basket",
+      "hanzi": "篮子",
+      "pinyin": "lán zi",
+      "gloss": "basket",
+      "audio": "/audio/apartment/word-basket.wav"
+    },
+    {
+      "id": "apartment.lamp",
+      "hanzi": "灯",
+      "pinyin": "dēng",
+      "gloss": "lamp",
+      "audio": "/audio/apartment/word-lamp.wav"
+    },
+    {
+      "id": "apartment.home",
+      "hanzi": "家",
+      "pinyin": "jiā",
+      "gloss": "home",
+      "audio": "/audio/apartment/word-home.wav"
+    },
+    {
+      "id": "apartment.lin",
+      "hanzi": "林姐",
+      "pinyin": "Lín jiě",
+      "gloss": "Sister Lin",
+      "audio": "/audio/apartment/word-lin.wav"
+    },
+    {
+      "id": "apartment.door",
+      "hanzi": "门",
+      "pinyin": "mén",
+      "gloss": "door",
+      "audio": "/audio/apartment/word-door.wav"
+    },
+    {
+      "id": "apartment.find",
+      "hanzi": "找到",
+      "pinyin": "zhǎo dào",
+      "gloss": "find",
+      "audio": "/audio/apartment/word-find.wav"
+    },
+    {
+      "id": "apartment.one",
+      "hanzi": "一个",
+      "pinyin": "yí ge",
+      "gloss": "one",
+      "audio": "/audio/apartment/word-one.wav"
+    },
+    {
+      "id": "no",
+      "hanzi": "不",
+      "pinyin": "bù",
+      "gloss": "not",
+      "audio": "/audio/word-87ff64a00c0e6c135b269796a1283550b2c2058bf404f6ba168c03230be9e413.wav"
+    },
+    {
+      "id": "apartment.first",
+      "hanzi": "先",
+      "pinyin": "xiān",
+      "gloss": "first",
+      "audio": "/audio/apartment/word-first.wav"
+    },
+    {
+      "id": "apartment.change",
+      "hanzi": "换",
+      "pinyin": "huàn",
+      "gloss": "change",
+      "audio": "/audio/apartment/word-change.wav"
+    },
+    {
+      "id": "look",
+      "hanzi": "看看",
+      "pinyin": "kànkan",
+      "gloss": "take a look",
+      "audio": "/audio/word-4d253f356b3a9045ad43aa48d02890cb6eb7f37f4051b46c45561259a4657f77.wav"
+    }
+  ],
+  "lines": [
+    {
+      "id": "apartment.welcome",
+      "tokens": [
+        {
+          "id": "table",
+          "hanzi": "桌子",
+          "pinyin": "zhuōzi",
+          "gloss": "table",
+          "audio": "/audio/word-526c55e9729de39d0be36dab6d84afdbcd1450f29ab2f9ede22d7eea165cab0f.wav"
+        },
+        {
+          "id": "and",
+          "hanzi": "和",
+          "pinyin": "hé",
+          "gloss": "and",
+          "audio": "/audio/word-3a31214de3ca0c356664730581b3b93c7bfda6c9d6cb6f6894621ee94d3b4a3e.wav"
+        },
+        {
+          "id": "apartment.chair",
+          "hanzi": "椅子",
+          "pinyin": "yǐ zi",
+          "gloss": "chair",
+          "audio": "/audio/apartment/word-chair.wav"
+        },
+        {
+          "id": "give",
+          "hanzi": "给",
+          "pinyin": "gěi",
+          "gloss": "give",
+          "audio": "/audio/word-0ba6b6f23f23cfc1f9a01442d9c2dd7dfcfa1593a3529fe82eba81feed7c9067.wav"
+        },
+        {
+          "id": "you",
+          "hanzi": "你",
+          "pinyin": "nǐ",
+          "gloss": "you",
+          "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
+        }
+      ],
+      "audio": "/audio/apartment/line-welcome.wav",
+      "text": "桌子和椅子给你。"
+    },
+    {
+      "id": "apartment.window",
+      "tokens": [
+        {
+          "id": "table",
+          "hanzi": "桌子",
+          "pinyin": "zhuōzi",
+          "gloss": "table",
+          "audio": "/audio/word-526c55e9729de39d0be36dab6d84afdbcd1450f29ab2f9ede22d7eea165cab0f.wav"
+        },
+        {
+          "id": "apartment.put",
+          "hanzi": "放",
+          "pinyin": "fàng",
+          "gloss": "put",
+          "audio": "/audio/apartment/word-put.wav"
+        },
+        {
+          "id": "apartment.at",
+          "hanzi": "在",
+          "pinyin": "zài",
+          "gloss": "at",
+          "audio": "/audio/apartment/word-at.wav"
+        },
+        {
+          "id": "apartment.window",
+          "hanzi": "窗户",
+          "pinyin": "chuāng hu",
+          "gloss": "window",
+          "audio": "/audio/apartment/word-window.wav"
+        },
+        {
+          "id": "apartment.beside",
+          "hanzi": "旁边",
+          "pinyin": "páng biān",
+          "gloss": "beside",
+          "audio": "/audio/apartment/word-beside.wav"
+        }
+      ],
+      "audio": "/audio/apartment/line-window.wav",
+      "text": "桌子放在窗户旁边。"
+    },
+    {
+      "id": "apartment.left",
+      "tokens": [
+        {
+          "id": "apartment.chair",
+          "hanzi": "椅子",
+          "pinyin": "yǐ zi",
+          "gloss": "chair",
+          "audio": "/audio/apartment/word-chair.wav"
+        },
+        {
+          "id": "apartment.put",
+          "hanzi": "放",
+          "pinyin": "fàng",
+          "gloss": "put",
+          "audio": "/audio/apartment/word-put.wav"
+        },
+        {
+          "id": "apartment.at",
+          "hanzi": "在",
+          "pinyin": "zài",
+          "gloss": "at",
+          "audio": "/audio/apartment/word-at.wav"
+        },
+        {
+          "id": "apartment.left",
+          "hanzi": "左边",
+          "pinyin": "zuǒ biān",
+          "gloss": "left side",
+          "audio": "/audio/apartment/word-left.wav"
+        }
+      ],
+      "audio": "/audio/apartment/line-left.wav",
+      "text": "椅子放在左边。"
+    },
+    {
+      "id": "apartment.right",
+      "tokens": [
+        {
+          "id": "apartment.put",
+          "hanzi": "放",
+          "pinyin": "fàng",
+          "gloss": "put",
+          "audio": "/audio/apartment/word-put.wav"
+        },
+        {
+          "id": "apartment.at",
+          "hanzi": "在",
+          "pinyin": "zài",
+          "gloss": "at",
+          "audio": "/audio/apartment/word-at.wav"
+        },
+        {
+          "id": "apartment.right",
+          "hanzi": "右边",
+          "pinyin": "yòu biān",
+          "gloss": "right side",
+          "audio": "/audio/apartment/word-right.wav"
+        },
+        {
+          "id": "apartment.also",
+          "hanzi": "也",
+          "pinyin": "yě",
+          "gloss": "also",
+          "audio": "/audio/apartment/word-also.wav"
+        },
+        {
+          "id": "apartment.can",
+          "hanzi": "可以",
+          "pinyin": "kě yǐ",
+          "gloss": "can; okay",
+          "audio": "/audio/apartment/word-can.wav"
+        }
+      ],
+      "audio": "/audio/apartment/line-right.wav",
+      "text": "放在右边也可以。"
+    },
+    {
+      "id": "apartment.large",
+      "tokens": [
+        {
+          "id": "apartment.this",
+          "hanzi": "这个",
+          "pinyin": "zhè ge",
+          "gloss": "this one",
+          "audio": "/audio/apartment/word-this.wav"
+        },
+        {
+          "id": "apartment.too",
+          "hanzi": "太",
+          "pinyin": "tài",
+          "gloss": "too",
+          "audio": "/audio/apartment/word-too.wav"
+        },
+        {
+          "id": "apartment.large",
+          "hanzi": "大",
+          "pinyin": "dà",
+          "gloss": "large",
+          "audio": "/audio/apartment/word-large.wav"
+        },
+        {
+          "id": "le",
+          "hanzi": "了",
+          "pinyin": "le",
+          "gloss": "completed action particle",
+          "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+        }
+      ],
+      "audio": "/audio/apartment/line-large.wav",
+      "text": "这个太大了。"
+    },
+    {
+      "id": "apartment.rotate",
+      "tokens": [
+        {
+          "id": "apartment.turn",
+          "hanzi": "转",
+          "pinyin": "zhuǎn",
+          "gloss": "rotate",
+          "audio": "/audio/apartment/word-turn.wav"
+        },
+        {
+          "id": "apartment.once",
+          "hanzi": "一下",
+          "pinyin": "yí xià",
+          "gloss": "a little; once",
+          "audio": "/audio/apartment/word-once.wav"
+        }
+      ],
+      "audio": "/audio/apartment/line-rotate.wav",
+      "text": "转一下。"
+    },
+    {
+      "id": "apartment.okay",
+      "tokens": [
+        {
+          "id": "apartment.thus",
+          "hanzi": "这样",
+          "pinyin": "zhè yàng",
+          "gloss": "like this",
+          "audio": "/audio/apartment/word-thus.wav"
+        },
+        {
+          "id": "apartment.can",
+          "hanzi": "可以",
+          "pinyin": "kě yǐ",
+          "gloss": "can; okay",
+          "audio": "/audio/apartment/word-can.wav"
+        }
+      ],
+      "audio": "/audio/apartment/line-okay.wav",
+      "text": "这样可以。"
+    },
+    {
+      "id": "apartment.blocked",
+      "tokens": [
+        {
+          "id": "apartment.here",
+          "hanzi": "这里",
+          "pinyin": "zhè lǐ",
+          "gloss": "here",
+          "audio": "/audio/apartment/word-here.wav"
+        },
+        {
+          "id": "apartment.first",
+          "hanzi": "先",
+          "pinyin": "xiān",
+          "gloss": "first",
+          "audio": "/audio/apartment/word-first.wav"
+        },
+        {
+          "id": "no",
+          "hanzi": "不",
+          "pinyin": "bù",
+          "gloss": "not",
+          "audio": "/audio/word-87ff64a00c0e6c135b269796a1283550b2c2058bf404f6ba168c03230be9e413.wav"
+        },
+        {
+          "id": "apartment.put",
+          "hanzi": "放",
+          "pinyin": "fàng",
+          "gloss": "put",
+          "audio": "/audio/apartment/word-put.wav"
+        }
+      ],
+      "audio": "/audio/apartment/line-blocked.wav",
+      "text": "这里先不放。"
+    },
+    {
+      "id": "apartment.stored",
+      "tokens": [
+        {
+          "id": "apartment.first",
+          "hanzi": "先",
+          "pinyin": "xiān",
+          "gloss": "first",
+          "audio": "/audio/apartment/word-first.wav"
+        },
+        {
+          "id": "apartment.store",
+          "hanzi": "收起来",
+          "pinyin": "shōu qǐ lái",
+          "gloss": "put away",
+          "audio": "/audio/apartment/word-store.wav"
+        }
+      ],
+      "audio": "/audio/apartment/line-stored.wav",
+      "text": "先收起来。"
+    },
+    {
+      "id": "apartment.gift",
+      "tokens": [
+        {
+          "id": "apartment.this",
+          "hanzi": "这个",
+          "pinyin": "zhè ge",
+          "gloss": "this one",
+          "audio": "/audio/apartment/word-this.wav"
+        },
+        {
+          "id": "give",
+          "hanzi": "给",
+          "pinyin": "gěi",
+          "gloss": "give",
+          "audio": "/audio/word-0ba6b6f23f23cfc1f9a01442d9c2dd7dfcfa1593a3529fe82eba81feed7c9067.wav"
+        },
+        {
+          "id": "you",
+          "hanzi": "你",
+          "pinyin": "nǐ",
+          "gloss": "you",
+          "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
+        }
+      ],
+      "audio": "/audio/apartment/line-gift.wav",
+      "text": "这个给你。"
+    },
+    {
+      "id": "apartment.colour",
+      "tokens": [
+        {
+          "id": "apartment.change",
+          "hanzi": "换",
+          "pinyin": "huàn",
+          "gloss": "change",
+          "audio": "/audio/apartment/word-change.wav"
+        },
+        {
+          "id": "apartment.one",
+          "hanzi": "一个",
+          "pinyin": "yí ge",
+          "gloss": "one",
+          "audio": "/audio/apartment/word-one.wav"
+        },
+        {
+          "id": "apartment.cushion",
+          "hanzi": "靠垫",
+          "pinyin": "kào diàn",
+          "gloss": "cushion",
+          "audio": "/audio/apartment/word-cushion.wav"
+        }
+      ],
+      "audio": "/audio/apartment/line-colour.wav",
+      "text": "换一个靠垫。"
+    }
+  ]
+}

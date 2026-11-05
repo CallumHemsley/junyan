@@ -1,0 +1,8 @@
+ts	phase	decision	why	evidence	result
+2026-11-05T18:55:00Z	contract	Keep all game transitions in a pure room reducer	The shared contract owns navigation and persistence	src/features/apartment/rules.ts	implemented
+2026-11-05T19:03:00Z	rules	Use separate rug and furniture collision layers	Furniture must be usable atop rugs	src/features/apartment/rules.test.ts	passed
+2026-11-05T19:05:00Z	verification	Use installed cloud Chromium	Playwright browser download was blocked by proxy policy	docs/evidence/0067/playwright.config.ts	browser runs passed
+2026-11-05T19:08:00Z	visual	Replace the vector draft with the existing pixel renderer	Inspected screenshots did not match the restaurant style	src/features/apartment/scene-data.ts	refreshed screenshots inspected
+2026-11-05T19:10:00Z	review	Play the reducer resulting notice and use projected chair position	Review found spoken and visible sentence mismatches	src/features/apartment/index.tsx	fixed and tested
+2026-11-05T19:14:00Z	performance	Bake the room once and draw previews dynamically	Repeated floor movement must not rebuild static geometry	src/features/apartment/Scene.tsx	four isolated browser tests passed
+2026-11-05T19:15:00Z	audio	Leave new voice references unavailable and report the release block	Exact new speech could not be synthesized through current cloud access	docs/evidence/0067/audio-availability.json	47 references missing
