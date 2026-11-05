@@ -1,0 +1,37 @@
+{
+  "model": "openai/whisper-small",
+  "revision": "973afd24965f72e36ca33b3055d56a652f456b4d",
+  "method": "Local CPU transcription with language/task only; no expected script prompt; no audio uploaded. ASR is not a listening, naturalness or tone judgement.",
+  "clips": [
+    {
+      "file": "tail.wav",
+      "sha256": "33b59695cf73542d32ce999b7fd1b4fa687d76c893606a1c07c8053d88297cbd",
+      "expected": "unprompted final3s of zhang-retry",
+      "recognized": "呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵"
+    },
+    {
+      "file": "neutral-elder-milk.wav",
+      "sha256": "c711c6bec0097b01d74d90839a4d6c29a8790647bbd3afeec280774ad75a3909",
+      "expected": "早上好，年轻人。请给我一杯豆浆。",
+      "recognized": "早上好年轻人请给我一杯豆浆"
+    },
+    {
+      "file": "neutral-elder-egg-thanks.wav",
+      "sha256": "dd2dd017bb62acee753d73678219a548e4bc131f6f94b379d9a6191ed5c05cc4",
+      "expected": "谢谢，谢谢！",
+      "recognized": "谢谢 谢谢"
+    },
+    {
+      "file": "conversational-elder-milk.wav",
+      "sha256": "45ee239e1037b533a087a1272752e55256e808b25fdd20d62c6d8072d7f46175",
+      "expected": "早上好，年轻人。请给我一杯豆浆。",
+      "recognized": "早上好,年輕人,請給我一杯豆漿。"
+    },
+    {
+      "file": "conversational-elder-egg-thanks.wav",
+      "sha256": "8ced8b566b2cd7145aa1e2312439b9fbd170811fe908a6dd3939eb0fcd5517ba",
+      "expected": "谢谢，谢谢！",
+      "recognized": "謝謝"
+    }
+  ]
+}

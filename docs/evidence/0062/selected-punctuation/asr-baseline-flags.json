@@ -1,0 +1,31 @@
+{
+  "model": "openai/whisper-small",
+  "revision": "973afd24965f72e36ca33b3055d56a652f456b4d",
+  "method": "Local CPU transcription with language/task only; no expected script prompt; no audio uploaded. ASR is not a listening, naturalness or tone judgement.",
+  "clips": [
+    {
+      "file": "line-8b03f88459ad642e62ad8227d2794ab397a72345a3328970502bc8e558d4c5d2.wav",
+      "sha256": "fce957e9e9fd422b65af06e12f9fd55fce127aa060169454f8b93f69bd9e254d",
+      "expected": "早",
+      "recognized": "走"
+    },
+    {
+      "file": "line-5ac1be2a8b78cdfee1ad851249e2c7acb65608b235c34e853fb9cf5f793f842b.wav",
+      "sha256": "9756050fb2b2d0995b016588afaa69f43489fce9ea095f1513833ccfe7d57d2e",
+      "expected": "不对再看看吧",
+      "recognized": "部队再看看吧"
+    },
+    {
+      "file": "line-4f91607bbafecbcec2897ab11215d244f9acfc539402746b50994c9dcf17ed17.wav",
+      "sha256": "feed385c147ecf0158b5df880a3cd915f805848bab5f5044f4b7573d363ade71",
+      "expected": "慢慢来再看看",
+      "recognized": "慢慢來再看看"
+    },
+    {
+      "file": "line-3d78662da910760c1bc12114b94e6383f4befa56d9c7a925657e94433763d727.wav",
+      "sha256": "81345548063b19d4c87080c8ceaa478b30b8927898389012471a9a28115bb256",
+      "expected": "不对呀再看看吧",
+      "recognized": "布瑞雅再看看吧。"
+    }
+  ]
+}

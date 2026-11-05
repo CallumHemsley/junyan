@@ -1,0 +1,140 @@
+[
+  {
+    "lineId": "lin-greeting",
+    "text": "早上好。",
+    "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+    "sha256": "e5a3c7f15c3400880f2a048f2f70bb7407a5baec7a75ae8d85387308d68f7719"
+  },
+  {
+    "lineId": "lin-retry",
+    "text": "不急，慢慢来。",
+    "audio": "/audio/line-3d7917d1b4dd4058dfa03a998c4bb84c36c7048473e17b76b4050630a2d3ccd9.wav",
+    "sha256": "69e1be7ba95c2095b1fa8a050b5d9df357900060d4008c5af4213d9efdbdf595"
+  },
+  {
+    "lineId": "lin-thanks",
+    "text": "麻烦你了，谢谢。",
+    "audio": "/audio/line-7cec562dce16587a3d3072fb7e37ef728c1e652e315d18c300266abffb223067.wav",
+    "sha256": "8f3fb8e9abef8e79b94a0c79c4fb3c075b06a954f51c66fdacb1f0d15c9b3cdd"
+  },
+  {
+    "lineId": "li-greeting",
+    "text": "早。",
+    "audio": "/audio/line-4645e9d319dffae8ba4e60bdf21c4da0b4b8f04ff9a9a685ef5ab8aad0428990.wav",
+    "sha256": "d9ccf4e50cee1f1bfe71301f5b8bcf7cc81480bb4553edd6038643ffaaddbee5"
+  },
+  {
+    "lineId": "li-retry",
+    "text": "不对，再看看吧。",
+    "audio": "/audio/line-cef95ca46aae69f97040d9deaf01e8be98e20cd8bff0471ed19d960de7691b7a.wav",
+    "sha256": "d8392765e548e37ac2c8159db60400655044a3550536ac42d357a34ac24b9006"
+  },
+  {
+    "lineId": "li-thanks",
+    "text": "谢谢，明天见。",
+    "audio": "/audio/line-c580881e4df4be3b391064df89d91425a0c4762362e4fdef90362f82c81635ba.wav",
+    "sha256": "10f42b88d68b9b1d479cacc50f84fb6a9d155471f9d8afecd0e8fa9b634d38a9"
+  },
+  {
+    "lineId": "zhang-greeting",
+    "text": "早上好呀。",
+    "audio": "/audio/line-52fd645089c1ecdba676a87e53edd59f2945994e43c193930f3ca3cc97d86e2f.wav",
+    "sha256": "f64ce09b92d130bbbbe6aa2d26571dda272ea93814e6dd09280f6f06930e6078"
+  },
+  {
+    "lineId": "zhang-thanks",
+    "text": "辛苦了，谢谢。",
+    "audio": "/audio/line-f69b1fac2105310de9b77d39194a5024432b2523a9b0fcc4bd0d9f8b455a1fbf.wav",
+    "sha256": "8649120737cfff80ed07a43a9138a111d50a25e2564b3acdbde2a72ef25274dd"
+  },
+  {
+    "lineId": "zhou-greeting",
+    "text": "你好呀。",
+    "audio": "/audio/line-5f96eb1c67e3dd102a831876d26d9aa209cffa79ff7df4081e54b4bb10d53071.wav",
+    "sha256": "9a071809076d70b70eb890da9621cdf81f37b17cf0958bccdb9cdb2d86ac2dd0"
+  },
+  {
+    "lineId": "zhou-retry",
+    "text": "不对呀，再看看吧。",
+    "audio": "/audio/line-33a142ffd8e7d3eadaaa222b63deed34dc497bd8520d2ce1a052415b725a541a.wav",
+    "sha256": "fc480c4a80bfe42c17c88e0e433bf70f86a16d52512aaf6693d4d21c35fa29ee"
+  },
+  {
+    "lineId": "zhou-thanks",
+    "text": "谢谢你呀。",
+    "audio": "/audio/line-35edebfeb057c9643ee59691d94516ef3f2da7d0ec49e446d64dca9970698a30.wav",
+    "sha256": "0eb67d665f44db0c8c813fd5f6cef44f370d91451416cce57f7934b9b319817f"
+  },
+  {
+    "lineId": "order-01",
+    "text": "我想要一个包子。",
+    "audio": "/audio/line-bc2aada2cb0ccd83e698c6b0e9eca6bf96fc96aad382bcabb1fe7a82b8d105ca.wav",
+    "sha256": "617553ae2df324c92baa103f9430f97ba08be753f3417803706c5adfefcd7211"
+  },
+  {
+    "lineId": "order-02",
+    "text": "来一杯豆浆。",
+    "audio": "/audio/line-7429c0cef3ad319cb9b11fb2cf220d473810047abf41ff67f82439e159ea431c.wav",
+    "sha256": "8f8c5cb197028ff35104149759c16d5d2d4c739b0dbb42ee6b288f6d3a3d2f3c"
+  },
+  {
+    "lineId": "order-03",
+    "text": "请给我一碗粥。",
+    "audio": "/audio/line-0e301eac01478dc861304da61bfb916ab6360a4fa6c73f3df2e23acf756db299.wav",
+    "sha256": "d2475bbefafd476764da7fb0e661e090a73ef518eb8e2385421f502c710d5b4a"
+  },
+  {
+    "lineId": "order-04",
+    "text": "我要一根油条。",
+    "audio": "/audio/line-105b924034f77f52b94832eeba25277f34cb90c2eb8051c514b36946088de3ed.wav",
+    "sha256": "d4190523c655ec64e7cf995fa9f641d7d6391390563c7b7d54b87842729d3609"
+  },
+  {
+    "lineId": "order-05",
+    "text": "我想要两个馒头。",
+    "audio": "/audio/line-fad506807e7e24624ff6df945e25f97a6ecab99dabbe3708f1b625279ba3f7ac.wav",
+    "sha256": "3eb8ac0ef4b9b83650a694e3ec7a9827bfb33e985b9d409eaad028e47c8e9424"
+  },
+  {
+    "lineId": "order-06",
+    "text": "来两个鸡蛋。",
+    "audio": "/audio/line-917133517bb496b86b923ca14d1dbf9784ead47b65deff05856e6665b634238f.wav",
+    "sha256": "8641643084d038e80c86db5b5fca373bc2f3bb73c9f6ba7b26bb4c752ce22f41"
+  },
+  {
+    "lineId": "order-07",
+    "text": "请给我一碗饺子和一杯豆浆。",
+    "audio": "/audio/line-e307cb717e1da43f533955969fd05f035aec9227e2f286a5239e0643b11f4c66.wav",
+    "sha256": "cfe60f0aad569d39d78807a95ccfddd7ea74797ed5782ff1d1b2ade1a35e68db"
+  },
+  {
+    "lineId": "order-08",
+    "text": "我要一碗粥和一个馒头。",
+    "audio": "/audio/line-dd214215037e18257689436d57a7445b18cb84cb3a75f7362f5245f8895fe672.wav",
+    "sha256": "b7e4481d038e9345440083ec764d171f71184a9a6141fb82e0de471a42c2088b"
+  },
+  {
+    "lineId": "order-09",
+    "text": "我想要两个包子和一个鸡蛋和一杯豆浆。",
+    "audio": "/audio/line-9deb9de51f574978c1980e7e79ce6c252cd9187391d0a883f1dabed647f8864f.wav",
+    "sha256": "b2b0ee1ce491df13524912375c1f55da1fbaf88316d5862b2ede019eacb3f94a"
+  },
+  {
+    "lineId": "order-10",
+    "text": "来两根油条和两杯豆浆和一个鸡蛋。",
+    "audio": "/audio/line-aa52384df0e73ac76b61fda8a013858fae0aab4ebe882d6142102f8a681d4867.wav",
+    "sha256": "60d99975c1d901ce29eb6a6ee8c861ff94634f69f5a264691421e95d26e2b20d"
+  },
+  {
+    "lineId": "order-11",
+    "text": "请给我一碗饺子和一碗粥和两个馒头。",
+    "audio": "/audio/line-4dad7dbbc0da925447dca3a48fc986464a5b97f09f3870c72a2606a8bba37690.wav",
+    "sha256": "2391cb5b7807b51607c108b798b3f59e1a9e73f77b4baf1f80e45e2bf1dadca9"
+  },
+  {
+    "lineId": "order-12",
+    "text": "我要三个包子和两根油条和一杯豆浆。",
+    "audio": "/audio/line-57774764ba67309e2b91e97ae32fe0e1f318b4f80ff9b054e509e4a8b1bf3687.wav",
+    "sha256": "526739607da1a5d728cd943236a764f3ebb03e54582f7ef636e6158ef85fb6f4"
+  }
+]
