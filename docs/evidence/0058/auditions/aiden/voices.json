@@ -1,0 +1,106 @@
+{
+  "wordVoice": "serena",
+  "voices": {
+    "serena": {
+      "engine": "qwen",
+      "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+      "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+      "speaker": "Serena",
+      "language": "Chinese",
+      "speed": 1,
+      "instructions": null
+    },
+    "uncle-fu": {
+      "engine": "qwen",
+      "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+      "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+      "speaker": "Uncle_Fu",
+      "language": "Chinese",
+      "speed": 1,
+      "instructions": null
+    },
+    "yunxi": {
+      "engine": "kokoro",
+      "model": "hexgrad/Kokoro-82M",
+      "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "speaker": "zm_yunxi",
+      "language": "z",
+      "speed": 1,
+      "instructions": null
+    },
+    "xiaobei": {
+      "engine": "kokoro",
+      "model": "hexgrad/Kokoro-82M",
+      "revision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "speaker": "zf_xiaobei",
+      "language": "z",
+      "speed": 1,
+      "instructions": null
+    },
+    "ryan-en": {
+      "engine": "qwen",
+      "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+      "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+      "speaker": "Aiden",
+      "language": "English",
+      "speed": 1,
+      "instructions": null,
+      "loudness": {
+        "targetActiveRmsDbfs": -20,
+        "peakCeilingDbfs": -1
+      }
+    },
+    "ryan-zh": {
+      "engine": "qwen",
+      "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+      "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+      "speaker": "Aiden",
+      "language": "Chinese",
+      "speed": 1,
+      "instructions": null,
+      "loudness": {
+        "targetActiveRmsDbfs": -20,
+        "peakCeilingDbfs": -1
+      }
+    },
+    "vivian": {
+      "engine": "qwen",
+      "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+      "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+      "speaker": "Vivian",
+      "language": "Chinese",
+      "speed": 1,
+      "instructions": null,
+      "loudness": {
+        "targetActiveRmsDbfs": -20,
+        "peakCeilingDbfs": -1
+      }
+    },
+    "uncle-fu-levelled": {
+      "engine": "qwen",
+      "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+      "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+      "speaker": "Uncle_Fu",
+      "language": "Chinese",
+      "speed": 1,
+      "instructions": null,
+      "loudness": {
+        "targetActiveRmsDbfs": -20,
+        "peakCeilingDbfs": -1
+      }
+    },
+    "serena-levelled": {
+      "engine": "qwen",
+      "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+      "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+      "speaker": "Serena",
+      "language": "Chinese",
+      "speed": 1,
+      "instructions": null,
+      "loudness": {
+        "targetActiveRmsDbfs": -20,
+        "peakCeilingDbfs": -1
+      }
+    }
+  }
+}
