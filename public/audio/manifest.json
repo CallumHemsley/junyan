@@ -5388,101 +5388,6 @@
     },
     {
       "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "早上好，年轻人。请给我一杯豆浆。",
-      "voice": {
-        "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
-        "speaker": "Uncle_Fu",
-        "language": "Chinese",
-        "speed": 1,
-        "instructions": null,
-        "loudness": {
-          "targetActiveRmsDbfs": -20,
-          "peakCeilingDbfs": -1
-        }
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "zǎoshang hǎo",
-          "niánqīngrén",
-          "qǐng",
-          "gěi",
-          "wǒ",
-          "yī",
-          "bēi",
-          "dòujiāng"
-        ]
-      },
-      "content_digest": "a670df6a70911e37ddebcda28d5fd57ea3b7181a035c3359ec45e0c481e5ded3",
-      "filename": "line-a670df6a70911e37ddebcda28d5fd57ea3b7181a035c3359ec45e0c481e5ded3.wav",
-      "voice_ids": [
-        "uncle-fu-levelled"
-      ],
-      "sha256": "9e96962c3bcb47941a6e09023fe0e7b37819cf5570f6508da7e9453dc6ad8aea",
-      "created_at": "2026-11-04T00:50:08.622705+00:00",
-      "attempts": [
-        {
-          "seed": 2792415082,
-          "accepted": true
-        }
-      ],
-      "generation_seconds": 1.2400278330314904,
-      "packages": {
-        "mlx-audio": "0.6.3",
-        "mlx": "0.32.4",
-        "numpy": "2.5.4",
-        "soundfile": "0.14.0",
-        "transformers": "5.22.1",
-        "huggingface-hub": "2.4.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 88320,
-        "duration_seconds": 3.68,
-        "peak_absolute": 0.6277095079421997,
-        "rms": 0.07014560402408197
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 88320,
-        "duration_seconds": 3.68,
-        "peak_absolute": 0.749298095703125,
-        "rms": 0.08373230517043026
-      },
-      "engine_details": {
-        "token_count": 46,
-        "max_tokens": 320,
-        "settings": {
-          "temperature": 0.9,
-          "top_k": 50,
-          "top_p": 1.0,
-          "repetition_penalty": 1.05,
-          "stream": false,
-          "verbose": false
-        }
-      },
-      "postprocessing": "Gain to -20 dBFS active speech RMS, capped at a -1 dBFS peak, then PCM16 quantization; no trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
-      "level": {
-        "gain_db": 1.5378517482891567,
-        "before": {
-          "active_rms_dbfs": -21.537851748289157,
-          "peak_dbfs": -4.044825860455325,
-          "speech_seconds": 2.79
-        },
-        "after": {
-          "active_rms_dbfs": -20.0,
-          "peak_dbfs": -2.506974112166169,
-          "speech_seconds": 2.79
-        }
-      }
-    },
-    {
-      "generator_version": "content-audio-v1",
       "kind": "word",
       "text": "年轻人",
       "voice": {
@@ -5554,286 +5459,6 @@
     },
     {
       "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "不对，我要豆浆。",
-      "voice": {
-        "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
-        "speaker": "Uncle_Fu",
-        "language": "Chinese",
-        "speed": 1,
-        "instructions": null,
-        "loudness": {
-          "targetActiveRmsDbfs": -20,
-          "peakCeilingDbfs": -1
-        }
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "bù",
-          "duì",
-          "wǒ",
-          "yào",
-          "dòujiāng"
-        ]
-      },
-      "content_digest": "ff7c0510f7ece45b819b0ca456d7bd1f6d1a5139dc4eed17870dcfe6390997af",
-      "filename": "line-ff7c0510f7ece45b819b0ca456d7bd1f6d1a5139dc4eed17870dcfe6390997af.wav",
-      "voice_ids": [
-        "uncle-fu-levelled"
-      ],
-      "sha256": "83c52acfdd810195a64b23f9c7725ac8ffca9ba0edd4cb318cc223e0a8b42e5a",
-      "created_at": "2026-11-04T00:50:10.219701+00:00",
-      "attempts": [
-        {
-          "seed": 4286317840,
-          "accepted": true
-        }
-      ],
-      "generation_seconds": 1.0742820830200799,
-      "packages": {
-        "mlx-audio": "0.6.3",
-        "mlx": "0.32.4",
-        "numpy": "2.5.4",
-        "soundfile": "0.14.0",
-        "transformers": "5.22.1",
-        "huggingface-hub": "2.4.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 74880,
-        "duration_seconds": 3.12,
-        "peak_absolute": 0.8285888433456421,
-        "rms": 0.0628523563967309
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 74880,
-        "duration_seconds": 3.12,
-        "peak_absolute": 0.891265869140625,
-        "rms": 0.06760558967405668
-      },
-      "engine_details": {
-        "token_count": 39,
-        "max_tokens": 192,
-        "settings": {
-          "temperature": 0.9,
-          "top_k": 50,
-          "top_p": 1.0,
-          "repetition_penalty": 1.05,
-          "stream": false,
-          "verbose": false
-        }
-      },
-      "postprocessing": "Gain to -20 dBFS active speech RMS, capped at a -1 dBFS peak, then PCM16 quantization; no trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
-      "level": {
-        "gain_db": 0.6332183723848166,
-        "before": {
-          "active_rms_dbfs": -21.42210534579022,
-          "peak_dbfs": -1.6332183723848166,
-          "speech_seconds": 2.34
-        },
-        "after": {
-          "active_rms_dbfs": -20.788886973405404,
-          "peak_dbfs": -0.9999999999999997,
-          "speech_seconds": 2.34
-        }
-      }
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "谢谢你！",
-      "voice": {
-        "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
-        "speaker": "Uncle_Fu",
-        "language": "Chinese",
-        "speed": 1,
-        "instructions": null,
-        "loudness": {
-          "targetActiveRmsDbfs": -20,
-          "peakCeilingDbfs": -1
-        }
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "xièxie",
-          "nǐ"
-        ]
-      },
-      "content_digest": "39dd06cc1fd4e39d934b4459422c2221e0e92016cd072b004af233e76e8b9397",
-      "filename": "line-39dd06cc1fd4e39d934b4459422c2221e0e92016cd072b004af233e76e8b9397.wav",
-      "voice_ids": [
-        "uncle-fu-levelled"
-      ],
-      "sha256": "b4260edca10b5d60eb6c7962e45133bb3c99ba5153606d126099c5e29f723727",
-      "created_at": "2026-11-04T00:50:10.837092+00:00",
-      "attempts": [
-        {
-          "seed": 970786508,
-          "accepted": true
-        }
-      ],
-      "generation_seconds": 0.6122309580096044,
-      "packages": {
-        "mlx-audio": "0.6.3",
-        "mlx": "0.32.4",
-        "numpy": "2.5.4",
-        "soundfile": "0.14.0",
-        "transformers": "5.22.1",
-        "huggingface-hub": "2.4.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 42240,
-        "duration_seconds": 1.76,
-        "peak_absolute": 0.608558177947998,
-        "rms": 0.06842502351714996
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 42240,
-        "duration_seconds": 1.76,
-        "peak_absolute": 0.56884765625,
-        "rms": 0.06396042136248754
-      },
-      "engine_details": {
-        "token_count": 22,
-        "max_tokens": 128,
-        "settings": {
-          "temperature": 0.9,
-          "top_k": 50,
-          "top_p": 1.0,
-          "repetition_penalty": 1.05,
-          "stream": false,
-          "verbose": false
-        }
-      },
-      "postprocessing": "Gain to -20 dBFS active speech RMS, capped at a -1 dBFS peak, then PCM16 quantization; no trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
-      "level": {
-        "gain_db": -0.5860719773454974,
-        "before": {
-          "active_rms_dbfs": -19.413928022654503,
-          "peak_dbfs": -4.313957940986693,
-          "speech_seconds": 0.72
-        },
-        "after": {
-          "active_rms_dbfs": -20.0,
-          "peak_dbfs": -4.900029918332191,
-          "speech_seconds": 0.72
-        }
-      }
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "我还想要一个鸡蛋。",
-      "voice": {
-        "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
-        "speaker": "Uncle_Fu",
-        "language": "Chinese",
-        "speed": 1,
-        "instructions": null,
-        "loudness": {
-          "targetActiveRmsDbfs": -20,
-          "peakCeilingDbfs": -1
-        }
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "wǒ",
-          "hái",
-          "xiǎng",
-          "yào",
-          "yī",
-          "gè",
-          "jīdàn"
-        ]
-      },
-      "content_digest": "56285c5a5283b3e3a6c638fa3432f3f75faa6eff286eb86f28d57c4e5fb707e0",
-      "filename": "line-56285c5a5283b3e3a6c638fa3432f3f75faa6eff286eb86f28d57c4e5fb707e0.wav",
-      "voice_ids": [
-        "uncle-fu-levelled"
-      ],
-      "sha256": "061cf899db1867f2e9873849465a66ecc5cd04d79361300f642f031cd492470b",
-      "created_at": "2026-11-04T00:50:15.819833+00:00",
-      "attempts": [
-        {
-          "seed": 1445485658,
-          "accepted": false,
-          "error": "Abnormal audio duration: 10.80s"
-        },
-        {
-          "seed": 1445486658,
-          "accepted": true
-        }
-      ],
-      "generation_seconds": 4.977667458995711,
-      "packages": {
-        "mlx-audio": "0.6.3",
-        "mlx": "0.32.4",
-        "numpy": "2.5.4",
-        "soundfile": "0.14.0",
-        "transformers": "5.22.1",
-        "huggingface-hub": "2.4.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 76800,
-        "duration_seconds": 3.2,
-        "peak_absolute": 0.6346373558044434,
-        "rms": 0.06724954115440558
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 76800,
-        "duration_seconds": 3.2,
-        "peak_absolute": 0.7535400390625,
-        "rms": 0.07984762307880292
-      },
-      "engine_details": {
-        "token_count": 40,
-        "max_tokens": 208,
-        "settings": {
-          "temperature": 0.9,
-          "top_k": 50,
-          "top_p": 1.0,
-          "repetition_penalty": 1.05,
-          "stream": false,
-          "verbose": false
-        }
-      },
-      "postprocessing": "Gain to -20 dBFS active speech RMS, capped at a -1 dBFS peak, then PCM16 quantization; no trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
-      "level": {
-        "gain_db": 1.4914551608764413,
-        "before": {
-          "active_rms_dbfs": -21.49145516087644,
-          "peak_dbfs": -3.9494873638341366,
-          "speech_seconds": 2.61
-        },
-        "after": {
-          "active_rms_dbfs": -19.999999999999996,
-          "peak_dbfs": -2.4580322029576944,
-          "speech_seconds": 2.61
-        }
-      }
-    },
-    {
-      "generator_version": "content-audio-v1",
       "kind": "word",
       "text": "还",
       "voice": {
@@ -5902,187 +5527,6 @@
       },
       "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
       "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "不对，我要鸡蛋。",
-      "voice": {
-        "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
-        "speaker": "Uncle_Fu",
-        "language": "Chinese",
-        "speed": 1,
-        "instructions": null,
-        "loudness": {
-          "targetActiveRmsDbfs": -20,
-          "peakCeilingDbfs": -1
-        }
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "bù",
-          "duì",
-          "wǒ",
-          "yào",
-          "jīdàn"
-        ]
-      },
-      "content_digest": "bd3820b8749d5b9dd14d96a58903443132c19876df3d825e4011a084d6c81cf2",
-      "filename": "line-bd3820b8749d5b9dd14d96a58903443132c19876df3d825e4011a084d6c81cf2.wav",
-      "voice_ids": [
-        "uncle-fu-levelled"
-      ],
-      "sha256": "b3a58b6cbd127e0ca8920dc2ad4e16536b333d57930928e7ca9342cae285cf23",
-      "created_at": "2026-11-04T00:50:18.056594+00:00",
-      "attempts": [
-        {
-          "seed": 3174572216,
-          "accepted": true
-        }
-      ],
-      "generation_seconds": 1.768833165988326,
-      "packages": {
-        "mlx-audio": "0.6.3",
-        "mlx": "0.32.4",
-        "numpy": "2.5.4",
-        "soundfile": "0.14.0",
-        "transformers": "5.22.1",
-        "huggingface-hub": "2.4.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 103680,
-        "duration_seconds": 4.32,
-        "peak_absolute": 0.43434980511665344,
-        "rms": 0.03978561870029517
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 103680,
-        "duration_seconds": 4.32,
-        "peak_absolute": 0.668548583984375,
-        "rms": 0.061237653990618854
-      },
-      "engine_details": {
-        "token_count": 54,
-        "max_tokens": 192,
-        "settings": {
-          "temperature": 0.9,
-          "top_k": 50,
-          "top_p": 1.0,
-          "repetition_penalty": 1.05,
-          "stream": false,
-          "verbose": false
-        }
-      },
-      "postprocessing": "Gain to -20 dBFS active speech RMS, capped at a -1 dBFS peak, then PCM16 quantization; no trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
-      "level": {
-        "gain_db": 3.7458438221394665,
-        "before": {
-          "active_rms_dbfs": -23.745843822139467,
-          "peak_dbfs": -7.243207380189501,
-          "speech_seconds": 2.67
-        },
-        "after": {
-          "active_rms_dbfs": -20.0,
-          "peak_dbfs": -3.4973635580500346,
-          "speech_seconds": 2.67
-        }
-      }
-    },
-    {
-      "generator_version": "content-audio-v1",
-      "kind": "line",
-      "text": "谢谢，谢谢！",
-      "voice": {
-        "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
-        "speaker": "Uncle_Fu",
-        "language": "Chinese",
-        "speed": 1,
-        "instructions": null,
-        "loudness": {
-          "targetActiveRmsDbfs": -20,
-          "peakCeilingDbfs": -1
-        }
-      },
-      "pronunciation": {
-        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
-        "authored_pinyin": [
-          "xièxie",
-          "xièxie"
-        ]
-      },
-      "content_digest": "d5536fa2f1404d9c8d08737fdc29156d517c0a8878b03425c8c0ad2df25e6a83",
-      "filename": "line-d5536fa2f1404d9c8d08737fdc29156d517c0a8878b03425c8c0ad2df25e6a83.wav",
-      "voice_ids": [
-        "uncle-fu-levelled"
-      ],
-      "sha256": "e1eb0e997cc1f2200bbb213c7f899f774312072966b808ba53f7a1648c58a0da",
-      "created_at": "2026-11-04T00:50:19.007114+00:00",
-      "attempts": [
-        {
-          "seed": 3579015074,
-          "accepted": true
-        }
-      ],
-      "generation_seconds": 0.9440800420125015,
-      "packages": {
-        "mlx-audio": "0.6.3",
-        "mlx": "0.32.4",
-        "numpy": "2.5.4",
-        "soundfile": "0.14.0",
-        "transformers": "5.22.1",
-        "huggingface-hub": "2.4.0"
-      },
-      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
-      "raw_metrics": {
-        "sample_rate": 24000,
-        "samples": 42240,
-        "duration_seconds": 1.76,
-        "peak_absolute": 0.6138339042663574,
-        "rms": 0.07960614098911539
-      },
-      "wav_metrics": {
-        "sample_rate": 24000,
-        "samples": 42240,
-        "duration_seconds": 1.76,
-        "peak_absolute": 0.5513916015625,
-        "rms": 0.071510040058036
-      },
-      "engine_details": {
-        "token_count": 22,
-        "max_tokens": 160,
-        "settings": {
-          "temperature": 0.9,
-          "top_k": 50,
-          "top_p": 1.0,
-          "repetition_penalty": 1.05,
-          "stream": false,
-          "verbose": false
-        }
-      },
-      "postprocessing": "Gain to -20 dBFS active speech RMS, capped at a -1 dBFS peak, then PCM16 quantization; no trim or resampling",
-      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
-      "level": {
-        "gain_db": -0.9315922470639997,
-        "before": {
-          "active_rms_dbfs": -19.068407752936,
-          "peak_dbfs": -4.23898255173845,
-          "speech_seconds": 1.02
-        },
-        "after": {
-          "active_rms_dbfs": -20.0,
-          "peak_dbfs": -5.17057479880245,
-          "speech_seconds": 1.02
-        }
-      }
     },
     {
       "generator_version": "content-audio-v1",
@@ -9441,6 +8885,572 @@
       },
       "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
       "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "早上好，年轻人。请给我一杯豆浆。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+        "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+        "speaker": "Uncle_Fu",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null,
+        "loudness": {
+          "targetActiveRmsDbfs": -20,
+          "peakCeilingDbfs": -1
+        }
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "zǎoshang hǎo",
+          "niánqīngrén",
+          "qǐng",
+          "gěi",
+          "wǒ",
+          "yī",
+          "bēi",
+          "dòujiāng"
+        ]
+      },
+      "content_digest": "2cefc3fe62be59203c6ef07c91f4342efc18641473fa68dacd7f54f31a90aa1b",
+      "filename": "line-2cefc3fe62be59203c6ef07c91f4342efc18641473fa68dacd7f54f31a90aa1b.wav",
+      "voice_ids": [
+        "hospital-elder-1b7-neutral-audition"
+      ],
+      "sha256": "c711c6bec0097b01d74d90839a4d6c29a8790647bbd3afeec280774ad75a3909",
+      "created_at": "2026-11-05T21:07:53.237934+00:00",
+      "attempts": [
+        {
+          "seed": 753910782,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 4.891806915984489,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 94080,
+        "duration_seconds": 3.92,
+        "peak_absolute": 0.7052041292190552,
+        "rms": 0.07976451134078112
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 94080,
+        "duration_seconds": 3.92,
+        "peak_absolute": 0.76568603515625,
+        "rms": 0.08660483304753211
+      },
+      "engine_details": {
+        "token_count": 49,
+        "max_tokens": 320,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "Gain to -20 dBFS active speech RMS, capped at a -1 dBFS peak, then PCM16 quantization; no trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "level": {
+        "gain_db": 0.7146512864187429,
+        "before": {
+          "active_rms_dbfs": -20.714651286418743,
+          "peak_dbfs": -3.033703068356183,
+          "speech_seconds": 3.84
+        },
+        "after": {
+          "active_rms_dbfs": -19.999999999999996,
+          "peak_dbfs": -2.319051781937439,
+          "speech_seconds": 3.84
+        }
+      }
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "不对，我要豆浆。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+        "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+        "speaker": "Uncle_Fu",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null,
+        "loudness": {
+          "targetActiveRmsDbfs": -20,
+          "peakCeilingDbfs": -1
+        }
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "bù",
+          "duì",
+          "wǒ",
+          "yào",
+          "dòujiāng"
+        ]
+      },
+      "content_digest": "e756047972fc829165e2ca4f0f9f13c40c1b02f8dc94e8116180e111a396816c",
+      "filename": "line-e756047972fc829165e2ca4f0f9f13c40c1b02f8dc94e8116180e111a396816c.wav",
+      "voice_ids": [
+        "uncle-fu-levelled"
+      ],
+      "sha256": "37f62966310a6627956505404ceab7ff5697c2101e2af2e432b6c274a626d1cd",
+      "created_at": "2026-11-05T21:17:36.857898+00:00",
+      "attempts": [
+        {
+          "seed": 3881174137,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 4.212391250010114,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 59520,
+        "duration_seconds": 2.48,
+        "peak_absolute": 0.667320966720581,
+        "rms": 0.09985555631753505
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 59520,
+        "duration_seconds": 2.48,
+        "peak_absolute": 0.554931640625,
+        "rms": 0.08303911783216296
+      },
+      "engine_details": {
+        "token_count": 31,
+        "max_tokens": 192,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "Gain to -20 dBFS active speech RMS, capped at a -1 dBFS peak, then PCM16 quantization; no trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "level": {
+        "gain_db": -1.6017846335482915,
+        "before": {
+          "active_rms_dbfs": -18.39821536645171,
+          "peak_dbfs": -3.513304594607447,
+          "speech_seconds": 2.37
+        },
+        "after": {
+          "active_rms_dbfs": -19.999999999999996,
+          "peak_dbfs": -5.115089228155738,
+          "speech_seconds": 2.37
+        }
+      }
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "谢谢你！",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+        "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+        "speaker": "Uncle_Fu",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null,
+        "loudness": {
+          "targetActiveRmsDbfs": -20,
+          "peakCeilingDbfs": -1
+        }
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xièxie",
+          "nǐ"
+        ]
+      },
+      "content_digest": "aa4ed24a26a593973279ebe664cfff1b1241682cf17d0e2fee03508224ecde88",
+      "filename": "line-aa4ed24a26a593973279ebe664cfff1b1241682cf17d0e2fee03508224ecde88.wav",
+      "voice_ids": [
+        "uncle-fu-levelled"
+      ],
+      "sha256": "bad3e4e2d9c83246b6ac71672339b6d472cd38e5062b78043d6332ae123b219f",
+      "created_at": "2026-11-05T21:17:37.420611+00:00",
+      "attempts": [
+        {
+          "seed": 2857292362,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.5543085000244901,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 26880,
+        "duration_seconds": 1.12,
+        "peak_absolute": 0.5647504329681396,
+        "rms": 0.07495747094824075
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 26880,
+        "duration_seconds": 1.12,
+        "peak_absolute": 0.718994140625,
+        "rms": 0.09543137374392995
+      },
+      "engine_details": {
+        "token_count": 14,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "Gain to -20 dBFS active speech RMS, capped at a -1 dBFS peak, then PCM16 quantization; no trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "level": {
+        "gain_db": 2.09752299800013,
+        "before": {
+          "active_rms_dbfs": -22.09752299800013,
+          "peak_dbfs": -4.962868549077997,
+          "speech_seconds": 1.02
+        },
+        "after": {
+          "active_rms_dbfs": -20.000000000000004,
+          "peak_dbfs": -2.8653455510778674,
+          "speech_seconds": 1.02
+        }
+      }
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "我还想要一个鸡蛋。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+        "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+        "speaker": "Uncle_Fu",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null,
+        "loudness": {
+          "targetActiveRmsDbfs": -20,
+          "peakCeilingDbfs": -1
+        }
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "wǒ",
+          "hái",
+          "xiǎng",
+          "yào",
+          "yī",
+          "gè",
+          "jīdàn"
+        ]
+      },
+      "content_digest": "60ee82fdaf489803f5b64b4578ec054294c5b240d1f13d1c4c485ebbfde4b834",
+      "filename": "line-60ee82fdaf489803f5b64b4578ec054294c5b240d1f13d1c4c485ebbfde4b834.wav",
+      "voice_ids": [
+        "uncle-fu-levelled"
+      ],
+      "sha256": "5575c662f354cc96d3a3296635168beaf33160bfee1f1bec9a2b76dbc41971bf",
+      "created_at": "2026-11-05T21:24:44.803224+00:00",
+      "attempts": [
+        {
+          "seed": 1626243837,
+          "accepted": false,
+          "error": "Previously synthesized take rejected for unresolved unprompted ASR word/omission concern; preserved under rejected-first-takes with SHA-bound results. No human listening claim."
+        },
+        {
+          "seed": 1626244837,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 3.72612966602901,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 44160,
+        "duration_seconds": 1.84,
+        "peak_absolute": 0.6187026500701904,
+        "rms": 0.09122406570615016
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 44160,
+        "duration_seconds": 1.84,
+        "peak_absolute": 0.6480712890625,
+        "rms": 0.09555616043939438
+      },
+      "engine_details": {
+        "token_count": 23,
+        "max_tokens": 208,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "Gain to -20 dBFS active speech RMS, capped at a -1 dBFS peak, then PCM16 quantization; no trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "level": {
+        "gain_db": 0.4029858108049069,
+        "before": {
+          "active_rms_dbfs": -20.402985810804907,
+          "peak_dbfs": -4.170360475514141,
+          "speech_seconds": 1.71
+        },
+        "after": {
+          "active_rms_dbfs": -20.0,
+          "peak_dbfs": -3.7673746647092337,
+          "speech_seconds": 1.71
+        }
+      }
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "不对，我要鸡蛋。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+        "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+        "speaker": "Uncle_Fu",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null,
+        "loudness": {
+          "targetActiveRmsDbfs": -20,
+          "peakCeilingDbfs": -1
+        }
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "bù",
+          "duì",
+          "wǒ",
+          "yào",
+          "jīdàn"
+        ]
+      },
+      "content_digest": "781984e84c2d96144788e190c7527bab41486694e474141d82437bcb01f377ca",
+      "filename": "line-781984e84c2d96144788e190c7527bab41486694e474141d82437bcb01f377ca.wav",
+      "voice_ids": [
+        "uncle-fu-levelled"
+      ],
+      "sha256": "e0364b994ac41c066c9ca17721a0f09315b2ecf0b0f7c5b3aea03c69ae0a7037",
+      "created_at": "2026-11-05T21:27:10.325681+00:00",
+      "attempts": [
+        {
+          "seed": 2014938344,
+          "accepted": false,
+          "error": "Previously synthesized take rejected for unresolved unprompted ASR word/omission concern; preserved under rejected-second-wrong-egg with SHA-bound results. No human listening claim."
+        },
+        {
+          "seed": 2014939344,
+          "accepted": false,
+          "error": "Previously synthesized take rejected for unresolved unprompted ASR word/omission concern; preserved under rejected-second-wrong-egg with SHA-bound results. No human listening claim."
+        },
+        {
+          "seed": 2014940344,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 3.677675958024338,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 48000,
+        "duration_seconds": 2.0,
+        "peak_absolute": 0.5190637111663818,
+        "rms": 0.06555887221894004
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 48000,
+        "duration_seconds": 2.0,
+        "peak_absolute": 0.657684326171875,
+        "rms": 0.0830678537679762
+      },
+      "engine_details": {
+        "token_count": 25,
+        "max_tokens": 192,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "Gain to -20 dBFS active speech RMS, capped at a -1 dBFS peak, then PCM16 quantization; no trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "level": {
+        "gain_db": 2.056027047642406,
+        "before": {
+          "active_rms_dbfs": -22.056027047642406,
+          "peak_dbfs": -5.695586649974199,
+          "speech_seconds": 1.92
+        },
+        "after": {
+          "active_rms_dbfs": -20.0,
+          "peak_dbfs": -3.6395596023317935,
+          "speech_seconds": 1.92
+        }
+      }
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "谢谢，谢谢！",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+        "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+        "speaker": "Uncle_Fu",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null,
+        "loudness": {
+          "targetActiveRmsDbfs": -20,
+          "peakCeilingDbfs": -1
+        }
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xièxie",
+          "xièxie"
+        ]
+      },
+      "content_digest": "f8c7a10d6944e2c84304d52a08300578d078efc600b295e85527303f6a5b7292",
+      "filename": "line-f8c7a10d6944e2c84304d52a08300578d078efc600b295e85527303f6a5b7292.wav",
+      "voice_ids": [
+        "hospital-elder-1b7-neutral-audition"
+      ],
+      "sha256": "dd2dd017bb62acee753d73678219a548e4bc131f6f94b379d9a6191ed5c05cc4",
+      "created_at": "2026-11-05T21:07:54.355072+00:00",
+      "attempts": [
+        {
+          "seed": 4173832461,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.1043368329992518,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 51840,
+        "duration_seconds": 2.16,
+        "peak_absolute": 0.6281096935272217,
+        "rms": 0.04888907858628491
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 51840,
+        "duration_seconds": 2.16,
+        "peak_absolute": 0.891265869140625,
+        "rms": 0.06937082500386614
+      },
+      "engine_details": {
+        "token_count": 27,
+        "max_tokens": 160,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "Gain to -20 dBFS active speech RMS, capped at a -1 dBFS peak, then PCM16 quantization; no trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "level": {
+        "gain_db": 3.039290082789501,
+        "before": {
+          "active_rms_dbfs": -25.202252997960628,
+          "peak_dbfs": -4.039290082789501,
+          "speech_seconds": 2.07
+        },
+        "after": {
+          "active_rms_dbfs": -22.162962915171125,
+          "peak_dbfs": -1.0000000000000007,
+          "speech_seconds": 2.07
+        }
+      }
     }
   ]
 }
