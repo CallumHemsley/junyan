@@ -1,0 +1,16 @@
+{
+  "product_runtime": "Unchanged from 77795742da738de2b93506b73a9f40d98717a243",
+  "product_hashes": {
+    "src/App.tsx": "1c32f9c28e58ee0e972d470d1f3f60d5bd2265414b9dbca0ed26246e82ecff38",
+    "src/audio/AmbienceControls.tsx": "346c16d9f4c986c4504dd2e7b3898dd8d734b4eb0cb5ea3307e6ff2a9e6756fd",
+    "src/audio/ambience.ts": "d31738487c0da85dae4ca14b04c5cf3e0bbd23797443cfe3832975de399756d7",
+    "src/audio/ambience-controls.css": "f986005bcfd3c768e2c80c380a4386a700b9dccfbce2c85404384a4dcaca3bc2",
+    "src/audio/ambience-preferences.ts": "d54a4d175c905057e5393f8202134b9b537328a21fc1f5d0a79744dd6abde839",
+    "src/audio/playback.ts": "d93fde2558d0af069cfeaa65c111a6839c7678e00b639c2a1eeb9425e135d762",
+    "public/audio/ambience/breakfast.mp3": "c0f60e4c71c3fbbfabf2863495e44749c02394d05015216da89ad95d576459f1"
+  },
+  "changed_test": {
+    "e2e/ambience.spec.ts": "e13851c630fe28d5df76a34a46fbe149c273766e653cec0bf25bb0c23e8fd398"
+  },
+  "note": "Original verified-source-sha256.json retains the original full-suite test hash. This delta intentionally changes only the retry fixture test plus evidence."
+}

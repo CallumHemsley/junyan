@@ -30,7 +30,10 @@ test.beforeEach(async ({ page }) => {
   page.on("console", m => { if (m.type() === "error") errors.push(m.text()); });
   (page as any).switchErrors = errors;
 });
-test.afterEach(async ({ page }) => expect((page as any).switchErrors).toEqual([]));
+test.afterEach(async ({ page }) => {
+  await page.unrouteAll({ behavior: "wait" });
+  expect((page as any).switchErrors).toEqual([]);
+});
 
 for (const build of ["development", "production"]) {
   test(`${build}: Help and restaurant switch directly with top-only Escape`, async ({ page, isMobile }, info) => {

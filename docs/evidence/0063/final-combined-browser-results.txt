@@ -1,0 +1,127 @@
+[WebServer] (node:16887) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ vite --host 0.0.0.0 --host 127.0.0.1 --port 5414 --strictPort
+[WebServer] (node:16902) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:16927) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ tsc -b && vite build
+[WebServer] (node:16955) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/util.js (400:0): A comment
+[WebServer] 
+[WebServer] "// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+[WebServer] 
+[WebServer] in "node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+[WebServer] node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/regexes.js (74:0): A comment
+[WebServer] 
+[WebServer] "/** Anchors a pattern source. The interpolation lives here rather than at the call site because
+[WebServer]  * esbuild will not drop a `@__PURE__` call whose own argument interpolates a variable, but it
+[WebServer]  * will drop `anchor(dateSource)`. Keeping it inline pinned `date` into every bundle. */"
+[WebServer] 
+[WebServer] in "node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+[WebServer] (node:16981) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:16995) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 83 tests using 1 worker
+
+(node:17019) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [desktop] › e2e/ambience.spec.ts:38:1 › settings preserve independent mute and level, keyboard never moves the waiter (2.3s)
+  ✓   2 [desktop] › e2e/ambience.spec.ts:78:1 › native ambience survives panel changes and pauses/resumes through app lifecycle listeners (1.3s)
+  ✓   3 [desktop] › e2e/ambience.spec.ts:104:1 › real foreground speech ducks the bed and restores on native end, stop and word cancellation (5.4s)
+  ✓   4 [desktop] › e2e/ambience.spec.ts:124:1 › resource failure retries the same ambience owner without disturbing speech (2.2s)
+  ✓   5 [desktop] › e2e/ambience.spec.ts:142:1 › unavailable preference storage keeps current-session controls functional (1.3s)
+  ✓   6 [desktop] › e2e/ambience.spec.ts:157:1 › opening stays silent then transitions to one bed, reset stops it (8.1s)
+  ✓   7 [desktop] › e2e/ambience.spec.ts:170:1 › reduced-motion settings remain usable and contained (1.1s)
+  ✓   8 [desktop] › e2e/ambience.spec.ts:179:1 › production ambience plays and preserves mute offline under a relative subpath (2.4s)
+  ✓   9 [desktop] › e2e/ambience.spec.ts:205:3 › touch activation › a genuine touch gesture starts the bed on first entry (1.1s)
+  ✓  10 [desktop] › e2e/ambience.spec.ts:216:1 › foreground resource failure releases ducking and direct replay recovers (2.1s)
+  ✓  11 [desktop] › e2e/ambience.spec.ts:231:1 › narrow phone settings keep every control inside screen gutters (1.0s)
+  ✓  12 [desktop] › e2e/audio.spec.ts:47:1 › replay during initial load ignores the superseded native AbortError (2.3s)
+  ✓  13 [desktop] › e2e/audio.spec.ts:66:1 › a genuine current load failure remains visible and replay recovers (2.1s)
+  ✓  14 [desktop] › e2e/audio.spec.ts:84:1 › rapid replay and word taps keep only the latest native media playing (4.3s)
+  ✓  15 [desktop] › e2e/audio.spec.ts:99:1 › closing a loading dialogue invalidates playback and its eventual rejection (2.4s)
+  ✓  16 [desktop] › e2e/audio.spec.ts:109:1 › day reset invalidates pending audio without polluting the next dialogue (4.4s)
+  -  17 [desktop] › e2e/audio.spec.ts:120:1 › expired walking gesture reports native policy rejection and direct replay recovers
+  ✓  18 [desktop] › e2e/audio.spec.ts:143:1 › autosaving a word does not invalidate its pending playback (3.1s)
+  ✓  19 [desktop] › e2e/audio.spec.ts:165:1 › advancing the day invalidates audio even with the table panel still open (2.0s)
+  ✓  20 [desktop] › e2e/audio.spec.ts:194:1 › raw repository WAVs contain PCM samples and silent fixtures preserve headers and duration (713ms)
+  ✓  21 [desktop] › e2e/offline.spec.ts:7:1 › production keeps the restaurant and Mandarin audio available offline (2.6s)
+  ✓  22 [desktop] › e2e/waiter.spec.ts:88:1 › wake in the ward, then collect, recall, deliver, give change, journal, and progress (35.1s)
+  ✓  23 [desktop] › e2e/waiter.spec.ts:145:1 › walking connects a keyboard position beside a table without stalling (3.1s)
+  ✓  24 [desktop] › e2e/waiter.spec.ts:165:1 › browser saves and reloads a looked-up word (2.7s)
+  ✓  25 [desktop] › e2e/word-switch.spec.ts:36:3 › development: Help and restaurant switch directly with top-only Escape (3.5s)
+  ✓  26 [desktop] › e2e/word-switch.spec.ts:36:3 › production: Help and restaurant switch directly with top-only Escape (3.3s)
+  ✓  27 [desktop] › e2e/word-switch.spec.ts:55:1 › hospital words switch without advancing the opening (3.6s)
+  ✓  28 [desktop] › e2e/word-switch.spec.ts:65:1 › kitchen, tray, journal and receipt sources keep switching (6.3s)
+  ✓  29 [desktop] › e2e/word-switch.spec.ts:106:1 › rapid keyboard/pointer selection records once and cancels prior native audio (3.6s)
+(node:18311) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  30 [desktop] › e2e/learning-help.spec.ts:10:1 › help narrates authored tokens, shows the sequence and journals lookups without English (7.4s)
+  ✓  31 [desktop] › e2e/learning-help.spec.ts:54:1 › small-phone help stays within the viewport and food aids retain pictures without glosses (2.4s)
+  ✓  32 [desktop] › e2e/learning-help.spec.ts:82:1 › help-only vocabulary survives a real saved-game reload (2.1s)
+  ✓  33 [desktop] › e2e/learning-help.spec.ts:108:1 › production precaches every help line and word for offline replay (2.0s)
+(node:18588) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  34 [desktop] › e2e/overlay-focus.spec.ts:25:7 › development › word card shares focus with lookup sources and restores both layers (pointer) (2.6s)
+  ✓  35 [desktop] › e2e/overlay-focus.spec.ts:25:7 › development › word card shares focus with lookup sources and restores both layers (keyboard) (2.4s)
+  ✓  36 [desktop] › e2e/overlay-focus.spec.ts:76:7 › development › Help cancels an in-flight table arrival (.help-button) (7.0s)
+  ✓  37 [desktop] › e2e/overlay-focus.spec.ts:25:7 › production › word card shares focus with lookup sources and restores both layers (pointer) (2.5s)
+  ✓  38 [desktop] › e2e/overlay-focus.spec.ts:25:7 › production › word card shares focus with lookup sources and restores both layers (keyboard) (2.6s)
+  ✓  39 [desktop] › e2e/overlay-focus.spec.ts:76:7 › production › Help cancels an in-flight table arrival (.help-button) (6.9s)
+  ✓  40 [desktop] › e2e/overlay-focus.spec.ts:95:1 › production home navigation stays within the configured game subpath (1.5s)
+  ✓  41 [desktop] › e2e/overlay-focus.spec.ts:108:1 › receipt word targets are at least 44px and restore focus (1.6s)
+  ✓  42 [desktop] › e2e/overlay-focus.spec.ts:140:1 › kitchen, tray, and journal word cards restore their own triggers (3.5s)
+(node:19105) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 [phone] › e2e/ambience.spec.ts:38:1 › settings preserve independent mute and level, keyboard never moves the waiter (2.2s)
+  ✓  44 [phone] › e2e/ambience.spec.ts:78:1 › native ambience survives panel changes and pauses/resumes through app lifecycle listeners (1.1s)
+  ✓  45 [phone] › e2e/ambience.spec.ts:104:1 › real foreground speech ducks the bed and restores on native end, stop and word cancellation (5.1s)
+  ✓  46 [phone] › e2e/ambience.spec.ts:124:1 › resource failure retries the same ambience owner without disturbing speech (2.1s)
+  ✓  47 [phone] › e2e/ambience.spec.ts:142:1 › unavailable preference storage keeps current-session controls functional (1.0s)
+  ✓  48 [phone] › e2e/ambience.spec.ts:157:1 › opening stays silent then transitions to one bed, reset stops it (8.0s)
+  ✓  49 [phone] › e2e/ambience.spec.ts:170:1 › reduced-motion settings remain usable and contained (1.2s)
+  ✓  50 [phone] › e2e/ambience.spec.ts:179:1 › production ambience plays and preserves mute offline under a relative subpath (1.9s)
+  ✓  51 [phone] › e2e/ambience.spec.ts:205:3 › touch activation › a genuine touch gesture starts the bed on first entry (1.0s)
+  ✓  52 [phone] › e2e/ambience.spec.ts:216:1 › foreground resource failure releases ducking and direct replay recovers (1.9s)
+  ✓  53 [phone] › e2e/ambience.spec.ts:231:1 › narrow phone settings keep every control inside screen gutters (1.1s)
+  ✓  54 [phone] › e2e/audio.spec.ts:47:1 › replay during initial load ignores the superseded native AbortError (2.6s)
+  ✓  55 [phone] › e2e/audio.spec.ts:66:1 › a genuine current load failure remains visible and replay recovers (1.9s)
+  ✓  56 [phone] › e2e/audio.spec.ts:84:1 › rapid replay and word taps keep only the latest native media playing (3.1s)
+  ✓  57 [phone] › e2e/audio.spec.ts:99:1 › closing a loading dialogue invalidates playback and its eventual rejection (1.9s)
+  ✓  58 [phone] › e2e/audio.spec.ts:109:1 › day reset invalidates pending audio without polluting the next dialogue (4.0s)
+  -  59 [phone] › e2e/audio.spec.ts:120:1 › expired walking gesture reports native policy rejection and direct replay recovers
+  ✓  60 [phone] › e2e/audio.spec.ts:143:1 › autosaving a word does not invalidate its pending playback (3.1s)
+  ✓  61 [phone] › e2e/audio.spec.ts:165:1 › advancing the day invalidates audio even with the table panel still open (1.9s)
+  ✓  62 [phone] › e2e/audio.spec.ts:194:1 › raw repository WAVs contain PCM samples and silent fixtures preserve headers and duration (986ms)
+  ✓  63 [phone] › e2e/waiter.spec.ts:88:1 › wake in the ward, then collect, recall, deliver, give change, journal, and progress (34.3s)
+  ✓  64 [phone] › e2e/waiter.spec.ts:145:1 › walking connects a keyboard position beside a table without stalling (2.9s)
+  ✓  65 [phone] › e2e/waiter.spec.ts:165:1 › browser saves and reloads a looked-up word (2.6s)
+  ✓  66 [phone] › e2e/word-switch.spec.ts:36:3 › development: Help and restaurant switch directly with top-only Escape (3.5s)
+  ✓  67 [phone] › e2e/word-switch.spec.ts:36:3 › production: Help and restaurant switch directly with top-only Escape (3.2s)
+  ✓  68 [phone] › e2e/word-switch.spec.ts:55:1 › hospital words switch without advancing the opening (3.6s)
+  ✓  69 [phone] › e2e/word-switch.spec.ts:65:1 › kitchen, tray, journal and receipt sources keep switching (5.9s)
+  ✓  70 [phone] › e2e/word-switch.spec.ts:106:1 › rapid keyboard/pointer selection records once and cancels prior native audio (3.2s)
+(node:20345) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  71 [phone] › e2e/learning-help.spec.ts:10:1 › help narrates authored tokens, shows the sequence and journals lookups without English (6.6s)
+  ✓  72 [phone] › e2e/learning-help.spec.ts:54:1 › small-phone help stays within the viewport and food aids retain pictures without glosses (2.3s)
+  ✓  73 [phone] › e2e/learning-help.spec.ts:82:1 › help-only vocabulary survives a real saved-game reload (1.9s)
+  ✓  74 [phone] › e2e/learning-help.spec.ts:108:1 › production precaches every help line and word for offline replay (1.9s)
+(node:20621) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  75 [phone] › e2e/overlay-focus.spec.ts:25:7 › development › word card shares focus with lookup sources and restores both layers (pointer) (2.5s)
+  ✓  76 [phone] › e2e/overlay-focus.spec.ts:25:7 › development › word card shares focus with lookup sources and restores both layers (keyboard) (2.6s)
+  ✓  77 [phone] › e2e/overlay-focus.spec.ts:76:7 › development › Help cancels an in-flight table arrival (.help-button) (6.8s)
+  ✓  78 [phone] › e2e/overlay-focus.spec.ts:25:7 › production › word card shares focus with lookup sources and restores both layers (pointer) (2.5s)
+  ✓  79 [phone] › e2e/overlay-focus.spec.ts:25:7 › production › word card shares focus with lookup sources and restores both layers (keyboard) (2.5s)
+  ✓  80 [phone] › e2e/overlay-focus.spec.ts:76:7 › production › Help cancels an in-flight table arrival (.help-button) (7.3s)
+  ✓  81 [phone] › e2e/overlay-focus.spec.ts:95:1 › production home navigation stays within the configured game subpath (1.2s)
+  ✓  82 [phone] › e2e/overlay-focus.spec.ts:108:1 › receipt word targets are at least 44px and restore focus (1.4s)
+  ✓  83 [phone] › e2e/overlay-focus.spec.ts:140:1 › kitchen, tray, and journal word cards restore their own triggers (3.1s)
+
+  2 skipped
+  81 passed (5.5m)

@@ -1,0 +1,37 @@
+{
+  "kind": "Offline deterministic A/B/C render for human listening; NOT a browser recording or claimed listening result.",
+  "file": "docs/evidence/0063/listening-comparison.mp3",
+  "duration_seconds": 42.0,
+  "speech_source": "public/audio/line-0d403a21ba4967b24612e8318b6c9e6c639e8869cbb9b0106d8b4784bdc03f15.wav",
+  "speech_sha256": "89e6d861ade211e9d77035a1ab7b8b54077d4d900267bc9f3ab60011af40754f",
+  "ambience_source": "public/audio/ambience/breakfast.mp3",
+  "ambience_sha256": "c0f60e4c71c3fbbfabf2863495e44749c02394d05015216da89ad95d576459f1",
+  "speech_starts_within_each_section_seconds": [
+    4,
+    9
+  ],
+  "sections": [
+    {
+      "label": "speech-only",
+      "from_seconds": 0,
+      "to_seconds": 14,
+      "bed_gain": 0,
+      "bed_gain_during_speech": 0
+    },
+    {
+      "label": "default-level-0.35",
+      "from_seconds": 14,
+      "to_seconds": 28,
+      "bed_gain": 0.1575,
+      "bed_gain_during_speech": 0.042
+    },
+    {
+      "label": "maximum-level-1",
+      "from_seconds": 28,
+      "to_seconds": 42,
+      "bed_gain": 0.45,
+      "bed_gain_during_speech": 0.12
+    }
+  ],
+  "limits": "Same actual committed restaurant line repeated without level alteration; ambience uses actual controller gains only while the line plays. Device volume, actual game timing/interactions, browser output, spectral realism, user preference and enjoyment remain unverified. Existing speech retains its existing source terms; the comparison is not labelled CC0 as a whole."
+}
