@@ -2,6 +2,8 @@ import original from "../../../playwright.config";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "@playwright/test";
 
+process.env.JUNYAN_CHROMIUM = "/usr/bin/chromium";
+
 // Reuse the repository journey, isolated strict ports, system browser, silent audio.
 export default defineConfig({
   ...original,

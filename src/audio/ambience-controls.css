@@ -1,4 +1,5 @@
-.ambience-settings { position: relative; color: var(--text-secondary); }
+.topbar nav:has(> .ambience-settings) { position: relative; }
+.ambience-settings { color: var(--text-secondary); }
 .ambience-settings summary {
   display: flex; align-items: center; justify-content: center; gap: var(--space-8);
   min-width: 44px; min-height: 44px; padding: 0 var(--space-8); cursor: pointer;

@@ -2,28 +2,29 @@ $ vitest run
 
  RUN  v3.2.7 /workspace/junyan-0063
 
- ✓ src/save.test.ts (52 tests) 200ms
- ✓ src/content/content.test.ts (14 tests) 245ms
- ✓ src/scene/ward.test.ts (8 tests) 1405ms
-   ✓ ward scene > renders every step frame without DOM globals and is deterministic  414ms
-   ✓ ward scene > keeps the seated player face stable across the ambient cycle and step transitions  412ms
- ✓ src/navigation.test.ts (4 tests) 35ms
- ✓ src/game.test.ts (30 tests) 49ms
- ✓ src/startup.test.ts (7 tests) 6ms
- ✓ src/audio/ambience.test.ts (6 tests) 15ms
- ✓ src/opening.test.ts (11 tests) 41ms
- ✓ src/audio/playback.test.ts (13 tests) 23ms
- ✓ src/recovery.test.ts (11 tests) 23ms
- ✓ src/audio/ambience-speech.test.ts (1 test) 14ms
- ✓ src/opening-view.test.ts (2 tests) 4ms
- ✓ src/audio/ambience-preferences.test.ts (1 test) 5ms
- ✓ src/scene/renderer.test.ts (18 tests) 7313ms
-   ✓ actual raster depth and walking > partially occludes rear-facing food with the body without hiding the whole tray  2135ms
-   ✓ actual raster depth and walking > walks deterministically from supplied time and freezes at reduced-motion inputs  2513ms
-   ✓ renders independently without DOM globals and reflects customer/tray state  2359ms
+ ✓ src/content/content.test.ts (14 tests) 223ms
+ ✓ src/save.test.ts (52 tests) 207ms
+ ✓ src/game.test.ts (30 tests) 24ms
+ ✓ src/scene/ward.test.ts (8 tests) 1335ms
+   ✓ ward scene > renders every step frame without DOM globals and is deterministic  366ms
+   ✓ ward scene > keeps the seated player face stable across the ambient cycle and step transitions  340ms
+   ✓ ward scene > draws no vermilion  303ms
+ ✓ src/navigation.test.ts (4 tests) 29ms
+ ✓ src/opening.test.ts (11 tests) 18ms
+ ✓ src/recovery.test.ts (11 tests) 5ms
+ ✓ src/audio/playback.test.ts (13 tests) 12ms
+ ✓ src/audio/ambience.test.ts (6 tests) 9ms
+ ✓ src/audio/ambience-speech.test.ts (1 test) 6ms
+ ✓ src/startup.test.ts (7 tests) 10ms
+ ✓ src/audio/ambience-preferences.test.ts (1 test) 3ms
+ ✓ src/opening-view.test.ts (2 tests) 5ms
+ ✓ src/scene/renderer.test.ts (18 tests) 5980ms
+   ✓ actual raster depth and walking > partially occludes rear-facing food with the body without hiding the whole tray  1842ms
+   ✓ actual raster depth and walking > walks deterministically from supplied time and freezes at reduced-motion inputs  2147ms
+   ✓ renders independently without DOM globals and reflects customer/tray state  1774ms
 
  Test Files  14 passed (14)
       Tests  178 passed (178)
-   Start at  19:16:06
-   Duration  8.11s (transform 603ms, setup 0ms, collect 2.00s, tests 9.38s, environment 3ms, prepare 1.27s)
+   Start at  19:27:07
+   Duration  6.64s (transform 515ms, setup 0ms, collect 1.69s, tests 7.87s, environment 3ms, prepare 1.07s)
 
