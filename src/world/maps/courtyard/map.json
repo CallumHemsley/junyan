@@ -1,0 +1,2126 @@
+{
+  "version": 1,
+  "id": "courtyard",
+  "bounds": {
+    "width": 48,
+    "height": 38
+  },
+  "defaultSpawn": {
+    "x": 23,
+    "y": 33.5,
+    "facing": "north"
+  },
+  "walkable": [
+    {
+      "x": 2,
+      "y": 28,
+      "width": 44,
+      "height": 9
+    },
+    {
+      "x": 3,
+      "y": 5,
+      "width": 8,
+      "height": 28
+    },
+    {
+      "x": 8,
+      "y": 7,
+      "width": 36,
+      "height": 7
+    },
+    {
+      "x": 38,
+      "y": 7,
+      "width": 9,
+      "height": 28
+    },
+    {
+      "x": 8,
+      "y": 13,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "x": 26,
+      "y": 10,
+      "width": 16,
+      "height": 15
+    },
+    {
+      "x": 20,
+      "y": 21,
+      "width": 20,
+      "height": 9
+    },
+    {
+      "x": 19,
+      "y": 1,
+      "width": 8,
+      "height": 8
+    }
+  ],
+  "colliders": [
+    {
+      "id": "courtyard.west-row",
+      "rect": {
+        "x": 0,
+        "y": 10,
+        "width": 3,
+        "height": 16
+      }
+    },
+    {
+      "id": "courtyard.north-west-home",
+      "rect": {
+        "x": 9,
+        "y": 1,
+        "width": 10,
+        "height": 5
+      }
+    },
+    {
+      "id": "courtyard.north-east-home",
+      "rect": {
+        "x": 27,
+        "y": 1,
+        "width": 12,
+        "height": 5
+      }
+    },
+    {
+      "id": "courtyard.east-home",
+      "rect": {
+        "x": 44,
+        "y": 17,
+        "width": 4,
+        "height": 10
+      }
+    },
+    {
+      "id": "courtyard.central-home",
+      "rect": {
+        "x": 18,
+        "y": 14,
+        "width": 10,
+        "height": 5
+      }
+    },
+    {
+      "id": "courtyard.south-home",
+      "rect": {
+        "x": 31,
+        "y": 25,
+        "width": 10,
+        "height": 3
+      }
+    },
+    {
+      "id": "courtyard.bicycle-main",
+      "rect": {
+        "x": 10.3,
+        "y": 16.2,
+        "width": 3.4,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "courtyard.bicycle-spare",
+      "rect": {
+        "x": 10.5,
+        "y": 14.4,
+        "width": 3.2,
+        "height": 0.6
+      }
+    },
+    {
+      "id": "courtyard.bicycle-basket",
+      "rect": {
+        "x": 15.1,
+        "y": 16.1,
+        "width": 0.7,
+        "height": 0.7
+      }
+    },
+    {
+      "id": "courtyard.bench-sunny",
+      "rect": {
+        "x": 35.5,
+        "y": 17.7,
+        "width": 4.4,
+        "height": 1
+      }
+    },
+    {
+      "id": "courtyard.bench-reading",
+      "rect": {
+        "x": 6.1,
+        "y": 28.8,
+        "width": 3.8,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "courtyard.bench-window",
+      "rect": {
+        "x": 30,
+        "y": 8,
+        "width": 3.5,
+        "height": 0.8
+      }
+    },
+    {
+      "id": "courtyard.laundry-basin",
+      "rect": {
+        "x": 8,
+        "y": 8,
+        "width": 1.4,
+        "height": 1
+      }
+    },
+    {
+      "id": "courtyard.laundry-stool",
+      "rect": {
+        "x": 5.1,
+        "y": 9.3,
+        "width": 0.7,
+        "height": 0.7
+      }
+    },
+    {
+      "id": "courtyard.herb-island",
+      "rect": {
+        "x": 29,
+        "y": 14,
+        "width": 3,
+        "height": 4
+      }
+    },
+    {
+      "id": "courtyard.planting-wall",
+      "rect": {
+        "x": 17,
+        "y": 23.5,
+        "width": 2.8,
+        "height": 2
+      }
+    },
+    {
+      "id": "courtyard.rain-jar",
+      "rect": {
+        "x": 28.5,
+        "y": 20.3,
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "id": "courtyard.stone-table",
+      "rect": {
+        "x": 39,
+        "y": 29.5,
+        "width": 2,
+        "height": 1.5
+      }
+    },
+    {
+      "id": "courtyard.stool-table-a",
+      "rect": {
+        "x": 38,
+        "y": 30,
+        "width": 0.7,
+        "height": 0.7
+      }
+    },
+    {
+      "id": "courtyard.stool-table-b",
+      "rect": {
+        "x": 42,
+        "y": 30.4,
+        "width": 0.7,
+        "height": 0.7
+      }
+    },
+    {
+      "id": "courtyard.bird-bath",
+      "rect": {
+        "x": 32.8,
+        "y": 23,
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "id": "courtyard.planter-0",
+      "rect": {
+        "x": 3.5,
+        "y": 6,
+        "width": 0.9,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "courtyard.planter-1",
+      "rect": {
+        "x": 9,
+        "y": 5.8,
+        "width": 0.9,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "courtyard.planter-2",
+      "rect": {
+        "x": 16.5,
+        "y": 6.3,
+        "width": 0.9,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "courtyard.planter-3",
+      "rect": {
+        "x": 27.7,
+        "y": 6.6,
+        "width": 0.9,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "courtyard.planter-4",
+      "rect": {
+        "x": 37,
+        "y": 6.8,
+        "width": 0.9,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "courtyard.planter-5",
+      "rect": {
+        "x": 41,
+        "y": 10.4,
+        "width": 0.9,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "courtyard.planter-6",
+      "rect": {
+        "x": 42.4,
+        "y": 16,
+        "width": 0.9,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "courtyard.planter-7",
+      "rect": {
+        "x": 40.5,
+        "y": 22.5,
+        "width": 0.9,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "courtyard.planter-8",
+      "rect": {
+        "x": 27.5,
+        "y": 27,
+        "width": 0.9,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "courtyard.planter-9",
+      "rect": {
+        "x": 15.8,
+        "y": 26,
+        "width": 0.9,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "courtyard.planter-10",
+      "rect": {
+        "x": 4,
+        "y": 26,
+        "width": 0.9,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "courtyard.planter-11",
+      "rect": {
+        "x": 10.5,
+        "y": 33.8,
+        "width": 0.9,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "courtyard.planter-12",
+      "rect": {
+        "x": 29,
+        "y": 33.8,
+        "width": 0.9,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "courtyard.planter-13",
+      "rect": {
+        "x": 43.4,
+        "y": 33,
+        "width": 0.9,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "courtyard.planter-14",
+      "rect": {
+        "x": 18.4,
+        "y": 12.5,
+        "width": 0.9,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "courtyard.tree-0",
+      "rect": {
+        "x": 4.2,
+        "y": 16,
+        "width": 1.2,
+        "height": 1.2
+      }
+    },
+    {
+      "id": "courtyard.tree-1",
+      "rect": {
+        "x": 37,
+        "y": 13,
+        "width": 1.2,
+        "height": 1.2
+      }
+    },
+    {
+      "id": "courtyard.tree-2",
+      "rect": {
+        "x": 10.5,
+        "y": 26,
+        "width": 1.2,
+        "height": 1.2
+      }
+    },
+    {
+      "id": "courtyard.tree-3",
+      "rect": {
+        "x": 34,
+        "y": 32.5,
+        "width": 1.2,
+        "height": 1.2
+      }
+    },
+    {
+      "id": "courtyard.tree-4",
+      "rect": {
+        "x": 40,
+        "y": 6,
+        "width": 1.2,
+        "height": 1.2
+      }
+    },
+    {
+      "id": "courtyard.tree-5",
+      "rect": {
+        "x": 5,
+        "y": 34.2,
+        "width": 1.2,
+        "height": 1.2
+      }
+    }
+  ],
+  "occluders": [
+    {
+      "id": "courtyard.west-row",
+      "rect": {
+        "x": 0,
+        "y": 10,
+        "width": 3,
+        "height": 16
+      },
+      "height": 3,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "courtyard.north-west-home",
+      "rect": {
+        "x": 9,
+        "y": 1,
+        "width": 10,
+        "height": 5
+      },
+      "height": 3,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "courtyard.north-east-home",
+      "rect": {
+        "x": 27,
+        "y": 1,
+        "width": 12,
+        "height": 5
+      },
+      "height": 3,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "courtyard.east-home",
+      "rect": {
+        "x": 44,
+        "y": 17,
+        "width": 4,
+        "height": 10
+      },
+      "height": 3,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "courtyard.central-home",
+      "rect": {
+        "x": 18,
+        "y": 14,
+        "width": 10,
+        "height": 5
+      },
+      "height": 3,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "courtyard.south-home",
+      "rect": {
+        "x": 31,
+        "y": 25,
+        "width": 10,
+        "height": 3
+      },
+      "height": 3,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "courtyard.tree-0",
+      "rect": {
+        "x": 4.2,
+        "y": 16,
+        "width": 1.2,
+        "height": 1.2
+      },
+      "height": 3,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "courtyard.tree-1",
+      "rect": {
+        "x": 37,
+        "y": 13,
+        "width": 1.2,
+        "height": 1.2
+      },
+      "height": 3,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "courtyard.tree-2",
+      "rect": {
+        "x": 10.5,
+        "y": 26,
+        "width": 1.2,
+        "height": 1.2
+      },
+      "height": 3,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "courtyard.tree-3",
+      "rect": {
+        "x": 34,
+        "y": 32.5,
+        "width": 1.2,
+        "height": 1.2
+      },
+      "height": 3,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "courtyard.tree-4",
+      "rect": {
+        "x": 40,
+        "y": 6,
+        "width": 1.2,
+        "height": 1.2
+      },
+      "height": 3,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "courtyard.tree-5",
+      "rect": {
+        "x": 5,
+        "y": 34.2,
+        "width": 1.2,
+        "height": 1.2
+      },
+      "height": 3,
+      "fadeWhenPlayerBehind": true
+    }
+  ],
+  "entrances": [
+    {
+      "id": "from-town",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "facing": "north"
+    },
+    {
+      "id": "from-residential-hall",
+      "position": {
+        "x": 23,
+        "y": 5.5
+      },
+      "facing": "south"
+    },
+    {
+      "id": "from-park",
+      "position": {
+        "x": 43,
+        "y": 12
+      },
+      "facing": "west"
+    }
+  ],
+  "exits": [
+    {
+      "id": "to-town",
+      "rect": {
+        "x": 21.5,
+        "y": 36,
+        "width": 3,
+        "height": 1
+      },
+      "targetMapId": "town",
+      "targetEntranceId": "from-courtyard",
+      "kind": "path"
+    },
+    {
+      "id": "to-residential-hall",
+      "rect": {
+        "x": 21.5,
+        "y": 1,
+        "width": 3,
+        "height": 1
+      },
+      "targetMapId": "residential-hall",
+      "targetEntranceId": "from-courtyard",
+      "kind": "door"
+    },
+    {
+      "id": "to-park",
+      "rect": {
+        "x": 46,
+        "y": 10.5,
+        "width": 1,
+        "height": 3
+      },
+      "targetMapId": "park",
+      "targetEntranceId": "from-courtyard",
+      "kind": "path"
+    }
+  ],
+  "anchors": [
+    {
+      "id": "courtyard.activity",
+      "position": {
+        "x": 16,
+        "y": 21
+      },
+      "radius": 1.7,
+      "featureId": "cats",
+      "interactionId": "existing-cats-activity"
+    },
+    {
+      "id": "courtyard.white",
+      "position": {
+        "x": 14.8,
+        "y": 19.6
+      },
+      "radius": 1.7,
+      "featureId": "cats",
+      "interactionId": "cats.white"
+    },
+    {
+      "id": "courtyard.black",
+      "position": {
+        "x": 34.5,
+        "y": 20.6
+      },
+      "radius": 1.7,
+      "featureId": "cats",
+      "interactionId": "cats.black"
+    },
+    {
+      "id": "courtyard.bicycle",
+      "position": {
+        "x": 14.6,
+        "y": 17.8
+      },
+      "radius": 1.7,
+      "featureId": "cats",
+      "interactionId": "cats.bicycle"
+    },
+    {
+      "id": "courtyard.bench",
+      "position": {
+        "x": 36.6,
+        "y": 20
+      },
+      "radius": 1.7,
+      "featureId": "cats",
+      "interactionId": "cats.bench"
+    },
+    {
+      "id": "courtyard.door",
+      "position": {
+        "x": 23,
+        "y": 4.4
+      },
+      "radius": 1.7,
+      "featureId": "cats",
+      "interactionId": "cats.door"
+    },
+    {
+      "id": "courtyard.window",
+      "position": {
+        "x": 33.5,
+        "y": 7
+      },
+      "radius": 1.7,
+      "featureId": "cats",
+      "interactionId": "cats.window"
+    },
+    {
+      "id": "courtyard.aunt",
+      "position": {
+        "x": 25.3,
+        "y": 6.5
+      },
+      "radius": 1.7,
+      "featureId": "cats",
+      "interactionId": "cats.aunt"
+    }
+  ],
+  "terrain": [
+    {
+      "id": "courtyard.planted-ground",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 38
+      },
+      "material": "moss-earth",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.south-lane",
+      "rect": {
+        "x": 2,
+        "y": 28,
+        "width": 44,
+        "height": 9
+      },
+      "material": "worn-stone",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.west-alley",
+      "rect": {
+        "x": 3,
+        "y": 5,
+        "width": 8,
+        "height": 28
+      },
+      "material": "brick-paving",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.laundry-lane",
+      "rect": {
+        "x": 8,
+        "y": 7,
+        "width": 36,
+        "height": 7
+      },
+      "material": "worn-stone",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.east-passage",
+      "rect": {
+        "x": 38,
+        "y": 7,
+        "width": 9,
+        "height": 28
+      },
+      "material": "brick-paving",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.bicycle-court",
+      "rect": {
+        "x": 8,
+        "y": 13,
+        "width": 16,
+        "height": 16
+      },
+      "material": "courtyard-stone",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.window-court",
+      "rect": {
+        "x": 26,
+        "y": 10,
+        "width": 16,
+        "height": 15
+      },
+      "material": "courtyard-stone",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.cross-passage",
+      "rect": {
+        "x": 20,
+        "y": 21,
+        "width": 20,
+        "height": 9
+      },
+      "material": "worn-stone",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.hall-approach",
+      "rect": {
+        "x": 19,
+        "y": 1,
+        "width": 8,
+        "height": 8
+      },
+      "material": "threshold-stone",
+      "variant": 0
+    }
+  ],
+  "props": [
+    {
+      "id": "courtyard.west-row",
+      "kind": "row-house",
+      "position": {
+        "x": 0,
+        "y": 10
+      },
+      "width": 3,
+      "height": 16,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.north-west-home",
+      "kind": "row-house",
+      "position": {
+        "x": 9,
+        "y": 1
+      },
+      "width": 10,
+      "height": 5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.north-east-home",
+      "kind": "row-house",
+      "position": {
+        "x": 27,
+        "y": 1
+      },
+      "width": 12,
+      "height": 5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "courtyard.east-home",
+      "kind": "row-house",
+      "position": {
+        "x": 44,
+        "y": 17
+      },
+      "width": 4,
+      "height": 10,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "courtyard.central-home",
+      "kind": "row-house",
+      "position": {
+        "x": 18,
+        "y": 14
+      },
+      "width": 10,
+      "height": 5,
+      "layer": "object",
+      "variant": 4
+    },
+    {
+      "id": "courtyard.south-home",
+      "kind": "row-house",
+      "position": {
+        "x": 31,
+        "y": 25
+      },
+      "width": 10,
+      "height": 3,
+      "layer": "object",
+      "variant": 5
+    },
+    {
+      "id": "courtyard.hall-stoop",
+      "kind": "stoop",
+      "position": {
+        "x": 21,
+        "y": 2.2
+      },
+      "width": 4,
+      "height": 1.2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.hall-canopy",
+      "kind": "canopy",
+      "position": {
+        "x": 20.5,
+        "y": 1.7
+      },
+      "width": 5,
+      "height": 1.5,
+      "layer": "foreground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.bicycle-shed",
+      "kind": "bicycle-shed",
+      "position": {
+        "x": 9,
+        "y": 15
+      },
+      "width": 7,
+      "height": 4,
+      "layer": "foreground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.bicycle-main",
+      "kind": "bicycle",
+      "position": {
+        "x": 10.3,
+        "y": 16.2
+      },
+      "width": 3.4,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.bicycle-spare",
+      "kind": "bicycle",
+      "position": {
+        "x": 10.5,
+        "y": 14.4
+      },
+      "width": 3.2,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.bicycle-basket",
+      "kind": "basket",
+      "position": {
+        "x": 15.1,
+        "y": 16.1
+      },
+      "width": 0.7,
+      "height": 0.7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.bench-sunny",
+      "kind": "bench",
+      "position": {
+        "x": 35.5,
+        "y": 17.7
+      },
+      "width": 4.4,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.bench-reading",
+      "kind": "bench",
+      "position": {
+        "x": 6.1,
+        "y": 28.8
+      },
+      "width": 3.8,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.bench-window",
+      "kind": "bench",
+      "position": {
+        "x": 30,
+        "y": 8
+      },
+      "width": 3.5,
+      "height": 0.8,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "courtyard.window-blue",
+      "kind": "window",
+      "position": {
+        "x": 31,
+        "y": 4.8
+      },
+      "width": 3,
+      "height": 1.1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.window-kitchen",
+      "kind": "window",
+      "position": {
+        "x": 20,
+        "y": 18.5
+      },
+      "width": 3,
+      "height": 1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.dry-doorway",
+      "kind": "doorway",
+      "position": {
+        "x": 21.5,
+        "y": 1
+      },
+      "width": 3,
+      "height": 1.2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.laundry-west",
+      "kind": "laundry",
+      "position": {
+        "x": 4.2,
+        "y": 10.2
+      },
+      "width": 5.5,
+      "height": 0.6,
+      "layer": "foreground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.laundry-east",
+      "kind": "laundry",
+      "position": {
+        "x": 31.3,
+        "y": 9.2
+      },
+      "width": 6.2,
+      "height": 0.5,
+      "layer": "foreground",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.laundry-basin",
+      "kind": "wash-basin",
+      "position": {
+        "x": 8,
+        "y": 8
+      },
+      "width": 1.4,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.laundry-bucket",
+      "kind": "bucket",
+      "position": {
+        "x": 7.3,
+        "y": 9.6
+      },
+      "width": 0.6,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.laundry-stool",
+      "kind": "stool",
+      "position": {
+        "x": 5.1,
+        "y": 9.3
+      },
+      "width": 0.7,
+      "height": 0.7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.herb-island",
+      "kind": "raised-bed",
+      "position": {
+        "x": 29,
+        "y": 14
+      },
+      "width": 3,
+      "height": 4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.planting-wall",
+      "kind": "raised-bed",
+      "position": {
+        "x": 17,
+        "y": 23.5
+      },
+      "width": 2.8,
+      "height": 2,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.rain-jar",
+      "kind": "water-jar",
+      "position": {
+        "x": 28.5,
+        "y": 20.3
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.drain-west",
+      "kind": "drain",
+      "position": {
+        "x": 6.2,
+        "y": 21
+      },
+      "width": 1.4,
+      "height": 0.5,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.drain-south",
+      "kind": "drain",
+      "position": {
+        "x": 25.4,
+        "y": 30
+      },
+      "width": 1.4,
+      "height": 0.5,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.well-cover",
+      "kind": "well-cover",
+      "position": {
+        "x": 12,
+        "y": 30
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.stone-table",
+      "kind": "stone-table",
+      "position": {
+        "x": 39,
+        "y": 29.5
+      },
+      "width": 2,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.stool-table-a",
+      "kind": "stool",
+      "position": {
+        "x": 38,
+        "y": 30
+      },
+      "width": 0.7,
+      "height": 0.7,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.stool-table-b",
+      "kind": "stool",
+      "position": {
+        "x": 42,
+        "y": 30.4
+      },
+      "width": 0.7,
+      "height": 0.7,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.bird-bath",
+      "kind": "bird-bath",
+      "position": {
+        "x": 32.8,
+        "y": 23
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.cat-bowl",
+      "kind": "bowl",
+      "position": {
+        "x": 15.4,
+        "y": 18.5
+      },
+      "width": 0.5,
+      "height": 0.5,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.cat-mat",
+      "kind": "woven-mat",
+      "position": {
+        "x": 23.5,
+        "y": 4
+      },
+      "width": 1.7,
+      "height": 1,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.watering-can",
+      "kind": "watering-can",
+      "position": {
+        "x": 32.7,
+        "y": 15.4
+      },
+      "width": 0.6,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.park-arch",
+      "kind": "garden-arch",
+      "position": {
+        "x": 45,
+        "y": 10
+      },
+      "width": 1,
+      "height": 4,
+      "layer": "foreground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.planter-0",
+      "kind": "planter",
+      "position": {
+        "x": 3.5,
+        "y": 6
+      },
+      "width": 0.9,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.planter-1",
+      "kind": "planter",
+      "position": {
+        "x": 9,
+        "y": 5.8
+      },
+      "width": 0.9,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.planter-2",
+      "kind": "planter",
+      "position": {
+        "x": 16.5,
+        "y": 6.3
+      },
+      "width": 0.9,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "courtyard.planter-3",
+      "kind": "planter",
+      "position": {
+        "x": 27.7,
+        "y": 6.6
+      },
+      "width": 0.9,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.planter-4",
+      "kind": "planter",
+      "position": {
+        "x": 37,
+        "y": 6.8
+      },
+      "width": 0.9,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "courtyard.planter-5",
+      "kind": "planter",
+      "position": {
+        "x": 41,
+        "y": 10.4
+      },
+      "width": 0.9,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "courtyard.planter-6",
+      "kind": "planter",
+      "position": {
+        "x": 42.4,
+        "y": 16
+      },
+      "width": 0.9,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.planter-7",
+      "kind": "planter",
+      "position": {
+        "x": 40.5,
+        "y": 22.5
+      },
+      "width": 0.9,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "courtyard.planter-8",
+      "kind": "planter",
+      "position": {
+        "x": 27.5,
+        "y": 27
+      },
+      "width": 0.9,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.planter-9",
+      "kind": "planter",
+      "position": {
+        "x": 15.8,
+        "y": 26
+      },
+      "width": 0.9,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.planter-10",
+      "kind": "planter",
+      "position": {
+        "x": 4,
+        "y": 26
+      },
+      "width": 0.9,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "courtyard.planter-11",
+      "kind": "planter",
+      "position": {
+        "x": 10.5,
+        "y": 33.8
+      },
+      "width": 0.9,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "courtyard.planter-12",
+      "kind": "planter",
+      "position": {
+        "x": 29,
+        "y": 33.8
+      },
+      "width": 0.9,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.planter-13",
+      "kind": "planter",
+      "position": {
+        "x": 43.4,
+        "y": 33
+      },
+      "width": 0.9,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.planter-14",
+      "kind": "planter",
+      "position": {
+        "x": 18.4,
+        "y": 12.5
+      },
+      "width": 0.9,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.tree-0",
+      "kind": "courtyard-tree",
+      "position": {
+        "x": 4.2,
+        "y": 16
+      },
+      "width": 1.2,
+      "height": 1.2,
+      "layer": "foreground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.tree-1",
+      "kind": "courtyard-tree",
+      "position": {
+        "x": 37,
+        "y": 13
+      },
+      "width": 1.2,
+      "height": 1.2,
+      "layer": "foreground",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.tree-2",
+      "kind": "courtyard-tree",
+      "position": {
+        "x": 10.5,
+        "y": 26
+      },
+      "width": 1.2,
+      "height": 1.2,
+      "layer": "foreground",
+      "variant": 2
+    },
+    {
+      "id": "courtyard.tree-3",
+      "kind": "courtyard-tree",
+      "position": {
+        "x": 34,
+        "y": 32.5
+      },
+      "width": 1.2,
+      "height": 1.2,
+      "layer": "foreground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.tree-4",
+      "kind": "courtyard-tree",
+      "position": {
+        "x": 40,
+        "y": 6
+      },
+      "width": 1.2,
+      "height": 1.2,
+      "layer": "foreground",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.tree-5",
+      "kind": "courtyard-tree",
+      "position": {
+        "x": 5,
+        "y": 34.2
+      },
+      "width": 1.2,
+      "height": 1.2,
+      "layer": "foreground",
+      "variant": 2
+    },
+    {
+      "id": "courtyard.paw-0",
+      "kind": "pawprints",
+      "position": {
+        "x": 12,
+        "y": 21
+      },
+      "width": 0.45,
+      "height": 0.3,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.paw-1",
+      "kind": "pawprints",
+      "position": {
+        "x": 13,
+        "y": 20.7
+      },
+      "width": 0.45,
+      "height": 0.3,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.paw-2",
+      "kind": "pawprints",
+      "position": {
+        "x": 14.1,
+        "y": 20.1
+      },
+      "width": 0.45,
+      "height": 0.3,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.paw-3",
+      "kind": "pawprints",
+      "position": {
+        "x": 16,
+        "y": 19.4
+      },
+      "width": 0.45,
+      "height": 0.3,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.paw-4",
+      "kind": "pawprints",
+      "position": {
+        "x": 18,
+        "y": 20.2
+      },
+      "width": 0.45,
+      "height": 0.3,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.paw-5",
+      "kind": "pawprints",
+      "position": {
+        "x": 20,
+        "y": 20.8
+      },
+      "width": 0.45,
+      "height": 0.3,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.paw-6",
+      "kind": "pawprints",
+      "position": {
+        "x": 23,
+        "y": 20.6
+      },
+      "width": 0.45,
+      "height": 0.3,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.paw-7",
+      "kind": "pawprints",
+      "position": {
+        "x": 25.5,
+        "y": 21.4
+      },
+      "width": 0.45,
+      "height": 0.3,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.paw-8",
+      "kind": "pawprints",
+      "position": {
+        "x": 29,
+        "y": 21.5
+      },
+      "width": 0.45,
+      "height": 0.3,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.paw-9",
+      "kind": "pawprints",
+      "position": {
+        "x": 32,
+        "y": 22
+      },
+      "width": 0.45,
+      "height": 0.3,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.leaves-0",
+      "kind": "fallen-leaves",
+      "position": {
+        "x": 8,
+        "y": 24
+      },
+      "width": 1.5,
+      "height": 0.7,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.leaves-1",
+      "kind": "fallen-leaves",
+      "position": {
+        "x": 6,
+        "y": 18
+      },
+      "width": 1.5,
+      "height": 0.7,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.leaves-2",
+      "kind": "fallen-leaves",
+      "position": {
+        "x": 36,
+        "y": 15
+      },
+      "width": 1.5,
+      "height": 0.7,
+      "layer": "ground",
+      "variant": 2
+    },
+    {
+      "id": "courtyard.leaves-3",
+      "kind": "fallen-leaves",
+      "position": {
+        "x": 38,
+        "y": 25
+      },
+      "width": 1.5,
+      "height": 0.7,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.leaves-4",
+      "kind": "fallen-leaves",
+      "position": {
+        "x": 13,
+        "y": 33
+      },
+      "width": 1.5,
+      "height": 0.7,
+      "layer": "ground",
+      "variant": 2
+    },
+    {
+      "id": "courtyard.leaves-5",
+      "kind": "fallen-leaves",
+      "position": {
+        "x": 44,
+        "y": 8
+      },
+      "width": 1.5,
+      "height": 0.7,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.leaves-6",
+      "kind": "fallen-leaves",
+      "position": {
+        "x": 30,
+        "y": 11
+      },
+      "width": 1.5,
+      "height": 0.7,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.leaves-7",
+      "kind": "fallen-leaves",
+      "position": {
+        "x": 25,
+        "y": 26
+      },
+      "width": 1.5,
+      "height": 0.7,
+      "layer": "ground",
+      "variant": 2
+    },
+    {
+      "id": "courtyard.threshold-0",
+      "kind": "doorstep",
+      "position": {
+        "x": 19,
+        "y": 13
+      },
+      "width": 1.6,
+      "height": 0.7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.threshold-1",
+      "kind": "doorstep",
+      "position": {
+        "x": 26,
+        "y": 19.4
+      },
+      "width": 1.6,
+      "height": 0.7,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.threshold-2",
+      "kind": "doorstep",
+      "position": {
+        "x": 3.1,
+        "y": 12
+      },
+      "width": 1.6,
+      "height": 0.7,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "courtyard.threshold-3",
+      "kind": "doorstep",
+      "position": {
+        "x": 43.3,
+        "y": 26
+      },
+      "width": 1.6,
+      "height": 0.7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.threshold-4",
+      "kind": "doorstep",
+      "position": {
+        "x": 31.2,
+        "y": 28
+      },
+      "width": 1.6,
+      "height": 0.7,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.utility-0",
+      "kind": "utility-box",
+      "position": {
+        "x": 3.2,
+        "y": 13
+      },
+      "width": 0.6,
+      "height": 0.7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.utility-1",
+      "kind": "utility-box",
+      "position": {
+        "x": 3.2,
+        "y": 22
+      },
+      "width": 0.6,
+      "height": 0.7,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.utility-2",
+      "kind": "utility-box",
+      "position": {
+        "x": 17.1,
+        "y": 6.4
+      },
+      "width": 0.6,
+      "height": 0.7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.utility-3",
+      "kind": "utility-box",
+      "position": {
+        "x": 28.2,
+        "y": 6.5
+      },
+      "width": 0.6,
+      "height": 0.7,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.utility-4",
+      "kind": "utility-box",
+      "position": {
+        "x": 42.7,
+        "y": 26.2
+      },
+      "width": 0.6,
+      "height": 0.7,
+      "layer": "object",
+      "variant": 0
+    }
+  ],
+  "palette": {
+    "cream": [
+      236,
+      225,
+      201
+    ],
+    "jade": [
+      109,
+      145,
+      119
+    ],
+    "ink": [
+      51,
+      61,
+      57
+    ],
+    "wood": [
+      139,
+      107,
+      75
+    ],
+    "brass": [
+      185,
+      159,
+      105
+    ],
+    "brick": [
+      187,
+      154,
+      122
+    ],
+    "slate": [
+      91,
+      119,
+      120
+    ],
+    "moss": [
+      113,
+      133,
+      97
+    ],
+    "stone": [
+      185,
+      177,
+      153
+    ],
+    "linen": [
+      217,
+      213,
+      188
+    ]
+  },
+  "npcHooks": [
+    {
+      "id": "courtyard.white",
+      "position": {
+        "x": 13.4,
+        "y": 17.7
+      },
+      "route": [
+        {
+          "x": 13.4,
+          "y": 17.7
+        },
+        {
+          "x": 14.8,
+          "y": 20
+        },
+        {
+          "x": 21,
+          "y": 21
+        },
+        {
+          "x": 23,
+          "y": 7
+        },
+        {
+          "x": 23.5,
+          "y": 4.8
+        }
+      ],
+      "characterId": "cats.white"
+    },
+    {
+      "id": "courtyard.black",
+      "position": {
+        "x": 35,
+        "y": 19.7
+      },
+      "route": [
+        {
+          "x": 35,
+          "y": 19.7
+        },
+        {
+          "x": 36,
+          "y": 21
+        },
+        {
+          "x": 38,
+          "y": 21
+        },
+        {
+          "x": 38,
+          "y": 16
+        },
+        {
+          "x": 35,
+          "y": 19.7
+        }
+      ],
+      "characterId": "cats.black"
+    },
+    {
+      "id": "courtyard.aunt",
+      "position": {
+        "x": 25,
+        "y": 6.6
+      },
+      "route": [
+        {
+          "x": 25,
+          "y": 6.6
+        },
+        {
+          "x": 23,
+          "y": 6.5
+        },
+        {
+          "x": 23,
+          "y": 4.5
+        },
+        {
+          "x": 23,
+          "y": 6.5
+        },
+        {
+          "x": 25,
+          "y": 6.6
+        }
+      ],
+      "characterId": "aunt"
+    },
+    {
+      "id": "courtyard.sparrows",
+      "position": {
+        "x": 8,
+        "y": 24
+      },
+      "route": [
+        {
+          "x": 8,
+          "y": 24
+        },
+        {
+          "x": 12,
+          "y": 24
+        },
+        {
+          "x": 12,
+          "y": 27
+        },
+        {
+          "x": 8,
+          "y": 27
+        }
+      ],
+      "characterId": "sparrow"
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "courtyard.bicycle-court",
+      "position": {
+        "x": 13,
+        "y": 20
+      },
+      "kind": "cat-shelter"
+    },
+    {
+      "id": "courtyard.sun-bench",
+      "position": {
+        "x": 36,
+        "y": 20
+      },
+      "kind": "cat-sunny-bench"
+    },
+    {
+      "id": "courtyard.laundry-lane",
+      "position": {
+        "x": 6,
+        "y": 11
+      },
+      "kind": "laundry"
+    },
+    {
+      "id": "courtyard.window-nook",
+      "position": {
+        "x": 34,
+        "y": 7
+      },
+      "kind": "window-nook"
+    },
+    {
+      "id": "courtyard.hall-stoop",
+      "position": {
+        "x": 23,
+        "y": 4
+      },
+      "kind": "dry-doorway"
+    },
+    {
+      "id": "courtyard.herb-court",
+      "position": {
+        "x": 31,
+        "y": 20
+      },
+      "kind": "herb-planting"
+    },
+    {
+      "id": "courtyard.reading-bench",
+      "position": {
+        "x": 8,
+        "y": 31
+      },
+      "kind": "reading-bench"
+    },
+    {
+      "id": "courtyard.water-jar",
+      "position": {
+        "x": 29,
+        "y": 21
+      },
+      "kind": "rainwater"
+    },
+    {
+      "id": "courtyard.stone-table",
+      "position": {
+        "x": 40,
+        "y": 32
+      },
+      "kind": "residents-table"
+    },
+    {
+      "id": "courtyard.garden-passage",
+      "position": {
+        "x": 43,
+        "y": 12
+      },
+      "kind": "park-passage"
+    },
+    {
+      "id": "courtyard.town-lane",
+      "position": {
+        "x": 23,
+        "y": 33
+      },
+      "kind": "town-passage"
+    },
+    {
+      "id": "courtyard.kitchen-stoop",
+      "position": {
+        "x": 23,
+        "y": 20
+      },
+      "kind": "kitchen-stoop"
+    }
+  ]
+}
