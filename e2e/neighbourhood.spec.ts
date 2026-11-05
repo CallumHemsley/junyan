@@ -1,8 +1,8 @@
 import { test, expect, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import type { Content, GameState } from "../src/contracts";
-import base from "../src/content/content.json";
-import gardenData from "../src/features/garden/content.json";
+import base from "../src/content/content.json" with {type:"json"};
+import gardenData from "../src/features/garden/content.json" with {type:"json"};
 import { playOpening } from "./opening";
 import { probeAudio, silentWav } from "./audio-fixtures";
 
@@ -35,7 +35,7 @@ async function startNormally(page: Page) {
   await page.goto(`${appRoot}?seed=42`);
   await expect(page.getByRole("navigation",{name:"楼里",exact:true})).toHaveCount(0);
   await playOpening(page);
-  await page.getByRole("button",{name:"开门迎客",exact:true}).click();
+  await page.getByRole("button",{name:"开门迎客"}).click();
 }
 async function serve(page: Page, table: number) {
   const saved=(await stored(page))!;
@@ -55,9 +55,9 @@ async function serve(page: Page, table: number) {
   await dialog.getByRole("button",{name:/^上菜/}).click();
   const total=order.items.reduce((sum,item)=>sum+content.foods.find(food=>food.id===item.foodId)!.price*item.quantity,0);
   for(let n=0;n<order.paid-total;n++) await dialog.getByRole("button",{name:"+1块",exact:true}).click();
-  await dialog.getByRole("button",{name:"递上找零",exact:true}).click();
+  await dialog.getByRole("button",{name:"递上找零"}).click();
   await expect(dialog.locator(".thanks-chop")).toBeVisible();
-  await dialog.getByRole("button",{name:"继续招呼",exact:true}).click();
+  await dialog.getByRole("button",{name:"继续招呼"}).click();
 }
 function restaurantSnapshot(game: GameState) {
   const {neighbourhood,journal,...restaurant}=game;
@@ -182,7 +182,8 @@ test.describe("interaction-only routes with native PCM responses for missing fea
     await page.getByRole("button",{name:"收下盆栽",exact:true}).click();
     await page.reload();
     await expect(page.getByTestId("garden-view")).toBeVisible();
-    expect((await stored(page))?.neighbourhood?.claimedGiftIds).toEqual(["cats.cushion","repairs.stool","garden.planter"]);
+    await expect(page.getByRole("button",{name:"收下盆栽",exact:true})).toHaveCount(0);
+    await expect.poll(async()=> (await stored(page))?.neighbourhood?.claimedGiftIds).toEqual(["cats.cushion","repairs.stool","garden.planter"]);
     expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);
     expect(errors).toEqual([]);
     await info.attach("interaction-only-audio-disclosure",{body:"Namespaced missing feature WAV requests received in-memory native PCM fixtures. This verifies interaction/save/playback ownership, not real feature speech or offline voice readiness. Real existing speech and ambience were unchanged.",contentType:"text/plain"});
@@ -194,10 +195,11 @@ test("real missing feature voice reports native failure without a substitute",as
   page.on("console",message=>{if(message.type()==="error")failures.push(message.text());});
   await probeAudio(page);
   await page.goto(`${appRoot}?test=1&seed=42`);
-  await page.getByRole("button",{name:"开门迎客",exact:true}).click();
+  await page.getByRole("button",{name:"开门迎客"}).click();
   await visit(page,"家");
   await expect(page.getByText("声音暂时没有播出，再点一次听听。",{exact:true})).toBeVisible();
   expect(await page.evaluate(()=> (window as any).__audioProbe.some((event:any)=>event.src.includes("/audio/apartment/") && event.status!=="playing"))).toBe(true);
-  expect(failures.length).toBeGreaterThan(0);
-  await info.attach("expected-missing-real-audio",{body:JSON.stringify(failures,null,2),contentType:"application/json"});
+  const nativeFailures=await page.evaluate(()=> (window as any).__audioElements.filter((audio:HTMLAudioElement)=>audio.src.includes("/audio/apartment/") && audio.error).map((audio:HTMLAudioElement)=>({src:audio.src,code:audio.error!.code,message:audio.error!.message})));
+  expect(nativeFailures.length).toBeGreaterThan(0);
+  await info.attach("expected-missing-real-audio",{body:JSON.stringify({nativeFailures,consoleErrors:failures},null,2),contentType:"application/json"});
 });

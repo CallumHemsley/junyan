@@ -16,6 +16,7 @@ export default defineConfig({
   reporter: [["list"], ["json", { outputFile: "output/neighbourhood/results.json" }]],
   use: {
     baseURL,
+    actionTimeout: 15000,
     launchOptions: {
       executablePath: process.env.JUNYAN_BROWSER_PATH,
       args: ["--mute-audio"],
@@ -25,7 +26,7 @@ export default defineConfig({
   },
   projects: [
     { name: "desktop", use: { ...devices["Desktop Chrome"], viewport: { width: 1440, height: 1000 } } },
-    { name: "phone", testIgnore: "**/*offline.spec.ts", use: { ...devices["iPhone 13"], defaultBrowserType: "chromium" } },
+    { name: "phone", testIgnore: ["**/offline.spec.ts", "**/overnight-offline.spec.ts"], use: { ...devices["iPhone 13"], defaultBrowserType: "chromium" } },
   ],
   webServer: {
     command: `node node_modules/vite/bin/vite.js ${preview ? "preview --base /junyan/" : ""} --host 127.0.0.1 --port 5466 --strictPort`,

@@ -1,0 +1,36 @@
+import { test, expect } from "@playwright/test";
+import { playOpening } from "./opening";
+import { probeAudio } from "./audio-fixtures";
+
+test.use({serviceWorkers:"allow"});
+test("real cached locations and saved furniture reload offline while missing feature speech remains a blocker",async({page,context},info)=>{
+  test.skip(process.env.JUNYAN_NEIGHBOURHOOD_PREVIEW!=="1","Requires the built production subpath and real service worker");
+  test.setTimeout(180000);
+  const errors:string[]=[];
+  const exceptions:string[]=[];
+  page.on("console",message=>{if(message.type()==="error")errors.push(message.text());});
+  page.on("pageerror",error=>exceptions.push(error.message));
+  await probeAudio(page);
+  await page.goto("/junyan/?seed=42");
+  await playOpening(page);
+  await page.getByRole("button",{name:"开门迎客"}).click();
+  await page.waitForFunction(()=>navigator.serviceWorker.controller!==null,undefined,{timeout:30000});
+  await context.setOffline(true);
+  await page.getByRole("navigation",{name:"楼里",exact:true}).getByRole("button",{name:"家",exact:true}).click();
+  await expect(page.locator(".apartment")).toBeVisible();
+  await page.getByRole("button",{name:"收下",exact:true}).click();
+  await expect(page.locator(".apartment-items").getByRole("button",{name:/桌子/})).toBeVisible();
+  await expect(page.locator(".save-note").filter({hasText:/声音暂时|点一下喇叭/})).toBeVisible();
+  await expect.poll(()=>page.evaluate(()=>localStorage.getItem("junyan-waiter-pending-v1"))).toBeNull();
+  await page.reload();
+  await expect(page.locator(".apartment")).toBeVisible();
+  await expect(page.locator(".apartment-items").getByRole("button",{name:/桌子/})).toBeVisible();
+  await page.getByRole("navigation",{name:"楼里",exact:true}).getByRole("button",{name:"早安小馆",exact:true}).click();
+  await expect(page.locator(".world-panel canvas")).toBeVisible();
+  await expect.poll(()=>page.evaluate(()=> (window as any).__ambienceElements.filter((audio:HTMLAudioElement)=>!audio.paused && audio.readyState>=2).length)).toBe(1);
+  expect(await page.evaluate(()=> (window as any).__ambienceElements.length)).toBe(1);
+  expect(exceptions).toEqual([]);
+  await page.screenshot({path:`output/neighbourhood/${info.project.name}-real-offline-return.png`,fullPage:true});
+  await info.attach("real-offline-limitations",{body:JSON.stringify({proof:"Actual cached UI, saved furniture and existing ambience worked without network. No media mocks or silent responses used.",blocker:"Missing feature speech still fails native playback; this does not pass feature offline voice readiness.",expectedAudioErrors:errors},null,2),contentType:"application/json"});
+  await context.setOffline(false);
+});
