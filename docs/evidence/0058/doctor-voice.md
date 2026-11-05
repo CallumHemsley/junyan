@@ -151,3 +151,26 @@ Cloud validation of both prepared copies: each plan has 120 cached / exactly 5 p
 Return the same artifact contract as round 1 plus model preflight output and runtime version. Present two anonymous labels in the same wake scene, at the same volume, to the user. First compare the first English line and Mandarin handover; stop if both still sound unnatural. Only a promising voice proceeds to the complete four-line premise and nurse transition. Ask for ordinary believable conversation, exact words, clear Mandarin and consistent identity; avoid prompting the listener to favour “calmness”. Record what they reject or prefer in their own words and retain actual listening/scene capture paths. Root cannot hear audio and must not invent listening notes. Both larger takes remain hypotheses, not production choices.
 
 If supported conversational direction still fails, stop expanding synthetic preset variants. Next materially different strategy is a short performance-led bilingual human recording of the exact script (or a consensually supplied reference with a separately evaluated local cloning model). That would establish natural conversational timing directly rather than extrapolating from preset names. No human recording, reference use, model change or paid service has occurred or been silently authorized by this plan. Discuss that route with the user based on the round-2 evidence.
+
+## 2026-11-05 — narrow round-2 probe before full generation
+
+Parent independently resolved the same exact pin with `HfApi(token=False)` and reports total snapshot size 2,312,059,416 bytes; not cached yet. No production model choice. The source-backed 1b7 capability comparison stands; user's two first-round rejections stand.
+
+The supported preparer now defaults to **only the first English line and Mandarin handover**, preserving both authored steps exactly. It removes other opening steps/cast only in the ignored pipeline fixture; that fixture is not a playable opening or a replacement for production content. Both candidate plans validated: **87 cached / 2 pending**, texts exactly `Ah, you're awake. Don't try to sit up yet.` and `人醒了。我明天再来看看。`. Other content stays copied only to reuse the known cache. No additional cast is synthesized. `--full` explicitly opts into all five doctor lines later; do not use it before a promising listening result.
+
+Use the pinned download and offline model preflight above, then this **replacement synthesis command** (four new clips total across two comparison arms):
+
+```sh
+python3 docs/evidence/0058/prepare-supported-auditions.py output/0058-supported-probe
+for candidate in larger-neutral larger-conversation; do
+  HF_HUB_OFFLINE=1 /tmp/junyan-qwen-venv-0049/bin/python scripts/content-audio.py \
+    --content "output/0058-supported-probe/$candidate/content.json" \
+    --voices "output/0058-supported-probe/$candidate/voices.json" \
+    --output "output/0058-supported-probe/$candidate/audio" \
+    --engine qwen --write-content || break
+done
+```
+
+After generation each fixture should plan as **89 cached / 0 pending**. Return two new WAVs, manifest, voices/content fixtures and logs per candidate. Do not import these truncated fixtures into the game. For in-scene listening, parent can construct temporary full production copies and replace only the first English and doctor Mandarin audio references with probe outputs; keep the remaining three English clips identified as baseline, not candidate. Alternatively play only the two probe clips for the initial comparison, then run the full in-scene comparison if the user hears a promising result. Only that user's actual comparison can decide whether further work is justified.
+
+If promising, prepare a **new** output path with `--full`, copy verified probe WAVs and their matching manifest entries into that candidate output, and synthesize the remaining three doctor lines through the same pipeline. Do not reuse a probe's truncated content as full content. Existing sample identities match between probe/full because kind, exact text, preset, pinyin and generator version match. Final full plan requires 125 cached / 0 pending. Writer alone imports an accepted production result after actual listening and review.
