@@ -4,7 +4,7 @@ export type Job = 'lamp' | 'toy';
 export type Part = 'bulb' | 'cover' | 'lead' | 'cell';
 export type Lamp = { kind: 'lamp'; fitting: 'loose' | 'seated'; power: 'off' | 'on'; test: 'none' | 'unstable' | 'steady' };
 export type Toy = { kind: 'toy'; cover: 'open' | 'closed'; lead: 'loose' | 'connected'; cell: 'old' | 'fresh'; test: 'none' | 'still' | 'moving' };
-export const feedbackIds = ['lamp-intro', 'lamp-unstable', 'lamp-steady', 'power-first', 'lamp-tight', 'lamp-loose', 'toy-intro', 'toy-open', 'toy-closed', 'toy-connect', 'toy-disconnect', 'toy-cell', 'toy-old-cell', 'toy-still', 'toy-moving', 'open-first', 'close-first', 'lamp-returned', 'toy-returned', 'all-complete'] as const;
+export const feedbackIds = ['lamp-intro', 'lamp-unstable', 'lamp-steady', 'power-first', 'lamp-tight', 'lamp-loose', 'toy-intro', 'toy-open', 'toy-closed', 'toy-connect', 'toy-disconnect', 'toy-cell', 'toy-old-cell', 'toy-still', 'toy-moving', 'open-first', 'close-first', 'lamp-returned', 'toy-returned', 'all-complete', 'lamp-off'] as const;
 export type Feedback = typeof feedbackIds[number];
 export type State = { version: 1; jobs: { lamp: Lamp | null; toy: Toy | null }; active: Job; selected: Part | null; completed: Job[]; feedback: Feedback };
 export type Action =
@@ -36,7 +36,7 @@ export function reduce(state: State, action: Action, _day: number): State {
   if (action.type === 'switch') {
     if (state.active === action.job) return state;
     const bench = state.jobs[action.job];
-    const feedback: Feedback = !bench ? (action.job === 'lamp' ? 'lamp-returned' : 'toy-returned') : bench.kind === 'lamp' ? (bench.test === 'steady' ? 'lamp-steady' : bench.test === 'unstable' ? 'lamp-unstable' : 'lamp-intro') : bench.test === 'moving' ? 'toy-moving' : bench.test === 'still' ? 'toy-still' : 'toy-intro';
+    const feedback: Feedback = !bench ? (action.job === 'lamp' ? 'lamp-returned' : 'toy-returned') : bench.kind === 'lamp' ? (bench.test === 'steady' ? 'lamp-steady' : bench.test === 'unstable' ? 'lamp-unstable' : bench.fitting === 'seated' ? 'lamp-tight' : 'lamp-intro') : bench.test === 'moving' ? 'toy-moving' : bench.test === 'still' ? 'toy-still' : bench.cover === 'open' ? 'toy-open' : 'toy-closed';
     return { ...state, active: action.job, selected: null, feedback };
   }
   if (action.type === 'start') {
@@ -60,7 +60,7 @@ export function reduce(state: State, action: Action, _day: number): State {
   if (bench.kind === 'lamp') {
     if (action.type === 'power-off') {
       if (bench.power === 'off') return state;
-      return update(state, { ...bench, power: 'off', test: 'none' }, 'lamp-intro');
+      return update(state, { ...bench, power: 'off', test: 'none' }, 'lamp-off');
     }
     if (action.type === 'test') {
       const test = bench.fitting === 'seated' ? 'steady' : 'unstable';
@@ -120,7 +120,35 @@ export function validate(value: unknown): State | null {
     if (toy.cover !== 'closed') return null;
     if ((toy.test === 'moving') !== (toy.lead === 'connected' && toy.cell === 'fresh')) return null;
   }
+  if (!feedbackMatches(state)) return null;
   return state;
+}
+
+function feedbackMatches(state: State): boolean {
+  const bench = currentBench(state);
+  switch (state.feedback) {
+    case 'all-complete': return !bench && state.completed.length === 2;
+    case 'lamp-returned': return state.active === 'lamp' && !bench && state.completed.includes('lamp');
+    case 'toy-returned': return state.active === 'toy' && !bench && state.completed.includes('toy');
+    case 'lamp-intro': return bench?.kind === 'lamp' && bench.fitting === 'loose';
+    case 'lamp-off': return bench?.kind === 'lamp' && bench.power === 'off';
+    case 'lamp-tight': return bench?.kind === 'lamp' && bench.fitting === 'seated' && bench.power === 'off';
+    case 'lamp-loose': return bench?.kind === 'lamp' && bench.fitting === 'loose' && bench.power === 'off';
+    case 'lamp-unstable': return bench?.kind === 'lamp' && bench.test === 'unstable';
+    case 'lamp-steady': return bench?.kind === 'lamp' && bench.test === 'steady';
+    case 'power-first': return bench?.kind === 'lamp' && bench.power === 'on';
+    case 'toy-intro': return bench?.kind === 'toy' && bench.lead === 'loose' && bench.cell === 'old' && bench.cover === 'closed';
+    case 'toy-open': return bench?.kind === 'toy' && bench.cover === 'open';
+    case 'toy-closed': return bench?.kind === 'toy' && bench.cover === 'closed' && bench.test === 'none';
+    case 'toy-connect': return bench?.kind === 'toy' && bench.cover === 'open' && bench.lead === 'connected';
+    case 'toy-disconnect': return bench?.kind === 'toy' && bench.cover === 'open' && bench.lead === 'loose';
+    case 'toy-cell': return bench?.kind === 'toy' && bench.cover === 'open' && bench.cell === 'fresh';
+    case 'toy-old-cell': return bench?.kind === 'toy' && bench.cover === 'open' && bench.cell === 'old';
+    case 'toy-still': return bench?.kind === 'toy' && bench.test === 'still';
+    case 'toy-moving': return bench?.kind === 'toy' && bench.test === 'moving';
+    case 'open-first': return bench?.kind === 'toy' && bench.cover === 'closed';
+    case 'close-first': return bench?.kind === 'toy' && bench.cover === 'open';
+  }
 }
 
 export function recovered(before: State, action: Action, after: State): string[] {

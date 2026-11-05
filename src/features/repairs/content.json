@@ -610,6 +610,27 @@
           "audio": "/audio/repairs/line-lamp-returned.wav"
         },
         {
+          "id": "repairs.lamp-off",
+          "text": "关掉了。",
+          "tokens": [
+            {
+              "id": "repairs.off",
+              "hanzi": "关掉",
+              "pinyin": "guāndiào",
+              "gloss": "switch off",
+              "audio": "/audio/repairs/word-off.wav"
+            },
+            {
+              "id": "le",
+              "hanzi": "了",
+              "pinyin": "le",
+              "gloss": "completed action particle",
+              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
+            }
+          ],
+          "audio": "/audio/repairs/line-lamp-off.wav"
+        },
+        {
           "id": "repairs.all-complete",
           "text": "都修好了。这个木头凳子给你。",
           "tokens": [
@@ -723,7 +744,7 @@
         },
         {
           "id": "repairs.toy-open",
-          "text": "打开了。线松了，电池旧了。",
+          "text": "打开了。",
           "tokens": [
             {
               "id": "repairs.open",
@@ -731,48 +752,6 @@
               "pinyin": "dǎkāi",
               "gloss": "open",
               "audio": "/audio/repairs/word-open.wav"
-            },
-            {
-              "id": "le",
-              "hanzi": "了",
-              "pinyin": "le",
-              "gloss": "completed action particle",
-              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
-            },
-            {
-              "id": "repairs.wire",
-              "hanzi": "线",
-              "pinyin": "xiàn",
-              "gloss": "wire",
-              "audio": "/audio/repairs/word-wire.wav"
-            },
-            {
-              "id": "repairs.loose",
-              "hanzi": "松",
-              "pinyin": "sōng",
-              "gloss": "loose",
-              "audio": "/audio/repairs/word-loose.wav"
-            },
-            {
-              "id": "le",
-              "hanzi": "了",
-              "pinyin": "le",
-              "gloss": "completed action particle",
-              "audio": "/audio/word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav"
-            },
-            {
-              "id": "repairs.battery",
-              "hanzi": "电池",
-              "pinyin": "diànchí",
-              "gloss": "battery",
-              "audio": "/audio/repairs/word-battery.wav"
-            },
-            {
-              "id": "repairs.old",
-              "hanzi": "旧",
-              "pinyin": "jiù",
-              "gloss": "old",
-              "audio": "/audio/repairs/word-old.wav"
             },
             {
               "id": "le",

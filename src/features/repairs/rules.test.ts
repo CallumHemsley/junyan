@@ -81,7 +81,7 @@ describe('repair workshop physical rules', () => {
   });
   it('rejects malformed and semantically impossible saves', () => {
     const base = initialState();
-    for (const value of [null, {}, { ...base, extra: true }, { ...base, completed: ['lamp', 'lamp'] }, { ...base, selected: 'lead' }, { ...base, jobs: { ...base.jobs, lamp: { ...base.jobs.lamp, test: 'steady' } } }, { ...toy(), jobs: { ...toy().jobs, toy: { kind: 'toy', cover: 'open', lead: 'connected', cell: 'fresh', test: 'moving' } } }]) expect(validate(value)).toBeNull();
+    for (const value of [null, {}, { ...base, feedback: 'all-complete' }, { ...base, feedback: 'toy-moving' }, { ...base, extra: true }, { ...base, completed: ['lamp', 'lamp'] }, { ...base, selected: 'lead' }, { ...base, jobs: { ...base.jobs, lamp: { ...base.jobs.lamp, test: 'steady' } } }, { ...toy(), jobs: { ...toy().jobs, toy: { kind: 'toy', cover: 'open', lead: 'connected', cell: 'fresh', test: 'moving' } } }]) expect(validate(value)).toBeNull();
     expect(validate(base)).toEqual(base);
   });
   it('validates every reachable state throughout reversible action sequences', () => {
@@ -101,7 +101,7 @@ describe('repair workshop physical rules', () => {
 describe('repair content', () => {
   it('contains exact segmented lines and known dictionary words', () => {
     expect(contentSchema.safeParse(content).success).toBe(true);
-    expect(lines).toHaveLength(20);
+    expect(lines).toHaveLength(21);
     expect(new Set(words.map(word => word.id)).size).toBe(words.length);
     const invalid = structuredClone(content);
     invalid.characters[0].lines[0].text = '灯泡';

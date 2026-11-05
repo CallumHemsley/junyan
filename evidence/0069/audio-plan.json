@@ -3,8 +3,8 @@
 {"filename": "word-f5b821af4381ad00afc41ca46eace4892ddd3d4fc8247398b77f8f07ebf2b4b3.wav", "text": "台灯", "engine": "qwen", "voice_ids": ["serena"], "references": 2, "cached": false}
 {"filename": "word-2d25a941ba9be93df144bf0a88e8d75bd2c94bd1aff9953e5b681ec21fdbea09.wav", "text": "灯泡", "engine": "qwen", "voice_ids": ["serena"], "references": 3, "cached": false}
 {"filename": "word-966125065b012b348193dde093cb4420f48d2dee1d9ad7ce93fcb9504d2635ec.wav", "text": "玩具", "engine": "qwen", "voice_ids": ["serena"], "references": 3, "cached": false}
-{"filename": "word-f0dbc13186c0050c9250c4da870c52fc3c8cdb15c377216012de0009265b166b.wav", "text": "电池", "engine": "qwen", "voice_ids": ["serena"], "references": 4, "cached": false}
-{"filename": "word-145a70bd2833495895f779f830d1ab65bc8cb3d8b56f4363d4ef6fe3f921c3ee.wav", "text": "线", "engine": "qwen", "voice_ids": ["serena"], "references": 4, "cached": false}
+{"filename": "word-f0dbc13186c0050c9250c4da870c52fc3c8cdb15c377216012de0009265b166b.wav", "text": "电池", "engine": "qwen", "voice_ids": ["serena"], "references": 3, "cached": false}
+{"filename": "word-145a70bd2833495895f779f830d1ab65bc8cb3d8b56f4363d4ef6fe3f921c3ee.wav", "text": "线", "engine": "qwen", "voice_ids": ["serena"], "references": 3, "cached": false}
 {"filename": "word-576a41856ecfe0d6a48d313d3c978caeee927c65e673ea746d2fa17f70cdda22.wav", "text": "盖子", "engine": "qwen", "voice_ids": ["serena"], "references": 2, "cached": false}
 {"filename": "word-ba117093523d5a7332435cbd09318a5fd118917292f5695739b2dae3ca9fd906.wav", "text": "拧紧", "engine": "qwen", "voice_ids": ["serena"], "references": 3, "cached": false}
 {"filename": "word-8e6d5c847f96a6fcf6256b4a12a42c8744f045ce19f5341dd40a28878a5253a0.wav", "text": "转松", "engine": "qwen", "voice_ids": ["serena"], "references": 1, "cached": false}
@@ -13,7 +13,7 @@
 {"filename": "word-8d417357b10f91e97c11cf71ae746d65a914c83ad4e33dca1e8ae3b4c4987f37.wav", "text": "换", "engine": "qwen", "voice_ids": ["serena"], "references": 2, "cached": false}
 {"filename": "word-5fc375ce3bcba9fa166722a71a0e0d8ffa9da88c115db643527f62f795afb414.wav", "text": "打开", "engine": "qwen", "voice_ids": ["serena"], "references": 4, "cached": false}
 {"filename": "word-6d017ca0637eb5a924a6e6fc2838bcd8861316621f2503dfb3fda822027b2a17.wav", "text": "盖上", "engine": "qwen", "voice_ids": ["serena"], "references": 3, "cached": false}
-{"filename": "word-bda3c861f4502cd168be3e9fcb721980c1d7c67b20aacf0ff75c4189653f0122.wav", "text": "关掉", "engine": "qwen", "voice_ids": ["serena"], "references": 2, "cached": false}
+{"filename": "word-bda3c861f4502cd168be3e9fcb721980c1d7c67b20aacf0ff75c4189653f0122.wav", "text": "关掉", "engine": "qwen", "voice_ids": ["serena"], "references": 3, "cached": false}
 {"filename": "word-258fe950db6715d4f3262b11145ad80a797cc670c3ec5e0755b81690dd377f4f.wav", "text": "放回", "engine": "qwen", "voice_ids": ["serena"], "references": 2, "cached": false}
 {"filename": "word-ffca5d70f5602aa407b9ce799d979079bb9904630d876366b1933b7fb9cac7df.wav", "text": "重新来", "engine": "qwen", "voice_ids": ["serena"], "references": 1, "cached": false}
 {"filename": "word-cd41cfc1923a835774150432a4ba9150696a722600441b9b6734dee458aa3054.wav", "text": "再修一次", "engine": "qwen", "voice_ids": ["serena"], "references": 1, "cached": false}
@@ -29,11 +29,11 @@
 {"filename": "word-6b4abc5e9982dc8d2276325740948deef13bad6c1597a57563eda11861fc5683.wav", "text": "稳", "engine": "qwen", "voice_ids": ["serena"], "references": 2, "cached": false}
 {"filename": "word-5817d4a89147e97a388f16b51b2a63401909de9418b4b0ad0d6f75e523e57255.wav", "text": "现在", "engine": "qwen", "voice_ids": ["serena"], "references": 2, "cached": false}
 {"filename": "word-b73137a2361bf72714c4f68eb4876638fa4a0af124aeb5ea2b1f2791619a313d.wav", "text": "紧", "engine": "qwen", "voice_ids": ["serena"], "references": 1, "cached": false}
-{"filename": "word-03d1ce046d3b7e4d79f11267606ae96623748bcf03890ea2aaa38ba7477f1982.wav", "text": "松", "engine": "qwen", "voice_ids": ["serena"], "references": 3, "cached": false}
+{"filename": "word-03d1ce046d3b7e4d79f11267606ae96623748bcf03890ea2aaa38ba7477f1982.wav", "text": "松", "engine": "qwen", "voice_ids": ["serena"], "references": 2, "cached": false}
 {"filename": "word-0135de542524c686ec51d7a11ff61605e23361060130938bd8738f9a978f4a7a.wav", "text": "还是", "engine": "qwen", "voice_ids": ["serena"], "references": 3, "cached": false}
 {"filename": "word-96d717ed8c958720ff7a9aa5585d9326ba35464260a4c6803d9909bcea3cda51.wav", "text": "还没", "engine": "qwen", "voice_ids": ["serena"], "references": 1, "cached": false}
 {"filename": "word-e48d11d1fea2bad99a08850c43619cf3c1c976b6851a09d89c97b43220823276.wav", "text": "上", "engine": "qwen", "voice_ids": ["serena"], "references": 2, "cached": false}
-{"filename": "word-8b8b0f5f90abb5fa26a832301b7bab1f955c3e619e776b4032a289d784c1185d.wav", "text": "旧", "engine": "qwen", "voice_ids": ["serena"], "references": 3, "cached": false}
+{"filename": "word-8b8b0f5f90abb5fa26a832301b7bab1f955c3e619e776b4032a289d784c1185d.wav", "text": "旧", "engine": "qwen", "voice_ids": ["serena"], "references": 2, "cached": false}
 {"filename": "word-35f6f30edb31563d4c56b1db0216aedba024fa839c6bafb9f3123229ce852f40.wav", "text": "新", "engine": "qwen", "voice_ids": ["serena"], "references": 2, "cached": false}
 {"filename": "word-4ce842478dbf644726e291c58465fcb224c14f92e6f1b2da5d853e3f7df2e857.wav", "text": "一起", "engine": "qwen", "voice_ids": ["serena"], "references": 1, "cached": false}
 {"filename": "word-7bc8faceebb7845b0c491af782c285472220a4b2bb1137fadd75341b5e36481f.wav", "text": "坐", "engine": "qwen", "voice_ids": ["serena"], "references": 1, "cached": false}
@@ -43,7 +43,7 @@
 {"filename": "word-5a23ff10b2e90576c6988bc1ca38e933e7acf83e65e1cdf1b4481141ac53a08d.wav", "text": "再听", "engine": "qwen", "voice_ids": ["serena"], "references": 1, "cached": false}
 {"filename": "word-7b8d50f18a327cac22e9293ae7ebc707c694096410fe0ab028aab2c24ca79eae.wav", "text": "修好", "engine": "qwen", "voice_ids": ["serena"], "references": 4, "cached": false}
 {"filename": "word-19be6bbebac3dbb7894517bbd13de46a628667976c0f109d45525b89ef1012f7.wav", "text": "好", "engine": "qwen", "voice_ids": ["serena"], "references": 3, "cached": false}
-{"filename": "word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav", "text": "了", "engine": "qwen", "voice_ids": ["serena"], "references": 19, "cached": false}
+{"filename": "word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav", "text": "了", "engine": "qwen", "voice_ids": ["serena"], "references": 18, "cached": false}
 {"filename": "word-87ff64a00c0e6c135b269796a1283550b2c2058bf404f6ba168c03230be9e413.wav", "text": "不", "engine": "qwen", "voice_ids": ["serena"], "references": 4, "cached": false}
 {"filename": "word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav", "text": "再", "engine": "qwen", "voice_ids": ["serena"], "references": 5, "cached": false}
 {"filename": "word-6639b6f2bd2a82154aad82aac652ff9b392c19e5a5d39fbef92fb423c8cb87f1.wav", "text": "试试", "engine": "qwen", "voice_ids": ["serena"], "references": 4, "cached": false}
@@ -56,9 +56,10 @@
 {"filename": "line-85e40968ef410cae1e0cb0115c3675ff640ffe7e40d1ad712a59e2d5789c5925.wav", "text": "灯泡拧紧了。再试试。", "engine": "qwen", "voice_ids": ["serena"], "references": 1, "cached": false}
 {"filename": "line-fe6cde0c82cc4b5be38b2df01bec2f50881f6b502dcf73d536da2d535aede85f.wav", "text": "灯泡松了。", "engine": "qwen", "voice_ids": ["serena"], "references": 1, "cached": false}
 {"filename": "line-547bd209128e8394a940228254e7d990d16b45dbaa30c60166d683bbaa37a424.wav", "text": "台灯修好了。", "engine": "qwen", "voice_ids": ["serena"], "references": 1, "cached": false}
+{"filename": "line-7cbfe17718586ff7a57b62cc9311d8fd8c64ebe7336cf42fc67c081d5ae4f1ae.wav", "text": "关掉了。", "engine": "qwen", "voice_ids": ["serena"], "references": 1, "cached": false}
 {"filename": "line-cf2a1254cb84c49a667b99a9feb4eb3fc91f7c45d516d18910ac57d81b1c9091.wav", "text": "都修好了。这个木头凳子给你。", "engine": "qwen", "voice_ids": ["serena"], "references": 1, "cached": false}
 {"filename": "line-aaaee61b70906ec1ecd87f4fe9ae40d64b6d7f0ed1e72858409e3c01ecce5d21.wav", "text": "这个玩具不动了。", "engine": "kokoro", "voice_ids": ["xiaobei"], "references": 1, "cached": false}
-{"filename": "line-8008c3d96a1ed137662fa70261eb8ac6466951b100af8fe1c28ab99b0917c88c.wav", "text": "打开了。线松了，电池旧了。", "engine": "kokoro", "voice_ids": ["xiaobei"], "references": 1, "cached": false}
+{"filename": "line-20c48058ba1571cda0193012e0b43ad9b9ecbb2e0b288ece3ac12f7626010b1a.wav", "text": "打开了。", "engine": "kokoro", "voice_ids": ["xiaobei"], "references": 1, "cached": false}
 {"filename": "line-4073e1539586704cee2c5e41218714f75e11ccd1b6393c9a6ccb96f071661ed6.wav", "text": "盖上了。试试。", "engine": "kokoro", "voice_ids": ["xiaobei"], "references": 1, "cached": false}
 {"filename": "line-51532e45038b5f0d3d0e483a045f8529aeec91bab91c52240be7f2b5f8eeb929.wav", "text": "线接上了。", "engine": "kokoro", "voice_ids": ["xiaobei"], "references": 1, "cached": false}
 {"filename": "line-a597fd00341fe8ffec0fd7441cd06066d2717678d70d55f4b04caca3750acff2.wav", "text": "线拔下了。", "engine": "kokoro", "voice_ids": ["xiaobei"], "references": 1, "cached": false}
