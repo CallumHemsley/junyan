@@ -17,3 +17,20 @@ git diff --quiet origin/main -- src/App.tsx src/WordToken.tsx src/style.css src/
 ```
 
 Final main-synchronized checks are recorded in the Node 22 evidence files. New location journeys, saved envelope integration, normal-mode feature reload, offline voices, and feature visuals remain incomplete.
+
+
+## Integrated review, 2026-11-05
+
+`/root/apartment_review` independently reviewed pure concrete integration `fe681da`, passing 72 focused tests without a blocking source finding. The writer resolved the useful coverage notes: integrated gift receipt/journal survival now includes real apartment undo after reload, and next-day preservation asserts nonempty apartment, repairs, cats, garden and gift receipts.
+
+`/root/integrated_quality_review` independently reviewed exact source `b89dead`; documentation-only `61326dd` has identical source. No blocking code defect was found and no edits were made. The reviewer independently ran the production normal-opening four-route journey on desktop (42.7 seconds) and phone (40.9 seconds). It includes lookup and garden confirmation/Escape, journal, gifts, reload, restaurant return and day two. See integrated independent logs. The reviewer inspected final screenshots and disclosed long phone scrolling, finite repeat content and absent genuine voices. This is a functional PASS, not permission to merge, listening acceptance, sustained-fun evidence or hardware performance measurement. The approximately 621 kB bundle warning has no agreed performance budget.
+
+All 278 absent feature voice clips, actual offline speech/listening review, audible feature demos and combined tour remain release blockers. The coordinator alone controls any future merge.
+
+
+The original regression batch subsequently exposed stale pre-0061 keyboard expectations. The reviewer approved aligning the whole focus ring with the accepted direct-switch contract: active word sources, inert main, last source → close → replay → first source, then Escape back to the original trigger. The reviewer also approved awaiting foreground readyState/currentTime in the existing delayed native replay fixture instead of ending while its fetch was pending. Assertions/timeouts were not weakened.
+
+Those corrected assertions exposed a genuine preexisting checkout-to-thanks focus loss, also present on accepted main. The reviewer approved the one-line `autoFocus` prop on the newly mounted continuation button: it stays mounted during receipt-word lookup and does not change word triggers, parent return focus or the trap. The six affected desktop/phone native replay, normal pointer and full keyboard journeys pass after the fix. A final stronger keyboard check additionally asserts continuation focus and receipt-word Escape restoration.
+
+
+Final reviewer verdict binds `64c2031`: the sole product delta from reviewed `b89dead` is receipt continuation autofocus, with the stronger checkout/receipt lookup regression. Six targeted desktop/phone replay, normal pointer and full keyboard cases pass; a fresh final-file keyboard run passes both sizes (31.9/34.0 seconds), and the final production build passes. The original 72 unique cases are covered by the initial 69 passes and the resolved affected reruns; repeated cases are not counted as new unique coverage. No blocking functional finding remains. Genuine voice/listening/demo gates still fail and no main merge occurred.
