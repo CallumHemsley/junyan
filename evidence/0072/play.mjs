@@ -39,6 +39,6 @@ for(let day=1;day<=(label==='before'?1:2);day++){
  }
  await shot(`day${day}-summary`);if(day===1&&label!=='before')await click('明天见',false);
 }
-await page.getByRole('button',{name:/本子/}).click();await shot('journal');await click('关闭');
+await click('明天见',false);await page.getByRole('button',{name:/本子/}).click();await shot('journal');await click('关闭');
 await writeFile(`${out}/result.json`,JSON.stringify({errors,state:(await data()).state,overflow:await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)},null,2));
 if(errors.length)throw Error(errors.join('\n'));await browser.close();

@@ -90,7 +90,7 @@ export default function RestaurantScene({state,onMove,onTable,onKitchen}:Restaur
     {TABLES.map(table=>{
       const customer=state.customers.find(c=>c.table===table.table);
       return <button key={table.table} type="button"
-        className="scene-target scene-table" style={percentPosition(table,1.3)}
+        className="scene-target scene-table" style={percentPosition(table,-.8)}
         data-testid={`table-${table.table}`} data-phase={customer?.phase ?? 'empty'}
         aria-pressed={state.activeTable===table.table} onClick={()=>onTable(table.table)}>
         <span>{table.table}桌</span><i aria-hidden="true"/>

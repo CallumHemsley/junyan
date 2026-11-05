@@ -19,6 +19,9 @@ function state(orderId:string,phase:'seated'|'ordered'|'checkout'|'served'='chec
   return {...createGame(content),player:{x:6,y:6},customers:[{table:1,orderId,phase}]};
 }
 describe('served food projection',()=>{
+  it('uses the existing food IDs as their representative kinds',()=>{
+    expect(content.foods.every(food=>food.id===food.kind)).toBe(true);
+  });
   it('draws seven distinct food silhouettes, only after successful delivery',()=>{
     const render=harness(Object.fromEntries(content.foods.map(food=>[food.id,[{foodId:food.id,quantity:1}]])));
     const images=content.foods.map(food=>sha256(render(state(food.id))));
