@@ -1,7 +1,7 @@
 ---
 id: 63
 title: Add a subtle restaurant soundscape
-status: todo
+status: doing
 priority: medium
 type: feature
 created: 2026-11-05
@@ -24,3 +24,5 @@ Callum wants background sounds that make the café/canteen feel occupied and ali
 - Requested by Callum on 2026-11-05 alongside [[tickets/0062-natural-customer-performances]]. Ambience and customer delivery should be reviewed together, but each ticket has its own outcome.
 - Starting points: `src/audio/playback.ts`, `src/App.tsx`, `scripts/offline.ts`, [[tickets/0034-audio-lifecycle]] and [[tickets/0035-offline-release]]. The current restaurant is a Chinese breakfast setting; choose sounds that suit what the player sees.
 - Keep generation and asset acquisition offline; no live audio service is needed. Do not reuse separately licensed Pixel Plays music (decision 0003).
+
+- Owner: Codex cloud agent, ticket 0063. Branch: `codex/0063-restaurant-background-sounds`; isolated checkout: `/workspace/junyan-0063`; strict dev/preview ports: 5414/5415. Evidence: `docs/evidence/0063/README.md`. Shared App/styles/playback integration remains leased to 0061; standalone checkpoint first.
