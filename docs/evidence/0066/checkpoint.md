@@ -14,7 +14,7 @@
 
 `/root/foundation_review` independently reran ten tests at `8939b42` and found no concrete standalone defects. That code patch was rebased unchanged as `c50bfcd` onto main `8656b3c`.
 
-`/root/registry_review` found that strict Line parsing rejected actual apartment Phrase exports with a `text` field. The first fix stripped phrase metadata and passed the reviewer retest. The coordinator then required preserving speech metadata for audio provenance. Final code `e094dfb` retains optional text and adds the released `Content.neighbourhood` bridge. Its regression proves that namespaced words can enter the existing journal and canonical hospital words remain available. A fresh exact-head review is pending.
+`/root/registry_review` found that strict Line parsing rejected actual apartment Phrase exports with a `text` field. The first fix stripped phrase metadata and passed the reviewer retest. The coordinator then required preserving speech metadata for audio provenance. Final code `e094dfb` retains optional text and adds the released `Content.neighbourhood` bridge. Its regression proves that namespaced words can enter the existing journal and canonical hospital words remain available. Fresh `/root/foundation_bridge_review` reported PASS+NOTES for code `e094dfb`, independently passed 32 focused tests, and checked the actual apartment bundle with Phrase text preserved. See `review.md`.
 
 ## Commands and evidence
 
@@ -23,12 +23,12 @@ Run from `/workspace/junyan-foundation` with the existing dependency installatio
 ```sh
 PATH=/workspace/.junyan-tools/node_modules/node/bin:$PATH pnpm --config.verify-deps-before-run=false test
 PATH=/workspace/.junyan-tools/node_modules/node/bin:$PATH pnpm --config.verify-deps-before-run=false build
-JUNYAN_BROWSER_PATH=/usr/bin/chromium pnpm --config.verify-deps-before-run=false exec playwright test e2e/waiter.spec.ts --config playwright.neighbourhood.config.ts --grep 'wake in the ward'
+JUNYAN_BROWSER_PATH=/usr/bin/chromium pnpm --config.verify-deps-before-run=false exec playwright test e2e/waiter.spec.ts e2e/word-switch.spec.ts --config playwright.neighbourhood.config.ts --grep 'wake in the ward|development:|hospital words|kitchen, tray|rapid keyboard'
 ```
 
-Node 22.23.4 passed all 188 tests and the production build. See `node22-rules.txt` and `node22-build.txt`. The build reports two existing Zod annotation warnings.
+After synchronizing main `5c90ba4` at `16f5ba1`, Node 22.23.4 passed all 188 tests and the production build. See `node22-rules.txt` and `node22-build.txt`. The build reports two existing Zod annotation warnings.
 
-After the content bridge, the original opening, four customers, change, journal, and day-two journey passed in desktop and phone Chromium. See `baseline/results.json`. The test asserts clean console, a visible restaurant canvas, and no horizontal overflow. Restaurant and journal screenshots at both widths were visually inspected and are in `baseline/`. Playwright owned the server on strict port 5466 and cleaned it up. The recorded Vite server PID 10096 terminated after the run.
+After the content bridge and released-main synchronization, ten desktop and phone Chromium cases passed. These cover the original opening, four customers, change, journal, day-two progression, direct word switching, focus restoration, and native audio cancellation. Production word-card cases were excluded from this development run. See `baseline/results.json`. The test asserts clean console, a visible restaurant canvas, and no horizontal overflow. Restaurant and journal screenshots at both widths were visually inspected and are in `baseline/`. Playwright owned the server on strict port 5466 and cleaned it up. The recorded Vite server PID 14865 exited after the run.
 
 These are existing-game baseline checks. Feature visits, transitions, reload migration, gifts through the actual apartment reducer, feature lookup/replay/fog behavior, and actual feature offline audio remain incomplete.
 
@@ -36,7 +36,7 @@ The coordinator independently verified merged main `8656b3c` at `/workspace/juny
 
 ## Next steps
 
-1. Receive the remaining App, styles, and playback handoff and stable published feature heads. Fetch current main and inspect each feature API before integrating. Apartment API `c028b77` is published and inspected; it still has 47 missing voice references.
+1. Receive the remaining App, styles, and playback handoff and stable published feature heads. Fetch current main and inspect each feature API before integrating. Apartment API `ee819667` is published; its earlier unchanged API at `c028b77` was inspected. It still has 47 missing voice references.
 2. Add the concrete optional envelope to GameState, preserve it through next-day and the existing pending checkpoint, and validate only the affected feature on corrupt payloads.
 3. Attach the real feature bundles through the completed content bridge, connect views and shared learning callbacks, and atomically reconcile gifts.
 4. Generate and verify the real feature voices. The current cloud synthesis attempt is blocked by a Hugging Face proxy 403 and cold cache; the coordinator has requested configuration access.
