@@ -10,7 +10,7 @@ export type GardenProps = {
   state: State; day: number; onAction: (action: Action) => void;
   onLookup: (word: Word, trigger: HTMLButtonElement) => void;
   onRecover: (wordIds: string[]) => void; onPlay: (line: Line) => void;
-  recoveredWordIds?: string[]; freshWordIds?: string[];
+  recoveredWordIds?: readonly string[]; freshWordIds?: readonly string[];
 };
 function Icon({kind}: {kind: 'water' | 'wait' | 'move' | 'shade' | 'look' | 'tidy' | 'cancel' | 'listen'}) {
   const shapes: Record<typeof kind, ReactNode> = {
