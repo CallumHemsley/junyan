@@ -6105,8 +6105,8 @@
       "text": "Ah, you're awake. Don't try to sit up yet.",
       "voice": {
         "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+        "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
         "speaker": "Ryan",
         "language": "English",
         "speed": 1,
@@ -6120,20 +6120,20 @@
         "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
         "authored_pinyin": null
       },
-      "content_digest": "f9b11c8015d7a584d7e02ac2b69c557785903a990952acc5ee9f27742f73a4e7",
-      "filename": "english-f9b11c8015d7a584d7e02ac2b69c557785903a990952acc5ee9f27742f73a4e7.wav",
+      "content_digest": "6943a193437e386984125593e818597c260bb560291655e0bdc00a4216645699",
+      "filename": "english-6943a193437e386984125593e818597c260bb560291655e0bdc00a4216645699.wav",
       "voice_ids": [
         "ryan-en"
       ],
-      "sha256": "7014d20c367400244138d1660d4947ad23e0cef6e4287746f85dbda89b5515b0",
-      "created_at": "2026-11-04T00:49:48.317581+00:00",
+      "sha256": "4db85c527882990e6d76c2e8a66e455a2dea28223b792bd546190af44a193501",
+      "created_at": "2026-11-05T19:00:57.480849+00:00",
       "attempts": [
         {
-          "seed": 4189133952,
+          "seed": 1766039955,
           "accepted": true
         }
       ],
-      "generation_seconds": 8.170295500021894,
+      "generation_seconds": 5.436061375017744,
       "packages": {
         "mlx-audio": "0.6.3",
         "mlx": "0.32.4",
@@ -6145,20 +6145,20 @@
       "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
       "raw_metrics": {
         "sample_rate": 24000,
-        "samples": 153600,
-        "duration_seconds": 6.4,
-        "peak_absolute": 0.7676953077316284,
-        "rms": 0.0758209345669997
+        "samples": 97920,
+        "duration_seconds": 4.08,
+        "peak_absolute": 0.3869633972644806,
+        "rms": 0.05515750971854438
       },
       "wav_metrics": {
         "sample_rate": 24000,
-        "samples": 153600,
-        "duration_seconds": 6.4,
-        "peak_absolute": 0.737091064453125,
-        "rms": 0.07279883758965917
+        "samples": 97920,
+        "duration_seconds": 4.08,
+        "peak_absolute": 0.688568115234375,
+        "rms": 0.09814623586490136
       },
       "engine_details": {
-        "token_count": 80,
+        "token_count": 51,
         "max_tokens": 736,
         "settings": {
           "temperature": 0.9,
@@ -6172,16 +6172,16 @@
       "postprocessing": "Gain to -20 dBFS active speech RMS, capped at a -1 dBFS peak, then PCM16 quantization; no trim or resampling",
       "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
       "level": {
-        "gain_db": -0.3532936302057905,
+        "gain_db": 5.005377318112867,
         "before": {
-          "active_rms_dbfs": -19.64670636979421,
-          "peak_dbfs": -2.2962222771554512,
-          "speech_seconds": 5.01
+          "active_rms_dbfs": -25.005377318112867,
+          "peak_dbfs": -8.246602256099852,
+          "speech_seconds": 3.9899999999999998
         },
         "after": {
           "active_rms_dbfs": -20.0,
-          "peak_dbfs": -2.6495159073612413,
-          "speech_seconds": 5.01
+          "peak_dbfs": -3.241224937986986,
+          "speech_seconds": 3.9899999999999998
         }
       }
     },
@@ -6191,8 +6191,8 @@
       "text": "You came off your bike three days ago and hit your head.",
       "voice": {
         "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+        "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
         "speaker": "Ryan",
         "language": "English",
         "speed": 1,
@@ -6206,20 +6206,20 @@
         "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
         "authored_pinyin": null
       },
-      "content_digest": "c09ddba8ca1fd7d8ca1e5ac85074fc254814b74a84b05e512debcaef6a89012f",
-      "filename": "english-c09ddba8ca1fd7d8ca1e5ac85074fc254814b74a84b05e512debcaef6a89012f.wav",
+      "content_digest": "43f6e07bb0dded0b2c1749943ace0f969c9114a050da92befd5ab01ebe3bbb24",
+      "filename": "english-43f6e07bb0dded0b2c1749943ace0f969c9114a050da92befd5ab01ebe3bbb24.wav",
       "voice_ids": [
         "ryan-en"
       ],
-      "sha256": "4b99e0a626ff83fccccb127ac5db702a329ace141e4b96588e4be4ef33421bf9",
-      "created_at": "2026-11-04T00:49:50.726590+00:00",
+      "sha256": "d183860a562c1f517b2abb6debb7da19c55d715fa52cd39ac39f4c8f61e05fe9",
+      "created_at": "2026-11-05T19:33:07.552682+00:00",
       "attempts": [
         {
-          "seed": 3231570856,
+          "seed": 1140252795,
           "accepted": true
         }
       ],
-      "generation_seconds": 2.397578666044865,
+      "generation_seconds": 5.174339791992679,
       "packages": {
         "mlx-audio": "0.6.3",
         "mlx": "0.32.4",
@@ -6231,20 +6231,20 @@
       "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
       "raw_metrics": {
         "sample_rate": 24000,
-        "samples": 134400,
-        "duration_seconds": 5.6,
-        "peak_absolute": 0.542919933795929,
-        "rms": 0.050724751241599746
+        "samples": 74880,
+        "duration_seconds": 3.12,
+        "peak_absolute": 0.3511793315410614,
+        "rms": 0.0568785781070703
       },
       "wav_metrics": {
         "sample_rate": 24000,
-        "samples": 134400,
-        "duration_seconds": 5.6,
-        "peak_absolute": 0.891265869140625,
-        "rms": 0.08326914594335687
+        "samples": 74880,
+        "duration_seconds": 3.12,
+        "peak_absolute": 0.605438232421875,
+        "rms": 0.09805805313144945
       },
       "engine_details": {
-        "token_count": 70,
+        "token_count": 39,
         "max_tokens": 960,
         "settings": {
           "temperature": 0.9,
@@ -6258,16 +6258,16 @@
       "postprocessing": "Gain to -20 dBFS active speech RMS, capped at a -1 dBFS peak, then PCM16 quantization; no trim or resampling",
       "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
       "level": {
-        "gain_db": 4.305284250745455,
+        "gain_db": 4.730692229260445,
         "before": {
-          "active_rms_dbfs": -25.088280307893204,
-          "peak_dbfs": -5.305284250745455,
-          "speech_seconds": 4.68
+          "active_rms_dbfs": -24.730692229260445,
+          "peak_dbfs": -9.089421043348644,
+          "speech_seconds": 3.0
         },
         "after": {
-          "active_rms_dbfs": -20.782996057147752,
-          "peak_dbfs": -0.9999999999999997,
-          "speech_seconds": 4.68
+          "active_rms_dbfs": -20.0,
+          "peak_dbfs": -4.358728814088199,
+          "speech_seconds": 3.0
         }
       }
     },
@@ -6277,8 +6277,8 @@
       "text": "Your aunt tells me you used to speak Mandarin. For now, it's gone.",
       "voice": {
         "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+        "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
         "speaker": "Ryan",
         "language": "English",
         "speed": 1,
@@ -6292,20 +6292,20 @@
         "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
         "authored_pinyin": null
       },
-      "content_digest": "90fc2bf76764ab26398717d27301795c872dd6c4fdd0f563d51174ae55825547",
-      "filename": "english-90fc2bf76764ab26398717d27301795c872dd6c4fdd0f563d51174ae55825547.wav",
+      "content_digest": "4265e3caa9e44db5b6233d1b144c34ab00974e8920452a2243c7dbb18900c5cb",
+      "filename": "english-4265e3caa9e44db5b6233d1b144c34ab00974e8920452a2243c7dbb18900c5cb.wav",
       "voice_ids": [
         "ryan-en"
       ],
-      "sha256": "a0ec56dc57e5e74b9894ce5f0da264cbd6d229d99d55ff284d62b111188b11a1",
-      "created_at": "2026-11-04T00:49:54.512538+00:00",
+      "sha256": "e16cff6619fb9e673486a7edefcda7110469fe0fedcad431b4ae2e225ebd0d47",
+      "created_at": "2026-11-05T19:33:09.433091+00:00",
       "attempts": [
         {
-          "seed": 2432445431,
+          "seed": 1113973706,
           "accepted": true
         }
       ],
-      "generation_seconds": 3.778910833003465,
+      "generation_seconds": 1.8722838749527,
       "packages": {
         "mlx-audio": "0.6.3",
         "mlx": "0.32.4",
@@ -6317,20 +6317,20 @@
       "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
       "raw_metrics": {
         "sample_rate": 24000,
-        "samples": 230400,
-        "duration_seconds": 9.6,
-        "peak_absolute": 0.6953076124191284,
-        "rms": 0.06440433053023385
+        "samples": 97920,
+        "duration_seconds": 4.08,
+        "peak_absolute": 0.4139811396598816,
+        "rms": 0.06822162308983723
       },
       "wav_metrics": {
         "sample_rate": 24000,
-        "samples": 230400,
-        "duration_seconds": 9.6,
-        "peak_absolute": 0.86651611328125,
-        "rms": 0.08026159530168128
+        "samples": 97920,
+        "duration_seconds": 4.08,
+        "peak_absolute": 0.5628662109375,
+        "rms": 0.09275626333097875
       },
       "engine_details": {
-        "token_count": 120,
+        "token_count": 51,
         "max_tokens": 1120,
         "settings": {
           "temperature": 0.9,
@@ -6344,16 +6344,16 @@
       "postprocessing": "Gain to -20 dBFS active speech RMS, capped at a -1 dBFS peak, then PCM16 quantization; no trim or resampling",
       "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
       "level": {
-        "gain_db": 1.9118511551999298,
+        "gain_db": 2.66842594282544,
         "before": {
-          "active_rms_dbfs": -21.91185115519993,
-          "peak_dbfs": -3.1564603162565144,
-          "speech_seconds": 8.549999999999999
+          "active_rms_dbfs": -22.66842594282544,
+          "peak_dbfs": -7.66038888425935,
+          "speech_seconds": 3.9899999999999998
         },
         "after": {
           "active_rms_dbfs": -20.0,
-          "peak_dbfs": -1.2446091610565848,
-          "speech_seconds": 8.549999999999999
+          "peak_dbfs": -4.99196294143391,
+          "speech_seconds": 3.9899999999999998
         }
       }
     },
@@ -6363,8 +6363,8 @@
       "text": "It'll come back if you listen and use it. So from now on, no more English.",
       "voice": {
         "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+        "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
         "speaker": "Ryan",
         "language": "English",
         "speed": 1,
@@ -6378,20 +6378,20 @@
         "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
         "authored_pinyin": null
       },
-      "content_digest": "094e0770245ef03bea0c6d00caad33816c4c344496ca2d52e756a780681d5453",
-      "filename": "english-094e0770245ef03bea0c6d00caad33816c4c344496ca2d52e756a780681d5453.wav",
+      "content_digest": "2a80e2a0c137b91d7de37cb1b82f30b6e208448a302292cc7e7c846005dca422",
+      "filename": "english-2a80e2a0c137b91d7de37cb1b82f30b6e208448a302292cc7e7c846005dca422.wav",
       "voice_ids": [
         "ryan-en"
       ],
-      "sha256": "67928cfe09647874ef1476a9e5025d53f005fb0693b7be02abae7f677b37d43b",
-      "created_at": "2026-11-04T00:49:58.732548+00:00",
+      "sha256": "44355f244c358246dc361c551ad06bc7b07d52ba03c1c3f2bcd45f43e03449a9",
+      "created_at": "2026-11-05T19:33:11.779719+00:00",
       "attempts": [
         {
-          "seed": 156108656,
+          "seed": 713089696,
           "accepted": true
         }
       ],
-      "generation_seconds": 4.212250582990237,
+      "generation_seconds": 2.3382635000161827,
       "packages": {
         "mlx-audio": "0.6.3",
         "mlx": "0.32.4",
@@ -6403,20 +6403,20 @@
       "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
       "raw_metrics": {
         "sample_rate": 24000,
-        "samples": 251520,
-        "duration_seconds": 10.48,
-        "peak_absolute": 0.5110813975334167,
-        "rms": 0.04101073181054438
+        "samples": 119040,
+        "duration_seconds": 4.96,
+        "peak_absolute": 0.7092728614807129,
+        "rms": 0.07740967531013807
       },
       "wav_metrics": {
         "sample_rate": 24000,
-        "samples": 251520,
-        "duration_seconds": 10.48,
-        "peak_absolute": 0.891265869140625,
-        "rms": 0.07151670881326089
+        "samples": 119040,
+        "duration_seconds": 4.96,
+        "peak_absolute": 0.843231201171875,
+        "rms": 0.09202986292758117
       },
       "engine_details": {
-        "token_count": 131,
+        "token_count": 62,
         "max_tokens": 1248,
         "settings": {
           "temperature": 0.9,
@@ -6430,16 +6430,16 @@
       "postprocessing": "Gain to -20 dBFS active speech RMS, capped at a -1 dBFS peak, then PCM16 quantization; no trim or resampling",
       "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
       "level": {
-        "gain_db": 4.830198526292048,
+        "gain_db": 1.502670390976185,
         "before": {
-          "active_rms_dbfs": -26.845722938998634,
-          "peak_dbfs": -5.830198526292048,
-          "speech_seconds": 9.57
+          "active_rms_dbfs": -21.502670390976185,
+          "peak_dbfs": -2.9837331401125136,
+          "speech_seconds": 4.8
         },
         "after": {
-          "active_rms_dbfs": -22.015524412706586,
-          "peak_dbfs": -0.9999999999999997,
-          "speech_seconds": 9.57
+          "active_rms_dbfs": -20.0,
+          "peak_dbfs": -1.4810627491363284,
+          "speech_seconds": 4.8
         }
       }
     },
@@ -6449,8 +6449,8 @@
       "text": "人醒了。我明天再来看看。",
       "voice": {
         "engine": "qwen",
-        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
-        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+        "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
         "speaker": "Ryan",
         "language": "Chinese",
         "speed": 1,
@@ -6473,20 +6473,20 @@
           "kànkan"
         ]
       },
-      "content_digest": "cb15d212f2341ac9961bd5df6a1538e103b3bcf6e644012eda45edecbbda6b43",
-      "filename": "line-cb15d212f2341ac9961bd5df6a1538e103b3bcf6e644012eda45edecbbda6b43.wav",
+      "content_digest": "a67bca4ef54afdc7a84aec2dac9f74b2fea9a4d1bfcf317e8e56f193495a9067",
+      "filename": "line-a67bca4ef54afdc7a84aec2dac9f74b2fea9a4d1bfcf317e8e56f193495a9067.wav",
       "voice_ids": [
         "ryan-zh"
       ],
-      "sha256": "b32fcbe124b6d7aa81eb7b89ac5ca0f1202933e8b5959dfda84303bf5948feff",
-      "created_at": "2026-11-04T00:50:01.660673+00:00",
+      "sha256": "97e88e936326ed1c16c27cdcaff6153b629d2977ef212bd3f819cade799277ec",
+      "created_at": "2026-11-05T19:00:59.157023+00:00",
       "attempts": [
         {
-          "seed": 3407204882,
+          "seed": 2793130574,
           "accepted": true
         }
       ],
-      "generation_seconds": 2.9213187500135973,
+      "generation_seconds": 1.6664701249683276,
       "packages": {
         "mlx-audio": "0.6.3",
         "mlx": "0.32.4",
@@ -6498,20 +6498,20 @@
       "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
       "raw_metrics": {
         "sample_rate": 24000,
-        "samples": 145920,
-        "duration_seconds": 6.08,
-        "peak_absolute": 0.5380293726921082,
-        "rms": 0.050703572358409936
+        "samples": 69120,
+        "duration_seconds": 2.88,
+        "peak_absolute": 0.36358097195625305,
+        "rms": 0.03712167448863816
       },
       "wav_metrics": {
         "sample_rate": 24000,
-        "samples": 145920,
-        "duration_seconds": 6.08,
-        "peak_absolute": 0.891265869140625,
-        "rms": 0.08399094120320504
+        "samples": 69120,
+        "duration_seconds": 2.88,
+        "peak_absolute": 0.842559814453125,
+        "rms": 0.08602584514748554
       },
       "engine_details": {
-        "token_count": 76,
+        "token_count": 36,
         "max_tokens": 256,
         "settings": {
           "temperature": 0.9,
@@ -6525,16 +6525,16 @@
       "postprocessing": "Gain to -20 dBFS active speech RMS, capped at a -1 dBFS peak, then PCM16 quantization; no trim or resampling",
       "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
       "level": {
-        "gain_db": 4.383880284074105,
+        "gain_db": 7.300032383068391,
         "before": {
-          "active_rms_dbfs": -25.188786169580716,
-          "peak_dbfs": -5.383880284074105,
-          "speech_seconds": 5.819999999999999
+          "active_rms_dbfs": -27.30003238306839,
+          "peak_dbfs": -8.787977073943077,
+          "speech_seconds": 2.76
         },
         "after": {
-          "active_rms_dbfs": -20.804905885506614,
-          "peak_dbfs": -0.9999999999999997,
-          "speech_seconds": 5.819999999999999
+          "active_rms_dbfs": -19.999999999999996,
+          "peak_dbfs": -1.487944690874686,
+          "speech_seconds": 2.76
         }
       }
     },
