@@ -248,6 +248,10 @@ test("foreground resource failure releases ducking and direct replay recovers", 
   await page.getByRole("button", { name: "再听一遍", exact: true }).click();
   await expect.poll(async () => (await native(page)).volume).toBeCloseTo(.042);
   await expect(page.getByText("声音暂时没有播出，再点一次听听。")).toBeHidden();
+  await expect.poll(() => page.evaluate(() => {
+    const audio = (window as any).__lastAudio as HTMLAudioElement | undefined;
+    return Boolean(audio && audio.readyState >= 2 && audio.currentTime > 0);
+  })).toBe(true);
   expect((await native(page)).count).toBe(1);
   expect(diagnostics.get(page)!.every(message => message.startsWith("Failed to load resource:"))).toBe(true);
 });
