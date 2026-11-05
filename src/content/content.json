@@ -1749,7 +1749,7 @@
         "type": "say-en",
         "who": "doctor",
         "en": "Ah, you're awake. Don't try to sit up yet.",
-        "audio": "/audio/english-f9b11c8015d7a584d7e02ac2b69c557785903a990952acc5ee9f27742f73a4e7.wav",
+        "audio": "/audio/english-6943a193437e386984125593e818597c260bb560291655e0bdc00a4216645699.wav",
         "enter": [
           "doctor",
           "elder"
@@ -1759,19 +1759,19 @@
         "type": "say-en",
         "who": "doctor",
         "en": "You came off your bike three days ago and hit your head.",
-        "audio": "/audio/english-c09ddba8ca1fd7d8ca1e5ac85074fc254814b74a84b05e512debcaef6a89012f.wav"
+        "audio": "/audio/english-43f6e07bb0dded0b2c1749943ace0f969c9114a050da92befd5ab01ebe3bbb24.wav"
       },
       {
         "type": "say-en",
         "who": "doctor",
         "en": "Your aunt tells me you used to speak Mandarin. For now, it's gone.",
-        "audio": "/audio/english-90fc2bf76764ab26398717d27301795c872dd6c4fdd0f563d51174ae55825547.wav"
+        "audio": "/audio/english-4265e3caa9e44db5b6233d1b144c34ab00974e8920452a2243c7dbb18900c5cb.wav"
       },
       {
         "type": "say-en",
         "who": "doctor",
         "en": "It'll come back if you listen and use it. So from now on, no more English.",
-        "audio": "/audio/english-094e0770245ef03bea0c6d00caad33816c4c344496ca2d52e756a780681d5453.wav"
+        "audio": "/audio/english-2a80e2a0c137b91d7de37cb1b82f30b6e208448a302292cc7e7c846005dca422.wav"
       },
       {
         "type": "say",
@@ -1836,7 +1836,7 @@
               "audio": "/audio/word-4d253f356b3a9045ad43aa48d02890cb6eb7f37f4051b46c45561259a4657f77.wav"
             }
           ],
-          "audio": "/audio/line-cb15d212f2341ac9961bd5df6a1538e103b3bcf6e644012eda45edecbbda6b43.wav",
+          "audio": "/audio/line-a67bca4ef54afdc7a84aec2dac9f74b2fea9a4d1bfcf317e8e56f193495a9067.wav",
           "text": "人醒了。我明天再来看看。"
         },
         "recover": [],
