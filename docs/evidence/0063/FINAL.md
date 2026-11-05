@@ -1,6 +1,8 @@
 # 0063 integrated handoff
 
-**Code complete; root native/unit/build checks reported complete after an isolated rerun; awaiting root's final delta/current-main review.** Root relayed the user's direct **“Works at this level”** acceptance of a 20-second representative preview at actual default gain .1575 / ducked .042 during two shipped LinJie lines. Preserve default level .35 and the calibrated source exactly. See `USER-LISTENING.md` for scope. This does not claim full 73-second loop/day listening, worker auditory perception, enjoyment or final merge approval. Ticket remains doing pending root acceptance.
+**Root final acceptance received; ticket marked done.** Root reports integrated current main bca768d + 0063 product source7779574 + final fixture7c: **206 unit tests/build PASS**; initial browser38/40, then the only two failing resource cases passed with updated exact7c tests **2/2 in9.7s**, with no concurrent inference. Independent final focused7c review **PASS again**, as relayed by root. See ROOT-FINAL-ACCEPTANCE.md.
+
+User **“Works at this level”** acceptance remains scoped to the20-second representative preview at default .1575 / ducked .042 with two shipped LinJie lines. Exact level .35 and calibrated source remain unchanged; no full73-second loop/day listening, worker auditory perception or enjoyment claim. Root retains documentation-delta verification, central merge and explicit0066/0071 App/styles/playback handoff; no worker merge or lease release.
 
 Branch: `codex/0063-restaurant-background-sounds`. PR: https://github.com/CallumHemsley/junyan/pull/17 . Reviewed current main **5c90ba4b7421755fee3dd5d12e777f70dd34f226** is merged (0061 direct word-switch preserved). Isolated checkout `/workspace/junyan-0063`, strict dev/preview ports **5414/5415**. Final committed SHA is reported in the handoff; `verified-source-sha256.json` binds runtime/test/asset files to the verified source independently of subsequent documentation commits.
 

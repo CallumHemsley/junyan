@@ -1,7 +1,7 @@
 ---
 id: 63
 title: Add a subtle restaurant soundscape
-status: doing
+status: done
 priority: medium
 type: feature
 created: 2026-11-05
@@ -12,6 +12,8 @@ created: 2026-11-05
 Callum wants background sounds that make the café/canteen feel occupied and alive, suggesting coffee sounds as an example. A quiet layer of believable room and food-preparation sounds should make the breakfast restaurant more atmospheric while leaving Mandarin dialogue easy to hear.
 
 ## Done when
+
+Completion scope: root explicitly accepted this ticket on the representative user listening acceptance plus final integrated runtime/visual/review evidence below. Unchecked full-loop/full-session subjective items are retained as historical criteria, not claimed as performed.
 
 - [ ] Audition a small sound palette in the existing scene, such as cups set down, pouring drinks, gentle kitchen preparation and soft room tone. Include the suggested coffee/preparation texture where it fits the setting; select a restrained mix rather than adding every example.
 - [ ] Add a seamless ambient bed and/or occasional background sounds with natural spacing and no obvious repetitive loop. Keep speech and word pronunciation prominent, lowering background volume during playback where needed.
@@ -35,3 +37,7 @@ Callum wants background sounds that make the café/canteen feel occupied and ali
 - 2026-11-05 root relayed direct user listening acceptance **“Works at this level”** for a 20-second representative mix at actual .1575 default / .042 ducked gain during two shipped LinJie lines. Preserve exact default level .35 and calibrated source; no further speculative mix changes. Scope/provenance in `docs/evidence/0063/USER-LISTENING.md`. This is not a claim of full73s loop/day listening. Root final native/visual and independent exact-patch/product gates still pending; no merge, done status or lease handoff claimed.
 
 - Root reports actual muted Mac Chrome verification at7779574:178unit/build PASS; initial35/38 browser selection plus isolated3/3 rerun PASS in43.3s covers the selected cases without establishing a product defect. Authorized test-only route drain added before unchanged word-switch console assertion; focused desktop/phone regression10/10 PASS in53.3s. No assertion/timeout/product/mix changes. See ROOT-VERIFICATION.md. Ready for root delta/current-main review and central merge/handoff; worker has not merged or released lease.
+
+- **Completed on root final acceptance, 2026-11-05.** Root reports integrated current main bca768d + 0063 product source7779574 + final test fixture7c2ad9e: **206 unit tests/build PASS**. Initial combined browser selection was **38/40 PASS**, with only the two resource-retry fixture cases failing; the updated exact7c cases then passed **2/2 in9.7s**, with no concurrent inference. Do not describe the original run as40/40 green. Root-reported independent final focused review of7c **PASS again**.
+- User accepted the unchanged calibrated representative mix **“Works at this level”**; preserve default level .35, gains .1575/.042 and asset hash c0f60e4c71c3fbbfabf2863495e44749c02394d05015216da89ad95d576459f1. This remains a20-second representative listening acceptance, not a full73-second loop/day listening claim. No new subjective score or listening claim is inferred.
+- Learned: native attempt ownership must be observed when testing retries; visible stale error text alone did not prove the current gesture retry had settled. Synchronizing the abort fixture corrected the test without changing working playback. Root owns documentation-delta verification, merge and explicit App/styles/playback handoff to central0066/0071; this worker has neither merged nor released the lease. Completion commit changes documentation only.
