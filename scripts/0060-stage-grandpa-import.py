@@ -8,7 +8,6 @@ import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
 PIN = "f35faf19b0cc2160865af64ecf0f22f83d335135"
-PRODUCTION_VOICE = "hospital-elder-1b7"
 
 
 def elder_lines(content):
@@ -54,6 +53,9 @@ def main():
     targets, incoming = elder_lines(content), elder_lines(incoming_content)
     if len(targets) != 6 or set(incoming) != set(targets):
         raise ValueError("Need exactly all six Grandpa lines; two-line auditions cannot be imported")
+    PRODUCTION_VOICE = next(c for c in content["opening"]["cast"] if c["id"] == "elder")["voices"]["zh"]
+    if any(c["voiceId"] == PRODUCTION_VOICE for c in content["characters"]) or any(PRODUCTION_VOICE in c["voices"].values() for c in content["opening"]["cast"] if c["id"] != "elder"):
+        raise ValueError("Existing hospital preset has non-elder consumers")
     preset = incoming_voices["voices"][args.voice_id]
     if (preset["engine"] != "qwen" or "1.7B-CustomVoice" not in preset["model"] or preset["revision"] != PIN
             or preset["speaker"] != "Uncle_Fu" or preset["language"] != "Chinese" or preset["speed"] != 1
@@ -64,8 +66,6 @@ def main():
     source_elder = next(c for c in incoming_content["opening"]["cast"] if c["id"] == "elder")
     if source_elder["voices"]["zh"] != args.voice_id:
         raise ValueError("Source elder is not routed to selected voice")
-    if PRODUCTION_VOICE in voices["voices"] and voices["voices"][PRODUCTION_VOICE] != preset:
-        raise ValueError("Hospital production preset ID already has a different definition")
     voices["voices"][PRODUCTION_VOICE] = copy.deepcopy(preset)
     next(c for c in content["opening"]["cast"] if c["id"] == "elder")["voices"]["zh"] = PRODUCTION_VOICE
     for line_id, line in targets.items():

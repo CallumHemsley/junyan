@@ -1967,7 +1967,7 @@
               "audio": "/audio/word-c6e670b83388a7d774e8edc0712633362c0de24639021888d16f5a597e7f3c93.wav"
             }
           ],
-          "audio": "/audio/line-a670df6a70911e37ddebcda28d5fd57ea3b7181a035c3359ec45e0c481e5ded3.wav",
+          "audio": "/audio/line-2cefc3fe62be59203c6ef07c91f4342efc18641473fa68dacd7f54f31a90aa1b.wav",
           "text": "早上好，年轻人。请给我一杯豆浆。"
         },
         "want": "milk",
@@ -2010,7 +2010,7 @@
               "audio": "/audio/word-c6e670b83388a7d774e8edc0712633362c0de24639021888d16f5a597e7f3c93.wav"
             }
           ],
-          "audio": "/audio/line-ff7c0510f7ece45b819b0ca456d7bd1f6d1a5139dc4eed17870dcfe6390997af.wav",
+          "audio": "/audio/line-e756047972fc829165e2ca4f0f9f13c40c1b02f8dc94e8116180e111a396816c.wav",
           "text": "不对，我要豆浆。"
         },
         "ok": {
@@ -2031,7 +2031,7 @@
               "audio": "/audio/word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav"
             }
           ],
-          "audio": "/audio/line-39dd06cc1fd4e39d934b4459422c2221e0e92016cd072b004af233e76e8b9397.wav",
+          "audio": "/audio/line-aa4ed24a26a593973279ebe664cfff1b1241682cf17d0e2fee03508224ecde88.wav",
           "text": "谢谢你！"
         },
         "recover": [
@@ -2094,7 +2094,7 @@
               "audio": "/audio/word-8ad579fcce318a0e4ba2893f5cf540c93fd2c43b5e65ac515219c82b1b9b0486.wav"
             }
           ],
-          "audio": "/audio/line-56285c5a5283b3e3a6c638fa3432f3f75faa6eff286eb86f28d57c4e5fb707e0.wav",
+          "audio": "/audio/line-60ee82fdaf489803f5b64b4578ec054294c5b240d1f13d1c4c485ebbfde4b834.wav",
           "text": "我还想要一个鸡蛋。"
         },
         "want": "egg",
@@ -2137,7 +2137,7 @@
               "audio": "/audio/word-8ad579fcce318a0e4ba2893f5cf540c93fd2c43b5e65ac515219c82b1b9b0486.wav"
             }
           ],
-          "audio": "/audio/line-bd3820b8749d5b9dd14d96a58903443132c19876df3d825e4011a084d6c81cf2.wav",
+          "audio": "/audio/line-781984e84c2d96144788e190c7527bab41486694e474141d82437bcb01f377ca.wav",
           "text": "不对，我要鸡蛋。"
         },
         "ok": {
@@ -2158,7 +2158,7 @@
               "audio": "/audio/word-d4eb416293ad391775ce523d94ce0483868103313ae19eac4e0f80c7401b5165.wav"
             }
           ],
-          "audio": "/audio/line-d5536fa2f1404d9c8d08737fdc29156d517c0a8878b03425c8c0ad2df25e6a83.wav",
+          "audio": "/audio/line-f8c7a10d6944e2c84304d52a08300578d078efc600b295e85527303f6a5b7292.wav",
           "text": "谢谢，谢谢！"
         },
         "recover": [

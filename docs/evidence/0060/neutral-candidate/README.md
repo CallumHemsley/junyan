@@ -1,0 +1,5 @@
+# Grandpa neutral A: full candidate, user preference pending
+
+Do not import until A selected; this is isolated evidence, not an approval claim. Exact pinned1.7Uncle_Fu, null instructions, same words/tokens/speed/loudness. Six clips; original2audition WAVs reused exactly. Four remaining generated; two egg clips retaken using pipeline seeds+1000, wrong-egg once more+2000 after unresolved ASR word/omission concerns. Actual rejected SHA-bound records/results retained; existing pipeline retry interface used via temporary wrappers, no project pipeline edits.
+
+Final local unprompted pinned Whisper-small recognizes all six authored word sequences allowing punctuation/spacing/traditional forms. ASR does not assess tones, affect, naturalness or human listening. Both A/B two-line preview is pending user response. Import only existing elder preset, six matching text references (audio field only), six manifest entries and WAVs into current complete game, preserve doctor/customers/Help/schema. Remove old elder WAVs only after full-game reference proof. No truncated fixture import.
