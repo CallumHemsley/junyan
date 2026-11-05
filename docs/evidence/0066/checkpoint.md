@@ -1,49 +1,52 @@
-# Standalone checkpoint
+# Integrated functional checkpoint
 
-[Draft PR 19](https://github.com/CallumHemsley/junyan/pull/19) contains the foundation contracts. Ticket 0066 remains doing. The contracts and content enumeration lease was released. Application navigation remains blocked by the explicit 0063 lease. No placeholder views or audio files were added.
+Draft [PR 19](https://github.com/CallumHemsley/junyan/pull/19) implements all four real neighbourhood routes. Ticket 0066 remains doing: 278 genuine feature voice clips are absent, so this is not release or merge approval.
 
-## Changes
+## Source and behavior
 
-`src/neighbourhood/contracts.ts` defines four feature IDs, location IDs, gift IDs, version-one envelope fields, and shared view callbacks. `FeatureLine.tsx` reuses DOM `WordToken` controls and replay callbacks.
+Published source `b89dead` contains the four pinned reviewed feature heads, pure saved-state integration `fe681da`, application routes `1226d50`, and gift-panel/save-test polish `4d6c95c`. It includes current maintenance main `dd3cc114b7c3151d103d0408b39e6ca305365122`, including Grandpa A, doctor, customer punctuation, cumulative earnings labels, served food, and accepted ambience.
 
-`state.ts` initializes legacy saves, validates each feature independently, changes location without altering features, claims an available gift with its receipt, and restores retained gifts after apartment recovery. Its helpers have no browser or storage calls.
+The existing IndexedDB game snapshot carries the optional version-one neighbourhood envelope. Legacy saves initialize it; damaged feature data resets only that feature. Retained gift receipts restore apartment ownership. Real successful reducers update recovery and journal atomically; compatibility view callbacks cannot clear later recovery markers. Gifts are optional and idempotent. The restaurant alone advances the day. Leaving it stops movement and foreground audio and disables its single ambience owner; returning preserves its orders and earnings. Shared word lookup, replay, journal, DOM segmentation, and authored speech metadata remain available in every route.
 
-`content.ts` checks namespaces, exact canonical word reuse, declared tokens, duplicate IDs, and local audio paths. It preserves authored Phrase text, validates that the text matches its tokens, and enumerates referenced audio. Enumeration does not prove files exist.
-
-## Independent review
-
-`/root/foundation_review` independently reran ten tests at `8939b42` and found no concrete standalone defects. That code patch was rebased unchanged as `c50bfcd` onto main `8656b3c`.
-
-`/root/registry_review` found that strict Line parsing rejected actual apartment Phrase exports with a `text` field. The first fix stripped phrase metadata and passed the reviewer retest. The coordinator then required preserving speech metadata for audio provenance. Final code `e094dfb` retains optional text and adds the released `Content.neighbourhood` bridge. Its regression proves that namespaced words can enter the existing journal and canonical hospital words remain available. Fresh `/root/foundation_bridge_review` reported PASS+NOTES for code `e094dfb`, independently passed 32 focused tests, and checked the actual apartment bundle with Phrase text preserved. See `review.md`.
-
-## Commands and evidence
-
-Run from `/workspace/junyan-foundation` with the existing dependency installation. No frozen install is claimed.
-
-```sh
-PATH=/workspace/.junyan-tools/node_modules/node/bin:$PATH pnpm --config.verify-deps-before-run=false test
-PATH=/workspace/.junyan-tools/node_modules/node/bin:$PATH pnpm --config.verify-deps-before-run=false build
-JUNYAN_BROWSER_PATH=/usr/bin/chromium pnpm --config.verify-deps-before-run=false exec playwright test e2e/waiter.spec.ts e2e/word-switch.spec.ts --config playwright.neighbourhood.config.ts --grep 'wake in the ward|development:|hospital words|kitchen, tray|rapid keyboard'
+```mermaid
+flowchart LR
+  A[Existing game snapshot] --> B[Neighbourhood envelope]
+  B --> C[Independent feature validation]
+  C --> D[Restore claimed gifts]
+  D --> E[Apartment / cats / repairs / garden]
+  E --> F[Successful pure transition]
+  F --> G[Journal and feature state saved together]
+  G --> A
 ```
 
-After synchronizing main `5c90ba4` at `16f5ba1`, Node 22.23.4 passed all 188 tests and the production build. See `node22-rules.txt` and `node22-build.txt`. The build reports two existing Zod annotation warnings.
+## Verification and boundaries
 
-After the content bridge and released-main synchronization, ten desktop and phone Chromium cases passed. These cover the original opening, four customers, change, journal, day-two progression, direct word switching, focus restoration, and native audio cancellation. Production word-card cases were excluded from this development run. See `baseline/results.json`. The test asserts clean console, a visible restaurant canvas, and no horizontal overflow. Restaurant and journal screenshots at both widths were visually inspected and are in `baseline/`. Playwright owned the server on strict port 5466 and cleaned it up. The recorded Vite server PID 14865 exited after the run.
+Node 22.23.4 at exact source `b89dead`: **308/308 tests pass**, all 26 files, serialized with original assertions/timeouts. TypeScript and Vite production build pass. Existing Zod annotations produce two warnings; the integrated bundle also exceeds Vite's 500 kB warning threshold. An earlier simultaneous test/build run had three raster timeouts; the serialized suite passed. This does not establish performance on user hardware.
 
-These are existing-game baseline checks. Feature visits, transitions, reload migration, gifts through the actual apartment reducer, feature lookup/replay/fog behavior, and actual feature offline audio remain incomplete.
+Before the Grandpa-only maintenance merge, **8/8 development** and **10/10 production** browser cases passed on desktop and phone. Production uses the actual `/junyan/` build and service worker. Those checks exercise normal mandatory opening, restaurant orders and four customers/change, all four routes, lookup/replay, meaningful recovery versus invalid actions, optional gifts, reload, day two, old and corrupt IndexedDB rows, offline UI/save/return, and all five genuine cached doctor clips. Full original regression and independent final-source browser review are tracked separately; these previous counts must not be read as a final-source browser claim.
 
-The coordinator independently verified merged main `8656b3c` at `/workspace/junyan-main-verification` using Node 22.23.4. Its 170-test suite, TypeScript build, and Vite production build passed. This verifies the documentation merge and existing game only.
+The complete normal feature journey and seeded migration tests explicitly supply native PCM responses for absent namespaced clips. They prove interaction, state, cancellation, and native playback plumbing, **not feature speech or offline voice readiness**. Separate unmocked cases observe genuine missing-asset MediaError, and the production offline case uses no replacement media: cached UI/save and existing restaurant ambience work, while missing feature speech fails visibly. Browsers launch muted. Native playback validity is not an auditory or Mandarin-quality review.
 
-## Next steps
+Commands (existing dependencies; no frozen-install claim):
 
-1. Receive the remaining App, styles, and playback handoff and stable published feature heads. Fetch current main and inspect each feature API before integrating. Apartment API `ee819667` is published; its earlier unchanged API at `c028b77` was inspected. It still has 47 missing voice references.
-2. Add the concrete optional envelope to GameState, preserve it through next-day and the existing pending checkpoint, and validate only the affected feature on corrupt payloads.
-3. Attach the real feature bundles through the completed content bridge, connect views and shared learning callbacks, and atomically reconcile gifts.
-4. Generate and verify the real feature voices. The current cloud synthesis attempt is blocked by a Hugging Face proxy 403 and cold cache; the coordinator has requested configuration access.
-5. Run the complete integrated journeys, normal-mode reload and old-save migration, offline asset and voice checks, and phone and desktop visual review. Obtain independent no-edit review before the central coordinator considers merging.
+```sh
+PATH=/workspace/.junyan-tools/node_modules/node/bin:$PATH pnpm --config.verify-deps-before-run=false exec vitest run --fileParallelism=false
+PATH=/workspace/.junyan-tools/node_modules/node/bin:$PATH pnpm --config.verify-deps-before-run=false build
+JUNYAN_BROWSER_PATH=/usr/bin/chromium pnpm --config.verify-deps-before-run=false exec playwright test e2e/neighbourhood.spec.ts e2e/neighbourhood-save.spec.ts --config playwright.neighbourhood.config.ts
+JUNYAN_BROWSER_PATH=/usr/bin/chromium JUNYAN_NEIGHBOURHOOD_PREVIEW=1 pnpm --config.verify-deps-before-run=false exec playwright test e2e/neighbourhood.spec.ts e2e/neighbourhood-save.spec.ts e2e/neighbourhood-offline.spec.ts e2e/doctor-audio.spec.ts --config playwright.neighbourhood.config.ts --grep 'normal opening|old IndexedDB|corrupt feature|real cached|all five doctor'
+python3 scripts/neighbourhood-audio-audit.py
+```
 
-## Skills
+The real asset audit deliberately exits 1: apartment 47, cats 85, repairs 64, garden 82 missing clips; zero invalid existing referenced clips. No silent or relabelled assets were added. Normal-proxy requests to pinned Hugging Face configuration/revision URLs fail CONNECT 403 at `huggingface.co` before redirects. Configuration access is unavailable. Linux synthesis remains untested; network access alone would not prove synthesis success.
 
-Model the Domain selected the explicit location and gift types. Boundary Discipline kept save and content validation in pure boundary helpers. Make Operations Idempotent required gift receipt and corrupt-apartment restoration regressions. Prove It Works required the original browser journey and inspected screenshots. Sequence Work into Verifiable Units split state and content into tested commits.
+## Visuals and quality limits
 
-The installed cloud Pstack copy has `show-me-your-work`, which supplied `decisions.tsv`. No upstream visual `show-me` skill was found. Baseline screenshots provide GitHub-compatible visual evidence without claiming new-feature completion. The coordinator owns all merges and independent review dispatch. Ticket reservations 0071 and 0072 were applied from coordinator commit `b5bf994` before updating the lease record.
+Desktop and phone screenshots in [integrated](integrated/) show the actual four pixel scenes. They were inspected for scene coherence, legibility, navigation, gift feedback, and overflow. Gift speech now sits in a compact paper panel using the existing segmented `apartment.gift` line. Choices include apartment arrangement, cat search, repair actions, and garden tending; completion leads to optional apartment gifts and next-day garden growth. These connect activities without new currency or clocks.
+
+This establishes finite interactions, not sustained enjoyment or retention. Repairs repeat two jobs, garden growth caps at three, apartment finds are bounded, and cats have three routines. The maintenance review's muted baseline rated presentation 7, immersion 6, loop interest 5, usability 7.5, reliability 8, and demo proximity 6.5/10. Those are qualitative observations, not integrated ratings or listening acceptance. Further human play and audible dialogue review remain required.
+
+The [technical capture probe](integrated/capture-probe/README.md) records the accepted 包子 word through a real browser audio graph. Its numerical waveform correlation is 0.99835. It is explicitly not actual feature gameplay, any requested feature video, independent listening review, or proof of the complete game's capture behavior. No audible feature demos or combined tour exist yet. No supported externally accessible cloud preview URL has been established; loopback port 5466 is not user access.
+
+## Review and remaining gates
+
+Earlier independent standalone/content and pure-state reviews are preserved in [review.md](review.md). The integrated reviewer is checking published `b89dead` and targeted live modal/navigation behavior without editing source. Resolve findings, run the original affected browser regressions, preserve all accepted assets, and record exact-head results. Genuine feature voice generation, actual offline speech/listening review, four audible feature demos and combined tour, and coordinator-only conditional main merge remain incomplete. No feature main merge is authorized while those release gates fail.

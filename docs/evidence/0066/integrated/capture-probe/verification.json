@@ -1,0 +1,15 @@
+{
+  "classification": "TECHNICAL CAPTURE PROBE — NOT FEATURE DEMO",
+  "source_text": "包子",
+  "source_sha256": "f0b200f56e9158845e751dc993599e6ce8df0b4a0be91876e95cd0158ff2f8f0",
+  "source_manifest_hash_matches": true,
+  "source_samples": 28800,
+  "captured_samples": 144384,
+  "captured_rms": 0.02391497551815351,
+  "captured_peak": 0.370849609375,
+  "source_to_recorded_normalized_correlation": 0.998352310770644,
+  "matched_source_start_seconds": 1.0885,
+  "logged_play_seconds_from_first_frame": 1.077,
+  "audio_visual_alignment_uncertainty": "Screenshot capture intervals and browser encoding introduce tens of milliseconds. This is a low-frame-rate pipeline proof, not final motion-quality validation.",
+  "listening_review": "No independent auditory/linguistic listening performed. Manifest text and strong PCM correlation identify the recorded existing asset; they do not independently certify Mandarin pronunciation."
+}
