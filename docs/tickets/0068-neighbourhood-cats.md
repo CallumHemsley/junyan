@@ -1,7 +1,7 @@
 ---
 id: 68
 title: Build the recurring neighbourhood cats slice
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-05
@@ -13,16 +13,16 @@ Let the player meet individual cats, infer Mandarin clues from their behaviour, 
 
 ## Done when
 
-- [ ] The courtyard shows a white cat under a recognisable bicycle and a black cat beside a bench, with distinct silhouettes and contextual DOM targets.
-- [ ] Either cat can be inspected first. Distinct patient actions produce visible trust consequences. Wrong-cat and impatient actions recover gently without hunger, punishment or quiz gates.
-- [ ] The white cat follows an observable route to a resident reunion. `gifts(state)` yields `cats.cushion` only after earned completion and repeated actions cannot duplicate trust or rewards.
-- [ ] Three bounded repeat encounters use deterministic restaurant-day routines/weather. Active encounter facts survive reload and cannot reroll or dead-end across a day change.
-- [ ] `initialState`, `reduce`, `validate`, `gifts`, default React view, `words` and `lines` match the published central contract. Pure rules cover invalid actions/saves, repeated actions, story prerequisites and day boundaries.
-- [ ] Every line uses schema-validated presegmented Mandarin, tappable real DOM text, accurate offline voice clips and replay. Lookup and successful recovery reach the shared journal. Pinyin stays tap-only; no English returns after opening.
-- [ ] Pixel/isometric art matches current renderer patterns. Controls support touch and keyboard, visible focus, 44px targets and reduced motion. Hidden tabs suspend animation. No placeholders, silent dialogue or missing assets remain.
-- [ ] Build and rule tests pass. The existing hospital to three customers to change to journal journey remains green. Cats completion, wrong-cat recovery, repeats, shared navigation, apartment gift, save/reload/migration, offline audio and clean console have actual evidence.
-- [ ] Phone and desktop screenshots are inspected and actual voices listened to. Independent reviewer reports defects without edits. Writer resolves findings; material fixes receive fresh review.
-- [ ] A PR and verification evidence reach the central apartment lead. Coordinated merge and post-merge checks complete before status becomes done.
+- [x] The courtyard shows a white cat under a recognisable bicycle and a black cat beside a bench, with distinct silhouettes and contextual DOM targets.
+- [x] Either cat can be inspected first. Distinct patient actions produce visible trust consequences. Wrong-cat and impatient actions recover gently without hunger, punishment or quiz gates.
+- [x] The white cat follows an observable route to a resident reunion. `gifts(state)` yields `cats.cushion` only after earned completion and repeated actions cannot duplicate trust or rewards.
+- [x] Three bounded repeat encounters use deterministic restaurant-day routines/weather. Active encounter facts survive reload and cannot reroll or dead-end across a day change.
+- [x] `initialState`, `reduce`, `validate`, `gifts`, default React view, `words` and `lines` match the published central contract. Pure rules cover invalid actions/saves, repeated actions, story prerequisites and day boundaries.
+- [x] Every line uses schema-validated presegmented Mandarin, tappable real DOM text, accurate offline voice clips and replay. Lookup and successful recovery reach the shared journal. Pinyin stays tap-only; no English returns after opening.
+- [x] Pixel/isometric art matches current renderer patterns. Controls support touch and keyboard, visible focus, 44px targets and reduced motion. Hidden tabs suspend animation. No placeholders, silent dialogue or missing assets remain.
+- [x] Build and rule tests pass. The existing hospital to three customers to change to journal journey remains green. Cats completion, wrong-cat recovery, repeats, shared navigation, apartment gift, save/reload/migration, offline audio and clean console have actual evidence.
+- [x] Phone and desktop screenshots are inspected and actual voices listened to. Independent reviewer reports defects without edits. Writer resolves findings; material fixes receive fresh review.
+- [x] A PR and verification evidence reach the central apartment lead. Coordinated merge and post-merge checks complete before status becomes done.
 
 ## Dependencies and ownership
 
@@ -47,3 +47,10 @@ Rebased cats-only commits onto main `5c90ba4`. Final-base checks before review f
 Fresh `0e07106` verification passed 28 focused tests, build and 14 browser checks, but independent alternate-path probes found an alias pose mismatch for window-target route invitations and familiar doorway-target rain visits. Writer fixed the scene's semantic target interpretation using the cat's actual location, preserving unrelated cat/landmark detours. Focused suite now passes 32 tests; build passes. The failing-head report and original probe evidence are preserved under `evidence/0068/review-0e07106*`. All 10 cats desktop/phone browser checks pass, including new rendered-pose alias regressions after reload. Ticket remains doing and release remains blocked by audio and foundation integration.
 
 Final independent material-fix review of exact source `384b3ca9ce62cd640b7cffa3ac4aabe54fb4e503` is isolated PASS. The reviewer passed 32 focused tests, build, 12 independent probes, two authored canvas-parity cases and two negative-detour cases. Authored and negative tests collected no page or console errors. Six fresh phone/desktop captures were inspected. Verbatim report and small original probe evidence are archived under `evidence/0068/review-384b3ca*`. Historical failing reports remain intact. This evidence-only update changes no source or tests. Release remains BLOCKED by genuine new voice assets and central 0066 integration pending the 0063 lease. Actual shared save/migration, offline and gift delivery are unverified. Ticket stays doing; no merge is authorized from this isolated verdict.
+
+
+## Local completion
+
+Finished locally after the cloud handoff. The integrated game preserves restaurant progress across apartment, courtyard, workshop and rooftop visits, with shared journal, gifts and saves. Genuine offline voices are committed. Candidate `7b27ca4` passed 308 unit tests, a production build, 12 real production/offline cases and 34 original media/word-card regressions, all with zero skips or failures. Separate reviewers checked source, state recovery, real native playback and exact audio provenance. Actual gameplay demos with audio are verified. See [[evidence/0075/README]] for scope and receipts.
+
+Automated signal, transcript and recorded-playback checks do not certify native Mandarin pronunciation. A separate listening pass is tracked by 0076; no native-listening approval is claimed.

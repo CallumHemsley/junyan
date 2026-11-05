@@ -29,3 +29,10 @@ Callum wants to test the new locations and watch video demonstrations with genui
 - Final capture complete on reviewed integrated source `7b27ca44a7ed5c9a0eebb45a6a06145beb381287`: normal opening; table rotation and placement; cat trust/reunion/cushion; lamp and toy repairs/stool; garden care, authentic four-customer restaurant day, next-day growth and planter. No prepared feature success state.
 - Six verified H264/AAC exports: full 296.433s walkthrough; 130.700s combined tour; apartment 15.938s, cats 33.667s, repairs 48.678s, garden 32.433s. Every feature has an actual source waveform match; each individual clip plus both tours has a late match. All alignment differences <20ms, nonzero PCM, source/video SHA256 and ffprobe preserved in `docs/evidence/0074/final/`. Zero browser/network errors. Encoded speaking frames inspected for each location.
 - Output stays ignored under `output/playwright/neighbourhood-tour/`; parent copies stable MP4s into the main checkout before worktree cleanup. Parent owns final permanent local server and same-origin port 5474 takeover. No physical speaker audition or independent Mandarin pronunciation review claimed by this agent.
+
+
+## Local completion
+
+Finished locally after the cloud handoff. The integrated game preserves restaurant progress across apartment, courtyard, workshop and rooftop visits, with shared journal, gifts and saves. Genuine offline voices are committed. Candidate `7b27ca4` passed 308 unit tests, a production build, 12 real production/offline cases and 34 original media/word-card regressions, all with zero skips or failures. Separate reviewers checked source, state recovery, real native playback and exact audio provenance. Actual gameplay demos with audio are verified. See [[evidence/0075/README]] for scope and receipts.
+
+Automated signal, transcript and recorded-playback checks do not certify native Mandarin pronunciation. A separate listening pass is tracked by 0076; no native-listening approval is claimed.

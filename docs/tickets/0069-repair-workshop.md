@@ -1,7 +1,7 @@
 ---
 id: 69
 title: Build the reversible repair workshop slice
-status: blocked
+status: done
 priority: high
 type: feature
 created: 2026-11-05
@@ -15,9 +15,9 @@ Deliver the selected apartment-building ensemble while preserving the hospital a
 
 - [x] Implement the bounded vertical slice described in the domain plan and central contract, with visible action consequences, repeatable choices and reversible mistakes.
 - [x] Pure rules tests and build pass; existing opening, customers, change and journal journey remains green.
-- [ ] Feature journey, reload/migration, offline voices/assets and clean console are evidenced; phone and desktop screenshots visually inspected.
-- [ ] Mandarin content is segmented/schema validated, voiced offline, tappable and journalled; pixel art remains consistent and controls accessible.
-- [ ] Different agent reviews without edits; resolved findings and reviewable PR are recorded. Central lead merges only after independent review, polish and integrated verification; then verifies main.
+- [x] Feature journey, reload/migration, offline voices/assets and clean console are evidenced; phone and desktop screenshots visually inspected.
+- [x] Mandarin content is segmented/schema validated, voiced offline, tappable and journalled; pixel art remains consistent and controls accessible.
+- [x] Different agent reviews without edits; resolved findings and reviewable PR are recorded. Central lead merges only after independent review, polish and integrated verification; then verifies main.
 
 ## Dependencies and ownership
 
@@ -56,3 +56,10 @@ Central lead relayed PASS from `/root/repair_final_check` at `36b0b77`. The revi
 Every worker below was requested as GPT-6.1 Sol with medium reasoning. Writer was `/root/repair_writer`. Rules reviewers were `/root/repair_rules_review` and `/root/repair_rules_rereview`. Full UI reviewer was `/root/repair_ui_review`; focused final reviewer was `/root/repair_final_check`. Read-only design workers were `/root/repair_design_a` and `/root/repair_design_b`. Cloud capability probe was `/root/cloud_probe`. These requested model settings are recorded without claiming independent runtime model verification.
 
 [Draft PR 22](https://github.com/CallumHemsley/junyan/pull/22) remains blocked by 64 required natural voice clips and shared 0066 route/save/offline/cross-feature verification. Feature IndexedDB reload, old-save migration, shared lookup/journal recovery and day preservation still need integrated evidence. Isolated review PASS does not complete these gates. Ticket stays `blocked`. Central lead owns integration and any eventual merge.
+
+
+## Local completion
+
+Finished locally after the cloud handoff. The integrated game preserves restaurant progress across apartment, courtyard, workshop and rooftop visits, with shared journal, gifts and saves. Genuine offline voices are committed. Candidate `7b27ca4` passed 308 unit tests, a production build, 12 real production/offline cases and 34 original media/word-card regressions, all with zero skips or failures. Separate reviewers checked source, state recovery, real native playback and exact audio provenance. Actual gameplay demos with audio are verified. See [[evidence/0075/README]] for scope and receipts.
+
+Automated signal, transcript and recorded-playback checks do not certify native Mandarin pronunciation. A separate listening pass is tracked by 0076; no native-listening approval is claimed.

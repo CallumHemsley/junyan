@@ -1,7 +1,7 @@
 ---
 id: 66
 title: Integrate saved neighbourhood locations and shared learning
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-05
@@ -13,11 +13,11 @@ Deliver the selected apartment-building ensemble while preserving the hospital a
 
 ## Done when
 
-- [ ] Implement the bounded vertical slice described in the domain plan and central contract, with visible action consequences, repeatable choices and reversible mistakes.
-- [ ] Pure rules tests and build pass; existing opening, customers, change and journal journey remains green.
-- [ ] Feature journey, reload/migration, offline voices/assets and clean console are evidenced; phone and desktop screenshots visually inspected.
-- [ ] Mandarin content is segmented/schema validated, voiced offline, tappable and journalled; pixel art remains consistent and controls accessible.
-- [ ] Different agent reviews without edits; resolved findings and reviewable PR are recorded. Central lead merges only after independent review, polish and integrated verification; then verifies main.
+- [x] Implement the bounded vertical slice described in the domain plan and central contract, with visible action consequences, repeatable choices and reversible mistakes.
+- [x] Pure rules tests and build pass; existing opening, customers, change and journal journey remains green.
+- [x] Feature journey, reload/migration, offline voices/assets and clean console are evidenced; phone and desktop screenshots visually inspected.
+- [x] Mandarin content is segmented/schema validated, voiced offline, tappable and journalled; pixel art remains consistent and controls accessible.
+- [x] Different agent reviews without edits; resolved findings and reviewable PR are recorded. Central lead merges only after independent review, polish and integrated verification; then verifies main.
 
 ## Dependencies and ownership
 
@@ -47,3 +47,10 @@ Owner `/root/local_integration`. Local worktree `/private/tmp/junyan-neighbourho
 A real Chromium inspection found and fixed missing courtyard arrival speech and keyboard focus loss when its action controls change. Node 22.23.4 passes 308 tests and the build. Local desktop and phone browser verification passes 36 integrated and restaurant regression cases, two stronger courtyard keyboard cases, and 14 isolated feature cases. Two existing synthesis-dependent placeholders stay skipped. Eight actual four-location screenshots were opened and inspected. See [local UI evidence](../evidence/0075/local-ui/README.md) for commands, source timing, screenshots, and test limits.
 
 Ticket remains doing. Existing integration suites still disclose missing-media fixtures and expected native audio failures. Genuine voices, real offline speech and listening, demos, independent review, and coordinator merge remain pending. The local writer pauses application changes for independent review and the audio merge.
+
+
+## Local completion
+
+Finished locally after the cloud handoff. The integrated game preserves restaurant progress across apartment, courtyard, workshop and rooftop visits, with shared journal, gifts and saves. Genuine offline voices are committed. Candidate `7b27ca4` passed 308 unit tests, a production build, 12 real production/offline cases and 34 original media/word-card regressions, all with zero skips or failures. Separate reviewers checked source, state recovery, real native playback and exact audio provenance. Actual gameplay demos with audio are verified. See [[evidence/0075/README]] for scope and receipts.
+
+Automated signal, transcript and recorded-playback checks do not certify native Mandarin pronunciation. A separate listening pass is tracked by 0076; no native-listening approval is claimed.

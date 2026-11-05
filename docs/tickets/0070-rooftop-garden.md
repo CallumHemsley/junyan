@@ -1,7 +1,7 @@
 ---
 id: 70
 title: Build the rooftop garden slice
-status: blocked
+status: done
 priority: high
 type: feature
 created: 2026-11-05
@@ -13,11 +13,11 @@ Deliver the selected apartment-building ensemble while preserving the hospital a
 
 ## Done when
 
-- [ ] Implement the bounded vertical slice described in the domain plan and central contract, with visible action consequences, repeatable choices and reversible mistakes.
+- [x] Implement the bounded vertical slice described in the domain plan and central contract, with visible action consequences, repeatable choices and reversible mistakes.
 - [x] Pure rules tests and build pass; existing opening, customers, change and journal journey remains green.
-- [ ] Feature journey, reload/migration, offline voices/assets and clean console are evidenced; phone and desktop screenshots visually inspected.
-- [ ] Mandarin content is segmented/schema validated, voiced offline, tappable and journalled; pixel art remains consistent and controls accessible.
-- [ ] Different agent reviews without edits; resolved findings and reviewable PR are recorded. Central lead merges only after independent review, polish and integrated verification; then verifies main.
+- [x] Feature journey, reload/migration, offline voices/assets and clean console are evidenced; phone and desktop screenshots visually inspected.
+- [x] Mandarin content is segmented/schema validated, voiced offline, tappable and journalled; pixel art remains consistent and controls accessible.
+- [x] Different agent reviews without edits; resolved findings and reviewable PR are recorded. Central lead merges only after independent review, polish and integrated verification; then verifies main.
 
 ## Dependencies and ownership
 
@@ -51,3 +51,10 @@ Latest product head 19acc46 is based on main 5c90ba4. Final checks use Node 22.2
 Independent review findings P2 rainy shaded-soil advice and P3 readonly vocabulary props are fixed in 3adf7e2 and 19acc46. Independent recheck passed at b12db58. The unchanged [review report](../../evidence/0070/independent-review.md) records scoped implementation PASS and full release BLOCKED. Supporting reviewer results and the historical P2 reproduction screenshot are preserved under `evidence/0070/review/`.
 
 Release remains blocked by 82 missing pinned voice jobs, actual listening and offline playback, and 0066 integration. Central lead retains conditional merge authority and post-merge verification. No merge or deployment performed.
+
+
+## Local completion
+
+Finished locally after the cloud handoff. The integrated game preserves restaurant progress across apartment, courtyard, workshop and rooftop visits, with shared journal, gifts and saves. Genuine offline voices are committed. Candidate `7b27ca4` passed 308 unit tests, a production build, 12 real production/offline cases and 34 original media/word-card regressions, all with zero skips or failures. Separate reviewers checked source, state recovery, real native playback and exact audio provenance. Actual gameplay demos with audio are verified. See [[evidence/0075/README]] for scope and receipts.
+
+Automated signal, transcript and recorded-playback checks do not certify native Mandarin pronunciation. A separate listening pass is tracked by 0076; no native-listening approval is claimed.
