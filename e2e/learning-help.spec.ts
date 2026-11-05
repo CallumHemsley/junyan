@@ -2,7 +2,10 @@ import { test, expect } from "@playwright/test";
 import { seedDayOne, withSkip } from "./opening";
 import content from "../src/content/content.json" with { type: "json" };
 
-test.use({ launchOptions: { args: ["--mute-audio"] } });
+test.use({ launchOptions: {
+  args: ["--mute-audio"],
+  ...(process.env.JUNYAN_CHROMIUM ? { executablePath: process.env.JUNYAN_CHROMIUM } : {}),
+} });
 
 test("help narrates authored tokens, shows the sequence and journals lookups without English", async ({ page }, info) => {
   const errors: string[] = [];

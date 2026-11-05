@@ -2,7 +2,10 @@ import { test, expect } from "@playwright/test";
 import { seedDayOne, withSkip } from "./opening";
 import type { Action, Content, GameState } from "../src/contracts";
 
-test.use({ launchOptions: { args: ["--mute-audio"] } });
+test.use({ launchOptions: {
+  args: ["--mute-audio"],
+  ...(process.env.JUNYAN_CHROMIUM ? { executablePath: process.env.JUNYAN_CHROMIUM } : {}),
+} });
 
 for (const build of ["development", "production"]) {
   test.describe(build, () => {

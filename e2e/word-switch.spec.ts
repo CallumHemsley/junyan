@@ -16,13 +16,15 @@ async function switchWords(page: Page, sources: Locator, touch: boolean, shot: s
     await expect(title).toHaveText(name!.trim().replace(/听过.*$/s, "").trim());
     await expect(card).toHaveCount(1);
   }
-  await page.screenshot({ path: shot, fullPage: true });
+  await page.screenshot({ path: process.env.JUNYAN_REDUCED_MOTION === "reduce" ? shot.replace(/\.png$/, "-reduced.png") : shot, fullPage: true });
   await page.keyboard.press("Escape");
   await expect(card).toHaveCount(0);
   await expect(sources.nth(1)).toBeFocused();
 }
 
 test.beforeEach(async ({ page }) => {
+  // The production save fixture opens JSON, which requests a default favicon.
+  await page.route("**/favicon.ico", route => route.fulfill({ status: 204, body: "" }));
   const errors: string[] = [];
   page.on("pageerror", e => errors.push(e.message));
   page.on("console", m => { if (m.type() === "error") errors.push(m.text()); });
@@ -36,8 +38,8 @@ for (const build of ["development", "production"]) {
       await seedDayOne(page, process.env.JUNYAN_PREVIEW_URL!);
       await page.goto(process.env.JUNYAN_PREVIEW_URL!);
     } else await page.goto(withSkip("/?test=1&seed=42"));
-    await page.getByText("怎么玩", { exact: true }).click();
     const help = page.getByRole("dialog", { name: "怎么玩" });
+    await help.getByRole("button", { name: "怎么玩", exact: true }).click();
     await switchWords(page, help.locator("[data-word-lookup]"), isMobile, `output/playwright/0061/${info.project.name}-${build}-help.png`);
     await expect(help).toBeVisible();
     await page.getByRole("button", { name: "开门迎客" }).click();
