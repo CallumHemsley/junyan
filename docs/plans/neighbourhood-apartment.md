@@ -10,7 +10,7 @@ Approved scope: a small freely decorated home within the recurring building ense
 
 4–6: experiment with a chair beside the table. Occupied/outside cells show a gentle outline and leave the last valid placement unchanged. Cancel restores the prior placement. A move can be undone; putting an object away returns it to inventory. Nothing is consumed or lost. The bed/door remain usable and one obvious route stays clear.
 
-6–8: 林姐 offers a choice of a blue or cream cushion. Both are useful decoration with visibly distinct colours. The choice can later be swapped. A small/large rug choice changes the occupied area; turning a long table visibly changes its footprint. Residents notice the chosen arrangement rather than grade it.
+6–8: 林姐 offers a choice of a blue or cream cushion. Both are useful decoration with visibly distinct colours. The choice can later be swapped. A reversible starter choice between a 1×2 small rug and a 2×2 large rug changes its covered area; turning a long table visibly changes its footprint. Residents notice the chosen arrangement rather than grade it.
 
 8–10: leave for the building's cats, workshop or roof through shared navigation, then return to the same layout. Optional restored stool, planter and cat cushion arrive as idempotent gifts when their features award them. Before those integrations exist, the apartment remains independently playable with its starter furniture. Reload preserves the room and the restaurant session.
 
@@ -20,7 +20,7 @@ Each visit offers arranging, storing, rotating, changing a reversible colour cho
 
 ## Bounded implementation
 
-One 6×5 floor grid; bed/window/door anchors; table (2×1), chair (1×1), rug (2×2), cushion and optional gift furniture. Pure state holds owned IDs, placements with x/y/rotation, colour choice, last gift day and one undo snapshot. Reducer validates bounds, collisions and protected door cells; rendering cannot silently correct state. Explicit actions select/place/rotate/store/undo/choose-colour/claim-gift. State validator rejects malformed items and geometry. Gifts must not duplicate owned objects.
+One 6×5 floor grid; bed/window/door anchors; table (2×1), chair (1×1), rug (2×2), cushion and optional gift furniture. Pure state holds owned IDs, placements with x/y/rotation, colour choice, last gift day and one undo snapshot of placements and colour only. Undo never reverts ownership, gifts or claim history. Rugs occupy a floor-covering layer and allow furniture on top; furniture collisions remain enforced separately. Reducer validates bounds, collisions and protected door cells; rendering cannot silently correct state. Explicit actions select/place/rotate/store/undo/choose-colour/claim-gift. State validator rejects malformed items and geometry. Gifts must not duplicate owned objects.
 
 Thin React view plus a feature-local pixel/isometric scene consistent with existing renderer/palette. Use DOM overlay controls for selected items and floor cells; keyboard access is equivalent to tapping. Keep accessible labels and speech segmented, no Chinese painted into scene. Reuse existing WordToken and callback-based audio/journal behavior; do not edit App or shared renderer.
 

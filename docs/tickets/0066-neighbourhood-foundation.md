@@ -21,7 +21,7 @@ Deliver the selected apartment-building ensemble while preserving the hospital a
 
 ## Dependencies and ownership
 
-Central ledger: [[plans/neighbourhood-coordination]]. Depends on published 0065 contract; integrated completion depends on 0066 and existing shared-file lease handoffs.
+Central ledger: [[plans/neighbourhood-coordination]]. Depends on published 0065 contract; integrated completion depends on feature tickets 0067–0070 and existing shared-file lease handoffs.
 One writer/branch/cloud checkout and strict port as assigned there. No edits outside assigned files. Domain lead refines this ticket before implementation.
 
 ## Notes

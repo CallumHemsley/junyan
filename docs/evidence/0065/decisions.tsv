@@ -2,3 +2,4 @@ ts	phase	decision	why	evidence	result
 2026-11-05T19:00:26Z	coordination	Reserve tickets 0065 through 0070	Remote main and active branches reserve through 0064	da361c3	published
 2026-11-05T19:00:26Z	saves	Embed optional neighbourhood state in game save	Keep pending checkpoint and journal atomic	src/startup.ts	accepted
 2026-11-05T19:00:26Z	policy	Central lead may merge after review and verification	Human superseded draft-only policy	docs/plans/neighbourhood-coordination.md	active
+2026-11-05T19:01:28Z	review	Preserve gifts through corruption and placement undo	Independent review found permanent-acquisition loss paths	docs/plans/neighbourhood-apartment.md	contract fixed; implementation tests required
