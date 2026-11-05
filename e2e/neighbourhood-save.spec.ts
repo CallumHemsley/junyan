@@ -1,15 +1,12 @@
 import { test, expect, type Page } from "@playwright/test";
-import { readFileSync } from "node:fs";
 import data from "../src/content/content.json" with {type:"json"};
 import type { Content, GameState } from "../src/contracts";
 import { createGame } from "../src/game";
 import * as repair from "../src/features/repairs/rules";
 import { seedDayOne } from "./opening";
-import { silentWav } from "./audio-fixtures";
 
 const content=data as Content;
 const root=process.env.JUNYAN_NEIGHBOURHOOD_PREVIEW==="1"?"/junyan/":"/";
-const voiceFixture=silentWav(readFileSync(`public${content.foods[0].word.audio}`));
 async function saved(page:Page):Promise<GameState> {
   return page.evaluate(async()=>{
     const db=await new Promise<IDBDatabase>((resolve,reject)=>{const request=indexedDB.open("junyan-waiter",1);request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);});
@@ -18,11 +15,10 @@ async function saved(page:Page):Promise<GameState> {
   });
 }
 
-test.describe("focused saved-fixture migration with native PCM feature responses",()=>{
+test.describe("saved-fixture migration with real feature voices",()=>{
   test.use({serviceWorkers:"block"});
   test.beforeEach(async({page})=>{
     await page.route("**/favicon.ico",route=>route.fulfill({status:204}));
-    await page.route(/\/audio\/(apartment|cats|repairs|garden)\/.*\.wav$/,route=>route.fulfill({status:200,contentType:"audio/wav",body:voiceFixture}));
   });
 
   test("a real old IndexedDB v1 row restores its journal and initializes locations without the hospital",async({page,baseURL})=>{

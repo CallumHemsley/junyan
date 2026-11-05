@@ -1,7 +1,9 @@
 import { defineConfig, devices } from "@playwright/test";
+import { verificationPort } from "./playwright.config";
 
 const preview = process.env.JUNYAN_NEIGHBOURHOOD_PREVIEW === "1";
-const baseURL = `http://127.0.0.1:5466${preview ? "/junyan/" : ""}`;
+const port = verificationPort(preview ? process.env.JUNYAN_PREVIEW_PORT : process.env.JUNYAN_DEV_PORT, preview ? 5566 : 5466);
+const baseURL = `http://127.0.0.1:${port}${preview ? "/junyan/" : ""}`;
 process.env.AUDIO_PREVIEW_URL = baseURL;
 process.env.JUNYAN_PREVIEW_URL = baseURL;
 process.env.JUNYAN_HELP_PREVIEW_URL = baseURL;
@@ -29,7 +31,7 @@ export default defineConfig({
     { name: "phone", testIgnore: ["**/offline.spec.ts", "**/overnight-offline.spec.ts"], use: { ...devices["iPhone 13"], defaultBrowserType: "chromium" } },
   ],
   webServer: {
-    command: `node node_modules/vite/bin/vite.js ${preview ? "preview --base /junyan/" : ""} --host 127.0.0.1 --port 5466 --strictPort`,
+    command: `${preview ? "pnpm build && " : ""}node node_modules/vite/bin/vite.js ${preview ? "preview --base /junyan/" : ""} --host 127.0.0.1 --port ${port} --strictPort`,
     url: baseURL,
     reuseExistingServer: false,
     timeout: 30000,

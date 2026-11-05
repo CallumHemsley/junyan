@@ -1,14 +1,15 @@
 import { test, expect, type Page } from "@playwright/test";
-import { readFileSync } from "node:fs";
 import type { Content, GameState } from "../src/contracts";
 import base from "../src/content/content.json" with {type:"json"};
 import gardenData from "../src/features/garden/content.json" with {type:"json"};
 import { playOpening } from "./opening";
-import { probeAudio, silentWav } from "./audio-fixtures";
+import { probeAudio } from "./audio-fixtures";
+import { checkLineAndWord, expectNativeSpeech, featureLine } from "./neighbourhood-audio";
+
+test.use({serviceWorkers:"block"});
 
 const content = base as Content;
 const appRoot = process.env.JUNYAN_NEIGHBOURHOOD_PREVIEW === "1" ? "/junyan/" : "/";
-const missingVoiceFixture = silentWav(readFileSync(`public${content.foods[0].word.audio}`));
 const gardenName = (id: string) => gardenData.words.find(word => word.id === gardenData.labels[id as keyof typeof gardenData.labels])!.hanzi;
 const gardenTool = (page: Page, id: string) => page.locator(`.garden-tool-button[aria-label="${gardenName(id)}"]`);
 async function stored(page: Page): Promise<GameState | null> {
@@ -34,7 +35,10 @@ async function visit(page: Page, name: string) {
 async function startNormally(page: Page) {
   await page.goto(`${appRoot}?seed=42`);
   await expect(page.getByRole("navigation",{name:"楼里",exact:true})).toHaveCount(0);
-  await playOpening(page);
+  await playOpening(page, {pause: async () => {
+    const path = await page.evaluate(() => (window as any).__audioProbe.at(-1)?.src as string | undefined);
+    if (path) await expectNativeSpeech(page, path);
+  }});
   await page.getByRole("button",{name:"开门迎客"}).click();
 }
 async function serve(page: Page, table: number) {
@@ -43,6 +47,7 @@ async function serve(page: Page, table: number) {
   const order=content.orders.find(value=>value.id===customer.orderId)!;
   await page.getByTestId(`table-${table}`).click();
   const dialog=page.getByRole("dialog",{name:`${table}桌点餐`});
+  await expectNativeSpeech(page, order.line.audio);
   if(customer.phase==="seated" || saved.tray.length===0) {
     await dialog.getByRole("button",{name:"去厨房",exact:true}).click();
     for(const item of order.items) {
@@ -57,6 +62,7 @@ async function serve(page: Page, table: number) {
   for(let n=0;n<order.paid-total;n++) await dialog.getByRole("button",{name:"+1块",exact:true}).click();
   await dialog.getByRole("button",{name:"递上找零"}).click();
   await expect(dialog.locator(".thanks-chop")).toBeVisible();
+  await expectNativeSpeech(page, content.characters.find(character => character.name === order.customer)!.thanks.audio);
   await dialog.getByRole("button",{name:"继续招呼"}).click();
 }
 function restaurantSnapshot(game: GameState) {
@@ -64,16 +70,15 @@ function restaurantSnapshot(game: GameState) {
   return restaurant;
 }
 
-test.describe("interaction-only routes with native PCM responses for missing feature voices",()=>{
-  test.use({serviceWorkers:"block"});
+test.describe("real shipped neighbourhood speech and saved journeys",()=>{
   test("normal opening, all four real locations, learning, gifts, reload and restaurant-only next day",async({page},info)=>{
     test.setTimeout(240000);
     const errors:string[]=[];
     page.on("pageerror",error=>errors.push(error.message));
     page.on("console",message=>{if(message.type()==="error")errors.push(message.text());});
-    await page.route(/\/audio\/(apartment|cats|repairs|garden)\/.*\.wav(?:\?.*)?$/,route=>route.fulfill({status:200,contentType:"audio/wav",body:missingVoiceFixture}));
     await probeAudio(page);
     await startNormally(page);
+    expect(await page.evaluate(() => "__TEST__" in window)).toBe(false);
     await page.getByTestId("table-1").click();
     await page.getByRole("button",{name:"去厨房",exact:true}).click();
     await page.getByRole("button",{name:"拿包子",exact:true}).click();
@@ -82,6 +87,7 @@ test.describe("interaction-only routes with native PCM responses for missing fea
     const restaurant=restaurantSnapshot((await stored(page))!);
 
     await visit(page,"家");
+    await checkLineAndWord(page, featureLine("apartment", "welcome"), page.locator(".apartment-line"), page.locator(".apartment-speech > button"));
     await page.getByRole("button",{name:"收下",exact:true}).click();
     await expect(page.locator(".apartment .new-word").first()).toBeVisible();
     await page.locator(".apartment-items").getByRole("button",{name:/桌子/}).click();
@@ -99,6 +105,7 @@ test.describe("interaction-only routes with native PCM responses for missing fea
     expect(await page.evaluate(()=> (window as any).__ambienceElements.length)).toBe(1);
 
     await visit(page,"院子");
+    await checkLineAndWord(page, featureLine("cats", "clue"), page.locator(".cats-speech"), page.locator(".cats-replay"));
     const clue=page.locator(".cats-speech [data-word-lookup]").first();
     await clue.click();
     await expect(page.locator(".word-popover .pinyin")).not.toBeEmpty();
@@ -124,6 +131,7 @@ test.describe("interaction-only routes with native PCM responses for missing fea
     await page.screenshot({path:`output/neighbourhood/${info.project.name}-cats.png`,fullPage:true});
 
     await visit(page,"修理间");
+    await checkLineAndWord(page, featureLine("repairs", "lamp-intro"), page.locator(".repair-line"), page.locator(".repair-speaker button"));
     await page.getByTestId("repair-part-bulb").click();
     await page.locator(".repair-part-actions").getByRole("button",{name:"拧紧",exact:true}).click();
     await page.locator(".repair-main-actions").getByRole("button",{name:"试试",exact:true}).click();
@@ -144,6 +152,7 @@ test.describe("interaction-only routes with native PCM responses for missing fea
 
     await visit(page,"屋顶花园");
     await gardenTool(page,"tidy").click();
+    await checkLineAndWord(page, featureLine("garden", "wet-warning"), page.locator(".garden-spoken"), page.locator(".garden-replay"));
     await gardenTool(page,"water-verb").click();
     const confirmation=page.getByTestId("garden-confirm");
     await expect(confirmation).toBeVisible();
@@ -186,20 +195,25 @@ test.describe("interaction-only routes with native PCM responses for missing fea
     await expect.poll(async()=> (await stored(page))?.neighbourhood?.claimedGiftIds).toEqual(["cats.cushion","repairs.stool","garden.planter"]);
     expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);
     expect(errors).toEqual([]);
-    await info.attach("interaction-only-audio-disclosure",{body:"Namespaced missing feature WAV requests received in-memory native PCM fixtures. This verifies interaction/save/playback ownership, not real feature speech or offline voice readiness. Real existing speech and ambience were unchanged.",contentType:"text/plain"});
+    await info.attach("real-native-speech",{body:JSON.stringify(await page.evaluate(() => (window as any).__audioProbe),null,2),contentType:"application/json"});
   });
 });
 
-test("real missing feature voice reports native failure without a substitute",async({page},info)=>{
+test("an explicitly unavailable feature voice reports failure and a real replay recovers",async({page},info)=>{
+  await page.route(/\/audio\/apartment\/.*\.wav(?:\?.*)?$/, route => route.abort("failed"));
   const failures:string[]=[];
   page.on("console",message=>{if(message.type()==="error")failures.push(message.text());});
   await probeAudio(page);
-  await page.goto(`${appRoot}?test=1&seed=42`);
-  await page.getByRole("button",{name:"开门迎客"}).click();
+  await startNormally(page);
+  expect(await page.evaluate(() => "__TEST__" in window)).toBe(false);
   await visit(page,"家");
   await expect(page.getByText("声音暂时没有播出，再点一次听听。",{exact:true})).toBeVisible();
   expect(await page.evaluate(()=> (window as any).__audioProbe.some((event:any)=>event.src.includes("/audio/apartment/") && event.status!=="playing"))).toBe(true);
   const nativeFailures=await page.evaluate(()=> (window as any).__audioElements.filter((audio:HTMLAudioElement)=>audio.src.includes("/audio/apartment/") && audio.error).map((audio:HTMLAudioElement)=>({src:audio.src,code:audio.error!.code,message:audio.error!.message})));
   expect(nativeFailures.length).toBeGreaterThan(0);
-  await info.attach("expected-missing-real-audio",{body:JSON.stringify({nativeFailures,consoleErrors:failures},null,2),contentType:"application/json"});
+  await page.unroute(/\/audio\/apartment\/.*\.wav(?:\?.*)?$/);
+  await page.locator(".apartment-speech > button").click();
+  await expectNativeSpeech(page, featureLine("apartment", "welcome").audio);
+  await expect(page.getByText("声音暂时没有播出，再点一次听听。",{exact:true})).toHaveCount(0);
+  await info.attach("injected-unavailable-audio",{body:JSON.stringify({nativeFailures,consoleErrors:failures},null,2),contentType:"application/json"});
 });
