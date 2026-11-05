@@ -1,6 +1,6 @@
 # 0062 final implementation review
 
-Implement 23 restaurant punctuation performances on base main `9545141f28b5e1be53a7d62ac95e8befc4b064c8`. Existing Serena/Yunxi/Uncle_Fu/Xiaobei cast, presets, visible tokens and dictionary remain unchanged. Root relayed Callum's direct acceptance, “All four revised samples work,” for the four representative thanks; those exact WAV bytes are preserved. This is not a claim that Callum heard all final lines or that this worker listened.
+Implement 23 restaurant punctuation performances on base main `74b81952faddd6ea33cd38f3aedeb8db13974d9c` (doctor bridge, served-food props and ambience integrated). Existing Serena/Yunxi/Uncle_Fu/Xiaobei cast, presets, visible tokens and dictionary remain unchanged. Root relayed Callum's direct acceptance, “All four revised samples work,” for the four representative thanks; those exact WAV bytes are preserved. This is not a claim that Callum heard all final lines or that this worker listened.
 
 ## Result and rejected take
 
@@ -15,21 +15,22 @@ pnpm --config.manage-package-manager-versions=false --config.verify-deps-before-
 pnpm --config.manage-package-manager-versions=false --config.verify-deps-before-run=false build
 python3 scripts/content-audio.py --self-check
 python3 scripts/content-audio.py --plan
-JUNYAN_DEV_PORT=5412 JUNYAN_PREVIEW_PORT=5413 JUNYAN_CHROMIUM_PATH=/usr/bin/chromium PLAYWRIGHT_BROWSERS_PATH=/workspace/.junyan-tools/browsers node_modules/.bin/playwright test --config scripts/ticket-0062/playwright.config.ts --grep 'wake in the ward|browser saves|production keeps|all 23|each regular'
+JUNYAN_DEV_PORT=5412 JUNYAN_PREVIEW_PORT=5413 JUNYAN_CHROMIUM_PATH=/usr/bin/chromium PLAYWRIGHT_BROWSERS_PATH=/workspace/.junyan-tools/browsers node_modules/.bin/playwright test --config scripts/ticket-0062/playwright.config.ts --project desktop --project phone-reduced --grep 'wake in the ward|browser saves|production keeps|all 23|each regular'
 python3 scripts/ticket-0062/prepare-comparison.py --output output/0062-final-comparison
 ```
 
-- Unit/content: **193/193 PASS**,11files. Initial exact-reference corpus failure was fixed by proven22clip retirement; no test weakened.
+- Unit/content: **206/206 PASS**,15files on current main74b8195. Initial exact-reference corpus failure was fixed by proven22clip retirement; no test weakened.
 - Build: **PASS**, including final browser server's rebuild after cleanup. Existing dependency PURE-comment warnings only.
 - Pipeline self-check: **PASS**. Real production plan: **126cached/0pending**.
-- Browser: **15PASS /3deliberate skips in4.4m**. Full opening and complete four-customer day/change/journal/nextday on desktop+phone, normal+reduced; save/reload each; four actual empty-tray wrong-delivery retries on each layout; supplementary desktop offline loading normal/reduced. Main full journeys use real controls, with read-only hook inspection to choose order items. The supplementary retry scenario skips opening; it does not substitute for the four full opening/day runs.
+- Browser: latest integrated-main focused run **8PASS /1deliberate duplicate skip in3.0m** (desktop normal + phone reduced). Earlier complete matrix on the unchanged customer audio patch: **15PASS /3deliberate skips in4.4m**. Full opening and complete four-customer day/change/journal/nextday on desktop+phone, normal+reduced; save/reload each; four actual empty-tray wrong-delivery retries on each layout; supplementary desktop offline loading normal/reduced. Main full journeys use real controls, with read-only hook inspection to choose order items. The supplementary retry scenario skips opening; it does not substitute for the four full opening/day runs.
 - Native playback: all23changed clips completed `HTMLAudioElement` playback **offline**,72.77s total source duration, with positive duration/ended/currentTime assertions and clean console. Executed once on desktop production shell after playing full opening; three other project copies deliberately skipped. No route/silent-fixture replacements. Browser launched `--mute-audio`; system volume unchanged. Native completion establishes technical playback, not listening.
+- Importer idempotency on latest integrated tree: **PASS**, identical complete content/manifest with zero added records or retired clips; no production writes.
 - Comparison exporter: **PASS**,4pairs/8WAVs after retirement. It now recovers baseline bytes from immutable66ac123 Git history, so deleted production baseline takes do not break auditions.
 - Console/pageerror assertions: **clean** in the checked paths. Phone overflow check passed in full journey. Persisted journal survived reload. Independent exact-patch review below.
 
 ## Captured/inspected evidence
 
-Committed compact artifacts in `final/`: desktop restaurant; phone 小周 retry; reduced desktop teacher retry; reduced phone journal; sampled desktop+phone gameplay-video contact sheets. Inspected these actual images and all four desktop retry screenshots. No new visual regression established: cast identities/readable controls stay stable, phone journal scrolls, retry dialogue fits. Fogging is intentional unrecovered-word presentation.
+Committed compact artifacts in `final/`, refreshed/inspected from the latest74b8195 run: desktop restaurant and teacher retry; reduced phone 小周 retry and journal; sampled desktop+reduced-phone gameplay-video contact sheets. Earlier complete matrix also covered reduced desktop and normal phone. Inspected these actual images and all four desktop retry screenshots. No new visual regression established: cast identities/readable controls stay stable, phone journal scrolls, retry dialogue fits. Fogging is intentional unrecovered-word presentation.
 
 Full local captures (ignored, available in worker checkout):
 
@@ -52,4 +53,4 @@ Video inspection is sampled frames every3s, not a claim to continuous watching/l
 
 This is a short working vertical slice, not a release-quality Steam assessment. No known blocking defect remains in the bounded implementation. Longer-term fun/retention and full-corpus tone/prosody remain human-playtest questions, not a new approval gate after root's explicit implementation scope.
 
-Independent no-edit reviewer `/root/review_0062` reported **PASS** for production commit `da831e5c494f1bbffb99af3e694c39de601d6dcd` against9545141:23target pairs only; hashes and4thanks correct; doctor/Help/presets/originalretry preserved;22retiredunreferenced;126files/recordslive;71ccabsent. Reviewer inspected phone/desktop restaurant/journal images and found no new visual defect. It identified the obsolete comparison exporter; fixed and verified from immutable baseline. Final exact-head follow-up is requested after this documentation/tooling fix, before root merge. This worker does not merge.
+Independent no-edit reviewer `/root/review_0062` reported **PASS** for integrated source `c939d3ed7c1e537c0ef6eb8b1549c5638f50d489` against main74b8195 (and the prior identical production patch):23target pairs only; hashes and4thanks correct; doctor/Help/presets/originalretry preserved;22retiredunreferenced;126files/recordslive;71ccabsent. Reviewer inspected phone/desktop restaurant/journal images and found no new visual defect. It identified the obsolete comparison exporter; fixed and verified from immutable baseline. See `independent-review.md` for exact-source review history; final documentation/evidence-only follow-up is requested before root merge. Current-main206unit/build and focused8browser results are complete. This worker does not merge.
