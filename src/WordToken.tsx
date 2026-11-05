@@ -13,6 +13,7 @@ export default function WordToken({
   return (
     <button
       className={`word${look === "fogged" ? " fogged" : ""}${look === "dot" ? " new-word" : ""}`}
+      data-word-lookup
       data-recovered={look !== "fogged"}
       onClick={(event) => onLookup(word, event.currentTarget)}
     >

@@ -1,0 +1,24 @@
+$ vitest run
+
+ RUN  v3.2.7 /workspace/junyan-0061
+
+ ✓ src/save.test.ts (52 tests) 214ms
+ ✓ src/content/content.test.ts (14 tests) 143ms
+ ✓ src/scene/ward.test.ts (8 tests) 914ms
+   ✓ ward scene > renders every step frame without DOM globals and is deterministic  304ms
+ ✓ src/navigation.test.ts (4 tests) 25ms
+ ✓ src/game.test.ts (30 tests) 26ms
+ ✓ src/audio/playback.test.ts (13 tests) 11ms
+ ✓ src/opening.test.ts (11 tests) 18ms
+ ✓ src/recovery.test.ts (11 tests) 6ms
+ ✓ src/startup.test.ts (7 tests) 7ms
+ ✓ src/opening-view.test.ts (2 tests) 5ms
+ ✓ src/scene/renderer.test.ts (18 tests) 4670ms
+   ✓ actual raster depth and walking > partially occludes rear-facing food with the body without hiding the whole tray  1291ms
+   ✓ actual raster depth and walking > walks deterministically from supplied time and freezes at reduced-motion inputs  1770ms
+   ✓ renders independently without DOM globals and reflects customer/tray state  1429ms
+
+ Test Files  11 passed (11)
+      Tests  170 passed (170)
+   Start at  18:59:38
+   Duration  5.17s (transform 400ms, setup 0ms, collect 1.44s, tests 6.04s, environment 2ms, prepare 721ms)

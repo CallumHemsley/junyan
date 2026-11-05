@@ -1,0 +1,42 @@
+[WebServer] (node:9989) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ vite --host 0.0.0.0 --host 127.0.0.1 --port 5404 --strictPort
+[WebServer] (node:10004) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:10030) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ tsc -b && vite build
+[WebServer] (node:10058) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/regexes.js (74:0): A comment
+[WebServer]
+[WebServer] "/** Anchors a pattern source. The interpolation lives here rather than at the call site because
+[WebServer]  * esbuild will not drop a `@__PURE__` call whose own argument interpolates a variable, but it
+[WebServer]  * will drop `anchor(dateSource)`. Keeping it inline pinned `date` into every bundle. */"
+[WebServer]
+[WebServer] in "node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+[WebServer] node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/util.js (400:0): A comment
+[WebServer]
+[WebServer] "// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+[WebServer]
+[WebServer] in "node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+[WebServer] (node:10083) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:10097) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 7 tests using 1 worker
+
+(node:10120) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [desktop] › e2e/offline.spec.ts:7:1 › production keeps the restaurant and Mandarin audio available offline (2.4s)
+  ✓  2 [desktop] › e2e/waiter.spec.ts:88:1 › wake in the ward, then collect, recall, deliver, give change, journal, and progress (28.2s)
+  ✓  3 [desktop] › e2e/word-switch.spec.ts:36:3 › development: Help and restaurant switch directly with top-only Escape (3.1s)
+  ✓  4 [desktop] › e2e/word-switch.spec.ts:36:3 › production: Help and restaurant switch directly with top-only Escape (2.9s)
+(node:10407) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  5 [phone] › e2e/waiter.spec.ts:88:1 › wake in the ward, then collect, recall, deliver, give change, journal, and progress (29.6s)
+  ✓  6 [phone] › e2e/word-switch.spec.ts:36:3 › development: Help and restaurant switch directly with top-only Escape (3.4s)
+  ✓  7 [phone] › e2e/word-switch.spec.ts:36:3 › production: Help and restaurant switch directly with top-only Escape (3.2s)
+
+  7 passed (1.4m)

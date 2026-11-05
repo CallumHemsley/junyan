@@ -1,0 +1,85 @@
+[WebServer] (node:1681) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ vite --host 0.0.0.0 --host 127.0.0.1 --port 5404 --strictPort
+[WebServer] (node:1696) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1720) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] $ tsc -b && vite build
+[WebServer] (node:1749) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/util.js (400:0): A comment
+[WebServer]
+[WebServer] "// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+[WebServer]
+[WebServer] in "node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+[WebServer] node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/regexes.js (74:0): A comment
+[WebServer]
+[WebServer] "/** Anchors a pattern source. The interpolation lives here rather than at the call site because
+[WebServer]  * esbuild will not drop a `@__PURE__` call whose own argument interpolates a variable, but it
+[WebServer]  * will drop `anchor(dateSource)`. Keeping it inline pinned `date` into every bundle. */"
+[WebServer]
+[WebServer] in "node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+[WebServer] (node:1775) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1789) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:1813) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [desktop] › e2e/word-switch.spec.ts:4:1 › direct word switching keeps latest trigger and parent (3.8s)
+
+
+  1) [desktop] › e2e/word-switch.spec.ts:4:1 › direct word switching keeps latest trigger and parent
+
+    TimeoutError: locator.click: Timeout 2000ms exceeded.
+    Call log:
+      - waiting for getByRole('dialog', { name: '1桌点餐' }).locator('.spoken .word').nth(1)
+        - locator resolved to <button class="word fogged" data-recovered="false">我</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <div class="app-shell">…</div> intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <div class="app-shell">…</div> intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        3 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <div class="app-shell">…</div> intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+
+
+      12 |   const words = parent.locator(".spoken .word");
+      13 |   await words.nth(0).click();
+    > 14 |   await words.nth(1).click({ timeout: 2000 });
+         |                      ^
+      15 |   await expect(page.locator(".word-popover h2")).toHaveText(await words.nth(1).innerText());
+      16 |   await page.screenshot({ path: `output/playwright/0061/${info.project.name}-switch.png`, fullPage: true });
+      17 |   await page.keyboard.press("Escape");
+        at /workspace/junyan-0061/e2e/word-switch.spec.ts:14:22
+
+    Error Context: test-results/word-switch-direct-word-sw-4e424-s-latest-trigger-and-parent-desktop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/word-switch-direct-word-sw-4e424-s-latest-trigger-and-parent-desktop/trace.zip
+    Usage:
+
+        pnpm exec playwright show-trace test-results/word-switch-direct-word-sw-4e424-s-latest-trigger-and-parent-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [desktop] › e2e/word-switch.spec.ts:4:1 › direct word switching keeps latest trigger and parent
