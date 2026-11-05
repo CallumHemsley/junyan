@@ -25,3 +25,20 @@ The first strict depth comparison fixed the face but hid the monitor blip and IV
 Surface accents test depth only and leave geometry depth unchanged. Writing the allowance into baked depth caused later monitor highlights to reject against the waveform itself; removing that write preserves the original surface while retaining occlusion checks. Final `pnpm test`: 11 files, 170 tests passed. Final `pnpm build`: passed (existing Zod Rollup annotation warnings only).
 
 Silent Playwright journey passed desktop and phone (2/2), using temporary local config to select system Chromium; ports 5402 and 5403 with strictPort in the repository config. It played the complete opening, wrong item/correct deliveries, four restaurant customers, change, journal, and day-two progression. Both journeys assert clean console. No independent reviewer or human approval has occurred; root review of the final exact patch remains required before merge.
+
+## Evidence index and inspection
+
+Committed evidence is in [`0059/`](0059/). `face-comparison.png` reads left to right: before t=0, before t=.4, after t=0, after t=.4. `frame-proof.json` records exact changed-pixel coordinates for all four conditions: at t=.4 the face crop changes at nine pixels before and zero after; non-face IV/monitor animation still changes four pixels. Explicit renderer time is independent of CSS motion preference; reduced-motion live video freezes through the existing WardScene time=0 scheduling.
+
+`before-{desktop,phone}-{no-preference,reduce}.mp4` and matching `after-...mp4` are real live-game recordings (all silent), with corresponding full screenshots. Inspected all four after screenshots and both restaurant journey screenshots: face intact, no new gaps/overlaps or layout overflow. Inspected decoded frames at 2fps over seconds 7–11 of normal-motion before/after videos: pale stripe appears/disappears before, stable unobscured face after. These frame strips are `before/after-{desktop,phone}-video-frames.png`. No claim of audio listening; audio is outside this ticket.
+
+Reproduce capture: `PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/chromium node src/scene/record-ward-flicker.mjs after http://127.0.0.1:5402`. Browser launch always includes --mute-audio. System ffmpeg was linked into Playwright’s expected cache location because the download host was unavailable.
+
+Verification commands (each with `pnpm_config_verify_deps_before_run=false`):
+
+- `pnpm test src/scene/ward.test.ts -t 'seated player face'`: failed on original implementation at t=.2, as expected.
+- `pnpm test`: final 170/170 passed, including scene/rules/content.
+- `pnpm build`: passed; Zod dependency annotation warnings only.
+- `JUNYAN_DEV_PORT=5402 JUNYAN_PREVIEW_PORT=5403 pnpm exec playwright test --config .0059-playwright.config.ts e2e/waiter.spec.ts --grep 'wake in the ward'`: 2/2 passed (37.3s desktop, 39.1s phone), all journey console assertions passed. Temporary config spread the repository config, selected system Chromium, muted audio, used existing isolated strict-port 5402 dev server and repository strict-port 5403 preview server. Temporary config removed after use.
+
+All implementation changes are ward-local. No shared-file coordination needed. READY for parent independent review; not merged.
