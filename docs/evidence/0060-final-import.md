@@ -32,3 +32,28 @@ Review the staged diff and current-main state before the authorized integration.
 - No extra gameplay baseline suites repeated for this handoff-only work. Earlier visual game checks remain recorded separately; they must be refreshed after real audio import/current-main changes.
 
 Verdict: final import prepared; **ticket still incomplete/BLOCKED pending selection, real six-line bundle, serialized audio lease and complete verification**. Visual change remains draft, not a standalone completion claim.
+
+## 2026-11-05 — published neutral support plan (supersedes provisional bundle details above)
+
+Support branch `codex/0060-synthesis-support`, exact commit `cfaa2fd`, publishes `docs/evidence/0060/neutral-candidate/`: six final WAVs, `inventory.json`, `preset.json`, `manifest-entries.json`, SHA-bound `asr-final.json`, retake wrappers and rejected-take evidence. This is a **subset evidence bundle**, not the complete `content.json`/`voices.json` source shape expected by the earlier provisional staging helper. Do not run that helper directly against this subset or import a truncated content fixture.
+
+Read-only verification performed against the Git objects, without extracting/staging/importing production assets:
+
+- All six inventory SHA-256 values equal actual published WAV byte hashes, manifest hashes and final ASR proof hashes.
+- All six pipeline identities match recomputed jobs using current exact script/pinyin and published preset (generator version, kind, text, preset, pronunciation policy, digest/name).
+- All six are nonempty mono PCM16 24 kHz WAVs.
+- Published milk request and repeated thanks WAVs equal their neutral audition blobs byte-for-byte.
+- Current `uncle-fu-levelled` is exclusive to elder in the opening; restaurant characters use other presets. Thus **preserve this existing hospital-only preset ID** and update its definition rather than introducing the provisional `hospital-elder-1b7` alias. Recheck exclusivity against then-current main before editing. This supersedes the helper's provisional alias choice; adapt the import to actual returned support shape at integration time.
+
+Integration sequence once (and only once) root reports **A selected AND 0062 lease closed**:
+
+1. Fetch/rebase onto current main after doctor/customers atomic integrations. Retain the merged depth fix and existing tested pose. Read current content/voices/manifest; snapshot their hashes and compare exclusive hospital consumers again.
+2. Use **only** the six selected top-level candidate WAVs and six `manifest-entries.json` records from exact support commit `cfaa2fd`. Keep rejected-first/second takes outside production. Preserve the original accepted two WAVs. Bring relevant ASR/inventory/preset/retake evidence into the reviewable ticket evidence without treating it as human acceptance.
+3. In the full current game, change exactly six elder full-line `audio` references by matching inventory `lineId` and exact `text`. Preserve tokens/pinyin/recovery/steps/tray and all non-elder content. Update only existing exclusive `uncle-fu-levelled` to the published pinned 1.7B Uncle_Fu neutral preset. Preserve dictionary/restaurant/doctor/customer presets and files.
+4. Add the six selected WAVs and merge their six records into the **current complete manifest**. Refuse a conflicting same-filename record. Preserve historical audio/manifest entries by default; no cleanup is needed to fix performance. Do not replace the manifest with the six-entry subset. Existing pipeline does not include editorial preset IDs in asset identity; preserve actual generating `voice_ids` provenance instead of rewriting it to match the live alias.
+5. Recompute full plan and require zero pending; verify clip hashes/provenance, schema/content/audio checks and build. Play full opening with both wrong reactions and thanks, complete four-customer day/change/journal, phone/desktop normal/reduced motion, clean console, persistence/offline audio. Capture reviewer-accessible images and scene video with sound for actual listening acceptance. This worker must not claim listening it cannot perform. Record selection evidence separately from any remaining full-scene listening limitation.
+6. Push atomic production files and evidence, request root's exact-patch/product review, and leave merge to root. The previously requested selection is sufficient direction once root communicates it; do not introduce another approval request to perform this authorized integration.
+
+If user selects **B**, tell root: the published bundle contains only B's two audition clips; the unpublished full B candidate still has two reported ASR flags. Do not substitute A, use unverified local B clips, or infer acceptance from ASR. Root must return the verified selected full B bundle before import.
+
+Final word-sequence ASR alignment of A is a technical check only. Whisper does not establish tones, low-energy performance, believable frailty, enjoyment or human approval. User A/B preference remains **pending**. No production files staged/imported in this planning update; 0062 lease still blocks integration.
