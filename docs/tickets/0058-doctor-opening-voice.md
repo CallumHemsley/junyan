@@ -1,7 +1,7 @@
 ---
 id: 58
 title: Give the opening doctor a calm, reassuring voice
-status: blocked
+status: doing
 priority: high
 type: bug
 created: 2026-11-05
@@ -38,3 +38,5 @@ Callum reports that the doctor's voice when waking up in the hospital opening so
 - Cloud synthesis blocked: Linux x86_64 cannot import MLX. Draft PR #13 publishes exact audition inputs and Mac handoff; parent confirmed a working local runtime. Await actual clips, listening comparison and Callum acceptance before implementation completion. No production audio changes selected.
 
 - Both first-round synthesized auditions rejected by direct user listening feedback; support branch `codex/0058-synthesis-support` at `e62a5c0` is audition evidence only. Pinned mlx-audio 0.6.3 source proves 0b6 instructions are discarded. Evidence now includes source conflict, a supported 1.7B mechanism comparison, exact revision and Mac commands. No rejected clip imported; PR13 must remain draft/unmerged.
+
+- User accepted anonymous A as believable: 1.7B Ryan neutral, null instructions. Acceptance covers first English line and Mandarin handover only; remaining three English clips and complete-sequence verification pending. Rebased this branch onto current main `5c90ba4`; exclusive doctor production integration lease restored. Await root full neutral artifacts; no truncated/rejected content import.
