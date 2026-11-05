@@ -13,11 +13,13 @@ Deliver the selected apartment-building ensemble while preserving the hospital a
 
 ## Done when
 
-- [ ] Implement the bounded vertical slice described in the domain plan and central contract, with visible action consequences, repeatable choices and reversible mistakes.
-- [ ] Pure rules tests and build pass; existing opening, customers, change and journal journey remains green.
-- [ ] Feature journey, reload/migration, offline voices/assets and clean console are evidenced; phone and desktop screenshots visually inspected.
-- [ ] Mandarin content is segmented/schema validated, voiced offline, tappable and journalled; pixel art remains consistent and controls accessible.
-- [ ] Different agent reviews without edits; resolved findings and reviewable PR are recorded. Central lead merges only after independent review, polish and integrated verification; then verifies main.
+- [x] Verify cloud Sol Medium delegation and current remote ticket allocations.
+- [x] Publish bounded allocations for the four selected features and sole integration writer.
+- [x] Publish shared navigation, save, day, gift, content, audio and journal contract with file ownership.
+- [x] Publish apartment first-session design and actionable implementation ticket.
+- [ ] Resolve independent documentation review and land the coordination PR through the connector.
+
+Product implementation, voices and player journeys are acceptance gates of 0066 through 0070, not completed by this documentation ticket.
 
 ## Dependencies and ownership
 
