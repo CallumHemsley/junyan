@@ -125,3 +125,29 @@ Lease: ticket **0066 is sole writer** for `src/contracts.ts`, `src/content/index
 6. Pipeline change is unnecessary: primary `scripts/content-audio.py:113` already reads `text` when present and hashes it. Keep VERSION, presets, sampling and dictionary routing unchanged. 0062 verified fixture plans before/after and dictionary identities. After accepted production content/audio promotion, run pipeline `--plan` and content provenance tests against the actual updated manifest; require cached referenced clips, exact matching punctuated text and unchanged unedited asset identities.
 
 The optional field exposes no new player-facing text: App renders `line.tokens`, and audio replay uses `line.audio`. All four identities, visible Mandarin, vocabulary recovery, saved order IDs and journal entries stay stable. If only the four thanks probes are accepted, change only those four production line texts/assets; do not automatically promote the remaining 20 candidate lines. Keep longer order/retry experiments separate until listened to. Neither this proposal nor the real root probes completes 0062.
+
+## 2026-11-05 real support probes received and paired
+
+Fetched the support-only branch; resolved immutable commit `bf90baa2d266d59368829573c3d4f73c2c0fe05b`. Read its local-probes README, inventory and all four candidate manifest entries; extracted each WAV directly using `git show` into ignored comparison output, without merging the support branch or importing its truncated fixture/voices into production.
+
+Added owned `scripts/ticket-0062/prepare-comparison.py`. Reproduce after fetching the support branch:
+
+```sh
+python3 scripts/ticket-0062/prepare-comparison.py --output output/0062-comparison
+python3 -m http.server 5412 --bind 127.0.0.1 --directory output/0062-comparison
+```
+
+Exporter verifies exactly one thanks per customer, current baseline paths, unchanged current voice presets, token/pinyin equivalence, candidate checksum against both inventory and manifest, shipped baseline checksum against production manifest, and mono PCM16/24kHz decode for all eight files. Exports labelled manual before/after controls, immutable source commit, checksums/durations and NOT REVIEWED status in `review.json`. No gain, trimming, resampling or auto-play; starting one clip pauses the other controls to avoid overlapping comparisons. Candidate seed changes too: this is a useful take comparison, not causal isolation of punctuation.
+
+Executed export: PASS, four verified pairs/eight real WAVs. In muted system Chromium loaded all eight actual clips' metadata successfully and checked eight controls/no autoplay/no phone horizontal overflow. Captured and inspected full comparison screenshots at 1000px and 390px. `file://` was blocked by Chromium administrator policy; normal local HTTP succeeded. The first HTTP inspection had an incidental missing favicon request; exporter now includes a data favicon. Shut down temporary server after inspection. No baseline gameplay tests rerun for artifact receipt.
+
+Reviewer-accessible local artifacts:
+
+- `/workspace/junyan-0062/output/0062-comparison/index.html`
+- `/workspace/junyan-0062/output/0062-comparison/review.json`
+- `/workspace/junyan-0062/output/0062-comparison/{lin,li,zhang,zhou}-thanks-{before,after}.wav`
+- `/workspace/junyan-0062/output/0062-comparison/review-{desktop,phone}.png`
+
+Actual generated candidates now exist in this cloud's isolated pack; earlier absent-candidate statements describe the earlier checkpoint. **Still no actual listening, preference, exact-Mandarin approval or in-game acceptance.** Root retains local paired MP3s for user audition; user review must identify preferred take per customer and concrete audible defects before 0066/0062 production integration. Greeting/order/retry auditions remain outstanding; four accepted thanks would not complete the whole ticket.
+
+Quality self-review update: preparation presentation and comparison usability **8/10**, because paired real audio now has clear labels, complete provenance and inspected responsive controls. Lacks in-game paired comparison, listener decision capture in the page and full-cast line coverage, which keeps it below 10. Naturalness remains blocked/unscored; immersion/fun contribution of production remains unvalidated. No production file or shared schema was changed. BLOCKED remains the ticket verdict.
