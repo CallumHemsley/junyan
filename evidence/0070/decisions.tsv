@@ -1,0 +1,3 @@
+ts	phase	decision	why	evidence	result
+2026-11-05T19:00:00Z	start	One writer owns garden implementation	Parent requested one cohesive owner and independent review	/root/garden_writer	open
+2026-11-05T19:00:01Z	design	Use snapshot reducer and bounded last daily result	Direct state avoids event replay migration complexity; graft daily comparison from ledger candidate	docs/plans/neighbourhood-garden.md	selected; full event ledger rejected
