@@ -268,43 +268,40 @@ export default function App() {
   }, [panel, dayEndOpen, ready, session.phase]);
   useEffect(() => {
     if (!wordOpen) return;
-    const previous = wordTrigger.current;
-    document.querySelector<HTMLButtonElement>(".word-popover button")?.focus();
-    return () => previous?.focus();
+    const blocked = [...document.querySelectorAll<HTMLElement>(
+      ".app-shell button, .app-shell a[href], .app-shell input, .app-shell canvas",
+    )].filter(element => !element.closest("[data-word-lookup], .word-popover, [inert]"));
+    blocked.forEach(element => { element.inert = true; });
+    return () => { blocked.forEach(element => { element.inert = false; }); };
   }, [wordOpen]);
   useEffect(() => {
-    const dialog = document.querySelector<HTMLElement>(
-      wordOpen ? ".word-popover" : ".paper-panel",
-    );
-    if (!dialog) return;
-    if (!dialog.contains(document.activeElement)) {
-      dialog.querySelector<HTMLButtonElement>("button")?.focus();
-    }
+    if (!wordOpen) return;
+    document.querySelector<HTMLButtonElement>(".word-popover button")?.focus();
+    return () => {
+      const latest = wordTrigger.current;
+      if (latest?.isConnected && !latest.closest("[inert]")) latest.focus();
+    };
+  }, [wordOpen]);
+  useEffect(() => {
+    const dialog = document.querySelector<HTMLElement>(".paper-panel");
+    if (!dialog && !wordOpen) return;
+    const controls = () => [...document.querySelectorAll<HTMLElement>(
+      wordOpen
+        ? "[data-word-lookup], .word-popover button"
+        : ".paper-panel button:not(:disabled), .paper-panel a[href], .paper-panel input",
+    )].filter(element => !element.closest("[inert]") && element.getClientRects().length > 0);
     const trap = (event: KeyboardEvent) => {
       if (event.key !== "Tab") return;
-      const controls = [
-        ...dialog.querySelectorAll<HTMLElement>(
-          "button:not(:disabled),a[href],input",
-        ),
-      ];
-      const first = controls[0],
-        last = controls.at(-1);
-      if (!dialog.contains(document.activeElement)) {
-        event.preventDefault();
-        (event.shiftKey ? last : first)?.focus();
-      } else if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last?.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first?.focus();
-      }
+      const available = controls();
+      const index = available.indexOf(document.activeElement as HTMLElement);
+      event.preventDefault();
+      const next = index < 0 ? (event.shiftKey ? available.length - 1 : 0)
+        : (index + (event.shiftKey ? -1 : 1) + available.length) % available.length;
+      available[next]?.focus();
     };
     document.addEventListener("keydown", trap);
-    return () => {
-      document.removeEventListener("keydown", trap);
-    };
-  }, [panel, wordOpen, dayEndOpen, ready, state.customers, session.phase]);
+    return () => document.removeEventListener("keydown", trap);
+  }, [panel, wordOpen, dayEndOpen, ready, session.phase]);
   useEffect(() => {
     const key = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -442,12 +439,19 @@ export default function App() {
     const trigger = event.target.closest<HTMLElement>(".topbar button, .topbar a, main button");
     if (trigger) panelTrigger.current = trigger;
   };
+  const guardWordCard = (event: { target: EventTarget | null; preventDefault: () => void; stopPropagation: () => void }) => {
+    if (wordOpen && event.target instanceof Element &&
+        !event.target.closest("[data-word-lookup], .word-popover")) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  };
   if (!ready) return <main className="loading">早安，小馆正在开门。</main>;
   const wordCard = word && (
     <div
       className="word-popover"
       role="dialog"
-      aria-modal="true"
+      aria-modal="false"
       aria-label={`${word.hanzi}的意思`}
     >
       <button
@@ -459,7 +463,7 @@ export default function App() {
       </button>
       <span className="eyebrow">记在本子里</span>
       <div className="word-card-title">
-        <h2>{word.hanzi}</h2>
+        <h2 aria-live="polite">{word.hanzi}</h2>
         <button
           className="round-button"
           aria-label="听这个词"
@@ -488,8 +492,8 @@ export default function App() {
   );
   if (session.phase === "opening")
     return (
-      <div className="app-shell">
-        <header className="topbar" inert={wordOpen}>{brand}</header>
+      <div className={`app-shell${wordOpen ? " word-card-open" : ""}`} onClickCapture={guardWordCard}>
+        <header className="topbar">{brand}</header>
         <HospitalOpening
           key={openingRun}
           opening={session.opening}
@@ -497,7 +501,7 @@ export default function App() {
           dispatch={dispatch}
           play={play}
           lookup={lookup}
-          inert={wordOpen}
+          inert={false}
           onFinish={() => {
             dispatch({ type: "advance", now: Date.now() });
             setPanel("help");
@@ -507,8 +511,8 @@ export default function App() {
       </div>
     );
   return (
-    <div className="app-shell" onFocusCapture={rememberPanelTrigger} onClickCapture={rememberPanelTrigger}>
-      <header className="topbar" inert={panel !== "none" || wordOpen || dayEndOpen}>
+    <div className={`app-shell${wordOpen ? " word-card-open" : ""}`} onFocusCapture={rememberPanelTrigger} onClickCapture={(event) => { guardWordCard(event); rememberPanelTrigger(event); }}>
+      <header className="topbar" inert={panel !== "none" || dayEndOpen}>
         {brand}
         <nav aria-label="小馆">
           <AmbienceControls ambience={ambience} />
@@ -533,7 +537,7 @@ export default function App() {
           </button>
         </nav>
       </header>
-      <main inert={panel !== "none" || wordOpen || dayEndOpen}>
+      <main inert={panel !== "none" || dayEndOpen}>
         <div className="play-layout">
           <section className="world-panel" aria-label="早安小馆餐厅">
             <div className="world-caption">
@@ -592,7 +596,7 @@ export default function App() {
                     return (
                       <button
                         key={`${id}-${i}`}
-                        onClick={(event) => lookup(food.word, event.currentTarget)}
+                        data-word-lookup onClick={(event) => lookup(food.word, event.currentTarget)}
                         className="tray-item"
                         aria-label={`查看${food.word.hanzi}`}
                       >
@@ -615,11 +619,11 @@ export default function App() {
         )}
       </main>
       {panel !== "none" && (
-        <div className="modal-backdrop" onClick={close} inert={wordOpen}>
+        <div className="modal-backdrop" onClick={close}>
           <section
             className={`paper-panel ${panel === "kitchen" ? "kitchen-panel" : ""}`}
             role="dialog"
-            aria-modal="true"
+            aria-modal={!wordOpen}
             aria-label={
               panel === "kitchen"
                 ? "厨房"
@@ -711,7 +715,7 @@ export default function App() {
                         )!;
                         return (
                           <p key={item.foodId}>
-                            <button onClick={(event) => lookup(f.word, event.currentTarget)}>
+                            <button data-word-lookup onClick={(event) => lookup(f.word, event.currentTarget)}>
                               {f.word.hanzi}
                             </button>
                             <span>×{item.quantity}</span>
@@ -824,7 +828,7 @@ export default function App() {
                       <button
                         className="food-listen"
                         aria-label={`听${food.word.hanzi}`}
-                        onClick={(event) => lookup(food.word, event.currentTarget)}
+                        data-word-lookup onClick={(event) => lookup(food.word, event.currentTarget)}
                       >
                         <Speaker />
                       </button>
@@ -868,7 +872,7 @@ export default function App() {
                 ) : (
                   <div className="journal-list">
                     {words.map((w) => (
-                      <button key={w.id} onClick={(event) => lookup(w, event.currentTarget)}>
+                      <button key={w.id} data-word-lookup onClick={(event) => lookup(w, event.currentTarget)}>
                         <span>{w.hanzi}</span>
                         {state.journal[w.id].lookups > 0 && (
                           <small>听过 {state.journal[w.id].lookups} 次</small>
@@ -896,7 +900,7 @@ export default function App() {
           <section
             className="paper-panel day-end"
             role="dialog"
-            aria-modal="true"
+            aria-modal={!wordOpen}
             aria-label="今日小结"
           >
             <p className="eyebrow">打烊了</p>
