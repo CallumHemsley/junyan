@@ -18,6 +18,12 @@ async function start(page: Page) {
   await page.getByRole("button", { name: "开门迎客" }).click();
   await expect.poll(async () => (await native(page)).time ?? 0).toBeGreaterThan(0);
 }
+async function rejectedAmbience(page: Page, index: number) {
+  await expect.poll(async () => {
+    const status = (await native(page)).events[index]?.status;
+    return typeof status === "string" && status !== "pending" && status !== "playing";
+  }).toBe(true);
+}
 const settings = (page: Page) => page.getByLabel("环境声设置", { exact: true });
 const checkbox = (page: Page) => page.getByRole("checkbox", { name: "环境声", exact: true });
 
@@ -122,16 +128,34 @@ test("real foreground speech ducks the bed and restores on native end, stop and 
 });
 
 test("resource failure retries the same ambience owner without disturbing speech", async ({ page }) => {
-  await page.route("**/audio/ambience/breakfast.mp3", route => route.abort("failed"));
+  let requests = 0;
+  let releaseSecond!: () => void;
+  const secondGate = new Promise<void>(resolve => { releaseSecond = resolve; });
+  await page.route("**/audio/ambience/breakfast.mp3", async route => {
+    if (++requests === 2) await secondGate;
+    await route.abort("failed");
+  });
   await page.route("**/*.wav", route => silentResponse(route));
   await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
-  await settings(page).click();
+  await rejectedAmbience(page, 0);
+  try {
+    await settings(page).click();
+    await expect.poll(() => requests).toBe(2);
+    await expect(page.getByText("环境声暂时没有播出。")).toBeVisible();
+    // The first error stays visible while this trusted settings gesture retries.
+    expect((await native(page)).events[1].status).toBe("pending");
+  } finally {
+    releaseSecond();
+  }
+  await rejectedAmbience(page, 1);
   await expect(page.getByText("环境声暂时没有播出。")).toBeVisible();
   await page.unroute("**/audio/ambience/breakfast.mp3");
   await page.getByRole("button", { name: "重试", exact: true }).click();
   await expect(page.getByText("环境声暂时没有播出。")).toBeHidden();
   await expect.poll(async () => (await native(page)).time ?? 0).toBeGreaterThan(0);
+  expect((await native(page)).starts).toBe(3);
+  expect((await native(page)).events[2].status).toBe("playing");
   await settings(page).click();
   await page.getByTestId("table-1").click();
   await expect.poll(() => page.evaluate(() => (window as any).__audioProbe.at(-1)?.status)).toBe("playing");
