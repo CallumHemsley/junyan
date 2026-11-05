@@ -1,0 +1,2525 @@
+{
+  "status": "PASS",
+  "feature_wavs": {
+    "apartment": 47,
+    "cats": 85,
+    "repairs": 64,
+    "garden": 82
+  },
+  "urls_checked": 313,
+  "rejected_receipts_and_archives": 15,
+  "current_rejected_hashes": 0,
+  "inventory_sha256": "5e28263cae34e541867955e1b66010a894710da206f98d16877ad8d4bf2f8bbb",
+  "manifest_sha256": {
+    "apartment": "3fc1217c057da606b7c7dd65a03eda9a50aee4089657dac298d881610cd3440b",
+    "cats": "203621e40be75258d333d4472451f64c1c7824e624533860bdf68475c48717f9",
+    "repairs": "d5b1a81219c456d2b5ef2479226361a94a11ce5cdeb61559c69ba7ac7c1be4e3",
+    "garden": "695c797e231659bcb0566a6472b9d2799e37aaa3a22cd599cf1913d8b230e7fb"
+  },
+  "assets": [
+    {
+      "filename": "word-526c55e9729de39d0be36dab6d84afdbcd1450f29ab2f9ede22d7eea165cab0f.wav",
+      "sha256": "955f96de292326d994c521543a309ce18caa59942e4d5fc7afa2a08922b2acf3",
+      "content_digest": "526c55e9729de39d0be36dab6d84afdbcd1450f29ab2f9ede22d7eea165cab0f",
+      "bytes": 80684,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-chair.wav",
+      "sha256": "08d9c3824bd5a60ab1bf3cc78a622fc43f63b13ecafe2e7435e94c97ffe0f904",
+      "content_digest": "311fcb7974be981f41deaeb7ccbec9569779daa50ea56b93f9570421c0504173",
+      "bytes": 99884,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-window.wav",
+      "sha256": "e6ff5b3694ba99887ac36ad44b0e90cf0e30680fcf7249f42c703fd5881af4cb",
+      "content_digest": "6f3e170e242b38021be808edbeb54080183cf875250bcf72fa1b4cc2b8cd284e",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-beside.wav",
+      "sha256": "04f18382ed45196a083e82c274665047306a59536096d6fcc4da17543131c9fd",
+      "content_digest": "c77fef23869ef852f7af7413fa004d3a2b3e687205a79ea31f9cde90035e19a4",
+      "bytes": 84524,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-left.wav",
+      "sha256": "88f0bac7ba5a2e8fdebf1d6fe981d7564b38dc18d0311acad9f02131791a6878",
+      "content_digest": "2175e647d22062e1ec19f6bbab2df159006d458b4a2dfb88feca39eba7714f03",
+      "bytes": 38444,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-right.wav",
+      "sha256": "0134027f663c9ee8d678f6e2096f5e32c42ed9d9e89131b213ce45d111f0ba19",
+      "content_digest": "3f99b3707bbcdd1bbb048d7d2d734ed6b74e3e69636b6c49e1b86b68c408d1e3",
+      "bytes": 88364,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-small.wav",
+      "sha256": "8ea642b28aeba3434a331143798597a05e4d577a39156c20d519212dd1208ada",
+      "content_digest": "ac75ac91763ecb1e8a8bac49a36cc2fd2858b50730defc5fd3a5912c4c11712d",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-large.wav",
+      "sha256": "6008d5964be6a2430a99eff94c2bb31c4eab95cea9332a5f35d0ccc6ce2a8434",
+      "content_digest": "1c2f0617e86dcada997bb96aecb55d8a0b522c1d2cd72638e48fc72f13789b91",
+      "bytes": 42284,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-blue.wav",
+      "sha256": "e09c324431d80996d214ee435acf4e6af91773d4e50c007d2c90ae5822fce568",
+      "content_digest": "1a3c2b383ffcb9b6e3f0a61b37ec28f088feda848dd910f33cf5564a9fa666d2",
+      "bytes": 84524,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-cream.wav",
+      "sha256": "e359c53397bccabf2c302e6e10c22982c7daff14d50f9128af382d4d057891bf",
+      "content_digest": "23b7883dc1ab50042ca06b54ae0c75efb37f770a02317cd042e5df77aaa12c1e",
+      "bytes": 115244,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-put.wav",
+      "sha256": "42591789918ed089268cf7e34a47ad3490a68e3e35f5e64099e1e1d545ed379d",
+      "content_digest": "e64f12a5d84b2759b095946a9f7936de0ba48be5dd3b28e549f15e96e0daa824",
+      "bytes": 38444,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-turn.wav",
+      "sha256": "4600f95f02af287e7742098800b8d84be462110d792af43735af0c3bd7217bf9",
+      "content_digest": "d3c05c33d9346bfdaf92c3fd08ea43e81529d1c2e247a330bb8cabea19d05002",
+      "bytes": 73004,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-store.wav",
+      "sha256": "917abfd2f0fe6bfaf1d1e6758b80b9f703bf29518a4bc04469beb19479bd062b",
+      "content_digest": "95ab93971ef5a8f591e9e7a1d8d82573299050ea1012ec5043843c9b1534a89c",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-can.wav",
+      "sha256": "129486443610a33f33bf3509b68d13ee7bdaa79a048e85de3cda2de06b45c196",
+      "content_digest": "16c3e8e179f05d926c9c4d55ac34490a51ae98ae07bb7bcd35664a3226a893ee",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-here.wav",
+      "sha256": "a605717248217e3ff8c8da1e39e8abef196263175367173d48facb25c2095ab9",
+      "content_digest": "52bcc76c168494509793e720fcb517542d644e746ef1c0ef98cedbf880342dab",
+      "bytes": 84524,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-at.wav",
+      "sha256": "029fb456a874e466f26e000c0a8ec3e70646ec085a2915e0d01f76f64ee5d7e9",
+      "content_digest": "d6372f4994466ff1ae8c580244270539eff72d788f633a135c50d0ab36d27995",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-also.wav",
+      "sha256": "0eb7da0c6530c1ac7e9671965ea62bd3dde484002e08442f024f5478e1e2bc9b",
+      "content_digest": "a61ecce872fb7729280946a79f82f8da81dfed0439c3415526fa849bd98d5262",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-this.wav",
+      "sha256": "5e4724616b8d7fe9b0983fe4d2526d23bea5502ee1d61ae3b7353fa4acca37fb",
+      "content_digest": "5a0f9234cf3464e5c3f5a585fa607386744092c927792a997b9f8183398dfa19",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-too.wav",
+      "sha256": "847191ed22c1162e213741d9fcff16b91b2b87953b8c9ec8ef7a902fd56245b5",
+      "content_digest": "6e3ce462c42eb00e8e6d4275864cf81ef45e978ea6f4929d27a4b3fda4559842",
+      "bytes": 49964,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav",
+      "sha256": "187c63751e61c121b23c7493eabca3dbe239ee1a829d8baee5603eced1bf9c96",
+      "content_digest": "4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6",
+      "bytes": 180524,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-once.wav",
+      "sha256": "fd0d1e691dbbbce1fe0e28e03e9cfc039d0a71496b0ca6b4e1ca3852c6767720",
+      "content_digest": "68b642ce1d7cb7a387a2a2089f5d0fb40298b1de008479329894a11d2314f8ba",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-thus.wav",
+      "sha256": "f7d067e185997de827084965efb660186231a212fdaa983eb1b313b1b30dd470",
+      "content_digest": "802c943f386279ae39a173630c92db3ff20dccc03935f8e2943cafdc4a60362b",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-3a31214de3ca0c356664730581b3b93c7bfda6c9d6cb6f6894621ee94d3b4a3e.wav",
+      "sha256": "fbdbb5746167bc0b478eef613a3e82928e30e31cddafde094c2eb077a4722d0d",
+      "content_digest": "3a31214de3ca0c356664730581b3b93c7bfda6c9d6cb6f6894621ee94d3b4a3e",
+      "bytes": 80684,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-0ba6b6f23f23cfc1f9a01442d9c2dd7dfcfa1593a3529fe82eba81feed7c9067.wav",
+      "sha256": "7def5ae0c3351cdf5d7af03076f929d8288d0c74ddb9f08960534b7312ac3385",
+      "content_digest": "0ba6b6f23f23cfc1f9a01442d9c2dd7dfcfa1593a3529fe82eba81feed7c9067",
+      "bytes": 42284,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav",
+      "sha256": "c04fa858cc04f999d15dd93667f20d02fde0334f9f5ee4781d823794ac26b816",
+      "content_digest": "60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-bed.wav",
+      "sha256": "2373aa597d0c176bfbf9342a46c3b862017a9e12e5c0e545305cc969331945a2",
+      "content_digest": "b4596e7155bc1f18167c570b720c07affd8665245087d6368066a716ed59bc31",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-rug.wav",
+      "sha256": "70b7a5839dcb83aac29289a426b982adda3eaa29366ef8db704bd4cac4129a08",
+      "content_digest": "667b702a4e7348ec3a28832bba6f4344b9895379c7b07def19fcc368d7c0ccd9",
+      "bytes": 73004,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-cushion.wav",
+      "sha256": "2bb34a4006ac5d0ea1f313e4c61aee03492d8d50e16c125fd0fb0082c34976cb",
+      "content_digest": "be59b639f47347729e2623886ec137dd912f33114f710a01bb94ed93410ead4d",
+      "bytes": 99884,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-stool.wav",
+      "sha256": "0e059fec4b295321deb2f9980905619f76b7df56e604556068a8e712d5396858",
+      "content_digest": "59a49d3ebb6c7cbdb13c2e4886cbb66f7bced0446151bb45c9bb354e5bd235be",
+      "bytes": 61484,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-plant.wav",
+      "sha256": "6ddc480d24f684a67038c316f125d5e38dae79a1adb0bda959d74ba5b6d9ae9b",
+      "content_digest": "869aeb6b3d913de64cc776dbe7bae28fe8219d79760b6cb7ec040c931904e5bc",
+      "bytes": 61484,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-cat.wav",
+      "sha256": "7fd986da7529158e01813bff6c461b96a7d98f7bb92b7761d56c0f26cbb13a9e",
+      "content_digest": "66973c5746078ca89294fb8e955059962e4428df4855d3b7fd8fadaf09aabc76",
+      "bytes": 38444,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-vase.wav",
+      "sha256": "c7f493a17fdd374dc38c7b6db00a3af5a2195331359f0a8404fa12b4d82b463d",
+      "content_digest": "6d0243be1fe9acf638f4f8fb76b3261b5b2c1aa370fffac7ed71c43cb9d3df04",
+      "bytes": 73004,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-basket.wav",
+      "sha256": "d064de851a0b4cb291e3a82612a1f2b62c9099c166956d07c3f23f1b9b82170e",
+      "content_digest": "3f4627cd41da3cf01883d23836d155885a099676f5f172fb8848966dbee0395a",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-lamp.wav",
+      "sha256": "1edec31e6daa64437275576f6903477ab2f9f73875432be27330113c84998c32",
+      "content_digest": "778c24142243d331bb99e5904a4db4700aec08d6d741d66bb28ca2189a8a99b2",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-home.wav",
+      "sha256": "f3b8446373e439ebcbdb768ee38f4717d3989dd3e00bc1f75372bef5c82107a0",
+      "content_digest": "a84cb20461a900b6975a64bb4aaeeab90427421391a3798db2c6a4dfb4812899",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-lin.wav",
+      "sha256": "c95ca097f6d25ded9b1b6a4b1860b8b3035a94f156a3da614155104d06bdfe0c",
+      "content_digest": "f648e54efdd3552470b9ea19a334e81c4a486fc6d74864bbc61d6a80acfa685c",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-door.wav",
+      "sha256": "eb34f1deb86b0665dcce89f8e193f2a37c565e0f246bb458e688ce95157487dd",
+      "content_digest": "1cdaa474cfc86438edf59008045e8c79dd11c17e31ed81db037ba16b1b09517c",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-find.wav",
+      "sha256": "761f337806e4e5e3d6f0c6f4b48c648cf8b7b04a39d6ace8a3675997ff0a8684",
+      "content_digest": "257b59fb6befc9981dc354a498304bc65461932d2992bb4d2003a67fbd525113",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-one.wav",
+      "sha256": "ab3a66433048f154d5c980df71ff6ec659626caf5f480ae663490849bf45c8e8",
+      "content_digest": "27a1fb002ad4815c2184ecd0b83e756cf62bf00470fc2a89ad7daeb99889941f",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-87ff64a00c0e6c135b269796a1283550b2c2058bf404f6ba168c03230be9e413.wav",
+      "sha256": "88d55c28f2e5cf4862d10134f30938c4d56d58bf710fb021035f578fc8cc78e2",
+      "content_digest": "87ff64a00c0e6c135b269796a1283550b2c2058bf404f6ba168c03230be9e413",
+      "bytes": 61484,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-first.wav",
+      "sha256": "eb2a1e7286647be8021eee5c2b01a1a9cb4da0490cf67969c9cd2c3da6c4fd50",
+      "content_digest": "af500505f4c818aa314831b5ca895e111ed89cb9bfb8cc1eb490f44d00059ae8",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/word-change.wav",
+      "sha256": "27e2017d2d31fa01faa51f9072bfead344562c395ad54f4f87aab11458470122",
+      "content_digest": "8d417357b10f91e97c11cf71ae746d65a914c83ad4e33dca1e8ae3b4c4987f37",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-4d253f356b3a9045ad43aa48d02890cb6eb7f37f4051b46c45561259a4657f77.wav",
+      "sha256": "bfb74259bb08c14bdd3c2e0946f05535c5f6bd1615e9b97cc581b435f663c7b9",
+      "content_digest": "4d253f356b3a9045ad43aa48d02890cb6eb7f37f4051b46c45561259a4657f77",
+      "bytes": 49964,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/line-welcome.wav",
+      "sha256": "de6e355392681a38fe75d2e788feb038055af3e8b3dc5a7b493bd947751a20f8",
+      "content_digest": "b23fb6c5e80c60719bc0a659231bd75c4fa907870ffe7e70258cfb40882b8b16",
+      "bytes": 88364,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/line-window.wav",
+      "sha256": "6c63baa5158ab3ef6c19f4f6d954e74a9339ccd22f3130d6fca28b4f9f7ccd01",
+      "content_digest": "b1b1e9a2b2b2b914b6181f4f1b935080945c2506ad605361112e7a98e5bb7d81",
+      "bytes": 99884,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/line-left.wav",
+      "sha256": "e6a41b45d30c121f540ba3fda98a05ffca248a2f751b0b0f6577b56258ca9f7a",
+      "content_digest": "0dbf582e054725cdae0d87399c5a37dbbd9e6ba2a3618b244e006c70c7747aa1",
+      "bytes": 107564,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/line-right.wav",
+      "sha256": "77681bc2c456dcb56d4222c88bec5445cd14c6ed64e65b24a7407bad0d89c704",
+      "content_digest": "9ba2faed1a0f68ce76da8c6e433a82c33b255b4f06705b4a643286b93bf9bd0e",
+      "bytes": 99884,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/line-large.wav",
+      "sha256": "db8eeac009dbf7ec4b9694b403345cb772518f8e5d69ca027214b9bcb1ea5bcf",
+      "content_digest": "9d28fdab3cb5b32d7afccb2bbd124181364eef84bd48f0c6cdf3e95d73353d01",
+      "bytes": 88364,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/line-rotate.wav",
+      "sha256": "c11a9fa1a9617d542470713cf562d11b4943d1099df8548a815880de66d1b042",
+      "content_digest": "86098bf9cc347d479314aba26dc5f6675ac92e59d45f717ed43f8212d2c061c8",
+      "bytes": 49964,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/line-okay.wav",
+      "sha256": "0c0f28b0af44002f1f18906e6790ebfd6e2170b87f3becd1e926fe07550f3e12",
+      "content_digest": "cdcde83e840576ec8c581541ea5ed62e063fa24c4809f1c4f789f92fe615d330",
+      "bytes": 65324,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/line-blocked.wav",
+      "sha256": "0acff301079fe19d81aaacf33cc3d13323c219a8bb96c1415353f50c2259c0f2",
+      "content_digest": "73208373acf0e0fb0e663e0c7b48293c68f59b657831132704a6fc6d473a40d7",
+      "bytes": 73004,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/line-stored.wav",
+      "sha256": "2831a7d56dca3b5ff8a4aff497d7071afa4a1b8e1b77df2c939cb8b235323bd4",
+      "content_digest": "6268bc3faa6a2f881a2627252c6e7bd3ab7e5a8ca093d482fbac3052b21dd7df",
+      "bytes": 92204,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/line-gift.wav",
+      "sha256": "971dfc1ae522c0e8347cc7c94aec1985540b393a079ded55b42d353fa2b00dbb",
+      "content_digest": "21b5028350b6ea1a1518b1460a7b1fde200c74692b03dc5cdbec312cbe866cfc",
+      "bytes": 65324,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "apartment/line-colour.wav",
+      "sha256": "6bcde0e2c8cc594791e405a289630163e26986bcd855a07796dd7711529c143e",
+      "content_digest": "02585f4820c2b9735dcb3f38dafb979551d70547e77618105dcea5c51fda4a85",
+      "bytes": 96044,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav",
+      "sha256": "c04fa858cc04f999d15dd93667f20d02fde0334f9f5ee4781d823794ac26b816",
+      "content_digest": "60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-see.wav",
+      "sha256": "3b0d34e0b1cbc61f19dc5e964d00814489d1f61ae6f8266d2acc158dad46c13e",
+      "content_digest": "f62df38b1dedf152821c62fa9c0ee5e03235771b13b0673767fa23a945cdae7a",
+      "bytes": 49964,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-white-name.wav",
+      "sha256": "768b9e7a6a01081920e32044009d450bb1357ddc3cbd1fb340265b3a61e24a44",
+      "content_digest": "24c7d7bd5a1926fe18df96a536178bcddd55108b79766fd17f7e09dacf40b2b0",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-black-name.wav",
+      "sha256": "ada0cefddd0ce5009b38722919ed1225a9797483519b3d12db0be72fb88be4b2",
+      "content_digest": "073b029bbf4f233b6154afa073a201f2eb985bd1e336f00ef5de5607ea44dff4",
+      "bytes": 73004,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav",
+      "sha256": "187c63751e61c121b23c7493eabca3dbe239ee1a829d8baee5603eced1bf9c96",
+      "content_digest": "4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6",
+      "bytes": 180524,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-2cef3d3b77dd2fd8b39f35e41c02097ab0c9d650643e6fdec509da05751d1bad.wav",
+      "sha256": "d6130ed10733a615552da42edea2d470b1539bd3b56befc3d993137fe7094c3c",
+      "content_digest": "2cef3d3b77dd2fd8b39f35e41c02097ab0c9d650643e6fdec509da05751d1bad",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-white.wav",
+      "sha256": "2ba5dc3d7c3399f390a7026fcd86b1f9cba990f23a42c7639dc3f454e424622a",
+      "content_digest": "ad41033d38064907b328c9f820180a369237fc911e1b7e353119997aec543528",
+      "bytes": 34604,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-black.wav",
+      "sha256": "d2a9e3ae73795a79bf2a50dfd4f8f1c0fad844509c6a08aefce3d7df0742bfd5",
+      "content_digest": "e0ac278b08988e4b13c604ffc438a73dbbcdb8bdf2ddc4cf77c03315100edea9",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-cat.wav",
+      "sha256": "7fd986da7529158e01813bff6c461b96a7d98f7bb92b7761d56c0f26cbb13a9e",
+      "content_digest": "66973c5746078ca89294fb8e955059962e4428df4855d3b7fd8fadaf09aabc76",
+      "bytes": 38444,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-at.wav",
+      "sha256": "029fb456a874e466f26e000c0a8ec3e70646ec085a2915e0d01f76f64ee5d7e9",
+      "content_digest": "d6372f4994466ff1ae8c580244270539eff72d788f633a135c50d0ab36d27995",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-bicycle.wav",
+      "sha256": "f9e1173c418b74458c7e564e0ac73e7f9a784e3b36d1e20fc22c99fa1cf3f0cc",
+      "content_digest": "16fc5d898ed95296c4fd498d829991e9117a149d00c4611cc5f782e4f673298d",
+      "bytes": 80684,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-under.wav",
+      "sha256": "76c35a6f95d8eef1a86fa94c2893fb6616ad2bf72a571ba9a051bc7593ebb3d5",
+      "content_digest": "1723e5b23612b3c92653c37ac050168df9dd5b2a52481a0ec387df5ca8063fc0",
+      "bytes": 46124,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-not.wav",
+      "sha256": "5d00061675b95930a35449ceca2aa6d4deb1b1a4ed64fa27a3f888dde6196dc5",
+      "content_digest": "9c3345395ff1dc5618dd460a791c5bf1ad4fc94a6cab0346a4b7dcf966985541",
+      "bytes": 126764,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-695b5d8d018e831d3c45da307d25204edbad27869c2a461c14051b50216545d5.wav",
+      "sha256": "0a0fb273dc900eccc22b7b9e9908ff53fa33ff0e4d2974bbb61e90ee7d119e20",
+      "content_digest": "695b5d8d018e831d3c45da307d25204edbad27869c2a461c14051b50216545d5",
+      "bytes": 46124,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-ef14b361f5b6171148b04fadee9960e934852b8c33a59e67f44a79c0546f6ba3.wav",
+      "sha256": "7be339f7807dd34a7632a7025a5c749b25c32965041f1d45b6aa82629c493551",
+      "content_digest": "ef14b361f5b6171148b04fadee9960e934852b8c33a59e67f44a79c0546f6ba3",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-ed529f5d1bf010905a815ac250dc4c043f1f704e66accb8731753957b1971f28.wav",
+      "sha256": "b291352bef05b262279e26d9cfdbeab6be8c85677d647edd1229ba77e57190a0",
+      "content_digest": "ed529f5d1bf010905a815ac250dc4c043f1f704e66accb8731753957b1971f28",
+      "bytes": 38444,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-crouch.wav",
+      "sha256": "947867cb36fdb35dfa77b27adaa23f2fb4de1169af8a05bb096ea4cf93cea05f",
+      "content_digest": "d611f7206f8c4385925a4976e4bbf2ed15393b70191fa674738e76eaad6d8b34",
+      "bytes": 73004,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-wait.wav",
+      "sha256": "e19cf773436274d71d4db477aac222f2aceef5e3fd01269a598c96c6579f8792",
+      "content_digest": "1495ade9cf0e91483b39dfef1011e5ccfba48c5595ebe91308145406754530b9",
+      "bytes": 49964,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-emerge.wav",
+      "sha256": "06728d6b12d6c059582a81dc2bd1c78f28d0a197cf60e0e69b5fa99446fa11e0",
+      "content_digest": "3e655acd70b69037a93372b6fa95eb055e857449dd676624f2d35ab2a4114011",
+      "bytes": 119084,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-follow.wav",
+      "sha256": "f3ca95349adba1c335c4226330f5cf00f724e095f8c29d84fd35ce77a9534c75",
+      "content_digest": "5c1da4ca76e6c89b2bea1f29aa66193ea966ab0352bd784fd234e80cfb83a301",
+      "bytes": 76844,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-walk.wav",
+      "sha256": "ac2a550d066c2a686ec8359bd00cbe973d3f5849dc55dc1527b55d5e06ffc679",
+      "content_digest": "9fa3e5b8910c8e84c6b5a3cd3425901a1a9fe7e569eb3e0c98229bf711704651",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-she.wav",
+      "sha256": "1c4d0b45bf27cd1d0418af1bc0c7df9288801b574550d08f1281aab0088fcf32",
+      "content_digest": "3357fce17ed070c30bba3db3a5a8902284ff3bd5ecc6fa156cbc3346712d3672",
+      "bytes": 38444,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-door.wav",
+      "sha256": "916a809ab040075959c477e965a44921d2d7d8b911ab06f17cadc925300be261",
+      "content_digest": "48712840a68302e712610258e3d24593dd774131166aaeb86be6cbd033d184d7",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-found.wav",
+      "sha256": "761f337806e4e5e3d6f0c6f4b48c648cf8b7b04a39d6ace8a3675997ff0a8684",
+      "content_digest": "257b59fb6befc9981dc354a498304bc65461932d2992bb4d2003a67fbd525113",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-d4eb416293ad391775ce523d94ce0483868103313ae19eac4e0f80c7401b5165.wav",
+      "sha256": "65c505f084e3bf2fca34c82c043316d5d4779edd8f9bd257efb651603bcc8a2e",
+      "content_digest": "d4eb416293ad391775ce523d94ce0483868103313ae19eac4e0f80c7401b5165",
+      "bytes": 49964,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-this.wav",
+      "sha256": "5e4724616b8d7fe9b0983fe4d2526d23bea5502ee1d61ae3b7353fa4acca37fb",
+      "content_digest": "5a0f9234cf3464e5c3f5a585fa607386744092c927792a997b9f8183398dfa19",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-cushion.wav",
+      "sha256": "13d180f75fa49c07cf8b112771a0b4739be622cc0ce2e53178d2ddc90958d3f0",
+      "content_digest": "d6c0d266a570342984234c3d536c1bd5269e5dbf7cff08b38009e638c959b576",
+      "bytes": 61484,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-give.wav",
+      "sha256": "25c945981cdaa0b56b0a84e8bf030f7a08679d9bf2beac2b7a8001d344e1ab38",
+      "content_digest": "3cf3aa8a431d4fa07820e5bc1ecdb5b1a49a3751e40340ad9084a4c1f927f0f2",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-rain.wav",
+      "sha256": "074a58cd9eb6eec6487c85542c33d2f600440840a5d898dc18c53881a06acb09",
+      "content_digest": "09960b18e73b5fc44f514f89525d70bddac9614a96581ee18878cbdfa780b283",
+      "bytes": 96044,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-bench.wav",
+      "sha256": "08d9c3824bd5a60ab1bf3cc78a622fc43f63b13ecafe2e7435e94c97ffe0f904",
+      "content_digest": "311fcb7974be981f41deaeb7ccbec9569779daa50ea56b93f9570421c0504173",
+      "bytes": 99884,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-beside.wav",
+      "sha256": "04f18382ed45196a083e82c274665047306a59536096d6fcc4da17543131c9fd",
+      "content_digest": "c77fef23869ef852f7af7413fa004d3a2b3e687205a79ea31f9cde90035e19a4",
+      "bytes": 84524,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-hello.wav",
+      "sha256": "302fd7db38e5218d5bb7550b8f178de819b90ac06a0ae428a9b803308b106eaa",
+      "content_digest": "3ab47ea2d68ab926bc495a3fc09b00676c5f3f9e78b0d0d08eb6e5a2bc6418a5",
+      "bytes": 42284,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-sit.wav",
+      "sha256": "5fb3750eedf821cc099ca81c7b4f2eec08e3a70aa24492f040361dff6e2475a6",
+      "content_digest": "bf1e940cdaa7fa854457703152129ff13fca85b47894fb789ae8fff536a07307",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-19be6bbebac3dbb7894517bbd13de46a628667976c0f109d45525b89ef1012f7.wav",
+      "sha256": "b2364cef66b62c07c8b2051c874b9cf074aadcbbd8f6a5c60ead4132668ba3ad",
+      "content_digest": "19be6bbebac3dbb7894517bbd13de46a628667976c0f109d45525b89ef1012f7",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-go.wav",
+      "sha256": "f4810ad104a133788f2a3cb9d07e925060a6c9fd4fca1e4f2b5f8126d67a6c9a",
+      "content_digest": "3a4103f578e96269384daedcdb02cb62801509c742311c1b0994ff760d10dca1",
+      "bytes": 46124,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-window.wav",
+      "sha256": "a825b41a8541f082fe6ee4b3c509c194dcdfa64fd0ae557d1b9e727a6d2f496f",
+      "content_digest": "85e91f8d0ae9bb4a6aa28215246c6e8e7a7012e0576ce1bf81b4516dad293ab7",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-sun.wav",
+      "sha256": "16f531e6011258205f1b855e2de649489b07665b80d036aa4ab6c26ded09cd1e",
+      "content_digest": "93ff3c9a02741c88512db1a044d8fc57eb2ad2bca355f67fc5b96f547cb90751",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-empty.wav",
+      "sha256": "2bfce6bacde6c6b4b169affec59d512aa571a55ef2aff9b83b4050567a71813d",
+      "content_digest": "9fc0c3b93e17af8a64a45b492ec0fde9b08d6bf4d6b188776bd36d05ed90de30",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-look.wav",
+      "sha256": "230541adc705c5539486644e9f35a0915fdafca079848aecae87b884381230db",
+      "content_digest": "32fc89df287e7cc343218f042d06cefa16d081d44f91274929a81a2f1d2c0c2e",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-back.wav",
+      "sha256": "efa9f75895e7da9af5c38a3c1a29f4565108a5a74784aec5fb008e87e2a8e336",
+      "content_digest": "bd9ef67d544a30768d34f224931ed31d519696eafcd2ba8b86e9b2b3d7f7d30b",
+      "bytes": 49964,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav",
+      "sha256": "bec23f55291c9d31c2e6f815e5363b1d70ffbf285f68392b845652bfc5d4fd3e",
+      "content_digest": "afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17",
+      "bytes": 61484,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-call.wav",
+      "sha256": "ed2ac7c219b0a78053a8af4f25edb82722f207a6fa8571d3018c317a6f870a08",
+      "content_digest": "30d297b1a3a34ea7cde90d01c58236d006e7cdc393fa84b3be140b5f301b7398",
+      "bytes": 30764,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-aunt.wav",
+      "sha256": "5784ada8294cd22fb45f361b510d5d95d1bc7a23e8d405e43996b57ffca1ece1",
+      "content_digest": "2bd659feb04cc5fe8fca9318e8f8c468b73d5c581143d747aa055d5ceaa14f61",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-courtyard.wav",
+      "sha256": "20b3df9c9810d681b646886e768212b06b8535c337ae52f783d6f4fb3c185a18",
+      "content_digest": "0f1c7cec45b453d1b2d09f3b44af405e022a7bc50e596f6b3385d23bb4c34fb6",
+      "bytes": 73004,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-together.wav",
+      "sha256": "4b92f31a0be4765844b566a67c58aff1d12ceee9e1c60d15a3a676c391295fde",
+      "content_digest": "995be76101241f9b8019eff6cf4803fa91856d5c61556f5fda35124bcef5add0",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-today.wav",
+      "sha256": "a61dd478367f2be31f9db9532c671d8e3d7a0360e83e99ad65c903660106d206",
+      "content_digest": "b80079fce21cb00fc27bcbcf3ffc8d068997f032bc824dde0324cf6aa83d4b82",
+      "bytes": 73004,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-tomorrow.wav",
+      "sha256": "30c49c64798258e82fa242e5f43537dc55b3d053dd583e9b5d94d28f5882cb1c",
+      "content_digest": "120ef5a73a4ff8b0cca43f6ea443d472f3e431de3d9816923408f778d4b7d1af",
+      "bytes": 92204,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-meet.wav",
+      "sha256": "40b3a1d648cbc7f62c40ec6dfc2d8bbe7d70772a73ad945794ab2f6806a94e82",
+      "content_digest": "cf24122f0185367cd42a13acdc2015ae3a376169f9c4d4bdd608c20d03ea55f3",
+      "bytes": 46124,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-a8b213f08f35df6edd2291efa7dbb6fe6bbe2aee73b7f644e4301fbd3560ad19.wav",
+      "sha256": "8114191f473e6f88fce2ff8ca0d15cf161b7d7aab8a41a3dc2222bff42ad412d",
+      "content_digest": "a8b213f08f35df6edd2291efa7dbb6fe6bbe2aee73b7f644e4301fbd3560ad19",
+      "bytes": 119084,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-invite.wav",
+      "sha256": "5fc4ad37ea6a6e7d9aac276a121871b53c05d276e965bb4a33085007e17d421a",
+      "content_digest": "21acedfbc8b2df5652efef5e5f97da267dafb48aa0695466fe4a6403d9b09ee4",
+      "bytes": 42284,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-quiet.wav",
+      "sha256": "e4025821f5f72dfe845db7945b1baab4277eeca74e389e9501dcc1c4a5cbb2bb",
+      "content_digest": "99c660703f049a81537c8945df479f0053d5702fe82b81ec1d1fa75acea384ed",
+      "bytes": 103724,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-already.wav",
+      "sha256": "11da6d58dbbf77ad0939865af6bd9b4a6dbbfd7ec0a1b0ce05bdbc503143c81f",
+      "content_digest": "b238eec65bb7a3ca0d881d7f1eba15bbe819a9a261462175f76ba05f0ad3bf1d",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/word-friend.wav",
+      "sha256": "762a72da84fc57f09d85589682839a3a346c333a013165716293f0b1cf7d20bc",
+      "content_digest": "f52d302c97162de34cfa41a6c25aac5af161819f7c7e59af22a0fb6f12487b90",
+      "bytes": 103724,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-3a31214de3ca0c356664730581b3b93c7bfda6c9d6cb6f6894621ee94d3b4a3e.wav",
+      "sha256": "fbdbb5746167bc0b478eef613a3e82928e30e31cddafde094c2eb077a4722d0d",
+      "content_digest": "3a31214de3ca0c356664730581b3b93c7bfda6c9d6cb6f6894621ee94d3b4a3e",
+      "bytes": 80684,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-clue.wav",
+      "sha256": "42db022a8e8d49976d841beefa25e7ed5db4df26048fe00f1f406c0bf882541e",
+      "content_digest": "dabb09b2c33744825d4c8afa252e9d02db99566691f0441bc9f4f0745e2e9162",
+      "bytes": 96044,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-bicycle-clue.wav",
+      "sha256": "5decb5d63ba1ebb276a39707b2770083e759d64d271053fe9755b1082c1c5753",
+      "content_digest": "736573d68bd916532f749d4ab6e2084c94f07b153a43941ea8d9126432faf249",
+      "bytes": 126764,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-wrong-cat.wav",
+      "sha256": "18d319b494ede61c014eccfa4835b73afacec231cf2593b72aa32ff38cb34598",
+      "content_digest": "697e80ec5b2873af0c2f7cf203873557aaf85d35356f5c47e809fb9d06b79ed8",
+      "bytes": 145964,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-gentle.wav",
+      "sha256": "d50c026222a7696eda001ba4f85bfd7d3a1afdb432c2113cfecfc3ff475bc912",
+      "content_digest": "38f02a394565b30dee8c1117865849994ff3697395fbe60cbc0174b112f01d44",
+      "bytes": 161324,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-crouched.wav",
+      "sha256": "c55458bda9c3ae17b3fab7bd72f3b81aafcdbee28b83e6deaf8115a24b53bf3a",
+      "content_digest": "b2d601689f0d7626cb0ec9f0ef0836134ecd0f106de6db6e013bfd8ce655035c",
+      "bytes": 157484,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-space.wav",
+      "sha256": "bf2466dbd9fc63298efbd0f2cde5a0ef89d4e96b5bf0290380e4995ebce6d703",
+      "content_digest": "04327358d02e79d94aafabf2773114630ee32829c8c4976c45d7025ac99a44ed",
+      "bytes": 176684,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-emerged.wav",
+      "sha256": "519dd3028d939f4ea4d0f984344aa0aa26c8a783b1b449d5d49aa5787f700066",
+      "content_digest": "daca7da6a5a3f4c9baebcb2ccced2c04dbda0e96daf848514d1f4fb0a338d35c",
+      "bytes": 130604,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-invited.wav",
+      "sha256": "c5fc8073e2c8e3b59a1ae0c87f7a89248147c7f0a755b38e0c7665dbb9e34ec6",
+      "content_digest": "132c998f6f53fba97b12d0cdee8f32ee12003bcaa931890033db647996399a54",
+      "bytes": 188204,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-doorway.wav",
+      "sha256": "9b826e9f5f480feea16a4eb226f6c55e2826e6cea603eb67304741385fe50105",
+      "content_digest": "7372818f054bb46094fe0ec6c18486eaffe8c74478fc7cc6e2e24134b422243f",
+      "bytes": 88364,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-reunion.wav",
+      "sha256": "076e9809cffd40e137029ade60ffeda5ef72ef006cbc6e5e02500827528b04a4",
+      "content_digest": "a646a07ed7bb6d950d4f671944759ba8854281bb73ed6581e900d292945d153f",
+      "bytes": 257324,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-black-greeting.wav",
+      "sha256": "bf951c5e0e9766734271c9e16e7e6c14b86667dbee3874bfdb3c9e8579af3096",
+      "content_digest": "c2145385d4e1cbb164ecb7957560ea9b03e712ec6f5acaf4a502c2b5b09f96f3",
+      "bytes": 96044,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-black-sitting.wav",
+      "sha256": "86ae9fe66126c1c890acd5d87ee3c1bd0c2b2f31e9f33bb7d1578a6a06048e2a",
+      "content_digest": "1b8131ae13485e367c576c563dec5dfa21462be70046591770a52bb3d2c64433",
+      "bytes": 107564,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-black-clue.wav",
+      "sha256": "8f88945155c0e4d7e569a9b2c0087873e138e06b24773e49f059b8bf8f581d2b",
+      "content_digest": "0f9c87ca92ce935acb17b74614bad110f2073ebdfbc8afba23f18a80988d65c4",
+      "bytes": 111404,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-sunny.wav",
+      "sha256": "dd09aa383d74711a5cad708738eae3a90ca6d12d36be91c904b40bbab49659d2",
+      "content_digest": "f80840f4abebb2377a0fecef3a6c73e349452f7004dd295482840d724140056d",
+      "bytes": 184364,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-rainy.wav",
+      "sha256": "315aa5a58fccbb93448e2de482f52445ff665828fb69c4779c894a08f1c764e0",
+      "content_digest": "f13de2562ba9d8fa96bc59af477aabce7fda8b78bf4577a8e7d1cb1a97112e2a",
+      "bytes": 161324,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-empty-bicycle.wav",
+      "sha256": "2473407049ef62c63d11a7fd2c7bfc4dac9e1c161d383f88f7727cc287dde85e",
+      "content_digest": "466f3ca541646f1f06df89f6fe3e16896a227a0523cfc86eedee56c4fefb9c9b",
+      "bytes": 145964,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-rain-found.wav",
+      "sha256": "e6ff82eafe8386d16702893afd0df993e52bc65774b12686edd0bb2976d72284",
+      "content_digest": "5f2f842d08f9b799de95696618a5fa2a1d8e9604c6b7eca387e1753f49efea01",
+      "bytes": 307244,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-route.wav",
+      "sha256": "dddab3cf80e48568f9fe29b1b4a8e118985c78c63294631a298f0f22b9cf89e9",
+      "content_digest": "b47f23aff280331cbcde20471c710410b7a950b1868f24f3299cb9153afdb6cf",
+      "bytes": 203564,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-window-found.wav",
+      "sha256": "23226ed739abee81a142bd2dbf8e963f02b8a658812f34426bd1049ac496e47b",
+      "content_digest": "9c1cf993a2c196b3f749917115788e5c368f163ab3c7d9190fd742bd9cf95240",
+      "bytes": 230444,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-visit-complete.wav",
+      "sha256": "5e621aa62b6a1236146df7289139c8eac76d4d8c3a80e2e23a7d353020edda84",
+      "content_digest": "e1e5d7a8478368fb9bd4bfef0e269303d1747c52c7d1e17bd17b8daba07d0de5",
+      "bytes": 107564,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-return.wav",
+      "sha256": "a977433b16b05cccd530011e0c8d547c079966644a29cbedb8ae7bbe2c0a77e0",
+      "content_digest": "5f284f2a89ea82b98e0a49e050ac82570aff28aa7560cafc85a9a9f346d53600",
+      "bytes": 161324,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-later.wav",
+      "sha256": "3347038294e28b73c28c44c9ad87ebc215e868a7de24c3028662626230a7c136",
+      "content_digest": "1676e318a8c68d265ede2cf675f841b77909f32f1e29e9c93b700ba54991915e",
+      "bytes": 176684,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-label-courtyard.wav",
+      "sha256": "b6f5fd91d5de95edb9b77d1b74cdc7a8984412ff95cb55edbd7d5a07cc729c07",
+      "content_digest": "b5bd7d16c58838b9a6c2a784cd01138848a08fca7d8c03a6f48543862bf7470f",
+      "bytes": 73004,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-label-white.wav",
+      "sha256": "3ddb25f740945fec101e8c18453a462aa447bbe4cd31dc3f006d3ba3246d9abf",
+      "content_digest": "913c9130bc42181f955142bc5d75e5ac88911397cd19861a140b688726716914",
+      "bytes": 111404,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-label-black.wav",
+      "sha256": "0b4ad0b1dce76e228388fc443d5d97f1c7df82de961eac5c14cf5d2aaa5b6738",
+      "content_digest": "424dea5e2a8f85e4c3999c220b80a0617f18f9f2931190d297b0300f0ae0c364",
+      "bytes": 80684,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-label-bicycle.wav",
+      "sha256": "885297749565d7ea552b35fbe3913576b1882f7fb393c527a08e1d8c7286b97a",
+      "content_digest": "89eab0ff2568fa31324a5f20ad1cb35ff69554173ea2e22bdfae6ade12299a16",
+      "bytes": 65324,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-label-bench.wav",
+      "sha256": "1eb8ec71b2dd78b5b33e4d18fed425ba7159eb08c1028238a8d1a62a509c4439",
+      "content_digest": "a803da16769d954456724113ee70799dabde91e4bb76609f37f9f1a2eb6385dc",
+      "bytes": 69164,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-label-door.wav",
+      "sha256": "49b2257a498c417008fc3e3ac46c7c8563474f40940503e73a27045dec25db94",
+      "content_digest": "7f2e4d4c46ba17210a4d5a13d8d39ee9c9b9738c62a6b8c13c26419ce54ee169",
+      "bytes": 65324,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-label-window.wav",
+      "sha256": "bf72b2a80b1a2908ac38ef36e487e60dc2ebc6f01bbea064a80bb2297e3ea0fa",
+      "content_digest": "2f8b375b9ee4675aef5db6baae53835bfdbdd2686c84711ed430e49bb5e8f50b",
+      "bytes": 80684,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-label-aunt.wav",
+      "sha256": "d7f949142acec298e4a3a1480b449fd1ccb6a5c9308d5825f934d51a4913170f",
+      "content_digest": "2bbf0bbc78a61c0590cfbf48be1708e4c640783e01431ab127726b240dbdb1f4",
+      "bytes": 46124,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-action-look.wav",
+      "sha256": "4b51bfc1c6e0e21d4c95f83dc7d1a0cfd3c25d83cad4aa516a17e569e4ca3174",
+      "content_digest": "9566f12674b6f21e645d9d71d46a5cbc1ef9fd649a2c3b9e48a04c1f3511d46a",
+      "bytes": 80684,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-action-crouch.wav",
+      "sha256": "ad8993acea7f2091f622f7071972f08933cd95b665b9bf663217268644b8e63b",
+      "content_digest": "0426f3886a38a198dc685809f00eac2dfc680bb4ee021cd3cc015da5114db939",
+      "bytes": 57644,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-action-wait.wav",
+      "sha256": "19560391bc4f62e28385582b380710516570cf2e5597803d5a896490e1f87382",
+      "content_digest": "dd8c8346e9db18bc3bbc4215fdaa1c06546d1bde1063cb42dc8ce7ddd2967d21",
+      "bytes": 61484,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-action-space.wav",
+      "sha256": "26587fb83cba4188a4279a0b8217e2659be6b4fbe93238dabe6e7a2ebe144a2d",
+      "content_digest": "51b651a2f6632de08bac9fd2ffbfad041d55c5d693277a4d028ce02f9cc0aec1",
+      "bytes": 61484,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-action-approach.wav",
+      "sha256": "a502c700575441745cb077086be368db5ecc040e2170dc45115f8869da90a650",
+      "content_digest": "39ef2ab52d32cd1642647f1b82dc17c882bbd77d8e5c368caaf69efe67abd4c5",
+      "bytes": 49964,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-action-follow.wav",
+      "sha256": "dbbdff473dc2e805bb52b3d1090ac45776e5aaad854845dd495cc157957f4633",
+      "content_digest": "a5449234c2dde626e413927408f6a30ffaefdc9f67f34ea2ed943aa4144e1848",
+      "bytes": 103724,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-action-call.wav",
+      "sha256": "3f129ba63cd6b35cdc3466bee0f7f0a5ba3433e9423864c5d29597509066fdc7",
+      "content_digest": "741fe6fd0b07dfd710c486c324bceb4f94a28f93f47ee8ca85d80c919a81a3fe",
+      "bytes": 76844,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-action-greet.wav",
+      "sha256": "3e316e81c54b507210eebf5a6c99a9095296571357e153eafd69205fdc957886",
+      "content_digest": "85315b5dd27cf33a40b22eaa653c9adaf5837eb494e858dabed6cfdfa6952dc3",
+      "bytes": 57644,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-action-sit.wav",
+      "sha256": "24ef773b1b0955b8b737c9c2321ce578112fe37f650148f71d9da6245c2412a7",
+      "content_digest": "a6f821cd914670ba2d4b6ab9ee5d53ee996ce24ac582ca86eee4b36e5f3388ce",
+      "bytes": 69164,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-action-begin.wav",
+      "sha256": "f4a51d376b0bc30419ee9a79327e6a034595af083d6a731a336bffc7310c6f26",
+      "content_digest": "bd46d213ff561601d21bf0f0852be8d59808dc2c7f7bfec39c9b2e9e1661481e",
+      "bytes": 57644,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-action-replay.wav",
+      "sha256": "76a473e7eb1107a7c56e421a067d0a8224f41fe16540be394b4130ab149462f6",
+      "content_digest": "8016d42018cd6dab278a07296bc3735c1fab286c5769d71cbe64a54b2a45ee5c",
+      "bytes": 61484,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "cats/line-white-sitting.wav",
+      "sha256": "59cc68669b28aa86c191859bae1ff955da2728597f209644d8d8177c55d3a930",
+      "content_digest": "e7cd3f31b5414384966accfc68e5814319a7c1a461a0a815e9e86cab70dbaa56",
+      "bytes": 119084,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-wood.wav",
+      "sha256": "2a3bd879eb3e548aac150e2ba7642cce9cfd7a1d39bac248c88f96442d7ed248",
+      "content_digest": "21e4bee09a93728735f326e42204d15bfc7de7903347e933bd5d21ef551d818f",
+      "bytes": 61484,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-metal.wav",
+      "sha256": "161510725fde01f4fb5701d435db6f42f324c38408e25f1e1e22f6195895f5f4",
+      "content_digest": "8e53a12530178dd52c574276622abd5a9279439e38bf0021b3d407a9073bb5b9",
+      "bytes": 88364,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-lamp.wav",
+      "sha256": "f056e6a2864df82b3321aad8c1e25c20bc312e8e5c7f1e6a75882c45600b09ca",
+      "content_digest": "f5b821af4381ad00afc41ca46eace4892ddd3d4fc8247398b77f8f07ebf2b4b3",
+      "bytes": 84524,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-bulb.wav",
+      "sha256": "b620abe47edeef6641582050e3d6e4f50f26ec59e1b45bd432ab223cc813228d",
+      "content_digest": "2d25a941ba9be93df144bf0a88e8d75bd2c94bd1aff9953e5b681ec21fdbea09",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-toy.wav",
+      "sha256": "3e13aac08a4ff966a7ba73a5d36d838fea1cd0f4a16669cf52c021912740b76f",
+      "content_digest": "966125065b012b348193dde093cb4420f48d2dee1d9ad7ce93fcb9504d2635ec",
+      "bytes": 88364,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-battery.wav",
+      "sha256": "e2f4a2b1ec06ec4997254173d5871e6d0e4ed8c5f60f713232c66cd61b5da06e",
+      "content_digest": "f0dbc13186c0050c9250c4da870c52fc3c8cdb15c377216012de0009265b166b",
+      "bytes": 115244,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-wire.wav",
+      "sha256": "7b30763a07851686146ebd85fb7c21a4d0415497f1f2626af3ea58e6a6e3f897",
+      "content_digest": "145a70bd2833495895f779f830d1ab65bc8cb3d8b56f4363d4ef6fe3f921c3ee",
+      "bytes": 46124,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-cover.wav",
+      "sha256": "541fde9e708f559032bc5db571dd147c92df96b7f97c6f58b807b7d7adafff6f",
+      "content_digest": "576a41856ecfe0d6a48d313d3c978caeee927c65e673ea746d2fa17f70cdda22",
+      "bytes": 76844,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-tighten.wav",
+      "sha256": "2f15b79a016dbaf31b906c41e4e46e7d435f028b97f6ebc28858600e53e23653",
+      "content_digest": "ba117093523d5a7332435cbd09318a5fd118917292f5695739b2dae3ca9fd906",
+      "bytes": 46124,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-loosen.wav",
+      "sha256": "f3e67ebcaeace008e50e265b4ab989ddb46540810b76aa160c8ed03c88442ffd",
+      "content_digest": "8e6d5c847f96a6fcf6256b4a12a42c8744f045ce19f5341dd40a28878a5253a0",
+      "bytes": 73004,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-connect.wav",
+      "sha256": "86c832712b11fac6128fccada42ebf9dfbd0324dc50e80021de304b48ea6e101",
+      "content_digest": "a9b7f877987a16e9651fc28ff387c2c5dba18d50c608d8063a077b0c47591771",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-disconnect.wav",
+      "sha256": "740188309368b59bab8512f93822b3c26b8ab59b52b0bb92506c4f0d26883b49",
+      "content_digest": "89642ef26b70e62d61794d5982b6e669692fe829c36ed90db766b6438469b14e",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-replace.wav",
+      "sha256": "27e2017d2d31fa01faa51f9072bfead344562c395ad54f4f87aab11458470122",
+      "content_digest": "8d417357b10f91e97c11cf71ae746d65a914c83ad4e33dca1e8ae3b4c4987f37",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-open.wav",
+      "sha256": "40725dfef4a528e877b80fbd6cf5420490cd614943f2e742c23aab344d6ecd8c",
+      "content_digest": "5fc375ce3bcba9fa166722a71a0e0d8ffa9da88c115db643527f62f795afb414",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-close.wav",
+      "sha256": "d533f2701dba258a57b7a295d788494125e6b43b980cd9f7db25a28a2218fd19",
+      "content_digest": "6d017ca0637eb5a924a6e6fc2838bcd8861316621f2503dfb3fda822027b2a17",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-off.wav",
+      "sha256": "92cd224c36dd7bd4bf19c0f85faf41a013b38a93e3401a6713b2be5c40362eaa",
+      "content_digest": "bda3c861f4502cd168be3e9fcb721980c1d7c67b20aacf0ff75c4189653f0122",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-return.wav",
+      "sha256": "113679e65dfbd94b3d0a9764f28362c18e17fe2f8b7b544116d6aac5aa241843",
+      "content_digest": "258fe950db6715d4f3262b11145ad80a797cc670c3ec5e0755b81690dd377f4f",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-reset.wav",
+      "sha256": "0947a551c0d5401102b7fc19c8fd00e2505489e5fb4363c6c02c1d88567a9f14",
+      "content_digest": "ffca5d70f5602aa407b9ce799d979079bb9904630d876366b1933b7fb9cac7df",
+      "bytes": 61484,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-practice.wav",
+      "sha256": "6c11a38af2171fd46e54119c9b5d09fc4e139a796968dff37bd3d0c57ca89f7e",
+      "content_digest": "cd41cfc1923a835774150432a4ba9150696a722600441b9b6734dee458aa3054",
+      "bytes": 76844,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-workshop.wav",
+      "sha256": "af0b6dc31c5078516116df39817d126180d5352a934ad7e0a121261c20dd6ea8",
+      "content_digest": "6887b1dfb52bd8ae9e8eb8b54ca9fe0539016f8142bcb041b844a188e4bb8a31",
+      "bytes": 99884,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-can.wav",
+      "sha256": "374ea6f27bf3115651284671931598ebd28bd09ad241d41446b0dbdd4b7633f6",
+      "content_digest": "d20eb552cd48435ada614ad2769fdb62dd132217f8e665b2e6aa64cbeaef0d26",
+      "bytes": 42284,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-light.wav",
+      "sha256": "c25196d7ddbd50f57c30ebe50f632725e1db37ec997add4394ee60e0e2ac1939",
+      "content_digest": "d45f4419f537e4aa201508ac8c8aecf8c626f363e773efe8a48ef2300c7542cd",
+      "bytes": 61484,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-but.wav",
+      "sha256": "6fe5b82b4ba754814ac79a1788bb1cbeebfe3bdc5b651432cbe591435051a8bb",
+      "content_digest": "1630d8473b9453c01ed1cc8b779bea2139459474ca951edbe4786b1effba2c10",
+      "bytes": 92204,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-always.wav",
+      "sha256": "a42bca23184b6e899ca0f299ac92fac3101553099d579c882cbb7eb977adabf3",
+      "content_digest": "cef656a5a6710cd6f2e267b7ef2ed1c41d9340206624429f8af4f06ea4ccf7e9",
+      "bytes": 99884,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-flicker.wav",
+      "sha256": "aea1c1c978c473f24a971f61cffbf65a879ceb08b7ee9a5e474d45922f386919",
+      "content_digest": "356081bdb577a9bd25338aed1025436fb38c6bbf072912cec914c8876d11857e",
+      "bytes": 61484,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-this.wav",
+      "sha256": "6149a0c94dd2410ca4d768f4f0fa8d7f6a3ab88adb6746cdd67c2f6c288b4406",
+      "content_digest": "c9ab9c11f962f83cb612af90fb80d22e6370b9754691851d600fb3935c449bda",
+      "bytes": 49964,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-move.wav",
+      "sha256": "50fa988245b8ed29b9c8ddf8ad8f19642c57aaa897fe60dbf2b0e69cde4c3cea",
+      "content_digest": "56381a2600b86b14dbb0e42d4ea6dacb62688768389d147afec4aca7565ecca5",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-first.wav",
+      "sha256": "eb2a1e7286647be8021eee5c2b01a1a9cb4da0490cf67969c9cd2c3da6c4fd50",
+      "content_digest": "af500505f4c818aa314831b5ca895e111ed89cb9bfb8cc1eb490f44d00059ae8",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-steady.wav",
+      "sha256": "2f794217327161b9c24ae6fbc5f271fb818e8a21a441564efe62985235d94cbf",
+      "content_digest": "6b4abc5e9982dc8d2276325740948deef13bad6c1597a57563eda11861fc5683",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-now.wav",
+      "sha256": "4ec5f16d52a7ed99e4a40053589e85c4b8a372c8d06eb8796717ba3c05fc4238",
+      "content_digest": "5817d4a89147e97a388f16b51b2a63401909de9418b4b0ad0d6f75e523e57255",
+      "bytes": 49964,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-tight.wav",
+      "sha256": "eee545379282f49454de42a4b2c1e8ca91178ad5172c8bf889e7b2f0f80592c5",
+      "content_digest": "b73137a2361bf72714c4f68eb4876638fa4a0af124aeb5ea2b1f2791619a313d",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-loose.wav",
+      "sha256": "b15e87fb3a072c4fa25cca86775e03db3d37c1a615e7cf5a1548c09159ecbbe4",
+      "content_digest": "03d1ce046d3b7e4d79f11267606ae96623748bcf03890ea2aaa38ba7477f1982",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-still.wav",
+      "sha256": "aff6cbaa2e9ffd8e5d497ca48bd21a319758b5206279a6b1a9d345dd549649e9",
+      "content_digest": "0135de542524c686ec51d7a11ff61605e23361060130938bd8738f9a978f4a7a",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-not-yet.wav",
+      "sha256": "b49a4fa674a4e6564251c006ac993cd77cc18d028ca6fb996cfa5c2081eeccf9",
+      "content_digest": "96d717ed8c958720ff7a9aa5585d9326ba35464260a4c6803d9909bcea3cda51",
+      "bytes": 84524,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-on.wav",
+      "sha256": "024284ba092c1749df7d49f6a902c07d4a519fecf354937400c36a4b202bc550",
+      "content_digest": "e48d11d1fea2bad99a08850c43619cf3c1c976b6851a09d89c97b43220823276",
+      "bytes": 73004,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-old.wav",
+      "sha256": "d6ce53d81277fb744c100932d9f51ae2981fc326afbfd6e9eca8cf6391306710",
+      "content_digest": "8b8b0f5f90abb5fa26a832301b7bab1f955c3e619e776b4032a289d784c1185d",
+      "bytes": 76844,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-new.wav",
+      "sha256": "2d9df93062ad2837ceb549152173ded745fcc501d1c16c4fcb200627c893126c",
+      "content_digest": "35f6f30edb31563d4c56b1db0216aedba024fa839c6bafb9f3123229ce852f40",
+      "bytes": 46124,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-together.wav",
+      "sha256": "23fa79880bb3d8a544034828db96601856e6e3ecf182d5967abed0011c48a9b5",
+      "content_digest": "4ce842478dbf644726e291c58465fcb224c14f92e6f1b2da5d853e3f7df2e857",
+      "bytes": 76844,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-sit.wav",
+      "sha256": "d1d634d2087938ac31f5413ed7574a126ef99120035f1175fcf4c33324eb2e29",
+      "content_digest": "7bc8faceebb7845b0c491af782c285472220a4b2bb1137fadd75341b5e36481f",
+      "bytes": 73004,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-stool.wav",
+      "sha256": "8ff842e2e7f6d41ee924b6ae7e7944e83caab44ea0aa4755aa96e371b073558e",
+      "content_digest": "4905bc12a217753ba7cdc6bb18fa374a4d4fad52475af653e2fd32f671d685a7",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-7b7768ff4a48d7df024147e19292627da83001c01537964166bb6d51ebb54bde.wav",
+      "sha256": "7efa0eb43db7cfc56a278b311befa9ace2d2b6828eb46fe91e6cdfe4d2afa63d",
+      "content_digest": "7b7768ff4a48d7df024147e19292627da83001c01537964166bb6d51ebb54bde",
+      "bytes": 169004,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50.wav",
+      "sha256": "c04fa858cc04f999d15dd93667f20d02fde0334f9f5ee4781d823794ac26b816",
+      "content_digest": "60ddb313df29ef72bc324a6d0ce4f63624d942721c3556fbe6dab4f8644a5e50",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-hear.wav",
+      "sha256": "987d306252df5bf4db4db1ea511713e30c5e78afcae5498a713c02c0f2bcd5e6",
+      "content_digest": "5a23ff10b2e90576c6988bc1ca38e933e7acf83e65e1cdf1b4481141ac53a08d",
+      "bytes": 73004,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-done.wav",
+      "sha256": "39919b1a3dace23499a6d51a72c6943b854f423dfe37daaedc6bad5754fd545f",
+      "content_digest": "7b8d50f18a327cac22e9293ae7ebc707c694096410fe0ab028aab2c24ca79eae",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-19be6bbebac3dbb7894517bbd13de46a628667976c0f109d45525b89ef1012f7.wav",
+      "sha256": "b2364cef66b62c07c8b2051c874b9cf074aadcbbd8f6a5c60ead4132668ba3ad",
+      "content_digest": "19be6bbebac3dbb7894517bbd13de46a628667976c0f109d45525b89ef1012f7",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav",
+      "sha256": "187c63751e61c121b23c7493eabca3dbe239ee1a829d8baee5603eced1bf9c96",
+      "content_digest": "4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6",
+      "bytes": 180524,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-87ff64a00c0e6c135b269796a1283550b2c2058bf404f6ba168c03230be9e413.wav",
+      "sha256": "88d55c28f2e5cf4862d10134f30938c4d56d58bf710fb021035f578fc8cc78e2",
+      "content_digest": "87ff64a00c0e6c135b269796a1283550b2c2058bf404f6ba168c03230be9e413",
+      "bytes": 61484,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav",
+      "sha256": "bec23f55291c9d31c2e6f815e5363b1d70ffbf285f68392b845652bfc5d4fd3e",
+      "content_digest": "afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17",
+      "bytes": 61484,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-6639b6f2bd2a82154aad82aac652ff9b392c19e5a5d39fbef92fb423c8cb87f1.wav",
+      "sha256": "fd7d80846511a8f118abaa05ba69a598e3253ecbe498783df9772fd2a67f18a9",
+      "content_digest": "6639b6f2bd2a82154aad82aac652ff9b392c19e5a5d39fbef92fb423c8cb87f1",
+      "bytes": 73004,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/word-all.wav",
+      "sha256": "ac185faef8071d57065a9bca8fe88f86475a665f04f3cbb98678968283da8d82",
+      "content_digest": "3ac0ea954594c4fe6d42e8e501765bdd64fa6dd0a52d82fc85fae654c200d847",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-0ba6b6f23f23cfc1f9a01442d9c2dd7dfcfa1593a3529fe82eba81feed7c9067.wav",
+      "sha256": "7def5ae0c3351cdf5d7af03076f929d8288d0c74ddb9f08960534b7312ac3385",
+      "content_digest": "0ba6b6f23f23cfc1f9a01442d9c2dd7dfcfa1593a3529fe82eba81feed7c9067",
+      "bytes": 42284,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/line-lamp-intro.wav",
+      "sha256": "71d41fc395b5a7c1ae683b99bf1d18a02dbb633dc39cf1bd8103edab5064e8c2",
+      "content_digest": "a325faeee9f4be716c836fae6eaab8b590d3686ec8b53569589cca6f65c038b0",
+      "bytes": 149804,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/line-lamp-unstable.wav",
+      "sha256": "00ba269e535e94b2851b87551ec0a8b894010391f0ce8a14732d3d6b371edfe6",
+      "content_digest": "0467003531203b5c73363373deaffa5501e7a4b710bece3b51bab67395a24418",
+      "bytes": 76844,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/line-lamp-steady.wav",
+      "sha256": "3dee7aefc2ec58b49f266b456ef4a188474c89e5dd3f9c71d5fbb8bfd7ce8c59",
+      "content_digest": "7f68cca41a38dd96ce35884791eec44b913964bce5041f62cc3f92acdf0897be",
+      "bytes": 111404,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/line-power-first.wav",
+      "sha256": "4b984786d8b00c658600777e2e79b24beb3c49236889d934219ab3f60ea0c75c",
+      "content_digest": "997547a133ff6c8c0c7ad6aa692fb658f213b26886aafadb7d178a948674a19e",
+      "bytes": 122924,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/line-lamp-tight.wav",
+      "sha256": "3bebbe46d87007e016deb8858bbb5fbe715994128d524edb0825a7ffa55c974c",
+      "content_digest": "85e40968ef410cae1e0cb0115c3675ff640ffe7e40d1ad712a59e2d5789c5925",
+      "bytes": 184364,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/line-lamp-loose.wav",
+      "sha256": "ead3f4b340bcd4310b462390fb1249b29bbc36240fa8b9124980802baa6c984e",
+      "content_digest": "fe6cde0c82cc4b5be38b2df01bec2f50881f6b502dcf73d536da2d535aede85f",
+      "bytes": 84524,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/line-lamp-returned.wav",
+      "sha256": "f60d966803b8404cd23c03b8e689d2a13bfda2133b9946078dd2f5040af396a0",
+      "content_digest": "547bd209128e8394a940228254e7d990d16b45dbaa30c60166d683bbaa37a424",
+      "bytes": 76844,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/line-lamp-off.wav",
+      "sha256": "a74f374728b302fc32d7027f9c395fa9cc8e3ea47d1e3f8d3fa631a307c7ea7c",
+      "content_digest": "7cbfe17718586ff7a57b62cc9311d8fd8c64ebe7336cf42fc67c081d5ae4f1ae",
+      "bytes": 88364,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/line-all-complete.wav",
+      "sha256": "d6288256b0c28bb1358d16f8e88fa256e0b3505120b12b5f2bbac14cfb29754d",
+      "content_digest": "cf2a1254cb84c49a667b99a9feb4eb3fc91f7c45d516d18910ac57d81b1c9091",
+      "bytes": 211244,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "repairs/line-toy-intro.wav",
+      "sha256": "e859d3d6989c6662e37d8b2f526565174eca413ba896fa31ad47bf9abbaec209",
+      "content_digest": "aaaee61b70906ec1ecd87f4fe9ae40d64b6d7f0ed1e72858409e3c01ecce5d21",
+      "bytes": 136844,
+      "kind": "line",
+      "speaker": "zf_xiaobei"
+    },
+    {
+      "filename": "repairs/line-toy-open.wav",
+      "sha256": "85626cf8bceda79abc28fe4f7ab4dab0dfc6caf6759b3ef5e085881ac24bb98f",
+      "content_digest": "20c48058ba1571cda0193012e0b43ad9b9ecbb2e0b288ece3ac12f7626010b1a",
+      "bytes": 116444,
+      "kind": "line",
+      "speaker": "zf_xiaobei"
+    },
+    {
+      "filename": "repairs/line-toy-closed.wav",
+      "sha256": "70da1247737c78f4e7c4856dfaca761fec77962e41e7fa7591255bc0504c63e2",
+      "content_digest": "4073e1539586704cee2c5e41218714f75e11ccd1b6393c9a6ccb96f071661ed6",
+      "bytes": 126044,
+      "kind": "line",
+      "speaker": "zf_xiaobei"
+    },
+    {
+      "filename": "repairs/line-toy-connect.wav",
+      "sha256": "ec1e16101f9884da8f2989664b78d6ae120c2a36ac68de9cb03436bb9b18ebbf",
+      "content_digest": "51532e45038b5f0d3d0e483a045f8529aeec91bab91c52240be7f2b5f8eeb929",
+      "bytes": 122444,
+      "kind": "line",
+      "speaker": "zf_xiaobei"
+    },
+    {
+      "filename": "repairs/line-toy-disconnect.wav",
+      "sha256": "c810a9f03440cda616ae1cc6eb55bfcdc10e4d5b4d38668a5d28f4c24ebc4d35",
+      "content_digest": "a597fd00341fe8ffec0fd7441cd06066d2717678d70d55f4b04caca3750acff2",
+      "bytes": 120044,
+      "kind": "line",
+      "speaker": "zf_xiaobei"
+    },
+    {
+      "filename": "repairs/line-toy-cell.wav",
+      "sha256": "5096a18112a11be723fa7130eabaa07146ba125aba528aabdb08c65e45f880ab",
+      "content_digest": "3f10601c1cbcd19f4eabc7be756d2cdbafba135c9a640530b7e57b00927f9c7a",
+      "bytes": 141644,
+      "kind": "line",
+      "speaker": "zf_xiaobei"
+    },
+    {
+      "filename": "repairs/line-toy-old-cell.wav",
+      "sha256": "5c88ebb7080fe116a5e44734c93df8a81f28effbb0dc64312cc4a7373e4f2638",
+      "content_digest": "e181162a105d482299a2556a9eb2111230fb710268b93ff27ee76a7fdeab3a76",
+      "bytes": 141644,
+      "kind": "line",
+      "speaker": "zf_xiaobei"
+    },
+    {
+      "filename": "repairs/line-toy-still.wav",
+      "sha256": "f4fdd6088dbca366730a533b7811a57e8aed9bc7c0aeffa7835c69cbb596e66d",
+      "content_digest": "d57837178144f04405525cbb69e928ecb3231c0b2de44820008aedabc96b8e73",
+      "bytes": 147644,
+      "kind": "line",
+      "speaker": "zf_xiaobei"
+    },
+    {
+      "filename": "repairs/line-toy-moving.wav",
+      "sha256": "64c5326698a24c21dec0b793c6e70f3c95ab9f66c1c9ce8e6be882c5dd9d084b",
+      "content_digest": "a68bf83420dc7bf3ac757aeb1daf0477026da4eeeb49e755a8eafc0ea5fcf224",
+      "bytes": 115244,
+      "kind": "line",
+      "speaker": "zf_xiaobei"
+    },
+    {
+      "filename": "repairs/line-open-first.wav",
+      "sha256": "d52cb938ecc49269060c18d656f1a5251fd83ad1798d02e2ccea67a3466ee84f",
+      "content_digest": "2fc8f99958554726e3b4d452e36d1cd06f15ac55de51b5b09fd72776992baa21",
+      "bytes": 130844,
+      "kind": "line",
+      "speaker": "zf_xiaobei"
+    },
+    {
+      "filename": "repairs/line-close-first.wav",
+      "sha256": "731b507921420cf533d053e667f73314538660644301a45223ce0e6b29604a43",
+      "content_digest": "13286ef3685415cebce37bcae3c35050d6a630c3396dd16324eb30d11c11cc74",
+      "bytes": 147644,
+      "kind": "line",
+      "speaker": "zf_xiaobei"
+    },
+    {
+      "filename": "repairs/line-toy-returned.wav",
+      "sha256": "3b8b3eb2d37159b019f1c0c1754f33f883bfc1265a11ecd31eaf62f96f121e67",
+      "content_digest": "c422c2592e3b80678caa9306b2fc37d39b3b8144e39caa8ce45021133077f800",
+      "bytes": 130844,
+      "kind": "line",
+      "speaker": "zf_xiaobei"
+    },
+    {
+      "filename": "garden/word-5b6b098b5cab9ae29a7e5e74141e9f42eac7cb7288581c7c7332b88fda595138.wav",
+      "sha256": "e2f8dd36612f0462cf97faf197a7de1857cfa955b6dd8a3584bd3aed3341ee69",
+      "content_digest": "5b6b098b5cab9ae29a7e5e74141e9f42eac7cb7288581c7c7332b88fda595138",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-0135de542524c686ec51d7a11ff61605e23361060130938bd8738f9a978f4a7a.wav",
+      "sha256": "aff6cbaa2e9ffd8e5d497ca48bd21a319758b5206279a6b1a9d345dd549649e9",
+      "content_digest": "0135de542524c686ec51d7a11ff61605e23361060130938bd8738f9a978f4a7a",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-852eb787b581ef88dd5821deef82c695eebf4619325792e1e7049eddb2bcaa02.wav",
+      "sha256": "5cb98fa2f8ae78a06a53f5d85720e55472bc0a5ed09bae3849193995239f611c",
+      "content_digest": "852eb787b581ef88dd5821deef82c695eebf4619325792e1e7049eddb2bcaa02",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-b7ed15dd64e9e9c683a3259434e499fc834316afd15d5ae76e3604ec821dcef2.wav",
+      "sha256": "4a9f7126fc82755a5e653ea1a5e8993ed1202030dd87b6a5f33b2a7fcd083c0c",
+      "content_digest": "b7ed15dd64e9e9c683a3259434e499fc834316afd15d5ae76e3604ec821dcef2",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-af500505f4c818aa314831b5ca895e111ed89cb9bfb8cc1eb490f44d00059ae8.wav",
+      "sha256": "eb2a1e7286647be8021eee5c2b01a1a9cb4da0490cf67969c9cd2c3da6c4fd50",
+      "content_digest": "af500505f4c818aa314831b5ca895e111ed89cb9bfb8cc1eb490f44d00059ae8",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-5be08a42ea399b6c01acbe5b9f72e9dda89f775c839b721e451c55f1a23155de.wav",
+      "sha256": "fd6514fc50d4db929f9228f8d046e2b020e11a4c70bee8f723eabca99d858a0a",
+      "content_digest": "5be08a42ea399b6c01acbe5b9f72e9dda89f775c839b721e451c55f1a23155de",
+      "bytes": 42284,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-86fc06193d4ace47b49476781d3e992792f988ff3ef5d44bdc3efe3a11d38592.wav",
+      "sha256": "2b32b9ab1291a5b00bf203516c9fb1e5e6bd71bf36bc719c28f1de53bfbfc1ad",
+      "content_digest": "86fc06193d4ace47b49476781d3e992792f988ff3ef5d44bdc3efe3a11d38592",
+      "bytes": 61484,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-31c04a1b45828cd0b9aa67a82f263cc498e2478bc444adb3b3a08a7125d95498.wav",
+      "sha256": "8fc458b49592d9048cbe4f1c69217682adc0a51b2951f5ee896945cbbd2d2a32",
+      "content_digest": "31c04a1b45828cd0b9aa67a82f263cc498e2478bc444adb3b3a08a7125d95498",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-6f5e4c23b5fd88b31235b97156118b672ffc6dccfac0a6c63401e55127daf4b0.wav",
+      "sha256": "d1547571b33ca92eada1b743c2cc0491698b99459e3805fc7981bd55b151b726",
+      "content_digest": "6f5e4c23b5fd88b31235b97156118b672ffc6dccfac0a6c63401e55127daf4b0",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-2269bc3719e6e90ed53bbb67afd056717e9ebdbf4920874bfece2d2ef40c30c1.wav",
+      "sha256": "25bcdd25eeee03823a7b4e813e322def3144dab3f8bdb5bdc392edca67d3ea87",
+      "content_digest": "2269bc3719e6e90ed53bbb67afd056717e9ebdbf4920874bfece2d2ef40c30c1",
+      "bytes": 49964,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-6a32f93cc8191f66f85ecbf682da2bf0158c57a38078884d0e51c2110b9f3700.wav",
+      "sha256": "a26eafb25e1d66cc1a5a046cbfcee593e8e09f60702f1fcd5360bc97c40820c2",
+      "content_digest": "6a32f93cc8191f66f85ecbf682da2bf0158c57a38078884d0e51c2110b9f3700",
+      "bytes": 30764,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6.wav",
+      "sha256": "187c63751e61c121b23c7493eabca3dbe239ee1a829d8baee5603eced1bf9c96",
+      "content_digest": "4cdf538727fbae9bbd3afc13f3422516a75a5285687309a384cd5861791bcbb6",
+      "bytes": 180524,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-3281ea7858459ba0c115b0e9b7dfe6f37f33fac9ae8f16a87688ecb0ac84c401.wav",
+      "sha256": "53adf3574c9237c837a704e29d1a80e372c17e8754bf638aa9cc52944b4a7879",
+      "content_digest": "3281ea7858459ba0c115b0e9b7dfe6f37f33fac9ae8f16a87688ecb0ac84c401",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-1fe33bbc755214e1f6e9798012007d41eadcff0d7648c5838e99be7ab398d163.wav",
+      "sha256": "45bad1e421df06ae2e8ed2915e7648ba46c0195bb2873e48b3d3cc3869b17afe",
+      "content_digest": "1fe33bbc755214e1f6e9798012007d41eadcff0d7648c5838e99be7ab398d163",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-0044f163327f187ca35e55e72f38874539909251c73516a453dd64c84f14a6bc.wav",
+      "sha256": "74c43ad7a81cce64688f70fbb37f963e1c3b53fd77b7a25b903e901e0b7e364f",
+      "content_digest": "0044f163327f187ca35e55e72f38874539909251c73516a453dd64c84f14a6bc",
+      "bytes": 34604,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-f09891fbd72f69038f845e71f9fd794d4db3fc1705683977741a64547dcabb23.wav",
+      "sha256": "44dc78931e531d5f9c7685cd36dcd8d9c1b90924c8b397b4810cf840905c272c",
+      "content_digest": "f09891fbd72f69038f845e71f9fd794d4db3fc1705683977741a64547dcabb23",
+      "bytes": 46124,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-e64f12a5d84b2759b095946a9f7936de0ba48be5dd3b28e549f15e96e0daa824.wav",
+      "sha256": "42591789918ed089268cf7e34a47ad3490a68e3e35f5e64099e1e1d545ed379d",
+      "content_digest": "e64f12a5d84b2759b095946a9f7936de0ba48be5dd3b28e549f15e96e0daa824",
+      "bytes": 38444,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-d6372f4994466ff1ae8c580244270539eff72d788f633a135c50d0ab36d27995.wav",
+      "sha256": "029fb456a874e466f26e000c0a8ec3e70646ec085a2915e0d01f76f64ee5d7e9",
+      "content_digest": "d6372f4994466ff1ae8c580244270539eff72d788f633a135c50d0ab36d27995",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-6be1b7c34d97cf85a69e227da869f1d6645039aee032cef1ecd60f4d0ef320e8.wav",
+      "sha256": "879f697e1249123db2b0d8eea3416d0968b176860ff0caef511bd08a9824d985",
+      "content_digest": "6be1b7c34d97cf85a69e227da869f1d6645039aee032cef1ecd60f4d0ef320e8",
+      "bytes": 49964,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-c79090b6babecdc298ae4ff68f457499cc391e001722d94fa12c77212a620784.wav",
+      "sha256": "c8028ce87ec322b822745e428ce125d73aa539e61726a861ea95bf37add81795",
+      "content_digest": "c79090b6babecdc298ae4ff68f457499cc391e001722d94fa12c77212a620784",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-28c33b5b14d27e18efd935caf81ef575386b60e7c8fc6589bd167363012589b1.wav",
+      "sha256": "f4bb55f211cd77fd824254273351eca4f53027501a695660f061b20e7dab6747",
+      "content_digest": "28c33b5b14d27e18efd935caf81ef575386b60e7c8fc6589bd167363012589b1",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-09960b18e73b5fc44f514f89525d70bddac9614a96581ee18878cbdfa780b283.wav",
+      "sha256": "074a58cd9eb6eec6487c85542c33d2f600440840a5d898dc18c53881a06acb09",
+      "content_digest": "09960b18e73b5fc44f514f89525d70bddac9614a96581ee18878cbdfa780b283",
+      "bytes": 96044,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-fac0164550893d6cf7c257af5cd4a8b3d1461b842790024a00b42518275268b5.wav",
+      "sha256": "1a3a49c7b3308a92677e016e9db1d688c003dce0e2a49d102b2685df5ce29061",
+      "content_digest": "fac0164550893d6cf7c257af5cd4a8b3d1461b842790024a00b42518275268b5",
+      "bytes": 61484,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-3d7ffd4c484bbe6e16f4214acf06651d64da9c024b9ee1faf432746118b4f6eb.wav",
+      "sha256": "47af5fcac21004cd8daa3ecb11620da6470f3a499e9a71c9050401f738bb6237",
+      "content_digest": "3d7ffd4c484bbe6e16f4214acf06651d64da9c024b9ee1faf432746118b4f6eb",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-9b5989153cc3e2163b827b05dd634a14260068f1103ccf09c897650cfa6e92ea.wav",
+      "sha256": "0c79a8bd39de45e801fb8c239556d7e3b121787a8074ee29c69c41706482cd44",
+      "content_digest": "9b5989153cc3e2163b827b05dd634a14260068f1103ccf09c897650cfa6e92ea",
+      "bytes": 61484,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17.wav",
+      "sha256": "bec23f55291c9d31c2e6f815e5363b1d70ffbf285f68392b845652bfc5d4fd3e",
+      "content_digest": "afed79e315c84411f0f16ad1cf95309d4337ad8a1a12359befcbaff16b220c17",
+      "bytes": 61484,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-4d253f356b3a9045ad43aa48d02890cb6eb7f37f4051b46c45561259a4657f77.wav",
+      "sha256": "bfb74259bb08c14bdd3c2e0946f05535c5f6bd1615e9b97cc581b435f663c7b9",
+      "content_digest": "4d253f356b3a9045ad43aa48d02890cb6eb7f37f4051b46c45561259a4657f77",
+      "bytes": 49964,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-e0d55dddafa8c4d2dc13988c417a31b0ee3738c678c9ca2ee9998c7dfb76ef83.wav",
+      "sha256": "3ecd42b71d25bf2cc5a47cc711a1d4e92b8ffc33d7c1cbb4c22179e51f6b2d51",
+      "content_digest": "e0d55dddafa8c4d2dc13988c417a31b0ee3738c678c9ca2ee9998c7dfb76ef83",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-26be5fcc24fd88cb1330d35dcda7ac2dbed404c2b8dde76574f78706c587820c.wav",
+      "sha256": "e139ac0cd0e37b641994411b6f7c95558ea0e74634c760c0af556c13b61f721d",
+      "content_digest": "26be5fcc24fd88cb1330d35dcda7ac2dbed404c2b8dde76574f78706c587820c",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-19daa595cb7d41d08ad11323a39e9c37ffdc96eedca5c320319f26ce49b79f24.wav",
+      "sha256": "5e26a5c69505cdf0b8f65cdd77c60ccd2ec1a1f7e2309644065d5292ca52ee29",
+      "content_digest": "19daa595cb7d41d08ad11323a39e9c37ffdc96eedca5c320319f26ce49b79f24",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-151398bbcfb310e3ded034c226143c8f104f3ca112c490c23b68847198509f25.wav",
+      "sha256": "cac942208f51743a3da2b63f8eba48e106127c5cff6d1b1a6172348b7493c55a",
+      "content_digest": "151398bbcfb310e3ded034c226143c8f104f3ca112c490c23b68847198509f25",
+      "bytes": 46124,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-2b9f8434c10c079e90477668ea870af3d61ef5dffe2f2cc93275060248c9aedf.wav",
+      "sha256": "d5e581743b37d5b3756eaa694826cef24b839744a108b9a0376b9fc8f2924522",
+      "content_digest": "2b9f8434c10c079e90477668ea870af3d61ef5dffe2f2cc93275060248c9aedf",
+      "bytes": 84524,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-a61ecce872fb7729280946a79f82f8da81dfed0439c3415526fa849bd98d5262.wav",
+      "sha256": "0eb7da0c6530c1ac7e9671965ea62bd3dde484002e08442f024f5478e1e2bc9b",
+      "content_digest": "a61ecce872fb7729280946a79f82f8da81dfed0439c3415526fa849bd98d5262",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-ed529f5d1bf010905a815ac250dc4c043f1f704e66accb8731753957b1971f28.wav",
+      "sha256": "b291352bef05b262279e26d9cfdbeab6be8c85677d647edd1229ba77e57190a0",
+      "content_digest": "ed529f5d1bf010905a815ac250dc4c043f1f704e66accb8731753957b1971f28",
+      "bytes": 38444,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-5f61230f47665ce56a07ee6e5907dcf64f09ded0bc72867e817cc485184ea1d7.wav",
+      "sha256": "2f189095a9f399c01a49bfac98c2e64fad5957e903653b78103cfafc424fa181",
+      "content_digest": "5f61230f47665ce56a07ee6e5907dcf64f09ded0bc72867e817cc485184ea1d7",
+      "bytes": 88364,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-21b8f9ba991ee4f343a12b13823f5e385fab12ba7a8d6cdee5d22fbc59367f23.wav",
+      "sha256": "5a2d0868f41486c922ec4d40b0210b048473d5a71adbd3e252f5d30e21ac2047",
+      "content_digest": "21b8f9ba991ee4f343a12b13823f5e385fab12ba7a8d6cdee5d22fbc59367f23",
+      "bytes": 92204,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-f648e54efdd3552470b9ea19a334e81c4a486fc6d74864bbc61d6a80acfa685c.wav",
+      "sha256": "c95ca097f6d25ded9b1b6a4b1860b8b3035a94f156a3da614155104d06bdfe0c",
+      "content_digest": "f648e54efdd3552470b9ea19a334e81c4a486fc6d74864bbc61d6a80acfa685c",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-6b48f953676172c0e62485ffe79f1e2703ea43ed3af0fd6ced13274db21708fc.wav",
+      "sha256": "f4826ddaa8d0e3ada77867dc25df1efefc3b767f96f8a3dd7d1e79e855e126a8",
+      "content_digest": "6b48f953676172c0e62485ffe79f1e2703ea43ed3af0fd6ced13274db21708fc",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-070131031f82771607e4c4efdc54eba1feb6562218269fdea5b880303f94dbbc.wav",
+      "sha256": "dc0b52676aaca61883d9e79c59a2ad18aa2099e2941e3afe717f7e1f03b57f74",
+      "content_digest": "070131031f82771607e4c4efdc54eba1feb6562218269fdea5b880303f94dbbc",
+      "bytes": 88364,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-d31e97934ac0b017c4e5b88f9f5a2f59898deef089f8c91b9d8ec6d9e27a21a2.wav",
+      "sha256": "b34d6bb49506e91353c1f4e3a7bff751135512817089d33f34371fa7bbb7cc2e",
+      "content_digest": "d31e97934ac0b017c4e5b88f9f5a2f59898deef089f8c91b9d8ec6d9e27a21a2",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-aa30ec4a786814be786ecb900e80900ee03f4f62b7f5aa86839ccbbeb1b6bdf4.wav",
+      "sha256": "1c72f1a6caed630d85fe45d506f3dd546f56142f68bb60d81489598958ebaf04",
+      "content_digest": "aa30ec4a786814be786ecb900e80900ee03f4f62b7f5aa86839ccbbeb1b6bdf4",
+      "bytes": 84524,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-75a9bbe96d9b1356373da4f77fbc74fa53f84f6176e23db732682d3132833e9b.wav",
+      "sha256": "bcb8f51ebbdda6f103e857b3e5ef8dff50db8843742134062d8623705b46a0cd",
+      "content_digest": "75a9bbe96d9b1356373da4f77fbc74fa53f84f6176e23db732682d3132833e9b",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-bcb3f9637f6f74f6e5e7e336d8ba73fa2627d273e4a6febd6cdb4d242fcef478.wav",
+      "sha256": "b8486850e7d9694ef7d71f887e285dc170cb3102372445593f2a688819a0033f",
+      "content_digest": "bcb3f9637f6f74f6e5e7e336d8ba73fa2627d273e4a6febd6cdb4d242fcef478",
+      "bytes": 92204,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-5123a17666a17b6b23227f68a3181b105ce87a239d7f7eb31a8215d00bc2cea5.wav",
+      "sha256": "6c0699df81e694ce74f15237443aef9045b1028f95d959738788fe32703876f7",
+      "content_digest": "5123a17666a17b6b23227f68a3181b105ce87a239d7f7eb31a8215d00bc2cea5",
+      "bytes": 73004,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-d600871031183c49e75cbf29125336a81285d507e3781665a99008338beaf561.wav",
+      "sha256": "afd4a262bcc2549391857634c6ac39c620a506a43e874ff039942a2c15e4def3",
+      "content_digest": "d600871031183c49e75cbf29125336a81285d507e3781665a99008338beaf561",
+      "bytes": 92204,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-f89c140cd27c0d055eba844f94d1f5f7060f875a85a96f621dd870ec038bcf1b.wav",
+      "sha256": "c6f2d025740c47f578194dc067fc7180673c41a2ee383a8e0e3e51e1929ebd66",
+      "content_digest": "f89c140cd27c0d055eba844f94d1f5f7060f875a85a96f621dd870ec038bcf1b",
+      "bytes": 46124,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-e9faaadca453013d7dcc7badb693bfa375ecaa0ed2005b933310c1db3501023f.wav",
+      "sha256": "ebc33bfab1d08d6c8b95dff958d96c42a3974a1b68b5273f7da815036e54a520",
+      "content_digest": "e9faaadca453013d7dcc7badb693bfa375ecaa0ed2005b933310c1db3501023f",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-510d8181a824d15090e6c697b31408183c1777d1ae33f8bcaf6bb2c78d5aba0c.wav",
+      "sha256": "09bc6c62ae756aaed4cff35053986717f749277f3a57fc6032cecebe4da437f1",
+      "content_digest": "510d8181a824d15090e6c697b31408183c1777d1ae33f8bcaf6bb2c78d5aba0c",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-2a4238827f151b2abb98feedbd5a6e04fa70dec799ad1763446bfe82db882c94.wav",
+      "sha256": "492131803c32f90cb5ea295f89182a91317486be134be55a5bc3be4eaa6690d4",
+      "content_digest": "2a4238827f151b2abb98feedbd5a6e04fa70dec799ad1763446bfe82db882c94",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-df1b9ddac575eec41efd6c5ab62771360b8abc1aafe8541af1cf859f1c5c81ae.wav",
+      "sha256": "004d13738210354a9ccfd02e4c8abd32a1a157c4e9ab72d3462e7656e47820b8",
+      "content_digest": "df1b9ddac575eec41efd6c5ab62771360b8abc1aafe8541af1cf859f1c5c81ae",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-1495ade9cf0e91483b39dfef1011e5ccfba48c5595ebe91308145406754530b9.wav",
+      "sha256": "e19cf773436274d71d4db477aac222f2aceef5e3fd01269a598c96c6579f8792",
+      "content_digest": "1495ade9cf0e91483b39dfef1011e5ccfba48c5595ebe91308145406754530b9",
+      "bytes": 49964,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-54e2e60a6271f1072754db3aeae5d05a1e9f6dc2742ad934f2bf1fbcef7b9110.wav",
+      "sha256": "1ac0ec1448e8bb017b22b0fb634834408eb35aea44802fd3af85a2b9fe9bc728",
+      "content_digest": "54e2e60a6271f1072754db3aeae5d05a1e9f6dc2742ad934f2bf1fbcef7b9110",
+      "bytes": 103724,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-1f7b5173f57013cd593e56015a1ae720ed5c054264f3c98ad3e211eabf7bb269.wav",
+      "sha256": "ca460072d0e9cc3ec934eb3662ee3efb58b209f3fec58dc3d4d13e60c99727b9",
+      "content_digest": "1f7b5173f57013cd593e56015a1ae720ed5c054264f3c98ad3e211eabf7bb269",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-078959888c3d02bcc9067266069e85cde2c071740d58ebff9ea0c0e0524b2964.wav",
+      "sha256": "97a1a90ed7891f5191de8dc32639e4dbc427961d3d6cf8b4e77a2c39971569a2",
+      "content_digest": "078959888c3d02bcc9067266069e85cde2c071740d58ebff9ea0c0e0524b2964",
+      "bytes": 157484,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-a5bf3da31ddaf0bed9c8247298e1d81622a7c16e7f8ee98c7e5689af37b3e7bb.wav",
+      "sha256": "8c069e37cd5162acc40c03c03ea112f43b57908c8f4d0b3f3e6f36c11830f6ee",
+      "content_digest": "a5bf3da31ddaf0bed9c8247298e1d81622a7c16e7f8ee98c7e5689af37b3e7bb",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-9e9b8255ffcb05d0afeb48beeee4a9b5da39055b7d6834276b2d52aed712646f.wav",
+      "sha256": "a1c2e611d31efa7c41f9a94b34143047dbcd339f2c61bcefb91566b6779a56c6",
+      "content_digest": "9e9b8255ffcb05d0afeb48beeee4a9b5da39055b7d6834276b2d52aed712646f",
+      "bytes": 49964,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-fbfc9aeb0b5acc83674bf2073ccd9297134e382b460b1218e7b7a2178f9dabf9.wav",
+      "sha256": "4b4631a98f15b82253f8918298509085f9f7d131d9a53633aff444a719333333",
+      "content_digest": "fbfc9aeb0b5acc83674bf2073ccd9297134e382b460b1218e7b7a2178f9dabf9",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-3350d8ca69b8c4e21add5ba9a6e897003afe0fc6aedf36d7b1758d1b4fb251df.wav",
+      "sha256": "1a0501f3f1704dd73420954c68a615a54f4044c03c459817ebe01480c37a8c62",
+      "content_digest": "3350d8ca69b8c4e21add5ba9a6e897003afe0fc6aedf36d7b1758d1b4fb251df",
+      "bytes": 76844,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-0fb176d6b86dadd9352ae1e8ffccae6fc2e97cafc887d83d31f490a37047ed4b.wav",
+      "sha256": "54b86895fe947c93c0494f1ad95579844e604db26cd6898477df55cd682fd2b4",
+      "content_digest": "0fb176d6b86dadd9352ae1e8ffccae6fc2e97cafc887d83d31f490a37047ed4b",
+      "bytes": 80684,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-be079dd0f98046102532e203c8875ecd4ad59bf8835ec5a6025d1e3b84ce5b23.wav",
+      "sha256": "8c69fdfeb584bf094861c1ac722e7bb43cf2d385ffe8e7ba56aaf5cff275f75d",
+      "content_digest": "be079dd0f98046102532e203c8875ecd4ad59bf8835ec5a6025d1e3b84ce5b23",
+      "bytes": 69164,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-fa375c6ef1c493512d61b1948dcc36cb1d05c5ef971ce51da0114bf45b3adf0a.wav",
+      "sha256": "3400ab892251394a8f9ca7223fdba4e033064cfa96013f2259f45fb621530972",
+      "content_digest": "fa375c6ef1c493512d61b1948dcc36cb1d05c5ef971ce51da0114bf45b3adf0a",
+      "bytes": 76844,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-b643917736e97e48b9f054e6680743dd8e7b9fbf4567ba938879c52b37e4df9a.wav",
+      "sha256": "c108303fafc3841d7d9a21f704305af2213eb6d3e3d536c8447bd8b22b4d3c45",
+      "content_digest": "b643917736e97e48b9f054e6680743dd8e7b9fbf4567ba938879c52b37e4df9a",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-74364bab3c98948f6de9fbfa82975273014aa33871abe458b20ab043b0cdb9ad.wav",
+      "sha256": "624adde92fd2e942ac10eb94c7110b920ec1eb71c4d7c1b71fae1568a7cf9535",
+      "content_digest": "74364bab3c98948f6de9fbfa82975273014aa33871abe458b20ab043b0cdb9ad",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-78e501faee156f728112ac3d42c0a6eabb09afaa3172d71ee446cf7f985aeddf.wav",
+      "sha256": "adee8708eaebdf31633c24fcc45c737d6049161c58d36556f3628c8b1c7e6f33",
+      "content_digest": "78e501faee156f728112ac3d42c0a6eabb09afaa3172d71ee446cf7f985aeddf",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-a0344bdfda5403c935ece74e192fe571075a3ee79bec87a15b90e62a8ae3c0e5.wav",
+      "sha256": "80fefca11a7eb5536cd05cdbc0e1ea04ab13eff1e3380c4e04d055dc5ea82ff3",
+      "content_digest": "a0344bdfda5403c935ece74e192fe571075a3ee79bec87a15b90e62a8ae3c0e5",
+      "bytes": 53804,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-19a02f8d1fff427998a2ac091669a0ccc834c84ad961cdb8eee16aacf8d478a7.wav",
+      "sha256": "889a52ffedc307393488383232170488fa11818a9716682cee906cc75041b54d",
+      "content_digest": "19a02f8d1fff427998a2ac091669a0ccc834c84ad961cdb8eee16aacf8d478a7",
+      "bytes": 46124,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-d47427117057d3ccdea7e5df125bd04b4487cbe09d7f775e86a0d8282a2432a7.wav",
+      "sha256": "33dfa7a5533ccf803d8616ac8454d1f803c9091599d48bfaba5ed2bc02f56267",
+      "content_digest": "d47427117057d3ccdea7e5df125bd04b4487cbe09d7f775e86a0d8282a2432a7",
+      "bytes": 49964,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-e666f98953496f86d96be83c333ce81896109f8ee5f8b40b85b770720dae0b15.wav",
+      "sha256": "52d10a858d67d0c7ddb1cb8103e73b33bcd115c8f48e021b3e599a1ad76af9fa",
+      "content_digest": "e666f98953496f86d96be83c333ce81896109f8ee5f8b40b85b770720dae0b15",
+      "bytes": 49964,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-dcf86b3d02a198baf2f527b6917da57cc7430c9ee0cc683bc3411a33f6b899e3.wav",
+      "sha256": "bea5a058229016aaeac19d8f48e352afe5264f397802e589bc9553831d1054c8",
+      "content_digest": "dcf86b3d02a198baf2f527b6917da57cc7430c9ee0cc683bc3411a33f6b899e3",
+      "bytes": 42284,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "word-a8b213f08f35df6edd2291efa7dbb6fe6bbe2aee73b7f644e4301fbd3560ad19.wav",
+      "sha256": "8114191f473e6f88fce2ff8ca0d15cf161b7d7aab8a41a3dc2222bff42ad412d",
+      "content_digest": "a8b213f08f35df6edd2291efa7dbb6fe6bbe2aee73b7f644e4301fbd3560ad19",
+      "bytes": 119084,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-908f12bd1b8d16742290f3dff12984347c2ce7e999ae7411e429919175a6f335.wav",
+      "sha256": "d85a325aca798ada32a54d0bb911f4763062409f8b96882de2fc5510fe363c88",
+      "content_digest": "908f12bd1b8d16742290f3dff12984347c2ce7e999ae7411e429919175a6f335",
+      "bytes": 65324,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-b837ca8325b33ceb2b43e4fb199adafeb89987109ee768b795615e6fc89baaab.wav",
+      "sha256": "4b015d52702929b900ed9a5429e723e3cc6282c71262aac7ebf62b89b524b2d6",
+      "content_digest": "b837ca8325b33ceb2b43e4fb199adafeb89987109ee768b795615e6fc89baaab",
+      "bytes": 130604,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-5817d4a89147e97a388f16b51b2a63401909de9418b4b0ad0d6f75e523e57255.wav",
+      "sha256": "4ec5f16d52a7ed99e4a40053589e85c4b8a372c8d06eb8796717ba3c05fc4238",
+      "content_digest": "5817d4a89147e97a388f16b51b2a63401909de9418b4b0ad0d6f75e523e57255",
+      "bytes": 49964,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-6d37349e803bddbd28644013255e3486ae8395378bbbe940d3bbb95d690b1b74.wav",
+      "sha256": "ddd7574c0d779382a0e6003fe34b5899812052944e1b9f0173542f29e565a824",
+      "content_digest": "6d37349e803bddbd28644013255e3486ae8395378bbbe940d3bbb95d690b1b74",
+      "bytes": 84524,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-de7d66c97eef3e7858b53199861d6eefebf904dca1cf5630aa8fdabe637cb433.wav",
+      "sha256": "4e28a8b27d60a3f4ea6e102fe9f72a42800c4b358811c48d8ee9ec7409b1b187",
+      "content_digest": "de7d66c97eef3e7858b53199861d6eefebf904dca1cf5630aa8fdabe637cb433",
+      "bytes": 80684,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-2beaa9d0db791aa6e889ab4e196257f122e088602153fd619f4de0c076e7194a.wav",
+      "sha256": "c0ab5563a5e0a50f86c046fd125109e570766187239b9295f60f6e6c0e724ec5",
+      "content_digest": "2beaa9d0db791aa6e889ab4e196257f122e088602153fd619f4de0c076e7194a",
+      "bytes": 99884,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-7313532652e85fdd97cae626587bdaf8a75b1f49e15bc0ae833023b3ce5b87f6.wav",
+      "sha256": "c44b31621482cf043c757291520cfc0b45aa91fadf43615ee669a32c5f6afc80",
+      "content_digest": "7313532652e85fdd97cae626587bdaf8a75b1f49e15bc0ae833023b3ce5b87f6",
+      "bytes": 57644,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/word-dc2b8f0aac0f7c6c8c494fdc18e341f432b805ffa3a26d203f5239c320e639d8.wav",
+      "sha256": "f963ecf8beb87478f2b6a48885afa408c884ebea209e0b0183ec792786136ca1",
+      "content_digest": "dc2b8f0aac0f7c6c8c494fdc18e341f432b805ffa3a26d203f5239c320e639d8",
+      "bytes": 73004,
+      "kind": "word",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/line-46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181.wav",
+      "sha256": "cd8559de9a0c904899bd4f8b0cc1143df9343f9960f9328ed40c952e1b290bb8",
+      "content_digest": "46c4d993ea5b60bc6c8037e12d1dd478c8e2bc92885ba202259320e586d44181",
+      "bytes": 157484,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/line-c686ce578b68292f0f70784b43dd8dbf7989e1dbf9c4ad925445822942220c3b.wav",
+      "sha256": "dc42001469fe9acefd948e3c3d4e976d46575abe757b62a7e54532375605e8a8",
+      "content_digest": "c686ce578b68292f0f70784b43dd8dbf7989e1dbf9c4ad925445822942220c3b",
+      "bytes": 115244,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/line-3125a7aba176c3d13785023d1b928ad0464fbc088c698e8662b41d5be4cb76ce.wav",
+      "sha256": "658b2e70696423fe3426f37ab2013d3002719d4f42d043ca092cc5d438fa97dd",
+      "content_digest": "3125a7aba176c3d13785023d1b928ad0464fbc088c698e8662b41d5be4cb76ce",
+      "bytes": 107564,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/line-9dd2d735c288f33afe9803c894d817af72b82578925051f8ed2513e157b4c3b1.wav",
+      "sha256": "21c834f9302c96bfb5e3df88ccde55e914bf3b1b45cd5b162388834a759230eb",
+      "content_digest": "9dd2d735c288f33afe9803c894d817af72b82578925051f8ed2513e157b4c3b1",
+      "bytes": 88364,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/line-bc72bf497b3379d64e1a92171c8f25986f3c8e84b27c9e983f645d92d995ecc8.wav",
+      "sha256": "129b1f9b0c8833230519d033078ad4f8b46ded1df53279ee2eb51a2dca0f9785",
+      "content_digest": "bc72bf497b3379d64e1a92171c8f25986f3c8e84b27c9e983f645d92d995ecc8",
+      "bytes": 192044,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/line-a00e19fb6fd7917efaf080a2e4c986d10c77627dd24af902cfaeb9d0a58a009f.wav",
+      "sha256": "3e3ab6193042b0cc8674fde178af181026afac8a6f8dd559b810a522c87b613d",
+      "content_digest": "a00e19fb6fd7917efaf080a2e4c986d10c77627dd24af902cfaeb9d0a58a009f",
+      "bytes": 99884,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/line-94071bc83fe7641966cc896d246319a6c75345dcea1a620f270acadab78a9f7d.wav",
+      "sha256": "0c68046296e41579e625805ceb2ed060020ec3680e68a19117554b48727a44d4",
+      "content_digest": "94071bc83fe7641966cc896d246319a6c75345dcea1a620f270acadab78a9f7d",
+      "bytes": 330284,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/line-2cea4d50190cb01e1a44e330696dd7124a5c1ab61dece866b1f7fbe6c1aa0291.wav",
+      "sha256": "bbfda6319e36f91381ba4e4e82b92627aea452d857a691d3fdbb4d59a204e507",
+      "content_digest": "2cea4d50190cb01e1a44e330696dd7124a5c1ab61dece866b1f7fbe6c1aa0291",
+      "bytes": 172844,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/line-c61aedfc4ce042069a0a01ddbba2f4dc50559dd85b1faf06c96888082a540afe.wav",
+      "sha256": "2fbcbb53e98c4fcd2249492ae365c7dd33aec81050354474c2ae8b2911cf04c3",
+      "content_digest": "c61aedfc4ce042069a0a01ddbba2f4dc50559dd85b1faf06c96888082a540afe",
+      "bytes": 119084,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/line-48aacdeab5f7e8a7335c3864d4c9c3187dcf7880a85b7b9a40f55b9b7151c9ce.wav",
+      "sha256": "df7de0e19424ebf627d63a76e45ef13c3c129f409e819aae4a02c92e97b3e605",
+      "content_digest": "48aacdeab5f7e8a7335c3864d4c9c3187dcf7880a85b7b9a40f55b9b7151c9ce",
+      "bytes": 226604,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/line-ce36743c91d7ca45682de08e7b0d48f58657df6eff2b8bc3dddfc523e5a49ddf.wav",
+      "sha256": "f9a5b586899e6b0212ae97b5fe3ad832fbee41564453b42d7c8416c556461585",
+      "content_digest": "ce36743c91d7ca45682de08e7b0d48f58657df6eff2b8bc3dddfc523e5a49ddf",
+      "bytes": 180524,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/line-4719b9919a41cc0e925411d4731f35eaa6913df3166c033ea094b0beadb19f3e.wav",
+      "sha256": "1064e8d6e5ef090ff262b44f90828cc41a1e346c0549c3b51405e8547fac4061",
+      "content_digest": "4719b9919a41cc0e925411d4731f35eaa6913df3166c033ea094b0beadb19f3e",
+      "bytes": 145964,
+      "kind": "line",
+      "speaker": "Serena"
+    },
+    {
+      "filename": "garden/line-acdfe74a12a9984f5e9918aebba8e90f12fdf6941eb78ed60303320ea810105e.wav",
+      "sha256": "a7b110728dd530ba83c0fa0273a972c4c34f3eed89ace46ecee0e7f6b4eb23a7",
+      "content_digest": "acdfe74a12a9984f5e9918aebba8e90f12fdf6941eb78ed60303320ea810105e",
+      "bytes": 169004,
+      "kind": "line",
+      "speaker": "Serena"
+    }
+  ]
+}
