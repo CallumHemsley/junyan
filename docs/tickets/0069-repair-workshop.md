@@ -1,7 +1,7 @@
 ---
 id: 69
 title: Build the reversible repair workshop slice
-status: todo
+status: doing
 priority: high
 type: feature
 created: 2026-11-05
@@ -28,3 +28,11 @@ One writer/branch/cloud checkout and strict port as assigned there. No edits out
 
 Estimate: 1–2 engineering days for a bounded slice plus review; synthesis access may block completion.
 Owner, worker ID, branch, checkout, exact commands, evidence and remaining blockers must be recorded here by writer.
+
+## Refined implementation scope
+
+See [the detailed workshop plan](../plans/neighbourhood-repairs.md). Two reversible physical repairs, a loose lamp fitting and a toy with loose lead and exhausted cell. Test outcomes come from physical state. Repaired objects remain on the shelf; repeat practice grants no extra reward. Exactly one derived `repairs.stool` gift after both returns.
+
+Worker `/root/repair_writer`, branch `codex/0069-repair-workshop`, cloud `/workspace/junyan-repairs`, dev 5469 strict, preview 5569 strict. Exclusive feature files, repair audio, repair e2e, evidence/0069, ticket and repair plan. Estimate 1–2 engineering days plus audio/review. Shared integration belongs to 0066. Model requested by coordinator is GPT-6.1 Sol medium. No nested writer.
+
+Required offline voice synthesis is currently blocked by missing Linux runtime/models. Feature work proceeds with an explicit pending asset manifest and cannot be marked complete until synthesis, listening and integrated checks pass.
