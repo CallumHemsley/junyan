@@ -88,7 +88,7 @@ test("day summary blocks movement and interaction shortcuts", async ({ page }) =
   await expect(page.getByRole("button", { name: "明天见" })).toBeFocused();
   await page.keyboard.press("Escape");
   await page.keyboard.press("Shift+Tab");
-  await expect(page.getByRole("button", { name: "明天见" })).toBeFocused();
+  await expect(page.getByRole("button", { name: "回家看看" })).toBeFocused();
 });
 
 test("kitchen closes back to the original table trigger after walking", async ({ page }) => {
@@ -161,7 +161,7 @@ test("keyboard journey keeps named controls and focus across a full day", async 
   const summary = page.getByRole("dialog", { name: "今日小结" });
   await expect(summary.getByRole("button", { name: "明天见" })).toBeFocused();
   await page.keyboard.press("Tab");
-  await expect(summary.getByRole("button", { name: "明天见" })).toBeFocused();
+  await expect(summary.getByRole("button", { name: "回家看看" })).toBeFocused();
   await page.screenshot({ path: `output/playwright/0037/${info.project.name}-summary.png`, fullPage: true });
   await activate(page, summary.getByRole("button", { name: "明天见" }));
   expect((await snapshot(page)).state.day).toBe(2);

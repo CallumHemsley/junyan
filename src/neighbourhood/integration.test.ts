@@ -9,6 +9,7 @@ import { createSession, reduceSession } from "../opening";
 import { startSession } from "../startup";
 import type { Action as CatsAction } from "../features/cats/rules";
 import type { Action as RepairAction } from "../features/repairs/rules";
+import { nextDots } from "../recovery";
 import { wordByHanzi } from "../features/apartment/content";
 
 const act = (game: GameState, action: NeighbourhoodAction) => reduceNeighbourhoodGame(game, action, content);
@@ -113,6 +114,20 @@ describe("saved neighbourhood integration", () => {
     expect(placed.neighbourhood?.apartment.placements.some(item=>item.id==="table")).toBe(true);
   });
 
+  it("derives markers from actual learning and retains them through lookup or rejected actions", () => {
+    const start=visit(createGame(content),"apartment");
+    const action: NeighbourhoodAction={type:"feature-action",feature:"apartment",action:{type:"accept-starter"},now:1};
+    const learned=act(start,action);
+    const dots=nextDots([],start,action,learned);
+    expect(dots).toEqual([wordByHanzi["桌子"].id,wordByHanzi["椅子"].id]);
+    const select: NeighbourhoodAction={type:"feature-action",feature:"apartment",action:{type:"select",id:"table"},now:2};
+    const selected=act(learned,select);
+    expect(nextDots(dots,learned,select,selected)).toBe(dots);
+    const invalid: NeighbourhoodAction={type:"feature-action",feature:"apartment",action:{type:"place",x:0,y:0},now:3};
+    const rejected=act(selected,invalid);
+    expect(nextDots(dots,selected,invalid,rejected)).toBe(dots);
+  });
+
   it("keeps lookup separate from successful-use recovery", () => {
     const game=visit(createGame(content),"apartment");
     const looked=reduceSession({phase:"day",game},{type:"lookup",wordId:wordByHanzi["放"].id,now:2},content);
@@ -125,15 +140,28 @@ describe("saved neighbourhood integration", () => {
     expect(act(start,{type:"claim-neighbourhood-gift",giftId:"repairs.stool"})).toBe(start);
     const earned=repairBoth(reunion(start));
     expect(availableGifts(earned.neighbourhood!)).toEqual(["repairs.stool","cats.cushion"]);
-    let claimed=act(earned,{type:"claim-neighbourhood-gift",giftId:"cats.cushion"});
+    let home=visit(earned,"apartment");
+    for(const action of [{type:"accept-starter"},{type:"select",id:"table"},{type:"place",x:2,y:1},{type:"select",id:"table"},{type:"place",x:3,y:2}] as const) {
+      home=act(home,{type:"feature-action",feature:"apartment",action,now:12});
+    }
+    let claimed=act(home,{type:"claim-neighbourhood-gift",giftId:"cats.cushion"});
     claimed=reload(claimed);
     expect(act(claimed,{type:"claim-neighbourhood-gift",giftId:"cats.cushion"})).toBe(claimed);
-    expect(claimed.neighbourhood?.apartment.owned.filter(id=>id==="cats.cushion")).toHaveLength(1);
+    const undone=act(claimed,{type:"feature-action",feature:"apartment",action:{type:"undo"},now:13});
+    expect(undone.neighbourhood?.apartment.placements.find(item=>item.id==="table")).toMatchObject({x:2,y:1});
+    expect(undone.neighbourhood?.claimedGiftIds).toEqual(["cats.cushion"]);
+    expect(undone.journal).toBe(claimed.journal);
+    expect(reload(undone)).toEqual(undone);
+    expect(undone.neighbourhood?.apartment.owned.filter(id=>id==="cats.cushion")).toHaveLength(1);
     expect(act(visit(start,"apartment"),{type:"feature-action",feature:"apartment",action:{type:"receive-gift",giftId:"cats.cushion"},now:1}).neighbourhood?.apartment.owned).toEqual(["bed"]);
   });
 
   it("advances the garden only with the completed restaurant day and preserves every feature", () => {
-    let game=visit(reunion(createGame(content)),"garden");
+    let game=repairBoth(reunion(createGame(content)));
+    game=act(game,{type:"claim-neighbourhood-gift",giftId:"repairs.stool"});
+    game=visit(game,"apartment");
+    game=act(game,{type:"feature-action",feature:"apartment",action:{type:"accept-starter"},now:1});
+    game=visit(game,"garden");
     game=act(game,{type:"feature-action",feature:"garden",action:{type:"tidy",value:true},now:1});
     for(const plant of ["climber","tree"] as const) game=act(game,{type:"feature-action",feature:"garden",action:{type:"water",plant},now:2});
     const completed=finishDay(game);
@@ -142,6 +170,9 @@ describe("saved neighbourhood integration", () => {
     expect(next.earnings).toBe(completed.earnings);
     expect(next.journal).toEqual(completed.journal);
     expect(next.neighbourhood?.cats).toEqual(completed.neighbourhood?.cats);
+    expect(next.neighbourhood?.apartment).toEqual(completed.neighbourhood?.apartment);
+    expect(next.neighbourhood?.repairs).toEqual(completed.neighbourhood?.repairs);
+    expect(next.neighbourhood?.claimedGiftIds).toEqual(["repairs.stool"]);
     expect(next.neighbourhood?.garden.day).toBe(2);
     expect(Object.values(next.neighbourhood!.garden.plants).every(plant=>plant.growth===1)).toBe(true);
     expect(availableGifts(next.neighbourhood!)).toContain("garden.planter");
