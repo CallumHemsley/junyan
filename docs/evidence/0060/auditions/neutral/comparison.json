@@ -1,0 +1,48 @@
+{
+  "preset": {
+    "engine": "qwen",
+    "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+    "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+    "speaker": "Uncle_Fu",
+    "language": "Chinese",
+    "speed": 1,
+    "instructions": null,
+    "loudness": {
+      "targetActiveRmsDbfs": -20,
+      "peakCeilingDbfs": -1
+    }
+  },
+  "comparisons": [
+    {
+      "id": "elder-milk",
+      "text": "早上好，年轻人。请给我一杯豆浆。",
+      "authored_pinyin": [
+        "zǎoshang hǎo",
+        "niánqīngrén",
+        "qǐng",
+        "gěi",
+        "wǒ",
+        "yī",
+        "bēi",
+        "dòujiāng"
+      ],
+      "old": "old/elder-milk.wav",
+      "candidate": "audio/line-2cefc3fe62be59203c6ef07c91f4342efc18641473fa68dacd7f54f31a90aa1b.wav"
+    },
+    {
+      "id": "elder-egg-thanks",
+      "text": "谢谢，谢谢！",
+      "authored_pinyin": [
+        "xièxie",
+        "xièxie"
+      ],
+      "old": "old/elder-egg-thanks.wav",
+      "candidate": "audio/line-f8c7a10d6944e2c84304d52a08300578d078efc600b295e85527303f6a5b7292.wav"
+    }
+  ],
+  "status": "prepared only; no synthesis or listening",
+  "production_inputs_sha256": {
+    "src/content/content.json": "f1edff6428943cf853618b339f9e15982005daba5aaf883a214ad61d7db64dab",
+    "src/content/voices.json": "1739a563179ec5499d78157480243e920d4c7f280a58d644570c2a7e757f4506"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "uncle-fu-levelled": {
+    "engine": "qwen",
+    "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+    "revision": "f35faf19b0cc2160865af64ecf0f22f83d335135",
+    "speaker": "Uncle_Fu",
+    "language": "Chinese",
+    "speed": 1,
+    "instructions": null,
+    "loudness": {
+      "targetActiveRmsDbfs": -20,
+      "peakCeilingDbfs": -1
+    }
+  }
+}

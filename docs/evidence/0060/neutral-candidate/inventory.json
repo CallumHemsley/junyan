@@ -1,0 +1,38 @@
+[
+  {
+    "lineId": "elder-milk",
+    "text": "早上好，年轻人。请给我一杯豆浆。",
+    "audio": "/audio/line-2cefc3fe62be59203c6ef07c91f4342efc18641473fa68dacd7f54f31a90aa1b.wav",
+    "sha256": "c711c6bec0097b01d74d90839a4d6c29a8790647bbd3afeec280774ad75a3909"
+  },
+  {
+    "lineId": "elder-milk-wrong",
+    "text": "不对，我要豆浆。",
+    "audio": "/audio/line-e756047972fc829165e2ca4f0f9f13c40c1b02f8dc94e8116180e111a396816c.wav",
+    "sha256": "37f62966310a6627956505404ceab7ff5697c2101e2af2e432b6c274a626d1cd"
+  },
+  {
+    "lineId": "elder-milk-thanks",
+    "text": "谢谢你！",
+    "audio": "/audio/line-aa4ed24a26a593973279ebe664cfff1b1241682cf17d0e2fee03508224ecde88.wav",
+    "sha256": "bad3e4e2d9c83246b6ac71672339b6d472cd38e5062b78043d6332ae123b219f"
+  },
+  {
+    "lineId": "elder-egg",
+    "text": "我还想要一个鸡蛋。",
+    "audio": "/audio/line-60ee82fdaf489803f5b64b4578ec054294c5b240d1f13d1c4c485ebbfde4b834.wav",
+    "sha256": "5575c662f354cc96d3a3296635168beaf33160bfee1f1bec9a2b76dbc41971bf"
+  },
+  {
+    "lineId": "elder-egg-wrong",
+    "text": "不对，我要鸡蛋。",
+    "audio": "/audio/line-781984e84c2d96144788e190c7527bab41486694e474141d82437bcb01f377ca.wav",
+    "sha256": "e0364b994ac41c066c9ca17721a0f09315b2ecf0b0f7c5b3aea03c69ae0a7037"
+  },
+  {
+    "lineId": "elder-egg-thanks",
+    "text": "谢谢，谢谢！",
+    "audio": "/audio/line-f8c7a10d6944e2c84304d52a08300578d078efc600b295e85527303f6a5b7292.wav",
+    "sha256": "dd2dd017bb62acee753d73678219a548e4bc131f6f94b379d9a6191ed5c05cc4"
+  }
+]
