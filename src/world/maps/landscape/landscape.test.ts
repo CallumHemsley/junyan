@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { mapDefinitions } from './index';
 import { worldMapSchema } from '../../schema';
 import { canStand, canWalk, findPath } from '../../geometry';
+import { compileLife, sampleLife } from '../../life';
+import { navigationFor } from '../../life/navigation';
 
 // Footprint clearance is deliberately tested without the rendering adapter.
 const radius = .3;
@@ -90,5 +92,23 @@ it('keeps canonical background residents assigned to one landscape home each', (
   for(const [id,home] of Object.entries(expected)){
     const homes=mapDefinitions.flatMap(map=>map.npcHooks.filter(h=>h.characterId===id).map(()=>map.id));
     expect(homes).toEqual([home]);
+  }
+});
+
+it('consumes real canonical profiles without diagnostics or background greetings', () => {
+  for(const raw of mapDefinitions){
+    const map=worldMapSchema.parse(raw),navigation=navigationFor(map),plan=compileLife(map,navigation);
+    expect(plan.diagnostics).toEqual([]);
+    const assigned=plan.actors.filter(actor=>map.npcHooks.some(hook=>hook.id===actor.id));
+    expect(assigned).toHaveLength(map.npcHooks.length);
+    for(const actor of assigned){
+      expect(actor.profile.homeMap).toBe(map.id);
+      expect(actor.profile.greeting).toBeUndefined();
+      expect(actor.phases.some(p=>p.action==='walk')).toBe(true);
+      expect(actor.phases.some(p=>p.action===actor.profile.resting)).toBe(true);
+    }
+    const context={day:1,seed:42,elapsedMs:12345,player:map.defaultSpawn,reducedMotion:false};
+    expect(sampleLife(plan,context,navigation)).toEqual(sampleLife(plan,context,navigation));
+    expect(sampleLife(plan,{...context,reducedMotion:true},navigation).every(a=>a.phaseMs===0)).toBe(true);
   }
 });
