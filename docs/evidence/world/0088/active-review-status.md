@@ -1,0 +1,19 @@
+# Independent world review — ACTIVE
+
+Owner world/0088, PR28, branch codex/0088-world-review. No native goal registration claimed. Full connected-world beauty, breadth, meaningful activity, sustained life and immersion objective remains active through integrated iterations; no application fixes or merges by reviewer.
+
+Reviewed production checkpoint: e02a747c3b4d4fc6a476ea744ecb6bdc1a738132. New authoritative main266e9bcd922151160d2edff48fb8078c874be135 has not been accepted as a combined world build.
+
+- Complete-art provenance independently verified:176 hashes,21 lease trees, all10 map dispatches. Typecheck/build passed; full rules435passed/1failed (life routine semantic test). Preserve that exact-head gate until new combined results.
+- Published current Astra reports: historical path docs/evidence/0088/visual-e02a747.md at e47f526 and seating-catalog-e02a747.md at4513b59. Visual2/4 partial; seating/contact/catalogue, landscape, physical stairs, guidance and sustained life remain substantive gates. Learning fog is intentional.
+- Ordinary desktop/phone journeys traversed all10 maps,3 services and cat reunion; those long runs later failed at a reviewer grid-toggle error and remain reported failed. Separate targeted feature follow-up2/2 passed (422fd99): placement/restyle/undo/reload, garden care/reload, lamp repair/reload.
+- Four-customer/day-end boundary2/2 passed (50bd000), including fourth receipt/replay/presence, explicit close/departure, ended-day exploration, next-day/reload/return. Waypoint real pointer2/2 and exact-source frame-step checks passed; native phone life discovery/reaction and offline world reload passed. These do not close every offline audio/garden overnight combination.
+- Sampled-motion addendum (422fd99) records real movement/camera/doors but weak seating/departure acting, cat state-driven relocation and landscape route identity. No frame-pacing claim.
+- New visible-only exploratory pass: exploration-e02a747/REVIEW.md. Kitchen found; duplicate detached 看看 controls; home/river not reached in bounded search. No geometry/save readouts/planner used. Separate from scripted collision/persistence evidence.
+- Independent current-main source comparison: main-266e9bc-integration-gates.md at e463eff. Language runtime fields, scoped save union/order, physical invitation/shop semantics, paid furniture visibility/collision, progression timestamps and transition accounting require combined-head proof.
+
+Coordinator f876255 reconciliation/art direction read. Coordinator alone owns historical docs migration; new evidence here uses qualified world/0088. Original reports/captures remain at their exact historical commits until that migration. Original main0081/0082 documents must remain intact.
+
+Rooftop paired-evidence status: root independently reports a7eb240 corrected unobstructed eight-pair comparison against product2d22909 and zero blocking modals. Retire the specific old blurred-before objection; retain raw evidence. This is a reported fixture-art improvement, not this reviewer's assembled consumption/travel acceptance.
+
+Next concrete gates: sole foundation writer publishes combined main+world head with provenance; independently recheck chosen shadow/roof/stairs/seating/resident/cue payloads in production and five reference prop scales. Run current combined rules/build/language/progression/purchases/save/ordinary workflows, including actual paid-item art/collision and optional invitation walking. Repeat visible-only wayfinding and matched visual captures. Preserve synthetic exit-connected edit recovery finding until meaningful after-map connectivity correction/repro; no normal-player apartment trap was claimed. Pending-worker races and resize life continuity remain explicit checks. No final acceptance or main merge recommendation.
