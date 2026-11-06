@@ -47,22 +47,40 @@ export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldR
   if (isBuilding) {
     const residence = prop.kind === 'building-residence', shop = prop.kind === 'building-shop';
     const height = residence ? 7.2 : prop.kind === 'building-row' ? 6.4 : prop.kind === 'building-utility' ? 3.1 : 4.5;
-    const wall = style?.includes('jade') ? [170, 186, 160] : residence ? [196, 190, 167] : prop.kind === 'building-tea' ? [180, 157, 122] : C.plaster;
+    const wall = style?.includes('jade') ? [170, 186, 160] : style?.includes('ochre') ? [204, 179, 135] : style?.includes('warm') ? [212, 193, 162] : residence ? [196, 190, 167] : prop.kind === 'building-tea' ? [180, 157, 122] : prop.kind === 'building-workshop' ? [163, 170, 158] : C.plaster;
     box(x, y, 0, w, h, height, wall);
     box(x, y, 0, w, h, .32, [115, 126, 116]);
     box(x - .15, y - .15, height, w + .3, h + .3, .28, C.wood);
     const roof = prop.kind === 'building-restaurant' ? [104, 129, 119] : prop.kind === 'building-tea' ? [117, 112, 96] : C.slate;
-    const ridge = height + 1.5, mid = y + h * .46;
-    face([[x - .3, y - .3, height + .28], [x + w + .3, y - .3, height + .28], [x + w + .3, mid, ridge], [x - .3, mid, ridge]], roof, .78);
-    face([[x - .3, mid, ridge], [x + w + .3, mid, ridge], [x + w + .3, y + h + .35, height + .28], [x - .3, y + h + .35, height + .28]], roof, 1.1);
-    face([[x + w + .3, y - .3, height + .28], [x + w + .3, mid, ridge], [x + w + .3, y + h + .35, height + .28]], wall, .64);
-    for (let a = x; a < x + w; a += .55) line([a, mid, ridge + .02], [a, y + h + .33, height + .3], [78, 101, 103]);
-    for (let b = mid + .7; b < y + h; b += .7) {
-      const z = ridge - (b - mid) / (h * .54 + .35) * (ridge - height - .28);
-      line([x - .25, b, z + .02], [x + w + .25, b, z + .02], [140, 156, 145]);
+    const ridge = height + (shop ? 1.15 : 1.5), mid = y + h * .46;
+    if (prop.kind === 'building-workshop') {
+      for (let i = 0; i < 5; i++) box(x + .5, y + h + .25, .1 + i * .16, 3.5 - i * .2, .6, .12, i % 2 ? C.wood : C.brass);
+      for (let a = x - .2; a < x + w; a += 2.6) {
+        const end = Math.min(x + w + .2, a + 2.6);
+        face([[a, y - .2, height + .3], [end, y - .2, height + .3], [end - .5, y + h + .2, height + 1.4], [a, y + h + .2, height + 1.4]], [126, 143, 138]);
+        face([[end - .5, y - .2, height + 1.4], [end, y - .2, height + .3], [end, y + h + .2, height + .3], [end - .5, y + h + .2, height + 1.4]], C.glass, .9);
+        for (let b = y; b < y + h; b += .5) line([a, b, height + .4], [end - .5, b, height + 1.4], [83, 108, 108]);
+      }
+    } else {
+      face([[x - .3, y - .3, height + .28], [x + w + .3, y - .3, height + .28], [x + w + .3, mid, ridge], [x - .3, mid, ridge]], roof, .78);
+      face([[x - .3, mid, ridge], [x + w + .3, mid, ridge], [x + w + .3, y + h + .35, height + .28], [x - .3, y + h + .35, height + .28]], roof, 1.1);
+      face([[x + w + .3, y - .3, height + .28], [x + w + .3, mid, ridge], [x + w + .3, y + h + .35, height + .28]], wall, .64);
+      for (let a = x; a < x + w; a += .55) {
+        line([a, mid, ridge + .02], [a, y + h + .33, height + .3], [78, 101, 103]);
+        line([a, y - .3, height + .3], [a, mid, ridge + .02], [71, 93, 97]);
+      }
+      for (let b = y + .3; b < y + h; b += .7) {
+        const z = b < mid ? height + .28 + (b - y + .3) / (mid - y + .3) * (ridge - height - .28) : ridge - (b - mid) / (h * .54 + .35) * (ridge - height - .28);
+        line([x - .25, b, z + .02], [x + w + .25, b, z + .02], b < mid ? [91, 117, 118] : [140, 156, 145]);
+      }
     }
-    box(x + w * .17, y + h * .28, height + .4, .7, .7, 1.5, C.brick);
-    box(x + w * .17 - .1, y + h * .28 - .1, height + 1.8, .9, .9, .18, C.cream);
+    if (prop.kind === 'building-restaurant' || style === 'timber-shutter') {
+      box(x + w * .17, y + h * .28, height + .4, .7, .7, 1.5, C.brick);
+      box(x + w * .17 - .1, y + h * .28 - .1, height + 1.8, .9, .9, .18, C.cream);
+    } else if (residence) {
+      box(x + w * .6, y + h * .2, height + 1.1, 1.3, 1.3, .7, C.cream);
+      box(x + w * .6 - .1, y + h * .2 - .1, height + 1.8, 1.5, 1.5, .15, C.slate);
+    }
     for (const z of residence ? [1.3, 4.3] : [1.4]) {
       for (let a = x + 1; a < x + w - 1.2; a += residence ? 3.6 : 3.2) {
         box(a, y + h + .02, z, 1.7, .13, 1.65, C.wood);
@@ -84,13 +102,17 @@ export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldR
     const isDoor = ['town.restaurant', 'town.residence', 'town.workshop'].includes(prop.id);
     const doorX = prop.id === 'town.residence' ? 10.5 : prop.id === 'town.workshop' ? 72 : 33;
     if (isDoor) {
+      if (prop.kind === 'building-workshop') {
+        box(x + .8, y + h + .02, .15, w - 1.6, .2, 3.1, C.slate);
+        for (let a = x + 1; a < x + w - .8; a += .45) line([a, y + h + .23, .2], [a, y + h + .23, 3.2], [102, 130, 125]);
+      }
       box(doorX - .15, y + h + .02, .1, 2.3, .24, 2.8, C.wood);
       box(doorX, y + h + .27, .1, 2, .04, 2.5, [43, 65, 62]);
       box(doorX + .12, y + h + .32, .25, 1.76, .04, 2.1, [78, 104, 96]);
       box(doorX + 1.6, y + h + .38, 1.15, .12, .04, .12, C.brass);
       box(doorX + .1, y + h + .34, 1.7, 1.8, .03, .12, C.wood);
     } else if (shop || prop.kind === 'building-shutter') {
-      box(x + .6, y + h + .1, .2, w - 1.2, .15, 2.5, style?.includes('jade') ? C.jade : C.slate);
+      box(x + .6, y + h + .1, .2, w - 1.2, .15, 2.5, style?.includes('jade') ? C.jade : style?.includes('olive') ? [135, 146, 107] : style?.includes('cream') ? [190, 184, 155] : style?.includes('timber') ? C.wood : C.slate);
       for (let z = .35; z < 2.6; z += .26) line([x + .7, y + h + .26, z], [x + w - .7, y + h + .26, z], [72, 93, 91]);
       box(x + w / 2 - .12, y + h + .3, .3, .24, .08, .2, C.brass);
     }
@@ -115,6 +137,7 @@ export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldR
       for (let b = 0; b < 6; b++) line([x + w + .72, y + h - 2.6 + b * .2, 3.7], [x + w + .72, y + h - 2.6 + b * .2, 4.3], C.slate);
     }
     if (prop.kind === 'building-workshop') {
+      for (let i = 0; i < 5; i++) box(x + .5, y + h + .25, .1 + i * .16, 3.5 - i * .2, .6, .12, i % 2 ? C.wood : C.brass);
       for (let a = x + .5; a < x + w - 1; a += 2.3) box(a, y + h * .25, height + .8, 1.4, 1.4, .18, [161, 185, 179]);
     }
   } else if (prop.kind === 'tree' || prop.kind === 'hedge') {
@@ -124,12 +147,12 @@ export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldR
       line([cx, cy, 2], [cx - .7, cy - .2, 3.5], C.wood, 3);
       line([cx, cy, 2.5], [cx + .6, cy + .25, 4], C.wood, 3);
     }
-    const count = hedge ? Math.max(3, Math.ceil((w + h) * 2)) : 18;
+    const count = hedge ? Math.max(3, Math.ceil((w + h) * 2)) : style === 'ginkgo' ? 7 : 10;
     for (let i = 0; i < count; i++) {
-      const a = hash(i, x) * Math.PI * 2;
-      const px = hedge ? x + hash(i + 3, y) * w : cx + Math.cos(a) * (i % 3) * .65;
-      const py = hedge ? y + hash(i, y + 1) * h : cy + Math.sin(a) * (i % 3) * .65;
-      const z = hedge ? .6 + hash(i, x + 1) * .3 : 3.1 + hash(i, y + 2) * 2.2;
+      const a = i * 2.39996;
+      const px = hedge ? x + hash(i + 3, y) * w : cx + Math.cos(a) * Math.sqrt(i / count) * (style === 'ginkgo' ? 2 : 1.5);
+      const py = hedge ? y + hash(i, y + 1) * h : cy + Math.sin(a) * Math.sqrt(i / count) * (style === 'ginkgo' ? .8 : 1.25);
+      const z = hedge ? .6 + hash(i, x + 1) * .3 : 4.2 + Math.sin(i * 1.4) * .5 - (style === 'willow' ? i / count * 1.2 : 0);
       const r = hedge ? .45 : .7 + hash(i + 1, x) * .65;
       const leaf = style === 'ginkgo' ? [161, 166, 98] : i % 3 === 0 ? C.darkLeaf : C.leaf;
       const p = project(px, py, z);
@@ -139,15 +162,21 @@ export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldR
         const edge = (Math.floor(row / 3) + i) % 2;
         ctx.fillStyle = color(leaf, row < -ry * .3 ? 1.18 : row > ry * .3 ? .78 : 1);
         ctx.fillRect(Math.round(p.x) - span + edge, Math.round(p.y) + row, span * 2 - edge, 1);
-        for (let col = -span + 2; col < span - 1; col += 4) if (hash(col + x * 11, row + y * 7 + i) > .64) {
+        for (let col = -span + 2; col < span - 1; col += 4) if (hash(col + x * 11, row + y * 7 + i) > .82) {
           ctx.fillStyle = color(row < 0 ? [169, 187, 121] : [86, 124, 86]);
           ctx.fillRect(Math.round(p.x) + col, Math.round(p.y) + row, 2, 1);
         }
       }
     }
+    if (!hedge && style === 'willow') for (let i = 0; i < 13; i++) {
+      const a = i * .52, px = cx + Math.cos(a) * 1.6, py = cy + Math.sin(a) * 1.3;
+      const start = project(px, py, 3.8), end = project(px + .1, py, 1.9 + hash(i, y) * .7);
+      ctx.fillStyle = color(i % 2 ? C.leaf : C.darkLeaf);
+      for (let row = Math.round(start.y); row < end.y; row += 2) ctx.fillRect(Math.round(start.x) + (row % 3 ? 0 : 1), row, 2, 3);
+    }
   } else if (prop.kind === 'awning') {
     for (let a = 0; a < w; a += .65) {
-      const fill = Math.round(a / .65) % 2 ? C.cream : style === 'ochre' ? C.brass : C.jade;
+      const fill = style === 'slate' ? C.slate : Math.round(a / .65) % 2 ? C.cream : style === 'ochre' ? C.brass : C.jade;
       face([[x + a, y, 3.3], [x + Math.min(w, a + .65), y, 3.3], [x + Math.min(w, a + .65), y + h + .8, 2.85], [x + a, y + h + .8, 2.85]], fill);
       box(x + a, y + h + .8, 2.55, Math.min(.65, w - a), .05, .3, fill);
     }
@@ -159,7 +188,18 @@ export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldR
     const horizontal = w > h, length = horizontal ? w : h;
     for (let i = 0; i <= length; i += prop.kind === 'gate' ? length : .8) box(x + (horizontal ? i : 0), y + (horizontal ? 0 : i), 0, .12, .12, height, fill);
     for (const z of prop.kind === 'gate' ? [height] : [.45, 1.05]) box(x, y, z, w, h, .14, fill);
-    if (prop.kind === 'gate') box(x - .3, y - .2, height, w + .6, h + .4, .3, C.slate);
+    if (prop.kind === 'gate') {
+      box(x, y, 0, 1.1, h + .25, 3.7, C.plaster);
+      box(x + w - 1.1, y, 0, 1.1, h + .25, 3.7, C.plaster);
+      for (let level = 0; level < 5; level++) {
+        const inset = 1.1 + level * .28, z = 2.1 + level * .3;
+        box(x, y, z, inset, h + .25, .3, C.plaster);
+        box(x + w - inset, y, z, inset, h + .25, .3, C.plaster);
+      }
+      box(x - .2, y - .15, 3.7, w + .4, h + .55, .22, C.wood);
+      box(x - .35, y - .3, 3.92, w + .7, h + .85, .23, C.slate);
+      for (let a = x - .2; a < x + w + .2; a += .45) line([a, y - .25, 4.18], [a, y + h + .5, 4.18], C.cream);
+    }
     if (prop.kind === 'closed-gate') {
       line([x, y + h, .2], [x + w, y + h, 1.6], C.wood, 2);
       line([x + w, y + h, .2], [x, y + h, 1.6], C.wood, 2);
@@ -209,7 +249,7 @@ export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldR
   } else if (prop.kind === 'market-stall') {
     box(x, y, 0, w, h, .85, C.wood);
     box(x - .1, y - .1, .85, w + .2, h + .2, .14, C.brass);
-    for (let a = 0; a < w - .3; a += .5) box(x + a + .1, y + .2, 1, .35, h - .4, .25, a % 1 ? C.leaf : C.cream);
+    for (let a = 0; a < w - .3; a += .5) { box(x + a + .1, y + .2, 1, .35, h - .4, .25, a < 1 ? C.leaf : a < 2 ? [199, 164, 75] : C.cream); }
     for (const a of [0, w - .15]) box(x + a, y, .8, .12, .12, 1.7, C.wood);
     box(x - .2, y - .2, 2.4, w + .4, h + .4, .12, C.jade);
   } else if (prop.kind === 'planter') {
@@ -252,16 +292,25 @@ export const drawMap: DrawMap = (ctx, map, view) => {
         const x0 = Math.max(r.x, x), y0 = Math.max(r.y, y), x1 = Math.min(r.x + r.width, x + 1), y1 = Math.min(r.y + r.height, y + 1);
         const points = [{ x: x0, y: y0 }, { x: x1, y: y0 }, { x: x1, y: y1 }, { x: x0, y: y1 }].map(p => view.project(p));
         if (Math.max(...points.map(p => p.x)) < 0 || Math.min(...points.map(p => p.x)) > view.width || Math.max(...points.map(p => p.y)) < 0 || Math.min(...points.map(p => p.y)) > view.height) continue;
-        const base = terrain.material === 'road' ? [134, 142, 135] : terrain.material === 'brick' ? [178, 164, 134] : C.paving;
+        const base = terrain.material === 'water' ? [107, 151, 155] : terrain.material === 'stone' ? [147, 159, 144] : terrain.material === 'road' ? [134, 142, 135] : terrain.material === 'brick' ? [178, 164, 134] : C.paving;
         ctx.fillStyle = color(base, .96 + hash(x, y) * .08);
         ctx.beginPath(); points.forEach((p, i) => i ? ctx.lineTo(Math.round(p.x), Math.round(p.y)) : ctx.moveTo(Math.round(p.x), Math.round(p.y))); ctx.closePath(); ctx.fill();
-        if (terrain.material !== 'road') {
+        if (terrain.material !== 'road' && terrain.material !== 'water') {
           ctx.strokeStyle = color(base, .86); ctx.lineWidth = 1;
           ctx.beginPath(); ctx.moveTo(Math.round(points[0].x) + .5, Math.round(points[0].y) + .5); ctx.lineTo(Math.round(points[1].x) + .5, Math.round(points[1].y) + .5); ctx.lineTo(Math.round(points[2].x) + .5, Math.round(points[2].y) + .5); ctx.stroke();
         }
         const p = view.project({ x: x0 + .3 + hash(x, y) * .4, y: y0 + .3 });
         ctx.fillStyle = color(base, .75); ctx.fillRect(Math.round(p.x), Math.round(p.y), terrain.material === 'road' ? 2 : 1, 1);
       }
+    }
+  }
+  if (view.pass === 'ground') {
+    ctx.fillStyle = '#263f3425';
+    for (const prop of map.props.filter(p => p.layer === 'object')) {
+      const w = prop.width, h = prop.height;
+      const p = prop.position;
+      const points = [{ x: p.x + .2, y: p.y + .3 }, { x: p.x + w + .4, y: p.y + .3 }, { x: p.x + w + .9, y: p.y + h + .8 }, { x: p.x + .7, y: p.y + h + .8 }].map(q => view.project(q));
+      ctx.beginPath(); points.forEach((q,i) => i ? ctx.lineTo(Math.round(q.x),Math.round(q.y)) : ctx.moveTo(Math.round(q.x),Math.round(q.y))); ctx.closePath(); ctx.fill();
     }
   }
   if (view.pass === 'objects') return;

@@ -30,7 +30,8 @@ for name,target,r,arrival,facing,kind in [('restaurant','restaurant',rect(33,28,
  landmark(name+'-approach',*arrival,kind)
 
 for name,x,y,w,h,var in [('restaurant-steps',32.5,28,3,1,'wide'),('residence-steps',10,21,3,1,'stone'),('workshop-landing',71.5,29,3.5,1,'loading'),('river-stairs',74,44.4,4,2,'river')]:prop(name,'steps',x,y,w,h,var,layer='ground')
-prop('courtyard-moon-gate','gate',42,2,6,.35,'moon',False,4)
+prop('courtyard-moon-gate','gate',42,6.5,6,.35,'moon',False,4)
+m['colliders'] += [dict(id='town.gate-left',rect=rect(42,6.5,1.1,.35)),dict(id='town.gate-right',rect=rect(46.9,6.5,1.1,.35))]
 prop('breakfast-awning','awning',28,27.3,11,.7,'stripe-jade',False,3)
 prop('tea-awning','awning',49,28.4,9,.6,'ochre',False,3)
 prop('workshop-canopy','awning',67,28.2,11,.8,'slate',False,3)
@@ -60,10 +61,12 @@ prop('pump-pipes','pipes',58.1,39,.35,4,'steel',True,2)
 prop('closed-yard-gate','closed-gate',69.2,43.2,8.6,.3,'locked',True,1.8)
 prop('park-milestone','milestone',2.6,28.8,.6,.6,'stone',True,.8)
 prop('river-rail-left','fence',71,43.3,7,.25,'iron',True,1.2)
+m['terrain'] += [dict(id='town.canal-water',rect=rect(65,51,2,13),material='water',variant='canal'),dict(id='town.canal-bank',rect=rect(64.5,51,.5,13),material='stone',variant='bank')]
+prop('canal-rail','fence',64.3,51,.15,12.5,'iron',False,1.2)
 prop('tea-stone-table','stone-table',50,16.5,1.7,1.2,'stone',True,1.1)
 
-for name,x,y,kind in [('breakfast-steam',34,29.5,'restaurant-frontage'),('camphor-junction',22,29,'tree-junction'),('laundry-lane',22.5,18,'residential-lane'),('lantern-cut',42.5,21,'narrow-lane'),('moon-gate',45,5,'moon-gate'),('market-pocket',34,41,'market'),('sawtooth-roof',72,30.5,'workshop-frontage'),('river-overlook',72,47,'river-approach'),('south-fig',24,53,'garden-lane'),('closed-yard',72,45.2,'closed-yard')]:landmark(name,x,y,kind)
-for name,x,y,interaction in [('junction-rest',22,29.2,'rest'),('market-baskets',34,41,'observe-market'),('river-view',72,47,'look-river'),('laundry-lane',22.5,19,'observe-laundry'),('tea-terrace',54,15,'rest')]:
+for name,x,y,kind in [('breakfast-steam',34,29.5,'restaurant-frontage'),('camphor-junction',22,29,'tree-junction'),('laundry-lane',19.7,22.5,'residential-lane'),('lantern-cut',42.5,21,'narrow-lane'),('moon-gate',45,9.5,'moon-gate'),('market-pocket',33,40.5,'market'),('sawtooth-roof',72,30.5,'workshop-frontage'),('river-overlook',67,49,'river-approach'),('south-fig',24,53,'garden-lane'),('closed-yard',72,45.2,'closed-yard')]:landmark(name,x,y,kind)
+for name,x,y,interaction in [('junction-rest',22,29.2,'rest'),('market-baskets',34,41,'observe-market'),('river-view',67,49,'look-river'),('laundry-lane',22.5,19,'observe-laundry'),('tea-terrace',54,15,'rest')]:
  m['anchors'].append(dict(id='town.'+name,position=point(x,y),radius=1.4,featureId='exploration',interactionId='town.'+interaction))
 for name,actor,route in [('morning-walk','aunt',[(34,30),(42.5,30),(42.5,14),(45,10)]),('market-regular','glasses',[(31,41),(36,41),(38,40),(31,40)]),('workshop-delivery','backpack',[(70,33),(62,33),(62,47),(70,47)])]:
  m['npcHooks'].append(dict(id='town.'+name,position=point(*route[0]),route=[point(*p) for p in route],characterId=actor))

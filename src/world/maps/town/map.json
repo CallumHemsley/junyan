@@ -251,6 +251,24 @@
       }
     },
     {
+      "id": "town.gate-left",
+      "rect": {
+        "x": 42,
+        "y": 6.5,
+        "width": 1.1,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.gate-right",
+      "rect": {
+        "x": 46.9,
+        "y": 6.5,
+        "width": 1.1,
+        "height": 0.35
+      }
+    },
+    {
       "id": "town.junction",
       "rect": {
         "x": 18,
@@ -1141,7 +1159,7 @@
       "id": "town.courtyard-moon-gate",
       "rect": {
         "x": 42,
-        "y": 2,
+        "y": 6.5,
         "width": 6,
         "height": 0.35
       },
@@ -2084,6 +2102,17 @@
       "fadeWhenPlayerBehind": true
     },
     {
+      "id": "town.canal-rail",
+      "rect": {
+        "x": 64.3,
+        "y": 51,
+        "width": 0.15,
+        "height": 12.5
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
       "id": "town.tea-stone-table",
       "rect": {
         "x": 50,
@@ -2243,8 +2272,8 @@
     {
       "id": "town.river-view",
       "position": {
-        "x": 72,
-        "y": 47
+        "x": 67,
+        "y": 49
       },
       "radius": 1.4,
       "featureId": "exploration",
@@ -2458,6 +2487,28 @@
       },
       "material": "paving",
       "variant": 39
+    },
+    {
+      "id": "town.canal-water",
+      "rect": {
+        "x": 65,
+        "y": 51,
+        "width": 2,
+        "height": 13
+      },
+      "material": "water",
+      "variant": 40
+    },
+    {
+      "id": "town.canal-bank",
+      "rect": {
+        "x": 64.5,
+        "y": 51,
+        "width": 0.5,
+        "height": 13
+      },
+      "material": "stone",
+      "variant": 41
     }
   ],
   "props": [
@@ -2694,7 +2745,7 @@
       "kind": "gate",
       "position": {
         "x": 42,
-        "y": 2
+        "y": 6.5
       },
       "width": 6,
       "height": 0.35,
@@ -3854,6 +3905,18 @@
       "variant": 23
     },
     {
+      "id": "town.canal-rail",
+      "kind": "fence",
+      "position": {
+        "x": 64.3,
+        "y": 51
+      },
+      "width": 0.15,
+      "height": 12.5,
+      "layer": "object",
+      "variant": 23
+    },
+    {
       "id": "town.tea-stone-table",
       "kind": "stone-table",
       "position": {
@@ -4076,8 +4139,8 @@
     {
       "id": "town.laundry-lane",
       "position": {
-        "x": 22.5,
-        "y": 18
+        "x": 19.7,
+        "y": 22.5
       },
       "kind": "residential-lane"
     },
@@ -4093,15 +4156,15 @@
       "id": "town.moon-gate",
       "position": {
         "x": 45,
-        "y": 5
+        "y": 9.5
       },
       "kind": "moon-gate"
     },
     {
       "id": "town.market-pocket",
       "position": {
-        "x": 34,
-        "y": 41
+        "x": 33,
+        "y": 40.5
       },
       "kind": "market"
     },
@@ -4116,8 +4179,8 @@
     {
       "id": "town.river-overlook",
       "position": {
-        "x": 72,
-        "y": 47
+        "x": 67,
+        "y": 49
       },
       "kind": "river-approach"
     },
