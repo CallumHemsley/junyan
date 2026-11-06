@@ -1,0 +1,16 @@
+{
+  "sourceHead": "cc931d5190852eb1c6b2d9a9f2edd0ec96f63049",
+  "runtimeBasis": "Owner branch inherited foundation + actor/life/atmosphere producers at 94d7ec4; NOT current main266e9bc or latest foundation. No shared code merged or main reconciliation attempted in E02.",
+  "foliageSource": "codex/0091-foliage-craft 08b3eeb (file unchanged from0c13250)",
+  "owner": "world/0084",
+  "strictPort": 5486,
+  "sourceHashes": {
+    "src/world/maps/landscape/author.py": "bdc43b0b50d7d739ade7d63689bafc99c06e7c5221365c12f42fcccd6cd7637a",
+    "src/world/maps/landscape/park.json": "6b888b089480907f13b78295f43d32a1bc179ecca2e33f55f4535d5daef6f2f9",
+    "src/world/maps/landscape/riverbank.json": "46342797d1ea0f13b38ebff87b0d610bf786a50b5d2dc317ed396d813182f451",
+    "src/world/art/landscape/draw.ts": "ab6376d5eac19d9ddff4b6ca2267f5d74a9891eb99ed6a344ff63c2a8b74a65b",
+    "src/world/art/landscape/index.ts": "ad5954e6a16c539f7ab09fffa65eb96379592cf8e7776b166396ece553ce0054",
+    "src/world/art/landscape/foliage.ts": "2209e85dc883987a092488e3cae8c1f939e9ea830db1b9ad61bebc84de2b2b96"
+  },
+  "nativeGoalRegistration": "No exposed create_goal tool; active objective durably recorded in ../goal.md."
+}

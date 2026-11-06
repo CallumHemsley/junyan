@@ -1,0 +1,190 @@
+{
+  "stage": "before",
+  "basis": "owner branch; actual App; fixed valid day save fixtures; reduced motion particles off; no travel claim",
+  "proof": [
+    {
+      "device": "desktop",
+      "phase": "morning",
+      "id": "park-default",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 61,
+        "facing": "north"
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "morning",
+      "id": "park-first-entrance",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 63
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "morning",
+      "id": "riverbank-default",
+      "mapId": "riverbank",
+      "position": {
+        "x": 7,
+        "y": 73,
+        "facing": "north"
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "morning",
+      "id": "riverbank-first-entrance",
+      "mapId": "riverbank",
+      "position": {
+        "x": 6,
+        "y": 75
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "evening",
+      "id": "park-default",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 61,
+        "facing": "north"
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "evening",
+      "id": "park-first-entrance",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 63
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "evening",
+      "id": "riverbank-default",
+      "mapId": "riverbank",
+      "position": {
+        "x": 7,
+        "y": 73,
+        "facing": "north"
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "evening",
+      "id": "riverbank-first-entrance",
+      "mapId": "riverbank",
+      "position": {
+        "x": 6,
+        "y": 75
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "morning",
+      "id": "park-default",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 61,
+        "facing": "north"
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "morning",
+      "id": "park-first-entrance",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 63
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "morning",
+      "id": "riverbank-default",
+      "mapId": "riverbank",
+      "position": {
+        "x": 7,
+        "y": 73,
+        "facing": "north"
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "morning",
+      "id": "riverbank-first-entrance",
+      "mapId": "riverbank",
+      "position": {
+        "x": 6,
+        "y": 75
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "evening",
+      "id": "park-default",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 61,
+        "facing": "north"
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "evening",
+      "id": "park-first-entrance",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 63
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "evening",
+      "id": "riverbank-default",
+      "mapId": "riverbank",
+      "position": {
+        "x": 7,
+        "y": 73,
+        "facing": "north"
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "evening",
+      "id": "riverbank-first-entrance",
+      "mapId": "riverbank",
+      "position": {
+        "x": 6,
+        "y": 75
+      },
+      "errors": []
+    }
+  ]
+}

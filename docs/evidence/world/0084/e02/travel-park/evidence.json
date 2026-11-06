@@ -1,0 +1,288 @@
+{
+  "setup": "One valid day save seed; subsequent movement uses real canvas pointer/touch inputs only. Shared pathfinder supplies nearby targets, never dispatches movement.",
+  "phone": false,
+  "proof": [
+    {
+      "id": "park-to-river",
+      "start": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 78,
+          "y": 10
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 42.1665,
+          "y": 10
+        },
+        "facing": "east",
+        "returnPositions": {
+          "park": {
+            "x": 81.9165000000001,
+            "y": 10,
+            "facing": "east"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      }
+    },
+    {
+      "id": "bridge",
+      "start": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 42.1665,
+          "y": 10
+        },
+        "facing": "east",
+        "returnPositions": {
+          "park": {
+            "x": 81.9165000000001,
+            "y": 10,
+            "facing": "east"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 48.000000162760415,
+          "y": 19
+        },
+        "facing": "east",
+        "returnPositions": {
+          "park": {
+            "x": 81.9165000000001,
+            "y": 10,
+            "facing": "east"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      }
+    },
+    {
+      "id": "bank-return",
+      "start": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 48.000000162760415,
+          "y": 19
+        },
+        "facing": "east",
+        "returnPositions": {
+          "park": {
+            "x": 81.9165000000001,
+            "y": 10,
+            "facing": "east"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 42.000000162760415,
+          "y": 9.999999999999996
+        },
+        "facing": "north",
+        "returnPositions": {
+          "park": {
+            "x": 81.9165000000001,
+            "y": 10,
+            "facing": "east"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      }
+    },
+    {
+      "id": "river-to-park",
+      "start": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 42.000000162760415,
+          "y": 9.999999999999996
+        },
+        "facing": "north",
+        "returnPositions": {
+          "park": {
+            "x": 81.9165000000001,
+            "y": 10,
+            "facing": "east"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 77.80069084835725,
+          "y": 9.983390903954678
+        },
+        "facing": "west",
+        "returnPositions": {
+          "park": {
+            "x": 81.9165000000001,
+            "y": 10,
+            "facing": "east"
+          },
+          "riverbank": {
+            "x": 42.000000162760415,
+            "y": 7.6175,
+            "facing": "north"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      }
+    }
+  ],
+  "saved": {
+    "version": 1,
+    "mapId": "park",
+    "position": {
+      "x": 77.80069084835725,
+      "y": 9.983390903954678
+    },
+    "facing": "west",
+    "returnPositions": {
+      "park": {
+        "x": 81.9165000000001,
+        "y": 10,
+        "facing": "east"
+      },
+      "riverbank": {
+        "x": 42.000000162760415,
+        "y": 7.6175,
+        "facing": "north"
+      }
+    },
+    "activeActivity": null,
+    "activeAnchorId": null,
+    "life": {
+      "version": 1,
+      "elapsedMs": 0,
+      "discoveries": [],
+      "reactions": [],
+      "serviceDepartures": [],
+      "pauses": []
+    }
+  },
+  "loaded": {
+    "version": 1,
+    "mapId": "park",
+    "position": {
+      "x": 77.80069084835725,
+      "y": 9.983390903954678
+    },
+    "facing": "west",
+    "returnPositions": {
+      "park": {
+        "x": 81.9165000000001,
+        "y": 10,
+        "facing": "east"
+      },
+      "riverbank": {
+        "x": 42.000000162760415,
+        "y": 7.6175,
+        "facing": "north"
+      }
+    },
+    "activeActivity": null,
+    "activeAnchorId": null,
+    "life": {
+      "version": 1,
+      "elapsedMs": 0,
+      "discoveries": [],
+      "reactions": [],
+      "serviceDepartures": [],
+      "pauses": []
+    }
+  },
+  "errors": []
+}

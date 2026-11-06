@@ -1,0 +1,293 @@
+{
+  "basis": "actual App front/behind fixtures; native group alpha; whole App RAF at DPR2 (not isolated function cost)",
+  "proof": [
+    {
+      "device": "desktop",
+      "species": "camphor",
+      "mapId": "park",
+      "position": {
+        "x": 42,
+        "y": 56
+      },
+      "side": "behind",
+      "alpha": [
+        {
+          "species": "camphor",
+          "maximumAlpha": 115,
+          "paintedPixels": 5425,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        },
+        {
+          "species": "willow",
+          "maximumAlpha": 115,
+          "paintedPixels": 4323,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        },
+        {
+          "species": "fruit",
+          "maximumAlpha": 115,
+          "paintedPixels": 5350,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        }
+      ],
+      "perf": {
+        "visibleAuthoredFoliage": 8,
+        "nativeFoliageDrawsPerFrameIncludingBackdrop": 42,
+        "callbackCostP95Ms": 24.59999999962747,
+        "canvas": {
+          "width": 720,
+          "height": 458
+        },
+        "dpr": 2,
+        "internalDpr": 1,
+        "rafMedianMs": 16.699999999999818,
+        "rafP95Ms": 33.30000000000018,
+        "frames": 119
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "species": "willow",
+      "mapId": "riverbank",
+      "position": {
+        "x": 34.5,
+        "y": 76
+      },
+      "side": "behind",
+      "alpha": [
+        {
+          "species": "camphor",
+          "maximumAlpha": 115,
+          "paintedPixels": 5425,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        },
+        {
+          "species": "willow",
+          "maximumAlpha": 115,
+          "paintedPixels": 4323,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        },
+        {
+          "species": "fruit",
+          "maximumAlpha": 115,
+          "paintedPixels": 5350,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        }
+      ],
+      "perf": {
+        "visibleAuthoredFoliage": 5,
+        "nativeFoliageDrawsPerFrameIncludingBackdrop": 62,
+        "callbackCostP95Ms": 20.5,
+        "canvas": {
+          "width": 720,
+          "height": 458
+        },
+        "dpr": 2,
+        "internalDpr": 1,
+        "rafMedianMs": 16.699999999999818,
+        "rafP95Ms": 33.30000000000018,
+        "frames": 119
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "species": "fruit",
+      "mapId": "park",
+      "position": {
+        "x": 12.5,
+        "y": 42.7
+      },
+      "side": "behind",
+      "alpha": [
+        {
+          "species": "camphor",
+          "maximumAlpha": 115,
+          "paintedPixels": 5425,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        },
+        {
+          "species": "willow",
+          "maximumAlpha": 115,
+          "paintedPixels": 4323,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        },
+        {
+          "species": "fruit",
+          "maximumAlpha": 115,
+          "paintedPixels": 5350,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        }
+      ],
+      "perf": {
+        "visibleAuthoredFoliage": 7,
+        "nativeFoliageDrawsPerFrameIncludingBackdrop": 28,
+        "callbackCostP95Ms": 13.899999999441206,
+        "canvas": {
+          "width": 720,
+          "height": 458
+        },
+        "dpr": 2,
+        "internalDpr": 1,
+        "rafMedianMs": 16.699999999999818,
+        "rafP95Ms": 16.799999999999727,
+        "frames": 119
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "species": "camphor",
+      "mapId": "park",
+      "position": {
+        "x": 42,
+        "y": 56
+      },
+      "side": "behind",
+      "alpha": [
+        {
+          "species": "camphor",
+          "maximumAlpha": 115,
+          "paintedPixels": 5425,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        },
+        {
+          "species": "willow",
+          "maximumAlpha": 115,
+          "paintedPixels": 4323,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        },
+        {
+          "species": "fruit",
+          "maximumAlpha": 115,
+          "paintedPixels": 5350,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        }
+      ],
+      "perf": {
+        "visibleAuthoredFoliage": 3,
+        "nativeFoliageDrawsPerFrameIncludingBackdrop": 20,
+        "callbackCostP95Ms": 17.299999999813735,
+        "canvas": {
+          "width": 195,
+          "height": 386
+        },
+        "dpr": 2,
+        "internalDpr": 1,
+        "rafMedianMs": 16.699999999999818,
+        "rafP95Ms": 16.799999999999955,
+        "frames": 119
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "species": "willow",
+      "mapId": "riverbank",
+      "position": {
+        "x": 34.5,
+        "y": 76
+      },
+      "side": "behind",
+      "alpha": [
+        {
+          "species": "camphor",
+          "maximumAlpha": 115,
+          "paintedPixels": 5425,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        },
+        {
+          "species": "willow",
+          "maximumAlpha": 115,
+          "paintedPixels": 4323,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        },
+        {
+          "species": "fruit",
+          "maximumAlpha": 115,
+          "paintedPixels": 5350,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        }
+      ],
+      "perf": {
+        "visibleAuthoredFoliage": 4,
+        "nativeFoliageDrawsPerFrameIncludingBackdrop": 34,
+        "callbackCostP95Ms": 17.09999999962747,
+        "canvas": {
+          "width": 195,
+          "height": 386
+        },
+        "dpr": 2,
+        "internalDpr": 1,
+        "rafMedianMs": 16.699999999999818,
+        "rafP95Ms": 16.799999999999955,
+        "frames": 119
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "species": "fruit",
+      "mapId": "park",
+      "position": {
+        "x": 12.5,
+        "y": 42.7
+      },
+      "side": "behind",
+      "alpha": [
+        {
+          "species": "camphor",
+          "maximumAlpha": 115,
+          "paintedPixels": 5425,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        },
+        {
+          "species": "willow",
+          "maximumAlpha": 115,
+          "paintedPixels": 4323,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        },
+        {
+          "species": "fruit",
+          "maximumAlpha": 115,
+          "paintedPixels": 5350,
+          "inputAlpha": 0.45,
+          "restoredAlpha": 0.45
+        }
+      ],
+      "perf": {
+        "visibleAuthoredFoliage": 5,
+        "nativeFoliageDrawsPerFrameIncludingBackdrop": 15,
+        "callbackCostP95Ms": 11.5,
+        "canvas": {
+          "width": 195,
+          "height": 386
+        },
+        "dpr": 2,
+        "internalDpr": 1,
+        "rafMedianMs": 16.699999999999818,
+        "rafP95Ms": 16.700000000000273,
+        "frames": 119
+      },
+      "errors": []
+    }
+  ]
+}

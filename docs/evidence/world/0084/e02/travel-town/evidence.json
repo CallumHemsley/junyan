@@ -1,0 +1,308 @@
+{
+  "setup": "One valid day save seed; subsequent movement uses real canvas pointer/touch inputs only. Shared pathfinder supplies nearby targets, never dispatches movement.",
+  "phone": true,
+  "proof": [
+    {
+      "id": "river-to-town",
+      "start": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 40,
+          "y": 75
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "town",
+        "position": {
+          "x": 76.5361977732674,
+          "y": 47.55386581349949
+        },
+        "facing": "west",
+        "returnPositions": {
+          "riverbank": {
+            "x": 39.99999969564017,
+            "y": 77.984,
+            "facing": "south"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      }
+    },
+    {
+      "id": "town-to-river",
+      "start": {
+        "version": 1,
+        "mapId": "town",
+        "position": {
+          "x": 76.5361977732674,
+          "y": 47.55386581349949
+        },
+        "facing": "west",
+        "returnPositions": {
+          "riverbank": {
+            "x": 39.99999969564017,
+            "y": 77.984,
+            "facing": "south"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 40.06794735479595,
+          "y": 74.95233285223307
+        },
+        "facing": "east",
+        "returnPositions": {
+          "riverbank": {
+            "x": 39.99999969564017,
+            "y": 77.984,
+            "facing": "south"
+          },
+          "town": {
+            "x": 78.36932303253067,
+            "y": 47.516797850904254,
+            "facing": "east"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      }
+    },
+    {
+      "id": "washing-stones",
+      "start": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 40.06794735479595,
+          "y": 74.95233285223307
+        },
+        "facing": "east",
+        "returnPositions": {
+          "riverbank": {
+            "x": 39.99999969564017,
+            "y": 77.984,
+            "facing": "south"
+          },
+          "town": {
+            "x": 78.36932303253067,
+            "y": 47.516797850904254,
+            "facing": "east"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 39.999999967100635,
+          "y": 73.9999999221017
+        },
+        "facing": "north",
+        "returnPositions": {
+          "riverbank": {
+            "x": 39.99999969564017,
+            "y": 77.984,
+            "facing": "south"
+          },
+          "town": {
+            "x": 78.36932303253067,
+            "y": 47.516797850904254,
+            "facing": "east"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      }
+    },
+    {
+      "id": "fishing-jetty",
+      "start": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 39.999999967100635,
+          "y": 73.9999999221017
+        },
+        "facing": "north",
+        "returnPositions": {
+          "riverbank": {
+            "x": 39.99999969564017,
+            "y": 77.984,
+            "facing": "south"
+          },
+          "town": {
+            "x": 78.36932303253067,
+            "y": 47.516797850904254,
+            "facing": "east"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 40.00000026727923,
+          "y": 39.000000630739066
+        },
+        "facing": "east",
+        "returnPositions": {
+          "riverbank": {
+            "x": 39.99999969564017,
+            "y": 77.984,
+            "facing": "south"
+          },
+          "town": {
+            "x": 78.36932303253067,
+            "y": 47.516797850904254,
+            "facing": "east"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      }
+    }
+  ],
+  "saved": {
+    "version": 1,
+    "mapId": "riverbank",
+    "position": {
+      "x": 40.00000026727923,
+      "y": 39.000000630739066
+    },
+    "facing": "east",
+    "returnPositions": {
+      "riverbank": {
+        "x": 39.99999969564017,
+        "y": 77.984,
+        "facing": "south"
+      },
+      "town": {
+        "x": 78.36932303253067,
+        "y": 47.516797850904254,
+        "facing": "east"
+      }
+    },
+    "activeActivity": null,
+    "activeAnchorId": null,
+    "life": {
+      "version": 1,
+      "elapsedMs": 0,
+      "discoveries": [],
+      "reactions": [],
+      "serviceDepartures": [],
+      "pauses": []
+    }
+  },
+  "loaded": {
+    "version": 1,
+    "mapId": "riverbank",
+    "position": {
+      "x": 40.00000026727923,
+      "y": 39.000000630739066
+    },
+    "facing": "east",
+    "returnPositions": {
+      "riverbank": {
+        "x": 39.99999969564017,
+        "y": 77.984,
+        "facing": "south"
+      },
+      "town": {
+        "x": 78.36932303253067,
+        "y": 47.516797850904254,
+        "facing": "east"
+      }
+    },
+    "activeActivity": null,
+    "activeAnchorId": null,
+    "life": {
+      "version": 1,
+      "elapsedMs": 0,
+      "discoveries": [],
+      "reactions": [],
+      "serviceDepartures": [],
+      "pauses": []
+    }
+  },
+  "errors": []
+}

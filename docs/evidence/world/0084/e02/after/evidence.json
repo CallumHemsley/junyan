@@ -1,0 +1,454 @@
+{
+  "stage": "after",
+  "basis": "owner branch; actual App; fixed valid day save fixtures; reduced motion particles off; no travel claim",
+  "proof": [
+    {
+      "device": "desktop",
+      "phase": "morning",
+      "id": "park-default",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 61,
+        "facing": "north"
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "morning",
+      "id": "park-first-entrance",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 63
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "morning",
+      "id": "riverbank-default",
+      "mapId": "riverbank",
+      "position": {
+        "x": 40,
+        "y": 75,
+        "facing": "north"
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "morning",
+      "id": "riverbank-first-entrance",
+      "mapId": "riverbank",
+      "position": {
+        "x": 40,
+        "y": 75
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "morning",
+      "id": "orchard-approach",
+      "mapId": "park",
+      "position": {
+        "x": 16,
+        "y": 56
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "morning",
+      "id": "orchard-basket",
+      "mapId": "park",
+      "position": {
+        "x": 16,
+        "y": 52
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "morning",
+      "id": "pond-approach",
+      "mapId": "park",
+      "position": {
+        "x": 65,
+        "y": 36
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "morning",
+      "id": "pond-deck",
+      "mapId": "park",
+      "position": {
+        "x": 61,
+        "y": 33
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "morning",
+      "id": "ferry-approach",
+      "mapId": "riverbank",
+      "position": {
+        "x": 62,
+        "y": 61
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "morning",
+      "id": "old-ferry",
+      "mapId": "riverbank",
+      "position": {
+        "x": 62,
+        "y": 57
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "evening",
+      "id": "park-default",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 61,
+        "facing": "north"
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "evening",
+      "id": "park-first-entrance",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 63
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "evening",
+      "id": "riverbank-default",
+      "mapId": "riverbank",
+      "position": {
+        "x": 40,
+        "y": 75,
+        "facing": "north"
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "evening",
+      "id": "riverbank-first-entrance",
+      "mapId": "riverbank",
+      "position": {
+        "x": 40,
+        "y": 75
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "evening",
+      "id": "orchard-approach",
+      "mapId": "park",
+      "position": {
+        "x": 16,
+        "y": 56
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "evening",
+      "id": "orchard-basket",
+      "mapId": "park",
+      "position": {
+        "x": 16,
+        "y": 52
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "evening",
+      "id": "pond-approach",
+      "mapId": "park",
+      "position": {
+        "x": 65,
+        "y": 36
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "evening",
+      "id": "pond-deck",
+      "mapId": "park",
+      "position": {
+        "x": 61,
+        "y": 33
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "evening",
+      "id": "ferry-approach",
+      "mapId": "riverbank",
+      "position": {
+        "x": 62,
+        "y": 61
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "evening",
+      "id": "old-ferry",
+      "mapId": "riverbank",
+      "position": {
+        "x": 62,
+        "y": 57
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "morning",
+      "id": "park-default",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 61,
+        "facing": "north"
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "morning",
+      "id": "park-first-entrance",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 63
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "morning",
+      "id": "riverbank-default",
+      "mapId": "riverbank",
+      "position": {
+        "x": 40,
+        "y": 75,
+        "facing": "north"
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "morning",
+      "id": "riverbank-first-entrance",
+      "mapId": "riverbank",
+      "position": {
+        "x": 40,
+        "y": 75
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "morning",
+      "id": "orchard-approach",
+      "mapId": "park",
+      "position": {
+        "x": 16,
+        "y": 56
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "morning",
+      "id": "orchard-basket",
+      "mapId": "park",
+      "position": {
+        "x": 16,
+        "y": 52
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "morning",
+      "id": "pond-approach",
+      "mapId": "park",
+      "position": {
+        "x": 65,
+        "y": 36
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "morning",
+      "id": "pond-deck",
+      "mapId": "park",
+      "position": {
+        "x": 61,
+        "y": 33
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "morning",
+      "id": "ferry-approach",
+      "mapId": "riverbank",
+      "position": {
+        "x": 62,
+        "y": 61
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "morning",
+      "id": "old-ferry",
+      "mapId": "riverbank",
+      "position": {
+        "x": 62,
+        "y": 57
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "evening",
+      "id": "park-default",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 61,
+        "facing": "north"
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "evening",
+      "id": "park-first-entrance",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 63
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "evening",
+      "id": "riverbank-default",
+      "mapId": "riverbank",
+      "position": {
+        "x": 40,
+        "y": 75,
+        "facing": "north"
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "evening",
+      "id": "riverbank-first-entrance",
+      "mapId": "riverbank",
+      "position": {
+        "x": 40,
+        "y": 75
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "evening",
+      "id": "orchard-approach",
+      "mapId": "park",
+      "position": {
+        "x": 16,
+        "y": 56
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "evening",
+      "id": "orchard-basket",
+      "mapId": "park",
+      "position": {
+        "x": 16,
+        "y": 52
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "evening",
+      "id": "pond-approach",
+      "mapId": "park",
+      "position": {
+        "x": 65,
+        "y": 36
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "evening",
+      "id": "pond-deck",
+      "mapId": "park",
+      "position": {
+        "x": 61,
+        "y": 33
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "evening",
+      "id": "ferry-approach",
+      "mapId": "riverbank",
+      "position": {
+        "x": 62,
+        "y": 61
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "evening",
+      "id": "old-ferry",
+      "mapId": "riverbank",
+      "position": {
+        "x": 62,
+        "y": 57
+      },
+      "errors": []
+    }
+  ]
+}

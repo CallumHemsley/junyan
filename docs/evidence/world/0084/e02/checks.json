@@ -1,0 +1,35 @@
+{
+  "source": "cc931d5190852eb1c6b2d9a9f2edd0ec96f63049",
+  "typescript": "passed Node22 tsc --noEmit",
+  "targetedTests": {
+    "command": "vitest run src/world/graph.test.ts src/world/world.test.ts src/world/maps/landscape/landscape.test.ts --maxWorkers=1",
+    "passed": 25,
+    "files": 3
+  },
+  "actualAppFinalFixtures": 40,
+  "fixtureConsoleErrors": 0,
+  "ordinaryTravel": {
+    "parkReciprocalBridgeReturnAndReload": "passed",
+    "phoneTownReciprocalJettyAndReload": "passed",
+    "finalParkLandmarks": "orchard -> bamboo -> pavilion -> pond deck -> ridge, actual pointer, 58.410218s continuous canvas recording"
+  },
+  "groupFade": "all3 species maximum alpha115/255 at inherited.45, ctx alpha preserved",
+  "wholeAppRuntime": "cloud Chromium, browser DPR2; existing runtime internal DPR1, logical canvas half CSS size; no competing browser proof workload",
+  "nativeDrawsIncludingBackdropRange": [
+    15,
+    62
+  ],
+  "callbackCostP95RangeMs": [
+    11.5,
+    24.59999999962747
+  ],
+  "rafMedianMs": 16.7,
+  "maximumRafP95Ms": 33.3,
+  "limitations": [
+    "Cloud browser figures are not native phone hardware benchmarks",
+    "Latest main266e9bc and current foundation reconciliation remain sole foundation ownership",
+    "Original activity journey/full-suite427 results are historical E01, not freshly rerun here",
+    "Independent visual verdict remains2/4 PARTIAL; ACTIVE objective; no overall PASS"
+  ],
+  "historicalNumericEvidenceDiff": []
+}
