@@ -1,13 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import { mapDefinitions } from './index';
+import { worldMapSchema } from '../../schema';
+import { canStand, findPath } from '../../geometry';
 
 // Footprint clearance is deliberately tested without the rendering adapter.
 const radius = .3;
-for (const map of mapDefinitions) {
+for (const raw of mapDefinitions) {
+  const map = worldMapSchema.parse(raw);
   describe(`${map.id} authored routes`, () => {
-    const blocked = (x: number, y: number) =>
-      x < 1 + radius || y < 1 + radius || x > map.bounds.width - 1 - radius || y > map.bounds.height - 1 - radius ||
-      map.colliders.some(({ rect: r }) => x > r.x - radius && x < r.x + r.width + radius && y > r.y - radius && y < r.y + r.height + radius);
+    const blocked = (x: number, y: number) => !canStand(map,{x,y},radius);
     const key = (x: number, y: number) => `${Math.round(x * 2)},${Math.round(y * 2)}`;
     const reachable = new Set<string>();
     const queue = [[map.defaultSpawn.x, map.defaultSpawn.y]];
@@ -24,6 +25,14 @@ for (const map of mapDefinitions) {
         expect(blocked(position.x, position.y), `${id} blocked`).toBe(false);
         expect(reachable.has(key(position.x, position.y)), `${id} disconnected`).toBe(true);
       }
+    });
+    it('uses shared pathfinding to reach the waterside approach', () => {
+      const id = map.id === 'park' ? 'park.pond-deck' : 'riverbank.fishing-jetty';
+      const goal = map.anchors.find(a => a.id === id)!.position;
+      expect(findPath(map,map.defaultSpawn,goal).length).toBeGreaterThan(0);
+    });
+    it('keeps resident hook segments walkable', () => {
+      for(const hook of map.npcHooks)for(const point of hook.route)expect(canStand(map,point),hook.id).toBe(true);
     });
     it('places safe arrivals outside exit triggers', () => {
       for (const entrance of map.entrances) for (const exit of map.exits) {

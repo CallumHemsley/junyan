@@ -1,7 +1,7 @@
 /** Original landscape art. The caller supplies the shared camera projection. */
 export type LandscapePoint = { x: number; y: number };
 export type LandscapeProp = {
-  kind: string; position: LandscapePoint; width: number; height: number; variant: number;
+  kind: string; position: LandscapePoint; width: number; height: number; variant: number | string;
 };
 export type LandscapeProject = (x: number, y: number, z?: number) => { x: number; y: number };
 
@@ -35,7 +35,7 @@ export function drawLandscapeProp(
     polygon([[x-w+4,y-3],[x-w+4,y-h*.4],[x-w*.5,y-h*.4],[x-w*.5,y-h*.8],[x+w*.35,y-h*.8],[x+w*.35,y-h*.6],[x+w-5,y-h*.6],[x+w-5,y-h*.2],[x+w*.3,y-1]],mid);
     block(x-w*.5,y-h*.77,w*.65,3,light); block(x-w*.75,y-h*.4,w*.5,3,light); block(x+w*.2,y-h*.5,5,2,light);
   };
-  const v = prop.variant;
+  const v = Number(prop.variant) || 0;
   let painted = true;
   switch (prop.kind) {
     case 'tree': case 'willow': {
@@ -44,8 +44,22 @@ export function drawLandscapeProp(
       shadow(w); polygon([[-3,0],[-2,-27],[4,-31],[5,-6],[9,-2]],'#695b41');
       block(-1,-27,2,24,'#9b8357');
       polygon([[0,-20],[-13,-30],[-12,-33],[2,-26],[15,-35],[17,-33],[3,-18]],'#756642');
-      crown(0,-22,w,h,willow?'#486f58':'#42694d',willow?'#75966a':'#6c8e58',willow?'#a1b57b':'#a6b875');
-      crown(-w*.55,-17,w*.55,20,'#486f50','#7a9c64','#a1b57b');
+      if(willow || v===0) {
+        crown(0,-22,w,h,willow?'#486f58':'#42694d',willow?'#75966a':'#6c8e58',willow?'#a1b57b':'#a6b875');
+        crown(-w*.55,-17,w*.55,20,'#486f50','#7a9c64','#a1b57b');
+      } else if(v===1) {
+        polygon([[-w,-30],[-w*.85,-44],[-w*.35,-57],[0,-61],[w*.75,-53],[w,-36],[w*.5,-24],[-w*.45,-23]],'#6e844d');
+        polygon([[-w*.85,-40],[-w*.35,-57],[0,-61],[w*.75,-53],[w*.4,-36],[-w*.4,-31]],'#a6ac65');
+        for(let i=-2;i<3;i++) polygon([[0,-28],[i*8-2,-50-Math.abs(i)*2],[i*8+1,-51-Math.abs(i)*2]],'#bdc17d');
+      } else if(v===2) {
+        crown(-w*.5,-22,w*.65,25,'#4f7450','#8d9d65','#c3bd7c');
+        crown(w*.45,-25,w*.7,29,'#547a54','#8ba36d','#c2ca8a');
+        crown(0,-36,w*.65,25,'#5b7e53','#a2af70','#d0cf90');
+      } else {
+        crown(0,-38,w*.46,40,'#3f6550','#678b68','#99b386');
+        crown(-w*.12,-21,w*.7,31,'#416a52','#6c916b','#a7b980');
+        block(-3,-68,2,8,'#b1be8a');
+      }
       if (willow) for (let i=-3;i<=3;i++) {
         const sway = reducedMotion ? 0 : Math.round(Math.sin(elapsedMs/1200+i)*1.2);
         block(i*6+sway,-35+(i%2)*3,2,22+((i+3)%3)*4,'#8eaa74');
@@ -72,6 +86,8 @@ export function drawLandscapeProp(
       for(let i=0;i<9;i++) {const x=(i%5)*3-6,y=-4-(i%3)*3;block(x,y-11-i%4,1,13+i%4,'#71855c'); block(x-1,y-15-i%4,3,5,'#a69c68');}break;
     case 'lilies':
       for(const [x,y] of [[-5,0],[4,-3],[5,3]]) {polygon([[x-4,y],[x,y-2],[x+5,y],[x,y+2]],'#819b6a');block(x,y-3,2,2,'#f2e4be');}break;
+    case 'shrub':
+      shadow(8);crown(0,-3,10,10,'#557851','#83985f','#afba7c');break;
     case 'flowers':
       for(let i=0;i<5;i++){let x=(i*7)%15-7,y=(i*3)%8-4;block(x,y-4,1,6,'#668457');block(x-1,y-6,3,3,i%2?'#e8d49a':'#d0d8b5');}break;
     case 'pavilion':
