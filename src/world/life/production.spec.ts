@@ -49,15 +49,16 @@ async function walkTo(page: Page, target: { x: number; y: number }, touch: boole
   throw Error('Real-input route did not finish');
 }
 async function exitTo(page: Page, mapId: string, touch: boolean) {
-  const save = await savedGame(page), from = save.world!.mapId;
-  const point = await page.evaluate(async ({ save, mapId }) => {
-    const url = '/src/world/dynamic.ts', { mapsForNeighbourhood } = await import(url);
-    const map = mapsForNeighbourhood(save.neighbourhood)[save.world!.mapId];
+  const save = await savedGame(page);
+  const target = await page.evaluate(async ({ save, mapId }) => {
+    const url = '/src/world/dynamic.ts', stateUrl = '/src/world/state.ts';
+    const { mapsForNeighbourhood } = await import(url), { restoreWorld } = await import(stateUrl);
+    const maps = mapsForNeighbourhood(save.neighbourhood), world = restoreWorld(save.world, maps, save.neighbourhood!.location), map = maps[world.mapId];
     const exit = map.exits.find((item: { targetMapId: string }) => item.targetMapId === mapId);
     if (!exit) throw Error(`Missing real exit to ${mapId}`);
-    return { x: exit.rect.x + exit.rect.width / 2, y: exit.rect.y + exit.rect.height / 2 };
+    return { from: map.id, point: { x: exit.rect.x + exit.rect.width / 2, y: exit.rect.y + exit.rect.height / 2 } };
   }, { save, mapId });
-  await walkTo(page, point, touch, from);
+  await walkTo(page, target.point, touch, target.from);
   await expect(page.getByTestId('world-viewport')).toHaveAttribute('data-map', mapId);
 }
 
