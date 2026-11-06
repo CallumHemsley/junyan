@@ -134,74 +134,14 @@
     },
     {
       "branch": "codex/0081-residential",
-      "publishedHead": "8ebffb19c0d4c2ccc6fc20758b9e38c9886c0ad3",
-      "consumedHead": "8ebffb19c0d4c2ccc6fc20758b9e38c9886c0ad3",
+      "publishedHead": "bafbbfd2b58d6b0102883002bcd777ffb4830722",
+      "consumedHead": "bafbbfd2b58d6b0102883002bcd777ffb4830722",
       "lease": [
         "src/world/maps/residential",
         "src/world/art/residential",
         "src/features/apartment"
       ],
       "files": [
-        {
-          "path": "src/world/maps/residential/apartment.json",
-          "sha256": "c0107e3ac16a08a9d2e60067b66ef19601976c3be43219049fded6c4506a809a"
-        },
-        {
-          "path": "src/world/maps/residential/elevation.test.ts",
-          "sha256": "86cd801223ec6037d0ae8ac97e9386e884fb45dc1a6467ca40c37235fc623b5c"
-        },
-        {
-          "path": "src/world/maps/residential/elevation.ts",
-          "sha256": "b1f7fec2acb035341a0b67ff9ece15d4b07ef8ace594dc1571a5f77b5b059b6d"
-        },
-        {
-          "path": "src/world/maps/residential/index.ts",
-          "sha256": "982b04fceb07f3405d21e16d9bf73b13a25ea06f953c512625601ba803968ce8"
-        },
-        {
-          "path": "src/world/maps/residential/maps.test.ts",
-          "sha256": "7a65a9994ee2ef7079125482ad37993aa3ea77211c4f65cebde2b4b892027b7a"
-        },
-        {
-          "path": "src/world/maps/residential/residential-hall.json",
-          "sha256": "55c7c46314d0eb7c631064301a56c4da1efa670a508f37039ec7d82729028b90"
-        },
-        {
-          "path": "src/world/maps/residential/residential-stairs.json",
-          "sha256": "34a18baa564b6573515968f30eb16c1b8cee800828377f847f9c68174911bb3e"
-        },
-        {
-          "path": "src/world/art/residential/art.test.ts",
-          "sha256": "bfdf4d2961fe285f0b1e31466ca310e9d4ca8f0eda577c00c1e10e11c0dfd4cf"
-        },
-        {
-          "path": "src/world/art/residential/harness.html",
-          "sha256": "32dc52c62ac2f5421c90c78947b67fc9ebf091a422f0bf66fbaca707606d512f"
-        },
-        {
-          "path": "src/world/art/residential/harness.ts",
-          "sha256": "804bf0e143558e4a766c28d5a4618bcf442af0a61e4d7fb3f1063a7b50849374"
-        },
-        {
-          "path": "src/world/art/residential/index.ts",
-          "sha256": "e8aff682cee2aee718d2ad51b101c857b041dc1d0a005cf3cd85b0a05662a5d5"
-        },
-        {
-          "path": "src/world/art/residential/lighting.html",
-          "sha256": "d121a7f313f3a80ab98b1913ce3cfc2696682e35c93bcf398df72240d9397d2a"
-        },
-        {
-          "path": "src/world/art/residential/lighting.ts",
-          "sha256": "883c4ba53bdc2df2b8a8018d0f9d5175b31b6bb042a8f0f8fb5ced30d974d653"
-        },
-        {
-          "path": "src/world/art/residential/traversal.html",
-          "sha256": "adde7ef9f4b741383185da150ff4472111f2f2997db4c9e2dbefa325235385f9"
-        },
-        {
-          "path": "src/world/art/residential/traversal.tsx",
-          "sha256": "a6d84e2714a9b115623a4636da9ce4ce22be8be143b186c1fc81ef60f8aeb5b0"
-        },
         {
           "path": "src/features/apartment/Scene.tsx",
           "sha256": "9dd99330bd83f9370e66a6e3ffc56a3980d91d1df9d6d27082dc9890dfea92cf"
@@ -261,6 +201,66 @@
         {
           "path": "src/features/apartment/world.ts",
           "sha256": "bc9a71e6c46c13fafce7f39de625d4e1eb9785c09fe15ec5482c258174285a55"
+        },
+        {
+          "path": "src/world/art/residential/art.test.ts",
+          "sha256": "2cac5b42c76befc5c0cbd24f420b3b9098b3c3387369c5b44c110f121014b7c7"
+        },
+        {
+          "path": "src/world/art/residential/harness.html",
+          "sha256": "32dc52c62ac2f5421c90c78947b67fc9ebf091a422f0bf66fbaca707606d512f"
+        },
+        {
+          "path": "src/world/art/residential/harness.ts",
+          "sha256": "0139cc4c4e9bf994f44f8c1921c409f83ba50f55067b0c661b407e16a6ed75c0"
+        },
+        {
+          "path": "src/world/art/residential/index.ts",
+          "sha256": "e38cfeacbcc12f5c9ed7bcb153d12ebb80f431f596d9d786200b62c20cfa816a"
+        },
+        {
+          "path": "src/world/art/residential/lighting.html",
+          "sha256": "d121a7f313f3a80ab98b1913ce3cfc2696682e35c93bcf398df72240d9397d2a"
+        },
+        {
+          "path": "src/world/art/residential/lighting.ts",
+          "sha256": "562b96040e92aa115890ce408f221e04574a1addab285518bc838f35ab00a158"
+        },
+        {
+          "path": "src/world/art/residential/traversal.html",
+          "sha256": "adde7ef9f4b741383185da150ff4472111f2f2997db4c9e2dbefa325235385f9"
+        },
+        {
+          "path": "src/world/art/residential/traversal.tsx",
+          "sha256": "a6d84e2714a9b115623a4636da9ce4ce22be8be143b186c1fc81ef60f8aeb5b0"
+        },
+        {
+          "path": "src/world/maps/residential/apartment.json",
+          "sha256": "c0107e3ac16a08a9d2e60067b66ef19601976c3be43219049fded6c4506a809a"
+        },
+        {
+          "path": "src/world/maps/residential/elevation.test.ts",
+          "sha256": "92a1401742170ebe1b82cbd4ffa0d3ec8309987d7ca24a1fccec2d063717d86f"
+        },
+        {
+          "path": "src/world/maps/residential/elevation.ts",
+          "sha256": "cc6045b4df5d97cbed3b506ebd4a18984e6e543d04339ba93bcc769ad667a539"
+        },
+        {
+          "path": "src/world/maps/residential/index.ts",
+          "sha256": "927bf224a1b1503a18bf537c8130d4915365df83fda6757009378f93db37cc01"
+        },
+        {
+          "path": "src/world/maps/residential/maps.test.ts",
+          "sha256": "7a65a9994ee2ef7079125482ad37993aa3ea77211c4f65cebde2b4b892027b7a"
+        },
+        {
+          "path": "src/world/maps/residential/residential-hall.json",
+          "sha256": "55c7c46314d0eb7c631064301a56c4da1efa670a508f37039ec7d82729028b90"
+        },
+        {
+          "path": "src/world/maps/residential/residential-stairs.json",
+          "sha256": "34a18baa564b6573515968f30eb16c1b8cee800828377f847f9c68174911bb3e"
         }
       ]
     },

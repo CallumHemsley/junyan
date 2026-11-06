@@ -1,3 +1,4 @@
+import {surfaceHeight,pickSurface} from "./surfaces";
 import {advanceRoute} from "./locomotion";
 import {nearbyLife} from "./life";
 import {actorsFor,planFor,navigationFor,type WorldLifeAction} from "./life-bridge";
@@ -11,7 +12,7 @@ import {wordState} from "../recovery";
 import {useEffect,useRef,useState} from "react";
 import type {WorldState,Point} from "./schema";
 import type {MapRegistry} from "./registry";
-import {project,pointerGround,cameraForMap,type Camera} from "./camera";
+import {project,cameraForMap,type Camera} from "./camera";
 import {movePlayer,nearbyAnchors} from "./geometry";
 import {paintWorld} from "./painter";
 import type {WorldAction} from "./state";
@@ -71,7 +72,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
    }
    const dpr=1,width=Math.ceil(viewport.width/2),height=Math.ceil(viewport.height/2);
    if(element.width!==Math.round(width*dpr)||element.height!==Math.round(height*dpr)){element.width=Math.round(width*dpr);element.height=Math.round(height*dpr);}
-   const camera=cameraForMap(map.bounds,current.state.position,width,height,viewport.width<600?11:15,viewport.width<800?interactionInset/2:0,viewport.width>=800?interactionWidth/2:0);cameraRef.current=camera;
+   const camera=cameraForMap(map.bounds,current.state.position,width,height,viewport.width<600?11:15,viewport.width<800?interactionInset/2:0,viewport.width>=800?interactionWidth/2:0,surfaceHeight(map.id,current.state.position));cameraRef.current=camera;
    if(now-lastDraw>=1000/30){context.setTransform(dpr,0,0,dpr,0,0);paintWorld(context,map,{project:(p,z)=>project(p,camera,z),elapsedMs,reducedMotion:preference.matches,playerPosition:current.state.position,width,height,pass:"ground"},current.state.facing,moving,camera.scale,current.game,current.state,actorMotion.current);lastDraw=now;element.dataset.rendered="true";}
    frame=requestAnimationFrame(tick);
   };
@@ -92,7 +93,8 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
  }} onBlur={event=>{if(!event.currentTarget.contains(event.relatedTarget))keys.current.clear();}}>
   <canvas ref={canvas} aria-hidden="true" onPointerDown={event=>{
    if(paused||state.activeActivity)return;
-   root.current?.focus();const rect=event.currentTarget.getBoundingClientRect(),p=pointerGround({x:event.clientX,y:event.clientY},rect,cameraRef.current);
+   root.current?.focus();const rect=event.currentTarget.getBoundingClientRect(),p=pickSurface({x:(event.clientX-rect.left)*cameraRef.current.width/rect.width,y:(event.clientY-rect.top)*cameraRef.current.height/rect.height},cameraRef.current,map);
+   if(!p)return;
    const id=++requestId.current;
    worker.current?.postMessage({id,from:state.position,to:p,...(workerMap.current!==map?{map}:{})});workerMap.current=map;
   }}/>
