@@ -7,3 +7,5 @@ ACTIVE. No create_goal tool is exposed. This committed ticket/evidence objective
 Cloud /workspace/junyan is clean at main 8cd5bc209b7dc2d91cc0f765991de313f813f4eb. No product writes before central numbered ticket, file lease, strict port and world API. No new audio or local-device compute. No cross-thread send tool exposed; root must relay the stair portal and garden-state projection request.
 
 Outstanding evidence includes schema/collision/reachability, keyboard/touch traversal, stairs return, camera/click mapping, state collision, save/reload, original journeys, inspected phone/desktop screenshots/video and independent review. Goal remains active through integration and review fixes.
+
+Resumed2026-11-06 against actual assemblye02a747 for review456fce9 arrival-edge context finding. Sourceef2e283 adds lower city roofscape outside play geometry using the shared material shader; actual production before/after arrival and lookout captures are in roof-edge/. All independent visual acceptance and full-goal gates remain ACTIVE.

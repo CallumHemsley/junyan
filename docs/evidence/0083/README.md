@@ -2,13 +2,15 @@
 
 Full objective remains **ACTIVE**. This is a reviewable rooftop implementation, not completion of the connected-world program or an independent visual PASS.
 
+Current resumed follow-up: [roof-edge context at assemblye02a747](roof-edge/README.md). It addresses the independently identified green void at arrival with lower adjacent city roofs. Current after sourceef2e283; visual acceptance remains open. The checkpoint records below are historical. Assemblye02a747 has since integrated the per-plant anchors and contextual Garden binding.
+
 Owner is builder6, requested GPT-6.1 Sol medium. Thread `01a1ae20-85bf-7293-b853-cd8a6ebb7057`, attached managed cloud runtime `ccarenv_b64_Y2NhcmVudl9hZTI5NjBjNTFmNWM4MTkxODdjNzdiMTVhMzc3NjQxMw`, checkout `/workspace/junyan`, branch `codex/0083-rooftop`, strict port5485. Ticket0083 and goal.md are the durable objective. Native create_goal and cross-thread send were unavailable; no native registration is claimed. PR https://github.com/CallumHemsley/junyan/pull/32. Coordinator owns landing.
 
 Product source proved here is `e1e3fa3b520dd3fab21246f7860dbbd24524ae14`, incorporating foundation23be251. Later evidence/helper-only commits do not change that product patch. Shared files were consumed from foundation commits; this writer edits only allocated rooftop map/art, garden feature, own ticket/evidence paths. No new dependencies, audio, renderer loops, clocks or save schemas.
 
 The roof has a service landing, working reciprocal stairs, water tank/basin/pipes/drains, tool/potting corner, trellis and herb routes, three actual saved pots across six sites, orchard, skyline lookout and vine-covered seating terrace. Authored silhouettes distinguish herb blades, flowers, vines and trees. Varied rooflines recede behind the parapet. Existing growth/care/drooping/shade positions drive scenery; pot/shade feet drive collision. Existing tidying removes two real crate footprints. Shared material shading applies to all rooftop fills/strokes and preserves inherited occlusion alpha. One object entry per prop lets the shared compositor interleave actors.
 
-## Current proof
+## Prior checkpoint proof
 
 - Full current Vitest suite386/386 passes in `unit-final.log`. Focused garden/map/art checks19/19 include all720 legal pot/shade configurations, shared schema/pathfinding, per-object uniqueness and other-map isolation. The earlier park graph failure disappeared after consuming its owner's updated dependency; this writer did not edit it.
 - Production build passes in `build-final.log`; the shared bundle-size advisory remains visible.
@@ -23,7 +25,7 @@ The roof has a service landing, working reciprocal stairs, water tank/basin/pipe
 
 `performance/results.json` is a five-run cloud Chromium production-preview observation at390×844 during actual movement. Median background draw cadence22.09/s, range21.79–22.20/s; one60ms long task total; no page errors. RAF median16.7ms while only66–67 actual canvas background draws occurred per roughly3-second run. Separate `profile.json` / `profile-top.json` show substantial idle time and Canvas fill as the largest individual non-idle native sample. The shared viewport's30fps scheduling deserves foundation review. This is not a performance PASS, a speedup claim or real-phone hardware proof. Development observations are retained separately. No frame budget was raised.
 
-## Failed attempts and remaining work
+## Prior checkpoint findings
 
 Early pointer drivers assumed a centered/full-resolution camera and read only the temporary checkpoint. They caused bad routes, including unintended actual stair travel. Driver now uses foundation's clamped camera, logical-to-CSS canvas conversion, dynamic map and both save layers. One concurrent exact-head refresh saw an action-button click timeout; isolated repetition passed on both sizes. Vite logs also show generated legacy trace HTML triggering page reloads. Future trace output is outside the watched source tree. The failed bounded-state JSON and initial failed recording are retained; no save-loss or product-pointer bug is claimed from those drivers.
 
