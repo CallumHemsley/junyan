@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 const output=new URL('../../../docs/evidence/0085/',import.meta.url).pathname;
 await mkdir(output,{recursive:true});
 const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--mute-audio']});
-const results=[];
+const results=[],cameraCases=[];
 try {
  for(const [name,width,height] of [['desktop',1280,900],['phone',390,844]]) {
   const context=await browser.newContext({viewport:{width,height},recordVideo:{dir:output+'video/',size:{width,height}},hasTouch:name==='phone'});
@@ -12,6 +12,12 @@ try {
   page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
   await page.goto('http://127.0.0.1:5487/src/world/characters/harness.html');
   await page.waitForFunction(()=>window.__ACTOR_FIXTURE__);
+  if(name==='desktop')for(const scale of [18,24])for(const dpr of [1,2]) {
+   const result=await page.evaluate(({scale,dpr})=>window.__ACTOR_FIXTURE__.cameraMatrix(scale,dpr),{scale,dpr});
+   assert.equal(result.width,256*dpr);assert.equal(result.height,160*dpr);assert.deepEqual(result.anchor,{x:128,y:80});
+   await writeFile(output+`camera-${scale}-dpr-${dpr}.png`,Buffer.from(result.png,'base64'));
+   cameraCases.push({scale,dpr,width:result.width,height:result.height,anchor:result.anchor});
+  }
   await page.screenshot({path:output+name+'-comparison.png',fullPage:true});
   if(name==='desktop'){const data=await page.locator('#sheet').evaluate(canvas=>canvas.toDataURL('image/png').split(',')[1]);await writeFile(output+'revised-directions-2x.png',Buffer.from(data,'base64'));}
   await page.locator('#after').focus();
@@ -41,6 +47,7 @@ try {
   await context.close();
   if(video)await video.saveAs(output+name+'-motion.webm');
  }
+ await writeFile(output+'camera-results.json',JSON.stringify(cameraCases,null,2));
  await writeFile(output+'fixture-results.json',JSON.stringify(results,null,2));
 }finally{await browser.close();}
 console.log(JSON.stringify(results));

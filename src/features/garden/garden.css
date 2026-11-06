@@ -61,3 +61,5 @@
 @media (min-width: 760px) {.garden-scene {max-width: 720px; margin-left: auto; margin-right: auto;} }
 @media (max-width: 600px) {.garden {padding: 8px;} .garden-heading h1 {font-size: 20px;} .garden-pots {margin-top: -8px;} .garden-pot-card {padding: 2px;} .garden-pot-name {font-size: 18px;} .garden-workbench {padding: 8px 4px;} .garden-tools {gap: 8px;} .garden-tool {gap: 0;} .garden-tool-label {font-size: 14px;} .garden-conversation {padding: 12px 16px;} .garden-spoken {font-size: 28px;} .garden-footer {padding: 4px;} .garden-footer .word {font-size: 14px;} }
 @media (prefers-reduced-motion: reduce) {.garden *, .garden *::before, .garden *::after {transition: none !important; animation: none !important;} }
+
+.garden-placement-choices {display:flex;flex-wrap:wrap;gap:var(--space-8);padding:var(--space-12) 0}.garden-placement-choices button {min-width:44px;min-height:44px;border:1px solid var(--hairline-strong);border-radius:var(--radius-chip);background:var(--surface-control);color:var(--text-primary)}.garden-placement-choices button:focus-visible {outline:2px solid var(--text-primary);outline-offset:2px}

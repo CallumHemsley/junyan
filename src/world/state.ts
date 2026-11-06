@@ -1,4 +1,4 @@
-import {restoreLife} from "./life";
+import {restoreLife,advanceLife} from "./life";
 import { z } from "zod";
 import { facingSchema, pointSchema, type WorldState, type Point, type FeatureId } from "./schema";
 import type { MapRegistry } from "./registry";
@@ -21,8 +21,10 @@ export function restoreWorld(value:unknown,maps:MapRegistry,location="restaurant
   const activeAnchorId=activeActivity?(nearbyAnchors(map,position).find(a=>a.id===state.activeAnchorId&&a.featureId===activeActivity)?.id??nearbyAnchors(map,position).find(a=>a.featureId===activeActivity)?.id??null):null;
   return {...state,position:{x:position.x,y:position.y},returnPositions,activeActivity,activeAnchorId,life:restoreLife(state.life)};
 }
-export type WorldAction = {type:"world-move";position:Point}|{type:"world-interact";anchorId:string}|{type:"world-close"};
+export type WorldAction = {type:"world-clock";elapsedMs:number}|{type:"world-life";actionId:string;elapsedMs:number}|{type:"world-move";position:Point}|{type:"world-interact";anchorId:string}|{type:"world-close"};
 export function reduceWorld(state:WorldState,action:WorldAction,maps:MapRegistry):WorldState {
+  if(action.type==="world-clock") {const previous=restoreLife(state.life);const life=advanceLife(previous,action.elapsedMs-previous.elapsedMs,true);return life===previous?state:{...state,life};}
+  if(action.type==="world-life")return state;
   const map=maps[state.mapId];
   if(!map) return createWorld(maps);
   if(action.type==="world-close") return state.activeActivity?{...state,activeActivity:null,activeAnchorId:null}:state;

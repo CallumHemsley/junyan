@@ -1,0 +1,94 @@
+[
+  {
+    "device": "desktop",
+    "seededStart": {
+      "mapId": "park",
+      "position": {
+        "x": 78,
+        "y": 10
+      }
+    },
+    "saved": {
+      "version": 1,
+      "mapId": "riverbank",
+      "position": {
+        "x": 7.474873734152919,
+        "y": 7.525126265847078
+      },
+      "facing": "north",
+      "returnPositions": {
+        "park": {
+          "x": 81.917,
+          "y": 10,
+          "facing": "east"
+        }
+      },
+      "activeActivity": null
+    },
+    "loaded": {
+      "version": 1,
+      "mapId": "riverbank",
+      "position": {
+        "x": 7.474873734152919,
+        "y": 7.525126265847078
+      },
+      "facing": "north",
+      "returnPositions": {
+        "park": {
+          "x": 81.917,
+          "y": 10,
+          "facing": "east"
+        }
+      },
+      "activeActivity": null
+    },
+    "consoleErrors": [],
+    "scope": "actual App travel from park to riverbank and reload; initial valid day save seeded to isolate landscape integration; whole town/activity journey pending"
+  },
+  {
+    "device": "phone",
+    "seededStart": {
+      "mapId": "park",
+      "position": {
+        "x": 78,
+        "y": 10
+      }
+    },
+    "saved": {
+      "version": 1,
+      "mapId": "riverbank",
+      "position": {
+        "x": 6.6488889058430996,
+        "y": 9.20888900756836
+      },
+      "facing": "east",
+      "returnPositions": {
+        "park": {
+          "x": 81.999,
+          "y": 10,
+          "facing": "east"
+        }
+      },
+      "activeActivity": null
+    },
+    "loaded": {
+      "version": 1,
+      "mapId": "riverbank",
+      "position": {
+        "x": 6.6488889058430996,
+        "y": 9.20888900756836
+      },
+      "facing": "east",
+      "returnPositions": {
+        "park": {
+          "x": 81.999,
+          "y": 10,
+          "facing": "east"
+        }
+      },
+      "activeActivity": null
+    },
+    "consoleErrors": [],
+    "scope": "actual App travel from park to riverbank and reload; initial valid day save seeded to isolate landscape integration; whole town/activity journey pending"
+  }
+]

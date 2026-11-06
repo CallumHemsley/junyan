@@ -6,17 +6,23 @@ export type AtmosphereProject = (point: Point) => {x: number; y: number};
 /** The host owns projection, clipping, canvas resolution and the frame loop. */
 export function drawAtmosphereLayer(ctx: CanvasRenderingContext2D, commands: readonly AtmosphereCommand[], layer: AtmosphereCommand['layer'], project: AtmosphereProject): number {
   ctx.save();
+  const inheritedOpacity=ctx.globalAlpha;
   let drawn=0;
+  const path=(command:AtmosphereCommand)=>command.points.forEach((point,i)=>{
+    const p=project(point),x=Math.round(p.x),y=Math.round(p.y);
+    if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+  });
+  const water=layer==='ground'?commands.filter(c=>c.layer===layer&&c.role==='water-base'):[];
+  if(water.length){
+    ctx.globalAlpha=inheritedOpacity;ctx.fillStyle=`rgb(${water[0].color.join(',')})`;ctx.beginPath();
+    for(const command of water){path(command);ctx.closePath();drawn++;}
+    ctx.fill();
+  }
   for(const command of commands) {
-    if(command.layer!==layer) continue;
-    ctx.globalAlpha=command.opacity;
+    if(command.layer!==layer||command.role==='water-base')continue;
+    ctx.globalAlpha=inheritedOpacity*command.opacity;
     ctx.fillStyle=`rgb(${command.color.join(',')})`;
-    ctx.beginPath();
-    command.points.forEach((point,i)=>{
-      const p=project(point), x=Math.round(p.x), y=Math.round(p.y);
-      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
-    });
-    ctx.closePath(); ctx.fill(); drawn++;
+    ctx.beginPath();path(command);ctx.closePath();ctx.fill();drawn++;
   }
   ctx.restore();
   return drawn;
@@ -44,4 +50,16 @@ export function renderAtmosphereObjects(frame:{commands:readonly AtmosphereComma
   return [...groups].map(([id,group])=>({id:`atmosphere:${id}`,position:group.position,depth:group.depth,
     draw(ctx,view){drawAtmosphereLayer(ctx,group.commands,'objects',point=>view.project(point,point.z??0));},
   }));
+}
+
+/** Invert the host's affine ground projection; no second camera or persistent state. */
+export function visibleAtmosphereRect(view:Pick<WorldRenderView,'project'|'width'|'height'>,padding=96):import('./index').Rect {
+  const origin=view.project({x:0,y:0}),x=view.project({x:1,y:0}),y=view.project({x:0,y:1});
+  const ax=x.x-origin.x,ay=x.y-origin.y,bx=y.x-origin.x,by=y.y-origin.y,det=ax*by-ay*bx;
+  const corners=[[-padding,-padding],[view.width+padding,-padding],[-padding,view.height+padding],[view.width+padding,view.height+padding]].map(([sx,sy])=>({
+    x:((sx-origin.x)*by-(sy-origin.y)*bx)/det,
+    y:(ax*(sy-origin.y)-ay*(sx-origin.x))/det,
+  }));
+  const left=Math.min(...corners.map(p=>p.x)),top=Math.min(...corners.map(p=>p.y));
+  return {x:left,y:top,width:Math.max(...corners.map(p=>p.x))-left,height:Math.max(...corners.map(p=>p.y))-top};
 }

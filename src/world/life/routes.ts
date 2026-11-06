@@ -1,3 +1,4 @@
+import { additionalHooks } from './routines';
 import { segmentIntersects } from './visibility';
 import type { Position } from '../../contracts';
 import type { ActorRoute, LifeMap, LifePlan, Navigation, Rect, RoutePhase } from './model';
@@ -18,7 +19,7 @@ export function compileLife(map: LifeMap, navigation: Navigation): LifePlan {
   const actors: ActorRoute[] = [], diagnostics: { hookId: string; reason: string }[] = [];
   const exclusions = entranceExclusions(map);
   const ids = new Set<string>();
-  for (const hook of map.npcHooks) {
+  for (const hook of [...map.npcHooks, ...additionalHooks(map)]) {
     const profile = profileFor(hook.characterId);
     const fail = (reason: string) => diagnostics.push({ hookId: hook.id, reason });
     if (ids.has(hook.id)) { fail('duplicate-hook'); continue; }
@@ -52,5 +53,5 @@ export function compileLife(map: LifeMap, navigation: Navigation): LifePlan {
     if (!valid) { fail('unreachable-route-or-entrance-crossing'); continue; }
     actors.push({ id: hook.id, characterId: profile.id, profile, home: hook.position, phases, durationMs: elapsed });
   }
-  return { mapId: map.id, actors, landmarks: map.landmarks, diagnostics };
+  return { mapId: map.id, actors, landmarks: map.landmarks, exclusions, diagnostics };
 }

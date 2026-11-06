@@ -23,5 +23,8 @@ export function segmentIntersects(from: Point, to: Point, rect: Rect, radius: nu
 export function canInspect(map: WorldMapDefinition, from: Point, target: Point): boolean {
   if (!canStand(map, from, 0) || !Number.isFinite(target.x) || !Number.isFinite(target.y)) return false;
   if (target.x < 0 || target.y < 0 || target.x > map.bounds.width || target.y > map.bounds.height) return false;
-  return map.colliders.every(({ rect }) => contains(rect, target) || !segmentIntersects(from, target, rect, 0));
+  const occupied = map.colliders.filter(({ rect }) => contains(rect, target));
+  const targetId = occupied.length === 1 ? occupied[0].id : undefined;
+  const nearTarget = { x: from.x + (target.x - from.x) * (1 - 1e-7), y: from.y + (target.y - from.y) * (1 - 1e-7) };
+  return map.colliders.every(({ id, rect }) => id === targetId || !segmentIntersects(from, nearTarget, rect, 0));
 }
