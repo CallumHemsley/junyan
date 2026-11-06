@@ -40,3 +40,7 @@ The initial repeated silhouettes were rejected by root review. Revision 2 replac
 - Foundation dependency was merged through `e6270d0` to consume the real per-object compositor type. `actorObject(id, sample, position)` now returns a real `WorldRenderObject` with grounded depth. Call `sampleActor` once for that actor and pass the result to this factory. `drawActor` intentionally does not filter `view.pass`, because foundation's sorted-object callbacks currently receive its original view. The caller places the object into the sorted actor/object list.
 
 Production camera scales 18/24, phone DPR 1/2, residents with held objects, actual authored scenery crossings and independent experience review remain OPEN. Foundation is the only production wiring owner. No shared renderer, App, save or content file has been edited by 0085. Foundation changes appear only through dependency merges.
+
+## Camera adapter matrix
+
+`camera-results.json` and `camera-{18,24}-dpr-{1,2}.png` record the exact foundation camera projection at both production zooms with DPR-scaled backing surfaces. All four images were inspected. The held watering can, pixel edges and foot anchor remain coherent. This is a controlled adapter check, not a claim that production scenery crossings have passed. Contact shadows now include individual planted feet. `revised-directions-2x.png` is the revised native cast sheet.

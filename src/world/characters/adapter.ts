@@ -29,6 +29,12 @@ export function paintActorCanvas(context:CanvasRenderingContext2D,sample:ActorSa
   context.imageSmoothingEnabled=false;
   context.fillStyle='rgba(48,43,42,.18)';
   context.beginPath();context.ellipse(x,y-1,8*scale,3*scale,0,0,Math.PI*2);context.fill();
+  context.fillStyle='rgba(48,43,42,.28)';
+  for(const foot of sample.frame.feet)if(foot.planted) {
+    const left=Math.round(x+(foot.x-sample.frame.anchor.x-2)*scale);
+    const right=Math.round(x+(foot.x-sample.frame.anchor.x+2)*scale);
+    context.fillRect(left,Math.round(y+(foot.y-sample.frame.anchor.y)*scale),right-left,Math.max(1,Math.round(scale)));
+  }
   for(const command of sample.drawCommands) {
     context.fillStyle=`rgb(${command.color.join(',')})`;
     const left=Math.round(x+command.x*scale),top=Math.round(y+command.y*scale);
