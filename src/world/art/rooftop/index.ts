@@ -42,14 +42,13 @@ const paintMap: DrawMap = (ctx, map, view) => {
     }
   };
   const cluster = (x: number, y: number, z: number, size: number, color: string, seed = 0) => {
-    const p = project(x, y, z), px = Math.abs(project(x + size, y).x - project(x, y).x);
-    const radius = Math.max(2, px);
-    const r = Math.max(3, Math.round(radius));
-    const steps = [[-1, -.15], [-1, -.55], [-.65, -.55], [-.65, -.95], [-.1, -.95], [-.1, -1.1], [.4, -1.1], [.4, -.8], [.85, -.8], [.85, -.4], [1.05, -.4], [1.05, .15], [.75, .15], [.75, .45], [-.5, .45], [-.5, .25], [-.9, .25], [-.9, -.15]];
-    polygon(steps.map(([dx, dy]) => ({x: p.x + Math.round(dx * r), y: p.y + Math.round(dy * r)})), palette.leaf);
-    polygon(steps.map(([dx, dy]) => ({x: p.x + Math.round(dx * r * .85), y: p.y + Math.round(dy * r * .75) - 1})), color);
-    ctx.fillStyle = material(palette.leafLight);
-    for (let k = 0; k < 4; k++) ctx.fillRect(Math.round(p.x + ((k * 7 + seed * 3) % 13 - 6) / 8 * radius), Math.round(p.y + ((k * 3 + seed) % 5 - 4) / 6 * radius), 2, 1);
+    const p = project(x, y, z), radius = Math.max(3, Math.abs(project(x + size, y).x - project(x, y).x));
+    // One joined crown with broad light/shadow facets stays readable at native phone scale.
+    const crown = [[-1, -.12], [-.88, -.58], [-.5, -.67], [-.3, -1.02], [.24, -.95], [.56, -.73], [.89, -.63], [1.03, -.15], [.8, .25], [.3, .4], [-.38, .35], [-.75, .13]];
+    const point = (dx: number, dy: number) => ({x: p.x + Math.round(dx * radius), y: p.y + Math.round(dy * radius)});
+    polygon(crown.map(([dx, dy]) => point(dx, dy)), palette.leaf);
+    polygon([[-.98, -.15], [-.85, -.58], [-.5, -.66], [-.3, -1], [.24, -.93], [.56, -.7], [.86, -.61], [.97, -.2], [.5, -.02], [.08, -.17], [-.32, .04]].map(([dx, dy]) => point(dx, dy)), color);
+    if (radius > 4) polygon([[-.65, -.52], [-.42, -.66], [-.22, -.91], [.2, -.83], [.41, -.58], [.1, -.46], [-.18, -.5], [-.4, -.32]].map(([dx, dy]) => point(dx + seed % 2 * .05, dy)), palette.leafLight);
   };
   const bed = (p: Prop, kind: number) => {
     const {x, y} = p.position, w = p.width, h = p.height;
@@ -139,7 +138,7 @@ const paintMap: DrawMap = (ctx, map, view) => {
       const wood = material === 'roof-wood', brick = material === 'roof-brick';
       for (let y = r.y; y < r.y + r.height; y++) for (let x = r.x; x < r.x + r.width; x++) {
         const n = (x * 17 + y * 31) % 7;
-        const base = wood ? ['#9b835f', '#a98f65', '#a58b61'][n % 3] : brick ? ['#9caa92', '#b0b99f', '#a5b098'][n % 3] : ['#a8b4a0', '#b6bea8', '#aeb8a3'][n % 3];
+        const base = wood ? ['#9b835f', '#a98f65', '#a58b61'][n % 3] : brick ? ['#b1b5a1', '#b8bba7', '#b4b8a4'][n % 3] : ['#b8bead', '#bdc2b1', '#babead'][n % 3];
         plane(x + .018, y + .018, Math.min(.97, r.x + r.width - x), Math.min(.97, r.y + r.height - y), .005, base);
         if (wood) {
           timber(x + .03, y + .03, .9, .9, .012);
