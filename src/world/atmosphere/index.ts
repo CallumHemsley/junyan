@@ -18,6 +18,7 @@ export type AtmosphereHooks = {
 export type AtmosphereCommand = {
   layer: 'ground' | 'light' | 'objects' | 'foreground';
   object?: {id:string;position:Point;depth?:number};
+  role?:'water-base';
   points: readonly Point[]; color: RGB; opacity: number;
 };
 export type LightState = {
@@ -77,12 +78,12 @@ export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks 
   const wind = {x: Math.sin(t*.75)*.065 + Math.sin(t*.29)*.04, y: Math.sin(t*.53)*.025};
   const commands: AtmosphereCommand[] = [];
   const visible = (r: Rect, pad=2) => !viewport || r.x+r.width+pad>=viewport.x && r.x-pad<=viewport.x+viewport.width && r.y+r.height+pad>=viewport.y && r.y-pad<=viewport.y+viewport.height;
-  const add = (layer: AtmosphereCommand['layer'], points: Point[], color: RGB, opacity=1, object?:AtmosphereCommand['object']) => {if(commands.length<MAX_ATMOSPHERE_COMMANDS) commands.push({layer,points,color,opacity,object});};
+  const add = (layer: AtmosphereCommand['layer'], points: Point[], color: RGB, opacity=1, object?:AtmosphereCommand['object'],role?:AtmosphereCommand['role']) => {if(commands.length<MAX_ATMOSPHERE_COMMANDS) commands.push({layer,points,color,opacity,object,role});};
   for (const water of hooks.water ?? []) {
     const r = water.rect;
     if (!visible(r)) continue;
     // Base belongs below actors. Sparse reflected dashes preserve readable banks.
-    add('ground',square(r.x,r.y,r.width,r.height),light.water);
+    add('ground',square(r.x,r.y,r.width,r.height),light.water,1,undefined,'water-base');
     const x0 = Math.max(r.x,viewport?.x ?? r.x), y0 = Math.max(r.y,viewport?.y ?? r.y);
     const x1 = Math.min(r.x+r.width,viewport ? viewport.x+viewport.width : r.x+r.width);
     const y1 = Math.min(r.y+r.height,viewport ? viewport.y+viewport.height : r.y+r.height);
@@ -102,13 +103,14 @@ export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks 
       const length=horizontal?r.width:r.height;
       for(let i=0;i<length && commands.length<MAX_ATMOSPHERE_COMMANDS-64;i+=.5) {
         const d=Math.min(.34,length-i), phase=variation(`${water.id}:${edge}:${i}`,input.seed);
-        const inset=.04+phase*.07;
-        const x=horizontal?r.x+i:edge==='west'?r.x+inset:r.x+r.width-inset-.045;
-        const y=horizontal?(edge==='north'?r.y+inset:r.y+r.height-inset-.045):r.y+i;
+        const cross=horizontal?r.height:r.width,thickness=Math.min(.045,cross/4);
+        const inset=Math.min(.04+phase*.07,(cross-thickness)/2);
+        const x=horizontal?r.x+i:edge==='west'?r.x+inset:r.x+r.width-inset-thickness;
+        const y=horizontal?(edge==='north'?r.y+inset:r.y+r.height-inset-thickness):r.y+i;
         if(!visible({x,y,width:.5,height:.5},0)) continue;
         const outside={x:horizontal?x+d/2:edge==='west'?r.x-.01:r.x+r.width+.01, y:horizontal?(edge==='north'?r.y-.01:r.y+r.height+.01):y+d/2};
         if((hooks.water??[]).some(other=>other!==water && outside.x>other.rect.x && outside.x<other.rect.x+other.rect.width && outside.y>other.rect.y && outside.y<other.rect.y+other.rect.height)) continue;
-        add('ground',square(x,y,horizontal?d:.045,horizontal?.045:d),shoreColor,.7);
+        add('ground',square(x,y,horizontal?d:thickness,horizontal?thickness:d),shoreColor,.7);
       }
     }
   }

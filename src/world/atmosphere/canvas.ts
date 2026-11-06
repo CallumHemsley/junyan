@@ -8,16 +8,21 @@ export function drawAtmosphereLayer(ctx: CanvasRenderingContext2D, commands: rea
   ctx.save();
   const inheritedOpacity=ctx.globalAlpha;
   let drawn=0;
+  const path=(command:AtmosphereCommand)=>command.points.forEach((point,i)=>{
+    const p=project(point),x=Math.round(p.x),y=Math.round(p.y);
+    if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+  });
+  const water=layer==='ground'?commands.filter(c=>c.layer===layer&&c.role==='water-base'):[];
+  if(water.length){
+    ctx.globalAlpha=inheritedOpacity;ctx.fillStyle=`rgb(${water[0].color.join(',')})`;ctx.beginPath();
+    for(const command of water){path(command);ctx.closePath();drawn++;}
+    ctx.fill();
+  }
   for(const command of commands) {
-    if(command.layer!==layer) continue;
+    if(command.layer!==layer||command.role==='water-base')continue;
     ctx.globalAlpha=inheritedOpacity*command.opacity;
     ctx.fillStyle=`rgb(${command.color.join(',')})`;
-    ctx.beginPath();
-    command.points.forEach((point,i)=>{
-      const p=project(point), x=Math.round(p.x), y=Math.round(p.y);
-      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
-    });
-    ctx.closePath(); ctx.fill(); drawn++;
+    ctx.beginPath();path(command);ctx.closePath();ctx.fill();drawn++;
   }
   ctx.restore();
   return drawn;

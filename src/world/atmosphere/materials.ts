@@ -16,32 +16,6 @@ export function shadeAtmosphereCss(style:string,light:LightState,exposure=1):str
   return `rgba(${shaded.join(',')},${alpha})`;
 }
 
-/** Scope this context to material art callbacks. Draw emissive atmosphere on the raw host context. */
-export function createAtmosphereMaterialContext(ctx:CanvasRenderingContext2D,light:LightState,exposure=1):CanvasRenderingContext2D {
-  const colors=new Map<string,string>(),methods=new Map<PropertyKey,unknown>();
-  return new Proxy(ctx,{
-    get(target,key) {
-      const cached=methods.get(key);
-      if(cached!==undefined)return cached;
-      const value=Reflect.get(target,key,target);
-      if(typeof value!=='function')return value;
-      const method=value.bind(target);methods.set(key,method);return method;
-    },
-    set(target,key,value) {
-      if((key==='fillStyle'||key==='strokeStyle')&&typeof value==='string') {
-        let shaded=colors.get(value);
-        if(shaded===undefined) {
-          shaded=shadeAtmosphereCss(value,light,exposure);
-          if(colors.size>=2048)colors.clear();
-          colors.set(value,shaded);
-        }
-        return Reflect.set(target,key,shaded,target);
-      }
-      return Reflect.set(target,key,value,target);
-    },
-  });
-}
-
 export type MaterialShade=(base:RGB|string,exposure?:number)=>string;
 
 /** Explicit material boundary; outputs never change how later base colours are interpreted. */

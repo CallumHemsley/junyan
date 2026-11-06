@@ -61,6 +61,10 @@ describe('atmosphere',()=>{
   const frame=sampleAtmosphere(input,hooks,{x:80,y:80,width:10,height:10});
   expect(frame.commands).toEqual([]);
  });
+ it('keeps shore paint inside narrow fractional water fragments beside decks',()=>{
+  const frame=sampleAtmosphere(input,{water:[{id:'sliver',rect:{x:1,y:2,width:.05,height:.4},shore:['north','east','south','west']}]});
+  for(const c of frame.commands)for(const p of c.points){expect(p.x).toBeGreaterThanOrEqual(1-1e-8);expect(p.x).toBeLessThanOrEqual(1.05+1e-8);expect(p.y).toBeGreaterThanOrEqual(2-1e-8);expect(p.y).toBeLessThanOrEqual(2.4+1e-8);}
+ });
  it('keeps clipped water dashes within the authored water region',()=>{
   const frame=sampleAtmosphere(input,{water:hooks.water},{x:2,y:2,width:4,height:2});
   for(const command of frame.commands) for(const p of command.points) {
