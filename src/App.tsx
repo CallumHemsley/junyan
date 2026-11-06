@@ -267,7 +267,7 @@ export default function App() {
       wordOpen
         ? "[data-word-lookup], .word-popover button"
         : ".paper-panel button:not(:disabled), .paper-panel a[href], .paper-panel input",
-    )].filter(element => !element.closest("[inert]") && element.getClientRects().length > 0);
+    )].filter(element => !element.closest("[inert]") && element.checkVisibility());
     const trap = (event: KeyboardEvent) => {
       if (event.key !== "Tab") return;
       const available = controls();
@@ -472,6 +472,7 @@ export default function App() {
           {binding.kind === "apartment" && <ProgressionView game={state} content={content} now={Date.now()} onAction={action=>{dispatch(action);if(action.type==="follow-scenario"){setSummaryOpen(false);dispatch({type:"world-close"});close();}}} onLookup={lookup}/>}
           <NeighbourhoodGifts state={neighbourhood} onClaim={giftId=>{const before=sessionRef.current;const next=dispatch({type:"claim-neighbourhood-gift",giftId});if(next!==before)playLine(apartmentLines.gift);}}/>
           {giftNotice&&<FeatureLine line={apartmentLines.gift} onLookup={lookup} onPlay={playLine}/>}
+          {audioNotice}
         </ContextualInteraction>}
         {locationId !== "restaurant" && panel === "none" && audioNotice}
         {saveError && (

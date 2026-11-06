@@ -64,11 +64,13 @@ export function drawLifeActor(ctx: CanvasRenderingContext2D, actor: ActorPose, v
   drawResident(ctx, actor, view, posture);
 }
 
+export function visibleLifeReactions(state: LifeState | undefined, mapId: string, elapsedMs: number) {
+  return state?.reactions.filter(event => event.mapId === mapId && elapsedMs >= event.atMs && elapsedMs - event.atMs <= 1800) ?? [];
+}
+
 export function drawLifeReactions(ctx: CanvasRenderingContext2D, state: LifeState, mapId: string, targets: readonly { id: string; position: Position }[], view: LifeView): void {
-  for (const event of state.reactions) {
-    if (event.mapId !== mapId) continue;
+  for (const event of visibleLifeReactions(state, mapId, view.elapsedMs)) {
     const age = view.elapsedMs - event.atMs;
-    if (age < 0 || age > 1800) continue;
     const target = targets.find(target => target.id === event.targetId);
     if (!target) continue;
     const p = view.project(target.position);
