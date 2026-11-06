@@ -1,0 +1,2 @@
+import {defineConfig,devices} from '@playwright/test';
+export default defineConfig({testDir:'.',testMatch:'journey.spec.ts',workers:1,timeout:480000,reporter:[['list'],['json',{outputFile:'docs/evidence/0078/journey-results.json'}]],outputDir:'docs/evidence/0078/journey-results',use:{baseURL:'http://127.0.0.1:5480',launchOptions:{executablePath:'/usr/bin/chromium',args:['--no-sandbox','--mute-audio']},trace:'on',video:'on'},projects:[{name:'desktop',use:{viewport:{width:1440,height:1000}}},{name:'phone',use:{...devices['iPhone 13'],defaultBrowserType:'chromium'}}]});
