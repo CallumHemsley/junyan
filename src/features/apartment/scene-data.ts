@@ -40,6 +40,21 @@ function furniture(api:SceneApi, p:Placement, state:State) {
       box(x+.05,y+.05,.05,right-.05,front-.05,.25,colour);sphere((x+right)/2,(y+front)/2,.26,.48,colour,'solid');
       break;
     }
+    case 'blue-vase':
+      sphere(x+.7,y+.7,.4,.43,[128,155,171],'solid');box(x+.51,y+.51,.35,x+.89,y+.89,1.0,[128,155,171]);
+      break;
+    case 'large-basket':
+      box(x+.05,y+.05,0,right-.05,front-.05,.85,wood);
+      box(x+.18,y+.18,.85,right-.18,front-.18,.88,dark);
+      for(let i=0;i<6;i++) box(x+.04,y+.04,.1+i*.12,right-.04,y+.08,.14+i*.12,cream);
+      capsule([x+.1,y+.7,.85],[right-.1,y+.7,1.25],.07,.07,()=>wood,'solid');
+      break;
+    case 'small-lamp':
+      sphere(x+.7,y+.7,.1,.35,dark,'solid');
+      capsule([x+.7,y+.7,.1],[x+.7,y+.7,.7],.06,.06,()=>dark,'solid');
+      box(x+.3,y+.3,.65,x+1.1,y+1.1,1.05,cream);
+      sphere(x+.7,y+.7,.74,.25,[245,212,151],'solid');
+      break;
     case 'vase': case 'garden.planter':
       box(x+.35,y+.35,0,right-.35,front-.35,.6,[132,157,139]);
       for(let i=0;i<5;i++) {const a=i*2.4;capsule([x+.7,y+.7,.55],[x+.7+Math.cos(a)*.45,y+.7+Math.sin(a)*.45,1.1+(i%2)*.3],.11,.07,()=>[103,140,105],'solid');}

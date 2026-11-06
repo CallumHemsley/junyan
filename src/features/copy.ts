@@ -7,7 +7,7 @@ export const mandarinFeatureUi = {
     cushionColour: '靠垫颜色', cushion: '靠垫', colours: {blue: '蓝色', cream: '米色'}, rugSize: '地毯大小', rug: '地毯', sizes: {small: '小', large: '大'}, gift: '今日小礼物',
     scene: '窗边的小家，床和家具，林姐站在门前', floorHelp: '地板，点一下预览，方向键移动，回车放下', window: '窗户', door: '门',
     cell: (x: number, y: number, protectedCell: boolean, occupant?: string) => `第${y + 1}行第${x + 1}格${protectedCell ? '，留出路' : occupant ? `，${occupant}` : ''}`,
-    items: {bed: '床', table: '桌子', chair: '椅子', rug: '地毯', cushion: '靠垫', 'repairs.stool': '凳子', 'garden.planter': '盆栽', 'cats.cushion': '猫靠垫', vase: '花瓶', basket: '篮子', lamp: '灯'} satisfies Record<ItemId, string>,
+    items: {bed: '床', table: '桌子', chair: '椅子', rug: '地毯', cushion: '靠垫', 'repairs.stool': '凳子', 'garden.planter': '盆栽', 'cats.cushion': '猫靠垫', vase: '花瓶', basket: '篮子', lamp: '灯', 'blue-vase': '蓝色花瓶', 'large-basket': '大篮子', 'small-lamp': '小灯'} satisfies Record<ItemId, string>,
   },
   repairs: {
     title: '修理间', jobs: '修理物件', jobNames: {lamp: '台灯', toy: '玩具'}, replay: '再听', operations: '物件操作',

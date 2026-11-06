@@ -1,3 +1,4 @@
+import ProgressionView from "./progression/ProgressionView";
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import type { Line, Position, Word } from "./contracts";
 import { KITCHEN, TABLES } from "./contracts";
@@ -631,6 +632,7 @@ export default function App() {
         </div>
         : <Neighbourhood state={neighbourhood} day={state.day} onAction={dispatch} onLookup={lookup} onPlay={playLine} onRecover={acknowledgeRecovery}
             recoveredWordIds={Object.keys(state.journal).filter(id => state.journal[id].recovered)} freshWordIds={fresh}/>}
+        <ProgressionView game={state} content={content} now={Date.now()} onAction={dispatch} onLookup={lookup}/>
         <NeighbourhoodGifts state={neighbourhood} onClaim={giftId => {
           const before = sessionRef.current;
           const next = dispatch({type:"claim-neighbourhood-gift",giftId});
@@ -946,7 +948,7 @@ export default function App() {
             <button
               className="primary"
               onClick={() => {
-                dispatch({ type: "next-day" });
+                dispatch({ type: "next-day", now: Date.now() });
                 close();
               }}
             >

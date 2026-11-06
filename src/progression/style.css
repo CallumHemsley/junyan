@@ -1,0 +1,18 @@
+.living-progression { width: min(100%, 900px); margin: var(--space-16) auto; }
+.neighbourhood-invitation, .furnishing-shop { background: var(--surface-card); border: 1px solid var(--hairline); border-radius: var(--radius-panel); padding: var(--space-16); }
+.neighbourhood-invitation { display: flex; align-items: center; justify-content: space-between; gap: var(--space-16); margin-top: var(--space-16); }
+.living-progression button { min-height: 44px; min-width: 44px; }
+.furnishing-shop header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-16); font-variant-numeric: tabular-nums; }
+.furnishing-shop h2 { font-size: var(--body-font-size); margin: 0; }
+.furnishing-choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-8); margin-top: var(--space-16); }
+.furnishing-choice { text-align: center; padding: var(--space-8); background: var(--surface-raised); border-radius: var(--radius-tile); }
+.furnishing-choice > button { width: 100%; margin-top: var(--space-8); border: 1px solid var(--hairline); border-radius: var(--radius-chip); background: var(--surface-control); color: var(--text-primary); }
+.furnishing-choice .word { font-size: 20px; }
+.furnishing-preview { height: 48px; position: relative; margin: 4px auto; width: 54px; }
+.blue-vase i { position: absolute; bottom: 0; left: 10px; width: 32px; height: 34px; background: #809bab; border-radius: 8px 8px 14px 14px; }
+.blue-vase i::before { content: ""; position: absolute; width: 16px; height: 16px; top: -12px; left: 8px; background: #809bab; }
+.large-basket i { position: absolute; inset: 12px 0 0; background: repeating-linear-gradient(0deg, #af895a 0 5px, #efdcB6 5px 7px); border-radius: 3px 3px 8px 8px; }
+.large-basket i::before { content: ""; position: absolute; inset: -10px 8px 15px; border: 3px solid #af895a; border-radius: 50%; }
+.small-lamp i { position: absolute; inset: 0 5px 16px; background: #efdcB6; border-radius: 3px; border: 1px solid #624c36; }
+.small-lamp i::after { content: ""; position: absolute; height: 16px; width: 4px; bottom: -17px; left: 18px; background: #624c36; }
+@media (max-width: 520px) { .furnishing-choice { padding: 4px; } .furnishing-shop { padding: 12px; } .furnishing-choice .word { font-size: 18px; } .furnishing-choice > button { font-size: 13px; } }

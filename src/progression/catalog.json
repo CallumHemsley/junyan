@@ -1,0 +1,142 @@
+{
+  "furniture": [
+    {
+      "id": "blue-vase",
+      "word": "apartment.vase",
+      "modifier": "apartment.blue",
+      "price": 8
+    },
+    {
+      "id": "large-basket",
+      "word": "apartment.basket",
+      "modifier": "apartment.large",
+      "price": 8
+    },
+    {
+      "id": "small-lamp",
+      "word": "apartment.lamp",
+      "modifier": "apartment.small",
+      "price": 24
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "cats.reunion",
+      "location": "cats",
+      "label": [
+        "look",
+        "apartment.cat"
+      ],
+      "targets": [
+        "apartment.cat",
+        "cats.white",
+        "cats.follow",
+        "bring"
+      ]
+    },
+    {
+      "id": "cats.sunny",
+      "location": "cats",
+      "label": [
+        "apartment.cat",
+        "cats.sit"
+      ],
+      "targets": [
+        "apartment.cat",
+        "cats.black",
+        "cats.sit"
+      ]
+    },
+    {
+      "id": "cats.rainy",
+      "location": "cats",
+      "label": [
+        "look",
+        "apartment.cat"
+      ],
+      "targets": [
+        "apartment.cat",
+        "cats.door",
+        "cats.wait"
+      ]
+    },
+    {
+      "id": "cats.route",
+      "location": "cats",
+      "label": [
+        "cats.follow",
+        "apartment.cat"
+      ],
+      "targets": [
+        "apartment.cat",
+        "cats.window",
+        "bring"
+      ]
+    },
+    {
+      "id": "repairs.lamp",
+      "location": "repairs",
+      "label": [
+        "repairs.done",
+        "repairs.lamp"
+      ],
+      "targets": [
+        "repairs.lamp",
+        "repairs.bulb",
+        "repairs.tighten"
+      ]
+    },
+    {
+      "id": "repairs.toy",
+      "location": "repairs",
+      "label": [
+        "repairs.done",
+        "repairs.toy"
+      ],
+      "targets": [
+        "repairs.toy",
+        "repairs.battery",
+        "repairs.replace",
+        "repairs.connect"
+      ]
+    },
+    {
+      "id": "garden.water",
+      "location": "garden",
+      "label": [
+        "garden.pour",
+        "garden.water"
+      ],
+      "targets": [
+        "garden.dry",
+        "garden.pour",
+        "garden.water"
+      ]
+    },
+    {
+      "id": "garden.observe",
+      "location": "garden",
+      "label": [
+        "look",
+        "garden.flower"
+      ],
+      "targets": [
+        "garden.than",
+        "garden.yesterday",
+        "garden.tall"
+      ]
+    },
+    {
+      "id": "apartment.place",
+      "location": "apartment",
+      "label": [
+        "apartment.put",
+        "apartment.here"
+      ],
+      "targets": [
+        "apartment.put",
+        "apartment.here"
+      ]
+    }
+  ]
+}

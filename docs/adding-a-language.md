@@ -14,9 +14,11 @@ Ship a complete offline content pack with matching interface copy and audio. Man
 
    The existing Mandarin JSON retains `{ hanzi, pinyin }` for its audio generators. `adaptMandarinContent` converts those keys once at the loading boundary and leaves IDs and audio paths intact. New neutral packs can pass directly into the schema. Do not change the Mandarin authoring files just to translate runtime field names.
 
-3. Replace the feature content and all three interface catalogs in the same change.
+3. Replace the feature content and all four interface catalogs in the same change.
 
-   Select the translated `UiCopy` through `ui` in `src/language/ui.ts`. Select the feature copy through `featureUi` in `src/features/copy.ts` and the neighbourhood copy through `neighbourhoodUi` in `src/neighbourhood/copy.ts`. Include accessible names, money and day formatting, word-card controls and loading or audio messages. Keep pronunciation inside the word card.
+   Select the translated `UiCopy` through `ui` in `src/language/ui.ts`. Select the feature copy through `featureUi` in `src/features/copy.ts` and the neighbourhood copy through `neighbourhoodUi` in `src/neighbourhood/copy.ts`. Select progression labels and money formatting through `progressionUi` in `src/progression/copy.ts`. Include accessible names, money and day formatting, word-card controls and loading or audio messages. Keep pronunciation inside the word card.
+
+   Progression catalog labels, modifiers, and targets reference stable word IDs. `src/progression/identities.json` assigns those IDs to opaque semantic keys. Never translate those keys or compare them with displayed text. New words use an ID-based fallback until their semantic identity is reviewed. Preserve existing identities when adding aliases or another sense.
 
    Supply translated content for `src/features/{apartment,cats,repairs,garden}/content.json` and update their selected voice references. The feature loaders use the shared policy schemas. `registerFeatureContent` and `attachFeatureContent` in `src/neighbourhood/content.ts` accept the selected policy and verify shared word IDs and metadata. Supply the translated neighbourhood dialogue too. Keeping a Mandarin feature bundle while switching only the root policy causes validation failures or mixed-language play.
 
