@@ -34,6 +34,10 @@ function furniture(ctx: CanvasRenderingContext2D, view: WorldRenderView, prop: P
   } else {
     for (const dx of [.15, w - .27]) for (const dy of [.15, h - .27]) b(dx, dy, 0, .12, .12, .67, ink);
     b(.06, .06, .67, w - .12, h - .12, .16, '#5c4935'); b(.15, .15, .83, w - .3, h - .3, .04, '#a48558');
+    // A rounded, bound rush seat sits inside the unchanged wooden frame.
+    polygon(ctx, view, [[x + .23, y + .15, .88], [x + w - .23, y + .15, .88], [x + w - .15, y + .23, .88], [x + w - .15, y + h - .23, .88], [x + w - .23, y + h - .15, .88], [x + .23, y + h - .15, .88], [x + .15, y + h - .23, .88], [x + .15, y + .23, .88]], '#b4ad7f');
+    for (let at = .27; at < w - .2; at += .16) stroke(ctx, view, [x + at, y + .24, .885], [x + at, y + h - .24, .885], '#96916a');
+    for (const at of [.25, h - .25]) stroke(ctx, view, [x + .24, y + at, .89], [x + w - .24, y + at, .89], '#d0c299');
     if (prop.variant === 1) {
       for (const dy of [.08, h - .2]) b(.07, dy, .7, .12, .12, 1, wood);
       for (const z of [1.1, 1.43]) b(.07, .08, z, .14, h - .16, .13, pale);
@@ -51,6 +55,8 @@ function drawProp(ctx: CanvasRenderingContext2D, view: WorldRenderView, p: Prop)
     b(dx + .025, dy + .02, z + .025, width - .05, depth - .04, .045, '#d7c9a7');
     b(dx, dy, z + .08, width, depth, .025, colour);
     stroke(ctx, view, [x + dx + .05, y + dy + .05, z + .107], [x + dx + .05, y + dy + depth - .05, z + .107], '#b6a37f');
+    stroke(ctx, view, [x + dx + .08, y + dy + depth + .002, z + .052], [x + dx + width - .04, y + dy + depth + .002, z + .052], '#a99a7b');
+    b(dx + width * .62, dy + depth - .03, z + .108, .06, .13, .012, '#c2aa71');
   };
   switch (p.kind) {
     case 'reading-wall':
@@ -85,17 +91,27 @@ function drawProp(ctx: CanvasRenderingContext2D, view: WorldRenderView, p: Prop)
     case 'reading-shelf': {
       const low = p.variant === 'low', scale = low ? .4 : 1;
       const shelfIndex = Number(p.id.match(/shelf-(\d+)$/)?.[1] ?? (p.id.includes('front') ? 1 : 4));
-      b(0, 0, .12, w, h, 1.95 * scale, '#584733'); b(.09, .1, .24 * scale, w - .18, h - .1, 1.73 * scale, '#343b34');
-      for (const z of [.24, .86, 1.48, 2.1]) b(-.04, -.03, z * scale, w + .08, h + .08, .1 * scale, '#896c46');
-      const colours = ['#456a65', '#a18a52', '#7e6073', '#537885', '#bcaa7b', '#7d593c'];
-      for (let level = 0; level < 3; level++) for (let i = 0; i < Math.floor((w - .2) / .18); i++) {
-        if ((i + shelfIndex + level * 2) % 7 > 4) continue;
-        const dx = .12 + i * .18, z = (.34 + level * .62) * scale, height = (.32 + ((i + level * 3 + shelfIndex) % 5) * .055) * scale;
-        b(dx, h - .29, z, i % 3 === 0 ? .17 : .13, .25, height, colours[(i + level * 2 + shelfIndex) % colours.length]);
-        b(dx + .02, h - .039, z + .1 * scale, .09, .022, .025 * scale, '#d4bc85');
-        if (i % 3 === 0) b(dx + .025, h - .038, z + height - .09 * scale, .08, .021, .018 * scale, '#c8b58c');
+      const turned = p.id.includes('front'), span = turned ? h : w, depth = turned ? w : h;
+      const s = (dx: number, dy: number, z: number, width: number, d: number, height: number, colour: string) => turned ? b(depth - dy - d, dx, z, d, width, height, colour) : b(dx, dy, z, width, d, height, colour);
+      s(0, 0, .12, span, depth, 1.95 * scale, '#584733'); s(.1, .1, .24 * scale, span - .2, depth - .1, 1.73 * scale, '#303932');
+      for (const z of [.24, .86, 1.48, 2.1]) {
+        s(-.04, -.03, z * scale, span + .08, depth + .08, .1 * scale, '#896c46');
+        s(.04, depth + .025, (z + .055) * scale, span - .08, .025, .022 * scale, '#b19462');
       }
-      for (const dx of [0, w - .1]) b(dx, h - .1, .12, .1, .13, 2.05 * scale, '#4b3e2d');
+      const colours = ['#456a65', '#a18a52', '#7e6073', '#537885', '#bcaa7b', '#7d593c'];
+      for (let level = 0; level < 3; level++) for (let i = 0; i < Math.floor((span - .2) / .18); i++) {
+        if ((i + shelfIndex + level * 2) % 8 > 5) continue;
+        const dx = .12 + i * .18, z = (.34 + level * .62) * scale, height = (.32 + ((i + level * 3 + shelfIndex) % 5) * .055) * scale;
+        const colour = level === 0 && i < 4 ? '#456a65' : colours[(Math.floor(i / 3) + level * 2 + shelfIndex) % colours.length];
+        s(dx, depth - .29, z, i % 3 === 0 ? .17 : .13, .25, height, colour);
+        s(dx + .02, depth - .039, z + .1 * scale, .09, .022, .025 * scale, '#d4bc85');
+        if (i % 3 === 0) s(dx + .025, depth - .038, z + height - .09 * scale, .08, .021, .018 * scale, '#c8b58c');
+      }
+      for (const dx of [0, span - .1]) {
+        s(dx, depth - .1, .12, .1, .13, 2.05 * scale, '#4b3e2d');
+        for (const z of [.3, .92, 1.54, 2.13]) s(dx + .025, depth + .031, z * scale, .05, .012, .035 * scale, '#b29768');
+      }
+      if (span > 2) s(span * .52, .1, .34 * scale, .08, depth - .1, 1.75 * scale, '#6c553a');
       b(-.06, -.02, 2.2 * scale, w + .12, h + .08, .1 * scale, '#927149');
       stroke(ctx, view, [x - .06, y + h + .06, 2.3 * scale], [x + w + .06, y + h + .06, 2.3 * scale], '#4a3b2b');
       const top = 2.3 * scale;
@@ -121,19 +137,40 @@ function drawProp(ctx: CanvasRenderingContext2D, view: WorldRenderView, p: Prop)
       break;
     }
     case 'reading-table': case 'reading-chair': furniture(ctx, view, p); break;
-    case 'reading-open-book':
-      b(0, 0, 1.24, w, h, .05, '#3e5b53'); b(.03, .02, 1.29, w / 2 - .04, h - .04, .03, paper); b(w / 2 + .01, .02, 1.29, w / 2 - .04, h - .04, .03, '#f2e6c6');
-      for (const row of [.2, .4]) { stroke(ctx, view, [x + .08, y + row, 1.33], [x + w * .38, y + row, 1.33], '#ad9b78'); stroke(ctx, view, [x + w * .6, y + row, 1.33], [x + w * .9, y + row, 1.33], '#ad9b78'); }
-      stroke(ctx, view, [x + w / 2, y + .02, 1.33], [x + w / 2, y + h - .02, 1.33], '#7a6c4e');
-      b(w + .25, h * .5, 1.24, .23, .23, .2, '#52777b'); b(w + .28, h * .5 + .03, 1.44, .17, .17, .015, '#483d2d');
+    case 'reading-open-book': {
+      b(0, 0, 1.24, w, h, .05, '#3e5b53');
+      b(.03, .02, 1.29, w - .06, h - .04, .04, '#b9a784');
+      polygon(ctx, view, [[x + .03, y + .02, 1.36], [x + w / 2, y + .02, 1.31], [x + w / 2, y + h - .03, 1.31], [x + .03, y + h - .03, 1.36]], paper);
+      polygon(ctx, view, [[x + w / 2, y + .02, 1.31], [x + w - .03, y + .02, 1.36], [x + w - .03, y + h - .03, 1.36], [x + w / 2, y + h - .03, 1.31]], '#f2e6c6');
+      polygon(ctx, view, [[x + w - .2, y + .02, 1.365], [x + w - .03, y + .18, 1.365], [x + w - .2, y + .18, 1.375]], '#c4b58f');
+      for (const z of [1.302, 1.325]) stroke(ctx, view, [x + .05, y + h - .015, z], [x + w - .05, y + h - .015, z], '#d6c6a2');
+      stroke(ctx, view, [x + w / 2, y + .03, 1.32], [x + w / 2, y + h - .02, 1.32], '#8a7a5a');
+      b(w * .59, h - .16, 1.365, .07, .27, .012, '#9d8654');
+      const cx = x + w + .37, cy = y + h * .5 + .12;
+      const rim = (radius: number, z: number): [number, number, number][] => Array.from({ length: 8 }, (_, i) => [cx + Math.cos(i * Math.PI / 4) * radius, cy + Math.sin(i * Math.PI / 4) * radius, z]);
+      const base = rim(.09, 1.245), lip = rim(.15, 1.46);
+      for (let i = 0; i < 8; i++) polygon(ctx, view, [base[i], base[(i + 1) % 8], lip[(i + 1) % 8], lip[i]], i < 4 ? '#597f80' : '#365d63');
+      polygon(ctx, view, lip, '#92a59b'); polygon(ctx, view, rim(.105, 1.465), '#4a4636');
+      stroke(ctx, view, [cx + .14, cy, 1.43], [cx + .23, cy, 1.4], '#9eb0a1');
+      stroke(ctx, view, [cx + .23, cy, 1.4], [cx + .13, cy, 1.31], '#648687');
       break;
+    }
     case 'reading-cart':
-      for (const dx of [.15, w - .3]) for (const dy of [.15, h - .3]) b(dx, dy, .05, .16, .16, .18, ink);
-      for (const z of [.26, 1.02]) b(0, 0, z, w, h, .12, '#6d7057');
-      for (const dx of [.05, w - .18]) for (const dy of [.05, h - .18]) b(dx, dy, .26, .13, .13, 1.2, '#465e56');
+      for (const dx of [.19, w - .25]) for (const dy of [.17, h - .2]) {
+        polygon(ctx, view, Array.from({ length: 8 }, (_, i) => [x + dx + Math.cos(i * Math.PI / 4) * .15, y + dy, .17 + Math.sin(i * Math.PI / 4) * .15] as [number, number, number]), '#303c38');
+        b(dx - .04, dy - .035, .13, .08, .07, .08, '#9aab9c');
+        b(dx - .025, dy - .035, .21, .05, .07, .14, '#617c75');
+      }
+      for (const z of [.34, 1.02]) {
+        b(0, 0, z, w, h, .055, '#839389'); b(.08, .08, z + .055, w - .16, h - .16, .065, '#566e65');
+        b(.02, h - .04, z + .055, w - .04, .045, .09, '#a4b0a0');
+      }
+      for (const dx of [.05, w - .13]) for (const dy of [.05, h - .13]) {
+        b(dx, dy, .26, .08, .08, 1.2, '#465e56'); b(dx, dy + .055, .35, .025, .025, 1.06, '#98ab9b');
+      }
       book(.2, .2, 1.14, .62, .9, '#7e6073'); book(.25, .18, 1.245, .62, .9, '#a18a52');
       book(1.18, .28, 1.14, .7, .8, '#456a65');
-      b(.1, h - .18, 1.45, w - .2, .1, .09, '#8f9d81'); break;
+      b(.1, h - .13, 1.45, w - .2, .08, .07, '#a3b1a1'); break;
     case 'reading-notice':
       furniture(ctx, view, { ...p, kind: 'reading-table' });
       b(.25, .2, 1.24, w - .5, h - .4, .03, paper);
@@ -165,11 +202,12 @@ export const drawMap: DrawMap = (ctx, map, view) => {
   box(ctx, view, 2, 3, -.12, 26, 17, .1, '#9d7e52');
   for (let y = 3; y < 20; y += .5) for (let x = 2; x < 28; x += 2) {
     const offset = Math.round(y * 2) % 2 ? 1 : 0, start = Math.max(2, x - offset), end = Math.min(28, x + 2 - offset);
-    const traffic = x >= 11 && x < 16 && y > 11;
-    const c = (traffic ? ['#baa476', '#c0aa7d', '#b29b6d', '#bba576'] : ['#ad8a5b', '#b69664', '#a98759', '#b99b6a'])[(x * 3 + Math.round(y * 2)) % 4];
-    box(ctx, view, start, y, -.1, end - start - .025, .48, .1, c);
-    if ((x * 7 + y * 2) % 9 === 0) stroke(ctx, view, [start + .2, y + .2, .002], [end - .2, y + .23, .002], traffic ? '#cfbb8e' : '#927449');
-    if (y < 4 || x < 4 || x > 25) stroke(ctx, view, [start + .12, y + .44, .004], [end - .12, y + .44, .004], '#826d4c');
+    const traffic = x >= 12 && x < 16 && y > 11 && y < 18;
+    const c = (traffic ? ['#b69c6c', '#b9a071', '#b79d6e', '#b49b6b'] : ['#ae8d60', '#b39364', '#b09061', '#b59668'])[(x * 3 + Math.round(y * 2)) % 4];
+    polygon(ctx, view, [[start, y, 0], [end, y, 0], [end, y + .5, 0], [start, y + .5, 0]], c);
+    stroke(ctx, view, [start, y + .5, .001], [end, y + .5, .001], traffic ? '#b0986a' : '#a5875a');
+    if ((x + Math.round(y * 2)) % 3 === 0) stroke(ctx, view, [start, y, .002], [start, y + .5, .002], '#a5875a');
+    if (!traffic && (x * 7 + y * 2) % 19 === 0) stroke(ctx, view, [start + .3, y + .2, .002], [end - .35, y + .23, .002], '#bc9e6d');
   }
   for (const p of map.props.filter(prop => prop.layer === 'ground')) {
     const { x, y } = p.position, w = p.width, h = p.height;
@@ -179,6 +217,8 @@ export const drawMap: DrawMap = (ctx, map, view) => {
       box(ctx, view, x + .13, y + .13, .022, w - .26, h - .26, .005, rug);
       box(ctx, view, x + .35, y + .35, .028, w - .7, h - .7, .003, p.variant === 1 ? '#87906b' : '#6b8587');
       for (let at = .6; at < h - .4; at += .32) stroke(ctx, view, [x + .4, y + at, .033], [x + w - .4, y + at, .033], p.variant === 1 ? '#7e8864' : '#627d80');
+      for (const xx of [x + .25, x + w - .25]) stroke(ctx, view, [xx, y + .25, .036], [xx, y + h - .25, .036], p.variant === 1 ? '#a1a27a' : '#91a49b');
+      for (let at = .23; at < w - .2; at += .23) for (const yy of [y, y + h]) stroke(ctx, view, [x + at, yy, .035], [x + at + .06, yy + (yy === y ? -.14 : .14), .035], p.variant === 1 ? '#969a77' : '#819890');
       for (let at = .5; at < w - .4; at += .55) for (const yy of [y + .18, y + h - .18]) stroke(ctx, view, [x + at, yy, .035], [x + at + .12, yy, .035], p.variant === 1 ? '#b0af85' : '#98a99e');
       for (const yy of [y, y + h]) stroke(ctx, view, [x, yy, .036], [x + w, yy, .036], p.variant === 1 ? '#3c493b' : '#30464e');
       for (const xx of [x, x + w]) stroke(ctx, view, [xx, y, .036], [xx, y + h, .036], p.variant === 1 ? '#3c493b' : '#30464e');
