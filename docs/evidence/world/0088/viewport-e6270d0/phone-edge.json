@@ -1,0 +1,21 @@
+{
+  "head": "e6270d095dead66ccb1d6fe9fb1815bbee86d702",
+  "input": "native CDP touchscreen hold on visible pad",
+  "label": {
+    "text": "早安小馆",
+    "tag": "DIV",
+    "buttons": 0,
+    "pointerEvents": "none"
+  },
+  "saved": {
+    "version": 1,
+    "mapId": "restaurant",
+    "position": {
+      "x": 22.723627890084632,
+      "y": 20.770646910677286
+    },
+    "facing": "east",
+    "returnPositions": {},
+    "activeActivity": null
+  }
+}

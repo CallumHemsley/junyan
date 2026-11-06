@@ -1,0 +1,340 @@
+{
+  "landscape": "6732017",
+  "claim": "Isolated native art/object and atmosphere layers. Contact mode is a proposed fixture, not an assertion of landscape migration.",
+  "errors": [],
+  "pixels": {
+    "single": [
+      0,
+      0,
+      0,
+      64
+    ],
+    "overlap": [
+      0,
+      0,
+      0,
+      64
+    ],
+    "inherited": [
+      0,
+      0,
+      0,
+      32
+    ],
+    "restored": 0.5,
+    "deck": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "outside": [
+      0,
+      0,
+      0,
+      64
+    ]
+  },
+  "evidence": [
+    {
+      "name": "desktop",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "ground",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 49,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "desktop",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "cast",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 49,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "desktop",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "contact",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 49,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "desktop",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "objects",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 49,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "desktop",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "combined",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 49,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "desktop",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "ground",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 37,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "desktop",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "cast",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 37,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "desktop",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "contact",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 37,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "desktop",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "objects",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 37,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "desktop",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "combined",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 37,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "desktop",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "ground",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 34,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "desktop",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "cast",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 34,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "desktop",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "contact",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 34,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "desktop",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "objects",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 34,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "desktop",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "combined",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 34,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "phone",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "ground",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 43,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "phone",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "cast",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 43,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "phone",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "contact",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 43,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "phone",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "objects",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 43,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "phone",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "combined",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 43,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "phone",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "ground",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 35,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "phone",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "cast",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 35,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "phone",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "contact",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 35,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "phone",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "objects",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 35,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "phone",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "combined",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 35,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "phone",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "ground",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 30,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "phone",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "cast",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 30,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "phone",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "contact",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 30,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "phone",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "objects",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 30,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    },
+    {
+      "name": "phone",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "combined",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 30,
+      "contactOwnership": "landscape ground pending; contact mode is a proposed optional fixture"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+import { chromium } from '@playwright/test';
+import fs from 'node:fs/promises';
+const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox','--mute-audio']});
+const reports=[];
+for(const[name,viewport]of[['desktop',{width:1440,height:1000}],['phone',{width:390,height:844}]]){
+ const context=await browser.newContext({viewport,hasTouch:name==='phone',reducedMotion:'reduce'}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+ const prior=JSON.parse(await fs.readFile('docs/evidence/world/0082/production-results.json','utf8')).find(r=>r.name===name),seed=prior.final;
+ seed.world={...seed.world,mapId:'workshop',position:{x:11.5,y:11.5},activeActivity:null,activeAnchorId:null};
+ await page.goto('http://127.0.0.1:5484/src/world/art/workshop/preview.html');await page.evaluate(game=>localStorage.setItem('junyan-waiter-pending-v1',JSON.stringify(game)),seed);
+ await page.goto('http://127.0.0.1:5484/?seed=42');await page.waitForSelector('[data-map="workshop"] canvas[data-rendered="true"]');await page.waitForTimeout(500);
+ async function stored(){return page.evaluate(async()=>{const db=await new Promise(resolve=>{const r=indexedDB.open('junyan-waiter',1);r.onsuccess=()=>resolve(r.result);});const state=await new Promise(resolve=>{const r=db.transaction('saves').objectStore('saves').get('v1');r.onsuccess=()=>resolve(r.result);});db.close();return state;});}
+ async function walk(target){const from=(await stored()).world.position;const point=await page.evaluate(async({from,target})=>{const {cameraForMap,project}=await import('/src/world/camera.ts');const {workshopDefinition}=await import('/src/world/maps/workshop/index.ts');const canvas=document.querySelector('[data-testid="world-viewport"] canvas'),rect=canvas.getBoundingClientRect();const camera=cameraForMap(workshopDefinition.bounds,from,canvas.width,canvas.height,rect.width<600?11:15);const p=project(target,camera);return{x:rect.x+p.x*rect.width/canvas.width,y:rect.y+p.y*rect.height/canvas.height};},{from,target});if(name==='phone')await page.touchscreen.tap(point.x,point.y);else await page.mouse.click(point.x,point.y);for(let n=0;n<150;n++){const s=await stored();if(Math.hypot(s.world.position.x-target.x,s.world.position.y-target.y)<.12)return s.world.position;await page.waitForTimeout(100);}await fs.writeFile(`docs/evidence/world/0082/${name}-depth-failure.json`,JSON.stringify({target,from,click:point,current:(await stored()).world,url:page.url()},null,2));await page.screenshot({path:`docs/evidence/world/0082/${name}-depth-failure.png`});throw Error('depth approach unreachable');}
+ const visits=[];
+ for(const[label,target]of[['beside',{x:11.5,y:8.8}],['behind',{x:8,y:6.8}],['front',{x:8,y:10.8}],['joinery-behind',{x:8,y:14.5}],['joinery-beside',{x:11.5,y:17}],['joinery-front',{x:8,y:18.8}]]){const position=await walk(target);await page.screenshot({path:`docs/evidence/world/0082/${name}-production-depth-${label}.png`});visits.push({label,position});}
+ reports.push({name,visits,errors,setup:'disclosed initial workshop approach from validated actual repair save; all depth approaches use ordinary pointer input, production actors and compositor'});await context.close();
+}
+await fs.writeFile('docs/evidence/world/0082/depth-results.json',JSON.stringify(reports,null,2));await browser.close();

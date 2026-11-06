@@ -1,0 +1,184 @@
+[
+  {
+    "sourceHead": "e1e3fa3b520dd3fab21246f7860dbbd24524ae14",
+    "phase": "morning",
+    "served": 0,
+    "samples": {
+      "roof": {
+        "world": {
+          "x": 22,
+          "y": 18,
+          "z": 0
+        },
+        "pixel": {
+          "x": 375,
+          "y": 181.5
+        },
+        "rgba": [
+          188,
+          196,
+          176,
+          255
+        ]
+      },
+      "wood": {
+        "world": {
+          "x": 33,
+          "y": 30.4,
+          "z": 1.15
+        },
+        "pixel": {
+          "x": 354,
+          "y": 339.75
+        },
+        "rgba": [
+          183,
+          161,
+          117,
+          255
+        ]
+      },
+      "foliage": {
+        "world": {
+          "x": 20,
+          "y": 6,
+          "z": 1.8
+        },
+        "pixel": {
+          "x": 525,
+          "y": 49.5
+        },
+        "rgba": [
+          159,
+          186,
+          128,
+          255
+        ]
+      },
+      "stone": {
+        "world": {
+          "x": 10,
+          "y": 10,
+          "z": 0
+        },
+        "pixel": {
+          "x": 315,
+          "y": 31.5
+        },
+        "rgba": [
+          194,
+          201,
+          183,
+          255
+        ]
+      }
+    },
+    "logicalCanvas": {
+      "width": 720,
+      "height": 408
+    },
+    "particles": [],
+    "camera": {
+      "focus": {
+        "x": 23,
+        "y": 20
+      },
+      "width": 720,
+      "height": 408,
+      "scale": 15
+    },
+    "errors": [],
+    "note": "Actual App and production painter. Valid seeded service/garden fixtures; same map/camera. Roof has no particle hooks. Reduced motion freezes incidental animation."
+  },
+  {
+    "sourceHead": "e1e3fa3b520dd3fab21246f7860dbbd24524ae14",
+    "phase": "evening",
+    "served": 3,
+    "samples": {
+      "roof": {
+        "world": {
+          "x": 22,
+          "y": 18,
+          "z": 0
+        },
+        "pixel": {
+          "x": 375,
+          "y": 181.5
+        },
+        "rgba": [
+          167,
+          169,
+          162,
+          255
+        ]
+      },
+      "wood": {
+        "world": {
+          "x": 33,
+          "y": 30.4,
+          "z": 1.15
+        },
+        "pixel": {
+          "x": 354,
+          "y": 339.75
+        },
+        "rgba": [
+          163,
+          140,
+          108,
+          255
+        ]
+      },
+      "foliage": {
+        "world": {
+          "x": 20,
+          "y": 6,
+          "z": 1.8
+        },
+        "pixel": {
+          "x": 525,
+          "y": 49.5
+        },
+        "rgba": [
+          143,
+          161,
+          118,
+          255
+        ]
+      },
+      "stone": {
+        "world": {
+          "x": 10,
+          "y": 10,
+          "z": 0
+        },
+        "pixel": {
+          "x": 315,
+          "y": 31.5
+        },
+        "rgba": [
+          173,
+          172,
+          168,
+          255
+        ]
+      }
+    },
+    "logicalCanvas": {
+      "width": 720,
+      "height": 408
+    },
+    "particles": [],
+    "camera": {
+      "focus": {
+        "x": 23,
+        "y": 20
+      },
+      "width": 720,
+      "height": 408,
+      "scale": 15
+    },
+    "errors": [],
+    "note": "Actual App and production painter. Valid seeded service/garden fixtures; same map/camera. Roof has no particle hooks. Reduced motion freezes incidental animation."
+  }
+]

@@ -1,0 +1,541 @@
+{
+  "head": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+  "evidence": "Ordinary opening/walking and actual controls; native CDP touch; saves read only; real SW/cache offline reload; no mocks.",
+  "failures": [],
+  "errors": [],
+  "events": [
+    {
+      "name": "native-touch-pad",
+      "pass": true,
+      "ms": 1050,
+      "result": {
+        "before": {
+          "mapId": "restaurant",
+          "position": {
+            "x": 12,
+            "y": 17
+          },
+          "activeActivity": null
+        },
+        "after": {
+          "version": 1,
+          "mapId": "restaurant",
+          "position": {
+            "x": 13.296126729914938,
+            "y": 15.703873270085058
+          },
+          "facing": "north",
+          "returnPositions": {},
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 1000,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [],
+            "pauses": []
+          }
+        },
+        "stopped": {
+          "version": 1,
+          "mapId": "restaurant",
+          "position": {
+            "x": 13.296126729914938,
+            "y": 15.703873270085058
+          },
+          "facing": "north",
+          "returnPositions": {},
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 1000,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [],
+            "pauses": []
+          }
+        }
+      }
+    },
+    {
+      "name": "word-card-and-pocket-panels",
+      "pass": true,
+      "ms": 1667,
+      "result": {
+        "word": "早安小馆",
+        "sizes": [
+          {
+            "name": "本子",
+            "rect": {
+              "x": 222.5625,
+              "y": 604,
+              "width": 65.15625,
+              "height": 44
+            }
+          },
+          {
+            "name": "托盘",
+            "rect": {
+              "x": 299.71875,
+              "y": 604,
+              "width": 74.28125,
+              "height": 44
+            }
+          }
+        ],
+        "journal": {
+          "milk": {
+            "lookups": 0,
+            "lastSeen": 1793926970568,
+            "recovered": true
+          },
+          "egg": {
+            "lookups": 0,
+            "lastSeen": 1793926970568,
+            "recovered": true
+          },
+          "thank-you": {
+            "lookups": 0,
+            "lastSeen": 1793926970568,
+            "recovered": true
+          },
+          "good": {
+            "lookups": 0,
+            "lastSeen": 1793926970568,
+            "recovered": true
+          },
+          "shop-name": {
+            "lookups": 1,
+            "lastSeen": 1793926972585,
+            "recovered": false
+          }
+        },
+        "tray": []
+      }
+    },
+    {
+      "name": "walk-town-inspect",
+      "pass": true,
+      "ms": 1781,
+      "result": {
+        "labels": [
+          "→",
+          "→"
+        ],
+        "state": {
+          "seed": 955863294,
+          "day": 1,
+          "level": 1,
+          "player": {
+            "x": 6,
+            "y": 2.5
+          },
+          "customers": [
+            {
+              "table": 1,
+              "orderId": "order-01",
+              "phase": "seated"
+            },
+            {
+              "table": 2,
+              "orderId": "order-02",
+              "phase": "seated"
+            },
+            {
+              "table": 3,
+              "orderId": "order-03",
+              "phase": "seated"
+            },
+            {
+              "table": 4,
+              "orderId": "order-04",
+              "phase": "seated"
+            }
+          ],
+          "tray": [],
+          "served": 0,
+          "earnings": 0,
+          "mistakes": 0,
+          "activeTable": null,
+          "feedback": "none",
+          "receipt": null,
+          "journal": {
+            "milk": {
+              "lookups": 0,
+              "lastSeen": 1793926970568,
+              "recovered": true
+            },
+            "egg": {
+              "lookups": 0,
+              "lastSeen": 1793926970568,
+              "recovered": true
+            },
+            "thank-you": {
+              "lookups": 0,
+              "lastSeen": 1793926970568,
+              "recovered": true
+            },
+            "good": {
+              "lookups": 0,
+              "lastSeen": 1793926970568,
+              "recovered": true
+            },
+            "shop-name": {
+              "lookups": 1,
+              "lastSeen": 1793926972585,
+              "recovered": false
+            }
+          },
+          "ended": false,
+          "neighbourhood": {
+            "version": 1,
+            "location": "restaurant",
+            "apartment": {
+              "owned": [
+                "bed"
+              ],
+              "placements": [
+                {
+                  "id": "bed",
+                  "x": 0,
+                  "y": 0,
+                  "rotation": 0
+                }
+              ],
+              "colour": "blue",
+              "rugSize": "small",
+              "starterClaimed": false,
+              "lastGiftDay": 0,
+              "selected": null,
+              "draft": null,
+              "undo": null,
+              "notice": "welcome"
+            },
+            "cats": {
+              "version": 1,
+              "story": {
+                "node": "search"
+              },
+              "selected": null,
+              "cats": {
+                "white": {
+                  "noticed": false,
+                  "calm": false,
+                  "gaveSpace": false,
+                  "rested": false,
+                  "sawEmptyBicycle": false
+                },
+                "black": {
+                  "greeted": false,
+                  "satTogether": false
+                }
+              },
+              "repeat": {
+                "status": "idle"
+              },
+              "completedKinds": [],
+              "lastCompletedDay": null,
+              "feedback": "clue"
+            },
+            "repairs": {
+              "version": 1,
+              "jobs": {
+                "lamp": {
+                  "kind": "lamp",
+                  "fitting": "loose",
+                  "power": "off",
+                  "test": "none"
+                },
+                "toy": {
+                  "kind": "toy",
+                  "cover": "closed",
+                  "lead": "loose",
+                  "cell": "old",
+                  "test": "none"
+                }
+              },
+              "active": "lamp",
+              "selected": null,
+              "completed": [],
+              "feedback": "lamp-intro"
+            },
+            "garden": {
+              "version": 1,
+              "day": 1,
+              "restored": false,
+              "shade": 0,
+              "plants": {
+                "flower": {
+                  "site": 0,
+                  "care": "ready",
+                  "growth": 0,
+                  "drooping": false,
+                  "waited": false,
+                  "result": null
+                },
+                "climber": {
+                  "site": 2,
+                  "care": "dry",
+                  "growth": 0,
+                  "drooping": false,
+                  "waited": false,
+                  "result": null
+                },
+                "tree": {
+                  "site": 4,
+                  "care": "dry",
+                  "growth": 0,
+                  "drooping": false,
+                  "waited": false,
+                  "result": null
+                }
+              },
+              "planterEarned": false
+            },
+            "claimedGiftIds": []
+          },
+          "world": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 33.92431051494121,
+              "y": 30.36593973206893
+            },
+            "facing": "west",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12.143924353940813,
+                "y": 19.967428227450124,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 4029.800000000001,
+              "discoveries": [
+                {
+                  "mapId": "town",
+                  "landmarkId": "town.restaurant-approach",
+                  "day": 1
+                }
+              ],
+              "reactions": [
+                {
+                  "mapId": "town",
+                  "targetId": "town.restaurant-approach",
+                  "reaction": "watch",
+                  "atMs": 4336.5
+                }
+              ],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "reload-discovery-persistence",
+      "pass": true,
+      "ms": 1137,
+      "result": {
+        "before": {
+          "version": 1,
+          "mapId": "town",
+          "position": {
+            "x": 33.92431051494121,
+            "y": 30.36593973206893
+          },
+          "facing": "west",
+          "returnPositions": {
+            "restaurant": {
+              "x": 12.143924353940813,
+              "y": 19.967428227450124,
+              "facing": "south"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 4029.800000000001,
+            "discoveries": [
+              {
+                "mapId": "town",
+                "landmarkId": "town.restaurant-approach",
+                "day": 1
+              }
+            ],
+            "reactions": [
+              {
+                "mapId": "town",
+                "targetId": "town.restaurant-approach",
+                "reaction": "watch",
+                "atMs": 4336.5
+              }
+            ],
+            "serviceDepartures": [],
+            "pauses": []
+          }
+        },
+        "after": {
+          "version": 1,
+          "mapId": "town",
+          "position": {
+            "x": 33.92431051494121,
+            "y": 30.36593973206893
+          },
+          "facing": "west",
+          "returnPositions": {
+            "restaurant": {
+              "x": 12.143924353940813,
+              "y": 19.967428227450124,
+              "facing": "south"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 4029.800000000001,
+            "discoveries": [
+              {
+                "mapId": "town",
+                "landmarkId": "town.restaurant-approach",
+                "day": 1
+              }
+            ],
+            "reactions": [
+              {
+                "mapId": "town",
+                "targetId": "town.restaurant-approach",
+                "reaction": "watch",
+                "atMs": 4336.5
+              }
+            ],
+            "serviceDepartures": [],
+            "pauses": []
+          }
+        }
+      }
+    },
+    {
+      "name": "warm-actual-service-worker",
+      "pass": true,
+      "ms": 1140,
+      "result": {
+        "status": {
+          "supported": true,
+          "ready": {
+            "scope": "http://127.0.0.1:5490/junyan/",
+            "state": "activated"
+          },
+          "controller": "http://127.0.0.1:5490/junyan/sw.js",
+          "registrations": [
+            {
+              "scope": "http://127.0.0.1:5490/junyan/",
+              "active": "activated"
+            }
+          ],
+          "caches": [
+            "junyan-abd3ce8263e0"
+          ]
+        },
+        "after": {
+          "controller": "http://127.0.0.1:5490/junyan/sw.js"
+        }
+      }
+    },
+    {
+      "name": "offline-reload-real-cache",
+      "pass": true,
+      "ms": 750,
+      "result": {
+        "navigationError": null,
+        "before": {
+          "version": 1,
+          "mapId": "town",
+          "position": {
+            "x": 33.92431051494121,
+            "y": 30.36593973206893
+          },
+          "facing": "west",
+          "returnPositions": {
+            "restaurant": {
+              "x": 12.143924353940813,
+              "y": 19.967428227450124,
+              "facing": "south"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 4029.800000000001,
+            "discoveries": [
+              {
+                "mapId": "town",
+                "landmarkId": "town.restaurant-approach",
+                "day": 1
+              }
+            ],
+            "reactions": [
+              {
+                "mapId": "town",
+                "targetId": "town.restaurant-approach",
+                "reaction": "watch",
+                "atMs": 4336.5
+              }
+            ],
+            "serviceDepartures": [],
+            "pauses": []
+          }
+        },
+        "after": {
+          "version": 1,
+          "mapId": "town",
+          "position": {
+            "x": 33.92431051494121,
+            "y": 30.36593973206893
+          },
+          "facing": "west",
+          "returnPositions": {
+            "restaurant": {
+              "x": 12.143924353940813,
+              "y": 19.967428227450124,
+              "facing": "south"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 4029.800000000001,
+            "discoveries": [
+              {
+                "mapId": "town",
+                "landmarkId": "town.restaurant-approach",
+                "day": 1
+              }
+            ],
+            "reactions": [
+              {
+                "mapId": "town",
+                "targetId": "town.restaurant-approach",
+                "reaction": "watch",
+                "atMs": 4336.5
+              }
+            ],
+            "serviceDepartures": [],
+            "pauses": []
+          }
+        },
+        "controller": "http://127.0.0.1:5490/junyan/sw.js"
+      }
+    }
+  ]
+}

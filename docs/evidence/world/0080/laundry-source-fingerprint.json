@@ -1,0 +1,20 @@
+{
+  "productHead": "cd98a8db25c9da44832191c0a64f82466f32cd0e",
+  "dependencies": {
+    "foundation": "0974efd785864c9ccafefb62db771618e671d56e",
+    "life": "f95f253bd1b2d5bd1c2809098229c4f0e5e2a063",
+    "characters": "01e67d23dc2458a6a0e7c8a325f0907dbb88e2d6",
+    "allocation": "c32f128a0d998c7d2fab99a165d7c13945eb9dd4"
+  },
+  "files": {
+    "src/world/maps/courtyard/map.json": "8f3427c2ac072c7eaf670d69c4e0c186aa54e2fab49524f9367166a2ad57df9b",
+    "src/world/maps/courtyard/laundry.test.ts": "3dc03f46a41655dc14493d1864504370e752e15e22a5b95462d662eaadeaf694",
+    "src/world/life/profiles.ts": "7e57c7bc8363cad5d30052bf542a98da76f0b9d176daafb37671d20227f7dfb1",
+    "src/world/life/routes.ts": "501e5ef6e69ece6bea4a977638c8e61438fbace090ff5440eed45c9524d51b40",
+    "src/world/life/sample.ts": "47b1e8c4cf78883c1870c48cb06d1c19218c5492dd288b45461b0008f2b1155d",
+    "src/world/characters/index.ts": "6d7125682e9e2afb4d3d399caaa5de8295147bb92b3b37be1c61f752a3377716",
+    "src/world/characters/background.ts": "3b244ce66d8358532a2aecb38eb8c15c155c8e590c830b97499f89b0855d5d2e",
+    "src/world/characters/artwork.mjs": "6411f36c63cf8f7b591a25cda08e9b109d490fb8e28ba9afa407cf3ce8de7a29",
+    "src/world/painter.ts": "91dfe672410c470f64711945082e8f7236b9e1309fbb153b80368b9afdb38be1"
+  }
+}

@@ -1,0 +1,633 @@
+{
+  "sourceHead": "0ad4ede18cfa3daaf1afd4106d8c782be8d05b4b",
+  "capturedAt": "2026-11-06T00:31:47.644Z",
+  "results": [
+    {
+      "device": "desktop",
+      "sourceHead": "0ad4ede18cfa3daaf1afd4106d8c782be8d05b4b",
+      "steps": [
+        {
+          "action": "keyboard left restaurant",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 34,
+              "y": 30.4
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.93350000000003,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "pointer door town to residential-hall",
+          "state": {
+            "version": 1,
+            "mapId": "residential-hall",
+            "position": {
+              "x": 16,
+              "y": 21
+            },
+            "facing": "north",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.93350000000003,
+                "facing": "south"
+              },
+              "town": {
+                "x": 12.564349365234373,
+                "y": 22.011547851562515,
+                "facing": "west"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "pointer door residential-hall to town",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 11.5,
+              "y": 23.5
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.93350000000003,
+                "facing": "south"
+              },
+              "town": {
+                "x": 12.564349365234373,
+                "y": 22.011547851562515,
+                "facing": "west"
+              },
+              "residential-hall": {
+                "x": 16,
+                "y": 22.9995,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        }
+      ],
+      "consoleErrors": [],
+      "failure": "TimeoutError: page.waitForFunction: Timeout 10000ms exceeded."
+    },
+    {
+      "device": "phone",
+      "sourceHead": "0ad4ede18cfa3daaf1afd4106d8c782be8d05b4b",
+      "normalMotion": true,
+      "steps": [
+        {
+          "action": "keyboard left restaurant",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 34,
+              "y": 30.4
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.95000000000001,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "touch door town to residential-hall",
+          "state": {
+            "version": 1,
+            "mapId": "residential-hall",
+            "position": {
+              "x": 16,
+              "y": 21
+            },
+            "facing": "north",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.95000000000001,
+                "facing": "south"
+              },
+              "town": {
+                "x": 12.549425703731359,
+                "y": 22.005777454955457,
+                "facing": "west"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "touch door residential-hall to town",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 11.5,
+              "y": 23.5
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.95000000000001,
+                "facing": "south"
+              },
+              "town": {
+                "x": 12.549425703731359,
+                "y": 22.005777454955457,
+                "facing": "west"
+              },
+              "residential-hall": {
+                "x": 15.999999397036479,
+                "y": 22.999499999999912,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "touch door town to courtyard",
+          "state": {
+            "version": 1,
+            "mapId": "courtyard",
+            "position": {
+              "x": 23.046610405796944,
+              "y": 33.43071998793703
+            },
+            "facing": "north",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.95000000000001,
+                "facing": "south"
+              },
+              "town": {
+                "x": 44.80269043787132,
+                "y": 1.6056065957663954,
+                "facing": "north"
+              },
+              "residential-hall": {
+                "x": 15.999999397036479,
+                "y": 22.999499999999912,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "touch door courtyard to town",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 45,
+              "y": 3.3
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.95000000000001,
+                "facing": "south"
+              },
+              "town": {
+                "x": 44.80269043787132,
+                "y": 1.6056065957663954,
+                "facing": "north"
+              },
+              "residential-hall": {
+                "x": 15.999999397036479,
+                "y": 22.999499999999912,
+                "facing": "south"
+              },
+              "courtyard": {
+                "x": 23.007891032221227,
+                "y": 35.9804267865486,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "touch door town to workshop",
+          "state": {
+            "version": 1,
+            "mapId": "workshop",
+            "position": {
+              "x": 15,
+              "y": 25
+            },
+            "facing": "north",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.95000000000001,
+                "facing": "south"
+              },
+              "town": {
+                "x": 72.80982258898484,
+                "y": 30.107558730212116,
+                "facing": "north"
+              },
+              "residential-hall": {
+                "x": 15.999999397036479,
+                "y": 22.999499999999912,
+                "facing": "south"
+              },
+              "courtyard": {
+                "x": 23.007891032221227,
+                "y": 35.9804267865486,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "touch door workshop to town",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 73.25,
+              "y": 31.4
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.95000000000001,
+                "facing": "south"
+              },
+              "town": {
+                "x": 72.80982258898484,
+                "y": 30.107558730212116,
+                "facing": "north"
+              },
+              "residential-hall": {
+                "x": 15.999999397036479,
+                "y": 22.999499999999912,
+                "facing": "south"
+              },
+              "courtyard": {
+                "x": 23.007891032221227,
+                "y": 35.9804267865486,
+                "facing": "south"
+              },
+              "workshop": {
+                "x": 15,
+                "y": 25.916500000000017,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "touch door town to park",
+          "state": {
+            "version": 1,
+            "mapId": "park",
+            "position": {
+              "x": 7,
+              "y": 63
+            },
+            "facing": "north",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.95000000000001,
+                "facing": "south"
+              },
+              "town": {
+                "x": 1.6709579851106215,
+                "y": 32.98076588108509,
+                "facing": "west"
+              },
+              "residential-hall": {
+                "x": 15.999999397036479,
+                "y": 22.999499999999912,
+                "facing": "south"
+              },
+              "courtyard": {
+                "x": 23.007891032221227,
+                "y": 35.9804267865486,
+                "facing": "south"
+              },
+              "workshop": {
+                "x": 15,
+                "y": 25.916500000000017,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "touch door park to town",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 3.4,
+              "y": 33
+            },
+            "facing": "east",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.95000000000001,
+                "facing": "south"
+              },
+              "town": {
+                "x": 1.6709579851106215,
+                "y": 32.98076588108509,
+                "facing": "west"
+              },
+              "residential-hall": {
+                "x": 15.999999397036479,
+                "y": 22.999499999999912,
+                "facing": "south"
+              },
+              "courtyard": {
+                "x": 23.007891032221227,
+                "y": 35.9804267865486,
+                "facing": "south"
+              },
+              "workshop": {
+                "x": 15,
+                "y": 25.916500000000017,
+                "facing": "south"
+              },
+              "park": {
+                "x": 6.99999969193416,
+                "y": 65.9669995838511,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "touch door town to riverbank",
+          "state": {
+            "version": 1,
+            "mapId": "riverbank",
+            "position": {
+              "x": 6.0775844922072455,
+              "y": 74.97051022941851
+            },
+            "facing": "east",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.95000000000001,
+                "facing": "south"
+              },
+              "town": {
+                "x": 78.31989162908607,
+                "y": 47.29383551766432,
+                "facing": "east"
+              },
+              "residential-hall": {
+                "x": 15.999999397036479,
+                "y": 22.999499999999912,
+                "facing": "south"
+              },
+              "courtyard": {
+                "x": 23.007891032221227,
+                "y": 35.9804267865486,
+                "facing": "south"
+              },
+              "workshop": {
+                "x": 15,
+                "y": 25.916500000000017,
+                "facing": "south"
+              },
+              "park": {
+                "x": 6.99999969193416,
+                "y": 65.9669995838511,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "touch door riverbank to town",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 76.52354566760977,
+              "y": 47.53357059812934
+            },
+            "facing": "west",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.95000000000001,
+                "facing": "south"
+              },
+              "town": {
+                "x": 78.31989162908607,
+                "y": 47.29383551766432,
+                "facing": "east"
+              },
+              "residential-hall": {
+                "x": 15.999999397036479,
+                "y": 22.999499999999912,
+                "facing": "south"
+              },
+              "courtyard": {
+                "x": 23.007891032221227,
+                "y": 35.9804267865486,
+                "facing": "south"
+              },
+              "workshop": {
+                "x": 15,
+                "y": 25.916500000000017,
+                "facing": "south"
+              },
+              "park": {
+                "x": 6.99999969193416,
+                "y": 65.9669995838511,
+                "facing": "south"
+              },
+              "riverbank": {
+                "x": 6.012390943906598,
+                "y": 77.93629362388658,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "touch door town to restaurant",
+          "state": {
+            "version": 1,
+            "mapId": "restaurant",
+            "position": {
+              "x": 12,
+              "y": 18
+            },
+            "facing": "north",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.95000000000001,
+                "facing": "south"
+              },
+              "town": {
+                "x": 34.338280765265715,
+                "y": 29.208905362800127,
+                "facing": "north"
+              },
+              "residential-hall": {
+                "x": 15.999999397036479,
+                "y": 22.999499999999912,
+                "facing": "south"
+              },
+              "courtyard": {
+                "x": 23.007891032221227,
+                "y": 35.9804267865486,
+                "facing": "south"
+              },
+              "workshop": {
+                "x": 15,
+                "y": 25.916500000000017,
+                "facing": "south"
+              },
+              "park": {
+                "x": 6.99999969193416,
+                "y": 65.9669995838511,
+                "facing": "south"
+              },
+              "riverbank": {
+                "x": 6.012390943906598,
+                "y": 77.93629362388658,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        }
+      ],
+      "consoleErrors": [],
+      "rawVideo": "/workspace/junyan/output/0079-raw/page@e70299652a198e952bb6504efa2a505d.webm"
+    }
+  ]
+}

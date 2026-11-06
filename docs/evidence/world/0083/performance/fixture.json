@@ -1,0 +1,159 @@
+{
+  "seed": 955863294,
+  "day": 1,
+  "level": 1,
+  "player": {
+    "x": 6,
+    "y": 2.5
+  },
+  "customers": [
+    {
+      "table": 1,
+      "orderId": "order-01",
+      "phase": "seated"
+    },
+    {
+      "table": 2,
+      "orderId": "order-02",
+      "phase": "seated"
+    },
+    {
+      "table": 3,
+      "orderId": "order-03",
+      "phase": "seated"
+    },
+    {
+      "table": 4,
+      "orderId": "order-04",
+      "phase": "seated"
+    }
+  ],
+  "tray": [],
+  "served": 0,
+  "earnings": 0,
+  "mistakes": 0,
+  "activeTable": null,
+  "feedback": "none",
+  "receipt": null,
+  "journal": {},
+  "ended": false,
+  "neighbourhood": {
+    "version": 1,
+    "location": "garden",
+    "apartment": {
+      "owned": [
+        "bed"
+      ],
+      "placements": [
+        {
+          "id": "bed",
+          "x": 0,
+          "y": 0,
+          "rotation": 0
+        }
+      ],
+      "colour": "blue",
+      "rugSize": "small",
+      "starterClaimed": false,
+      "lastGiftDay": 0,
+      "selected": null,
+      "draft": null,
+      "undo": null,
+      "notice": "welcome"
+    },
+    "cats": {
+      "version": 1,
+      "story": {
+        "node": "search"
+      },
+      "selected": null,
+      "cats": {
+        "white": {
+          "noticed": false,
+          "calm": false,
+          "gaveSpace": false,
+          "rested": false,
+          "sawEmptyBicycle": false
+        },
+        "black": {
+          "greeted": false,
+          "satTogether": false
+        }
+      },
+      "repeat": {
+        "status": "idle"
+      },
+      "completedKinds": [],
+      "lastCompletedDay": null,
+      "feedback": "clue"
+    },
+    "repairs": {
+      "version": 1,
+      "jobs": {
+        "lamp": {
+          "kind": "lamp",
+          "fitting": "loose",
+          "power": "off",
+          "test": "none"
+        },
+        "toy": {
+          "kind": "toy",
+          "cover": "closed",
+          "lead": "loose",
+          "cell": "old",
+          "test": "none"
+        }
+      },
+      "active": "lamp",
+      "selected": null,
+      "completed": [],
+      "feedback": "lamp-intro"
+    },
+    "garden": {
+      "version": 1,
+      "day": 1,
+      "restored": true,
+      "shade": 0,
+      "plants": {
+        "flower": {
+          "site": 0,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "climber": {
+          "site": 2,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "tree": {
+          "site": 4,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        }
+      },
+      "planterEarned": false
+    },
+    "claimedGiftIds": []
+  },
+  "world": {
+    "version": 1,
+    "mapId": "rooftop",
+    "position": {
+      "x": 23,
+      "y": 20
+    },
+    "facing": "east",
+    "returnPositions": {},
+    "activeActivity": null,
+    "activeAnchorId": null
+  }
+}

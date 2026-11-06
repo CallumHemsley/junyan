@@ -1,0 +1,186 @@
+[
+  {
+    "device": "desktop",
+    "phase": "morning",
+    "landmark": "arrival",
+    "position": {
+      "x": 12.5,
+      "y": 29
+    },
+    "served": 0,
+    "sourceHead": "97bc26ccf8c81b0b87ec5894f63482e7fe0dc5cb",
+    "canvas": {
+      "width": 720,
+      "height": 458,
+      "rect": {
+        "width": 1440,
+        "height": 916
+      }
+    },
+    "path": "before-desktop-morning-arrival.png",
+    "errors": [],
+    "fixtureSource": "456fce9/integrated-c4ec7ed/desktop-final.json",
+    "note": "Actual production App declared-camera/save fixture; not traversal proof."
+  },
+  {
+    "device": "desktop",
+    "phase": "morning",
+    "landmark": "city-lookout",
+    "position": {
+      "x": 44,
+      "y": 12
+    },
+    "served": 0,
+    "sourceHead": "97bc26ccf8c81b0b87ec5894f63482e7fe0dc5cb",
+    "canvas": {
+      "width": 720,
+      "height": 458,
+      "rect": {
+        "width": 1440,
+        "height": 916
+      }
+    },
+    "path": "before-desktop-morning-city-lookout.png",
+    "errors": [],
+    "fixtureSource": "456fce9/integrated-c4ec7ed/desktop-final.json",
+    "note": "Actual production App declared-camera/save fixture; not traversal proof."
+  },
+  {
+    "device": "desktop",
+    "phase": "evening",
+    "landmark": "arrival",
+    "position": {
+      "x": 12.5,
+      "y": 29
+    },
+    "served": 3,
+    "sourceHead": "97bc26ccf8c81b0b87ec5894f63482e7fe0dc5cb",
+    "canvas": {
+      "width": 720,
+      "height": 458,
+      "rect": {
+        "width": 1440,
+        "height": 916
+      }
+    },
+    "path": "before-desktop-evening-arrival.png",
+    "errors": [],
+    "fixtureSource": "456fce9/integrated-23be251/desktop-activity-final.json",
+    "note": "Actual production App declared-camera/save fixture; not traversal proof."
+  },
+  {
+    "device": "desktop",
+    "phase": "evening",
+    "landmark": "city-lookout",
+    "position": {
+      "x": 44,
+      "y": 12
+    },
+    "served": 3,
+    "sourceHead": "97bc26ccf8c81b0b87ec5894f63482e7fe0dc5cb",
+    "canvas": {
+      "width": 720,
+      "height": 458,
+      "rect": {
+        "width": 1440,
+        "height": 916
+      }
+    },
+    "path": "before-desktop-evening-city-lookout.png",
+    "errors": [],
+    "fixtureSource": "456fce9/integrated-23be251/desktop-activity-final.json",
+    "note": "Actual production App declared-camera/save fixture; not traversal proof."
+  },
+  {
+    "device": "phone",
+    "phase": "morning",
+    "landmark": "arrival",
+    "position": {
+      "x": 12.5,
+      "y": 29
+    },
+    "served": 0,
+    "sourceHead": "97bc26ccf8c81b0b87ec5894f63482e7fe0dc5cb",
+    "canvas": {
+      "width": 195,
+      "height": 386,
+      "rect": {
+        "width": 390,
+        "height": 772
+      }
+    },
+    "path": "before-phone-morning-arrival.png",
+    "errors": [],
+    "fixtureSource": "456fce9/integrated-c4ec7ed/desktop-final.json",
+    "note": "Actual production App declared-camera/save fixture; not traversal proof."
+  },
+  {
+    "device": "phone",
+    "phase": "morning",
+    "landmark": "city-lookout",
+    "position": {
+      "x": 44,
+      "y": 12
+    },
+    "served": 0,
+    "sourceHead": "97bc26ccf8c81b0b87ec5894f63482e7fe0dc5cb",
+    "canvas": {
+      "width": 195,
+      "height": 386,
+      "rect": {
+        "width": 390,
+        "height": 772
+      }
+    },
+    "path": "before-phone-morning-city-lookout.png",
+    "errors": [],
+    "fixtureSource": "456fce9/integrated-c4ec7ed/desktop-final.json",
+    "note": "Actual production App declared-camera/save fixture; not traversal proof."
+  },
+  {
+    "device": "phone",
+    "phase": "evening",
+    "landmark": "arrival",
+    "position": {
+      "x": 12.5,
+      "y": 29
+    },
+    "served": 3,
+    "sourceHead": "97bc26ccf8c81b0b87ec5894f63482e7fe0dc5cb",
+    "canvas": {
+      "width": 195,
+      "height": 386,
+      "rect": {
+        "width": 390,
+        "height": 772
+      }
+    },
+    "path": "before-phone-evening-arrival.png",
+    "errors": [],
+    "fixtureSource": "456fce9/integrated-23be251/desktop-activity-final.json",
+    "note": "Actual production App declared-camera/save fixture; not traversal proof."
+  },
+  {
+    "device": "phone",
+    "phase": "evening",
+    "landmark": "city-lookout",
+    "position": {
+      "x": 44,
+      "y": 12
+    },
+    "served": 3,
+    "sourceHead": "97bc26ccf8c81b0b87ec5894f63482e7fe0dc5cb",
+    "canvas": {
+      "width": 195,
+      "height": 386,
+      "rect": {
+        "width": 390,
+        "height": 772
+      }
+    },
+    "path": "before-phone-evening-city-lookout.png",
+    "errors": [],
+    "fixtureSource": "456fce9/integrated-23be251/desktop-activity-final.json",
+    "note": "Actual production App declared-camera/save fixture; not traversal proof."
+  }
+]

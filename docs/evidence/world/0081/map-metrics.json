@@ -1,0 +1,303 @@
+{
+  "method": "integer-aligned authored floor union; footprint-aware half-tile BFS through shared canWalk; actual saved six-object home; point samples estimate accessible player area and do not measure real-world size",
+  "maps": [
+    {
+      "id": "residential-hall",
+      "bounds": {
+        "width": 32,
+        "height": 26
+      },
+      "authoredWalkableUnionAreaTiles": 426,
+      "reachableHalfTileSamples": 1410,
+      "estimatedPlayerReachableAreaTiles": 352.5,
+      "landmarks": [
+        {
+          "id": "from-town",
+          "kind": "entrance",
+          "position": {
+            "x": 16,
+            "y": 21
+          },
+          "reachable": true,
+          "pathLengthTiles": 0
+        },
+        {
+          "id": "from-courtyard",
+          "kind": "entrance",
+          "position": {
+            "x": 27,
+            "y": 17.5
+          },
+          "reachable": true,
+          "pathLengthTiles": 11.543
+        },
+        {
+          "id": "from-residential-stairs",
+          "kind": "entrance",
+          "position": {
+            "x": 16,
+            "y": 6
+          },
+          "reachable": true,
+          "pathLengthTiles": 15
+        },
+        {
+          "id": "residential-hall.west-door",
+          "kind": "neighbour-threshold",
+          "position": {
+            "x": 6.5,
+            "y": 13.5
+          },
+          "reachable": true,
+          "pathLengthTiles": 12.104
+        },
+        {
+          "id": "residential-hall.east-door",
+          "kind": "neighbour-threshold",
+          "position": {
+            "x": 25.5,
+            "y": 13.5
+          },
+          "reachable": true,
+          "pathLengthTiles": 12.543
+        },
+        {
+          "id": "residential-hall.mail-stop",
+          "kind": "mailboxes",
+          "position": {
+            "x": 25,
+            "y": 16
+          },
+          "reachable": true,
+          "pathLengthTiles": 10.296
+        },
+        {
+          "id": "residential-hall.foyer-bench",
+          "kind": "bench",
+          "position": {
+            "x": 7,
+            "y": 19.5
+          },
+          "reachable": true,
+          "pathLengthTiles": 9.124
+        },
+        {
+          "id": "residential-hall.stair-window",
+          "kind": "window",
+          "position": {
+            "x": 18.5,
+            "y": 7
+          },
+          "reachable": true,
+          "pathLengthTiles": 14.221
+        },
+        {
+          "id": "residential-hall.street-vestibule",
+          "kind": "entrance",
+          "position": {
+            "x": 16,
+            "y": 21
+          },
+          "reachable": true,
+          "pathLengthTiles": 0
+        },
+        {
+          "id": "residential-hall.courtyard-door",
+          "kind": "courtyard-door",
+          "position": {
+            "x": 27,
+            "y": 17.5
+          },
+          "reachable": true,
+          "pathLengthTiles": 11.543
+        }
+      ]
+    },
+    {
+      "id": "residential-stairs",
+      "bounds": {
+        "width": 24,
+        "height": 43
+      },
+      "authoredWalkableUnionAreaTiles": 401,
+      "reachableHalfTileSamples": 1363,
+      "estimatedPlayerReachableAreaTiles": 340.75,
+      "landmarks": [
+        {
+          "id": "from-residential-hall",
+          "kind": "entrance",
+          "position": {
+            "x": 11.5,
+            "y": 37
+          },
+          "reachable": true,
+          "pathLengthTiles": 0
+        },
+        {
+          "id": "from-apartment",
+          "kind": "entrance",
+          "position": {
+            "x": 17,
+            "y": 21.5
+          },
+          "reachable": true,
+          "pathLengthTiles": 24.865
+        },
+        {
+          "id": "from-rooftop",
+          "kind": "entrance",
+          "position": {
+            "x": 6,
+            "y": 5.5
+          },
+          "reachable": true,
+          "pathLengthTiles": 49.161
+        },
+        {
+          "id": "residential-stairs.lower-landing",
+          "kind": "landing",
+          "position": {
+            "x": 10,
+            "y": 35
+          },
+          "reachable": true,
+          "pathLengthTiles": 2.5
+        },
+        {
+          "id": "residential-stairs.first-flight",
+          "kind": "stairs",
+          "position": {
+            "x": 5.5,
+            "y": 28
+          },
+          "reachable": true,
+          "pathLengthTiles": 11.042
+        },
+        {
+          "id": "residential-stairs.window-seat",
+          "kind": "window-landing",
+          "position": {
+            "x": 7,
+            "y": 21.5
+          },
+          "reachable": true,
+          "pathLengthTiles": 17.168
+        },
+        {
+          "id": "residential-stairs.home-threshold",
+          "kind": "apartment-door",
+          "position": {
+            "x": 17,
+            "y": 21.5
+          },
+          "reachable": true,
+          "pathLengthTiles": 24.865
+        },
+        {
+          "id": "residential-stairs.second-flight",
+          "kind": "stairs",
+          "position": {
+            "x": 17.5,
+            "y": 14
+          },
+          "reachable": true,
+          "pathLengthTiles": 31.22
+        },
+        {
+          "id": "residential-stairs.roof-landing",
+          "kind": "roof-landing",
+          "position": {
+            "x": 11,
+            "y": 6
+          },
+          "reachable": true,
+          "pathLengthTiles": 44.346
+        }
+      ]
+    },
+    {
+      "id": "apartment",
+      "bounds": {
+        "width": 30,
+        "height": 26
+      },
+      "authoredWalkableUnionAreaTiles": 572,
+      "reachableHalfTileSamples": 1648,
+      "estimatedPlayerReachableAreaTiles": 412,
+      "landmarks": [
+        {
+          "id": "from-residential-stairs",
+          "kind": "entrance",
+          "position": {
+            "x": 25,
+            "y": 20
+          },
+          "reachable": true,
+          "pathLengthTiles": 0
+        },
+        {
+          "id": "apartment.personal-floor",
+          "kind": "furniture-region",
+          "position": {
+            "x": 16,
+            "y": 13
+          },
+          "reachable": true,
+          "pathLengthTiles": 11.402
+        },
+        {
+          "id": "apartment.window-light",
+          "kind": "window",
+          "position": {
+            "x": 11,
+            "y": 4
+          },
+          "reachable": true,
+          "pathLengthTiles": 21.723
+        },
+        {
+          "id": "apartment.tea-nook",
+          "kind": "tea-corner",
+          "position": {
+            "x": 9,
+            "y": 21
+          },
+          "reachable": true,
+          "pathLengthTiles": 16.689
+        },
+        {
+          "id": "apartment.kitchen-approach",
+          "kind": "kitchen",
+          "position": {
+            "x": 23,
+            "y": 5.5
+          },
+          "reachable": true,
+          "pathLengthTiles": 18.49
+        },
+        {
+          "id": "apartment.bathroom",
+          "kind": "washroom",
+          "position": {
+            "x": 23,
+            "y": 12
+          },
+          "reachable": true,
+          "pathLengthTiles": 8.246
+        },
+        {
+          "id": "apartment.home-door",
+          "kind": "entrance",
+          "position": {
+            "x": 25,
+            "y": 20
+          },
+          "reachable": true,
+          "pathLengthTiles": 0
+        }
+      ]
+    }
+  ],
+  "sourceHead": "51a4d29ffcd07a23d18e531fcee3fe2d186f43fc",
+  "contract": "v1 map, v1.1 discrete stair surfaces"
+}

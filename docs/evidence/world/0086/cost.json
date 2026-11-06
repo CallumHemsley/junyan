@@ -1,0 +1,209 @@
+{
+  "source": "origin/codex/0084-landscape",
+  "tip": "52a404683b6301ca83f305e2db4299889fb41c87",
+  "claim": "Absolute isolated atmosphere sampling and Canvas2D drawing cost on authored broad-map hooks; no end-to-end traversal performance claim.",
+  "iterations": 200,
+  "runs": 5,
+  "surface": "production-built isolated study",
+  "logicalCanvas": [
+    640,
+    360
+  ],
+  "visibleWorld": [
+    44,
+    44
+  ],
+  "errors": [],
+  "hotspots": [
+    {
+      "function": "G",
+      "url": "http://127.0.0.1:5488/assets/canvas-CW5T00lo.js",
+      "hits": 250
+    },
+    {
+      "function": "E",
+      "url": "http://127.0.0.1:5488/assets/canvas-CW5T00lo.js",
+      "hits": 155
+    },
+    {
+      "function": "",
+      "url": "http://127.0.0.1:5488/assets/canvas-CW5T00lo.js",
+      "hits": 135
+    },
+    {
+      "function": "R",
+      "url": "http://127.0.0.1:5488/assets/canvas-CW5T00lo.js",
+      "hits": 102
+    },
+    {
+      "function": "fill",
+      "url": "",
+      "hits": 84
+    },
+    {
+      "function": "run",
+      "url": "",
+      "hits": 42
+    },
+    {
+      "function": "(garbage collector)",
+      "url": "",
+      "hits": 41
+    },
+    {
+      "function": "(idle)",
+      "url": "",
+      "hits": 40
+    }
+  ],
+  "rows": [
+    {
+      "mapId": "park",
+      "bounds": {
+        "width": 84,
+        "height": 68
+      },
+      "hooks": {
+        "water": 7,
+        "foliage": 92,
+        "shadows": 74,
+        "lights": 0
+      },
+      "samples": [
+        {
+          "sample": {
+            "msPerFrame": 0.34800000000046566,
+            "commandsPerFrame": 561
+          },
+          "sampleAndDraw": {
+            "msPerFrame": 1.0294999999995342,
+            "commandsPerFrame": 561
+          }
+        },
+        {
+          "sample": {
+            "msPerFrame": 0.28600000000093134,
+            "commandsPerFrame": 561
+          },
+          "sampleAndDraw": {
+            "msPerFrame": 0.9439999999990687,
+            "commandsPerFrame": 561
+          }
+        },
+        {
+          "sample": {
+            "msPerFrame": 0.2825,
+            "commandsPerFrame": 561
+          },
+          "sampleAndDraw": {
+            "msPerFrame": 0.9525,
+            "commandsPerFrame": 561
+          }
+        },
+        {
+          "sample": {
+            "msPerFrame": 0.3805000000004657,
+            "commandsPerFrame": 561
+          },
+          "sampleAndDraw": {
+            "msPerFrame": 1.0205000000004656,
+            "commandsPerFrame": 561
+          }
+        },
+        {
+          "sample": {
+            "msPerFrame": 0.3125,
+            "commandsPerFrame": 561
+          },
+          "sampleAndDraw": {
+            "msPerFrame": 0.983499999998603,
+            "commandsPerFrame": 561
+          }
+        }
+      ],
+      "centerPixel": [
+        60,
+        98,
+        122,
+        255
+      ]
+    },
+    {
+      "mapId": "riverbank",
+      "bounds": {
+        "width": 96,
+        "height": 80
+      },
+      "hooks": {
+        "water": 77,
+        "foliage": 92,
+        "shadows": 59,
+        "lights": 0
+      },
+      "samples": [
+        {
+          "sample": {
+            "msPerFrame": 0.8064999999990686,
+            "commandsPerFrame": 608
+          },
+          "sampleAndDraw": {
+            "msPerFrame": 1.4219999999995343,
+            "commandsPerFrame": 608
+          }
+        },
+        {
+          "sample": {
+            "msPerFrame": 0.8360000000009313,
+            "commandsPerFrame": 608
+          },
+          "sampleAndDraw": {
+            "msPerFrame": 1.4530000000004657,
+            "commandsPerFrame": 608
+          }
+        },
+        {
+          "sample": {
+            "msPerFrame": 0.8335000000009313,
+            "commandsPerFrame": 608
+          },
+          "sampleAndDraw": {
+            "msPerFrame": 1.4244999999995342,
+            "commandsPerFrame": 608
+          }
+        },
+        {
+          "sample": {
+            "msPerFrame": 0.889000000001397,
+            "commandsPerFrame": 608
+          },
+          "sampleAndDraw": {
+            "msPerFrame": 1.5584999999986031,
+            "commandsPerFrame": 608
+          }
+        },
+        {
+          "sample": {
+            "msPerFrame": 0.8085000000009314,
+            "commandsPerFrame": 608
+          },
+          "sampleAndDraw": {
+            "msPerFrame": 1.4114999999990687,
+            "commandsPerFrame": 608
+          }
+        }
+      ],
+      "centerPixel": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "studyFrame": {
+    "count": 43,
+    "medianMs": 2.3000000002793968,
+    "minMs": 1.6000000000931323,
+    "maxMs": 18.800000000279397
+  }
+}

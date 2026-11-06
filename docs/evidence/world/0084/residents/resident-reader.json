@@ -1,0 +1,113 @@
+{
+  "id": "resident-reader",
+  "mapId": "park",
+  "seed": 0,
+  "rest": "sit",
+  "start": {
+    "id": "park.resident-reader",
+    "characterId": "resident-reader",
+    "kind": "resident",
+    "position": {
+      "x": 54,
+      "y": 18.5
+    },
+    "facing": "south",
+    "yaw": 1.5707963267948966,
+    "action": "idle",
+    "activity": "sit",
+    "phaseMs": 18164.561538075388,
+    "radius": 0.22
+  },
+  "later": {
+    "id": "park.resident-reader",
+    "characterId": "resident-reader",
+    "kind": "resident",
+    "position": {
+      "x": 52.21284822679526,
+      "y": 18.918269563941536
+    },
+    "facing": "west",
+    "yaw": 2.9116882254578886,
+    "action": "walk",
+    "activity": "walk",
+    "phaseMs": 3164.561538075388,
+    "radius": 0.22
+  },
+  "remainingRestMs": 3835.438461924612,
+  "playerPosition": {
+    "x": 56.5,
+    "y": 20
+  },
+  "shirt": "#a39e84",
+  "routeStops": [
+    {
+      "x": 29,
+      "y": 26.9
+    },
+    {
+      "x": 54,
+      "y": 18.5
+    }
+  ],
+  "scope": "Valid normal day seed selected for a naturally occurring rest-to-walk transition. No actor spawn, phase, elapsed-time or position override; ordinary App sampling uses canonical hooks/profiles.",
+  "observations": [
+    {
+      "wallSecond": 0,
+      "count": 703,
+      "centroid": {
+        "x": 344.34850640113797,
+        "y": 274.9857752489331
+      }
+    },
+    {
+      "wallSecond": 4,
+      "count": 713,
+      "centroid": {
+        "x": 342.9789621318373,
+        "y": 273.0771388499299
+      }
+    },
+    {
+      "wallSecond": 8,
+      "count": 703,
+      "centroid": {
+        "x": 343.29871977240396,
+        "y": 274.601706970128
+      }
+    },
+    {
+      "wallSecond": 12,
+      "count": 703,
+      "centroid": {
+        "x": 342.40256045519203,
+        "y": 274.3243243243243
+      }
+    },
+    {
+      "wallSecond": 16,
+      "count": 715,
+      "centroid": {
+        "x": 337.96923076923076,
+        "y": 271.22097902097903
+      }
+    },
+    {
+      "wallSecond": 20,
+      "count": 688,
+      "centroid": {
+        "x": 346.0857558139535,
+        "y": 277.7063953488372
+      }
+    },
+    {
+      "wallSecond": 24,
+      "count": 688,
+      "centroid": {
+        "x": 346.0857558139535,
+        "y": 277.7063953488372
+      }
+    }
+  ],
+  "visibleMaterialMotion": true,
+  "consoleErrors": []
+}

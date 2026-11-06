@@ -1,0 +1,225 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/junyan/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "docs/evidence/0081/journey.config.ts",
+      "--project",
+      "phone"
+    ],
+    "configFile": "/workspace/junyan/docs/evidence/0081/journey.config.ts",
+    "rootDir": "/workspace/junyan/docs/evidence/0081",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0081/regression/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0081",
+        "testIgnore": [],
+        "testMatch": [
+          "journey.spec.ts"
+        ],
+        "timeout": 480000
+      },
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0081/regression/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0081",
+        "testIgnore": [],
+        "testMatch": [
+          "journey.spec.ts"
+        ],
+        "timeout": 480000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0081/regression/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0081",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0081",
+        "testIgnore": [],
+        "testMatch": "journey.spec.ts",
+        "timeout": 480000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5483",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox",
+              "--mute-audio"
+            ]
+          },
+          "trace": "on",
+          "video": "on",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "phone"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/workspace/junyan/docs/evidence/0081/regression/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "journey.spec.ts",
+      "file": "journey.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "ordinary opening, physical service, connected travel and reload",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 20969,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 12000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 12000ms exceeded while waiting on the predicate\n    at walkTo (/workspace/junyan/docs/evidence/0081/journey.spec.ts:24:205)\n    at anchor (/workspace/junyan/docs/evidence/0081/journey.spec.ts:28:234)\n    at /workspace/junyan/docs/evidence/0081/journey.spec.ts:36:3",
+                    "location": {
+                      "file": "/workspace/junyan/docs/evidence/0081/journey.spec.ts",
+                      "column": 205,
+                      "line": 24
+                    },
+                    "snippet": "  22 |   if(step.done)return;if(step.error)throw new Error(step.error);\n  23 |   if (page.viewportSize()!.width < 600) await page.touchscreen.tap(step.x!,step.y!); else await page.mouse.click(step.x!,step.y!);\n> 24 |   await expect.poll(async()=>{const after=await state(page);return after.world?.mapId!==mapId||Math.hypot(after.world.position.x-step.point!.x,after.world.position.y-step.point!.y)<.24;},{timeout:12000}).toBe(true);\n     |                                                                                                                                                                                                             ^\n  25 |  }\n  26 |  throw new Error('Traversal exceeded 240 real click steps');\n  27 | }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/junyan/docs/evidence/0081/journey.spec.ts",
+                        "column": 205,
+                        "line": 24
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 12000ms exceeded while waiting on the predicate\n\n  22 |   if(step.done)return;if(step.error)throw new Error(step.error);\n  23 |   if (page.viewportSize()!.width < 600) await page.touchscreen.tap(step.x!,step.y!); else await page.mouse.click(step.x!,step.y!);\n> 24 |   await expect.poll(async()=>{const after=await state(page);return after.world?.mapId!==mapId||Math.hypot(after.world.position.x-step.point!.x,after.world.position.y-step.point!.y)<.24;},{timeout:12000}).toBe(true);\n     |                                                                                                                                                                                                             ^\n  25 |  }\n  26 |  throw new Error('Traversal exceeded 240 real click steps');\n  27 | }\n    at walkTo (/workspace/junyan/docs/evidence/0081/journey.spec.ts:24:205)\n    at anchor (/workspace/junyan/docs/evidence/0081/journey.spec.ts:28:234)\n    at /workspace/junyan/docs/evidence/0081/journey.spec.ts:36:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T00:40:28.808Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0081/regression/results/journey-ordinary-opening-p-f134d-connected-travel-and-reload-phone/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/junyan/docs/evidence/0081/regression/results/journey-ordinary-opening-p-f134d-connected-travel-and-reload-phone/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0081/regression/results/journey-ordinary-opening-p-f134d-connected-travel-and-reload-phone/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/junyan/docs/evidence/0081/journey.spec.ts",
+                    "column": 205,
+                    "line": 24
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "bf222bad70f76648f722-c032ff035f5e71888d3c",
+          "file": "journey.spec.ts",
+          "line": 30,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-06T00:40:27.902Z",
+    "duration": 23628.916999999998,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

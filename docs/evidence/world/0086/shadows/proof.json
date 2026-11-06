@@ -1,0 +1,412 @@
+{
+  "atmosphere": "5d0609a",
+  "landscape": "52a4046",
+  "sourceInputs": {
+    "src/world/atmosphere/index.ts": "8907905753630ff03ac4e53ec6733a3fd441762e2d78d2e64bb10819d159f8c4",
+    "src/world/atmosphere/canvas.ts": "4ca13abb6d866f189754dab443b33fea72d8e8cb6c644aded718b695a24907b4",
+    "src/world/atmosphere/map-hooks.ts": "635e080ea3e69e5aa4c7c8f6da992d24af18360cfc16ab973b24b54500c71537",
+    "src/world/atmosphere/shadow-study.ts": "4ced50ed71c55798f2c11c43acd47b6ae0bf6b6db100de8148b2fb744eb61087",
+    "src/world/art/landscape/index.ts": "9c9d7e654d28b5c301200d5b0149fe13724ae9add8fa79219dc5107e89f6fa18",
+    "src/world/art/landscape/draw.ts": "3fb0eb87e64c1f9844fbdbf41414786003058b21d1edd597406b8f719f56cb20"
+  },
+  "claim": "Isolated native ground/contact/object callbacks and atmosphere cast layer. Ground includes contact; contact/cast/object modes are rendered alone on neutral backing.",
+  "errors": [],
+  "pixels": {
+    "single": [
+      0,
+      0,
+      0,
+      64
+    ],
+    "overlap": [
+      0,
+      0,
+      0,
+      64
+    ],
+    "inherited": [
+      0,
+      0,
+      0,
+      32
+    ],
+    "restored": 0.5,
+    "deck": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "outside": [
+      0,
+      0,
+      0,
+      64
+    ],
+    "contactFull": 51,
+    "contactFaded": 26,
+    "contactRestored": 0.5
+  },
+  "evidence": [
+    {
+      "name": "desktop",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "ground",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 49,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "cast",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 49,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "contact",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 49,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "objects",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 49,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "combined",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 49,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "ground",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 37,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "cast",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 37,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "contact",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 37,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "objects",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 37,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "combined",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 37,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "ground",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 34,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "cast",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 34,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "contact",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 34,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "objects",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 34,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "combined",
+      "phase": "evening",
+      "scale": 24,
+      "castCount": 34,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "cast",
+      "phase": "morning",
+      "scale": 24,
+      "castCount": 52,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "combined",
+      "phase": "morning",
+      "scale": 24,
+      "castCount": 52,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "cast",
+      "phase": "morning",
+      "scale": 24,
+      "castCount": 31,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "combined",
+      "phase": "morning",
+      "scale": 24,
+      "castCount": 31,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "cast",
+      "phase": "morning",
+      "scale": 24,
+      "castCount": 34,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "desktop",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "combined",
+      "phase": "morning",
+      "scale": 24,
+      "castCount": 34,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "phone",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "ground",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 43,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "phone",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "cast",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 43,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "phone",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "contact",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 43,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "phone",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "objects",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 43,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "phone",
+      "site": "pond",
+      "mapId": "park",
+      "mode": "combined",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 43,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "phone",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "ground",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 35,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "phone",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "cast",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 35,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "phone",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "contact",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 35,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "phone",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "objects",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 35,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "phone",
+      "site": "bridge",
+      "mapId": "riverbank",
+      "mode": "combined",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 35,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "phone",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "ground",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 30,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "phone",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "cast",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 30,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "phone",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "contact",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 30,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "phone",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "objects",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 30,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    },
+    {
+      "name": "phone",
+      "site": "grove",
+      "mapId": "park",
+      "mode": "combined",
+      "phase": "evening",
+      "scale": 18,
+      "castCount": 30,
+      "contactOwnership": "landscape drawContactShadows, ground pass only; atmosphere casts only"
+    }
+  ]
+}

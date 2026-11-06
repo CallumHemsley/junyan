@@ -1,0 +1,30 @@
+import {chromium} from '@playwright/test';
+import {isDeepStrictEqual} from 'node:util';
+import {writeFile} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--mute-audio']});
+const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'});
+const errors=[];page.on('pageerror',e=>errors.push(e.message));
+const snapshot=()=>page.evaluate(()=>new Promise((resolve,reject)=>{const request=indexedDB.open('junyan-waiter',1);request.onerror=()=>reject(request.error);request.onsuccess=()=>{const db=request.result,transaction=db.transaction('saves'),read=transaction.objectStore('saves').get('v1');transaction.oncomplete=()=>{db.close();const s=read.result;resolve({world:s.world,player:s.player,journal:s.journal,neighbourhood:s.neighbourhood,day:s.day,served:s.served,earnings:s.earnings});};transaction.onerror=()=>reject(transaction.error);};}));
+try {
+ await page.goto('http://127.0.0.1:5481/?opening=skip&seed=42');
+ await page.getByRole('button',{name:'开门迎客'}).click();
+ await page.locator('.world-place').getByRole('button').first().click();
+ await page.getByRole('button',{name:'关闭词卡'}).click();
+ await page.locator('[data-testid="world-viewport"]').focus();
+ await page.keyboard.down('ArrowDown');await page.keyboard.down('ArrowLeft');
+ await page.waitForSelector('[data-map="town"]',{timeout:10000});
+ await page.keyboard.up('ArrowDown');await page.keyboard.up('ArrowLeft');
+ await page.keyboard.down('ArrowDown');await page.waitForTimeout(400);await page.keyboard.up('ArrowDown');
+ await page.keyboard.down('ArrowRight');await page.waitForTimeout(200);await page.keyboard.up('ArrowRight');
+ await page.waitForTimeout(600);
+ const before=await snapshot();
+ if(!before.world||before.world.mapId!=='town'||!Object.keys(before.journal).length)throw Error('Normal save precondition failed');
+ await page.screenshot({path:'docs/evidence/world/0079/reload-current-before.png'});
+ await page.reload();await page.waitForSelector('[data-map="town"]',{timeout:10000});await page.waitForTimeout(300);
+ const after=await snapshot();
+ await page.screenshot({path:'docs/evidence/world/0079/reload-current-after.png'});
+ const identical=isDeepStrictEqual(before,after);
+ await writeFile('docs/evidence/world/0079/reload-current-proof.json',JSON.stringify({sourceHead:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),testMode:false,opening:'existing dev skip flag',inputs:'word lookup and real keyboard walking',before,after,identical,errors},null,2)+'\n');
+ if(!identical||errors.length)throw Error('Normal save continuity failed');
+} finally {await browser.close();}

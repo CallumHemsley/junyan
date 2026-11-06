@@ -1,0 +1,335 @@
+{
+  "config": {
+    "argv": [
+      "/workspace/.junyan-tools/node_modules/node/bin/node",
+      "/workspace/junyan/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "docs/evidence/0088/viewport-e6270d0/viewport.config.ts"
+    ],
+    "configFile": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0/viewport.config.ts",
+    "rootDir": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0",
+        "testIgnore": [],
+        "testMatch": [
+          "viewport.spec.ts"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0",
+        "testIgnore": [],
+        "testMatch": [
+          "viewport.spec.ts"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0",
+        "testIgnore": [],
+        "testMatch": "viewport.spec.ts",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5490/junyan/",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "video": "on",
+          "trace": "on",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0",
+        "testIgnore": [],
+        "testMatch": "viewport.spec.ts",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5490/junyan/",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "video": "on",
+          "trace": "on",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "phone"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "/workspace/.junyan-tools/node_modules/node/bin/node node_modules/vite/bin/vite.js preview --base /junyan/ --host 127.0.0.1 --port 5490 --strictPort",
+      "cwd": "/workspace/junyan-review-integration",
+      "url": "http://127.0.0.1:5490/junyan/",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "viewport.spec.ts",
+      "file": "viewport.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "published viewport ordinary walking and contextual service",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12550,
+                  "error": {
+                    "message": "TypeError: Cannot read properties of undefined (reading 'world')",
+                    "stack": "TypeError: Cannot read properties of undefined (reading 'world')\n    at /workspace/junyan/docs/evidence/0088/viewport-e6270d0/viewport.spec.ts:22:50",
+                    "location": {
+                      "file": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0/viewport.spec.ts",
+                      "column": 50,
+                      "line": 22
+                    },
+                    "snippet": "  20 |  await page.reload();await expect(view).toBeVisible();await page.waitForTimeout(700);const restored=await saved(page);\n  21 |  await writeFile(`${dir}/${info.project.name}-observations.json`,JSON.stringify({head:'e6270d0',method:'Production normal opening, held keyboard on both emulated viewports, actual anchor and close controls, read-only saves. Not touch-only proof.',errors,before:before?.world,moved:moved?.world,closed:closed?.world,restored:restored?.world},null,2));\n> 22 |  expect(moved.world.position).not.toEqual(before.world.position);expect(restored.world.position).toEqual(closed.world.position);expect(errors).toEqual([]);\n     |                                                  ^\n  23 | });\n  24 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0/viewport.spec.ts",
+                        "column": 50,
+                        "line": 22
+                      },
+                      "message": "TypeError: Cannot read properties of undefined (reading 'world')\n\n  20 |  await page.reload();await expect(view).toBeVisible();await page.waitForTimeout(700);const restored=await saved(page);\n  21 |  await writeFile(`${dir}/${info.project.name}-observations.json`,JSON.stringify({head:'e6270d0',method:'Production normal opening, held keyboard on both emulated viewports, actual anchor and close controls, read-only saves. Not touch-only proof.',errors,before:before?.world,moved:moved?.world,closed:closed?.world,restored:restored?.world},null,2));\n> 22 |  expect(moved.world.position).not.toEqual(before.world.position);expect(restored.world.position).toEqual(closed.world.position);expect(errors).toEqual([]);\n     |                                                  ^\n  23 | });\n  24 |\n    at /workspace/junyan/docs/evidence/0088/viewport-e6270d0/viewport.spec.ts:22:50"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T00:09:22.259Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0/results/viewport-published-viewpor-e6d6f-king-and-contextual-service-desktop/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0/results/viewport-published-viewpor-e6d6f-king-and-contextual-service-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0/results/viewport-published-viewpor-e6d6f-king-and-contextual-service-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0/viewport.spec.ts",
+                    "column": 50,
+                    "line": 22
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "24876809b35b098bf297-33c83f1bbc2fe4c66d98",
+          "file": "viewport.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "published viewport ordinary walking and contextual service",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12498,
+                  "error": {
+                    "message": "TypeError: Cannot read properties of undefined (reading 'world')",
+                    "stack": "TypeError: Cannot read properties of undefined (reading 'world')\n    at /workspace/junyan/docs/evidence/0088/viewport-e6270d0/viewport.spec.ts:22:50",
+                    "location": {
+                      "file": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0/viewport.spec.ts",
+                      "column": 50,
+                      "line": 22
+                    },
+                    "snippet": "  20 |  await page.reload();await expect(view).toBeVisible();await page.waitForTimeout(700);const restored=await saved(page);\n  21 |  await writeFile(`${dir}/${info.project.name}-observations.json`,JSON.stringify({head:'e6270d0',method:'Production normal opening, held keyboard on both emulated viewports, actual anchor and close controls, read-only saves. Not touch-only proof.',errors,before:before?.world,moved:moved?.world,closed:closed?.world,restored:restored?.world},null,2));\n> 22 |  expect(moved.world.position).not.toEqual(before.world.position);expect(restored.world.position).toEqual(closed.world.position);expect(errors).toEqual([]);\n     |                                                  ^\n  23 | });\n  24 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0/viewport.spec.ts",
+                        "column": 50,
+                        "line": 22
+                      },
+                      "message": "TypeError: Cannot read properties of undefined (reading 'world')\n\n  20 |  await page.reload();await expect(view).toBeVisible();await page.waitForTimeout(700);const restored=await saved(page);\n  21 |  await writeFile(`${dir}/${info.project.name}-observations.json`,JSON.stringify({head:'e6270d0',method:'Production normal opening, held keyboard on both emulated viewports, actual anchor and close controls, read-only saves. Not touch-only proof.',errors,before:before?.world,moved:moved?.world,closed:closed?.world,restored:restored?.world},null,2));\n> 22 |  expect(moved.world.position).not.toEqual(before.world.position);expect(restored.world.position).toEqual(closed.world.position);expect(errors).toEqual([]);\n     |                                                  ^\n  23 | });\n  24 |\n    at /workspace/junyan/docs/evidence/0088/viewport-e6270d0/viewport.spec.ts:22:50"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T00:09:36.166Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0/results/viewport-published-viewpor-e6d6f-king-and-contextual-service-phone/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0/results/viewport-published-viewpor-e6d6f-king-and-contextual-service-phone/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0/results/viewport-published-viewpor-e6d6f-king-and-contextual-service-phone/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/junyan/docs/evidence/0088/viewport-e6270d0/viewport.spec.ts",
+                    "column": 50,
+                    "line": 22
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "24876809b35b098bf297-bcbe05c82d54ff195c04",
+          "file": "viewport.spec.ts",
+          "line": 6,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-06T00:09:21.408Z",
+    "duration": 28366.317,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,573 @@
+{
+  "head": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+  "errors": [],
+  "state": {
+    "seed": 955863294,
+    "day": 1,
+    "level": 1,
+    "player": {
+      "x": 10.4,
+      "y": 8
+    },
+    "customers": [
+      {
+        "table": 1,
+        "orderId": "order-01",
+        "phase": "served"
+      },
+      {
+        "table": 2,
+        "orderId": "order-02",
+        "phase": "served"
+      },
+      {
+        "table": 3,
+        "orderId": "order-03",
+        "phase": "served"
+      },
+      {
+        "table": 4,
+        "orderId": "order-04",
+        "phase": "served"
+      }
+    ],
+    "tray": [],
+    "served": 4,
+    "earnings": 10,
+    "mistakes": 0,
+    "activeTable": 4,
+    "feedback": "thanks",
+    "receipt": {
+      "table": 4,
+      "total": 2,
+      "change": 3
+    },
+    "journal": {
+      "milk": {
+        "lookups": 0,
+        "lastSeen": 1793927667737,
+        "recovered": true
+      },
+      "egg": {
+        "lookups": 0,
+        "lastSeen": 1793927667737,
+        "recovered": true
+      },
+      "thank-you": {
+        "lookups": 1,
+        "lastSeen": 1793927703485,
+        "recovered": true
+      },
+      "good": {
+        "lookups": 0,
+        "lastSeen": 1793927667737,
+        "recovered": true
+      },
+      "i": {
+        "lookups": 0,
+        "lastSeen": 1793927675336,
+        "recovered": true
+      },
+      "think": {
+        "lookups": 0,
+        "lastSeen": 1793927675336,
+        "recovered": true
+      },
+      "want": {
+        "lookups": 0,
+        "lastSeen": 1793927675336,
+        "recovered": true
+      },
+      "one": {
+        "lookups": 0,
+        "lastSeen": 1793927675336,
+        "recovered": true
+      },
+      "piece": {
+        "lookups": 0,
+        "lastSeen": 1793927675336,
+        "recovered": true
+      },
+      "bun": {
+        "lookups": 0,
+        "lastSeen": 1793927675336,
+        "recovered": true
+      },
+      "bring": {
+        "lookups": 0,
+        "lastSeen": 1793927684370,
+        "recovered": true
+      },
+      "cup": {
+        "lookups": 0,
+        "lastSeen": 1793927684370,
+        "recovered": true
+      },
+      "please": {
+        "lookups": 0,
+        "lastSeen": 1793927693229,
+        "recovered": true
+      },
+      "give": {
+        "lookups": 0,
+        "lastSeen": 1793927693229,
+        "recovered": true
+      },
+      "bowl": {
+        "lookups": 0,
+        "lastSeen": 1793927693229,
+        "recovered": true
+      },
+      "porridge": {
+        "lookups": 0,
+        "lastSeen": 1793927693229,
+        "recovered": true
+      },
+      "stick": {
+        "lookups": 0,
+        "lastSeen": 1793927702835,
+        "recovered": true
+      },
+      "youtiao": {
+        "lookups": 0,
+        "lastSeen": 1793927702835,
+        "recovered": true
+      },
+      "customer": {
+        "lookups": 1,
+        "lastSeen": 1793927704197,
+        "recovered": false
+      }
+    },
+    "ended": true,
+    "neighbourhood": {
+      "version": 1,
+      "location": "restaurant",
+      "apartment": {
+        "owned": [
+          "bed"
+        ],
+        "placements": [
+          {
+            "id": "bed",
+            "x": 0,
+            "y": 0,
+            "rotation": 0
+          }
+        ],
+        "colour": "blue",
+        "rugSize": "small",
+        "starterClaimed": false,
+        "lastGiftDay": 0,
+        "selected": null,
+        "draft": null,
+        "undo": null,
+        "notice": "welcome"
+      },
+      "cats": {
+        "version": 1,
+        "story": {
+          "node": "search"
+        },
+        "selected": null,
+        "cats": {
+          "white": {
+            "noticed": false,
+            "calm": false,
+            "gaveSpace": false,
+            "rested": false,
+            "sawEmptyBicycle": false
+          },
+          "black": {
+            "greeted": false,
+            "satTogether": false
+          }
+        },
+        "repeat": {
+          "status": "idle"
+        },
+        "completedKinds": [],
+        "lastCompletedDay": null,
+        "feedback": "clue"
+      },
+      "repairs": {
+        "version": 1,
+        "jobs": {
+          "lamp": {
+            "kind": "lamp",
+            "fitting": "loose",
+            "power": "off",
+            "test": "none"
+          },
+          "toy": {
+            "kind": "toy",
+            "cover": "closed",
+            "lead": "loose",
+            "cell": "old",
+            "test": "none"
+          }
+        },
+        "active": "lamp",
+        "selected": null,
+        "completed": [],
+        "feedback": "lamp-intro"
+      },
+      "garden": {
+        "version": 1,
+        "day": 1,
+        "restored": false,
+        "shade": 0,
+        "plants": {
+          "flower": {
+            "site": 0,
+            "care": "ready",
+            "growth": 0,
+            "drooping": false,
+            "waited": false,
+            "result": null
+          },
+          "climber": {
+            "site": 2,
+            "care": "dry",
+            "growth": 0,
+            "drooping": false,
+            "waited": false,
+            "result": null
+          },
+          "tree": {
+            "site": 4,
+            "care": "dry",
+            "growth": 0,
+            "drooping": false,
+            "waited": false,
+            "result": null
+          }
+        },
+        "planterEarned": false
+      },
+      "claimedGiftIds": []
+    },
+    "world": {
+      "version": 1,
+      "mapId": "restaurant",
+      "position": {
+        "x": 18.50000007528276,
+        "y": 13.99999992471724
+      },
+      "facing": "south",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "elapsedMs": 49447.799999999974,
+        "discoveries": [],
+        "reactions": [],
+        "serviceDepartures": [
+          {
+            "day": 1,
+            "table": 1,
+            "orderId": "order-01"
+          },
+          {
+            "day": 1,
+            "table": 2,
+            "orderId": "order-02"
+          },
+          {
+            "day": 1,
+            "table": 3,
+            "orderId": "order-03"
+          },
+          {
+            "day": 1,
+            "table": 4,
+            "orderId": "order-04"
+          }
+        ],
+        "pauses": []
+      }
+    }
+  },
+  "audio": [
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/english-6943a193437e386984125593e818597c260bb560291655e0bdc00a4216645699.wav",
+      "at": 339.40000000037253,
+      "active": true,
+      "sinceClick": 0.40000000037252903,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/english-43f6e07bb0dded0b2c1749943ace0f969c9114a050da92befd5ab01ebe3bbb24.wav",
+      "at": 862.9000000003725,
+      "active": true,
+      "sinceClick": 2.7999999998137355,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/english-4265e3caa9e44db5b6233d1b144c34ab00974e8920452a2243c7dbb18900c5cb.wav",
+      "at": 1235.9000000003725,
+      "active": true,
+      "sinceClick": 1.400000000372529,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/english-2a80e2a0c137b91d7de37cb1b82f30b6e208448a302292cc7e7c846005dca422.wav",
+      "at": 1616.5,
+      "active": true,
+      "sinceClick": 1.2999999998137355,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-a67bca4ef54afdc7a84aec2dac9f74b2fea9a4d1bfcf317e8e56f193495a9067.wav",
+      "at": 2006,
+      "active": true,
+      "sinceClick": 1.599999999627471,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-90e476270f3b2a916a2521db11f50ef25d592a7a7be165e8f693179d2e9626f4.wav",
+      "at": 2383.5,
+      "active": true,
+      "sinceClick": 1.7000000001862645,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-2cefc3fe62be59203c6ef07c91f4342efc18641473fa68dacd7f54f31a90aa1b.wav",
+      "at": 2770.5,
+      "active": true,
+      "sinceClick": 1.7999999998137355,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-e756047972fc829165e2ca4f0f9f13c40c1b02f8dc94e8116180e111a396816c.wav",
+      "at": 3154.2999999998137,
+      "active": true,
+      "sinceClick": 0.39999999944120646,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-aa4ed24a26a593973279ebe664cfff1b1241682cf17d0e2fee03508224ecde88.wav",
+      "at": 3531.7999999998137,
+      "active": true,
+      "sinceClick": 0.40000000037252903,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-60ee82fdaf489803f5b64b4578ec054294c5b240d1f13d1c4c485ebbfde4b834.wav",
+      "at": 3919.7999999998137,
+      "active": true,
+      "sinceClick": 2.099999999627471,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-f8c7a10d6944e2c84304d52a08300578d078efc600b295e85527303f6a5b7292.wav",
+      "at": 4299.600000000559,
+      "active": true,
+      "sinceClick": 0.30000000074505806,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-415ee408485a84b18d42973ab6656bacd01093a8526eec3dbf5d73b5c1a00bfb.wav",
+      "at": 4682.4000000003725,
+      "active": true,
+      "sinceClick": 1.7000000001862645,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-fe9a2148bde5c6362d962173b6c4c215ae28e9f9b593e61392e835575e61290f.wav",
+      "at": 5066.600000000559,
+      "active": true,
+      "sinceClick": 1.900000000372529,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-ef0ccd086af0852f76641f13674a0201588795d4affc459517fde7d15d994f33.wav",
+      "at": 5450.5,
+      "active": true,
+      "sinceClick": 1.2999999998137355,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/word-19be6bbebac3dbb7894517bbd13de46a628667976c0f109d45525b89ef1012f7.wav",
+      "at": 6214.299999999814,
+      "active": true,
+      "sinceClick": 0.2999999998137355,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-822420cdb693503c25a930e8f1ee5225bc2b2ce2c53027ff2ffce78b3cb4e785.wav",
+      "at": 6599.299999999814,
+      "active": true,
+      "sinceClick": 1.5,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-bc2aada2cb0ccd83e698c6b0e9eca6bf96fc96aad382bcabb1fe7a82b8d105ca.wav",
+      "at": 10358.600000000559,
+      "active": true,
+      "sinceClick": 0.900000000372529,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-bc2aada2cb0ccd83e698c6b0e9eca6bf96fc96aad382bcabb1fe7a82b8d105ca.wav",
+      "at": 14538.400000000373,
+      "active": true,
+      "sinceClick": 0.2999999998137355,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-7cec562dce16587a3d3072fb7e37ef728c1e652e315d18c300266abffb223067.wav",
+      "at": 14792.5,
+      "active": true,
+      "sinceClick": 0.7000000001862645,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-7429c0cef3ad319cb9b11fb2cf220d473810047abf41ff67f82439e159ea431c.wav",
+      "at": 18580.299999999814,
+      "active": true,
+      "sinceClick": 0.5,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-7429c0cef3ad319cb9b11fb2cf220d473810047abf41ff67f82439e159ea431c.wav",
+      "at": 23554.900000000373,
+      "active": true,
+      "sinceClick": 1.400000000372529,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-c580881e4df4be3b391064df89d91425a0c4762362e4fdef90362f82c81635ba.wav",
+      "at": 23782.60000000056,
+      "active": true,
+      "sinceClick": 0.7000000001862645,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-0e301eac01478dc861304da61bfb916ab6360a4fa6c73f3df2e23acf756db299.wav",
+      "at": 27430.60000000056,
+      "active": true,
+      "sinceClick": 0.5,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-0e301eac01478dc861304da61bfb916ab6360a4fa6c73f3df2e23acf756db299.wav",
+      "at": 32408.799999999814,
+      "active": true,
+      "sinceClick": 0.39999999944120646,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-f69b1fac2105310de9b77d39194a5024432b2523a9b0fcc4bd0d9f8b455a1fbf.wav",
+      "at": 32598,
+      "active": true,
+      "sinceClick": 0.39999999944120646,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-105b924034f77f52b94832eeba25277f34cb90c2eb8051c514b36946088de3ed.wav",
+      "at": 36215,
+      "active": true,
+      "sinceClick": 0.7000000001862645,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-105b924034f77f52b94832eeba25277f34cb90c2eb8051c514b36946088de3ed.wav",
+      "at": 42030.299999999814,
+      "active": true,
+      "sinceClick": 0.5,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-35edebfeb057c9643ee59691d94516ef3f2da7d0ec49e446d64dca9970698a30.wav",
+      "at": 42368.90000000037,
+      "active": true,
+      "sinceClick": 0.40000000037252903,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/line-35edebfeb057c9643ee59691d94516ef3f2da7d0ec49e446d64dca9970698a30.wav",
+      "at": 42564.200000000186,
+      "active": true,
+      "sinceClick": 0.2999999998137355,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/word-d4eb416293ad391775ce523d94ce0483868103313ae19eac4e0f80c7401b5165.wav",
+      "at": 42730.299999999814,
+      "active": true,
+      "sinceClick": 0.6999999992549419,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    },
+    {
+      "src": "http://127.0.0.1:5490/junyan/audio/word-d63567585486c5e4413e93dd743d7879e578ede09e94944a1f43addc3c14281b.wav",
+      "at": 43442.10000000056,
+      "active": true,
+      "sinceClick": 0.5,
+      "muted": false,
+      "volume": 1,
+      "status": "playing"
+    }
+  ]
+}

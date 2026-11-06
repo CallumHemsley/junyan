@@ -1,0 +1,638 @@
+[
+  {
+    "name": "desktop",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "visits": [
+      {
+        "mapId": "courtyard",
+        "landmarkId": "courtyard.water-jar",
+        "initialApproach": {
+          "x": 27.25,
+          "y": 21
+        },
+        "before": {
+          "x": 27.25,
+          "y": 21
+        },
+        "after": {
+          "x": 27.756919999999994,
+          "y": 21
+        },
+        "travelled": 0.5069199999999938,
+        "discoveries": [
+          {
+            "mapId": "courtyard",
+            "landmarkId": "courtyard.water-jar",
+            "day": 2
+          }
+        ],
+        "reactions": [
+          {
+            "mapId": "courtyard",
+            "targetId": "courtyard.water-jar",
+            "reaction": "ripple",
+            "atMs": 1366.7000000000003
+          }
+        ],
+        "persistedClockMs": 1016.7
+      },
+      {
+        "mapId": "riverbank",
+        "landmarkId": "riverbank.fishing-jetty",
+        "initialApproach": {
+          "x": 38.25,
+          "y": 39
+        },
+        "before": {
+          "x": 38.25,
+          "y": 39
+        },
+        "after": {
+          "x": 38.756919999999994,
+          "y": 39
+        },
+        "travelled": 0.5069199999999938,
+        "discoveries": [
+          {
+            "mapId": "courtyard",
+            "landmarkId": "courtyard.water-jar",
+            "day": 2
+          },
+          {
+            "mapId": "riverbank",
+            "landmarkId": "riverbank.fishing-jetty",
+            "day": 2
+          }
+        ],
+        "reactions": [
+          {
+            "mapId": "courtyard",
+            "targetId": "courtyard.water-jar",
+            "reaction": "ripple",
+            "atMs": 1366.7000000000003
+          },
+          {
+            "mapId": "riverbank",
+            "targetId": "riverbank.fishing-jetty",
+            "reaction": "ripple",
+            "atMs": 2299.9999999999986
+          }
+        ],
+        "persistedClockMs": 2083.3
+      }
+    ],
+    "motionBefore": [
+      {
+        "id": "workshop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 11.8,
+          "y": 10.8
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 8821.172230139402,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      },
+      {
+        "id": "workshop.xiao-zhou",
+        "characterId": "xiao-zhou",
+        "kind": "resident",
+        "position": {
+          "x": 24.8,
+          "y": 8.114193497077007
+        },
+        "facing": "north",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 4090.322634655782,
+        "greeting": {
+          "id": "zhou-greeting",
+          "tokens": [
+            {
+              "id": "hello",
+              "hanzi": "你好",
+              "pinyin": "nǐ hǎo",
+              "gloss": "hello",
+              "audio": "/audio/word-3ab47ea2d68ab926bc495a3fc09b00676c5f3f9e78b0d0d08eb6e5a2bc6418a5.wav"
+            },
+            {
+              "id": "ha",
+              "hanzi": "呀",
+              "pinyin": "ya",
+              "gloss": "friendly exclamation",
+              "audio": "/audio/word-410bcf510b3962aa9d0de24d9e0c134653a7f12d878fd7718ab5f696b8b45115.wav"
+            }
+          ],
+          "audio": "/audio/line-5f96eb1c67e3dd102a831876d26d9aa209cffa79ff7df4081e54b4bb10d53071.wav",
+          "text": "你好呀。"
+        },
+        "radius": 0.22
+      }
+    ],
+    "motionAfter": [
+      {
+        "id": "workshop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 11.8,
+          "y": 10.8
+        },
+        "facing": "north",
+        "action": "interact",
+        "activity": "watch",
+        "phaseMs": 12904.272230139402,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      },
+      {
+        "id": "workshop.xiao-zhou",
+        "characterId": "xiao-zhou",
+        "kind": "resident",
+        "position": {
+          "x": 24.8,
+          "y": 6
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "idle",
+        "phaseMs": 1857.6331609715744,
+        "greeting": {
+          "id": "zhou-greeting",
+          "tokens": [
+            {
+              "id": "hello",
+              "hanzi": "你好",
+              "pinyin": "nǐ hǎo",
+              "gloss": "hello",
+              "audio": "/audio/word-3ab47ea2d68ab926bc495a3fc09b00676c5f3f9e78b0d0d08eb6e5a2bc6418a5.wav"
+            },
+            {
+              "id": "ha",
+              "hanzi": "呀",
+              "pinyin": "ya",
+              "gloss": "friendly exclamation",
+              "audio": "/audio/word-410bcf510b3962aa9d0de24d9e0c134653a7f12d878fd7718ab5f696b8b45115.wav"
+            }
+          ],
+          "audio": "/audio/line-5f96eb1c67e3dd102a831876d26d9aa209cffa79ff7df4081e54b4bb10d53071.wav",
+          "text": "你好呀。"
+        },
+        "radius": 0.22
+      }
+    ],
+    "diagnostics": [
+      {
+        "mapId": "town",
+        "actors": [
+          "town.market-regular",
+          "town.workshop-delivery",
+          "life.town.office-walk"
+        ],
+        "diagnostics": [
+          {
+            "hookId": "town.morning-walk",
+            "reason": "blocked-home-or-entrance"
+          }
+        ]
+      },
+      {
+        "mapId": "courtyard",
+        "actors": [
+          "courtyard.black",
+          "courtyard.aunt",
+          "courtyard.sparrows"
+        ],
+        "diagnostics": [
+          {
+            "hookId": "courtyard.white",
+            "reason": "blocked-route-stop"
+          }
+        ]
+      },
+      {
+        "mapId": "workshop",
+        "actors": [
+          "workshop.lin-jie",
+          "workshop.xiao-zhou"
+        ],
+        "diagnostics": []
+      },
+      {
+        "mapId": "rooftop",
+        "actors": [
+          "rooftop.lin-jie",
+          "life.rooftop.sparrow"
+        ],
+        "diagnostics": []
+      },
+      {
+        "mapId": "park",
+        "actors": [
+          "life.park.sparrow"
+        ],
+        "diagnostics": []
+      },
+      {
+        "mapId": "riverbank",
+        "actors": [
+          "life.riverbank.sparrow"
+        ],
+        "diagnostics": []
+      }
+    ],
+    "errors": [],
+    "sources": [
+      {
+        "sha": "3747266683d3ec18f7d3af2fb99fcf88942cb098",
+        "path": "src/world/maps/town/map.json",
+        "mapId": "town"
+      },
+      {
+        "sha": "c176f5ac0423d7fa6e3c0f7a8c42f0a3fcc793db",
+        "path": "src/world/maps/courtyard/map.json",
+        "mapId": "courtyard"
+      },
+      {
+        "sha": "867a8ef0eb9ae80e841f155908b5abb22a716d5d",
+        "path": "src/world/maps/workshop/map.json",
+        "mapId": "workshop"
+      },
+      {
+        "sha": "0a88378c8b7ce7618d7525602671c2c673302ad8",
+        "path": "src/world/maps/rooftop/map.json",
+        "mapId": "rooftop"
+      },
+      {
+        "sha": "14a2ce1fb95eb00955bfc3f6f85aae34f6ef99b8",
+        "path": "src/world/maps/landscape/park.json",
+        "mapId": "park"
+      },
+      {
+        "sha": "14a2ce1fb95eb00955bfc3f6f85aae34f6ef99b8",
+        "path": "src/world/maps/landscape/riverbank.json",
+        "mapId": "riverbank"
+      }
+    ],
+    "video": "/workspace/junyan/output/verification/0087/browser/desktop/page@11d52521238719a8173263b696978fc4.webm",
+    "limitations": [
+      "Isolated life harness with schematic ground, not integrated world art acceptance.",
+      "Approach starts are explicit proof fixtures; keyboard/pointer movement and DOM actions execute normally.",
+      "LocalStorage is isolated proof persistence, not the foundation IndexedDB save integration.",
+      "Phone directional proof uses real CDP touchscreen input on the control; full production touch travel remains pending."
+    ],
+    "lifeHead": "e799a67d4cb9d0900567b22d2f554eccffa9341b",
+    "committedVideo": "docs/evidence/0087/isolated/desktop-motion.webm"
+  },
+  {
+    "name": "phone",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "visits": [
+      {
+        "mapId": "courtyard",
+        "landmarkId": "courtyard.water-jar",
+        "initialApproach": {
+          "x": 27.25,
+          "y": 21
+        },
+        "before": {
+          "x": 27.25,
+          "y": 21
+        },
+        "after": {
+          "x": 27.883459999999992,
+          "y": 21
+        },
+        "travelled": 0.6334599999999924,
+        "discoveries": [
+          {
+            "mapId": "courtyard",
+            "landmarkId": "courtyard.water-jar",
+            "day": 2
+          }
+        ],
+        "reactions": [
+          {
+            "mapId": "courtyard",
+            "targetId": "courtyard.water-jar",
+            "reaction": "ripple",
+            "atMs": 1044.9000000003728
+          }
+        ],
+        "persistedClockMs": 844.8000000003725
+      },
+      {
+        "mapId": "riverbank",
+        "landmarkId": "riverbank.fishing-jetty",
+        "initialApproach": {
+          "x": 38.25,
+          "y": 39
+        },
+        "before": {
+          "x": 38.25,
+          "y": 39
+        },
+        "after": {
+          "x": 38.88345999999999,
+          "y": 39
+        },
+        "travelled": 0.6334599999999924,
+        "discoveries": [
+          {
+            "mapId": "courtyard",
+            "landmarkId": "courtyard.water-jar",
+            "day": 2
+          },
+          {
+            "mapId": "riverbank",
+            "landmarkId": "riverbank.fishing-jetty",
+            "day": 2
+          }
+        ],
+        "reactions": [
+          {
+            "mapId": "courtyard",
+            "targetId": "courtyard.water-jar",
+            "reaction": "ripple",
+            "atMs": 1044.9000000003728
+          },
+          {
+            "mapId": "riverbank",
+            "targetId": "riverbank.fishing-jetty",
+            "reaction": "ripple",
+            "atMs": 1962.500000000187
+          }
+        ],
+        "persistedClockMs": 1745.8000000001866
+      }
+    ],
+    "motionBefore": [
+      {
+        "id": "workshop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 11.8,
+          "y": 10.8
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 8466.87223013959,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      },
+      {
+        "id": "workshop.xiao-zhou",
+        "characterId": "xiao-zhou",
+        "kind": "resident",
+        "position": {
+          "x": 24.8,
+          "y": 8.450778497076826
+        },
+        "facing": "north",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 3736.022634655972,
+        "greeting": {
+          "id": "zhou-greeting",
+          "tokens": [
+            {
+              "id": "hello",
+              "hanzi": "你好",
+              "pinyin": "nǐ hǎo",
+              "gloss": "hello",
+              "audio": "/audio/word-3ab47ea2d68ab926bc495a3fc09b00676c5f3f9e78b0d0d08eb6e5a2bc6418a5.wav"
+            },
+            {
+              "id": "ha",
+              "hanzi": "呀",
+              "pinyin": "ya",
+              "gloss": "friendly exclamation",
+              "audio": "/audio/word-410bcf510b3962aa9d0de24d9e0c134653a7f12d878fd7718ab5f696b8b45115.wav"
+            }
+          ],
+          "audio": "/audio/line-5f96eb1c67e3dd102a831876d26d9aa209cffa79ff7df4081e54b4bb10d53071.wav",
+          "text": "你好呀。"
+        },
+        "radius": 0.22
+      }
+    ],
+    "motionAfter": [
+      {
+        "id": "workshop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 11.8,
+          "y": 10.8
+        },
+        "facing": "north",
+        "action": "interact",
+        "activity": "watch",
+        "phaseMs": 12516.67223013959,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      },
+      {
+        "id": "workshop.xiao-zhou",
+        "characterId": "xiao-zhou",
+        "kind": "resident",
+        "position": {
+          "x": 24.8,
+          "y": 6
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "idle",
+        "phaseMs": 1470.0331609717578,
+        "greeting": {
+          "id": "zhou-greeting",
+          "tokens": [
+            {
+              "id": "hello",
+              "hanzi": "你好",
+              "pinyin": "nǐ hǎo",
+              "gloss": "hello",
+              "audio": "/audio/word-3ab47ea2d68ab926bc495a3fc09b00676c5f3f9e78b0d0d08eb6e5a2bc6418a5.wav"
+            },
+            {
+              "id": "ha",
+              "hanzi": "呀",
+              "pinyin": "ya",
+              "gloss": "friendly exclamation",
+              "audio": "/audio/word-410bcf510b3962aa9d0de24d9e0c134653a7f12d878fd7718ab5f696b8b45115.wav"
+            }
+          ],
+          "audio": "/audio/line-5f96eb1c67e3dd102a831876d26d9aa209cffa79ff7df4081e54b4bb10d53071.wav",
+          "text": "你好呀。"
+        },
+        "radius": 0.22
+      }
+    ],
+    "diagnostics": [
+      {
+        "mapId": "town",
+        "actors": [
+          "town.market-regular",
+          "town.workshop-delivery",
+          "life.town.office-walk"
+        ],
+        "diagnostics": [
+          {
+            "hookId": "town.morning-walk",
+            "reason": "blocked-home-or-entrance"
+          }
+        ]
+      },
+      {
+        "mapId": "courtyard",
+        "actors": [
+          "courtyard.black",
+          "courtyard.aunt",
+          "courtyard.sparrows"
+        ],
+        "diagnostics": [
+          {
+            "hookId": "courtyard.white",
+            "reason": "blocked-route-stop"
+          }
+        ]
+      },
+      {
+        "mapId": "workshop",
+        "actors": [
+          "workshop.lin-jie",
+          "workshop.xiao-zhou"
+        ],
+        "diagnostics": []
+      },
+      {
+        "mapId": "rooftop",
+        "actors": [
+          "rooftop.lin-jie",
+          "life.rooftop.sparrow"
+        ],
+        "diagnostics": []
+      },
+      {
+        "mapId": "park",
+        "actors": [
+          "life.park.sparrow"
+        ],
+        "diagnostics": []
+      },
+      {
+        "mapId": "riverbank",
+        "actors": [
+          "life.riverbank.sparrow"
+        ],
+        "diagnostics": []
+      }
+    ],
+    "errors": [],
+    "sources": [
+      {
+        "sha": "3747266683d3ec18f7d3af2fb99fcf88942cb098",
+        "path": "src/world/maps/town/map.json",
+        "mapId": "town"
+      },
+      {
+        "sha": "c176f5ac0423d7fa6e3c0f7a8c42f0a3fcc793db",
+        "path": "src/world/maps/courtyard/map.json",
+        "mapId": "courtyard"
+      },
+      {
+        "sha": "867a8ef0eb9ae80e841f155908b5abb22a716d5d",
+        "path": "src/world/maps/workshop/map.json",
+        "mapId": "workshop"
+      },
+      {
+        "sha": "0a88378c8b7ce7618d7525602671c2c673302ad8",
+        "path": "src/world/maps/rooftop/map.json",
+        "mapId": "rooftop"
+      },
+      {
+        "sha": "14a2ce1fb95eb00955bfc3f6f85aae34f6ef99b8",
+        "path": "src/world/maps/landscape/park.json",
+        "mapId": "park"
+      },
+      {
+        "sha": "14a2ce1fb95eb00955bfc3f6f85aae34f6ef99b8",
+        "path": "src/world/maps/landscape/riverbank.json",
+        "mapId": "riverbank"
+      }
+    ],
+    "video": "/workspace/junyan/output/verification/0087/browser/phone/page@f53a76a44270cf7df7600152f5076aaa.webm",
+    "limitations": [
+      "Isolated life harness with schematic ground, not integrated world art acceptance.",
+      "Approach starts are explicit proof fixtures; keyboard/pointer movement and DOM actions execute normally.",
+      "LocalStorage is isolated proof persistence, not the foundation IndexedDB save integration.",
+      "Phone directional proof uses real CDP touchscreen input on the control; full production touch travel remains pending."
+    ],
+    "lifeHead": "e799a67d4cb9d0900567b22d2f554eccffa9341b",
+    "committedVideo": "docs/evidence/0087/isolated/phone-motion.webm"
+  }
+]
