@@ -86,7 +86,7 @@ for (const viewport of [
       for (const item of order.items) {
         const food = content.foods.find(entry => entry.id === item.foodId)!;
         for (let count = 0; count < item.quantity; count++) {
-          await page.getByRole("button", { name: `拿${food.word.hanzi}`, exact: true }).click();
+          await page.getByRole("button", { name: `拿${food.word.text}`, exact: true }).click();
         }
       }
       const carry = page.getByRole("button", { name: "端好了，去上菜" });

@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { content } from "./content";
 import { KITCHEN, TABLES, type Action, type Content, type GameState } from "./contracts";
 import { createGame, getOrder, orderTotal, reduceGame } from "./game";
-import { loadGame, saveGame, validateSavedGame } from "./save";
+import { checkpointKey, loadGame, saveGame, validateSavedGame } from "./save";
 import { wordState } from "./recovery";
 
 type LegacyJournal = Record<string, { lookups: number; lastSeen: number; recovered?: unknown }>;
@@ -16,12 +16,14 @@ function storageBoundary(value: unknown = createGame(content)) {
     onsuccess: null as (() => void) | null,
     onerror: null as (() => void) | null,
   };
+  const get = vi.fn(() => request);
+  const put = vi.fn(() => request);
   const transaction = {
     error,
     oncomplete: null as (() => void) | null,
     onerror: null as (() => void) | null,
     onabort: null as (() => void) | null,
-    objectStore: () => ({ get: () => request, put: () => request }),
+    objectStore: () => ({ get, put }),
   };
   const db = { transaction: () => transaction, close: vi.fn() };
   const open = {
@@ -36,11 +38,31 @@ function storageBoundary(value: unknown = createGame(content)) {
     open.onsuccess?.();
     await Promise.resolve();
   };
-  return { request, transaction, db, open, error, connect };
+  return { request, transaction, db, open, error, connect, get, put };
 }
 
 describe("IndexedDB recovery", () => {
   afterEach(() => vi.unstubAllGlobals());
+
+  it.each([
+    [undefined, "v1", "junyan-waiter-pending-v1"],
+    ["zh-CN", "v1", "junyan-waiter-pending-v1"],
+    ["fr-FR", "v1:fr-FR", "junyan-waiter-pending-v1:fr-FR"],
+  ])("keeps %s progress in its own save and recovery slots", async (languageId, key, pendingKey) => {
+    const state = createGame(content);
+    const storage = storageBoundary(state);
+    const saving = saveGame(state, languageId);
+    await storage.connect();
+    expect(storage.put).toHaveBeenCalledWith(state, key);
+    storage.transaction.oncomplete?.();
+    await saving;
+    const loading = loadGame({ ...content, language: languageId });
+    await storage.connect();
+    expect(storage.get).toHaveBeenCalledWith(key);
+    storage.transaction.oncomplete?.();
+    expect(await loading).toEqual(state);
+    expect(checkpointKey(languageId)).toBe(pendingKey);
+  });
 
   it.each([loadGame, () => saveGame(createGame(content))])("reports database open failure", async (operation) => {
     const storage = storageBoundary();
