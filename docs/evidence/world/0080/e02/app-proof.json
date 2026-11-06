@@ -1,0 +1,220 @@
+[
+  {
+    "name": "desktop",
+    "sourceHead": "2851a2fb044d952c753305df3c822f23f42f3de1",
+    "seededStart": true,
+    "start": {
+      "x": 23,
+      "y": 33.5
+    },
+    "keyboardEnd": {
+      "x": 24.767766952966383,
+      "y": 31.732233047033674
+    },
+    "traversed": [
+      {
+        "x": 22.6338832859742,
+        "y": 29.866116714025864
+      },
+      {
+        "x": 20.499999618982013,
+        "y": 28.00000038101805
+      },
+      {
+        "x": 20.249999618982013,
+        "y": 25.50000038101805
+      },
+      {
+        "x": 19.999999618982013,
+        "y": 23.00000038101805
+      },
+      {
+        "x": 18.16666628564868,
+        "y": 21.50000038101805
+      },
+      {
+        "x": 16.333332952315345,
+        "y": 20.00000038101805
+      },
+      {
+        "x": 14.499999618982015,
+        "y": 18.50000038101805
+      },
+      {
+        "x": 16.499999618982013,
+        "y": 19.16666704768472
+      },
+      {
+        "x": 18.499999618982013,
+        "y": 19.833333714351383
+      },
+      {
+        "x": 20.499999618982017,
+        "y": 20.50000038101805
+      },
+      {
+        "x": 22.749999618982017,
+        "y": 21.000000381018054
+      },
+      {
+        "x": 24.999999618982017,
+        "y": 21.500000381018054
+      },
+      {
+        "x": 27.83333295231535,
+        "y": 21.666667047684722
+      },
+      {
+        "x": 30.66666628564868,
+        "y": 21.83333371435139
+      },
+      {
+        "x": 33.49999961898202,
+        "y": 22.000000381018058
+      },
+      {
+        "x": 34.49999961898202,
+        "y": 20.600000381018056
+      }
+    ],
+    "approach": {
+      "x": 14.499999618982015,
+      "y": 18.50000038101805
+    },
+    "preservedRestaurantPosition": {
+      "x": 6,
+      "y": 2.5
+    },
+    "catStory": {
+      "node": "reunited",
+      "day": 1
+    },
+    "activity": {
+      "status": "completed",
+      "story": {
+        "node": "reunited",
+        "day": 1
+      }
+    },
+    "journalEntries": 10,
+    "reloadPosition": {
+      "x": 34.49999961898202,
+      "y": 20.600000381018056
+    },
+    "errors": [],
+    "failures": [],
+    "limits": "Seeded normal saved game starts in courtyard. Actual keyboard/pad/pointer travel, feature actions and persistence are used. Connected entrance journey and opening/service regression remain separate gates.",
+    "runtimeManifest": "runtime-manifest.json",
+    "ownerProductionHead": "f13b2699e4a1c6bc14bb74491e425eb690527c8c",
+    "sourceHeadNote": "sourceHead records writer checkout at capture time; the runtime was the exact exported foundation snapshot plus the hashed owner overlays, including then-uncommitted owner changes."
+  },
+  {
+    "name": "phone",
+    "sourceHead": "2851a2fb044d952c753305df3c822f23f42f3de1",
+    "seededStart": true,
+    "start": {
+      "x": 23,
+      "y": 33.5
+    },
+    "keyboardEnd": {
+      "x": 24.708723536737303,
+      "y": 31.791276463262736
+    },
+    "traversed": [
+      {
+        "x": 22.604361742525633,
+        "y": 29.895638257474364
+      },
+      {
+        "x": 20.499999948313985,
+        "y": 28.000000051686012
+      },
+      {
+        "x": 20.249999948313985,
+        "y": 25.500000051686015
+      },
+      {
+        "x": 19.999999948313985,
+        "y": 23.000000051686015
+      },
+      {
+        "x": 18.166667192965086,
+        "y": 21.500000398476676
+      },
+      {
+        "x": 16.348641374560096,
+        "y": 20.01252497897797
+      },
+      {
+        "x": 14.499999948313988,
+        "y": 18.500000051686015
+      },
+      {
+        "x": 16.50000029510465,
+        "y": 19.166667296337117
+      },
+      {
+        "x": 18.499999601523328,
+        "y": 19.833332807034914
+      },
+      {
+        "x": 20.499999948313988,
+        "y": 20.500000051686015
+      },
+      {
+        "x": 22.749999948313985,
+        "y": 21.000000051686015
+      },
+      {
+        "x": 24.999999948313985,
+        "y": 21.500000051686015
+      },
+      {
+        "x": 27.833333397244203,
+        "y": 21.666666602755797
+      },
+      {
+        "x": 30.666666499383762,
+        "y": 21.833333500616238
+      },
+      {
+        "x": 33.499999948313985,
+        "y": 22.000000051686015
+      },
+      {
+        "x": 34.50000029510464,
+        "y": 20.60000025976041
+      }
+    ],
+    "approach": {
+      "x": 14.499999948313988,
+      "y": 18.500000051686015
+    },
+    "preservedRestaurantPosition": {
+      "x": 6,
+      "y": 2.5
+    },
+    "catStory": {
+      "node": "reunited",
+      "day": 1
+    },
+    "activity": {
+      "status": "completed",
+      "story": {
+        "node": "reunited",
+        "day": 1
+      }
+    },
+    "journalEntries": 10,
+    "reloadPosition": {
+      "x": 34.50000029510464,
+      "y": 20.60000025976041
+    },
+    "errors": [],
+    "failures": [],
+    "limits": "Seeded normal saved game starts in courtyard. Actual keyboard/pad/pointer travel, feature actions and persistence are used. Connected entrance journey and opening/service regression remain separate gates.",
+    "runtimeManifest": "runtime-manifest.json",
+    "ownerProductionHead": "f13b2699e4a1c6bc14bb74491e425eb690527c8c",
+    "sourceHeadNote": "sourceHead records writer checkout at capture time; the runtime was the exact exported foundation snapshot plus the hashed owner overlays, including then-uncommitted owner changes."
+  }
+]

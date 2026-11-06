@@ -1,0 +1,472 @@
+{
+  "manifest": {
+    "foundation": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+    "ownerBaseline": "2851a2fb044d952c753305df3c822f23f42f3de1",
+    "overlayFiles": [
+      "src/world/art/courtyard/index.ts",
+      "src/world/maps/courtyard/map.json"
+    ],
+    "mode": "baseline",
+    "note": "Exported unmodified foundation package plus owner art/map only. No shared branch merge, source reconciliation, main update, new renderer or clock."
+  },
+  "mode": "baseline",
+  "evidence": "Actual App composition fixtures. Saved locations/phases are fixed; these images do not prove ordinary travel or completed activities.",
+  "results": [
+    {
+      "name": "desktop",
+      "landmark": "arrival",
+      "phase": "morning",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "canvas": {
+        "width": 720,
+        "height": 458,
+        "rect": {
+          "width": 1440,
+          "height": 916
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/desktop-arrival-morning.png",
+      "errors": []
+    },
+    {
+      "name": "desktop",
+      "landmark": "laundry",
+      "phase": "morning",
+      "position": {
+        "x": 34,
+        "y": 19.05
+      },
+      "canvas": {
+        "width": 720,
+        "height": 458,
+        "rect": {
+          "width": 1440,
+          "height": 916
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/desktop-laundry-morning.png",
+      "errors": []
+    },
+    {
+      "name": "desktop",
+      "landmark": "cat-rest",
+      "phase": "morning",
+      "position": {
+        "x": 34.5,
+        "y": 20.6
+      },
+      "canvas": {
+        "width": 720,
+        "height": 458,
+        "rect": {
+          "width": 1440,
+          "height": 916
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/desktop-cat-rest-morning.png",
+      "errors": []
+    },
+    {
+      "name": "desktop",
+      "landmark": "jar",
+      "phase": "morning",
+      "position": {
+        "x": 32.8,
+        "y": 21.8
+      },
+      "canvas": {
+        "width": 720,
+        "height": 458,
+        "rect": {
+          "width": 1440,
+          "height": 916
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/desktop-jar-morning.png",
+      "errors": []
+    },
+    {
+      "name": "desktop",
+      "landmark": "arrival",
+      "phase": "evening",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "canvas": {
+        "width": 720,
+        "height": 458,
+        "rect": {
+          "width": 1440,
+          "height": 916
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/desktop-arrival-evening.png",
+      "errors": []
+    },
+    {
+      "name": "desktop",
+      "landmark": "laundry",
+      "phase": "evening",
+      "position": {
+        "x": 34,
+        "y": 19.05
+      },
+      "canvas": {
+        "width": 720,
+        "height": 458,
+        "rect": {
+          "width": 1440,
+          "height": 916
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/desktop-laundry-evening.png",
+      "errors": []
+    },
+    {
+      "name": "desktop",
+      "landmark": "cat-rest",
+      "phase": "evening",
+      "position": {
+        "x": 34.5,
+        "y": 20.6
+      },
+      "canvas": {
+        "width": 720,
+        "height": 458,
+        "rect": {
+          "width": 1440,
+          "height": 916
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/desktop-cat-rest-evening.png",
+      "errors": []
+    },
+    {
+      "name": "desktop",
+      "landmark": "jar",
+      "phase": "evening",
+      "position": {
+        "x": 32.8,
+        "y": 21.8
+      },
+      "canvas": {
+        "width": 720,
+        "height": 458,
+        "rect": {
+          "width": 1440,
+          "height": 916
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/desktop-jar-evening.png",
+      "errors": []
+    },
+    {
+      "name": "phone390",
+      "landmark": "arrival",
+      "phase": "morning",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "canvas": {
+        "width": 195,
+        "height": 386,
+        "rect": {
+          "width": 390,
+          "height": 772
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/phone390-arrival-morning.png",
+      "errors": []
+    },
+    {
+      "name": "phone390",
+      "landmark": "laundry",
+      "phase": "morning",
+      "position": {
+        "x": 34,
+        "y": 19.05
+      },
+      "canvas": {
+        "width": 195,
+        "height": 386,
+        "rect": {
+          "width": 390,
+          "height": 772
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/phone390-laundry-morning.png",
+      "errors": []
+    },
+    {
+      "name": "phone390",
+      "landmark": "cat-rest",
+      "phase": "morning",
+      "position": {
+        "x": 34.5,
+        "y": 20.6
+      },
+      "canvas": {
+        "width": 195,
+        "height": 386,
+        "rect": {
+          "width": 390,
+          "height": 772
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/phone390-cat-rest-morning.png",
+      "errors": []
+    },
+    {
+      "name": "phone390",
+      "landmark": "jar",
+      "phase": "morning",
+      "position": {
+        "x": 32.8,
+        "y": 21.8
+      },
+      "canvas": {
+        "width": 195,
+        "height": 386,
+        "rect": {
+          "width": 390,
+          "height": 772
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/phone390-jar-morning.png",
+      "errors": []
+    },
+    {
+      "name": "phone390",
+      "landmark": "arrival",
+      "phase": "evening",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "canvas": {
+        "width": 195,
+        "height": 386,
+        "rect": {
+          "width": 390,
+          "height": 772
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/phone390-arrival-evening.png",
+      "errors": []
+    },
+    {
+      "name": "phone390",
+      "landmark": "laundry",
+      "phase": "evening",
+      "position": {
+        "x": 34,
+        "y": 19.05
+      },
+      "canvas": {
+        "width": 195,
+        "height": 386,
+        "rect": {
+          "width": 390,
+          "height": 772
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/phone390-laundry-evening.png",
+      "errors": []
+    },
+    {
+      "name": "phone390",
+      "landmark": "cat-rest",
+      "phase": "evening",
+      "position": {
+        "x": 34.5,
+        "y": 20.6
+      },
+      "canvas": {
+        "width": 195,
+        "height": 386,
+        "rect": {
+          "width": 390,
+          "height": 772
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/phone390-cat-rest-evening.png",
+      "errors": []
+    },
+    {
+      "name": "phone390",
+      "landmark": "jar",
+      "phase": "evening",
+      "position": {
+        "x": 32.8,
+        "y": 21.8
+      },
+      "canvas": {
+        "width": 195,
+        "height": 386,
+        "rect": {
+          "width": 390,
+          "height": 772
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/phone390-jar-evening.png",
+      "errors": []
+    },
+    {
+      "name": "phone320",
+      "landmark": "arrival",
+      "phase": "morning",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "canvas": {
+        "width": 160,
+        "height": 334,
+        "rect": {
+          "width": 320,
+          "height": 668
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/phone320-arrival-morning.png",
+      "errors": []
+    },
+    {
+      "name": "phone320",
+      "landmark": "laundry",
+      "phase": "morning",
+      "position": {
+        "x": 34,
+        "y": 19.05
+      },
+      "canvas": {
+        "width": 160,
+        "height": 334,
+        "rect": {
+          "width": 320,
+          "height": 668
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/phone320-laundry-morning.png",
+      "errors": []
+    },
+    {
+      "name": "phone320",
+      "landmark": "cat-rest",
+      "phase": "morning",
+      "position": {
+        "x": 34.5,
+        "y": 20.6
+      },
+      "canvas": {
+        "width": 160,
+        "height": 334,
+        "rect": {
+          "width": 320,
+          "height": 668
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/phone320-cat-rest-morning.png",
+      "errors": []
+    },
+    {
+      "name": "phone320",
+      "landmark": "jar",
+      "phase": "morning",
+      "position": {
+        "x": 32.8,
+        "y": 21.8
+      },
+      "canvas": {
+        "width": 160,
+        "height": 334,
+        "rect": {
+          "width": 320,
+          "height": 668
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/phone320-jar-morning.png",
+      "errors": []
+    },
+    {
+      "name": "phone320",
+      "landmark": "arrival",
+      "phase": "evening",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "canvas": {
+        "width": 160,
+        "height": 334,
+        "rect": {
+          "width": 320,
+          "height": 668
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/phone320-arrival-evening.png",
+      "errors": []
+    },
+    {
+      "name": "phone320",
+      "landmark": "laundry",
+      "phase": "evening",
+      "position": {
+        "x": 34,
+        "y": 19.05
+      },
+      "canvas": {
+        "width": 160,
+        "height": 334,
+        "rect": {
+          "width": 320,
+          "height": 668
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/phone320-laundry-evening.png",
+      "errors": []
+    },
+    {
+      "name": "phone320",
+      "landmark": "cat-rest",
+      "phase": "evening",
+      "position": {
+        "x": 34.5,
+        "y": 20.6
+      },
+      "canvas": {
+        "width": 160,
+        "height": 334,
+        "rect": {
+          "width": 320,
+          "height": 668
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/phone320-cat-rest-evening.png",
+      "errors": []
+    },
+    {
+      "name": "phone320",
+      "landmark": "jar",
+      "phase": "evening",
+      "position": {
+        "x": 32.8,
+        "y": 21.8
+      },
+      "canvas": {
+        "width": 160,
+        "height": 334,
+        "rect": {
+          "width": 320,
+          "height": 668
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/baseline/phone320-jar-evening.png",
+      "errors": []
+    }
+  ]
+}

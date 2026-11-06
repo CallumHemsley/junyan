@@ -1,0 +1,138 @@
+{
+  "manifest": {
+    "foundation": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+    "ownerBaseline": "2851a2fb044d952c753305df3c822f23f42f3de1",
+    "overlayFiles": [
+      "src/world/art/courtyard/index.ts",
+      "src/world/maps/courtyard/map.json"
+    ],
+    "mode": "after",
+    "note": "Exported unmodified foundation package plus owner art/map only. No shared branch merge, source reconciliation, main update, new renderer or clock.",
+    "baselineOwnerHashes": {
+      "src/world/art/courtyard/index.ts": "48d0b0eda408287ef50a5c1a2a31fc073da08c121133fdea6bbff20072da65cd",
+      "src/world/maps/courtyard/map.json": "8f3427c2ac072c7eaf670d69c4e0c186aa54e2fab49524f9367166a2ad57df9b"
+    },
+    "afterOwnerHashes": {
+      "src/world/art/courtyard/index.ts": "aa3c1b0592fbc47904e1a8c7da29180a8414577515ef69356af9a33ffd9b5649",
+      "src/world/maps/courtyard/map.json": "8b1a34e39275592791088accc5bcae5a0f8a919079fdfbb690348091571e587f"
+    }
+  },
+  "mode": "after",
+  "evidence": "Actual App empty work-pocket composition fixtures; canonical resident unavailable in this snapshot. Saved locations/phases are fixed; these images do not prove ordinary travel or completed activities.",
+  "results": [
+    {
+      "name": "desktop",
+      "landmark": "sorting",
+      "phase": "morning",
+      "position": {
+        "x": 34.5,
+        "y": 12.5
+      },
+      "canvas": {
+        "width": 720,
+        "height": 458,
+        "rect": {
+          "width": 1440,
+          "height": 916
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/after-pocket/desktop-sorting-morning.png",
+      "errors": []
+    },
+    {
+      "name": "desktop",
+      "landmark": "sorting",
+      "phase": "evening",
+      "position": {
+        "x": 34.5,
+        "y": 12.5
+      },
+      "canvas": {
+        "width": 720,
+        "height": 458,
+        "rect": {
+          "width": 1440,
+          "height": 916
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/after-pocket/desktop-sorting-evening.png",
+      "errors": []
+    },
+    {
+      "name": "phone390",
+      "landmark": "sorting",
+      "phase": "morning",
+      "position": {
+        "x": 34.5,
+        "y": 12.5
+      },
+      "canvas": {
+        "width": 195,
+        "height": 386,
+        "rect": {
+          "width": 390,
+          "height": 772
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/after-pocket/phone390-sorting-morning.png",
+      "errors": []
+    },
+    {
+      "name": "phone390",
+      "landmark": "sorting",
+      "phase": "evening",
+      "position": {
+        "x": 34.5,
+        "y": 12.5
+      },
+      "canvas": {
+        "width": 195,
+        "height": 386,
+        "rect": {
+          "width": 390,
+          "height": 772
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/after-pocket/phone390-sorting-evening.png",
+      "errors": []
+    },
+    {
+      "name": "phone320",
+      "landmark": "sorting",
+      "phase": "morning",
+      "position": {
+        "x": 34.5,
+        "y": 12.5
+      },
+      "canvas": {
+        "width": 160,
+        "height": 334,
+        "rect": {
+          "width": 320,
+          "height": 668
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/after-pocket/phone320-sorting-morning.png",
+      "errors": []
+    },
+    {
+      "name": "phone320",
+      "landmark": "sorting",
+      "phase": "evening",
+      "position": {
+        "x": 34.5,
+        "y": 12.5
+      },
+      "canvas": {
+        "width": 160,
+        "height": 334,
+        "rect": {
+          "width": 320,
+          "height": 668
+        }
+      },
+      "image": "docs/evidence/world/0080/e02/after-pocket/phone320-sorting-evening.png",
+      "errors": []
+    }
+  ]
+}

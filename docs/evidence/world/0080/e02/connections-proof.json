@@ -1,0 +1,216 @@
+[
+  {
+    "name": "desktop",
+    "sourceHead": "2851a2fb044d952c753305df3c822f23f42f3de1",
+    "seededStart": "Courtyard only; every subsequent connection is real pointer/touch walking",
+    "transitions": [
+      {
+        "from": "courtyard",
+        "exit": "to-town",
+        "to": "town",
+        "arrival": {
+          "x": 44.9541524297547,
+          "y": 3.369188151461087
+        }
+      },
+      {
+        "from": "town",
+        "exit": "to-courtyard",
+        "to": "courtyard",
+        "arrival": {
+          "x": 23,
+          "y": 33.5
+        }
+      },
+      {
+        "from": "courtyard",
+        "exit": "to-residential-hall",
+        "to": "residential-hall",
+        "arrival": {
+          "x": 27,
+          "y": 17.5
+        }
+      },
+      {
+        "from": "residential-hall",
+        "exit": "to-courtyard",
+        "to": "courtyard",
+        "arrival": {
+          "x": 23,
+          "y": 5.5
+        }
+      },
+      {
+        "from": "courtyard",
+        "exit": "to-park",
+        "to": "park",
+        "arrival": {
+          "x": 5.077268333149131,
+          "y": 28.96834791172204
+        }
+      },
+      {
+        "from": "park",
+        "exit": "to-courtyard",
+        "to": "courtyard",
+        "arrival": {
+          "x": 43,
+          "y": 12
+        }
+      }
+    ],
+    "restoredWorld": {
+      "version": 1,
+      "mapId": "courtyard",
+      "position": {
+        "x": 43,
+        "y": 12
+      },
+      "facing": "west",
+      "returnPositions": {
+        "courtyard": {
+          "x": 45.97325697860218,
+          "y": 11.473256978602178,
+          "facing": "south"
+        },
+        "town": {
+          "x": 44.985367577087075,
+          "y": 1.619966649027215,
+          "facing": "north"
+        },
+        "residential-hall": {
+          "x": 28.916500000000006,
+          "y": 17.5,
+          "facing": "east"
+        },
+        "park": {
+          "x": 2.038683032940489,
+          "y": 28.995233993905718,
+          "facing": "west"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "elapsedMs": 20253,
+        "discoveries": [],
+        "reactions": [],
+        "serviceDepartures": [],
+        "pauses": []
+      }
+    },
+    "errors": [],
+    "frames": 235,
+    "runtimeManifest": "runtime-manifest.json",
+    "ownerProductionHead": "f13b2699e4a1c6bc14bb74491e425eb690527c8c",
+    "sourceHeadNote": "sourceHead records writer checkout at capture time; the runtime was the exact exported foundation snapshot plus the hashed owner overlays, including then-uncommitted owner changes."
+  },
+  {
+    "name": "phone",
+    "sourceHead": "2851a2fb044d952c753305df3c822f23f42f3de1",
+    "seededStart": "Courtyard only; every subsequent connection is real pointer/touch walking",
+    "transitions": [
+      {
+        "from": "courtyard",
+        "exit": "to-town",
+        "to": "town",
+        "arrival": {
+          "x": 44.9541524297547,
+          "y": 3.369188151461087
+        }
+      },
+      {
+        "from": "town",
+        "exit": "to-courtyard",
+        "to": "courtyard",
+        "arrival": {
+          "x": 23,
+          "y": 33.5
+        }
+      },
+      {
+        "from": "courtyard",
+        "exit": "to-residential-hall",
+        "to": "residential-hall",
+        "arrival": {
+          "x": 26.97986954267489,
+          "y": 17.41947817259971
+        }
+      },
+      {
+        "from": "residential-hall",
+        "exit": "to-courtyard",
+        "to": "courtyard",
+        "arrival": {
+          "x": 23,
+          "y": 5.5
+        }
+      },
+      {
+        "from": "courtyard",
+        "exit": "to-park",
+        "to": "park",
+        "arrival": {
+          "x": 5.077268333101356,
+          "y": 28.968347911605417
+        }
+      },
+      {
+        "from": "park",
+        "exit": "to-courtyard",
+        "to": "courtyard",
+        "arrival": {
+          "x": 43,
+          "y": 12
+        }
+      }
+    ],
+    "restoredWorld": {
+      "version": 1,
+      "mapId": "courtyard",
+      "position": {
+        "x": 43,
+        "y": 12
+      },
+      "facing": "west",
+      "returnPositions": {
+        "courtyard": {
+          "x": 45.97325710250791,
+          "y": 11.473256854696457,
+          "facing": "south"
+        },
+        "town": {
+          "x": 44.98537664610156,
+          "y": 1.6194667312591373,
+          "facing": "north"
+        },
+        "residential-hall": {
+          "x": 28.97884942653019,
+          "y": 17.483348540861854,
+          "facing": "east"
+        },
+        "park": {
+          "x": 2.038683002750119,
+          "y": 28.995233677194115,
+          "facing": "west"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "elapsedMs": 18192.699999999997,
+        "discoveries": [],
+        "reactions": [],
+        "serviceDepartures": [],
+        "pauses": []
+      }
+    },
+    "errors": [],
+    "frames": 210,
+    "runtimeManifest": "runtime-manifest.json",
+    "ownerProductionHead": "f13b2699e4a1c6bc14bb74491e425eb690527c8c",
+    "sourceHeadNote": "sourceHead records writer checkout at capture time; the runtime was the exact exported foundation snapshot plus the hashed owner overlays, including then-uncommitted owner changes."
+  }
+]

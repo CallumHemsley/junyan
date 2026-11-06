@@ -1,0 +1,24 @@
+{
+  "foundation": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+  "ownerBaseline": "2851a2fb044d952c753305df3c822f23f42f3de1",
+  "overlayFiles": [
+    "src/world/art/courtyard/index.ts",
+    "src/world/maps/courtyard/map.json"
+  ],
+  "mode": "after",
+  "note": "Exported unmodified foundation package plus owner art/map only. No shared branch merge, source reconciliation, main update, new renderer or clock.",
+  "baselineOwnerHashes": {
+    "src/world/art/courtyard/index.ts": "48d0b0eda408287ef50a5c1a2a31fc073da08c121133fdea6bbff20072da65cd",
+    "src/world/maps/courtyard/map.json": "8f3427c2ac072c7eaf670d69c4e0c186aa54e2fab49524f9367166a2ad57df9b"
+  },
+  "afterOwnerHashes": {
+    "src/world/art/courtyard/index.ts": "aa3c1b0592fbc47904e1a8c7da29180a8414577515ef69356af9a33ffd9b5649",
+    "src/world/maps/courtyard/map.json": "8b1a34e39275592791088accc5bcae5a0f8a919079fdfbb690348091571e587f"
+  },
+  "ownerProductionHead": "f13b2699e4a1c6bc14bb74491e425eb690527c8c",
+  "additionalArchiveInputs": [
+    "playwright.config.ts",
+    "docs/evidence/0089/foundation-map.ts"
+  ],
+  "typecheck": "Passed after restoring the exact omitted fixture/config inputs; first archive-only attempt failed on those two missing inputs."
+}

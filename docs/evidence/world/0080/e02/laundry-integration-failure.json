@@ -1,0 +1,10 @@
+{
+  "runtime": "e48b10ed13427ff45d528edd8484a4a49ec537e8 + owner art/map overlays",
+  "status": "FAILED: integration dependency absent",
+  "check": "compileLife(worldMaps.courtyard, navigationFor(map)) canonical resident count",
+  "expected": 1,
+  "actual": 0,
+  "cause": "Foundation snapshot profiles.ts does not yet contain resident-laundry-neighbour. No substitute profile, actor or clock injected.",
+  "nextAction": "Foundation alone consumes canonical 0087 profile + 0085 catalog + owner hook2851a2f, then rerun this script.",
+  "incompleteVideo": "desktop-laundry-resident.mp4"
+}
