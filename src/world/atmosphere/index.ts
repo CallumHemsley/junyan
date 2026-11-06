@@ -8,9 +8,10 @@ export type AtmosphereInput = {
 };
 export type AtmosphereHooks = {
   interior?: boolean;
+  ambientByPhase?:Partial<Record<DayPhase,RGB>>;
   water?: readonly { id: string; rect: Rect; shore?: readonly ('north' | 'east' | 'south' | 'west')[] }[];
   reflections?: readonly {id:string;position:Point;width:number;height:number;color:RGB}[];
-  lights?: readonly { id: string; position: Point; radius: number; kind: 'window' | 'lamp'; emitter?:readonly Point[] }[];
+  lights?: readonly { id: string; position: Point; radius: number; kind: 'window' | 'lamp'; emitter?:readonly Point[]; pool?:readonly Point[]; depth?:number }[];
   foliage?: readonly { id: string; position: Point; radius: number; kind: 'grass' | 'leaves'; motion?:boolean; depth?:number }[];
   shadows?: readonly { id: string; position: Point; radius: number; height: number; shape?:'canopy'|'willow'|'bamboo'|'column'; contact?:boolean }[];
   shadowExclusions?:readonly Rect[];
@@ -74,7 +75,8 @@ export function shadeAtmosphereColor(color: RGB, light: LightState, exposure=1):
 /** No timers or RNG state: identical explicit inputs produce identical frames. */
 export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks = {}, viewport?: Rect): AtmosphereFrame {
   const source = sampleDayLight(input.timeOfDay);
-  const light: LightState = hooks.interior ? {...source, ambient: [.92,.89,.83], sunStrength: .04, shadowOpacity: .22} : source;
+  const localAmbient=typeof input.timeOfDay==='string'?hooks.ambientByPhase?.[input.timeOfDay]:undefined;
+  const light: LightState = hooks.interior ? {...source, ambient:localAmbient??[.92,.89,.83], sunStrength: .04, shadowOpacity: .22} : source;
   const animationMs = input.reducedMotion ? 0 : input.elapsedMs;
   const t = animationMs/1000;
   const wind = {x: Math.sin(t*.75)*.065 + Math.sin(t*.29)*.04, y: Math.sin(t*.53)*.025};
@@ -156,19 +158,22 @@ export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks 
     if(!visible({x:x-r,y:y-r,width:r*2,height:r*2})) continue;
     const strength=light.lampStrength;
     if(strength<.1) continue;
-    // Three hard-edged pools, no blur/filter/full-screen wash.
-    for(const [scale,opacity] of [[1,.07],[.67,.10],[.36,.14]]) {
-      const size=r*scale;
-      add('light',[{x:x-size,y:y-size*.4},{x:x+size*.2,y:y-size*.8},{x:x+size,y:y-size*.1},{x:x+size*.8,y:y+size*.65},{x:x-size*.6,y:y+size*.7}], [255,200,121], opacity*strength);
+    if(lamp.pool?.length) {
+      add('light',[...lamp.pool],[255,200,121],.16*strength);
+    } else {
+      for(const [scale,opacity] of [[1,.07],[.67,.10],[.36,.14]]) {
+        const size=r*scale;
+        add('light',[{x:x-size,y:y-size*.4},{x:x+size*.2,y:y-size*.8},{x:x+size,y:y-size*.1},{x:x+size*.8,y:y+size*.65},{x:x-size*.6,y:y+size*.7}], [255,200,121], opacity*strength);
+      }
     }
     const width=lamp.kind==='window'?.55:.16, height=lamp.kind==='window'?.48:.22;
     if(lamp.emitter) {
-      if(lamp.emitter.length>=3) add('objects',[...lamp.emitter],[255,224,153],strength*.48,{id:lamp.id,position:lamp.position});
+      if(lamp.emitter.length>=3) add('objects',[...lamp.emitter],[255,224,153],strength*.48,{id:lamp.id,position:lamp.position,depth:lamp.depth});
     } else {
-      add('objects',[{x:x-width/2,y,z},{x:x+width/2,y,z},{x:x+width/2,y,z:z+height},{x:x-width/2,y,z:z+height}],[255,224,153],strength,{id:lamp.id,position:lamp.position});
-      if(lamp.kind==='window') add('objects',[{x:x-.025,y:y-.005,z},{x:x+.025,y:y-.005,z},{x:x+.025,y:y-.005,z:z+height},{x:x-.025,y:y-.005,z:z+height}],[110,87,62],.9,{id:lamp.id,position:lamp.position});
+      add('objects',[{x:x-width/2,y,z},{x:x+width/2,y,z},{x:x+width/2,y,z:z+height},{x:x-width/2,y,z:z+height}],[255,224,153],strength,{id:lamp.id,position:lamp.position,depth:lamp.depth});
+      if(lamp.kind==='window') add('objects',[{x:x-.025,y:y-.005,z},{x:x+.025,y:y-.005,z},{x:x+.025,y:y-.005,z:z+height},{x:x-.025,y:y-.005,z:z+height}],[110,87,62],.9,{id:lamp.id,position:lamp.position,depth:lamp.depth});
     }
-    if(lamp.kind==='window') add('light',square(x-.2,y+.14,.52,.1),[255,213,145],strength*.18);
+    if(lamp.kind==='window'&&!lamp.pool) add('light',square(x-.2,y+.14,.52,.1),[255,213,145],strength*.18);
   }
   for(const plant of hooks.foliage ?? []) {
     const {x,y,z=0}=plant.position, radius=plant.radius;

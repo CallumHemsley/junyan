@@ -1,3 +1,4 @@
+import {authoredLocalLights} from './local-lights';
 import type {AtmosphereHooks,Point,Rect} from './index';
 
 export type AtmosphereMap = {
@@ -40,5 +41,5 @@ export function atmosphereHooksForMap(map:AtmosphereMap, overrides:AtmosphereHoo
     shape:p.kind==='bamboo'?'bamboo' as const:p.kind==='willow'?'willow' as const:trees.has(p.kind)?'canopy' as const:'column' as const,
     contact:!landscape||!trees.has(p.kind),
   }));
-  return {interior:interiors.has(map.id),water,foliage,lights,shadows,shadowExclusions:decks.map(t=>t.rect),...overrides};
+  return {interior:interiors.has(map.id),water,foliage,lights,shadows,shadowExclusions:decks.map(t=>t.rect),...authoredLocalLights(map),...overrides};
 }
