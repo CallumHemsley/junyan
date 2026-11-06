@@ -8,3 +8,10 @@ export function occludesPlayer(occluder:{rect:Rect;height:number},player:Point):
  }
  return false;
 }
+
+export function overlapsPaint(a:Rect,b:Rect):boolean {
+ return a.width>0&&a.height>0&&b.width>0&&b.height>0&&a.x<b.x+b.width&&a.x+a.width>b.x&&a.y<b.y+b.height&&a.y+a.height>b.y;
+}
+export function canFadeOccluder(occluder:{rect:Rect;height:number},player:Point,playerDrawn:boolean,playerBounds:Rect,paintedBounds?:Rect):boolean {
+ return playerDrawn&&(!paintedBounds||overlapsPaint(playerBounds,paintedBounds))&&occludesPlayer(occluder,player);
+}

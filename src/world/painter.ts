@@ -7,8 +7,9 @@ import {content} from "../content";
 import {restaurantPresentation} from "./restaurant-view";
 import {drawLifeActor,drawLifeReactions} from "./life";
 import {colorShader} from "./lighting";
-import {occludesPlayer} from "./occlusion";
-import {sampleActor,drawActor} from "./characters";
+import {canFadeOccluder} from "./occlusion";
+import {foliageOcclusionBounds} from "./foliage-occlusion";
+import {sampleActor,drawActor,projectActorBounds} from "./characters";
 import {actorsFor} from "./life-bridge";
 import {sampleAtmosphere} from "./atmosphere";
 import {atmosphereHooksForMap} from "./atmosphere/map-hooks";
@@ -31,9 +32,11 @@ function box(ctx:CanvasRenderingContext2D,view:WorldRenderView,p:Point,w:number,
  polygon(ctx,[b,c,ct,bt],view.shadeColor?.("#574c42")??"#574c42");polygon(ctx,[c,d,dt,ct],view.shadeColor?.("#796953")??"#796953");polygon(ctx,[at,bt,ct,dt],view.shadeColor?.(color)??color);
  ctx.strokeStyle="#544b3c";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(at.x,at.y);ctx.lineTo(bt.x,bt.y);ctx.lineTo(ct.x,ct.y);ctx.lineTo(dt.x,dt.y);ctx.closePath();ctx.stroke();void a;
 }
+function samplePlayer(view:WorldRenderView,facing:Facing,moving:boolean,motion?:{yaw:number;distanceTravelled:number},carrying=false) {
+ return sampleActor({characterId:"player",facing,action:moving?"walk":"idle",elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion,yaw:motion?.yaw,distanceTravelled:motion?.distanceTravelled,heldObject:carrying?"tray":undefined});
+}
 export function drawPlayer(ctx:CanvasRenderingContext2D,view:WorldRenderView,p:Point,facing:Facing,moving:boolean,_scale:number,motion?:{yaw:number;distanceTravelled:number},carrying=false) {
- const sample=sampleActor({characterId:"player",facing,action:moving?"walk":"idle",elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion,yaw:motion?.yaw,distanceTravelled:motion?.distanceTravelled,heldObject:carrying?"tray":undefined});
- drawActor(ctx,{...view,pass:"objects"},sample,p);
+ drawActor(ctx,{...view,pass:"objects"},samplePlayer(view,facing,moving,motion,carrying),p);
 }
 export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,view:WorldRenderView,facing:Facing,moving:boolean,scale:number,game?:GameState,world?:WorldState,motion?:{yaw:number;distanceTravelled:number}) {
  const baseHooks=hooksFor(map),hooks=map.id==="workshop"&&game?.neighbourhood?workshopAtmosphereHooks(map,game.neighbourhood.repairs,baseHooks):baseHooks;
@@ -57,20 +60,23 @@ export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,v
  drawAtmosphere(ctx,atmosphere,{...view,pass:"ground"});
  const custom=[...modules.flatMap(module=>module.renderObjects?.(map,view)??[]),...renderAtmosphereObjects(atmosphere),...(restaurant?restaurantObjects(map,view,restaurant):[]),...(map.id==="apartment"&&game?.neighbourhood?renderFurnitureObjects(game.neighbourhood.apartment):[])];
  const customIds=new Set(custom.map(object=>object.id));
+ const playerView=atFeet(view,surfaceHeight(map.id,view.playerPosition)),playerSample=samplePlayer(view,facing,moving,motion,(game?.tray.length??0)>0);
+ const playerBounds=projectActorBounds(playerView,playerSample,view.playerPosition),foliageBounds=foliageOcclusionBounds(map,view);
+ let playerDrawn=false;
  const objects=[...(modules.length?[]:map.props).filter(p=>p.layer!=="ground"&&!customIds.has(p.id)).map(prop=>({depth:prop.position.x+prop.position.y+prop.width/2+prop.height/2,draw:()=>{
   const p=view.project(prop.position);if(p.x < -200||p.x>view.width+200||p.y < -200||p.y>view.height+300)return;
-  const behind=map.occluders.some(o=>o.fadeWhenPlayerBehind&&o.id===prop.id&&occludesPlayer(o,view.playerPosition));
-  ctx.globalAlpha=behind?.45:1;
+  const behind=map.occluders.some(o=>o.fadeWhenPlayerBehind&&o.id===prop.id&&canFadeOccluder(o,view.playerPosition,playerDrawn,playerBounds,foliageBounds.get(prop.id)));
+  ctx.save();if(behind)ctx.globalAlpha*=.45;
   if(/tree|bamboo|plant/.test(prop.kind)) {
    box(ctx,view,prop.position,.2,.2,1.8,"#695844");
    for(let i=0;i<3;i++){const at=view.project({x:prop.position.x+(i-1)*.35,y:prop.position.y},2+i*.5);ctx.fillStyle=["#385e44","#557c4d","#789454"][i];ctx.beginPath();ctx.ellipse(at.x,at.y,scale*(1.1-i*.13),scale*.8,0,0,Math.PI*2);ctx.fill();}
   }else {const height=/building|house|wall|shed/.test(prop.kind)?3.4:/table|bench|counter/.test(prop.kind)?1.1:.65;box(ctx,view,prop.position,prop.width,prop.height,height,/roof|building|house/.test(prop.kind)?"#62756b":"#aa9167");}
-  ctx.globalAlpha=1;
- }})),{depth:view.playerPosition.x+view.playerPosition.y,draw:()=>drawPlayer(ctx,atFeet(view,surfaceHeight(map.id,view.playerPosition)),view.playerPosition,facing,moving,scale,motion,(game?.tray.length??0)>0)}];
+  ctx.restore();
+ }})),{depth:view.playerPosition.x+view.playerPosition.y,draw:()=>{drawActor(ctx,{...playerView,pass:"objects"},playerSample,view.playerPosition);playerDrawn=true;}}];
  for(const object of custom) objects.push({depth:object.depth??object.position.x+object.position.y,draw:()=>{
   ctx.save();
   const occlusion=object.occlusion;
-  if(occlusion?.fadeWhenPlayerBehind && occludesPlayer(occlusion,view.playerPosition))ctx.globalAlpha=.45;
+  if(occlusion?.fadeWhenPlayerBehind && canFadeOccluder(occlusion,view.playerPosition,playerDrawn,playerBounds,foliageBounds.get(object.id)))ctx.globalAlpha*=.45;
   object.draw(ctx,view);ctx.restore();
  }});
  if(restaurant)for(const customer of restaurant.customers)objects.push({depth:customer.position.x+customer.position.y,draw:()=>drawActor(ctx,atFeet({...view,pass:"objects"},surfaceHeight(map.id,customer.position)),sampleActor({characterId:customer.characterId,facing:customer.facing,action:"idle",posture:"sit",seatHeight:customer.seatHeight,handRestHeight:RESTAURANT_FURNITURE_PROFILE.tableTop,elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion}),customer.position)});
