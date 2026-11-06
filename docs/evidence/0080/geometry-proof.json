@@ -1,0 +1,739 @@
+{
+  "mapId": "courtyard",
+  "bounds": {
+    "width": 48,
+    "height": 38
+  },
+  "reachableAreaSampledTiles": 1115.5,
+  "sampleStep": 0.5,
+  "authoredLandmarks": 12,
+  "props": 86,
+  "sharedFoundationSnapshot": "/workspace/junyan/src/world",
+  "routes": [
+    {
+      "id": "from-town",
+      "length": 0,
+      "waypoints": [
+        {
+          "x": 23,
+          "y": 33.5
+        }
+      ]
+    },
+    {
+      "id": "from-residential-hall",
+      "length": 30.92,
+      "waypoints": [
+        {
+          "x": 20,
+          "y": 23
+        },
+        {
+          "x": 17.5,
+          "y": 19
+        },
+        {
+          "x": 17.5,
+          "y": 13.5
+        },
+        {
+          "x": 18,
+          "y": 12
+        },
+        {
+          "x": 23,
+          "y": 5.5
+        }
+      ]
+    },
+    {
+      "id": "from-park",
+      "length": 38.26,
+      "waypoints": [
+        {
+          "x": 36.5,
+          "y": 32
+        },
+        {
+          "x": 41.5,
+          "y": 31.5
+        },
+        {
+          "x": 41.5,
+          "y": 30
+        },
+        {
+          "x": 42,
+          "y": 15.5
+        },
+        {
+          "x": 43,
+          "y": 12
+        }
+      ]
+    },
+    {
+      "id": "courtyard.activity",
+      "length": 15.39,
+      "waypoints": [
+        {
+          "x": 20,
+          "y": 23
+        },
+        {
+          "x": 16,
+          "y": 21
+        }
+      ]
+    },
+    {
+      "id": "courtyard.white",
+      "length": 17.36,
+      "waypoints": [
+        {
+          "x": 15.5,
+          "y": 27
+        },
+        {
+          "x": 14.8,
+          "y": 19.6
+        }
+      ]
+    },
+    {
+      "id": "courtyard.black",
+      "length": 17.88,
+      "waypoints": [
+        {
+          "x": 30.5,
+          "y": 26.5
+        },
+        {
+          "x": 30.5,
+          "y": 24.5
+        },
+        {
+          "x": 33,
+          "y": 22.5
+        },
+        {
+          "x": 34.5,
+          "y": 20.6
+        }
+      ]
+    },
+    {
+      "id": "courtyard.bicycle",
+      "length": 17.08,
+      "waypoints": [
+        {
+          "x": 20,
+          "y": 23
+        },
+        {
+          "x": 15.8,
+          "y": 18.5
+        }
+      ]
+    },
+    {
+      "id": "courtyard.bench",
+      "length": 22.3,
+      "waypoints": [
+        {
+          "x": 30.5,
+          "y": 26.5
+        },
+        {
+          "x": 30.5,
+          "y": 24.5
+        },
+        {
+          "x": 36,
+          "y": 24.5
+        },
+        {
+          "x": 36.6,
+          "y": 20
+        }
+      ]
+    },
+    {
+      "id": "courtyard.door",
+      "length": 31.82,
+      "waypoints": [
+        {
+          "x": 20,
+          "y": 23
+        },
+        {
+          "x": 17.5,
+          "y": 19
+        },
+        {
+          "x": 17.5,
+          "y": 13.5
+        },
+        {
+          "x": 18,
+          "y": 12
+        },
+        {
+          "x": 23,
+          "y": 4.4
+        }
+      ]
+    },
+    {
+      "id": "courtyard.window",
+      "length": 31.49,
+      "waypoints": [
+        {
+          "x": 27.5,
+          "y": 26.5
+        },
+        {
+          "x": 28,
+          "y": 20
+        },
+        {
+          "x": 28.5,
+          "y": 18
+        },
+        {
+          "x": 28.5,
+          "y": 13.5
+        },
+        {
+          "x": 29.5,
+          "y": 7.5
+        },
+        {
+          "x": 33.5,
+          "y": 7.7
+        }
+      ]
+    },
+    {
+      "id": "courtyard.aunt",
+      "length": 29.1,
+      "waypoints": [
+        {
+          "x": 27.5,
+          "y": 26.5
+        },
+        {
+          "x": 28,
+          "y": 20
+        },
+        {
+          "x": 28.5,
+          "y": 18
+        },
+        {
+          "x": 28.5,
+          "y": 13.5
+        },
+        {
+          "x": 25.3,
+          "y": 6.5
+        }
+      ]
+    },
+    {
+      "id": "to-town",
+      "length": 3,
+      "waypoints": [
+        {
+          "x": 23,
+          "y": 36.5
+        }
+      ]
+    },
+    {
+      "id": "to-residential-hall",
+      "length": 34.35,
+      "waypoints": [
+        {
+          "x": 20,
+          "y": 23
+        },
+        {
+          "x": 17.5,
+          "y": 19
+        },
+        {
+          "x": 17.5,
+          "y": 13.5
+        },
+        {
+          "x": 18,
+          "y": 12
+        },
+        {
+          "x": 23,
+          "y": 1.5
+        }
+      ]
+    },
+    {
+      "id": "to-park",
+      "length": 40.32,
+      "waypoints": [
+        {
+          "x": 36.5,
+          "y": 32
+        },
+        {
+          "x": 41.5,
+          "y": 31.5
+        },
+        {
+          "x": 41.5,
+          "y": 30
+        },
+        {
+          "x": 42,
+          "y": 15.5
+        },
+        {
+          "x": 46.5,
+          "y": 12
+        }
+      ]
+    },
+    {
+      "id": "courtyard.white.route.0",
+      "length": 20.04,
+      "waypoints": [
+        {
+          "x": 14,
+          "y": 26
+        },
+        {
+          "x": 13.4,
+          "y": 17.7
+        }
+      ]
+    },
+    {
+      "id": "courtyard.white.route.1",
+      "length": 16.96,
+      "waypoints": [
+        {
+          "x": 15.5,
+          "y": 27
+        },
+        {
+          "x": 14.8,
+          "y": 20
+        }
+      ]
+    },
+    {
+      "id": "courtyard.white.route.2",
+      "length": 14.95,
+      "waypoints": [
+        {
+          "x": 20,
+          "y": 23
+        },
+        {
+          "x": 16.5,
+          "y": 21
+        }
+      ]
+    },
+    {
+      "id": "courtyard.white.route.3",
+      "length": 22.77,
+      "waypoints": [
+        {
+          "x": 20,
+          "y": 23
+        },
+        {
+          "x": 17,
+          "y": 18
+        },
+        {
+          "x": 16.5,
+          "y": 12
+        }
+      ]
+    },
+    {
+      "id": "courtyard.white.route.4",
+      "length": 27.1,
+      "waypoints": [
+        {
+          "x": 27.5,
+          "y": 26.5
+        },
+        {
+          "x": 28,
+          "y": 20
+        },
+        {
+          "x": 28.5,
+          "y": 18
+        },
+        {
+          "x": 28.5,
+          "y": 13.5
+        },
+        {
+          "x": 23,
+          "y": 12
+        }
+      ]
+    },
+    {
+      "id": "courtyard.white.route.5",
+      "length": 30.15,
+      "waypoints": [
+        {
+          "x": 20,
+          "y": 23
+        },
+        {
+          "x": 17.5,
+          "y": 19
+        },
+        {
+          "x": 17.5,
+          "y": 13.5
+        },
+        {
+          "x": 18,
+          "y": 12
+        },
+        {
+          "x": 23,
+          "y": 6.5
+        }
+      ]
+    },
+    {
+      "id": "courtyard.white.route.6",
+      "length": 31.44,
+      "waypoints": [
+        {
+          "x": 27.5,
+          "y": 26.5
+        },
+        {
+          "x": 28,
+          "y": 20
+        },
+        {
+          "x": 28.5,
+          "y": 18
+        },
+        {
+          "x": 28.5,
+          "y": 13.5
+        },
+        {
+          "x": 23.5,
+          "y": 4.8
+        }
+      ]
+    },
+    {
+      "id": "courtyard.black.route.0",
+      "length": 21.09,
+      "waypoints": [
+        {
+          "x": 30.5,
+          "y": 26.5
+        },
+        {
+          "x": 30.5,
+          "y": 24.5
+        },
+        {
+          "x": 34.5,
+          "y": 24.5
+        },
+        {
+          "x": 35,
+          "y": 19.7
+        }
+      ]
+    },
+    {
+      "id": "courtyard.black.route.1",
+      "length": 17.61,
+      "waypoints": [
+        {
+          "x": 30.5,
+          "y": 26.5
+        },
+        {
+          "x": 30.5,
+          "y": 24.5
+        },
+        {
+          "x": 33,
+          "y": 22.5
+        },
+        {
+          "x": 34,
+          "y": 20.6
+        }
+      ]
+    },
+    {
+      "id": "courtyard.black.route.2",
+      "length": 17.26,
+      "waypoints": [
+        {
+          "x": 30.5,
+          "y": 26.5
+        },
+        {
+          "x": 30.5,
+          "y": 24.5
+        },
+        {
+          "x": 33,
+          "y": 22.5
+        },
+        {
+          "x": 34,
+          "y": 21
+        }
+      ]
+    },
+    {
+      "id": "courtyard.black.route.3",
+      "length": 20.67,
+      "waypoints": [
+        {
+          "x": 34,
+          "y": 16
+        }
+      ]
+    },
+    {
+      "id": "courtyard.black.route.4",
+      "length": 17.61,
+      "waypoints": [
+        {
+          "x": 30.5,
+          "y": 26.5
+        },
+        {
+          "x": 30.5,
+          "y": 24.5
+        },
+        {
+          "x": 33,
+          "y": 22.5
+        },
+        {
+          "x": 34,
+          "y": 20.6
+        }
+      ]
+    },
+    {
+      "id": "courtyard.black.route.5",
+      "length": 21.09,
+      "waypoints": [
+        {
+          "x": 30.5,
+          "y": 26.5
+        },
+        {
+          "x": 30.5,
+          "y": 24.5
+        },
+        {
+          "x": 34.5,
+          "y": 24.5
+        },
+        {
+          "x": 35,
+          "y": 19.7
+        }
+      ]
+    },
+    {
+      "id": "courtyard.aunt.route.0",
+      "length": 29.14,
+      "waypoints": [
+        {
+          "x": 27.5,
+          "y": 26.5
+        },
+        {
+          "x": 28,
+          "y": 20
+        },
+        {
+          "x": 28.5,
+          "y": 18
+        },
+        {
+          "x": 28.5,
+          "y": 13.5
+        },
+        {
+          "x": 25,
+          "y": 6.6
+        }
+      ]
+    },
+    {
+      "id": "courtyard.aunt.route.1",
+      "length": 30.15,
+      "waypoints": [
+        {
+          "x": 20,
+          "y": 23
+        },
+        {
+          "x": 17.5,
+          "y": 19
+        },
+        {
+          "x": 17.5,
+          "y": 13.5
+        },
+        {
+          "x": 18,
+          "y": 12
+        },
+        {
+          "x": 23,
+          "y": 6.5
+        }
+      ]
+    },
+    {
+      "id": "courtyard.aunt.route.2",
+      "length": 31.73,
+      "waypoints": [
+        {
+          "x": 20,
+          "y": 23
+        },
+        {
+          "x": 17.5,
+          "y": 19
+        },
+        {
+          "x": 17.5,
+          "y": 13.5
+        },
+        {
+          "x": 18,
+          "y": 12
+        },
+        {
+          "x": 23,
+          "y": 4.5
+        }
+      ]
+    },
+    {
+      "id": "courtyard.aunt.route.3",
+      "length": 30.15,
+      "waypoints": [
+        {
+          "x": 20,
+          "y": 23
+        },
+        {
+          "x": 17.5,
+          "y": 19
+        },
+        {
+          "x": 17.5,
+          "y": 13.5
+        },
+        {
+          "x": 18,
+          "y": 12
+        },
+        {
+          "x": 23,
+          "y": 6.5
+        }
+      ]
+    },
+    {
+      "id": "courtyard.aunt.route.4",
+      "length": 29.14,
+      "waypoints": [
+        {
+          "x": 27.5,
+          "y": 26.5
+        },
+        {
+          "x": 28,
+          "y": 20
+        },
+        {
+          "x": 28.5,
+          "y": 18
+        },
+        {
+          "x": 28.5,
+          "y": 13.5
+        },
+        {
+          "x": 25,
+          "y": 6.6
+        }
+      ]
+    },
+    {
+      "id": "courtyard.sparrows.route.0",
+      "length": 18.85,
+      "waypoints": [
+        {
+          "x": 10,
+          "y": 28.5
+        },
+        {
+          "x": 8,
+          "y": 24
+        }
+      ]
+    },
+    {
+      "id": "courtyard.sparrows.route.1",
+      "length": 14.53,
+      "waypoints": [
+        {
+          "x": 12,
+          "y": 24
+        }
+      ]
+    },
+    {
+      "id": "courtyard.sparrows.route.2",
+      "length": 12.44,
+      "waypoints": [
+        {
+          "x": 12,
+          "y": 27.7
+        }
+      ]
+    },
+    {
+      "id": "courtyard.sparrows.route.3",
+      "length": 16.08,
+      "waypoints": [
+        {
+          "x": 8,
+          "y": 27.7
+        }
+      ]
+    }
+  ],
+  "limits": "Geometry proof only. No browser traversal, reciprocal registry graph, save, activity or visual acceptance is inferred."
+}

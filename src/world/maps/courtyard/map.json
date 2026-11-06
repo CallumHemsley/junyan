@@ -116,15 +116,6 @@
       }
     },
     {
-      "id": "courtyard.bicycle-main",
-      "rect": {
-        "x": 10.3,
-        "y": 16.2,
-        "width": 3.4,
-        "height": 0.65
-      }
-    },
-    {
       "id": "courtyard.bicycle-spare",
       "rect": {
         "x": 10.5,
@@ -438,6 +429,24 @@
         "width": 1.2,
         "height": 1.2
       }
+    },
+    {
+      "id": "courtyard.bicycle-wheel-0",
+      "rect": {
+        "x": 11.8,
+        "y": 17.7,
+        "width": 0.35,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "courtyard.bicycle-wheel-1",
+      "rect": {
+        "x": 14.85,
+        "y": 17.7,
+        "width": 0.35,
+        "height": 0.65
+      }
     }
   ],
   "occluders": [
@@ -672,8 +681,8 @@
     {
       "id": "courtyard.bicycle",
       "position": {
-        "x": 14.6,
-        "y": 17.8
+        "x": 15.8,
+        "y": 18.5
       },
       "radius": 1.7,
       "featureId": "cats",
@@ -703,7 +712,7 @@
       "id": "courtyard.window",
       "position": {
         "x": 33.5,
-        "y": 7
+        "y": 7.7
       },
       "radius": 1.7,
       "featureId": "cats",
@@ -934,8 +943,8 @@
       "id": "courtyard.bicycle-main",
       "kind": "bicycle",
       "position": {
-        "x": 10.3,
-        "y": 16.2
+        "x": 11.8,
+        "y": 17.7
       },
       "width": 3.4,
       "height": 0.65,
@@ -1924,12 +1933,20 @@
           "y": 20
         },
         {
-          "x": 21,
+          "x": 16.5,
           "y": 21
         },
         {
+          "x": 16.5,
+          "y": 12
+        },
+        {
           "x": 23,
-          "y": 7
+          "y": 12
+        },
+        {
+          "x": 23,
+          "y": 6.5
         },
         {
           "x": 23.5,
@@ -1950,16 +1967,20 @@
           "y": 19.7
         },
         {
-          "x": 36,
+          "x": 34,
+          "y": 20.6
+        },
+        {
+          "x": 34,
           "y": 21
         },
         {
-          "x": 38,
-          "y": 21
-        },
-        {
-          "x": 38,
+          "x": 34,
           "y": 16
+        },
+        {
+          "x": 34,
+          "y": 20.6
         },
         {
           "x": 35,
@@ -2015,11 +2036,11 @@
         },
         {
           "x": 12,
-          "y": 27
+          "y": 27.7
         },
         {
           "x": 8,
-          "y": 27
+          "y": 27.7
         }
       ],
       "characterId": "sparrow"
