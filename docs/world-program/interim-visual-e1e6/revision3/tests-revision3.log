@@ -1,0 +1,29 @@
+
+ RUN  v3.2.7 /workspace/junyan-visual-trial-e1e6
+
+ ✓ src/world/life/background-maps.test.ts (1 test) 852ms
+   ✓ consumes all five sole-map authored hooks with real collision-safe walk and task phases  851ms
+ ✓ src/world/life/routines.test.ts (6 tests) 1113ms
+   ✓ authored life routines on actual map definitions > keeps town routines inside real shared geometry and outside entrances  469ms
+   ✓ provides one valid town office fallback only when the authored canonical hook is absent  339ms
+ ✓ src/world/actor-readiness.test.ts (2 tests) 711ms
+   ✓ preflights every currently emitted human ID before strict catalog sampling reaches production  707ms
+ ✓ src/world/maps/landscape/landscape.test.ts (17 tests) 1028ms
+   ✓ park authored routes > uses shared pathfinding to reach the waterside approach  472ms
+ ✓ src/world/life/scene.test.ts (1 test) 404ms
+   ✓ uses one world-life frame for global service presence and authoritative courtyard clues  404ms
+ ✓ src/world/life/background.test.ts (11 tests) 128ms
+ ✓ src/world/life/life.test.ts (18 tests) 63ms
+ ✓ src/world/life/landmarks.test.ts (6 tests) 16ms
+ ✓ src/world/art/rooftop/art.test.ts (2 tests) 18ms
+ ✓ src/world/maps/rooftop/work-pocket.test.ts (3 tests) 174ms
+ ✓ src/world/life/presence.test.ts (2 tests) 4ms
+ ✓ src/world/life/render.test.ts (2 tests) 3ms
+ ✓ src/world/maps/rooftop/rooftop.test.ts (6 tests) 11016ms
+   ✓ rooftop circulation and existing garden projection > keeps circulation open for every legal three-pot layout and each shade site  10750ms
+
+ Test Files  13 passed (13)
+      Tests  77 passed (77)
+   Start at  02:13:21
+   Duration  11.43s (transform 731ms, setup 0ms, collect 3.26s, tests 15.53s, environment 2ms, prepare 743ms)
+
