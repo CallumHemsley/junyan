@@ -1,86 +1,90 @@
-[
-  {
-    "device": "desktop",
-    "probe": {
-      "calls": 25844,
-      "inheritedAlpha": 0.45
-    },
-    "phase": "morning",
-    "served": 0,
-    "validSave": true,
-    "particlesDisabled": true,
-    "renderer": "production paintWorld",
-    "camera": {
-      "width": 640,
-      "height": 400,
-      "focus": {
-        "x": 22,
-        "y": 30
+{
+  "sourceHead": "0ad4ede18cfa3daaf1afd4106d8c782be8d05b4b",
+  "capturedAt": "2026-11-06T00:27:56.524Z",
+  "results": [
+    {
+      "device": "desktop",
+      "probe": {
+        "calls": 25844,
+        "inheritedAlpha": 0.45
       },
-      "scale": 17
-    }
-  },
-  {
-    "device": "desktop",
-    "probe": {
-      "calls": 25844,
-      "inheritedAlpha": 0.45
+      "phase": "morning",
+      "served": 0,
+      "validSave": true,
+      "particlesDisabled": true,
+      "renderer": "production paintWorld",
+      "camera": {
+        "width": 640,
+        "height": 400,
+        "focus": {
+          "x": 22,
+          "y": 30
+        },
+        "scale": 17
+      }
     },
-    "phase": "evening",
-    "served": 3,
-    "validSave": true,
-    "particlesDisabled": true,
-    "renderer": "production paintWorld",
-    "camera": {
-      "width": 640,
-      "height": 400,
-      "focus": {
-        "x": 22,
-        "y": 30
+    {
+      "device": "desktop",
+      "probe": {
+        "calls": 25844,
+        "inheritedAlpha": 0.45
       },
-      "scale": 17
-    }
-  },
-  {
-    "device": "phone",
-    "probe": {
-      "calls": 25844,
-      "inheritedAlpha": 0.45
+      "phase": "evening",
+      "served": 3,
+      "validSave": true,
+      "particlesDisabled": true,
+      "renderer": "production paintWorld",
+      "camera": {
+        "width": 640,
+        "height": 400,
+        "focus": {
+          "x": 22,
+          "y": 30
+        },
+        "scale": 17
+      }
     },
-    "phase": "morning",
-    "served": 0,
-    "validSave": true,
-    "particlesDisabled": true,
-    "renderer": "production paintWorld",
-    "camera": {
-      "width": 195,
-      "height": 422,
-      "focus": {
-        "x": 22,
-        "y": 30
+    {
+      "device": "phone",
+      "probe": {
+        "calls": 25844,
+        "inheritedAlpha": 0.45
       },
-      "scale": 17
-    }
-  },
-  {
-    "device": "phone",
-    "probe": {
-      "calls": 25844,
-      "inheritedAlpha": 0.45
+      "phase": "morning",
+      "served": 0,
+      "validSave": true,
+      "particlesDisabled": true,
+      "renderer": "production paintWorld",
+      "camera": {
+        "width": 195,
+        "height": 422,
+        "focus": {
+          "x": 22,
+          "y": 30
+        },
+        "scale": 17
+      }
     },
-    "phase": "evening",
-    "served": 3,
-    "validSave": true,
-    "particlesDisabled": true,
-    "renderer": "production paintWorld",
-    "camera": {
-      "width": 195,
-      "height": 422,
-      "focus": {
-        "x": 22,
-        "y": 30
+    {
+      "device": "phone",
+      "probe": {
+        "calls": 25844,
+        "inheritedAlpha": 0.45
       },
-      "scale": 17
+      "phase": "evening",
+      "served": 3,
+      "validSave": true,
+      "particlesDisabled": true,
+      "renderer": "production paintWorld",
+      "camera": {
+        "width": 195,
+        "height": 422,
+        "focus": {
+          "x": 22,
+          "y": 30
+        },
+        "scale": 17
+      }
     }
-  }
-]
+  ]
+}

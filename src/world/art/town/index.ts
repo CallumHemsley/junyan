@@ -54,7 +54,16 @@ export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldR
     box(x - .15, y - .15, height, w + .3, h + .3, .28, C.wood);
     const roof = prop.kind === 'building-restaurant' ? [104, 129, 119] : prop.kind === 'building-tea' ? [117, 112, 96] : C.slate;
     const ridge = height + (shop ? 1.15 : 1.5), mid = y + h * .46;
-    if (prop.kind === 'building-workshop') {
+    if (style === 'cream-shutter' || style === 'blue-shutter') {
+      box(x - .15, y - .15, height + .28, w + .3, h + .3, .18, [157, 161, 140]);
+      box(x - .15, y - .15, height + .46, w + .3, .22, .5, C.cream);
+      box(x - .15, y - .15, height + .46, .22, h + .3, .5, C.cream);
+      box(x + w - .07, y - .15, height + .46, .22, h + .3, .5, C.cream);
+      for (let i = 0; i < 3; i++) {
+        box(x + 1 + i * 1.7, y + 1, height + .46, 1.1, .9, .55, C.brick);
+        box(x + 1 + i * 1.7, y + 1, height + 1, 1.1, .9, .35, C.leaf);
+      }
+    } else if (prop.kind === 'building-workshop') {
       for (let i = 0; i < 5; i++) box(x + .5, y + h + .25, .1 + i * .16, 3.5 - i * .2, .6, .12, i % 2 ? C.wood : C.brass);
       for (let a = x - .2; a < x + w; a += 2.6) {
         const end = Math.min(x + w + .2, a + 2.6);
@@ -281,6 +290,18 @@ export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldR
     for (let a = 0; a < w - .3; a += .5) { box(x + a + .1, y + .2, 1, .35, h - .4, .25, a < 1 ? C.leaf : a < 2 ? [199, 164, 75] : C.cream); }
     for (const a of [0, w - .15]) box(x + a, y, .8, .12, .12, 1.7, C.wood);
     box(x - .2, y - .2, 2.4, w + .4, h + .4, .12, C.jade);
+  } else if (prop.kind === 'flowerbed') {
+    box(x, y, .02, w, h, .08, [105, 111, 83]);
+    for (let i = 0; i < Math.ceil(w * h * 5); i++) {
+      const a = x + hash(i, x) * w, b = y + hash(i, y + 1) * h;
+      const p = project(a, b, .1 + hash(i, x + 3) * .35);
+      ctx.fillStyle = color(i % 3 ? C.leaf : C.jade);
+      ctx.fillRect(Math.round(p.x), Math.round(p.y) - 2, 1, 3);
+      if (i % 3 === 0) {
+        ctx.fillStyle = color(i % 2 ? [220, 204, 136] : [226, 224, 194]);
+        ctx.fillRect(Math.round(p.x) - 1, Math.round(p.y) - 3, 3, 2);
+      }
+    }
   } else if (prop.kind === 'planter') {
     box(x, y, 0, w, h, .55, C.brick);
     box(x - .05, y - .05, .5, w + .1, h + .1, .15, C.brass);
