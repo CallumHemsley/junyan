@@ -1,11 +1,10 @@
 import { test, expect, type Page } from "@playwright/test";
-import data from "../src/content/content.json" with {type:"json"};
+import { content } from "../src/content";
 import type { Content, GameState } from "../src/contracts";
 import { createGame } from "../src/game";
 import * as repair from "../src/features/repairs/rules";
 import { seedDayOne } from "./opening";
 
-const content=data as Content;
 const root=process.env.JUNYAN_NEIGHBOURHOOD_PREVIEW==="1"?"/junyan/":"/";
 async function saved(page:Page):Promise<GameState> {
   return page.evaluate(async()=>{

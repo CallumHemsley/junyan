@@ -1,0 +1,3 @@
+ts	phase	decision	why	evidence	result
+2026-11-06T00:27:35.040454+00:00	frame	Use neutral runtime words with a Mandarin boundary adapter	Keep existing audio source assets valid while removing script assumptions from rules and rendering	docs/plans/multiple-languages.md	implementation in progress
+2026-11-06T00:27:35.040454+00:00	baseline	Run baseline unit suite before changes	Compare actual behavior against the refactor	8cd5bc2	308 tests passed

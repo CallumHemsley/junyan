@@ -27,7 +27,7 @@ test("two days label lifetime receipts without changing the running total", asyn
       for (const item of order.items) {
         const food = foods.find(food => food.id === item.foodId)!;
         for (let n = 0; n < item.quantity; n++)
-          await page.getByRole("button", { name: `拿${food.word.hanzi}`, exact: true }).click();
+          await page.getByRole("button", { name: `拿${food.word.text}`, exact: true }).click();
       }
       await page.getByRole("button", { name: "端好了，去上菜" }).click();
       await page.getByTestId(`table-${table}`).click();

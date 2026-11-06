@@ -3,8 +3,8 @@ import type { NeighbourhoodState } from "./neighbourhood/model";
 export type Position = { x: number; y: number };
 export type Word = {
   id: string;
-  hanzi: string;
-  pinyin: string;
+  text: string;
+  pronunciation?: string;
   gloss: string;
   audio: string;
 };
@@ -45,6 +45,7 @@ export type Character = {
   retry: Line;
 };
 export type Content = {
+  language?: string;
   neighbourhood?: { words: Word[]; lines: (Line & { text?: string })[] };
   help: {
     welcome: Line;
