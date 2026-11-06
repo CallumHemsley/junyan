@@ -29,3 +29,7 @@ Tread and landing art iterates this same table. Each floor top is at exactly the
 Art passes absolute world Z into `view.project`; it never wraps project to add another height. Foundation registers the map module's two callbacks, projects actor and NPC feet at sampled height, frames camera focusZ, and implements the agreed unprojectAtHeight/level enumeration for picking. Those shared changes belong to foundation. Do not add surfaceHeight again to the already-raised art geometry.
 
 The standalone art study now samples the same height for its reference figure and shows raised landings. It remains an art study, not production camera/picking proof. Integrated ordinary-input ascent/descent, NPC feet, touch picking and apartment/roof continuity must be rerun after foundation consumes the exact source.
+
+## World editing preview
+
+Keep calling drawFurniture on every apartment ground pass, including when no rug is placed. It now draws the selected draft footprint as an outline in the actual world, using the existing legal-placement rule. Invalid previews use a dashed neutral outline. The draft never enters colliders or committed furniture render objects. RenderFurnitureObjects still represents saved placements only. Contact shadows and the vase's flower/bottle silhouette are owned art details; no state, save or audio contract changed.

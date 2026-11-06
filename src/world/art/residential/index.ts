@@ -4,7 +4,7 @@ import { stairSurfaces, supportHeight } from '../../maps/residential/elevation';
 import { mapDefinitions } from '../../maps/residential';
 import { furnitureWorldRect } from '../../../features/apartment/world';
 import type { WorldMapDefinition } from '../../schema';
-import type { State } from '../../../features/apartment/rules';
+import { legal, type State } from '../../../features/apartment/rules';
 
 type Colour = [number, number, number];
 export type ResidentialArtApi = Pick<SceneApi, 'box' | 'sphere' | 'capsule' | 'castShadow'>;
@@ -301,7 +301,19 @@ export function drawApartmentFurniture(api: ResidentialArtApi, state: State) {
       case 'cushion': case 'cats.cushion':
         box(x, y, .02, endX, endY, .22, p.id === 'cats.cushion' ? [191, 162, 117] : state.colour === 'blue' ? [128, 155, 171] : linen);
         break;
-      case 'vase': case 'garden.planter':
+      case 'vase': {
+        const cx = (x + endX) / 2, cy = (y + endY) / 2;
+        sphere(cx, cy, .42, .35, jade, 'solid');box(cx - .14, cy - .14, .55, cx + .14, cy + .14, .9, jade);
+        for (let i = 0; i < 3; i++) {
+          const angle = i * 2.4, px = cx + Math.cos(angle) * .28, py = cy + Math.sin(angle) * .28, z = 1.35 + i % 2 * .15;
+          api.capsule([cx, cy, .83], [px, py, z], .025, .02, () => [102, 137, 97], 'solid');
+          const petal: Colour = i % 2 ? [162, 143, 169] : [234, 220, 180];
+          for (const [dx, dy] of [[-.09, 0], [.09, 0], [0, -.09], [0, .09]]) sphere(px + dx, py + dy, z, .09, petal, 'solid');
+          sphere(px, py, z + .03, .045, [186, 157, 102], 'solid');
+        }
+        break;
+      }
+      case 'garden.planter':
         box(x + .4, y + .4, 0, endX - .4, endY - .4, .7, jade);
         for (const dx of [.4, .8, 1.2]) sphere(x + dx, y + .8, .95 + dx * .2, .25, [116, 150, 103], 'solid');
         break;
@@ -311,6 +323,7 @@ export function drawApartmentFurniture(api: ResidentialArtApi, state: State) {
         box(x + .3, y + .3, 1.5, endX - .3, endY - .3, 1.8, [240, 210, 150]);
         break;
     }
+    if (p.id !== 'rug') api.castShadow((x + endX) / 2 + .12, (y + endY) / 2 + .12, .012, Math.max(r.width, r.height) * .55, .28, 0);
   }
 }
 
@@ -408,7 +421,22 @@ export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderVie
 }
 
 export function drawFurniture(ctx: CanvasRenderingContext2D, state: State, view: WorldRenderView) {
-  if (view.pass === 'ground') paintResidential(ctx, view, api => drawApartmentFurniture(api, { ...state, placements: state.placements.filter(p => p.id === 'rug') }));
+  if (view.pass !== 'ground') return;
+  paintResidential(ctx, view, api => {
+    drawApartmentFurniture(api, { ...state, placements: state.placements.filter(p => p.id === 'rug') });
+    if (!state.selected || !state.draft) return;
+    const placement = { id: state.selected, ...state.draft }, rect = furnitureWorldRect(placement, state.rugSize), valid = legal(state, placement);
+    const colour: Colour = valid ? [84, 103, 90] : [103, 90, 74];
+    const segment = valid ? Math.max(rect.width, rect.height) : .3, step = valid ? segment : .5;
+    for (let at = 0; at < rect.width; at += step) {
+      api.box(rect.x + at, rect.y, .075, rect.x + Math.min(at + segment, rect.width), rect.y + .055, .09, colour);
+      api.box(rect.x + at, rect.y + rect.height - .055, .075, rect.x + Math.min(at + segment, rect.width), rect.y + rect.height, .09, colour);
+    }
+    for (let at = 0; at < rect.height; at += step) {
+      api.box(rect.x, rect.y + at, .075, rect.x + .055, rect.y + Math.min(at + segment, rect.height), .09, colour);
+      api.box(rect.x + rect.width - .055, rect.y + at, .075, rect.x + rect.width, rect.y + Math.min(at + segment, rect.height), .09, colour);
+    }
+  });
 }
 
 export function renderFurnitureObjects(state: State): WorldRenderObject[] {

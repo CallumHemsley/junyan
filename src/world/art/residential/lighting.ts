@@ -4,13 +4,13 @@ import { mapsForNeighbourhood } from '../../dynamic';
 import { createGame } from '../../../game';
 import { content } from '../../../content';
 import { reduce } from '../../../features/apartment/rules';
-import type { Placement } from '../../../features/apartment/rules';
+import type { Placement, State } from '../../../features/apartment/rules';
 import type { WorldState } from '../../schema';
 
 const params = new URLSearchParams(location.search);
-const proof: { reloaded: Placement[] }[] = await fetch('/docs/evidence/0081/production-proof.json').then(response => response.json());
+const proof: { reloaded: Placement[]; home?: State }[] = await fetch('/docs/evidence/0081/production-proof.json').then(response => response.json());
 const game = createGame(content);
-game.neighbourhood!.apartment = { ...reduce(game.neighbourhood!.apartment, { type: 'accept-starter' }, 1), placements: proof[0].reloaded };
+game.neighbourhood!.apartment = proof[0].home ?? { ...reduce(game.neighbourhood!.apartment, { type: 'accept-starter' }, 1), placements: proof[0].reloaded };
 game.served = params.get('phase') === 'evening' ? 3 : 0;
 const maps = mapsForNeighbourhood(game.neighbourhood!);
 const map = maps.apartment;
