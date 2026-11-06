@@ -33,6 +33,23 @@ it('keeps every stair support pickable when phone panels open and close',()=>{
  }
 });
 
+it('keeps a fitting small-room overview and follows locally only when a panel needs space',()=>{
+ const bounds={width:30,height:22},position={x:14,y:17.5};
+ const room={...worldMaps.apartment,id:'small-room',bounds,walkable:[{x:0,y:0,...bounds}],colliders:[]};
+ const closed=explorationCamera(bounds,position,195,386);
+ expect(closed).toEqual(cameraForMap(bounds,position,195,386,11));
+ expect(project({x:0,y:0},closed).y).toBeLessThan(66);
+ const open=explorationCamera(bounds,position,195,386,180);
+ expect(open).not.toEqual(cameraForMap(bounds,position,195,386,11,180));
+ for(const camera of [closed,open,explorationCamera(bounds,position,195,386)]){
+  const screen=project(position,camera);
+  expect(pickSurface(screen,camera,room)).toEqual(position);
+  expect(screen.y).toBeGreaterThan(0);
+  if(camera===open)expect(screen.y).toBeLessThan(386-180);
+ }
+ expect(explorationCamera(bounds,position,195,386)).toEqual(closed);
+});
+
 it('preserves desktop and explicit-scale cameras',()=>{
  const bounds={width:24,height:22},position={x:18.5,y:9};
  expect(explorationCamera(bounds,position,720,458,0,256,2.4)).toEqual(cameraForMap(bounds,position,720,458,15,0,256,2.4));
