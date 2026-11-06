@@ -2,13 +2,14 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import type { Line, Word } from "../contracts";
+import { french } from "../content/fixtures/french";
 import WordLine from "../WordLine";
 import WordToken from "../WordToken";
-import type { LanguagePolicy } from ".";
 import { ui } from "./ui";
 
 const lookup = () => {};
-const word = (id: string, text: string): Word => ({ id, text, gloss: text, audio: `/audio/${id}.mp3` });
+const plain = (): "plain" => "plain";
+const word = (id: string, text: string): Word => ({ id, text, gloss: text, audio: `/audio/${id}.wav` });
 const visibleText = (markup: string) => markup.replace(/<[^>]+>/g, "").replaceAll("&#x27;", "'");
 
 describe("language-neutral word rendering", () => {
@@ -22,25 +23,22 @@ describe("language-neutral word rendering", () => {
   });
 
   it("preserves authored French spaces, apostrophes and punctuation around tappable words", () => {
-    const policy: LanguagePolicy = {
-      id: "fr-FR", locale: "fr-FR", direction: "ltr", tokenSeparator: " ", renderAuthoredText: true,
-    };
     const line: Line = {
-      id: "coffee-order", text: "Un café, s'il vous plaît !", audio: "/audio/order.mp3",
-      tokens: [word("one", "Un"), word("coffee", "café"), word("please", "s'il vous plaît")],
+      id: "coffee-order", text: "Un café, s'il vous plaît !", audio: "/audio/order.wav",
+      tokens: [word("one", "Un"), word("coffee", "café"), word("if-it", "s'il"), word("you", "vous"), word("please", "plaît")],
     };
     const markup = renderToStaticMarkup(createElement(WordLine, {
-      line, policy, look: () => "plain", onLookup: lookup,
+      line, policy: french, look: plain, onLookup: lookup,
     }));
     expect(visibleText(markup)).toBe(line.text);
-    expect(markup.match(/data-word-lookup/g)).toHaveLength(3);
+    expect(markup.match(/data-word-lookup/g)).toHaveLength(5);
   });
 
   it("keeps the existing Mandarin line presentation without visible punctuation", () => {
     const line: Line = {
-      id: "thanks", text: "多谢！", audio: "/audio/thanks.mp3", tokens: [word("thanks", "多谢")],
+      id: "thanks", text: "多谢！", audio: "/audio/thanks.wav", tokens: [word("thanks", "多谢")],
     };
-    const markup = renderToStaticMarkup(createElement(WordLine, { line, look: () => "plain", onLookup: lookup }));
+    const markup = renderToStaticMarkup(createElement(WordLine, { line, look: plain, onLookup: lookup }));
     expect(visibleText(markup)).toBe("多谢");
   });
 });
