@@ -11,7 +11,7 @@ export function readingRoomHost(state: State, context: Pick<LifeContext, 'elapse
   return [{
     id: 'reading-room.host', characterId: host.id, kind: 'resident',
     // The protected aisle stays clear for every legal arrangement and replay draft.
-    position: { x: 12.6, y: 6.5 }, facing: 'west',
+    position: { x: 12.6, y: 6.5 }, facing: 'south',
     action: 'idle', activity: 'work', heldObject: 'book', radius: .22,
     phaseMs: context.reducedMotion ? 0 : context.elapsedMs % 6000,
     greeting: state.status === 'complete' ? host.thanks : instruction[request],
