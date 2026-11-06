@@ -62,4 +62,10 @@
 @media (max-width: 600px) {.garden {padding: 8px;} .garden-heading h1 {font-size: 20px;} .garden-pots {margin-top: -8px;} .garden-pot-card {padding: 2px;} .garden-pot-name {font-size: 18px;} .garden-workbench {padding: 8px 4px;} .garden-tools {gap: 8px;} .garden-tool {gap: 0;} .garden-tool-label {font-size: 14px;} .garden-conversation {padding: 12px 16px;} .garden-spoken {font-size: 28px;} .garden-footer {padding: 4px;} .garden-footer .word {font-size: 14px;} }
 @media (prefers-reduced-motion: reduce) {.garden *, .garden *::before, .garden *::after {transition: none !important; animation: none !important;} }
 
-.garden-placement-choices {display:flex;flex-wrap:wrap;gap:var(--space-8);padding:var(--space-12) 0}.garden-placement-choices button {min-width:44px;min-height:44px;border:1px solid var(--hairline-strong);border-radius:var(--radius-chip);background:var(--surface-control);color:var(--text-primary)}.garden-placement-choices button:focus-visible {outline:2px solid var(--text-primary);outline-offset:2px}
+/* The plan uses the same isometric axes and saved sites as the roof. */
+.garden-placement-choices {position:relative;width:min(100%,400px);height:270px;margin:16px auto;background:var(--surface-sunk);border:1px solid var(--hairline-strong);border-radius:var(--radius-panel)}
+.garden-placement-site {position:absolute;transform:translate(-50%,-12%);display:flex;align-items:center;flex-direction:column;min-width:56px}
+.garden-placement-site > button {display:flex;align-items:center;justify-content:center;gap:2px;min-width:44px;min-height:44px;padding:4px;border:1px dashed var(--text-secondary);border-radius:50%;background:var(--surface-control);cursor:pointer}
+.garden-placement-site > button[aria-pressed=true] {outline:2px solid var(--text-secondary);outline-offset:2px}
+.garden-placement-site > button:disabled {border-style:solid;cursor:default}
+.garden-placement-label {display:flex;background:var(--surface-sunk);font-size:16px;white-space:nowrap}

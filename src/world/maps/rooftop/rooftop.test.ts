@@ -1,4 +1,5 @@
 import {describe, expect, it} from 'vitest';
+import {compileLife, navigationFor, sampleLife} from '../../life';
 import {worldMapSchema} from '../../schema';
 import {canStand, findPath} from '../../geometry';
 import {initialState, reduce, siteIds, type State} from '../../../features/garden/rules';
@@ -58,6 +59,13 @@ describe('rooftop circulation and existing garden projection', () => {
           const foot = {x: destination.position.x - .28, y: destination.position.y - .28, width: .56, height: .56};
           expect(map.colliders.some(c => overlap(foot, c.rect)), `${flower}/${climber}/${tree}/${shade}: ${destination.id}`).toBe(false);
         }
+        const bird = map.npcHooks.find(hook => hook.characterId === 'bird')!;
+        const stops = [bird.position, ...bird.route];
+        const definition = worldMapSchema.parse(map);
+        for (let i = 0; i < stops.length; i++) {
+          const from = stops[i], to = stops[(i + 1) % stops.length];
+          for (let step = 0; step <= 10; step++) expect(canStand(definition, {x: from.x + (to.x - from.x) * step / 10, y: from.y + (to.y - from.y) * step / 10}, .1), `bird ${flower}/${climber}/${tree}/${shade}`).toBe(true);
+        }
         const route = reachable(map);
         for (const anchor of map.anchors) expect(route.queue.some(p => Math.hypot(p.x - anchor.position.x, p.y - anchor.position.y) < .6), anchor.id).toBe(true);
       }
@@ -86,6 +94,31 @@ describe('rooftop circulation and existing garden projection', () => {
     expect(collider.rect).toMatchObject({...gardenSites[1], width: art.width, height: art.height});
     expect(state).toEqual(before);
     expect(map.colliders.some(c => c.id === 'rooftop.garden-flower' && c.rect.x === gardenSites[0].x)).toBe(false);
+  });
+
+  it('keeps the bird reward beside the saved tree through every legal move', () => {
+    let state = reduce(initialState(), {type: 'sync'}, 1);
+    state = reduce(state, {type: 'tidy', value: true}, 1);
+    for (const site of siteIds) {
+      // Move any other occupant out before moving the tree with the real reducer.
+      const occupant = (['flower', 'climber'] as const).find(id => state.plants[id].site === site);
+      if (occupant) {
+        const free = siteIds.find(value => !Object.values(state.plants).some(plant => plant.site === value))!;
+        state = reduce(state, {type: 'move', plant: occupant, site: free}, 1);
+      }
+      state = reduce(state, {type: 'move', plant: 'tree', site}, 1);
+      const map = worldMapSchema.parse(rooftopForGarden(state));
+      const navigation = navigationFor(map), plan = compileLife(map, navigation);
+      expect(plan.diagnostics, `site ${site}`).toEqual([]);
+      const bird = plan.actors.find(actor => actor.characterId === 'bird')!;
+      expect(bird, `site ${site}`).toBeDefined();
+      expect(bird.home.x).toBeCloseTo(gardenSites[site].x + .3);
+      expect(bird.home.y).toBeCloseTo(gardenSites[site].y + 2.1);
+      for (let elapsedMs = 0; elapsedMs < bird.durationMs; elapsedMs += 700) {
+        const pose = sampleLife(plan, {day: 1, elapsedMs, seed: 42, player: map.defaultSpawn, reducedMotion: false, gardenMature: true}, navigation).find(actor => actor.id === bird.id)!;
+        expect(canStand(map, pose.position, pose.radius)).toBe(true);
+      }
+    }
   });
 
   it('renders growth and care distinctly without adding canopy collision or changing game rules', () => {

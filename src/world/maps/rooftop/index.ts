@@ -48,7 +48,12 @@ export function projectGarden(state: State) {
 
 export function rooftopForGarden(state: State) {
   const garden = projectGarden(state);
-  return {...definition, props: [...definition.props, ...garden.props],
+  const tree = garden.anchors.find(anchor => anchor.id === 'rooftop.pot.tree')!.position;
+  return {...definition,
+    npcHooks: [...definition.npcHooks, {id: 'life.rooftop.sparrow', characterId: 'bird',
+      position: {x: tree.x - .4, y: tree.y},
+      route: [{x: tree.x + .4, y: tree.y}, {x: tree.x, y: tree.y + .4}]}],
+    props: [...definition.props, ...garden.props],
     anchors: [...definition.anchors, ...garden.anchors],
     colliders: [...definition.colliders, ...garden.colliders], occluders: [...definition.occluders, ...garden.occluders]};
 }

@@ -4,6 +4,7 @@ import WordToken from '../../WordToken';
 import { lineParts, lineText } from '../../language';
 import { featureUi } from '../copy';
 import GardenScene from './GardenScene';
+import {gardenSites} from '../../world/maps/rooftop';
 import {label, line} from './content';
 import {gifts, plantIds, recoveryForTransition, reduce, weather, siteIds, type Action, type PlantId, type Site, type State} from './rules';
 import './garden.css';
@@ -148,10 +149,18 @@ export default function Garden(props: GardenProps) {
         </div>
       </div>
       {presentation === 'controls' && moving && <div className="garden-placement-choices" role="group" aria-label={name('place')}>
-        {siteIds.map(site => <button type="button" key={site} aria-label={`${site + 1}${name('place')}`}
-          disabled={moving === 'pot' && plantIds.some(id => state.plants[id].site === site)}
-          aria-pressed={moving === 'shade' ? state.shade === site : state.plants[selected].site === site}
-          onClick={() => place(site)}>{site + 1}</button>)}
+        {siteIds.map(site => {
+          const point = gardenSites[site];
+          const occupant = plantIds.find(id => state.plants[id].site === site);
+          return <div key={site} className="garden-placement-site" data-site={site}
+            style={{left: `${15 + (point.x - point.y + 14) / 33 * 70}%`, top: `${12 + (point.x + point.y - 37) / 16 * 54}%`}}>
+            <button type="button" aria-label={`${site + 1}${name('place')}${name(occupant ?? 'empty')}${state.shade === site ? name('shade-screen') : ''}`}
+              disabled={moving === 'pot' && Boolean(occupant)}
+              aria-pressed={moving === 'shade' ? state.shade === site : pot.site === site}
+              onClick={() => place(site)}>{site + 1}{state.shade === site && <Icon kind="shade"/>}</button>
+            <span className="garden-placement-label">{text(label(occupant ?? 'empty'))}</span>
+          </div>;
+        })}
       </div>}
       <div className="garden-conversation" aria-live="polite">
         <div className="garden-speaker">{text(label('lin'))}<button type="button" aria-label={name('listen')} className="garden-replay" onClick={() => onPlay(line(speak))}><Icon kind="listen"/></button></div>
