@@ -31,12 +31,26 @@ try {
    const db=await new Promise(resolve=>{const r=indexedDB.open('junyan-waiter',1);r.onsuccess=()=>resolve(r.result);});
    const state=await new Promise(resolve=>{const r=db.transaction('saves').objectStore('saves').get('v1');r.onsuccess=()=>resolve(r.result);});db.close();return state;
   });
-  async function place(row,column){
-   await page.getByRole('button',{name:/桌子.*收着|桌子.*屋里/}).click();
+  let previewProof=null;
+  async function place(row,column,item='桌子'){
+   await page.getByRole('button',{name:new RegExp(item+'.*(收着|屋里)')}).click();
    if(!await page.locator('.apartment-floor-grid').isVisible())await page.getByRole('button',{name:'选格子',exact:true}).click();
-   await page.getByRole('button',{name:`第${row}行第${column}格`,exact:true}).click();
+   await page.getByRole('button',{name:new RegExp(`^第${row}行第${column}格(?:，.*)?$`)}).click();
+   if(!previewProof){
+    await page.waitForTimeout(500);const preview=await saved(),pixels=createHash('sha256').update(await canvas.screenshot()).digest('hex');
+    previewProof={selected:preview.neighbourhood.apartment.selected,placements:preview.neighbourhood.apartment.placements,pixelsChanged:pixels!==before};
+    if(previewProof.placements.length!==1||!previewProof.pixelsChanged)throw Error('world preview changed placement or failed to render');
+    await page.screenshot({path:evidence+`${name}-normal-game-preview.png`});
+   }
    await page.getByRole('button',{name:'放这里',exact:true}).click();
    await page.waitForTimeout(500);
+   const ids={'桌子':'table','椅子':'chair','地毯':'rug','靠垫':'cushion','花瓶':'vase'};
+   for(let attempt=0;attempt<30;attempt++){
+    const snapshot=await saved();
+    if(snapshot.neighbourhood.apartment.placements.some(p=>p.id===ids[item]&&p.x===column-1&&p.y===row-1))return;
+    if(attempt===29)throw Error('placement did not persist '+item+' '+JSON.stringify(snapshot.neighbourhood.apartment));
+    await page.waitForTimeout(100);
+   }
   }
   await place(2,3);
   const first=await saved();
@@ -47,12 +61,19 @@ try {
   await page.getByRole('button',{name:'撤回',exact:true}).click();await page.waitForTimeout(500);
   const undone=await saved();
   if(JSON.stringify(undone.neighbourhood.apartment.placements)!==JSON.stringify(first.neighbourhood.apartment.placements))throw Error('undo failed');
+  await place(2,5,'椅子');await place(2,3,'地毯');await place(4,4,'靠垫');
+  await page.getByRole('button',{name:'今日小礼物',exact:true}).click();await page.waitForTimeout(500);
+  await place(4,5,'花瓶');
+  const arranged=await saved();
+  if(arranged.neighbourhood.apartment.placements.length!==6)throw Error('furnished layout is incomplete '+JSON.stringify(arranged.neighbourhood.apartment));
+  await page.getByRole('button',{name:'继续走走',exact:true}).click();await page.waitForTimeout(500);
+  await page.screenshot({path:evidence+`${name}-normal-game-furnished.png`});
   await page.reload();await page.getByTestId('world-viewport').waitFor();
   const reloaded=await saved();
-  if(JSON.stringify(reloaded.neighbourhood.apartment.placements)!==JSON.stringify(first.neighbourhood.apartment.placements))throw Error('reload lost placement');
+  if(JSON.stringify(reloaded.neighbourhood.apartment.placements)!==JSON.stringify(arranged.neighbourhood.apartment.placements))throw Error('reload lost placement');
   if(reloaded.journal.bun.lookups!==2)throw Error('journal lost');
   await page.screenshot({path:evidence+`${name}-normal-game-reloaded.png`});
-  results.push({name,errors,fixture:'valid saved apartment arrival; actions and reload use normal UI and real IndexedDB',first:first.neighbourhood.apartment.placements,undo:undone.neighbourhood.apartment.placements,reloaded:reloaded.neighbourhood.apartment.placements,journal:reloaded.journal.bun,canvasBefore:before,canvasAfter:after,furniturePixelsChanged:before!==after});
+  results.push({name,errors,fixture:'valid saved apartment arrival; actions and reload use normal UI and real IndexedDB',first:first.neighbourhood.apartment.placements,undo:undone.neighbourhood.apartment.placements,reloaded:reloaded.neighbourhood.apartment.placements,preview:previewProof,home:reloaded.neighbourhood.apartment,journal:reloaded.journal.bun,canvasBefore:before,canvasAfter:after,furniturePixelsChanged:before!==after});
   await context.close();
  }
 }finally{await browser.close();writeFileSync(evidence+'production-proof.json',JSON.stringify(results,null,2));}

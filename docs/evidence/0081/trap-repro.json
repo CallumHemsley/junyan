@@ -1,0 +1,54 @@
+{
+  "status": "REPRODUCED DEFECT",
+  "scope": "pure current production navigation with valid apartment reducer actions",
+  "placements": [
+    {
+      "id": "bed",
+      "x": 0,
+      "y": 0,
+      "rotation": 0
+    },
+    {
+      "id": "table",
+      "x": 2,
+      "y": 0,
+      "rotation": 0
+    },
+    {
+      "id": "repairs.stool",
+      "x": 2,
+      "y": 2,
+      "rotation": 0
+    },
+    {
+      "id": "cushion",
+      "x": 3,
+      "y": 1,
+      "rotation": 0
+    }
+  ],
+  "validHome": true,
+  "position": {
+    "x": 9,
+    "y": 7
+  },
+  "relocated": {
+    "x": 9,
+    "y": 7
+  },
+  "beforeCanStand": true,
+  "beforeExitPath": [
+    {
+      "x": 20.5,
+      "y": 15
+    },
+    {
+      "x": 25,
+      "y": 20,
+      "facing": "north"
+    }
+  ],
+  "afterCanStand": true,
+  "afterExitPath": [],
+  "relocatedExitPath": []
+}

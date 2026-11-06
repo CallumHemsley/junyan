@@ -1,4 +1,4 @@
-import { drawFurniture, drawMap, renderObjects, renderFurnitureObjects } from './index';
+import { drawFurniture, drawMap, renderObjects, renderFurnitureObjects, surfaceHeight } from './index';
 import { mapDefinitions } from '../../maps/residential';
 import { worldMapSchema } from '../../schema';
 import { project } from '../../camera';
@@ -29,7 +29,7 @@ const actorRenderer = createRenderer(actor, {
   draw(api) { characterFigure(0, 0, Math.PI / 4, { scale: .9 }, { shirt: [245, 232, 202], hair: [54, 43, 34], legs: [63, 78, 74] }, api.dynamicAdd);api.shadeEdges(); },
 });
 actorRenderer.draw();
-const at = view.project(player), ratio = camera.scale / (18 / Math.SQRT2);
+const at = view.project(player, surfaceHeight(map.id, player)), ratio = camera.scale / (18 / Math.SQRT2);
 const objects: WorldRenderObject[] = [...renderObjects(map, view), ...(map.id === 'apartment' ? renderFurnitureObjects(home) : []), {
   id: 'player', position: player, draw() { ctx.drawImage(actor, 130, 80, 100, 80, at.x - 50 * ratio, at.y - 70 * ratio, 100 * ratio, 80 * ratio); },
 }];
