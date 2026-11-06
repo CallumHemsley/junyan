@@ -7,7 +7,11 @@ import { drawWorkshopProp } from './paint';
 type Color = [number, number, number];
 const css = (c: Color, light = 1) => `rgb(${c.map(v => Math.max(0, Math.min(255, Math.round(v * light)))).join(',')})`;
 
-const material = (view: WorldRenderView, color: Color | string, exposure = 1) => view.shadeColor?.(color, exposure) ?? (typeof color === 'string' ? color : css(color, exposure));
+function material(view: WorldRenderView, color: Color | string, faceLight = 1) {
+  if(typeof color === 'string')return view.shadeColor?.(color) ?? color;
+  const base:Color=[Math.round(color[0]*faceLight),Math.round(color[1]*faceLight),Math.round(color[2]*faceLight)];
+  return view.shadeColor?.(base) ?? css(base);
+}
 
 function painter(ctx: CanvasRenderingContext2D, view: WorldRenderView): RepairArtApi {
   const project = (x: number, y: number, z: number) => view.project({ x, y }, z);
@@ -58,7 +62,7 @@ function paint(ctx: CanvasRenderingContext2D, map: WorldMapDefinition, view: Wor
       for(let a=x+.2;a<x+w;a+=.35)tile(a,y+.1,.08,.1,[205,188,143]);
     }
     tile(13,6,4,13,[159,141,106]);tile(13.12,6.1,3.76,12.8,[133,117,90]);
-    ctx.save();ctx.globalAlpha=.16;
+    ctx.save();ctx.globalAlpha*=.16;
     for(const x of [10,14.2,17])tile(x,3,1.5,4.5,[221,237,224]);
     ctx.restore();
   }
@@ -70,9 +74,9 @@ export const drawMap: DrawMap = (ctx,map,view) => paint(ctx,map,view);
 export function renderObjects(map: WorldMapDefinition, view: WorldRenderView, repairs?: State): WorldRenderObject[] {
   if(map.id!=='workshop')return [];
   return map.props.map(prop=>{
-    const candidate=map.occluders.find(o=>o.id===prop.id);
-    const surfaceKinds=new Set(['task-lamp','lamp','radio','kettle','paper','chair-repair']);
+    const surfaceKinds=new Set(['task-lamp','lamp','radio','kettle','paper','chair-repair','thread-box']);
     const host=surfaceKinds.has(prop.kind)?map.props.find(p=>p.id!==prop.id&&/bench|shelf/.test(p.kind)&&prop.position.x>=p.position.x&&prop.position.x<=p.position.x+p.width&&prop.position.y>=p.position.y&&prop.position.y<=p.position.y+p.height):undefined;
+    const candidate=map.occluders.find(o=>o.id===prop.id||o.id===host?.id);
     const depth=prop.kind==='wall'&&prop.position.x<3?prop.position.x+prop.position.y:host?host.position.x+host.position.y+host.width/2+host.height/2+.01:prop.position.x+prop.position.y+prop.width/2+prop.height/2;
     const player=view.project(view.playerPosition);
     const corners=[{x:prop.position.x,y:prop.position.y},{x:prop.position.x+prop.width,y:prop.position.y},{x:prop.position.x,y:prop.position.y+prop.height},{x:prop.position.x+prop.width,y:prop.position.y+prop.height}];

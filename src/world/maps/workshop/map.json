@@ -817,7 +817,7 @@
     },
     {
       "id": "workshop.mending-box",
-      "kind": "basket",
+      "kind": "thread-box",
       "position": {
         "x": 20.3,
         "y": 16.3

@@ -113,8 +113,8 @@ export function drawWorkshopProp(api: RepairArtApi, prop: Prop, state: WorkshopP
       break;
     case 'lamp-bench': case 'toy-bench':
       bench(); b(.3,.2,1.64,w-.3,h-.2,1.66,[111,137,120]);
-      if(prop.kind==='lamp-bench' && !state.repairs?.completed.includes('lamp')) drawLamp(api,state.repairs?.jobs.lamp ?? {kind:'lamp',fitting:'loose',power:'off',test:'none'},x+2.4,y+.85,1.67,.78,state.elapsedSeconds);
-      else if(prop.kind==='toy-bench' && !state.repairs?.completed.includes('toy')) drawToy(api,state.repairs?.jobs.toy ?? {kind:'toy',cover:'closed',lead:'loose',cell:'old',test:'none'},x+2.8,y+.8,1.67,.9,state.elapsedSeconds);
+      if(prop.kind==='lamp-bench' && (!state.repairs || state.repairs.jobs.lamp !== null)) drawLamp(api,state.repairs?.jobs.lamp ?? {kind:'lamp',fitting:'loose',power:'off',test:'none'},x+2.4,y+.85,1.67,.78,state.elapsedSeconds);
+      else if(prop.kind==='toy-bench' && (!state.repairs || state.repairs.jobs.toy !== null)) drawToy(api,state.repairs?.jobs.toy ?? {kind:'toy',cover:'closed',lead:'loose',cell:'old',test:'none'},x+2.8,y+.8,1.67,.9,state.elapsedSeconds);
       line([.45,h-.3,1.7],[1.35,h-.4,1.7],.05,metal); b(.3,h-.45,1.69,.6,h-.2,1.83,edge);
       for(let i=0;i<4;i++) dot(w-1+i*.16,h-.35,1.73,.055,metal);
       break;
@@ -147,6 +147,7 @@ export function drawWorkshopProp(api: RepairArtApi, prop: Prop, state: WorkshopP
       if(prop.kind==='bins') for(let a=.1;a<w;a+=.3) dot(a,h*.5,.85,.13,metal);
       if(prop.kind==='basket') for(let i=0;i<4;i++) b(.15+i*.16,.15,.76,.35+i*.16,h-.15,.86+i%2*.07,i%2?cream:jade);
       break;
+    case 'thread-box': b(0,0,1.64,w,h,1.86,wood);for(let i=0;i<3;i++)b(.12+i*.19,.1,1.86,.25+i*.19,h-.1,2.1,i%2?cream:jade);break;
     case 'plant': plant(.5,.5,1.65,.8); break;
     case 'planter': b(0,0,0,w,h,.6,wood); plant(w/2,h*.3,.6,1.1);plant(w/2,h*.75,.6,.8); break;
     case 'radio': b(0,0,1.69,w,h,2.2,edge); b(.1,h,1.8,.5,h+.02,2.1,metal);dot(.67,h+.04,1.9,.08,cream);line([.6,.1,2.2],[.75,.1,2.8],.018,metal);break;
