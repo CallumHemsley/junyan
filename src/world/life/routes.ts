@@ -1,27 +1,11 @@
+import { segmentIntersects } from './visibility';
 import type { Position } from '../../contracts';
 import type { ActorRoute, LifeMap, LifePlan, Navigation, Rect, RoutePhase } from './model';
-import { profiles } from './profiles';
+import { profileFor } from './profiles';
 
 const distance = (a: Position, b: Position) => Math.hypot(b.x - a.x, b.y - a.y);
 const finite = (p: Position) => Number.isFinite(p.x) && Number.isFinite(p.y);
 
-function crosses(from: Position, to: Position, rect: Rect, radius: number): boolean {
-  let low = 0, high = 1;
-  for (const axis of ['x', 'y'] as const) {
-    const min = rect[axis] - radius;
-    const max = min + (axis === 'x' ? rect.width : rect.height) + radius * 2;
-    const delta = to[axis] - from[axis];
-    if (Math.abs(delta) < 1e-10) {
-      if (from[axis] < min || from[axis] > max) return false;
-    } else {
-      const a = (min - from[axis]) / delta, b = (max - from[axis]) / delta;
-      low = Math.max(low, Math.min(a, b));
-      high = Math.min(high, Math.max(a, b));
-      if (low > high) return false;
-    }
-  }
-  return true;
-}
 
 export function entranceExclusions(map: LifeMap): Rect[] {
   return [
@@ -35,13 +19,13 @@ export function compileLife(map: LifeMap, navigation: Navigation): LifePlan {
   const exclusions = entranceExclusions(map);
   const ids = new Set<string>();
   for (const hook of map.npcHooks) {
-    const profile = profiles.get(hook.characterId);
+    const profile = profileFor(hook.characterId);
     const fail = (reason: string) => diagnostics.push({ hookId: hook.id, reason });
     if (ids.has(hook.id)) { fail('duplicate-hook'); continue; }
     ids.add(hook.id);
     if (!profile) { fail('unknown-character'); continue; }
-    const stand = (p: Position) => finite(p) && navigation.canStand(p, profile.radius) && !exclusions.some(rect => crosses(p, p, rect, profile.radius));
-    const walk = (a: Position, b: Position) => stand(a) && stand(b) && navigation.canWalk(a, b, profile.radius) && !exclusions.some(rect => crosses(a, b, rect, profile.radius));
+    const stand = (p: Position) => finite(p) && navigation.canStand(p, profile.radius) && !exclusions.some(rect => segmentIntersects(p, p, rect, profile.radius));
+    const walk = (a: Position, b: Position) => stand(a) && stand(b) && navigation.canWalk(a, b, profile.radius) && !exclusions.some(rect => segmentIntersects(a, b, rect, profile.radius));
     if (!stand(hook.position)) { fail('blocked-home-or-entrance'); continue; }
     const stops = [hook.position, ...hook.route.filter((point, index) => distance(point, index === 0 ? hook.position : hook.route[index - 1]) > 1e-6)];
     if (!stops.every(stand)) { fail('blocked-route-stop'); continue; }
@@ -66,7 +50,7 @@ export function compileLife(map: LifeMap, navigation: Navigation): LifePlan {
       });
     }
     if (!valid) { fail('unreachable-route-or-entrance-crossing'); continue; }
-    actors.push({ id: hook.id, characterId: hook.characterId, profile, home: hook.position, phases, durationMs: elapsed });
+    actors.push({ id: hook.id, characterId: profile.id, profile, home: hook.position, phases, durationMs: elapsed });
   }
   return { mapId: map.id, actors, landmarks: map.landmarks, diagnostics };
 }

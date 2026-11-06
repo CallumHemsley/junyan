@@ -38,3 +38,17 @@ Foundation published `src/world/schema.ts`, `geometry.ts`, `camera.ts`, and `ren
 Courtyard exports `catHabitat(state, day)` for authoritative cat positions. Life will consume that owner API once the committed module shape is read, avoiding duplicate cat story placement rules. Do not enable generic roaming white-cat hooks during story/repeat sequences.
 
 Exports ready for foundation are `compileLife(map,navigation)`, `sampleLife(plan,context)`, `nearbyLife(plan,actors,player,navigation)`, `interactLife(state,plan,actors,context,actionId,navigation)`, and `restoreLife(value)`. Persist the nested LifeState through the foundation save boundary. Reactions are named data events awaiting the visual adapter. No integrated visual acceptance is claimed.
+
+## Actual-map findings and updated seam
+
+Foundation dependency is merged for the real `WorldRenderView` and `WorldMapDefinition` imports. `navigationFor(map)` now wraps shared canStand/canWalk/findPath, including entrance exclusions as temporary colliders. All actors use at most the shared .22 player radius. Smaller wildlife deliberately gets the conservative player-sized path, so no second pathfinder or collision implementation exists.
+
+`drawLifeActor(ctx,actor,view,drawResident)` draws cats/birds only and delegates residents to the character owner's renderer. Its view is a Pick of foundation's real WorldRenderView. Foundation inserts each actor individually into its object-depth queue. `drawLifeReactions` adds short nonverbal ripple/sway/flutter effects. It has no loop, storage, audio or DOM ownership.
+
+Aliases accepted are cats.white/white-cat, cats.black/black-cat, sparrow/bird, glasses/zhang-laoshi, backpack/xiao-zhou, bun/lin-jie and tie/xiao-li. Canonical actor outputs use the profile ID. `sampleLife(plan,context,navigation)` accepts context.habitats for courtyard's catHabitat output. It validates supplied habitat positions through shared navigation. Generic white-cat roaming stays frozen before reunion.
+
+Parent review caught inspect logic requiring a walkable solid-object center. This is fixed with `canInspect`, which permits the target collider and rejects every intervening collider. Actual-map local geometry snapshots are attributed in solid-landmarks.fixture.json. Tests cover successful jar/jetty inspection, intervening walls, repeat reactions, and discovery reload.
+
+Actual authored-input browser diagnostics found these remaining map defects. Town morning-walk home fails entrance clearance. Courtyard white-cat route has a blocked stop. Park pond-deck at (61,33) has no walkable point within 1.8 tiles. Park and riverbank have no NPC hooks in the fetched snapshots. Other courtyard actors, both workshop residents and the rooftop resident compile. These are not life acceptance passes.
+
+17 focused life tests and TypeScript pass. Browser harness uses cloud /usr/bin/chromium because the matching Playwright bundle is absent. Initial harness had a reduced-motion variable initialization error; fixed before collecting proof. The first browser diagnostics reported no page errors after that fix, plus an irrelevant favicon 404 to remove before final evidence. The harness uses actual map geometry and character-owner artwork, with schematic ground rendering. It is interaction proof, not polished world-art acceptance. No original saved game is touched.
