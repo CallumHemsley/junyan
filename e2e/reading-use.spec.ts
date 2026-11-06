@@ -8,6 +8,7 @@ import { pathDuration } from '../src/features/reading-room/use';
 import { seedDayOne } from './opening';
 import { savedGame } from './world-journey';
 import { privateArtifact } from './private-artifacts';
+import { readingCell } from './reading-grid';
 
 test.use({ video: 'on' });
 
@@ -27,7 +28,7 @@ for (const reducedMotion of [false, true]) test(`earned reading, visible return 
   await expect(page.locator('.reading-room')).toBeVisible();
   for (const [id, x] of [['table', 2], ['chair', 1]] as const) {
     await page.locator(`.reading-room [data-item="${id}"]`).click();
-    await page.locator(`.reading-room [data-cell="${x},0"]`).click();
+    await readingCell(page, x, 0);
     await page.getByRole('button', { name: '放这里', exact: true }).click();
   }
   await page.getByRole('button', { name: '这样可以', exact: true }).click();

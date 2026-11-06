@@ -14,9 +14,11 @@ import * as apartment from '../src/features/apartment/rules';
 import * as repairs from '../src/features/repairs/rules';
 import * as reading from '../src/features/reading-room/rules';
 import type { Locator } from '@playwright/test';
+import { activateReadingControl, readingCell, readingGrid } from './reading-grid';
 
 async function projectState(page: Page) { return (await savedGame(page)).neighbourhood!['reading-room']; }
 async function floorPoint(page: Page, x: number, y: number, brief: 'window' | 'alcove') {
+  await readingGrid(page, false);
   const game = await savedGame(page), canvas = page.locator('.connected-world canvas');
   const bounds = (await canvas.boundingBox())!, context = (await page.locator('.world-context').boundingBox())!;
   const width = Math.ceil(bounds.width / 2), height = Math.ceil(bounds.height / 2);
@@ -57,7 +59,7 @@ async function place(page: Page, id: 'table' | 'chair', x: number, y: number, br
     await expectNativeSpeech(page, '/audio/apartment/line-rotate.wav', beforeRotate);
   }
   if (native) await floorPoint(page, x, y, brief);
-  else await activate(page.locator(`.reading-room [data-cell="${x},${y}"]`));
+  else await readingCell(page, x, y);
   await activate(page.getByRole('button', { name: '放这里', exact: true }));
   await expect.poll(async () => (await projectState(page)).layouts[brief].find(p => p.id === id)).toMatchObject({ x, y, rotation: turn ? 1 : 0 });
 }
@@ -75,17 +77,28 @@ for (const phoneHeight of [664, 844]) test(`frames both whole work bays at phone
   game.world = { version: 1, mapId: 'reading-room', position, facing: 'north', activeActivity: 'reading-room', activeAnchorId: 'reading-room.project', returnPositions: {} };
   await seedDayOne(page, baseURL!, game); await page.goto('/?seed=42'); await expect(page.locator('.reading-room')).toBeVisible();
   await expectBriefContext(page);
+  const beforeReplay = await page.evaluate(() => (window as any).__audioProbe.length);
+  await activateReadingControl(page, page.locator('.reading-room-toolbar > .round-button'));
+  await expectNativeSpeech(page, '/audio/apartment/line-window.wav', beforeReplay);
+  const sentenceRows = await page.locator('.reading-room-current .word').evaluateAll(elements => elements.map(element => Math.round(element.getBoundingClientRect().y)));
+  expect(new Set(sentenceRows).size).toBe(1);
+  for (const control of await page.locator('.reading-room-toolbar > button,.reading-room-briefs button,.reading-room-toolbar summary,.reading-room-kit button').all()) {
+    const box = (await control.boundingBox())!; expect(box.width).toBeGreaterThanOrEqual(44); expect(box.height).toBeGreaterThanOrEqual(44);
+  }
   await place(page, 'table', 2, 0, 'window', false, true);
   await place(page, 'chair', 1, 0, 'window', false, true);
-  await page.screenshot({ path: privateArtifact(`0108/${capture}-first-native.png`) });
+  await page.screenshot({ path: privateArtifact(`0115/${capture}-first-native.png`) });
   await page.getByRole('button', { name: '这样可以', exact: true }).click();
   await page.getByRole('button', { name: '第二处窗边', exact: true }).last().click();
   await page.locator('.reading-room [data-item="table"]').click(); await page.getByRole('button', { name: '转一下', exact: true }).click();
   await floorPoint(page, 2, 0, 'alcove'); await expectBriefContext(page);
-  await page.screenshot({ path: privateArtifact(`0108/${capture}-second-native-draft.png`) });
+  await page.screenshot({ path: privateArtifact(`0115/${capture}-second-native-draft.png`) });
   await page.locator('.reading-room-instructions summary').focus(); await page.locator('.reading-room-instructions summary').press('Enter');
   await expectBriefContext(page);
-  await page.screenshot({ path: privateArtifact(`0108/${capture}-expanded-instructions.png`) });
+  const beforeInstructionsReplay = await page.evaluate(() => (window as any).__audioProbe.length);
+  await activateReadingControl(page, page.locator('.reading-room-instructions .round-button').first());
+  await expectNativeSpeech(page, '/audio/apartment/line-window.wav', beforeInstructionsReplay);
+  await page.screenshot({ path: privateArtifact(`0115/${capture}-expanded-instructions.png`) });
   const draft = (await projectState(page)).draft;
   await page.locator('.reading-room-current [data-word-lookup]').first().click(); await expect(page.locator('.word-popover')).toBeVisible();
   expect(await page.locator('.connected-world canvas').evaluate(element => element.inert)).toBe(true);
@@ -93,7 +106,7 @@ for (const phoneHeight of [664, 844]) test(`frames both whole work bays at phone
   if (await page.evaluate(() => navigator.maxTouchPoints > 0)) await worldView.tap({ position: { x: worldBounds.width / 2, y: 4 } });
   else await worldView.click({ position: { x: worldBounds.width / 2, y: 4 } });
   expect((await projectState(page)).draft).toEqual(draft);
-  await page.screenshot({ path: privateArtifact(`0108/${capture}-word-card.png`) });
+  await page.screenshot({ path: privateArtifact(`0115/${capture}-word-card.png`) });
   await page.getByRole('button', { name: '关闭词卡', exact: true }).click(); await expectBriefContext(page);
   expect((await projectState(page)).draft).toEqual(draft);
   expect((await savedGame(page)).world!.position).toEqual(position);
@@ -104,7 +117,7 @@ for (const phoneHeight of [664, 844]) test(`frames both whole work bays at phone
   expect((await projectState(page)).completed).toEqual(['window', 'alcove']); expect((await savedGame(page)).world!.position).toEqual(position);
   await page.locator('.reading-room [data-brief="window"]').click(); await expectBriefContext(page);
   await page.locator('.reading-room [data-brief="alcove"]').click(); await expectBriefContext(page);
-  await page.screenshot({ path: privateArtifact(`0108/${capture}-reopened-second-complete.png`) });
+  await page.screenshot({ path: privateArtifact(`0115/${capture}-reopened-second-complete.png`) });
   expect(errors).toEqual([]);
 });
 
@@ -130,7 +143,8 @@ test('walks into the shared room, rearranges both voiced briefs, retries and per
   await page.getByRole('button', { name: '这样可以', exact: true }).click();
   expect((await projectState(page)).retries.window).toBe(1);
   await page.locator('.reading-room [data-item="table"]').click();
-  await page.locator('.reading-room [data-cell="5,4"]').click();
+  await readingCell(page, 5, 4);
+  await page.screenshot({ path: privateArtifact(`0115/${info.project.name}-grid-fallback.png`) });
   await page.getByRole('button', { name: '放这里', exact: true }).click();
   expect((await projectState(page)).layouts.window).toEqual([]);
   await expectNativeSpeech(page, '/audio/apartment/line-blocked.wav');
@@ -225,7 +239,7 @@ test('restores an old save without taking private furnishings, gifts or sibling 
   await interactAt(page, 'reading-room.project');
   await place(page, 'table', 2, 0, 'window');
   await page.locator('.reading-room [data-item="chair"]').click();
-  await page.locator('.reading-room [data-cell="1,0"]').click();
+  await readingCell(page, 1, 0);
   const draft = await projectState(page);
   await page.reload();
   await expect(page.locator('.reading-room')).toBeVisible();

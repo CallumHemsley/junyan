@@ -1,16 +1,30 @@
-.reading-room{display:grid;gap:12px;min-width:0;color:var(--text-primary)}
+.reading-room{display:grid;gap:4px;min-width:0;color:var(--text-primary)}
 .connected-shell:has(.reading-room) .world-place{visibility:hidden}
-.reading-room-heading{display:flex;align-items:center;gap:12px;padding:4px 0 8px;border-bottom:1px solid var(--hairline)}
-.reading-room-heading>div{display:flex;align-items:center;gap:6px}.reading-room-heading .word{font-size:24px}
-.reading-room-book{width:38px;height:32px;fill:none;stroke:currentColor;stroke-width:1.3}
 .reading-room button{min-width:44px;min-height:44px}.reading-room button:not(.word){border:1px solid var(--hairline-strong);border-radius:8px;background:var(--surface-raised);color:var(--text-primary);cursor:pointer}
 .reading-room button:disabled{opacity:.38;cursor:default}.reading-room button[aria-pressed=true]:not(.word){outline:2px solid var(--text-secondary);outline-offset:-3px;background:var(--surface-sunk)}
-.reading-room-briefs{display:flex;gap:8px}.reading-room-briefs button{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;flex:1;padding:8px;font-size:23px}.reading-room-briefs svg{width:22px;height:24px;fill:none;stroke:currentColor;stroke-width:1.3}.reading-room-project-mark{position:absolute;right:8px;top:6px;font-size:13px;color:var(--text-secondary)}
-.reading-room-current .help-line{align-items:flex-start}.reading-room-current .spoken{font-size:28px;line-height:1.6}.reading-room-current .word{font-size:28px}.reading-room .help-line{margin:0}.reading-room .round-button{flex:0 0 44px}
-.reading-room-instructions{border-bottom:1px solid var(--hairline);padding-bottom:8px}.reading-room-instructions summary{display:flex;align-items:center;gap:8px;cursor:pointer;min-height:44px;list-style:none}.reading-room-instructions summary>span{font-size:26px}.reading-room-instructions .word{font-size:22px}.reading-room-instructions .help-line{padding:8px 0}.reading-room-instructions .spoken{font-size:24px;line-height:1.7}
-.reading-room-kit{display:grid;grid-template-columns:1fr 1fr;gap:12px}.reading-room-kit>div{display:flex;gap:8px;align-items:center;justify-content:center;padding:8px;border:1px solid var(--hairline);border-radius:8px}.reading-room-kit .word{font-size:22px}.reading-room-kit button:not(.word){width:48px;height:48px}.reading-room-kit svg{width:30px;height:28px;fill:none;stroke:currentColor;stroke-width:1.5}
-.reading-room-editor{display:grid;gap:8px}.reading-room-tools{display:flex;gap:8px;justify-content:center}.reading-room-tools button,.reading-room-actions button{font-size:27px}
+.reading-room-briefs{display:flex;gap:4px}.reading-room-briefs button{position:relative;display:flex;align-items:center;justify-content:center;flex:none;width:44px;padding:0;font-size:23px}.reading-room-project-mark{position:absolute;right:2px;top:1px;font-size:10px;color:var(--text-secondary)}
+.reading-room-current .help-line{align-items:flex-start}.reading-room-current .spoken{margin:0;font-size:28px;line-height:44px}.connected-shell .reading-room-current .spoken .word{font-size:28px;margin:0;min-height:44px}.reading-room .help-line{margin:0}.reading-room .round-button{flex:0 0 44px}
+.reading-room-instructions{width:48px}.reading-room-instructions .help-line{padding:8px 0}.reading-room-instructions .spoken{font-size:24px;line-height:1.7}
+.reading-room-kit{display:grid;grid-template-columns:1fr 1fr;gap:8px}.reading-room-kit>div{display:flex;align-items:center;justify-content:space-between;padding:0 4px;gap:4px;border-radius:8px}.reading-room-kit .word{font-size:22px;min-height:44px;margin:0;padding:0 2px}.reading-room-kit button:not(.word){width:44px;height:44px}.reading-room-kit svg{width:30px;height:28px;fill:none;stroke:currentColor;stroke-width:1.5}
+.reading-room-editor{display:grid;grid-template-columns:1fr 48px;gap:4px;align-items:start}.reading-room-tools{display:flex;justify-content:start;gap:4px}.reading-room-tools button{width:44px;padding:0;font-size:27px}
 .reading-room-grid{display:grid;grid-template-columns:repeat(6,minmax(44px,1fr));gap:3px}.reading-room-grid button{height:44px;min-width:44px!important;padding:0;font-size:22px}.reading-room-grid .path{background:transparent!important;border-style:dashed!important;color:var(--text-muted)!important}.reading-room-grid .fixture{background:var(--surface-sunk)!important;color:var(--text-secondary)!important}.reading-room-grid .preview{box-shadow:inset 0 0 0 2px var(--text-secondary)}.reading-room-grid .blocked{background:repeating-linear-gradient(135deg,var(--surface-sunk) 0px,var(--surface-sunk) 5px,var(--surface-raised) 5px,var(--surface-raised) 10px)!important;box-shadow:inset 0 0 0 2px var(--text-primary)}
-.reading-room-actions{display:flex;gap:8px;justify-content:space-between;padding-top:4px}.reading-room-check,.reading-room-next{min-width:92px!important}
-@media(max-width:380px){.reading-room{gap:8px}.reading-room-kit{gap:6px}.reading-room-kit>div{gap:4px;padding:4px}.reading-room-grid{gap:1px}.reading-room-current .word{font-size:28px}}
+.reading-room-check,.reading-room-next{min-width:92px!important}
+
+/* Keep the native work bay visible; the complete coordinate fallback opens on demand. */
+.connected-shell .world-context[data-target=reading-room] .world-context-heading{padding:4px 8px}
+.connected-shell .world-context[data-target=reading-room] .world-context-scroll{padding:8px;scrollbar-gutter:auto}
+.reading-room-toolbar{display:flex;align-items:start;gap:4px;flex-wrap:wrap}
+.reading-room-toolbar>button{width:44px;padding:0;font-size:26px}
+.reading-room-toolbar .round-button svg{width:24px;height:24px}
+.reading-room-instructions summary,.reading-room-grid-fallback summary{display:flex;align-items:center;justify-content:center;gap:2px;min-width:44px;min-height:44px;list-style:none;border:1px solid var(--hairline-strong);border-radius:8px;background:var(--surface-raised);cursor:pointer;box-sizing:border-box}
+.reading-room-instructions summary::-webkit-details-marker,.reading-room-grid-fallback summary::-webkit-details-marker{display:none}
+.reading-room-instructions summary svg,.reading-room-grid-fallback summary svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.5}
+.reading-room-disclosure{font-size:16px;line-height:1}
+.reading-room details[open]>summary .reading-room-disclosure{transform:rotate(180deg)}
+.reading-room-instructions[open]{order:1;flex-basis:100%}
+.reading-room-instructions[open]>summary{width:48px}
+.reading-room-instructions>div{padding-top:4px}
+.reading-room-grid-fallback[open]{grid-column:1/-1;display:grid;gap:4px}
+.reading-room-grid-fallback[open]>summary{width:48px;justify-self:end}
+.reading-room-grid-fallback summary:focus-visible,.reading-room-instructions summary:focus-visible{outline:2px solid var(--text-primary);outline-offset:2px}
 @media(prefers-reduced-motion:reduce){.reading-room *{transition:none!important;animation:none!important}}

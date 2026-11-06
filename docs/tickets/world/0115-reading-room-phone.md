@@ -1,7 +1,7 @@
 ---
 id: 115
 title: Make native furniture editing clear on the phone
-status: todo
+status: doing
 priority: high
 type: feature
 created: 2026-11-06
@@ -23,3 +23,9 @@ Matched phone-editor comparisons tie because a large panel and sentence wrap obs
 - Centrally reserved by root. Branch codex/0115-reading-room-phone; worktree /private/tmp/junyan-world-reading-phone.
 - Lease feature reading-room/index.tsx and its CSS plus necessary E2E callers; propose exact UI changes first. No map, camera, world/life rules, state/schema/dependencies or new visible unvoiced copy. Ports5572/5573 strict.
 - Detailed plans and all new raw QA remain private under /private/tmp/junyan-world-private-qa/0115. No publication or merge before independent gates.
+
+- Owner: Codex reading_phone_115; port 5572/5573 strict. Approved compact feature composition and feature-scoped parent padding; baseline captured before changes.
+- Implementation: four compact native-editing rows; full-width canonical current line; recorded replay beside brief controls; redundant inner heading removed; native details reveals retain all voiced instructions and all 30 coordinate cells. No camera/map/rules/save/content changes.
+- Verification: TypeScript and build pass. Initial browser run 13 passed / 1 expected desktop664 skip; final focused native/replay checks 3 passed / 1 expected skip. Full unit assertions 681/681 pass with explicit CLI `--testTimeout 30000`; default5s character byte-mask test timed out under load, with no hash mismatch. Parent owns final combined full run.
+- Learned: at390x664 the existing266px cap can contain the sentence and every primary control after consolidation; at390x844 natural panel height falls338→266px. Sentence changes two rows→one at both phone sizes with fog and28px type retained. Matched private captures use identical validated input saves and wall clocks; disclosed performance counter differs by at most1ms.
+- Remaining gate: independent visual critique/source review and final combined checks; status stays doing until parent accepts. No push, merge or publication.
