@@ -4,19 +4,29 @@ import data from './content.json';
 
 import { createWordSchema, createPhraseSchema } from '../../content/schema';
 import { adaptMandarinContent } from '../../content/mandarin';
-import { language } from '../../language';
+import { language, type LanguagePolicy } from '../../language';
+import { voices, type VoiceCatalog } from '../../content/voices';
 const audio = /^\/audio\/(?:repairs\/)?[a-z0-9-]+\.wav$/;
-const wordSchema = createWordSchema(language).refine(word => /^(?:repairs\.)?[a-z][a-z0-9-]*$/.test(word.id) && audio.test(word.audio), 'Invalid repairs word ID or audio');
-const phraseSchema = createPhraseSchema(language).refine(line => /^repairs\.[a-z][a-z0-9-]*$/.test(line.id) && audio.test(line.audio), 'Invalid repairs line ID or audio');
-const schema = z.strictObject({ words: z.array(wordSchema), characters: z.array(z.strictObject({ id: z.enum(['lamp', 'toy']), name: z.string().min(1), voiceId: z.string().min(1), lines: z.array(phraseSchema) })) }).superRefine((value, ctx) => {
-  const byId = new Map(value.words.map(word => [word.id, word]));
-  const lines = value.characters.flatMap(character => character.lines);
-  if (byId.size !== value.words.length || new Set(lines.map(line => line.id)).size !== lines.length) ctx.addIssue({ code: 'custom', message: 'Duplicate content IDs' });
-  for (const line of lines) for (const word of line.tokens) {
-    if (JSON.stringify(byId.get(word.id)) !== JSON.stringify(word)) ctx.addIssue({ code: 'custom', message: 'Line word differs from dictionary' });
-  }
-});
-export const contentSchema = z.preprocess(adaptMandarinContent, schema);
+export function createRepairContentSchema(policy: LanguagePolicy, catalog: VoiceCatalog) {
+  const wordSchema = createWordSchema(policy).refine(word => /^(?:repairs\.)?[a-z][a-z0-9-]*$/.test(word.id) && audio.test(word.audio), 'Invalid repairs word ID or audio');
+  const phraseSchema = createPhraseSchema(policy).refine(line => /^repairs\.[a-z][a-z0-9-]*$/.test(line.id) && audio.test(line.audio), 'Invalid repairs line ID or audio');
+  const characterSchema = z.strictObject({
+    id: z.enum(['lamp', 'toy']),
+    name: z.string().min(1).regex(policy.wordPattern),
+    voiceId: z.string().min(1).refine(id => policy.targetVoiceLanguages.includes(catalog.voices[id]?.language), 'Repair speaker needs a known target-language voice'),
+    lines: z.array(phraseSchema),
+  });
+  const schema = z.strictObject({ words: z.array(wordSchema), characters: z.array(characterSchema) }).superRefine((value, ctx) => {
+    const byId = new Map(value.words.map(word => [word.id, word]));
+    const lines = value.characters.flatMap(character => character.lines);
+    if (byId.size !== value.words.length || new Set(lines.map(line => line.id)).size !== lines.length) ctx.addIssue({ code: 'custom', message: 'Duplicate content IDs' });
+    for (const line of lines) for (const word of line.tokens) {
+      if (JSON.stringify(byId.get(word.id)) !== JSON.stringify(word)) ctx.addIssue({ code: 'custom', message: 'Line word differs from dictionary' });
+    }
+  });
+  return z.preprocess(adaptMandarinContent, schema);
+}
+export const contentSchema = createRepairContentSchema(language, voices);
 export const content = contentSchema.parse(data);
 export const words: Word[] = content.words;
 export const lines: Line[] = content.characters.flatMap(character => character.lines);
