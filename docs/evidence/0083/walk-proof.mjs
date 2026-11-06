@@ -97,7 +97,8 @@ for (const [device, width, height] of [['desktop', 1440, 900], ['phone', 390, 84
     reached.push({id:stop.id,position:final});
     await page.screenshot({path:`${dir}${device}-${stop.id}.png`});
     if (stop.id==='garden') {
-      await page.locator('[data-world-anchor="rooftop.garden"]').click();
+      try {await page.locator('[data-world-anchor="rooftop.garden"]').click({timeout:5000});}
+      catch(error){await writeFile(`${dir}${device}-activity-failure.json`,JSON.stringify({saved:await read(),body:await page.locator('body').innerText()},null,2));await page.screenshot({path:`${dir}${device}-activity-failure.png`});await context.close();await video.saveAs(`${dir}${device}-activity-failure.webm`);await browser.close();throw error;}
       await page.locator('[data-world-activity="garden"]').waitFor();
       await page.screenshot({path:`${dir}${device}-garden-activity.png`});
       await page.getByRole('button',{name:'继续走走',exact:true}).click();

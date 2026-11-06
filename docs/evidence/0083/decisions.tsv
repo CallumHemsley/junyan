@@ -5,3 +5,7 @@ ts	phase	decision	why	evidence	result
 2026-11-06T00:15:00Z	art	Reject the first pale repeated planting render	Inspected desktop and phone captures expose bare paving and square stamps	docs/evidence/0083/garden-phone.png	open art defect
 2026-11-06T00:15:00Z	depth	Adopt individual shared compositor objects	Actors must walk in front of and behind tall scenery	src/world/art/rooftop/art.test.ts	2 compositor tests pass
 2026-11-06T00:15:00Z	art	Differentiate herbs flowers vines and irregular tree crowns	Give garden destinations and skyline distinct silhouettes	docs/evidence/0083/v2-mature-overview-desktop.png	second visual iteration; acceptance pending
+2026-11-06T00:41:00Z	proof	Use actual App input and both persisted save layers	Avoid mistaking prototype or checkpoint assumptions for gameplay proof	docs/evidence/0083/runtime/proof.json	desktop and phone pass at e1e3fa3
+2026-11-06T00:41:00Z	lighting	Use the shared deterministic material callback explicitly	Materials must change with authoritative light and preserve object alpha	docs/evidence/0083/materials/proof.json	four material samples change on same map and camera
+2026-11-06T00:41:00Z	performance	Keep cadence review open	Five release observations are below the shared thirty-draw target	docs/evidence/0083/performance/results.json	median22.09 draws per second; no performance PASS
+2026-11-06T00:41:00Z	integration	Keep full rooftop goal active	Plant binding seated behavior and independent visual acceptance remain unfinished	docs/evidence/0083/README.md	owner ready for review and follow-up
