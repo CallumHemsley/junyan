@@ -10,7 +10,7 @@ const warm: Color = [255, 212, 146];
 function stroke(api: SceneApi, a: ScenePoint, b: ScenePoint, r: number, color: Color) {
   api.capsule(a, b, r, r, () => color, 'solid');
 }
-function lamp(api: SceneApi, state: Lamp, x: number, y: number, z: number, scale = 1, time = 0) {
+export function drawLamp(api: SceneApi, state: Lamp, x: number, y: number, z: number, scale = 1, time = 0) {
   const { box, sphere } = api;
   const lit = state.power === 'on';
   if (lit) {
@@ -28,7 +28,7 @@ function lamp(api: SceneApi, state: Lamp, x: number, y: number, z: number, scale
   sphere(x - .12 * scale, y - .13 * scale, bulbZ + .18 * scale, .13 * scale, lit ? [255, 243, 204] : [249, 244, 222], 'solid');
   stroke(api, [x + .5 * scale, y, z + .1], [x + 1.05 * scale, y + .7 * scale, z + .03], .035, ink);
 }
-function toy(api: SceneApi, state: Toy, x: number, y: number, z: number, scale = 1, time = 0) {
+export function drawToy(api: SceneApi, state: Toy, x: number, y: number, z: number, scale = 1, time = 0) {
   const { box, sphere } = api;
   const travel = state.test === 'moving' ? Math.sin(time * 1.2) * .22 : 0;
   x += travel;
@@ -106,11 +106,11 @@ export const workshopScene: Scene<[State, number]> = {
     const bench = currentBench(state);
     const member = content.characters.find(character => character.id === (speakerFor(state.feedback).id === 'lamp' ? 'lin-jie' : 'xiao-zhou'))!;
     characterFigure(-4.3, .4, .1, { scale: 1.15, armR: .45, armL: .25 }, member.appearance, api.dynamicAdd);
-    if (state.completed.includes('lamp')) lamp(api, { kind: 'lamp', fitting: 'seated', power: 'on', test: 'steady' }, -.7, -4.35, 1.26, .65);
-    if (state.completed.includes('toy')) toy(api, { kind: 'toy', cover: 'closed', lead: 'connected', cell: 'fresh', test: 'moving' }, 2.2, -4.35, 1.26, .55);
+    if (state.completed.includes('lamp')) drawLamp(api, { kind: 'lamp', fitting: 'seated', power: 'on', test: 'steady' }, -.7, -4.35, 1.26, .65);
+    if (state.completed.includes('toy')) drawToy(api, { kind: 'toy', cover: 'closed', lead: 'connected', cell: 'fresh', test: 'moving' }, 2.2, -4.35, 1.26, .55);
     if (state.completed.length === 2) stool(api, 4.5, 2.3);
-    if (bench?.kind === 'lamp') lamp(api, bench, 0, .2, 1.85, 2.0, time);
-    if (bench?.kind === 'toy') toy(api, bench, 0, .1, 1.85, 2.1, time);
+    if (bench?.kind === 'lamp') drawLamp(api, bench, 0, .2, 1.85, 2.0, time);
+    if (bench?.kind === 'toy') drawToy(api, bench, 0, .1, 1.85, 2.1, time);
     api.flushShadows();
     api.applyShadows(api.bakedZ);
     api.shadeEdges();
