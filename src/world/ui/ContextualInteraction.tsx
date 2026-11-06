@@ -37,9 +37,9 @@ export function ContextualInteraction({ target, title, dialogue, actions = [], c
     return () => { if (invoking instanceof HTMLElement && invoking.isConnected) invoking.focus({ preventScroll: true }); };
   }, []);
   return (
-    <section className="world-context" role="dialog" aria-labelledby={titleId} inert={suspended} data-target={target.kind}
-      onKeyDown={event => { event.stopPropagation(); if (event.key === "Escape") { event.preventDefault(); onClose(); } }}
-      onKeyUp={event => event.stopPropagation()}>
+    <section className="world-context" role="dialog" aria-labelledby={titleId} data-target={target.kind}
+      onKeyDown={event => { if (suspended) return; event.stopPropagation(); if (event.key === "Escape") { event.preventDefault(); onClose(); } }}
+      onKeyUp={event => { if (!suspended) event.stopPropagation(); }}>
       <header className="world-context-heading">
         <h2 id={titleId}>{title}</h2>
         <button ref={closeButton} className="world-context-close" aria-label="继续走走" onClick={onClose}>×</button>

@@ -142,7 +142,9 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   current.onAction({type:"world-move",position});
  }
  return <section ref={root} className="connected-world" data-testid="world-viewport" data-map={map.id} tabIndex={0} aria-label={worldRegionName(map.id)} onKeyDown={event=>{
-  if(paused||state.activeActivity||event.target instanceof HTMLButtonElement)return;
+  if(paused||state.activeActivity)return;
+  if(event.key==="Escape"){event.preventDefault();event.stopPropagation();path.current=[];keys.current.clear();requestId.current++;return;}
+  if(event.target instanceof HTMLButtonElement||event.ctrlKey||event.altKey||event.metaKey)return;
   if(directions[event.key]){event.preventDefault();event.stopPropagation();keys.current.add(event.key);}
   else if((event.key==="e"||event.key==="Enter")&&selected){event.preventDefault();event.stopPropagation();activate();}
  }} onBlur={event=>{if(!event.currentTarget.contains(event.relatedTarget))keys.current.clear();}}>
