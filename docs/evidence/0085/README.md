@@ -44,3 +44,11 @@ Production camera scales 18/24, phone DPR 1/2, residents with held objects, actu
 ## Camera adapter matrix
 
 `camera-results.json` and `camera-{18,24}-dpr-{1,2}.png` record the exact foundation camera projection at both production zooms with DPR-scaled backing surfaces. All four images were inspected. The held watering can, pixel edges and foot anchor remain coherent. This is a controlled adapter check, not a claim that production scenery crossings have passed. Contact shadows now include individual planted feet. `revised-directions-2x.png` is the revised native cast sheet.
+
+## First production motion checkpoint
+
+Foundation production integration `1450bf6` is now consumed on this branch. `production/results.json`, three actual viewport recordings and start/walk/scenery screenshots cover desktop and phone browser contexts with real devicePixelRatio 1 and 2. Keyboard motion moved the player more than one world unit in every case. Consoles were clean. The real restaurant table occludes the lower body in the inspected desktop and phone images. The compositor intentionally renders at half CSS resolution with DPR-independent native backing; results record that observed size rather than assuming a different DPR policy.
+
+A real integration defect remains. Rightward keyboard movement changes world x positively and y negatively, while saved four-way facing resolves north and the actor shows its rear three-quarter view. Production only passes cardinal facing. The actor sampler already supports exact yaw. Foundation must pass movement yaw and retain it while idle; this request is posted on PR30. Production NPC contextual work passes posture but does not yet supply held objects. These are open integration findings, not an art redesign request.
+
+The requested single material-lighting seam was read from coordinator integration-v1.1. At observed foundation `c4ec7ed`, WorldRenderView still lacks shadeColor. The actor consumer will use the exact published callback once foundation supplies the type. No independent clock or competing shader was introduced. Morning/evening production material proof is pending that seam.
