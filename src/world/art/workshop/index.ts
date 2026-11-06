@@ -65,13 +65,19 @@ function paint(ctx: CanvasRenderingContext2D, map: WorldMapDefinition, view: Wor
 
 export const drawMap: DrawMap = (ctx,map,view) => paint(ctx,map,view);
 
-export function renderObjects(map: WorldMapDefinition, _view: WorldRenderView, repairs?: State): WorldRenderObject[] {
+export function renderObjects(map: WorldMapDefinition, view: WorldRenderView, repairs?: State): WorldRenderObject[] {
   if(map.id!=='workshop')return [];
-  return map.props.map(prop=>({
+  return map.props.map(prop=>{
+    const candidate=map.occluders.find(o=>o.id===prop.id);
+    const player=view.project(view.playerPosition);
+    const corners=[{x:prop.position.x,y:prop.position.y},{x:prop.position.x+prop.width,y:prop.position.y},{x:prop.position.x,y:prop.position.y+prop.height},{x:prop.position.x+prop.width,y:prop.position.y+prop.height}];
+    const floor=corners.map(p=>view.project(p)),top=corners.map(p=>view.project(p,candidate?.height??0));
+    const overlaps=player.x>=Math.min(...floor.map(p=>p.x))-8&&player.x<=Math.max(...floor.map(p=>p.x))+8&&player.y>=Math.min(...top.map(p=>p.y))&&player.y<=Math.max(...floor.map(p=>p.y))+8;
+    return ({
     id:prop.id,
     position:{x:prop.position.x+prop.width/2,y:prop.position.y+prop.height/2},
     depth:prop.position.x+prop.position.y+prop.width/2+prop.height/2,
-    occlusion:map.occluders.find(o=>o.id===prop.id),
+    occlusion:overlaps?candidate:undefined,
     draw(ctx,view){
       // Contact shadows ground each workstation and shelf in the room.
       if(!['wall','window','pegboard','paper','shavings','doormat','awning'].includes(prop.kind)){
@@ -79,9 +85,14 @@ export function renderObjects(map: WorldMapDefinition, _view: WorldRenderView, r
         const side=view.project({x:prop.position.x+prop.width,y:prop.position.y+prop.height});
         ctx.save();ctx.globalAlpha*=.14;ctx.fillStyle='#342e28';ctx.beginPath();ctx.ellipse(at.x,at.y+3,Math.max(3,Math.abs(side.x-at.x)+prop.width*6),Math.max(2,Math.abs(side.y-at.y)*.65),0,0,Math.PI*2);ctx.fill();ctx.restore();
       }
+      if(prop.kind==='task-lamp'){
+        ctx.save();ctx.globalAlpha*=.19;ctx.fillStyle='#ffd492';
+        const light=[{x:prop.position.x-.9,y:prop.position.y-.1},{x:prop.position.x+.5,y:prop.position.y-.1},{x:prop.position.x+.8,y:prop.position.y+.8},{x:prop.position.x-.8,y:prop.position.y+.8}].map(p=>view.project(p,1.64));
+        ctx.beginPath();light.forEach((p,i)=>{if(i)ctx.lineTo(p.x,p.y);else ctx.moveTo(p.x,p.y);});ctx.closePath();ctx.fill();ctx.restore();
+      }
       drawWorkshopProp(painter(ctx,view),prop,{repairs,elapsedSeconds:view.reducedMotion?0:view.elapsedMs/1000});
     },
-  }));
+  });});
 }
 
 // Foundation injects its authoritative feature state; this adapter owns no mutable game state.

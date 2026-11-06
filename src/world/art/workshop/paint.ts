@@ -73,21 +73,34 @@ export function drawWorkshopProp(api: RepairArtApi, prop: Prop, state: WorkshopP
       b(0,0,.05,.15,h,3.4,edge); b(w-.15,0,.05,w,h,3.4,edge);
       for (const z of [.35,1.55,2.75]) {
         b(0,0,z,w,h,z+.13,wood);
-        if (prop.kind==='shelf') for (let a=.35;a<w-.3;a+=.8) {
-          b(a,.2,z+.14,a+.58,h-.15,z+.65,a%1.6<.8?jade:straw);
-          b(a+.16,h-.19,z+.3,a+.42,h-.12,z+.4,cream);
+        if (prop.kind==='shelf') for (let a=.35,i=0;a<w-.3;a+=.8,i++) {
+          if((i+Math.round(z))%3===0){
+            dot(a+.28,.65,z+.4,.27,metal);b(a+.05,.4,z+.58,a+.51,.9,z+.64,edge);
+            for(let n=0;n<3;n++)line([a+.15+n*.12,.7,z+.63],[a+.1+n*.15,.75,z+.94+n*.08],.025,metal);
+          }else{
+            b(a,.2,z+.14,a+.58,h-.15,z+.65,i%2?jade:straw);
+            b(a+.16,h-.19,z+.3,a+.42,h-.12,z+.4,cream);
+            if(i%2)b(a+.1,.3,z+.66,a+.48,.8,z+.71,edge);
+          }
         }
       }
       if (prop.kind==='display-shelf') {
         const completed=state.repairs?.completed ?? [];
         if(completed.includes('lamp')) drawLamp(api,{kind:'lamp',fitting:'seated',power:'on',test:'steady'},x+1.2,y+.7,1.69,.65,0);
         if(completed.includes('toy')) drawToy(api,{kind:'toy',cover:'closed',lead:'connected',cell:'fresh',test:'moving'},x+3.6,y+.6,1.69,.6,state.elapsedSeconds);
+        // Different repaired household silhouettes: alarm clock, kettle and desk fan.
+        dot(1,.75,.85,.38,cream);dot(1,.91,.85,.27,edge);line([1,.94,.85],[1,.94,1.04],.025,cream);line([1,.94,.85],[1.17,.94,.82],.025,cream);
+        for(const a of [.76,1.24])dot(a,.75,1.2,.12,metal);
+        dot(2.7,.7,.72,.28,metal);b(2.55,.55,.94,2.85,.85,1.02,edge);line([2.94,.7,.8],[3.13,.7,.95],.065,metal);
+        b(4.25,.35,.48,5.1,1,.6,jade);line([4.65,.65,.6],[4.65,.65,1.35],.06,metal);dot(4.65,.65,1.55,.43,metal);dot(4.65,.83,1.55,.34,jade);dot(4.65,.94,1.55,.08,cream);
+        for(let i=0;i<4;i++){const a=i*Math.PI/2;line([4.65,.97,1.55],[4.65+Math.cos(a)*.3,.97,1.55+Math.sin(a)*.3],.025,metal);}
         b(.5,.2,2.89,1.5,1,3.3,cream); b(3.7,.2,2.89,4.7,1,3.3,blue);
         for(let i=0;i<3;i++) dot(2.2+i*.24,.7,3.05,.16,metal);
       }
       break;
     case 'pegboard':
       b(0,0,1.55,w,h,3.1,[176,139,91]);
+      for(let i=0;i<7;i++)b(.4+i*1.07,h,1.62+(i%3)*.16,.8+i*1.07,h+.01,1.64+(i%3)*.16,[160,123,80]);
       for(let a=.2;a<w;a+=.35) for(let z=1.7;z<3;z+=.35) dot(a,h+.02,z,.025,edge);
       for(let i=0;i<8;i++) {
         const a=.5+i*.9;
