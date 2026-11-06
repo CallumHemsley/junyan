@@ -4,3 +4,4 @@ ts	phase	decision	why	evidence	result
 2026-11-06T00:02:27.797206+00:00	rules	Validated routes through injected navigation and entrance exclusions	Use shared geometry and keep doorway arrivals clear	src/world/life/life.test.ts	12 focused tests and TypeScript passed
 2026-11-06T00:13:26.398765+00:00	visibility	Allow occupied landmark targets while rejecting intervening walls	Parent review showed that walkable-center checks reject solid props	src/world/life/landmarks.test.ts	5 actual-geometry tests passed
 2026-11-06T00:23:41.967458+00:00	review	Fixed the read-only helper findings	A sit action must visibly pause the cat and habitat placements must preserve access	src/world/life/life.test.ts	21 life tests passed
+2026-11-06T00:42:31.364228+00:00	checkpoint	Published module evidence with explicit limits	The isolated proof cannot establish integrated world acceptance	docs/evidence/0087/verification.md	goal active
