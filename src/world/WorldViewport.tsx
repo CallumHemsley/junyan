@@ -35,7 +35,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
  const activationButton=useRef<HTMLButtonElement>(null),lookupTrigger=useRef<HTMLButtonElement|null>(null),wasPaused=useRef(paused);
  const invocation=useRef<{key:string;fromControl:boolean}|null>(null),previousActivity=useRef(state.activeActivity),pendingActivityFocus=useRef(false);
  const [selection,setSelection]=useState<TargetSelection|null>(null);
- const actorMotion=useRef({yaw:Math.PI/2,distanceTravelled:0});
+ const actorMotion=useRef<{mapId:string;yaw?:number;distanceTravelled:number}>({mapId:state.mapId,distanceTravelled:0});
  const worker=useRef<Worker|null>(null),requestId=useRef(0),workerMap=useRef<object|null>(null);
  const elapsed=useRef(state.life?.elapsedMs??0),lastClockWrite=useRef(state.life?.elapsedMs??0);
  const [clock,setClock]=useState(0);
@@ -79,6 +79,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
    const cadenceStep=advanceFrameCadence(cadence,now);cadence=cadenceStep.state;
    const dt=last?Math.min((now-last)/1000,.04):0;last=now;elapsedMs+=dt*1000;if(Math.floor(elapsedMs/500)!==Math.floor(elapsed.current/500))setClock(elapsedMs);elapsed.current=elapsedMs;
    const current=latest.current,map=current.maps[current.state.mapId];if(!map)return;
+   if(actorMotion.current.mapId!==map.id){actorMotion.current={mapId:map.id,distanceTravelled:0};keys.current.clear();path.current=[];}
    if(observed.game!==current.game||observed.state!==current.state||observed.map!==map){
     dirty=dirty||observed.map!==map||(preference.matches&&reducedWorldChanged(observed.game,observed.state,current.game,current.state));
     observed={game:current.game,state:current.state,map};
@@ -92,8 +93,10 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
     const length=Math.hypot(delta.x,delta.y);
     if(length){path.current=[];requestId.current++;delta={x:delta.x/length*dt*5,y:delta.y/length*dt*5};}
     else if(path.current.length){const next=advanceRoute(map,current.state.position,path.current,dt);path.current=next.remaining;routePosition=next.position;delta={x:next.position.x-current.state.position.x,y:next.position.y-current.state.position.y};}
-    if(delta.x||delta.y){const next=routePosition??movePlayer(map,current.state.position,delta);moving=Math.hypot(next.x-current.state.position.x,next.y-current.state.position.y)>.0001;if(moving){actorMotion.current={yaw:Math.atan2(next.y-current.state.position.y,next.x-current.state.position.x),distanceTravelled:actorMotion.current.distanceTravelled+Math.hypot(next.x-current.state.position.x,next.y-current.state.position.y)};current.onAction({type:"world-move",position:next});}}
+    if(delta.x||delta.y){const next=routePosition??movePlayer(map,current.state.position,delta);moving=Math.hypot(next.x-current.state.position.x,next.y-current.state.position.y)>.0001;if(moving){actorMotion.current={mapId:map.id,yaw:Math.atan2(next.y-current.state.position.y,next.x-current.state.position.x),distanceTravelled:actorMotion.current.distanceTravelled+Math.hypot(next.x-current.state.position.x,next.y-current.state.position.y)};current.onAction({type:"world-move",position:next});}}
    }
+   // A doorway dispatch can commit the new map before this frame finishes.
+   if(latest.current.state.mapId!==map.id){frame=requestAnimationFrame(tick);return;}
    const dpr=1,width=Math.ceil(viewport.width/2),height=Math.ceil(viewport.height/2);
    if(element.width!==Math.round(width*dpr)||element.height!==Math.round(height*dpr)){element.width=Math.round(width*dpr);element.height=Math.round(height*dpr);}
    const camera=map.id==="restaurant"?restaurantCamera(map.bounds,current.state.position,width,height,viewport.width<800?interactionInset/2:0,viewport.width>=800?interactionWidth/2:0):explorationCamera(map.bounds,current.state.position,width,height,viewport.width<800?interactionInset/2:0,viewport.width>=800?interactionWidth/2:0,surfaceHeight(map.id,current.state.position));cameraRef.current=camera;
@@ -163,6 +166,8 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   path.current=[];requestId.current++;
   const direction=directions[key],distance=.5/Math.SQRT2;
   const position=movePlayer(current.maps[current.state.mapId],current.state.position,{x:direction.x*distance,y:direction.y*distance});
+  const dx=position.x-current.state.position.x,dy=position.y-current.state.position.y;
+  if(dx||dy)actorMotion.current={mapId:current.state.mapId,yaw:Math.atan2(dy,dx),distanceTravelled:(actorMotion.current.mapId===current.state.mapId?actorMotion.current.distanceTravelled:0)+Math.hypot(dx,dy)};
   current.onAction({type:"world-move",position});
  }
  return <section ref={root} className="connected-world" data-testid="world-viewport" data-map={map.id} tabIndex={0} aria-label={worldRegionName(map.id)} onKeyDown={event=>{
