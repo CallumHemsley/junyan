@@ -85,13 +85,29 @@ for x,y in [(48,30),(54,33),(47,36),(58,29)]: prop(park,f'lily-{x}-{y}','lilies'
 
 river=base('riverbank',96,80)
 terrain(river,'river-meadow',rect(0,0,96,80),'grass')
-# Authored one-tile water strips keep the banks irregular and align visual/collision edges.
-for step in range(160):
- y=step/2 if step%2 else step//2
- x=43+round((4*math.sin(y*.1)+2*math.sin(y*.24))*4)/4
- terrain(river,f'river-shore-{y}',rect(x-.75,y,10.5,.5),'sand')
- terrain(river,f'river-{y}',rect(x,y,9,.5),'water')
- river['colliders'].append(dict(id=f'riverbank.water-{y}',rect=rect(x,y,9,.5)))
+# Independent authored banks: the wash apron and ferry cove have distinct profiles.
+RIVER_BANKS = [[0, 43, 52], [9, 47.5, 56.5], [18, 45, 54], [25, 44.75, 53.5], [33, 41.75, 50.75], [40, 39.25, 48.5], [46, 37.5, 47], [52, 39.5, 49.75], [57, 42.5, 52.5], [59, 43.25, 54], [61.5, 43.75, 56], [65, 44, 54.75], [69, 43.75, 52.75], [71, 43.5, 52.5], [74, 42.75, 54], [77, 44.75, 55.5], [80, 47, 56.5]]
+def river_bank(y, side):
+ i=next((i for i in range(len(RIVER_BANKS)-1) if y<RIVER_BANKS[i+1][0]),len(RIVER_BANKS)-2)
+ previous=RIVER_BANKS[max(0,i-1)];a=RIVER_BANKS[i];b=RIVER_BANKS[i+1];following=RIVER_BANKS[min(len(RIVER_BANKS)-1,i+2)]
+ span=b[0]-a[0];t=(y-a[0])/span
+ start_slope=(b[side]-previous[side])/(b[0]-previous[0]);end_slope=(following[side]-a[side])/(following[0]-a[0])
+ return (2*t**3-3*t*t+1)*a[side]+(t**3-2*t*t+t)*span*start_slope+(-2*t**3+3*t*t)*b[side]+(t**3-t*t)*span*end_slope
+strips=[]
+y=0
+while y<80:
+ height=.25 if y>=55 else .5
+ left=round(river_bank(y+height/2,1)*8)/8;right=round(river_bank(y+height/2,2)*8)/8
+ if strips and strips[-1]['x']==left and strips[-1]['width']==right-left:strips[-1]['height']+=height
+ else:strips.append(rect(left,y,right-left,height))
+ y+=height
+for r in strips:
+ y=r['y'];mid=y+r['height']/2
+ west=.4+.5*math.exp(-((mid-74)/3.2)**2)
+ east=.4+.65*math.exp(-((mid-61.5)/3.5)**2)
+ terrain(river,f'river-shore-{y}',rect(r['x']-west,y,r['width']+west+east,r['height']),'sand')
+ terrain(river,f'river-{y}',r,'water')
+ river['colliders'].append(dict(id=f'riverbank.water-{y}',rect=r.copy()))
 path(river,'west-bank',[(6,79),(6,69),(31,69),(31,39),(35,39),(35,19),(20,19),(20,10),(1,10)],2.6)
 path(river,'east-bank',[(35,19),(72,19),(72,43),(80,43),(80,57),(31,57)],2.5)
 path(river,'shore-walk',[(61,19),(61,28),(56,28),(56,43),(62,43),(62,57)],2)
@@ -112,12 +128,12 @@ edge(river,'park',42,10,40.5,6.5,3,1,'south')
 path(river,'park-return',[(42,6.5),(42,10)],2.2)
 for args in [('moon-bridge',48,19,'moon-bridge'),('reed-hide',22,48,'reed-hide'),('fishing-jetty',40,39,'fishing-jetty'),('washing-stones',40,74,'washing-stones'),('old-ferry',62,57,'old-ferry'),('hill-shrine',88,7,'hill-shrine'),('heron-shallows',51,43,'river-view'),('lower-crossing',45,57,'footbridge')]: landmark(river,*args)
 prop(river,'hill-shrine','shrine',87,4,4,3,solid=True)
-prop(river,'ferry-boat','boat',57.8,60.7,5,2,1,True)
+prop(river,'ferry-boat','boat',58.4,60.3,5,2,1,True)
 prop(river,'ferry-post','mooring',60.5,60.5,1,1,solid=True)
 path(river,'ferry-landing',[(62,57),(62,61.5)],2,'stone-path')
 prop(river,'ferry-rope','tied-rope',59.5,60.6,2,1)
 prop(river,'ferry-worn-stones','worn-stones',63.3,59.7,2,2)
-prop(river,'arrival-reed-pocket','reeds',43.8,72,2,2)
+prop(river,'arrival-reed-pocket','reeds',42.7,71.6,2,2)
 prop(river,'arrival-willow','willow',35.5,77,5.5,5.5,1,True)
 prop(river,'fisher-stool','stool',38,37,1,1,solid=True)
 prop(river,'washing-rack','laundry',35,71,5,1,solid=True)
@@ -126,9 +142,10 @@ prop(river,'picnic','picnic',84,47,4,3,solid=True)
 prop(river,'shore-watch-bench','bench',51,45.6,3,1,solid=True)
 prop(river,'shore-watch-reeds','reeds',49.2,42,2,2)
 for y in [5,13,27,34,45,64,71]:
- x=43+round(4*math.sin(y*.1)+2*math.sin(y*.24))
- prop(river,f'bank-reeds-{y}','reeds',x-1.5,y,2,2)
- prop(river,f'bank-rock-{y}','rock',x+10.5,y,2,2,y%4,True)
+ reed_y={64:65.2,71:70.4}.get(y,y)
+ rock_y={64:63.9,71:75.8}.get(y,y)
+ prop(river,f'bank-reeds-{y}','reeds',round(river_bank(reed_y,1)*8)/8-.625,reed_y,2,2)
+ prop(river,f'bank-rock-{y}','rock',round(river_bank(rock_y,2)*8)/8+.875,rock_y,2,2,y%4,True)
 park['npcHooks']=[
  dict(id='park.resident-reader',position=point(29,26.9),route=[point(29,26.9),point(54,18.5)],characterId='resident-reader'),
  dict(id='park.resident-groundskeeper',position=point(16,52),route=[point(16,52),point(23,56.4)],characterId='resident-groundskeeper'),

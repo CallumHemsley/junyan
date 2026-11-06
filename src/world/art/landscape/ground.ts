@@ -191,6 +191,8 @@ export function drawLandscapeGround(ctx:CanvasRenderingContext2D,map:Map,view:Wo
 export function drawRiverbankWater(ctx:CanvasRenderingContext2D,map:Map,view:WorldRenderView){
  if(map.id!=='riverbank')return;
  const time=view.reducedMotion?0:view.elapsedMs/1000;
+ // Shallow shelves widen only at the working coves; quiet banks retain a thin wet edge.
+ const shelf=(y:number,side:number)=>.22+(side<0?.9*Math.exp(-(((y-74)/3.1)**2)):1.1*Math.exp(-(((y-61.5)/3.6)**2)));
  const water=map.terrain.filter(t=>t.material==='water').map(t=>t.rect).sort((a,b)=>a.y-b.y);
  // Smooth only the flow inside the water; the stepped collision shoreline stays exact.
  const flow=water.map((r,i)=>{const neighbors=water.slice(Math.max(0,i-2),i+3).filter(p=>Math.abs(p.y-r.y)<1.6);const first=neighbors[0],last=neighbors.at(-1)!;return{x:neighbors.reduce((sum,p)=>sum+p.x,0)/neighbors.length,slope:(last.x-first.x)/Math.max(.5,last.y-first.y)};});
@@ -216,19 +218,19 @@ export function drawRiverbankWater(ctx:CanvasRenderingContext2D,map:Map,view:Wor
  ctx.save();mask('sand');
  for(const run of runs)for(const side of [-1,1]){
   const bank=(r:typeof water[number])=>side<0?r.x:r.x+r.width;
-  band(run,r=>bank(r),r=>bank(r)+side*.72,'#b7b38b');
-  band(run,r=>bank(r),r=>bank(r)+side*.31,'#92a18a');
+  band(run,r=>bank(r),(r,y)=>bank(r)+side*(.34+shelf(y,side)*.35),'#b7b38b');
+  band(run,r=>bank(r),(r,y)=>bank(r)+side*(.1+shelf(y,side)*.2),'#92a18a');
  }
  ctx.restore();
  ctx.save();mask('water');
  for(const run of runs){
   // Broad deep water and narrow translucent margins retain a clearly wet blue body.
   band(run,r=>r.x,r=>r.x+r.width,'#527f88');
-  band(run,(r,y)=>flowX(r,y)+1.65+Math.sin(y*.21)*.28,(r,y)=>flowX(r,y)+r.width-1.7+Math.sin(y*.17)*.35,'#4d7984');
+  band(run,(r,y)=>flowX(r,y)+r.width*.13+shelf(y,-1)*.6,(r,y)=>flowX(r,y)+r.width*.87-shelf(y,1)*.6,'#4d7984');
   for(const side of [-1,1]){
    const bank=(r:typeof water[number])=>side<0?r.x:r.x+r.width;
-   band(run,r=>bank(r),r=>bank(r)-side*.65,'#659087');
-   band(run,r=>bank(r),r=>bank(r)-side*.18,'#7a9d8d');
+   band(run,r=>bank(r),(r,y)=>bank(r)-side*shelf(y,side),'#659087');
+   band(run,r=>bank(r),(r,y)=>bank(r)-side*(.06+shelf(y,side)*.13),'#7a9d8d');
   }
   // Longer broken ribbons follow the downstream contour, separated by quiet pools.
   for(const [start,length,fraction]of [[2,4.8,.38],[10.5,2.8,.69],[24,6.8,.56],[34,3.7,.27],[43.5,5.5,.63],[60,4.5,.35],[68.5,6,.61],[76,2.5,.33]]){

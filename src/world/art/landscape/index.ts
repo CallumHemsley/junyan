@@ -152,6 +152,17 @@ export const renderObjects: NonNullable<WorldArtModule['renderObjects']> = (map,
         const p=current.project(prop.position),origin=current.project({x:0,y:0}),axis=current.project({x:1,y:0}),unit=Math.abs(axis.x-origin.x);
         if(bounds){const scale=unit/18;if(p.x+bounds.maxX*scale<0||p.y+bounds.maxY*scale<0||p.x+bounds.minX*scale>current.width||p.y+bounds.minY*scale>current.height)return;}
         else if(p.x < -unit*6 || p.y < -unit*2 || p.x > current.width+unit*6 || p.y > current.height+unit*8)return;
+        if(prop.id==='riverbank.ferry-rope'){
+          const hull=map.props.find(p=>p.id==='riverbank.ferry-boat'),post=map.props.find(p=>p.id==='riverbank.ferry-post');
+          if(!hull||!post)return;
+          const bow=current.project(hull.position),tie=current.project(post.position),scale=unit/18;
+          // Native sprite attachment points move with the real hull and post pivots.
+          const a={x:Math.round(bow.x)+29*scale,y:Math.round(bow.y)+2*scale},b={x:Math.round(tie.x)-3*scale,y:Math.round(tie.y)-7*scale};
+          ctx.save();ctx.beginPath();
+          for(let i=0;i<=16;i++){const t=i/16,x=Math.round(a.x+(b.x-a.x)*t),y=Math.round(a.y+(b.y-a.y)*t+Math.sin(t*Math.PI)*4*scale);if(i)ctx.lineTo(x,y);else ctx.moveTo(x,y);}
+          ctx.lineWidth=Math.max(1,2*scale);ctx.strokeStyle=current.shadeColor?.('#746346')??'#746346';ctx.stroke();
+          ctx.lineWidth=Math.max(1,scale);ctx.strokeStyle=current.shadeColor?.('#d2bc86')??'#d2bc86';ctx.stroke();ctx.restore();return;
+        }
         drawLandscapeProp(ctx,prop,(x,y,z=0)=>current.project({x,y},z),unit,current.elapsedMs,current.reducedMotion,color=>current.shadeColor?.(color)??color);
       },
     };
