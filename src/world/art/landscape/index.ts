@@ -12,6 +12,17 @@ export const drawMap: DrawMap = (ctx, map, view) => {
   const origin = view.project({x:0,y:0}), axis = view.project({x:1,y:0});
   const unit = Math.abs(axis.x-origin.x);
   if (view.pass === 'ground') {
+    // Distant forest is decorative; the map's authored walkable boundary is unchanged.
+    ctx.fillStyle=map.id==='park'?'#849d83':'#7f9c8f';ctx.fillRect(0,0,view.width,view.height);
+    const backdropExtent=Math.ceil((view.width+view.height)/Math.max(unit,1));
+    for(let y=Math.floor((view.playerPosition.y-backdropExtent)/4)*4;y<view.playerPosition.y+backdropExtent;y+=4)for(let x=Math.floor((view.playerPosition.x-backdropExtent)/4)*4;x<view.playerPosition.x+backdropExtent;x+=4){
+      if(x>=0&&y>=0&&x<=map.bounds.width&&y<=map.bounds.height)continue;
+      const n=Math.abs((x*x*37+y*y*71+x*y*13)%97),p=view.project({x,y});
+      if(p.x<-unit*5||p.y<-unit*2||p.x>view.width+unit*5||p.y>view.height+unit*8)continue;
+      ctx.save();ctx.globalAlpha=.56;
+      drawLandscapeProp(ctx,{kind:n%7===0?'rock':'tree',position:{x:x+n%3*.3,y:y+n%5*.2},width:3.6,height:3.6,variant:n%4},(x,y,z=0)=>view.project({x,y},z),unit,0,true);ctx.restore();
+    }
+
     const painted=new Set<string>();
     for (const terrain of map.terrain) {
       if(terrain.material==='water'||terrain.material==='sand'){
