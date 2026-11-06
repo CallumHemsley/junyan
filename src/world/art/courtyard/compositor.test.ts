@@ -17,3 +17,22 @@ describe('courtyard compositor contract', () => {
     expect(renderObjects({ ...map, id: 'town' }, view)).toEqual([]);
   });
 });
+
+it('constructs each house roof with bounded finite tile planes and keeps animation out of the roof geometry',()=>{
+ const map=worldMapSchema.parse(courtyardMap),before=JSON.stringify(map);
+ for(const house of map.props.filter(p=>p.kind==='row-house')){
+  const points:{x:number;y:number;z:number}[]=[],materials:string[]=[];
+  const roofView:WorldRenderView={...view,project:(p,z=0)=>{points.push({...p,z});return p;},shadeColor:base=>{materials.push(String(base));return '#123456';}};
+  const ctx=new Proxy({},{get:()=>()=>{},set:()=>true}) as CanvasRenderingContext2D;
+  const roof=renderObjects(map,roofView).find(o=>o.id===`${house.id}.roof`)!;
+  roof.draw(ctx,roofView);
+  expect(points.every(p=>Number.isFinite(p.x+p.y+p.z))).toBe(true);
+  expect(points.every(p=>p.x>=house.position.x-.41&&p.x<=house.position.x+house.width+.41)).toBe(true);
+  expect(points.every(p=>p.y>=house.position.y-.36&&p.y<=house.position.y+house.height+1.21)).toBe(true);
+  expect(materials).toContain('#607b7b');expect(materials).toContain('#4a6466');
+  const original=[...points];points.length=0;
+  roof.draw(ctx,{...roofView,elapsedMs:99999,reducedMotion:false});
+  expect(points).toEqual(original);
+ }
+ expect(JSON.stringify(map)).toBe(before);
+});
