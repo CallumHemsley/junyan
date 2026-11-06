@@ -19,3 +19,11 @@ Foundation wiring requires these stateful calls.
 Current tests use the foundation schema, collision function and pathfinder for all entrances, local portal pairs, every landmark and all standable cell centres. Apartment tests preserve current reducer behavior and exercise world-cell round trips, draft separation, rotation, rugs, undo and save validation.
 
 The owned `Apartment` component now accepts `sceneMode="world"`. Forward it from the shared Neighbourhood view during world activities. This removes the old fixed miniature and opens its accessible 6 by 5 floor selector. Default standalone behavior stays `room`. World taps can additionally dispatch the existing actions through the transform above.
+
+## Stair surface proposal awaiting coordinated activation
+
+The pure `surfaceHeight(mapId, point)` export is implemented in `src/world/maps/residential/elevation.ts` and re-exported from art/index.ts. It returns absolute render elevation in tile units. Hall, apartment and other maps return zero. Residential stairs rise from zero at the hall landing to 2.4 at the apartment landing, then 4.8 at the roof landing. Flights run north through y=33..24 and y=19..9, with continuous joins.
+
+This function does not yet alter production drawing. Coordinator/foundation must settle the single surface API first. Foundation should use one elevation value for actor/NPC foot contact, camera focus height and ground picking. Art should add the same absolute surface elevation to floors and props. Foundation must not add the height again to already-elevated art primitives. Collision and feature/save coordinates remain two-dimensional. A portal changes maps to the destination's local ground level; no separate height field is persisted.
+
+After agreement, residential art will raise its treads, window landings, railing endpoints and wall sections. Foundation supplies player/NPC elevation and inverse picking. Until then the route is walkable but its flat visual plane is an explicit incomplete scope item.

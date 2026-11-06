@@ -378,3 +378,5 @@ export function renderFurnitureObjects(state: State): WorldRenderObject[] {
     };
   });
 }
+
+export { surfaceHeight } from '../../maps/residential/elevation';
