@@ -9,6 +9,8 @@ describe('proposed unvoiced background residents',()=>{
   expect(backgroundResidents.every(r=>isBackgroundResidentId(r.id))).toBe(true);
   expect(isBackgroundResidentId('lin-jie')).toBe(false);
   expect(isBackgroundResidentId('bg-unknown')).toBe(false);
+  expect(isBackgroundResidentId('bg-passerby')).toBe(false);
+  expect(backgroundResidents.map(r=>r.id)).toEqual(['resident-reader','resident-courier','resident-groundskeeper','resident-laundry-neighbour','resident-river-walker']);
  });
  it('retains five different silhouettes in front, three-quarter and rear without color',()=>{
   for(const yaw of [Math.PI/4,0,Math.PI*5/4])expect(new Set(backgroundResidents.map(r=>silhouette(r.id,yaw))).size).toBe(5);

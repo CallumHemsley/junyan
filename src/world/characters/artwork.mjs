@@ -139,7 +139,7 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
     polygon([[bodyX+2,hip-4],[bodyX+bodyWidth-2,hip-4],[bodyX+bodyWidth+1,35],[bodyX-2,35]],shade(shirt,.74));
     for(let x=bodyX+1;x<bodyX+bodyWidth;x+=3)rect(x,hip-2,1,5,shade(shirt,.9));
     rect(bodyX+2,shoulder+2,bodyWidth-4,2,cream);
-  } else if(role==='passerby') {
+  } else if(role==='river-walker') {
     polygon([[bodyX+1,shoulder+2],[bodyX+bodyWidth-1,shoulder+2],[bodyX+bodyWidth,34],[bodyX+1,34],[bodyX,hip]],shirt);
     rect(bodyX+bodyWidth-3,shoulder+3,1,14,shade(shirt,.7));
     rect(bodyX+2,shoulder+1,3,7,cream);rect(bodyX+3,shoulder+7,2,4,shade(cream,.85));
@@ -196,8 +196,10 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
   } else if(role==='laundry') {
     polygon([[left-1,headY+5],[left+1,headY-1],[left+headWidth-2,headY-1],[left+headWidth+1,headY+5],[left+headWidth-1,headY+4],[left+headWidth-3,headY+1],[left+2,headY+2]],cream);
     polygon([[left-2,headY+4],[left,headY+4],[left+1,headY+10],[left-3,headY+8]],shade(cream,.82));
-  } else if(role==='passerby') {
+  } else if(role==='river-walker') {
     rect(left-1,headY+5,2,8,hair);rect(left,headY+11,3,3,hair);
+    polygon([[left+1,headY+1],[left+3,headY-2],[left+headWidth-3,headY-2],[left+headWidth-1,headY+1]],shade(cream,.78));
+    rect(left-1,headY+1,headWidth+2,1,shade(cream,.67));
   }
   behind=rear;
   const object=heldObject || (carrying?'tray':undefined);
