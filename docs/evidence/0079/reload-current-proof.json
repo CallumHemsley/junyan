@@ -1,0 +1,300 @@
+{
+  "sourceHead": "0ad4ede18cfa3daaf1afd4106d8c782be8d05b4b",
+  "testMode": false,
+  "opening": "existing dev skip flag",
+  "inputs": "word lookup and real keyboard walking",
+  "before": {
+    "world": {
+      "version": 1,
+      "mapId": "town",
+      "position": {
+        "x": 35.955503803371435,
+        "y": 31.012708025898124
+      },
+      "facing": "north",
+      "returnPositions": {
+        "restaurant": {
+          "x": 12,
+          "y": 19.999999999999996,
+          "facing": "south"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "player": {
+      "x": 6,
+      "y": 2.5
+    },
+    "journal": {
+      "shop-name": {
+        "lookups": 1,
+        "lastSeen": 1793925301475,
+        "recovered": false
+      }
+    },
+    "neighbourhood": {
+      "version": 1,
+      "location": "restaurant",
+      "apartment": {
+        "owned": [
+          "bed"
+        ],
+        "placements": [
+          {
+            "id": "bed",
+            "x": 0,
+            "y": 0,
+            "rotation": 0
+          }
+        ],
+        "colour": "blue",
+        "rugSize": "small",
+        "starterClaimed": false,
+        "lastGiftDay": 0,
+        "selected": null,
+        "draft": null,
+        "undo": null,
+        "notice": "welcome"
+      },
+      "cats": {
+        "version": 1,
+        "story": {
+          "node": "search"
+        },
+        "selected": null,
+        "cats": {
+          "white": {
+            "noticed": false,
+            "calm": false,
+            "gaveSpace": false,
+            "rested": false,
+            "sawEmptyBicycle": false
+          },
+          "black": {
+            "greeted": false,
+            "satTogether": false
+          }
+        },
+        "repeat": {
+          "status": "idle"
+        },
+        "completedKinds": [],
+        "lastCompletedDay": null,
+        "feedback": "clue"
+      },
+      "repairs": {
+        "version": 1,
+        "jobs": {
+          "lamp": {
+            "kind": "lamp",
+            "fitting": "loose",
+            "power": "off",
+            "test": "none"
+          },
+          "toy": {
+            "kind": "toy",
+            "cover": "closed",
+            "lead": "loose",
+            "cell": "old",
+            "test": "none"
+          }
+        },
+        "active": "lamp",
+        "selected": null,
+        "completed": [],
+        "feedback": "lamp-intro"
+      },
+      "garden": {
+        "version": 1,
+        "day": 1,
+        "restored": false,
+        "shade": 0,
+        "plants": {
+          "flower": {
+            "site": 0,
+            "care": "ready",
+            "growth": 0,
+            "drooping": false,
+            "waited": false,
+            "result": null
+          },
+          "climber": {
+            "site": 2,
+            "care": "dry",
+            "growth": 0,
+            "drooping": false,
+            "waited": false,
+            "result": null
+          },
+          "tree": {
+            "site": 4,
+            "care": "dry",
+            "growth": 0,
+            "drooping": false,
+            "waited": false,
+            "result": null
+          }
+        },
+        "planterEarned": false
+      },
+      "claimedGiftIds": []
+    },
+    "day": 1,
+    "served": 0,
+    "earnings": 0
+  },
+  "after": {
+    "world": {
+      "version": 1,
+      "mapId": "town",
+      "position": {
+        "x": 35.955503803371435,
+        "y": 31.012708025898124
+      },
+      "facing": "north",
+      "returnPositions": {
+        "restaurant": {
+          "x": 12,
+          "y": 19.999999999999996,
+          "facing": "south"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "player": {
+      "x": 6,
+      "y": 2.5
+    },
+    "journal": {
+      "shop-name": {
+        "lookups": 1,
+        "lastSeen": 1793925301475,
+        "recovered": false
+      }
+    },
+    "neighbourhood": {
+      "version": 1,
+      "location": "restaurant",
+      "apartment": {
+        "placements": [
+          {
+            "id": "bed",
+            "x": 0,
+            "y": 0,
+            "rotation": 0
+          }
+        ],
+        "colour": "blue",
+        "rugSize": "small",
+        "owned": [
+          "bed"
+        ],
+        "starterClaimed": false,
+        "lastGiftDay": 0,
+        "selected": null,
+        "draft": null,
+        "undo": null,
+        "notice": "welcome"
+      },
+      "cats": {
+        "version": 1,
+        "story": {
+          "node": "search"
+        },
+        "selected": null,
+        "cats": {
+          "white": {
+            "noticed": false,
+            "calm": false,
+            "gaveSpace": false,
+            "rested": false,
+            "sawEmptyBicycle": false
+          },
+          "black": {
+            "greeted": false,
+            "satTogether": false
+          }
+        },
+        "repeat": {
+          "status": "idle"
+        },
+        "completedKinds": [],
+        "lastCompletedDay": null,
+        "feedback": "clue"
+      },
+      "repairs": {
+        "version": 1,
+        "jobs": {
+          "lamp": {
+            "kind": "lamp",
+            "fitting": "loose",
+            "power": "off",
+            "test": "none"
+          },
+          "toy": {
+            "kind": "toy",
+            "cover": "closed",
+            "lead": "loose",
+            "cell": "old",
+            "test": "none"
+          }
+        },
+        "active": "lamp",
+        "selected": null,
+        "completed": [],
+        "feedback": "lamp-intro"
+      },
+      "garden": {
+        "version": 1,
+        "day": 1,
+        "restored": false,
+        "shade": 0,
+        "plants": {
+          "flower": {
+            "site": 0,
+            "care": "ready",
+            "growth": 0,
+            "drooping": false,
+            "waited": false,
+            "result": null
+          },
+          "climber": {
+            "site": 2,
+            "care": "dry",
+            "growth": 0,
+            "drooping": false,
+            "waited": false,
+            "result": null
+          },
+          "tree": {
+            "site": 4,
+            "care": "dry",
+            "growth": 0,
+            "drooping": false,
+            "waited": false,
+            "result": null
+          }
+        },
+        "planterEarned": false
+      },
+      "claimedGiftIds": []
+    },
+    "day": 1,
+    "served": 0,
+    "earnings": 0
+  },
+  "identical": true,
+  "errors": []
+}

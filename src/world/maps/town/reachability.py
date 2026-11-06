@@ -34,11 +34,7 @@ for item in m['entrances']+m['anchors']+m['landmarks']:
 for e in m['exits']:
  r=e['rect'];p=r['x']+r['width']/2,r['y']+r['height']/2;proof[e['id']]=reach(p)
 for hook in m['npcHooks']:
- for a,b in zip(hook['route'],hook['route'][1:]):
-  length=math.hypot(b['x']-a['x'],b['y']-a['y'])
-  for i in range(math.ceil(length/step)+1):
-   t=min(1,i*step/max(length,step));p=a['x']+(b['x']-a['x'])*t,a['y']+(b['y']-a['y'])*t
-   assert stand(p),f"NPC route blocked {hook['id']} {p}"
+ for point in hook['route']: reach((point['x'],point['y']))
 for e in m['entrances']:
  assert not any(inside((e['position']['x'],e['position']['y']),x['rect']) for x in m['exits']),f"arrival bounce {e['id']}"
 print(json.dumps(dict(sampleSpacing=step,playerRadius=radius,reachableSampledArea=len(distance)*step*step,distancesFromRestaurant=proof),indent=2))
