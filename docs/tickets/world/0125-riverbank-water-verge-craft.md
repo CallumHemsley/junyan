@@ -1,7 +1,7 @@
 ---
 id: 125
 title: Improve riverbank water and shoreline material craft
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-06
@@ -35,3 +35,5 @@ Independent outdoor review found earlier tree/roof gains did not materially impr
 - Native evidence: `clock-before/` baseline archive af546662 and `review-final/`, 24 matched saved-state/camera/wall-clock native pairs (1440×1000, 390×844; morning/evening/night; washing/crossing/ferry + park control). Pixel gate: all six park frames identical; all 18 river differences confined to wet/shore mask with 4 CSS px raster tolerance; every deck interior unchanged. One actor frame repeated once for exact baseline performance clock, both attempts retained privately. Original inherited camera metadata/late mount attempts are superseded and retained, not acceptance evidence.
 - Actual App temporal evidence: 9 original frames per normal/reduced × morning/night × desktop/phone, normal interior-water pixel change and exact reduced-motion water freeze in all four phase/width pairs. Private viewer and source/capture SHA-256 manifests accompany evidence.
 - Writer implementation complete. Independent source/harsh visual gates remain with root; this ticket remains doing until those gates resolve. No claim of overall AAA quality; no push or merge.
+
+- Main-only release127: independently accepted bounded art/source gains ported without the reading-room chapter or experimental renderer. Exact release passes645 rules tests/99files, types/build,12 desktop/phone service/save/navigation journeys and two production offline checks. Phone and desktop native affected scenes inspected. This completes the scoped repair, while broader authored-world and character quality work remains active.
