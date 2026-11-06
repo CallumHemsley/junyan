@@ -182,7 +182,16 @@ export function characterTray(rig, foods, addBox) {
     dot([forward+.005,side,1.46],.10,COLORS.cream);
   });
 }
-export function createRenderer(canvas, scene) {
+export function createRenderer(canvas, scene, options = {}) {
+// Native world projection uses orthonormal U/V/depth axes and anisotropic screen scale.
+const nativeWorld = options.nativeWorld;
+if (nativeWorld && (!Number.isFinite(nativeWorld.pixelsPerWorldUnit) || nativeWorld.pixelsPerWorldUnit <= 0)) throw new RangeError('Invalid native world scale');
+const PX = nativeWorld ? nativeWorld.pixelsPerWorldUnit * Math.SQRT2 : S;
+const PY = nativeWorld ? nativeWorld.pixelsPerWorldUnit * Math.sqrt(3 / 2) : S;
+const TILT_SIN = nativeWorld ? 1 / Math.sqrt(3) : SIN;
+const TILT_COS = nativeWorld ? Math.sqrt(2 / 3) : COS;
+const ORIGIN_X = nativeWorld?.originX ?? OX, ORIGIN_Y = nativeWorld?.originY ?? OY;
+if (!Number.isFinite(ORIGIN_X) || !Number.isFinite(ORIGIN_Y)) throw new RangeError('Invalid native world origin');
 const W = WIDTH, H = HEIGHT, SHADOW_X = .7, SHADOW_Y = .3;
 canvas.width = W; canvas.height = H;
 const ctx = canvas.getContext('2d');
@@ -199,7 +208,7 @@ const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5].map(v => (v
 const COOL = [46, 38, 84], WARM = [255, 232, 180];
 const SHOE = [226, 222, 212], BARK = [92, 74, 60];
 const GRASS = [[34, 62, 50], [52, 88, 52], [82, 118, 54], [124, 146, 62], [168, 172, 76]];
-const GRADIENT_Y = COS / (S * SIN), EDGE = .28;
+const GRADIENT_Y = TILT_COS / (PY * TILT_SIN), EDGE = .28;
 
 const rgb = (r, g, b) => (255 << 24 | Math.min(255, b | 0) << 16 | Math.min(255, g | 0) << 8 | Math.min(255, r | 0)) >>> 0;
 // hue-shifted ramp: shadows drift to violet, lights drift to warm yellow
@@ -230,21 +239,21 @@ function noise(x, y) {
 }
 function project(x, y, z) {
   const u = (x - y) / R2, v = (x + y) / R2;
-  return { sx: OX + u * S, sy: OY + (v * SIN - z * COS) * S, d: v * COS + z * SIN };
+  return { sx: ORIGIN_X + u * PX, sy: ORIGIN_Y + (v * TILT_SIN - z * TILT_COS) * PY, d: v * TILT_COS + z * TILT_SIN };
 }
 function unproject(sx, sy) {
-  const u = (sx - OX) / S, v = (sy - OY) / (S * SIN);
+  const u = (sx - ORIGIN_X) / PX, v = (sy - ORIGIN_Y) / (PY * TILT_SIN);
   return { x: (u + v) / R2, y: (v - u) / R2 };
 }
 
 let capture = null; // when set, sphere() records pixels instead of drawing them
 function sphere(x, y, z, r, c, mode) {
   const ramp = rampOf(c);
-  const p = project(x, y, z), rp = Math.max(r * S, .75);
-  const y0 = Math.max(0, Math.floor(p.sy - rp)), y1 = Math.min(H - 1, Math.ceil(p.sy + rp));
-  const x0 = Math.max(0, Math.floor(p.sx - rp)), x1 = Math.min(W - 1, Math.ceil(p.sx + rp));
+  const p = project(x, y, z), rx = Math.max(r * PX, .75), ry = Math.max(r * PY, .75);
+  const y0 = Math.max(0, Math.floor(p.sy - ry)), y1 = Math.min(H - 1, Math.ceil(p.sy + ry));
+  const x0 = Math.max(0, Math.floor(p.sx - rx)), x1 = Math.min(W - 1, Math.ceil(p.sx + rx));
   for (let iy = y0; iy <= y1; iy++) for (let ix = x0; ix <= x1; ix++) {
-    const dx = (ix + .5 - p.sx) / rp, dy = (iy + .5 - p.sy) / rp, nn = dx * dx + dy * dy;
+    const dx = (ix + .5 - p.sx) / rx, dy = (iy + .5 - p.sy) / ry, nn = dx * dx + dy * dy;
     if (nn > 1) continue;
     const nz = Math.sqrt(1 - nn), d = p.d + r * nz, i = iy * W + ix;
     if (d <= zb[i]) continue;
@@ -270,7 +279,7 @@ function capsule(a, b, r0, r1, colorOf, mode) {
     sphere(lerp(a[0], b[0], t), lerp(a[1], b[1], t), z, lerp(r0, r1, t), colorOf(z), mode);
   }
 }
-function box(x0, y0, z0, x1, y1, z1, c, seed = 0, transform = null) {
+function box(x0, y0, z0, x1, y1, z1, c, seed = 0, transform = null, surface = null) {
   const ramp = rampOf(c);
   const paint = (x, y, z, base, grain) => {
     const p = project(...(transform ? transform(x,y,z) : [x,y,z])), ix = p.sx | 0, iy = p.sy | 0;
@@ -278,7 +287,15 @@ function box(x0, y0, z0, x1, y1, z1, c, seed = 0, transform = null) {
     const i = iy * W + ix;
     if (p.d <= zb[i]) return;
     zb[i] = p.d;
-    pix[i] = ramp[clamp(Math.floor(base + (grain - .5) * 1.3 + (bayerAt(ix, iy) - .5) * .5), 0, 4)];
+    // Omitted surface retains the original noisy box ramp exactly.
+    if (surface) {
+      const kind=surface.kind;
+      const band=base===3.4&&surface.bands?.find(b=>y>=b.center-b.width/2&&y<=b.center+b.width/2);
+      const faceRamp=band?rampOf(band.color):ramp;
+      const value=faceRamp[clamp(Math.floor(base),0,4)];
+      const modulation=kind==='wood'?1+(grain-.5)*.06:1;
+      pix[i] = rgb((value & 255) * modulation, (value >> 8 & 255) * modulation, (value >> 16 & 255) * modulation);
+    } else pix[i] = ramp[clamp(Math.floor(base + (grain - .5) * 1.3 + (bayerAt(ix, iy) - .5) * .5), 0, 4)];
   };
   const step = .045, longX = x1 - x0 >= y1 - y0;
   for (let a = x0; a <= x1; a += step) for (let b = y0; b <= y1; b += step) {
@@ -294,7 +311,7 @@ function box(x0, y0, z0, x1, y1, z1, c, seed = 0, transform = null) {
 }
 function castShadow(x, y, z, r, strength = 1, dither = .4) {
   const p = project(x + SHADOW_X * z, y + SHADOW_Y * z, 0);
-  const rx = r * S * 1.05, ry = rx * SIN + 1;
+  const rx = r * PX * 1.05, ry = nativeWorld ? r * PY * TILT_SIN * 1.05 + 1 : rx * SIN + 1;
   const y0 = Math.max(0, Math.floor(p.sy - ry)), y1 = Math.min(H - 1, Math.ceil(p.sy + ry));
   const x0 = Math.max(0, Math.floor(p.sx - rx)), x1 = Math.min(W - 1, Math.ceil(p.sx + rx));
   for (let iy = y0; iy <= y1; iy++) for (let ix = x0; ix <= x1; ix++) {
@@ -346,7 +363,7 @@ function flushShadows() {
   }
 }
 
-const api = {W,H,R2,COS,pix,zb,ground,groundZ,bakedZ,rgb,hash,project,unproject,
+const api = {W,H,R2,COS:TILT_COS,pix,zb,ground,groundZ,bakedZ,rgb,hash,project,unproject,
   box,sphere,capsule,castShadow,applyShadows,flushShadows,shadeEdges,dynamicAdd};
 scene.bake(api);
 applyShadows(groundZ);

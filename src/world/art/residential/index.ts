@@ -1,3 +1,4 @@
+import { bedRecipe, drawBed } from './bed';
 import type { DrawMap, WorldRenderObject, WorldRenderView } from '../../render-contract';
 import type { SceneApi } from '../../../scene/renderer.js';
 import { stairSurfaces, supportHeight } from '../../maps/residential/elevation';
@@ -294,16 +295,11 @@ export function drawApartmentFurniture(api: ResidentialArtApi, state: State) {
     const r = furnitureWorldRect(p, state.rugSize), x = r.x + .14, y = r.y + .14, endX = r.x + r.width - .14, endY = r.y + r.height - .14;
     const { box, sphere } = api;
     switch (p.id) {
-      case 'bed':
-        box(x, y, 0, endX, endY, .4, wood); box(x, y, .4, endX, endY, .7, cream);box(x, y, .7, endX, y + .2, 1.2, wood);
-        box(x + .2, y + .35, .7, endX - .2, y + 1.1, .88, linen);
-        box(x + .24, y + .39, .88, endX - .24, y + .46, .9, [239, 227, 193]);
-        for (let at = x + .3; at < endX - .2; at += .55) box(at, y + .03, .85, at + .1, y + .2, 1.24, paleWood); box(x, y + 1.3, .7, endX, endY, .83, [132, 158, 127]);
-        box(x + .05, y + 1.25, .83, endX - .05, y + 1.62, .9, [176, 190, 154]);
-        for (let at = y + 1.8; at < endY - .1; at += .6) box(x + .05, at, .83, endX - .05, at + .035, .85, [151, 175, 137]);
-        box(x, endY - .15, .45, endX, endY, .83, [112, 144, 117]);
-        box(x + .2, endY - .2, .83, x + .8, endY, .88, [155, 177, 140]);
+      case 'bed': {
+        const recipe = bedRecipe(x, y, endX, endY);
+        for (const command of recipe.commands) box(...command.box);
         break;
+      }
       case 'table':
         for (const px of [x + .1, endX - .24]) for (const py of [y + .1, endY - .24]) box(px, py, 0, px + .14, py + .14, 1.1, ink);
         box(x, y, 1.1, endX, endY, 1.3, paleWood);
@@ -561,7 +557,12 @@ export function renderFurnitureObjects(state: State): WorldRenderObject[] {
       id: `apartment.furniture.${p.id}`,
       position: { x: rect.x + rect.width / 2, y: rect.y + rect.height / 2 },
       occlusion: p.id === 'bed' || p.id === 'table' ? { rect, height: p.id === 'bed' ? .85 : 1.3, fadeWhenPlayerBehind: false } : undefined,
-      draw(ctx, view) { paintResidential(ctx, view, api => drawApartmentFurniture(api, { ...state, placements: [p] })); },
+      draw(ctx, view) {
+        if (p.id === 'bed' && drawBed(ctx, view, bedRecipe(rect.x + .14, rect.y + .14, rect.x + rect.width - .14, rect.y + rect.height - .14), () => {
+          paintResidential(ctx, view, api => api.castShadow((rect.x + rect.width / 2) + .12, (rect.y + rect.height / 2) + .12, .012, Math.max(rect.width, rect.height) * .55, .28, 0));
+        })) return;
+        paintResidential(ctx, view, api => drawApartmentFurniture(api, { ...state, placements: [p] }));
+      },
     };
   });
 }
