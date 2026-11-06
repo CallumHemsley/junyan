@@ -3,7 +3,7 @@ import { content, featureContent } from "./registry";
 import { content as restaurantContent } from "../content";
 import { contentWords } from "../content/words";
 import { attachFeatureContent } from "./content";
-import { mandarin } from "../language";
+import { french } from "../content/fixtures/french";
 import { createNeighbourhood, availableGifts } from "./model";
 import { reduceNeighbourhoodGame, type NeighbourhoodAction } from "./transitions";
 import { KITCHEN, TABLES, type Content, type GameState } from "../contracts";
@@ -187,7 +187,7 @@ describe("saved neighbourhood integration", () => {
 
 it('keeps recovery, gifts and saved progress when the same IDs carry another language', () => {
   const translatedWords = new Map(contentWords(content).map(word => [word.id, {
-    id: word.id, text: `mot ${word.id}`, gloss: word.gloss, audio: word.audio,
+    id: word.id, text: `mot-${word.id.replaceAll(".", "-").replace(/[0-9]/g, "a")}`, gloss: word.gloss, audio: word.audio,
   }]));
   const translate = (value: unknown): unknown => {
     if (Array.isArray(value)) return value.map(translate);
@@ -197,11 +197,8 @@ it('keeps recovery, gifts and saved progress when the same IDs carry another lan
     if ('tokens' in result && Array.isArray(result.tokens)) result.text = `${result.tokens.map(word => word.text).join(' ')}.`;
     return result;
   };
-  const alternative = attachFeatureContent(translate(restaurantContent) as Content, translate(featureContent) as typeof featureContent, {
-    ...mandarin, id: 'fr', locale: 'fr', tokenSeparator: ' ', wordPattern: /^[a-z0-9. -]+$/,
-    speechPattern: /^[a-z0-9. -]+$/, punctuationPattern: /[ .]/gu, pronunciationRequired: false, renderAuthoredText: true,
-  });
-  expect(contentWords(alternative).every(word => word.text.startsWith('mot ') && word.pronunciation === undefined)).toBe(true);
+  const alternative = attachFeatureContent({...translate(restaurantContent) as Content, language: french.id}, translate(featureContent) as typeof featureContent, french);
+  expect(contentWords(alternative).every(word => word.text.startsWith('mot-') && word.pronunciation === undefined)).toBe(true);
   const run = (pack: Content) => {
     let game = createGame(pack);
     const dispatch = (action: NeighbourhoodAction) => { game = reduceNeighbourhoodGame(game, action, pack); };

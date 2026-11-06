@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { initialState, reduce, validate, gifts, legal, type State, type Action } from './rules';
+import { initialState, reduce, recoveryForTransition, validate, gifts, legal, type State, type Action } from './rules';
 const run = (state: State, ...actions: Action[]) => actions.reduce((s,a) => reduce(s,a,1),state);
 const starter = () => reduce(initialState(), {type:'accept-starter'},1);
 const put = (state: State, id: 'table'|'chair'|'rug'|'cushion',x:number,y:number) => run(state,{type:'select',id},{type:'place',x,y});
@@ -70,4 +70,23 @@ it('preserves the last useful undo across storing an unplaced item or confirming
   expect(reduce(unchanged,{type:'undo'},1).placements).toEqual(first.placements);
   const unplaced=run(moved,{type:'select',id:'chair'},{type:'store'});
   expect(reduce(unplaced,{type:'undo'},1).placements).toEqual(first.placements);
+});
+
+it('recovers stable word IDs only for completed furniture actions', () => {
+  const start = initialState();
+  const accept: Action = {type: 'accept-starter'};
+  const received = reduce(start, accept, 1);
+  expect(recoveryForTransition(start, accept, received)).toEqual(['table', 'apartment.chair']);
+  expect(recoveryForTransition(received, accept, reduce(received, accept, 1))).toEqual([]);
+  const selected = reduce(received, {type: 'select', id: 'table'}, 1);
+  const blocked: Action = {type: 'place', x: 0, y: 0};
+  expect(recoveryForTransition(selected, blocked, reduce(selected, blocked, 1))).toEqual([]);
+  const place: Action = {type: 'place', x: 2, y: 1};
+  const placed = reduce(selected, place, 1);
+  expect(recoveryForTransition(selected, place, placed)).toEqual(['table', 'apartment.put', 'apartment.here']);
+  const colour: Action = {type: 'choose-colour', colour: 'cream'};
+  expect(recoveryForTransition(placed, colour, reduce(placed, colour, 1))).toEqual(['apartment.cream', 'apartment.cushion']);
+  const reselected = reduce(placed, {type: 'select', id: 'table'}, 1);
+  const store: Action = {type: 'store'};
+  expect(recoveryForTransition(reselected, store, reduce(reselected, store, 1))).toEqual(['apartment.store']);
 });
