@@ -17,7 +17,7 @@ Captures come from the built assembly through the real App/WorldViewport, not th
 | Desktop evening city lookout | [before](before-desktop-evening-city-lookout.png) | [after](after-desktop-evening-city-lookout.png) |
 | Phone evening city lookout | [before](before-phone-evening-city-lookout.png) | [after](after-phone-evening-city-lookout.png) |
 
-Morning captures are also retained. The original before-phone-morning captures include a delayed welcome dialog and are not used as the primary unobstructed comparison. The final capture driver dismisses that dialog through its ordinary button; final after views are unobstructed. No internal gameplay dispatch or renderer replacement is used.
+Morning captures are also retained. The original before-phone-morning captures include a delayed welcome dialog and are not used as the primary unobstructed comparison. The final capture driver matches the welcome button including its arrow, dismisses it through the ordinary UI and asserts no modal backdrop remains; final after views are unobstructed. No internal gameplay dispatch or renderer replacement is used.
 
 The first after study made the lower façade too dominant. The inspected iteration1 images retain that rejected proportion. The final source shortens the visible drop and moves neighbouring roofs closer, exposing more lower roof context while retaining the clear parapet boundary. This is an authored visual refinement, not a claimed independent review PASS.
 
@@ -25,4 +25,4 @@ The first after study made the lower façade too dominant. The inspected iterati
 
 `checks.log`:19 existing garden/map/art tests pass, including all720 legal pot/shade arrangements and shared navigation/compositor checks. `build-before.log` and `build-after.log`: production builds pass. `git diff e02a747 -- src` contains only `src/world/art/rooftop/index.ts` and the new `roofscape.ts`; map bounds, colliders, anchors, saved plants and gameplay rules are unchanged.
 
-Before product bytes match assemblye02a747. After captures record sourceef2e283. The later evidence commit changes no product source. Inspect desktop and phone arrival/lookout views before acceptance. The broader full rooftop/world goal remains ACTIVE.
+Before product bytes match assemblye02a747. After captures record their assembled/evidence head and productArtHead ef2e283 separately. Later evidence/helper commits change no product source. Inspect desktop and phone arrival/lookout views before acceptance. The broader full rooftop/world goal remains ACTIVE.
