@@ -145,7 +145,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
     <span aria-hidden="true">↻</span><small aria-hidden="true">{targets.length}</small>
    </button>}
   </div>}
-  {dialogue&&<div className="world-life-dialogue"><FeatureLine line={dialogue} onLookup={onLookup} onPlay={onPlay} recoveredWordIds={Object.keys(game.journal)} freshWordIds={fresh}/></div>}
+  {dialogue&&<div className="world-life-dialogue"><FeatureLine line={dialogue} onLookup={onLookup} onPlay={onPlay} recoveredWordIds={Object.keys(game.journal).filter(id=>game.journal[id].recovered)} freshWordIds={fresh}/></div>}
   <div className="world-pad" aria-label="走动">{["ArrowUp","ArrowLeft","ArrowDown","ArrowRight"].map((key,i)=><button key={key} aria-label={["向前走","向左走","向后走","向右走"][i]} disabled={paused||!!state.activeActivity} onPointerDown={event=>{event.currentTarget.setPointerCapture(event.pointerId);keys.current.add(key);}} onPointerUp={()=>keys.current.delete(key)} onPointerCancel={()=>keys.current.delete(key)} onLostPointerCapture={()=>keys.current.delete(key)}>{["↑","←","↓","→"][i]}</button>)}</div>
  </section>;
 }
