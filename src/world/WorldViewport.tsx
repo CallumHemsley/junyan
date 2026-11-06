@@ -12,7 +12,7 @@ import {wordState} from "../recovery";
 import {useEffect,useRef,useState} from "react";
 import type {WorldState,Point} from "./schema";
 import type {MapRegistry} from "./registry";
-import {project,cameraForMap,type Camera} from "./camera";
+import {project,explorationCamera,type Camera} from "./camera";
 import {movePlayer,nearbyAnchors} from "./geometry";
 import {paintWorld} from "./painter";
 import type {WorldAction} from "./state";
@@ -94,7 +94,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
    }
    const dpr=1,width=Math.ceil(viewport.width/2),height=Math.ceil(viewport.height/2);
    if(element.width!==Math.round(width*dpr)||element.height!==Math.round(height*dpr)){element.width=Math.round(width*dpr);element.height=Math.round(height*dpr);}
-   const camera=cameraForMap(map.bounds,current.state.position,width,height,viewport.width<600?11:15,viewport.width<800?interactionInset/2:0,viewport.width>=800?interactionWidth/2:0,surfaceHeight(map.id,current.state.position));cameraRef.current=camera;
+   const camera=explorationCamera(map.bounds,current.state.position,width,height,viewport.width<800?interactionInset/2:0,viewport.width>=800?interactionWidth/2:0,surfaceHeight(map.id,current.state.position));cameraRef.current=camera;
    if(cue.current){
     const target=targetForFrame.current;
     if(target){const point=project(target.position,camera,surfaceHeight(map.id,target.position));cue.current.style.left=`${point.x*viewport.width/width}px`;cue.current.style.top=`${point.y*viewport.height/height}px`;cue.current.hidden=point.x<0||point.y<0||point.x>width||point.y>height;}

@@ -22,3 +22,13 @@ export function cameraForMap(bounds:{width:number;height:number},position:Point,
  const y=clamp((position.x+position.y)*scale*.5,safeHeight/2,maxY-safeHeight/2);
  return {focusZ,focus:{x:(x/scale+y/(scale*.5))/2,y:(y/(scale*.5)-x/scale)/2},width,height,scale,offsetY:(safeHeight-height)/2,offsetX:(safeWidth-width)/2};
 }
+
+// The portrait frame looks over a local square of ground above the movement controls.
+export function explorationCamera(bounds:{width:number;height:number},position:Point,width:number,height:number,insetBottom=0,insetRight=0,focusZ=0):Camera {
+ const portrait=width<300&&height>width;
+ if(!portrait)return cameraForMap(bounds,position,width,height,width<300?11:15,insetBottom,insetRight,focusZ);
+ const availableHeight=Math.max(height*.35,height-Math.max(66,insetBottom));
+ const localHeight=Math.min(width,availableHeight);
+ const camera=cameraForMap(bounds,position,width,localHeight,12,0,insetRight,focusZ);
+ return {...camera,height,offsetY:(camera.offsetY??0)+availableHeight-localHeight/2-height/2};
+}
