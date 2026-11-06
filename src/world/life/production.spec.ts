@@ -79,21 +79,24 @@ async function lifeHint(page: Page, targetId: string): Promise<LifeHint> {
       options: nearbyLife(planFor(map, save), actors, world.position, navigationFor(map)).map((option: { id: string; targetId: string; kind: string }) => ({ id: option.id, targetId: option.targetId, kind: option.kind })) };
   }, { save: await savedGame(page), targetId });
 }
+async function approachPoint(page: Page, target: { x: number; y: number }, touch: boolean) {
+  const approach = await page.evaluate(async ({ save, target }) => {
+    const dynamicUrl = '/src/world/dynamic.ts', geometryUrl = '/src/world/geometry.ts';
+    const { mapsForNeighbourhood } = await import(dynamicUrl), { canStand, findPath } = await import(geometryUrl);
+    const map = mapsForNeighbourhood(save.neighbourhood)[save.world!.mapId];
+    const candidates = [-1, 1].map(sign => ({ x: target.x + sign * .74, y: target.y - sign * .74 }));
+    return candidates.filter(point => canStand(map, point) && findPath(map, save.world!.position, point).length)
+      .sort((a, b) => Math.hypot(a.x - save.world!.position.x, a.y - save.world!.position.y) - Math.hypot(b.x - save.world!.position.x, b.y - save.world!.position.y))[0];
+  }, { save: await savedGame(page), target });
+  if (!approach) throw Error('No reachable adjacent task approach');
+  await walkTo(page, approach, touch);
+}
 async function approachLife(page: Page, targetId: string, touch: boolean) {
   for (let i = 0; i < 10; i++) {
     const hint = await lifeHint(page, targetId);
     if (!hint.target) throw Error(`No production physical target ${targetId}`);
     if (Math.hypot(hint.target.position.x - hint.player.x, hint.target.position.y - hint.player.y) < 1.1 && Math.abs(hint.player.x - hint.target.position.x - hint.player.y + hint.target.position.y) > .95) return;
-    const approach = await page.evaluate(async ({ save, target }) => {
-      const dynamicUrl = '/src/world/dynamic.ts', geometryUrl = '/src/world/geometry.ts';
-      const { mapsForNeighbourhood } = await import(dynamicUrl), { canStand, findPath } = await import(geometryUrl);
-      const map = mapsForNeighbourhood(save.neighbourhood)[save.world!.mapId];
-      const candidates = [-1, 1].map(sign => ({ x: target.x + sign * .74, y: target.y - sign * .74 }));
-      return candidates.filter(point => canStand(map, point) && findPath(map, save.world!.position, point).length)
-        .sort((a, b) => Math.hypot(a.x - save.world!.position.x, a.y - save.world!.position.y) - Math.hypot(b.x - save.world!.position.x, b.y - save.world!.position.y))[0];
-    }, { save: await savedGame(page), target: hint.target.position });
-    if (!approach) throw Error(`No reachable adjacent approach for ${targetId}`);
-    await walkTo(page, approach, touch);
+    await approachPoint(page, hint.target.position, touch);
   }
   throw Error(`Could not approach moving production target ${targetId}`);
 }
@@ -101,7 +104,12 @@ async function activateLife(page: Page, targetId: string, touch: boolean) {
   const attempts: unknown[] = [];
   for (let i = 0; i < 16; i++) {
     const hint = await lifeHint(page, targetId), index = hint.options.findIndex(option => option.targetId === targetId);
-    if (index < 0 || index >= 2) { await approachLife(page, targetId, touch); continue; }
+    if (index < 0 || index >= 2) {
+      attempts.push({ index, elapsedMs: hint.elapsedMs, target: hint.target, options: hint.options });
+      await page.waitForTimeout(250);
+      await approachLife(page, targetId, touch);
+      continue;
+    }
     const option = hint.options[index], exact = page.locator(`[data-life-action="${option.id}"]`);
     const control = await exact.count() ? exact : page.locator('.world-life-options .world-anchor').nth(index).locator('button').last();
     if (!await control.isVisible()) { await page.waitForTimeout(200); continue; }
@@ -114,7 +122,7 @@ async function activateLife(page: Page, targetId: string, touch: boolean) {
     if (response && response.atMs > prior) return { attempts, response };
     await approachLife(page, targetId, touch);
   }
-  throw Error(`Visible controls never produced the intended physical response for ${targetId}`);
+  throw Error(`Visible controls never produced the intended physical response: ${JSON.stringify({ targetId, attempts: attempts.slice(-3), hint: await lifeHint(page, targetId) })}`);
 }
 
 async function approachLandmark(page: Page, targetId: string, touch: boolean) {
@@ -161,11 +169,21 @@ test('ordinary traversal reaches unvoiced residents, reactions and saved discove
       for (const id of visit.ids) {
         const save = await savedGame(page);
         const hook = await page.evaluate(async ({ save, id }) => {
-          const url = '/src/world/dynamic.ts', { mapsForNeighbourhood } = await import(url);
-          return mapsForNeighbourhood(save.neighbourhood)[save.world!.mapId].npcHooks.find((hook: { characterId: string }) => hook.characterId === id);
+          const url = '/src/world/dynamic.ts', bridgeUrl = '/src/world/life-bridge.ts';
+          const { mapsForNeighbourhood } = await import(url), { planFor } = await import(bridgeUrl);
+          const map = mapsForNeighbourhood(save.neighbourhood)[save.world!.mapId];
+          const hook = map.npcHooks.find((hook: { characterId: string }) => hook.characterId === id);
+          return hook && { ...hook, cycleMs: planFor(map, save).actors.find((actor: { id: string }) => actor.id === hook.id)?.durationMs };
         }, { save, id });
         expect(hook, `Missing authored production hook for ${id}`).toBeTruthy();
-        await approachLife(page, hook.id, touch);
+        expect(hook.cycleMs).toBeGreaterThan(0);
+        await approachPoint(page, hook.position, touch);
+        const expectedActivity = id === 'resident-reader' ? 'sit' : id === 'resident-river-walker' ? 'idle' : 'work';
+        const isHomeTask = (hint: LifeHint) => hint.target?.action === 'idle' && hint.target.activity === expectedActivity && Math.hypot(hint.target.position.x - hook.position.x, hint.target.position.y - hook.position.y) < .3;
+        await expect.poll(async () => isHomeTask(await lifeHint(page, hook.id)), { timeout: hook.cycleMs + 2000, intervals: [500, 1000] }).toBe(true);
+        const task = await lifeHint(page, hook.id);
+        await page.screenshot({ path: `${out}/${id}-task.png` });
+        expect(isHomeTask(await lifeHint(page, hook.id))).toBe(true);
         const before = await savedGame(page);
         expect(before.world?.life?.elapsedMs, 'Production life clock must checkpoint actual play time').toBeGreaterThan(0);
         const live = await page.evaluate(async save => {
@@ -191,13 +209,6 @@ test('ordinary traversal reaches unvoiced residents, reactions and saved discove
         }, { timeout: 45000, intervals: [200, 500] }).toBeGreaterThan(.08);
         const walkAfter = await lifeHint(page, hook.id);
         await page.screenshot({ path: `${out}/${id}-walk-after.png` });
-        await approachLife(page, hook.id, touch);
-        const expectedActivity = id === 'resident-reader' ? 'sit' : id === 'resident-river-walker' ? 'idle' : 'work';
-        const isHomeTask = (hint: LifeHint) => hint.target?.action === 'idle' && hint.target.activity === expectedActivity && Math.hypot(hint.target.position.x - hook.position.x, hint.target.position.y - hook.position.y) < .3;
-        await expect.poll(async () => isHomeTask(await lifeHint(page, hook.id)), { timeout: 120000, intervals: [500, 1000] }).toBe(true);
-        const task = await lifeHint(page, hook.id);
-        await page.screenshot({ path: `${out}/${id}-task.png` });
-        expect(isHomeTask(await lifeHint(page, hook.id))).toBe(true);
         checkpoints.push({ id, before, after: await savedGame(page), actors: live.actors, activation, walkBefore, walkAfter, task });
         await record();
       }
@@ -213,6 +224,12 @@ test('ordinary traversal reaches unvoiced residents, reactions and saved discove
     await exitTo(page, 'courtyard', touch);
     const revisitBefore = await savedGame(page);
     expect(revisitBefore.world!.life!.elapsedMs).toBeGreaterThan(120000);
+    const laundryHome = await page.evaluate(async save => {
+      const url = '/src/world/dynamic.ts', { mapsForNeighbourhood } = await import(url);
+      return mapsForNeighbourhood(save.neighbourhood).courtyard.npcHooks.find((hook: { id: string }) => hook.id === 'courtyard.laundry-neighbour').position;
+    }, revisitBefore);
+    await approachPoint(page, laundryHome, touch);
+    await expect.poll(async () => { const hint = await lifeHint(page, 'courtyard.laundry-neighbour'); return hint.target?.activity === 'work' && Math.hypot(hint.target.position.x - laundryHome.x, hint.target.position.y - laundryHome.y) < .3; }, { timeout: 120000 }).toBe(true);
     const revisit = await activateLife(page, 'courtyard.laundry-neighbour', touch);
     checkpoints.push({ multiMinuteLaundryRevisit: revisit, save: await savedGame(page) });
     await page.screenshot({ path: `${out}/laundry-revisit.png` });
