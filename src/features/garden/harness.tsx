@@ -1,3 +1,4 @@
+import { featureUi } from '../copy';
 import {useEffect, useRef, useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import Garden from './index';
@@ -31,8 +32,8 @@ function Harness() {
       onRecover={ids => setRecovered(value => [...new Set([...value, ...ids])])} recoveredWordIds={recovered}
       onLookup={(word, button) => {trigger.current = button; setLookup(word);}}
       onPlay={(value: Line) => {history.current.push(value.id);}}/></div>
-    {lookup && <div role="dialog" aria-label={lookup.hanzi} style={{position: 'fixed', bottom: 16, left: 16, padding: 24, background: 'var(--surface-card)', border: '1px solid var(--hairline-strong)', zIndex: 20}}>
-      <span>{lookup.hanzi}</span><p data-testid="garden-harness-pinyin">{lookup.pinyin}</p><button ref={wordClose} onClick={() => setLookup(null)}>收起</button>
+    {lookup && <div role="dialog" aria-label={lookup.text} style={{position: 'fixed', bottom: 16, left: 16, padding: 24, background: 'var(--surface-card)', border: '1px solid var(--hairline-strong)', zIndex: 20}}>
+      <span>{lookup.text}</span>{lookup.pronunciation && <p data-testid="garden-harness-pinyin">{lookup.pronunciation}</p>}<button ref={wordClose} onClick={() => setLookup(null)}>{featureUi.close}</button>
     </div>}
   </main>;
 }
