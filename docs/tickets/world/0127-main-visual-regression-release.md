@@ -1,7 +1,7 @@
 ---
 id: 127
 title: Release independently accepted world visual regressions to main
-status: doing
+status: done
 priority: high
 type: bug
 created: 2026-11-06
@@ -28,3 +28,5 @@ Main still contains the shared flat-face shading and sparse restaurant regressio
 - Initial port verification correctly failed because restaurantCamera also depends on generic frameCamera. Added the accepted pure frame-fitting helper and types, without reading-room presentation-area wiring. Initial failed logs remain private; exact repaired source needs new independent verification.
 
 - All exact-release gates passed:645 rules/99files, TypeScript/Vitebuild,12 desktop/phone opening/four-customer/change/journal/progression/movement/save/physical-door/stair cases,2 actual production offline/cache checks. Independent cross-review of repaired source1e0e3eff has no remaining finding. Forty native fixtures captured,20 original phone/desktop day/night images across all10maps inspected. Raw evidence private. Prepared for GitHub review/merge; deeper visual goal and0123/0126/0128 studies remain active.
+
+- Release prepared inPR51 after all independent and runtime gates passed. The final release change completes this scoped repair; the broader graphics/world goal remains active. No new raw QA was published.
