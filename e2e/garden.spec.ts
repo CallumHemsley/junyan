@@ -1,3 +1,4 @@
+import { privateArtifact } from "./private-artifacts";
 import {test, expect, type Page} from '@playwright/test';
 import type {State} from '../src/features/garden/rules';
 const action = (page: Page, name: string) => page.locator(`.garden-tool-button[aria-label="${name}"]`);
@@ -18,7 +19,7 @@ test('isolated garden care, deliberate mistake, recovery, placement and vocabula
   await expect.poll(() => page.evaluate(() => window.__GARDEN_TEST__!.plays())).toContain('garden.wet-warning');
   expect(await page.locator('[data-testid=garden-harness-pinyin]').count()).toBe(0);
   expect(await page.getByTestId('garden-view').innerText()).not.toMatch(/[A-Za-z]/);
-  await page.screenshot({path: `evidence/0070/${info.project.name}-welcome.png`, fullPage: true});
+  await page.screenshot({path: privateArtifact(`evidence/0070/${info.project.name}-welcome.png`), fullPage: true});
 
   await page.getByTestId('garden-dialogue').getByRole('button', {name: '土', exact: true}).click();
   await expect(page.getByTestId('garden-harness-pinyin')).toHaveText('tǔ');
@@ -45,7 +46,7 @@ test('isolated garden care, deliberate mistake, recovery, placement and vocabula
   await action(page, '浇水').dblclick();
   await expect(page.locator('[data-testid=garden-confirm]')).toBeVisible();
   expect((await state(page)).plants.flower.care).toBe('ready');
-  await page.screenshot({path: `evidence/0070/${info.project.name}-wet-warning.png`, fullPage: true});
+  await page.screenshot({path: privateArtifact(`evidence/0070/${info.project.name}-wet-warning.png`), fullPage: true});
   await page.locator('[data-testid=garden-confirm] .garden-tool-button[aria-label="还是浇"]').click();
   expect((await state(page)).plants.flower.care).toBe('extra');
   expect(await page.evaluate(() => window.__GARDEN_TEST__!.recoveries())).toEqual([]);
@@ -90,7 +91,7 @@ test('isolated garden care, deliberate mistake, recovery, placement and vocabula
   await expect(page.locator('.garden-gift')).toBeVisible();
   await expect(page.locator('.garden-weather')).toHaveAttribute('data-weather', 'rain');
   expect((await state(page)).plants.tree.care).toBe('ready');
-  await page.screenshot({path: `evidence/0070/${info.project.name}-rain-growth.png`, fullPage: true});
+  await page.screenshot({path: privateArtifact(`evidence/0070/${info.project.name}-rain-growth.png`), fullPage: true});
 
   const snapshot = await page.evaluate(() => window.__GARDEN_TEST__!.snapshot());
   await page.reload();
@@ -110,7 +111,7 @@ test('isolated garden care, deliberate mistake, recovery, placement and vocabula
     await expect.poll(async () => (await state(page)).day).toBe(snapshot.day + i + 1);
   }
   await expect.poll(() => page.evaluate(() => window.__GARDEN_TEST__!.plays())).toContain('garden.mature-result');
-  await page.screenshot({path: `evidence/0070/${info.project.name}-retreat.png`, fullPage: true});
+  await page.screenshot({path: privateArtifact(`evidence/0070/${info.project.name}-retreat.png`), fullPage: true});
   const metrics = await page.evaluate(() => ({
     overflow: document.documentElement.scrollWidth > innerWidth,
     undersized: [...document.querySelectorAll<HTMLButtonElement>('.garden button')].filter(button => {const r = button.getBoundingClientRect(); return r.width < 44 || r.height < 44;}).map(button => button.getAttribute('aria-label') ?? button.textContent),

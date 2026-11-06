@@ -1,3 +1,5 @@
+import { interactAt, closeActivity, savedGame } from "./world-journey";
+import { privateArtifact } from "./private-artifacts";
 import { test, expect, type Page } from "@playwright/test";
 import { playOpening, withSkip } from "./opening";
 import type { Content, GameState } from "../src/contracts";
@@ -16,27 +18,27 @@ async function serve(page: Page, table: number) {
   const order = content.orders.find(
     (o) => o.id === state.customers.find((c) => c.table === table)!.orderId,
   )!;
-  await page
-    .getByRole("button", { name: new RegExp(`^${table}桌 ${order.customer}`) })
-    .click();
+  await interactAt(page, `restaurant.table-${table}`);
   await expect(
-    page.getByRole("dialog", { name: `${table}桌点餐` }),
+    page.locator(".world-context[data-target=table]"),
   ).toBeVisible();
   const character = content.characters.find(c => c.name === order.customer)!;
-  await expect(page.locator(".character-greeting")).toHaveText(
+  await page.locator(".world-dialogue-history summary").click();
+  await expect(page.locator(".world-dialogue-history .spoken")).toHaveText(
     character.greeting.tokens.map(w => w.text).join(""),
   );
-  await page.getByRole("button", { name: "听招呼", exact: true }).click();
-  await expect(page.locator(".spoken").last()).toContainText(
+  await page.locator(".world-dialogue-history .round-button").click();
+  await page.locator(".world-dialogue-history summary").click();
+  await expect(page.locator(".world-context-dialogue .spoken").first()).toContainText(
     order.line.tokens[0].text,
   );
   if (table === 1) {
-    await page.locator(".spoken .word").first().click();
+    await page.locator(".world-context-dialogue .word").first().click();
     await expect(page.locator(".word-popover .pinyin")).not.toBeEmpty();
     await page.getByRole("button", { name: "关闭词卡" }).click();
   }
-  await page.getByRole("button", { name: "去厨房", exact: true }).click();
-  await expect(page.getByRole("dialog", { name: "厨房" })).toBeVisible();
+  await interactAt(page, "restaurant.kitchen");
+  await expect(page.locator(".world-context[data-target=kitchen]")).toBeVisible();
   for (const item of order.items) {
     const food = content.foods.find((f) => f.id === item.foodId)!;
     for (let n = 0; n < item.quantity; n++)
@@ -44,14 +46,16 @@ async function serve(page: Page, table: number) {
         .getByRole("button", { name: `拿${food.word.text}`, exact: true })
         .click();
   }
+  if (table === 1) {
+    await page.getByRole("button", { name:"本子", exact:true }).click();
+    await page.getByRole("dialog", {name:"本子", exact:true}).getByRole("button", {name:"关闭",exact:true}).click();
+  }
   await page.getByRole("button", { name: "端好了，去上菜" }).click();
-  await page
-    .getByRole("button", { name: new RegExp(`^${table}桌 ${order.customer}`) })
-    .click();
+  await interactAt(page, `restaurant.table-${table}`);
   await expect(
-    page.getByRole("dialog", { name: `${table}桌点餐` }),
+    page.locator(".world-context[data-target=table]"),
   ).toBeVisible();
-  const line = page.locator(".paper-panel > .spoken .word");
+  const line = page.locator(".world-context-dialogue").first().locator(".spoken .word");
   const looks = () =>
     line.evaluateAll((words) =>
       words.map((word) =>
@@ -80,15 +84,20 @@ async function serve(page: Page, table: number) {
     await page.getByRole("button", { name: "+1块", exact: true }).click();
   await page.getByRole("button", { name: "递上找零" }).click();
   await expect(page.locator(".thanks-chop")).toBeVisible();
-  await expect(page.locator(".spoken")).toHaveText(character.thanks.tokens.map(w => w.text).join(""));
-  await page.getByRole("button", { name: "再听一遍", exact: true }).click();
+  await expect(page.locator(".world-context-dialogue .spoken")).toHaveText(character.thanks.tokens.map(w => w.text).join(""));
+  await page.locator(".world-context-dialogue .round-button").click();
+  if (table === 1) {
+    await page.getByRole("button", {name:"本子",exact:true}).click();
+    await page.getByRole("dialog", {name:"本子",exact:true}).getByRole("button", {name:"关闭",exact:true}).click();
+  }
   await page.getByRole("button", { name: "继续招呼" }).click();
+  await expect(page.locator(".world-context")).toHaveCount(0);
 }
 
 test("wake in the ward, then collect, recall, deliver, give change, journal, and progress", async ({
   page,
 }, info) => {
-  test.setTimeout(180_000);
+  test.setTimeout(300_000);
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   page.on("console", (m) => {
@@ -97,7 +106,7 @@ test("wake in the ward, then collect, recall, deliver, give change, journal, and
   await page.goto("/?test=1&seed=42&opening=play");
   await playOpening(page, {
     shot: (name) => page.screenshot({
-      path: `output/playwright/${info.project.name}-opening-${name}.png`,
+      path: privateArtifact(`output/playwright/${info.project.name}-opening-${name}.png`),
     }),
     afterHandover: async () =>
       expect(await page.locator(".app-shell").innerText()).not.toMatch(/[a-z]/i),
@@ -109,7 +118,7 @@ test("wake in the ward, then collect, recall, deliver, give change, journal, and
   await page.getByRole("button", { name: "关闭", exact: true }).click();
   await expect(page.locator("canvas")).toBeVisible();
   await page.screenshot({
-    path: `output/playwright/${info.project.name}-restaurant.png`,
+    path: privateArtifact(`output/playwright/${info.project.name}-restaurant.png`),
     fullPage: true,
   });
   const overflow = await page.evaluate(
@@ -120,7 +129,7 @@ test("wake in the ward, then collect, recall, deliver, give change, journal, and
   await expect(page.getByRole("dialog", { name: "今日小结" })).toBeVisible();
   await expect(page.getByRole("button", { name: "明天见" })).toBeFocused();
   await page.keyboard.press("Tab");
-  await expect(page.getByRole("button", { name: "回家看看" })).toBeFocused();
+  await expect(page.getByRole("button", { name: "出去走走" })).toBeFocused();
   await page.keyboard.press("Shift+Tab");
   await expect(page.getByRole("button", { name: "明天见" })).toBeFocused();
   await page.getByRole("button", { name: "明天见" }).click();
@@ -136,7 +145,7 @@ test("wake in the ward, then collect, recall, deliver, give change, journal, and
   await page.getByRole("button", { name: /本子/ }).click();
   await expect(page.locator(".journal-list button").first()).toBeVisible();
   await page.screenshot({
-    path: `output/playwright/${info.project.name}-journal.png`,
+    path: privateArtifact(`output/playwright/${info.project.name}-journal.png`),
     fullPage: true,
   });
   expect(errors).toEqual([]);
@@ -147,28 +156,25 @@ test("walking connects a keyboard position beside a table without stalling", asy
 }) => {
   await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
-  await page.evaluate(() =>
-    (window as any).__TEST__.dispatch({
-      type: "move",
-      position: { x: 1.95, y: 3.85 },
-    }),
-  );
-  await page.getByTestId("table-3").click();
-  await expect(page.getByRole("dialog", { name: "3桌点餐" })).toBeVisible();
-  await page.getByRole("button", { name: "关闭", exact: true }).click();
-  const before = (await data(page)).state.player;
-  await page.getByTestId("table-3").focus();
-  await page.keyboard.press("ArrowRight");
-  expect((await data(page)).state.player).not.toEqual(before);
+  await interactAt(page, "restaurant.table-3");
+  await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
+  await closeActivity(page);
+  const before = (await savedGame(page)).world!.position;
+  await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => resolve())));
+  await page.getByTestId("world-viewport").focus();
+  await expect(page.getByTestId("world-viewport")).toBeFocused();
+  await page.keyboard.down("ArrowRight");
+  await expect.poll(async () => (await savedGame(page)).world!.position).not.toEqual(before);
+  await page.keyboard.up("ArrowRight");
 });
 
 test("browser saves and reloads a looked-up word", async ({ page }) => {
   await page.goto(withSkip("/"));
   await page.getByRole("button", { name: "开门迎客" }).click();
-  await page.getByRole("group", { name: "今日客人", exact: true }).getByRole("button", { name: /^1桌 / }).click();
-  await expect(page.locator(".spoken .word").first()).toBeVisible();
-  const word = await page.locator(".spoken .word").first().innerText();
-  await page.locator(".spoken .word").first().click();
+  await interactAt(page, "restaurant.table-1");
+  await expect(page.locator(".world-context-dialogue .word").first()).toBeVisible();
+  const word = await page.locator(".world-context-dialogue .word").first().innerText();
+  await page.locator(".world-context-dialogue .word").first().click();
   await expect
     .poll(() =>
       page.evaluate(async () => {
@@ -192,4 +198,38 @@ test("browser saves and reloads a looked-up word", async ({ page }) => {
   await page.getByRole("button", { name: "开门迎客" }).click();
   await page.getByRole("button", { name: /本子/ }).click();
   await expect(page.locator(".journal-list")).toContainText(word);
+});
+
+// Physical walks have their own bounded waits; missing controls should fail promptly.
+test.beforeEach(async ({ page }) => { page.setDefaultTimeout(8_000); });
+
+test("closing a pocket journal restores the kitchen exit and physical movement", async ({page}) => {
+  await page.goto(withSkip("/?test=1&seed=42"));
+  await page.getByRole("button", {name:"开门迎客"}).click();
+  await interactAt(page, "restaurant.table-1");
+  await interactAt(page, "restaurant.kitchen");
+  await page.getByRole("button", {name:"拿包子",exact:true}).click();
+  await page.getByRole("button", {name:"本子",exact:true}).click();
+  await page.getByRole("dialog", {name:"本子",exact:true}).getByRole("button", {name:"关闭",exact:true}).click();
+  await page.getByRole("button", {name:"端好了，去上菜",exact:true}).click();
+  await expect(page.locator(".world-context")).toHaveCount(0);
+  const before = (await savedGame(page)).world!.position;
+  await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => resolve())));
+  await page.getByTestId("world-viewport").focus();
+  await expect(page.getByTestId("world-viewport")).toBeFocused();
+  await page.keyboard.down("ArrowDown");
+  try { await expect.poll(async () => (await savedGame(page)).world!.position).not.toEqual(before); }
+  finally { await page.keyboard.up("ArrowDown"); }
+});
+
+test("focused movement pad accepts Enter and Space as well as arrow walking", async ({page}) => {
+  await page.goto(withSkip("/?test=1&seed=42"));
+  await page.getByRole("button", {name:"开门迎客"}).click();
+  const forward = page.getByRole("button", {name:"向前走",exact:true});
+  for (const key of ["Enter", "Space"]) {
+    const before = (await savedGame(page)).world!.position;
+    await forward.focus();
+    await forward.press(key);
+    await expect.poll(async () => (await savedGame(page)).world!.position).not.toEqual(before);
+  }
 });

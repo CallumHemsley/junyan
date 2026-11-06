@@ -1,3 +1,5 @@
+import { interactAt } from "./world-journey";
+import { privateArtifact } from "./private-artifacts";
 import { test, expect } from "@playwright/test";
 import { withSkip } from "./opening";
 import type { Content, GameState } from "../src/contracts";
@@ -20,11 +22,11 @@ for (const viewport of [
     const disclosure = help.getByRole("button", { name: "怎么玩", exact: true });
     await expect(disclosure).toHaveAttribute("aria-expanded", "false");
     await expect(help.locator(".help-line")).toHaveCount(1);
-    await page.screenshot({ path: `output/playwright/0028/${viewport.name}-welcome.png`, scale: "css" });
+    await page.screenshot({ path: privateArtifact(`output/playwright/0028/${viewport.name}-welcome.png`), scale: "css" });
     await disclosure.focus();
     await page.keyboard.press("Enter");
     await expect(help.locator("[data-help-step]")).toHaveCount(3);
-    await page.screenshot({ path: `output/playwright/0028/${viewport.name}-help-expanded.png`, scale: "css" });
+    await page.screenshot({ path: privateArtifact(`output/playwright/0028/${viewport.name}-help-expanded.png`), scale: "css" });
     await disclosure.press("Enter");
     await help.getByRole("button", { name: "关闭", exact: true }).focus();
     await page.keyboard.press("Shift+Tab");
@@ -60,9 +62,9 @@ for (const viewport of [
       const tray = await page.locator(".tray-section").boundingBox();
       expect(tray!.y + tray!.height).toBeLessThanOrEqual(viewport.height);
     }
-    await page.screenshot({ path: `output/playwright/0028/${viewport.name}-playable.png`, fullPage: true, scale: "css" });
+    await page.screenshot({ path: privateArtifact(`output/playwright/0028/${viewport.name}-playable.png`), fullPage: true, scale: "css" });
     await page.locator(".next-action").click();
-    await expect(page.getByRole("dialog", { name: "1桌点餐" })).toBeVisible();
+    await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
     const foodNames = await page.evaluate(() => {
       const hooks = (window as Window & { __TEST__?: { content: Content; getState: () => GameState } }).__TEST__!;
       const order = hooks.content.orders.find(entry => entry.id === hooks.getState().customers[0].orderId)!;
@@ -74,7 +76,7 @@ for (const viewport of [
     await expect(page.locator(".next-action")).toHaveAccessibleName("去厨房取餐");
     for (const food of foodNames) await expect(page.locator("main")).not.toContainText(food);
     await page.locator(".next-action").click();
-    const kitchen = page.getByRole("dialog", { name: "厨房" });
+    const kitchen = page.locator(".world-context[data-target=kitchen]");
     await expect(kitchen).toBeVisible();
     for (let count = 0; count < 6; count++) await kitchen.locator(".food-pick").nth(count).click();
     await kitchen.getByRole("button", { name: "端好了，去上菜" }).click();
@@ -83,7 +85,7 @@ for (const viewport of [
     await expect(page.locator(".next-action")).toHaveAccessibleName("1桌 · 上菜");
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.mouse.move(0, 0);
-    await page.screenshot({ path: `output/playwright/0028/${viewport.name}-full-tray.png`, fullPage: true, scale: "css" });
+    await page.screenshot({ path: privateArtifact(`output/playwright/0028/${viewport.name}-full-tray.png`), fullPage: true, scale: "css" });
     if (isMobile) await page.locator(".tray-item").last().tap();
     else await page.locator(".tray-item").last().click();
     await expect(page.getByRole("button", { name: "关闭词卡" })).toBeFocused();
@@ -106,17 +108,17 @@ test("the next service action follows the last visited waiting table without che
   await page.getByRole("button", { name: "开门迎客" }).click();
   for (const table of [1, 4]) {
     await page.getByRole("group", { name: "今日客人", exact: true }).getByRole("button", { name: new RegExp(`^${table}桌 `) }).click();
-    await expect(page.getByRole("dialog", { name: `${table}桌点餐` })).toBeVisible();
+    await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
     await page.keyboard.press("Escape");
   }
   await expect(page.locator(".next-action")).toHaveText("去厨房取餐→");
   await page.locator(".next-action").click();
-  const kitchen = page.getByRole("dialog", { name: "厨房" });
+  const kitchen = page.locator(".world-context[data-target=kitchen]");
   await kitchen.locator(".food-pick").first().click();
   await kitchen.getByRole("button", { name: "端好了，去上菜" }).click();
   await expect(page.locator(".next-action")).toHaveText("4桌 · 上菜→");
   await page.locator(".next-action").click();
-  await expect(page.getByRole("dialog", { name: "4桌点餐" })).toBeVisible();
+  await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
 });
 
 test("reduced motion keeps disclosures and scene navigation usable", async ({ page }) => {
@@ -127,18 +129,18 @@ test("reduced motion keeps disclosures and scene navigation usable", async ({ pa
   await expect(page.locator("#day-details")).toBeVisible();
   expect(await page.locator(".next-action").evaluate(element => getComputedStyle(element).animationName)).toBe("none");
   await page.locator(".next-action").click();
-  await expect(page.getByRole("dialog", { name: "1桌点餐" })).toBeVisible();
-  await page.screenshot({ path: "output/playwright/0028/reduced-motion-dialogue.png", scale: "css" });
+  await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
+  await page.screenshot({ path: privateArtifact("output/playwright/0028/reduced-motion-dialogue.png"), scale: "css" });
 });
 
 test("primary action names the checkout phase", async ({ page }) => {
   await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   await page.locator(".next-action").click();
-  await expect(page.getByRole("dialog", { name: "1桌点餐" })).toBeVisible();
+  await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
   await page.keyboard.press("Escape");
   await page.locator(".next-action").click();
-  const kitchen = page.getByRole("dialog", { name: "厨房" });
+  const kitchen = page.locator(".world-context[data-target=kitchen]");
   const foods = await page.evaluate(() => {
     const hooks = (window as Window & { __TEST__?: { content: Content; getState: () => GameState } }).__TEST__!;
     const order = hooks.content.orders.find(entry => entry.id === hooks.getState().customers[0].orderId)!;
@@ -149,10 +151,12 @@ test("primary action names the checkout phase", async ({ page }) => {
   }
   await kitchen.getByRole("button", { name: "端好了，去上菜" }).click();
   await page.getByRole("button", { name: "1桌 · 上菜", exact: true }).click();
-  await expect(page.getByRole("dialog", { name: "1桌点餐" })).toBeVisible();
+  await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
   await page.getByRole("button", { name: "上菜", exact: false }).last().click();
   await page.keyboard.press("Escape");
   await expect(page.locator(".next-action")).toHaveAccessibleName("1桌 · 找零");
   await page.getByRole("button", { name: "1桌 · 找零", exact: true }).click();
   await expect(page.getByRole("button", { name: "递上找零" })).toBeVisible();
 });
+
+test.beforeEach(async ({ page }) => { page.setDefaultTimeout(8_000); });

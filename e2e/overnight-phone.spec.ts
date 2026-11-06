@@ -1,3 +1,5 @@
+import { interactAt } from "./world-journey";
+import { privateArtifact } from "./private-artifacts";
 import { test, expect, type Page, type Locator } from "@playwright/test";
 import { withSkip } from "./opening";
 import type { Content, GameState } from "../src/contracts";
@@ -54,7 +56,7 @@ for (const viewport of [
     page.on("pageerror", error => errors.push(error.message));
     page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
     const screenshot = async (name: string) => {
-      await page.screenshot({ path: `output/playwright/0036/${viewport.width}x${viewport.height}-${name}.png`, scale: "css" });
+      await page.screenshot({ path: privateArtifact(`output/playwright/0036/${viewport.width}x${viewport.height}-${name}.png`), scale: "css" });
     };
     await page.goto(withSkip("/?test=1&seed=42"));
     await expect(page.getByRole("dialog", { name: "怎么玩" })).toBeVisible();
@@ -68,7 +70,7 @@ for (const viewport of [
       const { state, content } = await data(page);
       const order = content.orders.find(entry => entry.id === state.customers.find(customer => customer.table === table)!.orderId)!;
       await page.locator(".customer-row").nth(table - 1).click();
-      await expect(page.getByRole("dialog", { name: `${table}桌点餐` })).toBeVisible();
+      await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
       await checkLayout(page, page.getByRole("dialog"));
       if (table === 1) {
         await screenshot("order");
@@ -79,7 +81,7 @@ for (const viewport of [
         await screenshot("word");
         await page.getByRole("button", { name: "关闭词卡" }).click();
       }
-      await page.getByRole("button", { name: "去厨房", exact: true }).click();
+      await interactAt(page, "restaurant.kitchen");
       const kitchen = page.getByRole("dialog", { name: "厨房", exact: true });
       await expect(kitchen).toBeVisible();
       await checkLayout(page, kitchen);
@@ -94,7 +96,7 @@ for (const viewport of [
       if (table === 1) await screenshot("kitchen-action");
       await carry.click();
       await page.locator(".customer-row").nth(table - 1).click();
-      await expect(page.getByRole("dialog", { name: `${table}桌点餐` })).toBeVisible();
+      await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
       await page.getByRole("dialog").getByRole("button", { name: "上菜", exact: false }).click();
       await expect(page.locator(".change-display")).toBeVisible();
       await checkLayout(page, page.getByRole("dialog"));
@@ -125,3 +127,5 @@ for (const viewport of [
   });
   });
 }
+
+test.beforeEach(async ({ page }) => { page.setDefaultTimeout(8_000); });

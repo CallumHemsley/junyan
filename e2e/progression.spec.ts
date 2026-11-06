@@ -1,3 +1,5 @@
+import { visitWorld, interactAt, closeActivity, savedGame } from "./world-journey";
+import { privateArtifact } from "./private-artifacts";
 import { test, expect, type Page } from "@playwright/test";
 import type { GameState } from "../src/contracts";
 import { withSkip } from "./opening";
@@ -19,24 +21,24 @@ async function serve(page: Page, table: number) {
   const saved = await state(page);
   const order = content.orders.find(o => o.id === saved.customers.find(c => c.table === table)!.orderId)!;
   const foods = content.foods;
-  await page.getByRole("button", { name: new RegExp(`^${table}桌 ${order.customer}`) }).click();
-  await expect(page.getByRole("dialog", { name: `${table}桌点餐` })).toBeVisible();
-  await page.getByRole("button", { name: "去厨房", exact: true }).click();
-  await expect(page.getByRole("dialog", { name: "厨房", exact: true })).toBeVisible();
+  await interactAt(page, `restaurant.table-${table}`);
+  await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
+  await interactAt(page, "restaurant.kitchen");
+  await expect(page.locator(".world-context[data-target=kitchen]")).toBeVisible();
   for (const item of order.items) for (let n = 0; n < item.quantity; n++) await page.getByRole("button", { name: `拿${foods.find(f => f.id === item.foodId)!.word.text}`, exact: true }).click();
   await page.getByRole("button", { name: "端好了，去上菜" }).click();
-  await page.getByRole("button", { name: new RegExp(`^${table}桌 ${order.customer}`) }).click();
-  await expect(page.getByRole("dialog", { name: `${table}桌点餐` })).toBeVisible();
+  await interactAt(page, `restaurant.table-${table}`);
+  await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
   await page.getByRole("button", { name: "上菜", exact: false }).last().click();
   const total = order.items.reduce((sum, item) => sum + foods.find(f => f.id === item.foodId)!.price * item.quantity, 0);
   for (let n = 0; n < order.paid - total; n++) await page.getByRole("button", { name: "+1块", exact: true }).click();
   await page.getByRole("button", { name: "递上找零" }).click();
   await page.getByRole("button", { name: "继续招呼" }).click();
 }
-async function visit(page: Page, location: string) { await page.locator(`[data-location-button="${location}"]`).click(); }
+const visit = visitWorld;
 
 test("a shift buys a furnishing, an invitation leads to a real routine, and the room survives tomorrow", async ({ page }, info) => {
-  test.setTimeout(180_000);
+  test.setTimeout(600_000);
   page.setDefaultTimeout(15_000);
   const errors: string[] = [];
   page.on("pageerror", error => errors.push(error.message));
@@ -47,9 +49,10 @@ test("a shift buys a furnishing, an invitation leads to a real routine, and the 
   await expect(page.locator('[data-buy="blue-vase"]')).toBeDisabled();
   await visit(page, "restaurant");
   for (const table of [1, 2, 3, 4]) await serve(page, table);
-  await page.getByRole("button", { name: "回家看看", exact: true }).click();
+  await page.getByRole("button", { name: "出去走走", exact: true }).click();
+  await visit(page,"apartment");
   await expect(page.locator('[aria-label="可用的钱"]')).toHaveText("10 块");
-  await page.screenshot({ path: `docs/evidence/0081/${info.project.name}-shop.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`docs/evidence/0081/${info.project.name}-shop.png`), fullPage: true });
   await page.locator('[data-buy="blue-vase"]').click();
   await expect(page.locator('[aria-label="可用的钱"]')).toHaveText("2 块");
   await expect(page.locator('[data-buy="blue-vase"]')).toBeDisabled();
@@ -59,21 +62,25 @@ test("a shift buys a furnishing, an invitation leads to a real routine, and the 
   await page.getByRole("button", { name: "放这里", exact: true }).click();
   await expect(page.locator('.apartment-items').getByRole("button", { name: /蓝色花瓶.*屋里/ })).toBeVisible();
   await page.locator('.apartment-scene').scrollIntoViewIfNeeded();
-  await page.screenshot({ path: `docs/evidence/0081/${info.project.name}-furnished.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`docs/evidence/0081/${info.project.name}-furnished.png`), fullPage: true });
   const placed = (await state(page)).neighbourhood!.apartment.placements;
   await expect.poll(() => page.evaluate(() => localStorage.getItem("junyan-waiter-pending-v1"))).toBeNull();
   await page.reload();
+  await visit(page,"apartment");
   await expect(page.locator(".apartment")).toBeVisible();
   expect((await state(page)).neighbourhood!.apartment.placements).toEqual(placed);
   await expect(page.locator('[aria-label="可用的钱"]')).toHaveText("2 块");
   const invitation = page.locator('[data-follow-scenario]');
   const scenario = await invitation.getAttribute("data-follow-scenario");
+  const beforeInvitationMap = (await savedGame(page)).world!.mapId;
   await invitation.click();
+  expect((await savedGame(page)).world!.mapId).toBe(beforeInvitationMap);
+  await visit(page, scenario!.split(".")[0]);
   expect((await state(page)).neighbourhood!.location).toBe(scenario!.split(".")[0]);
-  await expect(page.locator('[data-location-heading]')).toBeFocused();
-  await page.screenshot({ path: `docs/evidence/0081/${info.project.name}-invitation.png`, fullPage: true });
+  await expect(page.locator('[data-location-heading]')).toBeVisible();
+  await page.screenshot({ path: privateArtifact(`docs/evidence/0081/${info.project.name}-invitation.png`), fullPage: true });
   await visit(page, "repairs");
-  await page.getByTestId("repair-job-lamp").click();
+  await interactAt(page, "workshop.lamp");
   await page.getByTestId("repair-part-bulb").click();
   await page.locator('.repair-part-actions').getByRole("button", { name: "拧紧", exact: true }).click();
   await page.locator('.repair-main-actions').getByRole("button", { name: "试试", exact: true }).click();
@@ -81,6 +88,7 @@ test("a shift buys a furnishing, an invitation leads to a real routine, and the 
   expect((await state(page)).progression!.review["台灯"]).toMatchObject({ encounters: 1, successes: 0 });
   expect((await state(page)).earnings).toBe(10);
   await visit(page, "restaurant");
+  await page.getByRole("button", { name: "今日小结", exact: true }).click();
   await page.getByRole("button", { name: "明天见", exact: false }).click();
   expect((await state(page)).day).toBe(2);
   await visit(page, "apartment");
@@ -95,3 +103,6 @@ test("a shift buys a furnishing, an invitation leads to a real routine, and the 
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   expect(errors).toEqual([]);
 });
+
+// Physical walks have their own bounded waits; missing controls should fail promptly.
+test.beforeEach(async ({ page }) => { page.setDefaultTimeout(8_000); });

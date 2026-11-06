@@ -1,3 +1,5 @@
+import { interactAt } from "./world-journey";
+import { privateArtifact } from "./private-artifacts";
 import { appendFileSync } from "node:fs";
 import { test, expect, type Page } from "@playwright/test";
 import { probeAudio, silentResponse } from "./audio-fixtures";
@@ -68,7 +70,7 @@ test("settings preserve independent mute and level, keyboard never moves the wai
   await checkbox(page).check();
   await expect.poll(async () => (await native(page)).paused).toBe(false);
   expect((await native(page)).count).toBe(1);
-  await page.screenshot({ path: `docs/evidence/0063/screenshots/${info.project.name}-integrated-settings.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`docs/evidence/0063/screenshots/${info.project.name}-integrated-settings.png`), fullPage: true });
   for (const target of [settings(page), checkbox(page).locator(".."), slider]) {
     const box = await target.boundingBox();
     expect(box!.height).toBeGreaterThanOrEqual(44);
@@ -110,15 +112,15 @@ test("native ambience survives panel changes and pauses/resumes through app life
 test("real foreground speech ducks the bed and restores on native end, stop and word cancellation", async ({ page }) => {
   await page.route("**/*.wav", route => silentResponse(route, 300));
   await start(page);
-  await page.getByTestId("table-1").click();
-  await expect(page.getByRole("dialog", { name: "1桌点餐" })).toBeVisible();
+  await interactAt(page, "restaurant.table-1");
+  await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
   await expect.poll(async () => (await native(page)).volume).toBeCloseTo(.042);
   await expect.poll(async () => (await native(page)).volume, { timeout: 15000 }).toBeCloseTo(.1575);
   await page.getByRole("button", { name: "再听一遍", exact: true }).click();
   await expect.poll(async () => (await native(page)).volume).toBeCloseTo(.042);
   await page.getByRole("button", { name: "关闭", exact: true }).click();
   await expect.poll(async () => (await native(page)).volume).toBeCloseTo(.1575);
-  await page.getByTestId("table-1").click();
+  await interactAt(page, "restaurant.table-1");
   await page.locator(".spoken .word").first().click();
   await expect.poll(async () => (await native(page)).volume).toBeCloseTo(.042);
   await page.getByRole("button", { name: "关闭词卡" }).click();
@@ -157,7 +159,7 @@ test("resource failure retries the same ambience owner without disturbing speech
   expect((await native(page)).starts).toBe(3);
   expect((await native(page)).events[2].status).toBe("playing");
   await settings(page).click();
-  await page.getByTestId("table-1").click();
+  await interactAt(page, "restaurant.table-1");
   await expect.poll(() => page.evaluate(() => (window as any).__audioProbe.at(-1)?.status)).toBe("playing");
   expect((await native(page)).count).toBe(1);
   expect(diagnostics.get(page)!.every(message => message.startsWith("Failed to load resource:"))).toBe(true);
@@ -196,7 +198,7 @@ test("reduced-motion settings remain usable and contained", async ({ page }, inf
   await start(page);
   await settings(page).click();
   await expect(checkbox(page)).toBeVisible();
-  await page.screenshot({ path: `docs/evidence/0063/screenshots/${info.project.name}-integrated-reduced-motion.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`docs/evidence/0063/screenshots/${info.project.name}-integrated-reduced-motion.png`), fullPage: true });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
@@ -240,7 +242,7 @@ test.describe("touch activation", () => {
 test("foreground resource failure releases ducking and direct replay recovers", async ({ page }) => {
   await start(page);
   await page.route("**/*.wav", route => route.abort("failed"));
-  await page.getByTestId("table-1").click();
+  await interactAt(page, "restaurant.table-1");
   await expect(page.getByText("声音暂时没有播出，再点一次听听。")).toBeVisible();
   await expect.poll(async () => (await native(page)).volume).toBeCloseTo(.1575);
   await page.unroute("**/*.wav");
@@ -264,5 +266,7 @@ test("narrow phone settings keep every control inside screen gutters", async ({ 
   expect(box!.x).toBeGreaterThanOrEqual(12);
   expect(box!.x + box!.width).toBeLessThanOrEqual(308);
   await expect(checkbox(page)).toBeVisible();
-  await page.screenshot({ path: `docs/evidence/0063/screenshots/${info.project.name}-integrated-narrow-320.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`docs/evidence/0063/screenshots/${info.project.name}-integrated-narrow-320.png`), fullPage: true });
 });
+
+test.beforeEach(async ({ page }) => { page.setDefaultTimeout(8_000); });

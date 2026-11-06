@@ -1,3 +1,4 @@
+import { visitWorld } from "./world-journey";
 import { test, expect, type Page } from "@playwright/test";
 import { content } from "../src/content";
 import type { Content, GameState } from "../src/contracts";
@@ -29,11 +30,13 @@ test.describe("saved-fixture migration with real feature voices",()=>{
     await page.getByRole("button",{name:"开门迎客"}).click();
     await expect.poll(async()=>(await saved(page)).neighbourhood).toEqual(neighbourhood);
     expect((await saved(page)).journal.bun).toEqual(legacy.journal.bun);
-    await page.getByRole("navigation",{name:"楼里",exact:true}).getByRole("button",{name:"家",exact:true}).click();
-    await expect(page.locator(".apartment")).toBeVisible();
+    await visitWorld(page,"家");
+    await visitWorld(page,"家");
+  await expect(page.locator(".apartment")).toBeVisible();
     await expect.poll(async()=>(await saved(page)).neighbourhood?.location).toBe("apartment");
     await page.reload();
-    await expect(page.locator(".apartment")).toBeVisible();
+    await visitWorld(page,"家");
+  await expect(page.locator(".apartment")).toBeVisible();
     expect((await saved(page)).journal.bun).toEqual(legacy.journal.bun);
   });
 
@@ -49,11 +52,15 @@ test.describe("saved-fixture migration with real feature voices",()=>{
     expect((await saved(page)).neighbourhood?.cats.story.node).toBe("search");
     expect((await saved(page)).neighbourhood?.repairs).toEqual(partial);
     expect((await saved(page)).neighbourhood?.garden).toEqual(game.neighbourhood?.garden);
-    await page.getByRole("navigation",{name:"楼里",exact:true}).getByRole("button",{name:"家",exact:true}).click();
+    await visitWorld(page,"家");
     await expect(page.locator(".apartment-items").getByRole("button",{name:/凳子/})).toBeVisible();
     await page.reload();
-    await expect(page.locator(".apartment")).toBeVisible();
+    await visitWorld(page,"家");
+  await expect(page.locator(".apartment")).toBeVisible();
     expect((await saved(page)).neighbourhood?.claimedGiftIds).toEqual(["repairs.stool"]);
     expect((await saved(page)).neighbourhood?.apartment.owned.filter(id=>id==="repairs.stool")).toHaveLength(1);
   });
 });
+
+// Physical walks have their own bounded waits; missing controls should fail promptly.
+test.beforeEach(async ({ page }) => { page.setDefaultTimeout(8_000); });

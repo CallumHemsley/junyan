@@ -1,3 +1,4 @@
+import { privateArtifact } from "./private-artifacts";
 import {test,expect,type Page} from '@playwright/test';
 import {withSkip} from './opening';
 
@@ -41,7 +42,7 @@ test('reduced motion draws on input, then stays idle and restores after scrollin
   await page.waitForTimeout(350);expect(await draws(page)).toBe(offscreen);
   await page.evaluate(()=>window.scrollTo(0,0));
   await expect.poll(()=>draws(page)).toBeGreaterThan(offscreen);await settle(page);
-  await page.screenshot({path:`output/playwright/0041/${info.project.name}-restored.png`,fullPage:false});
+  await page.screenshot({path:privateArtifact(`output/playwright/0041/${info.project.name}-restored.png`),fullPage:false});
   expect(errors).toEqual([]);
 });
 

@@ -1,3 +1,4 @@
+import { privateArtifact } from "./private-artifacts";
 import { test, expect, type Page } from '@playwright/test';
 import { initialState, reduce, type State } from '../src/features/repairs/rules';
 
@@ -15,7 +16,7 @@ test('isolated repair journey preserves physical causes, reversible choices and 
   await page.goto('/evidence/0069/harness.html');
   await expect(page.getByTestId('repairs')).toBeVisible();
   await expect.poll(async () => (await read(page)).plays).toEqual(['repairs.lamp-intro']);
-  await page.screenshot({ path: `evidence/0069/${info.project.name}-initial.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`evidence/0069/${info.project.name}-initial.png`), fullPage: true });
   await main(page, '试试');
   await expect(page.getByTestId('repair-scene')).toHaveAttribute('data-test', 'unstable');
   await part(page, 'bulb');
@@ -48,7 +49,7 @@ test('isolated repair journey preserves physical causes, reversible choices and 
   expect((await read(page)).recoveries).toHaveLength(recoveredBeforeLoosening);
   await main(page, '试试');
   await expect(page.getByTestId('repair-feedback')).toHaveText('好了现在亮了');
-  await page.screenshot({ path: `evidence/0069/${info.project.name}-lamp-steady.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`evidence/0069/${info.project.name}-lamp-steady.png`), fullPage: true });
   await main(page, '放回');
   expect((await read(page)).state.completed).toEqual(['lamp']);
   await expect(page.getByRole('button', { name: '再修一次', exact: true })).toBeFocused();
@@ -59,13 +60,13 @@ test('isolated repair journey preserves physical causes, reversible choices and 
   await expect(page.getByTestId('repair-scene')).toHaveAttribute('data-test', 'still');
   await action(page, '打开');
   await part(page, 'cell');
-  await page.screenshot({ path: `evidence/0069/${info.project.name}-toy-exposed.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`evidence/0069/${info.project.name}-toy-exposed.png`), fullPage: true });
   await action(page, '换电池');
   await part(page, 'cover');
   await action(page, '盖上');
   await main(page, '试试');
   await expect(page.getByTestId('repair-scene')).toHaveAttribute('data-test', 'moving');
-  await page.screenshot({ path: `evidence/0069/${info.project.name}-toy-moving.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`evidence/0069/${info.project.name}-toy-moving.png`), fullPage: true });
   await main(page, '放回');
   await expect(page.getByTestId('repair-feedback')).toHaveText('都修好了这个木头凳子给你');
   const returned = await read(page);
@@ -73,7 +74,7 @@ test('isolated repair journey preserves physical causes, reversible choices and 
   expect(returned.plays.at(-1)).toBe('repairs.all-complete');
   await expect(page.locator('.repair-speaker')).toContainText('林姐');
   await expect(page.locator('.repair-scene canvas')).toHaveAttribute('data-speaker', '林姐');
-  await page.screenshot({ path: `evidence/0069/${info.project.name}-shelf.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`evidence/0069/${info.project.name}-shelf.png`), fullPage: true });
   await action(page, '再修一次');
   expect((await read(page)).state.completed).toEqual(['lamp', 'toy']);
   const count = (await read(page)).recoveries.length;
@@ -100,7 +101,7 @@ test('isolated keyboard, touch dimensions and reduced motion remain usable', asy
   expect(dimensions.filter(box => box.height < 44 || box.width < 44)).toEqual([]);
   const sizes = await page.evaluate(() => ({ width: innerWidth, document: document.documentElement.scrollWidth }));
   expect(sizes.document).toBeLessThanOrEqual(sizes.width);
-  await page.screenshot({ path: `evidence/0069/${info.project.name}-reduced-motion.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`evidence/0069/${info.project.name}-reduced-motion.png`), fullPage: true });
 });
 
 test('toy may return first, and the final lamp return stages the gift speaker consistently', async ({ page }, info) => {
@@ -123,7 +124,7 @@ test('toy may return first, and the final lamp return stages the gift speaker co
   await expect(page.getByTestId('repair-feedback')).toHaveText('都修好了这个木头凳子给你');
   await expect(page.locator('.repair-scene canvas')).toHaveAttribute('data-speaker', '林姐');
   expect((await read(page)).plays.at(-1)).toBe('repairs.all-complete');
-  await page.screenshot({ path: `evidence/0069/${info.project.name}-lamp-last-shelf.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`evidence/0069/${info.project.name}-lamp-last-shelf.png`), fullPage: true });
 });
 
 test.skip('integrated navigation, IndexedDB reload, offline natural voices and old saves await central integration and synthesis', () => {});

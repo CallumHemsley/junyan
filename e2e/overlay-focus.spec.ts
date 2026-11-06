@@ -1,3 +1,5 @@
+import { interactAt } from "./world-journey";
+import { privateArtifact } from "./private-artifacts";
 import { test, expect } from "@playwright/test";
 import { seedDayOne, withSkip } from "./opening";
 import type { Action, Content, GameState } from "../src/contracts";
@@ -30,7 +32,7 @@ for (const build of ["development", "production"]) {
         });
         const tableTrigger = page.getByRole("group", { name: "今日客人", exact: true }).getByRole("button", { name: /^1桌 / });
         await tableTrigger.click();
-        const tableDialog = page.getByRole("dialog", { name: "1桌点餐" });
+        const tableDialog = page.locator(".world-context[data-target=table]");
         const parentClose = tableDialog.getByRole("button", { name: "关闭", exact: true });
         await expect(parentClose).toBeFocused();
         const wordTrigger = tableDialog.locator(".character-greeting .word").first();
@@ -58,7 +60,7 @@ for (const build of ["development", "production"]) {
         await expect(replay).toBeFocused();
         await page.keyboard.press("Tab");
         await expect(sourceWords.first()).toBeFocused();
-        await page.screenshot({ path: `output/playwright/0025/${info.project.name}-${build}-${activation}-word-focus.png`, fullPage: true });
+        await page.screenshot({ path: privateArtifact(`output/playwright/0025/${info.project.name}-${build}-${activation}-word-focus.png`), fullPage: true });
         await page.keyboard.press("Escape");
         await expect(wordCard).toHaveCount(0);
         await expect(tableDialog).toBeVisible();
@@ -82,11 +84,11 @@ for (const build of ["development", "production"]) {
         await expect(page.locator(".world-footer")).not.toContainText("走过去");
         await page.waitForTimeout(3500);
         await expect(help).toBeVisible();
-        await expect(page.getByRole("dialog", { name: "4桌点餐" })).toHaveCount(0);
-        await page.screenshot({ path: `output/playwright/0025/${info.project.name}-${build}-${helpButton.includes("world-footer") ? "footer" : "header"}-help-stable.png`, fullPage: true });
+        await expect(page.locator(".world-context[data-target=table]")).toHaveCount(0);
+        await page.screenshot({ path: privateArtifact(`output/playwright/0025/${info.project.name}-${build}-${helpButton.includes("world-footer") ? "footer" : "header"}-help-stable.png`), fullPage: true });
         await page.keyboard.press("Escape");
         await page.getByRole("group", { name: "今日客人", exact: true }).getByRole("button", { name: /^4桌 / }).click();
-        await expect(page.getByRole("dialog", { name: "4桌点餐" })).toBeVisible();
+        await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
       });
     }
   });
@@ -130,7 +132,7 @@ test("receipt word targets are at least 44px and restore focus", async ({ page }
     expect(box!.width).toBeGreaterThanOrEqual(44);
     expect(box!.height).toBeGreaterThanOrEqual(44);
   }
-  await page.screenshot({ path: `output/playwright/0025/${info.project.name}-receipt-targets.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`output/playwright/0025/${info.project.name}-receipt-targets.png`), fullPage: true });
   await receiptWords.first().click();
   await expect(page.getByRole("button", { name: "关闭词卡" })).toBeFocused();
   await page.getByRole("button", { name: "关闭词卡" }).click();
@@ -141,8 +143,8 @@ test("kitchen, tray, and journal word cards restore their own triggers", async (
   await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   await page.getByRole("group", { name: "今日客人", exact: true }).getByRole("button", { name: /^1桌 / }).click();
-  await page.getByRole("button", { name: "去厨房", exact: true }).click();
-  const kitchen = page.getByRole("dialog", { name: "厨房" });
+  await interactAt(page, "restaurant.kitchen");
+  const kitchen = page.locator(".world-context[data-target=kitchen]");
   const kitchenWord = kitchen.locator(".food-listen").first();
   await kitchenWord.click();
   await expect(page.getByRole("button", { name: "关闭词卡" })).toBeFocused();
@@ -164,3 +166,5 @@ test("kitchen, tray, and journal word cards restore their own triggers", async (
   await page.keyboard.press("Escape");
   await expect(page.getByRole("button", { name: /本子/ })).toBeFocused();
 });
+
+test.beforeEach(async ({ page }) => { page.setDefaultTimeout(8_000); });

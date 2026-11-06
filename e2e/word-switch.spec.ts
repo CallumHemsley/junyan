@@ -1,3 +1,5 @@
+import { interactAt } from "./world-journey";
+import { privateArtifact } from "./private-artifacts";
 import { test, expect, type Locator, type Page } from "@playwright/test";
 import { seedDayOne, withSkip } from "./opening";
 import { probeAudio, silentResponse } from "./audio-fixtures";
@@ -16,7 +18,7 @@ async function switchWords(page: Page, sources: Locator, touch: boolean, shot: s
     await expect(title).toHaveText(name!.trim().replace(/听过.*$/s, "").trim());
     await expect(card).toHaveCount(1);
   }
-  await page.screenshot({ path: process.env.JUNYAN_REDUCED_MOTION === "reduce" ? shot.replace(/\.png$/, "-reduced.png") : shot, fullPage: true });
+  await page.screenshot({ path: privateArtifact(process.env.JUNYAN_REDUCED_MOTION === "reduce" ? shot.replace(/\.png$/, "-reduced.png") : shot), fullPage: true });
   await page.keyboard.press("Escape");
   await expect(card).toHaveCount(0);
   await expect(sources.nth(1)).toBeFocused();
@@ -46,8 +48,8 @@ for (const build of ["development", "production"]) {
     await switchWords(page, help.locator("[data-word-lookup]"), isMobile, `output/playwright/0061/${info.project.name}-${build}-help.png`);
     await expect(help).toBeVisible();
     await page.getByRole("button", { name: "开门迎客" }).click();
-    await page.getByTestId("table-1").click();
-    const parent = page.getByRole("dialog", { name: "1桌点餐" });
+    await interactAt(page, "restaurant.table-1");
+    const parent = page.locator(".world-context[data-target=table]");
     await switchWords(page, parent.locator(".spoken .word"), isMobile, `output/playwright/0061/${info.project.name}-${build}-restaurant.png`);
     await expect(parent).toBeVisible();
     await page.keyboard.press("Escape");
@@ -68,9 +70,9 @@ test("hospital words switch without advancing the opening", async ({ page, isMob
 test("kitchen, tray, journal and receipt sources keep switching", async ({ page, isMobile }, info) => {
   await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
-  await page.getByTestId("table-1").click();
-  await page.getByRole("button", { name: "去厨房", exact: true }).click();
-  const kitchen = page.getByRole("dialog", { name: "厨房" });
+  await interactAt(page, "restaurant.table-1");
+  await interactAt(page, "restaurant.kitchen");
+  const kitchen = page.locator(".world-context[data-target=kitchen]");
   await switchWords(page, kitchen.locator(".food-listen"), isMobile, `output/playwright/0061/${info.project.name}-kitchen.png`);
   await kitchen.locator(".food-listen").first().click();
   const trayBefore = await page.evaluate(() => (window as any).__TEST__.getState().tray);
@@ -99,8 +101,8 @@ test("kitchen, tray, journal and receipt sources keep switching", async ({ page,
     const total = order.items.reduce((s: number, i: any) => s + i.quantity * h.content.foods.find((f: any) => f.id === i.foodId).price, 0);
     h.dispatch({ type: "pay", table: 1, change: order.paid - total });
   });
-  await page.getByTestId("table-1").click();
-  const parent = page.getByRole("dialog", { name: "1桌点餐" });
+  await interactAt(page, "restaurant.table-1");
+  const parent = page.locator(".world-context[data-target=table]");
   await expect(parent.locator(".receipt")).toBeVisible();
   const sources = parent.locator(".receipt button, .receipt ~ .spoken .word");
   await switchWords(page, sources, isMobile, `output/playwright/0061/${info.project.name}-receipt.png`);
@@ -111,7 +113,7 @@ test("rapid keyboard/pointer selection records once and cancels prior native aud
   await page.route("**/*.wav", route => silentResponse(route, 800));
   await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
-  await page.getByTestId("table-1").click();
+  await interactAt(page, "restaurant.table-1");
   const sources = page.locator(".paper-panel .spoken .word");
   const before = await page.evaluate(() => (window as any).__TEST__.getState().journal);
   const selected: string[] = [];
@@ -141,3 +143,5 @@ test("rapid keyboard/pointer selection records once and cancels prior native aud
     expect(after.journal[id].lookups - (before[id]?.lookups ?? 0)).toBe(selected.filter(w => w === hanzi).length);
   }
 });
+
+test.beforeEach(async ({ page }) => { page.setDefaultTimeout(8_000); });

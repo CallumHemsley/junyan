@@ -1,3 +1,5 @@
+import { interactAt } from "./world-journey";
+import { privateArtifact } from "./private-artifacts";
 import { test, expect, type Page } from "@playwright/test";
 import { withSkip } from "./opening";
 import { probeAudio, silentResponse, silentWav } from "./audio-fixtures";
@@ -12,8 +14,8 @@ const diagnostics = new WeakMap<Page, { pageErrors: string[]; consoleErrors: str
 async function openTable(page: Page) {
   await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
-  await page.getByTestId("table-1").click();
-  await expect(page.getByRole("dialog", { name: "1桌点餐" })).toBeVisible();
+  await interactAt(page, "restaurant.table-1");
+  await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
 }
 async function settled(page: Page) {
   await page.waitForFunction(() => (window as any).__audioProbe.length &&
@@ -55,7 +57,7 @@ test("replay during initial load ignores the superseded native AbortError", asyn
   const events = await settled(page);
   await expect.poll(() => page.evaluate(() => (window as any).__lastAudio.currentTime)).toBeGreaterThan(0);
   await info.attach("native-playback", { body: JSON.stringify({ events, errors }, null, 2), contentType: "application/json" });
-  await page.screenshot({ path: `output/playwright/diagnosis/${info.project.name}-${process.env.AUDIO_EVIDENCE || "after"}.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`output/playwright/diagnosis/${info.project.name}-${process.env.AUDIO_EVIDENCE || "after"}.png`), fullPage: true });
   expect(events[0].status).toBe("AbortError");
   expect(events.at(-1).status).toBe("playing");
   expect(events.every((row: any) => !row.muted && row.volume === 1)).toBe(true);
@@ -111,8 +113,8 @@ test("day reset invalidates pending audio without polluting the next dialogue", 
   await openTable(page);
   await page.evaluate(() => (window as any).__TEST__.reset());
   expect((await settled(page)).at(-1).status).toBe("AbortError");
-  await page.getByTestId("table-1").click();
-  await expect(page.getByRole("dialog", { name: "1桌点餐" })).toBeVisible();
+  await interactAt(page, "restaurant.table-1");
+  await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
   expect((await settled(page)).at(-1).status).toBe("playing");
   await expect(page.getByText(failure)).toBeHidden();
 });
@@ -126,7 +128,7 @@ test("expired walking gesture reports native policy rejection and direct replay 
   await page.route("**/*.wav", route => silentResponse(route));
   await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
-  await page.getByTestId("table-1").click();
+  await interactAt(page, "restaurant.table-1");
   await page.waitForTimeout(10000);
   const initial = await settled(page);
   expect(initial[0].sinceClick).toBeGreaterThan(5000);
@@ -144,7 +146,7 @@ test("autosaving a word does not invalidate its pending playback", async ({ page
   await page.route("**/*.wav", route => silentResponse(route, 1200));
   await page.goto(withSkip("/"));
   await page.getByRole("button", { name: "开门迎客" }).click();
-  await page.getByTestId("table-1").click();
+  await interactAt(page, "restaurant.table-1");
   await page.locator(".spoken .word").first().click();
   await expect.poll(() => page.evaluate(async () => {
     const database = await new Promise<IDBDatabase>((resolve, reject) => {
@@ -222,3 +224,5 @@ test("raw repository WAVs contain PCM samples and silent fixtures preserve heade
     expect(dataBytes).toBeGreaterThan(0);
   }
 });
+
+test.beforeEach(async ({ page }) => { page.setDefaultTimeout(8_000); });

@@ -1,3 +1,5 @@
+import { interactAt } from "./world-journey";
+import { privateArtifact } from "./private-artifacts";
 import { test, expect, type Page } from "@playwright/test";
 import { content } from "../src/content";
 import { KITCHEN, TABLES, type Content, type GameState } from "../src/contracts";
@@ -55,16 +57,16 @@ for (const corruption of ["duplicate-tables", "four-served-no-end", "wrong-table
     await seedDayOne(page, baseURL!, state);
     await page.goto(withSkip("/?seed=42"));
     await page.getByRole("button", { name: "开门迎客" }).click();
-    await page.getByTestId("table-2").click();
-    await expect(page.getByRole("dialog", { name: "2桌点餐" })).toBeVisible();
+    await interactAt(page, "restaurant.table-2");
+    await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
     await expect(page.locator(".spoken .word").first()).toBeVisible();
     await expect.poll(async () => (await stored(page))?.customers[1].phase).toBe("ordered");
     await page.reload();
     await page.getByRole("button", { name: "开门迎客" }).click();
-    await page.getByTestId("table-2").click();
-    await expect(page.getByRole("dialog", { name: "2桌点餐" })).toBeVisible();
+    await interactAt(page, "restaurant.table-2");
+    await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
     await expect(page.locator(".spoken .word").first()).toBeVisible();
-    await page.screenshot({ path: `output/playwright/save-${info.project.name}-${corruption}.png`, fullPage: true });
+    await page.screenshot({ path: privateArtifact(`output/playwright/save-${info.project.name}-${corruption}.png`), fullPage: true });
     expect(errors).toEqual([]);
   });
 }
@@ -85,7 +87,7 @@ test("completed IndexedDB save advances days and preserves journal and earnings"
   expect(saved.journal).toEqual(state.journal);
   await page.getByRole("button", { name: /本子/ }).click();
   await expect(page.locator(".journal-list")).toContainText(content.foods[0].word.text);
-  await page.screenshot({ path: `output/playwright/save-${info.project.name}-journal-next-day.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`output/playwright/save-${info.project.name}-journal-next-day.png`), fullPage: true });
 });
 
 function legacyDay() {
@@ -110,7 +112,7 @@ test("legacy journal words render plain in the order line and the rest stay fogg
   await seedDayOne(page, baseURL!, { ...state, journal });
   await page.goto(withSkip("/?seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
-  await page.getByTestId("table-1").click();
+  await interactAt(page, "restaurant.table-1");
   const words = page.locator(".paper-panel > .spoken .word");
   await expect(words).toHaveCount(line.length);
   const looks = await words.evaluateAll((buttons) => buttons.map((button) => button.className));
@@ -132,3 +134,5 @@ test("legacy checkpoint is rewritten and cleared after autosave", async ({ page 
   await expect.poll(() => page.evaluate(() => localStorage.getItem("junyan-waiter-pending-v1"))).toBeNull();
   expect((await stored(page)).journal.bun).toEqual({ lookups: 2, lastSeen: 1.5, recovered: true });
 });
+
+test.beforeEach(async ({ page }) => { page.setDefaultTimeout(8_000); });

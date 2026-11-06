@@ -1,3 +1,4 @@
+import { interactAt } from "./world-journey";
 import { test, expect } from "@playwright/test";
 import { seedDayOne } from "./opening";
 import content from "../src/content/content.json" with { type: "json" };
@@ -31,8 +32,8 @@ test("production keeps the restaurant and Mandarin audio available offline", asy
   await context.setOffline(true);
   await page.reload();
   await page.getByRole("button", { name: "开门迎客" }).click();
-  await page.getByTestId("table-1").click();
-  await expect(page.getByRole("dialog", { name: "1桌点餐" })).toBeVisible();
+  await interactAt(page, "restaurant.table-1");
+  await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
   const paths = content.orders.filter(order => order.level === 1).map(order => order.line.audio);
   paths.push(content.foods[0].word.audio);
   for (const path of paths) {
@@ -50,3 +51,5 @@ test("production keeps the restaurant and Mandarin audio available offline", asy
   expect(audioRequests.every(url => new URL(url).pathname.startsWith("/junyan/audio/"))).toBe(true);
   expect(errors).toEqual([]);
 });
+
+test.beforeEach(async ({ page }) => { page.setDefaultTimeout(8_000); });

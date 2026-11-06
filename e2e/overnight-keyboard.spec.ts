@@ -1,3 +1,5 @@
+import { interactAt } from "./world-journey";
+import { privateArtifact } from "./private-artifacts";
 import { test, expect, type Locator, type Page } from "@playwright/test";
 import { seedDayOne, withSkip } from "./opening";
 import { KITCHEN, TABLES, type Action, type Content, type GameState } from "../src/contracts";
@@ -95,7 +97,7 @@ test("kitchen closes back to the original table trigger after walking", async ({
   const trigger = page.getByRole("group", { name: "今日客人", exact: true })
     .getByRole("button", { name: /^1桌 / });
   await activate(page, trigger);
-  await expect(page.getByRole("dialog", { name: "1桌点餐" })).toBeVisible();
+  await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
   await activate(page, page.getByRole("button", { name: "去厨房", exact: true }));
   await expect(page.getByRole("dialog", { name: "厨房", exact: true })).toBeVisible();
   await page.keyboard.press("Escape");
@@ -113,7 +115,7 @@ test("modified arrow shortcuts do not move the waiter", async ({ page }) => {
 });
 
 test("keyboard journey keeps named controls and focus across a full day", async ({ page }, info) => {
-  await page.screenshot({ path: `output/playwright/0037/${info.project.name}-restaurant.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`output/playwright/0037/${info.project.name}-restaurant.png`), fullPage: true });
   expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
   const { state, content } = await snapshot(page);
   for (const customer of state.customers) {
@@ -139,7 +141,7 @@ test("keyboard journey keeps named controls and focus across a full day", async 
       await expect(card.getByRole("button", { name: "听这个词" })).toBeFocused();
       await page.keyboard.press("Tab");
       await expect(sourceWords.first()).toBeFocused();
-      await page.screenshot({ path: `output/playwright/0037/${info.project.name}-word-card.png`, fullPage: true });
+      await page.screenshot({ path: privateArtifact(`output/playwright/0037/${info.project.name}-word-card.png`), fullPage: true });
       await page.keyboard.press("Escape");
       await expect(word).toBeFocused();
       await expect(dialog).toBeVisible();
@@ -175,12 +177,12 @@ test("keyboard journey keeps named controls and focus across a full day", async 
   await expect(summary.getByRole("button", { name: "明天见" })).toBeFocused();
   await page.keyboard.press("Tab");
   await expect(summary.getByRole("button", { name: "回家看看" })).toBeFocused();
-  await page.screenshot({ path: `output/playwright/0037/${info.project.name}-summary.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`output/playwright/0037/${info.project.name}-summary.png`), fullPage: true });
   await activate(page, summary.getByRole("button", { name: "明天见" }));
   expect((await snapshot(page)).state.day).toBe(2);
   await activate(page, page.getByRole("button", { name: /本子/ }));
   await expect(page.locator(".journal-list button").first()).toBeVisible();
-  await page.screenshot({ path: `output/playwright/0037/${info.project.name}-journal.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`output/playwright/0037/${info.project.name}-journal.png`), fullPage: true });
 });
 
 test("production keyboard interruption does not reopen a cancelled table", async ({ page }) => {
@@ -214,7 +216,7 @@ for (const abortWrites of [false, true]) {
     await page.getByRole("button", { name: "开门迎客" }).click();
     await page.getByRole("group", { name: "今日客人", exact: true })
       .getByRole("button", { name: /^1桌 / }).click();
-    const dialog = page.getByRole("dialog", { name: "1桌点餐" });
+    const dialog = page.locator(".world-context[data-target=table]");
     await expect(dialog).toBeVisible();
     await page.waitForTimeout(650);
     await dialog.getByRole("button", { name: "包子", exact: true }).click();
@@ -239,7 +241,7 @@ for (const invalid of ["{", "{}"] as const) {
     await page.getByRole("button", { name: "开门迎客" }).click();
     await page.getByRole("group", { name: "今日客人", exact: true })
       .getByRole("button", { name: /^1桌 / }).click();
-    await page.getByRole("dialog", { name: "1桌点餐" })
+    await page.locator(".world-context[data-target=table]")
       .getByRole("button", { name: "包子", exact: true }).click();
     await expect.poll(() => page.evaluate(() => localStorage.getItem("junyan-waiter-pending-v1"))).toBeNull();
     await page.evaluate((invalid) => localStorage.setItem("junyan-waiter-pending-v1", invalid), invalid);
@@ -255,7 +257,7 @@ test("a failed checkpoint write cannot override a later successful IndexedDB sav
   await page.getByRole("button", { name: "开门迎客" }).click();
   await page.getByRole("group", { name: "今日客人", exact: true })
     .getByRole("button", { name: /^1桌 / }).click();
-  const bun = page.getByRole("dialog", { name: "1桌点餐" })
+  const bun = page.locator(".world-context[data-target=table]")
     .getByRole("button", { name: "包子", exact: true });
   await bun.click();
   expect(await page.evaluate(() => localStorage.getItem("junyan-waiter-pending-v1"))).not.toBeNull();
@@ -271,3 +273,5 @@ test("a failed checkpoint write cannot override a later successful IndexedDB sav
   await page.getByRole("button", { name: /本子/ }).click();
   await expect(page.locator(".journal-list button").filter({ hasText: "包子" })).toContainText("听过 2 次");
 });
+
+test.beforeEach(async ({ page }) => { page.setDefaultTimeout(8_000); });

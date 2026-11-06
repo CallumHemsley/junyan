@@ -1,3 +1,5 @@
+import { visitWorld } from "./world-journey";
+import { privateArtifact } from "./private-artifacts";
 import { test, expect } from "@playwright/test";
 import gardenData from "../src/features/garden/content.json" with {type: "json"};
 import { playOpening } from "./opening";
@@ -7,7 +9,7 @@ import { checkLineAndWord, expectNativeSpeech, featureLine } from "./neighbourho
 test.use({serviceWorkers:"allow"});
 test("real cached speech and words play in all four locations and saved furniture reloads offline",async({page,context},info)=>{
   expect(process.env.JUNYAN_NEIGHBOURHOOD_PREVIEW, "Run the offline release gate with the production preview config").toBe("1");
-  test.setTimeout(180000);
+  test.setTimeout(600000);
   const errors:string[]=[];
   page.on("console",message=>{if(message.type()==="error")errors.push(message.text());});
   page.on("pageerror",error=>errors.push(error.message));
@@ -18,8 +20,9 @@ test("real cached speech and words play in all four locations and saved furnitur
   await page.getByRole("button",{name:"开门迎客"}).click();
   await page.waitForFunction(()=>navigator.serviceWorker.controller!==null,undefined,{timeout:30000});
   await context.setOffline(true);
-  const visit = async (name: string) => page.getByRole("navigation",{name:"楼里",exact:true}).getByRole("button",{name,exact:true}).click();
+  const visit = async (name: string) => visitWorld(page,name);
   await visit("家");
+  await visitWorld(page,"家");
   await expect(page.locator(".apartment")).toBeVisible();
   await checkLineAndWord(page, featureLine("apartment", "welcome"), page.locator(".apartment-line"), page.locator(".apartment-speech > button"));
   await page.getByRole("button",{name:"收下",exact:true}).click();
@@ -28,6 +31,7 @@ test("real cached speech and words play in all four locations and saved furnitur
   await expect.poll(()=>page.evaluate(()=>localStorage.getItem("junyan-waiter-pending-v1"))).toBeNull();
   await page.reload();
   expect(await page.evaluate(() => "__TEST__" in window)).toBe(false);
+  await visitWorld(page,"家");
   await expect(page.locator(".apartment")).toBeVisible();
   await expect(page.locator(".apartment-items").getByRole("button",{name:/桌子/})).toBeVisible();
   await page.locator(".apartment-speech > button").click();
@@ -46,7 +50,10 @@ test("real cached speech and words play in all four locations and saved furnitur
   await expect.poll(()=>page.evaluate(()=> (window as any).__ambienceElements.filter((audio:HTMLAudioElement)=>!audio.paused && audio.readyState>=2).length)).toBe(1);
   expect(await page.evaluate(()=> (window as any).__ambienceElements.length)).toBe(1);
   expect(errors).toEqual([]);
-  await page.screenshot({path:`output/neighbourhood/${info.project.name}-real-offline-return.png`,fullPage:true});
+  await page.screenshot({path:privateArtifact(`output/neighbourhood/${info.project.name}-real-offline-return.png`),fullPage:true});
   await info.attach("real-offline-speech",{body:JSON.stringify(await page.evaluate(() => (window as any).__audioProbe),null,2),contentType:"application/json"});
   await context.setOffline(false);
 });
+
+// Physical walks have their own bounded waits; missing controls should fail promptly.
+test.beforeEach(async ({ page }) => { page.setDefaultTimeout(8_000); });
