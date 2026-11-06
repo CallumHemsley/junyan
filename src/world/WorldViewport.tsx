@@ -20,6 +20,7 @@ import {nearbyTargets,selectTarget,cycleTarget,type NearbyTarget,type TargetSele
 import {currentPlaceWords,targetWords,placeBadgePaths,worldPlaceName,worldRegionName} from "./target-labels";
 import {mandarinUi as ui} from "../language/ui";
 import {language} from "../language";
+import {createFrameCadence,advanceFrameCadence} from "./frame-cadence";
 import "./world.css";
 const directions:Record<string,Point>={ArrowUp:{x:-1,y:-1},w:{x:-1,y:-1},ArrowDown:{x:1,y:1},s:{x:1,y:1},ArrowLeft:{x:-1,y:1},a:{x:-1,y:1},ArrowRight:{x:1,y:-1},d:{x:1,y:-1}};
 export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},dialogue=null,fresh,onAction,paused=false}:{state:WorldState;maps:MapRegistry;game:GameState;onPlay?:(line:Line)=>void;dialogue?:Line|null;onLookup:(word:Word,trigger:HTMLButtonElement)=>void;fresh:string[];onAction:(action:WorldAction|WorldLifeAction)=>void;paused?:boolean}) {
@@ -60,9 +61,11 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   const element=canvas.current;if(!element)return;
   const context=element.getContext("2d");if(!context)return;
   const preference=matchMedia("(prefers-reduced-motion: reduce)");
-  let frame=0,last=0,lastDraw=0,elapsedMs=elapsed.current;
+  let frame=0,last=0,elapsedMs=elapsed.current;
+  let cadence=createFrameCadence();
   const tick=(now:number)=>{
    frame=0;if(document.hidden)return;
+   const cadenceStep=advanceFrameCadence(cadence,now);cadence=cadenceStep.state;
    const dt=last?Math.min((now-last)/1000,.04):0;last=now;elapsedMs+=dt*1000;if(Math.floor(elapsedMs/500)!==Math.floor(elapsed.current/500))setClock(elapsedMs);elapsed.current=elapsedMs;
    const current=latest.current,map=current.maps[current.state.mapId];if(!map)return;
    if(elapsedMs-lastClockWrite.current>=1000){lastClockWrite.current=elapsedMs;current.onAction({type:"world-clock",elapsedMs});}
@@ -84,10 +87,10 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
     if(target){const point=project(target.position,camera,surfaceHeight(map.id,target.position));cue.current.style.left=`${point.x*viewport.width/width}px`;cue.current.style.top=`${point.y*viewport.height/height}px`;cue.current.hidden=point.x<0||point.y<0||point.x>width||point.y>height;}
     else cue.current.hidden=true;
    }
-   if(now-lastDraw>=1000/30){context.setTransform(dpr,0,0,dpr,0,0);paintWorld(context,map,{project:(p,z)=>project(p,camera,z),elapsedMs,reducedMotion:preference.matches,playerPosition:current.state.position,width,height,pass:"ground"},current.state.facing,moving,camera.scale,current.game,current.state,actorMotion.current);lastDraw=now;element.dataset.rendered="true";}
+   if(cadenceStep.draw){context.setTransform(dpr,0,0,dpr,0,0);paintWorld(context,map,{project:(p,z)=>project(p,camera,z),elapsedMs,reducedMotion:preference.matches,playerPosition:current.state.position,width,height,pass:"ground"},current.state.facing,moving,camera.scale,current.game,current.state,actorMotion.current);element.dataset.rendered="true";}
    frame=requestAnimationFrame(tick);
   };
-  const refresh=()=>{last=0;keys.current.clear();if(document.hidden){cancelAnimationFrame(frame);frame=0;}else if(!frame)frame=requestAnimationFrame(tick);};
+  const refresh=()=>{last=0;cadence=createFrameCadence();keys.current.clear();if(document.hidden){cancelAnimationFrame(frame);frame=0;}else if(!frame)frame=requestAnimationFrame(tick);};
   document.addEventListener("visibilitychange",refresh);frame=requestAnimationFrame(tick);
   const up=(event:KeyboardEvent)=>keys.current.delete(event.key);window.addEventListener("keyup",up);window.addEventListener("blur",refresh);
   return()=>{cancelAnimationFrame(frame);document.removeEventListener("visibilitychange",refresh);window.removeEventListener("keyup",up);window.removeEventListener("blur",refresh);};
