@@ -1,0 +1,7 @@
+.life-prompt{display:grid;gap:var(--space-8);color:var(--text-primary);max-width:min(100%,40rem)}
+.life-prompt-action{display:flex;align-items:center;gap:var(--space-8);min-height:44px}
+.life-prompt-action>span{display:flex;align-items:center;flex-wrap:wrap}
+.life-activate{width:44px;height:44px;flex:0 0 44px;border-radius:50%;border:1px solid var(--hairline-strong);background:var(--surface-card);color:var(--text-primary);font-size:20px;cursor:pointer}
+.life-activate:focus-visible{outline:2px solid var(--text-primary);outline-offset:3px}
+.life-prompt .help-line{min-width:0;align-items:center}.life-prompt .spoken{min-width:0;overflow-wrap:anywhere}
+@media(prefers-reduced-motion:reduce){.life-prompt *{transition:none}}
