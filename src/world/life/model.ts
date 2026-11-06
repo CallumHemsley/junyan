@@ -19,6 +19,7 @@ export type Profile = {
   resting: 'idle' | 'sit' | 'work' | 'perch';
   greeting?: Line;
   homeMap?: string;
+  restingFacing?: Facing;
 };
 export type RoutePhase = {
   from: Position;

@@ -49,3 +49,23 @@ describe('canonical unvoiced background routines', () => {
     });
   }
 });
+
+it('lets a nearby reader keep reading, then acknowledge an explicit look without speech', () => {
+  const plan = compileLife(definition('resident-reader', 'park'), navigation);
+  const far = { day: 1, elapsedMs: 0, seed: 42, player: { x: 11, y: 11 }, reducedMotion: false };
+  let elapsedMs = 0;
+  while (sampleLife(plan, { ...far, elapsedMs }, navigation)[0].activity !== 'sit') elapsedMs += 100;
+  const actor = sampleLife(plan, { ...far, elapsedMs }, navigation)[0];
+  const near = { ...far, elapsedMs, player: actor.position };
+  const reading = sampleLife(plan, near, navigation)[0];
+  expect(reading.activity).toBe('sit');
+  expect(reading.action).toBe('idle');
+  const option = nearbyLife(plan, [reading], actor.position, navigation)[0];
+  const response = interactLife({ ...initialLifeState(), elapsedMs }, plan, [reading], near, option.id, navigation);
+  expect(response.line).toBeUndefined();
+  const acknowledging = sampleLife(plan, { ...near, elapsedMs: elapsedMs + 500 }, navigation, response.state)[0];
+  expect(acknowledging.position).toEqual(actor.position);
+  expect(acknowledging.activity).toBe('watch');
+  const resumed = sampleLife(plan, { ...near, elapsedMs: elapsedMs + 1900 }, navigation, response.state)[0];
+  expect(resumed.activity).toBe('sit');
+});

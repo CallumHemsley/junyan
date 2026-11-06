@@ -43,7 +43,7 @@ async function walkTo(page: Page, target: { x: number; y: number }, touch: boole
     if (touch) await page.touchscreen.tap(step.x!, step.y!); else await page.mouse.click(step.x!, step.y!);
     await expect.poll(async () => {
       const after = await savedGame(page);
-      return after.world?.mapId !== mapId || Math.hypot(after.world!.position.x - step.point!.x, after.world!.position.y - step.point!.y) < .24;
+      return !!after.world && (after.world.mapId !== mapId || Math.hypot(after.world.position.x - step.point!.x, after.world.position.y - step.point!.y) < .24);
     }, { timeout: 12000 }).toBe(true);
   }
   throw Error('Real-input route did not finish');

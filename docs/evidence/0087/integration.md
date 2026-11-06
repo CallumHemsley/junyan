@@ -59,3 +59,11 @@ For independent unvoiced background life, proposed canonical actor IDs are neigh
 Coordinator c32f128 allocates resident-reader and resident-groundskeeper to park, resident-courier to town, resident-laundry-neighbour to courtyard, and resident-river-walker to riverbank. These exact IDs are now profiles in life/profiles.ts. Their sole-map homeMap is enforced by compileLife; a wrong-map hook is diagnosed and skipped. They have distinct speed/dwell/resting choices, no greeting and no fabricated audio/line. The regulars' restaurant exclusions do not suppress these identities.
 
 Map owners supply the actual hooks. Character0085 must publish support for the five IDs before production art acceptance. Do not accept the generic unknown-character fallback as a background silhouette. Life's profile behavior tests cover deterministic repeated samples, actual movement plus task pauses, reduced-motion poses, zero returned speech and wrong-map rejection. Current proof is pure/profile-level until the exact actor and hook heads are consumed and walked in production.
+
+## Five-hook integration checkpoint
+
+The proof branch now consumes character01e67d2, landscape6732017, courtyard11b46a6 and town2c43a9e over foundatione02a747. All five canonical IDs have exactly one authored hook in their assigned maps. Node22 tests compile every route, sample real-map collision/entrance clearance, observe movement and task phases, and verify registered actor support and zero greeting/audio. Background profiles are typed to 0085's BackgroundResidentId and forbid greetings.
+
+Nearby background residents retain their task posture. A reader keeps reading and a caretaker keeps working until an explicit observation produces a bounded nonverbal acknowledgment. There is no automatic stand-and-wave loop from player proximity. Role-specific resting direction remains world-fixed.
+
+The ordinary-input production proof has been strengthened to derive legacy initial world state before its first checkpoint. Its first run's initial save-reader failure was a proof bug, not a game defect. The proof does not inject a save or spawn and never accepts an absent world checkpoint as successful movement.

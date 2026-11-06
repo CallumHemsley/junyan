@@ -77,7 +77,7 @@ export function interactLife(state: LifeState, plan: LifePlan, actors: readonly 
   } else {
     const actor = actors.find(actor => actor.id === option.targetId)!;
     events.push({ type: 'reacted', mapId: plan.mapId, targetId: actor.id,
-      reaction: option.kind === 'greet' ? 'wave' : option.kind === 'sit' ? 'sit' : actor.kind === 'bird' ? 'flutter' : 'watch', atMs: context.elapsedMs });
+      reaction: option.kind === 'greet' ? 'wave' : option.kind === 'sit' ? 'sit' : actor.kind === 'bird' ? 'flutter' : actor.kind === 'resident' ? 'wave' : 'watch', atMs: context.elapsedMs });
     return { state: events.reduce(reduceLife, state), events, line: actor.greeting };
   }
   return { state: events.reduce(reduceLife, state), events };

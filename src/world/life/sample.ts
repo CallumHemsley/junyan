@@ -41,12 +41,19 @@ export function sampleLife(plan: LifePlan, context: LifeContext, navigation?: Na
     };
     const nearby = Math.hypot(position.x - context.player.x, position.y - context.player.y) <= 1.6;
     const walking = !paused && !habitat && !catWaiting && phase.action === 'walk';
-    const activity = paused ? actor.profile.kind === 'cat' ? 'sit' : 'watch' : habitat ? habitat.activity : catWaiting ? 'sit' : walking ? 'walk' : nearby ? actor.profile.kind === 'bird' ? 'startle' : 'watch' : phase.action;
+    const background = actor.profile.homeMap !== undefined;
+    const attentive = paused || nearby && !background;
+    const resting = habitat ? habitat.activity : catWaiting ? 'sit' : phase.action;
+    const activity = paused ? actor.profile.kind === 'cat' ? 'sit' : 'watch' : walking ? 'walk'
+      : nearby && actor.profile.kind === 'bird' ? 'startle' : attentive && !habitat ? 'watch' : resting;
+    const direction = walking ? facing(phase.from, phase.to) : attentive ? facing(position, context.player) : actor.profile.restingFacing ?? 'south';
+    const idleYaw: Record<Facing, number> = { north: -Math.PI / 2, east: 0, south: Math.PI / 2, west: Math.PI };
+
     return [{
       id: actor.id, characterId: actor.characterId, kind: actor.profile.kind, position,
-      facing: nearby && !walking ? facing(position, context.player) : walking ? facing(phase.from, phase.to) : 'south',
-      yaw: nearby && !walking ? Math.atan2(context.player.y - position.y, context.player.x - position.x) : walking ? Math.atan2(phase.to.y - phase.from.y, phase.to.x - phase.from.x) : Math.PI / 2,
-      action: walking ? 'walk' : nearby && actor.profile.kind === 'resident' ? 'interact' : 'idle',
+      facing: direction,
+      yaw: walking ? Math.atan2(phase.to.y - phase.from.y, phase.to.x - phase.from.x) : attentive ? Math.atan2(context.player.y - position.y, context.player.x - position.x) : idleYaw[direction],
+      action: walking ? 'walk' : attentive && actor.profile.kind === 'resident' ? 'interact' : 'idle',
       activity, phaseMs: context.reducedMotion ? 0 : paused ? context.elapsedMs - pause!.startMs : time - phase.startMs,
       greeting: actor.profile.greeting, radius: actor.profile.radius,
     } satisfies ActorPose];
