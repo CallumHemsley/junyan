@@ -1,0 +1,1885 @@
+{
+  "production": {
+    "head": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+    "errors": [],
+    "scenarios": {
+      "normal-opening": {
+        "samples": 1,
+        "wallMs": null,
+        "maxFrameGapMs": {
+          "median": 83.39999999999999,
+          "min": 83.39999999999999,
+          "max": 83.39999999999999
+        },
+        "medianFrameGapMs": {
+          "median": 16.699999999999818,
+          "min": 16.699999999999818,
+          "max": 16.699999999999818
+        },
+        "longTaskCount": 2,
+        "maxLongTaskMs": 90,
+        "functions": {}
+      },
+      "ordinary-restaurant": {
+        "samples": 5,
+        "wallMs": {
+          "median": 825,
+          "min": 807,
+          "max": 832
+        },
+        "maxFrameGapMs": {
+          "median": 16.799999999999272,
+          "min": 16.799999999999272,
+          "max": 16.80000000000109
+        },
+        "medianFrameGapMs": {
+          "median": 16.69999999999891,
+          "min": 16.69999999999891,
+          "max": 16.699999999999818
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {}
+      },
+      "journey-town-cold-reload": {
+        "samples": 1,
+        "wallMs": {
+          "median": 560,
+          "min": 560,
+          "max": 560
+        },
+        "maxFrameGapMs": {
+          "median": 183.4,
+          "min": 183.4,
+          "max": 183.4
+        },
+        "medianFrameGapMs": {
+          "median": 16.69999999999999,
+          "min": 16.69999999999999,
+          "max": 16.69999999999999
+        },
+        "longTaskCount": 1,
+        "maxLongTaskMs": 166,
+        "functions": {}
+      },
+      "journey-town": {
+        "samples": 5,
+        "wallMs": {
+          "median": 857,
+          "min": 852,
+          "max": 873
+        },
+        "maxFrameGapMs": {
+          "median": 66.59999999999991,
+          "min": 50.10000000000002,
+          "max": 66.69999999999982
+        },
+        "medianFrameGapMs": {
+          "median": 33.399999999999864,
+          "min": 33.30000000000018,
+          "max": 33.400000000000546
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {}
+      },
+      "journey-apartment-cold-reload": {
+        "samples": 1,
+        "wallMs": {
+          "median": 272,
+          "min": 272,
+          "max": 272
+        },
+        "maxFrameGapMs": {
+          "median": 33.499999999999986,
+          "min": 33.499999999999986,
+          "max": 33.499999999999986
+        },
+        "medianFrameGapMs": {
+          "median": 16.699999999999996,
+          "min": 16.699999999999996,
+          "max": 16.699999999999996
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {}
+      },
+      "journey-apartment": {
+        "samples": 5,
+        "wallMs": {
+          "median": 869,
+          "min": 853,
+          "max": 882
+        },
+        "maxFrameGapMs": {
+          "median": 50.09999999999991,
+          "min": 50,
+          "max": 66.59999999999997
+        },
+        "medianFrameGapMs": {
+          "median": 33.399999999999864,
+          "min": 33.30000000000018,
+          "max": 33.40000000000009
+        },
+        "longTaskCount": 1,
+        "maxLongTaskMs": 57,
+        "functions": {}
+      },
+      "restyle-colour": {
+        "samples": 5,
+        "wallMs": {
+          "median": 120,
+          "min": 81,
+          "max": 143
+        },
+        "maxFrameGapMs": {
+          "median": 16.700000000000045,
+          "min": 16.700000000000045,
+          "max": 16.800000000000068
+        },
+        "medianFrameGapMs": {
+          "median": 16.699999999999932,
+          "min": 16.600000000000023,
+          "max": 16.69999999999999
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {}
+      },
+      "restyle-rug": {
+        "samples": 5,
+        "wallMs": {
+          "median": 96,
+          "min": 80,
+          "max": 134
+        },
+        "maxFrameGapMs": {
+          "median": 16.700000000000045,
+          "min": 16.700000000000045,
+          "max": 16.800000000000182
+        },
+        "medianFrameGapMs": {
+          "median": 16.699999999999932,
+          "min": 16.600000000000023,
+          "max": 16.700000000000045
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {}
+      },
+      "journey-apartment-reload": {
+        "samples": 5,
+        "wallMs": {
+          "median": 244,
+          "min": 231,
+          "max": 265
+        },
+        "maxFrameGapMs": {
+          "median": 33.39999999999999,
+          "min": 33.3,
+          "max": 49.89999999999999
+        },
+        "medianFrameGapMs": {
+          "median": 16.700000000000003,
+          "min": 16.69999999999999,
+          "max": 16.700000000000017
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {}
+      }
+    }
+  },
+  "instrumented": {
+    "head": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+    "errors": [],
+    "scenarios": {
+      "normal-opening": {
+        "samples": 1,
+        "wallMs": null,
+        "maxFrameGapMs": {
+          "median": 83.3,
+          "min": 83.3,
+          "max": 83.3
+        },
+        "medianFrameGapMs": {
+          "median": 16.699999999999818,
+          "min": 16.699999999999818,
+          "max": 16.699999999999818
+        },
+        "longTaskCount": 2,
+        "maxLongTaskMs": 99,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 39,
+              "min": 39,
+              "max": 39
+            },
+            "totalMs": {
+              "median": 17.20000000204891,
+              "min": 17.20000000204891,
+              "max": 17.20000000204891
+            },
+            "maxCallMs": {
+              "median": 7.400000000372529,
+              "min": 7.400000000372529,
+              "max": 7.400000000372529
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 39,
+              "min": 39,
+              "max": 39
+            },
+            "totalMs": {
+              "median": 4.999999999068677,
+              "min": 4.999999999068677,
+              "max": 4.999999999068677
+            },
+            "maxCallMs": {
+              "median": 4.5,
+              "min": 4.5,
+              "max": 4.5
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 39,
+              "min": 39,
+              "max": 39
+            },
+            "totalMs": {
+              "median": 1.6000000024214387,
+              "min": 1.6000000024214387,
+              "max": 1.6000000024214387
+            },
+            "maxCallMs": {
+              "median": 0.10000000055879354,
+              "min": 0.10000000055879354,
+              "max": 0.10000000055879354
+            }
+          }
+        }
+      },
+      "ordinary-restaurant": {
+        "samples": 5,
+        "wallMs": {
+          "median": 819,
+          "min": 813,
+          "max": 837
+        },
+        "maxFrameGapMs": {
+          "median": 16.80000000000109,
+          "min": 16.799999999999272,
+          "max": 16.80000000000109
+        },
+        "medianFrameGapMs": {
+          "median": 16.69999999999891,
+          "min": 16.69999999999891,
+          "max": 16.699999999999818
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 48,
+              "min": 48,
+              "max": 49
+            },
+            "totalMs": {
+              "median": 11.900000002235174,
+              "min": 9.899999993853271,
+              "max": 14.0
+            },
+            "maxCallMs": {
+              "median": 0.6000000005587935,
+              "min": 0.5,
+              "max": 1.599999999627471
+            }
+          },
+          "isExitConnected": {
+            "calls": {
+              "median": 98,
+              "min": 96,
+              "max": 99
+            },
+            "totalMs": {
+              "median": 4.599999997764826,
+              "min": 4.400000000372529,
+              "max": 5.5
+            },
+            "maxCallMs": {
+              "median": 0.20000000018626451,
+              "min": 0.20000000018626451,
+              "max": 0.40000000037252903
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 98,
+              "min": 97,
+              "max": 99
+            },
+            "totalMs": {
+              "median": 0.2999999998137355,
+              "min": 0.19999999925494194,
+              "max": 0.4000000013038516
+            },
+            "maxCallMs": {
+              "median": 0.10000000055879354,
+              "min": 0.09999999962747097,
+              "max": 0.10000000055879354
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 98,
+              "min": 97,
+              "max": 99
+            },
+            "totalMs": {
+              "median": 6.8999999994412065,
+              "min": 6.600000001490116,
+              "max": 9.999999997206032
+            },
+            "maxCallMs": {
+              "median": 0.40000000037252903,
+              "min": 0.2999999998137355,
+              "max": 0.8999999994412065
+            }
+          },
+          "safeExitPosition": {
+            "calls": {
+              "median": 98,
+              "min": 96,
+              "max": 99
+            },
+            "totalMs": {
+              "median": 4.599999997764826,
+              "min": 4.400000000372529,
+              "max": 5.5
+            },
+            "maxCallMs": {
+              "median": 0.20000000018626451,
+              "min": 0.20000000018626451,
+              "max": 0.40000000037252903
+            }
+          }
+        }
+      },
+      "journey-town-cold-reload": {
+        "samples": 1,
+        "wallMs": {
+          "median": 532,
+          "min": 532,
+          "max": 532
+        },
+        "maxFrameGapMs": {
+          "median": 166.7,
+          "min": 166.7,
+          "max": 166.7
+        },
+        "medianFrameGapMs": {
+          "median": 16.700000000000003,
+          "min": 16.700000000000003,
+          "max": 16.700000000000003
+        },
+        "longTaskCount": 1,
+        "maxLongTaskMs": 158,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 4,
+              "min": 4,
+              "max": 4
+            },
+            "totalMs": {
+              "median": 67.29999999888241,
+              "min": 67.29999999888241,
+              "max": 67.29999999888241
+            },
+            "maxCallMs": {
+              "median": 26.199999999254942,
+              "min": 26.199999999254942,
+              "max": 26.199999999254942
+            }
+          },
+          "isExitConnected": {
+            "calls": {
+              "median": 44,
+              "min": 44,
+              "max": 44
+            },
+            "totalMs": {
+              "median": 86.79999999981374,
+              "min": 86.79999999981374,
+              "max": 86.79999999981374
+            },
+            "maxCallMs": {
+              "median": 10.400000000372529,
+              "min": 10.400000000372529,
+              "max": 10.400000000372529
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 5,
+              "min": 5,
+              "max": 5
+            },
+            "totalMs": {
+              "median": 0.2999999998137355,
+              "min": 0.2999999998137355,
+              "max": 0.2999999998137355
+            },
+            "maxCallMs": {
+              "median": 0.20000000018626451,
+              "min": 0.20000000018626451,
+              "max": 0.20000000018626451
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 5,
+              "min": 5,
+              "max": 5
+            },
+            "totalMs": {
+              "median": 88.30000000074506,
+              "min": 88.30000000074506,
+              "max": 88.30000000074506
+            },
+            "maxCallMs": {
+              "median": 25.59999999962747,
+              "min": 25.59999999962747,
+              "max": 25.59999999962747
+            }
+          },
+          "safeExitPosition": {
+            "calls": {
+              "median": 4,
+              "min": 4,
+              "max": 4
+            },
+            "totalMs": {
+              "median": 7.5,
+              "min": 7.5,
+              "max": 7.5
+            },
+            "maxCallMs": {
+              "median": 2.7000000001862645,
+              "min": 2.7000000001862645,
+              "max": 2.7000000001862645
+            }
+          }
+        }
+      },
+      "journey-town": {
+        "samples": 5,
+        "wallMs": {
+          "median": 863,
+          "min": 848,
+          "max": 895
+        },
+        "maxFrameGapMs": {
+          "median": 50.100000000000136,
+          "min": 50.099999999999454,
+          "max": 66.70000000000005
+        },
+        "medianFrameGapMs": {
+          "median": 33.30000000000018,
+          "min": 33.30000000000007,
+          "max": 33.40000000000009
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 20,
+              "min": 20,
+              "max": 21
+            },
+            "totalMs": {
+              "median": 326.20000000018626,
+              "min": 318.49999999813735,
+              "max": 335.49999999813735
+            },
+            "maxCallMs": {
+              "median": 23.5,
+              "min": 16.5,
+              "max": 32.40000000037253
+            }
+          },
+          "isExitConnected": {
+            "calls": {
+              "median": 462,
+              "min": 451,
+              "max": 473
+            },
+            "totalMs": {
+              "median": 642.1000000042841,
+              "min": 635.5999999977648,
+              "max": 660.6999999992549
+            },
+            "maxCallMs": {
+              "median": 7.7000000001862645,
+              "min": 5.3999999994412065,
+              "max": 11.100000000558794
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 42,
+              "min": 41,
+              "max": 43
+            },
+            "totalMs": {
+              "median": 0.10000000055879354,
+              "min": 0,
+              "max": 0.2999999998137355
+            },
+            "maxCallMs": {
+              "median": 0.10000000055879354,
+              "min": 0,
+              "max": 0.10000000055879354
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 42,
+              "min": 41,
+              "max": 43
+            },
+            "totalMs": {
+              "median": 646.800000003539,
+              "min": 639.0999999968335,
+              "max": 666.0999999968335
+            },
+            "maxCallMs": {
+              "median": 23.100000000558794,
+              "min": 16.300000000745058,
+              "max": 31.90000000037253
+            }
+          },
+          "safeExitPosition": {
+            "calls": {
+              "median": 42,
+              "min": 41,
+              "max": 43
+            },
+            "totalMs": {
+              "median": 39.50000000093132,
+              "min": 36.70000000484288,
+              "max": 41.000000001862645
+            },
+            "maxCallMs": {
+              "median": 1.8999999994412065,
+              "min": 1.2999999998137355,
+              "max": 2.400000000372529
+            }
+          }
+        }
+      },
+      "journey-apartment-cold-reload": {
+        "samples": 1,
+        "wallMs": {
+          "median": 267,
+          "min": 267,
+          "max": 267
+        },
+        "maxFrameGapMs": {
+          "median": 33.30000000000001,
+          "min": 33.30000000000001,
+          "max": 33.30000000000001
+        },
+        "medianFrameGapMs": {
+          "median": 16.700000000000003,
+          "min": 16.700000000000003,
+          "max": 16.700000000000003
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 3,
+              "min": 3,
+              "max": 3
+            },
+            "totalMs": {
+              "median": 42.09999999962747,
+              "min": 42.09999999962747,
+              "max": 42.09999999962747
+            },
+            "maxCallMs": {
+              "median": 21,
+              "min": 21,
+              "max": 21
+            }
+          },
+          "isExitConnected": {
+            "calls": {
+              "median": 33,
+              "min": 33,
+              "max": 33
+            },
+            "totalMs": {
+              "median": 62.70000000111759,
+              "min": 62.70000000111759,
+              "max": 62.70000000111759
+            },
+            "maxCallMs": {
+              "median": 9.800000000745058,
+              "min": 9.800000000745058,
+              "max": 9.800000000745058
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 4,
+              "min": 4,
+              "max": 4
+            },
+            "totalMs": {
+              "median": 0.20000000018626451,
+              "min": 0.20000000018626451,
+              "max": 0.20000000018626451
+            },
+            "maxCallMs": {
+              "median": 0.10000000055879354,
+              "min": 0.10000000055879354,
+              "max": 0.10000000055879354
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 4,
+              "min": 4,
+              "max": 4
+            },
+            "totalMs": {
+              "median": 64.6000000005588,
+              "min": 64.6000000005588,
+              "max": 64.6000000005588
+            },
+            "maxCallMs": {
+              "median": 25.5,
+              "min": 25.5,
+              "max": 25.5
+            }
+          },
+          "safeExitPosition": {
+            "calls": {
+              "median": 3,
+              "min": 3,
+              "max": 3
+            },
+            "totalMs": {
+              "median": 1.300000000745058,
+              "min": 1.300000000745058,
+              "max": 1.300000000745058
+            },
+            "maxCallMs": {
+              "median": 0.7000000001862645,
+              "min": 0.7000000001862645,
+              "max": 0.7000000001862645
+            }
+          }
+        }
+      },
+      "journey-apartment": {
+        "samples": 5,
+        "wallMs": {
+          "median": 877,
+          "min": 864,
+          "max": 883
+        },
+        "maxFrameGapMs": {
+          "median": 50.09999999999991,
+          "min": 50,
+          "max": 50.099999999999966
+        },
+        "medianFrameGapMs": {
+          "median": 33.35000000000002,
+          "min": 33.30000000000018,
+          "max": 33.400000000000546
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 21,
+              "min": 20,
+              "max": 22
+            },
+            "totalMs": {
+              "median": 313.5000000009313,
+              "min": 286.6000000005588,
+              "max": 316.59999999962747
+            },
+            "maxCallMs": {
+              "median": 17,
+              "min": 16,
+              "max": 17.90000000037253
+            }
+          },
+          "isExitConnected": {
+            "calls": {
+              "median": 473,
+              "min": 440,
+              "max": 495
+            },
+            "totalMs": {
+              "median": 615.0000000009313,
+              "min": 586.199999996461,
+              "max": 619.6000000014901
+            },
+            "maxCallMs": {
+              "median": 6.2999999998137355,
+              "min": 5.900000000372529,
+              "max": 7.900000000372529
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 43,
+              "min": 40,
+              "max": 45
+            },
+            "totalMs": {
+              "median": 0.20000000018626451,
+              "min": 0,
+              "max": 0.4999999990686774
+            },
+            "maxCallMs": {
+              "median": 0.10000000055879354,
+              "min": 0,
+              "max": 0.10000000055879354
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 43,
+              "min": 40,
+              "max": 45
+            },
+            "totalMs": {
+              "median": 618.9999999990687,
+              "min": 588.6999999992549,
+              "max": 625.4000000013039
+            },
+            "maxCallMs": {
+              "median": 16.700000000186265,
+              "min": 15.800000000745058,
+              "max": 21.200000000186265
+            }
+          },
+          "safeExitPosition": {
+            "calls": {
+              "median": 43,
+              "min": 40,
+              "max": 45
+            },
+            "totalMs": {
+              "median": 9.700000001117587,
+              "min": 6.899999998509884,
+              "max": 10.800000002607703
+            },
+            "maxCallMs": {
+              "median": 0.599999999627471,
+              "min": 0.5,
+              "max": 1
+            }
+          }
+        }
+      },
+      "restyle-colour": {
+        "samples": 5,
+        "wallMs": {
+          "median": 130,
+          "min": 96,
+          "max": 143
+        },
+        "maxFrameGapMs": {
+          "median": 16.700000000000045,
+          "min": 16.69999999999999,
+          "max": 16.799999999999955
+        },
+        "medianFrameGapMs": {
+          "median": 16.69999999999999,
+          "min": 16.650000000000034,
+          "max": 16.700000000000045
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 2,
+              "min": 2,
+              "max": 2
+            },
+            "totalMs": {
+              "median": 37.40000000037253,
+              "min": 29.0,
+              "max": 38.80000000074506
+            },
+            "maxCallMs": {
+              "median": 19.299999999813735,
+              "min": 15.299999999813735,
+              "max": 23.700000000186265
+            }
+          },
+          "isExitConnected": {
+            "calls": {
+              "median": 22,
+              "min": 22,
+              "max": 22
+            },
+            "totalMs": {
+              "median": 36.5,
+              "min": 28.299999999813735,
+              "max": 37.60000000055879
+            },
+            "maxCallMs": {
+              "median": 6.2000000001862645,
+              "min": 5.599999999627471,
+              "max": 6.5
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 4,
+              "min": 4,
+              "max": 4
+            },
+            "totalMs": {
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "maxCallMs": {
+              "median": 0,
+              "min": 0,
+              "max": 0
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 2,
+              "min": 2,
+              "max": 2
+            },
+            "totalMs": {
+              "median": 36.80000000074506,
+              "min": 28.499999999068677,
+              "max": 37.99999999906868
+            },
+            "maxCallMs": {
+              "median": 19,
+              "min": 15.099999999627471,
+              "max": 23.300000000745058
+            }
+          },
+          "safeExitPosition": {
+            "calls": {
+              "median": 2,
+              "min": 2,
+              "max": 2
+            },
+            "totalMs": {
+              "median": 0.6000000005587935,
+              "min": 0.2999999998137355,
+              "max": 1.400000000372529
+            },
+            "maxCallMs": {
+              "median": 0.40000000037252903,
+              "min": 0.19999999925494194,
+              "max": 0.8000000007450581
+            }
+          }
+        }
+      },
+      "restyle-rug": {
+        "samples": 5,
+        "wallMs": {
+          "median": 116,
+          "min": 81,
+          "max": 159
+        },
+        "maxFrameGapMs": {
+          "median": 16.700000000000045,
+          "min": 16.700000000000045,
+          "max": 16.799999999999955
+        },
+        "medianFrameGapMs": {
+          "median": 16.700000000000045,
+          "min": 16.600000000000136,
+          "max": 16.700000000000045
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 2,
+              "min": 2,
+              "max": 3
+            },
+            "totalMs": {
+              "median": 29.200000000186265,
+              "min": 27.700000000186265,
+              "max": 42.899999998509884
+            },
+            "maxCallMs": {
+              "median": 14.599999999627471,
+              "min": 14.200000000186265,
+              "max": 15.399999999441206
+            }
+          },
+          "isExitConnected": {
+            "calls": {
+              "median": 22,
+              "min": 22,
+              "max": 44
+            },
+            "totalMs": {
+              "median": 28.600000000558794,
+              "min": 26.799999999813735,
+              "max": 56.60000000055879
+            },
+            "maxCallMs": {
+              "median": 5.1000000005587935,
+              "min": 4.599999999627471,
+              "max": 5.6000000005587935
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 4,
+              "min": 4,
+              "max": 6
+            },
+            "totalMs": {
+              "median": 0,
+              "min": 0,
+              "max": 0.09999999962747097
+            },
+            "maxCallMs": {
+              "median": 0,
+              "min": 0,
+              "max": 0.09999999962747097
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 2,
+              "min": 2,
+              "max": 4
+            },
+            "totalMs": {
+              "median": 28.700000000186265,
+              "min": 27.200000000186265,
+              "max": 56.80000000074506
+            },
+            "maxCallMs": {
+              "median": 14.400000000372529,
+              "min": 13.899999999441206,
+              "max": 15.200000000186265
+            }
+          },
+          "safeExitPosition": {
+            "calls": {
+              "median": 2,
+              "min": 2,
+              "max": 4
+            },
+            "totalMs": {
+              "median": 0.30000000074505806,
+              "min": 0.19999999925494194,
+              "max": 0.900000000372529
+            },
+            "maxCallMs": {
+              "median": 0.20000000018626451,
+              "min": 0.09999999962747097,
+              "max": 0.2999999998137355
+            }
+          }
+        }
+      },
+      "journey-apartment-reload": {
+        "samples": 5,
+        "wallMs": {
+          "median": 232,
+          "min": 226,
+          "max": 273
+        },
+        "maxFrameGapMs": {
+          "median": 33.400000000000006,
+          "min": 33.39999999999999,
+          "max": 50
+        },
+        "medianFrameGapMs": {
+          "median": 16.700000000000003,
+          "min": 16.7,
+          "max": 33.3
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 3,
+              "min": 3,
+              "max": 3
+            },
+            "totalMs": {
+              "median": 43.79999999888241,
+              "min": 41.10000000055879,
+              "max": 47.200000000186265
+            },
+            "maxCallMs": {
+              "median": 22.299999999813735,
+              "min": 20.100000000558794,
+              "max": 25.799999999813735
+            }
+          },
+          "isExitConnected": {
+            "calls": {
+              "median": 33,
+              "min": 33,
+              "max": 33
+            },
+            "totalMs": {
+              "median": 61.60000000055879,
+              "min": 60.49999999906868,
+              "max": 72.20000000018626
+            },
+            "maxCallMs": {
+              "median": 9.099999999627471,
+              "min": 7.599999999627471,
+              "max": 11.699999999254942
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 4,
+              "min": 4,
+              "max": 4
+            },
+            "totalMs": {
+              "median": 0.19999999925494194,
+              "min": 0.09999999962747097,
+              "max": 0.20000000018626451
+            },
+            "maxCallMs": {
+              "median": 0.09999999962747097,
+              "min": 0.09999999962747097,
+              "max": 0.10000000055879354
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 4,
+              "min": 4,
+              "max": 4
+            },
+            "totalMs": {
+              "median": 62.59999999962747,
+              "min": 61.5,
+              "max": 73.80000000074506
+            },
+            "maxCallMs": {
+              "median": 22,
+              "min": 21.899999999441206,
+              "max": 28.59999999962747
+            }
+          },
+          "safeExitPosition": {
+            "calls": {
+              "median": 3,
+              "min": 3,
+              "max": 3
+            },
+            "totalMs": {
+              "median": 1.2000000001862645,
+              "min": 1.1000000005587935,
+              "max": 1.800000000745058
+            },
+            "maxCallMs": {
+              "median": 0.6000000005587935,
+              "min": 0.599999999627471,
+              "max": 1.099999999627471
+            }
+          }
+        }
+      }
+    }
+  },
+  "2a7-instrumented": {
+    "head": "2a7dc57a9163d9f49019fd3c29673b87548ebf4d",
+    "errors": [],
+    "scenarios": {
+      "normal-opening": {
+        "samples": 1,
+        "wallMs": null,
+        "maxFrameGapMs": {
+          "median": 83.3,
+          "min": 83.3,
+          "max": 83.3
+        },
+        "medianFrameGapMs": {
+          "median": 16.699999999999818,
+          "min": 16.699999999999818,
+          "max": 16.699999999999818
+        },
+        "longTaskCount": 2,
+        "maxLongTaskMs": 88,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 39,
+              "min": 39,
+              "max": 39
+            },
+            "totalMs": {
+              "median": 18.199999999254942,
+              "min": 18.199999999254942,
+              "max": 18.199999999254942
+            },
+            "maxCallMs": {
+              "median": 3.7999999998137355,
+              "min": 3.7999999998137355,
+              "max": 3.7999999998137355
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 39,
+              "min": 39,
+              "max": 39
+            },
+            "totalMs": {
+              "median": 0.8000000007450581,
+              "min": 0.8000000007450581,
+              "max": 0.8000000007450581
+            },
+            "maxCallMs": {
+              "median": 0.30000000074505806,
+              "min": 0.30000000074505806,
+              "max": 0.30000000074505806
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 39,
+              "min": 39,
+              "max": 39
+            },
+            "totalMs": {
+              "median": 0.7999999998137355,
+              "min": 0.7999999998137355,
+              "max": 0.7999999998137355
+            },
+            "maxCallMs": {
+              "median": 0.20000000018626451,
+              "min": 0.20000000018626451,
+              "max": 0.20000000018626451
+            }
+          }
+        }
+      },
+      "ordinary-restaurant": {
+        "samples": 5,
+        "wallMs": {
+          "median": 825,
+          "min": 814,
+          "max": 829
+        },
+        "maxFrameGapMs": {
+          "median": 16.80000000000109,
+          "min": 16.800000000000182,
+          "max": 16.80000000000109
+        },
+        "medianFrameGapMs": {
+          "median": 16.69999999999891,
+          "min": 16.69999999999891,
+          "max": 16.699999999999818
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 48,
+              "min": 48,
+              "max": 49
+            },
+            "totalMs": {
+              "median": 8.5,
+              "min": 8.100000000558794,
+              "max": 11.100000002421439
+            },
+            "maxCallMs": {
+              "median": 0.599999999627471,
+              "min": 0.40000000037252903,
+              "max": 1
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 97,
+              "min": 96,
+              "max": 99
+            },
+            "totalMs": {
+              "median": 0.19999999925494194,
+              "min": 0,
+              "max": 0.5000000009313226
+            },
+            "maxCallMs": {
+              "median": 0.09999999962747097,
+              "min": 0,
+              "max": 0.10000000055879354
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 97,
+              "min": 96,
+              "max": 99
+            },
+            "totalMs": {
+              "median": 2.6999999983236194,
+              "min": 2.2999999970197678,
+              "max": 5.300000001676381
+            },
+            "maxCallMs": {
+              "median": 0.20000000018626451,
+              "min": 0.10000000055879354,
+              "max": 0.7000000001862645
+            }
+          }
+        }
+      },
+      "journey-town-cold-reload": {
+        "samples": 1,
+        "wallMs": {
+          "median": 382,
+          "min": 382,
+          "max": 382
+        },
+        "maxFrameGapMs": {
+          "median": 116.69999999999999,
+          "min": 116.69999999999999,
+          "max": 116.69999999999999
+        },
+        "medianFrameGapMs": {
+          "median": 16.69999999999999,
+          "min": 16.69999999999999,
+          "max": 16.69999999999999
+        },
+        "longTaskCount": 1,
+        "maxLongTaskMs": 109,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 4,
+              "min": 4,
+              "max": 4
+            },
+            "totalMs": {
+              "median": 3.2999999998137355,
+              "min": 3.2999999998137355,
+              "max": 3.2999999998137355
+            },
+            "maxCallMs": {
+              "median": 1.1000000005587935,
+              "min": 1.1000000005587935,
+              "max": 1.1000000005587935
+            }
+          },
+          "isExitConnected": {
+            "calls": {
+              "median": 11,
+              "min": 11,
+              "max": 11
+            },
+            "totalMs": {
+              "median": 22.299999999813735,
+              "min": 22.299999999813735,
+              "max": 22.299999999813735
+            },
+            "maxCallMs": {
+              "median": 7.599999999627471,
+              "min": 7.599999999627471,
+              "max": 7.599999999627471
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 5,
+              "min": 5,
+              "max": 5
+            },
+            "totalMs": {
+              "median": 0.2999999998137355,
+              "min": 0.2999999998137355,
+              "max": 0.2999999998137355
+            },
+            "maxCallMs": {
+              "median": 0.10000000055879354,
+              "min": 0.10000000055879354,
+              "max": 0.10000000055879354
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 5,
+              "min": 5,
+              "max": 5
+            },
+            "totalMs": {
+              "median": 23.90000000037253,
+              "min": 23.90000000037253,
+              "max": 23.90000000037253
+            },
+            "maxCallMs": {
+              "median": 23.09999999962747,
+              "min": 23.09999999962747,
+              "max": 23.09999999962747
+            }
+          },
+          "safeExitPosition": {
+            "calls": {
+              "median": 1,
+              "min": 1,
+              "max": 1
+            },
+            "totalMs": {
+              "median": 1.7000000001862645,
+              "min": 1.7000000001862645,
+              "max": 1.7000000001862645
+            },
+            "maxCallMs": {
+              "median": 1.7000000001862645,
+              "min": 1.7000000001862645,
+              "max": 1.7000000001862645
+            }
+          }
+        }
+      },
+      "journey-town": {
+        "samples": 5,
+        "wallMs": {
+          "median": 824,
+          "min": 812,
+          "max": 829
+        },
+        "maxFrameGapMs": {
+          "median": 16.799999999999955,
+          "min": 16.700000000000273,
+          "max": 16.800000000000182
+        },
+        "medianFrameGapMs": {
+          "median": 16.699999999999818,
+          "min": 16.699999999999818,
+          "max": 16.69999999999999
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 48,
+              "min": 47,
+              "max": 49
+            },
+            "totalMs": {
+              "median": 13.200000001117587,
+              "min": 12.69999999832362,
+              "max": 14.400000000372529
+            },
+            "maxCallMs": {
+              "median": 0.7000000001862645,
+              "min": 0.40000000037252903,
+              "max": 0.7999999998137355
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 97,
+              "min": 95,
+              "max": 99
+            },
+            "totalMs": {
+              "median": 0.20000000018626451,
+              "min": 0,
+              "max": 0.39999999944120646
+            },
+            "maxCallMs": {
+              "median": 0.09999999962747097,
+              "min": 0,
+              "max": 0.10000000055879354
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 97,
+              "min": 95,
+              "max": 99
+            },
+            "totalMs": {
+              "median": 10.399999993853271,
+              "min": 9.300000004470348,
+              "max": 16.69999999832362
+            },
+            "maxCallMs": {
+              "median": 1.099999999627471,
+              "min": 0.20000000018626451,
+              "max": 3.5
+            }
+          }
+        }
+      },
+      "journey-apartment-cold-reload": {
+        "samples": 1,
+        "wallMs": {
+          "median": 218,
+          "min": 218,
+          "max": 218
+        },
+        "maxFrameGapMs": {
+          "median": 16.799999999999997,
+          "min": 16.799999999999997,
+          "max": 16.799999999999997
+        },
+        "medianFrameGapMs": {
+          "median": 16.69999999999999,
+          "min": 16.69999999999999,
+          "max": 16.69999999999999
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 3,
+              "min": 3,
+              "max": 3
+            },
+            "totalMs": {
+              "median": 3.400000000372529,
+              "min": 3.400000000372529,
+              "max": 3.400000000372529
+            },
+            "maxCallMs": {
+              "median": 2.2000000001862645,
+              "min": 2.2000000001862645,
+              "max": 2.2000000001862645
+            }
+          },
+          "isExitConnected": {
+            "calls": {
+              "median": 11,
+              "min": 11,
+              "max": 11
+            },
+            "totalMs": {
+              "median": 22.200000000186265,
+              "min": 22.200000000186265,
+              "max": 22.200000000186265
+            },
+            "maxCallMs": {
+              "median": 8.299999999813735,
+              "min": 8.299999999813735,
+              "max": 8.299999999813735
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 4,
+              "min": 4,
+              "max": 4
+            },
+            "totalMs": {
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "maxCallMs": {
+              "median": 0,
+              "min": 0,
+              "max": 0
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 4,
+              "min": 4,
+              "max": 4
+            },
+            "totalMs": {
+              "median": 23.200000000186265,
+              "min": 23.200000000186265,
+              "max": 23.200000000186265
+            },
+            "maxCallMs": {
+              "median": 22.700000000186265,
+              "min": 22.700000000186265,
+              "max": 22.700000000186265
+            }
+          },
+          "safeExitPosition": {
+            "calls": {
+              "median": 1,
+              "min": 1,
+              "max": 1
+            },
+            "totalMs": {
+              "median": 1.1000000005587935,
+              "min": 1.1000000005587935,
+              "max": 1.1000000005587935
+            },
+            "maxCallMs": {
+              "median": 1.1000000005587935,
+              "min": 1.1000000005587935,
+              "max": 1.1000000005587935
+            }
+          }
+        }
+      },
+      "journey-apartment": {
+        "samples": 5,
+        "wallMs": {
+          "median": 825,
+          "min": 823,
+          "max": 835
+        },
+        "maxFrameGapMs": {
+          "median": 16.800000000000182,
+          "min": 16.799999999999955,
+          "max": 50.09999999999991
+        },
+        "medianFrameGapMs": {
+          "median": 16.699999999999818,
+          "min": 16.699999999999818,
+          "max": 16.699999999999932
+        },
+        "longTaskCount": 1,
+        "maxLongTaskMs": 53,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 48,
+              "min": 47,
+              "max": 49
+            },
+            "totalMs": {
+              "median": 11.400000001303852,
+              "min": 9.799999998882413,
+              "max": 14.900000003166497
+            },
+            "maxCallMs": {
+              "median": 0.5,
+              "min": 0.5,
+              "max": 0.900000000372529
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 97,
+              "min": 95,
+              "max": 98
+            },
+            "totalMs": {
+              "median": 0.30000000074505806,
+              "min": 0,
+              "max": 0.39999999944120646
+            },
+            "maxCallMs": {
+              "median": 0.10000000055879354,
+              "min": 0,
+              "max": 0.19999999925494194
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 97,
+              "min": 95,
+              "max": 98
+            },
+            "totalMs": {
+              "median": 9.399999992921948,
+              "min": 7.2000000001862645,
+              "max": 12.5
+            },
+            "maxCallMs": {
+              "median": 0.2999999998137355,
+              "min": 0.20000000018626451,
+              "max": 0.7000000001862645
+            }
+          }
+        }
+      },
+      "restyle-colour": {
+        "samples": 5,
+        "wallMs": {
+          "median": 83,
+          "min": 65,
+          "max": 88
+        },
+        "maxFrameGapMs": {
+          "median": 16.700000000000045,
+          "min": 16.69999999999999,
+          "max": 16.80000000000001
+        },
+        "medianFrameGapMs": {
+          "median": 16.69999999999999,
+          "min": 16.69999999999996,
+          "max": 16.700000000000045
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 2,
+              "min": 1,
+              "max": 2
+            },
+            "totalMs": {
+              "median": 0.7000000011175871,
+              "min": 0.599999999627471,
+              "max": 0.7999999998137355
+            },
+            "maxCallMs": {
+              "median": 0.40000000037252903,
+              "min": 0.2999999998137355,
+              "max": 0.6000000005587935
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 4,
+              "min": 3,
+              "max": 4
+            },
+            "totalMs": {
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "maxCallMs": {
+              "median": 0,
+              "min": 0,
+              "max": 0
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 2,
+              "min": 1,
+              "max": 2
+            },
+            "totalMs": {
+              "median": 0.2999999998137355,
+              "min": 0.20000000018626451,
+              "max": 0.4999999990686774
+            },
+            "maxCallMs": {
+              "median": 0.20000000018626451,
+              "min": 0.20000000018626451,
+              "max": 0.2999999998137355
+            }
+          }
+        }
+      },
+      "restyle-rug": {
+        "samples": 5,
+        "wallMs": {
+          "median": 86,
+          "min": 77,
+          "max": 93
+        },
+        "maxFrameGapMs": {
+          "median": 16.700000000000045,
+          "min": 16.700000000000045,
+          "max": 16.799999999999955
+        },
+        "medianFrameGapMs": {
+          "median": 16.699999999999932,
+          "min": 16.650000000000034,
+          "max": 16.700000000000045
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 2,
+              "min": 2,
+              "max": 2
+            },
+            "totalMs": {
+              "median": 0.7000000001862645,
+              "min": 0.599999999627471,
+              "max": 0.8999999994412065
+            },
+            "maxCallMs": {
+              "median": 0.40000000037252903,
+              "min": 0.2999999998137355,
+              "max": 0.5
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 4,
+              "min": 4,
+              "max": 4
+            },
+            "totalMs": {
+              "median": 0,
+              "min": 0,
+              "max": 0
+            },
+            "maxCallMs": {
+              "median": 0,
+              "min": 0,
+              "max": 0
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 2,
+              "min": 2,
+              "max": 2
+            },
+            "totalMs": {
+              "median": 0.2999999998137355,
+              "min": 0.2999999988824129,
+              "max": 0.30000000074505806
+            },
+            "maxCallMs": {
+              "median": 0.19999999925494194,
+              "min": 0.19999999925494194,
+              "max": 0.20000000018626451
+            }
+          }
+        }
+      },
+      "journey-apartment-reload": {
+        "samples": 5,
+        "wallMs": {
+          "median": 197,
+          "min": 157,
+          "max": 217
+        },
+        "maxFrameGapMs": {
+          "median": 33.29999999999998,
+          "min": 16.700000000000017,
+          "max": 33.3
+        },
+        "medianFrameGapMs": {
+          "median": 16.7,
+          "min": 16.699999999999996,
+          "max": 16.700000000000003
+        },
+        "longTaskCount": 0,
+        "maxLongTaskMs": 0,
+        "functions": {
+          "App": {
+            "calls": {
+              "median": 3,
+              "min": 3,
+              "max": 3
+            },
+            "totalMs": {
+              "median": 2.799999998882413,
+              "min": 2.3999999994412065,
+              "max": 4.800000000745058
+            },
+            "maxCallMs": {
+              "median": 1.2000000001862645,
+              "min": 1.099999999627471,
+              "max": 3.5
+            }
+          },
+          "isExitConnected": {
+            "calls": {
+              "median": 11,
+              "min": 11,
+              "max": 11
+            },
+            "totalMs": {
+              "median": 21.300000000745058,
+              "min": 18.399999999441206,
+              "max": 26.799999999813735
+            },
+            "maxCallMs": {
+              "median": 7.900000000372529,
+              "min": 6.2999999998137355,
+              "max": 11.5
+            }
+          },
+          "mapsForNeighbourhood": {
+            "calls": {
+              "median": 4,
+              "min": 4,
+              "max": 4
+            },
+            "totalMs": {
+              "median": 0.20000000018626451,
+              "min": 0.19999999925494194,
+              "max": 0.2999999998137355
+            },
+            "maxCallMs": {
+              "median": 0.10000000055879354,
+              "min": 0.09999999962747097,
+              "max": 0.20000000018626451
+            }
+          },
+          "restoreWorld": {
+            "calls": {
+              "median": 4,
+              "min": 4,
+              "max": 4
+            },
+            "totalMs": {
+              "median": 22.40000000037253,
+              "min": 19.300000000745058,
+              "max": 27.90000000037253
+            },
+            "maxCallMs": {
+              "median": 21.90000000037253,
+              "min": 18.800000000745058,
+              "max": 27.399999999441206
+            }
+          },
+          "safeExitPosition": {
+            "calls": {
+              "median": 1,
+              "min": 1,
+              "max": 1
+            },
+            "totalMs": {
+              "median": 1.1000000005587935,
+              "min": 0.599999999627471,
+              "max": 2.5
+            },
+            "maxCallMs": {
+              "median": 1.1000000005587935,
+              "min": 0.599999999627471,
+              "max": 2.5
+            }
+          }
+        }
+      }
+    }
+  }
+}

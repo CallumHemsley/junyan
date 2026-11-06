@@ -1,0 +1,39 @@
+vite v7.3.7 building client environment for production...
+transforming...
+../junyan/node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/util.js (400:0): A comment
+
+"// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+
+in "../junyan/node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+../junyan/node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/regexes.js (74:0): A comment
+
+"/** Anchors a pattern source. The interpolation lives here rather than at the call site because
+ * esbuild will not drop a `@__PURE__` call whose own argument interpolates a variable, but it
+ * will drop `anchor(dateSource)`. Keeping it inline pinned `date` into every bundle. */"
+
+in "../junyan/node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+✓ 262 modules transformed.
+rendering chunks...
+computing gzip size...
+../junyan/docs/evidence/world/0088/app-perf-1cf3532/instrumented-dist-2a7/index.html                        0.50 kB │ gzip:   0.36 kB
+../junyan/docs/evidence/world/0088/app-perf-1cf3532/instrumented-dist-2a7/assets/path-worker-CAwNMWwI.js    2.68 kB
+../junyan/docs/evidence/world/0088/app-perf-1cf3532/instrumented-dist-2a7/assets/index-DjIBVKgS.css        57.60 kB │ gzip:  10.96 kB
+../junyan/docs/evidence/world/0088/app-perf-1cf3532/instrumented-dist-2a7/assets/index-DtZFEF8w.js        975.51 kB │ gzip: 266.37 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.07s
+error during build:
+Error: ENOENT: no such file or directory, scandir 'dist'
+    at read (node:fs:1495:35)
+    at readdirSyncRecursive (node:fs:1513:5)
+    at readdirSync (node:fs:1587:12)
+    at Object.closeBundle (file:///workspace/junyan/node_modules/.vite-temp/instrument-2a7.config.ts.timestamp-1793930145469-ba7794c48e5bc.mjs:13:21)
+    at Object.handler (file:///workspace/junyan/node_modules/.pnpm/vite@7.3.7_@types+node@22.20.5/node_modules/vite/dist/node/chunks/config.js:33994:13)
+    at file:///workspace/junyan/node_modules/.pnpm/rollup@4.67.4/node_modules/rollup/dist/es/shared/node-entry.js:24026:40
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async Promise.all (index 0)
+    at async PluginDriver.hookParallel (file:///workspace/junyan/node_modules/.pnpm/rollup@4.67.4/node_modules/rollup/dist/es/shared/node-entry.js:23936:9)
+    at async Object.close (file:///workspace/junyan/node_modules/.pnpm/rollup@4.67.4/node_modules/rollup/dist/es/shared/node-entry.js:24948:13)

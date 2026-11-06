@@ -1,0 +1,10 @@
+[WebServer] (node:22611) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:22630) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 docs/evidence/world/0088/app-perf-1cf3532/perf.spec.ts:11:1 › measure actual App movement restyle and reload (25.8s)
+
+  1 passed (26.9s)
