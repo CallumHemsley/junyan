@@ -53,7 +53,7 @@ test("replay during initial load ignores the superseded native AbortError", asyn
   let requests = 0;
   await page.route("**/*.wav", route => silentResponse(route, ++requests === 1 ? 1500 : 0));
   await openTable(page);
-  await page.getByRole("button", { name: "再听一遍", exact: true }).click();
+  await page.locator(".world-context-dialogue .round-button").first().click();
   const events = await settled(page);
   await expect.poll(() => page.evaluate(() => (window as any).__lastAudio.currentTime)).toBeGreaterThan(0);
   await info.attach("native-playback", { body: JSON.stringify({ events, errors }, null, 2), contentType: "application/json" });
@@ -76,7 +76,7 @@ test("a genuine current load failure remains visible and replay recovers", async
   await settled(page);
   await expect(page.getByText(failure)).toBeVisible();
   broken = false;
-  await page.getByRole("button", { name: "再听一遍", exact: true }).click();
+  await page.locator(".world-context-dialogue .round-button").first().click();
   expect((await settled(page)).at(-1).status).toBe("playing");
   await expect(page.getByText(failure)).toBeHidden();
   await info.attach("expected-network-console", { body: JSON.stringify(consoleErrors), contentType: "application/json" });
@@ -86,7 +86,7 @@ test("a genuine current load failure remains visible and replay recovers", async
 test("rapid replay and word taps keep only the latest native media playing", async ({ page }) => {
   await page.route("**/*.wav", route => silentResponse(route, 800));
   await openTable(page);
-  await page.getByRole("button", { name: "再听一遍", exact: true }).click({ clickCount: 3, delay: 20 });
+  await page.locator(".world-context-dialogue .round-button").first().click({ clickCount: 3, delay: 20 });
   await page.locator(".spoken .word").first().click();
   await page.getByRole("button", { name: "听这个词" }).click();
   const events = await settled(page);
@@ -101,7 +101,7 @@ test("rapid replay and word taps keep only the latest native media playing", asy
 test("closing a loading dialogue invalidates playback and its eventual rejection", async ({ page }) => {
   await page.route("**/*.wav", route => silentResponse(route, 1500));
   await openTable(page);
-  await page.getByRole("button", { name: "关闭", exact: true }).click();
+  await page.getByRole("button", { name: "继续走走", exact: true }).click();
   expect((await settled(page)).at(-1).status).toBe("AbortError");
   expect(await page.evaluate(() => (window as any).__lastAudio.paused)).toBe(true);
   await page.getByRole("button", { name: /本子/ }).click();
@@ -136,7 +136,7 @@ test("expired walking gesture reports native policy rejection and direct replay 
   expect(initial[0].status).toBe("NotAllowedError");
   await expect(page.getByText("点一下喇叭，再听一遍。")).toBeVisible();
   await expect(page.getByText(failure)).toBeHidden();
-  await page.getByRole("button", { name: "再听一遍", exact: true }).click();
+  await page.locator(".world-context-dialogue .round-button").first().click();
   expect((await settled(page)).at(-1).status).toBe("playing");
   await expect(page.locator(".save-note")).toHaveCount(0);
   await info.attach("policy-scope", { body: `Native first attempt: ${initial[0].status}; active=${initial[0].active}. Silent PCM, unmuted element. No unlock claim.`, contentType: "text/plain" });

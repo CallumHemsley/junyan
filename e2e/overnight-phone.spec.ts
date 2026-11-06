@@ -69,7 +69,7 @@ for (const viewport of [
     for (const table of [1, 2, 3, 4]) {
       const { state, content } = await data(page);
       const order = content.orders.find(entry => entry.id === state.customers.find(customer => customer.table === table)!.orderId)!;
-      await page.locator(".customer-row").nth(table - 1).click();
+      await interactAt(page, `restaurant.table-${table}`);
       await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
       await checkLayout(page, page.getByRole("dialog"));
       if (table === 1) {
@@ -82,7 +82,7 @@ for (const viewport of [
         await page.getByRole("button", { name: "关闭词卡" }).click();
       }
       await interactAt(page, "restaurant.kitchen");
-      const kitchen = page.getByRole("dialog", { name: "厨房", exact: true });
+      const kitchen = page.locator(".world-context[data-target=kitchen]");
       await expect(kitchen).toBeVisible();
       await checkLayout(page, kitchen);
       for (const item of order.items) {
@@ -95,7 +95,7 @@ for (const viewport of [
       await reachable(carry);
       if (table === 1) await screenshot("kitchen-action");
       await carry.click();
-      await page.locator(".customer-row").nth(table - 1).click();
+      await interactAt(page, `restaurant.table-${table}`);
       await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
       await page.getByRole("dialog").getByRole("button", { name: "上菜", exact: false }).click();
       await expect(page.locator(".change-display")).toBeVisible();

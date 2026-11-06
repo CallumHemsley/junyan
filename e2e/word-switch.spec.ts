@@ -1,4 +1,5 @@
-import { interactAt } from "./world-journey";
+import { content } from "../src/content";
+import { interactAt, savedGame } from "./world-journey";
 import { privateArtifact } from "./private-artifacts";
 import { test, expect, type Locator, type Page } from "@playwright/test";
 import { seedDayOne, withSkip } from "./opening";
@@ -73,38 +74,40 @@ test("kitchen, tray, journal and receipt sources keep switching", async ({ page,
   await interactAt(page, "restaurant.table-1");
   await interactAt(page, "restaurant.kitchen");
   const kitchen = page.locator(".world-context[data-target=kitchen]");
-  await switchWords(page, kitchen.locator(".food-listen"), isMobile, `output/playwright/0061/${info.project.name}-kitchen.png`);
-  await kitchen.locator(".food-listen").first().click();
+  await switchWords(page, kitchen.locator(".world-kitchen-food > .word"), isMobile, `output/playwright/0061/${info.project.name}-kitchen.png`);
+  await kitchen.locator(".world-kitchen-food > .word").first().click();
   const trayBefore = await page.evaluate(() => (window as any).__TEST__.getState().tray);
-  await kitchen.locator(".food-pick").first().click({ force: true });
+  await kitchen.locator(".world-kitchen-food > button").first().click({ force: true });
   expect(await page.evaluate(() => (window as any).__TEST__.getState().tray)).toEqual(trayBefore);
   await expect(page.locator(".word-popover")).toBeVisible();
   await page.getByRole("button", { name: "关闭词卡" }).click();
-  await kitchen.locator(".food-pick").nth(0).click();
-  await kitchen.locator(".food-pick").nth(1).click();
+  await kitchen.locator(".world-kitchen-food > button").nth(0).click();
+  await kitchen.locator(".world-kitchen-food > button").nth(1).click();
   await kitchen.getByRole("button", { name: "端好了，去上菜" }).click();
-  await switchWords(page, page.locator(".tray-item"), isMobile, `output/playwright/0061/${info.project.name}-tray.png`);
+  await page.getByRole("button", {name:"托盘",exact:true}).click();
+  await switchWords(page, page.locator(".tray-pocket .word"), isMobile, `output/playwright/0061/${info.project.name}-tray.png`);
+  await page.keyboard.press("Escape");
   await page.getByRole("button", { name: /本子/ }).click();
   await switchWords(page, page.locator(".journal-list button"), isMobile, `output/playwright/0061/${info.project.name}-journal.png`);
   await page.keyboard.press("Escape");
-  await page.evaluate(() => {
-    const h = (window as any).__TEST__;
-    const state = h.getState();
-    const order = h.content.orders.find((o: any) => o.id === state.customers[0].orderId);
-    h.dispatch({ type: "move", position: { x: 4.4, y: 4 } });
-    h.dispatch({ type: "interact", table: 1 });
-    h.dispatch({ type: "move", position: { x: 6, y: 2.3 } });
-    for (let i = 0; i < 2; i++) h.dispatch({ type: "return-food", index: 0 });
-    for (const item of order.items) for (let i = 0; i < item.quantity; i++) h.dispatch({ type: "pickup", foodId: item.foodId });
-    h.dispatch({ type: "move", position: { x: 4.4, y: 4 } });
-    h.dispatch({ type: "deliver", table: 1, now: 1 });
-    const total = order.items.reduce((s: number, i: any) => s + i.quantity * h.content.foods.find((f: any) => f.id === i.foodId).price, 0);
-    h.dispatch({ type: "pay", table: 1, change: order.paid - total });
-  });
+  const state = await savedGame(page);
+  const order = content.orders.find(order => order.id === state.customers[0].orderId)!;
+  await interactAt(page, "restaurant.kitchen");
+  for (let index=0; index<state.tray.length; index++) await page.locator(".world-tray-item > button").first().click();
+  for (const item of order.items) {
+    const food = content.foods.find(food => food.id === item.foodId)!;
+    for (let index=0; index<item.quantity; index++) await page.getByRole("button", {name:`拿${food.word.text}`,exact:true}).click();
+  }
+  await page.getByRole("button", {name:"端好了，去上菜",exact:true}).click();
+  await interactAt(page, "restaurant.table-1");
+  await page.getByRole("button", {name:"上菜",exact:true}).click();
+  const total = order.items.reduce((sum,item)=>sum+item.quantity*content.foods.find(food=>food.id===item.foodId)!.price,0);
+  for (let change=0; change<order.paid-total; change++) await page.getByRole("button", {name:"+1块",exact:true}).click();
+  await page.getByRole("button", {name:"递上找零",exact:true}).click();
   await interactAt(page, "restaurant.table-1");
   const parent = page.locator(".world-context[data-target=table]");
-  await expect(parent.locator(".receipt")).toBeVisible();
-  const sources = parent.locator(".receipt button, .receipt ~ .spoken .word");
+  await expect(parent.locator(".world-table-receipt")).toBeVisible();
+  const sources = parent.locator(".world-table-receipt button, .world-context-dialogue .spoken .word");
   await switchWords(page, sources, isMobile, `output/playwright/0061/${info.project.name}-receipt.png`);
 });
 
@@ -114,7 +117,7 @@ test("rapid keyboard/pointer selection records once and cancels prior native aud
   await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   await interactAt(page, "restaurant.table-1");
-  const sources = page.locator(".paper-panel .spoken .word");
+  const sources = page.locator(".world-context-dialogue .spoken .word");
   const before = await page.evaluate(() => (window as any).__TEST__.getState().journal);
   const selected: string[] = [];
   for (const i of [0, 1, 2, 1]) {

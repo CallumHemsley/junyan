@@ -116,9 +116,9 @@ test("real foreground speech ducks the bed and restores on native end, stop and 
   await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
   await expect.poll(async () => (await native(page)).volume).toBeCloseTo(.042);
   await expect.poll(async () => (await native(page)).volume, { timeout: 15000 }).toBeCloseTo(.1575);
-  await page.getByRole("button", { name: "再听一遍", exact: true }).click();
+  await page.locator(".world-context-dialogue .round-button").first().click();
   await expect.poll(async () => (await native(page)).volume).toBeCloseTo(.042);
-  await page.getByRole("button", { name: "关闭", exact: true }).click();
+  await page.getByRole("button", { name: "继续走走", exact: true }).click();
   await expect.poll(async () => (await native(page)).volume).toBeCloseTo(.1575);
   await interactAt(page, "restaurant.table-1");
   await page.locator(".spoken .word").first().click();
@@ -247,7 +247,7 @@ test("foreground resource failure releases ducking and direct replay recovers", 
   await expect.poll(async () => (await native(page)).volume).toBeCloseTo(.1575);
   await page.unroute("**/*.wav");
   await page.route("**/*.wav", route => silentResponse(route, 300));
-  await page.getByRole("button", { name: "再听一遍", exact: true }).click();
+  await page.locator(".world-context-dialogue .round-button").first().click();
   await expect.poll(async () => (await native(page)).volume).toBeCloseTo(.042);
   await expect(page.getByText("声音暂时没有播出，再点一次听听。")).toBeHidden();
   await expect.poll(() => page.evaluate(() => {

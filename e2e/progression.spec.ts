@@ -57,11 +57,11 @@ test("a shift buys a furnishing, an invitation leads to a real routine, and the 
   await expect(page.locator('[aria-label="可用的钱"]')).toHaveText("2 块");
   await expect(page.locator('[data-buy="blue-vase"]')).toBeDisabled();
   await page.locator('.apartment-items').getByRole("button", { name: /蓝色花瓶.*收着/ }).click();
-  await page.getByRole("button", { name: "选格子", exact: true }).click();
+  await expect(page.getByRole("button", {name:"第2行第4格",exact:true})).toBeVisible();
   await page.getByRole("button", { name: "第2行第4格", exact: true }).click();
   await page.getByRole("button", { name: "放这里", exact: true }).click();
   await expect(page.locator('.apartment-items').getByRole("button", { name: /蓝色花瓶.*屋里/ })).toBeVisible();
-  await page.locator('.apartment-scene').scrollIntoViewIfNeeded();
+  await page.locator('.connected-world canvas').scrollIntoViewIfNeeded();
   await page.screenshot({ path: privateArtifact(`docs/evidence/0081/${info.project.name}-furnished.png`), fullPage: true });
   const placed = (await state(page)).neighbourhood!.apartment.placements;
   await expect.poll(() => page.evaluate(() => localStorage.getItem("junyan-waiter-pending-v1"))).toBeNull();

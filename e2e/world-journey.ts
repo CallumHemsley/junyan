@@ -95,6 +95,20 @@ export async function walkTo(page: Page, destination: Point) {
     const camera = cameraForMap(map.bounds, world.position, Math.ceil(box.width/2), Math.ceil(box.height/2), box.width < 600 ? 11 : 15, 0, 0, surfaceHeight(map.id, world.position));
     const screen = project(point, camera, surfaceHeight(map.id, point));
     const position = { x: screen.x*box.width/camera.width, y: screen.y*box.height/camera.height };
+    const clear = await canvas.evaluate((element, position) => {
+      const bounds = element.getBoundingClientRect();
+      return document.elementFromPoint(bounds.left+position.x,bounds.top+position.y) === element;
+    }, position);
+    if (!clear) {
+      // A nearby target card can cover the ground on phones; use the visible movement pad.
+      const dx=point.x-world.position.x, dy=point.y-world.position.y;
+      const direction = Math.abs(dx+dy)>Math.abs(dx-dy) ? (dx+dy>0?"向后走":"向前走") : (dx-dy>0?"向右走":"向左走");
+      const pad = page.getByRole("button", {name:direction,exact:true});
+      await pad.focus();
+      await pad.press("Enter");
+      await expect.poll(async () => (await savedGame(page)).world!.position, {timeout:2_000}).not.toEqual(world.position);
+      continue;
+    }
     if (page.context().browser()?.browserType().name() === "chromium" && await page.evaluate(() => navigator.maxTouchPoints > 0)) await canvas.tap({ position });
     else await canvas.click({ position });
     await expect.poll(async () => {

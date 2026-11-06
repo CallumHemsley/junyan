@@ -31,7 +31,7 @@ test("a native resource error after playback starts stays visible until replay",
   expect(await page.evaluate(() => (window as any).__lastAudio.error?.code)).toBeGreaterThan(0);
   await expect(page.getByText(failure)).toBeVisible();
   await page.screenshot({ path: info.outputPath("resource-failure.png"), fullPage: true });
-  await page.getByRole("button", { name: "再听一遍", exact: true }).click();
+  await page.locator(".world-context-dialogue .round-button").first().click();
   await expect.poll(() => page.evaluate(() => (window as any).__audioProbe.at(-1)?.status)).toBe("playing");
   await expect(page.getByText(failure)).toBeHidden();
   await page.evaluate(async () => {

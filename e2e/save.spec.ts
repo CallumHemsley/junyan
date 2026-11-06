@@ -113,7 +113,7 @@ test("legacy journal words render plain in the order line and the rest stay fogg
   await page.goto(withSkip("/?seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   await interactAt(page, "restaurant.table-1");
-  const words = page.locator(".paper-panel > .spoken .word");
+  const words = page.locator(".world-context-dialogue .spoken .word");
   await expect(words).toHaveCount(line.length);
   const looks = await words.evaluateAll((buttons) => buttons.map((button) => button.className));
   line.forEach((word, index) => {

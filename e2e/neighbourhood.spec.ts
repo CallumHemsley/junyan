@@ -64,7 +64,7 @@ async function serve(page: Page, table: number) {
   await dialog.getByRole("button",{name:"继续招呼"}).click();
 }
 function restaurantSnapshot(game: GameState) {
-  const {neighbourhood,journal,progression,...restaurant}=game;
+  const {neighbourhood,journal,progression,world,...restaurant}=game;
   return restaurant;
 }
 
@@ -89,7 +89,6 @@ test.describe("real shipped neighbourhood speech and saved journeys",()=>{
     await page.getByRole("button",{name:"收下",exact:true}).click();
     await expect(page.locator(".apartment .new-word").first()).toBeVisible();
     await page.locator(".apartment-items").getByRole("button",{name:/桌子/}).click();
-    await page.getByRole("button",{name:"选格子",exact:true}).click();
     const beforeInvalid=(await stored(page))!.journal;
     await page.getByRole("button",{name:/第1行第1格/}).click();
     await page.getByRole("button",{name:"放这里",exact:true}).click();
@@ -181,6 +180,7 @@ test.describe("real shipped neighbourhood speech and saved journeys",()=>{
     await page.getByRole("button",{name:"出去走走",exact:true}).click();
     await expect.poll(async()=> (await stored(page))?.day).toBe(1);
     await visit(page,"早安小馆");
+    await page.getByRole("button",{name:"今日小结",exact:true}).click();
     await page.getByRole("button",{name:"明天见",exact:false}).click();
     await visit(page,"屋顶花园");
     await expect.poll(async()=> (await stored(page))?.day).toBe(2);
