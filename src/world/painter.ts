@@ -4,7 +4,7 @@ import {actorsFor} from "./life-bridge";
 import {sampleAtmosphere} from "./atmosphere";
 import {atmosphereHooksForMap} from "./atmosphere/map-hooks";
 import {drawAtmosphere,renderAtmosphereObjects} from "./atmosphere/canvas";
-import {drawFurniture} from "./art/residential";
+import {drawFurniture,renderFurnitureObjects} from "./art/residential";
 import {createWorkshopArt} from "./art/workshop";
 import type {GameState} from "../contracts";
 import type {WorldState} from "./schema";
@@ -27,7 +27,7 @@ export function drawPlayer(ctx:CanvasRenderingContext2D,view:WorldRenderView,p:P
  const sample=sampleActor({characterId:"player",facing,action:moving?"walk":"idle",elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion});
  drawActor(ctx,{...view,pass:"objects"},sample,p);
 }
-export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,view:WorldRenderView,facing:Facing,moving:boolean,scale:number,game:GameState,world:WorldState) {
+export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,view:WorldRenderView,facing:Facing,moving:boolean,scale:number,game?:GameState,world?:WorldState) {
  ctx.fillStyle="#334d47";ctx.fillRect(0,0,view.width,view.height);ctx.imageSmoothingEnabled=false;
  for(const terrain of map.terrain) {
   const r=terrain.rect;
@@ -39,12 +39,12 @@ export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,v
   }
  }
  const modules=Object.entries(art).filter(([path])=>!path.includes("/workshop/")).map(([,module])=>module);
- if(game.neighbourhood)modules.push(createWorkshopArt(game.neighbourhood.repairs));
- const atmosphere=sampleAtmosphere({mapId:map.id,day:game.day,timeOfDay:Math.min(.8,game.served/4*.65),seed:game.seed,elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion},atmosphereHooksForMap(map));
+ if(game?.neighbourhood)modules.push(createWorkshopArt(game.neighbourhood.repairs));
+ const atmosphere=sampleAtmosphere({mapId:map.id,day:game?.day??1,timeOfDay:(game?.served??0)<2?"morning":(game?.served??0)<3?"noon":(game?.served??0)<4?"evening":"night",seed:game?.seed??42,elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion},atmosphereHooksForMap(map));
  for(const module of modules)module.drawMap?.(ctx,map,{...view,pass:"ground"});
- if(map.id==="apartment"&&game.neighbourhood)drawFurniture(ctx,game.neighbourhood.apartment,{...view,pass:"ground"});
+ if(map.id==="apartment"&&game?.neighbourhood)drawFurniture(ctx,game.neighbourhood.apartment,{...view,pass:"ground"});
  drawAtmosphere(ctx,atmosphere,{...view,pass:"ground"});
- const custom=[...modules.flatMap(module=>module.renderObjects?.(map,view)??[]),...renderAtmosphereObjects(atmosphere)];
+ const custom=[...modules.flatMap(module=>module.renderObjects?.(map,view)??[]),...renderAtmosphereObjects(atmosphere),...(map.id==="apartment"&&game?.neighbourhood?renderFurnitureObjects(game.neighbourhood.apartment):[])];
  const customIds=new Set(custom.map(object=>object.id));
  const objects=[...map.props.filter(p=>p.layer!=="ground"&&!customIds.has(p.id)).map(prop=>({depth:prop.position.x+prop.position.y+prop.width/2+prop.height/2,draw:()=>{
   const p=view.project(prop.position);if(p.x < -200||p.x>view.width+200||p.y < -200||p.y>view.height+300)return;
@@ -62,7 +62,7 @@ export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,v
   if(occlusion?.fadeWhenPlayerBehind && occludesPlayer(occlusion,view.playerPosition))ctx.globalAlpha=.45;
   object.draw(ctx,view);ctx.restore();
  }});
- for(const actor of actorsFor(map,game,world,view.elapsedMs,view.reducedMotion))objects.push({depth:actor.position.x+actor.position.y,draw:()=>{
+ for(const actor of game&&world?actorsFor(map,game,world,view.elapsedMs,view.reducedMotion):[])objects.push({depth:actor.position.x+actor.position.y,draw:()=>{
   if(actor.kind==="resident")drawActor(ctx,{...view,pass:"objects"},sampleActor({characterId:actor.characterId,facing:actor.facing,action:actor.action,elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion,posture:actor.activity==="sit"?"sit":actor.activity==="work"?"work":"stand"}),actor.position);
   else {const at=view.project(actor.position);ctx.fillStyle=actor.kind==="bird"?"#5b5145":actor.characterId.includes("black")?"#393d3c":"#e8dec1";ctx.fillRect(Math.round(at.x-3),Math.round(at.y-5),7,5);ctx.fillRect(Math.round(at.x+1),Math.round(at.y-8),4,4);}
  }});
