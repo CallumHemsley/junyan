@@ -1,8 +1,11 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
+import { language } from "./language";
 import "../docs/design/tokens.css";
 import "./style.css";
+document.documentElement.lang = language.locale;
+document.documentElement.dir = language.direction;
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />

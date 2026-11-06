@@ -18,11 +18,13 @@ import {
 } from "./game";
 import RestaurantScene from "./scene/RestaurantScene";
 import FoodArt from "./FoodArt";
-import { loadGame, saveGame, validateSavedGame } from "./save";
+import { checkpointKey as getCheckpointKey, loadGame, saveGame, validateSavedGame } from "./save";
+import { lineText } from "./language";
+import { ui } from "./language/ui";
+import WordLine from "./WordLine";
 import { createSession, reduceSession, type Session, type SessionAction } from "./opening";
 import { startSession, type StartupRead } from "./startup";
 import HospitalOpening from "./HospitalOpening";
-import WordToken from "./WordToken";
 import { nextDots, wordState } from "./recovery";
 import { Speaker } from "./icons";
 import { route } from "./navigation";
@@ -36,14 +38,7 @@ const opening = import.meta.env.DEV ? new URLSearchParams(location.search).get("
 const requestedSeed = Number(new URLSearchParams(location.search).get("seed") || 42);
 const seed = Number.isFinite(requestedSeed) ? requestedSeed : 42;
 const testStart = () => createSession(content, seed, opening === "play" ? "opening" : "day");
-const checkpointKey = "junyan-waiter-pending-v1";
-const phases = {
-  seated: "等候点餐",
-  ordered: "等候上菜",
-  checkout: "等候找零",
-  served: "多谢",
-};
-const dayNames = ["", "第一天", "第二天", "第三天", "第四天", "第五天"];
+const checkpointKey = getCheckpointKey(content.language);
 const Book = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true">
     <path d="M4 4h7q3 0 3 3v14q-1-2-3-2H4Zm16 0h-3q-3 0-3 3m0 14q1-2 3-2h3Z" />
@@ -191,7 +186,7 @@ export default function App() {
     if (!ready || testMode || session.phase !== "day") return;
     const timer = setTimeout(() => {
       const checkpoint = JSON.stringify(state);
-      saveGame(state)
+      saveGame(state, content.language)
         .then(() => {
           if (localStorage.getItem(checkpointKey) === checkpoint)
             localStorage.removeItem(checkpointKey);
@@ -424,14 +419,7 @@ export default function App() {
   };
   const tokens = (line: Line) => (
     <div className="spoken">
-      {line.tokens.map((w, i) => (
-        <WordToken
-          key={`${w.id}-${i}`}
-          word={w}
-          look={wordState(state.journal[w.id], fresh.includes(w.id))}
-          onLookup={lookup}
-        />
-      ))}
+      <WordLine line={line} look={(w) => wordState(state.journal[w.id], fresh.includes(w.id))} onLookup={lookup} />
     </div>
   );
   const order = getOrder(state, table, content);
@@ -473,28 +461,28 @@ export default function App() {
       event.stopPropagation();
     }
   };
-  if (!ready) return <main className="loading">早安，小馆正在开门。</main>;
-  const audioNotice = audioError && <p className="save-note" role="status">{audioError === "policy" ? "点一下喇叭，再听一遍。" : "声音暂时没有播出，再点一次听听。"}</p>;
+  if (!ready) return <main className="loading">{ui.loading}</main>;
+  const audioNotice = audioError && <p className="save-note" role="status">{audioError === "policy" ? ui.audioPolicy : ui.audioUnavailable}</p>;
   const wordCard = word && (
     <div
       className="word-popover"
       role="dialog"
       aria-modal="false"
-      aria-label={`${word.hanzi}的意思`}
+      aria-label={ui.wordMeaning(word.text)}
     >
       <button
         className="close-button"
         onClick={() => setWord(null)}
-        aria-label="关闭词卡"
+        aria-label={ui.closeWord}
       >
         ×
       </button>
-      <span className="eyebrow">记在本子里</span>
+      <span className="eyebrow">{ui.noted}</span>
       <div className="word-card-title">
-        <h2 aria-live="polite">{word.hanzi}</h2>
+        <h2 aria-live="polite">{word.text}</h2>
         <button
           className="round-button"
-          aria-label="听这个词"
+          aria-label={ui.listenWord}
           onClick={() => play(word.audio)}
         >
           <Speaker />
@@ -505,16 +493,16 @@ export default function App() {
           kind={content.foods.find((f) => f.word.id === word.id)!.kind}
         />
       )}
-      <p className="pinyin">{word.pinyin}</p>
+      {word.pronunciation && <p className="pronunciation pinyin">{word.pronunciation}</p>}
     </div>
   );
   const brand = (
-    <a className="brand" href={import.meta.env.BASE_URL} aria-label="君言首页">
+    <a className="brand" href={import.meta.env.BASE_URL} aria-label={ui.home}>
       <span className="brand-seal">
-        君<br />言
+        {ui.seal.map((line, index) => <span key={index}>{index > 0 && <br />}{line}</span>)}
       </span>
       <span>
-        君言<span className="brand-divider"> / </span>早安小馆
+        {ui.brand}<span className="brand-divider"> / </span>{ui.restaurant}
       </span>
     </a>
   );
@@ -542,7 +530,7 @@ export default function App() {
     <div className={`app-shell${wordOpen ? " word-card-open" : ""}`} onFocusCapture={rememberPanelTrigger} onClickCapture={(event) => { guardWordCard(event); rememberPanelTrigger(event); }}>
       <header className="topbar" inert={panel !== "none" || dayEndOpen}>
         {brand}
-        <nav aria-label="小馆">
+        <nav aria-label={ui.navigation}>
           <AmbienceControls ambience={ambience} />
           <button
             onClick={() => {
@@ -553,33 +541,33 @@ export default function App() {
             }}
           >
             <Book />
-            <span>本子</span>
+            <span>{ui.journal}</span>
             <small>{words.length}</small>
           </button>
           <button
             className="help-button"
-            aria-label="怎么玩"
+            aria-label={ui.help}
             onClick={() => setPanel("help")}
           >
-            怎么玩
+            {ui.help}
           </button>
         </nav>
       </header>
       <main inert={panel !== "none" || dayEndOpen} data-location={locationId}>
         <LocationNavigation location={locationId} onVisit={visitLocation}/>
         {locationId === "restaurant" ? <div className="play-layout">
-          <section className="world-panel" aria-label="早安小馆餐厅">
+          <section className="world-panel" aria-label={ui.restaurantRegion}>
             <div className="world-caption">
               <button className="day-toggle" aria-expanded={dayExpanded} aria-controls="day-details" onClick={() => setDayExpanded(!dayExpanded)}>
                 <Sun />
-                <span>{dayNames[state.day] || `第${state.day}天`} · 早市</span>
+                <span>{ui.marketDay(state.day)}</span>
                 <span aria-hidden="true">{dayExpanded ? "−" : "+"}</span>
               </button>
-              <span className="day-progress" aria-label={`招呼客人 ${state.served} / 4 桌`}>{state.served} / 4 桌</span>
+              <span className="day-progress" aria-label={ui.dayProgressLabel(state.served)}>{ui.dayProgress(state.served)}</span>
             </div>
             <div className="day-details" id="day-details" hidden={!dayExpanded}>
-              <span>累计进账 {state.earnings} 块</span>
-              <span>{state.level === 1 ? "一道菜" : state.level === 2 ? "两样菜" : "三样菜"}</span>
+              <span>{ui.earnings(state.earnings)}</span>
+              <span>{ui.dishes(state.level)}</span>
             </div>
             <RestaurantScene
               state={state}
@@ -588,14 +576,14 @@ export default function App() {
               onKitchen={visitKitchen}
             />
             <div className="world-footer">
-              <span className="next-hint" role="status">{moving ? "走过去…" : ""}</span>
+              <span className="next-hint" role="status">{moving ? ui.walking : ""}</span>
               <button className="primary next-action" disabled={!needsKitchen && !nextTable} onClick={() => needsKitchen ? visitKitchen() : nextTable && visitTable(nextTable.table)}>
-                {needsKitchen ? "去厨房取餐" : nextTable ? `${nextTable.table}桌 · ${nextTable.phase === "checkout" ? "找零" : nextTable.phase === "ordered" ? "上菜" : "听点餐"}` : "多谢"}<span aria-hidden="true">→</span>
+                {needsKitchen ? ui.collectFood : nextTable ? ui.nextTable(nextTable.table, nextTable.phase) : ui.thanks}<span aria-hidden="true">→</span>
               </button>
             </div>
           </section>
-          <section className="service-strip" aria-label="今日客人和托盘">
-            <div className="customer-list" role="group" aria-label="今日客人">
+          <section className="service-strip" aria-label={ui.serviceRegion}>
+            <div className="customer-list" role="group" aria-label={ui.customers}>
               {state.customers.map((c) => {
                 const o = getOrder(state, c.table, content);
                 return (
@@ -603,20 +591,20 @@ export default function App() {
                     key={c.table}
                     className={`customer-row ${c.phase === "served" ? "customer-done" : ""}`}
                     onClick={() => visitTable(c.table)}
-                    aria-label={`${c.table}桌 ${o?.customer} ${phases[c.phase]}`}
+                    aria-label={ui.customer(c.table, o?.customer ?? "", c.phase)}
                   >
-                    <span className="table-number">{c.table}桌</span>
+                    <span className="table-number">{ui.table(c.table)}</span>
                     <span className="customer-info">
                       <b>{o?.customer}</b>
-                      <small>{phases[c.phase]}</small>
+                      <small>{ui.phases[c.phase]}</small>
                     </span>
                   </button>
                 );
               })}
             </div>
-            <div className="tray-section" role="group" aria-label="托盘">
+            <div className="tray-section" role="group" aria-label={ui.tray}>
               <div className="section-label">
-                <span>托盘</span>
+                <span>{ui.tray}</span>
                 <span>{state.tray.length} / 6</span>
               </div>
               <div className="tray">
@@ -627,16 +615,16 @@ export default function App() {
                         key={`${id}-${i}`}
                         data-word-lookup onClick={(event) => lookup(food.word, event.currentTarget)}
                         className="tray-item"
-                        aria-label={`查看${food.word.hanzi}`}
+                        aria-label={ui.view(food.word.text)}
                       >
                         <FoodArt kind={food.kind} />
-                        <span>{food.word.hanzi}</span>
+                        <span>{food.word.text}</span>
                       </button>
                     );
                   })}
               </div>
-              <button className="kitchen-link" aria-label="厨房" onClick={visitKitchen}>
-                厨房 <span aria-hidden="true">↗</span>
+              <button className="kitchen-link" aria-label={ui.kitchen} onClick={visitKitchen}>
+                {ui.kitchen} <span aria-hidden="true">↗</span>
               </button>
             </div>
           </section>
@@ -653,7 +641,7 @@ export default function App() {
         {locationId !== "restaurant" && panel === "none" && audioNotice}
         {saveError && (
           <p role="status" className="save-note">
-            本次进度暂时无法保存，请保持页面打开。
+            {ui.saveUnavailable}
           </p>
         )}
       </main>
@@ -665,41 +653,41 @@ export default function App() {
             aria-modal={!wordOpen}
             aria-label={
               panel === "kitchen"
-                ? "厨房"
+                ? ui.kitchen
                 : panel === "journal"
-                  ? "本子"
+                  ? ui.journal
                   : panel === "help"
-                    ? "怎么玩"
-                    : `${table}桌点餐`
+                    ? ui.help
+                    : ui.tableOrder(table)
             }
             onClick={(e) => e.stopPropagation()}
           >
-            <button className="close-button" aria-label="关闭" onClick={close}>
+            <button className="close-button" aria-label={ui.close} onClick={close}>
               ×
             </button>
             {panel === "help" && (
               <div className="learning-help">
                 <div className="help-line">
                   {tokens(content.help.welcome)}
-                  <button className="round-button" aria-label={`听${content.help.welcome.tokens.map((token) => token.hanzi).join("")}`} onClick={() => play(content.help.welcome.audio)}><Speaker /></button>
+                  <button className="round-button" aria-label={ui.listen(lineText(content.help.welcome))} onClick={() => play(content.help.welcome.audio)}><Speaker /></button>
                 </div>
                 <button className="primary" onClick={close}>
-                  开门迎客 <span>→</span>
+                  {ui.openRestaurant} <span>→</span>
                 </button>
                 <button className="help-disclosure" aria-expanded={helpExpanded} aria-controls="help-details" onClick={() => setHelpExpanded(!helpExpanded)}>
-                  怎么玩 <span aria-hidden="true">{helpExpanded ? "−" : "+"}</span>
+                  {ui.help} <span aria-hidden="true">{helpExpanded ? "−" : "+"}</span>
                 </button>
                 <div id="help-details">
                   {helpExpanded && (
                     <>
                       <div className="help-line">
                         {tokens(content.help.lookup)}
-                        <button className="round-button" aria-label={`听${content.help.lookup.tokens.map((token) => token.hanzi).join("")}`} onClick={() => play(content.help.lookup.audio)}><Speaker /></button>
+                        <button className="round-button" aria-label={ui.listen(lineText(content.help.lookup))} onClick={() => play(content.help.lookup.audio)}><Speaker /></button>
                       </div>
                       <ol className="learning-help-steps">
                         {content.help.steps.map((step, index) => (
                           <li key={step.id} data-help-step={step.id}>
-                            <span className="help-step-number" aria-hidden="true">{["一", "二", "三"][index]}</span>
+                            <span className="help-step-number" aria-hidden="true">{ui.helpStep(index)}</span>
                             <svg className="help-picture" viewBox="0 0 240 76" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                               {step.id === "order" ? <>
                                 <circle cx="35" cy="17" r="9" /><path d="M20 42q0-18 15-18t15 18M12 46h66M22 46v22m45-22v22" />
@@ -716,14 +704,14 @@ export default function App() {
                             </svg>
                             <div className="help-line">
                               {tokens(step.line)}
-                              <button className="round-button" aria-label={`听${step.line.tokens.map((token) => token.hanzi).join("")}`} onClick={() => play(step.line.audio)}><Speaker /></button>
+                              <button className="round-button" aria-label={ui.listen(lineText(step.line))} onClick={() => play(step.line.audio)}><Speaker /></button>
                             </div>
                           </li>
                         ))}
                       </ol>
                       <div className="help-line">
                         {tokens(content.help.pace)}
-                        <button className="round-button" aria-label="听慢慢来" onClick={() => play(content.help.pace.audio)}><Speaker /></button>
+                        <button className="round-button" aria-label={ui.listen(lineText(content.help.pace))} onClick={() => play(content.help.pace.audio)}><Speaker /></button>
                       </div>
                     </>
                   )}
@@ -734,11 +722,11 @@ export default function App() {
               <>
                 <div className="dialogue-heading">
                   <span>
-                    {table}桌 · {order.customer}
+                    {ui.tableCustomer(table, order.customer)}
                   </span>
                   <button
                       className="round-button"
-                      aria-label="再听一遍"
+                      aria-label={ui.replay}
                       onClick={() => play(customer.phase === "served" ? character.thanks.audio : order.line.audio)}
                     >
                       <Speaker />
@@ -747,7 +735,7 @@ export default function App() {
                 {customer.phase === "served" ? (
                   <>
                     <div className="receipt">
-                      <span className="receipt-title">早安小馆</span>
+                      <span className="receipt-title">{ui.restaurant}</span>
                       {order.items.map((item) => {
                         const f = content.foods.find(
                           (f) => f.id === item.foodId,
@@ -755,22 +743,22 @@ export default function App() {
                         return (
                           <p key={item.foodId}>
                             <button data-word-lookup onClick={(event) => lookup(f.word, event.currentTarget)}>
-                              {f.word.hanzi}
+                              {f.word.text}
                             </button>
                             <span>×{item.quantity}</span>
-                            <span>{f.price * item.quantity}块</span>
+                            <span>{ui.money(f.price * item.quantity)}</span>
                           </p>
                         );
                       })}
                       <p className="receipt-total">
-                        <b>共 {total}块</b>
-                        <span>找零 {order.paid - total}块</span>
+                        <b>{ui.total(total)}</b>
+                        <span>{ui.change(order.paid - total)}</span>
                       </p>
-                      <span className="thanks-chop">多谢</span>
+                      <span className="thanks-chop">{ui.thanks}</span>
                     </div>
                     {tokens(character.thanks)}
                     <button className="primary" autoFocus onClick={close}>
-                      继续招呼 <span>→</span>
+                      {ui.continueServing} <span>→</span>
                     </button>
                   </>
                 ) : (
@@ -778,56 +766,56 @@ export default function App() {
                     {customer.phase === "ordered" && (
                       <div className="character-greeting">
                         {tokens(character.greeting)}
-                        <button className="round-button" aria-label="听招呼" onClick={() => play(character.greeting.audio)}><Speaker /></button>
+                        <button className="round-button" aria-label={ui.listenGreeting} onClick={() => play(character.greeting.audio)}><Speaker /></button>
                       </div>
                     )}
                     {tokens(order.line)}
                     {customer.phase === "checkout" ? (
                       <>
                         <p className="checkout-title">
-                          共 {total}块 · 收到 {order.paid}块
+                          {ui.checkout(total, order.paid)}
                         </p>
-                        <p className="subtle">找零</p>
+                        <p className="subtle">{ui.changeLabel}</p>
                         <div className="change-display">
                           {change}
-                          <span> 块</span>
+                          <span> {ui.moneyUnit}</span>
                         </div>
                         <div className="money-buttons">
                           {[1, 2, 5, 10].map((n) => (
                             <button key={n} onClick={() => setChange((c) => c + n)}>
-                              +{n}块
+                              +{ui.money(n)}
                             </button>
                           ))}
-                          <button onClick={() => setChange(0)}>重来</button>
+                          <button onClick={() => setChange(0)}>{ui.resetChange}</button>
                         </div>
                         {state.feedback === "wrong-change" && (
                           <div role="status" className="gentle-feedback">
                             {tokens(character.retry)}
-                            <p>再算一算，慢慢来。</p>
+                            <p>{ui.retryChange}</p>
                           </div>
                         )}
                         <button className="primary" onClick={completePayment}>
-                          递上找零 <span>→</span>
+                          {ui.giveChange} <span>→</span>
                         </button>
                       </>
                     ) : (
                       <>
-                        <p className="subtle">点字听词 · 记住后去厨房取餐</p>
+                        <p className="subtle">{ui.orderHint}</p>
                         {state.feedback === "wrong-food" && (
                           <div className="gentle-feedback" role="status">
                             {tokens(character.retry)}
-                            <p>可以回厨房放下，再拿一次。</p>
+                            <p>{ui.retryFood}</p>
                           </div>
                         )}
                         <div className="dialogue-actions">
                           <button className="secondary" onClick={visitKitchen}>
-                            去厨房
+                            {ui.visitKitchen}
                           </button>
                           <button
                             className="primary"
                             onClick={() => dispatch({ type: "deliver", table, now: Date.now() })}
                           >
-                            上菜 <span>→</span>
+                            {ui.deliver} <span>→</span>
                           </button>
                         </div>
                       </>
@@ -838,12 +826,12 @@ export default function App() {
             )}
             {panel === "kitchen" && (
               <>
-                <p className="eyebrow">厨房 · 热乎的早饭</p>
-                <h2>刚才，客人点了什么？</h2>
+                <p className="eyebrow">{ui.kitchenEyebrow}</p>
+                <h2>{ui.kitchenQuestion}</h2>
                 <p className="subtle">
                   {state.customers.some((c) => c.phase === "ordered")
-                    ? "一次先送一桌，托盘最多六份。"
-                    : "先去桌边，听听客人点什么。"}
+                    ? ui.kitchenHint
+                    : ui.kitchenNoOrder}
                 </p>
                 <div className="food-grid">
                   {content.foods.map((food) => (
@@ -853,20 +841,20 @@ export default function App() {
                         onClick={() =>
                           dispatch({ type: "pickup", foodId: food.id })
                         }
-                        aria-label={`拿${food.word.hanzi}`}
+                        aria-label={ui.take(food.word.text)}
                         disabled={
                           state.tray.length >= 6 ||
                           !state.customers.some((c) => c.phase === "ordered")
                         }
                       >
                         <FoodArt kind={food.kind} />
-                        <span>{food.word.hanzi}</span>
-                        <small>{food.price}块</small>
+                        <span>{food.word.text}</span>
+                        <small>{ui.money(food.price)}</small>
                         <i>＋</i>
                       </button>
                       <button
                         className="food-listen"
-                        aria-label={`听${food.word.hanzi}`}
+                        aria-label={ui.listen(food.word.text)}
                         data-word-lookup onClick={(event) => lookup(food.word, event.currentTarget)}
                       >
                         <Speaker />
@@ -875,46 +863,46 @@ export default function App() {
                   ))}
                 </div>
                 <div className="kitchen-tray">
-                  <span>托盘 {state.tray.length}/6</span>
+                  <span>{ui.trayCount(state.tray.length)}</span>
                   <div>
                     {state.tray.map((id, i) => (
                       <button
                         key={`${id}-${i}`}
-                        aria-label={`放回${content.foods.find((f) => f.id === id)!.word.hanzi}`}
+                        aria-label={ui.returnFood(content.foods.find((f) => f.id === id)!.word.text)}
                         onClick={() =>
                           dispatch({ type: "return-food", index: i })
                         }
                       >
-                        {content.foods.find((f) => f.id === id)!.word.hanzi}{" "}
+                        {content.foods.find((f) => f.id === id)!.word.text}{" "}
                         <span>×</span>
                       </button>
                     ))}
                   </div>
                 </div>
                 {state.feedback === "full" && (
-                  <p role="status">托盘满了，先送一桌吧。</p>
+                  <p role="status">{ui.trayFull}</p>
                 )}
                 <button className="primary" onClick={close}>
-                  端好了，去上菜 <span>→</span>
+                  {ui.readyToDeliver} <span>→</span>
                 </button>
               </>
             )}
             {panel === "journal" && (
               <>
-                <p className="eyebrow">我的本子</p>
-                <h2>慢慢想起的词。</h2>
-                <p className="subtle">{words.length} 个词 · 点一下，再听一遍</p>
+                <p className="eyebrow">{ui.journalEyebrow}</p>
+                <h2>{ui.journalTitle}</h2>
+                <p className="subtle">{ui.journalCount(words.length)}</p>
                 {words.length === 0 ? (
                   <p className="journal-empty">
-                    听客人点餐时，点一个字，收进本子。
+                    {ui.journalEmpty}
                   </p>
                 ) : (
                   <div className="journal-list">
                     {words.map((w) => (
                       <button key={w.id} data-word-lookup onClick={(event) => lookup(w, event.currentTarget)}>
-                        <span>{w.hanzi}</span>
+                        <span>{w.text}</span>
                         {state.journal[w.id].lookups > 0 && (
-                          <small>听过 {state.journal[w.id].lookups} 次</small>
+                          <small>{ui.lookupCount(state.journal[w.id].lookups)}</small>
                         )}
                         <Speaker />
                       </button>
@@ -934,30 +922,26 @@ export default function App() {
             className="paper-panel day-end"
             role="dialog"
             aria-modal={!wordOpen}
-            aria-label="今日小结"
+            aria-label={ui.summary}
           >
-            <p className="eyebrow">打烊了</p>
-            <h2>四桌早饭，一点新收获。</h2>
+            <p className="eyebrow">{ui.closed}</p>
+            <h2>{ui.summaryTitle}</h2>
             <div className="tally">
               <p>
-                <span>招呼客人</span>
-                <b>4 桌</b>
+                <span>{ui.servedLabel}</span>
+                <b>{ui.servedCount}</b>
               </p>
               <p>
-                <span>累计进账</span>
-                <b>{state.earnings} 块</b>
+                <span>{ui.earningsLabel}</span>
+                <b>{ui.moneySpaced(state.earnings)}</b>
               </p>
               <p>
-                <span>本子里的词</span>
-                <b>{words.length} 个</b>
+                <span>{ui.wordsLabel}</span>
+                <b>{ui.wordCount(words.length)}</b>
               </p>
             </div>
             <p className="subtle">
-              {state.level === 1
-                ? "明天，要记住数量和两样菜了。"
-                : state.level === 2
-                  ? "明天，试试三样菜的点餐。"
-                  : "明天，老朋友还会带来新点餐。"}
+              {ui.tomorrow(state.level)}
             </p>
             <button
               className="primary"
@@ -966,9 +950,9 @@ export default function App() {
                 close();
               }}
             >
-              明天见 <span>→</span>
+              {ui.nextDay} <span>→</span>
             </button>
-            <button className="secondary" onClick={() => visitLocation("apartment")}>回家看看</button>
+            <button className="secondary" onClick={() => visitLocation("apartment")}>{ui.visitHome}</button>
           </section>
         </div>
       )}
