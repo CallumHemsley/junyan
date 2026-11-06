@@ -112,3 +112,20 @@ it('consumes real canonical profiles without diagnostics or background greetings
     expect(sampleLife(plan,{...context,reducedMotion:true},navigation).every(a=>a.phaseMs===0)).toBe(true);
   }
 });
+
+
+it('keeps bank arrivals, return triggers and legacy saved positions footprint-safe',()=>{
+ const map=worldMapSchema.parse(mapDefinitions.find(m=>m.id==='riverbank'));
+ for(const legacy of [{x:7,y:73},{x:6,y:75},{x:5,y:10}])expect(canStand(map,legacy,.3)).toBe(true);
+ for(const entrance of map.entrances){
+  const exit=map.exits.find(e=>e.id===entrance.id.replace('from-','to-'))!;
+  const center={x:exit.rect.x+exit.rect.width/2,y:exit.rect.y+exit.rect.height/2};
+  expect(canStand(map,center,.3)).toBe(true);
+  const route=findPath(map,entrance.position,center);expect(route.length).toBeGreaterThan(0);
+  let from=entrance.position;for(const to of route){expect(canWalk(map,from,to,.3)).toBe(true);from=to;}
+  const goal=map.landmarks.find(l=>l.id===(entrance.id==='from-town'?'riverbank.washing-stones':'riverbank.moon-bridge'))!.position;
+  expect(findPath(map,entrance.position,goal).length).toBeGreaterThan(0);
+  const distance=Math.min(...map.terrain.filter(t=>t.material==='water').map(t=>Math.hypot(Math.max(t.rect.x-entrance.position.x,0,entrance.position.x-t.rect.x-t.rect.width),Math.max(t.rect.y-entrance.position.y,0,entrance.position.y-t.rect.y-t.rect.height))));
+  expect(distance).toBeLessThan(7);
+ }
+});

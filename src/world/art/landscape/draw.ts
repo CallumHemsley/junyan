@@ -1,9 +1,40 @@
+import { drawFoliage, foliageBounds, type FoliageSpecies } from './foliage';
 /** Original landscape art. The caller supplies the shared camera projection. */
 export type LandscapePoint = { x: number; y: number };
 export type LandscapeProp = {
   kind: string; position: LandscapePoint; width: number; height: number; variant: number | string;
 };
 export type LandscapeProject = (x: number, y: number, z?: number) => { x: number; y: number };
+
+
+export function foliageFor(prop: LandscapeProp): FoliageSpecies | undefined {
+  return prop.kind==='willow'?'willow':prop.kind==='mature-tree'?'camphor':prop.kind==='tree'&&Number(prop.variant)===2?'fruit':undefined;
+}
+export function landscapeFoliageBounds(prop: LandscapeProp) {
+  const species=foliageFor(prop); if(!species)return undefined;
+  const size=prop.kind==='mature-tree'?1:prop.kind==='willow'?.85:Math.min(1,prop.width/6);
+  const raw=foliageBounds({species,seed:Number(prop.variant)||0});
+  return {minX:raw.minX*size,minY:raw.minY*size,maxX:raw.maxX*size,maxY:raw.maxY*size,size};
+}
+// Cache native groups, then composite once. Overlapping leaf spans must not accumulate
+// opacity when the shared compositor fades a canopy over the player.
+const foliageCache=new Map<string,HTMLCanvasElement>();
+const foliageBases=['#395b49','#537451','#789252','#a7b56b','#c3c780','#405f52','#5b7b5b','#819b68','#acb980','#c5c98e','#455e45','#627d4c','#899952','#b5b875','#d3cb8d','#61583f','#897249','#b29a69','#ba874b','#e3b771'];
+function foliageGroup(ctx:CanvasRenderingContext2D,prop:LandscapeProp,elapsedMs:number,reducedMotion:boolean,shadeColor:(base:string)=>string){
+  const species=foliageFor(prop)!;const seed=Number(prop.variant)||0,b=foliageBounds({species,seed});
+  const colors=new Map(foliageBases.map(base=>[base,shadeColor(base)]));
+  const frame=species==='willow'&&!reducedMotion?Math.floor(elapsedMs/150):0;
+  const key=[species,seed,frame,reducedMotion,...colors.values()].join('|');
+  let sprite=foliageCache.get(key);
+  if(!sprite){
+    sprite=ctx.canvas.ownerDocument.createElement('canvas');sprite.width=b.maxX-b.minX+1;sprite.height=b.maxY-b.minY+1;
+    const group=sprite.getContext('2d')!;group.translate(-b.minX,-b.minY);
+    drawFoliage(group,{species,seed,elapsedMs:frame*150,reducedMotion,shadeColor:base=>colors.get(base)??shadeColor(base)});
+    if(foliageCache.size>=128)foliageCache.delete(foliageCache.keys().next().value!);foliageCache.set(key,sprite);
+  }
+  const size=landscapeFoliageBounds(prop)!.size;
+  ctx.save();ctx.scale(size,size);ctx.imageSmoothingEnabled=false;ctx.drawImage(sprite,b.minX,b.minY);ctx.restore();
+}
 
 const colors: Record<string, string> = {
   grass: '#869d62', moss: '#637f60', 'orchard-floor': '#a1aa70', ridge: '#abb39a',
@@ -35,6 +66,7 @@ export function drawLandscapeProp(
     polygon([[x-w+4,y-3],[x-w+4,y-h*.4],[x-w*.5,y-h*.4],[x-w*.5,y-h*.8],[x+w*.35,y-h*.8],[x+w*.35,y-h*.6],[x+w-5,y-h*.6],[x+w-5,y-h*.2],[x+w*.3,y-1]],mid);
     block(x-w*.5,y-h*.77,w*.65,3,light); block(x-w*.75,y-h*.4,w*.5,3,light); block(x+w*.2,y-h*.5,5,2,light);
   };
+  if(foliageFor(prop)){foliageGroup(ctx,prop,elapsedMs,reducedMotion,shadeColor);ctx.restore();return true;}
   const v = Number(prop.variant) || 0;
   let painted = true;
   switch (prop.kind) {
@@ -122,6 +154,12 @@ export function drawLandscapeProp(
       for(const x of [-15,14]) {block(x,-10,3,12,'#655f49');block(x,-23,2,18,'#655f49');}
       for(let i=0;i<3;i++)block(-18,-23+i*4,39,3,i===0?'#b8a06b':'#9c895e');
       polygon([[-21,-10],[0,-16],[22,-9],[1,-3]],'#c2aa76');break;
+    case 'crates':
+      for(const [x,y] of [[-10,0],[8,-5]]){polygon([[x-9,y-5],[x,y-10],[x+9,y-5],[x,y]],'#b39a69');block(x-9,y-5,18,7,'#92764f');block(x-7,y-4,14,2,'#594e3d');block(x-9,y-1,18,2,'#bea16b');for(const dx of [-7,5])block(x+dx,y-4,2,7,'#d0b67c');}break;
+    case 'tied-rope':
+      for(let i=0;i<18;i++)block(-16+i*2,-3+Math.round(Math.sin(i/17*Math.PI)*5),2,1,'#c3b083');break;
+    case 'worn-stones':
+      for(const [x,y] of [[-9,0],[2,-5],[13,2],[-1,7]]){polygon([[x-6,y],[x-4,y-3],[x+5,y-2],[x+7,y+1],[x,y+3]],'#a4a58c');block(x-3,y-2,6,1,'#c2bfa1');}break;
     case 'cart':
       for(const x of [-14,13]){block(x-3,-4,6,7,'#4c584d');block(x-1,-3,2,5,'#a5a78c');}
       polygon([[-18,-13],[0,-21],[19,-13],[0,-4]],'#bba371');block(-18,-17,36,4,'#80694b');

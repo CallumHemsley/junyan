@@ -6,8 +6,8 @@
     "height": 80
   },
   "defaultSpawn": {
-    "x": 7,
-    "y": 73,
+    "x": 40,
+    "y": 75,
     "facing": "north"
   },
   "walkable": [
@@ -724,8 +724,8 @@
     {
       "id": "riverbank.ferry-boat",
       "rect": {
-        "x": 55.8,
-        "y": 63.52,
+        "x": 56.599999999999994,
+        "y": 60.220000000000006,
         "width": 2.4,
         "height": 0.96
       }
@@ -733,10 +733,19 @@
     {
       "id": "riverbank.ferry-post",
       "rect": {
-        "x": 61.76,
-        "y": 60.76,
+        "x": 60.26,
+        "y": 60.26,
         "width": 0.48,
         "height": 0.48
+      }
+    },
+    {
+      "id": "riverbank.arrival-willow",
+      "rect": {
+        "x": 35.225,
+        "y": 76.725,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
@@ -751,8 +760,8 @@
     {
       "id": "riverbank.washing-rack",
       "rect": {
-        "x": 35.8,
-        "y": 76.76,
+        "x": 33.8,
+        "y": 70.76,
         "width": 2.4,
         "height": 0.48
       }
@@ -848,15 +857,6 @@
       }
     },
     {
-      "id": "riverbank.bridge-west-tree-0",
-      "rect": {
-        "x": 34.6,
-        "y": 12.6,
-        "width": 0.8,
-        "height": 0.8
-      }
-    },
-    {
       "id": "riverbank.bridge-west-tree-1",
       "rect": {
         "x": 31.825000000000003,
@@ -866,28 +866,10 @@
       }
     },
     {
-      "id": "riverbank.bridge-west-tree-2",
-      "rect": {
-        "x": 36.425000000000004,
-        "y": 10.424999999999999,
-        "width": 0.55,
-        "height": 0.55
-      }
-    },
-    {
       "id": "riverbank.bridge-west-tree-3",
       "rect": {
         "x": 37.825,
         "y": 14.525,
-        "width": 0.55,
-        "height": 0.55
-      }
-    },
-    {
-      "id": "riverbank.bridge-west-tree-4",
-      "rect": {
-        "x": 33.425000000000004,
-        "y": 16.125,
         "width": 0.55,
         "height": 0.55
       }
@@ -1381,14 +1363,14 @@
   ],
   "occluders": [
     {
-      "id": "riverbank.bridge-west-tree-0",
+      "id": "riverbank.arrival-willow",
       "rect": {
-        "x": 31.5,
-        "y": 9.5,
-        "width": 7,
-        "height": 7
+        "x": 32.75,
+        "y": 74.25,
+        "width": 5.5,
+        "height": 5.5
       },
-      "height": 7.2,
+      "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
@@ -1403,34 +1385,12 @@
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "riverbank.bridge-west-tree-2",
-      "rect": {
-        "x": 34.45,
-        "y": 8.45,
-        "width": 4.5,
-        "height": 4.5
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
       "id": "riverbank.bridge-west-tree-3",
       "rect": {
         "x": 36.25,
         "y": 12.950000000000001,
         "width": 3.7,
         "height": 3.7
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "riverbank.bridge-west-tree-4",
-      "rect": {
-        "x": 31.750000000000004,
-        "y": 14.45,
-        "width": 3.9,
-        "height": 3.9
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
@@ -2034,7 +1994,7 @@
     {
       "id": "from-town",
       "position": {
-        "x": 6,
+        "x": 40,
         "y": 75
       },
       "facing": "north"
@@ -2042,19 +2002,19 @@
     {
       "id": "from-park",
       "position": {
-        "x": 5,
+        "x": 42,
         "y": 10
       },
-      "facing": "east"
+      "facing": "south"
     }
   ],
   "exits": [
     {
       "id": "to-town",
       "rect": {
-        "x": 4,
+        "x": 38.5,
         "y": 78,
-        "width": 4,
+        "width": 3,
         "height": 1
       },
       "targetMapId": "town",
@@ -2064,10 +2024,10 @@
     {
       "id": "to-park",
       "rect": {
-        "x": 1,
-        "y": 8,
-        "width": 1,
-        "height": 4
+        "x": 40.5,
+        "y": 6.5,
+        "width": 3,
+        "height": 1
       },
       "targetMapId": "park",
       "targetEntranceId": "from-riverbank",
@@ -4257,6 +4217,72 @@
       },
       "material": "bridge",
       "variant": 0
+    },
+    {
+      "id": "riverbank.town-arrival-0",
+      "rect": {
+        "x": 38.9,
+        "y": 72.9,
+        "width": 2.200000000000003,
+        "height": 7.099999999999994
+      },
+      "material": "stone-path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.town-arrival-1",
+      "rect": {
+        "x": 29.9,
+        "y": 72.9,
+        "width": 11.199999999999996,
+        "height": 2.200000000000003
+      },
+      "material": "stone-path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.park-arrival-0",
+      "rect": {
+        "x": 33.9,
+        "y": 8.9,
+        "width": 9.199999999999996,
+        "height": 2.200000000000001
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.park-arrival-1",
+      "rect": {
+        "x": 33.9,
+        "y": 8.9,
+        "width": 2.200000000000003,
+        "height": 11.200000000000001
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.park-return-0",
+      "rect": {
+        "x": 40.9,
+        "y": 5.4,
+        "width": 2.200000000000003,
+        "height": 5.700000000000001
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.ferry-landing-0",
+      "rect": {
+        "x": 61.0,
+        "y": 56.0,
+        "width": 2.0,
+        "height": 6.5
+      },
+      "material": "stone-path",
+      "variant": 0
     }
   ],
   "props": [
@@ -4276,8 +4302,8 @@
       "id": "riverbank.ferry-boat",
       "kind": "boat",
       "position": {
-        "x": 57,
-        "y": 64
+        "x": 57.8,
+        "y": 60.7
       },
       "width": 5,
       "height": 2,
@@ -4288,13 +4314,61 @@
       "id": "riverbank.ferry-post",
       "kind": "mooring",
       "position": {
-        "x": 62,
-        "y": 61
+        "x": 60.5,
+        "y": 60.5
       },
       "width": 1,
       "height": 1,
       "layer": "object",
       "variant": 0
+    },
+    {
+      "id": "riverbank.ferry-rope",
+      "kind": "tied-rope",
+      "position": {
+        "x": 59.5,
+        "y": 60.6
+      },
+      "width": 2,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.ferry-worn-stones",
+      "kind": "worn-stones",
+      "position": {
+        "x": 63.3,
+        "y": 59.7
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.arrival-reed-pocket",
+      "kind": "reeds",
+      "position": {
+        "x": 43.8,
+        "y": 72
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.arrival-willow",
+      "kind": "willow",
+      "position": {
+        "x": 35.5,
+        "y": 77
+      },
+      "width": 5.5,
+      "height": 5.5,
+      "layer": "object",
+      "variant": 1
     },
     {
       "id": "riverbank.fisher-stool",
@@ -4312,8 +4386,8 @@
       "id": "riverbank.washing-rack",
       "kind": "laundry",
       "position": {
-        "x": 37,
-        "y": 77
+        "x": 35,
+        "y": 71
       },
       "width": 5,
       "height": 1,
@@ -4549,18 +4623,6 @@
       "variant": 0
     },
     {
-      "id": "riverbank.bridge-west-tree-0",
-      "kind": "mature-tree",
-      "position": {
-        "x": 35,
-        "y": 13
-      },
-      "width": 7,
-      "height": 7,
-      "layer": "object",
-      "variant": 0
-    },
-    {
       "id": "riverbank.bridge-west-tree-1",
       "kind": "tree",
       "position": {
@@ -4573,18 +4635,6 @@
       "variant": 1
     },
     {
-      "id": "riverbank.bridge-west-tree-2",
-      "kind": "tree",
-      "position": {
-        "x": 36.7,
-        "y": 10.7
-      },
-      "width": 4.5,
-      "height": 4.5,
-      "layer": "object",
-      "variant": 2
-    },
-    {
       "id": "riverbank.bridge-west-tree-3",
       "kind": "tree",
       "position": {
@@ -4595,18 +4645,6 @@
       "height": 3.7,
       "layer": "object",
       "variant": 3
-    },
-    {
-      "id": "riverbank.bridge-west-tree-4",
-      "kind": "tree",
-      "position": {
-        "x": 33.7,
-        "y": 16.4
-      },
-      "width": 3.9,
-      "height": 3.9,
-      "layer": "object",
-      "variant": 0
     },
     {
       "id": "riverbank.bridge-west-fern-0",
@@ -4631,18 +4669,6 @@
       "height": 1.5,
       "layer": "object",
       "variant": 1
-    },
-    {
-      "id": "riverbank.bridge-west-fern-2",
-      "kind": "fern",
-      "position": {
-        "x": 34.2,
-        "y": 15.1
-      },
-      "width": 1.5,
-      "height": 1.5,
-      "layer": "object",
-      "variant": 2
     },
     {
       "id": "riverbank.bridge-west-fern-3",
