@@ -414,9 +414,12 @@ export function renderObjects(map: WorldMapDefinition, _view: WorldRenderView): 
     if (prop.kind.startsWith('building-') || ['awning', 'gate', 'closed-gate', 'laundry'].includes(prop.kind) || prop.kind === 'fence' && Math.max(prop.width, prop.height) > 2) {
       return buildingSections(prop, _view, occlusion, drawProp, prop.kind === 'awning' ? .8 : prop.kind === 'gate' ? .5 : 0);
     }
+    // This item rests on the seat: its support is the bench's front edge,
+    // keeping the cloth/handle above the seat without changing ground geometry.
+    const seat = prop.kind === 'rest-bag' ? map.props.find(item => item.id === 'town.bench-0') : undefined;
     return [{
       id: prop.id,
-      position: { x: prop.position.x + prop.width / 2, y: prop.position.y + prop.height / 2 },
+      position: { x: prop.position.x + prop.width / 2, y: seat ? seat.position.y + seat.height + .01 : prop.position.y + prop.height / 2 },
       occlusion,
       draw(ctx: CanvasRenderingContext2D, view: WorldRenderView) { drawProp(ctx, prop, view); },
     }];
