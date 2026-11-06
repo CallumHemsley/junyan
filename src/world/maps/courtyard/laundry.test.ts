@@ -41,3 +41,36 @@ describe('courtyard laundry neighbour allocation', () => {
     }
   });
 });
+
+it('uses the published unvoiced work profile for deterministic walking and task pauses', async () => {
+  const { compileLife } = await import('../../life/routes');
+  const { sampleLife } = await import('../../life/sample');
+  const { profileFor } = await import('../../life/profiles');
+  const { sampleActor } = await import('../../characters');
+  const map = worldMapSchema.parse(courtyardMap), navigation = navigationFor(map), plan = compileLife(map, navigation);
+  const resident = plan.actors.find(a => a.characterId === id)!;
+  expect(plan.diagnostics.filter(d => d.hookId === 'courtyard.laundry-neighbour')).toEqual([]);
+  expect(plan.actors.filter(a => a.characterId === id)).toHaveLength(1);
+  expect(profileFor(id)).toMatchObject({ homeMap: 'courtyard', resting: 'work' });
+  expect(profileFor(id)?.greeting).toBeUndefined();
+  expect(resident.phases.some(p => p.action === 'walk')).toBe(true);
+  const tasks = resident.phases.filter(p => p.action === 'work');
+  expect(tasks).toHaveLength(2);
+  expect(tasks.every(p => p.endMs - p.startMs >= 6000)).toBe(true);
+  const context = { day: 1, seed: 42, elapsedMs: 12345, player: { x: 32.8, y: 15.5 }, reducedMotion: false };
+  expect(sampleLife(plan, context, navigation)).toEqual(sampleLife(plan, context, navigation));
+  const actions = new Set<string>();
+  for (let elapsedMs = 0; elapsedMs <= resident.durationMs; elapsedMs += 500) {
+    const actor = sampleLife(plan, { ...context, elapsedMs }, navigation).find(a => a.characterId === id)!;
+    expect(navigation.canStand(actor.position, actor.radius)).toBe(true);
+    expect(actor.greeting).toBeUndefined(); actions.add(actor.activity);
+  }
+  expect(actions).toContain('walk'); expect(actions).toContain('work');
+  const reduced = { characterId: id, facing: 'south' as const, action: 'interact' as const, posture: 'work' as const, reducedMotion: true };
+  const still = sampleActor({ ...reduced, elapsedMs: 0 });
+  expect(still.frameId).toContain('laundry-basket');
+  expect(still.frame.pixels).toEqual(sampleActor({ ...reduced, elapsedMs: 2400 }).frame.pixels);
+  expect(sampleActor({ ...reduced, reducedMotion: false, elapsedMs: 0 }).frame.pixels).not.toEqual(sampleActor({ ...reduced, reducedMotion: false, elapsedMs: 260 }).frame.pixels);
+  const moving = { ...reduced, posture: 'stand' as const, action: 'walk' as const, reducedMotion: false };
+  expect(sampleActor({ ...moving, elapsedMs: 0 }).frame.pixels).not.toEqual(sampleActor({ ...moving, elapsedMs: 260 }).frame.pixels);
+});
