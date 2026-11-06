@@ -43,25 +43,25 @@
         "x": 40,
         "y": 29,
         "width": 23,
-        "height": 2.5
+        "height": 2.8000000000000007
       }
     },
     {
       "id": "park.pond-2-cut-1",
       "rect": {
         "x": 40,
-        "y": 34.5,
+        "y": 34.2,
         "width": 23,
-        "height": 1.5
+        "height": 1.7999999999999972
       }
     },
     {
       "id": "park.pond-2-cut-2",
       "rect": {
         "x": 40,
-        "y": 31.5,
-        "width": 19.5,
-        "height": 3.0
+        "y": 31.8,
+        "width": 19.799999999999997,
+        "height": 2.400000000000002
       }
     },
     {
@@ -101,6 +101,24 @@
       }
     },
     {
+      "id": "park.reading-stone",
+      "rect": {
+        "x": 30.472,
+        "y": 25.64,
+        "width": 1.056,
+        "height": 0.72
+      }
+    },
+    {
+      "id": "park.planting-bed",
+      "rect": {
+        "x": 23.78,
+        "y": 56.720000000000006,
+        "width": 1.44,
+        "height": 0.96
+      }
+    },
+    {
       "id": "park.orchard-cart",
       "rect": {
         "x": 15.52,
@@ -128,2280 +146,1337 @@
       }
     },
     {
-      "id": "park.tree-0-4-4",
+      "id": "park.bamboo-gate-tree-0",
       "rect": {
-        "x": 3.76,
-        "y": 4.96,
-        "width": 1.68,
-        "height": 1.68
+        "x": 7.6,
+        "y": 12.6,
+        "width": 0.8,
+        "height": 0.8
       }
     },
     {
-      "id": "park.tree-0-9-4",
+      "id": "park.bamboo-gate-tree-1",
       "rect": {
-        "x": 8.16,
-        "y": 4.96,
-        "width": 1.68,
-        "height": 1.68
+        "x": 4.824999999999999,
+        "y": 13.525,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-0-14-4",
+      "id": "park.bamboo-gate-tree-2",
       "rect": {
-        "x": 14.36,
-        "y": 4.96,
-        "width": 1.68,
-        "height": 1.68
+        "x": 9.424999999999999,
+        "y": 10.424999999999999,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-0-4-9",
+      "id": "park.bamboo-gate-tree-3",
       "rect": {
-        "x": 3.16,
-        "y": 9.06,
-        "width": 1.68,
-        "height": 1.68
+        "x": 10.825,
+        "y": 14.525,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-0-14-9",
+      "id": "park.bamboo-gate-tree-4",
       "rect": {
-        "x": 13.16,
-        "y": 9.96,
-        "width": 1.68,
-        "height": 1.68
+        "x": 6.425,
+        "y": 16.125,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-0-9-14",
+      "id": "park.north-canopy-tree-0",
       "rect": {
-        "x": 9.06,
-        "y": 14.06,
-        "width": 1.68,
-        "height": 1.68
+        "x": 27.6,
+        "y": 3.6,
+        "width": 0.8,
+        "height": 0.8
       }
     },
     {
-      "id": "park.tree-0-4-19",
+      "id": "park.north-canopy-tree-1",
       "rect": {
-        "x": 3.76,
-        "y": 18.16,
-        "width": 1.68,
-        "height": 1.68
+        "x": 24.825000000000003,
+        "y": 4.5249999999999995,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-0-14-19",
+      "id": "park.north-canopy-tree-2",
       "rect": {
-        "x": 13.16,
-        "y": 18.76,
-        "width": 1.68,
-        "height": 1.68
+        "x": 29.425,
+        "y": 1.4250000000000003,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-1-22-3",
+      "id": "park.north-canopy-tree-3",
       "rect": {
-        "x": 21.46,
-        "y": 3.06,
-        "width": 1.68,
-        "height": 1.68
+        "x": 30.825000000000003,
+        "y": 5.5249999999999995,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-1-27-3",
+      "id": "park.old-camphor-tree-0",
       "rect": {
-        "x": 27.36,
-        "y": 2.7600000000000002,
-        "width": 1.68,
-        "height": 1.68
+        "x": 42.6,
+        "y": 4.6,
+        "width": 0.8,
+        "height": 0.8
       }
     },
     {
-      "id": "park.tree-1-32-3",
+      "id": "park.old-camphor-tree-1",
       "rect": {
-        "x": 31.459999999999997,
-        "y": 3.06,
-        "width": 1.68,
-        "height": 1.68
+        "x": 39.825,
+        "y": 5.5249999999999995,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-1-22-13",
+      "id": "park.old-camphor-tree-2",
       "rect": {
-        "x": 22.06,
-        "y": 13.36,
-        "width": 1.68,
-        "height": 1.68
+        "x": 44.425000000000004,
+        "y": 2.4250000000000003,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-1-27-13",
+      "id": "park.old-camphor-tree-3",
       "rect": {
-        "x": 27.66,
-        "y": 13.96,
-        "width": 1.68,
-        "height": 1.68
+        "x": 45.825,
+        "y": 6.5249999999999995,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-1-32-13",
+      "id": "park.old-camphor-tree-4",
       "rect": {
-        "x": 31.459999999999997,
-        "y": 13.06,
-        "width": 1.68,
-        "height": 1.68
+        "x": 41.425000000000004,
+        "y": 8.125,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-2-3-37",
+      "id": "park.ridge-copse-tree-0",
       "rect": {
-        "x": 3.96,
-        "y": 36.76,
-        "width": 1.68,
-        "height": 1.68
+        "x": 68.6,
+        "y": 5.6,
+        "width": 0.8,
+        "height": 0.8
       }
     },
     {
-      "id": "park.tree-2-23-37",
+      "id": "park.ridge-copse-tree-1",
       "rect": {
-        "x": 22.76,
-        "y": 37.059999999999995,
-        "width": 1.68,
-        "height": 1.68
+        "x": 65.82499999999999,
+        "y": 6.5249999999999995,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-2-28-37",
+      "id": "park.ridge-copse-tree-2",
       "rect": {
-        "x": 27.46,
-        "y": 37.36,
-        "width": 1.68,
-        "height": 1.68
+        "x": 70.425,
+        "y": 3.4250000000000003,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-2-3-47",
+      "id": "park.ridge-copse-tree-3",
       "rect": {
-        "x": 2.16,
-        "y": 46.459999999999994,
-        "width": 1.68,
-        "height": 1.68
+        "x": 71.82499999999999,
+        "y": 7.5249999999999995,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-2-13-47",
+      "id": "park.reading-grove-tree-0",
       "rect": {
-        "x": 12.76,
-        "y": 46.459999999999994,
-        "width": 1.68,
-        "height": 1.68
+        "x": 27.6,
+        "y": 22.6,
+        "width": 0.8,
+        "height": 0.8
       }
     },
     {
-      "id": "park.tree-2-18-47",
+      "id": "park.reading-grove-tree-1",
       "rect": {
-        "x": 17.16,
-        "y": 47.059999999999995,
-        "width": 1.68,
-        "height": 1.68
+        "x": 24.825000000000003,
+        "y": 23.525000000000002,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-2-28-47",
+      "id": "park.reading-grove-tree-2",
       "rect": {
-        "x": 27.76,
-        "y": 46.76,
-        "width": 1.68,
-        "height": 1.68
+        "x": 29.425,
+        "y": 20.425,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-2-18-52",
+      "id": "park.reading-grove-tree-3",
       "rect": {
-        "x": 17.76,
-        "y": 51.459999999999994,
-        "width": 1.68,
-        "height": 1.68
+        "x": 30.825000000000003,
+        "y": 24.525000000000002,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-2-28-52",
+      "id": "park.reading-grove-tree-4",
       "rect": {
-        "x": 28.06,
-        "y": 52.059999999999995,
-        "width": 1.68,
-        "height": 1.68
+        "x": 26.425,
+        "y": 26.125,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-2-3-62",
+      "id": "park.pond-west-tree-0",
       "rect": {
-        "x": 2.16,
-        "y": 62.66,
-        "width": 1.68,
-        "height": 1.68
+        "x": 35.6,
+        "y": 33.6,
+        "width": 0.8,
+        "height": 0.8
       }
     },
     {
-      "id": "park.tree-2-13-62",
+      "id": "park.pond-west-tree-2",
       "rect": {
-        "x": 13.66,
-        "y": 62.959999999999994,
-        "width": 1.68,
-        "height": 1.68
+        "x": 37.425000000000004,
+        "y": 31.425,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-2-18-62",
+      "id": "park.pond-west-tree-3",
       "rect": {
-        "x": 17.46,
-        "y": 61.76,
-        "width": 1.68,
-        "height": 1.68
+        "x": 38.825,
+        "y": 35.525,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-2-23-62",
+      "id": "park.pond-east-tree-0",
       "rect": {
-        "x": 23.06,
-        "y": 62.66,
-        "width": 1.68,
-        "height": 1.68
+        "x": 69.6,
+        "y": 33.6,
+        "width": 0.8,
+        "height": 0.8
       }
     },
     {
-      "id": "park.tree-2-28-62",
+      "id": "park.pond-east-tree-1",
       "rect": {
-        "x": 28.96,
-        "y": 61.76,
-        "width": 1.68,
-        "height": 1.68
+        "x": 66.82499999999999,
+        "y": 34.525,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-35-48",
+      "id": "park.pond-east-tree-2",
       "rect": {
-        "x": 34.76,
-        "y": 48.66,
-        "width": 1.68,
-        "height": 1.68
+        "x": 71.425,
+        "y": 31.425,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-40-48",
+      "id": "park.pond-east-tree-3",
       "rect": {
-        "x": 39.459999999999994,
-        "y": 47.459999999999994,
-        "width": 1.68,
-        "height": 1.68
+        "x": 72.82499999999999,
+        "y": 35.525,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-45-48",
+      "id": "park.pond-east-tree-4",
       "rect": {
-        "x": 44.16,
-        "y": 48.66,
-        "width": 1.68,
-        "height": 1.68
+        "x": 68.425,
+        "y": 37.125,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-50-48",
+      "id": "park.orchard-west-tree-0",
       "rect": {
-        "x": 49.16,
-        "y": 48.059999999999995,
-        "width": 1.68,
-        "height": 1.68
+        "x": 9.6,
+        "y": 45.6,
+        "width": 0.8,
+        "height": 0.8
       }
     },
     {
-      "id": "park.tree-3-55-48",
+      "id": "park.orchard-west-tree-2",
       "rect": {
-        "x": 55.959999999999994,
-        "y": 47.459999999999994,
-        "width": 1.68,
-        "height": 1.68
+        "x": 11.424999999999999,
+        "y": 43.425000000000004,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-60-48",
+      "id": "park.orchard-west-tree-3",
       "rect": {
-        "x": 60.959999999999994,
-        "y": 47.459999999999994,
-        "width": 1.68,
-        "height": 1.68
+        "x": 12.825,
+        "y": 47.525,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-65-48",
+      "id": "park.orchard-home-tree-0",
       "rect": {
-        "x": 65.66,
-        "y": 47.76,
-        "width": 1.68,
-        "height": 1.68
+        "x": 22.6,
+        "y": 50.6,
+        "width": 0.8,
+        "height": 0.8
       }
     },
     {
-      "id": "park.tree-3-70-48",
+      "id": "park.orchard-home-tree-1",
       "rect": {
-        "x": 70.66,
-        "y": 48.36,
-        "width": 1.68,
-        "height": 1.68
+        "x": 19.825000000000003,
+        "y": 51.525,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-35-53",
+      "id": "park.orchard-south-tree-0",
       "rect": {
-        "x": 35.36,
-        "y": 53.959999999999994,
-        "width": 1.68,
-        "height": 1.68
+        "x": 16.6,
+        "y": 60.6,
+        "width": 0.8,
+        "height": 0.8
       }
     },
     {
-      "id": "park.tree-3-45-53",
+      "id": "park.orchard-south-tree-1",
       "rect": {
-        "x": 44.459999999999994,
-        "y": 52.76,
-        "width": 1.68,
-        "height": 1.68
+        "x": 13.825,
+        "y": 61.525,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-50-53",
+      "id": "park.orchard-south-tree-2",
       "rect": {
-        "x": 49.16,
-        "y": 53.66,
-        "width": 1.68,
-        "height": 1.68
+        "x": 18.425,
+        "y": 58.425000000000004,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-55-53",
+      "id": "park.orchard-south-tree-3",
       "rect": {
-        "x": 55.959999999999994,
-        "y": 52.459999999999994,
-        "width": 1.68,
-        "height": 1.68
+        "x": 19.825000000000003,
+        "y": 62.525,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-60-53",
+      "id": "park.orchard-south-tree-4",
       "rect": {
-        "x": 60.36,
-        "y": 53.959999999999994,
-        "width": 1.68,
-        "height": 1.68
+        "x": 15.424999999999999,
+        "y": 64.125,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-65-53",
+      "id": "park.south-woods-tree-0",
       "rect": {
-        "x": 65.06,
-        "y": 53.66,
-        "width": 1.68,
-        "height": 1.68
+        "x": 42.6,
+        "y": 56.6,
+        "width": 0.8,
+        "height": 0.8
       }
     },
     {
-      "id": "park.tree-3-70-53",
+      "id": "park.south-woods-tree-1",
       "rect": {
-        "x": 69.75999999999999,
-        "y": 53.66,
-        "width": 1.68,
-        "height": 1.68
+        "x": 39.825,
+        "y": 57.525,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-75-53",
+      "id": "park.south-woods-tree-2",
       "rect": {
-        "x": 74.46,
-        "y": 53.959999999999994,
-        "width": 1.68,
-        "height": 1.68
+        "x": 44.425000000000004,
+        "y": 54.425000000000004,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-35-58",
+      "id": "park.south-woods-tree-3",
       "rect": {
-        "x": 34.76,
-        "y": 57.76,
-        "width": 1.68,
-        "height": 1.68
+        "x": 45.825,
+        "y": 58.525,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-55-58",
+      "id": "park.south-woods-tree-4",
       "rect": {
-        "x": 54.459999999999994,
-        "y": 58.059999999999995,
-        "width": 1.68,
-        "height": 1.68
+        "x": 41.425000000000004,
+        "y": 60.125,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-60-58",
+      "id": "park.south-east-tree-0",
       "rect": {
-        "x": 60.959999999999994,
-        "y": 58.66,
-        "width": 1.68,
-        "height": 1.68
+        "x": 68.6,
+        "y": 56.6,
+        "width": 0.8,
+        "height": 0.8
       }
     },
     {
-      "id": "park.tree-3-65-58",
+      "id": "park.south-east-tree-1",
       "rect": {
-        "x": 65.36,
-        "y": 57.76,
-        "width": 1.68,
-        "height": 1.68
+        "x": 65.82499999999999,
+        "y": 57.525,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-75-58",
+      "id": "park.south-east-tree-2",
       "rect": {
-        "x": 74.46,
-        "y": 58.959999999999994,
-        "width": 1.68,
-        "height": 1.68
+        "x": 70.425,
+        "y": 54.425000000000004,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-35-63",
+      "id": "park.south-east-tree-3",
       "rect": {
-        "x": 34.76,
-        "y": 63.959999999999994,
-        "width": 1.68,
-        "height": 1.68
+        "x": 71.82499999999999,
+        "y": 58.525,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-40-63",
+      "id": "park.south-east-tree-4",
       "rect": {
-        "x": 40.959999999999994,
-        "y": 62.76,
-        "width": 1.68,
-        "height": 1.68
+        "x": 67.425,
+        "y": 60.125,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-50-63",
+      "id": "park.ridge-edge-tree-0",
       "rect": {
-        "x": 49.459999999999994,
-        "y": 63.959999999999994,
-        "width": 1.68,
-        "height": 1.68
+        "x": 78.6,
+        "y": 18.6,
+        "width": 0.8,
+        "height": 0.8
       }
     },
     {
-      "id": "park.tree-3-55-63",
+      "id": "park.ridge-edge-tree-1",
       "rect": {
-        "x": 55.66,
-        "y": 63.66,
-        "width": 1.68,
-        "height": 1.68
+        "x": 75.82499999999999,
+        "y": 19.525000000000002,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-60-63",
+      "id": "park.ridge-edge-tree-2",
       "rect": {
-        "x": 60.059999999999995,
-        "y": 63.959999999999994,
-        "width": 1.68,
-        "height": 1.68
+        "x": 80.425,
+        "y": 16.425,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-70-63",
+      "id": "park.ridge-edge-tree-3",
       "rect": {
-        "x": 70.66,
-        "y": 63.059999999999995,
-        "width": 1.68,
-        "height": 1.68
+        "x": 81.82499999999999,
+        "y": 20.525000000000002,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.tree-3-75-63",
+      "id": "park.ridge-edge-tree-4",
       "rect": {
-        "x": 75.06,
-        "y": 62.16,
-        "width": 1.68,
-        "height": 1.68
+        "x": 77.425,
+        "y": 22.125,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.bamboo-0-24-9",
+      "id": "park.pavilion-oak-tree-0",
       "rect": {
-        "x": 23.82,
-        "y": 10.32,
-        "width": 0.96,
-        "height": 0.96
+        "x": 46.6,
+        "y": 21.6,
+        "width": 0.8,
+        "height": 0.8
       }
     },
     {
-      "id": "park.bamboo-0-24-12",
+      "id": "park.pavilion-oak-tree-1",
       "rect": {
-        "x": 25.32,
-        "y": 12.12,
-        "width": 0.96,
-        "height": 0.96
+        "x": 43.825,
+        "y": 22.525000000000002,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.bamboo-1-7-7",
+      "id": "park.pond-reveal-tree-0",
       "rect": {
-        "x": 6.82,
-        "y": 7.719999999999999,
-        "width": 0.96,
-        "height": 0.96
+        "x": 60.6,
+        "y": 24.6,
+        "width": 0.8,
+        "height": 0.8
       }
     },
     {
-      "id": "park.bamboo-1-10-7",
+      "id": "park.pond-reveal-tree-2",
       "rect": {
-        "x": 11.32,
-        "y": 6.52,
-        "width": 0.96,
-        "height": 0.96
+        "x": 62.425000000000004,
+        "y": 22.425,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.bamboo-1-7-10",
+      "id": "park.bamboo-clump-0-0",
       "rect": {
-        "x": 6.82,
-        "y": 11.32,
-        "width": 0.96,
-        "height": 0.96
+        "x": 7.5,
+        "y": 6.5,
+        "width": 1,
+        "height": 1
       }
     },
     {
-      "id": "park.bamboo-1-10-10",
+      "id": "park.bamboo-clump-0-1",
       "rect": {
-        "x": 11.02,
-        "y": 11.02,
-        "width": 0.96,
-        "height": 0.96
+        "x": 8.3,
+        "y": 6.8,
+        "width": 1,
+        "height": 1
       }
     },
     {
-      "id": "park.bamboo-1-4-13",
+      "id": "park.bamboo-clump-0-2",
       "rect": {
-        "x": 3.82,
-        "y": 14.32,
-        "width": 0.96,
-        "height": 0.96
+        "x": 6.9,
+        "y": 7.3,
+        "width": 1,
+        "height": 1
       }
     },
     {
-      "id": "park.bamboo-1-4-16",
+      "id": "park.bamboo-clump-0-3",
       "rect": {
-        "x": 4.119999999999999,
-        "y": 16.419999999999998,
-        "width": 0.96,
-        "height": 0.96
+        "x": 8.9,
+        "y": 7.6,
+        "width": 1,
+        "height": 1
       }
     },
     {
-      "id": "park.bamboo-1-7-16",
+      "id": "park.bamboo-clump-1-0",
       "rect": {
-        "x": 7.719999999999999,
-        "y": 16.419999999999998,
-        "width": 0.96,
-        "height": 0.96
+        "x": 11.5,
+        "y": 19.5,
+        "width": 1,
+        "height": 1
       }
     },
     {
-      "id": "park.bamboo-1-7-19",
+      "id": "park.bamboo-clump-1-1",
       "rect": {
-        "x": 8.32,
-        "y": 20.02,
-        "width": 0.96,
-        "height": 0.96
+        "x": 12.3,
+        "y": 19.8,
+        "width": 1,
+        "height": 1
       }
     },
     {
-      "id": "park.willow-0-38-32",
+      "id": "park.bamboo-clump-1-2",
       "rect": {
-        "x": 37.339999999999996,
-        "y": 32.24,
-        "width": 1.92,
-        "height": 1.92
+        "x": 10.9,
+        "y": 20.3,
+        "width": 1,
+        "height": 1
       }
     },
     {
-      "id": "park.willow-0-38-37",
+      "id": "park.bamboo-clump-1-3",
       "rect": {
-        "x": 37.04,
-        "y": 37.24,
-        "width": 1.92,
-        "height": 1.92
+        "x": 12.9,
+        "y": 20.6,
+        "width": 1,
+        "height": 1
       }
     },
     {
-      "id": "park.willow-1-71-33",
+      "id": "park.bamboo-clump-2-0",
       "rect": {
-        "x": 70.04,
-        "y": 32.64,
-        "width": 1.92,
-        "height": 1.92
+        "x": 26.5,
+        "y": 11.5,
+        "width": 1,
+        "height": 1
       }
     },
     {
-      "id": "park.willow-1-71-38",
+      "id": "park.bamboo-clump-2-1",
       "rect": {
-        "x": 71.84,
-        "y": 37.04,
-        "width": 1.92,
-        "height": 1.92
+        "x": 27.3,
+        "y": 11.8,
+        "width": 1,
+        "height": 1
       }
     },
     {
-      "id": "park.rock-0-60-3",
+      "id": "park.bamboo-clump-2-2",
       "rect": {
-        "x": 60.648,
-        "y": 4.02,
-        "width": 1.1039999999999999,
-        "height": 0.96
+        "x": 25.9,
+        "y": 12.3,
+        "width": 1,
+        "height": 1
       }
     },
     {
-      "id": "park.rock-0-64-3",
+      "id": "park.bamboo-clump-2-3",
       "rect": {
-        "x": 65.24799999999999,
-        "y": 3.12,
-        "width": 1.1039999999999999,
-        "height": 0.96
+        "x": 27.9,
+        "y": 12.6,
+        "width": 1,
+        "height": 1
       }
     },
     {
-      "id": "park.rock-0-68-3",
+      "id": "park.bank-willow-0",
       "rect": {
-        "x": 67.448,
-        "y": 3.42,
-        "width": 1.1039999999999999,
-        "height": 0.96
+        "x": 38.725,
+        "y": 27.725,
+        "width": 0.55,
+        "height": 0.55
       }
     },
     {
-      "id": "park.rock-0-72-3",
+      "id": "park.bank-willow-2",
       "rect": {
-        "x": 71.448,
-        "y": 4.32,
-        "width": 1.1039999999999999,
-        "height": 0.96
-      }
-    },
-    {
-      "id": "park.rock-0-76-3",
-      "rect": {
-        "x": 75.448,
-        "y": 4.02,
-        "width": 1.1039999999999999,
-        "height": 0.96
-      }
-    },
-    {
-      "id": "park.rock-0-80-3",
-      "rect": {
-        "x": 80.948,
-        "y": 4.32,
-        "width": 1.1039999999999999,
-        "height": 0.96
-      }
-    },
-    {
-      "id": "park.rock-1-80-18",
-      "rect": {
-        "x": 80.948,
-        "y": 17.52,
-        "width": 1.1039999999999999,
-        "height": 0.96
-      }
-    },
-    {
-      "id": "park.rock-1-80-22",
-      "rect": {
-        "x": 80.948,
-        "y": 21.52,
-        "width": 1.1039999999999999,
-        "height": 0.96
-      }
-    },
-    {
-      "id": "park.flowers-0-22-31",
-      "rect": {
-        "x": 21.76,
-        "y": 32.559999999999995,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.flowers-0-26-31",
-      "rect": {
-        "x": 25.76,
-        "y": 31.960000000000004,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.flowers-0-30-35",
-      "rect": {
-        "x": 30.360000000000003,
-        "y": 35.36,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.flowers-0-22-39",
-      "rect": {
-        "x": 23.26,
-        "y": 40.26,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.flowers-1-43-47",
-      "rect": {
-        "x": 42.76,
-        "y": 47.66,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.flowers-1-47-47",
-      "rect": {
-        "x": 47.059999999999995,
-        "y": 47.66,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.flowers-1-39-51",
-      "rect": {
-        "x": 39.36,
-        "y": 51.66,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.flowers-1-43-51",
-      "rect": {
-        "x": 44.26,
-        "y": 51.36,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.flowers-1-47-51",
-      "rect": {
-        "x": 48.559999999999995,
-        "y": 51.96,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.flowers-1-51-51",
-      "rect": {
-        "x": 50.76,
-        "y": 51.66,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.flowers-1-63-51",
-      "rect": {
-        "x": 64.26,
-        "y": 50.76,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.flowers-1-47-55",
-      "rect": {
-        "x": 47.96,
-        "y": 56.26,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.flowers-1-51-55",
-      "rect": {
-        "x": 52.26,
-        "y": 56.26,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.flowers-1-55-55",
-      "rect": {
-        "x": 56.26,
-        "y": 55.059999999999995,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.flowers-1-63-55",
-      "rect": {
-        "x": 63.66,
-        "y": 55.36,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.flowers-2-16-45",
-      "rect": {
-        "x": 17.560000000000002,
-        "y": 45.36,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.flowers-2-20-45",
-      "rect": {
-        "x": 20.96,
-        "y": 45.66,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.flowers-2-20-49",
-      "rect": {
-        "x": 21.26,
-        "y": 49.36,
-        "width": 0.48,
-        "height": 0.48
-      }
-    },
-    {
-      "id": "park.tree-0-3-3",
-      "rect": {
-        "x": 2.436,
-        "y": 3.036,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-11-3",
-      "rect": {
-        "x": 10.735999999999999,
-        "y": 2.736,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-23-3",
-      "rect": {
-        "x": 23.336,
-        "y": 2.436,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-35-3",
-      "rect": {
-        "x": 35.936,
-        "y": 3.636,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-39-3",
-      "rect": {
-        "x": 38.436,
-        "y": 3.936,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-43-3",
-      "rect": {
-        "x": 42.736000000000004,
-        "y": 2.736,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-51-3",
-      "rect": {
-        "x": 50.436,
-        "y": 3.036,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-55-3",
-      "rect": {
-        "x": 55.936,
-        "y": 2.136,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-63-3",
-      "rect": {
-        "x": 62.136,
-        "y": 3.636,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-79-3",
-      "rect": {
-        "x": 78.136,
-        "y": 3.936,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-43-7",
-      "rect": {
-        "x": 43.936,
-        "y": 7.936000000000001,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-47-7",
-      "rect": {
-        "x": 47.936,
-        "y": 6.136,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-3-11",
-      "rect": {
-        "x": 3.936,
-        "y": 11.636,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-27-11",
-      "rect": {
-        "x": 26.436,
-        "y": 11.936,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-35-11",
-      "rect": {
-        "x": 34.136,
-        "y": 11.936,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-43-11",
-      "rect": {
-        "x": 43.036,
-        "y": 11.036,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-47-11",
-      "rect": {
-        "x": 47.036,
-        "y": 11.936,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-11-15",
-      "rect": {
-        "x": 10.735999999999999,
-        "y": 15.936,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-3-23",
-      "rect": {
-        "x": 2.736,
-        "y": 23.636,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-7-23",
-      "rect": {
-        "x": 7.335999999999999,
-        "y": 23.936,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-11-23",
-      "rect": {
-        "x": 11.636,
-        "y": 23.035999999999998,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-23-23",
-      "rect": {
-        "x": 22.736,
-        "y": 23.636,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-27-23",
-      "rect": {
-        "x": 26.136,
-        "y": 22.136,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-39-23",
-      "rect": {
-        "x": 38.736000000000004,
-        "y": 22.436,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-59-23",
-      "rect": {
-        "x": 58.436,
-        "y": 23.636,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-23-27",
-      "rect": {
-        "x": 23.035999999999998,
-        "y": 26.436,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-27-27",
-      "rect": {
-        "x": 26.436,
-        "y": 27.636,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-67-27",
-      "rect": {
-        "x": 67.636,
-        "y": 27.336,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-3-31",
-      "rect": {
-        "x": 2.736,
-        "y": 31.336000000000002,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-23-31",
-      "rect": {
-        "x": 23.035999999999998,
-        "y": 31.035999999999998,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-27-31",
-      "rect": {
-        "x": 26.436,
-        "y": 30.736,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-3-35",
-      "rect": {
-        "x": 2.436,
-        "y": 34.736000000000004,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-7-35",
-      "rect": {
-        "x": 7.0360000000000005,
-        "y": 34.736000000000004,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-11-35",
-      "rect": {
-        "x": 11.335999999999999,
-        "y": 35.636,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-79-35",
-      "rect": {
-        "x": 78.43599999999999,
-        "y": 35.336000000000006,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-39-39",
-      "rect": {
-        "x": 39.336000000000006,
-        "y": 39.336000000000006,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-59-39",
-      "rect": {
-        "x": 59.936,
-        "y": 39.936,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-75-39",
-      "rect": {
-        "x": 74.136,
-        "y": 39.936,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-79-39",
-      "rect": {
-        "x": 78.73599999999999,
-        "y": 39.336000000000006,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-11-43",
-      "rect": {
-        "x": 10.136,
-        "y": 43.936,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-71-43",
-      "rect": {
-        "x": 71.636,
-        "y": 43.636,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-75-43",
-      "rect": {
-        "x": 74.43599999999999,
-        "y": 43.036,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-79-43",
-      "rect": {
-        "x": 79.036,
-        "y": 43.036,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-19-47",
-      "rect": {
-        "x": 19.936,
-        "y": 47.036,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-31-47",
-      "rect": {
-        "x": 30.436,
-        "y": 47.036,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-35-47",
-      "rect": {
-        "x": 35.636,
-        "y": 46.436,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-51-47",
-      "rect": {
-        "x": 51.936,
-        "y": 47.036,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-63-47",
-      "rect": {
-        "x": 63.036,
-        "y": 46.736000000000004,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-75-47",
-      "rect": {
-        "x": 74.136,
-        "y": 47.936,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-11-51",
-      "rect": {
-        "x": 10.735999999999999,
-        "y": 50.736000000000004,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-31-51",
-      "rect": {
-        "x": 31.935999999999996,
-        "y": 51.036,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-35-51",
-      "rect": {
-        "x": 35.036,
-        "y": 51.336000000000006,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-55-51",
-      "rect": {
-        "x": 55.336000000000006,
-        "y": 50.436,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-59-51",
-      "rect": {
-        "x": 59.036,
-        "y": 51.636,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-63-51",
-      "rect": {
-        "x": 62.736000000000004,
-        "y": 51.636,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-79-51",
-      "rect": {
-        "x": 78.73599999999999,
-        "y": 51.636,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-3-55",
-      "rect": {
-        "x": 2.136,
-        "y": 55.036,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-27-55",
-      "rect": {
-        "x": 27.636,
-        "y": 55.036,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-31-55",
-      "rect": {
-        "x": 31.035999999999998,
-        "y": 55.036,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-39-55",
-      "rect": {
-        "x": 39.036,
-        "y": 55.336000000000006,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-43-55",
-      "rect": {
-        "x": 43.936,
-        "y": 55.636,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-55-55",
-      "rect": {
-        "x": 54.736000000000004,
-        "y": 55.936,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-59-55",
-      "rect": {
-        "x": 58.436,
-        "y": 55.636,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-67-55",
-      "rect": {
-        "x": 67.636,
-        "y": 55.336000000000006,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-71-55",
-      "rect": {
-        "x": 70.73599999999999,
-        "y": 55.636,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-15-59",
-      "rect": {
-        "x": 14.735999999999999,
-        "y": 59.636,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-19-59",
-      "rect": {
-        "x": 18.736,
-        "y": 59.636,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-23-59",
-      "rect": {
-        "x": 22.736,
-        "y": 58.436,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-31-59",
-      "rect": {
-        "x": 31.935999999999996,
-        "y": 58.436,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-35-59",
-      "rect": {
-        "x": 35.036,
-        "y": 59.936,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-39-59",
-      "rect": {
-        "x": 38.136,
-        "y": 58.136,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-43-59",
-      "rect": {
-        "x": 43.036,
-        "y": 59.036,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-47-59",
-      "rect": {
-        "x": 47.636,
-        "y": 58.736000000000004,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-51-59",
-      "rect": {
-        "x": 51.936,
-        "y": 59.336000000000006,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-71-59",
-      "rect": {
-        "x": 70.136,
-        "y": 59.036,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-79-59",
-      "rect": {
-        "x": 79.93599999999999,
-        "y": 58.736000000000004,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-11-63",
-      "rect": {
-        "x": 11.036,
-        "y": 62.736000000000004,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-19-63",
-      "rect": {
-        "x": 19.636,
-        "y": 63.036,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-31-63",
-      "rect": {
-        "x": 30.736,
-        "y": 63.936,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-39-63",
-      "rect": {
-        "x": 39.036,
-        "y": 62.436,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-43-63",
-      "rect": {
-        "x": 43.936,
-        "y": 63.936,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-47-63",
-      "rect": {
-        "x": 46.436,
-        "y": 62.436,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-67-63",
-      "rect": {
-        "x": 66.136,
-        "y": 62.736000000000004,
-        "width": 1.728,
-        "height": 1.728
-      }
-    },
-    {
-      "id": "park.tree-0-79-63",
-      "rect": {
-        "x": 79.036,
-        "y": 63.036,
-        "width": 1.728,
-        "height": 1.728
+        "x": 57.725,
+        "y": 22.725,
+        "width": 0.55,
+        "height": 0.55
       }
     }
   ],
   "occluders": [
     {
-      "id": "park.tree-0-4-4",
+      "id": "park.bamboo-gate-tree-0",
       "rect": {
-        "x": 2.8499999999999996,
-        "y": 4.05,
-        "width": 3.5,
-        "height": 3.5
+        "x": 4.5,
+        "y": 9.5,
+        "width": 7,
+        "height": 7
       },
-      "height": 3.5,
+      "height": 7.2,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-0-9-4",
-      "rect": {
-        "x": 7.25,
-        "y": 4.05,
-        "width": 3.5,
-        "height": 3.5
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-14-4",
-      "rect": {
-        "x": 13.45,
-        "y": 4.05,
-        "width": 3.5,
-        "height": 3.5
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-4-9",
-      "rect": {
-        "x": 2.25,
-        "y": 8.15,
-        "width": 3.5,
-        "height": 3.5
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-14-9",
-      "rect": {
-        "x": 12.25,
-        "y": 9.05,
-        "width": 3.5,
-        "height": 3.5
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-9-14",
-      "rect": {
-        "x": 8.15,
-        "y": 13.15,
-        "width": 3.5,
-        "height": 3.5
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-4-19",
-      "rect": {
-        "x": 2.8499999999999996,
-        "y": 17.25,
-        "width": 3.5,
-        "height": 3.5
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-14-19",
-      "rect": {
-        "x": 12.25,
-        "y": 17.85,
-        "width": 3.5,
-        "height": 3.5
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-1-22-3",
-      "rect": {
-        "x": 20.55,
-        "y": 2.15,
-        "width": 3.5,
-        "height": 3.5
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-1-27-3",
-      "rect": {
-        "x": 26.45,
-        "y": 1.85,
-        "width": 3.5,
-        "height": 3.5
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-1-32-3",
-      "rect": {
-        "x": 30.549999999999997,
-        "y": 2.15,
-        "width": 3.5,
-        "height": 3.5
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-1-22-13",
-      "rect": {
-        "x": 21.15,
-        "y": 12.45,
-        "width": 3.5,
-        "height": 3.5
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-1-27-13",
-      "rect": {
-        "x": 26.75,
-        "y": 13.05,
-        "width": 3.5,
-        "height": 3.5
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-1-32-13",
-      "rect": {
-        "x": 30.549999999999997,
-        "y": 12.15,
-        "width": 3.5,
-        "height": 3.5
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-2-3-37",
+      "id": "park.bamboo-gate-tree-1",
       "rect": {
         "x": 3.05,
-        "y": 35.85,
-        "width": 3.5,
-        "height": 3.5
+        "y": 11.75,
+        "width": 4.1,
+        "height": 4.1
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-2-23-37",
+      "id": "park.bamboo-gate-tree-2",
       "rect": {
-        "x": 21.85,
-        "y": 36.15,
-        "width": 3.5,
-        "height": 3.5
+        "x": 7.449999999999999,
+        "y": 8.45,
+        "width": 4.5,
+        "height": 4.5
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-2-28-37",
+      "id": "park.bamboo-gate-tree-3",
       "rect": {
-        "x": 26.55,
-        "y": 36.45,
-        "width": 3.5,
-        "height": 3.5
+        "x": 9.25,
+        "y": 12.950000000000001,
+        "width": 3.7,
+        "height": 3.7
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-2-3-47",
+      "id": "park.bamboo-gate-tree-4",
       "rect": {
-        "x": 1.25,
-        "y": 45.55,
-        "width": 3.5,
-        "height": 3.5
+        "x": 4.75,
+        "y": 14.45,
+        "width": 3.9,
+        "height": 3.9
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-2-13-47",
+      "id": "park.north-canopy-tree-0",
       "rect": {
-        "x": 11.85,
-        "y": 45.55,
-        "width": 3.5,
-        "height": 3.5
+        "x": 24.5,
+        "y": 0.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "park.north-canopy-tree-1",
+      "rect": {
+        "x": 23.05,
+        "y": 2.75,
+        "width": 4.1,
+        "height": 4.1
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-2-18-47",
+      "id": "park.north-canopy-tree-2",
       "rect": {
-        "x": 16.25,
-        "y": 46.15,
-        "width": 3.5,
-        "height": 3.5
+        "x": 27.45,
+        "y": -0.5499999999999998,
+        "width": 4.5,
+        "height": 4.5
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-2-28-47",
+      "id": "park.north-canopy-tree-3",
       "rect": {
-        "x": 26.85,
-        "y": 45.85,
-        "width": 3.5,
-        "height": 3.5
+        "x": 29.25,
+        "y": 3.9499999999999997,
+        "width": 3.7,
+        "height": 3.7
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-2-18-52",
+      "id": "park.old-camphor-tree-0",
       "rect": {
-        "x": 16.85,
-        "y": 50.55,
-        "width": 3.5,
-        "height": 3.5
+        "x": 39.5,
+        "y": 1.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "park.old-camphor-tree-1",
+      "rect": {
+        "x": 38.050000000000004,
+        "y": 3.75,
+        "width": 4.1,
+        "height": 4.1
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-2-28-52",
+      "id": "park.old-camphor-tree-2",
       "rect": {
-        "x": 27.15,
-        "y": 51.15,
-        "width": 3.5,
-        "height": 3.5
+        "x": 42.45,
+        "y": 0.4500000000000002,
+        "width": 4.5,
+        "height": 4.5
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-2-3-62",
+      "id": "park.old-camphor-tree-3",
       "rect": {
-        "x": 1.25,
-        "y": 61.75,
-        "width": 3.5,
-        "height": 3.5
+        "x": 44.25,
+        "y": 4.949999999999999,
+        "width": 3.7,
+        "height": 3.7
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-2-13-62",
+      "id": "park.old-camphor-tree-4",
       "rect": {
-        "x": 12.75,
-        "y": 62.05,
-        "width": 3.5,
-        "height": 3.5
+        "x": 39.75,
+        "y": 6.45,
+        "width": 3.9,
+        "height": 3.9
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-2-18-62",
+      "id": "park.ridge-copse-tree-0",
       "rect": {
-        "x": 16.55,
-        "y": 60.85,
-        "width": 3.5,
-        "height": 3.5
+        "x": 65.5,
+        "y": 2.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "park.ridge-copse-tree-1",
+      "rect": {
+        "x": 64.05,
+        "y": 4.75,
+        "width": 4.1,
+        "height": 4.1
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-2-23-62",
+      "id": "park.ridge-copse-tree-2",
       "rect": {
-        "x": 22.15,
-        "y": 61.75,
-        "width": 3.5,
-        "height": 3.5
+        "x": 68.45,
+        "y": 1.4500000000000002,
+        "width": 4.5,
+        "height": 4.5
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-2-28-62",
+      "id": "park.ridge-copse-tree-3",
       "rect": {
-        "x": 28.05,
-        "y": 60.85,
-        "width": 3.5,
-        "height": 3.5
+        "x": 70.25,
+        "y": 5.949999999999999,
+        "width": 3.7,
+        "height": 3.7
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-35-48",
+      "id": "park.reading-grove-tree-0",
       "rect": {
-        "x": 33.85,
-        "y": 47.75,
-        "width": 3.5,
-        "height": 3.5
+        "x": 24.5,
+        "y": 19.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "park.reading-grove-tree-1",
+      "rect": {
+        "x": 23.05,
+        "y": 21.75,
+        "width": 4.1,
+        "height": 4.1
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-40-48",
+      "id": "park.reading-grove-tree-2",
       "rect": {
-        "x": 38.55,
-        "y": 46.55,
-        "width": 3.5,
-        "height": 3.5
+        "x": 27.45,
+        "y": 18.45,
+        "width": 4.5,
+        "height": 4.5
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-45-48",
+      "id": "park.reading-grove-tree-3",
       "rect": {
-        "x": 43.25,
-        "y": 47.75,
-        "width": 3.5,
-        "height": 3.5
+        "x": 29.25,
+        "y": 22.95,
+        "width": 3.7,
+        "height": 3.7
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-50-48",
+      "id": "park.reading-grove-tree-4",
       "rect": {
-        "x": 48.25,
-        "y": 47.15,
-        "width": 3.5,
-        "height": 3.5
+        "x": 24.75,
+        "y": 24.45,
+        "width": 3.9,
+        "height": 3.9
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-55-48",
+      "id": "park.pond-west-tree-0",
       "rect": {
-        "x": 55.05,
-        "y": 46.55,
-        "width": 3.5,
-        "height": 3.5
+        "x": 32.5,
+        "y": 30.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "park.pond-west-tree-2",
+      "rect": {
+        "x": 35.45,
+        "y": 29.45,
+        "width": 4.5,
+        "height": 4.5
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-60-48",
+      "id": "park.pond-west-tree-3",
       "rect": {
-        "x": 60.05,
-        "y": 46.55,
-        "width": 3.5,
-        "height": 3.5
+        "x": 37.25,
+        "y": 33.949999999999996,
+        "width": 3.7,
+        "height": 3.7
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-65-48",
+      "id": "park.pond-east-tree-0",
       "rect": {
-        "x": 64.75,
-        "y": 46.85,
-        "width": 3.5,
-        "height": 3.5
+        "x": 66.5,
+        "y": 30.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "park.pond-east-tree-1",
+      "rect": {
+        "x": 65.05,
+        "y": 32.75,
+        "width": 4.1,
+        "height": 4.1
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-70-48",
+      "id": "park.pond-east-tree-2",
       "rect": {
-        "x": 69.75,
-        "y": 47.45,
-        "width": 3.5,
-        "height": 3.5
+        "x": 69.45,
+        "y": 29.45,
+        "width": 4.5,
+        "height": 4.5
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-35-53",
+      "id": "park.pond-east-tree-3",
       "rect": {
-        "x": 34.45,
-        "y": 53.05,
-        "width": 3.5,
-        "height": 3.5
+        "x": 71.25,
+        "y": 33.949999999999996,
+        "width": 3.7,
+        "height": 3.7
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-45-53",
+      "id": "park.pond-east-tree-4",
       "rect": {
-        "x": 43.55,
-        "y": 51.85,
-        "width": 3.5,
-        "height": 3.5
+        "x": 66.75,
+        "y": 35.449999999999996,
+        "width": 3.9,
+        "height": 3.9
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-50-53",
+      "id": "park.orchard-west-tree-0",
       "rect": {
-        "x": 48.25,
-        "y": 52.75,
-        "width": 3.5,
-        "height": 3.5
+        "x": 6.5,
+        "y": 42.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "park.orchard-west-tree-2",
+      "rect": {
+        "x": 9.45,
+        "y": 41.45,
+        "width": 4.5,
+        "height": 4.5
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-55-53",
+      "id": "park.orchard-west-tree-3",
       "rect": {
-        "x": 55.05,
-        "y": 51.55,
-        "width": 3.5,
-        "height": 3.5
+        "x": 11.25,
+        "y": 45.949999999999996,
+        "width": 3.7,
+        "height": 3.7
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-60-53",
+      "id": "park.orchard-home-tree-0",
       "rect": {
-        "x": 59.45,
-        "y": 53.05,
-        "width": 3.5,
-        "height": 3.5
+        "x": 19.5,
+        "y": 47.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "park.orchard-home-tree-1",
+      "rect": {
+        "x": 18.05,
+        "y": 49.75,
+        "width": 4.1,
+        "height": 4.1
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-65-53",
+      "id": "park.orchard-south-tree-0",
       "rect": {
-        "x": 64.15,
-        "y": 52.75,
-        "width": 3.5,
-        "height": 3.5
+        "x": 13.5,
+        "y": 57.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "park.orchard-south-tree-1",
+      "rect": {
+        "x": 12.05,
+        "y": 59.75,
+        "width": 4.1,
+        "height": 4.1
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-70-53",
+      "id": "park.orchard-south-tree-2",
       "rect": {
-        "x": 68.85,
-        "y": 52.75,
-        "width": 3.5,
-        "height": 3.5
+        "x": 16.45,
+        "y": 56.45,
+        "width": 4.5,
+        "height": 4.5
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-75-53",
+      "id": "park.orchard-south-tree-3",
       "rect": {
-        "x": 73.55,
-        "y": 53.05,
-        "width": 3.5,
-        "height": 3.5
+        "x": 18.25,
+        "y": 60.949999999999996,
+        "width": 3.7,
+        "height": 3.7
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-35-58",
+      "id": "park.orchard-south-tree-4",
       "rect": {
-        "x": 33.85,
-        "y": 56.85,
-        "width": 3.5,
-        "height": 3.5
+        "x": 13.75,
+        "y": 62.45,
+        "width": 3.9,
+        "height": 3.9
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-55-58",
+      "id": "park.south-woods-tree-0",
       "rect": {
-        "x": 53.55,
-        "y": 57.15,
-        "width": 3.5,
-        "height": 3.5
+        "x": 39.5,
+        "y": 53.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "park.south-woods-tree-1",
+      "rect": {
+        "x": 38.050000000000004,
+        "y": 55.75,
+        "width": 4.1,
+        "height": 4.1
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-60-58",
+      "id": "park.south-woods-tree-2",
       "rect": {
-        "x": 60.05,
-        "y": 57.75,
-        "width": 3.5,
-        "height": 3.5
+        "x": 42.45,
+        "y": 52.45,
+        "width": 4.5,
+        "height": 4.5
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-65-58",
+      "id": "park.south-woods-tree-3",
       "rect": {
-        "x": 64.45,
-        "y": 56.85,
-        "width": 3.5,
-        "height": 3.5
+        "x": 44.25,
+        "y": 56.949999999999996,
+        "width": 3.7,
+        "height": 3.7
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-75-58",
+      "id": "park.south-woods-tree-4",
       "rect": {
-        "x": 73.55,
-        "y": 58.05,
-        "width": 3.5,
-        "height": 3.5
+        "x": 39.75,
+        "y": 58.449999999999996,
+        "width": 3.9,
+        "height": 3.9
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-35-63",
+      "id": "park.south-east-tree-0",
       "rect": {
-        "x": 33.85,
-        "y": 63.05,
-        "width": 3.5,
-        "height": 3.5
+        "x": 65.5,
+        "y": 53.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "park.south-east-tree-1",
+      "rect": {
+        "x": 64.05,
+        "y": 55.75,
+        "width": 4.1,
+        "height": 4.1
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-40-63",
+      "id": "park.south-east-tree-2",
       "rect": {
-        "x": 40.05,
-        "y": 61.85,
-        "width": 3.5,
-        "height": 3.5
+        "x": 68.45,
+        "y": 52.45,
+        "width": 4.5,
+        "height": 4.5
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-50-63",
+      "id": "park.south-east-tree-3",
       "rect": {
-        "x": 48.55,
-        "y": 63.05,
-        "width": 3.5,
-        "height": 3.5
+        "x": 70.25,
+        "y": 56.949999999999996,
+        "width": 3.7,
+        "height": 3.7
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-55-63",
+      "id": "park.south-east-tree-4",
       "rect": {
-        "x": 54.75,
-        "y": 62.75,
-        "width": 3.5,
-        "height": 3.5
+        "x": 65.75,
+        "y": 58.449999999999996,
+        "width": 3.9,
+        "height": 3.9
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-60-63",
+      "id": "park.ridge-edge-tree-0",
       "rect": {
-        "x": 59.15,
-        "y": 63.05,
-        "width": 3.5,
-        "height": 3.5
+        "x": 75.5,
+        "y": 15.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "park.ridge-edge-tree-1",
+      "rect": {
+        "x": 74.05,
+        "y": 17.75,
+        "width": 4.1,
+        "height": 4.1
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-70-63",
+      "id": "park.ridge-edge-tree-2",
       "rect": {
-        "x": 69.75,
-        "y": 62.15,
-        "width": 3.5,
-        "height": 3.5
+        "x": 78.45,
+        "y": 14.45,
+        "width": 4.5,
+        "height": 4.5
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-3-75-63",
+      "id": "park.ridge-edge-tree-3",
       "rect": {
-        "x": 74.15,
-        "y": 61.25,
-        "width": 3.5,
-        "height": 3.5
+        "x": 80.25,
+        "y": 18.95,
+        "width": 3.7,
+        "height": 3.7
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.bamboo-0-24-9",
+      "id": "park.ridge-edge-tree-4",
       "rect": {
-        "x": 23.3,
-        "y": 9.8,
-        "width": 2,
-        "height": 2
+        "x": 75.75,
+        "y": 20.45,
+        "width": 3.9,
+        "height": 3.9
       },
-      "height": 4.5,
+      "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.bamboo-0-24-12",
+      "id": "park.pavilion-oak-tree-0",
       "rect": {
-        "x": 24.8,
-        "y": 11.6,
-        "width": 2,
-        "height": 2
+        "x": 43.5,
+        "y": 18.5,
+        "width": 7,
+        "height": 7
       },
-      "height": 4.5,
+      "height": 7.2,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.bamboo-1-7-7",
+      "id": "park.pavilion-oak-tree-1",
       "rect": {
-        "x": 6.3,
-        "y": 7.199999999999999,
-        "width": 2,
-        "height": 2
+        "x": 42.050000000000004,
+        "y": 20.75,
+        "width": 4.1,
+        "height": 4.1
       },
-      "height": 4.5,
+      "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.bamboo-1-10-7",
+      "id": "park.pond-reveal-tree-0",
       "rect": {
-        "x": 10.8,
+        "x": 57.5,
+        "y": 21.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "park.pond-reveal-tree-2",
+      "rect": {
+        "x": 60.45,
+        "y": 20.45,
+        "width": 4.5,
+        "height": 4.5
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "park.bamboo-clump-0-0",
+      "rect": {
+        "x": 7.0,
         "y": 6.0,
         "width": 2,
         "height": 2
@@ -2410,65 +1485,10 @@
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.bamboo-1-7-10",
-      "rect": {
-        "x": 6.3,
-        "y": 10.8,
-        "width": 2,
-        "height": 2
-      },
-      "height": 4.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.bamboo-1-10-10",
-      "rect": {
-        "x": 10.5,
-        "y": 10.5,
-        "width": 2,
-        "height": 2
-      },
-      "height": 4.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.bamboo-1-4-13",
-      "rect": {
-        "x": 3.3,
-        "y": 13.8,
-        "width": 2,
-        "height": 2
-      },
-      "height": 4.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.bamboo-1-4-16",
-      "rect": {
-        "x": 3.5999999999999996,
-        "y": 15.899999999999999,
-        "width": 2,
-        "height": 2
-      },
-      "height": 4.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.bamboo-1-7-16",
-      "rect": {
-        "x": 7.199999999999999,
-        "y": 15.899999999999999,
-        "width": 2,
-        "height": 2
-      },
-      "height": 4.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.bamboo-1-7-19",
+      "id": "park.bamboo-clump-0-1",
       "rect": {
         "x": 7.800000000000001,
-        "y": 19.5,
+        "y": 6.3,
         "width": 2,
         "height": 2
       },
@@ -2476,969 +1496,133 @@
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.willow-0-38-32",
+      "id": "park.bamboo-clump-0-2",
       "rect": {
-        "x": 36.3,
-        "y": 31.200000000000003,
-        "width": 4,
-        "height": 4
+        "x": 6.4,
+        "y": 6.8,
+        "width": 2,
+        "height": 2
       },
-      "height": 3.5,
+      "height": 4.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.willow-0-38-37",
+      "id": "park.bamboo-clump-0-3",
       "rect": {
-        "x": 36.0,
-        "y": 36.2,
-        "width": 4,
-        "height": 4
+        "x": 8.4,
+        "y": 7.1,
+        "width": 2,
+        "height": 2
       },
-      "height": 3.5,
+      "height": 4.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.willow-1-71-33",
+      "id": "park.bamboo-clump-1-0",
       "rect": {
-        "x": 69.0,
-        "y": 31.6,
-        "width": 4,
-        "height": 4
+        "x": 11.0,
+        "y": 19.0,
+        "width": 2,
+        "height": 2
       },
-      "height": 3.5,
+      "height": 4.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.willow-1-71-38",
+      "id": "park.bamboo-clump-1-1",
       "rect": {
-        "x": 70.8,
-        "y": 36.0,
-        "width": 4,
-        "height": 4
+        "x": 11.8,
+        "y": 19.3,
+        "width": 2,
+        "height": 2
       },
-      "height": 3.5,
+      "height": 4.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-0-3-3",
+      "id": "park.bamboo-clump-1-2",
       "rect": {
-        "x": 1.4999999999999998,
-        "y": 2.0999999999999996,
-        "width": 3.6,
-        "height": 3.6
+        "x": 10.4,
+        "y": 19.8,
+        "width": 2,
+        "height": 2
       },
-      "height": 3.5,
+      "height": 4.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-0-11-3",
+      "id": "park.bamboo-clump-1-3",
       "rect": {
-        "x": 9.799999999999999,
-        "y": 1.8,
-        "width": 3.6,
-        "height": 3.6
+        "x": 12.4,
+        "y": 20.1,
+        "width": 2,
+        "height": 2
       },
-      "height": 3.5,
+      "height": 4.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-0-23-3",
+      "id": "park.bamboo-clump-2-0",
       "rect": {
-        "x": 22.4,
-        "y": 1.4999999999999998,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-35-3",
-      "rect": {
-        "x": 35.0,
-        "y": 2.7,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-39-3",
-      "rect": {
-        "x": 37.5,
-        "y": 3.0,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-43-3",
-      "rect": {
-        "x": 41.800000000000004,
-        "y": 1.8,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-51-3",
-      "rect": {
-        "x": 49.5,
-        "y": 2.0999999999999996,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-55-3",
-      "rect": {
-        "x": 55.0,
-        "y": 1.2,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-63-3",
-      "rect": {
-        "x": 61.2,
-        "y": 2.7,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-79-3",
-      "rect": {
-        "x": 77.2,
-        "y": 3.0,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-43-7",
-      "rect": {
-        "x": 43.0,
-        "y": 7.000000000000001,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-47-7",
-      "rect": {
-        "x": 47.0,
-        "y": 5.2,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-3-11",
-      "rect": {
-        "x": 3.0,
-        "y": 10.7,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-27-11",
-      "rect": {
-        "x": 25.5,
+        "x": 26.0,
         "y": 11.0,
-        "width": 3.6,
-        "height": 3.6
+        "width": 2,
+        "height": 2
       },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-35-11",
-      "rect": {
-        "x": 33.2,
-        "y": 11.0,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-43-11",
-      "rect": {
-        "x": 42.1,
-        "y": 10.1,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-47-11",
-      "rect": {
-        "x": 46.1,
-        "y": 11.0,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-11-15",
-      "rect": {
-        "x": 9.799999999999999,
-        "y": 15.0,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-3-23",
-      "rect": {
-        "x": 1.8,
-        "y": 22.7,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-7-23",
-      "rect": {
-        "x": 6.3999999999999995,
-        "y": 23.0,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-11-23",
-      "rect": {
-        "x": 10.7,
-        "y": 22.099999999999998,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-23-23",
-      "rect": {
-        "x": 21.8,
-        "y": 22.7,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-27-23",
-      "rect": {
-        "x": 25.2,
-        "y": 21.2,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-39-23",
-      "rect": {
-        "x": 37.800000000000004,
-        "y": 21.5,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-59-23",
-      "rect": {
-        "x": 57.5,
-        "y": 22.7,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-23-27",
-      "rect": {
-        "x": 22.099999999999998,
-        "y": 25.5,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-27-27",
-      "rect": {
-        "x": 25.5,
-        "y": 26.7,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-67-27",
-      "rect": {
-        "x": 66.7,
-        "y": 26.4,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-3-31",
-      "rect": {
-        "x": 1.8,
-        "y": 30.400000000000002,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-23-31",
-      "rect": {
-        "x": 22.099999999999998,
-        "y": 30.099999999999998,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-27-31",
-      "rect": {
-        "x": 25.5,
-        "y": 29.8,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-3-35",
-      "rect": {
-        "x": 1.4999999999999998,
-        "y": 33.800000000000004,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-7-35",
-      "rect": {
-        "x": 6.1000000000000005,
-        "y": 33.800000000000004,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-11-35",
-      "rect": {
-        "x": 10.399999999999999,
-        "y": 34.7,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-79-35",
-      "rect": {
-        "x": 77.5,
-        "y": 34.400000000000006,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-39-39",
-      "rect": {
-        "x": 38.400000000000006,
-        "y": 38.400000000000006,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-59-39",
-      "rect": {
-        "x": 59.0,
-        "y": 39.0,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-75-39",
-      "rect": {
-        "x": 73.2,
-        "y": 39.0,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-79-39",
-      "rect": {
-        "x": 77.8,
-        "y": 38.400000000000006,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-11-43",
-      "rect": {
-        "x": 9.2,
-        "y": 43.0,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-71-43",
-      "rect": {
-        "x": 70.7,
-        "y": 42.7,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-75-43",
-      "rect": {
-        "x": 73.5,
-        "y": 42.1,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-79-43",
-      "rect": {
-        "x": 78.10000000000001,
-        "y": 42.1,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-19-47",
-      "rect": {
-        "x": 19.0,
-        "y": 46.1,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-31-47",
-      "rect": {
-        "x": 29.5,
-        "y": 46.1,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-35-47",
-      "rect": {
-        "x": 34.7,
-        "y": 45.5,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-51-47",
-      "rect": {
-        "x": 51.0,
-        "y": 46.1,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-63-47",
-      "rect": {
-        "x": 62.1,
-        "y": 45.800000000000004,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-75-47",
-      "rect": {
-        "x": 73.2,
-        "y": 47.0,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-11-51",
-      "rect": {
-        "x": 9.799999999999999,
-        "y": 49.800000000000004,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-31-51",
-      "rect": {
-        "x": 30.999999999999996,
-        "y": 50.1,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-35-51",
-      "rect": {
-        "x": 34.1,
-        "y": 50.400000000000006,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-55-51",
-      "rect": {
-        "x": 54.400000000000006,
-        "y": 49.5,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-59-51",
-      "rect": {
-        "x": 58.1,
-        "y": 50.7,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-63-51",
-      "rect": {
-        "x": 61.800000000000004,
-        "y": 50.7,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-79-51",
-      "rect": {
-        "x": 77.8,
-        "y": 50.7,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-3-55",
-      "rect": {
-        "x": 1.2,
-        "y": 54.1,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-27-55",
-      "rect": {
-        "x": 26.7,
-        "y": 54.1,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-31-55",
-      "rect": {
-        "x": 30.099999999999998,
-        "y": 54.1,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-39-55",
-      "rect": {
-        "x": 38.1,
-        "y": 54.400000000000006,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-43-55",
-      "rect": {
-        "x": 43.0,
-        "y": 54.7,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-55-55",
-      "rect": {
-        "x": 53.800000000000004,
-        "y": 55.0,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-59-55",
-      "rect": {
-        "x": 57.5,
-        "y": 54.7,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
+      "height": 4.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-0-67-55",
+      "id": "park.bamboo-clump-2-1",
       "rect": {
-        "x": 66.7,
-        "y": 54.400000000000006,
-        "width": 3.6,
-        "height": 3.6
+        "x": 26.8,
+        "y": 11.3,
+        "width": 2,
+        "height": 2
       },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-71-55",
-      "rect": {
-        "x": 69.8,
-        "y": 54.7,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-15-59",
-      "rect": {
-        "x": 13.799999999999999,
-        "y": 58.7,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-19-59",
-      "rect": {
-        "x": 17.8,
-        "y": 58.7,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-23-59",
-      "rect": {
-        "x": 21.8,
-        "y": 57.5,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-31-59",
-      "rect": {
-        "x": 30.999999999999996,
-        "y": 57.5,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-35-59",
-      "rect": {
-        "x": 34.1,
-        "y": 59.0,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-39-59",
-      "rect": {
-        "x": 37.2,
-        "y": 57.2,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-43-59",
-      "rect": {
-        "x": 42.1,
-        "y": 58.1,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
+      "height": 4.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-0-47-59",
+      "id": "park.bamboo-clump-2-2",
       "rect": {
-        "x": 46.7,
-        "y": 57.800000000000004,
-        "width": 3.6,
-        "height": 3.6
+        "x": 25.4,
+        "y": 11.8,
+        "width": 2,
+        "height": 2
       },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-51-59",
-      "rect": {
-        "x": 51.0,
-        "y": 58.400000000000006,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-71-59",
-      "rect": {
-        "x": 69.2,
-        "y": 58.1,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-79-59",
-      "rect": {
-        "x": 79.0,
-        "y": 57.800000000000004,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-11-63",
-      "rect": {
-        "x": 10.1,
-        "y": 61.800000000000004,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
+      "height": 4.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-0-19-63",
+      "id": "park.bamboo-clump-2-3",
       "rect": {
-        "x": 18.7,
-        "y": 62.1,
-        "width": 3.6,
-        "height": 3.6
+        "x": 27.4,
+        "y": 12.1,
+        "width": 2,
+        "height": 2
       },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-31-63",
-      "rect": {
-        "x": 29.8,
-        "y": 63.0,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-39-63",
-      "rect": {
-        "x": 38.1,
-        "y": 61.5,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-43-63",
-      "rect": {
-        "x": 43.0,
-        "y": 63.0,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "park.tree-0-47-63",
-      "rect": {
-        "x": 45.5,
-        "y": 61.5,
-        "width": 3.6,
-        "height": 3.6
-      },
-      "height": 3.5,
+      "height": 4.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-0-67-63",
+      "id": "park.bank-willow-0",
       "rect": {
-        "x": 65.2,
-        "y": 61.800000000000004,
-        "width": 3.6,
-        "height": 3.6
+        "x": 36.25,
+        "y": 25.25,
+        "width": 5.5,
+        "height": 5.5
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "park.tree-0-79-63",
+      "id": "park.bank-willow-2",
       "rect": {
-        "x": 78.10000000000001,
-        "y": 62.1,
-        "width": 3.6,
-        "height": 3.6
+        "x": 55.25,
+        "y": 20.25,
+        "width": 5.5,
+        "height": 5.5
       },
       "height": 3.5,
       "fadeWhenPlayerBehind": true
@@ -3593,39 +1777,6 @@
       "variant": 0
     },
     {
-      "id": "park.woodland",
-      "rect": {
-        "x": 4,
-        "y": 3,
-        "width": 33,
-        "height": 24
-      },
-      "material": "moss",
-      "variant": 0
-    },
-    {
-      "id": "park.orchard",
-      "rect": {
-        "x": 4,
-        "y": 39,
-        "width": 31,
-        "height": 25
-      },
-      "material": "orchard-floor",
-      "variant": 0
-    },
-    {
-      "id": "park.ridge",
-      "rect": {
-        "x": 59,
-        "y": 4,
-        "width": 23,
-        "height": 23
-      },
-      "material": "ridge",
-      "variant": 0
-    },
-    {
       "id": "park.pond-shore-0",
       "rect": {
         "x": 44,
@@ -3703,12 +1854,34 @@
       "variant": 0
     },
     {
-      "id": "park.pond-2",
+      "id": "park.pond-2-cut-0",
       "rect": {
         "x": 40,
         "y": 29,
         "width": 23,
-        "height": 7
+        "height": 2.8000000000000007
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-2-cut-1",
+      "rect": {
+        "x": 40,
+        "y": 34.2,
+        "width": 23,
+        "height": 1.7999999999999972
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-2-cut-2",
+      "rect": {
+        "x": 40,
+        "y": 31.8,
+        "width": 19.799999999999997,
+        "height": 2.400000000000002
       },
       "material": "water",
       "variant": 0
@@ -3738,10 +1911,10 @@
     {
       "id": "park.town-walk-0",
       "rect": {
-        "x": 5.2,
-        "y": 54.2,
-        "width": 3.6000000000000005,
-        "height": 13.799999999999997
+        "x": 5.7,
+        "y": 54.7,
+        "width": 2.6000000000000005,
+        "height": 13.299999999999997
       },
       "material": "path",
       "variant": 0
@@ -3749,10 +1922,10 @@
     {
       "id": "park.town-walk-1",
       "rect": {
-        "x": 5.2,
-        "y": 54.2,
-        "width": 21.6,
-        "height": 3.6000000000000014
+        "x": 5.7,
+        "y": 54.7,
+        "width": 20.6,
+        "height": 2.6000000000000014
       },
       "material": "path",
       "variant": 0
@@ -3760,10 +1933,10 @@
     {
       "id": "park.town-walk-2",
       "rect": {
-        "x": 23.2,
-        "y": 42.2,
-        "width": 3.6000000000000014,
-        "height": 15.600000000000001
+        "x": 23.7,
+        "y": 42.7,
+        "width": 2.6000000000000014,
+        "height": 14.600000000000001
       },
       "material": "path",
       "variant": 0
@@ -3771,10 +1944,10 @@
     {
       "id": "park.town-walk-3",
       "rect": {
-        "x": 23.2,
-        "y": 42.2,
-        "width": 12.599999999999998,
-        "height": 3.6000000000000014
+        "x": 23.7,
+        "y": 42.7,
+        "width": 11.599999999999998,
+        "height": 2.6000000000000014
       },
       "material": "path",
       "variant": 0
@@ -3782,10 +1955,10 @@
     {
       "id": "park.town-walk-4",
       "rect": {
-        "x": 32.2,
-        "y": 16.2,
-        "width": 3.6000000000000014,
-        "height": 29.599999999999998
+        "x": 32.7,
+        "y": 16.7,
+        "width": 2.6000000000000014,
+        "height": 28.599999999999998
       },
       "material": "path",
       "variant": 0
@@ -3793,10 +1966,10 @@
     {
       "id": "park.town-walk-5",
       "rect": {
-        "x": 32.2,
-        "y": 16.2,
-        "width": 23.6,
-        "height": 3.6000000000000014
+        "x": 32.7,
+        "y": 16.7,
+        "width": 22.6,
+        "height": 2.6000000000000014
       },
       "material": "path",
       "variant": 0
@@ -3804,10 +1977,10 @@
     {
       "id": "park.town-walk-6",
       "rect": {
-        "x": 52.2,
-        "y": 8.2,
-        "width": 3.6000000000000014,
-        "height": 11.599999999999998
+        "x": 52.7,
+        "y": 8.7,
+        "width": 2.6000000000000014,
+        "height": 10.599999999999998
       },
       "material": "path",
       "variant": 0
@@ -3815,10 +1988,10 @@
     {
       "id": "park.town-walk-7",
       "rect": {
-        "x": 52.2,
-        "y": 8.2,
-        "width": 31.60000000000001,
-        "height": 3.5999999999999996
+        "x": 52.7,
+        "y": 8.7,
+        "width": 30.60000000000001,
+        "height": 2.5999999999999996
       },
       "material": "path",
       "variant": 0
@@ -3827,9 +2000,9 @@
       "id": "park.courtyard-walk-0",
       "rect": {
         "x": 0,
-        "y": 27.3,
-        "width": 19.7,
-        "height": 3.3999999999999986
+        "y": 27.9,
+        "width": 19.099999999999998,
+        "height": 2.1999999999999993
       },
       "material": "stone-path",
       "variant": 0
@@ -3837,10 +2010,10 @@
     {
       "id": "park.courtyard-walk-1",
       "rect": {
-        "x": 16.3,
-        "y": 16.3,
-        "width": 3.3999999999999986,
-        "height": 14.400000000000002
+        "x": 16.9,
+        "y": 16.9,
+        "width": 2.1999999999999993,
+        "height": 13.2
       },
       "material": "stone-path",
       "variant": 0
@@ -3848,10 +2021,10 @@
     {
       "id": "park.courtyard-walk-2",
       "rect": {
-        "x": 16.3,
-        "y": 16.3,
-        "width": 19.400000000000002,
-        "height": 3.3999999999999986
+        "x": 16.9,
+        "y": 16.9,
+        "width": 18.199999999999996,
+        "height": 2.1999999999999993
       },
       "material": "stone-path",
       "variant": 0
@@ -3859,10 +2032,10 @@
     {
       "id": "park.pond-loop-0",
       "rect": {
-        "x": 32.25,
-        "y": 42.25,
-        "width": 34.5,
-        "height": 3.5
+        "x": 32.75,
+        "y": 42.75,
+        "width": 33.5,
+        "height": 2.5
       },
       "material": "path",
       "variant": 0
@@ -3870,10 +2043,10 @@
     {
       "id": "park.pond-loop-1",
       "rect": {
-        "x": 63.25,
-        "y": 16.25,
-        "width": 3.5,
-        "height": 29.5
+        "x": 63.75,
+        "y": 16.75,
+        "width": 2.5,
+        "height": 28.5
       },
       "material": "path",
       "variant": 0
@@ -3881,10 +2054,10 @@
     {
       "id": "park.pond-loop-2",
       "rect": {
-        "x": 52.25,
-        "y": 16.25,
-        "width": 14.5,
-        "height": 3.5
+        "x": 52.75,
+        "y": 16.75,
+        "width": 13.5,
+        "height": 2.5
       },
       "material": "path",
       "variant": 0
@@ -3892,10 +2065,10 @@
     {
       "id": "park.orchard-loop-0",
       "rect": {
-        "x": 5.5,
-        "y": 39.5,
-        "width": 3.0,
-        "height": 18.0
+        "x": 5.9,
+        "y": 39.9,
+        "width": 2.200000000000001,
+        "height": 17.199999999999996
       },
       "material": "path",
       "variant": 0
@@ -3903,10 +2076,10 @@
     {
       "id": "park.orchard-loop-1",
       "rect": {
-        "x": 5.5,
-        "y": 39.5,
-        "width": 14.0,
-        "height": 3.0
+        "x": 5.9,
+        "y": 39.9,
+        "width": 13.200000000000001,
+        "height": 2.200000000000003
       },
       "material": "path",
       "variant": 0
@@ -3914,10 +2087,10 @@
     {
       "id": "park.orchard-loop-2",
       "rect": {
-        "x": 16.5,
-        "y": 27.5,
-        "width": 3.0,
-        "height": 15.0
+        "x": 16.9,
+        "y": 27.9,
+        "width": 2.1999999999999993,
+        "height": 14.199999999999996
       },
       "material": "path",
       "variant": 0
@@ -3925,10 +2098,10 @@
     {
       "id": "park.bamboo-walk-0",
       "rect": {
-        "x": 16.6,
-        "y": 6.6,
-        "width": 2.8000000000000007,
-        "height": 12.799999999999999
+        "x": 17.0,
+        "y": 7.0,
+        "width": 2.0,
+        "height": 12.0
       },
       "material": "path",
       "variant": 0
@@ -3936,10 +2109,10 @@
     {
       "id": "park.bamboo-walk-1",
       "rect": {
-        "x": 16.6,
-        "y": 6.6,
-        "width": 24.800000000000004,
-        "height": 2.799999999999999
+        "x": 17.0,
+        "y": 7.0,
+        "width": 24.0,
+        "height": 2.0
       },
       "material": "path",
       "variant": 0
@@ -3947,10 +2120,10 @@
     {
       "id": "park.bamboo-walk-2",
       "rect": {
-        "x": 38.6,
-        "y": 6.6,
-        "width": 2.799999999999997,
-        "height": 12.799999999999999
+        "x": 39.0,
+        "y": 7.0,
+        "width": 2.0,
+        "height": 12.0
       },
       "material": "path",
       "variant": 0
@@ -3958,10 +2131,10 @@
     {
       "id": "park.ridge-climb-0",
       "rect": {
-        "x": 63.5,
-        "y": 16.5,
-        "width": 12.0,
-        "height": 3.0
+        "x": 63.9,
+        "y": 16.9,
+        "width": 11.199999999999996,
+        "height": 2.1999999999999993
       },
       "material": "stone-path",
       "variant": 0
@@ -3969,10 +2142,10 @@
     {
       "id": "park.ridge-climb-1",
       "rect": {
-        "x": 72.5,
-        "y": 16.5,
-        "width": 3.0,
-        "height": 14.0
+        "x": 72.9,
+        "y": 16.9,
+        "width": 2.200000000000003,
+        "height": 13.2
       },
       "material": "stone-path",
       "variant": 0
@@ -3980,10 +2153,10 @@
     {
       "id": "park.ridge-climb-2",
       "rect": {
-        "x": 72.5,
-        "y": 27.5,
-        "width": 9.0,
-        "height": 3.0
+        "x": 72.9,
+        "y": 27.9,
+        "width": 8.200000000000003,
+        "height": 2.1999999999999993
       },
       "material": "stone-path",
       "variant": 0
@@ -3991,10 +2164,10 @@
     {
       "id": "park.pond-deck-0",
       "rect": {
-        "x": 59.5,
-        "y": 31.5,
-        "width": 7.0,
-        "height": 3.0
+        "x": 59.8,
+        "y": 31.8,
+        "width": 6.400000000000006,
+        "height": 2.400000000000002
       },
       "material": "boardwalk",
       "variant": 0
@@ -4033,6 +2206,30 @@
       },
       "width": 3,
       "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.reading-stone",
+      "kind": "rock",
+      "position": {
+        "x": 31,
+        "y": 26
+      },
+      "width": 2.2,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "park.planting-bed",
+      "kind": "seedling-bed",
+      "position": {
+        "x": 24.5,
+        "y": 57.2
+      },
+      "width": 3,
+      "height": 2,
       "layer": "object",
       "variant": 0
     },
@@ -4193,683 +2390,1439 @@
       "variant": 0
     },
     {
-      "id": "park.tree-0-4-4",
-      "kind": "tree",
+      "id": "park.bamboo-gate-floor",
+      "kind": "woodland-floor",
       "position": {
-        "x": 4.6,
-        "y": 5.8
+        "x": 8,
+        "y": 13
       },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 1
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 3
     },
     {
-      "id": "park.tree-0-9-4",
-      "kind": "tree",
+      "id": "park.bamboo-gate-tree-0",
+      "kind": "mature-tree",
       "position": {
-        "x": 9.0,
-        "y": 5.8
+        "x": 8,
+        "y": 13
       },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-14-4",
-      "kind": "tree",
-      "position": {
-        "x": 15.2,
-        "y": 5.8
-      },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 7,
+      "height": 7,
       "layer": "object",
       "variant": 3
     },
     {
-      "id": "park.tree-0-4-9",
+      "id": "park.bamboo-gate-tree-1",
       "kind": "tree",
       "position": {
-        "x": 4.0,
-        "y": 9.9
+        "x": 5.1,
+        "y": 13.8
       },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-14-9",
-      "kind": "tree",
-      "position": {
-        "x": 14.0,
-        "y": 10.8
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-9-14",
-      "kind": "tree",
-      "position": {
-        "x": 9.9,
-        "y": 14.9
-      },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 4.1,
+      "height": 4.1,
       "layer": "object",
       "variant": 0
     },
     {
-      "id": "park.tree-0-4-19",
+      "id": "park.bamboo-gate-tree-2",
       "kind": "tree",
       "position": {
-        "x": 4.6,
-        "y": 19.0
+        "x": 9.7,
+        "y": 10.7
       },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 4.5,
+      "height": 4.5,
       "layer": "object",
-      "variant": 3
+      "variant": 1
     },
     {
-      "id": "park.tree-0-14-19",
+      "id": "park.bamboo-gate-tree-3",
       "kind": "tree",
       "position": {
-        "x": 14.0,
-        "y": 19.6
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-1-22-3",
-      "kind": "tree",
-      "position": {
-        "x": 22.3,
-        "y": 3.9
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-1-27-3",
-      "kind": "tree",
-      "position": {
-        "x": 28.2,
-        "y": 3.6
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-1-32-3",
-      "kind": "tree",
-      "position": {
-        "x": 32.3,
-        "y": 3.9
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-1-22-13",
-      "kind": "tree",
-      "position": {
-        "x": 22.9,
-        "y": 14.2
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-1-27-13",
-      "kind": "tree",
-      "position": {
-        "x": 28.5,
+        "x": 11.1,
         "y": 14.8
       },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-1-32-13",
-      "kind": "tree",
-      "position": {
-        "x": 32.3,
-        "y": 13.9
-      },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 3.7,
+      "height": 3.7,
       "layer": "object",
       "variant": 2
     },
     {
-      "id": "park.tree-2-3-37",
+      "id": "park.bamboo-gate-tree-4",
       "kind": "tree",
       "position": {
-        "x": 4.8,
-        "y": 37.6
+        "x": 6.7,
+        "y": 16.4
       },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "park.bamboo-gate-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 4.5,
+        "y": 11.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.bamboo-gate-fern-1",
+      "kind": "fern",
+      "position": {
+        "x": 10.2,
+        "y": 16.9
+      },
+      "width": 1.5,
+      "height": 1.5,
       "layer": "object",
       "variant": 1
     },
     {
-      "id": "park.tree-2-23-37",
+      "id": "park.bamboo-gate-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 7.2,
+        "y": 15.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.bamboo-gate-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 12,
+        "y": 12.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.north-canopy-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 28,
+        "y": 4
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "park.north-canopy-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 28,
+        "y": 4
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.north-canopy-tree-1",
       "kind": "tree",
       "position": {
-        "x": 23.6,
+        "x": 25.1,
+        "y": 4.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.north-canopy-tree-2",
+      "kind": "tree",
+      "position": {
+        "x": 29.7,
+        "y": 1.7000000000000002
+      },
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.north-canopy-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 31.1,
+        "y": 5.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "park.north-canopy-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 24.5,
+        "y": 2.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.north-canopy-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 27.2,
+        "y": 6.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.north-canopy-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 32,
+        "y": 3.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.old-camphor-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 43,
+        "y": 5
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "park.old-camphor-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 43,
+        "y": 5
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.old-camphor-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 40.1,
+        "y": 5.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.old-camphor-tree-2",
+      "kind": "tree",
+      "position": {
+        "x": 44.7,
+        "y": 2.7
+      },
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.old-camphor-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 46.1,
+        "y": 6.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "park.old-camphor-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 41.7,
+        "y": 8.4
+      },
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.old-camphor-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 39.5,
+        "y": 3.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.old-camphor-fern-1",
+      "kind": "fern",
+      "position": {
+        "x": 45.2,
+        "y": 8.9
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.old-camphor-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 42.2,
+        "y": 7.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.old-camphor-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 47,
+        "y": 4.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.ridge-copse-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 69,
+        "y": 6
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 3
+    },
+    {
+      "id": "park.ridge-copse-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 69,
+        "y": 6
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "park.ridge-copse-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 66.1,
+        "y": 6.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.ridge-copse-tree-2",
+      "kind": "tree",
+      "position": {
+        "x": 70.7,
+        "y": 3.7
+      },
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.ridge-copse-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 72.1,
+        "y": 7.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.ridge-copse-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 65.5,
+        "y": 4.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.ridge-copse-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 73,
+        "y": 5.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.reading-grove-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 28,
+        "y": 23
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 2
+    },
+    {
+      "id": "park.reading-grove-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 28,
+        "y": 23
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.reading-grove-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 25.1,
+        "y": 23.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "park.reading-grove-tree-2",
+      "kind": "tree",
+      "position": {
+        "x": 29.7,
+        "y": 20.7
+      },
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.reading-grove-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 31.1,
+        "y": 24.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.reading-grove-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 26.7,
+        "y": 26.4
+      },
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.reading-grove-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 24.5,
+        "y": 21.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.reading-grove-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 27.2,
+        "y": 25.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.reading-grove-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 32,
+        "y": 22.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-west-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 36,
+        "y": 34
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-west-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 36,
+        "y": 34
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-west-tree-2",
+      "kind": "tree",
+      "position": {
+        "x": 37.7,
+        "y": 31.7
+      },
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.pond-west-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 39.1,
+        "y": 35.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "park.pond-west-fern-1",
+      "kind": "fern",
+      "position": {
+        "x": 38.2,
         "y": 37.9
       },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-2-28-37",
-      "kind": "tree",
-      "position": {
-        "x": 28.3,
-        "y": 38.2
-      },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 1.5,
+      "height": 1.5,
       "layer": "object",
       "variant": 1
     },
     {
-      "id": "park.tree-2-3-47",
-      "kind": "tree",
+      "id": "park.pond-east-floor",
+      "kind": "woodland-floor",
       "position": {
-        "x": 3.0,
-        "y": 47.3
+        "x": 70,
+        "y": 34
       },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 0
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 1
     },
     {
-      "id": "park.tree-2-13-47",
+      "id": "park.pond-east-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 70,
+        "y": 34
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.pond-east-tree-1",
       "kind": "tree",
       "position": {
-        "x": 13.6,
-        "y": 47.3
+        "x": 67.1,
+        "y": 34.8
       },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 4.1,
+      "height": 4.1,
       "layer": "object",
       "variant": 2
     },
     {
-      "id": "park.tree-2-18-47",
+      "id": "park.pond-east-tree-2",
       "kind": "tree",
       "position": {
-        "x": 18.0,
-        "y": 47.9
+        "x": 71.7,
+        "y": 31.7
       },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "park.pond-east-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 73.1,
+        "y": 35.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-east-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 68.7,
+        "y": 37.4
+      },
+      "width": 3.9,
+      "height": 3.9,
       "layer": "object",
       "variant": 1
     },
     {
-      "id": "park.tree-2-28-47",
-      "kind": "tree",
+      "id": "park.pond-east-fern-1",
+      "kind": "fern",
       "position": {
-        "x": 28.6,
-        "y": 47.6
+        "x": 72.2,
+        "y": 37.9
       },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 1.5,
+      "height": 1.5,
       "layer": "object",
       "variant": 1
     },
     {
-      "id": "park.tree-2-18-52",
-      "kind": "tree",
+      "id": "park.pond-east-fern-2",
+      "kind": "fern",
       "position": {
-        "x": 18.6,
-        "y": 52.3
+        "x": 69.2,
+        "y": 36.1
       },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 1.5,
+      "height": 1.5,
       "layer": "object",
       "variant": 2
     },
     {
-      "id": "park.tree-2-28-52",
-      "kind": "tree",
+      "id": "park.pond-east-fern-3",
+      "kind": "fern",
       "position": {
-        "x": 28.9,
-        "y": 52.9
+        "x": 74,
+        "y": 33.3
       },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-2-3-62",
-      "kind": "tree",
-      "position": {
-        "x": 3.0,
-        "y": 63.5
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-2-13-62",
-      "kind": "tree",
-      "position": {
-        "x": 14.5,
-        "y": 63.8
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-2-18-62",
-      "kind": "tree",
-      "position": {
-        "x": 18.3,
-        "y": 62.6
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-2-23-62",
-      "kind": "tree",
-      "position": {
-        "x": 23.9,
-        "y": 63.5
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-2-28-62",
-      "kind": "tree",
-      "position": {
-        "x": 29.8,
-        "y": 62.6
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-3-35-48",
-      "kind": "tree",
-      "position": {
-        "x": 35.6,
-        "y": 49.5
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-3-40-48",
-      "kind": "tree",
-      "position": {
-        "x": 40.3,
-        "y": 48.3
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-3-45-48",
-      "kind": "tree",
-      "position": {
-        "x": 45.0,
-        "y": 49.5
-      },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 1.5,
+      "height": 1.5,
       "layer": "object",
       "variant": 0
     },
     {
-      "id": "park.tree-3-50-48",
-      "kind": "tree",
+      "id": "park.orchard-west-floor",
+      "kind": "woodland-floor",
       "position": {
-        "x": 50.0,
-        "y": 48.9
+        "x": 10,
+        "y": 46
       },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 1
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 2
     },
     {
-      "id": "park.tree-3-55-48",
-      "kind": "tree",
+      "id": "park.orchard-west-tree-0",
+      "kind": "mature-tree",
       "position": {
-        "x": 56.8,
-        "y": 48.3
+        "x": 10,
+        "y": 46
       },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 7,
+      "height": 7,
       "layer": "object",
       "variant": 2
     },
     {
-      "id": "park.tree-3-60-48",
+      "id": "park.orchard-west-tree-2",
       "kind": "tree",
       "position": {
-        "x": 61.8,
-        "y": 48.3
+        "x": 11.7,
+        "y": 43.7
       },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-3-65-48",
-      "kind": "tree",
-      "position": {
-        "x": 66.5,
-        "y": 48.6
-      },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 4.5,
+      "height": 4.5,
       "layer": "object",
       "variant": 0
     },
     {
-      "id": "park.tree-3-70-48",
+      "id": "park.orchard-west-tree-3",
       "kind": "tree",
       "position": {
-        "x": 71.5,
-        "y": 49.2
+        "x": 13.1,
+        "y": 47.8
       },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 3.7,
+      "height": 3.7,
       "layer": "object",
       "variant": 1
     },
     {
-      "id": "park.tree-3-35-53",
-      "kind": "tree",
+      "id": "park.orchard-west-fern-1",
+      "kind": "fern",
       "position": {
-        "x": 36.2,
-        "y": 54.8
+        "x": 12.2,
+        "y": 49.9
       },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.orchard-west-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 9.2,
+        "y": 48.1
+      },
+      "width": 1.5,
+      "height": 1.5,
       "layer": "object",
       "variant": 2
     },
     {
-      "id": "park.tree-3-45-53",
-      "kind": "tree",
+      "id": "park.orchard-west-fern-3",
+      "kind": "fern",
       "position": {
-        "x": 45.3,
-        "y": 53.6
+        "x": 14,
+        "y": 45.3
       },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 1.5,
+      "height": 1.5,
       "layer": "object",
       "variant": 0
     },
     {
-      "id": "park.tree-3-50-53",
-      "kind": "tree",
+      "id": "park.orchard-home-floor",
+      "kind": "woodland-floor",
       "position": {
-        "x": 50.0,
-        "y": 54.5
+        "x": 23,
+        "y": 51
       },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 3
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 2
     },
     {
-      "id": "park.tree-3-55-53",
-      "kind": "tree",
+      "id": "park.orchard-home-tree-0",
+      "kind": "mature-tree",
       "position": {
-        "x": 56.8,
-        "y": 53.3
+        "x": 23,
+        "y": 51
       },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-3-60-53",
-      "kind": "tree",
-      "position": {
-        "x": 61.2,
-        "y": 54.8
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-3-65-53",
-      "kind": "tree",
-      "position": {
-        "x": 65.9,
-        "y": 54.5
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-3-70-53",
-      "kind": "tree",
-      "position": {
-        "x": 70.6,
-        "y": 54.5
-      },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 7,
+      "height": 7,
       "layer": "object",
       "variant": 2
     },
     {
-      "id": "park.tree-3-75-53",
+      "id": "park.orchard-home-tree-1",
       "kind": "tree",
       "position": {
-        "x": 75.3,
-        "y": 54.8
+        "x": 20.1,
+        "y": 51.8
       },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "park.orchard-home-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 19.5,
+        "y": 49.3
+      },
+      "width": 1.5,
+      "height": 1.5,
       "layer": "object",
       "variant": 0
     },
     {
-      "id": "park.tree-3-35-58",
-      "kind": "tree",
+      "id": "park.orchard-home-fern-2",
+      "kind": "fern",
       "position": {
-        "x": 35.6,
-        "y": 58.6
+        "x": 22.2,
+        "y": 53.1
       },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-3-55-58",
-      "kind": "tree",
-      "position": {
-        "x": 55.3,
-        "y": 58.9
-      },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 1.5,
+      "height": 1.5,
       "layer": "object",
       "variant": 2
     },
     {
-      "id": "park.tree-3-60-58",
-      "kind": "tree",
+      "id": "park.orchard-home-fern-3",
+      "kind": "fern",
       "position": {
-        "x": 61.8,
-        "y": 59.5
+        "x": 27,
+        "y": 50.3
       },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-3-65-58",
-      "kind": "tree",
-      "position": {
-        "x": 66.2,
-        "y": 58.6
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-3-75-58",
-      "kind": "tree",
-      "position": {
-        "x": 75.3,
-        "y": 59.8
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-3-35-63",
-      "kind": "tree",
-      "position": {
-        "x": 35.6,
-        "y": 64.8
-      },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 1.5,
+      "height": 1.5,
       "layer": "object",
       "variant": 0
     },
     {
-      "id": "park.tree-3-40-63",
-      "kind": "tree",
+      "id": "park.orchard-south-floor",
+      "kind": "woodland-floor",
       "position": {
-        "x": 41.8,
-        "y": 63.6
+        "x": 17,
+        "y": 61
       },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 1
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 2
     },
     {
-      "id": "park.tree-3-50-63",
-      "kind": "tree",
+      "id": "park.orchard-south-tree-0",
+      "kind": "mature-tree",
       "position": {
-        "x": 50.3,
-        "y": 64.8
+        "x": 17,
+        "y": 61
       },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 7,
+      "height": 7,
       "layer": "object",
-      "variant": 3
+      "variant": 2
     },
     {
-      "id": "park.tree-3-55-63",
+      "id": "park.orchard-south-tree-1",
       "kind": "tree",
       "position": {
-        "x": 56.5,
-        "y": 64.5
+        "x": 14.1,
+        "y": 61.8
       },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-3-60-63",
-      "kind": "tree",
-      "position": {
-        "x": 60.9,
-        "y": 64.8
-      },
-      "width": 3.5,
-      "height": 3.5,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-3-70-63",
-      "kind": "tree",
-      "position": {
-        "x": 71.5,
-        "y": 63.9
-      },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 4.1,
+      "height": 4.1,
       "layer": "object",
       "variant": 3
     },
     {
-      "id": "park.tree-3-75-63",
+      "id": "park.orchard-south-tree-2",
       "kind": "tree",
       "position": {
-        "x": 75.9,
-        "y": 63.0
+        "x": 18.7,
+        "y": 58.7
       },
-      "width": 3.5,
-      "height": 3.5,
+      "width": 4.5,
+      "height": 4.5,
       "layer": "object",
       "variant": 0
     },
     {
-      "id": "park.bamboo-0-24-9",
+      "id": "park.orchard-south-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 20.1,
+        "y": 62.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.orchard-south-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 15.7,
+        "y": 64.4
+      },
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.orchard-south-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 13.5,
+        "y": 59.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.orchard-south-fern-1",
+      "kind": "fern",
+      "position": {
+        "x": 19.2,
+        "y": 64.9
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.orchard-south-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 16.2,
+        "y": 63.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.orchard-south-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 21,
+        "y": 60.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.south-woods-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 43,
+        "y": 57
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "park.south-woods-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 43,
+        "y": 57
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.south-woods-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 40.1,
+        "y": 57.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.south-woods-tree-2",
+      "kind": "tree",
+      "position": {
+        "x": 44.7,
+        "y": 54.7
+      },
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.south-woods-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 46.1,
+        "y": 58.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "park.south-woods-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 41.7,
+        "y": 60.4
+      },
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.south-woods-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 39.5,
+        "y": 55.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.south-woods-fern-1",
+      "kind": "fern",
+      "position": {
+        "x": 45.2,
+        "y": 60.9
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.south-woods-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 42.2,
+        "y": 59.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.south-woods-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 47,
+        "y": 56.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.south-east-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 69,
+        "y": 57
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "park.south-east-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 69,
+        "y": 57
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.south-east-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 66.1,
+        "y": 57.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.south-east-tree-2",
+      "kind": "tree",
+      "position": {
+        "x": 70.7,
+        "y": 54.7
+      },
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "park.south-east-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 72.1,
+        "y": 58.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.south-east-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 67.7,
+        "y": 60.4
+      },
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.south-east-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 65.5,
+        "y": 55.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.south-east-fern-1",
+      "kind": "fern",
+      "position": {
+        "x": 71.2,
+        "y": 60.9
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.south-east-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 68.2,
+        "y": 59.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.south-east-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 73,
+        "y": 56.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.ridge-edge-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 79,
+        "y": 19
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 3
+    },
+    {
+      "id": "park.ridge-edge-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 79,
+        "y": 19
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "park.ridge-edge-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 76.1,
+        "y": 19.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.ridge-edge-tree-2",
+      "kind": "tree",
+      "position": {
+        "x": 80.7,
+        "y": 16.7
+      },
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.ridge-edge-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 82.1,
+        "y": 20.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.ridge-edge-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 77.7,
+        "y": 22.4
+      },
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "park.ridge-edge-fern-1",
+      "kind": "fern",
+      "position": {
+        "x": 81.2,
+        "y": 22.9
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.ridge-edge-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 78.2,
+        "y": 21.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "park.ridge-edge-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 83,
+        "y": 18.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.pavilion-oak-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 47,
+        "y": 22
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "park.pavilion-oak-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 47,
+        "y": 22
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.pavilion-oak-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 44.1,
+        "y": 22.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.pavilion-oak-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 43.5,
+        "y": 20.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.pavilion-oak-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 51,
+        "y": 21.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-reveal-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 61,
+        "y": 25
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "park.pond-reveal-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 61,
+        "y": 25
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.pond-reveal-tree-2",
+      "kind": "tree",
+      "position": {
+        "x": 62.7,
+        "y": 22.7
+      },
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "park.pond-reveal-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 57.5,
+        "y": 23.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.bamboo-clump-0-0",
       "kind": "bamboo",
       "position": {
-        "x": 24.3,
-        "y": 10.8
+        "x": 8,
+        "y": 7
       },
       "width": 2,
       "height": 2,
@@ -4877,107 +3830,23 @@
       "variant": 0
     },
     {
-      "id": "park.bamboo-0-24-12",
-      "kind": "bamboo",
-      "position": {
-        "x": 25.8,
-        "y": 12.6
-      },
-      "width": 2,
-      "height": 2,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.bamboo-1-7-7",
-      "kind": "bamboo",
-      "position": {
-        "x": 7.3,
-        "y": 8.2
-      },
-      "width": 2,
-      "height": 2,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.bamboo-1-10-7",
-      "kind": "bamboo",
-      "position": {
-        "x": 11.8,
-        "y": 7.0
-      },
-      "width": 2,
-      "height": 2,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.bamboo-1-7-10",
-      "kind": "bamboo",
-      "position": {
-        "x": 7.3,
-        "y": 11.8
-      },
-      "width": 2,
-      "height": 2,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.bamboo-1-10-10",
-      "kind": "bamboo",
-      "position": {
-        "x": 11.5,
-        "y": 11.5
-      },
-      "width": 2,
-      "height": 2,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.bamboo-1-4-13",
-      "kind": "bamboo",
-      "position": {
-        "x": 4.3,
-        "y": 14.8
-      },
-      "width": 2,
-      "height": 2,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.bamboo-1-4-16",
-      "kind": "bamboo",
-      "position": {
-        "x": 4.6,
-        "y": 16.9
-      },
-      "width": 2,
-      "height": 2,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.bamboo-1-7-16",
-      "kind": "bamboo",
-      "position": {
-        "x": 8.2,
-        "y": 16.9
-      },
-      "width": 2,
-      "height": 2,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.bamboo-1-7-19",
+      "id": "park.bamboo-clump-0-1",
       "kind": "bamboo",
       "position": {
         "x": 8.8,
-        "y": 20.5
+        "y": 7.3
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.bamboo-clump-0-2",
+      "kind": "bamboo",
+      "position": {
+        "x": 7.4,
+        "y": 7.8
       },
       "width": 2,
       "height": 2,
@@ -4985,167 +3854,143 @@
       "variant": 2
     },
     {
-      "id": "park.willow-0-38-32",
-      "kind": "willow",
+      "id": "park.bamboo-clump-0-3",
+      "kind": "bamboo",
       "position": {
-        "x": 38.3,
-        "y": 33.2
+        "x": 9.4,
+        "y": 8.1
       },
-      "width": 4,
-      "height": 4,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.willow-0-38-37",
-      "kind": "willow",
-      "position": {
-        "x": 38.0,
-        "y": 38.2
-      },
-      "width": 4,
-      "height": 4,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.willow-1-71-33",
-      "kind": "willow",
-      "position": {
-        "x": 71.0,
-        "y": 33.6
-      },
-      "width": 4,
-      "height": 4,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.willow-1-71-38",
-      "kind": "willow",
-      "position": {
-        "x": 72.8,
-        "y": 38.0
-      },
-      "width": 4,
-      "height": 4,
+      "width": 2,
+      "height": 2,
       "layer": "object",
       "variant": 3
     },
     {
-      "id": "park.rock-0-60-3",
-      "kind": "rock",
+      "id": "park.bamboo-clump-1-0",
+      "kind": "bamboo",
       "position": {
-        "x": 61.2,
-        "y": 4.5
+        "x": 12,
+        "y": 20
       },
-      "width": 2.3,
+      "width": 2,
       "height": 2,
       "layer": "object",
       "variant": 0
     },
     {
-      "id": "park.rock-0-64-3",
-      "kind": "rock",
+      "id": "park.bamboo-clump-1-1",
+      "kind": "bamboo",
       "position": {
-        "x": 65.8,
-        "y": 3.6
+        "x": 12.8,
+        "y": 20.3
       },
-      "width": 2.3,
+      "width": 2,
       "height": 2,
       "layer": "object",
       "variant": 1
     },
     {
-      "id": "park.rock-0-68-3",
-      "kind": "rock",
+      "id": "park.bamboo-clump-1-2",
+      "kind": "bamboo",
       "position": {
-        "x": 68.0,
-        "y": 3.9
+        "x": 11.4,
+        "y": 20.8
       },
-      "width": 2.3,
+      "width": 2,
       "height": 2,
       "layer": "object",
       "variant": 2
     },
     {
-      "id": "park.rock-0-72-3",
-      "kind": "rock",
+      "id": "park.bamboo-clump-1-3",
+      "kind": "bamboo",
       "position": {
-        "x": 72.0,
-        "y": 4.8
+        "x": 13.4,
+        "y": 21.1
       },
-      "width": 2.3,
+      "width": 2,
       "height": 2,
       "layer": "object",
       "variant": 3
     },
     {
-      "id": "park.rock-0-76-3",
-      "kind": "rock",
+      "id": "park.bamboo-clump-2-0",
+      "kind": "bamboo",
       "position": {
-        "x": 76.0,
-        "y": 4.5
+        "x": 27,
+        "y": 12
       },
-      "width": 2.3,
-      "height": 2,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.rock-0-80-3",
-      "kind": "rock",
-      "position": {
-        "x": 81.5,
-        "y": 4.8
-      },
-      "width": 2.3,
+      "width": 2,
       "height": 2,
       "layer": "object",
       "variant": 0
     },
     {
-      "id": "park.rock-1-80-18",
-      "kind": "rock",
+      "id": "park.bamboo-clump-2-1",
+      "kind": "bamboo",
       "position": {
-        "x": 81.5,
-        "y": 18.0
+        "x": 27.8,
+        "y": 12.3
       },
-      "width": 2.3,
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "park.bamboo-clump-2-2",
+      "kind": "bamboo",
+      "position": {
+        "x": 26.4,
+        "y": 12.8
+      },
+      "width": 2,
       "height": 2,
       "layer": "object",
       "variant": 2
     },
     {
-      "id": "park.rock-1-80-22",
-      "kind": "rock",
+      "id": "park.bamboo-clump-2-3",
+      "kind": "bamboo",
       "position": {
-        "x": 81.5,
-        "y": 22.0
+        "x": 28.4,
+        "y": 13.1
       },
-      "width": 2.3,
+      "width": 2,
       "height": 2,
       "layer": "object",
-      "variant": 2
+      "variant": 3
     },
     {
-      "id": "park.flowers-0-22-31",
-      "kind": "flowers",
+      "id": "park.bank-willow-0",
+      "kind": "willow",
       "position": {
-        "x": 22.0,
-        "y": 32.8
+        "x": 39,
+        "y": 28
       },
-      "width": 1,
-      "height": 1,
+      "width": 5.5,
+      "height": 5.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.bank-willow-2",
+      "kind": "willow",
+      "position": {
+        "x": 58,
+        "y": 23
+      },
+      "width": 5.5,
+      "height": 5.5,
       "layer": "object",
       "variant": 2
     },
     {
-      "id": "park.flowers-0-26-31",
+      "id": "park.flower-clump-1-0",
       "kind": "flowers",
       "position": {
-        "x": 26.0,
-        "y": 32.2
+        "x": 30,
+        "y": 11
       },
       "width": 1,
       "height": 1,
@@ -5153,11 +3998,11 @@
       "variant": 0
     },
     {
-      "id": "park.flowers-0-30-35",
+      "id": "park.flower-clump-1-1",
       "kind": "flowers",
       "position": {
         "x": 30.6,
-        "y": 35.6
+        "y": 11.3
       },
       "width": 1,
       "height": 1,
@@ -5165,83 +4010,11 @@
       "variant": 1
     },
     {
-      "id": "park.flowers-0-22-39",
+      "id": "park.flower-clump-1-2",
       "kind": "flowers",
       "position": {
-        "x": 23.5,
-        "y": 40.5
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.flowers-1-43-47",
-      "kind": "flowers",
-      "position": {
-        "x": 43.0,
-        "y": 47.9
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.flowers-1-47-47",
-      "kind": "flowers",
-      "position": {
-        "x": 47.3,
-        "y": 47.9
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.flowers-1-39-51",
-      "kind": "flowers",
-      "position": {
-        "x": 39.6,
-        "y": 51.9
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.flowers-1-43-51",
-      "kind": "flowers",
-      "position": {
-        "x": 44.5,
-        "y": 51.6
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.flowers-1-47-51",
-      "kind": "flowers",
-      "position": {
-        "x": 48.8,
-        "y": 52.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.flowers-1-51-51",
-      "kind": "flowers",
-      "position": {
-        "x": 51.0,
-        "y": 51.9
+        "x": 29.5,
+        "y": 11.8
       },
       "width": 1,
       "height": 1,
@@ -5249,2536 +4022,124 @@
       "variant": 2
     },
     {
-      "id": "park.flowers-1-63-51",
+      "id": "park.flower-clump-1-3",
       "kind": "flowers",
-      "position": {
-        "x": 64.5,
-        "y": 51.0
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.flowers-1-47-55",
-      "kind": "flowers",
-      "position": {
-        "x": 48.2,
-        "y": 56.5
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.flowers-1-51-55",
-      "kind": "flowers",
-      "position": {
-        "x": 52.5,
-        "y": 56.5
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.flowers-1-55-55",
-      "kind": "flowers",
-      "position": {
-        "x": 56.5,
-        "y": 55.3
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.flowers-1-63-55",
-      "kind": "flowers",
-      "position": {
-        "x": 63.9,
-        "y": 55.6
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.flowers-2-16-45",
-      "kind": "flowers",
-      "position": {
-        "x": 17.8,
-        "y": 45.6
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.flowers-2-20-45",
-      "kind": "flowers",
-      "position": {
-        "x": 21.2,
-        "y": 45.9
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.flowers-2-20-49",
-      "kind": "flowers",
-      "position": {
-        "x": 21.5,
-        "y": 49.6
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-0-3-3",
-      "kind": "tree",
-      "position": {
-        "x": 3.3,
-        "y": 3.9
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-11-3",
-      "kind": "tree",
-      "position": {
-        "x": 11.6,
-        "y": 3.6
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-0-23-3",
-      "kind": "tree",
-      "position": {
-        "x": 24.2,
-        "y": 3.3
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-0-35-3",
-      "kind": "tree",
-      "position": {
-        "x": 36.8,
-        "y": 4.5
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-39-3",
-      "kind": "tree",
-      "position": {
-        "x": 39.3,
-        "y": 4.8
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-43-3",
-      "kind": "tree",
-      "position": {
-        "x": 43.6,
-        "y": 3.6
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-0-51-3",
-      "kind": "tree",
-      "position": {
-        "x": 51.3,
-        "y": 3.9
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-55-3",
-      "kind": "tree",
-      "position": {
-        "x": 56.8,
-        "y": 3.0
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-63-3",
-      "kind": "tree",
-      "position": {
-        "x": 63.0,
-        "y": 4.5
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-0-79-3",
-      "kind": "tree",
-      "position": {
-        "x": 79.0,
-        "y": 4.8
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-43-7",
-      "kind": "tree",
-      "position": {
-        "x": 44.8,
-        "y": 8.8
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-0-47-7",
-      "kind": "tree",
-      "position": {
-        "x": 48.8,
-        "y": 7.0
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-3-11",
-      "kind": "tree",
-      "position": {
-        "x": 4.8,
-        "y": 12.5
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-27-11",
-      "kind": "tree",
-      "position": {
-        "x": 27.3,
-        "y": 12.8
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-35-11",
-      "kind": "tree",
-      "position": {
-        "x": 35.0,
-        "y": 12.8
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-43-11",
-      "kind": "tree",
-      "position": {
-        "x": 43.9,
-        "y": 11.9
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-0-47-11",
-      "kind": "tree",
-      "position": {
-        "x": 47.9,
-        "y": 12.8
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-11-15",
-      "kind": "tree",
-      "position": {
-        "x": 11.6,
-        "y": 16.8
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-3-23",
-      "kind": "tree",
-      "position": {
-        "x": 3.6,
-        "y": 24.5
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-7-23",
-      "kind": "tree",
-      "position": {
-        "x": 8.2,
-        "y": 24.8
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-11-23",
-      "kind": "tree",
-      "position": {
-        "x": 12.5,
-        "y": 23.9
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-23-23",
-      "kind": "tree",
-      "position": {
-        "x": 23.6,
-        "y": 24.5
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-27-23",
-      "kind": "tree",
-      "position": {
-        "x": 27.0,
-        "y": 23.0
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-39-23",
-      "kind": "tree",
-      "position": {
-        "x": 39.6,
-        "y": 23.3
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-59-23",
-      "kind": "tree",
-      "position": {
-        "x": 59.3,
-        "y": 24.5
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-23-27",
-      "kind": "tree",
-      "position": {
-        "x": 23.9,
-        "y": 27.3
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-27-27",
-      "kind": "tree",
-      "position": {
-        "x": 27.3,
-        "y": 28.5
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-0-67-27",
-      "kind": "tree",
-      "position": {
-        "x": 68.5,
-        "y": 28.2
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-3-31",
-      "kind": "tree",
-      "position": {
-        "x": 3.6,
-        "y": 32.2
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-23-31",
-      "kind": "tree",
-      "position": {
-        "x": 23.9,
-        "y": 31.9
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-27-31",
-      "kind": "tree",
-      "position": {
-        "x": 27.3,
-        "y": 31.6
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-0-3-35",
-      "kind": "tree",
-      "position": {
-        "x": 3.3,
-        "y": 35.6
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-7-35",
-      "kind": "tree",
-      "position": {
-        "x": 7.9,
-        "y": 35.6
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-11-35",
-      "kind": "tree",
-      "position": {
-        "x": 12.2,
-        "y": 36.5
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-79-35",
-      "kind": "tree",
-      "position": {
-        "x": 79.3,
-        "y": 36.2
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-39-39",
-      "kind": "tree",
-      "position": {
-        "x": 40.2,
-        "y": 40.2
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-0-59-39",
-      "kind": "tree",
-      "position": {
-        "x": 60.8,
-        "y": 40.8
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-0-75-39",
-      "kind": "tree",
-      "position": {
-        "x": 75.0,
-        "y": 40.8
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-79-39",
-      "kind": "tree",
-      "position": {
-        "x": 79.6,
-        "y": 40.2
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-11-43",
-      "kind": "tree",
-      "position": {
-        "x": 11.0,
-        "y": 44.8
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-71-43",
-      "kind": "tree",
-      "position": {
-        "x": 72.5,
-        "y": 44.5
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-0-75-43",
-      "kind": "tree",
-      "position": {
-        "x": 75.3,
-        "y": 43.9
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-79-43",
-      "kind": "tree",
-      "position": {
-        "x": 79.9,
-        "y": 43.9
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-0-19-47",
-      "kind": "tree",
-      "position": {
-        "x": 20.8,
-        "y": 47.9
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-31-47",
-      "kind": "tree",
       "position": {
         "x": 31.3,
-        "y": 47.9
+        "y": 11.5
       },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-35-47",
-      "kind": "tree",
-      "position": {
-        "x": 36.5,
-        "y": 47.3
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-51-47",
-      "kind": "tree",
-      "position": {
-        "x": 52.8,
-        "y": 47.9
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-63-47",
-      "kind": "tree",
-      "position": {
-        "x": 63.9,
-        "y": 47.6
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-75-47",
-      "kind": "tree",
-      "position": {
-        "x": 75.0,
-        "y": 48.8
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-11-51",
-      "kind": "tree",
-      "position": {
-        "x": 11.6,
-        "y": 51.6
-      },
-      "width": 3.6,
-      "height": 3.6,
+      "width": 1,
+      "height": 1,
       "layer": "object",
       "variant": 0
     },
     {
-      "id": "park.tree-0-31-51",
-      "kind": "tree",
+      "id": "park.flower-clump-1-4",
+      "kind": "flowers",
       "position": {
-        "x": 32.8,
-        "y": 51.9
+        "x": 29,
+        "y": 10.6
       },
-      "width": 3.6,
-      "height": 3.6,
+      "width": 1,
+      "height": 1,
       "layer": "object",
-      "variant": 3
+      "variant": 1
     },
     {
-      "id": "park.tree-0-35-51",
-      "kind": "tree",
+      "id": "park.flower-clump-1-5",
+      "kind": "flowers",
       "position": {
-        "x": 35.9,
-        "y": 52.2
+        "x": 30.1,
+        "y": 12.5
       },
-      "width": 3.6,
-      "height": 3.6,
+      "width": 1,
+      "height": 1,
       "layer": "object",
-      "variant": 3
+      "variant": 2
     },
     {
-      "id": "park.tree-0-55-51",
-      "kind": "tree",
+      "id": "park.flower-clump-2-0",
+      "kind": "flowers",
       "position": {
-        "x": 56.2,
-        "y": 51.3
+        "x": 56,
+        "y": 15
       },
-      "width": 3.6,
-      "height": 3.6,
+      "width": 1,
+      "height": 1,
       "layer": "object",
       "variant": 0
     },
     {
-      "id": "park.tree-0-59-51",
-      "kind": "tree",
+      "id": "park.flower-clump-2-1",
+      "kind": "flowers",
       "position": {
-        "x": 59.9,
-        "y": 52.5
+        "x": 56.6,
+        "y": 15.3
       },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-63-51",
-      "kind": "tree",
-      "position": {
-        "x": 63.6,
-        "y": 52.5
-      },
-      "width": 3.6,
-      "height": 3.6,
+      "width": 1,
+      "height": 1,
       "layer": "object",
       "variant": 1
     },
     {
-      "id": "park.tree-0-79-51",
-      "kind": "tree",
+      "id": "park.flower-clump-2-3",
+      "kind": "flowers",
       "position": {
-        "x": 79.6,
-        "y": 52.5
+        "x": 57.3,
+        "y": 15.5
       },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-3-55",
-      "kind": "tree",
-      "position": {
-        "x": 3.0,
-        "y": 55.9
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-27-55",
-      "kind": "tree",
-      "position": {
-        "x": 28.5,
-        "y": 55.9
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-31-55",
-      "kind": "tree",
-      "position": {
-        "x": 31.9,
-        "y": 55.9
-      },
-      "width": 3.6,
-      "height": 3.6,
+      "width": 1,
+      "height": 1,
       "layer": "object",
       "variant": 0
     },
     {
-      "id": "park.tree-0-39-55",
-      "kind": "tree",
+      "id": "park.flower-clump-3-3",
+      "kind": "flowers",
       "position": {
-        "x": 39.9,
-        "y": 56.2
+        "x": 67.3,
+        "y": 24.5
       },
-      "width": 3.6,
-      "height": 3.6,
+      "width": 1,
+      "height": 1,
       "layer": "object",
       "variant": 0
     },
     {
-      "id": "park.tree-0-43-55",
-      "kind": "tree",
+      "id": "park.flower-clump-4-5",
+      "kind": "flowers",
       "position": {
-        "x": 44.8,
-        "y": 56.5
+        "x": 52.1,
+        "y": 46.5
       },
-      "width": 3.6,
-      "height": 3.6,
+      "width": 1,
+      "height": 1,
       "layer": "object",
-      "variant": 1
+      "variant": 2
     },
     {
-      "id": "park.tree-0-55-55",
-      "kind": "tree",
+      "id": "park.flower-clump-5-0",
+      "kind": "flowers",
       "position": {
-        "x": 55.6,
-        "y": 56.8
+        "x": 12,
+        "y": 54
       },
-      "width": 3.6,
-      "height": 3.6,
+      "width": 1,
+      "height": 1,
       "layer": "object",
       "variant": 0
     },
     {
-      "id": "park.tree-0-59-55",
-      "kind": "tree",
-      "position": {
-        "x": 59.3,
-        "y": 56.5
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-67-55",
-      "kind": "tree",
-      "position": {
-        "x": 68.5,
-        "y": 56.2
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-71-55",
-      "kind": "tree",
-      "position": {
-        "x": 71.6,
-        "y": 56.5
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-15-59",
-      "kind": "tree",
-      "position": {
-        "x": 15.6,
-        "y": 60.5
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-19-59",
-      "kind": "tree",
-      "position": {
-        "x": 19.6,
-        "y": 60.5
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-23-59",
-      "kind": "tree",
-      "position": {
-        "x": 23.6,
-        "y": 59.3
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-31-59",
-      "kind": "tree",
-      "position": {
-        "x": 32.8,
-        "y": 59.3
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-35-59",
-      "kind": "tree",
-      "position": {
-        "x": 35.9,
-        "y": 60.8
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-39-59",
-      "kind": "tree",
-      "position": {
-        "x": 39.0,
-        "y": 59.0
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-43-59",
-      "kind": "tree",
-      "position": {
-        "x": 43.9,
-        "y": 59.9
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-0-47-59",
-      "kind": "tree",
-      "position": {
-        "x": 48.5,
-        "y": 59.6
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-51-59",
-      "kind": "tree",
-      "position": {
-        "x": 52.8,
-        "y": 60.2
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-71-59",
-      "kind": "tree",
-      "position": {
-        "x": 71.0,
-        "y": 59.9
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-79-59",
-      "kind": "tree",
-      "position": {
-        "x": 80.8,
-        "y": 59.6
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-0-11-63",
-      "kind": "tree",
-      "position": {
-        "x": 11.9,
-        "y": 63.6
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-19-63",
-      "kind": "tree",
-      "position": {
-        "x": 20.5,
-        "y": 63.9
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-31-63",
-      "kind": "tree",
-      "position": {
-        "x": 31.6,
-        "y": 64.8
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-0-39-63",
-      "kind": "tree",
-      "position": {
-        "x": 39.9,
-        "y": 63.3
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "park.tree-0-43-63",
-      "kind": "tree",
-      "position": {
-        "x": 44.8,
-        "y": 64.8
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "park.tree-0-47-63",
-      "kind": "tree",
-      "position": {
-        "x": 47.3,
-        "y": 63.3
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.tree-0-67-63",
-      "kind": "tree",
-      "position": {
-        "x": 67.0,
-        "y": 63.6
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.tree-0-79-63",
-      "kind": "tree",
-      "position": {
-        "x": 79.9,
-        "y": 63.9
-      },
-      "width": 3.6,
-      "height": 3.6,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "park.edge-park.town-walk-0-2",
-      "kind": "shrub",
-      "position": {
-        "x": 4.7,
-        "y": 56.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-0-5",
-      "kind": "flowers",
-      "position": {
-        "x": 4.7,
-        "y": 59.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-0-8",
-      "kind": "shrub",
-      "position": {
-        "x": 4.7,
-        "y": 62.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-0-11",
-      "kind": "flowers",
-      "position": {
-        "x": 4.7,
-        "y": 65.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-1-2",
-      "kind": "shrub",
-      "position": {
-        "x": 7.2,
-        "y": 53.7
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-1-5",
-      "kind": "flowers",
-      "position": {
-        "x": 10.2,
-        "y": 53.7
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-1-8",
-      "kind": "shrub",
-      "position": {
-        "x": 13.2,
-        "y": 53.7
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-1-11",
-      "kind": "flowers",
-      "position": {
-        "x": 16.2,
-        "y": 53.7
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-1-14",
-      "kind": "shrub",
-      "position": {
-        "x": 19.2,
-        "y": 53.7
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-1-17",
-      "kind": "flowers",
-      "position": {
-        "x": 22.2,
-        "y": 53.7
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-2-2",
-      "kind": "shrub",
-      "position": {
-        "x": 22.7,
-        "y": 44.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-2-5",
-      "kind": "flowers",
-      "position": {
-        "x": 22.7,
-        "y": 47.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-2-8",
-      "kind": "shrub",
-      "position": {
-        "x": 22.7,
-        "y": 50.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-2-11",
-      "kind": "flowers",
-      "position": {
-        "x": 22.7,
-        "y": 53.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-3-2",
-      "kind": "shrub",
-      "position": {
-        "x": 25.2,
-        "y": 41.7
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-3-5",
-      "kind": "flowers",
-      "position": {
-        "x": 28.2,
-        "y": 41.7
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-3-8",
-      "kind": "shrub",
-      "position": {
-        "x": 31.2,
-        "y": 41.7
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-4-2",
-      "kind": "shrub",
-      "position": {
-        "x": 31.700000000000003,
-        "y": 18.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-4-5",
-      "kind": "flowers",
-      "position": {
-        "x": 31.700000000000003,
-        "y": 21.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-4-8",
-      "kind": "shrub",
-      "position": {
-        "x": 31.700000000000003,
-        "y": 24.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-4-11",
-      "kind": "flowers",
-      "position": {
-        "x": 31.700000000000003,
-        "y": 27.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-4-14",
-      "kind": "shrub",
-      "position": {
-        "x": 31.700000000000003,
-        "y": 30.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-4-17",
-      "kind": "flowers",
-      "position": {
-        "x": 31.700000000000003,
-        "y": 33.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-4-20",
-      "kind": "shrub",
-      "position": {
-        "x": 31.700000000000003,
-        "y": 36.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-4-23",
-      "kind": "flowers",
-      "position": {
-        "x": 31.700000000000003,
-        "y": 39.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-4-26",
-      "kind": "shrub",
-      "position": {
-        "x": 31.700000000000003,
-        "y": 42.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-5-2",
-      "kind": "shrub",
-      "position": {
-        "x": 34.2,
-        "y": 15.7
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-5-5",
-      "kind": "flowers",
-      "position": {
-        "x": 37.2,
-        "y": 15.7
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-5-8",
-      "kind": "shrub",
-      "position": {
-        "x": 40.2,
-        "y": 15.7
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-5-11",
-      "kind": "flowers",
-      "position": {
-        "x": 43.2,
-        "y": 15.7
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-5-14",
-      "kind": "shrub",
-      "position": {
-        "x": 46.2,
-        "y": 15.7
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-5-17",
-      "kind": "flowers",
-      "position": {
-        "x": 49.2,
-        "y": 15.7
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-5-20",
-      "kind": "shrub",
-      "position": {
-        "x": 52.2,
-        "y": 15.7
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-6-2",
-      "kind": "shrub",
-      "position": {
-        "x": 51.7,
-        "y": 10.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-6-5",
-      "kind": "flowers",
-      "position": {
-        "x": 51.7,
-        "y": 13.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-6-8",
-      "kind": "shrub",
-      "position": {
-        "x": 51.7,
-        "y": 16.2
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-7-2",
-      "kind": "shrub",
-      "position": {
-        "x": 54.2,
-        "y": 7.699999999999999
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-7-5",
-      "kind": "flowers",
-      "position": {
-        "x": 57.2,
-        "y": 7.699999999999999
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-7-8",
-      "kind": "shrub",
-      "position": {
-        "x": 60.2,
-        "y": 7.699999999999999
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-7-11",
-      "kind": "flowers",
-      "position": {
-        "x": 63.2,
-        "y": 7.699999999999999
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-7-14",
-      "kind": "shrub",
-      "position": {
-        "x": 66.2,
-        "y": 7.699999999999999
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-7-17",
-      "kind": "flowers",
-      "position": {
-        "x": 69.2,
-        "y": 7.699999999999999
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-7-20",
-      "kind": "shrub",
-      "position": {
-        "x": 72.2,
-        "y": 7.699999999999999
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-7-23",
-      "kind": "flowers",
-      "position": {
-        "x": 75.2,
-        "y": 7.699999999999999
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-7-26",
-      "kind": "shrub",
-      "position": {
-        "x": 78.2,
-        "y": 7.699999999999999
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.town-walk-7-29",
-      "kind": "flowers",
-      "position": {
-        "x": 81.2,
-        "y": 7.699999999999999
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.courtyard-walk-0-2",
-      "kind": "shrub",
-      "position": {
-        "x": 2,
-        "y": 26.8
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.courtyard-walk-0-5",
-      "kind": "flowers",
-      "position": {
-        "x": 5,
-        "y": 26.8
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.courtyard-walk-0-8",
-      "kind": "shrub",
-      "position": {
-        "x": 8,
-        "y": 26.8
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.courtyard-walk-0-11",
+      "id": "park.flower-clump-5-4",
       "kind": "flowers",
       "position": {
         "x": 11,
-        "y": 26.8
+        "y": 53.6
       },
       "width": 1,
       "height": 1,
       "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.courtyard-walk-0-14",
-      "kind": "shrub",
-      "position": {
-        "x": 14,
-        "y": 26.8
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.courtyard-walk-0-17",
-      "kind": "flowers",
-      "position": {
-        "x": 17,
-        "y": 26.8
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.courtyard-walk-1-2",
-      "kind": "shrub",
-      "position": {
-        "x": 15.8,
-        "y": 18.3
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.courtyard-walk-1-5",
-      "kind": "flowers",
-      "position": {
-        "x": 15.8,
-        "y": 21.3
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.courtyard-walk-1-8",
-      "kind": "shrub",
-      "position": {
-        "x": 15.8,
-        "y": 24.3
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.courtyard-walk-1-11",
-      "kind": "flowers",
-      "position": {
-        "x": 15.8,
-        "y": 27.3
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.courtyard-walk-2-2",
-      "kind": "shrub",
-      "position": {
-        "x": 18.3,
-        "y": 15.8
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.courtyard-walk-2-5",
-      "kind": "flowers",
-      "position": {
-        "x": 21.3,
-        "y": 15.8
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.courtyard-walk-2-8",
-      "kind": "shrub",
-      "position": {
-        "x": 24.3,
-        "y": 15.8
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.courtyard-walk-2-11",
-      "kind": "flowers",
-      "position": {
-        "x": 27.3,
-        "y": 15.8
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.courtyard-walk-2-14",
-      "kind": "shrub",
-      "position": {
-        "x": 30.3,
-        "y": 15.8
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.courtyard-walk-2-17",
-      "kind": "flowers",
-      "position": {
-        "x": 33.3,
-        "y": 15.8
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-0-2",
-      "kind": "shrub",
-      "position": {
-        "x": 34.25,
-        "y": 41.75
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-0-5",
-      "kind": "flowers",
-      "position": {
-        "x": 37.25,
-        "y": 41.75
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-0-8",
-      "kind": "shrub",
-      "position": {
-        "x": 40.25,
-        "y": 41.75
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-0-11",
-      "kind": "flowers",
-      "position": {
-        "x": 43.25,
-        "y": 41.75
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-0-14",
-      "kind": "shrub",
-      "position": {
-        "x": 46.25,
-        "y": 41.75
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-0-17",
-      "kind": "flowers",
-      "position": {
-        "x": 49.25,
-        "y": 41.75
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-0-20",
-      "kind": "shrub",
-      "position": {
-        "x": 52.25,
-        "y": 41.75
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-0-23",
-      "kind": "flowers",
-      "position": {
-        "x": 55.25,
-        "y": 41.75
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-0-26",
-      "kind": "shrub",
-      "position": {
-        "x": 58.25,
-        "y": 41.75
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-0-29",
-      "kind": "flowers",
-      "position": {
-        "x": 61.25,
-        "y": 41.75
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-0-32",
-      "kind": "shrub",
-      "position": {
-        "x": 64.25,
-        "y": 41.75
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-1-2",
-      "kind": "shrub",
-      "position": {
-        "x": 62.75,
-        "y": 18.25
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-1-5",
-      "kind": "flowers",
-      "position": {
-        "x": 62.75,
-        "y": 21.25
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-1-8",
-      "kind": "shrub",
-      "position": {
-        "x": 62.75,
-        "y": 24.25
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-1-11",
-      "kind": "flowers",
-      "position": {
-        "x": 62.75,
-        "y": 27.25
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-1-23",
-      "kind": "flowers",
-      "position": {
-        "x": 62.75,
-        "y": 39.25
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-1-26",
-      "kind": "shrub",
-      "position": {
-        "x": 62.75,
-        "y": 42.25
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-2-2",
-      "kind": "shrub",
-      "position": {
-        "x": 54.25,
-        "y": 15.75
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-2-5",
-      "kind": "flowers",
-      "position": {
-        "x": 57.25,
-        "y": 15.75
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-2-8",
-      "kind": "shrub",
-      "position": {
-        "x": 60.25,
-        "y": 15.75
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.pond-loop-2-11",
-      "kind": "flowers",
-      "position": {
-        "x": 63.25,
-        "y": 15.75
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.orchard-loop-0-2",
-      "kind": "shrub",
-      "position": {
-        "x": 5.0,
-        "y": 41.5
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.orchard-loop-0-5",
-      "kind": "flowers",
-      "position": {
-        "x": 5.0,
-        "y": 44.5
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.orchard-loop-0-8",
-      "kind": "shrub",
-      "position": {
-        "x": 5.0,
-        "y": 47.5
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.orchard-loop-0-11",
-      "kind": "flowers",
-      "position": {
-        "x": 5.0,
-        "y": 50.5
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.orchard-loop-0-14",
-      "kind": "shrub",
-      "position": {
-        "x": 5.0,
-        "y": 53.5
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.orchard-loop-1-2",
-      "kind": "shrub",
-      "position": {
-        "x": 7.5,
-        "y": 39.0
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.orchard-loop-1-5",
-      "kind": "flowers",
-      "position": {
-        "x": 10.5,
-        "y": 39.0
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.orchard-loop-1-8",
-      "kind": "shrub",
-      "position": {
-        "x": 13.5,
-        "y": 39.0
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.orchard-loop-1-11",
-      "kind": "flowers",
-      "position": {
-        "x": 16.5,
-        "y": 39.0
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.orchard-loop-2-2",
-      "kind": "shrub",
-      "position": {
-        "x": 16.0,
-        "y": 29.5
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.orchard-loop-2-5",
-      "kind": "flowers",
-      "position": {
-        "x": 16.0,
-        "y": 32.5
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.orchard-loop-2-8",
-      "kind": "shrub",
-      "position": {
-        "x": 16.0,
-        "y": 35.5
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.orchard-loop-2-11",
-      "kind": "flowers",
-      "position": {
-        "x": 16.0,
-        "y": 38.5
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.bamboo-walk-0-2",
-      "kind": "shrub",
-      "position": {
-        "x": 16.1,
-        "y": 8.6
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.bamboo-walk-0-5",
-      "kind": "flowers",
-      "position": {
-        "x": 16.1,
-        "y": 11.6
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.bamboo-walk-0-8",
-      "kind": "shrub",
-      "position": {
-        "x": 16.1,
-        "y": 14.6
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.bamboo-walk-1-2",
-      "kind": "shrub",
-      "position": {
-        "x": 18.6,
-        "y": 6.1
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.bamboo-walk-1-5",
-      "kind": "flowers",
-      "position": {
-        "x": 21.6,
-        "y": 6.1
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.bamboo-walk-1-8",
-      "kind": "shrub",
-      "position": {
-        "x": 24.6,
-        "y": 6.1
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.bamboo-walk-1-11",
-      "kind": "flowers",
-      "position": {
-        "x": 27.6,
-        "y": 6.1
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.bamboo-walk-1-14",
-      "kind": "shrub",
-      "position": {
-        "x": 30.6,
-        "y": 6.1
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.bamboo-walk-1-17",
-      "kind": "flowers",
-      "position": {
-        "x": 33.6,
-        "y": 6.1
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.bamboo-walk-1-20",
-      "kind": "shrub",
-      "position": {
-        "x": 36.6,
-        "y": 6.1
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.bamboo-walk-2-2",
-      "kind": "shrub",
-      "position": {
-        "x": 38.1,
-        "y": 8.6
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.bamboo-walk-2-5",
-      "kind": "flowers",
-      "position": {
-        "x": 38.1,
-        "y": 11.6
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.bamboo-walk-2-8",
-      "kind": "shrub",
-      "position": {
-        "x": 38.1,
-        "y": 14.6
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.ridge-climb-0-2",
-      "kind": "shrub",
-      "position": {
-        "x": 65.5,
-        "y": 16.0
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.ridge-climb-0-5",
-      "kind": "flowers",
-      "position": {
-        "x": 68.5,
-        "y": 16.0
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.ridge-climb-0-8",
-      "kind": "shrub",
-      "position": {
-        "x": 71.5,
-        "y": 16.0
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.ridge-climb-1-2",
-      "kind": "shrub",
-      "position": {
-        "x": 72.0,
-        "y": 18.5
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.ridge-climb-1-5",
-      "kind": "flowers",
-      "position": {
-        "x": 72.0,
-        "y": 21.5
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.ridge-climb-1-8",
-      "kind": "shrub",
-      "position": {
-        "x": 72.0,
-        "y": 24.5
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.ridge-climb-1-11",
-      "kind": "flowers",
-      "position": {
-        "x": 72.0,
-        "y": 27.5
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.ridge-climb-2-2",
-      "kind": "shrub",
-      "position": {
-        "x": 74.5,
-        "y": 27.0
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.ridge-climb-2-5",
-      "kind": "flowers",
-      "position": {
-        "x": 77.5,
-        "y": 27.0
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "park.edge-park.reading-nook-0-2",
-      "kind": "shrub",
-      "position": {
-        "x": 31.75,
-        "y": 26.25
-      },
-      "width": 1,
-      "height": 1,
-      "layer": "object",
-      "variant": 2
+      "variant": 1
     }
   ],
   "palette": {
@@ -7845,30 +4206,40 @@
   },
   "npcHooks": [
     {
-      "id": "park.reading-walk",
+      "id": "park.resident-reader",
       "position": {
-        "x": 54,
-        "y": 18
+        "x": 29,
+        "y": 26.9
       },
       "route": [
         {
+          "x": 29,
+          "y": 26.9
+        },
+        {
           "x": 54,
-          "y": 18
-        },
-        {
-          "x": 65,
-          "y": 18
-        },
-        {
-          "x": 65,
-          "y": 24
-        },
-        {
-          "x": 65,
-          "y": 18
+          "y": 18.5
         }
       ],
-      "characterId": "zhang-laoshi"
+      "characterId": "resident-reader"
+    },
+    {
+      "id": "park.resident-groundskeeper",
+      "position": {
+        "x": 16,
+        "y": 52
+      },
+      "route": [
+        {
+          "x": 16,
+          "y": 52
+        },
+        {
+          "x": 23,
+          "y": 56.4
+        }
+      ],
+      "characterId": "resident-groundskeeper"
     }
   ],
   "landmarks": [
