@@ -1,0 +1,194 @@
+[
+  {
+    "name": "desktop",
+    "dpr": 1,
+    "initial": {
+      "version": 1,
+      "mapId": "restaurant",
+      "position": {
+        "x": 12,
+        "y": 17
+      },
+      "facing": "north",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "right": {
+      "version": 1,
+      "mapId": "restaurant",
+      "position": {
+        "x": 15.358403657245507,
+        "y": 13.641596342754484
+      },
+      "facing": "north",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "finish": {
+      "version": 1,
+      "mapId": "restaurant",
+      "position": {
+        "x": 12.117733279067558,
+        "y": 10.518305690253504
+      },
+      "facing": "north",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "canvas": {
+      "width": 640,
+      "height": 408,
+      "cssWidth": 1280,
+      "cssHeight": 816,
+      "dpr": 1
+    },
+    "errors": [],
+    "source": "foundation 1450bf6 plus character 8ff0220"
+  },
+  {
+    "name": "phone-dpr1",
+    "dpr": 1,
+    "initial": {
+      "version": 1,
+      "mapId": "restaurant",
+      "position": {
+        "x": 12,
+        "y": 17
+      },
+      "facing": "north",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "right": {
+      "version": 1,
+      "mapId": "restaurant",
+      "position": {
+        "x": 15.299713794407017,
+        "y": 13.70028620559297
+      },
+      "facing": "north",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "finish": {
+      "version": 1,
+      "mapId": "restaurant",
+      "position": {
+        "x": 12.117733279067554,
+        "y": 10.518305690253507
+      },
+      "facing": "north",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "canvas": {
+      "width": 195,
+      "height": 386,
+      "cssWidth": 390,
+      "cssHeight": 772,
+      "dpr": 1
+    },
+    "errors": [],
+    "source": "foundation 1450bf6 plus character 8ff0220"
+  },
+  {
+    "name": "phone-dpr2",
+    "dpr": 2,
+    "initial": {
+      "version": 1,
+      "mapId": "restaurant",
+      "position": {
+        "x": 12,
+        "y": 17
+      },
+      "facing": "north",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "right": {
+      "version": 1,
+      "mapId": "restaurant",
+      "position": {
+        "x": 15.358757210636101,
+        "y": 13.641242789363886
+      },
+      "facing": "north",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "finish": {
+      "version": 1,
+      "mapId": "restaurant",
+      "position": {
+        "x": 12.177483802077822,
+        "y": 10.459969380805607
+      },
+      "facing": "north",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "canvas": {
+      "width": 195,
+      "height": 386,
+      "cssWidth": 390,
+      "cssHeight": 772,
+      "dpr": 2
+    },
+    "errors": [],
+    "source": "foundation 1450bf6 plus character 8ff0220"
+  }
+]
