@@ -4,22 +4,27 @@ Coordinator decision for foundation 0078 and owners 0079–0087. This refines th
 
 ## Per-object drawing
 
-Add an optional named export `collectObjects(map, view): readonly WorldRenderObject[]` beside the existing `drawMap`. Each object has a stable `id`, ground `sortPoint`, optional screen-space `occlusionBounds`, and `draw(ctx, view)` callback. The callback draws only that object, has no loop/listener/state mutation, and uses the same logical pixels as `view.project`.
+Use the implemented optional named export `renderObjects(map, view): WorldRenderObject[]` at foundation head `e6270d0`. This supersedes the earlier unimplemented name `renderObjects`. Export it beside the existing `drawMap`. Each object has a stable `id`, world ground `position`, optional explicit numeric `depth`, optional world-space `occlusion`, and `draw(ctx, view)` callback. The callback draws only that object, has no loop/listener/state mutation, and uses the same logical pixels as `view.project`.
 
 ```ts
 type WorldRenderObject = {
   id: string;
-  sortPoint: { x: number; y: number };
-  occlusionBounds?: { x: number; y: number; width: number; height: number };
+  position: { x: number; y: number };
+  depth?: number;
+  occlusion?: {
+    rect: { x: number; y: number; width: number; height: number };
+    height: number;
+    fadeWhenPlayerBehind: boolean;
+  };
   draw(ctx: CanvasRenderingContext2D, view: WorldRenderView): void;
 };
 ```
 
-Foundation draws ground once, collects map objects plus player and NPC draw objects into ONE array, sorts ascending by `sortPoint.x + sortPoint.y` and stable `id`, then draws that array. Actor sortPoint is the ground contact point. Props use their actual ground support point. Each tall wall, tree, building facade or furniture item is separate. Long/wrapping buildings must split into facade/corner/roof sections when a single sort point cannot represent walking around them. Roofs and tree canopies that can hide actors belong in this array, not an unconditional final foreground pass. Foreground after this array is reserved for intentional screen effects such as rain and non-occluding dust.
+Foundation draws ground once, collects map objects plus player and NPC draw objects into ONE array, sorts ascending by `depth ?? position.x + position.y` and stable `id`, then draws that array. Actor position is the ground contact point. Props use their actual ground support point, with optional depth for authored ordering. Use the matching map prop ID to replace its generic fallback. Each tall wall, tree, building facade or furniture item is separate. Long/wrapping buildings must split into facade/corner/roof sections when a single sort point cannot represent walking around them. Roofs and tree canopies that can hide actors belong in this array, not an unconditional final foreground pass. Foreground after this array is reserved for intentional screen effects such as rain and non-occluding dust.
 
-A map with `collectObjects` must not also draw its object/occluding-foreground layers from `drawMap`; foundation calls its `drawMap` for ground only. For a module without `collectObjects`, foundation retains the old three-pass call as a temporary compatibility fallback. Do not call an old whole-map objects function once per prop. Final acceptance requires `collectObjects` for every populated map, or independently demonstrated equivalent depth-correct rendering. The fallback is not an accepted completion path.
+A map with `renderObjects` must not also draw its object/occluding-foreground layers from `drawMap`; foundation calls its `drawMap` for ground only. For a module without `renderObjects`, foundation retains the old three-pass call as a temporary compatibility fallback. Do not call an old whole-map objects function once per prop. Final acceptance requires `renderObjects` for every populated map, or independently demonstrated equivalent depth-correct rendering. The fallback is not an accepted completion path. The implementation at e6270d0 still invokes objects/foreground for all modules; owners with renderObjects must keep those old layers empty for the same geometry, and foundation must prevent duplicate tall-object rendering.
 
-For a fading authored occluder, the owner derives `occlusionBounds` from the projected extents of that individual object's visible geometry, including height. Foundation applies alpha 0.45 only when that object is sorted after the player and its bounds intersect the player's rendered body bounds. Alpha is restored around each item with save/restore. Objects without fading metadata remain opaque. Collision never changes when art fades. Owners split overly broad bounds that would fade an entire street.
+For a fading authored occluder, the owner supplies the world-space `occlusion.rect` and `height` for that individual object. Foundation projects all footprint corners at ground and height to derive screen bounds. Foundation applies alpha 0.45 only when that object is sorted after the player and its bounds intersect the player's rendered body bounds. Alpha is restored around each item with save/restore. Objects without fading metadata remain opaque. Collision never changes when art fades. Owners split overly broad bounds that would fade an entire street.
 
 Required proof uses the real renderer: walk in front of, behind and beside a building, tree and furniture item; show an NPC crossing the same geometry; inspect phone and desktop plus reduced motion. A sorting-unit test alone does not prove occlusion.
 
@@ -73,3 +78,7 @@ Before collision, interaction or rendering, foundation derives the current map f
 World-life's nested state is validated by its exported validator at foundation's save boundary. Foundation supplies footprint-aware `canStand`, swept `canWalk`, and path callbacks with explicit temporary entrance exclusions; life owns neither shared geometry nor restaurant day advancement.
 
 After dynamic changes, retain the current valid exit-connected position where possible. Otherwise recover deterministically to the nearest safe point in the exit-connected component. Re-run this after furniture/shade changes, undo and reload. No duplicate feature state is persisted in world visuals.
+
+## Exact-head implementation findings
+
+At e6270d0 the compositor uses only player/object x+y order to fade, ignoring the supplied occlusion rectangle and height. Foundation must use the projected overlap condition above; otherwise unrelated buildings fade merely because they are deeper in the map. The sort currently lacks the stable-ID tie break, and the actor list currently contains only the player. Add NPC objects to this same list when integrating life. These are concrete gaps in the current implementation, not a competing adapter.
