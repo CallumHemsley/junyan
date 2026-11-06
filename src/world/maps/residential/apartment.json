@@ -144,6 +144,51 @@
         "width": 0.5,
         "height": 2
       }
+    },
+    {
+      "id": "apartment.sofa",
+      "rect": {
+        "x": 17,
+        "y": 5,
+        "width": 2,
+        "height": 4
+      }
+    },
+    {
+      "id": "apartment.reading-lamp",
+      "rect": {
+        "x": 17.5,
+        "y": 10,
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "id": "apartment.tea-plant",
+      "rect": {
+        "x": 13,
+        "y": 20,
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "id": "apartment.entry-bag",
+      "rect": {
+        "x": 25,
+        "y": 16,
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "id": "apartment.memory-shelf",
+      "rect": {
+        "x": 2,
+        "y": 18,
+        "width": 1,
+        "height": 3
+      }
     }
   ],
   "occluders": [
@@ -475,6 +520,126 @@
       "width": 7,
       "height": 9,
       "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "apartment.rear-plaster",
+      "kind": "wall",
+      "position": {
+        "x": 2,
+        "y": 1.6
+      },
+      "width": 26,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.west-plaster",
+      "kind": "wall",
+      "position": {
+        "x": 1.6,
+        "y": 2
+      },
+      "width": 0.4,
+      "height": 22,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.sofa",
+      "kind": "sofa",
+      "position": {
+        "x": 17,
+        "y": 5
+      },
+      "width": 2,
+      "height": 4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.reading-lamp",
+      "kind": "floor-lamp",
+      "position": {
+        "x": 17.5,
+        "y": 10
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.tea-plant",
+      "kind": "plant",
+      "position": {
+        "x": 13,
+        "y": 20
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.kitchen-window",
+      "kind": "window",
+      "position": {
+        "x": 22,
+        "y": 1.6
+      },
+      "width": 4,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.bath-mat",
+      "kind": "mat",
+      "position": {
+        "x": 22,
+        "y": 12
+      },
+      "width": 3,
+      "height": 1,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "apartment.tea-rug",
+      "kind": "mat",
+      "position": {
+        "x": 5,
+        "y": 17
+      },
+      "width": 9,
+      "height": 5,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "apartment.entry-bag",
+      "kind": "parcel",
+      "position": {
+        "x": 25,
+        "y": 16
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "apartment.memory-shelf",
+      "kind": "wall-shelf",
+      "position": {
+        "x": 2,
+        "y": 18
+      },
+      "width": 1,
+      "height": 3,
+      "layer": "object",
       "variant": 0
     }
   ],

@@ -1,0 +1,92 @@
+[
+  {
+    "name": "desktop",
+    "start": {
+      "x": -1,
+      "y": -1,
+      "facing": "east",
+      "elapsedMs": 333.3,
+      "distance": 0,
+      "moving": false,
+      "carrying": false,
+      "frozen": false
+    },
+    "east": {
+      "x": 1.1249999999999998,
+      "y": -1,
+      "facing": "east",
+      "elapsedMs": 1216.7,
+      "distance": 2.124999999999999,
+      "moving": false,
+      "carrying": false,
+      "frozen": false
+    },
+    "north": {
+      "x": 1.1249999999999998,
+      "y": -2.7497499999999993,
+      "facing": "north",
+      "elapsedMs": 1933.2,
+      "distance": 3.874750000000002,
+      "moving": false,
+      "carrying": false,
+      "frozen": false
+    },
+    "touch": {
+      "x": 4.243012784177922,
+      "y": -1.0703993732090862,
+      "facing": "east",
+      "elapsedMs": 3533.2000000000003,
+      "distance": 7.416249999999989,
+      "moving": true,
+      "carrying": false,
+      "frozen": false
+    },
+    "errors": [],
+    "reducedMotionPixelsEqual": true
+  },
+  {
+    "name": "phone",
+    "start": {
+      "x": -1,
+      "y": -1,
+      "facing": "east",
+      "elapsedMs": 383.29999999999995,
+      "distance": 0,
+      "moving": false,
+      "carrying": false,
+      "frozen": false
+    },
+    "east": {
+      "x": 1.1665,
+      "y": -1,
+      "facing": "east",
+      "elapsedMs": 1283.3,
+      "distance": 2.1665,
+      "moving": false,
+      "carrying": false,
+      "frozen": false
+    },
+    "north": {
+      "x": 1.1665,
+      "y": -2.7917499999999995,
+      "facing": "north",
+      "elapsedMs": 2033.3,
+      "distance": 3.9582500000000014,
+      "moving": false,
+      "carrying": false,
+      "frozen": false
+    },
+    "touch": {
+      "x": 4.236020215452285,
+      "y": -1.1100705873503216,
+      "facing": "east",
+      "elapsedMs": 3683.2,
+      "distance": 7.45825000000001,
+      "moving": true,
+      "carrying": false,
+      "frozen": false
+    },
+    "errors": [],
+    "reducedMotionPixelsEqual": true
+  }
+]

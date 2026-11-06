@@ -398,6 +398,126 @@
       "height": 1,
       "layer": "object",
       "variant": 0
+    },
+    {
+      "id": "residential-stairs.west-structure",
+      "kind": "wall",
+      "position": {
+        "x": 2.6,
+        "y": 3
+      },
+      "width": 0.4,
+      "height": 37,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-stairs.roof-structure",
+      "kind": "wall",
+      "position": {
+        "x": 3,
+        "y": 2.6
+      },
+      "width": 17,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-stairs.middle-rail",
+      "kind": "railing",
+      "position": {
+        "x": 8,
+        "y": 23
+      },
+      "width": 6,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-stairs.lower-turn-light",
+      "kind": "wall-lamp",
+      "position": {
+        "x": 3,
+        "y": 31
+      },
+      "width": 1,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-stairs.middle-light",
+      "kind": "wall-lamp",
+      "position": {
+        "x": 13,
+        "y": 19
+      },
+      "width": 1,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-stairs.top-plant",
+      "kind": "plant",
+      "position": {
+        "x": 18,
+        "y": 4
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-stairs.landing-parcel",
+      "kind": "parcel",
+      "position": {
+        "x": 10,
+        "y": 20
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-stairs.middle-mat",
+      "kind": "mat",
+      "position": {
+        "x": 16,
+        "y": 20
+      },
+      "width": 3,
+      "height": 3,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "residential-stairs.top-rail",
+      "kind": "railing",
+      "position": {
+        "x": 14.6,
+        "y": 4
+      },
+      "width": 0.35,
+      "height": 5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-stairs.well-foundation",
+      "kind": "well",
+      "position": {
+        "x": 8,
+        "y": 24
+      },
+      "width": 7,
+      "height": 9,
+      "layer": "ground",
+      "variant": 0
     }
   ],
   "palette": {

@@ -1,3 +1,4 @@
+import type { DrawMap, WorldRenderView } from '../../render-contract';
 import type { SceneApi } from '../../../scene/renderer.js';
 import { mapDefinitions } from '../../maps/residential';
 import { furnitureWorldRect } from '../../../features/apartment/world';
@@ -45,20 +46,58 @@ export function drawResidentialFloor(api: ResidentialArtApi, mapId: string) {
   }
 }
 
-export function drawResidentialProps(api: ResidentialArtApi, mapId: string) {
+export function drawResidentialProps(api: ResidentialArtApi, mapId: string, layer?: string, only?: string[]) {
   const map = mapDefinitions.find(m => m.id === mapId);
   if (!map) return;
   const { box, sphere, capsule } = api;
   for (const prop of map.props) {
+    if (layer && prop.layer !== layer) continue;
+    if (only && !only.includes(prop.id)) continue;
     const { x, y } = prop.position;
     const w = prop.width, h = prop.height;
     const endX = x + w, endY = y + h;
     const post = (px: number, py: number, height: number) => box(px, py, 0, px + .13, py + .13, height, ink);
     switch (prop.kind) {
+      case 'wall':
       case 'partition':
         box(x, y, 0, endX, endY, 2.7, cream);
         box(x, y, .05, endX, endY, .18, wood);
         box(x, y, 2.7, endX, endY, 2.79, paleWood);
+        break;
+      case 'sofa':
+        box(x, y, .1, endX, endY, .5, wood);box(x + .1, y + .1, .5, endX - .1, endY - .1, .9, jade);
+        box(x, y, .9, x + .4, endY, 1.5, [124, 150, 126]);
+        for (let at = y + .3; at < endY; at += 1) box(x + .4, at, .9, endX - .1, at + .8, 1.03, [164, 179, 147]);
+        box(x + .5, y + .15, .95, x + 1.2, y + .9, 1.25, linen);
+        break;
+      case 'floor-lamp':
+        box(x + .2, y + .2, 0, endX - .2, endY - .2, .12, ink);box(x + .45, y + .45, .12, x + .55, y + .55, 2.1, wood);
+        box(x, y, 1.8, endX, endY, 2.15, [236, 209, 151]);
+        break;
+      case 'mat':
+        box(x, y, .05, endX, endY, .07, prop.variant ? [144, 151, 121] : [173, 164, 126]);
+        box(x + .1, y + .1, .07, endX - .1, endY - .1, .08, prop.variant ? [174, 180, 146] : [197, 185, 145]);
+        for (let at = y + .2; at < endY - .1; at += .3) box(x + .1, at, .08, endX - .1, at + .03, .085, [157, 160, 127]);
+        break;
+      case 'wall-shelf':
+        for (const z of [1.5, 2.2]) {
+          box(x, y, z, endX, endY, z + .12, wood);
+          for (let at = y + .2; at < endY - .2; at += .6) box(x + .1, at, z + .12, endX - .1, at + .3, z + .45, Math.floor(at) % 2 ? jade : linen);
+        }
+        break;
+      case 'wall-lamp':
+        box(x, y, 1.8, endX, endY, 2.5, wood);box(x + .15, y + .05, 1.9, endX - .15, endY + .05, 2.4, [240, 212, 158]);
+        break;
+      case 'notice-board':
+        box(x, y, 1.2, endX, endY, 2.5, wood);
+        for (let at = x + .15; at < endX - .2; at += .55) box(at, endY, 1.5, at + .4, endY + .04, 2.2, linen);
+        break;
+      case 'parcel':
+        box(x, y, 0, endX, endY, .65, [182, 151, 104]);box(x + w / 2 - .07, y, .65, x + w / 2 + .07, endY, .67, linen);
+        break;
+      case 'well':
+        box(x, y, -.8, endX, endY, -.7, [72, 87, 79]);
+        for (let at = y; at < endY; at += 1.5) box(x + .1, at, -.7, endX - .1, at + .07, -.65, [105, 119, 100]);
         break;
       case 'door': {
         const sideways = w < h;
@@ -75,9 +114,9 @@ export function drawResidentialProps(api: ResidentialArtApi, mapId: string) {
       }
       case 'window':
         box(x, y, .3, endX, endY, 3.7, cream);
-        box(x + .16, y, 1.1, endX - .16, endY + .05, 3.35, [147, 169, 177]);
-        for (let at = x + .2; at < endX - .1; at += 1.1) box(at, y, 1.1, at + .07, endY + .09, 3.4, linen);
-        box(x + .12, y, 2.15, endX - .12, endY + .1, 2.23, linen);
+        box(x + .16, endY + .02, 1.1, endX - .16, endY + .05, 3.35, [147, 169, 177]);
+        for (let at = x + .2; at < endX - .1; at += 1.1) box(at, endY + .06, 1.1, at + .07, endY + .09, 3.4, linen);
+        box(x + .12, endY + .07, 2.15, endX - .12, endY + .1, 2.23, linen);
         box(x - .2, y - .05, .93, endX + .2, endY + .25, 1.1, paleWood);
         box(x - .1, y + .06, 1.1, x + .2, endY + .2, 3.5, jade);
         break;
@@ -207,4 +246,71 @@ export function drawApartmentFurniture(api: ResidentialArtApi, state: State) {
         break;
     }
   }
+}
+
+
+type Paint = { depth: number; draw: () => void };
+function paintResidential(ctx: CanvasRenderingContext2D, view: WorldRenderView, draw: (api: ResidentialArtApi) => void) {
+  const paints: Paint[] = [];
+  const colour = (c: Colour, light = 1) => `rgb(${c.map(value => Math.round(value * light)).join(',')})`;
+  const polygon = (points: { x: number; y: number }[], fill: string) => {
+    ctx.fillStyle = fill; ctx.beginPath();
+    points.forEach((point, index) => {
+      if (index) ctx.lineTo(Math.round(point.x), Math.round(point.y));
+      else ctx.moveTo(Math.round(point.x), Math.round(point.y));
+    });
+    ctx.closePath(); ctx.fill();
+  };
+  const radius = (x: number, y: number, size: number) => Math.abs(view.project({ x: x + size, y }).x - view.project({ x, y }).x);
+  const api: ResidentialArtApi = {
+    box(x, y, z, right, front, top, c) {
+      if (right - x > 1.01 || front - y > 1.01) {
+        for (let px = x; px < right; px += 1) for (let py = y; py < front; py += 1) api.box(px, py, z, Math.min(px + 1, right), Math.min(py + 1, front), top, c);
+        return;
+      }
+      paints.push({ depth: x + y + right + front + top * .1, draw() {
+        const a = view.project({ x, y }, top), b = view.project({ x: right, y }, top), e = view.project({ x: right, y: front }, top), f = view.project({ x, y: front }, top);
+        const lowB = view.project({ x: right, y }, z), lowE = view.project({ x: right, y: front }, z), lowF = view.project({ x, y: front }, z);
+        polygon([f, e, lowE, lowF], colour(c, .78)); polygon([b, e, lowE, lowB], colour(c, .65)); polygon([a, b, e, f], colour(c));
+      } });
+    },
+    sphere(x, y, z, size, c) {
+      paints.push({ depth: (x + y) * 2 + z * .1, draw() {
+        const p = view.project({ x, y }, z), r = radius(x, y, size);
+        ctx.fillStyle = colour(c); ctx.beginPath();ctx.ellipse(Math.round(p.x), Math.round(p.y), r, r * .85, 0, 0, Math.PI * 2);ctx.fill();
+      } });
+    },
+    capsule(from, to, startRadius, endRadius, colorOf) {
+      paints.push({ depth: from[0] + from[1] + to[0] + to[1] + to[2] * .1, draw() {
+        const a = view.project({ x: from[0], y: from[1] }, from[2]), b = view.project({ x: to[0], y: to[1] }, to[2]);
+        ctx.strokeStyle = colour(colorOf(to[2]));ctx.lineWidth = Math.max(1, radius(from[0], from[1], startRadius + endRadius));ctx.lineCap = 'round';
+        ctx.beginPath();ctx.moveTo(Math.round(a.x), Math.round(a.y));ctx.lineTo(Math.round(b.x), Math.round(b.y));ctx.stroke();
+      } });
+    },
+    castShadow(x, y, _z, size, strength = .45) {
+      const p = view.project({ x, y }), r = radius(x, y, size);
+      paints.push({ depth: (x + y) * 2 - 3, draw() { ctx.save();ctx.globalAlpha = strength * .18;ctx.fillStyle = '#342c24';ctx.beginPath();ctx.ellipse(p.x, p.y, r, r * .5, 0, 0, Math.PI * 2);ctx.fill();ctx.restore(); } });
+    },
+  };
+  draw(api);
+  paints.sort((a, b) => a.depth - b.depth).forEach(p => p.draw());
+}
+
+export const drawMap: DrawMap = (ctx, map, view) => {
+  if (!mapDefinitions.some(m => m.id === map.id)) return;
+  ctx.save();
+  if (view.pass === 'foreground') ctx.globalAlpha = .38;
+  paintResidential(ctx, view, api => {
+    if (view.pass === 'ground') { drawResidentialFloor(api, map.id); drawResidentialProps(api, map.id, 'ground'); }
+    else if (view.pass === 'objects') drawResidentialProps(api, map.id, 'object');
+    else {
+      const fronts = map.props.filter(p => ['wall', 'partition', 'bookcase', 'wardrobe', 'screen'].includes(p.kind) && p.position.x + p.position.y > view.playerPosition.x + view.playerPosition.y).map(p => p.id);
+      drawResidentialProps(api, map.id, undefined, fronts);
+    }
+  });
+  ctx.restore();
+};
+
+export function drawFurniture(ctx: CanvasRenderingContext2D, state: State, view: WorldRenderView) {
+  if (view.pass === 'objects') paintResidential(ctx, view, api => drawApartmentFurniture(api, state));
 }
