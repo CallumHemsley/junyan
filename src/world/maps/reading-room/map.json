@@ -131,7 +131,7 @@
   ],
   "entrances": [
     {
-      "id": "from-hall",
+      "id": "reading-room.from-hall",
       "position": {
         "x": 14,
         "y": 17.5
@@ -149,7 +149,7 @@
         "height": 1
       },
       "targetMapId": "residential-hall",
-      "targetEntranceId": "from-reading-room",
+      "targetEntranceId": "hall.from-reading-room",
       "kind": "door"
     }
   ],

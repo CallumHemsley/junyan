@@ -13,5 +13,5 @@ it('authors a real reading-room identity with an accessible hall return and furn
   for (const entrance of map.entrances) expect(canStand(map, entrance.position)).toBe(true);
   expect(findPath(map, map.defaultSpawn, map.anchors[0].position).length).toBeGreaterThan(0);
   expect(findPath(map, map.defaultSpawn, { x: 14, y: 19.5 }).length).toBeGreaterThan(0);
-  expect(map.exits[0]).toMatchObject({ targetMapId: 'residential-hall', targetEntranceId: 'from-reading-room' });
+  expect(map.exits[0]).toMatchObject({ targetMapId: 'residential-hall', targetEntranceId: 'hall.from-reading-room' });
 });
