@@ -1,7 +1,7 @@
 ---
 id: 120
 title: Review and improve residential and rooftop visual craft
-status: todo
+status: doing
 priority: high
 type: feature
 created: 2026-11-06
@@ -20,6 +20,11 @@ The user wants multiple levels reviewed and improved in parallel. Homes, circula
 
 ## Notes
 
+- Owner: Codex residential quality worker. Port 5580 (dev), 5581 (preview). Review underway 2026-11-06.
 - Centrally reserved by root. Branch codex/0120-residential-visual-quality; worktree /private/tmp/junyan-world-residential-quality.
 - Lease art/residential and art/rooftop only initially. Propose shared lighting, map, actor or elevation changes before editing. Other workers own restaurant/town/landscape; root owns workshop/courtyard/reading integration. Ports5580/5581 strict.
 - All detailed plans, new native captures, traces and reports stay private under /private/tmp/junyan-world-private-qa/0120; no public raw QA or merges before independent gates.
+
+- Candidate: timber uses continuous staggered boards; residential local ground now paints floors before supported mats/props. Only zero-height plane paint bypasses cube subdivision; solid/tread behavior is unchanged. Removed permanent sunlight confetti rather than adding baked light. Roof foliage uses joined broad facets and paving has quieter mineral values. No maps, elevation, actors, schemas, gameplay or dependencies changed.
+- Actual native baseline/candidate reviewed at 1440×1000 and 390×844: hall, lower stairs, home landing, sparse/furnished apartment and initial/mature roof. Fixtures validated through save plus feature schemas; matching records retain seed42 and 42000ms life clock. Raw evidence remains private under the allocated QA directory.
+- Independent visual/source acceptance and final verification are pending. Local material gains do not resolve the wider cutaway composition / blank-wall / renderer quality ceiling.
