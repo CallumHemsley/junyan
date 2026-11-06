@@ -1,0 +1,4 @@
+{"mode":"profile","viewport":"phone","scenario":"town","kind":"idle","iteration":0,"frames":598,"p95":16.799999999999272,"max":50,"longtasks":1,"positionBefore":{"x":34,"y":32},"positionAfter":{"x":34,"y":32}}
+{"mode":"profile","viewport":"phone","scenario":"town","kind":"movement","iteration":0,"frames":606,"p95":16.799999999999272,"max":16.80000000000291,"longtasks":0,"positionBefore":{"x":34,"y":32},"positionAfter":{"x":34.00070710678116,"y":32.76685730419679}}
+{"mode":"profile","viewport":"phone","scenario":"park","kind":"idle","iteration":0,"frames":599,"p95":16.700000000000728,"max":16.80000000000291,"longtasks":0,"positionBefore":{"x":30,"y":27},"positionAfter":{"x":30,"y":27}}
+{"mode":"profile","viewport":"phone","scenario":"park","kind":"movement","iteration":0,"frames":605,"p95":16.700000000000728,"max":16.80000000000291,"longtasks":0,"positionBefore":{"x":30,"y":27},"positionAfter":{"x":29.998939339828187,"y":28.295066069743143}}

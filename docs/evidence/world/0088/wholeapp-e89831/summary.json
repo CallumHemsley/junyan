@@ -1,0 +1,4636 @@
+{
+  "apartment-diagnostic.json": {
+    "errors": [
+      "console:Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "hardware": {
+      "cpus": [
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor"
+      ],
+      "memory": 18882662400,
+      "load": [
+        0.19,
+        0.41,
+        0.34
+      ]
+    },
+    "browser": "155.0.8059.79",
+    "rows": [
+      {
+        "scenario": "apartment",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10006.099999999627,
+        "frames": 599,
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 17.5,
+          "y": 13.5
+        },
+        "after": {
+          "x": 17.5,
+          "y": 13.5
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 386,
+            "rect": {
+              "width": 390,
+              "height": 772
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": {
+          "mapId": "apartment",
+          "props": 32,
+          "custom": 89,
+          "restaurantCustomers": 0,
+          "actors": [],
+          "player": {
+            "x": 17.5,
+            "y": 13.5
+          }
+        },
+        "calls": {
+          "world/art/residential/index.ts:drawResidentialFloor": {
+            "count": 221,
+            "total": 27.100000008940697,
+            "max": 0.5
+          },
+          "world/art/residential/index.ts:drawResidentialProp": {
+            "count": 6188,
+            "total": 18.40000001899898,
+            "max": 0.6000000014901161
+          },
+          "world/art/residential/index.ts:drawResidentialProps": {
+            "count": 442,
+            "total": 8.199999999254942,
+            "max": 0.19999999925494194
+          },
+          "residential.queue": {
+            "count": 19227,
+            "total": 60.1000000257045,
+            "max": 0.6999999992549419
+          },
+          "residential.flush": {
+            "count": 19227,
+            "total": 1924.3999999780208,
+            "max": 12.400000000372529
+          },
+          "world/art/residential/index.ts:paintResidential": {
+            "count": 19227,
+            "total": 1998.7000000029802,
+            "max": 13
+          },
+          "world/art/residential/index.ts:drawMap:ground": {
+            "count": 221,
+            "total": 1460.2000000029802,
+            "max": 13
+          },
+          "ground": {
+            "count": 221,
+            "total": 1461.7999999988824,
+            "max": 13
+          },
+          "world/art/residential/index.ts:drawApartmentFurniture": {
+            "count": 442,
+            "total": 1.7000000048428774,
+            "max": 0.10000000149011612
+          },
+          "world/art/residential/index.ts:drawFurniture": {
+            "count": 221,
+            "total": 2.1000000070780516,
+            "max": 0.10000000149011612
+          },
+          "world/atmosphere/canvas.ts:drawAtmosphere": {
+            "count": 442,
+            "total": 11.399999985471368,
+            "max": 0.19999999925494194
+          },
+          "world/art/residential/index.ts:renderObjects": {
+            "count": 221,
+            "total": 4.900000004097819,
+            "max": 0.2000000011175871
+          },
+          "world/atmosphere/canvas.ts:renderAtmosphereObjects": {
+            "count": 221,
+            "total": 1.700000001117587,
+            "max": 0.10000000149011612
+          },
+          "world/life-bridge.ts:planFor": {
+            "count": 279,
+            "total": 0.2999999988824129,
+            "max": 0.09999999962747097
+          },
+          "world/life-bridge.ts:actorsFor": {
+            "count": 250,
+            "total": 11.49999999627471,
+            "max": 0.2000000011175871
+          },
+          "world/art/residential/index.ts:drawMap:objects": {
+            "count": 221,
+            "total": 0.2000000011175871,
+            "max": 0.10000000149011612
+          },
+          "world/characters/artwork.mjs:frame": {
+            "count": 221,
+            "total": 28.50000000745058,
+            "max": 0.7000000011175871
+          },
+          "world/characters/adapter.ts:actorCommands": {
+            "count": 221,
+            "total": 5.800000002607703,
+            "max": 0.5
+          },
+          "world/characters/index.ts:sampleActor": {
+            "count": 221,
+            "total": 47.60000001266599,
+            "max": 1.5
+          },
+          "world/characters/adapter.ts:paintActorCanvas": {
+            "count": 221,
+            "total": 14.500000005587935,
+            "max": 0.2000000011175871
+          },
+          "world/characters/adapter.ts:drawActor": {
+            "count": 221,
+            "total": 15.200000002980232,
+            "max": 0.2000000011175871
+          },
+          "sortedObjects": {
+            "count": 221,
+            "total": 624.4000000115484,
+            "max": 6.400000000372529
+          },
+          "world/art/residential/index.ts:drawMap:foreground": {
+            "count": 221,
+            "total": 1.099999999627471,
+            "max": 0.10000000149011612
+          },
+          "foreground": {
+            "count": 221,
+            "total": 2,
+            "max": 0.19999999925494194
+          },
+          "world/painter.ts:paintWorld": {
+            "count": 221,
+            "total": 2146.399999992922,
+            "max": 20.09999999962747
+          },
+          "save.ts:saveGame": {
+            "count": 10,
+            "total": 15.099999997764826,
+            "max": 6
+          },
+          "world/WorldViewport.tsx:WorldViewport": {
+            "count": 29,
+            "total": 5.599999999627471,
+            "max": 0.5
+          },
+          "world/dynamic.ts:mapsForNeighbourhood": {
+            "count": 18,
+            "total": 0.2000000011175871,
+            "max": 0.10000000149011612
+          },
+          "worldSchema.safeParse": {
+            "count": 18,
+            "total": 0.2000000011175871,
+            "max": 0.10000000149011612
+          },
+          "world/state.ts:restoreWorld": {
+            "count": 18,
+            "total": 1.200000001117587,
+            "max": 0.2000000011175871
+          },
+          "world/state.ts:reduceWorld": {
+            "count": 9,
+            "total": 0.19999999925494194,
+            "max": 0.09999999962747097
+          },
+          "neighbourhood/transitions.ts:reduceNeighbourhoodGame": {
+            "count": 9,
+            "total": 1.199999999254942,
+            "max": 0.19999999925494194
+          },
+          "opening.ts:reduceSession": {
+            "count": 9,
+            "total": 1.299999998882413,
+            "max": 0.19999999925494194
+          },
+          "checkpoint": {
+            "count": 9,
+            "total": 1.1000000014901161,
+            "max": 0.2000000011175871
+          },
+          "App.tsx:App": {
+            "count": 9,
+            "total": 3.400000000372529,
+            "max": 0.5
+          }
+        }
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10110.700000001118,
+        "frames": 606,
+        "p50": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.0830000000001,
+        "before": {
+          "x": 17.5,
+          "y": 13.5
+        },
+        "after": {
+          "x": 17.441310137161498,
+          "y": 13.558689862838488
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 386,
+            "rect": {
+              "width": 390,
+              "height": 772
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": {
+          "mapId": "apartment",
+          "props": 32,
+          "custom": 89,
+          "restaurantCustomers": 0,
+          "actors": [],
+          "player": {
+            "x": 17.441310137161523,
+            "y": 13.558689862838479
+          }
+        },
+        "calls": {
+          "world/dynamic.ts:mapsForNeighbourhood": {
+            "count": 1212,
+            "total": 3.2999999951571226,
+            "max": 0.10000000149011612
+          },
+          "worldSchema.safeParse": {
+            "count": 1212,
+            "total": 13.399999998509884,
+            "max": 0.2000000011175871
+          },
+          "world/state.ts:restoreWorld": {
+            "count": 1212,
+            "total": 34.400000009685755,
+            "max": 0.40000000037252903
+          },
+          "world/state.ts:reduceWorld": {
+            "count": 610,
+            "total": 6.4000000189989805,
+            "max": 0.10000000149011612
+          },
+          "neighbourhood/transitions.ts:reduceNeighbourhoodGame": {
+            "count": 610,
+            "total": 26.600000005215406,
+            "max": 0.2000000011175871
+          },
+          "opening.ts:reduceSession": {
+            "count": 610,
+            "total": 28.80000000819564,
+            "max": 0.2000000011175871
+          },
+          "checkpoint": {
+            "count": 610,
+            "total": 58.199999986216426,
+            "max": 0.6999999992549419
+          },
+          "App.tsx:App": {
+            "count": 602,
+            "total": 115.90000002644956,
+            "max": 0.900000000372529
+          },
+          "world/life-bridge.ts:planFor": {
+            "count": 1426,
+            "total": 0.3999999985098839,
+            "max": 0.09999999962747097
+          },
+          "world/life-bridge.ts:actorsFor": {
+            "count": 824,
+            "total": 13.900000013411045,
+            "max": 0.2000000011175871
+          },
+          "world/WorldViewport.tsx:WorldViewport": {
+            "count": 602,
+            "total": 44.40000000409782,
+            "max": 0.40000000037252903
+          },
+          "world/art/residential/index.ts:drawResidentialFloor": {
+            "count": 222,
+            "total": 29.19999999552965,
+            "max": 0.30000000074505806
+          },
+          "world/art/residential/index.ts:drawResidentialProp": {
+            "count": 6216,
+            "total": 15.000000011175871,
+            "max": 0.5
+          },
+          "world/art/residential/index.ts:drawResidentialProps": {
+            "count": 444,
+            "total": 5.600000005215406,
+            "max": 0.2000000011175871
+          },
+          "residential.queue": {
+            "count": 19314,
+            "total": 59.100000005215406,
+            "max": 0.599999999627471
+          },
+          "residential.flush": {
+            "count": 19314,
+            "total": 1995.4000000264496,
+            "max": 14.699999999254942
+          },
+          "world/art/residential/index.ts:paintResidential": {
+            "count": 19314,
+            "total": 2068.2000000383705,
+            "max": 14.900000000372529
+          },
+          "world/art/residential/index.ts:drawMap:ground": {
+            "count": 222,
+            "total": 1517.9000000022352,
+            "max": 14.900000000372529
+          },
+          "ground": {
+            "count": 222,
+            "total": 1518.7000000011176,
+            "max": 14.900000000372529
+          },
+          "world/art/residential/index.ts:drawApartmentFurniture": {
+            "count": 444,
+            "total": 0.7999999988824129,
+            "max": 0.10000000149011612
+          },
+          "world/art/residential/index.ts:drawFurniture": {
+            "count": 222,
+            "total": 1.699999999254942,
+            "max": 0.10000000149011612
+          },
+          "world/atmosphere/canvas.ts:drawAtmosphere": {
+            "count": 444,
+            "total": 11.400000000372529,
+            "max": 0.2000000011175871
+          },
+          "world/art/residential/index.ts:renderObjects": {
+            "count": 222,
+            "total": 4.800000010058284,
+            "max": 0.2000000011175871
+          },
+          "world/atmosphere/canvas.ts:renderAtmosphereObjects": {
+            "count": 222,
+            "total": 1.4999999981373549,
+            "max": 0.10000000149011612
+          },
+          "world/art/residential/index.ts:drawMap:objects": {
+            "count": 222,
+            "total": 0.19999999925494194,
+            "max": 0.09999999962747097
+          },
+          "world/characters/artwork.mjs:frame": {
+            "count": 222,
+            "total": 24.299999991431832,
+            "max": 1.099999999627471
+          },
+          "world/characters/adapter.ts:actorCommands": {
+            "count": 222,
+            "total": 6.399999989196658,
+            "max": 0.2999999988824129
+          },
+          "world/characters/index.ts:sampleActor": {
+            "count": 222,
+            "total": 42.3999999742955,
+            "max": 1.200000001117587
+          },
+          "world/characters/adapter.ts:paintActorCanvas": {
+            "count": 222,
+            "total": 14.200000006705523,
+            "max": 0.2000000011175871
+          },
+          "world/characters/adapter.ts:drawActor": {
+            "count": 222,
+            "total": 14.800000006332994,
+            "max": 0.2000000011175871
+          },
+          "sortedObjects": {
+            "count": 222,
+            "total": 630.3000000007451,
+            "max": 5.899999998509884
+          },
+          "world/art/residential/index.ts:drawMap:foreground": {
+            "count": 222,
+            "total": 1.5000000055879354,
+            "max": 0.10000000149011612
+          },
+          "foreground": {
+            "count": 222,
+            "total": 2.0000000055879354,
+            "max": 0.10000000149011612
+          },
+          "world/painter.ts:paintWorld": {
+            "count": 222,
+            "total": 2199.5000000279397,
+            "max": 21.09999999962747
+          }
+        }
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "desktop",
+        "kind": "idle",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10009.099999999627,
+        "frames": 599,
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 17.5,
+          "y": 13.5
+        },
+        "after": {
+          "x": 17.5,
+          "y": 13.5
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 458,
+            "rect": {
+              "width": 1440,
+              "height": 916
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": {
+          "mapId": "apartment",
+          "props": 32,
+          "custom": 89,
+          "restaurantCustomers": 0,
+          "actors": [],
+          "player": {
+            "x": 17.5,
+            "y": 13.5
+          }
+        },
+        "calls": {
+          "world/art/residential/index.ts:drawResidentialFloor": {
+            "count": 221,
+            "total": 26.100000005215406,
+            "max": 0.40000000037252903
+          },
+          "world/art/residential/index.ts:drawResidentialProp": {
+            "count": 6188,
+            "total": 21.40000000782311,
+            "max": 0.6000000014901161
+          },
+          "world/art/residential/index.ts:drawResidentialProps": {
+            "count": 442,
+            "total": 7.299999997019768,
+            "max": 0.2000000011175871
+          },
+          "residential.queue": {
+            "count": 19227,
+            "total": 62.500000009313226,
+            "max": 0.6000000014901161
+          },
+          "residential.flush": {
+            "count": 19227,
+            "total": 2194.299999995157,
+            "max": 10.800000000745058
+          },
+          "world/art/residential/index.ts:paintResidential": {
+            "count": 19227,
+            "total": 2270.1999999973923,
+            "max": 11
+          },
+          "world/art/residential/index.ts:drawMap:ground": {
+            "count": 221,
+            "total": 1626.0999999996275,
+            "max": 11
+          },
+          "ground": {
+            "count": 221,
+            "total": 1626.7999999988824,
+            "max": 11
+          },
+          "world/art/residential/index.ts:drawApartmentFurniture": {
+            "count": 442,
+            "total": 2.199999999254942,
+            "max": 0.10000000149011612
+          },
+          "world/art/residential/index.ts:drawFurniture": {
+            "count": 221,
+            "total": 1.5000000018626451,
+            "max": 0.10000000149011612
+          },
+          "world/atmosphere/canvas.ts:drawAtmosphere": {
+            "count": 442,
+            "total": 13.799999983981252,
+            "max": 0.40000000037252903
+          },
+          "world/art/residential/index.ts:renderObjects": {
+            "count": 221,
+            "total": 6.9999999944120646,
+            "max": 0.30000000074505806
+          },
+          "world/atmosphere/canvas.ts:renderAtmosphereObjects": {
+            "count": 221,
+            "total": 2.2999999951571226,
+            "max": 0.19999999925494194
+          },
+          "world/life-bridge.ts:planFor": {
+            "count": 279,
+            "total": 0.6999999992549419,
+            "max": 0.10000000149011612
+          },
+          "world/life-bridge.ts:actorsFor": {
+            "count": 250,
+            "total": 12.600000014528632,
+            "max": 0.7000000011175871
+          },
+          "world/art/residential/index.ts:drawMap:objects": {
+            "count": 221,
+            "total": 0.6000000033527613,
+            "max": 0.30000000074505806
+          },
+          "world/characters/artwork.mjs:frame": {
+            "count": 221,
+            "total": 29.30000000819564,
+            "max": 1
+          },
+          "world/characters/adapter.ts:actorCommands": {
+            "count": 221,
+            "total": 7.0999999940395355,
+            "max": 0.3999999985098839
+          },
+          "world/characters/index.ts:sampleActor": {
+            "count": 221,
+            "total": 49.40000000409782,
+            "max": 1
+          },
+          "world/characters/adapter.ts:paintActorCanvas": {
+            "count": 221,
+            "total": 14.299999998882413,
+            "max": 0.2000000011175871
+          },
+          "world/characters/adapter.ts:drawActor": {
+            "count": 221,
+            "total": 15.699999997392297,
+            "max": 0.3999999985098839
+          },
+          "sortedObjects": {
+            "count": 221,
+            "total": 736.0999999977648,
+            "max": 6.199999999254942
+          },
+          "world/art/residential/index.ts:drawMap:foreground": {
+            "count": 221,
+            "total": 0.8000000026077032,
+            "max": 0.10000000149011612
+          },
+          "foreground": {
+            "count": 221,
+            "total": 1.700000001117587,
+            "max": 0.10000000149011612
+          },
+          "world/painter.ts:paintWorld": {
+            "count": 221,
+            "total": 2428.300000011921,
+            "max": 17.5
+          },
+          "save.ts:saveGame": {
+            "count": 10,
+            "total": 14.000000001862645,
+            "max": 2.699999999254942
+          },
+          "world/WorldViewport.tsx:WorldViewport": {
+            "count": 29,
+            "total": 7.0000000055879354,
+            "max": 0.6999999992549419
+          },
+          "world/dynamic.ts:mapsForNeighbourhood": {
+            "count": 18,
+            "total": 0.2000000011175871,
+            "max": 0.10000000149011612
+          },
+          "worldSchema.safeParse": {
+            "count": 18,
+            "total": 0.30000000074505806,
+            "max": 0.10000000149011612
+          },
+          "world/state.ts:restoreWorld": {
+            "count": 18,
+            "total": 1,
+            "max": 0.19999999925494194
+          },
+          "world/state.ts:reduceWorld": {
+            "count": 9,
+            "total": 0.09999999962747097,
+            "max": 0.09999999962747097
+          },
+          "neighbourhood/transitions.ts:reduceNeighbourhoodGame": {
+            "count": 9,
+            "total": 1.099999999627471,
+            "max": 0.2000000011175871
+          },
+          "opening.ts:reduceSession": {
+            "count": 9,
+            "total": 1.099999999627471,
+            "max": 0.2000000011175871
+          },
+          "checkpoint": {
+            "count": 9,
+            "total": 1.4999999981373549,
+            "max": 0.2000000011175871
+          },
+          "App.tsx:App": {
+            "count": 9,
+            "total": 4.599999999627471,
+            "max": 1.200000001117587
+          }
+        }
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "desktop",
+        "kind": "movement",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10127.699999999255,
+        "frames": 607,
+        "p50": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.08200000000007,
+        "before": {
+          "x": 17.5,
+          "y": 13.5
+        },
+        "after": {
+          "x": 17.558689862838474,
+          "y": 13.441310137161524
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 458,
+            "rect": {
+              "width": 1440,
+              "height": 916
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": {
+          "mapId": "apartment",
+          "props": 32,
+          "custom": 89,
+          "restaurantCustomers": 0,
+          "actors": [],
+          "player": {
+            "x": 17.5,
+            "y": 13.5
+          }
+        },
+        "calls": {
+          "world/dynamic.ts:mapsForNeighbourhood": {
+            "count": 1212,
+            "total": 2.6000000033527613,
+            "max": 0.10000000149011612
+          },
+          "worldSchema.safeParse": {
+            "count": 1212,
+            "total": 11.199999991804361,
+            "max": 0.30000000074505806
+          },
+          "world/state.ts:restoreWorld": {
+            "count": 1212,
+            "total": 32.09999999217689,
+            "max": 0.30000000074505806
+          },
+          "world/state.ts:reduceWorld": {
+            "count": 611,
+            "total": 6.799999991431832,
+            "max": 0.19999999925494194
+          },
+          "neighbourhood/transitions.ts:reduceNeighbourhoodGame": {
+            "count": 611,
+            "total": 24.899999998509884,
+            "max": 0.30000000074505806
+          },
+          "opening.ts:reduceSession": {
+            "count": 611,
+            "total": 26.49999999627471,
+            "max": 0.30000000074505806
+          },
+          "checkpoint": {
+            "count": 611,
+            "total": 59.69999998807907,
+            "max": 0.599999999627471
+          },
+          "world/art/residential/index.ts:drawResidentialFloor": {
+            "count": 225,
+            "total": 26.799999998882413,
+            "max": 0.40000000037252903
+          },
+          "world/art/residential/index.ts:drawResidentialProp": {
+            "count": 6300,
+            "total": 18.700000006705523,
+            "max": 0.599999999627471
+          },
+          "world/art/residential/index.ts:drawResidentialProps": {
+            "count": 450,
+            "total": 7.200000002980232,
+            "max": 0.2000000011175871
+          },
+          "residential.queue": {
+            "count": 19575,
+            "total": 57.100000001490116,
+            "max": 0.599999999627471
+          },
+          "residential.flush": {
+            "count": 19575,
+            "total": 2192.500000016764,
+            "max": 9.599999999627471
+          },
+          "world/art/residential/index.ts:paintResidential": {
+            "count": 19575,
+            "total": 2264.2000000234693,
+            "max": 9.799999998882413
+          },
+          "world/art/residential/index.ts:drawMap:ground": {
+            "count": 225,
+            "total": 1635,
+            "max": 9.799999998882413
+          },
+          "ground": {
+            "count": 225,
+            "total": 1636.6000000014901,
+            "max": 9.800000000745058
+          },
+          "world/art/residential/index.ts:drawApartmentFurniture": {
+            "count": 450,
+            "total": 1.3999999985098839,
+            "max": 0.10000000149011612
+          },
+          "world/art/residential/index.ts:drawFurniture": {
+            "count": 225,
+            "total": 1.3999999966472387,
+            "max": 0.10000000149011612
+          },
+          "world/atmosphere/canvas.ts:drawAtmosphere": {
+            "count": 450,
+            "total": 11.900000000372529,
+            "max": 0.30000000074505806
+          },
+          "world/art/residential/index.ts:renderObjects": {
+            "count": 225,
+            "total": 5.5,
+            "max": 0.2000000011175871
+          },
+          "world/atmosphere/canvas.ts:renderAtmosphereObjects": {
+            "count": 225,
+            "total": 1.3999999985098839,
+            "max": 0.10000000149011612
+          },
+          "world/life-bridge.ts:planFor": {
+            "count": 1427,
+            "total": 1,
+            "max": 0.10000000149011612
+          },
+          "world/life-bridge.ts:actorsFor": {
+            "count": 826,
+            "total": 13.300000002607703,
+            "max": 0.30000000074505806
+          },
+          "world/art/residential/index.ts:drawMap:objects": {
+            "count": 225,
+            "total": 0.3999999985098839,
+            "max": 0.09999999962747097
+          },
+          "world/characters/artwork.mjs:frame": {
+            "count": 225,
+            "total": 24.59999999590218,
+            "max": 0.8000000007450581
+          },
+          "world/characters/adapter.ts:actorCommands": {
+            "count": 225,
+            "total": 5.900000013411045,
+            "max": 0.2000000011175871
+          },
+          "world/characters/index.ts:sampleActor": {
+            "count": 225,
+            "total": 41.90000000782311,
+            "max": 0.900000000372529
+          },
+          "world/characters/adapter.ts:paintActorCanvas": {
+            "count": 225,
+            "total": 15.899999987334013,
+            "max": 0.2000000011175871
+          },
+          "world/characters/adapter.ts:drawActor": {
+            "count": 225,
+            "total": 17.299999989569187,
+            "max": 0.2000000011175871
+          },
+          "sortedObjects": {
+            "count": 225,
+            "total": 717.9000000115484,
+            "max": 6.900000000372529
+          },
+          "world/art/residential/index.ts:drawMap:foreground": {
+            "count": 225,
+            "total": 0.5,
+            "max": 0.10000000149011612
+          },
+          "foreground": {
+            "count": 225,
+            "total": 1.1999999973922968,
+            "max": 0.10000000149011612
+          },
+          "world/painter.ts:paintWorld": {
+            "count": 225,
+            "total": 2408.300000017509,
+            "max": 16.5
+          },
+          "App.tsx:App": {
+            "count": 601,
+            "total": 114.49999998137355,
+            "max": 1
+          },
+          "world/WorldViewport.tsx:WorldViewport": {
+            "count": 601,
+            "total": 48.40000003017485,
+            "max": 1.199999999254942
+          }
+        }
+      }
+    ]
+  },
+  "apartment-production.json": {
+    "errors": [
+      "console:Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "hardware": {
+      "cpus": [
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor"
+      ],
+      "memory": 18882662400,
+      "load": [
+        0.31,
+        0.35,
+        0.29
+      ]
+    },
+    "browser": "155.0.8059.79",
+    "rows": [
+      {
+        "scenario": "apartment",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10009.299999998882,
+        "frames": 600,
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 17.5,
+          "y": 13.5
+        },
+        "after": {
+          "x": 17.5,
+          "y": 13.5
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 386,
+            "rect": {
+              "width": 390,
+              "height": 772
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10092.39999999851,
+        "frames": 604,
+        "p50": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.08200000000004,
+        "before": {
+          "x": 17.5,
+          "y": 13.5
+        },
+        "after": {
+          "x": 17.441310137161526,
+          "y": 13.558689862838472
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 386,
+            "rect": {
+              "width": 390,
+              "height": 772
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 1,
+        "profile": false,
+        "duration": 10008.400000000373,
+        "frames": 599,
+        "p50": 16.69999999999709,
+        "p95": 16.799999999995634,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 17.441310137161526,
+          "y": 13.558689862838472
+        },
+        "after": {
+          "x": 17.441310137161526,
+          "y": 13.558689862838472
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 386,
+            "rect": {
+              "width": 390,
+              "height": 772
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 1,
+        "profile": false,
+        "duration": 10081.5,
+        "frames": 604,
+        "p50": 16.69999999999709,
+        "p95": 16.700000000004366,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.33200000000008,
+        "before": {
+          "x": 17.441310137161526,
+          "y": 13.558689862838472
+        },
+        "after": {
+          "x": 17.677483802077816,
+          "y": 13.3225161979222
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 386,
+            "rect": {
+              "width": 390,
+              "height": 772
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 2,
+        "profile": false,
+        "duration": 10008.800000000745,
+        "frames": 600,
+        "p50": 16.69999999999709,
+        "p95": 16.700000000004366,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 17.677483802077816,
+          "y": 13.3225161979222
+        },
+        "after": {
+          "x": 17.677483802077816,
+          "y": 13.3225161979222
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 386,
+            "rect": {
+              "width": 390,
+              "height": 772
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 2,
+        "profile": false,
+        "duration": 10117.800000000745,
+        "frames": 607,
+        "p50": 16.69999999999709,
+        "p95": 16.79999999998836,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.24850000000009,
+        "before": {
+          "x": 17.677483802077816,
+          "y": 13.3225161979222
+        },
+        "after": {
+          "x": 17.854614050765154,
+          "y": 13.145385949234939
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 386,
+            "rect": {
+              "width": 390,
+              "height": 772
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 3,
+        "profile": false,
+        "duration": 10020.199999999255,
+        "frames": 600,
+        "p50": 16.69999999999709,
+        "p95": 16.70000000001164,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 17.854614050765154,
+          "y": 13.145385949234939
+        },
+        "after": {
+          "x": 17.854614050765154,
+          "y": 13.145385949234939
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 386,
+            "rect": {
+              "width": 390,
+              "height": 772
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 3,
+        "profile": false,
+        "duration": 10075.400000000373,
+        "frames": 604,
+        "p50": 16.69999999999709,
+        "p95": 16.70000000001164,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.16450000000014,
+        "before": {
+          "x": 17.854614050765154,
+          "y": 13.145385949234939
+        },
+        "after": {
+          "x": 17.85567471093706,
+          "y": 13.14432528906305
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 386,
+            "rect": {
+              "width": 390,
+              "height": 772
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 4,
+        "profile": false,
+        "duration": 10020.300000000745,
+        "frames": 600,
+        "p50": 16.69999999999709,
+        "p95": 16.79999999998836,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 17.85567471093706,
+          "y": 13.14432528906305
+        },
+        "after": {
+          "x": 17.85567471093706,
+          "y": 13.14432528906305
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 386,
+            "rect": {
+              "width": 390,
+              "height": 772
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 4,
+        "profile": false,
+        "duration": 10089.900000000373,
+        "frames": 605,
+        "p50": 16.69999999999709,
+        "p95": 16.70000000001164,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 49.99750000000008,
+        "before": {
+          "x": 17.85567471093706,
+          "y": 13.14432528906305
+        },
+        "after": {
+          "x": 17.854614050765225,
+          "y": 13.145385949234901
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 386,
+            "rect": {
+              "width": 390,
+              "height": 772
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "desktop",
+        "kind": "idle",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10009.200000001118,
+        "frames": 598,
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "max": 33.400000000001455,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 17.5,
+          "y": 13.5
+        },
+        "after": {
+          "x": 17.5,
+          "y": 13.5
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 458,
+            "rect": {
+              "width": 1440,
+              "height": 916
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "desktop",
+        "kind": "movement",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10149.599999999627,
+        "frames": 606,
+        "p50": 16.700000000000728,
+        "p95": 16.799999999999272,
+        "p99": 16.80000000000291,
+        "max": 33.400000000001455,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.1650000000001,
+        "before": {
+          "x": 17.5,
+          "y": 13.5
+        },
+        "after": {
+          "x": 17.50000000000003,
+          "y": 13.49999999999999
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 458,
+            "rect": {
+              "width": 1440,
+              "height": 916
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "desktop",
+        "kind": "idle",
+        "iteration": 1,
+        "profile": false,
+        "duration": 10028.5,
+        "frames": 599,
+        "p50": 16.69999999999709,
+        "p95": 16.799999999995634,
+        "p99": 16.80000000000291,
+        "max": 33.30000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 17.50000000000003,
+          "y": 13.49999999999999
+        },
+        "after": {
+          "x": 17.50000000000003,
+          "y": 13.49999999999999
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 458,
+            "rect": {
+              "width": 1440,
+              "height": 916
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "desktop",
+        "kind": "movement",
+        "iteration": 1,
+        "profile": false,
+        "duration": 10157.5,
+        "frames": 609,
+        "p50": 16.69999999999709,
+        "p95": 16.700000000004366,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.24850000000011,
+        "before": {
+          "x": 17.50000000000003,
+          "y": 13.49999999999999
+        },
+        "after": {
+          "x": 17.44166369055217,
+          "y": 13.558336309447844
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 458,
+            "rect": {
+              "width": 1440,
+              "height": 916
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "desktop",
+        "kind": "idle",
+        "iteration": 2,
+        "profile": false,
+        "duration": 10018.400000000373,
+        "frames": 598,
+        "p50": 16.69999999999709,
+        "p95": 16.700000000004366,
+        "p99": 16.80000000000291,
+        "max": 33.299999999995634,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 17.44166369055217,
+          "y": 13.558336309447844
+        },
+        "after": {
+          "x": 17.44166369055217,
+          "y": 13.558336309447844
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 458,
+            "rect": {
+              "width": 1440,
+              "height": 916
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "desktop",
+        "kind": "movement",
+        "iteration": 2,
+        "profile": false,
+        "duration": 10163.299999998882,
+        "frames": 608,
+        "p50": 16.69999999999709,
+        "p95": 16.70000000001164,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.16500000000008,
+        "before": {
+          "x": 17.44166369055217,
+          "y": 13.558336309447844
+        },
+        "after": {
+          "x": 17.55975052301028,
+          "y": 13.440249476989768
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 458,
+            "rect": {
+              "width": 1440,
+              "height": 916
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "desktop",
+        "kind": "idle",
+        "iteration": 3,
+        "profile": false,
+        "duration": 10021.799999998882,
+        "frames": 598,
+        "p50": 16.69999999999709,
+        "p95": 16.80000000000291,
+        "p99": 16.80000000000291,
+        "max": 33.30000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 17.55975052301028,
+          "y": 13.440249476989768
+        },
+        "after": {
+          "x": 17.55975052301028,
+          "y": 13.440249476989768
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 458,
+            "rect": {
+              "width": 1440,
+              "height": 916
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "desktop",
+        "kind": "movement",
+        "iteration": 3,
+        "profile": false,
+        "duration": 10127.699999999255,
+        "frames": 604,
+        "p50": 16.69999999999709,
+        "p95": 16.79999999998836,
+        "p99": 16.80000000000291,
+        "max": 49.90000000000873,
+        "longtasks": [
+          {
+            "start": 86532.09999999963,
+            "duration": 59
+          }
+        ],
+        "observedTravelLowerBound": 50.28050000000005,
+        "before": {
+          "x": 17.55975052301028,
+          "y": 13.440249476989768
+        },
+        "after": {
+          "x": 17.407369011664613,
+          "y": 13.592630988335443
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 458,
+            "rect": {
+              "width": 1440,
+              "height": 916
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "desktop",
+        "kind": "idle",
+        "iteration": 4,
+        "profile": false,
+        "duration": 10006,
+        "frames": 598,
+        "p50": 16.69999999999709,
+        "p95": 16.79999999998836,
+        "p99": 16.80000000000291,
+        "max": 33.30000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 17.407369011664613,
+          "y": 13.592630988335443
+        },
+        "after": {
+          "x": 17.407369011664613,
+          "y": 13.592630988335443
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 458,
+            "rect": {
+              "width": 1440,
+              "height": 916
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "desktop",
+        "kind": "movement",
+        "iteration": 4,
+        "profile": false,
+        "duration": 10113,
+        "frames": 606,
+        "p50": 16.69999999999709,
+        "p95": 16.70000000001164,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 49.99900000000009,
+        "before": {
+          "x": 17.407369011664613,
+          "y": 13.592630988335443
+        },
+        "after": {
+          "x": 17.40807611844579,
+          "y": 13.591923881554267
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 458,
+            "rect": {
+              "width": 1440,
+              "height": 916
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      }
+    ]
+  },
+  "apartment-profile.json": {
+    "errors": [
+      "console:Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "hardware": {
+      "cpus": [
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor"
+      ],
+      "memory": 18882662400,
+      "load": [
+        0.8,
+        0.52,
+        0.36
+      ]
+    },
+    "browser": "155.0.8059.79",
+    "rows": [
+      {
+        "scenario": "apartment",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 0,
+        "profile": true,
+        "duration": 10012.800000000745,
+        "frames": 600,
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 17.5,
+          "y": 13.5
+        },
+        "after": {
+          "x": 17.5,
+          "y": 13.5
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 386,
+            "rect": {
+              "width": 390,
+              "height": 772
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "apartment",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 0,
+        "profile": true,
+        "duration": 10116.400000000373,
+        "frames": 607,
+        "p50": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.24700000000005,
+        "before": {
+          "x": 17.5,
+          "y": 13.5
+        },
+        "after": {
+          "x": 17.44060303038033,
+          "y": 13.559396969619682
+        },
+        "mapAfter": "apartment",
+        "returnPositions": 0,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 386,
+            "rect": {
+              "width": 390,
+              "height": 772
+            }
+          }
+        ],
+        "dpr": 1,
+        "workload": null,
+        "calls": {}
+      }
+    ]
+  },
+  "diagnostic.json": {
+    "errors": [
+      "console:Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "hardware": {
+      "cpus": [
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor"
+      ],
+      "memory": 18882662400,
+      "load": [
+        0.45,
+        0.45,
+        0.36
+      ]
+    },
+    "browser": "155.0.8059.79",
+    "rows": [
+      {
+        "scenario": "restaurant",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10008.300000000745,
+        "frames": 599,
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 12,
+          "y": 17
+        },
+        "after": {
+          "x": 12,
+          "y": 17
+        },
+        "mapAfter": "restaurant",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "workload": {
+          "mapId": "restaurant",
+          "props": 6,
+          "custom": 50,
+          "restaurantCustomers": 4,
+          "actors": [],
+          "player": {
+            "x": 12,
+            "y": 17
+          }
+        },
+        "calls": {
+          "world/art/restaurant/index.ts:drawMap:ground": {
+            "count": 220,
+            "total": 279.40000000968575,
+            "max": 2.700000001117587
+          },
+          "ground": {
+            "count": 220,
+            "total": 280.600000012666,
+            "max": 2.700000001117587
+          },
+          "world/atmosphere/canvas.ts:drawAtmosphere": {
+            "count": 440,
+            "total": 3.9999999925494194,
+            "max": 0.19999999925494194
+          },
+          "world/art/restaurant/index.ts:renderObjects": {
+            "count": 220,
+            "total": 3.099999997764826,
+            "max": 0.10000000149011612
+          },
+          "world/atmosphere/canvas.ts:renderAtmosphereObjects": {
+            "count": 220,
+            "total": 1.2999999970197678,
+            "max": 0.10000000149011612
+          },
+          "world/art/restaurant/index.ts:restaurantObjects": {
+            "count": 220,
+            "total": 1.3999999985098839,
+            "max": 0.599999999627471
+          },
+          "world/life-bridge.ts:planFor": {
+            "count": 280,
+            "total": 0.19999999925494194,
+            "max": 0.09999999962747097
+          },
+          "world/life-bridge.ts:actorsFor": {
+            "count": 250,
+            "total": 6.499999992549419,
+            "max": 0.2000000011175871
+          },
+          "world/art/restaurant/index.ts:drawMap:objects": {
+            "count": 220,
+            "total": 0.599999999627471,
+            "max": 0.5
+          },
+          "world/characters/artwork.mjs:frame": {
+            "count": 1100,
+            "total": 86.30000001937151,
+            "max": 1.5
+          },
+          "world/characters/adapter.ts:actorCommands": {
+            "count": 1100,
+            "total": 28.400000002235174,
+            "max": 0.6999999992549419
+          },
+          "world/characters/index.ts:sampleActor": {
+            "count": 1100,
+            "total": 167.10000004060566,
+            "max": 1.5
+          },
+          "world/characters/adapter.ts:paintActorCanvas": {
+            "count": 1100,
+            "total": 75.80000003241003,
+            "max": 0.5
+          },
+          "world/characters/adapter.ts:drawActor": {
+            "count": 1100,
+            "total": 76.70000003091991,
+            "max": 0.5
+          },
+          "sortedObjects": {
+            "count": 220,
+            "total": 793.1000000089407,
+            "max": 6.100000001490116
+          },
+          "world/art/restaurant/index.ts:drawMap:foreground": {
+            "count": 220,
+            "total": 0.900000000372529,
+            "max": 0.10000000149011612
+          },
+          "foreground": {
+            "count": 220,
+            "total": 1.3999999985098839,
+            "max": 0.10000000149011612
+          },
+          "world/painter.ts:paintWorld": {
+            "count": 220,
+            "total": 1125.8000000230968,
+            "max": 8.699999999254942
+          },
+          "world/WorldViewport.tsx:WorldViewport": {
+            "count": 30,
+            "total": 3.6000000033527613,
+            "max": 0.30000000074505806
+          },
+          "save.ts:saveGame": {
+            "count": 10,
+            "total": 9.599999999627471,
+            "max": 1.099999999627471
+          },
+          "world/dynamic.ts:mapsForNeighbourhood": {
+            "count": 20,
+            "total": 0.2000000011175871,
+            "max": 0.10000000149011612
+          },
+          "worldSchema.safeParse": {
+            "count": 20,
+            "total": 1.200000001117587,
+            "max": 0.2000000011175871
+          },
+          "world/state.ts:restoreWorld": {
+            "count": 20,
+            "total": 3.399999998509884,
+            "max": 0.30000000074505806
+          },
+          "world/state.ts:reduceWorld": {
+            "count": 10,
+            "total": 0,
+            "max": 0
+          },
+          "neighbourhood/transitions.ts:reduceNeighbourhoodGame": {
+            "count": 10,
+            "total": 1.9999999962747097,
+            "max": 0.2999999988824129
+          },
+          "opening.ts:reduceSession": {
+            "count": 10,
+            "total": 2.1999999955296516,
+            "max": 0.3999999985098839
+          },
+          "checkpoint": {
+            "count": 10,
+            "total": 1.8000000063329935,
+            "max": 0.2000000011175871
+          },
+          "App.tsx:App": {
+            "count": 10,
+            "total": 4.199999999254942,
+            "max": 0.7999999988824129
+          }
+        }
+      },
+      {
+        "scenario": "restaurant",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10112.599999999627,
+        "frames": 605,
+        "p50": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.41499999999999,
+        "before": {
+          "x": 12,
+          "y": 17
+        },
+        "after": {
+          "x": 12.058689862838474,
+          "y": 17.05868986283847
+        },
+        "mapAfter": "restaurant",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "workload": {
+          "mapId": "restaurant",
+          "props": 6,
+          "custom": 50,
+          "restaurantCustomers": 4,
+          "actors": [],
+          "player": {
+            "x": 11.941310137161521,
+            "y": 16.941310137161523
+          }
+        },
+        "calls": {
+          "world/dynamic.ts:mapsForNeighbourhood": {
+            "count": 1213,
+            "total": 2.600000001490116,
+            "max": 0.10000000149011612
+          },
+          "worldSchema.safeParse": {
+            "count": 1213,
+            "total": 19.099999990314245,
+            "max": 0.30000000074505806
+          },
+          "world/state.ts:restoreWorld": {
+            "count": 1213,
+            "total": 100.70000002533197,
+            "max": 0.5
+          },
+          "world/state.ts:reduceWorld": {
+            "count": 613,
+            "total": 5.099999999627471,
+            "max": 0.10000000149011612
+          },
+          "neighbourhood/transitions.ts:reduceNeighbourhoodGame": {
+            "count": 613,
+            "total": 61.50000001490116,
+            "max": 0.5
+          },
+          "opening.ts:reduceSession": {
+            "count": 613,
+            "total": 63.4000000115484,
+            "max": 0.5
+          },
+          "checkpoint": {
+            "count": 613,
+            "total": 56.099999986588955,
+            "max": 0.30000000074505806
+          },
+          "App.tsx:App": {
+            "count": 600,
+            "total": 154.10000002011657,
+            "max": 1.800000000745058
+          },
+          "world/life-bridge.ts:planFor": {
+            "count": 1424,
+            "total": 0.2999999988824129,
+            "max": 0.09999999962747097
+          },
+          "world/life-bridge.ts:actorsFor": {
+            "count": 824,
+            "total": 12.50000000745058,
+            "max": 1.700000001117587
+          },
+          "world/WorldViewport.tsx:WorldViewport": {
+            "count": 600,
+            "total": 34.70000000670552,
+            "max": 2.100000001490116
+          },
+          "world/art/restaurant/index.ts:drawMap:ground": {
+            "count": 224,
+            "total": 288.5000000037253,
+            "max": 2.900000000372529
+          },
+          "ground": {
+            "count": 224,
+            "total": 289.6000000052154,
+            "max": 2.900000000372529
+          },
+          "world/atmosphere/canvas.ts:drawAtmosphere": {
+            "count": 448,
+            "total": 2.900000000372529,
+            "max": 0.10000000149011612
+          },
+          "world/art/restaurant/index.ts:renderObjects": {
+            "count": 224,
+            "total": 3.299999998882413,
+            "max": 0.19999999925494194
+          },
+          "world/atmosphere/canvas.ts:renderAtmosphereObjects": {
+            "count": 224,
+            "total": 1.599999999627471,
+            "max": 0.10000000149011612
+          },
+          "world/art/restaurant/index.ts:restaurantObjects": {
+            "count": 224,
+            "total": 0.7999999988824129,
+            "max": 0.10000000149011612
+          },
+          "world/art/restaurant/index.ts:drawMap:objects": {
+            "count": 224,
+            "total": 0.09999999962747097,
+            "max": 0.09999999962747097
+          },
+          "world/characters/artwork.mjs:frame": {
+            "count": 1120,
+            "total": 107.99999998137355,
+            "max": 0.6999999992549419
+          },
+          "world/characters/adapter.ts:actorCommands": {
+            "count": 1120,
+            "total": 26.500000001862645,
+            "max": 0.7000000011175871
+          },
+          "world/characters/index.ts:sampleActor": {
+            "count": 1120,
+            "total": 190.799999948591,
+            "max": 0.8000000007450581
+          },
+          "world/characters/adapter.ts:paintActorCanvas": {
+            "count": 1120,
+            "total": 79.50000002421439,
+            "max": 0.599999999627471
+          },
+          "world/characters/adapter.ts:drawActor": {
+            "count": 1120,
+            "total": 80.80000002682209,
+            "max": 0.6000000014901161
+          },
+          "sortedObjects": {
+            "count": 224,
+            "total": 846.3000000137836,
+            "max": 6.800000000745058
+          },
+          "world/art/restaurant/index.ts:drawMap:foreground": {
+            "count": 224,
+            "total": 0.30000000074505806,
+            "max": 0.10000000149011612
+          },
+          "foreground": {
+            "count": 224,
+            "total": 1.1000000014901161,
+            "max": 0.10000000149011612
+          },
+          "world/painter.ts:paintWorld": {
+            "count": 224,
+            "total": 1173.4000000022352,
+            "max": 9.099999999627471
+          }
+        }
+      },
+      {
+        "scenario": "town",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10009.800000000745,
+        "frames": 597,
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000291,
+        "max": 33.400000000001455,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 34,
+          "y": 32
+        },
+        "after": {
+          "x": 34,
+          "y": 32
+        },
+        "mapAfter": "town",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "workload": {
+          "mapId": "town",
+          "props": 120,
+          "custom": 122,
+          "restaurantCustomers": 0,
+          "actors": [
+            {
+              "id": "town.canal-birds",
+              "characterId": "bird",
+              "position": {
+                "x": 65.3,
+                "y": 50.3
+              },
+              "screen": {
+                "x": 240.5,
+                "y": 420.79999999999995
+              }
+            },
+            {
+              "id": "town.park-birds",
+              "characterId": "bird",
+              "position": {
+                "x": 7,
+                "y": 35.5
+              },
+              "screen": {
+                "x": -238,
+                "y": 18.75
+              }
+            },
+            {
+              "id": "town.morning-walk",
+              "characterId": "aunt",
+              "position": {
+                "x": 42.5,
+                "y": 14
+              },
+              "screen": {
+                "x": 389,
+                "y": 95.75
+              }
+            }
+          ],
+          "player": {
+            "x": 34,
+            "y": 32
+          }
+        },
+        "calls": {
+          "world/art/town/index.ts:drawProp:steps": {
+            "count": 888,
+            "total": 22.599999982863665,
+            "max": 13.199999999254942
+          },
+          "world/art/town/index.ts:drawProp:gutter": {
+            "count": 1110,
+            "total": 3.599999999627471,
+            "max": 0.10000000149011612
+          },
+          "world/art/town/index.ts:drawProp:drain": {
+            "count": 1332,
+            "total": 15.200000001117587,
+            "max": 0.599999999627471
+          },
+          "world/art/town/index.ts:drawProp:flowerbed": {
+            "count": 444,
+            "total": 9.399999998509884,
+            "max": 0.40000000037252903
+          },
+          "world/art/town/index.ts:drawMap:ground": {
+            "count": 222,
+            "total": 828.6000000089407,
+            "max": 24.300000000745058
+          },
+          "ground": {
+            "count": 222,
+            "total": 831.9000000022352,
+            "max": 24.300000000745058
+          },
+          "world/atmosphere/canvas.ts:drawAtmosphere": {
+            "count": 444,
+            "total": 49.599999997764826,
+            "max": 2.400000000372529
+          },
+          "world/art/town/index.ts:renderObjects": {
+            "count": 222,
+            "total": 11.699999999254942,
+            "max": 0.5
+          },
+          "world/atmosphere/canvas.ts:renderAtmosphereObjects": {
+            "count": 222,
+            "total": 3.6000000052154064,
+            "max": 0.10000000149011612
+          },
+          "world/life-bridge.ts:planFor": {
+            "count": 282,
+            "total": 0.6999999992549419,
+            "max": 0.10000000149011612
+          },
+          "world/life-bridge.ts:actorsFor": {
+            "count": 252,
+            "total": 15.399999992921948,
+            "max": 0.6999999992549419
+          },
+          "world/art/town/index.ts:drawMap:objects": {
+            "count": 222,
+            "total": 0.09999999962747097,
+            "max": 0.09999999962747097
+          },
+          "world/art/town/index.ts:drawProp:hedge": {
+            "count": 2664,
+            "total": 50.90000000409782,
+            "max": 2.699999999254942
+          },
+          "world/art/town/index.ts:drawProp:fence": {
+            "count": 2664,
+            "total": 11.299999995157123,
+            "max": 0.2000000011175871
+          },
+          "world/art/town/index.ts:drawProp:tree": {
+            "count": 2664,
+            "total": 81.79999999888241,
+            "max": 2.300000000745058
+          },
+          "world/art/town/index.ts:drawProp:building-residence": {
+            "count": 444,
+            "total": 95.70000000298023,
+            "max": 3.599999999627471
+          },
+          "world/art/town/index.ts:drawProp:laundry": {
+            "count": 666,
+            "total": 5.800000013783574,
+            "max": 0.10000000149011612
+          },
+          "world/art/town/index.ts:drawProp:milestone": {
+            "count": 222,
+            "total": 0.09999999962747097,
+            "max": 0.09999999962747097
+          },
+          "world/art/town/index.ts:drawProp:utility-pole": {
+            "count": 444,
+            "total": 0.6000000014901161,
+            "max": 0.10000000149011612
+          },
+          "world/art/town/index.ts:drawProp:street-lamp": {
+            "count": 1554,
+            "total": 14.999999998137355,
+            "max": 0.8999999985098839
+          },
+          "world/art/town/index.ts:drawProp:planter": {
+            "count": 2220,
+            "total": 25.999999983236194,
+            "max": 0.3999999985098839
+          },
+          "world/art/town/index.ts:drawProp:bicycle": {
+            "count": 888,
+            "total": 18.100000001490116,
+            "max": 0.5
+          },
+          "world/art/town/index.ts:drawProp:building-row": {
+            "count": 666,
+            "total": 25.69999999552965,
+            "max": 0.30000000074505806
+          },
+          "world/art/town/index.ts:drawProp:building-shutter": {
+            "count": 444,
+            "total": 76.49999999813735,
+            "max": 3.400000000372529
+          },
+          "world/art/town/index.ts:drawProp:bollard": {
+            "count": 1776,
+            "total": 7.3000000063329935,
+            "max": 0.19999999925494194
+          },
+          "world/art/town/index.ts:drawProp:bench": {
+            "count": 888,
+            "total": 14.30000001564622,
+            "max": 0.2000000011175871
+          },
+          "world/art/town/index.ts:drawProp:gate": {
+            "count": 222,
+            "total": 0.2999999988824129,
+            "max": 0.09999999962747097
+          },
+          "world/art/town/index.ts:drawProp:building-restaurant": {
+            "count": 222,
+            "total": 50.5,
+            "max": 2.199999999254942
+          },
+          "world/characters/artwork.mjs:frame": {
+            "count": 444,
+            "total": 68.8999999947846,
+            "max": 11.199999999254942
+          },
+          "world/characters/adapter.ts:actorCommands": {
+            "count": 444,
+            "total": 12.199999991804361,
+            "max": 0.19999999925494194
+          },
+          "world/characters/index.ts:sampleActor": {
+            "count": 444,
+            "total": 106.70000000484288,
+            "max": 11.300000000745058
+          },
+          "world/characters/adapter.ts:paintActorCanvas": {
+            "count": 444,
+            "total": 34.30000000447035,
+            "max": 1.099999999627471
+          },
+          "world/characters/adapter.ts:drawActor": {
+            "count": 444,
+            "total": 35.00000000745058,
+            "max": 1.1000000014901161
+          },
+          "world/art/town/index.ts:drawProp:awning": {
+            "count": 666,
+            "total": 24.29999998025596,
+            "max": 3
+          },
+          "world/art/town/index.ts:drawProp:stone-table": {
+            "count": 222,
+            "total": 0.19999999925494194,
+            "max": 0.09999999962747097
+          },
+          "world/art/town/index.ts:drawProp:market-stall": {
+            "count": 222,
+            "total": 11.700000006705523,
+            "max": 1.099999999627471
+          },
+          "world/art/town/index.ts:drawProp:building-tea": {
+            "count": 222,
+            "total": 0.4000000022351742,
+            "max": 0.10000000149011612
+          },
+          "world/art/town/index.ts:drawProp:crates": {
+            "count": 888,
+            "total": 9.899999992921948,
+            "max": 0.40000000037252903
+          },
+          "world/art/town/index.ts:drawProp:baskets": {
+            "count": 222,
+            "total": 4.699999999254942,
+            "max": 0.2000000011175871
+          },
+          "world/art/town/index.ts:drawProp:building-shop": {
+            "count": 888,
+            "total": 63.099999986588955,
+            "max": 2.100000001490116
+          },
+          "world/art/town/index.ts:drawProp:building-workshop": {
+            "count": 222,
+            "total": 0.2000000011175871,
+            "max": 0.10000000149011612
+          },
+          "world/art/town/index.ts:drawProp:building-utility": {
+            "count": 222,
+            "total": 24.600000008940697,
+            "max": 0.40000000037252903
+          },
+          "world/art/town/index.ts:drawProp:pipes": {
+            "count": 222,
+            "total": 1.6999999973922968,
+            "max": 0.2000000011175871
+          },
+          "world/art/town/index.ts:drawProp:closed-gate": {
+            "count": 222,
+            "total": 0.09999999962747097,
+            "max": 0.09999999962747097
+          },
+          "sortedObjects": {
+            "count": 222,
+            "total": 833.1000000014901,
+            "max": 14.300000000745058
+          },
+          "world/art/town/index.ts:drawMap:foreground": {
+            "count": 222,
+            "total": 0.2999999988824129,
+            "max": 0.09999999962747097
+          },
+          "foreground": {
+            "count": 222,
+            "total": 1.1999999973922968,
+            "max": 0.10000000149011612
+          },
+          "world/painter.ts:paintWorld": {
+            "count": 222,
+            "total": 1798.5999999772757,
+            "max": 39.09999999962747
+          },
+          "world/WorldViewport.tsx:WorldViewport": {
+            "count": 30,
+            "total": 7.8000000063329935,
+            "max": 0.599999999627471
+          },
+          "save.ts:saveGame": {
+            "count": 10,
+            "total": 10.700000001117587,
+            "max": 1.699999999254942
+          },
+          "world/dynamic.ts:mapsForNeighbourhood": {
+            "count": 20,
+            "total": 0,
+            "max": 0
+          },
+          "worldSchema.safeParse": {
+            "count": 20,
+            "total": 1.2999999951571226,
+            "max": 0.19999999925494194
+          },
+          "world/state.ts:restoreWorld": {
+            "count": 20,
+            "total": 6.299999997019768,
+            "max": 0.6999999992549419
+          },
+          "world/state.ts:reduceWorld": {
+            "count": 10,
+            "total": 0,
+            "max": 0
+          },
+          "neighbourhood/transitions.ts:reduceNeighbourhoodGame": {
+            "count": 10,
+            "total": 4.699999997392297,
+            "max": 0.6999999992549419
+          },
+          "opening.ts:reduceSession": {
+            "count": 10,
+            "total": 4.799999998882413,
+            "max": 0.6999999992549419
+          },
+          "checkpoint": {
+            "count": 10,
+            "total": 1.699999999254942,
+            "max": 0.2999999988824129
+          },
+          "App.tsx:App": {
+            "count": 10,
+            "total": 6.499999998137355,
+            "max": 1.099999999627471
+          }
+        }
+      },
+      {
+        "scenario": "town",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10109.299999998882,
+        "frames": 606,
+        "p50": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 49.57310475543066,
+        "before": {
+          "x": 34,
+          "y": 32
+        },
+        "after": {
+          "x": 33.88297382771364,
+          "y": 32.766150197415634
+        },
+        "mapAfter": "town",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "workload": {
+          "mapId": "town",
+          "props": 120,
+          "custom": 122,
+          "restaurantCustomers": 0,
+          "actors": [
+            {
+              "id": "town.canal-birds",
+              "characterId": "bird",
+              "position": {
+                "x": 63.25046282327045,
+                "y": 48.564404725983835
+              },
+              "screen": {
+                "x": 237.04663907015282,
+                "y": 400.6273600121218
+              }
+            },
+            {
+              "id": "town.park-birds",
+              "characterId": "bird",
+              "position": {
+                "x": 10,
+                "y": 35.5
+              },
+              "screen": {
+                "x": -205,
+                "y": 35.89558849122325
+              }
+            },
+            {
+              "id": "town.morning-walk",
+              "characterId": "aunt",
+              "position": {
+                "x": 42.5,
+                "y": 14
+              },
+              "screen": {
+                "x": 389,
+                "y": 96.39558849122325
+              }
+            }
+          ],
+          "player": {
+            "x": 33.94131013716152,
+            "y": 31.941310137161523
+          }
+        },
+        "calls": {
+          "world/dynamic.ts:mapsForNeighbourhood": {
+            "count": 1214,
+            "total": 3.2999999951571226,
+            "max": 0.10000000149011612
+          },
+          "worldSchema.safeParse": {
+            "count": 1214,
+            "total": 24.500000005587935,
+            "max": 0.5
+          },
+          "world/state.ts:restoreWorld": {
+            "count": 1214,
+            "total": 124.89999996498227,
+            "max": 5.300000000745058
+          },
+          "world/state.ts:reduceWorld": {
+            "count": 612,
+            "total": 14.800000008195639,
+            "max": 0.6999999992549419
+          },
+          "neighbourhood/transitions.ts:reduceNeighbourhoodGame": {
+            "count": 612,
+            "total": 85.3000000026077,
+            "max": 5.300000000745058
+          },
+          "opening.ts:reduceSession": {
+            "count": 612,
+            "total": 86.300000006333,
+            "max": 5.300000000745058
+          },
+          "checkpoint": {
+            "count": 612,
+            "total": 66.49999997764826,
+            "max": 1.5
+          },
+          "App.tsx:App": {
+            "count": 602,
+            "total": 181.0999999884516,
+            "max": 1.6000000014901161
+          },
+          "world/life-bridge.ts:planFor": {
+            "count": 1430,
+            "total": 0.5,
+            "max": 0.10000000149011612
+          },
+          "world/life-bridge.ts:actorsFor": {
+            "count": 828,
+            "total": 18.200000010430813,
+            "max": 0.2999999988824129
+          },
+          "world/WorldViewport.tsx:WorldViewport": {
+            "count": 602,
+            "total": 46.90000001899898,
+            "max": 0.6000000014901161
+          },
+          "world/art/town/index.ts:drawProp:steps": {
+            "count": 904,
+            "total": 11.100000005215406,
+            "max": 0.2000000011175871
+          },
+          "world/art/town/index.ts:drawProp:gutter": {
+            "count": 1130,
+            "total": 4.199999995529652,
+            "max": 0.10000000149011612
+          },
+          "world/art/town/index.ts:drawProp:drain": {
+            "count": 1356,
+            "total": 9.799999995157123,
+            "max": 0.40000000037252903
+          },
+          "world/art/town/index.ts:drawProp:flowerbed": {
+            "count": 452,
+            "total": 7.200000004842877,
+            "max": 0.2000000011175871
+          },
+          "world/art/town/index.ts:drawMap:ground": {
+            "count": 226,
+            "total": 790.7999999970198,
+            "max": 8.799999998882413
+          },
+          "ground": {
+            "count": 226,
+            "total": 792.0999999959022,
+            "max": 8.799999998882413
+          },
+          "world/atmosphere/canvas.ts:drawAtmosphere": {
+            "count": 452,
+            "total": 49.90000001899898,
+            "max": 2.300000000745058
+          },
+          "world/art/town/index.ts:renderObjects": {
+            "count": 226,
+            "total": 11.200000002980232,
+            "max": 0.5
+          },
+          "world/atmosphere/canvas.ts:renderAtmosphereObjects": {
+            "count": 226,
+            "total": 2.0000000055879354,
+            "max": 0.19999999925494194
+          },
+          "world/art/town/index.ts:drawMap:objects": {
+            "count": 226,
+            "total": 0,
+            "max": 0
+          },
+          "world/art/town/index.ts:drawProp:hedge": {
+            "count": 2712,
+            "total": 48.40000000782311,
+            "max": 0.40000000037252903
+          },
+          "world/art/town/index.ts:drawProp:fence": {
+            "count": 2712,
+            "total": 15.700000008568168,
+            "max": 0.3999999985098839
+          },
+          "world/art/town/index.ts:drawProp:tree": {
+            "count": 2712,
+            "total": 81.49999999068677,
+            "max": 0.5
+          },
+          "world/art/town/index.ts:drawProp:building-residence": {
+            "count": 452,
+            "total": 86.09999999590218,
+            "max": 2.300000000745058
+          },
+          "world/art/town/index.ts:drawProp:laundry": {
+            "count": 678,
+            "total": 6.2000000067055225,
+            "max": 0.2000000011175871
+          },
+          "world/art/town/index.ts:drawProp:milestone": {
+            "count": 226,
+            "total": 0.09999999962747097,
+            "max": 0.09999999962747097
+          },
+          "world/art/town/index.ts:drawProp:utility-pole": {
+            "count": 452,
+            "total": 0.2000000011175871,
+            "max": 0.10000000149011612
+          },
+          "world/art/town/index.ts:drawProp:street-lamp": {
+            "count": 1582,
+            "total": 13.700000002980232,
+            "max": 0.2000000011175871
+          },
+          "world/art/town/index.ts:drawProp:planter": {
+            "count": 2260,
+            "total": 29.50000000745058,
+            "max": 0.3999999985098839
+          },
+          "world/art/town/index.ts:drawProp:bicycle": {
+            "count": 904,
+            "total": 16.39999999664724,
+            "max": 0.2000000011175871
+          },
+          "world/art/town/index.ts:drawProp:building-row": {
+            "count": 678,
+            "total": 26.100000001490116,
+            "max": 0.900000000372529
+          },
+          "world/art/town/index.ts:drawProp:building-shutter": {
+            "count": 452,
+            "total": 73.69999997317791,
+            "max": 2.300000000745058
+          },
+          "world/art/town/index.ts:drawProp:bollard": {
+            "count": 1808,
+            "total": 8.300000002607703,
+            "max": 0.19999999925494194
+          },
+          "world/art/town/index.ts:drawProp:bench": {
+            "count": 904,
+            "total": 15.300000002607703,
+            "max": 0.30000000074505806
+          },
+          "world/art/town/index.ts:drawProp:gate": {
+            "count": 226,
+            "total": 0.09999999962747097,
+            "max": 0.09999999962747097
+          },
+          "world/art/town/index.ts:drawProp:building-restaurant": {
+            "count": 226,
+            "total": 50.099999994039536,
+            "max": 1.699999999254942
+          },
+          "world/characters/artwork.mjs:frame": {
+            "count": 452,
+            "total": 60.599999986588955,
+            "max": 1.099999999627471
+          },
+          "world/characters/adapter.ts:actorCommands": {
+            "count": 452,
+            "total": 10.40000001527369,
+            "max": 0.6000000014901161
+          },
+          "world/characters/index.ts:sampleActor": {
+            "count": 452,
+            "total": 91.70000001043081,
+            "max": 1.200000001117587
+          },
+          "world/characters/adapter.ts:paintActorCanvas": {
+            "count": 452,
+            "total": 30.899999994784594,
+            "max": 2.099999999627471
+          },
+          "world/characters/adapter.ts:drawActor": {
+            "count": 452,
+            "total": 31.39999999292195,
+            "max": 2.099999999627471
+          },
+          "world/art/town/index.ts:drawProp:awning": {
+            "count": 678,
+            "total": 22.60000000335276,
+            "max": 2.099999999627471
+          },
+          "world/art/town/index.ts:drawProp:stone-table": {
+            "count": 226,
+            "total": 0.2999999988824129,
+            "max": 0.09999999962747097
+          },
+          "world/art/town/index.ts:drawProp:market-stall": {
+            "count": 226,
+            "total": 10.099999997764826,
+            "max": 0.19999999925494194
+          },
+          "world/art/town/index.ts:drawProp:building-tea": {
+            "count": 226,
+            "total": 0.19999999925494194,
+            "max": 0.09999999962747097
+          },
+          "world/art/town/index.ts:drawProp:crates": {
+            "count": 904,
+            "total": 9.000000001862645,
+            "max": 0.2000000011175871
+          },
+          "world/art/town/index.ts:drawProp:baskets": {
+            "count": 226,
+            "total": 4.200000004842877,
+            "max": 0.10000000149011612
+          },
+          "world/art/town/index.ts:drawProp:building-shop": {
+            "count": 904,
+            "total": 36.600000001490116,
+            "max": 0.40000000037252903
+          },
+          "world/art/town/index.ts:drawProp:building-workshop": {
+            "count": 226,
+            "total": 0.2999999988824129,
+            "max": 0.09999999962747097
+          },
+          "world/art/town/index.ts:drawProp:building-utility": {
+            "count": 226,
+            "total": 24.69999999180436,
+            "max": 0.40000000037252903
+          },
+          "world/art/town/index.ts:drawProp:pipes": {
+            "count": 226,
+            "total": 2.100000001490116,
+            "max": 0.10000000149011612
+          },
+          "world/art/town/index.ts:drawProp:closed-gate": {
+            "count": 226,
+            "total": 0.19999999925494194,
+            "max": 0.09999999962747097
+          },
+          "sortedObjects": {
+            "count": 226,
+            "total": 771.4999999906868,
+            "max": 7.300000000745058
+          },
+          "world/art/town/index.ts:drawMap:foreground": {
+            "count": 226,
+            "total": 0.40000000037252903,
+            "max": 0.10000000149011612
+          },
+          "foreground": {
+            "count": 226,
+            "total": 0.9000000022351742,
+            "max": 0.10000000149011612
+          },
+          "world/painter.ts:paintWorld": {
+            "count": 226,
+            "total": 1680.3000000175089,
+            "max": 15.300000000745058
+          }
+        }
+      },
+      {
+        "scenario": "park",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10008.799999998882,
+        "frames": 600,
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 30,
+          "y": 27
+        },
+        "after": {
+          "x": 30,
+          "y": 27
+        },
+        "mapAfter": "park",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "workload": {
+          "mapId": "park",
+          "props": 161,
+          "custom": 205,
+          "restaurantCustomers": 0,
+          "actors": [
+            {
+              "id": "life.park.sparrow",
+              "characterId": "bird",
+              "position": {
+                "x": 32,
+                "y": 29
+              },
+              "screen": {
+                "x": 97.5,
+                "y": 170
+              }
+            }
+          ],
+          "player": {
+            "x": 30,
+            "y": 27
+          }
+        },
+        "calls": {
+          "world/art/landscape/index.ts:drawMap:ground": {
+            "count": 223,
+            "total": 139.60000001080334,
+            "max": 5.599999999627471
+          },
+          "ground": {
+            "count": 223,
+            "total": 141.70000001229346,
+            "max": 5.599999999627471
+          },
+          "world/atmosphere/canvas.ts:drawAtmosphere": {
+            "count": 446,
+            "total": 107.99999999813735,
+            "max": 1.5
+          },
+          "world/art/landscape/index.ts:renderObjects": {
+            "count": 223,
+            "total": 8.500000005587935,
+            "max": 1.400000000372529
+          },
+          "world/atmosphere/canvas.ts:renderAtmosphereObjects": {
+            "count": 223,
+            "total": 4.600000003352761,
+            "max": 0.30000000074505806
+          },
+          "world/life-bridge.ts:planFor": {
+            "count": 283,
+            "total": 0.7999999988824129,
+            "max": 0.10000000149011612
+          },
+          "world/life-bridge.ts:actorsFor": {
+            "count": 253,
+            "total": 15.899999991059303,
+            "max": 2.199999999254942
+          },
+          "world/art/landscape/index.ts:drawMap:objects": {
+            "count": 223,
+            "total": 0.10000000149011612,
+            "max": 0.10000000149011612
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:fern": {
+            "count": 1115,
+            "total": 16.200000012293458,
+            "max": 0.2000000011175871
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:bamboo": {
+            "count": 1784,
+            "total": 84.80000000074506,
+            "max": 4.5
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:flowers": {
+            "count": 669,
+            "total": 3.699999999254942,
+            "max": 0.599999999627471
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:tree": {
+            "count": 1561,
+            "total": 37.99999999627471,
+            "max": 7.099999999627471
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:mature-tree": {
+            "count": 446,
+            "total": 15.09999999217689,
+            "max": 0.30000000074505806
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:bench": {
+            "count": 223,
+            "total": 2.000000001862645,
+            "max": 0.10000000149011612
+          },
+          "world/characters/artwork.mjs:frame": {
+            "count": 223,
+            "total": 42.30000000633299,
+            "max": 11.199999999254942
+          },
+          "world/characters/adapter.ts:actorCommands": {
+            "count": 223,
+            "total": 8.699999997392297,
+            "max": 1.699999999254942
+          },
+          "world/characters/index.ts:sampleActor": {
+            "count": 223,
+            "total": 64.40000000037253,
+            "max": 11.300000000745058
+          },
+          "world/characters/adapter.ts:paintActorCanvas": {
+            "count": 223,
+            "total": 19.30000001937151,
+            "max": 0.30000000074505806
+          },
+          "world/characters/adapter.ts:drawActor": {
+            "count": 223,
+            "total": 19.800000017508864,
+            "max": 0.30000000074505806
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:willow": {
+            "count": 223,
+            "total": 6.799999991431832,
+            "max": 1.199999999254942
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:reeds": {
+            "count": 446,
+            "total": 2.400000000372529,
+            "max": 0.10000000149011612
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:lilies": {
+            "count": 223,
+            "total": 1.4999999944120646,
+            "max": 0.2999999988824129
+          },
+          "sortedObjects": {
+            "count": 223,
+            "total": 374.20000000856817,
+            "max": 12.5
+          },
+          "world/art/landscape/index.ts:drawMap:foreground": {
+            "count": 223,
+            "total": 0.09999999962747097,
+            "max": 0.09999999962747097
+          },
+          "foreground": {
+            "count": 223,
+            "total": 0.900000000372529,
+            "max": 0.10000000149011612
+          },
+          "world/painter.ts:paintWorld": {
+            "count": 223,
+            "total": 742.0000000037253,
+            "max": 13.800000000745058
+          },
+          "world/WorldViewport.tsx:WorldViewport": {
+            "count": 30,
+            "total": 5.300000000745058,
+            "max": 0.30000000074505806
+          },
+          "save.ts:saveGame": {
+            "count": 10,
+            "total": 10.099999999627471,
+            "max": 1.199999999254942
+          },
+          "world/dynamic.ts:mapsForNeighbourhood": {
+            "count": 20,
+            "total": 0,
+            "max": 0
+          },
+          "worldSchema.safeParse": {
+            "count": 20,
+            "total": 1.1999999955296516,
+            "max": 0.19999999925494194
+          },
+          "world/state.ts:restoreWorld": {
+            "count": 20,
+            "total": 8.399999996647239,
+            "max": 3.900000000372529
+          },
+          "world/state.ts:reduceWorld": {
+            "count": 10,
+            "total": 0.09999999962747097,
+            "max": 0.09999999962747097
+          },
+          "neighbourhood/transitions.ts:reduceNeighbourhoodGame": {
+            "count": 10,
+            "total": 3.199999999254942,
+            "max": 0.5
+          },
+          "opening.ts:reduceSession": {
+            "count": 10,
+            "total": 3.299999998882413,
+            "max": 0.5
+          },
+          "checkpoint": {
+            "count": 10,
+            "total": 2.400000000372529,
+            "max": 0.8000000007450581
+          },
+          "App.tsx:App": {
+            "count": 10,
+            "total": 15.499999998137355,
+            "max": 10.599999999627471
+          }
+        }
+      },
+      {
+        "scenario": "park",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10086,
+        "frames": 604,
+        "p50": 16.69999999999709,
+        "p95": 16.799999999999272,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 49.18308596088566,
+        "before": {
+          "x": 30,
+          "y": 27
+        },
+        "after": {
+          "x": 29.99858578643764,
+          "y": 28.29471251635258
+        },
+        "mapAfter": "park",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "workload": {
+          "mapId": "park",
+          "props": 161,
+          "custom": 205,
+          "restaurantCustomers": 0,
+          "actors": [
+            {
+              "id": "life.park.sparrow",
+              "characterId": "bird",
+              "position": {
+                "x": 30,
+                "y": 31
+              },
+              "screen": {
+                "x": 53.5,
+                "y": 170
+              }
+            }
+          ],
+          "player": {
+            "x": 30,
+            "y": 27
+          }
+        },
+        "calls": {
+          "world/dynamic.ts:mapsForNeighbourhood": {
+            "count": 1210,
+            "total": 3.1000000052154064,
+            "max": 0.10000000149011612
+          },
+          "worldSchema.safeParse": {
+            "count": 1210,
+            "total": 23.300000000745058,
+            "max": 0.2000000011175871
+          },
+          "world/state.ts:restoreWorld": {
+            "count": 1210,
+            "total": 117.10000001452863,
+            "max": 1.400000000372529
+          },
+          "world/state.ts:reduceWorld": {
+            "count": 610,
+            "total": 10.799999993294477,
+            "max": 0.19999999925494194
+          },
+          "neighbourhood/transitions.ts:reduceNeighbourhoodGame": {
+            "count": 610,
+            "total": 76.3000000026077,
+            "max": 1.5
+          },
+          "opening.ts:reduceSession": {
+            "count": 610,
+            "total": 77.50000000186265,
+            "max": 1.5
+          },
+          "checkpoint": {
+            "count": 610,
+            "total": 69.20000002346933,
+            "max": 1.900000000372529
+          },
+          "world/art/landscape/index.ts:drawMap:ground": {
+            "count": 226,
+            "total": 155.79999997839332,
+            "max": 7.599999999627471
+          },
+          "ground": {
+            "count": 226,
+            "total": 157.1999999806285,
+            "max": 7.599999999627471
+          },
+          "world/atmosphere/canvas.ts:drawAtmosphere": {
+            "count": 452,
+            "total": 116.10000001639128,
+            "max": 5.5
+          },
+          "world/art/landscape/index.ts:renderObjects": {
+            "count": 226,
+            "total": 7.099999995902181,
+            "max": 0.2999999988824129
+          },
+          "world/atmosphere/canvas.ts:renderAtmosphereObjects": {
+            "count": 226,
+            "total": 4.799999995157123,
+            "max": 0.19999999925494194
+          },
+          "world/life-bridge.ts:planFor": {
+            "count": 1426,
+            "total": 0.49999999813735485,
+            "max": 0.09999999962747097
+          },
+          "world/life-bridge.ts:actorsFor": {
+            "count": 826,
+            "total": 16.000000009313226,
+            "max": 0.40000000037252903
+          },
+          "world/art/landscape/index.ts:drawMap:objects": {
+            "count": 226,
+            "total": 0.09999999962747097,
+            "max": 0.09999999962747097
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:fern": {
+            "count": 1310,
+            "total": 17.80000000819564,
+            "max": 3.5
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:bamboo": {
+            "count": 1808,
+            "total": 82.90000002458692,
+            "max": 7.200000001117587
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:flowers": {
+            "count": 94,
+            "total": 0.7999999988824129,
+            "max": 0.10000000149011612
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:tree": {
+            "count": 1685,
+            "total": 37.299999974668026,
+            "max": 0.2999999988824129
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:mature-tree": {
+            "count": 473,
+            "total": 18.999999983236194,
+            "max": 1.699999999254942
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:bench": {
+            "count": 226,
+            "total": 2.6000000070780516,
+            "max": 0.10000000149011612
+          },
+          "world/characters/artwork.mjs:frame": {
+            "count": 226,
+            "total": 32.60000001639128,
+            "max": 1
+          },
+          "world/characters/adapter.ts:actorCommands": {
+            "count": 226,
+            "total": 5.399999994784594,
+            "max": 0.19999999925494194
+          },
+          "world/characters/index.ts:sampleActor": {
+            "count": 226,
+            "total": 50.20000000670552,
+            "max": 1.099999999627471
+          },
+          "world/characters/adapter.ts:paintActorCanvas": {
+            "count": 226,
+            "total": 15.900000000372529,
+            "max": 0.5
+          },
+          "world/characters/adapter.ts:drawActor": {
+            "count": 226,
+            "total": 16.299999998882413,
+            "max": 0.5
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:willow": {
+            "count": 226,
+            "total": 4.99999999627471,
+            "max": 0.10000000149011612
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:reeds": {
+            "count": 452,
+            "total": 3.700000001117587,
+            "max": 0.10000000149011612
+          },
+          "world/art/landscape/draw.ts:drawLandscapeProp:lilies": {
+            "count": 226,
+            "total": 1.7000000029802322,
+            "max": 0.10000000149011612
+          },
+          "sortedObjects": {
+            "count": 226,
+            "total": 354.70000001601875,
+            "max": 8.400000000372529
+          },
+          "world/art/landscape/index.ts:drawMap:foreground": {
+            "count": 226,
+            "total": 0.09999999962747097,
+            "max": 0.09999999962747097
+          },
+          "foreground": {
+            "count": 226,
+            "total": 1.1999999973922968,
+            "max": 0.19999999925494194
+          },
+          "world/painter.ts:paintWorld": {
+            "count": 226,
+            "total": 736.9000000078231,
+            "max": 16
+          },
+          "App.tsx:App": {
+            "count": 600,
+            "total": 169.90000000596046,
+            "max": 2.599999999627471
+          },
+          "world/WorldViewport.tsx:WorldViewport": {
+            "count": 600,
+            "total": 44.300000036135316,
+            "max": 0.5
+          }
+        }
+      }
+    ]
+  },
+  "production.json": {
+    "errors": [
+      "console:Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "hardware": {
+      "cpus": [
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor"
+      ],
+      "memory": 18882662400,
+      "load": [
+        0.08,
+        0.12,
+        0.22
+      ]
+    },
+    "browser": "155.0.8059.79",
+    "rows": [
+      {
+        "scenario": "restaurant",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10007.799999998882,
+        "frames": 599,
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 12,
+          "y": 17
+        },
+        "after": {
+          "x": 12,
+          "y": 17
+        },
+        "mapAfter": "restaurant",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "calls": {}
+      },
+      {
+        "scenario": "restaurant",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10095.800000000745,
+        "frames": 605,
+        "p50": 16.69999999999709,
+        "p95": 16.799999999999272,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.33099999999999,
+        "before": {
+          "x": 12,
+          "y": 17
+        },
+        "after": {
+          "x": 12.000000000000021,
+          "y": 16.999999999999982
+        },
+        "mapAfter": "restaurant",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "calls": {}
+      },
+      {
+        "scenario": "restaurant",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 1,
+        "profile": false,
+        "duration": 10008.900000000373,
+        "frames": 599,
+        "p50": 16.69999999999709,
+        "p95": 16.799999999995634,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 12.000000000000021,
+          "y": 16.999999999999982
+        },
+        "after": {
+          "x": 12.000000000000021,
+          "y": 16.999999999999982
+        },
+        "mapAfter": "restaurant",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "calls": {}
+      },
+      {
+        "scenario": "restaurant",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 1,
+        "profile": false,
+        "duration": 10082,
+        "frames": 604,
+        "p50": 16.69999999999709,
+        "p95": 16.700000000004366,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.16500000000023,
+        "before": {
+          "x": 12.000000000000021,
+          "y": 16.999999999999982
+        },
+        "after": {
+          "x": 12.118086832458149,
+          "y": 17.1180868324581
+        },
+        "mapAfter": "restaurant",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "calls": {}
+      },
+      {
+        "scenario": "town",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10010.299999998882,
+        "frames": 600,
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 34,
+          "y": 32
+        },
+        "after": {
+          "x": 34,
+          "y": 32
+        },
+        "mapAfter": "town",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "calls": {}
+      },
+      {
+        "scenario": "town",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10090.199999999255,
+        "frames": 604,
+        "p50": 16.69999999999709,
+        "p95": 16.799999999999272,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.0727667775117,
+        "before": {
+          "x": 34,
+          "y": 32
+        },
+        "after": {
+          "x": 34.17713024868722,
+          "y": 32.94292689271225
+        },
+        "mapAfter": "town",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "calls": {}
+      },
+      {
+        "scenario": "town",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 1,
+        "profile": false,
+        "duration": 10008.299999998882,
+        "frames": 599,
+        "p50": 16.69999999999709,
+        "p95": 16.799999999995634,
+        "p99": 16.80000000000291,
+        "max": 33.400000000001455,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 34.17713024868722,
+          "y": 32.94292689271225
+        },
+        "after": {
+          "x": 34.17713024868722,
+          "y": 32.94292689271225
+        },
+        "mapAfter": "town",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "calls": {}
+      },
+      {
+        "scenario": "town",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 1,
+        "profile": false,
+        "duration": 10116.900000000373,
+        "frames": 606,
+        "p50": 16.69999999999709,
+        "p95": 16.700000000004366,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.83100000000002,
+        "before": {
+          "x": 34.17713024868722,
+          "y": 32.94292689271225
+        },
+        "after": {
+          "x": 34.177130248687256,
+          "y": 32.94292689271228
+        },
+        "mapAfter": "town",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "calls": {}
+      },
+      {
+        "scenario": "park",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10009,
+        "frames": 600,
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 30,
+          "y": 27
+        },
+        "after": {
+          "x": 30,
+          "y": 27
+        },
+        "mapAfter": "park",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "calls": {}
+      },
+      {
+        "scenario": "park",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10094,
+        "frames": 602,
+        "p50": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.799999999999272,
+        "max": 50.099999999998545,
+        "longtasks": [
+          {
+            "start": 25774.299999998882,
+            "duration": 60
+          }
+        ],
+        "observedTravelLowerBound": 49.46590893376863,
+        "before": {
+          "x": 30,
+          "y": 27
+        },
+        "after": {
+          "x": 29.963937554159514,
+          "y": 28.260417837465056
+        },
+        "mapAfter": "park",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "calls": {}
+      },
+      {
+        "scenario": "park",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 1,
+        "profile": false,
+        "duration": 10008.799999998882,
+        "frames": 600,
+        "p50": 16.69999999999709,
+        "p95": 16.700000000004366,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 29.963937554159514,
+          "y": 28.260417837465056
+        },
+        "after": {
+          "x": 29.963937554159514,
+          "y": 28.260417837465056
+        },
+        "mapAfter": "park",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "calls": {}
+      },
+      {
+        "scenario": "park",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 1,
+        "profile": false,
+        "duration": 10075.099999999627,
+        "frames": 603,
+        "p50": 16.69999999999709,
+        "p95": 16.700000000004366,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.080999999999634,
+        "before": {
+          "x": 29.963937554159514,
+          "y": 28.260417837465056
+        },
+        "after": {
+          "x": 29.905954798102268,
+          "y": 28.20243508140781
+        },
+        "mapAfter": "park",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "calls": {}
+      },
+      {
+        "scenario": "restaurant",
+        "viewport": "desktop",
+        "kind": "idle",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10009,
+        "frames": 599,
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 12,
+          "y": 17
+        },
+        "after": {
+          "x": 12,
+          "y": 17
+        },
+        "mapAfter": "restaurant",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 408,
+            "rect": {
+              "width": 1440,
+              "height": 816
+            }
+          }
+        ],
+        "dpr": 1,
+        "calls": {}
+      },
+      {
+        "scenario": "restaurant",
+        "viewport": "desktop",
+        "kind": "movement",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10109.400000000373,
+        "frames": 606,
+        "p50": 16.69999999999709,
+        "p95": 16.799999999999272,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.33050000000005,
+        "before": {
+          "x": 12,
+          "y": 17
+        },
+        "after": {
+          "x": 12.235113004744553,
+          "y": 17.235113004744555
+        },
+        "mapAfter": "restaurant",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 408,
+            "rect": {
+              "width": 1440,
+              "height": 816
+            }
+          }
+        ],
+        "dpr": 1,
+        "calls": {}
+      },
+      {
+        "scenario": "restaurant",
+        "viewport": "desktop",
+        "kind": "idle",
+        "iteration": 1,
+        "profile": false,
+        "duration": 10007.799999998882,
+        "frames": 600,
+        "p50": 16.69999999999709,
+        "p95": 16.700000000004366,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 12.235113004744553,
+          "y": 17.235113004744555
+        },
+        "after": {
+          "x": 12.235113004744553,
+          "y": 17.235113004744555
+        },
+        "mapAfter": "restaurant",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 408,
+            "rect": {
+              "width": 1440,
+              "height": 816
+            }
+          }
+        ],
+        "dpr": 1,
+        "calls": {}
+      },
+      {
+        "scenario": "restaurant",
+        "viewport": "desktop",
+        "kind": "movement",
+        "iteration": 1,
+        "profile": false,
+        "duration": 10100.300000000745,
+        "frames": 605,
+        "p50": 16.69999999999709,
+        "p95": 16.700000000004366,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.16550000000025,
+        "before": {
+          "x": 12.235113004744553,
+          "y": 17.235113004744555
+        },
+        "after": {
+          "x": 12.11879393923939,
+          "y": 17.118793939239396
+        },
+        "mapAfter": "restaurant",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 408,
+            "rect": {
+              "width": 1440,
+              "height": 816
+            }
+          }
+        ],
+        "dpr": 1,
+        "calls": {}
+      },
+      {
+        "scenario": "town",
+        "viewport": "desktop",
+        "kind": "idle",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10006,
+        "frames": 599,
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 34,
+          "y": 32
+        },
+        "after": {
+          "x": 34,
+          "y": 32
+        },
+        "mapAfter": "town",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 408,
+            "rect": {
+              "width": 1440,
+              "height": 816
+            }
+          }
+        ],
+        "dpr": 1,
+        "calls": {}
+      },
+      {
+        "scenario": "town",
+        "viewport": "desktop",
+        "kind": "movement",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10152.799999998882,
+        "frames": 607,
+        "p50": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000291,
+        "max": 33.400000000001455,
+        "longtasks": [],
+        "observedTravelLowerBound": 49.488045103870874,
+        "before": {
+          "x": 34,
+          "y": 32
+        },
+        "after": {
+          "x": 33.999292893218815,
+          "y": 32.76544309063444
+        },
+        "mapAfter": "town",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 408,
+            "rect": {
+              "width": 1440,
+              "height": 816
+            }
+          }
+        ],
+        "dpr": 1,
+        "calls": {}
+      },
+      {
+        "scenario": "town",
+        "viewport": "desktop",
+        "kind": "idle",
+        "iteration": 1,
+        "profile": false,
+        "duration": 10005.199999999255,
+        "frames": 598,
+        "p50": 16.69999999999709,
+        "p95": 16.799999999995634,
+        "p99": 16.80000000000291,
+        "max": 33.30000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 33.999292893218815,
+          "y": 32.76544309063444
+        },
+        "after": {
+          "x": 33.999292893218815,
+          "y": 32.76544309063444
+        },
+        "mapAfter": "town",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 408,
+            "rect": {
+              "width": 1440,
+              "height": 816
+            }
+          }
+        ],
+        "dpr": 1,
+        "calls": {}
+      },
+      {
+        "scenario": "town",
+        "viewport": "desktop",
+        "kind": "movement",
+        "iteration": 1,
+        "profile": false,
+        "duration": 10115.5,
+        "frames": 606,
+        "p50": 16.69999999999709,
+        "p95": 16.700000000004366,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.081499999999885,
+        "before": {
+          "x": 33.999292893218815,
+          "y": 32.76544309063444
+        },
+        "after": {
+          "x": 34.058336309447924,
+          "y": 32.82448650686355
+        },
+        "mapAfter": "town",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 408,
+            "rect": {
+              "width": 1440,
+              "height": 816
+            }
+          }
+        ],
+        "dpr": 1,
+        "calls": {}
+      },
+      {
+        "scenario": "park",
+        "viewport": "desktop",
+        "kind": "idle",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10005.199999999255,
+        "frames": 599,
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000109,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 30,
+          "y": 27
+        },
+        "after": {
+          "x": 30,
+          "y": 27
+        },
+        "mapAfter": "park",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 408,
+            "rect": {
+              "width": 1440,
+              "height": 816
+            }
+          }
+        ],
+        "dpr": 1,
+        "calls": {}
+      },
+      {
+        "scenario": "park",
+        "viewport": "desktop",
+        "kind": "movement",
+        "iteration": 0,
+        "profile": false,
+        "duration": 10113.89999999851,
+        "frames": 606,
+        "p50": 16.69999999999709,
+        "p95": 16.700000000000728,
+        "p99": 16.799999999999272,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 49.59859809898189,
+        "before": {
+          "x": 30,
+          "y": 27
+        },
+        "after": {
+          "x": 29.941663690552126,
+          "y": 28.237790420467064
+        },
+        "mapAfter": "park",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 408,
+            "rect": {
+              "width": 1440,
+              "height": 816
+            }
+          }
+        ],
+        "dpr": 1,
+        "calls": {}
+      },
+      {
+        "scenario": "park",
+        "viewport": "desktop",
+        "kind": "idle",
+        "iteration": 1,
+        "profile": false,
+        "duration": 10008.900000000373,
+        "frames": 600,
+        "p50": 16.69999999999709,
+        "p95": 16.799999999995634,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 29.941663690552126,
+          "y": 28.237790420467064
+        },
+        "after": {
+          "x": 29.941663690552126,
+          "y": 28.237790420467064
+        },
+        "mapAfter": "park",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 408,
+            "rect": {
+              "width": 1440,
+              "height": 816
+            }
+          }
+        ],
+        "dpr": 1,
+        "calls": {}
+      },
+      {
+        "scenario": "park",
+        "viewport": "desktop",
+        "kind": "movement",
+        "iteration": 1,
+        "profile": false,
+        "duration": 10086.200000001118,
+        "frames": 604,
+        "p50": 16.69999999999709,
+        "p95": 16.799999999995634,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 50.33249999999966,
+        "before": {
+          "x": 29.941663690552126,
+          "y": 28.237790420467064
+        },
+        "after": {
+          "x": 30.05939696961961,
+          "y": 28.355523699534547
+        },
+        "mapAfter": "park",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 720,
+            "height": 408,
+            "rect": {
+              "width": 1440,
+              "height": 816
+            }
+          }
+        ],
+        "dpr": 1,
+        "calls": {}
+      }
+    ]
+  },
+  "profile.json": {
+    "errors": [
+      "console:Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "hardware": {
+      "cpus": [
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor",
+        "AMD EPYC 9V74 80-Core Processor"
+      ],
+      "memory": 18882662400,
+      "load": [
+        0.98,
+        0.58,
+        0.38
+      ]
+    },
+    "browser": "155.0.8059.79",
+    "rows": [
+      {
+        "scenario": "town",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 0,
+        "profile": true,
+        "duration": 10007.900000000373,
+        "frames": 598,
+        "p50": 16.69999999999891,
+        "p95": 16.799999999999272,
+        "p99": 16.80000000000109,
+        "max": 50,
+        "longtasks": [
+          {
+            "start": 18319.099999999627,
+            "duration": 53
+          }
+        ],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 34,
+          "y": 32
+        },
+        "after": {
+          "x": 34,
+          "y": 32
+        },
+        "mapAfter": "town",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "town",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 0,
+        "profile": true,
+        "duration": 10110.099999999627,
+        "frames": 606,
+        "p50": 16.700000000000728,
+        "p95": 16.799999999999272,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 49.48904510387092,
+        "before": {
+          "x": 34,
+          "y": 32
+        },
+        "after": {
+          "x": 34.00070710678116,
+          "y": 32.76685730419679
+        },
+        "mapAfter": "town",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "park",
+        "viewport": "phone",
+        "kind": "idle",
+        "iteration": 0,
+        "profile": true,
+        "duration": 10007,
+        "frames": 599,
+        "p50": 16.69999999999891,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 0,
+        "before": {
+          "x": 30,
+          "y": 27
+        },
+        "after": {
+          "x": 30,
+          "y": 27
+        },
+        "mapAfter": "park",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "workload": null,
+        "calls": {}
+      },
+      {
+        "scenario": "park",
+        "viewport": "phone",
+        "kind": "movement",
+        "iteration": 0,
+        "profile": true,
+        "duration": 10089.900000000373,
+        "frames": 605,
+        "p50": 16.700000000000728,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000291,
+        "max": 16.80000000000291,
+        "longtasks": [],
+        "observedTravelLowerBound": 49.349598098981865,
+        "before": {
+          "x": 30,
+          "y": 27
+        },
+        "after": {
+          "x": 29.998939339828187,
+          "y": 28.295066069743143
+        },
+        "mapAfter": "park",
+        "returnPositions": 10,
+        "visibility": "visible",
+        "focused": true,
+        "canvas": [
+          {
+            "width": 195,
+            "height": 296,
+            "rect": {
+              "width": 390,
+              "height": 592
+            }
+          }
+        ],
+        "dpr": 3,
+        "workload": null,
+        "calls": {}
+      }
+    ]
+  }
+}

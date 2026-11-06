@@ -1,0 +1,12 @@
+{"device":"phone","iteration":0,"label":"startup-movement","p95":16.700000000000273,"max":16.799999999999955,"longtasks":0,"exitCalls":0}
+{"device":"phone","iteration":1,"label":"startup-movement","p95":16.700000000000273,"max":16.800000000000182,"longtasks":0,"exitCalls":0}
+{"device":"phone","iteration":2,"label":"startup-movement","p95":16.800000000000068,"max":16.800000000000182,"longtasks":0,"exitCalls":0}
+{"device":"phone","iteration":3,"label":"startup-movement","p95":16.700000000000273,"max":16.800000000000182,"longtasks":0,"exitCalls":0}
+{"device":"phone","iteration":4,"label":"startup-movement","p95":16.700000000000045,"max":16.799999999999955,"longtasks":0,"exitCalls":0}
+{"device":"phone","iteration":4,"label":"warm-movement","p95":16.799999999999272,"max":33.19999999999709,"longtasks":0,"exitCalls":0}
+{"device":"desktop","iteration":0,"label":"startup-movement","p95":16.799999999999955,"max":33.200000000000045,"longtasks":0,"exitCalls":0}
+{"device":"desktop","iteration":1,"label":"startup-movement","p95":16.799999999999955,"max":33.39999999999998,"longtasks":0,"exitCalls":0}
+{"device":"desktop","iteration":2,"label":"startup-movement","p95":16.799999999999955,"max":33.30000000000007,"longtasks":0,"exitCalls":0}
+{"device":"desktop","iteration":3,"label":"startup-movement","p95":16.799999999999955,"max":33.39999999999998,"longtasks":0,"exitCalls":0}
+{"device":"desktop","iteration":4,"label":"startup-movement","p95":33.299999999999955,"max":200,"longtasks":3,"exitCalls":0}
+{"device":"desktop","iteration":4,"label":"warm-movement","p95":16.799999999999272,"max":16.80000000000291,"longtasks":0,"exitCalls":0}

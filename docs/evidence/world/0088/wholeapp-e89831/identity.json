@@ -1,0 +1,21 @@
+{
+  "head": "e89831bf65a4d7a7fd0ecca17e3deca047b011b0",
+  "snapshot": "/workspace/junyan-wholeapp-e89831",
+  "snapshotMethod": "git archive exact object",
+  "node": "22.23.4",
+  "chromium": "155.0.8059.79",
+  "react": "19.3.1",
+  "react-dom": "19.3.1",
+  "vite": "7.3.7",
+  "zod": "4.6.7",
+  "playwright": "1.64.1",
+  "cpuQuota": "400000 100000 (4 cores quota)",
+  "visibleLogicalCores": 5,
+  "memoryLimit": 17179869184,
+  "headless": true,
+  "cpuThrottle": null,
+  "serviceWorkers": "blocked",
+  "port": 5490,
+  "host": "127.0.0.1",
+  "diagnosticFinalConfigSha256": "8b11d4fa26fd225a2311f49b7fe82f99d9548f4b0e1d094cffa02dc381bf8307"
+}
