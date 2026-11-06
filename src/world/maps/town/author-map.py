@@ -74,6 +74,9 @@ for name,x,y,interaction in [('book-window',10.5,30,'observe-window'),('junction
  m['anchors'].append(dict(id='town.'+name,position=point(x,y),radius=1.4,featureId='exploration',interactionId='town.'+interaction))
 for name,actor,route in [('market-tender','lin-jie',[(30.6,40.3)]),('book-window-reader','xiao-li',[(11,30),(14,30),(18,32),(21,32)]),('canal-birds','bird',[(66.5,49.4),(65.3,50.3),(63,48.5)]),('park-birds','bird',[(7,35.5),(10,35.5),(12,35.5)]),('morning-walk','aunt',[(35.5,31.5),(42.5,31.5),(42.5,14),(45,10)]),('market-regular','zhang-laoshi',[(32,43.2)]),('workshop-delivery','xiao-zhou',[(70,33),(62,33),(62,47),(70,47)])]:
  m['npcHooks'].append(dict(id='town.'+name,position=point(*route[0]),route=[point(*p) for p in route],characterId=actor))
+m['npcHooks'] = [hook for hook in m['npcHooks'] if hook['characterId'] != 'aunt']
+m['npcHooks'].append(json.loads(Path(__file__).with_name('courier-hook.json').read_text()))
+
 variants = list(dict.fromkeys(item['variant'] for item in m['props'] + m['terrain']))
 Path(__file__).parents[2].joinpath('art/town/variants.json').write_text(json.dumps(variants, indent=2)+'\n')
 for item in m['props'] + m['terrain']: item['variant'] = variants.index(item['variant'])
