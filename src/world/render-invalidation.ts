@@ -8,7 +8,8 @@ export function reducedWorldChanged(previousGame: GameState, previousWorld: Worl
   if (before.length !== after.length || after.some(([key, value]) => Reflect.get(previousGame, key) !== value)) return true;
   const scene = (state: WorldState) => {
     const { life, ...space } = state;
-    const { elapsedMs: _elapsed, ...events } = life ?? { elapsedMs: 0 };
+    // Constructors and save parsing emit life fields in different orders.
+    const events = life && [life.version, life.discoveries, life.reactions, life.serviceDepartures, life.pauses];
     return JSON.stringify([space, events]);
   };
   return scene(previousWorld) !== scene(world);

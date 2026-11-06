@@ -474,7 +474,7 @@ export default function App() {
           {giftNotice&&<FeatureLine line={apartmentLines.gift} onLookup={lookup} onPlay={playLine}/>}
           {audioNotice}
         </ContextualInteraction>}
-        {locationId !== "restaurant" && panel === "none" && audioNotice}
+        {locationId !== "restaurant" && panel === "none" && !activityOpen && audioNotice}
         {saveError && (
           <p role="status" className="save-note">
             {ui.saveUnavailable}
