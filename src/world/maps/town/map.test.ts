@@ -3,6 +3,8 @@ import { worldMapSchema } from '../../schema';
 import { canStand, canWalk, contains, findPath } from '../../geometry';
 import { project, unproject } from '../../camera';
 import definition from './map.json';
+import { compileLife } from '../../life';
+import { navigationFor } from '../../life/navigation';
 
 const map = worldMapSchema.parse(definition);
 describe('authored town travel', () => {
@@ -26,6 +28,11 @@ describe('authored town travel', () => {
     for (const target of [...map.anchors, ...map.landmarks]) expect(findPath(map, map.defaultSpawn, target.position).length, target.id).toBeGreaterThan(0);
     expect(canWalk(map, { x: 34, y: 30 }, { x: 34, y: 20 })).toBe(false);
     expect(canStand(map, { x: 72, y: 42 })).toBe(false);
+  });
+  it('registers every authored resident and bird without blocking door arrivals', () => {
+    const plan = compileLife(map, navigationFor(map));
+    expect(plan.diagnostics).toEqual([]);
+    expect(plan.actors).toHaveLength(map.npcHooks.length);
   });
   it('keeps residents on collision-safe routes and projects phone edges accurately', () => {
     for (const hook of map.npcHooks) {

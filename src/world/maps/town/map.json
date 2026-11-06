@@ -4003,19 +4003,103 @@
   },
   "npcHooks": [
     {
-      "id": "town.morning-walk",
+      "id": "town.market-tender",
       "position": {
-        "x": 34,
+        "x": 30.6,
+        "y": 40.3
+      },
+      "route": [
+        {
+          "x": 30.6,
+          "y": 40.3
+        }
+      ],
+      "characterId": "lin-jie"
+    },
+    {
+      "id": "town.book-window-reader",
+      "position": {
+        "x": 11,
         "y": 30
       },
       "route": [
         {
-          "x": 34,
+          "x": 11,
           "y": 30
         },
         {
-          "x": 42.5,
+          "x": 14,
           "y": 30
+        },
+        {
+          "x": 18,
+          "y": 32
+        },
+        {
+          "x": 21,
+          "y": 32
+        }
+      ],
+      "characterId": "xiao-li"
+    },
+    {
+      "id": "town.canal-birds",
+      "position": {
+        "x": 66.5,
+        "y": 49.4
+      },
+      "route": [
+        {
+          "x": 66.5,
+          "y": 49.4
+        },
+        {
+          "x": 65.3,
+          "y": 50.3
+        },
+        {
+          "x": 63,
+          "y": 48.5
+        }
+      ],
+      "characterId": "bird"
+    },
+    {
+      "id": "town.park-birds",
+      "position": {
+        "x": 7,
+        "y": 35.5
+      },
+      "route": [
+        {
+          "x": 7,
+          "y": 35.5
+        },
+        {
+          "x": 10,
+          "y": 35.5
+        },
+        {
+          "x": 12,
+          "y": 35.5
+        }
+      ],
+      "characterId": "bird"
+    },
+    {
+      "id": "town.morning-walk",
+      "position": {
+        "x": 35.5,
+        "y": 31.5
+      },
+      "route": [
+        {
+          "x": 35.5,
+          "y": 31.5
+        },
+        {
+          "x": 42.5,
+          "y": 31.5
         },
         {
           "x": 42.5,

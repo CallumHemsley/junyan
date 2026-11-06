@@ -10,13 +10,14 @@ const C = {
   brass: [190, 157, 97], leaf: [98, 133, 91], darkLeaf: [65, 103, 79],
   glass: [127, 164, 169], brick: [167, 147, 114], paving: [190, 185, 159],
 };
-const color = (c: RGB, value = 1) => `rgb(${c.map(v => Math.round(v * value)).join(',')})`;
+const baseColor = (c: RGB, value = 1) => `rgb(${c.map(v => Math.round(v * value)).join(',')})`;
 const hash = (x: number, y: number) => {
   const n = Math.sin(x * 127.1 + y * 311.7) * 43758.5453;
   return n - Math.floor(n);
 };
 
 export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldRenderView) {
+  const color = (c: RGB, exposure = 1) => view.shadeColor?.([c[0], c[1], c[2]], exposure) ?? baseColor(c, exposure);
   const { x, y } = prop.position, w = prop.width, h = prop.height;
   const project = (a: number, b: number, z = 0) => view.project({ x: a, y: b }, z);
   const polygon = (points: Point[], fill: RGB, value = 1) => {
@@ -302,6 +303,7 @@ export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldR
 }
 
 export const drawMap: DrawMap = (ctx, map, view) => {
+  const color = (c: RGB, exposure = 1) => view.shadeColor?.([c[0], c[1], c[2]], exposure) ?? baseColor(c, exposure);
   if (map.id !== 'town') return;
   ctx.imageSmoothingEnabled = false;
   if (view.pass === 'ground') {
@@ -337,13 +339,15 @@ export const drawMap: DrawMap = (ctx, map, view) => {
     }
   }
   if (view.pass === 'ground') {
-    ctx.fillStyle = '#263f3425';
+    ctx.save(); ctx.globalAlpha *= .145;
+    ctx.fillStyle = color([38, 63, 52]);
     for (const prop of map.props.filter(p => p.layer === 'object')) {
       const w = prop.width, h = prop.height;
       const p = prop.position;
       const points = [{ x: p.x + .2, y: p.y + .3 }, { x: p.x + w + .4, y: p.y + .3 }, { x: p.x + w + .9, y: p.y + h + .8 }, { x: p.x + .7, y: p.y + h + .8 }].map(q => view.project(q));
       ctx.beginPath(); points.forEach((q,i) => i ? ctx.lineTo(Math.round(q.x),Math.round(q.y)) : ctx.moveTo(Math.round(q.x),Math.round(q.y))); ctx.closePath(); ctx.fill();
     }
+    ctx.restore();
   }
   if (view.pass === 'objects') return;
   const layer = view.pass === 'ground' ? 'ground' : 'foreground';
