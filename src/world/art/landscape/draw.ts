@@ -115,7 +115,8 @@ export function drawLandscapeProp(
     case 'crates':
       for(const [x,y] of [[-10,0],[8,-5]]){polygon([[x-9,y-5],[x,y-10],[x+9,y-5],[x,y]],'#b39a69');block(x-9,y-5,18,7,'#92764f');block(x-7,y-4,14,2,'#594e3d');block(x-9,y-1,18,2,'#bea16b');for(const dx of [-7,5])block(x+dx,y-4,2,7,'#d0b67c');}break;
     case 'tied-rope':
-      for(let i=0;i<18;i++)block(-16+i*2,-3+Math.round(Math.sin(i/17*Math.PI)*5),2,1,'#c3b083');break;
+      for(let i=0;i<18;i++){const y=-3+Math.round(Math.sin(i/17*Math.PI)*5);block(-16+i*2,y+1,2,1,'#746346');block(-16+i*2,y,2,1,'#d2bc86');}
+      for(const [x,y,w,h]of [[5,-1,12,1],[3,0,2,4],[5,4,12,1],[17,0,2,4],[6,1,9,1],[6,3,9,1]])block(x,y,w,h,'#b69a65');break;
     case 'worn-stones':
       for(const [x,y] of [[-9,0],[2,-5],[13,2],[-1,7]]){polygon([[x-6,y],[x-4,y-3],[x+5,y-2],[x+7,y+1],[x,y+3]],'#a4a58c');block(x-3,y-2,6,1,'#c2bfa1');}break;
     case 'cart':
@@ -128,13 +129,46 @@ export function drawLandscapeProp(
       block(-17,-6,34,7,'#b4b6a0');block(-13,-26,26,21,'#8f927d');block(-6,-20,12,14,'#50675b');
       polygon([[-24,-28],[0,-43],[24,-28],[0,-17]],'#58736a');block(-23,-28,46,3,'#364f48');block(-2,-44,4,5,'#bdb18a');break;
     case 'boat':
-      polygon([[-29,-1],[-17,-10],[21,-5],[30,2],[13,10],[-17,6]],'#6b6b52');polygon([[-23,-1],[-15,-7],[19,-2],[23,2],[11,6],[-15,3]],'#bca475');
-      for(let i=-2;i<3;i++)block(i*7,-5+i,2,10,'#8c7958');block(-3,-14,2,19,'#d1bd91');break;
-    case 'mooring': block(-3,-16,6,17,'#7c6d4c');block(-5,-17,10,3,'#b8a376');break;
+      polygon([[-31,0],[-18,-11],[21,-7],[32,1],[15,12],[-18,8]],'#4b4c39');
+      polygon([[-30,0],[-18,5],[15,9],[30,1],[28,7],[14,15],[-18,11]],'#80613d');
+      polygon([[-27,-1],[-17,-8],[20,-4],[27,1],[13,8],[-16,4]],'#b39a64');
+      polygon([[-23,0],[-15,-5],[18,-2],[22,1],[11,5],[-14,2]],'#62573b');
+      for(let i=-2;i<3;i++){
+        const x=i*8,y=i;
+        polygon([[x-2,y-5],[x+1,y-5],[x+2,y+4],[x-1,y+5]],'#b49b65');
+        block(x-1,y-4,1,7,'#d0b77e');
+      }
+      polygon([[-28,0],[-18,-8],[-16,-7],[-24,0],[-15,3],[-17,4]],'#d6bc83');
+      polygon([[14,8],[27,1],[29,2],[15,10]],'#c7a66b');
+      for(let i=0;i<4;i++){block(-14+i*9,8+i%2,6,1,'#b2935b');block(-10+i*8,10+i%2,3,1,'#574d35');}
+      block(-3,-14,2,19,'#dec38d');block(-4,-15,4,2,'#80663f');break;
+    case 'mooring':
+      polygon([[-7,0],[-3,-3],[7,0],[2,4]],'#746b4c');
+      block(-4,-18,9,20,'#584c34');block(-3,-17,5,18,'#9c7c4e');block(-3,-16,2,17,'#bd9d62');
+      block(-5,-18,11,3,'#c8ac75');block(-5,-8,11,2,'#d0b481');block(-5,-5,11,2,'#9e8559');break;
     case 'stool': block(-6,-8,3,9,'#756647');block(4,-8,3,9,'#756647');block(-8,-11,17,4,'#b7a06d');break;
     case 'laundry':
-      block(-29,-30,3,31,'#807152');block(27,-30,3,31,'#807152');block(-29,-29,59,1,'#d3c59e');
-      for(let i=-2;i<=2;i++){block(i*10-4,-28,8,14+i%2*4,i%2?'#b8ccbe':'#e3dcc1');block(i*10-3,-27,2,11,'#c5cdb8');}break;
+      for(const x of [-29,27]){
+        block(x-2,-43,7,44,'#4e4934');block(x-1,-42,3,41,'#ab8853');block(x-3,-44,9,3,'#c9ae79');
+        polygon([[x-4,1],[x+1,-12],[x+5,1],[x+2,3]],'#6b6241');
+        block(x-2,-4,8,3,'#6e6d48');block(x,-18,4,2,'#7c6843');
+      }
+      block(-31,-42,64,4,'#514932');block(-31,-42,64,1,'#cfb67c');
+      polygon([[-28,-38],[-18,-29],[-18,-26],[-28,-34]],'#887047');
+      polygon([[27,-38],[17,-29],[17,-26],[27,-34]],'#887047');
+      block(-27,-37,56,1,'#c6b27a');
+      for(let i=-2;i<=2;i++){
+        const x=i*10-4,drop=[23,18,29,24,20][i+2],jade=i%2!==0;
+        polygon([[x,-36],[x+8,-36],[x+9,-36+drop],[x+3,-35+drop],[x,-36+drop]],'#6a7f69');
+        block(x,-36,7,drop-1,jade?'#769b8c':'#e2d5ac');
+        block(x+1,-35,2,drop-3,jade?'#b3c2a7':'#f0e5c4');
+        block(x+6,-34,1,drop-4,jade?'#557a6e':'#b8b291');
+        if(i===-1){block(x-3,-35,3,6,'#769b8c');block(x+7,-35,3,6,'#557a6e');}
+        if(i===0){block(x,-15,7,2,'#7c9986');block(x,-11,7,1,'#a1b099');}
+        block(x+1,-38,2,4,'#a0804f');block(x+5,-38,2,3,'#c5a66c');
+        block(x,-37+drop,7,1,jade?'#58786a':'#a6a17f');
+      }
+      break;
     case 'picnic':
       polygon([[-22,-3],[0,-14],[23,-3],[0,10]],'#c4ba8a');for(let i=-1;i<=1;i++)block(i*8-1,-4,3,3,'#8e9a78');block(-3,-12,8,5,'#b39560');break;
     default: painted=false;

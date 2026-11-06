@@ -8,6 +8,38 @@ function polygon(ctx: CanvasRenderingContext2D, view: WorldRenderView, points: {
   ctx.closePath(); ctx.fill();
 }
 
+function forestBed(ctx:CanvasRenderingContext2D,view:WorldRenderView,prop:Parameters<typeof drawLandscapeProp>[1]){
+  const {x,y}=prop.position,w=prop.width*1.4,h=prop.width;
+  const contour=[[-.52,-.05],[-.48,-.27],[-.31,-.32],[-.23,-.46],[.04,-.48],[.18,-.37],[.43,-.3],[.51,-.08],[.45,.08],[.49,.23],[.26,.41],[.02,.44],[-.1,.35],[-.33,.38],[-.5,.19]];
+  polygon(ctx,view,contour.map(([dx,dy])=>({x:x+dx*w,y:y+dy*h})),'#60764d');
+  polygon(ctx,view,contour.map(([dx,dy])=>({x:x-.4+dx*w*.63,y:y+.2+dy*h*.65})),'#536e49');
+  // Smaller lit floor windows separate the canopy groups instead of a map-wide shade band.
+  polygon(ctx,view,[{x:x-w*.4,y:y+h*.1},{x:x-w*.18,y:y-h*.02},{x:x+w*.06,y:y+h*.13},{x:x-w*.02,y:y+h*.32},{x:x-w*.26,y:y+h*.3}], '#8b9965');
+}
+
+/** Timber stays inside the existing deck, including at the clipped water interfaces. */
+export function drawLowerCrossing(ctx:CanvasRenderingContext2D,map:Parameters<DrawMap>[1],view:WorldRenderView){
+  if(map.id!=='riverbank')return;
+  const deck=map.terrain.find(t=>t.id==='riverbank.low-footbridge');if(!deck)return;
+  const r=deck.rect,points=[{x:r.x,y:r.y},{x:r.x+r.width,y:r.y},{x:r.x+r.width,y:r.y+r.height},{x:r.x,y:r.y+r.height}];
+  ctx.save();ctx.beginPath();points.forEach((point,i)=>{const p=view.project(point);if(i)ctx.lineTo(p.x,p.y);else ctx.moveTo(p.x,p.y);});ctx.closePath();ctx.clip();
+  polygon(ctx,view,points,'#66553e');
+  const origin=view.project({x:0,y:0}),axis=view.project({x:1,y:0}),unit=Math.abs(axis.x-origin.x);
+  for(let x=r.x+.05,n=0;x<r.x+r.width;x+=.58,n++){
+    const end=Math.min(x+.53,r.x+r.width-.04),top=r.y+.13,bottom=r.y+r.height-.13;
+    const p=view.project({x,y:(top+bottom)/2});if(p.x<-unit*4||p.x>view.width+unit*4||p.y<-unit*3||p.y>view.height+unit*3)continue;
+    const repaired=n===19||n===20||n===37;
+    polygon(ctx,view,[{x,y:top},{x:end,y:top},{x:end,y:bottom},{x,y:bottom}],repaired?'#8b7951':['#ac9060','#b99f6d','#a58c60','#b39b6c'][n%4]);
+    polygon(ctx,view,[{x,y:top},{x:x+.08,y:top},{x:x+.08,y:bottom},{x,y:bottom}],'#d0b780');
+    polygon(ctx,view,[{x:x+.31,y:top+.3},{x:x+.35,y:top+.3},{x:x+.38,y:bottom-.35},{x:x+.34,y:bottom-.35}],'#85724e');
+    if(n%4===1)polygon(ctx,view,[{x:x+.14,y:top+.8},{x:x+.3,y:top+.57},{x:x+.43,y:top+.8},{x:x+.28,y:top+.94}],'#c6ab74');
+    ctx.fillStyle=view.shadeColor?.('#554b39')??'#554b39';
+    for(const y of [top+.16,bottom-.16]){const nail=view.project({x:x+.24,y});ctx.fillRect(Math.round(nail.x),Math.round(nail.y),Math.max(1,unit/18),Math.max(1,unit/18));}
+  }
+  for(const y of [r.y+.03,r.y+r.height-.12])polygon(ctx,view,[{x:r.x,y},{x:r.x+r.width,y},{x:r.x+r.width,y:y+.09},{x:r.x,y:y+.09}],'#786141');
+  ctx.restore();
+}
+
 export function drawContactShadows(ctx:CanvasRenderingContext2D,map:Parameters<DrawMap>[1],view:WorldRenderView){
   const origin=view.project({x:0,y:0}),axis=view.project({x:1,y:0}),unit=Math.abs(axis.x-origin.x);
   ctx.save();ctx.globalAlpha*=.2;ctx.fillStyle=view.shadeColor?.('#394f3c')??'#394f3c';
@@ -29,7 +61,8 @@ export const drawMap: DrawMap = (ctx, map, view) => {
   const shade=(base:string)=>view.shadeColor?.(base)??base;
   if (view.pass === 'ground') {
     // Distant forest is decorative; the map's authored walkable boundary is unchanged.
-    ctx.fillStyle=shade(map.id==='park'?'#849d83':'#7f9c8f');ctx.fillRect(0,0,view.width,view.height);
+    ctx.fillStyle=shade('#73895b');ctx.fillRect(0,0,view.width,view.height);
+    const forest:Parameters<typeof drawLandscapeProp>[1][]=[];
     const backdropExtent=Math.ceil((view.width+view.height)/Math.max(unit,1));
     for(let y=Math.floor((view.playerPosition.y-backdropExtent)/4)*4;y<view.playerPosition.y+backdropExtent;y+=4)for(let x=Math.floor((view.playerPosition.x-backdropExtent)/4)*4;x<view.playerPosition.x+backdropExtent;x+=4){
       if(x>=0&&y>=0&&x<=map.bounds.width&&y<=map.bounds.height)continue;
@@ -37,15 +70,20 @@ export const drawMap: DrawMap = (ctx, map, view) => {
       if(group===3||group===11)continue;
       const n=Math.abs((x*x*37+y*y*71+x*y*13)%97),p=view.project({x,y});
       if(p.x<-unit*5||p.y<-unit*2||p.x>view.width+unit*5||p.y>view.height+unit*8)continue;
-      ctx.save();ctx.globalAlpha*=.56;
-      drawLandscapeProp(ctx,{kind:n%13===0?'rock':map.id==='riverbank'&&group%5===0?'willow':map.id==='park'&&y>44&&x<0?'tree':'mature-tree',position:{x:x+n%3*.45,y:y+n%5*.24},width:3.4+(n%6)*.55,height:5,variant:map.id==='park'&&y>44&&x<0?2:n%2},(x,y,z=0)=>view.project({x,y},z),unit,0,true,shade);ctx.restore();
+      forest.push({kind:n%13===0?'rock':map.id==='riverbank'&&group%5===0?'willow':map.id==='park'&&y>44&&x<0?'tree':'mature-tree',position:{x:x+n%3*.45,y:y+n%5*.24},width:3.4+(n%6)*.55,height:5,variant:map.id==='park'&&y>44&&x<0?2:n%2});
     }
-
     const painted=new Set<string>();
     let floorPainted=false;
     const forestFloor=()=>drawLandscapeGround(ctx,map,view,'underlay');
     for (const terrain of map.terrain) {
-      if(!floorPainted&&terrain.material!=='grass'){forestFloor();floorPainted=true;}
+      if(!floorPainted&&terrain.material!=='grass'){
+        forestFloor();
+        // Let grouped roots and canopies cross the grass edge; the map rectangle must not cut them off.
+        // Water and authored routes paint next, keeping their real surfaces visible through this backdrop.
+        for(const prop of forest)forestBed(ctx,view,prop);
+        for(const prop of forest){ctx.save();ctx.globalAlpha*=.56;drawLandscapeProp(ctx,prop,(x,y,z=0)=>view.project({x,y},z),unit,0,true,shade);ctx.restore();}
+        floorPainted=true;
+      }
       if(terrain.material==='water'||terrain.material==='sand'){
         if(painted.has(terrain.material))continue;painted.add(terrain.material);ctx.fillStyle=shade(landscapeMaterialColor(terrain.material)!);ctx.beginPath();
         for(const t of map.terrain.filter(t=>t.material===terrain.material)){const r=t.rect;for(const [i,point] of [{x:r.x,y:r.y},{x:r.x+r.width,y:r.y},{x:r.x+r.width,y:r.y+r.height},{x:r.x,y:r.y+r.height}].entries()){const p=view.project(point);if(i)ctx.lineTo(Math.round(p.x),Math.round(p.y));else ctx.moveTo(Math.round(p.x),Math.round(p.y));}ctx.closePath();}
@@ -95,6 +133,7 @@ export const drawMap: DrawMap = (ctx, map, view) => {
       }
     }
     drawLandscapeGround(ctx,map,view,'verges');
+    drawLowerCrossing(ctx,map,view);
     drawContactShadows(ctx,map,view);
   }
 };
@@ -123,6 +162,16 @@ export const renderObjects: NonNullable<WorldArtModule['renderObjects']> = (map,
       objects.push({id:`${terrain.id}.rail-${x}-${y}`,position:{x:(x+end)/2,y},draw(ctx,current){
         const a=current.project({x,y},.8),b=current.project({x:end,y},.8),foot=current.project({x,y}),top=current.project({x,y},1);
         const origin=current.project({x:0,y:0}),axis=current.project({x:1,y:0}),unit=Math.abs(axis.x-origin.x);
+        if(terrain.id==='riverbank.low-footbridge'){
+          const shade=(color:string)=>current.shadeColor?.(color)??color;
+          ctx.lineWidth=Math.max(1,unit*.2);ctx.strokeStyle=shade('#5d4e38');ctx.beginPath();ctx.moveTo(a.x,a.y+unit*.06);ctx.lineTo(b.x,b.y+unit*.06);ctx.stroke();
+          ctx.lineWidth=Math.max(1,unit*.1);ctx.strokeStyle=shade('#b89a67');ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+          const width=Math.max(2,unit*.19),height=foot.y-top.y;
+          ctx.fillStyle=shade('#5c4e38');ctx.fillRect(Math.round(top.x-width/2),Math.round(top.y),Math.ceil(width),Math.ceil(height+unit*.14));
+          ctx.fillStyle=shade('#a88a58');ctx.fillRect(Math.round(top.x-width/2),Math.round(top.y),Math.max(1,Math.round(width*.52)),Math.ceil(height));
+          ctx.fillStyle=shade('#d0b57e');ctx.fillRect(Math.round(top.x-width/2-unit*.04),Math.round(top.y),Math.ceil(width+unit*.08),Math.max(1,Math.round(unit*.1)));
+          return;
+        }
         ctx.lineWidth=Math.max(1,unit*.09);ctx.strokeStyle=current.shadeColor?.('#756c50')??'#756c50';ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
         ctx.strokeStyle=current.shadeColor?.('#b8a376')??'#b8a376';ctx.beginPath();ctx.moveTo(foot.x,foot.y);ctx.lineTo(top.x,top.y);ctx.stroke();
       }});
