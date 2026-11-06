@@ -1,6 +1,6 @@
 import type { Point, WorldMapDefinition } from '../../schema';
 import variants from './variants.json';
-import type { WorldRenderView, DrawMap } from '../../render-contract';
+import type { WorldRenderView, DrawMap, WorldRenderObject } from '../../render-contract';
 
 type RGB = readonly number[];
 type Prop = WorldMapDefinition['props'][number];
@@ -42,12 +42,7 @@ export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldR
   const corners = [project(x - 2, y - 2, zMax), project(x + w + 2, y + h + 2), project(x - 2, y + h + 2), project(x + w + 2, y - 2)];
   if (Math.max(...corners.map(p => p.x)) < -20 || Math.min(...corners.map(p => p.x)) > view.width + 20 || Math.max(...corners.map(p => p.y)) < -20 || Math.min(...corners.map(p => p.y)) > view.height + 20) return;
   ctx.save();
-  if (isBuilding || prop.kind === 'tree') {
-    const player = project(view.playerPosition.x, view.playerPosition.y, 1.3);
-    const top = project(x + w / 2, y + h / 2, zMax), bottom = project(x + w / 2, y + h / 2);
-    const halfWidth = Math.abs(project(x + w, y).x - project(x, y + h).x) / 2 + 14;
-    if (Math.abs(player.x - bottom.x) < halfWidth && player.y > top.y && player.y < bottom.y && view.playerPosition.x + view.playerPosition.y < x + y + w + h) ctx.globalAlpha = .38;
-  }
+
 
   if (isBuilding) {
     const residence = prop.kind === 'building-residence', shop = prop.kind === 'building-shop';
@@ -239,6 +234,7 @@ export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldR
 }
 
 export const drawMap: DrawMap = (ctx, map, view) => {
+  if (map.id !== 'town') return;
   ctx.imageSmoothingEnabled = false;
   if (view.pass === 'ground') {
     ctx.fillStyle = color([104, 130, 103]); ctx.fillRect(0, 0, view.width, view.height);
@@ -268,6 +264,18 @@ export const drawMap: DrawMap = (ctx, map, view) => {
       }
     }
   }
-  const layer = view.pass === 'ground' ? 'ground' : view.pass === 'objects' ? 'object' : 'foreground';
+  if (view.pass === 'objects') return;
+  const layer = view.pass === 'ground' ? 'ground' : 'foreground';
   for (const prop of map.props.filter(p => p.layer === layer).sort((a, b) => a.position.x + a.position.y + (a.width + a.height) / 2 - b.position.x - b.position.y - (b.width + b.height) / 2)) drawProp(ctx, prop, view);
+}
+
+
+export function renderObjects(map: WorldMapDefinition, _view: WorldRenderView): WorldRenderObject[] {
+  if (map.id !== 'town') return [];
+  return map.props.filter(prop => prop.layer === 'object').map(prop => ({
+    id: prop.id,
+    position: { x: prop.position.x + prop.width / 2, y: prop.position.y + prop.height / 2 },
+    occlusion: map.occluders.find(item => item.id === prop.id),
+    draw(ctx, view) { drawProp(ctx, prop, view); },
+  }));
 }
