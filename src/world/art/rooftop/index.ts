@@ -3,10 +3,11 @@ import type {DrawMap, WorldRenderView, WorldRenderObject} from '../../render-con
 import type {Point, WorldMapDefinition} from '../../schema';
 type Prop = WorldMapDefinition['props'][number];
 const palette = {
-  ink: '#394b40', roof: '#bdc2b0', mortar: '#99a792', edge: '#7f9581',
-  cream: '#f5e8ca', jade: '#64967c', leaf: '#365e46', leafLight: '#9ab979',
-  wood: '#8f7957', woodLight: '#b79b6c', woodDark: '#535e46',
-  soil: '#76634c', wetSoil: '#514f40', pot: '#b39a74', potLight: '#d1b489',
+  ink: '#354337', roof: '#b0baa4', mortar: '#8d9e86', edge: '#71856e',
+  cream: '#f5e8ca', jade: '#608c72', leaf: '#2f503d', leafLight: '#8fa969',
+  wood: '#87704d', woodLight: '#b9a177', woodDark: '#495040',
+  soil: '#5c4e39', wetSoil: '#3f4636', pot: '#a18a64', potLight: '#c9b18a',
+  contact: '#3d4536',
   pipe: '#8bada9', metal: '#7e9993', lavender: '#aa95c5', flower: '#e3c56c',
 };
 
@@ -113,7 +114,7 @@ const paintMap: DrawMap = (ctx, map, view) => {
       const wood = material === 'roof-wood', brick = material === 'roof-brick';
       for (let y = r.y; y < r.y + r.height; y++) for (let x = r.x; x < r.x + r.width; x++) {
         const n = (x * 17 + y * 31) % 7;
-        const base = wood ? ['#a28e68', '#ad9872', '#b09b73'][n % 3] : brick ? ['#acb9a4', '#bec5af', '#b3bda7'][n % 3] : ['#bbc4b3', '#c7cdba', '#b8c1b0'][n % 3];
+        const base = wood ? ['#9b835f', '#a98f65', '#a58b61'][n % 3] : brick ? ['#9caa92', '#b0b99f', '#a5b098'][n % 3] : ['#a8b4a0', '#b6bea8', '#aeb8a3'][n % 3];
         plane(x + .018, y + .018, Math.min(.97, r.x + r.width - x), Math.min(.97, r.y + r.height - y), .005, base);
         if (n === 0) plane(x + .2, y + .35, .35, .06, .01, wood ? '#918362' : '#b3b59f');
       }
@@ -126,6 +127,19 @@ const paintMap: DrawMap = (ctx, map, view) => {
       if (p.kind === 'pergola' || p.kind === 'garden-shade') {
         for (let k = 0; k < p.width; k += .65) plane(p.position.x + k + .6, p.position.y + .7, .18, p.height, .02, '#466c70');
       } else plane(p.position.x + .5, p.position.y + .45, p.width + .1, p.height + .2, .02, '#466c70');
+    }
+    ctx.restore();
+    // Tight attached shade grounds heavy fixtures; the broad offset paint above is cast shadow.
+    ctx.save(); ctx.globalAlpha *= .34;
+    for (const p of map.props) {
+      const {x, y} = p.position, w = p.width, h = p.height;
+      if (p.kind === 'garden-shade') {
+        for (const dx of [0, w - .2]) plane(x + dx - .045, y - .045, .24, .24, .024, palette.contact);
+      } else if (p.kind === 'post' || p.kind === 'threshold-post') {
+        plane(x - .045, y - .045, w + .09, h + .09, .024, palette.contact);
+      } else if (['raised-bed', 'trellis-bed', 'tree-bed', 'border-pot', 'bamboo-screen', 'compost', 'garden-crate'].includes(p.kind) || /^garden-(tree|flower|climber)$/.test(p.kind)) {
+        plane(x - .065, y - .065, w + .13, h + .13, .024, palette.contact);
+      }
     }
     ctx.restore();
   }

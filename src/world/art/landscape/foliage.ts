@@ -9,11 +9,11 @@ type Patch = readonly [number, number, number, number];
 type Bough = readonly [number, number, number];
 
 const palettes = {
-  camphor: ['#395b49', '#537451', '#789252', '#a7b56b', '#c3c780'],
-  willow: ['#405f52', '#5b7b5b', '#819b68', '#acb980', '#c5c98e'],
-  fruit: ['#455e45', '#627d4c', '#899952', '#b5b875', '#d3cb8d'],
+  camphor: ['#2e4b3b', '#466446', '#70874e', '#9eae65', '#c0c47d'],
+  willow: ['#344e43', '#4c6c4e', '#77915c', '#a2b174', '#c0c58a'],
+  fruit: ['#354b35', '#506b3f', '#7c8d49', '#aab16b', '#c9c383'],
 } as const;
-const wood = ['#61583f', '#897249', '#b29a69'] as const;
+const wood = ['#514630', '#80683f', '#b29a69'] as const;
 // Each tuft has a stepped edge, a broad lit plane, and small connected leaf tips.
 // The four drawings differ in their contour and light placement, not random stipple.
 const tufts: readonly (readonly Patch[])[] = [
@@ -68,9 +68,9 @@ export function drawFoliage(ctx: CanvasRenderingContext2D, input: FoliageInput):
     for (const [a,b,w,h] of lit[shape]) rect(x+a,y+b+2,w,h+1,1);
     for (const [a,b,w,h] of lit[shape].slice(0,3)) rect(x+a,y+b,Math.max(5,w-3),h,2);
     // Broken light planes turn around each tuft rather than striping its full width.
-    rect(x-8,y-7,8,5,2); rect(x-11,y-4,5,5,2);
+    rect(x-8,y-7,8,5,2); rect(x-11,y-4,5,5,1);
     rect(x-5,y-10,7,3,3); rect(x-9,y-7,5,2,3);
-    rect(x+3,y-5,6,4,2); rect(x+1,y-7,4,2,3);
+    rect(x+3,y-5,6,4,1); rect(x+1,y-7,4,2,2);
     rect(x-3,y-10,3,1,4);
     rect(x+8,y+3,5,3,1); rect(x-10,y+6,5,2,1);
     rect(x-3,y+2,6,3,2); rect(x+2,y+4,4,2,1);
