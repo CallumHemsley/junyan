@@ -23,3 +23,13 @@ describe('world-relative seat attachment',()=>{
   expect(()=>sampleActor({...input,seatHeight:NaN})).toThrow(RangeError);
  });
 });
+
+it('publishes pure physical pelvis/feet/hand metadata for the calibrated restaurant surface',async()=>{
+ const {actorContactMetrics}=await import('./index');
+ const sample=sampleActor({...input,seatHeight:.55,handRestHeight:1});
+ const metrics=actorContactMetrics(sample);
+ expect(metrics.pelvis.height).toBeCloseTo(.55,1);
+ expect(metrics.feet.every(foot=>Math.abs(foot.height)<1/18+.001)).toBe(true);
+ expect(metrics.hand.height).toBe(1);
+ expect(actorContactMetrics(sampleActor({...input,seatHeight:undefined})).pelvis.height).toBe(7/18);
+});

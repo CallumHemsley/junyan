@@ -11,7 +11,7 @@ const appearances=[{},...content.characters.map(c=>c.appearance)];
 const digest=createHash('sha256');let cases=0;
 for(const appearance of appearances)for(let direction=0;direction<8;direction++)for(const action of ['idle','walk','sit','crouch','interact','react'])for(const phase of [0,1,4])for(const carrying of [false,true]){
  const input={appearance,direction,action,phase,carrying};
- const prior=before(input),current=after(input);assert.deepEqual(current,prior);digest.update(current.pixels);cases++;
+ const prior=before(input),current=after(input);for(const field of Object.keys(prior))assert.deepEqual(current[field],prior[field]);digest.update(current.pixels);cases++;
 }
 const result={baseline,cases,exactFrameAndAttachmentEquality:true,pixelHash:digest.digest('hex'),scope:'Player and approved four regulars, all directions and six contextual actions. No background profile selected.'};
 writeFileSync(new URL('../../../docs/evidence/0085/background/cast-preservation.json',import.meta.url),JSON.stringify(result,null,2));

@@ -3,7 +3,7 @@ const ink = [48,43,42], skin = [232,183,143], cream = [245,232,202];
 const jade = [111,154,134], wood = [115,86,58], brass = [190,157,97];
 const shade = (color, amount) => color.map(value => Math.max(0,Math.min(255,Math.round(value*amount))));
 
-export function frame({appearance={},direction=0,phase=0,action='idle',reducedMotion=false,carrying=false,blink=false,heldObject,acting=false,body,role,seatHeight}={}) {
+export function frame({appearance={},direction=0,phase=0,action='idle',reducedMotion=false,carrying=false,blink=false,heldObject,acting=false,body,role,seatHeight,handRestHeight}={}) {
   const attachedSeat=action==='sit'&&seatHeight!==undefined;
   const seatLift=attachedSeat?Math.round(seatHeight*18)-9:0;
   const padding=attachedSeat?Math.max(0,seatLift)+2:0;
@@ -89,6 +89,11 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
       if(role==='courier'&&action==='interact'&&!reducedMotion)hand[1]+=phase%2;
     }
     if(role==='groundskeeper'&&near&&working){hand[0]-=reducedMotion?0:phase%3;hand[1]+=3;}
+    if(attachedSeat) {
+      const center=profile?18:quarter?16:14;
+      elbow[0]=root[0];elbow[1]=shoulder+6;
+      hand[0]=center+(near?4:-4);hand[1]=handRestHeight===undefined?shoulder+3:38-Math.round(handRestHeight*18);
+    }
     if(acting&&!walking&&role)hand[1]-=1;
     if(action==='react'&&near){elbow[1]-=3;hand[1]-=7;}
     if(acting&&!walking&&!occupied&&!working&&near){hand[0]-=3;hand[1]-=4;}
@@ -257,5 +262,5 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
     polygon([[ux-1,held.y+2],[ux+2,held.y+2],[ux+1,36],[ux,38],[ux-1,36]],shade(jade,.75));
     rect(ux-1,held.y+7,3,1,cream);
   }
-  return {width:W,height:frameHeight,pixels,anchor:{x:14,y:38+padding},held:{x:transformX(held.x),y:held.y+padding},feet,...(attachedSeat?{seatContact:{x:14,y:hip+padding,height:seatHeight}}:{})};
+  return {width:W,height:frameHeight,pixels,anchor:{x:14,y:38+padding},held:{x:transformX(held.x),y:held.y+padding},pelvis:{x:14,y:hip+padding},feet,...(attachedSeat?{seatContact:{x:14,y:hip+padding,height:seatHeight}}:{})};
 }
