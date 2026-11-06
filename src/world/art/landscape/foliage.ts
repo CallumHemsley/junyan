@@ -88,6 +88,14 @@ export function drawFoliage(ctx: CanvasRenderingContext2D, input: FoliageInput):
     limb([[2,-44],[24,-40],[42,-49]],4,5);
     limb([[-16,-46],[-31,-43],[-45,-50]],3,6);
     limb([[0,-2],[-2,-24],[1,-43]],2,7);
+    // Overlapping interior boughs connect the crown without a geometric back plate.
+    // The existing outer tufts still own every species' silhouette and fade bounds.
+    const cushions: readonly Bough[] = willow
+      ? [[-17,-82,1],[16,-81,3]]
+      : input.species === 'fruit'
+        ? [[-7,-77,0],[15,-73,1],[-17,-63,3],[6,-54,2]]
+        : [[-19,-79,0],[14,-87,3],[34,-66,1],[-26,-61,3],[7,-53,2]];
+    for (const [x,y,shape] of cushions) tuft(x,y,shape);
     const clusters = willow ? willowTufts : input.species === 'camphor' ? camphorTufts : fruitTufts;
     for (const [x,y,shape] of clusters) tuft(x,y,shape);
     if (willow) {
