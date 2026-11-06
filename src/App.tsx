@@ -6,7 +6,7 @@ import WorldViewport from "./world/WorldViewport";
 import { restoreWorld } from "./world/state";
 import { mapsForNeighbourhood } from "./world/dynamic";
 import WordToken from "./WordToken";
-import { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Line, Word } from "./contracts";
 import { TABLES } from "./contracts";
 import { characterFor } from "./content";
@@ -14,6 +14,7 @@ import { content } from "./neighbourhood/registry";
 import Neighbourhood, { NeighbourhoodGifts } from "./neighbourhood/Neighbourhood";
 import FeatureLine from "./neighbourhood/FeatureLine";
 import { worldToGrid as readingRoomCell } from "./features/reading-room/world";
+import { readingRoomFrame } from "./features/reading-room/view";
 import { lineById as apartmentLines } from "./features/apartment/content";
 import { createNeighbourhood } from "./neighbourhood/model";
 import { contentWords } from "./content/words";
@@ -84,6 +85,7 @@ export default function App() {
   const locationId = neighbourhood.location;
   const worldRegistry = mapsForNeighbourhood(neighbourhood);
   const world = restoreWorld(state.world, worldRegistry, locationId, false);
+  const presentationFrame = useMemo(() => world.activeActivity === 'reading-room' ? readingRoomFrame(neighbourhood['reading-room']) : null, [world.activeActivity, neighbourhood['reading-room']]);
   const binding=activityTarget(world,worldRegistry[world.mapId]);
   const table=binding?.kind==="table"?binding.table:requestedTable;
   const activityOpen = binding !== null;
@@ -443,7 +445,7 @@ export default function App() {
         </nav>
       </header>
       <main inert={blockingPanel || dayEndOpen} data-location={locationId}>
-        <WorldViewport state={world} maps={worldRegistry} game={state} onLookup={lookup} onPlay={playLine} dialogue={ambientLine} fresh={fresh} onScenePoint={point=>{if(world.activeActivity!=="reading-room"||!neighbourhood["reading-room"].selected)return;const cell=readingRoomCell(point,neighbourhood["reading-room"].brief);if(cell)dispatch({type:"feature-action",feature:"reading-room",action:{type:"preview",...cell},now:Date.now()});}} onAction={action=>{
+        <WorldViewport state={world} maps={worldRegistry} game={state} onLookup={lookup} onPlay={playLine} dialogue={ambientLine} fresh={fresh} presentationFrame={presentationFrame} onScenePoint={point=>{if(world.activeActivity!=="reading-room"||!neighbourhood["reading-room"].selected)return;const cell=readingRoomCell(point,neighbourhood["reading-room"].brief);if(cell)dispatch({type:"feature-action",feature:"reading-room",action:{type:"preview",...cell},now:Date.now()});}} onAction={action=>{
           if(action.type==="world-life") {
             const result=performLifeInteraction(worldRegistry[world.mapId],state,world,action);
             setAmbientLine(result.line??null);if(result.line)playLine(result.line);

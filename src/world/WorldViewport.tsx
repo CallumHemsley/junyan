@@ -10,9 +10,9 @@ import {content} from "../neighbourhood/registry";
 import {contentWords} from "../content/words";
 import {wordState} from "../recovery";
 import {useEffect,useRef,useState} from "react";
-import type {WorldState,Point} from "./schema";
+import type {WorldState,Point,Rect} from "./schema";
 import type {MapRegistry} from "./registry";
-import {project,explorationCamera,type Camera} from "./camera";
+import {project,explorationCamera,frameCamera,presentationArea,type Camera,type FramePoint} from "./camera";
 import {movePlayer,nearbyAnchors} from "./geometry";
 import {paintWorld} from "./painter";
 import type {WorldAction} from "./state";
@@ -25,9 +25,9 @@ import {reducedWorldChanged} from "./render-invalidation";
 import {visibleLifeReactions} from "./life/render";
 import "./world.css";
 const directions:Record<string,Point>={ArrowUp:{x:-1,y:-1},w:{x:-1,y:-1},ArrowDown:{x:1,y:1},s:{x:1,y:1},ArrowLeft:{x:-1,y:1},a:{x:-1,y:1},ArrowRight:{x:1,y:-1},d:{x:1,y:-1}};
-export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},dialogue=null,fresh,onAction,onScenePoint,paused=false}:{state:WorldState;maps:MapRegistry;game:GameState;onPlay?:(line:Line)=>void;dialogue?:Line|null;onLookup:(word:Word,trigger:HTMLButtonElement)=>void;fresh:string[];onAction:(action:WorldAction|WorldLifeAction)=>void;onScenePoint?:(point:Point)=>void;paused?:boolean}) {
+export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},dialogue=null,fresh,onAction,onScenePoint,presentationFrame=null,paused=false}:{state:WorldState;maps:MapRegistry;game:GameState;onPlay?:(line:Line)=>void;dialogue?:Line|null;onLookup:(word:Word,trigger:HTMLButtonElement)=>void;fresh:string[];onAction:(action:WorldAction|WorldLifeAction)=>void;onScenePoint?:(point:Point)=>void;presentationFrame?:readonly FramePoint[]|null;paused?:boolean}) {
  const canvas=useRef<HTMLCanvasElement>(null),root=useRef<HTMLElement>(null);
- const latest=useRef({state,maps,game,onAction,paused});latest.current={state,maps,game,onAction,paused};
+ const latest=useRef({state,maps,game,onAction,paused,presentationFrame});latest.current={state,maps,game,onAction,paused,presentationFrame};
  const keys=useRef(new Set<string>()),path=useRef<Point[]>([]),cameraRef=useRef<Camera>({focus:state.position,width:960,height:600,scale:22});
  const cue=useRef<HTMLDivElement>(null),targetForFrame=useRef<NearbyTarget|null>(null),visibleTarget=useRef<NearbyTarget|null>(null);
  const activationButton=useRef<HTMLButtonElement>(null),lookupTrigger=useRef<HTMLButtonElement|null>(null),wasPaused=useRef(paused);
@@ -40,6 +40,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
  const [interactionInset,setInteractionInset]=useState(0);
  const [interactionWidth,setInteractionWidth]=useState(0);
  const [viewport,setViewport]=useState({width:960,height:600});
+ const [frameArea,setFrameArea]=useState<Rect>({x:0,y:0,width:1,height:1});
  const map=maps[state.mapId];
  useEffect(()=>{path.current=[];keys.current.clear();requestId.current++;root.current?.focus();},[state.mapId,state.activeActivity]);
  useEffect(()=>{if(paused){path.current=[];keys.current.clear();requestId.current++;}},[paused]);
@@ -49,6 +50,19 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   const observer=new ResizeObserver(()=>{const bounds=context.getBoundingClientRect();setInteractionInset(bounds.height+84);setInteractionWidth(bounds.width+32);});observer.observe(context);
   return()=>observer.disconnect();
  },[state.activeActivity,state.activeAnchorId]);
+ useEffect(()=>{
+  const element=root.current,main=element?.closest('main'),context=document.querySelector<HTMLElement>('.world-context');
+  // Lookup suspends editing; preserve its useful scene framing until the overlay closes.
+  if(!presentationFrame||!element||!main||paused)return;
+  const measure=()=>{
+   if(latest.current.paused||!latest.current.presentationFrame)return;
+   const area=presentationArea(element.getBoundingClientRect(),main.getBoundingClientRect(),context?.getBoundingClientRect()??null,{width:innerWidth,height:innerHeight});
+   setFrameArea(before=>before.x===area.x&&before.y===area.y&&before.width===area.width&&before.height===area.height?before:area);
+  };
+  const observer=new ResizeObserver(measure);observer.observe(element);observer.observe(main);if(context)observer.observe(context);
+  window.addEventListener('resize',measure);window.addEventListener('scroll',measure,true);measure();
+  return()=>{observer.disconnect();window.removeEventListener('resize',measure);window.removeEventListener('scroll',measure,true);};
+ },[!!presentationFrame,paused,state.activeActivity]);
  useEffect(()=>{
   const instance=new Worker(new URL("./path-worker.ts",import.meta.url),{type:"module"});worker.current=instance;
   instance.onmessage=(event:MessageEvent<{id:number;path:Point[];mapId:string}>)=>{
@@ -70,6 +84,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   const bounds=element.getBoundingClientRect();
   let inViewport=bounds.bottom>0&&bounds.top<innerHeight&&bounds.right>0&&bounds.left<innerWidth,dirty=true;
   let observed={game:latest.current.game,state:latest.current.state,map:latest.current.maps[latest.current.state.mapId]};
+  let observedFrame=latest.current.presentationFrame;
   let reactionSignature="";
   const visible=()=>inViewport&&!document.hidden;
   const tick=(now:number)=>{
@@ -77,6 +92,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
    const cadenceStep=advanceFrameCadence(cadence,now);cadence=cadenceStep.state;
    const dt=last?Math.min((now-last)/1000,.04):0;last=now;elapsedMs+=dt*1000;if(Math.floor(elapsedMs/500)!==Math.floor(elapsed.current/500))setClock(elapsedMs);elapsed.current=elapsedMs;
    const current=latest.current,map=current.maps[current.state.mapId];if(!map)return;
+   if(observedFrame!==current.presentationFrame){dirty=true;observedFrame=current.presentationFrame;}
    if(observed.game!==current.game||observed.state!==current.state||observed.map!==map){
     dirty=dirty||observed.map!==map||(preference.matches&&reducedWorldChanged(observed.game,observed.state,current.game,current.state));
     observed={game:current.game,state:current.state,map};
@@ -94,7 +110,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
    }
    const dpr=1,width=Math.ceil(viewport.width/2),height=Math.ceil(viewport.height/2);
    if(element.width!==Math.round(width*dpr)||element.height!==Math.round(height*dpr)){element.width=Math.round(width*dpr);element.height=Math.round(height*dpr);}
-   const camera=explorationCamera(map.bounds,current.state.position,width,height,viewport.width<800?interactionInset/2:0,viewport.width>=800?interactionWidth/2:0,surfaceHeight(map.id,current.state.position));cameraRef.current=camera;
+   const camera=current.presentationFrame?frameCamera(current.presentationFrame,width,height,frameArea,viewport.width<600?11:15):explorationCamera(map.bounds,current.state.position,width,height,viewport.width<800?interactionInset/2:0,viewport.width>=800?interactionWidth/2:0,surfaceHeight(map.id,current.state.position));cameraRef.current=camera;
    if(cue.current){
     const target=targetForFrame.current;
     if(target){const point=project(target.position,camera,surfaceHeight(map.id,target.position));cue.current.style.left=`${point.x*viewport.width/width}px`;cue.current.style.top=`${point.y*viewport.height/height}px`;cue.current.hidden=point.x<0||point.y<0||point.x>width||point.y>height;}
@@ -116,7 +132,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   document.addEventListener("visibilitychange",refresh);preference.addEventListener("change",refresh);if(visible())frame=requestAnimationFrame(tick);
   const up=(event:KeyboardEvent)=>keys.current.delete(event.key);window.addEventListener("keyup",up);window.addEventListener("blur",refresh);
   return()=>{cancelAnimationFrame(frame);observer.disconnect();preference.removeEventListener("change",refresh);document.removeEventListener("visibilitychange",refresh);window.removeEventListener("keyup",up);window.removeEventListener("blur",refresh);};
- },[viewport,interactionInset,interactionWidth]);
+ },[viewport,interactionInset,interactionWidth,frameArea]);
  const targets=nearbyTargets(map.id,nearbyAnchors(map,state.position),nearbyLife(planFor(map,game),actorsFor(map,game,state,clock,false),state.position,navigationFor(map)),state.position);
  const selected=paused&&visibleTarget.current?.mapId===map.id?visibleTarget.current:selectTarget(targets,state.position,selection);
  if(!paused||!visibleTarget.current)visibleTarget.current=selected;

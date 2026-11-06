@@ -4,9 +4,10 @@ import { visitWorld, interactAt, savedGame, closeActivity } from './world-journe
 import { probeAudio } from './audio-fixtures';
 import { expectNativeSpeech } from './neighbourhood-audio';
 import { privateArtifact } from './private-artifacts';
-import { explorationCamera, project } from '../src/world/camera';
+import { frameCamera, presentationArea, project } from '../src/world/camera';
 import { readingRoomMap } from '../src/world/maps/reading-room';
 import { gridToWorld } from '../src/features/reading-room/world';
+import { readingRoomFrame } from '../src/features/reading-room/view';
 import { createGame, getOrder, orderTotal } from '../src/game';
 import { content } from '../src/content';
 import * as apartment from '../src/features/apartment/rules';
@@ -16,17 +17,31 @@ import type { Locator } from '@playwright/test';
 
 async function projectState(page: Page) { return (await savedGame(page)).neighbourhood!['reading-room']; }
 async function floorPoint(page: Page, x: number, y: number, brief: 'window' | 'alcove') {
-  const world = (await savedGame(page)).world!, canvas = page.locator('.connected-world canvas');
+  const game = await savedGame(page), canvas = page.locator('.connected-world canvas');
   const bounds = (await canvas.boundingBox())!, context = (await page.locator('.world-context').boundingBox())!;
   const width = Math.ceil(bounds.width / 2), height = Math.ceil(bounds.height / 2);
-  const camera = explorationCamera(readingRoomMap.bounds, world.position, width, height, bounds.width < 800 ? (context.height + 84) / 2 : 0, bounds.width >= 800 ? (context.width + 32) / 2 : 0);
+  const main = (await page.locator('main').boundingBox())!, screen = await page.evaluate(() => ({ width: innerWidth, height: innerHeight }));
+  const camera = frameCamera(readingRoomFrame(game.neighbourhood!['reading-room']), width, height, presentationArea(bounds, main, context, screen), bounds.width < 600 ? 11 : 15);
+  await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))));
   const point = project(gridToWorld({ x, y }, brief), camera);
   const position = { x: point.x * bounds.width / width, y: point.y * bounds.height / height };
   expect(position.x).toBeGreaterThan(0); expect(position.x).toBeLessThan(bounds.width);
   expect(position.y).toBeGreaterThan(0); expect(position.y).toBeLessThan(bounds.height);
+  expect(await canvas.evaluate((element, position) => { const r = element.getBoundingClientRect(); return document.elementFromPoint(r.x + position.x, r.y + position.y) === element; }, position)).toBe(true);
   if (await page.evaluate(() => navigator.maxTouchPoints > 0)) await canvas.tap({ position });
   else await canvas.click({ position });
   await expect.poll(async () => (await projectState(page)).draft).toMatchObject({ x, y });
+}
+async function expectBriefContext(page: Page) {
+  await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))));
+  const game = await savedGame(page), canvas = page.locator('.connected-world canvas');
+  const bounds = (await canvas.boundingBox())!, main = (await page.locator('main').boundingBox())!, panel = (await page.locator('.world-context').boundingBox())!;
+  const screen = await page.evaluate(() => ({ width: innerWidth, height: innerHeight }));
+  const width = Math.ceil(bounds.width / 2), height = Math.ceil(bounds.height / 2), area = presentationArea(bounds, main, panel, screen);
+  const frame = readingRoomFrame(game.neighbourhood!['reading-room']), camera = frameCamera(frame, width, height, area, bounds.width < 600 ? 11 : 15);
+  const points = frame.map(p => { const screen = project(p, camera, p.z); return { x: screen.x * bounds.width / width, y: screen.y * bounds.height / height }; });
+  const blocked = await canvas.evaluate((element, points) => { const r = element.getBoundingClientRect(); return points.filter(p => { const hit = document.elementFromPoint(r.x + p.x, r.y + p.y); return hit !== element && !(element.inert && hit === element.parentElement); }).slice(0, 3).map(p => ({...p, hit: document.elementFromPoint(r.x + p.x, r.y + p.y)?.className})); }, points);
+  expect(blocked, JSON.stringify({bounds,main,panel,area,camera})).toEqual([]);
 }
 async function place(page: Page, id: 'table' | 'chair', x: number, y: number, brief: 'window' | 'alcove', turn = false, native = false) {
   async function activate(control: Locator) {
@@ -46,6 +61,52 @@ async function place(page: Page, id: 'table' | 'chair', x: number, y: number, br
   await activate(page.getByRole('button', { name: '放这里', exact: true }));
   await expect.poll(async () => (await projectState(page)).layouts[brief].find(p => p.id === id)).toMatchObject({ x, y, rotation: turn ? 1 : 0 });
 }
+
+for (const phoneHeight of [664, 844]) test(`frames both whole work bays at phone height ${phoneHeight} for native placement and word-card recovery`, async ({ page, baseURL }, info) => {
+  test.setTimeout(90_000);
+  test.skip(info.project.name === 'desktop' && phoneHeight === 664, 'Desktop geometry is covered once.');
+  if (info.project.name === 'phone') await page.setViewportSize({ width: 390, height: phoneHeight });
+  const capture = info.project.name === 'phone' ? `phone-${phoneHeight}` : 'desktop';
+  const errors: string[] = []; page.on('pageerror', error => errors.push(error.message)); page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+  await page.emulateMedia({ reducedMotion: 'reduce' }); await probeAudio(page);
+  // Declared focused fixture: fresh project at its real desk; all editing below uses visible controls.
+  const game = createGame(content, 42), position = readingRoomMap.anchors[0].position;
+  game.neighbourhood!.location = 'reading-room';
+  game.world = { version: 1, mapId: 'reading-room', position, facing: 'north', activeActivity: 'reading-room', activeAnchorId: 'reading-room.project', returnPositions: {} };
+  await seedDayOne(page, baseURL!, game); await page.goto('/?seed=42'); await expect(page.locator('.reading-room')).toBeVisible();
+  await expectBriefContext(page);
+  await place(page, 'table', 2, 0, 'window', false, true);
+  await place(page, 'chair', 1, 0, 'window', false, true);
+  await page.screenshot({ path: privateArtifact(`0108/${capture}-first-native.png`) });
+  await page.getByRole('button', { name: '这样可以', exact: true }).click();
+  await page.getByRole('button', { name: '第二处窗边', exact: true }).last().click();
+  await page.locator('.reading-room [data-item="table"]').click(); await page.getByRole('button', { name: '转一下', exact: true }).click();
+  await floorPoint(page, 2, 0, 'alcove'); await expectBriefContext(page);
+  await page.screenshot({ path: privateArtifact(`0108/${capture}-second-native-draft.png`) });
+  await page.locator('.reading-room-instructions summary').focus(); await page.locator('.reading-room-instructions summary').press('Enter');
+  await expectBriefContext(page);
+  await page.screenshot({ path: privateArtifact(`0108/${capture}-expanded-instructions.png`) });
+  const draft = (await projectState(page)).draft;
+  await page.locator('.reading-room-current [data-word-lookup]').first().click(); await expect(page.locator('.word-popover')).toBeVisible();
+  expect(await page.locator('.connected-world canvas').evaluate(element => element.inert)).toBe(true);
+  const worldView = page.getByTestId('world-viewport'), worldBounds = (await worldView.boundingBox())!;
+  if (await page.evaluate(() => navigator.maxTouchPoints > 0)) await worldView.tap({ position: { x: worldBounds.width / 2, y: 4 } });
+  else await worldView.click({ position: { x: worldBounds.width / 2, y: 4 } });
+  expect((await projectState(page)).draft).toEqual(draft);
+  await page.screenshot({ path: privateArtifact(`0108/${capture}-word-card.png`) });
+  await page.getByRole('button', { name: '关闭词卡', exact: true }).click(); await expectBriefContext(page);
+  expect((await projectState(page)).draft).toEqual(draft);
+  expect((await savedGame(page)).world!.position).toEqual(position);
+  await closeActivity(page); await interactAt(page, 'reading-room.project'); await expectBriefContext(page);
+  expect((await projectState(page)).brief).toBe('alcove'); expect((await projectState(page)).draft).toEqual(draft);
+  await floorPoint(page, 2, 0, 'alcove'); await page.getByRole('button', { name: '放这里', exact: true }).click();
+  await place(page, 'chair', 1, 1, 'alcove', false, true); await page.getByRole('button', { name: '这样可以', exact: true }).click();
+  expect((await projectState(page)).completed).toEqual(['window', 'alcove']); expect((await savedGame(page)).world!.position).toEqual(position);
+  await page.locator('.reading-room [data-brief="window"]').click(); await expectBriefContext(page);
+  await page.locator('.reading-room [data-brief="alcove"]').click(); await expectBriefContext(page);
+  await page.screenshot({ path: privateArtifact(`0108/${capture}-reopened-second-complete.png`) });
+  expect(errors).toEqual([]);
+});
 
 test('walks into the shared room, rearranges both voiced briefs, retries and persists independent projects', async ({ page }, info) => {
   test.setTimeout(240_000); page.setDefaultTimeout(8_000);

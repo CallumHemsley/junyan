@@ -1,4 +1,5 @@
-import type { Point } from "./schema";
+import type { Point, Rect } from "./schema";
+export type FramePoint = Point & { z: number };
 export type Camera = { focus: Point; focusZ?:number; width:number; height:number; scale:number; offsetY?:number; offsetX?:number };
 export function project(point:Point,camera:Camera,z=0):Point {
   const x=point.x-camera.focus.x,y=point.y-camera.focus.y;
@@ -33,4 +34,24 @@ export function explorationCamera(bounds:{width:number;height:number},position:P
  const localHeight=Math.min(width,availableHeight);
  const camera=cameraForMap(bounds,position,width,localHeight,11,0,insetRight,focusZ);
  return {...camera,height,offsetY:(camera.offsetY??0)+availableHeight-localHeight/2-height/2};
+}
+
+/** Visible scene rectangle as fractions of the canvas, excluding controls and the actual panel. */
+export function presentationArea(canvas:Rect,main:Rect,panel:Rect|null,screen:{width:number;height:number}):Rect {
+ const left=Math.max(canvas.x,main.x,0),top=Math.max(canvas.y,main.y,0);
+ let right=Math.min(canvas.x+canvas.width,main.x+main.width,screen.width);
+ let bottom=Math.min(canvas.y+canvas.height-132,main.y+main.height,screen.height);
+ if(panel){if(canvas.width>=800)right=Math.min(right,panel.x-8);else bottom=Math.min(bottom,panel.y-8);}
+ return {x:(left-canvas.x)/canvas.width,y:(top-canvas.y)/canvas.height,width:Math.max(0,right-left)/canvas.width,height:Math.max(0,bottom-top)/canvas.height};
+}
+
+/** Fit explicit world geometry into the visible area; player state and projection stay independent. */
+export function frameCamera(frame:readonly FramePoint[],width:number,height:number,available:Rect,maxScale:number):Camera {
+ const xs=frame.map(p=>p.x-p.y),ys=frame.map(p=>(p.x+p.y)*.5-p.z);
+ const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+ const safeWidth=available.width*width,safeHeight=available.height*height;
+ const gutter=Math.min(12,safeWidth/4,safeHeight/4);
+ const scale=Math.min(maxScale,Math.max(1,safeWidth-gutter*2)/Math.max(1,maxX-minX),Math.max(1,safeHeight-gutter*2)/Math.max(1,maxY-minY));
+ const x=(minX+maxX)/2,y=(minY+maxY)/2;
+ return {focus:{x:x/2+y,y:y-x/2},width,height,scale,offsetX:(available.x+available.width/2)*width-width/2,offsetY:(available.y+available.height/2)*height-height/2};
 }

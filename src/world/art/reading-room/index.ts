@@ -1,5 +1,6 @@
 import type { DrawMap, WorldRenderObject, WorldRenderView } from '../../render-contract';
 import type { WorldMapDefinition } from '../../schema';
+import { readingWindowFrame } from './window-geometry';
 
 type Prop = WorldMapDefinition['props'][number];
 const wood = '#88613f', pale = '#c7aa75', ink = '#3e352c', paper = '#e6d9b5';
@@ -71,7 +72,7 @@ function drawProp(ctx: CanvasRenderingContext2D, view: WorldRenderView, p: Prop)
       break;
     case 'reading-low-wall': b(0, 0, 0, w, h, .28, '#c3b18b'); b(0, 0, .28, w + .06, h, .07, pale); break;
     case 'reading-window': {
-      b(-.15, .35, .86, w + .3, .2, 2.2, ink); b(-.05, .56, 1, w + .1, .045, 1.9, '#799a9d');
+      b(-.15, .35, readingWindowFrame.bottom, w + .3, .2, readingWindowFrame.height, ink); b(-.05, .56, 1, w + .1, .045, 1.9, '#799a9d');
       for (let pane = 0; pane < w; pane += .75) {
         const span = Math.min(.56, w - pane - .1);
         b(pane + .09, .615, 1.09, span, .015, .55, '#7e9b8b');
@@ -81,8 +82,8 @@ function drawProp(ctx: CanvasRenderingContext2D, view: WorldRenderView, p: Prop)
         b(pane, .62, 1, .07, .05, 1.9, pale);
         b(pane + .1, .63, 2.1, Math.min(.48, w - pane - .1), .015, .12, '#bed2c8');
       }
-      b(0, .62, 1.85, w, .07, .08, wood); b(-.25, .35, .8, w + .5, .6, .12, pale);
-      for (const dx of [-.28, w + .05]) {
+      b(0, .62, 1.85, w, .07, .08, wood); b(-.25, readingWindowFrame.sillY, .8, w + .5, readingWindowFrame.sillDepth, .12, pale);
+      for (const dx of [-readingWindowFrame.overhang, w + .05]) {
         b(dx, .28, .9, .22, .15, 2.1, '#b6b38c');
         for (let z = 1.05; z < 2.9; z += .23) b(dx, .44, z, .22, .025, .07, '#d0c69f');
       }

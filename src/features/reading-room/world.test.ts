@@ -4,7 +4,6 @@ import { isExitConnected } from '../../world/exit-safety';
 import { readingRoomMap } from '../../world/maps/reading-room';
 import { initialState, legal, reduce, type State } from './rules';
 import { gridToWorld, placementRect, projectReadingRoom, worldToGrid } from './world';
-import { explorationCamera, project } from '../../world/camera';
 
 function solveWindow(): State {
   return { ...initialState(), layouts: { window: [{ id: 'table', x: 2, y: 0, rotation: 0 }, { id: 'chair', x: 1, y: 0, rotation: 0 }], alcove: [] } };
@@ -48,14 +47,5 @@ it('keeps static room fixtures outside every legal project placement', () => {
     if (!legal(brief, [], p)) continue;
     const rect = placementRect(p, brief);
     for (const c of map.colliders) expect(rect.x < c.rect.x + c.rect.width && rect.x + rect.width > c.rect.x && rect.y < c.rect.y + c.rect.height && rect.y + rect.height > c.rect.y, `${brief} ${id} ${x},${y} vs ${c.id}`).toBe(false);
-  }
-});
-it('frames both native table previews below the phone top edge with the activity panel open', () => {
-  const camera = explorationCamera(readingRoomMap.bounds, readingRoomMap.anchors[0].position, 195, 298, 175);
-  for (const brief of ['window', 'alcove'] as const) {
-    const centre = gridToWorld({ x: 2, y: 0 }, brief);
-    const top = project(centre, camera, 1.25);
-    expect(top.y).toBeGreaterThan(12);
-    expect(top.x).toBeGreaterThan(0); expect(top.x).toBeLessThan(195);
   }
 });
