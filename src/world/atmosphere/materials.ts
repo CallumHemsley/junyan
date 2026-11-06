@@ -1,0 +1,42 @@
+import {shadeAtmosphereColor,type LightState,type RGB} from './index';
+
+export function shadeAtmosphereCss(style:string,light:LightState,exposure=1):string {
+  let color:RGB,alpha=1;
+  const hex=/^#([\da-f]{3,4}|[\da-f]{6}|[\da-f]{8})$/i.exec(style);
+  if(hex) {
+    const digits=hex[1].length<5?[...hex[1]].map(c=>c+c).join(''):hex[1];
+    color=[0,2,4].map(i=>parseInt(digits.slice(i,i+2),16)) as unknown as RGB;
+    if(digits.length===8)alpha=parseInt(digits.slice(6,8),16)/255;
+  } else {
+    const rgb=/^rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)(?:\s*[,/]\s*([\d.]+))?\s*\)$/i.exec(style);
+    if(!rgb)return style;
+    color=[Number(rgb[1]),Number(rgb[2]),Number(rgb[3])];alpha=rgb[4]===undefined?1:Number(rgb[4]);
+  }
+  const shaded=shadeAtmosphereColor(color,light,exposure);
+  return `rgba(${shaded.join(',')},${alpha})`;
+}
+
+/** Scope this context to material art callbacks. Draw emissive atmosphere on the raw host context. */
+export function createAtmosphereMaterialContext(ctx:CanvasRenderingContext2D,light:LightState,exposure=1):CanvasRenderingContext2D {
+  const colors=new Map<string,string>(),methods=new Map<PropertyKey,unknown>();
+  return new Proxy(ctx,{
+    get(target,key) {
+      const value=Reflect.get(target,key,target);
+      if(typeof value!=='function')return value;
+      if(!methods.has(key))methods.set(key,value.bind(target));
+      return methods.get(key);
+    },
+    set(target,key,value) {
+      if((key==='fillStyle'||key==='strokeStyle')&&typeof value==='string') {
+        let shaded=colors.get(value);
+        if(shaded===undefined) {
+          shaded=shadeAtmosphereCss(value,light,exposure);
+          if(colors.size>=2048)colors.clear();
+          colors.set(value,shaded);
+        }
+        return Reflect.set(target,key,shaded,target);
+      }
+      return Reflect.set(target,key,value,target);
+    },
+  });
+}

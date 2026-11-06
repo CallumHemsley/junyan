@@ -64,8 +64,8 @@ const square = (x: number,y: number,width: number,height=width,z=0): Point[] => 
   {x,y,z},{x:x+width,y,z},{x:x+width,y:y+height,z},{x,y:y+height,z},
 ];
 export function shadeAtmosphereColor(color: RGB, light: LightState, exposure=1): RGB {
-  const ambient = color.map((v,i)=>Math.min(255,Math.round(v*light.ambient[i]))) as unknown as RGB;
-  return mix(ambient,light.sun,light.sunStrength*Math.max(0,Math.min(1,exposure)));
+  const sun=light.sunStrength*Math.max(0,Math.min(1,exposure));
+  return color.map((v,i)=>Math.min(255,Math.round(v*(light.ambient[i]+light.sun[i]/255*sun)))) as unknown as RGB;
 }
 
 /** No timers or RNG state: identical explicit inputs produce identical frames. */
@@ -91,9 +91,10 @@ export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks 
       if(phase>.4) continue;
       const wave=Math.sin(t*1.2+phase*25+y*.7);
       const px=x+.15+phase*.55, py=y+.25+wave*.045;
-      if(px<r.x || px+.3>r.x+r.width || py<r.y || py+.035>r.y+r.height) continue;
-      add('ground',square(px,py,.22+phase*.45,.065),light.reflection,.28+(wave+1)*.10);
-      if(phase<.13) add('ground',square(px+.07,py+.15,.16,.05),light.reflection,.22);
+      const width=.22+phase*.45,height=.065;
+      if(px<r.x || px+width>r.x+r.width || py<r.y || py+height>r.y+r.height) continue;
+      add('ground',square(px,py,width,height),light.reflection,.28+(wave+1)*.10);
+      if(phase<.13 && px+.23<=r.x+r.width && py+.20<=r.y+r.height) add('ground',square(px+.07,py+.15,.16,.05),light.reflection,.22);
     }
     const shoreColor=mix(light.water,light.reflection,.43);
     for(const edge of water.shore ?? []) {
