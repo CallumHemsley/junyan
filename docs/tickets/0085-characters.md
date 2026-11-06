@@ -21,7 +21,7 @@ Original coherent pixel actors preserve the approved cast, support directional w
 - Worker thread `01a1ae20-a104-7194-a9ec-12689dfeb07f`, managed cloud runtime `ccarenv_b64_Y2NhcmVudl9kNDFmNjUwMDg5YTg4MTkxYWFiY2IyM2Q0YmFjMWI4OA`.
 - Owner 0085. Branch `codex/0085-characters`. Checkout `/workspace/junyan`. Exclusive production path `src/world/characters/*`; evidence `docs/evidence/0085/*` and this ticket.
 - Based on central contract v1 at `fb167fd5047010beaac7809b4d6a41a804b7fb42` and main `8cd5bc209b7dc2d91cc0f765991de313f813f4eb`.
-- No assigned Vite port yet. No listener started. Root/coordinator requested to reserve it.
+- Central ticket reserves strict Vite port 5487. No listener started yet.
 - Shared renderer, hospital scenes, App, content, voices, saves, dependencies and lockfile remain foundation-owned or outside this ticket.
 
 ### Throughput checkpoint
@@ -33,7 +33,7 @@ Original coherent pixel actors preserve the approved cast, support directional w
 
 ### Initial findings
 
-The legacy characterFigure emits rounded capsules in world space and restaurant walking uses time-driven stance. Its hospital seated/lying poses must survive. The scratch pixel study is throwaway and has visibly repetitive diagonals plus insufficient stride; these are open defects, not accepted artwork.
+The legacy characterFigure emits rounded capsules in world space and restaurant walking uses time-driven stance. Its hospital seated/lying poses must survive. The scratch pixel study is throwaway. Its repetitive diagonals and insufficient stride were observed in the first sheet and are being corrected before acceptance.
 
 ### Next actions
 
