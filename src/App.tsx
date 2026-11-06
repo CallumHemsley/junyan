@@ -85,7 +85,7 @@ export default function App() {
   const neighbourhood = state.neighbourhood ?? createNeighbourhood(state.day);
   const locationId = neighbourhood.location;
   const worldRegistry = mapsForNeighbourhood(neighbourhood);
-  const world = restoreWorld(state.world, worldRegistry, locationId);
+  const world = restoreWorld(state.world, worldRegistry, locationId, false);
   const binding=activityTarget(world,worldRegistry[world.mapId]);
   const table=binding?.kind==="table"?binding.table:requestedTable;
   const activityOpen = binding !== null;

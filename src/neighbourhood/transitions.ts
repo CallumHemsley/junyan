@@ -57,14 +57,14 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
     return next===game?game:{...next,...(game.world?{world:{...game.world,life:{...restoreLife(game.world.life),serviceDepartures:[]}}}:{})};
   }
   if(action.type==="world-life") {
-    const maps=mapsForNeighbourhood(state),world=restoreWorld(game.world,maps,state.location);
+    const maps=mapsForNeighbourhood(state),world=restoreWorld(game.world,maps,state.location,false);
     const result=performLifeInteraction(maps[world.mapId],game,world,action);
     if(result.state===world.life)return game;
     return {...game,world:{...world,life:result.state}};
   }
   if (action.type === "world-clock" || action.type === "world-move" || action.type === "world-interact" || action.type === "world-close") {
     const maps = mapsForNeighbourhood(state);
-    const world = restoreWorld(game.world, maps, state.location);
+    const world = restoreWorld(game.world, maps, state.location, false);
     let next = reduceWorld(world, action, maps);
     if(action.type==="world-close"&&world.activeActivity==="restaurant") {
       const table=Number(world.activeAnchorId?.split("table-")[1]);

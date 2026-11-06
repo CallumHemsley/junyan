@@ -11,13 +11,13 @@ export function createWorld(maps:MapRegistry,location="restaurant"):WorldState {
   const map=maps[locationMap[location]]??maps.restaurant;
   return {version:1,mapId:map.id,position:{x:map.defaultSpawn.x,y:map.defaultSpawn.y},facing:map.defaultSpawn.facing,returnPositions:{},activeActivity:null,activeAnchorId:null,life:restoreLife(null)};
 }
-export function restoreWorld(value:unknown,maps:MapRegistry,location="restaurant"):WorldState {
+export function restoreWorld(value:unknown,maps:MapRegistry,location="restaurant",checkExitConnectivity=true):WorldState {
   const parsed=savedSchema.safeParse(value);
   if(!parsed.success) return createWorld(maps,location);
   const state=parsed.data,map=maps[state.mapId];
   if(!map) return createWorld(maps,location);
-  const position=safeExitPosition(map,state.position);
-  const returnPositions=Object.fromEntries(Object.entries(state.returnPositions).filter(([id,p])=>maps[id]&&isExitConnected(maps[id],p)));
+  const position=checkExitConnectivity?safeExitPosition(map,state.position):(canStand(map,state.position)?state.position:map.defaultSpawn);
+  const returnPositions=Object.fromEntries(Object.entries(state.returnPositions).filter(([id,p])=>maps[id]&&(checkExitConnectivity?isExitConnected(maps[id],p):canStand(maps[id],p))));
   const activeActivity=state.activeActivity && nearbyAnchors(map,position).some(a=>a.featureId===state.activeActivity)?state.activeActivity:null;
   const activeAnchorId=activeActivity?(nearbyAnchors(map,position).find(a=>a.id===state.activeAnchorId&&a.featureId===activeActivity)?.id??nearbyAnchors(map,position).find(a=>a.featureId===activeActivity)?.id??null):null;
   return {...state,position:{x:position.x,y:position.y},returnPositions,activeActivity,activeAnchorId,life:restoreLife(state.life)};
