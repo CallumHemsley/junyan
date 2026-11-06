@@ -90,3 +90,9 @@ Built exact e6270d095dead66ccb1d6fe9fb1815bbee86d702 in isolated detached checko
 ## Checkpoint performance observation at e6270d0
 
 No frame stall observed in phone-sized cloud Chromium. Five alternating two-second held-movement samples per load confirmed median121 native synchronous writes for both ordinary2026-byte/4word and diagnostic20553-byte/267registered-word saves. Full-journal native setItem median10.0ms total (8.0–13.2), stringify8.1ms (7.2–8.5), maximumRAFgap16.8ms and zero>50ms gaps. All persistence/journal/error assertions pass. Diagnostic journal is explicitly seeded; first ordinary sample follows normal opening. Observational wrappers preserve native calls. Other cloud browser work was concurrent. No claim about physical phones, full populated worlds or all checkpoint race orderings. Report/profile/raw observations in checkpoint-perf/README.md. Source concern about per-frame writes is confirmed; a performance defect is NOT established by these measurements. Repeat on integrated dense maps before acceptance.
+
+## Integrated c4ec7ed and lighting 74a5213
+
+Desktop normal-input route through all ten maps and 17 physical exits passed, 148903ms summed transition duration; table/kitchen reachable. Confirmed table Go to kitchen button inert due selected-anchor guard, while actual physical kitchen works. Full activity/visual acceptance OPEN; inspected town/courtyard/park composition remains inadequate. See integrated-c4ec7ed/README.md. Coordinator relay6673162995.
+
+Independent exact-source lighting execution at74a5213 confirms order-dependent identical material output and global proxy double-shading atmosphere/emissives; not screenshot pixel claims. See lighting-review/README.md with executable reproduction and exact outputs. Coordinator relay6673181044. Requested next-head worker request races/inverse picking/resize elapsed checks queued. Goal ACTIVE.

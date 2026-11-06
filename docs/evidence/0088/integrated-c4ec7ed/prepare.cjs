@@ -1,0 +1,3 @@
+const ts=require('typescript'),fs=require('fs'),path=require('path');const dir=__dirname,source='/workspace/junyan-review-integration';
+for(const name of ['geometry','camera','restaurant']){const s=fs.readFileSync(path.join(source,'src/world',name+'.ts'),'utf8');fs.writeFileSync(path.join(dir,name+'.mjs'),ts.transpileModule(s,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText)}
+const maps=[];for(const owner of fs.readdirSync(path.join(source,'src/world/maps')))for(const file of fs.readdirSync(path.join(source,'src/world/maps',owner)))if(file.endsWith('.json'))maps.push(JSON.parse(fs.readFileSync(path.join(source,'src/world/maps',owner,file),'utf8')));fs.writeFileSync(path.join(dir,'maps.json'),JSON.stringify(maps,null,2));
