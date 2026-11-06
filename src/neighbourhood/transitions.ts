@@ -137,7 +137,11 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
   let world = game.world;
   if(world) {
     const beforeMap=mapsForNeighbourhood(state)[world.mapId],afterMap=mapsForNeighbourhood(next)[world.mapId];
-    if(beforeMap&&afterMap&&beforeMap!==afterMap)world={...world,position:safeAfterEdit(beforeMap,afterMap,world.position)};
+    if(beforeMap&&afterMap&&beforeMap!==afterMap){
+      const position=safeAfterEdit(beforeMap,afterMap,world.position);
+      if(!position)return game; // Reject the whole edit: feature, journal and world stay atomic.
+      world={...world,position};
+    }
   }
   return { ...game, ...(world?{world}:{}), neighbourhood: next, journal };
 }

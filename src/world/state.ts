@@ -17,6 +17,7 @@ export function restoreWorld(value:unknown,maps:MapRegistry,location="restaurant
   const state=parsed.data,map=maps[state.mapId];
   if(!map) return createWorld(maps,location);
   const position=checkExitConnectivity?safeExitPosition(map,state.position):(canStand(map,state.position)?state.position:map.defaultSpawn);
+  if(!position)return {...createWorld(maps),life:restoreLife(state.life)};
   const returnPositions=Object.fromEntries(Object.entries(state.returnPositions).filter(([id,p])=>maps[id]&&(checkExitConnectivity?isExitConnected(maps[id],p):canStand(maps[id],p))));
   const activeActivity=state.activeActivity && nearbyAnchors(map,position).some(a=>a.featureId===state.activeActivity)?state.activeActivity:null;
   const activeAnchorId=activeActivity?(nearbyAnchors(map,position).find(a=>a.id===state.activeAnchorId&&a.featureId===activeActivity)?.id??nearbyAnchors(map,position).find(a=>a.featureId===activeActivity)?.id??null):null;

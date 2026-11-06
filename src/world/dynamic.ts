@@ -13,6 +13,6 @@ export function mapsForNeighbourhood(state:NeighbourhoodState,day=state.garden.d
  let courtyard=courtyards.get(state.cats);if(worldMaps.courtyard&&courtyard?.day!==day){courtyard={day,map:courtyardForCats(worldMaps.courtyard,state.cats,day)};courtyards.set(state.cats,courtyard);}
  return {...worldMaps,...(courtyard?{courtyard:courtyard.map}:{}),...(apartment?{apartment}:{}),...(rooftop?{rooftop}:{})};
 }
-export function safeAfterEdit(_before:WorldMapDefinition,after:WorldMapDefinition,position:Point):Point {
+export function safeAfterEdit(_before:WorldMapDefinition,after:WorldMapDefinition,position:Point):Point|null {
  return safeExitPosition(after,position);
 }

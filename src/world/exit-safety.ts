@@ -30,11 +30,11 @@ export function isExitConnected(map:WorldMapDefinition,p:Point):boolean {
  if(exits(map).some(exit=>canWalk(map,p,exit)))return true;
  return exitComponent(map).some(n=>Math.abs(n.x-p.x)<=1&&Math.abs(n.y-p.y)<=1&&canWalk(map,p,n));
 }
-export function safeExitPosition(map:WorldMapDefinition,p:Point):Point {
+export function safeExitPosition(map:WorldMapDefinition,p:Point):Point|null {
  if(isExitConnected(map,p))return p;
  const points=[...exitComponent(map)].sort((a,b)=>Math.hypot(a.x-p.x,a.y-p.y)-Math.hypot(b.x-p.x,b.y-p.y)||a.y-b.y||a.x-b.x);
- // Maps are registry-validated with a usable exit/spawn. An invalid empty
- // component is surfaced to callers rather than silently retaining a trap.
- if(!points.length)throw Error(`No exit-connected support in ${map.id}`);
+ // An edited/corrupt map can cover every exit. Callers must reject the edit
+ // or restore to the static safe world; never throw or keep disconnected feet.
+ if(!points.length)return null;
  return points[0];
 }
