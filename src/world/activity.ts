@@ -11,6 +11,7 @@ export function activityTarget(world:WorldState,map:WorldMapDefinition):Interact
  if(anchor.featureId==="repairs")return {kind:"repair",job:anchor.interactionId==="repair-toy"?"toy":"lamp"};
  if(anchor.featureId==="cats") {const target=anchor.interactionId.replace(/^cats\./,"");return {kind:"cat",target:targets.find(id=>id===target)??"aunt"};}
  if(anchor.featureId==="garden")return {kind:"garden",plantId:anchor.interactionId.startsWith("garden.")?anchor.interactionId.slice(7):null};
+ if(anchor.featureId==="reading-room")return {kind:"reading-room"};
  if(anchor.featureId==="apartment")return {kind:"apartment",itemId:null};
  return null;
 }

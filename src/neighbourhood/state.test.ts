@@ -11,7 +11,7 @@ const boundary: FeatureBoundary<LocalState> = {
       ? { count: value.count } : null;
   },
 };
-const features = { apartment: boundary, cats: boundary, repairs: boundary, garden: boundary };
+const features = { apartment: boundary, cats: boundary, repairs: boundary, garden: boundary, "reading-room": boundary };
 
 describe("neighbourhood save boundary", () => {
   it("initializes old saves without feature progress", () => {
@@ -45,7 +45,7 @@ describe("neighbourhood transitions", () => {
   it("visits every optional location and returns with feature progress unchanged", () => {
     const start = initialNeighbourhood(features);
     let state = start;
-    for (const location of ["apartment", "cats", "repairs", "garden", "restaurant"] as const) {
+    for (const location of ["apartment", "cats", "repairs", "garden", "reading-room", "restaurant"] as const) {
       state = visitLocation(state, location);
       expect(state.location).toBe(location);
       expect(state.apartment).toBe(start.apartment);

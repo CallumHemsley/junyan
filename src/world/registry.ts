@@ -1,4 +1,5 @@
 import { worldMapSchema, type WorldMapDefinition } from "./schema";
+import { readingRoomMap } from "./maps/reading-room";
 import { restaurantMap } from "./restaurant";
 export type MapRegistry = Readonly<Record<string,WorldMapDefinition>>;
 export function createMapRegistry(definitions:unknown[]):MapRegistry {
@@ -13,4 +14,4 @@ export function createMapRegistry(definitions:unknown[]):MapRegistry {
   return registry;
 }
 const modules=import.meta.glob<{mapDefinitions?:unknown[]}>("./maps/*/index.ts",{eager:true});
-export const worldMaps=createMapRegistry([restaurantMap,...Object.values(modules).flatMap(module=>module.mapDefinitions??[])]);
+export const worldMaps=createMapRegistry([restaurantMap,readingRoomMap,...Object.values(modules).flatMap(module=>module.mapDefinitions??[])]);

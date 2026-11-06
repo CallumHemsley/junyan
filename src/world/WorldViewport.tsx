@@ -25,7 +25,7 @@ import {reducedWorldChanged} from "./render-invalidation";
 import {visibleLifeReactions} from "./life/render";
 import "./world.css";
 const directions:Record<string,Point>={ArrowUp:{x:-1,y:-1},w:{x:-1,y:-1},ArrowDown:{x:1,y:1},s:{x:1,y:1},ArrowLeft:{x:-1,y:1},a:{x:-1,y:1},ArrowRight:{x:1,y:-1},d:{x:1,y:-1}};
-export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},dialogue=null,fresh,onAction,paused=false}:{state:WorldState;maps:MapRegistry;game:GameState;onPlay?:(line:Line)=>void;dialogue?:Line|null;onLookup:(word:Word,trigger:HTMLButtonElement)=>void;fresh:string[];onAction:(action:WorldAction|WorldLifeAction)=>void;paused?:boolean}) {
+export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},dialogue=null,fresh,onAction,onScenePoint,paused=false}:{state:WorldState;maps:MapRegistry;game:GameState;onPlay?:(line:Line)=>void;dialogue?:Line|null;onLookup:(word:Word,trigger:HTMLButtonElement)=>void;fresh:string[];onAction:(action:WorldAction|WorldLifeAction)=>void;onScenePoint?:(point:Point)=>void;paused?:boolean}) {
  const canvas=useRef<HTMLCanvasElement>(null),root=useRef<HTMLElement>(null);
  const latest=useRef({state,maps,game,onAction,paused});latest.current={state,maps,game,onAction,paused};
  const keys=useRef(new Set<string>()),path=useRef<Point[]>([]),cameraRef=useRef<Camera>({focus:state.position,width:960,height:600,scale:22});
@@ -170,9 +170,11 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   else if((event.key==="e"||event.key==="Enter")&&selected){event.preventDefault();event.stopPropagation();activate();}
  }} onBlur={event=>{if(!event.currentTarget.contains(event.relatedTarget))keys.current.clear();}}>
   <canvas ref={canvas} aria-hidden="true" onPointerDown={event=>{
-   if(paused||state.activeActivity)return;
+   if(paused)return;
    root.current?.focus();const rect=event.currentTarget.getBoundingClientRect(),p=pickSurface({x:(event.clientX-rect.left)*cameraRef.current.width/rect.width,y:(event.clientY-rect.top)*cameraRef.current.height/rect.height},cameraRef.current,map);
    if(!p)return;
+   onScenePoint?.(p);
+   if(state.activeActivity)return;
    const id=++requestId.current;
    worker.current?.postMessage({id,from:state.position,to:p,...(workerMap.current!==map?{map}:{})});workerMap.current=map;
   }}/>

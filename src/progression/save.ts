@@ -18,7 +18,7 @@ export function restoreProgression(value: unknown, game: Pick<GameState, "day" |
   if (spent > game.earnings) return null;
   const raw = z.object({ review: z.record(z.string(), z.unknown()).catch({}), daily: z.unknown().optional(), lastContext: z.string().nullable().catch(null) }).parse(value);
   const words = new Set(canonicalWords(contentWords(content).map(w => w.id), content));
-  const contexts = new Set([...catalog.scenarios.map(s => s.id), ...content.orders.map(o => `restaurant.${o.id}`)]);
+  const contexts = new Set(["reading-room.window", "reading-room.alcove", ...catalog.scenarios.map(s => s.id), ...content.orders.map(o => `restaurant.${o.id}`)]);
   const review: Record<string, Review> = {};
   const conflicted = new Set<string>();
   for (const [key, entry] of Object.entries(raw.review)) {

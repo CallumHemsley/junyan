@@ -12,6 +12,7 @@ export type InteractionTarget =
   | { kind: "repair"; job: Job }
   | { kind: "cat"; target: Target }
   | { kind: "garden"; plantId: string | null }
+  | { kind: "reading-room" }
   | { kind: "apartment"; itemId: string | null };
 export type DialogueProps = Pick<FeatureViewProps<unknown, unknown>, "onLookup" | "onPlay" | "recoveredWordIds" | "freshWordIds">;
 export type InteractionDialogue = { line: Line; speaker?: ReactNode };

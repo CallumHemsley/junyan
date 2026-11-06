@@ -1,4 +1,5 @@
 import type { Content, GameState } from "../contracts";
+import { recoveryForTransition as readingRoomRecovery } from "../features/reading-room/rules";
 import { itemWordIds } from "../features/apartment/rules";
 import { routineForDay } from "../features/cats/rules";
 import { createNeighbourhood } from "../neighbourhood/model";
@@ -62,6 +63,11 @@ export function practiceForTransition(before: GameState, action: NeighbourhoodAc
       mistake = action.action.type === "water-extra";
       targets = ["garden.dry", "garden.pour", "garden.water"];
       break;
+    case "reading-room": {
+      targets = readingRoomRecovery(b["reading-room"], action.action, a["reading-room"]);
+      if (targets.length) context = `reading-room.${b["reading-room"].brief}`;
+      break;
+    }
     case "apartment": {
       const id = b.apartment.selected;
       if (action.action.type === "place" && id && !b.apartment.placements.some(p => p.id === id) && a.apartment.placements.some(p => p.id === id)) {
@@ -73,7 +79,7 @@ export function practiceForTransition(before: GameState, action: NeighbourhoodAc
   }
   if (mistake) return supportWords(before, canonicalWords(targets, content));
   if (!context) return before.progression;
-  const practiced = canonicalWords(action.feature === "apartment" ? targets : catalog.scenarios.find(s => s.id === context)!.targets, content);
+  const practiced = canonicalWords((action.feature === "apartment" || action.feature === "reading-room") ? targets : catalog.scenarios.find(s => s.id === context)!.targets, content);
   // These authored routines guide the next action. Completion is exposure, not an independent recall test.
   return recordPractice({ ...before, progression: supportWords(before, practiced) }, context, practiced, action.now);
 }

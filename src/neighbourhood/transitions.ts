@@ -10,6 +10,7 @@ import { contentWords } from "../content/words";
 import * as apartment from "../features/apartment/rules";
 import * as cats from "../features/cats/rules";
 import * as repairs from "../features/repairs/rules";
+import * as readingRoom from "../features/reading-room/rules";
 import * as garden from "../features/garden/rules";
 import type { GiftId, LocationId } from "./contracts";
 import { availableGifts, createNeighbourhood } from "./model";
@@ -30,6 +31,7 @@ export type NeighbourhoodAction =
     | { feature: "cats"; action: cats.Action }
     | { feature: "repairs"; action: repairs.Action }
     | { feature: "garden"; action: garden.Action }
+    | { feature: "reading-room"; action: readingRoom.Action }
   ));
 
 export function isNeighbourhoodAction(action: { type: string }): action is NeighbourhoodAction {
@@ -63,7 +65,7 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
     }
     if (next === world) return game;
     let player=game.player;
-    const physicalLocation:LocationId|undefined=({restaurant:"restaurant",apartment:"apartment",courtyard:"cats",workshop:"repairs",rooftop:"garden"} as Record<string,LocationId>)[next.mapId];
+    const physicalLocation:LocationId|undefined=({restaurant:"restaurant",apartment:"apartment",courtyard:"cats",workshop:"repairs",rooftop:"garden","reading-room":"reading-room"} as Record<string,LocationId>)[next.mapId];
     const neighbourhood=physicalLocation&&physicalLocation!==state.location?{...state,location:physicalLocation}:state;
     if(action.type==="world-interact" && next.activeActivity) {
       const anchor=maps[next.mapId].anchors.find(a=>a.id===next.activeAnchorId);
@@ -128,6 +130,14 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
       if (after === state.repairs) return game;
       next = { ...state, repairs: after };
       recovered = repairs.recovered(state.repairs, action.action, after);
+      break;
+    }
+    case "reading-room": {
+      if (game.world && (game.world.mapId !== "reading-room" || game.world.activeActivity !== "reading-room")) return game;
+      const after = readingRoom.reduce(state["reading-room"], action.action);
+      if (after === state["reading-room"]) return game;
+      next = { ...state, "reading-room": after };
+      recovered = readingRoom.recoveryForTransition(state["reading-room"], action.action, after);
       break;
     }
     case "garden": {

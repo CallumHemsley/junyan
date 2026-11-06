@@ -11,6 +11,7 @@ export const featureContent = {
   cats: { words: cats.words, lines: cats.lines },
   repairs: { words: repairs.words, lines: repairs.lines },
   garden: { words: garden.words, lines: garden.lines },
+  "reading-room": { words: [], lines: [] },
 };
 export const content = attachFeatureContent(restaurantContent, featureContent);
 validateCatalog(content);

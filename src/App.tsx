@@ -13,6 +13,7 @@ import { characterFor } from "./content";
 import { content } from "./neighbourhood/registry";
 import Neighbourhood, { NeighbourhoodGifts } from "./neighbourhood/Neighbourhood";
 import FeatureLine from "./neighbourhood/FeatureLine";
+import { worldToGrid as readingRoomCell } from "./features/reading-room/world";
 import { lineById as apartmentLines } from "./features/apartment/content";
 import { createNeighbourhood } from "./neighbourhood/model";
 import { contentWords } from "./content/words";
@@ -442,7 +443,7 @@ export default function App() {
         </nav>
       </header>
       <main inert={blockingPanel || dayEndOpen} data-location={locationId}>
-        <WorldViewport state={world} maps={worldRegistry} game={state} onLookup={lookup} onPlay={playLine} dialogue={ambientLine} fresh={fresh} onAction={action=>{
+        <WorldViewport state={world} maps={worldRegistry} game={state} onLookup={lookup} onPlay={playLine} dialogue={ambientLine} fresh={fresh} onScenePoint={point=>{if(world.activeActivity!=="reading-room"||!neighbourhood["reading-room"].selected)return;const cell=readingRoomCell(point,neighbourhood["reading-room"].brief);if(cell)dispatch({type:"feature-action",feature:"reading-room",action:{type:"preview",...cell},now:Date.now()});}} onAction={action=>{
           if(action.type==="world-life") {
             const result=performLifeInteraction(worldRegistry[world.mapId],state,world,action);
             setAmbientLine(result.line??null);if(result.line)playLine(result.line);
@@ -457,7 +458,7 @@ export default function App() {
         <WorldPocketBar journalControl={<><span>{registered("journal")}</span><button aria-label="本子" onClick={()=>setPanel("journal")}><Book/><span>{words.length}</span></button></>} trayControl={<><span>{registered("tray")}</span><button aria-label="托盘" onClick={()=>setPanel("tray")}><span aria-hidden="true">▱</span><span>{state.tray.length}/6</span></button></>}/>
         {state.ended && world.mapId==="restaurant" && <button className="world-day-summary" aria-label={ui.summary} onClick={()=>{setPanel("none");setSummaryOpen(true);}}><Sun/></button>}
         {activityOpen && binding && <ContextualInteraction target={binding}
-          title={<span aria-label={binding.kind==="table"?`${binding.table}桌点餐`:binding.kind==="kitchen"?"厨房":binding.kind==="repair"?"修理间":binding.kind==="cat"?"院子":binding.kind==="garden"?"花园":"家"}>{binding.kind==="table"?binding.table:null}{registered(binding.kind==="table"?"customer":binding.kind==="kitchen"?"kitchen":binding.kind==="repair"?"repairs.workshop":binding.kind==="cat"?"cats.courtyard":binding.kind==="garden"?"garden.garden":"apartment.home")}</span>}
+          title={<span aria-label={binding.kind==="table"?`${binding.table}桌点餐`:binding.kind==="kitchen"?"厨房":binding.kind==="repair"?"修理间":binding.kind==="cat"?"院子":binding.kind==="garden"?"花园":binding.kind==="reading-room"?"共用书房":"家"}>{binding.kind==="table"?binding.table:null}{binding.kind==="reading-room"?<>{registered("table")}{registered("apartment.chair")}</>:registered(binding.kind==="table"?"customer":binding.kind==="kitchen"?"kitchen":binding.kind==="repair"?"repairs.workshop":binding.kind==="cat"?"cats.courtyard":binding.kind==="garden"?"garden.garden":"apartment.home")}</span>}
           dialogue={binding.kind==="table"&&order&&character&&customer?{current:{line:customer.phase==="served"?character.thanks:order.line},history:customer.phase==="ordered"?[{line:character.greeting}]:[]}:undefined}
           onClose={()=>{if(state.ended&&binding.kind==="table")setSummaryOpen(true);dispatch({type:"world-close"});setPanel("none");}} returnFocusTo={panelTrigger.current} suspended={wordOpen}
           onLookup={lookup} onPlay={playLine} recoveredWordIds={Object.keys(state.journal).filter(id=>state.journal[id].recovered)} freshWordIds={fresh}
