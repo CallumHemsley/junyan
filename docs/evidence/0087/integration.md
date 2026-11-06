@@ -53,3 +53,9 @@ A seated, ordered or checkout customer stays inside. A served customer also stay
 Restaurant art draws the person only when table.inside. It keeps accepted meal props when table.mealVisible even after departure. The existing receipt/order/game state remains unchanged. Neighbourhood life receives `excludedCharacterIds:restaurantPresence(game,life).insideCharacterIds` on EVERY map. Once released, existing authored routines become eligible. An unacknowledged reaction stays present across reload.
 
 For independent unvoiced background life, proposed canonical actor IDs are neighbour-reader, neighbour-caretaker and neighbour-courier. Character owner must register distinct silhouettes/palettes first; map owners author matching safe hooks at reading, work and delivery places. Life will add profiles/routines only after those contracts land, so unknown IDs cannot silently render as the player's default sprite. No new dialogue or audio is requested.
+
+## Canonical background residents v1
+
+Coordinator c32f128 allocates resident-reader and resident-groundskeeper to park, resident-courier to town, resident-laundry-neighbour to courtyard, and resident-river-walker to riverbank. These exact IDs are now profiles in life/profiles.ts. Their sole-map homeMap is enforced by compileLife; a wrong-map hook is diagnosed and skipped. They have distinct speed/dwell/resting choices, no greeting and no fabricated audio/line. The regulars' restaurant exclusions do not suppress these identities.
+
+Map owners supply the actual hooks. Character0085 must publish support for the five IDs before production art acceptance. Do not accept the generic unknown-character fallback as a background silhouette. Life's profile behavior tests cover deterministic repeated samples, actual movement plus task pauses, reduced-motion poses, zero returned speech and wrong-map rejection. Current proof is pure/profile-level until the exact actor and hook heads are consumed and walked in production.

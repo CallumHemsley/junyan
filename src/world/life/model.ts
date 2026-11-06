@@ -18,6 +18,7 @@ export type Profile = {
   dwellMs: number;
   resting: 'idle' | 'sit' | 'work' | 'perch';
   greeting?: Line;
+  homeMap?: string;
 };
 export type RoutePhase = {
   from: Position;

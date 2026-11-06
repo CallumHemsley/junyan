@@ -24,6 +24,7 @@ export function compileLife(map: LifeMap, navigation: Navigation): LifePlan {
     if (ids.has(hook.id)) { fail('duplicate-hook'); continue; }
     ids.add(hook.id);
     if (!profile) { fail('unknown-character'); continue; }
+    if (profile.homeMap && map.id !== profile.homeMap) { fail('wrong-home-map'); continue; }
     if (profile.kind !== 'bird' && characters.has(profile.id)) { fail('duplicate-character'); continue; }
     characters.add(profile.id);
     habitatActors.push({ id: hook.id, characterId: profile.id, profile, home: hook.position });
