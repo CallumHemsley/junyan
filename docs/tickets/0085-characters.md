@@ -38,3 +38,11 @@ The legacy characterFigure emits rounded capsules in world space and restaurant 
 ### Next actions
 
 Finish pure typed actor sampling and crisp original pixel commands. Verify diagonal orientation, planted feet, contextual states and reduced motion. Publish WIP. Integrate only through 0078's leased adapter. Keep objective active until independently verified in the full connected game.
+
+### Published checkpoint
+
+- Revision 2 actor candidate and real WorldRenderView adapter published at `50089d0`; root visually inspected and accepted the candidate for integration, while keeping full objective active.
+- Draft PR https://github.com/CallumHemsley/junyan/pull/30 targets foundation. `sampleActor`, `drawActor`, `actorCommands`, and the new `actorObject` factory are exported from the owned index.
+- Full rules 318 passed. Scoped actor/raster checks 6 passed. Build passed. Actual desktop/phone fixture keyboard/touch and reduced-motion checks passed with clean consoles; inspected motion videos retained.
+- Original desktop journey and phone movement/reload passed. Phone full journey had an interrupted run during concurrent source/build work, then passed unchanged-checkout isolated rerun. See evidence README for exact limitation.
+- Next actions are production compositor camera/DPR/scenery/context checks and independent review. Goal remains ACTIVE; no integration PASS claimed.

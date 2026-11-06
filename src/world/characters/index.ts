@@ -64,4 +64,4 @@ export function sampleActor(input:ActorInput):ActorSample {
     phase,posture,frame:picture,drawCommands:commands,worldCommands:actorCommands({drawCommands:commands},{x:0,y:0})};
 }
 
-export {drawActor,actorCommands} from './adapter';
+export {drawActor,actorCommands,actorObject} from './adapter';

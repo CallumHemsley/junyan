@@ -1,4 +1,4 @@
-import type { DrawMap, WorldRenderView } from '../../render-contract';
+import type { DrawMap, WorldRenderObject, WorldRenderView } from '../../render-contract';
 import type { SceneApi } from '../../../scene/renderer.js';
 import { mapDefinitions } from '../../maps/residential';
 import { furnitureWorldRect } from '../../../features/apartment/world';
@@ -12,6 +12,14 @@ const paleWood: Colour = [193, 153, 101];
 const ink: Colour = [76, 65, 51];
 const jade: Colour = [111, 154, 134];
 const linen: Colour = [215, 207, 176];
+
+function wall(api: ResidentialArtApi, x: number, y: number, width: number, depth: number) {
+  api.box(x, y, 0, x + width, y + depth, 2.7, cream);
+  api.box(x, y, .04, x + width, y + depth, .18, wood);
+  api.box(x, y, 1, x + width, y + depth, 1.055, [203, 185, 149]);
+  api.box(x, y, 2.7, x + width, y + depth, 2.79, paleWood);
+}
+
 
 export function drawResidentialFloor(api: ResidentialArtApi, mapId: string) {
   const map = mapDefinitions.find(m => m.id === mapId);
@@ -60,15 +68,15 @@ export function drawResidentialProps(api: ResidentialArtApi, mapId: string, laye
     switch (prop.kind) {
       case 'wall':
       case 'partition':
-        box(x, y, 0, endX, endY, 2.7, cream);
-        box(x, y, .05, endX, endY, .18, wood);
-        box(x, y, 2.7, endX, endY, 2.79, paleWood);
+        wall(api, x, y, w, h);
         break;
       case 'sofa':
         box(x, y, .1, endX, endY, .5, wood);box(x + .1, y + .1, .5, endX - .1, endY - .1, .9, jade);
         box(x, y, .9, x + .4, endY, 1.5, [124, 150, 126]);
         for (let at = y + .3; at < endY; at += 1) box(x + .4, at, .9, endX - .1, at + .8, 1.03, [164, 179, 147]);
         box(x + .5, y + .15, .95, x + 1.2, y + .9, 1.25, linen);
+        box(x + .5, endY - 1, .95, x + 1.2, endY - .2, 1.27, [143, 166, 168]);
+        for (const at of [y + .08, endY - .35]) box(x + .2, at, .6, endX, at + .25, 1.1, [107, 143, 125]);
         break;
       case 'floor-lamp':
         box(x + .2, y + .2, 0, endX - .2, endY - .2, .12, ink);box(x + .45, y + .45, .12, x + .55, y + .55, 2.1, wood);
@@ -118,7 +126,11 @@ export function drawResidentialProps(api: ResidentialArtApi, mapId: string, laye
         for (let at = x + .2; at < endX - .1; at += 1.1) box(at, endY + .06, 1.1, at + .07, endY + .09, 3.4, linen);
         box(x + .12, endY + .07, 2.15, endX - .12, endY + .1, 2.23, linen);
         box(x - .2, y - .05, .93, endX + .2, endY + .25, 1.1, paleWood);
-        box(x - .1, y + .06, 1.1, x + .2, endY + .2, 3.5, jade);
+        for (const side of [x - .12, endX - .3]) for (let fold = 0; fold < 3; fold++) {
+          const at = side + fold * .12;
+          box(at, endY + .12, 1.05 + (fold % 2) * .07, at + .11, endY + .24, 3.55, fold % 2 ? [127, 158, 139] : [157, 179, 151]);
+        }
+        box(x - .3, y, 3.6, endX + .3, endY + .3, 3.7, wood);
         break;
       case 'bench': case 'tea-table': case 'stool': {
         const height = prop.kind === 'tea-table' ? .8 : .63;
@@ -217,17 +229,35 @@ export function drawApartmentFurniture(api: ResidentialArtApi, state: State) {
     switch (p.id) {
       case 'bed':
         box(x, y, 0, endX, endY, .4, wood); box(x, y, .4, endX, endY, .7, cream);box(x, y, .7, endX, y + .2, 1.2, wood);
-        box(x + .2, y + .35, .7, endX - .2, y + 1.1, .88, linen); box(x, y + 1.3, .7, endX, endY, .83, [132, 158, 127]);
-        for (let at = y + 1.45; at < endY; at += .45) box(x, at, .83, endX, at + .05, .85, [163, 179, 142]);
+        box(x + .2, y + .35, .7, endX - .2, y + 1.1, .88, linen);
+        box(x + .24, y + .39, .88, endX - .24, y + .46, .9, [239, 227, 193]);
+        for (let at = x + .3; at < endX - .2; at += .55) box(at, y + .03, .85, at + .1, y + .2, 1.24, paleWood); box(x, y + 1.3, .7, endX, endY, .83, [132, 158, 127]);
+        box(x + .05, y + 1.25, .83, endX - .05, y + 1.62, .9, [176, 190, 154]);
+        for (let at = y + 1.8; at < endY - .1; at += .6) box(x + .05, at, .83, endX - .05, at + .035, .85, [151, 175, 137]);
+        box(x, endY - .15, .45, endX, endY, .83, [112, 144, 117]);
+        box(x + .2, endY - .2, .83, x + .8, endY, .88, [155, 177, 140]);
         break;
       case 'table':
         for (const px of [x + .1, endX - .24]) for (const py of [y + .1, endY - .24]) box(px, py, 0, px + .14, py + .14, 1.1, ink);
-        box(x, y, 1.1, endX, endY, 1.3, paleWood);sphere(x + .6, y + .6, 1.47, .18, jade, 'solid');
+        box(x, y, 1.1, endX, endY, 1.3, paleWood);
+        box(x + .2, y + .2, 1.3, endX - .2, y + .23, 1.31, [174, 133, 83]);
+        box(x + .25, y + .4, 1.31, x + .95, y + 1.05, 1.33, linen);
+        sphere(x + .6, y + .6, 1.47, .18, jade, 'solid');
+        box(endX - .8, endY - .9, 1.3, endX - .25, endY - .35, 1.36, [133, 155, 154]);
+        box(endX - .77, endY - .87, 1.36, endX - .28, endY - .38, 1.4, linen);
         break;
       case 'chair': case 'repairs.stool':
         for (const px of [x + .1, endX - .24]) for (const py of [y + .1, endY - .24]) box(px, py, 0, px + .14, py + .14, .7, ink);
         box(x, y, .7, endX, endY, .85, paleWood);
-        if (p.id === 'chair') box(x, y, .85, p.rotation ? x + .15 : endX, p.rotation ? endY : y + .15, 1.6, wood);
+        if (p.id === 'chair') {
+          if (p.rotation) {
+            box(x, y, .8, x + .15, y + .15, 1.7, wood);box(x, endY - .15, .8, x + .15, endY, 1.7, wood);
+            for (const z of [1.1, 1.45]) box(x, y, z, x + .15, endY, z + .14, paleWood);
+          } else {
+            box(x, y, .8, x + .15, y + .15, 1.7, wood);box(endX - .15, y, .8, endX, y + .15, 1.7, wood);
+            for (const z of [1.1, 1.45]) box(x, y, z, endX, y + .15, z + .14, paleWood);
+          }
+        }
         break;
       case 'rug':
         box(x, y, .015, endX, endY, .035, [170, 153, 115]);box(x + .15, y + .15, .035, endX - .15, endY - .15, .045, [211, 192, 150]);
@@ -298,19 +328,51 @@ function paintResidential(ctx: CanvasRenderingContext2D, view: WorldRenderView, 
 
 export const drawMap: DrawMap = (ctx, map, view) => {
   if (!mapDefinitions.some(m => m.id === map.id)) return;
-  ctx.save();
-  if (view.pass === 'foreground') ctx.globalAlpha = .38;
-  paintResidential(ctx, view, api => {
-    if (view.pass === 'ground') { drawResidentialFloor(api, map.id); drawResidentialProps(api, map.id, 'ground'); }
-    else if (view.pass === 'objects') drawResidentialProps(api, map.id, 'object');
-    else {
-      const fronts = map.props.filter(p => ['wall', 'partition', 'bookcase', 'wardrobe', 'screen'].includes(p.kind) && p.position.x + p.position.y > view.playerPosition.x + view.playerPosition.y).map(p => p.id);
-      drawResidentialProps(api, map.id, undefined, fronts);
-    }
+  if (view.pass === 'ground') paintResidential(ctx, view, api => {
+    drawResidentialFloor(api, map.id);drawResidentialProps(api, map.id, 'ground');
   });
-  ctx.restore();
+  if (view.pass === 'foreground') paintResidential(ctx, view, api => drawResidentialProps(api, map.id, 'foreground'));
 };
 
+export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderView): WorldRenderObject[] {
+  if (!mapDefinitions.some(m => m.id === map.id)) return [];
+  return map.props.filter(p => p.layer === 'object').flatMap(prop => {
+    if (prop.kind === 'wall' || prop.kind === 'partition') {
+      const parts: WorldRenderObject[] = [];
+      for (let x = prop.position.x; x < prop.position.x + prop.width; x++) for (let y = prop.position.y; y < prop.position.y + prop.height; y++) {
+        const width = Math.min(1, prop.position.x + prop.width - x), height = Math.min(1, prop.position.y + prop.height - y);
+        parts.push({
+          id: parts.length ? `${prop.id}.segment-${parts.length}` : prop.id,
+          position: { x: x + width / 2, y: y + height / 2 },
+          occlusion: { rect: { x, y, width, height }, height: 2.8, fadeWhenPlayerBehind: true },
+          draw(ctx, view) { paintResidential(ctx, view, api => wall(api, x, y, width, height)); },
+        });
+      }
+      return parts;
+    }
+    const position = { x: prop.position.x + prop.width / 2, y: prop.position.y + prop.height / 2 };
+    const occluder = map.occluders.find(o => o.id === prop.id);
+    const tall = ['wardrobe', 'bookcase', 'screen', 'window'].includes(prop.kind);
+    return [{
+      id: prop.id, position,
+      occlusion: occluder ?? (tall ? { rect: { ...prop.position, width: prop.width, height: prop.height }, height: 2.7, fadeWhenPlayerBehind: true } : undefined),
+      draw(ctx, view) { paintResidential(ctx, view, api => drawResidentialProps(api, map.id, undefined, [prop.id])); },
+    }];
+  });
+}
+
 export function drawFurniture(ctx: CanvasRenderingContext2D, state: State, view: WorldRenderView) {
-  if (view.pass === 'objects') paintResidential(ctx, view, api => drawApartmentFurniture(api, state));
+  if (view.pass === 'ground') paintResidential(ctx, view, api => drawApartmentFurniture(api, { ...state, placements: state.placements.filter(p => p.id === 'rug') }));
+}
+
+export function renderFurnitureObjects(state: State): WorldRenderObject[] {
+  return state.placements.filter(p => p.id !== 'rug').map(p => {
+    const rect = furnitureWorldRect(p, state.rugSize);
+    return {
+      id: `apartment.furniture.${p.id}`,
+      position: { x: rect.x + rect.width / 2, y: rect.y + rect.height / 2 },
+      occlusion: p.id === 'bed' || p.id === 'table' ? { rect, height: p.id === 'bed' ? .85 : 1.3, fadeWhenPlayerBehind: false } : undefined,
+      draw(ctx, view) { paintResidential(ctx, view, api => drawApartmentFurniture(api, { ...state, placements: [p] })); },
+    };
+  });
 }
