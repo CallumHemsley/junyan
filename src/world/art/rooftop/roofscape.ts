@@ -14,15 +14,15 @@ type Paint = {
 
 // Render-only neighbouring blocks sit outside map bounds and below the garden roof.
 export const roofscapeBuildings: readonly Building[] = [
-  ...Array.from({length: 9}, (_, i): Building => ({id: `west-near-${i}`, x: -14 - i % 2 * 2, y: -20 + i * 11,
-    width: 10 + i % 2, depth: 8 + i % 3, roof: -3 - i % 3 * .65, band: 'near', style: i % 3 === 0 ? 'terrace' : 'tile', variant: i})),
+  ...Array.from({length: 9}, (_, i): Building => ({id: `west-near-${i}`, x: -11 - i % 2, y: -20 + i * 11,
+    width: 8 + i % 2, depth: 8 + i % 3, roof: -3 - i % 3 * .65, band: 'near', style: i % 3 === 0 ? 'terrace' : 'tile', variant: i})),
   ...Array.from({length: 9}, (_, i): Building => ({id: `west-far-${i}`, x: -31 - i % 2 * 2, y: -24 + i * 12,
     width: 13, depth: 10, roof: -7 - i % 3, band: 'far', style: i % 2 ? 'terrace' : 'tile', variant: i + 2})),
-  ...Array.from({length: 8}, (_, i): Building => ({id: `south-near-${i}`, x: -24 + i * 13, y: 39 + i % 2,
-    width: 10 + i % 3, depth: 11, roof: -3.8 - i % 3 * .8, band: 'near', style: i % 3 === 0 ? 'sawtooth' : i % 2 ? 'tile' : 'terrace', variant: i + 3})),
+  ...Array.from({length: 8}, (_, i): Building => ({id: `south-near-${i}`, x: -24 + i * 13, y: 37.5 + i % 2,
+    width: 10 + i % 3, depth: 11, roof: -3.2 - i % 3 * .8, band: 'near', style: i % 3 === 0 ? 'sawtooth' : i % 2 ? 'tile' : 'terrace', variant: i + 3})),
   ...Array.from({length: 8}, (_, i): Building => ({id: `south-far-${i}`, x: -28 + i * 15, y: 57 + i % 2 * 2,
     width: 12, depth: 14, roof: -8 - i % 3, band: 'far', style: i % 2 ? 'tile' : 'terrace', variant: i + 1})),
-  ...Array.from({length: 8}, (_, i): Building => ({id: `east-near-${i}`, x: 51 + i % 2, y: -18 + i * 12,
+  ...Array.from({length: 8}, (_, i): Building => ({id: `east-near-${i}`, x: 49.5 + i % 2, y: -18 + i * 12,
     width: 12, depth: 9, roof: -4.5 - i % 3 * .6, band: 'near', style: i % 3 === 0 ? 'sawtooth' : i % 2 ? 'terrace' : 'tile', variant: i})),
   ...Array.from({length: 8}, (_, i): Building => ({id: `east-far-${i}`, x: 71, y: -22 + i * 14,
     width: 14, depth: 11, roof: -8 - i % 3, band: 'far', style: i % 2 ? 'terrace' : 'tile', variant: i + 2})),
@@ -81,9 +81,9 @@ export function drawRoofscape(p: Paint, viewport: {width: number; height: number
   }
 
   // The garden building continues below its front and east parapets.
-  polygon([project(1, 35, -.3), project(47, 35, -.3), project(47, 35, -14), project(1, 35, -14)], '#8e9e90');
-  polygon([project(47, 1, -.3), project(47, 35, -.3), project(47, 35, -14), project(47, 1, -14)], '#748e84');
-  for (const z of [-3.2, -6.4, -9.6, -12.8]) {
+  polygon([project(1, 35, -.3), project(47, 35, -.3), project(47, 35, -7.5), project(1, 35, -7.5)], '#8e9e90');
+  polygon([project(47, 1, -.3), project(47, 35, -.3), project(47, 35, -7.5), project(47, 1, -7.5)], '#748e84');
+  for (const z of [-3.2, -6.4]) {
     stem({x: 1, y: 35.02}, {x: 47, y: 35.02}, z + 1.1, z + 1.1, '#b1b9a1');
     for (let x = 3; x < 46; x += 4.5) {
       polygon([project(x, 35.03, z), project(x + 1.4, 35.03, z), project(x + 1.4, 35.03, z + 1), project(x, 35.03, z + 1)], '#657f78');
@@ -92,5 +92,5 @@ export function drawRoofscape(p: Paint, viewport: {width: number; height: number
     for (let y = 3; y < 33; y += 4.5)
       polygon([project(47.03, y, z), project(47.03, y + 1.3, z), project(47.03, y + 1.3, z + 1), project(47.03, y, z + 1)], '#58776f');
   }
-  for (const x of [10, 28, 43]) stem({x, y: 35.06}, {x, y: 35.06}, -.5, -14, '#6b8e83', 2);
+  for (const x of [10, 28, 43]) stem({x, y: 35.06}, {x, y: 35.06}, -.5, -7.5, '#6b8e83', 2);
 }
