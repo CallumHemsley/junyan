@@ -1,4 +1,4 @@
-import { worldMaps } from "../world/registry";
+import { mapsForNeighbourhood, safeAfterEdit } from "../world/dynamic";
 import { restoreWorld, reduceWorld, type WorldAction } from "../world/state";
 import type { Content, GameState } from "../contracts";
 import { recoverWords } from "../game";
@@ -47,8 +47,9 @@ function apartmentRecovery(before: apartment.State, action: apartment.Action, af
 export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAction, content: Content): GameState {
   const state = game.neighbourhood ?? createNeighbourhood(game.day);
   if (action.type === "world-move" || action.type === "world-interact" || action.type === "world-close") {
-    const world = restoreWorld(game.world, worldMaps, state.location);
-    const next = reduceWorld(world, action, worldMaps);
+    const maps = mapsForNeighbourhood(state);
+    const world = restoreWorld(game.world, maps, state.location);
+    const next = reduceWorld(world, action, maps);
     if (next === world) return game;
     return { ...game, world: next, neighbourhood: next.activeActivity ? { ...state, location: next.activeActivity } : state };
   }
@@ -95,5 +96,10 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
   }
   const known = new Set(contentWords(content).map(word => word.id));
   const journal = recoverWords(game.journal, recovered.filter(id => known.has(id)), action.now);
-  return { ...game, neighbourhood: next, journal };
+  let world = game.world;
+  if(world) {
+    const beforeMap=mapsForNeighbourhood(state)[world.mapId],afterMap=mapsForNeighbourhood(next)[world.mapId];
+    if(beforeMap&&afterMap&&beforeMap!==afterMap)world={...world,position:safeAfterEdit(beforeMap,afterMap,world.position)};
+  }
+  return { ...game, ...(world?{world}:{}), neighbourhood: next, journal };
 }

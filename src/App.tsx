@@ -1,6 +1,6 @@
 import WorldViewport from "./world/WorldViewport";
 import { restoreWorld } from "./world/state";
-import { worldMaps } from "./world/registry";
+import { mapsForNeighbourhood } from "./world/dynamic";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Line, Position, Word } from "./contracts";
 import { KITCHEN, TABLES } from "./contracts";
@@ -85,7 +85,8 @@ export default function App() {
   const [audioError, setAudioError] = useState<PlaybackError>(null);
   const neighbourhood = state.neighbourhood ?? createNeighbourhood(state.day);
   const locationId = neighbourhood.location;
-  const world = restoreWorld(state.world, worldMaps, locationId);
+  const worldRegistry = mapsForNeighbourhood(neighbourhood);
+  const world = restoreWorld(state.world, worldRegistry, locationId);
   const activityOpen = world.activeActivity !== null;
   const [giftNotice, setGiftNotice] = useState(false);
   const dayEndOpen = activityOpen && locationId === "restaurant" && state.ended && panel === "none" && !word;
@@ -570,7 +571,7 @@ export default function App() {
         </nav>
       </header>
       <main inert={panel !== "none" || dayEndOpen} data-location={locationId}>
-        <WorldViewport state={world} onAction={dispatch} paused={panel !== "none" || wordOpen || dayEndOpen}/>
+        <WorldViewport state={world} maps={worldRegistry} onAction={dispatch} paused={panel !== "none" || wordOpen || dayEndOpen}/>
         {activityOpen && <div className="world-activity" data-world-activity={world.activeActivity}>
         <button className="world-activity-close" onClick={() => {dispatch({type:"world-close"});setPanel("none");}}>继续走走</button>
         {locationId === "restaurant" ? <div className="play-layout">
