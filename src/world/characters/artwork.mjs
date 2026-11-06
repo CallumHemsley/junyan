@@ -33,7 +33,7 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
       const row=py+padding;
       if(tx>=0&&tx<W&&row>=0&&row<frameHeight) {
         const offset=(row*W+tx)*4;
-        if(!behind||!pixels[offset+3])pixels.set([...color,255],offset);
+        if(!behind||!pixels[offset+3])pixels.set([...(typeof color==='function'?color(px,py):color),255],offset);
       }
     }
   }
@@ -54,6 +54,17 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
     for(let i=0;i<=steps;i++)rect(from[0]+(to[0]-from[0])*i/steps-width/2,from[1]+(to[1]-from[1])*i/steps,width,1,color);
   }
 
+  // Broad quantized planes keep native-scale volume legible without texture noise.
+  function form(color,cx,cy,rx,ry) {
+    const cool=[46,38,84],warm=[255,232,180];
+    const ramp=[[.58,.20],[.74,.12],[.90,.04],[1,0],[1.07,.13]].map(([amount,tint],i)=>color.map((v,c)=>Math.round(Math.min(255,v*(color===skin?Math.max(.78,amount):amount)*(1-tint)+(i===4?warm[c]:cool[c])*tint))));
+    return (x,y)=>{
+      const nx=Math.max(-1,Math.min(1,(x+.5-cx)/rx)),ny=Math.max(-1,Math.min(1,(y+.5-cy)/ry));
+      const nz=Math.sqrt(Math.max(0,1-nx*nx-ny*ny));
+      const light=-(mirror?-nx:nx)*.23-ny*.22+nz*.80;
+      return ramp[light<.05?0:light<.28?1:light<.53?2:light<.82?3:4];
+    };
+  }
   const feet=[];
   function leg(near) {
     const side=near?1:-1;
@@ -64,8 +75,8 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
     const footX=originX+along+(seated?2:0);
     const knee=[originX+Math.round(along*.5),attachedSeat?hip+1:seated?34:crouched?35:33-lift];
     const color=shade(trousers,near?1:.72);
-    stroke([originX,hip],knee,body?.legWidth??4,color);
-    stroke(knee,[footX,contactY-2],3,color);
+    stroke([originX,hip],knee,body?.legWidth??4,form(color,originX,0,3,Infinity));
+    stroke(knee,[footX,contactY-2],3,form(color,footX,0,2.5,Infinity));
     const shoeWidth=profile?6:quarter?5:4;
     rect(footX-2,contactY-1,shoeWidth,2,ink);
     rect(footX-1,contactY-1,shoeWidth-1,1,shade(trousers,1.15));
@@ -101,8 +112,8 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
     if(acting&&!walking&&role)hand[1]-=1;
     if(action==='react'&&near){elbow[1]-=3;hand[1]-=7;}
     if(acting&&!walking&&!occupied&&!working&&near){hand[0]-=3;hand[1]-=4;}
-    stroke(root,elbow,near?4:3,shade(shirt,near?.86:.64));
-    stroke(elbow,hand,3,shade(skin,near?1:.82));
+    stroke(root,elbow,near?4:3,form(shirt,(root[0]+elbow[0])/2,(root[1]+elbow[1])/2,near?3:2,6));
+    stroke(elbow,hand,3,form(skin,(elbow[0]+hand[0])/2,(elbow[1]+hand[1])/2,2.5,5));
     rect(elbow[0]-1,elbow[1],3,1,cream);
     rect(hand[0]-1,hand[1],3,2,skin);
     if(near)held={x:hand[0]+1,y:hand[1]};
@@ -112,12 +123,12 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
   arm(false);
   if(kind==='backpack'&&!rear)rect(bodyX-2,shoulder+3,3,9,brass);
   polygon([[bodyX+2,shoulder],[bodyX+bodyWidth-2,shoulder+(quarter?1:0)],[bodyX+bodyWidth,shoulder+4],[bodyX+bodyWidth-1,hip+1],[bodyX,hip+1],[bodyX-1,shoulder+4]],shade(shirt,.65));
-  polygon([[bodyX+2,shoulder+1],[bodyX+bodyWidth-3,shoulder+1],[bodyX+bodyWidth-1,shoulder+4],[bodyX+bodyWidth-2,hip],[bodyX+1,hip],[bodyX,shoulder+4]],shirt);
-  rect(bodyX+2,shoulder+3,2,Math.max(2,hip-shoulder-4),shade(shirt,1.08));
+  polygon([[bodyX+2,shoulder+1],[bodyX+bodyWidth-3,shoulder+1],[bodyX+bodyWidth-1,shoulder+4],[bodyX+bodyWidth-2,hip],[bodyX+1,hip],[bodyX,shoulder+4]],form(shirt,14,shoulder+5,bodyWidth*.55,(hip-shoulder)*.9));
+
   leg(true);
   if(!rear) {
     if(kind==='player') {
-      rect(bodyX+2,shoulder+4,bodyWidth-4,hip-shoulder-3,jade);
+      rect(bodyX+2,shoulder+4,bodyWidth-4,hip-shoulder-3,form(jade,14,shoulder+6,bodyWidth*.48,(hip-shoulder)*.8));
       rect(bodyX+3,shoulder+1,1,4,jade);
       rect(bodyX+bodyWidth-4,shoulder+1,1,4,jade);
       rect(bodyX+4,hip-3,Math.max(2,bodyWidth-8),1,shade(jade,.75));
@@ -169,12 +180,12 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
   const left=faceX-headWidth/2;
   rect(faceX-2,shoulder-3,4,4,shade(skin,.85));
   polygon([[left+3,headY],[left+headWidth-3,headY],[left+headWidth,headY+3],[left+headWidth,headY+10],[left+headWidth-3,headY+13],[left+3,headY+13],[left,headY+9],[left,headY+3]],shade(skin,.77));
-  polygon([[left+2,headY+3],[left+headWidth-1,headY+3],[left+headWidth-1,headY+9],[left+headWidth-3,headY+12],[left+3,headY+12],[left+1,headY+8]],skin);
-  rect(left+3,headY+4,Math.max(3,headWidth-6),3,shade(skin,1.05));
-  polygon([[left+2,headY-1],[left+headWidth-3,headY-1],[left+headWidth-1,headY+1],[left+headWidth,headY+5],[left+headWidth-2,headY+5],[left+headWidth-3,headY+3],[left+2,headY+3],[left+1,headY+8],[left-1,headY+7],[left-1,headY+2]],hair);
-  rect(left+3,headY,Math.max(3,headWidth-7),1,shade(hair,1.22));
+  polygon([[left+2,headY+3],[left+headWidth-1,headY+3],[left+headWidth-1,headY+9],[left+headWidth-3,headY+12],[left+3,headY+12],[left+1,headY+8]],form(skin,faceX-1,headY+6,headWidth*.55,8));
+
+  polygon([[left+2,headY-1],[left+headWidth-3,headY-1],[left+headWidth-1,headY+1],[left+headWidth,headY+5],[left+headWidth-2,headY+5],[left+headWidth-3,headY+3],[left+2,headY+3],[left+1,headY+8],[left-1,headY+7],[left-1,headY+2]],form(hair,faceX-1,headY+1,headWidth*.6,7));
+
   if(rear) {
-    polygon([[left,headY+3],[left+headWidth-1,headY+2],[left+headWidth,headY+8],[left+headWidth-3,headY+11],[left+2,headY+11],[left,headY+8]],hair);
+    polygon([[left,headY+3],[left+headWidth-1,headY+2],[left+headWidth,headY+8],[left+headWidth-3,headY+11],[left+2,headY+11],[left,headY+8]],form(hair,faceX-1,headY+5,headWidth*.6,8));
     if(quarter) {
       rect(left+headWidth,headY+6,1,4,skin);
       rect(left+headWidth-1,headY+6,1,2,shade(skin,.8));

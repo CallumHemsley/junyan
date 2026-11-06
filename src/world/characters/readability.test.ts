@@ -3,9 +3,10 @@ import {describe,it,expect} from 'vitest';
 import {actorCatalog} from './catalog';
 import {frame} from './artwork.mjs';
 
-// Exact native frames at cf966caf, before the player garment palette changed.
+// Pixel provenance at 03bc3198, before 0122 form shading. Shapes/attachments below
+// remain exact across the full animation/pose matrix; colour is intentionally authored anew.
 const baselinePixels:Record<string,string> = {
-  "player": "9df533f1f0f9645fd20c6a745a98c1f31ed81be19c97247e9086f226961f79ba",
+  "player": "109551e30076a684ede23832ac18a7d7988675bba3b1ae54cb772f72081cc18a",
   "lin-jie": "f199978b43f7560e0fc12929c8c8155d8df8501704911f768756461b0b53f5e9",
   "xiao-li": "1b9e27babf5493f762d9740b93a4b10d6a22bd893bbd56b1372d809279a785b1",
   "zhang-laoshi": "5470f884138f0f6b9ad01bce001bff343112f3d3520f4f5abfa439ca8ed3a649",
@@ -18,8 +19,22 @@ const baselinePixels:Record<string,string> = {
   "resident-river-walker": "75e631c7a14720b9096333e72ea09abeb5e55b1b8a7a00afa28e399da2198931"
 };
 
-describe('player garment readability',()=>{
- it('keeps all native masks, bounds and contacts, and every other actor byte-identical',()=>{
+const baselinePhysical:Record<string,string> = {
+  "player": "cb7015f72d5c62085b3a1c1ea64901cfa79b2f16a6b500a820cacd9a4beeb43f",
+  "lin-jie": "a27a9f1c507d424f4cdb79dcfd5b7239d3c9fe6217cdeca6712b06f4add1bb02",
+  "xiao-li": "1328a3d9d18438bf2c91c0f1a7363f53d0a52e3b54e9e23839f35c0f72aa32e3",
+  "zhang-laoshi": "ce817722511eb0097fe36df5596ea3be38f923676e3814e7acd38f9a27e4deb7",
+  "xiao-zhou": "7b64346562c0fe54424d9e18a71b55b04119572fbf6d2da0f198a4b6bce30466",
+  "aunt": "6db9b48b232513675bceb53e48e9315e1e5b72147a4d2b3e9b12b43ac49ae691",
+  "resident-reader": "3ae0ab1371ba791c7cdba7eed2d012172b61e07bb72eb3882e161d93bc42e822",
+  "resident-courier": "d8cd1610d7c9e7b59a3ef3d5f611294e712a19c59783cd685d9550e6d9cf2408",
+  "resident-groundskeeper": "b2e7f398b4fdad528d064d77ffc482f4e42dce6f509750afba305e0edc4ff770",
+  "resident-laundry-neighbour": "88d16c1fd33da0fb707648b2a5e74bc2fafbd56daf1f8463872835f59e505368",
+  "resident-river-walker": "8def51e00030b1fcd404f67dc362c48a87ab6c680c5d6a0d56bfbc9627e45a72"
+};
+
+describe('native actor form shading',()=>{
+ it('preserves every pre-shading alpha mask and attachment across all cast and animation states',()=>{
   for(const actor of actorCatalog){
    const pixels=createHash('sha256'),shape=createHash('sha256');
    for(let direction=0;direction<8;direction++)for(let phase=0;phase<6;phase++)
@@ -29,10 +44,8 @@ describe('player garment readability',()=>{
      pixels.update(data);shape.update(JSON.stringify(contacts));
      shape.update(Uint8Array.from(data.filter((_,index)=>index%4===3)));
     }
-   if(actor.id==='player'){
-    expect(shape.digest('hex')).toBe('cb7015f72d5c62085b3a1c1ea64901cfa79b2f16a6b500a820cacd9a4beeb43f');
-    expect(pixels.digest('hex')).not.toBe(baselinePixels.player);
-   }else expect(pixels.digest('hex'),actor.id).toBe(baselinePixels[actor.id]);
+   expect(shape.digest('hex'),actor.id).toBe(baselinePhysical[actor.id]);
+   expect(pixels.digest('hex'),actor.id).not.toBe(baselinePixels[actor.id]);
   }
  });
 });
