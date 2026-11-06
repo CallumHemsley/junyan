@@ -70,3 +70,5 @@
 .world-activity .repair-panel { width:100%; }
 .world-activity .repairs { padding:4px; }
 .world-activity .repair-header { flex-wrap:wrap; }
+.repair-controls { display:flex; flex-wrap:wrap; gap:8px; aspect-ratio:auto; padding:4px; background:transparent; box-shadow:none; overflow:visible; }
+.repair-controls .repair-part { position:static; transform:none; flex:1 1 64px; }
