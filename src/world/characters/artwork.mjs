@@ -107,6 +107,10 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
       rect(bodyX+3,shoulder+1,1,4,jade);
       rect(bodyX+bodyWidth-4,shoulder+1,1,4,jade);
       rect(bodyX+4,hip-3,Math.max(2,bodyWidth-8),1,shade(jade,.75));
+    } else if(kind==='aunt') {
+      polygon([[bodyX+3,shoulder+4],[bodyX+bodyWidth-3,shoulder+5],[bodyX+bodyWidth-2,hip+2],[bodyX+2,hip+2]],cream);
+      stroke([bodyX+1,shoulder+1],[bodyX+bodyWidth-2,hip],1,wood);
+      rect(bodyX+4,hip-3,3,1,shade(cream,.78));
     } else if(kind==='tie') {
       polygon([[bodyX+2,shoulder+1],[bodyX+6,shoulder+2],[bodyX+4,shoulder+4]],cream);
       rect(bodyX+6,shoulder+3,2,6,wood);
@@ -124,6 +128,7 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
       rect(bodyX+bodyWidth-3,shoulder+5,1,1,cream);
     }
     if(kind==='player')rect(bodyX+2,hip-3,bodyWidth-4,1,jade);
+    if(kind==='aunt'){rect(bodyX,hip-3,bodyWidth,1,cream);rect(bodyX+3,hip-2,2,3,shade(cream,.9));}
   }
   if(role==='reader') {
     rect(bodyX+1,shoulder+2,2,hip-shoulder-1,shade(shirt,.8));
@@ -183,6 +188,11 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
     const ponyX=rear?left-2:left;
     polygon([[ponyX,headY+5],[ponyX+3,headY+5],[ponyX+4,headY+11],[ponyX+2,headY+16],[ponyX,headY+15],[ponyX+1,headY+10]],hair);
     rect(ponyX,headY+8,3,1,brass);
+  }
+  if(kind==='aunt') {
+    rect(left-1,headY+4,2,9,hair);rect(left+headWidth-1,headY+4,2,9,hair);
+    if(rear)polygon([[left,headY+7],[left+headWidth,headY+7],[left+headWidth-1,headY+14],[left+2,headY+14],[left,headY+12]],hair);
+    rect(left+1,headY+11,2,3,hair);
   }
   if(role==='reader') {
     rect(left-1,headY+5,2,7,hair);rect(left+headWidth-1,headY+5,2,6,hair);
