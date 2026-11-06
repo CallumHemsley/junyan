@@ -113,7 +113,7 @@ test("legacy journal words render plain in the order line and the rest stay fogg
   await page.goto(withSkip("/?seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   await interactAt(page, "restaurant.table-1");
-  const words = page.locator(".world-context-dialogue .spoken .word");
+  const words = page.locator(".world-context-scroll > .world-context-dialogue .spoken .word");
   await expect(words).toHaveCount(line.length);
   const looks = await words.evaluateAll((buttons) => buttons.map((button) => button.className));
   line.forEach((word, index) => {
@@ -121,7 +121,7 @@ test("legacy journal words render plain in the order line and the rest stay fogg
     else expect(looks[index]).toContain("fogged");
   });
   await expect(page.locator(".save-note")).toHaveCount(0);
-  await page.getByRole("button", { name: "关闭", exact: true }).click();
+  await page.getByRole("button", { name: "继续走走", exact: true }).click();
   await page.getByRole("button", { name: /本子/ }).click();
   await expect(page.locator(".journal-list button")).toHaveCount(new Set(known).size);
   await expect(page.locator(".journal-list .fogged")).toHaveCount(0);

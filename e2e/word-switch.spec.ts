@@ -51,7 +51,7 @@ for (const build of ["development", "production"]) {
     await page.getByRole("button", { name: "开门迎客" }).click();
     await interactAt(page, "restaurant.table-1");
     const parent = page.locator(".world-context[data-target=table]");
-    await switchWords(page, parent.locator(".spoken .word"), isMobile, `output/playwright/0061/${info.project.name}-${build}-restaurant.png`);
+    await switchWords(page, parent.locator(".world-context-scroll > .world-context-dialogue .spoken .word"), isMobile, `output/playwright/0061/${info.project.name}-${build}-restaurant.png`);
     await expect(parent).toBeVisible();
     await page.keyboard.press("Escape");
     await expect(parent).toHaveCount(0);
@@ -77,12 +77,12 @@ test("kitchen, tray, journal and receipt sources keep switching", async ({ page,
   await switchWords(page, kitchen.locator(".world-kitchen-food > .word"), isMobile, `output/playwright/0061/${info.project.name}-kitchen.png`);
   await kitchen.locator(".world-kitchen-food > .word").first().click();
   const trayBefore = await page.evaluate(() => (window as any).__TEST__.getState().tray);
-  await kitchen.locator(".world-kitchen-food > button").first().click({ force: true });
+  await kitchen.locator('.world-kitchen-food > button[aria-label^="拿"]').first().click({ force: true });
   expect(await page.evaluate(() => (window as any).__TEST__.getState().tray)).toEqual(trayBefore);
   await expect(page.locator(".word-popover")).toBeVisible();
   await page.getByRole("button", { name: "关闭词卡" }).click();
-  await kitchen.locator(".world-kitchen-food > button").nth(0).click();
-  await kitchen.locator(".world-kitchen-food > button").nth(1).click();
+  await kitchen.locator('.world-kitchen-food > button[aria-label^="拿"]').nth(0).click();
+  await kitchen.locator('.world-kitchen-food > button[aria-label^="拿"]').nth(1).click();
   await kitchen.getByRole("button", { name: "端好了，去上菜" }).click();
   await page.getByRole("button", {name:"托盘",exact:true}).click();
   await switchWords(page, page.locator(".tray-pocket .word"), isMobile, `output/playwright/0061/${info.project.name}-tray.png`);

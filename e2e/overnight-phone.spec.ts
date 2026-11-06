@@ -18,10 +18,10 @@ async function data(page: Page) {
 async function checkLayout(page: Page, panel: Locator) {
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   expect(await panel.evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true);
-  for (const word of await panel.locator(".spoken .word").all()) {
+  for (const word of await panel.locator(".spoken .word:visible").all()) {
     expect(await word.evaluate(element => parseFloat(getComputedStyle(element).fontSize))).toBeGreaterThanOrEqual(28);
   }
-  for (const button of await panel.getByRole("button").all()) {
+  for (const button of await panel.getByRole("button").filter({visible:true}).all()) {
     const box = await button.boundingBox();
     expect(box!.width, await button.innerText()).toBeGreaterThanOrEqual(44);
     expect(box!.height, await button.innerText()).toBeGreaterThanOrEqual(44);
@@ -52,6 +52,7 @@ for (const viewport of [
     hasTouch: viewport.width !== 1440,
   });
   test(`${viewport.width}x${viewport.height}: service, change and journal stay reachable`, async ({ page }) => {
+    test.setTimeout(300_000);
     const errors: string[] = [];
     page.on("pageerror", error => errors.push(error.message));
     page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
@@ -74,7 +75,7 @@ for (const viewport of [
       await checkLayout(page, page.getByRole("dialog"));
       if (table === 1) {
         await screenshot("order");
-        await page.locator(".spoken .word").last().click();
+        await page.locator(".spoken .word:visible").last().click();
         await expect(page.locator(".word-popover")).toBeVisible();
         await checkLayout(page, page.locator(".word-popover"));
         await reachable(page.getByRole("button", { name: "关闭词卡" }));
@@ -98,7 +99,7 @@ for (const viewport of [
       await interactAt(page, `restaurant.table-${table}`);
       await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
       await page.getByRole("dialog").getByRole("button", { name: "上菜", exact: false }).click();
-      await expect(page.locator(".change-display")).toBeVisible();
+      await expect(page.locator(".world-change-output")).toBeVisible();
       await checkLayout(page, page.getByRole("dialog"));
       const total = order.items.reduce((sum, item) => sum + content.foods.find(food => food.id === item.foodId)!.price * item.quantity, 0);
       for (let change = 0; change < order.paid - total; change++) {

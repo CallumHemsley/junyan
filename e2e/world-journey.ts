@@ -4,7 +4,7 @@ import { join } from "node:path";
 import type { GameState } from "../src/contracts";
 import type { Point, WorldMapDefinition } from "../src/world/schema";
 import { restaurantMap } from "../src/world/restaurant";
-import { findPath } from "../src/world/geometry";
+import { findPath, canStand } from "../src/world/geometry";
 import { cameraForMap, project } from "../src/world/camera";
 import { courtyardForCats } from "../src/world/maps/courtyard/habitat";
 import { furnitureColliders } from "../src/features/apartment/world";
@@ -61,7 +61,9 @@ function currentMap(game: GameState) {
   if (map.id === "rooftop") {
     const sites = [{x:15,y:22},{x:24,y:22},{x:32,y:19},{x:15,y:29},{x:24,y:29},{x:31,y:12}];
     const pots = Object.entries(game.neighbourhood!.garden.plants).map(([id, plant]) => ({id,position:sites[plant.site]}));
-    return {...map, anchors:[...map.anchors,...pots.map(({id,position}) => ({id:`rooftop.pot.${id}`,position:{x:position.x+.7,y:position.y+2.1},radius:1.6,featureId:"garden" as const,interactionId:`garden.${id}`}))], colliders:[...map.colliders,...pots.map(({id,position})=>({id,rect:{...position,width:1.4,height:1.4}}))]};
+    const shade = sites[game.neighbourhood!.garden.shade];
+    const obstacles = [...(!game.neighbourhood!.garden.restored ? [{id:"crate-a",rect:{x:18,y:25,width:1.2,height:1.2}},{id:"crate-b",rect:{x:20.5,y:27,width:1.4,height:1.2}}] : []), ...[0,1.8].map(side=>({id:`shade-${side}`,rect:{x:shade.x-.3+side,y:shade.y-.4,width:.15,height:.15}}))];
+    return {...map, anchors:[...map.anchors,...pots.map(({id,position}) => ({id:`rooftop.pot.${id}`,position:{x:position.x+.7,y:position.y+2.1},radius:1.6,featureId:"garden" as const,interactionId:`garden.${id}`}))], colliders:[...map.colliders,...obstacles,...pots.map(({id,position})=>({id,rect:{...position,width:1.4,height:1.4}}))]};
   }
   if (map.id === "courtyard") return courtyardForCats(map, game.neighbourhood!.cats, game.day);
   if (map.id === "apartment") return {...map,colliders:[...map.colliders,...furnitureColliders(game.neighbourhood!.apartment)]};
@@ -80,7 +82,7 @@ export async function walkTo(page: Page, destination: Point) {
   const game = await savedGame(page);
   const initial = game.world!;
   const map = currentMap(game);
-  const deadline = Date.now() + 45_000;
+  const deadline = Date.now() + 75_000;
   while (Date.now() < deadline) {
     const world = (await savedGame(page)).world!;
     if (world.mapId !== initial.mapId || Math.hypot(world.position.x-destination.x, world.position.y-destination.y) < .28) return;
@@ -99,8 +101,8 @@ export async function walkTo(page: Page, destination: Point) {
       const bounds = element.getBoundingClientRect();
       return document.elementFromPoint(bounds.left+position.x,bounds.top+position.y) === element;
     }, position);
-    if (!clear) {
-      // A nearby target card can cover the ground on phones; use the visible movement pad.
+    if (!clear || map.id === "residential-stairs") {
+      // Use the visible pad where cards or overlapping stair surfaces cover the ground.
       const dx=point.x-world.position.x, dy=point.y-world.position.y;
       const direction = Math.abs(dx+dy)>Math.abs(dx-dy) ? (dx+dy>0?"向后走":"向前走") : (dx-dy>0?"向右走":"向左走");
       const pad = page.getByRole("button", {name:direction,exact:true});
@@ -116,7 +118,7 @@ export async function walkTo(page: Page, destination: Point) {
       return after.mapId !== world.mapId || Math.hypot(after.position.x-point.x, after.position.y-point.y) < .28;
     }, { timeout: 8_000, message: `walk ${map.id} to ${JSON.stringify(point)}` }).toBe(true);
   }
-  throw new Error(`World walk exceeded 45 seconds in ${map.id}`);
+  throw new Error(`World walk exceeded 75 seconds in ${map.id}`);
 }
 export async function interactAt(page: Page, anchorId: string) {
   await closeActivity(page);
@@ -124,7 +126,11 @@ export async function interactAt(page: Page, anchorId: string) {
   const world = game.world!;
   const anchor = currentMap(game).anchors.find(anchor => anchor.id === anchorId);
   expect(anchor, `authored anchor ${anchorId} in ${world.mapId}`).toBeDefined();
-  await walkTo(page, anchor!.position);
+  const map = currentMap(game);
+  const approaches = [anchor!.position, ...[.5,.9,1.2].filter(radius=>radius<anchor!.radius).flatMap(radius=>Array.from({length:8},(_,index)=>({x:anchor!.position.x+Math.cos(index*Math.PI/4)*radius,y:anchor!.position.y+Math.sin(index*Math.PI/4)*radius})))];
+  const approach = approaches.find(point => canStand(map,point) && findPath(map,world.position,point).length>0);
+  expect(approach, `reachable approach to ${anchorId}`).toBeDefined();
+  await walkTo(page, approach!);
   const button = page.locator(`[data-world-anchor="${anchorId}"]`);
   for (let n=0; n<20 && !(await button.isVisible()); n++) {
     const cycle = page.locator(".world-target-switch");

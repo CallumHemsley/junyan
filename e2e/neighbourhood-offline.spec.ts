@@ -6,15 +6,15 @@ import { playOpening } from "./opening";
 import { probeAudio } from "./audio-fixtures";
 import { checkLineAndWord, expectNativeSpeech, featureLine } from "./neighbourhood-audio";
 
-test.use({serviceWorkers:"allow"});
+test.use({serviceWorkers:"allow", baseURL:process.env.JUNYAN_PREVIEW_URL});
 test("real cached speech and words play in all four locations and saved furniture reloads offline",async({page,context},info)=>{
-  expect(process.env.JUNYAN_NEIGHBOURHOOD_PREVIEW, "Run the offline release gate with the production preview config").toBe("1");
+  expect(process.env.JUNYAN_PREVIEW_URL, "Run the offline release gate against the production preview").toBeTruthy();
   test.setTimeout(600000);
   const errors:string[]=[];
   page.on("console",message=>{if(message.type()==="error")errors.push(message.text());});
   page.on("pageerror",error=>errors.push(error.message));
   await probeAudio(page);
-  await page.goto("/junyan/?seed=42");
+  await page.goto("./?seed=42");
   expect(await page.evaluate(() => "__TEST__" in window)).toBe(false);
   await playOpening(page);
   await page.getByRole("button",{name:"开门迎客"}).click();
@@ -22,7 +22,6 @@ test("real cached speech and words play in all four locations and saved furnitur
   await context.setOffline(true);
   const visit = async (name: string) => visitWorld(page,name);
   await visit("家");
-  await visitWorld(page,"家");
   await expect(page.locator(".apartment")).toBeVisible();
   await checkLineAndWord(page, featureLine("apartment", "welcome"), page.locator(".apartment-line"), page.locator(".apartment-speech > button"));
   await page.getByRole("button",{name:"收下",exact:true}).click();
@@ -46,7 +45,7 @@ test("real cached speech and words play in all four locations and saved furnitur
   expect(await page.evaluate(()=> (window as any).__ambienceElements.every((audio:HTMLAudioElement)=>audio.paused))).toBe(true);
   await expect(page.locator(".save-note").filter({hasText:/声音暂时|点一下喇叭/})).toHaveCount(0);
   await visit("早安小馆");
-  await expect(page.locator(".world-panel canvas")).toBeVisible();
+  await expect(page.locator(".connected-world canvas")).toBeVisible();
   await expect.poll(()=>page.evaluate(()=> (window as any).__ambienceElements.filter((audio:HTMLAudioElement)=>!audio.paused && audio.readyState>=2).length)).toBe(1);
   expect(await page.evaluate(()=> (window as any).__ambienceElements.length)).toBe(1);
   expect(errors).toEqual([]);

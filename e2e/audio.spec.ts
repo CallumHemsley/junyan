@@ -108,7 +108,7 @@ test("closing a loading dialogue invalidates playback and its eventual rejection
   await expect(page.getByText(failure)).toBeHidden();
 });
 
-test("day reset invalidates pending audio without polluting the next dialogue", async ({ page }) => {
+test("state fixture: day reset invalidates pending audio without polluting the next dialogue", async ({ page }) => {
   await page.route("**/*.wav", route => silentResponse(route, 1500));
   await openTable(page);
   await page.evaluate(() => (window as any).__TEST__.reset());
@@ -164,7 +164,7 @@ test("autosaving a word does not invalidate its pending playback", async ({ page
   await expect(page.getByText(failure)).toBeHidden();
 });
 
-test("advancing the day invalidates audio even with the table panel still open", async ({ page }) => {
+test("state fixture: advancing the day invalidates audio even with the table panel still open", async ({ page }) => {
   await page.route("**/*.wav", route => silentResponse(route, 2000));
   await openTable(page);
   await page.evaluate(({ kitchen, tables }) => {
