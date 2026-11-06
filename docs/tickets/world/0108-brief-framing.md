@@ -1,7 +1,7 @@
 ---
 id: 108
 title: Frame the active furniture brief on narrow screens
-status: doing
+status: done
 priority: high
 type: bug
 created: 2026-11-06
@@ -26,3 +26,5 @@ The normal-input gameplay audit completed both briefs but found that the second 
 - Candidate: the pure feature view includes the active brief's whole legal floor/furniture envelope, authored window and selected ghost. `WorldViewport` fits that geometry inside the actual visible canvas/main area beside or above the panel; the player's position, occlusion input and saved state stay independent.
 - Window frame dimensions are shared with the existing painter through a small pure geometry module. Closing the project restores exploration framing. Lookup preserves the last useful presentation area while editing is inert, then remeasures on close; it does not promise playable space behind the word card.
 - Focused native-pointer/touch proof uses a declared fresh-project save at the real desk, then completes both bays through actual floor input at 390×664, 390×844 and desktop, including instruction expansion, lookup recovery and panel reopen. Separate existing journeys cover normal navigation, retries and persistence. Keep doing until root cross-review and final integrated verification.
+
+- Root acceptance: independent source review returned the original1.25 furniture envelope as too low for actual1.7 chair backs; writer corrected both full-floor and selected-ghost bounds before intake. Combined source passed663tests across102files, TypeScript/build, and11 desktop/phone chapter/target cases with one intentionally duplicate desktop-size case skipped. Native placement/recovery covers390×664 and390×844. No player move, fake support or actor scaling was introduced.
