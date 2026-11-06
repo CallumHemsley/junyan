@@ -4,7 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
-const sourcePaths=['src/world/art/residential/index.ts','src/world/maps/residential/elevation.ts','src/world/maps/residential/residential-stairs.json','src/world/maps/residential/residential-hall.json','src/world/maps/residential/apartment.json','docs/evidence/world/0081/proof.config.mjs'];
+const sourcePaths=['src/world/art/residential/index.ts','src/world/maps/residential/elevation.ts','src/world/maps/residential/residential-stairs.json','src/world/maps/residential/residential-hall.json','src/world/maps/residential/apartment.json','docs/evidence/world/0081/proof.config.mjs','docs/evidence/world/0081/stair-walk.mjs'];
 const sourceHashes=()=>Object.fromEntries(sourcePaths.map(path=>[path,createHash('sha256').update(readFileSync('/workspace/junyan/'+path)).digest('hex')]));
 const startHashes=sourceHashes();
 const root=fileURLToPath(new URL('.',import.meta.url));
@@ -37,6 +37,7 @@ try {
    const path=await page.evaluate(async({game,target})=>{const [{mapsForNeighbourhood},{findPath}]=await Promise.all([import('/src/world/dynamic.ts'),import('/src/world/geometry.ts')]);return findPath(mapsForNeighbourhood(game.neighbourhood)[game.world.mapId],game.world.position,target);},{game:start,target});
    if(!path.length)throw Error('No route '+JSON.stringify({mapId,target}));
    for(const waypoint of path)for(let iteration=0;iteration<80;iteration++){
+    await page.waitForTimeout(180);
     const game=await current();if(game.world.mapId!==mapId)return;if(Math.hypot(game.world.position.x-waypoint.x,game.world.position.y-waypoint.y)<.12)break;
     const p=game.world.position,dx=waypoint.x-p.x,dy=waypoint.y-p.y,t=Math.min(1,1.5/Math.hypot(dx,dy)),point={x:p.x+dx*t,y:p.y+dy*t};
     const click=await page.evaluate(async({game,point})=>{

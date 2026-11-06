@@ -34,6 +34,7 @@ export function drawResidentialFloor(api: ResidentialArtApi, mapId: string) {
     }
     else api.box(r.x, r.y, surface.height - .65, r.x + r.width, r.y + r.height, surface.height - .44, [145, 145, 123]);
   }
+  if (mapId === 'residential-stairs') api.box(3, 18.6, -.15, 15, 19, 2.4, [190, 181, 151]);
   const terrainAreas = mapId === 'residential-stairs'
     ? stairSurfaces.map(surface => ({ rect: surface.rect, material: surface.kind === 'tread' ? 'stairs' : 'terrazzo', baseZ: surface.height }))
     : map.terrain.map(terrain => ({ ...terrain, baseZ: 0 }));
@@ -446,7 +447,6 @@ export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderVie
           draw(ctx, view) { paintResidential(ctx, view, api => {
             const elevated = onSurface(api, map.id);
             if (prop.id === 'residential-stairs.middle-support') {
-              api.box(x, y, -.15, x + width, y + height, 2.4, [190, 181, 151]);
               if (x >= 9 && x < 13) {
                 elevated.box(x, y, 0, x + width, y + height, .95, cream);
                 elevated.box(x, y, 3.7, x + width, y + height, 3.79, paleWood);
