@@ -3,8 +3,12 @@ const ink = [48,43,42], skin = [232,183,143], cream = [245,232,202];
 const jade = [111,154,134], wood = [115,86,58], brass = [190,157,97];
 const shade = (color, amount) => color.map(value => Math.max(0,Math.min(255,Math.round(value*amount))));
 
-export function frame({appearance={},direction=0,phase=0,action='idle',reducedMotion=false,carrying=false,blink=false,heldObject,acting=false,body,role}={}) {
-  const pixels = new Uint8ClampedArray(W*H*4);
+export function frame({appearance={},direction=0,phase=0,action='idle',reducedMotion=false,carrying=false,blink=false,heldObject,acting=false,body,role,seatHeight}={}) {
+  const attachedSeat=action==='sit'&&seatHeight!==undefined;
+  const seatLift=attachedSeat?Math.round(seatHeight*18)-9:0;
+  const padding=attachedSeat?Math.max(0,seatLift)+2:0;
+  const frameHeight=H+padding;
+  const pixels = new Uint8ClampedArray(W*frameHeight*4);
   const shirt = appearance.shirt || cream, hair = appearance.hair || [54,43,34];
   const trousers = appearance.legs || [63,78,74], kind = appearance.accessory || 'player';
   const turn = Math.min(direction,8-direction), mirror = direction>4;
@@ -13,9 +17,9 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
   const seated = action==='sit', crouched = action==='crouch';
   const walking = action==='walk' && !reducedMotion;
   const stride = walking ? [-2,-1,1,2,1,-1][phase%6] : 0;
-  const lowering = crouched?8:seated?5:0;
+  const lowering = attachedSeat?-seatLift:crouched?8:seated?5:0;
   const shoulder = 18 + lowering + (older?2:tall?-1:0)+(body?.heightOffset??0);
-  const hip = 29 + (seated?2:crouched?3:0);
+  const hip = attachedSeat?29-seatLift:29+(seated?2:crouched?3:0);
   const faceX = 14 + (profile?2:quarter?1:0) + (older?1:0)+(body?.lean??0);
   const headY = 4 + lowering + (older?2:tall?-1:0)+(body?.heightOffset??0);
   const transformX = x => mirror ? W-1-x : x;
@@ -25,8 +29,9 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
     const left=Math.round(x),top=Math.round(y),right=Math.round(x+width),bottom=Math.round(y+height);
     for(let py=top;py<bottom;py++)for(let px=left;px<right;px++) {
       const tx=transformX(px);
-      if(tx>=0&&tx<W&&py>=0&&py<H) {
-        const offset=(py*W+tx)*4;
+      const row=py+padding;
+      if(tx>=0&&tx<W&&row>=0&&row<frameHeight) {
+        const offset=(row*W+tx)*4;
         if(!behind||!pixels[offset+3])pixels.set([...color,255],offset);
       }
     }
@@ -56,14 +61,14 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
     const lift=walking&&stride*side>0?2:0;
     const contactY=37-lift+(quarter&&!near?-1:0);
     const footX=originX+along+(seated?2:0);
-    const knee=[originX+Math.round(along*.5),seated?34:crouched?35:33-lift];
+    const knee=[originX+Math.round(along*.5),attachedSeat?hip+1:seated?34:crouched?35:33-lift];
     const color=shade(trousers,near?1:.72);
     stroke([originX,hip],knee,body?.legWidth??4,color);
     stroke(knee,[footX,contactY-2],3,color);
     const shoeWidth=profile?6:quarter?5:4;
     rect(footX-2,contactY-1,shoeWidth,2,ink);
     rect(footX-1,contactY-1,shoeWidth-1,1,shade(trousers,1.15));
-    feet.push({x:transformX(footX),y:contactY+1,planted:lift===0});
+    feet.push({x:transformX(footX),y:contactY+1+padding,planted:lift===0});
   }
   const bodyWidth=(profile?8:quarter?11:fuller?16:kind==='backpack'?12:14)+(body?.widthOffset??0);
   const bodyX=14-bodyWidth/2+(quarter?0:profile?1:0);
@@ -252,5 +257,5 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
     polygon([[ux-1,held.y+2],[ux+2,held.y+2],[ux+1,36],[ux,38],[ux-1,36]],shade(jade,.75));
     rect(ux-1,held.y+7,3,1,cream);
   }
-  return {width:W,height:H,pixels,anchor:{x:14,y:38},held:{x:transformX(held.x),y:held.y},feet};
+  return {width:W,height:frameHeight,pixels,anchor:{x:14,y:38+padding},held:{x:transformX(held.x),y:held.y+padding},feet,...(attachedSeat?{seatContact:{x:14,y:hip+padding,height:seatHeight}}:{})};
 }
