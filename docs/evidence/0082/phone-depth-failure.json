@@ -1,0 +1,32 @@
+{
+  "target": {
+    "x": 8,
+    "y": 10.8
+  },
+  "from": {
+    "x": 7.999999306418678,
+    "y": 6.799999583851207
+  },
+  "click": {
+    "x": 107.00000610351566,
+    "y": 336.3
+  },
+  "current": {
+    "version": 1,
+    "mapId": "workshop",
+    "position": {
+      "x": 11,
+      "y": 10.499999999999986
+    },
+    "facing": "south",
+    "returnPositions": {},
+    "activeActivity": null,
+    "activeAnchorId": null,
+    "life": {
+      "version": 1,
+      "discoveries": [],
+      "reactions": []
+    }
+  },
+  "url": "http://127.0.0.1:5484/?seed=42"
+}

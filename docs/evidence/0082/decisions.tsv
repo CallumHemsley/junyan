@@ -1,0 +1,9 @@
+ts	phase	decision	why	evidence	result
+2026-11-05T23:55:00Z	start	Keep the full workshop objective active in committed evidence	Native goal and cross-thread send tools are unavailable	progress.md	ACTIVE
+2026-11-06T00:00:00Z	layout	Use two repair islands and branching perimeter routes	Each existing job needs a real physical workstation	map.json and reachability.json	shared navigation checked
+2026-11-06T00:09:00Z	depth	Publish one render object per authored prop	Player and furniture must interleave in the shared compositor	index.ts and depth-results.json	production capture available
+2026-11-06T00:16:00Z	controls	Put contextual part buttons in normal flex flow	Production panel squeezed absolute labels into overlapping targets	production-proof.mjs and repairs.css	pointer journey passes
+2026-11-06T00:22:00Z	travel	Use the actual UI-generated completed save for door proof	A manually combined feedback and completion fixture was invalid	town-door-results.json	mouse and touch door reload passes
+2026-11-06T00:25:00Z	lighting	Use only the centrally published shadeColor callback	One authoritative phase must shade all materials	lighting-results.json	consumer passes; interior phase contrast remains weak
+2026-11-06T00:30:00Z	review	Render repeat bench occupancy from jobs rather than completed	Independent Astra found invisible objects during repeat repair	f493451 and paint.test.ts	finding resolved; actual repeat reload passes
+2026-11-06T00:34:00Z	navigation	Retain the phone intermediate-waypoint stall for foundation	Do not hide a failed walk with a screenshot or silent extra click	phone-depth-failure.json	OPEN upstream

@@ -24,3 +24,5 @@ The scope in `docs/world-program/ledger.md` is implemented against `docs/world-p
 - Publish map seam requests and integration instructions in the owned evidence directory.
 
 - Active persistent objective and integration requests: [progress](../evidence/0082/progress.md). Native goal tool unavailable; no registration claimed. Cloud checkout /workspace/junyan; baseline preservation tests 33 passed.
+
+- Production checkpoint: two bench bindings, saved-state art, both repair/reload/repeat journeys, real reciprocal town door mouse/touch and town reload verified in own evidence. Focused Astra P2 repeat-visibility finding fixed and rechecked at f493451. Full objective remains ACTIVE; upstream interior phase contrast and intermittent phone route stall remain open, with final independent experience/HUD/gift/full-journey gates pending. Draft PR 31 targets foundation.
