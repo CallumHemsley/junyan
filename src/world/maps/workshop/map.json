@@ -757,7 +757,7 @@
     },
     {
       "id": "workshop.desk-lamp",
-      "kind": "task-lamp",
+      "kind": "lamp",
       "position": {
         "x": 9,
         "y": 8.5
@@ -769,7 +769,7 @@
     },
     {
       "id": "workshop.toy-lamp",
-      "kind": "task-lamp",
+      "kind": "lamp",
       "position": {
         "x": 23,
         "y": 8.5

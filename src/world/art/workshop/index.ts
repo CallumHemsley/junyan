@@ -7,6 +7,8 @@ import { drawWorkshopProp } from './paint';
 type Color = [number, number, number];
 const css = (c: Color, light = 1) => `rgb(${c.map(v => Math.max(0, Math.min(255, Math.round(v * light)))).join(',')})`;
 
+const material = (view: WorldRenderView, color: Color | string, exposure = 1) => view.shadeColor?.(color, exposure) ?? (typeof color === 'string' ? color : css(color, exposure));
+
 function painter(ctx: CanvasRenderingContext2D, view: WorldRenderView): RepairArtApi {
   const project = (x: number, y: number, z: number) => view.project({ x, y }, z);
   const polygon = (points: { x: number; y: number }[], color: string) => {
@@ -17,19 +19,19 @@ function painter(ctx: CanvasRenderingContext2D, view: WorldRenderView): RepairAr
   return {
     box(x, y, z, a, b, c, color) {
       const p = (u: number, v: number, h: number) => project(u, v, h);
-      polygon([p(x,b,z),p(a,b,z),p(a,b,c),p(x,b,c)],css(color,.76));
-      polygon([p(a,y,z),p(a,b,z),p(a,b,c),p(a,y,c)],css(color,.88));
-      polygon([p(x,y,c),p(a,y,c),p(a,b,c),p(x,b,c)],css(color));
+      polygon([p(x,b,z),p(a,b,z),p(a,b,c),p(x,b,c)],material(view,color,.76));
+      polygon([p(a,y,z),p(a,b,z),p(a,b,c),p(a,y,c)],material(view,color,.88));
+      polygon([p(x,y,c),p(a,y,c),p(a,b,c),p(x,b,c)],material(view,color));
     },
     sphere(x, y, z, r, color) {
       const p=project(x,y,z), side=project(x+r,y,z), top=project(x,y,z+r);
       const radius=Math.max(1,Math.hypot(side.x-p.x,side.y-p.y)*.88);
-      ctx.fillStyle=css(color,.78); ctx.beginPath();ctx.ellipse(Math.round(p.x),Math.round(p.y),radius,Math.max(1,Math.abs(top.y-p.y)),0,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle=css(color);ctx.beginPath();ctx.ellipse(Math.round(p.x-radius*.15),Math.round(p.y-radius*.18),radius*.78,Math.max(1,Math.abs(top.y-p.y)*.72),0,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle=material(view,color,.78); ctx.beginPath();ctx.ellipse(Math.round(p.x),Math.round(p.y),radius,Math.max(1,Math.abs(top.y-p.y)),0,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle=material(view,color);ctx.beginPath();ctx.ellipse(Math.round(p.x-radius*.15),Math.round(p.y-radius*.18),radius*.78,Math.max(1,Math.abs(top.y-p.y)*.72),0,0,Math.PI*2);ctx.fill();
     },
     capsule(a,b,r,s,colorOf) {
       const p=project(...a),q=project(...b),width=Math.max(1,Math.abs(project(a[0]+Math.max(r,s),a[1],a[2]).x-p.x)*2);
-      ctx.strokeStyle=css(colorOf((a[2]+b[2])/2));ctx.lineWidth=width;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(Math.round(p.x),Math.round(p.y));ctx.lineTo(Math.round(q.x),Math.round(q.y));ctx.stroke();
+      ctx.strokeStyle=material(view,colorOf((a[2]+b[2])/2));ctx.lineWidth=width;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(Math.round(p.x),Math.round(p.y));ctx.lineTo(Math.round(q.x),Math.round(q.y));ctx.stroke();
     },
   };
 }
@@ -69,7 +71,7 @@ export function renderObjects(map: WorldMapDefinition, view: WorldRenderView, re
   if(map.id!=='workshop')return [];
   return map.props.map(prop=>{
     const candidate=map.occluders.find(o=>o.id===prop.id);
-    const surfaceKinds=new Set(['task-lamp','radio','kettle','paper','chair-repair']);
+    const surfaceKinds=new Set(['task-lamp','lamp','radio','kettle','paper','chair-repair']);
     const host=surfaceKinds.has(prop.kind)?map.props.find(p=>p.id!==prop.id&&/bench|shelf/.test(p.kind)&&prop.position.x>=p.position.x&&prop.position.x<=p.position.x+p.width&&prop.position.y>=p.position.y&&prop.position.y<=p.position.y+p.height):undefined;
     const depth=prop.kind==='wall'&&prop.position.x<3?prop.position.x+prop.position.y:host?host.position.x+host.position.y+host.width/2+host.height/2+.01:prop.position.x+prop.position.y+prop.width/2+prop.height/2;
     const player=view.project(view.playerPosition);
@@ -86,12 +88,7 @@ export function renderObjects(map: WorldMapDefinition, view: WorldRenderView, re
       if(!['wall','window','pegboard','paper','shavings','doormat','awning'].includes(prop.kind)){
         const at=view.project({x:prop.position.x+prop.width/2,y:prop.position.y+prop.height/2});
         const side=view.project({x:prop.position.x+prop.width,y:prop.position.y+prop.height});
-        ctx.save();ctx.globalAlpha*=.14;ctx.fillStyle='#342e28';ctx.beginPath();ctx.ellipse(at.x,at.y+3,Math.max(3,Math.abs(side.x-at.x)+prop.width*6),Math.max(2,Math.abs(side.y-at.y)*.65),0,0,Math.PI*2);ctx.fill();ctx.restore();
-      }
-      if(prop.kind==='task-lamp'){
-        ctx.save();ctx.globalAlpha*=.19;ctx.fillStyle='#ffd492';
-        const light=[{x:prop.position.x-.9,y:prop.position.y-.1},{x:prop.position.x+.5,y:prop.position.y-.1},{x:prop.position.x+.8,y:prop.position.y+.8},{x:prop.position.x-.8,y:prop.position.y+.8}].map(p=>view.project(p,1.64));
-        ctx.beginPath();light.forEach((p,i)=>{if(i)ctx.lineTo(p.x,p.y);else ctx.moveTo(p.x,p.y);});ctx.closePath();ctx.fill();ctx.restore();
+        ctx.save();ctx.globalAlpha*=.14;ctx.fillStyle=material(view,'#342e28');ctx.beginPath();ctx.ellipse(at.x,at.y+3,Math.max(3,Math.abs(side.x-at.x)+prop.width*6),Math.max(2,Math.abs(side.y-at.y)*.65),0,0,Math.PI*2);ctx.fill();ctx.restore();
       }
       drawWorkshopProp(painter(ctx,view),prop,{repairs,elapsedSeconds:view.reducedMotion?0:view.elapsedMs/1000});
     },

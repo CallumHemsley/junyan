@@ -1,0 +1,11 @@
+{
+  "setup": "same production map, camera, saved repairs and exact art functions; named atmosphere phases injected; material pair has no effect/particle draws; lit frame uses paintWorld",
+  "proof": {
+    "phase": "evening-lit",
+    "alphaPreserved": true,
+    "changedPixels": 402926,
+    "materialChangedPixels": 402756,
+    "materialMeanDelta": 1.0172461970899471
+  },
+  "errors": []
+}

@@ -151,7 +151,7 @@ export function drawWorkshopProp(api: RepairArtApi, prop: Prop, state: WorkshopP
     case 'planter': b(0,0,0,w,h,.6,wood); plant(w/2,h*.3,.6,1.1);plant(w/2,h*.75,.6,.8); break;
     case 'radio': b(0,0,1.69,w,h,2.2,edge); b(.1,h,1.8,.5,h+.02,2.1,metal);dot(.67,h+.04,1.9,.08,cream);line([.6,.1,2.2],[.75,.1,2.8],.018,metal);break;
     case 'kettle': dot(.3,.3,1.95,.28,metal);b(.15,.15,2.15,.45,.45,2.24,ink);line([.45,.3,2],[.65,.3,2.15],.07,metal);break;
-    case 'task-lamp': b(0,0,1.65,.5,.5,1.73,edge);line([.25,.25,1.73],[.3,.25,2.8],.045,metal);line([.3,.25,2.8],[-.15,.25,2.7],.05,metal);b(-.35,.05,2.5,.05,.45,2.7,jade);break;
+    case 'task-lamp': case 'lamp': b(0,0,1.65,.5,.5,1.73,edge);line([.25,.25,1.73],[.3,.25,2.8],.045,metal);line([.3,.25,2.8],[-.15,.25,2.7],.05,metal);b(-.35,.05,2.5,.05,.45,2.7,jade);break;
     case 'chair-repair':
       b(0,0,1.67,1,1,1.78,wood);for(const a of [.1,.8]) for(const c of [.1,.8]) b(a,c,1.78,a+.1,c+.1,2.5,edge);
       b(.05,.05,2.4,.95,.2,2.6,wood); b(-.15,.3,1.65,1.15,.4,1.72,metal);break;
