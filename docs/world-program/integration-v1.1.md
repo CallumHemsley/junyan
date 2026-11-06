@@ -37,6 +37,8 @@ Foundation normalizes legacy hook aliases at the registry boundary before life c
 | `cats.white` | `white-cat` |
 | `cats.black` | `black-cat` |
 | `sparrow` | `bird` |
+| `backpack` | `xiao-zhou` |
+| `glasses` | `zhang-laoshi` |
 
 Existing content character IDs remain canonical. Actor IDs and interaction IDs are separate namespaces: `cats.white` as an interaction selects the white-cat target and must not be rewritten to a dialogue/content ID. Unknown hook actors produce a diagnostic and are skipped; do not render an unknown bird/cat as the human player's default sprite. Character owner supplies separate nonhuman sampling or foundation uses the explicit cat/bird renderer provided by the relevant owner.
 

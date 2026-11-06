@@ -149,3 +149,13 @@ Verified highest fetched remote ticket 0089, then reserved **0090 contextual wor
 0090 native cloud agent `/root/contextual_world_ui` is running on GPT-6.1 Sol medium with isolated lease and explicit physical-target contract. Both focused additions preserve foundation as sole App/shared-schema writer.
 
 Atmosphere PR29 at ad741f1 inspected. Its base material shade function is present, but map art hardcoded fills do not automatically call it. Integration-v1.1 now specifies one optional backwards-compatible `WorldRenderView.shadeColor` callback, mandatory in production. Foundation supplies one authoritative-phase shader; map/art and generic painter use it for material colors. Phase-independent base materials plus particles is not lighting acceptance. PR29 remains draft and full integrated lighting verification is open.
+
+## Published integration corrections
+
+Latest nine map payloads parse and pass local spawn/entrance/anchor sampling. The combined ten-map portal-reference graph has no missing target entrances, trigger-overlapping arrivals or graph-disconnected map IDs. Exact heads are recorded in published-map-audit.json. Pond anchor local approach defect clears at 6e04784; actual walking routes still require integrated runtime proof.
+
+0089 first head 480587b had a customer projection bug: order.customer stores a Chinese name while code matched character.id. Coordinator inspected actual content and returned P1 directly. Owner fixed at 6b09c77 and added actual-content tests for four canonical customer descriptors, stable table mapping, meals and tray. Preview handle49941 is reported on strict5493. Further visual inspection and integrated review pending.
+
+0090 first WIP 8b90816 publishes typed scoped shell/table/kitchen/pocket components. Coordinator returned nested-button risk from ReactNode action labels plus word-card Escape/focus and visible token-label concerns. Owner is fixing before final API acceptance. Main application integration remains foundation-owned.
+
+Actual town actors use appearance tags backpack/glasses. Alias mapping to xiao-zhou/zhang-laoshi was verified against current content and added to integration-v1.1. Root/foundation and owners notified through PR27 comments.
