@@ -1,0 +1,49 @@
+{
+  "checkpoint": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+  "builderHead": "36b052122ded669b880c686b8dc6f5e58853280a",
+  "productionDiff": "git diff --quiet e02a747 -- src public index.html package.json pnpm-lock.yaml: exit 0",
+  "setup": "Normal production UI after a disclosed legacy workshop save; no opening-to-workshop claim. Pointer movement and feature actions are actual browser input. Both reduced-motion viewport contexts use isolated IndexedDB.",
+  "checks": [
+    "TypeScript noEmit passed",
+    "23 focused locomotion/workshop tests passed",
+    "desktop and phone six-position depth traversal passed",
+    "desktop and phone both complete repairs and repeat/reload passed",
+    "desktop and phone stool claim/reload/idempotence passed"
+  ],
+  "videos": [
+    {
+      "file": "page@24d433f4c46b943e0417b2db891bd325.webm",
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "vp9",
+            "width": 720,
+            "height": 500
+          }
+        ],
+        "format": {
+          "duration": "15.080000"
+        }
+      }
+    },
+    {
+      "file": "page@35e6a2f5f7bdb5142394882498fb0fa1.webm",
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "vp9",
+            "width": 390,
+            "height": 844
+          }
+        ],
+        "format": {
+          "duration": "13.280000"
+        }
+      }
+    }
+  ]
+}

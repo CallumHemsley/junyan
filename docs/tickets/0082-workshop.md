@@ -24,3 +24,9 @@ The scope in `docs/world-program/ledger.md` is implemented against `docs/world-p
 - Publish map seam requests and integration instructions in the owned evidence directory.
 
 - Active persistent objective and integration requests: [progress](../evidence/0082/progress.md). Native goal tool unavailable; no registration claimed. Cloud checkout /workspace/junyan; baseline preservation tests 33 passed.
+
+- Production checkpoint: two bench bindings, saved-state art, both repair/reload/repeat journeys, real reciprocal town door mouse/touch and town reload verified in own evidence. Focused Astra P2 repeat-visibility finding fixed and rechecked at f493451. Full objective remains ACTIVE. The phone route blocker and current HUD/gift flows were reverified and resolved at e02a747; interior phase lighting and final broader independent experience acceptance remain review items. Draft PR 31 targets foundation.
+
+- Focused stool gift claiming/reload/idempotence now passes on desktop and phone (gift-results.json); apartment placement/global journey remain separate gates. The historical phone waypoint reproduction at ab8ee44 is preserved; current advanceRoute and actual phone traversal resolve that blocker at e02a747.
+
+- Re-verification: exact production tree e02a747, TypeScript and 23 focused tests pass. Real desktop/phone six-position workstation traversal, both repair/reload/repeat flows and stool claiming/reload/idempotence pass through the compact HUD, with empty console/page error arrays. Focused Astra inspected the new evidence with no concrete current defect. See [e02a747 evidence](../evidence/0082/e02a747/README.md). No production source changes by this builder this turn.

@@ -1,0 +1,7 @@
+{
+  "validDesktopDoorTraversal": "page@bff8b545a73fbb3bfde0fe5340fa586b.webm",
+  "validPhoneDoorTraversal": "page@579aaad6b6104ecd1ff785a4f778c861.webm",
+  "failedInvalidFixtureRetained": "page@8e0ef36f1bb782ece04c407b6b3bc079.webm",
+  "setup": "Valid runs load actual completed-repair state from production-results.json, walk through normal pointer/touch doors, reload in town and return; no opening-to-town claim.",
+  "inspection": "Desktop timed contact frames inspected; full video playback not independently reviewed in this builder. See town-door-results.json."
+}

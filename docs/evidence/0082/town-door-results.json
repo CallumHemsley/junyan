@@ -1,0 +1,168 @@
+[
+  {
+    "name": "desktop",
+    "setup": "disclosed seeded workshop arrival with completed repairs; door movement and reload use normal UI",
+    "town": {
+      "version": 1,
+      "mapId": "town",
+      "position": {
+        "x": 73.08408598583449,
+        "y": 31.386043284645304
+      },
+      "facing": "west",
+      "returnPositions": {
+        "workshop": {
+          "x": 15,
+          "y": 25.900000000000006,
+          "facing": "south"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "townReload": {
+      "version": 1,
+      "mapId": "town",
+      "position": {
+        "x": 73.08408598583449,
+        "y": 31.386043284645304
+      },
+      "facing": "west",
+      "returnPositions": {
+        "workshop": {
+          "x": 15,
+          "y": 25.900000000000006,
+          "facing": "south"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "returned": {
+      "version": 1,
+      "mapId": "workshop",
+      "position": {
+        "x": 15.083246425492938,
+        "y": 25.006502510488165
+      },
+      "facing": "east",
+      "returnPositions": {
+        "workshop": {
+          "x": 15,
+          "y": 25.900000000000006,
+          "facing": "south"
+        },
+        "town": {
+          "x": 73.19658374771039,
+          "y": 30.141115875688097,
+          "facing": "north"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "completed": [
+      "lamp",
+      "toy"
+    ],
+    "errors": []
+  },
+  {
+    "name": "phone",
+    "setup": "disclosed seeded workshop arrival with completed repairs; door movement and reload use normal UI",
+    "town": {
+      "version": 1,
+      "mapId": "town",
+      "position": {
+        "x": 73.08408598583449,
+        "y": 31.386043284645304
+      },
+      "facing": "west",
+      "returnPositions": {
+        "workshop": {
+          "x": 15,
+          "y": 25.833500000000004,
+          "facing": "south"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "townReload": {
+      "version": 1,
+      "mapId": "town",
+      "position": {
+        "x": 73.08408598583449,
+        "y": 31.386043284645304
+      },
+      "facing": "west",
+      "returnPositions": {
+        "workshop": {
+          "x": 15,
+          "y": 25.833500000000004,
+          "facing": "south"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "returned": {
+      "version": 1,
+      "mapId": "workshop",
+      "position": {
+        "x": 15,
+        "y": 25
+      },
+      "facing": "north",
+      "returnPositions": {
+        "workshop": {
+          "x": 15,
+          "y": 25.833500000000004,
+          "facing": "south"
+        },
+        "town": {
+          "x": 73.19658357254816,
+          "y": 30.141115859859582,
+          "facing": "north"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "completed": [
+      "lamp",
+      "toy"
+    ],
+    "errors": []
+  }
+]

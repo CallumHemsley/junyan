@@ -1,0 +1,58 @@
+[
+  {
+    "viewport": "desktop",
+    "phase": "morning",
+    "occupied": false,
+    "geometryIdentical": true,
+    "errors": []
+  },
+  {
+    "viewport": "desktop",
+    "phase": "morning",
+    "occupied": true,
+    "geometryIdentical": true,
+    "errors": []
+  },
+  {
+    "viewport": "desktop",
+    "phase": "evening",
+    "occupied": false,
+    "geometryIdentical": true,
+    "errors": []
+  },
+  {
+    "viewport": "desktop",
+    "phase": "evening",
+    "occupied": true,
+    "geometryIdentical": true,
+    "errors": []
+  },
+  {
+    "viewport": "phone",
+    "phase": "morning",
+    "occupied": false,
+    "geometryIdentical": true,
+    "errors": []
+  },
+  {
+    "viewport": "phone",
+    "phase": "morning",
+    "occupied": true,
+    "geometryIdentical": true,
+    "errors": []
+  },
+  {
+    "viewport": "phone",
+    "phase": "evening",
+    "occupied": false,
+    "geometryIdentical": true,
+    "errors": []
+  },
+  {
+    "viewport": "phone",
+    "phase": "evening",
+    "occupied": true,
+    "geometryIdentical": true,
+    "errors": []
+  }
+]

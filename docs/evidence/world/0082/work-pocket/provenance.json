@@ -1,0 +1,21 @@
+{
+  "qualifiedIdentity": "world/0082",
+  "head": "6accbabd4d0f3a9b5d2758d47374afc022307533",
+  "chosenPlan": "f876255c2e563c357484f6422afe9b27f089fb7e section5",
+  "newEvidencePrefix": "docs/evidence/world/0082/",
+  "historicalNumericPathsUnchangedSinceConsumedBase": true,
+  "productionConsumerPending": true,
+  "requiredAtmosphereHead": "5d392365b42d30499991002929fce87e51d5524f",
+  "node": "v22.23.4",
+  "checks": [
+    "typecheck passed",
+    "21 focused tests passed",
+    "production build passed"
+  ],
+  "sha256": {
+    "src/world/art/workshop/paint.ts": "4b5de8b83d792c968f49198db7dc7679096ced306a3dd6c2cb06ac7598bd43c8",
+    "src/world/art/workshop/index.ts": "abc68b382b069b5d083b6d8cf490653c9d76285da292cf5cdb7866ccb76d36b1",
+    "src/world/art/workshop/lighting.ts": "e1f8a09c0d5691a41f8d4b2bd5df1ea382fe03a3fb2faadd7e18100fa006407a",
+    "src/world/maps/workshop/map.json": "a3b507c1f95e9b76de8ec82529318da5f4a4479c041dcbdd12a22bd167c2bd33"
+  }
+}
