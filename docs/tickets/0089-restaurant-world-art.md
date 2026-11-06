@@ -25,3 +25,4 @@ Authored breakfast-stall interior/threshold integrates with foundation's real re
 - Goal ACTIVE until integrated review. Evidence motivating allocation is `docs/world-program/runtime-e627/desktop.png` against reviewer baseline restaurant capture.
 - Active builder `/root/restaurant_world_art` created the assigned isolated worktree from 2059c0b. First API is published in `docs/evidence/0089/ledger.md`.
 - First art unit passes repository TypeScript/Vite build using existing installed dependencies. Production integration and independent review remain pending. Ticket stays doing.
+- Added optional canonical departedCharacterIds projection input at coordinator request. Default served customers remain seated; explicit departure removes only actors and preserves meal drawings. Foundation owns acknowledgment and persisted presence state. Three real-content projection tests and TypeScript/Vite build pass; integration remains pending.

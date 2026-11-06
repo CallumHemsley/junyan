@@ -26,7 +26,7 @@ Module `src/world/art/restaurant/index.ts` exports the following functions.
 ```ts
 drawMap(ctx, map, view): void
 renderObjects(map, view): RestaurantObject[]
-projectRestaurant(state, content, map): RestaurantProjection
+projectRestaurant(state, content, map, departedCharacterIds?: readonly string[]): RestaurantProjection
 restaurantObjects(map, view, projection): RestaurantObject[]
 ```
 
@@ -85,3 +85,23 @@ Inspection caught neighboring cabinet segments covering raised fixtures. Each ki
 After cloud recovery local HEAD was confirmed as 3acb275 matching GitHub. No unpublished source remained. Prior Vite process died with the connection. New strict-port preview process is exec session 19754 on port 5493.
 
 `node docs/evidence/0089/capture.mjs` refreshed four actual-scale captures, checked no page errors and compared supplied-time steam. Normal time 0 and 1200ms differ. Reduced-motion frames at those times are byte-identical. This checks art behavior from the host clock only, not production player motion. TypeScript and both projection tests pass. Independent production review remains pending.
+
+
+## Authoritative departure adapter
+
+Coordinator approved one optional pure input after identifying the shared presence gap. Exact exported signature is now:
+
+```ts
+projectRestaurant(
+  state: Pick<GameState, 'customers' | 'tray' | 'served'>,
+  content: Pick<Content, 'orders' | 'characters' | 'foods'>,
+  map: RestaurantMap,
+  departedCharacterIds: readonly string[] = [],
+): RestaurantProjection
+```
+
+The array contains canonical Character.id values, such as lin-jie, validated and persisted per day by foundation. The default retains every seated descriptor, including served customers. Supplied identities filter only customers. Meals, tray and served remain derived from the original authoritative state. restaurantObjects now renders a table setting whenever either its customer or its meal remains, so departure does not erase delivered food. No state, reducer, event, acknowledgment inference or save field is added here.
+
+Existing reduceGame pay semantics set customer phase served, feedback thanks and receipt. App renders the receipt and the character thanks line while served, with 继续招呼 calling close. Payment, speech completion and the served phase alone do not identify explicit acknowledgment. Foundation owns the Continue acknowledgment hook, per-day persistence and a global life exclusion list from the same projected seated customer descriptors, regardless of current map. Production head 23be251 still lacks this art integration.
+
+A new real-content test drives successful payment through reduceGame. It verifies that the paid actor remains seated before acknowledgment, explicit canonical departure omits only that actor, the meal and its table-setting draw object remain, receipt/state are unmodified and a later default call still retains all actors. All three projection tests pass. Repository TypeScript and Vite production builds pass. The build retains the previously recorded Zod annotation and bundle-size advisories. No new screenshots are required for this optional-input behavior; production presence and integrated review remain unverified.

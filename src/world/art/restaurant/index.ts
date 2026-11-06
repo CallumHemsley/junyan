@@ -212,12 +212,12 @@ export function renderObjects(map: RestaurantMap, _view: RestaurantView): Restau
 }
 
 export function restaurantObjects(map: RestaurantMap, _view: RestaurantView, projection: RestaurantProjection): RestaurantObject[] {
-  return projection.customers.flatMap(customer => {
-    const meal=projection.meals.find(m=>m.table===customer.table);
-    const binding=RESTAURANT_TABLES.find(b=>b.table===customer.table);
-    const prop=map.props.find(p=>p.id===binding?.propId);
+  return RESTAURANT_TABLES.flatMap(binding => {
+    const meal=projection.meals.find(m=>m.table===binding.table);
+    if(!meal && !projection.customers.some(c=>c.table===binding.table)) return [];
+    const prop=map.props.find(p=>p.id===binding.propId);
     if(!prop) return [];
-    return [{id:`restaurant.table-setting.${customer.table}`,position:{x:prop.position.x+prop.width/2,y:prop.position.y+prop.height},
+    return [{id:`restaurant.table-setting.${binding.table}`,position:{x:prop.position.x+prop.width/2,y:prop.position.y+prop.height},
       depth:prop.position.x+prop.width/2+prop.position.y+prop.height+.01,
       draw(ctx:CanvasRenderingContext2D,v:RestaurantView) {
         if(!meal) {
