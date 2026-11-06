@@ -26,3 +26,4 @@ Independent comparisons prefer the grouped station but still find purposeless fo
 
 - Writer: Codex; branch `codex/0114-reading-room-footprint`; worktree `/private/tmp/junyan-world-reading-footprint`; strict ports 5570/5571.
 - Root approved the compact actual floor x2..26/y3..17, matching entry, shell and fixture plan before edits. Native comparison and navigation evidence remain private in the assigned QA directory.
+- Candidate: actual floor area reduced from 442 to 336 world units² (24%); both legal work bays, resident home and material dimensions preserved. Source checks pass: 683 rules tests and build; 23 desktop/phone browser journeys pass, with one intentional duplicate desktop viewport skip. Every legal individual footprint and all 28 earned reader routes are certified. Root source review and the separate hidden-version visual critique remain acceptance gates.
