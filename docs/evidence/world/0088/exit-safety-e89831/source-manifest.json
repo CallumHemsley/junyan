@@ -1,0 +1,55 @@
+{
+  "head": "e89831bf65a4d7a7fd0ecca17e3deca047b011b0",
+  "files": [
+    {
+      "path": "src/world/exit-safety.ts",
+      "gitBlobSha": "8f3f81ab6c6be09af426508ad43acda35b5b2a66",
+      "sha256": "219365f57e62fd962f20fc7e01adda50ad31c68df84850183eaa0f4fdf9177fa"
+    },
+    {
+      "path": "src/world/geometry.ts",
+      "gitBlobSha": "83df747f037a75bb8a831a385573378a40b319ae",
+      "sha256": "ea1e413169126cebd297bf042de91af80a9fb31785046e128f43991cf606c7c8"
+    },
+    {
+      "path": "src/world/schema.ts",
+      "gitBlobSha": "d450dd2e15bc65fff9e928f1c353b44ab9997ca5",
+      "sha256": "37ffc8840b99faca1c716503c0b9031737d0aff7486403f0e5c8c2642b947dd2"
+    },
+    {
+      "path": "src/world/life/interactions.ts",
+      "gitBlobSha": "f8693a34e97d58f970f3ae526b1916bc099b2b83",
+      "sha256": "edb886d773983605b14f6bf1b26096fb217b737c8ea6451273f9848c29efd043"
+    },
+    {
+      "path": "src/world/state.ts",
+      "gitBlobSha": "1d48445b89adb52bb5043dec9af5d894e2bba345",
+      "sha256": "6936639ca0f769d4ace65f0abd4ad63d8bd33abfbc59843f9db8a4603efd800e"
+    },
+    {
+      "path": "src/world/dynamic.ts",
+      "gitBlobSha": "6a252be0c45b193bbcfd36e59b53d1e6f6b99a71",
+      "sha256": "1c5fa8af6a0d3f5df5810298fffaea74f3e726e32edf17b28b7ae3e92efd6ca7"
+    },
+    {
+      "path": "src/world/registry.ts",
+      "gitBlobSha": "7030d813f250c56f2cf8e265371e5a3e9a556789",
+      "sha256": "4bb4ee93804c0d88d345c36f816cfabcbb0c2b989ba7312137e6ac58ceca80ed"
+    },
+    {
+      "path": "src/neighbourhood/transitions.ts",
+      "gitBlobSha": "94ed4953ad5a8d5dcee7c640b78306a56934a416",
+      "sha256": "62feffe6beddd1a2ee3d86811756d6138cd19ee32d2ef35a34bd74c6743b9605"
+    },
+    {
+      "path": "src/App.tsx",
+      "gitBlobSha": "a954c55290d2a5840d352890324cb8fdd1a4f403",
+      "sha256": "fc2979cde26c0a0d610df5829661694652b0cbb24b6cefa3abdf5bcc9eb0774c"
+    },
+    {
+      "path": "src/save.ts",
+      "gitBlobSha": "20d10380a251475d2570e4910949e1d9df6b30d4",
+      "sha256": "51a64250a5bf7d8e9018235d236796a0bc00784d79978a1a4fd9e6253236e0b0"
+    }
+  ]
+}

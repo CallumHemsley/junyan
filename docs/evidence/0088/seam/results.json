@@ -1,0 +1,25 @@
+{
+  "sha": "9f144d512cfc0e74cfd7c1c9f43b75f7bf954a6c",
+  "hashes": {
+    "geometry": "5ebf52db0773905f722a03ce37e58c227f9fb8c4643b4c07b03c175f7f723b23",
+    "validation": "ef7e41a21db707907d5328a009dc6035c70fc17db870d7d9502cec9f79a3cc29"
+  },
+  "method": "Unmodified git source transpiled by TypeScript; synthetic boundary fixtures, no integrated user trigger asserted.",
+  "gap": {
+    "stand": true,
+    "walk": true,
+    "expected": false
+  },
+  "anchor": {
+    "approachStand": true,
+    "nearbyCount": 1,
+    "validationErrors": [
+      "probe/bench: unreachable anchor"
+    ],
+    "expectedErrors": []
+  },
+  "nonfinite": {
+    "canWalk": true,
+    "expected": false
+  }
+}

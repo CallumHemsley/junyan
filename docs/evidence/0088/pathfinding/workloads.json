@@ -1,0 +1,1 @@
+[{"id":"far-river-detour","to":{"x":76.6,"y":47.5},"expected":"path"},{"id":"courtyard-detour","to":{"x":45,"y":3.3},"expected":"path"},{"id":"tea-terrace-detour","to":{"x":54,"y":15},"expected":"path"},{"id":"far-workshop-direct","to":{"x":73.25,"y":31.4},"expected":"path"},{"id":"blocked-building","to":{"x":10,"y":10},"expected":"blocked"}]

@@ -1,0 +1,88 @@
+{
+  "head": "e89831bf65a4d7a7fd0ecca17e3deca047b011b0",
+  "method": "Exact-source pure helpers and restoreWorld, plus extracted actual post-feature commit tail with supplied candidate maps/state. No browser/legal UI reproduction.",
+  "blocked": {
+    "afterStandable": true,
+    "afterExitComponentLength": 0,
+    "safePosition": null,
+    "safeAfterEdit": null,
+    "validSerializedRestore": {
+      "version": 1,
+      "mapId": "restaurant",
+      "position": {
+        "x": 1,
+        "y": 4
+      },
+      "facing": "east",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "elapsedMs": 4321,
+        "discoveries": [],
+        "reactions": [],
+        "serviceDepartures": [],
+        "pauses": []
+      }
+    },
+    "restoredStandable": true,
+    "malformedWorldRestore": {
+      "version": 1,
+      "mapId": "apartment",
+      "position": {
+        "x": 1,
+        "y": 4
+      },
+      "facing": "east",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "elapsedMs": 0,
+        "discoveries": [],
+        "reactions": [],
+        "pauses": [],
+        "serviceDepartures": []
+      }
+    },
+    "malformedSpawnStandable": false
+  },
+  "atomicCommitTail": {
+    "rejectedSameGame": true,
+    "gameUnchanged": true,
+    "acceptedPosition": {
+      "x": 4.5,
+      "y": 4
+    },
+    "acceptedFeatureAndJournal": true
+  },
+  "pocketControls": [
+    {
+      "name": "still-standable-pocket",
+      "input": {
+        "x": 5,
+        "y": 5
+      },
+      "recovered": {
+        "x": 5,
+        "y": 2.5
+      },
+      "exitConnected": true
+    },
+    {
+      "name": "overlap-nearest-pocket",
+      "input": {
+        "x": 5,
+        "y": 6.25
+      },
+      "recovered": {
+        "x": 5,
+        "y": 7.5
+      },
+      "exitConnected": true
+    }
+  ],
+  "malformedFallbackStillInvalid": true
+}

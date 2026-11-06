@@ -1,0 +1,60 @@
+{
+  "head": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+  "files": [
+    {
+      "path": "src/world/exit-safety.ts",
+      "githubBlobSha": "d2ea40aa8a4e4a8266f693b66890623884d60e37",
+      "sha256": "c932eed1e83e603f5260d8f4157d7d285827a148e75a0b7e1ff31f1a9f807657"
+    },
+    {
+      "path": "src/world/dynamic.ts",
+      "githubBlobSha": "857757fef9e9f9ae5b5229907cd68634bbe24c12",
+      "sha256": "d425ba9810e1cae279784bd591aeb40550fa82b016d75ab255a2e5735a794906"
+    },
+    {
+      "path": "src/world/state.ts",
+      "githubBlobSha": "b027429f025e2701a562a2867f8345b404284076",
+      "sha256": "6fb3b24d3abe8f5a382df59f574363de3440f188f9ffe141fb58776182ba0262"
+    },
+    {
+      "path": "src/neighbourhood/transitions.ts",
+      "githubBlobSha": "6bf4485192a3f17e10eb147c25aaca9255d75eb8",
+      "sha256": "797b97914ab89e73eecf24a810d7b8a6ad0a7b8ca067af23a65e02b6978139f6"
+    },
+    {
+      "path": "src/world/geometry.ts",
+      "githubBlobSha": "83df747f037a75bb8a831a385573378a40b319ae",
+      "sha256": "ea1e413169126cebd297bf042de91af80a9fb31785046e128f43991cf606c7c8"
+    },
+    {
+      "path": "src/world/exit-safety.test.ts",
+      "githubBlobSha": "d20956c587445916cdfbbf335fe098aeb1b74bfb",
+      "sha256": "4f233f3d9aa8eb1ac56ffba614eec2d258a71903c637164ce7eb1be523372ae3"
+    },
+    {
+      "path": "src/App.tsx",
+      "githubBlobSha": "65c7870643bb342fc23819776fc5426ed488bab5",
+      "sha256": "24fac2846ae2d92295ac095278ad488dfe853cc6a7adb879f5ba718b22cf7dfd"
+    },
+    {
+      "path": "src/save.ts",
+      "githubBlobSha": "20d10380a251475d2570e4910949e1d9df6b30d4",
+      "sha256": "51a64250a5bf7d8e9018235d236796a0bc00784d79978a1a4fd9e6253236e0b0"
+    },
+    {
+      "path": "src/world/registry.ts",
+      "githubBlobSha": "7030d813f250c56f2cf8e265371e5a3e9a556789",
+      "sha256": "4bb4ee93804c0d88d345c36f816cfabcbb0c2b989ba7312137e6ac58ceca80ed"
+    },
+    {
+      "path": "src/world/schema.ts",
+      "githubBlobSha": "d450dd2e15bc65fff9e928f1c353b44ab9997ca5",
+      "sha256": "37ffc8840b99faca1c716503c0b9031737d0aff7486403f0e5c8c2642b947dd2"
+    },
+    {
+      "path": "src/world/life/interactions.ts",
+      "githubBlobSha": "f8693a34e97d58f970f3ae526b1916bc099b2b83",
+      "sha256": "edb886d773983605b14f6bf1b26096fb217b737c8ea6451273f9848c29efd043"
+    }
+  ]
+}

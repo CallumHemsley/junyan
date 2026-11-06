@@ -1,0 +1,4200 @@
+{
+  "apartment-profile-phone-apartment-idle.cpuprofile": {
+    "sampledMs": 10140.91399999996,
+    "self": [
+      {
+        "name": "(idle)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 5817.669000000024
+      },
+      {
+        "name": "(program)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 2045.938000000003
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 422.3100000000003
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 394.0339999999997
+      },
+      {
+        "name": "d",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 345,
+        "column": 18,
+        "ms": 203.28100000000006
+      },
+      {
+        "name": "lineTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 108.52299999999997
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 74.77899999999997
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 67.527
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 67.33800000000001
+      },
+      {
+        "name": "paintResidential",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 342,
+        "column": 9,
+        "ms": 67.062
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        "line": 3,
+        "column": 16,
+        "ms": 58.928000000000004
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 347,
+        "column": 19,
+        "ms": 44.528
+      },
+      {
+        "name": "closePath",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 44.278999999999996
+      },
+      {
+        "name": "d",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 345,
+        "column": 18,
+        "ms": 44.216000000000015
+      },
+      {
+        "name": "(garbage collector)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 43.54200000000001
+      },
+      {
+        "name": "beginPath",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 41.98800000000001
+      },
+      {
+        "name": "d",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 345,
+        "column": 18,
+        "ms": 41.00600000000001
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 36.79800000000001
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 385,
+        "column": 14,
+        "ms": 31.637999999999998
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 344,
+        "column": 17,
+        "ms": 31.331999999999997
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 360,
+        "column": 61,
+        "ms": 23.799
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 76,
+        "column": 99,
+        "ms": 22.845
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 22.762
+      },
+      {
+        "name": "sampleActor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/index.ts",
+        "line": 41,
+        "column": 16,
+        "ms": 21.121000000000002
+      },
+      {
+        "name": "drawResidentialFloor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 26,
+        "column": 16,
+        "ms": 17.316999999999993
+      },
+      {
+        "name": "moveTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 15.787000000000003
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 15.046000000000001
+      },
+      {
+        "name": "lineTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 14.052
+      },
+      {
+        "name": "closePath",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 12.988999999999999
+      },
+      {
+        "name": "d",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 345,
+        "column": 18,
+        "ms": 10.819999999999999
+      },
+      {
+        "name": "lineTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 10.774000000000001
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 347,
+        "column": 19,
+        "ms": 10.762999999999998
+      },
+      {
+        "name": "frame",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/artwork.mjs",
+        "line": 6,
+        "column": 16,
+        "ms": 10.595
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        "line": 3,
+        "column": 16,
+        "ms": 9.757
+      },
+      {
+        "name": "closePath",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 9.732000000000001
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 76,
+        "column": 99,
+        "ms": 9.64
+      },
+      {
+        "name": "drawAtmosphereLayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 7,
+        "column": 16,
+        "ms": 7.66
+      },
+      {
+        "name": "VM",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 388,
+        "column": 32,
+        "ms": 7.559
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 6.486000000000001
+      },
+      {
+        "name": "rect",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/artwork.mjs",
+        "line": 28,
+        "column": 11,
+        "ms": 6.034000000000001
+      }
+    ],
+    "inclusive": [
+      {
+        "name": "(root)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 10140.91399999996
+      },
+      {
+        "name": "(idle)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 5817.669000000024
+      },
+      {
+        "name": "now",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 58,
+        "column": 14,
+        "ms": 2225.2580000000007
+      },
+      {
+        "name": "paintWorld",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 36,
+        "column": 16,
+        "ms": 2214.3850000000007
+      },
+      {
+        "name": "(program)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 2045.938000000003
+      },
+      {
+        "name": "VM",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 388,
+        "column": 32,
+        "ms": 1547.0850000000014
+      },
+      {
+        "name": "paintResidential",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 342,
+        "column": 9,
+        "ms": 1539.5260000000017
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 360,
+        "column": 61,
+        "ms": 1411.634000000001
+      },
+      {
+        "name": "d",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 345,
+        "column": 18,
+        "ms": 880.6959999999999
+      },
+      {
+        "name": "object",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 77,
+        "column": 46,
+        "ms": 620.903
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 67,
+        "column": 104,
+        "ms": 554.909
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 344,
+        "column": 17,
+        "ms": 425.3659999999999
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 422.3100000000003
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 394.0339999999997
+      },
+      {
+        "name": "paintResidential",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 342,
+        "column": 9,
+        "ms": 290.508
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 418,
+        "column": 6,
+        "ms": 290.508
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 360,
+        "column": 61,
+        "ms": 256.6130000000001
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 407,
+        "column": 10,
+        "ms": 186.357
+      },
+      {
+        "name": "paintResidential",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 342,
+        "column": 9,
+        "ms": 185.28
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 360,
+        "column": 61,
+        "ms": 182.043
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 347,
+        "column": 19,
+        "ms": 168.83799999999982
+      },
+      {
+        "name": "d",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 345,
+        "column": 18,
+        "ms": 164.34899999999996
+      },
+      {
+        "name": "d",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 345,
+        "column": 18,
+        "ms": 143.05799999999996
+      },
+      {
+        "name": "lineTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 108.52299999999997
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 76,
+        "column": 99,
+        "ms": 81.77299999999998
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 74.77899999999997
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 344,
+        "column": 17,
+        "ms": 69.55100000000002
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 67.527
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 67.33800000000001
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 66,
+        "column": 62,
+        "ms": 64.912
+      },
+      {
+        "name": "drawPlayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 32,
+        "column": 16,
+        "ms": 62.759
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 449,
+        "column": 6,
+        "ms": 61.831
+      },
+      {
+        "name": "paintResidential",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 342,
+        "column": 9,
+        "ms": 60.733000000000004
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        "line": 3,
+        "column": 16,
+        "ms": 58.928000000000004
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 360,
+        "column": 61,
+        "ms": 57.489000000000004
+      },
+      {
+        "name": "sampleActor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/index.ts",
+        "line": 41,
+        "column": 16,
+        "ms": 48.562000000000005
+      },
+      {
+        "name": "closePath",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 44.278999999999996
+      },
+      {
+        "name": "(garbage collector)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 43.54200000000001
+      },
+      {
+        "name": "beginPath",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 41.98800000000001
+      },
+      {
+        "name": "d",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 345,
+        "column": 18,
+        "ms": 40.27500000000001
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 344,
+        "column": 17,
+        "ms": 37.87500000000001
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 36.79800000000001
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 385,
+        "column": 14,
+        "ms": 31.637999999999998
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 347,
+        "column": 19,
+        "ms": 30.190999999999992
+      },
+      {
+        "name": "frame",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/artwork.mjs",
+        "line": 6,
+        "column": 16,
+        "ms": 27.44099999999999
+      }
+    ],
+    "fileInclusive": [
+      [
+        "(runtime)",
+        10140.91399999996
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        2228.03
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        2214.3850000000007
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        2091.1780000000012
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        526.927
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        70.84299999999999
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/index.ts",
+        48.562000000000005
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/artwork.mjs",
+        27.44099999999999
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        19.58
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/adapter.ts",
+        13.075999999999997
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life-bridge.ts",
+        7.587
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/presence.ts",
+        5.43
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.production.js",
+        5.279
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/scheduler@0.28.0/node_modules/scheduler/cjs/scheduler.production.js",
+        4.197
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/occlusion.ts",
+        3.234
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/presence.ts",
+        2.1790000000000003
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/schemas.js",
+        2.17
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/parse.js",
+        2.17
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/classic/schemas.js",
+        2.17
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/interactions.ts",
+        1.8750000000000002
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/index.ts",
+        1.15
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/react@19.3.1/node_modules/react/cjs/react.production.js",
+        1.087
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/render.ts",
+        1.086
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/art-registry.ts",
+        1.068
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/content/words.ts",
+        0.4340000000000001
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/maps/residential/elevation.ts",
+        0.014
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/features/cats/content.ts",
+        -0.295
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/App.tsx",
+        -1.1280000000000001
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/save.ts",
+        -2.187
+      ]
+    ]
+  },
+  "apartment-profile-phone-apartment-movement.cpuprofile": {
+    "sampledMs": 10173.539999999957,
+    "self": [
+      {
+        "name": "(idle)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 5255.150000000031
+      },
+      {
+        "name": "(program)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 2821.5160000000005
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 437.69300000000027
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 388.1649999999999
+      },
+      {
+        "name": "d",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 345,
+        "column": 18,
+        "ms": 234.25799999999995
+      },
+      {
+        "name": "lineTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 106.10199999999999
+      },
+      {
+        "name": "(garbage collector)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 92.108
+      },
+      {
+        "name": "paintResidential",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 342,
+        "column": 9,
+        "ms": 61.75200000000002
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 347,
+        "column": 19,
+        "ms": 58.20900000000001
+      },
+      {
+        "name": "closePath",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 54.94200000000002
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 385,
+        "column": 14,
+        "ms": 42.59700000000001
+      },
+      {
+        "name": "d",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 345,
+        "column": 18,
+        "ms": 39.36300000000001
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 39.01900000000001
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 37.106
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 35.395
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        "line": 3,
+        "column": 16,
+        "ms": 34.925000000000004
+      },
+      {
+        "name": "d",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 345,
+        "column": 18,
+        "ms": 30.791000000000004
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 30.38199999999999
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 29.34
+      },
+      {
+        "name": "drawResidentialFloor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 26,
+        "column": 16,
+        "ms": 28.645000000000003
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 76,
+        "column": 99,
+        "ms": 26.942000000000004
+      },
+      {
+        "name": "beginPath",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 22.537
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 360,
+        "column": 61,
+        "ms": 17.373
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 344,
+        "column": 17,
+        "ms": 17.276
+      },
+      {
+        "name": "moveTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 16.018
+      },
+      {
+        "name": "d",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 345,
+        "column": 18,
+        "ms": 13.065
+      },
+      {
+        "name": "paintWorld",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 36,
+        "column": 16,
+        "ms": 13.036000000000001
+      },
+      {
+        "name": "lineTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 12.576999999999995
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 11.891
+      },
+      {
+        "name": "tick",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 10.314000000000002
+      },
+      {
+        "name": "beginPath",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 8.628
+      },
+      {
+        "name": "VM",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 388,
+        "column": 32,
+        "ms": 7.475
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 347,
+        "column": 19,
+        "ms": 6.534999999999999
+      },
+      {
+        "name": "closePath",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 6.497
+      },
+      {
+        "name": "closePath",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 6.49
+      },
+      {
+        "name": "paintResidential",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 342,
+        "column": 9,
+        "ms": 6.4399999999999995
+      },
+      {
+        "name": "setTimeout",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 5.473
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 76,
+        "column": 99,
+        "ms": 5.41
+      },
+      {
+        "name": "renderAtmosphereObjects",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 42,
+        "column": 16,
+        "ms": 5.391
+      },
+      {
+        "name": "drawResidentialProp",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 69,
+        "column": 9,
+        "ms": 5.116
+      }
+    ],
+    "inclusive": [
+      {
+        "name": "(root)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 10173.539999999957
+      },
+      {
+        "name": "(idle)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 5255.150000000031
+      },
+      {
+        "name": "(program)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 2821.5160000000005
+      },
+      {
+        "name": "paintWorld",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 36,
+        "column": 16,
+        "ms": 1985.2410000000013
+      },
+      {
+        "name": "now",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 58,
+        "column": 14,
+        "ms": 1985.0810000000013
+      },
+      {
+        "name": "VM",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 388,
+        "column": 32,
+        "ms": 1560.333000000002
+      },
+      {
+        "name": "paintResidential",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 342,
+        "column": 9,
+        "ms": 1552.8580000000022
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 360,
+        "column": 61,
+        "ms": 1414.440000000002
+      },
+      {
+        "name": "d",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 345,
+        "column": 18,
+        "ms": 929.7589999999985
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 437.69300000000027
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 344,
+        "column": 17,
+        "ms": 405.4409999999999
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 67,
+        "column": 104,
+        "ms": 394.63000000000034
+      },
+      {
+        "name": "object",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 77,
+        "column": 46,
+        "ms": 389.0960000000002
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 388.1649999999999
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 347,
+        "column": 19,
+        "ms": 180.3289999999999
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 418,
+        "column": 6,
+        "ms": 176.16599999999997
+      },
+      {
+        "name": "paintResidential",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 342,
+        "column": 9,
+        "ms": 175.07899999999998
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 360,
+        "column": 61,
+        "ms": 149.715
+      },
+      {
+        "name": "paintResidential",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 342,
+        "column": 9,
+        "ms": 140.4919999999999
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 407,
+        "column": 10,
+        "ms": 140.4919999999999
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 360,
+        "column": 61,
+        "ms": 136.8629999999999
+      },
+      {
+        "name": "lineTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 106.10199999999999
+      },
+      {
+        "name": "d",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 345,
+        "column": 18,
+        "ms": 101.27499999999999
+      },
+      {
+        "name": "d",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 345,
+        "column": 18,
+        "ms": 92.17299999999997
+      },
+      {
+        "name": "(garbage collector)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 92.108
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 449,
+        "column": 6,
+        "ms": 68.41200000000003
+      },
+      {
+        "name": "paintResidential",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 342,
+        "column": 9,
+        "ms": 67.33800000000004
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 360,
+        "column": 61,
+        "ms": 65.16000000000003
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 76,
+        "column": 99,
+        "ms": 61.86700000000002
+      },
+      {
+        "name": "closePath",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 54.94200000000002
+      },
+      {
+        "name": "d",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 345,
+        "column": 18,
+        "ms": 47.817000000000014
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 344,
+        "column": 17,
+        "ms": 43.09900000000002
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 385,
+        "column": 14,
+        "ms": 42.59700000000001
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 39.01900000000001
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 37.106
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 35.395
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 344,
+        "column": 17,
+        "ms": 35.061
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        "line": 3,
+        "column": 16,
+        "ms": 34.925000000000004
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 30.38199999999999
+      },
+      {
+        "name": "api",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 390,
+        "column": 58,
+        "ms": 29.733999999999998
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 29.34
+      },
+      {
+        "name": "drawResidentialFloor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 26,
+        "column": 16,
+        "ms": 28.645000000000003
+      },
+      {
+        "name": "beginPath",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 22.537
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        "line": 347,
+        "column": 19,
+        "ms": 18.26
+      },
+      {
+        "name": "moveTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 16.018
+      }
+    ],
+    "fileInclusive": [
+      [
+        "(runtime)",
+        10173.539999999957
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        1985.2410000000013
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        1979.7660000000012
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/art/residential/index.ts",
+        1950.808000000001
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        477.977
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        40.32800000000001
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        9.017
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/scheduler@0.28.0/node_modules/scheduler/cjs/scheduler.production.js",
+        7.723000000000003
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.production.js",
+        4.140999999999998
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/index.ts",
+        3.221
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/geometry.ts",
+        2.891
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/opening.ts",
+        2.2649999999999997
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life-bridge.ts",
+        2.236
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/game.ts",
+        1.395
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/neighbourhood/transitions.ts",
+        1.1359999999999997
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/presence.ts",
+        1.0870000000000002
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/react@19.3.1/node_modules/react/cjs/react-jsx-runtime.production.js",
+        1.086
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/art-registry.ts",
+        1.078
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/occlusion.ts",
+        1.072
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/maps/residential/elevation.ts",
+        0.874
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/content/words.ts",
+        0.24000000000000044
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/audio/AmbienceControls.tsx",
+        0.18200000000000005
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/presence.ts",
+        0.031000000000000028
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/visibility.ts",
+        -0.03999999999999987
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/navigation.ts",
+        -0.03999999999999987
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/catalog.ts",
+        -0.632
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/interactions.ts",
+        -0.6869999999999996
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/util.js",
+        -0.989
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/api.js",
+        -1.198
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/dynamic.ts",
+        -1.216
+      ]
+    ]
+  },
+  "profile-phone-park-idle.cpuprofile": {
+    "sampledMs": 10061.621999999925,
+    "self": [
+      {
+        "name": "(idle)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 7892.939000000061
+      },
+      {
+        "name": "(program)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 1463.4870000000024
+      },
+      {
+        "name": "ZM",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 10,
+        "column": 32,
+        "ms": 47.81300000000002
+      },
+      {
+        "name": "drawAtmosphereLayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 7,
+        "column": 16,
+        "ms": 46.148999999999994
+      },
+      {
+        "name": "(garbage collector)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 42.73699999999999
+      },
+      {
+        "name": "fillRect",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 32.9
+      },
+      {
+        "name": "drawAtmosphereLayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 7,
+        "column": 16,
+        "ms": 31.495
+      },
+      {
+        "name": "paintWorld",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 36,
+        "column": 16,
+        "ms": 30.197
+      },
+      {
+        "name": "sampleAtmosphere",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/index.ts",
+        "line": 73,
+        "column": 16,
+        "ms": 28.683000000000003
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 24.183000000000003
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 20.243000000000006
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 17.374
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 16.178
+      },
+      {
+        "name": "drawLandscapeProp",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 17,
+        "column": 16,
+        "ms": 16.014
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 29,
+        "column": 22,
+        "ms": 10.464
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 8.638
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 8.638
+      },
+      {
+        "name": "lineTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 8.466000000000001
+      },
+      {
+        "name": "g",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 25,
+        "column": 16,
+        "ms": 8.133
+      },
+      {
+        "name": "frame",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/artwork.mjs",
+        "line": 6,
+        "column": 16,
+        "ms": 8.073
+      },
+      {
+        "name": "prop",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 83,
+        "column": 86,
+        "ms": 7.844
+      },
+      {
+        "name": "now",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 58,
+        "column": 14,
+        "ms": 7.619000000000001
+      },
+      {
+        "name": "Xd",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/index.ts",
+        "line": 59,
+        "column": 18,
+        "ms": 7.537
+      },
+      {
+        "name": "lineTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 7.508000000000001
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 7.263
+      },
+      {
+        "name": "tick",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 6.706
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 6.586
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 30,
+        "column": 19,
+        "ms": 6.532
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 6.515000000000001
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 88,
+        "column": 6,
+        "ms": 6.506
+      },
+      {
+        "name": "fillRect",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 6.457
+      },
+      {
+        "name": "requestAnimationFrame",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 6.147
+      },
+      {
+        "name": "sampleActor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/index.ts",
+        "line": 41,
+        "column": 16,
+        "ms": 5.8180000000000005
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        "line": 3,
+        "column": 16,
+        "ms": 5.682
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 28,
+        "column": 18,
+        "ms": 5.469
+      },
+      {
+        "name": "fillRect",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 5.448
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 77,
+        "column": 14,
+        "ms": 5.426
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 84,
+        "column": 34,
+        "ms": 5.377
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 5.376
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 30,
+        "column": 19,
+        "ms": 5.374
+      }
+    ],
+    "inclusive": [
+      {
+        "name": "(root)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 10061.621999999925
+      },
+      {
+        "name": "(idle)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 7892.939000000061
+      },
+      {
+        "name": "(program)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 1463.4870000000024
+      },
+      {
+        "name": "now",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 58,
+        "column": 14,
+        "ms": 642.3709999999995
+      },
+      {
+        "name": "paintWorld",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 36,
+        "column": 16,
+        "ms": 624.2019999999994
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 67,
+        "column": 104,
+        "ms": 243.65300000000008
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 88,
+        "column": 6,
+        "ms": 166.87999999999997
+      },
+      {
+        "name": "drawLandscapeProp",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 17,
+        "column": 16,
+        "ms": 158.2199999999999
+      },
+      {
+        "name": "ZM",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 10,
+        "column": 32,
+        "ms": 129.9039999999999
+      },
+      {
+        "name": "drawAtmosphere",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 34,
+        "column": 16,
+        "ms": 98.74599999999992
+      },
+      {
+        "name": "drawAtmosphereLayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 7,
+        "column": 16,
+        "ms": 97.66599999999993
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 51,
+        "column": 4,
+        "ms": 62.98600000000001
+      },
+      {
+        "name": "drawAtmosphereLayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 7,
+        "column": 16,
+        "ms": 58.49700000000001
+      },
+      {
+        "name": "drawPlayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 32,
+        "column": 16,
+        "ms": 45.30100000000002
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 66,
+        "column": 62,
+        "ms": 45.30100000000002
+      },
+      {
+        "name": "(garbage collector)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 42.73699999999999
+      },
+      {
+        "name": "sampleAtmosphere",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/index.ts",
+        "line": 73,
+        "column": 16,
+        "ms": 37.293
+      },
+      {
+        "name": "f",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 38,
+        "column": 16,
+        "ms": 34.762
+      },
+      {
+        "name": "fillRect",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 32.9
+      },
+      {
+        "name": "sampleActor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/index.ts",
+        "line": 41,
+        "column": 16,
+        "ms": 29.096
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 29,
+        "column": 22,
+        "ms": 27.104999999999997
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 24.183000000000003
+      },
+      {
+        "name": "frame",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/artwork.mjs",
+        "line": 6,
+        "column": 16,
+        "ms": 23.278
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 28,
+        "column": 18,
+        "ms": 23.057000000000002
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 28,
+        "column": 18,
+        "ms": 22.873
+      },
+      {
+        "name": "g",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 25,
+        "column": 16,
+        "ms": 20.844
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 20.243000000000006
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 17.374
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 16.178
+      },
+      {
+        "name": "qM",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 81,
+        "column": 75,
+        "ms": 15.369
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 55,
+        "column": 26,
+        "ms": 15.369
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 30,
+        "column": 19,
+        "ms": 14.997999999999998
+      },
+      {
+        "name": "performWorkUntilDeadline",
+        "file": "../../../../../../../node_modules/.pnpm/scheduler@0.28.0/node_modules/scheduler/cjs/scheduler.production.js",
+        "line": 121,
+        "column": 9,
+        "ms": 14.293
+      },
+      {
+        "name": "paintActorCanvas",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/adapter.ts",
+        "line": 27,
+        "column": 16,
+        "ms": 14.036
+      },
+      {
+        "name": "drawActor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/adapter.ts",
+        "line": 55,
+        "column": 16,
+        "ms": 14.036
+      },
+      {
+        "name": "prop",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 83,
+        "column": 86,
+        "ms": 13.221
+      },
+      {
+        "name": "performWorkOnRoot",
+        "file": "../../../../../../../node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.production.js",
+        "line": 12069,
+        "column": 9,
+        "ms": 13.190000000000001
+      },
+      {
+        "name": "performWorkOnRootViaSchedulerTask",
+        "file": "../../../../../../../node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.production.js",
+        "line": 13555,
+        "column": 9,
+        "ms": 13.190000000000001
+      },
+      {
+        "name": "renderRootSync",
+        "file": "../../../../../../../node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.production.js",
+        "line": 12522,
+        "column": 9,
+        "ms": 11.645
+      },
+      {
+        "name": "beginWork",
+        "file": "../../../../../../../node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.production.js",
+        "line": 7768,
+        "column": 9,
+        "ms": 11.068999999999999
+      },
+      {
+        "name": "point",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 35,
+        "column": 34,
+        "ms": 9.963
+      },
+      {
+        "name": "actorsFor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/life-bridge.ts",
+        "line": 27,
+        "column": 16,
+        "ms": 9.232
+      },
+      {
+        "name": "renderWithHooks",
+        "file": "../../../../../../../node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.production.js",
+        "line": 4627,
+        "column": 9,
+        "ms": 8.79
+      },
+      {
+        "name": "updateFunctionComponent",
+        "file": "../../../../../../../node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.production.js",
+        "line": 6791,
+        "column": 9,
+        "ms": 8.79
+      },
+      {
+        "name": "polygon",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/artwork.mjs",
+        "line": 39,
+        "column": 11,
+        "ms": 8.67
+      }
+    ],
+    "fileInclusive": [
+      [
+        "(runtime)",
+        10061.621999999925
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        646.6049999999994
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        625.3029999999994
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        312.15299999999996
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        163.87999999999997
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        158.2199999999999
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        58.00900000000001
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/index.ts",
+        38.359
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/index.ts",
+        29.096
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/artwork.mjs",
+        23.278
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/adapter.ts",
+        16.205
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/scheduler@0.28.0/node_modules/scheduler/cjs/scheduler.production.js",
+        13.939
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.production.js",
+        12.671000000000003
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        12.010000000000002
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life-bridge.ts",
+        10.312999999999999
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/App.tsx",
+        5.295999999999999
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/sample.ts",
+        4.87
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/state.ts",
+        4.5489999999999995
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/parse.js",
+        4.259
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/classic/schemas.js",
+        4.259
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/render.ts",
+        3.7159999999999997
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/presence.ts",
+        3.2910000000000004
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/occlusion.ts",
+        3.227
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/schemas.js",
+        3.188
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/geometry.ts",
+        2.442
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/content/words.ts",
+        2.191
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/api.js",
+        1.081
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/art-registry.ts",
+        1.079
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/visibility.ts",
+        1.079
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/interactions.ts",
+        1.079
+      ]
+    ]
+  },
+  "profile-phone-park-movement.cpuprofile": {
+    "sampledMs": 10120.783999999958,
+    "self": [
+      {
+        "name": "(idle)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 7172.191000000065
+      },
+      {
+        "name": "(program)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 2349.8390000000068
+      },
+      {
+        "name": "(garbage collector)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 56.014
+      },
+      {
+        "name": "drawAtmosphereLayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 7,
+        "column": 16,
+        "ms": 36.401
+      },
+      {
+        "name": "fillRect",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 33.452
+      },
+      {
+        "name": "ZM",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 10,
+        "column": 32,
+        "ms": 25.268999999999995
+      },
+      {
+        "name": "sampleAtmosphere",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/index.ts",
+        "line": 73,
+        "column": 16,
+        "ms": 24.535000000000004
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 21.593000000000004
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 21.517
+      },
+      {
+        "name": "paintWorld",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 36,
+        "column": 16,
+        "ms": 18.846
+      },
+      {
+        "name": "Xd",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/index.ts",
+        "line": 59,
+        "column": 18,
+        "ms": 18.488
+      },
+      {
+        "name": "lineTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 16.619
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 15.379000000000001
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 29,
+        "column": 22,
+        "ms": 12.649999999999999
+      },
+      {
+        "name": "tick",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 11.305000000000001
+      },
+      {
+        "name": "prop",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 83,
+        "column": 86,
+        "ms": 9.731
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 84,
+        "column": 34,
+        "ms": 9.634
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 28,
+        "column": 18,
+        "ms": 9.222
+      },
+      {
+        "name": "lineTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 8.460999999999999
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 28,
+        "column": 18,
+        "ms": 8.455
+      },
+      {
+        "name": "fillRect",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 8.313
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 7.5089999999999995
+      },
+      {
+        "name": "point",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 35,
+        "column": 34,
+        "ms": 7.139000000000001
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 30,
+        "column": 19,
+        "ms": 6.547000000000001
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 6.483000000000001
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 6.312999999999999
+      },
+      {
+        "name": "g",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 25,
+        "column": 16,
+        "ms": 6.192
+      },
+      {
+        "name": "fillRect",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 6.088
+      },
+      {
+        "name": "base",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 14,
+        "column": 15,
+        "ms": 5.8709999999999996
+      },
+      {
+        "name": "rect",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/artwork.mjs",
+        "line": 28,
+        "column": 11,
+        "ms": 5.665000000000001
+      },
+      {
+        "name": "now",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 58,
+        "column": 14,
+        "ms": 5.494
+      },
+      {
+        "name": "renderAtmosphereObjects",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 42,
+        "column": 16,
+        "ms": 5.434
+      },
+      {
+        "name": "t",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 57,
+        "column": 34,
+        "ms": 5.43
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        "line": 3,
+        "column": 16,
+        "ms": 5.401
+      },
+      {
+        "name": "fillRect",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 4.87
+      },
+      {
+        "name": "setTimeout",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 4.587999999999999
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        "line": 3,
+        "column": 16,
+        "ms": 4.335999999999999
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 11,
+        "column": 65,
+        "ms": 4.31
+      },
+      {
+        "name": "beginPath",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 4.282
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 32,
+        "column": 204,
+        "ms": 4.241
+      }
+    ],
+    "inclusive": [
+      {
+        "name": "(root)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 10120.783999999958
+      },
+      {
+        "name": "(idle)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 7172.191000000065
+      },
+      {
+        "name": "(program)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 2349.8390000000068
+      },
+      {
+        "name": "now",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 58,
+        "column": 14,
+        "ms": 506.57699999999966
+      },
+      {
+        "name": "paintWorld",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 36,
+        "column": 16,
+        "ms": 496.11399999999975
+      },
+      {
+        "name": "ZM",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 10,
+        "column": 32,
+        "ms": 146.86599999999996
+      },
+      {
+        "name": "object",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 77,
+        "column": 46,
+        "ms": 135.95199999999997
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 67,
+        "column": 104,
+        "ms": 124.91499999999999
+      },
+      {
+        "name": "drawAtmosphere",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 34,
+        "column": 16,
+        "ms": 105.48399999999991
+      },
+      {
+        "name": "drawAtmosphereLayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 7,
+        "column": 16,
+        "ms": 104.40499999999992
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 88,
+        "column": 6,
+        "ms": 91.30300000000001
+      },
+      {
+        "name": "drawLandscapeProp",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 17,
+        "column": 16,
+        "ms": 87.26899999999999
+      },
+      {
+        "name": "(garbage collector)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 56.014
+      },
+      {
+        "name": "sampleAtmosphere",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/index.ts",
+        "line": 73,
+        "column": 16,
+        "ms": 47.830999999999996
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 28,
+        "column": 18,
+        "ms": 45.915000000000006
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 29,
+        "column": 22,
+        "ms": 40.807000000000016
+      },
+      {
+        "name": "command",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 11,
+        "column": 14,
+        "ms": 37.81900000000001
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 11,
+        "column": 65,
+        "ms": 35.66100000000001
+      },
+      {
+        "name": "fillRect",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 33.452
+      },
+      {
+        "name": "base",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 14,
+        "column": 15,
+        "ms": 27.387999999999998
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 51,
+        "column": 4,
+        "ms": 27.114000000000004
+      },
+      {
+        "name": "drawAtmosphereLayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 7,
+        "column": 16,
+        "ms": 24.21999999999999
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 21.593000000000004
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 21.517
+      },
+      {
+        "name": "performWorkUntilDeadline",
+        "file": "../../../../../../../node_modules/.pnpm/scheduler@0.28.0/node_modules/scheduler/cjs/scheduler.production.js",
+        "line": 121,
+        "column": 9,
+        "ms": 20.254000000000005
+      },
+      {
+        "name": "prop",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 83,
+        "column": 86,
+        "ms": 19.365
+      },
+      {
+        "name": "qM",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 81,
+        "column": 75,
+        "ms": 19.365
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 55,
+        "column": 26,
+        "ms": 19.365
+      },
+      {
+        "name": "Xd",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/index.ts",
+        "line": 59,
+        "column": 18,
+        "ms": 18.488
+      },
+      {
+        "name": "lineTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 16.619
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 15.379000000000001
+      },
+      {
+        "name": "w",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 33,
+        "column": 18,
+        "ms": 15.378
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 30,
+        "column": 19,
+        "ms": 15.008
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 28,
+        "column": 18,
+        "ms": 14.301000000000002
+      },
+      {
+        "name": "g",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 25,
+        "column": 16,
+        "ms": 13.763
+      },
+      {
+        "name": "point",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 35,
+        "column": 34,
+        "ms": 13.633
+      },
+      {
+        "name": "performWorkOnRoot",
+        "file": "../../../../../../../node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.production.js",
+        "line": 12069,
+        "column": 9,
+        "ms": 11.334000000000003
+      },
+      {
+        "name": "performWorkOnRootViaSchedulerTask",
+        "file": "../../../../../../../node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.production.js",
+        "line": 13555,
+        "column": 9,
+        "ms": 11.334000000000003
+      },
+      {
+        "name": "command",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 11,
+        "column": 14,
+        "ms": 10.445
+      },
+      {
+        "name": "WorldViewport",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 22,
+        "column": 24,
+        "ms": 10.386
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        "line": 84,
+        "column": 34,
+        "ms": 9.634
+      },
+      {
+        "name": "drawPlayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 32,
+        "column": 16,
+        "ms": 9.572000000000001
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 66,
+        "column": 62,
+        "ms": 9.572000000000001
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 11,
+        "column": 65,
+        "ms": 9.453
+      },
+      {
+        "name": "f",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        "line": 38,
+        "column": 16,
+        "ms": 9.422
+      }
+    ],
+    "fileInclusive": [
+      [
+        "(runtime)",
+        10120.783999999958
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        516.9629999999995
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        496.11399999999975
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/index.ts",
+        258.622
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        140.2469999999999
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/art/landscape/draw.ts",
+        88.357
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/index.ts",
+        47.830999999999996
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        41.83900000000002
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.production.js",
+        19.031000000000006
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/scheduler@0.28.0/node_modules/scheduler/cjs/scheduler.production.js",
+        18.965000000000007
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        15.035
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/geometry.ts",
+        9.741000000000001
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/index.ts",
+        9.178000000000004
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/artwork.mjs",
+        6.950999999999999
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life-bridge.ts",
+        6.9239999999999995
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/navigation.ts",
+        5.226999999999999
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/interactions.ts",
+        4.227
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/sample.ts",
+        4.178
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/opening.ts",
+        3.4389999999999983
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/state.ts",
+        3.136000000000003
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/neighbourhood/transitions.ts",
+        3.081999999999997
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/visibility.ts",
+        2.658
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/util.js",
+        2.213
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/api.js",
+        1.8399999999999999
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/art-registry.ts",
+        1.67
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/presence.ts",
+        1.665
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/occlusion.ts",
+        1.084
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/App.tsx",
+        0.4039999999999946
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/render.ts",
+        0.387
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/checks.js",
+        0.152
+      ]
+    ]
+  },
+  "profile-phone-town-idle.cpuprofile": {
+    "sampledMs": 10098.22099999999,
+    "self": [
+      {
+        "name": "(idle)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 6546.728000000039
+      },
+      {
+        "name": "(program)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 1838.8750000000023
+      },
+      {
+        "name": "sS",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 326,
+        "column": 32,
+        "ms": 231.73499999999984
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 182.4399999999999
+      },
+      {
+        "name": "stroke",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 69.954
+      },
+      {
+        "name": "(garbage collector)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 60.680000000000014
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 54.08200000000001
+      },
+      {
+        "name": "g",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 23,
+        "column": 18,
+        "ms": 49.72299999999999
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 48.955999999999996
+      },
+      {
+        "name": "fillRect",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 47.485
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 45.61000000000002
+      },
+      {
+        "name": "paintWorld",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 36,
+        "column": 16,
+        "ms": 36.663999999999994
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        "line": 3,
+        "column": 16,
+        "ms": 26.425000000000004
+      },
+      {
+        "name": "drawProp",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 19,
+        "column": 16,
+        "ms": 26.319
+      },
+      {
+        "name": "lineTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 24.467
+      },
+      {
+        "name": "drawAtmosphereLayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 7,
+        "column": 16,
+        "ms": 20.642
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 18.406000000000002
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 16.474
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 16.224999999999998
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 15.249
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 13.022
+      },
+      {
+        "name": "sampleActor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/index.ts",
+        "line": 41,
+        "column": 16,
+        "ms": 12.787
+      },
+      {
+        "name": "g",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 23,
+        "column": 18,
+        "ms": 12.76
+      },
+      {
+        "name": "o",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 327,
+        "column": 16,
+        "ms": 12.667
+      },
+      {
+        "name": "drawProp",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 19,
+        "column": 16,
+        "ms": 12.392999999999999
+      },
+      {
+        "name": "fillRect",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 12.219000000000001
+      },
+      {
+        "name": "sampleAtmosphere",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/index.ts",
+        "line": 73,
+        "column": 16,
+        "ms": 12.058
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 11.945
+      },
+      {
+        "name": "li",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 14,
+        "column": 13,
+        "ms": 11.895000000000001
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 11.333
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 29,
+        "column": 15,
+        "ms": 10.953000000000001
+      },
+      {
+        "name": "w",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 30,
+        "column": 15,
+        "ms": 10.931
+      },
+      {
+        "name": "lineTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 10.889000000000001
+      },
+      {
+        "name": "sampleActor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/index.ts",
+        "line": 41,
+        "column": 16,
+        "ms": 10.841999999999999
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 26,
+        "column": 19,
+        "ms": 10.732
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 76,
+        "column": 99,
+        "ms": 10.375000000000002
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 348,
+        "column": 40,
+        "ms": 9.964
+      },
+      {
+        "name": "drawAtmosphereLayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 7,
+        "column": 16,
+        "ms": 9.786999999999999
+      },
+      {
+        "name": "f",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 35,
+        "column": 14,
+        "ms": 9.565
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 29,
+        "column": 15,
+        "ms": 8.665
+      }
+    ],
+    "inclusive": [
+      {
+        "name": "(root)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 10098.22099999999
+      },
+      {
+        "name": "(idle)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 6546.728000000039
+      },
+      {
+        "name": "(program)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 1838.8750000000023
+      },
+      {
+        "name": "now",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 58,
+        "column": 14,
+        "ms": 1639.585
+      },
+      {
+        "name": "paintWorld",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 36,
+        "column": 16,
+        "ms": 1624.4510000000002
+      },
+      {
+        "name": "sS",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 326,
+        "column": 32,
+        "ms": 765.1390000000001
+      },
+      {
+        "name": "object",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 77,
+        "column": 46,
+        "ms": 548.073
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 67,
+        "column": 104,
+        "ms": 459.96199999999993
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 385,
+        "column": 4,
+        "ms": 332.0099999999999
+      },
+      {
+        "name": "drawProp",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 19,
+        "column": 16,
+        "ms": 330.92699999999996
+      },
+      {
+        "name": "f",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 35,
+        "column": 14,
+        "ms": 215.49399999999997
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 29,
+        "column": 15,
+        "ms": 205.92899999999997
+      },
+      {
+        "name": "o",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 327,
+        "column": 16,
+        "ms": 195.10699999999997
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 182.4399999999999
+      },
+      {
+        "name": "g",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 23,
+        "column": 18,
+        "ms": 178.913
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 67,
+        "column": 104,
+        "ms": 161.95599999999993
+      },
+      {
+        "name": "drawProp",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 19,
+        "column": 16,
+        "ms": 145.61999999999995
+      },
+      {
+        "name": "drawProp",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 19,
+        "column": 16,
+        "ms": 95.52899999999997
+      },
+      {
+        "name": "f",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 35,
+        "column": 14,
+        "ms": 88.78999999999994
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 29,
+        "column": 15,
+        "ms": 81.11199999999994
+      },
+      {
+        "name": "stroke",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 69.954
+      },
+      {
+        "name": "g",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 23,
+        "column": 18,
+        "ms": 68.15099999999998
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 29,
+        "column": 15,
+        "ms": 62.39100000000003
+      },
+      {
+        "name": "f",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 35,
+        "column": 14,
+        "ms": 62.39100000000003
+      },
+      {
+        "name": "(garbage collector)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 60.680000000000014
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 54.08200000000001
+      },
+      {
+        "name": "g",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 23,
+        "column": 18,
+        "ms": 52.07400000000003
+      },
+      {
+        "name": "o",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 20,
+        "column": 16,
+        "ms": 51.108
+      },
+      {
+        "name": "drawLifeActor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/life/render.ts",
+        "line": 60,
+        "column": 16,
+        "ms": 49.71800000000001
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 75,
+        "column": 86,
+        "ms": 49.71800000000001
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 48.955999999999996
+      },
+      {
+        "name": "fillRect",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 47.485
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 45.61000000000002
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 75,
+        "column": 164,
+        "ms": 44.32600000000001
+      },
+      {
+        "name": "drawAtmosphereLayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 7,
+        "column": 16,
+        "ms": 43.329
+      },
+      {
+        "name": "drawAtmosphere",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 34,
+        "column": 16,
+        "ms": 43.329
+      },
+      {
+        "name": "p",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 344,
+        "column": 100,
+        "ms": 42.894000000000005
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 76,
+        "column": 99,
+        "ms": 36.800000000000004
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 348,
+        "column": 40,
+        "ms": 36.559
+      },
+      {
+        "name": "drawProp",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 19,
+        "column": 16,
+        "ms": 35.358999999999995
+      },
+      {
+        "name": "w",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 30,
+        "column": 15,
+        "ms": 28.724
+      },
+      {
+        "name": "sampleActor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/index.ts",
+        "line": 41,
+        "column": 16,
+        "ms": 28.083
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        "line": 3,
+        "column": 16,
+        "ms": 26.425000000000004
+      },
+      {
+        "name": "drawPlayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 32,
+        "column": 16,
+        "ms": 25.387999999999998
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 66,
+        "column": 62,
+        "ms": 25.387999999999998
+      }
+    ],
+    "fileInclusive": [
+      [
+        "(runtime)",
+        10098.22099999999
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        1640.1850000000002
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        1624.4510000000002
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        1350.5549999999998
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        358.7940000000001
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/render.ts",
+        77.55300000000001
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        71.56300000000002
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/index.ts",
+        70.48300000000002
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        56.984000000000016
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/adapter.ts",
+        35.195
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/artwork.mjs",
+        33.735
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/index.ts",
+        15.481000000000002
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/occlusion.ts",
+        10.857999999999999
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life-bridge.ts",
+        7.718
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/presence.ts",
+        5.46
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.production.js",
+        4.678000000000001
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/schemas.js",
+        4.344
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/classic/schemas.js",
+        4.344
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/interactions.ts",
+        4.344
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/scheduler@0.28.0/node_modules/scheduler/cjs/scheduler.production.js",
+        4.0969999999999995
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/parse.js",
+        3.266
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/App.tsx",
+        2.9300000000000006
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/presence.ts",
+        2.194
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/sample.ts",
+        1.169
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/api.js",
+        1.109
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/art-registry.ts",
+        1.104
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/state.ts",
+        0.41600000000000004
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/neighbourhood/transitions.ts",
+        0.41600000000000004
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/opening.ts",
+        0.41600000000000004
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/content/words.ts",
+        -0.501
+      ]
+    ]
+  },
+  "profile-phone-town-movement.cpuprofile": {
+    "sampledMs": 10148.117999999944,
+    "self": [
+      {
+        "name": "(idle)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 5867.402000000069
+      },
+      {
+        "name": "(program)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 2805.127000000002
+      },
+      {
+        "name": "sS",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 326,
+        "column": 32,
+        "ms": 242.04300000000003
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 180.353
+      },
+      {
+        "name": "(garbage collector)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 86.71800000000002
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 77.30799999999996
+      },
+      {
+        "name": "stroke",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 53.988
+      },
+      {
+        "name": "fillRect",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 51.30800000000001
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 48.02700000000002
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 45.01400000000001
+      },
+      {
+        "name": "drawProp",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 19,
+        "column": 16,
+        "ms": 37.18699999999999
+      },
+      {
+        "name": "g",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 23,
+        "column": 18,
+        "ms": 34.144
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        "line": 3,
+        "column": 16,
+        "ms": 28.357999999999993
+      },
+      {
+        "name": "paintWorld",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 36,
+        "column": 16,
+        "ms": 26.113
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 25.442000000000007
+      },
+      {
+        "name": "sampleActor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/index.ts",
+        "line": 41,
+        "column": 16,
+        "ms": 16.228
+      },
+      {
+        "name": "f",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 35,
+        "column": 14,
+        "ms": 15.748999999999997
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 26,
+        "column": 19,
+        "ms": 15.61
+      },
+      {
+        "name": "tick",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 15.215
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 13.805
+      },
+      {
+        "name": "fillRect",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 12.97
+      },
+      {
+        "name": "drawAtmosphereLayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 7,
+        "column": 16,
+        "ms": 12.969
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 12.388
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        "line": 3,
+        "column": 16,
+        "ms": 12.049000000000001
+      },
+      {
+        "name": "sampleActor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/index.ts",
+        "line": 41,
+        "column": 16,
+        "ms": 10.852
+      },
+      {
+        "name": "w",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 30,
+        "column": 15,
+        "ms": 9.78
+      },
+      {
+        "name": "lineTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 9.708999999999998
+      },
+      {
+        "name": "beginPath",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 9.586
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 29,
+        "column": 15,
+        "ms": 9.527000000000001
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 384,
+        "column": 29,
+        "ms": 9.526000000000002
+      },
+      {
+        "name": "o",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 327,
+        "column": 16,
+        "ms": 9.518999999999998
+      },
+      {
+        "name": "rect",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/artwork.mjs",
+        "line": 28,
+        "column": 11,
+        "ms": 8.639999999999999
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 76,
+        "column": 99,
+        "ms": 8.017000000000001
+      },
+      {
+        "name": "",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 7.921
+      },
+      {
+        "name": "lineTo",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 7.571999999999999
+      },
+      {
+        "name": "polygon",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/artwork.mjs",
+        "line": 39,
+        "column": 11,
+        "ms": 7.551
+      },
+      {
+        "name": "rect",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/artwork.mjs",
+        "line": 28,
+        "column": 11,
+        "ms": 7.514000000000001
+      },
+      {
+        "name": "drawAtmosphereLayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 7,
+        "column": 16,
+        "ms": 7.348000000000001
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 76,
+        "column": 99,
+        "ms": 7.226
+      },
+      {
+        "name": "performWorkUntilDeadline",
+        "file": "../../../../../../../node_modules/.pnpm/scheduler@0.28.0/node_modules/scheduler/cjs/scheduler.production.js",
+        "line": 121,
+        "column": 9,
+        "ms": 6.861999999999999
+      }
+    ],
+    "inclusive": [
+      {
+        "name": "(root)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 10148.117999999944
+      },
+      {
+        "name": "(idle)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 5867.402000000069
+      },
+      {
+        "name": "(program)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 2805.127000000002
+      },
+      {
+        "name": "paintWorld",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 36,
+        "column": 16,
+        "ms": 1351.5940000000003
+      },
+      {
+        "name": "now",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 58,
+        "column": 14,
+        "ms": 1341.5390000000007
+      },
+      {
+        "name": "sS",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 326,
+        "column": 32,
+        "ms": 743.4419999999997
+      },
+      {
+        "name": "object",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 77,
+        "column": 46,
+        "ms": 504.8509999999996
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 67,
+        "column": 104,
+        "ms": 373.6879999999995
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 385,
+        "column": 4,
+        "ms": 357.37899999999956
+      },
+      {
+        "name": "drawProp",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 19,
+        "column": 16,
+        "ms": 353.5799999999995
+      },
+      {
+        "name": "f",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 35,
+        "column": 14,
+        "ms": 216.4709999999998
+      },
+      {
+        "name": "b",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 29,
+        "column": 15,
+        "ms": 200.72199999999984
+      },
+      {
+        "name": "o",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 327,
+        "column": 16,
+        "ms": 189.872
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 180.353
+      },
+      {
+        "name": "g",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 23,
+        "column": 18,
+        "ms": 175.72799999999984
+      },
+      {
+        "name": "(garbage collector)",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 86.71800000000002
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 77.30799999999996
+      },
+      {
+        "name": "drawLifeActor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/life/render.ts",
+        "line": 60,
+        "column": 16,
+        "ms": 59.617999999999995
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 75,
+        "column": 86,
+        "ms": 59.617999999999995
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 75,
+        "column": 164,
+        "ms": 58.849000000000004
+      },
+      {
+        "name": "stroke",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 53.988
+      },
+      {
+        "name": "fillRect",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 51.30800000000001
+      },
+      {
+        "name": "o",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 20,
+        "column": 16,
+        "ms": 51.27200000000003
+      },
+      {
+        "name": "sampleActor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/index.ts",
+        "line": 41,
+        "column": 16,
+        "ms": 50.20200000000001
+      },
+      {
+        "name": "draw",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 66,
+        "column": 62,
+        "ms": 49.157999999999994
+      },
+      {
+        "name": "drawPlayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        "line": 32,
+        "column": 16,
+        "ms": 48.09799999999999
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 48.02700000000002
+      },
+      {
+        "name": "fill",
+        "file": "(runtime)",
+        "line": 0,
+        "ms": 45.01400000000001
+      },
+      {
+        "name": "drawAtmosphereLayer",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 7,
+        "column": 16,
+        "ms": 43.354000000000006
+      },
+      {
+        "name": "drawAtmosphere",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        "line": 34,
+        "column": 16,
+        "ms": 43.354000000000006
+      },
+      {
+        "name": "sampleActor",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/index.ts",
+        "line": 41,
+        "column": 16,
+        "ms": 36.139
+      },
+      {
+        "name": "p",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 344,
+        "column": 100,
+        "ms": 36.031000000000006
+      },
+      {
+        "name": "w",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 30,
+        "column": 15,
+        "ms": 35.835
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 76,
+        "column": 99,
+        "ms": 33.848000000000006
+      },
+      {
+        "name": "drawProp",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 19,
+        "column": 16,
+        "ms": 33.635000000000005
+      },
+      {
+        "name": "",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 26,
+        "column": 19,
+        "ms": 31.883000000000006
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        "line": 3,
+        "column": 16,
+        "ms": 28.357999999999993
+      },
+      {
+        "name": "o",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 20,
+        "column": 16,
+        "ms": 27.972
+      },
+      {
+        "name": "l",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        "line": 7,
+        "column": 24,
+        "ms": 25.442000000000007
+      },
+      {
+        "name": "frame",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/artwork.mjs",
+        "line": 6,
+        "column": 16,
+        "ms": 25.333000000000002
+      },
+      {
+        "name": "performWorkUntilDeadline",
+        "file": "../../../../../../../node_modules/.pnpm/scheduler@0.28.0/node_modules/scheduler/cjs/scheduler.production.js",
+        "line": 121,
+        "column": 9,
+        "ms": 22.971999999999973
+      },
+      {
+        "name": "drawProp",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 19,
+        "column": 16,
+        "ms": 21.511999999999997
+      },
+      {
+        "name": "frame",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/artwork.mjs",
+        "line": 6,
+        "column": 16,
+        "ms": 20.946
+      },
+      {
+        "name": "project",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        "line": 76,
+        "column": 99,
+        "ms": 20.066000000000003
+      },
+      {
+        "name": "o",
+        "file": "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        "line": 20,
+        "column": 16,
+        "ms": 18.136000000000006
+      }
+    ],
+    "fileInclusive": [
+      [
+        "(runtime)",
+        10148.117999999944
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/painter.ts",
+        1351.5940000000003
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/WorldViewport.tsx",
+        1341.1090000000006
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/art/town/index.ts",
+        1141.5850000000005
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/lighting.ts",
+        283.92200000000014
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/index.ts",
+        86.34099999999998
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/render.ts",
+        59.617999999999995
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/canvas.ts",
+        57.17400000000003
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/camera.ts",
+        51.16700000000002
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/artwork.mjs",
+        46.27899999999999
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/adapter.ts",
+        32.507
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/scheduler@0.28.0/node_modules/scheduler/cjs/scheduler.production.js",
+        23.95699999999998
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/react-dom@19.3.1_react@19.3.1/node_modules/react-dom/cjs/react-dom-client.production.js",
+        16.933999999999997
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/atmosphere/index.ts",
+        6.967
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/content/words.ts",
+        6.575
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/parse.js",
+        4.628
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life-bridge.ts",
+        4.008
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/schemas.js",
+        3.442
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/classic/schemas.js",
+        2.665
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/art-registry.ts",
+        2.21
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/presence.ts",
+        2.161
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/react@19.3.1/node_modules/react/cjs/react-jsx-runtime.production.js",
+        1.172
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/occlusion.ts",
+        1.086
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/characters/catalog.ts",
+        1.081
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/maps/residential/elevation.ts",
+        1.001
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/api.js",
+        0.9630000000000001
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/visibility.ts",
+        0.23499999999999988
+      ],
+      [
+        "../../../../../../../../junyan-wholeapp-e89831/src/world/life/navigation.ts",
+        0.23499999999999988
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/react@19.3.1/node_modules/react/cjs/react.production.js",
+        0.19800000000000012
+      ],
+      [
+        "../../../../../../../node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/checks.js",
+        0.128
+      ]
+    ]
+  }
+}

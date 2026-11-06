@@ -1,0 +1,137 @@
+{
+  "head": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+  "kind": "normal opening and physical doors; one actual canvas target around lamp bench; no fixture/save writes",
+  "input": "native touchscreen.tap",
+  "before": {
+    "version": 1,
+    "mapId": "workshop",
+    "position": {
+      "x": 8.000000067976567,
+      "y": 6.800000209455963
+    },
+    "facing": "west",
+    "returnPositions": {
+      "restaurant": {
+        "x": 12,
+        "y": 19.99950000000002,
+        "facing": "south"
+      },
+      "town": {
+        "x": 71.9223825366707,
+        "y": 29.93491964038667,
+        "facing": "east"
+      }
+    },
+    "activeActivity": null,
+    "activeAnchorId": null,
+    "life": {
+      "version": 1,
+      "elapsedMs": 17156,
+      "discoveries": [],
+      "reactions": [],
+      "serviceDepartures": [],
+      "pauses": []
+    }
+  },
+  "target": {
+    "x": 8,
+    "y": 10.8
+  },
+  "after": {
+    "version": 1,
+    "mapId": "workshop",
+    "position": {
+      "x": 7.9999993743952444,
+      "y": 10.799999515874642
+    },
+    "facing": "west",
+    "returnPositions": {
+      "restaurant": {
+        "x": 12,
+        "y": 19.99950000000002,
+        "facing": "south"
+      },
+      "town": {
+        "x": 71.9223825366707,
+        "y": 29.93491964038667,
+        "facing": "east"
+      }
+    },
+    "activeActivity": null,
+    "activeAnchorId": null,
+    "life": {
+      "version": 1,
+      "elapsedMs": 19172.600000000002,
+      "discoveries": [],
+      "reactions": [],
+      "serviceDepartures": [],
+      "pauses": []
+    }
+  },
+  "durationMs": 2029,
+  "stages": [
+    {
+      "stage": "route-restaurant-to-town",
+      "world": {
+        "version": 1,
+        "mapId": "town",
+        "position": {
+          "x": 33.923854554317884,
+          "y": 30.365734549443047
+        },
+        "facing": "west",
+        "returnPositions": {
+          "restaurant": {
+            "x": 12,
+            "y": 19.99950000000002,
+            "facing": "south"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 1016.6000000000004,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      }
+    },
+    {
+      "stage": "route-town-to-workshop",
+      "world": {
+        "version": 1,
+        "mapId": "workshop",
+        "position": {
+          "x": 15.082747943941088,
+          "y": 25.00646357281395
+        },
+        "facing": "east",
+        "returnPositions": {
+          "restaurant": {
+            "x": 12,
+            "y": 19.99950000000002,
+            "facing": "south"
+          },
+          "town": {
+            "x": 71.9223825366707,
+            "y": 29.93491964038667,
+            "facing": "east"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 11106.199999999999,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      }
+    }
+  ]
+}

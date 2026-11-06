@@ -1,0 +1,32 @@
+{
+  "desktop": {
+    "nativeKeyBeforeReplyMs": 17.700000000186265,
+    "afterRelease800msUnchanged": true,
+    "finalClickReplyMs": 69,
+    "finalPathLength": 1,
+    "finalTarget": {
+      "x": 35.000001125249696,
+      "y": 33.00000057616747
+    },
+    "observedEndPosition": {
+      "x": 35.000001125249696,
+      "y": 33.00000057616747
+    },
+    "pageErrors": []
+  },
+  "phone": {
+    "nativeKeyBeforeReplyMs": 7.699999999720603,
+    "afterRelease800msUnchanged": true,
+    "finalClickReplyMs": 28.5,
+    "finalPathLength": 1,
+    "finalTarget": {
+      "x": 33.000000212500396,
+      "y": 33.000000123130185
+    },
+    "observedEndPosition": {
+      "x": 33.000000212500396,
+      "y": 33.000000123130185
+    },
+    "pageErrors": []
+  }
+}

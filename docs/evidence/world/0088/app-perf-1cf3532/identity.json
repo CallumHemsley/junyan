@@ -1,0 +1,36 @@
+{
+  "heads": {
+    "before": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+    "after": "2a7dc57a9163d9f49019fd3c29673b87548ebf4d"
+  },
+  "fixture": {
+    "origin": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/phone-journey-final.json",
+    "sha256": "f10936cc774bc053d646e8ec74ef3ba23402f8d828bb519eec6eba004026af7f"
+  },
+  "sourceHashes": {
+    "before": {
+      "src/App.tsx": "24fac2846ae2d92295ac095278ad488dfe853cc6a7adb879f5ba718b22cf7dfd",
+      "src/world/dynamic.ts": "d425ba9810e1cae279784bd591aeb40550fa82b016d75ab255a2e5735a794906",
+      "src/world/state.ts": "6fb3b24d3abe8f5a382df59f574363de3440f188f9ffe141fb58776182ba0262",
+      "src/world/exit-safety.ts": "c932eed1e83e603f5260d8f4157d7d285827a148e75a0b7e1ff31f1a9f807657",
+      "src/neighbourhood/transitions.ts": "797b97914ab89e73eecf24a810d7b8a6ad0a7b8ca067af23a65e02b6978139f6"
+    },
+    "after": {
+      "src/App.tsx": "fc2979cde26c0a0d610df5829661694652b0cbb24b6cefa3abdf5bcc9eb0774c",
+      "src/world/dynamic.ts": "d425ba9810e1cae279784bd591aeb40550fa82b016d75ab255a2e5735a794906",
+      "src/world/state.ts": "6db6b9f20da2b7089033292cae184454461f5fec585f2dcf10cbdf517d0f6702",
+      "src/world/exit-safety.ts": "c932eed1e83e603f5260d8f4157d7d285827a148e75a0b7e1ff31f1a9f807657",
+      "src/neighbourhood/transitions.ts": "e3da4499edaf0e7de2d745d13533614ab295c81a92e199f14066a2b81649e6eb"
+    }
+  },
+  "bundleHashes": {
+    "/workspace/junyan-review-1cf3532/dist/assets/path-worker-CAwNMWwI.js": "14602b4a650379805fb90eeffcff923ad16918b1556d8e9e4d2c947fe9c04890",
+    "/workspace/junyan-review-1cf3532/dist/assets/index-DQyCgVwu.js": "3fb3d5223d0ef2abe46b73d925d5b9889165501b239d30d092317349eb866c84",
+    "/workspace/junyan-review-2a7-perf/dist/assets/path-worker-CAwNMWwI.js": "14602b4a650379805fb90eeffcff923ad16918b1556d8e9e4d2c947fe9c04890",
+    "/workspace/junyan-review-2a7-perf/dist/assets/index-CiYZVYDK.js": "60916cea401e7cfd1ebc2646203b87e8538febd180d105586723cda90dd67eba",
+    "/workspace/junyan/docs/evidence/world/0088/app-perf-1cf3532/instrumented-dist/assets/path-worker-CAwNMWwI.js": "14602b4a650379805fb90eeffcff923ad16918b1556d8e9e4d2c947fe9c04890",
+    "/workspace/junyan/docs/evidence/world/0088/app-perf-1cf3532/instrumented-dist/assets/index-Dw5adea4.js": "e26b1476ccea4d03366b4ec7776f21c6444055a895c83fba334b0e224b193661",
+    "/workspace/junyan/docs/evidence/world/0088/app-perf-1cf3532/instrumented-dist-2a7/assets/path-worker-CAwNMWwI.js": "14602b4a650379805fb90eeffcff923ad16918b1556d8e9e4d2c947fe9c04890",
+    "/workspace/junyan/docs/evidence/world/0088/app-perf-1cf3532/instrumented-dist-2a7/assets/index-DtZFEF8w.js": "9e79a544374e4d94b93780b5e6da00ecad1cfcc320343024de3d057f51cdb1dc"
+  }
+}

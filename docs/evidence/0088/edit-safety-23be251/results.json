@@ -1,0 +1,100 @@
+{
+  "head": "23be251185d989f7b97d36391a8f6478344b1a3b",
+  "scope": "synthetic map geometry, exact safeAfterEdit and geometry; actual restoreWorld bundled from exact-head source receives JSON-roundtripped valid saved world",
+  "results": [
+    {
+      "name": "still-standable-pocket",
+      "position": {
+        "x": 5,
+        "y": 5
+      },
+      "beforeStandable": true,
+      "beforeExitRoute": [
+        {
+          "x": 5,
+          "y": 7.5
+        },
+        {
+          "x": 9,
+          "y": 8
+        }
+      ],
+      "afterOriginalStandable": true,
+      "recovered": {
+        "x": 5,
+        "y": 5
+      },
+      "recoveredStandable": true,
+      "beforeSegmentToRecovery": true,
+      "afterExitRoute": [],
+      "roundtripRecovered": {
+        "x": 5,
+        "y": 5
+      },
+      "actualRestoreWorld": {
+        "x": 5,
+        "y": 5
+      },
+      "outsideSafeAlternative": {
+        "point": {
+          "x": 5,
+          "y": 7.25
+        },
+        "standable": true,
+        "exitRoute": [
+          {
+            "x": 9,
+            "y": 8
+          }
+        ]
+      }
+    },
+    {
+      "name": "overlap-nearest-pocket",
+      "position": {
+        "x": 5,
+        "y": 6.25
+      },
+      "beforeStandable": true,
+      "beforeExitRoute": [
+        {
+          "x": 5,
+          "y": 7.5
+        },
+        {
+          "x": 9,
+          "y": 8
+        }
+      ],
+      "afterOriginalStandable": false,
+      "recovered": {
+        "x": 5,
+        "y": 5.75
+      },
+      "recoveredStandable": true,
+      "beforeSegmentToRecovery": true,
+      "afterExitRoute": [],
+      "roundtripRecovered": {
+        "x": 5,
+        "y": 5.75
+      },
+      "actualRestoreWorld": {
+        "x": 5,
+        "y": 5.75
+      },
+      "outsideSafeAlternative": {
+        "point": {
+          "x": 5,
+          "y": 7.25
+        },
+        "standable": true,
+        "exitRoute": [
+          {
+            "x": 9,
+            "y": 8
+          }
+        ]
+      }
+    }
+  ]
+}

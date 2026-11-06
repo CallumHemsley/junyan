@@ -1,0 +1,249 @@
+{
+  "config": {
+    "argv": [
+      "/workspace/.junyan-tools/node_modules/node/bin/node",
+      "/workspace/junyan/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "docs/evidence/0088/integrated-c4ec7ed/review.config.ts",
+      "--project",
+      "desktop"
+    ],
+    "configFile": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/review.config.ts",
+    "rootDir": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed",
+        "testIgnore": [],
+        "testMatch": [
+          "journey.spec.ts"
+        ],
+        "timeout": 900000
+      },
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed",
+        "testIgnore": [],
+        "testMatch": [
+          "journey.spec.ts"
+        ],
+        "timeout": 900000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed",
+        "testIgnore": [],
+        "testMatch": "journey.spec.ts",
+        "timeout": 900000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5490/junyan/",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "video": "on",
+          "trace": "on",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "/workspace/.junyan-tools/node_modules/node/bin/node node_modules/vite/bin/vite.js preview --base /junyan/ --host 127.0.0.1 --port 5490 --strictPort",
+      "cwd": "/workspace/junyan-review-integration",
+      "url": "http://127.0.0.1:5490/junyan/",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "journey.spec.ts",
+      "file": "journey.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "normal-input all-map route with actual contextual anchors",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 900000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 169781,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "desktop {\"kind\":\"table-go-kitchen\",\"stillTable\":true}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"kitchen-pickup\",\"tray\":[\"bun\"]}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"edge\",\"from\":\"restaurant\",\"to\":\"town\",\"durationMs\":3679,\"world\":{\"version\":1,\"mapId\":\"town\",\"position\":{\"x\":34,\"y\":30.4},\"facing\":\"south\",\"returnPositions\":{\"restaurant\":{\"x\":12,\"y\":19.999500000000015,\"facing\":\"south\"}},\"activeActivity\":null,\"activeAnchorId\":null,\"life\":{\"version\":1,\"discoveries\":[],\"reactions\":[]}}}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"edge\",\"from\":\"town\",\"to\":\"courtyard\",\"durationMs\":9501,\"world\":{\"version\":1,\"mapId\":\"courtyard\",\"position\":{\"x\":23,\"y\":33.5},\"facing\":\"north\",\"returnPositions\":{\"restaurant\":{\"x\":12,\"y\":19.999500000000015,\"facing\":\"south\"},\"town\":{\"x\":44.86312203136012,\"y\":1.6729776657471827,\"facing\":\"north\"}},\"activeActivity\":null,\"activeAnchorId\":null,\"life\":{\"version\":1,\"discoveries\":[],\"reactions\":[]}}}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"edge\",\"from\":\"courtyard\",\"to\":\"residential-hall\",\"durationMs\":9183,\"world\":{\"version\":1,\"mapId\":\"residential-hall\",\"position\":{\"x\":27,\"y\":17.5},\"facing\":\"west\",\"returnPositions\":{\"restaurant\":{\"x\":12,\"y\":19.999500000000015,\"facing\":\"south\"},\"town\":{\"x\":44.86312203136012,\"y\":1.6729776657471827,\"facing\":\"north\"},\"courtyard\":{\"x\":22.691503870631355,\"y\":2.069245934616042,\"facing\":\"north\"}},\"activeActivity\":null,\"activeAnchorId\":null,\"life\":{\"version\":1,\"discoveries\":[],\"reactions\":[]}}}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"edge\",\"from\":\"residential-hall\",\"to\":\"residential-stairs\",\"durationMs\":5279,\"world\":{\"version\":1,\"mapId\":\"residential-stairs\",\"position\":{\"x\":11.5,\"y\":37},\"facing\":\"north\",\"returnPositions\":{\"restaurant\":{\"x\":12,\"y\":19.999500000000015,\"facing\":\"south\"},\"town\":{\"x\":44.86312203136012,\"y\":1.6729776657471827,\"facing\":\"north\"},\"courtyard\":{\"x\":22.691503870631355,\"y\":2.069245934616042,\"facing\":\"north\"},\"residential-hall\":{\"x\":16.251470367109114,\"y\":4.002940456855799,\"facing\":\"north\"}},\"activeActivity\":null,\"activeAnchorId\":null,\"life\":{\"version\":1,\"discoveries\":[],\"reactions\":[]}}}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"edge\",\"from\":\"residential-stairs\",\"to\":\"apartment\",\"durationMs\":7335,\"world\":{\"version\":1,\"mapId\":\"apartment\",\"position\":{\"x\":25,\"y\":20},\"facing\":\"west\",\"returnPositions\":{\"restaurant\":{\"x\":12,\"y\":19.999500000000015,\"facing\":\"south\"},\"town\":{\"x\":44.86312203136012,\"y\":1.6729776657471827,\"facing\":\"north\"},\"courtyard\":{\"x\":22.691503870631355,\"y\":2.069245934616042,\"facing\":\"north\"},\"residential-hall\":{\"x\":16.251470367109114,\"y\":4.002940456855799,\"facing\":\"north\"},\"residential-stairs\":{\"x\":18.92589435927405,\"y\":21.595684871385682,\"facing\":\"east\"}},\"activeActivity\":null,\"activeAnchorId\":null,\"life\":{\"version\":1,\"discoveries\":[],\"reactions\":[]}}}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"edge\",\"from\":\"apartment\",\"to\":\"residential-stairs\",\"durationMs\":830,\"world\":{\"version\":1,\"mapId\":\"residential-stairs\",\"position\":{\"x\":17.083499999999987,\"y\":21.5},\"facing\":\"east\",\"returnPositions\":{\"restaurant\":{\"x\":12,\"y\":19.999500000000015,\"facing\":\"south\"},\"town\":{\"x\":44.86312203136012,\"y\":1.6729776657471827,\"facing\":\"north\"},\"courtyard\":{\"x\":22.691503870631355,\"y\":2.069245934616042,\"facing\":\"north\"},\"residential-hall\":{\"x\":16.251470367109114,\"y\":4.002940456855799,\"facing\":\"north\"},\"residential-stairs\":{\"x\":18.92589435927405,\"y\":21.595684871385682,\"facing\":\"east\"},\"apartment\":{\"x\":26.92935908285322,\"y\":21.157615449711937,\"facing\":\"east\"}},\"activeActivity\":null,\"activeAnchorId\":null,\"life\":{\"version\":1,\"discoveries\":[],\"reactions\":[]}}}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"edge\",\"from\":\"residential-stairs\",\"to\":\"rooftop\",\"durationMs\":6629,\"world\":{\"version\":1,\"mapId\":\"rooftop\",\"position\":{\"x\":12.5,\"y\":29},\"facing\":\"east\",\"returnPositions\":{\"restaurant\":{\"x\":12,\"y\":19.999500000000015,\"facing\":\"south\"},\"town\":{\"x\":44.86312203136012,\"y\":1.6729776657471827,\"facing\":\"north\"},\"courtyard\":{\"x\":22.691503870631355,\"y\":2.069245934616042,\"facing\":\"north\"},\"residential-hall\":{\"x\":16.251470367109114,\"y\":4.002940456855799,\"facing\":\"north\"},\"residential-stairs\":{\"x\":4.020304651566904,\"y\":5.630076629047674,\"facing\":\"west\"},\"apartment\":{\"x\":26.92935908285322,\"y\":21.157615449711937,\"facing\":\"east\"}},\"activeActivity\":null,\"activeAnchorId\":null,\"life\":{\"version\":1,\"discoveries\":[],\"reactions\":[]}}}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"edge\",\"from\":\"rooftop\",\"to\":\"residential-stairs\",\"durationMs\":773,\"world\":{\"version\":1,\"mapId\":\"residential-stairs\",\"position\":{\"x\":6,\"y\":5.5},\"facing\":\"east\",\"returnPositions\":{\"restaurant\":{\"x\":12,\"y\":19.999500000000015,\"facing\":\"south\"},\"town\":{\"x\":44.86312203136012,\"y\":1.6729776657471827,\"facing\":\"north\"},\"courtyard\":{\"x\":22.691503870631355,\"y\":2.069245934616042,\"facing\":\"north\"},\"residential-hall\":{\"x\":16.251470367109114,\"y\":4.002940456855799,\"facing\":\"north\"},\"residential-stairs\":{\"x\":4.020304651566904,\"y\":5.630076629047674,\"facing\":\"west\"},\"apartment\":{\"x\":26.92935908285322,\"y\":21.157615449711937,\"facing\":\"east\"},\"rooftop\":{\"x\":10.500499999999997,\"y\":29,\"facing\":\"west\"}},\"activeActivity\":null,\"activeAnchorId\":null,\"life\":{\"version\":1,\"discoveries\":[],\"reactions\":[]}}}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"edge\",\"from\":\"residential-stairs\",\"to\":\"residential-hall\",\"durationMs\":13033,\"world\":{\"version\":1,\"mapId\":\"residential-hall\",\"position\":{\"x\":16,\"y\":6},\"facing\":\"south\",\"returnPositions\":{\"restaurant\":{\"x\":12,\"y\":19.999500000000015,\"facing\":\"south\"},\"town\":{\"x\":44.86312203136012,\"y\":1.6729776657471827,\"facing\":\"north\"},\"courtyard\":{\"x\":22.691503870631355,\"y\":2.069245934616042,\"facing\":\"north\"},\"residential-hall\":{\"x\":16.251470367109114,\"y\":4.002940456855799,\"facing\":\"north\"},\"residential-stairs\":{\"x\":11.05013802613365,\"y\":38.98364510741715,\"facing\":\"south\"},\"apartment\":{\"x\":26.92935908285322,\"y\":21.157615449711937,\"facing\":\"east\"},\"rooftop\":{\"x\":10.500499999999997,\"y\":29,\"facing\":\"west\"}},\"activeActivity\":null,\"activeAnchorId\":null,\"life\":{\"version\":1,\"discoveries\":[],\"reactions\":[]}}}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"edge\",\"from\":\"residential-hall\",\"to\":\"town\",\"durationMs\":4655,\"world\":{\"version\":1,\"mapId\":\"town\",\"position\":{\"x\":11.5,\"y\":23.5},\"facing\":\"south\",\"returnPositions\":{\"restaurant\":{\"x\":12,\"y\":19.999500000000015,\"facing\":\"south\"},\"town\":{\"x\":44.86312203136012,\"y\":1.6729776657471827,\"facing\":\"north\"},\"courtyard\":{\"x\":22.691503870631355,\"y\":2.069245934616042,\"facing\":\"north\"},\"residential-hall\":{\"x\":16,\"y\":22.91699999999998,\"facing\":\"south\"},\"residential-stairs\":{\"x\":11.05013802613365,\"y\":38.98364510741715,\"facing\":\"south\"},\"apartment\":{\"x\":26.92935908285322,\"y\":21.157615449711937,\"facing\":\"east\"},\"rooftop\":{\"x\":10.500499999999997,\"y\":29,\"facing\":\"west\"}},\"activeActivity\":null,\"activeAnchorId\":null,\"life\":{\"version\":1,\"discoveries\":[],\"reactions\":[]}}}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"edge\",\"from\":\"town\",\"to\":\"workshop\",\"durationMs\":17761,\"world\":{\"version\":1,\"mapId\":\"workshop\",\"position\":{\"x\":15,\"y\":25},\"facing\":\"north\",\"returnPositions\":{\"restaurant\":{\"x\":12,\"y\":19.999500000000015,\"facing\":\"south\"},\"town\":{\"x\":72.52361032496914,\"y\":30.101060710141056,\"facing\":\"east\"},\"courtyard\":{\"x\":22.691503870631355,\"y\":2.069245934616042,\"facing\":\"north\"},\"residential-hall\":{\"x\":16,\"y\":22.91699999999998,\"facing\":\"south\"},\"residential-stairs\":{\"x\":11.05013802613365,\"y\":38.98364510741715,\"facing\":\"south\"},\"apartment\":{\"x\":26.92935908285322,\"y\":21.157615449711937,\"facing\":\"east\"},\"rooftop\":{\"x\":10.500499999999997,\"y\":29,\"facing\":\"west\"}},\"activeActivity\":null,\"activeAnchorId\":null,\"life\":{\"version\":1,\"discoveries\":[],\"reactions\":[]}}}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"edge\",\"from\":\"workshop\",\"to\":\"town\",\"durationMs\":544,\"world\":{\"version\":1,\"mapId\":\"town\",\"position\":{\"x\":73.16729211305861,\"y\":31.39304259835171},\"facing\":\"west\",\"returnPositions\":{\"restaurant\":{\"x\":12,\"y\":19.999500000000015,\"facing\":\"south\"},\"town\":{\"x\":72.52361032496914,\"y\":30.101060710141056,\"facing\":\"east\"},\"courtyard\":{\"x\":22.691503870631355,\"y\":2.069245934616042,\"facing\":\"north\"},\"residential-hall\":{\"x\":16,\"y\":22.91699999999998,\"facing\":\"south\"},\"residential-stairs\":{\"x\":11.05013802613365,\"y\":38.98364510741715,\"facing\":\"south\"},\"apartment\":{\"x\":26.92935908285322,\"y\":21.157615449711937,\"facing\":\"east\"},\"rooftop\":{\"x\":10.500499999999997,\"y\":29,\"facing\":\"west\"},\"workshop\":{\"x\":15,\"y\":25.95000000000001,\"facing\":\"south\"}},\"activeActivity\":null,\"activeAnchorId\":null,\"life\":{\"version\":1,\"discoveries\":[],\"reactions\":[]}}}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"edge\",\"from\":\"town\",\"to\":\"riverbank\",\"durationMs\":8705,\"world\":{\"version\":1,\"mapId\":\"riverbank\",\"position\":{\"x\":6,\"y\":75},\"facing\":\"north\",\"returnPositions\":{\"restaurant\":{\"x\":12,\"y\":19.999500000000015,\"facing\":\"south\"},\"town\":{\"x\":78.35200778622055,\"y\":47.30727442372475,\"facing\":\"east\"},\"courtyard\":{\"x\":22.691503870631355,\"y\":2.069245934616042,\"facing\":\"north\"},\"residential-hall\":{\"x\":16,\"y\":22.91699999999998,\"facing\":\"south\"},\"residential-stairs\":{\"x\":11.05013802613365,\"y\":38.98364510741715,\"facing\":\"south\"},\"apartment\":{\"x\":26.92935908285322,\"y\":21.157615449711937,\"facing\":\"east\"},\"rooftop\":{\"x\":10.500499999999997,\"y\":29,\"facing\":\"west\"},\"workshop\":{\"x\":15,\"y\":25.95000000000001,\"facing\":\"south\"}},\"activeActivity\":null,\"activeAnchorId\":null,\"life\":{\"version\":1,\"discoveries\":[],\"reactions\":[]}}}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"edge\",\"from\":\"riverbank\",\"to\":\"park\",\"durationMs\":19230,\"world\":{\"version\":1,\"mapId\":\"park\",\"position\":{\"x\":78,\"y\":10},\"facing\":\"west\",\"returnPositions\":{\"restaurant\":{\"x\":12,\"y\":19.999500000000015,\"facing\":\"south\"},\"town\":{\"x\":78.35200778622055,\"y\":47.30727442372475,\"facing\":\"east\"},\"courtyard\":{\"x\":22.691503870631355,\"y\":2.069245934616042,\"facing\":\"north\"},\"residential-hall\":{\"x\":16,\"y\":22.91699999999998,\"facing\":\"south\"},\"residential-stairs\":{\"x\":11.05013802613365,\"y\":38.98364510741715,\"facing\":\"south\"},\"apartment\":{\"x\":26.92935908285322,\"y\":21.157615449711937,\"facing\":\"east\"},\"rooftop\":{\"x\":10.500499999999997,\"y\":29,\"facing\":\"west\"},\"workshop\":{\"x\":15,\"y\":25.95000000000001,\"facing\":\"south\"},\"riverbank\":{\"x\":2.0251265812473207,\"y\":10.525125950446755,\"facing\":\"north\"}},\"activeActivity\":null,\"activeAnchorId\":null,\"life\":{\"version\":1,\"discoveries\":[],\"reactions\":[]}}}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"edge\",\"from\":\"park\",\"to\":\"courtyard\",\"durationMs\":23539,\"world\":{\"version\":1,\"mapId\":\"courtyard\",\"position\":{\"x\":43,\"y\":12},\"facing\":\"west\",\"returnPositions\":{\"restaurant\":{\"x\":12,\"y\":19.999500000000015,\"facing\":\"south\"},\"town\":{\"x\":78.35200778622055,\"y\":47.30727442372475,\"facing\":\"east\"},\"courtyard\":{\"x\":22.691503870631355,\"y\":2.069245934616042,\"facing\":\"north\"},\"residential-hall\":{\"x\":16,\"y\":22.91699999999998,\"facing\":\"south\"},\"residential-stairs\":{\"x\":11.05013802613365,\"y\":38.98364510741715,\"facing\":\"south\"},\"apartment\":{\"x\":26.92935908285322,\"y\":21.157615449711937,\"facing\":\"east\"},\"rooftop\":{\"x\":10.500499999999997,\"y\":29,\"facing\":\"west\"},\"workshop\":{\"x\":15,\"y\":25.95000000000001,\"facing\":\"south\"},\"riverbank\":{\"x\":2.0251265812473207,\"y\":10.525125950446755,\"facing\":\"north\"},\"park\":{\"x\":2.0360577902737798,\"y\":28.83071887918786,\"facing\":\"west\"}},\"activeActivity\":null,\"activeAnchorId\":null,\"life\":{\"version\":1,\"discoveries\":[],\"reactions\":[]}}}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"edge\",\"from\":\"courtyard\",\"to\":\"town\",\"durationMs\":9068,\"world\":{\"version\":1,\"mapId\":\"town\",\"position\":{\"x\":45,\"y\":3.3},\"facing\":\"south\",\"returnPositions\":{\"restaurant\":{\"x\":12,\"y\":19.999500000000015,\"facing\":\"south\"},\"town\":{\"x\":78.35200778622055,\"y\":47.30727442372475,\"facing\":\"east\"},\"courtyard\":{\"x\":23.379427299181714,\"y\":35.94045495127109,\"facing\":\"south\"},\"residential-hall\":{\"x\":16,\"y\":22.91699999999998,\"facing\":\"south\"},\"residential-stairs\":{\"x\":11.05013802613365,\"y\":38.98364510741715,\"facing\":\"south\"},\"apartment\":{\"x\":26.92935908285322,\"y\":21.157615449711937,\"facing\":\"east\"},\"rooftop\":{\"x\":10.500499999999997,\"y\":29,\"facing\":\"west\"},\"workshop\":{\"x\":15,\"y\":25.95000000000001,\"facing\":\"south\"},\"riverbank\":{\"x\":2.0251265812473207,\"y\":10.525125950446755,\"facing\":\"north\"},\"park\":{\"x\":2.0360577902737798,\"y\":28.83071887918786,\"facing\":\"west\"}},\"activeActivity\":null,\"activeAnchorId\":null,\"life\":{\"version\":1,\"discoveries\":[],\"reactions\":[]}}}\n"
+                    },
+                    {
+                      "text": "desktop {\"kind\":\"edge\",\"from\":\"town\",\"to\":\"restaurant\",\"durationMs\":9159,\"world\":{\"version\":1,\"mapId\":\"restaurant\",\"position\":{\"x\":12,\"y\":18},\"facing\":\"north\",\"returnPositions\":{\"restaurant\":{\"x\":12,\"y\":19.999500000000015,\"facing\":\"south\"},\"town\":{\"x\":34.33828003389374,\"y\":29.20890573516351,\"facing\":\"north\"},\"courtyard\":{\"x\":23.379427299181714,\"y\":35.94045495127109,\"facing\":\"south\"},\"residential-hall\":{\"x\":16,\"y\":22.91699999999998,\"facing\":\"south\"},\"residential-stairs\":{\"x\":11.05013802613365,\"y\":38.98364510741715,\"facing\":\"south\"},\"apartment\":{\"x\":26.92935908285322,\"y\":21.157615449711937,\"facing\":\"east\"},\"rooftop\":{\"x\":10.500499999999997,\"y\":29,\"facing\":\"west\"},\"workshop\":{\"x\":15,\"y\":25.95000000000001,\"facing\":\"south\"},\"riverbank\":{\"x\":2.0251265812473207,\"y\":10.525125950446755,\"facing\":\"north\"},\"park\":{\"x\":2.0360577902737798,\"y\":28.83071887918786,\"facing\":\"west\"}},\"activeActivity\":null,\"activeAnchorId\":null,\"life\":{\"version\":1,\"discoveries\":[],\"reactions\":[]}}}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T00:20:24.780Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/results/journey-normal-input-all-m-237ab-h-actual-contextual-anchors-desktop/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/results/journey-normal-input-all-m-237ab-h-actual-contextual-anchors-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bf222bad70f76648f722-62e8e217e57b77c80e83",
+          "file": "journey.spec.ts",
+          "line": 32,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-06T00:20:23.844Z",
+    "duration": 177898.102,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

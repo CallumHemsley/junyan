@@ -1,0 +1,2 @@
+{"mode":"apartment-profile","viewport":"phone","scenario":"apartment","kind":"idle","iteration":0,"frames":600,"p95":16.700000000000728,"max":16.80000000000291,"longtasks":0,"positionBefore":{"x":17.5,"y":13.5},"positionAfter":{"x":17.5,"y":13.5}}
+{"mode":"apartment-profile","viewport":"phone","scenario":"apartment","kind":"movement","iteration":0,"frames":607,"p95":16.700000000000728,"max":16.80000000000291,"longtasks":0,"positionBefore":{"x":17.5,"y":13.5},"positionAfter":{"x":17.44060303038033,"y":13.559396969619682}}

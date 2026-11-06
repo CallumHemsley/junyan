@@ -1,0 +1,656 @@
+{
+  "browser": "155.0.8059.79",
+  "viewport": {
+    "width": 390,
+    "height": 664
+  },
+  "method": "Real mouse clicks mapped through 390x312 canvas; exact production findPath in isolated harness; 1 warmup then 7 forward/reverse alternating runs. Handler-to-frame includes rendering and validation, not event scheduling before handler. No CPU throttling; not physical phone performance.",
+  "errors": [],
+  "rows": [
+    {
+      "round": 0,
+      "id": "far-river-detour",
+      "to": {
+        "x": 76.51282051282051,
+        "y": 47.38461538461539
+      },
+      "searchMs": 148.39999999990687,
+      "pathPoints": 4,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 150.19999999995343
+    },
+    {
+      "round": 0,
+      "id": "courtyard-detour",
+      "to": {
+        "x": 44.92307692307692,
+        "y": 3.282051282051282
+      },
+      "searchMs": 108.69999999995343,
+      "pathPoints": 2,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 110
+    },
+    {
+      "round": 0,
+      "id": "tea-terrace-detour",
+      "to": {
+        "x": 53.94871794871795,
+        "y": 14.974358974358974
+      },
+      "searchMs": 108.5999999998603,
+      "pathPoints": 5,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 109.79999999981374
+    },
+    {
+      "round": 0,
+      "id": "far-workshop-direct",
+      "to": {
+        "x": 73.23076923076923,
+        "y": 31.384615384615383
+      },
+      "searchMs": 1,
+      "pathPoints": 1,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 2.0999999998603016
+    },
+    {
+      "round": 0,
+      "id": "blocked-building",
+      "to": {
+        "x": 9.846153846153847,
+        "y": 9.846153846153847
+      },
+      "searchMs": 0.10000000009313226,
+      "pathPoints": 0,
+      "endpointValid": false,
+      "pathValid": true,
+      "endsAtTarget": false,
+      "clickHandlerToFrameMs": 0.4000000001396984
+    },
+    {
+      "round": 1,
+      "id": "blocked-building",
+      "to": {
+        "x": 9.846153846153847,
+        "y": 9.846153846153847
+      },
+      "searchMs": 0,
+      "pathPoints": 0,
+      "endpointValid": false,
+      "pathValid": true,
+      "endsAtTarget": false,
+      "clickHandlerToFrameMs": 0.39999999990686774
+    },
+    {
+      "round": 1,
+      "id": "far-workshop-direct",
+      "to": {
+        "x": 73.23076923076923,
+        "y": 31.384615384615383
+      },
+      "searchMs": 0.6999999999534339,
+      "pathPoints": 1,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 2.0999999998603016
+    },
+    {
+      "round": 1,
+      "id": "tea-terrace-detour",
+      "to": {
+        "x": 53.94871794871795,
+        "y": 14.974358974358974
+      },
+      "searchMs": 103.20000000018626,
+      "pathPoints": 5,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 104.5
+    },
+    {
+      "round": 1,
+      "id": "courtyard-detour",
+      "to": {
+        "x": 44.92307692307692,
+        "y": 3.282051282051282
+      },
+      "searchMs": 135.39999999990687,
+      "pathPoints": 2,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 136.5999999998603
+    },
+    {
+      "round": 1,
+      "id": "far-river-detour",
+      "to": {
+        "x": 76.51282051282051,
+        "y": 47.38461538461539
+      },
+      "searchMs": 198,
+      "pathPoints": 4,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 199.5
+    },
+    {
+      "round": 2,
+      "id": "far-river-detour",
+      "to": {
+        "x": 76.51282051282051,
+        "y": 47.38461538461539
+      },
+      "searchMs": 144.89999999990687,
+      "pathPoints": 4,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 146.69999999995343
+    },
+    {
+      "round": 2,
+      "id": "courtyard-detour",
+      "to": {
+        "x": 44.92307692307692,
+        "y": 3.282051282051282
+      },
+      "searchMs": 103,
+      "pathPoints": 2,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 104.0999999998603
+    },
+    {
+      "round": 2,
+      "id": "tea-terrace-detour",
+      "to": {
+        "x": 53.94871794871795,
+        "y": 14.974358974358974
+      },
+      "searchMs": 107.30000000004657,
+      "pathPoints": 5,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 108.5999999998603
+    },
+    {
+      "round": 2,
+      "id": "far-workshop-direct",
+      "to": {
+        "x": 73.23076923076923,
+        "y": 31.384615384615383
+      },
+      "searchMs": 0.6999999999534339,
+      "pathPoints": 1,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 1.7999999998137355
+    },
+    {
+      "round": 2,
+      "id": "blocked-building",
+      "to": {
+        "x": 9.846153846153847,
+        "y": 9.846153846153847
+      },
+      "searchMs": 0,
+      "pathPoints": 0,
+      "endpointValid": false,
+      "pathValid": true,
+      "endsAtTarget": false,
+      "clickHandlerToFrameMs": 0.4000000001396984
+    },
+    {
+      "round": 3,
+      "id": "blocked-building",
+      "to": {
+        "x": 9.846153846153847,
+        "y": 9.846153846153847
+      },
+      "searchMs": 0,
+      "pathPoints": 0,
+      "endpointValid": false,
+      "pathValid": true,
+      "endsAtTarget": false,
+      "clickHandlerToFrameMs": 0.30000000004656613
+    },
+    {
+      "round": 3,
+      "id": "far-workshop-direct",
+      "to": {
+        "x": 73.23076923076923,
+        "y": 31.384615384615383
+      },
+      "searchMs": 0.5,
+      "pathPoints": 1,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 1.5999999998603016
+    },
+    {
+      "round": 3,
+      "id": "tea-terrace-detour",
+      "to": {
+        "x": 53.94871794871795,
+        "y": 14.974358974358974
+      },
+      "searchMs": 108.4000000001397,
+      "pathPoints": 5,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 110.70000000018626
+    },
+    {
+      "round": 3,
+      "id": "courtyard-detour",
+      "to": {
+        "x": 44.92307692307692,
+        "y": 3.282051282051282
+      },
+      "searchMs": 105.4000000001397,
+      "pathPoints": 2,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 106.80000000004657
+    },
+    {
+      "round": 3,
+      "id": "far-river-detour",
+      "to": {
+        "x": 76.51282051282051,
+        "y": 47.38461538461539
+      },
+      "searchMs": 143.89999999990687,
+      "pathPoints": 4,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 145.39999999990687
+    },
+    {
+      "round": 4,
+      "id": "far-river-detour",
+      "to": {
+        "x": 76.51282051282051,
+        "y": 47.38461538461539
+      },
+      "searchMs": 144.10000000009313,
+      "pathPoints": 4,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 145.60000000009313
+    },
+    {
+      "round": 4,
+      "id": "courtyard-detour",
+      "to": {
+        "x": 44.92307692307692,
+        "y": 3.282051282051282
+      },
+      "searchMs": 105.5,
+      "pathPoints": 2,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 106.69999999995343
+    },
+    {
+      "round": 4,
+      "id": "tea-terrace-detour",
+      "to": {
+        "x": 53.94871794871795,
+        "y": 14.974358974358974
+      },
+      "searchMs": 108.80000000004657,
+      "pathPoints": 5,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 110
+    },
+    {
+      "round": 4,
+      "id": "far-workshop-direct",
+      "to": {
+        "x": 73.23076923076923,
+        "y": 31.384615384615383
+      },
+      "searchMs": 0.7000000001862645,
+      "pathPoints": 1,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 1.8000000000465661
+    },
+    {
+      "round": 4,
+      "id": "blocked-building",
+      "to": {
+        "x": 9.846153846153847,
+        "y": 9.846153846153847
+      },
+      "searchMs": 0,
+      "pathPoints": 0,
+      "endpointValid": false,
+      "pathValid": true,
+      "endsAtTarget": false,
+      "clickHandlerToFrameMs": 0.39999999990686774
+    },
+    {
+      "round": 5,
+      "id": "blocked-building",
+      "to": {
+        "x": 9.846153846153847,
+        "y": 9.846153846153847
+      },
+      "searchMs": 0,
+      "pathPoints": 0,
+      "endpointValid": false,
+      "pathValid": true,
+      "endsAtTarget": false,
+      "clickHandlerToFrameMs": 0.19999999995343387
+    },
+    {
+      "round": 5,
+      "id": "far-workshop-direct",
+      "to": {
+        "x": 73.23076923076923,
+        "y": 31.384615384615383
+      },
+      "searchMs": 0.8000000000465661,
+      "pathPoints": 1,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 2.300000000046566
+    },
+    {
+      "round": 5,
+      "id": "tea-terrace-detour",
+      "to": {
+        "x": 53.94871794871795,
+        "y": 14.974358974358974
+      },
+      "searchMs": 155.30000000004657,
+      "pathPoints": 5,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 156.60000000009313
+    },
+    {
+      "round": 5,
+      "id": "courtyard-detour",
+      "to": {
+        "x": 44.92307692307692,
+        "y": 3.282051282051282
+      },
+      "searchMs": 110.5999999998603,
+      "pathPoints": 2,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 111.89999999990687
+    },
+    {
+      "round": 5,
+      "id": "far-river-detour",
+      "to": {
+        "x": 76.51282051282051,
+        "y": 47.38461538461539
+      },
+      "searchMs": 145.80000000004657,
+      "pathPoints": 4,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 147.39999999990687
+    },
+    {
+      "round": 6,
+      "id": "far-river-detour",
+      "to": {
+        "x": 76.51282051282051,
+        "y": 47.38461538461539
+      },
+      "searchMs": 142.29999999981374,
+      "pathPoints": 4,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 144.0999999998603
+    },
+    {
+      "round": 6,
+      "id": "courtyard-detour",
+      "to": {
+        "x": 44.92307692307692,
+        "y": 3.282051282051282
+      },
+      "searchMs": 104.10000000009313,
+      "pathPoints": 2,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 105.5
+    },
+    {
+      "round": 6,
+      "id": "tea-terrace-detour",
+      "to": {
+        "x": 53.94871794871795,
+        "y": 14.974358974358974
+      },
+      "searchMs": 105.5,
+      "pathPoints": 5,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 106.89999999990687
+    },
+    {
+      "round": 6,
+      "id": "far-workshop-direct",
+      "to": {
+        "x": 73.23076923076923,
+        "y": 31.384615384615383
+      },
+      "searchMs": 0.6999999999534339,
+      "pathPoints": 1,
+      "endpointValid": true,
+      "pathValid": true,
+      "endsAtTarget": true,
+      "clickHandlerToFrameMs": 1.8999999999068677
+    },
+    {
+      "round": 6,
+      "id": "blocked-building",
+      "to": {
+        "x": 9.846153846153847,
+        "y": 9.846153846153847
+      },
+      "searchMs": 0,
+      "pathPoints": 0,
+      "endpointValid": false,
+      "pathValid": true,
+      "endsAtTarget": false,
+      "clickHandlerToFrameMs": 0.5
+    }
+  ],
+  "summary": [
+    {
+      "id": "far-river-detour",
+      "n": 7,
+      "medianSearchMs": 144.89999999990687,
+      "minSearchMs": 142.29999999981374,
+      "maxSearchMs": 198,
+      "medianHandlerToFrameMs": 146.69999999995343,
+      "minHandlerToFrameMs": 144.0999999998603,
+      "maxHandlerToFrameMs": 199.5,
+      "errors": 0
+    },
+    {
+      "id": "courtyard-detour",
+      "n": 7,
+      "medianSearchMs": 105.5,
+      "minSearchMs": 103,
+      "maxSearchMs": 135.39999999990687,
+      "medianHandlerToFrameMs": 106.80000000004657,
+      "minHandlerToFrameMs": 104.0999999998603,
+      "maxHandlerToFrameMs": 136.5999999998603,
+      "errors": 0
+    },
+    {
+      "id": "tea-terrace-detour",
+      "n": 7,
+      "medianSearchMs": 108.4000000001397,
+      "minSearchMs": 103.20000000018626,
+      "maxSearchMs": 155.30000000004657,
+      "medianHandlerToFrameMs": 109.79999999981374,
+      "minHandlerToFrameMs": 104.5,
+      "maxHandlerToFrameMs": 156.60000000009313,
+      "errors": 0
+    },
+    {
+      "id": "far-workshop-direct",
+      "n": 7,
+      "medianSearchMs": 0.6999999999534339,
+      "minSearchMs": 0.5,
+      "maxSearchMs": 1,
+      "medianHandlerToFrameMs": 1.8999999999068677,
+      "minHandlerToFrameMs": 1.5999999998603016,
+      "maxHandlerToFrameMs": 2.300000000046566,
+      "errors": 0
+    },
+    {
+      "id": "blocked-building",
+      "n": 7,
+      "medianSearchMs": 0,
+      "minSearchMs": 0,
+      "maxSearchMs": 0.10000000009313226,
+      "medianHandlerToFrameMs": 0.39999999990686774,
+      "minHandlerToFrameMs": 0.19999999995343387,
+      "maxHandlerToFrameMs": 0.5,
+      "errors": 0
+    }
+  ],
+  "longTasks": [
+    {
+      "start": 393.10000000009313,
+      "duration": 139
+    },
+    {
+      "start": 640.5,
+      "duration": 122
+    },
+    {
+      "start": 870.3000000000466,
+      "duration": 163
+    },
+    {
+      "start": 1139.8000000000466,
+      "duration": 150
+    },
+    {
+      "start": 1397,
+      "duration": 110
+    },
+    {
+      "start": 1615.6999999999534,
+      "duration": 110
+    },
+    {
+      "start": 2264.5,
+      "duration": 104
+    },
+    {
+      "start": 2476,
+      "duration": 136
+    },
+    {
+      "start": 2720.5,
+      "duration": 199
+    },
+    {
+      "start": 3029.1999999999534,
+      "duration": 146
+    },
+    {
+      "start": 3283.5,
+      "duration": 104
+    },
+    {
+      "start": 3499.1999999999534,
+      "duration": 108
+    },
+    {
+      "start": 4140,
+      "duration": 110
+    },
+    {
+      "start": 4358,
+      "duration": 106
+    },
+    {
+      "start": 4571.199999999953,
+      "duration": 145
+    },
+    {
+      "start": 4822.300000000047,
+      "duration": 145
+    },
+    {
+      "start": 5072.800000000047,
+      "duration": 106
+    },
+    {
+      "start": 5285.300000000047,
+      "duration": 110
+    },
+    {
+      "start": 5925.800000000047,
+      "duration": 156
+    },
+    {
+      "start": 6192.100000000093,
+      "duration": 112
+    },
+    {
+      "start": 6410.199999999953,
+      "duration": 147
+    },
+    {
+      "start": 6663.600000000093,
+      "duration": 143
+    },
+    {
+      "start": 6913,
+      "duration": 105
+    },
+    {
+      "start": 7124.5,
+      "duration": 106
+    }
+  ]
+}

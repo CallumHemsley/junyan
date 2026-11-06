@@ -1,0 +1,124 @@
+{
+  "before": {
+    "version": 1,
+    "id": "edit-room",
+    "bounds": {
+      "width": 10,
+      "height": 8
+    },
+    "defaultSpawn": {
+      "x": 1,
+      "y": 4,
+      "facing": "east"
+    },
+    "walkable": [
+      {
+        "x": 0,
+        "y": 0,
+        "width": 10,
+        "height": 8
+      }
+    ],
+    "colliders": [],
+    "anchors": [],
+    "exits": [
+      {
+        "id": "out",
+        "rect": {
+          "x": 0.5,
+          "y": 3,
+          "width": 1,
+          "height": 2
+        },
+        "kind": "door",
+        "targetMapId": "outside",
+        "targetEntranceId": "in"
+      }
+    ],
+    "entrances": [],
+    "occluders": [],
+    "terrain": [],
+    "props": [],
+    "palette": {},
+    "npcHooks": [],
+    "landmarks": []
+  },
+  "after": {
+    "version": 1,
+    "id": "edit-room",
+    "bounds": {
+      "width": 10,
+      "height": 8
+    },
+    "defaultSpawn": {
+      "x": 1,
+      "y": 4,
+      "facing": "east"
+    },
+    "walkable": [
+      {
+        "x": 0,
+        "y": 0,
+        "width": 10,
+        "height": 8
+      }
+    ],
+    "colliders": [
+      {
+        "id": "cover-exit",
+        "rect": {
+          "x": 0,
+          "y": 2,
+          "width": 3,
+          "height": 4
+        }
+      }
+    ],
+    "anchors": [],
+    "exits": [
+      {
+        "id": "out",
+        "rect": {
+          "x": 0.5,
+          "y": 3,
+          "width": 1,
+          "height": 2
+        },
+        "kind": "door",
+        "targetMapId": "outside",
+        "targetEntranceId": "in"
+      }
+    ],
+    "entrances": [],
+    "occluders": [],
+    "terrain": [],
+    "props": [],
+    "palette": {},
+    "npcHooks": [],
+    "landmarks": []
+  },
+  "position": {
+    "x": 8,
+    "y": 4
+  },
+  "validWorld": {
+    "version": 1,
+    "mapId": "edit-room",
+    "position": {
+      "x": 8,
+      "y": 4
+    },
+    "facing": "east",
+    "returnPositions": {},
+    "activeActivity": null,
+    "activeAnchorId": null,
+    "life": {
+      "version": 1,
+      "elapsedMs": 4321,
+      "discoveries": [],
+      "reactions": [],
+      "pauses": [],
+      "serviceDepartures": []
+    }
+  }
+}

@@ -1,0 +1,2 @@
+{"mode":"cadence-diagnostic","viewport":"phone","scenario":"apartment","kind":"idle","iteration":0,"frames":599,"p95":16.799999999999272,"max":16.80000000000291,"longtasks":0,"positionBefore":{"x":17.5,"y":13.5},"positionAfter":{"x":17.5,"y":13.5}}
+{"mode":"cadence-diagnostic","viewport":"phone","scenario":"apartment","kind":"movement","iteration":0,"frames":606,"p95":16.799999999999272,"max":16.80000000000291,"longtasks":0,"positionBefore":{"x":17.5,"y":13.5},"positionAfter":{"x":17.324283964875125,"y":13.675716035124871}}

@@ -1,0 +1,673 @@
+{
+  "config": {
+    "argv": [
+      "/workspace/.junyan-tools/node_modules/node/bin/node",
+      "/workspace/junyan/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "docs/evidence/0088/integrated-e02a747/journey.config.ts"
+    ],
+    "configFile": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey.config.ts",
+    "rootDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "testIgnore": [],
+        "testMatch": [
+          "journey.spec.ts"
+        ],
+        "timeout": 900000
+      },
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "testIgnore": [],
+        "testMatch": [
+          "journey.spec.ts"
+        ],
+        "timeout": 900000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "testIgnore": [],
+        "testMatch": "journey.spec.ts",
+        "timeout": 900000,
+        "use": {
+          "actionTimeout": 15000,
+          "navigationTimeout": 15000,
+          "baseURL": "http://127.0.0.1:5490/junyan/",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "video": "on",
+          "trace": "on",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "testIgnore": [],
+        "testMatch": "journey.spec.ts",
+        "timeout": 900000,
+        "use": {
+          "actionTimeout": 15000,
+          "navigationTimeout": 15000,
+          "baseURL": "http://127.0.0.1:5490/junyan/",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "video": "on",
+          "trace": "on",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "phone"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "journey-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "/workspace/.junyan-tools/node_modules/node/bin/node node_modules/vite/bin/vite.js preview --base /junyan/ --host 127.0.0.1 --port 5490 --strictPort",
+      "cwd": "/workspace/junyan-review-integration",
+      "url": "http://127.0.0.1:5490/junyan/",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "journey.spec.ts",
+      "file": "journey.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "ordinary connected-world service, all ten places, saved activities and offline reload",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 900000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 249775,
+                  "error": {
+                    "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /第2行第3格/ })\u001b[22m\n",
+                    "stack": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /第2行第3格/ })\u001b[22m\n\n    at /workspace/junyan/docs/evidence/0088/integrated-e02a747/journey.spec.ts:87:192",
+                    "location": {
+                      "file": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey.spec.ts",
+                      "column": 192,
+                      "line": 87
+                    },
+                    "snippet": "  85 |   await expect.poll(async()=> (await game(page)).neighbourhood.cats.story.node).toBe('reunited');await page.getByRole('button',{name:'收下猫靠垫',exact:true}).click();await closeActivity(page);await note('cat-world-reunited');\n  86 |   await travel(page,['residential-hall','residential-stairs','apartment'],note);await enter(page,'apartment.furnish');await page.getByRole('button',{name:'收下',exact:true}).click();const original=(await game(page)).neighbourhood.apartment.placements;\n> 87 |   await page.locator('.apartment-items').getByRole('button',{name:/桌子/}).click();await page.getByRole('button',{name:'选格子',exact:true}).click();await page.getByRole('button',{name:/第2行第3格/}).click();await page.getByRole('button',{name:'放这里',exact:true}).click();\n     |                                                                                                                                                                                                ^\n  88 |   await expect.poll(async()=> (await game(page)).neighbourhood.apartment.placements.find((p:any)=>p.id==='table')).toMatchObject({x:2,y:1});await note('furnished');await page.getByRole('button',{name:'撤回',exact:true}).click();await expect.poll(async()=> (await game(page)).neighbourhood.apartment.placements).toEqual(original);\n  89 |   const beforeReload=await game(page);await page.reload();await expect(page.locator('.world-context[data-target=\"apartment\"]')).toBeVisible();await expect.poll(async()=> (await game(page)).neighbourhood).toEqual(beforeReload.neighbourhood);expect((await game(page)).world.position).toEqual(beforeReload.world.position);expect((await game(page)).world.activeAnchorId).toBe('apartment.furnish');await note('undo-reloaded');await closeActivity(page);\n  90 |   await travel(page,['residential-stairs','rooftop'],note);await enter(page,'rooftop.garden');await expect(page.getByTestId('garden-view')).toBeVisible();await page.locator(`.garden-tool-button[aria-label=\"${gardenName('tidy')}\"]`).click();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey.spec.ts",
+                        "column": 192,
+                        "line": 87
+                      },
+                      "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /第2行第3格/ })\u001b[22m\n\n\n  85 |   await expect.poll(async()=> (await game(page)).neighbourhood.cats.story.node).toBe('reunited');await page.getByRole('button',{name:'收下猫靠垫',exact:true}).click();await closeActivity(page);await note('cat-world-reunited');\n  86 |   await travel(page,['residential-hall','residential-stairs','apartment'],note);await enter(page,'apartment.furnish');await page.getByRole('button',{name:'收下',exact:true}).click();const original=(await game(page)).neighbourhood.apartment.placements;\n> 87 |   await page.locator('.apartment-items').getByRole('button',{name:/桌子/}).click();await page.getByRole('button',{name:'选格子',exact:true}).click();await page.getByRole('button',{name:/第2行第3格/}).click();await page.getByRole('button',{name:'放这里',exact:true}).click();\n     |                                                                                                                                                                                                ^\n  88 |   await expect.poll(async()=> (await game(page)).neighbourhood.apartment.placements.find((p:any)=>p.id==='table')).toMatchObject({x:2,y:1});await note('furnished');await page.getByRole('button',{name:'撤回',exact:true}).click();await expect.poll(async()=> (await game(page)).neighbourhood.apartment.placements).toEqual(original);\n  89 |   const beforeReload=await game(page);await page.reload();await expect(page.locator('.world-context[data-target=\"apartment\"]')).toBeVisible();await expect.poll(async()=> (await game(page)).neighbourhood).toEqual(beforeReload.neighbourhood);expect((await game(page)).world.position).toEqual(beforeReload.world.position);expect((await game(page)).world.activeAnchorId).toBe('apartment.furnish');await note('undo-reloaded');await closeActivity(page);\n  90 |   await travel(page,['residential-stairs','rooftop'],note);await enter(page,'rooftop.garden');await expect(page.getByTestId('garden-view')).toBeVisible();await page.locator(`.garden-tool-button[aria-label=\"${gardenName('tidy')}\"]`).click();\n    at /workspace/junyan/docs/evidence/0088/integrated-e02a747/journey.spec.ts:87:192"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "desktop opening\n"
+                    },
+                    {
+                      "text": "desktop tray\n"
+                    },
+                    {
+                      "text": "desktop receipt-seated-1\n"
+                    },
+                    {
+                      "text": "desktop released-1\n"
+                    },
+                    {
+                      "text": "desktop receipt-seated-2\n"
+                    },
+                    {
+                      "text": "desktop released-2\n"
+                    },
+                    {
+                      "text": "desktop receipt-seated-3\n"
+                    },
+                    {
+                      "text": "desktop released-3\n"
+                    },
+                    {
+                      "text": "desktop journal\n"
+                    },
+                    {
+                      "text": "desktop route-restaurant-to-town\n"
+                    },
+                    {
+                      "text": "desktop route-town-to-courtyard\n"
+                    },
+                    {
+                      "text": "desktop route-courtyard-to-residential-hall\n"
+                    },
+                    {
+                      "text": "desktop route-residential-hall-to-residential-stairs\n"
+                    },
+                    {
+                      "text": "desktop route-residential-stairs-to-apartment\n"
+                    },
+                    {
+                      "text": "desktop route-apartment-to-residential-stairs\n"
+                    },
+                    {
+                      "text": "desktop route-residential-stairs-to-rooftop\n"
+                    },
+                    {
+                      "text": "desktop route-rooftop-to-residential-stairs\n"
+                    },
+                    {
+                      "text": "desktop route-residential-stairs-to-residential-hall\n"
+                    },
+                    {
+                      "text": "desktop route-residential-hall-to-town\n"
+                    },
+                    {
+                      "text": "desktop route-town-to-workshop\n"
+                    },
+                    {
+                      "text": "desktop route-workshop-to-town\n"
+                    },
+                    {
+                      "text": "desktop route-town-to-riverbank\n"
+                    },
+                    {
+                      "text": "desktop route-riverbank-to-park\n"
+                    },
+                    {
+                      "text": "desktop route-park-to-courtyard\n"
+                    },
+                    {
+                      "text": "desktop route-courtyard-to-town\n"
+                    },
+                    {
+                      "text": "desktop route-town-to-restaurant\n"
+                    },
+                    {
+                      "text": "desktop route-restaurant-to-town\n"
+                    },
+                    {
+                      "text": "desktop route-town-to-courtyard\n"
+                    },
+                    {
+                      "text": "desktop cat-crouch\n"
+                    },
+                    {
+                      "text": "desktop cat-wait\n"
+                    },
+                    {
+                      "text": "desktop cat-approach\n"
+                    },
+                    {
+                      "text": "desktop cat-follow\n"
+                    },
+                    {
+                      "text": "desktop cat-reunite\n"
+                    },
+                    {
+                      "text": "desktop cat-world-reunited\n"
+                    },
+                    {
+                      "text": "desktop route-courtyard-to-residential-hall\n"
+                    },
+                    {
+                      "text": "desktop route-residential-hall-to-residential-stairs\n"
+                    },
+                    {
+                      "text": "desktop route-residential-stairs-to-apartment\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T01:03:27.903Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey-results/journey-ordinary-connected-b0207-tivities-and-offline-reload-desktop/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey-results/journey-ordinary-connected-b0207-tivities-and-offline-reload-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey-results/journey-ordinary-connected-b0207-tivities-and-offline-reload-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey.spec.ts",
+                    "column": 192,
+                    "line": 87
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "bf222bad70f76648f722-85451d49ace2f39e4f8d",
+          "file": "journey.spec.ts",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "native phone touch-pad holds move and release stops without teleport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 900000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Native touch gate is phone-only",
+                  "location": {
+                    "file": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey.spec.ts",
+                    "line": 104,
+                    "column": 7
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 290,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T01:07:53.234Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Native touch gate is phone-only",
+                      "location": {
+                        "file": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey.spec.ts",
+                        "line": 104,
+                        "column": 7
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey-results/journey-native-phone-touch-c04fd-ease-stops-without-teleport-desktop/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey-results/journey-native-phone-touch-c04fd-ease-stops-without-teleport-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "bf222bad70f76648f722-ae9873c8e5976b7ed135",
+          "file": "journey.spec.ts",
+          "line": 103,
+          "column": 1
+        },
+        {
+          "title": "ordinary connected-world service, all ten places, saved activities and offline reload",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 900000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 236221,
+                  "error": {
+                    "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /第2行第3格/ })\u001b[22m\n",
+                    "stack": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /第2行第3格/ })\u001b[22m\n\n    at /workspace/junyan/docs/evidence/0088/integrated-e02a747/journey.spec.ts:87:192",
+                    "location": {
+                      "file": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey.spec.ts",
+                      "column": 192,
+                      "line": 87
+                    },
+                    "snippet": "  85 |   await expect.poll(async()=> (await game(page)).neighbourhood.cats.story.node).toBe('reunited');await page.getByRole('button',{name:'收下猫靠垫',exact:true}).click();await closeActivity(page);await note('cat-world-reunited');\n  86 |   await travel(page,['residential-hall','residential-stairs','apartment'],note);await enter(page,'apartment.furnish');await page.getByRole('button',{name:'收下',exact:true}).click();const original=(await game(page)).neighbourhood.apartment.placements;\n> 87 |   await page.locator('.apartment-items').getByRole('button',{name:/桌子/}).click();await page.getByRole('button',{name:'选格子',exact:true}).click();await page.getByRole('button',{name:/第2行第3格/}).click();await page.getByRole('button',{name:'放这里',exact:true}).click();\n     |                                                                                                                                                                                                ^\n  88 |   await expect.poll(async()=> (await game(page)).neighbourhood.apartment.placements.find((p:any)=>p.id==='table')).toMatchObject({x:2,y:1});await note('furnished');await page.getByRole('button',{name:'撤回',exact:true}).click();await expect.poll(async()=> (await game(page)).neighbourhood.apartment.placements).toEqual(original);\n  89 |   const beforeReload=await game(page);await page.reload();await expect(page.locator('.world-context[data-target=\"apartment\"]')).toBeVisible();await expect.poll(async()=> (await game(page)).neighbourhood).toEqual(beforeReload.neighbourhood);expect((await game(page)).world.position).toEqual(beforeReload.world.position);expect((await game(page)).world.activeAnchorId).toBe('apartment.furnish');await note('undo-reloaded');await closeActivity(page);\n  90 |   await travel(page,['residential-stairs','rooftop'],note);await enter(page,'rooftop.garden');await expect(page.getByTestId('garden-view')).toBeVisible();await page.locator(`.garden-tool-button[aria-label=\"${gardenName('tidy')}\"]`).click();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey.spec.ts",
+                        "column": 192,
+                        "line": 87
+                      },
+                      "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /第2行第3格/ })\u001b[22m\n\n\n  85 |   await expect.poll(async()=> (await game(page)).neighbourhood.cats.story.node).toBe('reunited');await page.getByRole('button',{name:'收下猫靠垫',exact:true}).click();await closeActivity(page);await note('cat-world-reunited');\n  86 |   await travel(page,['residential-hall','residential-stairs','apartment'],note);await enter(page,'apartment.furnish');await page.getByRole('button',{name:'收下',exact:true}).click();const original=(await game(page)).neighbourhood.apartment.placements;\n> 87 |   await page.locator('.apartment-items').getByRole('button',{name:/桌子/}).click();await page.getByRole('button',{name:'选格子',exact:true}).click();await page.getByRole('button',{name:/第2行第3格/}).click();await page.getByRole('button',{name:'放这里',exact:true}).click();\n     |                                                                                                                                                                                                ^\n  88 |   await expect.poll(async()=> (await game(page)).neighbourhood.apartment.placements.find((p:any)=>p.id==='table')).toMatchObject({x:2,y:1});await note('furnished');await page.getByRole('button',{name:'撤回',exact:true}).click();await expect.poll(async()=> (await game(page)).neighbourhood.apartment.placements).toEqual(original);\n  89 |   const beforeReload=await game(page);await page.reload();await expect(page.locator('.world-context[data-target=\"apartment\"]')).toBeVisible();await expect.poll(async()=> (await game(page)).neighbourhood).toEqual(beforeReload.neighbourhood);expect((await game(page)).world.position).toEqual(beforeReload.world.position);expect((await game(page)).world.activeAnchorId).toBe('apartment.furnish');await note('undo-reloaded');await closeActivity(page);\n  90 |   await travel(page,['residential-stairs','rooftop'],note);await enter(page,'rooftop.garden');await expect(page.getByTestId('garden-view')).toBeVisible();await page.locator(`.garden-tool-button[aria-label=\"${gardenName('tidy')}\"]`).click();\n    at /workspace/junyan/docs/evidence/0088/integrated-e02a747/journey.spec.ts:87:192"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "phone opening\n"
+                    },
+                    {
+                      "text": "phone tray\n"
+                    },
+                    {
+                      "text": "phone receipt-seated-1\n"
+                    },
+                    {
+                      "text": "phone released-1\n"
+                    },
+                    {
+                      "text": "phone receipt-seated-2\n"
+                    },
+                    {
+                      "text": "phone released-2\n"
+                    },
+                    {
+                      "text": "phone receipt-seated-3\n"
+                    },
+                    {
+                      "text": "phone released-3\n"
+                    },
+                    {
+                      "text": "phone journal\n"
+                    },
+                    {
+                      "text": "phone route-restaurant-to-town\n"
+                    },
+                    {
+                      "text": "phone route-town-to-courtyard\n"
+                    },
+                    {
+                      "text": "phone route-courtyard-to-residential-hall\n"
+                    },
+                    {
+                      "text": "phone route-residential-hall-to-residential-stairs\n"
+                    },
+                    {
+                      "text": "phone route-residential-stairs-to-apartment\n"
+                    },
+                    {
+                      "text": "phone route-apartment-to-residential-stairs\n"
+                    },
+                    {
+                      "text": "phone route-residential-stairs-to-rooftop\n"
+                    },
+                    {
+                      "text": "phone route-rooftop-to-residential-stairs\n"
+                    },
+                    {
+                      "text": "phone route-residential-stairs-to-residential-hall\n"
+                    },
+                    {
+                      "text": "phone route-residential-hall-to-town\n"
+                    },
+                    {
+                      "text": "phone route-town-to-workshop\n"
+                    },
+                    {
+                      "text": "phone route-workshop-to-town\n"
+                    },
+                    {
+                      "text": "phone route-town-to-riverbank\n"
+                    },
+                    {
+                      "text": "phone route-riverbank-to-park\n"
+                    },
+                    {
+                      "text": "phone route-park-to-courtyard\n"
+                    },
+                    {
+                      "text": "phone route-courtyard-to-town\n"
+                    },
+                    {
+                      "text": "phone route-town-to-restaurant\n"
+                    },
+                    {
+                      "text": "phone route-restaurant-to-town\n"
+                    },
+                    {
+                      "text": "phone route-town-to-courtyard\n"
+                    },
+                    {
+                      "text": "phone cat-crouch\n"
+                    },
+                    {
+                      "text": "phone cat-wait\n"
+                    },
+                    {
+                      "text": "phone cat-approach\n"
+                    },
+                    {
+                      "text": "phone cat-follow\n"
+                    },
+                    {
+                      "text": "phone cat-reunite\n"
+                    },
+                    {
+                      "text": "phone cat-world-reunited\n"
+                    },
+                    {
+                      "text": "phone route-courtyard-to-residential-hall\n"
+                    },
+                    {
+                      "text": "phone route-residential-hall-to-residential-stairs\n"
+                    },
+                    {
+                      "text": "phone route-residential-stairs-to-apartment\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T01:07:54.331Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey-results/journey-ordinary-connected-b0207-tivities-and-offline-reload-phone/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey-results/journey-ordinary-connected-b0207-tivities-and-offline-reload-phone/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey-results/journey-ordinary-connected-b0207-tivities-and-offline-reload-phone/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey.spec.ts",
+                    "column": 192,
+                    "line": 87
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "bf222bad70f76648f722-9bf8a0503a8db3beb123",
+          "file": "journey.spec.ts",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "native phone touch-pad holds move and release stops without teleport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 900000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9545,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T01:12:01.999Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey-results/journey-native-phone-touch-c04fd-ease-stops-without-teleport-phone/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/journey-results/journey-native-phone-touch-c04fd-ease-stops-without-teleport-phone/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bf222bad70f76648f722-699502024647a188a5ce",
+          "file": "journey.spec.ts",
+          "line": 103,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-06T01:03:26.557Z",
+    "duration": 526145.983,
+    "expected": 1,
+    "skipped": 1,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

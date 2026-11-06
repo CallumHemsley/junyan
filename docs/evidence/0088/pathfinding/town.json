@@ -1,0 +1,4141 @@
+{
+  "version": 1,
+  "id": "town",
+  "bounds": {
+    "width": 80,
+    "height": 64
+  },
+  "defaultSpawn": {
+    "x": 34,
+    "y": 32,
+    "facing": "south"
+  },
+  "walkable": [
+    {
+      "x": 0,
+      "y": 29,
+      "width": 80,
+      "height": 8
+    },
+    {
+      "x": 0,
+      "y": 31,
+      "width": 80,
+      "height": 4
+    },
+    {
+      "x": 19,
+      "y": 8,
+      "width": 7,
+      "height": 24
+    },
+    {
+      "x": 21,
+      "y": 8,
+      "width": 43,
+      "height": 6
+    },
+    {
+      "x": 59,
+      "y": 11,
+      "width": 7,
+      "height": 45
+    },
+    {
+      "x": 23,
+      "y": 49,
+      "width": 42,
+      "height": 7
+    },
+    {
+      "x": 23,
+      "y": 35,
+      "width": 6,
+      "height": 18
+    },
+    {
+      "x": 40,
+      "y": 12,
+      "width": 5,
+      "height": 18
+    },
+    {
+      "x": 42,
+      "y": 0,
+      "width": 6,
+      "height": 14
+    },
+    {
+      "x": 10,
+      "y": 21,
+      "width": 12,
+      "height": 4
+    },
+    {
+      "x": 28,
+      "y": 37,
+      "width": 12,
+      "height": 8
+    },
+    {
+      "x": 37,
+      "y": 36,
+      "width": 9,
+      "height": 4
+    },
+    {
+      "x": 43,
+      "y": 36,
+      "width": 6,
+      "height": 17
+    },
+    {
+      "x": 64,
+      "y": 44,
+      "width": 16,
+      "height": 7
+    },
+    {
+      "x": 17,
+      "y": 27,
+      "width": 11,
+      "height": 13
+    },
+    {
+      "x": 49,
+      "y": 14,
+      "width": 9,
+      "height": 5
+    },
+    {
+      "x": 32.5,
+      "y": 28,
+      "width": 3,
+      "height": 2
+    }
+  ],
+  "colliders": [
+    {
+      "id": "town.residence",
+      "rect": {
+        "x": 4,
+        "y": 10,
+        "width": 13,
+        "height": 11
+      }
+    },
+    {
+      "id": "town.restaurant",
+      "rect": {
+        "x": 28,
+        "y": 18,
+        "width": 11,
+        "height": 10
+      }
+    },
+    {
+      "id": "town.tea-house",
+      "rect": {
+        "x": 49,
+        "y": 19,
+        "width": 9,
+        "height": 10
+      }
+    },
+    {
+      "id": "town.workshop",
+      "rect": {
+        "x": 67,
+        "y": 18,
+        "width": 11,
+        "height": 11
+      }
+    },
+    {
+      "id": "town.corner-store",
+      "rect": {
+        "x": 67,
+        "y": 5,
+        "width": 10,
+        "height": 10
+      }
+    },
+    {
+      "id": "town.north-row",
+      "rect": {
+        "x": 27,
+        "y": 2,
+        "width": 12,
+        "height": 6
+      }
+    },
+    {
+      "id": "town.linen-house",
+      "rect": {
+        "x": 50,
+        "y": 2,
+        "width": 8,
+        "height": 6
+      }
+    },
+    {
+      "id": "town.west-store",
+      "rect": {
+        "x": 5,
+        "y": 25.5,
+        "width": 12,
+        "height": 3
+      }
+    },
+    {
+      "id": "town.south-residence",
+      "rect": {
+        "x": 7,
+        "y": 38,
+        "width": 13,
+        "height": 12
+      }
+    },
+    {
+      "id": "town.market-house",
+      "rect": {
+        "x": 29,
+        "y": 45,
+        "width": 10,
+        "height": 4
+      }
+    },
+    {
+      "id": "town.south-bakery",
+      "rect": {
+        "x": 30,
+        "y": 56,
+        "width": 10,
+        "height": 6
+      }
+    },
+    {
+      "id": "town.south-studio",
+      "rect": {
+        "x": 49,
+        "y": 56,
+        "width": 9,
+        "height": 6
+      }
+    },
+    {
+      "id": "town.pump-house",
+      "rect": {
+        "x": 52,
+        "y": 38,
+        "width": 6,
+        "height": 9
+      }
+    },
+    {
+      "id": "town.bookshop",
+      "rect": {
+        "x": 68,
+        "y": 52,
+        "width": 10,
+        "height": 8
+      }
+    },
+    {
+      "id": "town.river-store",
+      "rect": {
+        "x": 69,
+        "y": 37,
+        "width": 9,
+        "height": 6
+      }
+    },
+    {
+      "id": "town.junction",
+      "rect": {
+        "x": 18,
+        "y": 28.2,
+        "width": 1.5,
+        "height": 1.5
+      }
+    },
+    {
+      "id": "town.park-sentinel",
+      "rect": {
+        "x": 3,
+        "y": 37.5,
+        "width": 2,
+        "height": 2
+      }
+    },
+    {
+      "id": "town.courtyard-left",
+      "rect": {
+        "x": 37.8,
+        "y": 3,
+        "width": 2,
+        "height": 2
+      }
+    },
+    {
+      "id": "town.courtyard-right",
+      "rect": {
+        "x": 49,
+        "y": 12.5,
+        "width": 1.5,
+        "height": 1.5
+      }
+    },
+    {
+      "id": "town.east-lane",
+      "rect": {
+        "x": 65.6,
+        "y": 39.5,
+        "width": 1.5,
+        "height": 1.5
+      }
+    },
+    {
+      "id": "town.river-view",
+      "rect": {
+        "x": 73.5,
+        "y": 41,
+        "width": 2,
+        "height": 2
+      }
+    },
+    {
+      "id": "town.south-fig",
+      "rect": {
+        "x": 20.3,
+        "y": 56.8,
+        "width": 2,
+        "height": 2
+      }
+    },
+    {
+      "id": "town.tea-garden",
+      "rect": {
+        "x": 55.2,
+        "y": 15.6,
+        "width": 1.8,
+        "height": 1.8
+      }
+    },
+    {
+      "id": "town.west-shade",
+      "rect": {
+        "x": 15.5,
+        "y": 6,
+        "width": 2,
+        "height": 2
+      }
+    },
+    {
+      "id": "town.market-tree",
+      "rect": {
+        "x": 38.2,
+        "y": 41.8,
+        "width": 1.2,
+        "height": 1.2
+      }
+    },
+    {
+      "id": "town.east-corner",
+      "rect": {
+        "x": 77,
+        "y": 15.2,
+        "width": 1.8,
+        "height": 1.8
+      }
+    },
+    {
+      "id": "town.south-grove",
+      "rect": {
+        "x": 59.4,
+        "y": 60,
+        "width": 2,
+        "height": 2
+      }
+    },
+    {
+      "id": "town.hedge-0",
+      "rect": {
+        "x": 1,
+        "y": 6,
+        "width": 15,
+        "height": 1.3
+      }
+    },
+    {
+      "id": "town.hedge-1",
+      "rect": {
+        "x": 1,
+        "y": 7,
+        "width": 1.2,
+        "height": 16
+      }
+    },
+    {
+      "id": "town.hedge-2",
+      "rect": {
+        "x": 27,
+        "y": 15,
+        "width": 1,
+        "height": 12
+      }
+    },
+    {
+      "id": "town.hedge-3",
+      "rect": {
+        "x": 49,
+        "y": 15,
+        "width": 4,
+        "height": 1
+      }
+    },
+    {
+      "id": "town.hedge-4",
+      "rect": {
+        "x": 66.5,
+        "y": 15.5,
+        "width": 12,
+        "height": 1
+      }
+    },
+    {
+      "id": "town.hedge-5",
+      "rect": {
+        "x": 1,
+        "y": 51,
+        "width": 18,
+        "height": 1
+      }
+    },
+    {
+      "id": "town.hedge-6",
+      "rect": {
+        "x": 21,
+        "y": 58,
+        "width": 1.2,
+        "height": 5
+      }
+    },
+    {
+      "id": "town.hedge-7",
+      "rect": {
+        "x": 41,
+        "y": 58,
+        "width": 6,
+        "height": 1
+      }
+    },
+    {
+      "id": "town.hedge-8",
+      "rect": {
+        "x": 66.5,
+        "y": 60.5,
+        "width": 12,
+        "height": 1.5
+      }
+    },
+    {
+      "id": "town.hedge-9",
+      "rect": {
+        "x": 77.5,
+        "y": 36.5,
+        "width": 1.2,
+        "height": 7
+      }
+    },
+    {
+      "id": "town.hedge-10",
+      "rect": {
+        "x": 66.5,
+        "y": 51.5,
+        "width": 1,
+        "height": 10
+      }
+    },
+    {
+      "id": "town.hedge-11",
+      "rect": {
+        "x": 1,
+        "y": 40,
+        "width": 1.5,
+        "height": 9
+      }
+    },
+    {
+      "id": "town.fence-0",
+      "rect": {
+        "x": 1,
+        "y": 9,
+        "width": 2,
+        "height": 14
+      }
+    },
+    {
+      "id": "town.fence-1",
+      "rect": {
+        "x": 3,
+        "y": 8,
+        "width": 14,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.fence-2",
+      "rect": {
+        "x": 27,
+        "y": 14,
+        "width": 11,
+        "height": 0.3
+      }
+    },
+    {
+      "id": "town.fence-3",
+      "rect": {
+        "x": 49,
+        "y": 14,
+        "width": 3,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.fence-4",
+      "rect": {
+        "x": 56,
+        "y": 14,
+        "width": 2,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.fence-5",
+      "rect": {
+        "x": 66.5,
+        "y": 16,
+        "width": 12,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "town.fence-6",
+      "rect": {
+        "x": 1,
+        "y": 53,
+        "width": 19,
+        "height": 0.3
+      }
+    },
+    {
+      "id": "town.fence-7",
+      "rect": {
+        "x": 21,
+        "y": 57,
+        "width": 7,
+        "height": 0.3
+      }
+    },
+    {
+      "id": "town.fence-8",
+      "rect": {
+        "x": 40,
+        "y": 62,
+        "width": 7,
+        "height": 0.3
+      }
+    },
+    {
+      "id": "town.fence-9",
+      "rect": {
+        "x": 66.5,
+        "y": 62,
+        "width": 12,
+        "height": 0.3
+      }
+    },
+    {
+      "id": "town.planter-0",
+      "rect": {
+        "x": 27,
+        "y": 28.4,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.planter-1",
+      "rect": {
+        "x": 39.8,
+        "y": 27,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.planter-2",
+      "rect": {
+        "x": 48.2,
+        "y": 27.2,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.planter-3",
+      "rect": {
+        "x": 58.3,
+        "y": 28.2,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.planter-4",
+      "rect": {
+        "x": 66.2,
+        "y": 28.2,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.planter-5",
+      "rect": {
+        "x": 77.5,
+        "y": 28.8,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.planter-6",
+      "rect": {
+        "x": 14.5,
+        "y": 21.5,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.planter-7",
+      "rect": {
+        "x": 39.2,
+        "y": 46.5,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.planter-8",
+      "rect": {
+        "x": 29.2,
+        "y": 55.8,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.planter-9",
+      "rect": {
+        "x": 67,
+        "y": 53,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.bike-0",
+      "rect": {
+        "x": 28.3,
+        "y": 29.1,
+        "width": 1.8,
+        "height": 0.6
+      }
+    },
+    {
+      "id": "town.bike-1",
+      "rect": {
+        "x": 47.8,
+        "y": 39.5,
+        "width": 1.8,
+        "height": 0.6
+      }
+    },
+    {
+      "id": "town.bike-2",
+      "rect": {
+        "x": 20.2,
+        "y": 16,
+        "width": 1.8,
+        "height": 0.6
+      }
+    },
+    {
+      "id": "town.bike-3",
+      "rect": {
+        "x": 64.6,
+        "y": 53,
+        "width": 1.8,
+        "height": 0.6
+      }
+    },
+    {
+      "id": "town.bench-0",
+      "rect": {
+        "x": 20.2,
+        "y": 28,
+        "width": 2.2,
+        "height": 0.6
+      }
+    },
+    {
+      "id": "town.bench-1",
+      "rect": {
+        "x": 31,
+        "y": 43.8,
+        "width": 2.7,
+        "height": 0.6
+      }
+    },
+    {
+      "id": "town.bench-2",
+      "rect": {
+        "x": 68.5,
+        "y": 50.3,
+        "width": 2.8,
+        "height": 0.6
+      }
+    },
+    {
+      "id": "town.bench-3",
+      "rect": {
+        "x": 56.3,
+        "y": 49.3,
+        "width": 2,
+        "height": 0.6
+      }
+    },
+    {
+      "id": "town.lamp-0",
+      "rect": {
+        "x": 18,
+        "y": 26.5,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.lamp-1",
+      "rect": {
+        "x": 26.7,
+        "y": 36.4,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.lamp-2",
+      "rect": {
+        "x": 58.1,
+        "y": 35.9,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.lamp-3",
+      "rect": {
+        "x": 65.9,
+        "y": 13.5,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.lamp-4",
+      "rect": {
+        "x": 41.2,
+        "y": 47.7,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.lamp-5",
+      "rect": {
+        "x": 5,
+        "y": 30,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.lamp-6",
+      "rect": {
+        "x": 75.8,
+        "y": 50,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.bollard-0",
+      "rect": {
+        "x": 19,
+        "y": 30,
+        "width": 0.3,
+        "height": 0.3
+      }
+    },
+    {
+      "id": "town.bollard-1",
+      "rect": {
+        "x": 26,
+        "y": 30,
+        "width": 0.3,
+        "height": 0.3
+      }
+    },
+    {
+      "id": "town.bollard-2",
+      "rect": {
+        "x": 59,
+        "y": 30,
+        "width": 0.3,
+        "height": 0.3
+      }
+    },
+    {
+      "id": "town.bollard-3",
+      "rect": {
+        "x": 65.5,
+        "y": 30,
+        "width": 0.3,
+        "height": 0.3
+      }
+    },
+    {
+      "id": "town.bollard-4",
+      "rect": {
+        "x": 19,
+        "y": 36,
+        "width": 0.3,
+        "height": 0.3
+      }
+    },
+    {
+      "id": "town.bollard-5",
+      "rect": {
+        "x": 26,
+        "y": 36,
+        "width": 0.3,
+        "height": 0.3
+      }
+    },
+    {
+      "id": "town.bollard-6",
+      "rect": {
+        "x": 59,
+        "y": 36,
+        "width": 0.3,
+        "height": 0.3
+      }
+    },
+    {
+      "id": "town.bollard-7",
+      "rect": {
+        "x": 65.5,
+        "y": 36,
+        "width": 0.3,
+        "height": 0.3
+      }
+    },
+    {
+      "id": "town.crates-0",
+      "rect": {
+        "x": 67.3,
+        "y": 29.2,
+        "width": 2.2,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "town.crates-1",
+      "rect": {
+        "x": 75,
+        "y": 29.1,
+        "width": 2,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "town.crates-2",
+      "rect": {
+        "x": 48.3,
+        "y": 38,
+        "width": 1,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "town.crates-3",
+      "rect": {
+        "x": 39.4,
+        "y": 37.7,
+        "width": 1,
+        "height": 0.8
+      }
+    },
+    {
+      "id": "town.market-stall",
+      "rect": {
+        "x": 29,
+        "y": 38.2,
+        "width": 3.2,
+        "height": 1.4
+      }
+    },
+    {
+      "id": "town.market-baskets",
+      "rect": {
+        "x": 34,
+        "y": 43,
+        "width": 2,
+        "height": 0.7
+      }
+    },
+    {
+      "id": "town.north-utility",
+      "rect": {
+        "x": 24.8,
+        "y": 7,
+        "width": 0.3,
+        "height": 0.3
+      }
+    },
+    {
+      "id": "town.south-utility",
+      "rect": {
+        "x": 61.8,
+        "y": 57,
+        "width": 0.3,
+        "height": 0.3
+      }
+    },
+    {
+      "id": "town.pump-pipes",
+      "rect": {
+        "x": 58.1,
+        "y": 39,
+        "width": 0.35,
+        "height": 4
+      }
+    },
+    {
+      "id": "town.closed-yard-gate",
+      "rect": {
+        "x": 69.2,
+        "y": 43.2,
+        "width": 8.6,
+        "height": 0.3
+      }
+    },
+    {
+      "id": "town.park-milestone",
+      "rect": {
+        "x": 2.6,
+        "y": 28.8,
+        "width": 0.6,
+        "height": 0.6
+      }
+    },
+    {
+      "id": "town.river-rail-left",
+      "rect": {
+        "x": 71,
+        "y": 43.3,
+        "width": 7,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "town.tea-stone-table",
+      "rect": {
+        "x": 50,
+        "y": 16.5,
+        "width": 1.7,
+        "height": 1.2
+      }
+    }
+  ],
+  "occluders": [
+    {
+      "id": "town.residence",
+      "rect": {
+        "x": 4,
+        "y": 10,
+        "width": 13,
+        "height": 11
+      },
+      "height": 8,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.restaurant",
+      "rect": {
+        "x": 28,
+        "y": 18,
+        "width": 11,
+        "height": 10
+      },
+      "height": 5.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.tea-house",
+      "rect": {
+        "x": 49,
+        "y": 19,
+        "width": 9,
+        "height": 10
+      },
+      "height": 6,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.workshop",
+      "rect": {
+        "x": 67,
+        "y": 18,
+        "width": 11,
+        "height": 11
+      },
+      "height": 5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.corner-store",
+      "rect": {
+        "x": 67,
+        "y": 5,
+        "width": 10,
+        "height": 10
+      },
+      "height": 6,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.north-row",
+      "rect": {
+        "x": 27,
+        "y": 2,
+        "width": 12,
+        "height": 6
+      },
+      "height": 7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.linen-house",
+      "rect": {
+        "x": 50,
+        "y": 2,
+        "width": 8,
+        "height": 6
+      },
+      "height": 7.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.west-store",
+      "rect": {
+        "x": 5,
+        "y": 25.5,
+        "width": 12,
+        "height": 3
+      },
+      "height": 3.7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.south-residence",
+      "rect": {
+        "x": 7,
+        "y": 38,
+        "width": 13,
+        "height": 12
+      },
+      "height": 8.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.market-house",
+      "rect": {
+        "x": 29,
+        "y": 45,
+        "width": 10,
+        "height": 4
+      },
+      "height": 5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.south-bakery",
+      "rect": {
+        "x": 30,
+        "y": 56,
+        "width": 10,
+        "height": 6
+      },
+      "height": 6,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.south-studio",
+      "rect": {
+        "x": 49,
+        "y": 56,
+        "width": 9,
+        "height": 6
+      },
+      "height": 7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.pump-house",
+      "rect": {
+        "x": 52,
+        "y": 38,
+        "width": 6,
+        "height": 9
+      },
+      "height": 3.4,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bookshop",
+      "rect": {
+        "x": 68,
+        "y": 52,
+        "width": 10,
+        "height": 8
+      },
+      "height": 6.3,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.river-store",
+      "rect": {
+        "x": 69,
+        "y": 37,
+        "width": 9,
+        "height": 6
+      },
+      "height": 4,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.courtyard-moon-gate",
+      "rect": {
+        "x": 42,
+        "y": 2,
+        "width": 6,
+        "height": 0.35
+      },
+      "height": 4,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.breakfast-awning",
+      "rect": {
+        "x": 28,
+        "y": 27.3,
+        "width": 11,
+        "height": 0.7
+      },
+      "height": 3,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.tea-awning",
+      "rect": {
+        "x": 49,
+        "y": 28.4,
+        "width": 9,
+        "height": 0.6
+      },
+      "height": 3,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.workshop-canopy",
+      "rect": {
+        "x": 67,
+        "y": 28.2,
+        "width": 11,
+        "height": 0.8
+      },
+      "height": 3,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.junction",
+      "rect": {
+        "x": 18,
+        "y": 28.2,
+        "width": 1.5,
+        "height": 1.5
+      },
+      "height": 5.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.park-sentinel",
+      "rect": {
+        "x": 3,
+        "y": 37.5,
+        "width": 2,
+        "height": 2
+      },
+      "height": 5.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.courtyard-left",
+      "rect": {
+        "x": 37.8,
+        "y": 3,
+        "width": 2,
+        "height": 2
+      },
+      "height": 5.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.courtyard-right",
+      "rect": {
+        "x": 49,
+        "y": 12.5,
+        "width": 1.5,
+        "height": 1.5
+      },
+      "height": 5.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.east-lane",
+      "rect": {
+        "x": 65.6,
+        "y": 39.5,
+        "width": 1.5,
+        "height": 1.5
+      },
+      "height": 5.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.river-view",
+      "rect": {
+        "x": 73.5,
+        "y": 41,
+        "width": 2,
+        "height": 2
+      },
+      "height": 5.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.south-fig",
+      "rect": {
+        "x": 20.3,
+        "y": 56.8,
+        "width": 2,
+        "height": 2
+      },
+      "height": 5.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.tea-garden",
+      "rect": {
+        "x": 55.2,
+        "y": 15.6,
+        "width": 1.8,
+        "height": 1.8
+      },
+      "height": 5.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.west-shade",
+      "rect": {
+        "x": 15.5,
+        "y": 6,
+        "width": 2,
+        "height": 2
+      },
+      "height": 5.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.market-tree",
+      "rect": {
+        "x": 38.2,
+        "y": 41.8,
+        "width": 1.2,
+        "height": 1.2
+      },
+      "height": 5.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.east-corner",
+      "rect": {
+        "x": 77,
+        "y": 15.2,
+        "width": 1.8,
+        "height": 1.8
+      },
+      "height": 5.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.south-grove",
+      "rect": {
+        "x": 59.4,
+        "y": 60,
+        "width": 2,
+        "height": 2
+      },
+      "height": 5.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.hedge-0",
+      "rect": {
+        "x": 1,
+        "y": 6,
+        "width": 15,
+        "height": 1.3
+      },
+      "height": 1,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.hedge-1",
+      "rect": {
+        "x": 1,
+        "y": 7,
+        "width": 1.2,
+        "height": 16
+      },
+      "height": 1,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.hedge-2",
+      "rect": {
+        "x": 27,
+        "y": 15,
+        "width": 1,
+        "height": 12
+      },
+      "height": 1,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.hedge-3",
+      "rect": {
+        "x": 49,
+        "y": 15,
+        "width": 4,
+        "height": 1
+      },
+      "height": 1,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.hedge-4",
+      "rect": {
+        "x": 66.5,
+        "y": 15.5,
+        "width": 12,
+        "height": 1
+      },
+      "height": 1,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.hedge-5",
+      "rect": {
+        "x": 1,
+        "y": 51,
+        "width": 18,
+        "height": 1
+      },
+      "height": 1,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.hedge-6",
+      "rect": {
+        "x": 21,
+        "y": 58,
+        "width": 1.2,
+        "height": 5
+      },
+      "height": 1,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.hedge-7",
+      "rect": {
+        "x": 41,
+        "y": 58,
+        "width": 6,
+        "height": 1
+      },
+      "height": 1,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.hedge-8",
+      "rect": {
+        "x": 66.5,
+        "y": 60.5,
+        "width": 12,
+        "height": 1.5
+      },
+      "height": 1,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.hedge-9",
+      "rect": {
+        "x": 77.5,
+        "y": 36.5,
+        "width": 1.2,
+        "height": 7
+      },
+      "height": 1,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.hedge-10",
+      "rect": {
+        "x": 66.5,
+        "y": 51.5,
+        "width": 1,
+        "height": 10
+      },
+      "height": 1,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.hedge-11",
+      "rect": {
+        "x": 1,
+        "y": 40,
+        "width": 1.5,
+        "height": 9
+      },
+      "height": 1,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.fence-0",
+      "rect": {
+        "x": 1,
+        "y": 9,
+        "width": 2,
+        "height": 14
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.fence-1",
+      "rect": {
+        "x": 3,
+        "y": 8,
+        "width": 14,
+        "height": 0.35
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.fence-2",
+      "rect": {
+        "x": 27,
+        "y": 14,
+        "width": 11,
+        "height": 0.3
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.fence-3",
+      "rect": {
+        "x": 49,
+        "y": 14,
+        "width": 3,
+        "height": 0.35
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.fence-4",
+      "rect": {
+        "x": 56,
+        "y": 14,
+        "width": 2,
+        "height": 0.35
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.fence-5",
+      "rect": {
+        "x": 66.5,
+        "y": 16,
+        "width": 12,
+        "height": 0.25
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.fence-6",
+      "rect": {
+        "x": 1,
+        "y": 53,
+        "width": 19,
+        "height": 0.3
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.fence-7",
+      "rect": {
+        "x": 21,
+        "y": 57,
+        "width": 7,
+        "height": 0.3
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.fence-8",
+      "rect": {
+        "x": 40,
+        "y": 62,
+        "width": 7,
+        "height": 0.3
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.fence-9",
+      "rect": {
+        "x": 66.5,
+        "y": 62,
+        "width": 12,
+        "height": 0.3
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.planter-0",
+      "rect": {
+        "x": 27,
+        "y": 28.4,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.planter-1",
+      "rect": {
+        "x": 39.8,
+        "y": 27,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.planter-2",
+      "rect": {
+        "x": 48.2,
+        "y": 27.2,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.planter-3",
+      "rect": {
+        "x": 58.3,
+        "y": 28.2,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.planter-4",
+      "rect": {
+        "x": 66.2,
+        "y": 28.2,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.planter-5",
+      "rect": {
+        "x": 77.5,
+        "y": 28.8,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.planter-6",
+      "rect": {
+        "x": 14.5,
+        "y": 21.5,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.planter-7",
+      "rect": {
+        "x": 39.2,
+        "y": 46.5,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.planter-8",
+      "rect": {
+        "x": 29.2,
+        "y": 55.8,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.planter-9",
+      "rect": {
+        "x": 67,
+        "y": 53,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bike-0",
+      "rect": {
+        "x": 28.3,
+        "y": 29.1,
+        "width": 1.8,
+        "height": 0.6
+      },
+      "height": 1.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bike-1",
+      "rect": {
+        "x": 47.8,
+        "y": 39.5,
+        "width": 1.8,
+        "height": 0.6
+      },
+      "height": 1.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bike-2",
+      "rect": {
+        "x": 20.2,
+        "y": 16,
+        "width": 1.8,
+        "height": 0.6
+      },
+      "height": 1.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bike-3",
+      "rect": {
+        "x": 64.6,
+        "y": 53,
+        "width": 1.8,
+        "height": 0.6
+      },
+      "height": 1.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bench-0",
+      "rect": {
+        "x": 20.2,
+        "y": 28,
+        "width": 2.2,
+        "height": 0.6
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bench-1",
+      "rect": {
+        "x": 31,
+        "y": 43.8,
+        "width": 2.7,
+        "height": 0.6
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bench-2",
+      "rect": {
+        "x": 68.5,
+        "y": 50.3,
+        "width": 2.8,
+        "height": 0.6
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bench-3",
+      "rect": {
+        "x": 56.3,
+        "y": 49.3,
+        "width": 2,
+        "height": 0.6
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lamp-0",
+      "rect": {
+        "x": 18,
+        "y": 26.5,
+        "width": 0.35,
+        "height": 0.35
+      },
+      "height": 4.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lamp-1",
+      "rect": {
+        "x": 26.7,
+        "y": 36.4,
+        "width": 0.35,
+        "height": 0.35
+      },
+      "height": 4.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lamp-2",
+      "rect": {
+        "x": 58.1,
+        "y": 35.9,
+        "width": 0.35,
+        "height": 0.35
+      },
+      "height": 4.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lamp-3",
+      "rect": {
+        "x": 65.9,
+        "y": 13.5,
+        "width": 0.35,
+        "height": 0.35
+      },
+      "height": 4.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lamp-4",
+      "rect": {
+        "x": 41.2,
+        "y": 47.7,
+        "width": 0.35,
+        "height": 0.35
+      },
+      "height": 4.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lamp-5",
+      "rect": {
+        "x": 5,
+        "y": 30,
+        "width": 0.35,
+        "height": 0.35
+      },
+      "height": 4.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lamp-6",
+      "rect": {
+        "x": 75.8,
+        "y": 50,
+        "width": 0.35,
+        "height": 0.35
+      },
+      "height": 4.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bollard-0",
+      "rect": {
+        "x": 19,
+        "y": 30,
+        "width": 0.3,
+        "height": 0.3
+      },
+      "height": 0.7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bollard-1",
+      "rect": {
+        "x": 26,
+        "y": 30,
+        "width": 0.3,
+        "height": 0.3
+      },
+      "height": 0.7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bollard-2",
+      "rect": {
+        "x": 59,
+        "y": 30,
+        "width": 0.3,
+        "height": 0.3
+      },
+      "height": 0.7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bollard-3",
+      "rect": {
+        "x": 65.5,
+        "y": 30,
+        "width": 0.3,
+        "height": 0.3
+      },
+      "height": 0.7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bollard-4",
+      "rect": {
+        "x": 19,
+        "y": 36,
+        "width": 0.3,
+        "height": 0.3
+      },
+      "height": 0.7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bollard-5",
+      "rect": {
+        "x": 26,
+        "y": 36,
+        "width": 0.3,
+        "height": 0.3
+      },
+      "height": 0.7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bollard-6",
+      "rect": {
+        "x": 59,
+        "y": 36,
+        "width": 0.3,
+        "height": 0.3
+      },
+      "height": 0.7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bollard-7",
+      "rect": {
+        "x": 65.5,
+        "y": 36,
+        "width": 0.3,
+        "height": 0.3
+      },
+      "height": 0.7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.crates-0",
+      "rect": {
+        "x": 67.3,
+        "y": 29.2,
+        "width": 2.2,
+        "height": 0.9
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.crates-1",
+      "rect": {
+        "x": 75,
+        "y": 29.1,
+        "width": 2,
+        "height": 0.9
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.crates-2",
+      "rect": {
+        "x": 48.3,
+        "y": 38,
+        "width": 1,
+        "height": 0.9
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.crates-3",
+      "rect": {
+        "x": 39.4,
+        "y": 37.7,
+        "width": 1,
+        "height": 0.8
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.market-stall",
+      "rect": {
+        "x": 29,
+        "y": 38.2,
+        "width": 3.2,
+        "height": 1.4
+      },
+      "height": 2.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.market-baskets",
+      "rect": {
+        "x": 34,
+        "y": 43,
+        "width": 2,
+        "height": 0.7
+      },
+      "height": 0.7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.residence-laundry",
+      "rect": {
+        "x": 4.8,
+        "y": 18.8,
+        "width": 10.8,
+        "height": 0.2
+      },
+      "height": 4,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.south-laundry",
+      "rect": {
+        "x": 7.8,
+        "y": 47.5,
+        "width": 10.5,
+        "height": 0.2
+      },
+      "height": 4,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.alley-laundry",
+      "rect": {
+        "x": 39.5,
+        "y": 17,
+        "width": 5.7,
+        "height": 0.2
+      },
+      "height": 4,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.north-utility",
+      "rect": {
+        "x": 24.8,
+        "y": 7,
+        "width": 0.3,
+        "height": 0.3
+      },
+      "height": 6,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.south-utility",
+      "rect": {
+        "x": 61.8,
+        "y": 57,
+        "width": 0.3,
+        "height": 0.3
+      },
+      "height": 6,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.pump-pipes",
+      "rect": {
+        "x": 58.1,
+        "y": 39,
+        "width": 0.35,
+        "height": 4
+      },
+      "height": 2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.closed-yard-gate",
+      "rect": {
+        "x": 69.2,
+        "y": 43.2,
+        "width": 8.6,
+        "height": 0.3
+      },
+      "height": 1.8,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.park-milestone",
+      "rect": {
+        "x": 2.6,
+        "y": 28.8,
+        "width": 0.6,
+        "height": 0.6
+      },
+      "height": 0.8,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.river-rail-left",
+      "rect": {
+        "x": 71,
+        "y": 43.3,
+        "width": 7,
+        "height": 0.25
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.tea-stone-table",
+      "rect": {
+        "x": 50,
+        "y": 16.5,
+        "width": 1.7,
+        "height": 1.2
+      },
+      "height": 1.1,
+      "fadeWhenPlayerBehind": true
+    }
+  ],
+  "entrances": [
+    {
+      "id": "from-restaurant",
+      "position": {
+        "x": 34,
+        "y": 30.4
+      },
+      "facing": "south"
+    },
+    {
+      "id": "from-residential-hall",
+      "position": {
+        "x": 11.5,
+        "y": 23.5
+      },
+      "facing": "south"
+    },
+    {
+      "id": "from-courtyard",
+      "position": {
+        "x": 45,
+        "y": 3.3
+      },
+      "facing": "south"
+    },
+    {
+      "id": "from-workshop",
+      "position": {
+        "x": 73.25,
+        "y": 31.4
+      },
+      "facing": "south"
+    },
+    {
+      "id": "from-park",
+      "position": {
+        "x": 3.4,
+        "y": 33
+      },
+      "facing": "east"
+    },
+    {
+      "id": "from-riverbank",
+      "position": {
+        "x": 76.6,
+        "y": 47.5
+      },
+      "facing": "west"
+    }
+  ],
+  "exits": [
+    {
+      "id": "to-restaurant",
+      "rect": {
+        "x": 33,
+        "y": 28,
+        "width": 2,
+        "height": 1.2
+      },
+      "targetMapId": "restaurant",
+      "targetEntranceId": "from-town",
+      "kind": "door"
+    },
+    {
+      "id": "to-residential-hall",
+      "rect": {
+        "x": 10.5,
+        "y": 21,
+        "width": 2,
+        "height": 1.2
+      },
+      "targetMapId": "residential-hall",
+      "targetEntranceId": "from-town",
+      "kind": "door"
+    },
+    {
+      "id": "to-courtyard",
+      "rect": {
+        "x": 43,
+        "y": 0,
+        "width": 4,
+        "height": 1.6
+      },
+      "targetMapId": "courtyard",
+      "targetEntranceId": "from-town",
+      "kind": "path"
+    },
+    {
+      "id": "to-workshop",
+      "rect": {
+        "x": 72,
+        "y": 29,
+        "width": 2.5,
+        "height": 1.1
+      },
+      "targetMapId": "workshop",
+      "targetEntranceId": "from-town",
+      "kind": "door"
+    },
+    {
+      "id": "to-park",
+      "rect": {
+        "x": 0,
+        "y": 30,
+        "width": 1.6,
+        "height": 6
+      },
+      "targetMapId": "park",
+      "targetEntranceId": "from-town",
+      "kind": "path"
+    },
+    {
+      "id": "to-riverbank",
+      "rect": {
+        "x": 78.4,
+        "y": 44.5,
+        "width": 1.6,
+        "height": 6
+      },
+      "targetMapId": "riverbank",
+      "targetEntranceId": "from-town",
+      "kind": "path"
+    }
+  ],
+  "anchors": [
+    {
+      "id": "town.junction-rest",
+      "position": {
+        "x": 22,
+        "y": 29.2
+      },
+      "radius": 1.4,
+      "featureId": "exploration",
+      "interactionId": "town.rest"
+    },
+    {
+      "id": "town.market-baskets",
+      "position": {
+        "x": 34,
+        "y": 41
+      },
+      "radius": 1.4,
+      "featureId": "exploration",
+      "interactionId": "town.observe-market"
+    },
+    {
+      "id": "town.river-view",
+      "position": {
+        "x": 72,
+        "y": 47
+      },
+      "radius": 1.4,
+      "featureId": "exploration",
+      "interactionId": "town.look-river"
+    },
+    {
+      "id": "town.laundry-lane",
+      "position": {
+        "x": 22.5,
+        "y": 19
+      },
+      "radius": 1.4,
+      "featureId": "exploration",
+      "interactionId": "town.observe-laundry"
+    },
+    {
+      "id": "town.tea-terrace",
+      "position": {
+        "x": 54,
+        "y": 15
+      },
+      "radius": 1.4,
+      "featureId": "exploration",
+      "interactionId": "town.rest"
+    }
+  ],
+  "terrain": [
+    {
+      "id": "town.breakfast-paving",
+      "rect": {
+        "x": 0,
+        "y": 29,
+        "width": 80,
+        "height": 8
+      },
+      "material": "paving",
+      "variant": 39
+    },
+    {
+      "id": "town.breakfast-road",
+      "rect": {
+        "x": 0,
+        "y": 31,
+        "width": 80,
+        "height": 4
+      },
+      "material": "road",
+      "variant": 39
+    },
+    {
+      "id": "town.west-lane",
+      "rect": {
+        "x": 19,
+        "y": 8,
+        "width": 7,
+        "height": 24
+      },
+      "material": "paving",
+      "variant": 39
+    },
+    {
+      "id": "town.north-lane",
+      "rect": {
+        "x": 21,
+        "y": 8,
+        "width": 43,
+        "height": 6
+      },
+      "material": "brick",
+      "variant": 39
+    },
+    {
+      "id": "town.east-lane",
+      "rect": {
+        "x": 59,
+        "y": 11,
+        "width": 7,
+        "height": 45
+      },
+      "material": "paving",
+      "variant": 39
+    },
+    {
+      "id": "town.south-lane",
+      "rect": {
+        "x": 23,
+        "y": 49,
+        "width": 42,
+        "height": 7
+      },
+      "material": "brick",
+      "variant": 39
+    },
+    {
+      "id": "town.south-west",
+      "rect": {
+        "x": 23,
+        "y": 35,
+        "width": 6,
+        "height": 18
+      },
+      "material": "paving",
+      "variant": 39
+    },
+    {
+      "id": "town.lantern-passage",
+      "rect": {
+        "x": 40,
+        "y": 12,
+        "width": 5,
+        "height": 18
+      },
+      "material": "brick",
+      "variant": 39
+    },
+    {
+      "id": "town.courtyard-approach",
+      "rect": {
+        "x": 42,
+        "y": 0,
+        "width": 6,
+        "height": 14
+      },
+      "material": "brick",
+      "variant": 39
+    },
+    {
+      "id": "town.residence-landing",
+      "rect": {
+        "x": 10,
+        "y": 21,
+        "width": 12,
+        "height": 4
+      },
+      "material": "paving",
+      "variant": 39
+    },
+    {
+      "id": "town.market-pocket",
+      "rect": {
+        "x": 28,
+        "y": 37,
+        "width": 12,
+        "height": 8
+      },
+      "material": "brick",
+      "variant": 39
+    },
+    {
+      "id": "town.market-link",
+      "rect": {
+        "x": 37,
+        "y": 36,
+        "width": 9,
+        "height": 4
+      },
+      "material": "brick",
+      "variant": 39
+    },
+    {
+      "id": "town.service-lane",
+      "rect": {
+        "x": 43,
+        "y": 36,
+        "width": 6,
+        "height": 17
+      },
+      "material": "paving",
+      "variant": 39
+    },
+    {
+      "id": "town.river-path",
+      "rect": {
+        "x": 64,
+        "y": 44,
+        "width": 16,
+        "height": 7
+      },
+      "material": "paving",
+      "variant": 39
+    },
+    {
+      "id": "town.tree-junction",
+      "rect": {
+        "x": 17,
+        "y": 27,
+        "width": 11,
+        "height": 13
+      },
+      "material": "paving",
+      "variant": 39
+    },
+    {
+      "id": "town.tea-terrace",
+      "rect": {
+        "x": 49,
+        "y": 14,
+        "width": 9,
+        "height": 5
+      },
+      "material": "brick",
+      "variant": 39
+    },
+    {
+      "id": "town.restaurant-landing",
+      "rect": {
+        "x": 32.5,
+        "y": 28,
+        "width": 3,
+        "height": 2
+      },
+      "material": "paving",
+      "variant": 39
+    }
+  ],
+  "props": [
+    {
+      "id": "town.residence",
+      "kind": "building-residence",
+      "position": {
+        "x": 4,
+        "y": 10
+      },
+      "width": 13,
+      "height": 11,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "town.restaurant",
+      "kind": "building-restaurant",
+      "position": {
+        "x": 28,
+        "y": 18
+      },
+      "width": 11,
+      "height": 10,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "town.tea-house",
+      "kind": "building-tea",
+      "position": {
+        "x": 49,
+        "y": 19
+      },
+      "width": 9,
+      "height": 10,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "town.workshop",
+      "kind": "building-workshop",
+      "position": {
+        "x": 67,
+        "y": 18
+      },
+      "width": 11,
+      "height": 11,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "town.corner-store",
+      "kind": "building-shop",
+      "position": {
+        "x": 67,
+        "y": 5
+      },
+      "width": 10,
+      "height": 10,
+      "layer": "object",
+      "variant": 4
+    },
+    {
+      "id": "town.north-row",
+      "kind": "building-row",
+      "position": {
+        "x": 27,
+        "y": 2
+      },
+      "width": 12,
+      "height": 6,
+      "layer": "object",
+      "variant": 5
+    },
+    {
+      "id": "town.linen-house",
+      "kind": "building-row",
+      "position": {
+        "x": 50,
+        "y": 2
+      },
+      "width": 8,
+      "height": 6,
+      "layer": "object",
+      "variant": 6
+    },
+    {
+      "id": "town.west-store",
+      "kind": "building-shutter",
+      "position": {
+        "x": 5,
+        "y": 25.5
+      },
+      "width": 12,
+      "height": 3,
+      "layer": "object",
+      "variant": 7
+    },
+    {
+      "id": "town.south-residence",
+      "kind": "building-residence",
+      "position": {
+        "x": 7,
+        "y": 38
+      },
+      "width": 13,
+      "height": 12,
+      "layer": "object",
+      "variant": 8
+    },
+    {
+      "id": "town.market-house",
+      "kind": "building-shop",
+      "position": {
+        "x": 29,
+        "y": 45
+      },
+      "width": 10,
+      "height": 4,
+      "layer": "object",
+      "variant": 9
+    },
+    {
+      "id": "town.south-bakery",
+      "kind": "building-shop",
+      "position": {
+        "x": 30,
+        "y": 56
+      },
+      "width": 10,
+      "height": 6,
+      "layer": "object",
+      "variant": 10
+    },
+    {
+      "id": "town.south-studio",
+      "kind": "building-row",
+      "position": {
+        "x": 49,
+        "y": 56
+      },
+      "width": 9,
+      "height": 6,
+      "layer": "object",
+      "variant": 11
+    },
+    {
+      "id": "town.pump-house",
+      "kind": "building-utility",
+      "position": {
+        "x": 52,
+        "y": 38
+      },
+      "width": 6,
+      "height": 9,
+      "layer": "object",
+      "variant": 7
+    },
+    {
+      "id": "town.bookshop",
+      "kind": "building-shop",
+      "position": {
+        "x": 68,
+        "y": 52
+      },
+      "width": 10,
+      "height": 8,
+      "layer": "object",
+      "variant": 12
+    },
+    {
+      "id": "town.river-store",
+      "kind": "building-shutter",
+      "position": {
+        "x": 69,
+        "y": 37
+      },
+      "width": 9,
+      "height": 6,
+      "layer": "object",
+      "variant": 6
+    },
+    {
+      "id": "town.restaurant-steps",
+      "kind": "steps",
+      "position": {
+        "x": 32.5,
+        "y": 28
+      },
+      "width": 3,
+      "height": 1,
+      "layer": "ground",
+      "variant": 13
+    },
+    {
+      "id": "town.residence-steps",
+      "kind": "steps",
+      "position": {
+        "x": 10,
+        "y": 21
+      },
+      "width": 3,
+      "height": 1,
+      "layer": "ground",
+      "variant": 14
+    },
+    {
+      "id": "town.workshop-landing",
+      "kind": "steps",
+      "position": {
+        "x": 71.5,
+        "y": 29
+      },
+      "width": 3.5,
+      "height": 1,
+      "layer": "ground",
+      "variant": 15
+    },
+    {
+      "id": "town.river-stairs",
+      "kind": "steps",
+      "position": {
+        "x": 74,
+        "y": 44.4
+      },
+      "width": 4,
+      "height": 2,
+      "layer": "ground",
+      "variant": 16
+    },
+    {
+      "id": "town.courtyard-moon-gate",
+      "kind": "gate",
+      "position": {
+        "x": 42,
+        "y": 2
+      },
+      "width": 6,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 17
+    },
+    {
+      "id": "town.breakfast-awning",
+      "kind": "awning",
+      "position": {
+        "x": 28,
+        "y": 27.3
+      },
+      "width": 11,
+      "height": 0.7,
+      "layer": "object",
+      "variant": 18
+    },
+    {
+      "id": "town.tea-awning",
+      "kind": "awning",
+      "position": {
+        "x": 49,
+        "y": 28.4
+      },
+      "width": 9,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 5
+    },
+    {
+      "id": "town.workshop-canopy",
+      "kind": "awning",
+      "position": {
+        "x": 67,
+        "y": 28.2
+      },
+      "width": 11,
+      "height": 0.8,
+      "layer": "object",
+      "variant": 7
+    },
+    {
+      "id": "town.junction",
+      "kind": "tree",
+      "position": {
+        "x": 18,
+        "y": 28.2
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 19
+    },
+    {
+      "id": "town.park-sentinel",
+      "kind": "tree",
+      "position": {
+        "x": 3,
+        "y": 37.5
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 20
+    },
+    {
+      "id": "town.courtyard-left",
+      "kind": "tree",
+      "position": {
+        "x": 37.8,
+        "y": 3
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 21
+    },
+    {
+      "id": "town.courtyard-right",
+      "kind": "tree",
+      "position": {
+        "x": 49,
+        "y": 12.5
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 19
+    },
+    {
+      "id": "town.east-lane",
+      "kind": "tree",
+      "position": {
+        "x": 65.6,
+        "y": 39.5
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 20
+    },
+    {
+      "id": "town.river-view",
+      "kind": "tree",
+      "position": {
+        "x": 73.5,
+        "y": 41
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 21
+    },
+    {
+      "id": "town.south-fig",
+      "kind": "tree",
+      "position": {
+        "x": 20.3,
+        "y": 56.8
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 19
+    },
+    {
+      "id": "town.tea-garden",
+      "kind": "tree",
+      "position": {
+        "x": 55.2,
+        "y": 15.6
+      },
+      "width": 1.8,
+      "height": 1.8,
+      "layer": "object",
+      "variant": 20
+    },
+    {
+      "id": "town.west-shade",
+      "kind": "tree",
+      "position": {
+        "x": 15.5,
+        "y": 6
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 21
+    },
+    {
+      "id": "town.market-tree",
+      "kind": "tree",
+      "position": {
+        "x": 38.2,
+        "y": 41.8
+      },
+      "width": 1.2,
+      "height": 1.2,
+      "layer": "object",
+      "variant": 19
+    },
+    {
+      "id": "town.east-corner",
+      "kind": "tree",
+      "position": {
+        "x": 77,
+        "y": 15.2
+      },
+      "width": 1.8,
+      "height": 1.8,
+      "layer": "object",
+      "variant": 20
+    },
+    {
+      "id": "town.south-grove",
+      "kind": "tree",
+      "position": {
+        "x": 59.4,
+        "y": 60
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 21
+    },
+    {
+      "id": "town.hedge-0",
+      "kind": "hedge",
+      "position": {
+        "x": 1,
+        "y": 6
+      },
+      "width": 15,
+      "height": 1.3,
+      "layer": "object",
+      "variant": 22
+    },
+    {
+      "id": "town.hedge-1",
+      "kind": "hedge",
+      "position": {
+        "x": 1,
+        "y": 7
+      },
+      "width": 1.2,
+      "height": 16,
+      "layer": "object",
+      "variant": 22
+    },
+    {
+      "id": "town.hedge-2",
+      "kind": "hedge",
+      "position": {
+        "x": 27,
+        "y": 15
+      },
+      "width": 1,
+      "height": 12,
+      "layer": "object",
+      "variant": 22
+    },
+    {
+      "id": "town.hedge-3",
+      "kind": "hedge",
+      "position": {
+        "x": 49,
+        "y": 15
+      },
+      "width": 4,
+      "height": 1,
+      "layer": "object",
+      "variant": 22
+    },
+    {
+      "id": "town.hedge-4",
+      "kind": "hedge",
+      "position": {
+        "x": 66.5,
+        "y": 15.5
+      },
+      "width": 12,
+      "height": 1,
+      "layer": "object",
+      "variant": 22
+    },
+    {
+      "id": "town.hedge-5",
+      "kind": "hedge",
+      "position": {
+        "x": 1,
+        "y": 51
+      },
+      "width": 18,
+      "height": 1,
+      "layer": "object",
+      "variant": 22
+    },
+    {
+      "id": "town.hedge-6",
+      "kind": "hedge",
+      "position": {
+        "x": 21,
+        "y": 58
+      },
+      "width": 1.2,
+      "height": 5,
+      "layer": "object",
+      "variant": 22
+    },
+    {
+      "id": "town.hedge-7",
+      "kind": "hedge",
+      "position": {
+        "x": 41,
+        "y": 58
+      },
+      "width": 6,
+      "height": 1,
+      "layer": "object",
+      "variant": 22
+    },
+    {
+      "id": "town.hedge-8",
+      "kind": "hedge",
+      "position": {
+        "x": 66.5,
+        "y": 60.5
+      },
+      "width": 12,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 22
+    },
+    {
+      "id": "town.hedge-9",
+      "kind": "hedge",
+      "position": {
+        "x": 77.5,
+        "y": 36.5
+      },
+      "width": 1.2,
+      "height": 7,
+      "layer": "object",
+      "variant": 22
+    },
+    {
+      "id": "town.hedge-10",
+      "kind": "hedge",
+      "position": {
+        "x": 66.5,
+        "y": 51.5
+      },
+      "width": 1,
+      "height": 10,
+      "layer": "object",
+      "variant": 22
+    },
+    {
+      "id": "town.hedge-11",
+      "kind": "hedge",
+      "position": {
+        "x": 1,
+        "y": 40
+      },
+      "width": 1.5,
+      "height": 9,
+      "layer": "object",
+      "variant": 22
+    },
+    {
+      "id": "town.fence-0",
+      "kind": "fence",
+      "position": {
+        "x": 1,
+        "y": 9
+      },
+      "width": 2,
+      "height": 14,
+      "layer": "object",
+      "variant": 23
+    },
+    {
+      "id": "town.fence-1",
+      "kind": "fence",
+      "position": {
+        "x": 3,
+        "y": 8
+      },
+      "width": 14,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 24
+    },
+    {
+      "id": "town.fence-2",
+      "kind": "fence",
+      "position": {
+        "x": 27,
+        "y": 14
+      },
+      "width": 11,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 23
+    },
+    {
+      "id": "town.fence-3",
+      "kind": "fence",
+      "position": {
+        "x": 49,
+        "y": 14
+      },
+      "width": 3,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 24
+    },
+    {
+      "id": "town.fence-4",
+      "kind": "fence",
+      "position": {
+        "x": 56,
+        "y": 14
+      },
+      "width": 2,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 23
+    },
+    {
+      "id": "town.fence-5",
+      "kind": "fence",
+      "position": {
+        "x": 66.5,
+        "y": 16
+      },
+      "width": 12,
+      "height": 0.25,
+      "layer": "object",
+      "variant": 24
+    },
+    {
+      "id": "town.fence-6",
+      "kind": "fence",
+      "position": {
+        "x": 1,
+        "y": 53
+      },
+      "width": 19,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 23
+    },
+    {
+      "id": "town.fence-7",
+      "kind": "fence",
+      "position": {
+        "x": 21,
+        "y": 57
+      },
+      "width": 7,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 24
+    },
+    {
+      "id": "town.fence-8",
+      "kind": "fence",
+      "position": {
+        "x": 40,
+        "y": 62
+      },
+      "width": 7,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 23
+    },
+    {
+      "id": "town.fence-9",
+      "kind": "fence",
+      "position": {
+        "x": 66.5,
+        "y": 62
+      },
+      "width": 12,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 24
+    },
+    {
+      "id": "town.planter-0",
+      "kind": "planter",
+      "position": {
+        "x": 27,
+        "y": 28.4
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 25
+    },
+    {
+      "id": "town.planter-1",
+      "kind": "planter",
+      "position": {
+        "x": 39.8,
+        "y": 27
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 26
+    },
+    {
+      "id": "town.planter-2",
+      "kind": "planter",
+      "position": {
+        "x": 48.2,
+        "y": 27.2
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 27
+    },
+    {
+      "id": "town.planter-3",
+      "kind": "planter",
+      "position": {
+        "x": 58.3,
+        "y": 28.2
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 25
+    },
+    {
+      "id": "town.planter-4",
+      "kind": "planter",
+      "position": {
+        "x": 66.2,
+        "y": 28.2
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 27
+    },
+    {
+      "id": "town.planter-5",
+      "kind": "planter",
+      "position": {
+        "x": 77.5,
+        "y": 28.8
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 25
+    },
+    {
+      "id": "town.planter-6",
+      "kind": "planter",
+      "position": {
+        "x": 14.5,
+        "y": 21.5
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 26
+    },
+    {
+      "id": "town.planter-7",
+      "kind": "planter",
+      "position": {
+        "x": 39.2,
+        "y": 46.5
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 27
+    },
+    {
+      "id": "town.planter-8",
+      "kind": "planter",
+      "position": {
+        "x": 29.2,
+        "y": 55.8
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 25
+    },
+    {
+      "id": "town.planter-9",
+      "kind": "planter",
+      "position": {
+        "x": 67,
+        "y": 53
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 26
+    },
+    {
+      "id": "town.bike-0",
+      "kind": "bicycle",
+      "position": {
+        "x": 28.3,
+        "y": 29.1
+      },
+      "width": 1.8,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 6
+    },
+    {
+      "id": "town.bike-1",
+      "kind": "bicycle",
+      "position": {
+        "x": 47.8,
+        "y": 39.5
+      },
+      "width": 1.8,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 5
+    },
+    {
+      "id": "town.bike-2",
+      "kind": "bicycle",
+      "position": {
+        "x": 20.2,
+        "y": 16
+      },
+      "width": 1.8,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 28
+    },
+    {
+      "id": "town.bike-3",
+      "kind": "bicycle",
+      "position": {
+        "x": 64.6,
+        "y": 53
+      },
+      "width": 1.8,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 6
+    },
+    {
+      "id": "town.bench-0",
+      "kind": "bench",
+      "position": {
+        "x": 20.2,
+        "y": 28
+      },
+      "width": 2.2,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 24
+    },
+    {
+      "id": "town.bench-1",
+      "kind": "bench",
+      "position": {
+        "x": 31,
+        "y": 43.8
+      },
+      "width": 2.7,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 24
+    },
+    {
+      "id": "town.bench-2",
+      "kind": "bench",
+      "position": {
+        "x": 68.5,
+        "y": 50.3
+      },
+      "width": 2.8,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 24
+    },
+    {
+      "id": "town.bench-3",
+      "kind": "bench",
+      "position": {
+        "x": 56.3,
+        "y": 49.3
+      },
+      "width": 2,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 24
+    },
+    {
+      "id": "town.lamp-0",
+      "kind": "street-lamp",
+      "position": {
+        "x": 18,
+        "y": 26.5
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 29
+    },
+    {
+      "id": "town.lamp-1",
+      "kind": "street-lamp",
+      "position": {
+        "x": 26.7,
+        "y": 36.4
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 29
+    },
+    {
+      "id": "town.lamp-2",
+      "kind": "street-lamp",
+      "position": {
+        "x": 58.1,
+        "y": 35.9
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 29
+    },
+    {
+      "id": "town.lamp-3",
+      "kind": "street-lamp",
+      "position": {
+        "x": 65.9,
+        "y": 13.5
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 29
+    },
+    {
+      "id": "town.lamp-4",
+      "kind": "street-lamp",
+      "position": {
+        "x": 41.2,
+        "y": 47.7
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 29
+    },
+    {
+      "id": "town.lamp-5",
+      "kind": "street-lamp",
+      "position": {
+        "x": 5,
+        "y": 30
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 29
+    },
+    {
+      "id": "town.lamp-6",
+      "kind": "street-lamp",
+      "position": {
+        "x": 75.8,
+        "y": 50
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 29
+    },
+    {
+      "id": "town.drain-0",
+      "kind": "drain",
+      "position": {
+        "x": 30,
+        "y": 30.5
+      },
+      "width": 2,
+      "height": 0.25,
+      "layer": "ground",
+      "variant": 23
+    },
+    {
+      "id": "town.drain-1",
+      "kind": "drain",
+      "position": {
+        "x": 50,
+        "y": 30.4
+      },
+      "width": 1.8,
+      "height": 0.25,
+      "layer": "ground",
+      "variant": 23
+    },
+    {
+      "id": "town.drain-2",
+      "kind": "drain",
+      "position": {
+        "x": 68,
+        "y": 30.5
+      },
+      "width": 2,
+      "height": 0.25,
+      "layer": "ground",
+      "variant": 23
+    },
+    {
+      "id": "town.drain-3",
+      "kind": "drain",
+      "position": {
+        "x": 25.8,
+        "y": 18
+      },
+      "width": 0.25,
+      "height": 2,
+      "layer": "ground",
+      "variant": 23
+    },
+    {
+      "id": "town.drain-4",
+      "kind": "drain",
+      "position": {
+        "x": 62,
+        "y": 48.7
+      },
+      "width": 2,
+      "height": 0.25,
+      "layer": "ground",
+      "variant": 23
+    },
+    {
+      "id": "town.drain-5",
+      "kind": "drain",
+      "position": {
+        "x": 43.5,
+        "y": 43
+      },
+      "width": 0.25,
+      "height": 1.5,
+      "layer": "ground",
+      "variant": 23
+    },
+    {
+      "id": "town.gutter-0",
+      "kind": "gutter",
+      "position": {
+        "x": 2,
+        "y": 35.8
+      },
+      "width": 14,
+      "height": 0.18,
+      "layer": "ground",
+      "variant": 30
+    },
+    {
+      "id": "town.gutter-1",
+      "kind": "gutter",
+      "position": {
+        "x": 28,
+        "y": 35.8
+      },
+      "width": 28,
+      "height": 0.18,
+      "layer": "ground",
+      "variant": 30
+    },
+    {
+      "id": "town.gutter-2",
+      "kind": "gutter",
+      "position": {
+        "x": 66,
+        "y": 35.8
+      },
+      "width": 12,
+      "height": 0.18,
+      "layer": "ground",
+      "variant": 30
+    },
+    {
+      "id": "town.gutter-3",
+      "kind": "gutter",
+      "position": {
+        "x": 25.8,
+        "y": 15
+      },
+      "width": 0.18,
+      "height": 11,
+      "layer": "ground",
+      "variant": 30
+    },
+    {
+      "id": "town.gutter-4",
+      "kind": "gutter",
+      "position": {
+        "x": 64.7,
+        "y": 17
+      },
+      "width": 0.18,
+      "height": 24,
+      "layer": "ground",
+      "variant": 30
+    },
+    {
+      "id": "town.bollard-0",
+      "kind": "bollard",
+      "position": {
+        "x": 19,
+        "y": 30
+      },
+      "width": 0.3,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 14
+    },
+    {
+      "id": "town.bollard-1",
+      "kind": "bollard",
+      "position": {
+        "x": 26,
+        "y": 30
+      },
+      "width": 0.3,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 14
+    },
+    {
+      "id": "town.bollard-2",
+      "kind": "bollard",
+      "position": {
+        "x": 59,
+        "y": 30
+      },
+      "width": 0.3,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 14
+    },
+    {
+      "id": "town.bollard-3",
+      "kind": "bollard",
+      "position": {
+        "x": 65.5,
+        "y": 30
+      },
+      "width": 0.3,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 14
+    },
+    {
+      "id": "town.bollard-4",
+      "kind": "bollard",
+      "position": {
+        "x": 19,
+        "y": 36
+      },
+      "width": 0.3,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 14
+    },
+    {
+      "id": "town.bollard-5",
+      "kind": "bollard",
+      "position": {
+        "x": 26,
+        "y": 36
+      },
+      "width": 0.3,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 14
+    },
+    {
+      "id": "town.bollard-6",
+      "kind": "bollard",
+      "position": {
+        "x": 59,
+        "y": 36
+      },
+      "width": 0.3,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 14
+    },
+    {
+      "id": "town.bollard-7",
+      "kind": "bollard",
+      "position": {
+        "x": 65.5,
+        "y": 36
+      },
+      "width": 0.3,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 14
+    },
+    {
+      "id": "town.crates-0",
+      "kind": "crates",
+      "position": {
+        "x": 67.3,
+        "y": 29.2
+      },
+      "width": 2.2,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 31
+    },
+    {
+      "id": "town.crates-1",
+      "kind": "crates",
+      "position": {
+        "x": 75,
+        "y": 29.1
+      },
+      "width": 2,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 31
+    },
+    {
+      "id": "town.crates-2",
+      "kind": "crates",
+      "position": {
+        "x": 48.3,
+        "y": 38
+      },
+      "width": 1,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 32
+    },
+    {
+      "id": "town.crates-3",
+      "kind": "crates",
+      "position": {
+        "x": 39.4,
+        "y": 37.7
+      },
+      "width": 1,
+      "height": 0.8,
+      "layer": "object",
+      "variant": 32
+    },
+    {
+      "id": "town.market-stall",
+      "kind": "market-stall",
+      "position": {
+        "x": 29,
+        "y": 38.2
+      },
+      "width": 3.2,
+      "height": 1.4,
+      "layer": "object",
+      "variant": 33
+    },
+    {
+      "id": "town.market-baskets",
+      "kind": "baskets",
+      "position": {
+        "x": 34,
+        "y": 43
+      },
+      "width": 2,
+      "height": 0.7,
+      "layer": "object",
+      "variant": 34
+    },
+    {
+      "id": "town.residence-laundry",
+      "kind": "laundry",
+      "position": {
+        "x": 4.8,
+        "y": 18.8
+      },
+      "width": 10.8,
+      "height": 0.2,
+      "layer": "object",
+      "variant": 35
+    },
+    {
+      "id": "town.south-laundry",
+      "kind": "laundry",
+      "position": {
+        "x": 7.8,
+        "y": 47.5
+      },
+      "width": 10.5,
+      "height": 0.2,
+      "layer": "object",
+      "variant": 36
+    },
+    {
+      "id": "town.alley-laundry",
+      "kind": "laundry",
+      "position": {
+        "x": 39.5,
+        "y": 17
+      },
+      "width": 5.7,
+      "height": 0.2,
+      "layer": "object",
+      "variant": 35
+    },
+    {
+      "id": "town.north-utility",
+      "kind": "utility-pole",
+      "position": {
+        "x": 24.8,
+        "y": 7
+      },
+      "width": 0.3,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 37
+    },
+    {
+      "id": "town.south-utility",
+      "kind": "utility-pole",
+      "position": {
+        "x": 61.8,
+        "y": 57
+      },
+      "width": 0.3,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 37
+    },
+    {
+      "id": "town.pump-pipes",
+      "kind": "pipes",
+      "position": {
+        "x": 58.1,
+        "y": 39
+      },
+      "width": 0.35,
+      "height": 4,
+      "layer": "object",
+      "variant": 28
+    },
+    {
+      "id": "town.closed-yard-gate",
+      "kind": "closed-gate",
+      "position": {
+        "x": 69.2,
+        "y": 43.2
+      },
+      "width": 8.6,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 38
+    },
+    {
+      "id": "town.park-milestone",
+      "kind": "milestone",
+      "position": {
+        "x": 2.6,
+        "y": 28.8
+      },
+      "width": 0.6,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 14
+    },
+    {
+      "id": "town.river-rail-left",
+      "kind": "fence",
+      "position": {
+        "x": 71,
+        "y": 43.3
+      },
+      "width": 7,
+      "height": 0.25,
+      "layer": "object",
+      "variant": 23
+    },
+    {
+      "id": "town.tea-stone-table",
+      "kind": "stone-table",
+      "position": {
+        "x": 50,
+        "y": 16.5
+      },
+      "width": 1.7,
+      "height": 1.2,
+      "layer": "object",
+      "variant": 14
+    }
+  ],
+  "palette": {
+    "cream": [
+      239,
+      224,
+      191
+    ],
+    "jade": [
+      111,
+      154,
+      134
+    ],
+    "ink": [
+      48,
+      43,
+      42
+    ],
+    "wood": [
+      133,
+      103,
+      72
+    ],
+    "brass": [
+      190,
+      157,
+      97
+    ],
+    "slate": [
+      91,
+      114,
+      119
+    ],
+    "plaster": [
+      201,
+      187,
+      157
+    ],
+    "road": [
+      132,
+      139,
+      133
+    ],
+    "paving": [
+      191,
+      185,
+      160
+    ],
+    "leaf": [
+      104,
+      137,
+      99
+    ],
+    "shadow": [
+      62,
+      81,
+      76
+    ],
+    "water": [
+      119,
+      151,
+      157
+    ]
+  },
+  "npcHooks": [
+    {
+      "id": "town.morning-walk",
+      "position": {
+        "x": 34,
+        "y": 30
+      },
+      "route": [
+        {
+          "x": 34,
+          "y": 30
+        },
+        {
+          "x": 42.5,
+          "y": 30
+        },
+        {
+          "x": 42.5,
+          "y": 14
+        },
+        {
+          "x": 45,
+          "y": 10
+        }
+      ],
+      "characterId": "aunt"
+    },
+    {
+      "id": "town.market-regular",
+      "position": {
+        "x": 31,
+        "y": 41
+      },
+      "route": [
+        {
+          "x": 31,
+          "y": 41
+        },
+        {
+          "x": 36,
+          "y": 41
+        },
+        {
+          "x": 38,
+          "y": 40
+        },
+        {
+          "x": 31,
+          "y": 40
+        }
+      ],
+      "characterId": "glasses"
+    },
+    {
+      "id": "town.workshop-delivery",
+      "position": {
+        "x": 70,
+        "y": 33
+      },
+      "route": [
+        {
+          "x": 70,
+          "y": 33
+        },
+        {
+          "x": 62,
+          "y": 33
+        },
+        {
+          "x": 62,
+          "y": 47
+        },
+        {
+          "x": 70,
+          "y": 47
+        }
+      ],
+      "characterId": "backpack"
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "town.restaurant-approach",
+      "position": {
+        "x": 34,
+        "y": 30.4
+      },
+      "kind": "door"
+    },
+    {
+      "id": "town.residence-approach",
+      "position": {
+        "x": 11.5,
+        "y": 23.5
+      },
+      "kind": "door"
+    },
+    {
+      "id": "town.courtyard-approach",
+      "position": {
+        "x": 45,
+        "y": 3.3
+      },
+      "kind": "path"
+    },
+    {
+      "id": "town.workshop-approach",
+      "position": {
+        "x": 73.25,
+        "y": 31.4
+      },
+      "kind": "door"
+    },
+    {
+      "id": "town.park-approach",
+      "position": {
+        "x": 3.4,
+        "y": 33
+      },
+      "kind": "path"
+    },
+    {
+      "id": "town.riverbank-approach",
+      "position": {
+        "x": 76.6,
+        "y": 47.5
+      },
+      "kind": "path"
+    },
+    {
+      "id": "town.breakfast-steam",
+      "position": {
+        "x": 34,
+        "y": 29.5
+      },
+      "kind": "restaurant-frontage"
+    },
+    {
+      "id": "town.camphor-junction",
+      "position": {
+        "x": 22,
+        "y": 29
+      },
+      "kind": "tree-junction"
+    },
+    {
+      "id": "town.laundry-lane",
+      "position": {
+        "x": 22.5,
+        "y": 18
+      },
+      "kind": "residential-lane"
+    },
+    {
+      "id": "town.lantern-cut",
+      "position": {
+        "x": 42.5,
+        "y": 21
+      },
+      "kind": "narrow-lane"
+    },
+    {
+      "id": "town.moon-gate",
+      "position": {
+        "x": 45,
+        "y": 5
+      },
+      "kind": "moon-gate"
+    },
+    {
+      "id": "town.market-pocket",
+      "position": {
+        "x": 34,
+        "y": 41
+      },
+      "kind": "market"
+    },
+    {
+      "id": "town.sawtooth-roof",
+      "position": {
+        "x": 72,
+        "y": 30.5
+      },
+      "kind": "workshop-frontage"
+    },
+    {
+      "id": "town.river-overlook",
+      "position": {
+        "x": 72,
+        "y": 47
+      },
+      "kind": "river-approach"
+    },
+    {
+      "id": "town.south-fig",
+      "position": {
+        "x": 24,
+        "y": 53
+      },
+      "kind": "garden-lane"
+    },
+    {
+      "id": "town.closed-yard",
+      "position": {
+        "x": 72,
+        "y": 45.2
+      },
+      "kind": "closed-yard"
+    }
+  ]
+}

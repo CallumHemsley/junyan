@@ -1,0 +1,52 @@
+{"line":"return 'initial';","result":"initial","capture":0}
+{"line":"return await page.getByRole('button').allTextContents();","result":[""],"capture":1}
+{"line":"await page.touchscreen.tap(195,332); await page.waitForTimeout(800);","capture":2}
+{"line":"await page.touchscreen.tap(335,480); return await page.getByRole('button').evaluateAll(bs=>bs.map(b=>({text:b.innerText,label:b.getAttribute('aria-label')})));","result":[{"text":"","label":"再听一遍"},{"text":"","label":"继续"}],"capture":3}
+{"line":"await page.getByRole('button',{name:'继续',exact:true}).tap();","capture":4}
+{"line":"for(let i=0;i<20;i++){const b=page.getByRole('button',{name:'继续',exact:true});if(!await b.isVisible())break;await b.tap();await page.waitForTimeout(150);} return await page.getByRole('button').allTextContents();","result":["","早上好","年轻人","请","给","我","一","杯","豆浆","豆浆","鸡蛋","馒头"],"capture":5}
+{"line":"await page.getByRole('button',{name:'豆浆',exact:true}).first().tap();","capture":6}
+{"line":"page.setDefaultTimeout(3000);await page.touchscreen.tap(340,509);await page.getByRole('button',{name:'豆浆',exact:true}).last().tap();","capture":7}
+{"line":"return await page.getByRole('button').evaluateAll(bs=>bs.map(b=>({text:b.innerText,label:b.getAttribute('aria-label')})));","result":[{"text":"","label":"再听一遍"},{"text":"早上好","label":null},{"text":"年轻人","label":null},{"text":"请","label":null},{"text":"给","label":null},{"text":"我","label":null},{"text":"一","label":null},{"text":"杯","label":null},{"text":"豆浆","label":null},{"text":"豆浆","label":"豆浆"},{"text":"鸡蛋","label":"鸡蛋"},{"text":"馒头","label":"馒头"},{"text":"","label":"再听一遍"},{"text":"谢谢","label":null},{"text":"你","label":null},{"text":"","label":"继续"}],"capture":8}
+{"line":"for(let i=0;i<20;i++){const b=page.getByRole('button',{name:'继续',exact:true});if(!await b.isVisible())break;await b.tap();await page.waitForTimeout(150);}return await page.getByRole('button').allTextContents();","result":["","我","还","想","要","一","个","鸡蛋","豆浆","鸡蛋","馒头"],"capture":9}
+{"line":"await page.getByRole('button',{name:'鸡蛋',exact:true}).last().tap();for(let i=0;i<20;i++){const b=page.getByRole('button',{name:'继续',exact:true});if(!await b.isVisible())break;await b.tap();await page.waitForTimeout(150);}return await page.getByRole('button').allTextContents();","result":["","明天","来","店","里","帮","我","好","吗","好","谢谢"],"capture":10}
+{"line":"await page.getByRole('button',{name:'好',exact:true}).last().tap();for(let i=0;i<20;i++){const b=page.getByRole('button',{name:'继续',exact:true});if(!await b.isVisible())break;await b.tap();await page.waitForTimeout(150);}return await page.getByRole('button').allTextContents();","result":["怎么玩","早安小馆","↑","←","↓","→","4","▱0/6","×","早上好","","开门迎客 →","怎么玩 +"],"capture":11}
+{"line":"await page.getByRole('button',{name:'开门迎客'}).tap();await page.waitForTimeout(400);","capture":12}
+{"line":"await page.touchscreen.tap(155,337);await page.waitForTimeout(1600);","capture":13}
+{"line":"await page.touchscreen.tap(171,507);","capture":14}
+{"line":"await page.getByRole('button').filter({hasText:'×'}).tap();await page.touchscreen.tap(223,507);","capture":15}
+{"line":"await page.getByRole('button',{name:'粥',exact:true}).tap();","capture":16}
+{"line":"await page.getByRole('button').filter({hasText:'×'}).last().tap();await page.touchscreen.tap(194,553);await page.waitForTimeout(500);","capture":17}
+{"line":"return await page.getByRole('button').evaluateAll(bs=>bs.map(b=>({text:b.innerText,label:b.getAttribute('aria-label'),disabled:b.disabled})));","result":[{"text":"怎么玩","label":"怎么玩","disabled":false},{"text":"早安小馆","label":null,"disabled":false},{"text":"↑","label":"向前走","disabled":true},{"text":"←","label":"向左走","disabled":true},{"text":"↓","label":"向后走","disabled":true},{"text":"→","label":"向右走","disabled":true},{"text":"6","label":"本子","disabled":false},{"text":"▱\n0/6","label":"托盘","disabled":false},{"text":"客人","label":null,"disabled":false},{"text":"×","label":"继续走走","disabled":false},{"text":"请","label":null,"disabled":false},{"text":"给","label":null,"disabled":false},{"text":"我","label":null,"disabled":false},{"text":"一","label":null,"disabled":false},{"text":"碗","label":null,"disabled":false},{"text":"粥","label":null,"disabled":false},{"text":"","label":"听请给我一碗粥","disabled":false},{"text":"慢慢","label":null,"disabled":false},{"text":"来","label":null,"disabled":false},{"text":"再","label":null,"disabled":false},{"text":"看看","label":null,"disabled":false},{"text":"→","label":"上菜","disabled":false}],"capture":18}
+{"line":"await page.getByRole('button',{name:'继续走走',exact:true}).tap();await page.touchscreen.tap(327,301);await page.waitForTimeout(1700);","capture":19}
+{"line":"await page.touchscreen.tap(285,320);await page.waitForTimeout(2200);","capture":20}
+{"line":"await page.touchscreen.tap(171,507);","capture":21}
+{"line":"await page.getByRole('button').filter({hasText:'×'}).last().tap();await page.touchscreen.tap(223,507);","capture":22}
+{"line":"return await page.getByRole('button').evaluateAll(bs=>bs.map(b=>({text:b.innerText,label:b.getAttribute('aria-label')})));","result":[{"text":"怎么玩","label":"怎么玩"},{"text":"早安小馆","label":null},{"text":"↑","label":"向前走"},{"text":"←","label":"向左走"},{"text":"↓","label":"向后走"},{"text":"→","label":"向右走"},{"text":"7","label":"本子"},{"text":"▱\n0/6","label":"托盘"},{"text":"厨房","label":null},{"text":"×","label":"继续走走"},{"text":"2块","label":"拿包子"},{"text":"包子","label":null},{"text":"1块","label":"拿馒头"},{"text":"馒头","label":null},{"text":"2块","label":"拿鸡蛋"},{"text":"鸡蛋","label":null},{"text":"3块","label":"拿豆浆"},{"text":"豆浆","label":null},{"text":"3块","label":"拿粥"},{"text":"粥","label":null},{"text":"2块","label":"拿油条"},{"text":"油条","label":null},{"text":"6块","label":"拿饺子"},{"text":"饺子","label":null},{"text":"↗","label":"端好了，去上菜"}],"capture":23}
+{"line":"await page.mouse.move(250,456);await page.mouse.wheel(0,260);await page.waitForTimeout(200);","capture":24}
+{"line":"await page.mouse.wheel(0,-130);await page.waitForTimeout(200);","capture":25}
+{"line":"await page.touchscreen.tap(197,426);await page.touchscreen.tap(193,552);await page.waitForTimeout(500);","capture":26}
+{"line":"await page.touchscreen.tap(45,431);await page.waitForTimeout(2400);","capture":27}
+{"line":"await page.touchscreen.tap(94,466);await page.waitForTimeout(2200);","capture":28}
+{"line":"await page.touchscreen.tap(277,499);await page.waitForTimeout(300);","capture":29}
+{"line":"await page.touchscreen.tap(277,555);await page.waitForTimeout(300);","capture":30}
+{"line":"await page.touchscreen.tap(43,300);await page.waitForTimeout(2400);","capture":31}
+{"line":"await page.touchscreen.tap(182,207);await page.waitForTimeout(2600);","capture":32}
+{"line":"return 'observe';","result":"observe","capture":33}
+{"line":"await page.touchscreen.tap(119,300);await page.waitForTimeout(2100);","capture":34}
+{"line":"await page.touchscreen.tap(167,333);await page.waitForTimeout(1600);","capture":35}
+{"line":"await page.getByRole('button',{name:'怎么玩',exact:true}).tap();","capture":36}
+{"line":"await page.getByRole('button').filter({hasText:'怎么玩'}).last().tap();","capture":37}
+{"line":"await page.getByRole('button').filter({hasText:'×'}).last().tap();await page.waitForTimeout(300);await page.touchscreen.tap(45,470);await page.waitForTimeout(2300);","capture":38}
+{"line":"return 'observe road';","result":"observe road","capture":39}
+{"line":"await page.touchscreen.tap(82,416);await page.waitForTimeout(2400);","capture":40}
+{"line":"return 'at road junction';","result":"at road junction","capture":41}
+{"line":"await page.touchscreen.tap(360,463);await page.waitForTimeout(2400);","capture":42}
+{"line":"return 'look for water route';","result":"look for water route","capture":43}
+{"line":"await page.touchscreen.tap(373,369);await page.waitForTimeout(2400);","capture":44}
+{"line":"return 'road sightline';","result":"road sightline","capture":45}
+{"line":"await page.touchscreen.tap(367,445);await page.waitForTimeout(2400);","capture":46}
+{"line":"return 'road continuation';","result":"road continuation","capture":47}
+{"line":"await page.touchscreen.tap(365,456);await page.waitForTimeout(2400);","capture":48}
+{"line":"return 'route search';","result":"route search","capture":49}
+{"line":"await page.touchscreen.tap(370,449);await page.waitForTimeout(2500);","capture":50}
+{"line":"return {viewport:page.viewportSize(),note:'Ending bounded visible-cue exploration; kitchen found, home and river not reached.'};","result":{"viewport":{"width":390,"height":664},"note":"Ending bounded visible-cue exploration; kitchen found, home and river not reached."},"capture":51}

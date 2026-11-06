@@ -1,0 +1,84 @@
+{
+  "head": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+  "method": "Connector-acquired exact source functions, CommonJS transpilation; schema, actual restoreLife prefix and actual restoreWorld included; no browser or legal-UI edit reproduction.",
+  "blocked": {
+    "beforeConnected": true,
+    "afterStandable": true,
+    "afterExitComponentLength": 0,
+    "registryValidation": {
+      "ok": true,
+      "value": [
+        "edit-room"
+      ]
+    },
+    "safePosition": {
+      "ok": false,
+      "error": "No exit-connected support in edit-room"
+    },
+    "safeAfterEdit": {
+      "ok": false,
+      "error": "No exit-connected support in edit-room"
+    },
+    "validSerializedRestore": {
+      "ok": false,
+      "error": "No exit-connected support in edit-room"
+    },
+    "malformedWorldRestore": {
+      "ok": true,
+      "value": {
+        "version": 1,
+        "mapId": "edit-room",
+        "position": {
+          "x": 1,
+          "y": 4
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "pauses": [],
+          "serviceDepartures": []
+        }
+      }
+    },
+    "spawnStandable": false
+  },
+  "dividerControl": {
+    "recovered": {
+      "x": 4.5,
+      "y": 4
+    },
+    "exitConnected": true
+  },
+  "sealedPocketControls": [
+    {
+      "name": "still-standable-pocket",
+      "input": {
+        "x": 5,
+        "y": 5
+      },
+      "recovered": {
+        "x": 5,
+        "y": 2.5
+      },
+      "exitConnected": true
+    },
+    {
+      "name": "overlap-nearest-pocket",
+      "input": {
+        "x": 5,
+        "y": 6.25
+      },
+      "recovered": {
+        "x": 5,
+        "y": 7.5
+      },
+      "exitConnected": true
+    }
+  ]
+}

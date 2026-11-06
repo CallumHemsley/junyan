@@ -1,0 +1,66 @@
+{
+  "publicationHead": "400abbfb72d3e687e0883888cbace25f4b6021dd",
+  "renderedSource": "cc931d5190852eb1c6b2d9a9f2edd0ec96f63049",
+  "captures": [
+    {
+      "source": "docs/evidence/world/0084/e02/final/phone-morning-riverbank-first-entrance.png",
+      "local": "captures/phone-morning-riverbank-first-entrance.png",
+      "sha256": "d6424f4ed16674f2ed5ed04f14c09f95359a7fae163b8cbcc3dc9d230ac6448f"
+    },
+    {
+      "source": "docs/evidence/world/0084/e02/final/phone-morning-park-first-entrance.png",
+      "local": "captures/phone-morning-park-first-entrance.png",
+      "sha256": "7a01cfce17c644a2496d8190f3f6e0089f7fcf0244c01e3d87c4dbbdb8771e34"
+    },
+    {
+      "source": "docs/evidence/world/0084/e02/final/phone-evening-orchard-basket.png",
+      "local": "captures/phone-evening-orchard-basket.png",
+      "sha256": "46bb54c99b91da874ca4db80931da8847840154b6559c73f48930d11ecc43a67"
+    },
+    {
+      "source": "docs/evidence/world/0084/e02/final/desktop-evening-old-ferry.png",
+      "local": "captures/desktop-evening-old-ferry.png",
+      "sha256": "8472e917ee586b37f96b15a436f48daa9a0b759720855dcd1bab1b191e293789"
+    },
+    {
+      "source": "docs/evidence/world/0084/e02/final/desktop-morning-park-first-entrance.png",
+      "local": "captures/desktop-morning-park-first-entrance.png",
+      "sha256": "25ba707f4c82613235b369133f9885a4c19f7a788d14404a48fd9388f1175993"
+    },
+    {
+      "source": "docs/evidence/world/0084/e02/final/desktop-evening-orchard-basket.png",
+      "local": "captures/desktop-evening-orchard-basket.png",
+      "sha256": "8c2d50f10bd97ccab1b2d36081b96b734574a6d208de3751c75744548a383f07"
+    },
+    {
+      "source": "docs/evidence/world/0084/e02/final/desktop-morning-riverbank-first-entrance.png",
+      "local": "captures/desktop-morning-riverbank-first-entrance.png",
+      "sha256": "bd5635db40b08fdfe584c86b435b4313c473e172fd101a924ee77f3df3ee9763"
+    },
+    {
+      "source": "docs/evidence/world/0084/e02/final/phone-evening-old-ferry.png",
+      "local": "captures/phone-evening-old-ferry.png",
+      "sha256": "db7e5883b836263158d145cea837eea96ef74fa0a01a59ebf0c6f5c14690cdda"
+    },
+    {
+      "source": "docs/evidence/world/0084/e02/final/desktop-evening-pond-deck.png",
+      "local": "captures/desktop-evening-pond-deck.png",
+      "sha256": "c532a55505bd03ab6f006a92be6aa4198800e1238cab312331ec8b1a3c8fac29"
+    },
+    {
+      "source": "docs/evidence/world/0084/e02/final/phone-evening-pond-deck.png",
+      "local": "captures/phone-evening-pond-deck.png",
+      "sha256": "b8ce1f0f06ac0bba6d1a375ccf12a497e39ca058671d4d8a09feb049173f505d"
+    },
+    {
+      "source": "docs/evidence/world/0084/e02/final/phone-morning-orchard-basket.png",
+      "local": "captures/phone-morning-orchard-basket.png",
+      "sha256": "4c787ba66ebe6b0649b6a6ca7a0170e487c55c4841db3744388f1a9d7a6153af"
+    },
+    {
+      "source": "docs/evidence/world/0084/e02/final/desktop-morning-old-ferry.png",
+      "local": "captures/desktop-morning-old-ferry.png",
+      "sha256": "f227d455bd51ec9f34c8337d31108fff4f3aa615b98d5e70a7dfc742bdb3b543"
+    }
+  ]
+}
