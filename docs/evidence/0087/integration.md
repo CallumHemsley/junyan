@@ -31,3 +31,7 @@ A repeat inspection replays a nonverbal reaction without duplicating discovery. 
 ## Outstanding production proof
 
 Verify actual keyboard/touch approaches in courtyard, workshop, rooftop and exterior regions. Check selected physical NPC greeting, cat sit and resume, a solid landmark's inspect/reaction, saved discovery/reload, and all original activities. Inspect actor/object occlusion and the same map/camera at morning/evening with particles off. Do not accept the isolated schematic harness as these passes.
+
+## Authored ecology content
+
+compileLife includes life-owned, schema-validated routine recipes relative to stable authored landmarks. They add the office regular at town.market-pocket and birds at the park reading stone, river jetty bank and mature rooftop pots. A map-owned hook for the same canonical character suppresses its supplemental recipe. Every waypoint and segment still uses shared navigation and entrance exclusions. No map JSON or shared schema is edited. Actual current town, park, riverbank and rooftop geometry tests verify the recipes. Rooftop bird presence reads garden maturity supplied by foundation.
