@@ -1,0 +1,42 @@
+[
+  {
+    "profile": "desktop",
+    "video": "/workspace/junyan/docs/evidence/world/0081/supported-stairwell-61e6910/video/page@ffae109a49e6041b842c51f43092a2a3.webm",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp9",
+          "width": 960,
+          "height": 1000,
+          "avg_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "79.240000"
+      }
+    },
+    "contact": "docs/evidence/world/0081/supported-stairwell-61e6910/desktop-video-contact.png"
+  },
+  {
+    "profile": "phone",
+    "video": "/workspace/junyan/docs/evidence/world/0081/supported-stairwell-61e6910/video/page@e030e0a1a87a03da4db50bbc06f3032f.webm",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp9",
+          "width": 390,
+          "height": 844,
+          "avg_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "68.080000"
+      }
+    },
+    "contact": "docs/evidence/world/0081/supported-stairwell-61e6910/phone-video-contact.png"
+  }
+]
