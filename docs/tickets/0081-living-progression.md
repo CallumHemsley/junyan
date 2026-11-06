@@ -1,5 +1,5 @@
 ---
-id: 77
+id: 81
 title: Revisit language through a progressive neighbourhood life
 status: doing
 priority: high
@@ -21,7 +21,7 @@ One correct action permanently recovers a word and restaurant difficulty plateau
 
 ## Notes
 
-- Owner: Astra implementation agent under Codex root coordination. Branch `codex/0077-living-progression`; worktree `/private/tmp/junyan-0077-progression`; strict ports 5277/5278.
+- Owner: Astra implementation agent under Codex root coordination. Branch `codex/0081-living-progression`; worktree `/private/tmp/junyan-0077-progression`; strict ports 5277/5278.
 - User explicitly authorized implementation and merge to main. No AWS writes or manual deployment.
 - Research runs cover primary learning studies, first-party cozy progression precedents, and local architecture. Root reserves 0077 centrally before implementation.
 - Design is reversible offline state and content, not a new backend, renderer or accepted curriculum claim. Learning efficacy and subjective enjoyment need human playtests.

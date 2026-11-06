@@ -50,7 +50,7 @@ test("a shift buys a furnishing, an invitation leads to a real routine, and the 
   for (const table of [1, 2, 3, 4]) await serve(page, table);
   await page.getByRole("button", { name: "回家看看", exact: true }).click();
   await expect(page.locator('[aria-label="可用的钱"]')).toHaveText("10 块");
-  await page.screenshot({ path: `docs/evidence/0077/${info.project.name}-shop.png`, fullPage: true });
+  await page.screenshot({ path: `docs/evidence/0081/${info.project.name}-shop.png`, fullPage: true });
   await page.locator('[data-buy="blue-vase"]').click();
   await expect(page.locator('[aria-label="可用的钱"]')).toHaveText("2 块");
   await expect(page.locator('[data-buy="blue-vase"]')).toBeDisabled();
@@ -60,8 +60,9 @@ test("a shift buys a furnishing, an invitation leads to a real routine, and the 
   await page.getByRole("button", { name: "放这里", exact: true }).click();
   await expect(page.locator('.apartment-items').getByRole("button", { name: /蓝色花瓶.*屋里/ })).toBeVisible();
   await page.locator('.apartment-scene').scrollIntoViewIfNeeded();
-  await page.screenshot({ path: `docs/evidence/0077/${info.project.name}-furnished.png`, fullPage: true });
+  await page.screenshot({ path: `docs/evidence/0081/${info.project.name}-furnished.png`, fullPage: true });
   const placed = (await state(page)).neighbourhood!.apartment.placements;
+  await expect.poll(() => page.evaluate(() => localStorage.getItem("junyan-waiter-pending-v1"))).toBeNull();
   await page.reload();
   await expect(page.locator(".apartment")).toBeVisible();
   expect((await state(page)).neighbourhood!.apartment.placements).toEqual(placed);
@@ -71,7 +72,7 @@ test("a shift buys a furnishing, an invitation leads to a real routine, and the 
   await invitation.click();
   expect((await state(page)).neighbourhood!.location).toBe(scenario!.split(".")[0]);
   await expect(page.locator('[data-location-heading]')).toBeFocused();
-  await page.screenshot({ path: `docs/evidence/0077/${info.project.name}-invitation.png`, fullPage: true });
+  await page.screenshot({ path: `docs/evidence/0081/${info.project.name}-invitation.png`, fullPage: true });
   await visit(page, "repairs");
   await page.getByTestId("repair-job-lamp").click();
   await page.getByTestId("repair-part-bulb").click();
