@@ -1,4 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { createHash } from 'node:crypto';
+import { initialState } from '../../../features/apartment/rules';
+import type { ResidentialArtApi } from './index';
 import type { WorldRenderView } from '../../render-contract';
 import { colorShader } from '../../lighting';
 import { sampleAtmosphere } from '../../atmosphere';
@@ -34,6 +37,25 @@ describe('production native bed ownership',()=>{
     const boxes=structural.map(p=>p.box);
     expect(Math.min(...boxes.map(b=>b[0]))).toBe(4.14);expect(Math.max(...boxes.map(b=>b[3]))).toBe(7.86);
     expect(Math.max(...boxes.map(b=>b[5]))).toBe(1.24);
+  });
+  it('preserves the original ordered commands and actual unsupported-camera Canvas fallback',async()=>{
+    const {drawApartmentFurniture,renderFurnitureObjects}=await import('./index');
+    const home=initialState(),commands:{kind:string;args:unknown[]}[]=[];
+    const api=Object.fromEntries(['box','sphere','capsule','castShadow'].map(kind=>[kind,(...args:unknown[])=>commands.push({kind,args})])) as ResidentialArtApi;
+    drawApartmentFurniture(api,home);
+    const digest=(value:unknown)=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
+    // Frozen from the pre-material public renderer, including stripes before the end/corner.
+    expect(commands.filter(c=>c.kind==='box')).toHaveLength(19);
+    expect(digest(commands)).toBe('f56c00fd801a168572d59204c9b645d5ad9eec56bdcb6bc50c8558a4a1c12fc7');
+    const trace:unknown[][]=[];
+    const context=new Proxy({globalAlpha:.37}, {
+      set(target,key,value) {Reflect.set(target,key,value);trace.push(['set',key,value]);return true;},
+      get(target,key) {return Reflect.has(target,key)?Reflect.get(target,key):(...args:unknown[])=>trace.push([key,...args]);},
+    }) as unknown as CanvasRenderingContext2D;
+    renderFurnitureObjects(home)[0].draw(context,view(11.01,200,160));
+    expect(trace).toHaveLength(2095);
+    expect(digest(trace)).toBe('c736c6b3dba7eb337aedf09c4d86d986ddd60abfb0f04625d07d0d625d2b8033');
+    expect(surfaces).toHaveLength(0);
   });
   it('reuses an unchanged raw/graded object across camera, time, preference and offscreen re-entry',async()=>{
     const {bedRecipe,drawBed}=await import('./bed');const recipe=bedRecipe(4.14,4.14,7.86,7.86),shader=plus(17),contact=vi.fn();
