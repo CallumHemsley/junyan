@@ -2269,6 +2269,20 @@
         }
       ],
       "characterId": "sparrow"
+    },
+    {
+      "id": "courtyard.laundry-neighbour",
+      "characterId": "resident-laundry-neighbour",
+      "position": {
+        "x": 34.5,
+        "y": 10.8
+      },
+      "route": [
+        {
+          "x": 30.4,
+          "y": 20.8
+        }
+      ]
     }
   ],
   "landmarks": [
@@ -2367,6 +2381,22 @@
         "y": 20
       },
       "kind": "kitchen-stoop"
+    },
+    {
+      "id": "courtyard.laundry-sorting-approach",
+      "position": {
+        "x": 34.5,
+        "y": 10.8
+      },
+      "kind": "laundry-sorting"
+    },
+    {
+      "id": "courtyard.water-jar-approach",
+      "position": {
+        "x": 30.4,
+        "y": 20.8
+      },
+      "kind": "laundry-water-task"
     }
   ]
 }

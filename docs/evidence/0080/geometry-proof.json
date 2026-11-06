@@ -6,7 +6,7 @@
   },
   "reachableAreaSampledTiles": 1096.5,
   "sampleStep": 0.5,
-  "authoredLandmarks": 12,
+  "authoredLandmarks": 14,
   "props": 92,
   "sharedFoundationSnapshot": "/workspace/junyan/src/world",
   "routes": [
@@ -763,6 +763,16 @@
         {
           "x": 8,
           "y": 27.7
+        }
+      ]
+    },
+    {
+      "id": "courtyard.laundry-neighbour.route.0",
+      "length": 14.7,
+      "waypoints": [
+        {
+          "x": 30.4,
+          "y": 20.8
         }
       ]
     }
