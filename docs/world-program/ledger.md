@@ -110,3 +110,24 @@ Rooftop and atmosphere had no remote branch at this fetch, but native thread sna
 - **All art owners:** foundation adapter proposal is in `docs/evidence/0078/adapter-v1.md` at 2532c61. It uses logical canvas pixels, `project(point,z?)`, and ground/object/foreground passes. No DPR multiplication, loop or DOM in owner art. Foundation still needs a concrete per-object ordering contract so owner draw calls do not paint whole building layers over actors incorrectly.
 
 Cross-thread send remains absent. Root relays these same-scope fixes; no replacement workers are warranted by current evidence.
+
+## Toolchain and second artifact checkpoint
+
+The default pnpm wrapper can try to reconcile dependencies before running a command and abort without a TTY. Do not churn the lockfile to solve this. Direct installed entry points bypass that wrapper:
+
+```sh
+node node_modules/typescript/bin/tsc --noEmit
+node node_modules/vitest/vitest.mjs run
+node node_modules/vite/bin/vite.js --host 0.0.0.0 --port YOUR_ASSIGNED_PORT --strictPort
+node node_modules/@playwright/test/cli.js test --config YOUR_OWNED_CONFIG
+```
+
+Paths exist in this cloud checkout. The TypeScript example check passed; Vitest, Vite and Playwright version commands started successfully. Installed versions here are Vitest 3.2.7, Vite 7.3.7, Playwright 1.64.1 and Node 24.22.1. This is not a frozen-install or required-Node-22 verification claim. Review's existing Node 22 toolchain and browser cache are reported in its owned ledger; each worker verifies its own paths. `pnpm --config.verify-deps-before-run=false` is a suggested alternative from root, not tested by this coordinator.
+
+Foundation now publishes the executable art contract at `9f144d5`. Root should relay that exact import path to all art owners. Rooftop `0a88378`, atmosphere `9f019f4`, and reviewer `340adcc` are now remote, so every initial builder/reviewer has a recoverable published branch. Town has advanced to `3747266` with its map.
+
+The repeated schema/standing audit now covers nine map payloads, including town and rooftop. All parse and have standable default spawns and entrances. The pond anchor issue remains at landscape's last fetched head; parent reports owner is actively fixing it. Await a corrected pushed head before closing it.
+
+Independent review at `340adcc` supplies real baseline phone/desktop captures and 2 passing normal-opening/menu/reload journeys. This proves the current baseline's limitations, not connected-world acceptance. Its contract review found no ownership collision and requested precise time units and portal-ID scope. Contract and typed example now clarify both. Executable rendering/depth and clock conversion still need foundation integration proof.
+
+Coordinator visually inspected the character direction sheet at `b94fd1f` and courtyard composition study at `c176f5a`. Character palette/accessory identities are readable, but adjacent directions repeat silhouettes; motion/diagonal readability is not established by the still sheet. Courtyard loop B gives alternate approaches, but broad paving, repeated grass texture and sparse architecture remain prototype-level. These are same-scope art iteration notes, not a claim to have inspected production scenes.

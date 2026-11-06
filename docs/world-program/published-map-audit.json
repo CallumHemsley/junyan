@@ -1,7 +1,17 @@
 {
-  "foundation": "2532c61e4388f96ea9c2b1470db8d0bd36a6a10c",
+  "foundation": "9f144d512cfc0e74cfd7c1c9f43b75f7bf954a6c",
   "note": "Schema and local standing samples only. This does not prove graph reachability, traversal or visual quality.",
   "results": [
+    {
+      "ref": "refs/remotes/origin/codex/0079-town-street",
+      "head": "3747266683d3ec18f7d3af2fb99fcf88942cb098",
+      "file": "src/world/maps/town/map.json",
+      "mapId": "town",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": []
+    },
     {
       "ref": "refs/remotes/origin/codex/0080-courtyard",
       "head": "c176f5ac0423d7fa6e3c0f7a8c42f0a3fcc793db",
@@ -47,6 +57,16 @@
       "head": "2ed1ad32fd5a98670af92f471c669e7ab536c5de",
       "file": "src/world/maps/workshop/map.json",
       "mapId": "workshop",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/0083-rooftop",
+      "head": "0a88378c8b7ce7618d7525602671c2c673302ad8",
+      "file": "src/world/maps/rooftop/map.json",
+      "mapId": "rooftop",
       "schema": "pass",
       "spawnCanStand": true,
       "blockedEntrances": [],

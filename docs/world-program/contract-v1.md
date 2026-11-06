@@ -26,7 +26,7 @@ Each map owner exports a JSON-compatible `WorldMapDefinition` from `src/world/ma
 | `npcHooks` | Array of `{id,position,route,characterId}`; route is an array of points |
 | `landmarks` | Array of `{id,position,kind}` for coverage and experience review |
 
-IDs are namespaced by map. The shared registry, schema, validator and loader belong to foundation. Do not create ten validators or ten world engines. Unsupported fields go in an owner's proposal, not an unannounced divergent schema.
+Entrance and exit IDs are unique within a map, not globally. Resolve an exit through the pair `(targetMapId, targetEntranceId)`. Two maps may both define `from-town`. Other authored object IDs use map prefixes to make evidence and diagnostics readable. The shared registry, schema, validator and loader belong to foundation. Do not create ten validators or ten world engines. Unsupported fields go in an owner's proposal, not an unannounced divergent schema.
 
 ## Map graph and ownership
 
@@ -102,3 +102,9 @@ Activity controls occupy a compact contextual DOM panel or overlay anchored to t
 Apartment edits update visible world furniture and explicit dynamic colliders through the residential transform. Repair progress, cats and garden state update their world props/actors through owner render data. Preserve existing replay and tappable words in all activity dialogue. Foundation must agree the embedding seam with feature owners before wiring production anchors.
 
 Acceptance requires real input entry and dismissal of each activity on phone and desktop, verifying the world remains the main view and activity state survives travel and reload. The initial map graph is a connected tranche, not a final scale ceiling.
+
+## Published executable seam and time semantics
+
+Foundation head `9f144d5` publishes `src/world/schema.ts`, `geometry.ts`, `camera.ts`, `registry.ts`, `state.ts` and `render-contract.ts`. Art imports `WorldRenderView`, `DrawMap`, `WorldArtModule` and `WorldDrawCommand` from the foundation render contract. Map modules export `mapDefinitions`; art modules export `drawMap`. The current adapter is an initial executable unit, not final depth/occlusion acceptance.
+
+Atmosphere `timeOfDay` is the explicit union `morning | noon | evening | night`, matching atmosphere head `9f019f4`. It is not an hour, fraction or milliseconds. `elapsedMs` alone measures active animation time in milliseconds and freezes while hidden. Foundation derives the day phase from authoritative restaurant progression through one named conversion; atmosphere does not read wall time or advance the day. Foundation must publish the conversion and fixtures for morning, dusk, day rollover and reload before integration acceptance. Night may be exercised in the visual harness without changing production day rules.

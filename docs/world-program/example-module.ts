@@ -42,7 +42,7 @@ export type ActorSampleInput = {
 export type AtmosphereSampleInput = {
   mapId: string;
   day: number;
-  timeOfDay: number;
+  timeOfDay: "morning" | "noon" | "evening" | "night";
   elapsedMs: number;
   seed: number;
   reducedMotion: boolean;
