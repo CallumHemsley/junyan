@@ -1,0 +1,192 @@
+{
+  "config": {
+    "argv": [
+      "/workspace/.junyan-tools/node_modules/node/bin/node",
+      "/workspace/junyan/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "docs/evidence/0088/worker-23be251/review.config.ts",
+      "--project",
+      "desktop"
+    ],
+    "configFile": "/workspace/junyan/docs/evidence/0088/worker-23be251/review.config.ts",
+    "rootDir": "/workspace/junyan/docs/evidence/0088/worker-23be251",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/worker-23be251/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/worker-23be251",
+        "testIgnore": [],
+        "testMatch": [
+          "worker.spec.ts"
+        ],
+        "timeout": 900000
+      },
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/worker-23be251/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0088/worker-23be251",
+        "testIgnore": [],
+        "testMatch": [
+          "worker.spec.ts"
+        ],
+        "timeout": 900000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0088/worker-23be251/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/worker-23be251",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0088/worker-23be251",
+        "testIgnore": [],
+        "testMatch": "worker.spec.ts",
+        "timeout": 900000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://127.0.0.1:5490/junyan/",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "video": "on",
+          "trace": "on",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "/workspace/.junyan-tools/node_modules/node/bin/node node_modules/vite/bin/vite.js preview --base /junyan/ --host 127.0.0.1 --port 5490 --strictPort",
+      "cwd": "/workspace/junyan-review-integration",
+      "url": "http://127.0.0.1:5490/junyan/",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "worker.spec.ts",
+      "file": "worker.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "production worker lifecycle, native inputs, picking and resize observations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 900000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 28902,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T00:33:16.130Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0088/worker-23be251/results/worker-production-worker-l-e809c-ing-and-resize-observations-desktop/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/worker-23be251/results/worker-production-worker-l-e809c-ing-and-resize-observations-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fc2e6a6f1bfc187e0814-2f6cae63508ba4e1911c",
+          "file": "worker.spec.ts",
+          "line": 15,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-06T00:33:15.136Z",
+    "duration": 32210.141,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
