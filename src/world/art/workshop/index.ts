@@ -69,6 +69,9 @@ export function renderObjects(map: WorldMapDefinition, view: WorldRenderView, re
   if(map.id!=='workshop')return [];
   return map.props.map(prop=>{
     const candidate=map.occluders.find(o=>o.id===prop.id);
+    const surfaceKinds=new Set(['task-lamp','radio','kettle','paper','chair-repair']);
+    const host=surfaceKinds.has(prop.kind)?map.props.find(p=>p.id!==prop.id&&/bench|shelf/.test(p.kind)&&prop.position.x>=p.position.x&&prop.position.x<=p.position.x+p.width&&prop.position.y>=p.position.y&&prop.position.y<=p.position.y+p.height):undefined;
+    const depth=prop.kind==='wall'&&prop.position.x<3?prop.position.x+prop.position.y:host?host.position.x+host.position.y+host.width/2+host.height/2+.01:prop.position.x+prop.position.y+prop.width/2+prop.height/2;
     const player=view.project(view.playerPosition);
     const corners=[{x:prop.position.x,y:prop.position.y},{x:prop.position.x+prop.width,y:prop.position.y},{x:prop.position.x,y:prop.position.y+prop.height},{x:prop.position.x+prop.width,y:prop.position.y+prop.height}];
     const floor=corners.map(p=>view.project(p)),top=corners.map(p=>view.project(p,candidate?.height??0));
@@ -76,7 +79,7 @@ export function renderObjects(map: WorldMapDefinition, view: WorldRenderView, re
     return ({
     id:prop.id,
     position:{x:prop.position.x+prop.width/2,y:prop.position.y+prop.height/2},
-    depth:prop.position.x+prop.position.y+prop.width/2+prop.height/2,
+    depth,
     occlusion:overlaps?candidate:undefined,
     draw(ctx,view){
       // Contact shadows ground each workstation and shelf in the room.

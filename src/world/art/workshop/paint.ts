@@ -53,6 +53,7 @@ export function drawWorkshopProp(api: RepairArtApi, prop: Prop, state: WorkshopP
   };
   switch (prop.kind) {
     case 'wall':
+      if(x>27){b(0,0,0,w,h,.65,cream);b(0,0,.65,w,h,.8,wood);break;}
       b(0,0,0,w,h,3.8,prop.variant ? [207,190,158] : cream);
       b(0,0,0,w,h,.35,edge); b(0,0,3.5,w,h,3.85,edge);
       if (!prop.variant) for (let a=.5;a<w;a+=4.5) b(a,0,.35,a+.13,h,3.55,wood);
