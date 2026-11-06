@@ -1,4 +1,4 @@
-import {drawMap} from './index';
+import {drawMap, renderObjects} from './index';
 import {rooftopForGarden} from '../../maps/rooftop';
 import {worldMapSchema} from '../../schema';
 import {project, type Camera} from '../../camera';
@@ -18,10 +18,11 @@ if (import.meta.env.DEV && new URLSearchParams(location.search).get('test') === 
     gradient.addColorStop(0, '#9eafbc'); gradient.addColorStop(.65, '#c2d0ca'); gradient.addColorStop(1, '#e5dec3');
     ctx.fillStyle = gradient; ctx.fillRect(0, 0, canvas.width, canvas.height);
     const map = worldMapSchema.parse(rooftopForGarden(state));
-    for (const pass of ['ground', 'objects', 'foreground'] as const) drawMap(ctx, map, {
-      project: (p, z) => project(p, camera, z), width: canvas.width, height: canvas.height,
-      elapsedMs: 1200, reducedMotion: motion.matches, playerPosition: focus, pass,
-    });
+    const view = {project: (p: {x: number; y: number}, z = 0) => project(p, camera, z), width: canvas.width, height: canvas.height,
+      elapsedMs: 1200, reducedMotion: motion.matches, playerPosition: focus, pass: 'ground' as const};
+    drawMap(ctx, map, view);
+    for (const object of renderObjects(map, view).sort((a, b) => (a.depth ?? 0) - (b.depth ?? 0))) object.draw(ctx, {...view, pass: 'objects'});
+    drawMap(ctx, map, {...view, pass: 'foreground'});
   }
   const mature = () => {
     const next = structuredClone(state);

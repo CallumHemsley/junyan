@@ -1,7 +1,6 @@
 import definition from './map.json';
-import {plantIds, type State, type Site} from '../../../features/garden/rules';
+import {initialState, plantIds, type State, type Site} from '../../../features/garden/rules';
 
-export const mapDefinitions = [definition];
 export const rooftopMap = definition;
 export const gardenSites: Record<Site, {x: number; y: number}> = {
   0: {x: 15, y: 22}, 1: {x: 24, y: 22}, 2: {x: 32, y: 19},
@@ -23,7 +22,7 @@ export function projectGarden(state: State) {
   const props = [...pots, {
     id: 'rooftop.garden-shade', kind: 'garden-shade',
     position: {x: shade.x - .3, y: shade.y - .4},
-    width: 2, height: 2.2, layer: 'foreground' as const, variant: 0,
+    width: 2, height: 2.2, layer: 'object' as const, variant: 0,
   }];
   const colliders = pots.map(pot => ({id: pot.id, rect: {...pot.position, width: pot.width, height: pot.height}}));
   // Only the shade feet are solid; its canopy remains a walk-under surface.
@@ -42,3 +41,5 @@ export function rooftopForGarden(state: State) {
   return {...definition, props: [...definition.props, ...garden.props],
     colliders: [...definition.colliders, ...garden.colliders], occluders: [...definition.occluders, ...garden.occluders]};
 }
+
+export const mapDefinitions = [rooftopForGarden(initialState())];
