@@ -1,0 +1,77 @@
+
+ RUN  v3.2.7 /workspace/junyan
+
+ ✓ src/world/maps/rooftop/rooftop.test.ts (4 tests) 6332ms
+   ✓ rooftop circulation and existing garden projection > keeps circulation open for every legal three-pot layout and each shade site  6290ms
+ ✓ src/scene/renderer.test.ts (18 tests) 6957ms
+   ✓ actual raster depth and walking > partially occludes rear-facing food with the body without hiding the whole tray  1742ms
+   ✓ actual raster depth and walking > walks deterministically from supplied time and freezes at reduced-motion inputs  2513ms
+   ✓ renders independently without DOM globals and reflects customer/tray state  2361ms
+ ✓ src/world/maps/town/map.test.ts (6 tests) 3750ms
+   ✓ authored town travel > keeps six usable door and path approaches connected with safe arrivals  1261ms
+   ✓ authored town travel > reaches every authored observation and landmark without crossing buildings  948ms
+   ✓ authored town travel > keeps the allocated courier circuit clear of doors and active targets  481ms
+   ✓ authored town travel > registers every authored resident and bird without blocking door arrivals  571ms
+   ✓ authored town travel > keeps residents on collision-safe routes and projects phone edges accurately  485ms
+ ✓ src/scene/restaurant-scene.test.ts (5 tests) 5907ms
+   ✓ served food projection > shows one representative of each distinct kind regardless of quantities  2766ms
+   ✓ served food projection > keeps the matching meal through payment and reconstructs it from reloaded state  1595ms
+   ✓ served food projection > leaves no rejected-order artifact and puts accepted food at only its assigned table  1318ms
+ ✓ src/world/graph.test.ts (1 test) 13359ms
+   ✓ connects every registered spawn, activity and exit  13358ms
+ ✓ src/scene/ward.test.ts (8 tests) 1318ms
+   ✓ ward scene > renders every step frame without DOM globals and is deterministic  509ms
+   ✓ ward scene > keeps the seated player face stable across the ambient cycle and step transitions  302ms
+ ✓ src/world/life/routines.test.ts (5 tests) 720ms
+   ✓ authored life routines on actual map definitions > keeps town routines inside real shared geometry and outside entrances  635ms
+ ✓ src/world/maps/landscape/landscape.test.ts (12 tests) 2609ms
+   ✓ park authored routes > uses shared pathfinding to reach the waterside approach  1241ms
+   ✓ riverbank authored routes > uses shared pathfinding to reach the waterside approach  1220ms
+ ✓ src/world/life/scene.test.ts (1 test) 692ms
+   ✓ uses one world-life frame for global service presence and authoritative courtyard clues  691ms
+ ✓ src/save.test.ts (52 tests) 628ms
+ ✓ src/features/repairs/rules.test.ts (13 tests) 299ms
+ ✓ src/world/maps/residential/maps.test.ts (4 tests) 404ms
+ ✓ src/content/content.test.ts (37 tests) 227ms
+ ✓ src/world/characters/background.test.ts (4 tests) 193ms
+ ✓ src/world/life/background.test.ts (10 tests) 214ms
+ ✓ src/features/apartment/scene-data.test.ts (2 tests) 244ms
+ ✓ src/world/maps/workshop/map.test.ts (3 tests) 183ms
+ ✓ src/world/world.test.ts (7 tests) 167ms
+ ✓ src/world/life/life.test.ts (17 tests) 130ms
+ ✓ src/features/cats/rules.test.ts (28 tests) 96ms
+ ✓ src/world/atmosphere/index.test.ts (9 tests) 64ms
+ ✓ src/world/characters/actors.test.ts (6 tests) 56ms
+ ✓ src/neighbourhood/integration.test.ts (10 tests) 106ms
+ ✓ src/navigation.test.ts (4 tests) 24ms
+ ✓ src/game.test.ts (30 tests) 34ms
+ ✓ src/features/cats/content.test.ts (4 tests) 39ms
+ ✓ src/world/characters/depth.test.ts (1 test) 11ms
+ ✓ src/world/life/landmarks.test.ts (6 tests) 25ms
+ ✓ src/opening.test.ts (11 tests) 24ms
+ ✓ src/neighbourhood/content.test.ts (8 tests) 46ms
+ ✓ src/features/garden/rules.test.ts (11 tests) 30ms
+ ✓ src/world/maps/courtyard/habitat.test.ts (4 tests) 14ms
+ ✓ src/features/apartment/rules.test.ts (11 tests) 21ms
+ ✓ src/audio/playback.test.ts (13 tests) 13ms
+ ✓ src/features/apartment/world.test.ts (3 tests) 12ms
+ ✓ src/neighbourhood/state.test.ts (10 tests) 9ms
+ ✓ src/audio/ambience.test.ts (6 tests) 7ms
+ ✓ src/world/atmosphere/map-hooks.test.ts (2 tests) 9ms
+ ✓ src/startup.test.ts (7 tests) 9ms
+ ✓ src/world/art/town/building-sections.test.ts (2 tests) 12ms
+ ✓ src/features/garden/content.test.ts (4 tests) 8ms
+ ✓ src/world/life/presence.test.ts (2 tests) 5ms
+ ✓ src/world/life/render.test.ts (2 tests) 4ms
+ ✓ src/opening-view.test.ts (2 tests) 5ms
+ ✓ src/recovery.test.ts (11 tests) 5ms
+ ✓ src/audio/ambience-speech.test.ts (1 test) 5ms
+ ✓ src/audio/ambience-preferences.test.ts (1 test) 4ms
+ ✓ src/world/lighting.test.ts (2 tests) 4ms
+ ✓ src/features/apartment/content.test.ts (1 test) 3ms
+
+ Test Files  49 passed (49)
+      Tests  421 passed (421)
+   Start at  01:48:34
+   Duration  23.20s (transform 1.82s, setup 0ms, collect 10.34s, tests 45.04s, environment 9ms, prepare 4.16s)
+

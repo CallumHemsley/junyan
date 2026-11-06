@@ -1,0 +1,22 @@
+{
+  "videos": [
+    {
+      "device": "phone390",
+      "sourceHead": "cbaf4b79ebcc04173593d96ca7120be02177f24d",
+      "filename": "approaches-phone390.mp4",
+      "sha256": "16081418e2ac729c953094f076cc9f080cb07c4167af14045009777b76d27d59",
+      "bytes": 1788109,
+      "rawVideo": "/workspace/junyan/output/world/0079/e02-raw/page@953b45ac813e11b4ff07f5fd3d534be6.webm",
+      "transform": "20fps H264 CRF28; original input sequence unchanged; no audio"
+    },
+    {
+      "device": "phone320",
+      "sourceHead": "cbaf4b79ebcc04173593d96ca7120be02177f24d",
+      "filename": "approaches-phone320.mp4",
+      "sha256": "2b10fd3bcd7786cb4f9e5b263da441a88deecafcfc253a392f07ae5bd1fb543d",
+      "bytes": 1396331,
+      "rawVideo": "/workspace/junyan/output/world/0079/e02-raw/page@64005639c4a7befeeaf62a218edf18c4.webm",
+      "transform": "20fps H264 CRF28; original input sequence unchanged; no audio"
+    }
+  ]
+}

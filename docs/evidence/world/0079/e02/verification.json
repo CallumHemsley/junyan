@@ -1,0 +1,30 @@
+{
+  "sourceHead": "cbaf4b79ebcc04173593d96ca7120be02177f24d",
+  "runtime": "v22.23.4",
+  "scope": "Existing world branch; not reconciled main266e9bc or latest foundation proof",
+  "tests": {
+    "files": 49,
+    "passed": 421,
+    "failed": 0
+  },
+  "typecheck": "pass",
+  "productionBuild": "pass",
+  "bundleWarning": "main chunk1059.26kB minified265.29kB gzip; shared performance gate open",
+  "logs": {
+    "tests": {
+      "path": "tests.log",
+      "sha256": "cf440f4f9d9a31555c1c3633a533265ab51dc8be1d6dd715f8a4e29ed5a49176"
+    },
+    "build": {
+      "path": "build.log",
+      "sha256": "18e2e0f1c7364b1d194ab6f89a06acebc112ed85e42ad7e2e619cdf4384f8712"
+    }
+  },
+  "followup": {
+    "sourceHead": "f2a9324",
+    "change": "bench item support sort only; no map/collision change",
+    "focusedTests": 8,
+    "typecheck": "pass",
+    "log": "final-focused-tests.log"
+  }
+}

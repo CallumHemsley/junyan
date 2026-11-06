@@ -1,0 +1,677 @@
+{
+  "sourceHead": "f2a932435e41d5ac18f2407b43e1254d617a2b38",
+  "capturedAt": "2026-11-06T01:51:04.226Z",
+  "surface": "production paintWorld composition fixture; no traversal or phase-progression claim",
+  "particlesOff": true,
+  "results": [
+    {
+      "device": "desktop",
+      "landmark": "breakfast",
+      "phase": "morning",
+      "point": {
+        "x": 34,
+        "y": 32
+      },
+      "filename": "desktop-breakfast-morning.png",
+      "fixture": {
+        "phase": "morning",
+        "served": 0,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 720,
+          "height": 500,
+          "focus": {
+            "x": 34,
+            "y": 32
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "desktop",
+      "landmark": "breakfast",
+      "phase": "evening",
+      "point": {
+        "x": 34,
+        "y": 32
+      },
+      "filename": "desktop-breakfast-evening.png",
+      "fixture": {
+        "phase": "evening",
+        "served": 3,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 720,
+          "height": 500,
+          "focus": {
+            "x": 34,
+            "y": 32
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "desktop",
+      "landmark": "book-junction",
+      "phase": "morning",
+      "point": {
+        "x": 10.5,
+        "y": 30
+      },
+      "filename": "desktop-book-junction-morning.png",
+      "fixture": {
+        "phase": "morning",
+        "served": 0,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 720,
+          "height": 500,
+          "focus": {
+            "x": 10.5,
+            "y": 30
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "desktop",
+      "landmark": "book-junction",
+      "phase": "evening",
+      "point": {
+        "x": 10.5,
+        "y": 30
+      },
+      "filename": "desktop-book-junction-evening.png",
+      "fixture": {
+        "phase": "evening",
+        "served": 3,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 720,
+          "height": 500,
+          "focus": {
+            "x": 10.5,
+            "y": 30
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "desktop",
+      "landmark": "workshop",
+      "phase": "morning",
+      "point": {
+        "x": 73.25,
+        "y": 31.4
+      },
+      "filename": "desktop-workshop-morning.png",
+      "fixture": {
+        "phase": "morning",
+        "served": 0,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 720,
+          "height": 500,
+          "focus": {
+            "x": 73.25,
+            "y": 31.4
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "desktop",
+      "landmark": "workshop",
+      "phase": "evening",
+      "point": {
+        "x": 73.25,
+        "y": 31.4
+      },
+      "filename": "desktop-workshop-evening.png",
+      "fixture": {
+        "phase": "evening",
+        "served": 3,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 720,
+          "height": 500,
+          "focus": {
+            "x": 73.25,
+            "y": 31.4
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "desktop",
+      "landmark": "rest-junction",
+      "phase": "morning",
+      "point": {
+        "x": 17.5,
+        "y": 30
+      },
+      "filename": "desktop-rest-junction-morning.png",
+      "fixture": {
+        "phase": "morning",
+        "served": 0,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 720,
+          "height": 500,
+          "focus": {
+            "x": 17.5,
+            "y": 30
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "desktop",
+      "landmark": "rest-junction",
+      "phase": "evening",
+      "point": {
+        "x": 17.5,
+        "y": 30
+      },
+      "filename": "desktop-rest-junction-evening.png",
+      "fixture": {
+        "phase": "evening",
+        "served": 3,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 720,
+          "height": 500,
+          "focus": {
+            "x": 17.5,
+            "y": 30
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "desktop",
+      "alphaProbe": {
+        "calls": 26200,
+        "inheritedAlpha": 0.45
+      }
+    },
+    {
+      "device": "phone390",
+      "landmark": "breakfast",
+      "phase": "morning",
+      "point": {
+        "x": 34,
+        "y": 32
+      },
+      "filename": "phone390-breakfast-morning.png",
+      "fixture": {
+        "phase": "morning",
+        "served": 0,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 195,
+          "height": 422,
+          "focus": {
+            "x": 34,
+            "y": 32
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "phone390",
+      "landmark": "breakfast",
+      "phase": "evening",
+      "point": {
+        "x": 34,
+        "y": 32
+      },
+      "filename": "phone390-breakfast-evening.png",
+      "fixture": {
+        "phase": "evening",
+        "served": 3,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 195,
+          "height": 422,
+          "focus": {
+            "x": 34,
+            "y": 32
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "phone390",
+      "landmark": "book-junction",
+      "phase": "morning",
+      "point": {
+        "x": 10.5,
+        "y": 30
+      },
+      "filename": "phone390-book-junction-morning.png",
+      "fixture": {
+        "phase": "morning",
+        "served": 0,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 195,
+          "height": 422,
+          "focus": {
+            "x": 10.5,
+            "y": 30
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "phone390",
+      "landmark": "book-junction",
+      "phase": "evening",
+      "point": {
+        "x": 10.5,
+        "y": 30
+      },
+      "filename": "phone390-book-junction-evening.png",
+      "fixture": {
+        "phase": "evening",
+        "served": 3,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 195,
+          "height": 422,
+          "focus": {
+            "x": 10.5,
+            "y": 30
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "phone390",
+      "landmark": "workshop",
+      "phase": "morning",
+      "point": {
+        "x": 73.25,
+        "y": 31.4
+      },
+      "filename": "phone390-workshop-morning.png",
+      "fixture": {
+        "phase": "morning",
+        "served": 0,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 195,
+          "height": 422,
+          "focus": {
+            "x": 73.25,
+            "y": 31.4
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "phone390",
+      "landmark": "workshop",
+      "phase": "evening",
+      "point": {
+        "x": 73.25,
+        "y": 31.4
+      },
+      "filename": "phone390-workshop-evening.png",
+      "fixture": {
+        "phase": "evening",
+        "served": 3,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 195,
+          "height": 422,
+          "focus": {
+            "x": 73.25,
+            "y": 31.4
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "phone390",
+      "landmark": "rest-junction",
+      "phase": "morning",
+      "point": {
+        "x": 17.5,
+        "y": 30
+      },
+      "filename": "phone390-rest-junction-morning.png",
+      "fixture": {
+        "phase": "morning",
+        "served": 0,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 195,
+          "height": 422,
+          "focus": {
+            "x": 17.5,
+            "y": 30
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "phone390",
+      "landmark": "rest-junction",
+      "phase": "evening",
+      "point": {
+        "x": 17.5,
+        "y": 30
+      },
+      "filename": "phone390-rest-junction-evening.png",
+      "fixture": {
+        "phase": "evening",
+        "served": 3,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 195,
+          "height": 422,
+          "focus": {
+            "x": 17.5,
+            "y": 30
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "phone390",
+      "alphaProbe": {
+        "calls": 26200,
+        "inheritedAlpha": 0.45
+      }
+    },
+    {
+      "device": "phone320",
+      "landmark": "breakfast",
+      "phase": "morning",
+      "point": {
+        "x": 34,
+        "y": 32
+      },
+      "filename": "phone320-breakfast-morning.png",
+      "fixture": {
+        "phase": "morning",
+        "served": 0,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 160,
+          "height": 422,
+          "focus": {
+            "x": 34,
+            "y": 32
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "phone320",
+      "landmark": "breakfast",
+      "phase": "evening",
+      "point": {
+        "x": 34,
+        "y": 32
+      },
+      "filename": "phone320-breakfast-evening.png",
+      "fixture": {
+        "phase": "evening",
+        "served": 3,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 160,
+          "height": 422,
+          "focus": {
+            "x": 34,
+            "y": 32
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "phone320",
+      "landmark": "book-junction",
+      "phase": "morning",
+      "point": {
+        "x": 10.5,
+        "y": 30
+      },
+      "filename": "phone320-book-junction-morning.png",
+      "fixture": {
+        "phase": "morning",
+        "served": 0,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 160,
+          "height": 422,
+          "focus": {
+            "x": 10.5,
+            "y": 30
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "phone320",
+      "landmark": "book-junction",
+      "phase": "evening",
+      "point": {
+        "x": 10.5,
+        "y": 30
+      },
+      "filename": "phone320-book-junction-evening.png",
+      "fixture": {
+        "phase": "evening",
+        "served": 3,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 160,
+          "height": 422,
+          "focus": {
+            "x": 10.5,
+            "y": 30
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "phone320",
+      "landmark": "workshop",
+      "phase": "morning",
+      "point": {
+        "x": 73.25,
+        "y": 31.4
+      },
+      "filename": "phone320-workshop-morning.png",
+      "fixture": {
+        "phase": "morning",
+        "served": 0,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 160,
+          "height": 422,
+          "focus": {
+            "x": 73.25,
+            "y": 31.4
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "phone320",
+      "landmark": "workshop",
+      "phase": "evening",
+      "point": {
+        "x": 73.25,
+        "y": 31.4
+      },
+      "filename": "phone320-workshop-evening.png",
+      "fixture": {
+        "phase": "evening",
+        "served": 3,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 160,
+          "height": 422,
+          "focus": {
+            "x": 73.25,
+            "y": 31.4
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "phone320",
+      "landmark": "rest-junction",
+      "phase": "morning",
+      "point": {
+        "x": 17.5,
+        "y": 30
+      },
+      "filename": "phone320-rest-junction-morning.png",
+      "fixture": {
+        "phase": "morning",
+        "served": 0,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 160,
+          "height": 422,
+          "focus": {
+            "x": 17.5,
+            "y": 30
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "phone320",
+      "landmark": "rest-junction",
+      "phase": "evening",
+      "point": {
+        "x": 17.5,
+        "y": 30
+      },
+      "filename": "phone320-rest-junction-evening.png",
+      "fixture": {
+        "phase": "evening",
+        "served": 3,
+        "validSave": true,
+        "particlesDisabled": true,
+        "renderer": "production paintWorld",
+        "camera": {
+          "width": 160,
+          "height": 422,
+          "focus": {
+            "x": 17.5,
+            "y": 30
+          },
+          "scale": 17
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "device": "phone320",
+      "alphaProbe": {
+        "calls": 26200,
+        "inheritedAlpha": 0.45
+      }
+    }
+  ]
+}

@@ -8,7 +8,7 @@ await (await import('node:fs/promises')).mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--mute-audio']});
 const sourceHead=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
 async function journey(device,viewport,touch) {
- const context=await browser.newContext({viewport,isMobile:touch,hasTouch:touch,reducedMotion:'no-preference',recordVideo:{dir:resolve('output/0079-raw'),size:viewport}});
+ const context=await browser.newContext({viewport,isMobile:touch,hasTouch:touch,reducedMotion:'no-preference',recordVideo:{dir:resolve('output/world/0079/e02-raw'),size:viewport}});
  const page=await context.newPage();const errors=[];const steps=[];let lastCommand=null;
  page.on('pageerror',e=>errors.push(e.message));
  page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
@@ -24,7 +24,7 @@ async function journey(device,viewport,touch) {
   await page.waitForTimeout(400);
   await page.screenshot({path:resolve(out,`${device}-first-arrival.png`)});
   async function walkExit(targetMapId) {
-   const before=await state();const mapId=before.mapId;
+   const before=await state();const mapId=before.mapId;let capturedApproach=false;
    const route=await page.evaluate(async({targetMapId})=>{const {worldMaps}=await import('/src/world/registry.ts');const {findPath}=await import('/src/world/geometry.ts');const s=window.__TEST__.getState().world;const map=worldMaps[s.mapId];const exit=map.exits.find(e=>e.targetMapId===targetMapId);if(!exit)throw Error('Missing exit');const r=exit.rect;return findPath(map,s.position,{x:r.x+r.width/2,y:r.y+r.height/2});},{targetMapId});
    if(!route.length)throw Error(`No route ${mapId} to ${targetMapId}`);
    let transitioned=false;
@@ -33,6 +33,10 @@ async function journey(device,viewport,touch) {
      await page.waitForTimeout(150);
      const s=await state();if(s.mapId!==mapId){transitioned=true;break;}
      const dx=waypoint.x-s.position.x,dy=waypoint.y-s.position.y,d=Math.hypot(dx,dy);if(d<.12)break;
+     if(mapId==='town' && waypoint===route.at(-1) && d<3.5 && d>1.3 && !capturedApproach) {
+      capturedApproach=true;await page.screenshot({path:resolve(out,`${device}-approach-${targetMapId}.png`)});
+      steps.push({action:'ordinary approach '+targetMapId,state:s});
+     }
      const next={x:s.position.x+dx*Math.min(1,2.3/d),y:s.position.y+dy*Math.min(1,2.3/d)};
      const p=await page.evaluate(async next=>{
       const {cameraForMap,project}=await import('/src/world/camera.ts');
@@ -55,7 +59,7 @@ async function journey(device,viewport,touch) {
    await page.screenshot({path:resolve(out,`doors-${device}-${targetMapId}-from-${mapId}.png`)});
    console.log(`${device}: ${mapId} -> ${targetMapId}`);
   }
-  for(const destination of ['residential-hall']){await walkExit(destination);await walkExit('town');}
+  for(const destination of ['residential-hall','workshop']){await walkExit(destination);await walkExit('town');}
   await walkExit('restaurant');
   if(errors.length)throw Error(errors.join('\n'));
   const video=page.video();await context.close();
