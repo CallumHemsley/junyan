@@ -1,0 +1,422 @@
+{
+  "config": {
+    "argv": [
+      "/workspace/.junyan-tools/node_modules/node/bin/node",
+      "/workspace/junyan/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "docs/evidence/0088/integrated-e02a747/day-end.config.ts"
+    ],
+    "configFile": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.config.ts",
+    "rootDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "testIgnore": [],
+        "testMatch": [
+          "day-end.spec.ts"
+        ],
+        "timeout": 900000
+      },
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "testIgnore": [],
+        "testMatch": [
+          "day-end.spec.ts"
+        ],
+        "timeout": 900000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "testIgnore": [],
+        "testMatch": "day-end.spec.ts",
+        "timeout": 900000,
+        "use": {
+          "actionTimeout": 15000,
+          "navigationTimeout": 15000,
+          "baseURL": "http://127.0.0.1:5490/junyan/",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "video": "on",
+          "trace": "on",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "testIgnore": [],
+        "testMatch": "day-end.spec.ts",
+        "timeout": 900000,
+        "use": {
+          "actionTimeout": 15000,
+          "navigationTimeout": 15000,
+          "baseURL": "http://127.0.0.1:5490/junyan/",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "video": "on",
+          "trace": "on",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "phone"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "day-end-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "/workspace/.junyan-tools/node_modules/node/bin/node node_modules/vite/bin/vite.js preview --base /junyan/ --host 127.0.0.1 --port 5490 --strictPort",
+      "cwd": "/workspace/junyan-review-integration",
+      "url": "http://127.0.0.1:5490/junyan/",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "day-end.spec.ts",
+      "file": "day-end.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "fourth customer receipt, ended exploration and visible next-day advancement",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 900000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 68783,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n    at walkTo (/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts:38:192)\n    at travel (/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts:49:285)\n    at /workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts:84:3",
+                    "location": {
+                      "file": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts",
+                      "column": 192,
+                      "line": 38
+                    },
+                    "snippet": "  36 |   const p=project(local,camera);const x=rect.x+p.x*rect.width/camera.width,y=rect.y+p.y*rect.height/camera.height;\n  37 |   if(x<rect.x||x>rect.x+rect.width||y<rect.y||y>rect.y+rect.height)throw new Error(`Route target outside camera ${expectedMap}`);\n> 38 |   await page.mouse.click(x,y);await expect.poll(async()=>{const w=await world(page);return w.mapId!==expectedMap||Math.hypot(w.position.x-local.x,w.position.y-local.y)<.18;},{timeout:15000}).toBe(true);\n     |                                                                                                                                                                                                ^\n  39 |   const after=await world(page);if(after.mapId===expectedMap&&Math.hypot(after.position.x-from.x,after.position.y-from.y)<.025)throw new Error(`Input stalled ${expectedMap} at ${JSON.stringify(from)} toward ${JSON.stringify(local)}`);\n  40 |  }\n  41 |  throw new Error(`Route timeout ${expectedMap}`);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts",
+                        "column": 192,
+                        "line": 38
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n\n  36 |   const p=project(local,camera);const x=rect.x+p.x*rect.width/camera.width,y=rect.y+p.y*rect.height/camera.height;\n  37 |   if(x<rect.x||x>rect.x+rect.width||y<rect.y||y>rect.y+rect.height)throw new Error(`Route target outside camera ${expectedMap}`);\n> 38 |   await page.mouse.click(x,y);await expect.poll(async()=>{const w=await world(page);return w.mapId!==expectedMap||Math.hypot(w.position.x-local.x,w.position.y-local.y)<.18;},{timeout:15000}).toBe(true);\n     |                                                                                                                                                                                                ^\n  39 |   const after=await world(page);if(after.mapId===expectedMap&&Math.hypot(after.position.x-from.x,after.position.y-from.y)<.025)throw new Error(`Input stalled ${expectedMap} at ${JSON.stringify(from)} toward ${JSON.stringify(local)}`);\n  40 |  }\n  41 |  throw new Error(`Route timeout ${expectedMap}`);\n    at walkTo (/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts:38:192)\n    at travel (/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts:49:285)\n    at /workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts:84:3"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "desktop opened\n"
+                    },
+                    {
+                      "text": "desktop explicit-close-1\n"
+                    },
+                    {
+                      "text": "desktop explicit-close-2\n"
+                    },
+                    {
+                      "text": "desktop explicit-close-3\n"
+                    },
+                    {
+                      "text": "desktop fourth-before-payment\n"
+                    },
+                    {
+                      "text": "desktop fourth-receipt-seated\n"
+                    },
+                    {
+                      "text": "desktop fourth-word-card\n"
+                    },
+                    {
+                      "text": "desktop fourth-replay-retained\n"
+                    },
+                    {
+                      "text": "desktop explicit-close-4\n"
+                    },
+                    {
+                      "text": "desktop ended-controls\n"
+                    },
+                    {
+                      "text": "desktop route-restaurant-to-town\n"
+                    },
+                    {
+                      "text": "desktop ended-town\n"
+                    },
+                    {
+                      "text": "desktop route-town-to-restaurant\n"
+                    },
+                    {
+                      "text": "desktop ended-return\n"
+                    },
+                    {
+                      "text": "desktop ended-kitchen-controls\n"
+                    },
+                    {
+                      "text": "desktop advanced-day\n"
+                    },
+                    {
+                      "text": "desktop day-two-reloaded\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T01:13:07.199Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end-results/day-end-fourth-customer-re-7f5c6-isible-next-day-advancement-desktop/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end-results/day-end-fourth-customer-re-7f5c6-isible-next-day-advancement-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end-results/day-end-fourth-customer-re-7f5c6-isible-next-day-advancement-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts",
+                    "column": 192,
+                    "line": 38
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "91dc9b824f428c0af8fc-0a4fa7a8828c765d6c77",
+          "file": "day-end.spec.ts",
+          "line": 53,
+          "column": 1
+        },
+        {
+          "title": "fourth customer receipt, ended exploration and visible next-day advancement",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 900000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 60380,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n    at walkTo (/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts:38:192)\n    at travel (/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts:49:285)\n    at /workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts:77:3",
+                    "location": {
+                      "file": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts",
+                      "column": 192,
+                      "line": 38
+                    },
+                    "snippet": "  36 |   const p=project(local,camera);const x=rect.x+p.x*rect.width/camera.width,y=rect.y+p.y*rect.height/camera.height;\n  37 |   if(x<rect.x||x>rect.x+rect.width||y<rect.y||y>rect.y+rect.height)throw new Error(`Route target outside camera ${expectedMap}`);\n> 38 |   await page.mouse.click(x,y);await expect.poll(async()=>{const w=await world(page);return w.mapId!==expectedMap||Math.hypot(w.position.x-local.x,w.position.y-local.y)<.18;},{timeout:15000}).toBe(true);\n     |                                                                                                                                                                                                ^\n  39 |   const after=await world(page);if(after.mapId===expectedMap&&Math.hypot(after.position.x-from.x,after.position.y-from.y)<.025)throw new Error(`Input stalled ${expectedMap} at ${JSON.stringify(from)} toward ${JSON.stringify(local)}`);\n  40 |  }\n  41 |  throw new Error(`Route timeout ${expectedMap}`);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts",
+                        "column": 192,
+                        "line": 38
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n\n  36 |   const p=project(local,camera);const x=rect.x+p.x*rect.width/camera.width,y=rect.y+p.y*rect.height/camera.height;\n  37 |   if(x<rect.x||x>rect.x+rect.width||y<rect.y||y>rect.y+rect.height)throw new Error(`Route target outside camera ${expectedMap}`);\n> 38 |   await page.mouse.click(x,y);await expect.poll(async()=>{const w=await world(page);return w.mapId!==expectedMap||Math.hypot(w.position.x-local.x,w.position.y-local.y)<.18;},{timeout:15000}).toBe(true);\n     |                                                                                                                                                                                                ^\n  39 |   const after=await world(page);if(after.mapId===expectedMap&&Math.hypot(after.position.x-from.x,after.position.y-from.y)<.025)throw new Error(`Input stalled ${expectedMap} at ${JSON.stringify(from)} toward ${JSON.stringify(local)}`);\n  40 |  }\n  41 |  throw new Error(`Route timeout ${expectedMap}`);\n    at walkTo (/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts:38:192)\n    at travel (/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts:49:285)\n    at /workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts:77:3"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "phone opened\n"
+                    },
+                    {
+                      "text": "phone explicit-close-1\n"
+                    },
+                    {
+                      "text": "phone explicit-close-2\n"
+                    },
+                    {
+                      "text": "phone explicit-close-3\n"
+                    },
+                    {
+                      "text": "phone fourth-before-payment\n"
+                    },
+                    {
+                      "text": "phone fourth-receipt-seated\n"
+                    },
+                    {
+                      "text": "phone fourth-word-card\n"
+                    },
+                    {
+                      "text": "phone fourth-replay-retained\n"
+                    },
+                    {
+                      "text": "phone explicit-close-4\n"
+                    },
+                    {
+                      "text": "phone ended-controls\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T01:14:20.416Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end-results/day-end-fourth-customer-re-7f5c6-isible-next-day-advancement-phone/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end-results/day-end-fourth-customer-re-7f5c6-isible-next-day-advancement-phone/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end-results/day-end-fourth-customer-re-7f5c6-isible-next-day-advancement-phone/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/day-end.spec.ts",
+                    "column": 192,
+                    "line": 38
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "91dc9b824f428c0af8fc-cff515373ff58a560623",
+          "file": "day-end.spec.ts",
+          "line": 53,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-06T01:13:06.025Z",
+    "duration": 138142.74599999998,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

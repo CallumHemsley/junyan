@@ -25,3 +25,7 @@ Separate ordinary-opening/door route to workshop, then walk behind lamp bench to
 ## Fourth-customer boundary — ongoing
 
 Initial runs verify finalreceipt/thanks/replay/wordcard/focus/retained presence then explicitdeparture. Desktop additionally explores endedtown, returns to kitchen summary, advancesday2, verifies reset and reload. Subsequent initialstalls are trace-proven reviewerclicks on UI: welcome button desktop, customer token phone. Details day-end-initial-diagnosis.md; no pathfindingfailure claimed. Corrected run checks actual hitcanvas and normally dismisseswelcome, still ongoing.
+
+## Fourth-customer/day-rollover result
+
+Corrected ordinary desktop and phone runs2/2PASS (2.1minutes combined). Serve all4 through physical tables/kitchen; fourth receipt remains seated/reacting, native thanks/replay and word-card audio/focus pass; explicitclose records departure; explore town with endedday; physically return to kitchen and use visible nextday summary; advance day2; journal/earnings/features preserved, customers reset seated, serviceDepartures cleared; reload and town→restaurant return retain state. Native pointer/worker observation is read-only. Initial UI-hit driver errors retained separately; final scripts select actualcanvas points and dismiss normal welcome afterreload. This closes only the tested rollover scenario, not every overnight/garden-growth/audio/offline combination.
