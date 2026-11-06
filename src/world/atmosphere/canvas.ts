@@ -6,10 +6,11 @@ export type AtmosphereProject = (point: Point) => {x: number; y: number};
 /** The host owns projection, clipping, canvas resolution and the frame loop. */
 export function drawAtmosphereLayer(ctx: CanvasRenderingContext2D, commands: readonly AtmosphereCommand[], layer: AtmosphereCommand['layer'], project: AtmosphereProject): number {
   ctx.save();
+  const inheritedOpacity=ctx.globalAlpha;
   let drawn=0;
   for(const command of commands) {
     if(command.layer!==layer) continue;
-    ctx.globalAlpha=command.opacity;
+    ctx.globalAlpha=inheritedOpacity*command.opacity;
     ctx.fillStyle=`rgb(${command.color.join(',')})`;
     ctx.beginPath();
     command.points.forEach((point,i)=>{

@@ -31,9 +31,25 @@ for(const [name,width,height] of [['desktop',1280,800],['phone',390,844]]){
  if(before.x===after.x)throw Error('Camera did not move');
  await page.locator('canvas').click({position:{x:width/2,y:60}});
  await page.screenshot({path:`${root}/screens/${name}-camera.png`,fullPage:true});
- await writeFile(`${root}/${name}-capture.json`,JSON.stringify({before,after,motion,errors},null,2));
+ const video=page.video();
  await context.close();
+ await writeFile(`${root}/${name}-capture.json`,JSON.stringify({before,after,motion,errors,video:await video.path()},null,2));
 }
+const adapterPage=await browser.newPage();
+await adapterPage.goto('http://127.0.0.1:5488/src/world/atmosphere/harness.html');
+await adapterPage.waitForFunction(()=>window.__ATMOSPHERE__);
+const opacity=await adapterPage.evaluate(()=>{const c=document.createElement('canvas');c.width=8;c.height=8;const ctx=c.getContext('2d');ctx.globalAlpha=.5;window.__ATMOSPHERE__.drawAtmosphere(ctx,{commands:[{layer:'ground',points:[{x:0,y:0},{x:8,y:0},{x:8,y:8},{x:0,y:8}],color:[255,255,255],opacity:.5}]},{project:p=>p,pass:'ground'});return {pixelAlpha:ctx.getImageData(4,4,1,1).data[3],restoredAlpha:ctx.globalAlpha};});
+if(Math.abs(opacity.pixelAlpha-64)>1||opacity.restoredAlpha!==.5)throw Error('Host fade opacity was not preserved');
+await writeFile(`${root}/adapter-opacity.json`,JSON.stringify(opacity,null,2));
+await adapterPage.close();
+const reducedContext=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
+const reducedPage=await reducedContext.newPage();
+await reducedPage.goto('http://127.0.0.1:5488/src/world/atmosphere/harness.html');
+await reducedPage.waitForFunction(()=>window.__ATMOSPHERE__?.frames>=1);
+const stable=await reducedPage.evaluate(async()=>{const c=document.querySelector('canvas'),before=c.toDataURL();for(let i=0;i<30;i++)await new Promise(requestAnimationFrame);return before===c.toDataURL();});
+if(!stable)throw Error('OS reduced-motion frames changed');
+await writeFile(`${root}/reduced-motion.json`,JSON.stringify({browserPreference:'reduce',stable},null,2));
+await reducedContext.close();
 await browser.close();
 if(errors.length)throw Error(errors.join('\n'));
 console.log('Captured four phases, wash comparison, reduced motion and camera input at two viewport sizes; console clean.');
