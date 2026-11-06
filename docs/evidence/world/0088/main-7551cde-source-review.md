@@ -1,0 +1,39 @@
+# Main/world reconciliation: lightweight independent source review
+
+Review status: SOURCE ITEMS PARTLY CLOSED; production acceptance OPEN.
+
+Inspected local commit `7551cdedfccf4b916d24159d5744b7f681128ca5` and exact GitHub file reads at follow-up `e002c755fc5fe0785469735a629aedba1f3e6212`. Compared against the earlier `main-266e9bc-integration-gates.md`. No git fetch, checkout, build, test, browser, image or bulk-hash work was performed during the performance window. Writer-reported511 tests/build green are NOT independent results of this review.
+
+For six semantic files, GitHub's e002 blob IDs equal the7551 git-tree IDs: App.tsx `1d832c6a15b83e4561b86906e9ebd244ca02c9e6`; save.ts `aae951c7035894a10a3e662091ad43ec07a644bb`; neighbourhood/transitions.ts `ef8694414515bdd814828abc75bd7193afef6850`; world/WorldViewport.tsx `cffe0ce4aad7af7e64748beae3213afe9a393a03`; world/art/residential/index.ts `626a3754178f8dca25522515d7e8a1ab44bf9ef5`; progression/ProgressionView.tsx `8ef75481c47071bdb2b9cba940bdf9f35ba1640b`. This narrowly confirms the source excerpts below apply to both checkpoints; it does not certify an entire owner lease or all artifacts.
+
+## Closed at source level
+
+- **Language contract:** `src/contracts.ts:5–10,67–70` retains Word.text/optional pronunciation plus BOTH world and progression. `App.tsx:366–391` uses text/pronunciation. World viewport tokens now resolve semantic IDs (`WorldViewport.tsx:87–88`) rather than translated display text, and life option labels use text (`103`). `RestaurantControls.tsx:53,65` and `LifePrompt.tsx:23` read text. Main WordLine and registered content continue to supply actual token components. Some Mandarin UI strings remain hardcoded in new controls; this is not proof of a fully selectable second-language production UI. Full language regression remains a runtime gate.
+- **Composed save schema/order:** `src/save.ts:14–17` accepts progression/neighbourhood/world. At112–116 it validates progression, restores neighbourhood, restores paid ownership, THEN constructs dynamic maps and restores world. Legacy absent world remains absent until App creates/persists it. Day>3 mixed-level authored orders remain valid (`76`). Language-specific IDB and checkpoint keys are retained (`135–150,162–167`), including unchanged Mandarin defaults; App passes content.language (`46,196`). This resolves the previously identified source-side schema/drop/order conflict. It does not prove every corruption or checkpoint race case.
+- **Remote shop guard/mount:** App mounts shop-containing ProgressionView inside the apartment binding (`466`), with the separate day-end invocation at582. The world reducer rejects purchase-furniture when world.mapId is not apartment (`neighbourhood/transitions.ts:41–43`) before main's location/accounting/duplicate checks. The concrete stale-apartment-location remote-purchase hole is closed at this dispatch boundary. Check contextual close/leave/reload through the actual UI before acceptance; do not infer that every exported pure purchase call has a world guard.
+- **Clock/practice composition:** world advance action now carries optional now and forwards it (`transitions.ts:23,46–48`); App supplies Date.now (`603`). Existing world positions/life and departure reset remain in that branch. Dynamic feature edits keep safeAfterEdit and atomic rejection (`140–147`) and then apply main practiceForTransition (`150–151`). Main canonical ID mapping, varied authored order selection and supported-versus-independent practice remain in progression/model.ts and scenarios.ts. The old timestamp-loss and either/or transition merge concerns are resolved in source.
+- **Ticket paths:** main tickets remain `docs/tickets/0081-living-progression.md` and `0082-investigate-offline-speech-probe.md`; world residential/workshop tickets now live under `docs/tickets/world/`. That separates the identified filename/namespace collision. Historical numeric IDs still need their qualified scope when cited.
+
+## Remaining semantic gates
+
+### Paid world furniture remains an acknowledged integration gap
+
+Main's paid IDs exist in `features/apartment/rules.ts:3` and shop/catalog/accounting, but current world `art/residential/index.ts:265–325` still has no cases for blue-vase/large-basket/small-lamp. The generic placement object path and furniture collider path still include these placements. They may cast a shadow without drawing the purchased object. Thus the previous source gap remains: legitimate paid ownership/collision is not enough for visible-world acceptance.
+
+This is explicitly returned to residential in foundation's e002 `docs/evidence/world/0078/main-reconciliation.md`; it is **not** characterized here as an unexpected regression from a newer unconsumed owner payload. Before closing, consume the owner's qualified fixes and independently buy/place/rotate/undo/reload each item, inspect visible material/shape and exact collider/depth in the scrolling world. Do not accept legacy scene art as a substitute.
+
+### Invitation no-teleport fix is present, but physical follow-through is not yet demonstrated
+
+`neighbourhood/transitions.ts:85–96` keeps current neighbourhood location when game.world exists and leaves world position/map intact. App closes the existing context after follow-scenario (`466,582`), so these buttons no longer implement old location-tab travel. Repair/cat encounter preparation still occurs at selection time (`89–95`), before physical arrival. No destination/route intent is stored in this branch; ProgressionView still labels the action 去看看 (`progression/copy.ts:8`, view32).
+
+This is a partial semantic resolution, not evidence of a broken path. The acceptance gate is an optional invitation that a player can understand and complete by actual walking to a real target, with no remote completion/duplicate preparation or inconsistent selected activity. Verify invitation remains meaningful after context closes, walking elsewhere, day change and reload. If guidance or preparation-at-arrival is still owned by queued work, keep it OPEN rather than rejecting an unconsumed payload as regressed.
+
+### Whole-lease provenance must disclose integration adaptations
+
+The e002 assembly-provenance.json still describes exact owner tips/consumed heads and source sha256 entries, with only one explicit reviewed test patch. That is useful historical intake information, not an independently checked statement that all current files are byte-identical to old-base owner leases. The language reconciliation necessarily adapted world UI/life/feature consumers. Main-reconciliation.md does disclose intent-level reconciliation, but a final artifact manifest should distinguish original source hash/head from resulting integration blob and list adapter/conflict-resolution deltas. Do not relabel adapted files as untouched owner output. No bulk SHA verification was performed here.
+
+The supplied homeMap life handoff5baa9c and15-pixel actor trial4aad are newer readiness inputs, not accepted current runtime evidence. Current7551 life/profiles.ts does not contain homeMap. This review does not demand a new API or call that queued intake a regression; consume the published lease, preflight actor IDs, then measure/render the actual combined head. The foundation report itself lists additional owner payloads not yet consumed.
+
+## Next independent checks after the performance window
+
+Run the combined-head save migration/language-slot matrix; four real services/final receipt/departure/day advancement; ordinary all-region walking and contextual invitations; paid-item world rendering; feature practice/no-farming and varied orders through later days. Recheck native cached audio and offline reload separately from observer issues. Source resolutions do not transfer511-test claims, old screenshots or owner harness acceptance to the next runtime checkpoint. No application fixes or merge were authored by reviewer0088.
