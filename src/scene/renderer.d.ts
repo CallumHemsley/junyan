@@ -4,7 +4,7 @@ export const HEIGHT: number;
 export function projectPosition(position: Position, z?: number): {left:number; top:number};
 export function groundPosition(left:number, top:number): Position;
 export type ScenePoint = [number, number, number];
-type Color = [number, number, number];
+export type Color = [number, number, number];
 export const COLORS: Record<string, Color>;
 export function customerPose(phase:Phase, accessory?:Character['appearance']['accessory']): {
   crouch:number; scale:number; armR:number; armL:number; greeting:boolean; lean:number;
@@ -26,6 +26,10 @@ export function characterTray(rig:CharacterRig, foods:string[],
 ):void;
 type Pixels = Uint32Array;
 type Depth = Float32Array;
+export type BoxSurface = {
+  kind:'wood'|'linen'|'cloth';
+  bands?:readonly {center:number; width:number; color:Color}[];
+};
 export type SceneApi = {
   W:number; H:number; R2:number; COS:number;
   pix:Pixels; zb:Depth; ground:Uint8Array; groundZ:Depth; bakedZ:Depth;
@@ -33,7 +37,7 @@ export type SceneApi = {
   hash(x:number, y:number):number;
   project(x:number, y:number, z:number):{sx:number; sy:number; d:number};
   unproject(sx:number, sy:number):{x:number; y:number};
-  box(x0:number, y0:number, z0:number, x1:number, y1:number, z1:number, color:Color, seed?:number, transform?:CharacterRig['local']|null):void;
+  box(x0:number, y0:number, z0:number, x1:number, y1:number, z1:number, color:Color, seed?:number, transform?:CharacterRig['local']|null, surface?:BoxSurface|null):void;
   sphere(x:number, y:number, z:number, radius:number, color:Color, mode?:string):void;
   capsule(start:ScenePoint, end:ScenePoint, startRadius:number, endRadius:number, colorOf:(height:number)=>Color, mode?:string):void;
   castShadow(x:number, y:number, z:number, radius:number, strength?:number, dither?:number):void;
@@ -46,6 +50,6 @@ export type Scene<Args extends unknown[]> = {
   bake(api:SceneApi):void;
   draw(api:SceneApi, ...args:Args):void;
 };
-export function createRenderer<Args extends unknown[]>(canvas: HTMLCanvasElement, scene: Scene<Args>): {
+export function createRenderer<Args extends unknown[]>(canvas: HTMLCanvasElement, scene: Scene<Args>, options?:{nativeWorld?:{pixelsPerWorldUnit:number; originX?:number; originY?:number}}): {
   draw(...args:Args):void;
 };
