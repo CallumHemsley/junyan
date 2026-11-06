@@ -25,3 +25,5 @@ The scope in `docs/world-program/ledger.md` is implemented against `docs/world-p
 
 - Active persistent objective: complete movement, camera, collision, portal graph, all activity integration and compatible saves through independent experience review. No native create_goal tool is exposed.
 - Cloud checkout `/workspace/junyan`; baseline `8cd5bc2`; allocation `fb167fd`; implementation and verification remain active.
+- Local recovery owner: root, branch `codex/0078-local-completion`, checkout `/private/tmp/junyan-world-recovery-repo`, strict development port 5504 and preview port 5505. Cloud source writers froze at published checkpoints before ownership transferred.
+- Current integration retains the physical world, main's language/progression work, selected-target controls, foliage occlusion, and render cadence. The mature-tree bird gate now follows the saved tree rather than unrelated mature flowers or climbers; focused tests cover both life-frame entry points. World/0083 and world/0095 remain separately owned until cross-review and integration.

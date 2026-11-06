@@ -23,7 +23,7 @@ export function worldLifeFrame(map: WorldMapDefinition, game: GameState, world: 
     day: game.day, seed: game.seed, elapsedMs: life.elapsedMs, player: world.position, reducedMotion,
     cats, habitats: map.id === 'courtyard' && cats ? courtyardHabitats(catHabitat(cats, game.day)) : undefined,
     excludedCharacterIds: restaurantPresence(game, life).insideCharacterIds,
-    gardenMature: Object.values(game.neighbourhood?.garden.plants ?? {}).some(plant => plant.growth === 3),
+    gardenMature: game.neighbourhood?.garden.restored === true && game.neighbourhood.garden.plants.tree.growth === 3,
   };
   const actors = sampleLife(source.plan, context, source.navigation, life);
   const options = nearbyLife(source.plan, actors, world.position, source.navigation);

@@ -22,7 +22,7 @@ export function lifeContext(game:GameState,world:WorldState,elapsedMs:number,red
  const seated=restaurantPresence({...game,world}).filter(p=>p.inside).map(p=>p.characterId);
  return {day:game.day,seed:game.seed,elapsedMs,player:world.position,reducedMotion,cats,excludedCharacterIds:seated,
   habitats:habitat?courtyardHabitats(habitat):undefined,
-  gardenMature:Object.values(game.neighbourhood?.garden.plants??{}).some(p=>p.growth===3)};
+  gardenMature:game.neighbourhood?.garden.restored === true && game.neighbourhood.garden.plants.tree.growth === 3};
 }
 export function actorsFor(map:WorldMapDefinition,game:GameState,world:WorldState,elapsedMs:number,reducedMotion:boolean) {return sampleLife(planFor(map,game),lifeContext(game,world,elapsedMs,reducedMotion),navigationFor(map),restoreLife(world.life));}
 export function performLifeInteraction(map:WorldMapDefinition,game:GameState,world:WorldState,action:WorldLifeAction) {
