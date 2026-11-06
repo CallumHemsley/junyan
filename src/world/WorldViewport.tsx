@@ -1,19 +1,24 @@
+import type {GameState,Word} from "../contracts";
+import WordToken from "../WordToken";
+import {content} from "../neighbourhood/registry";
+import {contentWords} from "../content/words";
+import {wordState} from "../recovery";
 import {useEffect,useRef,useState} from "react";
 import type {WorldState,Point} from "./schema";
-import {worldMaps} from "./registry";
-import {project,pointerGround,type Camera} from "./camera";
+import type {MapRegistry} from "./registry";
+import {project,pointerGround,cameraForMap,type Camera} from "./camera";
 import {findPath,movePlayer,nearbyAnchors} from "./geometry";
 import {paintWorld} from "./painter";
 import type {WorldAction} from "./state";
 import "./world.css";
 const mapNames:Record<string,string>={restaurant:"早安小馆",town:"早市街",courtyard:"院子",workshop:"修理间",rooftop:"屋顶花园",apartment:"家","residential-hall":"楼下","residential-stairs":"楼梯",park:"河畔公园",riverbank:"河岸"};
 const directions:Record<string,Point>={ArrowUp:{x:-1,y:-1},w:{x:-1,y:-1},ArrowDown:{x:1,y:1},s:{x:1,y:1},ArrowLeft:{x:-1,y:1},a:{x:-1,y:1},ArrowRight:{x:1,y:-1},d:{x:1,y:-1}};
-export default function WorldViewport({state,onAction,paused=false}:{state:WorldState;onAction:(action:WorldAction)=>void;paused?:boolean}) {
+export default function WorldViewport({state,maps,game,onLookup,fresh,onAction,paused=false}:{state:WorldState;maps:MapRegistry;game:GameState;onLookup:(word:Word,trigger:HTMLButtonElement)=>void;fresh:string[];onAction:(action:WorldAction)=>void;paused?:boolean}) {
  const canvas=useRef<HTMLCanvasElement>(null),root=useRef<HTMLElement>(null);
- const latest=useRef({state,onAction,paused});latest.current={state,onAction,paused};
+ const latest=useRef({state,maps,game,onAction,paused});latest.current={state,maps,game,onAction,paused};
  const keys=useRef(new Set<string>()),path=useRef<Point[]>([]),cameraRef=useRef<Camera>({focus:state.position,width:960,height:600,scale:22});
  const [viewport,setViewport]=useState({width:960,height:600});
- const map=worldMaps[state.mapId];
+ const map=maps[state.mapId];
  useEffect(()=>{path.current=[];keys.current.clear();root.current?.focus();},[state.mapId,state.activeActivity]);
  useEffect(()=>{
   const element=root.current;if(!element||!canvas.current)return;
@@ -28,7 +33,7 @@ export default function WorldViewport({state,onAction,paused=false}:{state:World
   const tick=(now:number)=>{
    frame=0;if(document.hidden)return;
    const dt=last?Math.min((now-last)/1000,.04):0;last=now;elapsedMs+=dt*1000;
-   const current=latest.current,map=worldMaps[current.state.mapId];if(!map)return;
+   const current=latest.current,map=current.maps[current.state.mapId];if(!map)return;
    const canMove=!current.paused&&!current.state.activeActivity;
    let moving=false;
    if(canMove){
@@ -38,10 +43,10 @@ export default function WorldViewport({state,onAction,paused=false}:{state:World
     else if(path.current.length){const target=path.current[0],p=current.state.position,dx=target.x-p.x,dy=target.y-p.y,d=Math.hypot(dx,dy),step=dt*5;if(d<=Math.max(step,.03)){delta={x:dx,y:dy};path.current.shift();}else delta={x:dx/d*step,y:dy/d*step};}
     if(delta.x||delta.y){const next=movePlayer(map,current.state.position,delta);moving=Math.hypot(next.x-current.state.position.x,next.y-current.state.position.y)>.0001;if(moving)current.onAction({type:"world-move",position:next});else path.current=[];}
    }
-   const dpr=Math.min(devicePixelRatio||1,2),width=viewport.width,height=viewport.height;
+   const dpr=1,width=Math.ceil(viewport.width/2),height=Math.ceil(viewport.height/2);
    if(element.width!==Math.round(width*dpr)||element.height!==Math.round(height*dpr)){element.width=Math.round(width*dpr);element.height=Math.round(height*dpr);}
-   const camera={focus:current.state.position,width,height,scale:width<600?18:24};cameraRef.current=camera;
-   if(now-lastDraw>=1000/30||preference.matches){context.setTransform(dpr,0,0,dpr,0,0);paintWorld(context,map,{project:(p,z)=>project(p,camera,z),elapsedMs:preference.matches?0:elapsedMs,reducedMotion:preference.matches,playerPosition:current.state.position,width,height,pass:"ground"},current.state.facing,moving,camera.scale);lastDraw=now;element.dataset.rendered="true";}
+   const camera=cameraForMap(map.bounds,current.state.position,width,height,viewport.width<600?11:15);cameraRef.current=camera;
+   if(now-lastDraw>=1000/30||preference.matches){context.setTransform(dpr,0,0,dpr,0,0);paintWorld(context,map,{project:(p,z)=>project(p,camera,z),elapsedMs:preference.matches?0:elapsedMs,reducedMotion:preference.matches,playerPosition:current.state.position,width,height,pass:"ground"},current.state.facing,moving,camera.scale,current.game,current.state);lastDraw=now;element.dataset.rendered="true";}
    frame=requestAnimationFrame(tick);
   };
   const refresh=()=>{last=0;keys.current.clear();if(document.hidden){cancelAnimationFrame(frame);frame=0;}else if(!frame)frame=requestAnimationFrame(tick);};
@@ -50,6 +55,9 @@ export default function WorldViewport({state,onAction,paused=false}:{state:World
   return()=>{cancelAnimationFrame(frame);document.removeEventListener("visibilitychange",refresh);window.removeEventListener("keyup",up);window.removeEventListener("blur",refresh);};
  },[viewport]);
  const nearby=nearbyAnchors(map,state.position);
+ const dictionary=contentWords(content);
+ const token=(hanzi:string)=>{const word=dictionary.find(w=>w.hanzi===hanzi);return word?<WordToken key={word.id} word={word} look={wordState(game.journal[word.id],fresh.includes(word.id))} onLookup={onLookup}/>:null;};
+ const place:Record<string,string[]>={restaurant:["早安小馆"],town:["早安小馆"],courtyard:["院子"],workshop:["修理间"],apartment:["家"],"residential-hall":["家"],"residential-stairs":["屋顶"],rooftop:["屋顶","花园"],park:["花园"],riverbank:["看看"]};
  return <section ref={root} className="connected-world" data-testid="world-viewport" data-map={map.id} tabIndex={0} aria-label={`${mapNames[map.id]??"街坊"}，方向键走动，点地面走过去`} onKeyDown={event=>{
   if(paused||state.activeActivity||event.target instanceof HTMLButtonElement)return;
   if(directions[event.key]){event.preventDefault();event.stopPropagation();keys.current.add(event.key);}
@@ -60,8 +68,8 @@ export default function WorldViewport({state,onAction,paused=false}:{state:World
    root.current?.focus();const rect=event.currentTarget.getBoundingClientRect(),p=pointerGround({x:event.clientX,y:event.clientY},rect,cameraRef.current);
    path.current=findPath(map,state.position,p);
   }}/>
-  <div className="world-place" aria-live="polite">{mapNames[map.id]??"街坊"}</div>
-  <div className="world-nearby">{!state.activeActivity&&nearby.map(a=><button key={a.id} data-world-anchor={a.id} onClick={()=>onAction({type:"world-interact",anchorId:a.id})}>{a.featureId==="restaurant"?"招呼客人":a.featureId==="cats"?"看看猫":a.featureId==="apartment"?"布置家":a.featureId==="repairs"?"修东西":a.featureId==="garden"?"照顾花草":"看看"}</button>)}</div>
+  <div className="world-place" aria-live="polite">{(place[map.id]??["看看"]).map(token)}</div>
+  <div className="world-nearby">{!state.activeActivity&&nearby.map(a=><div className="world-anchor" key={a.id}>{token(a.featureId==="restaurant"&&a.interactionId.startsWith("table-")?"客人":"看看")}<button data-world-anchor={a.id} aria-label={a.featureId==="restaurant"&&a.interactionId.startsWith("table-")?`${a.interactionId.split("-")[1]}桌点餐`:a.featureId==="restaurant"?"厨房":"看看"} onClick={()=>onAction({type:"world-interact",anchorId:a.id})}>→</button></div>)}</div>
   <div className="world-pad" aria-label="走动">{["ArrowUp","ArrowLeft","ArrowDown","ArrowRight"].map((key,i)=><button key={key} aria-label={["向前走","向左走","向后走","向右走"][i]} disabled={paused||!!state.activeActivity} onPointerDown={event=>{event.currentTarget.setPointerCapture(event.pointerId);keys.current.add(key);}} onPointerUp={()=>keys.current.delete(key)} onPointerCancel={()=>keys.current.delete(key)} onLostPointerCapture={()=>keys.current.delete(key)}>{["↑","←","↓","→"][i]}</button>)}</div>
  </section>;
 }
