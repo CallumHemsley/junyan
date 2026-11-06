@@ -462,8 +462,12 @@ function paintResidential(ctx: CanvasRenderingContext2D, view: WorldRenderView, 
 export const drawMap: DrawMap = (ctx, map, view) => {
   if (!mapDefinitions.some(m => m.id === map.id)) return;
   if (view.pass === 'ground') {
-    paintResidential(ctx, view, api => drawResidentialFloor(api, map.id));
-    paintResidential(ctx, view, api => drawResidentialProps(api, map.id, 'ground'));
+    paintResidential(ctx, view, api => {
+      drawResidentialFloor(api, map.id);
+      // The recessed stair well must sort below its raised landing edges.
+      if (map.id === 'residential-stairs') drawResidentialProps(api, map.id, 'ground');
+    });
+    if (map.id !== 'residential-stairs') paintResidential(ctx, view, api => drawResidentialProps(api, map.id, 'ground'));
   }
   if (view.pass === 'foreground') paintResidential(ctx, view, api => drawResidentialProps(api, map.id, 'foreground'));
 };
