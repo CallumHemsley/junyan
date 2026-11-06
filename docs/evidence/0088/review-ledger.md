@@ -1,0 +1,68 @@
+# Independent connected-world review
+
+Status **ACTIVE / ISSUES**. Ticket 0088 remains doing. Owner 01a1ae1f-27e8-72f0-8ffc-26564922f069. No native goal tool exists; this is the durable objective. Keep reviewing successive integrated builds until the full large, beautiful, connected life-sim world withstands independent play and parent audit. Do not close after one tranche. No audio generation, implementation edits or independent merges.
+
+## Baseline identity and evidence
+
+Product main `8cd5bc209b7dc2d91cc0f765991de313f813f4eb`. Capture checkout `5132785601e5f2e688f6158d00109869c90ed218` adds coordinator documentation only. Contract reviewed at `056a5e63f956747058ca2e5996ddca3b6d1e6f83`. See manifest.json for artifact hashes. Node 22 existing toolchain; TypeScript and Vite production build pass, with pre-existing Zod annotation and large bundle warnings. No dependency install or frozen-install claim.
+
+Run from repository root:
+
+```
+PLAYWRIGHT_BROWSERS_PATH=/workspace/.junyan-tools/browsers /workspace/.junyan-tools/node_modules/node/bin/node node_modules/@playwright/test/cli.js test --config docs/evidence/0088/baseline.config.ts
+```
+
+2/2 production journeys passed in 28 seconds. Normal hospital opening, five actual menu destinations, arrow inputs, rooftop reload, no console/page errors. No debug setters or save seeding. These checks document the baseline; they do not prove world walking or complete activity regression. Ten full-page screenshots inspected. Desktop 1440x1000, phone 390x664 CSS pixels with device scale 3. Observations JSON records measured canvas/document bounds. Videos under results are launch-muted WebM, not an audio listening or complete gameplay review. Their durations are 12.84 and 13.68 seconds; they include opening and menu changes, not a connected-world tour.
+
+Capture setup failures were infrastructure, not application defects: first default cache lacked ffmpeg; existing /workspace/.junyan-tools/browsers supplies it. An attempted download was denied by network policy; no bypass. Second preview omitted --base /junyan/, so application assets did not load. Corrected review config matches repository preview setup. Historical failed runner JSON is retained under docs/evidence/0088/results.json inside this evidence directory's nested docs folder; successful results.json is authoritative.
+
+## Independent findings and writer routing
+
+| Priority | Evidence / impact | Writer / missing proof |
+|---|---|---|
+| P1 | src/neighbourhood/Neighbourhood.tsx:13-16 and src/neighbourhood/state.ts:51-55 directly swap places. Runtime menu clicks confirm isolated destinations. No walkable street/door/stair connections. | 0078. Record normal-control outward-and-return traversal through all places. |
+| P1 | src/scene/renderer.js:26-37 fixes projection and bounds; src/App.tsx:337-374 disables walking outside restaurant. All five rendered canvases measure 360x280 intrinsic pixels. | 0078. Continuous held input, scrolling camera, edge/pointer round trips, swept footprint collisions. |
+| P1 | src/save.ts:15-18 bounds sole player position to restaurant; neighbourhood/contracts.ts:25-33 has no per-map return positions. | 0078. Compatible migration and reload at every entrance, landing, activity and exterior landmark. |
+| P1 evidence gap | e2e/neighbourhood.spec.ts:31-34 navigates by menu buttons. Those valuable activity regressions cannot demonstrate world traversal. | 0078 + review. New integrated ordinary-control journey and measured reachable content. |
+| P2 visual | All inspected images show detached cutaway floors surrounded by beige panels. Courtyard and workshop desktop layouts leave most lower viewport empty. Phone canvas heights 264-283 CSS px occupy only 40-43% of 664px viewport; apartment document is 856px tall. | 0078 + map owners. World-focused play area, contextual DOM controls, preserved readable learning UI. |
+
+Candidate checkpoint race is under independent runtime reproduction, not yet a confirmed defect. Do not fix from source suspicion alone.
+
+## Visual critique and prioritized targets
+
+The baseline has coherent cream/jade/wood/ink color, readable isometric furniture, recognizable food service and distinct activity props. Preserve those strengths. The apartment is deliberately sparse before furnishing; this initial screenshot alone does not prove lack of activity depth. The courtyard has a clear bicycle/bench/door composition but no surrounding neighbourhood. Workshop's large lamp communicates the task, yet reads as an object vignette. Rooftop offers skyline context but repeats near-identical tower blocks and leaves much floor empty. These are observed composition limits, not approval to add random clutter.
+
+Prioritize a traversable street-to-interior sequence with visible architectural continuity, then authored river/park loops and inhabited landmarks. Interiors need meaningful routes and destinations, rather than oversized empty floors. Give regions distinct silhouettes/materials and transitions, layer foreground/background depth without hiding the player, and add residents and ambient motion with a reason to return. UI should reveal the immediate activity while the world remains the primary experience. Ten isolated polished components do not satisfy this target.
+
+## Review rubric and executable route protocol
+
+Primary visual reference: https://www.stardewvalley.net/media/ and its official screenshot/trailer. Reference is for density, readable landmarks, character and exploration ambition; no proprietary assets or copied layout. Junyan retains its original Mandarin setting and tokens. No asserted Stardew map statistics.
+
+Scores use 0 absent, 1 inadequate, 2 partial, 3 convincing, 4 polished, or unverified. Scores never override a failed functional gate. Baseline snapshot EXPERIENCE for connected-world ambition is 1/4, a qualitative judgment from actual captures and limited navigation, not a retention measure. Component visual craft 2/4; world connectivity 0/4; exploration breadth 0/4; world-focused composition 1/4. Sustained life, performance, full activity continuity and time variants remain unverified.
+
+For each new integrated SHA:
+
+1. Record exact source/build hashes, browser/device/viewport, test URL, process owner, seed and initial save provenance. Build and serve on reviewer-owned strict port.
+2. Play normal opening once. Walk restaurant -> town -> courtyard -> residential hall -> stairs -> apartment -> stairs -> rooftop -> stairs -> town -> workshop -> town -> riverbank -> park -> courtyard -> town -> restaurant. Adjust route only to actual graph, logging every edge. No debug teleport or menu substitute. Record uncut video and route time excluding dialogue pauses separately from total time.
+3. At every region record reachable bounds/floor area, distinct landmarks, accessible entrances, meaningful interactions and dead ends. Measure shortest functional route and exploration route separately. Empty dimensions and clone-stamped props do not count as breadth.
+4. Test held keyboard and touch movement, diagonal corners, wall sliding, release/blur, NPC crossings, occlusion, screen edges, pointer mapping after camera scroll/resize and all door thresholds. Verify safe arrivals outside exit triggers.
+5. Enter each real activity through proximity, perform a meaningful action, return, and reload. Compare map/player/facing/return points plus orders/day/journal/gifts/activity state. Exercise legacy and corrupt saves separately with explicitly labeled seeded fixtures.
+6. Inspect desktop and phone landmarks across available day/light/weather variants. Check silhouette, palette, material variety, density, depth, repetition and UI occlusion. Review motion footage; record NPC traffic and repeated visits. Reduced motion must retain readability; hidden tabs suspend decorative work.
+7. Run original opening/service/change/journal and native existing-audio/offline regressions. Check focus, Chinese DOM token taps, replay, 44px controls, console and measured frame behavior. No generated audio.
+8. File each defect with exact head, file/line, impact, normal-control repro, screenshot/video timestamp, missing regression test and writer. Recheck corrected integrated head independently; preserve failure evidence. New integrations invalidate any blanket earlier PASS.
+
+## Contract review at 056a5e6
+
+Ownership boundaries are coherent for a documentation proposal. No blocking ownership collision found. This is not implemented API acceptance.
+
+- P2: example-module.ts:45 and contract-v1.md:59 leave timeOfDay number units/range undefined. Foundation and atmosphere should publish one clock conversion and morning/dusk/reload fixtures.
+- P2: contract-v1.md:29 says IDs namespaced by map while line 43 prescribes local from-town/to-town identifiers. Clarify entrance/exit uniqueness is map-local, and references resolve by targetMapId plus targetEntranceId. Validate two maps legitimately sharing from-town.
+- Production adapter remains pending under line 63. Require concrete imports, draw outputs, origin/depth semantics and a compiled consumer before art integration. Example placeholder actors/interaction IDs are not executable acceptance.
+
+## Coverage and next actions
+
+Completed independent source slices: art/composition/world-life structural audit; movement/camera/save/UI structural audit. Completed actual baseline normal-opening/menu/reload captures on desktop and phone. Contract proposal independently reviewed. Save-race reproduction running separately. No full integrated-world head is available in this review yet.
+
+Next: publish baseline, relay contract clarifications to coordinator/foundation/atmosphere, finish save repro, then acquire the first published integrated walking head. Dispatch independent runtime art, movement/collision, world-life, touch/accessibility and regression/performance coverage against that exact head. Do not treat individual producer reports as acceptance.
+
+Pstack Prove It Works required actual runtime evidence instead of producer claims. Experience First preserves the full requested exploration target rather than shrinking it to a convenient hub. Swarm guidance supplies exact-head independent coverage and aggregation. No native platform goal registration was claimed.

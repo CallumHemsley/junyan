@@ -1,0 +1,335 @@
+{
+  "config": {
+    "argv": [
+      "/workspace/.junyan-tools/node_modules/node/bin/node",
+      "/workspace/junyan/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "docs/evidence/0088/baseline.config.ts"
+    ],
+    "configFile": "/workspace/junyan/docs/evidence/0088/baseline.config.ts",
+    "rootDir": "/workspace/junyan/docs/evidence/0088",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088",
+        "testIgnore": [],
+        "testMatch": [
+          "baseline.spec.ts"
+        ],
+        "timeout": 120000
+      },
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0088",
+        "testIgnore": [],
+        "testMatch": [
+          "baseline.spec.ts"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0088/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0088",
+        "testIgnore": [],
+        "testMatch": "baseline.spec.ts",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5490/junyan/",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "video": "on",
+          "trace": "on",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0088/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0088",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0088",
+        "testIgnore": [],
+        "testMatch": "baseline.spec.ts",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5490/junyan/",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "video": "on",
+          "trace": "on",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "phone"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/evidence/0088/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "/workspace/.junyan-tools/node_modules/node/bin/node node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 5490 --strictPort",
+      "cwd": "/workspace/junyan",
+      "url": "http://127.0.0.1:5490/junyan/",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "baseline.spec.ts",
+      "file": "baseline.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "normal opening and independent five-location baseline",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5363,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '醒来' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('button', { name: '醒来' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '醒来' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '醒来' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('button', { name: '醒来' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '醒来' })\u001b[22m\n\n    at playOpening (/workspace/junyan/e2e/opening.ts:63:58)\n    at /workspace/junyan/docs/evidence/0088/baseline.spec.ts:7:38",
+                    "location": {
+                      "file": "/workspace/junyan/e2e/opening.ts",
+                      "column": 58,
+                      "line": 63
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39m../../../e2e/opening.ts:63\n\n  61 |   };\n  62 |   const firstRequest = content.opening.steps.findIndex((step) => step.type === \"request\");\n> 63 |   await expect(page.getByRole(\"button\", { name: \"醒来\" })).toBeVisible();\n     |                                                          ^\n  64 |   await snap(\"wake\");\n  65 |   await page.getByRole(\"button\", { name: \"醒来\" }).click();\n  66 |   for (const [index, step] of content.opening.steps.entries()) {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/junyan/e2e/opening.ts",
+                        "column": 58,
+                        "line": 63
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '醒来' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('button', { name: '醒来' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '醒来' })\u001b[22m\n\n\n   at ../../../e2e/opening.ts:63\n\n  61 |   };\n  62 |   const firstRequest = content.opening.steps.findIndex((step) => step.type === \"request\");\n> 63 |   await expect(page.getByRole(\"button\", { name: \"醒来\" })).toBeVisible();\n     |                                                          ^\n  64 |   await snap(\"wake\");\n  65 |   await page.getByRole(\"button\", { name: \"醒来\" }).click();\n  66 |   for (const [index, step] of content.opening.steps.entries()) {\n    at playOpening (/workspace/junyan/e2e/opening.ts:63:58)\n    at /workspace/junyan/docs/evidence/0088/baseline.spec.ts:7:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T23:58:17.395Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0088/results/baseline-normal-opening-an-073e3-dent-five-location-baseline-desktop/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/junyan/docs/evidence/0088/results/baseline-normal-opening-an-073e3-dent-five-location-baseline-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/results/baseline-normal-opening-an-073e3-dent-five-location-baseline-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/junyan/e2e/opening.ts",
+                    "column": 58,
+                    "line": 63
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d2923076b323a8336a93-456b788682d8b953e476",
+          "file": "baseline.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "normal opening and independent five-location baseline",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5337,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '醒来' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('button', { name: '醒来' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '醒来' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '醒来' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('button', { name: '醒来' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '醒来' })\u001b[22m\n\n    at playOpening (/workspace/junyan/e2e/opening.ts:63:58)\n    at /workspace/junyan/docs/evidence/0088/baseline.spec.ts:7:38",
+                    "location": {
+                      "file": "/workspace/junyan/e2e/opening.ts",
+                      "column": 58,
+                      "line": 63
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39m../../../e2e/opening.ts:63\n\n  61 |   };\n  62 |   const firstRequest = content.opening.steps.findIndex((step) => step.type === \"request\");\n> 63 |   await expect(page.getByRole(\"button\", { name: \"醒来\" })).toBeVisible();\n     |                                                          ^\n  64 |   await snap(\"wake\");\n  65 |   await page.getByRole(\"button\", { name: \"醒来\" }).click();\n  66 |   for (const [index, step] of content.opening.steps.entries()) {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/junyan/e2e/opening.ts",
+                        "column": 58,
+                        "line": 63
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: '醒来' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('button', { name: '醒来' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '醒来' })\u001b[22m\n\n\n   at ../../../e2e/opening.ts:63\n\n  61 |   };\n  62 |   const firstRequest = content.opening.steps.findIndex((step) => step.type === \"request\");\n> 63 |   await expect(page.getByRole(\"button\", { name: \"醒来\" })).toBeVisible();\n     |                                                          ^\n  64 |   await snap(\"wake\");\n  65 |   await page.getByRole(\"button\", { name: \"醒来\" }).click();\n  66 |   for (const [index, step] of content.opening.steps.entries()) {\n    at playOpening (/workspace/junyan/e2e/opening.ts:63:58)\n    at /workspace/junyan/docs/evidence/0088/baseline.spec.ts:7:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T23:58:23.329Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0088/results/baseline-normal-opening-an-073e3-dent-five-location-baseline-phone/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/junyan/docs/evidence/0088/results/baseline-normal-opening-an-073e3-dent-five-location-baseline-phone/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/results/baseline-normal-opening-an-073e3-dent-five-location-baseline-phone/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/junyan/e2e/opening.ts",
+                    "column": 58,
+                    "line": 63
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d2923076b323a8336a93-7b7e191823768dd5a377",
+          "file": "baseline.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-05T23:58:16.575Z",
+    "duration": 12302.809000000001,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

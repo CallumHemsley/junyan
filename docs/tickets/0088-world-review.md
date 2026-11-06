@@ -1,7 +1,7 @@
 ---
 id: 88
 title: Independently audit connected-world gameplay and experience
-status: todo
+status: doing
 priority: high
 type: chore
 created: 2026-11-05
@@ -17,4 +17,6 @@ Independently run all program gates on the actual integration head. Report defec
 
 ## Notes
 
-Owner: independent Astra review orchestrator, thread pending relay. Branch `codex/0088-world-review`. Owns this ticket and `docs/evidence/0088/*`. Port 5490 with strictPort. Full goal remains active until scope withstands review.
+Owner: independent Astra review orchestrator, thread 01a1ae1f-27e8-72f0-8ffc-26564922f069. Branch `codex/0088-world-review`. Owns this ticket and `docs/evidence/0088/*`. Port 5490 with strictPort. Full goal remains active until scope withstands review.
+
+Persistent objective ACTIVE. Independently review every integrated tranche through full connected-world acceptance. No native goal tool is exposed. Baseline evidence and next actions: `docs/evidence/0088/review-ledger.md`. Production code is not owned by this reviewer.
