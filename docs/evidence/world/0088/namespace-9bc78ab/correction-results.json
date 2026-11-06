@@ -1,0 +1,18 @@
+{
+  "head": "9bc78ab03d01f9dbf30fd2ccd7a37924ab4f9772",
+  "base": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+  "main": "266e9bcd922151160d2edff48fb8078c874be135",
+  "correction": "f7c244e9bac194e885d74c7d8c4e64d5d8782ce6",
+  "correctionChangedPaths": [
+    "docs/evidence/world/0083/runtime/page@a6db71ee66c27f7ce8d1a6d3872e3817.webm"
+  ],
+  "method": "read-only composition: migration9bc plus sole restored blob from f7; every1699 result rehashed. Not a claim foundation has applied correction; no checkout/merge/cherry-pick/generator",
+  "resultFilesChecked": 1699,
+  "bytesHashed": 592798434,
+  "resultHashErrors": [],
+  "mainDocPaths": 494,
+  "mainMissingOrChanged": [],
+  "productionPaths": 699,
+  "productionTreeIdentical": true,
+  "nonDocsChanges": []
+}

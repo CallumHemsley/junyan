@@ -9,3 +9,9 @@ All494 protected main docs/tickets and docs/evidence entries retain their Git bl
 Coordinator follow-up: restore the exact missing blob or reconcile the manifest with an explicit provenance explanation. Preserve newer qualified evidence and the494 exact main files during application. No broad regeneration or production edit is requested. Semantic current-main reconciliation remains a separate gate; this audit does not approve App/save/progression merges.
 
 Run `python docs/evidence/world/0088/namespace-9bc78ab/verify.py` from this repository with the three Git objects fetched. It checks committed objects, not only a helper working directory. Raw result is results.json.
+
+## Exact correction verified
+
+Coordinator correction `f7c244e9bac194e885d74c7d8c4e64d5d8782ce6` changes exactly the single missing WebM. Its blob is2,883,584bytes with the expected SHA256. Independent `verify-correction.py` rehashes every destination against the existing materialized manifest, selecting that one blob from f7 and all other files from9bc: **1699/1699 match**,592,798,434bytes checked.494 main documents and699 production entries remain exact; no non-doc migration change. `correction-results.json` retains raw results.
+
+The missing-blob objection is resolved for the published correction. This is a read-only composition check, not a claim that foundation has cherry-picked it or completed its semantic merge. The correction branch does not itself contain the materialized manifest; the immutable9bc manifest is the reference. No generator, checkout, cherry-pick or merge was performed by reviewer. Historical failed results remain intact.
