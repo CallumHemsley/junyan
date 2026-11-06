@@ -13,6 +13,7 @@ export const mandarinUi = {
   noted: "记在本子里",
   listenWord: "听这个词",
   home: "君言首页",
+  documentTitle: "君言 · 早安小馆",
   seal: ["君", "言"],
   brand: "君言",
   restaurant: "早安小馆",

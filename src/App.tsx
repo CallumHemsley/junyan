@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import type { Line, Position, Word } from "./contracts";
 import { KITCHEN, TABLES } from "./contracts";
 import { characterFor } from "./content";
@@ -499,7 +499,7 @@ export default function App() {
   const brand = (
     <a className="brand" href={import.meta.env.BASE_URL} aria-label={ui.home}>
       <span className="brand-seal">
-        {ui.seal.map((line, index) => <span key={index}>{index > 0 && <br />}{line}</span>)}
+        {ui.seal.map((line, index) => <Fragment key={index}>{index > 0 && <br />}{line}</Fragment>)}
       </span>
       <span>
         {ui.brand}<span className="brand-divider"> / </span>{ui.restaurant}

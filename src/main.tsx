@@ -2,10 +2,12 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import { language } from "./language";
+import { ui } from "./language/ui";
 import "../docs/design/tokens.css";
 import "./style.css";
 document.documentElement.lang = language.locale;
 document.documentElement.dir = language.direction;
+document.title = ui.documentTitle;
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />
