@@ -1,0 +1,3042 @@
+[
+  {
+    "name": "desktop",
+    "phase": "morning",
+    "occupied": false,
+    "study": {
+      "phase": "morning",
+      "occupied": false,
+      "job": "lamp",
+      "completed": [],
+      "hooks": {
+        "interior": true,
+        "water": [],
+        "foliage": [
+          {
+            "id": "workshop.window-plant",
+            "motion": true,
+            "depth": 12.01,
+            "position": {
+              "x": 2.5,
+              "y": 8.5,
+              "z": 0.15
+            },
+            "radius": 0.4,
+            "kind": "grass"
+          },
+          {
+            "id": "workshop.yard-planter-left",
+            "motion": false,
+            "depth": 33.61,
+            "position": {
+              "x": 9,
+              "y": 23,
+              "z": 0.15
+            },
+            "radius": 0.48,
+            "kind": "grass"
+          },
+          {
+            "id": "workshop.yard-planter-right",
+            "motion": false,
+            "depth": 44.61,
+            "position": {
+              "x": 20,
+              "y": 23,
+              "z": 0.15
+            },
+            "radius": 0.48,
+            "kind": "grass"
+          }
+        ],
+        "lights": [
+          {
+            "id": "workshop.window-left",
+            "position": {
+              "x": 2.02,
+              "y": 4,
+              "z": 1.5
+            },
+            "radius": 1.2,
+            "kind": "window"
+          },
+          {
+            "id": "workshop.window-back",
+            "position": {
+              "x": 11,
+              "y": 2.02,
+              "z": 1.5
+            },
+            "radius": 1.2,
+            "kind": "window"
+          },
+          {
+            "id": "workshop.desk-lamp.task-pool",
+            "position": {
+              "x": 8.86,
+              "y": 8.75,
+              "z": 2.51
+            },
+            "radius": 3.2,
+            "kind": "lamp",
+            "emitter": [
+              {
+                "x": 8.7,
+                "y": 8.58,
+                "z": 2.51
+              },
+              {
+                "x": 9.02,
+                "y": 8.58,
+                "z": 2.51
+              },
+              {
+                "x": 9.02,
+                "y": 8.92,
+                "z": 2.51
+              },
+              {
+                "x": 8.7,
+                "y": 8.92,
+                "z": 2.51
+              }
+            ]
+          }
+        ],
+        "shadows": [
+          {
+            "id": "workshop.desk-lamp",
+            "position": {
+              "x": 9,
+              "y": 8.5
+            },
+            "radius": 0.24,
+            "height": 0.6
+          },
+          {
+            "id": "workshop.toy-lamp",
+            "position": {
+              "x": 23,
+              "y": 8.5
+            },
+            "radius": 0.24,
+            "height": 0.6
+          }
+        ]
+      },
+      "geometry": {
+        "colliders": [
+          {
+            "id": "workshop.rear-wall",
+            "rect": {
+              "x": 2,
+              "y": 1.6,
+              "width": 26,
+              "height": 0.4
+            }
+          },
+          {
+            "id": "workshop.left-wall",
+            "rect": {
+              "x": 1.6,
+              "y": 2,
+              "width": 0.4,
+              "height": 19
+            }
+          },
+          {
+            "id": "workshop.right-wall",
+            "rect": {
+              "x": 28,
+              "y": 2,
+              "width": 0.4,
+              "height": 19
+            }
+          },
+          {
+            "id": "workshop.front-wall-left",
+            "rect": {
+              "x": 2,
+              "y": 20.7,
+              "width": 10,
+              "height": 0.3
+            }
+          },
+          {
+            "id": "workshop.front-wall-right",
+            "rect": {
+              "x": 18,
+              "y": 20.7,
+              "width": 10,
+              "height": 0.3
+            }
+          },
+          {
+            "id": "workshop.parts-wall",
+            "rect": {
+              "x": 4,
+              "y": 2.5,
+              "width": 5,
+              "height": 1.5
+            }
+          },
+          {
+            "id": "workshop.returned-shelf",
+            "rect": {
+              "x": 20,
+              "y": 2.5,
+              "width": 6,
+              "height": 1.5
+            }
+          },
+          {
+            "id": "workshop.lamp-bench",
+            "rect": {
+              "x": 5,
+              "y": 8,
+              "width": 5.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.toy-bench",
+            "rect": {
+              "x": 18,
+              "y": 8,
+              "width": 6,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.lamp-stool",
+            "rect": {
+              "x": 6.4,
+              "y": 11.4,
+              "width": 0.9,
+              "height": 0.9
+            }
+          },
+          {
+            "id": "workshop.toy-stool",
+            "rect": {
+              "x": 22,
+              "y": 11.4,
+              "width": 0.9,
+              "height": 0.9
+            }
+          },
+          {
+            "id": "workshop.window-bench",
+            "rect": {
+              "x": 2.5,
+              "y": 10,
+              "width": 1.5,
+              "height": 5
+            }
+          },
+          {
+            "id": "workshop.wood-rack",
+            "rect": {
+              "x": 2.5,
+              "y": 16,
+              "width": 1.5,
+              "height": 3.5
+            }
+          },
+          {
+            "id": "workshop.woodworking",
+            "rect": {
+              "x": 5.5,
+              "y": 16,
+              "width": 5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.sewing-bench",
+            "rect": {
+              "x": 20,
+              "y": 16,
+              "width": 4.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.fabric-basket",
+            "rect": {
+              "x": 25,
+              "y": 17,
+              "width": 1.2,
+              "height": 1.2
+            }
+          },
+          {
+            "id": "workshop.drawer-chest",
+            "rect": {
+              "x": 26,
+              "y": 9,
+              "width": 1.5,
+              "height": 4
+            }
+          },
+          {
+            "id": "workshop.spares-bins",
+            "rect": {
+              "x": 26,
+              "y": 14,
+              "width": 1.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.door-left",
+            "rect": {
+              "x": 11.6,
+              "y": 20.5,
+              "width": 0.4,
+              "height": 1
+            }
+          },
+          {
+            "id": "workshop.door-right",
+            "rect": {
+              "x": 18,
+              "y": 20.5,
+              "width": 0.4,
+              "height": 1
+            }
+          },
+          {
+            "id": "workshop.yard-bicycle",
+            "rect": {
+              "x": 4,
+              "y": 23,
+              "width": 3,
+              "height": 1.1
+            }
+          },
+          {
+            "id": "workshop.yard-planter-left",
+            "rect": {
+              "x": 9,
+              "y": 23,
+              "width": 1.2,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.yard-planter-right",
+            "rect": {
+              "x": 20,
+              "y": 23,
+              "width": 1.2,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.yard-delivery",
+            "rect": {
+              "x": 24,
+              "y": 22.5,
+              "width": 2,
+              "height": 1.6
+            }
+          },
+          {
+            "id": "workshop.yard-stool",
+            "rect": {
+              "x": 22,
+              "y": 25,
+              "width": 0.9,
+              "height": 0.9
+            }
+          }
+        ],
+        "anchors": [
+          {
+            "id": "workshop.lamp",
+            "position": {
+              "x": 8,
+              "y": 10.8
+            },
+            "radius": 1.25,
+            "featureId": "repairs",
+            "interactionId": "repair-lamp"
+          },
+          {
+            "id": "workshop.toy",
+            "position": {
+              "x": 20.8,
+              "y": 10.8
+            },
+            "radius": 1.25,
+            "featureId": "repairs",
+            "interactionId": "repair-toy"
+          }
+        ]
+      },
+      "ready": true
+    },
+    "errors": []
+  },
+  {
+    "name": "desktop",
+    "phase": "morning",
+    "occupied": true,
+    "study": {
+      "phase": "morning",
+      "occupied": true,
+      "job": "lamp",
+      "completed": [],
+      "hooks": {
+        "interior": true,
+        "water": [],
+        "foliage": [
+          {
+            "id": "workshop.window-plant",
+            "motion": true,
+            "depth": 12.01,
+            "position": {
+              "x": 2.5,
+              "y": 8.5,
+              "z": 0.15
+            },
+            "radius": 0.4,
+            "kind": "grass"
+          },
+          {
+            "id": "workshop.yard-planter-left",
+            "motion": false,
+            "depth": 33.61,
+            "position": {
+              "x": 9,
+              "y": 23,
+              "z": 0.15
+            },
+            "radius": 0.48,
+            "kind": "grass"
+          },
+          {
+            "id": "workshop.yard-planter-right",
+            "motion": false,
+            "depth": 44.61,
+            "position": {
+              "x": 20,
+              "y": 23,
+              "z": 0.15
+            },
+            "radius": 0.48,
+            "kind": "grass"
+          }
+        ],
+        "lights": [
+          {
+            "id": "workshop.window-left",
+            "position": {
+              "x": 2.02,
+              "y": 4,
+              "z": 1.5
+            },
+            "radius": 1.2,
+            "kind": "window"
+          },
+          {
+            "id": "workshop.window-back",
+            "position": {
+              "x": 11,
+              "y": 2.02,
+              "z": 1.5
+            },
+            "radius": 1.2,
+            "kind": "window"
+          },
+          {
+            "id": "workshop.desk-lamp.task-pool",
+            "position": {
+              "x": 8.86,
+              "y": 8.75,
+              "z": 2.51
+            },
+            "radius": 3.2,
+            "kind": "lamp",
+            "emitter": [
+              {
+                "x": 8.7,
+                "y": 8.58,
+                "z": 2.51
+              },
+              {
+                "x": 9.02,
+                "y": 8.58,
+                "z": 2.51
+              },
+              {
+                "x": 9.02,
+                "y": 8.92,
+                "z": 2.51
+              },
+              {
+                "x": 8.7,
+                "y": 8.92,
+                "z": 2.51
+              }
+            ]
+          }
+        ],
+        "shadows": [
+          {
+            "id": "workshop.desk-lamp",
+            "position": {
+              "x": 9,
+              "y": 8.5
+            },
+            "radius": 0.24,
+            "height": 0.6
+          },
+          {
+            "id": "workshop.toy-lamp",
+            "position": {
+              "x": 23,
+              "y": 8.5
+            },
+            "radius": 0.24,
+            "height": 0.6
+          }
+        ]
+      },
+      "geometry": {
+        "colliders": [
+          {
+            "id": "workshop.rear-wall",
+            "rect": {
+              "x": 2,
+              "y": 1.6,
+              "width": 26,
+              "height": 0.4
+            }
+          },
+          {
+            "id": "workshop.left-wall",
+            "rect": {
+              "x": 1.6,
+              "y": 2,
+              "width": 0.4,
+              "height": 19
+            }
+          },
+          {
+            "id": "workshop.right-wall",
+            "rect": {
+              "x": 28,
+              "y": 2,
+              "width": 0.4,
+              "height": 19
+            }
+          },
+          {
+            "id": "workshop.front-wall-left",
+            "rect": {
+              "x": 2,
+              "y": 20.7,
+              "width": 10,
+              "height": 0.3
+            }
+          },
+          {
+            "id": "workshop.front-wall-right",
+            "rect": {
+              "x": 18,
+              "y": 20.7,
+              "width": 10,
+              "height": 0.3
+            }
+          },
+          {
+            "id": "workshop.parts-wall",
+            "rect": {
+              "x": 4,
+              "y": 2.5,
+              "width": 5,
+              "height": 1.5
+            }
+          },
+          {
+            "id": "workshop.returned-shelf",
+            "rect": {
+              "x": 20,
+              "y": 2.5,
+              "width": 6,
+              "height": 1.5
+            }
+          },
+          {
+            "id": "workshop.lamp-bench",
+            "rect": {
+              "x": 5,
+              "y": 8,
+              "width": 5.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.toy-bench",
+            "rect": {
+              "x": 18,
+              "y": 8,
+              "width": 6,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.lamp-stool",
+            "rect": {
+              "x": 6.4,
+              "y": 11.4,
+              "width": 0.9,
+              "height": 0.9
+            }
+          },
+          {
+            "id": "workshop.toy-stool",
+            "rect": {
+              "x": 22,
+              "y": 11.4,
+              "width": 0.9,
+              "height": 0.9
+            }
+          },
+          {
+            "id": "workshop.window-bench",
+            "rect": {
+              "x": 2.5,
+              "y": 10,
+              "width": 1.5,
+              "height": 5
+            }
+          },
+          {
+            "id": "workshop.wood-rack",
+            "rect": {
+              "x": 2.5,
+              "y": 16,
+              "width": 1.5,
+              "height": 3.5
+            }
+          },
+          {
+            "id": "workshop.woodworking",
+            "rect": {
+              "x": 5.5,
+              "y": 16,
+              "width": 5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.sewing-bench",
+            "rect": {
+              "x": 20,
+              "y": 16,
+              "width": 4.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.fabric-basket",
+            "rect": {
+              "x": 25,
+              "y": 17,
+              "width": 1.2,
+              "height": 1.2
+            }
+          },
+          {
+            "id": "workshop.drawer-chest",
+            "rect": {
+              "x": 26,
+              "y": 9,
+              "width": 1.5,
+              "height": 4
+            }
+          },
+          {
+            "id": "workshop.spares-bins",
+            "rect": {
+              "x": 26,
+              "y": 14,
+              "width": 1.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.door-left",
+            "rect": {
+              "x": 11.6,
+              "y": 20.5,
+              "width": 0.4,
+              "height": 1
+            }
+          },
+          {
+            "id": "workshop.door-right",
+            "rect": {
+              "x": 18,
+              "y": 20.5,
+              "width": 0.4,
+              "height": 1
+            }
+          },
+          {
+            "id": "workshop.yard-bicycle",
+            "rect": {
+              "x": 4,
+              "y": 23,
+              "width": 3,
+              "height": 1.1
+            }
+          },
+          {
+            "id": "workshop.yard-planter-left",
+            "rect": {
+              "x": 9,
+              "y": 23,
+              "width": 1.2,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.yard-planter-right",
+            "rect": {
+              "x": 20,
+              "y": 23,
+              "width": 1.2,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.yard-delivery",
+            "rect": {
+              "x": 24,
+              "y": 22.5,
+              "width": 2,
+              "height": 1.6
+            }
+          },
+          {
+            "id": "workshop.yard-stool",
+            "rect": {
+              "x": 22,
+              "y": 25,
+              "width": 0.9,
+              "height": 0.9
+            }
+          }
+        ],
+        "anchors": [
+          {
+            "id": "workshop.lamp",
+            "position": {
+              "x": 8,
+              "y": 10.8
+            },
+            "radius": 1.25,
+            "featureId": "repairs",
+            "interactionId": "repair-lamp"
+          },
+          {
+            "id": "workshop.toy",
+            "position": {
+              "x": 20.8,
+              "y": 10.8
+            },
+            "radius": 1.25,
+            "featureId": "repairs",
+            "interactionId": "repair-toy"
+          }
+        ]
+      },
+      "ready": true
+    },
+    "errors": []
+  },
+  {
+    "name": "desktop",
+    "phase": "evening",
+    "occupied": false,
+    "study": {
+      "phase": "evening",
+      "occupied": false,
+      "job": "lamp",
+      "completed": [],
+      "hooks": {
+        "interior": true,
+        "water": [],
+        "foliage": [
+          {
+            "id": "workshop.window-plant",
+            "motion": true,
+            "depth": 12.01,
+            "position": {
+              "x": 2.5,
+              "y": 8.5,
+              "z": 0.15
+            },
+            "radius": 0.4,
+            "kind": "grass"
+          },
+          {
+            "id": "workshop.yard-planter-left",
+            "motion": false,
+            "depth": 33.61,
+            "position": {
+              "x": 9,
+              "y": 23,
+              "z": 0.15
+            },
+            "radius": 0.48,
+            "kind": "grass"
+          },
+          {
+            "id": "workshop.yard-planter-right",
+            "motion": false,
+            "depth": 44.61,
+            "position": {
+              "x": 20,
+              "y": 23,
+              "z": 0.15
+            },
+            "radius": 0.48,
+            "kind": "grass"
+          }
+        ],
+        "lights": [
+          {
+            "id": "workshop.window-left",
+            "position": {
+              "x": 2.02,
+              "y": 4,
+              "z": 1.5
+            },
+            "radius": 1.2,
+            "kind": "window"
+          },
+          {
+            "id": "workshop.window-back",
+            "position": {
+              "x": 11,
+              "y": 2.02,
+              "z": 1.5
+            },
+            "radius": 1.2,
+            "kind": "window"
+          },
+          {
+            "id": "workshop.desk-lamp.task-pool",
+            "position": {
+              "x": 8.86,
+              "y": 8.75,
+              "z": 2.51
+            },
+            "radius": 3.2,
+            "kind": "lamp",
+            "emitter": [
+              {
+                "x": 8.7,
+                "y": 8.58,
+                "z": 2.51
+              },
+              {
+                "x": 9.02,
+                "y": 8.58,
+                "z": 2.51
+              },
+              {
+                "x": 9.02,
+                "y": 8.92,
+                "z": 2.51
+              },
+              {
+                "x": 8.7,
+                "y": 8.92,
+                "z": 2.51
+              }
+            ]
+          }
+        ],
+        "shadows": [
+          {
+            "id": "workshop.desk-lamp",
+            "position": {
+              "x": 9,
+              "y": 8.5
+            },
+            "radius": 0.24,
+            "height": 0.6
+          },
+          {
+            "id": "workshop.toy-lamp",
+            "position": {
+              "x": 23,
+              "y": 8.5
+            },
+            "radius": 0.24,
+            "height": 0.6
+          }
+        ]
+      },
+      "geometry": {
+        "colliders": [
+          {
+            "id": "workshop.rear-wall",
+            "rect": {
+              "x": 2,
+              "y": 1.6,
+              "width": 26,
+              "height": 0.4
+            }
+          },
+          {
+            "id": "workshop.left-wall",
+            "rect": {
+              "x": 1.6,
+              "y": 2,
+              "width": 0.4,
+              "height": 19
+            }
+          },
+          {
+            "id": "workshop.right-wall",
+            "rect": {
+              "x": 28,
+              "y": 2,
+              "width": 0.4,
+              "height": 19
+            }
+          },
+          {
+            "id": "workshop.front-wall-left",
+            "rect": {
+              "x": 2,
+              "y": 20.7,
+              "width": 10,
+              "height": 0.3
+            }
+          },
+          {
+            "id": "workshop.front-wall-right",
+            "rect": {
+              "x": 18,
+              "y": 20.7,
+              "width": 10,
+              "height": 0.3
+            }
+          },
+          {
+            "id": "workshop.parts-wall",
+            "rect": {
+              "x": 4,
+              "y": 2.5,
+              "width": 5,
+              "height": 1.5
+            }
+          },
+          {
+            "id": "workshop.returned-shelf",
+            "rect": {
+              "x": 20,
+              "y": 2.5,
+              "width": 6,
+              "height": 1.5
+            }
+          },
+          {
+            "id": "workshop.lamp-bench",
+            "rect": {
+              "x": 5,
+              "y": 8,
+              "width": 5.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.toy-bench",
+            "rect": {
+              "x": 18,
+              "y": 8,
+              "width": 6,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.lamp-stool",
+            "rect": {
+              "x": 6.4,
+              "y": 11.4,
+              "width": 0.9,
+              "height": 0.9
+            }
+          },
+          {
+            "id": "workshop.toy-stool",
+            "rect": {
+              "x": 22,
+              "y": 11.4,
+              "width": 0.9,
+              "height": 0.9
+            }
+          },
+          {
+            "id": "workshop.window-bench",
+            "rect": {
+              "x": 2.5,
+              "y": 10,
+              "width": 1.5,
+              "height": 5
+            }
+          },
+          {
+            "id": "workshop.wood-rack",
+            "rect": {
+              "x": 2.5,
+              "y": 16,
+              "width": 1.5,
+              "height": 3.5
+            }
+          },
+          {
+            "id": "workshop.woodworking",
+            "rect": {
+              "x": 5.5,
+              "y": 16,
+              "width": 5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.sewing-bench",
+            "rect": {
+              "x": 20,
+              "y": 16,
+              "width": 4.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.fabric-basket",
+            "rect": {
+              "x": 25,
+              "y": 17,
+              "width": 1.2,
+              "height": 1.2
+            }
+          },
+          {
+            "id": "workshop.drawer-chest",
+            "rect": {
+              "x": 26,
+              "y": 9,
+              "width": 1.5,
+              "height": 4
+            }
+          },
+          {
+            "id": "workshop.spares-bins",
+            "rect": {
+              "x": 26,
+              "y": 14,
+              "width": 1.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.door-left",
+            "rect": {
+              "x": 11.6,
+              "y": 20.5,
+              "width": 0.4,
+              "height": 1
+            }
+          },
+          {
+            "id": "workshop.door-right",
+            "rect": {
+              "x": 18,
+              "y": 20.5,
+              "width": 0.4,
+              "height": 1
+            }
+          },
+          {
+            "id": "workshop.yard-bicycle",
+            "rect": {
+              "x": 4,
+              "y": 23,
+              "width": 3,
+              "height": 1.1
+            }
+          },
+          {
+            "id": "workshop.yard-planter-left",
+            "rect": {
+              "x": 9,
+              "y": 23,
+              "width": 1.2,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.yard-planter-right",
+            "rect": {
+              "x": 20,
+              "y": 23,
+              "width": 1.2,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.yard-delivery",
+            "rect": {
+              "x": 24,
+              "y": 22.5,
+              "width": 2,
+              "height": 1.6
+            }
+          },
+          {
+            "id": "workshop.yard-stool",
+            "rect": {
+              "x": 22,
+              "y": 25,
+              "width": 0.9,
+              "height": 0.9
+            }
+          }
+        ],
+        "anchors": [
+          {
+            "id": "workshop.lamp",
+            "position": {
+              "x": 8,
+              "y": 10.8
+            },
+            "radius": 1.25,
+            "featureId": "repairs",
+            "interactionId": "repair-lamp"
+          },
+          {
+            "id": "workshop.toy",
+            "position": {
+              "x": 20.8,
+              "y": 10.8
+            },
+            "radius": 1.25,
+            "featureId": "repairs",
+            "interactionId": "repair-toy"
+          }
+        ]
+      },
+      "ready": true
+    },
+    "errors": []
+  },
+  {
+    "name": "desktop",
+    "phase": "evening",
+    "occupied": true,
+    "study": {
+      "phase": "evening",
+      "occupied": true,
+      "job": "lamp",
+      "completed": [],
+      "hooks": {
+        "interior": true,
+        "water": [],
+        "foliage": [
+          {
+            "id": "workshop.window-plant",
+            "motion": true,
+            "depth": 12.01,
+            "position": {
+              "x": 2.5,
+              "y": 8.5,
+              "z": 0.15
+            },
+            "radius": 0.4,
+            "kind": "grass"
+          },
+          {
+            "id": "workshop.yard-planter-left",
+            "motion": false,
+            "depth": 33.61,
+            "position": {
+              "x": 9,
+              "y": 23,
+              "z": 0.15
+            },
+            "radius": 0.48,
+            "kind": "grass"
+          },
+          {
+            "id": "workshop.yard-planter-right",
+            "motion": false,
+            "depth": 44.61,
+            "position": {
+              "x": 20,
+              "y": 23,
+              "z": 0.15
+            },
+            "radius": 0.48,
+            "kind": "grass"
+          }
+        ],
+        "lights": [
+          {
+            "id": "workshop.window-left",
+            "position": {
+              "x": 2.02,
+              "y": 4,
+              "z": 1.5
+            },
+            "radius": 1.2,
+            "kind": "window"
+          },
+          {
+            "id": "workshop.window-back",
+            "position": {
+              "x": 11,
+              "y": 2.02,
+              "z": 1.5
+            },
+            "radius": 1.2,
+            "kind": "window"
+          },
+          {
+            "id": "workshop.desk-lamp.task-pool",
+            "position": {
+              "x": 8.86,
+              "y": 8.75,
+              "z": 2.51
+            },
+            "radius": 3.2,
+            "kind": "lamp",
+            "emitter": [
+              {
+                "x": 8.7,
+                "y": 8.58,
+                "z": 2.51
+              },
+              {
+                "x": 9.02,
+                "y": 8.58,
+                "z": 2.51
+              },
+              {
+                "x": 9.02,
+                "y": 8.92,
+                "z": 2.51
+              },
+              {
+                "x": 8.7,
+                "y": 8.92,
+                "z": 2.51
+              }
+            ]
+          }
+        ],
+        "shadows": [
+          {
+            "id": "workshop.desk-lamp",
+            "position": {
+              "x": 9,
+              "y": 8.5
+            },
+            "radius": 0.24,
+            "height": 0.6
+          },
+          {
+            "id": "workshop.toy-lamp",
+            "position": {
+              "x": 23,
+              "y": 8.5
+            },
+            "radius": 0.24,
+            "height": 0.6
+          }
+        ]
+      },
+      "geometry": {
+        "colliders": [
+          {
+            "id": "workshop.rear-wall",
+            "rect": {
+              "x": 2,
+              "y": 1.6,
+              "width": 26,
+              "height": 0.4
+            }
+          },
+          {
+            "id": "workshop.left-wall",
+            "rect": {
+              "x": 1.6,
+              "y": 2,
+              "width": 0.4,
+              "height": 19
+            }
+          },
+          {
+            "id": "workshop.right-wall",
+            "rect": {
+              "x": 28,
+              "y": 2,
+              "width": 0.4,
+              "height": 19
+            }
+          },
+          {
+            "id": "workshop.front-wall-left",
+            "rect": {
+              "x": 2,
+              "y": 20.7,
+              "width": 10,
+              "height": 0.3
+            }
+          },
+          {
+            "id": "workshop.front-wall-right",
+            "rect": {
+              "x": 18,
+              "y": 20.7,
+              "width": 10,
+              "height": 0.3
+            }
+          },
+          {
+            "id": "workshop.parts-wall",
+            "rect": {
+              "x": 4,
+              "y": 2.5,
+              "width": 5,
+              "height": 1.5
+            }
+          },
+          {
+            "id": "workshop.returned-shelf",
+            "rect": {
+              "x": 20,
+              "y": 2.5,
+              "width": 6,
+              "height": 1.5
+            }
+          },
+          {
+            "id": "workshop.lamp-bench",
+            "rect": {
+              "x": 5,
+              "y": 8,
+              "width": 5.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.toy-bench",
+            "rect": {
+              "x": 18,
+              "y": 8,
+              "width": 6,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.lamp-stool",
+            "rect": {
+              "x": 6.4,
+              "y": 11.4,
+              "width": 0.9,
+              "height": 0.9
+            }
+          },
+          {
+            "id": "workshop.toy-stool",
+            "rect": {
+              "x": 22,
+              "y": 11.4,
+              "width": 0.9,
+              "height": 0.9
+            }
+          },
+          {
+            "id": "workshop.window-bench",
+            "rect": {
+              "x": 2.5,
+              "y": 10,
+              "width": 1.5,
+              "height": 5
+            }
+          },
+          {
+            "id": "workshop.wood-rack",
+            "rect": {
+              "x": 2.5,
+              "y": 16,
+              "width": 1.5,
+              "height": 3.5
+            }
+          },
+          {
+            "id": "workshop.woodworking",
+            "rect": {
+              "x": 5.5,
+              "y": 16,
+              "width": 5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.sewing-bench",
+            "rect": {
+              "x": 20,
+              "y": 16,
+              "width": 4.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.fabric-basket",
+            "rect": {
+              "x": 25,
+              "y": 17,
+              "width": 1.2,
+              "height": 1.2
+            }
+          },
+          {
+            "id": "workshop.drawer-chest",
+            "rect": {
+              "x": 26,
+              "y": 9,
+              "width": 1.5,
+              "height": 4
+            }
+          },
+          {
+            "id": "workshop.spares-bins",
+            "rect": {
+              "x": 26,
+              "y": 14,
+              "width": 1.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.door-left",
+            "rect": {
+              "x": 11.6,
+              "y": 20.5,
+              "width": 0.4,
+              "height": 1
+            }
+          },
+          {
+            "id": "workshop.door-right",
+            "rect": {
+              "x": 18,
+              "y": 20.5,
+              "width": 0.4,
+              "height": 1
+            }
+          },
+          {
+            "id": "workshop.yard-bicycle",
+            "rect": {
+              "x": 4,
+              "y": 23,
+              "width": 3,
+              "height": 1.1
+            }
+          },
+          {
+            "id": "workshop.yard-planter-left",
+            "rect": {
+              "x": 9,
+              "y": 23,
+              "width": 1.2,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.yard-planter-right",
+            "rect": {
+              "x": 20,
+              "y": 23,
+              "width": 1.2,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.yard-delivery",
+            "rect": {
+              "x": 24,
+              "y": 22.5,
+              "width": 2,
+              "height": 1.6
+            }
+          },
+          {
+            "id": "workshop.yard-stool",
+            "rect": {
+              "x": 22,
+              "y": 25,
+              "width": 0.9,
+              "height": 0.9
+            }
+          }
+        ],
+        "anchors": [
+          {
+            "id": "workshop.lamp",
+            "position": {
+              "x": 8,
+              "y": 10.8
+            },
+            "radius": 1.25,
+            "featureId": "repairs",
+            "interactionId": "repair-lamp"
+          },
+          {
+            "id": "workshop.toy",
+            "position": {
+              "x": 20.8,
+              "y": 10.8
+            },
+            "radius": 1.25,
+            "featureId": "repairs",
+            "interactionId": "repair-toy"
+          }
+        ]
+      },
+      "ready": true
+    },
+    "errors": []
+  },
+  {
+    "name": "phone",
+    "phase": "morning",
+    "occupied": false,
+    "study": {
+      "phase": "morning",
+      "occupied": false,
+      "job": "lamp",
+      "completed": [],
+      "hooks": {
+        "interior": true,
+        "water": [],
+        "foliage": [
+          {
+            "id": "workshop.window-plant",
+            "motion": true,
+            "depth": 12.01,
+            "position": {
+              "x": 2.5,
+              "y": 8.5,
+              "z": 0.15
+            },
+            "radius": 0.4,
+            "kind": "grass"
+          },
+          {
+            "id": "workshop.yard-planter-left",
+            "motion": false,
+            "depth": 33.61,
+            "position": {
+              "x": 9,
+              "y": 23,
+              "z": 0.15
+            },
+            "radius": 0.48,
+            "kind": "grass"
+          },
+          {
+            "id": "workshop.yard-planter-right",
+            "motion": false,
+            "depth": 44.61,
+            "position": {
+              "x": 20,
+              "y": 23,
+              "z": 0.15
+            },
+            "radius": 0.48,
+            "kind": "grass"
+          }
+        ],
+        "lights": [
+          {
+            "id": "workshop.window-left",
+            "position": {
+              "x": 2.02,
+              "y": 4,
+              "z": 1.5
+            },
+            "radius": 1.2,
+            "kind": "window"
+          },
+          {
+            "id": "workshop.window-back",
+            "position": {
+              "x": 11,
+              "y": 2.02,
+              "z": 1.5
+            },
+            "radius": 1.2,
+            "kind": "window"
+          },
+          {
+            "id": "workshop.desk-lamp.task-pool",
+            "position": {
+              "x": 8.86,
+              "y": 8.75,
+              "z": 2.51
+            },
+            "radius": 3.2,
+            "kind": "lamp",
+            "emitter": [
+              {
+                "x": 8.7,
+                "y": 8.58,
+                "z": 2.51
+              },
+              {
+                "x": 9.02,
+                "y": 8.58,
+                "z": 2.51
+              },
+              {
+                "x": 9.02,
+                "y": 8.92,
+                "z": 2.51
+              },
+              {
+                "x": 8.7,
+                "y": 8.92,
+                "z": 2.51
+              }
+            ]
+          }
+        ],
+        "shadows": [
+          {
+            "id": "workshop.desk-lamp",
+            "position": {
+              "x": 9,
+              "y": 8.5
+            },
+            "radius": 0.24,
+            "height": 0.6
+          },
+          {
+            "id": "workshop.toy-lamp",
+            "position": {
+              "x": 23,
+              "y": 8.5
+            },
+            "radius": 0.24,
+            "height": 0.6
+          }
+        ]
+      },
+      "geometry": {
+        "colliders": [
+          {
+            "id": "workshop.rear-wall",
+            "rect": {
+              "x": 2,
+              "y": 1.6,
+              "width": 26,
+              "height": 0.4
+            }
+          },
+          {
+            "id": "workshop.left-wall",
+            "rect": {
+              "x": 1.6,
+              "y": 2,
+              "width": 0.4,
+              "height": 19
+            }
+          },
+          {
+            "id": "workshop.right-wall",
+            "rect": {
+              "x": 28,
+              "y": 2,
+              "width": 0.4,
+              "height": 19
+            }
+          },
+          {
+            "id": "workshop.front-wall-left",
+            "rect": {
+              "x": 2,
+              "y": 20.7,
+              "width": 10,
+              "height": 0.3
+            }
+          },
+          {
+            "id": "workshop.front-wall-right",
+            "rect": {
+              "x": 18,
+              "y": 20.7,
+              "width": 10,
+              "height": 0.3
+            }
+          },
+          {
+            "id": "workshop.parts-wall",
+            "rect": {
+              "x": 4,
+              "y": 2.5,
+              "width": 5,
+              "height": 1.5
+            }
+          },
+          {
+            "id": "workshop.returned-shelf",
+            "rect": {
+              "x": 20,
+              "y": 2.5,
+              "width": 6,
+              "height": 1.5
+            }
+          },
+          {
+            "id": "workshop.lamp-bench",
+            "rect": {
+              "x": 5,
+              "y": 8,
+              "width": 5.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.toy-bench",
+            "rect": {
+              "x": 18,
+              "y": 8,
+              "width": 6,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.lamp-stool",
+            "rect": {
+              "x": 6.4,
+              "y": 11.4,
+              "width": 0.9,
+              "height": 0.9
+            }
+          },
+          {
+            "id": "workshop.toy-stool",
+            "rect": {
+              "x": 22,
+              "y": 11.4,
+              "width": 0.9,
+              "height": 0.9
+            }
+          },
+          {
+            "id": "workshop.window-bench",
+            "rect": {
+              "x": 2.5,
+              "y": 10,
+              "width": 1.5,
+              "height": 5
+            }
+          },
+          {
+            "id": "workshop.wood-rack",
+            "rect": {
+              "x": 2.5,
+              "y": 16,
+              "width": 1.5,
+              "height": 3.5
+            }
+          },
+          {
+            "id": "workshop.woodworking",
+            "rect": {
+              "x": 5.5,
+              "y": 16,
+              "width": 5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.sewing-bench",
+            "rect": {
+              "x": 20,
+              "y": 16,
+              "width": 4.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.fabric-basket",
+            "rect": {
+              "x": 25,
+              "y": 17,
+              "width": 1.2,
+              "height": 1.2
+            }
+          },
+          {
+            "id": "workshop.drawer-chest",
+            "rect": {
+              "x": 26,
+              "y": 9,
+              "width": 1.5,
+              "height": 4
+            }
+          },
+          {
+            "id": "workshop.spares-bins",
+            "rect": {
+              "x": 26,
+              "y": 14,
+              "width": 1.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.door-left",
+            "rect": {
+              "x": 11.6,
+              "y": 20.5,
+              "width": 0.4,
+              "height": 1
+            }
+          },
+          {
+            "id": "workshop.door-right",
+            "rect": {
+              "x": 18,
+              "y": 20.5,
+              "width": 0.4,
+              "height": 1
+            }
+          },
+          {
+            "id": "workshop.yard-bicycle",
+            "rect": {
+              "x": 4,
+              "y": 23,
+              "width": 3,
+              "height": 1.1
+            }
+          },
+          {
+            "id": "workshop.yard-planter-left",
+            "rect": {
+              "x": 9,
+              "y": 23,
+              "width": 1.2,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.yard-planter-right",
+            "rect": {
+              "x": 20,
+              "y": 23,
+              "width": 1.2,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.yard-delivery",
+            "rect": {
+              "x": 24,
+              "y": 22.5,
+              "width": 2,
+              "height": 1.6
+            }
+          },
+          {
+            "id": "workshop.yard-stool",
+            "rect": {
+              "x": 22,
+              "y": 25,
+              "width": 0.9,
+              "height": 0.9
+            }
+          }
+        ],
+        "anchors": [
+          {
+            "id": "workshop.lamp",
+            "position": {
+              "x": 8,
+              "y": 10.8
+            },
+            "radius": 1.25,
+            "featureId": "repairs",
+            "interactionId": "repair-lamp"
+          },
+          {
+            "id": "workshop.toy",
+            "position": {
+              "x": 20.8,
+              "y": 10.8
+            },
+            "radius": 1.25,
+            "featureId": "repairs",
+            "interactionId": "repair-toy"
+          }
+        ]
+      },
+      "ready": true
+    },
+    "errors": []
+  },
+  {
+    "name": "phone",
+    "phase": "morning",
+    "occupied": true,
+    "study": {
+      "phase": "morning",
+      "occupied": true,
+      "job": "lamp",
+      "completed": [],
+      "hooks": {
+        "interior": true,
+        "water": [],
+        "foliage": [
+          {
+            "id": "workshop.window-plant",
+            "motion": true,
+            "depth": 12.01,
+            "position": {
+              "x": 2.5,
+              "y": 8.5,
+              "z": 0.15
+            },
+            "radius": 0.4,
+            "kind": "grass"
+          },
+          {
+            "id": "workshop.yard-planter-left",
+            "motion": false,
+            "depth": 33.61,
+            "position": {
+              "x": 9,
+              "y": 23,
+              "z": 0.15
+            },
+            "radius": 0.48,
+            "kind": "grass"
+          },
+          {
+            "id": "workshop.yard-planter-right",
+            "motion": false,
+            "depth": 44.61,
+            "position": {
+              "x": 20,
+              "y": 23,
+              "z": 0.15
+            },
+            "radius": 0.48,
+            "kind": "grass"
+          }
+        ],
+        "lights": [
+          {
+            "id": "workshop.window-left",
+            "position": {
+              "x": 2.02,
+              "y": 4,
+              "z": 1.5
+            },
+            "radius": 1.2,
+            "kind": "window"
+          },
+          {
+            "id": "workshop.window-back",
+            "position": {
+              "x": 11,
+              "y": 2.02,
+              "z": 1.5
+            },
+            "radius": 1.2,
+            "kind": "window"
+          },
+          {
+            "id": "workshop.desk-lamp.task-pool",
+            "position": {
+              "x": 8.86,
+              "y": 8.75,
+              "z": 2.51
+            },
+            "radius": 3.2,
+            "kind": "lamp",
+            "emitter": [
+              {
+                "x": 8.7,
+                "y": 8.58,
+                "z": 2.51
+              },
+              {
+                "x": 9.02,
+                "y": 8.58,
+                "z": 2.51
+              },
+              {
+                "x": 9.02,
+                "y": 8.92,
+                "z": 2.51
+              },
+              {
+                "x": 8.7,
+                "y": 8.92,
+                "z": 2.51
+              }
+            ]
+          }
+        ],
+        "shadows": [
+          {
+            "id": "workshop.desk-lamp",
+            "position": {
+              "x": 9,
+              "y": 8.5
+            },
+            "radius": 0.24,
+            "height": 0.6
+          },
+          {
+            "id": "workshop.toy-lamp",
+            "position": {
+              "x": 23,
+              "y": 8.5
+            },
+            "radius": 0.24,
+            "height": 0.6
+          }
+        ]
+      },
+      "geometry": {
+        "colliders": [
+          {
+            "id": "workshop.rear-wall",
+            "rect": {
+              "x": 2,
+              "y": 1.6,
+              "width": 26,
+              "height": 0.4
+            }
+          },
+          {
+            "id": "workshop.left-wall",
+            "rect": {
+              "x": 1.6,
+              "y": 2,
+              "width": 0.4,
+              "height": 19
+            }
+          },
+          {
+            "id": "workshop.right-wall",
+            "rect": {
+              "x": 28,
+              "y": 2,
+              "width": 0.4,
+              "height": 19
+            }
+          },
+          {
+            "id": "workshop.front-wall-left",
+            "rect": {
+              "x": 2,
+              "y": 20.7,
+              "width": 10,
+              "height": 0.3
+            }
+          },
+          {
+            "id": "workshop.front-wall-right",
+            "rect": {
+              "x": 18,
+              "y": 20.7,
+              "width": 10,
+              "height": 0.3
+            }
+          },
+          {
+            "id": "workshop.parts-wall",
+            "rect": {
+              "x": 4,
+              "y": 2.5,
+              "width": 5,
+              "height": 1.5
+            }
+          },
+          {
+            "id": "workshop.returned-shelf",
+            "rect": {
+              "x": 20,
+              "y": 2.5,
+              "width": 6,
+              "height": 1.5
+            }
+          },
+          {
+            "id": "workshop.lamp-bench",
+            "rect": {
+              "x": 5,
+              "y": 8,
+              "width": 5.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.toy-bench",
+            "rect": {
+              "x": 18,
+              "y": 8,
+              "width": 6,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.lamp-stool",
+            "rect": {
+              "x": 6.4,
+              "y": 11.4,
+              "width": 0.9,
+              "height": 0.9
+            }
+          },
+          {
+            "id": "workshop.toy-stool",
+            "rect": {
+              "x": 22,
+              "y": 11.4,
+              "width": 0.9,
+              "height": 0.9
+            }
+          },
+          {
+            "id": "workshop.window-bench",
+            "rect": {
+              "x": 2.5,
+              "y": 10,
+              "width": 1.5,
+              "height": 5
+            }
+          },
+          {
+            "id": "workshop.wood-rack",
+            "rect": {
+              "x": 2.5,
+              "y": 16,
+              "width": 1.5,
+              "height": 3.5
+            }
+          },
+          {
+            "id": "workshop.woodworking",
+            "rect": {
+              "x": 5.5,
+              "y": 16,
+              "width": 5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.sewing-bench",
+            "rect": {
+              "x": 20,
+              "y": 16,
+              "width": 4.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.fabric-basket",
+            "rect": {
+              "x": 25,
+              "y": 17,
+              "width": 1.2,
+              "height": 1.2
+            }
+          },
+          {
+            "id": "workshop.drawer-chest",
+            "rect": {
+              "x": 26,
+              "y": 9,
+              "width": 1.5,
+              "height": 4
+            }
+          },
+          {
+            "id": "workshop.spares-bins",
+            "rect": {
+              "x": 26,
+              "y": 14,
+              "width": 1.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.door-left",
+            "rect": {
+              "x": 11.6,
+              "y": 20.5,
+              "width": 0.4,
+              "height": 1
+            }
+          },
+          {
+            "id": "workshop.door-right",
+            "rect": {
+              "x": 18,
+              "y": 20.5,
+              "width": 0.4,
+              "height": 1
+            }
+          },
+          {
+            "id": "workshop.yard-bicycle",
+            "rect": {
+              "x": 4,
+              "y": 23,
+              "width": 3,
+              "height": 1.1
+            }
+          },
+          {
+            "id": "workshop.yard-planter-left",
+            "rect": {
+              "x": 9,
+              "y": 23,
+              "width": 1.2,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.yard-planter-right",
+            "rect": {
+              "x": 20,
+              "y": 23,
+              "width": 1.2,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.yard-delivery",
+            "rect": {
+              "x": 24,
+              "y": 22.5,
+              "width": 2,
+              "height": 1.6
+            }
+          },
+          {
+            "id": "workshop.yard-stool",
+            "rect": {
+              "x": 22,
+              "y": 25,
+              "width": 0.9,
+              "height": 0.9
+            }
+          }
+        ],
+        "anchors": [
+          {
+            "id": "workshop.lamp",
+            "position": {
+              "x": 8,
+              "y": 10.8
+            },
+            "radius": 1.25,
+            "featureId": "repairs",
+            "interactionId": "repair-lamp"
+          },
+          {
+            "id": "workshop.toy",
+            "position": {
+              "x": 20.8,
+              "y": 10.8
+            },
+            "radius": 1.25,
+            "featureId": "repairs",
+            "interactionId": "repair-toy"
+          }
+        ]
+      },
+      "ready": true
+    },
+    "errors": []
+  },
+  {
+    "name": "phone",
+    "phase": "evening",
+    "occupied": false,
+    "study": {
+      "phase": "evening",
+      "occupied": false,
+      "job": "lamp",
+      "completed": [],
+      "hooks": {
+        "interior": true,
+        "water": [],
+        "foliage": [
+          {
+            "id": "workshop.window-plant",
+            "motion": true,
+            "depth": 12.01,
+            "position": {
+              "x": 2.5,
+              "y": 8.5,
+              "z": 0.15
+            },
+            "radius": 0.4,
+            "kind": "grass"
+          },
+          {
+            "id": "workshop.yard-planter-left",
+            "motion": false,
+            "depth": 33.61,
+            "position": {
+              "x": 9,
+              "y": 23,
+              "z": 0.15
+            },
+            "radius": 0.48,
+            "kind": "grass"
+          },
+          {
+            "id": "workshop.yard-planter-right",
+            "motion": false,
+            "depth": 44.61,
+            "position": {
+              "x": 20,
+              "y": 23,
+              "z": 0.15
+            },
+            "radius": 0.48,
+            "kind": "grass"
+          }
+        ],
+        "lights": [
+          {
+            "id": "workshop.window-left",
+            "position": {
+              "x": 2.02,
+              "y": 4,
+              "z": 1.5
+            },
+            "radius": 1.2,
+            "kind": "window"
+          },
+          {
+            "id": "workshop.window-back",
+            "position": {
+              "x": 11,
+              "y": 2.02,
+              "z": 1.5
+            },
+            "radius": 1.2,
+            "kind": "window"
+          },
+          {
+            "id": "workshop.desk-lamp.task-pool",
+            "position": {
+              "x": 8.86,
+              "y": 8.75,
+              "z": 2.51
+            },
+            "radius": 3.2,
+            "kind": "lamp",
+            "emitter": [
+              {
+                "x": 8.7,
+                "y": 8.58,
+                "z": 2.51
+              },
+              {
+                "x": 9.02,
+                "y": 8.58,
+                "z": 2.51
+              },
+              {
+                "x": 9.02,
+                "y": 8.92,
+                "z": 2.51
+              },
+              {
+                "x": 8.7,
+                "y": 8.92,
+                "z": 2.51
+              }
+            ]
+          }
+        ],
+        "shadows": [
+          {
+            "id": "workshop.desk-lamp",
+            "position": {
+              "x": 9,
+              "y": 8.5
+            },
+            "radius": 0.24,
+            "height": 0.6
+          },
+          {
+            "id": "workshop.toy-lamp",
+            "position": {
+              "x": 23,
+              "y": 8.5
+            },
+            "radius": 0.24,
+            "height": 0.6
+          }
+        ]
+      },
+      "geometry": {
+        "colliders": [
+          {
+            "id": "workshop.rear-wall",
+            "rect": {
+              "x": 2,
+              "y": 1.6,
+              "width": 26,
+              "height": 0.4
+            }
+          },
+          {
+            "id": "workshop.left-wall",
+            "rect": {
+              "x": 1.6,
+              "y": 2,
+              "width": 0.4,
+              "height": 19
+            }
+          },
+          {
+            "id": "workshop.right-wall",
+            "rect": {
+              "x": 28,
+              "y": 2,
+              "width": 0.4,
+              "height": 19
+            }
+          },
+          {
+            "id": "workshop.front-wall-left",
+            "rect": {
+              "x": 2,
+              "y": 20.7,
+              "width": 10,
+              "height": 0.3
+            }
+          },
+          {
+            "id": "workshop.front-wall-right",
+            "rect": {
+              "x": 18,
+              "y": 20.7,
+              "width": 10,
+              "height": 0.3
+            }
+          },
+          {
+            "id": "workshop.parts-wall",
+            "rect": {
+              "x": 4,
+              "y": 2.5,
+              "width": 5,
+              "height": 1.5
+            }
+          },
+          {
+            "id": "workshop.returned-shelf",
+            "rect": {
+              "x": 20,
+              "y": 2.5,
+              "width": 6,
+              "height": 1.5
+            }
+          },
+          {
+            "id": "workshop.lamp-bench",
+            "rect": {
+              "x": 5,
+              "y": 8,
+              "width": 5.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.toy-bench",
+            "rect": {
+              "x": 18,
+              "y": 8,
+              "width": 6,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.lamp-stool",
+            "rect": {
+              "x": 6.4,
+              "y": 11.4,
+              "width": 0.9,
+              "height": 0.9
+            }
+          },
+          {
+            "id": "workshop.toy-stool",
+            "rect": {
+              "x": 22,
+              "y": 11.4,
+              "width": 0.9,
+              "height": 0.9
+            }
+          },
+          {
+            "id": "workshop.window-bench",
+            "rect": {
+              "x": 2.5,
+              "y": 10,
+              "width": 1.5,
+              "height": 5
+            }
+          },
+          {
+            "id": "workshop.wood-rack",
+            "rect": {
+              "x": 2.5,
+              "y": 16,
+              "width": 1.5,
+              "height": 3.5
+            }
+          },
+          {
+            "id": "workshop.woodworking",
+            "rect": {
+              "x": 5.5,
+              "y": 16,
+              "width": 5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.sewing-bench",
+            "rect": {
+              "x": 20,
+              "y": 16,
+              "width": 4.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.fabric-basket",
+            "rect": {
+              "x": 25,
+              "y": 17,
+              "width": 1.2,
+              "height": 1.2
+            }
+          },
+          {
+            "id": "workshop.drawer-chest",
+            "rect": {
+              "x": 26,
+              "y": 9,
+              "width": 1.5,
+              "height": 4
+            }
+          },
+          {
+            "id": "workshop.spares-bins",
+            "rect": {
+              "x": 26,
+              "y": 14,
+              "width": 1.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.door-left",
+            "rect": {
+              "x": 11.6,
+              "y": 20.5,
+              "width": 0.4,
+              "height": 1
+            }
+          },
+          {
+            "id": "workshop.door-right",
+            "rect": {
+              "x": 18,
+              "y": 20.5,
+              "width": 0.4,
+              "height": 1
+            }
+          },
+          {
+            "id": "workshop.yard-bicycle",
+            "rect": {
+              "x": 4,
+              "y": 23,
+              "width": 3,
+              "height": 1.1
+            }
+          },
+          {
+            "id": "workshop.yard-planter-left",
+            "rect": {
+              "x": 9,
+              "y": 23,
+              "width": 1.2,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.yard-planter-right",
+            "rect": {
+              "x": 20,
+              "y": 23,
+              "width": 1.2,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.yard-delivery",
+            "rect": {
+              "x": 24,
+              "y": 22.5,
+              "width": 2,
+              "height": 1.6
+            }
+          },
+          {
+            "id": "workshop.yard-stool",
+            "rect": {
+              "x": 22,
+              "y": 25,
+              "width": 0.9,
+              "height": 0.9
+            }
+          }
+        ],
+        "anchors": [
+          {
+            "id": "workshop.lamp",
+            "position": {
+              "x": 8,
+              "y": 10.8
+            },
+            "radius": 1.25,
+            "featureId": "repairs",
+            "interactionId": "repair-lamp"
+          },
+          {
+            "id": "workshop.toy",
+            "position": {
+              "x": 20.8,
+              "y": 10.8
+            },
+            "radius": 1.25,
+            "featureId": "repairs",
+            "interactionId": "repair-toy"
+          }
+        ]
+      },
+      "ready": true
+    },
+    "errors": []
+  },
+  {
+    "name": "phone",
+    "phase": "evening",
+    "occupied": true,
+    "study": {
+      "phase": "evening",
+      "occupied": true,
+      "job": "lamp",
+      "completed": [],
+      "hooks": {
+        "interior": true,
+        "water": [],
+        "foliage": [
+          {
+            "id": "workshop.window-plant",
+            "motion": true,
+            "depth": 12.01,
+            "position": {
+              "x": 2.5,
+              "y": 8.5,
+              "z": 0.15
+            },
+            "radius": 0.4,
+            "kind": "grass"
+          },
+          {
+            "id": "workshop.yard-planter-left",
+            "motion": false,
+            "depth": 33.61,
+            "position": {
+              "x": 9,
+              "y": 23,
+              "z": 0.15
+            },
+            "radius": 0.48,
+            "kind": "grass"
+          },
+          {
+            "id": "workshop.yard-planter-right",
+            "motion": false,
+            "depth": 44.61,
+            "position": {
+              "x": 20,
+              "y": 23,
+              "z": 0.15
+            },
+            "radius": 0.48,
+            "kind": "grass"
+          }
+        ],
+        "lights": [
+          {
+            "id": "workshop.window-left",
+            "position": {
+              "x": 2.02,
+              "y": 4,
+              "z": 1.5
+            },
+            "radius": 1.2,
+            "kind": "window"
+          },
+          {
+            "id": "workshop.window-back",
+            "position": {
+              "x": 11,
+              "y": 2.02,
+              "z": 1.5
+            },
+            "radius": 1.2,
+            "kind": "window"
+          },
+          {
+            "id": "workshop.desk-lamp.task-pool",
+            "position": {
+              "x": 8.86,
+              "y": 8.75,
+              "z": 2.51
+            },
+            "radius": 3.2,
+            "kind": "lamp",
+            "emitter": [
+              {
+                "x": 8.7,
+                "y": 8.58,
+                "z": 2.51
+              },
+              {
+                "x": 9.02,
+                "y": 8.58,
+                "z": 2.51
+              },
+              {
+                "x": 9.02,
+                "y": 8.92,
+                "z": 2.51
+              },
+              {
+                "x": 8.7,
+                "y": 8.92,
+                "z": 2.51
+              }
+            ]
+          }
+        ],
+        "shadows": [
+          {
+            "id": "workshop.desk-lamp",
+            "position": {
+              "x": 9,
+              "y": 8.5
+            },
+            "radius": 0.24,
+            "height": 0.6
+          },
+          {
+            "id": "workshop.toy-lamp",
+            "position": {
+              "x": 23,
+              "y": 8.5
+            },
+            "radius": 0.24,
+            "height": 0.6
+          }
+        ]
+      },
+      "geometry": {
+        "colliders": [
+          {
+            "id": "workshop.rear-wall",
+            "rect": {
+              "x": 2,
+              "y": 1.6,
+              "width": 26,
+              "height": 0.4
+            }
+          },
+          {
+            "id": "workshop.left-wall",
+            "rect": {
+              "x": 1.6,
+              "y": 2,
+              "width": 0.4,
+              "height": 19
+            }
+          },
+          {
+            "id": "workshop.right-wall",
+            "rect": {
+              "x": 28,
+              "y": 2,
+              "width": 0.4,
+              "height": 19
+            }
+          },
+          {
+            "id": "workshop.front-wall-left",
+            "rect": {
+              "x": 2,
+              "y": 20.7,
+              "width": 10,
+              "height": 0.3
+            }
+          },
+          {
+            "id": "workshop.front-wall-right",
+            "rect": {
+              "x": 18,
+              "y": 20.7,
+              "width": 10,
+              "height": 0.3
+            }
+          },
+          {
+            "id": "workshop.parts-wall",
+            "rect": {
+              "x": 4,
+              "y": 2.5,
+              "width": 5,
+              "height": 1.5
+            }
+          },
+          {
+            "id": "workshop.returned-shelf",
+            "rect": {
+              "x": 20,
+              "y": 2.5,
+              "width": 6,
+              "height": 1.5
+            }
+          },
+          {
+            "id": "workshop.lamp-bench",
+            "rect": {
+              "x": 5,
+              "y": 8,
+              "width": 5.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.toy-bench",
+            "rect": {
+              "x": 18,
+              "y": 8,
+              "width": 6,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.lamp-stool",
+            "rect": {
+              "x": 6.4,
+              "y": 11.4,
+              "width": 0.9,
+              "height": 0.9
+            }
+          },
+          {
+            "id": "workshop.toy-stool",
+            "rect": {
+              "x": 22,
+              "y": 11.4,
+              "width": 0.9,
+              "height": 0.9
+            }
+          },
+          {
+            "id": "workshop.window-bench",
+            "rect": {
+              "x": 2.5,
+              "y": 10,
+              "width": 1.5,
+              "height": 5
+            }
+          },
+          {
+            "id": "workshop.wood-rack",
+            "rect": {
+              "x": 2.5,
+              "y": 16,
+              "width": 1.5,
+              "height": 3.5
+            }
+          },
+          {
+            "id": "workshop.woodworking",
+            "rect": {
+              "x": 5.5,
+              "y": 16,
+              "width": 5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.sewing-bench",
+            "rect": {
+              "x": 20,
+              "y": 16,
+              "width": 4.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.fabric-basket",
+            "rect": {
+              "x": 25,
+              "y": 17,
+              "width": 1.2,
+              "height": 1.2
+            }
+          },
+          {
+            "id": "workshop.drawer-chest",
+            "rect": {
+              "x": 26,
+              "y": 9,
+              "width": 1.5,
+              "height": 4
+            }
+          },
+          {
+            "id": "workshop.spares-bins",
+            "rect": {
+              "x": 26,
+              "y": 14,
+              "width": 1.5,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.door-left",
+            "rect": {
+              "x": 11.6,
+              "y": 20.5,
+              "width": 0.4,
+              "height": 1
+            }
+          },
+          {
+            "id": "workshop.door-right",
+            "rect": {
+              "x": 18,
+              "y": 20.5,
+              "width": 0.4,
+              "height": 1
+            }
+          },
+          {
+            "id": "workshop.yard-bicycle",
+            "rect": {
+              "x": 4,
+              "y": 23,
+              "width": 3,
+              "height": 1.1
+            }
+          },
+          {
+            "id": "workshop.yard-planter-left",
+            "rect": {
+              "x": 9,
+              "y": 23,
+              "width": 1.2,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.yard-planter-right",
+            "rect": {
+              "x": 20,
+              "y": 23,
+              "width": 1.2,
+              "height": 2
+            }
+          },
+          {
+            "id": "workshop.yard-delivery",
+            "rect": {
+              "x": 24,
+              "y": 22.5,
+              "width": 2,
+              "height": 1.6
+            }
+          },
+          {
+            "id": "workshop.yard-stool",
+            "rect": {
+              "x": 22,
+              "y": 25,
+              "width": 0.9,
+              "height": 0.9
+            }
+          }
+        ],
+        "anchors": [
+          {
+            "id": "workshop.lamp",
+            "position": {
+              "x": 8,
+              "y": 10.8
+            },
+            "radius": 1.25,
+            "featureId": "repairs",
+            "interactionId": "repair-lamp"
+          },
+          {
+            "id": "workshop.toy",
+            "position": {
+              "x": 20.8,
+              "y": 10.8
+            },
+            "radius": 1.25,
+            "featureId": "repairs",
+            "interactionId": "repair-toy"
+          }
+        ]
+      },
+      "ready": true
+    },
+    "errors": []
+  }
+]

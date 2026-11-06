@@ -30,6 +30,20 @@ export function workshopGroundColor(x: number, y: number): Color | null {
   return c;
 }
 
+export function drawWorkbenchPocket(api: RepairArtApi, x: number, y: number, width: number, job: 'lamp' | 'toy') {
+  const box=(a:number,b:number,z:number,c:number,d:number,top:number,color:Color)=>api.box(x+a,y+b,z,x+c,y+d,top,color);
+  const line=(a:[number,number,number],b:[number,number,number],r:number,color:Color)=>api.capsule([x+a[0],y+a[1],a[2]],[x+b[0],y+b[1],b[2]],r,r,()=>color,'solid');
+  // All task pieces rest on the existing tabletop; circulation and collision stay unchanged.
+  box(.3,.3,1.665,1.55,1.3,1.69,[149,161,163]);
+  for(const fold of [.38,.52,.66])box(fold,.34,1.691,fold+.025,1.25,1.696,[184,193,185]);
+  box(.45,.4,1.7,1.22,.9,1.76,edge);box(.5,.45,1.761,1.17,.85,1.77,[184,166,127]);
+  for(let i=0;i<4;i++)api.sphere(x+.6+i*.14,y+.64+(i%2)*.08,1.8,.055,metal,'solid');
+  if(job==='toy'){box(.7,1.02,1.7,1.15,1.17,1.86,[185,162,103]);box(1.08,1.015,1.77,1.18,1.18,1.8,metal);}
+  else {api.sphere(x+1.25,y+1.13,1.77,.12,[221,221,203],'solid');box(1.12,1.08,1.7,1.26,1.19,1.75,metal);}
+  line([.45,1.65,1.72],[1.3,1.55,1.72],.035,metal);line([.3,1.67,1.72],[.7,1.62,1.72],.075,edge);
+  line([width-1.3,.3,1.73],[width-1,.65,1.73],.025,ink);line([width-1,.65,1.73],[width-.7,.3,1.73],.025,ink);
+}
+
 export function drawWorkshopProp(api: RepairArtApi, prop: Prop, state: WorkshopPaintState) {
   const x = prop.position.x, y = prop.position.y, w = prop.width, h = prop.height;
   const b = (a: number, c: number, z: number, d: number, e: number, top: number, color: Color) => api.box(x + a, y + c, z, x + d, y + e, top, color);
@@ -117,6 +131,9 @@ export function drawWorkshopProp(api: RepairArtApi, prop: Prop, state: WorkshopP
       else if(prop.kind==='toy-bench' && (!state.repairs || state.repairs.jobs.toy !== null)) drawToy(api,state.repairs?.jobs.toy ?? {kind:'toy',cover:'closed',lead:'loose',cell:'old',test:'none'},x+2.8,y+.8,1.67,.9,state.elapsedSeconds);
       line([.45,h-.3,1.7],[1.35,h-.4,1.7],.05,metal); b(.3,h-.45,1.69,.6,h-.2,1.83,edge);
       for(let i=0;i<4;i++) dot(w-1+i*.16,h-.35,1.73,.055,metal);
+      for(let i=0;i<7;i++){const a=1.7+i*.27;line([a,1.63,1.67],[a+.15,1.72+(i%2)*.06,1.67],.012,[180,159,111]);}
+      const job=prop.kind==='lamp-bench'?'lamp':'toy';
+      if(state.repairs?.active===job&&state.repairs.jobs[job])drawWorkbenchPocket(api,x,y,w,job);
       break;
     case 'wood-bench':
       bench(prop.variant?[177,138,88]:wood);
