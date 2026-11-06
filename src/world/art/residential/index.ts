@@ -446,6 +446,7 @@ export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderVie
           draw(ctx, view) { paintResidential(ctx, view, api => {
             const elevated = onSurface(api, map.id);
             if (prop.id === 'residential-stairs.middle-support') {
+              api.box(x, y, -.15, x + width, y + height, 2.4, [190, 181, 151]);
               if (x >= 9 && x < 13) {
                 elevated.box(x, y, 0, x + width, y + height, .95, cream);
                 elevated.box(x, y, 3.7, x + width, y + height, 3.79, paleWood);
@@ -458,6 +459,15 @@ export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderVie
           }); },
         });
       }
+      if (prop.id === 'residential-stairs.middle-support') for (const x of [8, 19]) parts.push({
+        id: `${prop.id}.pier-${x}`, position: { x: x + .5, y: 23.825 },
+        draw(ctx, view) { paintResidential(ctx, view, api => {
+          const landing = stairSurfaces.find(surface => surface.id === 'home-landing')!;
+          api.box(x, 23.65, -.15, x + 1, 24, landing.height - .45, [190, 181, 151]);
+          api.box(x - .06, 23.6, -.15, x + 1.06, 24.05, .15, [125, 130, 115]);
+          for (const z of [.7, 1.35]) api.box(x, 23.995, z, x + 1, 24.015, z + .035, [163, 158, 132]);
+        }); },
+      });
       return parts;
     }
     const position = { x: prop.position.x + prop.width / 2, y: prop.position.y + prop.height / 2 };

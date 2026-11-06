@@ -2,6 +2,11 @@ import {chromium} from '../../../../node_modules/@playwright/test/index.mjs';
 import {mkdir,writeFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {readFileSync} from 'node:fs';
+const sourcePaths=['src/world/art/residential/index.ts','src/world/maps/residential/elevation.ts','src/world/maps/residential/residential-stairs.json','src/world/maps/residential/residential-hall.json','src/world/maps/residential/apartment.json','docs/evidence/world/0081/proof.config.mjs'];
+const sourceHashes=()=>Object.fromEntries(sourcePaths.map(path=>[path,createHash('sha256').update(readFileSync('/workspace/junyan/'+path)).digest('hex')]));
+const startHashes=sourceHashes();
 const root=fileURLToPath(new URL('.',import.meta.url));
 const label=process.env.RESIDENTIAL_RUN??'baseline-height';
 const out=root+label+'/';await mkdir(out,{recursive:true});
@@ -59,5 +64,5 @@ try {
   }catch(error){record.status='failed';record.failure=error.message;record.failedWorld=(await current()).world;await page.screenshot({path:out+`${name}-failure.png`});throw error;}
   finally{record.video=await page.video().path();await context.close();}
  }
-}finally{await browser.close();await writeFile(out+'results.json',JSON.stringify({foundationHead:execFileSync('git',['-C','/workspace/scratch/residential-0081-proof','rev-parse','HEAD'],{encoding:'utf8'}).trim(),ownerHead:execFileSync('git',['-C','/workspace/junyan','rev-parse','HEAD'],{encoding:'utf8'}).trim(),method:'Declared saved stair arrival; actual mouse/touch and doors thereafter; observation-only foot projection hook; no internal movement dispatch; pre-main-reconciliation snapshot',results},null,2));}
+}finally{await browser.close();await writeFile(out+'results.json',JSON.stringify({foundationHead:execFileSync('git',['-C','/workspace/scratch/residential-0081-proof','rev-parse','HEAD'],{encoding:'utf8'}).trim(),ownerHead:execFileSync('git',['-C','/workspace/junyan','rev-parse','HEAD'],{encoding:'utf8'}).trim(),sourceHashes:startHashes,sourceHashesAtEnd:sourceHashes(),sourcesUnchanged:JSON.stringify(startHashes)===JSON.stringify(sourceHashes()),method:'Declared saved stair arrival; actual mouse/touch and doors thereafter; observation-only foot projection hook; no internal movement dispatch; pre-main-reconciliation snapshot',results},null,2));}
 console.log(results.map(r=>({name:r.name,status:r.status,stops:r.stops.length,errors:r.errors})));
