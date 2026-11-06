@@ -82,10 +82,13 @@ async function lifeHint(page: Page, targetId: string): Promise<LifeHint> {
 async function approachPoint(page: Page, target: { x: number; y: number }, touch: boolean) {
   const approach = await page.evaluate(async ({ save, target }) => {
     const dynamicUrl = '/src/world/dynamic.ts', geometryUrl = '/src/world/geometry.ts';
-    const { mapsForNeighbourhood } = await import(dynamicUrl), { canStand, findPath } = await import(geometryUrl);
+    const { mapsForNeighbourhood } = await import(dynamicUrl), { canStand, canWalk, findPath } = await import(geometryUrl);
     const map = mapsForNeighbourhood(save.neighbourhood)[save.world!.mapId];
-    const candidates = [-1, 1].map(sign => ({ x: target.x + sign * .74, y: target.y - sign * .74 }));
-    return candidates.filter(point => canStand(map, point) && findPath(map, save.world!.position, point).length)
+    const primary = [-1, 1].map(sign => ({ x: target.x + sign * .74, y: target.y - sign * .74 }));
+    const radial = Array.from({ length: 16 }, (_, index) => ({ x: target.x + Math.cos(index * Math.PI / 8), y: target.y + Math.sin(index * Math.PI / 8) }));
+    const valid = (point: { x: number; y: number }) => canStand(map, point) && canWalk(map, point, target, 0) && findPath(map, save.world!.position, point).length;
+    const preferred = primary.filter(valid);
+    return (preferred.length ? preferred : radial.filter(valid))
       .sort((a, b) => Math.hypot(a.x - save.world!.position.x, a.y - save.world!.position.y) - Math.hypot(b.x - save.world!.position.x, b.y - save.world!.position.y))[0];
   }, { save: await savedGame(page), target });
   if (!approach) throw Error('No reachable adjacent task approach');
@@ -95,7 +98,8 @@ async function approachLife(page: Page, targetId: string, touch: boolean) {
   for (let i = 0; i < 10; i++) {
     const hint = await lifeHint(page, targetId);
     if (!hint.target) throw Error(`No production physical target ${targetId}`);
-    if (Math.hypot(hint.target.position.x - hint.player.x, hint.target.position.y - hint.player.y) < 1.1 && Math.abs(hint.player.x - hint.target.position.x - hint.player.y + hint.target.position.y) > .95) return;
+    if (hint.target.action === undefined) { await approachLandmark(page, targetId, touch); return; }
+    if (Math.hypot(hint.target.position.x - hint.player.x, hint.target.position.y - hint.player.y) < 1.25 && hint.options.some(option => option.targetId === targetId)) return;
     await approachPoint(page, hint.target.position, touch);
   }
   throw Error(`Could not approach moving production target ${targetId}`);
@@ -272,4 +276,27 @@ test('ordinary traversal reaches unvoiced residents, reactions and saved discove
     await record();
     if (!page.isClosed()) await page.screenshot({ path: `${out}/last-frame.png` }).catch(() => {});
   }
+});
+
+
+test('courier task approach reaches the visible physical response control', async ({ page }, info) => {
+  const touch = info.project.name === 'phone';
+  await page.goto('/?seed=42'); await playOpening(page);
+  const welcome = page.getByRole('button', { name: '开门迎客' });
+  if (touch) await welcome.tap(); else await welcome.click();
+  expect(await page.evaluate(() => '__TEST__' in window)).toBe(false);
+  await exitTo(page, 'town', touch);
+  const hook = await page.evaluate(async save => {
+    const mapUrl = '/src/world/dynamic.ts', lifeUrl = '/src/world/life-bridge.ts';
+    const { mapsForNeighbourhood } = await import(mapUrl), { planFor } = await import(lifeUrl);
+    const map = mapsForNeighbourhood(save.neighbourhood).town;
+    const hook = map.npcHooks.find((hook: { characterId: string }) => hook.characterId === 'resident-courier');
+    return { ...hook, cycleMs: planFor(map, save).actors.find((actor: { id: string }) => actor.id === hook.id).durationMs };
+  }, await savedGame(page));
+  await approachPoint(page, hook.position, touch);
+  await expect.poll(async () => {
+    const hint = await lifeHint(page, hook.id);
+    return hint.target?.activity === 'work' && Math.hypot(hint.target.position.x - hook.position.x, hint.target.position.y - hook.position.y) < .3 && hint.options.some(option => option.targetId === hook.id);
+  }, { timeout: hook.cycleMs + 2000 }).toBe(true);
+  expect((await activateLife(page, hook.id, touch)).response.reaction).toBe('wave');
 });
