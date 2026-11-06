@@ -17,16 +17,16 @@ export function LocationNavigation({ location, onVisit }: { location: LocationId
 }
 
 type Props = {
-  state: NeighbourhoodState; day: number; onAction: (action: NeighbourhoodAction) => void;
+  state: NeighbourhoodState; day: number; contextual?: boolean; onAction: (action: NeighbourhoodAction) => void;
   onLookup: (word: Word, trigger: HTMLButtonElement) => void; onPlay: (line: Line) => void;
   onRecover: (ids: string[]) => void; recoveredWordIds: string[]; freshWordIds: string[];
 };
-export default function Neighbourhood({ state, day, onAction, ...learning }: Props) {
+export default function Neighbourhood({ state, day, onAction, contextual, ...learning }: Props) {
   const shared = { day, ...learning };
   return <div className="neighbourhood-feature" tabIndex={-1} data-location-heading aria-label={locationNames[state.location]}>
     {state.location === "apartment" && <Apartment {...shared} state={state.apartment} onAction={action => onAction({type:"feature-action",feature:"apartment",action,now:Date.now()})}/>}
     {state.location === "cats" && <Cats {...shared} state={state.cats} onAction={action => onAction({type:"feature-action",feature:"cats",action,now:Date.now()})}/>}
-    {state.location === "repairs" && <Repairs {...shared} state={state.repairs} onAction={action => onAction({type:"feature-action",feature:"repairs",action,now:Date.now()})}/>}
+    {state.location === "repairs" && <Repairs {...shared} contextualJob={contextual ? state.repairs.active : undefined} state={state.repairs} onAction={action => onAction({type:"feature-action",feature:"repairs",action,now:Date.now()})}/>}
     {state.location === "garden" && <Garden {...shared} state={state.garden} onAction={action => onAction({type:"feature-action",feature:"garden",action,now:Date.now()})}/>}
   </div>;
 }

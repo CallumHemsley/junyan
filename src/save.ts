@@ -1,5 +1,5 @@
 import { restoreWorld } from "./world/state";
-import { worldMaps } from "./world/registry";
+import { mapsForNeighbourhood } from "./world/dynamic";
 import { restoreNeighbourhood } from "./neighbourhood/model";
 import { z } from "zod";
 import { TABLES, TRAY_CAPACITY, type Content, type GameState } from "./contracts";
@@ -107,7 +107,7 @@ export function validateSavedGame(
     if (receipt.total !== total || receipt.change !== order.paid - total) return null;
   }
   const restored = restoreNeighbourhood(neighbourhood, state.day);
-  return { ...state, neighbourhood: restored, world: restoreWorld(world, worldMaps, restored.location) };
+  return { ...state, neighbourhood: restored, world: restoreWorld(world, mapsForNeighbourhood(restored), restored.location) };
 }
 
 function database(): Promise<IDBDatabase> {

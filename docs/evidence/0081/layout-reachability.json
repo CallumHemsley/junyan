@@ -1,0 +1,25 @@
+[
+  {
+    "prototype": "hall",
+    "reachableCells": 194,
+    "totalWalkable": 194,
+    "destinationSteps": [
+      8,
+      18,
+      28
+    ],
+    "connected": true
+  },
+  {
+    "prototype": "switchback",
+    "reachableCells": 173,
+    "totalWalkable": 173,
+    "destinationSteps": [
+      10,
+      12,
+      5,
+      5
+    ],
+    "connected": true
+  }
+]
