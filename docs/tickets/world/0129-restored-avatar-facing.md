@@ -1,7 +1,7 @@
 ---
 id: 129
 title: Restore the avatar visual heading from its saved facing
-status: todo
+status: doing
 priority: high
 type: bug
 created: 2026-11-06
@@ -19,5 +19,5 @@ Character study0123 found WorldViewport initializes actorMotion.yaw to south unc
 
 ## Notes
 
-- Centrally reserved by root after worker0123 source/runtime evidence. Unassigned pending the reviewed main visual-release gate; do not fold an unreviewed fix into0127.
+- Centrally reserved by root after worker0123 source/runtime evidence. Owner: avatar-heading writer. Dedicated branch codex/0129-restored-avatar-facing; worktree /private/tmp/junyan-world-restored-avatar-facing; ports5604/5605 strict. Main release127 has passed; this remains a separate fix and review.
 - New raw evidence remains private under /private/tmp/junyan-world-private-qa/0129.
