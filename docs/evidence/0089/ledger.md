@@ -1,0 +1,51 @@
+# Restaurant art evidence
+
+Objective ACTIVE. Restore a rich breakfast restaurant inside the full large connected immersive Mandarin pixel life-sim. An isolated art preview does not satisfy acceptance. Foundation integration, production desktop and phone traversal, character motion, front and behind furniture proof and independent review remain required. No native goal tool is available in this session.
+
+Owner is `/root/restaurant_world_art`. Branch is `codex/0089-restaurant-world-art`. Worktree is `/workspace/junyan-0089`. Vite port is strictly 5493. Only the assigned restaurant art, ticket and evidence paths are writable production scope. Runtime is the attached authorized managed Linux cloud. No audio, deployment, shared map or shared renderer changes.
+
+## Workflow checkpoint
+
+1. `how` over the affected subsystem. Completed by inspecting foundation render-contract, restaurant map, legacy scene and authoritative contracts. Renderer sorts individual objects with actor ground positions. Static map defines furniture. GameState owns customers, tray and served count. Content owns appearances and meals.
+2. `architect` for parallel design exploration. Two local structures considered. Painting the legacy scene into a single plate would retain detail but cannot sort actors correctly. Individual prop draws plus a pure state projection fits the implemented production contract. Selected the latter. No nested agents were spawned because this is an isolated one-writer delegated task with independent review owned by the coordinator.
+3. Write the throughput checkpoint as four todo items.
+   - Blocking first steps. Read contracts and baseline captures before art. Publish typed API and buildable first unit.
+   - Independent workstreams. Not applicable inside this narrow lease. Foundation can wire projection while the art owner improves drawings.
+   - Shared mutable state. Foundation alone edits registration, map, player renderer and rules. Art reads passed geometry and state.
+   - Smallest safe decomposition. One art writer avoids concurrent changes to this small module. Independent visual review remains separate.
+4. Delegate code-writing to a subagent using your configured feature model. Owned directly under the feature playbook's delegated-agent exception. Human model selection remains GPT-6.1 Sol medium.
+5. Verify on the matching surface. Pending production integration. Isolated preview next.
+6. Rebase into small, ordered commits. First unit is types, projection, authored static props and meals. Build passed before publication.
+7. If the design is contested, `interrogate` before shipping. Not contested. No model panel claimed.
+8. Run Opening a PR. Pending buildable publication.
+
+## API reference
+
+Module `src/world/art/restaurant/index.ts` exports the following functions.
+
+```ts
+drawMap(ctx, map, view): void
+renderObjects(map, view): RestaurantObject[]
+projectRestaurant(state, content, map): RestaurantProjection
+restaurantObjects(map, view, projection): RestaurantObject[]
+```
+
+`state` is `Pick<GameState, 'customers' | 'tray' | 'served'>`. `content` is `Pick<Content, 'orders' | 'characters' | 'foods'>`. The map and view are structural readonly-compatible subsets of foundation WorldMapDefinition and WorldRenderView. Art does not import missing foundation files into the coordinator base.
+
+Foundation registers drawMap and renderObjects. On each authoritative frame it computes projectRestaurant(gameState, content, restaurantMap). It adds restaurantObjects to the same shared object list. It renders projection.customers through the shared character compositor using each descriptor's characterId, appearance, phase, seated flag, ground position and facing. Projection.tray contains food kinds in original tray order for the shared player carrying pose. Projection.served mirrors the authoritative tally without deriving a replacement.
+
+Explicit stable table bindings are exported as RESTAURANT_TABLES. Tables 1, 2, 3, 4 bind to table-5-9, table-17-9, table-5-14, table-17-14. Seat positions derive from those props, never incidental array order. Meals appear for checkout and served phases as in the accepted legacy scene. Quantities stay authoritative in the DOM receipt. Scene food shows one representative per food kind as the legacy scene does.
+
+Static prop IDs replace the foundation fallback counter, four tables and plant. Rear wall sections are individual objects. No tall scenery is drawn by drawMap. No baked text, animation loop, random source, listener, save or hidden game rule is added.
+
+## Initial verification
+
+Inspected coordinator `docs/world-program/runtime-e627/desktop.png`, phone.png and `/tmp/junyan-baseline-desktop.png`. The runtime captures lack the accepted windows, kitchen detail, tiled floor, stools and customers.
+
+Passed `node node_modules/typescript/bin/tsc -b && node node_modules/vite/bin/vite.js build`. Uses read-only symlink to the already installed coordinator node_modules. No install or lockfile claim. Vite reports 7.3.7. Rollup emitted existing Zod comment annotation warnings and the existing bundle-size advisory.
+
+An initial standalone tsc command omitted strict mode and reported unrelated inferred Zod optional-property errors. The repository tsconfig build passed. No production files outside the lease were changed.
+
+## Next actions
+
+Publish first unit. Add reproducible preview using actual foundation projection and shared actor scale. Inspect desktop and phone captures, refine materials and warm light, then request integration and independent review. Active work must continue through integrated defects.

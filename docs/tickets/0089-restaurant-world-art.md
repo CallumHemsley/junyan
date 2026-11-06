@@ -23,3 +23,5 @@ Authored breakfast-stall interior/threshold integrates with foundation's real re
 - Foundation retains `src/world/restaurant.ts`, all maps/registration, App, save, shared renderer and service rules. No new audio, dependencies, duplicate map registration or deployment.
 - Follow `docs/world-program/integration-v1.1.md` with implemented `renderObjects` and `WorldRenderObject` at foundation e6270d0.
 - Goal ACTIVE until integrated review. Evidence motivating allocation is `docs/world-program/runtime-e627/desktop.png` against reviewer baseline restaurant capture.
+- Active builder `/root/restaurant_world_art` created the assigned isolated worktree from 2059c0b. First API is published in `docs/evidence/0089/ledger.md`.
+- First art unit passes repository TypeScript/Vite build using existing installed dependencies. Production integration and independent review remain pending. Ticket stays doing.
