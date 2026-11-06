@@ -211,8 +211,7 @@ const paintMap: DrawMap = (ctx, map, view) => {
     } else if (p.kind === 'post') box(x, y, w, h, 0, 3.3, palette.woodLight);
     else if (p.kind === 'pergola' || p.kind === 'garden-shade') {
       const shade = p.kind === 'garden-shade', z = shade ? 2.85 : 3.3;
-      const behind = view.playerPosition.x >= x - .5 && view.playerPosition.x <= x + w + .5 && view.playerPosition.y >= y - 2 && view.playerPosition.y <= y + h + .5;
-      ctx.save(); ctx.globalAlpha *= behind ? .33 : 1;
+      ctx.save();
       for (let k = 0; k < w; k += shade ? .3 : .65) box(x + k, y, shade ? .2 : .16, h, z, .13, shade ? (Math.floor(k * 10) % 2 ? palette.cream : '#b8c5a4') : palette.woodLight);
       if (!shade) for (let k = .3; k < w; k += .55) {
         cluster(x + k, y + .2 + Math.sin(k * 2) * .25, z + .15, .5, k % 1 > .5 ? palette.jade : palette.leafLight, Math.floor(k));
@@ -223,6 +222,11 @@ const paintMap: DrawMap = (ctx, map, view) => {
       }
       ctx.restore();
       if (shade) for (const dx of [0, w - .2]) box(x + dx, y, .15, .15, 0, z, palette.wood);
+    } else if (p.kind === 'garden-crate') {
+      box(x, y, w, h, 0, .85, palette.woodLight, palette.wood, palette.woodDark);
+      for (let z = .15; z < .85; z += .22) stem({x, y: y + h + .02}, {x: x + w, y: y + h + .02}, z, z, palette.woodDark);
+      box(x + .15, y + h, .12, .05, .08, .8, palette.cream);
+      box(x + w - .25, y + h, .12, .05, .08, .8, palette.cream);
     } else if (p.kind.startsWith('garden-')) {
       const growth = Math.floor(variant / 6), care = variant % 3, droop = variant % 6 >= 3;
       box(x, y, w, h, 0, .18, palette.woodDark);

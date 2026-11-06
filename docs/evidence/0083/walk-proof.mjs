@@ -1,7 +1,9 @@
+import {execFileSync} from 'node:child_process';
 import {chromium} from '@playwright/test';
 import {writeFile, mkdir} from 'node:fs/promises';
 const dir = new URL('./runtime/', import.meta.url).pathname;
 await mkdir(dir, {recursive: true});
+const sourceHead=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
 const browser = await chromium.launch({executablePath: '/usr/bin/chromium', args: ['--no-sandbox', '--mute-audio']});
 const results = [];
 for (const [device, width, height] of [['desktop', 1440, 900], ['phone', 390, 844]]) {
@@ -107,7 +109,7 @@ for (const [device, width, height] of [['desktop', 1440, 900], ['phone', 390, 84
   const afterReload=(await read()).world;
   if (JSON.stringify(beforeReload.position)!==JSON.stringify(afterReload.position)) throw new Error('reload position mismatch');
   await page.screenshot({path:`${dir}${device}-reload.png`});
-  results.push({device,keyboard,reached,beforeReload,afterReload,errors,note:'Seeded legacy garden save; actual App viewport keyboard/pointer/touch traversal and real activity. Full building-stair journey pending other maps.'});
+  results.push({sourceHead,device,keyboard,reached,beforeReload,afterReload,errors,note:'Seeded legacy garden save; actual App viewport keyboard/pointer/touch traversal and real activity. Full building-stair journey pending other maps.'});
   await context.close();
   await video.saveAs(`${dir}${device}-traversal.webm`);
 }

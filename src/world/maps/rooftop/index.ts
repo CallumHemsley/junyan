@@ -23,8 +23,12 @@ export function projectGarden(state: State) {
     id: 'rooftop.garden-shade', kind: 'garden-shade',
     position: {x: shade.x - .3, y: shade.y - .4},
     width: 2, height: 2.2, layer: 'object' as const, variant: 0,
-  }];
+  }, ...(!state.restored ? [
+    {id: 'rooftop.garden-crate-a', kind: 'garden-crate', position: {x: 18, y: 25}, width: 1.2, height: 1.2, layer: 'object' as const, variant: 0},
+    {id: 'rooftop.garden-crate-b', kind: 'garden-crate', position: {x: 20.5, y: 27}, width: 1.4, height: 1.2, layer: 'object' as const, variant: 1},
+  ] : [])];
   const colliders = pots.map(pot => ({id: pot.id, rect: {...pot.position, width: pot.width, height: pot.height}}));
+  for (const crate of props.filter(p => p.kind === 'garden-crate')) colliders.push({id: crate.id, rect: {...crate.position, width: crate.width, height: crate.height}});
   // Only the shade feet are solid; its canopy remains a walk-under surface.
   for (const side of [0, 1.8]) colliders.push({
     id: `rooftop.shade-foot-${side}`, rect: {x: shade.x - .3 + side, y: shade.y - .4, width: .15, height: .15},
