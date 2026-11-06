@@ -1,0 +1,196 @@
+{
+  "setup": "Valid day save seeded at park; all route segments then use actual canvas pointer input and shared production pathfinding",
+  "proof": [
+    {
+      "id": "orchard-basket",
+      "start": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 7,
+          "y": 61
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 15.99999949245782,
+          "y": 52.00000050754218
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "actualPointerSegments": 3
+    },
+    {
+      "id": "bamboo-court",
+      "start": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 15.99999949245782,
+          "y": 52.00000050754218
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 28.999999492457817,
+          "y": 8.00000050754219
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "actualPointerSegments": 9
+    },
+    {
+      "id": "tea-pavilion",
+      "start": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 28.999999492457817,
+          "y": 8.00000050754219
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 53.9999994924578,
+          "y": 18.000000507542183
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "actualPointerSegments": 5
+    },
+    {
+      "id": "pond-deck",
+      "start": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 53.9999994924578,
+          "y": 18.000000507542183
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 60.9999994924578,
+          "y": 33.00000050754218
+        },
+        "facing": "west",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "actualPointerSegments": 6
+    },
+    {
+      "id": "ridge-view",
+      "start": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 60.9999994924578,
+          "y": 33.00000050754218
+        },
+        "facing": "west",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 78.99999949245779,
+          "y": 29.000000507542183
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "actualPointerSegments": 4
+    }
+  ],
+  "consoleErrors": []
+}
