@@ -9,3 +9,9 @@ Drawing adapter proposal for all art owners. Export `drawMap(ctx, map, view)` wi
 Character/atmosphere owners retain their pure sampling contracts. Foundation will adapt outputs centrally once their exact command shape is published. Current renderer remains authoritative for existing activities while a camera-aware world surface is compared before a dependency decision.
 
 Throughput checkpoint. Allocation/schema gate is satisfied. Map/art owners remain independent. Shared App/save/renderer/registry writes serialize here. The first verification unit is geometry plus projection, followed by real viewport walking and save migration. No gameplay or visual PASS yet.
+
+Executable imports are now available. `src/world/render-contract.ts` exports `WorldRenderView`, `DrawMap`, `WorldArtModule`, `WorldDrawCommand` and `drawCommands`. `src/world/registry.ts` imports `./maps/*/index.ts` eagerly and consumes each `mapDefinitions` array. Art integration will import `./art/*/index.ts` with a named `drawMap` export. Commands are a discriminated union of ellipse, line and polygon with world positions; radii/line widths are logical pixels. Art owner adapters must export drawMap, not invent new production loops. Map-specific adapters receive their map and the pass to filter themselves.
+
+The production world save currently uses `activeActivity: featureId | null`, rather than the illustrative object's anchorId in example-module.ts. Its location is revalidated against nearby map anchors on restore. Camera state is derived per viewport, not saved. This is an explicit refinement of the example, not a parallel schema. No dependency or legacy-renderer replacement is introduced.
+
+Verification of the first unit: 5 world movement/camera/door/migration tests and 4 original navigation tests passed; TypeScript build passed. The viewport and full graph remain pending, so no integrated game/visual acceptance is claimed.
