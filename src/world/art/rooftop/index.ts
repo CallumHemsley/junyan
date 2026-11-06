@@ -106,12 +106,12 @@ const paintMap: DrawMap = (ctx, map, view) => {
     }
     const p = project(x + lean, y, height + .12 - (droop ? .5 : 0));
     const radius = Math.abs(project(x + .58 + growth * .18, y).x - project(x, y).x);
-    const point = (dx: number, dy: number) => ({x: p.x + Math.round(dx * radius * hand), y: p.y + Math.round(dy * radius * .72)});
-    // Unequal joined boughs leave one shaded canopy, rather than a ring of identical crowns.
-    polygon([[-1.02, -.05], [-.98, -.48], [-.75, -.72], [-.38, -.7], [-.35, -1], [-.12, -1.18], [.2, -1.12], [.42, -.82], [.67, -.87], [.98, -.64], [1.08, -.27], [.98, .08], [.74, .3], [.37, .29], [.16, .47], [-.18, .42], [-.4, .23], [-.76, .26]].map(([dx, dy]) => point(dx, dy)), palette.leaf);
-    polygon([[-1, -.12], [-.94, -.46], [-.72, -.65], [-.39, -.61], [-.19, -.39], [-.32, -.08], [-.66, .05]].map(([dx, dy]) => point(dx, dy)), palette.jade);
-    polygon([[-.35, -.72], [-.31, -.96], [-.1, -1.1], [.17, -1.04], [.38, -.78], [.29, -.49], [.02, -.36], [-.23, -.43]].map(([dx, dy]) => point(dx, dy)), palette.leafLight);
-    if (growth > 0) polygon([[.34, -.63], [.66, -.79], [.94, -.58], [1, -.31], [.81, -.07], [.53, -.04], [.28, -.23]].map(([dx, dy]) => point(dx, dy)), palette.leafMid);
+    const point = (dx: number, dy: number) => ({x: p.x + Math.round(dx * radius * hand), y: p.y + Math.round(dy * radius * .95)});
+    // Broad joined boughs keep an irregular crown, with light carried across the leaf mass.
+    polygon([[-1, .05], [-1.04, -.28], [-.91, -.45], [-.84, -.68], [-.52, -.7], [-.42, -.9], [-.1, -1.03], [.1, -.9], [.4, -.96], [.61, -.73], [.84, -.66], [.98, -.42], [.96, -.19], [1.07, .04], [.91, .23], [.66, .29], [.47, .44], [.19, .38], [-.05, .51], [-.26, .36], [-.58, .38], [-.75, .2]].map(([dx, dy]) => point(dx, dy)), palette.leaf);
+    polygon([[-.96, -.04], [-.99, -.26], [-.86, -.43], [-.79, -.63], [-.48, -.64], [-.38, -.84], [-.1, -.96], [.08, -.82], [.37, -.89], [.57, -.67], [.8, -.59], [.92, -.4], [.85, -.15], [.63, -.08], [.42, .11], [.1, .06], [-.12, .22], [-.38, .11], [-.68, .19]].map(([dx, dy]) => point(dx, dy)), palette.jade);
+    polygon([[-.81, -.45], [-.75, -.59], [-.46, -.59], [-.34, -.8], [-.1, -.89], [.03, -.75], [.22, -.77], [.34, -.58], [.18, -.39], [-.05, -.43], [-.22, -.22], [-.5, -.31], [-.64, -.21]].map(([dx, dy]) => point(dx, dy)), palette.leafLight);
+    if (growth > 0) polygon([[.25, -.52], [.42, -.76], [.58, -.61], [.78, -.54], [.84, -.37], [.7, -.23], [.49, -.25], [.34, -.1], [.1, -.18]].map(([dx, dy]) => point(dx, dy)), palette.leafMid);
   };
   const bench = (p: Prop) => {
     const {x, y} = p.position, w = p.width;
