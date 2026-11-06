@@ -20,7 +20,7 @@ async function walkTo(page:Page,target:{x:number;y:number},expectedMap?:string){
    return {point,x:rect.left+pixel.x/canvas.width*rect.width,y:rect.top+pixel.y/canvas.height*rect.height,mapId:map.id};
   },{save:before,target});
   if(step.done)return;if(step.error)throw new Error(step.error);
-  await page.mouse.click(step.x!,step.y!);
+  if (page.viewportSize()!.width < 600) await page.touchscreen.tap(step.x!,step.y!); else await page.mouse.click(step.x!,step.y!);
   await expect.poll(async()=>{const after=await state(page);return after.world?.mapId!==mapId||Math.hypot(after.world.position.x-step.point!.x,after.world.position.y-step.point!.y)<.24;},{timeout:12000}).toBe(true);
  }
  throw new Error('Traversal exceeded 240 real click steps');
@@ -45,7 +45,7 @@ test('ordinary opening, physical service, connected travel and reload',async({pa
   checkpoints.push({table,state:await state(page)});
  }
  await page.screenshot({path:`docs/evidence/0081/regression/${info.project.name}-service-world.png`});
- const route=info.project.name==='desktop'?['town','courtyard','residential-hall','residential-stairs','apartment','residential-stairs','rooftop','residential-stairs','residential-hall','town','workshop','town','park','riverbank','town','restaurant']:['town','courtyard','town','restaurant'];
+ const route=['town','courtyard','residential-hall','residential-stairs','apartment','residential-stairs','rooftop','residential-stairs','residential-hall','town','workshop','town','park','riverbank','town','restaurant'];
  for(const destination of route){await exit(page,destination);await page.screenshot({path:`docs/evidence/0081/regression/${info.project.name}-${destination}-arrival.png`});checkpoints.push({destination,state:await state(page)});}
  const world=page.getByTestId('world-viewport');await world.focus();await page.keyboard.down('ArrowUp');await page.waitForTimeout(180);await page.keyboard.up('ArrowUp');await page.waitForTimeout(900);
  const before=await stores(page);await page.reload();await page.waitForTimeout(900);const after=await stores(page);
