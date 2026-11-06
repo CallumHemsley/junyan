@@ -1,17 +1,9 @@
 import type { Point, WorldMapDefinition } from '../../schema';
 import variants from './variants.json';
+import type { WorldRenderView, DrawMap } from '../../render-contract';
 
 type RGB = readonly number[];
 type Prop = WorldMapDefinition['props'][number];
-export type TownView = {
-  project(point: Point, z?: number): Point;
-  elapsedMs: number;
-  reducedMotion: boolean;
-  playerPosition: Point;
-  width: number;
-  height: number;
-  pass: 'ground' | 'objects' | 'foreground';
-};
 const C = {
   ink: [48, 56, 53], cream: [239, 224, 191], plaster: [198, 187, 157],
   jade: [111, 154, 134], slate: [84, 112, 119], wood: [133, 103, 72],
@@ -24,7 +16,7 @@ const hash = (x: number, y: number) => {
   return n - Math.floor(n);
 };
 
-export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: TownView) {
+export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldRenderView) {
   const { x, y } = prop.position, w = prop.width, h = prop.height;
   const project = (a: number, b: number, z = 0) => view.project({ x: a, y: b }, z);
   const polygon = (points: Point[], fill: RGB, value = 1) => {
@@ -221,7 +213,7 @@ export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: TownVi
   ctx.restore();
 }
 
-export function drawMap(ctx: CanvasRenderingContext2D, map: WorldMapDefinition, view: TownView) {
+export const drawMap: DrawMap = (ctx, map, view) => {
   ctx.imageSmoothingEnabled = false;
   if (view.pass === 'ground') {
     ctx.fillStyle = color([104, 130, 103]); ctx.fillRect(0, 0, view.width, view.height);
