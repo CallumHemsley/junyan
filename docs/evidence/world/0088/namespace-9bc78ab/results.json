@@ -1,0 +1,22 @@
+{
+  "head": "9bc78ab03d01f9dbf30fd2ccd7a37924ab4f9772",
+  "base": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+  "main": "266e9bcd922151160d2edff48fb8078c874be135",
+  "method": "independent git cat-file streamed SHA256 of every result plus exact Git tree/blob/mode comparison, no generator execution",
+  "resultFilesChecked": 1699,
+  "bytesHashed": 589914850,
+  "resultHashErrors": [
+    {
+      "path": "docs/evidence/world/0083/runtime/page@a6db71ee66c27f7ce8d1a6d3872e3817.webm",
+      "header": [
+        "9bc78ab03d01f9dbf30fd2ccd7a37924ab4f9772:docs/evidence/world/0083/runtime/page@a6db71ee66c27f7ce8d1a6d3872e3817.webm",
+        "missing"
+      ]
+    }
+  ],
+  "mainDocPaths": 494,
+  "mainMissingOrChanged": [],
+  "productionPaths": 699,
+  "productionTreeIdentical": true,
+  "nonDocsChanges": []
+}
