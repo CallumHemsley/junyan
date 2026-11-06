@@ -10,11 +10,12 @@ for (const owner of await readdir('src/world/maps')) for (const file of await re
   const data = JSON.parse(await readFile(`src/world/maps/${owner}/${file}`, 'utf8')); if (data.bounds && data.id) maps[data.id] = data;
 }
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH ?? '/usr/bin/chromium', headless: true, args: ['--no-sandbox', '--mute-audio'] });
-const results = [];
+const selectedDevice = process.env.LAUNDRY_PROOF_DEVICE;
+const results = selectedDevice ? JSON.parse(await readFile('docs/evidence/0080/laundry-motion-proof.json', 'utf8')).filter(r => r.name !== selectedDevice) : [];
 try {
   const setup = await browser.newPage(); await setup.goto(`${base}/?test=1&seed=42&opening=skip`); await setup.waitForFunction(() => window.__TEST__?.getState());
   const initial = await setup.evaluate(() => window.__TEST__.getState()); await setup.close();
-  for (const [name, width, height, touch] of [['desktop', 1440, 900, false], ['phone', 390, 844, true]]) {
+  for (const [name, width, height, touch] of [['desktop', 1440, 900, false], ['phone', 390, 844, true]].filter(([device]) => !selectedDevice || device === selectedDevice)) {
     const context = await browser.newContext({ viewport: { width, height }, isMobile: touch, hasTouch: touch, serviceWorkers: 'block' });
     const seed = structuredClone(initial); seed.world = { version: 1, mapId: 'town', position: { x: 45, y: 3.3 }, facing: 'north', returnPositions: {}, activeActivity: null };
     await context.addInitScript(({ key, seed }) => { if (!sessionStorage.getItem('connection-seeded')) { localStorage.setItem(key, JSON.stringify(seed)); sessionStorage.setItem('connection-seeded', 'true'); } }, { key, seed });
@@ -94,7 +95,7 @@ try {
     assert.equal(contract.profile.homeMap, 'courtyard'); assert.equal(contract.profile.greeting, undefined);
     assert(contract.frameId.includes('laundry-basket'), 'Published actor must carry its real basket silhouette');
     assert(contract.actors[0].phases.some(p => p.action === 'walk')); assert.equal(contract.actors[0].phases.filter(p => p.action === 'work').length, 2);
-    await walkTo({ x: 34, y: 17 });
+    await walkTo({ x: 34, y: 19.05 });
     const samples = [], durationMs = contract.actors[0].durationMs + 1500, start = Date.now();
     let shot = 0;
     while (Date.now() - start < durationMs) {

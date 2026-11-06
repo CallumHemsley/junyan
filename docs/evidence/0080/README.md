@@ -8,7 +8,7 @@ No native create_goal or send-to-thread tool is exposed. This committed record i
 
 The objective remains ACTIVE. Draft PR https://github.com/CallumHemsley/junyan/pull/39 targets the foundation branch. No main merge or independent acceptance is claimed.
 
-- Authored 48×38 courtyard, 1,096.5 tile units of footprint-reachable area at 0.5-tile sampling, 12 landmarks and 92 props. Actual ground includes paved routes plus passable planted/bare-earth margins; bounds are not the reachable-area claim.
+- Authored 48×38 courtyard, 1,096.5 tile units of footprint-reachable area at 0.5-tile sampling, 14 landmarks and 92 props. Actual ground includes paved routes plus passable planted/bare-earth margins; bounds are not the reachable-area claim.
 - Actual desktop and phone walking traverses all three required courtyard edges and returns, with six transitions per device. Return positions survive reload. `connections-proof.json`, captures and actual CDP-frame videos retain the evidence.
 - Fresh actual desktop and phone journeys complete the existing cat reunion, return to the same approach, walk to the sunny bench and preserve progress after reload. Restaurant position/day remain unchanged. Console and request failures are empty. A narrow-container CSS fix resolves the earlier overlapping legacy cat targets without hiding controls. The historical blocked capture remains as evidence of the defect, now superseded by fresh completion runs.
 - `production-light-proof.json` verifies changed actual wood, masonry and foliage pixels in the real viewport at identical cameras under valid morning/evening progress fixtures. Courtyard has no default particle hooks. Local light overlays remain enabled. Foundation 23be251 removes the shared proxy and output-color heuristic. Adapter proof separately demonstrates alpha preservation.
@@ -93,3 +93,8 @@ Foundation must consume `courtyardForCats(map,state,day)` before interaction as 
 Life already accepts authoritative habitats. Its current override fixes cats at their sampled endpoint. A state change can therefore jump white between courtyard and doorway/window rather than visibly traversing the route. Coordinate injected-time transition animation through the life owner using shared footprint paths; do not rewrite cat progression or create a second clock. The authored white route already clears the central house and basket.
 
 The preserved rainy repeat has no rain consumer in current production atmosphere. `catHabitat(state,day).routine` retains anchored rainy conditions and should drive a coordinated atmosphere effect with a dry doorway shelter. This owner has not invented a competing weather field or renderer. This visual/gameplay inference remains open with atmosphere/foundation.
+
+
+## Canonical laundry resident extension
+
+The sole unvoiced `resident-laundry-neighbour` hook sorts beside the eastern clothesline at (32.5,10.8), carries the canonical basket along the shared collision route, pauses beside the rainwater jar at (30.4,20.8), and returns. Exactly one home map, no content/audio/schema additions or new clock. Existing aunt, cat habitats, entrances and colliders are unchanged. Production desktop/phone recordings and 42 focused tests plus build are recorded in `laundry-neighbour.md`. The initial tree-obscured placement and phone framing failure are retained. Current task dwell is visible after correction. Independent integrated five-resident review remains open; objective ACTIVE.
