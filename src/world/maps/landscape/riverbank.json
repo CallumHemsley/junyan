@@ -22,405 +22,324 @@
     {
       "id": "riverbank.water-0",
       "rect": {
-        "x": 43.0,
+        "x": 43.125,
         "y": 0,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-0.5",
       "rect": {
-        "x": 43.5,
+        "x": 43.375,
         "y": 0.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-1",
+      "id": "riverbank.water-1.0",
       "rect": {
-        "x": 43.75,
-        "y": 1,
-        "width": 9,
+        "x": 43.625,
+        "y": 1.0,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-1.5",
       "rect": {
-        "x": 44.25,
+        "x": 44.0,
         "y": 1.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-2",
+      "id": "riverbank.water-2.0",
       "rect": {
-        "x": 44.75,
-        "y": 2,
-        "width": 9,
+        "x": 44.25,
+        "y": 2.0,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-2.5",
       "rect": {
-        "x": 45.0,
+        "x": 44.625,
         "y": 2.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-3",
+      "id": "riverbank.water-3.0",
       "rect": {
-        "x": 45.5,
-        "y": 3,
-        "width": 9,
+        "x": 44.875,
+        "y": 3.0,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-3.5",
       "rect": {
-        "x": 45.75,
+        "x": 45.25,
         "y": 3.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-4",
+      "id": "riverbank.water-4.0",
       "rect": {
-        "x": 46.25,
-        "y": 4,
-        "width": 9,
+        "x": 45.5,
+        "y": 4.0,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-4.5",
       "rect": {
-        "x": 46.5,
+        "x": 45.875,
         "y": 4.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-5",
+      "id": "riverbank.water-5.0",
       "rect": {
-        "x": 46.75,
-        "y": 5,
-        "width": 9,
+        "x": 46.125,
+        "y": 5.0,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-5.5",
       "rect": {
-        "x": 47.0,
+        "x": 46.375,
         "y": 5.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-6",
+      "id": "riverbank.water-6.0",
       "rect": {
-        "x": 47.25,
-        "y": 6,
-        "width": 9,
+        "x": 46.625,
+        "y": 6.0,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-6.5",
       "rect": {
-        "x": 47.5,
+        "x": 46.875,
         "y": 6.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-7",
+      "id": "riverbank.water-7.0",
       "rect": {
-        "x": 47.5,
-        "y": 7,
-        "width": 9,
+        "x": 47.125,
+        "y": 7.0,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-7.5",
       "rect": {
-        "x": 47.75,
+        "x": 47.25,
         "y": 7.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-8",
+      "id": "riverbank.water-8.0",
       "rect": {
-        "x": 47.75,
-        "y": 8,
-        "width": 9,
+        "x": 47.375,
+        "y": 8.0,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-8.5",
       "rect": {
-        "x": 47.75,
+        "x": 47.5,
         "y": 8.5,
-        "width": 9,
-        "height": 0.5
-      }
-    },
-    {
-      "id": "riverbank.water-9",
-      "rect": {
-        "x": 47.75,
-        "y": 9,
-        "width": 9,
-        "height": 0.5
-      }
-    },
-    {
-      "id": "riverbank.water-9.5",
-      "rect": {
-        "x": 47.75,
-        "y": 9.5,
-        "width": 9,
-        "height": 0.5
-      }
-    },
-    {
-      "id": "riverbank.water-10",
-      "rect": {
-        "x": 47.75,
-        "y": 10,
-        "width": 9,
-        "height": 0.5
+        "width": 9.0,
+        "height": 2.0
       }
     },
     {
       "id": "riverbank.water-10.5",
       "rect": {
-        "x": 47.75,
+        "x": 47.375,
         "y": 10.5,
-        "width": 9,
-        "height": 0.5
-      }
-    },
-    {
-      "id": "riverbank.water-11",
-      "rect": {
-        "x": 47.5,
-        "y": 11,
-        "width": 9,
-        "height": 0.5
+        "width": 9.0,
+        "height": 1.0
       }
     },
     {
       "id": "riverbank.water-11.5",
       "rect": {
-        "x": 47.5,
+        "x": 47.25,
         "y": 11.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-12",
+      "id": "riverbank.water-12.0",
       "rect": {
-        "x": 47.25,
-        "y": 12,
-        "width": 9,
+        "x": 47.0,
+        "y": 12.0,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-12.5",
       "rect": {
-        "x": 47.0,
+        "x": 46.875,
         "y": 12.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-13",
+      "id": "riverbank.water-13.0",
       "rect": {
-        "x": 47.0,
-        "y": 13,
-        "width": 9,
+        "x": 46.625,
+        "y": 13.0,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-13.5",
       "rect": {
-        "x": 46.75,
+        "x": 46.5,
         "y": 13.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-14",
+      "id": "riverbank.water-14.0",
       "rect": {
-        "x": 46.5,
-        "y": 14,
-        "width": 9,
+        "x": 46.25,
+        "y": 14.0,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-14.5",
       "rect": {
-        "x": 46.25,
+        "x": 46.0,
         "y": 14.5,
-        "width": 9,
+        "width": 9.125,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-15",
+      "id": "riverbank.water-15.0",
       "rect": {
-        "x": 46.0,
-        "y": 15,
-        "width": 9,
+        "x": 45.875,
+        "y": 15.0,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-15.5",
       "rect": {
-        "x": 46.0,
+        "x": 45.625,
         "y": 15.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-16",
+      "id": "riverbank.water-16.0",
       "rect": {
-        "x": 45.75,
-        "y": 16,
-        "width": 9,
+        "x": 45.5,
+        "y": 16.0,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-16.5",
       "rect": {
-        "x": 45.5,
+        "x": 45.25,
         "y": 16.5,
-        "width": 9,
+        "width": 9.125,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-17",
+      "id": "riverbank.water-17.0",
       "rect": {
-        "x": 45.25,
-        "y": 17,
-        "width": 9,
+        "x": 45.125,
+        "y": 17.0,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-17.5-cut-0",
       "rect": {
-        "x": 45.25,
+        "x": 45.0,
         "y": 17.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.10000000000000142
       }
     },
     {
-      "id": "riverbank.water-20-cut-1",
+      "id": "riverbank.water-19.5-cut-1",
       "rect": {
-        "x": 44.75,
+        "x": 44.875,
         "y": 20.400000000000002,
-        "width": 9,
-        "height": 0.09999999999999787
+        "width": 8.875,
+        "height": 1.5999999999999979
       }
     },
     {
-      "id": "riverbank.water-20.5",
+      "id": "riverbank.water-22.0",
       "rect": {
-        "x": 44.5,
-        "y": 20.5,
-        "width": 9,
-        "height": 0.5
-      }
-    },
-    {
-      "id": "riverbank.water-21",
-      "rect": {
-        "x": 44.5,
-        "y": 21,
-        "width": 9,
-        "height": 0.5
-      }
-    },
-    {
-      "id": "riverbank.water-21.5",
-      "rect": {
-        "x": 44.5,
-        "y": 21.5,
-        "width": 9,
-        "height": 0.5
-      }
-    },
-    {
-      "id": "riverbank.water-22",
-      "rect": {
-        "x": 44.5,
-        "y": 22,
-        "width": 9,
-        "height": 0.5
-      }
-    },
-    {
-      "id": "riverbank.water-22.5",
-      "rect": {
-        "x": 44.5,
-        "y": 22.5,
-        "width": 9,
-        "height": 0.5
-      }
-    },
-    {
-      "id": "riverbank.water-23",
-      "rect": {
-        "x": 44.5,
-        "y": 23,
-        "width": 9,
-        "height": 0.5
+        "x": 45.0,
+        "y": 22.0,
+        "width": 8.75,
+        "height": 1.5
       }
     },
     {
       "id": "riverbank.water-23.5",
       "rect": {
-        "x": 44.75,
+        "x": 44.875,
         "y": 23.5,
-        "width": 9,
+        "width": 8.875,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-24",
+      "id": "riverbank.water-24.0",
       "rect": {
-        "x": 44.75,
-        "y": 24,
-        "width": 9,
+        "x": 44.875,
+        "y": 24.0,
+        "width": 8.75,
         "height": 0.5
       }
     },
@@ -429,250 +348,250 @@
       "rect": {
         "x": 44.75,
         "y": 24.5,
-        "width": 9,
-        "height": 0.5
-      }
-    },
-    {
-      "id": "riverbank.water-25",
-      "rect": {
-        "x": 44.75,
-        "y": 25,
-        "width": 9,
-        "height": 0.5
+        "width": 8.75,
+        "height": 1.0
       }
     },
     {
       "id": "riverbank.water-25.5",
       "rect": {
-        "x": 45.0,
+        "x": 44.625,
         "y": 25.5,
-        "width": 9,
+        "width": 8.75,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-26",
+      "id": "riverbank.water-26.0",
       "rect": {
-        "x": 45.0,
-        "y": 26,
-        "width": 9,
+        "x": 44.375,
+        "y": 26.0,
+        "width": 8.75,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-26.5",
       "rect": {
-        "x": 45.0,
+        "x": 44.25,
         "y": 26.5,
-        "width": 9,
+        "width": 8.75,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-27",
+      "id": "riverbank.water-27.0",
       "rect": {
-        "x": 45.0,
-        "y": 27,
-        "width": 9,
+        "x": 44.125,
+        "y": 27.0,
+        "width": 8.75,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-27.5",
       "rect": {
-        "x": 45.25,
+        "x": 43.875,
         "y": 27.5,
-        "width": 9,
+        "width": 8.875,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-28",
+      "id": "riverbank.water-28.0",
       "rect": {
-        "x": 45.25,
-        "y": 28,
-        "width": 9,
+        "x": 43.75,
+        "y": 28.0,
+        "width": 8.75,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-28.5",
       "rect": {
-        "x": 45.25,
+        "x": 43.5,
         "y": 28.5,
-        "width": 9,
+        "width": 8.875,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-29",
+      "id": "riverbank.water-29.0",
       "rect": {
-        "x": 45.25,
-        "y": 29,
-        "width": 9,
+        "x": 43.25,
+        "y": 29.0,
+        "width": 8.875,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-29.5",
       "rect": {
-        "x": 45.25,
+        "x": 43.125,
         "y": 29.5,
-        "width": 9,
+        "width": 8.875,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-30",
+      "id": "riverbank.water-30.0",
       "rect": {
-        "x": 45.25,
-        "y": 30,
-        "width": 9,
+        "x": 42.875,
+        "y": 30.0,
+        "width": 8.875,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-30.5",
       "rect": {
-        "x": 45.0,
+        "x": 42.625,
         "y": 30.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-31",
+      "id": "riverbank.water-31.0",
       "rect": {
-        "x": 45.0,
-        "y": 31,
-        "width": 9,
+        "x": 42.5,
+        "y": 31.0,
+        "width": 8.875,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-31.5",
       "rect": {
-        "x": 45.0,
+        "x": 42.25,
         "y": 31.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-32",
+      "id": "riverbank.water-32.0",
       "rect": {
-        "x": 44.75,
-        "y": 32,
-        "width": 9,
+        "x": 42.0,
+        "y": 32.0,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-32.5",
       "rect": {
-        "x": 44.5,
+        "x": 41.875,
         "y": 32.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-33",
+      "id": "riverbank.water-33.0",
       "rect": {
-        "x": 44.25,
-        "y": 33,
-        "width": 9,
+        "x": 41.625,
+        "y": 33.0,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-33.5",
       "rect": {
-        "x": 44.25,
+        "x": 41.5,
         "y": 33.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-34",
+      "id": "riverbank.water-34.0",
       "rect": {
-        "x": 44.0,
-        "y": 34,
-        "width": 9,
+        "x": 41.25,
+        "y": 34.0,
+        "width": 9.125,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-34.5",
       "rect": {
-        "x": 43.5,
+        "x": 41.125,
         "y": 34.5,
-        "width": 9,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-35",
+      "id": "riverbank.water-35.0",
       "rect": {
-        "x": 43.25,
-        "y": 35,
-        "width": 9,
+        "x": 40.875,
+        "y": 35.0,
+        "width": 9.125,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-35.5",
       "rect": {
-        "x": 43.0,
+        "x": 40.75,
         "y": 35.5,
-        "width": 9,
+        "width": 9.125,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-36",
+      "id": "riverbank.water-36.0",
       "rect": {
-        "x": 42.75,
-        "y": 36,
-        "width": 9,
+        "x": 40.5,
+        "y": 36.0,
+        "width": 9.125,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-36.5",
       "rect": {
-        "x": 42.25,
+        "x": 40.375,
         "y": 36.5,
-        "width": 9,
+        "width": 9.125,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-37",
+      "id": "riverbank.water-37.0",
       "rect": {
-        "x": 42.0,
-        "y": 37,
-        "width": 9,
+        "x": 40.25,
+        "y": 37.0,
+        "width": 9.125,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-37.5",
+      "id": "riverbank.water-37.5-cut-0",
       "rect": {
-        "x": 41.5,
+        "x": 40.0,
         "y": 37.5,
-        "width": 9,
-        "height": 0.5
+        "width": 9.125,
+        "height": 0.29999999999999716
       }
     },
     {
-      "id": "riverbank.water-38",
+      "id": "riverbank.water-37.5-cut-3",
       "rect": {
-        "x": 41.25,
-        "y": 38,
-        "width": 9,
+        "x": 41.199999999999996,
+        "y": 37.8,
+        "width": 7.925000000000004,
+        "height": 0.20000000000000284
+      }
+    },
+    {
+      "id": "riverbank.water-38.0-cut-3",
+      "rect": {
+        "x": 41.199999999999996,
+        "y": 38.0,
+        "width": 7.800000000000004,
         "height": 0.5
       }
     },
@@ -681,16 +600,16 @@
       "rect": {
         "x": 41.199999999999996,
         "y": 38.5,
-        "width": 8.550000000000004,
+        "width": 7.675000000000004,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-39-cut-3",
+      "id": "riverbank.water-39.0-cut-3",
       "rect": {
         "x": 41.199999999999996,
-        "y": 39,
-        "width": 8.300000000000004,
+        "y": 39.0,
+        "width": 7.550000000000004,
         "height": 0.5
       }
     },
@@ -699,422 +618,485 @@
       "rect": {
         "x": 41.199999999999996,
         "y": 39.5,
-        "width": 7.800000000000004,
+        "width": 7.425000000000004,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-40-cut-1",
+      "id": "riverbank.water-40.0-cut-1",
       "rect": {
-        "x": 39.5,
+        "x": 39.125,
         "y": 40.199999999999996,
-        "width": 9,
+        "width": 9.25,
         "height": 0.30000000000000426
       }
     },
     {
-      "id": "riverbank.water-40-cut-3",
+      "id": "riverbank.water-40.0-cut-3",
       "rect": {
         "x": 41.199999999999996,
-        "y": 40,
-        "width": 7.300000000000004,
+        "y": 40.0,
+        "width": 7.175000000000004,
         "height": 0.19999999999999574
       }
     },
     {
       "id": "riverbank.water-40.5",
       "rect": {
-        "x": 39.25,
+        "x": 39.0,
         "y": 40.5,
-        "width": 9,
+        "width": 9.25,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-41",
+      "id": "riverbank.water-41.0",
       "rect": {
-        "x": 39.0,
-        "y": 41,
-        "width": 9,
+        "x": 38.75,
+        "y": 41.0,
+        "width": 9.375,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-41.5",
       "rect": {
-        "x": 38.5,
+        "x": 38.625,
         "y": 41.5,
-        "width": 9,
+        "width": 9.25,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-42",
+      "id": "riverbank.water-42.0",
       "rect": {
-        "x": 38.25,
-        "y": 42,
-        "width": 9,
+        "x": 38.375,
+        "y": 42.0,
+        "width": 9.375,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-42.5",
       "rect": {
-        "x": 38.0,
+        "x": 38.25,
         "y": 42.5,
-        "width": 9,
+        "width": 9.25,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-43",
+      "id": "riverbank.water-43.0",
       "rect": {
-        "x": 37.75,
-        "y": 43,
-        "width": 9,
+        "x": 38.0,
+        "y": 43.0,
+        "width": 9.375,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-43.5",
       "rect": {
-        "x": 37.5,
+        "x": 37.875,
         "y": 43.5,
-        "width": 9,
+        "width": 9.375,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-44",
+      "id": "riverbank.water-44.0",
       "rect": {
-        "x": 37.5,
-        "y": 44,
-        "width": 9,
+        "x": 37.75,
+        "y": 44.0,
+        "width": 9.375,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-44.5",
       "rect": {
-        "x": 37.25,
+        "x": 37.625,
         "y": 44.5,
-        "width": 9,
+        "width": 9.375,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-45",
+      "id": "riverbank.water-45.0",
       "rect": {
-        "x": 37.25,
-        "y": 45,
-        "width": 9,
-        "height": 0.5
-      }
-    },
-    {
-      "id": "riverbank.water-45.5",
-      "rect": {
-        "x": 37.0,
-        "y": 45.5,
-        "width": 9,
-        "height": 0.5
-      }
-    },
-    {
-      "id": "riverbank.water-46",
-      "rect": {
-        "x": 37.0,
-        "y": 46,
-        "width": 9,
-        "height": 0.5
+        "x": 37.5,
+        "y": 45.0,
+        "width": 9.5,
+        "height": 1.5
       }
     },
     {
       "id": "riverbank.water-46.5",
       "rect": {
-        "x": 37.0,
+        "x": 37.5,
         "y": 46.5,
-        "width": 9,
+        "width": 9.625,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-47",
+      "id": "riverbank.water-47.0",
       "rect": {
-        "x": 37.0,
-        "y": 47,
-        "width": 9,
+        "x": 37.625,
+        "y": 47.0,
+        "width": 9.625,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-47.5",
       "rect": {
-        "x": 37.25,
+        "x": 37.75,
         "y": 47.5,
-        "width": 9,
+        "width": 9.75,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-48",
+      "id": "riverbank.water-48.0",
       "rect": {
-        "x": 37.25,
-        "y": 48,
-        "width": 9,
+        "x": 37.875,
+        "y": 48.0,
+        "width": 9.875,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-48.5",
       "rect": {
-        "x": 37.5,
+        "x": 38.125,
         "y": 48.5,
-        "width": 9,
+        "width": 9.875,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-49",
+      "id": "riverbank.water-49.0",
       "rect": {
-        "x": 37.75,
-        "y": 49,
-        "width": 9,
+        "x": 38.25,
+        "y": 49.0,
+        "width": 10.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-49.5",
       "rect": {
-        "x": 37.75,
+        "x": 38.5,
         "y": 49.5,
-        "width": 9,
+        "width": 10.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-50",
+      "id": "riverbank.water-50.0",
       "rect": {
-        "x": 38.0,
-        "y": 50,
-        "width": 9,
+        "x": 38.75,
+        "y": 50.0,
+        "width": 10.0,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-50.5",
       "rect": {
-        "x": 38.25,
+        "x": 38.875,
         "y": 50.5,
-        "width": 9,
+        "width": 10.25,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-51",
+      "id": "riverbank.water-51.0",
       "rect": {
-        "x": 38.75,
-        "y": 51,
-        "width": 9,
+        "x": 39.125,
+        "y": 51.0,
+        "width": 10.25,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-51.5",
       "rect": {
-        "x": 39.0,
+        "x": 39.375,
         "y": 51.5,
-        "width": 9,
+        "width": 10.25,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-52",
+      "id": "riverbank.water-52.0",
       "rect": {
-        "x": 39.25,
-        "y": 52,
-        "width": 9,
+        "x": 39.625,
+        "y": 52.0,
+        "width": 10.25,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-52.5",
       "rect": {
-        "x": 39.75,
+        "x": 39.875,
         "y": 52.5,
-        "width": 9,
+        "width": 10.25,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-53",
+      "id": "riverbank.water-53.0",
       "rect": {
-        "x": 40.0,
-        "y": 53,
-        "width": 9,
+        "x": 40.125,
+        "y": 53.0,
+        "width": 10.25,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-53.5",
       "rect": {
-        "x": 40.25,
+        "x": 40.5,
         "y": 53.5,
-        "width": 9,
+        "width": 10.125,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-54",
+      "id": "riverbank.water-54.0",
       "rect": {
         "x": 40.75,
-        "y": 54,
-        "width": 9,
+        "y": 54.0,
+        "width": 10.125,
         "height": 0.5
       }
     },
     {
       "id": "riverbank.water-54.5",
       "rect": {
-        "x": 41.0,
+        "x": 41.125,
         "y": 54.5,
-        "width": 9,
+        "width": 10.125,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-55",
+      "id": "riverbank.water-55.0",
       "rect": {
-        "x": 41.25,
-        "y": 55,
-        "width": 9,
-        "height": 0.5
+        "x": 41.375,
+        "y": 55.0,
+        "width": 10.0,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-55.25",
+      "rect": {
+        "x": 41.5,
+        "y": 55.25,
+        "width": 10.0,
+        "height": 0.25
       }
     },
     {
       "id": "riverbank.water-55.5-cut-0",
       "rect": {
-        "x": 41.75,
+        "x": 41.625,
         "y": 55.5,
-        "width": 9,
+        "width": 10.125,
         "height": 0.10000000000000142
       }
     },
     {
-      "id": "riverbank.water-58-cut-1",
+      "id": "riverbank.water-58.25-cut-1",
       "rect": {
-        "x": 43.0,
+        "x": 43.125,
         "y": 58.4,
-        "width": 9,
+        "width": 10.375,
         "height": 0.10000000000000142
       }
     },
     {
       "id": "riverbank.water-58.5",
       "rect": {
-        "x": 43.25,
+        "x": 43.125,
         "y": 58.5,
-        "width": 9,
-        "height": 0.5
+        "width": 10.625,
+        "height": 0.25
       }
     },
     {
-      "id": "riverbank.water-59",
+      "id": "riverbank.water-58.75",
       "rect": {
-        "x": 43.5,
-        "y": 59,
-        "width": 9,
-        "height": 0.5
+        "x": 43.25,
+        "y": 58.75,
+        "width": 10.625,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-59.0",
+      "rect": {
+        "x": 43.25,
+        "y": 59.0,
+        "width": 10.875,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-59.25",
+      "rect": {
+        "x": 43.375,
+        "y": 59.25,
+        "width": 11.0,
+        "height": 0.25
       }
     },
     {
       "id": "riverbank.water-59.5",
       "rect": {
-        "x": 43.75,
+        "x": 43.375,
         "y": 59.5,
-        "width": 9,
-        "height": 0.5
+        "width": 11.25,
+        "height": 0.25
       }
     },
     {
-      "id": "riverbank.water-60",
+      "id": "riverbank.water-59.75",
       "rect": {
-        "x": 43.75,
-        "y": 60,
-        "width": 9,
-        "height": 0.5
+        "x": 43.5,
+        "y": 59.75,
+        "width": 11.375,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-60.0",
+      "rect": {
+        "x": 43.5,
+        "y": 60.0,
+        "width": 11.625,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-60.25",
+      "rect": {
+        "x": 43.625,
+        "y": 60.25,
+        "width": 11.75,
+        "height": 0.25
       }
     },
     {
       "id": "riverbank.water-60.5",
       "rect": {
-        "x": 44.0,
+        "x": 43.625,
         "y": 60.5,
-        "width": 9,
+        "width": 11.875,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-60.75",
+      "rect": {
+        "x": 43.625,
+        "y": 60.75,
+        "width": 12.125,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-61.0",
+      "rect": {
+        "x": 43.75,
+        "y": 61.0,
+        "width": 12.125,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-61.25",
+      "rect": {
+        "x": 43.75,
+        "y": 61.25,
+        "width": 12.25,
+        "height": 0.75
+      }
+    },
+    {
+      "id": "riverbank.water-62.0",
+      "rect": {
+        "x": 43.875,
+        "y": 62.0,
+        "width": 12.125,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-62.25",
+      "rect": {
+        "x": 43.875,
+        "y": 62.25,
+        "width": 12.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-61",
+      "id": "riverbank.water-62.75",
+      "rect": {
+        "x": 43.875,
+        "y": 62.75,
+        "width": 11.875,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-63.0",
+      "rect": {
+        "x": 43.875,
+        "y": 63.0,
+        "width": 11.75,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-63.25",
       "rect": {
         "x": 44.0,
-        "y": 61,
-        "width": 9,
+        "y": 63.25,
+        "width": 11.5,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-61.5",
+      "id": "riverbank.water-63.75",
       "rect": {
         "x": 44.0,
-        "y": 61.5,
-        "width": 9,
-        "height": 0.5
+        "y": 63.75,
+        "width": 11.25,
+        "height": 0.25
       }
     },
     {
-      "id": "riverbank.water-62",
+      "id": "riverbank.water-64.0",
       "rect": {
-        "x": 44.25,
-        "y": 62,
-        "width": 9,
-        "height": 0.5
+        "x": 44.0,
+        "y": 64.0,
+        "width": 11.125,
+        "height": 0.25
       }
     },
     {
-      "id": "riverbank.water-62.5",
+      "id": "riverbank.water-64.25",
       "rect": {
-        "x": 44.25,
-        "y": 62.5,
-        "width": 9,
-        "height": 0.5
-      }
-    },
-    {
-      "id": "riverbank.water-63",
-      "rect": {
-        "x": 44.25,
-        "y": 63,
-        "width": 9,
-        "height": 0.5
-      }
-    },
-    {
-      "id": "riverbank.water-63.5",
-      "rect": {
-        "x": 44.25,
-        "y": 63.5,
-        "width": 9,
-        "height": 0.5
-      }
-    },
-    {
-      "id": "riverbank.water-64",
-      "rect": {
-        "x": 44.25,
-        "y": 64,
-        "width": 9,
-        "height": 0.5
+        "x": 44.0,
+        "y": 64.25,
+        "width": 11.0,
+        "height": 0.25
       }
     },
     {
@@ -1122,17 +1104,26 @@
       "rect": {
         "x": 44.0,
         "y": 64.5,
-        "width": 9,
+        "width": 10.875,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-64.75",
+      "rect": {
+        "x": 44.0,
+        "y": 64.75,
+        "width": 10.75,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-65",
+      "id": "riverbank.water-65.25",
       "rect": {
         "x": 44.0,
-        "y": 65,
-        "width": 9,
-        "height": 0.5
+        "y": 65.25,
+        "width": 10.625,
+        "height": 0.25
       }
     },
     {
@@ -1140,17 +1131,35 @@
       "rect": {
         "x": 44.0,
         "y": 65.5,
-        "width": 9,
-        "height": 0.5
+        "width": 10.5,
+        "height": 0.25
       }
     },
     {
-      "id": "riverbank.water-66",
+      "id": "riverbank.water-65.75",
       "rect": {
         "x": 44.0,
-        "y": 66,
-        "width": 9,
-        "height": 0.5
+        "y": 65.75,
+        "width": 10.375,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-66.0",
+      "rect": {
+        "x": 44.0,
+        "y": 66.0,
+        "width": 10.25,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-66.25",
+      "rect": {
+        "x": 44.0,
+        "y": 66.25,
+        "width": 10.125,
+        "height": 0.25
       }
     },
     {
@@ -1158,35 +1167,71 @@
       "rect": {
         "x": 44.0,
         "y": 66.5,
-        "width": 9,
-        "height": 0.5
+        "width": 9.875,
+        "height": 0.25
       }
     },
     {
-      "id": "riverbank.water-67",
+      "id": "riverbank.water-66.75",
       "rect": {
-        "x": 44.0,
-        "y": 67,
-        "width": 9,
-        "height": 0.5
+        "x": 43.875,
+        "y": 66.75,
+        "width": 9.875,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-67.0",
+      "rect": {
+        "x": 43.875,
+        "y": 67.0,
+        "width": 9.75,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-67.25",
+      "rect": {
+        "x": 43.875,
+        "y": 67.25,
+        "width": 9.625,
+        "height": 0.25
       }
     },
     {
       "id": "riverbank.water-67.5",
       "rect": {
-        "x": 43.75,
+        "x": 43.875,
         "y": 67.5,
-        "width": 9,
-        "height": 0.5
+        "width": 9.5,
+        "height": 0.25
       }
     },
     {
-      "id": "riverbank.water-68",
+      "id": "riverbank.water-67.75",
+      "rect": {
+        "x": 43.875,
+        "y": 67.75,
+        "width": 9.375,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-68.0",
+      "rect": {
+        "x": 43.875,
+        "y": 68.0,
+        "width": 9.25,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-68.25",
       "rect": {
         "x": 43.75,
-        "y": 68,
-        "width": 9,
-        "height": 0.5
+        "y": 68.25,
+        "width": 9.25,
+        "height": 0.25
       }
     },
     {
@@ -1194,17 +1239,26 @@
       "rect": {
         "x": 43.75,
         "y": 68.5,
-        "width": 9,
+        "width": 9.125,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-68.75",
+      "rect": {
+        "x": 43.75,
+        "y": 68.75,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-69",
+      "id": "riverbank.water-69.25",
       "rect": {
         "x": 43.75,
-        "y": 69,
-        "width": 9,
-        "height": 0.5
+        "y": 69.25,
+        "width": 8.875,
+        "height": 0.25
       }
     },
     {
@@ -1212,188 +1266,359 @@
       "rect": {
         "x": 43.75,
         "y": 69.5,
-        "width": 9,
+        "width": 8.75,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-69.75",
+      "rect": {
+        "x": 43.625,
+        "y": 69.75,
+        "width": 8.875,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-70",
+      "id": "riverbank.water-70.25",
       "rect": {
-        "x": 43.75,
-        "y": 70,
-        "width": 9,
-        "height": 0.5
+        "x": 43.625,
+        "y": 70.25,
+        "width": 8.75,
+        "height": 0.25
       }
     },
     {
       "id": "riverbank.water-70.5",
       "rect": {
-        "x": 44.0,
+        "x": 43.625,
         "y": 70.5,
-        "width": 9,
+        "width": 8.875,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-70.75",
+      "rect": {
+        "x": 43.5,
+        "y": 70.75,
+        "width": 9.0,
         "height": 0.5
       }
     },
     {
-      "id": "riverbank.water-71",
+      "id": "riverbank.water-71.25",
       "rect": {
-        "x": 44.0,
-        "y": 71,
-        "width": 9,
-        "height": 0.5
+        "x": 43.375,
+        "y": 71.25,
+        "width": 9.25,
+        "height": 0.25
       }
     },
     {
       "id": "riverbank.water-71.5",
       "rect": {
-        "x": 44.0,
+        "x": 43.375,
         "y": 71.5,
-        "width": 9,
-        "height": 0.5
+        "width": 9.375,
+        "height": 0.25
       }
     },
     {
-      "id": "riverbank.water-72",
+      "id": "riverbank.water-71.75",
       "rect": {
-        "x": 44.25,
-        "y": 72,
-        "width": 9,
-        "height": 0.5
+        "x": 43.25,
+        "y": 71.75,
+        "width": 9.625,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-72.0",
+      "rect": {
+        "x": 43.125,
+        "y": 72.0,
+        "width": 9.875,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-72.25",
+      "rect": {
+        "x": 43.0,
+        "y": 72.25,
+        "width": 10.125,
+        "height": 0.25
       }
     },
     {
       "id": "riverbank.water-72.5",
       "rect": {
-        "x": 44.25,
+        "x": 42.875,
         "y": 72.5,
-        "width": 9,
-        "height": 0.5
+        "width": 10.375,
+        "height": 0.25
       }
     },
     {
-      "id": "riverbank.water-73",
+      "id": "riverbank.water-72.75",
       "rect": {
-        "x": 44.5,
-        "y": 73,
-        "width": 9,
-        "height": 0.5
+        "x": 42.875,
+        "y": 72.75,
+        "width": 10.5,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-73.0",
+      "rect": {
+        "x": 42.75,
+        "y": 73.0,
+        "width": 10.75,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-73.25",
+      "rect": {
+        "x": 42.75,
+        "y": 73.25,
+        "width": 10.875,
+        "height": 0.25
       }
     },
     {
       "id": "riverbank.water-73.5",
       "rect": {
-        "x": 44.75,
+        "x": 42.75,
         "y": 73.5,
-        "width": 9,
-        "height": 0.5
+        "width": 11.0,
+        "height": 0.25
       }
     },
     {
-      "id": "riverbank.water-74",
+      "id": "riverbank.water-73.75",
       "rect": {
-        "x": 44.75,
-        "y": 74,
-        "width": 9,
-        "height": 0.5
+        "x": 42.75,
+        "y": 73.75,
+        "width": 11.125,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-74.0",
+      "rect": {
+        "x": 42.75,
+        "y": 74.0,
+        "width": 11.375,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-74.25",
+      "rect": {
+        "x": 42.875,
+        "y": 74.25,
+        "width": 11.375,
+        "height": 0.25
       }
     },
     {
       "id": "riverbank.water-74.5",
       "rect": {
-        "x": 45.0,
+        "x": 43.0,
         "y": 74.5,
-        "width": 9,
-        "height": 0.5
+        "width": 11.375,
+        "height": 0.25
       }
     },
     {
-      "id": "riverbank.water-75",
+      "id": "riverbank.water-74.75",
       "rect": {
-        "x": 45.25,
-        "y": 75,
-        "width": 9,
-        "height": 0.5
+        "x": 43.125,
+        "y": 74.75,
+        "width": 11.375,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-75.0",
+      "rect": {
+        "x": 43.25,
+        "y": 75.0,
+        "width": 11.375,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-75.25",
+      "rect": {
+        "x": 43.5,
+        "y": 75.25,
+        "width": 11.25,
+        "height": 0.25
       }
     },
     {
       "id": "riverbank.water-75.5",
       "rect": {
-        "x": 45.5,
+        "x": 43.625,
         "y": 75.5,
-        "width": 9,
-        "height": 0.5
+        "width": 11.25,
+        "height": 0.25
       }
     },
     {
-      "id": "riverbank.water-76",
+      "id": "riverbank.water-75.75",
       "rect": {
-        "x": 45.75,
-        "y": 76,
-        "width": 9,
-        "height": 0.5
+        "x": 43.875,
+        "y": 75.75,
+        "width": 11.125,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-76.0",
+      "rect": {
+        "x": 44.125,
+        "y": 76.0,
+        "width": 11.0,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-76.25",
+      "rect": {
+        "x": 44.25,
+        "y": 76.25,
+        "width": 11.0,
+        "height": 0.25
       }
     },
     {
       "id": "riverbank.water-76.5",
       "rect": {
-        "x": 46.0,
+        "x": 44.5,
         "y": 76.5,
-        "width": 9,
-        "height": 0.5
+        "width": 10.875,
+        "height": 0.25
       }
     },
     {
-      "id": "riverbank.water-77",
+      "id": "riverbank.water-76.75",
       "rect": {
-        "x": 46.25,
-        "y": 77,
-        "width": 9,
-        "height": 0.5
+        "x": 44.625,
+        "y": 76.75,
+        "width": 10.875,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-77.0",
+      "rect": {
+        "x": 44.875,
+        "y": 77.0,
+        "width": 10.625,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-77.25",
+      "rect": {
+        "x": 45.0,
+        "y": 77.25,
+        "width": 10.625,
+        "height": 0.25
       }
     },
     {
       "id": "riverbank.water-77.5",
       "rect": {
-        "x": 46.5,
+        "x": 45.25,
         "y": 77.5,
-        "width": 9,
-        "height": 0.5
+        "width": 10.5,
+        "height": 0.25
       }
     },
     {
-      "id": "riverbank.water-78",
+      "id": "riverbank.water-77.75",
       "rect": {
-        "x": 46.75,
-        "y": 78,
-        "width": 9,
-        "height": 0.5
+        "x": 45.375,
+        "y": 77.75,
+        "width": 10.5,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-78.0",
+      "rect": {
+        "x": 45.625,
+        "y": 78.0,
+        "width": 10.25,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-78.25",
+      "rect": {
+        "x": 45.75,
+        "y": 78.25,
+        "width": 10.25,
+        "height": 0.25
       }
     },
     {
       "id": "riverbank.water-78.5",
       "rect": {
-        "x": 47.0,
+        "x": 46.0,
         "y": 78.5,
-        "width": 9,
-        "height": 0.5
+        "width": 10.125,
+        "height": 0.25
       }
     },
     {
-      "id": "riverbank.water-79",
+      "id": "riverbank.water-78.75",
       "rect": {
-        "x": 47.25,
-        "y": 79,
-        "width": 9,
-        "height": 0.5
+        "x": 46.125,
+        "y": 78.75,
+        "width": 10.0,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-79.0",
+      "rect": {
+        "x": 46.375,
+        "y": 79.0,
+        "width": 9.875,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-79.25",
+      "rect": {
+        "x": 46.5,
+        "y": 79.25,
+        "width": 9.75,
+        "height": 0.25
       }
     },
     {
       "id": "riverbank.water-79.5",
       "rect": {
-        "x": 47.5,
+        "x": 46.75,
         "y": 79.5,
-        "width": 9,
-        "height": 0.5
+        "width": 9.625,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "riverbank.water-79.75",
+      "rect": {
+        "x": 46.875,
+        "y": 79.75,
+        "width": 9.625,
+        "height": 0.25
       }
     },
     {
@@ -1408,8 +1633,8 @@
     {
       "id": "riverbank.ferry-boat",
       "rect": {
-        "x": 56.599999999999994,
-        "y": 60.220000000000006,
+        "x": 57.199999999999996,
+        "y": 59.82,
         "width": 2.4,
         "height": 0.96
       }
@@ -1480,7 +1705,7 @@
     {
       "id": "riverbank.bank-rock-5",
       "rect": {
-        "x": 57.02,
+        "x": 55.395,
         "y": 4.52,
         "width": 0.96,
         "height": 0.96
@@ -1489,7 +1714,7 @@
     {
       "id": "riverbank.bank-rock-13",
       "rect": {
-        "x": 57.02,
+        "x": 56.145,
         "y": 12.52,
         "width": 0.96,
         "height": 0.96
@@ -1498,7 +1723,7 @@
     {
       "id": "riverbank.bank-rock-27",
       "rect": {
-        "x": 55.02,
+        "x": 53.395,
         "y": 26.52,
         "width": 0.96,
         "height": 0.96
@@ -1507,7 +1732,7 @@
     {
       "id": "riverbank.bank-rock-34",
       "rect": {
-        "x": 54.02,
+        "x": 50.77,
         "y": 33.52,
         "width": 0.96,
         "height": 0.96
@@ -1516,7 +1741,7 @@
     {
       "id": "riverbank.bank-rock-45",
       "rect": {
-        "x": 47.02,
+        "x": 47.395,
         "y": 44.52,
         "width": 0.96,
         "height": 0.96
@@ -1525,8 +1750,8 @@
     {
       "id": "riverbank.bank-rock-64",
       "rect": {
-        "x": 54.02,
-        "y": 63.52,
+        "x": 55.645,
+        "y": 63.42,
         "width": 0.96,
         "height": 0.96
       }
@@ -1534,8 +1759,8 @@
     {
       "id": "riverbank.bank-rock-71",
       "rect": {
-        "x": 54.02,
-        "y": 70.52,
+        "x": 55.27,
+        "y": 75.32,
         "width": 0.96,
         "height": 0.96
       }
@@ -2815,9 +3040,9 @@
     {
       "id": "riverbank.river-shore-0",
       "rect": {
-        "x": 42.25,
+        "x": 42.725,
         "y": 0,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -2826,20 +3051,20 @@
     {
       "id": "riverbank.river-shore-0.5",
       "rect": {
-        "x": 42.75,
+        "x": 42.975,
         "y": 0.5,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-1",
+      "id": "riverbank.river-shore-1.0",
       "rect": {
-        "x": 43.0,
-        "y": 1,
-        "width": 10.5,
+        "x": 43.225,
+        "y": 1.0,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -2848,20 +3073,20 @@
     {
       "id": "riverbank.river-shore-1.5",
       "rect": {
-        "x": 43.5,
+        "x": 43.6,
         "y": 1.5,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-2",
+      "id": "riverbank.river-shore-2.0",
       "rect": {
-        "x": 44.0,
-        "y": 2,
-        "width": 10.5,
+        "x": 43.85,
+        "y": 2.0,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -2870,20 +3095,20 @@
     {
       "id": "riverbank.river-shore-2.5",
       "rect": {
-        "x": 44.25,
+        "x": 44.225,
         "y": 2.5,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-3",
+      "id": "riverbank.river-shore-3.0",
       "rect": {
-        "x": 44.75,
-        "y": 3,
-        "width": 10.5,
+        "x": 44.475,
+        "y": 3.0,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -2892,20 +3117,20 @@
     {
       "id": "riverbank.river-shore-3.5",
       "rect": {
-        "x": 45.0,
+        "x": 44.85,
         "y": 3.5,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-4",
+      "id": "riverbank.river-shore-4.0",
       "rect": {
-        "x": 45.5,
-        "y": 4,
-        "width": 10.5,
+        "x": 45.1,
+        "y": 4.0,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -2914,20 +3139,20 @@
     {
       "id": "riverbank.river-shore-4.5",
       "rect": {
-        "x": 45.75,
+        "x": 45.475,
         "y": 4.5,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-5",
+      "id": "riverbank.river-shore-5.0",
       "rect": {
-        "x": 46.0,
-        "y": 5,
-        "width": 10.5,
+        "x": 45.725,
+        "y": 5.0,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -2936,20 +3161,20 @@
     {
       "id": "riverbank.river-shore-5.5",
       "rect": {
-        "x": 46.25,
+        "x": 45.975,
         "y": 5.5,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-6",
+      "id": "riverbank.river-shore-6.0",
       "rect": {
-        "x": 46.5,
-        "y": 6,
-        "width": 10.5,
+        "x": 46.225,
+        "y": 6.0,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -2958,20 +3183,20 @@
     {
       "id": "riverbank.river-shore-6.5",
       "rect": {
-        "x": 46.75,
+        "x": 46.475,
         "y": 6.5,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-7",
+      "id": "riverbank.river-shore-7.0",
       "rect": {
-        "x": 46.75,
-        "y": 7,
-        "width": 10.5,
+        "x": 46.725,
+        "y": 7.0,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -2980,20 +3205,20 @@
     {
       "id": "riverbank.river-shore-7.5",
       "rect": {
-        "x": 47.0,
+        "x": 46.85,
         "y": 7.5,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-8",
+      "id": "riverbank.river-shore-8.0",
       "rect": {
-        "x": 47.0,
-        "y": 8,
-        "width": 10.5,
+        "x": 46.975,
+        "y": 8.0,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3002,43 +3227,10 @@
     {
       "id": "riverbank.river-shore-8.5",
       "rect": {
-        "x": 47.0,
+        "x": 47.1,
         "y": 8.5,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-9",
-      "rect": {
-        "x": 47.0,
-        "y": 9,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-9.5",
-      "rect": {
-        "x": 47.0,
-        "y": 9.5,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-10",
-      "rect": {
-        "x": 47.0,
-        "y": 10,
-        "width": 10.5,
-        "height": 0.5
+        "width": 9.800000000000004,
+        "height": 2.0
       },
       "material": "sand",
       "variant": 0
@@ -3046,21 +3238,10 @@
     {
       "id": "riverbank.river-shore-10.5",
       "rect": {
-        "x": 47.0,
+        "x": 46.975,
         "y": 10.5,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-11",
-      "rect": {
-        "x": 46.75,
-        "y": 11,
-        "width": 10.5,
-        "height": 0.5
+        "width": 9.800000000000004,
+        "height": 1.0
       },
       "material": "sand",
       "variant": 0
@@ -3068,20 +3249,20 @@
     {
       "id": "riverbank.river-shore-11.5",
       "rect": {
-        "x": 46.75,
+        "x": 46.85,
         "y": 11.5,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-12",
+      "id": "riverbank.river-shore-12.0",
       "rect": {
-        "x": 46.5,
-        "y": 12,
-        "width": 10.5,
+        "x": 46.6,
+        "y": 12.0,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3090,20 +3271,20 @@
     {
       "id": "riverbank.river-shore-12.5",
       "rect": {
-        "x": 46.25,
+        "x": 46.475,
         "y": 12.5,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-13",
+      "id": "riverbank.river-shore-13.0",
       "rect": {
-        "x": 46.25,
-        "y": 13,
-        "width": 10.5,
+        "x": 46.225,
+        "y": 13.0,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3112,20 +3293,20 @@
     {
       "id": "riverbank.river-shore-13.5",
       "rect": {
-        "x": 46.0,
+        "x": 46.1,
         "y": 13.5,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-14",
+      "id": "riverbank.river-shore-14.0",
       "rect": {
-        "x": 45.75,
-        "y": 14,
-        "width": 10.5,
+        "x": 45.85,
+        "y": 14.0,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3134,20 +3315,20 @@
     {
       "id": "riverbank.river-shore-14.5",
       "rect": {
-        "x": 45.5,
+        "x": 45.6,
         "y": 14.5,
-        "width": 10.5,
+        "width": 9.925000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-15",
+      "id": "riverbank.river-shore-15.0",
       "rect": {
-        "x": 45.25,
-        "y": 15,
-        "width": 10.5,
+        "x": 45.475,
+        "y": 15.0,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3156,20 +3337,20 @@
     {
       "id": "riverbank.river-shore-15.5",
       "rect": {
-        "x": 45.25,
+        "x": 45.225,
         "y": 15.5,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-16",
+      "id": "riverbank.river-shore-16.0",
       "rect": {
-        "x": 45.0,
-        "y": 16,
-        "width": 10.5,
+        "x": 45.1,
+        "y": 16.0,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3178,20 +3359,20 @@
     {
       "id": "riverbank.river-shore-16.5",
       "rect": {
-        "x": 44.75,
+        "x": 44.85,
         "y": 16.5,
-        "width": 10.5,
+        "width": 9.925000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-17",
+      "id": "riverbank.river-shore-17.0",
       "rect": {
-        "x": 44.5,
-        "y": 17,
-        "width": 10.5,
+        "x": 44.725,
+        "y": 17.0,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3200,21 +3381,10 @@
     {
       "id": "riverbank.river-shore-17.5",
       "rect": {
-        "x": 44.5,
+        "x": 44.6,
         "y": 17.5,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-18",
-      "rect": {
-        "x": 44.25,
-        "y": 18,
-        "width": 10.5,
-        "height": 0.5
+        "width": 9.800000000000004,
+        "height": 1.0
       },
       "material": "sand",
       "variant": 0
@@ -3222,21 +3392,10 @@
     {
       "id": "riverbank.river-shore-18.5",
       "rect": {
-        "x": 44.25,
+        "x": 44.475,
         "y": 18.5,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-19",
-      "rect": {
-        "x": 44.0,
-        "y": 19,
-        "width": 10.5,
-        "height": 0.5
+        "width": 9.800000000000004,
+        "height": 1.0
       },
       "material": "sand",
       "variant": 0
@@ -3244,87 +3403,21 @@
     {
       "id": "riverbank.river-shore-19.5",
       "rect": {
-        "x": 44.0,
+        "x": 44.475,
         "y": 19.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 9.675000000000004,
+        "height": 2.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-20",
+      "id": "riverbank.river-shore-22.0",
       "rect": {
-        "x": 44.0,
-        "y": 20,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-20.5",
-      "rect": {
-        "x": 43.75,
-        "y": 20.5,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-21",
-      "rect": {
-        "x": 43.75,
-        "y": 21,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-21.5",
-      "rect": {
-        "x": 43.75,
-        "y": 21.5,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-22",
-      "rect": {
-        "x": 43.75,
-        "y": 22,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-22.5",
-      "rect": {
-        "x": 43.75,
-        "y": 22.5,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-23",
-      "rect": {
-        "x": 43.75,
-        "y": 23,
-        "width": 10.5,
-        "height": 0.5
+        "x": 44.6,
+        "y": 22.0,
+        "width": 9.550000000000004,
+        "height": 1.5
       },
       "material": "sand",
       "variant": 0
@@ -3332,20 +3425,20 @@
     {
       "id": "riverbank.river-shore-23.5",
       "rect": {
-        "x": 44.0,
+        "x": 44.475,
         "y": 23.5,
-        "width": 10.5,
+        "width": 9.675000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-24",
+      "id": "riverbank.river-shore-24.0",
       "rect": {
-        "x": 44.0,
-        "y": 24,
-        "width": 10.5,
+        "x": 44.475,
+        "y": 24.0,
+        "width": 9.550000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3354,21 +3447,10 @@
     {
       "id": "riverbank.river-shore-24.5",
       "rect": {
-        "x": 44.0,
+        "x": 44.35,
         "y": 24.5,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-25",
-      "rect": {
-        "x": 44.0,
-        "y": 25,
-        "width": 10.5,
-        "height": 0.5
+        "width": 9.550000000000004,
+        "height": 1.0
       },
       "material": "sand",
       "variant": 0
@@ -3376,20 +3458,20 @@
     {
       "id": "riverbank.river-shore-25.5",
       "rect": {
-        "x": 44.25,
+        "x": 44.225,
         "y": 25.5,
-        "width": 10.5,
+        "width": 9.550000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-26",
+      "id": "riverbank.river-shore-26.0",
       "rect": {
-        "x": 44.25,
-        "y": 26,
-        "width": 10.5,
+        "x": 43.975,
+        "y": 26.0,
+        "width": 9.550000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3398,20 +3480,20 @@
     {
       "id": "riverbank.river-shore-26.5",
       "rect": {
-        "x": 44.25,
+        "x": 43.85,
         "y": 26.5,
-        "width": 10.5,
+        "width": 9.550000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-27",
+      "id": "riverbank.river-shore-27.0",
       "rect": {
-        "x": 44.25,
-        "y": 27,
-        "width": 10.5,
+        "x": 43.725,
+        "y": 27.0,
+        "width": 9.550000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3420,20 +3502,20 @@
     {
       "id": "riverbank.river-shore-27.5",
       "rect": {
-        "x": 44.5,
+        "x": 43.475,
         "y": 27.5,
-        "width": 10.5,
+        "width": 9.675000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-28",
+      "id": "riverbank.river-shore-28.0",
       "rect": {
-        "x": 44.5,
-        "y": 28,
-        "width": 10.5,
+        "x": 43.35,
+        "y": 28.0,
+        "width": 9.550000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3442,20 +3524,20 @@
     {
       "id": "riverbank.river-shore-28.5",
       "rect": {
-        "x": 44.5,
+        "x": 43.1,
         "y": 28.5,
-        "width": 10.5,
+        "width": 9.675000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-29",
+      "id": "riverbank.river-shore-29.0",
       "rect": {
-        "x": 44.5,
-        "y": 29,
-        "width": 10.5,
+        "x": 42.85,
+        "y": 29.0,
+        "width": 9.675000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3464,20 +3546,20 @@
     {
       "id": "riverbank.river-shore-29.5",
       "rect": {
-        "x": 44.5,
+        "x": 42.725,
         "y": 29.5,
-        "width": 10.5,
+        "width": 9.675000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-30",
+      "id": "riverbank.river-shore-30.0",
       "rect": {
-        "x": 44.5,
-        "y": 30,
-        "width": 10.5,
+        "x": 42.475,
+        "y": 30.0,
+        "width": 9.675000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3486,20 +3568,20 @@
     {
       "id": "riverbank.river-shore-30.5",
       "rect": {
-        "x": 44.25,
+        "x": 42.225,
         "y": 30.5,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-31",
+      "id": "riverbank.river-shore-31.0",
       "rect": {
-        "x": 44.25,
-        "y": 31,
-        "width": 10.5,
+        "x": 42.1,
+        "y": 31.0,
+        "width": 9.675000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3508,20 +3590,20 @@
     {
       "id": "riverbank.river-shore-31.5",
       "rect": {
-        "x": 44.25,
+        "x": 41.85,
         "y": 31.5,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-32",
+      "id": "riverbank.river-shore-32.0",
       "rect": {
-        "x": 44.0,
-        "y": 32,
-        "width": 10.5,
+        "x": 41.6,
+        "y": 32.0,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3530,20 +3612,20 @@
     {
       "id": "riverbank.river-shore-32.5",
       "rect": {
-        "x": 43.75,
+        "x": 41.475,
         "y": 32.5,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-33",
+      "id": "riverbank.river-shore-33.0",
       "rect": {
-        "x": 43.5,
-        "y": 33,
-        "width": 10.5,
+        "x": 41.225,
+        "y": 33.0,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3552,20 +3634,20 @@
     {
       "id": "riverbank.river-shore-33.5",
       "rect": {
-        "x": 43.5,
+        "x": 41.1,
         "y": 33.5,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-34",
+      "id": "riverbank.river-shore-34.0",
       "rect": {
-        "x": 43.25,
-        "y": 34,
-        "width": 10.5,
+        "x": 40.85,
+        "y": 34.0,
+        "width": 9.925000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3574,20 +3656,20 @@
     {
       "id": "riverbank.river-shore-34.5",
       "rect": {
-        "x": 42.75,
+        "x": 40.725,
         "y": 34.5,
-        "width": 10.5,
+        "width": 9.800000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-35",
+      "id": "riverbank.river-shore-35.0",
       "rect": {
-        "x": 42.5,
-        "y": 35,
-        "width": 10.5,
+        "x": 40.475,
+        "y": 35.0,
+        "width": 9.925000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3596,20 +3678,20 @@
     {
       "id": "riverbank.river-shore-35.5",
       "rect": {
-        "x": 42.25,
+        "x": 40.35,
         "y": 35.5,
-        "width": 10.5,
+        "width": 9.925000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-36",
+      "id": "riverbank.river-shore-36.0",
       "rect": {
-        "x": 42.0,
-        "y": 36,
-        "width": 10.5,
+        "x": 40.1,
+        "y": 36.0,
+        "width": 9.925000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3618,20 +3700,20 @@
     {
       "id": "riverbank.river-shore-36.5",
       "rect": {
-        "x": 41.5,
+        "x": 39.975,
         "y": 36.5,
-        "width": 10.5,
+        "width": 9.925000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-37",
+      "id": "riverbank.river-shore-37.0",
       "rect": {
-        "x": 41.25,
-        "y": 37,
-        "width": 10.5,
+        "x": 39.85,
+        "y": 37.0,
+        "width": 9.925000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3640,20 +3722,20 @@
     {
       "id": "riverbank.river-shore-37.5",
       "rect": {
-        "x": 40.75,
+        "x": 39.6,
         "y": 37.5,
-        "width": 10.5,
+        "width": 9.925000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-38",
+      "id": "riverbank.river-shore-38.0",
       "rect": {
-        "x": 40.5,
-        "y": 38,
-        "width": 10.5,
+        "x": 39.475,
+        "y": 38.0,
+        "width": 9.925000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3662,20 +3744,20 @@
     {
       "id": "riverbank.river-shore-38.5",
       "rect": {
-        "x": 40.0,
+        "x": 39.225,
         "y": 38.5,
-        "width": 10.5,
+        "width": 10.050000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-39",
+      "id": "riverbank.river-shore-39.0",
       "rect": {
-        "x": 39.75,
-        "y": 39,
-        "width": 10.5,
+        "x": 39.1,
+        "y": 39.0,
+        "width": 10.050000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3684,20 +3766,20 @@
     {
       "id": "riverbank.river-shore-39.5",
       "rect": {
-        "x": 39.25,
+        "x": 38.975,
         "y": 39.5,
-        "width": 10.5,
+        "width": 10.050000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-40",
+      "id": "riverbank.river-shore-40.0",
       "rect": {
-        "x": 38.75,
-        "y": 40,
-        "width": 10.5,
+        "x": 38.725,
+        "y": 40.0,
+        "width": 10.050000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3706,20 +3788,20 @@
     {
       "id": "riverbank.river-shore-40.5",
       "rect": {
-        "x": 38.5,
+        "x": 38.6,
         "y": 40.5,
-        "width": 10.5,
+        "width": 10.050000000000004,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-41",
+      "id": "riverbank.river-shore-41.0",
       "rect": {
-        "x": 38.25,
-        "y": 41,
-        "width": 10.5,
+        "x": 38.35,
+        "y": 41.0,
+        "width": 10.175000000000004,
         "height": 0.5
       },
       "material": "sand",
@@ -3728,20 +3810,20 @@
     {
       "id": "riverbank.river-shore-41.5",
       "rect": {
-        "x": 37.75,
+        "x": 38.225,
         "y": 41.5,
-        "width": 10.5,
+        "width": 10.050000000000011,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-42",
+      "id": "riverbank.river-shore-42.0",
       "rect": {
-        "x": 37.5,
-        "y": 42,
-        "width": 10.5,
+        "x": 37.975,
+        "y": 42.0,
+        "width": 10.175000000000047,
         "height": 0.5
       },
       "material": "sand",
@@ -3750,20 +3832,20 @@
     {
       "id": "riverbank.river-shore-42.5",
       "rect": {
-        "x": 37.25,
+        "x": 37.85,
         "y": 42.5,
-        "width": 10.5,
+        "width": 10.050000000000225,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-43",
+      "id": "riverbank.river-shore-43.0",
       "rect": {
-        "x": 37.0,
-        "y": 43,
-        "width": 10.5,
+        "x": 37.6,
+        "y": 43.0,
+        "width": 10.175000000001013,
         "height": 0.5
       },
       "material": "sand",
@@ -3772,20 +3854,20 @@
     {
       "id": "riverbank.river-shore-43.5",
       "rect": {
-        "x": 36.75,
+        "x": 37.475,
         "y": 43.5,
-        "width": 10.5,
+        "width": 10.175000000004395,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-44",
+      "id": "riverbank.river-shore-44.0",
       "rect": {
-        "x": 36.75,
-        "y": 44,
-        "width": 10.5,
+        "x": 37.35,
+        "y": 44.0,
+        "width": 10.17500000001835,
         "height": 0.5
       },
       "material": "sand",
@@ -3794,43 +3876,21 @@
     {
       "id": "riverbank.river-shore-44.5",
       "rect": {
-        "x": 36.5,
+        "x": 37.225,
         "y": 44.5,
-        "width": 10.5,
+        "width": 10.175000000073489,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-45",
+      "id": "riverbank.river-shore-45.0",
       "rect": {
-        "x": 36.5,
-        "y": 45,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-45.5",
-      "rect": {
-        "x": 36.25,
-        "y": 45.5,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-46",
-      "rect": {
-        "x": 36.25,
-        "y": 46,
-        "width": 10.5,
-        "height": 0.5
+        "x": 37.1,
+        "y": 45.0,
+        "width": 10.3000000010434,
+        "height": 1.5
       },
       "material": "sand",
       "variant": 0
@@ -3838,20 +3898,20 @@
     {
       "id": "riverbank.river-shore-46.5",
       "rect": {
-        "x": 36.25,
+        "x": 37.1,
         "y": 46.5,
-        "width": 10.5,
+        "width": 10.425000012582146,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-47",
+      "id": "riverbank.river-shore-47.0",
       "rect": {
-        "x": 36.25,
-        "y": 47,
-        "width": 10.5,
+        "x": 37.225,
+        "y": 47.0,
+        "width": 10.42500004109771,
         "height": 0.5
       },
       "material": "sand",
@@ -3860,20 +3920,20 @@
     {
       "id": "riverbank.river-shore-47.5",
       "rect": {
-        "x": 36.5,
+        "x": 37.35,
         "y": 47.5,
-        "width": 10.5,
+        "width": 10.550000128870686,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-48",
+      "id": "riverbank.river-shore-48.0",
       "rect": {
-        "x": 36.5,
-        "y": 48,
-        "width": 10.5,
+        "x": 37.475,
+        "y": 48.0,
+        "width": 10.67500038793984,
         "height": 0.5
       },
       "material": "sand",
@@ -3882,20 +3942,20 @@
     {
       "id": "riverbank.river-shore-48.5",
       "rect": {
-        "x": 36.75,
+        "x": 37.725,
         "y": 48.5,
-        "width": 10.5,
+        "width": 10.675001121110235,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-49",
+      "id": "riverbank.river-shore-49.0",
       "rect": {
-        "x": 37.0,
-        "y": 49,
-        "width": 10.5,
+        "x": 37.85,
+        "y": 49.0,
+        "width": 10.800003110326308,
         "height": 0.5
       },
       "material": "sand",
@@ -3904,20 +3964,20 @@
     {
       "id": "riverbank.river-shore-49.5",
       "rect": {
-        "x": 37.0,
+        "x": 38.1,
         "y": 49.5,
-        "width": 10.5,
+        "width": 10.800008283946447,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-50",
+      "id": "riverbank.river-shore-50.0",
       "rect": {
-        "x": 37.25,
-        "y": 50,
-        "width": 10.5,
+        "x": 38.35,
+        "y": 50.0,
+        "width": 10.800021180797415,
         "height": 0.5
       },
       "material": "sand",
@@ -3926,20 +3986,20 @@
     {
       "id": "riverbank.river-shore-50.5",
       "rect": {
-        "x": 37.5,
+        "x": 38.475,
         "y": 50.5,
-        "width": 10.5,
+        "width": 11.050051990144539,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-51",
+      "id": "riverbank.river-shore-51.0",
       "rect": {
-        "x": 38.0,
-        "y": 51,
-        "width": 10.5,
+        "x": 38.725,
+        "y": 51.0,
+        "width": 11.05012251053541,
         "height": 0.5
       },
       "material": "sand",
@@ -3948,20 +4008,20 @@
     {
       "id": "riverbank.river-shore-51.5",
       "rect": {
-        "x": 38.25,
+        "x": 38.975,
         "y": 51.5,
-        "width": 10.5,
+        "width": 11.05027714021245,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-52",
+      "id": "riverbank.river-shore-52.0",
       "rect": {
-        "x": 38.5,
-        "y": 52,
-        "width": 10.5,
+        "x": 39.225,
+        "y": 52.0,
+        "width": 11.050601865359106,
         "height": 0.5
       },
       "material": "sand",
@@ -3970,20 +4030,20 @@
     {
       "id": "riverbank.river-shore-52.5",
       "rect": {
-        "x": 39.0,
+        "x": 39.475,
         "y": 52.5,
-        "width": 10.5,
+        "width": 11.051254795188548,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-53",
+      "id": "riverbank.river-shore-53.0",
       "rect": {
-        "x": 39.25,
-        "y": 53,
-        "width": 10.5,
+        "x": 39.725,
+        "y": 53.0,
+        "width": 11.0525114239773,
         "height": 0.5
       },
       "material": "sand",
@@ -3992,20 +4052,20 @@
     {
       "id": "riverbank.river-shore-53.5",
       "rect": {
-        "x": 39.5,
+        "x": 40.1,
         "y": 53.5,
-        "width": 10.5,
+        "width": 10.929825484471735,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-54",
+      "id": "riverbank.river-shore-54.0",
       "rect": {
-        "x": 40.0,
-        "y": 54,
-        "width": 10.5,
+        "x": 40.35,
+        "y": 54.0,
+        "width": 10.933900932409465,
         "height": 0.5
       },
       "material": "sand",
@@ -4014,21 +4074,32 @@
     {
       "id": "riverbank.river-shore-54.5",
       "rect": {
-        "x": 40.25,
+        "x": 40.725,
         "y": 54.5,
-        "width": 10.5,
+        "width": 10.94076172618265,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-55",
+      "id": "riverbank.river-shore-55.0",
       "rect": {
-        "x": 40.5,
-        "y": 55,
-        "width": 10.5,
-        "height": 0.5
+        "x": 40.975,
+        "y": 55.0,
+        "width": 10.823555758716914,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-55.25",
+      "rect": {
+        "x": 41.1,
+        "y": 55.25,
+        "width": 10.83040090454957,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4036,21 +4107,43 @@
     {
       "id": "riverbank.river-shore-55.5",
       "rect": {
-        "x": 41.0,
+        "x": 41.224999999999994,
         "y": 55.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 10.963836880444063,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-56",
+      "id": "riverbank.river-shore-55.75",
       "rect": {
-        "x": 41.25,
-        "y": 56,
-        "width": 10.5,
-        "height": 0.5
+        "x": 41.474999999999994,
+        "y": 55.75,
+        "width": 10.849110074626303,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-56.0",
+      "rect": {
+        "x": 41.59999999999999,
+        "y": 56.0,
+        "width": 10.86147029165273,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-56.25",
+      "rect": {
+        "x": 41.724999999999966,
+        "y": 56.25,
+        "width": 10.876160252801796,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4058,21 +4151,43 @@
     {
       "id": "riverbank.river-shore-56.5",
       "rect": {
-        "x": 41.5,
+        "x": 41.84999999999992,
         "y": 56.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 10.893402801784944,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-57",
+      "id": "riverbank.river-shore-56.75",
       "rect": {
-        "x": 41.75,
-        "y": 57,
-        "width": 10.5,
-        "height": 0.5
+        "x": 41.97499999999982,
+        "y": 56.75,
+        "width": 10.91338610960139,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-57.0",
+      "rect": {
+        "x": 42.22499999999958,
+        "y": 57.0,
+        "width": 10.936247401648629,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-57.25",
+      "rect": {
+        "x": 42.22499999999905,
+        "y": 57.25,
+        "width": 11.087055966963128,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4080,21 +4195,43 @@
     {
       "id": "riverbank.river-shore-57.5",
       "rect": {
-        "x": 42.0,
+        "x": 42.34999999999788,
         "y": 57.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 11.115796431646771,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-58",
+      "id": "riverbank.river-shore-57.75",
       "rect": {
-        "x": 42.25,
-        "y": 58,
-        "width": 10.5,
-        "height": 0.5
+        "x": 42.47499999999531,
+        "y": 57.75,
+        "width": 11.272353460753799,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-58.0",
+      "rect": {
+        "x": 42.599999999989755,
+        "y": 58.0,
+        "width": 11.306499168824203,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-58.25",
+      "rect": {
+        "x": 42.72499999997789,
+        "y": 58.25,
+        "width": 11.467884544537704,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4102,21 +4239,43 @@
     {
       "id": "riverbank.river-shore-58.5",
       "rect": {
-        "x": 42.5,
+        "x": 42.72499999995287,
         "y": 58.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 11.756036110658926,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-59",
+      "id": "riverbank.river-shore-58.75",
       "rect": {
-        "x": 42.75,
-        "y": 59,
-        "width": 10.5,
-        "height": 0.5
+        "x": 42.84999999990077,
+        "y": 58.75,
+        "width": 11.795358836174337,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-59.0",
+      "rect": {
+        "x": 42.84999999979358,
+        "y": 59.0,
+        "width": 12.085145994195557,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-59.25",
+      "rect": {
+        "x": 42.974999999575836,
+        "y": 59.25,
+        "width": 12.24959623069261,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4124,21 +4283,43 @@
     {
       "id": "riverbank.river-shore-59.5",
       "rect": {
-        "x": 43.0,
+        "x": 42.97499999913897,
         "y": 59.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 12.537837602514436,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-60",
+      "id": "riverbank.river-shore-59.75",
       "rect": {
-        "x": 43.0,
-        "y": 60,
-        "width": 10.5,
-        "height": 0.5
+        "x": 43.09999999827337,
+        "y": 59.75,
+        "width": 12.698957797363661,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-60.0",
+      "rect": {
+        "x": 43.09999999657958,
+        "y": 60.0,
+        "width": 12.982039211065853,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-60.25",
+      "rect": {
+        "x": 43.224999993306405,
+        "y": 60.25,
+        "width": 13.136197080438734,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4146,87 +4327,131 @@
     {
       "id": "riverbank.river-shore-60.5",
       "rect": {
-        "x": 43.25,
+        "x": 43.2249999870599,
         "y": 60.5,
-        "width": 10.5,
+        "width": 13.285618503768859,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-60.75",
+      "rect": {
+        "x": 43.22499997528764,
+        "y": 60.75,
+        "width": 13.554599968479295,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-61.0",
+      "rect": {
+        "x": 43.34999995337815,
+        "y": 61.0,
+        "width": 13.567580977345727,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-61.25",
+      "rect": {
+        "x": 43.34999984003109,
+        "y": 61.25,
+        "width": 13.699171606862564,
+        "height": 0.75
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-62.0",
+      "rect": {
+        "x": 43.47499947727186,
+        "y": 62.0,
+        "width": 13.554600466495074,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-62.25",
+      "rect": {
+        "x": 43.47499876961846,
+        "y": 62.25,
+        "width": 13.399048021125061,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-61",
+      "id": "riverbank.river-shore-62.75",
       "rect": {
-        "x": 43.25,
-        "y": 61,
-        "width": 10.5,
+        "x": 43.47499718242507,
+        "y": 62.75,
+        "width": 13.232042025220359,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-63.0",
+      "rect": {
+        "x": 43.47499517897801,
+        "y": 63.0,
+        "width": 13.073962616659017,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-63.25",
+      "rect": {
+        "x": 43.599989453839974,
+        "y": 63.25,
+        "width": 12.768935034890617,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-61.5",
+      "id": "riverbank.river-shore-63.75",
       "rect": {
-        "x": 43.25,
-        "y": 61.5,
-        "width": 10.5,
-        "height": 0.5
+        "x": 43.59997755491019,
+        "y": 63.75,
+        "width": 12.460168439078942,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-62",
+      "id": "riverbank.river-shore-64.0",
       "rect": {
-        "x": 43.5,
-        "y": 62,
-        "width": 10.5,
-        "height": 0.5
+        "x": 43.59996342543244,
+        "y": 64.0,
+        "width": 12.295395410642662,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-62.5",
+      "id": "riverbank.river-shore-64.25",
       "rect": {
-        "x": 43.5,
-        "y": 62.5,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-63",
-      "rect": {
-        "x": 43.5,
-        "y": 63,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-63.5",
-      "rect": {
-        "x": 43.5,
-        "y": 63.5,
-        "width": 10.5,
-        "height": 0.5
-      },
-      "material": "sand",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-shore-64",
-      "rect": {
-        "x": 43.5,
-        "y": 64,
-        "width": 10.5,
-        "height": 0.5
+        "x": 43.59994112436474,
+        "y": 64.25,
+        "width": 12.131094986247057,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4234,21 +4459,32 @@
     {
       "id": "riverbank.river-shore-64.5",
       "rect": {
-        "x": 43.25,
+        "x": 43.599906375272646,
         "y": 64.5,
-        "width": 10.5,
+        "width": 11.967978169242947,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-64.75",
+      "rect": {
+        "x": 43.5998165013836,
+        "y": 64.75,
+        "width": 11.789305135377838,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-65",
+      "id": "riverbank.river-shore-65.25",
       "rect": {
-        "x": 43.25,
-        "y": 65,
-        "width": 10.5,
-        "height": 0.5
+        "x": 43.59965009772376,
+        "y": 65.25,
+        "width": 11.616146333920888,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4256,21 +4492,43 @@
     {
       "id": "riverbank.river-shore-65.5",
       "rect": {
-        "x": 43.25,
+        "x": 43.59947009753185,
         "y": 65.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 11.462585869430328,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-66",
+      "id": "riverbank.river-shore-65.75",
       "rect": {
-        "x": 43.25,
-        "y": 66,
-        "width": 10.5,
-        "height": 0.5
+        "x": 43.59920723645569,
+        "y": 65.75,
+        "width": 11.312040165192528,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-66.0",
+      "rect": {
+        "x": 43.59882837143189,
+        "y": 66.0,
+        "width": 11.164557738169314,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-66.25",
+      "rect": {
+        "x": 43.59828945387946,
+        "y": 66.25,
+        "width": 11.020113347905408,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4278,21 +4536,43 @@
     {
       "id": "riverbank.river-shore-66.5",
       "rect": {
-        "x": 43.25,
+        "x": 43.59753294871493,
         "y": 66.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 10.753627304086834,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-67",
+      "id": "riverbank.river-shore-66.75",
       "rect": {
-        "x": 43.25,
-        "y": 67,
-        "width": 10.5,
-        "height": 0.5
+        "x": 43.47148504215601,
+        "y": 66.75,
+        "width": 10.739985249496705,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-67.0",
+      "rect": {
+        "x": 43.470052786904525,
+        "y": 67.0,
+        "width": 10.60405728772178,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-67.25",
+      "rect": {
+        "x": 43.4681214061364,
+        "y": 67.25,
+        "width": 10.47071547430766,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4300,21 +4580,43 @@
     {
       "id": "riverbank.river-shore-67.5",
       "rect": {
-        "x": 43.0,
+        "x": 43.46555205683549,
         "y": 67.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 10.33984884771408,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-68",
+      "id": "riverbank.river-shore-67.75",
       "rect": {
-        "x": 43.0,
-        "y": 68,
-        "width": 10.5,
-        "height": 0.5
+        "x": 43.4621804308342,
+        "y": 67.75,
+        "width": 10.211375327882713,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-68.0",
+      "rect": {
+        "x": 43.45781663792372,
+        "y": 68.0,
+        "width": 10.08524994888569,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-68.25",
+      "rect": {
+        "x": 43.327246856463816,
+        "y": 68.25,
+        "width": 10.086469019557022,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4322,21 +4624,32 @@
     {
       "id": "riverbank.river-shore-68.5",
       "rect": {
-        "x": 43.0,
+        "x": 43.32023723841764,
         "y": 68.5,
-        "width": 10.5,
+        "width": 9.965069930966656,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-68.75",
+      "rect": {
+        "x": 43.30648081617189,
+        "y": 68.75,
+        "width": 9.850106431626081,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-69",
+      "id": "riverbank.river-shore-69.25",
       "rect": {
-        "x": 43.0,
-        "y": 69,
-        "width": 10.5,
-        "height": 0.5
+        "x": 43.288090114023575,
+        "y": 69.25,
+        "width": 9.741024201004286,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4344,21 +4657,32 @@
     {
       "id": "riverbank.river-shore-69.5",
       "rect": {
-        "x": 43.0,
+        "x": 43.27287662299831,
         "y": 69.5,
-        "width": 10.5,
+        "width": 9.630091535572333,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-69.75",
+      "rect": {
+        "x": 43.12019430642445,
+        "y": 69.75,
+        "width": 9.781589970375805,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-70",
+      "id": "riverbank.river-shore-70.25",
       "rect": {
-        "x": 43.0,
-        "y": 70,
-        "width": 10.5,
-        "height": 0.5
+        "x": 43.08643438911371,
+        "y": 70.25,
+        "width": 9.689613864363388,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4366,21 +4690,32 @@
     {
       "id": "riverbank.river-shore-70.5",
       "rect": {
-        "x": 43.25,
+        "x": 43.06060988127018,
         "y": 70.5,
-        "width": 10.5,
+        "width": 9.84011610693205,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-70.75",
+      "rect": {
+        "x": 42.89238158565908,
+        "y": 70.75,
+        "width": 10.008028916300738,
         "height": 0.5
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-71",
+      "id": "riverbank.river-shore-71.25",
       "rect": {
-        "x": 43.25,
-        "y": 71,
-        "width": 10.5,
-        "height": 0.5
+        "x": 42.71988982752699,
+        "y": 71.25,
+        "width": 10.305337017811766,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4388,21 +4723,43 @@
     {
       "id": "riverbank.river-shore-71.5",
       "rect": {
-        "x": 43.25,
+        "x": 42.68676797064064,
         "y": 71.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 10.463382852092266,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-72",
+      "id": "riverbank.river-shore-71.75",
       "rect": {
-        "x": 43.5,
-        "y": 72,
-        "width": 10.5,
-        "height": 0.5
+        "x": 42.52829689227582,
+        "y": 71.75,
+        "width": 10.74680236724533,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-72.0",
+      "rect": {
+        "x": 42.37029539499352,
+        "y": 72.0,
+        "width": 11.02976926653539,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-72.25",
+      "rect": {
+        "x": 42.21365352778965,
+        "y": 72.25,
+        "width": 11.31138816761436,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4410,21 +4767,43 @@
     {
       "id": "riverbank.river-shore-72.5",
       "rect": {
-        "x": 43.5,
+        "x": 42.059294635561685,
         "y": 72.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 11.590731977744298,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-73",
+      "id": "riverbank.river-shore-72.75",
       "rect": {
-        "x": 43.75,
-        "y": 73,
-        "width": 10.5,
-        "height": 0.5
+        "x": 42.03313168535684,
+        "y": 72.75,
+        "width": 11.7418851289083,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-73.0",
+      "rect": {
+        "x": 41.88602065691776,
+        "y": 73.0,
+        "width": 12.013989858472122,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-73.25",
+      "rect": {
+        "x": 41.868714270594836,
+        "y": 73.25,
+        "width": 12.156292238810138,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4432,21 +4811,43 @@
     {
       "id": "riverbank.river-shore-73.5",
       "rect": {
-        "x": 44.0,
+        "x": 41.856819521961185,
         "y": 73.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 12.293184466686036,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-74",
+      "id": "riverbank.river-shore-73.75",
       "rect": {
-        "x": 44.0,
-        "y": 74,
-        "width": 10.5,
-        "height": 0.5
+        "x": 41.850762357672465,
+        "y": 73.75,
+        "width": 12.424240061564369,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-74.0",
+      "rect": {
+        "x": 41.850762357672465,
+        "y": 74.0,
+        "width": 12.674239094772112,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-74.25",
+      "rect": {
+        "x": 41.981819521961185,
+        "y": 74.25,
+        "width": 12.668181341194575,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4454,21 +4855,43 @@
     {
       "id": "riverbank.river-shore-74.5",
       "rect": {
-        "x": 44.25,
+        "x": 42.118714270594836,
         "y": 74.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 12.656286237151974,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-75",
+      "id": "riverbank.river-shore-74.75",
       "rect": {
-        "x": 44.5,
-        "y": 75,
-        "width": 10.5,
-        "height": 0.5
+        "x": 42.26102065691776,
+        "y": 74.75,
+        "width": 12.638979638729367,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-75.0",
+      "rect": {
+        "x": 42.40813168535684,
+        "y": 75.0,
+        "width": 12.616868485042737,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-75.25",
+      "rect": {
+        "x": 42.684294635561685,
+        "y": 75.25,
+        "width": 12.465705461652995,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4476,21 +4899,43 @@
     {
       "id": "riverbank.river-shore-75.5",
       "rect": {
-        "x": 44.75,
+        "x": 42.83865352778965,
         "y": 75.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 12.436346527109237,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-76",
+      "id": "riverbank.river-shore-75.75",
       "rect": {
-        "x": 45.0,
-        "y": 76,
-        "width": 10.5,
-        "height": 0.5
+        "x": 43.12029539499352,
+        "y": 75.75,
+        "width": 12.279704635694138,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-76.0",
+      "rect": {
+        "x": 43.40329689227582,
+        "y": 76.0,
+        "width": 12.12170312470397,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-76.25",
+      "rect": {
+        "x": 43.56176797064064,
+        "y": 76.25,
+        "width": 12.088232038659072,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4498,21 +4943,43 @@
     {
       "id": "riverbank.river-shore-76.5",
       "rect": {
-        "x": 45.25,
+        "x": 43.84488982752699,
         "y": 76.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 11.930110177514685,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-77",
+      "id": "riverbank.river-shore-76.75",
       "rect": {
-        "x": 45.5,
-        "y": 77,
-        "width": 10.5,
-        "height": 0.5
+        "x": 44.001945049251795,
+        "y": 76.75,
+        "width": 11.898054953453709,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-77.0",
+      "rect": {
+        "x": 44.282338689004646,
+        "y": 77.0,
+        "width": 11.617661312432467,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-77.25",
+      "rect": {
+        "x": 44.43560988127018,
+        "y": 77.25,
+        "width": 11.589390119485437,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4520,21 +4987,43 @@
     {
       "id": "riverbank.river-shore-77.5",
       "rect": {
-        "x": 45.75,
+        "x": 44.71143438911371,
         "y": 77.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 11.43856561127955,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-78",
+      "id": "riverbank.river-shore-77.75",
       "rect": {
-        "x": 46.0,
-        "y": 78,
-        "width": 10.5,
-        "height": 0.5
+        "x": 44.85961914149032,
+        "y": 77.75,
+        "width": 11.415380858712275,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-78.0",
+      "rect": {
+        "x": 45.13009029465964,
+        "y": 78.0,
+        "width": 11.144909705443666,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-78.25",
+      "rect": {
+        "x": 45.27287662299831,
+        "y": 78.25,
+        "width": 11.127123377053842,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4542,21 +5031,43 @@
     {
       "id": "riverbank.river-shore-78.5",
       "rect": {
-        "x": 46.25,
+        "x": 45.538090114023575,
         "y": 78.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 10.98690988600248,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
     },
     {
-      "id": "riverbank.river-shore-79",
+      "id": "riverbank.river-shore-78.75",
       "rect": {
-        "x": 46.5,
-        "y": 79,
-        "width": 10.5,
-        "height": 0.5
+        "x": 45.67590553584962,
+        "y": 78.75,
+        "width": 10.849094464163265,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-79.0",
+      "rect": {
+        "x": 45.936540503174456,
+        "y": 79.0,
+        "width": 10.713459496831852,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-79.25",
+      "rect": {
+        "x": 46.07023723841764,
+        "y": 79.25,
+        "width": 10.579762761585421,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4564,10 +5075,21 @@
     {
       "id": "riverbank.river-shore-79.5",
       "rect": {
-        "x": 46.75,
+        "x": 46.327246856463816,
         "y": 79.5,
-        "width": 10.5,
-        "height": 0.5
+        "width": 10.447753143537646,
+        "height": 0.25
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-79.75",
+      "rect": {
+        "x": 46.45781663792372,
+        "y": 79.75,
+        "width": 10.442183362076982,
+        "height": 0.25
       },
       "material": "sand",
       "variant": 0
@@ -4575,7 +5097,7 @@
     {
       "id": "riverbank.river-0",
       "rect": {
-        "x": 43.0,
+        "x": 43.125,
         "y": 0,
         "width": 9.0,
         "height": 0.5
@@ -4586,7 +5108,7 @@
     {
       "id": "riverbank.river-0.5",
       "rect": {
-        "x": 43.5,
+        "x": 43.375,
         "y": 0.5,
         "width": 9.0,
         "height": 0.5
@@ -4595,10 +5117,10 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-1",
+      "id": "riverbank.river-1.0",
       "rect": {
-        "x": 43.75,
-        "y": 1,
+        "x": 43.625,
+        "y": 1.0,
         "width": 9.0,
         "height": 0.5
       },
@@ -4608,7 +5130,7 @@
     {
       "id": "riverbank.river-1.5",
       "rect": {
-        "x": 44.25,
+        "x": 44.0,
         "y": 1.5,
         "width": 9.0,
         "height": 0.5
@@ -4617,10 +5139,10 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-2",
+      "id": "riverbank.river-2.0",
       "rect": {
-        "x": 44.75,
-        "y": 2,
+        "x": 44.25,
+        "y": 2.0,
         "width": 9.0,
         "height": 0.5
       },
@@ -4630,7 +5152,7 @@
     {
       "id": "riverbank.river-2.5",
       "rect": {
-        "x": 45.0,
+        "x": 44.625,
         "y": 2.5,
         "width": 9.0,
         "height": 0.5
@@ -4639,10 +5161,10 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-3",
+      "id": "riverbank.river-3.0",
       "rect": {
-        "x": 45.5,
-        "y": 3,
+        "x": 44.875,
+        "y": 3.0,
         "width": 9.0,
         "height": 0.5
       },
@@ -4652,7 +5174,7 @@
     {
       "id": "riverbank.river-3.5",
       "rect": {
-        "x": 45.75,
+        "x": 45.25,
         "y": 3.5,
         "width": 9.0,
         "height": 0.5
@@ -4661,10 +5183,10 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-4",
+      "id": "riverbank.river-4.0",
       "rect": {
-        "x": 46.25,
-        "y": 4,
+        "x": 45.5,
+        "y": 4.0,
         "width": 9.0,
         "height": 0.5
       },
@@ -4674,7 +5196,7 @@
     {
       "id": "riverbank.river-4.5",
       "rect": {
-        "x": 46.5,
+        "x": 45.875,
         "y": 4.5,
         "width": 9.0,
         "height": 0.5
@@ -4683,10 +5205,10 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-5",
+      "id": "riverbank.river-5.0",
       "rect": {
-        "x": 46.75,
-        "y": 5,
+        "x": 46.125,
+        "y": 5.0,
         "width": 9.0,
         "height": 0.5
       },
@@ -4696,7 +5218,7 @@
     {
       "id": "riverbank.river-5.5",
       "rect": {
-        "x": 47.0,
+        "x": 46.375,
         "y": 5.5,
         "width": 9.0,
         "height": 0.5
@@ -4705,10 +5227,10 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-6",
+      "id": "riverbank.river-6.0",
       "rect": {
-        "x": 47.25,
-        "y": 6,
+        "x": 46.625,
+        "y": 6.0,
         "width": 9.0,
         "height": 0.5
       },
@@ -4718,7 +5240,7 @@
     {
       "id": "riverbank.river-6.5",
       "rect": {
-        "x": 47.5,
+        "x": 46.875,
         "y": 6.5,
         "width": 9.0,
         "height": 0.5
@@ -4727,10 +5249,10 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-7",
+      "id": "riverbank.river-7.0",
       "rect": {
-        "x": 47.5,
-        "y": 7,
+        "x": 47.125,
+        "y": 7.0,
         "width": 9.0,
         "height": 0.5
       },
@@ -4740,7 +5262,7 @@
     {
       "id": "riverbank.river-7.5",
       "rect": {
-        "x": 47.75,
+        "x": 47.25,
         "y": 7.5,
         "width": 9.0,
         "height": 0.5
@@ -4749,10 +5271,10 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-8",
+      "id": "riverbank.river-8.0",
       "rect": {
-        "x": 47.75,
-        "y": 8,
+        "x": 47.375,
+        "y": 8.0,
         "width": 9.0,
         "height": 0.5
       },
@@ -4762,43 +5284,10 @@
     {
       "id": "riverbank.river-8.5",
       "rect": {
-        "x": 47.75,
+        "x": 47.5,
         "y": 8.5,
         "width": 9.0,
-        "height": 0.5
-      },
-      "material": "water",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-9",
-      "rect": {
-        "x": 47.75,
-        "y": 9,
-        "width": 9.0,
-        "height": 0.5
-      },
-      "material": "water",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-9.5",
-      "rect": {
-        "x": 47.75,
-        "y": 9.5,
-        "width": 9.0,
-        "height": 0.5
-      },
-      "material": "water",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-10",
-      "rect": {
-        "x": 47.75,
-        "y": 10,
-        "width": 9.0,
-        "height": 0.5
+        "height": 2.0
       },
       "material": "water",
       "variant": 0
@@ -4806,21 +5295,10 @@
     {
       "id": "riverbank.river-10.5",
       "rect": {
-        "x": 47.75,
+        "x": 47.375,
         "y": 10.5,
         "width": 9.0,
-        "height": 0.5
-      },
-      "material": "water",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-11",
-      "rect": {
-        "x": 47.5,
-        "y": 11,
-        "width": 9.0,
-        "height": 0.5
+        "height": 1.0
       },
       "material": "water",
       "variant": 0
@@ -4828,7 +5306,7 @@
     {
       "id": "riverbank.river-11.5",
       "rect": {
-        "x": 47.5,
+        "x": 47.25,
         "y": 11.5,
         "width": 9.0,
         "height": 0.5
@@ -4837,10 +5315,10 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-12",
+      "id": "riverbank.river-12.0",
       "rect": {
-        "x": 47.25,
-        "y": 12,
+        "x": 47.0,
+        "y": 12.0,
         "width": 9.0,
         "height": 0.5
       },
@@ -4850,7 +5328,7 @@
     {
       "id": "riverbank.river-12.5",
       "rect": {
-        "x": 47.0,
+        "x": 46.875,
         "y": 12.5,
         "width": 9.0,
         "height": 0.5
@@ -4859,10 +5337,10 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-13",
+      "id": "riverbank.river-13.0",
       "rect": {
-        "x": 47.0,
-        "y": 13,
+        "x": 46.625,
+        "y": 13.0,
         "width": 9.0,
         "height": 0.5
       },
@@ -4872,7 +5350,7 @@
     {
       "id": "riverbank.river-13.5",
       "rect": {
-        "x": 46.75,
+        "x": 46.5,
         "y": 13.5,
         "width": 9.0,
         "height": 0.5
@@ -4881,10 +5359,10 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-14",
+      "id": "riverbank.river-14.0",
       "rect": {
-        "x": 46.5,
-        "y": 14,
+        "x": 46.25,
+        "y": 14.0,
         "width": 9.0,
         "height": 0.5
       },
@@ -4894,19 +5372,19 @@
     {
       "id": "riverbank.river-14.5",
       "rect": {
-        "x": 46.25,
+        "x": 46.0,
         "y": 14.5,
-        "width": 9.0,
+        "width": 9.125,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-15",
+      "id": "riverbank.river-15.0",
       "rect": {
-        "x": 46.0,
-        "y": 15,
+        "x": 45.875,
+        "y": 15.0,
         "width": 9.0,
         "height": 0.5
       },
@@ -4916,7 +5394,7 @@
     {
       "id": "riverbank.river-15.5",
       "rect": {
-        "x": 46.0,
+        "x": 45.625,
         "y": 15.5,
         "width": 9.0,
         "height": 0.5
@@ -4925,10 +5403,10 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-16",
+      "id": "riverbank.river-16.0",
       "rect": {
-        "x": 45.75,
-        "y": 16,
+        "x": 45.5,
+        "y": 16.0,
         "width": 9.0,
         "height": 0.5
       },
@@ -4938,19 +5416,19 @@
     {
       "id": "riverbank.river-16.5",
       "rect": {
-        "x": 45.5,
+        "x": 45.25,
         "y": 16.5,
-        "width": 9.0,
+        "width": 9.125,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-17",
+      "id": "riverbank.river-17.0",
       "rect": {
-        "x": 45.25,
-        "y": 17,
+        "x": 45.125,
+        "y": 17.0,
         "width": 9.0,
         "height": 0.5
       },
@@ -4960,7 +5438,7 @@
     {
       "id": "riverbank.river-17.5-cut-0",
       "rect": {
-        "x": 45.25,
+        "x": 45.0,
         "y": 17.5,
         "width": 9.0,
         "height": 0.10000000000000142
@@ -4969,78 +5447,23 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-20-cut-1",
+      "id": "riverbank.river-19.5-cut-1",
       "rect": {
-        "x": 44.75,
+        "x": 44.875,
         "y": 20.400000000000002,
-        "width": 9.0,
-        "height": 0.09999999999999787
+        "width": 8.875,
+        "height": 1.5999999999999979
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-20.5",
+      "id": "riverbank.river-22.0",
       "rect": {
-        "x": 44.5,
-        "y": 20.5,
-        "width": 9.0,
-        "height": 0.5
-      },
-      "material": "water",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-21",
-      "rect": {
-        "x": 44.5,
-        "y": 21,
-        "width": 9.0,
-        "height": 0.5
-      },
-      "material": "water",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-21.5",
-      "rect": {
-        "x": 44.5,
-        "y": 21.5,
-        "width": 9.0,
-        "height": 0.5
-      },
-      "material": "water",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-22",
-      "rect": {
-        "x": 44.5,
-        "y": 22,
-        "width": 9.0,
-        "height": 0.5
-      },
-      "material": "water",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-22.5",
-      "rect": {
-        "x": 44.5,
-        "y": 22.5,
-        "width": 9.0,
-        "height": 0.5
-      },
-      "material": "water",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-23",
-      "rect": {
-        "x": 44.5,
-        "y": 23,
-        "width": 9.0,
-        "height": 0.5
+        "x": 45.0,
+        "y": 22.0,
+        "width": 8.75,
+        "height": 1.5
       },
       "material": "water",
       "variant": 0
@@ -5048,20 +5471,20 @@
     {
       "id": "riverbank.river-23.5",
       "rect": {
-        "x": 44.75,
+        "x": 44.875,
         "y": 23.5,
-        "width": 9.0,
+        "width": 8.875,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-24",
+      "id": "riverbank.river-24.0",
       "rect": {
-        "x": 44.75,
-        "y": 24,
-        "width": 9.0,
+        "x": 44.875,
+        "y": 24.0,
+        "width": 8.75,
         "height": 0.5
       },
       "material": "water",
@@ -5072,19 +5495,8 @@
       "rect": {
         "x": 44.75,
         "y": 24.5,
-        "width": 9.0,
-        "height": 0.5
-      },
-      "material": "water",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-25",
-      "rect": {
-        "x": 44.75,
-        "y": 25,
-        "width": 9.0,
-        "height": 0.5
+        "width": 8.75,
+        "height": 1.0
       },
       "material": "water",
       "variant": 0
@@ -5092,20 +5504,20 @@
     {
       "id": "riverbank.river-25.5",
       "rect": {
-        "x": 45.0,
+        "x": 44.625,
         "y": 25.5,
-        "width": 9.0,
+        "width": 8.75,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-26",
+      "id": "riverbank.river-26.0",
       "rect": {
-        "x": 45.0,
-        "y": 26,
-        "width": 9.0,
+        "x": 44.375,
+        "y": 26.0,
+        "width": 8.75,
         "height": 0.5
       },
       "material": "water",
@@ -5114,20 +5526,20 @@
     {
       "id": "riverbank.river-26.5",
       "rect": {
-        "x": 45.0,
+        "x": 44.25,
         "y": 26.5,
-        "width": 9.0,
+        "width": 8.75,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-27",
+      "id": "riverbank.river-27.0",
       "rect": {
-        "x": 45.0,
-        "y": 27,
-        "width": 9.0,
+        "x": 44.125,
+        "y": 27.0,
+        "width": 8.75,
         "height": 0.5
       },
       "material": "water",
@@ -5136,20 +5548,20 @@
     {
       "id": "riverbank.river-27.5",
       "rect": {
-        "x": 45.25,
+        "x": 43.875,
         "y": 27.5,
-        "width": 9.0,
+        "width": 8.875,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-28",
+      "id": "riverbank.river-28.0",
       "rect": {
-        "x": 45.25,
-        "y": 28,
-        "width": 9.0,
+        "x": 43.75,
+        "y": 28.0,
+        "width": 8.75,
         "height": 0.5
       },
       "material": "water",
@@ -5158,20 +5570,20 @@
     {
       "id": "riverbank.river-28.5",
       "rect": {
-        "x": 45.25,
+        "x": 43.5,
         "y": 28.5,
-        "width": 9.0,
+        "width": 8.875,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-29",
+      "id": "riverbank.river-29.0",
       "rect": {
-        "x": 45.25,
-        "y": 29,
-        "width": 9.0,
+        "x": 43.25,
+        "y": 29.0,
+        "width": 8.875,
         "height": 0.5
       },
       "material": "water",
@@ -5180,20 +5592,20 @@
     {
       "id": "riverbank.river-29.5",
       "rect": {
-        "x": 45.25,
+        "x": 43.125,
         "y": 29.5,
-        "width": 9.0,
+        "width": 8.875,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-30",
+      "id": "riverbank.river-30.0",
       "rect": {
-        "x": 45.25,
-        "y": 30,
-        "width": 9.0,
+        "x": 42.875,
+        "y": 30.0,
+        "width": 8.875,
         "height": 0.5
       },
       "material": "water",
@@ -5202,7 +5614,7 @@
     {
       "id": "riverbank.river-30.5",
       "rect": {
-        "x": 45.0,
+        "x": 42.625,
         "y": 30.5,
         "width": 9.0,
         "height": 0.5
@@ -5211,11 +5623,11 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-31",
+      "id": "riverbank.river-31.0",
       "rect": {
-        "x": 45.0,
-        "y": 31,
-        "width": 9.0,
+        "x": 42.5,
+        "y": 31.0,
+        "width": 8.875,
         "height": 0.5
       },
       "material": "water",
@@ -5224,7 +5636,7 @@
     {
       "id": "riverbank.river-31.5",
       "rect": {
-        "x": 45.0,
+        "x": 42.25,
         "y": 31.5,
         "width": 9.0,
         "height": 0.5
@@ -5233,10 +5645,10 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-32",
+      "id": "riverbank.river-32.0",
       "rect": {
-        "x": 44.75,
-        "y": 32,
+        "x": 42.0,
+        "y": 32.0,
         "width": 9.0,
         "height": 0.5
       },
@@ -5246,7 +5658,7 @@
     {
       "id": "riverbank.river-32.5",
       "rect": {
-        "x": 44.5,
+        "x": 41.875,
         "y": 32.5,
         "width": 9.0,
         "height": 0.5
@@ -5255,10 +5667,10 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-33",
+      "id": "riverbank.river-33.0",
       "rect": {
-        "x": 44.25,
-        "y": 33,
+        "x": 41.625,
+        "y": 33.0,
         "width": 9.0,
         "height": 0.5
       },
@@ -5268,7 +5680,7 @@
     {
       "id": "riverbank.river-33.5",
       "rect": {
-        "x": 44.25,
+        "x": 41.5,
         "y": 33.5,
         "width": 9.0,
         "height": 0.5
@@ -5277,11 +5689,11 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-34",
+      "id": "riverbank.river-34.0",
       "rect": {
-        "x": 44.0,
-        "y": 34,
-        "width": 9.0,
+        "x": 41.25,
+        "y": 34.0,
+        "width": 9.125,
         "height": 0.5
       },
       "material": "water",
@@ -5290,7 +5702,7 @@
     {
       "id": "riverbank.river-34.5",
       "rect": {
-        "x": 43.5,
+        "x": 41.125,
         "y": 34.5,
         "width": 9.0,
         "height": 0.5
@@ -5299,11 +5711,11 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-35",
+      "id": "riverbank.river-35.0",
       "rect": {
-        "x": 43.25,
-        "y": 35,
-        "width": 9.0,
+        "x": 40.875,
+        "y": 35.0,
+        "width": 9.125,
         "height": 0.5
       },
       "material": "water",
@@ -5312,20 +5724,20 @@
     {
       "id": "riverbank.river-35.5",
       "rect": {
-        "x": 43.0,
+        "x": 40.75,
         "y": 35.5,
-        "width": 9.0,
+        "width": 9.125,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-36",
+      "id": "riverbank.river-36.0",
       "rect": {
-        "x": 42.75,
-        "y": 36,
-        "width": 9.0,
+        "x": 40.5,
+        "y": 36.0,
+        "width": 9.125,
         "height": 0.5
       },
       "material": "water",
@@ -5334,42 +5746,53 @@
     {
       "id": "riverbank.river-36.5",
       "rect": {
-        "x": 42.25,
+        "x": 40.375,
         "y": 36.5,
-        "width": 9.0,
+        "width": 9.125,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-37",
+      "id": "riverbank.river-37.0",
       "rect": {
-        "x": 42.0,
-        "y": 37,
-        "width": 9.0,
+        "x": 40.25,
+        "y": 37.0,
+        "width": 9.125,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-37.5",
+      "id": "riverbank.river-37.5-cut-0",
       "rect": {
-        "x": 41.5,
+        "x": 40.0,
         "y": 37.5,
-        "width": 9.0,
-        "height": 0.5
+        "width": 9.125,
+        "height": 0.29999999999999716
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-38",
+      "id": "riverbank.river-37.5-cut-3",
       "rect": {
-        "x": 41.25,
-        "y": 38,
-        "width": 9.0,
+        "x": 41.199999999999996,
+        "y": 37.8,
+        "width": 7.925000000000004,
+        "height": 0.20000000000000284
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-38.0-cut-3",
+      "rect": {
+        "x": 41.199999999999996,
+        "y": 38.0,
+        "width": 7.800000000000004,
         "height": 0.5
       },
       "material": "water",
@@ -5380,18 +5803,18 @@
       "rect": {
         "x": 41.199999999999996,
         "y": 38.5,
-        "width": 8.550000000000004,
+        "width": 7.675000000000004,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-39-cut-3",
+      "id": "riverbank.river-39.0-cut-3",
       "rect": {
         "x": 41.199999999999996,
-        "y": 39,
-        "width": 8.300000000000004,
+        "y": 39.0,
+        "width": 7.550000000000004,
         "height": 0.5
       },
       "material": "water",
@@ -5402,29 +5825,29 @@
       "rect": {
         "x": 41.199999999999996,
         "y": 39.5,
-        "width": 7.800000000000004,
+        "width": 7.425000000000004,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-40-cut-1",
+      "id": "riverbank.river-40.0-cut-1",
       "rect": {
-        "x": 39.5,
+        "x": 39.125,
         "y": 40.199999999999996,
-        "width": 9.0,
+        "width": 9.25,
         "height": 0.30000000000000426
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-40-cut-3",
+      "id": "riverbank.river-40.0-cut-3",
       "rect": {
         "x": 41.199999999999996,
-        "y": 40,
-        "width": 7.300000000000004,
+        "y": 40.0,
+        "width": 7.175000000000004,
         "height": 0.19999999999999574
       },
       "material": "water",
@@ -5433,20 +5856,20 @@
     {
       "id": "riverbank.river-40.5",
       "rect": {
-        "x": 39.25,
+        "x": 39.0,
         "y": 40.5,
-        "width": 9.0,
+        "width": 9.25,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-41",
+      "id": "riverbank.river-41.0",
       "rect": {
-        "x": 39.0,
-        "y": 41,
-        "width": 9.0,
+        "x": 38.75,
+        "y": 41.0,
+        "width": 9.375,
         "height": 0.5
       },
       "material": "water",
@@ -5455,20 +5878,20 @@
     {
       "id": "riverbank.river-41.5",
       "rect": {
-        "x": 38.5,
+        "x": 38.625,
         "y": 41.5,
-        "width": 9.0,
+        "width": 9.25,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-42",
+      "id": "riverbank.river-42.0",
       "rect": {
-        "x": 38.25,
-        "y": 42,
-        "width": 9.0,
+        "x": 38.375,
+        "y": 42.0,
+        "width": 9.375,
         "height": 0.5
       },
       "material": "water",
@@ -5477,20 +5900,20 @@
     {
       "id": "riverbank.river-42.5",
       "rect": {
-        "x": 38.0,
+        "x": 38.25,
         "y": 42.5,
-        "width": 9.0,
+        "width": 9.25,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-43",
+      "id": "riverbank.river-43.0",
       "rect": {
-        "x": 37.75,
-        "y": 43,
-        "width": 9.0,
+        "x": 38.0,
+        "y": 43.0,
+        "width": 9.375,
         "height": 0.5
       },
       "material": "water",
@@ -5499,20 +5922,20 @@
     {
       "id": "riverbank.river-43.5",
       "rect": {
-        "x": 37.5,
+        "x": 37.875,
         "y": 43.5,
-        "width": 9.0,
+        "width": 9.375,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-44",
+      "id": "riverbank.river-44.0",
       "rect": {
-        "x": 37.5,
-        "y": 44,
-        "width": 9.0,
+        "x": 37.75,
+        "y": 44.0,
+        "width": 9.375,
         "height": 0.5
       },
       "material": "water",
@@ -5521,43 +5944,21 @@
     {
       "id": "riverbank.river-44.5",
       "rect": {
-        "x": 37.25,
+        "x": 37.625,
         "y": 44.5,
-        "width": 9.0,
+        "width": 9.375,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-45",
+      "id": "riverbank.river-45.0",
       "rect": {
-        "x": 37.25,
-        "y": 45,
-        "width": 9.0,
-        "height": 0.5
-      },
-      "material": "water",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-45.5",
-      "rect": {
-        "x": 37.0,
-        "y": 45.5,
-        "width": 9.0,
-        "height": 0.5
-      },
-      "material": "water",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-46",
-      "rect": {
-        "x": 37.0,
-        "y": 46,
-        "width": 9.0,
-        "height": 0.5
+        "x": 37.5,
+        "y": 45.0,
+        "width": 9.5,
+        "height": 1.5
       },
       "material": "water",
       "variant": 0
@@ -5565,20 +5966,20 @@
     {
       "id": "riverbank.river-46.5",
       "rect": {
-        "x": 37.0,
+        "x": 37.5,
         "y": 46.5,
-        "width": 9.0,
+        "width": 9.625,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-47",
+      "id": "riverbank.river-47.0",
       "rect": {
-        "x": 37.0,
-        "y": 47,
-        "width": 9.0,
+        "x": 37.625,
+        "y": 47.0,
+        "width": 9.625,
         "height": 0.5
       },
       "material": "water",
@@ -5587,20 +5988,20 @@
     {
       "id": "riverbank.river-47.5",
       "rect": {
-        "x": 37.25,
+        "x": 37.75,
         "y": 47.5,
-        "width": 9.0,
+        "width": 9.75,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-48",
+      "id": "riverbank.river-48.0",
       "rect": {
-        "x": 37.25,
-        "y": 48,
-        "width": 9.0,
+        "x": 37.875,
+        "y": 48.0,
+        "width": 9.875,
         "height": 0.5
       },
       "material": "water",
@@ -5609,20 +6010,20 @@
     {
       "id": "riverbank.river-48.5",
       "rect": {
-        "x": 37.5,
+        "x": 38.125,
         "y": 48.5,
-        "width": 9.0,
+        "width": 9.875,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-49",
+      "id": "riverbank.river-49.0",
       "rect": {
-        "x": 37.75,
-        "y": 49,
-        "width": 9.0,
+        "x": 38.25,
+        "y": 49.0,
+        "width": 10.0,
         "height": 0.5
       },
       "material": "water",
@@ -5631,20 +6032,20 @@
     {
       "id": "riverbank.river-49.5",
       "rect": {
-        "x": 37.75,
+        "x": 38.5,
         "y": 49.5,
-        "width": 9.0,
+        "width": 10.0,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-50",
+      "id": "riverbank.river-50.0",
       "rect": {
-        "x": 38.0,
-        "y": 50,
-        "width": 9.0,
+        "x": 38.75,
+        "y": 50.0,
+        "width": 10.0,
         "height": 0.5
       },
       "material": "water",
@@ -5653,20 +6054,20 @@
     {
       "id": "riverbank.river-50.5",
       "rect": {
-        "x": 38.25,
+        "x": 38.875,
         "y": 50.5,
-        "width": 9.0,
+        "width": 10.25,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-51",
+      "id": "riverbank.river-51.0",
       "rect": {
-        "x": 38.75,
-        "y": 51,
-        "width": 9.0,
+        "x": 39.125,
+        "y": 51.0,
+        "width": 10.25,
         "height": 0.5
       },
       "material": "water",
@@ -5675,20 +6076,20 @@
     {
       "id": "riverbank.river-51.5",
       "rect": {
-        "x": 39.0,
+        "x": 39.375,
         "y": 51.5,
-        "width": 9.0,
+        "width": 10.25,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-52",
+      "id": "riverbank.river-52.0",
       "rect": {
-        "x": 39.25,
-        "y": 52,
-        "width": 9.0,
+        "x": 39.625,
+        "y": 52.0,
+        "width": 10.25,
         "height": 0.5
       },
       "material": "water",
@@ -5697,20 +6098,20 @@
     {
       "id": "riverbank.river-52.5",
       "rect": {
-        "x": 39.75,
+        "x": 39.875,
         "y": 52.5,
-        "width": 9.0,
+        "width": 10.25,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-53",
+      "id": "riverbank.river-53.0",
       "rect": {
-        "x": 40.0,
-        "y": 53,
-        "width": 9.0,
+        "x": 40.125,
+        "y": 53.0,
+        "width": 10.25,
         "height": 0.5
       },
       "material": "water",
@@ -5719,20 +6120,20 @@
     {
       "id": "riverbank.river-53.5",
       "rect": {
-        "x": 40.25,
+        "x": 40.5,
         "y": 53.5,
-        "width": 9.0,
+        "width": 10.125,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-54",
+      "id": "riverbank.river-54.0",
       "rect": {
         "x": 40.75,
-        "y": 54,
-        "width": 9.0,
+        "y": 54.0,
+        "width": 10.125,
         "height": 0.5
       },
       "material": "water",
@@ -5741,21 +6142,32 @@
     {
       "id": "riverbank.river-54.5",
       "rect": {
-        "x": 41.0,
+        "x": 41.125,
         "y": 54.5,
-        "width": 9.0,
+        "width": 10.125,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-55",
+      "id": "riverbank.river-55.0",
       "rect": {
-        "x": 41.25,
-        "y": 55,
-        "width": 9.0,
-        "height": 0.5
+        "x": 41.375,
+        "y": 55.0,
+        "width": 10.0,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-55.25",
+      "rect": {
+        "x": 41.5,
+        "y": 55.25,
+        "width": 10.0,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -5763,20 +6175,20 @@
     {
       "id": "riverbank.river-55.5-cut-0",
       "rect": {
-        "x": 41.75,
+        "x": 41.625,
         "y": 55.5,
-        "width": 9.0,
+        "width": 10.125,
         "height": 0.10000000000000142
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-58-cut-1",
+      "id": "riverbank.river-58.25-cut-1",
       "rect": {
-        "x": 43.0,
+        "x": 43.125,
         "y": 58.4,
-        "width": 9.0,
+        "width": 10.375,
         "height": 0.10000000000000142
       },
       "material": "water",
@@ -5785,21 +6197,43 @@
     {
       "id": "riverbank.river-58.5",
       "rect": {
-        "x": 43.25,
+        "x": 43.125,
         "y": 58.5,
-        "width": 9.0,
-        "height": 0.5
+        "width": 10.625,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-59",
+      "id": "riverbank.river-58.75",
       "rect": {
-        "x": 43.5,
-        "y": 59,
-        "width": 9.0,
-        "height": 0.5
+        "x": 43.25,
+        "y": 58.75,
+        "width": 10.625,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-59.0",
+      "rect": {
+        "x": 43.25,
+        "y": 59.0,
+        "width": 10.875,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-59.25",
+      "rect": {
+        "x": 43.375,
+        "y": 59.25,
+        "width": 11.0,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -5807,21 +6241,43 @@
     {
       "id": "riverbank.river-59.5",
       "rect": {
-        "x": 43.75,
+        "x": 43.375,
         "y": 59.5,
-        "width": 9.0,
-        "height": 0.5
+        "width": 11.25,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-60",
+      "id": "riverbank.river-59.75",
       "rect": {
-        "x": 43.75,
-        "y": 60,
-        "width": 9.0,
-        "height": 0.5
+        "x": 43.5,
+        "y": 59.75,
+        "width": 11.375,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-60.0",
+      "rect": {
+        "x": 43.5,
+        "y": 60.0,
+        "width": 11.625,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-60.25",
+      "rect": {
+        "x": 43.625,
+        "y": 60.25,
+        "width": 11.75,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -5829,87 +6285,131 @@
     {
       "id": "riverbank.river-60.5",
       "rect": {
-        "x": 44.0,
+        "x": 43.625,
         "y": 60.5,
-        "width": 9.0,
+        "width": 11.875,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-60.75",
+      "rect": {
+        "x": 43.625,
+        "y": 60.75,
+        "width": 12.125,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-61.0",
+      "rect": {
+        "x": 43.75,
+        "y": 61.0,
+        "width": 12.125,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-61.25",
+      "rect": {
+        "x": 43.75,
+        "y": 61.25,
+        "width": 12.25,
+        "height": 0.75
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-62.0",
+      "rect": {
+        "x": 43.875,
+        "y": 62.0,
+        "width": 12.125,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-62.25",
+      "rect": {
+        "x": 43.875,
+        "y": 62.25,
+        "width": 12.0,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-61",
+      "id": "riverbank.river-62.75",
+      "rect": {
+        "x": 43.875,
+        "y": 62.75,
+        "width": 11.875,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-63.0",
+      "rect": {
+        "x": 43.875,
+        "y": 63.0,
+        "width": 11.75,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-63.25",
       "rect": {
         "x": 44.0,
-        "y": 61,
-        "width": 9.0,
+        "y": 63.25,
+        "width": 11.5,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-61.5",
+      "id": "riverbank.river-63.75",
       "rect": {
         "x": 44.0,
-        "y": 61.5,
-        "width": 9.0,
-        "height": 0.5
+        "y": 63.75,
+        "width": 11.25,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-62",
+      "id": "riverbank.river-64.0",
       "rect": {
-        "x": 44.25,
-        "y": 62,
-        "width": 9.0,
-        "height": 0.5
+        "x": 44.0,
+        "y": 64.0,
+        "width": 11.125,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-62.5",
+      "id": "riverbank.river-64.25",
       "rect": {
-        "x": 44.25,
-        "y": 62.5,
-        "width": 9.0,
-        "height": 0.5
-      },
-      "material": "water",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-63",
-      "rect": {
-        "x": 44.25,
-        "y": 63,
-        "width": 9.0,
-        "height": 0.5
-      },
-      "material": "water",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-63.5",
-      "rect": {
-        "x": 44.25,
-        "y": 63.5,
-        "width": 9.0,
-        "height": 0.5
-      },
-      "material": "water",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.river-64",
-      "rect": {
-        "x": 44.25,
-        "y": 64,
-        "width": 9.0,
-        "height": 0.5
+        "x": 44.0,
+        "y": 64.25,
+        "width": 11.0,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -5919,19 +6419,30 @@
       "rect": {
         "x": 44.0,
         "y": 64.5,
-        "width": 9.0,
+        "width": 10.875,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-64.75",
+      "rect": {
+        "x": 44.0,
+        "y": 64.75,
+        "width": 10.75,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-65",
+      "id": "riverbank.river-65.25",
       "rect": {
         "x": 44.0,
-        "y": 65,
-        "width": 9.0,
-        "height": 0.5
+        "y": 65.25,
+        "width": 10.625,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -5941,19 +6452,41 @@
       "rect": {
         "x": 44.0,
         "y": 65.5,
-        "width": 9.0,
-        "height": 0.5
+        "width": 10.5,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-66",
+      "id": "riverbank.river-65.75",
       "rect": {
         "x": 44.0,
-        "y": 66,
-        "width": 9.0,
-        "height": 0.5
+        "y": 65.75,
+        "width": 10.375,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-66.0",
+      "rect": {
+        "x": 44.0,
+        "y": 66.0,
+        "width": 10.25,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-66.25",
+      "rect": {
+        "x": 44.0,
+        "y": 66.25,
+        "width": 10.125,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -5963,19 +6496,41 @@
       "rect": {
         "x": 44.0,
         "y": 66.5,
-        "width": 9.0,
-        "height": 0.5
+        "width": 9.875,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-67",
+      "id": "riverbank.river-66.75",
       "rect": {
-        "x": 44.0,
-        "y": 67,
-        "width": 9.0,
-        "height": 0.5
+        "x": 43.875,
+        "y": 66.75,
+        "width": 9.875,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-67.0",
+      "rect": {
+        "x": 43.875,
+        "y": 67.0,
+        "width": 9.75,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-67.25",
+      "rect": {
+        "x": 43.875,
+        "y": 67.25,
+        "width": 9.625,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -5983,21 +6538,43 @@
     {
       "id": "riverbank.river-67.5",
       "rect": {
-        "x": 43.75,
+        "x": 43.875,
         "y": 67.5,
-        "width": 9.0,
-        "height": 0.5
+        "width": 9.5,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-68",
+      "id": "riverbank.river-67.75",
+      "rect": {
+        "x": 43.875,
+        "y": 67.75,
+        "width": 9.375,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-68.0",
+      "rect": {
+        "x": 43.875,
+        "y": 68.0,
+        "width": 9.25,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-68.25",
       "rect": {
         "x": 43.75,
-        "y": 68,
-        "width": 9.0,
-        "height": 0.5
+        "y": 68.25,
+        "width": 9.25,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -6007,6 +6584,17 @@
       "rect": {
         "x": 43.75,
         "y": 68.5,
+        "width": 9.125,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-68.75",
+      "rect": {
+        "x": 43.75,
+        "y": 68.75,
         "width": 9.0,
         "height": 0.5
       },
@@ -6014,12 +6602,12 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-69",
+      "id": "riverbank.river-69.25",
       "rect": {
         "x": 43.75,
-        "y": 69,
-        "width": 9.0,
-        "height": 0.5
+        "y": 69.25,
+        "width": 8.875,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -6029,19 +6617,30 @@
       "rect": {
         "x": 43.75,
         "y": 69.5,
-        "width": 9.0,
+        "width": 8.75,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-69.75",
+      "rect": {
+        "x": 43.625,
+        "y": 69.75,
+        "width": 8.875,
         "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-70",
+      "id": "riverbank.river-70.25",
       "rect": {
-        "x": 43.75,
-        "y": 70,
-        "width": 9.0,
-        "height": 0.5
+        "x": 43.625,
+        "y": 70.25,
+        "width": 8.75,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -6049,8 +6648,19 @@
     {
       "id": "riverbank.river-70.5",
       "rect": {
-        "x": 44.0,
+        "x": 43.625,
         "y": 70.5,
+        "width": 8.875,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-70.75",
+      "rect": {
+        "x": 43.5,
+        "y": 70.75,
         "width": 9.0,
         "height": 0.5
       },
@@ -6058,12 +6668,12 @@
       "variant": 0
     },
     {
-      "id": "riverbank.river-71",
+      "id": "riverbank.river-71.25",
       "rect": {
-        "x": 44.0,
-        "y": 71,
-        "width": 9.0,
-        "height": 0.5
+        "x": 43.375,
+        "y": 71.25,
+        "width": 9.25,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -6071,21 +6681,43 @@
     {
       "id": "riverbank.river-71.5",
       "rect": {
-        "x": 44.0,
+        "x": 43.375,
         "y": 71.5,
-        "width": 9.0,
-        "height": 0.5
+        "width": 9.375,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-72",
+      "id": "riverbank.river-71.75",
       "rect": {
-        "x": 44.25,
-        "y": 72,
-        "width": 9.0,
-        "height": 0.5
+        "x": 43.25,
+        "y": 71.75,
+        "width": 9.625,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-72.0",
+      "rect": {
+        "x": 43.125,
+        "y": 72.0,
+        "width": 9.875,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-72.25",
+      "rect": {
+        "x": 43.0,
+        "y": 72.25,
+        "width": 10.125,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -6093,21 +6725,43 @@
     {
       "id": "riverbank.river-72.5",
       "rect": {
-        "x": 44.25,
+        "x": 42.875,
         "y": 72.5,
-        "width": 9.0,
-        "height": 0.5
+        "width": 10.375,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-73",
+      "id": "riverbank.river-72.75",
       "rect": {
-        "x": 44.5,
-        "y": 73,
-        "width": 9.0,
-        "height": 0.5
+        "x": 42.875,
+        "y": 72.75,
+        "width": 10.5,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-73.0",
+      "rect": {
+        "x": 42.75,
+        "y": 73.0,
+        "width": 10.75,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-73.25",
+      "rect": {
+        "x": 42.75,
+        "y": 73.25,
+        "width": 10.875,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -6115,21 +6769,43 @@
     {
       "id": "riverbank.river-73.5",
       "rect": {
-        "x": 44.75,
+        "x": 42.75,
         "y": 73.5,
-        "width": 9.0,
-        "height": 0.5
+        "width": 11.0,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-74",
+      "id": "riverbank.river-73.75",
       "rect": {
-        "x": 44.75,
-        "y": 74,
-        "width": 9.0,
-        "height": 0.5
+        "x": 42.75,
+        "y": 73.75,
+        "width": 11.125,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-74.0",
+      "rect": {
+        "x": 42.75,
+        "y": 74.0,
+        "width": 11.375,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-74.25",
+      "rect": {
+        "x": 42.875,
+        "y": 74.25,
+        "width": 11.375,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -6137,21 +6813,43 @@
     {
       "id": "riverbank.river-74.5",
       "rect": {
-        "x": 45.0,
+        "x": 43.0,
         "y": 74.5,
-        "width": 9.0,
-        "height": 0.5
+        "width": 11.375,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-75",
+      "id": "riverbank.river-74.75",
       "rect": {
-        "x": 45.25,
-        "y": 75,
-        "width": 9.0,
-        "height": 0.5
+        "x": 43.125,
+        "y": 74.75,
+        "width": 11.375,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-75.0",
+      "rect": {
+        "x": 43.25,
+        "y": 75.0,
+        "width": 11.375,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-75.25",
+      "rect": {
+        "x": 43.5,
+        "y": 75.25,
+        "width": 11.25,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -6159,21 +6857,43 @@
     {
       "id": "riverbank.river-75.5",
       "rect": {
-        "x": 45.5,
+        "x": 43.625,
         "y": 75.5,
-        "width": 9.0,
-        "height": 0.5
+        "width": 11.25,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-76",
+      "id": "riverbank.river-75.75",
       "rect": {
-        "x": 45.75,
-        "y": 76,
-        "width": 9.0,
-        "height": 0.5
+        "x": 43.875,
+        "y": 75.75,
+        "width": 11.125,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-76.0",
+      "rect": {
+        "x": 44.125,
+        "y": 76.0,
+        "width": 11.0,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-76.25",
+      "rect": {
+        "x": 44.25,
+        "y": 76.25,
+        "width": 11.0,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -6181,21 +6901,43 @@
     {
       "id": "riverbank.river-76.5",
       "rect": {
-        "x": 46.0,
+        "x": 44.5,
         "y": 76.5,
-        "width": 9.0,
-        "height": 0.5
+        "width": 10.875,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-77",
+      "id": "riverbank.river-76.75",
       "rect": {
-        "x": 46.25,
-        "y": 77,
-        "width": 9.0,
-        "height": 0.5
+        "x": 44.625,
+        "y": 76.75,
+        "width": 10.875,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-77.0",
+      "rect": {
+        "x": 44.875,
+        "y": 77.0,
+        "width": 10.625,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-77.25",
+      "rect": {
+        "x": 45.0,
+        "y": 77.25,
+        "width": 10.625,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -6203,21 +6945,43 @@
     {
       "id": "riverbank.river-77.5",
       "rect": {
-        "x": 46.5,
+        "x": 45.25,
         "y": 77.5,
-        "width": 9.0,
-        "height": 0.5
+        "width": 10.5,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-78",
+      "id": "riverbank.river-77.75",
       "rect": {
-        "x": 46.75,
-        "y": 78,
-        "width": 9.0,
-        "height": 0.5
+        "x": 45.375,
+        "y": 77.75,
+        "width": 10.5,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-78.0",
+      "rect": {
+        "x": 45.625,
+        "y": 78.0,
+        "width": 10.25,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-78.25",
+      "rect": {
+        "x": 45.75,
+        "y": 78.25,
+        "width": 10.25,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -6225,21 +6989,43 @@
     {
       "id": "riverbank.river-78.5",
       "rect": {
-        "x": 47.0,
+        "x": 46.0,
         "y": 78.5,
-        "width": 9.0,
-        "height": 0.5
+        "width": 10.125,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "riverbank.river-79",
+      "id": "riverbank.river-78.75",
       "rect": {
-        "x": 47.25,
-        "y": 79,
-        "width": 9.0,
-        "height": 0.5
+        "x": 46.125,
+        "y": 78.75,
+        "width": 10.0,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-79.0",
+      "rect": {
+        "x": 46.375,
+        "y": 79.0,
+        "width": 9.875,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-79.25",
+      "rect": {
+        "x": 46.5,
+        "y": 79.25,
+        "width": 9.75,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -6247,10 +7033,21 @@
     {
       "id": "riverbank.river-79.5",
       "rect": {
-        "x": 47.5,
+        "x": 46.75,
         "y": 79.5,
-        "width": 9.0,
-        "height": 0.5
+        "width": 9.625,
+        "height": 0.25
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-79.75",
+      "rect": {
+        "x": 46.875,
+        "y": 79.75,
+        "width": 9.625,
+        "height": 0.25
       },
       "material": "water",
       "variant": 0
@@ -6702,8 +7499,8 @@
       "id": "riverbank.ferry-boat",
       "kind": "boat",
       "position": {
-        "x": 57.8,
-        "y": 60.7
+        "x": 58.4,
+        "y": 60.3
       },
       "width": 5,
       "height": 2,
@@ -6750,8 +7547,8 @@
       "id": "riverbank.arrival-reed-pocket",
       "kind": "reeds",
       "position": {
-        "x": 43.8,
-        "y": 72
+        "x": 42.7,
+        "y": 71.6
       },
       "width": 2,
       "height": 2,
@@ -6846,7 +7643,7 @@
       "id": "riverbank.bank-reeds-5",
       "kind": "reeds",
       "position": {
-        "x": 45.5,
+        "x": 45.375,
         "y": 5
       },
       "width": 2,
@@ -6858,7 +7655,7 @@
       "id": "riverbank.bank-rock-5",
       "kind": "rock",
       "position": {
-        "x": 57.5,
+        "x": 55.875,
         "y": 5
       },
       "width": 2,
@@ -6870,7 +7667,7 @@
       "id": "riverbank.bank-reeds-13",
       "kind": "reeds",
       "position": {
-        "x": 45.5,
+        "x": 46.125,
         "y": 13
       },
       "width": 2,
@@ -6882,7 +7679,7 @@
       "id": "riverbank.bank-rock-13",
       "kind": "rock",
       "position": {
-        "x": 57.5,
+        "x": 56.625,
         "y": 13
       },
       "width": 2,
@@ -6906,7 +7703,7 @@
       "id": "riverbank.bank-rock-27",
       "kind": "rock",
       "position": {
-        "x": 55.5,
+        "x": 53.875,
         "y": 27
       },
       "width": 2,
@@ -6918,7 +7715,7 @@
       "id": "riverbank.bank-reeds-34",
       "kind": "reeds",
       "position": {
-        "x": 42.5,
+        "x": 40.75,
         "y": 34
       },
       "width": 2,
@@ -6930,7 +7727,7 @@
       "id": "riverbank.bank-rock-34",
       "kind": "rock",
       "position": {
-        "x": 54.5,
+        "x": 51.25,
         "y": 34
       },
       "width": 2,
@@ -6942,7 +7739,7 @@
       "id": "riverbank.bank-reeds-45",
       "kind": "reeds",
       "position": {
-        "x": 35.5,
+        "x": 37.0,
         "y": 45
       },
       "width": 2,
@@ -6954,7 +7751,7 @@
       "id": "riverbank.bank-rock-45",
       "kind": "rock",
       "position": {
-        "x": 47.5,
+        "x": 47.875,
         "y": 45
       },
       "width": 2,
@@ -6966,8 +7763,8 @@
       "id": "riverbank.bank-reeds-64",
       "kind": "reeds",
       "position": {
-        "x": 42.5,
-        "y": 64
+        "x": 43.375,
+        "y": 65.2
       },
       "width": 2,
       "height": 2,
@@ -6978,8 +7775,8 @@
       "id": "riverbank.bank-rock-64",
       "kind": "rock",
       "position": {
-        "x": 54.5,
-        "y": 64
+        "x": 56.125,
+        "y": 63.9
       },
       "width": 2,
       "height": 2,
@@ -6990,8 +7787,8 @@
       "id": "riverbank.bank-reeds-71",
       "kind": "reeds",
       "position": {
-        "x": 42.5,
-        "y": 71
+        "x": 43.0,
+        "y": 70.4
       },
       "width": 2,
       "height": 2,
@@ -7002,8 +7799,8 @@
       "id": "riverbank.bank-rock-71",
       "kind": "rock",
       "position": {
-        "x": 54.5,
-        "y": 71
+        "x": 55.75,
+        "y": 75.8
       },
       "width": 2,
       "height": 2,
