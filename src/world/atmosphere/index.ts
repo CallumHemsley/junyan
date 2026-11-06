@@ -3,7 +3,7 @@ export type Point = { x: number; y: number; z?: number };
 export type Rect = { x: number; y: number; width: number; height: number };
 export type DayPhase = 'morning' | 'noon' | 'evening' | 'night';
 export type AtmosphereInput = {
-  mapId: string; day: number; timeOfDay: DayPhase; elapsedMs: number;
+  mapId: string; day: number; timeOfDay: DayPhase | number; elapsedMs: number;
   seed: number; reducedMotion: boolean;
 };
 export type AtmosphereHooks = {
@@ -34,6 +34,23 @@ const phases: Record<DayPhase, LightState> = {
   night: { sky: [35,47,76], water: [39,72,96], reflection: [139,180,202], shadow: [27,37,59], ambient: [.55,.65,.85], sun: [164,191,223], sunStrength: .06, lampStrength: 1, shadowOffset: [-.22,.18], shadowOpacity: .32 },
 };
 const mix = (a: RGB, b: RGB, t: number): RGB => a.map((v,i) => Math.round(v + (b[i]-v)*t)) as unknown as RGB;
+export const MAX_ATMOSPHERE_COMMANDS = 2048;
+
+/** Numeric timeOfDay is explicit day progress: 0 morning, .4 noon, .75 evening, 1 night. */
+export function sampleDayLight(timeOfDay: DayPhase | number): LightState {
+  if(typeof timeOfDay==='string') return phases[timeOfDay];
+  const progress=Math.max(0,Math.min(1,timeOfDay));
+  const stops: [number,DayPhase][]=[[0,'morning'],[.4,'noon'],[.75,'evening'],[1,'night']];
+  const end=stops.findIndex(([at])=>at>=progress);
+  if(end<=0) return phases.morning;
+  const [at,b]=stops[end], [before,a]=stops[end-1], t=(progress-before)/(at-before);
+  const from=phases[a], to=phases[b];
+  const blend=(x:number,y:number)=>x+(y-x)*t;
+  return {sky:mix(from.sky,to.sky,t),water:mix(from.water,to.water,t),reflection:mix(from.reflection,to.reflection,t),shadow:mix(from.shadow,to.shadow,t),
+    ambient:[blend(from.ambient[0],to.ambient[0]),blend(from.ambient[1],to.ambient[1]),blend(from.ambient[2],to.ambient[2])],
+    sun:mix(from.sun,to.sun,t),sunStrength:blend(from.sunStrength,to.sunStrength),lampStrength:blend(from.lampStrength,to.lampStrength),
+    shadowOffset:[blend(from.shadowOffset[0],to.shadowOffset[0]),blend(from.shadowOffset[1],to.shadowOffset[1])],shadowOpacity:blend(from.shadowOpacity,to.shadowOpacity)};
+}
 const fraction = (n: number) => n - Math.floor(n);
 const variation = (key: string, seed: number) => {
   let hash = seed | 0;
@@ -50,14 +67,14 @@ export function shadeAtmosphereColor(color: RGB, light: LightState, exposure=1):
 
 /** No timers or RNG state: identical explicit inputs produce identical frames. */
 export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks = {}, viewport?: Rect): AtmosphereFrame {
-  const source = phases[input.timeOfDay];
+  const source = sampleDayLight(input.timeOfDay);
   const light: LightState = hooks.interior ? {...source, ambient: [.92,.89,.83], sunStrength: .04, shadowOpacity: .22} : source;
   const animationMs = input.reducedMotion ? 0 : input.elapsedMs;
   const t = animationMs/1000;
   const wind = {x: Math.sin(t*.75)*.065 + Math.sin(t*.29)*.04, y: Math.sin(t*.53)*.025};
   const commands: AtmosphereCommand[] = [];
   const visible = (r: Rect, pad=2) => !viewport || r.x+r.width+pad>=viewport.x && r.x-pad<=viewport.x+viewport.width && r.y+r.height+pad>=viewport.y && r.y-pad<=viewport.y+viewport.height;
-  const add = (layer: AtmosphereCommand['layer'], points: Point[], color: RGB, opacity=1) => commands.push({layer,points,color,opacity});
+  const add = (layer: AtmosphereCommand['layer'], points: Point[], color: RGB, opacity=1) => {if(commands.length<MAX_ATMOSPHERE_COMMANDS) commands.push({layer,points,color,opacity});};
   for (const water of hooks.water ?? []) {
     const r = water.rect;
     if (!visible(r)) continue;
@@ -66,25 +83,27 @@ export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks 
     const x0 = Math.max(r.x,viewport?.x ?? r.x), y0 = Math.max(r.y,viewport?.y ?? r.y);
     const x1 = Math.min(r.x+r.width,viewport ? viewport.x+viewport.width : r.x+r.width);
     const y1 = Math.min(r.y+r.height,viewport ? viewport.y+viewport.height : r.y+r.height);
-    for(let y=Math.floor(y0); y<y1; y++) for(let x=Math.floor(x0); x<x1; x++) {
+    for(let y=Math.floor(y0); y<y1 && commands.length<MAX_ATMOSPHERE_COMMANDS-128; y++) for(let x=Math.floor(x0); x<x1 && commands.length<MAX_ATMOSPHERE_COMMANDS-128; x++) {
       const phase=variation(`${water.id}:${x}:${y}`,input.seed);
       if(phase>.4) continue;
       const wave=Math.sin(t*1.2+phase*25+y*.7);
       const px=x+.15+phase*.55, py=y+.25+wave*.045;
       if(px<r.x || px+.3>r.x+r.width || py<r.y || py+.035>r.y+r.height) continue;
-      add('ground',square(px,py,.16+phase*.35,.035),light.reflection,.28+(wave+1)*.10);
-      if(phase<.13) add('ground',square(px+.07,py+.15,.13,.025),light.reflection,.22);
+      add('ground',square(px,py,.22+phase*.45,.065),light.reflection,.28+(wave+1)*.10);
+      if(phase<.13) add('ground',square(px+.07,py+.15,.16,.05),light.reflection,.22);
     }
     const shoreColor=mix(light.water,light.reflection,.43);
     for(const edge of water.shore ?? []) {
       const horizontal=edge==='north'||edge==='south';
       const length=horizontal?r.width:r.height;
-      for(let i=0;i<length;i+=.5) {
+      for(let i=0;i<length && commands.length<MAX_ATMOSPHERE_COMMANDS-64;i+=.5) {
         const d=Math.min(.34,length-i), phase=variation(`${water.id}:${edge}:${i}`,input.seed);
         const inset=.04+phase*.07;
         const x=horizontal?r.x+i:edge==='west'?r.x+inset:r.x+r.width-inset-.045;
         const y=horizontal?(edge==='north'?r.y+inset:r.y+r.height-inset-.045):r.y+i;
         if(!visible({x,y,width:.5,height:.5},0)) continue;
+        const outside={x:horizontal?x+d/2:edge==='west'?r.x-.01:r.x+r.width+.01, y:horizontal?(edge==='north'?r.y-.01:r.y+r.height+.01):y+d/2};
+        if((hooks.water??[]).some(other=>other!==water && outside.x>other.rect.x && outside.x<other.rect.x+other.rect.width && outside.y>other.rect.y && outside.y<other.rect.y+other.rect.height)) continue;
         add('ground',square(x,y,horizontal?d:.045,horizontal?.045:d),shoreColor,.7);
       }
     }
@@ -106,7 +125,9 @@ export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks 
       const size=r*scale;
       add('light',[{x:x-size,y:y-size*.4},{x:x+size*.2,y:y-size*.8},{x:x+size,y:y-size*.1},{x:x+size*.8,y:y+size*.65},{x:x-size*.6,y:y+size*.7}], [255,200,121], opacity*strength);
     }
-    add('foreground',square(x-.045,y-.025,lamp.kind==='window'?.24:.09,.055,z),[255,224,153],strength);
+    const width=lamp.kind==='window'?.55:.16, height=lamp.kind==='window'?.48:.22;
+    add('foreground',[{x:x-width/2,y,z},{x:x+width/2,y,z},{x:x+width/2,y,z:z+height},{x:x-width/2,y,z:z+height}],[255,224,153],strength);
+    if(lamp.kind==='window') add('foreground',[{x:x-.025,y:y-.005,z},{x:x+.025,y:y-.005,z},{x:x+.025,y:y-.005,z:z+height},{x:x-.025,y:y-.005,z:z+height}],[110,87,62],.9);
     if(lamp.kind==='window') add('light',square(x-.2,y+.14,.52,.1),[255,213,145],strength*.18);
   }
   for(const plant of hooks.foliage ?? []) {

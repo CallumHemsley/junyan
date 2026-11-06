@@ -20,3 +20,16 @@ export function drawAtmosphereLayer(ctx: CanvasRenderingContext2D, commands: rea
   ctx.restore();
   return drawn;
 }
+
+export type AtmosphereView = {
+  project(point:{x:number;y:number},z?:number):{x:number;y:number};
+  pass:'ground'|'objects'|'foreground';
+};
+
+/** Compatible with foundation WorldRenderView; sample once, draw each host pass. */
+export function drawAtmosphere(ctx:CanvasRenderingContext2D, frame:{commands:readonly AtmosphereCommand[]}, view:AtmosphereView):number {
+  const project:AtmosphereProject=point=>view.project(point,point.z??0);
+  if(view.pass==='ground') return drawAtmosphereLayer(ctx,frame.commands,'ground',project);
+  if(view.pass==='foreground') return drawAtmosphereLayer(ctx,frame.commands,'light',project)+drawAtmosphereLayer(ctx,frame.commands,'foreground',project);
+  return 0;
+}

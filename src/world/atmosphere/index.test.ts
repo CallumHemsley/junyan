@@ -1,5 +1,5 @@
 import {describe,it,expect} from 'vitest';
-import {sampleAtmosphere,shadeAtmosphereColor,type AtmosphereHooks,type AtmosphereInput} from './index';
+import {sampleAtmosphere,shadeAtmosphereColor,sampleDayLight,MAX_ATMOSPHERE_COMMANDS,type AtmosphereHooks,type AtmosphereInput} from './index';
 const input: AtmosphereInput={mapId:'riverbank',day:2,timeOfDay:'evening',elapsedMs:1500,seed:42,reducedMotion:false};
 const hooks: AtmosphereHooks={
  water:[{id:'river',rect:{x:0,y:0,width:18,height:6},shore:['north','south']}],
@@ -9,6 +9,18 @@ const hooks: AtmosphereHooks={
  particles:[{id:'bank',rect:{x:0,y:5,width:12,height:4},kind:'firefly',count:9}],
 };
 describe('atmosphere',()=>{
+ it('interpolates supplied day progress without changing gameplay time',()=>{
+  expect(sampleDayLight(0)).toEqual(sampleDayLight('morning'));
+  expect(sampleDayLight(.4)).toEqual(sampleDayLight('noon'));
+  expect(sampleDayLight(.75)).toEqual(sampleDayLight('evening'));
+  expect(sampleDayLight(1)).toEqual(sampleDayLight('night'));
+  const a=sampleDayLight(.5),b=sampleDayLight(.51);
+  expect(Math.abs(a.lampStrength-b.lampStrength)).toBeLessThan(.03);
+ });
+ it('bounds decorative output even without a viewport on a giant map',()=>{
+  const frame=sampleAtmosphere(input,{water:[{id:'wide',rect:{x:0,y:0,width:10000,height:10000}}]});
+  expect(frame.commands.length).toBeLessThanOrEqual(MAX_ATMOSPHERE_COMMANDS);
+ });
  it('is replayable and does not mutate authored hooks',()=>{
   const before=JSON.stringify(hooks), a=sampleAtmosphere(input,hooks);
   expect(sampleAtmosphere(input,hooks)).toEqual(a);
