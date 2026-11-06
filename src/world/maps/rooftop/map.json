@@ -1,0 +1,1119 @@
+{
+  "version": 1,
+  "id": "rooftop",
+  "bounds": {
+    "width": 48,
+    "height": 36
+  },
+  "defaultSpawn": {
+    "x": 12.5,
+    "y": 29,
+    "facing": "east"
+  },
+  "walkable": [
+    {
+      "x": 2,
+      "y": 2,
+      "width": 44,
+      "height": 32
+    }
+  ],
+  "colliders": [
+    {
+      "id": "rooftop.north-edge",
+      "rect": {
+        "x": 1,
+        "y": 1,
+        "width": 46,
+        "height": 1
+      }
+    },
+    {
+      "id": "rooftop.east-edge",
+      "rect": {
+        "x": 46,
+        "y": 1,
+        "width": 1,
+        "height": 34
+      }
+    },
+    {
+      "id": "rooftop.south-edge",
+      "rect": {
+        "x": 1,
+        "y": 34,
+        "width": 46,
+        "height": 1
+      }
+    },
+    {
+      "id": "rooftop.west-edge",
+      "rect": {
+        "x": 1,
+        "y": 1,
+        "width": 1,
+        "height": 34
+      }
+    },
+    {
+      "id": "rooftop.stairhead",
+      "rect": {
+        "x": 3,
+        "y": 25,
+        "width": 6,
+        "height": 8
+      }
+    },
+    {
+      "id": "rooftop.water-tank",
+      "rect": {
+        "x": 5,
+        "y": 5,
+        "width": 4,
+        "height": 4
+      }
+    },
+    {
+      "id": "rooftop.tap-basin",
+      "rect": {
+        "x": 9,
+        "y": 11,
+        "width": 2,
+        "height": 2
+      }
+    },
+    {
+      "id": "rooftop.tool-bay",
+      "rect": {
+        "x": 4,
+        "y": 14,
+        "width": 4,
+        "height": 4
+      }
+    },
+    {
+      "id": "rooftop.compost",
+      "rect": {
+        "x": 4,
+        "y": 20,
+        "width": 3,
+        "height": 2
+      }
+    },
+    {
+      "id": "rooftop.trellis-bed",
+      "rect": {
+        "x": 14,
+        "y": 5,
+        "width": 14,
+        "height": 2
+      }
+    },
+    {
+      "id": "rooftop.herb-bed",
+      "rect": {
+        "x": 15,
+        "y": 14,
+        "width": 7,
+        "height": 2
+      }
+    },
+    {
+      "id": "rooftop.flower-border",
+      "rect": {
+        "x": 36,
+        "y": 5,
+        "width": 7,
+        "height": 4
+      }
+    },
+    {
+      "id": "rooftop.orchard",
+      "rect": {
+        "x": 36,
+        "y": 16,
+        "width": 6,
+        "height": 4
+      }
+    },
+    {
+      "id": "rooftop.lookout-bench",
+      "rect": {
+        "x": 40,
+        "y": 10,
+        "width": 3,
+        "height": 1
+      }
+    },
+    {
+      "id": "rooftop.terrace-bench",
+      "rect": {
+        "x": 31,
+        "y": 30,
+        "width": 8,
+        "height": 1
+      }
+    },
+    {
+      "id": "rooftop.tea-table",
+      "rect": {
+        "x": 33,
+        "y": 27,
+        "width": 2,
+        "height": 2
+      }
+    },
+    {
+      "id": "rooftop.sun-clock",
+      "rect": {
+        "x": 42,
+        "y": 30,
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "id": "rooftop.terrace-tree",
+      "rect": {
+        "x": 27,
+        "y": 30,
+        "width": 2,
+        "height": 2
+      }
+    },
+    {
+      "id": "rooftop.pergola-post-0",
+      "rect": {
+        "x": 29,
+        "y": 25,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "rooftop.pergola-post-1",
+      "rect": {
+        "x": 41,
+        "y": 25,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "rooftop.pergola-post-2",
+      "rect": {
+        "x": 29,
+        "y": 27,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "rooftop.pergola-post-3",
+      "rect": {
+        "x": 41,
+        "y": 27,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "rooftop.border-pot-0",
+      "rect": {
+        "x": 12,
+        "y": 6,
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "id": "rooftop.border-pot-1",
+      "rect": {
+        "x": 31,
+        "y": 5,
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "id": "rooftop.border-pot-2",
+      "rect": {
+        "x": 43,
+        "y": 17,
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "id": "rooftop.border-pot-3",
+      "rect": {
+        "x": 43,
+        "y": 25,
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "id": "rooftop.border-pot-4",
+      "rect": {
+        "x": 17,
+        "y": 32,
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "id": "rooftop.border-pot-5",
+      "rect": {
+        "x": 5,
+        "y": 23,
+        "width": 1,
+        "height": 1
+      }
+    }
+  ],
+  "occluders": [
+    {
+      "id": "rooftop.pergola-canopy",
+      "rect": {
+        "x": 29,
+        "y": 25,
+        "width": 13,
+        "height": 3
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    }
+  ],
+  "entrances": [
+    {
+      "id": "from-residential-stairs",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "facing": "east"
+    }
+  ],
+  "exits": [
+    {
+      "id": "to-residential-stairs",
+      "rect": {
+        "x": 9,
+        "y": 28,
+        "width": 1.5,
+        "height": 2
+      },
+      "targetMapId": "residential-stairs",
+      "targetEntranceId": "from-rooftop",
+      "kind": "stairs"
+    }
+  ],
+  "anchors": [
+    {
+      "id": "rooftop.garden",
+      "position": {
+        "x": 19,
+        "y": 20
+      },
+      "radius": 2,
+      "featureId": "garden",
+      "interactionId": "existing-garden-activity"
+    },
+    {
+      "id": "rooftop.water",
+      "position": {
+        "x": 11.5,
+        "y": 12
+      },
+      "radius": 1.5,
+      "featureId": "garden",
+      "interactionId": "existing-garden-activity"
+    },
+    {
+      "id": "rooftop.bench",
+      "position": {
+        "x": 35,
+        "y": 29.5
+      },
+      "radius": 1.2,
+      "featureId": "exploration",
+      "interactionId": "rooftop.sit"
+    },
+    {
+      "id": "rooftop.lookout",
+      "position": {
+        "x": 44,
+        "y": 12
+      },
+      "radius": 1.5,
+      "featureId": "exploration",
+      "interactionId": "rooftop.lookout"
+    }
+  ],
+  "terrain": [
+    {
+      "id": "rooftop.roof",
+      "rect": {
+        "x": 2,
+        "y": 2,
+        "width": 44,
+        "height": 32
+      },
+      "material": "roof-tile",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.landing",
+      "rect": {
+        "x": 2,
+        "y": 24,
+        "width": 11,
+        "height": 10
+      },
+      "material": "roof-concrete",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.water-run",
+      "rect": {
+        "x": 3,
+        "y": 3,
+        "width": 9,
+        "height": 20
+      },
+      "material": "roof-concrete",
+      "variant": 1
+    },
+    {
+      "id": "rooftop.trellis-walk",
+      "rect": {
+        "x": 12,
+        "y": 8,
+        "width": 22,
+        "height": 4
+      },
+      "material": "roof-brick",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.garden-spine",
+      "rect": {
+        "x": 11,
+        "y": 18,
+        "width": 33,
+        "height": 5
+      },
+      "material": "roof-brick",
+      "variant": 1
+    },
+    {
+      "id": "rooftop.terrace",
+      "rect": {
+        "x": 27,
+        "y": 24,
+        "width": 17,
+        "height": 9
+      },
+      "material": "roof-wood",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.link",
+      "rect": {
+        "x": 23,
+        "y": 11,
+        "width": 4,
+        "height": 21
+      },
+      "material": "roof-brick",
+      "variant": 2
+    }
+  ],
+  "props": [
+    {
+      "id": "rooftop.north-edge",
+      "kind": "parapet",
+      "position": {
+        "x": 1,
+        "y": 1
+      },
+      "width": 46,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.east-edge",
+      "kind": "parapet",
+      "position": {
+        "x": 46,
+        "y": 1
+      },
+      "width": 1,
+      "height": 34,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.south-edge",
+      "kind": "parapet",
+      "position": {
+        "x": 1,
+        "y": 34
+      },
+      "width": 46,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.west-edge",
+      "kind": "parapet",
+      "position": {
+        "x": 1,
+        "y": 1
+      },
+      "width": 1,
+      "height": 34,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.stairhead",
+      "kind": "stairhead",
+      "position": {
+        "x": 3,
+        "y": 25
+      },
+      "width": 6,
+      "height": 8,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.stair-steps",
+      "kind": "stairs",
+      "position": {
+        "x": 9,
+        "y": 27
+      },
+      "width": 3,
+      "height": 4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.water-tank",
+      "kind": "water-tank",
+      "position": {
+        "x": 5,
+        "y": 5
+      },
+      "width": 4,
+      "height": 4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.tap-basin",
+      "kind": "basin",
+      "position": {
+        "x": 9,
+        "y": 11
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.tool-bay",
+      "kind": "tool-bay",
+      "position": {
+        "x": 4,
+        "y": 14
+      },
+      "width": 4,
+      "height": 4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.compost",
+      "kind": "compost",
+      "position": {
+        "x": 4,
+        "y": 20
+      },
+      "width": 3,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.trellis-bed",
+      "kind": "trellis-bed",
+      "position": {
+        "x": 14,
+        "y": 5
+      },
+      "width": 14,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.herb-bed",
+      "kind": "raised-bed",
+      "position": {
+        "x": 15,
+        "y": 14
+      },
+      "width": 7,
+      "height": 2,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "rooftop.flower-border",
+      "kind": "raised-bed",
+      "position": {
+        "x": 36,
+        "y": 5
+      },
+      "width": 7,
+      "height": 4,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "rooftop.orchard",
+      "kind": "tree-bed",
+      "position": {
+        "x": 36,
+        "y": 16
+      },
+      "width": 6,
+      "height": 4,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "rooftop.lookout-bench",
+      "kind": "bench",
+      "position": {
+        "x": 40,
+        "y": 10
+      },
+      "width": 3,
+      "height": 1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "rooftop.terrace-bench",
+      "kind": "bench",
+      "position": {
+        "x": 31,
+        "y": 30
+      },
+      "width": 8,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.tea-table",
+      "kind": "tea-table",
+      "position": {
+        "x": 33,
+        "y": 27
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.sun-clock",
+      "kind": "sun-clock",
+      "position": {
+        "x": 42,
+        "y": 30
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.terrace-tree",
+      "kind": "tree-bed",
+      "position": {
+        "x": 27,
+        "y": 30
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.pergola",
+      "kind": "pergola",
+      "position": {
+        "x": 29,
+        "y": 25
+      },
+      "width": 13,
+      "height": 3,
+      "layer": "foreground",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.pergola-post-0",
+      "kind": "post",
+      "position": {
+        "x": 29,
+        "y": 25
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.pergola-post-1",
+      "kind": "post",
+      "position": {
+        "x": 41,
+        "y": 25
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.pergola-post-2",
+      "kind": "post",
+      "position": {
+        "x": 29,
+        "y": 27
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.pergola-post-3",
+      "kind": "post",
+      "position": {
+        "x": 41,
+        "y": 27
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.border-pot-0",
+      "kind": "border-pot",
+      "position": {
+        "x": 12,
+        "y": 6
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.border-pot-1",
+      "kind": "border-pot",
+      "position": {
+        "x": 31,
+        "y": 5
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "rooftop.border-pot-2",
+      "kind": "border-pot",
+      "position": {
+        "x": 43,
+        "y": 17
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "rooftop.border-pot-3",
+      "kind": "border-pot",
+      "position": {
+        "x": 43,
+        "y": 25
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.border-pot-4",
+      "kind": "border-pot",
+      "position": {
+        "x": 17,
+        "y": 32
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "rooftop.border-pot-5",
+      "kind": "border-pot",
+      "position": {
+        "x": 5,
+        "y": 23
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "rooftop.pipe-0",
+      "kind": "pipe",
+      "position": {
+        "x": 3,
+        "y": 10
+      },
+      "width": 5,
+      "height": 0.15,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.pipe-1",
+      "kind": "pipe",
+      "position": {
+        "x": 3,
+        "y": 10
+      },
+      "width": 0.15,
+      "height": 13,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.pipe-2",
+      "kind": "pipe",
+      "position": {
+        "x": 3,
+        "y": 23
+      },
+      "width": 8,
+      "height": 0.15,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.pipe-3",
+      "kind": "pipe",
+      "position": {
+        "x": 11,
+        "y": 12
+      },
+      "width": 0.15,
+      "height": 11,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.drain-0",
+      "kind": "drain",
+      "position": {
+        "x": 3,
+        "y": 4
+      },
+      "width": 0.7,
+      "height": 0.7,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.drain-1",
+      "kind": "drain",
+      "position": {
+        "x": 44,
+        "y": 4
+      },
+      "width": 0.7,
+      "height": 0.7,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.drain-2",
+      "kind": "drain",
+      "position": {
+        "x": 44,
+        "y": 32
+      },
+      "width": 0.7,
+      "height": 0.7,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.drain-3",
+      "kind": "drain",
+      "position": {
+        "x": 12,
+        "y": 32
+      },
+      "width": 0.7,
+      "height": 0.7,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.weathering-0",
+      "kind": "weathering",
+      "position": {
+        "x": 5,
+        "y": 11
+      },
+      "width": 1.5,
+      "height": 1,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.weathering-1",
+      "kind": "weathering",
+      "position": {
+        "x": 12,
+        "y": 16
+      },
+      "width": 1.5,
+      "height": 1,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "rooftop.weathering-2",
+      "kind": "weathering",
+      "position": {
+        "x": 21,
+        "y": 26
+      },
+      "width": 1.5,
+      "height": 1,
+      "layer": "ground",
+      "variant": 2
+    },
+    {
+      "id": "rooftop.weathering-3",
+      "kind": "weathering",
+      "position": {
+        "x": 42,
+        "y": 22
+      },
+      "width": 1.5,
+      "height": 1,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.weathering-4",
+      "kind": "weathering",
+      "position": {
+        "x": 31,
+        "y": 31
+      },
+      "width": 1.5,
+      "height": 1,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "rooftop.weathering-5",
+      "kind": "weathering",
+      "position": {
+        "x": 11,
+        "y": 30
+      },
+      "width": 1.5,
+      "height": 1,
+      "layer": "ground",
+      "variant": 2
+    }
+  ],
+  "palette": {
+    "cream": [
+      245,
+      232,
+      202
+    ],
+    "jade": [
+      111,
+      154,
+      134
+    ],
+    "ink": [
+      48,
+      43,
+      42
+    ],
+    "wood": [
+      115,
+      86,
+      58
+    ],
+    "brass": [
+      190,
+      157,
+      97
+    ],
+    "roof": [
+      190,
+      190,
+      172
+    ],
+    "roofLight": [
+      215,
+      211,
+      188
+    ],
+    "moss": [
+      108,
+      130,
+      91
+    ],
+    "leaf": [
+      96,
+      134,
+      101
+    ],
+    "flower": [
+      185,
+      173,
+      204
+    ],
+    "skyNear": [
+      158,
+      175,
+      188
+    ],
+    "skyFar": [
+      190,
+      204,
+      205
+    ]
+  },
+  "npcHooks": [
+    {
+      "id": "rooftop.lin-jie",
+      "position": {
+        "x": 34,
+        "y": 29.5
+      },
+      "route": [
+        {
+          "x": 34,
+          "y": 29.5
+        },
+        {
+          "x": 28,
+          "y": 29.5
+        },
+        {
+          "x": 28,
+          "y": 23
+        },
+        {
+          "x": 35,
+          "y": 23
+        }
+      ],
+      "characterId": "lin-jie"
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "rooftop.landing",
+      "position": {
+        "x": 12,
+        "y": 29
+      },
+      "kind": "stair-landing"
+    },
+    {
+      "id": "rooftop.water",
+      "position": {
+        "x": 11,
+        "y": 9
+      },
+      "kind": "rainwater-service"
+    },
+    {
+      "id": "rooftop.trellis",
+      "position": {
+        "x": 21,
+        "y": 9
+      },
+      "kind": "trellis-walk"
+    },
+    {
+      "id": "rooftop.herbs",
+      "position": {
+        "x": 18,
+        "y": 18
+      },
+      "kind": "raised-herbs"
+    },
+    {
+      "id": "rooftop.lookout",
+      "position": {
+        "x": 44,
+        "y": 12
+      },
+      "kind": "skyline-view"
+    },
+    {
+      "id": "rooftop.orchard",
+      "position": {
+        "x": 39,
+        "y": 22
+      },
+      "kind": "roof-orchard"
+    },
+    {
+      "id": "rooftop.terrace",
+      "position": {
+        "x": 35,
+        "y": 29.5
+      },
+      "kind": "shaded-seating"
+    },
+    {
+      "id": "rooftop.pots",
+      "position": {
+        "x": 19,
+        "y": 23
+      },
+      "kind": "care-garden"
+    }
+  ]
+}

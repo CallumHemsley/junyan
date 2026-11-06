@@ -1,0 +1,50 @@
+{
+  "loop": {
+    "reachable": {
+      "landing": true,
+      "water": true,
+      "tools": true,
+      "trellis": true,
+      "herbs": true,
+      "lookout": true,
+      "orchard": true,
+      "bench": true
+    },
+    "distance": {
+      "landing": 0,
+      "water": 22,
+      "tools": 16,
+      "trellis": 29,
+      "herbs": 17,
+      "lookout": 48,
+      "orchard": 34,
+      "bench": 27
+    },
+    "walkable_cells": 1024,
+    "note": "Sketch only; not product traversal proof. All six sites blocked is stricter than three actual pots."
+  },
+  "cross": {
+    "reachable": {
+      "landing": true,
+      "water": true,
+      "tools": true,
+      "trellis": true,
+      "herbs": true,
+      "lookout": true,
+      "orchard": true,
+      "bench": true
+    },
+    "distance": {
+      "landing": 0,
+      "water": 22,
+      "tools": 16,
+      "trellis": 29,
+      "herbs": 17,
+      "lookout": 48,
+      "orchard": 34,
+      "bench": 27
+    },
+    "walkable_cells": 1053,
+    "note": "Sketch only; not product traversal proof. All six sites blocked is stricter than three actual pots."
+  }
+}
