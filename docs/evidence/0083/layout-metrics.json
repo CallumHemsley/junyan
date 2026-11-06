@@ -1,0 +1,117 @@
+{
+  "bounds": {
+    "width": 48,
+    "height": 36
+  },
+  "connectedSampledFloorArea": 978.25,
+  "samplingStep": 0.5,
+  "playerRadius": 0.22,
+  "navigation": "actual foundation canStand/canWalk/findPath",
+  "landmarks": [
+    {
+      "id": "rooftop.landing",
+      "kind": "stair-landing",
+      "position": {
+        "x": 12,
+        "y": 29
+      },
+      "reachable": true,
+      "shortestSmoothedRouteLength": 0.5
+    },
+    {
+      "id": "rooftop.water",
+      "kind": "rainwater-service",
+      "position": {
+        "x": 11,
+        "y": 9
+      },
+      "reachable": true,
+      "shortestSmoothedRouteLength": 20.232730970953185
+    },
+    {
+      "id": "rooftop.trellis",
+      "kind": "trellis-walk",
+      "position": {
+        "x": 21,
+        "y": 9
+      },
+      "reachable": true,
+      "shortestSmoothedRouteLength": 24.854539311663384
+    },
+    {
+      "id": "rooftop.herbs",
+      "kind": "raised-herbs",
+      "position": {
+        "x": 18,
+        "y": 18
+      },
+      "reachable": true,
+      "shortestSmoothedRouteLength": 12.855983479881765
+    },
+    {
+      "id": "rooftop.lookout",
+      "kind": "skyline-view",
+      "position": {
+        "x": 44,
+        "y": 12
+      },
+      "reachable": true,
+      "shortestSmoothedRouteLength": 40.244282616239886
+    },
+    {
+      "id": "rooftop.orchard",
+      "kind": "roof-orchard",
+      "position": {
+        "x": 39,
+        "y": 22
+      },
+      "reachable": true,
+      "shortestSmoothedRouteLength": 29.430678544921737
+    },
+    {
+      "id": "rooftop.terrace",
+      "kind": "shaded-seating",
+      "position": {
+        "x": 35,
+        "y": 29.5
+      },
+      "reachable": true,
+      "shortestSmoothedRouteLength": 23.124283012492455
+    },
+    {
+      "id": "rooftop.pots",
+      "kind": "care-garden",
+      "position": {
+        "x": 19,
+        "y": 23
+      },
+      "reachable": true,
+      "shortestSmoothedRouteLength": 8.845903006477066
+    }
+  ],
+  "featureAnchors": [
+    {
+      "id": "rooftop.garden",
+      "interactionId": "existing-garden-activity"
+    },
+    {
+      "id": "rooftop.water",
+      "interactionId": "existing-garden-activity"
+    },
+    {
+      "id": "rooftop.pot.flower",
+      "interactionId": "garden.flower"
+    },
+    {
+      "id": "rooftop.pot.climber",
+      "interactionId": "garden.climber"
+    },
+    {
+      "id": "rooftop.pot.tree",
+      "interactionId": "garden.tree"
+    }
+  ],
+  "props": 62,
+  "note": "Connected area is a half-tile sampling estimate, not bounds multiplied as proof. Existing garden is one activity; three stable per-plant controls are bindings, not three invented activities.",
+  "sourceHead": "e1e3fa3b520dd3fab21246f7860dbbd24524ae14"
+}

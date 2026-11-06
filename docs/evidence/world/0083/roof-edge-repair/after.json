@@ -1,0 +1,250 @@
+[
+  {
+    "device": "desktop",
+    "phase": "morning",
+    "landmark": "arrival",
+    "position": {
+      "x": 12.5,
+      "y": 29
+    },
+    "served": 0,
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "productArtHead": "ef2e283fe136b789540fba00d44f58c329c4f4b2",
+    "captureDriverCheckoutHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "asset": "./assets/index-3gs3FJDd.js",
+    "uiState": {
+      "blockingModals": 0,
+      "contextualPanels": 0,
+      "welcomeDismissed": true
+    },
+    "canvas": {
+      "width": 720,
+      "height": 458,
+      "rect": {
+        "width": 1440,
+        "height": 916
+      }
+    },
+    "path": "after-desktop-morning-arrival.png",
+    "errors": [],
+    "fixtureSource": "456fce9/integrated-c4ec7ed/desktop-final.json",
+    "note": "Actual production App declared-camera/save fixture; not traversal proof."
+  },
+  {
+    "device": "desktop",
+    "phase": "morning",
+    "landmark": "city-lookout",
+    "position": {
+      "x": 44,
+      "y": 12
+    },
+    "served": 0,
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "productArtHead": "ef2e283fe136b789540fba00d44f58c329c4f4b2",
+    "captureDriverCheckoutHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "asset": "./assets/index-3gs3FJDd.js",
+    "uiState": {
+      "blockingModals": 0,
+      "contextualPanels": 0,
+      "welcomeDismissed": true
+    },
+    "canvas": {
+      "width": 720,
+      "height": 458,
+      "rect": {
+        "width": 1440,
+        "height": 916
+      }
+    },
+    "path": "after-desktop-morning-city-lookout.png",
+    "errors": [],
+    "fixtureSource": "456fce9/integrated-c4ec7ed/desktop-final.json",
+    "note": "Actual production App declared-camera/save fixture; not traversal proof."
+  },
+  {
+    "device": "desktop",
+    "phase": "evening",
+    "landmark": "arrival",
+    "position": {
+      "x": 12.5,
+      "y": 29
+    },
+    "served": 3,
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "productArtHead": "ef2e283fe136b789540fba00d44f58c329c4f4b2",
+    "captureDriverCheckoutHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "asset": "./assets/index-3gs3FJDd.js",
+    "uiState": {
+      "blockingModals": 0,
+      "contextualPanels": 0,
+      "welcomeDismissed": false
+    },
+    "canvas": {
+      "width": 720,
+      "height": 458,
+      "rect": {
+        "width": 1440,
+        "height": 916
+      }
+    },
+    "path": "after-desktop-evening-arrival.png",
+    "errors": [],
+    "fixtureSource": "456fce9/integrated-23be251/desktop-activity-final.json",
+    "note": "Actual production App declared-camera/save fixture; not traversal proof."
+  },
+  {
+    "device": "desktop",
+    "phase": "evening",
+    "landmark": "city-lookout",
+    "position": {
+      "x": 44,
+      "y": 12
+    },
+    "served": 3,
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "productArtHead": "ef2e283fe136b789540fba00d44f58c329c4f4b2",
+    "captureDriverCheckoutHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "asset": "./assets/index-3gs3FJDd.js",
+    "uiState": {
+      "blockingModals": 0,
+      "contextualPanels": 0,
+      "welcomeDismissed": false
+    },
+    "canvas": {
+      "width": 720,
+      "height": 458,
+      "rect": {
+        "width": 1440,
+        "height": 916
+      }
+    },
+    "path": "after-desktop-evening-city-lookout.png",
+    "errors": [],
+    "fixtureSource": "456fce9/integrated-23be251/desktop-activity-final.json",
+    "note": "Actual production App declared-camera/save fixture; not traversal proof."
+  },
+  {
+    "device": "phone",
+    "phase": "morning",
+    "landmark": "arrival",
+    "position": {
+      "x": 12.5,
+      "y": 29
+    },
+    "served": 0,
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "productArtHead": "ef2e283fe136b789540fba00d44f58c329c4f4b2",
+    "captureDriverCheckoutHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "asset": "./assets/index-3gs3FJDd.js",
+    "uiState": {
+      "blockingModals": 0,
+      "contextualPanels": 0,
+      "welcomeDismissed": true
+    },
+    "canvas": {
+      "width": 195,
+      "height": 386,
+      "rect": {
+        "width": 390,
+        "height": 772
+      }
+    },
+    "path": "after-phone-morning-arrival.png",
+    "errors": [],
+    "fixtureSource": "456fce9/integrated-c4ec7ed/desktop-final.json",
+    "note": "Actual production App declared-camera/save fixture; not traversal proof."
+  },
+  {
+    "device": "phone",
+    "phase": "morning",
+    "landmark": "city-lookout",
+    "position": {
+      "x": 44,
+      "y": 12
+    },
+    "served": 0,
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "productArtHead": "ef2e283fe136b789540fba00d44f58c329c4f4b2",
+    "captureDriverCheckoutHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "asset": "./assets/index-3gs3FJDd.js",
+    "uiState": {
+      "blockingModals": 0,
+      "contextualPanels": 0,
+      "welcomeDismissed": true
+    },
+    "canvas": {
+      "width": 195,
+      "height": 386,
+      "rect": {
+        "width": 390,
+        "height": 772
+      }
+    },
+    "path": "after-phone-morning-city-lookout.png",
+    "errors": [],
+    "fixtureSource": "456fce9/integrated-c4ec7ed/desktop-final.json",
+    "note": "Actual production App declared-camera/save fixture; not traversal proof."
+  },
+  {
+    "device": "phone",
+    "phase": "evening",
+    "landmark": "arrival",
+    "position": {
+      "x": 12.5,
+      "y": 29
+    },
+    "served": 3,
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "productArtHead": "ef2e283fe136b789540fba00d44f58c329c4f4b2",
+    "captureDriverCheckoutHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "asset": "./assets/index-3gs3FJDd.js",
+    "uiState": {
+      "blockingModals": 0,
+      "contextualPanels": 0,
+      "welcomeDismissed": false
+    },
+    "canvas": {
+      "width": 195,
+      "height": 386,
+      "rect": {
+        "width": 390,
+        "height": 772
+      }
+    },
+    "path": "after-phone-evening-arrival.png",
+    "errors": [],
+    "fixtureSource": "456fce9/integrated-23be251/desktop-activity-final.json",
+    "note": "Actual production App declared-camera/save fixture; not traversal proof."
+  },
+  {
+    "device": "phone",
+    "phase": "evening",
+    "landmark": "city-lookout",
+    "position": {
+      "x": 44,
+      "y": 12
+    },
+    "served": 3,
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "productArtHead": "ef2e283fe136b789540fba00d44f58c329c4f4b2",
+    "captureDriverCheckoutHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "asset": "./assets/index-3gs3FJDd.js",
+    "uiState": {
+      "blockingModals": 0,
+      "contextualPanels": 0,
+      "welcomeDismissed": false
+    },
+    "canvas": {
+      "width": 195,
+      "height": 386,
+      "rect": {
+        "width": 390,
+        "height": 772
+      }
+    },
+    "path": "after-phone-evening-city-lookout.png",
+    "errors": [],
+    "fixtureSource": "456fce9/integrated-23be251/desktop-activity-final.json",
+    "note": "Actual production App declared-camera/save fixture; not traversal proof."
+  }
+]

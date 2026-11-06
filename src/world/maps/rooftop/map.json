@@ -351,6 +351,42 @@
         "width": 6,
         "height": 1.5
       }
+    },
+    {
+      "id": "rooftop.garden-threshold-left",
+      "rect": {
+        "x": 12.3,
+        "y": 27,
+        "width": 0.18,
+        "height": 0.18
+      }
+    },
+    {
+      "id": "rooftop.garden-threshold-right",
+      "rect": {
+        "x": 16.4,
+        "y": 27,
+        "width": 0.18,
+        "height": 0.18
+      }
+    },
+    {
+      "id": "rooftop.care-tray",
+      "rect": {
+        "x": 20.8,
+        "y": 17.2,
+        "width": 1.15,
+        "height": 0.75
+      }
+    },
+    {
+      "id": "rooftop.care-soil",
+      "rect": {
+        "x": 20.7,
+        "y": 18.7,
+        "width": 0.55,
+        "height": 0.55
+      }
     }
   ],
   "occluders": [
@@ -363,6 +399,17 @@
         "height": 3
       },
       "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "rooftop.garden-threshold-lintel",
+      "rect": {
+        "x": 12.3,
+        "y": 27,
+        "width": 4.28,
+        "height": 0.18
+      },
+      "height": 2.7,
       "fadeWhenPlayerBehind": true
     }
   ],
@@ -1183,6 +1230,138 @@
       "height": 1.5,
       "layer": "object",
       "variant": 2
+    },
+    {
+      "id": "rooftop.garden-threshold-left",
+      "kind": "threshold-post",
+      "position": {
+        "x": 12.3,
+        "y": 27
+      },
+      "width": 0.18,
+      "height": 0.18,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.garden-threshold-right",
+      "kind": "threshold-post",
+      "position": {
+        "x": 16.4,
+        "y": 27
+      },
+      "width": 0.18,
+      "height": 0.18,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.garden-threshold-lintel",
+      "kind": "threshold-lintel",
+      "position": {
+        "x": 12.3,
+        "y": 27
+      },
+      "width": 4.28,
+      "height": 0.18,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.care-tray",
+      "kind": "potting-tray",
+      "position": {
+        "x": 20.8,
+        "y": 17.2
+      },
+      "width": 1.15,
+      "height": 0.75,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.care-soil",
+      "kind": "soil-sack",
+      "position": {
+        "x": 20.7,
+        "y": 18.7
+      },
+      "width": 0.55,
+      "height": 0.55,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.care-residue",
+      "kind": "soil-spill",
+      "position": {
+        "x": 19.3,
+        "y": 18.9
+      },
+      "width": 1.1,
+      "height": 0.9,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.garden-wear-0",
+      "kind": "worn-paving",
+      "position": {
+        "x": 13.4,
+        "y": 26.6
+      },
+      "width": 1.3,
+      "height": 1.3,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.garden-wear-1",
+      "kind": "worn-paving",
+      "position": {
+        "x": 15.2,
+        "y": 25.2
+      },
+      "width": 1.3,
+      "height": 1.3,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "rooftop.garden-wear-2",
+      "kind": "worn-paving",
+      "position": {
+        "x": 16.9,
+        "y": 23.7
+      },
+      "width": 1.3,
+      "height": 1.3,
+      "layer": "ground",
+      "variant": 2
+    },
+    {
+      "id": "rooftop.garden-wear-3",
+      "kind": "worn-paving",
+      "position": {
+        "x": 18.1,
+        "y": 21.7
+      },
+      "width": 1.3,
+      "height": 1.3,
+      "layer": "ground",
+      "variant": 3
+    },
+    {
+      "id": "rooftop.stair-warm-window",
+      "kind": "warm-window",
+      "position": {
+        "x": 9.08,
+        "y": 31
+      },
+      "width": 0.08,
+      "height": 0.85,
+      "layer": "object",
+      "variant": 0
     }
   ],
   "palette": {
@@ -1256,20 +1435,24 @@
       },
       "route": [
         {
-          "x": 34,
-          "y": 29.5
-        },
-        {
           "x": 28,
           "y": 29.5
         },
         {
-          "x": 28,
-          "y": 23
+          "x": 26.5,
+          "y": 24
         },
         {
-          "x": 35,
-          "y": 23
+          "x": 26.5,
+          "y": 19
+        },
+        {
+          "x": 23,
+          "y": 18
+        },
+        {
+          "x": 20,
+          "y": 18.2
         }
       ],
       "characterId": "lin-jie"

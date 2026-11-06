@@ -1,3 +1,4 @@
+import {drawRoofscape} from './roofscape';
 import type {DrawMap, WorldRenderView, WorldRenderObject} from '../../render-contract';
 import type {Point, WorldMapDefinition} from '../../schema';
 type Prop = WorldMapDefinition['props'][number];
@@ -107,6 +108,7 @@ const paintMap: DrawMap = (ctx, map, view) => {
   ctx.save(); ctx.imageSmoothingEnabled = false;
   if (view.pass === 'ground') {
     skyline();
+    drawRoofscape({box, plane, polygon, project, stem}, view);
     for (const {rect: r, material} of map.terrain) {
       const wood = material === 'roof-wood', brick = material === 'roof-brick';
       for (let y = r.y; y < r.y + r.height; y++) for (let x = r.x; x < r.x + r.width; x++) {
@@ -130,7 +132,47 @@ const paintMap: DrawMap = (ctx, map, view) => {
   const props = map.props.filter(p => view.pass === 'ground' ? p.layer === 'ground' : view.pass === 'foreground' ? p.layer === 'foreground' : p.layer === 'object').sort((a, b) => a.position.x + a.position.y - b.position.x - b.position.y);
   for (const p of props) {
     const {x, y} = p.position, w = p.width, h = p.height, variant = Number(p.variant) || 0;
-    if (p.kind === 'parapet') {
+    if (p.kind === 'threshold-post') {
+      box(x - .035, y - .035, w + .07, h + .07, 0, .12, palette.woodDark);
+      box(x, y, w, h, .12, 2.48, palette.woodLight, palette.wood, palette.woodDark);
+      for (let z = .6; z < 2.5; z += .45) {
+        stem({x: x + .09, y: y + .09}, {x: x + .25, y: y + .05}, z - .15, z + .2, palette.leaf);
+        cluster(x + .18, y + .05, z + .1, .16, palette.jade, Math.round(z * 10));
+      }
+    } else if (p.kind === 'threshold-lintel') {
+      box(x - .12, y - .02, w + .24, h + .04, 2.5, .18, palette.woodLight, palette.wood, palette.woodDark);
+      for (let k = .35; k < w; k += .65) {
+        cluster(x + k, y, 2.72 + Math.sin(k * 3) * .08, .28, k % 1 > .5 ? palette.jade : palette.leafLight, Math.round(k * 10));
+      }
+    } else if (p.kind === 'potting-tray') {
+      box(x, y, w, h, 0, .12, palette.woodLight, palette.wood, palette.woodDark);
+      for (let k = .2; k < w; k += .25) plane(x + k, y + .04, .025, h - .08, .125, palette.woodDark);
+      box(x + .2, y + .15, .42, .36, .13, .35, '#a2b7a7', '#76988b', '#547d6e');
+      stem({x: x + .6, y: y + .32}, {x: x + 1, y: y + .23}, .33, .52, '#8eafa0', 2);
+      stem({x: x + .29, y: y + .2}, {x: x + .29, y: y + .2}, .48, .72, '#779988');
+      stem({x: x + .29, y: y + .2}, {x: x + .52, y: y + .2}, .72, .72, '#779988');
+      stem({x: x + .52, y: y + .2}, {x: x + .52, y: y + .2}, .72, .48, '#779988');
+      box(x + .76, y + .46, .25, .22, .13, .2, palette.soil, palette.pot, palette.woodDark);
+      plane(x + .08, y + .52, .35, .15, .14, palette.cream);
+      for (let k = 0; k < 3; k++) plane(x + .11 + k * .08, y + .55, .02, .08, .145, '#b7bba5');
+    } else if (p.kind === 'soil-sack') {
+      box(x, y, w, h, 0, .5, '#d4c9a9', '#bcae89', '#9a9c7b');
+      box(x + .05, y + .08, w - .1, h - .16, .5, .07, '#b9ae8d');
+      stem({x: x + .12, y: y + h + .01}, {x: x + .18, y: y + h + .01}, .06, .4, '#92866c');
+      stem({x: x + .3, y: y + h + .01}, {x: x + .35, y: y + h + .01}, .04, .4, '#e0d2ad');
+      stem({x: x + .18, y: y - .03}, {x: x + .33, y: y + .12}, .1, 1.1, palette.woodLight, 2);
+      box(x + .08, y - .13, .23, .25, .02, .08, '#829d91');
+    } else if (p.kind === 'soil-spill') {
+      for (let k = 0; k < 11; k++) plane(x + (k * 7 % 13) / 13 * w, y + (k * 5 % 11) / 11 * h, .08 + k % 3 * .04, .055, .025, k % 2 ? palette.soil : '#92816a');
+    } else if (p.kind === 'worn-paving') {
+      plane(x + .06, y + .06, w - .12, h - .12, .02, '#b5b49a');
+      for (let k = 0; k < 5; k++) plane(x + .1 + k % 2 * .7, y + .12 + k * .2, .24, .06, .025, '#a0aa91');
+      plane(x + .17, y + .2, .18, .045, .026, '#d3cdb0');
+    } else if (p.kind === 'warm-window') {
+      box(x, y, w, h, 1.3, .8, palette.cream, palette.woodLight, palette.woodDark);
+      polygon([project(x + w + .01, y + .1, 1.4), project(x + w + .01, y + h - .1, 1.4), project(x + w + .01, y + h - .1, 2), project(x + w + .01, y + .1, 2)], '#d7c39c');
+      stem({x: x + w + .015, y: y + h / 2}, {x: x + w + .015, y: y + h / 2}, 1.4, 2, palette.woodLight);
+    } else if (p.kind === 'parapet') {
       box(x, y, w, h, -.35, 1.1, '#d2ceb4', '#a6ac95', '#939c88');
       box(x - .08, y - .08, w + .16, h + .16, .75, .14, '#e3dcc0', '#b1b69d', '#9ba58e');
       for (let i = 1; i < Math.max(w, h); i += 2.7) plane(x + (w > h ? i : .2), y + (w > h ? .2 : i), .3, .4, .9, '#b7bea2');
