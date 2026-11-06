@@ -43,6 +43,7 @@ export function sampleDayLight(timeOfDay: DayPhase | number): LightState {
   const stops: [number,DayPhase][]=[[0,'morning'],[.4,'noon'],[.75,'evening'],[1,'night']];
   const end=stops.findIndex(([at])=>at>=progress);
   if(end<=0) return phases.morning;
+  if(progress===stops[end][0]) return phases[stops[end][1]];
   const [at,b]=stops[end], [before,a]=stops[end-1], t=(progress-before)/(at-before);
   const from=phases[a], to=phases[b];
   const blend=(x:number,y:number)=>x+(y-x)*t;

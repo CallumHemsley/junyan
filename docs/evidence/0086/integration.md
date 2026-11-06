@@ -1,6 +1,6 @@
 # Atmosphere integration v1
 
-Foundation adapter read at 2532c61. The module has no dependency on unlanded shared files. Structural render inputs match WorldRenderView, including projection with a separate z argument.
+Foundation adapter read at 2532c61. The actual foundation render-contract.ts is merged and its WorldRenderView type is imported by canvas.ts, including projection with a separate z argument.
 
 Imports:
 

@@ -1,5 +1,6 @@
 import {sampleAtmosphere,shadeAtmosphereColor,type AtmosphereHooks,type DayPhase,type Point,type RGB} from './index';
-import {drawAtmosphereLayer} from './canvas';
+import {atmosphereHooksForMap} from './map-hooks';
+import {drawAtmosphere,drawAtmosphereLayer} from './canvas';
 const canvas=document.querySelector('canvas')!;
 const ctx=canvas.getContext('2d')!;
 const output=document.querySelector('output')!;
@@ -60,5 +61,5 @@ document.querySelector<HTMLButtonElement>('#motion')!.onclick=()=>{reduced=!redu
 document.querySelector<HTMLButtonElement>('#treatment')!.onclick=()=>{wash=!wash;draw(elapsed);};
 window.addEventListener('keydown',e=>{const moves:Record<string,[number,number]>={ArrowRight:[1,-1],ArrowLeft:[-1,1],ArrowUp:[-1,-1],ArrowDown:[1,1]};const m=moves[e.key];if(m){e.preventDefault();camera.x=Math.max(8,Math.min(40,camera.x+m[0]));camera.y=Math.max(6,Math.min(26,camera.y+m[1]));draw(elapsed);}});
 canvas.onclick=e=>{const rect=canvas.getBoundingClientRect(),u=((e.clientX-rect.left)/rect.width*640-320)/13,v=((e.clientY-rect.top)/rect.height*360-180)/6.5;camera.x=Math.max(8,Math.min(40,camera.x+(u+v)/2));camera.y=Math.max(6,Math.min(26,camera.y+(v-u)/2));draw(elapsed);};
-Object.assign(window,{__ATMOSPHERE__:{sampleAtmosphere,hooks,draw,measures,camera,get frames(){return frames;},animate(){frozenMs=null;},freeze(ms:number){frozenMs=ms;draw(ms);},phase(value:DayPhase){phase=value;draw(elapsed);}}});
+Object.assign(window,{__ATMOSPHERE__:{sampleAtmosphere,atmosphereHooksForMap,drawAtmosphere,hooks,draw,measures,camera,get frames(){return frames;},animate(){frozenMs=null;},freeze(ms:number){frozenMs=ms;draw(ms);},phase(value:DayPhase){phase=value;draw(elapsed);}}});
 requestAnimationFrame(loop);

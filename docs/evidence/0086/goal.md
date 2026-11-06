@@ -14,4 +14,4 @@ Throughput checkpoint:
 
 First deliverable: explicit pure sampling and a projection adapter. No persistent clock, random state, global listeners, blur, audio or collision changes. Time of day is supplied by foundation from the authoritative game; this module does not infer it from wall time.
 
-Remaining: prototype comparison, tests, cost evidence, foundation adapter alignment, integration and real-world review. Goal remains active.
+Prototype comparison, 10 atmosphere tests, production study cost evidence and foundation adapter alignment are published. Remaining: production wiring, authored reflection silhouettes, actual world traversal and independent review. See progress.md. Goal remains active.
