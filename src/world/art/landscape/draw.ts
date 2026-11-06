@@ -17,19 +17,24 @@ export function landscapeMaterialColor(material: string): string | undefined {
 export function drawLandscapeProp(
   ctx: CanvasRenderingContext2D, prop: LandscapeProp, project: LandscapeProject,
   unit = 18, elapsedMs = 0, reducedMotion = false,
+  shadeColor: (base: string) => string = base => base,
 ): boolean {
   const p = project(prop.position.x, prop.position.y, 0);
   const scale = unit / 18;
   ctx.save(); ctx.translate(Math.round(p.x), Math.round(p.y)); ctx.scale(scale, scale);
   const block = (x: number, y: number, w: number, h: number, color: string) => {
-    ctx.fillStyle = color; ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));
+    ctx.fillStyle = shadeColor(color); ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));
   };
   const polygon = (points: number[][], color: string) => {
-    ctx.fillStyle = color; ctx.beginPath();
+    ctx.fillStyle = shadeColor(color); ctx.beginPath();
     points.forEach(([x, y], i) => i ? ctx.lineTo(Math.round(x), Math.round(y)) : ctx.moveTo(Math.round(x), Math.round(y)));
     ctx.closePath(); ctx.fill();
   };
-  const shadow = (w: number) => polygon([[-w,0],[0,-w*.32],[w,0],[0,w*.32]], '#526b5266');
+  const shadow = (w: number) => {
+    ctx.save(); ctx.globalAlpha *= .4;
+    polygon([[-w,0],[0,-w*.32],[w,0],[0,w*.32]], '#526b52');
+    ctx.restore();
+  };
   const crown = (x: number, y: number, w: number, h: number, dark: string, mid: string, light: string) => {
     polygon([[x-w,y],[x-w+3,y-h*.5],[x-w*.6,y-h*.5],[x-w*.6,y-h*.85],[x-3,y-h*.85],[x-3,y-h],[x+w*.5,y-h],[x+w*.5,y-h*.76],[x+w-2,y-h*.76],[x+w-2,y-h*.4],[x+w,y-h*.4],[x+w,y],[x+w*.6,y+4],[x-w*.5,y+4]],dark);
     polygon([[x-w+4,y-3],[x-w+4,y-h*.4],[x-w*.5,y-h*.4],[x-w*.5,y-h*.8],[x+w*.35,y-h*.8],[x+w*.35,y-h*.6],[x+w-5,y-h*.6],[x+w-5,y-h*.2],[x+w*.3,y-1]],mid);

@@ -41,3 +41,13 @@ Inspected actual App desktop reload and phone arrival images. Entry-edge voids w
 Exact remote ref verification: `git ls-remote origin refs/heads/codex/0084-landscape` returned `6e04784a1423b7b2fc167937553fe0e8d0b5eec4` before this checkpoint. The pond/jetty correction, schema checks and typed art were already present there. The root's older `14a2ce1` observation was stale. Fetch the explicit branch ref because the initial cloud remote fetch configuration tracks main only.
 
 A longer actual-pointer river route is under investigation. The first capture loop made no progress, so it is not accepted evidence. `walk-app.mjs` is being corrected/diagnosed independently from the successful App keyboard transition and reload proof. Whole-landscape walking, full town/activity continuity, exploration responses and independent experience review remain open. Goal ACTIVE.
+
+## Long route and lighting preparation
+
+Actual App desktop pointer travel reached moon bridge, old ferry, lower crossing and fishing jetty in one continuous 42-second canvas recording (`walk/desktop-river-route.webm`). `walk/evidence.json` records endpoints and pointer segment counts. The earlier async wait loop was insufficient as a harness observation; explicit save polling established actual progress. No production movement defect is inferred from that harness issue.
+
+The extended park pointer route reached orchard basket and bamboo court, then failed a detour toward the pavilion at target (45.7126,14.6850). Its failure screenshot is retained in `walk-park/`. The park route is not accepted as complete. Shared-footprint landmark tests still pass; the real traversal failure needs diagnosis on the current foundation, which has now published asynchronous detour navigation at `74a5213`.
+
+Lighting contract v1.1 read. Primitive helper now accepts an optional pure color callback and preserves inherited alpha; runtime material wiring awaits acquisition of the foundation's published `shadeColor` type (now available at `74a5213`). No independent clock, tint or shader field was introduced. Next: merge the published foundation, wire the callback through every landscape material fill/stroke, then capture identical morning/evening map/camera with particles off.
+
+Draft review PR: https://github.com/CallumHemsley/junyan/pull/34. Base foundation already contains the earlier park/river data and art, so this PR is the boundary/persistence follow-up, not the entire initial landscape diff. No merge or independent PASS claimed.
