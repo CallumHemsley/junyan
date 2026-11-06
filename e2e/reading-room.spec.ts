@@ -4,7 +4,7 @@ import { visitWorld, interactAt, savedGame, closeActivity } from './world-journe
 import { probeAudio } from './audio-fixtures';
 import { expectNativeSpeech } from './neighbourhood-audio';
 import { privateArtifact } from './private-artifacts';
-import { cameraForMap, project } from '../src/world/camera';
+import { explorationCamera, project } from '../src/world/camera';
 import { readingRoomMap } from '../src/world/maps/reading-room';
 import { gridToWorld } from '../src/features/reading-room/world';
 import { createGame, getOrder, orderTotal } from '../src/game';
@@ -19,7 +19,7 @@ async function floorPoint(page: Page, x: number, y: number, brief: 'window' | 'a
   const world = (await savedGame(page)).world!, canvas = page.locator('.connected-world canvas');
   const bounds = (await canvas.boundingBox())!, context = (await page.locator('.world-context').boundingBox())!;
   const width = Math.ceil(bounds.width / 2), height = Math.ceil(bounds.height / 2);
-  const camera = cameraForMap(readingRoomMap.bounds, world.position, width, height, bounds.width < 600 ? 11 : 15, bounds.width < 800 ? (context.height + 84) / 2 : 0, bounds.width >= 800 ? (context.width + 32) / 2 : 0);
+  const camera = explorationCamera(readingRoomMap.bounds, world.position, width, height, bounds.width < 800 ? (context.height + 84) / 2 : 0, bounds.width >= 800 ? (context.width + 32) / 2 : 0);
   const point = project(gridToWorld({ x, y }, brief), camera);
   const position = { x: point.x * bounds.width / width, y: point.y * bounds.height / height };
   expect(position.x).toBeGreaterThan(0); expect(position.x).toBeLessThan(bounds.width);

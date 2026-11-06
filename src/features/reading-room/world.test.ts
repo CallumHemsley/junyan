@@ -4,7 +4,7 @@ import { isExitConnected } from '../../world/exit-safety';
 import { readingRoomMap } from '../../world/maps/reading-room';
 import { initialState, legal, reduce, type State } from './rules';
 import { gridToWorld, placementRect, projectReadingRoom, worldToGrid } from './world';
-import { cameraForMap, project } from '../../world/camera';
+import { explorationCamera, project } from '../../world/camera';
 
 function solveWindow(): State {
   return { ...initialState(), layouts: { window: [{ id: 'table', x: 2, y: 0, rotation: 0 }, { id: 'chair', x: 1, y: 0, rotation: 0 }], alcove: [] } };
@@ -51,7 +51,7 @@ it('keeps static room fixtures outside every legal project placement', () => {
   }
 });
 it('frames both native table previews below the phone top edge with the activity panel open', () => {
-  const camera = cameraForMap(readingRoomMap.bounds, readingRoomMap.anchors[0].position, 195, 298, 11, 175);
+  const camera = explorationCamera(readingRoomMap.bounds, readingRoomMap.anchors[0].position, 195, 298, 175);
   for (const brief of ['window', 'alcove'] as const) {
     const centre = gridToWorld({ x: 2, y: 0 }, brief);
     const top = project(centre, camera, 1.25);
