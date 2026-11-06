@@ -68,7 +68,7 @@ prop('tea-stone-table','stone-table',50,16.5,1.7,1.2,'stone',True,1.1)
 for name,x,y,kind in [('book-window',10.5,30,'closed-bookshop-display'),('breakfast-steam',34,29.5,'restaurant-frontage'),('camphor-junction',22,29,'tree-junction'),('laundry-lane',19.7,22.5,'residential-lane'),('lantern-cut',42.5,21,'narrow-lane'),('moon-gate',45,9.5,'moon-gate'),('market-pocket',33,40.5,'market'),('sawtooth-roof',72,30.5,'workshop-frontage'),('river-overlook',67,49,'river-approach'),('south-fig',24,53,'garden-lane'),('closed-yard',72,45.2,'closed-yard')]:landmark(name,x,y,kind)
 for name,x,y,interaction in [('book-window',10.5,30,'observe-window'),('junction-rest',22,29.2,'rest'),('market-baskets',34,41,'observe-market'),('river-view',67,49,'look-river'),('laundry-lane',22.5,19,'observe-laundry'),('tea-terrace',54,15,'rest')]:
  m['anchors'].append(dict(id='town.'+name,position=point(x,y),radius=1.4,featureId='exploration',interactionId='town.'+interaction))
-for name,actor,route in [('morning-walk','aunt',[(34,30),(42.5,30),(42.5,14),(45,10)]),('market-regular','glasses',[(31,41),(36,41),(38,40),(31,40)]),('workshop-delivery','backpack',[(70,33),(62,33),(62,47),(70,47)])]:
+for name,actor,route in [('morning-walk','aunt',[(34,30),(42.5,30),(42.5,14),(45,10)]),('market-regular','zhang-laoshi',[(32,43.2)]),('workshop-delivery','xiao-zhou',[(70,33),(62,33),(62,47),(70,47)])]:
  m['npcHooks'].append(dict(id='town.'+name,position=point(*route[0]),route=[point(*p) for p in route],characterId=actor))
 variants = list(dict.fromkeys(item['variant'] for item in m['props'] + m['terrain']))
 Path(__file__).parents[2].joinpath('art/town/variants.json').write_text(json.dumps(variants, indent=2)+'\n')

@@ -28,6 +28,10 @@ describe('authored town travel', () => {
     expect(canStand(map, { x: 72, y: 42 })).toBe(false);
   });
   it('keeps residents on collision-safe routes and projects phone edges accurately', () => {
+    for (const hook of map.npcHooks) {
+      expect(canStand(map, hook.position), hook.id).toBe(true);
+      for (const point of hook.route) expect(canStand(map, point), hook.id).toBe(true);
+    }
     for (const hook of map.npcHooks) for (let i = 1; i < hook.route.length; i++) expect(canWalk(map, hook.route[i - 1], hook.route[i]), hook.id).toBe(true);
     for (const width of [390, 1280]) for (const focus of map.entrances.map(e => e.position)) {
       const camera = { width, height: 640, focus, scale: 22 };

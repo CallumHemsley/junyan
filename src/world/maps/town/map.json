@@ -4031,28 +4031,16 @@
     {
       "id": "town.market-regular",
       "position": {
-        "x": 31,
-        "y": 41
+        "x": 32,
+        "y": 43.2
       },
       "route": [
         {
-          "x": 31,
-          "y": 41
-        },
-        {
-          "x": 36,
-          "y": 41
-        },
-        {
-          "x": 38,
-          "y": 40
-        },
-        {
-          "x": 31,
-          "y": 40
+          "x": 32,
+          "y": 43.2
         }
       ],
-      "characterId": "glasses"
+      "characterId": "zhang-laoshi"
     },
     {
       "id": "town.workshop-delivery",
@@ -4078,7 +4066,7 @@
           "y": 47
         }
       ],
-      "characterId": "backpack"
+      "characterId": "xiao-zhou"
     }
   ],
   "landmarks": [
