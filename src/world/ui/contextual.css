@@ -57,3 +57,6 @@
 .world-tray-item { display: inline-flex; align-items: center; gap: 4px; }
 
 .world-dialogue-history > summary { min-height: 44px; display: flex; align-items: center; width: 44px; justify-content: center; cursor: pointer; border-radius: var(--radius-tile); background: var(--surface-control); }
+@media (max-width: 360px) and (max-height: 460px) {
+  .world-context { min-height: 176px; max-height: calc(100dvh - 140px); }
+}

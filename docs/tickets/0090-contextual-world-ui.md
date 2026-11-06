@@ -57,3 +57,7 @@ Ordinary opening and physical pointer travel in production assembly e02a747 reac
 The assembled footer exposed a cascade defect. App supplies `.primary`, whose light foreground survived the contextual shell's cream background override. The owned CSS now explicitly pairs `text-primary` with `surface-control`. The owned harness reproduces the same `.primary` cascade. Computed sRGB contrast changes from 1.12:1 to 13.91:1; pointer and Enter activation pass. Assembly e02 remains unchanged. The source fix needs the next integrated increment and review.
 
 A 320×320 audit separately exposed a nearly collapsed kitchen scroll region. The narrow-width cap overrides the short-landscape allowance. Reachability measurement and a separate repair remain pending. The full objective and integration review remain ACTIVE.
+
+### Narrow short-screen CSS repair
+
+The final combined max-width 360px and max-height 460px rule now supersedes the narrow portrait cap. In the owned harness at 320×320, panel height rises from 128px to 180px and center height from 16px to 56px. Close and footer remain within screen bounds. Pickup and return callbacks pass after scrolling, with a central viewport at least 44px tall. The 390×664 center remains 142px. Type checking passes. The small-screen tradeoff and reproducible probe are documented in the evidence reference. This source repair is not silently applied to assembly e02; foundation must consume it and recheck actual camera and world minimum height. Objective remains ACTIVE.

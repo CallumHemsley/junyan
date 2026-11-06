@@ -25,3 +25,11 @@ No UI component persists feature state or dispatches domain actions. Existing re
 The design system explicitly specifies plain tabular amounts such as `2块` and `23 个词`. The legacy App uses plain `块` in money increments, pickup prices and receipt amounts. This patch preserves that accepted currency convention. Existing content registers `找零` but does not register `本子`, `托盘` or `块`. Pocket controls and tray heading are therefore caller-rendered slots; this component does not fabricate words or audio.
 
 The expanded probe verifies that the seven-entry stress history is initially collapsed, can be explicitly opened, and retains every registered line. It also verifies tray-word lookup and focus restoration before activating the separate return button.
+
+## Narrow short-screen repair
+
+The e02 audit measured a 128px panel and a 16px central viewport at 320×320. The final narrow-width rule overrode the earlier short-height rule. A final combined media query now provides a 176px minimum panel and caps it at the viewport height minus 140px. At 320×320 the panel measures 180px, the central viewport measures 56px, and close/footer remain within the screen. The 390×664 geometry remains unchanged with a 142px central viewport.
+
+Run `node docs/evidence/0090/short-layout.mjs after` against the owned port 5494 harness. The probe checks the 44px minimum central viewport, panel/footer bounds, and actual pickup/return callbacks at both sizes. Before/after geometry is in `short-before.json` and `short-after.json`; captures use the matching names. These demonstrate the owned CSS repair, not an update to the e02 assembly.
+
+A 320px-high screen cannot show the full kitchen, dialogue and world together. The center scrolls through food art, lookup words and tray controls while the close row and action footer stay available. The shared world minimum height and actual camera still need foundation's separate short-screen repair and an integrated recheck.
