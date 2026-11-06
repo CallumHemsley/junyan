@@ -32,13 +32,13 @@ function box(ctx:CanvasRenderingContext2D,view:WorldRenderView,p:Point,w:number,
  polygon(ctx,[b,c,ct,bt],view.shadeColor?.("#574c42")??"#574c42");polygon(ctx,[c,d,dt,ct],view.shadeColor?.("#796953")??"#796953");polygon(ctx,[at,bt,ct,dt],view.shadeColor?.(color)??color);
  ctx.strokeStyle="#544b3c";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(at.x,at.y);ctx.lineTo(bt.x,bt.y);ctx.lineTo(ct.x,ct.y);ctx.lineTo(dt.x,dt.y);ctx.closePath();ctx.stroke();void a;
 }
-function samplePlayer(view:WorldRenderView,facing:Facing,moving:boolean,motion?:{yaw:number;distanceTravelled:number},carrying=false) {
+function samplePlayer(view:WorldRenderView,facing:Facing,moving:boolean,motion?:{yaw?:number;distanceTravelled:number},carrying=false) {
  return sampleActor({characterId:"player",facing,action:moving?"walk":"idle",elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion,yaw:motion?.yaw,distanceTravelled:motion?.distanceTravelled,heldObject:carrying?"tray":undefined});
 }
-export function drawPlayer(ctx:CanvasRenderingContext2D,view:WorldRenderView,p:Point,facing:Facing,moving:boolean,_scale:number,motion?:{yaw:number;distanceTravelled:number},carrying=false) {
+export function drawPlayer(ctx:CanvasRenderingContext2D,view:WorldRenderView,p:Point,facing:Facing,moving:boolean,_scale:number,motion?:{yaw?:number;distanceTravelled:number},carrying=false) {
  drawActor(ctx,{...view,pass:"objects"},samplePlayer(view,facing,moving,motion,carrying),p);
 }
-export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,view:WorldRenderView,facing:Facing,moving:boolean,scale:number,game?:GameState,world?:WorldState,motion?:{yaw:number;distanceTravelled:number}) {
+export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,view:WorldRenderView,facing:Facing,moving:boolean,scale:number,game?:GameState,world?:WorldState,motion?:{yaw?:number;distanceTravelled:number}) {
  const baseHooks=hooksFor(map),hooks=map.id==="workshop"&&game?.neighbourhood?workshopAtmosphereHooks(map,game.neighbourhood.repairs,baseHooks):baseHooks;
  const atmosphere=sampleAtmosphere({mapId:map.id,day:game?.day??1,timeOfDay:(game?.served??0)<2?"morning":(game?.served??0)<3?"noon":(game?.served??0)<4?"evening":"night",seed:game?.seed??42,elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion},hooks,worldViewBounds(view));
  const shadeColor=colorShader(atmosphere.light);view={...view,shadeColor,castLight:atmosphere.light};
