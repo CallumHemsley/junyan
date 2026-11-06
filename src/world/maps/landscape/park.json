@@ -22,64 +22,325 @@
     {
       "id": "park.pond-0",
       "rect": {
-        "x": 45,
-        "y": 24,
-        "width": 12,
-        "height": 2
+        "x": 48.75,
+        "y": 24.0,
+        "width": 5.5,
+        "height": 0.5
       }
     },
     {
       "id": "park.pond-1",
       "rect": {
-        "x": 42,
-        "y": 26,
-        "width": 18,
-        "height": 3
+        "x": 46.75,
+        "y": 24.5,
+        "width": 9.5,
+        "height": 0.5
       }
     },
     {
-      "id": "park.pond-2-cut-0",
+      "id": "park.pond-2",
       "rect": {
-        "x": 40,
-        "y": 29,
-        "width": 23,
-        "height": 2.8000000000000007
-      }
-    },
-    {
-      "id": "park.pond-2-cut-1",
-      "rect": {
-        "x": 40,
-        "y": 34.2,
-        "width": 23,
-        "height": 1.7999999999999972
-      }
-    },
-    {
-      "id": "park.pond-2-cut-2",
-      "rect": {
-        "x": 40,
-        "y": 31.8,
-        "width": 19.799999999999997,
-        "height": 2.400000000000002
+        "x": 45.5,
+        "y": 25.0,
+        "width": 12.0,
+        "height": 0.5
       }
     },
     {
       "id": "park.pond-3",
       "rect": {
-        "x": 42,
-        "y": 36,
-        "width": 19,
-        "height": 3
+        "x": 44.5,
+        "y": 25.5,
+        "width": 14.0,
+        "height": 0.5
       }
     },
     {
       "id": "park.pond-4",
       "rect": {
-        "x": 46,
-        "y": 39,
-        "width": 12,
-        "height": 2
+        "x": 43.75,
+        "y": 26.0,
+        "width": 15.5,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-5",
+      "rect": {
+        "x": 43.0,
+        "y": 26.5,
+        "width": 17.0,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-6",
+      "rect": {
+        "x": 42.5,
+        "y": 27.0,
+        "width": 18.0,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-7",
+      "rect": {
+        "x": 42.0,
+        "y": 27.5,
+        "width": 19.0,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-8",
+      "rect": {
+        "x": 41.5,
+        "y": 28.0,
+        "width": 20.0,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-9",
+      "rect": {
+        "x": 41.25,
+        "y": 28.5,
+        "width": 20.5,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-10",
+      "rect": {
+        "x": 40.75,
+        "y": 29.0,
+        "width": 21.5,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-11",
+      "rect": {
+        "x": 40.5,
+        "y": 29.5,
+        "width": 22.0,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-12",
+      "rect": {
+        "x": 40.5,
+        "y": 30.0,
+        "width": 22.0,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-13",
+      "rect": {
+        "x": 40.25,
+        "y": 30.5,
+        "width": 22.5,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-14",
+      "rect": {
+        "x": 40.25,
+        "y": 31.0,
+        "width": 22.5,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-15-cut-0",
+      "rect": {
+        "x": 40.0,
+        "y": 31.5,
+        "width": 23.0,
+        "height": 0.3000000000000007
+      }
+    },
+    {
+      "id": "park.pond-15-cut-2",
+      "rect": {
+        "x": 40.0,
+        "y": 31.8,
+        "width": 19.799999999999997,
+        "height": 0.1999999999999993
+      }
+    },
+    {
+      "id": "park.pond-16-cut-2",
+      "rect": {
+        "x": 40.0,
+        "y": 32.0,
+        "width": 19.799999999999997,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-17-cut-2",
+      "rect": {
+        "x": 40.0,
+        "y": 32.5,
+        "width": 19.799999999999997,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-18-cut-2",
+      "rect": {
+        "x": 40.0,
+        "y": 33.0,
+        "width": 19.799999999999997,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-19-cut-2",
+      "rect": {
+        "x": 40.25,
+        "y": 33.5,
+        "width": 19.549999999999997,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-20-cut-1",
+      "rect": {
+        "x": 40.25,
+        "y": 34.2,
+        "width": 22.5,
+        "height": 0.29999999999999716
+      }
+    },
+    {
+      "id": "park.pond-20-cut-2",
+      "rect": {
+        "x": 40.25,
+        "y": 34.0,
+        "width": 19.549999999999997,
+        "height": 0.20000000000000284
+      }
+    },
+    {
+      "id": "park.pond-21",
+      "rect": {
+        "x": 40.5,
+        "y": 34.5,
+        "width": 22.0,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-22",
+      "rect": {
+        "x": 40.5,
+        "y": 35.0,
+        "width": 22.0,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-23",
+      "rect": {
+        "x": 40.75,
+        "y": 35.5,
+        "width": 21.5,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-24",
+      "rect": {
+        "x": 41.25,
+        "y": 36.0,
+        "width": 20.5,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-25",
+      "rect": {
+        "x": 41.5,
+        "y": 36.5,
+        "width": 20.0,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-26",
+      "rect": {
+        "x": 42.0,
+        "y": 37.0,
+        "width": 19.0,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-27",
+      "rect": {
+        "x": 42.5,
+        "y": 37.5,
+        "width": 18.0,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-28",
+      "rect": {
+        "x": 43.0,
+        "y": 38.0,
+        "width": 17.0,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-29",
+      "rect": {
+        "x": 43.75,
+        "y": 38.5,
+        "width": 15.5,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-30",
+      "rect": {
+        "x": 44.5,
+        "y": 39.0,
+        "width": 14.0,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-31",
+      "rect": {
+        "x": 45.5,
+        "y": 39.5,
+        "width": 12.0,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-32",
+      "rect": {
+        "x": 46.75,
+        "y": 40.0,
+        "width": 9.5,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "park.pond-33",
+      "rect": {
+        "x": 48.75,
+        "y": 40.5,
+        "width": 5.5,
+        "height": 0.5
       }
     },
     {
@@ -1728,10 +1989,10 @@
     {
       "id": "park.pond-shore-0",
       "rect": {
-        "x": 44,
-        "y": 23,
-        "width": 14,
-        "height": 4
+        "x": 48.05,
+        "y": 24.0,
+        "width": 6.899999999999999,
+        "height": 0.5
       },
       "material": "sand",
       "variant": 0
@@ -1739,10 +2000,10 @@
     {
       "id": "park.pond-shore-1",
       "rect": {
-        "x": 41,
-        "y": 25,
-        "width": 20,
-        "height": 5
+        "x": 46.05,
+        "y": 24.5,
+        "width": 10.899999999999999,
+        "height": 0.5
       },
       "material": "sand",
       "variant": 0
@@ -1750,10 +2011,10 @@
     {
       "id": "park.pond-shore-2",
       "rect": {
-        "x": 39,
-        "y": 28,
-        "width": 25,
-        "height": 9
+        "x": 44.8,
+        "y": 25.0,
+        "width": 13.399999999999999,
+        "height": 0.5
       },
       "material": "sand",
       "variant": 0
@@ -1761,10 +2022,10 @@
     {
       "id": "park.pond-shore-3",
       "rect": {
-        "x": 41,
-        "y": 35,
-        "width": 21,
-        "height": 5
+        "x": 43.8,
+        "y": 25.5,
+        "width": 15.399999999999999,
+        "height": 0.5
       },
       "material": "sand",
       "variant": 0
@@ -1772,10 +2033,329 @@
     {
       "id": "park.pond-shore-4",
       "rect": {
-        "x": 45,
-        "y": 38,
-        "width": 14,
-        "height": 4
+        "x": 43.05,
+        "y": 26.0,
+        "width": 16.9,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-5",
+      "rect": {
+        "x": 42.3,
+        "y": 26.5,
+        "width": 18.4,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-6",
+      "rect": {
+        "x": 41.8,
+        "y": 27.0,
+        "width": 19.4,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-7",
+      "rect": {
+        "x": 41.3,
+        "y": 27.5,
+        "width": 20.4,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-8",
+      "rect": {
+        "x": 40.8,
+        "y": 28.0,
+        "width": 21.4,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-9",
+      "rect": {
+        "x": 40.55,
+        "y": 28.5,
+        "width": 21.9,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-10",
+      "rect": {
+        "x": 40.05,
+        "y": 29.0,
+        "width": 22.9,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-11",
+      "rect": {
+        "x": 39.8,
+        "y": 29.5,
+        "width": 23.4,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-12",
+      "rect": {
+        "x": 39.8,
+        "y": 30.0,
+        "width": 23.4,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-13",
+      "rect": {
+        "x": 39.55,
+        "y": 30.5,
+        "width": 23.9,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-14",
+      "rect": {
+        "x": 39.55,
+        "y": 31.0,
+        "width": 23.9,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-15",
+      "rect": {
+        "x": 39.3,
+        "y": 31.5,
+        "width": 24.4,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-16",
+      "rect": {
+        "x": 39.3,
+        "y": 32.0,
+        "width": 24.4,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-17",
+      "rect": {
+        "x": 39.3,
+        "y": 32.5,
+        "width": 24.4,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-18",
+      "rect": {
+        "x": 39.3,
+        "y": 33.0,
+        "width": 24.4,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-19",
+      "rect": {
+        "x": 39.55,
+        "y": 33.5,
+        "width": 23.9,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-20",
+      "rect": {
+        "x": 39.55,
+        "y": 34.0,
+        "width": 23.9,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-21",
+      "rect": {
+        "x": 39.8,
+        "y": 34.5,
+        "width": 23.4,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-22",
+      "rect": {
+        "x": 39.8,
+        "y": 35.0,
+        "width": 23.4,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-23",
+      "rect": {
+        "x": 40.05,
+        "y": 35.5,
+        "width": 22.9,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-24",
+      "rect": {
+        "x": 40.55,
+        "y": 36.0,
+        "width": 21.9,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-25",
+      "rect": {
+        "x": 40.8,
+        "y": 36.5,
+        "width": 21.4,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-26",
+      "rect": {
+        "x": 41.3,
+        "y": 37.0,
+        "width": 20.4,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-27",
+      "rect": {
+        "x": 41.8,
+        "y": 37.5,
+        "width": 19.4,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-28",
+      "rect": {
+        "x": 42.3,
+        "y": 38.0,
+        "width": 18.4,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-29",
+      "rect": {
+        "x": 43.05,
+        "y": 38.5,
+        "width": 16.9,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-30",
+      "rect": {
+        "x": 43.8,
+        "y": 39.0,
+        "width": 15.399999999999999,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-31",
+      "rect": {
+        "x": 44.8,
+        "y": 39.5,
+        "width": 13.399999999999999,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-32",
+      "rect": {
+        "x": 46.05,
+        "y": 40.0,
+        "width": 10.899999999999999,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-shore-33",
+      "rect": {
+        "x": 48.05,
+        "y": 40.5,
+        "width": 6.899999999999999,
+        "height": 0.5
       },
       "material": "sand",
       "variant": 0
@@ -1783,10 +2363,10 @@
     {
       "id": "park.pond-0",
       "rect": {
-        "x": 45,
-        "y": 24,
-        "width": 12,
-        "height": 2
+        "x": 48.75,
+        "y": 24.0,
+        "width": 5.5,
+        "height": 0.5
       },
       "material": "water",
       "variant": 0
@@ -1794,43 +2374,21 @@
     {
       "id": "park.pond-1",
       "rect": {
-        "x": 42,
-        "y": 26,
-        "width": 18,
-        "height": 3
+        "x": 46.75,
+        "y": 24.5,
+        "width": 9.5,
+        "height": 0.5
       },
       "material": "water",
       "variant": 0
     },
     {
-      "id": "park.pond-2-cut-0",
+      "id": "park.pond-2",
       "rect": {
-        "x": 40,
-        "y": 29,
-        "width": 23,
-        "height": 2.8000000000000007
-      },
-      "material": "water",
-      "variant": 0
-    },
-    {
-      "id": "park.pond-2-cut-1",
-      "rect": {
-        "x": 40,
-        "y": 34.2,
-        "width": 23,
-        "height": 1.7999999999999972
-      },
-      "material": "water",
-      "variant": 0
-    },
-    {
-      "id": "park.pond-2-cut-2",
-      "rect": {
-        "x": 40,
-        "y": 31.8,
-        "width": 19.799999999999997,
-        "height": 2.400000000000002
+        "x": 45.5,
+        "y": 25.0,
+        "width": 12.0,
+        "height": 0.5
       },
       "material": "water",
       "variant": 0
@@ -1838,10 +2396,10 @@
     {
       "id": "park.pond-3",
       "rect": {
-        "x": 42,
-        "y": 36,
-        "width": 19,
-        "height": 3
+        "x": 44.5,
+        "y": 25.5,
+        "width": 14.0,
+        "height": 0.5
       },
       "material": "water",
       "variant": 0
@@ -1849,10 +2407,351 @@
     {
       "id": "park.pond-4",
       "rect": {
-        "x": 46,
-        "y": 39,
-        "width": 12,
-        "height": 2
+        "x": 43.75,
+        "y": 26.0,
+        "width": 15.5,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-5",
+      "rect": {
+        "x": 43.0,
+        "y": 26.5,
+        "width": 17.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-6",
+      "rect": {
+        "x": 42.5,
+        "y": 27.0,
+        "width": 18.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-7",
+      "rect": {
+        "x": 42.0,
+        "y": 27.5,
+        "width": 19.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-8",
+      "rect": {
+        "x": 41.5,
+        "y": 28.0,
+        "width": 20.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-9",
+      "rect": {
+        "x": 41.25,
+        "y": 28.5,
+        "width": 20.5,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-10",
+      "rect": {
+        "x": 40.75,
+        "y": 29.0,
+        "width": 21.5,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-11",
+      "rect": {
+        "x": 40.5,
+        "y": 29.5,
+        "width": 22.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-12",
+      "rect": {
+        "x": 40.5,
+        "y": 30.0,
+        "width": 22.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-13",
+      "rect": {
+        "x": 40.25,
+        "y": 30.5,
+        "width": 22.5,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-14",
+      "rect": {
+        "x": 40.25,
+        "y": 31.0,
+        "width": 22.5,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-15-cut-0",
+      "rect": {
+        "x": 40.0,
+        "y": 31.5,
+        "width": 23.0,
+        "height": 0.3000000000000007
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-15-cut-2",
+      "rect": {
+        "x": 40.0,
+        "y": 31.8,
+        "width": 19.799999999999997,
+        "height": 0.1999999999999993
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-16-cut-2",
+      "rect": {
+        "x": 40.0,
+        "y": 32.0,
+        "width": 19.799999999999997,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-17-cut-2",
+      "rect": {
+        "x": 40.0,
+        "y": 32.5,
+        "width": 19.799999999999997,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-18-cut-2",
+      "rect": {
+        "x": 40.0,
+        "y": 33.0,
+        "width": 19.799999999999997,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-19-cut-2",
+      "rect": {
+        "x": 40.25,
+        "y": 33.5,
+        "width": 19.549999999999997,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-20-cut-1",
+      "rect": {
+        "x": 40.25,
+        "y": 34.2,
+        "width": 22.5,
+        "height": 0.29999999999999716
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-20-cut-2",
+      "rect": {
+        "x": 40.25,
+        "y": 34.0,
+        "width": 19.549999999999997,
+        "height": 0.20000000000000284
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-21",
+      "rect": {
+        "x": 40.5,
+        "y": 34.5,
+        "width": 22.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-22",
+      "rect": {
+        "x": 40.5,
+        "y": 35.0,
+        "width": 22.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-23",
+      "rect": {
+        "x": 40.75,
+        "y": 35.5,
+        "width": 21.5,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-24",
+      "rect": {
+        "x": 41.25,
+        "y": 36.0,
+        "width": 20.5,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-25",
+      "rect": {
+        "x": 41.5,
+        "y": 36.5,
+        "width": 20.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-26",
+      "rect": {
+        "x": 42.0,
+        "y": 37.0,
+        "width": 19.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-27",
+      "rect": {
+        "x": 42.5,
+        "y": 37.5,
+        "width": 18.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-28",
+      "rect": {
+        "x": 43.0,
+        "y": 38.0,
+        "width": 17.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-29",
+      "rect": {
+        "x": 43.75,
+        "y": 38.5,
+        "width": 15.5,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-30",
+      "rect": {
+        "x": 44.5,
+        "y": 39.0,
+        "width": 14.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-31",
+      "rect": {
+        "x": 45.5,
+        "y": 39.5,
+        "width": 12.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-32",
+      "rect": {
+        "x": 46.75,
+        "y": 40.0,
+        "width": 9.5,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-33",
+      "rect": {
+        "x": 48.75,
+        "y": 40.5,
+        "width": 5.5,
+        "height": 0.5
       },
       "material": "water",
       "variant": 0

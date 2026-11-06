@@ -35,7 +35,7 @@ export const drawMap: DrawMap = (ctx, map, view) => {
       const n=Math.abs((x*x*37+y*y*71+x*y*13)%97),p=view.project({x,y});
       if(p.x<-unit*5||p.y<-unit*2||p.x>view.width+unit*5||p.y>view.height+unit*8)continue;
       ctx.save();ctx.globalAlpha*=.56;
-      drawLandscapeProp(ctx,{kind:n%7===0?'rock':'tree',position:{x:x+n%3*.3,y:y+n%5*.2},width:3.6,height:3.6,variant:n%4},(x,y,z=0)=>view.project({x,y},z),unit,0,true,shade);ctx.restore();
+      drawLandscapeProp(ctx,{kind:n%11===0?'rock':'mature-tree',position:{x:x+n%3*.5,y:y+n%5*.3},width:4.5+n%5*.65,height:5,variant:n%2},(x,y,z=0)=>view.project({x,y},z),unit,0,true,shade);ctx.restore();
     }
 
     const painted=new Set<string>();

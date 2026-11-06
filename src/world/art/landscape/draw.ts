@@ -12,7 +12,7 @@ export function foliageFor(prop: LandscapeProp): FoliageSpecies | undefined {
 }
 export function landscapeFoliageBounds(prop: LandscapeProp) {
   const species=foliageFor(prop); if(!species)return undefined;
-  const size=prop.kind==='mature-tree'?1:prop.kind==='willow'?.85:Math.min(1,prop.width/6);
+  const size=prop.kind==='mature-tree'?Math.min(1.2,prop.width/7):prop.kind==='willow'?.85:Math.min(1,prop.width/6);
   const raw=foliageBounds({species,seed:Number(prop.variant)||0});
   return {minX:raw.minX*size,minY:raw.minY*size,maxX:raw.maxX*size,maxY:raw.maxY*size,size};
 }

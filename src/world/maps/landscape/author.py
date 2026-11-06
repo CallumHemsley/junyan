@@ -46,10 +46,14 @@ def inside(p,r,margin=0): return r['x']-margin<=p[0]<=r['x']+r['width']+margin a
 park=base('park',84,68)
 terrain(park,'meadow',rect(0,0,84,68),'grass')
 # A stepped pond silhouette leaves real dry approaches, not a giant water rectangle.
-for i,r in enumerate([rect(45,24,12,2),rect(42,26,18,3),rect(40,29,23,7),rect(42,36,19,3),rect(46,39,12,2)]):
- terrain(park,f'pond-shore-{i}',rect(r['x']-1,r['y']-1,r['width']+2,r['height']+2),'sand')
- terrain(park,f'pond-{i}',r,'water')
- park['colliders'].append(dict(id=f'park.pond-{i}',rect=r))
+for step in range(34):
+ y=24+step*.5
+ half=11.5*math.sqrt(max(0,1-((y+.25-32.5)/8.5)**2))
+ left=round((51.5-half)*4)/4;right=round((51.5+half)*4)/4
+ r=rect(left,y,max(.5,right-left),.5)
+ terrain(park,f'pond-shore-{step}',rect(left-.7,y,r['width']+1.4,.5),'sand')
+ terrain(park,f'pond-{step}',r,'water')
+ park['colliders'].append(dict(id=f'park.pond-{step}',rect=r))
 path(park,'town-walk',[(7,67),(7,56),(25,56),(25,44),(34,44),(34,18),(54,18),(54,10),(82,10)],2.6)
 path(park,'courtyard-walk',[(1,29),(18,29),(18,18),(34,18)],2.2,'stone-path')
 path(park,'pond-loop',[(34,44),(65,44),(65,18),(54,18)],2.5)
