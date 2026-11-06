@@ -213,8 +213,10 @@ test("closing a pocket journal restores the kitchen exit and physical movement",
   await page.getByRole("dialog", {name:"本子",exact:true}).getByRole("button", {name:"关闭",exact:true}).click();
   await page.getByRole("button", {name:"端好了，去上菜",exact:true}).click();
   await expect(page.locator(".world-context")).toHaveCount(0);
+  expect((await savedGame(page)).world!.activeActivity).toBeNull();
   const before = (await savedGame(page)).world!.position;
-  await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => resolve())));
+  // Let the activity-close focus effects settle before holding a key.
+  await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
   await page.getByTestId("world-viewport").focus();
   await expect(page.getByTestId("world-viewport")).toBeFocused();
   await page.keyboard.down("ArrowDown");
