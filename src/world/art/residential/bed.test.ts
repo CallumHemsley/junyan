@@ -41,7 +41,8 @@ describe('production native bed ownership',()=>{
   it('preserves the original ordered commands and actual unsupported-camera Canvas fallback',async()=>{
     const {drawApartmentFurniture,renderFurnitureObjects}=await import('./index');
     const home=initialState(),commands:{kind:string;args:unknown[]}[]=[];
-    const api=Object.fromEntries(['box','sphere','capsule','castShadow'].map(kind=>[kind,(...args:unknown[])=>commands.push({kind,args})])) as ResidentialArtApi;
+    const record=(kind:string)=>(...args:unknown[])=>{commands.push({kind,args});};
+    const api:ResidentialArtApi={box:record('box'),sphere:record('sphere'),capsule:record('capsule'),castShadow:record('castShadow')};
     drawApartmentFurniture(api,home);
     const digest=(value:unknown)=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
     // Frozen from the pre-material public renderer, including stripes before the end/corner.
