@@ -22,3 +22,15 @@ export function cameraForMap(bounds:{width:number;height:number},position:Point,
  const y=clamp((position.x+position.y)*scale*.5,safeHeight/2,maxY-safeHeight/2);
  return {focusZ,focus:{x:(x/scale+y/(scale*.5))/2,y:(y/(scale*.5)-x/scale)/2},width,height,scale,offsetY:(safeHeight-height)/2,offsetX:(safeWidth-width)/2};
 }
+
+// Canvas units are half CSS pixels; the portrait ground window sits above the 132px control strip.
+export function explorationCamera(bounds:{width:number;height:number},position:Point,width:number,height:number,insetBottom=0,insetRight=0,focusZ=0):Camera {
+ const portrait=width<300&&height>width;
+ if(!portrait)return cameraForMap(bounds,position,width,height,width<300?11:15,insetBottom,insetRight,focusZ);
+ const availableHeight=Math.max(height*.35,height-Math.max(66,insetBottom));
+ // A room that already fits should keep its overview rather than acquire empty cutaway above it.
+ if((bounds.width+bounds.height)*11*.5<=availableHeight)return cameraForMap(bounds,position,width,height,11,Math.max(66,insetBottom),insetRight,focusZ);
+ const localHeight=Math.min(width,availableHeight);
+ const camera=cameraForMap(bounds,position,width,localHeight,11,0,insetRight,focusZ);
+ return {...camera,height,offsetY:(camera.offsetY??0)+availableHeight-localHeight/2-height/2};
+}

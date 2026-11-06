@@ -10,6 +10,7 @@ export type { RestaurantMap, RestaurantObject, RestaurantView } from './types';
 
 export function drawMap(ctx: CanvasRenderingContext2D, map: RestaurantMap, v: RestaurantView) {
   if (map.id !== 'restaurant' || v.pass !== 'ground') return;
+  ctx.fillStyle=v.shadeColor?.('#e8dfcf')??'#e8dfcf';ctx.fillRect(0,0,v.width,v.height);
   for (let y=1; y<map.bounds.height-1; y++) for(let x=1; x<map.bounds.width-1; x++) {
     polygon(ctx,v,[[x,y,0],[x+1,y,0],[x+1,y+1,0],[x,y+1,0]],p.grout);
     polygon(ctx,v,[[x+.035,y+.035,.005],[x+.965,y+.035,.005],[x+.965,y+.965,.005],[x+.035,y+.965,.005]],(x+y)%2 ? p.tile : '#ebdcbb');
@@ -21,29 +22,38 @@ export function drawMap(ctx: CanvasRenderingContext2D, map: RestaurantMap, v: Re
       ctx.fillStyle=v.shadeColor?.(color) ?? color; ctx.fillRect(Math.round(s.x),Math.round(s.y),1,1);
     }
   }
-  ctx.save();ctx.globalAlpha*=.18;
-  for(const prop of map.props.filter(prop=>prop.kind==='table')) {
-    const {x,y}=prop.position;
-    polygon(ctx,v,[[x-.24,y-.56,.012],[x+.7,y-.9,.012],[x+1.25,y-.55,.012],[x+1.1,y+.15,.012],[x+.22,y+.2,.012]],'#a99575');
-    polygon(ctx,v,[[x+.3,y+2.1,.012],[x+1.6,y+2.03,.012],[x+1.85,y+2.65,.012],[x+.75,y+2.85,.012],[x+.12,y+2.5,.012]],'#b8a584');
+  // The cast shape starts at each support and falls consistently away from the windows.
+  for(const prop of map.props) {
+    if(prop.kind!=='table'&&prop.kind!=='counter')continue;
+    const {x,y}=prop.position,w=prop.width,d=prop.height,z=prop.kind==='table'?furniture.tableTop:1.87;
+    const sx=z*.7,sy=z*.3;
+    ctx.save();ctx.globalAlpha*=.38;
+    polygon(ctx,v,[[x,y,.012],[x+w,y,.012],[x+w+sx,y+sy,.012],[x+w+sx,y+d+sy,.012],[x+sx,y+d+sy,.012],[x,y+d,.012]],'#5b4d6d');
+    ctx.globalAlpha*=.9;
+    polygon(ctx,v,[[x+.1,y+.1,.013],[x+w-.1,y+.1,.013],[x+w-.1,y+d-.1,.013],[x+.1,y+d-.1,.013]],'#40384e');
+    ctx.restore();
+    if(prop.kind==='table')for(const centerY of [y+furniture.rearStoolCenterOffsetY,y+d+furniture.frontStoolCenterOffsetY]) {
+      ctx.save();ctx.globalAlpha*=.26;
+      polygon(ctx,v,[[x+w/2-.5,centerY-.25,.015],[x+w/2+.5,centerY-.25,.015],[x+w/2+.85,centerY+.5,.015],[x+w/2-.15,centerY+.5,.015]],'#5b4d6d');
+      ctx.restore();
+    }
   }
-  polygon(ctx,v,[[10.8,19.8,.012],[11.2,17.4,.012],[12.1,16.1,.012],[13.4,17.3,.012],[13.1,19.8,.012]],'#b29b77');
-  polygon(ctx,v,[[10.3,7.9,.012],[10.5,6,.012],[14.1,5.8,.012],[14.8,7.1,.012],[13.7,8.8,.012],[11.4,8.6,.012]],'#b8a17b');
-  ctx.restore();
-  for(const y of [3,9,15]) {
+  for(const y of [3,7,11]) {
     ctx.save();ctx.globalAlpha*=.1;
     polygon(ctx,v,[[1.2,y+.2,.015],[1.2,y+1.65,.015],[4.5,y+3.2,.015],[5.2,y+1.8,.015]],'#e5e6d5');
     ctx.restore();
   }
-  for(const x of [8,16]) {
+  for(const x of [6,12]) {
     ctx.save();ctx.globalAlpha*=.07;
     oval(ctx,{...v,shadeColor:undefined},x,7,.012,2.8,'#ffd492');
     ctx.restore();
   }
-  box(ctx,v,1,20.92,-.16,10,.14,.2,p.woodLight);
-  box(ctx,v,13,20.92,-.16,10,.14,.2,p.woodLight);
-  polygon(ctx,v,[[10.8,19.7,.015],[13.2,19.7,.015],[13.2,20.85,.015],[10.8,20.85,.015]],p.jadeDark);
-  for(let x=11; x<13.2;x+=.3) polygon(ctx,v,[[x,19.75,.02],[x+.05,19.75,.02],[x+.05,20.8,.02],[x,20.8,.02]],p.jade);
+  const right=map.bounds.width-1,bottom=map.bounds.height-1,door=map.bounds.width/2;
+  box(ctx,v,1,bottom,-.35,right-1,.16,.35,p.woodLight,p.woodDark,p.wood);
+  box(ctx,v,right,1,-.35,.16,bottom-1,.35,p.woodLight,p.woodDark,p.wood);
+  polygon(ctx,v,[[door-1, bottom-1.3,.015],[door+1,bottom-1.3,.015],[door+1,bottom-.1,.015],[door-1,bottom-.1,.015]],p.jadeDark);
+  for(let x=door-1;x<door+1;x+=.3) polygon(ctx,v,[[x,bottom-1.25,.02],[x+.05,bottom-1.25,.02],[x+.05,bottom-.15,.02],[x,bottom-.15,.02]],p.jade);
+
 }
 
 function table(ctx: CanvasRenderingContext2D, v: RestaurantView, x: number, y: number, w: number, d: number) {
@@ -69,7 +79,7 @@ function counter(ctx: CanvasRenderingContext2D, v: RestaurantView, x: number, y:
 }
 
 function kitchenObjects(prop: RestaurantMap['props'][number]): RestaurantObject[] {
-  const {x,y}=prop.position,w=prop.width;
+  const {x,y}=prop.position,w=18;
   const fixtures: {id:string;x:number;extent?:number;draw:RestaurantObject['draw']}[] = [];
   for(const a of [1.7,4.2]) fixtures.push({id:`steamer.${a}`,x:x+a+.8,extent:1,draw(ctx,v) {
     for(let k=0;k<3;k++) {
@@ -126,9 +136,13 @@ function kitchenObjects(prop: RestaurantMap['props'][number]): RestaurantObject[
     oval(ctx,v,x+10.65,y+.75,2.16,.12,p.cream);
   }});
   return fixtures.map(f=>{
-    const section=Math.min(Math.ceil(w/3)-1,Math.floor((f.x+(f.extent??.5)-x)/3));
-    const support=x+section*3+Math.min(3,w-section*3)/2;
-    return {id:`restaurant.kitchen.${f.id}`,position:{x:f.x,y:y+prop.height},depth:support+y+prop.height+.02,draw:f.draw};
+    const projectPosition=(p:{x:number;y:number})=>({x:x+(p.x-x)*prop.width/18,y:y+(p.y-y)*prop.height/3});
+    const farEdge=projectPosition({x:f.x+(f.extent??.5),y:y+3});
+    const section=Math.min(Math.ceil(prop.width/3)-1,Math.floor((farEdge.x-x)/3));
+    const support=x+section*3+Math.min(3,prop.width-section*3)/2;
+    const position=projectPosition({x:f.x,y:y+3});
+    return {id:`restaurant.kitchen.${f.id}`,position,depth:support+y+prop.height+.02,
+      draw(ctx,v){f.draw(ctx,{...v,project:(p,z)=>v.project(projectPosition(p),z)});}};
   });
 }
 
@@ -164,14 +178,14 @@ export function renderObjects(map: RestaurantMap, _view: RestaurantView): Restau
     },
   }];
   });
-  for(let x=1;x<23;x+=2) objects.push({
+  for(let x=1;x<map.bounds.width-1;x+=2) objects.push({
     id:`restaurant.wall.back.${x}`,position:{x:x+1,y:1},
     occlusion:{rect:{x,y:.7,width:2,height:.7},height:3.68,fadeWhenPlayerBehind:true},
     draw(ctx,v) {
-      box(ctx,v,x,.7,0,2,.22,3.5,p.cream,'#dbc7a2','#dfcfad');
+      box(ctx,v,x,.7,0,2,.22,3.5,p.cream,'#dbc7a2','#dfcfad','plaster');
       box(ctx,v,x,.65,3.5,2,.32,.18,p.woodDark);
       box(ctx,v,x,.94,.1,2,.025,.4,p.wood);
-      if([3,5,7,15,17,19].includes(x)) {
+      if([3,5,7,11,13,15].includes(x)) {
         box(ctx,v,x,1,2.68,2,.4,.12,p.wood);
         for(const a of (x===7||x===19?[.35]:[.3,1.15])) {
           const height=x===5?.37:x===17?.61:.48;
@@ -182,16 +196,16 @@ export function renderObjects(map: RestaurantMap, _view: RestaurantView): Restau
       }
     },
   });
-  for(let y=1;y<21;y+=2) objects.push({
-    id:`restaurant.wall.left.${y}`,position:{x:1,y:y+1},
-    occlusion:{rect:{x:.7,y,width:.7,height:2},height:3.68,fadeWhenPlayerBehind:true},
+  for(let y=1;y<map.bounds.height-1;y+=2) objects.push({
+    id:`restaurant.wall.left.${y}`,position:{x:1,y:y+Math.min(2,map.bounds.height-1-y)/2},
+    occlusion:{rect:{x:.7,y,width:.7,height:Math.min(2,map.bounds.height-1-y)},height:3.68,fadeWhenPlayerBehind:true},
     draw(ctx,v) {
-      box(ctx,v,.7,y,0,.22,2,3.5,p.cream,'#c6b598','#dfcfad');
-      box(ctx,v,.65,y,3.5,.32,2,.18,p.woodDark);
-      box(ctx,v,.94,y,.1,.025,2,.4,p.wood);
-      if([3,9,15].includes(y)) {
+      box(ctx,v,.7,y,0,.22,Math.min(2,map.bounds.height-1-y),3.5,'#d8c8ad','#8c8283','#b1a393','plaster');
+      box(ctx,v,.65,y,3.5,.32,Math.min(2,map.bounds.height-1-y),.18,p.woodDark);
+      box(ctx,v,.94,y,.1,.025,Math.min(2,map.bounds.height-1-y),.4,p.wood);
+      if([3,7,11].includes(y)) {
         box(ctx,v,.96,y+.1,1.2,.08,1.8,1.8,p.woodDark);
-        const sky=y===3?'#9bb9c0':y===9?'#90acb5':'#819fab';
+        const sky=y===3?'#809cae':y===7?'#718d9f':'#677f95';
         box(ctx,v,1.05,y+.22,1.33,.035,1.56,1.52,sky,sky,sky);
         polygon(ctx,v,[[1.09,y+.23,2.6],[1.09,y+.7,2.85],[1.09,y+1.5,1.55],[1.09,y+1.13,1.34]],'#b6c8c6');
         polygon(ctx,v,[[1.095,y+.3,1.4],[1.095,y+.75,1.4],[1.095,y+.6,1.8],[1.095,y+.28,1.73]],'#83999d');
@@ -201,15 +215,15 @@ export function renderObjects(map: RestaurantMap, _view: RestaurantView): Restau
       }
     },
   });
-  for(const x of [8,16]) objects.push({
-    id:`restaurant.lamp.${x}`,position:{x,y:6},depth:map.bounds.width+map.bounds.height,
-    occlusion:{rect:{x:x-.6,y:5.4,width:1.2,height:1.2},height:5.2,fadeWhenPlayerBehind:true},
+  for(const x of [6,12]) objects.push({
+    id:`restaurant.lamp.${x}`,position:{x,y:5},depth:map.bounds.width+map.bounds.height,
+    occlusion:{rect:{x:x-.6,y:4.4,width:1.2,height:1.2},height:5.2,fadeWhenPlayerBehind:true},
     draw(ctx,v) {
-      box(ctx,v,x-.03,5.97,5.1,.06,.06,1.15,p.woodDark);
-      box(ctx,v,x-.2,5.8,5.02,.4,.4,.17,p.cream);
-      box(ctx,v,x-.4,5.6,4.82,.8,.8,.2,p.cream);
-      box(ctx,v,x-.65,5.35,4.65,1.3,1.3,.17,'#edd5a4');
-      oval(ctx,{...v,shadeColor:undefined},x,6,4.64,.38,'#ffd492');
+      box(ctx,v,x-.03,4.97,5.1,.06,.06,1.15,p.woodDark);
+      box(ctx,v,x-.2,4.8,5.02,.4,.4,.17,p.cream);
+      box(ctx,v,x-.4,4.6,4.82,.8,.8,.2,p.cream);
+      box(ctx,v,x-.65,4.35,4.65,1.3,1.3,.17,'#edd5a4');
+      oval(ctx,{...v,shadeColor:undefined},x,5,4.64,.38,'#ffd492');
     },
   });
   return objects;

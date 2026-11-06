@@ -12,7 +12,7 @@ export type ActorCatalogEntry = {
   heldObject?:BackgroundResidentDefinition['heldObject'];
 };
 export const actorCatalog:readonly ActorCatalogEntry[] = [
-  {id:'player',source:'player',appearance:{shirt:[245,232,202],hair:[54,43,34],legs:[63,78,74],accessory:'player'},cadenceMs:110},
+  {id:'player',source:'player',appearance:{shirt:[82,104,125],hair:[54,43,34],legs:[70,57,49],accessory:'player'},cadenceMs:110},
   ...content.characters.map(character=>({id:character.id,source:'regular' as const,appearance:character.appearance,cadenceMs:character.id==='zhang-laoshi'?155:character.id==='xiao-li'?90:110})),
   {id:'aunt',source:'courtyard',appearance:{shirt:[145,151,132],hair:[82,70,59],legs:[66,68,65],accessory:'aunt'},cadenceMs:130,body:{heightOffset:0,widthOffset:1,headWidthOffset:0,lean:0,legWidth:3}},
   ...backgroundResidents.map(resident=>({...resident,source:'background' as const})),
