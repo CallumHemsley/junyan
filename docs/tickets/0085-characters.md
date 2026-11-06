@@ -54,3 +54,9 @@ The production actor is integrated by foundation1450bf6. Actual desktop and phon
 ### Review handoff
 
 GitHub reports initial PR30 merged at9b99e3e. Later evidence and explicit shared-lighting consumer are separately reviewable in draft PR37, https://github.com/CallumHemsley/junyan/pull/37, source846dd6a. Full381 rules/build and7actor checks pass at that source. The working cloud preview remains strict5487 (Vite tool session3683). Root/foundation must resolve yaw/context/proxy findings and independent reviewer must inspect production before marking this ticket done. Native create_goal remains unavailable; this ticket's persistent full objective is ACTIVE.
+
+### Unvoiced background residents, active extension
+
+Root authorized five nonfood background residents while foundation fixes shared yaw. Proposed IDs were posted on coordinator PR27 before registration: bg-book-reader, bg-courier, bg-groundskeeper, bg-laundry-neighbour, bg-passerby. Owned typed definitions, proportions, clothing, default held objects and animation cadence are in background.ts; the existing sampleActor/drawActor pipeline remains authoritative. No content, voice, map, life, schema, save or dependency edits. Canonical names and presence policy remain coordinator-owned. Candidate preview is strict5487; world registration and final experience acceptance remain OPEN.
+
+Eleven scoped actor checks pass. Initial native silhouettes and real browser walking/working fixture were inspected; the fixture's cohort is explicitly unregistered, drawn against the real courtyard renderer and is not a production/collision proof. Current foundation0974efd consumes the proxy-free material seam; old notes about a missing shadeColor field or active proxy are superseded. Full objective ACTIVE.

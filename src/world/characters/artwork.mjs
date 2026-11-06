@@ -3,7 +3,7 @@ const ink = [48,43,42], skin = [232,183,143], cream = [245,232,202];
 const jade = [111,154,134], wood = [115,86,58], brass = [190,157,97];
 const shade = (color, amount) => color.map(value => Math.max(0,Math.min(255,Math.round(value*amount))));
 
-export function frame({appearance={},direction=0,phase=0,action='idle',reducedMotion=false,carrying=false,blink=false,heldObject,acting=false}={}) {
+export function frame({appearance={},direction=0,phase=0,action='idle',reducedMotion=false,carrying=false,blink=false,heldObject,acting=false,body,role}={}) {
   const pixels = new Uint8ClampedArray(W*H*4);
   const shirt = appearance.shirt || cream, hair = appearance.hair || [54,43,34];
   const trousers = appearance.legs || [63,78,74], kind = appearance.accessory || 'player';
@@ -14,10 +14,10 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
   const walking = action==='walk' && !reducedMotion;
   const stride = walking ? [-2,-1,1,2,1,-1][phase%6] : 0;
   const lowering = crouched?8:seated?5:0;
-  const shoulder = 18 + lowering + (older?2:tall?-1:0);
+  const shoulder = 18 + lowering + (older?2:tall?-1:0)+(body?.heightOffset??0);
   const hip = 29 + (seated?2:crouched?3:0);
-  const faceX = 14 + (profile?2:quarter?1:0) + (older?1:0);
-  const headY = 4 + lowering + (older?2:tall?-1:0);
+  const faceX = 14 + (profile?2:quarter?1:0) + (older?1:0)+(body?.lean??0);
+  const headY = 4 + lowering + (older?2:tall?-1:0)+(body?.heightOffset??0);
   const transformX = x => mirror ? W-1-x : x;
   let behind = false;
 
@@ -52,20 +52,20 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
   function leg(near) {
     const side=near?1:-1;
     const originX=profile?(near?14:12):quarter?(near?17:11):near?17:10;
-    const along=profile?stride*side:quarter?Math.round(stride*side*.7):Math.round(stride*side*.2);
+    const along=profile?stride*side:quarter?Math.round(stride*side*(role?1:.7)):Math.round(stride*side*.2);
     const lift=walking&&stride*side>0?2:0;
     const contactY=37-lift+(quarter&&!near?-1:0);
     const footX=originX+along+(seated?2:0);
     const knee=[originX+Math.round(along*.5),seated?34:crouched?35:33-lift];
     const color=shade(trousers,near?1:.72);
-    stroke([originX,hip],knee,4,color);
+    stroke([originX,hip],knee,body?.legWidth??4,color);
     stroke(knee,[footX,contactY-2],3,color);
     const shoeWidth=profile?6:quarter?5:4;
     rect(footX-2,contactY-1,shoeWidth,2,ink);
     rect(footX-1,contactY-1,shoeWidth-1,1,shade(trousers,1.15));
     feet.push({x:transformX(footX),y:contactY+1,planted:lift===0});
   }
-  const bodyWidth=profile?8:quarter?11:fuller?16:kind==='backpack'?12:14;
+  const bodyWidth=(profile?8:quarter?11:fuller?16:kind==='backpack'?12:14)+(body?.widthOffset??0);
   const bodyX=14-bodyWidth/2+(quarter?0:profile?1:0);
   const nearShoulder=[bodyX+bodyWidth,shoulder+(quarter?2:1)];
   const farShoulder=[bodyX,shoulder+(quarter?0:1)];
@@ -77,6 +77,14 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
     const occupied=carrying||heldObject;
     const elbow=working?[root[0]+1,root[1]+5]:occupied?[root[0]+1,root[1]+5]:[root[0]+swing*.5,root[1]+5];
     const hand=working?[root[0]+3,root[1]+3+(reducedMotion?0:phase%3)]:occupied?[root[0]+2,root[1]+7]:[root[0]+swing,root[1]+9+(near?0:-1)];
+    if(role==='reader'||role==='courier'||role==='laundry') {
+      const center=profile?18:quarter?16:14;
+      elbow[0]=root[0];elbow[1]=root[1]+5;
+      hand[0]=center+(near?3:-3);hand[1]=shoulder+(role==='reader'?8:9)+(walking?Math.abs(stride)===2?1:0:0);
+      if(role==='courier'&&action==='interact'&&!reducedMotion)hand[1]+=phase%2;
+    }
+    if(role==='groundskeeper'&&near&&working){hand[0]-=reducedMotion?0:phase%3;hand[1]+=3;}
+    if(acting&&!walking&&role)hand[1]-=1;
     if(action==='react'&&near){elbow[1]-=3;hand[1]-=7;}
     if(acting&&!walking&&!occupied&&!working&&near){hand[0]-=3;hand[1]-=4;}
     stroke(root,elbow,near?4:3,shade(shirt,near?.86:.64));
@@ -117,9 +125,28 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
     }
     if(kind==='player')rect(bodyX+2,hip-3,bodyWidth-4,1,jade);
   }
+  if(role==='reader') {
+    rect(bodyX+1,shoulder+2,2,hip-shoulder-1,shade(shirt,.8));
+    rect(bodyX+bodyWidth-3,shoulder+2,2,hip-shoulder-1,shade(shirt,.8));
+    rect(bodyX+bodyWidth-4,hip-3,2,2,wood);
+  } else if(role==='courier') {
+    stroke([bodyX+2,shoulder+1],[bodyX+bodyWidth-2,hip],2,wood);
+    rect(bodyX-2,hip-6,5,7,wood);rect(bodyX-1,hip-5,3,2,brass);
+  } else if(role==='groundskeeper') {
+    rect(bodyX+2,shoulder+5,bodyWidth-4,hip-shoulder-4,shade(shirt,.8));
+    rect(bodyX+3,shoulder+6,3,3,shade(shirt,1.12));
+  } else if(role==='laundry') {
+    polygon([[bodyX+2,hip-4],[bodyX+bodyWidth-2,hip-4],[bodyX+bodyWidth+1,35],[bodyX-2,35]],shade(shirt,.74));
+    for(let x=bodyX+1;x<bodyX+bodyWidth;x+=3)rect(x,hip-2,1,5,shade(shirt,.9));
+    rect(bodyX+2,shoulder+2,bodyWidth-4,2,cream);
+  } else if(role==='passerby') {
+    polygon([[bodyX+1,shoulder+2],[bodyX+bodyWidth-1,shoulder+2],[bodyX+bodyWidth,34],[bodyX+1,34],[bodyX,hip]],shirt);
+    rect(bodyX+bodyWidth-3,shoulder+3,1,14,shade(shirt,.7));
+    rect(bodyX+2,shoulder+1,3,7,cream);rect(bodyX+3,shoulder+7,2,4,shade(cream,.85));
+  }
   arm(true);
 
-  const headWidth=profile?11:quarter?13:older?13:14;
+  const headWidth=(profile?11:quarter?13:older?13:14)+(body?.headWidthOffset??0);
   const left=faceX-headWidth/2;
   rect(faceX-2,shoulder-3,4,4,shade(skin,.85));
   polygon([[left+3,headY],[left+headWidth-3,headY],[left+headWidth,headY+3],[left+headWidth,headY+10],[left+headWidth-3,headY+13],[left+3,headY+13],[left,headY+9],[left,headY+3]],shade(skin,.77));
@@ -157,6 +184,21 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
     polygon([[ponyX,headY+5],[ponyX+3,headY+5],[ponyX+4,headY+11],[ponyX+2,headY+16],[ponyX,headY+15],[ponyX+1,headY+10]],hair);
     rect(ponyX,headY+8,3,1,brass);
   }
+  if(role==='reader') {
+    rect(left-1,headY+5,2,7,hair);rect(left+headWidth-1,headY+5,2,6,hair);
+    rect(left+1,headY+10,2,2,hair);
+  } else if(role==='courier') {
+    polygon([[left,headY+2],[left+2,headY-2],[left+headWidth-3,headY-2],[left+headWidth,headY+2]],shade(shirt,.78));
+    rect(left-1,headY+2,headWidth+4,2,shade(shirt,.68));
+  } else if(role==='groundskeeper') {
+    rect(left+2,headY-2,headWidth-4,4,brass);rect(left-4,headY+2,headWidth+8,2,shade(brass,.85));
+    rect(left+3,headY-1,headWidth-7,1,cream);
+  } else if(role==='laundry') {
+    polygon([[left-1,headY+5],[left+1,headY-1],[left+headWidth-2,headY-1],[left+headWidth+1,headY+5],[left+headWidth-1,headY+4],[left+headWidth-3,headY+1],[left+2,headY+2]],cream);
+    polygon([[left-2,headY+4],[left,headY+4],[left+1,headY+10],[left-3,headY+8]],shade(cream,.82));
+  } else if(role==='passerby') {
+    rect(left-1,headY+5,2,8,hair);rect(left,headY+11,3,3,hair);
+  }
   behind=rear;
   const object=heldObject || (carrying?'tray':undefined);
   if(object==='tray') {
@@ -168,6 +210,35 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
     rect(held.x-5,held.y-1,2,3,shade(jade,.8));rect(held.x-4,held.y-2,2,1,jade);
   } else if(object==='tool') {
     rect(held.x,held.y-4,1,5,wood);rect(held.x-1,held.y-5,3,2,[166,174,168]);
+  }
+  if(object==='book'||object==='parcel'||object==='laundry-basket') {
+    const center=profile?18:quarter?16:14,oy=held.y;
+    if(object==='book') {
+      polygon([[center-5,oy-3],[center,oy-2],[center+5,oy-4],[center+5,oy+2],[center,oy+3],[center-5,oy+2]],wood);
+      rect(center-4,oy-2,4,3,cream);rect(center+1,oy-3,3,4,shade(cream,.93));
+      rect(center,oy-2,1,4,shade(cream,.7));
+      if(!reducedMotion&&action==='interact')rect(center+1+(phase%3),oy-2,1,3,shade(cream,.8));
+    } else if(object==='parcel') {
+      rect(center-5,oy-3,11,6,brass);rect(center-5,oy+2,11,1,wood);
+      rect(center-1,oy-3,2,6,cream);rect(center-5,oy-2,11,1,shade(brass,1.12));
+    } else {
+      polygon([[center-6,oy-1],[center+6,oy-1],[center+5,oy+5],[center-5,oy+5]],brass);
+      rect(center-6,oy-2,13,2,wood);
+      const fold=!reducedMotion&&action==='interact'?phase%3-1:0;
+      rect(center-4+fold,oy-5,5,3,cream);rect(center,oy-4,5,2,[158,175,188]);
+      for(let x=center-4;x<center+5;x+=3)rect(x,oy+1,1,3,shade(brass,.75));
+    }
+    if(!rear){rect(center-6,oy-1,2,2,skin);rect(center+5,oy-1,2,2,skin);}
+  } else if(object==='broom') {
+    const bx=Math.min(24,held.x),sweep=!reducedMotion&&action==='interact'?phase%3-1:0;
+    stroke([bx,held.y-7],[bx-2+sweep,36],1,wood);
+    polygon([[bx-3+sweep,33],[bx+sweep,33],[bx+2+sweep,38],[bx-5+sweep,38]],brass);
+    rect(bx-3+sweep,33,4,1,wood);
+  } else if(object==='folded-umbrella') {
+    const ux=Math.min(24,held.x);
+    rect(ux,held.y-2,1,4,wood);
+    polygon([[ux-1,held.y+2],[ux+2,held.y+2],[ux+1,36],[ux,38],[ux-1,36]],shade(jade,.75));
+    rect(ux-1,held.y+7,3,1,cream);
   }
   return {width:W,height:H,pixels,anchor:{x:14,y:38},held:{x:transformX(held.x),y:held.y},feet};
 }
