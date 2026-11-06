@@ -4,8 +4,8 @@ type Map = Parameters<DrawMap>[1];
 type Point = {x:number;y:number};
 type Site = {x:number;y:number;w:number;h:number;kind:'harvest'|'bank'|'grove';turn?:number};
 const profiles = [
- [[-.49,-.12],[-.42,-.26],[-.32,-.28],[-.3,-.39],[-.16,-.36],[-.07,-.46],[.08,-.4],[.17,-.43],[.27,-.3],[.36,-.28],[.36,-.16],[.47,-.06],[.41,.06],[.47,.14],[.34,.23],[.33,.34],[.17,.32],[.07,.43],[-.05,.37],[-.19,.41],[-.27,.29],[-.39,.27],[-.35,.11],[-.47,.06]],
- [[-.48,-.05],[-.39,-.2],[-.41,-.29],[-.25,-.28],[-.16,-.43],[-.04,-.38],[.07,-.44],[.14,-.31],[.3,-.34],[.29,-.2],[.44,-.14],[.38,0],[.46,.12],[.31,.19],[.28,.34],[.12,.31],[0,.43],[-.1,.34],[-.27,.38],[-.29,.23],[-.43,.2],[-.37,.05]],
+ [[-.48,-.06],[-.47,-.17],[-.41,-.26],[-.34,-.34],[-.23,-.39],[-.1,-.42],[.04,-.43],[.18,-.4],[.3,-.35],[.4,-.27],[.46,-.16],[.48,-.04],[.46,.1],[.4,.22],[.3,.31],[.16,.37],[.02,.4],[-.12,.39],[-.25,.34],[-.36,.27],[-.43,.16],[-.46,.05]],
+ [[-.46,-.08],[-.42,-.2],[-.33,-.3],[-.2,-.36],[-.06,-.4],[.09,-.39],[.23,-.35],[.35,-.28],[.43,-.17],[.47,-.04],[.45,.08],[.39,.2],[.29,.3],[.14,.37],[-.01,.4],[-.17,.37],[-.31,.29],[-.41,.17],[-.47,.05]],
 ] as const;
 const sites:Record<string,Site[]>={
  park:[{x:15.7,y:52,w:15,h:12,kind:'harvest'},{x:10,y:61,w:6.5,h:5,kind:'harvest'},
@@ -13,7 +13,7 @@ const sites:Record<string,Site[]>={
  {x:56,y:23,w:7,h:5,kind:'grove'}],
  riverbank:[{x:39,y:74.7,w:11,h:9,kind:'bank'},{x:35.2,y:20,w:10,h:8,kind:'grove'},
  {x:60.8,y:20,w:8,h:6,kind:'bank'},{x:62.5,y:59,w:10,h:11,kind:'bank'},
- {x:39,y:39,w:7,h:6,kind:'bank'},{x:57.5,y:49.8,w:11,h:8,kind:'bank'}],
+ {x:39,y:39,w:7,h:6,kind:'bank'},{x:57.5,y:49.8,w:6.5,h:5,kind:'bank'}],
 };
 function shape(ctx:CanvasRenderingContext2D,view:WorldRenderView,points:Point[],color:string){
  ctx.fillStyle=view.shadeColor?.(color)??color;ctx.beginPath();
@@ -23,10 +23,35 @@ function island(ctx:CanvasRenderingContext2D,view:WorldRenderView,x:number,y:num
  shape(ctx,view,profiles[variant%2].map(([dx,dy])=>({x:x+dx*w,y:y+dy*h})),color);
 }
 function dryClip(ctx:CanvasRenderingContext2D,map:Map,view:WorldRenderView){
- ctx.beginPath();
- for(const r of [{x:0,y:0,width:map.bounds.width,height:map.bounds.height},...map.terrain.filter(t=>['water','bridge','boardwalk'].includes(t.material)).map(t=>t.rect)]){
+ const outline=(r:{x:number;y:number;width:number;height:number})=>{
   for(const [i,p]of [{x:r.x,y:r.y},{x:r.x+r.width,y:r.y},{x:r.x+r.width,y:r.y+r.height},{x:r.x,y:r.y+r.height}].entries()){const q=view.project(p);if(i)ctx.lineTo(q.x,q.y);else ctx.moveTo(q.x,q.y);}ctx.closePath();
- }ctx.clip('evenodd');
+ };
+ ctx.beginPath();outline({x:0,y:0,width:map.bounds.width,height:map.bounds.height});
+ for(const t of map.terrain.filter(t=>t.material==='water'))outline(t.rect);
+ ctx.clip('evenodd');
+ // Deck pieces may overlap at elbows. Clip each separately so even/odd overlap
+ // cannot accidentally expose a joint to a ground-material brush.
+ for(const t of map.terrain.filter(t=>t.material==='bridge'||t.material==='boardwalk')){
+  ctx.beginPath();ctx.rect(0,0,view.width,view.height);outline(t.rect);ctx.clip('evenodd');
+ }
+}
+const clusters:Record<string,number[][]>={
+ park:[[12,50,0],[18.5,50.5,1],[13.2,54.4,2],[20.8,53,0],[9.8,61.8,1],[51,20.8,0],[55.5,20,1],[63.5,32.2,1],[64,36,2],[67,29.8,0]],
+ riverbank:[[38,76,0],[41.2,72.5,1],[36.8,71.8,2],[59.5,59.5,0],[64,60.8,1],[56,50,0],[59,48.4,2],[33,20.8,0],[62,21,1]],
+};
+function leafCluster(ctx:CanvasRenderingContext2D,view:WorldRenderView,x:number,y:number,style:number){
+ const p=view.project({x,y}),o=view.project({x:0,y:0}),axis=view.project({x:1,y:0}),scale=Math.abs(axis.x-o.x)/18;
+ ctx.save();ctx.translate(Math.round(p.x),Math.round(p.y));ctx.scale(scale,scale);
+ const colors=['#6b8150','#95a967','#bdbe83','#a29b6c'].map(base=>view.shadeColor?.(base)??base);
+ const leaf=(points:number[][],c:number)=>{ctx.fillStyle=colors[c];ctx.beginPath();points.forEach(([a,b],i)=>i?ctx.lineTo(a,b):ctx.moveTo(a,b));ctx.closePath();ctx.fill();};
+ if(style===2){
+  // Three connected fallen-leaf clusters follow a worn foot margin.
+  for(const [dx,dy]of [[-7,0],[0,-3],[7,1]]){leaf([[dx-3,dy],[dx-1,dy-2],[dx+4,dy-1],[dx+2,dy+1]],3);ctx.fillStyle=colors[2];ctx.fillRect(dx-1,dy-1,3,1);}
+ }else{
+  const blades=style===0?[[-10,-6],[-6,-12],[0,-14],[5,-10],[11,-7]]:[[-9,-3],[-6,-8],[1,-11],[7,-6],[12,-2]];
+  blades.forEach(([dx,dy],i)=>{leaf([[-1,1],[dx-2,dy+1],[dx,dy],[dx+2,dy+4],[1,2]],i%2);ctx.fillStyle=colors[2];ctx.fillRect(Math.round(dx*.7),Math.round(dy*.7),2,2);});
+ }
+ ctx.restore();
 }
 function inView(view:WorldRenderView,p:Point,r=8){const q=view.project(p),o=view.project({x:0,y:0}),a=view.project({x:1,y:0}),u=Math.abs(a.x-o.x);return q.x>-u*r&&q.y>-u*r&&q.x<view.width+u*r&&q.y<view.height+u*r;}
 export function drawLandscapeGround(ctx:CanvasRenderingContext2D,map:Map,view:WorldRenderView,stage:'underlay'|'verges'){
@@ -42,7 +67,7 @@ export function drawLandscapeGround(ctx:CanvasRenderingContext2D,map:Map,view:Wo
   for(const [i,s]of composed.entries()){
    if(!inView(view,s))continue;
    const harvest=s.kind==='harvest';
-   island(ctx,view,s.x,s.y,s.w,s.h,harvest?'#929766':s.kind==='bank'?'#829066':'#7b925f',i);
+   island(ctx,view,s.x,s.y,s.w,s.h,harvest?'#929766':s.kind==='bank'?'#899b68':'#7b925f',i);
    // Offset connected beds leave grass tongues and small green windows, not square soil cards.
    for(const [j,[dx,dy,w,h]]of [[-.17,-.18,.42,.33],[.16,-.04,.44,.38],[-.07,.22,.39,.26]].entries()){
     island(ctx,view,s.x+dx*s.w,s.y+dy*s.h,s.w*w,s.h*h,harvest?(j===1?'#a3986b':'#a49f70'):'#8e9a6d',i+j);
@@ -73,6 +98,7 @@ export function drawLandscapeGround(ctx:CanvasRenderingContext2D,map:Map,view:Wo
    island(ctx,view,x,y,w,h,map.id==='park'?'#ada47b':'#adb09a',i);
    island(ctx,view,x-.1,y-.06,w*.6,h*.32,'#c4bfa1',i+1);
   }
+  for(const [x,y,style]of clusters[map.id]??[])if(inView(view,{x,y},2))leafCluster(ctx,view,x,y,style);
   // Root fingers and leaf fans attach to real trunks; their widths track the existing props.
   for(const p of map.props.filter(p=>['tree','willow','mature-tree'].includes(p.kind))){
    if(!inView(view,p.position,4))continue;
