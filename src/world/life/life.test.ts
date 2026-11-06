@@ -155,3 +155,57 @@ describe('world proximity and repeat visits', () => {
     expect(restoreLife({ version: 1, discoveries: [item, item], reactions: [] })).toEqual(initialLifeState());
   });
 });
+
+it('advances only explicit visible play time and restores it without real-clock catchup', async () => {
+  const { advanceLife } = await import('./interactions');
+  const first = advanceLife(initialLifeState(), 1600, true);
+  expect(first.elapsedMs).toBe(1600);
+  expect(advanceLife(first, 86400000, false)).toBe(first);
+  expect(advanceLife(first, Number.NaN, true)).toBe(first);
+  expect(restoreLife(JSON.parse(JSON.stringify(first))).elapsedMs).toBe(1600);
+});
+
+it('sits with a walking cat, persists the pause, then resumes its route without teleporting', () => {
+  const input = map();
+  input.npcHooks = [{ id: 'park.black', characterId: 'black-cat', position: { x: 4, y: 4 }, route: [{ x: 8, y: 4 }] }];
+  const plan = compileLife(input, navigation);
+  let elapsedMs = 0;
+  while (sampleLife(plan, context(elapsedMs))[0].action !== 'walk') elapsedMs += 100;
+  const actor = sampleLife(plan, context(elapsedMs))[0];
+  const ctx = { ...context(elapsedMs), player: actor.position };
+  const result = interactLife(initialLifeState(), plan, [actor], ctx, `${actor.id}/sit`, navigation);
+  const restored = restoreLife(JSON.parse(JSON.stringify(result.state)));
+  const seated = sampleLife(plan, { ...ctx, elapsedMs: elapsedMs + 5000 }, navigation, restored)[0];
+  expect(seated.position).toEqual(actor.position);
+  expect(seated.activity).toBe('sit');
+  expect(seated.action).toBe('idle');
+  const resumed = sampleLife(plan, { ...ctx, elapsedMs: elapsedMs + 9100 }, navigation, restored)[0];
+  expect(resumed.action).toBe('walk');
+  expect(Math.hypot(resumed.position.x - actor.position.x, resumed.position.y - actor.position.y)).toBeCloseTo(.06, 5);
+});
+
+it('rejects authoritative habitat positions inside safe-arrival clearance', () => {
+  const input = map(), plan = compileLife(input, navigation);
+  const actors = sampleLife(plan, { ...context(), habitats: [{ characterId: 'zhang-laoshi', position: { x: 1, y: 1 }, activity: 'sit' }] }, navigation);
+  expect(actors).toEqual([]);
+});
+
+it('preserves a validated authoritative habitat even when a decorative cat route is invalid', () => {
+  const input = map();
+  input.npcHooks = [{ id: 'park.white', characterId: 'cats.white', position: { x: 4, y: 4 }, route: [{ x: -1, y: -1 }] }];
+  const plan = compileLife(input, navigation);
+  expect(plan.actors).toEqual([]);
+  expect(plan.diagnostics[0].reason).toBe('blocked-route-stop');
+  const actors = sampleLife(plan, { ...context(), habitats: [{ characterId: 'white-cat', position: { x: 5, y: 4 }, activity: 'sit' }] }, navigation);
+  expect(actors).toHaveLength(1);
+  expect(actors[0].position).toEqual({ x: 5, y: 4 });
+  expect(actors[0].action).toBe('idle');
+});
+
+it('does not duplicate a named regular through two canonical aliases on one map', () => {
+  const input = map();
+  input.npcHooks.push({ ...input.npcHooks[0], id: 'park.duplicate-teacher', characterId: 'glasses' });
+  const plan = compileLife(input, navigation);
+  expect(plan.actors).toHaveLength(1);
+  expect(plan.diagnostics.map(item => item.reason)).toContain('duplicate-character');
+});

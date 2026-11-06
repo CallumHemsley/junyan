@@ -1,9 +1,13 @@
 export { compileLife, entranceExclusions } from './routes';
 export { sampleLife } from './sample';
-export { profiles } from './profiles';
-export { nearbyLife, interactLife, initialLifeState, restoreLife, reduceLife, lifeStateSchema } from './interactions';
+export { profiles, backgroundProfiles } from './profiles';
+export { nearbyLife, interactLife, initialLifeState, advanceLife, restoreLife, reduceLife, lifeStateSchema } from './interactions';
 export type { LifeState } from './interactions';
 export type { LifeMap, Navigation, LifePlan, LifeContext, ActorPose, Affordance, LifeEvent, Facing } from './model';
 export { drawLifeActor, drawLifeReactions } from './render';
 export type { LifeView, ResidentDrawer } from './render';
 export { navigationFor } from './navigation';
+export { courtyardHabitats } from './habitats';
+export { lifeObjects, drawLifeResident } from './objects';
+export { restaurantPresence, releaseServedCustomer } from './presence';
+export { worldLifeFrame } from './scene';
