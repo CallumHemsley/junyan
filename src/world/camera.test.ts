@@ -34,7 +34,7 @@ it('keeps every stair support pickable when phone panels open and close',()=>{
 });
 
 it('keeps a fitting small-room overview and follows locally only when a panel needs space',()=>{
- const bounds={width:30,height:22},position={x:14,y:17.5};
+ const bounds={width:30,height:22},position={x:11.5,y:7};
  const room={...worldMaps.apartment,id:'small-room',bounds,walkable:[{x:0,y:0,...bounds}],colliders:[]};
  const closed=explorationCamera(bounds,position,195,386);
  expect(closed).toEqual(cameraForMap(bounds,position,195,386,11));
