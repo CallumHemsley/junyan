@@ -2,7 +2,10 @@
 <style>body{margin:0;padding:20px;background:#ede8da;color:#344b43;font:14px system-ui}h1{font-size:22px;margin:0 0 8px}p{margin:8px 0 16px;max-width:900px}canvas{image-rendering:pixelated;display:block;max-width:100%;margin-bottom:16px}#native{width:768px}#phone{width:390px}h2{font-size:17px}</style>
 <h1>0091 · authored foliage study</h1><p>Component study only. Old 52a4046 specimen → broad camphor → leaning willow → open fruit crown. Native foot anchor and light from upper left. Production map, camera, actor and ground renderer; temporary specimen positions, no collider or App acceptance claim.</p>
 <canvas id="native" width="768" height="156"></canvas>
-<h2>Desktop · morning · unit 15 (production camera scale)</h2><canvas id="desktop" width="1120" height="440"></canvas>
-<h2>Phone · morning · unit 11 (production camera scale)</h2><canvas id="phone" width="390" height="620"></canvas>
-<h2>Evening · same geometry, explicit production light callback</h2><canvas id="evening" width="1120" height="360"></canvas>
+<h2>Silhouette / conservative bounds, then inherited alpha .35</h2><canvas id="contract" width="768" height="320"></canvas>
+<h2>Reduced-scale desktop comparison · morning · unit 15</h2><canvas id="desktop" width="1120" height="440"></canvas>
+<h2>Reduced-scale phone comparison · morning · unit 11</h2><canvas id="phone" width="390" height="620"></canvas>
+<h2>Evening · same geometry, explicit production light callback</h2><canvas id="evening" width="1120" height="440"></canvas>
+<h2>Actual App scale · cameraForMap · half-resolution backing displayed 2×</h2><p>One specimen at a time. Phone390×620: backing195×310, unit11. Desktop1120×640: backing560×320, unit15. No interaction panel in this component harness; insets0. Ground, camera, actor and standing checks are production functions from1b42875.</p>
+<div id="actual"></div>
 <script type="module" src="./study.ts"></script>
