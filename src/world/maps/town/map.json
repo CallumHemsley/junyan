@@ -2280,6 +2280,7 @@
     },
     {
       "id": "to-residential-hall",
+      "cueWordId": "apartment.home",
       "rect": {
         "x": 10.5,
         "y": 21,

@@ -1,3 +1,4 @@
+import {nearbyExitTargets} from "./exit-targets";
 import {surfaceHeight,pickSurface} from "./surfaces";
 import {advanceRoute} from "./locomotion";
 import {nearbyLife} from "./life";
@@ -133,7 +134,8 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   const up=(event:KeyboardEvent)=>keys.current.delete(event.key);window.addEventListener("keyup",up);window.addEventListener("blur",refresh);
   return()=>{cancelAnimationFrame(frame);observer.disconnect();preference.removeEventListener("change",refresh);document.removeEventListener("visibilitychange",refresh);window.removeEventListener("keyup",up);window.removeEventListener("blur",refresh);};
  },[viewport,interactionInset,interactionWidth,frameArea]);
- const targets=nearbyTargets(map.id,nearbyAnchors(map,state.position),nearbyLife(planFor(map,game),actorsFor(map,game,state,clock,false),state.position,navigationFor(map)),state.position);
+ const dictionary=contentWords(content);
+ const targets=[...nearbyTargets(map.id,nearbyAnchors(map,state.position),nearbyLife(planFor(map,game),actorsFor(map,game,state,clock,false),state.position,navigationFor(map)),state.position),...nearbyExitTargets(map,state.position,dictionary)];
  const selected=paused&&visibleTarget.current?.mapId===map.id?visibleTarget.current:selectTarget(targets,state.position,selection);
  if(!paused||!visibleTarget.current)visibleTarget.current=selected;
  targetForFrame.current=state.activeActivity?null:selected;
@@ -158,7 +160,6 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   });
   return()=>cancelAnimationFrame(frame);
  },[state.activeActivity,paused,selected?.key]);
- const dictionary=contentWords(content);
  const wordToken=(word:Word)=><WordToken key={word.id} word={word} look={wordState(game.journal[word.id],fresh.includes(word.id))} onLookup={(word,trigger)=>{lookupTrigger.current=trigger;onLookup(word,trigger);}}/>;
  const label=selected?targetWords(selected,dictionary):[];
  const next=selected?cycleTarget(targets,selected.key,1):null;
@@ -168,7 +169,8 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   invocation.current={key:selected.key,fromControl};setSelection({key:selected.key,mode:"manual"});
   path.current=[];keys.current.clear();requestId.current++;
   if(selected.source==="anchor")onAction({type:"world-interact",anchorId:selected.anchor.id,now:Date.now()});
-  else onAction({type:"world-life",actionId:selected.affordance.id,elapsedMs:elapsed.current});
+  else if(selected.source==="life")onAction({type:"world-life",actionId:selected.affordance.id,elapsedMs:elapsed.current});
+  else {worker.current?.postMessage({id:requestId.current,from:state.position,to:selected.position,...(workerMap.current!==map?{map}:{})});workerMap.current=map;}
  }
  function stepPad(key:string){
   const current=latest.current;
@@ -200,7 +202,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   </div>
   {!state.activeActivity&&selected&&<div className="world-target-group" data-selected-target={selected.key} data-target-id={selected.targetId}>
    <span className="world-target-label">{selected.source==="anchor"&&selected.anchor.interactionId.startsWith("table-")&&<span>{selected.anchor.interactionId.split("-")[1]}</span>}{label.map(wordToken)}</span>
-   <button ref={activationButton} className="world-target-activate" data-world-anchor={selected.source==="anchor"?selected.anchor.id:undefined} data-world-life={selected.source==="life"?selected.affordance.id:undefined}
+   <button ref={activationButton} className="world-target-activate" data-world-anchor={selected.source==="anchor"?selected.anchor.id:undefined} data-world-life={selected.source==="life"?selected.affordance.id:undefined} data-world-exit={selected.source==="exit"?selected.exit.id:undefined}
     disabled={paused} aria-label={selected.source==="anchor"&&selected.anchor.featureId==="restaurant"?(selected.anchor.interactionId.startsWith("table-")?ui.tableOrder(Number(selected.anchor.interactionId.split("-")[1])):ui.kitchen):label.map(word=>word.text).join(language.tokenSeparator)}
     onClick={()=>activate(true)} onKeyDown={event=>{if(event.key==="ArrowLeft"||event.key==="ArrowRight"){event.preventDefault();event.stopPropagation();cycle(event.key==="ArrowLeft"?-1:1);}}}>
     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="m10 8 4 4-4 4"/></svg>
