@@ -413,6 +413,126 @@
       "height": 8,
       "layer": "object",
       "variant": 0
+    },
+    {
+      "id": "residential-hall.rear-plaster",
+      "kind": "wall",
+      "position": {
+        "x": 11,
+        "y": 2.6
+      },
+      "width": 10,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.west-room-facade",
+      "kind": "wall",
+      "position": {
+        "x": 2,
+        "y": 11.6
+      },
+      "width": 9,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.east-room-facade",
+      "kind": "wall",
+      "position": {
+        "x": 21,
+        "y": 11.6
+      },
+      "width": 9,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.west-wall",
+      "kind": "wall",
+      "position": {
+        "x": 1.6,
+        "y": 12
+      },
+      "width": 0.4,
+      "height": 12,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.stair-window",
+      "kind": "window",
+      "position": {
+        "x": 17,
+        "y": 2.6
+      },
+      "width": 3,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.mail-lamp",
+      "kind": "wall-lamp",
+      "position": {
+        "x": 27,
+        "y": 14
+      },
+      "width": 1,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.notice-board",
+      "kind": "notice-board",
+      "position": {
+        "x": 23,
+        "y": 12.1
+      },
+      "width": 2,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.bench-cushion",
+      "kind": "mat",
+      "position": {
+        "x": 4,
+        "y": 17.1
+      },
+      "width": 2,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.door-fern",
+      "kind": "plant",
+      "position": {
+        "x": 27,
+        "y": 13
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.laundry-bundle",
+      "kind": "parcel",
+      "position": {
+        "x": 21,
+        "y": 18
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
     }
   ],
   "palette": {
