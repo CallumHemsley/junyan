@@ -34,6 +34,22 @@ export function authoredLocalLights(map:AtmosphereMap):AtmosphereHooks {
     });
     return {lights:lamps,ambientByPhase:{morning:[.95,.96,.92],noon:[1,.99,.94],evening:[.64,.71,.84],night:[.49,.57,.72]}};
   }
+  if(map.id==='reading-room') {
+    const windows=['reading-room.broad-window','reading-room.alcove-window'].flatMap(id=>{
+      const prop=fixture(id,'reading-window');if(!prop)return [];
+      const {x,y}=prop.position,front=y+.625;
+      return [{id:prop.id,depth:x+y+(prop.width+prop.height)/2+.02,kind:'window' as const,position:{x:x+prop.width/2,y:front,z:1.9},radius:2.2,
+        emitter:[{x:x+.08,y:front,z:1.08},{x:x+prop.width-.08,y:front,z:1.08},{x:x+prop.width-.08,y:front,z:2.88},{x:x+.08,y:front,z:2.88}],
+        pool:[{x:x-.1,y:front+.15,z:.025},{x:x+prop.width+.1,y:front+.15,z:.025},{x:x+prop.width+.65,y:front+2.6,z:.025},{x:x+.45,y:front+2.6,z:.025}],
+      }];
+    });
+    const lamp=fixture('reading-room.lamp','reading-lamp');
+    const lamps=lamp?[{id:lamp.id,depth:lamp.position.x+lamp.position.y+(lamp.width+lamp.height)/2+.02,kind:'lamp' as const,position:{x:lamp.position.x+lamp.width/2,y:lamp.position.y+lamp.height/2,z:1.68},radius:1.6,
+      emitter:quad(lamp.position.x-.12,lamp.position.y-.12,lamp.width+.24,lamp.height+.24,1.685),
+      pool:quad(lamp.position.x-.85,lamp.position.y-.85,lamp.width+1.7,lamp.height+1.7,.025),
+    }]:[];
+    return {lights:[...windows,...lamps],ambientByPhase:{morning:[.96,.94,.87],noon:[.98,.96,.9],evening:[.74,.77,.85],night:[.59,.65,.76]}};
+  }
   if(map.id==='courtyard') {
     return {lights:['courtyard.window-blue','courtyard.window-kitchen'].flatMap(id=>{
       const prop=fixture(id,'window');return prop?[courtyardWindow(prop)]:[];
