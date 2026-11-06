@@ -1,3 +1,4 @@
+import {performLifeInteraction,type WorldLifeAction} from "../world/life-bridge";
 import { mapsForNeighbourhood, safeAfterEdit } from "../world/dynamic";
 import { restoreWorld, reduceWorld, type WorldAction } from "../world/state";
 import type { Content, GameState } from "../contracts";
@@ -16,6 +17,7 @@ import { claimGift, visitLocation } from "./state";
 
 export type NeighbourhoodAction =
   | WorldAction
+  | WorldLifeAction
   | { type: "visit-location"; location: LocationId }
   | { type: "claim-neighbourhood-gift"; giftId: GiftId }
   | ({ type: "feature-action"; now: number } & (
@@ -48,6 +50,12 @@ function apartmentRecovery(before: apartment.State, action: apartment.Action, af
 
 export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAction, content: Content): GameState {
   const state = game.neighbourhood ?? createNeighbourhood(game.day);
+  if(action.type==="world-life") {
+    const maps=mapsForNeighbourhood(state),world=restoreWorld(game.world,maps,state.location);
+    const result=performLifeInteraction(maps[world.mapId],game,world,action);
+    if(result.state===world.life)return game;
+    return {...game,world:{...world,life:result.state}};
+  }
   if (action.type === "world-move" || action.type === "world-interact" || action.type === "world-close") {
     const maps = mapsForNeighbourhood(state);
     const world = restoreWorld(game.world, maps, state.location);
