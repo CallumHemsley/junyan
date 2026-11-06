@@ -14,7 +14,7 @@ export const worldMapSchema = z.object({
   colliders: z.array(z.object({ id: z.string(), rect: rectSchema })),
   occluders: z.array(z.object({ id: z.string(), rect: rectSchema, height: finite.nonnegative(), fadeWhenPlayerBehind: z.boolean() })),
   entrances: z.array(z.object({ id: z.string(), position: pointSchema, facing: facingSchema })),
-  exits: z.array(z.object({ id: z.string(), rect: rectSchema, targetMapId: z.string(), targetEntranceId: z.string(), kind: z.enum(["door", "stairs", "path"]) })),
+  exits: z.array(z.object({ id: z.string(), rect: rectSchema, targetMapId: z.string(), targetEntranceId: z.string(), kind: z.enum(["door", "stairs", "path"]), cueWordId: z.string().min(1).optional() })),
   anchors: z.array(z.object({ id: z.string(), position: pointSchema, radius: finite.positive(), featureId: featureSchema, interactionId: z.string() })),
   terrain: z.array(z.object({ id: z.string(), rect: rectSchema, material: z.string(), variant: z.union([z.string(), z.number()]) })),
   props: z.array(z.object({ id: z.string(), kind: z.string(), position: pointSchema, width: finite.positive(), height: finite.positive(), layer: z.enum(["ground", "object", "foreground"]), variant: z.union([z.string(), z.number()]) })),
