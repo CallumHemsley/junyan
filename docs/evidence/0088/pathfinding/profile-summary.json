@@ -1,0 +1,95 @@
+{
+  "profile": "docs/evidence/0088/pathfinding/CPU.20261106.000742.2662.0.001.cpuprofile",
+  "topSelfTime": [
+    {
+      "function": "",
+      "url": "file:///workspace/junyan/docs/evidence/0088/pathfinding/geometry.mjs",
+      "line": 11,
+      "selfMs": 1528.563
+    },
+    {
+      "function": "canWalk",
+      "url": "file:///workspace/junyan/docs/evidence/0088/pathfinding/geometry.mjs",
+      "line": 17,
+      "selfMs": 532.414
+    },
+    {
+      "function": "(garbage collector)",
+      "url": "",
+      "line": 0,
+      "selfMs": 155.774
+    },
+    {
+      "function": "findPath",
+      "url": "file:///workspace/junyan/docs/evidence/0088/pathfinding/geometry.mjs",
+      "line": 41,
+      "selfMs": 78.928
+    },
+    {
+      "function": "key",
+      "url": "file:///workspace/junyan/docs/evidence/0088/pathfinding/geometry.mjs",
+      "line": 46,
+      "selfMs": 43.439
+    },
+    {
+      "function": "(program)",
+      "url": "",
+      "line": 0,
+      "selfMs": 10.456
+    },
+    {
+      "function": "canStand",
+      "url": "file:///workspace/junyan/docs/evidence/0088/pathfinding/geometry.mjs",
+      "line": 5,
+      "selfMs": 8.61
+    },
+    {
+      "function": "",
+      "url": "file:///workspace/junyan/docs/evidence/0088/pathfinding/probe.mjs",
+      "line": 1,
+      "selfMs": 7.538
+    },
+    {
+      "function": "(idle)",
+      "url": "",
+      "line": 0,
+      "selfMs": 2.957
+    },
+    {
+      "function": "compileForInternalLoader",
+      "url": "node:internal/bootstrap/realm",
+      "line": 385,
+      "selfMs": 2.153
+    },
+    {
+      "function": "utf8Slice",
+      "url": "",
+      "line": 0,
+      "selfMs": 1.208
+    },
+    {
+      "function": "normalizeString",
+      "url": "node:path",
+      "line": 93,
+      "selfMs": 1.161
+    },
+    {
+      "function": "Socket",
+      "url": "node:net",
+      "line": 363,
+      "selfMs": 1.114
+    },
+    {
+      "function": "createWritableStdioStream",
+      "url": "node:internal/bootstrap/switches/is_main_thread",
+      "line": 50,
+      "selfMs": 1.091
+    },
+    {
+      "function": "lstat",
+      "url": "",
+      "line": 0,
+      "selfMs": 1.082
+    }
+  ]
+}
