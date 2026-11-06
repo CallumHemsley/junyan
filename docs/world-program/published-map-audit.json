@@ -1,0 +1,109 @@
+{
+  "graphIssues": [],
+  "graphReachableMaps": [
+    "restaurant",
+    "town",
+    "residential-hall",
+    "courtyard",
+    "workshop",
+    "park",
+    "riverbank",
+    "residential-stairs",
+    "apartment",
+    "rooftop"
+  ],
+  "foundation": "e6270d095dead66ccb1d6fe9fb1815bbee86d702",
+  "note": "Schema, portal-reference graph and local standing samples only. Graph links do not prove collision-connected approach paths, ordinary-control traversal or visual quality.",
+  "results": [
+    {
+      "ref": "refs/remotes/origin/codex/0079-town-street",
+      "head": "e8683a7cfd1b9e14181f62c3f4e8a58f3fe426a5",
+      "file": "src/world/maps/town/map.json",
+      "mapId": "town",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/0080-courtyard",
+      "head": "bfa4621199ef23d10a73eb2c956d2095387d98de",
+      "file": "src/world/maps/courtyard/map.json",
+      "mapId": "courtyard",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/0081-residential",
+      "head": "1e106d0f21355751e27e27bf338252cdbb2637ef",
+      "file": "src/world/maps/residential/apartment.json",
+      "mapId": "apartment",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/0081-residential",
+      "head": "1e106d0f21355751e27e27bf338252cdbb2637ef",
+      "file": "src/world/maps/residential/residential-hall.json",
+      "mapId": "residential-hall",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/0081-residential",
+      "head": "1e106d0f21355751e27e27bf338252cdbb2637ef",
+      "file": "src/world/maps/residential/residential-stairs.json",
+      "mapId": "residential-stairs",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/0082-workshop",
+      "head": "39a3a5337cd973ff2ddf87e8c5eb8dfd9a6fe7fa",
+      "file": "src/world/maps/workshop/map.json",
+      "mapId": "workshop",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/0083-rooftop",
+      "head": "6072209071cba1e364ee6e2428bb1eef5de17485",
+      "file": "src/world/maps/rooftop/map.json",
+      "mapId": "rooftop",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/0084-landscape",
+      "head": "6e04784a1423b7b2fc167937553fe0e8d0b5eec4",
+      "file": "src/world/maps/landscape/park.json",
+      "mapId": "park",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/0084-landscape",
+      "head": "6e04784a1423b7b2fc167937553fe0e8d0b5eec4",
+      "file": "src/world/maps/landscape/riverbank.json",
+      "mapId": "riverbank",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": []
+    }
+  ]
+}
