@@ -1,0 +1,785 @@
+{
+  "base": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+  "head": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+  "method": "git archive base plus every non-doc changed file from GitHub comparison; every Git blob SHA verified; docs excluded",
+  "compare": {
+    "repository_full_name": "CallumHemsley/junyan",
+    "base": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+    "head": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+    "status": "ahead",
+    "ahead_by": 9,
+    "behind_by": 0,
+    "total_commits": 9,
+    "too_large": null,
+    "base_commit": {
+      "sha": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+      "url": "https://api.github.com/repos/CallumHemsley/junyan/commits/e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+      "html_url": "https://github.com/CallumHemsley/junyan/commit/e02a747c3b4d4fc6a476ea744ecb6bdc1a738132"
+    },
+    "merge_base_commit": {
+      "sha": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+      "url": "https://api.github.com/repos/CallumHemsley/junyan/commits/e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+      "html_url": "https://github.com/CallumHemsley/junyan/commit/e02a747c3b4d4fc6a476ea744ecb6bdc1a738132"
+    },
+    "files": [
+      {
+        "filename": "docs/evidence/0078/assembled/contact-sheet.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/desktop-apartment.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/desktop-courtyard.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/desktop-park.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/desktop-residential-hall.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/desktop-residential-stairs.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/desktop-restaurant.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/desktop-riverbank.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/desktop-rooftop.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/desktop-town.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/desktop-workshop.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/phone-apartment.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/phone-courtyard.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/phone-park.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/phone-residential-hall.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/phone-residential-stairs.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/phone-restaurant.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/phone-riverbank.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/phone-rooftop.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/phone-town.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/phone-workshop.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembled/results.json",
+        "status": "added",
+        "additions": 205,
+        "deletions": 0,
+        "changes": 205,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembly-capture.mjs",
+        "status": "added",
+        "additions": 27,
+        "deletions": 0,
+        "changes": 27,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembly-checks.json",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 1,
+        "changes": 10,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/assembly-provenance.json",
+        "status": "modified",
+        "additions": 74,
+        "deletions": 62,
+        "changes": 136,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud-framed.mjs",
+        "status": "added",
+        "additions": 29,
+        "deletions": 0,
+        "changes": 29,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud-framed/desktop-checkout.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud-framed/desktop-ordered.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud-framed/desktop-served.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud-framed/phone-checkout.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud-framed/phone-ordered.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud-framed/phone-served.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud-framed/results.json",
+        "status": "added",
+        "additions": 180,
+        "deletions": 0,
+        "changes": 180,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud-phases.mjs",
+        "status": "added",
+        "additions": 28,
+        "deletions": 0,
+        "changes": 28,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud-phases/desktop-checkout.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud-phases/desktop-ordered.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud-phases/desktop-served.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud-phases/phone-checkout.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud-phases/phone-ordered.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud-phases/phone-served.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud-phases/results.json",
+        "status": "added",
+        "additions": 180,
+        "deletions": 0,
+        "changes": 180,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud-probe.mjs",
+        "status": "added",
+        "additions": 25,
+        "deletions": 0,
+        "changes": 25,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud/desktop-table.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud/phone-table.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/hud/results.json",
+        "status": "added",
+        "additions": 85,
+        "deletions": 0,
+        "changes": 85,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/progress.md",
+        "status": "modified",
+        "additions": 14,
+        "deletions": 0,
+        "changes": 14,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/reduced-motion-clock.mjs",
+        "status": "added",
+        "additions": 30,
+        "deletions": 0,
+        "changes": 30,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/reduced-motion/before.json",
+        "status": "added",
+        "additions": 71,
+        "deletions": 0,
+        "changes": 71,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/reduced-motion/phone.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/reduced-motion/results.json",
+        "status": "added",
+        "additions": 71,
+        "deletions": 0,
+        "changes": 71,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/stair-traversal.mjs",
+        "status": "added",
+        "additions": 64,
+        "deletions": 0,
+        "changes": 64,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/stair-traversal/apartment.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/stair-traversal/descent-hall.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/stair-traversal/hall-landing.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/stair-traversal/home-landing.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/stair-traversal/lower-flight.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/stair-traversal/page@7568ceee5732a1c0ab6a3c0fc401a50e.webm",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/stair-traversal/page@7c012139081a8c899fc1712f3440e74f.webm",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/stair-traversal/page@beac87b36d2a5212c7eceefbdb8862c3.webm",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/stair-traversal/results.json",
+        "status": "added",
+        "additions": 11061,
+        "deletions": 0,
+        "changes": 11061,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/stair-traversal/roof-landing.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/stair-traversal/rooftop.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/stair-traversal/stalled.json",
+        "status": "added",
+        "additions": 67,
+        "deletions": 0,
+        "changes": 67,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/stair-traversal/stalled.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/0078/stair-traversal/upper-flight.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "changes": 0,
+        "previous_filename": null
+      },
+      {
+        "filename": "docs/evidence/world/0078/exit-safety.md",
+        "status": "added",
+        "additions": 11,
+        "deletions": 0,
+        "changes": 11,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/App.tsx",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/WorldViewport.tsx",
+        "status": "modified",
+        "additions": 10,
+        "deletions": 7,
+        "changes": 17,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/art/residential/art.test.ts",
+        "status": "modified",
+        "additions": 17,
+        "deletions": 1,
+        "changes": 18,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/art/residential/harness.ts",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2,
+        "changes": 4,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/art/residential/index.ts",
+        "status": "modified",
+        "additions": 65,
+        "deletions": 19,
+        "changes": 84,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/art/residential/lighting.ts",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3,
+        "changes": 6,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/camera.ts",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 7,
+        "changes": 16,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/dynamic.ts",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 13,
+        "changes": 18,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/exit-safety.test.ts",
+        "status": "added",
+        "additions": 19,
+        "deletions": 0,
+        "changes": 19,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/exit-safety.ts",
+        "status": "added",
+        "additions": 40,
+        "deletions": 0,
+        "changes": 40,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/life/routines.test.ts",
+        "status": "modified",
+        "additions": 41,
+        "deletions": 2,
+        "changes": 43,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/maps/residential/elevation.test.ts",
+        "status": "modified",
+        "additions": 12,
+        "deletions": 11,
+        "changes": 23,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/maps/residential/elevation.ts",
+        "status": "modified",
+        "additions": 24,
+        "deletions": 6,
+        "changes": 30,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/maps/residential/index.ts",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 0,
+        "changes": 2,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/painter.ts",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 3,
+        "changes": 7,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/state.ts",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 2,
+        "changes": 5,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/surfaces.test.ts",
+        "status": "added",
+        "additions": 45,
+        "deletions": 0,
+        "changes": 45,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/surfaces.ts",
+        "status": "added",
+        "additions": 23,
+        "deletions": 0,
+        "changes": 23,
+        "previous_filename": null
+      },
+      {
+        "filename": "src/world/world.test.ts",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 0,
+        "changes": 6,
+        "previous_filename": null
+      }
+    ]
+  },
+  "blobs": [
+    {
+      "path": "src/App.tsx",
+      "sha": "65c7870643bb342fc23819776fc5426ed488bab5"
+    },
+    {
+      "path": "src/world/WorldViewport.tsx",
+      "sha": "832c9c7d9e6bbaed9d9ba7842e0366a65d91c759"
+    },
+    {
+      "path": "src/world/art/residential/art.test.ts",
+      "sha": "8218ab44c97d0139ebb73aec69a4ba2455dcf305"
+    },
+    {
+      "path": "src/world/art/residential/harness.ts",
+      "sha": "7a9ae420a506cf830441bcff8daea38048153f12"
+    },
+    {
+      "path": "src/world/art/residential/index.ts",
+      "sha": "626a3754178f8dca25522515d7e8a1ab44bf9ef5"
+    },
+    {
+      "path": "src/world/art/residential/lighting.ts",
+      "sha": "d288f86739f0a52df523e02c3568e607b2ea2e5c"
+    },
+    {
+      "path": "src/world/camera.ts",
+      "sha": "3df70059f3a8bbca6e86724df641580e63a741ec"
+    },
+    {
+      "path": "src/world/dynamic.ts",
+      "sha": "857757fef9e9f9ae5b5229907cd68634bbe24c12"
+    },
+    {
+      "path": "src/world/exit-safety.test.ts",
+      "sha": "d20956c587445916cdfbbf335fe098aeb1b74bfb"
+    },
+    {
+      "path": "src/world/exit-safety.ts",
+      "sha": "d2ea40aa8a4e4a8266f693b66890623884d60e37"
+    },
+    {
+      "path": "src/world/life/routines.test.ts",
+      "sha": "a8635a6a3e15de227ef3559eccff2bfa597b78d7"
+    },
+    {
+      "path": "src/world/maps/residential/elevation.test.ts",
+      "sha": "ee9f866c3f426e0abe43401814cbd93d285f9e2a"
+    },
+    {
+      "path": "src/world/maps/residential/elevation.ts",
+      "sha": "5a510fd7e9a5aae128f3a90e93cfe01d3b1da4c8"
+    },
+    {
+      "path": "src/world/maps/residential/index.ts",
+      "sha": "33e26871554282f1b60ea61f014de0fd5401a74d"
+    },
+    {
+      "path": "src/world/painter.ts",
+      "sha": "a58504461710d664ebe57c719a7d0344680e729b"
+    },
+    {
+      "path": "src/world/state.ts",
+      "sha": "b027429f025e2701a562a2867f8345b404284076"
+    },
+    {
+      "path": "src/world/surfaces.test.ts",
+      "sha": "49f56f008c580d20025cc7fa1b45603ff619e37a"
+    },
+    {
+      "path": "src/world/surfaces.ts",
+      "sha": "576bb19ba088c2b856c9e38ee4f2e0b004081d80"
+    },
+    {
+      "path": "src/world/world.test.ts",
+      "sha": "65c31acafa4c03d5f31ef52677a6a72e65470cfd"
+    }
+  ]
+}
