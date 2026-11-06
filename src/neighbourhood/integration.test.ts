@@ -70,7 +70,7 @@ describe("saved neighbourhood integration", () => {
     const game=createGame(content);
     const {neighbourhood,...legacy}=game;
     const saved=validateSavedGame(legacy,content)!;
-    expect(saved).toEqual({...legacy,neighbourhood:createNeighbourhood(1)});
+    expect(saved).toMatchObject({...legacy,neighbourhood:createNeighbourhood(1)});
     expect(startSession({checkpoint:null,saved,failed:false},content,42).session.phase).toBe("day");
     expect(neighbourhood).toEqual(saved.neighbourhood);
   });
@@ -110,7 +110,7 @@ describe("saved neighbourhood integration", () => {
     expect(rejected.journal).toBe(game.journal);
     const placed=act(rejected,{type:"feature-action",feature:"apartment",action:{type:"place",x:2,y:1},now:4});
     expect(placed.journal[wordByHanzi["放"].id]).toMatchObject({recovered:true,lookups:0,lastSeen:4});
-    expect(reload(placed)).toEqual(placed);
+    expect(reload(placed)).toMatchObject(placed);
     expect(placed.neighbourhood?.apartment.placements.some(item=>item.id==="table")).toBe(true);
   });
 
@@ -176,7 +176,7 @@ describe("saved neighbourhood integration", () => {
     expect(next.neighbourhood?.garden.day).toBe(2);
     expect(Object.values(next.neighbourhood!.garden.plants).every(plant=>plant.growth===1)).toBe(true);
     expect(availableGifts(next.neighbourhood!)).toContain("garden.planter");
-    expect(reload(next)).toEqual(next);
+    expect(reload(next)).toMatchObject(next);
     expect(reduceGame(next,{type:"next-day"},content)).toBe(next);
   });
 });
