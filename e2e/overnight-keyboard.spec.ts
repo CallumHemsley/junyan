@@ -149,7 +149,7 @@ test("keyboard journey keeps named controls and focus across a full day", async 
     for (const item of order.items) {
       const food = content.foods.find((entry) => entry.id === item.foodId)!;
       for (let count = 0; count < item.quantity; count++) {
-        await activate(page, kitchen.getByRole("button", { name: `拿${food.word.hanzi}`, exact: true }));
+        await activate(page, kitchen.getByRole("button", { name: `拿${food.word.text}`, exact: true }));
       }
     }
     await activate(page, kitchen.getByRole("button", { name: "端好了，去上菜" }));

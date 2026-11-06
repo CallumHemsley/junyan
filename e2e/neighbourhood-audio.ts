@@ -1,5 +1,8 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 import type { Line } from '../src/contracts';
+import { adaptMandarinContent } from '../src/content/mandarin';
+import { createLineSchema } from '../src/content/schema';
+import { language } from '../src/language';
 import apartment from '../src/features/apartment/content.json' with {type: 'json'};
 import cats from '../src/features/cats/content.json' with {type: 'json'};
 import repairs from '../src/features/repairs/content.json' with {type: 'json'};
@@ -9,7 +12,7 @@ const lines = {apartment: apartment.lines, cats: cats.lines, repairs: repairs.ch
 export function featureLine(feature: keyof typeof lines, id: string): Line {
   const line = lines[feature].find(value => value.id === `${feature}.${id}`);
   if (!line) throw new Error(`Unknown feature line ${feature}.${id}`);
-  return line;
+  return createLineSchema(language).parse(adaptMandarinContent(line));
 }
 
 export async function expectNativeSpeech(page: Page, path: string, since = 0) {
@@ -26,7 +29,7 @@ export async function checkLineAndWord(page: Page, line: Line, spoken: Locator, 
   await replay.click();
   await expectNativeSpeech(page, line.audio, since);
   const token = spoken.locator('[data-word-lookup]').first();
-  await expect(token).toHaveText(line.tokens[0].hanzi);
+  await expect(token).toHaveText(line.tokens[0].text);
   since = await page.evaluate(() => (window as any).__audioProbe.length);
   await token.click();
   await expect(page.locator('.word-popover .pinyin')).not.toBeEmpty();

@@ -137,7 +137,7 @@ test("rapid keyboard/pointer selection records once and cancels prior native aud
     return { journal: h.getState().journal, words: h.content.orders.flatMap((o: any) => o.line.tokens).concat(h.content.characters.flatMap((c: any) => c.greeting.tokens)) };
   });
   for (const hanzi of new Set(selected)) {
-    const id = after.words.find((w: any) => w.hanzi === hanzi).id;
+    const id = after.words.find((w: any) => w.text === hanzi).id;
     expect(after.journal[id].lookups - (before[id]?.lookups ?? 0)).toBe(selected.filter(w => w === hanzi).length);
   }
 });

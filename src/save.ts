@@ -122,12 +122,22 @@ function database(): Promise<IDBDatabase> {
     request.onerror = () => reject(request.error);
   });
 }
+export function saveKey(languageId = "zh-CN"): string {
+  return languageId === "zh-CN" ? "v1" : `v1:${languageId}`;
+}
+
+export function checkpointKey(languageId = "zh-CN"): string {
+  return languageId === "zh-CN"
+    ? "junyan-waiter-pending-v1"
+    : `junyan-waiter-pending-v1:${languageId}`;
+}
+
 export async function loadGame(content: Content): Promise<GameState | null> {
   const db = await database();
   try {
     return await new Promise((resolve, reject) => {
       const transaction = db.transaction("saves");
-      const request = transaction.objectStore("saves").get("v1");
+      const request = transaction.objectStore("saves").get(saveKey(content.language));
       transaction.oncomplete = () => {
         resolve(validateSavedGame(request.result, content));
       };
@@ -139,12 +149,12 @@ export async function loadGame(content: Content): Promise<GameState | null> {
     db.close();
   }
 }
-export async function saveGame(state: GameState): Promise<void> {
+export async function saveGame(state: GameState, languageId?: string): Promise<void> {
   const db = await database();
   try {
     await new Promise<void>((resolve, reject) => {
       const transaction = db.transaction("saves", "readwrite");
-      transaction.objectStore("saves").put(state, "v1");
+      transaction.objectStore("saves").put(state, saveKey(languageId));
       transaction.oncomplete = () => resolve();
       transaction.onerror = () => reject(transaction.error);
       transaction.onabort = () => reject(transaction.error);

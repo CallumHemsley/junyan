@@ -5,7 +5,6 @@ import * as apartment from "../features/apartment/rules";
 import * as cats from "../features/cats/rules";
 import * as repairs from "../features/repairs/rules";
 import * as garden from "../features/garden/rules";
-import { wordByHanzi } from "../features/apartment/content";
 import type { GiftId, LocationId } from "./contracts";
 import { availableGifts, createNeighbourhood } from "./model";
 import { claimGift, visitLocation } from "./state";
@@ -22,23 +21,6 @@ export type NeighbourhoodAction =
 
 export function isNeighbourhoodAction(action: { type: string }): action is NeighbourhoodAction {
   return action.type === "visit-location" || action.type === "feature-action" || action.type === "claim-neighbourhood-gift";
-}
-
-function apartmentRecovery(before: apartment.State, action: apartment.Action, after: apartment.State): string[] {
-  let words: string[] = [];
-  if (action.type === "accept-starter" && after.owned.length !== before.owned.length) words = ["桌子", "椅子"];
-  if (action.type === "choose-colour" && before.colour !== after.colour) words = [after.colour === "blue" ? "蓝色" : "米色", "靠垫"];
-  const changed = JSON.stringify(before.placements) !== JSON.stringify(after.placements);
-  if (action.type === "store" && changed) words = ["收起来"];
-  if (action.type === "place" && changed && before.selected) {
-    const names: Record<apartment.ItemId, string[]> = {
-      bed: ["床"], table: ["桌子"], chair: ["椅子"], rug: ["地毯"], cushion: ["靠垫"],
-      "repairs.stool": ["凳子"], "garden.planter": ["盆栽"], "cats.cushion": ["猫", "靠垫"],
-      vase: ["花瓶"], basket: ["篮子"], lamp: ["灯"],
-    };
-    words = [...names[before.selected], "放", "这里"];
-  }
-  return words.map(hanzi => wordByHanzi[hanzi].id);
 }
 
 export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAction, content: Content): GameState {
@@ -60,7 +42,7 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
       const after = apartment.reduce(state.apartment, action.action, game.day);
       if (after === state.apartment) return game;
       next = { ...state, apartment: after };
-      recovered = apartmentRecovery(state.apartment, action.action, after);
+      recovered = apartment.recoveryForTransition(state.apartment, action.action, after);
       break;
     }
     case "cats": {

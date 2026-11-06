@@ -1,9 +1,8 @@
 import { expect, type Page } from "@playwright/test";
-import data from "../src/content/content.json" with { type: "json" };
+import { content } from "../src/content";
 import type { Content } from "../src/contracts";
 import { createGame } from "../src/game";
 
-const content = data as Content;
 
 export function withSkip(path: string) {
   return `${path}${path.includes("?") ? "&" : "?"}opening=skip`;
@@ -30,8 +29,8 @@ export async function seedDayOne(page: Page, base: string, state: object = creat
   }, state);
 }
 
-const hanzi = (line: { tokens: { hanzi: string }[] }) => line.tokens.map((word) => word.hanzi).join("");
-const foodName = (id: string) => content.foods.find((food) => food.id === id)!.word.hanzi;
+const hanzi = (line: { tokens: { text: string }[] }) => line.tokens.map((word) => word.text).join("");
+const foodName = (id: string) => content.foods.find((food) => food.id === id)!.word.text;
 
 export async function playOpening(
   page: Page,
@@ -97,7 +96,7 @@ export async function playOpening(
       }
       case "reply": {
         const chips = opening.locator(".reply-chips").getByRole("button");
-        const option = step.options.find((choice) => choice.word.hanzi === reply)!;
+        const option = step.options.find((choice) => choice.word.text === reply)!;
         await snap(step.type);
         await pause();
         await opening.locator(".reply-chips").getByRole("button", { name: reply, exact: true }).click();
@@ -108,7 +107,7 @@ export async function playOpening(
         break;
       }
       case "end":
-        await expect(opening.locator(".end-card h2")).toHaveText(step.title.tokens.map((word) => word.hanzi).join(" · "));
+        await expect(opening.locator(".end-card h2")).toHaveText(step.title.tokens.map((word) => word.text).join(" · "));
         await snap(step.type);
         await next();
         break;

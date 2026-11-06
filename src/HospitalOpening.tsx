@@ -7,6 +7,8 @@ import { NEXT_BED, type OpeningState, type Session, type SessionAction } from ".
 import { tokenLook, wardFrame } from "./opening-view";
 import WardScene from "./scene/WardScene";
 import WordToken from "./WordToken";
+import WordLine from "./WordLine";
+import { ui } from "./language/ui";
 
 const Eye = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -88,7 +90,7 @@ export default function HospitalOpening({
   if (!woke)
     return (
       <main className="opening opening-wake" inert={inert}>
-        <button className="wake-button" aria-label="醒来" onClick={wake}>
+        <button className="wake-button" aria-label={ui.wake} onClick={wake}>
           <Eye />
         </button>
       </main>
@@ -97,16 +99,14 @@ export default function HospitalOpening({
   const who = (id: string) => content.opening.cast.find((member) => member.id === id)?.name;
   const tokens = (line: Line) => (
     <div className="spoken">
-      {line.tokens.map((word, index) => (
-        <WordToken key={`${word.id}-${index}`} word={word} look={tokenLook(opening, word.id)} onLookup={lookup} />
-      ))}
+      <WordLine line={line} look={(word) => tokenLook(opening, word.id)} onLookup={lookup} />
     </div>
   );
   const label = (word: Word) => (
-    <span className={`tile-word${tokenLook(opening, word.id) === "fogged" ? " fogged" : ""}`}>{word.hanzi}</span>
+    <span className={`tile-word${tokenLook(opening, word.id) === "fogged" ? " fogged" : ""}`}>{word.text}</span>
   );
   const replay = (clip: string) => (
-    <button className="round-button" aria-label="再听一遍" onClick={() => play(clip)}>
+    <button className="round-button" aria-label={ui.replay} onClick={() => play(clip)}>
       <Speaker />
     </button>
   );
@@ -117,7 +117,7 @@ export default function HospitalOpening({
     </div>
   );
   const proceed = (
-    <button className="continue-button" aria-label="继续" data-step-focus onClick={advance}>
+    <button className="continue-button" aria-label={ui.continue} data-step-focus onClick={advance}>
       <Arrow />
     </button>
   );
@@ -158,14 +158,14 @@ export default function HospitalOpening({
         return (
           <>
             <div className="paper-card">{speech(step.who, step.line, false)}</div>
-            <div className="paper-card bedside" role="group" aria-label="床头柜">
+            <div className="paper-card bedside" role="group" aria-label={ui.bedside}>
               <div className="bedside-tray">
                 {foods.map((food, index) => (
                   <button
                     key={food.id}
                     className={`tile${settled && offered?.food === food.id ? " given" : ""}`}
                     data-nudge={opening.feedback === "wrong-food" && offered?.food === food.id ? offered.tries % 2 : undefined}
-                    aria-label={food.word.hanzi}
+                    aria-label={food.word.text}
                     disabled={settled}
                     data-step-focus={index === 0 && !settled ? true : undefined}
                     onClick={() => give(food.id)}
@@ -200,7 +200,7 @@ export default function HospitalOpening({
           <>
             {asked.type === "say" && <div className="paper-card">{speech(asked.who, asked.line, false)}</div>}
             <div className="paper-card">
-              <div className="reply-chips" role="group" aria-label="回答">
+              <div className="reply-chips" role="group" aria-label={ui.reply}>
                 {step.options.map((option, index) => (
                   <button
                     key={option.word.id}
@@ -228,7 +228,7 @@ export default function HospitalOpening({
             <h2>
               {step.title.tokens.map((word, index) => (
                 <span key={word.id}>
-                  {index > 0 && <span aria-hidden="true"> · </span>}
+                  {index > 0 && <span aria-hidden="true">{ui.titleSeparator}</span>}
                   <WordToken word={word} look="plain" onLookup={lookup} />
                 </span>
               ))}
@@ -251,7 +251,7 @@ export default function HospitalOpening({
   return (
     <main className="opening" inert={inert} data-step={opening.step} data-step-type={step.type}>
       <div className="opening-layout">
-        <section className="world-panel opening-world" aria-label="病房">
+        <section className="world-panel opening-world" aria-label={ui.ward}>
           <div inert>
             <WardScene frame={frame} />
           </div>
