@@ -1,10 +1,10 @@
-import type { SceneApi } from '../../../scene/renderer.js';
+import type { RepairArtApi } from '../../../features/repairs/scene';
+import type { WorldMapDefinition } from '../../schema';
 import { drawLamp, drawToy } from '../../../features/repairs/scene';
 import type { State } from '../../../features/repairs/rules';
-import { workshopDefinition as map } from '../../maps/workshop';
 
 type Color = [number, number, number];
-type Prop = typeof map.props[number];
+type Prop = Pick<WorldMapDefinition['props'][number], 'kind' | 'position' | 'width' | 'height' | 'variant'>;
 export type WorkshopPaintState = { repairs?: State; elapsedSeconds: number };
 const wood: Color = [156, 111, 70], edge: Color = [92, 69, 48], cream: Color = [239, 220, 182];
 const jade: Color = [111, 154, 134], metal: Color = [153, 159, 151], ink: Color = [58, 58, 52];
@@ -30,7 +30,7 @@ export function workshopGroundColor(x: number, y: number): Color | null {
   return c;
 }
 
-export function drawWorkshopProp(api: SceneApi, prop: Prop, state: WorkshopPaintState) {
+export function drawWorkshopProp(api: RepairArtApi, prop: Prop, state: WorkshopPaintState) {
   const x = prop.position.x, y = prop.position.y, w = prop.width, h = prop.height;
   const b = (a: number, c: number, z: number, d: number, e: number, top: number, color: Color) => api.box(x + a, y + c, z, x + d, y + e, top, color);
   const line = (a: [number, number, number], c: [number, number, number], radius: number, color: Color) => api.capsule([x + a[0], y + a[1], a[2]], [x + c[0], y + c[1], c[2]], radius, radius, () => color, 'solid');
@@ -99,8 +99,8 @@ export function drawWorkshopProp(api: SceneApi, prop: Prop, state: WorkshopPaint
       break;
     case 'lamp-bench': case 'toy-bench':
       bench(); b(.3,.2,1.64,w-.3,h-.2,1.66,[111,137,120]);
-      if(prop.kind==='lamp-bench') drawLamp(api,state.repairs?.jobs.lamp ?? {kind:'lamp',fitting:'loose',power:'off',test:'none'},x+2.4,y+.85,1.67,.78,state.elapsedSeconds);
-      else drawToy(api,state.repairs?.jobs.toy ?? {kind:'toy',cover:'closed',lead:'loose',cell:'old',test:'none'},x+2.8,y+.8,1.67,.9,state.elapsedSeconds);
+      if(prop.kind==='lamp-bench' && !state.repairs?.completed.includes('lamp')) drawLamp(api,state.repairs?.jobs.lamp ?? {kind:'lamp',fitting:'loose',power:'off',test:'none'},x+2.4,y+.85,1.67,.78,state.elapsedSeconds);
+      else if(prop.kind==='toy-bench' && !state.repairs?.completed.includes('toy')) drawToy(api,state.repairs?.jobs.toy ?? {kind:'toy',cover:'closed',lead:'loose',cell:'old',test:'none'},x+2.8,y+.8,1.67,.9,state.elapsedSeconds);
       line([.45,h-.3,1.7],[1.35,h-.4,1.7],.05,metal); b(.3,h-.45,1.69,.6,h-.2,1.83,edge);
       for(let i=0;i<4;i++) dot(w-1+i*.16,h-.35,1.73,.055,metal);
       break;

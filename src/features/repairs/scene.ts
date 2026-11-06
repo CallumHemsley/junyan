@@ -4,13 +4,14 @@ import { speakerFor } from './content';
 import { currentBench, type Lamp, type State, type Toy } from './rules';
 
 type Color = [number, number, number];
+export type RepairArtApi = Pick<SceneApi, 'box' | 'sphere' | 'capsule'>;
 const wood: Color = [156, 111, 70], dark: Color = [92, 69, 48], cream: Color = [239, 220, 182];
 const jade: Color = [111, 154, 134], metal: Color = [153, 159, 151], ink: Color = [58, 58, 52];
 const warm: Color = [255, 212, 146];
-function stroke(api: SceneApi, a: ScenePoint, b: ScenePoint, r: number, color: Color) {
+function stroke(api: RepairArtApi, a: ScenePoint, b: ScenePoint, r: number, color: Color) {
   api.capsule(a, b, r, r, () => color, 'solid');
 }
-export function drawLamp(api: SceneApi, state: Lamp, x: number, y: number, z: number, scale = 1, time = 0) {
+export function drawLamp(api: RepairArtApi, state: Lamp, x: number, y: number, z: number, scale = 1, time = 0) {
   const { box, sphere } = api;
   const lit = state.power === 'on';
   if (lit) {
@@ -28,7 +29,7 @@ export function drawLamp(api: SceneApi, state: Lamp, x: number, y: number, z: nu
   sphere(x - .12 * scale, y - .13 * scale, bulbZ + .18 * scale, .13 * scale, lit ? [255, 243, 204] : [249, 244, 222], 'solid');
   stroke(api, [x + .5 * scale, y, z + .1], [x + 1.05 * scale, y + .7 * scale, z + .03], .035, ink);
 }
-export function drawToy(api: SceneApi, state: Toy, x: number, y: number, z: number, scale = 1, time = 0) {
+export function drawToy(api: RepairArtApi, state: Toy, x: number, y: number, z: number, scale = 1, time = 0) {
   const { box, sphere } = api;
   const travel = state.test === 'moving' ? Math.sin(time * 1.2) * .22 : 0;
   x += travel;
