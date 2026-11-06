@@ -55,3 +55,10 @@ it("fades only scenery whose projected volume covers the player",()=>{
  expect(occludesPlayer(wall,{x:13,y:13})).toBe(false);
  expect(occludesPlayer({...wall,height:.2},{x:9,y:9})).toBe(false);
 });
+
+import {cameraForMap} from "./camera";
+it("keeps pointer round trips aligned when contextual controls reserve phone space",()=>{
+ const camera=cameraForMap({width:80,height:60},{x:30,y:20},195,386,11,180);
+ const p={x:30,y:20},screen=project(p,camera),again=unproject(screen,camera);
+ expect(again.x).toBeCloseTo(p.x);expect(again.y).toBeCloseTo(p.y);expect(screen.y).toBeLessThan(193);
+});

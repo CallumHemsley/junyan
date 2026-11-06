@@ -17,19 +17,24 @@ export function landscapeMaterialColor(material: string): string | undefined {
 export function drawLandscapeProp(
   ctx: CanvasRenderingContext2D, prop: LandscapeProp, project: LandscapeProject,
   unit = 18, elapsedMs = 0, reducedMotion = false,
+  shadeColor: (base: string) => string = base => base,
 ): boolean {
   const p = project(prop.position.x, prop.position.y, 0);
   const scale = unit / 18;
   ctx.save(); ctx.translate(Math.round(p.x), Math.round(p.y)); ctx.scale(scale, scale);
   const block = (x: number, y: number, w: number, h: number, color: string) => {
-    ctx.fillStyle = color; ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));
+    ctx.fillStyle = shadeColor(color); ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));
   };
   const polygon = (points: number[][], color: string) => {
-    ctx.fillStyle = color; ctx.beginPath();
+    ctx.fillStyle = shadeColor(color); ctx.beginPath();
     points.forEach(([x, y], i) => i ? ctx.lineTo(Math.round(x), Math.round(y)) : ctx.moveTo(Math.round(x), Math.round(y)));
     ctx.closePath(); ctx.fill();
   };
-  const shadow = (w: number) => polygon([[-w,0],[0,-w*.32],[w,0],[0,w*.32]], '#526b5266');
+  const shadow = (w: number) => {
+    ctx.save(); ctx.globalAlpha *= .4;
+    polygon([[-w,0],[0,-w*.32],[w,0],[0,w*.32]], '#526b52');
+    ctx.restore();
+  };
   const crown = (x: number, y: number, w: number, h: number, dark: string, mid: string, light: string) => {
     polygon([[x-w,y],[x-w+3,y-h*.5],[x-w*.6,y-h*.5],[x-w*.6,y-h*.85],[x-3,y-h*.85],[x-3,y-h],[x+w*.5,y-h],[x+w*.5,y-h*.76],[x+w-2,y-h*.76],[x+w-2,y-h*.4],[x+w,y-h*.4],[x+w,y],[x+w*.6,y+4],[x-w*.5,y+4]],dark);
     polygon([[x-w+4,y-3],[x-w+4,y-h*.4],[x-w*.5,y-h*.4],[x-w*.5,y-h*.8],[x+w*.35,y-h*.8],[x+w*.35,y-h*.6],[x+w-5,y-h*.6],[x+w-5,y-h*.2],[x+w*.3,y-1]],mid);
@@ -38,6 +43,21 @@ export function drawLandscapeProp(
   const v = Number(prop.variant) || 0;
   let painted = true;
   switch (prop.kind) {
+    case 'mature-tree': {
+      const w=prop.width*7,h=108+v*7;
+      shadow(w*.8);
+      polygon([[-5,0],[-12,3],[-7,-6],[-5,-44],[-9,-58],[1,-66],[7,-51],[7,-8],[15,2],[6,-1]],'#61563d');
+      polygon([[-3,-3],[-2,-46],[-4,-58],[1,-62],[3,-48],[3,-7]],'#a18d5b');
+      polygon([[-3,-36],[-34,-63],[-37,-74],[-26,-67],[2,-47],[34,-82],[38,-78],[6,-34]],'#756647');
+      crown(-w*.5,-45,w*.65,h*.44,'#355b43','#64844f','#92a565');
+      crown(w*.49,-51,w*.72,h*.43,'#3d6245','#789252','#a8b56d');
+      crown(-w*.12,-69,w*.82,h*.47,'#3e6546',v===1?'#9fa45e':'#789751',v===1?'#d1c27b':'#afbc75');
+      crown(-w*.67,-36,w*.47,29,'#3b6348','#77935b','#a4b873');
+      for(const [x,y] of [[-15,-67],[10,-86],[25,-55],[-30,-41]])block(x,y,4,2,v===2?'#d4c282':'#b4c07c');
+      break;
+    }
+    case 'fern':
+      for(let i=-3;i<=3;i++){const x=i*4;polygon([[0,0],[x-3,-9-Math.abs(i)*2],[x+1,-13-Math.abs(i)*2]],i%2?'#607e54':'#9caf6a');block(x/2,-5-Math.abs(i),2,2,'#bdd08b');}break;
     case 'tree': case 'willow': {
       const willow = prop.kind === 'willow';
       const w = prop.width * 7, h = 35 + v * 3;

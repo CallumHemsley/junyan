@@ -437,7 +437,7 @@
     },
     {
       "id": "residential-stairs.lower-turn-light",
-      "kind": "wall-lamp",
+      "kind": "lantern",
       "position": {
         "x": 3,
         "y": 31
@@ -449,7 +449,7 @@
     },
     {
       "id": "residential-stairs.middle-light",
-      "kind": "wall-lamp",
+      "kind": "lantern",
       "position": {
         "x": 13,
         "y": 19

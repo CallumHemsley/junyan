@@ -270,11 +270,92 @@
         "width": 1,
         "height": 1
       }
+    },
+    {
+      "id": "rooftop.north-flowers",
+      "rect": {
+        "x": 29,
+        "y": 3,
+        "width": 5,
+        "height": 2
+      }
+    },
+    {
+      "id": "rooftop.north-herbs",
+      "rect": {
+        "x": 15,
+        "y": 3,
+        "width": 9,
+        "height": 1
+      }
+    },
+    {
+      "id": "rooftop.west-bamboo",
+      "rect": {
+        "x": 3,
+        "y": 3,
+        "width": 1,
+        "height": 9
+      }
+    },
+    {
+      "id": "rooftop.south-flowers-a",
+      "rect": {
+        "x": 14,
+        "y": 32,
+        "width": 7,
+        "height": 1
+      }
+    },
+    {
+      "id": "rooftop.south-flowers-b",
+      "rect": {
+        "x": 29,
+        "y": 32,
+        "width": 9,
+        "height": 1
+      }
+    },
+    {
+      "id": "rooftop.south-climbers",
+      "rect": {
+        "x": 40,
+        "y": 32,
+        "width": 4,
+        "height": 1
+      }
+    },
+    {
+      "id": "rooftop.wash-bowl",
+      "rect": {
+        "x": 6,
+        "y": 12,
+        "width": 0.9,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "rooftop.central-shrub-island",
+      "rect": {
+        "x": 26,
+        "y": 15,
+        "width": 3,
+        "height": 2
+      }
+    },
+    {
+      "id": "rooftop.trellis-underplant",
+      "rect": {
+        "x": 14,
+        "y": 10,
+        "width": 6,
+        "height": 1.5
+      }
     }
   ],
   "occluders": [
     {
-      "id": "rooftop.pergola-canopy",
+      "id": "rooftop.pergola",
       "rect": {
         "x": 29,
         "y": 25,
@@ -668,7 +749,7 @@
       },
       "width": 13,
       "height": 3,
-      "layer": "foreground",
+      "layer": "object",
       "variant": 0
     },
     {
@@ -957,6 +1038,150 @@
       "width": 1.5,
       "height": 1,
       "layer": "ground",
+      "variant": 2
+    },
+    {
+      "id": "rooftop.north-flowers",
+      "kind": "raised-bed",
+      "position": {
+        "x": 29,
+        "y": 3
+      },
+      "width": 5,
+      "height": 2,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "rooftop.north-herbs",
+      "kind": "raised-bed",
+      "position": {
+        "x": 15,
+        "y": 3
+      },
+      "width": 9,
+      "height": 1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "rooftop.west-bamboo",
+      "kind": "bamboo-screen",
+      "position": {
+        "x": 3,
+        "y": 3
+      },
+      "width": 1,
+      "height": 9,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.south-flowers-a",
+      "kind": "raised-bed",
+      "position": {
+        "x": 14,
+        "y": 32
+      },
+      "width": 7,
+      "height": 1,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "rooftop.south-flowers-b",
+      "kind": "raised-bed",
+      "position": {
+        "x": 29,
+        "y": 32
+      },
+      "width": 9,
+      "height": 1,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "rooftop.south-climbers",
+      "kind": "trellis-bed",
+      "position": {
+        "x": 40,
+        "y": 32
+      },
+      "width": 4,
+      "height": 1,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "rooftop.laundry",
+      "kind": "laundry",
+      "position": {
+        "x": 4,
+        "y": 11
+      },
+      "width": 4,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.wash-bowl",
+      "kind": "wash-bowl",
+      "position": {
+        "x": 6,
+        "y": 12
+      },
+      "width": 0.9,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.hose",
+      "kind": "hose",
+      "position": {
+        "x": 10,
+        "y": 15
+      },
+      "width": 1.1,
+      "height": 1.1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.loose-tools",
+      "kind": "tools",
+      "position": {
+        "x": 9,
+        "y": 19
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.central-shrub-island",
+      "kind": "tree-bed",
+      "position": {
+        "x": 26,
+        "y": 15
+      },
+      "width": 3,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "rooftop.trellis-underplant",
+      "kind": "raised-bed",
+      "position": {
+        "x": 14,
+        "y": 10
+      },
+      "width": 6,
+      "height": 1.5,
+      "layer": "object",
       "variant": 2
     }
   ],

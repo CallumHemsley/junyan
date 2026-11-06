@@ -34,3 +34,19 @@ Initial map unit 8770653. Furniture/art unit fedf388. Inspected adapter preview 
 Root reviewed the preview and rejected its sparse model-room appearance. Added headboard slats, bedding folds, chair backs, tabletop books and ceramics, sofa cushions, curtain folds, trim, shelves and entry detail outside valid furniture cells. Updated art uses per-object depth entries. Active work continues; no visual acceptance or integrated gameplay PASS.
 
 Focused verification on 2026-11-06 ran 18 tests across residential map routes, apartment reducer and world furniture adapter. TypeScript build passes. Muted cloud Chromium captured desktop and phone views of all three maps with zero page errors. Inspected apartment, foyer and stair captures against the baseline tiny apartment. Static captures remain limited to art proof.
+
+## Shared viewport route proof
+
+`local-traversal.json` records the actual shared WorldViewport and reduceWorld through hall to stairs to apartment and back. Desktop and touch phone each reached 14 destinations. Both also moved by keyboard. No page errors. `traverse.mjs` reruns the proof on strict port 5483 with muted cloud Chromium. The owned traversal controller has no movement, input, drawing or save implementation; it uses foundation's component and reducer unchanged. Two WebM recordings retain actual walking. Playwright's ffmpeg download was denied by network policy; the existing cloud /usr/bin/ffmpeg supplied recording instead.
+
+Inspected both phone return/apartment screenshots and desktop apartment. They reveal two unresolved foundation integration defects: the painter currently receives no apartment state, so no saved furniture appears, and the camera at the entrance leaves excessive empty space. These captures prove local walking only. They do not prove full external graph, furniture editing, save/reload or final visual quality. Added sceneMode=world in the owned editor for shared integration. The full objective stays ACTIVE.
+
+## Current integrated checks and open findings
+
+Foundation now wires saved furniture solids and art. Normal-app saved-arrival fixture proof (`production-proof.json`, `production-proof.mjs`) placed and moved the table through real DOM controls, undid the move, reloaded and retained its exact placement and journal entry on desktop and phone. Table placement changes the rendered canvas. First probe read before the 350ms IndexedDB debounce; the corrected probe waits for persistence. This is a focused fixture-based persistence proof, not the full opening-to-home journey. Screenshots were inspected. The empty old scene box and phone panel clipping remain visible shared UI defects until sceneMode is forwarded or the new contextual UI replaces it.
+
+Explicit material calls now use the published shadeColor callback from foundation 74a5213. Contact shadows multiply inherited alpha. No residential time or shader field exists. Production morning/evening captures use the same map, camera and the actual saved placements recorded by the normal UI proof. Particles are disabled through reduced motion for material comparisons. Final lit frames re-enable effects. The captures reveal weak interior phase contrast because the shared atmosphere implementation hardcodes the same interior ambient vector for every phase. Do not label lighting accepted. `lighting-proof.json` retains pixel samples and zero page errors.
+
+All 21 focused residential/apartment tests and TypeScript pass. Retained route video metadata confirms a real 20.04-second desktop VP9 recording, 960 by 900. A decoded walking frame was inspected.
+
+The stair route remains visually flat in the shared player renderer. Proposed one pure surfaceHeight(mapId,point) seam to foundation/coordinator before altering shared rendering. Actual elevated treads, actor foot height and camera continuity remain open scope, along with independent art/experience review and full external route traversal.
