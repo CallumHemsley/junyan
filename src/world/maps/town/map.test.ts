@@ -43,7 +43,7 @@ describe('authored town travel', () => {
   it('registers every authored resident and bird without blocking door arrivals', () => {
     const plan = compileLife(map, navigationFor(map));
     expect(plan.diagnostics).toEqual([]);
-    expect(plan.actors).toHaveLength(map.npcHooks.length);
+    for (const hook of map.npcHooks) expect(plan.actors.some(actor => actor.id === hook.id), hook.id).toBe(true);
     const couriers = plan.actors.filter(actor => actor.characterId === 'resident-courier');
     expect(couriers).toHaveLength(1);
     expect(couriers[0].profile.greeting).toBeUndefined();

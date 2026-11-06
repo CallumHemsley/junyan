@@ -4052,32 +4052,6 @@
       "characterId": "lin-jie"
     },
     {
-      "id": "town.book-window-reader",
-      "position": {
-        "x": 11,
-        "y": 30
-      },
-      "route": [
-        {
-          "x": 11,
-          "y": 30
-        },
-        {
-          "x": 14,
-          "y": 30
-        },
-        {
-          "x": 18,
-          "y": 32
-        },
-        {
-          "x": 21,
-          "y": 32
-        }
-      ],
-      "characterId": "xiao-li"
-    },
-    {
       "id": "town.canal-birds",
       "position": {
         "x": 66.5,
