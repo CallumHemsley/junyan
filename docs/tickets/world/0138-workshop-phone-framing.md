@@ -23,3 +23,6 @@ Independent district review finds about193pixels of empty backdrop above the wor
 - Owner workshop framing writer; branch codex/0138-workshop-phone-framing; worktree /private/tmp/junyan-world-workshop-phone-framing; strict ports5624/5625.
 - Base merged main6d11a876. Independent evidence /private/tmp/junyan-world-private-qa/district-critic/review.md and provenance.json. New raw QA private /private/tmp/junyan-world-private-qa/0138.
 - Shared camera and WorldViewport changes require root coordination; unfinished reader branch has additional framing support. Propose seam before edits and avoid unrelated changes. No broad AAA claim.
+
+- Diagnosis: the painted workshop narrowly exceeds the portrait room-overview threshold (324.5 versus320 canvas units on390×844). Local follow then places the apex~193CSS px below the viewport. Optional explicit floor/wall geometry now bounds vertical translation; horizontal follow and native scale11 stay unchanged.
+- Early gate: matched private before/candidate captures at1440×1000,390×844 and390×667, player at lamp8,10.8, toy20.8,10.8 and entrance15,25, with activity panels open/closed. Source and camera/picking regression ready for independent retention review; broader verification follows only after that gate.
