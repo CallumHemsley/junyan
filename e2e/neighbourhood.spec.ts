@@ -115,8 +115,11 @@ test.describe("real shipped neighbourhood speech and saved journeys",()=>{
     await expect.poll(async()=> (await stored(page))?.neighbourhood?.cats.feedback).toBe("gentle");
     await page.getByTestId("cats-action-crouch").click();
     await page.getByTestId("cats-action-wait").click();
+    await interactAt(page, "courtyard.white");
     await page.getByTestId("cats-action-approach").click();
+    await interactAt(page, "courtyard.white");
     await page.getByTestId("cats-action-follow").click();
+    await interactAt(page, "courtyard.white");
     await page.getByTestId("cats-action-reunite").click();
     await expect.poll(async()=> (await stored(page))?.neighbourhood?.cats.story.node).toBe("reunited");
     await page.getByRole("button",{name:"收下猫靠垫",exact:true}).click();
