@@ -1,8 +1,9 @@
+import { interactAt, walkTo } from "./world-journey";
 import {test,expect,type Page,type Locator} from '@playwright/test';
 import {seedDayOne} from './opening';
 import {silentResponse} from './audio-fixtures';
 const url=()=>`${process.env.JUNYAN_PREVIEW_URL}?seed=42`;
-const customer=(page:Page)=>page.locator('.customer-row').first();
+const customer=(page:Page)=>page.locator('[data-world-anchor="restaurant.table-1"]');
 async function activate(page:Page,control:Locator){
   for(let i=0;i<100;i++){
     if(await control.evaluate(element=>element===document.activeElement))break;
@@ -13,7 +14,7 @@ async function activate(page:Page,control:Locator){
 test.beforeEach(async({page})=>{await seedDayOne(page,process.env.JUNYAN_PREVIEW_URL!);await page.route('**/*.wav',route=>silentResponse(route));});
 test('a real queued database open cannot strand a valid recovery checkpoint',async({page,context},info)=>{
   await page.goto(url());await page.getByRole('button',{name:'开门迎客'}).click();
-  await customer(page).click();await expect(page.getByRole('dialog',{name:'1桌点餐'})).toBeVisible();
+  await interactAt(page, "restaurant.table-1");await expect(page.getByRole('dialog',{name:'1桌点餐'})).toBeVisible();
   await page.waitForTimeout(650);
   const holder=await context.newPage();
   try{
@@ -23,7 +24,7 @@ test('a real queued database open cannot strand a valid recovery checkpoint',asy
       (window as any).heldDatabase=connection;
       await new Promise<void>(resolve=>{const request=indexedDB.deleteDatabase('junyan-waiter');request.onblocked=()=>resolve()});
     });
-    await page.getByRole('dialog').getByRole('button',{name:'包子',exact:true}).click();
+    await page.locator('.world-context').getByRole('button',{name:'包子',exact:true}).click();
     await page.reload();
     await expect(page.getByRole('button',{name:'开门迎客'})).toBeVisible({timeout:3000});
     await page.getByRole('button',{name:'开门迎客'}).click();await page.getByRole('button',{name:/^本子/}).click();
@@ -40,8 +41,8 @@ test('a queued database open without a checkpoint has a bounded playable fallbac
       await new Promise<void>(resolve=>{const request=indexedDB.deleteDatabase('junyan-waiter');request.onblocked=()=>resolve()});
     });
     await page.goto(url());await expect(page.getByRole('button',{name:'开门迎客'})).toBeVisible({timeout:3000});
-    await page.getByRole('button',{name:'开门迎客'}).click();await customer(page).click();
-    await page.getByRole('dialog').getByRole('button',{name:'包子',exact:true}).click();await page.keyboard.press('Escape');await page.keyboard.press('Escape');
+    await page.getByRole('button',{name:'开门迎客'}).click();await interactAt(page, "restaurant.table-1");
+    await page.locator('.world-context').getByRole('button',{name:'包子',exact:true}).click();await page.keyboard.press('Escape');await page.keyboard.press('Escape');
     await holder.close();await page.waitForTimeout(700);
     await page.getByRole('button',{name:/^本子/}).click();await expect(page.locator('.journal-list')).toContainText('包子');
   }finally{if(!holder.isClosed())await holder.close()}
@@ -61,22 +62,25 @@ test('a timed-out old read cannot replace new gameplay when it finally completes
     };
   });
   await page.reload();await expect(page.getByRole('button',{name:'开门迎客'})).toBeVisible({timeout:2200});
-  await page.getByRole('button',{name:'开门迎客'}).click();await customer(page).click();
-  await page.getByRole('dialog').getByRole('button',{name:'包子',exact:true}).click();await page.keyboard.press('Escape');await page.keyboard.press('Escape');
+  await page.getByRole('button',{name:'开门迎客'}).click();await interactAt(page, "restaurant.table-1");
+  await page.locator('.world-context').getByRole('button',{name:'包子',exact:true}).click();await page.keyboard.press('Escape');await page.keyboard.press('Escape');
   await page.waitForTimeout(1500);
   await page.getByRole('button',{name:/^本子/}).click();await expect(page.locator('.journal-list')).toContainText('包子');
 });
 test('real keyboard focus returns to the opener across nested and replacement dialogs',async({page},info)=>{
   const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
   await page.goto(url());await activate(page,page.getByRole('button',{name:'开门迎客'}));
+  await walkTo(page,{x:6.5,y:9});
   for(let i=0;i<8;i++){
     await activate(page,customer(page));await expect(page.getByRole('dialog',{name:'1桌点餐'})).toBeVisible();
-    const word=page.getByRole('dialog').getByRole('button',{name:'包子',exact:true});
+    const word=page.locator('.world-context').getByRole('button',{name:'包子',exact:true});
     await activate(page,word);await page.keyboard.press('Escape');await expect(word).toBeFocused();
     await page.keyboard.press('Escape');await expect(page.getByRole('dialog')).toHaveCount(0);await expect(customer(page)).toBeFocused({timeout:1500});
   }
-  await activate(page,customer(page));await activate(page,page.getByRole('button',{name:'去厨房',exact:true}));
-  await expect(page.getByRole('dialog',{name:'厨房',exact:true})).toBeVisible();await page.keyboard.press('Escape');await expect(customer(page)).toBeFocused();
+  await walkTo(page,{x:12,y:6.5});
+  const kitchenTrigger=page.locator('[data-world-anchor="restaurant.kitchen"]');
+  await activate(page,kitchenTrigger);
+  await expect(page.getByRole('dialog',{name:'厨房',exact:true})).toBeVisible();await page.keyboard.press('Escape');await expect(kitchenTrigger).toBeFocused();
   const help=page.getByRole('button',{name:'怎么玩',exact:true});await activate(page,help);await page.keyboard.press('Escape');await expect(help).toBeFocused();
   await page.screenshot({path:info.outputPath('keyboard-opener-restored.png'),fullPage:true});expect(errors).toEqual([]);
 });

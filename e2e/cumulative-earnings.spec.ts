@@ -1,4 +1,4 @@
-import { interactAt } from "./world-journey";
+import { interactAt, savedGame } from "./world-journey";
 import { privateArtifact } from "./private-artifacts";
 import { test, expect } from "@playwright/test";
 import { withSkip } from "./opening";
@@ -34,7 +34,7 @@ test("two days label lifetime receipts without changing the running total", asyn
       await page.getByRole("button", { name: "端好了，去上菜" }).click();
       await interactAt(page, `restaurant.table-${table}`);
       await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
-      await page.getByRole("button", { name: "上菜", exact: false }).last().click();
+      await page.getByRole("button", { name: "上菜", exact: true }).click();
       await expect(page.getByRole("button", { name: "递上找零" })).toBeVisible();
       for (let n = 0; n < order.paid - total; n++)
         await page.getByRole("button", { name: "+1块", exact: true }).click();
@@ -52,9 +52,7 @@ test("two days label lifetime receipts without changing the running total", asyn
     await expect(summary.locator(".tally p").nth(1)).toHaveText(`累计进账${cumulative} 块`);
     await expect(page.getByRole("button", { name: "明天见" })).toBeVisible();
     await page.getByRole("button", { name: "明天见" }).click();
-    await page.locator(".day-toggle").click();
-    await expect(page.locator("#day-details")).toContainText(`累计进账 ${cumulative} 块`);
-    await page.locator(".day-toggle").click();
+    await expect.poll(async () => (await savedGame(page)).earnings).toBe(cumulative);
   }
   expect(evidence).toMatchObject([{ day: 1, receipts: 10, earnings: 10 }, { day: 2, receipts: 19, earnings: 29 }]);
   await info.attach("two-day-earnings", { body: JSON.stringify(evidence, null, 2), contentType: "application/json" });
