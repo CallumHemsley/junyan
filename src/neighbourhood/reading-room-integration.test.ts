@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createGame } from '../game';
+import { createGame, getOrder, orderTotal } from '../game';
 import { validateSavedGame } from '../save';
 import { content, featureContent } from './registry';
 import { createNeighbourhood } from './model';
@@ -45,6 +45,26 @@ describe('fifth chapter integration', () => {
     const restored = validateSavedGame(JSON.parse(JSON.stringify(game)), content)!;
     expect(restored.progression).toEqual(game.progression);
     expect(restored.neighbourhood).toEqual(game.neighbourhood);
+  });
+  it('preserves earned purchases, gifts and restaurant progress when only the new slice is corrupt', () => {
+    let game = createGame(content, 42);
+    game = { ...game, earnings: game.customers.reduce((sum, customer) => sum + orderTotal(getOrder(game, customer.table, content)!, content), 0), customers: game.customers.map(customer => ({ ...customer, phase: 'served' })), served: 4, ended: true, neighbourhood: { ...createNeighbourhood(1), location: 'apartment', claimedGiftIds: ['cats.cushion'] } };
+    game = reduceNeighbourhoodGame(game, { type: 'purchase-furniture', id: 'blue-vase' }, content);
+    const restored = validateSavedGame({ ...game, neighbourhood: { ...game.neighbourhood, 'reading-room': null } }, content)!;
+    expect(restored.earnings).toBe(game.earnings);
+    expect(restored.customers).toEqual(game.customers);
+    expect(restored.progression).toEqual(game.progression);
+    expect(restored.neighbourhood?.apartment.owned).toContain('blue-vase');
+    expect(restored.neighbourhood?.apartment.owned).toContain('cats.cushion');
+    expect(restored.neighbourhood?.claimedGiftIds).toEqual(['cats.cushion']);
+    expect(restored.neighbourhood?.['reading-room']).toEqual(createNeighbourhood(1)['reading-room']);
+  });
+  it('rejects project editing outside its actual active physical activity', () => {
+    const game = projectGame();
+    const remote = { ...game, world: createWorld(worldMaps) };
+    expect(act(remote, { type: 'select', id: 'table' })).toBe(remote);
+    const inactive = { ...game, world: createWorld(worldMaps, 'reading-room') };
+    expect(act(inactive, { type: 'select', id: 'table' })).toBe(inactive);
   });
   it('changes dynamic furniture atomically while keeping every prior feature unchanged', () => {
     const before = projectGame(), after = finishWindow(before), maps = mapsForNeighbourhood(after.neighbourhood!);
