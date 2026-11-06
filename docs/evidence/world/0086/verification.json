@@ -1,0 +1,35 @@
+{
+  "status": "ACTIVE; bounded owner payload ready for independent integration review, not full-world completion",
+  "workerThread": "01a1ae20-d945-75c9-a467-153692bd804e",
+  "goalRegistration": "Native create_goal absent; durable program ticket world/0086 remains ACTIVE",
+  "branch": "codex/0086-atmosphere",
+  "sourceHead": "215cc8a",
+  "coordinationPlan": "f876255c2e563c357484f6422afe9b27f089fb7e",
+  "foundation": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+  "mainReconciled": false,
+  "checks": {
+    "ownerAtmosphereTests": 25,
+    "pinnedRuntimeTests": 443,
+    "pinnedRuntimeFiles": 58,
+    "ownerTypecheck": "pass",
+    "pinnedRuntimeTypecheck": "pass",
+    "desktopOrdinary": "pass, 7.5 minutes",
+    "phoneOrdinary": "pass, 7.7 minutes",
+    "phonePersistedRepairGarden": "pass",
+    "hiddenTab": "unproven: scheduling test skipped at actual visibility boundary",
+    "performance": "measured; no acceptance PASS"
+  },
+  "journalEntries": {
+    "desktop": 16,
+    "phone": 24
+  },
+  "newEvidenceNamespace": "docs/evidence/world/0086",
+  "historicalEvidence": "untouched; coordinator owns SHA-manifest relocation",
+  "nextActions": [
+    "Foundation consume owner source through sole integration lease and reconcile current main",
+    "Align exact practical fixture geometry with newer courtyard/workshop/rooftop owner art",
+    "Independent Astra review on actual reconciled production viewport",
+    "Resolve actual hidden-tab proof capability and investigate expensive courtyard App rendering",
+    "Verify broader day/night resident task/rest and sustained-world scope before completion"
+  ]
+}

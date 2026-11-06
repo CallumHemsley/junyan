@@ -1,0 +1,300 @@
+{
+  "variant": "baseline",
+  "source": "Pinned foundation e48b10e plus declared owner overlay; mainReconciled:false",
+  "method": "Whole actual App, no video/trace; reduced motion enabled. Six unmodified ordinary journey snapshots and two declared broad-map default-arrival fixtures. No internal dispatch/test mode. TaskDuration is browser CPU; paint-completion cadence is not GPU FPS/input latency.",
+  "errors": [],
+  "evidence": [
+    {
+      "device": "desktop",
+      "mapId": "workshop",
+      "site": "bench",
+      "declaredArrivalFixture": false,
+      "elapsedMs": 3002.698000000237,
+      "taskDurationMs": 856.682,
+      "scriptDurationMs": 480.935,
+      "paintCompletions": 53,
+      "paintIntervalP50": 57.5,
+      "paintIntervalP95": 77.70000000111759,
+      "longTasks": [],
+      "hidden": false,
+      "canvas": [
+        720,
+        458
+      ]
+    },
+    {
+      "device": "desktop",
+      "mapId": "workshop",
+      "site": "entry",
+      "declaredArrivalFixture": false,
+      "elapsedMs": 3005.5539999993925,
+      "taskDurationMs": 848.5429999999999,
+      "scriptDurationMs": 483.54,
+      "paintCompletions": 52,
+      "paintIntervalP50": 54.899999998509884,
+      "paintIntervalP95": 70.5,
+      "longTasks": [],
+      "hidden": false,
+      "canvas": [
+        720,
+        458
+      ]
+    },
+    {
+      "device": "desktop",
+      "mapId": "courtyard",
+      "site": "window",
+      "declaredArrivalFixture": false,
+      "elapsedMs": 3002.4560000001657,
+      "taskDurationMs": 1842.274,
+      "scriptDurationMs": 1573.3870000000002,
+      "paintCompletions": 52,
+      "paintIntervalP50": 55.100000001490116,
+      "paintIntervalP95": 90.09999999962747,
+      "longTasks": [
+        60
+      ],
+      "hidden": false,
+      "canvas": [
+        720,
+        458
+      ]
+    },
+    {
+      "device": "desktop",
+      "mapId": "courtyard",
+      "site": "laundry",
+      "declaredArrivalFixture": false,
+      "elapsedMs": 3002.7939999999944,
+      "taskDurationMs": 1501.682,
+      "scriptDurationMs": 1358.099,
+      "paintCompletions": 49,
+      "paintIntervalP50": 68.20000000111759,
+      "paintIntervalP95": 80.90000000037253,
+      "longTasks": [],
+      "hidden": false,
+      "canvas": [
+        720,
+        458
+      ]
+    },
+    {
+      "device": "desktop",
+      "mapId": "rooftop",
+      "site": "threshold",
+      "declaredArrivalFixture": false,
+      "elapsedMs": 3002.3479999999836,
+      "taskDurationMs": 785.8109999999999,
+      "scriptDurationMs": 437.836,
+      "paintCompletions": 54,
+      "paintIntervalP50": 55.59999999962747,
+      "paintIntervalP95": 64.09999999962747,
+      "longTasks": [],
+      "hidden": false,
+      "canvas": [
+        720,
+        458
+      ]
+    },
+    {
+      "device": "desktop",
+      "mapId": "rooftop",
+      "site": "care",
+      "declaredArrivalFixture": false,
+      "elapsedMs": 3009.6940000003087,
+      "taskDurationMs": 890.5450000000001,
+      "scriptDurationMs": 449.81100000000004,
+      "paintCompletions": 49,
+      "paintIntervalP50": 62.80000000074506,
+      "paintIntervalP95": 69.5,
+      "longTasks": [],
+      "hidden": false,
+      "canvas": [
+        720,
+        458
+      ]
+    },
+    {
+      "device": "desktop",
+      "mapId": "park",
+      "site": "default-arrival",
+      "declaredArrivalFixture": true,
+      "elapsedMs": 3003.093000001172,
+      "taskDurationMs": 619.408,
+      "scriptDurationMs": 391.976,
+      "paintCompletions": 58,
+      "paintIntervalP50": 51.90000000037253,
+      "paintIntervalP95": 59.20000000111759,
+      "longTasks": [],
+      "hidden": false,
+      "canvas": [
+        720,
+        458
+      ]
+    },
+    {
+      "device": "desktop",
+      "mapId": "riverbank",
+      "site": "default-arrival",
+      "declaredArrivalFixture": true,
+      "elapsedMs": 3002.8029999994033,
+      "taskDurationMs": 860.6120000000001,
+      "scriptDurationMs": 617.432,
+      "paintCompletions": 53,
+      "paintIntervalP50": 57.09999999962747,
+      "paintIntervalP95": 77.19999999925494,
+      "longTasks": [],
+      "hidden": false,
+      "canvas": [
+        720,
+        458
+      ]
+    },
+    {
+      "device": "phone",
+      "mapId": "workshop",
+      "site": "bench",
+      "declaredArrivalFixture": false,
+      "elapsedMs": 3002.7270000009594,
+      "taskDurationMs": 934.191,
+      "scriptDurationMs": 622.528,
+      "paintCompletions": 68,
+      "paintIntervalP50": 49,
+      "paintIntervalP95": 51.80000000074506,
+      "longTasks": [],
+      "hidden": false,
+      "canvas": [
+        195,
+        386
+      ]
+    },
+    {
+      "device": "phone",
+      "mapId": "workshop",
+      "site": "entry",
+      "declaredArrivalFixture": false,
+      "elapsedMs": 3002.3529999998573,
+      "taskDurationMs": 818.0300000000001,
+      "scriptDurationMs": 560.125,
+      "paintCompletions": 66,
+      "paintIntervalP50": 49.5,
+      "paintIntervalP95": 52,
+      "longTasks": [],
+      "hidden": false,
+      "canvas": [
+        195,
+        386
+      ]
+    },
+    {
+      "device": "phone",
+      "mapId": "courtyard",
+      "site": "window",
+      "declaredArrivalFixture": false,
+      "elapsedMs": 3002.328000000489,
+      "taskDurationMs": 1265.6670000000001,
+      "scriptDurationMs": 773.128,
+      "paintCompletions": 66,
+      "paintIntervalP50": 49.399999998509884,
+      "paintIntervalP95": 53,
+      "longTasks": [],
+      "hidden": false,
+      "canvas": [
+        195,
+        386
+      ]
+    },
+    {
+      "device": "phone",
+      "mapId": "courtyard",
+      "site": "laundry",
+      "declaredArrivalFixture": false,
+      "elapsedMs": 3003.0659999993077,
+      "taskDurationMs": 1320.9299999999998,
+      "scriptDurationMs": 877.3919999999999,
+      "paintCompletions": 67,
+      "paintIntervalP50": 48.30000000074506,
+      "paintIntervalP95": 54.19999999925494,
+      "longTasks": [
+        56
+      ],
+      "hidden": false,
+      "canvas": [
+        195,
+        386
+      ]
+    },
+    {
+      "device": "phone",
+      "mapId": "rooftop",
+      "site": "threshold",
+      "declaredArrivalFixture": false,
+      "elapsedMs": 3001.2559999995574,
+      "taskDurationMs": 640.331,
+      "scriptDurationMs": 470.151,
+      "paintCompletions": 66,
+      "paintIntervalP50": 49.30000000074506,
+      "paintIntervalP95": 51.5,
+      "longTasks": [],
+      "hidden": false,
+      "canvas": [
+        195,
+        386
+      ]
+    },
+    {
+      "device": "phone",
+      "mapId": "rooftop",
+      "site": "care",
+      "declaredArrivalFixture": false,
+      "elapsedMs": 3001.3319999998203,
+      "taskDurationMs": 761.501,
+      "scriptDurationMs": 493.56,
+      "paintCompletions": 66,
+      "paintIntervalP50": 49.29999999888241,
+      "paintIntervalP95": 51.59999999962747,
+      "longTasks": [],
+      "hidden": false,
+      "canvas": [
+        195,
+        386
+      ]
+    },
+    {
+      "device": "phone",
+      "mapId": "park",
+      "site": "default-arrival",
+      "declaredArrivalFixture": true,
+      "elapsedMs": 3001.948999999513,
+      "taskDurationMs": 556.925,
+      "scriptDurationMs": 381.49499999999995,
+      "paintCompletions": 67,
+      "paintIntervalP50": 49.29999999888241,
+      "paintIntervalP95": 52.19999999925494,
+      "longTasks": [],
+      "hidden": false,
+      "canvas": [
+        195,
+        386
+      ]
+    },
+    {
+      "device": "phone",
+      "mapId": "riverbank",
+      "site": "default-arrival",
+      "declaredArrivalFixture": true,
+      "elapsedMs": 3001.9330000013724,
+      "taskDurationMs": 612.2409999999999,
+      "scriptDurationMs": 456.297,
+      "paintCompletions": 66,
+      "paintIntervalP50": 49.40000000037253,
+      "paintIntervalP95": 51.79999999888241,
+      "longTasks": [],
+      "hidden": false,
+      "canvas": [
+        195,
+        386
+      ]
+    }
+  ]
+}

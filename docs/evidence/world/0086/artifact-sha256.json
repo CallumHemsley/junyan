@@ -1,0 +1,476 @@
+{
+  "artifacts": {
+    "local-light-pass.md": {
+      "bytes": 8654,
+      "sha256": "a58b826a5eb0ad3f53d04e8a1ba33264f2b1cdc8b61b3cf5380299e700c45c9e"
+    },
+    "verification.json": {
+      "bytes": 1610,
+      "sha256": "38684bdd0073e0d95a7cd7021458256794ad56cdb3a379db783d79108aa46680"
+    },
+    "profile-native-app.mjs": {
+      "bytes": 4671,
+      "sha256": "bb4ecb19598db3228b2c5cd78337f87d4441a007be99e02f608ae2dd6bb3de01"
+    },
+    "capture-local-study.mjs": {
+      "bytes": 1848,
+      "sha256": "3a15f090ab961db4cd960d01f6e9428de112e8ec89e1d9f12af8b5846f7ab503"
+    },
+    "playwright.config.ts": {
+      "bytes": 639,
+      "sha256": "59ddfed41cc525bc0ad130414095718578c4acaae3004415bbca2b71782cae0f"
+    },
+    "local-light-journey.spec.ts": {
+      "bytes": 11831,
+      "sha256": "d9a7dcff51f0a71fe7ff6f01a0b2e0228b76074b4f08a044e57f05b1ffbbdda5"
+    },
+    "local-light-scheduling.spec.ts": {
+      "bytes": 4315,
+      "sha256": "d2c9c7fb844d46f4f04ca3ea644987841fd206debe0880f73607889ea666d80f"
+    },
+    "runtime-provenance.json": {
+      "bytes": 1138,
+      "sha256": "fb72cf51cc2b9a9bbb57fb448c3bf6adef58d0afedd985137accb5d2dceb3b9d"
+    },
+    "study-candidate/desktop-rooftop-threshold-morning-empty.png": {
+      "bytes": 183226,
+      "sha256": "9fc5e7ba6c498c702d0962b20a0118a951914f86801dca22ec2f09eec9d493b8"
+    },
+    "study-candidate/phone-rooftop-threshold-evening-empty.png": {
+      "bytes": 51117,
+      "sha256": "3dfc9a79f7b2eb5f3de00737572f16dffca4d06cd2ce1de2fef278a8b45ca297"
+    },
+    "study-candidate/phone-workshop-entry-evening-occupied.png": {
+      "bytes": 86669,
+      "sha256": "f27eaa8738de83e31125b367de230b66881d389742520b3f97a327ac11d6a478"
+    },
+    "study-candidate/desktop-workshop-entry-evening-occupied.png": {
+      "bytes": 207813,
+      "sha256": "376ebdadc68c23a097c7844f37df554d5ab6d4aaed207f0d7760f3a60089e62c"
+    },
+    "study-candidate/desktop-workshop-bench-morning-empty.png": {
+      "bytes": 231774,
+      "sha256": "a127811d1b7c4058b1ef4f79793d2a5f4b19e8536b0d494977e65b148452588d"
+    },
+    "study-candidate/desktop-courtyard-laundry-evening-occupied.png": {
+      "bytes": 224099,
+      "sha256": "95e5e9cffab15b2dba60930f522f7e35ecc6a2b98baf75fa6a7ff1d69d39842b"
+    },
+    "study-candidate/desktop-courtyard-window-evening-occupied.png": {
+      "bytes": 248799,
+      "sha256": "9ed0c112aebcaac76da550cc64a3eb52af97edff00cfa0527c6a7d295b509fa8"
+    },
+    "study-candidate/phone-courtyard-window-evening-empty.png": {
+      "bytes": 90290,
+      "sha256": "b1c7490a406e31641fa6b9e54e499a5e3dab9c71a88dbf53cf375906dd6854c4"
+    },
+    "study-candidate/desktop-rooftop-care-morning-occupied.png": {
+      "bytes": 222518,
+      "sha256": "721c6fc8de07e421c8040d7e3fdf4a3d45829c5e38ca3a0c1049ec0c52ede5e8"
+    },
+    "study-candidate/desktop-workshop-entry-morning-occupied.png": {
+      "bytes": 222571,
+      "sha256": "21525b581bb8d66f51c8f3c60f09a83c0f86e5c275dca8268f366c0c26a08309"
+    },
+    "study-candidate/desktop-workshop-bench-morning-occupied.png": {
+      "bytes": 230678,
+      "sha256": "17db81f3fce7dfa762c5ef7a62809b9ea05eaa3597dc931fe29ef6c85435039d"
+    },
+    "study-candidate/phone-workshop-entry-morning-occupied.png": {
+      "bytes": 89941,
+      "sha256": "406b915fc6574e9a5cc8b71e4b64107b583de6b8d146df4ce5e155e122ea6796"
+    },
+    "study-candidate/desktop-rooftop-threshold-evening-occupied.png": {
+      "bytes": 179656,
+      "sha256": "28ab585ad09139ab1ed0aecaebb3515c34a7e298f079a6de6832b2f262938442"
+    },
+    "study-candidate/phone-rooftop-threshold-evening-occupied.png": {
+      "bytes": 51286,
+      "sha256": "4074f870ddea6270b8653223a84d52477dd921c209510d594ac176f1eafd6fac"
+    },
+    "study-candidate/desktop-rooftop-threshold-morning-occupied.png": {
+      "bytes": 183439,
+      "sha256": "1f41fbfec609b828cc6289d14895bf7d1d169a41f3ed0b682260dacb087cb4d3"
+    },
+    "study-candidate/phone-rooftop-threshold-morning-occupied.png": {
+      "bytes": 51255,
+      "sha256": "5bb05baff5779457e17993ddd6baa687c99587d3d4a368448cf1f36d4c955919"
+    },
+    "study-candidate/phone-courtyard-laundry-evening-occupied.png": {
+      "bytes": 86220,
+      "sha256": "91e1d2688ea41bc7fe6f7ce709a379cdb730233e708febfb567ae44f5168d5f8"
+    },
+    "study-candidate/desktop-rooftop-threshold-evening-empty.png": {
+      "bytes": 179672,
+      "sha256": "1297e567ea95b5d97a128e1050c4d076a9607539f9c0d39b1baef6df46bf865a"
+    },
+    "study-candidate/proof.json": {
+      "bytes": 19378,
+      "sha256": "69bacd9fca27ee31fad4cf9af91632b612380d7d6226c4e24d7ee9e8e3fda6ed"
+    },
+    "study-candidate/phone-workshop-bench-morning-empty.png": {
+      "bytes": 96567,
+      "sha256": "5608e9a999b623ba9710a50f1b22e800bcd0262d1ede77199361bfdc14ea7255"
+    },
+    "study-candidate/desktop-workshop-bench-evening-empty.png": {
+      "bytes": 218550,
+      "sha256": "896a830a86e206a78d82c82876e576a34e06bbf7ea4eecaa2ba1f788720cdb35"
+    },
+    "study-candidate/phone-rooftop-care-evening-occupied.png": {
+      "bytes": 92209,
+      "sha256": "5f4ae970754565dbf89715783185807fc05bf05910913b6f94f7fcde1a1252a7"
+    },
+    "study-candidate/phone-workshop-bench-evening-empty.png": {
+      "bytes": 91779,
+      "sha256": "c79691ef48c9a05ac72635cce2d54da2f403199780f2be1dbaee1065cdf1af39"
+    },
+    "study-candidate/phone-courtyard-window-morning-empty.png": {
+      "bytes": 91329,
+      "sha256": "f175f90ae7334fb6cdef210c507039ed714afbd35181d76f6a061e990cf73efb"
+    },
+    "study-candidate/phone-rooftop-threshold-morning-empty.png": {
+      "bytes": 51249,
+      "sha256": "c7a2c30150737be252e4abeffe08b40c2c9a8c41ffc5b9cfd443e01d0e749191"
+    },
+    "study-candidate/phone-workshop-bench-morning-occupied.png": {
+      "bytes": 96565,
+      "sha256": "31ed87ab5c6fc1cd186b2cb4289725361be849295cc4130de1352caf0398752e"
+    },
+    "study-candidate/desktop-courtyard-window-morning-occupied.png": {
+      "bytes": 252851,
+      "sha256": "937b3a35d86f82c93e47f1f94626b858d290bcea1e2efddee512a85fdff1e6a8"
+    },
+    "study-candidate/desktop-rooftop-care-evening-occupied.png": {
+      "bytes": 222446,
+      "sha256": "345949ae6df2c9f685ecb4c10afd5b40f46b2ccdd43c6624e16ab11bbdd59203"
+    },
+    "study-candidate/desktop-courtyard-window-evening-empty.png": {
+      "bytes": 245752,
+      "sha256": "f7103aa08e0c894e4799dddf31bd1d5f05f922ab1507496391446f989612038f"
+    },
+    "study-candidate/phone-courtyard-window-morning-occupied.png": {
+      "bytes": 91957,
+      "sha256": "fff52d6acd6c4fd571e32ab6fedd9c33f18313d083b964f86ca9fef01ccd7c04"
+    },
+    "study-candidate/phone-rooftop-care-morning-occupied.png": {
+      "bytes": 92357,
+      "sha256": "e5341d17ef4c7d91e4db54a253071df4f7a29dfcd4c3826b1449c2d65ee6a012"
+    },
+    "study-candidate/desktop-workshop-bench-evening-occupied.png": {
+      "bytes": 217268,
+      "sha256": "755170bf5bd625add5c029ab1827076529cdb2b877e340944436e179a541b311"
+    },
+    "study-candidate/phone-workshop-bench-evening-occupied.png": {
+      "bytes": 92184,
+      "sha256": "e2560b9b14709c82fa18014ddb071b19dc3da2abb69a6751a3fcbeb697847054"
+    },
+    "study-candidate/phone-courtyard-window-evening-occupied.png": {
+      "bytes": 90604,
+      "sha256": "6607b17358e21630d0703056c5e2a363a508c3e040cc397c8c8fc7d8fd51810d"
+    },
+    "study-candidate/desktop-courtyard-window-morning-empty.png": {
+      "bytes": 249217,
+      "sha256": "08821da274cd493fa7a4843748e0277661422ca9fbaf1ccb2fdeb6b4e84459b7"
+    },
+    "study-candidate/phone-courtyard-laundry-morning-occupied.png": {
+      "bytes": 86734,
+      "sha256": "dec77a013081df88a9cc4324a23d7a26d28021b72a4a1f6870bc32e31a40545f"
+    },
+    "study-candidate/desktop-courtyard-laundry-morning-occupied.png": {
+      "bytes": 229081,
+      "sha256": "7c082d8934915f3fe7d6621d790f0b419fa7a0224d8d5bc3afbd0fe019f0ec04"
+    },
+    "ordinary/phone-workshop-bench-morning.png": {
+      "bytes": 91397,
+      "sha256": "33a277a6ceb9781f8b51ce1eed2e341baac096ac9490c9753606b764cf2267c2"
+    },
+    "ordinary/desktop-rooftop-care-evening.png": {
+      "bytes": 250017,
+      "sha256": "46105210a94791c3083493c4b2c27871687112e53d6e1f2ccb1b26015e711047"
+    },
+    "ordinary/phone-courtyard-window-evening.png": {
+      "bytes": 87219,
+      "sha256": "ce43af7936f2c6633bffe0b89029db648f6fa4b3ce322c503c3f7ddc73d6e9d0"
+    },
+    "ordinary/desktop-courtyard-window-evening.png": {
+      "bytes": 246264,
+      "sha256": "4e8897caf9845af3727db2f653141b37acae0515db1a42d822a397da0b7aca70"
+    },
+    "ordinary/desktop-rooftop-care-morning.png": {
+      "bytes": 253967,
+      "sha256": "d247554617f0104b21eaf26ac17ecca11875f93b3dded2736ff81703f68440e6"
+    },
+    "ordinary/desktop-workshop-bench-morning.png": {
+      "bytes": 224113,
+      "sha256": "e1008e6020f5c94c35ff2f1f82fa348717c780c66e43831ada4c561fadb54a43"
+    },
+    "ordinary/phone-evening-walk.mp4": {
+      "bytes": 1661064,
+      "sha256": "873fd1d93e2fe9ca09610a2d5aadc73e369e65c6d2cd2b8710acef6a4c2a0deb"
+    },
+    "ordinary/desktop-scheduling.json": {
+      "bytes": 4822,
+      "sha256": "51f56154da653ad0940649ef47f7986f323e844cc5b04fd520f9f344922363c4"
+    },
+    "ordinary/phone-garden-watered.png": {
+      "bytes": 81411,
+      "sha256": "07273b8229d7942b134b68946bded7f4cd5efc915036b21747ec6be9133cd813"
+    },
+    "ordinary/phone-courtyard-window-morning.png": {
+      "bytes": 90381,
+      "sha256": "89f032e2c29f9570ea8d4045d765cb21d52cd812e6102b52dc695fdb2161043f"
+    },
+    "ordinary/phone-repair-returned.png": {
+      "bytes": 81783,
+      "sha256": "864bbb93c19570f155e7103c5b219ace25b3d2841143654790b7277523f6e8ef"
+    },
+    "ordinary/desktop-courtyard-laundry-evening.png": {
+      "bytes": 224507,
+      "sha256": "d564685ade629d0fc04fe503e67fe16ddb91b32c745514f836a09f18b25e8321"
+    },
+    "ordinary/phone-workshop-bench-evening.png": {
+      "bytes": 86660,
+      "sha256": "37527d0d46761b63f7c471c0033e73eae5986442e470ee2a154bda4232283645"
+    },
+    "ordinary/phone-rooftop-threshold-evening.png": {
+      "bytes": 49307,
+      "sha256": "101ceab17ba89c64fa971c9ab147290f799519e8f738c88d641f13fa941e9930"
+    },
+    "ordinary/phone-journey-proof.json": {
+      "bytes": 147338,
+      "sha256": "83a973d34241fb951bc3aad033be76fbb21889b8a3eb381ed32329457e4048ca"
+    },
+    "ordinary/desktop-courtyard-laundry-morning.png": {
+      "bytes": 228557,
+      "sha256": "1c8a337059a7dac71bc037367d9997422e5353eae214ccfe931cd57a0c1ed311"
+    },
+    "ordinary/desktop-workshop-entry-morning.png": {
+      "bytes": 219909,
+      "sha256": "58de54011da8a2c2bba38ccd998170d999a3f38885ddc46f15915d8e88533159"
+    },
+    "ordinary/desktop-workshop-entry-evening.png": {
+      "bytes": 207883,
+      "sha256": "34e6deda986918f4436c4f1e4903296f5c57889f7d76037451390df58af60266"
+    },
+    "ordinary/desktop-rooftop-threshold-evening.png": {
+      "bytes": 200056,
+      "sha256": "d34f8705c127cc22803e93de192031df976357953ab37ddc82ca9bca3eb27dff"
+    },
+    "ordinary/phone-rooftop-care-morning.png": {
+      "bytes": 104256,
+      "sha256": "e4385425f33e2584aba4a8e7d25ba7bb561fd20a9ad63220c5f43d1a2e251c2d"
+    },
+    "ordinary/phone-service-world.png": {
+      "bytes": 48804,
+      "sha256": "5aab65b6d7e5983fdd9a7c611b34e96f8a79d6ef865fb8ce02efd0e008012333"
+    },
+    "ordinary/desktop-evening-walk.mp4": {
+      "bytes": 702729,
+      "sha256": "b49a31be90913b8e9193813b9eae63cae5534f52fa5f15a1b7fdfa31df222801"
+    },
+    "ordinary/phone-courtyard-laundry-morning.png": {
+      "bytes": 85135,
+      "sha256": "290f83554e251c233a5fabdfd77b3b074a1c037996a8e31441e0d78eb9266ca6"
+    },
+    "ordinary/phone-workshop-entry-evening.png": {
+      "bytes": 81061,
+      "sha256": "5185f240480c81ab7c19d0b820f346104ee64ed474372ed7f9581540aa5b043c"
+    },
+    "ordinary/phone-rooftop-care-evening.png": {
+      "bytes": 99795,
+      "sha256": "3d12610342b0badff72694ce6f214d19faef7edbf16e4055781528527b82f78a"
+    },
+    "ordinary/phone-courtyard-laundry-evening.png": {
+      "bytes": 83925,
+      "sha256": "4955b66883a9fea74e4c5684da3ff2572b9651f51ecc2f33bc3384a39f5fa968"
+    },
+    "ordinary/phone-workshop-entry-morning.png": {
+      "bytes": 86276,
+      "sha256": "6ed130ff11dedced51a1ebbf91e2f083babcc6ddc8e490e347c9cb1c47ae4258"
+    },
+    "ordinary/phone-rooftop-threshold-morning.png": {
+      "bytes": 52312,
+      "sha256": "433d6f17ba49cbc51aa9d81c66ce9fe03a32bee96f01a87dca6ef497ef9021ef"
+    },
+    "ordinary/desktop-workshop-bench-evening.png": {
+      "bytes": 211376,
+      "sha256": "f7cf8f7b6a2ec4a7a0caceac8fa41722e41c91c00a69a04ef8747568259e0e61"
+    },
+    "ordinary/desktop-rooftop-threshold-morning.png": {
+      "bytes": 202862,
+      "sha256": "08aa9a27776b16deb91b31f8d7eece6426ed43da2b8041b1072bafb7a6ccdb2c"
+    },
+    "ordinary/desktop-courtyard-window-morning.png": {
+      "bytes": 250408,
+      "sha256": "c5aead313b3c119354d83cba475f71174c075901b885e636c17813a0435b87e9"
+    },
+    "ordinary/desktop-journey-proof.json": {
+      "bytes": 122173,
+      "sha256": "f207edc5af72d7a8b9ee5de3dd1f5945a258e4d6322da7a28f2358f9deb5b5df"
+    },
+    "ordinary/desktop-service-world.png": {
+      "bytes": 134831,
+      "sha256": "e8711b0aaa318c2d00552c8addfb0d13e74873263f0b569186e94be426b28f06"
+    },
+    "app-cost/comparison.json": {
+      "bytes": 3925,
+      "sha256": "43dc958df52294bc237d14eacb68ce60b35425509a171d7f25a23a804f67333b"
+    },
+    "app-cost/candidate.json": {
+      "bytes": 7769,
+      "sha256": "a411643d73de6c55086c8fd9bdb4f49ba8bb512b3e4a3965ea616f3daeea02aa"
+    },
+    "app-cost/baseline.json": {
+      "bytes": 7763,
+      "sha256": "5364060d6582d37318ea8427f4690bacef185c7033ecbd73d18015fc97bbaacf"
+    },
+    "study-baseline/desktop-rooftop-threshold-morning-empty.png": {
+      "bytes": 182190,
+      "sha256": "eec4c0233409fdca3ebf9f9357ec234037839ba3235a45a5acbb5e16223c14b0"
+    },
+    "study-baseline/phone-rooftop-threshold-evening-empty.png": {
+      "bytes": 49673,
+      "sha256": "a77edeb714a281dd66d598dac7f77691dba04af7749e1cab9369343b51235324"
+    },
+    "study-baseline/phone-workshop-entry-evening-occupied.png": {
+      "bytes": 91799,
+      "sha256": "11797ef5d6b995c2d6f66ceadba65403f565d0193d0b64576ccd73713e48f14c"
+    },
+    "study-baseline/desktop-workshop-entry-evening-occupied.png": {
+      "bytes": 226579,
+      "sha256": "06c04161298232259ff22a3d87f3c333774941db5bf05d319713fe7bcbdf7487"
+    },
+    "study-baseline/desktop-workshop-bench-morning-empty.png": {
+      "bytes": 233415,
+      "sha256": "309997ba6461fcbc58966511019d2e59b8bc53eea30959bd67d05fe3444a7aa8"
+    },
+    "study-baseline/desktop-courtyard-laundry-evening-occupied.png": {
+      "bytes": 225085,
+      "sha256": "8b418ff7f2c686857f5c2f16f77ff301b9f9f30ccce6a06875430dfb8f61489a"
+    },
+    "study-baseline/desktop-courtyard-window-evening-occupied.png": {
+      "bytes": 249916,
+      "sha256": "228f80bad6a2d8aa1171ddeb2cfe6115aa8c6ce28981f0a21276710efbc711fa"
+    },
+    "study-baseline/phone-courtyard-window-evening-empty.png": {
+      "bytes": 91039,
+      "sha256": "ca1abff54bb562de8cd1f4d36fe36dc04441dfc0c7f8b20c450b73790711bde2"
+    },
+    "study-baseline/desktop-rooftop-care-morning-occupied.png": {
+      "bytes": 221567,
+      "sha256": "1428966bad2c2efaddf8953c303de812d0adec8bf08252235f7d49f42b7eb5af"
+    },
+    "study-baseline/desktop-workshop-entry-morning-occupied.png": {
+      "bytes": 222802,
+      "sha256": "a97c3415923fb4555c1ec44a812663f027425064634adc653ee2f3f82e27079a"
+    },
+    "study-baseline/desktop-workshop-bench-morning-occupied.png": {
+      "bytes": 233348,
+      "sha256": "c757865f953aed9827403836af4953f6121986c9ab794718d7d58a4e7b2db6ef"
+    },
+    "study-baseline/phone-workshop-entry-morning-occupied.png": {
+      "bytes": 89675,
+      "sha256": "72b0051279a358d46cb2f238c9e39c691a2458cdb56e02253540268bde584599"
+    },
+    "study-baseline/desktop-rooftop-threshold-evening-occupied.png": {
+      "bytes": 179405,
+      "sha256": "cef5fe181572a50b8b8195eac5160a228f86318896307033e8ee853f07929778"
+    },
+    "study-baseline/phone-rooftop-threshold-evening-occupied.png": {
+      "bytes": 49711,
+      "sha256": "26389ca0ce46c0b2bb219d8dad3ab75262a7711e07adce876634982eb8bd1f3b"
+    },
+    "study-baseline/desktop-rooftop-threshold-morning-occupied.png": {
+      "bytes": 182240,
+      "sha256": "8c79dd4c6013d3fe5afd0f24fb0f5167573fa50edf6c9bd591c8721ad2810c12"
+    },
+    "study-baseline/phone-rooftop-threshold-morning-occupied.png": {
+      "bytes": 50638,
+      "sha256": "49ffaf400adfe2fe5518ffb5b97d96f6620e1ba650f1ee2e42cbf300ef9e019c"
+    },
+    "study-baseline/phone-courtyard-laundry-evening-occupied.png": {
+      "bytes": 86374,
+      "sha256": "078b7b7ba921ad006414921dd69d8ae457de80ebbdd7018004b458325f46fe24"
+    },
+    "study-baseline/desktop-rooftop-threshold-evening-empty.png": {
+      "bytes": 179286,
+      "sha256": "8426b023ba93dd207fadfead64f06a1396032954044d0a72c099a838b4e8178d"
+    },
+    "study-baseline/proof.json": {
+      "bytes": 19315,
+      "sha256": "a6013fe0c77707c2e928d01932ac820f78e847cdb03369ccf039fa193242dbeb"
+    },
+    "study-baseline/phone-workshop-bench-morning-empty.png": {
+      "bytes": 97598,
+      "sha256": "cebf89f3714334d2ea25dacdead041ba49edcca66f7897ac43d3dd75805be8a4"
+    },
+    "study-baseline/desktop-workshop-bench-evening-empty.png": {
+      "bytes": 235637,
+      "sha256": "0cb129b1eaba5c446a5bbf05468c37983e75cfeca7c264a730ede7ddea278fd5"
+    },
+    "study-baseline/phone-rooftop-care-evening-occupied.png": {
+      "bytes": 92027,
+      "sha256": "d9937294968424cb2ddd02218d05927685a2e8cea994097c86e0dd46adca63cc"
+    },
+    "study-baseline/phone-workshop-bench-evening-empty.png": {
+      "bytes": 98294,
+      "sha256": "acc610e0722c9dc616e04b933b0a766a981557c35585c3cf8f561b51c8f8694c"
+    },
+    "study-baseline/phone-courtyard-window-morning-empty.png": {
+      "bytes": 91305,
+      "sha256": "1b29a7f630ff47e416a31e4699c137457de2a495dfc6f8127cd2c8b50aa83468"
+    },
+    "study-baseline/phone-rooftop-threshold-morning-empty.png": {
+      "bytes": 49839,
+      "sha256": "da2193df6a5d17ef28f221f9c0ce2ab364d0cf3073ba9180501a9dbb9ab77597"
+    },
+    "study-baseline/phone-workshop-bench-morning-occupied.png": {
+      "bytes": 97692,
+      "sha256": "3efb0e2860272589596dce25b3016f6ffa00709c65b25856f96d3d6d7167e880"
+    },
+    "study-baseline/desktop-courtyard-window-morning-occupied.png": {
+      "bytes": 253431,
+      "sha256": "30ae42c6234098fd5966874c862f50ea83ba54c43b84055c90df544f02772650"
+    },
+    "study-baseline/desktop-rooftop-care-evening-occupied.png": {
+      "bytes": 221501,
+      "sha256": "88b7f0ebf334795d7af4eb932ebefaf12d303aef18666bd3599e46b516a4152f"
+    },
+    "study-baseline/desktop-courtyard-window-evening-empty.png": {
+      "bytes": 246506,
+      "sha256": "1580e9124456af01a125648222749a44c1483847f5bbf6c0f09a460b60c16869"
+    },
+    "study-baseline/phone-courtyard-window-morning-occupied.png": {
+      "bytes": 91158,
+      "sha256": "d9e62328980dbdbd5f59e20c5d96453c03b7f7cd25ff79cb465f980355dcef94"
+    },
+    "study-baseline/phone-rooftop-care-morning-occupied.png": {
+      "bytes": 92303,
+      "sha256": "0ba4776c624e597e2d501b89caf88b0a47d24a34376662bad462497649f3f449"
+    },
+    "study-baseline/desktop-workshop-bench-evening-occupied.png": {
+      "bytes": 235485,
+      "sha256": "475dc52a65ad498a188b003b27b587dd17c268c3c4d223897f04573b0049a306"
+    },
+    "study-baseline/phone-workshop-bench-evening-occupied.png": {
+      "bytes": 97589,
+      "sha256": "c1886c9d942c9f91cb12ce3c88066fd3199866f8ee93c0175edcc579a9931835"
+    },
+    "study-baseline/phone-courtyard-window-evening-occupied.png": {
+      "bytes": 91325,
+      "sha256": "6596040946f90b47037ec6ea3f5e1791a6d485c2e5c172413f9d1d91a71c44e6"
+    },
+    "study-baseline/desktop-courtyard-window-morning-empty.png": {
+      "bytes": 249780,
+      "sha256": "015b096855c8105175362d132386110066374e9aa9c14908faaf8030ff989498"
+    },
+    "study-baseline/phone-courtyard-laundry-morning-occupied.png": {
+      "bytes": 85373,
+      "sha256": "a3bbaa518053831c46a1cc7ef4e8d1ac1c50924520d44ddb12383c2f30a82507"
+    },
+    "study-baseline/desktop-courtyard-laundry-morning-occupied.png": {
+      "bytes": 229536,
+      "sha256": "3b15ae2355da27b0fb8f3b7eeb397645eef77c27c55196ad1edc69d1307454c0"
+    }
+  }
+}

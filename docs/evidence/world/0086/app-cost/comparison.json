@@ -1,0 +1,166 @@
+{
+  "method": "One sequential baseline/candidate trial per matched fixture; no video/trace; reduced motion. CPU changes are noisy and not an acceptance grade. No attribution or input-latency claim.",
+  "rows": [
+    {
+      "device": "desktop",
+      "mapId": "workshop",
+      "site": "bench",
+      "baselineCPU": 856.7,
+      "candidateCPU": 927.3,
+      "deltaPercent": 8.2,
+      "baselineP95": 77.7,
+      "candidateP95": 99.5
+    },
+    {
+      "device": "desktop",
+      "mapId": "workshop",
+      "site": "entry",
+      "baselineCPU": 848.5,
+      "candidateCPU": 841.2,
+      "deltaPercent": -0.9,
+      "baselineP95": 70.5,
+      "candidateP95": 82.2
+    },
+    {
+      "device": "desktop",
+      "mapId": "courtyard",
+      "site": "window",
+      "baselineCPU": 1842.3,
+      "candidateCPU": 1830.0,
+      "deltaPercent": -0.7,
+      "baselineP95": 90.1,
+      "candidateP95": 87.3
+    },
+    {
+      "device": "desktop",
+      "mapId": "courtyard",
+      "site": "laundry",
+      "baselineCPU": 1501.7,
+      "candidateCPU": 1820.4,
+      "deltaPercent": 21.2,
+      "baselineP95": 80.9,
+      "candidateP95": 81.2
+    },
+    {
+      "device": "desktop",
+      "mapId": "rooftop",
+      "site": "threshold",
+      "baselineCPU": 785.8,
+      "candidateCPU": 761.8,
+      "deltaPercent": -3.1,
+      "baselineP95": 64.1,
+      "candidateP95": 64.7
+    },
+    {
+      "device": "desktop",
+      "mapId": "rooftop",
+      "site": "care",
+      "baselineCPU": 890.5,
+      "candidateCPU": 981.6,
+      "deltaPercent": 10.2,
+      "baselineP95": 69.5,
+      "candidateP95": 84.5
+    },
+    {
+      "device": "desktop",
+      "mapId": "park",
+      "site": "default-arrival",
+      "baselineCPU": 619.4,
+      "candidateCPU": 586.2,
+      "deltaPercent": -5.4,
+      "baselineP95": 59.2,
+      "candidateP95": 62.1
+    },
+    {
+      "device": "desktop",
+      "mapId": "riverbank",
+      "site": "default-arrival",
+      "baselineCPU": 860.6,
+      "candidateCPU": 697.9,
+      "deltaPercent": -18.9,
+      "baselineP95": 77.2,
+      "candidateP95": 61
+    },
+    {
+      "device": "phone",
+      "mapId": "workshop",
+      "site": "bench",
+      "baselineCPU": 934.2,
+      "candidateCPU": 881.4,
+      "deltaPercent": -5.6,
+      "baselineP95": 51.8,
+      "candidateP95": 52.1
+    },
+    {
+      "device": "phone",
+      "mapId": "workshop",
+      "site": "entry",
+      "baselineCPU": 818.0,
+      "candidateCPU": 798.4,
+      "deltaPercent": -2.4,
+      "baselineP95": 52,
+      "candidateP95": 51.6
+    },
+    {
+      "device": "phone",
+      "mapId": "courtyard",
+      "site": "window",
+      "baselineCPU": 1265.7,
+      "candidateCPU": 1195.9,
+      "deltaPercent": -5.5,
+      "baselineP95": 53,
+      "candidateP95": 51.4
+    },
+    {
+      "device": "phone",
+      "mapId": "courtyard",
+      "site": "laundry",
+      "baselineCPU": 1320.9,
+      "candidateCPU": 1066.1,
+      "deltaPercent": -19.3,
+      "baselineP95": 54.2,
+      "candidateP95": 51.6
+    },
+    {
+      "device": "phone",
+      "mapId": "rooftop",
+      "site": "threshold",
+      "baselineCPU": 640.3,
+      "candidateCPU": 731.5,
+      "deltaPercent": 14.2,
+      "baselineP95": 51.5,
+      "candidateP95": 52.4
+    },
+    {
+      "device": "phone",
+      "mapId": "rooftop",
+      "site": "care",
+      "baselineCPU": 761.5,
+      "candidateCPU": 842.8,
+      "deltaPercent": 10.7,
+      "baselineP95": 51.6,
+      "candidateP95": 52.3
+    },
+    {
+      "device": "phone",
+      "mapId": "park",
+      "site": "default-arrival",
+      "baselineCPU": 556.9,
+      "candidateCPU": 611.5,
+      "deltaPercent": 9.8,
+      "baselineP95": 52.2,
+      "candidateP95": 52.4
+    },
+    {
+      "device": "phone",
+      "mapId": "riverbank",
+      "site": "default-arrival",
+      "baselineCPU": 612.2,
+      "candidateCPU": 661.5,
+      "deltaPercent": 8.0,
+      "baselineP95": 51.8,
+      "candidateP95": 52
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,4752 @@
+{
+  "checkpoints": [
+    {
+      "destination": "workshop",
+      "name": "bench",
+      "phase": "morning",
+      "state": {
+        "seed": 955863294,
+        "day": 1,
+        "level": 1,
+        "player": {
+          "x": 6,
+          "y": 2.5
+        },
+        "customers": [
+          {
+            "table": 1,
+            "orderId": "order-01",
+            "phase": "seated"
+          },
+          {
+            "table": 2,
+            "orderId": "order-02",
+            "phase": "seated"
+          },
+          {
+            "table": 3,
+            "orderId": "order-03",
+            "phase": "seated"
+          },
+          {
+            "table": 4,
+            "orderId": "order-04",
+            "phase": "seated"
+          }
+        ],
+        "tray": [],
+        "served": 0,
+        "earnings": 0,
+        "mistakes": 0,
+        "activeTable": null,
+        "feedback": "none",
+        "receipt": null,
+        "journal": {
+          "milk": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "egg": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "thank-you": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "good": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          }
+        },
+        "ended": false,
+        "neighbourhood": {
+          "version": 1,
+          "location": "restaurant",
+          "apartment": {
+            "owned": [
+              "bed"
+            ],
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "welcome"
+          },
+          "cats": {
+            "version": 1,
+            "story": {
+              "node": "search"
+            },
+            "selected": null,
+            "cats": {
+              "white": {
+                "noticed": false,
+                "calm": false,
+                "gaveSpace": false,
+                "rested": false,
+                "sawEmptyBicycle": false
+              },
+              "black": {
+                "greeted": false,
+                "satTogether": false
+              }
+            },
+            "repeat": {
+              "status": "idle"
+            },
+            "completedKinds": [],
+            "lastCompletedDay": null,
+            "feedback": "clue"
+          },
+          "repairs": {
+            "version": 1,
+            "jobs": {
+              "lamp": {
+                "kind": "lamp",
+                "fitting": "loose",
+                "power": "off",
+                "test": "none"
+              },
+              "toy": {
+                "kind": "toy",
+                "cover": "closed",
+                "lead": "loose",
+                "cell": "old",
+                "test": "none"
+              }
+            },
+            "active": "lamp",
+            "selected": null,
+            "completed": [],
+            "feedback": "lamp-intro"
+          },
+          "garden": {
+            "version": 1,
+            "day": 1,
+            "restored": false,
+            "shade": 0,
+            "plants": {
+              "flower": {
+                "site": 0,
+                "care": "ready",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "climber": {
+                "site": 2,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "tree": {
+                "site": 4,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              }
+            },
+            "planterEarned": false
+          },
+          "claimedGiftIds": []
+        },
+        "world": {
+          "version": 1,
+          "mapId": "workshop",
+          "position": {
+            "x": 11.499999974695719,
+            "y": 8.800000025304282
+          },
+          "facing": "north",
+          "returnPositions": {
+            "restaurant": {
+              "x": 12,
+              "y": 19.999999674479167,
+              "facing": "south"
+            },
+            "town": {
+              "x": 71.93121580395515,
+              "y": 29.84482436050351,
+              "facing": "east"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 24183.200000000008,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [],
+            "pauses": []
+          }
+        }
+      }
+    },
+    {
+      "destination": "workshop",
+      "name": "entry",
+      "phase": "morning",
+      "state": {
+        "seed": 955863294,
+        "day": 1,
+        "level": 1,
+        "player": {
+          "x": 6,
+          "y": 2.5
+        },
+        "customers": [
+          {
+            "table": 1,
+            "orderId": "order-01",
+            "phase": "seated"
+          },
+          {
+            "table": 2,
+            "orderId": "order-02",
+            "phase": "seated"
+          },
+          {
+            "table": 3,
+            "orderId": "order-03",
+            "phase": "seated"
+          },
+          {
+            "table": 4,
+            "orderId": "order-04",
+            "phase": "seated"
+          }
+        ],
+        "tray": [],
+        "served": 0,
+        "earnings": 0,
+        "mistakes": 0,
+        "activeTable": null,
+        "feedback": "none",
+        "receipt": null,
+        "journal": {
+          "milk": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "egg": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "thank-you": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "good": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          }
+        },
+        "ended": false,
+        "neighbourhood": {
+          "version": 1,
+          "location": "restaurant",
+          "apartment": {
+            "owned": [
+              "bed"
+            ],
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "welcome"
+          },
+          "cats": {
+            "version": 1,
+            "story": {
+              "node": "search"
+            },
+            "selected": null,
+            "cats": {
+              "white": {
+                "noticed": false,
+                "calm": false,
+                "gaveSpace": false,
+                "rested": false,
+                "sawEmptyBicycle": false
+              },
+              "black": {
+                "greeted": false,
+                "satTogether": false
+              }
+            },
+            "repeat": {
+              "status": "idle"
+            },
+            "completedKinds": [],
+            "lastCompletedDay": null,
+            "feedback": "clue"
+          },
+          "repairs": {
+            "version": 1,
+            "jobs": {
+              "lamp": {
+                "kind": "lamp",
+                "fitting": "loose",
+                "power": "off",
+                "test": "none"
+              },
+              "toy": {
+                "kind": "toy",
+                "cover": "closed",
+                "lead": "loose",
+                "cell": "old",
+                "test": "none"
+              }
+            },
+            "active": "lamp",
+            "selected": null,
+            "completed": [],
+            "feedback": "lamp-intro"
+          },
+          "garden": {
+            "version": 1,
+            "day": 1,
+            "restored": false,
+            "shade": 0,
+            "plants": {
+              "flower": {
+                "site": 0,
+                "care": "ready",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "climber": {
+                "site": 2,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "tree": {
+                "site": 4,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              }
+            },
+            "planterEarned": false
+          },
+          "claimedGiftIds": []
+        },
+        "world": {
+          "version": 1,
+          "mapId": "workshop",
+          "position": {
+            "x": 15,
+            "y": 22.5
+          },
+          "facing": "south",
+          "returnPositions": {
+            "restaurant": {
+              "x": 12,
+              "y": 19.999999674479167,
+              "facing": "south"
+            },
+            "town": {
+              "x": 71.93121580395515,
+              "y": 29.84482436050351,
+              "facing": "east"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 31273.000000000004,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [],
+            "pauses": []
+          }
+        }
+      }
+    },
+    {
+      "destination": "courtyard",
+      "name": "window",
+      "phase": "morning",
+      "state": {
+        "seed": 955863294,
+        "day": 1,
+        "level": 1,
+        "player": {
+          "x": 6,
+          "y": 2.5
+        },
+        "customers": [
+          {
+            "table": 1,
+            "orderId": "order-01",
+            "phase": "seated"
+          },
+          {
+            "table": 2,
+            "orderId": "order-02",
+            "phase": "seated"
+          },
+          {
+            "table": 3,
+            "orderId": "order-03",
+            "phase": "seated"
+          },
+          {
+            "table": 4,
+            "orderId": "order-04",
+            "phase": "seated"
+          }
+        ],
+        "tray": [],
+        "served": 0,
+        "earnings": 0,
+        "mistakes": 0,
+        "activeTable": null,
+        "feedback": "none",
+        "receipt": null,
+        "journal": {
+          "milk": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "egg": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "thank-you": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "good": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          }
+        },
+        "ended": false,
+        "neighbourhood": {
+          "version": 1,
+          "location": "restaurant",
+          "apartment": {
+            "owned": [
+              "bed"
+            ],
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "welcome"
+          },
+          "cats": {
+            "version": 1,
+            "story": {
+              "node": "search"
+            },
+            "selected": null,
+            "cats": {
+              "white": {
+                "noticed": false,
+                "calm": false,
+                "gaveSpace": false,
+                "rested": false,
+                "sawEmptyBicycle": false
+              },
+              "black": {
+                "greeted": false,
+                "satTogether": false
+              }
+            },
+            "repeat": {
+              "status": "idle"
+            },
+            "completedKinds": [],
+            "lastCompletedDay": null,
+            "feedback": "clue"
+          },
+          "repairs": {
+            "version": 1,
+            "jobs": {
+              "lamp": {
+                "kind": "lamp",
+                "fitting": "loose",
+                "power": "off",
+                "test": "none"
+              },
+              "toy": {
+                "kind": "toy",
+                "cover": "closed",
+                "lead": "loose",
+                "cell": "old",
+                "test": "none"
+              }
+            },
+            "active": "lamp",
+            "selected": null,
+            "completed": [],
+            "feedback": "lamp-intro"
+          },
+          "garden": {
+            "version": 1,
+            "day": 1,
+            "restored": false,
+            "shade": 0,
+            "plants": {
+              "flower": {
+                "site": 0,
+                "care": "ready",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "climber": {
+                "site": 2,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "tree": {
+                "site": 4,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              }
+            },
+            "planterEarned": false
+          },
+          "claimedGiftIds": []
+        },
+        "world": {
+          "version": 1,
+          "mapId": "courtyard",
+          "position": {
+            "x": 23.49999999321062,
+            "y": 21.50000002942071
+          },
+          "facing": "north",
+          "returnPositions": {
+            "restaurant": {
+              "x": 12,
+              "y": 19.999999674479167,
+              "facing": "south"
+            },
+            "town": {
+              "x": 45.20678503518421,
+              "y": 1.654712060172905,
+              "facing": "north"
+            },
+            "workshop": {
+              "x": 15,
+              "y": 25.916999999999994,
+              "facing": "south"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 57515.200000000004,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [],
+            "pauses": []
+          }
+        }
+      }
+    },
+    {
+      "destination": "courtyard",
+      "name": "laundry",
+      "phase": "morning",
+      "state": {
+        "seed": 955863294,
+        "day": 1,
+        "level": 1,
+        "player": {
+          "x": 6,
+          "y": 2.5
+        },
+        "customers": [
+          {
+            "table": 1,
+            "orderId": "order-01",
+            "phase": "seated"
+          },
+          {
+            "table": 2,
+            "orderId": "order-02",
+            "phase": "seated"
+          },
+          {
+            "table": 3,
+            "orderId": "order-03",
+            "phase": "seated"
+          },
+          {
+            "table": 4,
+            "orderId": "order-04",
+            "phase": "seated"
+          }
+        ],
+        "tray": [],
+        "served": 0,
+        "earnings": 0,
+        "mistakes": 0,
+        "activeTable": null,
+        "feedback": "none",
+        "receipt": null,
+        "journal": {
+          "milk": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "egg": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "thank-you": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "good": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          }
+        },
+        "ended": false,
+        "neighbourhood": {
+          "version": 1,
+          "location": "restaurant",
+          "apartment": {
+            "owned": [
+              "bed"
+            ],
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "welcome"
+          },
+          "cats": {
+            "version": 1,
+            "story": {
+              "node": "search"
+            },
+            "selected": null,
+            "cats": {
+              "white": {
+                "noticed": false,
+                "calm": false,
+                "gaveSpace": false,
+                "rested": false,
+                "sawEmptyBicycle": false
+              },
+              "black": {
+                "greeted": false,
+                "satTogether": false
+              }
+            },
+            "repeat": {
+              "status": "idle"
+            },
+            "completedKinds": [],
+            "lastCompletedDay": null,
+            "feedback": "clue"
+          },
+          "repairs": {
+            "version": 1,
+            "jobs": {
+              "lamp": {
+                "kind": "lamp",
+                "fitting": "loose",
+                "power": "off",
+                "test": "none"
+              },
+              "toy": {
+                "kind": "toy",
+                "cover": "closed",
+                "lead": "loose",
+                "cell": "old",
+                "test": "none"
+              }
+            },
+            "active": "lamp",
+            "selected": null,
+            "completed": [],
+            "feedback": "lamp-intro"
+          },
+          "garden": {
+            "version": 1,
+            "day": 1,
+            "restored": false,
+            "shade": 0,
+            "plants": {
+              "flower": {
+                "site": 0,
+                "care": "ready",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "climber": {
+                "site": 2,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "tree": {
+                "site": 4,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              }
+            },
+            "planterEarned": false
+          },
+          "claimedGiftIds": []
+        },
+        "world": {
+          "version": 1,
+          "mapId": "courtyard",
+          "position": {
+            "x": 5.999999981894959,
+            "y": 11.500000018105043
+          },
+          "facing": "west",
+          "returnPositions": {
+            "restaurant": {
+              "x": 12,
+              "y": 19.999999674479167,
+              "facing": "south"
+            },
+            "town": {
+              "x": 45.20678503518421,
+              "y": 1.654712060172905,
+              "facing": "north"
+            },
+            "workshop": {
+              "x": 15,
+              "y": 25.916999999999994,
+              "facing": "south"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 67651.59999999998,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [],
+            "pauses": []
+          }
+        }
+      }
+    },
+    {
+      "destination": "rooftop",
+      "name": "threshold",
+      "phase": "morning",
+      "state": {
+        "seed": 955863294,
+        "day": 1,
+        "level": 1,
+        "player": {
+          "x": 6,
+          "y": 2.5
+        },
+        "customers": [
+          {
+            "table": 1,
+            "orderId": "order-01",
+            "phase": "seated"
+          },
+          {
+            "table": 2,
+            "orderId": "order-02",
+            "phase": "seated"
+          },
+          {
+            "table": 3,
+            "orderId": "order-03",
+            "phase": "seated"
+          },
+          {
+            "table": 4,
+            "orderId": "order-04",
+            "phase": "seated"
+          }
+        ],
+        "tray": [],
+        "served": 0,
+        "earnings": 0,
+        "mistakes": 0,
+        "activeTable": null,
+        "feedback": "none",
+        "receipt": null,
+        "journal": {
+          "milk": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "egg": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "thank-you": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "good": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          }
+        },
+        "ended": false,
+        "neighbourhood": {
+          "version": 1,
+          "location": "restaurant",
+          "apartment": {
+            "owned": [
+              "bed"
+            ],
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "welcome"
+          },
+          "cats": {
+            "version": 1,
+            "story": {
+              "node": "search"
+            },
+            "selected": null,
+            "cats": {
+              "white": {
+                "noticed": false,
+                "calm": false,
+                "gaveSpace": false,
+                "rested": false,
+                "sawEmptyBicycle": false
+              },
+              "black": {
+                "greeted": false,
+                "satTogether": false
+              }
+            },
+            "repeat": {
+              "status": "idle"
+            },
+            "completedKinds": [],
+            "lastCompletedDay": null,
+            "feedback": "clue"
+          },
+          "repairs": {
+            "version": 1,
+            "jobs": {
+              "lamp": {
+                "kind": "lamp",
+                "fitting": "loose",
+                "power": "off",
+                "test": "none"
+              },
+              "toy": {
+                "kind": "toy",
+                "cover": "closed",
+                "lead": "loose",
+                "cell": "old",
+                "test": "none"
+              }
+            },
+            "active": "lamp",
+            "selected": null,
+            "completed": [],
+            "feedback": "lamp-intro"
+          },
+          "garden": {
+            "version": 1,
+            "day": 1,
+            "restored": false,
+            "shade": 0,
+            "plants": {
+              "flower": {
+                "site": 0,
+                "care": "ready",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "climber": {
+                "site": 2,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "tree": {
+                "site": 4,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              }
+            },
+            "planterEarned": false
+          },
+          "claimedGiftIds": []
+        },
+        "world": {
+          "version": 1,
+          "mapId": "rooftop",
+          "position": {
+            "x": 12.440956583770934,
+            "y": 28.940956583770934
+          },
+          "facing": "north",
+          "returnPositions": {
+            "restaurant": {
+              "x": 12,
+              "y": 19.999999674479167,
+              "facing": "south"
+            },
+            "town": {
+              "x": 45.20678503518421,
+              "y": 1.654712060172905,
+              "facing": "north"
+            },
+            "workshop": {
+              "x": 15,
+              "y": 25.916999999999994,
+              "facing": "south"
+            },
+            "courtyard": {
+              "x": 22.708146636275355,
+              "y": 2.000319799663018,
+              "facing": "north"
+            },
+            "residential-hall": {
+              "x": 16.25951142515215,
+              "y": 4.015739771416524,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 4.05007616199196,
+              "y": 5.916794205800947,
+              "facing": "north"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 100961.39999999998,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [],
+            "pauses": []
+          }
+        }
+      }
+    },
+    {
+      "destination": "rooftop",
+      "name": "care",
+      "phase": "morning",
+      "state": {
+        "seed": 955863294,
+        "day": 1,
+        "level": 1,
+        "player": {
+          "x": 6,
+          "y": 2.5
+        },
+        "customers": [
+          {
+            "table": 1,
+            "orderId": "order-01",
+            "phase": "seated"
+          },
+          {
+            "table": 2,
+            "orderId": "order-02",
+            "phase": "seated"
+          },
+          {
+            "table": 3,
+            "orderId": "order-03",
+            "phase": "seated"
+          },
+          {
+            "table": 4,
+            "orderId": "order-04",
+            "phase": "seated"
+          }
+        ],
+        "tray": [],
+        "served": 0,
+        "earnings": 0,
+        "mistakes": 0,
+        "activeTable": null,
+        "feedback": "none",
+        "receipt": null,
+        "journal": {
+          "milk": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "egg": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "thank-you": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "good": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          }
+        },
+        "ended": false,
+        "neighbourhood": {
+          "version": 1,
+          "location": "restaurant",
+          "apartment": {
+            "owned": [
+              "bed"
+            ],
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "welcome"
+          },
+          "cats": {
+            "version": 1,
+            "story": {
+              "node": "search"
+            },
+            "selected": null,
+            "cats": {
+              "white": {
+                "noticed": false,
+                "calm": false,
+                "gaveSpace": false,
+                "rested": false,
+                "sawEmptyBicycle": false
+              },
+              "black": {
+                "greeted": false,
+                "satTogether": false
+              }
+            },
+            "repeat": {
+              "status": "idle"
+            },
+            "completedKinds": [],
+            "lastCompletedDay": null,
+            "feedback": "clue"
+          },
+          "repairs": {
+            "version": 1,
+            "jobs": {
+              "lamp": {
+                "kind": "lamp",
+                "fitting": "loose",
+                "power": "off",
+                "test": "none"
+              },
+              "toy": {
+                "kind": "toy",
+                "cover": "closed",
+                "lead": "loose",
+                "cell": "old",
+                "test": "none"
+              }
+            },
+            "active": "lamp",
+            "selected": null,
+            "completed": [],
+            "feedback": "lamp-intro"
+          },
+          "garden": {
+            "version": 1,
+            "day": 1,
+            "restored": false,
+            "shade": 0,
+            "plants": {
+              "flower": {
+                "site": 0,
+                "care": "ready",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "climber": {
+                "site": 2,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "tree": {
+                "site": 4,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              }
+            },
+            "planterEarned": false
+          },
+          "claimedGiftIds": []
+        },
+        "world": {
+          "version": 1,
+          "mapId": "rooftop",
+          "position": {
+            "x": 18.999999793466444,
+            "y": 20.000000207493617
+          },
+          "facing": "north",
+          "returnPositions": {
+            "restaurant": {
+              "x": 12,
+              "y": 19.999999674479167,
+              "facing": "south"
+            },
+            "town": {
+              "x": 45.20678503518421,
+              "y": 1.654712060172905,
+              "facing": "north"
+            },
+            "workshop": {
+              "x": 15,
+              "y": 25.916999999999994,
+              "facing": "south"
+            },
+            "courtyard": {
+              "x": 22.708146636275355,
+              "y": 2.000319799663018,
+              "facing": "north"
+            },
+            "residential-hall": {
+              "x": 16.25951142515215,
+              "y": 4.015739771416524,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 4.05007616199196,
+              "y": 5.916794205800947,
+              "facing": "north"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 106991.09999999998,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [],
+            "pauses": []
+          }
+        }
+      }
+    },
+    {
+      "table": 1,
+      "state": {
+        "seed": 955863294,
+        "day": 1,
+        "level": 1,
+        "player": {
+          "x": 4.4,
+          "y": 4
+        },
+        "customers": [
+          {
+            "table": 1,
+            "orderId": "order-01",
+            "phase": "served"
+          },
+          {
+            "table": 2,
+            "orderId": "order-02",
+            "phase": "seated"
+          },
+          {
+            "table": 3,
+            "orderId": "order-03",
+            "phase": "seated"
+          },
+          {
+            "table": 4,
+            "orderId": "order-04",
+            "phase": "seated"
+          }
+        ],
+        "tray": [],
+        "served": 1,
+        "earnings": 2,
+        "mistakes": 0,
+        "activeTable": 1,
+        "feedback": "thanks",
+        "receipt": {
+          "table": 1,
+          "total": 2,
+          "change": 3
+        },
+        "journal": {
+          "milk": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "egg": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "thank-you": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "good": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "i": {
+            "lookups": 1,
+            "lastSeen": 1793930990876,
+            "recovered": true
+          },
+          "think": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "want": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "one": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "piece": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "bun": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          }
+        },
+        "ended": false,
+        "neighbourhood": {
+          "version": 1,
+          "location": "restaurant",
+          "apartment": {
+            "owned": [
+              "bed"
+            ],
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "welcome"
+          },
+          "cats": {
+            "version": 1,
+            "story": {
+              "node": "search"
+            },
+            "selected": null,
+            "cats": {
+              "white": {
+                "noticed": false,
+                "calm": false,
+                "gaveSpace": false,
+                "rested": false,
+                "sawEmptyBicycle": false
+              },
+              "black": {
+                "greeted": false,
+                "satTogether": false
+              }
+            },
+            "repeat": {
+              "status": "idle"
+            },
+            "completedKinds": [],
+            "lastCompletedDay": null,
+            "feedback": "clue"
+          },
+          "repairs": {
+            "version": 1,
+            "jobs": {
+              "lamp": {
+                "kind": "lamp",
+                "fitting": "loose",
+                "power": "off",
+                "test": "none"
+              },
+              "toy": {
+                "kind": "toy",
+                "cover": "closed",
+                "lead": "loose",
+                "cell": "old",
+                "test": "none"
+              }
+            },
+            "active": "lamp",
+            "selected": null,
+            "completed": [],
+            "feedback": "lamp-intro"
+          },
+          "garden": {
+            "version": 1,
+            "day": 1,
+            "restored": false,
+            "shade": 0,
+            "plants": {
+              "flower": {
+                "site": 0,
+                "care": "ready",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "climber": {
+                "site": 2,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "tree": {
+                "site": 4,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              }
+            },
+            "planterEarned": false
+          },
+          "claimedGiftIds": []
+        },
+        "world": {
+          "version": 1,
+          "mapId": "restaurant",
+          "position": {
+            "x": 6.5,
+            "y": 9
+          },
+          "facing": "west",
+          "returnPositions": {
+            "restaurant": {
+              "x": 12,
+              "y": 19.999999674479167,
+              "facing": "south"
+            },
+            "town": {
+              "x": 33.62366401800821,
+              "y": 29.22411356305851,
+              "facing": "north"
+            },
+            "workshop": {
+              "x": 15,
+              "y": 25.916999999999994,
+              "facing": "south"
+            },
+            "courtyard": {
+              "x": 22.708146636275355,
+              "y": 2.000319799663018,
+              "facing": "north"
+            },
+            "residential-hall": {
+              "x": 16,
+              "y": 22.999499999999944,
+              "facing": "south"
+            },
+            "residential-stairs": {
+              "x": 10.486392611432693,
+              "y": 38.995289988392805,
+              "facing": "south"
+            },
+            "rooftop": {
+              "x": 10.540417856381504,
+              "y": 28.414506243091317,
+              "facing": "west"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 155425.39999999994,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [
+              {
+                "day": 1,
+                "table": 1,
+                "orderId": "order-01"
+              }
+            ],
+            "pauses": []
+          }
+        }
+      }
+    },
+    {
+      "table": 2,
+      "state": {
+        "seed": 955863294,
+        "day": 1,
+        "level": 1,
+        "player": {
+          "x": 10.4,
+          "y": 4
+        },
+        "customers": [
+          {
+            "table": 1,
+            "orderId": "order-01",
+            "phase": "served"
+          },
+          {
+            "table": 2,
+            "orderId": "order-02",
+            "phase": "served"
+          },
+          {
+            "table": 3,
+            "orderId": "order-03",
+            "phase": "seated"
+          },
+          {
+            "table": 4,
+            "orderId": "order-04",
+            "phase": "seated"
+          }
+        ],
+        "tray": [],
+        "served": 2,
+        "earnings": 5,
+        "mistakes": 0,
+        "activeTable": 2,
+        "feedback": "thanks",
+        "receipt": {
+          "table": 2,
+          "total": 3,
+          "change": 2
+        },
+        "journal": {
+          "milk": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "egg": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "thank-you": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "good": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "i": {
+            "lookups": 1,
+            "lastSeen": 1793930990876,
+            "recovered": true
+          },
+          "think": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "want": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "one": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "piece": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "bun": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "bring": {
+            "lookups": 0,
+            "lastSeen": 1793931009879,
+            "recovered": true
+          },
+          "cup": {
+            "lookups": 0,
+            "lastSeen": 1793931009879,
+            "recovered": true
+          }
+        },
+        "ended": false,
+        "neighbourhood": {
+          "version": 1,
+          "location": "restaurant",
+          "apartment": {
+            "owned": [
+              "bed"
+            ],
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "welcome"
+          },
+          "cats": {
+            "version": 1,
+            "story": {
+              "node": "search"
+            },
+            "selected": null,
+            "cats": {
+              "white": {
+                "noticed": false,
+                "calm": false,
+                "gaveSpace": false,
+                "rested": false,
+                "sawEmptyBicycle": false
+              },
+              "black": {
+                "greeted": false,
+                "satTogether": false
+              }
+            },
+            "repeat": {
+              "status": "idle"
+            },
+            "completedKinds": [],
+            "lastCompletedDay": null,
+            "feedback": "clue"
+          },
+          "repairs": {
+            "version": 1,
+            "jobs": {
+              "lamp": {
+                "kind": "lamp",
+                "fitting": "loose",
+                "power": "off",
+                "test": "none"
+              },
+              "toy": {
+                "kind": "toy",
+                "cover": "closed",
+                "lead": "loose",
+                "cell": "old",
+                "test": "none"
+              }
+            },
+            "active": "lamp",
+            "selected": null,
+            "completed": [],
+            "feedback": "lamp-intro"
+          },
+          "garden": {
+            "version": 1,
+            "day": 1,
+            "restored": false,
+            "shade": 0,
+            "plants": {
+              "flower": {
+                "site": 0,
+                "care": "ready",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "climber": {
+                "site": 2,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "tree": {
+                "site": 4,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              }
+            },
+            "planterEarned": false
+          },
+          "claimedGiftIds": []
+        },
+        "world": {
+          "version": 1,
+          "mapId": "restaurant",
+          "position": {
+            "x": 18.5,
+            "y": 8.999999999999995
+          },
+          "facing": "south",
+          "returnPositions": {
+            "restaurant": {
+              "x": 12,
+              "y": 19.999999674479167,
+              "facing": "south"
+            },
+            "town": {
+              "x": 33.62366401800821,
+              "y": 29.22411356305851,
+              "facing": "north"
+            },
+            "workshop": {
+              "x": 15,
+              "y": 25.916999999999994,
+              "facing": "south"
+            },
+            "courtyard": {
+              "x": 22.708146636275355,
+              "y": 2.000319799663018,
+              "facing": "north"
+            },
+            "residential-hall": {
+              "x": 16,
+              "y": 22.999499999999944,
+              "facing": "south"
+            },
+            "residential-stairs": {
+              "x": 10.486392611432693,
+              "y": 38.995289988392805,
+              "facing": "south"
+            },
+            "rooftop": {
+              "x": 10.540417856381504,
+              "y": 28.414506243091317,
+              "facing": "west"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 168548.3999999999,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [
+              {
+                "day": 1,
+                "table": 1,
+                "orderId": "order-01"
+              },
+              {
+                "day": 1,
+                "table": 2,
+                "orderId": "order-02"
+              }
+            ],
+            "pauses": []
+          }
+        }
+      }
+    },
+    {
+      "table": 3,
+      "state": {
+        "seed": 955863294,
+        "day": 1,
+        "level": 1,
+        "player": {
+          "x": 4.4,
+          "y": 8
+        },
+        "customers": [
+          {
+            "table": 1,
+            "orderId": "order-01",
+            "phase": "served"
+          },
+          {
+            "table": 2,
+            "orderId": "order-02",
+            "phase": "served"
+          },
+          {
+            "table": 3,
+            "orderId": "order-03",
+            "phase": "served"
+          },
+          {
+            "table": 4,
+            "orderId": "order-04",
+            "phase": "seated"
+          }
+        ],
+        "tray": [],
+        "served": 3,
+        "earnings": 8,
+        "mistakes": 0,
+        "activeTable": 3,
+        "feedback": "thanks",
+        "receipt": {
+          "table": 3,
+          "total": 3,
+          "change": 2
+        },
+        "journal": {
+          "milk": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "egg": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "thank-you": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "good": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "i": {
+            "lookups": 1,
+            "lastSeen": 1793930990876,
+            "recovered": true
+          },
+          "think": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "want": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "one": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "piece": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "bun": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "bring": {
+            "lookups": 0,
+            "lastSeen": 1793931009879,
+            "recovered": true
+          },
+          "cup": {
+            "lookups": 0,
+            "lastSeen": 1793931009879,
+            "recovered": true
+          },
+          "please": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "give": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "bowl": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "porridge": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          }
+        },
+        "ended": false,
+        "neighbourhood": {
+          "version": 1,
+          "location": "restaurant",
+          "apartment": {
+            "owned": [
+              "bed"
+            ],
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "welcome"
+          },
+          "cats": {
+            "version": 1,
+            "story": {
+              "node": "search"
+            },
+            "selected": null,
+            "cats": {
+              "white": {
+                "noticed": false,
+                "calm": false,
+                "gaveSpace": false,
+                "rested": false,
+                "sawEmptyBicycle": false
+              },
+              "black": {
+                "greeted": false,
+                "satTogether": false
+              }
+            },
+            "repeat": {
+              "status": "idle"
+            },
+            "completedKinds": [],
+            "lastCompletedDay": null,
+            "feedback": "clue"
+          },
+          "repairs": {
+            "version": 1,
+            "jobs": {
+              "lamp": {
+                "kind": "lamp",
+                "fitting": "loose",
+                "power": "off",
+                "test": "none"
+              },
+              "toy": {
+                "kind": "toy",
+                "cover": "closed",
+                "lead": "loose",
+                "cell": "old",
+                "test": "none"
+              }
+            },
+            "active": "lamp",
+            "selected": null,
+            "completed": [],
+            "feedback": "lamp-intro"
+          },
+          "garden": {
+            "version": 1,
+            "day": 1,
+            "restored": false,
+            "shade": 0,
+            "plants": {
+              "flower": {
+                "site": 0,
+                "care": "ready",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "climber": {
+                "site": 2,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "tree": {
+                "site": 4,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              }
+            },
+            "planterEarned": false
+          },
+          "claimedGiftIds": []
+        },
+        "world": {
+          "version": 1,
+          "mapId": "restaurant",
+          "position": {
+            "x": 6.5,
+            "y": 14
+          },
+          "facing": "south",
+          "returnPositions": {
+            "restaurant": {
+              "x": 12,
+              "y": 19.999999674479167,
+              "facing": "south"
+            },
+            "town": {
+              "x": 33.62366401800821,
+              "y": 29.22411356305851,
+              "facing": "north"
+            },
+            "workshop": {
+              "x": 15,
+              "y": 25.916999999999994,
+              "facing": "south"
+            },
+            "courtyard": {
+              "x": 22.708146636275355,
+              "y": 2.000319799663018,
+              "facing": "north"
+            },
+            "residential-hall": {
+              "x": 16,
+              "y": 22.999499999999944,
+              "facing": "south"
+            },
+            "residential-stairs": {
+              "x": 10.486392611432693,
+              "y": 38.995289988392805,
+              "facing": "south"
+            },
+            "rooftop": {
+              "x": 10.540417856381504,
+              "y": 28.414506243091317,
+              "facing": "west"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 181664.5,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [
+              {
+                "day": 1,
+                "table": 1,
+                "orderId": "order-01"
+              },
+              {
+                "day": 1,
+                "table": 2,
+                "orderId": "order-02"
+              },
+              {
+                "day": 1,
+                "table": 3,
+                "orderId": "order-03"
+              }
+            ],
+            "pauses": []
+          }
+        }
+      }
+    },
+    {
+      "destination": "workshop",
+      "name": "bench",
+      "phase": "evening",
+      "state": {
+        "seed": 955863294,
+        "day": 1,
+        "level": 1,
+        "player": {
+          "x": 4.4,
+          "y": 8
+        },
+        "customers": [
+          {
+            "table": 1,
+            "orderId": "order-01",
+            "phase": "served"
+          },
+          {
+            "table": 2,
+            "orderId": "order-02",
+            "phase": "served"
+          },
+          {
+            "table": 3,
+            "orderId": "order-03",
+            "phase": "served"
+          },
+          {
+            "table": 4,
+            "orderId": "order-04",
+            "phase": "seated"
+          }
+        ],
+        "tray": [],
+        "served": 3,
+        "earnings": 8,
+        "mistakes": 0,
+        "activeTable": 3,
+        "feedback": "thanks",
+        "receipt": {
+          "table": 3,
+          "total": 3,
+          "change": 2
+        },
+        "journal": {
+          "milk": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "egg": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "thank-you": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "good": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "i": {
+            "lookups": 1,
+            "lastSeen": 1793930990876,
+            "recovered": true
+          },
+          "think": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "want": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "one": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "piece": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "bun": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "bring": {
+            "lookups": 0,
+            "lastSeen": 1793931009879,
+            "recovered": true
+          },
+          "cup": {
+            "lookups": 0,
+            "lastSeen": 1793931009879,
+            "recovered": true
+          },
+          "please": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "give": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "bowl": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "porridge": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          }
+        },
+        "ended": false,
+        "neighbourhood": {
+          "version": 1,
+          "location": "restaurant",
+          "apartment": {
+            "owned": [
+              "bed"
+            ],
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "welcome"
+          },
+          "cats": {
+            "version": 1,
+            "story": {
+              "node": "search"
+            },
+            "selected": null,
+            "cats": {
+              "white": {
+                "noticed": false,
+                "calm": false,
+                "gaveSpace": false,
+                "rested": false,
+                "sawEmptyBicycle": false
+              },
+              "black": {
+                "greeted": false,
+                "satTogether": false
+              }
+            },
+            "repeat": {
+              "status": "idle"
+            },
+            "completedKinds": [],
+            "lastCompletedDay": null,
+            "feedback": "clue"
+          },
+          "repairs": {
+            "version": 1,
+            "jobs": {
+              "lamp": {
+                "kind": "lamp",
+                "fitting": "loose",
+                "power": "off",
+                "test": "none"
+              },
+              "toy": {
+                "kind": "toy",
+                "cover": "closed",
+                "lead": "loose",
+                "cell": "old",
+                "test": "none"
+              }
+            },
+            "active": "lamp",
+            "selected": null,
+            "completed": [],
+            "feedback": "lamp-intro"
+          },
+          "garden": {
+            "version": 1,
+            "day": 1,
+            "restored": false,
+            "shade": 0,
+            "plants": {
+              "flower": {
+                "site": 0,
+                "care": "ready",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "climber": {
+                "site": 2,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "tree": {
+                "site": 4,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              }
+            },
+            "planterEarned": false
+          },
+          "claimedGiftIds": []
+        },
+        "world": {
+          "version": 1,
+          "mapId": "workshop",
+          "position": {
+            "x": 11.499999974695719,
+            "y": 8.800000025304282
+          },
+          "facing": "north",
+          "returnPositions": {
+            "restaurant": {
+              "x": 11.559986048238548,
+              "y": 19.979983511554646,
+              "facing": "south"
+            },
+            "town": {
+              "x": 71.92415722006915,
+              "y": 29.850333700273335,
+              "facing": "east"
+            },
+            "workshop": {
+              "x": 15,
+              "y": 25.916999999999994,
+              "facing": "south"
+            },
+            "courtyard": {
+              "x": 22.708146636275355,
+              "y": 2.000319799663018,
+              "facing": "north"
+            },
+            "residential-hall": {
+              "x": 16,
+              "y": 22.999499999999944,
+              "facing": "south"
+            },
+            "residential-stairs": {
+              "x": 10.486392611432693,
+              "y": 38.995289988392805,
+              "facing": "south"
+            },
+            "rooftop": {
+              "x": 10.540417856381504,
+              "y": 28.414506243091317,
+              "facing": "west"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 207886.90000000002,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [
+              {
+                "day": 1,
+                "table": 1,
+                "orderId": "order-01"
+              },
+              {
+                "day": 1,
+                "table": 2,
+                "orderId": "order-02"
+              },
+              {
+                "day": 1,
+                "table": 3,
+                "orderId": "order-03"
+              }
+            ],
+            "pauses": []
+          }
+        }
+      }
+    },
+    {
+      "destination": "workshop",
+      "name": "entry",
+      "phase": "evening",
+      "state": {
+        "seed": 955863294,
+        "day": 1,
+        "level": 1,
+        "player": {
+          "x": 4.4,
+          "y": 8
+        },
+        "customers": [
+          {
+            "table": 1,
+            "orderId": "order-01",
+            "phase": "served"
+          },
+          {
+            "table": 2,
+            "orderId": "order-02",
+            "phase": "served"
+          },
+          {
+            "table": 3,
+            "orderId": "order-03",
+            "phase": "served"
+          },
+          {
+            "table": 4,
+            "orderId": "order-04",
+            "phase": "seated"
+          }
+        ],
+        "tray": [],
+        "served": 3,
+        "earnings": 8,
+        "mistakes": 0,
+        "activeTable": 3,
+        "feedback": "thanks",
+        "receipt": {
+          "table": 3,
+          "total": 3,
+          "change": 2
+        },
+        "journal": {
+          "milk": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "egg": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "thank-you": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "good": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "i": {
+            "lookups": 1,
+            "lastSeen": 1793930990876,
+            "recovered": true
+          },
+          "think": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "want": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "one": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "piece": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "bun": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "bring": {
+            "lookups": 0,
+            "lastSeen": 1793931009879,
+            "recovered": true
+          },
+          "cup": {
+            "lookups": 0,
+            "lastSeen": 1793931009879,
+            "recovered": true
+          },
+          "please": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "give": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "bowl": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "porridge": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          }
+        },
+        "ended": false,
+        "neighbourhood": {
+          "version": 1,
+          "location": "restaurant",
+          "apartment": {
+            "owned": [
+              "bed"
+            ],
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "welcome"
+          },
+          "cats": {
+            "version": 1,
+            "story": {
+              "node": "search"
+            },
+            "selected": null,
+            "cats": {
+              "white": {
+                "noticed": false,
+                "calm": false,
+                "gaveSpace": false,
+                "rested": false,
+                "sawEmptyBicycle": false
+              },
+              "black": {
+                "greeted": false,
+                "satTogether": false
+              }
+            },
+            "repeat": {
+              "status": "idle"
+            },
+            "completedKinds": [],
+            "lastCompletedDay": null,
+            "feedback": "clue"
+          },
+          "repairs": {
+            "version": 1,
+            "jobs": {
+              "lamp": {
+                "kind": "lamp",
+                "fitting": "loose",
+                "power": "off",
+                "test": "none"
+              },
+              "toy": {
+                "kind": "toy",
+                "cover": "closed",
+                "lead": "loose",
+                "cell": "old",
+                "test": "none"
+              }
+            },
+            "active": "lamp",
+            "selected": null,
+            "completed": [],
+            "feedback": "lamp-intro"
+          },
+          "garden": {
+            "version": 1,
+            "day": 1,
+            "restored": false,
+            "shade": 0,
+            "plants": {
+              "flower": {
+                "site": 0,
+                "care": "ready",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "climber": {
+                "site": 2,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "tree": {
+                "site": 4,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              }
+            },
+            "planterEarned": false
+          },
+          "claimedGiftIds": []
+        },
+        "world": {
+          "version": 1,
+          "mapId": "workshop",
+          "position": {
+            "x": 15,
+            "y": 22.5
+          },
+          "facing": "south",
+          "returnPositions": {
+            "restaurant": {
+              "x": 11.559986048238548,
+              "y": 19.979983511554646,
+              "facing": "south"
+            },
+            "town": {
+              "x": 71.92415722006915,
+              "y": 29.850333700273335,
+              "facing": "east"
+            },
+            "workshop": {
+              "x": 15,
+              "y": 25.916999999999994,
+              "facing": "south"
+            },
+            "courtyard": {
+              "x": 22.708146636275355,
+              "y": 2.000319799663018,
+              "facing": "north"
+            },
+            "residential-hall": {
+              "x": 16,
+              "y": 22.999499999999944,
+              "facing": "south"
+            },
+            "residential-stairs": {
+              "x": 10.486392611432693,
+              "y": 38.995289988392805,
+              "facing": "south"
+            },
+            "rooftop": {
+              "x": 10.540417856381504,
+              "y": 28.414506243091317,
+              "facing": "west"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 215969.90000000002,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [
+              {
+                "day": 1,
+                "table": 1,
+                "orderId": "order-01"
+              },
+              {
+                "day": 1,
+                "table": 2,
+                "orderId": "order-02"
+              },
+              {
+                "day": 1,
+                "table": 3,
+                "orderId": "order-03"
+              }
+            ],
+            "pauses": []
+          }
+        }
+      }
+    },
+    {
+      "destination": "courtyard",
+      "name": "window",
+      "phase": "evening",
+      "state": {
+        "seed": 955863294,
+        "day": 1,
+        "level": 1,
+        "player": {
+          "x": 4.4,
+          "y": 8
+        },
+        "customers": [
+          {
+            "table": 1,
+            "orderId": "order-01",
+            "phase": "served"
+          },
+          {
+            "table": 2,
+            "orderId": "order-02",
+            "phase": "served"
+          },
+          {
+            "table": 3,
+            "orderId": "order-03",
+            "phase": "served"
+          },
+          {
+            "table": 4,
+            "orderId": "order-04",
+            "phase": "seated"
+          }
+        ],
+        "tray": [],
+        "served": 3,
+        "earnings": 8,
+        "mistakes": 0,
+        "activeTable": 3,
+        "feedback": "thanks",
+        "receipt": {
+          "table": 3,
+          "total": 3,
+          "change": 2
+        },
+        "journal": {
+          "milk": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "egg": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "thank-you": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "good": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "i": {
+            "lookups": 1,
+            "lastSeen": 1793930990876,
+            "recovered": true
+          },
+          "think": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "want": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "one": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "piece": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "bun": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "bring": {
+            "lookups": 0,
+            "lastSeen": 1793931009879,
+            "recovered": true
+          },
+          "cup": {
+            "lookups": 0,
+            "lastSeen": 1793931009879,
+            "recovered": true
+          },
+          "please": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "give": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "bowl": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "porridge": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          }
+        },
+        "ended": false,
+        "neighbourhood": {
+          "version": 1,
+          "location": "restaurant",
+          "apartment": {
+            "owned": [
+              "bed"
+            ],
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "welcome"
+          },
+          "cats": {
+            "version": 1,
+            "story": {
+              "node": "search"
+            },
+            "selected": null,
+            "cats": {
+              "white": {
+                "noticed": false,
+                "calm": false,
+                "gaveSpace": false,
+                "rested": false,
+                "sawEmptyBicycle": false
+              },
+              "black": {
+                "greeted": false,
+                "satTogether": false
+              }
+            },
+            "repeat": {
+              "status": "idle"
+            },
+            "completedKinds": [],
+            "lastCompletedDay": null,
+            "feedback": "clue"
+          },
+          "repairs": {
+            "version": 1,
+            "jobs": {
+              "lamp": {
+                "kind": "lamp",
+                "fitting": "loose",
+                "power": "off",
+                "test": "none"
+              },
+              "toy": {
+                "kind": "toy",
+                "cover": "closed",
+                "lead": "loose",
+                "cell": "old",
+                "test": "none"
+              }
+            },
+            "active": "lamp",
+            "selected": null,
+            "completed": [],
+            "feedback": "lamp-intro"
+          },
+          "garden": {
+            "version": 1,
+            "day": 1,
+            "restored": false,
+            "shade": 0,
+            "plants": {
+              "flower": {
+                "site": 0,
+                "care": "ready",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "climber": {
+                "site": 2,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "tree": {
+                "site": 4,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              }
+            },
+            "planterEarned": false
+          },
+          "claimedGiftIds": []
+        },
+        "world": {
+          "version": 1,
+          "mapId": "courtyard",
+          "position": {
+            "x": 23.499999993210633,
+            "y": 21.500000029420665
+          },
+          "facing": "north",
+          "returnPositions": {
+            "restaurant": {
+              "x": 11.559986048238548,
+              "y": 19.979983511554646,
+              "facing": "south"
+            },
+            "town": {
+              "x": 45.20678524274325,
+              "y": 1.6547123671674546,
+              "facing": "north"
+            },
+            "workshop": {
+              "x": 15,
+              "y": 25.916499999999942,
+              "facing": "south"
+            },
+            "courtyard": {
+              "x": 22.708146636275355,
+              "y": 2.000319799663018,
+              "facing": "north"
+            },
+            "residential-hall": {
+              "x": 16,
+              "y": 22.999499999999944,
+              "facing": "south"
+            },
+            "residential-stairs": {
+              "x": 10.486392611432693,
+              "y": 38.995289988392805,
+              "facing": "south"
+            },
+            "rooftop": {
+              "x": 10.540417856381504,
+              "y": 28.414506243091317,
+              "facing": "west"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 244188.7,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [
+              {
+                "day": 1,
+                "table": 1,
+                "orderId": "order-01"
+              },
+              {
+                "day": 1,
+                "table": 2,
+                "orderId": "order-02"
+              },
+              {
+                "day": 1,
+                "table": 3,
+                "orderId": "order-03"
+              }
+            ],
+            "pauses": []
+          }
+        }
+      }
+    },
+    {
+      "destination": "courtyard",
+      "name": "laundry",
+      "phase": "evening",
+      "state": {
+        "seed": 955863294,
+        "day": 1,
+        "level": 1,
+        "player": {
+          "x": 4.4,
+          "y": 8
+        },
+        "customers": [
+          {
+            "table": 1,
+            "orderId": "order-01",
+            "phase": "served"
+          },
+          {
+            "table": 2,
+            "orderId": "order-02",
+            "phase": "served"
+          },
+          {
+            "table": 3,
+            "orderId": "order-03",
+            "phase": "served"
+          },
+          {
+            "table": 4,
+            "orderId": "order-04",
+            "phase": "seated"
+          }
+        ],
+        "tray": [],
+        "served": 3,
+        "earnings": 8,
+        "mistakes": 0,
+        "activeTable": 3,
+        "feedback": "thanks",
+        "receipt": {
+          "table": 3,
+          "total": 3,
+          "change": 2
+        },
+        "journal": {
+          "milk": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "egg": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "thank-you": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "good": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "i": {
+            "lookups": 1,
+            "lastSeen": 1793930990876,
+            "recovered": true
+          },
+          "think": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "want": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "one": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "piece": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "bun": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "bring": {
+            "lookups": 0,
+            "lastSeen": 1793931009879,
+            "recovered": true
+          },
+          "cup": {
+            "lookups": 0,
+            "lastSeen": 1793931009879,
+            "recovered": true
+          },
+          "please": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "give": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "bowl": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "porridge": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          }
+        },
+        "ended": false,
+        "neighbourhood": {
+          "version": 1,
+          "location": "restaurant",
+          "apartment": {
+            "owned": [
+              "bed"
+            ],
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "welcome"
+          },
+          "cats": {
+            "version": 1,
+            "story": {
+              "node": "search"
+            },
+            "selected": null,
+            "cats": {
+              "white": {
+                "noticed": false,
+                "calm": false,
+                "gaveSpace": false,
+                "rested": false,
+                "sawEmptyBicycle": false
+              },
+              "black": {
+                "greeted": false,
+                "satTogether": false
+              }
+            },
+            "repeat": {
+              "status": "idle"
+            },
+            "completedKinds": [],
+            "lastCompletedDay": null,
+            "feedback": "clue"
+          },
+          "repairs": {
+            "version": 1,
+            "jobs": {
+              "lamp": {
+                "kind": "lamp",
+                "fitting": "loose",
+                "power": "off",
+                "test": "none"
+              },
+              "toy": {
+                "kind": "toy",
+                "cover": "closed",
+                "lead": "loose",
+                "cell": "old",
+                "test": "none"
+              }
+            },
+            "active": "lamp",
+            "selected": null,
+            "completed": [],
+            "feedback": "lamp-intro"
+          },
+          "garden": {
+            "version": 1,
+            "day": 1,
+            "restored": false,
+            "shade": 0,
+            "plants": {
+              "flower": {
+                "site": 0,
+                "care": "ready",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "climber": {
+                "site": 2,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "tree": {
+                "site": 4,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              }
+            },
+            "planterEarned": false
+          },
+          "claimedGiftIds": []
+        },
+        "world": {
+          "version": 1,
+          "mapId": "courtyard",
+          "position": {
+            "x": 5.999999981894987,
+            "y": 11.500000018105014
+          },
+          "facing": "west",
+          "returnPositions": {
+            "restaurant": {
+              "x": 11.559986048238548,
+              "y": 19.979983511554646,
+              "facing": "south"
+            },
+            "town": {
+              "x": 45.20678524274325,
+              "y": 1.6547123671674546,
+              "facing": "north"
+            },
+            "workshop": {
+              "x": 15,
+              "y": 25.916499999999942,
+              "facing": "south"
+            },
+            "courtyard": {
+              "x": 22.708146636275355,
+              "y": 2.000319799663018,
+              "facing": "north"
+            },
+            "residential-hall": {
+              "x": 16,
+              "y": 22.999499999999944,
+              "facing": "south"
+            },
+            "residential-stairs": {
+              "x": 10.486392611432693,
+              "y": 38.995289988392805,
+              "facing": "south"
+            },
+            "rooftop": {
+              "x": 10.540417856381504,
+              "y": 28.414506243091317,
+              "facing": "west"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 253305.8,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [
+              {
+                "day": 1,
+                "table": 1,
+                "orderId": "order-01"
+              },
+              {
+                "day": 1,
+                "table": 2,
+                "orderId": "order-02"
+              },
+              {
+                "day": 1,
+                "table": 3,
+                "orderId": "order-03"
+              }
+            ],
+            "pauses": []
+          }
+        }
+      }
+    },
+    {
+      "destination": "rooftop",
+      "name": "threshold",
+      "phase": "evening",
+      "state": {
+        "seed": 955863294,
+        "day": 1,
+        "level": 1,
+        "player": {
+          "x": 4.4,
+          "y": 8
+        },
+        "customers": [
+          {
+            "table": 1,
+            "orderId": "order-01",
+            "phase": "served"
+          },
+          {
+            "table": 2,
+            "orderId": "order-02",
+            "phase": "served"
+          },
+          {
+            "table": 3,
+            "orderId": "order-03",
+            "phase": "served"
+          },
+          {
+            "table": 4,
+            "orderId": "order-04",
+            "phase": "seated"
+          }
+        ],
+        "tray": [],
+        "served": 3,
+        "earnings": 8,
+        "mistakes": 0,
+        "activeTable": 3,
+        "feedback": "thanks",
+        "receipt": {
+          "table": 3,
+          "total": 3,
+          "change": 2
+        },
+        "journal": {
+          "milk": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "egg": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "thank-you": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "good": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "i": {
+            "lookups": 1,
+            "lastSeen": 1793930990876,
+            "recovered": true
+          },
+          "think": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "want": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "one": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "piece": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "bun": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "bring": {
+            "lookups": 0,
+            "lastSeen": 1793931009879,
+            "recovered": true
+          },
+          "cup": {
+            "lookups": 0,
+            "lastSeen": 1793931009879,
+            "recovered": true
+          },
+          "please": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "give": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "bowl": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "porridge": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          }
+        },
+        "ended": false,
+        "neighbourhood": {
+          "version": 1,
+          "location": "restaurant",
+          "apartment": {
+            "owned": [
+              "bed"
+            ],
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "welcome"
+          },
+          "cats": {
+            "version": 1,
+            "story": {
+              "node": "search"
+            },
+            "selected": null,
+            "cats": {
+              "white": {
+                "noticed": false,
+                "calm": false,
+                "gaveSpace": false,
+                "rested": false,
+                "sawEmptyBicycle": false
+              },
+              "black": {
+                "greeted": false,
+                "satTogether": false
+              }
+            },
+            "repeat": {
+              "status": "idle"
+            },
+            "completedKinds": [],
+            "lastCompletedDay": null,
+            "feedback": "clue"
+          },
+          "repairs": {
+            "version": 1,
+            "jobs": {
+              "lamp": {
+                "kind": "lamp",
+                "fitting": "loose",
+                "power": "off",
+                "test": "none"
+              },
+              "toy": {
+                "kind": "toy",
+                "cover": "closed",
+                "lead": "loose",
+                "cell": "old",
+                "test": "none"
+              }
+            },
+            "active": "lamp",
+            "selected": null,
+            "completed": [],
+            "feedback": "lamp-intro"
+          },
+          "garden": {
+            "version": 1,
+            "day": 1,
+            "restored": false,
+            "shade": 0,
+            "plants": {
+              "flower": {
+                "site": 0,
+                "care": "ready",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "climber": {
+                "site": 2,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "tree": {
+                "site": 4,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              }
+            },
+            "planterEarned": false
+          },
+          "claimedGiftIds": []
+        },
+        "world": {
+          "version": 1,
+          "mapId": "rooftop",
+          "position": {
+            "x": 12.440956583770882,
+            "y": 28.94095658377088
+          },
+          "facing": "north",
+          "returnPositions": {
+            "restaurant": {
+              "x": 11.559986048238548,
+              "y": 19.979983511554646,
+              "facing": "south"
+            },
+            "town": {
+              "x": 45.20678524274325,
+              "y": 1.6547123671674546,
+              "facing": "north"
+            },
+            "workshop": {
+              "x": 15,
+              "y": 25.916499999999942,
+              "facing": "south"
+            },
+            "courtyard": {
+              "x": 22.666073108317324,
+              "y": 2.072445592249382,
+              "facing": "north"
+            },
+            "residential-hall": {
+              "x": 16.25403976134351,
+              "y": 4.006943250405448,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 4.005017519522991,
+              "y": 6.1094939378731326,
+              "facing": "west"
+            },
+            "rooftop": {
+              "x": 10.540417856381504,
+              "y": 28.414506243091317,
+              "facing": "west"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 286678.10000000015,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [
+              {
+                "day": 1,
+                "table": 1,
+                "orderId": "order-01"
+              },
+              {
+                "day": 1,
+                "table": 2,
+                "orderId": "order-02"
+              },
+              {
+                "day": 1,
+                "table": 3,
+                "orderId": "order-03"
+              }
+            ],
+            "pauses": []
+          }
+        }
+      }
+    },
+    {
+      "destination": "rooftop",
+      "name": "care",
+      "phase": "evening",
+      "state": {
+        "seed": 955863294,
+        "day": 1,
+        "level": 1,
+        "player": {
+          "x": 4.4,
+          "y": 8
+        },
+        "customers": [
+          {
+            "table": 1,
+            "orderId": "order-01",
+            "phase": "served"
+          },
+          {
+            "table": 2,
+            "orderId": "order-02",
+            "phase": "served"
+          },
+          {
+            "table": 3,
+            "orderId": "order-03",
+            "phase": "served"
+          },
+          {
+            "table": 4,
+            "orderId": "order-04",
+            "phase": "seated"
+          }
+        ],
+        "tray": [],
+        "served": 3,
+        "earnings": 8,
+        "mistakes": 0,
+        "activeTable": 3,
+        "feedback": "thanks",
+        "receipt": {
+          "table": 3,
+          "total": 3,
+          "change": 2
+        },
+        "journal": {
+          "milk": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "egg": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "thank-you": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "good": {
+            "lookups": 0,
+            "lastSeen": 1793930838711,
+            "recovered": true
+          },
+          "i": {
+            "lookups": 1,
+            "lastSeen": 1793930990876,
+            "recovered": true
+          },
+          "think": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "want": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "one": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "piece": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "bun": {
+            "lookups": 0,
+            "lastSeen": 1793930996965,
+            "recovered": true
+          },
+          "bring": {
+            "lookups": 0,
+            "lastSeen": 1793931009879,
+            "recovered": true
+          },
+          "cup": {
+            "lookups": 0,
+            "lastSeen": 1793931009879,
+            "recovered": true
+          },
+          "please": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "give": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "bowl": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          },
+          "porridge": {
+            "lookups": 0,
+            "lastSeen": 1793931023742,
+            "recovered": true
+          }
+        },
+        "ended": false,
+        "neighbourhood": {
+          "version": 1,
+          "location": "restaurant",
+          "apartment": {
+            "owned": [
+              "bed"
+            ],
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "welcome"
+          },
+          "cats": {
+            "version": 1,
+            "story": {
+              "node": "search"
+            },
+            "selected": null,
+            "cats": {
+              "white": {
+                "noticed": false,
+                "calm": false,
+                "gaveSpace": false,
+                "rested": false,
+                "sawEmptyBicycle": false
+              },
+              "black": {
+                "greeted": false,
+                "satTogether": false
+              }
+            },
+            "repeat": {
+              "status": "idle"
+            },
+            "completedKinds": [],
+            "lastCompletedDay": null,
+            "feedback": "clue"
+          },
+          "repairs": {
+            "version": 1,
+            "jobs": {
+              "lamp": {
+                "kind": "lamp",
+                "fitting": "loose",
+                "power": "off",
+                "test": "none"
+              },
+              "toy": {
+                "kind": "toy",
+                "cover": "closed",
+                "lead": "loose",
+                "cell": "old",
+                "test": "none"
+              }
+            },
+            "active": "lamp",
+            "selected": null,
+            "completed": [],
+            "feedback": "lamp-intro"
+          },
+          "garden": {
+            "version": 1,
+            "day": 1,
+            "restored": false,
+            "shade": 0,
+            "plants": {
+              "flower": {
+                "site": 0,
+                "care": "ready",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "climber": {
+                "site": 2,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              },
+              "tree": {
+                "site": 4,
+                "care": "dry",
+                "growth": 0,
+                "drooping": false,
+                "waited": false,
+                "result": null
+              }
+            },
+            "planterEarned": false
+          },
+          "claimedGiftIds": []
+        },
+        "world": {
+          "version": 1,
+          "mapId": "rooftop",
+          "position": {
+            "x": 18.99999995942192,
+            "y": 19.999999959421924
+          },
+          "facing": "north",
+          "returnPositions": {
+            "restaurant": {
+              "x": 11.559986048238548,
+              "y": 19.979983511554646,
+              "facing": "south"
+            },
+            "town": {
+              "x": 45.20678524274325,
+              "y": 1.6547123671674546,
+              "facing": "north"
+            },
+            "workshop": {
+              "x": 15,
+              "y": 25.916499999999942,
+              "facing": "south"
+            },
+            "courtyard": {
+              "x": 22.666073108317324,
+              "y": 2.072445592249382,
+              "facing": "north"
+            },
+            "residential-hall": {
+              "x": 16.25403976134351,
+              "y": 4.006943250405448,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 4.005017519522991,
+              "y": 6.1094939378731326,
+              "facing": "west"
+            },
+            "rooftop": {
+              "x": 10.540417856381504,
+              "y": 28.414506243091317,
+              "facing": "west"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 292744.5000000001,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [
+              {
+                "day": 1,
+                "table": 1,
+                "orderId": "order-01"
+              },
+              {
+                "day": 1,
+                "table": 2,
+                "orderId": "order-02"
+              },
+              {
+                "day": 1,
+                "table": 3,
+                "orderId": "order-03"
+              }
+            ],
+            "pauses": []
+          }
+        }
+      }
+    }
+  ],
+  "frameEvidence": [
+    {
+      "label": "morning/workshop/bench",
+      "paintCompletions": 35,
+      "intervalP50": 49.799999999813735,
+      "intervalP95": 52.59999999962747,
+      "taskDurationMs": 564.705,
+      "windowMs": 1600,
+      "scope": "Whole production App browser CPU and paint-completion cadence with proof video/tracing enabled; not GPU FPS or input latency."
+    },
+    {
+      "label": "morning/workshop/entry",
+      "paintCompletions": 36,
+      "intervalP50": 49.299999999813735,
+      "intervalP95": 52.59999999962747,
+      "taskDurationMs": 535.146000000001,
+      "windowMs": 1600,
+      "scope": "Whole production App browser CPU and paint-completion cadence with proof video/tracing enabled; not GPU FPS or input latency."
+    },
+    {
+      "label": "morning/courtyard/window",
+      "paintCompletions": 38,
+      "intervalP50": 45.19999999925494,
+      "intervalP95": 57.59999999962747,
+      "taskDurationMs": 1494.244000000002,
+      "windowMs": 1600,
+      "scope": "Whole production App browser CPU and paint-completion cadence with proof video/tracing enabled; not GPU FPS or input latency."
+    },
+    {
+      "label": "morning/courtyard/laundry",
+      "paintCompletions": 40,
+      "intervalP50": 45.299999999813735,
+      "intervalP95": 58.200000000186265,
+      "taskDurationMs": 1495.1210000000046,
+      "windowMs": 1600,
+      "scope": "Whole production App browser CPU and paint-completion cadence with proof video/tracing enabled; not GPU FPS or input latency."
+    },
+    {
+      "label": "morning/rooftop/threshold",
+      "paintCompletions": 37,
+      "intervalP50": 49.40000000037253,
+      "intervalP95": 52.09999999962747,
+      "taskDurationMs": 583.3439999999968,
+      "windowMs": 1600,
+      "scope": "Whole production App browser CPU and paint-completion cadence with proof video/tracing enabled; not GPU FPS or input latency."
+    },
+    {
+      "label": "morning/rooftop/care",
+      "paintCompletions": 34,
+      "intervalP50": 48.89999999944121,
+      "intervalP95": 56.39999999944121,
+      "taskDurationMs": 676.0500000000036,
+      "windowMs": 1600,
+      "scope": "Whole production App browser CPU and paint-completion cadence with proof video/tracing enabled; not GPU FPS or input latency."
+    },
+    {
+      "label": "evening/workshop/bench",
+      "paintCompletions": 37,
+      "intervalP50": 47.59999999962747,
+      "intervalP95": 53.700000000186265,
+      "taskDurationMs": 680.453,
+      "windowMs": 1600,
+      "scope": "Whole production App browser CPU and paint-completion cadence with proof video/tracing enabled; not GPU FPS or input latency."
+    },
+    {
+      "label": "evening/workshop/entry",
+      "paintCompletions": 36,
+      "intervalP50": 48,
+      "intervalP95": 55.799999999813735,
+      "taskDurationMs": 681.5210000000036,
+      "windowMs": 1600,
+      "scope": "Whole production App browser CPU and paint-completion cadence with proof video/tracing enabled; not GPU FPS or input latency."
+    },
+    {
+      "label": "evening/courtyard/window",
+      "paintCompletions": 35,
+      "intervalP50": 45.89999999944121,
+      "intervalP95": 58.40000000037253,
+      "taskDurationMs": 1475.0640000000033,
+      "windowMs": 1600,
+      "scope": "Whole production App browser CPU and paint-completion cadence with proof video/tracing enabled; not GPU FPS or input latency."
+    },
+    {
+      "label": "evening/courtyard/laundry",
+      "paintCompletions": 38,
+      "intervalP50": 44.60000000055879,
+      "intervalP95": 63.200000000186265,
+      "taskDurationMs": 1353.2570000000135,
+      "windowMs": 1600,
+      "scope": "Whole production App browser CPU and paint-completion cadence with proof video/tracing enabled; not GPU FPS or input latency."
+    },
+    {
+      "label": "evening/rooftop/threshold",
+      "paintCompletions": 36,
+      "intervalP50": 47.799999999813735,
+      "intervalP95": 55.5,
+      "taskDurationMs": 665.3809999999964,
+      "windowMs": 1600,
+      "scope": "Whole production App browser CPU and paint-completion cadence with proof video/tracing enabled; not GPU FPS or input latency."
+    },
+    {
+      "label": "evening/rooftop/care",
+      "paintCompletions": 36,
+      "intervalP50": 47.700000000186265,
+      "intervalP95": 63.799999999813735,
+      "taskDurationMs": 923.8589999999931,
+      "windowMs": 1600,
+      "scope": "Whole production App browser CPU and paint-completion cadence with proof video/tracing enabled; not GPU FPS or input latency."
+    },
+    {
+      "label": "evening/park/arrival",
+      "paintCompletions": 36,
+      "intervalP50": 48.69999999925494,
+      "intervalP95": 62.19999999925494,
+      "taskDurationMs": 575.2900000000238,
+      "windowMs": 1600,
+      "scope": "Whole production App browser CPU and paint-completion cadence with proof video/tracing enabled; not GPU FPS or input latency."
+    },
+    {
+      "label": "evening/riverbank/arrival",
+      "paintCompletions": 35,
+      "intervalP50": 49.09999999962747,
+      "intervalP95": 54.59999999962747,
+      "taskDurationMs": 523.7300000000005,
+      "windowMs": 1600,
+      "scope": "Whole production App browser CPU and paint-completion cadence with proof video/tracing enabled; not GPU FPS or input latency."
+    }
+  ],
+  "before": {
+    "checkpoint": null,
+    "saved": {
+      "seed": 955863294,
+      "day": 1,
+      "level": 1,
+      "player": {
+        "x": 4.4,
+        "y": 8
+      },
+      "customers": [
+        {
+          "table": 1,
+          "orderId": "order-01",
+          "phase": "served"
+        },
+        {
+          "table": 2,
+          "orderId": "order-02",
+          "phase": "served"
+        },
+        {
+          "table": 3,
+          "orderId": "order-03",
+          "phase": "served"
+        },
+        {
+          "table": 4,
+          "orderId": "order-04",
+          "phase": "seated"
+        }
+      ],
+      "tray": [],
+      "served": 3,
+      "earnings": 8,
+      "mistakes": 0,
+      "activeTable": 3,
+      "feedback": "thanks",
+      "receipt": {
+        "table": 3,
+        "total": 3,
+        "change": 2
+      },
+      "journal": {
+        "milk": {
+          "lookups": 0,
+          "lastSeen": 1793930838711,
+          "recovered": true
+        },
+        "egg": {
+          "lookups": 0,
+          "lastSeen": 1793930838711,
+          "recovered": true
+        },
+        "thank-you": {
+          "lookups": 0,
+          "lastSeen": 1793930838711,
+          "recovered": true
+        },
+        "good": {
+          "lookups": 0,
+          "lastSeen": 1793930838711,
+          "recovered": true
+        },
+        "i": {
+          "lookups": 1,
+          "lastSeen": 1793930990876,
+          "recovered": true
+        },
+        "think": {
+          "lookups": 0,
+          "lastSeen": 1793930996965,
+          "recovered": true
+        },
+        "want": {
+          "lookups": 0,
+          "lastSeen": 1793930996965,
+          "recovered": true
+        },
+        "one": {
+          "lookups": 0,
+          "lastSeen": 1793930996965,
+          "recovered": true
+        },
+        "piece": {
+          "lookups": 0,
+          "lastSeen": 1793930996965,
+          "recovered": true
+        },
+        "bun": {
+          "lookups": 0,
+          "lastSeen": 1793930996965,
+          "recovered": true
+        },
+        "bring": {
+          "lookups": 0,
+          "lastSeen": 1793931009879,
+          "recovered": true
+        },
+        "cup": {
+          "lookups": 0,
+          "lastSeen": 1793931009879,
+          "recovered": true
+        },
+        "please": {
+          "lookups": 0,
+          "lastSeen": 1793931023742,
+          "recovered": true
+        },
+        "give": {
+          "lookups": 0,
+          "lastSeen": 1793931023742,
+          "recovered": true
+        },
+        "bowl": {
+          "lookups": 0,
+          "lastSeen": 1793931023742,
+          "recovered": true
+        },
+        "porridge": {
+          "lookups": 0,
+          "lastSeen": 1793931023742,
+          "recovered": true
+        }
+      },
+      "ended": false,
+      "neighbourhood": {
+        "version": 1,
+        "location": "restaurant",
+        "apartment": {
+          "owned": [
+            "bed"
+          ],
+          "placements": [
+            {
+              "id": "bed",
+              "x": 0,
+              "y": 0,
+              "rotation": 0
+            }
+          ],
+          "colour": "blue",
+          "rugSize": "small",
+          "starterClaimed": false,
+          "lastGiftDay": 0,
+          "selected": null,
+          "draft": null,
+          "undo": null,
+          "notice": "welcome"
+        },
+        "cats": {
+          "version": 1,
+          "story": {
+            "node": "search"
+          },
+          "selected": null,
+          "cats": {
+            "white": {
+              "noticed": false,
+              "calm": false,
+              "gaveSpace": false,
+              "rested": false,
+              "sawEmptyBicycle": false
+            },
+            "black": {
+              "greeted": false,
+              "satTogether": false
+            }
+          },
+          "repeat": {
+            "status": "idle"
+          },
+          "completedKinds": [],
+          "lastCompletedDay": null,
+          "feedback": "clue"
+        },
+        "repairs": {
+          "version": 1,
+          "jobs": {
+            "lamp": {
+              "kind": "lamp",
+              "fitting": "loose",
+              "power": "off",
+              "test": "none"
+            },
+            "toy": {
+              "kind": "toy",
+              "cover": "closed",
+              "lead": "loose",
+              "cell": "old",
+              "test": "none"
+            }
+          },
+          "active": "lamp",
+          "selected": null,
+          "completed": [],
+          "feedback": "lamp-intro"
+        },
+        "garden": {
+          "version": 1,
+          "day": 1,
+          "restored": false,
+          "shade": 0,
+          "plants": {
+            "flower": {
+              "site": 0,
+              "care": "ready",
+              "growth": 0,
+              "drooping": false,
+              "waited": false,
+              "result": null
+            },
+            "climber": {
+              "site": 2,
+              "care": "dry",
+              "growth": 0,
+              "drooping": false,
+              "waited": false,
+              "result": null
+            },
+            "tree": {
+              "site": 4,
+              "care": "dry",
+              "growth": 0,
+              "drooping": false,
+              "waited": false,
+              "result": null
+            }
+          },
+          "planterEarned": false
+        },
+        "claimedGiftIds": []
+      },
+      "world": {
+        "version": 1,
+        "mapId": "restaurant",
+        "position": {
+          "x": 11.309073538420575,
+          "y": 17.2700939685535
+        },
+        "facing": "west",
+        "returnPositions": {
+          "restaurant": {
+            "x": 11.559986048238548,
+            "y": 19.979983511554646,
+            "facing": "south"
+          },
+          "town": {
+            "x": 34.730630134552136,
+            "y": 29.254124490876833,
+            "facing": "west"
+          },
+          "workshop": {
+            "x": 15,
+            "y": 25.916499999999942,
+            "facing": "south"
+          },
+          "courtyard": {
+            "x": 22.666073108317324,
+            "y": 2.072445592249382,
+            "facing": "north"
+          },
+          "residential-hall": {
+            "x": 16,
+            "y": 22.916499999999946,
+            "facing": "south"
+          },
+          "residential-stairs": {
+            "x": 10.265347846465541,
+            "y": 38.961525039172386,
+            "facing": "east"
+          },
+          "rooftop": {
+            "x": 10.518078772258976,
+            "y": 28.44249202301421,
+            "facing": "west"
+          },
+          "park": {
+            "x": 81.97203315621255,
+            "y": 10.708587234595612,
+            "facing": "north"
+          },
+          "riverbank": {
+            "x": 5.992595233877708,
+            "y": 77.99276020116143,
+            "facing": "south"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 427099.9000000002,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [
+            {
+              "day": 1,
+              "table": 1,
+              "orderId": "order-01"
+            },
+            {
+              "day": 1,
+              "table": 2,
+              "orderId": "order-02"
+            },
+            {
+              "day": 1,
+              "table": 3,
+              "orderId": "order-03"
+            }
+          ],
+          "pauses": []
+        }
+      }
+    }
+  },
+  "after": {
+    "checkpoint": null,
+    "saved": {
+      "seed": 955863294,
+      "day": 1,
+      "level": 1,
+      "player": {
+        "x": 4.4,
+        "y": 8
+      },
+      "customers": [
+        {
+          "table": 1,
+          "orderId": "order-01",
+          "phase": "served"
+        },
+        {
+          "table": 2,
+          "orderId": "order-02",
+          "phase": "served"
+        },
+        {
+          "table": 3,
+          "orderId": "order-03",
+          "phase": "served"
+        },
+        {
+          "table": 4,
+          "orderId": "order-04",
+          "phase": "seated"
+        }
+      ],
+      "tray": [],
+      "served": 3,
+      "earnings": 8,
+      "mistakes": 0,
+      "activeTable": 3,
+      "feedback": "thanks",
+      "receipt": {
+        "table": 3,
+        "total": 3,
+        "change": 2
+      },
+      "journal": {
+        "milk": {
+          "lookups": 0,
+          "lastSeen": 1793930838711,
+          "recovered": true
+        },
+        "egg": {
+          "lookups": 0,
+          "lastSeen": 1793930838711,
+          "recovered": true
+        },
+        "thank-you": {
+          "lookups": 0,
+          "lastSeen": 1793930838711,
+          "recovered": true
+        },
+        "good": {
+          "lookups": 0,
+          "lastSeen": 1793930838711,
+          "recovered": true
+        },
+        "i": {
+          "lookups": 1,
+          "lastSeen": 1793930990876,
+          "recovered": true
+        },
+        "think": {
+          "lookups": 0,
+          "lastSeen": 1793930996965,
+          "recovered": true
+        },
+        "want": {
+          "lookups": 0,
+          "lastSeen": 1793930996965,
+          "recovered": true
+        },
+        "one": {
+          "lookups": 0,
+          "lastSeen": 1793930996965,
+          "recovered": true
+        },
+        "piece": {
+          "lookups": 0,
+          "lastSeen": 1793930996965,
+          "recovered": true
+        },
+        "bun": {
+          "lookups": 0,
+          "lastSeen": 1793930996965,
+          "recovered": true
+        },
+        "bring": {
+          "lookups": 0,
+          "lastSeen": 1793931009879,
+          "recovered": true
+        },
+        "cup": {
+          "lookups": 0,
+          "lastSeen": 1793931009879,
+          "recovered": true
+        },
+        "please": {
+          "lookups": 0,
+          "lastSeen": 1793931023742,
+          "recovered": true
+        },
+        "give": {
+          "lookups": 0,
+          "lastSeen": 1793931023742,
+          "recovered": true
+        },
+        "bowl": {
+          "lookups": 0,
+          "lastSeen": 1793931023742,
+          "recovered": true
+        },
+        "porridge": {
+          "lookups": 0,
+          "lastSeen": 1793931023742,
+          "recovered": true
+        }
+      },
+      "ended": false,
+      "neighbourhood": {
+        "version": 1,
+        "location": "restaurant",
+        "apartment": {
+          "placements": [
+            {
+              "id": "bed",
+              "x": 0,
+              "y": 0,
+              "rotation": 0
+            }
+          ],
+          "colour": "blue",
+          "rugSize": "small",
+          "owned": [
+            "bed"
+          ],
+          "starterClaimed": false,
+          "lastGiftDay": 0,
+          "selected": null,
+          "draft": null,
+          "undo": null,
+          "notice": "welcome"
+        },
+        "cats": {
+          "version": 1,
+          "story": {
+            "node": "search"
+          },
+          "selected": null,
+          "cats": {
+            "white": {
+              "noticed": false,
+              "calm": false,
+              "gaveSpace": false,
+              "rested": false,
+              "sawEmptyBicycle": false
+            },
+            "black": {
+              "greeted": false,
+              "satTogether": false
+            }
+          },
+          "repeat": {
+            "status": "idle"
+          },
+          "completedKinds": [],
+          "lastCompletedDay": null,
+          "feedback": "clue"
+        },
+        "repairs": {
+          "version": 1,
+          "jobs": {
+            "lamp": {
+              "kind": "lamp",
+              "fitting": "loose",
+              "power": "off",
+              "test": "none"
+            },
+            "toy": {
+              "kind": "toy",
+              "cover": "closed",
+              "lead": "loose",
+              "cell": "old",
+              "test": "none"
+            }
+          },
+          "active": "lamp",
+          "selected": null,
+          "completed": [],
+          "feedback": "lamp-intro"
+        },
+        "garden": {
+          "version": 1,
+          "day": 1,
+          "restored": false,
+          "shade": 0,
+          "plants": {
+            "flower": {
+              "site": 0,
+              "care": "ready",
+              "growth": 0,
+              "drooping": false,
+              "waited": false,
+              "result": null
+            },
+            "climber": {
+              "site": 2,
+              "care": "dry",
+              "growth": 0,
+              "drooping": false,
+              "waited": false,
+              "result": null
+            },
+            "tree": {
+              "site": 4,
+              "care": "dry",
+              "growth": 0,
+              "drooping": false,
+              "waited": false,
+              "result": null
+            }
+          },
+          "planterEarned": false
+        },
+        "claimedGiftIds": []
+      },
+      "world": {
+        "version": 1,
+        "mapId": "restaurant",
+        "position": {
+          "x": 11.309073538420575,
+          "y": 17.2700939685535
+        },
+        "facing": "west",
+        "returnPositions": {
+          "restaurant": {
+            "x": 11.559986048238548,
+            "y": 19.979983511554646,
+            "facing": "south"
+          },
+          "town": {
+            "x": 34.730630134552136,
+            "y": 29.254124490876833,
+            "facing": "west"
+          },
+          "workshop": {
+            "x": 15,
+            "y": 25.916499999999942,
+            "facing": "south"
+          },
+          "courtyard": {
+            "x": 22.666073108317324,
+            "y": 2.072445592249382,
+            "facing": "north"
+          },
+          "residential-hall": {
+            "x": 16,
+            "y": 22.916499999999946,
+            "facing": "south"
+          },
+          "residential-stairs": {
+            "x": 10.265347846465541,
+            "y": 38.961525039172386,
+            "facing": "east"
+          },
+          "rooftop": {
+            "x": 10.518078772258976,
+            "y": 28.44249202301421,
+            "facing": "west"
+          },
+          "park": {
+            "x": 81.97203315621255,
+            "y": 10.708587234595612,
+            "facing": "north"
+          },
+          "riverbank": {
+            "x": 5.992595233877708,
+            "y": 77.99276020116143,
+            "facing": "south"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 427099.9000000002,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [
+            {
+              "day": 1,
+              "table": 1,
+              "orderId": "order-01"
+            },
+            {
+              "day": 1,
+              "table": 2,
+              "orderId": "order-02"
+            },
+            {
+              "day": 1,
+              "table": 3,
+              "orderId": "order-03"
+            }
+          ],
+          "pauses": []
+        }
+      }
+    }
+  },
+  "errors": [],
+  "method": "Ordinary opening and real pointer/keyboard UI; reads state only; no save injection or internal dispatch"
+}
