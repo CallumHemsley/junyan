@@ -1,0 +1,74 @@
+{
+  "sourceHead": "0ad4ede18cfa3daaf1afd4106d8c782be8d05b4b",
+  "capturedAt": "2026-11-06T00:28:56.721Z",
+  "results": [
+    {
+      "device": "desktop",
+      "sourceHead": "0ad4ede18cfa3daaf1afd4106d8c782be8d05b4b",
+      "steps": [
+        {
+          "action": "keyboard left restaurant",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 34,
+              "y": 30.4
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.95000000000003,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        }
+      ],
+      "consoleErrors": [],
+      "failure": "TimeoutError: page.waitForFunction: Timeout 10000ms exceeded."
+    },
+    {
+      "device": "phone",
+      "sourceHead": "0ad4ede18cfa3daaf1afd4106d8c782be8d05b4b",
+      "steps": [
+        {
+          "action": "keyboard left restaurant",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 34,
+              "y": 30.4
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.983500000000024,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        }
+      ],
+      "consoleErrors": [],
+      "failure": "TimeoutError: page.waitForFunction: Timeout 10000ms exceeded."
+    }
+  ]
+}

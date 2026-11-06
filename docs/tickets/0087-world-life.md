@@ -32,3 +32,9 @@ Keep this goal ACTIVE until residents, wildlife, environmental reactions, and di
 - First unit is pure route compilation and actor sampling. Foundation injects navigation rather than life implementing another pathfinder.
 - Next units are proximity actions, discoveries, canonical voiced-content reuse, and the render adapter.
 - Pending proof includes actual connected maps, real keyboard/touch visits, save/reload, inspected desktop/phone screenshots and motion, and independent review. No acceptance claim.
+
+## Module checkpoint
+
+- Head 1ef35dc publishes worldLifeFrame, lifeObjects, LifePrompt, restaurantPresence/releaseServedCustomer, deterministic routes, validated ecology recipes and solid-landmark interaction rules. API packet is docs/evidence/0087/integration.md.
+- 33 focused life tests and TypeScript pass. Earlier current-base full suite/build passed 391 tests. Scoped browser evidence is docs/evidence/0087/isolated; limitations and independent helper findings are in verification.md.
+- Status remains doing. Shared production consumers, full normal-world proof, background resident contracts and independent Astra acceptance are outstanding. No native goal registration is claimed.

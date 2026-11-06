@@ -10,18 +10,23 @@ try{
   await page.goto('http://127.0.0.1:5486/');await page.locator('[data-testid="world-viewport"][data-map="park"]').waitFor();if(await page.getByRole('button',{name:/开门迎客/}).isVisible())await page.getByRole('button',{name:/开门迎客/}).click();await page.waitForTimeout(300);
   await page.screenshot({path:`${output}/${device}-park.png`});
   const canvas=page.locator('[data-testid="world-viewport"] canvas');
-  await canvas.click();await page.keyboard.down('ArrowRight');await page.keyboard.down('ArrowDown');await page.waitForTimeout(1100);await page.keyboard.up('ArrowRight');await page.keyboard.up('ArrowDown');
-  await page.locator('[data-testid="world-viewport"][data-map="riverbank"]').waitFor({timeout:4000});await page.screenshot({path:`${output}/${device}-river-arrival.png`});
+  await canvas.click();await page.keyboard.down('ArrowRight');await page.keyboard.down('ArrowDown');try{await page.locator('[data-testid="world-viewport"][data-map="riverbank"]').waitFor({timeout:12000});}finally{await page.keyboard.up('ArrowRight');await page.keyboard.up('ArrowDown');}
+  await page.screenshot({path:`${output}/${device}-river-arrival.png`});
   await page.evaluate(()=>{const canvas=document.querySelector('[data-testid="world-viewport"] canvas');const recorder=new MediaRecorder(canvas.captureStream(20),{mimeType:'video/webm'}),chunks=[];recorder.ondataavailable=e=>chunks.push(e.data);window.__recording={recorder,chunks};recorder.start();});
   if(device==='phone'){
    const pad=page.getByRole('button',{name:'向右走',exact:true});const bounds=await pad.boundingBox();await page.touchscreen.tap(bounds.x+bounds.width/2,bounds.y+bounds.height/2);
    const r=await canvas.boundingBox();await page.touchscreen.tap(r.x+r.width*.62,r.y+r.height*.51);await page.waitForTimeout(1400);
   }else{await page.keyboard.down('ArrowRight');await page.waitForTimeout(700);await page.keyboard.up('ArrowRight');}
+  if(device==='phone'){
+   const stop=await page.evaluate(async()=>{const {loadGame}=await import('/src/save.ts'),{content}=await import('/src/content/index.ts'),{worldMaps}=await import('/src/world/registry.ts'),{cameraForMap,project}=await import('/src/world/camera.ts');const pending=localStorage.getItem('junyan-waiter-pending-v1'),w=pending?JSON.parse(pending).world:(await loadGame(content)).world;const canvas=document.querySelector('[data-testid="world-viewport"] canvas'),r=canvas.getBoundingClientRect(),camera=cameraForMap(worldMaps[w.mapId].bounds,w.position,canvas.width,canvas.height,11),p=project(w.position,camera);return{x:r.x+p.x*r.width/canvas.width,y:r.y+p.y*r.height/canvas.height};});
+   await page.touchscreen.tap(stop.x,stop.y);
+  }
   const bytes=await page.evaluate(()=>new Promise(resolve=>{const {recorder,chunks}=window.__recording;recorder.onstop=async()=>resolve(Array.from(new Uint8Array(await new Blob(chunks,{type:'video/webm'}).arrayBuffer())));recorder.stop();}));await writeFile(`${output}/${device}-movement.webm`,new Uint8Array(bytes));
+  for(let poll=0;poll<25;poll++){await page.waitForTimeout(200);if(await page.evaluate(()=>localStorage.getItem('junyan-waiter-pending-v1')===null))break;}
   const saved=await page.evaluate(async()=>{const {loadGame}=await import('/src/save.ts');const {content}=await import('/src/content/index.ts');return (await loadGame(content)).world;});
   await page.reload();await page.locator('[data-testid="world-viewport"][data-map="riverbank"]').waitFor();if(await page.getByRole('button',{name:/开门迎客/}).isVisible())await page.getByRole('button',{name:/开门迎客/}).click();await page.waitForTimeout(300);
   const loaded=await page.evaluate(async()=>{const {loadGame}=await import('/src/save.ts');const {content}=await import('/src/content/index.ts');return (await loadGame(content)).world;});
-  if(saved.mapId!==loaded.mapId||Math.hypot(saved.position.x-loaded.position.x,saved.position.y-loaded.position.y)>.1)throw Error('App reload lost world position');
+  if(saved.mapId!==loaded.mapId||Math.hypot(saved.position.x-loaded.position.x,saved.position.y-loaded.position.y)>.1)throw Error('App reload lost world position '+device+': '+JSON.stringify({saved,loaded}));
   await page.screenshot({path:`${output}/${device}-reloaded.png`});
   if(errors.length)throw Error(errors.join('\n'));
   proof.push({device,seededStart:{mapId:'park',position:{x:78,y:10}},saved,loaded,consoleErrors:errors,scope:'actual App travel from park to riverbank and reload; initial valid day save seeded to isolate landscape integration; whole town/activity journey pending'});

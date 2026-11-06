@@ -110,6 +110,12 @@ export function drawLandscapeProp(
       shadow(8);crown(0,-3,10,10,'#557851','#83985f','#afba7c');break;
     case 'flowers':
       for(let i=0;i<5;i++){let x=(i*7)%15-7,y=(i*3)%8-4;block(x,y-4,1,6,'#668457');block(x-1,y-6,3,3,i%2?'#e8d49a':'#d0d8b5');}break;
+    case 'seedling-bed':
+      shadow(23);polygon([[-23,-3],[0,-14],[23,-3],[0,9]],'#746243');
+      polygon([[-20,-5],[0,-14],[20,-5],[0,5]],'#786943');
+      polygon([[-23,-3],[0,9],[0,5],[-23,-7]],'#a68c5a');
+      polygon([[0,9],[23,-3],[23,-7],[0,5]],'#856c48');
+      for(const [x,y] of [[-12,-5],[-5,-8],[2,-11],[-4,0],[3,-3],[10,-6]]){block(x,y-4,1,5,'#637d48');polygon([[x,y-2],[x-4,y-6],[x,y-5],[x+4,y-8],[x+2,y-2]],'#a5bc72');}break;
     case 'pavilion':
       shadow(42);polygon([[-34,0],[0,-18],[36,0],[0,18]],'#b1ae94');
       for(const [x,y] of [[-26,-1],[0,-14],[26,-1],[0,12]]) {block(x-2,y-35,4,35,'#7e6d4e');block(x-1,y-35,1,35,'#b79a67');}

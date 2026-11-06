@@ -2006,7 +2006,7 @@
       "id": "town.residence-laundry",
       "rect": {
         "x": 4.8,
-        "y": 18.8,
+        "y": 21.35,
         "width": 10.8,
         "height": 0.2
       },
@@ -2017,7 +2017,7 @@
       "id": "town.south-laundry",
       "rect": {
         "x": 7.8,
-        "y": 47.5,
+        "y": 50.35,
         "width": 10.5,
         "height": 0.2
       },
@@ -3846,7 +3846,7 @@
       "kind": "laundry",
       "position": {
         "x": 4.8,
-        "y": 18.8
+        "y": 21.35
       },
       "width": 10.8,
       "height": 0.2,
@@ -3858,7 +3858,7 @@
       "kind": "laundry",
       "position": {
         "x": 7.8,
-        "y": 47.5
+        "y": 50.35
       },
       "width": 10.5,
       "height": 0.2,
@@ -4122,32 +4122,6 @@
       "characterId": "bird"
     },
     {
-      "id": "town.morning-walk",
-      "position": {
-        "x": 35.5,
-        "y": 31.5
-      },
-      "route": [
-        {
-          "x": 35.5,
-          "y": 31.5
-        },
-        {
-          "x": 42.5,
-          "y": 31.5
-        },
-        {
-          "x": 42.5,
-          "y": 14
-        },
-        {
-          "x": 45,
-          "y": 10
-        }
-      ],
-      "characterId": "aunt"
-    },
-    {
       "id": "town.market-regular",
       "position": {
         "x": 32,
@@ -4186,6 +4160,28 @@
         }
       ],
       "characterId": "xiao-zhou"
+    },
+    {
+      "id": "town.courier-circuit",
+      "characterId": "resident-courier",
+      "position": {
+        "x": 35.5,
+        "y": 44.1
+      },
+      "route": [
+        {
+          "x": 35.5,
+          "y": 44.1
+        },
+        {
+          "x": 7.2,
+          "y": 30.2
+        },
+        {
+          "x": 24.3,
+          "y": 29.2
+        }
+      ]
     }
   ],
   "landmarks": [

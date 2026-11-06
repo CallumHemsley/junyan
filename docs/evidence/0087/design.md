@@ -52,3 +52,17 @@ Parent review caught inspect logic requiring a walkable solid-object center. Thi
 Actual authored-input browser diagnostics found these remaining map defects. Town morning-walk home fails entrance clearance. Courtyard white-cat route has a blocked stop. Park pond-deck at (61,33) has no walkable point within 1.8 tiles. Park and riverbank have no NPC hooks in the fetched snapshots. Other courtyard actors, both workshop residents and the rooftop resident compile. These are not life acceptance passes.
 
 17 focused life tests and TypeScript pass. Browser harness uses cloud /usr/bin/chromium because the matching Playwright bundle is absent. Initial harness had a reduced-motion variable initialization error; fixed before collecting proof. The first browser diagnostics reported no page errors after that fix, plus an irrelevant favicon 404 to remove before final evidence. The harness uses actual map geometry and character-owner artwork, with schematic ground rendering. It is interaction proof, not polished world-art acceptance. No original saved game is touched.
+
+## Independent read-only review and fixes
+
+Native cloud helper `/root/life_readonly_review` reported four actionable findings. Cat sit events now pause the actor timeline for nine seconds, persist the elapsed pause, and resume without teleporting. Greetings pause residents for a brief wave. Authoritative habitat overrides now obey entrance exclusions. Ambiguous overlapping target colliders now remain opaque. Browser proof now asserts actual actor displacement. Regression coverage is 21 life tests. No extra implementation writer was delegated.
+
+Explicit visible play time is now a validated LifeState field with `advanceLife(state,deltaMs,visible)`. Reload never adds offline time. Foundation must pass the persisted LifeState as sampleLife's fourth argument so bounded interactions affect production actors. This supersedes the earlier three-argument call when reactions are enabled.
+
+LifePrompt is a controls-only component using existing WordToken/FeatureLine/replay. It accepts one selected physical option and caller-provided line. It has no game clock, save, audio synthesis, world loop or copied activity reducer.
+
+## Current production registry checkpoint
+
+After merging foundation dependency 74a5213, live registry module inspection supersedes the old snapshot claim that park/river had no residents. Both now include map-owner authored regular routes, and life adds birds. The live remaining route diagnostics are town.morning-walk blocked home/entrance and courtyard.white blocked route stop. Life's authoritative habitat binding now keeps a safe white-cat clue visible independently of that optional invalid roam route. The map defect remains open. Tests exercise current source-map geometry separately from the frozen regression snapshots.
+
+`worldLifeFrame` is the preferred one-call production consumer. It centralizes authoritative habitat, global restaurant presence, saved play time, garden maturity and reactions. `lifeObjects` now has a default registered resident renderer, so foundation does not need to reimplement actor rendering. Full shared view and directional yaw reach that callback. No shared file is edited by 0087.

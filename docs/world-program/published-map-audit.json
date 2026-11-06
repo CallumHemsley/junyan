@@ -1,10 +1,23 @@
 {
-  "foundation": "9f144d512cfc0e74cfd7c1c9f43b75f7bf954a6c",
-  "note": "Schema and local standing samples only. This does not prove graph reachability, traversal or visual quality.",
+  "graphIssues": [],
+  "graphReachableMaps": [
+    "restaurant",
+    "town",
+    "residential-hall",
+    "courtyard",
+    "workshop",
+    "park",
+    "riverbank",
+    "residential-stairs",
+    "apartment",
+    "rooftop"
+  ],
+  "foundation": "e6270d095dead66ccb1d6fe9fb1815bbee86d702",
+  "note": "Schema, portal-reference graph and local standing samples only. Graph links do not prove collision-connected approach paths, ordinary-control traversal or visual quality.",
   "results": [
     {
       "ref": "refs/remotes/origin/codex/0079-town-street",
-      "head": "3747266683d3ec18f7d3af2fb99fcf88942cb098",
+      "head": "e8683a7cfd1b9e14181f62c3f4e8a58f3fe426a5",
       "file": "src/world/maps/town/map.json",
       "mapId": "town",
       "schema": "pass",
@@ -14,7 +27,7 @@
     },
     {
       "ref": "refs/remotes/origin/codex/0080-courtyard",
-      "head": "c176f5ac0423d7fa6e3c0f7a8c42f0a3fcc793db",
+      "head": "bfa4621199ef23d10a73eb2c956d2095387d98de",
       "file": "src/world/maps/courtyard/map.json",
       "mapId": "courtyard",
       "schema": "pass",
@@ -24,7 +37,7 @@
     },
     {
       "ref": "refs/remotes/origin/codex/0081-residential",
-      "head": "856d8a62198681021916200398aec489c061360c",
+      "head": "1e106d0f21355751e27e27bf338252cdbb2637ef",
       "file": "src/world/maps/residential/apartment.json",
       "mapId": "apartment",
       "schema": "pass",
@@ -34,7 +47,7 @@
     },
     {
       "ref": "refs/remotes/origin/codex/0081-residential",
-      "head": "856d8a62198681021916200398aec489c061360c",
+      "head": "1e106d0f21355751e27e27bf338252cdbb2637ef",
       "file": "src/world/maps/residential/residential-hall.json",
       "mapId": "residential-hall",
       "schema": "pass",
@@ -44,7 +57,7 @@
     },
     {
       "ref": "refs/remotes/origin/codex/0081-residential",
-      "head": "856d8a62198681021916200398aec489c061360c",
+      "head": "1e106d0f21355751e27e27bf338252cdbb2637ef",
       "file": "src/world/maps/residential/residential-stairs.json",
       "mapId": "residential-stairs",
       "schema": "pass",
@@ -54,7 +67,7 @@
     },
     {
       "ref": "refs/remotes/origin/codex/0082-workshop",
-      "head": "2ed1ad32fd5a98670af92f471c669e7ab536c5de",
+      "head": "39a3a5337cd973ff2ddf87e8c5eb8dfd9a6fe7fa",
       "file": "src/world/maps/workshop/map.json",
       "mapId": "workshop",
       "schema": "pass",
@@ -64,7 +77,7 @@
     },
     {
       "ref": "refs/remotes/origin/codex/0083-rooftop",
-      "head": "0a88378c8b7ce7618d7525602671c2c673302ad8",
+      "head": "6072209071cba1e364ee6e2428bb1eef5de17485",
       "file": "src/world/maps/rooftop/map.json",
       "mapId": "rooftop",
       "schema": "pass",
@@ -74,19 +87,17 @@
     },
     {
       "ref": "refs/remotes/origin/codex/0084-landscape",
-      "head": "14a2ce1fb95eb00955bfc3f6f85aae34f6ef99b8",
+      "head": "6e04784a1423b7b2fc167937553fe0e8d0b5eec4",
       "file": "src/world/maps/landscape/park.json",
       "mapId": "park",
       "schema": "pass",
       "spawnCanStand": true,
       "blockedEntrances": [],
-      "inaccessibleAnchorSamples": [
-        "park.pond-deck"
-      ]
+      "inaccessibleAnchorSamples": []
     },
     {
       "ref": "refs/remotes/origin/codex/0084-landscape",
-      "head": "14a2ce1fb95eb00955bfc3f6f85aae34f6ef99b8",
+      "head": "6e04784a1423b7b2fc167937553fe0e8d0b5eec4",
       "file": "src/world/maps/landscape/riverbank.json",
       "mapId": "riverbank",
       "schema": "pass",

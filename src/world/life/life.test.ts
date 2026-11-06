@@ -189,3 +189,40 @@ it('rejects authoritative habitat positions inside safe-arrival clearance', () =
   const actors = sampleLife(plan, { ...context(), habitats: [{ characterId: 'zhang-laoshi', position: { x: 1, y: 1 }, activity: 'sit' }] }, navigation);
   expect(actors).toEqual([]);
 });
+
+it('preserves a validated authoritative habitat even when a decorative cat route is invalid', () => {
+  const input = map();
+  input.npcHooks = [{ id: 'park.white', characterId: 'cats.white', position: { x: 4, y: 4 }, route: [{ x: -1, y: -1 }] }];
+  const plan = compileLife(input, navigation);
+  expect(plan.actors).toEqual([]);
+  expect(plan.diagnostics[0].reason).toBe('blocked-route-stop');
+  const actors = sampleLife(plan, { ...context(), habitats: [{ characterId: 'white-cat', position: { x: 5, y: 4 }, activity: 'sit' }] }, navigation);
+  expect(actors).toHaveLength(1);
+  expect(actors[0].position).toEqual({ x: 5, y: 4 });
+  expect(actors[0].action).toBe('idle');
+});
+
+it('does not duplicate a named regular through two canonical aliases on one map', () => {
+  const input = map();
+  input.npcHooks.push({ ...input.npcHooks[0], id: 'park.duplicate-teacher', characterId: 'glasses' });
+  const plan = compileLife(input, navigation);
+  expect(plan.actors).toHaveLength(1);
+  expect(plan.diagnostics.map(item => item.reason)).toContain('duplicate-character');
+});
+
+
+it('checkpoints accepted interaction time atomically so a reloaded pause starts at the same position', () => {
+  const input = map();
+  input.npcHooks = [{ id: 'park.black', characterId: 'black-cat', position: { x: 4, y: 4 }, route: [{ x: 8, y: 4 }] }];
+  const plan = compileLife(input, navigation);
+  let elapsedMs = 1000;
+  while (sampleLife(plan, context(elapsedMs))[0].action !== 'walk') elapsedMs += 100;
+  const actor = sampleLife(plan, context(elapsedMs))[0], ctx = { ...context(elapsedMs), player: actor.position };
+  const before = { ...initialLifeState(), elapsedMs: elapsedMs - 800 };
+  const result = interactLife(before, plan, [actor], ctx, `${actor.id}/sit`, navigation);
+  const restored = restoreLife(JSON.parse(JSON.stringify(result.state)));
+  expect(restored.elapsedMs).toBe(elapsedMs);
+  const reloaded = sampleLife(plan, { ...ctx, elapsedMs: restored.elapsedMs }, navigation, restored)[0];
+  expect(reloaded.position).toEqual(actor.position);
+  expect(reloaded.activity).toBe('sit');
+});

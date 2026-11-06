@@ -18,6 +18,8 @@ export type Profile = {
   dwellMs: number;
   resting: 'idle' | 'sit' | 'work' | 'perch';
   greeting?: Line;
+  homeMap?: string;
+  restingFacing?: Facing;
 };
 export type RoutePhase = {
   from: Position;
@@ -37,6 +39,7 @@ export type ActorRoute = {
 export type LifePlan = {
   mapId: string;
   actors: readonly ActorRoute[];
+  habitatActors: readonly Pick<ActorRoute, 'id' | 'characterId' | 'profile' | 'home'>[];
   landmarks: LifeMap['landmarks'];
   exclusions: readonly Rect[];
   diagnostics: readonly { hookId: string; reason: string }[];
@@ -58,6 +61,7 @@ export type ActorPose = {
   kind: Profile['kind'];
   position: Position;
   facing: Facing;
+  yaw?: number;
   action: 'idle' | 'walk' | 'interact';
   activity: RoutePhase['action'] | 'watch' | 'startle';
   phaseMs: number;

@@ -776,6 +776,15 @@
       }
     },
     {
+      "id": "riverbank.shore-watch-bench",
+      "rect": {
+        "x": 50.28,
+        "y": 45.36,
+        "width": 1.44,
+        "height": 0.48
+      }
+    },
+    {
       "id": "riverbank.bank-rock-5",
       "rect": {
         "x": 57.02,
@@ -1340,69 +1349,6 @@
         "y": 25.525000000000002,
         "width": 0.55,
         "height": 0.55
-      }
-    },
-    {
-      "id": "riverbank.bridge-reveal-tree-2",
-      "rect": {
-        "x": 59.425000000000004,
-        "y": 22.425,
-        "width": 0.55,
-        "height": 0.55
-      }
-    },
-    {
-      "id": "riverbank.bridge-reveal-tree-3",
-      "rect": {
-        "x": 60.825,
-        "y": 26.525000000000002,
-        "width": 0.55,
-        "height": 0.55
-      }
-    },
-    {
-      "id": "riverbank.bridge-reveal-tree-4",
-      "rect": {
-        "x": 56.425000000000004,
-        "y": 28.125,
-        "width": 0.55,
-        "height": 0.55
-      }
-    },
-    {
-      "id": "riverbank.bamboo-clump-1-0",
-      "rect": {
-        "x": 59.5,
-        "y": 27.5,
-        "width": 1,
-        "height": 1
-      }
-    },
-    {
-      "id": "riverbank.bamboo-clump-1-1",
-      "rect": {
-        "x": 60.3,
-        "y": 27.8,
-        "width": 1,
-        "height": 1
-      }
-    },
-    {
-      "id": "riverbank.bamboo-clump-1-2",
-      "rect": {
-        "x": 58.9,
-        "y": 28.3,
-        "width": 1,
-        "height": 1
-      }
-    },
-    {
-      "id": "riverbank.bamboo-clump-1-3",
-      "rect": {
-        "x": 60.9,
-        "y": 28.6,
-        "width": 1,
-        "height": 1
       }
     },
     {
@@ -2051,83 +1997,6 @@
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "riverbank.bridge-reveal-tree-2",
-      "rect": {
-        "x": 57.45,
-        "y": 20.45,
-        "width": 4.5,
-        "height": 4.5
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "riverbank.bridge-reveal-tree-3",
-      "rect": {
-        "x": 59.25,
-        "y": 24.95,
-        "width": 3.7,
-        "height": 3.7
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "riverbank.bridge-reveal-tree-4",
-      "rect": {
-        "x": 54.75,
-        "y": 26.45,
-        "width": 3.9,
-        "height": 3.9
-      },
-      "height": 3.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "riverbank.bamboo-clump-1-0",
-      "rect": {
-        "x": 59.0,
-        "y": 27.0,
-        "width": 2,
-        "height": 2
-      },
-      "height": 4.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "riverbank.bamboo-clump-1-1",
-      "rect": {
-        "x": 59.8,
-        "y": 27.3,
-        "width": 2,
-        "height": 2
-      },
-      "height": 4.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "riverbank.bamboo-clump-1-2",
-      "rect": {
-        "x": 58.4,
-        "y": 27.8,
-        "width": 2,
-        "height": 2
-      },
-      "height": 4.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "riverbank.bamboo-clump-1-3",
-      "rect": {
-        "x": 60.4,
-        "y": 28.1,
-        "width": 2,
-        "height": 2
-      },
-      "height": 4.5,
-      "fadeWhenPlayerBehind": true
-    },
-    {
       "id": "riverbank.bank-willow-0",
       "rect": {
         "x": 34.25,
@@ -2269,7 +2138,7 @@
     {
       "id": "riverbank.heron-shallows",
       "position": {
-        "x": 80,
+        "x": 51,
         "y": 43
       },
       "radius": 1.4,
@@ -4170,6 +4039,72 @@
       "variant": 0
     },
     {
+      "id": "riverbank.shore-walk-0",
+      "rect": {
+        "x": 60.0,
+        "y": 18.0,
+        "width": 2.0,
+        "height": 11.0
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.shore-walk-1",
+      "rect": {
+        "x": 55.0,
+        "y": 27.0,
+        "width": 7.0,
+        "height": 2.0
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.shore-walk-2",
+      "rect": {
+        "x": 55.0,
+        "y": 27.0,
+        "width": 2.0,
+        "height": 17.0
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.shore-walk-3",
+      "rect": {
+        "x": 55.0,
+        "y": 42.0,
+        "width": 8.0,
+        "height": 2.0
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.shore-walk-4",
+      "rect": {
+        "x": 61.0,
+        "y": 42.0,
+        "width": 2.0,
+        "height": 16.0
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bird-hide-0",
+      "rect": {
+        "x": 50.1,
+        "y": 42.1,
+        "width": 6.799999999999997,
+        "height": 1.7999999999999972
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
       "id": "riverbank.high-loop-0",
       "rect": {
         "x": 70.9,
@@ -4406,6 +4341,30 @@
       },
       "width": 4,
       "height": 3,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.shore-watch-bench",
+      "kind": "bench",
+      "position": {
+        "x": 51,
+        "y": 45.6
+      },
+      "width": 3,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.shore-watch-reeds",
+      "kind": "reeds",
+      "position": {
+        "x": 49.2,
+        "y": 42
+      },
+      "width": 2,
+      "height": 2,
       "layer": "object",
       "variant": 0
     },
@@ -5910,126 +5869,6 @@
       "variant": 1
     },
     {
-      "id": "riverbank.bridge-reveal-tree-2",
-      "kind": "tree",
-      "position": {
-        "x": 59.7,
-        "y": 22.7
-      },
-      "width": 4.5,
-      "height": 4.5,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "riverbank.bridge-reveal-tree-3",
-      "kind": "tree",
-      "position": {
-        "x": 61.1,
-        "y": 26.8
-      },
-      "width": 3.7,
-      "height": 3.7,
-      "layer": "object",
-      "variant": 3
-    },
-    {
-      "id": "riverbank.bridge-reveal-tree-4",
-      "kind": "tree",
-      "position": {
-        "x": 56.7,
-        "y": 28.4
-      },
-      "width": 3.9,
-      "height": 3.9,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.bridge-reveal-fern-1",
-      "kind": "fern",
-      "position": {
-        "x": 60.2,
-        "y": 28.9
-      },
-      "width": 1.5,
-      "height": 1.5,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "riverbank.bridge-reveal-fern-2",
-      "kind": "fern",
-      "position": {
-        "x": 57.2,
-        "y": 27.1
-      },
-      "width": 1.5,
-      "height": 1.5,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "riverbank.bridge-reveal-fern-3",
-      "kind": "fern",
-      "position": {
-        "x": 62,
-        "y": 24.3
-      },
-      "width": 1.5,
-      "height": 1.5,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.bamboo-clump-1-0",
-      "kind": "bamboo",
-      "position": {
-        "x": 60,
-        "y": 28
-      },
-      "width": 2,
-      "height": 2,
-      "layer": "object",
-      "variant": 0
-    },
-    {
-      "id": "riverbank.bamboo-clump-1-1",
-      "kind": "bamboo",
-      "position": {
-        "x": 60.8,
-        "y": 28.3
-      },
-      "width": 2,
-      "height": 2,
-      "layer": "object",
-      "variant": 1
-    },
-    {
-      "id": "riverbank.bamboo-clump-1-2",
-      "kind": "bamboo",
-      "position": {
-        "x": 59.4,
-        "y": 28.8
-      },
-      "width": 2,
-      "height": 2,
-      "layer": "object",
-      "variant": 2
-    },
-    {
-      "id": "riverbank.bamboo-clump-1-3",
-      "kind": "bamboo",
-      "position": {
-        "x": 61.4,
-        "y": 29.1
-      },
-      "width": 2,
-      "height": 2,
-      "layer": "object",
-      "variant": 3
-    },
-    {
       "id": "riverbank.bank-willow-0",
       "kind": "willow",
       "position": {
@@ -6418,30 +6257,22 @@
   },
   "npcHooks": [
     {
-      "id": "riverbank.ferry-walk",
+      "id": "riverbank.resident-river-walker",
       "position": {
-        "x": 62,
-        "y": 57
+        "x": 23.6,
+        "y": 48.6
       },
       "route": [
         {
-          "x": 62,
-          "y": 57
+          "x": 23.6,
+          "y": 48.6
         },
         {
-          "x": 70,
-          "y": 57
-        },
-        {
-          "x": 80,
-          "y": 57
-        },
-        {
-          "x": 70,
-          "y": 57
+          "x": 38.5,
+          "y": 39.4
         }
       ],
-      "characterId": "xiao-zhou"
+      "characterId": "resident-river-walker"
     }
   ],
   "landmarks": [
@@ -6496,10 +6327,10 @@
     {
       "id": "riverbank.heron-shallows",
       "position": {
-        "x": 80,
+        "x": 51,
         "y": 43
       },
-      "kind": "heron-shallows"
+      "kind": "river-view"
     },
     {
       "id": "riverbank.lower-crossing",

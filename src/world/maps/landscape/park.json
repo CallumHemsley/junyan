@@ -101,6 +101,24 @@
       }
     },
     {
+      "id": "park.reading-stone",
+      "rect": {
+        "x": 30.472,
+        "y": 25.64,
+        "width": 1.056,
+        "height": 0.72
+      }
+    },
+    {
+      "id": "park.planting-bed",
+      "rect": {
+        "x": 23.78,
+        "y": 56.720000000000006,
+        "width": 1.44,
+        "height": 0.96
+      }
+    },
+    {
       "id": "park.orchard-cart",
       "rect": {
         "x": 15.52,
@@ -2192,6 +2210,30 @@
       "variant": 0
     },
     {
+      "id": "park.reading-stone",
+      "kind": "rock",
+      "position": {
+        "x": 31,
+        "y": 26
+      },
+      "width": 2.2,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "park.planting-bed",
+      "kind": "seedling-bed",
+      "position": {
+        "x": 24.5,
+        "y": 57.2
+      },
+      "width": 3,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
       "id": "park.orchard-cart",
       "kind": "cart",
       "position": {
@@ -4164,30 +4206,40 @@
   },
   "npcHooks": [
     {
-      "id": "park.reading-walk",
+      "id": "park.resident-reader",
       "position": {
-        "x": 54,
-        "y": 18
+        "x": 29,
+        "y": 26.9
       },
       "route": [
         {
+          "x": 29,
+          "y": 26.9
+        },
+        {
           "x": 54,
-          "y": 18
-        },
-        {
-          "x": 65,
-          "y": 18
-        },
-        {
-          "x": 65,
-          "y": 24
-        },
-        {
-          "x": 65,
-          "y": 18
+          "y": 18.5
         }
       ],
-      "characterId": "zhang-laoshi"
+      "characterId": "resident-reader"
+    },
+    {
+      "id": "park.resident-groundskeeper",
+      "position": {
+        "x": 16,
+        "y": 52
+      },
+      "route": [
+        {
+          "x": 16,
+          "y": 52
+        },
+        {
+          "x": 23,
+          "y": 56.4
+        }
+      ],
+      "characterId": "resident-groundskeeper"
     }
   ],
   "landmarks": [

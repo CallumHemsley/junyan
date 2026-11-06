@@ -1,3 +1,4 @@
+import {backgroundResident,type HeldObject} from './background';
 import {content} from '../../content';
 import {actorCommands} from './adapter';
 import type {WorldDrawCommand} from '../render-contract';
@@ -16,7 +17,7 @@ export type ActorInput = {
   distanceTravelled?:number;
   yaw?:number;
   carrying?:boolean;
-  heldObject?:'tray'|'watering-can'|'tool';
+  heldObject?:HeldObject;
 };
 export type PixelSpan = {x:number;y:number;width:number;color:RGB};
 export type ActorSample = {
@@ -40,11 +41,13 @@ export function directionFromYaw(yaw:number):number {
 export function sampleActor(input:ActorInput):ActorSample {
   const posture=input.posture ?? 'stand';
   const direction=input.yaw===undefined?facingDirections[input.facing]:directionFromYaw(input.yaw);
-  const clock=input.distanceTravelled===undefined?input.elapsedMs/(input.characterId==='zhang-laoshi'?155:input.characterId==='xiao-li'?90:110):input.distanceTravelled*6;
+  const background=backgroundResident(input.characterId);
+  const heldObject=input.heldObject??background?.heldObject;
+  const clock=input.distanceTravelled===undefined?input.elapsedMs/(background?.cadenceMs??(input.characterId==='zhang-laoshi'?155:input.characterId==='xiao-li'?90:110)):input.distanceTravelled*6;
   const phase=input.reducedMotion?0:Math.floor(Math.max(0,clock))%6;
   const action=posture==='sit'||posture==='crouch'?posture:posture==='react'?'react':posture==='work'?'interact':input.action;
-  const appearance=cast.get(input.characterId);
-  const picture=frame({appearance,direction,phase,action,reducedMotion:input.reducedMotion,carrying:input.carrying,heldObject:input.heldObject,acting:!input.reducedMotion&&input.elapsedMs%6000>5200,blink:!input.reducedMotion&&input.action==='idle'&&input.elapsedMs%4400>=4160});
+  const appearance=background?.appearance??cast.get(input.characterId);
+  const picture=frame({appearance,body:background?.body,role:background?.role,direction,phase,action,reducedMotion:input.reducedMotion,carrying:input.carrying,heldObject,acting:!input.reducedMotion&&input.elapsedMs%6000>5200,blink:!input.reducedMotion&&input.action==='idle'&&input.elapsedMs%4400>=4160});
   const commands:PixelSpan[]=[];
   for(let y=0;y<picture.height;y++)for(let x=0;x<picture.width;) {
     const offset=(y*picture.width+x)*4;
@@ -60,8 +63,10 @@ export function sampleActor(input:ActorInput):ActorSample {
     x=end;
   }
   return {version:1,characterId:input.characterId,facing:input.facing,direction,
-    frameId:`${input.characterId}/${direction}/${posture}/${input.action}/${phase}${input.carrying?'/carry':''}${input.heldObject?'/'+input.heldObject:''}${!input.reducedMotion&&input.action==='idle'&&input.elapsedMs%4400>=4160?'/blink':''}${!input.reducedMotion&&input.elapsedMs%6000>5200?'/acting':''}`,
+    frameId:`${input.characterId}/${direction}/${posture}/${input.action}/${phase}${input.carrying?'/carry':''}${heldObject?'/'+heldObject:''}${!input.reducedMotion&&input.action==='idle'&&input.elapsedMs%4400>=4160?'/blink':''}${!input.reducedMotion&&input.elapsedMs%6000>5200?'/acting':''}`,
     phase,posture,frame:picture,drawCommands:commands,worldCommands:actorCommands({drawCommands:commands},{x:0,y:0})};
 }
 
 export {drawActor,actorCommands,actorObject} from './adapter';
+
+export {backgroundResidents,isBackgroundResidentId,type BackgroundResidentId,type HeldObject} from './background';

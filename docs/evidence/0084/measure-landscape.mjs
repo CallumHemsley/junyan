@@ -14,7 +14,7 @@ try {
    const routes=m.landmarks.map(l=>{const path=findPath(m,m.defaultSpawn,l.position);let from=m.defaultSpawn,length=0;for(const to of path){length+=Math.hypot(to.x-from.x,to.y-from.y);from=to;}return {id:l.id,lengthTiles:Number(length.toFixed(2)),reachable:!!path.length};});
    const view={project:point=>point,elapsedMs:0,reducedMotion:true,playerPosition:m.defaultSpawn,width:1440,height:960,pass:'objects'};
    const objects=renderObjects(m,view);
-   return {mapId:m.id,bounds:m.bounds,footprintRadius:.22,sampledReachableAreaTiles:seen.size/4,props:m.props.length,distinctPropKinds:[...new Set(m.props.map(p=>p.kind))],landmarks:routes,customObjectCount:objects.length,allPropsOverrideFallback:m.props.every(p=>objects.some(o=>o.id===p.id)),registeredResidentHooks:m.npcHooks.map(h=>h.id),note:'Half-tile shared-footprint flood area is a sampled estimate. Route distances use shared smoothed findPath. These measure authored content, not experience quality.'};
+   return {mapId:m.id,bounds:m.bounds,footprintRadius:.22,sampledReachableAreaTiles:seen.size/4,props:m.props.length,distinctPropKinds:[...new Set(m.props.map(p=>p.kind))],landmarks:routes,customObjectCount:objects.length,allObjectPropsOverrideFallback:m.props.filter(p=>p.layer!=='ground').every(p=>objects.some(o=>o.id===p.id)),registeredResidentHooks:m.npcHooks.map(h=>h.id),note:'Half-tile shared-footprint flood area is a sampled estimate. Route distances use shared smoothed findPath. These measure authored content, not experience quality.'};
   });
  });
  await writeFile('docs/evidence/0084/metrics.json',JSON.stringify(metrics,null,2)+'\n');console.log(JSON.stringify(metrics,null,2));

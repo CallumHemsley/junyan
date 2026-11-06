@@ -37,6 +37,8 @@ Foundation normalizes legacy hook aliases at the registry boundary before life c
 | `cats.white` | `white-cat` |
 | `cats.black` | `black-cat` |
 | `sparrow` | `bird` |
+| `backpack` | `xiao-zhou` |
+| `glasses` | `zhang-laoshi` |
 
 Existing content character IDs remain canonical. Actor IDs and interaction IDs are separate namespaces: `cats.white` as an interaction selects the white-cat target and must not be rewritten to a dialogue/content ID. Unknown hook actors produce a diagnostic and are skipped; do not render an unknown bird/cat as the human player's default sprite. Character owner supplies separate nonhuman sampling or foundation uses the explicit cat/bird renderer provided by the relevant owner.
 
@@ -92,3 +94,27 @@ Resolve the binding into a discriminated presentation target (`table` with table
 UI owner 0090 exports typed presentational components under `src/world/ui/*`. Foundation supplies only the current target's dialogue, available actions and read-only view data, plus existing lookup/replay/journal/tray/action callbacks. A table shows that customer's current dialogue and relevant order/deliver/change actions. Kitchen shows food pickup and tray return. Do not mount all four table controls, kitchen, journal and an entire legacy feature page simultaneously in one panel.
 
 Keep a compact persistent journal/tray affordance outside the contextual panel. Opening the tray or journal is an explicit player choice. On phone, contextual content may scroll within an accessible region but its action footer and close control must remain reachable; no overflow clipping or CSS-hiding controls. Opening/closing preserves the visible map and returns focus to the invoking anchor. UI owner does not duplicate reducer rules or write shared styles/App. Foundation alone wires the components and maps world actions to existing domain actions.
+
+## One material-lighting seam
+
+Foundation adds optional `shadeColor(base, exposure = 1): string` to `WorldRenderView`. `base` is an RGB triple or a #RRGGBB material color. The returned CSS color is computed through atmosphere's existing `shadeAtmosphereColor(baseRGB, frame.light, exposure)`. Alpha remains the caller's Canvas alpha; material shading must not reset per-object occlusion alpha. Foundation samples one atmosphere frame for the authoritative named day phase and supplies one cached shader for that phase/interior-light state. No artist computes an independent day clock.
+
+Every map art helper routes non-emissive terrain, walls, roof, wood, foliage and furniture fill/stroke material colors through this callback. The generic foundation painter does the same. Optional callback absence is identity shading for isolated old harness compatibility; production always supplies it. Color constants may remain authored; they are inputs, not final painted output. Do not merely overlay a fullscreen tint, darken the canvas with CSS, or add particles while leaving all base materials at noon colors. Preserve material-specific base colors and local exposure/highlight values. Emissive windows/lamps use explicit emissive colors plus atmosphere's phase-dependent lamp strength rather than double-shading the glow.
+
+Atmosphere owner may export a pure adapter that parses #RRGGBB and calls its existing shade function, but foundation owns the WorldRenderView field and runtime wiring. All owners use this one callback name. A compiled material-color consumer and captures of the SAME actual map/camera under morning/evening with particles disabled must prove that wood, foliage and masonry pixels change while remaining distinct. Re-enable local light overlays for final captures. Component timing alone does not prove integrated lighting.
+
+## Minimal stair surface seam
+
+Residential owns one authored piecewise-constant surface table for its stair treads and landings. It exports `surfaceHeight(mapId, point): number` and `surfaceLevels(mapId): readonly number[]` from its leased map module. Heights are absolute world Z tile units, finite and nonnegative; unraised ground is 0. `surfaceLevels` is the unique height set from the SAME table, including 0. Tread artwork uses this table too; no second staircase height calculation. Foundation registers these optional callbacks for residential maps and defaults other maps to height 0. No change to 2D collision or feature save ownership.
+
+Keep `view.project(point, z)` as an ABSOLUTE height projection. Never silently add surfaceHeight inside that function. Stair art already supplying tread Z must not receive a second offset. Actor and NPC draw adapters explicitly project their feet at surfaceHeight(mapId, position); their local body offsets are relative to those feet. Furniture/props resting on a raised landing explicitly add the surface height once to their own local geometry. Existing flat-map art remains unchanged.
+
+Foundation extends Camera with optional `focusZ` defaulting to 0. Forward projection becomes `screenY = viewportHeight/2 + ((x-focus.x)+(y-focus.y))*scale/2 - (z-focusZ)*scale`. Camera framing follows the player's sampled surface height, with any visual smoothing applied to camera state only. Logical player position and height sampler stay deterministic. Actor depth keys include the actual feet position and use the shared compositor; split stair rails/treads where a single object would obscure an entire flight.
+
+For inverse picking add `unprojectAtHeight(screen, camera, z)`. Undo the vertical term `(z-focusZ)*scale` before the existing isometric inverse. Enumerate `surfaceLevels(mapId)`, compute the candidate ground point at each height, and retain only candidates whose sampled surfaceHeight matches that candidate height and which lie on the authored map surface. Choose the highest visible surface candidate; do not solve by repeatedly adding height to the flat inverse. On this single-surface stair model, no 3D physics or new navigation graph is needed. Pathfinding remains over x/y; rendered feet sample height along that path. Foundation must test pixel/world round trips on every tread and both landing boundaries at scrolled camera positions and phone scale.
+
+Required integrated proof is an ordinary-input ascent and descent with feet attached to treads, NPC feet on the same surface, visible camera framing, click/touch destination alignment, safe landings and unchanged apartment/roof transitions. A portal transition alone does not prove visible stairs. The first implementation can use discrete treads with small rises; do not add unsupported ramps or stacked walkable floors to this contract.
+
+## World life must be playable
+
+Life acceptance requires actual consumers for `nearbyLife`, `interactLife` and `drawLifeReactions`, nested validated life state/save, authoritative catHabitat projections, and active-restaurant-regular exclusions. Decorative `sampleLife` routes alone do not pass. Nonhuman actors need readable species-specific silhouettes and motion at production scale, not generic two-rectangle icons. Exercise one ordinary-control affordance/reaction and repeat visit with save/reload, plus cats during a real clue and suppressed duplicate restaurant residents. The independent reviewer must inspect the integrated head, not the life harness.
