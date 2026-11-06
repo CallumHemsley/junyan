@@ -8,5 +8,6 @@ export { drawLifeActor, drawLifeReactions } from './render';
 export type { LifeView, ResidentDrawer } from './render';
 export { navigationFor } from './navigation';
 export { courtyardHabitats } from './habitats';
-export { lifeObjects } from './objects';
+export { lifeObjects, drawLifeResident } from './objects';
 export { restaurantPresence, releaseServedCustomer } from './presence';
+export { worldLifeFrame } from './scene';

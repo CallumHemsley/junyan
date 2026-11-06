@@ -15,7 +15,14 @@ function facing(from: Position, to: Position): Facing {
 }
 export function sampleLife(plan: LifePlan, context: LifeContext, navigation?: Navigation, state?: LifeState): ActorPose[] {
   if (!Number.isFinite(context.elapsedMs) || context.elapsedMs < 0 || !Number.isSafeInteger(context.day) || context.day < 1) return [];
-  return plan.actors.flatMap(actor => {
+  const actors = [...plan.actors];
+  for (const habitat of context.habitats ?? []) {
+    const id = profileFor(habitat.characterId)?.id;
+    if (actors.some(actor => actor.characterId === id)) continue;
+    const binding = plan.habitatActors.find(actor => actor.characterId === id);
+    if (binding) actors.push({ ...binding, durationMs: binding.profile.dwellMs, phases: [{ from: binding.home, to: binding.home, startMs: 0, endMs: binding.profile.dwellMs, action: binding.profile.resting }] });
+  }
+  return actors.flatMap(actor => {
     if (context.excludedCharacterIds?.includes(actor.characterId)) return [];
     if (actor.profile.kind === 'bird' && plan.mapId === 'rooftop' && !context.gardenMature) return [];
     const habitat = context.habitats?.find(item => profileFor(item.characterId)?.id === actor.characterId);
@@ -38,6 +45,7 @@ export function sampleLife(plan: LifePlan, context: LifeContext, navigation?: Na
     return [{
       id: actor.id, characterId: actor.characterId, kind: actor.profile.kind, position,
       facing: nearby && !walking ? facing(position, context.player) : walking ? facing(phase.from, phase.to) : 'south',
+      yaw: nearby && !walking ? Math.atan2(context.player.y - position.y, context.player.x - position.x) : walking ? Math.atan2(phase.to.y - phase.from.y, phase.to.x - phase.from.x) : Math.PI / 2,
       action: walking ? 'walk' : nearby && actor.profile.kind === 'resident' ? 'interact' : 'idle',
       activity, phaseMs: context.reducedMotion ? 0 : paused ? context.elapsedMs - pause!.startMs : time - phase.startMs,
       greeting: actor.profile.greeting, radius: actor.profile.radius,

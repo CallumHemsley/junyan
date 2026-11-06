@@ -189,3 +189,23 @@ it('rejects authoritative habitat positions inside safe-arrival clearance', () =
   const actors = sampleLife(plan, { ...context(), habitats: [{ characterId: 'zhang-laoshi', position: { x: 1, y: 1 }, activity: 'sit' }] }, navigation);
   expect(actors).toEqual([]);
 });
+
+it('preserves a validated authoritative habitat even when a decorative cat route is invalid', () => {
+  const input = map();
+  input.npcHooks = [{ id: 'park.white', characterId: 'cats.white', position: { x: 4, y: 4 }, route: [{ x: -1, y: -1 }] }];
+  const plan = compileLife(input, navigation);
+  expect(plan.actors).toEqual([]);
+  expect(plan.diagnostics[0].reason).toBe('blocked-route-stop');
+  const actors = sampleLife(plan, { ...context(), habitats: [{ characterId: 'white-cat', position: { x: 5, y: 4 }, activity: 'sit' }] }, navigation);
+  expect(actors).toHaveLength(1);
+  expect(actors[0].position).toEqual({ x: 5, y: 4 });
+  expect(actors[0].action).toBe('idle');
+});
+
+it('does not duplicate a named regular through two canonical aliases on one map', () => {
+  const input = map();
+  input.npcHooks.push({ ...input.npcHooks[0], id: 'park.duplicate-teacher', characterId: 'glasses' });
+  const plan = compileLife(input, navigation);
+  expect(plan.actors).toHaveLength(1);
+  expect(plan.diagnostics.map(item => item.reason)).toContain('duplicate-character');
+});

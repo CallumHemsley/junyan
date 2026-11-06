@@ -2,6 +2,14 @@
 
 Goal ACTIVE. Foundation alone changes shared consumers. Life branch `codex/0087-world-life` owns pure rules, wildlife drawing and the controls-only prompt. Harness proof is not production acceptance.
 
+## Preferred production consumer
+
+`worldLifeFrame(projectedMap,game,world,reducedMotion)` returns `{plan,navigation,life,context,actors,options}`. It consumes the existing courtyard catHabitat, global restaurantPresence, saved life clock, garden maturity and persisted reactions itself. Foundation's life-bridge can delegate to this function instead of reconstructing those inputs. The projected map stays the same snapshot used by collision/art/anchors. Actor-plan caching keys that immutable snapshot.
+
+Insert `lifeObjects(frame.actors,frame.life)` into the existing scenery/player object queue. Its default resident callback delegates to the registered character sampler/renderer with yaw, facing, phase and posture. The full WorldRenderView reaches that callback, including material shading. Use `frame.options` for physical controls. Call `interactLife(frame.life,frame.plan,frame.actors,frame.context,id,frame.navigation)` to activate the current option.
+
+Authoritative cat bindings are independent of optional decorative roam-route validity. A blocked decorative route still emits its diagnostic, but a safe state-derived habitat can display the cat. Shared collision and entrance clearance validate that habitat. Invalid habitats remain absent and diagnosed at the route source, rather than rendered through geometry.
+
 ## Frame and save
 
 1. Restore nested `world.life` with `restoreLife` at the existing save boundary. The schema preserves explicit `elapsedMs`, discoveries, reactions and bounded actor pauses. Missing old fields default safely.

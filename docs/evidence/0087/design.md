@@ -60,3 +60,9 @@ Native cloud helper `/root/life_readonly_review` reported four actionable findin
 Explicit visible play time is now a validated LifeState field with `advanceLife(state,deltaMs,visible)`. Reload never adds offline time. Foundation must pass the persisted LifeState as sampleLife's fourth argument so bounded interactions affect production actors. This supersedes the earlier three-argument call when reactions are enabled.
 
 LifePrompt is a controls-only component using existing WordToken/FeatureLine/replay. It accepts one selected physical option and caller-provided line. It has no game clock, save, audio synthesis, world loop or copied activity reducer.
+
+## Current production registry checkpoint
+
+After merging foundation dependency 74a5213, live registry module inspection supersedes the old snapshot claim that park/river had no residents. Both now include map-owner authored regular routes, and life adds birds. The live remaining route diagnostics are town.morning-walk blocked home/entrance and courtyard.white blocked route stop. Life's authoritative habitat binding now keeps a safe white-cat clue visible independently of that optional invalid roam route. The map defect remains open. Tests exercise current source-map geometry separately from the frozen regression snapshots.
+
+`worldLifeFrame` is the preferred one-call production consumer. It centralizes authoritative habitat, global restaurant presence, saved play time, garden maturity and reactions. `lifeObjects` now has a default registered resident renderer, so foundation does not need to reimplement actor rendering. Full shared view and directional yaw reach that callback. No shared file is edited by 0087.
