@@ -1,0 +1,96 @@
+diff --git a/src/App.tsx b/src/App.tsx
+index 65c7870..52ce3fe 100644
+--- a/src/App.tsx
++++ b/src/App.tsx
+@@ -84,8 +84,8 @@ export default function App() {
+   const [audioError, setAudioError] = useState<PlaybackError>(null);
+   const neighbourhood = state.neighbourhood ?? createNeighbourhood(state.day);
+   const locationId = neighbourhood.location;
+-  const worldRegistry = mapsForNeighbourhood(neighbourhood);
+-  const world = restoreWorld(state.world, worldRegistry, locationId);
++  const worldRegistry = auditMeasure("App.maps",()=>mapsForNeighbourhood(neighbourhood));
++  const world = auditMeasure("App.restore",()=>restoreWorld(state.world, worldRegistry, locationId));
+   const binding=activityTarget(world,worldRegistry[world.mapId]);
+   const table=binding?.kind==="table"?binding.table:requestedTable;
+   const activityOpen = binding !== null;
+@@ -625,3 +625,10 @@ export default function App() {
+     </div>
+   );
+ }
++
++function auditMeasure<T>(name:string, fn:()=>T):T {const g=globalThis as any;const a=g.__perfAudit??=( {} );const start=performance.now();try{return fn();}finally{(a[name]??=[]).push(performance.now()-start);}}
++
++import {findPath as auditFindPath} from "./world/geometry";
++import {cameraForMap as auditCamera,project as auditProject} from "./world/camera";
++import {worldMaps as auditMaps} from "./world/registry";
++Object.assign(globalThis,{__auditHelpers:{mapsForNeighbourhood,restoreWorld,findPath:auditFindPath,cameraForMap:auditCamera,project:auditProject,worldMaps:auditMaps}});
+diff --git a/src/world/dynamic.ts b/src/world/dynamic.ts
+index 857757f..46ee585 100644
+--- a/src/world/dynamic.ts
++++ b/src/world/dynamic.ts
+@@ -6,7 +6,7 @@ import type {WorldMapDefinition,Point} from "./schema";
+ import {worldMaps,type MapRegistry} from "./registry";
+ import {safeExitPosition} from "./exit-safety";
+ const apartments=new WeakMap<object,WorldMapDefinition>(),roofs=new WeakMap<object,WorldMapDefinition>(),courtyards=new WeakMap<object,{day:number;map:WorldMapDefinition}>();
+-export function mapsForNeighbourhood(state:NeighbourhoodState,day=state.garden.day??1):MapRegistry {
++function mapsForNeighbourhoodImpl(state:NeighbourhoodState,day=state.garden.day??1):MapRegistry {
+  let apartment=apartments.get(state.apartment.placements),rooftop=roofs.get(state.garden);
+  if(!apartment&&worldMaps.apartment){apartment={...worldMaps.apartment,colliders:[...worldMaps.apartment.colliders,...furnitureColliders(state.apartment)]};apartments.set(state.apartment.placements,apartment);}
+  if(!rooftop&&worldMaps.rooftop){const projected=projectGarden(state.garden);rooftop={...worldMaps.rooftop,anchors:[...worldMaps.rooftop.anchors,...projected.anchors],props:[...worldMaps.rooftop.props,...projected.props],colliders:[...worldMaps.rooftop.colliders,...projected.colliders],occluders:[...worldMaps.rooftop.occluders,...projected.occluders]};roofs.set(state.garden,rooftop);}
+@@ -16,3 +16,6 @@ export function mapsForNeighbourhood(state:NeighbourhoodState,day=state.garden.d
+ export function safeAfterEdit(_before:WorldMapDefinition,after:WorldMapDefinition,position:Point):Point {
+  return safeExitPosition(after,position);
+ }
++
++function auditMeasure<T>(name:string, fn:()=>T):T {const g=globalThis as any;const a=g.__perfAudit??=( {} );const start=performance.now();try{return fn();}finally{(a[name]??=[]).push(performance.now()-start);}}
++export function mapsForNeighbourhood(...args:Parameters<typeof mapsForNeighbourhoodImpl>):ReturnType<typeof mapsForNeighbourhoodImpl>{return auditMeasure("mapsForNeighbourhood",()=>mapsForNeighbourhoodImpl(...args));}
+diff --git a/src/world/exit-safety.ts b/src/world/exit-safety.ts
+index d2ea40a..d709280 100644
+--- a/src/world/exit-safety.ts
++++ b/src/world/exit-safety.ts
+@@ -12,7 +12,7 @@ function exits(map:WorldMapDefinition):Point[]{
+  if(!map.exits.length&&canStand(map,map.defaultSpawn))seeds.push(map.defaultSpawn);
+  return seeds;
+ }
+-export function exitComponent(map:WorldMapDefinition):readonly Point[]{
++function exitComponentImpl(map:WorldMapDefinition):readonly Point[]{
+  const known=components.get(map);if(known)return known;
+  const seeds=exits(map),queue:Point[]=[],seen=new Set<string>();
+  const add=(p:Point)=>{const id=key(p);if(!seen.has(id)){seen.add(id);queue.push(p);}};
+@@ -25,7 +25,7 @@ export function exitComponent(map:WorldMapDefinition):readonly Point[]{
+  }
+  const result=[...seeds,...queue];components.set(map,result);return result;
+ }
+-export function isExitConnected(map:WorldMapDefinition,p:Point):boolean {
++function isExitConnectedImpl(map:WorldMapDefinition,p:Point):boolean {
+  if(!canStand(map,p))return false;
+  if(exits(map).some(exit=>canWalk(map,p,exit)))return true;
+  return exitComponent(map).some(n=>Math.abs(n.x-p.x)<=1&&Math.abs(n.y-p.y)<=1&&canWalk(map,p,n));
+@@ -38,3 +38,7 @@ export function safeExitPosition(map:WorldMapDefinition,p:Point):Point {
+  if(!points.length)throw Error(`No exit-connected support in ${map.id}`);
+  return points[0];
+ }
++
++function auditMeasure<T>(name:string, fn:()=>T):T {const g=globalThis as any;const a=g.__perfAudit??=( {} );const start=performance.now();try{return fn();}finally{(a[name]??=[]).push(performance.now()-start);}}
++export function isExitConnected(...args:Parameters<typeof isExitConnectedImpl>):ReturnType<typeof isExitConnectedImpl>{return auditMeasure("isExitConnected",()=>isExitConnectedImpl(...args));}
++export function exitComponent(...args:Parameters<typeof exitComponentImpl>):ReturnType<typeof exitComponentImpl>{return auditMeasure("exitComponent",()=>exitComponentImpl(...args));}
+diff --git a/src/world/state.ts b/src/world/state.ts
+index b027429..e1f7184 100644
+--- a/src/world/state.ts
++++ b/src/world/state.ts
+@@ -11,7 +11,7 @@ export function createWorld(maps:MapRegistry,location="restaurant"):WorldState {
+   const map=maps[locationMap[location]]??maps.restaurant;
+   return {version:1,mapId:map.id,position:{x:map.defaultSpawn.x,y:map.defaultSpawn.y},facing:map.defaultSpawn.facing,returnPositions:{},activeActivity:null,activeAnchorId:null,life:restoreLife(null)};
+ }
+-export function restoreWorld(value:unknown,maps:MapRegistry,location="restaurant"):WorldState {
++function restoreWorldImpl(value:unknown,maps:MapRegistry,location="restaurant"):WorldState {
+   const parsed=savedSchema.safeParse(value);
+   if(!parsed.success) return createWorld(maps,location);
+   const state=parsed.data,map=maps[state.mapId];
+@@ -46,3 +46,6 @@ export function reduceWorld(state:WorldState,action:WorldAction,maps:MapRegistry
+   return {...state,position:action.position,facing};
+ }
+ export function activityLocation(feature:Exclude<FeatureId,"exploration">) {return feature;}
++
++function auditMeasure<T>(name:string, fn:()=>T):T {const g=globalThis as any;const a=g.__perfAudit??=( {} );const start=performance.now();try{return fn();}finally{(a[name]??=[]).push(performance.now()-start);}}
++export function restoreWorld(...args:Parameters<typeof restoreWorldImpl>):ReturnType<typeof restoreWorldImpl>{return auditMeasure("restoreWorld",()=>restoreWorldImpl(...args));}
