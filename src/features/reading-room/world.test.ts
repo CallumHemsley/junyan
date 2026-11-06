@@ -2,7 +2,7 @@ import { expect, it } from 'vitest';
 import { worldMapSchema } from '../../world/schema';
 import { isExitConnected } from '../../world/exit-safety';
 import { readingRoomMap } from '../../world/maps/reading-room';
-import { initialState, reduce, type State } from './rules';
+import { initialState, legal, reduce, type State } from './rules';
 import { gridToWorld, placementRect, projectReadingRoom, worldToGrid } from './world';
 
 function solveWindow(): State {
@@ -39,4 +39,13 @@ it('shows the durable first arrangement when its replay draft is cleared and the
   expect(projection.props.find(p => p.id === 'reading-room.window.table')?.position).toEqual({ x: 7, y: 4 });
   expect(projection.props.some(p => p.id === 'reading-room.window.chair')).toBe(true);
   expect(projection.colliders.find(c => c.id === 'reading-room.window.table')?.rect).toEqual(placementRect(first.layouts.window[0], 'window'));
+});
+it('keeps static room fixtures outside every legal project placement', () => {
+  const map = worldMapSchema.parse(readingRoomMap);
+  for (const brief of ['window', 'alcove'] as const) for (const id of ['table', 'chair'] as const) for (const rotation of [0, 1] as const) for (let x = 0; x < 6; x++) for (let y = 0; y < 5; y++) {
+    const p = { id, rotation, x, y };
+    if (!legal(brief, [], p)) continue;
+    const rect = placementRect(p, brief);
+    for (const c of map.colliders) expect(rect.x < c.rect.x + c.rect.width && rect.x + rect.width > c.rect.x && rect.y < c.rect.y + c.rect.height && rect.y + rect.height > c.rect.y, `${brief} ${id} ${x},${y} vs ${c.id}`).toBe(false);
+  }
 });
