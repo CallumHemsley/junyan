@@ -50,3 +50,7 @@ Finish pure typed actor sampling and crisp original pixel commands. Verify diago
 ### Material lighting and current integration
 
 The production actor is integrated by foundation1450bf6. Actual desktop and phone browser DPR1/2 traversal recordings and scenery screenshots are published at45b842b. They confirm correct table overlap but expose cardinal-facing mismatch during diagonal ground travel; foundation has the exact yaw API request. Current74a5213 adds the actual shadeColor type; the owned consumer now explicitly uses it while preserving inherited alpha. Seven actor checks, all381 integrated rule tests and build pass. Inspected same-camera production courtyard morning/evening material proof is in lighting/. Foundation's returned context proxy, player yaw, NPC held-object contexts and final independent review remain open. Objective remains ACTIVE.
+
+### Review handoff
+
+GitHub reports initial PR30 merged at9b99e3e. Later evidence and explicit shared-lighting consumer are separately reviewable in draft PR37, https://github.com/CallumHemsley/junyan/pull/37, source846dd6a. Full381 rules/build and7actor checks pass at that source. The working cloud preview remains strict5487 (Vite tool session3683). Root/foundation must resolve yaw/context/proxy findings and independent reviewer must inspect production before marking this ticket done. Native create_goal remains unavailable; this ticket's persistent full objective is ACTIVE.
