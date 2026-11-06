@@ -1,4 +1,5 @@
 import {it,expect} from 'vitest';
+import {canStand} from './geometry';
 import {worldMaps} from './registry';
 import {stairSurfaces} from './maps/residential/elevation';
 import {cameraForMap,project,unprojectAtHeight} from './camera';
@@ -29,4 +30,16 @@ it('sets an actor foot anchor explicitly without double-offsetting absolute artw
  expect(actor.project({x:6,y:5})).toEqual({x:6,y:.20000000000000018});
  expect(actor.project({x:6,y:5},4.8)).toEqual(actor.project({x:6,y:5}));
  expect(actor.project({x:6,y:5},0)).toEqual({x:6,y:5});
+});
+it('picks exact authored tread edges without floating-point gaps',()=>{
+ const map=worldMaps['residential-stairs'];
+ for(const surface of stairSurfaces){
+  const p={x:surface.rect.x+surface.rect.width/2,y:surface.rect.y};
+  if(!canStand(map,p))continue;
+  for(const focus of [{x:17.0000004855,y:16.9000006242},{x:6.1781988895,y:28.5939981172}]){
+   const camera=cameraForMap(map.bounds,focus,195,386,11,0,0,surfaceHeight(map.id,focus));
+   const hit=pickSurface(project(p,camera,surfaceHeight(map.id,p)),camera,map);
+   expect(hit,JSON.stringify({p,focus})).not.toBeNull();expect(hit!.x).toBeCloseTo(p.x);expect(hit!.y).toBeCloseTo(p.y);
+  }
+ }
 });

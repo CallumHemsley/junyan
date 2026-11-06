@@ -8,7 +8,10 @@ export const surfaceHeight=residentialHeight;
 export const surfaceLevels=residentialLevels;
 export function pickSurface(screen:Point,camera:Camera,map:WorldMapDefinition):Point|null {
  for(const z of [...surfaceLevels(map.id)].sort((a,b)=>b-a)){
-  const point=unprojectAtHeight(screen,camera,z);
+  const inverse=unprojectAtHeight(screen,camera,z);
+  // CSS touch coordinates can arrive as float32. Normalize sub-pixel noise
+  // before sampling half-open tread intervals, so an exact edge has no gap.
+  const point={x:Math.round(inverse.x*1e5)/1e5,y:Math.round(inverse.y*1e5)/1e5};
   if(Math.abs(surfaceHeight(map.id,point)-z)<1e-7&&canStand(map,point))return point;
  }
  return null;

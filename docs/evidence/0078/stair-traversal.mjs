@@ -11,6 +11,7 @@ await page.route('**/src/world/painter.ts*',async route=>{
  if(!source.includes(signature))throw Error('Player observation boundary changed');
  await route.fulfill({response,body:source.replace(signature,signature+`const entries=globalThis.__feet??=[];entries.push({at:performance.now(),position:p,pixel:view.project(p),elapsedMs:view.elapsedMs});if(entries.length>6000)entries.shift();`)});
 });
+await page.route('**/src/world/WorldViewport.tsx*',async route=>{const response=await route.fetch(),source=await response.text();const marker='const id = ++requestId.current;';if(!source.includes(marker))throw Error('Pick observation boundary changed');await route.fulfill({response,body:source.replace(marker,'globalThis.__picked={point:p,camera:cameraRef.current,client:{x:event.clientX,y:event.clientY},position:state.position};'+marker)});});
 await page.goto('http://127.0.0.1:5480/audio/manifest.json');
 await page.evaluate(async()=>{
  const {createGame}=await import('/src/game.ts'),{content}=await import('/src/neighbourhood/registry.ts'),{worldMaps}=await import('/src/world/registry.ts'),{createWorld}=await import('/src/world/state.ts'),{initialLifeState}=await import('/src/world/life/index.ts'),{validateSavedGame}=await import('/src/save.ts');
@@ -41,7 +42,7 @@ async function walk(target,mapId){
   await page.touchscreen.tap(step.x,step.y);
   const deadline=Date.now()+6000;let reached=false;
   while(Date.now()<deadline){await page.waitForTimeout(100);const after=await current();if(after.world.mapId!==mapId||Math.hypot(after.world.position.x-step.point.x,after.world.position.y-step.point.y)<.22){reached=true;break;}}
-  if(!reached)throw Error('Touch route stalled '+JSON.stringify({step,state:(await current()).world}));
+  if(!reached){const picked=await page.evaluate(()=>globalThis.__picked);await page.screenshot({path:`${out}/stalled.png`});await writeFile(`${out}/stalled.json`,JSON.stringify({step,picked,state:(await current()).world},null,2));throw Error('Touch route stalled '+JSON.stringify({step,picked,state:(await current()).world}));}await page.waitForTimeout(150);
  }
  throw Error('Route exceeded bounded steps');
 }
