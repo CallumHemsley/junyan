@@ -251,6 +251,24 @@
       }
     },
     {
+      "id": "town.gate-left",
+      "rect": {
+        "x": 42,
+        "y": 6.5,
+        "width": 1.1,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.gate-right",
+      "rect": {
+        "x": 46.9,
+        "y": 6.5,
+        "width": 1.1,
+        "height": 0.35
+      }
+    },
+    {
       "id": "town.junction",
       "rect": {
         "x": 18,
@@ -1057,7 +1075,7 @@
         "width": 12,
         "height": 3
       },
-      "height": 3.7,
+      "height": 5.2,
       "fadeWhenPlayerBehind": true
     },
     {
@@ -1141,7 +1159,7 @@
       "id": "town.courtyard-moon-gate",
       "rect": {
         "x": 42,
-        "y": 2,
+        "y": 6.5,
         "width": 6,
         "height": 0.35
       },
@@ -2084,6 +2102,17 @@
       "fadeWhenPlayerBehind": true
     },
     {
+      "id": "town.canal-rail",
+      "rect": {
+        "x": 64.3,
+        "y": 51,
+        "width": 0.15,
+        "height": 12.5
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
       "id": "town.tea-stone-table",
       "rect": {
         "x": 50,
@@ -2221,6 +2250,16 @@
   ],
   "anchors": [
     {
+      "id": "town.book-window",
+      "position": {
+        "x": 10.5,
+        "y": 30
+      },
+      "radius": 1.4,
+      "featureId": "exploration",
+      "interactionId": "town.observe-window"
+    },
+    {
       "id": "town.junction-rest",
       "position": {
         "x": 22,
@@ -2243,8 +2282,8 @@
     {
       "id": "town.river-view",
       "position": {
-        "x": 72,
-        "y": 47
+        "x": 67,
+        "y": 49
       },
       "radius": 1.4,
       "featureId": "exploration",
@@ -2458,6 +2497,39 @@
       },
       "material": "paving",
       "variant": 39
+    },
+    {
+      "id": "town.junction-inset",
+      "rect": {
+        "x": 17.7,
+        "y": 27.7,
+        "width": 10.3,
+        "height": 3.5
+      },
+      "material": "brick",
+      "variant": 40
+    },
+    {
+      "id": "town.canal-water",
+      "rect": {
+        "x": 65,
+        "y": 51,
+        "width": 2,
+        "height": 13
+      },
+      "material": "water",
+      "variant": 41
+    },
+    {
+      "id": "town.canal-bank",
+      "rect": {
+        "x": 64.5,
+        "y": 51,
+        "width": 0.5,
+        "height": 13
+      },
+      "material": "stone",
+      "variant": 42
     }
   ],
   "props": [
@@ -2615,7 +2687,7 @@
       "width": 6,
       "height": 9,
       "layer": "object",
-      "variant": 7
+      "variant": 12
     },
     {
       "id": "town.bookshop",
@@ -2627,7 +2699,7 @@
       "width": 10,
       "height": 8,
       "layer": "object",
-      "variant": 12
+      "variant": 9
     },
     {
       "id": "town.river-store",
@@ -2694,7 +2766,7 @@
       "kind": "gate",
       "position": {
         "x": 42,
-        "y": 2
+        "y": 6.5
       },
       "width": 6,
       "height": 0.35,
@@ -2735,7 +2807,7 @@
       "width": 11,
       "height": 0.8,
       "layer": "object",
-      "variant": 7
+      "variant": 12
     },
     {
       "id": "town.junction",
@@ -3722,6 +3794,30 @@
       "variant": 32
     },
     {
+      "id": "town.market-verge",
+      "kind": "flowerbed",
+      "position": {
+        "x": 40.2,
+        "y": 40
+      },
+      "width": 2,
+      "height": 4,
+      "layer": "ground",
+      "variant": 22
+    },
+    {
+      "id": "town.workshop-verge",
+      "kind": "flowerbed",
+      "position": {
+        "x": 67.2,
+        "y": 37.4
+      },
+      "width": 1.5,
+      "height": 6,
+      "layer": "ground",
+      "variant": 22
+    },
+    {
       "id": "town.market-stall",
       "kind": "market-stall",
       "position": {
@@ -3854,6 +3950,18 @@
       "variant": 23
     },
     {
+      "id": "town.canal-rail",
+      "kind": "fence",
+      "position": {
+        "x": 64.3,
+        "y": 51
+      },
+      "width": 0.15,
+      "height": 12.5,
+      "layer": "object",
+      "variant": 23
+    },
+    {
       "id": "town.tea-stone-table",
       "kind": "stone-table",
       "position": {
@@ -3930,19 +4038,103 @@
   },
   "npcHooks": [
     {
-      "id": "town.morning-walk",
+      "id": "town.market-tender",
       "position": {
-        "x": 34,
+        "x": 30.6,
+        "y": 40.3
+      },
+      "route": [
+        {
+          "x": 30.6,
+          "y": 40.3
+        }
+      ],
+      "characterId": "lin-jie"
+    },
+    {
+      "id": "town.book-window-reader",
+      "position": {
+        "x": 11,
         "y": 30
       },
       "route": [
         {
-          "x": 34,
+          "x": 11,
           "y": 30
         },
         {
-          "x": 42.5,
+          "x": 14,
           "y": 30
+        },
+        {
+          "x": 18,
+          "y": 32
+        },
+        {
+          "x": 21,
+          "y": 32
+        }
+      ],
+      "characterId": "xiao-li"
+    },
+    {
+      "id": "town.canal-birds",
+      "position": {
+        "x": 66.5,
+        "y": 49.4
+      },
+      "route": [
+        {
+          "x": 66.5,
+          "y": 49.4
+        },
+        {
+          "x": 65.3,
+          "y": 50.3
+        },
+        {
+          "x": 63,
+          "y": 48.5
+        }
+      ],
+      "characterId": "bird"
+    },
+    {
+      "id": "town.park-birds",
+      "position": {
+        "x": 7,
+        "y": 35.5
+      },
+      "route": [
+        {
+          "x": 7,
+          "y": 35.5
+        },
+        {
+          "x": 10,
+          "y": 35.5
+        },
+        {
+          "x": 12,
+          "y": 35.5
+        }
+      ],
+      "characterId": "bird"
+    },
+    {
+      "id": "town.morning-walk",
+      "position": {
+        "x": 35.5,
+        "y": 31.5
+      },
+      "route": [
+        {
+          "x": 35.5,
+          "y": 31.5
+        },
+        {
+          "x": 42.5,
+          "y": 31.5
         },
         {
           "x": 42.5,
@@ -3958,28 +4150,16 @@
     {
       "id": "town.market-regular",
       "position": {
-        "x": 31,
-        "y": 41
+        "x": 32,
+        "y": 43.2
       },
       "route": [
         {
-          "x": 31,
-          "y": 41
-        },
-        {
-          "x": 36,
-          "y": 41
-        },
-        {
-          "x": 38,
-          "y": 40
-        },
-        {
-          "x": 31,
-          "y": 40
+          "x": 32,
+          "y": 43.2
         }
       ],
-      "characterId": "glasses"
+      "characterId": "zhang-laoshi"
     },
     {
       "id": "town.workshop-delivery",
@@ -4005,7 +4185,7 @@
           "y": 47
         }
       ],
-      "characterId": "backpack"
+      "characterId": "xiao-zhou"
     }
   ],
   "landmarks": [
@@ -4058,6 +4238,14 @@
       "kind": "path"
     },
     {
+      "id": "town.book-window",
+      "position": {
+        "x": 10.5,
+        "y": 30
+      },
+      "kind": "closed-bookshop-display"
+    },
+    {
       "id": "town.breakfast-steam",
       "position": {
         "x": 34,
@@ -4076,8 +4264,8 @@
     {
       "id": "town.laundry-lane",
       "position": {
-        "x": 22.5,
-        "y": 18
+        "x": 19.7,
+        "y": 22.5
       },
       "kind": "residential-lane"
     },
@@ -4093,15 +4281,15 @@
       "id": "town.moon-gate",
       "position": {
         "x": 45,
-        "y": 5
+        "y": 9.5
       },
       "kind": "moon-gate"
     },
     {
       "id": "town.market-pocket",
       "position": {
-        "x": 34,
-        "y": 41
+        "x": 33,
+        "y": 40.5
       },
       "kind": "market"
     },
@@ -4116,8 +4304,8 @@
     {
       "id": "town.river-overlook",
       "position": {
-        "x": 72,
-        "y": 47
+        "x": 67,
+        "y": 49
       },
       "kind": "river-approach"
     },

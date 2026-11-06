@@ -757,7 +757,7 @@
     },
     {
       "id": "workshop.desk-lamp",
-      "kind": "task-lamp",
+      "kind": "lamp",
       "position": {
         "x": 9,
         "y": 8.5
@@ -769,7 +769,7 @@
     },
     {
       "id": "workshop.toy-lamp",
-      "kind": "task-lamp",
+      "kind": "lamp",
       "position": {
         "x": 23,
         "y": 8.5
@@ -817,7 +817,7 @@
     },
     {
       "id": "workshop.mending-box",
-      "kind": "basket",
+      "kind": "thread-box",
       "position": {
         "x": 20.3,
         "y": 16.3

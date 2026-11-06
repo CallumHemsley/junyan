@@ -1,0 +1,112 @@
+[
+  {
+    "name": "desktop",
+    "errors": [],
+    "fixture": "valid saved apartment arrival; actions and reload use normal UI and real IndexedDB",
+    "first": [
+      {
+        "id": "bed",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      },
+      {
+        "id": "table",
+        "x": 2,
+        "y": 1,
+        "rotation": 0
+      }
+    ],
+    "undo": [
+      {
+        "id": "bed",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      },
+      {
+        "id": "table",
+        "x": 2,
+        "y": 1,
+        "rotation": 0
+      }
+    ],
+    "reloaded": [
+      {
+        "id": "bed",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      },
+      {
+        "id": "table",
+        "x": 2,
+        "y": 1,
+        "rotation": 0
+      }
+    ],
+    "journal": {
+      "lookups": 2,
+      "lastSeen": 1.5,
+      "recovered": true
+    },
+    "canvasBefore": "76ea3806afb69db674f7c8f3387bc515bffba3a69413d28e83dbf1ad51e52d33",
+    "canvasAfter": "b30e8bdb11b37919781cf583da2e71e3106bfce5fa5adb7b80b77aee942ac211",
+    "furniturePixelsChanged": true
+  },
+  {
+    "name": "phone",
+    "errors": [],
+    "fixture": "valid saved apartment arrival; actions and reload use normal UI and real IndexedDB",
+    "first": [
+      {
+        "id": "bed",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      },
+      {
+        "id": "table",
+        "x": 2,
+        "y": 1,
+        "rotation": 0
+      }
+    ],
+    "undo": [
+      {
+        "id": "bed",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      },
+      {
+        "id": "table",
+        "x": 2,
+        "y": 1,
+        "rotation": 0
+      }
+    ],
+    "reloaded": [
+      {
+        "id": "bed",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      },
+      {
+        "id": "table",
+        "x": 2,
+        "y": 1,
+        "rotation": 0
+      }
+    ],
+    "journal": {
+      "lookups": 2,
+      "lastSeen": 1.5,
+      "recovered": true
+    },
+    "canvasBefore": "10d7240dc4d3660fddfa556dd0dfa8a0f34e31bb3ea4f184f28d4323e15fd1ae",
+    "canvasAfter": "9ec6506316ce58b140b0eed3039d04459c89a0dda92c9910da84114c19f61c63",
+    "furniturePixelsChanged": true
+  }
+]

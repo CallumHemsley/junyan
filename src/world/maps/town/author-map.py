@@ -19,7 +19,9 @@ def landmark(name,x,y,kind): m['landmarks'].append(dict(id='town.'+name,position
 # Width changes and offset intersections give different streets different rhythms.
 for args in [('breakfast-paving',0,29,80,8,'paving'),('breakfast-road',0,31,80,4,'road'),('west-lane',19,8,7,24,'paving'),('north-lane',21,8,43,6,'brick'),('east-lane',59,11,7,45,'paving'),('south-lane',23,49,42,7,'brick'),('south-west',23,35,6,18,'paving'),('lantern-passage',40,12,5,18,'brick'),('courtyard-approach',42,0,6,14,'brick'),('residence-landing',10,21,12,4,'paving'),('market-pocket',28,37,12,8,'brick'),('market-link',37,36,9,4,'brick'),('service-lane',43,36,6,17,'paving'),('river-path',64,44,16,7,'paving'),('tree-junction',17,27,11,13,'paving'),('tea-terrace',49,14,9,5,'brick'),('restaurant-landing',32.5,28,3,2,'paving')]: surface(*args)
 
-buildings=[('residence','building-residence',4,10,13,11,'old-jade',8),('restaurant','building-restaurant',28,18,11,10,'breakfast',5.5),('tea-house','building-tea',49,19,9,10,'timber',6),('workshop','building-workshop',67,18,11,11,'sawtooth',5),('corner-store','building-shop',67,5,10,10,'blue-shutter',6),('north-row','building-row',27,2,12,6,'ochre',7),('linen-house','building-row',50,2,8,6,'jade',7.5),('west-store','building-shutter',5,25.5,12,3,'slate',3.7),('south-residence','building-residence',7,38,13,12,'warm-plaster',8.5),('market-house','building-shop',29,45,10,4,'olive-shutter',5),('south-bakery','building-shop',30,56,10,6,'timber-shutter',6),('south-studio','building-row',49,56,9,6,'plaster',7),('pump-house','building-utility',52,38,6,9,'slate',3.4),('bookshop','building-shop',68,52,10,8,'cream-shutter',6.3),('river-store','building-shutter',69,37,9,6,'jade',4)]
+m['terrain'].append(dict(id='town.junction-inset',rect=rect(17.7,27.7,10.3,3.5),material='brick',variant='inset'))
+
+buildings=[('residence','building-residence',4,10,13,11,'old-jade',8),('restaurant','building-restaurant',28,18,11,10,'breakfast',5.5),('tea-house','building-tea',49,19,9,10,'timber',6),('workshop','building-workshop',67,18,11,11,'sawtooth',5),('corner-store','building-shop',67,5,10,10,'blue-shutter',6),('north-row','building-row',27,2,12,6,'ochre',7),('linen-house','building-row',50,2,8,6,'jade',7.5),('west-store','building-shutter',5,25.5,12,3,'cream-shutter',5.2),('south-residence','building-residence',7,38,13,12,'warm-plaster',8.5),('market-house','building-shop',29,45,10,4,'olive-shutter',5),('south-bakery','building-shop',30,56,10,6,'timber-shutter',6),('south-studio','building-row',49,56,9,6,'plaster',7),('pump-house','building-utility',52,38,6,9,'slate',3.4),('bookshop','building-shop',68,52,10,8,'olive-shutter',6.3),('river-store','building-shutter',69,37,9,6,'jade',4)]
 for name,kind,x,y,w,h,var,z in buildings:
  prop(name,kind,x,y,w,h,var,True,z)
 
@@ -30,7 +32,8 @@ for name,target,r,arrival,facing,kind in [('restaurant','restaurant',rect(33,28,
  landmark(name+'-approach',*arrival,kind)
 
 for name,x,y,w,h,var in [('restaurant-steps',32.5,28,3,1,'wide'),('residence-steps',10,21,3,1,'stone'),('workshop-landing',71.5,29,3.5,1,'loading'),('river-stairs',74,44.4,4,2,'river')]:prop(name,'steps',x,y,w,h,var,layer='ground')
-prop('courtyard-moon-gate','gate',42,2,6,.35,'moon',False,4)
+prop('courtyard-moon-gate','gate',42,6.5,6,.35,'moon',False,4)
+m['colliders'] += [dict(id='town.gate-left',rect=rect(42,6.5,1.1,.35)),dict(id='town.gate-right',rect=rect(46.9,6.5,1.1,.35))]
 prop('breakfast-awning','awning',28,27.3,11,.7,'stripe-jade',False,3)
 prop('tea-awning','awning',49,28.4,9,.6,'ochre',False,3)
 prop('workshop-canopy','awning',67,28.2,11,.8,'slate',False,3)
@@ -49,6 +52,8 @@ for i,(x,y,w,h) in enumerate([(30,30.5,2,.25),(50,30.4,1.8,.25),(68,30.5,2,.25),
 for i,(x,y,w,h) in enumerate([(2,35.8,14,.18),(28,35.8,28,.18),(66,35.8,12,.18),(25.8,15,.18,11),(64.7,17,.18,24)]):prop('gutter-'+str(i),'gutter',x,y,w,h,'moss',layer='ground')
 for i,(x,y) in enumerate([(19,30),(26,30),(59,30),(65.5,30),(19,36),(26,36),(59,36),(65.5,36)]):prop('bollard-'+str(i),'bollard',x,y,.3,.3,'stone',True,.7)
 for i,(x,y,w,h) in enumerate([(67.3,29.2,2.2,.9),(75,29.1,2,.9),(48.3,38,1,.9),(39.4,37.7,1,.8)]):prop('crates-'+str(i),'crates',x,y,w,h,'workshop' if i<2 else 'market',True,1.2)
+prop('market-verge','flowerbed',40.2,40,2,4,'mixed',False,layer='ground')
+prop('workshop-verge','flowerbed',67.2,37.4,1.5,6,'mixed',False,layer='ground')
 prop('market-stall','market-stall',29,38.2,3.2,1.4,'vegetables',True,2.2)
 prop('market-baskets','baskets',34,43,2,.7,'bamboo',True,.7)
 prop('residence-laundry','laundry',4.8,18.8,10.8,.2,'cream-jade',False,4)
@@ -60,12 +65,14 @@ prop('pump-pipes','pipes',58.1,39,.35,4,'steel',True,2)
 prop('closed-yard-gate','closed-gate',69.2,43.2,8.6,.3,'locked',True,1.8)
 prop('park-milestone','milestone',2.6,28.8,.6,.6,'stone',True,.8)
 prop('river-rail-left','fence',71,43.3,7,.25,'iron',True,1.2)
+m['terrain'] += [dict(id='town.canal-water',rect=rect(65,51,2,13),material='water',variant='canal'),dict(id='town.canal-bank',rect=rect(64.5,51,.5,13),material='stone',variant='bank')]
+prop('canal-rail','fence',64.3,51,.15,12.5,'iron',False,1.2)
 prop('tea-stone-table','stone-table',50,16.5,1.7,1.2,'stone',True,1.1)
 
-for name,x,y,kind in [('breakfast-steam',34,29.5,'restaurant-frontage'),('camphor-junction',22,29,'tree-junction'),('laundry-lane',22.5,18,'residential-lane'),('lantern-cut',42.5,21,'narrow-lane'),('moon-gate',45,5,'moon-gate'),('market-pocket',34,41,'market'),('sawtooth-roof',72,30.5,'workshop-frontage'),('river-overlook',72,47,'river-approach'),('south-fig',24,53,'garden-lane'),('closed-yard',72,45.2,'closed-yard')]:landmark(name,x,y,kind)
-for name,x,y,interaction in [('junction-rest',22,29.2,'rest'),('market-baskets',34,41,'observe-market'),('river-view',72,47,'look-river'),('laundry-lane',22.5,19,'observe-laundry'),('tea-terrace',54,15,'rest')]:
+for name,x,y,kind in [('book-window',10.5,30,'closed-bookshop-display'),('breakfast-steam',34,29.5,'restaurant-frontage'),('camphor-junction',22,29,'tree-junction'),('laundry-lane',19.7,22.5,'residential-lane'),('lantern-cut',42.5,21,'narrow-lane'),('moon-gate',45,9.5,'moon-gate'),('market-pocket',33,40.5,'market'),('sawtooth-roof',72,30.5,'workshop-frontage'),('river-overlook',67,49,'river-approach'),('south-fig',24,53,'garden-lane'),('closed-yard',72,45.2,'closed-yard')]:landmark(name,x,y,kind)
+for name,x,y,interaction in [('book-window',10.5,30,'observe-window'),('junction-rest',22,29.2,'rest'),('market-baskets',34,41,'observe-market'),('river-view',67,49,'look-river'),('laundry-lane',22.5,19,'observe-laundry'),('tea-terrace',54,15,'rest')]:
  m['anchors'].append(dict(id='town.'+name,position=point(x,y),radius=1.4,featureId='exploration',interactionId='town.'+interaction))
-for name,actor,route in [('morning-walk','aunt',[(34,30),(42.5,30),(42.5,14),(45,10)]),('market-regular','glasses',[(31,41),(36,41),(38,40),(31,40)]),('workshop-delivery','backpack',[(70,33),(62,33),(62,47),(70,47)])]:
+for name,actor,route in [('market-tender','lin-jie',[(30.6,40.3)]),('book-window-reader','xiao-li',[(11,30),(14,30),(18,32),(21,32)]),('canal-birds','bird',[(66.5,49.4),(65.3,50.3),(63,48.5)]),('park-birds','bird',[(7,35.5),(10,35.5),(12,35.5)]),('morning-walk','aunt',[(35.5,31.5),(42.5,31.5),(42.5,14),(45,10)]),('market-regular','zhang-laoshi',[(32,43.2)]),('workshop-delivery','xiao-zhou',[(70,33),(62,33),(62,47),(70,47)])]:
  m['npcHooks'].append(dict(id='town.'+name,position=point(*route[0]),route=[point(*p) for p in route],characterId=actor))
 variants = list(dict.fromkeys(item['variant'] for item in m['props'] + m['terrain']))
 Path(__file__).parents[2].joinpath('art/town/variants.json').write_text(json.dumps(variants, indent=2)+'\n')
