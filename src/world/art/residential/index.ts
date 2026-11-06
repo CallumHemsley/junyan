@@ -463,8 +463,8 @@ export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderVie
         id: `${prop.id}.pier-${x}`, position: { x: x + .5, y: 23.825 },
         draw(ctx, view) { paintResidential(ctx, view, api => {
           const landing = stairSurfaces.find(surface => surface.id === 'home-landing')!;
-          api.box(x, 23.65, -.15, x + 1, 24, landing.height - .45, [190, 181, 151]);
-          api.box(x - .06, 23.6, -.15, x + 1.06, 24.05, .15, [125, 130, 115]);
+          api.box(x, 23.65, -.7, x + 1, 24, landing.height - .45, [190, 181, 151]);
+          api.box(x - .06, 23.6, -.72, x + 1.06, 24.05, -.48, [125, 130, 115]);
           for (const z of [.7, 1.35]) api.box(x, 23.995, z, x + 1, 24.015, z + .035, [163, 158, 132]);
         }); },
       });

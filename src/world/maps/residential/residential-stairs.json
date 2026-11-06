@@ -520,11 +520,11 @@
       "id": "residential-stairs.well-foundation",
       "kind": "well",
       "position": {
-        "x": 8,
-        "y": 24
+        "x": 7.9,
+        "y": 23.5
       },
-      "width": 7,
-      "height": 9,
+      "width": 12.2,
+      "height": 9.5,
       "layer": "ground",
       "variant": 0
     },
