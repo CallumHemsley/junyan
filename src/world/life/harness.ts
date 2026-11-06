@@ -2,7 +2,7 @@ import { worldMapSchema } from '../schema';
 import type { WorldMapDefinition, Point } from '../schema';
 import { canStand, movePlayer, findPath } from '../geometry';
 import { project, pointerGround } from '../camera';
-import { compileLife, drawLifeActor, drawLifeReactions, initialLifeState, interactLife, nearbyLife, navigationFor, restoreLife, sampleLife } from './index';
+import { advanceLife, compileLife, drawLifeActor, drawLifeReactions, initialLifeState, interactLife, nearbyLife, navigationFor, restoreLife, sampleLife } from './index';
 import type { LifeContext, LifePlan } from './index';
 import type { WorldRenderView } from '../render-contract';
 import type { Line } from '../../contracts';
@@ -24,6 +24,7 @@ let map = maps[0], plan: LifePlan, navigation = navigationFor(map);
 let player: Point = map.defaultSpawn;
 let elapsedMs = 0, last = performance.now(), path: Point[] = [], travelled = 0;
 let life = restoreLife(JSON.parse(localStorage.getItem(storageKey) ?? 'null'));
+elapsedMs = life.elapsedMs;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 let choices = '', currentActors = sampleLife(compileLife(map, navigation), context());
 let errors: string[] = [], frameCount = 0;
@@ -72,13 +73,13 @@ function draw() {
   map.walkable.forEach(tile => rect(tile, '#c9c0a350', view));
   map.colliders.forEach(item => rect(item.rect, /water|pond/.test(item.id) ? '#6d9192' : '#657f65', view));
   map.exits.forEach(item => rect(item.rect, '#e5d8b3', view));
-  currentActors = sampleLife(plan, context(), navigation);
+  currentActors = sampleLife(plan, context(), navigation, life);
   const figures = [...currentActors, { id: 'player', characterId: 'xiao-zhou', kind: 'resident' as const, position: player, facing: 'south' as const, action: keys.size || path.length ? 'walk' as const : 'idle' as const, activity: 'idle' as const, phaseMs: elapsedMs, radius: .22 }].sort((a, b) => a.position.x + a.position.y - b.position.x - b.position.y);
   for (const actor of figures) drawLifeActor(ctx, actor, view, (ctx, pose, view, posture) => {
     const p = view.project(pose.position);
     const sample = sampleActor({ characterId: pose.characterId, facing: pose.facing, action: pose.action, elapsedMs: pose.phaseMs, reducedMotion: view.reducedMotion, posture });
     paintActorCanvas(ctx, sample, Math.round(p.x), Math.round(p.y), .7);
-  });
+  }, life);
   drawLifeReactions(ctx, life, map.id, [...map.landmarks, ...currentActors.map(actor => ({ id: actor.id, position: actor.position }))], view);
   const nearby = nearbyLife(plan, currentActors, player, navigation);
   const key = nearby.map(item => item.id).join('|');
@@ -94,7 +95,8 @@ function draw() {
 window.addEventListener('keydown', event => { if (event.key.startsWith('Arrow') || ['w', 'a', 's', 'd'].includes(event.key)) { event.preventDefault(); keys.add(event.key); path = []; } });
 window.addEventListener('keyup', event => keys.delete(event.key));
 window.addEventListener('blur', () => keys.clear());
-document.addEventListener('visibilitychange', () => { last = performance.now(); keys.clear(); });
+document.addEventListener('visibilitychange', () => { last = performance.now(); keys.clear(); save(); });
+window.addEventListener('pagehide', save);
 for (const button of document.querySelectorAll<HTMLButtonElement>('[data-key]')) {
   button.onpointerdown = event => { button.setPointerCapture(event.pointerId); keys.add(button.dataset.key!); path = []; };
   button.onpointerup = button.onpointercancel = () => keys.delete(button.dataset.key!);
@@ -105,7 +107,7 @@ canvas.onpointerdown = event => {
   path = findPath(map, player, target);
 };
 function frame(now: number) {
-  const dt = document.hidden ? 0 : Math.min(50, now - last); last = now; elapsedMs += dt;
+  const dt = document.hidden ? 0 : Math.min(50, now - last); last = now; life = advanceLife(life, dt, !document.hidden); elapsedMs = life.elapsedMs;
   let dx = Number(keys.has('ArrowRight') || keys.has('d')) - Number(keys.has('ArrowLeft') || keys.has('a'));
   let dy = Number(keys.has('ArrowDown') || keys.has('s')) - Number(keys.has('ArrowUp') || keys.has('w'));
   if (path.length) {
@@ -122,6 +124,7 @@ function frame(now: number) {
 window.addEventListener('error', event => errors.push(event.message));
 Object.assign(window, { __LIFE_PROOF__: {
   setMap,
+  seedApproach: (point: Point) => { if (!canStand(map, point)) throw Error('Blocked proof approach'); player = point; path = []; },
   inspect: () => ({ mapId: map.id, player, travelled, elapsedMs, frameCount, actors: currentActors, diagnostics: plan.diagnostics, life, errors, sources: snapshots.map(({ sha, path, map }) => ({ sha, path, mapId: (map as WorldMapDefinition).id })) }),
   approach: (point: Point) => { path = findPath(map, player, point); return path; },
   nearby: () => nearbyLife(plan, currentActors, player, navigation),

@@ -1,7 +1,9 @@
+import {releaseServedCustomer,restoreLife} from "../world/life";
+import {performLifeInteraction,type WorldLifeAction} from "../world/life-bridge";
 import { mapsForNeighbourhood, safeAfterEdit } from "../world/dynamic";
 import { restoreWorld, reduceWorld, type WorldAction } from "../world/state";
 import type { Content, GameState } from "../contracts";
-import { recoverWords } from "../game";
+import { recoverWords, reduceGame } from "../game";
 import {TABLES,KITCHEN} from "../contracts";
 import {repairActionForWorldAnchor} from "../features/repairs/world";
 import { contentWords } from "../content/words";
@@ -16,6 +18,8 @@ import { claimGift, visitLocation } from "./state";
 
 export type NeighbourhoodAction =
   | WorldAction
+  | WorldLifeAction
+  | {type:"advance-world-day"}
   | { type: "visit-location"; location: LocationId }
   | { type: "claim-neighbourhood-gift"; giftId: GiftId }
   | ({ type: "feature-action"; now: number } & (
@@ -26,7 +30,7 @@ export type NeighbourhoodAction =
   ));
 
 export function isNeighbourhoodAction(action: { type: string }): action is NeighbourhoodAction {
-  return action.type.startsWith("world-") || action.type === "visit-location" || action.type === "feature-action" || action.type === "claim-neighbourhood-gift";
+  return action.type==="advance-world-day" || action.type.startsWith("world-") || action.type === "visit-location" || action.type === "feature-action" || action.type === "claim-neighbourhood-gift";
 }
 
 function apartmentRecovery(before: apartment.State, action: apartment.Action, after: apartment.State): string[] {
@@ -48,10 +52,24 @@ function apartmentRecovery(before: apartment.State, action: apartment.Action, af
 
 export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAction, content: Content): GameState {
   const state = game.neighbourhood ?? createNeighbourhood(game.day);
-  if (action.type === "world-move" || action.type === "world-interact" || action.type === "world-close") {
+  if(action.type==="advance-world-day") {
+    const next=reduceGame(game,{type:"next-day"},content);
+    return next===game?game:{...next,...(game.world?{world:{...game.world,life:{...restoreLife(game.world.life),serviceDepartures:[]}}}:{})};
+  }
+  if(action.type==="world-life") {
+    const maps=mapsForNeighbourhood(state),world=restoreWorld(game.world,maps,state.location);
+    const result=performLifeInteraction(maps[world.mapId],game,world,action);
+    if(result.state===world.life)return game;
+    return {...game,world:{...world,life:result.state}};
+  }
+  if (action.type === "world-clock" || action.type === "world-move" || action.type === "world-interact" || action.type === "world-close") {
     const maps = mapsForNeighbourhood(state);
     const world = restoreWorld(game.world, maps, state.location);
-    const next = reduceWorld(world, action, maps);
+    let next = reduceWorld(world, action, maps);
+    if(action.type==="world-close"&&world.activeActivity==="restaurant") {
+      const table=Number(world.activeAnchorId?.split("table-")[1]);
+      next={...next,life:releaseServedCustomer(restoreLife(world.life),game,table)};
+    }
     if (next === world) return game;
     let player=game.player;
     let neighbourhood=next.activeActivity ? { ...state, location: next.activeActivity } : state;
@@ -60,6 +78,11 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
       if(next.activeActivity==="restaurant"&&anchor) {
         const table=TABLES.find(t=>anchor.interactionId===`table-${t.table}`);
         player=table?{x:table.x+1.4,y:table.y}:{x:KITCHEN.x,y:KITCHEN.y+1.3};
+      }
+      if(next.activeActivity==="cats"&&anchor) {
+        const target=anchor.interactionId.replace(/^cats\./,"");
+        const selected=cats.targets.find(id=>id===target);
+        if(selected)neighbourhood={...neighbourhood,cats:cats.reduce(state.cats,{type:"select",target:selected},game.day)};
       }
       if(next.activeActivity==="repairs"&&anchor) {
         const repairAction=repairActionForWorldAnchor(anchor.interactionId);

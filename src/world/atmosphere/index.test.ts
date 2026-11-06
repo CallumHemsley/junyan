@@ -21,6 +21,15 @@ describe('atmosphere',()=>{
   const frame=sampleAtmosphere(input,{water:[{id:'wide',rect:{x:0,y:0,width:10000,height:10000}}]});
   expect(frame.commands.length).toBeLessThanOrEqual(MAX_ATMOSPHERE_COMMANDS);
  });
+ it('uses the exact author emitter polygon and can suppress an inferred emitter',()=>{
+  const emitter=[{x:1,y:1,z:1},{x:3,y:1,z:1},{x:3,y:1,z:2},{x:1,y:1,z:2}];
+  const lamp={id:'pane',position:{x:2,y:1,z:1},radius:2,kind:'window' as const};
+  const exact=sampleAtmosphere(input,{lights:[{...lamp,emitter}]});
+  expect(exact.commands.filter(c=>c.layer==='objects').map(c=>c.points)).toEqual([emitter]);
+  const suppressed=sampleAtmosphere(input,{lights:[{...lamp,emitter:[]}]});
+  expect(suppressed.commands.filter(c=>c.layer==='objects')).toEqual([]);
+  expect(suppressed.commands.some(c=>c.layer==='light')).toBe(true);
+ });
  it('clips authored reflection silhouettes to water and holds them at rest',()=>{
   const h={water:[{id:'pond',rect:{x:0,y:0,width:5,height:5}}],reflections:[{id:'lamp',position:{x:2,y:1},width:1,height:2,color:[255,200,120] as const}]};
   const a=sampleAtmosphere({...input,reducedMotion:true},h);
@@ -51,6 +60,10 @@ describe('atmosphere',()=>{
  it('does not repaint distant hooks as the camera scrolls',()=>{
   const frame=sampleAtmosphere(input,hooks,{x:80,y:80,width:10,height:10});
   expect(frame.commands).toEqual([]);
+ });
+ it('keeps shore paint inside narrow fractional water fragments beside decks',()=>{
+  const frame=sampleAtmosphere(input,{water:[{id:'sliver',rect:{x:1,y:2,width:.05,height:.4},shore:['north','east','south','west']}]});
+  for(const c of frame.commands)for(const p of c.points){expect(p.x).toBeGreaterThanOrEqual(1-1e-8);expect(p.x).toBeLessThanOrEqual(1.05+1e-8);expect(p.y).toBeGreaterThanOrEqual(2-1e-8);expect(p.y).toBeLessThanOrEqual(2.4+1e-8);}
  });
  it('keeps clipped water dashes within the authored water region',()=>{
   const frame=sampleAtmosphere(input,{water:hooks.water},{x:2,y:2,width:4,height:2});

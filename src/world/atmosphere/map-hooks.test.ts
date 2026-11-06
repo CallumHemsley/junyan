@@ -18,3 +18,11 @@ it('avoids false shoreline seams between water rectangles',()=>{
  expect(shore.length).toBeGreaterThan(0);
  expect(joined.filter(c=>c.opacity===.7)).toHaveLength(0);
 });
+
+it('cuts authored crossing surfaces out of water so late effects cannot repaint decks',()=>{
+ const map={id:'riverbank',props:[],terrain:[{id:'river',material:'water',rect:{x:0,y:0,width:10,height:8}},{id:'crossing',material:'bridge',rect:{x:0,y:3,width:10,height:2}}]};
+ const hooks=atmosphereHooksForMap(map);
+ expect(hooks.water?.reduce((sum,w)=>sum+w.rect.width*w.rect.height,0)).toBe(60);
+ const frame=sampleAtmosphere({mapId:'riverbank',day:1,timeOfDay:'evening',elapsedMs:3000,seed:42,reducedMotion:false},hooks);
+ for(const c of frame.commands) for(const p of c.points)expect(p.y<=3||p.y>=5).toBe(true);
+});
