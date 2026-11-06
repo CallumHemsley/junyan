@@ -21,6 +21,10 @@ for (const viewport of [{width:390,height:664},{width:1440,height:900}]) {
     const geometry = await page.locator('.world-context').boundingBox();
     assert(geometry.height < viewport.height * .7);
     assert(await page.getByRole('button',{name:'继续走走'}).evaluate(el => el === document.activeElement));
+    assert.equal(await page.locator('.world-dialogue-history[open]').count(),0);
+    await page.locator('.world-dialogue-history > summary').click();
+    assert.equal(await page.locator('.world-dialogue-history .world-context-dialogue').count(),7);
+    await page.locator('.world-dialogue-history > summary').click();
     await page.locator('.world-context-scroll').evaluate(el => { el.scrollTop = el.scrollHeight; });
     await page.getByRole('button',{name:'+2块',exact:true}).click();
     await page.getByRole('button',{name:'递上找零',exact:true}).click();
@@ -32,9 +36,13 @@ for (const viewport of [{width:390,height:664},{width:1440,height:900}]) {
     await page.getByRole('button',{name:'去厨房',exact:true}).click();
     const pickup = page.locator('.world-kitchen-food > button:first-child').first();
     await pickup.click();
-    assert.equal(await page.locator('.world-kitchen-tray button').count(),1);
-    await page.locator('.world-kitchen-tray button').click();
-    assert.equal(await page.locator('.world-kitchen-tray button').count(),0);
+    assert.equal(await page.locator('.world-kitchen-tray button[aria-label^="放回"]').count(),1);
+    await page.locator('.world-kitchen-tray .word').click();
+    await page.getByRole('button',{name:'关闭词卡'}).focus();
+    await page.keyboard.press('Escape');
+    await page.waitForFunction(() => document.activeElement?.matches('.world-kitchen-tray .word'));
+    await page.locator('.world-kitchen-tray button[aria-label^="放回"]').click();
+    assert.equal(await page.locator('.world-kitchen-tray button[aria-label^="放回"]').count(),0);
     assert.deepEqual(errors,[]);
     results.push({viewport,placement,geometry,errors});
     await page.close();

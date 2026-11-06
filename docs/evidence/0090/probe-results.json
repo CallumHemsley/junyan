@@ -7,9 +7,9 @@
     "placement": "bottom",
     "geometry": {
       "x": 16,
-      "y": 216.171875,
+      "y": 322.40625,
       "width": 358,
-      "height": 371.828125
+      "height": 265.59375
     },
     "errors": []
   },
@@ -23,7 +23,7 @@
       "x": 16,
       "y": 12,
       "width": 358,
-      "height": 371.828125
+      "height": 265.59375
     },
     "errors": []
   },
@@ -35,9 +35,9 @@
     "placement": "bottom",
     "geometry": {
       "x": 944,
-      "y": 239,
+      "y": 464,
       "width": 480,
-      "height": 585
+      "height": 360
     },
     "errors": []
   },
@@ -51,7 +51,7 @@
       "x": 944,
       "y": 12,
       "width": 480,
-      "height": 585
+      "height": 360
     },
     "errors": []
   }

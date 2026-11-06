@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   width: min(480px, calc(100% - 32px));
-  max-height: min(56dvh, 520px);
+  max-height: min(40dvh, 400px);
   color: var(--text-primary);
   background: var(--surface-card);
   border: 1px solid var(--hairline);
@@ -19,7 +19,7 @@
 .world-context button, .world-pocket-bar button { min-width: 44px; min-height: 44px; touch-action: manipulation; }
 .world-context button:focus-visible, .world-context-scroll:focus-visible, .world-pocket-bar button:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 2px; }
 .world-context-close { flex-shrink: 0; font-size: 28px; border: 0; background: var(--surface-control); border-radius: 50%; }
-.world-context-scroll { min-height: 0; overflow: auto; overscroll-behavior: contain; padding: 12px 16px; scrollbar-gutter: stable; }
+.world-context-scroll { min-height: 0; overflow: auto; overscroll-behavior: contain; padding: 8px 12px; scrollbar-gutter: stable; }
 .world-context-speaker { margin: 0 0 4px; color: var(--text-secondary); font: 500 14px/20px var(--font-sans); }
 .world-context .help-line { display: flex; align-items: start; gap: 8px; margin: 0; }
 .world-context .spoken { font: 500 28px/44px var(--font-serif); min-width: 0; flex: 1; }
@@ -44,10 +44,16 @@
 .world-kitchen-food svg { width: 64px; height: 48px; }
 .world-kitchen-food > .word { font-size: 16px; }
 .world-kitchen-food small { color: var(--text-secondary); }
-@media (min-width: 800px) { .world-context { max-height: min(65dvh, 600px); } }
+@media (min-width: 800px) { .world-context { max-height: min(40dvh, 400px); } }
 @media (max-height: 460px) { .world-context { bottom: max(64px, env(safe-area-inset-bottom)); max-height: 72dvh; } }
 @media (prefers-reduced-motion: reduce) { .world-context *, .world-pocket-bar * { animation: none; transition: none; } }
 @media (max-width: 360px) {
   .world-pocket-bar { flex-direction: column; }
-  .world-context { bottom: max(124px, calc(env(safe-area-inset-bottom) + 112px)); max-height: min(56dvh, calc(100dvh - 140px)); }
+  .world-context { bottom: max(124px, calc(env(safe-area-inset-bottom) + 112px)); max-height: min(40dvh, calc(100dvh - 140px)); }
 }
+
+.world-pocket-control { display: flex; align-items: center; gap: 4px; }
+.world-kitchen-tray-heading { margin: 8px 0; }
+.world-tray-item { display: inline-flex; align-items: center; gap: 4px; }
+
+.world-dialogue-history > summary { min-height: 44px; display: flex; align-items: center; width: 44px; justify-content: center; cursor: pointer; border-radius: var(--radius-tile); background: var(--surface-control); }

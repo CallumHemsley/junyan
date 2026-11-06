@@ -43,3 +43,9 @@ Browser evidence and exact integration reference live in `docs/evidence/0090/REA
 The current API supersedes the initial action-label contract. Actions are `{id, control: ReactNode}` and the shell does not create nested buttons. Pass `suspended={wordOpen}` for the topmost existing word card. Restaurant labels use required caller-rendered slots documented in the evidence reference. Callback, scrolling, focus return, word-card Escape, pickup and return probes passed with system Chromium. Type checking and all 308 tests in 26 files passed. `git diff --check` passed. No standalone harness completion is claimed.
 
 Next action remains foundation integration using the current exported props, followed by independent review of physical anchor selection, real Mandarin replay, token cards, camera/player visibility, tray/journal access and existing reducer actions in the complete game.
+
+### Follow-up requirement review
+
+The full objective and foundation integration remain ACTIVE. Current API supersedes prior ledger signatures. `dialogue` is now `{current, history?}` so current-line selection never depends on array order. Historical registered lines and replays remain accessible through native details. The panel caps at 40dvh in portrait and desktop, with a larger short-landscape allowance for close/footer reachability.
+
+`WorldPocketBar` now accepts complete `journalControl` and `trayControl` ReactNode slots. `KitchenControls` adds `trayHeading`. Every tray food is a real WordToken beside an icon-only return button. Currency keeps the accepted plain `块` convention documented in the design system and existing App. No new content or audio was invented. Source review used GitHub while the executor was unavailable; writes resumed only in the owned worktree after restoration.
