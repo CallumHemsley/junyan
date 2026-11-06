@@ -78,6 +78,7 @@ test("a shift buys a furnishing, an invitation leads to a real routine, and the 
   await visit(page, scenario!.split(".")[0]);
   expect((await state(page)).neighbourhood!.location).toBe(scenario!.split(".")[0]);
   await expect(page.locator('[data-location-heading]')).toBeVisible();
+  await expect(page.getByRole("button", {name:"继续走走",exact:true})).toBeFocused();
   await page.screenshot({ path: privateArtifact(`docs/evidence/0081/${info.project.name}-invitation.png`), fullPage: true });
   await visit(page, "repairs");
   await interactAt(page, "workshop.lamp");
