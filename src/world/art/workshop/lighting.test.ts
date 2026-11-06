@@ -13,17 +13,17 @@ const returnedLamp=():ReturnType<typeof initialState>=>{
 describe('workshop task-light projection',()=>{
   it('follows the selected repair rather than lighting both benches',()=>{
     const lamp=initialState(),toy=reduce(lamp,{type:'switch',job:'toy'},1);
-    expect(workshopAtmosphereHooks(map,lamp).lights?.filter(l=>l.kind==='lamp').map(l=>l.id)).toEqual(['workshop.desk-lamp.task-pool']);
-    expect(workshopAtmosphereHooks(map,toy).lights?.filter(l=>l.kind==='lamp').map(l=>l.id)).toEqual(['workshop.toy-lamp.task-pool']);
+    expect(workshopAtmosphereHooks(map,lamp).lights?.filter(l=>l.kind==='lamp').map(l=>l.id)).toEqual(['workshop.desk-lamp']);
+    expect(workshopAtmosphereHooks(map,toy).lights?.filter(l=>l.kind==='lamp').map(l=>l.id)).toEqual(['workshop.toy-lamp']);
   });
-  it('retains the returned-lamp presentation while a repeat job restarts',()=>{
+  it('clears the task light on return and restores it for a repeat job',()=>{
     const returned=returnedLamp(),repeat=reduce(returned,{type:'start',job:'lamp'},1);
-    expect(workshopAtmosphereHooks(map,returned).lights?.filter(l=>l.kind==='lamp').map(l=>l.id)).toEqual(['workshop.returned-lamp.pool']);
-    expect(workshopAtmosphereHooks(map,repeat).lights?.filter(l=>l.kind==='lamp').map(l=>l.id)).toEqual(['workshop.desk-lamp.task-pool','workshop.returned-lamp.pool']);
+    expect(workshopAtmosphereHooks(map,returned).lights?.filter(l=>l.kind==='lamp').map(l=>l.id)).toEqual([]);
+    expect(workshopAtmosphereHooks(map,repeat).lights?.filter(l=>l.kind==='lamp').map(l=>l.id)).toEqual(['workshop.desk-lamp']);
   });
   it('leaves phase strength and shadow ownership to the single atmosphere sampler',()=>{
     const before=JSON.stringify(map),overrides=workshopAtmosphereHooks(map,initialState());
-    expect(overrides.shadows).toBeUndefined();
+    expect(overrides.shadows).toEqual(atmosphereHooksForMap(map).shadows);
     const hooks=atmosphereHooksForMap(map,overrides);
     const sample=(timeOfDay:'morning'|'evening')=>sampleAtmosphere({mapId:'workshop',day:1,timeOfDay,elapsedMs:0,seed:42,reducedMotion:true},hooks).commands.filter(c=>c.layer==='light').reduce((sum,c)=>sum+c.opacity,0);
     expect(sample('evening')).toBeGreaterThan(sample('morning'));

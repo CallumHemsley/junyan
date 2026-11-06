@@ -14,17 +14,20 @@ The entry stones now use a restrained cooler material base so the warm practical
 
 `src/world/art/workshop/lighting.ts` now exports pure `workshopAtmosphereHooks(map, repairs): AtmosphereHooks`. The old DOM lighting study moved to lighting-preview.ts within the owner lease, and no longer fetches top-level numeric evidence.
 
-Foundation should use:
+Foundation should use its existing cached static hooks as the base:
 
 ```ts
-atmosphereHooksForMap(map, map.id === 'workshop' && game?.neighbourhood
-  ? workshopAtmosphereHooks(map, game.neighbourhood.repairs)
-  : {})
+const base = hooksFor(map);
+const hooks = map.id === 'workshop' && game?.neighbourhood
+  ? workshopAtmosphereHooks(map, game.neighbourhood.repairs, base)
+  : base;
 ```
 
-before its existing single `sampleAtmosphere` call. Do not statically cache this override by map: it derives from selected job, active jobs and completed lamp state. The hook shrinks window pools, enables the actual selected task lamp with a local radius study of3.2, and lights the returned lamp only when completed. It supplies exact emitter points on existing silhouettes. The central sampler owns phase, pool polygons, opacity, color and timing; no new layer, shader field, shadow or clock is supplied.
+Pass `hooks` to its existing single `sampleAtmosphere` call. Only the selected job filter is state-derived; do not cache that selection solely by map. Atmosphere5d39236's `authoredLocalLights` owns exact task emitters, tabletop pools, host depth and the workshop ambient-by-phase setting. The helper preserves that base unchanged except for filtering the task-light list. It supplies no fixture geometry, colors, radii, shadows, clock or extra layer.
 
-The current published foundation painter has not yet consumed this function. Thus the paired pocket-study captures prove the adapter through the actual atmosphere/material/actor APIs, **not production integration of the new light hooks**. Actual repair progress and final production-pool proof follow the consumer integration. The room dressing itself is consumed by the existing createWorkshopArt path.
+The first study proposal used a separate returned-lamp pool. Independent review found that emitter would sort behind its shelf. That optional extra is removed: the chosen scope is the active work pocket; completed objects retain their original authoritative artwork. No physical source relocation or fallback lighting layer was added. The shared authored task fixture is the only practical source definition.
+
+Current foundation has not yet consumed this state filter or atmosphere5d39236. The paired pocket captures prove the dressing and sampler adapter in controlled studies, **not final production integration of the new practical pools**. First `after-*` captures document the earlier provisional hook study; a `shared-fixture-*` capture records the reduced state-filter adapter on the currently available base. Final captures must use foundation after it consumes the published authored fixtures and state filter.
 
 ## Evidence
 
@@ -36,3 +39,9 @@ Before: source baseline bbce2ba (foundation e48b10e consumed), with original art
 - TypeScript and focused repair/circulation/render tests pass; new light-projection tests check selection, returned/repeat state, phase sampling and no map mutation.
 
 Next: independent visual review of the local dressing and pool, foundation consumption, actual repair/progress/return proof and resident task/rest motion under the final shared checkpoint. Keep the full goal active.
+
+## Current runtime and review checkpoint
+
+Node22.23.4 typecheck, 21 focused tests and production build pass. Actual desktop/phone repair, return, partial repeat and reload run against the consumed dressing with no console/page errors; completed markers and both active repeat objects persist. Stool claim/reload/idempotence passes separately. The first gift runner used a fixed300ms storage observation and failed without sufficient receipts; the revised runner records saved state and waits for the actual asynchronous result (desktop settled after100ms further polling, phone immediately). No data-loss finding is claimed from that first observation.
+
+Astra helper /root/workshop_review found one source-level P2 in the optional returned-lamp emitter order. The extra returned emitter was removed, and the state filter now reuses atmosphere-owned task geometry. Re-review pending. Dressing was independently judged contained/plausibly scaled; collider/anchor snapshots remain identical. Final production light-pool proof and resident task/rest motion still require the shared consumer checkpoint.

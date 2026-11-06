@@ -9,6 +9,12 @@ for(const[name,viewport]of[['desktop',{width:1440,height:1000}],['phone',{width:
   await page.screenshot({path:`docs/evidence/world/0082/work-pocket/${tranche}-${name}-${phase}-${occupied?'occupied':'empty'}.png`});
   results.push({name,phase,occupied,study:await page.evaluate(()=>window.workshopPocketStudy),errors:[...errors]});
  }
+ if(tranche!=='before')for(const state of ['toy','completed'])for(const phase of ['morning','evening']){
+  const query=state==='toy'?'job=toy&occupied=1':'completed=1&occupied=0';
+  await page.goto(`http://127.0.0.1:5484/src/world/art/workshop/pocket-study.html?phase=${phase}&${query}`);await page.waitForFunction(()=>window.workshopPocketStudy?.ready);
+  await page.screenshot({path:`docs/evidence/world/0082/work-pocket/${tranche}-${name}-${phase}-${state}.png`});
+  results.push({name,phase,state,study:await page.evaluate(()=>window.workshopPocketStudy),errors:[...errors]});
+ }
  await page.close();
 }
 await fs.writeFile(`docs/evidence/world/0082/work-pocket/${tranche}-results.json`,JSON.stringify(results,null,2));await browser.close();

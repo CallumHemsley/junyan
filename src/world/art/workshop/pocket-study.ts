@@ -26,7 +26,7 @@ if(params.get('completed')==='1') {
 }
 const hooks=atmosphereHooksForMap(map,workshopAtmosphereHooks(map,repairs));
 const frame=sampleAtmosphere({mapId:'workshop',day:1,timeOfDay:phase,elapsedMs:1200,seed:42,reducedMotion:true},hooks);
-const camera=cameraForMap(map.bounds,{x:10,y:14},canvas.width,canvas.height,innerWidth<600?11:15);
+const camera=cameraForMap(map.bounds,params.get('completed')==='1'?{x:21,y:7}:job==='toy'?{x:20,y:14}:{x:10,y:14},canvas.width,canvas.height,innerWidth<600?11:15);
 const view={project:(point:{x:number;y:number},z=0)=>project(point,camera,z),shadeColor:colorShader(frame.light),elapsedMs:1200,reducedMotion:true,playerPosition:{x:15,y:14},width:canvas.width,height:canvas.height,pass:'ground' as const};
 ctx.fillStyle='#334d47';ctx.fillRect(0,0,canvas.width,canvas.height);
 const art=createWorkshopArt(repairs);art.drawMap!(ctx,map,view);drawAtmosphere(ctx,frame,view);
@@ -34,4 +34,4 @@ const objects=[...art.renderObjects!(map,view),...renderAtmosphereObjects(frame)
 if(occupied){const position=job==='lamp'?{x:8,y:10.8}:{x:20.8,y:10.8};objects.push({id:'study-resident',position,draw(context,view){drawActor(context,view,sampleActor({characterId:job==='lamp'?'lin-jie':'xiao-zhou',facing:'north',action:'interact',posture:'work',elapsedMs:1200,reducedMotion:true}),position);}});}
 objects.sort((a,b)=>(a.depth??a.position.x+a.position.y)-(b.depth??b.position.x+b.position.y)).forEach(object=>object.draw(ctx,view));
 drawAtmosphere(ctx,frame,{...view,pass:'foreground'});
-Object.assign(window,{workshopPocketStudy:{phase,occupied,job,completed:repairs.completed,hooks,geometry:{colliders:map.colliders,anchors:map.anchors},ready:true}});
+Object.assign(window,{workshopPocketStudy:{phase,occupied,job,completed:repairs.completed,hooks,objectOrder:objects.map(o=>({id:o.id,depth:o.depth??o.position.x+o.position.y})),camera,geometry:{colliders:map.colliders,anchors:map.anchors},ready:true}});
