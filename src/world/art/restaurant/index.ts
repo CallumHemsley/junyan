@@ -27,14 +27,14 @@ export function drawMap(ctx: CanvasRenderingContext2D, map: RestaurantMap, v: Re
     if(prop.kind!=='table'&&prop.kind!=='counter')continue;
     const {x,y}=prop.position,w=prop.width,d=prop.height,z=prop.kind==='table'?furniture.tableTop:1.87;
     const sx=z*.7,sy=z*.3;
-    ctx.save();ctx.globalAlpha*=.38;
-    polygon(ctx,v,[[x,y,.012],[x+w,y,.012],[x+w+sx,y+sy,.012],[x+w+sx,y+d+sy,.012],[x+sx,y+d+sy,.012],[x,y+d,.012]],'#5b4d6d');
-    ctx.globalAlpha*=.9;
+    ctx.save();ctx.globalAlpha*=.6;
+    polygon(ctx,v,[[x,y,.012],[x+w,y,.012],[x+w+sx,y+sy,.012],[x+w+sx,y+d+sy,.012],[x+sx,y+d+sy,.012],[x,y+d,.012]],'#63527f');
+    ctx.globalAlpha*=.4;
     polygon(ctx,v,[[x+.1,y+.1,.013],[x+w-.1,y+.1,.013],[x+w-.1,y+d-.1,.013],[x+.1,y+d-.1,.013]],'#40384e');
     ctx.restore();
     if(prop.kind==='table')for(const centerY of [y+furniture.rearStoolCenterOffsetY,y+d+furniture.frontStoolCenterOffsetY]) {
-      ctx.save();ctx.globalAlpha*=.26;
-      polygon(ctx,v,[[x+w/2-.5,centerY-.25,.015],[x+w/2+.5,centerY-.25,.015],[x+w/2+.85,centerY+.5,.015],[x+w/2-.15,centerY+.5,.015]],'#5b4d6d');
+      ctx.save();ctx.globalAlpha*=.5;
+      polygon(ctx,v,[[x+w/2-.5,centerY-.25,.015],[x+w/2+.5,centerY-.25,.015],[x+w/2+.85,centerY+.5,.015],[x+w/2-.15,centerY+.5,.015]],'#63527f');
       ctx.restore();
     }
   }
@@ -57,8 +57,6 @@ export function drawMap(ctx: CanvasRenderingContext2D, map: RestaurantMap, v: Re
 }
 
 function table(ctx: CanvasRenderingContext2D, v: RestaurantView, x: number, y: number, w: number, d: number) {
-  ctx.save();ctx.globalAlpha*=.18;
-  oval(ctx,v,x+w/2+.25,y+d/2+.25,.01,1.35,p.ink);ctx.restore();
   const underside=furniture.tableTop-furniture.tableThickness;
   for(const dx of [.18,w-.32]) for(const dy of [.18,d-.32]) box(ctx,v,x+dx,y+dy,0,.14,.14,underside+.05,p.woodDark);
   box(ctx,v,x,y,underside,w,d,furniture.tableThickness,p.woodLight,p.woodDark,p.wood);

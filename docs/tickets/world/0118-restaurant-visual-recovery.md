@@ -20,7 +20,7 @@ Callum reports that the actual restaurant graphics are significantly worse. Diag
 
 ## Notes
 
-- Owner: restaurant recovery agent. Progress: reproduced current and legacy initial day1 at594×849 DPR2,1440×1000 and390×844; ranked material/depth loss, expanded room and generic camera as causes. Implemented compact18×17 geometry, locally cached material planes/shadows and restaurant camera minimum11, preserving canonical service/seat heights. Full Vitest685 passed; final focused6 passed; build passes. Actual journeys and independent visual/source acceptance pending. Private evidence under `/private/tmp/junyan-world-private-qa/0118`.
+- Owner: restaurant recovery agent. Progress: reproduced current and legacy initial day1 at594×849 DPR2,1440×1000 and390×844; ranked material/depth loss, expanded room and generic camera as causes. Implemented compact18×17 geometry, locally cached material planes/shadows and restaurant camera minimum11, preserving canonical service/seat heights. Final full Vitest107files/686tests and12desktop/phone actual opening/service/journal/input/save/connected-door journeys pass; build passes. Independent visual/source acceptance pending. Private evidence under `/private/tmp/junyan-world-private-qa/0118`.
 - Centrally reserved by root. Branch codex/0118-restaurant-visual-recovery; worktree /private/tmp/junyan-world-restaurant-recovery.
 - Lease restaurant art/projection/primitives plus a proposed restaurant-specific camera/render seam after root coordination. Shared painter/renderer/Viewport changes require exact plan. Ports5576/5577 strict.
 - All detailed plans, new native captures, traces and reports stay private under /private/tmp/junyan-world-private-qa/0118; no public raw QA or merges before independent gates.
