@@ -1,0 +1,916 @@
+{
+  "foundation": "0974efd785864c9ccafefb62db771618e671d56e",
+  "method": "Git blob/tree identities and syntactic export declarations; differing bytes do not alone prove incompatibility. Owner refs must be fetched before collection. No guessed cherry-pick ancestry.",
+  "modules": [
+    {
+      "owner": "town",
+      "publishedHead": "f26160db824009f8008392f9c6e9e57a47eaa7ba",
+      "consumedFoundation": "0974efd785864c9ccafefb62db771618e671d56e",
+      "path": "src/world/art/town",
+      "ownerTree": "bb62d38adb7fecdac9b30616fe63bc524b13d1f7",
+      "consumedTree": "835a12d781ebac86c322336a34b3bcfdf583ee67",
+      "status": "different",
+      "exports": {
+        "owner": [
+          "export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldRenderView) {",
+          "export const drawMap: DrawMap = (ctx, map, view) => {",
+          "export function renderObjects(map: WorldMapDefinition, _view: WorldRenderView): WorldRenderObject[] {"
+        ],
+        "consumed": []
+      },
+      "files": [
+        {
+          "path": "src/world/art/town/index.ts",
+          "ownerBlob": "ea5960a135f245c5087cf8ab3080aa666031fab3",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/town/preview.html",
+          "ownerBlob": "ca0906d18454e2a2d7e21edd830b0467eaba24de",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/town/preview.ts",
+          "ownerBlob": "a69af936f5779035fe34e12f8d03f6617f521895",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/town/variants.json",
+          "ownerBlob": "5290e188ae48a8cd3b41e6edf66875c1a0a727e2",
+          "consumedBlob": "68cdc9a8dfd02d455bfbb88f3a6dd83621e18aa0",
+          "same": false
+        }
+      ]
+    },
+    {
+      "owner": "courtyard",
+      "publishedHead": "7341f313334738db025df990bffad157f50e52cf",
+      "consumedFoundation": "0974efd785864c9ccafefb62db771618e671d56e",
+      "path": "src/world/art/courtyard",
+      "ownerTree": "032e6a30a08b413413d44422962b0113afc8e2cb",
+      "consumedTree": "13499d0afe3cce89bac0b58ad06620dea7687923",
+      "status": "different",
+      "exports": {
+        "owner": [
+          "export type CourtyardView = WorldRenderView;",
+          "export const drawMap: DrawMap = (ctx, map, view) => {",
+          "export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderView): WorldRenderObject[] {",
+          "export function drawCat(ctx: CanvasRenderingContext2D, view: CourtyardView, point: Point, black: boolean, relaxed: boolean) {"
+        ],
+        "consumed": [
+          "export type CourtyardView = WorldRenderView;",
+          "export const drawMap: DrawMap = (ctx, map, view) => {",
+          "export function drawCat(ctx: CanvasRenderingContext2D, view: CourtyardView, point: Point, black: boolean, relaxed: boolean) {"
+        ]
+      },
+      "files": [
+        {
+          "path": "src/world/art/courtyard/compositor.test.ts",
+          "ownerBlob": "36cd495df4113c0ec736c5dbd01662bc73fc040a",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/courtyard/index.ts",
+          "ownerBlob": "e5b2faef7e7821929293addca24b76544726a719",
+          "consumedBlob": "250ee1001011db24c5b5ff1461c4bf66ad8634ab",
+          "same": false
+        }
+      ]
+    },
+    {
+      "owner": "residential",
+      "publishedHead": "8ebffb19c0d4c2ccc6fc20758b9e38c9886c0ad3",
+      "consumedFoundation": "0974efd785864c9ccafefb62db771618e671d56e",
+      "path": "src/world/art/residential",
+      "ownerTree": "bafbcf89e9792b2d52c897f0429289a2655bcc8c",
+      "consumedTree": "86fcd5aa3073aaea0135ec2f0bd87dc5ae8a2e4f",
+      "status": "different",
+      "exports": {
+        "owner": [
+          "export type ResidentialArtApi = Pick<SceneApi, 'box' | 'sphere' | 'capsule' | 'castShadow'>;",
+          "export function drawResidentialFloor(api: ResidentialArtApi, mapId: string) {",
+          "export function drawResidentialProps(api: ResidentialArtApi, mapId: string, layer?: string) {",
+          "export function drawApartmentFurniture(api: ResidentialArtApi, state: State) {",
+          "export const drawMap: DrawMap = (ctx, map, view) => {",
+          "export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderView): WorldRenderObject[] {",
+          "export function drawFurniture(ctx: CanvasRenderingContext2D, state: State, view: WorldRenderView) {",
+          "export function renderFurnitureObjects(state: State): WorldRenderObject[] {",
+          "export { surfaceHeight } from '../../maps/residential/elevation';"
+        ],
+        "consumed": [
+          "export type ResidentialArtApi = Pick<SceneApi, 'box' | 'sphere' | 'capsule' | 'castShadow'>;",
+          "export function drawResidentialFloor(api: ResidentialArtApi, mapId: string) {",
+          "export function drawResidentialProps(api: ResidentialArtApi, mapId: string, layer?: string, only?: string[]) {",
+          "export function drawApartmentFurniture(api: ResidentialArtApi, state: State) {",
+          "export const drawMap: DrawMap = (ctx, map, view) => {",
+          "export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderView): WorldRenderObject[] {",
+          "export function drawFurniture(ctx: CanvasRenderingContext2D, state: State, view: WorldRenderView) {",
+          "export function renderFurnitureObjects(state: State): WorldRenderObject[] {"
+        ]
+      },
+      "files": [
+        {
+          "path": "src/world/art/residential/art.test.ts",
+          "ownerBlob": "0be83a2b3ee3ef09d40cf41f3e40c64933e4a91a",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/residential/harness.html",
+          "ownerBlob": "5de8b6230b782411a6c6a950e24b21e541b43b22",
+          "consumedBlob": "5de8b6230b782411a6c6a950e24b21e541b43b22",
+          "same": true
+        },
+        {
+          "path": "src/world/art/residential/harness.ts",
+          "ownerBlob": "f3d92372857af9cfd7341c73100cac1a0a80876c",
+          "consumedBlob": "f3d92372857af9cfd7341c73100cac1a0a80876c",
+          "same": true
+        },
+        {
+          "path": "src/world/art/residential/index.ts",
+          "ownerBlob": "b7a440d783deba6a9f646afb8059dcb33b32dc64",
+          "consumedBlob": "a40bab53db398f6f0c791ae69f2f7871f9ec6925",
+          "same": false
+        },
+        {
+          "path": "src/world/art/residential/lighting.html",
+          "ownerBlob": "7a7869b8d4bf907325900c8ca4bced54e2eb5fb6",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/residential/lighting.ts",
+          "ownerBlob": "87d7e6f73147ef81d83c85f77160421f6ac637c6",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/residential/traversal.html",
+          "ownerBlob": "76f49fd81e788128815f9bedea787c1829da102f",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/residential/traversal.tsx",
+          "ownerBlob": "4a42391286f97d46741ff4dba90698c7c33e3e2d",
+          "consumedBlob": null,
+          "same": false
+        }
+      ]
+    },
+    {
+      "owner": "workshop",
+      "publishedHead": "d772aa19624e296d90cde59181182560427825d3",
+      "consumedFoundation": "0974efd785864c9ccafefb62db771618e671d56e",
+      "path": "src/world/art/workshop",
+      "ownerTree": "2b53ffcdb4a360d38ee01d3c175c71772a68c961",
+      "consumedTree": "1a0f61f53894bdb8bbe7ed606a68e9b36ac0a2ed",
+      "status": "different",
+      "exports": {
+        "owner": [
+          "export const drawMap: DrawMap = (ctx,map,view) => paint(ctx,map,view);",
+          "export function renderObjects(map: WorldMapDefinition, view: WorldRenderView, repairs?: State): WorldRenderObject[] {",
+          "export function createWorkshopArt(repairs: State): WorldArtModule {"
+        ],
+        "consumed": [
+          "export const drawMap: DrawMap = (ctx,map,view) => paint(ctx,map,view);",
+          "export function renderObjects(map: WorldMapDefinition, _view: WorldRenderView, repairs?: State): WorldRenderObject[] {",
+          "export function createWorkshopArt(repairs: State): WorldArtModule {"
+        ]
+      },
+      "files": [
+        {
+          "path": "src/world/art/workshop/index.ts",
+          "ownerBlob": "aaf8a2117e264b16f6d027fec6e6a2b49abbd66a",
+          "consumedBlob": "4152a7dbae026cac065d6c1bddcf973206604fde",
+          "same": false
+        },
+        {
+          "path": "src/world/art/workshop/lighting.html",
+          "ownerBlob": "578ad1ee12030450cc2795dfbbdee6a0b3f9654b",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/workshop/lighting.ts",
+          "ownerBlob": "086885301165dfe3324d2c1b47a559fd6773bdab",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/workshop/paint.test.ts",
+          "ownerBlob": "066596ef9a9940a78e3acb51feeaa8fa57d785e9",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/workshop/paint.ts",
+          "ownerBlob": "dc0f6b8514200a7725d435c150664dd8b3cf631f",
+          "consumedBlob": "6bad67b6facb810d61e68da4f1bfba5e21184c34",
+          "same": false
+        },
+        {
+          "path": "src/world/art/workshop/preview-scene.ts",
+          "ownerBlob": "2e1650bd19d912ee8f442d611c28c4edebc71f9d",
+          "consumedBlob": "2e1650bd19d912ee8f442d611c28c4edebc71f9d",
+          "same": true
+        },
+        {
+          "path": "src/world/art/workshop/preview.html",
+          "ownerBlob": "085208e877b5971225a2f4053599a9c76406b60e",
+          "consumedBlob": "085208e877b5971225a2f4053599a9c76406b60e",
+          "same": true
+        },
+        {
+          "path": "src/world/art/workshop/preview.ts",
+          "ownerBlob": "1aa8cb179d590962f6709ad8cc3acf987df28c4b",
+          "consumedBlob": "1aa8cb179d590962f6709ad8cc3acf987df28c4b",
+          "same": true
+        },
+        {
+          "path": "src/world/art/workshop/walk.html",
+          "ownerBlob": "36584454a821b0b3a9936baa5c5cad2ccbc09bbd",
+          "consumedBlob": "36584454a821b0b3a9936baa5c5cad2ccbc09bbd",
+          "same": true
+        },
+        {
+          "path": "src/world/art/workshop/walk.ts",
+          "ownerBlob": "837f661e12055cb5d8d7672432361acf51b3d2eb",
+          "consumedBlob": "837f661e12055cb5d8d7672432361acf51b3d2eb",
+          "same": true
+        }
+      ]
+    },
+    {
+      "owner": "rooftop",
+      "publishedHead": "e1e3fa3b520dd3fab21246f7860dbbd24524ae14",
+      "consumedFoundation": "0974efd785864c9ccafefb62db771618e671d56e",
+      "path": "src/world/art/rooftop",
+      "ownerTree": "c67396f33ac69ad3168a2dc3aa0f2f8c7328d6d7",
+      "consumedTree": null,
+      "status": "absent",
+      "exports": {
+        "owner": [
+          "export const drawMap: DrawMap = (ctx, map, view) => {",
+          "export function renderObjects(map: WorldMapDefinition, _view: WorldRenderView): WorldRenderObject[] {"
+        ],
+        "consumed": []
+      },
+      "files": [
+        {
+          "path": "src/world/art/rooftop/art.test.ts",
+          "ownerBlob": "1d58ebea5815cb4b65204263ed1189c5fc9abe36",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/rooftop/harness.html",
+          "ownerBlob": "5a8881f661d05e969befd49e2f88158ce449224a",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/rooftop/harness.ts",
+          "ownerBlob": "38b1c777e6d443532441326e1c52a03f04629d97",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/rooftop/index.ts",
+          "ownerBlob": "bee3a8a0425dbfaa550825b6b1436bfca396aacc",
+          "consumedBlob": null,
+          "same": false
+        }
+      ]
+    },
+    {
+      "owner": "landscape",
+      "publishedHead": "9860cd757c989f2ff6ceae188445773a09ebf907",
+      "consumedFoundation": "0974efd785864c9ccafefb62db771618e671d56e",
+      "path": "src/world/art/landscape",
+      "ownerTree": "544feeaf68af69a6b1367e3daee353a5194422bb",
+      "consumedTree": "649fb70bdcad2130e960bbfc4604eec8d0c2a130",
+      "status": "different",
+      "exports": {
+        "owner": [
+          "export const drawMap: DrawMap = (ctx, map, view) => {",
+          "export const renderObjects: NonNullable<WorldArtModule['renderObjects']> = (map, view) => {"
+        ],
+        "consumed": [
+          "export const drawMap: DrawMap = (ctx, map, view) => {",
+          "export const renderObjects: NonNullable<WorldArtModule['renderObjects']> = (map, view) => {"
+        ]
+      },
+      "files": [
+        {
+          "path": "src/world/art/landscape/draw.ts",
+          "ownerBlob": "f41bf48e7131810d2b83cb684153ed85d2b0f762",
+          "consumedBlob": "edfdb3d3ff47be1ad3fa7e35dbccc29dfb122a7b",
+          "same": false
+        },
+        {
+          "path": "src/world/art/landscape/index.ts",
+          "ownerBlob": "2f8b18d98991f4d742b5c2ca35261dd870594c3c",
+          "consumedBlob": "4caac9cdd0004cd7a5b722354cc56d054e629e19",
+          "same": false
+        },
+        {
+          "path": "src/world/art/landscape/preview.html",
+          "ownerBlob": "458bc6cd4073ecb7b406a47105930ff75ed0f903",
+          "consumedBlob": "458bc6cd4073ecb7b406a47105930ff75ed0f903",
+          "same": true
+        },
+        {
+          "path": "src/world/art/landscape/preview.ts",
+          "ownerBlob": "9a99c6c8cd64c6f060949b0878d2b46e5683c674",
+          "consumedBlob": "9a99c6c8cd64c6f060949b0878d2b46e5683c674",
+          "same": true
+        }
+      ]
+    },
+    {
+      "owner": "characters",
+      "publishedHead": "85d6d6e0f5c7cb37b427afba2c691e7e881bc4fb",
+      "consumedFoundation": "0974efd785864c9ccafefb62db771618e671d56e",
+      "path": "src/world/characters",
+      "ownerTree": "f5f7f453669d9158bad25478e0969355e4a57889",
+      "consumedTree": "5e988e346cafdfc5742acf88ef42889ae94be10e",
+      "status": "different",
+      "exports": {
+        "owner": [
+          "export type Facing = 'north' | 'east' | 'south' | 'west';",
+          "export type ActorAction = 'idle' | 'walk' | 'interact';",
+          "export type ActorPosture = 'stand' | 'sit' | 'crouch' | 'work' | 'react';",
+          "export type ActorInput = {",
+          "export type PixelSpan = {x:number;y:number;width:number;color:RGB};",
+          "export type ActorSample = {",
+          "export function directionFromYaw(yaw:number):number {",
+          "export function sampleActor(input:ActorInput):ActorSample {",
+          "export {drawActor,actorCommands,actorObject} from './adapter';"
+        ],
+        "consumed": [
+          "export type Facing = 'north' | 'east' | 'south' | 'west';",
+          "export type ActorAction = 'idle' | 'walk' | 'interact';",
+          "export type ActorPosture = 'stand' | 'sit' | 'crouch' | 'work' | 'react';",
+          "export type ActorInput = {",
+          "export type PixelSpan = {x:number;y:number;width:number;color:RGB};",
+          "export type ActorSample = {",
+          "export function directionFromYaw(yaw:number):number {",
+          "export function sampleActor(input:ActorInput):ActorSample {",
+          "export {drawActor,actorCommands,actorObject} from './adapter';"
+        ]
+      },
+      "files": [
+        {
+          "path": "src/world/characters/actors.test.ts",
+          "ownerBlob": "e507efaffd04692bc05c4f1b5804fb15ff9ddca2",
+          "consumedBlob": "3872886416c7b62a59674f37421fb70a64eb5369",
+          "same": false
+        },
+        {
+          "path": "src/world/characters/adapter.ts",
+          "ownerBlob": "7e43a1ab7f5c030d260eb4fb8b6f9556d778f7ce",
+          "consumedBlob": "f98d8b24ba8d5cdc364e923308fce74da8c81b8a",
+          "same": false
+        },
+        {
+          "path": "src/world/characters/artwork.d.mts",
+          "ownerBlob": "142218e3edcf612fd3624424537633cfc65d135a",
+          "consumedBlob": "142218e3edcf612fd3624424537633cfc65d135a",
+          "same": true
+        },
+        {
+          "path": "src/world/characters/artwork.mjs",
+          "ownerBlob": "c1d0dea498b54f7a565ab7140cefc0df31b0dd6e",
+          "consumedBlob": "c1d0dea498b54f7a565ab7140cefc0df31b0dd6e",
+          "same": true
+        },
+        {
+          "path": "src/world/characters/capture-lighting.mjs",
+          "ownerBlob": "081c1ba54f50f37ab74d2bc602b175453e39226e",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/characters/capture.mjs",
+          "ownerBlob": "0232a70812eda80603def11ea294b5aed729a7d3",
+          "consumedBlob": "eeedd5653831e9996ab5548eb9ec617ef5e36a67",
+          "same": false
+        },
+        {
+          "path": "src/world/characters/depth.test.ts",
+          "ownerBlob": "2c654eafc52782b5b738af82151e2aec282a5fe8",
+          "consumedBlob": "2c654eafc52782b5b738af82151e2aec282a5fe8",
+          "same": true
+        },
+        {
+          "path": "src/world/characters/harness.html",
+          "ownerBlob": "56711ebd99e3f6b63451470cfb408d2411344c26",
+          "consumedBlob": "56711ebd99e3f6b63451470cfb408d2411344c26",
+          "same": true
+        },
+        {
+          "path": "src/world/characters/harness.ts",
+          "ownerBlob": "8c3b712aee2058cc23ceaaecd52e86091260113f",
+          "consumedBlob": "63b5c291c2b4c8999d612d16b94a16f2e94ba902",
+          "same": false
+        },
+        {
+          "path": "src/world/characters/index.ts",
+          "ownerBlob": "f4bb96212061e10fa4f53eb065ca6f7e177ddf4f",
+          "consumedBlob": "f4bb96212061e10fa4f53eb065ca6f7e177ddf4f",
+          "same": true
+        },
+        {
+          "path": "src/world/characters/lighting-proof.html",
+          "ownerBlob": "b43ecfa5c01243855f331f0bd8e1012a60e3188e",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/characters/lighting-proof.ts",
+          "ownerBlob": "dd7777cdd48787f5207b5beeaed547941974953b",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/characters/playwright.config.ts",
+          "ownerBlob": "e4c609636d8ef4b755752b8f2ba88009efc62f6f",
+          "consumedBlob": "e4c609636d8ef4b755752b8f2ba88009efc62f6f",
+          "same": true
+        },
+        {
+          "path": "src/world/characters/production-capture.mjs",
+          "ownerBlob": "1c8cf0c26442696c1ecd22fe017e72c958de4c47",
+          "consumedBlob": null,
+          "same": false
+        }
+      ]
+    },
+    {
+      "owner": "atmosphere",
+      "publishedHead": "3a8df863bd86b78682a0a9d7d2a4ce2eb4001ff4",
+      "consumedFoundation": "0974efd785864c9ccafefb62db771618e671d56e",
+      "path": "src/world/atmosphere",
+      "ownerTree": "3e84bea91e1d5ed8aa8c4112321d26289f9a32b8",
+      "consumedTree": "f37f3998a1e2b5152d8a6790efef14d27de55d7c",
+      "status": "different",
+      "exports": {
+        "owner": [
+          "export type RGB = readonly [number, number, number];",
+          "export type Point = { x: number; y: number; z?: number };",
+          "export type Rect = { x: number; y: number; width: number; height: number };",
+          "export type DayPhase = 'morning' | 'noon' | 'evening' | 'night';",
+          "export type AtmosphereInput = {",
+          "export type AtmosphereHooks = {",
+          "export type AtmosphereCommand = {",
+          "export type LightState = {",
+          "export type AtmosphereFrame = {",
+          "export const MAX_ATMOSPHERE_COMMANDS = 2048;",
+          "export function sampleDayLight(timeOfDay: DayPhase | number): LightState {",
+          "export function shadeAtmosphereColor(color: RGB, light: LightState, exposure=1): RGB {",
+          "export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks = {}, viewport?: Rect): AtmosphereFrame {"
+        ],
+        "consumed": [
+          "export type RGB = readonly [number, number, number];",
+          "export type Point = { x: number; y: number; z?: number };",
+          "export type Rect = { x: number; y: number; width: number; height: number };",
+          "export type DayPhase = 'morning' | 'noon' | 'evening' | 'night';",
+          "export type AtmosphereInput = {",
+          "export type AtmosphereHooks = {",
+          "export type AtmosphereCommand = {",
+          "export type LightState = {",
+          "export type AtmosphereFrame = {",
+          "export const MAX_ATMOSPHERE_COMMANDS = 2048;",
+          "export function sampleDayLight(timeOfDay: DayPhase | number): LightState {",
+          "export function shadeAtmosphereColor(color: RGB, light: LightState, exposure=1): RGB {",
+          "export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks = {}, viewport?: Rect): AtmosphereFrame {"
+        ]
+      },
+      "files": [
+        {
+          "path": "src/world/atmosphere/canvas.test.ts",
+          "ownerBlob": "d1022018f4fc2685c80e789e79450542e1b42a19",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/atmosphere/canvas.ts",
+          "ownerBlob": "382e69f4f7675a64d1b36ebff21978b38fd0d7ce",
+          "consumedBlob": "10232be4fa3e669bd5fb7cacd5fd291d7bb75105",
+          "same": false
+        },
+        {
+          "path": "src/world/atmosphere/harness.html",
+          "ownerBlob": "0448ddcba85a68796defc6f61cbc9c1c657abe19",
+          "consumedBlob": "0448ddcba85a68796defc6f61cbc9c1c657abe19",
+          "same": true
+        },
+        {
+          "path": "src/world/atmosphere/harness.ts",
+          "ownerBlob": "21127ab58c6a27f51c68774ecb874ad5d61c52fb",
+          "consumedBlob": "0613021d52c41a780c1187fc8986798dac2f9705",
+          "same": false
+        },
+        {
+          "path": "src/world/atmosphere/index.test.ts",
+          "ownerBlob": "47520976b28c322c99658ccdc456fa266ee1ac82",
+          "consumedBlob": "a2d949768d48d0866bbf44e4818dfe67861dfa7b",
+          "same": false
+        },
+        {
+          "path": "src/world/atmosphere/index.ts",
+          "ownerBlob": "4c1537b18edaa7e5b025690fbde1d8bb4d2fb97c",
+          "consumedBlob": "8630ae6b5032385b65d920f923d565e48ddb197f",
+          "same": false
+        },
+        {
+          "path": "src/world/atmosphere/map-hooks.test.ts",
+          "ownerBlob": "262314a65b931a3ab878a36dc95655e31112f57c",
+          "consumedBlob": "757ff250b92fbad78e8f3729fa088a9f774a95c9",
+          "same": false
+        },
+        {
+          "path": "src/world/atmosphere/map-hooks.ts",
+          "ownerBlob": "e8fe9c6c89534438c5af069aa0e58ce384066661",
+          "consumedBlob": "b3e696c447d273530bec8b5e1beb13aa568795d4",
+          "same": false
+        },
+        {
+          "path": "src/world/atmosphere/materials-study.html",
+          "ownerBlob": "c4b2635ed58293c163502d6c78476e078cdf50bf",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/atmosphere/materials-study.ts",
+          "ownerBlob": "9dc3471dbef352472d95e2867ed92d536c42b506",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/atmosphere/materials.test.ts",
+          "ownerBlob": "4e9472e054b9ad63b9101d4d2fe92e78db13da16",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/atmosphere/materials.ts",
+          "ownerBlob": "a5413b9af9358bfad5f58c444be32d517e220e9a",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/atmosphere/production-lighting.html",
+          "ownerBlob": "92f7350d2e1805d3501f9cbf90490f5f80e0b6ac",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/atmosphere/production-lighting.ts",
+          "ownerBlob": "6ac267621959a024f7b69e920cc7ec3fff3f4646",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/atmosphere/proof.config.ts",
+          "ownerBlob": "e4034aee040907e3b2e8951b67656cfbd3d39df6",
+          "consumedBlob": "9a5b4ae300a8d7099ba792d90a4d1101c45b0970",
+          "same": false
+        }
+      ]
+    },
+    {
+      "owner": "life",
+      "publishedHead": "1ef35dcdb031a9ec4214f314ebbd64b7f0728f4b",
+      "consumedFoundation": "0974efd785864c9ccafefb62db771618e671d56e",
+      "path": "src/world/life",
+      "ownerTree": "c0bab678baf6a3189d3ecdea84304cc12a8c2c64",
+      "consumedTree": "a12fc0dd08fe983e782a616fcd835c230dcc3efe",
+      "status": "different",
+      "exports": {
+        "owner": [
+          "export { compileLife, entranceExclusions } from './routes';",
+          "export { sampleLife } from './sample';",
+          "export { profiles } from './profiles';",
+          "export { nearbyLife, interactLife, initialLifeState, advanceLife, restoreLife, reduceLife, lifeStateSchema } from './interactions';",
+          "export type { LifeState } from './interactions';",
+          "export type { LifeMap, Navigation, LifePlan, LifeContext, ActorPose, Affordance, LifeEvent, Facing } from './model';",
+          "export { drawLifeActor, drawLifeReactions } from './render';",
+          "export type { LifeView, ResidentDrawer } from './render';",
+          "export { navigationFor } from './navigation';",
+          "export { courtyardHabitats } from './habitats';",
+          "export { lifeObjects, drawLifeResident } from './objects';",
+          "export { restaurantPresence, releaseServedCustomer } from './presence';",
+          "export { worldLifeFrame } from './scene';"
+        ],
+        "consumed": [
+          "export { compileLife, entranceExclusions } from './routes';",
+          "export { sampleLife } from './sample';",
+          "export { profiles } from './profiles';",
+          "export { nearbyLife, interactLife, initialLifeState, restoreLife, reduceLife, lifeStateSchema } from './interactions';",
+          "export type { LifeState } from './interactions';",
+          "export type { LifeMap, Navigation, LifePlan, LifeContext, ActorPose, Affordance, LifeEvent, Facing } from './model';",
+          "export { drawLifeActor, drawLifeReactions } from './render';",
+          "export type { LifeView, ResidentDrawer } from './render';",
+          "export { navigationFor } from './navigation';"
+        ]
+      },
+      "files": [
+        {
+          "path": "src/world/life/LifePrompt.tsx",
+          "ownerBlob": "0d01cfa955512b2fdf30338e92ad0aa3ac426525",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/life/habitats.ts",
+          "ownerBlob": "3cfb2707662e7581bc84f76d32bc1f6c2fc001b9",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/life/harness.html",
+          "ownerBlob": "ae5c19932b09a1ca7b1b9d3cbc52878347feba29",
+          "consumedBlob": "ae5c19932b09a1ca7b1b9d3cbc52878347feba29",
+          "same": true
+        },
+        {
+          "path": "src/world/life/harness.ts",
+          "ownerBlob": "c88835c020746d8af9d57971c5d85cd993a0c4fb",
+          "consumedBlob": "3fe27ac6978cea41d7abafb1682ba3b65faa4e0c",
+          "same": false
+        },
+        {
+          "path": "src/world/life/index.ts",
+          "ownerBlob": "bce009bab729fe836509ef3a7fc1ccb5ef9dfa92",
+          "consumedBlob": "7b643aedda6cb912c58f4c99c5c4fe0045e4e0fa",
+          "same": false
+        },
+        {
+          "path": "src/world/life/interactions.ts",
+          "ownerBlob": "f8693a34e97d58f970f3ae526b1916bc099b2b83",
+          "consumedBlob": "3e3a378bc5027a08544391a19f293c71381c1d27",
+          "same": false
+        },
+        {
+          "path": "src/world/life/landmarks.test.ts",
+          "ownerBlob": "d1164b7029316bc2f8445de7e6e2048c067cf9eb",
+          "consumedBlob": "6d02b1733d1c3eca9108dc3fe3f589f62cbf7b99",
+          "same": false
+        },
+        {
+          "path": "src/world/life/life.test.ts",
+          "ownerBlob": "667ecfb1873cab30e48a6835efdca7a6de5ae9e8",
+          "consumedBlob": "8f60048dc4ace65179fcc0db659572ba0005945f",
+          "same": false
+        },
+        {
+          "path": "src/world/life/model.ts",
+          "ownerBlob": "4b7f5ebcd4d81aa1ff648b77d584c97b11de32a6",
+          "consumedBlob": "9cc113b8133c96b360b859350515f4eac879f8c5",
+          "same": false
+        },
+        {
+          "path": "src/world/life/navigation.ts",
+          "ownerBlob": "ab804a2626c48a90a9a91992b118478f471f2c9c",
+          "consumedBlob": "35295f23906092fe383aa04560886963e7357a6e",
+          "same": false
+        },
+        {
+          "path": "src/world/life/objects.ts",
+          "ownerBlob": "4cdea4dabcf8c9e403b9fda2c8a2b7a32c48a9d9",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/life/prepare-proof.py",
+          "ownerBlob": "bf81ac5e5ef3ad400d6e4b269fc62a948e27b4eb",
+          "consumedBlob": "bf81ac5e5ef3ad400d6e4b269fc62a948e27b4eb",
+          "same": true
+        },
+        {
+          "path": "src/world/life/presence.test.ts",
+          "ownerBlob": "3224969348d25e2797c90768793cac0618a76652",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/life/presence.ts",
+          "ownerBlob": "e4323890a0b91668bcb458044d2e051a5c5a3a83",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/life/profiles.ts",
+          "ownerBlob": "5ed08e7cd3872b7ab3e3b5fe5bb07c9c3d19d48f",
+          "consumedBlob": "5ed08e7cd3872b7ab3e3b5fe5bb07c9c3d19d48f",
+          "same": true
+        },
+        {
+          "path": "src/world/life/prompt.css",
+          "ownerBlob": "f00f39ca32178afb197a3b7fc9878f8facf60625",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/life/proof.mjs",
+          "ownerBlob": "70ff455870f82456d012da664534b7006ddaa06a",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/life/render.test.ts",
+          "ownerBlob": "ae781eac0bf951e4d43a591deca194204e15ec38",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/life/render.ts",
+          "ownerBlob": "17c879fce391d53a5432d7c9368f2c0897810252",
+          "consumedBlob": "2edb20386e240740f163da006060822ee5dc59b5",
+          "same": false
+        },
+        {
+          "path": "src/world/life/routes.ts",
+          "ownerBlob": "82e45339ac7ce07d9406e902588a2237df27484f",
+          "consumedBlob": "dd0d3d8507597675f70883472abe6df29f65dbca",
+          "same": false
+        },
+        {
+          "path": "src/world/life/routines.json",
+          "ownerBlob": "b5a519d73dcb13b60157478ff3bb18361938ec5e",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/life/routines.test.ts",
+          "ownerBlob": "d38213780f9f6b0e74a02745950cbdf8bcb5930d",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/life/routines.ts",
+          "ownerBlob": "49e71afa190794924975181c5be96c51579b0449",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/life/sample.ts",
+          "ownerBlob": "d5d9eff07003fbf65aca8219d31147c9cb6da099",
+          "consumedBlob": "6b20c88cc63296431349db4e648ebfc39483a3ac",
+          "same": false
+        },
+        {
+          "path": "src/world/life/scene.test.ts",
+          "ownerBlob": "c30cab8c37531e238f8a27bf427d766d3dc2e61d",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/life/scene.ts",
+          "ownerBlob": "a097eea00536e71be81114821d9b7d07c2cbfc2c",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/life/solid-landmarks.fixture.json",
+          "ownerBlob": "3362d1c3f116fbcc8b00573f007002d9e60764ce",
+          "consumedBlob": "3362d1c3f116fbcc8b00573f007002d9e60764ce",
+          "same": true
+        },
+        {
+          "path": "src/world/life/visibility.ts",
+          "ownerBlob": "b5ccece7c74447726ab2d19db90fee0fb9a107c1",
+          "consumedBlob": "c8bb97f2541c40e698207685db67faaf56cee898",
+          "same": false
+        }
+      ]
+    },
+    {
+      "owner": "restaurant",
+      "publishedHead": "f3c4030c18787e4638639075e6c67a11cd542304",
+      "consumedFoundation": "0974efd785864c9ccafefb62db771618e671d56e",
+      "path": "src/world/art/restaurant",
+      "ownerTree": "e3ab0a56e9654e7add734b816789a32a2c59a6c9",
+      "consumedTree": null,
+      "status": "absent",
+      "exports": {
+        "owner": [
+          "export { projectRestaurant, RESTAURANT_TABLES } from './projection';",
+          "export type { RestaurantProjection, RestaurantCustomer } from './projection';",
+          "export type { RestaurantMap, RestaurantObject, RestaurantView } from './types';",
+          "export function drawMap(ctx: CanvasRenderingContext2D, map: RestaurantMap, v: RestaurantView) {",
+          "export function renderObjects(map: RestaurantMap, _view: RestaurantView): RestaurantObject[] {",
+          "export function restaurantObjects(map: RestaurantMap, _view: RestaurantView, projection: RestaurantProjection): RestaurantObject[] {"
+        ],
+        "consumed": []
+      },
+      "files": [
+        {
+          "path": "src/world/art/restaurant/food.ts",
+          "ownerBlob": "e3124bc55dd2f93fcc1dbdda396375f2ab4a45f3",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/restaurant/index.ts",
+          "ownerBlob": "7e73ee85c810e09728924a5b97dc71b2a0de7bd0",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/restaurant/primitives.ts",
+          "ownerBlob": "6803e4405043ff0a4a3e312fe2e7c85204fd0cf5",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/restaurant/projection.test.ts",
+          "ownerBlob": "cb3e46e394d27e18731380c848bcb5968050ab46",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/restaurant/projection.ts",
+          "ownerBlob": "667ea74f98dd9d6b81ff867c70a5c2983322526c",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/art/restaurant/types.ts",
+          "ownerBlob": "ae95658c7d32275a2939f14e520fc8c2f4a4be80",
+          "consumedBlob": null,
+          "same": false
+        }
+      ]
+    },
+    {
+      "owner": "ui",
+      "publishedHead": "85e00ababde761eab0986024c6f2d7e7570b642b",
+      "consumedFoundation": "0974efd785864c9ccafefb62db771618e671d56e",
+      "path": "src/world/ui",
+      "ownerTree": "1ccd500c52e24181f795ba4f61ab291117ea0ed4",
+      "consumedTree": null,
+      "status": "absent",
+      "exports": {
+        "owner": [
+          "export { ContextualInteraction, WorldPocketBar } from \"./ContextualInteraction\";",
+          "export type { InteractionDialogue, WorldPocketBarProps, InteractionTarget, InteractionAction, ContextualInteractionProps, DialogueProps } from \"./ContextualInteraction\";",
+          "export { RestaurantTableControls, KitchenControls } from \"./RestaurantControls\";",
+          "export type { RestaurantTableControlsProps, KitchenControlsProps } from \"./RestaurantControls\";"
+        ],
+        "consumed": []
+      },
+      "files": [
+        {
+          "path": "src/world/ui/ContextualInteraction.tsx",
+          "ownerBlob": "861ef1072bca5d84e1f091fc03e609ecd575328f",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/ui/RestaurantControls.tsx",
+          "ownerBlob": "421875d73191ff726faf03c2c14eaeca4331746e",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/ui/contextual.css",
+          "ownerBlob": "015291ecd55e5cafb1c79a3bdbb6e8d7ba520e5c",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/ui/harness.css",
+          "ownerBlob": "1e9371161dc68d9f21c58d7421fcfa366c4362dc",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/ui/harness.html",
+          "ownerBlob": "9e89d6e92a5e8bf0050201c57bd1bf385d85496e",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/ui/harness.tsx",
+          "ownerBlob": "9fb2e930d5d508f382ebd021b4995e5a8f95b42a",
+          "consumedBlob": null,
+          "same": false
+        },
+        {
+          "path": "src/world/ui/index.ts",
+          "ownerBlob": "90a2a69715c67506ac598ad18ebab09bc94c91dc",
+          "consumedBlob": null,
+          "same": false
+        }
+      ]
+    }
+  ]
+}

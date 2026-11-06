@@ -1,0 +1,18 @@
+[
+  {
+    "head": "23be251185d989f7b97d36391a8f6478344b1a3b",
+    "map": "restaurant",
+    "owner": "courtyard",
+    "calls": 9,
+    "drawsOnUnrelatedMap": true,
+    "hasRenderObjects": false
+  },
+  {
+    "head": "7341f313334738db025df990bffad157f50e52cf",
+    "map": "restaurant",
+    "owner": "courtyard",
+    "calls": 0,
+    "drawsOnUnrelatedMap": false,
+    "hasRenderObjects": true
+  }
+]

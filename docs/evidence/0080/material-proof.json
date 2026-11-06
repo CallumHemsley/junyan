@@ -1,0 +1,108 @@
+[
+  {
+    "name": "desktop",
+    "frames": {
+      "morning": {
+        "phase": "morning",
+        "particles": false,
+        "proxy": false,
+        "materialBaseCount": 82,
+        "materialExamples": {
+          "wood": "#937858",
+          "masonry": "#b29b7d",
+          "foliage": "#678267",
+          "cat": "#dfe0d2"
+        },
+        "alphaFailures": [],
+        "objects": 121,
+        "camera": {
+          "focus": {
+            "x": 16,
+            "y": 21
+          },
+          "width": 720,
+          "height": 450,
+          "scale": 15
+        },
+        "limits": "Owner adapter with production camera/player and actual atmosphere function. This does not certify foundation proxy removal or production phase wiring."
+      },
+      "evening": {
+        "phase": "evening",
+        "particles": false,
+        "proxy": false,
+        "materialBaseCount": 82,
+        "materialExamples": {
+          "wood": "#856a51",
+          "masonry": "#9e8774",
+          "foliage": "#61725f",
+          "cat": "#c3bfc3"
+        },
+        "alphaFailures": [],
+        "objects": 121,
+        "camera": {
+          "focus": {
+            "x": 16,
+            "y": 21
+          },
+          "width": 720,
+          "height": 450,
+          "scale": 15
+        },
+        "limits": "Owner adapter with production camera/player and actual atmosphere function. This does not certify foundation proxy removal or production phase wiring."
+      }
+    }
+  },
+  {
+    "name": "phone",
+    "frames": {
+      "morning": {
+        "phase": "morning",
+        "particles": false,
+        "proxy": false,
+        "materialBaseCount": 82,
+        "materialExamples": {
+          "wood": "#937858",
+          "masonry": "#b29b7d",
+          "foliage": "#678267",
+          "cat": "#dfe0d2"
+        },
+        "alphaFailures": [],
+        "objects": 121,
+        "camera": {
+          "focus": {
+            "x": 16.681818181818183,
+            "y": 21.681818181818183
+          },
+          "width": 195,
+          "height": 422,
+          "scale": 11
+        },
+        "limits": "Owner adapter with production camera/player and actual atmosphere function. This does not certify foundation proxy removal or production phase wiring."
+      },
+      "evening": {
+        "phase": "evening",
+        "particles": false,
+        "proxy": false,
+        "materialBaseCount": 82,
+        "materialExamples": {
+          "wood": "#856a51",
+          "masonry": "#9e8774",
+          "foliage": "#61725f",
+          "cat": "#c3bfc3"
+        },
+        "alphaFailures": [],
+        "objects": 121,
+        "camera": {
+          "focus": {
+            "x": 16.681818181818183,
+            "y": 21.681818181818183
+          },
+          "width": 195,
+          "height": 422,
+          "scale": 11
+        },
+        "limits": "Owner adapter with production camera/player and actual atmosphere function. This does not certify foundation proxy removal or production phase wiring."
+      }
+    }
+  }
+]

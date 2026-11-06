@@ -1,0 +1,15 @@
+import {execFileSync} from 'node:child_process';
+import {stripTypeScriptTypes} from 'node:module';
+const head='23be251185d989f7b97d36391a8f6478344b1a3b';
+const source=p=>execFileSync('git',['show',`${head}:${p}`],{encoding:'utf8'});
+const url=s=>'data:text/javascript;base64,'+Buffer.from(stripTypeScriptTypes(s)).toString('base64');
+const geometry=url(source('src/world/geometry.ts'));
+const {canStand,findPath}=await import(geometry);
+const fn=source('src/world/dynamic.ts').split('export function safeAfterEdit')[1];
+const {safeAfterEdit}=await import(url(`import {canStand,canWalk} from ${JSON.stringify(geometry)}; export function safeAfterEdit${fn}`));
+const before={bounds:{width:10,height:10},walkable:[{x:0,y:0,width:10,height:10}],colliders:[],defaultSpawn:{x:2,y:5}};
+const after={...before,colliders:[{id:'synthetic-divider',rect:{x:4.8,y:0,width:.4,height:10}}]};
+const position={x:7,y:5},exitApproach={x:2,y:5},result=safeAfterEdit(before,after,position);
+const report={head,evidence:'Synthetic geometry API-boundary probe. Not an observed normal furniture/garden edit or player trap.',position,result,canStand:canStand(after,result),beforePath:findPath(before,position,exitApproach),afterPath:findPath(after,result,exitApproach)};
+console.log(JSON.stringify(report,null,2));
+if(report.canStand&&report.beforePath.length&&!report.afterPath.length)process.exitCode=1;

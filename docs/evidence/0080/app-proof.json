@@ -1,0 +1,190 @@
+[
+  {
+    "name": "desktop",
+    "sourceHead": "86194a2ae93eb0d508285d931b8d8beaa1beace5",
+    "seededStart": true,
+    "start": {
+      "x": 23,
+      "y": 33.5
+    },
+    "keyboardEnd": {
+      "x": 24.70836998334669,
+      "y": 31.7916300166533
+    },
+    "traversed": [
+      {
+        "x": 22.604185006133143,
+        "y": 29.895814993866843
+      },
+      {
+        "x": 20.5000000289196,
+        "y": 27.999999971080385
+      },
+      {
+        "x": 20.2500000289196,
+        "y": 25.499999971080385
+      },
+      {
+        "x": 20.0000000289196,
+        "y": 22.999999971080385
+      },
+      {
+        "x": 18.0000000289196,
+        "y": 21.999999971080385
+      },
+      {
+        "x": 16.0000000289196,
+        "y": 20.999999971080385
+      },
+      {
+        "x": 18.91666669558627,
+        "y": 21.166666637747053
+      },
+      {
+        "x": 21.833333362252937,
+        "y": 21.33333330441372
+      },
+      {
+        "x": 24.750000028919608,
+        "y": 21.499999971080385
+      },
+      {
+        "x": 27.66666669558628,
+        "y": 21.666666637747056
+      },
+      {
+        "x": 30.583333362252947,
+        "y": 21.833333304413728
+      },
+      {
+        "x": 33.50000002891961,
+        "y": 21.999999971080396
+      },
+      {
+        "x": 34.50000002891961,
+        "y": 20.599999971080393
+      }
+    ],
+    "approach": {
+      "x": 16.0000000289196,
+      "y": 20.999999971080385
+    },
+    "preservedRestaurantPosition": {
+      "x": 6,
+      "y": 2.5
+    },
+    "catStory": {
+      "node": "reunited",
+      "day": 1
+    },
+    "activity": {
+      "status": "completed",
+      "story": {
+        "node": "reunited",
+        "day": 1
+      }
+    },
+    "journalEntries": 16,
+    "reloadPosition": {
+      "x": 34.50000002891961,
+      "y": 20.599999971080393
+    },
+    "errors": [],
+    "failures": [],
+    "limits": "Seeded normal saved game starts in courtyard. Actual keyboard/pad/pointer travel, feature actions and persistence are used. Connected entrance journey and opening/service regression remain separate gates."
+  },
+  {
+    "name": "phone",
+    "sourceHead": "86194a2ae93eb0d508285d931b8d8beaa1beace5",
+    "seededStart": true,
+    "start": {
+      "x": 23,
+      "y": 33.5
+    },
+    "keyboardEnd": {
+      "x": 24.70801642995612,
+      "y": 31.791983570043918
+    },
+    "traversed": [
+      {
+        "x": 22.604008362218178,
+        "y": 29.895991637781822
+      },
+      {
+        "x": 20.499999947689588,
+        "y": 28.00000005231041
+      },
+      {
+        "x": 20.249999947689588,
+        "y": 25.500000052310412
+      },
+      {
+        "x": 19.999999947689588,
+        "y": 23.000000052310412
+      },
+      {
+        "x": 17.999999947689588,
+        "y": 22.000000052310412
+      },
+      {
+        "x": 15.999999947689588,
+        "y": 21.000000052310412
+      },
+      {
+        "x": 18.916666151968705,
+        "y": 21.166666256589533
+      },
+      {
+        "x": 21.833333743410467,
+        "y": 21.33333384803129
+      },
+      {
+        "x": 24.749999947689588,
+        "y": 21.500000052310412
+      },
+      {
+        "x": 27.666666151968705,
+        "y": 21.666666256589533
+      },
+      {
+        "x": 30.583333743410467,
+        "y": 21.833333848031298
+      },
+      {
+        "x": 33.49999994768958,
+        "y": 22.000000052310416
+      },
+      {
+        "x": 34.50000029448024,
+        "y": 20.600000260384814
+      }
+    ],
+    "approach": {
+      "x": 15.999999947689588,
+      "y": 21.000000052310412
+    },
+    "preservedRestaurantPosition": {
+      "x": 6,
+      "y": 2.5
+    },
+    "catStory": {
+      "node": "reunited",
+      "day": 1
+    },
+    "activity": {
+      "status": "completed",
+      "story": {
+        "node": "reunited",
+        "day": 1
+      }
+    },
+    "journalEntries": 16,
+    "reloadPosition": {
+      "x": 34.50000029448024,
+      "y": 20.600000260384814
+    },
+    "errors": [],
+    "failures": [],
+    "limits": "Seeded normal saved game starts in courtyard. Actual keyboard/pad/pointer travel, feature actions and persistence are used. Connected entrance journey and opening/service regression remain separate gates."
+  }
+]
