@@ -1,0 +1,2 @@
+import {chromium} from '@playwright/test';
+const b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox','--mute-audio']});const p=await b.newPage();await p.goto('http://127.0.0.1:5480/?test=1');await p.getByRole('button',{name:'开门迎客'}).click();console.log(await p.evaluate(()=>({state:window.__TEST__.getState(),dimensions:[...document.querySelectorAll('.app-shell,main,.connected-world')].map(e=>({class:e.className,rect:e.getBoundingClientRect().toJSON(),max:getComputedStyle(e).maxWidth}))})));await b.close();
