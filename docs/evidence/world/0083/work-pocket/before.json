@@ -1,0 +1,434 @@
+[
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "desktop",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "phase": "evening",
+    "occupancy": "occupied",
+    "served": 3,
+    "lifeElapsedInput": 42000,
+    "position": {
+      "x": 12.5,
+      "y": 29
+    },
+    "file": "before-desktop-evening-occupied-arrival.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Existing served/departed Lin follows authored roof route"
+  },
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "desktop",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "phase": "evening",
+    "occupancy": "occupied",
+    "served": 3,
+    "lifeElapsedInput": 42000,
+    "position": {
+      "x": 19,
+      "y": 20
+    },
+    "file": "before-desktop-evening-occupied-care-pocket.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Existing served/departed Lin follows authored roof route"
+  },
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "desktop",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "phase": "evening",
+    "occupancy": "empty",
+    "served": 3,
+    "lifeElapsedInput": 42000,
+    "position": {
+      "x": 12.5,
+      "y": 29
+    },
+    "file": "before-desktop-evening-empty-arrival.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Existing service-presence state keeps Lin inside restaurant; same explicit time as occupied fixture"
+  },
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "desktop",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "phase": "evening",
+    "occupancy": "empty",
+    "served": 3,
+    "lifeElapsedInput": 42000,
+    "position": {
+      "x": 19,
+      "y": 20
+    },
+    "file": "before-desktop-evening-empty-care-pocket.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Existing service-presence state keeps Lin inside restaurant; same explicit time as occupied fixture"
+  },
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "desktop",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "phase": "morning",
+    "occupancy": "service-present",
+    "served": 0,
+    "lifeElapsedInput": 0,
+    "position": {
+      "x": 12.5,
+      "y": 29
+    },
+    "file": "before-desktop-morning-service-present-arrival.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Lin remains in restaurant; no rooftop duplicate"
+  },
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "desktop",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "phase": "morning",
+    "occupancy": "service-present",
+    "served": 0,
+    "lifeElapsedInput": 0,
+    "position": {
+      "x": 19,
+      "y": 20
+    },
+    "file": "before-desktop-morning-service-present-care-pocket.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Lin remains in restaurant; no rooftop duplicate"
+  },
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "phone",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "phase": "evening",
+    "occupancy": "occupied",
+    "served": 3,
+    "lifeElapsedInput": 42000,
+    "position": {
+      "x": 12.5,
+      "y": 29
+    },
+    "file": "before-phone-evening-occupied-arrival.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Existing served/departed Lin follows authored roof route"
+  },
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "phone",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "phase": "evening",
+    "occupancy": "occupied",
+    "served": 3,
+    "lifeElapsedInput": 42000,
+    "position": {
+      "x": 19,
+      "y": 20
+    },
+    "file": "before-phone-evening-occupied-care-pocket.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Existing served/departed Lin follows authored roof route"
+  },
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "phone",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "phase": "evening",
+    "occupancy": "empty",
+    "served": 3,
+    "lifeElapsedInput": 42000,
+    "position": {
+      "x": 12.5,
+      "y": 29
+    },
+    "file": "before-phone-evening-empty-arrival.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Existing service-presence state keeps Lin inside restaurant; same explicit time as occupied fixture"
+  },
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "phone",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "phase": "evening",
+    "occupancy": "empty",
+    "served": 3,
+    "lifeElapsedInput": 42000,
+    "position": {
+      "x": 19,
+      "y": 20
+    },
+    "file": "before-phone-evening-empty-care-pocket.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Existing service-presence state keeps Lin inside restaurant; same explicit time as occupied fixture"
+  },
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "phone",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "phase": "morning",
+    "occupancy": "service-present",
+    "served": 0,
+    "lifeElapsedInput": 0,
+    "position": {
+      "x": 12.5,
+      "y": 29
+    },
+    "file": "before-phone-morning-service-present-arrival.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Lin remains in restaurant; no rooftop duplicate"
+  },
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "phone",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "phase": "morning",
+    "occupancy": "service-present",
+    "served": 0,
+    "lifeElapsedInput": 0,
+    "position": {
+      "x": 19,
+      "y": 20
+    },
+    "file": "before-phone-morning-service-present-care-pocket.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Lin remains in restaurant; no rooftop duplicate"
+  },
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "narrow",
+    "viewport": {
+      "width": 320,
+      "height": 740
+    },
+    "phase": "evening",
+    "occupancy": "occupied",
+    "served": 3,
+    "lifeElapsedInput": 42000,
+    "position": {
+      "x": 12.5,
+      "y": 29
+    },
+    "file": "before-narrow-evening-occupied-arrival.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Existing served/departed Lin follows authored roof route"
+  },
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "narrow",
+    "viewport": {
+      "width": 320,
+      "height": 740
+    },
+    "phase": "evening",
+    "occupancy": "occupied",
+    "served": 3,
+    "lifeElapsedInput": 42000,
+    "position": {
+      "x": 19,
+      "y": 20
+    },
+    "file": "before-narrow-evening-occupied-care-pocket.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Existing served/departed Lin follows authored roof route"
+  },
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "narrow",
+    "viewport": {
+      "width": 320,
+      "height": 740
+    },
+    "phase": "evening",
+    "occupancy": "empty",
+    "served": 3,
+    "lifeElapsedInput": 42000,
+    "position": {
+      "x": 12.5,
+      "y": 29
+    },
+    "file": "before-narrow-evening-empty-arrival.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Existing service-presence state keeps Lin inside restaurant; same explicit time as occupied fixture"
+  },
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "narrow",
+    "viewport": {
+      "width": 320,
+      "height": 740
+    },
+    "phase": "evening",
+    "occupancy": "empty",
+    "served": 3,
+    "lifeElapsedInput": 42000,
+    "position": {
+      "x": 19,
+      "y": 20
+    },
+    "file": "before-narrow-evening-empty-care-pocket.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Existing service-presence state keeps Lin inside restaurant; same explicit time as occupied fixture"
+  },
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "narrow",
+    "viewport": {
+      "width": 320,
+      "height": 740
+    },
+    "phase": "morning",
+    "occupancy": "service-present",
+    "served": 0,
+    "lifeElapsedInput": 0,
+    "position": {
+      "x": 12.5,
+      "y": 29
+    },
+    "file": "before-narrow-morning-service-present-arrival.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Lin remains in restaurant; no rooftop duplicate"
+  },
+  {
+    "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+    "device": "narrow",
+    "viewport": {
+      "width": 320,
+      "height": 740
+    },
+    "phase": "morning",
+    "occupancy": "service-present",
+    "served": 0,
+    "lifeElapsedInput": 0,
+    "position": {
+      "x": 19,
+      "y": 20
+    },
+    "file": "before-narrow-morning-service-present-care-pocket.png",
+    "ui": {
+      "modals": 0,
+      "context": 0
+    },
+    "errors": [],
+    "kind": "production App declared-save/camera fixture; not travel/progress proof",
+    "identityNote": "Lin remains in restaurant; no rooftop duplicate"
+  }
+]

@@ -1,0 +1,452 @@
+{
+  "pairs": [
+    {
+      "before": "before-desktop-evening-occupied-arrival.png",
+      "after": "after-desktop-evening-occupied-arrival.png",
+      "device": "desktop",
+      "phase": "evening",
+      "occupancy": "occupied",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "lifeElapsedInput": 42000,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    },
+    {
+      "before": "before-desktop-evening-occupied-care-pocket.png",
+      "after": "after-desktop-evening-occupied-care-pocket.png",
+      "device": "desktop",
+      "phase": "evening",
+      "occupancy": "occupied",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "position": {
+        "x": 19,
+        "y": 20
+      },
+      "lifeElapsedInput": 42000,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    },
+    {
+      "before": "before-desktop-evening-empty-arrival.png",
+      "after": "after-desktop-evening-empty-arrival.png",
+      "device": "desktop",
+      "phase": "evening",
+      "occupancy": "empty",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "lifeElapsedInput": 42000,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    },
+    {
+      "before": "before-desktop-evening-empty-care-pocket.png",
+      "after": "after-desktop-evening-empty-care-pocket.png",
+      "device": "desktop",
+      "phase": "evening",
+      "occupancy": "empty",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "position": {
+        "x": 19,
+        "y": 20
+      },
+      "lifeElapsedInput": 42000,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    },
+    {
+      "before": "before-desktop-morning-service-present-arrival.png",
+      "after": "after-desktop-morning-service-present-arrival.png",
+      "device": "desktop",
+      "phase": "morning",
+      "occupancy": "service-present",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "lifeElapsedInput": 0,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    },
+    {
+      "before": "before-desktop-morning-service-present-care-pocket.png",
+      "after": "after-desktop-morning-service-present-care-pocket.png",
+      "device": "desktop",
+      "phase": "morning",
+      "occupancy": "service-present",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "position": {
+        "x": 19,
+        "y": 20
+      },
+      "lifeElapsedInput": 0,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    },
+    {
+      "before": "before-phone-evening-occupied-arrival.png",
+      "after": "after-phone-evening-occupied-arrival.png",
+      "device": "phone",
+      "phase": "evening",
+      "occupancy": "occupied",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "lifeElapsedInput": 42000,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    },
+    {
+      "before": "before-phone-evening-occupied-care-pocket.png",
+      "after": "after-phone-evening-occupied-care-pocket.png",
+      "device": "phone",
+      "phase": "evening",
+      "occupancy": "occupied",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "position": {
+        "x": 19,
+        "y": 20
+      },
+      "lifeElapsedInput": 42000,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    },
+    {
+      "before": "before-phone-evening-empty-arrival.png",
+      "after": "after-phone-evening-empty-arrival.png",
+      "device": "phone",
+      "phase": "evening",
+      "occupancy": "empty",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "lifeElapsedInput": 42000,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    },
+    {
+      "before": "before-phone-evening-empty-care-pocket.png",
+      "after": "after-phone-evening-empty-care-pocket.png",
+      "device": "phone",
+      "phase": "evening",
+      "occupancy": "empty",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "position": {
+        "x": 19,
+        "y": 20
+      },
+      "lifeElapsedInput": 42000,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    },
+    {
+      "before": "before-phone-morning-service-present-arrival.png",
+      "after": "after-phone-morning-service-present-arrival.png",
+      "device": "phone",
+      "phase": "morning",
+      "occupancy": "service-present",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "lifeElapsedInput": 0,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    },
+    {
+      "before": "before-phone-morning-service-present-care-pocket.png",
+      "after": "after-phone-morning-service-present-care-pocket.png",
+      "device": "phone",
+      "phase": "morning",
+      "occupancy": "service-present",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "position": {
+        "x": 19,
+        "y": 20
+      },
+      "lifeElapsedInput": 0,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    },
+    {
+      "before": "before-narrow-evening-occupied-arrival.png",
+      "after": "after-narrow-evening-occupied-arrival.png",
+      "device": "narrow",
+      "phase": "evening",
+      "occupancy": "occupied",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "lifeElapsedInput": 42000,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    },
+    {
+      "before": "before-narrow-evening-occupied-care-pocket.png",
+      "after": "after-narrow-evening-occupied-care-pocket.png",
+      "device": "narrow",
+      "phase": "evening",
+      "occupancy": "occupied",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "position": {
+        "x": 19,
+        "y": 20
+      },
+      "lifeElapsedInput": 42000,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    },
+    {
+      "before": "before-narrow-evening-empty-arrival.png",
+      "after": "after-narrow-evening-empty-arrival.png",
+      "device": "narrow",
+      "phase": "evening",
+      "occupancy": "empty",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "lifeElapsedInput": 42000,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    },
+    {
+      "before": "before-narrow-evening-empty-care-pocket.png",
+      "after": "after-narrow-evening-empty-care-pocket.png",
+      "device": "narrow",
+      "phase": "evening",
+      "occupancy": "empty",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "position": {
+        "x": 19,
+        "y": 20
+      },
+      "lifeElapsedInput": 42000,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    },
+    {
+      "before": "before-narrow-morning-service-present-arrival.png",
+      "after": "after-narrow-morning-service-present-arrival.png",
+      "device": "narrow",
+      "phase": "morning",
+      "occupancy": "service-present",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "lifeElapsedInput": 0,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    },
+    {
+      "before": "before-narrow-morning-service-present-care-pocket.png",
+      "after": "after-narrow-morning-service-present-care-pocket.png",
+      "device": "narrow",
+      "phase": "morning",
+      "occupancy": "service-present",
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "position": {
+        "x": 19,
+        "y": 20
+      },
+      "lifeElapsedInput": 0,
+      "ui": {
+        "modals": 0,
+        "context": 0
+      }
+    }
+  ],
+  "materialPairs": 4,
+  "traversals": [
+    {
+      "device": "desktop",
+      "steps": 8,
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "steps": 8,
+      "errors": []
+    }
+  ],
+  "residentActivities": [
+    "work",
+    "walk"
+  ],
+  "hashes": {
+    "after-desktop-evening-empty-arrival.png": "6c456ff8a303d0b48ce337f86bfa113407c43673aaa674b4c06701b0fcc28f2a",
+    "after-desktop-evening-empty-care-pocket.png": "560b29413db7eab50bb2fc129f4793c630f4e4e9e2f2f5451edd6dd1a13fda45",
+    "after-desktop-evening-occupied-arrival.png": "774d92d94bebda4e463978992f49a74a2a9473572bc52296fab69dca602d02aa",
+    "after-desktop-evening-occupied-care-pocket.png": "5e446c553a65db1553a9d8acd65721c531566fe2d311118a85f489ef3a270ef3",
+    "after-desktop-morning-service-present-arrival.png": "36ea7039cf63538e8bb7db39a895c0a395adb7674961acb490d80b9aae66b344",
+    "after-desktop-morning-service-present-care-pocket.png": "c87ddcd1cc99e33968607231f2744f8b8552d717d8da2f1dac152b47c3ae8da2",
+    "after-narrow-evening-empty-arrival.png": "65096c00888bc542b476170fc64bc172f839be1b192397433af3cbd05b0d2270",
+    "after-narrow-evening-empty-care-pocket.png": "63131d3c14b1f7748c3a64d6d9b5f8b7e6751de89971422405fc27a631658423",
+    "after-narrow-evening-occupied-arrival.png": "65096c00888bc542b476170fc64bc172f839be1b192397433af3cbd05b0d2270",
+    "after-narrow-evening-occupied-care-pocket.png": "333237f75e200c35eb6884eab3380ae09049e12051b334424dbf15b9bf20fe90",
+    "after-narrow-morning-service-present-arrival.png": "4d8acfdf761f6e2e7fd31bca30bd547334283bf1902658b13db579a386659b18",
+    "after-narrow-morning-service-present-care-pocket.png": "a01b3fa33dbde6c2d29cac365ac4180340307d590d5f02ada8053c8dc202a48b",
+    "after-phone-evening-empty-arrival.png": "52b9fca73e4aeafe0c02dddd78b027950bb2695fd4ae5aa1a33f9ce153c6a503",
+    "after-phone-evening-empty-care-pocket.png": "3419fd7cdd987f36c30995476e15b3a830e10ac98d294004c78aa80bc03f4dd7",
+    "after-phone-evening-occupied-arrival.png": "52b9fca73e4aeafe0c02dddd78b027950bb2695fd4ae5aa1a33f9ce153c6a503",
+    "after-phone-evening-occupied-care-pocket.png": "38cf186e8c0bc84099bf03a2b24f11512d20ccadab73f0d23ca8d35b04961a5c",
+    "after-phone-morning-service-present-arrival.png": "449ee96a9fc136ffc6eb2511ce4ab96d8d9a197286b16b973978d7aeffb0b427",
+    "after-phone-morning-service-present-care-pocket.png": "9299f3c860ca192f11e466b8e74c3400aa6599ccc7e51c712de6a80c49190ccc",
+    "before-desktop-evening-empty-arrival.png": "71ec4f849c47be2ac33e378c891e962c73ffca61451d6c1fc7d19ad3101c9e48",
+    "before-desktop-evening-empty-care-pocket.png": "aeda05840aed028a0a9145220daf1126492f4506d70561c7e0b0b7ee3a18abc2",
+    "before-desktop-evening-occupied-arrival.png": "15f1e73b3b9ee69f986796ed47abe0e505a167a957cb5c9d796450fda431fa6e",
+    "before-desktop-evening-occupied-care-pocket.png": "ab5d946f3c040785572cd9b6bfeaedb2bd3310cca6c60b120b24e0901d3f3a83",
+    "before-desktop-morning-service-present-arrival.png": "c4fb0d0e3de3469e7c0468c117aa4b609898cb35b083004db4d55784e67306e6",
+    "before-desktop-morning-service-present-care-pocket.png": "bbc254e6f232afb080e7bbdb65fc45d1e162e586b733f889f75c4a442484e1ac",
+    "before-narrow-evening-empty-arrival.png": "d46a31af890fb1ca412c7c4be558eb9fa2d724cc811bf96a48d51a1e64b91a39",
+    "before-narrow-evening-empty-care-pocket.png": "fff66eea84ef13249fdc6b67d6bfb511123978b8d307faa6ccf0c3d19353dc5e",
+    "before-narrow-evening-occupied-arrival.png": "d46a31af890fb1ca412c7c4be558eb9fa2d724cc811bf96a48d51a1e64b91a39",
+    "before-narrow-evening-occupied-care-pocket.png": "0b55febc5044c126b88c30ea6ecd8a3279298f7b2e3a76f1d96db10dd65f2d5e",
+    "before-narrow-morning-service-present-arrival.png": "06420bd3d396315947f015d2a3dd621d8d5d5806cfa929d615e23bb6d685b786",
+    "before-narrow-morning-service-present-care-pocket.png": "0ae3363c51e42aece65406efc06fd891f89edaf28677237ff3634e97609e5dc5",
+    "before-phone-evening-empty-arrival.png": "92db4b21347ad101c15e976ca46835add6e24f5e84a9d86da1892e29e2dbc9ef",
+    "before-phone-evening-empty-care-pocket.png": "6bc376593695d56a560b6edab3044c8a08adf09185b66c43f3201dab726fb0d1",
+    "before-phone-evening-occupied-arrival.png": "92db4b21347ad101c15e976ca46835add6e24f5e84a9d86da1892e29e2dbc9ef",
+    "before-phone-evening-occupied-care-pocket.png": "6bc376593695d56a560b6edab3044c8a08adf09185b66c43f3201dab726fb0d1",
+    "before-phone-morning-service-present-arrival.png": "2bec28cf68ff433fa4b697ab4ac58dba6ef1bc67ac0a696883a3a7c34bb01d65",
+    "before-phone-morning-service-present-care-pocket.png": "ca10f14d1960fdb2cbc00a1d6a6eb453a523cc9bca1def129857e99df205e62d",
+    "desktop-actual-traversal.mp4": "62bf43b977736addfcdbcebb10157481787ee3486513ebccbaf61160b2536893",
+    "desktop-arrival.png": "012d2d0a20747945056460ef6ed73c5ec1a492fd7d0cc3af0b8e822890d57116",
+    "desktop-care-reached.png": "4bcaba627d5dc749018eb235b6660e26216aedb98c5319738e459eea612c1996",
+    "desktop-moved-pot-real-scene.png": "8bc15b63707837cb2a466cd983bc3afe1814ef0d8c5a4991286879b5b40f4f4c",
+    "desktop-ordinary-stair-departure.png": "eef41aa4d2dc6b2080780a46f862519e2a62f4bb7c47d96e2f9e6f92efde016b",
+    "desktop-ordinary-stair-return.png": "e5bcb7bbffee9fd1ba647a6252d715c41400738f7294fbf76b4eaf55d87f3467",
+    "desktop-reload-consequences.png": "9c481a733775bb285bf0f81e12fad9ae2e650df8945877718f5f67cd2dccab9a",
+    "desktop-under-threshold.png": "0bc002908d437fc173c5a812f8a76ffe232d5528cfc416f3d4d71155365872c1",
+    "desktop-watered-and-moved-controls.png": "dc4960e36075716042a9ea9faa423e1d74bb6e457ff1706a9e5c90ff0f7a9279",
+    "material-desktop-evening-empty-arrival.png": "bf679d53f65e171748a0d5b49c741e00b7dbcb68967c4b6d2d3c95834bdb0d67",
+    "material-desktop-evening-empty-care-pocket.png": "310988e3c77775bc7163d78f5b1e7853fca2e904dad9b6ae71bf6440edebd888",
+    "material-desktop-morning-empty-arrival.png": "1b9b6f9e7a79ce1bf7697bb00fb025d687b1895f3bf0e2f34dc27ffe5fa4358c",
+    "material-desktop-morning-empty-care-pocket.png": "2135dcafd287077bc59ecd9255dfcd0c33ae7a8a40d9fdf7a9afe0bb55364811",
+    "material-phone-evening-empty-arrival.png": "52b9fca73e4aeafe0c02dddd78b027950bb2695fd4ae5aa1a33f9ce153c6a503",
+    "material-phone-evening-empty-care-pocket.png": "f2eb3d061223dddf45769f639559b7d660c10a2aa1188095259f609d6e33012a",
+    "material-phone-morning-empty-arrival.png": "49131ff1a11165368964da8ca38b9ff650ea0264b63350fb4a0f239dd753116d",
+    "material-phone-morning-empty-care-pocket.png": "5a56bcbf1d546a97a63ae6c73db0b7772db7369620da95775a8cfdeedbfc337f",
+    "phone-actual-traversal.webm": "6e71854b3300f3c5b1fe5f2e0fda0298229fd742b2c95842b921ec67698c815a",
+    "phone-arrival.png": "449ee96a9fc136ffc6eb2511ce4ab96d8d9a197286b16b973978d7aeffb0b427",
+    "phone-care-reached.png": "37116c92c5aaf80b354c55509bbd1ccfa002b8e56c9cfcfb061733987f684f35",
+    "phone-moved-pot-real-scene.png": "845301a77a81d727f44ce88bf502805cedf467398dc1355f226102b5256b1fa3",
+    "phone-ordinary-stair-departure.png": "24151494b9be922ca22ea4f03ee067bb0873da6afebd6282bd05e05f2748f5d7",
+    "phone-ordinary-stair-return.png": "6998776116a1158dc01a1db58633c41bc21fadf25aa2b73f8cc263cde8f83fef",
+    "phone-reload-consequences.png": "a6ea0531c14789d3d4043c824f14f67cb1443d9e0cd2b20dce0e537dfb437952",
+    "phone-resident-0.png": "2072e433ce7f940ae6199a690f7a87cec45bfb74ecf9478a52422e9837409594",
+    "phone-resident-16.png": "03d5fcbf0b54cc3b83511a03b395600c8ee703764accef181baf976f58300522",
+    "phone-resident-24.png": "eab5a6251160b2ba212ad5ceea39673d90462c4802814a3d689dd784fe4e5309",
+    "phone-resident-35.png": "aca9905edbdd988c14d60ffbca0a110775f9b64cb2f02c2a540413d4c54a9308",
+    "phone-resident-8.png": "b9de1a94feb2dd7ced321d3a79fa590e63a636fe9b9c4bdfea1beb6184c6cab6",
+    "phone-resident-motion.webm": "7dd7fea89f97a44f0f826f3ed7b391b0fd9ed35d7568fc4ef7cb1d3d8151eb70",
+    "phone-under-threshold.png": "541b6d79c1b6d1f95c2627ec6be44632eff4c662c9d4f9e0e4c10ecc3a856c88",
+    "phone-watered-and-moved-controls.png": "c0d5f1ecf3bda0e1aa56d0ee54edd3ab9aabd5acce3a49e138e7bda8fa084c22"
+  },
+  "claim": "Bounded production evidence only. Not independent art acceptance or full opening/service/world completion."
+}

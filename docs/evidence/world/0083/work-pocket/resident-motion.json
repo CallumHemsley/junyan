@@ -1,0 +1,1164 @@
+{
+  "sourceHead": "bb2415204620f24926b6b48ae4418d491dc94c29",
+  "kind": "Actual production animation/clock following declared valid served/departed fixture; pure adapter observes persisted time only",
+  "activities": [
+    "work",
+    "walk"
+  ],
+  "samples": [
+    {
+      "wallMs": 168,
+      "lifeElapsedMs": 42000,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 20,
+          "y": 18.2
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 463.14880583577906,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 1299,
+      "lifeElapsedMs": 43006.59999999989,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 20,
+          "y": 18.2
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 1469.7488058356685,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 2351,
+      "lifeElapsedMs": 44023.29999999976,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 20,
+          "y": 18.2
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 2486.4488058355346,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 3386,
+      "lifeElapsedMs": 45039.79999999963,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 20,
+          "y": 18.2
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 3502.948805835418,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 4420,
+      "lifeElapsedMs": 46056.399999999514,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 20,
+          "y": 18.2
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 4519.548805835293,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 5455,
+      "lifeElapsedMs": 47073.099999999395,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 20,
+          "y": 18.2
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 5536.248805835174,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 6488,
+      "lifeElapsedMs": 48089.799999999275,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 20,
+          "y": 18.2
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 6552.948805835054,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 7520,
+      "lifeElapsedMs": 49106.29999999922,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 20,
+          "y": 18.2
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 7569.448805834996,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 8550,
+      "lifeElapsedMs": 50122.999999999134,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 20,
+          "y": 18.2
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 8586.148805834906,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 9631,
+      "lifeElapsedMs": 51139.59999999912,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 20,
+          "y": 18.2
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 9602.748805834897,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 10683,
+      "lifeElapsedMs": 52156.19999999908,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 20,
+          "y": 18.2
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 10619.34880583486,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 11721,
+      "lifeElapsedMs": 53172.799999999035,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 20,
+          "y": 18.2
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 11635.948805834807,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 12753,
+      "lifeElapsedMs": 54189.49999999897,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 20,
+          "y": 18.2
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 12652.648805834746,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 13787,
+      "lifeElapsedMs": 55206.09999999896,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 20,
+          "y": 18.2
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 13669.248805834737,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 14887,
+      "lifeElapsedMs": 56222.69999999893,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 20.23389510422045,
+          "y": 18.80812727097317
+        },
+        "facing": "south",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 685.8488058347139,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 15941,
+      "lifeElapsedMs": 57239.39999999889,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 20.6943596314934,
+          "y": 19.61252399718039
+        },
+        "facing": "east",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 236.4026713942294,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 17041,
+      "lifeElapsedMs": 58255.89999999884,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 21.530080159725337,
+          "y": 20.096362197735722
+        },
+        "facing": "east",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 1252.9026713941712,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 18248,
+      "lifeElapsedMs": 60272.59999999883,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 23.18812009015863,
+          "y": 21.056280052197103
+        },
+        "facing": "east",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 3269.6026713941683,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 19300,
+      "lifeElapsedMs": 61289.19999999888,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 24.02392283388778,
+          "y": 21.54016585119819
+        },
+        "facing": "east",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 4286.202671394218,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 20368,
+      "lifeElapsedMs": 62289.19999999888,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 24.84607780509485,
+          "y": 22.016150308212808
+        },
+        "facing": "east",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 5286.202671394218,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 21419,
+      "lifeElapsedMs": 63305.699999998884,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 25.681798333326835,
+          "y": 22.49998850876817
+        },
+        "facing": "east",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 6302.702671394218,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 22460,
+      "lifeElapsedMs": 64322.39999999886,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 26.517683292553052,
+          "y": 22.983921906214924
+        },
+        "facing": "east",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 7319.4026713942,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 23521,
+      "lifeElapsedMs": 65338.99999999882,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 27.353486036282128,
+          "y": 23.467807705215968
+        },
+        "facing": "east",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 8336.002671394162,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 24584,
+      "lifeElapsedMs": 66338.99999999882,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 28.175641007489197,
+          "y": 23.943792162230586
+        },
+        "facing": "east",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 9336.002671394162,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 25635,
+      "lifeElapsedMs": 67355.59999999873,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 29.011443751218223,
+          "y": 24.427677961231602
+        },
+        "facing": "east",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 10352.602671394066,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 26727,
+      "lifeElapsedMs": 68362.29999999864,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 29.839107160732308,
+          "y": 24.90685151410818
+        },
+        "facing": "east",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 11359.302671393976,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 27785,
+      "lifeElapsedMs": 69378.89999999863,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 30.432587572991228,
+          "y": 25.648881359486843
+        },
+        "facing": "south",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 820.903513446523,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 28822,
+      "lifeElapsedMs": 70385.49999999857,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 30.963030729635502,
+          "y": 26.44454609445325
+        },
+        "facing": "south",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 1827.5035134464706,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 29879,
+      "lifeElapsedMs": 71402.1999999984,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 31.49879623466249,
+          "y": 27.248194351993735
+        },
+        "facing": "south",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 2844.203513446293,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 30957,
+      "lifeElapsedMs": 72408.79999999833,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 32.02923939130675,
+          "y": 28.043859086960133
+        },
+        "facing": "south",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 3850.803513446226,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 32013,
+      "lifeElapsedMs": 73425.39999999829,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 32.564952199815174,
+          "y": 28.84742829972276
+        },
+        "facing": "south",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 4867.403513446188,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 33074,
+      "lifeElapsedMs": 74432.09999999833,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 33.172071424577936,
+          "y": 29.5
+        },
+        "facing": "east",
+        "action": "walk",
+        "activity": "walk",
+        "phaseMs": 181.12781534520036,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 34134,
+      "lifeElapsedMs": 75448.69999999835,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 34,
+          "y": 29.5
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 145.09623639784695,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 35172,
+      "lifeElapsedMs": 76455.19999999841,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 34,
+          "y": 29.5
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 1151.5962363979052,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 36221,
+      "lifeElapsedMs": 77455.19999999841,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 34,
+          "y": 29.5
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 2151.596236397905,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    },
+    {
+      "wallMs": 37280,
+      "lifeElapsedMs": 78461.69999999841,
+      "actor": {
+        "id": "rooftop.lin-jie",
+        "characterId": "lin-jie",
+        "kind": "resident",
+        "position": {
+          "x": 34,
+          "y": 29.5
+        },
+        "facing": "south",
+        "action": "idle",
+        "activity": "work",
+        "phaseMs": 3158.096236397905,
+        "greeting": {
+          "id": "lin-greeting",
+          "tokens": [
+            {
+              "id": "good-morning",
+              "hanzi": "早上好",
+              "pinyin": "zǎoshang hǎo",
+              "gloss": "good morning",
+              "audio": "/audio/word-266fcb41d7d247d46560eecc3a9f10de719e9546a41151358c6ab34092d43c42.wav"
+            }
+          ],
+          "audio": "/audio/line-63da849e29477061495bf9f09c5bc4a2fb79e3c6b25f2f856e8c19319d66ff14.wav",
+          "text": "早上好。"
+        },
+        "radius": 0.22
+      }
+    }
+  ],
+  "errors": [],
+  "limitations": "Existing e02 life profile supplies work/walk and terrace dwell, not seated rest/contact. No morning duplicate Lin fabricated."
+}

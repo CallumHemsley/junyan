@@ -1,0 +1,712 @@
+[
+  {
+    "sourceHead": "bb2415204620f24926b6b48ae4418d491dc94c29",
+    "device": "desktop",
+    "kind": "Production App ordinary inputs after explicitly declared arrival save; not full opening/service journey",
+    "cameraSourceSha256": "86fb0436def56b4a8b342972a86ce7d32ef9a25ae3b60ea8d5f0992bd053d43d",
+    "steps": [
+      {
+        "input": "ordinary mouse ground click",
+        "map": "rooftop",
+        "target": {
+          "x": 14.44,
+          "y": 27.09
+        },
+        "pixel": {
+          "x": 700.5,
+          "y": 534.45
+        },
+        "from": {
+          "x": 12.5,
+          "y": 29
+        },
+        "to": {
+          "x": 14.440000406901042,
+          "y": 27.09000040690104
+        },
+        "toMap": "rooftop"
+      },
+      {
+        "input": "ordinary mouse ground click",
+        "map": "rooftop",
+        "target": {
+          "x": 17,
+          "y": 24
+        },
+        "pixel": {
+          "x": 870,
+          "y": 526.0499877929688
+        },
+        "from": {
+          "x": 14.440000406901042,
+          "y": 27.09000040690104
+        },
+        "to": {
+          "x": 16.938631591429342,
+          "y": 24.07407360843548
+        },
+        "toMap": "rooftop"
+      },
+      {
+        "input": "ordinary mouse ground click",
+        "map": "rooftop",
+        "target": {
+          "x": 19,
+          "y": 20
+        },
+        "pixel": {
+          "x": 900,
+          "y": 504
+        },
+        "from": {
+          "x": 17,
+          "y": 24
+        },
+        "to": {
+          "x": 18.974895237727797,
+          "y": 20.05020952454441
+        },
+        "toMap": "rooftop"
+      },
+      {
+        "input": "ordinary mouse ground click",
+        "map": "rooftop",
+        "target": {
+          "x": 17,
+          "y": 24
+        },
+        "pixel": {
+          "x": 540,
+          "y": 564
+        },
+        "from": {
+          "x": 19,
+          "y": 20
+        },
+        "to": {
+          "x": 17,
+          "y": 24
+        },
+        "toMap": "rooftop"
+      },
+      {
+        "input": "ordinary mouse ground click",
+        "map": "rooftop",
+        "target": {
+          "x": 14.44,
+          "y": 27.09
+        },
+        "pixel": {
+          "x": 550.5,
+          "y": 541.95
+        },
+        "from": {
+          "x": 17,
+          "y": 24
+        },
+        "to": {
+          "x": 14.440000406901042,
+          "y": 27.09000040690104
+        },
+        "toMap": "rooftop"
+      },
+      {
+        "input": "ordinary mouse ground click",
+        "map": "rooftop",
+        "target": {
+          "x": 12.5,
+          "y": 29
+        },
+        "pixel": {
+          "x": 585,
+          "y": 533.5499877929688
+        },
+        "from": {
+          "x": 14.440000406901042,
+          "y": 27.09000040690104
+        },
+        "to": {
+          "x": 12.5,
+          "y": 29
+        },
+        "toMap": "rooftop"
+      },
+      {
+        "input": "ordinary mouse ground click",
+        "map": "rooftop",
+        "target": {
+          "x": 10,
+          "y": 29
+        },
+        "pixel": {
+          "x": 510,
+          "y": 496.5
+        },
+        "from": {
+          "x": 12.5,
+          "y": 29
+        },
+        "to": {
+          "x": 6,
+          "y": 5.5
+        },
+        "toMap": "residential-stairs"
+      },
+      {
+        "input": "ordinary mouse ground click",
+        "map": "residential-stairs",
+        "target": {
+          "x": 3.5,
+          "y": 5.5
+        },
+        "pixel": {
+          "x": 660,
+          "y": 211
+        },
+        "from": {
+          "x": 6,
+          "y": 5.5
+        },
+        "to": {
+          "x": 12.5,
+          "y": 29
+        },
+        "toMap": "rooftop"
+      }
+    ],
+    "targets": [
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "beforeGarden": {
+      "version": 1,
+      "day": 1,
+      "restored": true,
+      "shade": 0,
+      "plants": {
+        "flower": {
+          "site": 0,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "climber": {
+          "site": 2,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "tree": {
+          "site": 4,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        }
+      },
+      "planterEarned": false
+    },
+    "wateredGarden": {
+      "version": 1,
+      "day": 1,
+      "restored": true,
+      "shade": 0,
+      "plants": {
+        "flower": {
+          "site": 0,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "climber": {
+          "site": 2,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "tree": {
+          "site": 4,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        }
+      },
+      "planterEarned": false
+    },
+    "movedGarden": {
+      "version": 1,
+      "day": 1,
+      "restored": true,
+      "shade": 0,
+      "plants": {
+        "flower": {
+          "site": 0,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "climber": {
+          "site": 1,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "tree": {
+          "site": 4,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        }
+      },
+      "planterEarned": false
+    },
+    "reloadedWorld": {
+      "version": 1,
+      "mapId": "rooftop",
+      "position": {
+        "x": 19,
+        "y": 20
+      },
+      "facing": "north",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "elapsedMs": 6053.2,
+        "discoveries": [],
+        "reactions": [],
+        "serviceDepartures": [],
+        "pauses": []
+      }
+    },
+    "returnedWorld": {
+      "version": 1,
+      "mapId": "rooftop",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "facing": "east",
+      "returnPositions": {
+        "rooftop": {
+          "x": 10.583499999999999,
+          "y": 29,
+          "facing": "west"
+        },
+        "residential-stairs": {
+          "x": 4.083499999999999,
+          "y": 5.5,
+          "facing": "west"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "elapsedMs": 11152.90000000002,
+        "discoveries": [],
+        "reactions": [],
+        "serviceDepartures": [],
+        "pauses": []
+      }
+    },
+    "day": 1,
+    "served": 0,
+    "errors": []
+  },
+  {
+    "sourceHead": "bb2415204620f24926b6b48ae4418d491dc94c29",
+    "device": "phone",
+    "kind": "Production App ordinary inputs after explicitly declared arrival save; not full opening/service journey",
+    "cameraSourceSha256": "86fb0436def56b4a8b342972a86ce7d32ef9a25ae3b60ea8d5f0992bd053d43d",
+    "steps": [
+      {
+        "input": "ordinary touchscreen ground tap",
+        "map": "rooftop",
+        "target": {
+          "x": 14.44,
+          "y": 27.09
+        },
+        "pixel": {
+          "x": 279.7,
+          "y": 454.33
+        },
+        "from": {
+          "x": 12.5,
+          "y": 29
+        },
+        "to": {
+          "x": 14.400490458049381,
+          "y": 27.128897378852997
+        },
+        "toMap": "rooftop"
+      },
+      {
+        "input": "ordinary touchscreen ground tap",
+        "map": "rooftop",
+        "target": {
+          "x": 17,
+          "y": 24
+        },
+        "pixel": {
+          "x": 319.2999877929688,
+          "y": 448.1700134277344
+        },
+        "from": {
+          "x": 14.439999667080965,
+          "y": 27.08999911221591
+        },
+        "to": {
+          "x": 17,
+          "y": 24
+        },
+        "toMap": "rooftop"
+      },
+      {
+        "input": "ordinary touchscreen ground tap",
+        "map": "rooftop",
+        "target": {
+          "x": 19,
+          "y": 20
+        },
+        "pixel": {
+          "x": 327,
+          "y": 432
+        },
+        "from": {
+          "x": 17,
+          "y": 24
+        },
+        "to": {
+          "x": 19,
+          "y": 20
+        },
+        "toMap": "rooftop"
+      },
+      {
+        "input": "ordinary touchscreen ground tap",
+        "map": "rooftop",
+        "target": {
+          "x": 17,
+          "y": 24
+        },
+        "pixel": {
+          "x": 63,
+          "y": 476
+        },
+        "from": {
+          "x": 19,
+          "y": 20
+        },
+        "to": {
+          "x": 17,
+          "y": 24
+        },
+        "toMap": "rooftop"
+      },
+      {
+        "input": "ordinary touchscreen ground tap",
+        "map": "rooftop",
+        "target": {
+          "x": 14.44,
+          "y": 27.09
+        },
+        "pixel": {
+          "x": 70.69999999999999,
+          "y": 459.83
+        },
+        "from": {
+          "x": 17,
+          "y": 24
+        },
+        "to": {
+          "x": 14.439999320290305,
+          "y": 27.08999945900657
+        },
+        "toMap": "rooftop"
+      },
+      {
+        "input": "ordinary touchscreen ground tap",
+        "map": "rooftop",
+        "target": {
+          "x": 12.5,
+          "y": 29
+        },
+        "pixel": {
+          "x": 110.30000305175786,
+          "y": 453.6700134277344
+        },
+        "from": {
+          "x": 14.439999320290305,
+          "y": 27.08999945900657
+        },
+        "to": {
+          "x": 12.59936682687996,
+          "y": 28.90216971154963
+        },
+        "toMap": "rooftop"
+      },
+      {
+        "input": "ordinary touchscreen ground tap",
+        "map": "rooftop",
+        "target": {
+          "x": 10,
+          "y": 29
+        },
+        "pixel": {
+          "x": 140,
+          "y": 426.5
+        },
+        "from": {
+          "x": 12.5,
+          "y": 29
+        },
+        "to": {
+          "x": 6,
+          "y": 5.5
+        },
+        "toMap": "residential-stairs"
+      },
+      {
+        "input": "ordinary touchscreen ground tap",
+        "map": "residential-stairs",
+        "target": {
+          "x": 3.5,
+          "y": 5.5
+        },
+        "pixel": {
+          "x": 140,
+          "y": 184.5
+        },
+        "from": {
+          "x": 6,
+          "y": 5.5
+        },
+        "to": {
+          "x": 12.5,
+          "y": 29
+        },
+        "toMap": "rooftop"
+      }
+    ],
+    "targets": [
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "beforeGarden": {
+      "version": 1,
+      "day": 1,
+      "restored": true,
+      "shade": 0,
+      "plants": {
+        "flower": {
+          "site": 0,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "climber": {
+          "site": 2,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "tree": {
+          "site": 4,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        }
+      },
+      "planterEarned": false
+    },
+    "wateredGarden": {
+      "version": 1,
+      "day": 1,
+      "restored": true,
+      "shade": 0,
+      "plants": {
+        "flower": {
+          "site": 0,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "climber": {
+          "site": 2,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "tree": {
+          "site": 4,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        }
+      },
+      "planterEarned": false
+    },
+    "movedGarden": {
+      "version": 1,
+      "day": 1,
+      "restored": true,
+      "shade": 0,
+      "plants": {
+        "flower": {
+          "site": 0,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "climber": {
+          "site": 1,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "tree": {
+          "site": 4,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        }
+      },
+      "planterEarned": false
+    },
+    "reloadedWorld": {
+      "version": 1,
+      "mapId": "rooftop",
+      "position": {
+        "x": 19,
+        "y": 20
+      },
+      "facing": "north",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "elapsedMs": 5053,
+        "discoveries": [],
+        "reactions": [],
+        "serviceDepartures": [],
+        "pauses": []
+      }
+    },
+    "returnedWorld": {
+      "version": 1,
+      "mapId": "rooftop",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "facing": "east",
+      "returnPositions": {
+        "rooftop": {
+          "x": 10.583500000000003,
+          "y": 29,
+          "facing": "west"
+        },
+        "residential-stairs": {
+          "x": 4.0005000000000015,
+          "y": 5.5,
+          "facing": "west"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "elapsedMs": 9092.899999999998,
+        "discoveries": [],
+        "reactions": [],
+        "serviceDepartures": [],
+        "pauses": []
+      }
+    },
+    "day": 1,
+    "served": 0,
+    "errors": []
+  }
+]

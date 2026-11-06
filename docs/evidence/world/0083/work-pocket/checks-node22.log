@@ -1,0 +1,14 @@
+
+ RUN  v3.2.7 /workspace/junyan
+
+ ✓ src/world/art/rooftop/art.test.ts (2 tests) 15ms
+ ✓ src/features/garden/rules.test.ts (11 tests) 20ms
+ ✓ src/world/maps/rooftop/work-pocket.test.ts (3 tests) 250ms
+ ✓ src/world/maps/rooftop/rooftop.test.ts (6 tests) 12156ms
+   ✓ rooftop circulation and existing garden projection > keeps circulation open for every legal three-pot layout and each shade site  11823ms
+
+ Test Files  4 passed (4)
+      Tests  22 passed (22)
+   Start at  02:03:23
+   Duration  12.82s (transform 487ms, setup 0ms, collect 1.15s, tests 12.44s, environment 1ms, prepare 420ms)
+
