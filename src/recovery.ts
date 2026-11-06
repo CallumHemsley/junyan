@@ -28,8 +28,9 @@ export function nextDots(
   next: GameState,
 ): string[] {
   if (next === previous) return dots;
-  if (previous.day !== next.day || previous.neighbourhood?.location !== next.neighbourhood?.location) return [];
-  if (action.type === "feature-action") return previous.journal === next.journal ? dots : freshWords(previous.journal, next.journal);
+  if (previous.day !== next.day) return [];
+  if (action.type === "feature-action" || action.type === "world-interact") return previous.journal === next.journal ? dots : freshWords(previous.journal, next.journal);
+  if (previous.neighbourhood?.location !== next.neighbourhood?.location) return [];
   if (action.type !== "deliver") return dots;
   const served = (state: GameState) =>
     state.customers.find((entry) => entry.table === action.table)?.phase;

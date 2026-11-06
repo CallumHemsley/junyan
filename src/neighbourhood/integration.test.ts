@@ -14,6 +14,8 @@ import { startSession } from "../startup";
 import type { Action as CatsAction } from "../features/cats/rules";
 import type { Action as RepairAction } from "../features/repairs/rules";
 import { nextDots } from "../recovery";
+import { mapsForNeighbourhood } from "../world/dynamic";
+import { createWorld } from "../world/state";
 
 
 const act = (game: GameState, action: NeighbourhoodAction) => reduceNeighbourhoodGame(game, action, content);
@@ -55,6 +57,32 @@ function finishDay(game: GameState) {
 }
 
 describe("saved neighbourhood integration", () => {
+  it.each(["white", "bicycle"] as const)("keeps recovery and fresh dots when the physical %s anchor selects a cat clue", target => {
+    let base = visit(createGame(content, 42), "cats");
+    if (target === "bicycle") {
+      base = visit(act(finishDay(reunion(base)), { type: "advance-world-day", now: 121 }), "cats");
+      base = act(base, { type: "feature-action", feature: "cats", action: { type: "begin" }, now: 122 });
+    }
+    const maps = mapsForNeighbourhood(base.neighbourhood!);
+    const anchor = maps.courtyard.anchors.find(anchor => anchor.id === `courtyard.${target}`)!;
+    const before = { ...base, world: { ...createWorld(maps, "cats"), position: anchor.position } };
+    const action = { type: "world-interact", anchorId: anchor.id, now: 123 } as const;
+    const next = act(before, action);
+    const expected = act(base, { type: "feature-action", feature: "cats", action: { type: "select", target }, now: 123 });
+    expect(next.neighbourhood?.cats).toEqual(expected.neighbourhood?.cats);
+    expect(next.journal).toEqual(expected.journal);
+    expect(next.progression).toEqual(expected.progression);
+    const learned = Object.keys(next.journal).filter(id => next.journal[id].recovered && !base.journal[id]?.recovered);
+    expect(learned.length).toBeGreaterThan(0);
+    expect(nextDots([], before, action, next)).toEqual(learned);
+    expect(learned.every(id => next.journal[id].lastSeen === 123)).toBe(true);
+    expect(next.world?.activeAnchorId).toBe(anchor.id);
+    expect(reload(next).journal).toEqual(next.journal);
+    const repeated = act(next, action);
+    expect(repeated.journal).toEqual(next.journal);
+    expect(nextDots(learned, next, action, repeated)).toEqual(learned);
+  });
+
   it("keeps mandatory opening and preserves the restaurant through every optional visit", () => {
     const opening=createSession(content,42,"opening");
     expect(reduceSession(opening,{type:"visit-location",location:"cats"},content)).toBe(opening);

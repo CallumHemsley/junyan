@@ -130,7 +130,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   if(paused||state.activeActivity||!selected)return;
   invocation.current={key:selected.key,fromControl};setSelection({key:selected.key,mode:"manual"});
   path.current=[];keys.current.clear();requestId.current++;
-  if(selected.source==="anchor")onAction({type:"world-interact",anchorId:selected.anchor.id});
+  if(selected.source==="anchor")onAction({type:"world-interact",anchorId:selected.anchor.id,now:Date.now()});
   else onAction({type:"world-life",actionId:selected.affordance.id,elapsedMs:elapsed.current});
  }
  function stepPad(key:string){

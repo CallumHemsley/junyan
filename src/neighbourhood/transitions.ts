@@ -64,7 +64,7 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
     if (next === world) return game;
     let player=game.player;
     const physicalLocation:LocationId|undefined=({restaurant:"restaurant",apartment:"apartment",courtyard:"cats",workshop:"repairs",rooftop:"garden"} as Record<string,LocationId>)[next.mapId];
-    let neighbourhood=physicalLocation&&physicalLocation!==state.location?{...state,location:physicalLocation}:state;
+    const neighbourhood=physicalLocation&&physicalLocation!==state.location?{...state,location:physicalLocation}:state;
     if(action.type==="world-interact" && next.activeActivity) {
       const anchor=maps[next.mapId].anchors.find(a=>a.id===next.activeAnchorId);
       if(next.activeActivity==="restaurant"&&anchor) {
@@ -74,11 +74,11 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
       if(next.activeActivity==="cats"&&anchor) {
         const target=anchor.interactionId.replace(/^cats\./,"");
         const selected=cats.targets.find(id=>id===target);
-        if(selected)neighbourhood={...neighbourhood,cats:cats.reduce(state.cats,{type:"select",target:selected},game.day)};
+        if(selected)return reduceNeighbourhoodGame({...game,player,world:next,neighbourhood},{type:"feature-action",feature:"cats",action:{type:"select",target:selected},now:action.now??0},content);
       }
       if(next.activeActivity==="repairs"&&anchor) {
         const repairAction=repairActionForWorldAnchor(anchor.interactionId);
-        if(repairAction)neighbourhood={...neighbourhood,repairs:repairs.reduce(state.repairs,repairAction,game.day)};
+        if(repairAction)return reduceNeighbourhoodGame({...game,player,world:next,neighbourhood},{type:"feature-action",feature:"repairs",action:repairAction,now:action.now??0},content);
       }
     }
     return { ...game, player, world: next, neighbourhood };
