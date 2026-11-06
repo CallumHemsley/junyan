@@ -18,7 +18,7 @@ it('renders room fixtures and actual project furniture as depth-sorted objects',
   const objects = renderObjects(map);
   expect(objects.find(o => o.id === 'reading-room.window.table')).toBeDefined();
   expect(objects.find(o => o.id === 'reading-room.window.table')?.occlusion).toMatchObject({ height: 1.2 });
-  expect(objects.filter(o => o.id.startsWith('reading-room.back-wall.'))).toHaveLength(26);
+  expect(objects.filter(o => o.id.startsWith('reading-room.back-wall.'))).toHaveLength(24);
   expect(objects.some(o => o.id === 'reading-room.broad-window')).toBe(true);
   expect(objects.some(o => o.id === 'reading-room.return-cart')).toBe(true);
   const table = objects.find(o => o.id === 'reading-room.window.table')!;

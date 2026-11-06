@@ -210,9 +210,11 @@ function drawProp(ctx: CanvasRenderingContext2D, view: WorldRenderView, p: Prop)
 export const drawMap: DrawMap = (ctx, map, view) => {
   if (map.id !== 'reading-room' || view.pass !== 'ground') return;
   ctx.fillStyle = view.shadeColor?.('#3f4b46') ?? '#3f4b46'; ctx.fillRect(0, 0, view.width, view.height);
-  box(ctx, view, 2, 3, -.12, 26, 17, .1, '#756242');
-  for (let y = 3; y < 20; y += .5) for (let x = 2; x < 31; x += 3.2) {
-    const row=Math.round(y*2),offset=[0,.7,1.6,2.1][row%4],start=Math.max(2,x-offset),end=Math.min(28,x+3.2-offset);
+  const floor = map.terrain.find(terrain => terrain.id === 'reading-room.floor')!.rect;
+  const floorRight = floor.x + floor.width, floorFront = floor.y + floor.height;
+  box(ctx, view, floor.x, floor.y, -.12, floor.width, floor.height, .1, '#756242');
+  for (let y = floor.y; y < floorFront; y += .5) for (let x = floor.x; x < floorRight + 3.2; x += 3.2) {
+    const row=Math.round(y*2),offset=[0,.7,1.6,2.1][row%4],start=Math.max(floor.x,x-offset),end=Math.min(floorRight,x+3.2-offset);
     if(start>=end)continue;
     const traffic = x >= 11.5 && x < 14 && y > 11 && y < 18;
     const c = (traffic ? ['#ac9873', '#ae9b75', '#ac9871', '#a99670'] : ['#9c845e', '#a18a63', '#9d865f', '#a38c64'])[(Math.round((x-2)/3.2)*3+row)%4];
@@ -221,7 +223,7 @@ export const drawMap: DrawMap = (ctx, map, view) => {
     if ((row + Math.round((x-2)/3.2)) % 3 === 0) stroke(ctx, view, [start, y, .002], [start, y + .5, .002], '#947d58');
   }
   // Three handled turns connect the real entry, desk approach and return cart; no scattered debris.
-  for(const patch of [[[12.7,16],[13.6,15.8],[13.8,16.7],[12.6,17.1]],[[11.5,12.8],[12.2,12.6],[12.3,14.7],[11.6,14.9]],[[15.4,13.8],[16.6,13.7],[17.5,14.1],[16.6,14.4]]] as [number,number][][]){
+  for(const patch of [[[12.7,14.1],[13.6,13.9],[13.8,14.8],[12.6,15.2]],[[11.5,12.8],[12.2,12.6],[12.3,14.7],[11.6,14.9]],[[15.4,13.8],[16.6,13.7],[17.5,14.1],[16.6,14.4]]] as [number,number][][]){
     ctx.save();ctx.globalAlpha*=.22;polygon(ctx,view,patch.map(([x,y])=>[x,y,.003]),'#c9b58c');ctx.restore();
   }
   for (const p of map.props.filter(prop => prop.layer === 'ground')) {

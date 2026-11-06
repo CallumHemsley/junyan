@@ -5,6 +5,11 @@ import { readingRoomMap } from './index';
 import { projectReadingRoom } from '../../../features/reading-room/world';
 import { initialState, legal } from '../../../features/reading-room/rules';
 import { atmosphereHooksForMap } from '../../atmosphere/map-hooks';
+import { worldMaps } from '../../registry';
+import { createWorld, reduceWorld, restoreWorld } from '../../state';
+import { isExitConnected } from '../../exit-safety';
+import { readingHome } from '../../../features/reading-room/use';
+import { regions } from '../../../features/reading-room/world';
 
 it('authors a real reading-room identity with an accessible hall return and furnishing station', () => {
   const base = worldMapSchema.parse(readingRoomMap), projection = projectReadingRoom(initialState());
@@ -13,8 +18,59 @@ it('authors a real reading-room identity with an accessible hall return and furn
   expect(map.anchors[0].featureId).toBe('reading-room');
   for (const entrance of map.entrances) expect(canStand(map, entrance.position)).toBe(true);
   expect(findPath(map, map.defaultSpawn, map.anchors[0].position).length).toBeGreaterThan(0);
-  expect(findPath(map, map.defaultSpawn, { x: 14, y: 19.5 }).length).toBeGreaterThan(0);
+  expect(findPath(map, map.defaultSpawn, { x: 14, y: 16.5 }).length).toBeGreaterThan(0);
   expect(map.exits[0]).toMatchObject({ targetMapId: 'residential-hall', targetEntranceId: 'hall.from-reading-room' });
+});
+
+it('aligns the compact actual floor, shell, threshold and preserved work bays', () => {
+  const map = worldMapSchema.parse(readingRoomMap), floor = map.terrain[0].rect;
+  expect(floor).toEqual({ x: 2, y: 3, width: 24, height: 14 });
+  expect(map.walkable).toEqual([floor]);
+  expect(map.bounds).toEqual({ width: 28, height: 19 });
+  const prop = (id: string) => map.props.find(p => p.id === `reading-room.${id}`)!;
+  expect(prop('back-wall').width).toBe(floor.width);
+  expect(prop('west-wall').height).toBe(floor.height);
+  expect(prop('east-wall')).toMatchObject({ position: { x: floor.x + floor.width, y: floor.y }, height: floor.height });
+  const threshold = prop('hall-threshold'), exit = map.exits[0].rect;
+  expect(threshold.position.y).toBe(exit.y);
+  expect(exit.y + exit.height).toBe(floor.y + floor.height);
+  expect(map.colliders.find(c => c.id === 'reading-room.entry-left')!.rect).toMatchObject({ x: threshold.position.x, y: threshold.position.y, height: threshold.height });
+  const rightJamb = map.colliders.find(c => c.id === 'reading-room.entry-right')!.rect;
+  expect(rightJamb.x + rightJamb.width).toBeCloseTo(threshold.position.x + threshold.width);
+  expect(rightJamb).toMatchObject({ y: threshold.position.y, height: threshold.height });
+  for (const p of map.props.filter(p => ['reading-shelf', 'reading-cart', 'reading-notice', 'reading-plant', 'reading-lamp'].includes(p.kind))) {
+    expect(map.colliders.find(c => c.id === p.id)?.rect, p.id).toEqual({ ...p.position, width: p.width, height: p.height });
+  }
+  for (const region of Object.values(regions)) {
+    expect(region.x + region.columns * region.cellSize).toBeLessThan(floor.x + floor.width);
+    expect(region.y + region.rows * region.cellSize).toBeLessThan(floor.y + floor.height);
+  }
+  const projection = projectReadingRoom(initialState()), actual = { ...map, colliders: [...map.colliders, ...projection.colliders] };
+  expect(canStand(actual, readingHome)).toBe(true);
+  expect(findPath(actual, map.defaultSpawn, readingHome).length).toBeGreaterThan(0);
+});
+
+it('walks reciprocal hall entry and exit and safely restores removed-acreage saves', () => {
+  const room = worldMaps['reading-room'], hall = worldMaps['residential-hall'];
+  const inbound = hall.exits.find(exit => exit.targetMapId === room.id)!;
+  const destination = { x: inbound.rect.x + inbound.rect.width / 2, y: inbound.rect.y + inbound.rect.height / 2 };
+  const fromHall = { ...createWorld(worldMaps), mapId: hall.id, position: { x: destination.x, y: destination.y + 1 } };
+  const entered = reduceWorld(fromHall, { type: 'world-move', position: destination }, worldMaps);
+  expect(entered.mapId).toBe(room.id);
+  expect(entered.position).toEqual(room.entrances[0].position);
+  const exit = room.exits[0].rect, toHall = { x: exit.x + exit.width / 2, y: exit.y + exit.height / 2 };
+  const exited = reduceWorld(entered, { type: 'world-move', position: toHall }, worldMaps);
+  expect(exited.mapId).toBe(hall.id);
+  expect(exited.position).toEqual(hall.entrances.find(e => e.id === 'hall.from-reading-room')!.position);
+  for (const position of [{ x: 14, y: 17.5 }, { x: 27.5, y: 18.5 }, { x: 27, y: 10 }, { x: 14, y: 19.5 }]) {
+    const legacy = { ...entered, position, returnPositions: { [room.id]: { ...position, facing: 'north' as const } } };
+    const restored = restoreWorld(legacy, worldMaps);
+    expect(canStand(room, position)).toBe(false);
+    expect(canStand(room, restored.position)).toBe(true);
+    expect(isExitConnected(room, restored.position)).toBe(true);
+    expect(restored.returnPositions[room.id]).toBeUndefined();
+    expect(findPath(room, restored.position, toHall).length).toBeGreaterThan(0);
+  }
 });
 
 it('keeps the grouped return fixtures clear of every legal furniture footprint and the protected routes', () => {

@@ -2,27 +2,27 @@
   "version": 1,
   "id": "reading-room",
   "bounds": {
-    "width": 30,
-    "height": 22
+    "width": 28,
+    "height": 19
   },
   "defaultSpawn": {
     "x": 14,
-    "y": 17.5,
+    "y": 14.5,
     "facing": "north"
   },
   "walkable": [
     {
       "x": 2,
       "y": 3,
-      "width": 26,
-      "height": 17
+      "width": 24,
+      "height": 14
     }
   ],
   "colliders": [
     {
       "id": "reading-room.back-bookcase",
       "rect": {
-        "x": 23.5,
+        "x": 23.2,
         "y": 3,
         "width": 2.6,
         "height": 1.1
@@ -32,7 +32,7 @@
       "id": "reading-room.front-bookcase",
       "rect": {
         "x": 3,
-        "y": 14,
+        "y": 12.5,
         "width": 1.1,
         "height": 3.3
       }
@@ -58,8 +58,8 @@
     {
       "id": "reading-room.plant",
       "rect": {
-        "x": 25.8,
-        "y": 16,
+        "x": 21.9,
+        "y": 12.35,
         "width": 1.2,
         "height": 1.2
       }
@@ -86,7 +86,7 @@
       "id": "reading-room.entry-left",
       "rect": {
         "x": 12.6,
-        "y": 19,
+        "y": 16,
         "width": 0.18,
         "height": 0.8
       }
@@ -95,7 +95,7 @@
       "id": "reading-room.entry-right",
       "rect": {
         "x": 15.22,
-        "y": 19,
+        "y": 16,
         "width": 0.18,
         "height": 0.8
       }
@@ -107,7 +107,7 @@
       "rect": {
         "x": 2,
         "y": 2.6,
-        "width": 26,
+        "width": 24,
         "height": 0.4
       },
       "height": 2.9,
@@ -119,7 +119,7 @@
         "x": 1.6,
         "y": 3,
         "width": 0.4,
-        "height": 17
+        "height": 14
       },
       "height": 2.9,
       "fadeWhenPlayerBehind": true
@@ -127,7 +127,7 @@
     {
       "id": "reading-room.back-bookcase",
       "rect": {
-        "x": 23.5,
+        "x": 23.2,
         "y": 3,
         "width": 2.6,
         "height": 1.1
@@ -139,7 +139,7 @@
       "id": "reading-room.front-bookcase",
       "rect": {
         "x": 3,
-        "y": 14,
+        "y": 12.5,
         "width": 1.1,
         "height": 3.3
       },
@@ -150,7 +150,7 @@
       "id": "reading-room.hall-threshold",
       "rect": {
         "x": 12.6,
-        "y": 19,
+        "y": 16,
         "width": 2.8,
         "height": 0.8
       },
@@ -163,7 +163,7 @@
       "id": "reading-room.from-hall",
       "position": {
         "x": 14,
-        "y": 17.5
+        "y": 14.5
       },
       "facing": "north"
     }
@@ -173,7 +173,7 @@
       "id": "to-hall",
       "rect": {
         "x": 13,
-        "y": 19,
+        "y": 16,
         "width": 2,
         "height": 1
       },
@@ -200,8 +200,8 @@
       "rect": {
         "x": 2,
         "y": 3,
-        "width": 26,
-        "height": 17
+        "width": 24,
+        "height": 14
       },
       "material": "timber",
       "variant": 0
@@ -215,7 +215,7 @@
         "x": 2,
         "y": 2.6
       },
-      "width": 26,
+      "width": 24,
       "height": 0.4,
       "layer": "object",
       "variant": 0
@@ -228,7 +228,7 @@
         "y": 3
       },
       "width": 0.4,
-      "height": 17,
+      "height": 14,
       "layer": "object",
       "variant": 0
     },
@@ -236,11 +236,11 @@
       "id": "reading-room.east-wall",
       "kind": "reading-low-wall",
       "position": {
-        "x": 28,
+        "x": 26,
         "y": 3
       },
       "width": 0.3,
-      "height": 17,
+      "height": 14,
       "layer": "object",
       "variant": 0
     },
@@ -272,7 +272,7 @@
       "id": "reading-room.back-bookcase",
       "kind": "reading-shelf",
       "position": {
-        "x": 23.5,
+        "x": 23.2,
         "y": 3
       },
       "width": 2.6,
@@ -285,7 +285,7 @@
       "kind": "reading-shelf",
       "position": {
         "x": 3,
-        "y": 14
+        "y": 12.5
       },
       "width": 1.1,
       "height": 3.3,
@@ -320,8 +320,8 @@
       "id": "reading-room.plant",
       "kind": "reading-plant",
       "position": {
-        "x": 25.8,
-        "y": 16
+        "x": 21.9,
+        "y": 12.35
       },
       "width": 1.2,
       "height": 1.2,
@@ -345,7 +345,7 @@
       "kind": "reading-mat",
       "position": {
         "x": 12.5,
-        "y": 16.7
+        "y": 13.7
       },
       "width": 3,
       "height": 2,
@@ -393,7 +393,7 @@
       "kind": "reading-entry",
       "position": {
         "x": 12.6,
-        "y": 19
+        "y": 16
       },
       "width": 2.8,
       "height": 0.8,
