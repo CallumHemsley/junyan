@@ -186,8 +186,8 @@
     {
       "id": "reading-room.project",
       "position": {
-        "x": 14,
-        "y": 9.5
+        "x": 11.5,
+        "y": 7
       },
       "radius": 2.3,
       "featureId": "reading-room",
@@ -428,8 +428,8 @@
     {
       "id": "reading-room.shared-desk",
       "position": {
-        "x": 14,
-        "y": 9.5
+        "x": 11.5,
+        "y": 7
       },
       "kind": "workbench"
     }

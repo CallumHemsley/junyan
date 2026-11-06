@@ -119,7 +119,8 @@ test('shows completed reading nooks in real morning and evening room saves', asy
   for (const time of ['morning', 'evening'] as const) {
     const game = createGame(content, 42);
     game.neighbourhood!['reading-room'] = state; game.neighbourhood!.location = 'reading-room';
-    game.world = { version: 1, mapId: 'reading-room', position: { x: 14, y: 9.5 }, facing: 'north', activeActivity: null, activeAnchorId: null, returnPositions: {} };
+    game.journal = { table: { lookups: 0, lastSeen: 1, recovered: true }, 'apartment.chair': { lookups: 0, lastSeen: 1, recovered: true } };
+    game.world = { version: 1, mapId: 'reading-room', position: readingRoomMap.anchors[0].position, facing: 'north', activeActivity: null, activeAnchorId: null, returnPositions: {} };
     if (time === 'evening') {
       game.customers = game.customers.map((customer, index) => index < 3 ? { ...customer, phase: 'served' as const } : customer);
       game.served = 3;
