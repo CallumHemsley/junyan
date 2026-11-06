@@ -1,0 +1,186 @@
+[
+  {
+    "name": "desktop",
+    "sourceHead": "db76f2db906e2a679adc24ae858950c19d55c19b",
+    "seededStart": true,
+    "start": {
+      "x": 23,
+      "y": 33.5
+    },
+    "keyboardEnd": {
+      "x": 24.779787768246525,
+      "y": 31.72021223175344
+    },
+    "traversed": [
+      {
+        "x": 22.63989417286892,
+        "y": 29.860105827131044
+      },
+      {
+        "x": 20.499999560238713,
+        "y": 28.00000043976125
+      },
+      {
+        "x": 20.249999560238713,
+        "y": 25.50000043976125
+      },
+      {
+        "x": 19.999999560238713,
+        "y": 23.00000043976125
+      },
+      {
+        "x": 17.999999560238713,
+        "y": 22.00000043976125
+      },
+      {
+        "x": 15.999999560238713,
+        "y": 21.00000043976125
+      },
+      {
+        "x": 18.91666622690538,
+        "y": 21.166667106427923
+      },
+      {
+        "x": 21.83333289357205,
+        "y": 21.333333773094587
+      },
+      {
+        "x": 24.749999560238717,
+        "y": 21.500000439761255
+      },
+      {
+        "x": 27.666666226905384,
+        "y": 21.666667106427923
+      },
+      {
+        "x": 30.583332893572052,
+        "y": 21.83333377309459
+      },
+      {
+        "x": 33.49999956023872,
+        "y": 22.00000043976126
+      },
+      {
+        "x": 34.49999956023872,
+        "y": 20.60000043976126
+      }
+    ],
+    "approach": {
+      "x": 15.999999560238713,
+      "y": 21.00000043976125
+    },
+    "preservedRestaurantPosition": {
+      "x": 6,
+      "y": 2.5
+    },
+    "catStory": {
+      "node": "search"
+    },
+    "activity": {
+      "status": "blocked",
+      "error": "locator.click: Timeout 2500ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('cats-white')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" class=\"cats-target\" aria-pressed=\"false\" data-testid=\"cats-white\">小白</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <button type=\"button\" class=\"cats-target\" aria-pressed=\"false\" data-testid=\"cats-black\">小黑</button> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <button type=\"button\" class=\"cats-target\" aria-pressed=\"false\" data-testid=\"cats-black\">小黑</button> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <button type=\"button\" class=\"cats-target\" aria-pressed=\"false\" data-testid=\"cats-black\">小黑</button> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n"
+    },
+    "journalEntries": 0,
+    "reloadPosition": {
+      "x": 34.49999956023872,
+      "y": 20.60000043976126
+    },
+    "errors": [],
+    "failures": [],
+    "limits": "Seeded normal saved game starts in courtyard. Actual keyboard/pad/pointer travel, feature actions and persistence are used. Connected entrance journey and opening/service regression remain separate gates."
+  },
+  {
+    "name": "phone",
+    "sourceHead": "db76f2db906e2a679adc24ae858950c19d55c19b",
+    "seededStart": true,
+    "start": {
+      "x": 23,
+      "y": 33.5
+    },
+    "keyboardEnd": {
+      "x": 24.7090770901279,
+      "y": 31.79092290987216
+    },
+    "traversed": [
+      {
+        "x": 22.60453843267936,
+        "y": 29.895461567320638
+      },
+      {
+        "x": 20.500000122021515,
+        "y": 27.999999877978485
+      },
+      {
+        "x": 20.250000122021515,
+        "y": 25.499999877978485
+      },
+      {
+        "x": 20.00954938500727,
+        "y": 23.095492507836056
+      },
+      {
+        "x": 17.995225508207593,
+        "y": 21.952253739839282
+      },
+      {
+        "x": 16.000000122021515,
+        "y": 20.999999877978485
+      },
+      {
+        "x": 18.916666326300636,
+        "y": 21.166666082257606
+      },
+      {
+        "x": 21.833333917742397,
+        "y": 21.333333673699368
+      },
+      {
+        "x": 24.750000122021518,
+        "y": 21.49999987797849
+      },
+      {
+        "x": 27.666666326300636,
+        "y": 21.66666608225761
+      },
+      {
+        "x": 30.583333917742397,
+        "y": 21.833333673699375
+      },
+      {
+        "x": 33.50000012202151,
+        "y": 21.99999987797849
+      },
+      {
+        "x": 34.50000012202151,
+        "y": 20.600000432843544
+      }
+    ],
+    "approach": {
+      "x": 16.000000122021515,
+      "y": 20.999999877978485
+    },
+    "preservedRestaurantPosition": {
+      "x": 6,
+      "y": 2.5
+    },
+    "catStory": {
+      "node": "reunited",
+      "day": 1
+    },
+    "activity": {
+      "status": "completed",
+      "story": {
+        "node": "reunited",
+        "day": 1
+      }
+    },
+    "journalEntries": 16,
+    "reloadPosition": {
+      "x": 34.50000012202151,
+      "y": 20.600000432843544
+    },
+    "errors": [],
+    "failures": [],
+    "limits": "Seeded normal saved game starts in courtyard. Actual keyboard/pad/pointer travel, feature actions and persistence are used. Connected entrance journey and opening/service regression remain separate gates."
+  }
+]

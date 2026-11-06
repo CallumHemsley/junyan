@@ -10,9 +10,11 @@ const color = {
   leaf: '#55765d', leafLight: '#9cab79', leafDark: '#3e6150', leafMid: '#758d64',
   ink: '#333d39', glass: '#8eaaa5', brass: '#b99f69', shadow: '#526652',
 };
+const material = (view: WorldRenderView, base: string) => view.shadeColor?.(base) ?? base;
+
 function painter(ctx: CanvasRenderingContext2D, view: CourtyardView) {
   const polygon = (points: [number, number, number][], fill: string) => {
-    ctx.fillStyle = fill;
+    ctx.fillStyle = material(view, fill);
     ctx.beginPath();
     points.forEach(([x, y, z], i) => {
       const p = view.project({ x, y }, z);
@@ -34,7 +36,7 @@ function painter(ctx: CanvasRenderingContext2D, view: CourtyardView) {
     const tx = Math.round(q.x), ty = Math.round(q.y), dx = Math.abs(tx - x), dy = Math.abs(ty - y);
     const sx = x < tx ? 1 : -1, sy = y < ty ? 1 : -1;
     let error = dx - dy;
-    ctx.fillStyle = fill;
+    ctx.fillStyle = material(view, fill);
     for (;;) {
       ctx.fillRect(x - Math.floor(width / 2), y - Math.floor(width / 2), width, width);
       if (x === tx && y === ty) break;
@@ -54,7 +56,7 @@ function visible(view: CourtyardView, x: number, y: number, extent = 150) {
   return p.x > -extent && p.y > -extent && p.x < view.width + extent && p.y < view.height + extent;
 }
 
-const paintMap: DrawMap = (ctx, map, view) => {
+const paintGround: DrawMap = (ctx, map, view) => {
   ctx.save(); ctx.imageSmoothingEnabled = false;
   const { box, floor, polygon, line } = painter(ctx, view);
   if (view.pass === 'ground') {
@@ -84,13 +86,17 @@ const paintMap: DrawMap = (ctx, map, view) => {
   if (view.pass === 'ground') for (const p of map.props) {
     if (!visible(view, p.position.x, p.position.y, 120)) continue;
     const shadow = p.kind === 'laundry' || p.kind === 'bicycle-shed' || p.kind === 'courtyard-tree';
-    if (shadow) { ctx.globalAlpha = .16; floor(p.position.x + .5, p.position.y + .4, p.width + .8, p.height + .6, color.ink, .03); ctx.globalAlpha = 1; }
+    if (shadow) { const alpha = ctx.globalAlpha; ctx.globalAlpha *= .16; floor(p.position.x + .5, p.position.y + .4, p.width + .8, p.height + .6, color.ink, .03); ctx.globalAlpha = alpha; }
   }
-  const props = map.props.filter(p => (view.pass === 'ground' ? p.layer === 'ground' : view.pass === 'foreground' ? p.layer === 'foreground' : p.layer === 'object'))
-    .sort((a, b) => a.position.x + a.position.y - b.position.x - b.position.y);
-  for (const p of props) {
+  for (const prop of map.props) if (prop.layer === 'ground') paintProp(ctx, view, prop);
+  ctx.restore();
+};
+
+function paintProp(ctx: CanvasRenderingContext2D, view: WorldRenderView, p: Parameters<DrawMap>[1]['props'][number]) {
     const { x, y } = p.position, w = p.width, d = p.height, v = Number(p.variant) || 0;
-    if (!visible(view, x + w / 2, y + d / 2, 230)) continue;
+    if (!visible(view, x + w / 2, y + d / 2, 230)) return;
+    ctx.save();
+    const { box, floor, polygon, line } = painter(ctx, view);
     const closestX = Math.max(x, Math.min(view.playerPosition.x, x + w));
     const closestY = Math.max(y, Math.min(view.playerPosition.y, y + d));
     if (p.kind === 'bicycle-shed' && Math.hypot(view.playerPosition.x - closestX, view.playerPosition.y - closestY) < 2) ctx.globalAlpha *= .35;
@@ -225,12 +231,12 @@ const paintMap: DrawMap = (ctx, map, view) => {
           for (let row = -tall; row <= tall; row += 2) {
             const span = Math.round(radius * Math.sqrt(Math.max(0, 1 - (row / tall) ** 2)) / 2) * 2;
             const fringe = Math.floor(hash(row, x + y) * 3) * 2;
-            ctx.fillStyle = row > tall * .3 ? color.leafDark : color.leaf;
+            ctx.fillStyle = material(view, row > tall * .3 ? color.leafDark : color.leaf);
             ctx.fillRect(Math.round(at.x) - span + fringe, Math.round(at.y) + row, span * 2 - fringe, 2);
             if (row < tall * .3 && span > 4) {
-              ctx.fillStyle = v === 1 ? '#a1a973' : color.leafMid;
+              ctx.fillStyle = material(view, v === 1 ? '#a1a973' : color.leafMid);
               ctx.fillRect(Math.round(at.x) - span + 2, Math.round(at.y) + row, Math.max(2, span + fringe), 2);
-              if (row < -tall * .2) { ctx.fillStyle = color.leafLight; ctx.fillRect(Math.round(at.x) - span + 4 + fringe, Math.round(at.y) + row, Math.max(2, span / 2), 2); }
+              if (row < -tall * .2) { ctx.fillStyle = material(view, color.leafLight); ctx.fillRect(Math.round(at.x) - span + 4 + fringe, Math.round(at.y) + row, Math.max(2, span / 2), 2); }
             }
           }
         }
@@ -292,14 +298,14 @@ const paintMap: DrawMap = (ctx, map, view) => {
         box(x, y, w, d, 1.05, '#a8a997', '#929985', '#7b8877');
         line([x + .1, y + d + .02, .5], [x + w - .1, y + d + .02, .5], color.ink); break;
     }
-  }
   ctx.restore();
-};
+}
+
 
 
 export const drawMap: DrawMap = (ctx, map, view) => {
   if (map.id !== 'courtyard' || view.pass !== 'ground') return;
-  paintMap(ctx, { ...map, props: map.props.filter(p => p.layer === 'ground') }, view);
+  paintGround(ctx, map, view);
 };
 
 export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderView): WorldRenderObject[] {
@@ -310,7 +316,7 @@ export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderVie
     depth: prop.position.x + prop.position.y + prop.width / 2 + prop.height / 2,
     occlusion: map.occluders.find(o => o.id === prop.id),
     draw(ctx, view) {
-      paintMap(ctx, { ...map, props: [prop] }, { ...view, pass: prop.layer === 'foreground' ? 'foreground' : 'objects' });
+      paintProp(ctx, view, prop);
     },
   }));
 }

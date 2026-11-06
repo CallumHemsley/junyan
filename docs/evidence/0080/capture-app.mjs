@@ -2,6 +2,7 @@ import { chromium } from '@playwright/test';
 import { readFile, writeFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import { execFileSync, spawn } from 'node:child_process';
+import { cameraForMap, project } from '../../../src/world/camera.ts';
 import { findPath } from '../../../src/world/geometry.ts';
 
 const base = process.env.COURTYARD_PROOF_URL ?? 'http://127.0.0.1:5482';
@@ -62,21 +63,27 @@ try {
           const target = { x: begin.x + (waypoint.x - begin.x) * i / steps, y: begin.y + (waypoint.y - begin.y) * i / steps };
           here = (await saved()).world.position;
           const canvas = page.locator('[data-testid="world-viewport"] canvas'), bounds = await canvas.boundingBox();
-          const scale = bounds.width < 600 ? 18 : 24;
-          const px = bounds.x + bounds.width / 2 + (target.x - here.x - target.y + here.y) * scale;
-          const py = bounds.y + bounds.height / 2 + (target.x - here.x + target.y - here.y) * scale * .5;
+          const size = await canvas.evaluate(c => ({ width: c.width, height: c.height }));
+          const camera = cameraForMap(map.bounds, here, size.width, size.height, bounds.width < 600 ? 11 : 15);
+          const point = project(target, camera);
+          const px = bounds.x + point.x / size.width * bounds.width;
+          const py = bounds.y + point.y / size.height * bounds.height;
           assert(px > bounds.x && px < bounds.x + bounds.width && py > bounds.y && py < bounds.y + bounds.height, 'Pointer path segment must be inside actual canvas');
           if (touch) await page.touchscreen.tap(px, py); else await page.mouse.click(px, py);
-          await page.waitForFunction(async ({ key, target }) => {
-            const pending = localStorage.getItem(key);
-            const game = pending ? JSON.parse(pending) : await new Promise(resolve => { const request = indexedDB.open('junyan-waiter', 1); request.onsuccess = () => { const db = request.result; const get = db.transaction('saves', 'readonly').objectStore('saves').get('v1'); get.onsuccess = () => { resolve(get.result); db.close(); }; }; });
-            const p = game?.world.position; return p && Math.hypot(p.x - target.x, p.y - target.y) < .2;
-          }, { key: checkpointKey, target }, { timeout: 5000 });
+          const deadline = Date.now() + 5000;
+          for (;;) {
+            const at = (await saved()).world.position;
+            if (Math.hypot(at.x - target.x, at.y - target.y) < .15) break;
+            assert(Date.now() < deadline, `Actual pointer travel did not reach ${JSON.stringify(target)}; stopped at ${JSON.stringify(at)}`);
+            await page.waitForTimeout(100);
+          }
           here = (await saved()).world.position; traversed.push(here);
         }
       }
       await page.waitForTimeout(600);
-      console.log('arrived', name, goal, (await saved()).world.position);
+      const arrived = (await saved()).world.position;
+      console.log('arrived', name, goal, arrived);
+      assert(Math.hypot(arrived.x - goal.x, arrived.y - goal.y) < .25, 'Stable final position must match intended landmark');
     }
     await walkTo({ x: 16, y: 21 });
     await page.screenshot({ path: `docs/evidence/0080/${name}-app-bicycle.png` });
