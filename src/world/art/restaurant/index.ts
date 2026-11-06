@@ -1,6 +1,8 @@
 import type { RestaurantMap, RestaurantObject, RestaurantView } from './types';
 import { RESTAURANT_TABLES, type RestaurantProjection } from './projection';
 import { drawFood } from './food';
+import { RESTAURANT_FURNITURE_PROFILE as furniture } from './furniture';
+export { RESTAURANT_FURNITURE_PROFILE } from './furniture';
 import { box, bowl, oval, palette as p, polygon } from './primitives';
 export { projectRestaurant, RESTAURANT_TABLES } from './projection';
 export type { RestaurantProjection, RestaurantCustomer } from './projection';
@@ -47,14 +49,16 @@ export function drawMap(ctx: CanvasRenderingContext2D, map: RestaurantMap, v: Re
 function table(ctx: CanvasRenderingContext2D, v: RestaurantView, x: number, y: number, w: number, d: number) {
   ctx.save();ctx.globalAlpha*=.18;
   oval(ctx,v,x+w/2+.25,y+d/2+.25,.01,1.35,p.ink);ctx.restore();
-  for(const dx of [.18,w-.32]) for(const dy of [.18,d-.32]) box(ctx,v,x+dx,y+dy,0,.14,.14,1.32,p.woodDark);
-  box(ctx,v,x,y,1.27,w,d,.17,p.woodLight,p.woodDark,p.wood);
-  for(let n=.15;n<w;n+=.36) box(ctx,v,x+n,y+.04,1.443,.015,d-.08,.003,'#b88d5c');
-  box(ctx,v,x+w-.48,y+.23,1.44,.25,.25,.35,p.cream,'#c3b594','#e1d4b4');
-  for(let n=0;n<3;n++) box(ctx,v,x+w-.42+n*.06,y+.29,1.7,.025,.025,.3,p.woodDark);
-  for(const sy of [y-.85,y+d+.22]) {
-    for(const dx of [.12,.58]) box(ctx,v,x+w/2-.36+dx,sy+.1,0,.11,.37,.67,p.woodDark);
-    box(ctx,v,x+w/2-.45,sy,.62,.9,.66,.15,p.woodLight);
+  const underside=furniture.tableTop-furniture.tableThickness;
+  for(const dx of [.18,w-.32]) for(const dy of [.18,d-.32]) box(ctx,v,x+dx,y+dy,0,.14,.14,underside+.05,p.woodDark);
+  box(ctx,v,x,y,underside,w,d,furniture.tableThickness,p.woodLight,p.woodDark,p.wood);
+  for(let n=.15;n<w;n+=.36) box(ctx,v,x+n,y+.04,furniture.tableTop+.003,.015,d-.08,.003,'#b88d5c');
+  box(ctx,v,x+w-.48,y+.23,furniture.tableTop,.25,.25,.35,p.cream,'#c3b594','#e1d4b4');
+  for(let n=0;n<3;n++) box(ctx,v,x+w-.42+n*.06,y+.29,furniture.tableTop+.26,.025,.025,.3,p.woodDark);
+  for(const centerY of [y+furniture.rearStoolCenterOffsetY,y+d+furniture.frontStoolCenterOffsetY]) {
+    const sy=centerY-furniture.stoolDepth/2;
+    for(const dx of [.12,.58]) box(ctx,v,x+w/2-.36+dx,sy+.1,0,.11,.37,furniture.stoolTop-.1,p.woodDark);
+    box(ctx,v,x+w/2-furniture.stoolWidth/2,sy,furniture.stoolTop-furniture.stoolThickness,furniture.stoolWidth,furniture.stoolDepth,furniture.stoolThickness,p.woodLight);
   }
 }
 function counter(ctx: CanvasRenderingContext2D, v: RestaurantView, x: number, y: number, w: number, d: number) {
@@ -221,12 +225,12 @@ export function restaurantObjects(map: RestaurantMap, _view: RestaurantView, pro
       depth:prop.position.x+prop.width/2+prop.position.y+prop.height+.01,
       draw(ctx:CanvasRenderingContext2D,v:RestaurantView) {
         if(!meal) {
-          bowl(ctx,v,prop.position.x+prop.width*.32,prop.position.y+prop.height*.64,1.46,false);
+          bowl(ctx,v,prop.position.x+prop.width*.32,prop.position.y+prop.height*.64,furniture.tableTop+furniture.waitingBowlOffsetZ,false);
           return;
         }
         meal.foods.forEach((food,i)=>{
           const x=prop.position.x+.4+i*.5,y=prop.position.y+.9;
-          drawFood(ctx,v,food,x,y,1.55);
+          drawFood(ctx,v,food,x,y,furniture.tableTop+furniture.mealOffsetZ);
         });
       }}];
   });
