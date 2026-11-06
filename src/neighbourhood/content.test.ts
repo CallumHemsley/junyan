@@ -6,8 +6,8 @@ import { content, contentSchema } from "../content";
 import { contentLines, contentWords } from "../content/words";
 import { recordLookup } from "../game";
 
-const canonical: Word = { id: "hao", hanzi: "好", pinyin: "hǎo", gloss: "good", audio: "/audio/word-hao.wav" };
-const room: Word = { id: "apartment.room", hanzi: "房间", pinyin: "fáng jiān", gloss: "room", audio: "/audio/apartment/word-room.wav" };
+const canonical: Word = { id: "hao", text: "好", pronunciation: "hǎo", gloss: "good", audio: "/audio/word-hao.wav" };
+const room: Word = { id: "apartment.room", text: "房间", pronunciation: "fáng jiān", gloss: "room", audio: "/audio/apartment/word-room.wav" };
 const bundles = (): Record<FeatureId, FeatureContent> => ({
   apartment: { words: [canonical, room], lines: [{ id: "apartment.room-ready", tokens: [room, canonical], audio: "/audio/apartment/line-room-ready.wav" }] },
   cats: { words: [], lines: [] },
@@ -32,12 +32,12 @@ describe("feature content registration", () => {
     expect(registered.lines[0].text).toBe("房间好。");
     const mismatched = { ...phrase, text: "房间坏。" };
     features.apartment = { words: features.apartment.words, lines: [mismatched] };
-    expect(() => registerFeatureContent([canonical], features)).toThrow("Phrase text must equal its tokens");
+    expect(() => registerFeatureContent([canonical], features)).toThrow("Line text must equal its tokens");
   });
 
   it("rejects conflicting canonical words instead of changing existing journal meaning", () => {
     const features = bundles();
-    features.apartment = { words: [{ ...canonical, hanzi: "坏" }], lines: [] };
+    features.apartment = { words: [{ ...canonical, text: "坏" }], lines: [] };
     expect(() => registerFeatureContent([canonical], features)).toThrow("Conflicting word: hao");
     expect(() => registerFeatureContent([canonical, { ...canonical, audio: "/audio/wrong.wav" }], bundles())).toThrow("Conflicting canonical word: hao");
   });
@@ -55,7 +55,7 @@ describe("feature content registration", () => {
     const features = bundles();
     features.apartment = { words: [], lines: features.apartment.lines };
     expect(() => registerFeatureContent([canonical], features)).toThrow("Undeclared or conflicting token");
-    features.apartment = { words: [room], lines: [{ id: "apartment.changed", tokens: [{ ...room, pinyin: "wrong" }], audio: "/audio/apartment/line.wav" }] };
+    features.apartment = { words: [room], lines: [{ id: "apartment.changed", tokens: [{ ...room, pronunciation: "wrong" }], audio: "/audio/apartment/line.wav" }] };
     expect(() => registerFeatureContent([canonical], features)).toThrow("Undeclared or conflicting token");
   });
 
@@ -72,7 +72,7 @@ describe("feature content registration", () => {
     const features = bundles();
     features.apartment = { words: [{ ...room, audio: "https://example.test/room.wav" }], lines: [] };
     expect(() => registerFeatureContent([canonical], features)).toThrow();
-    features.apartment = { words: [{ ...room, hanzi: "房间 room" }], lines: [] };
+    features.apartment = { words: [{ ...room, text: "房间 room" }], lines: [] };
     expect(() => registerFeatureContent([canonical], features)).toThrow();
   });
 });

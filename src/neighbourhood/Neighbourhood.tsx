@@ -7,11 +7,12 @@ import type { GiftId, LocationId } from "./contracts";
 import type { NeighbourhoodState } from "./model";
 import { availableGifts } from "./model";
 import type { NeighbourhoodAction } from "./transitions";
+import { neighbourhoodUi as copy } from "./copy";
 import "./style.css";
 
-export const locationNames: Record<LocationId, string> = { restaurant: "早安小馆", apartment: "家", cats: "院子", repairs: "修理间", garden: "屋顶花园" };
+export const locationNames = copy.locations;
 export function LocationNavigation({ location, onVisit }: { location: LocationId; onVisit: (location: LocationId) => void }) {
-  return <nav className="neighbourhood-nav" aria-label="楼里">
+  return <nav className="neighbourhood-nav" aria-label={copy.navigation}>
     {(Object.keys(locationNames) as LocationId[]).map(id => <button key={id} type="button" data-location-button={id} aria-current={location === id ? "page" : undefined} onClick={() => onVisit(id)}>{locationNames[id]}</button>)}
   </nav>;
 }
@@ -31,9 +32,9 @@ export default function Neighbourhood({ state, day, onAction, ...learning }: Pro
   </div>;
 }
 
-const giftNames: Record<GiftId,string> = {"repairs.stool":"凳子","garden.planter":"盆栽","cats.cushion":"猫靠垫"};
+
 export function NeighbourhoodGifts({ state, onClaim }: { state: NeighbourhoodState; onClaim: (giftId: GiftId) => void }) {
   const gifts = availableGifts(state);
   if (!gifts.length) return null;
-  return <aside className="neighbourhood-gifts" aria-label="邻居的小礼物"><span>带回家</span>{gifts.map(giftId => <button type="button" key={giftId} onClick={() => onClaim(giftId)}>收下{giftNames[giftId]}</button>)}</aside>;
+  return <aside className="neighbourhood-gifts" aria-label={copy.gifts}><span>{copy.takeHome}</span>{gifts.map(giftId => <button type="button" key={giftId} onClick={() => onClaim(giftId)}>{copy.claim(copy.giftNames[giftId])}</button>)}</aside>;
 }

@@ -1,6 +1,8 @@
 import {useEffect, useId, useRef, useState, type ReactNode, type KeyboardEvent as ReactKeyboardEvent} from 'react';
 import type {Line, Word} from '../../contracts';
 import WordToken from '../../WordToken';
+import { lineParts, lineText } from '../../language';
+import { featureUi } from '../copy';
 import GardenScene from './GardenScene';
 import {label, line} from './content';
 import {gifts, plantIds, recoveryForTransition, reduce, weather, type Action, type PlantId, type Site, type State} from './rules';
@@ -40,12 +42,14 @@ export default function Garden(props: GardenProps) {
   const ready = state.day === day;
   const pot = state.plants[selected];
   const recovered = new Set(recoveredWordIds), fresh = new Set(freshWordIds);
-  const text = (value: Pick<Line, 'id' | 'tokens'>, punctuation = false) => value.tokens.map((word, index) => {
+  const text = (value: Pick<Line, 'id' | 'tokens'>, punctuation = false) => lineParts(value).map((part, index, parts) => {
+    if (part.kind === 'text') return part.text;
+    const word = part.word;
     const token = <WordToken key={`${word.id}-${index}`} word={word}
       look={fresh.has(word.id) ? 'dot' : value.id.startsWith('garden.label-') || recovered.has(word.id) ? 'plain' : 'fogged'} onLookup={onLookup}/>;
-    return punctuation && index === value.tokens.length - 1 ? <span className="garden-final-token" key={`${word.id}-${index}`}>{token}。</span> : token;
+    return punctuation && index === parts.length - 1 ? <span className="garden-final-token" key={`${word.id}-${index}`}>{token}{featureUi.sentenceEnd}</span> : token;
   });
-  const name = (id: string) => label(id).tokens.map(word => word.hanzi).join('');
+  const name = (id: string) => lineText(label(id));
   useEffect(() => {if (!ready) onAction({type: 'sync'});}, [day, ready, onAction]);
   useEffect(() => {setNotice(null); setConfirm(null); setMoving(null);}, [day]);
   useEffect(() => {

@@ -1,6 +1,7 @@
 import {describe, expect, it} from 'vitest';
 import {existsSync} from 'node:fs';
-import shared from '../../content/content.json';
+import {content as shared} from '../../content';
+import {contentWords} from '../../content/words';
 import {label, line, lines, words} from './content';
 import {initialState, reduce, recoveryForTransition} from './rules';
 
@@ -15,22 +16,15 @@ describe('garden authored content', () => {
     }
   });
   it('retains identical canonical entries and existing real audio paths', () => {
-    const canonical = new Map<string, unknown>();
-    const visit = (value: unknown) => {
-      if (Array.isArray(value)) {value.forEach(visit); return;}
-      if (!value || typeof value !== 'object') return;
-      if ('id' in value && typeof value.id === 'string' && 'hanzi' in value) canonical.set(value.id, value);
-      Object.values(value).forEach(visit);
-    };
-    visit(shared);
+    const canonical = new Map(contentWords(shared).map(word => [word.id, word]));
     for (const value of words.filter(value => !value.id.startsWith('garden.'))) {
       expect(value).toEqual(canonical.get(value.id));
       expect(existsSync(`public${value.audio}`)).toBe(true);
     }
   });
   it('authors the first contrast and all seven bounded dialogue lines', () => {
-    expect(line('wet-warning').tokens.map(value => value.hanzi).join('')).toBe('土还是湿的先别浇水');
-    expect(line('dry-advice').tokens.map(value => value.hanzi).join('')).toBe('这盆土干了浇一点水');
+    expect(line('wet-warning').tokens.map(value => value.text).join('')).toBe('土还是湿的先别浇水');
+    expect(line('dry-advice').tokens.map(value => value.text).join('')).toBe('这盆土干了浇一点水');
     for (const id of ['shade-advice', 'rain-advice', 'extra-result', 'growth-result', 'mature-result']) expect(line(id).tokens.length).toBeGreaterThan(3);
     for (const id of ['flower', 'climber', 'tree', 'cancel', 'anyway', 'keep-waiting']) expect(label(id).tokens.length).toBeGreaterThan(0);
   });
