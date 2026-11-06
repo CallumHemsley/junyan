@@ -1,0 +1,180 @@
+[
+  {
+    "name": "desktop",
+    "width": 1280,
+    "height": 900,
+    "dpr": 1,
+    "world": {
+      "version": 1,
+      "mapId": "courtyard",
+      "position": {
+        "x": 22.865055863344956,
+        "y": 8.537563018774334
+      },
+      "facing": "east",
+      "returnPositions": {
+        "restaurant": {
+          "x": 11.940956583770923,
+          "y": 19.97504341622907,
+          "facing": "south"
+        },
+        "town": {
+          "x": 44.83363094478902,
+          "y": 1.6162822227526932,
+          "facing": "east"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "elapsedMs": 24279.214,
+        "discoveries": [],
+        "reactions": [],
+        "serviceDepartures": [],
+        "pauses": []
+      }
+    },
+    "catalog": {
+      "supportedActorIds": [
+        "player",
+        "lin-jie",
+        "xiao-li",
+        "zhang-laoshi",
+        "xiao-zhou",
+        "aunt",
+        "resident-reader",
+        "resident-courier",
+        "resident-groundskeeper",
+        "resident-laundry-neighbour",
+        "resident-river-walker"
+      ],
+      "aunt": {
+        "id": "aunt",
+        "source": "courtyard",
+        "appearance": {
+          "shirt": [
+            145,
+            151,
+            132
+          ],
+          "hair": [
+            82,
+            70,
+            59
+          ],
+          "legs": [
+            66,
+            68,
+            65
+          ],
+          "accessory": "aunt"
+        },
+        "cadenceMs": 130,
+        "body": {
+          "heightOffset": 0,
+          "widthOffset": 1,
+          "headWidthOffset": 0,
+          "lean": 0,
+          "legWidth": 3
+        }
+      },
+      "diagnostic": []
+    },
+    "errors": [],
+    "scope": "Actual App ordinary keyboard traversal from restaurant through town to courtyard. Dev test hook skips opening and reads state only; no dispatch, teleport or save writes. SeatHeight is not yet passed by foundation and is not accepted by this aunt proof.",
+    "source": {
+      "foundation": "31908fd",
+      "actor": "418933f"
+    }
+  },
+  {
+    "name": "phone",
+    "width": 390,
+    "height": 844,
+    "dpr": 2,
+    "world": {
+      "version": 1,
+      "mapId": "courtyard",
+      "position": {
+        "x": 22.948202309954443,
+        "y": 8.467571947118087
+      },
+      "facing": "north",
+      "returnPositions": {
+        "restaurant": {
+          "x": 12,
+          "y": 19.917000000000005,
+          "facing": "south"
+        },
+        "town": {
+          "x": 44.854880421778766,
+          "y": 1.6241195782211018,
+          "facing": "north"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "elapsedMs": 21195.982000000004,
+        "discoveries": [],
+        "reactions": [],
+        "serviceDepartures": [],
+        "pauses": []
+      }
+    },
+    "catalog": {
+      "supportedActorIds": [
+        "player",
+        "lin-jie",
+        "xiao-li",
+        "zhang-laoshi",
+        "xiao-zhou",
+        "aunt",
+        "resident-reader",
+        "resident-courier",
+        "resident-groundskeeper",
+        "resident-laundry-neighbour",
+        "resident-river-walker"
+      ],
+      "aunt": {
+        "id": "aunt",
+        "source": "courtyard",
+        "appearance": {
+          "shirt": [
+            145,
+            151,
+            132
+          ],
+          "hair": [
+            82,
+            70,
+            59
+          ],
+          "legs": [
+            66,
+            68,
+            65
+          ],
+          "accessory": "aunt"
+        },
+        "cadenceMs": 130,
+        "body": {
+          "heightOffset": 0,
+          "widthOffset": 1,
+          "headWidthOffset": 0,
+          "lean": 0,
+          "legWidth": 3
+        }
+      },
+      "diagnostic": []
+    },
+    "errors": [],
+    "scope": "Actual App ordinary keyboard traversal from restaurant through town to courtyard. Dev test hook skips opening and reads state only; no dispatch, teleport or save writes. SeatHeight is not yet passed by foundation and is not accepted by this aunt proof.",
+    "source": {
+      "foundation": "31908fd",
+      "actor": "418933f"
+    }
+  }
+]

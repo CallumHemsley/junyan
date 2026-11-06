@@ -1,0 +1,192 @@
+{
+  "data": [
+    {
+      "id": "before",
+      "position": {
+        "x": 5,
+        "y": 7.48
+      },
+      "camera": {
+        "focus": {
+          "x": 5,
+          "y": 8.5
+        },
+        "width": 360,
+        "height": 280,
+        "scale": 44
+      },
+      "tableTop": 1.44,
+      "contacts": {
+        "pixelsPerWorldUnit": 18,
+        "groundPixel": {
+          "x": 14,
+          "y": 38
+        },
+        "pelvis": {
+          "pixel": {
+            "x": 14,
+            "y": 31
+          },
+          "height": 0.3888888888888889
+        },
+        "hand": {
+          "pixel": {
+            "x": 6.5,
+            "y": 34
+          },
+          "height": 0.2222222222222222
+        },
+        "feet": [
+          {
+            "pixel": {
+              "x": 14,
+              "y": 37
+            },
+            "height": 0.05555555555555555,
+            "planted": true
+          },
+          {
+            "pixel": {
+              "x": 8,
+              "y": 38
+            },
+            "height": 0,
+            "planted": true
+          }
+        ]
+      },
+      "scope": "Actual old unbound sit geometry."
+    },
+    {
+      "id": "attached",
+      "position": {
+        "x": 5,
+        "y": 7.48
+      },
+      "camera": {
+        "focus": {
+          "x": 5,
+          "y": 8.5
+        },
+        "width": 360,
+        "height": 280,
+        "scale": 44
+      },
+      "tableTop": 1.44,
+      "seatHeight": 0.77,
+      "seatContact": {
+        "x": 14,
+        "y": 31,
+        "height": 0.77
+      },
+      "contacts": {
+        "pixelsPerWorldUnit": 18,
+        "groundPixel": {
+          "x": 14,
+          "y": 45
+        },
+        "pelvis": {
+          "pixel": {
+            "x": 14,
+            "y": 31
+          },
+          "height": 0.7777777777777778
+        },
+        "hand": {
+          "pixel": {
+            "x": 6,
+            "y": 19
+          },
+          "height": 1.4444444444444444
+        },
+        "feet": [
+          {
+            "pixel": {
+              "x": 14,
+              "y": 44
+            },
+            "height": 0.05555555555555555,
+            "planted": true
+          },
+          {
+            "pixel": {
+              "x": 8,
+              "y": 45
+            },
+            "height": 0,
+            "planted": true
+          }
+        ],
+        "requestedSeatHeight": 0.77
+      },
+      "scope": "Actual production table/stool primitives, explicit actor attachment. Foundation still must wire the field."
+    },
+    {
+      "id": "proportion",
+      "position": {
+        "x": 5,
+        "y": 7.48
+      },
+      "camera": {
+        "focus": {
+          "x": 5,
+          "y": 8.5
+        },
+        "width": 360,
+        "height": 280,
+        "scale": 44
+      },
+      "tableTop": 1.0368,
+      "seatHeight": 0.5544,
+      "seatContact": {
+        "x": 14,
+        "y": 31,
+        "height": 0.5544
+      },
+      "contacts": {
+        "pixelsPerWorldUnit": 18,
+        "groundPixel": {
+          "x": 14,
+          "y": 41
+        },
+        "pelvis": {
+          "pixel": {
+            "x": 14,
+            "y": 31
+          },
+          "height": 0.5555555555555556
+        },
+        "hand": {
+          "pixel": {
+            "x": 6,
+            "y": 22
+          },
+          "height": 1.0555555555555556
+        },
+        "feet": [
+          {
+            "pixel": {
+              "x": 14,
+              "y": 40
+            },
+            "height": 0.05555555555555555,
+            "planted": true
+          },
+          {
+            "pixel": {
+              "x": 8,
+              "y": 41
+            },
+            "height": 0,
+            "planted": true
+          }
+        ],
+        "requestedSeatHeight": 0.5544
+      },
+      "scope": "Owned scale prototype only, no production furniture edit."
+    }
+  ],
+  "errors": [],
+  "source": "foundation31908fd restaurant primitives plus owned actor seatHeight candidate",
+  "integrationOpen": true
+}
