@@ -144,6 +144,7 @@ test('shows completed reading nooks in real morning and evening room saves', asy
 
 test('restores an old save without taking private furnishings, gifts or sibling progress', async ({ page, baseURL }) => {
   test.setTimeout(150_000); page.setDefaultTimeout(8_000);
+  await probeAudio(page);
   const game = createGame(content, 42), n = game.neighbourhood!;
   n.apartment = apartment.reduce(n.apartment, { type: 'accept-starter' }, 1);
   n.apartment = apartment.reduce(n.apartment, { type: 'receive-gift', giftId: 'repairs.stool' }, 1);
