@@ -17,3 +17,5 @@ Foundation wiring requires these stateful calls.
 `harness.html` is a static art study using the real production adapters, the existing character rasteriser and an explicit sample furniture layout. It has no travel or save code. Its screenshots are not production movement, editing or reload proof. Production art consumes actual home state via the calls above.
 
 Current tests use the foundation schema, collision function and pathfinder for all entrances, local portal pairs, every landmark and all standable cell centres. Apartment tests preserve current reducer behavior and exercise world-cell round trips, draft separation, rotation, rugs, undo and save validation.
+
+The owned `Apartment` component now accepts `sceneMode="world"`. Forward it from the shared Neighbourhood view during world activities. This removes the old fixed miniature and opens its accessible 6 by 5 floor selector. Default standalone behavior stays `room`. World taps can additionally dispatch the existing actions through the transform above.
