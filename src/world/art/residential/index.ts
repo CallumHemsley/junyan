@@ -1,0 +1,210 @@
+import type { SceneApi } from '../../../scene/renderer.js';
+import { mapDefinitions } from '../../maps/residential';
+import { furnitureWorldRect } from '../../../features/apartment/world';
+import type { State } from '../../../features/apartment/rules';
+
+type Colour = [number, number, number];
+export type ResidentialArtApi = Pick<SceneApi, 'box' | 'sphere' | 'capsule' | 'castShadow'>;
+const cream: Colour = [231, 219, 187];
+const wood: Colour = [159, 119, 77];
+const paleWood: Colour = [193, 153, 101];
+const ink: Colour = [76, 65, 51];
+const jade: Colour = [111, 154, 134];
+const linen: Colour = [215, 207, 176];
+
+export function drawResidentialFloor(api: ResidentialArtApi, mapId: string) {
+  const map = mapDefinitions.find(m => m.id === mapId);
+  if (!map) return;
+  for (const terrain of map.terrain) {
+    const r = terrain.rect;
+    for (let x = r.x; x < r.x + r.width; x++) for (let y = r.y; y < r.y + r.height; y++) {
+      const right = Math.min(x + 1, r.x + r.width), front = Math.min(y + 1, r.y + r.height);
+      const variation = ((x * 17 + y * 31) % 7) - 3;
+      const material = terrain.material;
+      const base: Colour = material === 'timber' ? [187, 150, 103] : material === 'woven' ? [133, 137, 108] : material === 'glazed-tile' ? [145, 166, 153] : [171, 174, 159];
+      const colour: Colour = base.map(c => c + variation * 2) as Colour;
+      const z = material === 'woven' ? .045 : .01;
+      api.box(x, y, -.12, right, front, z, colour);
+      if (material === 'timber') {
+        api.box(x, y, z, right, y + .025, z + .007, [149, 118, 80]);
+        api.box(x + .18, y + .31, z, Math.min(x + .63, right), y + .33, z + .006, [172, 136, 91]);
+      } else if (material === 'glazed-tile') {
+        api.box(x, y, z, right, y + .035, z + .01, cream);
+        api.box(x, y, z, x + .035, front, z + .01, cream);
+        if ((x + y) % 3 === 0) api.box(x + .1, y + .1, z, x + .35, y + .14, z + .012, [177, 191, 176]);
+      } else if (material === 'stairs') {
+        for (let step = y; step < front; step += .5) {
+          api.box(x, step, .015, right, step + .08, .065, cream);
+          api.box(x, step + .08, .015, right, step + .13, .03, [125, 134, 124]);
+        }
+      } else if (material === 'terrazzo' && (x + y) % 2 === 0) {
+        api.box(x + .2, y + .3, .012, x + .3, y + .4, .018, [204, 203, 183]);
+        api.box(x + .65, y + .68, .012, x + .73, y + .75, .018, [135, 146, 136]);
+      } else if (material === 'woven') api.box(x, y + .12, z, right, y + .16, z + .006, [174, 169, 133]);
+    }
+  }
+}
+
+export function drawResidentialProps(api: ResidentialArtApi, mapId: string) {
+  const map = mapDefinitions.find(m => m.id === mapId);
+  if (!map) return;
+  const { box, sphere, capsule } = api;
+  for (const prop of map.props) {
+    const { x, y } = prop.position;
+    const w = prop.width, h = prop.height;
+    const endX = x + w, endY = y + h;
+    const post = (px: number, py: number, height: number) => box(px, py, 0, px + .13, py + .13, height, ink);
+    switch (prop.kind) {
+      case 'partition':
+        box(x, y, 0, endX, endY, 2.7, cream);
+        box(x, y, .05, endX, endY, .18, wood);
+        box(x, y, 2.7, endX, endY, 2.79, paleWood);
+        break;
+      case 'door': {
+        const sideways = w < h;
+        if (sideways) {
+          box(x, y, 0, endX, y + .2, 2.8, wood); box(x, endY - .2, 0, endX, endY, 2.8, wood);
+          box(x, y, 2.7, endX, endY, 2.9, wood);
+        } else {
+          box(x, y, 0, x + .2, endY, 2.8, wood); box(endX - .2, y, 0, endX, endY, 2.8, wood);
+          box(x, y, 2.7, endX, endY, 2.9, wood);
+          box(x + .22, y, .1, endX - .22, endY, 2.65, prop.variant ? [121, 146, 132] : [160, 127, 89]);
+          sphere(endX - .55, endY + .05, 1.2, .08, [194, 163, 103], 'solid');
+        }
+        break;
+      }
+      case 'window':
+        box(x, y, .3, endX, endY, 3.7, cream);
+        box(x + .16, y, 1.1, endX - .16, endY + .05, 3.35, [147, 169, 177]);
+        for (let at = x + .2; at < endX - .1; at += 1.1) box(at, y, 1.1, at + .07, endY + .09, 3.4, linen);
+        box(x + .12, y, 2.15, endX - .12, endY + .1, 2.23, linen);
+        box(x - .2, y - .05, .93, endX + .2, endY + .25, 1.1, paleWood);
+        box(x - .1, y + .06, 1.1, x + .2, endY + .2, 3.5, jade);
+        break;
+      case 'bench': case 'tea-table': case 'stool': {
+        const height = prop.kind === 'tea-table' ? .8 : .63;
+        for (const px of [x + .15, endX - .3]) for (const py of [y + .15, endY - .3]) box(px, py, 0, px + .16, py + .16, height, ink);
+        box(x, y, height, endX, endY, height + .15, paleWood);
+        if (prop.kind === 'bench') for (let at = x + .15; at < endX; at += .4) box(at, y, height + .15, Math.min(at + .025, endX), endY, height + .17, wood);
+        if (prop.kind === 'tea-table') {
+          box(x + .4, y + .3, .95, endX - .4, endY - .3, .97, linen);
+          sphere(x + .9, y + .7, 1.15, .24, jade, 'solid');
+          for (let at = 0; at < 2; at++) box(x + 1.5 + at * .4, y + .5, .98, x + 1.7 + at * .4, y + .7, 1.18, cream);
+        }
+        break;
+      }
+      case 'plant':
+        box(x + .18, y + .18, 0, endX - .18, endY - .18, .65, [164, 145, 106]);
+        box(x + .12, y + .12, .6, endX - .12, endY - .12, .74, paleWood);
+        for (let i = 0; i < 7; i++) {
+          const angle = i * 2.4, cx = x + w / 2, cy = y + h / 2;
+          capsule([cx, cy, .7], [cx + Math.cos(angle) * .45, cy + Math.sin(angle) * .45, 1.3 + i % 3 * .15], .07, .15, () => i % 2 ? [84, 126, 89] : [125, 157, 104], 'solid');
+        }
+        break;
+      case 'shoe-rack':
+        box(x, y, 0, endX, endY, .13, wood); box(x, y, .55, endX, endY, .65, wood);
+        for (let at = x + .2; at < endX - .2; at += .65) {
+          box(at, y + .1, .14, at + .2, endY - .1, .32, ink);
+          box(at + .25, y + .1, .14, at + .45, endY - .1, .32, [126, 135, 113]);
+        }
+        break;
+      case 'mailboxes':
+        box(x, y, .35, endX, endY, 2.3, [112, 139, 129]);
+        for (let at = x; at < endX; at++) for (const z of [.45, 1.35]) {
+          box(at + .08, endY, z, at + .92, endY + .05, z + .75, [141, 159, 139]);
+          box(at + .2, endY + .05, z + .48, at + .7, endY + .08, z + .53, ink);
+          if ((at + z) % 2 < 1) box(at + .3, endY + .08, z + .36, at + .6, endY + .11, z + .55, linen);
+        }
+        break;
+      case 'basket':
+        box(x + .1, y + .1, 0, endX - .1, endY - .1, .65, paleWood);
+        for (let z = .1; z < .65; z += .13) box(x + .09, endY - .12, z, endX - .09, endY - .08, z + .025, cream);
+        sphere(x + w / 2, y + h / 2, .65, .32, linen, 'solid');
+        break;
+      case 'kitchen':
+        box(x, y, 0, endX, endY, 1.1, [121, 149, 133]);box(x, y, 1.1, endX, endY, 1.26, cream);
+        for (let at = x + .2; at < endX; at += 1.4) box(at, endY, .12, Math.min(at + 1.25, endX), endY + .05, 1, [144, 166, 146]);
+        box(x + .4, y + .3, 1.26, x + 2, endY - .3, 1.29, ink);box(x + .55, y + .45, 1.29, x + 1.85, endY - .45, 1.32, [145, 163, 157]);
+        capsule([x + 1.2, y + .2, 1.3], [x + 1.2, y + .2, 1.85], .05, .05, () => ink, 'solid');
+        sphere(endX - 1, y + h / 2, 1.45, .3, jade, 'solid');
+        break;
+      case 'wardrobe': case 'bookcase':
+        box(x, y, 0, endX, endY, 2.5, wood);
+        if (prop.kind === 'bookcase') for (const z of [.3, 1.1, 1.9]) {
+          box(x + .08, endY - .1, z, endX - .08, endY + .04, z + .08, paleWood);
+          for (let at = x + .12; at < endX - .1; at += .17) box(at, endY - .13, z + .08, at + .12, endY, z + .55, Math.floor(at * 8) % 2 ? jade : linen);
+        } else { box(x + w / 2, endY, .15, x + w / 2 + .05, endY + .03, 2.3, ink); sphere(x + w / 2 + .15, endY + .1, 1.2, .06, cream, 'solid'); }
+        break;
+      case 'railing':
+        for (let at = y; at < endY; at += .7) post(x, at, 1.1);
+        box(x - .05, y, 1.1, endX + .05, endY, 1.22, paleWood);
+        break;
+      case 'pipe':
+        capsule([x + w / 2, y, .2], [x + w / 2, endY, .2], .06, .06, () => [126, 140, 132], 'solid');
+        for (let at = y; at < endY; at += 1.5) box(x, at, .1, endX, at + .08, .32, ink);
+        break;
+      case 'laundry': case 'coat-hook':
+        post(x, y, 2.1);post(endX - .13, endY - .13, 2.1);
+        capsule([x, y, 2.1], [endX, endY, 2.1], .04, .04, () => ink, 'solid');
+        box(x + .15, y + .1, .8, endX - .1, endY - .1, 1.95, linen);
+        break;
+      case 'screen':
+        box(x, y, 0, endX, y + .15, 2.3, jade);
+        for (let at = x + .1; at < endX; at += .25) box(at, y + .15, .2, at + .04, y + .18, 2.1, linen);
+        break;
+      case 'umbrella':
+        box(x + .1, y + .1, 0, endX - .1, endY - .1, .7, wood);
+        for (const at of [.3, .6]) capsule([x + at, y + .4, .4], [x + at, y + .4, 1.7], .045, .045, () => ink, 'solid');
+        break;
+      case 'bicycle':
+        for (const at of [.5, w - .5]) sphere(x + at, y + h / 2, .5, .48, ink, 'solid');
+        capsule([x + .5, y + h / 2, .5], [endX - .5, y + h / 2, .5], .08, .08, () => jade, 'solid');
+        capsule([x + w / 2, y + h / 2, .5], [x + w / 2, y + h / 2, 1.3], .07, .07, () => jade, 'solid');
+        break;
+      case 'sunlight':
+        for (let row = 0; row < h; row += .5) for (let column = 0; column < w; column += .5) {
+          if ((row * 2 + column * 2) % 3 === 0) box(x + column, y + row, .025, x + column + .3, y + row + .3, .028, [211, 183, 126]);
+        }
+        break;
+    }
+    if (!['sunlight', 'window', 'pipe', 'door'].includes(prop.kind)) api.castShadow(x + w / 2, y + h / 2, .12, Math.max(w, h) * .45, .45, 0);
+  }
+}
+
+export function drawApartmentFurniture(api: ResidentialArtApi, state: State) {
+  for (const p of [...state.placements].sort((a, b) => Number(a.id !== 'rug') - Number(b.id !== 'rug'))) {
+    const r = furnitureWorldRect(p, state.rugSize), x = r.x + .14, y = r.y + .14, endX = r.x + r.width - .14, endY = r.y + r.height - .14;
+    const { box, sphere } = api;
+    switch (p.id) {
+      case 'bed':
+        box(x, y, 0, endX, endY, .4, wood); box(x, y, .4, endX, endY, .7, cream);box(x, y, .7, endX, y + .2, 1.2, wood);
+        box(x + .2, y + .35, .7, endX - .2, y + 1.1, .88, linen); box(x, y + 1.3, .7, endX, endY, .83, [132, 158, 127]);
+        for (let at = y + 1.45; at < endY; at += .45) box(x, at, .83, endX, at + .05, .85, [163, 179, 142]);
+        break;
+      case 'table':
+        for (const px of [x + .1, endX - .24]) for (const py of [y + .1, endY - .24]) box(px, py, 0, px + .14, py + .14, 1.1, ink);
+        box(x, y, 1.1, endX, endY, 1.3, paleWood);sphere(x + .6, y + .6, 1.47, .18, jade, 'solid');
+        break;
+      case 'chair': case 'repairs.stool':
+        for (const px of [x + .1, endX - .24]) for (const py of [y + .1, endY - .24]) box(px, py, 0, px + .14, py + .14, .7, ink);
+        box(x, y, .7, endX, endY, .85, paleWood);
+        if (p.id === 'chair') box(x, y, .85, p.rotation ? x + .15 : endX, p.rotation ? endY : y + .15, 1.6, wood);
+        break;
+      case 'rug':
+        box(x, y, .015, endX, endY, .035, [170, 153, 115]);box(x + .15, y + .15, .035, endX - .15, endY - .15, .045, [211, 192, 150]);
+        break;
+      case 'cushion': case 'cats.cushion':
+        box(x, y, .02, endX, endY, .22, p.id === 'cats.cushion' ? [191, 162, 117] : state.colour === 'blue' ? [128, 155, 171] : linen);
+        break;
+      case 'vase': case 'garden.planter':
+        box(x + .4, y + .4, 0, endX - .4, endY - .4, .7, jade);
+        for (const dx of [.4, .8, 1.2]) sphere(x + dx, y + .8, .95 + dx * .2, .25, [116, 150, 103], 'solid');
+        break;
+      case 'basket':box(x + .2, y + .2, 0, endX - .2, endY - .2, .6, paleWood); break;
+      case 'lamp':
+        box(x + .6, y + .6, 0, endX - .6, endY - .6, .15, ink);box(x + .8, y + .8, .1, x + .9, y + .9, 1.7, ink);
+        box(x + .3, y + .3, 1.5, endX - .3, endY - .3, 1.8, [240, 210, 150]);
+        break;
+    }
+  }
+}
