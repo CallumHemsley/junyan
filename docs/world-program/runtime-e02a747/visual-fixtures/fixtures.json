@@ -1,0 +1,225 @@
+{
+  "head": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+  "records": [
+    {
+      "device": "desktop",
+      "map": "restaurant",
+      "fixture": {
+        "x": 12,
+        "y": 17,
+        "facing": "north"
+      },
+      "actual": "restaurant",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "courtyard",
+      "fixture": {
+        "x": 23,
+        "y": 33.5,
+        "facing": "north"
+      },
+      "actual": "courtyard",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "park",
+      "fixture": {
+        "x": 7,
+        "y": 61,
+        "facing": "north"
+      },
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "riverbank",
+      "fixture": {
+        "x": 7,
+        "y": 73,
+        "facing": "north"
+      },
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "apartment",
+      "fixture": {
+        "x": 25,
+        "y": 20,
+        "facing": "north"
+      },
+      "actual": "apartment",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "residential-hall",
+      "fixture": {
+        "x": 16,
+        "y": 21,
+        "facing": "north"
+      },
+      "actual": "residential-hall",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "residential-stairs",
+      "fixture": {
+        "x": 11.5,
+        "y": 37,
+        "facing": "north"
+      },
+      "actual": "residential-stairs",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "rooftop",
+      "fixture": {
+        "x": 12.5,
+        "y": 29,
+        "facing": "east"
+      },
+      "actual": "rooftop",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "town",
+      "fixture": {
+        "x": 34,
+        "y": 32,
+        "facing": "south"
+      },
+      "actual": "town",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "workshop",
+      "fixture": {
+        "x": 15,
+        "y": 25,
+        "facing": "north"
+      },
+      "actual": "workshop",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "restaurant",
+      "fixture": {
+        "x": 12,
+        "y": 17,
+        "facing": "north"
+      },
+      "actual": "restaurant",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "courtyard",
+      "fixture": {
+        "x": 23,
+        "y": 33.5,
+        "facing": "north"
+      },
+      "actual": "courtyard",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "park",
+      "fixture": {
+        "x": 7,
+        "y": 61,
+        "facing": "north"
+      },
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "riverbank",
+      "fixture": {
+        "x": 7,
+        "y": 73,
+        "facing": "north"
+      },
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "apartment",
+      "fixture": {
+        "x": 25,
+        "y": 20,
+        "facing": "north"
+      },
+      "actual": "apartment",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "residential-hall",
+      "fixture": {
+        "x": 16,
+        "y": 21,
+        "facing": "north"
+      },
+      "actual": "residential-hall",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "residential-stairs",
+      "fixture": {
+        "x": 11.5,
+        "y": 37,
+        "facing": "north"
+      },
+      "actual": "residential-stairs",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "rooftop",
+      "fixture": {
+        "x": 12.5,
+        "y": 29,
+        "facing": "east"
+      },
+      "actual": "rooftop",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "town",
+      "fixture": {
+        "x": 34,
+        "y": 32,
+        "facing": "south"
+      },
+      "actual": "town",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "workshop",
+      "fixture": {
+        "x": 15,
+        "y": 25,
+        "facing": "north"
+      },
+      "actual": "workshop",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    }
+  ]
+}

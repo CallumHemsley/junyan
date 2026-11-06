@@ -1,0 +1,976 @@
+{
+  "base": "e1e6d78c548b8c9bcd7a2a727e0e71a2b5041200",
+  "method": "Revision3 actual-App declared visual/setup fixtures. Morning served0; evening served3 via existing pay reducers for tables1-3. NOT ordinary travel, route motion, progression or semantic merge acceptance.",
+  "trialProvenanceHash": "c352651a0aef115fcd474719f66c6d98383b5b1627e14b789cec2f0eb6f532be",
+  "productionIndexHash": "4cd047f5fc1ce9e19d3f558a91fc14667e5d8309c5caff9b155163d21492db1b",
+  "sourceHashes": {
+    "src/world/WorldViewport.tsx": "8ea8c9b3e889d6bbe3f1450a0852156c5ba47647612bb00afd6cf7861a81db5a",
+    "src/world/camera.ts": "cc5d812d5b01eae77e4fe7f6ed1a6725e3dd3481c1dadb9b63b5aed9734935d6",
+    "src/world/art/restaurant/projection.ts": "5999a5115faa021b8ddb400c9a8ff14d7b099ff5a209c3ed1efbc2058f8c43e0",
+    "src/world/characters/artwork.mjs": "553bebe8344e2ae8c75cb047f161a8717c1254fe66f18da8768f2d523931616f",
+    "src/world/art/courtyard/index.ts": "aa3c1b0592fbc47904e1a8c7da29180a8414577515ef69356af9a33ffd9b5649",
+    "src/world/life/model.ts": "c73616c5baa1f62f6e9f1a69305222992dc020273052da98689b29a7b0139574",
+    "src/world/art/landscape/index.ts": "ad5954e6a16c539f7ab09fffa65eb96379592cf8e7776b166396ece553ce0054",
+    "src/world/art/landscape/foliage.ts": "2209e85dc883987a092488e3cae8c1f939e9ea830db1b9ad61bebc84de2b2b96",
+    "src/world/maps/landscape/park.json": "6b888b089480907f13b78295f43d32a1bc179ecca2e33f55f4535d5daef6f2f9",
+    "src/world/maps/landscape/riverbank.json": "46342797d1ea0f13b38ebff87b0d610bf786a50b5d2dc317ed396d813182f451",
+    "src/world/art/rooftop/index.ts": "79724b94aa497f7350eb1af2c0304e1cc7bf09888fd17784eb84784ca6fea433",
+    "src/world/art/rooftop/roofscape.ts": "5e1be2d1317837d14f6343a6d5d34a09ae96eb9c71dc63ae6ce437686c899e77",
+    "src/world/maps/rooftop/map.json": "04f1c70eb8f0eda867fa80381312b3622e4be5559142f1ad543aeaa5c86433ac"
+  },
+  "captureSetupCorrection": "Initial /junyan/ preview URL served HTML for module assets; final captures use verified root5502/. This was an audit URL error, not a product defect.",
+  "limitations": [
+    "Actual customers use fixed south-facing seated projection. View names describe player positions only.",
+    "Workshop active light selector is not consumed by base painter.",
+    "Main semantic merge is absent. This revision3 includes compatible life source and the coordinator reports tsc/build pass."
+  ],
+  "revision": "revision3",
+  "compatibleLife": "93deae997f26de60c419ea17203d39773c17084a",
+  "landscape": "400abbf",
+  "rooftop": "f5ad803",
+  "typecheck": "Coordinator reports current revision2 typecheck and build pass; this capture probe separately validates declared fixtures.",
+  "records": [
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "riverbank-old-ferry-morning",
+      "subject": "riverbank.old-ferry",
+      "file": "audit/revision3/phone-riverbank-old-ferry-morning.png",
+      "sha256": "fd86772b549fa3a23d643aa974bbe32a78aaf8efc0992e205d50274b298fb278",
+      "actualMap": "riverbank",
+      "actualPosition": {
+        "x": 62,
+        "y": 57
+      },
+      "requestedPosition": {
+        "x": 62,
+        "y": 57
+      },
+      "actualFacing": "north",
+      "phase": "morning",
+      "actualServed": 0,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [
+        {
+          "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "location": {
+            "url": "http://127.0.0.1:5502/favicon.ico",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        }
+      ],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "riverbank-old-ferry-evening",
+      "subject": "riverbank.old-ferry",
+      "file": "audit/revision3/phone-riverbank-old-ferry-evening.png",
+      "sha256": "d72ef2278b1d0b33a08300a3954076c85e0d02050363681285eb2b828d569b05",
+      "actualMap": "riverbank",
+      "actualPosition": {
+        "x": 62,
+        "y": 57
+      },
+      "requestedPosition": {
+        "x": 62,
+        "y": 57
+      },
+      "actualFacing": "north",
+      "phase": "evening",
+      "actualServed": 3,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "riverbank-first-arrival-morning",
+      "subject": "first-arrival",
+      "file": "audit/revision3/phone-riverbank-first-arrival-morning.png",
+      "sha256": "bb370cbf6b8ed3fdfc6fae7f19a40c422610722fc59caae0d816ab1028e79942",
+      "actualMap": "riverbank",
+      "actualPosition": {
+        "x": 40,
+        "y": 75
+      },
+      "requestedPosition": {
+        "x": 40,
+        "y": 75
+      },
+      "actualFacing": "north",
+      "phase": "morning",
+      "actualServed": 0,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "riverbank-first-arrival-evening",
+      "subject": "first-arrival",
+      "file": "audit/revision3/phone-riverbank-first-arrival-evening.png",
+      "sha256": "8427c2e660304a72ba04a6c0ff7467826277505e9b4320c434baf82bd7470191",
+      "actualMap": "riverbank",
+      "actualPosition": {
+        "x": 40,
+        "y": 75
+      },
+      "requestedPosition": {
+        "x": 40,
+        "y": 75
+      },
+      "actualFacing": "north",
+      "phase": "evening",
+      "actualServed": 3,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "park-first-arrival-morning",
+      "subject": "first-arrival",
+      "file": "audit/revision3/phone-park-first-arrival-morning.png",
+      "sha256": "a4d2337fc1f480a57f9878d2d39104fcfc787ba1d6d39b98147d5085caa3266f",
+      "actualMap": "park",
+      "actualPosition": {
+        "x": 7,
+        "y": 63
+      },
+      "requestedPosition": {
+        "x": 7,
+        "y": 63
+      },
+      "actualFacing": "north",
+      "phase": "morning",
+      "actualServed": 0,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "park-first-arrival-evening",
+      "subject": "first-arrival",
+      "file": "audit/revision3/phone-park-first-arrival-evening.png",
+      "sha256": "3d2af417d8f29e199429d10a2e611925ff3987d9402880f816b977e8d51acb5b",
+      "actualMap": "park",
+      "actualPosition": {
+        "x": 7,
+        "y": 63
+      },
+      "requestedPosition": {
+        "x": 7,
+        "y": 63
+      },
+      "actualFacing": "north",
+      "phase": "evening",
+      "actualServed": 3,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "park-orchard-basket-morning",
+      "subject": "park.orchard-basket",
+      "file": "audit/revision3/phone-park-orchard-basket-morning.png",
+      "sha256": "4fa8bac772093316d5211439ee08cacc79f19a747a7ba6fa646c96ae6c6a428d",
+      "actualMap": "park",
+      "actualPosition": {
+        "x": 16,
+        "y": 52
+      },
+      "requestedPosition": {
+        "x": 16,
+        "y": 52
+      },
+      "actualFacing": "north",
+      "phase": "morning",
+      "actualServed": 0,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "park-orchard-basket-evening",
+      "subject": "park.orchard-basket",
+      "file": "audit/revision3/phone-park-orchard-basket-evening.png",
+      "sha256": "60dcd664216f52dd29043ad779160a9c2ca9e227b0205b7ff02c3c09ddfdf364",
+      "actualMap": "park",
+      "actualPosition": {
+        "x": 16,
+        "y": 52
+      },
+      "requestedPosition": {
+        "x": 16,
+        "y": 52
+      },
+      "actualFacing": "north",
+      "phase": "evening",
+      "actualServed": 3,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "rooftop-first-arrival-morning",
+      "subject": "first-arrival",
+      "file": "audit/revision3/phone-rooftop-first-arrival-morning.png",
+      "sha256": "06e5b46f85f7f77e264bbeb1dc28c91f1cd6677805f53033a64beaf066e2e552",
+      "actualMap": "rooftop",
+      "actualPosition": {
+        "x": 12.5,
+        "y": 29
+      },
+      "requestedPosition": {
+        "x": 12.5,
+        "y": 29
+      },
+      "actualFacing": "east",
+      "phase": "morning",
+      "actualServed": 0,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "rooftop-first-arrival-evening",
+      "subject": "first-arrival",
+      "file": "audit/revision3/phone-rooftop-first-arrival-evening.png",
+      "sha256": "9cb12f8c86ef76ab9d1dc040c5e14224c66164bb35358e2c0c2698a1e31467d6",
+      "actualMap": "rooftop",
+      "actualPosition": {
+        "x": 12.5,
+        "y": 29
+      },
+      "requestedPosition": {
+        "x": 12.5,
+        "y": 29
+      },
+      "actualFacing": "east",
+      "phase": "evening",
+      "actualServed": 3,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "rooftop-pots-morning",
+      "subject": "rooftop.pots",
+      "file": "audit/revision3/phone-rooftop-pots-morning.png",
+      "sha256": "8aef1aeabe680561d4643a71ee18ad766b60f5c7f5e987cf332f0be51c4d2feb",
+      "actualMap": "rooftop",
+      "actualPosition": {
+        "x": 19,
+        "y": 23
+      },
+      "requestedPosition": {
+        "x": 19,
+        "y": 23
+      },
+      "actualFacing": "north",
+      "phase": "morning",
+      "actualServed": 0,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "rooftop-pots-evening",
+      "subject": "rooftop.pots",
+      "file": "audit/revision3/phone-rooftop-pots-evening.png",
+      "sha256": "fd31b305b841ca46ee446a165979126688d78aed9fb4c6c11fde8e4964257d3f",
+      "actualMap": "rooftop",
+      "actualPosition": {
+        "x": 19,
+        "y": 23
+      },
+      "requestedPosition": {
+        "x": 19,
+        "y": 23
+      },
+      "actualFacing": "north",
+      "phase": "evening",
+      "actualServed": 3,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "riverbank-old-ferry-morning",
+      "subject": "riverbank.old-ferry",
+      "file": "audit/revision3/desktop-riverbank-old-ferry-morning.png",
+      "sha256": "c2b2a1d5cd7e5d396e3aa99cf888ac6858ce32e1c0c82cb45003d0c5f9c13d46",
+      "actualMap": "riverbank",
+      "actualPosition": {
+        "x": 62,
+        "y": 57
+      },
+      "requestedPosition": {
+        "x": 62,
+        "y": 57
+      },
+      "actualFacing": "north",
+      "phase": "morning",
+      "actualServed": 0,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "riverbank-old-ferry-evening",
+      "subject": "riverbank.old-ferry",
+      "file": "audit/revision3/desktop-riverbank-old-ferry-evening.png",
+      "sha256": "00fb2ace1bb375c7499d5cb82b69431f9cd8aa84aaab188e8e76045f0cc17aef",
+      "actualMap": "riverbank",
+      "actualPosition": {
+        "x": 62,
+        "y": 57
+      },
+      "requestedPosition": {
+        "x": 62,
+        "y": 57
+      },
+      "actualFacing": "north",
+      "phase": "evening",
+      "actualServed": 3,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "riverbank-first-arrival-morning",
+      "subject": "first-arrival",
+      "file": "audit/revision3/desktop-riverbank-first-arrival-morning.png",
+      "sha256": "26c5791112c08485bda7b2579070c6aa60d5ca3a9dff0fafb41c561dcb579dec",
+      "actualMap": "riverbank",
+      "actualPosition": {
+        "x": 40,
+        "y": 75
+      },
+      "requestedPosition": {
+        "x": 40,
+        "y": 75
+      },
+      "actualFacing": "north",
+      "phase": "morning",
+      "actualServed": 0,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "riverbank-first-arrival-evening",
+      "subject": "first-arrival",
+      "file": "audit/revision3/desktop-riverbank-first-arrival-evening.png",
+      "sha256": "1414d93ef937d40d8eb3cd6d2430168b4fe4b2955c330042aaba9cb5c234c87b",
+      "actualMap": "riverbank",
+      "actualPosition": {
+        "x": 40,
+        "y": 75
+      },
+      "requestedPosition": {
+        "x": 40,
+        "y": 75
+      },
+      "actualFacing": "north",
+      "phase": "evening",
+      "actualServed": 3,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "park-first-arrival-morning",
+      "subject": "first-arrival",
+      "file": "audit/revision3/desktop-park-first-arrival-morning.png",
+      "sha256": "31076770f792b55b5566cf8f8db54cebf8304f27130140c95ed8b723a1732065",
+      "actualMap": "park",
+      "actualPosition": {
+        "x": 7,
+        "y": 63
+      },
+      "requestedPosition": {
+        "x": 7,
+        "y": 63
+      },
+      "actualFacing": "north",
+      "phase": "morning",
+      "actualServed": 0,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "park-first-arrival-evening",
+      "subject": "first-arrival",
+      "file": "audit/revision3/desktop-park-first-arrival-evening.png",
+      "sha256": "acefc0d15ea8135bdfae0a6239bdc604747e897f1a915435930523586ca24f79",
+      "actualMap": "park",
+      "actualPosition": {
+        "x": 7,
+        "y": 63
+      },
+      "requestedPosition": {
+        "x": 7,
+        "y": 63
+      },
+      "actualFacing": "north",
+      "phase": "evening",
+      "actualServed": 3,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "park-orchard-basket-morning",
+      "subject": "park.orchard-basket",
+      "file": "audit/revision3/desktop-park-orchard-basket-morning.png",
+      "sha256": "7438fb1fce989fcc3e5016b383ce48bcf32e5b4882a03de885efd9de1681c0c2",
+      "actualMap": "park",
+      "actualPosition": {
+        "x": 16,
+        "y": 52
+      },
+      "requestedPosition": {
+        "x": 16,
+        "y": 52
+      },
+      "actualFacing": "north",
+      "phase": "morning",
+      "actualServed": 0,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "park-orchard-basket-evening",
+      "subject": "park.orchard-basket",
+      "file": "audit/revision3/desktop-park-orchard-basket-evening.png",
+      "sha256": "fb3baa00656bcc2e0e2a5f28f8ab958db7a06d566d0f542e5cce96a5af33978d",
+      "actualMap": "park",
+      "actualPosition": {
+        "x": 16,
+        "y": 52
+      },
+      "requestedPosition": {
+        "x": 16,
+        "y": 52
+      },
+      "actualFacing": "north",
+      "phase": "evening",
+      "actualServed": 3,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "rooftop-first-arrival-morning",
+      "subject": "first-arrival",
+      "file": "audit/revision3/desktop-rooftop-first-arrival-morning.png",
+      "sha256": "37188902c9ddff92a5f9924fddd581fcf4d7ab77bc8cf5b2050976a40838e5b4",
+      "actualMap": "rooftop",
+      "actualPosition": {
+        "x": 12.5,
+        "y": 29
+      },
+      "requestedPosition": {
+        "x": 12.5,
+        "y": 29
+      },
+      "actualFacing": "east",
+      "phase": "morning",
+      "actualServed": 0,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "rooftop-first-arrival-evening",
+      "subject": "first-arrival",
+      "file": "audit/revision3/desktop-rooftop-first-arrival-evening.png",
+      "sha256": "0e6925e267c2e932c1a8bfa54060c0809972b220d279fcaf2bc352f90141a691",
+      "actualMap": "rooftop",
+      "actualPosition": {
+        "x": 12.5,
+        "y": 29
+      },
+      "requestedPosition": {
+        "x": 12.5,
+        "y": 29
+      },
+      "actualFacing": "east",
+      "phase": "evening",
+      "actualServed": 3,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "rooftop-pots-morning",
+      "subject": "rooftop.pots",
+      "file": "audit/revision3/desktop-rooftop-pots-morning.png",
+      "sha256": "7afa625b8bda55f0753505c958dcbc56ef7fcc8f1d0ed73b18900ceba249069d",
+      "actualMap": "rooftop",
+      "actualPosition": {
+        "x": 19,
+        "y": 23
+      },
+      "requestedPosition": {
+        "x": 19,
+        "y": 23
+      },
+      "actualFacing": "north",
+      "phase": "morning",
+      "actualServed": 0,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "rooftop-pots-evening",
+      "subject": "rooftop.pots",
+      "file": "audit/revision3/desktop-rooftop-pots-evening.png",
+      "sha256": "2deb3ba4c210b85eb2eac3de6c482c7d326b6d44d100690053487d63eba1b5c5",
+      "actualMap": "rooftop",
+      "actualPosition": {
+        "x": 19,
+        "y": 23
+      },
+      "requestedPosition": {
+        "x": 19,
+        "y": 23
+      },
+      "actualFacing": "north",
+      "phase": "evening",
+      "actualServed": 3,
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "old-ferry-canopy-behind-morning",
+      "subject": "riverbank.ferry-copse-tree-0 old-ferry-canopy-behind",
+      "file": "audit/revision3/phone-old-ferry-canopy-behind-morning.png",
+      "sha256": "63046c0fc0a4e6d28edff94af6871c4faaa7ac57f8d3948684cf1281df5cf642",
+      "actualMap": "riverbank",
+      "actualPosition": {
+        "x": 65,
+        "y": 61
+      },
+      "requestedPosition": {
+        "x": 65,
+        "y": 61
+      },
+      "actualFacing": "north",
+      "phase": "morning",
+      "actualServed": 0,
+      "occlusionEvidence": {
+        "treeId": "riverbank.ferry-copse-tree-0",
+        "treePosition": {
+          "x": 69,
+          "y": 65
+        },
+        "occlusion": {
+          "id": "riverbank.ferry-copse-tree-0",
+          "rect": {
+            "x": 66.88888888888889,
+            "y": 62.888888888888886,
+            "width": 4.222222222222222,
+            "height": 4.222222222222222
+          },
+          "height": 6.611111111111111,
+          "fadeWhenPlayerBehind": true
+        },
+        "canonicalProjectedCanopyBounds": {
+          "x": 4,
+          "y": 1087,
+          "width": 144,
+          "height": 123
+        },
+        "canonicalProjectedActorBounds": {
+          "x": 64,
+          "y": 1092,
+          "width": 19,
+          "height": 42
+        },
+        "projectedBoundsOverlap": true,
+        "compositorFadePredicate": true,
+        "treeSortedAfterPlayer": true,
+        "expectedObjectAlpha": 0.45
+      },
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [
+        {
+          "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "location": {
+            "url": "http://127.0.0.1:5502/favicon.ico",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        }
+      ],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "old-ferry-canopy-outside-morning",
+      "subject": "riverbank.ferry-copse-tree-0 old-ferry-canopy-outside",
+      "file": "audit/revision3/phone-old-ferry-canopy-outside-morning.png",
+      "sha256": "1e1ab5df866446b2337f12054790db8a7f732fc4e2938ea1f7d59159a53c533a",
+      "actualMap": "riverbank",
+      "actualPosition": {
+        "x": 62.75,
+        "y": 63.25
+      },
+      "requestedPosition": {
+        "x": 62.75,
+        "y": 63.25
+      },
+      "actualFacing": "north",
+      "phase": "morning",
+      "actualServed": 0,
+      "occlusionEvidence": {
+        "treeId": "riverbank.ferry-copse-tree-0",
+        "treePosition": {
+          "x": 69,
+          "y": 65
+        },
+        "occlusion": {
+          "id": "riverbank.ferry-copse-tree-0",
+          "rect": {
+            "x": 66.88888888888889,
+            "y": 62.888888888888886,
+            "width": 4.222222222222222,
+            "height": 4.222222222222222
+          },
+          "height": 6.611111111111111,
+          "fadeWhenPlayerBehind": true
+        },
+        "canonicalProjectedCanopyBounds": {
+          "x": 4,
+          "y": 1087,
+          "width": 144,
+          "height": 123
+        },
+        "canonicalProjectedActorBounds": {
+          "x": -17,
+          "y": 1092,
+          "width": 19,
+          "height": 42
+        },
+        "projectedBoundsOverlap": false,
+        "compositorFadePredicate": false,
+        "treeSortedAfterPlayer": true,
+        "expectedObjectAlpha": 1
+      },
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "old-ferry-canopy-behind-morning",
+      "subject": "riverbank.ferry-copse-tree-0 old-ferry-canopy-behind",
+      "file": "audit/revision3/desktop-old-ferry-canopy-behind-morning.png",
+      "sha256": "c307ac530220653783ea5fdeda42ff8572bcdea3fb828e487b345c483e5dfcd6",
+      "actualMap": "riverbank",
+      "actualPosition": {
+        "x": 65,
+        "y": 61
+      },
+      "requestedPosition": {
+        "x": 65,
+        "y": 61
+      },
+      "actualFacing": "north",
+      "phase": "morning",
+      "actualServed": 0,
+      "occlusionEvidence": {
+        "treeId": "riverbank.ferry-copse-tree-0",
+        "treePosition": {
+          "x": 69,
+          "y": 65
+        },
+        "occlusion": {
+          "id": "riverbank.ferry-copse-tree-0",
+          "rect": {
+            "x": 66.88888888888889,
+            "y": 62.888888888888886,
+            "width": 4.222222222222222,
+            "height": 4.222222222222222
+          },
+          "height": 6.611111111111111,
+          "fadeWhenPlayerBehind": true
+        },
+        "canonicalProjectedCanopyBounds": {
+          "x": 4,
+          "y": 1087,
+          "width": 144,
+          "height": 123
+        },
+        "canonicalProjectedActorBounds": {
+          "x": 64,
+          "y": 1092,
+          "width": 19,
+          "height": 42
+        },
+        "projectedBoundsOverlap": true,
+        "compositorFadePredicate": true,
+        "treeSortedAfterPlayer": true,
+        "expectedObjectAlpha": 0.45
+      },
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "old-ferry-canopy-outside-morning",
+      "subject": "riverbank.ferry-copse-tree-0 old-ferry-canopy-outside",
+      "file": "audit/revision3/desktop-old-ferry-canopy-outside-morning.png",
+      "sha256": "f39c9f3326334b9a5d4732f5762f581cf4075b2f129f82101797662284e154b9",
+      "actualMap": "riverbank",
+      "actualPosition": {
+        "x": 62.75,
+        "y": 63.25
+      },
+      "requestedPosition": {
+        "x": 62.75,
+        "y": 63.25
+      },
+      "actualFacing": "north",
+      "phase": "morning",
+      "actualServed": 0,
+      "occlusionEvidence": {
+        "treeId": "riverbank.ferry-copse-tree-0",
+        "treePosition": {
+          "x": 69,
+          "y": 65
+        },
+        "occlusion": {
+          "id": "riverbank.ferry-copse-tree-0",
+          "rect": {
+            "x": 66.88888888888889,
+            "y": 62.888888888888886,
+            "width": 4.222222222222222,
+            "height": 4.222222222222222
+          },
+          "height": 6.611111111111111,
+          "fadeWhenPlayerBehind": true
+        },
+        "canonicalProjectedCanopyBounds": {
+          "x": 4,
+          "y": 1087,
+          "width": 144,
+          "height": 123
+        },
+        "canonicalProjectedActorBounds": {
+          "x": -17,
+          "y": 1092,
+          "width": 19,
+          "height": 42
+        },
+        "projectedBoundsOverlap": false,
+        "compositorFadePredicate": false,
+        "treeSortedAfterPlayer": true,
+        "expectedObjectAlpha": 1
+      },
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    }
+  ]
+}

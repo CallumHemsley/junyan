@@ -1,0 +1,13 @@
+# Independent assembled-world check
+
+Exact source e02a747c3b4d4fc6a476ea744ecb6bdc1a738132, isolated /workspace/junyan-audit-e02. TypeScript and Vite production build passed using Node22.23.4 and existing installed toolchain; this audit did not independently run frozen installation. Existing Zod annotation and bundle-size warnings remain.
+
+All176 declared assembly-provenance SHA256 hashes match actual files. Every file also matches its stated consumed owner commit; none unavailable. See provenance-results.json. Source now explicitly dispatches each registered map to its leased art module; module-backed terrain/props bypass generic fallback. Existing registry coverage tests pass. Restaurant objects and table settings have separate IDs; no old blanket courtyard broadcast remains.
+
+Full rules:435passed/1failed across57files. Failure is src/world/life/routines.test.ts town's incidental life.town.office-walk ID expectation. Independent plan confirms exactly one xiao-li actor town.book-window-reader,8phases including walking, no diagnostics. Preserve dedup; correct expected effective route, do not add a duplicate fallback actor. All other existing rules, including save/legacy/corruption, dispatch, lighting and locomotion passed.
+
+Additional pure audit7/7passed: original workshop complete path at16/16.6667/20/33.3333/40ms; one effective town regular; authoritative payment then explicit served-table close followed by JSON roundtrip and validateSavedGame preserves departure, meals and service while removing global exclusions across all10map contexts. These are rule checks, not ordinary pointer/receipt browser proof. The presence fixture uses checkout phase and valid legacy approach then the real payment reducer; initial inconsistent audit fixtures were corrected, not product defects.
+
+Offline browser test passed51.6s: ordinary opening, help dismissal, held keyboard movement, offline reload, exact saved position match and byte hashes of all126existing WAV files. No state fixture injection; no page errors. Screenshot captures reload help overlay, not unobstructed visual acceptance. No generated audio. Run copied test/config files by placing them in audit/ of the exact source checkout (imports deliberately reference ../src and ../e2e). Preview base5497/junyan/. Configs preserve audit-only output paths.
+
+Astra visual survey is separate, uses declared valid save/arrival fixtures and is NOT travel proof. UI specialist separately checks actual normal-input table/kitchen/lookup/tray/journal. Reports pending publication at this checkpoint. Raised surfaces, new background residents, supported aunt identity, shadow boundary, dynamic exit-connected recovery and full experience remain open. No main merge or final world acceptance.

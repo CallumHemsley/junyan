@@ -1,0 +1,165 @@
+{
+  "base": "e02a747",
+  "atmosphere": "63a5803",
+  "landscape": "52a4046",
+  "method": "Disposable paired-code candidate production build using actual App camera and served-derived phase. Validated declared landmark saves; NOT ordinary gameplay/travel proof or published foundation acceptance.",
+  "records": [
+    {
+      "device": "desktop",
+      "file": "audit/desktop-park.pond-deck-morning.png",
+      "map": "park",
+      "landmark": "park.pond-deck",
+      "position": {
+        "x": 61,
+        "y": 33
+      },
+      "phase": "morning",
+      "served": 0,
+      "actualMap": "park"
+    },
+    {
+      "device": "desktop",
+      "file": "audit/desktop-riverbank.moon-bridge-morning.png",
+      "map": "riverbank",
+      "landmark": "riverbank.moon-bridge",
+      "position": {
+        "x": 48,
+        "y": 19
+      },
+      "phase": "morning",
+      "served": 0,
+      "actualMap": "riverbank"
+    },
+    {
+      "device": "desktop",
+      "file": "audit/desktop-park.orchard-basket-morning.png",
+      "map": "park",
+      "landmark": "park.orchard-basket",
+      "position": {
+        "x": 16,
+        "y": 52
+      },
+      "phase": "morning",
+      "served": 0,
+      "actualMap": "park"
+    },
+    {
+      "device": "desktop",
+      "file": "audit/desktop-park.pond-deck-evening.png",
+      "map": "park",
+      "landmark": "park.pond-deck",
+      "position": {
+        "x": 61,
+        "y": 33
+      },
+      "phase": "evening",
+      "served": 3,
+      "actualMap": "park"
+    },
+    {
+      "device": "desktop",
+      "file": "audit/desktop-riverbank.moon-bridge-evening.png",
+      "map": "riverbank",
+      "landmark": "riverbank.moon-bridge",
+      "position": {
+        "x": 48,
+        "y": 19
+      },
+      "phase": "evening",
+      "served": 3,
+      "actualMap": "riverbank"
+    },
+    {
+      "device": "desktop",
+      "file": "audit/desktop-park.orchard-basket-evening.png",
+      "map": "park",
+      "landmark": "park.orchard-basket",
+      "position": {
+        "x": 16,
+        "y": 52
+      },
+      "phase": "evening",
+      "served": 3,
+      "actualMap": "park"
+    },
+    {
+      "device": "phone",
+      "file": "audit/phone-park.pond-deck-morning.png",
+      "map": "park",
+      "landmark": "park.pond-deck",
+      "position": {
+        "x": 61,
+        "y": 33
+      },
+      "phase": "morning",
+      "served": 0,
+      "actualMap": "park"
+    },
+    {
+      "device": "phone",
+      "file": "audit/phone-riverbank.moon-bridge-morning.png",
+      "map": "riverbank",
+      "landmark": "riverbank.moon-bridge",
+      "position": {
+        "x": 48,
+        "y": 19
+      },
+      "phase": "morning",
+      "served": 0,
+      "actualMap": "riverbank"
+    },
+    {
+      "device": "phone",
+      "file": "audit/phone-park.orchard-basket-morning.png",
+      "map": "park",
+      "landmark": "park.orchard-basket",
+      "position": {
+        "x": 16,
+        "y": 52
+      },
+      "phase": "morning",
+      "served": 0,
+      "actualMap": "park"
+    },
+    {
+      "device": "phone",
+      "file": "audit/phone-park.pond-deck-evening.png",
+      "map": "park",
+      "landmark": "park.pond-deck",
+      "position": {
+        "x": 61,
+        "y": 33
+      },
+      "phase": "evening",
+      "served": 3,
+      "actualMap": "park"
+    },
+    {
+      "device": "phone",
+      "file": "audit/phone-riverbank.moon-bridge-evening.png",
+      "map": "riverbank",
+      "landmark": "riverbank.moon-bridge",
+      "position": {
+        "x": 48,
+        "y": 19
+      },
+      "phase": "evening",
+      "served": 3,
+      "actualMap": "riverbank"
+    },
+    {
+      "device": "phone",
+      "file": "audit/phone-park.orchard-basket-evening.png",
+      "map": "park",
+      "landmark": "park.orchard-basket",
+      "position": {
+        "x": 16,
+        "y": 52
+      },
+      "phase": "evening",
+      "served": 3,
+      "actualMap": "park"
+    }
+  ],
+  "errors": []
+}

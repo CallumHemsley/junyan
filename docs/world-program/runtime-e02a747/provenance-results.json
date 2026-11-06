@@ -1,0 +1,101 @@
+[
+  {
+    "owner": "codex/0079-town-street",
+    "head": "f26160db824009f8008392f9c6e9e57a47eaa7ba",
+    "files": 9,
+    "manifestMismatches": [],
+    "missing": [],
+    "ownerUnavailable": [],
+    "ownerDiff": []
+  },
+  {
+    "owner": "codex/0080-courtyard",
+    "head": "7341f313334738db025df990bffad157f50e52cf",
+    "files": 18,
+    "manifestMismatches": [],
+    "missing": [],
+    "ownerUnavailable": [],
+    "ownerDiff": []
+  },
+  {
+    "owner": "codex/0081-residential",
+    "head": "8ebffb19c0d4c2ccc6fc20758b9e38c9886c0ad3",
+    "files": 30,
+    "manifestMismatches": [],
+    "missing": [],
+    "ownerUnavailable": [],
+    "ownerDiff": []
+  },
+  {
+    "owner": "codex/0082-workshop",
+    "head": "d772aa19624e296d90cde59181182560427825d3",
+    "files": 22,
+    "manifestMismatches": [],
+    "missing": [],
+    "ownerUnavailable": [],
+    "ownerDiff": []
+  },
+  {
+    "owner": "codex/0083-rooftop",
+    "head": "e1e3fa3b520dd3fab21246f7860dbbd24524ae14",
+    "files": 20,
+    "manifestMismatches": [],
+    "missing": [],
+    "ownerUnavailable": [],
+    "ownerDiff": []
+  },
+  {
+    "owner": "codex/0084-landscape",
+    "head": "9860cd757c989f2ff6ceae188445773a09ebf907",
+    "files": 9,
+    "manifestMismatches": [],
+    "missing": [],
+    "ownerUnavailable": [],
+    "ownerDiff": []
+  },
+  {
+    "owner": "codex/0085-characters",
+    "head": "85d6d6e0f5c7cb37b427afba2c691e7e881bc4fb",
+    "files": 14,
+    "manifestMismatches": [],
+    "missing": [],
+    "ownerUnavailable": [],
+    "ownerDiff": []
+  },
+  {
+    "owner": "codex/0086-atmosphere",
+    "head": "7f394f02fe3f4cb5316215140e8c18b822fb4fe4",
+    "files": 15,
+    "manifestMismatches": [],
+    "missing": [],
+    "ownerUnavailable": [],
+    "ownerDiff": []
+  },
+  {
+    "owner": "codex/0087-world-life",
+    "head": "137a652ac800da91e4332a0450dae5e2ca0ed195",
+    "files": 26,
+    "manifestMismatches": [],
+    "missing": [],
+    "ownerUnavailable": [],
+    "ownerDiff": []
+  },
+  {
+    "owner": "codex/0089-restaurant-world-art",
+    "head": "f3c4030c18787e4638639075e6c67a11cd542304",
+    "files": 6,
+    "manifestMismatches": [],
+    "missing": [],
+    "ownerUnavailable": [],
+    "ownerDiff": []
+  },
+  {
+    "owner": "codex/0090-contextual-world-ui",
+    "head": "85e00ababde761eab0986024c6f2d7e7570b642b",
+    "files": 7,
+    "manifestMismatches": [],
+    "missing": [],
+    "ownerUnavailable": [],
+    "ownerDiff": []
+  }
+]

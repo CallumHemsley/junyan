@@ -1,0 +1,148 @@
+{
+  "version": 1,
+  "id": "workshop",
+  "bounds": {
+    "width": 24,
+    "height": 20
+  },
+  "defaultSpawn": {
+    "x": 12,
+    "y": 17,
+    "facing": "north"
+  },
+  "walkable": [
+    {
+      "x": 1,
+      "y": 1,
+      "width": 22,
+      "height": 18
+    }
+  ],
+  "colliders": [
+    {
+      "id": "workshop.bench",
+      "rect": {
+        "x": 4,
+        "y": 3,
+        "width": 6,
+        "height": 2
+      }
+    }
+  ],
+  "occluders": [],
+  "entrances": [
+    {
+      "id": "from-town",
+      "position": {
+        "x": 12,
+        "y": 17
+      },
+      "facing": "north"
+    }
+  ],
+  "exits": [
+    {
+      "id": "to-town",
+      "rect": {
+        "x": 11,
+        "y": 18,
+        "width": 2,
+        "height": 1
+      },
+      "targetMapId": "town",
+      "targetEntranceId": "from-workshop",
+      "kind": "door"
+    }
+  ],
+  "anchors": [
+    {
+      "id": "workshop.repair",
+      "position": {
+        "x": 7,
+        "y": 6
+      },
+      "radius": 1.5,
+      "featureId": "repairs",
+      "interactionId": "existing-repair-activity"
+    }
+  ],
+  "terrain": [
+    {
+      "id": "workshop.floor",
+      "rect": {
+        "x": 1,
+        "y": 1,
+        "width": 22,
+        "height": 18
+      },
+      "material": "stone",
+      "variant": 0
+    }
+  ],
+  "props": [
+    {
+      "id": "workshop.bench-art",
+      "kind": "bench",
+      "position": {
+        "x": 4,
+        "y": 3
+      },
+      "width": 6,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    }
+  ],
+  "palette": {
+    "cream": [
+      245,
+      232,
+      202
+    ],
+    "jade": [
+      111,
+      154,
+      134
+    ],
+    "ink": [
+      48,
+      43,
+      42
+    ],
+    "wood": [
+      115,
+      86,
+      58
+    ]
+  },
+  "npcHooks": [
+    {
+      "id": "workshop.resident",
+      "position": {
+        "x": 8,
+        "y": 7
+      },
+      "route": [
+        {
+          "x": 8,
+          "y": 7
+        },
+        {
+          "x": 13,
+          "y": 7
+        }
+      ],
+      "characterId": "existing-repair-resident"
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "workshop.bench-landmark",
+      "position": {
+        "x": 7,
+        "y": 4
+      },
+      "kind": "repair-bench"
+    }
+  ]
+}

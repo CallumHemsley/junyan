@@ -1,0 +1,867 @@
+{
+  "base": "e1e6d78c548b8c9bcd7a2a727e0e71a2b5041200",
+  "method": "Declared valid visual/setup fixtures only. NOT ordinary travel, progression or main semantic merge proof. Customers fixed south; names specify player viewpoint.",
+  "trialProvenanceHash": "3ea1528a7ce83c99bc220e8c062c865df8220186e6365c4aa93f128cd8c0eb4a",
+  "productionIndexHash": "5bad4311ba1cb67dc6a7b8ed0ba1bd1e487ae7babf26450d1d18876a4a6f0cc9",
+  "sourceHashes": {
+    "src/world/WorldViewport.tsx": "8ea8c9b3e889d6bbe3f1450a0852156c5ba47647612bb00afd6cf7861a81db5a",
+    "src/world/camera.ts": "cc5d812d5b01eae77e4fe7f6ed1a6725e3dd3481c1dadb9b63b5aed9734935d6",
+    "src/world/art/restaurant/projection.ts": "5999a5115faa021b8ddb400c9a8ff14d7b099ff5a209c3ed1efbc2058f8c43e0",
+    "src/world/characters/artwork.mjs": "553bebe8344e2ae8c75cb047f161a8717c1254fe66f18da8768f2d523931616f",
+    "src/world/art/courtyard/index.ts": "aa3c1b0592fbc47904e1a8c7da29180a8414577515ef69356af9a33ffd9b5649"
+  },
+  "captureSetupCorrection": "Initial /junyan/ preview URL served HTML for module assets; final captures use verified root5502/. This was an audit URL error, not a product defect.",
+  "limitations": [
+    "Actual customers use fixed south-facing seated projection. View names describe player positions only.",
+    "Workshop active light selector is not consumed by base painter.",
+    "Main semantic merge is absent. Vite production build passed; known Profile.homeMap test type mismatch prevents full typecheck green."
+  ],
+  "records": [
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "table1-player-north",
+      "subject": "table 1 and actual fixed south-facing seated customer; player north",
+      "file": "audit/phone-table1-player-north.png",
+      "sha256": "92e30a5c6fe67698db6e620ee290fa6b62017c3db0eb989e3fb72a7d149e79e0",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 5,
+        "y": 7.4
+      },
+      "requestedPosition": {
+        "x": 5,
+        "y": 7.4
+      },
+      "actualFacing": "south",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "httpFailures": [],
+      "customerPose": "fixed south-facing seated, not rotated by player viewpoint"
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "table1-player-east",
+      "subject": "table 1 and actual fixed south-facing seated customer; player east",
+      "file": "audit/phone-table1-player-east.png",
+      "sha256": "b9f6d4f489940a848616de8d3170e8a0efe0b9205062eb9a95c697cd836164cc",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 6.6,
+        "y": 9
+      },
+      "requestedPosition": {
+        "x": 6.6,
+        "y": 9
+      },
+      "actualFacing": "west",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": [],
+      "customerPose": "fixed south-facing seated, not rotated by player viewpoint"
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "table1-player-south",
+      "subject": "table 1 and actual fixed south-facing seated customer; player south",
+      "file": "audit/phone-table1-player-south.png",
+      "sha256": "da2a429606cbbfce651ef7002e9dc2504e61d14e1c7aa7f4df64a222ac7b662f",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 5,
+        "y": 10.6
+      },
+      "requestedPosition": {
+        "x": 5,
+        "y": 10.6
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": [],
+      "customerPose": "fixed south-facing seated, not rotated by player viewpoint"
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "table4-player-north",
+      "subject": "table 4 and actual fixed south-facing seated customer; player north",
+      "file": "audit/phone-table4-player-north.png",
+      "sha256": "1992f398aaecc22e361d20c42fd85c9701e2340ea3a9c1428490f25936802591",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 17,
+        "y": 12.4
+      },
+      "requestedPosition": {
+        "x": 17,
+        "y": 12.4
+      },
+      "actualFacing": "south",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": [],
+      "customerPose": "fixed south-facing seated, not rotated by player viewpoint"
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "table4-player-east",
+      "subject": "table 4 and actual fixed south-facing seated customer; player east",
+      "file": "audit/phone-table4-player-east.png",
+      "sha256": "36379c975b8158f7f30332f888f61fb3e1838a5201a6c45c27346d6183959000",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 18.6,
+        "y": 14
+      },
+      "requestedPosition": {
+        "x": 18.6,
+        "y": 14
+      },
+      "actualFacing": "west",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": [],
+      "customerPose": "fixed south-facing seated, not rotated by player viewpoint"
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "table4-player-south",
+      "subject": "table 4 and actual fixed south-facing seated customer; player south",
+      "file": "audit/phone-table4-player-south.png",
+      "sha256": "2b6a7216ec60c8af367ddcb5a1c28cff37c628838d3b79fd002939d48177eb65",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 17,
+        "y": 15.6
+      },
+      "requestedPosition": {
+        "x": 17,
+        "y": 15.6
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": [],
+      "customerPose": "fixed south-facing seated, not rotated by player viewpoint"
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "kitchen",
+      "subject": "kitchen and tray",
+      "file": "audit/phone-kitchen.png",
+      "sha256": "806d66b6a2fe726ec8603942d42571b2cd7d7f850ccf96907c9ff23d7158f503",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 12,
+        "y": 6.5
+      },
+      "requestedPosition": {
+        "x": 12,
+        "y": 6.5
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 1,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "kitchen",
+      "subject": "kitchen and tray",
+      "file": "audit/phone-kitchen-tray-modal.png",
+      "sha256": "93dbd06f988f4003aa088c1624306d60974c7ffcc46cb1cc0a61cc3feb59af76",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 12,
+        "y": 6.5
+      },
+      "requestedPosition": {
+        "x": 12,
+        "y": 6.5
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 1,
+      "contextual": 1,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "restaurant-chair-table",
+      "subject": "restaurant chair and table physical reference",
+      "file": "audit/phone-restaurant-chair-table.png",
+      "sha256": "39a25e0cd3b02231f92cce1ae6fa1b79cb9d3332e9697730ff61160363c2782c",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 7,
+        "y": 10.8
+      },
+      "requestedPosition": {
+        "x": 7,
+        "y": 10.8
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "town-residence-door",
+      "subject": "town residence door physical reference",
+      "file": "audit/phone-town-residence-door.png",
+      "sha256": "d4c2c90d8754dbcb855cda54be0c7d8514f0f03df21a1ff51797220f4effafd6",
+      "actualMap": "town",
+      "actualPosition": {
+        "x": 11.5,
+        "y": 23.5
+      },
+      "requestedPosition": {
+        "x": 11.5,
+        "y": 23.5
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "workshop-bench",
+      "subject": "workshop lamp bench physical reference; active light selector not consumed by base painter",
+      "file": "audit/phone-workshop-bench.png",
+      "sha256": "0019092c364382bea1a566f317040724dfe8b39aa17631dbf500cd343f19f0bc",
+      "actualMap": "workshop",
+      "actualPosition": {
+        "x": 8,
+        "y": 11
+      },
+      "requestedPosition": {
+        "x": 8,
+        "y": 11
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "apartment-starter-bed",
+      "subject": "dynamic starter bed physical reference",
+      "file": "audit/phone-apartment-starter-bed.png",
+      "sha256": "04d0889f34dd8e420cabc2b689592c5fcda3b15feb9bcf5ba4f2189f4f6d37c2",
+      "actualMap": "apartment",
+      "actualPosition": {
+        "x": 9,
+        "y": 6
+      },
+      "requestedPosition": {
+        "x": 9,
+        "y": 6
+      },
+      "actualFacing": "west",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "stair-mid",
+      "subject": "actual authored lower tread midpoint",
+      "file": "audit/phone-stair-mid.png",
+      "sha256": "e57a65acc69fd0330deae1eaa6acf5cebe29bd349ebc65ca53cba6121aafd57f",
+      "actualMap": "residential-stairs",
+      "actualPosition": {
+        "x": 5.5,
+        "y": 28
+      },
+      "requestedPosition": {
+        "x": 5.5,
+        "y": 28
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "stair-home-landing",
+      "subject": "authored home landing",
+      "file": "audit/phone-stair-home-landing.png",
+      "sha256": "378fb0b273f084440ccd006fab26996560921f10e06f6b3d5eef21201f12f25e",
+      "actualMap": "residential-stairs",
+      "actualPosition": {
+        "x": 12,
+        "y": 21.5
+      },
+      "requestedPosition": {
+        "x": 12,
+        "y": 21.5
+      },
+      "actualFacing": "east",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "roof-arrival",
+      "subject": "rooftop arrival",
+      "file": "audit/phone-roof-arrival.png",
+      "sha256": "1fd9ca5a199f969a7a10caa303b6f3b9d26969d0025c932a47dfd715b5072500",
+      "actualMap": "rooftop",
+      "actualPosition": {
+        "x": 12.5,
+        "y": 29
+      },
+      "requestedPosition": {
+        "x": 12.5,
+        "y": 29
+      },
+      "actualFacing": "east",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "courtyard-laundry",
+      "subject": "courtyard laundry sorting approach",
+      "file": "audit/phone-courtyard-laundry.png",
+      "sha256": "91187557307059f6eaf48beebad8d8576ed8879a565d8c2ff3554729e9e2ce63",
+      "actualMap": "courtyard",
+      "actualPosition": {
+        "x": 32.5,
+        "y": 10.8
+      },
+      "requestedPosition": {
+        "x": 32.5,
+        "y": 10.8
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "table1-player-north",
+      "subject": "table 1 and actual fixed south-facing seated customer; player north",
+      "file": "audit/desktop-table1-player-north.png",
+      "sha256": "1aede612d1aa7f9ab02837361d0355af50cbee54dc5a8825f53aa0a300f72f36",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 5,
+        "y": 7.4
+      },
+      "requestedPosition": {
+        "x": 5,
+        "y": 7.4
+      },
+      "actualFacing": "south",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": [],
+      "customerPose": "fixed south-facing seated, not rotated by player viewpoint"
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "table1-player-east",
+      "subject": "table 1 and actual fixed south-facing seated customer; player east",
+      "file": "audit/desktop-table1-player-east.png",
+      "sha256": "e86e46419d47d9ee7b6ed1f958a254e2c611f3dd37b8e7c9de1599fda7d35d25",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 6.6,
+        "y": 9
+      },
+      "requestedPosition": {
+        "x": 6.6,
+        "y": 9
+      },
+      "actualFacing": "west",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": [],
+      "customerPose": "fixed south-facing seated, not rotated by player viewpoint"
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "table1-player-south",
+      "subject": "table 1 and actual fixed south-facing seated customer; player south",
+      "file": "audit/desktop-table1-player-south.png",
+      "sha256": "0a67d16a13f5399c094b67b44e83dfead6aac8213c3b60e2678b8bcbc57c361c",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 5,
+        "y": 10.6
+      },
+      "requestedPosition": {
+        "x": 5,
+        "y": 10.6
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": [],
+      "customerPose": "fixed south-facing seated, not rotated by player viewpoint"
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "table4-player-north",
+      "subject": "table 4 and actual fixed south-facing seated customer; player north",
+      "file": "audit/desktop-table4-player-north.png",
+      "sha256": "6cfb200bf5c41f93dc44a96cbfed9643da4fb720dda0a66135b5e1671db7806c",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 17,
+        "y": 12.4
+      },
+      "requestedPosition": {
+        "x": 17,
+        "y": 12.4
+      },
+      "actualFacing": "south",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": [],
+      "customerPose": "fixed south-facing seated, not rotated by player viewpoint"
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "table4-player-east",
+      "subject": "table 4 and actual fixed south-facing seated customer; player east",
+      "file": "audit/desktop-table4-player-east.png",
+      "sha256": "354db1c2f93bce65965df4c4d3bda65685055057c89fd302fa2d21568c36a037",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 18.6,
+        "y": 14
+      },
+      "requestedPosition": {
+        "x": 18.6,
+        "y": 14
+      },
+      "actualFacing": "west",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": [],
+      "customerPose": "fixed south-facing seated, not rotated by player viewpoint"
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "table4-player-south",
+      "subject": "table 4 and actual fixed south-facing seated customer; player south",
+      "file": "audit/desktop-table4-player-south.png",
+      "sha256": "08e5a08853bf75e696e7735170bf21140399cf2a467fd880dc66a1fea26b5136",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 17,
+        "y": 15.6
+      },
+      "requestedPosition": {
+        "x": 17,
+        "y": 15.6
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": [],
+      "customerPose": "fixed south-facing seated, not rotated by player viewpoint"
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "kitchen",
+      "subject": "kitchen and tray",
+      "file": "audit/desktop-kitchen.png",
+      "sha256": "666d600e42796f58a9afe08771b5eda0647d4d763eaeb8d9893f8c6295300d0c",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 12,
+        "y": 6.5
+      },
+      "requestedPosition": {
+        "x": 12,
+        "y": 6.5
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 1,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "kitchen",
+      "subject": "kitchen and tray",
+      "file": "audit/desktop-kitchen-tray-modal.png",
+      "sha256": "327ae1fb69268d98bb1b985f73d318c6fbfe32b79e04a416f818fd68d28eeed3",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 12,
+        "y": 6.5
+      },
+      "requestedPosition": {
+        "x": 12,
+        "y": 6.5
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 1,
+      "contextual": 1,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "restaurant-chair-table",
+      "subject": "restaurant chair and table physical reference",
+      "file": "audit/desktop-restaurant-chair-table.png",
+      "sha256": "25c08b06c6d1a7af799aa8159a2e6aec1992c79be97f1191890e27ffa9ca712f",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 7,
+        "y": 10.8
+      },
+      "requestedPosition": {
+        "x": 7,
+        "y": 10.8
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "town-residence-door",
+      "subject": "town residence door physical reference",
+      "file": "audit/desktop-town-residence-door.png",
+      "sha256": "93cafaabdfa4b3e7bbbd0eaaa65fa6c09787da91864d72bee52d21fb894c5a0a",
+      "actualMap": "town",
+      "actualPosition": {
+        "x": 11.5,
+        "y": 23.5
+      },
+      "requestedPosition": {
+        "x": 11.5,
+        "y": 23.5
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "workshop-bench",
+      "subject": "workshop lamp bench physical reference; active light selector not consumed by base painter",
+      "file": "audit/desktop-workshop-bench.png",
+      "sha256": "50d790cdba6c85f8a892aae4535acf0ea7f5a75cbbcb9b9a96efbc836126e828",
+      "actualMap": "workshop",
+      "actualPosition": {
+        "x": 8,
+        "y": 11
+      },
+      "requestedPosition": {
+        "x": 8,
+        "y": 11
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "apartment-starter-bed",
+      "subject": "dynamic starter bed physical reference",
+      "file": "audit/desktop-apartment-starter-bed.png",
+      "sha256": "916aff3c7fe476fa6c3015d5e57f5b9c910f6ac3e021d5e65053b841fb8fb259",
+      "actualMap": "apartment",
+      "actualPosition": {
+        "x": 9,
+        "y": 6
+      },
+      "requestedPosition": {
+        "x": 9,
+        "y": 6
+      },
+      "actualFacing": "west",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "stair-mid",
+      "subject": "actual authored lower tread midpoint",
+      "file": "audit/desktop-stair-mid.png",
+      "sha256": "271402a9436c8295c87e37a4ec91801a6daa96d82bc1cc5a1c820c921ea8ae0b",
+      "actualMap": "residential-stairs",
+      "actualPosition": {
+        "x": 5.5,
+        "y": 28
+      },
+      "requestedPosition": {
+        "x": 5.5,
+        "y": 28
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "stair-home-landing",
+      "subject": "authored home landing",
+      "file": "audit/desktop-stair-home-landing.png",
+      "sha256": "b6c70267b5505e5ce97d1ffff6df459a7fe94b5526e795d6705966105afdefe2",
+      "actualMap": "residential-stairs",
+      "actualPosition": {
+        "x": 12,
+        "y": 21.5
+      },
+      "requestedPosition": {
+        "x": 12,
+        "y": 21.5
+      },
+      "actualFacing": "east",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "roof-arrival",
+      "subject": "rooftop arrival",
+      "file": "audit/desktop-roof-arrival.png",
+      "sha256": "2d169031bdcd825a5ee17f113fc5d2c4590605b1e48b9f2ce1c118cbb2b22de8",
+      "actualMap": "rooftop",
+      "actualPosition": {
+        "x": 12.5,
+        "y": 29
+      },
+      "requestedPosition": {
+        "x": 12.5,
+        "y": 29
+      },
+      "actualFacing": "east",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "courtyard-laundry",
+      "subject": "courtyard laundry sorting approach",
+      "file": "audit/desktop-courtyard-laundry.png",
+      "sha256": "5e6d2ffed05b14c302bbba9f84d24fd15b62541a227e5c0bc1db30c902fddd07",
+      "actualMap": "courtyard",
+      "actualPosition": {
+        "x": 32.5,
+        "y": 10.8
+      },
+      "requestedPosition": {
+        "x": 32.5,
+        "y": 10.8
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    }
+  ]
+}

@@ -1,0 +1,595 @@
+{
+  "base": "e1e6d78c548b8c9bcd7a2a727e0e71a2b5041200",
+  "method": "Revision2 validated declared visual/setup fixtures only. NOT ordinary travel or main semantic merge acceptance. Corrected north positions preserve at least1worldunit separation from all fixed south-facing seated customers.",
+  "trialProvenanceHash": "40cfa77e8bb29bc619239a28349e801e8d3191a295534811510f82e0206aefdb",
+  "productionIndexHash": "bde3902e3679177fbf36ba0ad154465a8adc0a622a3af78de7e6fe5ea29e3728",
+  "sourceHashes": {
+    "src/world/WorldViewport.tsx": "8ea8c9b3e889d6bbe3f1450a0852156c5ba47647612bb00afd6cf7861a81db5a",
+    "src/world/camera.ts": "cc5d812d5b01eae77e4fe7f6ed1a6725e3dd3481c1dadb9b63b5aed9734935d6",
+    "src/world/art/restaurant/projection.ts": "5999a5115faa021b8ddb400c9a8ff14d7b099ff5a209c3ed1efbc2058f8c43e0",
+    "src/world/characters/artwork.mjs": "553bebe8344e2ae8c75cb047f161a8717c1254fe66f18da8768f2d523931616f",
+    "src/world/art/courtyard/index.ts": "aa3c1b0592fbc47904e1a8c7da29180a8414577515ef69356af9a33ffd9b5649",
+    "src/world/life/model.ts": "c73616c5baa1f62f6e9f1a69305222992dc020273052da98689b29a7b0139574",
+    "src/world/art/landscape/index.ts": "cc6d12454ba13cfbcf0303425ed8fe375d04e970330fdc74c0dbaac49beb4ee7",
+    "src/world/art/landscape/foliage.ts": "2209e85dc883987a092488e3cae8c1f939e9ea830db1b9ad61bebc84de2b2b96"
+  },
+  "captureSetupCorrection": "Initial /junyan/ preview URL served HTML for module assets; final captures use verified root5502/. This was an audit URL error, not a product defect.",
+  "limitations": [
+    "Actual customers use fixed south-facing seated projection. View names describe player positions only.",
+    "Workshop active light selector is not consumed by base painter.",
+    "Main semantic merge is absent. This revision2 includes compatible life source and the coordinator reports tsc/build pass."
+  ],
+  "revision": "revision2",
+  "compatibleLife": "93deae997f26de60c419ea17203d39773c17084a",
+  "landscape": "7155206",
+  "typecheck": "Coordinator reports current revision2 typecheck and build pass; this capture probe separately validates declared fixtures.",
+  "records": [
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "park-default",
+      "subject": "park default spawn",
+      "file": "audit/revision2/phone-park-default.png",
+      "sha256": "2e8da398579d31135e63a5de4fe49d98a04ea1d5fe1f9a4f491662e3a504c447",
+      "actualMap": "park",
+      "actualPosition": {
+        "x": 7,
+        "y": 61
+      },
+      "requestedPosition": {
+        "x": 7,
+        "y": 61
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [
+        {
+          "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+          "location": {
+            "url": "http://127.0.0.1:5502/favicon.ico",
+            "line": 0,
+            "column": 0,
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        }
+      ],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "park-first-entrance",
+      "subject": "park first entrance from-town",
+      "file": "audit/revision2/phone-park-first-entrance.png",
+      "sha256": "1990764b6294e92a82ebcc1f04ded1a1e3eee83021fa8f75ea13092ea26b12de",
+      "actualMap": "park",
+      "actualPosition": {
+        "x": 7,
+        "y": 63
+      },
+      "requestedPosition": {
+        "x": 7,
+        "y": 63
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "riverbank-default",
+      "subject": "riverbank default spawn",
+      "file": "audit/revision2/phone-riverbank-default.png",
+      "sha256": "56093dddc026e0979b46f0c6589886b121fd36552c3da67d20a64360a27ea2a1",
+      "actualMap": "riverbank",
+      "actualPosition": {
+        "x": 40,
+        "y": 75
+      },
+      "requestedPosition": {
+        "x": 40,
+        "y": 75
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "riverbank-first-entrance",
+      "subject": "riverbank first entrance from-town",
+      "file": "audit/revision2/phone-riverbank-first-entrance.png",
+      "sha256": "56093dddc026e0979b46f0c6589886b121fd36552c3da67d20a64360a27ea2a1",
+      "actualMap": "riverbank",
+      "actualPosition": {
+        "x": 40,
+        "y": 75
+      },
+      "requestedPosition": {
+        "x": 40,
+        "y": 75
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "park-pond-deck",
+      "subject": "existing park.pond-deck declared landmark",
+      "file": "audit/revision2/phone-park-pond-deck.png",
+      "sha256": "bf334e64a878c58d630c254507b147cc493646c9adc7dff42c593549ea014ed1",
+      "actualMap": "park",
+      "actualPosition": {
+        "x": 61,
+        "y": 33
+      },
+      "requestedPosition": {
+        "x": 61,
+        "y": 33
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "park-orchard-basket",
+      "subject": "existing park.orchard-basket declared landmark",
+      "file": "audit/revision2/phone-park-orchard-basket.png",
+      "sha256": "653ad7398332aafd11acdaf432555f68d282982162968d4b52b1d69a5aaa422b",
+      "actualMap": "park",
+      "actualPosition": {
+        "x": 16,
+        "y": 52
+      },
+      "requestedPosition": {
+        "x": 16,
+        "y": 52
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "restaurant-table1-corrected-player-north",
+      "subject": "player north of table1; actual seated customer fixed south, not rotated",
+      "file": "audit/revision2/phone-restaurant-table1-corrected-player-north.png",
+      "sha256": "5e050aea53f1601bdaf17b0cc9a3d4782fe1984c635c66d82dae6bc1f859b584",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 5,
+        "y": 6.4
+      },
+      "requestedPosition": {
+        "x": 5,
+        "y": 6.4
+      },
+      "actualFacing": "south",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": [],
+      "customerSeparation": [
+        {
+          "customerId": "restaurant.customer.1",
+          "position": {
+            "x": 5,
+            "y": 7.48
+          },
+          "distance": 1.08
+        },
+        {
+          "customerId": "restaurant.customer.2",
+          "position": {
+            "x": 17,
+            "y": 7.48
+          },
+          "distance": 12.048501981574308
+        },
+        {
+          "customerId": "restaurant.customer.3",
+          "position": {
+            "x": 5,
+            "y": 12.48
+          },
+          "distance": 6.08
+        },
+        {
+          "customerId": "restaurant.customer.4",
+          "position": {
+            "x": 17,
+            "y": 12.48
+          },
+          "distance": 13.452375254950333
+        }
+      ],
+      "customerPose": "fixed south-facing seated, not rotated by player viewpoint"
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fixtureId": "restaurant-table4-corrected-player-north",
+      "subject": "player north of table4; actual seated customer fixed south, not rotated",
+      "file": "audit/revision2/phone-restaurant-table4-corrected-player-north.png",
+      "sha256": "1c35d947a87dbfc487e172668d0eafccc0238ba6081693efbeb0716a4a35c6cc",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 17,
+        "y": 11.4
+      },
+      "requestedPosition": {
+        "x": 17,
+        "y": 11.4
+      },
+      "actualFacing": "south",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": [],
+      "customerSeparation": [
+        {
+          "customerId": "restaurant.customer.1",
+          "position": {
+            "x": 5,
+            "y": 7.48
+          },
+          "distance": 12.624040557602783
+        },
+        {
+          "customerId": "restaurant.customer.2",
+          "position": {
+            "x": 17,
+            "y": 7.48
+          },
+          "distance": 3.92
+        },
+        {
+          "customerId": "restaurant.customer.3",
+          "position": {
+            "x": 5,
+            "y": 12.48
+          },
+          "distance": 12.048501981574308
+        },
+        {
+          "customerId": "restaurant.customer.4",
+          "position": {
+            "x": 17,
+            "y": 12.48
+          },
+          "distance": 1.08
+        }
+      ],
+      "customerPose": "fixed south-facing seated, not rotated by player viewpoint"
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "park-default",
+      "subject": "park default spawn",
+      "file": "audit/revision2/desktop-park-default.png",
+      "sha256": "27cd0c00ba52931b5b8a3be0b9109e9b4d7c20d5d458854c839275f378707a11",
+      "actualMap": "park",
+      "actualPosition": {
+        "x": 7,
+        "y": 61
+      },
+      "requestedPosition": {
+        "x": 7,
+        "y": 61
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "park-first-entrance",
+      "subject": "park first entrance from-town",
+      "file": "audit/revision2/desktop-park-first-entrance.png",
+      "sha256": "e193f2caa721e762e17518248759819692a7c0d51f16581dd8196a8e99826950",
+      "actualMap": "park",
+      "actualPosition": {
+        "x": 7,
+        "y": 63
+      },
+      "requestedPosition": {
+        "x": 7,
+        "y": 63
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "riverbank-default",
+      "subject": "riverbank default spawn",
+      "file": "audit/revision2/desktop-riverbank-default.png",
+      "sha256": "7842d7dcd4a85737455620c583a0ae677d8eb76eafefec6bd4567add8d9e7161",
+      "actualMap": "riverbank",
+      "actualPosition": {
+        "x": 40,
+        "y": 75
+      },
+      "requestedPosition": {
+        "x": 40,
+        "y": 75
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "riverbank-first-entrance",
+      "subject": "riverbank first entrance from-town",
+      "file": "audit/revision2/desktop-riverbank-first-entrance.png",
+      "sha256": "7842d7dcd4a85737455620c583a0ae677d8eb76eafefec6bd4567add8d9e7161",
+      "actualMap": "riverbank",
+      "actualPosition": {
+        "x": 40,
+        "y": 75
+      },
+      "requestedPosition": {
+        "x": 40,
+        "y": 75
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "park-pond-deck",
+      "subject": "existing park.pond-deck declared landmark",
+      "file": "audit/revision2/desktop-park-pond-deck.png",
+      "sha256": "efe6a946d62a6e58214bbb157e80279a7ffb55ba782decc22fcc32997c09ecb6",
+      "actualMap": "park",
+      "actualPosition": {
+        "x": 61,
+        "y": 33
+      },
+      "requestedPosition": {
+        "x": 61,
+        "y": 33
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "park-orchard-basket",
+      "subject": "existing park.orchard-basket declared landmark",
+      "file": "audit/revision2/desktop-park-orchard-basket.png",
+      "sha256": "708a6b89322ecc2a2f990b493350749fe4882e8922fd6602e8f8c3a9600cd25c",
+      "actualMap": "park",
+      "actualPosition": {
+        "x": 16,
+        "y": 52
+      },
+      "requestedPosition": {
+        "x": 16,
+        "y": 52
+      },
+      "actualFacing": "north",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": []
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "restaurant-table1-corrected-player-north",
+      "subject": "player north of table1; actual seated customer fixed south, not rotated",
+      "file": "audit/revision2/desktop-restaurant-table1-corrected-player-north.png",
+      "sha256": "f45216c8d9b14b29cc0637b4b32d67ba8615450c0819b2324f8af02fd5119170",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 5,
+        "y": 6.4
+      },
+      "requestedPosition": {
+        "x": 5,
+        "y": 6.4
+      },
+      "actualFacing": "south",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": [],
+      "customerSeparation": [
+        {
+          "customerId": "restaurant.customer.1",
+          "position": {
+            "x": 5,
+            "y": 7.48
+          },
+          "distance": 1.08
+        },
+        {
+          "customerId": "restaurant.customer.2",
+          "position": {
+            "x": 17,
+            "y": 7.48
+          },
+          "distance": 12.048501981574308
+        },
+        {
+          "customerId": "restaurant.customer.3",
+          "position": {
+            "x": 5,
+            "y": 12.48
+          },
+          "distance": 6.08
+        },
+        {
+          "customerId": "restaurant.customer.4",
+          "position": {
+            "x": 17,
+            "y": 12.48
+          },
+          "distance": 13.452375254950333
+        }
+      ],
+      "customerPose": "fixed south-facing seated, not rotated by player viewpoint"
+    },
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "fixtureId": "restaurant-table4-corrected-player-north",
+      "subject": "player north of table4; actual seated customer fixed south, not rotated",
+      "file": "audit/revision2/desktop-restaurant-table4-corrected-player-north.png",
+      "sha256": "2bcd868fb6c52256f0ae37050c068487c19e90a1ac3aa8aab31ee1701d747344",
+      "actualMap": "restaurant",
+      "actualPosition": {
+        "x": 17,
+        "y": 11.4
+      },
+      "requestedPosition": {
+        "x": 17,
+        "y": 11.4
+      },
+      "actualFacing": "south",
+      "blockingOverlays": 0,
+      "contextual": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "httpFailures": [],
+      "customerSeparation": [
+        {
+          "customerId": "restaurant.customer.1",
+          "position": {
+            "x": 5,
+            "y": 7.48
+          },
+          "distance": 12.624040557602783
+        },
+        {
+          "customerId": "restaurant.customer.2",
+          "position": {
+            "x": 17,
+            "y": 7.48
+          },
+          "distance": 3.92
+        },
+        {
+          "customerId": "restaurant.customer.3",
+          "position": {
+            "x": 5,
+            "y": 12.48
+          },
+          "distance": 12.048501981574308
+        },
+        {
+          "customerId": "restaurant.customer.4",
+          "position": {
+            "x": 17,
+            "y": 12.48
+          },
+          "distance": 1.08
+        }
+      ],
+      "customerPose": "fixed south-facing seated, not rotated by player viewpoint"
+    }
+  ]
+}

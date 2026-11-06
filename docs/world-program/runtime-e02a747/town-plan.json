@@ -1,0 +1,40 @@
+{
+  "actors": [
+    {
+      "id": "town.market-tender",
+      "characterId": "lin-jie",
+      "phases": 1
+    },
+    {
+      "id": "town.book-window-reader",
+      "characterId": "xiao-li",
+      "phases": 8
+    },
+    {
+      "id": "town.canal-birds",
+      "characterId": "bird",
+      "phases": 6
+    },
+    {
+      "id": "town.park-birds",
+      "characterId": "bird",
+      "phases": 6
+    },
+    {
+      "id": "town.morning-walk",
+      "characterId": "aunt",
+      "phases": 11
+    },
+    {
+      "id": "town.market-regular",
+      "characterId": "zhang-laoshi",
+      "phases": 1
+    },
+    {
+      "id": "town.workshop-delivery",
+      "characterId": "xiao-zhou",
+      "phases": 10
+    }
+  ],
+  "diagnostics": []
+}

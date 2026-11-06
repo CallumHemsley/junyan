@@ -1,0 +1,413 @@
+{
+  "head": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+  "records": [
+    {
+      "device": "desktop",
+      "map": "restaurant",
+      "fixture": {
+        "x": 12,
+        "y": 6.5,
+        "facing": "north"
+      },
+      "tag": "kitchen",
+      "actual": "restaurant",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "restaurant",
+      "fixture": {
+        "x": 6.5,
+        "y": 9,
+        "facing": "north"
+      },
+      "tag": "table1",
+      "actual": "restaurant",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "park",
+      "fixture": {
+        "x": 16,
+        "y": 52,
+        "facing": "north"
+      },
+      "tag": "park.orchard-basket",
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "park",
+      "fixture": {
+        "x": 29,
+        "y": 8,
+        "facing": "north"
+      },
+      "tag": "park.bamboo-court",
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "park",
+      "fixture": {
+        "x": 31,
+        "y": 28,
+        "facing": "north"
+      },
+      "tag": "park.old-reading-stone",
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "park",
+      "fixture": {
+        "x": 61,
+        "y": 33,
+        "facing": "north"
+      },
+      "tag": "park.pond-deck",
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "park",
+      "fixture": {
+        "x": 79,
+        "y": 29,
+        "facing": "north"
+      },
+      "tag": "park.ridge-view",
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "park",
+      "fixture": {
+        "x": 54,
+        "y": 18,
+        "facing": "north"
+      },
+      "tag": "park.tea-pavilion",
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "park",
+      "fixture": {
+        "x": 47,
+        "y": 43,
+        "facing": "north"
+      },
+      "tag": "park.lily-cove",
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "riverbank",
+      "fixture": {
+        "x": 48,
+        "y": 19,
+        "facing": "north"
+      },
+      "tag": "riverbank.moon-bridge",
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "riverbank",
+      "fixture": {
+        "x": 22,
+        "y": 48,
+        "facing": "north"
+      },
+      "tag": "riverbank.reed-hide",
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "riverbank",
+      "fixture": {
+        "x": 40,
+        "y": 39,
+        "facing": "north"
+      },
+      "tag": "riverbank.fishing-jetty",
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "riverbank",
+      "fixture": {
+        "x": 40,
+        "y": 74,
+        "facing": "north"
+      },
+      "tag": "riverbank.washing-stones",
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "riverbank",
+      "fixture": {
+        "x": 62,
+        "y": 57,
+        "facing": "north"
+      },
+      "tag": "riverbank.old-ferry",
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "riverbank",
+      "fixture": {
+        "x": 88,
+        "y": 7,
+        "facing": "north"
+      },
+      "tag": "riverbank.hill-shrine",
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "riverbank",
+      "fixture": {
+        "x": 80,
+        "y": 43,
+        "facing": "north"
+      },
+      "tag": "riverbank.heron-shallows",
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "desktop",
+      "map": "riverbank",
+      "fixture": {
+        "x": 45,
+        "y": 57,
+        "facing": "north"
+      },
+      "tag": "riverbank.lower-crossing",
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "restaurant",
+      "fixture": {
+        "x": 12,
+        "y": 6.5,
+        "facing": "north"
+      },
+      "tag": "kitchen",
+      "actual": "restaurant",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "restaurant",
+      "fixture": {
+        "x": 6.5,
+        "y": 9,
+        "facing": "north"
+      },
+      "tag": "table1",
+      "actual": "restaurant",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "park",
+      "fixture": {
+        "x": 16,
+        "y": 52,
+        "facing": "north"
+      },
+      "tag": "park.orchard-basket",
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "park",
+      "fixture": {
+        "x": 29,
+        "y": 8,
+        "facing": "north"
+      },
+      "tag": "park.bamboo-court",
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "park",
+      "fixture": {
+        "x": 31,
+        "y": 28,
+        "facing": "north"
+      },
+      "tag": "park.old-reading-stone",
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "park",
+      "fixture": {
+        "x": 61,
+        "y": 33,
+        "facing": "north"
+      },
+      "tag": "park.pond-deck",
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "park",
+      "fixture": {
+        "x": 79,
+        "y": 29,
+        "facing": "north"
+      },
+      "tag": "park.ridge-view",
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "park",
+      "fixture": {
+        "x": 54,
+        "y": 18,
+        "facing": "north"
+      },
+      "tag": "park.tea-pavilion",
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "park",
+      "fixture": {
+        "x": 47,
+        "y": 43,
+        "facing": "north"
+      },
+      "tag": "park.lily-cove",
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "riverbank",
+      "fixture": {
+        "x": 48,
+        "y": 19,
+        "facing": "north"
+      },
+      "tag": "riverbank.moon-bridge",
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "riverbank",
+      "fixture": {
+        "x": 22,
+        "y": 48,
+        "facing": "north"
+      },
+      "tag": "riverbank.reed-hide",
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "riverbank",
+      "fixture": {
+        "x": 40,
+        "y": 39,
+        "facing": "north"
+      },
+      "tag": "riverbank.fishing-jetty",
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "riverbank",
+      "fixture": {
+        "x": 40,
+        "y": 74,
+        "facing": "north"
+      },
+      "tag": "riverbank.washing-stones",
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "riverbank",
+      "fixture": {
+        "x": 62,
+        "y": 57,
+        "facing": "north"
+      },
+      "tag": "riverbank.old-ferry",
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "riverbank",
+      "fixture": {
+        "x": 88,
+        "y": 7,
+        "facing": "north"
+      },
+      "tag": "riverbank.hill-shrine",
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "riverbank",
+      "fixture": {
+        "x": 80,
+        "y": 43,
+        "facing": "north"
+      },
+      "tag": "riverbank.heron-shallows",
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "riverbank",
+      "fixture": {
+        "x": 45,
+        "y": 57,
+        "facing": "north"
+      },
+      "tag": "riverbank.lower-crossing",
+      "actual": "riverbank",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    }
+  ]
+}

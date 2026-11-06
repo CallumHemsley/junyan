@@ -1,0 +1,13 @@
+{
+  "head": "74a52137814f8ed8c4a2b7f9c9f74089e4f6a15f",
+  "lightingSha256": "a273e5c81414612bede55353bff39fd4ce22fd886213f3c99bc3b5ec63b0517e",
+  "method": "Actual published pure source, synthetic light and canvas-style property target; no screenshot-failure claim",
+  "first": "#202020",
+  "other": "#404040",
+  "repeat": "#404040",
+  "expectedRepeat": "#202020",
+  "orderIndependent": false,
+  "emissiveInput": "rgb(240,200,100)",
+  "emissiveAfterProxy": "#786432",
+  "emissiveUnchanged": false
+}

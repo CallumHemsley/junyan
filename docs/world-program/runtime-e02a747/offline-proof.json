@@ -1,0 +1,46 @@
+{
+  "head": "e02a747",
+  "method": "ordinary opening and held keyboard movement, offline reload, read-only saved-state observation, every existing WAV byte verified; no fixture/state injection",
+  "audioFiles": 126,
+  "before": {
+    "version": 1,
+    "mapId": "restaurant",
+    "position": {
+      "x": 10.939693381610775,
+      "y": 15.93969338161077
+    },
+    "facing": "north",
+    "returnPositions": {},
+    "activeActivity": null,
+    "activeAnchorId": null,
+    "life": {
+      "version": 1,
+      "elapsedMs": 0,
+      "discoveries": [],
+      "reactions": [],
+      "serviceDepartures": [],
+      "pauses": []
+    }
+  },
+  "after": {
+    "version": 1,
+    "mapId": "restaurant",
+    "position": {
+      "x": 10.939693381610775,
+      "y": 15.93969338161077
+    },
+    "facing": "north",
+    "returnPositions": {},
+    "activeActivity": null,
+    "activeAnchorId": null,
+    "life": {
+      "version": 1,
+      "elapsedMs": 1006.8000000000002,
+      "discoveries": [],
+      "reactions": [],
+      "serviceDepartures": [],
+      "pauses": []
+    }
+  },
+  "errors": []
+}

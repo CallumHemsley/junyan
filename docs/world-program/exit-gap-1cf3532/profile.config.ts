@@ -1,0 +1,1 @@
+import {defineConfig} from '@playwright/test';export default defineConfig({testDir:'.',testMatch:'profile.spec.ts',timeout:240000,use:{baseURL:'http://127.0.0.1:5501',launchOptions:{executablePath:'/usr/bin/chromium',args:['--no-sandbox','--mute-audio']}}});
