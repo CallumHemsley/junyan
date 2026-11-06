@@ -1,7 +1,7 @@
 ---
 id: 110
 title: Identify the nearby residence landing with a usable cue
-status: doing
+status: done
 priority: high
 type: bug
 created: 2026-11-06
@@ -30,3 +30,5 @@ Ordinary-input play found that clicking the open residence door face did not rou
 - Verification: focused regression first failed on missing landing target, then passed.661 unit tests across101 files, TypeScript and production build pass. Fresh normal-input opening/physical-route proof passed: distant elevated face still does nothing; clear nearby landing shows canonical 家, its word card/native recording works, and both desktop mouse and actual Chromium touch activation visibly walk into the existing hall transition. Console clean. Existing full hospital/waiter journey passed on desktop and phone (all four customers/change/journal/progress). Independent review remains pending.
 
 - Cross-review caught the generated map metadata missing from author-map.py. Fixed the residence exit authoring source and regenerated only in a disposable temp tree: complete parsed map and variants are identical to committed authored values, including apartment.home. No real map/art regeneration occurred. Private generator-check.json records the comparison.
+
+- Main release acceptance: independent source/still review at d6868b2d found no actionable defect. Exact main source passed 628 tests across 93 files, TypeScript/build, both full opening/service/change/journal/next-day journeys, and ordinary mouse/touch landing-cue activation with canonical lookup/audio and small real steps before hall entry. Fresh desktop/phone main screenshots inspected; console clean. Far elevated face selection remains unsupported.
