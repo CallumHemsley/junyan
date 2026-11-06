@@ -1,5 +1,20 @@
+---
+id: 91
+title: Author three native foliage craft specimens
+status: doing
+priority: high
+type: explore
+created: 2026-11-06
+---
+
 # world/0091 — foliage craft
 
-Status: ACTIVE. Owner: native Sol6.1 medium helper, assigned by coordinator. Branch codex/0091-foliage-craft; cloud worktree /workspace/junyan-0091; port5499.
+Status: ACTIVE — authored study ready for review; integration handoff pending. Owner: foliage craft helper assigned by coordinator. Branch `codex/0091-foliage-craft`; cloud worktree `/workspace/junyan-0091`; port5499.
 
-Produce3distinct authored pixel-cluster mature species with branching/negative space/directional light; compare native and production-scale specimens with player/path/shore. Follow docs/world-program/foliage-craft-v1.md exact isolated API and lease. Only new foliage.ts and this qualified ticket/evidence;0084 integrates draw.ts/maps. No audio/shadows/renderer rewrite. Explicit shadeColor, deterministic time/seed, reduced motion, alpha/bounds/performance checks. Study acceptance is not full-world visual acceptance.
+Produce3distinct authored pixel-cluster mature species with branching/negative space/directional light; compare native and production-scale specimens with player/path/shore. Follow `docs/world-program/foliage-craft-v1.md` exact isolated API and lease. Only new foliage.ts and this qualified ticket/evidence;0084 integrates draw.ts/maps. No audio/shadows/renderer rewrite.
+
+Authored camphor, leaning willow and fruit specimens are in `src/world/art/landscape/foliage.ts`. Exact seam exports `drawFoliage`/`foliageBounds`; caller supplies foot-anchored translated/scaled native context, explicit shade callback, seed/time/reduced motion. Bounds conservative including sway. Context saved/restored; inherited alpha preserved. Fixed material shading once per base.
+
+Evidence and reproduction: `docs/evidence/world/0091/README.md`, native/desktop/phone/evening PNGs, browser checks JSON. Production reference approved by coordinator:1b42875 ready-art composition (atmosphere63a5803, landscape52a4046, rooftop2d22909). Evidence imports existing camera/player/ground/light from read-only reference; no shared-source edits. Both specimen and actor feet checked against production colliders, with diagnostic pond collider lines. Study is not App/travel/world acceptance.
+
+Typecheck passes; browser console clean. Determinism, reduced-motion, sampled pixel bounds, inherited alpha, transform and unique-material shade checks pass for all3. Initial mean draw cost0.255–0.348ms/1000-draw samples; real phone frame budget remains integration work. Build/rules currently running. Root/coordinator study review then0084 adapter integration and current-head App capture remain pending; do not mark whole goal complete.

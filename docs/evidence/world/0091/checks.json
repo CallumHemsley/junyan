@@ -1,0 +1,46 @@
+{
+  "scope": "component study, not integrated App acceptance",
+  "productionReference": "1b42875",
+  "checks": [
+    {
+      "species": "camphor",
+      "deterministic": true,
+      "reducedMotionStable": true,
+      "boundsContainAllSampledSway": true,
+      "inheritedAlpha": true,
+      "transformPreserved": true,
+      "shadeCalls": 8,
+      "uniqueShadeBases": 8,
+      "halfAlphaMax": 254,
+      "sampledVisiblePixels": 614283,
+      "drawMsMean1000": 0.2864000000003725
+    },
+    {
+      "species": "willow",
+      "deterministic": true,
+      "reducedMotionStable": true,
+      "boundsContainAllSampledSway": true,
+      "inheritedAlpha": true,
+      "transformPreserved": true,
+      "shadeCalls": 8,
+      "uniqueShadeBases": 8,
+      "halfAlphaMax": 254,
+      "sampledVisiblePixels": 492183,
+      "drawMsMean1000": 0.348
+    },
+    {
+      "species": "fruit",
+      "deterministic": true,
+      "reducedMotionStable": true,
+      "boundsContainAllSampledSway": true,
+      "inheritedAlpha": true,
+      "transformPreserved": true,
+      "shadeCalls": 10,
+      "uniqueShadeBases": 10,
+      "halfAlphaMax": 255,
+      "sampledVisiblePixels": 444050,
+      "drawMsMean1000": 0.25490000000037255
+    }
+  ],
+  "consoleErrors": []
+}
