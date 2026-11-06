@@ -1,0 +1,108 @@
+{
+  "device": "desktop",
+  "id": "resident-reader",
+  "mapId": "park",
+  "seed": 0,
+  "rest": "sit",
+  "start": {
+    "id": "park.resident-reader",
+    "characterId": "resident-reader",
+    "kind": "resident",
+    "position": {
+      "x": 54,
+      "y": 18.5
+    },
+    "facing": "south",
+    "yaw": 1.5707963267948966,
+    "action": "idle",
+    "activity": "sit",
+    "phaseMs": 18164.561538075388,
+    "radius": 0.22
+  },
+  "later": {
+    "id": "park.resident-reader",
+    "characterId": "resident-reader",
+    "kind": "resident",
+    "position": {
+      "x": 52.21284822679526,
+      "y": 18.918269563941536
+    },
+    "facing": "west",
+    "yaw": 2.9116882254578886,
+    "action": "walk",
+    "activity": "walk",
+    "phaseMs": 3164.561538075388,
+    "radius": 0.22
+  },
+  "remainingRestMs": 3835.438461924612,
+  "playerPosition": {
+    "x": 56.5,
+    "y": 20
+  },
+  "shirt": "#a9a58a",
+  "routeStops": [
+    {
+      "x": 29,
+      "y": 26.9
+    },
+    {
+      "x": 54,
+      "y": 18.5
+    }
+  ],
+  "scope": "Valid normal day seed selected for a naturally occurring rest-to-walk transition. No actor spawn, phase, elapsed-time or position override; ordinary App sampling uses canonical hooks/profiles.",
+  "observations": [
+    {
+      "wallSecond": 0,
+      "count": 15,
+      "centroid": {
+        "x": 264.6666666666667,
+        "y": 150.2
+      }
+    },
+    {
+      "wallSecond": 4,
+      "count": 21,
+      "centroid": {
+        "x": 259.4761904761905,
+        "y": 145.8095238095238
+      }
+    },
+    {
+      "wallSecond": 8,
+      "count": 25,
+      "centroid": {
+        "x": 217.84,
+        "y": 132.92
+      }
+    },
+    {
+      "wallSecond": 12,
+      "count": 23,
+      "centroid": {
+        "x": 176.1304347826087,
+        "y": 119.78260869565217
+      }
+    },
+    {
+      "wallSecond": 16,
+      "count": 23,
+      "centroid": {
+        "x": 133.1304347826087,
+        "y": 106.78260869565217
+      }
+    },
+    {
+      "wallSecond": 20,
+      "count": 0,
+      "centroid": null
+    },
+    {
+      "wallSecond": 24,
+      "count": 0,
+      "centroid": null
+    }
+  ],
+  "visibleMaterialMotion": true,
+  "consoleErrors": []
+}

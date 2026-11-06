@@ -1,0 +1,134 @@
+[
+  {
+    "device": "desktop",
+    "phase": "morning",
+    "mapId": "park",
+    "position": {
+      "x": 53,
+      "y": 21
+    },
+    "particles": "off through reducedMotion",
+    "width": 720,
+    "height": 438,
+    "materials": [
+      {
+        "name": "wood",
+        "base": "#7e6d4e",
+        "output": "#877756",
+        "visiblePixelCount": 51
+      },
+      {
+        "name": "foliage",
+        "base": "#6c8e58",
+        "output": "#749b61",
+        "visiblePixelCount": 853
+      },
+      {
+        "name": "masonry",
+        "base": "#b1ae94",
+        "output": "#bdbea3",
+        "visiblePixelCount": 664
+      }
+    ],
+    "consoleErrors": []
+  },
+  {
+    "device": "desktop",
+    "phase": "evening",
+    "mapId": "park",
+    "position": {
+      "x": 53,
+      "y": 21
+    },
+    "particles": "off through reducedMotion",
+    "width": 720,
+    "height": 438,
+    "materials": [
+      {
+        "name": "wood",
+        "base": "#7e6d4e",
+        "output": "#786852",
+        "visiblePixelCount": 51
+      },
+      {
+        "name": "foliage",
+        "base": "#6c8e58",
+        "output": "#67875c",
+        "visiblePixelCount": 853
+      },
+      {
+        "name": "masonry",
+        "base": "#b1ae94",
+        "output": "#a8a69b",
+        "visiblePixelCount": 662
+      }
+    ],
+    "consoleErrors": []
+  },
+  {
+    "device": "phone",
+    "phase": "morning",
+    "mapId": "park",
+    "position": {
+      "x": 53,
+      "y": 21
+    },
+    "particles": "off through reducedMotion",
+    "width": 195,
+    "height": 386,
+    "materials": [
+      {
+        "name": "wood",
+        "base": "#7e6d4e",
+        "output": "#877756",
+        "visiblePixelCount": 25
+      },
+      {
+        "name": "foliage",
+        "base": "#6c8e58",
+        "output": "#749b61",
+        "visiblePixelCount": 370
+      },
+      {
+        "name": "masonry",
+        "base": "#b1ae94",
+        "output": "#bdbea3",
+        "visiblePixelCount": 322
+      }
+    ],
+    "consoleErrors": []
+  },
+  {
+    "device": "phone",
+    "phase": "evening",
+    "mapId": "park",
+    "position": {
+      "x": 53,
+      "y": 21
+    },
+    "particles": "off through reducedMotion",
+    "width": 195,
+    "height": 386,
+    "materials": [
+      {
+        "name": "wood",
+        "base": "#7e6d4e",
+        "output": "#786852",
+        "visiblePixelCount": 25
+      },
+      {
+        "name": "foliage",
+        "base": "#6c8e58",
+        "output": "#67875c",
+        "visiblePixelCount": 370
+      },
+      {
+        "name": "masonry",
+        "base": "#b1ae94",
+        "output": "#a8a69b",
+        "visiblePixelCount": 321
+      }
+    ],
+    "consoleErrors": []
+  }
+]

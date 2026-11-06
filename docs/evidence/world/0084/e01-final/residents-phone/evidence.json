@@ -1,0 +1,323 @@
+[
+  {
+    "device": "phone",
+    "id": "resident-reader",
+    "mapId": "park",
+    "seed": 0,
+    "rest": "sit",
+    "start": {
+      "id": "park.resident-reader",
+      "characterId": "resident-reader",
+      "kind": "resident",
+      "position": {
+        "x": 54,
+        "y": 18.5
+      },
+      "facing": "south",
+      "yaw": 1.5707963267948966,
+      "action": "idle",
+      "activity": "sit",
+      "phaseMs": 18164.561538075388,
+      "radius": 0.22
+    },
+    "later": {
+      "id": "park.resident-reader",
+      "characterId": "resident-reader",
+      "kind": "resident",
+      "position": {
+        "x": 52.21284822679526,
+        "y": 18.918269563941536
+      },
+      "facing": "west",
+      "yaw": 2.9116882254578886,
+      "action": "walk",
+      "activity": "walk",
+      "phaseMs": 3164.561538075388,
+      "radius": 0.22
+    },
+    "remainingRestMs": 3835.438461924612,
+    "playerPosition": {
+      "x": 56.5,
+      "y": 20
+    },
+    "shirt": "#a9a58a",
+    "routeStops": [
+      {
+        "x": 29,
+        "y": 26.9
+      },
+      {
+        "x": 54,
+        "y": 18.5
+      }
+    ],
+    "scope": "Valid normal day seed selected for a naturally occurring rest-to-walk transition. No actor spawn, phase, elapsed-time or position override; ordinary App sampling uses canonical hooks/profiles.",
+    "observations": [
+      {
+        "wallSecond": 0,
+        "count": 8,
+        "centroid": {
+          "x": 86.125,
+          "y": 164.875
+        }
+      },
+      {
+        "wallSecond": 4,
+        "count": 14,
+        "centroid": {
+          "x": 81.28571428571429,
+          "y": 160.64285714285714
+        }
+      },
+      {
+        "wallSecond": 8,
+        "count": 12,
+        "centroid": {
+          "x": 51.333333333333336,
+          "y": 152.08333333333334
+        }
+      },
+      {
+        "wallSecond": 12,
+        "count": 14,
+        "centroid": {
+          "x": 20.642857142857142,
+          "y": 142
+        }
+      },
+      {
+        "wallSecond": 16,
+        "count": 0,
+        "centroid": null
+      },
+      {
+        "wallSecond": 20,
+        "count": 0,
+        "centroid": null
+      },
+      {
+        "wallSecond": 24,
+        "count": 0,
+        "centroid": null
+      }
+    ],
+    "visibleMaterialMotion": true,
+    "consoleErrors": []
+  },
+  {
+    "device": "phone",
+    "id": "resident-groundskeeper",
+    "mapId": "park",
+    "seed": 9,
+    "rest": "work",
+    "start": {
+      "id": "park.resident-groundskeeper",
+      "characterId": "resident-groundskeeper",
+      "kind": "resident",
+      "position": {
+        "x": 16,
+        "y": 52
+      },
+      "facing": "south",
+      "yaw": 1.5707963267948966,
+      "action": "idle",
+      "activity": "work",
+      "phaseMs": 12336.141001176713,
+      "radius": 0.22
+    },
+    "later": {
+      "id": "park.resident-groundskeeper",
+      "characterId": "resident-groundskeeper",
+      "kind": "resident",
+      "position": {
+        "x": 17.384503648994617,
+        "y": 52.8702594365109
+      },
+      "facing": "east",
+      "yaw": 0.561163412288352,
+      "action": "walk",
+      "activity": "walk",
+      "phaseMs": 2336.141001176715,
+      "radius": 0.22
+    },
+    "remainingRestMs": 4663.858998823287,
+    "playerPosition": {
+      "x": 18.5,
+      "y": 53.5
+    },
+    "shirt": "#779f83",
+    "routeStops": [
+      {
+        "x": 16,
+        "y": 52
+      },
+      {
+        "x": 23,
+        "y": 56.4
+      }
+    ],
+    "scope": "Valid normal day seed selected for a naturally occurring rest-to-walk transition. No actor spawn, phase, elapsed-time or position override; ordinary App sampling uses canonical hooks/profiles.",
+    "observations": [
+      {
+        "wallSecond": 0,
+        "count": 12,
+        "centroid": {
+          "x": 85.58333333333333,
+          "y": 160.41666666666666
+        }
+      },
+      {
+        "wallSecond": 4,
+        "count": 12,
+        "centroid": {
+          "x": 85.58333333333333,
+          "y": 160.41666666666666
+        }
+      },
+      {
+        "wallSecond": 8,
+        "count": 8,
+        "centroid": {
+          "x": 94,
+          "y": 179.5
+        }
+      },
+      {
+        "wallSecond": 12,
+        "count": 25,
+        "centroid": {
+          "x": 104.32,
+          "y": 201.72
+        }
+      },
+      {
+        "wallSecond": 16,
+        "count": 15,
+        "centroid": {
+          "x": 113.73333333333333,
+          "y": 223
+        }
+      },
+      {
+        "wallSecond": 20,
+        "count": 19,
+        "centroid": {
+          "x": 114.73684210526316,
+          "y": 224.26315789473685
+        }
+      },
+      {
+        "wallSecond": 24,
+        "count": 19,
+        "centroid": {
+          "x": 114.73684210526316,
+          "y": 224.26315789473685
+        }
+      }
+    ],
+    "visibleMaterialMotion": true,
+    "consoleErrors": []
+  },
+  {
+    "device": "phone",
+    "id": "resident-river-walker",
+    "mapId": "riverbank",
+    "seed": 0,
+    "rest": "idle",
+    "start": {
+      "id": "riverbank.resident-river-walker",
+      "characterId": "resident-river-walker",
+      "kind": "resident",
+      "position": {
+        "x": 23.6,
+        "y": 48.6
+      },
+      "facing": "south",
+      "yaw": 1.5707963267948966,
+      "action": "idle",
+      "activity": "idle",
+      "phaseMs": 9295.018440522726,
+      "radius": 0.22
+    },
+    "later": {
+      "id": "riverbank.resident-river-walker",
+      "characterId": "resident-river-walker",
+      "kind": "resident",
+      "position": {
+        "x": 26.34471717650915,
+        "y": 46.90527530041046
+      },
+      "facing": "east",
+      "yaw": -0.5531514273524166,
+      "action": "walk",
+      "activity": "walk",
+      "phaseMs": 3795.0184405227265,
+      "radius": 0.22
+    },
+    "remainingRestMs": 3204.9815594772735,
+    "playerPosition": {
+      "x": 26.1,
+      "y": 50.1
+    },
+    "shirt": "#817a97",
+    "routeStops": [
+      {
+        "x": 23.6,
+        "y": 48.6
+      },
+      {
+        "x": 38.5,
+        "y": 39.4
+      }
+    ],
+    "scope": "Valid normal day seed selected for a naturally occurring rest-to-walk transition. No actor spawn, phase, elapsed-time or position override; ordinary App sampling uses canonical hooks/profiles.",
+    "observations": [
+      {
+        "wallSecond": 0,
+        "count": 17,
+        "centroid": {
+          "x": 85.58823529411765,
+          "y": 165.35294117647058
+        }
+      },
+      {
+        "wallSecond": 4,
+        "count": 29,
+        "centroid": {
+          "x": 100.79310344827586,
+          "y": 166.24137931034483
+        }
+      },
+      {
+        "wallSecond": 8,
+        "count": 14,
+        "centroid": {
+          "x": 152.42857142857142,
+          "y": 172.78571428571428
+        }
+      },
+      {
+        "wallSecond": 12,
+        "count": 0,
+        "centroid": null
+      },
+      {
+        "wallSecond": 16,
+        "count": 0,
+        "centroid": null
+      },
+      {
+        "wallSecond": 20,
+        "count": 0,
+        "centroid": null
+      },
+      {
+        "wallSecond": 24,
+        "count": 0,
+        "centroid": null
+      }
+    ],
+    "visibleMaterialMotion": true,
+    "consoleErrors": []
+  }
+]

@@ -11,7 +11,8 @@ import type { WorldRenderView } from '../../render-contract';
 
 const map=worldMapSchema.parse(mapDefinitions[0]);
 const position={x:49,y:24};
-const frame=sampleAtmosphere({mapId:'park',day:1,timeOfDay:'morning',elapsedMs:0,seed:42,reducedMotion:true},{shadows:atmosphereHooksForMap(map).shadows});
+const hooks=atmosphereHooksForMap(map);
+const frame=sampleAtmosphere({mapId:'park',day:1,timeOfDay:'morning',elapsedMs:0,seed:42,reducedMotion:true},{shadows:hooks.shadows,shadowExclusions:hooks.shadowExclusions});
 const shadeColor=colorShader(frame.light);
 for(const mode of ['contact','cast','combined']){
   const canvas=document.getElementById(mode) as HTMLCanvasElement;

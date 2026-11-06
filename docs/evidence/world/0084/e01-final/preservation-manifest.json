@@ -1,0 +1,456 @@
+{
+  "basis": "94d7ec4c4385c355e3654feefd0cb82be419191b",
+  "note": "Only pending owner captures copied. Historical committed paths remain unchanged for central relocation. These are historical E01 proofs, not latest-foundation acceptance.",
+  "files": [
+    {
+      "source": "docs/evidence/0084/app/desktop-movement.webm",
+      "preserved": "docs/evidence/world/0084/e01-final/app/desktop-movement.webm",
+      "sha256": "3dd6865f7c87334d44873f08e0478b651e2647ad437885c03f9d2baa65fa0318",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/app/desktop-park.png",
+      "preserved": "docs/evidence/world/0084/e01-final/app/desktop-park.png",
+      "sha256": "b8f9c1da01ecea42c99d21e63c62ba62e763bb39c4e583e48fdc28269821413e",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/app/desktop-reloaded.png",
+      "preserved": "docs/evidence/world/0084/e01-final/app/desktop-reloaded.png",
+      "sha256": "2cc4abaaf0ee539f4f83a64ab1f533840d3c79312c854c65fc14f589f43d8a68",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/app/desktop-river-arrival.png",
+      "preserved": "docs/evidence/world/0084/e01-final/app/desktop-river-arrival.png",
+      "sha256": "6894a90fbdbd42918406b575720614dc8177ed2c2091380a1ac714f99c274382",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/app/evidence.json",
+      "preserved": "docs/evidence/world/0084/e01-final/app/evidence.json",
+      "sha256": "c059b615f35041645f290c8e72b9ccae89993d52eb16a895398af919e913dfe4",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/app/phone-movement.webm",
+      "preserved": "docs/evidence/world/0084/e01-final/app/phone-movement.webm",
+      "sha256": "7c4d186d25dfff65ff41cf35a5d20ff2d58151c75f99caf6ccc13135d0929c24",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/app/phone-park.png",
+      "preserved": "docs/evidence/world/0084/e01-final/app/phone-park.png",
+      "sha256": "96805f1c89c42de12c54e4a176ae0324e5d993ebeb47dd258378969fb0a36fb5",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/app/phone-reloaded.png",
+      "preserved": "docs/evidence/world/0084/e01-final/app/phone-reloaded.png",
+      "sha256": "f3ed6889bc7273fc1abe4ed890099063d7a4cb3f1956ba1442cb77a718151db3",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/app/phone-river-arrival.png",
+      "preserved": "docs/evidence/world/0084/e01-final/app/phone-river-arrival.png",
+      "sha256": "962d1e372775b447f06e0ca432763f6f5631fafd00a2dc5aa9ab1efed1ed9670",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/materials/desktop-evening-lit.png",
+      "preserved": "docs/evidence/world/0084/e01-final/materials/desktop-evening-lit.png",
+      "sha256": "3af7cf4b05f509b48c90fbd56a7be9e51803f77bdda6845a8d47c348ec1e9ff9",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/materials/desktop-evening-materials.png",
+      "preserved": "docs/evidence/world/0084/e01-final/materials/desktop-evening-materials.png",
+      "sha256": "abb467c2edd0496e7e92273f99c5d5248857e111bfcb5eb0f2ad9b889157ae2b",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/materials/desktop-morning-materials.png",
+      "preserved": "docs/evidence/world/0084/e01-final/materials/desktop-morning-materials.png",
+      "sha256": "76b3f94f49b52e25dca7192d097f3c6a8c06f6dc7f7959bcb28e8cd04a0c6695",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/materials/evidence.json",
+      "preserved": "docs/evidence/world/0084/e01-final/materials/evidence.json",
+      "sha256": "2163aa43c6074f1da808baad1c2866c8fe0249815c8d606c3ba2531cbf5f1185",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/materials/phone-evening-lit.png",
+      "preserved": "docs/evidence/world/0084/e01-final/materials/phone-evening-lit.png",
+      "sha256": "e2e0e853753d1888257dfbccf07057b246d8543fb07717a32c99245116ccd8ff",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/materials/phone-evening-materials.png",
+      "preserved": "docs/evidence/world/0084/e01-final/materials/phone-evening-materials.png",
+      "sha256": "c7acd1476c5499888f0c7bb0e8f730f0f831b734fa69917b78e72feaeffe642b",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/materials/phone-morning-materials.png",
+      "preserved": "docs/evidence/world/0084/e01-final/materials/phone-morning-materials.png",
+      "sha256": "91de922a9e48492f7747a8da018e8932b2e9a7c93409b4bb5feb1fe417656fc8",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/metrics.json",
+      "preserved": "docs/evidence/world/0084/e01-final/metrics.json",
+      "sha256": "107ba43f50fc94fa4e4ae0de91528ea7ee8bced977db0a97a48b9615cd0bc555",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents-phone/evidence.json",
+      "preserved": "docs/evidence/world/0084/e01-final/residents-phone/evidence.json",
+      "sha256": "80b372396e27a6395b14538a555e05c6c379ed66a4c582429c58d347ad9d188e",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents-phone/resident-groundskeeper-12s.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents-phone/resident-groundskeeper-12s.png",
+      "sha256": "ba0a57ec8ae6b7b9a4b36690f4951ece0068834700391ec223e5c0aee48223af",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents-phone/resident-groundskeeper-24s.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents-phone/resident-groundskeeper-24s.png",
+      "sha256": "59f4e342677f5997f181a4a6a54e9f7e17222f67a87affba4ab844c9c2244a1a",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents-phone/resident-groundskeeper-motion.webm",
+      "preserved": "docs/evidence/world/0084/e01-final/residents-phone/resident-groundskeeper-motion.webm",
+      "sha256": "66ab31d6e3df43d175b7401fc29fe7fb9859f9d6694442ad740634e639986488",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents-phone/resident-groundskeeper-task.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents-phone/resident-groundskeeper-task.png",
+      "sha256": "8d9614ad30dee98d395aa49073d29f639c57a9fab7a5533f714ba4eee1caf9f0",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents-phone/resident-groundskeeper.json",
+      "preserved": "docs/evidence/world/0084/e01-final/residents-phone/resident-groundskeeper.json",
+      "sha256": "309131c1700eef881f4e43cccef3fff6321c9165a07081bf35ada637043c138c",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents-phone/resident-reader-12s.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents-phone/resident-reader-12s.png",
+      "sha256": "fe53356f72db8e00e196f789a03e9ee0dcc91e7a812ebf24a16cd2b8bfc69f1f",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents-phone/resident-reader-24s.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents-phone/resident-reader-24s.png",
+      "sha256": "abd22589f263010de4307b1fddd46e6536c2d29783ea086d97829e81941ccd49",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents-phone/resident-reader-motion.webm",
+      "preserved": "docs/evidence/world/0084/e01-final/residents-phone/resident-reader-motion.webm",
+      "sha256": "94eb1d9006fe768d4cd28955adfb88082ef3133223e5b86f48bdb463ddf75b4a",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents-phone/resident-reader-task.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents-phone/resident-reader-task.png",
+      "sha256": "375635ce85d296445b12cdf5812b1e410186946c6527fb3e35104488b7427133",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents-phone/resident-reader.json",
+      "preserved": "docs/evidence/world/0084/e01-final/residents-phone/resident-reader.json",
+      "sha256": "631800313bba9cf0de781a3fe4634b44531bdc6de912050ac37ce15bca64d94a",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents-phone/resident-river-walker-12s.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents-phone/resident-river-walker-12s.png",
+      "sha256": "24d26ffbd43716d8091b9a14c444d7b1e44185acb6fdda88980c5ca50f4d4703",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents-phone/resident-river-walker-24s.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents-phone/resident-river-walker-24s.png",
+      "sha256": "2881e7dddcafa701357a66a8627a1bc5dca411eeda7644977261440bf442ea18",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents-phone/resident-river-walker-motion.webm",
+      "preserved": "docs/evidence/world/0084/e01-final/residents-phone/resident-river-walker-motion.webm",
+      "sha256": "426200ed6a0ef35dbd9fc8492135cf46b15f9243504ba66cf467fe8776e1e1f3",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents-phone/resident-river-walker-task.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents-phone/resident-river-walker-task.png",
+      "sha256": "0cae2834beda4dd44a82b22fe7e8eb755eecb230d8adcc945b8fda551288d189",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents-phone/resident-river-walker.json",
+      "preserved": "docs/evidence/world/0084/e01-final/residents-phone/resident-river-walker.json",
+      "sha256": "528fc82a913d02fce457232d574fa8264e642e944533f3dbee2444466a8b5488",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents-proof.mjs",
+      "preserved": "docs/evidence/world/0084/e01-final/residents-proof.mjs",
+      "sha256": "98b34e75c7b7686c86b3df2ab399cb6fd74bff61ca9a926d625292c16869f664",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents/evidence.json",
+      "preserved": "docs/evidence/world/0084/e01-final/residents/evidence.json",
+      "sha256": "4671add2a1f6a479ab7ee68310e61f09129e947f223caa46efb4843b86f56d65",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents/resident-groundskeeper-12s.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents/resident-groundskeeper-12s.png",
+      "sha256": "eaf80992441eb3b37018a0bc5b37f0b8c28627f6ec4e17ceb30d954ab24abb6d",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents/resident-groundskeeper-24s.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents/resident-groundskeeper-24s.png",
+      "sha256": "e1e3d40225b8ead37331129b6b00ef4247de74fed8cd42fa8cebb6b64529ab05",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents/resident-groundskeeper-motion.webm",
+      "preserved": "docs/evidence/world/0084/e01-final/residents/resident-groundskeeper-motion.webm",
+      "sha256": "b6b588f73447697defcd06e9d3057199d04b9f9ed4893bab14316ee3ae813b5c",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents/resident-groundskeeper-task.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents/resident-groundskeeper-task.png",
+      "sha256": "84da7b902173b3bdc801545eff9a9701581c700d7ebc28286332aee60ae765af",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents/resident-groundskeeper.json",
+      "preserved": "docs/evidence/world/0084/e01-final/residents/resident-groundskeeper.json",
+      "sha256": "0380a36d4648f670aa127a5875a5e6a39bca06e7225184e982ead0e3b185ede9",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents/resident-reader-12s.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents/resident-reader-12s.png",
+      "sha256": "6e4e5aa017e8671f504e18c336eef22f480c35be9ab4e97fa5465b7c16c5f095",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents/resident-reader-24s.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents/resident-reader-24s.png",
+      "sha256": "8cc4006d8a391af3707f4eec3b137477d2a1e085880c51c39c9b4af117b21f5f",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents/resident-reader-motion.webm",
+      "preserved": "docs/evidence/world/0084/e01-final/residents/resident-reader-motion.webm",
+      "sha256": "6e136b4ba8881b67775b25bd2f977644ab3c7a7ad16d96da49c74ca4c5ba77d1",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents/resident-reader-task.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents/resident-reader-task.png",
+      "sha256": "0f8afa170fc26f243695bdda7ad81240214b93426e145bc98cd60aff438a6bf9",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents/resident-reader.json",
+      "preserved": "docs/evidence/world/0084/e01-final/residents/resident-reader.json",
+      "sha256": "d9a9740f9170286b7159e2ec9344a1e434ad2235997fce551bc5058da0bc5e5f",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents/resident-river-walker-12s.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents/resident-river-walker-12s.png",
+      "sha256": "14de1cd1d4d4c316bf8202a14f32172db4ce44c6ca5680144e9b8b2dee535f8d",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents/resident-river-walker-24s.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents/resident-river-walker-24s.png",
+      "sha256": "028f9a7cdfb61fc6dcb870ab9a85b363eb8a2531b745ac74eee036847a0f2ad7",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents/resident-river-walker-motion.webm",
+      "preserved": "docs/evidence/world/0084/e01-final/residents/resident-river-walker-motion.webm",
+      "sha256": "2304430d8b14e658c5d50bdfb3af3756c89f75e3b8a09511777028ee2c80c9db",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents/resident-river-walker-task.png",
+      "preserved": "docs/evidence/world/0084/e01-final/residents/resident-river-walker-task.png",
+      "sha256": "0e6cfd01aa33a76f1e2619669d8057c855edab4f9539b18bc2b9756bea6e6adf",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/residents/resident-river-walker.json",
+      "preserved": "docs/evidence/world/0084/e01-final/residents/resident-river-walker.json",
+      "sha256": "f14a32e5785013a930dc0be5290ab574d284fc2b07ce6e39edc9fd6431744437",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/shadows/evidence.json",
+      "preserved": "docs/evidence/world/0084/e01-final/shadows/evidence.json",
+      "sha256": "5024cf61c763d1a8c5426690487596bced7e125353cb96b0fcf410e032a5b65c",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/shadows/isolated-layers.png",
+      "preserved": "docs/evidence/world/0084/e01-final/shadows/isolated-layers.png",
+      "sha256": "a046cbe29d581d02dcba72c3255b81c670b4486d925de96a1dd44f50cc4be24f",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/walk-park/desktop-bamboo-court.png",
+      "preserved": "docs/evidence/world/0084/e01-final/walk-park/desktop-bamboo-court.png",
+      "sha256": "41d5ba54c868e19adf674a6bc93384e08fe2fc7aa95d297c5128c189b593119d",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/walk-park/desktop-orchard-basket.png",
+      "preserved": "docs/evidence/world/0084/e01-final/walk-park/desktop-orchard-basket.png",
+      "sha256": "cba6a03c833e99bc3b766ff2b17f8f8b483bf243d5c445bcbb76b79c77b0c7ac",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/walk-park/desktop-pond-deck.png",
+      "preserved": "docs/evidence/world/0084/e01-final/walk-park/desktop-pond-deck.png",
+      "sha256": "a52c3fc531d717fde6ffe6519c125a1bbade2c2a808359b203ca766cc4dd261d",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/walk-park/desktop-ridge-view.png",
+      "preserved": "docs/evidence/world/0084/e01-final/walk-park/desktop-ridge-view.png",
+      "sha256": "10ac72bf103a872a8a60d9f703bfb5dfe23b2178b91bb1ea7a040921f2a11c95",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/walk-park/desktop-route.webm",
+      "preserved": "docs/evidence/world/0084/e01-final/walk-park/desktop-route.webm",
+      "sha256": "d6fe6a2078376ecdfdeb2caa2fd4480880c96d511ef11c4fff60f1320db5439a",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/walk-park/desktop-tea-pavilion.png",
+      "preserved": "docs/evidence/world/0084/e01-final/walk-park/desktop-tea-pavilion.png",
+      "sha256": "53295d0f1657db6eea6449e5e8c54a2bec49ebdd061a7752d2e187e17a8550d7",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/walk-park/evidence.json",
+      "preserved": "docs/evidence/world/0084/e01-final/walk-park/evidence.json",
+      "sha256": "f8a81b34102f5a3e75c407a8e019a3db579661004c8913ea5d3143654338e7d6",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/walk-riverbank/desktop-fishing-jetty.png",
+      "preserved": "docs/evidence/world/0084/e01-final/walk-riverbank/desktop-fishing-jetty.png",
+      "sha256": "1fa3cfd225aae636203cf84397e22dd0c924faa976903d2b090b32888a045a92",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/walk-riverbank/desktop-lower-crossing.png",
+      "preserved": "docs/evidence/world/0084/e01-final/walk-riverbank/desktop-lower-crossing.png",
+      "sha256": "dcf9eef03b1db3037f396d945196e936b375b01e668d18c7c60cdaf9f73a9d83",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/walk-riverbank/desktop-moon-bridge.png",
+      "preserved": "docs/evidence/world/0084/e01-final/walk-riverbank/desktop-moon-bridge.png",
+      "sha256": "9f6a87b5175d5f43ab788a1a02f9b99e25760c883a538fe93cdaef1bdda39a29",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/walk-riverbank/desktop-old-ferry.png",
+      "preserved": "docs/evidence/world/0084/e01-final/walk-riverbank/desktop-old-ferry.png",
+      "sha256": "532b06128ef7873805139f28711dc6f77ddad8156488ebf8c831ca8021cf1914",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/walk-riverbank/desktop-route.webm",
+      "preserved": "docs/evidence/world/0084/e01-final/walk-riverbank/desktop-route.webm",
+      "sha256": "1db8a1a0298af739f04f1df0fe48c826623c13f4e0bd9e9d6248e926152b91f4",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/walk-riverbank/evidence.json",
+      "preserved": "docs/evidence/world/0084/e01-final/walk-riverbank/evidence.json",
+      "sha256": "d1e90693c0e175361039661122f81b15a7de54bd48c1be8d0a4bd01de90c256c",
+      "previouslyTracked": true
+    },
+    {
+      "source": "docs/evidence/0084/inspect-proof.mjs",
+      "preserved": "docs/evidence/world/0084/e01-final/inspect-proof.mjs",
+      "sha256": "59bfea7374e750c1282b8592d77d636e9f50866c535330e378626901ae76814b",
+      "previouslyTracked": false
+    },
+    {
+      "source": "docs/evidence/0084/inspect/evidence.json",
+      "preserved": "docs/evidence/world/0084/e01-final/inspect/evidence.json",
+      "sha256": "18d430b0e91a64612fe4ddc610de71c44424e9879dda172b148eac5bbbdf0993",
+      "previouslyTracked": false
+    },
+    {
+      "source": "docs/evidence/0084/inspect/pond-normal-after.png",
+      "preserved": "docs/evidence/world/0084/e01-final/inspect/pond-normal-after.png",
+      "sha256": "d474b045605aad19ce9e0cbd0f2d83d1632f5cd0f73d022bf078a8cf79e1071e",
+      "previouslyTracked": false
+    },
+    {
+      "source": "docs/evidence/0084/inspect/pond-normal-before.png",
+      "preserved": "docs/evidence/world/0084/e01-final/inspect/pond-normal-before.png",
+      "sha256": "931d64eee034a8dd737f94c21630c81f72b91f9e8fef2f251bf747f636584e1a",
+      "previouslyTracked": false
+    },
+    {
+      "source": "docs/evidence/0084/inspect/pond-reduced-after.png",
+      "preserved": "docs/evidence/world/0084/e01-final/inspect/pond-reduced-after.png",
+      "sha256": "cdf8f481d8b0adbd139ea65d56b46ce246573abefa3baccb5d4df7b4ec97a1f5",
+      "previouslyTracked": false
+    },
+    {
+      "source": "docs/evidence/0084/inspect/pond-reduced-before.png",
+      "preserved": "docs/evidence/world/0084/e01-final/inspect/pond-reduced-before.png",
+      "sha256": "2522223ab840e4d85c23fb5f19e964de8e92ae02dcaceeab0d318ed8c4ab389e",
+      "previouslyTracked": false
+    },
+    {
+      "source": "docs/evidence/0084/inspect/reading-normal-after.png",
+      "preserved": "docs/evidence/world/0084/e01-final/inspect/reading-normal-after.png",
+      "sha256": "e3cb88c8e130694601c3555201d14dfddb018c0a4e196b4006d0b9a92664299a",
+      "previouslyTracked": false
+    },
+    {
+      "source": "docs/evidence/0084/inspect/reading-normal-before.png",
+      "preserved": "docs/evidence/world/0084/e01-final/inspect/reading-normal-before.png",
+      "sha256": "54eb33f5b56b1a64a83c0669a58209fcc359609298892c0b3744572e397b9aa7",
+      "previouslyTracked": false
+    },
+    {
+      "source": "docs/evidence/0084/inspect/reading-reduced-after.png",
+      "preserved": "docs/evidence/world/0084/e01-final/inspect/reading-reduced-after.png",
+      "sha256": "d2acbc353fae088c3d48a06b9a823093d04d226a09d02146c936ba828696ddbb",
+      "previouslyTracked": false
+    },
+    {
+      "source": "docs/evidence/0084/inspect/reading-reduced-before.png",
+      "preserved": "docs/evidence/world/0084/e01-final/inspect/reading-reduced-before.png",
+      "sha256": "9d02fa57e2485d87a8b88e63733923ffeeafe6bfd56c72ec6c18138e1ca125fb",
+      "previouslyTracked": false
+    }
+  ]
+}

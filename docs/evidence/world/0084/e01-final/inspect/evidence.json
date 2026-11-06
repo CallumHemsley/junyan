@@ -1,0 +1,130 @@
+[
+  {
+    "name": "pond-normal",
+    "motion": "no-preference",
+    "position": {
+      "x": 61,
+      "y": 33
+    },
+    "life": {
+      "version": 1,
+      "elapsedMs": 0,
+      "discoveries": [
+        {
+          "mapId": "park",
+          "landmarkId": "park.pond-deck",
+          "day": 1
+        }
+      ],
+      "reactions": [
+        {
+          "mapId": "park",
+          "targetId": "park.pond-deck",
+          "reaction": "ripple",
+          "atMs": 963.3000000000001
+        }
+      ],
+      "serviceDepartures": [],
+      "pauses": []
+    },
+    "changedPixels": 1774,
+    "errors": [],
+    "failedResponses": []
+  },
+  {
+    "name": "pond-reduced",
+    "motion": "reduce",
+    "position": {
+      "x": 61,
+      "y": 33
+    },
+    "life": {
+      "version": 1,
+      "elapsedMs": 0,
+      "discoveries": [
+        {
+          "mapId": "park",
+          "landmarkId": "park.pond-deck",
+          "day": 1
+        }
+      ],
+      "reactions": [
+        {
+          "mapId": "park",
+          "targetId": "park.pond-deck",
+          "reaction": "ripple",
+          "atMs": 1510.1
+        }
+      ],
+      "serviceDepartures": [],
+      "pauses": []
+    },
+    "changedPixels": 0,
+    "errors": [],
+    "failedResponses": []
+  },
+  {
+    "name": "reading-normal",
+    "motion": "no-preference",
+    "position": {
+      "x": 31,
+      "y": 28
+    },
+    "life": {
+      "version": 1,
+      "elapsedMs": 0,
+      "discoveries": [
+        {
+          "mapId": "park",
+          "landmarkId": "park.old-reading-stone",
+          "day": 1
+        }
+      ],
+      "reactions": [
+        {
+          "mapId": "park",
+          "targetId": "park.old-reading-stone",
+          "reaction": "watch",
+          "atMs": 946.6
+        }
+      ],
+      "serviceDepartures": [],
+      "pauses": []
+    },
+    "changedPixels": 1180,
+    "errors": [],
+    "failedResponses": []
+  },
+  {
+    "name": "reading-reduced",
+    "motion": "reduce",
+    "position": {
+      "x": 31,
+      "y": 28
+    },
+    "life": {
+      "version": 1,
+      "elapsedMs": 0,
+      "discoveries": [
+        {
+          "mapId": "park",
+          "landmarkId": "park.old-reading-stone",
+          "day": 1
+        }
+      ],
+      "reactions": [
+        {
+          "mapId": "park",
+          "targetId": "park.old-reading-stone",
+          "reaction": "watch",
+          "atMs": 1483.3000000000002
+        }
+      ],
+      "serviceDepartures": [],
+      "pauses": []
+    },
+    "changedPixels": 0,
+    "errors": [],
+    "failedResponses": []
+  }
+]

@@ -1,0 +1,108 @@
+{
+  "device": "desktop",
+  "id": "resident-river-walker",
+  "mapId": "riverbank",
+  "seed": 0,
+  "rest": "idle",
+  "start": {
+    "id": "riverbank.resident-river-walker",
+    "characterId": "resident-river-walker",
+    "kind": "resident",
+    "position": {
+      "x": 23.6,
+      "y": 48.6
+    },
+    "facing": "south",
+    "yaw": 1.5707963267948966,
+    "action": "idle",
+    "activity": "idle",
+    "phaseMs": 9295.018440522726,
+    "radius": 0.22
+  },
+  "later": {
+    "id": "riverbank.resident-river-walker",
+    "characterId": "resident-river-walker",
+    "kind": "resident",
+    "position": {
+      "x": 26.34471717650915,
+      "y": 46.90527530041046
+    },
+    "facing": "east",
+    "yaw": -0.5531514273524166,
+    "action": "walk",
+    "activity": "walk",
+    "phaseMs": 3795.0184405227265,
+    "radius": 0.22
+  },
+  "remainingRestMs": 3204.9815594772735,
+  "playerPosition": {
+    "x": 26.1,
+    "y": 50.1
+  },
+  "shirt": "#817a97",
+  "routeStops": [
+    {
+      "x": 23.6,
+      "y": 48.6
+    },
+    {
+      "x": 38.5,
+      "y": 39.4
+    }
+  ],
+  "scope": "Valid normal day seed selected for a naturally occurring rest-to-walk transition. No actor spawn, phase, elapsed-time or position override; ordinary App sampling uses canonical hooks/profiles.",
+  "observations": [
+    {
+      "wallSecond": 0,
+      "count": 41,
+      "centroid": {
+        "x": 265.0243902439024,
+        "y": 150.6341463414634
+      }
+    },
+    {
+      "wallSecond": 4,
+      "count": 28,
+      "centroid": {
+        "x": 285.07142857142856,
+        "y": 153.5
+      }
+    },
+    {
+      "wallSecond": 8,
+      "count": 43,
+      "centroid": {
+        "x": 355.27906976744185,
+        "y": 160.67441860465115
+      }
+    },
+    {
+      "wallSecond": 12,
+      "count": 46,
+      "centroid": {
+        "x": 425.2608695652174,
+        "y": 169.34782608695653
+      }
+    },
+    {
+      "wallSecond": 16,
+      "count": 46,
+      "centroid": {
+        "x": 497.32608695652175,
+        "y": 178.2391304347826
+      }
+    },
+    {
+      "wallSecond": 20,
+      "count": 0,
+      "centroid": null
+    },
+    {
+      "wallSecond": 24,
+      "count": 0,
+      "centroid": null
+    }
+  ],
+  "visibleMaterialMotion": true,
+  "consoleErrors": []
+}

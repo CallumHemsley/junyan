@@ -1,0 +1,226 @@
+{
+  "setup": "Valid day save seeded at park; all route segments then use actual canvas pointer input and shared production pathfinding",
+  "proof": [
+    {
+      "id": "orchard-basket",
+      "start": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 7,
+          "y": 61
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "pauses": [],
+          "serviceDepartures": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 15.999999492457851,
+          "y": 52.000000507542154
+        },
+        "facing": "north",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "actualPointerSegments": 3
+    },
+    {
+      "id": "bamboo-court",
+      "start": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 15.999999492457851,
+          "y": 52.000000507542154
+        },
+        "facing": "north",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 29.00000048673148,
+          "y": 7.999999593433044
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "actualPointerSegments": 9
+    },
+    {
+      "id": "tea-pavilion",
+      "start": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 29.00000048673148,
+          "y": 7.999999593433044
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 54.00000048673147,
+          "y": 17.999999593433046
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "actualPointerSegments": 5
+    },
+    {
+      "id": "pond-deck",
+      "start": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 54.00000048673147,
+          "y": 17.999999593433046
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 61.000000486731466,
+          "y": 32.999999593433046
+        },
+        "facing": "west",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "actualPointerSegments": 6
+    },
+    {
+      "id": "ridge-view",
+      "start": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 61.000000486731466,
+          "y": 32.999999593433046
+        },
+        "facing": "west",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "park",
+        "position": {
+          "x": 79.00000048673147,
+          "y": 28.99999959343305
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "actualPointerSegments": 4
+    }
+  ],
+  "consoleErrors": []
+}
