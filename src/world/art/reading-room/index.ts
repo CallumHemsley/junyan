@@ -217,8 +217,8 @@ export const drawMap: DrawMap = (ctx, map, view) => {
     const traffic = x >= 11.5 && x < 14 && y > 11 && y < 18;
     const c = (traffic ? ['#ac9873', '#ae9b75', '#ac9871', '#a99670'] : ['#9c845e', '#a18a63', '#9d865f', '#a38c64'])[(Math.round((x-2)/3.2)*3+row)%4];
     polygon(ctx, view, [[start, y, 0], [end, y, 0], [end, y + .5, 0], [start, y + .5, 0]], c);
-    stroke(ctx, view, [start, y + .5, .001], [end, y + .5, .001], traffic ? '#a18e68' : '#8c7652');
-    stroke(ctx, view, [start, y, .002], [start, y + .5, .002], '#8c7652');
+    stroke(ctx, view, [start, y + .5, .001], [end, y + .5, .001], traffic ? '#a7926c' : '#98815c');
+    if ((row + Math.round((x-2)/3.2)) % 3 === 0) stroke(ctx, view, [start, y, .002], [start, y + .5, .002], '#947d58');
   }
   // Three handled turns connect the real entry, desk approach and return cart; no scattered debris.
   for(const patch of [[[12.7,16],[13.6,15.8],[13.8,16.7],[12.6,17.1]],[[11.5,12.8],[12.2,12.6],[12.3,14.7],[11.6,14.9]],[[15.4,13.8],[16.6,13.7],[17.5,14.1],[16.6,14.4]]] as [number,number][][]){
