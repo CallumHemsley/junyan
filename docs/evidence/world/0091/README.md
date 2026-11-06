@@ -27,3 +27,7 @@ Run from `/workspace/junyan-0091` with Node22:
 ```
 
 TypeScript passes. Standard Vite production build passes (existing chunk-size/Zod annotation warnings); existing rules suite passes308/308 tests in26 files. An initial custom `/tmp` output directory failed the existing build plugin's hardcoded `dist` scan; rerunning the unmodified standard build succeeded. Build checks the existing App regression; the new module is exercised through the evidence harness and TypeScript because integration is intentionally pending. Root/coordinator must judge the authored study before0084 consumes it; foundation current-head integrated capture remains a separate requirement. No full App journey was claimed for this source-only seam.
+
+## Player-behind-canopy follow-up
+
+Root accepted the authored direction and authorized0084's bounded integration trial after inspecting corrected actual-scale views. The measured fade gate is documented in `fade-report.md`, with12 actual-actor screenshots and `fade-checks.json`. Direct per-span source-over alpha is materially higher than requested; caller-side whole-object isolation is recommended for the integration trial. No production change was made by this follow-up. Actual App fade/culling/casts/DPR cost remain0084's integration work.
