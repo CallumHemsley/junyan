@@ -1,6 +1,6 @@
 import {chromium} from '../../../node_modules/@playwright/test/index.mjs';
 import {mkdir,writeFile} from 'node:fs/promises';
-const mapId=process.argv[2]??'riverbank';const output='docs/evidence/0084/walk-'+mapId;await mkdir(output,{recursive:true});
+const mode=process.argv[2]??'riverbank';const mapId=mode==='nook'?'riverbank':mode;const output='docs/evidence/0084/walk-'+mode;await mkdir(output,{recursive:true});
 const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--mute-audio','--no-sandbox']});
 try{
  const page=await browser.newPage({viewport:{width:1440,height:960}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -10,7 +10,7 @@ try{
  const read=()=>page.evaluate(async()=>{const {loadGame}=await import('/src/save.ts'),{content}=await import('/src/content/index.ts');return (await loadGame(content)).world;});
  await page.evaluate(()=>{const chunks=[],recorder=new MediaRecorder(document.querySelector('[data-testid="world-viewport"] canvas').captureStream(10),{mimeType:'video/webm'});recorder.ondataavailable=e=>chunks.push(e.data);window.__recording={recorder,chunks};recorder.start();});
  const proof=[];
- for(const [id,x,y] of mapId==='park'?[['orchard-basket',16,52],['bamboo-court',29,8],['tea-pavilion',54,18],['pond-deck',61,33],['ridge-view',79,29]]:[['moon-bridge',48,19],['old-ferry',62,57],['lower-crossing',45,57],['fishing-jetty',40,39]]){
+ for(const [id,x,y] of mode==='nook'?[['shore-watch',51,43]]:mapId==='park'?[['orchard-basket',16,52],['bamboo-court',29,8],['tea-pavilion',54,18],['pond-deck',61,33],['ridge-view',79,29]]:[['moon-bridge',48,19],['old-ferry',62,57],['lower-crossing',45,57],['fishing-jetty',40,39]]){
   const start=await read();let steps=0;
   for(;steps<70;steps++){
    const state=await read();if(steps%10===0)console.log(id,steps,JSON.stringify(state.position));if(Math.hypot(state.position.x-x,state.position.y-y)<.4)break;

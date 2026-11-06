@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { mapDefinitions } from './index';
 import { worldMapSchema } from '../../schema';
-import { canStand, findPath } from '../../geometry';
+import { canStand, canWalk, findPath } from '../../geometry';
 
 // Footprint clearance is deliberately tested without the rendering adapter.
 const radius = .3;
@@ -40,8 +40,15 @@ for (const raw of mapDefinitions) {
         expect(overlap,`${deck.id} covered by ${surface.id}`).toBe(false);
       }
     });
-    it('keeps resident hook segments walkable', () => {
-      for(const hook of map.npcHooks)for(const point of hook.route)expect(canStand(map,point),hook.id).toBe(true);
+    it('compiles radius-safe resident approaches and every route segment', () => {
+      for(const hook of map.npcHooks){
+        for(const point of [hook.position,...hook.route])expect(canStand(map,point,.25),hook.id).toBe(true);
+        for(let i=1;i<hook.route.length;i++){
+          let from=hook.route[i-1];const path=findPath(map,from,hook.route[i]);
+          expect(path.length,hook.id).toBeGreaterThan(0);
+          for(const to of path){expect(canWalk(map,from,to),hook.id).toBe(true);from=to;}
+        }
+      }
     });
     it('places safe arrivals outside exit triggers', () => {
       for (const entrance of map.entrances) for (const exit of map.exits) {
@@ -75,5 +82,13 @@ it('provides reciprocal park and riverbank path connections', () => {
     const other = mapDefinitions.find(m => m.id !== map.id)!;
     const exit = map.exits.find(e => e.targetMapId === other.id)!;
     expect(other.entrances.some(e => e.id === exit.targetEntranceId)).toBe(true);
+  }
+});
+
+it('keeps canonical background residents assigned to one landscape home each', () => {
+  const expected={'resident-reader':'park','resident-groundskeeper':'park','resident-river-walker':'riverbank'};
+  for(const [id,home] of Object.entries(expected)){
+    const homes=mapDefinitions.flatMap(map=>map.npcHooks.filter(h=>h.characterId===id).map(()=>map.id));
+    expect(homes).toEqual([home]);
   }
 });

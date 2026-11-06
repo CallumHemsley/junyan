@@ -73,3 +73,13 @@ The persistence harness initially compared stale IndexedDB during an ongoing pho
 ## Current review packet
 
 Both current-composition actual App routes completed after water/deck masking: `walk-park/` and `walk-riverbank/` contain continuous recordings and endpoint proof. Fresh desktop/phone settled persistence passed. Production material pairs were inspected; wood, foliage and pavilion masonry are visibly present and phase-shaded in both same-camera captures. `review-request.md` identifies current artifacts and exact remaining integration gaps. `source-snapshot.json` records map/art content hashes so evidence is tied to bytes rather than a stale branch label. Goal remains ACTIVE pending independent acceptance and exploration-response integration.
+
+## Canonical background resident allocation
+
+Read coordinator `c32f128` background-residents-v1. Landscape now owns exactly one hook each for `resident-reader` and `resident-groundskeeper` in park, and `resident-river-walker` in riverbank. Previous landscape hooks for voiced regulars are removed; the four voiced regulars stay with restaurant/customer ownership.
+
+Reader approaches: (29,26.9) outside the reading bench collider, and (54,18.5) at the pavilion approach. Groundskeeper: orchard basket (16,52) and planting approach (23,56.4), beside an original visible seedling bed. River walker: reed-hide approach (23.6,48.6) and jetty side (38.5,39.4), leaving the inspect target and travel lane clear. Fifteen landscape checks now validate sole home assignment, .25-radius approaches and every compiled shared-geometry route segment; integrated graph also passes.
+
+Actor producer support is published at `codex/0085-characters` 538a115 with canonical IDs and existing walk/idle/interact plus sit/work poses and book/broom/umbrella silhouettes. The fetched life producer e110f6e still lacks the new canonical profiles. No substitute profile or fake people are added here. Real resident task/motion acceptance waits for 0087's profiles and foundation assembly. Root/coordinator should relay these exact hooks to 0087/0078.
+
+The shoreline loop now includes a closer footpath and an actual water-view bench/reed nook at (51,43), keeping its stable landmark ID. `walk-nook/` records ordinary player travel to this reachable location; the updated river recording also passed. Background resident motion proof is separate and still pending producer integration. Goal ACTIVE.
