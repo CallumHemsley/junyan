@@ -1,0 +1,205 @@
+{
+  "sourceHead": "e02a747",
+  "records": [
+    {
+      "device": "desktop",
+      "mapId": "restaurant",
+      "position": {
+        "x": 12,
+        "y": 17
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "town",
+      "position": {
+        "x": 34,
+        "y": 32
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "courtyard",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "residential-hall",
+      "position": {
+        "x": 16,
+        "y": 21
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "residential-stairs",
+      "position": {
+        "x": 11.5,
+        "y": 37
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "apartment",
+      "position": {
+        "x": 25,
+        "y": 20
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "workshop",
+      "position": {
+        "x": 15,
+        "y": 25
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "rooftop",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 61
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "riverbank",
+      "position": {
+        "x": 7,
+        "y": 73
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "restaurant",
+      "position": {
+        "x": 12,
+        "y": 17
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "town",
+      "position": {
+        "x": 34,
+        "y": 32
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "courtyard",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "residential-hall",
+      "position": {
+        "x": 16,
+        "y": 21
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "residential-stairs",
+      "position": {
+        "x": 11.5,
+        "y": 37
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "apartment",
+      "position": {
+        "x": 25,
+        "y": 20
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "workshop",
+      "position": {
+        "x": 15,
+        "y": 25
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "rooftop",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "park",
+      "position": {
+        "x": 7,
+        "y": 61
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "riverbank",
+      "position": {
+        "x": 7,
+        "y": 73
+      },
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    }
+  ]
+}
