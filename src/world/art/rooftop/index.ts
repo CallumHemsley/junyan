@@ -153,14 +153,67 @@ const paintMap: DrawMap = (ctx, map, view) => {
     }
   }
   if (view.pass === 'ground') {
-    ctx.save(); ctx.globalAlpha *= .2;
-    for (const p of map.props) {
-      if (p.layer === 'ground' || p.kind === 'parapet') continue;
-      if (p.kind === 'pergola' || p.kind === 'garden-shade') {
-        for (let k = 0; k < p.width; k += .65) plane(p.position.x + k + .6, p.position.y + .7, .18, p.height, .02, '#466c70');
-      } else plane(p.position.x + .5, p.position.y + .45, p.width + .1, p.height + .2, .02, '#466c70');
+    const light = view.castLight;
+    if (light) {
+      ctx.save(); ctx.globalAlpha *= light.shadowOpacity;
+      const path = (points: Point[]) => {
+        points.map(p => project(p.x, p.y, .02)).forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
+        ctx.closePath();
+      };
+      ctx.beginPath();
+      for (const {rect: r} of map.terrain) path([{x: r.x, y: r.y}, {x: r.x + r.width, y: r.y}, {x: r.x + r.width, y: r.y + r.height}, {x: r.x, y: r.y + r.height}]);
+      ctx.clip();
+      // Shadow RGB is already sampled by the atmosphere; only material paint uses shadeColor.
+      ctx.fillStyle = `rgb(${light.shadow.join(',')})`;
+      for (const p of map.props) {
+        if (p.layer === 'ground') continue;
+        const {x, y} = p.position, w = p.width, h = p.height;
+        let parts = 0;
+        ctx.beginPath();
+        const cast = (x: number, y: number, w: number, h: number, top: number, bottom = 0) => {
+          const points = [bottom, top].flatMap(z => {
+            const dx = light.shadowOffset[0] * Math.min(4, Math.max(0, z)), dy = light.shadowOffset[1] * Math.min(4, Math.max(0, z));
+            return [{x: x + dx, y: y + dy}, {x: x + w + dx, y: y + dy}, {x: x + w + dx, y: y + h + dy}, {x: x + dx, y: y + h + dy}];
+          }).sort((a, b) => a.x - b.x || a.y - b.y);
+          const cross = (a: Point, b: Point, c: Point) => (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
+          const chain = (points: Point[]) => {
+            const hull: Point[] = [];
+            for (const p of points) {
+              while (hull.length > 1 && cross(hull[hull.length - 2], hull[hull.length - 1], p) <= 0) hull.pop();
+              hull.push(p);
+            }
+            return hull.slice(0, -1);
+          };
+          path([...chain(points), ...chain([...points].reverse())]); parts++;
+        };
+        if (p.kind === 'pergola' || p.kind === 'garden-shade') {
+          const shade = p.kind === 'garden-shade', top = shade ? 2.98 : 3.43;
+          for (let k = 0; k < w; k += shade ? .3 : .65) cast(x + k, y, shade ? .2 : .16, h, top, top);
+          if (shade) for (const dx of [0, w - .2]) cast(x + dx, y, .15, .15, 2.85);
+        } else if (p.kind === 'bench') {
+          for (let k = 0; k < 3; k++) cast(x, y + k * .28, w, .22, .77, .77);
+          for (const dx of [.2, w - .4]) cast(x + dx, y + .1, .16, .7, .7);
+          for (const dx of [.1, w - .2]) cast(x + dx, y + .08, .12, .12, 1.8, .7);
+          for (let k = 0; k < 3; k++) cast(x, y + .03, w, .12, 1.18 + k * .25, 1 + k * .25);
+        } else if (p.kind === 'tea-table') {
+          cast(x, y, w, h, 1.03, 1.03);
+          for (const dx of [.15, w - .3]) for (const dy of [.15, h - .3]) cast(x + dx, y + dy, .15, .15, .9);
+        } else if (p.kind === 'threshold-lintel') cast(x - .12, y - .02, w + .24, h + .04, 2.68, 2.5);
+        else if (p.kind === 'laundry') {
+          for (const dx of [0, w]) cast(x + dx - .04, y - .04, .08, .08, 2.4);
+          for (let k = .4; k < w - .3; k += .8) cast(x + k, y, .55, .04, 2.3, 1.15);
+        } else {
+          const height: Record<string, number> = {'stairhead': 3.92, 'water-tank': 3.18, 'basin': .8, 'tool-bay': 1.83,
+            'compost': 1, 'raised-bed': .57, 'trellis-bed': .57, 'border-pot': .6, 'bamboo-screen': .5,
+            'post': 3.3, 'threshold-post': 2.6, 'garden-crate': .85, 'wash-bowl': .25, 'sun-clock': .7,
+            'potting-tray': .48, 'soil-sack': .57, 'garden-tree': .8, 'garden-flower': .8, 'garden-climber': .8};
+          if (height[p.kind]) cast(x, y, w, h, height[p.kind]);
+        }
+        // One nonzero fill unions support/slat overlap instead of accumulating opacity.
+        if (parts) ctx.fill();
+      }
+      ctx.restore();
     }
-    ctx.restore();
     // Tight attached shade grounds heavy fixtures; the broad offset paint above is cast shadow.
     ctx.save(); ctx.globalAlpha *= .34;
     for (const p of map.props) {
