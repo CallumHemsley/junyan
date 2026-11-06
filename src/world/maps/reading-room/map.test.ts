@@ -87,6 +87,11 @@ it('keeps the grouped return fixtures clear of every legal furniture footprint a
     if (!legal(brief, [], placement)) continue;
     const state = initialState(), projected = projectReadingRoom({ ...state, brief, layouts: { ...state.layouts, [brief]: [placement] } });
     const map = { ...base, colliders: [...base.colliders, ...projected.colliders] };
+    const footprint = projected.colliders.find(c => c.id === `reading-room.${brief}.${id}`)!.rect;
+    for (const fixture of base.colliders) {
+      const fixed = fixture.rect, overlap = footprint.x < fixed.x + fixed.width && footprint.x + footprint.width > fixed.x && footprint.y < fixed.y + fixed.height && footprint.y + footprint.height > fixed.y;
+      expect(overlap, `${brief}/${id}/${rotation}/${x},${y} overlaps ${fixture.id}`).toBe(false);
+    }
     for (const route of routes) for (let i = 1; i < route.length; i++) expect(canWalk(map, route[i - 1], route[i]), `${brief}/${id}/${rotation}/${x},${y} protected route ${i}`).toBe(true);
   }
   const cart = base.props.find(p => p.id === 'reading-room.return-cart')!, lamp = base.props.find(p => p.id === 'reading-room.lamp')!;
