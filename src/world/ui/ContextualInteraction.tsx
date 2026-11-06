@@ -14,11 +14,12 @@ export type InteractionTarget =
   | { kind: "garden"; plantId: string | null }
   | { kind: "apartment"; itemId: string | null };
 export type DialogueProps = Pick<FeatureViewProps<unknown, unknown>, "onLookup" | "onPlay" | "recoveredWordIds" | "freshWordIds">;
+export type InteractionDialogue = { line: Line; speaker?: ReactNode };
 export type InteractionAction = { id: string; control: ReactNode };
 export type ContextualInteractionProps = DialogueProps & {
   target: InteractionTarget;
   title: ReactNode;
-  dialogue?: readonly { line: Line; speaker?: ReactNode }[];
+  dialogue?: { current: InteractionDialogue; history?: readonly InteractionDialogue[] };
   actions?: readonly InteractionAction[];
   children?: ReactNode;
   onClose: () => void;
@@ -26,7 +27,7 @@ export type ContextualInteractionProps = DialogueProps & {
   suspended?: boolean;
 };
 
-export function ContextualInteraction({ target, title, dialogue = [], actions = [], children, onClose, returnFocusTo, suspended = false, ...words }: ContextualInteractionProps) {
+export function ContextualInteraction({ target, title, dialogue, actions = [], children, onClose, returnFocusTo, suspended = false, ...words }: ContextualInteractionProps) {
   const titleId = useId();
   const closeButton = useRef<HTMLButtonElement>(null);
   const invokingElement = useRef(returnFocusTo ?? (typeof document === "undefined" ? null : document.activeElement));
@@ -44,10 +45,17 @@ export function ContextualInteraction({ target, title, dialogue = [], actions = 
         <button ref={closeButton} className="world-context-close" aria-label="继续走走" onClick={onClose}>×</button>
       </header>
       <div className="world-context-scroll" tabIndex={0} role="region" aria-labelledby={titleId}>
-        {dialogue.map(({ line, speaker }, index) => <div className="world-context-dialogue" key={`${line.id}-${index}`}>
-          {speaker && <p className="world-context-speaker">{speaker}</p>}
-          <FeatureLine line={line} {...words} />
-        </div>)}
+        {dialogue && <div className="world-context-dialogue">
+          {dialogue.current.speaker && <p className="world-context-speaker">{dialogue.current.speaker}</p>}
+          <FeatureLine line={dialogue.current.line} {...words} />
+        </div>}
+        {dialogue?.history && dialogue.history.length > 0 && <details className="world-dialogue-history">
+          <summary aria-label="再听一遍">···</summary>
+          {dialogue.history.map(({ line, speaker }, index) => <div className="world-context-dialogue" key={`${line.id}-${index}`}>
+            {speaker && <p className="world-context-speaker">{speaker}</p>}
+            <FeatureLine line={line} {...words} />
+          </div>)}
+        </details>}
         {children}
       </div>
       {actions.length > 0 && <footer className="world-context-actions">
@@ -57,11 +65,14 @@ export function ContextualInteraction({ target, title, dialogue = [], actions = 
   );
 }
 
-export function WorldPocketBar({ journalCount, trayCount, onJournal, onTray }: {
-  journalCount: number; trayCount: number; onJournal: () => void; onTray: () => void;
-}) {
+export type WorldPocketBarProps = {
+  journalControl: ReactNode;
+  trayControl: ReactNode;
+};
+
+export function WorldPocketBar({ journalControl, trayControl }: WorldPocketBarProps) {
   return <nav className="world-pocket-bar" aria-label="本子与托盘">
-    <button onClick={onJournal}>本子 <span>{journalCount}</span></button>
-    <button onClick={onTray}>托盘 <span>{trayCount}/6</span></button>
+    <div className="world-pocket-control">{journalControl}</div>
+    <div className="world-pocket-control">{trayControl}</div>
   </nav>;
 }

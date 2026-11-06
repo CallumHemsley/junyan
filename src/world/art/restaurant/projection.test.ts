@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { content } from '../../../content';
-import { createGame } from '../../../game';
+import { createGame, orderTotal, reduceGame } from '../../../game';
+import { TABLES } from '../../../contracts';
+import { restaurantObjects } from './index';
+import type { RestaurantView } from './types';
 import { projectRestaurant } from './projection';
 import { restaurantMap } from '../../../../docs/evidence/0089/foundation-map';
 
@@ -34,4 +37,35 @@ describe('authoritative restaurant projection', () => {
     expect(result.served).toBe(1);
     expect(state).toEqual(before);
   });
+
+  it('keeps paid customers seated until explicit canonical departure while retaining meals and receipts', () => {
+    const state = createGame(content, 42);
+    const customer = state.customers[0];
+    customer.phase = 'checkout';
+    state.player = { x: TABLES[0].x, y: TABLES[0].y };
+    const order = content.orders.find(o => o.id === customer.orderId)!;
+    const character = content.characters.find(c => c.name === order.customer)!;
+    const paid = reduceGame(state, { type: 'pay', table: customer.table, change: order.paid - orderTotal(order, content) }, content);
+    const before = structuredClone(paid);
+    const awaitingAcknowledgment = projectRestaurant(paid, content, restaurantMap);
+    expect(paid.feedback).toBe('thanks');
+    expect(paid.receipt?.table).toBe(customer.table);
+    expect(awaitingAcknowledgment.customers.find(c => c.characterId === character.id)?.phase).toBe('served');
+    expect(awaitingAcknowledgment.customers).toHaveLength(4);
+
+    const departed = projectRestaurant(paid, content, restaurantMap, [character.id]);
+    expect(departed.customers).toHaveLength(3);
+    expect(departed.customers.some(c => c.characterId === character.id)).toBe(false);
+    expect(departed.meals).toEqual(awaitingAcknowledgment.meals);
+    expect(departed.served).toBe(paid.served);
+    const view: RestaurantView = {
+      project: p => p, elapsedMs: 0, reducedMotion: true, playerPosition: paid.player,
+      width: 992, height: 800, pass: 'ground',
+    };
+    expect(restaurantObjects(restaurantMap, view, departed).map(object => object.id))
+      .toContain(`restaurant.table-setting.${customer.table}`);
+    expect(paid).toEqual(before);
+    expect(projectRestaurant(paid, content, restaurantMap).customers).toHaveLength(4);
+  });
+
 });

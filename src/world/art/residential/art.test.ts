@@ -21,6 +21,7 @@ describe('residential object composition', () => {
     for (const [id, x, y] of [['repairs.stool', 2, 0], ['garden.planter', 3, 0], ['cats.cushion', 4, 0]] as const) {
       home = reduce(home, { type: 'select', id }, 1);home = reduce(home, { type: 'place', x, y }, 1);
     }
+    expect(home.placements.map(p => p.id)).toEqual(['bed', 'repairs.stool', 'garden.planter', 'cats.cushion']);
     expect(renderFurnitureObjects(home).map(o => o.id)).toEqual(furnitureColliders(home).map(c => c.id));
     const draft = reduce(home, { type: 'select', id: 'chair' }, 1);
     expect(renderFurnitureObjects(draft).map(o => o.id)).toEqual(renderFurnitureObjects(home).map(o => o.id));

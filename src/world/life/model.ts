@@ -38,6 +38,7 @@ export type LifePlan = {
   mapId: string;
   actors: readonly ActorRoute[];
   landmarks: LifeMap['landmarks'];
+  exclusions: readonly Rect[];
   diagnostics: readonly { hookId: string; reason: string }[];
 };
 export type LifeContext = {

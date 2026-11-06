@@ -30,6 +30,7 @@ export function projectRestaurant(
   state: Pick<GameState, 'customers' | 'tray' | 'served'>,
   content: Pick<Content, 'orders' | 'characters' | 'foods'>,
   map: RestaurantMap,
+  departedCharacterIds: readonly string[] = [],
 ): RestaurantProjection {
   const customers: RestaurantCustomer[] = [];
   const meals: RestaurantMeal[] = [];
@@ -40,7 +41,7 @@ export function projectRestaurant(
     const order = content.orders.find(o => o.id === customer.orderId);
     const character = content.characters.find(c => c.name === order?.customer);
     if (!order || !character) continue;
-    customers.push({
+    if (!departedCharacterIds.includes(character.id)) customers.push({
       id: `restaurant.customer.${binding.table}`, table: binding.table,
       characterId: character.id, appearance: character.appearance, phase: customer.phase,
       position: { x: prop.position.x + prop.width / 2, y: prop.position.y - .6 },

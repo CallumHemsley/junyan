@@ -1,0 +1,829 @@
+{
+  "method": "Exact current remote tips; restore only each owner lease; no shared engine/App/save/contracts/dependency file restored from owner branches",
+  "owners": [
+    {
+      "branch": "codex/0079-town-street",
+      "publishedHead": "f26160db824009f8008392f9c6e9e57a47eaa7ba",
+      "consumedHead": "f26160db824009f8008392f9c6e9e57a47eaa7ba",
+      "lease": [
+        "src/world/maps/town",
+        "src/world/art/town"
+      ],
+      "files": [
+        {
+          "path": "src/world/maps/town/author-map.py",
+          "sha256": "870d008cec7679710602604415f9e5ffa193606cdbed33be9cc136d1a72abebd"
+        },
+        {
+          "path": "src/world/maps/town/index.ts",
+          "sha256": "37641b86db3467f882eb73ff33b0d92852d2abbd8e8662b06f6e2b709569156d"
+        },
+        {
+          "path": "src/world/maps/town/map.json",
+          "sha256": "86fcb2989215f2991a83425bcf3476c76f388ea8e0219d3ebd4b9586882fc19f"
+        },
+        {
+          "path": "src/world/maps/town/map.test.ts",
+          "sha256": "f357bab0247a08156dafcddf93f64147962c58e280bbafad49a3ac59d3161679"
+        },
+        {
+          "path": "src/world/maps/town/reachability.py",
+          "sha256": "04075de4c7d4495c8cef64eb055c486447917bcc214934f4d7824af9975a260b"
+        },
+        {
+          "path": "src/world/art/town/index.ts",
+          "sha256": "48c032dee3c9c724417b3215a606a7ed77ecd12777ccfcb4dee260a6c33630bb"
+        },
+        {
+          "path": "src/world/art/town/preview.html",
+          "sha256": "ec51c3a2a5651106be553dad4bef3db1539c2884e739bc5eb7174dd80bb3d834"
+        },
+        {
+          "path": "src/world/art/town/preview.ts",
+          "sha256": "4d4938134bdccf4b20bf880d53a7232aa8dc3e3244b6ad941672ba481301c01f"
+        },
+        {
+          "path": "src/world/art/town/variants.json",
+          "sha256": "3b51dc14b425daf8b1f1678c85063cef2b473846163561e9b837909bcdaa5c1e"
+        }
+      ]
+    },
+    {
+      "branch": "codex/0080-courtyard",
+      "publishedHead": "7341f313334738db025df990bffad157f50e52cf",
+      "consumedHead": "7341f313334738db025df990bffad157f50e52cf",
+      "lease": [
+        "src/world/maps/courtyard",
+        "src/world/art/courtyard",
+        "src/features/cats"
+      ],
+      "files": [
+        {
+          "path": "src/world/maps/courtyard/habitat.test.ts",
+          "sha256": "91bf0bd717bebda57ed42100915dcd40d5bee5e5421f8afbb70257481de1cb6e"
+        },
+        {
+          "path": "src/world/maps/courtyard/habitat.ts",
+          "sha256": "156e8d65401fb91898051ddc7564cb6372181dc8de693c197c3e5da1d1ae3ab2"
+        },
+        {
+          "path": "src/world/maps/courtyard/index.ts",
+          "sha256": "f12a1535f014b4b6ff01781095bc19acd4c25be1344bdfb7615b973687732300"
+        },
+        {
+          "path": "src/world/maps/courtyard/map.json",
+          "sha256": "630796c5ef73e4dc2e48731ff083c397e5390a725d72e843d907787612750c11"
+        },
+        {
+          "path": "src/world/art/courtyard/compositor.test.ts",
+          "sha256": "6f97d2c0dd92d809f04f66410db3ec2ad2040a88ae6fd45511feaf43f9c9d9d6"
+        },
+        {
+          "path": "src/world/art/courtyard/index.ts",
+          "sha256": "48d0b0eda408287ef50a5c1a2a31fc073da08c121133fdea6bbff20072da65cd"
+        },
+        {
+          "path": "src/features/cats/Courtyard.tsx",
+          "sha256": "9dbbbd4310afca106515d7268ada36d00f9c76bb82bb41338a979f8a5eced294"
+        },
+        {
+          "path": "src/features/cats/cats.css",
+          "sha256": "4761195decaaeb7bb169f817128f54a0a4939fbf6e19ac4bf47df63b66892afc"
+        },
+        {
+          "path": "src/features/cats/content.json",
+          "sha256": "f0906d8c5d5c4391a3500844d9465dfc2fcb560e48fd1ddc14f58d8eadac8817"
+        },
+        {
+          "path": "src/features/cats/content.test.ts",
+          "sha256": "2a1f0566d029114512791fd4dc80ab1824bfbea6adf39bc9460a3f6aee2f5d35"
+        },
+        {
+          "path": "src/features/cats/content.ts",
+          "sha256": "b564df64f876e1eac29a5e19cdf3710334afb6d320ccdc9535abe4b08721ae4d"
+        },
+        {
+          "path": "src/features/cats/harness.html",
+          "sha256": "4287d6832553758aad4fd341e95dcd96707bb98b21bbe0a9e892b81bf6bc5e00"
+        },
+        {
+          "path": "src/features/cats/harness.tsx",
+          "sha256": "234339e1df2a7a723c62e10a60c24189d7b5d3d7425ddf704b63b816247348e8"
+        },
+        {
+          "path": "src/features/cats/index.tsx",
+          "sha256": "8b5c4a213bc83ca2015f3e12ebdd67623e3602dee85a34709461b5ec43e8665d"
+        },
+        {
+          "path": "src/features/cats/presentation.test.ts",
+          "sha256": "0999605856d69e4b4d80533b989f4369c78305309351169c57efcb00907d1704"
+        },
+        {
+          "path": "src/features/cats/rules.test.ts",
+          "sha256": "8a6826c93adf8f34894d875394784fb45f9ce6452b286628c3120a24d7b83cfd"
+        },
+        {
+          "path": "src/features/cats/rules.ts",
+          "sha256": "76320a77443d6089cdce878d92eb811074b57fe38041314b2ecb51150d2d5048"
+        },
+        {
+          "path": "src/features/cats/scene.ts",
+          "sha256": "a9cbfaa47b1a534e85844005485068d958a07a3a8402d24f8c9de958d9f63e5b"
+        }
+      ]
+    },
+    {
+      "branch": "codex/0081-residential",
+      "publishedHead": "8ebffb19c0d4c2ccc6fc20758b9e38c9886c0ad3",
+      "consumedHead": "8ebffb19c0d4c2ccc6fc20758b9e38c9886c0ad3",
+      "lease": [
+        "src/world/maps/residential",
+        "src/world/art/residential",
+        "src/features/apartment"
+      ],
+      "files": [
+        {
+          "path": "src/world/maps/residential/apartment.json",
+          "sha256": "c0107e3ac16a08a9d2e60067b66ef19601976c3be43219049fded6c4506a809a"
+        },
+        {
+          "path": "src/world/maps/residential/elevation.test.ts",
+          "sha256": "86cd801223ec6037d0ae8ac97e9386e884fb45dc1a6467ca40c37235fc623b5c"
+        },
+        {
+          "path": "src/world/maps/residential/elevation.ts",
+          "sha256": "b1f7fec2acb035341a0b67ff9ece15d4b07ef8ace594dc1571a5f77b5b059b6d"
+        },
+        {
+          "path": "src/world/maps/residential/index.ts",
+          "sha256": "982b04fceb07f3405d21e16d9bf73b13a25ea06f953c512625601ba803968ce8"
+        },
+        {
+          "path": "src/world/maps/residential/maps.test.ts",
+          "sha256": "7a65a9994ee2ef7079125482ad37993aa3ea77211c4f65cebde2b4b892027b7a"
+        },
+        {
+          "path": "src/world/maps/residential/residential-hall.json",
+          "sha256": "55c7c46314d0eb7c631064301a56c4da1efa670a508f37039ec7d82729028b90"
+        },
+        {
+          "path": "src/world/maps/residential/residential-stairs.json",
+          "sha256": "34a18baa564b6573515968f30eb16c1b8cee800828377f847f9c68174911bb3e"
+        },
+        {
+          "path": "src/world/art/residential/art.test.ts",
+          "sha256": "bfdf4d2961fe285f0b1e31466ca310e9d4ca8f0eda577c00c1e10e11c0dfd4cf"
+        },
+        {
+          "path": "src/world/art/residential/harness.html",
+          "sha256": "32dc52c62ac2f5421c90c78947b67fc9ebf091a422f0bf66fbaca707606d512f"
+        },
+        {
+          "path": "src/world/art/residential/harness.ts",
+          "sha256": "804bf0e143558e4a766c28d5a4618bcf442af0a61e4d7fb3f1063a7b50849374"
+        },
+        {
+          "path": "src/world/art/residential/index.ts",
+          "sha256": "e8aff682cee2aee718d2ad51b101c857b041dc1d0a005cf3cd85b0a05662a5d5"
+        },
+        {
+          "path": "src/world/art/residential/lighting.html",
+          "sha256": "d121a7f313f3a80ab98b1913ce3cfc2696682e35c93bcf398df72240d9397d2a"
+        },
+        {
+          "path": "src/world/art/residential/lighting.ts",
+          "sha256": "883c4ba53bdc2df2b8a8018d0f9d5175b31b6bb042a8f0f8fb5ced30d974d653"
+        },
+        {
+          "path": "src/world/art/residential/traversal.html",
+          "sha256": "adde7ef9f4b741383185da150ff4472111f2f2997db4c9e2dbefa325235385f9"
+        },
+        {
+          "path": "src/world/art/residential/traversal.tsx",
+          "sha256": "a6d84e2714a9b115623a4636da9ce4ce22be8be143b186c1fc81ef60f8aeb5b0"
+        },
+        {
+          "path": "src/features/apartment/Scene.tsx",
+          "sha256": "9dd99330bd83f9370e66a6e3ffc56a3980d91d1df9d6d27082dc9890dfea92cf"
+        },
+        {
+          "path": "src/features/apartment/content.json",
+          "sha256": "1d191474dd1cdbd1016e478b1d53428139a3991e7c92ef83972d40b5aff0b6b1"
+        },
+        {
+          "path": "src/features/apartment/content.test.ts",
+          "sha256": "02363bf0b2ea905a1a8517a68f9937d7be451a105117d745dc28d92814eb0d16"
+        },
+        {
+          "path": "src/features/apartment/content.ts",
+          "sha256": "887577d95bdadd155025dcc24115f6c79b1a464913a553b7d4f2304ad3a57495"
+        },
+        {
+          "path": "src/features/apartment/harness.html",
+          "sha256": "9dbe065e7a73ff1fb39768c7fcd078911d3333adf6777926109be85930d573d4"
+        },
+        {
+          "path": "src/features/apartment/harness.tsx",
+          "sha256": "571d0180b5f592750c6662aaafd3954b4376c8433baf03ac0fd563185ee9f397"
+        },
+        {
+          "path": "src/features/apartment/index.tsx",
+          "sha256": "543c50631245d3101095c3558e2dcf8d0fa26e1231dc81cd050a08113e57c03d"
+        },
+        {
+          "path": "src/features/apartment/make-content.py",
+          "sha256": "d6eda7e50ef438f911bba9fcc305693dc00f81f5ad254874f6f935879ec6c7dd"
+        },
+        {
+          "path": "src/features/apartment/rules.test.ts",
+          "sha256": "3ae33e4c2766e088fac58c96ecd3358e8bfa4ec5b8964a5810b8bb152219751d"
+        },
+        {
+          "path": "src/features/apartment/rules.ts",
+          "sha256": "65615dc01929423702a3c99c8582854a4011ae6a85dbf2f9996d9fa604d0cfed"
+        },
+        {
+          "path": "src/features/apartment/scene-data.test.ts",
+          "sha256": "e8531237517f33bafd8a1be23b5ead4adf4a2ccb39840395380bf3a7eb814528"
+        },
+        {
+          "path": "src/features/apartment/scene-data.ts",
+          "sha256": "0e862ec633e90849e8f5d4688ee942282a8f3f8491737b2f413a5ba001e49001"
+        },
+        {
+          "path": "src/features/apartment/style.css",
+          "sha256": "fb6f7d851d9ffdf9cf68c0df8cc3800e424eeba9ac469b2657a658ba5e888258"
+        },
+        {
+          "path": "src/features/apartment/world.test.ts",
+          "sha256": "8288a5e1129ff3d19aadca7dc82f9cb7f611027c7026312e1ad93e94b0546246"
+        },
+        {
+          "path": "src/features/apartment/world.ts",
+          "sha256": "bc9a71e6c46c13fafce7f39de625d4e1eb9785c09fe15ec5482c258174285a55"
+        }
+      ]
+    },
+    {
+      "branch": "codex/0082-workshop",
+      "publishedHead": "d772aa19624e296d90cde59181182560427825d3",
+      "consumedHead": "d772aa19624e296d90cde59181182560427825d3",
+      "lease": [
+        "src/world/maps/workshop",
+        "src/world/art/workshop",
+        "src/features/repairs"
+      ],
+      "files": [
+        {
+          "path": "src/world/maps/workshop/index.ts",
+          "sha256": "a783b60e0dbe08a1a47ba42687e4f52bb8fcf63ac74cef44ed994ee05c5f81a8"
+        },
+        {
+          "path": "src/world/maps/workshop/map.json",
+          "sha256": "a3b507c1f95e9b76de8ec82529318da5f4a4479c041dcbdd12a22bd167c2bd33"
+        },
+        {
+          "path": "src/world/maps/workshop/map.test.ts",
+          "sha256": "214b2503fa2c76a33718e082d8867ba84deff61024105e809d5474290adc2836"
+        },
+        {
+          "path": "src/world/art/workshop/index.ts",
+          "sha256": "bc206354015518b418149871674142a08a32044481f400647e73b27de68319e9"
+        },
+        {
+          "path": "src/world/art/workshop/lighting.html",
+          "sha256": "cb6d8af8188d8fdbe75dacdd0dfde5ccd701160dafc12a77585f2db452f91d71"
+        },
+        {
+          "path": "src/world/art/workshop/lighting.ts",
+          "sha256": "c747467ec2c25ec430f0d675bf565a4e531ce6b68cd8f11fed3993e8cd2ef108"
+        },
+        {
+          "path": "src/world/art/workshop/paint.test.ts",
+          "sha256": "53a7d2a2eef90035d112390e2146d88fa79f9968977d69f8af1bfcad10205bba"
+        },
+        {
+          "path": "src/world/art/workshop/paint.ts",
+          "sha256": "70f2c8786529d7e802bc02afd8c6b290e3c6941ad14dbe6e9301b807b1ee09d3"
+        },
+        {
+          "path": "src/world/art/workshop/preview-scene.ts",
+          "sha256": "518450b07ec64476eda7da7858edfc102ca4d51f4158442328b62258aaa66628"
+        },
+        {
+          "path": "src/world/art/workshop/preview.html",
+          "sha256": "f5e9eb818dead9cb24a56c405d79230169d27fc8284c9642d4b065df9fef11de"
+        },
+        {
+          "path": "src/world/art/workshop/preview.ts",
+          "sha256": "72033aa01fc6c2492e2902c52c441b6507d24ed84422bb0432a6403664574149"
+        },
+        {
+          "path": "src/world/art/workshop/walk.html",
+          "sha256": "d542f9bdea63456b138899662b42080fffb37ce3f513c1628fa9bdf49877621b"
+        },
+        {
+          "path": "src/world/art/workshop/walk.ts",
+          "sha256": "69ce775cbac5d46fd9f76ae3129bc0edd963256c9259e86491f51b6fa0dfd117"
+        },
+        {
+          "path": "src/features/repairs/RepairScene.tsx",
+          "sha256": "55680cbf787d105d6a411b917049da22d6505f04c211ae1e2203298205ea19ba"
+        },
+        {
+          "path": "src/features/repairs/content.json",
+          "sha256": "08804c85dcddd80a94ba155700a7fa66736024d2ab4ca853918f8323d978a760"
+        },
+        {
+          "path": "src/features/repairs/content.ts",
+          "sha256": "2c2ab430a855328c10b8679416d3fb2e2e7860fa65058aeaa67783e6a5424f0d"
+        },
+        {
+          "path": "src/features/repairs/index.tsx",
+          "sha256": "d3ccfd8605f0c1320de2d0fa9cd09306e3d5c71fc4a7f0a92fc8f2caeb0e81ed"
+        },
+        {
+          "path": "src/features/repairs/repairs.css",
+          "sha256": "3966684c4621044b11f3a23f05e8597a6f9e15de6008d4fcc050155cc51ecbaf"
+        },
+        {
+          "path": "src/features/repairs/rules.test.ts",
+          "sha256": "4ba96581fb98fcfe250d117326b17ca22fc9677b9d31231c69d915e9430a0a15"
+        },
+        {
+          "path": "src/features/repairs/rules.ts",
+          "sha256": "3981be1180ac6e8279c3dbb007ad86a40b06625b6bbd308d261e6ca965e9bc83"
+        },
+        {
+          "path": "src/features/repairs/scene.ts",
+          "sha256": "55967d180a10215473b8ab17986ff249a71621c5effc0ccbad63eb7346ecbc3c"
+        },
+        {
+          "path": "src/features/repairs/world.ts",
+          "sha256": "f522136e9514023c5329cb9195e3da1159608e82c8a5b8a6530fb97b7fe60b66"
+        }
+      ]
+    },
+    {
+      "branch": "codex/0083-rooftop",
+      "publishedHead": "e1e3fa3b520dd3fab21246f7860dbbd24524ae14",
+      "consumedHead": "e1e3fa3b520dd3fab21246f7860dbbd24524ae14",
+      "lease": [
+        "src/world/maps/rooftop",
+        "src/world/art/rooftop",
+        "src/features/garden"
+      ],
+      "files": [
+        {
+          "path": "src/world/maps/rooftop/index.ts",
+          "sha256": "091afe03b9a33c2ec72b3cf42c8bc82edc9dc366bbea99b9bbfc3da69174b2ca"
+        },
+        {
+          "path": "src/world/maps/rooftop/map.json",
+          "sha256": "819e66b2d3abde28d5d982bea094cbc495abe9765560fb6e6f443d340454c433"
+        },
+        {
+          "path": "src/world/maps/rooftop/rooftop.test.ts",
+          "sha256": "5c7e9f8ea264659ace6678e8d140c60f47708e1daace3046a8f5ec6b351fe3a3"
+        },
+        {
+          "path": "src/world/art/rooftop/art.test.ts",
+          "sha256": "0a33eafc97a4673adf685b409397313a1f119805266e00aeb30925aa65de45f7"
+        },
+        {
+          "path": "src/world/art/rooftop/harness.html",
+          "sha256": "2dd2611a5871b7df59c15ae8368fc0263d80ccd487e34909f2935b25dffa0116"
+        },
+        {
+          "path": "src/world/art/rooftop/harness.ts",
+          "sha256": "33de8163296942e44589261638c3ca3cfc52099993bd0b2927372b9b9e45bc5c"
+        },
+        {
+          "path": "src/world/art/rooftop/index.ts",
+          "sha256": "98e1007eff3d3d1b0a7550bbd868ffdcf04536ba3a1aecdd9fc7e19c67e169a7"
+        },
+        {
+          "path": "src/features/garden/GardenScene.tsx",
+          "sha256": "7856914988ce53973ea42702fc5961a35ee41a00a554ed81a42ca39e144c58a4"
+        },
+        {
+          "path": "src/features/garden/audio-plan.py",
+          "sha256": "69a6dd61131b66cb9779d1e84c8031831265d97858e34ada54196bc303027ed0"
+        },
+        {
+          "path": "src/features/garden/content.json",
+          "sha256": "9e1ec7c7d28422e59ece488d6563f9ce176256a1d9196634aa9e63eb5f1599a6"
+        },
+        {
+          "path": "src/features/garden/content.test.ts",
+          "sha256": "a66e26ee852824538dc4b670237305bb25f7de6f2348171b6536f62420cb4d0c"
+        },
+        {
+          "path": "src/features/garden/content.ts",
+          "sha256": "33378290538a96761697ac5acdac2d57033687c3b06fc7a8c0b34936b8a38d4c"
+        },
+        {
+          "path": "src/features/garden/garden.css",
+          "sha256": "dc867d824ba1986591a2ddf38cbe9abd5896b6a9072b22ea909ac63a5e6ff118"
+        },
+        {
+          "path": "src/features/garden/harness.html",
+          "sha256": "0f7527c43850785ee3c3b08fe40ee04df3c9ecc3276448ac72d9af9a84f84e82"
+        },
+        {
+          "path": "src/features/garden/harness.tsx",
+          "sha256": "12138ba18672c3299ad283c343f085340f74bcf1563f86f35124731d44a931b0"
+        },
+        {
+          "path": "src/features/garden/index.tsx",
+          "sha256": "2f3276e2c467cd2dae28e0a3616d0b7fb2c2be449defe94799080b89022acb86"
+        },
+        {
+          "path": "src/features/garden/playwright.config.ts",
+          "sha256": "30beb61991a582f69a6eb360ac870478aaa83f20e2e0c25d95951aca2d559cf9"
+        },
+        {
+          "path": "src/features/garden/rules.test.ts",
+          "sha256": "a87c387a1e351e77896beea83d833b916f5ed18e59784c6e77f4785dd91afc3d"
+        },
+        {
+          "path": "src/features/garden/rules.ts",
+          "sha256": "9dea8765f6d9327d54d5214dbd905a1e4ad9b3016402115d2c1889453ba553f3"
+        },
+        {
+          "path": "src/features/garden/scene.ts",
+          "sha256": "92e57c2022cea6ea72fc1616361d11f01be82b9a67bc7c380d9a016208d79f5a"
+        }
+      ]
+    },
+    {
+      "branch": "codex/0084-landscape",
+      "publishedHead": "9860cd757c989f2ff6ceae188445773a09ebf907",
+      "consumedHead": "9860cd757c989f2ff6ceae188445773a09ebf907",
+      "lease": [
+        "src/world/maps/landscape",
+        "src/world/art/landscape"
+      ],
+      "files": [
+        {
+          "path": "src/world/maps/landscape/author.py",
+          "sha256": "00d0319dce12279b253d130e007872c88b70782e35f55d4dfc096abb58da8ef1"
+        },
+        {
+          "path": "src/world/maps/landscape/index.ts",
+          "sha256": "aec4a60fee2e384c348e4dc5e60f58171db9d065c5c9ef2e7f0b8d6d54b383ea"
+        },
+        {
+          "path": "src/world/maps/landscape/landscape.test.ts",
+          "sha256": "a57175cac1d75e98a2d5458f1285c90b2b274513751f9cd622b1d6a8ab9bf2d4"
+        },
+        {
+          "path": "src/world/maps/landscape/park.json",
+          "sha256": "8c31ef09ff84a02044e8fa44b1838bbf9b980fabd7cf8a02f40373d39c0a36a0"
+        },
+        {
+          "path": "src/world/maps/landscape/riverbank.json",
+          "sha256": "af8f6ff81cb57af07aedd0b2af34b32f1ec28f987f43c53b53bcea68b2144ef4"
+        },
+        {
+          "path": "src/world/art/landscape/draw.ts",
+          "sha256": "511fca0ad795f312da5d0f5a93361fe8f3ec599e45bb7e3a58b0ba3c1d6c93d5"
+        },
+        {
+          "path": "src/world/art/landscape/index.ts",
+          "sha256": "2de7df9ad6218d070e02da7dc0e58efb2ebbba7c2c35f88c494115b3a61fff27"
+        },
+        {
+          "path": "src/world/art/landscape/preview.html",
+          "sha256": "52c663a6bac2690f81767aec0e4ac0a91bf9bec06e02678937f9dcd2d6171bfd"
+        },
+        {
+          "path": "src/world/art/landscape/preview.ts",
+          "sha256": "e70d9004749e2ba060ea71344d7f932694c1a5fb51932ac6d1abecf31487dc7e"
+        }
+      ]
+    },
+    {
+      "branch": "codex/0085-characters",
+      "publishedHead": "85d6d6e0f5c7cb37b427afba2c691e7e881bc4fb",
+      "consumedHead": "85d6d6e0f5c7cb37b427afba2c691e7e881bc4fb",
+      "lease": [
+        "src/world/characters"
+      ],
+      "files": [
+        {
+          "path": "src/world/characters/actors.test.ts",
+          "sha256": "e2a3d1eba23f265eae629b9dcc8a30e97d0a4bba5c52963d9423ac970b48a940"
+        },
+        {
+          "path": "src/world/characters/adapter.ts",
+          "sha256": "8a24836aaf871d93405f9d4922497335a037e78fd8ace24ca93d518c3c01a45e"
+        },
+        {
+          "path": "src/world/characters/artwork.d.mts",
+          "sha256": "caadc1422dec27727452acfbc81d6be0f169e003306265623ec922ed7858a37d"
+        },
+        {
+          "path": "src/world/characters/artwork.mjs",
+          "sha256": "fa60262232ac85ab6bbb1a16788121a028218060ab3063a1af918af861e7fe61"
+        },
+        {
+          "path": "src/world/characters/capture-lighting.mjs",
+          "sha256": "2c83ef997fc3aab1dae7fecb199caca36b6a4edf4d0bb29d76c84f4ec53136ee"
+        },
+        {
+          "path": "src/world/characters/capture.mjs",
+          "sha256": "fcbd9bfcbf9c199fcb0af5ffda5c7f48f89cd7425ce8eb317667a7123aab47b0"
+        },
+        {
+          "path": "src/world/characters/depth.test.ts",
+          "sha256": "a3b7e7fa04f40ace2c19ffa7d8b26b82f06fd19fafc3a8eb8b2b2141d816a104"
+        },
+        {
+          "path": "src/world/characters/harness.html",
+          "sha256": "e9138b94162207b266df758ae75cdb70c661f539d5f3936eb99d2c1161fe7aee"
+        },
+        {
+          "path": "src/world/characters/harness.ts",
+          "sha256": "4c41979473c48307c67a50603631cfe4226fc80d595737e9baa7bf905a7e81c2"
+        },
+        {
+          "path": "src/world/characters/index.ts",
+          "sha256": "c4f55a6cae250a2f3dd0606eab093e2c64352d9dec66695afcfb9ea4012e0710"
+        },
+        {
+          "path": "src/world/characters/lighting-proof.html",
+          "sha256": "5e0c3fa49508fae02a1d6cf5674d6297ee5e921eb081930bed5e52da3ebf3e28"
+        },
+        {
+          "path": "src/world/characters/lighting-proof.ts",
+          "sha256": "477d1128f0498c3a1724cfd61d29a0e1f17d128834ef4c0f9166da371cb4dde0"
+        },
+        {
+          "path": "src/world/characters/playwright.config.ts",
+          "sha256": "a1c05fffc0e14440c73e2e0245b957ee96043ef1db798deb279e4b0321b2153c"
+        },
+        {
+          "path": "src/world/characters/production-capture.mjs",
+          "sha256": "815c2c6567ee06b31ef124a4d930a40e5ca68c6b39da8ce1531ccd999867b41d"
+        }
+      ]
+    },
+    {
+      "branch": "codex/0086-atmosphere",
+      "publishedHead": "7f394f02fe3f4cb5316215140e8c18b822fb4fe4",
+      "consumedHead": "7f394f02fe3f4cb5316215140e8c18b822fb4fe4",
+      "lease": [
+        "src/world/atmosphere"
+      ],
+      "files": [
+        {
+          "path": "src/world/atmosphere/canvas.test.ts",
+          "sha256": "39736b0d25b3da7db474d14da588712bbf4b26a7ef24dcf54cd54aeddb1a6d37"
+        },
+        {
+          "path": "src/world/atmosphere/canvas.ts",
+          "sha256": "f7b9f85c91d0655b9ae1a1498a7a2db9baf49a0579967b2d35c66152fefc5822"
+        },
+        {
+          "path": "src/world/atmosphere/harness.html",
+          "sha256": "0f2978932212a98a8e5a79bac35a07ea83f092e4c1aa218653b467c92760d03b"
+        },
+        {
+          "path": "src/world/atmosphere/harness.ts",
+          "sha256": "86caf50ba1877bbdae8f04357b3e423fc4285df3771a439bbae4149993f60407"
+        },
+        {
+          "path": "src/world/atmosphere/index.test.ts",
+          "sha256": "c4f86cca89573e62a271efd971eacedbf631b4cbd71e77a6a1aee187b19a4aff"
+        },
+        {
+          "path": "src/world/atmosphere/index.ts",
+          "sha256": "6a42e7d095d8b0a5aa8f38d169108d7b2c05c7a77f4e31fd85f40e3d074e6fb3"
+        },
+        {
+          "path": "src/world/atmosphere/map-hooks.test.ts",
+          "sha256": "c3e8a190862ec0510e7d90b8700b9a60c30571e3276dc99f6d900e110498373f"
+        },
+        {
+          "path": "src/world/atmosphere/map-hooks.ts",
+          "sha256": "30c0e7f231d73d19cee9f0de4b5b72208073729ead17032577d93579912da65d"
+        },
+        {
+          "path": "src/world/atmosphere/materials-study.html",
+          "sha256": "17a8df5abf3c6b416410d031ea44c6431bcf09d1fce1c0332b391a9d505cda1d"
+        },
+        {
+          "path": "src/world/atmosphere/materials-study.ts",
+          "sha256": "554d1bc949a50d7d7838b903d3f8506958366055d87b5dcb33af5720deb88598"
+        },
+        {
+          "path": "src/world/atmosphere/materials.test.ts",
+          "sha256": "1e60322bc874941eb65aa92f4e71cdbe8c6d839fa670acf32ad55c71e302a9af"
+        },
+        {
+          "path": "src/world/atmosphere/materials.ts",
+          "sha256": "0de49cd0f769fc7ab4026f13b9a7a9100e4d710ab9c88b2b8ce81fe05be0b353"
+        },
+        {
+          "path": "src/world/atmosphere/production-lighting.html",
+          "sha256": "26f71d55c4c9e6a4b4e58ef20af8368813951772162c8df13b26f6465fe51114"
+        },
+        {
+          "path": "src/world/atmosphere/production-lighting.ts",
+          "sha256": "d15857f47712699096170d3bf0ef4b1d1a5daa2278c8be3068c0601e9723321f"
+        },
+        {
+          "path": "src/world/atmosphere/proof.config.ts",
+          "sha256": "53b313bca58730f954f48210528a1eb7f1c96ae501c46061123c4a78f2bf38a1"
+        }
+      ]
+    },
+    {
+      "branch": "codex/0087-world-life",
+      "publishedHead": "137a652ac800da91e4332a0450dae5e2ca0ed195",
+      "consumedHead": "137a652ac800da91e4332a0450dae5e2ca0ed195",
+      "lease": [
+        "src/world/life"
+      ],
+      "files": [
+        {
+          "path": "src/world/life/LifePrompt.tsx",
+          "sha256": "8a989c67abb0606bc4f33fc8c364d53f0e60fc98d62ce368dd3a9e5d6fbaa337"
+        },
+        {
+          "path": "src/world/life/habitats.ts",
+          "sha256": "23254d087e61440fa6acc82e3d19f6e074f92e0489a3ba7526e5b6a740b99811"
+        },
+        {
+          "path": "src/world/life/harness.html",
+          "sha256": "ece8dd940b8597004ca794ac93f57272a6631d8b152b257607aef66fe6cb481c"
+        },
+        {
+          "path": "src/world/life/harness.ts",
+          "sha256": "cc651257b508fc1b672e377b7fa8cb0f3c53e7cda72e28ace76cf0e0df1db5b9"
+        },
+        {
+          "path": "src/world/life/index.ts",
+          "sha256": "b2b9132418249cb9905dc59320d0665055ae65dfb67617fe84d066f89e2f8de4"
+        },
+        {
+          "path": "src/world/life/interactions.ts",
+          "sha256": "edb886d773983605b14f6bf1b26096fb217b737c8ea6451273f9848c29efd043"
+        },
+        {
+          "path": "src/world/life/landmarks.test.ts",
+          "sha256": "c075a5d9677b1cdc08693dd7575da58f25785d411b10767ab31608df20ffe5e3"
+        },
+        {
+          "path": "src/world/life/life.test.ts",
+          "sha256": "d0c3c64b670fe530d35b843f94831d78a50f0fc763074a9afbda7fe5987897c7"
+        },
+        {
+          "path": "src/world/life/model.ts",
+          "sha256": "f86b14cb3304b0d19f592330e50c7471e61627c3cef5516894473ce32c16490c"
+        },
+        {
+          "path": "src/world/life/navigation.ts",
+          "sha256": "4932b434579bab578bda4ccb9d017f36e53aeff4c436ad35d2336e181fa05003"
+        },
+        {
+          "path": "src/world/life/objects.ts",
+          "sha256": "917ac9df2bc42ce4f193e147ebc7a157fc5f8797ffe77300f2cb37f42fd8e1ab"
+        },
+        {
+          "path": "src/world/life/prepare-proof.py",
+          "sha256": "6d47d027a1fcf79bcf0c5a90c1610edb80a9c7d20ed6392f47a365d72608b10c"
+        },
+        {
+          "path": "src/world/life/presence.test.ts",
+          "sha256": "bbb6bab46cbf12f6eed0624743c2cba93f4b773ee5e693f381ad835f5534fb62"
+        },
+        {
+          "path": "src/world/life/presence.ts",
+          "sha256": "7522cb883133f774a7a901743508c337c30673b42e34bb6d1f4d054cfe41861b"
+        },
+        {
+          "path": "src/world/life/profiles.ts",
+          "sha256": "bb77b95eef0684530c3aaf5c0f3c0cdf58308392dc6ce5f3064c6e8a687eebb1"
+        },
+        {
+          "path": "src/world/life/prompt.css",
+          "sha256": "1a6094b9944b0cf4984398c261017b67da24f57852185694455e080e71dd3fac"
+        },
+        {
+          "path": "src/world/life/proof.mjs",
+          "sha256": "6fca8568eb10fecb842b6d22e932b1f85289cf7a0f1084e3f983cc228491f2f0"
+        },
+        {
+          "path": "src/world/life/render.test.ts",
+          "sha256": "a747f542f27ff26945f819f006d2b767535323ebde4c6c7d24f8d7321dd84939"
+        },
+        {
+          "path": "src/world/life/render.ts",
+          "sha256": "1e95ca8d14b21949f328acc060c250d09bb1a7b88f5ff9a28509da8e12dce91a"
+        },
+        {
+          "path": "src/world/life/routes.ts",
+          "sha256": "5d0b84b207a0e55deb0320bce8138fb7f35e7c7a65614ba0a1c9acf98999d9b3"
+        },
+        {
+          "path": "src/world/life/routines.json",
+          "sha256": "ce5ec516ad70b27676a0c33d99547eae7c88cee05f2736cca1ecce6a4673454c"
+        },
+        {
+          "path": "src/world/life/routines.test.ts",
+          "sha256": "d0b2a71cf7e0f929a7e0fdfed27fea7182c4fd4b3004f074b7fe2abcd603001a"
+        },
+        {
+          "path": "src/world/life/routines.ts",
+          "sha256": "10942c3f6a04e77bba0e075038b47f0af932b28b6ab9c0b7917fdbfd5f12e7b0"
+        },
+        {
+          "path": "src/world/life/sample.ts",
+          "sha256": "d812c2da822ee17502a650437950e483e0ae8e3d29ab3d6696f4a52dddcc259a"
+        },
+        {
+          "path": "src/world/life/solid-landmarks.fixture.json",
+          "sha256": "7fb3a0f260cf744528b980410275aa805fb0283e3d57ee600b7d12315e860a33"
+        },
+        {
+          "path": "src/world/life/visibility.ts",
+          "sha256": "3153e393cb9ef112165bb87b1da7a2e298b24090028af36d096510eda9086e10"
+        }
+      ]
+    },
+    {
+      "branch": "codex/0089-restaurant-world-art",
+      "publishedHead": "f3c4030c18787e4638639075e6c67a11cd542304",
+      "consumedHead": "f3c4030c18787e4638639075e6c67a11cd542304",
+      "lease": [
+        "src/world/art/restaurant"
+      ],
+      "files": [
+        {
+          "path": "src/world/art/restaurant/food.ts",
+          "sha256": "beebeaff71ddda862b3b9dc2e24848a0dc6a75ace60c42faa02413655b0f23a7"
+        },
+        {
+          "path": "src/world/art/restaurant/index.ts",
+          "sha256": "767763590c50cd2d7bdbb2af2027474b5d5f24b4e3ae78d56876f0fdec3733c6"
+        },
+        {
+          "path": "src/world/art/restaurant/primitives.ts",
+          "sha256": "3015075cedaa530f34e1dca3ff80943ecbab7c49beb6689d8c6b02acfe4f5d55"
+        },
+        {
+          "path": "src/world/art/restaurant/projection.test.ts",
+          "sha256": "85edfa7ddebb253a90c7c6ac892a40e69ea0e127f1b169ec009b06a697fe81d3"
+        },
+        {
+          "path": "src/world/art/restaurant/projection.ts",
+          "sha256": "50ae7ef5e6962ac85f0ce24ebfae34e38483dc446d978466e001b79f63d36465"
+        },
+        {
+          "path": "src/world/art/restaurant/types.ts",
+          "sha256": "a27b059bee3fdf5b0d9c7e2dc4783e9fb096acd7569701126c2040fef789e991"
+        }
+      ]
+    },
+    {
+      "branch": "codex/0090-contextual-world-ui",
+      "publishedHead": "85e00ababde761eab0986024c6f2d7e7570b642b",
+      "consumedHead": "85e00ababde761eab0986024c6f2d7e7570b642b",
+      "lease": [
+        "src/world/ui"
+      ],
+      "files": [
+        {
+          "path": "src/world/ui/ContextualInteraction.tsx",
+          "sha256": "a9f9d050ded6a2802a6e57b2efd9b224ca19de1c647197e9f3830c7ee8e0179a"
+        },
+        {
+          "path": "src/world/ui/RestaurantControls.tsx",
+          "sha256": "7d2ddb577c53438b8c1756da2242ac0da51d2776c2bb112dd029efeafd6fc8d3"
+        },
+        {
+          "path": "src/world/ui/contextual.css",
+          "sha256": "882edcc0c164ab3bd98ffcccd3f65d44682c75c9f806c94a6b97f690128ee003"
+        },
+        {
+          "path": "src/world/ui/harness.css",
+          "sha256": "007337b6932d0310964592ad6d558da2bd49f3e29d1e198eb5d6d3927ae5d2fa"
+        },
+        {
+          "path": "src/world/ui/harness.html",
+          "sha256": "c0d9942a10007819f13b92944a84dc22f2fa6049e56621bdacd05ab860674740"
+        },
+        {
+          "path": "src/world/ui/harness.tsx",
+          "sha256": "41daf6c0b758836e4b6f47d0aa30d7c931d9ba129addecfe3163a7b746d30965"
+        },
+        {
+          "path": "src/world/ui/index.ts",
+          "sha256": "e3e7ba47644c8999980b6beb5ba043c0950829c3ddb700eccf0ae8467d367e08"
+        }
+      ]
+    }
+  ]
+}

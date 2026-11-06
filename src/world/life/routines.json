@@ -1,0 +1,6 @@
+[
+  {"id":"life.town.office-walk","mapId":"town","landmarkId":"town.market-pocket","characterId":"xiao-li","offsets":[{"x":2,"y":1},{"x":2,"y":-2},{"x":5,"y":-2},{"x":2,"y":-2}]},
+  {"id":"life.park.sparrow","mapId":"park","landmarkId":"park.old-reading-stone","characterId":"bird","offsets":[{"x":-1,"y":1},{"x":1,"y":1},{"x":1,"y":3},{"x":-1,"y":3}]},
+  {"id":"life.riverbank.sparrow","mapId":"riverbank","landmarkId":"riverbank.fishing-jetty","characterId":"bird","offsets":[{"x":-3,"y":0},{"x":-3,"y":3},{"x":-5,"y":3},{"x":-5,"y":0}]},
+  {"id":"life.rooftop.sparrow","mapId":"rooftop","landmarkId":"rooftop.pots","characterId":"bird","offsets":[{"x":3,"y":1},{"x":4,"y":2},{"x":4,"y":3}]}
+]

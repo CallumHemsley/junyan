@@ -41,11 +41,12 @@ export type KitchenControlsProps = Pick<DialogueProps, "onLookup"> & {
   foods: readonly Food[];
   tray: readonly string[];
   pickupEnabled: boolean;
+  trayHeading: ReactNode;
   onPickup: (foodId: string) => void;
   onReturn: (index: number) => void;
 };
 
-export function KitchenControls({ foods, tray, pickupEnabled, onPickup, onReturn, onLookup }: KitchenControlsProps) {
+export function KitchenControls({ foods, tray, pickupEnabled, trayHeading, onPickup, onReturn, onLookup }: KitchenControlsProps) {
   return <>
     <div className="world-kitchen-foods">
       {foods.map(food => <div className="world-kitchen-food" key={food.id}>
@@ -56,10 +57,13 @@ export function KitchenControls({ foods, tray, pickupEnabled, onPickup, onReturn
       </div>)}
     </div>
     <div className="world-kitchen-tray" role="group" aria-label="托盘">
-      <p>托盘 {tray.length}/6</p>
+      <div className="world-kitchen-tray-heading">{trayHeading}</div>
       <div className="world-context-options">{tray.map((id, index) => {
         const food = foods.find(food => food.id === id)!;
-        return <button key={`${id}-${index}`} aria-label={`放回${food.word.hanzi}`} onClick={() => onReturn(index)}>{food.word.hanzi} ×</button>;
+        return <div className="world-tray-item" key={`${id}-${index}`}>
+          <WordToken word={food.word} look="plain" onLookup={onLookup} />
+          <button aria-label={`放回${food.word.hanzi}`} onClick={() => onReturn(index)}>×</button>
+        </div>;
       })}</div>
     </div>
   </>;

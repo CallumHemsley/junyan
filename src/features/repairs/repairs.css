@@ -61,3 +61,14 @@
 .repair-leaders line { stroke:var(--surface-card); stroke-width:.65; paint-order:stroke; }
 .repair-leaders ellipse { fill:none; stroke:var(--surface-card); stroke-width:.35; stroke-dasharray:1 1; }
 .repair-leaders [data-selected=true] ellipse { stroke:var(--text-primary); stroke-width:.6; stroke-dasharray:none; }
+
+/* The connected world keeps the benches visible behind a compact contextual panel. */
+.world-activity .repair-layout { display:flex; flex-direction:column; gap:8px; }
+.world-activity .repair-scene { display:flex; flex-wrap:wrap; align-items:center; gap:8px; width:100%; aspect-ratio:auto; max-height:none; padding:4px; background:transparent; box-shadow:none; overflow:visible; }
+.world-activity .repair-scene canvas, .world-activity .repair-leaders { display:none; }
+.world-activity .repair-part { position:static; transform:none; flex:1 1 64px; min-width:64px; }
+.world-activity .repair-panel { width:100%; }
+.world-activity .repairs { padding:4px; }
+.world-activity .repair-header { flex-wrap:wrap; }
+.repair-controls { display:flex; flex-wrap:wrap; gap:8px; aspect-ratio:auto; padding:4px; background:transparent; box-shadow:none; overflow:visible; }
+.repair-controls .repair-part { position:static; transform:none; flex:1 1 64px; }

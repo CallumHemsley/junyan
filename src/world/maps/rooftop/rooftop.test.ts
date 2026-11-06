@@ -64,6 +64,16 @@ describe('rooftop circulation and existing garden projection', () => {
     }
   }, 60000);
 
+  it('clears the real crate footprints through the existing tidy action', () => {
+    const before = reduce(initialState(), {type: 'sync'}, 1);
+    const after = reduce(before, {type: 'tidy', value: true}, 1);
+    const cluttered = rooftopForGarden(before), clear = rooftopForGarden(after);
+    expect(cluttered.props.filter(p => p.kind === 'garden-crate')).toHaveLength(2);
+    expect(clear.props.filter(p => p.kind === 'garden-crate')).toHaveLength(0);
+    expect(cluttered.colliders.some(c => c.id === 'rooftop.garden-crate-a')).toBe(true);
+    expect(clear.colliders.some(c => c.id === 'rooftop.garden-crate-a')).toBe(false);
+  });
+
   it('moves art and collision together through the original reducer without mutating saved state', () => {
     let state = reduce(initialState(), {type: 'sync'}, 1);
     state = reduce(state, {type: 'tidy', value: true}, 1);
