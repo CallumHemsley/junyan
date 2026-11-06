@@ -46,3 +46,21 @@ Finish pure typed actor sampling and crisp original pixel commands. Verify diago
 - Full rules 318 passed. Scoped actor/raster checks 6 passed. Build passed. Actual desktop/phone fixture keyboard/touch and reduced-motion checks passed with clean consoles; inspected motion videos retained.
 - Original desktop journey and phone movement/reload passed. Phone full journey had an interrupted run during concurrent source/build work, then passed unchanged-checkout isolated rerun. See evidence README for exact limitation.
 - Next actions are production compositor camera/DPR/scenery/context checks and independent review. Goal remains ACTIVE; no integration PASS claimed.
+
+### Material lighting and current integration
+
+The production actor is integrated by foundation1450bf6. Actual desktop and phone browser DPR1/2 traversal recordings and scenery screenshots are published at45b842b. They confirm correct table overlap but expose cardinal-facing mismatch during diagonal ground travel; foundation has the exact yaw API request. Current74a5213 adds the actual shadeColor type; the owned consumer now explicitly uses it while preserving inherited alpha. Seven actor checks, all381 integrated rule tests and build pass. Inspected same-camera production courtyard morning/evening material proof is in lighting/. Foundation's returned context proxy, player yaw, NPC held-object contexts and final independent review remain open. Objective remains ACTIVE.
+
+### Review handoff
+
+GitHub reports initial PR30 merged at9b99e3e. Later evidence and explicit shared-lighting consumer are separately reviewable in draft PR37, https://github.com/CallumHemsley/junyan/pull/37, source846dd6a. Full381 rules/build and7actor checks pass at that source. The working cloud preview remains strict5487 (Vite tool session3683). Root/foundation must resolve yaw/context/proxy findings and independent reviewer must inspect production before marking this ticket done. Native create_goal remains unavailable; this ticket's persistent full objective is ACTIVE.
+
+### Unvoiced background residents, active extension
+
+Root authorized five nonfood background residents while foundation fixes shared yaw. Proposed IDs were posted on coordinator PR27 before registration: bg-book-reader, bg-courier, bg-groundskeeper, bg-laundry-neighbour, bg-passerby. Owned typed definitions, proportions, clothing, default held objects and animation cadence are in background.ts; the existing sampleActor/drawActor pipeline remains authoritative. No content, voice, map, life, schema, save or dependency edits. Canonical names and presence policy remain coordinator-owned. Candidate preview is strict5487; world registration and final experience acceptance remain OPEN.
+
+Eleven scoped actor checks pass. Initial native silhouettes and real browser walking/working fixture were inspected; the fixture's cohort is explicitly unregistered, drawn against the real courtyard renderer and is not a production/collision proof. Current foundation0974efd consumes the proxy-free material seam; old notes about a missing shadeColor field or active proxy are superseded. Full objective ACTIVE.
+
+Canonical coordinator background allocation c32f128 read on resume. The exact sampler IDs are now resident-reader, resident-courier, resident-groundskeeper, resident-laundry-neighbour, resident-river-walker; no bg-* aliases and no sixth passerby. River walker has its own travel-hat/long-coat silhouette. Supported action/posture/held-object and sole-map handoff is docs/evidence/0085/background/integration.md. Map/life owners remain sole hook/schedule writers; full real-world review is still open.
+
+Final canonical candidate build passes, actor11checks pass, full integrated387tests pass. The prior player/four regulars are exact across1440frame+attachment comparisons. Final native and desktop/phone motion evidence is published under background/. These are explicitly an art candidate, not production registration or collision/presence acceptance. Coordinator/life/map/foundation handoff is in background/integration.md and PR27. Full goal ACTIVE.
