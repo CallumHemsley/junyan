@@ -4,7 +4,7 @@ import { join } from "node:path";
 import type { GameState } from "../src/contracts";
 import type { Point, WorldMapDefinition } from "../src/world/schema";
 import { restaurantMap } from "../src/world/restaurant";
-import { findPath, canStand } from "../src/world/geometry";
+import { findPath, canStand, canWalk, movePlayer } from "../src/world/geometry";
 import { cameraForMap, project } from "../src/world/camera";
 import { courtyardForCats } from "../src/world/maps/courtyard/habitat";
 import { furnitureColliders } from "../src/features/apartment/world";
@@ -103,8 +103,16 @@ export async function walkTo(page: Page, destination: Point) {
     }, position);
     if (!clear || map.id === "residential-stairs") {
       // Use the visible pad where cards or overlapping stair surfaces cover the ground.
-      const dx=point.x-world.position.x, dy=point.y-world.position.y;
-      const direction = Math.abs(dx+dy)>Math.abs(dx-dy) ? (dx+dy>0?"向后走":"向前走") : (dx-dy>0?"向右走":"向左走");
+      const controls = [{name:"向前走",x:-1,y:-1},{name:"向后走",x:1,y:1},{name:"向右走",x:1,y:-1},{name:"向左走",x:-1,y:1}];
+      const candidates = controls.map(control => {
+        const position = movePlayer(map, world.position, {x:control.x*.5/Math.SQRT2,y:control.y*.5/Math.SQRT2});
+        const path = findPath(map,position,destination);
+        let previous=position, distance=0;
+        for (const waypoint of path) {distance+=Math.hypot(waypoint.x-previous.x,waypoint.y-previous.y);previous=waypoint;}
+        return {control,position,distance:path.length?distance:Infinity};
+      }).filter(candidate=>Number.isFinite(candidate.distance) && canWalk(map,world.position,candidate.position) && Math.hypot(candidate.position.x-world.position.x,candidate.position.y-world.position.y)>.1).sort((a,b)=>a.distance-b.distance);
+      expect(candidates.length, `movement pad route in ${map.id}`).toBeGreaterThan(0);
+      const direction = candidates[0].control.name;
       const pad = page.getByRole("button", {name:direction,exact:true});
       await pad.focus();
       await pad.press("Enter");
