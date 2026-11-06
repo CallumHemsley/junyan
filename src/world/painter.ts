@@ -1,3 +1,4 @@
+import {colorShader,shadedContext} from "./lighting";
 import {occludesPlayer} from "./occlusion";
 import {sampleActor,drawActor} from "./characters";
 import {actorsFor} from "./life-bridge";
@@ -28,6 +29,8 @@ export function drawPlayer(ctx:CanvasRenderingContext2D,view:WorldRenderView,p:P
  drawActor(ctx,{...view,pass:"objects"},sample,p);
 }
 export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,view:WorldRenderView,facing:Facing,moving:boolean,scale:number,game?:GameState,world?:WorldState) {
+ const atmosphere=sampleAtmosphere({mapId:map.id,day:game?.day??1,timeOfDay:(game?.served??0)<2?"morning":(game?.served??0)<3?"noon":(game?.served??0)<4?"evening":"night",seed:game?.seed??42,elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion},hooksFor(map));
+ const shadeColor=colorShader(atmosphere.light);view={...view,shadeColor};ctx=shadedContext(ctx,shadeColor);
  ctx.fillStyle="#334d47";ctx.fillRect(0,0,view.width,view.height);ctx.imageSmoothingEnabled=false;
  for(const terrain of map.terrain) {
   const r=terrain.rect;
@@ -40,7 +43,6 @@ export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,v
  }
  const modules=Object.entries(art).filter(([path])=>!path.includes("/workshop/")).map(([,module])=>module);
  if(game?.neighbourhood)modules.push(createWorkshopArt(game.neighbourhood.repairs));
- const atmosphere=sampleAtmosphere({mapId:map.id,day:game?.day??1,timeOfDay:(game?.served??0)<2?"morning":(game?.served??0)<3?"noon":(game?.served??0)<4?"evening":"night",seed:game?.seed??42,elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion},atmosphereHooksForMap(map));
  for(const module of modules)module.drawMap?.(ctx,map,{...view,pass:"ground"});
  if(map.id==="apartment"&&game?.neighbourhood)drawFurniture(ctx,game.neighbourhood.apartment,{...view,pass:"ground"});
  drawAtmosphere(ctx,atmosphere,{...view,pass:"ground"});
@@ -71,3 +73,6 @@ export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,v
  for(const module of modules)module.drawMap?.(ctx,map,{...view,pass:"foreground"});
  drawAtmosphere(ctx,atmosphere,{...view,pass:"foreground"});
 }
+
+const hookCache=new WeakMap<WorldMapDefinition,ReturnType<typeof atmosphereHooksForMap>>();
+function hooksFor(map:WorldMapDefinition) {let hooks=hookCache.get(map);if(!hooks){hooks=atmosphereHooksForMap(map);hookCache.set(map,hooks);}return hooks;}

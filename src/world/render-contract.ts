@@ -1,6 +1,7 @@
 import type { Point, WorldMapDefinition } from "./schema";
 export type WorldRenderView = {
   project(point:Point,z?:number):Point;
+  shadeColor?: import("./lighting").ShadeColor;
   elapsedMs:number;
   reducedMotion:boolean;
   playerPosition:Point;
