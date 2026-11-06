@@ -1,0 +1,239 @@
+{
+  "readyProduct": "2d22909",
+  "baselineBuild": "e02a747",
+  "productAndHistoricalDiff": [],
+  "comparisons": [
+    {
+      "device": "desktop",
+      "phase": "morning",
+      "landmark": "arrival",
+      "before": "before-desktop-morning-arrival.png",
+      "after": "after-desktop-morning-arrival.png",
+      "uiState": {
+        "blockingModals": 0,
+        "contextualPanels": 0,
+        "welcomeDismissed": true
+      },
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "canvas": {
+        "width": 720,
+        "height": 458,
+        "rect": {
+          "width": 1440,
+          "height": 916
+        }
+      },
+      "beforeBuild": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+      "afterBuild": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+      "beforeAsset": "./assets/index-DWcJPluq.js",
+      "afterAsset": "./assets/index-3gs3FJDd.js",
+      "kind": "matched declared-save/camera fixture; not travel proof"
+    },
+    {
+      "device": "desktop",
+      "phase": "morning",
+      "landmark": "city-lookout",
+      "before": "before-desktop-morning-city-lookout.png",
+      "after": "after-desktop-morning-city-lookout.png",
+      "uiState": {
+        "blockingModals": 0,
+        "contextualPanels": 0,
+        "welcomeDismissed": true
+      },
+      "position": {
+        "x": 44,
+        "y": 12
+      },
+      "canvas": {
+        "width": 720,
+        "height": 458,
+        "rect": {
+          "width": 1440,
+          "height": 916
+        }
+      },
+      "beforeBuild": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+      "afterBuild": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+      "beforeAsset": "./assets/index-DWcJPluq.js",
+      "afterAsset": "./assets/index-3gs3FJDd.js",
+      "kind": "matched declared-save/camera fixture; not travel proof"
+    },
+    {
+      "device": "desktop",
+      "phase": "evening",
+      "landmark": "arrival",
+      "before": "before-desktop-evening-arrival.png",
+      "after": "after-desktop-evening-arrival.png",
+      "uiState": {
+        "blockingModals": 0,
+        "contextualPanels": 0,
+        "welcomeDismissed": false
+      },
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "canvas": {
+        "width": 720,
+        "height": 458,
+        "rect": {
+          "width": 1440,
+          "height": 916
+        }
+      },
+      "beforeBuild": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+      "afterBuild": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+      "beforeAsset": "./assets/index-DWcJPluq.js",
+      "afterAsset": "./assets/index-3gs3FJDd.js",
+      "kind": "matched declared-save/camera fixture; not travel proof"
+    },
+    {
+      "device": "desktop",
+      "phase": "evening",
+      "landmark": "city-lookout",
+      "before": "before-desktop-evening-city-lookout.png",
+      "after": "after-desktop-evening-city-lookout.png",
+      "uiState": {
+        "blockingModals": 0,
+        "contextualPanels": 0,
+        "welcomeDismissed": false
+      },
+      "position": {
+        "x": 44,
+        "y": 12
+      },
+      "canvas": {
+        "width": 720,
+        "height": 458,
+        "rect": {
+          "width": 1440,
+          "height": 916
+        }
+      },
+      "beforeBuild": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+      "afterBuild": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+      "beforeAsset": "./assets/index-DWcJPluq.js",
+      "afterAsset": "./assets/index-3gs3FJDd.js",
+      "kind": "matched declared-save/camera fixture; not travel proof"
+    },
+    {
+      "device": "phone",
+      "phase": "morning",
+      "landmark": "arrival",
+      "before": "before-phone-morning-arrival.png",
+      "after": "after-phone-morning-arrival.png",
+      "uiState": {
+        "blockingModals": 0,
+        "contextualPanels": 0,
+        "welcomeDismissed": true
+      },
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "canvas": {
+        "width": 195,
+        "height": 386,
+        "rect": {
+          "width": 390,
+          "height": 772
+        }
+      },
+      "beforeBuild": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+      "afterBuild": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+      "beforeAsset": "./assets/index-DWcJPluq.js",
+      "afterAsset": "./assets/index-3gs3FJDd.js",
+      "kind": "matched declared-save/camera fixture; not travel proof"
+    },
+    {
+      "device": "phone",
+      "phase": "morning",
+      "landmark": "city-lookout",
+      "before": "before-phone-morning-city-lookout.png",
+      "after": "after-phone-morning-city-lookout.png",
+      "uiState": {
+        "blockingModals": 0,
+        "contextualPanels": 0,
+        "welcomeDismissed": true
+      },
+      "position": {
+        "x": 44,
+        "y": 12
+      },
+      "canvas": {
+        "width": 195,
+        "height": 386,
+        "rect": {
+          "width": 390,
+          "height": 772
+        }
+      },
+      "beforeBuild": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+      "afterBuild": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+      "beforeAsset": "./assets/index-DWcJPluq.js",
+      "afterAsset": "./assets/index-3gs3FJDd.js",
+      "kind": "matched declared-save/camera fixture; not travel proof"
+    },
+    {
+      "device": "phone",
+      "phase": "evening",
+      "landmark": "arrival",
+      "before": "before-phone-evening-arrival.png",
+      "after": "after-phone-evening-arrival.png",
+      "uiState": {
+        "blockingModals": 0,
+        "contextualPanels": 0,
+        "welcomeDismissed": false
+      },
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "canvas": {
+        "width": 195,
+        "height": 386,
+        "rect": {
+          "width": 390,
+          "height": 772
+        }
+      },
+      "beforeBuild": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+      "afterBuild": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+      "beforeAsset": "./assets/index-DWcJPluq.js",
+      "afterAsset": "./assets/index-3gs3FJDd.js",
+      "kind": "matched declared-save/camera fixture; not travel proof"
+    },
+    {
+      "device": "phone",
+      "phase": "evening",
+      "landmark": "city-lookout",
+      "before": "before-phone-evening-city-lookout.png",
+      "after": "after-phone-evening-city-lookout.png",
+      "uiState": {
+        "blockingModals": 0,
+        "contextualPanels": 0,
+        "welcomeDismissed": false
+      },
+      "position": {
+        "x": 44,
+        "y": 12
+      },
+      "canvas": {
+        "width": 195,
+        "height": 386,
+        "rect": {
+          "width": 390,
+          "height": 772
+        }
+      },
+      "beforeBuild": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+      "afterBuild": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+      "beforeAsset": "./assets/index-DWcJPluq.js",
+      "afterAsset": "./assets/index-3gs3FJDd.js",
+      "kind": "matched declared-save/camera fixture; not travel proof"
+    }
+  ]
+}
