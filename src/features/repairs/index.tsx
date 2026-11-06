@@ -16,13 +16,14 @@ export type RepairProps = {
   onPlay: (line: Line) => void;
   recoveredWordIds?: string[];
   freshWordIds?: string[];
+  contextualJob?: Job;
 };
 const partWords: Record<Part, string> = { bulb: '灯泡', cover: '盖子', lead: '线', cell: '电池' };
 const partCenters: Record<Part, [number, number]> = { bulb: [49, 23], cover: [36, 47], lead: [52, 33], cell: [43, 31] };
 const partPositions: Record<Part, { left: string; top: string }> = {
   bulb: { left: '71%', top: '21%' }, cover: { left: '35%', top: '57%' }, lead: { left: '73%', top: '36%' }, cell: { left: '25%', top: '30%' },
 };
-export default function Repairs({ state, day, onAction, onLookup, onRecover, onPlay, recoveredWordIds = [], freshWordIds = [] }: RepairProps) {
+export default function Repairs({ state, day, onAction, onLookup, onRecover, onPlay, recoveredWordIds = [], freshWordIds = [], contextualJob }: RepairProps) {
   const latest = useRef(state);
   latest.current = state;
   const practice = useRef<HTMLButtonElement>(null);
@@ -54,11 +55,11 @@ export default function Repairs({ state, day, onAction, onLookup, onRecover, onP
   return <section className="repairs" aria-label="修理间" data-testid="repairs">
     <header className="repair-header">
       <h2>{token(wordFor('修理间'))}</h2>
-      <nav className="repair-jobs" aria-label="修理物件">
+      {!contextualJob && <nav className="repair-jobs" aria-label="修理物件">
         {(['lamp', 'toy'] as Job[]).map(job => <button type="button" key={job} aria-pressed={state.active === job} onClick={() => send({ type: 'switch', job })} data-testid={`repair-job-${job}`}>
           <span className={`repair-job-icon ${job}`} aria-hidden="true" />{job === 'lamp' ? '台灯' : '玩具'}{state.completed.includes(job) && <span className="repair-shelf-mark" aria-hidden="true">·</span>}
         </button>)}
-      </nav>
+      </nav>}
     </header>
     <div className="repair-layout">
       <div className="repair-scene" data-testid="repair-scene" data-object={bench?.kind ?? 'shelf'} data-test={bench?.test ?? 'returned'}>

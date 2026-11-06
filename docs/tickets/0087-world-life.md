@@ -1,7 +1,7 @@
 ---
 id: 87
 title: Residents, wildlife and exploration
-status: todo
+status: doing
 priority: high
 type: feature
 created: 2026-11-05
@@ -17,8 +17,18 @@ The scope in `docs/world-program/ledger.md` is implemented against `docs/world-p
 
 ## Notes
 
-- Owner: builder 10, GPT-6.1 Sol medium. Thread ID pending parent relay.
+- Owner: builder 10, GPT-6.1 Sol medium. Thread `01a1ae20-f4aa-770f-aefd-1821e92d1072`, host `durable`.
 - Branch: `codex/0087-world-life`. Cloud checkout and process handles must be recorded by owner. Strict port 5489.
 - Exclusive paths: src/world/life/*.
 - Also owns this ticket and `docs/evidence/0087/`. Do not edit shared contracts or other owners' files.
 - Publish map seam requests and integration instructions in the owned evidence directory.
+
+## Active objective
+
+Keep this goal ACTIVE until residents, wildlife, environmental reactions, and discoveries work across the integrated connected world and independent review verifies repeated visits, collision safety, and persistence. No native create_goal tool is exposed. This committed ticket is the durable record.
+
+- Cloud worker `ccarenv_b64_Y2NhcmVudl8xMTEzYmUxNDFlMzA4MTkxYjNlYjVmMDcxOWQ2MjdiMA`, checkout `/workspace/junyan`.
+- Contract v1 from coordinator commit `fb167fd`. Baseline main `8cd5bc2` verified as an ancestor.
+- First unit is pure route compilation and actor sampling. Foundation injects navigation rather than life implementing another pathfinder.
+- Next units are proximity actions, discoveries, canonical voiced-content reuse, and the render adapter.
+- Pending proof includes actual connected maps, real keyboard/touch visits, save/reload, inspected desktop/phone screenshots and motion, and independent review. No acceptance claim.
