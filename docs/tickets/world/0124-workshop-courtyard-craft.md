@@ -21,3 +21,6 @@ Independent source and harsh native visual review required. Keep every new captu
 
 - Centrally reserved by root. One writer per dedicated branch/worktree. No merges or publishing raw QA.
 - Branch codex/0124-workshop-courtyard-craft; worktree /private/tmp/junyan-world-workshop-courtyard-craft; ports 5592/5593, strict.
+
+- Owner: workshop/courtyard writer. Candidate implements warm staggered workshop plank joints, bench apron/edge construction, removes permanent floor light patches, and gives existing courtyard house roofs muted courses/ridge/eaves. Scope stays within leased art and focused tests; no map, actor, camera, feature or shared-renderer edits.
+- Node 22 full rules (108 files / 696 tests), TypeScript, Vite build and 10 desktop/phone opening/service/change/journal/input/save browser cases pass. 12 actual lamp/toy/cat interaction cases across morning/night and desktop/phone pass, browser errors 0. 20 native before/final fixture records match. Independent harsh visual/source gates pending; private QA remains under 0124.
