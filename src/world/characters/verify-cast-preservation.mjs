@@ -13,6 +13,6 @@ for(const appearance of appearances)for(let direction=0;direction<8;direction++)
  const input={appearance,direction,action,phase,carrying};
  const prior=before(input),current=after(input);for(const field of Object.keys(prior))assert.deepEqual(current[field],prior[field]);digest.update(current.pixels);cases++;
 }
-const result={baseline,cases,exactFrameAndAttachmentEquality:true,pixelHash:digest.digest('hex'),scope:'Player and approved four regulars, all directions and six contextual actions. No background profile selected.'};
+const result={baseline,cases,exactFrameAndAttachmentEquality:true,comparison:'All preexisting frame fields, including pixels/anchor/held/feet. New pelvis metadata is additive.',pixelHash:digest.digest('hex'),scope:'Player and approved four regulars, all directions and six contextual actions. No background profile selected.'};
 writeFileSync(new URL('../../../docs/evidence/0085/background/cast-preservation.json',import.meta.url),JSON.stringify(result,null,2));
 console.log(JSON.stringify(result));

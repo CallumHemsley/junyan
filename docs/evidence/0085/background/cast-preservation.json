@@ -2,6 +2,7 @@
   "baseline": "85d6d6e0f5c7cb37b427afba2c691e7e881bc4fb",
   "cases": 1440,
   "exactFrameAndAttachmentEquality": true,
+  "comparison": "All preexisting frame fields, including pixels/anchor/held/feet. New pelvis metadata is additive.",
   "pixelHash": "3bc30dd531196cd708fb33c2d68e2a6fbb687ab1759f99e6f12dba7208af55d9",
   "scope": "Player and approved four regulars, all directions and six contextual actions. No background profile selected."
 }
