@@ -1,5 +1,6 @@
 import type { DrawMap, WorldRenderObject, WorldRenderView } from '../../render-contract';
 import type { SceneApi } from '../../../scene/renderer.js';
+import { stairSurfaces, supportHeight } from '../../maps/residential/elevation';
 import { mapDefinitions } from '../../maps/residential';
 import { furnitureWorldRect } from '../../../features/apartment/world';
 import type { WorldMapDefinition } from '../../schema';
@@ -25,7 +26,10 @@ function wall(api: ResidentialArtApi, x: number, y: number, width: number, depth
 export function drawResidentialFloor(api: ResidentialArtApi, mapId: string) {
   const map = mapDefinitions.find(m => m.id === mapId);
   if (!map) return;
-  for (const terrain of map.terrain) {
+  const terrainAreas = mapId === 'residential-stairs'
+    ? stairSurfaces.map(surface => ({ rect: surface.rect, material: surface.kind === 'tread' ? 'stairs' : 'terrazzo', baseZ: surface.height }))
+    : map.terrain.map(terrain => ({ ...terrain, baseZ: 0 }));
+  for (const terrain of terrainAreas) {
     const r = terrain.rect;
     for (let x = r.x; x < r.x + r.width; x++) for (let y = r.y; y < r.y + r.height; y++) {
       const right = Math.min(x + 1, r.x + r.width), front = Math.min(y + 1, r.y + r.height);
@@ -33,8 +37,8 @@ export function drawResidentialFloor(api: ResidentialArtApi, mapId: string) {
       const material = terrain.material;
       const base: Colour = material === 'timber' ? [187, 150, 103] : material === 'woven' ? [133, 137, 108] : material === 'glazed-tile' ? [145, 166, 153] : [171, 174, 159];
       const colour: Colour = base.map(c => c + variation * (material === 'timber' ? 1.2 : 2)) as Colour;
-      const z = material === 'woven' ? .045 : .01;
-      api.box(x, y, -.12, right, front, z, colour);
+      const baseZ = terrain.baseZ, z = baseZ + (mapId === 'residential-stairs' ? 0 : material === 'woven' ? .045 : .01);
+      api.box(x, y, baseZ - .16, right, front, z, colour);
       if (material === 'timber') {
         api.box(x, y, z, x + .016, front, z + .007, [151, 122, 87]);
         if ((y + x % 2) % 3 === 0) api.box(x, y, z, right, y + .016, z + .007, [159, 127, 86]);
@@ -46,12 +50,11 @@ export function drawResidentialFloor(api: ResidentialArtApi, mapId: string) {
         if ((x + y) % 3 === 0) api.box(x + .1, y + .1, z, x + .35, y + .14, z + .012, [177, 191, 176]);
       } else if (material === 'stairs') {
         for (let step = y; step < front; step += .5) {
-          api.box(x, step, .015, right, step + .08, .065, cream);
-          api.box(x, step + .08, .015, right, step + .13, .03, [125, 134, 124]);
+          api.box(x, front - .065, baseZ + .01, right, front, baseZ + .018, cream);
         }
       } else if (material === 'terrazzo' && (x + y) % 2 === 0) {
-        api.box(x + .2, y + .3, .012, x + .3, y + .4, .018, [204, 203, 183]);
-        api.box(x + .65, y + .68, .012, x + .73, y + .75, .018, [135, 146, 136]);
+        api.box(x + .2, y + .3, baseZ + .012, x + .3, y + .4, baseZ + .018, [204, 203, 183]);
+        api.box(x + .65, y + .68, baseZ + .012, x + .73, y + .75, baseZ + .018, [135, 146, 136]);
       } else if (material === 'woven') api.box(x, y + .12, z, right, y + .16, z + .006, [174, 169, 133]);
     }
   }
@@ -60,7 +63,7 @@ export function drawResidentialFloor(api: ResidentialArtApi, mapId: string) {
 export function drawResidentialProps(api: ResidentialArtApi, mapId: string, layer?: string) {
   const map = mapDefinitions.find(m => m.id === mapId);
   if (!map) return;
-  for (const prop of map.props) if (!layer || prop.layer === layer) drawResidentialProp(api, prop);
+  for (const prop of map.props) if (!layer || prop.layer === layer) drawResidentialProp(prop.kind === 'well' ? api : onSurface(api, mapId), prop);
 }
 
 function drawResidentialProp(api: ResidentialArtApi, prop: Omit<WorldMapDefinition['props'][number], 'layer'>) {
@@ -202,10 +205,15 @@ function drawResidentialProp(api: ResidentialArtApi, prop: Omit<WorldMapDefiniti
         }
       } else { box(x + w / 2, endY, .15, x + w / 2 + .05, endY + .03, 2.3, ink); sphere(x + w / 2 + .15, endY + .1, 1.2, .06, cream, 'solid'); }
       break;
-    case 'railing':
-      for (let at = y; at < endY; at += .7) post(x, at, 1.1);
-      box(x - .05, y, 1.1, endX + .05, endY, 1.22, paleWood);
+    case 'railing': {
+      const alongX = w > h, length = alongX ? w : h;
+      const at = (t: number): [number, number, number] => [x + (alongX ? t : w / 2), y + (alongX ? h / 2 : t), 1.15];
+      for (let t = 0; t < length; t += .5) {
+        const a = at(t), b = at(Math.min(t + .5, length));
+        post(a[0], a[1], 1.15);capsule(a, b, .065, .065, () => paleWood, 'solid');
+      }
       break;
+    }
     case 'pipe':
       capsule([x + w / 2, y, .2], [x + w / 2, endY, .2], .06, .06, () => [126, 140, 132], 'solid');
       for (let at = y; at < endY; at += 1.5) box(x, at, .1, endX, at + .08, .32, ink);
@@ -307,6 +315,16 @@ export function drawApartmentFurniture(api: ResidentialArtApi, state: State) {
 }
 
 
+function onSurface(api: ResidentialArtApi, mapId: string): ResidentialArtApi {
+  if (mapId !== 'residential-stairs') return api;
+  return {
+    box(x, y, z, right, front, top, colour) { const base = supportHeight(mapId, { x: (x + right) / 2, y: (y + front) / 2 });api.box(x, y, z + base, right, front, top + base, colour); },
+    sphere(x, y, z, radius, colour, mode) { api.sphere(x, y, z + supportHeight(mapId, { x, y }), radius, colour, mode); },
+    capsule(a, b, startRadius, endRadius, colour, mode) { api.capsule([a[0], a[1], a[2] + supportHeight(mapId, { x: a[0], y: a[1] })], [b[0], b[1], b[2] + supportHeight(mapId, { x: b[0], y: b[1] })], startRadius, endRadius, colour, mode); },
+    castShadow(x, y, z, radius, strength, dither) { api.castShadow(x, y, z + supportHeight(mapId, { x, y }), radius, strength, dither); },
+  };
+}
+
 type Paint = { depth: number; draw: () => void };
 function paintResidential(ctx: CanvasRenderingContext2D, view: WorldRenderView, draw: (api: ResidentialArtApi) => void) {
   const paints: Paint[] = [];
@@ -345,8 +363,8 @@ function paintResidential(ctx: CanvasRenderingContext2D, view: WorldRenderView, 
         ctx.beginPath();ctx.moveTo(Math.round(a.x), Math.round(a.y));ctx.lineTo(Math.round(b.x), Math.round(b.y));ctx.stroke();
       } });
     },
-    castShadow(x, y, _z, size, strength = .45) {
-      const p = view.project({ x, y }), r = radius(x, y, size);
+    castShadow(x, y, z, size, strength = .45) {
+      const p = view.project({ x, y }, z), r = radius(x, y, size);
       paints.push({ depth: (x + y) * 2 - 3, draw() { ctx.save();ctx.globalAlpha *= strength * .18;ctx.fillStyle = view.shadeColor?.('#342c24') ?? '#342c24';ctx.beginPath();ctx.ellipse(p.x, p.y, r, r * .5, 0, 0, Math.PI * 2);ctx.fill();ctx.restore(); } });
     },
   };
@@ -373,7 +391,7 @@ export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderVie
           id: parts.length ? `${prop.id}.segment-${parts.length}` : prop.id,
           position: { x: x + width / 2, y: y + height / 2 },
           occlusion: { rect: { x, y, width, height }, height: 2.8, fadeWhenPlayerBehind: true },
-          draw(ctx, view) { paintResidential(ctx, view, api => wall(api, x, y, width, height)); },
+          draw(ctx, view) { paintResidential(ctx, view, api => wall(onSurface(api, map.id), x, y, width, height)); },
         });
       }
       return parts;
@@ -384,7 +402,7 @@ export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderVie
     return [{
       id: prop.id, position,
       occlusion: occluder ?? (tall ? { rect: { ...prop.position, width: prop.width, height: prop.height }, height: 2.7, fadeWhenPlayerBehind: true } : undefined),
-      draw(ctx, view) { paintResidential(ctx, view, api => drawResidentialProp(api, prop)); },
+      draw(ctx, view) { paintResidential(ctx, view, api => drawResidentialProp(onSurface(api, map.id), prop)); },
     }];
   });
 }
@@ -405,4 +423,4 @@ export function renderFurnitureObjects(state: State): WorldRenderObject[] {
   });
 }
 
-export { surfaceHeight } from '../../maps/residential/elevation';
+export { surfaceHeight, surfaceLevels } from '../../maps/residential/elevation';

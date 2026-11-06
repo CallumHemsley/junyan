@@ -20,10 +20,12 @@ Current tests use the foundation schema, collision function and pathfinder for a
 
 The owned `Apartment` component now accepts `sceneMode="world"`. Forward it from the shared Neighbourhood view during world activities. This removes the old fixed miniature and opens its accessible 6 by 5 floor selector. Default standalone behavior stays `room`. World taps can additionally dispatch the existing actions through the transform above.
 
-## Stair surface proposal awaiting coordinated activation
+## Discrete stair surface v1.1
 
-The pure `surfaceHeight(mapId, point)` export is implemented in `src/world/maps/residential/elevation.ts` and re-exported from art/index.ts. It returns absolute render elevation in tile units. Hall, apartment and other maps return zero. Residential stairs rise from zero at the hall landing to 2.4 at the apartment landing, then 4.8 at the roof landing. Flights run north through y=33..24 and y=19..9, with continuous joins.
+`src/world/maps/residential/elevation.ts` owns the single `stairSurfaces` table. The map index and art index export `surfaceHeight(mapId, point)` and `surfaceLevels(mapId)`. Eighteen lower treads rise to the home landing at Z=2.4. Twenty upper treads rise to the roof landing at Z=4.8. The hall landing remains at Z=0. Treads are half a tile deep and use small constant rises. The full table is piecewise constant; the previous continuous-ramp prototype is replaced.
 
-This function does not yet alter production drawing. Coordinator/foundation must settle the single surface API first. Foundation should use one elevation value for actor/NPC foot contact, camera focus height and ground picking. Art should add the same absolute surface elevation to floors and props. Foundation must not add the height again to already-elevated art primitives. Collision and feature/save coordinates remain two-dimensional. A portal changes maps to the destination's local ground level; no separate height field is persisted.
+Tread and landing art iterates this same table. Each floor top is at exactly the table height. `supportHeight` derives nearby architectural support heights from the table for wall sections, windows, props, rail endpoints and contact shadows. Rail segments and wall sections remain separate depth entries. Flat-map art is unchanged. No height is stored in furniture or world saves.
 
-After agreement, residential art will raise its treads, window landings, railing endpoints and wall sections. Foundation supplies player/NPC elevation and inverse picking. Until then the route is walkable but its flat visual plane is an explicit incomplete scope item.
+Art passes absolute world Z into `view.project`; it never wraps project to add another height. Foundation registers the map module's two callbacks, projects actor and NPC feet at sampled height, frames camera focusZ, and implements the agreed unprojectAtHeight/level enumeration for picking. Those shared changes belong to foundation. Do not add surfaceHeight again to the already-raised art geometry.
+
+The standalone art study now samples the same height for its reference figure and shows raised landings. It remains an art study, not production camera/picking proof. Integrated ordinary-input ascent/descent, NPC feet, touch picking and apartment/roof continuity must be rerun after foundation consumes the exact source.

@@ -1,17 +1,18 @@
 import { describe, expect, it } from 'vitest';
-import { surfaceHeight } from './elevation';
+import { stairSurfaces, surfaceHeight, surfaceLevels, supportHeight } from './elevation';
 
 describe('residential stair surface', () => {
-  it('joins two flights and three landings without a height jump', () => {
-    for (const [y, height] of [[40, 0], [33, 0], [24, 2.4], [21, 2.4], [19, 2.4], [9, 4.8], [3, 4.8]]) expect(surfaceHeight('residential-stairs', { x: 6, y })).toBeCloseTo(height);
-    for (const y of [33, 24, 19, 9]) expect(Math.abs(surfaceHeight('residential-stairs', { x: 6, y: y - .0001 }) - surfaceHeight('residential-stairs', { x: 6, y: y + .0001 }))).toBeLessThan(.001);
-  });
-  it('rises monotonically towards the roof and leaves the other maps at their own ground level', () => {
-    let previous = 0;
-    for (let y = 40; y >= 3; y -= .1) {
-      const height = surfaceHeight('residential-stairs', { x: 6, y });
-      expect(height).toBeGreaterThanOrEqual(previous);expect(height).toBeLessThanOrEqual(4.8);previous = height;
+  it('samples the same constant height across every authored tread and landing', () => {
+    for (const surface of stairSurfaces) {
+      for (const [u, v] of [[.1, .1], [.5, .5], [.9, .9]]) expect(surfaceHeight('residential-stairs', { x: surface.rect.x + surface.rect.width * u, y: surface.rect.y + surface.rect.height * v })).toBe(surface.height);
     }
-    for (const map of ['apartment', 'residential-hall', 'rooftop', 'town']) expect(surfaceHeight(map, { x: 6, y: 4 })).toBe(0);
+    expect(surfaceLevels('residential-stairs')).toEqual([...new Set(stairSurfaces.map(s => s.height))].sort((a, b) => a - b));
+  });
+  it('keeps door landings level and each rise small while leaving other maps flat', () => {
+    for (const [x, y, height] of [[11.5, 37, 0], [17, 21.5, 2.4], [6, 5.5, 4.8]]) expect(surfaceHeight('residential-stairs', { x, y })).toBe(height);
+    const levels = surfaceLevels('residential-stairs');
+    for (let i = 1; i < levels.length; i++) expect(levels[i] - levels[i - 1]).toBeLessThanOrEqual(.134);
+    for (const map of ['apartment', 'residential-hall', 'rooftop', 'town']) { expect(surfaceHeight(map, { x: 6, y: 4 })).toBe(0);expect(surfaceLevels(map)).toEqual([0]); }
+    expect(supportHeight('residential-stairs', { x: 2.8, y: 21 })).toBe(2.4);
   });
 });
