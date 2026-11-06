@@ -20,8 +20,6 @@ export function workshopGroundColor(x: number, y: number): Color | null {
   const board = Math.floor(x / .65), grain = Math.sin(y * 15 + board * 21) * 2;
   const joint = x % .65 < .025 || (y + board % 3 * 2) % 6 < .035;
   let c: Color = joint ? [140, 105, 71] : [191 + grain + board % 3 * 4, 151 + grain + board % 3 * 3, 105 + grain];
-  // Mullion-shaped pools of cool daylight across the main aisle.
-  if (x > 9 && x < 19 && y > 3 && y < 8 && Math.floor((x - 9) / 2.5) !== 1) c = [c[0] + 19, c[1] + 25, c[2] + 31];
   if ((x > 5 && x < 10.5 || x > 18 && x < 24) && y > 7.5 && y < 11.5) {
     const border = y < 7.65 || y > 11.35 || x % 1 < .035;
     c = border ? [147, 141, 110] : [112, 131, 114];
@@ -52,7 +50,11 @@ export function drawWorkshopProp(api: RepairArtApi, prop: Prop, state: WorkshopP
   const bench = (color: Color = wood, top = 1.45) => {
     for (const a of [.18, w - .18]) for (const c of [.18, h - .18]) b(a - .08, c - .08, .04, a + .08, c + .08, top, edge);
     b(.1, .1, .65, w - .1, h - .1, .78, edge);
+    for(const c of [.1,h-.24]) b(.1,c,top-.38,w-.1,c+.14,top,[119,84,54]);
+    for(const a of [.1,w-.24]) b(a,.24,top-.38,a+.14,h-.24,top,[119,84,54]);
+    b(-.06,-.06,top-.07,w+.06,h+.06,top,edge);
     b(-.08, -.08, top, w + .08, h + .08, top + .18, color);
+    b(-.08,h+.04,top+.12,w+.08,h+.08,top+.18,[183,139,90]);
     for (let a = .25; a < w; a += .55) b(a, 0, top + .181, a + .018, h, top + .188, edge);
     for (const a of [.15, w - .15]) for (const c of [.15, h - .15]) dot(a,c,top+.19,.035,metal);
   };

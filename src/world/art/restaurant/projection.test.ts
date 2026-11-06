@@ -14,7 +14,7 @@ describe('authoritative restaurant projection', () => {
     const result = projectRestaurant(state, content, map);
     expect(result.customers).toHaveLength(4);
     expect(result.customers.map(c => c.position)).toEqual([
-      { x: 5, y: 7.48 }, { x: 17, y: 7.48 }, { x: 5, y: 12.48 }, { x: 17, y: 12.48 },
+      { x: 5, y: 6.48 }, { x: 12, y: 6.48 }, { x: 5, y: 10.48 }, { x: 12, y: 10.48 },
     ]);
     expect(result.customers.every(c => content.characters.some(character => character.id === c.characterId))).toBe(true);
     expect(result.customers.every(c => c.seatHeight === RESTAURANT_FURNITURE_PROFILE.stoolTop)).toBe(true);

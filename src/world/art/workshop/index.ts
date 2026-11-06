@@ -46,12 +46,14 @@ function paint(ctx: CanvasRenderingContext2D, map: WorldMapDefinition, view: Wor
   const api=painter(ctx,view);
   if(view.pass==='ground') {
     const tile=(x:number,y:number,w:number,h:number,color:Color)=>api.box(x,y,.002,x+w,y+h,.006,color);
-    // Individual boards and stone joints stay fixed in world coordinates as the camera scrolls.
-    for(let x=2;x<28;x+=.65) for(let y=2;y<21;y+=3) {
-      const w=Math.min(.63,28-x),h=Math.min(2.97,21-y);
-      const shade=Math.floor((x*11+y*7)%8);
-      tile(x,y,w,h,[190+shade,151+shade,106+shade]);
-      for(let grain=0;grain<2;grain++) tile(x+.15+grain*.2,y+.2,.013,Math.max(.1,h-.5),[173+shade,133+shade,92+shade]);
+    // A warm joint bed and staggered end joints keep the floor from reading as a green grid.
+    tile(2,2,26,19,[123,92,64]);
+    for(let column=0,x=2;x<28;column++,x+=.65) for(let y=2-column%3;y<21;y+=3) {
+      const top=Math.max(2,y),bottom=Math.min(21,y+2.97),w=Math.min(.63,28-x);
+      if(bottom<=top||w<.03)continue;
+      const shade=(column*3+Math.floor(y/3)*2)%7;
+      tile(x,top,w,bottom-top,[190+shade,151+shade,106+shade]);
+      if(bottom-top>1)tile(x+.19,top+.25,.018,Math.min(.85,bottom-top-.5),[183+shade,143+shade,99+shade]);
     }
     for(let x=2;x<28;x+=1.2) for(let y=21;y<27;y+=.9) {
       const offset=Math.floor((x-2)/1.2)%2*.4,top=Math.max(21,y-offset),bottom=Math.min(27,y+.86-offset);
@@ -62,9 +64,6 @@ function paint(ctx: CanvasRenderingContext2D, map: WorldMapDefinition, view: Wor
       for(let a=x+.2;a<x+w;a+=.35)tile(a,y+.1,.08,.1,[205,188,143]);
     }
     tile(13,6,4,13,[159,141,106]);tile(13.12,6.1,3.76,12.8,[133,117,90]);
-    ctx.save();ctx.globalAlpha*=.16;
-    for(const x of [10,14.2,17])tile(x,3,1.5,4.5,[221,237,224]);
-    ctx.restore();
   }
   ctx.restore();
 }

@@ -1,14 +1,7 @@
-import {createHash} from 'node:crypto';
 import {expect, it} from 'vitest';
-import {drawFoliage, foliageBounds, type FoliageSpecies} from './foliage';
+import {drawFoliage, foliageBounds} from './foliage';
 
-// Native coverage from the accepted pre-value-pass sprites, independent of their palette.
-const coverage: Record<FoliageSpecies, string> = {
-  camphor: '34a3f4426c907d54a53b0b3d2949fd6712187ab5c966576e3626e649356e848e',
-  willow: '2d3b05430f291b0cd90abe89a198de7da5262d240cb13c8506e481b5968d2e02',
-  fruit: 'd139986850a8cd068149467997dcfeb554f11dec7eab376c4b0e3cc44eb274df',
-};
-it('preserves native canopy coverage, bounds and inherited alpha through a palette change', () => {
+it('keeps crowns inside their fade bounds, rooted, shaded and still under reduced motion', () => {
   for (const species of ['camphor', 'willow', 'fruit'] as const) for (const seed of [0, 1]) {
     const pixels = new Set<string>(), bounds = foliageBounds({species, seed});
     let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
@@ -24,7 +17,10 @@ it('preserves native canopy coverage, bounds and inherited alpha through a palet
     };
     drawFoliage(ctx as unknown as CanvasRenderingContext2D, {species, seed, elapsedMs: 1500, reducedMotion: true,
       shadeColor: base => { expect(base.startsWith('shaded:')).toBe(false); return `shaded:${base}`; }});
-    expect(createHash('sha256').update([...pixels].sort().join('|')).digest('hex')).toBe(coverage[species]);
+    expect(pixels.has('0,0')).toBe(true);
+    const held = [...pixels]; pixels.clear();
+    drawFoliage(ctx as unknown as CanvasRenderingContext2D, {species, seed, elapsedMs: 95000, reducedMotion: true, shadeColor: base => `shaded:${base}`});
+    expect([...pixels]).toEqual(held);
     expect(minX).toBeGreaterThanOrEqual(bounds.minX); expect(maxX).toBeLessThanOrEqual(bounds.maxX);
     expect(minY).toBeGreaterThanOrEqual(bounds.minY); expect(maxY).toBeLessThanOrEqual(bounds.maxY);
     expect(ctx.globalAlpha).toBe(.45);

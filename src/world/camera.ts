@@ -1,4 +1,5 @@
-import type { Point } from "./schema";
+import type { Point, Rect } from "./schema";
+export type FramePoint = Point & { z: number };
 export type Camera = { focus: Point; focusZ?:number; width:number; height:number; scale:number; offsetY?:number; offsetX?:number };
 export function project(point:Point,camera:Camera,z=0):Point {
   const x=point.x-camera.focus.x,y=point.y-camera.focus.y;
@@ -21,4 +22,27 @@ export function cameraForMap(bounds:{width:number;height:number},position:Point,
  const x=clamp((position.x-position.y)*scale,minX+safeWidth/2,maxX-safeWidth/2);
  const y=clamp((position.x+position.y)*scale*.5,safeHeight/2,maxY-safeHeight/2);
  return {focusZ,focus:{x:(x/scale+y/(scale*.5))/2,y:(y/(scale*.5)-x/scale)/2},width,height,scale,offsetY:(safeHeight-height)/2,offsetX:(safeWidth-width)/2};
+}
+
+// Canvas units are half CSS pixels; the portrait ground window sits above the 132px control strip.
+export function explorationCamera(bounds:{width:number;height:number},position:Point,width:number,height:number,insetBottom=0,insetRight=0,focusZ=0):Camera {
+ const portrait=width<300&&height>width;
+ if(!portrait)return cameraForMap(bounds,position,width,height,width<300?11:15,insetBottom,insetRight,focusZ);
+ const availableHeight=Math.max(height*.35,height-Math.max(66,insetBottom));
+ // A room that already fits should keep its overview rather than acquire empty cutaway above it.
+ if((bounds.width+bounds.height)*11*.5<=availableHeight)return cameraForMap(bounds,position,width,height,11,Math.max(66,insetBottom),insetRight,focusZ);
+ const localHeight=Math.min(width,availableHeight);
+ const camera=cameraForMap(bounds,position,width,localHeight,11,0,insetRight,focusZ);
+ return {...camera,height,offsetY:(camera.offsetY??0)+availableHeight-localHeight/2-height/2};
+}
+
+/** Fit explicit world geometry into the visible area; player state and projection stay independent. */
+export function frameCamera(frame:readonly FramePoint[],width:number,height:number,available:Rect,maxScale:number):Camera {
+ const xs=frame.map(p=>p.x-p.y),ys=frame.map(p=>(p.x+p.y)*.5-p.z);
+ const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+ const safeWidth=available.width*width,safeHeight=available.height*height;
+ const gutter=Math.min(12,safeWidth/4,safeHeight/4);
+ const scale=Math.min(maxScale,Math.max(1,safeWidth-gutter*2)/Math.max(1,maxX-minX),Math.max(1,safeHeight-gutter*2)/Math.max(1,maxY-minY));
+ const x=(minX+maxX)/2,y=(minY+maxY)/2;
+ return {focus:{x:x/2+y,y:y-x/2},width,height,scale,offsetX:(available.x+available.width/2)*width-width/2,offsetY:(available.y+available.height/2)*height-height/2};
 }

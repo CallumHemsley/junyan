@@ -40,20 +40,33 @@ export function drawResidentialFloor(api: ResidentialArtApi, mapId: string) {
     : map.terrain.map(terrain => ({ ...terrain, baseZ: 0 }));
   for (const terrain of terrainAreas) {
     const r = terrain.rect;
+    if (terrain.material === 'timber') {
+      // Long boards share one colour to each staggered end joint, independent of render cells.
+      for (let column = 0; column * .75 < r.width; column++) {
+        const x = r.x + column * .75, right = Math.min(x + .75, r.x + r.width);
+        for (let joint = -1; joint * 4.2 < r.height; joint++) {
+          const start = r.y + joint * 4.2 + column % 3 * 1.4;
+          const y = Math.max(r.y, start), front = Math.min(start + 4.2, r.y + r.height);
+          if (front <= y) continue;
+          const variation = ((column * 7 + joint * 3 + 30) % 5) - 2;
+          const tone: Colour = [181 + variation * 2, 145 + variation * 2, 101 + variation * 1.5];
+          api.box(x, y, .01, right, front, .01, tone);
+          api.box(x, y, .01, x + .016, front, .016, [160 + variation, 126 + variation, 88 + variation]);
+          if (start >= r.y) api.box(x, y, .01, right, y + .018, .016, [160 + variation, 126 + variation, 88 + variation]);
+          if (front - y > 1.3 && column % 3 === 0) api.box(x + .18, y + .4, .01, x + .195, front - .35, .014, [171 + variation, 136 + variation, 94 + variation]);
+        }
+      }
+      continue;
+    }
     for (let x = r.x; x < r.x + r.width; x++) for (let y = r.y; y < r.y + r.height; y++) {
       const right = Math.min(x + 1, r.x + r.width), front = Math.min(y + 1, r.y + r.height);
-      const variation = terrain.material === 'timber' ? ((x * 13 + Math.floor((y + x % 2) / 3) * 7) % 5) - 2 : ((x * 17 + y * 31) % 7) - 3;
+      const variation = ((x * 17 + y * 31) % 7) - 3;
       const material = terrain.material;
-      const base: Colour = material === 'timber' ? [187, 150, 103] : material === 'woven' ? [133, 137, 108] : material === 'glazed-tile' ? [145, 166, 153] : [171, 174, 159];
-      const colour: Colour = base.map(c => c + variation * (material === 'timber' ? 1.2 : 2)) as Colour;
+      const base: Colour = material === 'woven' ? [133, 137, 108] : material === 'glazed-tile' ? [145, 166, 153] : [171, 174, 159];
+      const colour: Colour = base.map(c => c + variation * 2) as Colour;
       const baseZ = terrain.baseZ, z = baseZ + (mapId === 'residential-stairs' ? 0 : material === 'woven' ? .045 : .01);
       api.box(x, y, baseZ - (mapId === 'residential-stairs' ? .45 : .16), right, front, z, colour);
-      if (material === 'timber') {
-        api.box(x, y, z, x + .016, front, z + .007, [151, 122, 87]);
-        if ((y + x % 2) % 3 === 0) api.box(x, y, z, right, y + .016, z + .007, [159, 127, 86]);
-        api.box(x + .23, y + .17, z, x + .24, y + .8, z + .006, [177, 140, 94]);
-        if ((x + y) % 5 === 0) api.box(x + .65, y + .4, z, x + .69, y + .6, z + .007, [165, 131, 87]);
-      } else if (material === 'glazed-tile') {
+      if (material === 'glazed-tile') {
         api.box(x, y, z, right, y + .035, z + .01, cream);
         api.box(x, y, z, x + .035, front, z + .01, cream);
         if ((x + y) % 3 === 0) api.box(x + .1, y + .1, z, x + .35, y + .14, z + .012, [177, 191, 176]);
@@ -270,9 +283,7 @@ function drawResidentialProp(api: ResidentialArtApi, prop: Omit<WorldMapDefiniti
       capsule([x + w / 2, y + h / 2, .5], [x + w / 2, y + h / 2, 1.3], .07, .07, () => jade, 'solid');
       break;
     case 'sunlight':
-      for (let row = 0; row < h; row += .5) for (let column = 0; column < w; column += .5) {
-        if ((row * 2 + column * 2) % 3 === 0) box(x + column, y + row, .025, x + column + .3, y + row + .3, .028, [211, 183, 126]);
-      }
+      // Avoid permanent sunlight stamps across day and night; the atmosphere owns lighting.
       break;
   }
   if (!['sunlight', 'window', 'pipe', 'door'].includes(prop.kind)) api.castShadow(x + w / 2, y + h / 2, .12, Math.max(w, h) * .45, .45, 0);
@@ -411,7 +422,7 @@ function paintResidential(ctx: CanvasRenderingContext2D, view: WorldRenderView, 
   const radius = (x: number, y: number, size: number) => Math.abs(view.project({ x: x + size, y }).x - view.project({ x, y }).x);
   const api: ResidentialArtApi = {
     box(x, y, z, right, front, top, c) {
-      if (right - x > 1.01 || front - y > 1.01) {
+      if (top !== z && (right - x > 1.01 || front - y > 1.01)) {
         for (let px = x; px < right; px += 1) for (let py = y; py < front; py += 1) api.box(px, py, z, Math.min(px + 1, right), Math.min(py + 1, front), top, c);
         return;
       }
@@ -445,9 +456,14 @@ function paintResidential(ctx: CanvasRenderingContext2D, view: WorldRenderView, 
 
 export const drawMap: DrawMap = (ctx, map, view) => {
   if (!mapDefinitions.some(m => m.id === map.id)) return;
-  if (view.pass === 'ground') paintResidential(ctx, view, api => {
-    drawResidentialFloor(api, map.id);drawResidentialProps(api, map.id, 'ground');
-  });
+  if (view.pass === 'ground') {
+    paintResidential(ctx, view, api => {
+      drawResidentialFloor(api, map.id);
+      // The recessed stair well must sort below its raised landing edges.
+      if (map.id === 'residential-stairs') drawResidentialProps(api, map.id, 'ground');
+    });
+    if (map.id !== 'residential-stairs') paintResidential(ctx, view, api => drawResidentialProps(api, map.id, 'ground'));
+  }
   if (view.pass === 'foreground') paintResidential(ctx, view, api => drawResidentialProps(api, map.id, 'foreground'));
 };
 

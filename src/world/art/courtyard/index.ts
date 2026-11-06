@@ -351,8 +351,22 @@ function houseRoof(ctx: CanvasRenderingContext2D, view: WorldRenderView, p: Prop
   box(x - .35, y - .35, w + .7, d + .7, .2, color.roof, color.roofDark, color.roofDark, h);
   polygon([[x - .35, y - .35, h + .2], [x + w + .35, y - .35, h + .2], [x + w + .35, y + d / 2, h + 1.1], [x - .35, y + d / 2, h + 1.1]], color.roofDark);
   polygon([[x - .35, y + d / 2, h + 1.1], [x + w + .35, y + d / 2, h + 1.1], [x + w + .35, y + d + .35, h + .2], [x - .35, y + d + .35, h + .2]], color.roof);
-  for (let rx = x - .2; rx < x + w + .2; rx += .55) line([rx, y + d / 2, h + 1.11], [rx, y + d + .3, h + .22], color.roofLight);
-  line([x - .4, y + d / 2, h + 1.12], [x + w + .4, y + d / 2, h + 1.12], '#91a39a', 2);
+  // Muted overlapping courses describe clay tiles without continuous bright wire lines.
+  for(const direction of [-1,1]) {
+    const depth=d/2+.35;
+    const tones=direction===1?['#5b7778','#607b7b','#587373']:['#455e61','#4a6466','#486164'];
+    for(let row=0,offset=0;offset<depth;row++,offset+=.7) {
+      const next=Math.min(depth,offset+.7),nearY=y+d/2+direction*offset,farY=y+d/2+direction*next;
+      const nearZ=h+1.11-offset/depth*.9,farZ=h+1.11-next/depth*.9;
+      for(let column=0,rx=x-.35-(row%2)*.36;rx<x+w+.35;column++,rx+=.72) {
+        const left=Math.max(x-.35,rx),right=Math.min(x+w+.35,rx+.72);
+        polygon([[left,nearY,nearZ],[right,nearY,nearZ],[right,farY,farZ],[left,farY,farZ]],tones[(column+row*2)%3]);
+        if(direction===1)line([left,farY,farZ+.006],[right,farY,farZ+.006],'#4e686a');
+      }
+    }
+  }
+  box(x-.35,y+d+.22,w+.7,.13,.15,'#617b79',color.roofDark,'#3d5559',h+.04);
+  box(x-.4,y+d/2-.12,w+.8,.24,.12,'#82958c','#617a77',color.roofDark,h+1);
   box(x + w * .54, y + .5, .7, .8, .85, '#ac9c83', '#968871', '#827963', h + .27);
   if (v === 2) {
     box(x + w - 3, y + 1, 1.4, 1.8, 1, '#9fa995', '#8c9783', '#747f70', h + .4);
@@ -375,6 +389,8 @@ function houseFace(ctx: CanvasRenderingContext2D, view: WorldRenderView, p: Prop
   outline.forEach(([px, py, z], i) => { const at = view.project({ x: px, y: py }, z); if (i) ctx.lineTo(Math.round(at.x), Math.round(at.y)); else ctx.moveTo(Math.round(at.x), Math.round(at.y)); });
   ctx.closePath(); ctx.clip();
   polygon(outline, axis === 'east' ? color.brickDark : v % 2 ? '#c0ad8d' : color.brick);
+  const eave=outline.map(([px,py,z])=>[px,py,z===0?h-.26:h] as [number,number,number]);
+  polygon(eave,axis==='east'?'#746957':'#88765f');
   if (axis === 'south') {
     for (let z = .4; z < h; z += .5) {
       line([x, y + d + .09, z], [x + w, y + d + .09, z], '#af967b');

@@ -19,6 +19,45 @@ describe('residential object composition', () => {
       expect(boxes.some(b => x >= b.x && x <= b.right && y >= b.y && y <= b.front && Math.abs(b.top - surface.height) < .00001), surface.id).toBe(true);
     }
   });
+  it('covers timber terrain completely with clipped continuous boards', () => {
+    for (const map of mapDefinitions.filter(map => map.id !== 'residential-stairs')) {
+      const faces: {x: number; y: number; right: number; front: number}[] = [];
+      const api: ResidentialArtApi = {box(x, y, z, right, front, top) { if (z === top) faces.push({x, y, right, front}); }, sphere() {}, capsule() {}, castShadow() {}};
+      drawResidentialFloor(api, map.id);
+      for (const {rect: r} of map.terrain.filter(terrain => terrain.material === 'timber')) {
+        expect(faces.some(face => face.front - face.y > 4)).toBe(true);
+        for (let x = r.x + .125; x < r.x + r.width; x += .25) for (let y = r.y + .125; y < r.y + r.height; y += .25)
+          expect(faces.some(face => x >= face.x && x <= face.right && y >= face.y && y <= face.front), `${map.id} timber gap at ${x},${y}`).toBe(true);
+      }
+      for (const face of faces) expect(map.terrain.some(({rect: r, material}) => material === 'timber' && face.x >= r.x && face.y >= r.y && face.right <= r.x + r.width && face.front <= r.y + r.height)).toBe(true);
+    }
+  });
+  it('rasterizes long timber faces whole while still subdividing solid stair slabs', () => {
+    const topFaces: {colour: string; points: {x: number; y: number}[]}[] = [];
+    let points: {x: number; y: number}[] = [];
+    const ctx = {fillStyle: '', globalAlpha: 1, beginPath() {points = [];}, moveTo(x: number, y: number) {points.push({x, y});}, lineTo(x: number, y: number) {points.push({x, y});}, closePath() {}, fill() {topFaces.push({colour: this.fillStyle, points: [...points]});}, save() {}, restore() {}, ellipse() {}};
+    const ground = {...view, pass: 'ground' as const, project: (p: {x: number; y: number}, z = 0) => ({x: p.x * 100, y: (p.y - z) * 100})};
+    drawMap(ctx as unknown as CanvasRenderingContext2D, worldMapSchema.parse(mapDefinitions.find(map => map.id === 'apartment')), ground);
+    const boards = topFaces.filter(face => /^rgb\((177|179|181|183|185),/.test(face.colour));
+    expect(boards.some(face => Math.max(...face.points.map(p => p.y)) - Math.min(...face.points.map(p => p.y)) > 400)).toBe(true);
+    const lastBoard = topFaces.map(face => boards.includes(face)).lastIndexOf(true);
+    expect(topFaces.findIndex(face => face.colour === 'rgb(174,180,146)')).toBeGreaterThan(lastBoard);
+    topFaces.length = 0;
+    drawMap(ctx as unknown as CanvasRenderingContext2D, worldMapSchema.parse(mapDefinitions.find(map => map.id === 'residential-stairs')), ground);
+    const slabs = topFaces.filter(face => /^rgb\((165|167|169|171|173|175|177),/.test(face.colour));
+    expect(slabs.length).toBeGreaterThan(100);
+    expect(slabs.every(face => Math.max(...face.points.map(p => p.x)) - Math.min(...face.points.map(p => p.x)) <= 100)).toBe(true);
+    const sample = {x: 1400, y: 3310};
+    const covering = topFaces.filter(({points}) => {
+      let inside = false;
+      for (let i = 0, j = points.length - 1; i < points.length; j = i++) {
+        const a = points[i], b = points[j];
+        if ((a.y > sample.y) !== (b.y > sample.y) && sample.x < (b.x - a.x) * (sample.y - a.y) / (b.y - a.y) + a.x) inside = !inside;
+      }
+      return inside;
+    });
+    expect(covering.at(-1)?.colour, 'the pale lower landing covers the recessed well stripe').toBe('rgb(167,170,155)');
+  });
   it('never paints or registers props for an unowned map', () => {
     const context = new Proxy({} as CanvasRenderingContext2D, { get() { throw new Error('Residential art painted an unowned map'); } });
     for (const pass of ['ground', 'objects', 'foreground'] as const) drawMap(context, restaurantMap, { ...view, pass });
