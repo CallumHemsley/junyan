@@ -20,7 +20,7 @@ const measure=async iterations=>page.evaluate(async({maps,iterations})=>{
   const run=draw=>{let commands=0;const start=performance.now();for(let i=0;i<iterations;i++){
    const frame=sampleAtmosphere({mapId:map.id,day:2,timeOfDay:.8,elapsedMs:i*33,seed:42,reducedMotion:false},hooks,viewport);
    commands+=frame.commands.length;
-   if(draw){ctx.clearRect(0,0,640,360);drawAtmosphere(ctx,frame,view);drawAtmosphere(ctx,frame,{...view,pass:'foreground'});}
+   if(draw){ctx.clearRect(0,0,640,360);drawAtmosphere(ctx,frame,view);drawAtmosphere(ctx,frame,{...view,pass:'foreground'});for(const object of window.__ATMOSPHERE__.renderAtmosphereObjects(frame))object.draw(ctx,{...view,pass:'objects'});}
   }return {msPerFrame:(performance.now()-start)/iterations,commandsPerFrame:commands/iterations};};
   run(true);
   const samples=[];for(let i=0;i<5;i++)samples.push({sample:run(false),sampleAndDraw:run(true)});

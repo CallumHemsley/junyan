@@ -1,4 +1,4 @@
-import type {WorldRenderView} from '../render-contract';
+import type {WorldRenderView,WorldRenderObject} from '../render-contract';
 import type { AtmosphereCommand, Point } from './index';
 
 export type AtmosphereProject = (point: Point) => {x: number; y: number};
@@ -30,4 +30,18 @@ export function drawAtmosphere(ctx:CanvasRenderingContext2D, frame:{commands:rea
   if(view.pass==='ground') return drawAtmosphereLayer(ctx,frame.commands,'ground',project);
   if(view.pass==='foreground') return drawAtmosphereLayer(ctx,frame.commands,'light',project)+drawAtmosphereLayer(ctx,frame.commands,'foreground',project);
   return 0;
+}
+
+/** Append these entries to foundation's object queue for actor/roof occlusion. */
+export function renderAtmosphereObjects(frame:{commands:readonly AtmosphereCommand[]}):WorldRenderObject[] {
+  const groups=new Map<string,{position:Point;depth?:number;commands:AtmosphereCommand[]}>();
+  for(const command of frame.commands) {
+    if(command.layer!=='objects'||!command.object) continue;
+    const {id,position,depth}=command.object;
+    const group=groups.get(id)??{position,depth,commands:[]};
+    group.commands.push(command);groups.set(id,group);
+  }
+  return [...groups].map(([id,group])=>({id:`atmosphere:${id}`,position:group.position,depth:group.depth,
+    draw(ctx,view){drawAtmosphereLayer(ctx,group.commands,'objects',point=>view.project(point,point.z??0));},
+  }));
 }

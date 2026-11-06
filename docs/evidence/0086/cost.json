@@ -16,44 +16,44 @@
   "errors": [],
   "hotspots": [
     {
-      "function": "nt",
-      "url": "http://127.0.0.1:5488/assets/harness-DN_Y0er8.js",
-      "hits": 169
+      "function": "ot",
+      "url": "http://127.0.0.1:5488/assets/harness-BrZCeSmJ.js",
+      "hits": 166
     },
     {
-      "function": "v",
-      "url": "http://127.0.0.1:5488/assets/harness-DN_Y0er8.js",
-      "hits": 157
+      "function": "R",
+      "url": "http://127.0.0.1:5488/assets/harness-BrZCeSmJ.js",
+      "hits": 132
     },
     {
-      "function": "D",
-      "url": "http://127.0.0.1:5488/assets/harness-DN_Y0er8.js",
-      "hits": 138
+      "function": "",
+      "url": "http://127.0.0.1:5488/assets/harness-BrZCeSmJ.js",
+      "hits": 107
+    },
+    {
+      "function": "q",
+      "url": "http://127.0.0.1:5488/assets/harness-BrZCeSmJ.js",
+      "hits": 106
     },
     {
       "function": "fill",
       "url": "",
-      "hits": 108
-    },
-    {
-      "function": "",
-      "url": "http://127.0.0.1:5488/assets/harness-DN_Y0er8.js",
-      "hits": 105
-    },
-    {
-      "function": "(program)",
-      "url": "",
-      "hits": 67
-    },
-    {
-      "function": "(garbage collector)",
-      "url": "",
-      "hits": 43
+      "hits": 103
     },
     {
       "function": "(idle)",
       "url": "",
-      "hits": 39
+      "hits": 49
+    },
+    {
+      "function": "run",
+      "url": "",
+      "hits": 45
+    },
+    {
+      "function": "(program)",
+      "url": "",
+      "hits": 33
     }
   ],
   "rows": [
@@ -72,51 +72,51 @@
       "samples": [
         {
           "sample": {
-            "msPerFrame": 0.15300000000046565,
+            "msPerFrame": 0.16149999999965076,
             "commandsPerFrame": 642
           },
           "sampleAndDraw": {
-            "msPerFrame": 0.7364999999996508,
+            "msPerFrame": 0.7965000000002328,
             "commandsPerFrame": 642
           }
         },
         {
           "sample": {
-            "msPerFrame": 0.15650000000023284,
+            "msPerFrame": 0.14849999999976718,
             "commandsPerFrame": 642
           },
           "sampleAndDraw": {
-            "msPerFrame": 0.7459999999997672,
+            "msPerFrame": 0.7505000000004657,
             "commandsPerFrame": 642
           }
         },
         {
           "sample": {
-            "msPerFrame": 0.25850000000034923,
+            "msPerFrame": 0.1504999999998836,
             "commandsPerFrame": 642
           },
           "sampleAndDraw": {
-            "msPerFrame": 0.7894999999995344,
+            "msPerFrame": 0.7639999999996507,
             "commandsPerFrame": 642
           }
         },
         {
           "sample": {
-            "msPerFrame": 0.16400000000023282,
+            "msPerFrame": 0.1620000000001164,
             "commandsPerFrame": 642
           },
           "sampleAndDraw": {
-            "msPerFrame": 0.7885000000003493,
+            "msPerFrame": 0.855,
             "commandsPerFrame": 642
           }
         },
         {
           "sample": {
-            "msPerFrame": 0.1579999999998836,
+            "msPerFrame": 0.21050000000046565,
             "commandsPerFrame": 642
           },
           "sampleAndDraw": {
-            "msPerFrame": 0.775,
+            "msPerFrame": 0.7959999999997671,
             "commandsPerFrame": 642
           }
         }
@@ -143,51 +143,51 @@
       "samples": [
         {
           "sample": {
-            "msPerFrame": 0.7745000000001164,
+            "msPerFrame": 0.7169999999995343,
+            "commandsPerFrame": 677
+          },
+          "sampleAndDraw": {
+            "msPerFrame": 1.5240000000002327,
+            "commandsPerFrame": 677
+          }
+        },
+        {
+          "sample": {
+            "msPerFrame": 0.715,
+            "commandsPerFrame": 677
+          },
+          "sampleAndDraw": {
+            "msPerFrame": 1.3515000000002328,
+            "commandsPerFrame": 677
+          }
+        },
+        {
+          "sample": {
+            "msPerFrame": 0.7389999999996507,
+            "commandsPerFrame": 677
+          },
+          "sampleAndDraw": {
+            "msPerFrame": 1.3990000000002327,
+            "commandsPerFrame": 677
+          }
+        },
+        {
+          "sample": {
+            "msPerFrame": 0.82,
+            "commandsPerFrame": 677
+          },
+          "sampleAndDraw": {
+            "msPerFrame": 1.4545000000001165,
+            "commandsPerFrame": 677
+          }
+        },
+        {
+          "sample": {
+            "msPerFrame": 0.7720000000001164,
             "commandsPerFrame": 677
           },
           "sampleAndDraw": {
             "msPerFrame": 1.4254999999998836,
-            "commandsPerFrame": 677
-          }
-        },
-        {
-          "sample": {
-            "msPerFrame": 0.7805000000004657,
-            "commandsPerFrame": 677
-          },
-          "sampleAndDraw": {
-            "msPerFrame": 1.4459999999997672,
-            "commandsPerFrame": 677
-          }
-        },
-        {
-          "sample": {
-            "msPerFrame": 0.7920000000001164,
-            "commandsPerFrame": 677
-          },
-          "sampleAndDraw": {
-            "msPerFrame": 1.5875,
-            "commandsPerFrame": 677
-          }
-        },
-        {
-          "sample": {
-            "msPerFrame": 0.9134999999997672,
-            "commandsPerFrame": 677
-          },
-          "sampleAndDraw": {
-            "msPerFrame": 1.4490000000002328,
-            "commandsPerFrame": 677
-          }
-        },
-        {
-          "sample": {
-            "msPerFrame": 0.8389999999996508,
-            "commandsPerFrame": 677
-          },
-          "sampleAndDraw": {
-            "msPerFrame": 1.4010000000003493,
             "commandsPerFrame": 677
           }
         }
@@ -201,9 +201,9 @@
     }
   ],
   "studyFrame": {
-    "count": 46,
-    "medianMs": 4.199999999953434,
-    "minMs": 3.299999999930151,
-    "maxMs": 38.09999999997672
+    "count": 42,
+    "medianMs": 2.200000000069849,
+    "minMs": 1.2999999999301508,
+    "maxMs": 17.5
   }
 }

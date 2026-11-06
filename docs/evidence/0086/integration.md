@@ -7,7 +7,7 @@ Imports:
 ```ts
 import { sampleAtmosphere, shadeAtmosphereColor } from './atmosphere';
 import { atmosphereHooksForMap } from './atmosphere/map-hooks';
-import { drawAtmosphere } from './atmosphere/canvas';
+import { drawAtmosphere, renderAtmosphereObjects } from './atmosphere/canvas';
 ```
 
 Compile hooks once per validated map with atmosphereHooksForMap(map, overrides). It recognizes water terrain; tree, willow, bamboo, grass, reeds, flowers, planter and plant props; window and warm-window props; lamp, lantern and street-lamp props. Overrides add authored light anchors or particle fields without shared map-schema changes. Unknown kinds have no effect. Map owners can supply exact canopy height and window positions with overrides. Do not infer furniture collision here.
@@ -16,8 +16,10 @@ Sample once per host frame with {mapId,day,timeOfDay,elapsedMs,seed,reducedMotio
 
 Supply the camera's visible world rectangle as the third argument for water and hook culling. There is a 2048 polygon hard cap. The cap is a last guard; culling is still necessary on broad maps. Keep authored hook density bounded. If the cap becomes visible, inspect scene coverage and adjust, rather than raising it without profiling.
 
-Apply shadeAtmosphereColor to scene palette values before painting terrain and props. Exposure is 0..1 for local direct sun. It retains different material colors; no full-screen sepia or blur. drawAtmosphere(ctx,frame,view) draws water/shadows in ground pass and local light pools/highlights/foliage in foreground; objects pass is empty. Ground pass must follow terrain but precede bridge/deck ground props, so water cannot overpaint a crossing. Foreground leaves need each map owner's occlusion review. World coordinates project to logical pixels; no extra DPR scaling.
+Apply shadeAtmosphereColor to scene palette values before painting terrain and props. Exposure is 0..1 for local direct sun. It retains different material colors; no full-screen sepia or blur. drawAtmosphere(ctx,frame,view) draws water/shadows in ground pass and local light pools/particles in foreground. Append renderAtmosphereObjects(frame) to the host depth queue for canopy glints and window highlights; drawAtmosphere objects pass is empty. Auto canopy entries sort immediately after their parent prop; artist overrides can supply exact depth. Only willows and one in four other auto foliage hooks sway. No per-tile shimmer or outlines are added. Ground pass must follow terrain but precede bridge/deck ground props, so water cannot overpaint a crossing. Depth-grouped leaves and window highlights need each map owner's occlusion review. World coordinates project to logical pixels; no extra DPR scaling.
 
 No weather is invented because existing game state has no weather contract. No audio changes. Light and particles never cover DOM dialogue. Interiors use stable warm ambient color while local lamps follow supplied day conditions.
 
 Proof scope: the isolated study establishes visible day differences, pixel readability, camera-aware rendering and motion only. It does not establish integrated traversal, activity persistence, hidden-tab host timing, save/reload or full-world acceptance. Those remain ACTIVE with foundation and reviewer 0088.
+
+Authored reflections: hooks.reflections accepts {id,position,width,height,color} entries positioned on water. Each silhouette uses at most 12 clipped pixel bands. It remains recognizable without motion. Reflections only tint water they overlap; they never draw over banks or deck props.

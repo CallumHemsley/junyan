@@ -21,6 +21,13 @@ describe('atmosphere',()=>{
   const frame=sampleAtmosphere(input,{water:[{id:'wide',rect:{x:0,y:0,width:10000,height:10000}}]});
   expect(frame.commands.length).toBeLessThanOrEqual(MAX_ATMOSPHERE_COMMANDS);
  });
+ it('clips authored reflection silhouettes to water and holds them at rest',()=>{
+  const h={water:[{id:'pond',rect:{x:0,y:0,width:5,height:5}}],reflections:[{id:'lamp',position:{x:2,y:1},width:1,height:2,color:[255,200,120] as const}]};
+  const a=sampleAtmosphere({...input,reducedMotion:true},h);
+  expect(a).toEqual(sampleAtmosphere({...input,reducedMotion:true,elapsedMs:99999},h));
+  expect(a.commands.length).toBeGreaterThan(sampleAtmosphere({...input,reducedMotion:true},{water:h.water}).commands.length);
+  for(const c of a.commands) for(const p of c.points){expect(p.x).toBeGreaterThanOrEqual(0);expect(p.x).toBeLessThanOrEqual(5);expect(p.y).toBeGreaterThanOrEqual(0);expect(p.y).toBeLessThanOrEqual(5);}
+ });
  it('is replayable and does not mutate authored hooks',()=>{
   const before=JSON.stringify(hooks), a=sampleAtmosphere(input,hooks);
   expect(sampleAtmosphere(input,hooks)).toEqual(a);
