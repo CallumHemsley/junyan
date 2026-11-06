@@ -17,7 +17,7 @@ export default function WordToken({
       data-recovered={look !== "fogged"}
       onClick={(event) => onLookup(word, event.currentTarget)}
     >
-      {word.hanzi}
+      {word.text}
     </button>
   );
 }
