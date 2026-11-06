@@ -1,7 +1,7 @@
 ---
 id: 111
 title: Give the reading room an authored material and use hierarchy
-status: todo
+status: doing
 priority: high
 type: feature
 created: 2026-11-06
@@ -21,7 +21,7 @@ Independent visual critique finds coherent construction but a sparse furnishing 
 
 ## Notes
 
-- Reserved centrally by root; branch codex/0111-reading-cluster; worktree /private/tmp/junyan-world-reading-cluster; ports5564/5565 strict.
+- Owner GPT-6.1 Sol High. Reserved centrally by root; branch codex/0111-reading-cluster; worktree /private/tmp/junyan-world-reading-cluster; ports5564/5565 strict.
 - Proposed lease: reading-room art and its own static map fixture composition only. No camera, actors/catalog, life state, shared schema, dependencies, dialogue/audio or feature rules changes without coordination.
 - Read private0109/visual-review.md for the evidence and current quality limits. Resident-use lifecycle is a distinct future feature; this ticket must not fake occupancy with art.
 - All new raw QA stays private under /private/tmp/junyan-world-private-qa/0111; no public captures/reports/traces.
