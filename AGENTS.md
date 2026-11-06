@@ -14,7 +14,7 @@ A cozy Mandarin-learning web game. The player wakes on a hospital ward for a one
 ## Architecture rules (not optional)
 - Game rules are pure functions over explicit state; inject RNG and time. Test them without React, DOM, storage or network.
 - Rendering stays thin: render state, dispatch actions, no hidden rules in components.
-- Content is schema-validated JSON (Zod). Lines are pre-segmented into tokens `{hanzi, pinyin, gloss, audio}`; the UI never segments.
+- Content is schema-validated JSON (Zod). Runtime words use `{id, text, pronunciation?, gloss, audio}`. The Mandarin authoring adapter accepts the existing `hanzi`/`pinyin` JSON. Lines are pre-segmented; the UI never segments. Language policies and copy catalogs own script, spacing and labels; rules use stable IDs.
 - Dialogue, vocabulary, signs and prices are real DOM text. Never Chinese text inside images or canvas-only text.
 - Deterministic test hooks: `?test=1&seed=42` and `window.__TEST__` (gated to dev/test builds).
 - First slice: offline content and audio in the repo, IndexedDB saves, no backend.
