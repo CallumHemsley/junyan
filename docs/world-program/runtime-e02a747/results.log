@@ -1,0 +1,10 @@
+
+ RUN  v3.2.7 /workspace/junyan-audit-e02
+
+ ✓ audit/assembly.test.ts (7 tests) 240ms
+
+ Test Files  1 passed (1)
+      Tests  7 passed (7)
+   Start at  01:01:28
+   Duration  1.07s (transform 348ms, setup 0ms, collect 602ms, tests 240ms, environment 0ms, prepare 47ms)
+
