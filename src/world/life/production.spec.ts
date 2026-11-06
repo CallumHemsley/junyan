@@ -107,9 +107,10 @@ async function activateLife(page: Page, targetId: string, touch: boolean) {
     if (!await control.isVisible()) { await page.waitForTimeout(200); continue; }
     const box = await control.boundingBox(); expect(box!.width).toBeGreaterThanOrEqual(44); expect(box!.height).toBeGreaterThanOrEqual(44);
     const prior = (await savedGame(page)).world?.life?.reactions.find(reaction => reaction.targetId === targetId)?.atMs ?? -1;
-    await control.click(); await page.waitForTimeout(180);
+    if (touch) await control.tap(); else await control.click();
+    await page.waitForTimeout(180);
     const after = await savedGame(page), response = after.world?.life?.reactions.find(reaction => reaction.targetId === targetId);
-    attempts.push({ optionId: option.id, index, method: await exact.count() ? 'exact physical binding' : 'visible ordered arrow with read-only proximity hint', responses: after.world?.life?.reactions });
+    attempts.push({ input: touch ? 'touch' : 'mouse', optionId: option.id, index, method: await exact.count() ? 'exact physical binding' : 'visible ordered arrow with read-only proximity hint', responses: after.world?.life?.reactions });
     if (response && response.atMs > prior) return { attempts, response };
     await approachLife(page, targetId, touch);
   }
@@ -125,6 +126,8 @@ test('ordinary traversal reaches unvoiced residents, reactions and saved discove
   const record = () => writeFile(`${out}/evidence.json`, JSON.stringify({ head, checkpoints, errors, status: completed ? 'passed' : 'incomplete', method: 'Ordinary opening and real pointer/touch/keyboard travel; read-only navigation hints; no injected saves, spawns or internal dispatch.' }, null, 2));
   page.on('pageerror', error => errors.push(error.message));
   page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+  await record();
+  try {
   await page.goto('/?seed=42'); await playOpening(page);
   await page.getByRole('button', { name: '开门迎客' }).click();
   expect(await page.evaluate(() => '__TEST__' in window)).toBe(false);
@@ -136,7 +139,6 @@ test('ordinary traversal reaches unvoiced residents, reactions and saved discove
     { mapId: 'riverbank', ids: ['resident-river-walker'] },
     { mapId: 'town', ids: ['resident-courier'] },
   ];
-  try {
     for (const visit of visits) {
       await exitTo(page, visit.mapId, touch);
       for (const id of visit.ids) {
@@ -206,8 +208,18 @@ test('ordinary traversal reaches unvoiced residents, reactions and saved discove
     const before = await savedGame(page);
     await page.reload(); await page.waitForTimeout(1000);
     const help = page.getByRole('dialog', { name: '怎么玩', exact: true });
-    if (await help.isVisible()) await help.getByRole('button', { name: '关闭', exact: true }).click();
+    if (await help.isVisible()) {
+      const close = help.getByRole('button', { name: '关闭', exact: true });
+      if (touch) await close.tap(); else await close.click();
+    }
     const after = await savedGame(page);
+    expect(after.world!.mapId).toBe(before.world!.mapId);
+    expect(Math.hypot(after.world!.position.x - before.world!.position.x, after.world!.position.y - before.world!.position.y)).toBeLessThan(.02);
+    expect(after.world!.life!.elapsedMs).toBeGreaterThanOrEqual(before.world!.life!.elapsedMs);
+    expect(after.world!.life!.elapsedMs - before.world!.life!.elapsedMs).toBeLessThan(4000);
+    expect(after.world!.life!.reactions).toEqual(before.world!.life!.reactions);
+    checkpoints.push({ restoredBefore: before.world, restoredAfter: after.world });
+    await record();
     expect(after.world!.life!.discoveries.length).toBeGreaterThan(0);
     expect(after.world!.life!.discoveries).toEqual(before.world!.life!.discoveries);
     checkpoints.push({ repeatedDiscovery: await activateLife(page, 'riverbank.fishing-jetty', touch) });
