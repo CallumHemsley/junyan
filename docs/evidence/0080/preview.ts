@@ -1,9 +1,10 @@
 import { courtyardMap } from '../../../src/world/maps/courtyard';
 import { catHabitat } from '../../../src/world/maps/courtyard/habitat';
-import { drawMap, drawCat } from '../../../src/world/art/courtyard';
+import { drawMap, drawCat, renderObjects } from '../../../src/world/art/courtyard';
 import { worldMapSchema } from '../../../src/world/schema';
 import { movePlayer, findPath, canStand } from '../../../src/world/geometry';
 import { project, pointerGround } from '../../../src/world/camera';
+import { drawPlayer } from '../../../src/world/painter';
 import { initialState, reduce } from '../../../src/features/cats/rules';
 import type { WorldRenderView } from '../../../src/world/render-contract';
 
@@ -35,15 +36,13 @@ function draw(now: number) {
   }
   ctx.fillStyle = '#66765d'; ctx.fillRect(0, 0, canvas.width, canvas.height);
   const view: WorldRenderView = { project: (p, z) => project(p, camera(), z), playerPosition: position, elapsedMs: now, reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches, width: canvas.width, height: canvas.height, pass: 'ground' };
-  drawMap(ctx, map, view); drawMap(ctx, map, { ...view, pass: 'objects' });
+  drawMap(ctx, map, view);
   const habitats = catHabitat(state, day);
-  drawCat(ctx, view, habitats.white, false, habitats.white.relaxed); drawCat(ctx, view, habitats.black, true, habitats.black.relaxed);
-  const p = view.project(position);
-  ctx.fillStyle = '#40554a'; ctx.fillRect(p.x - 4, p.y - 10, 3, 10); ctx.fillRect(p.x + 1, p.y - 10, 3, 10);
-  ctx.fillStyle = '#e5d9ba'; ctx.fillRect(p.x - 5, p.y - 24, 10, 15);
-  ctx.fillStyle = '#d6b18d'; ctx.fillRect(p.x - 4, p.y - 31, 8, 9);
-  ctx.fillStyle = '#4b463b'; ctx.fillRect(p.x - 5, p.y - 33, 10, 5);
-  drawMap(ctx, map, { ...view, pass: 'foreground' });
+  const objects = renderObjects(map, view);
+  objects.push({ id: 'proof-player', position, draw: () => drawPlayer(ctx, view, position, 'south', !!(dx || dy || path.length), camera().scale) });
+  objects.push({ id: 'proof-white', position: habitats.white, draw: () => drawCat(ctx, view, habitats.white, false, habitats.white.relaxed) });
+  objects.push({ id: 'proof-black', position: habitats.black, draw: () => drawCat(ctx, view, habitats.black, true, habitats.black.relaxed) });
+  objects.sort((a, b) => (a.depth ?? a.position.x + a.position.y) - (b.depth ?? b.position.x + b.position.y)).forEach(object => object.draw(ctx, view));
   document.querySelector('#status')!.textContent = `${position.x.toFixed(1)}, ${position.y.toFixed(1)}. ${path.length} path points.`;
   requestAnimationFrame(draw);
 }
