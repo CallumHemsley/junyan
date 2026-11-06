@@ -8,11 +8,11 @@ export type LandscapeProject = (x: number, y: number, z?: number) => { x: number
 
 
 export function foliageFor(prop: LandscapeProp): FoliageSpecies | undefined {
-  return prop.kind==='willow'?'willow':prop.kind==='mature-tree'?'camphor':prop.kind==='tree'&&Number(prop.variant)===2?'fruit':undefined;
+  return prop.kind==='willow'?'willow':prop.kind==='mature-tree'?'camphor':prop.kind==='tree'?(Number(prop.variant)===2?'fruit':'camphor'):undefined;
 }
 export function landscapeFoliageBounds(prop: LandscapeProp) {
   const species=foliageFor(prop); if(!species)return undefined;
-  const size=prop.kind==='mature-tree'?Math.min(1.2,prop.width/7):prop.kind==='willow'?.85:Math.min(1,prop.width/6);
+  const size=prop.kind==='mature-tree'?Math.min(1.2,prop.width/7):prop.kind==='willow'?Math.min(1.05,prop.width/6.5):Math.min(1,prop.width/6);
   const raw=foliageBounds({species,seed:Number(prop.variant)||0});
   return {minX:raw.minX*size,minY:raw.minY*size,maxX:raw.maxX*size,maxY:raw.maxY*size,size};
 }
@@ -70,50 +70,8 @@ export function drawLandscapeProp(
   const v = Number(prop.variant) || 0;
   let painted = true;
   switch (prop.kind) {
-    case 'mature-tree': {
-      const w=prop.width*7,h=108+v*7;
-      polygon([[-5,0],[-12,3],[-7,-6],[-5,-44],[-9,-58],[1,-66],[7,-51],[7,-8],[15,2],[6,-1]],'#61563d');
-      polygon([[-3,-3],[-2,-46],[-4,-58],[1,-62],[3,-48],[3,-7]],'#a18d5b');
-      polygon([[-3,-36],[-34,-63],[-37,-74],[-26,-67],[2,-47],[34,-82],[38,-78],[6,-34]],'#756647');
-      crown(-w*.5,-45,w*.65,h*.44,'#355b43','#64844f','#92a565');
-      crown(w*.49,-51,w*.72,h*.43,'#3d6245','#789252','#a8b56d');
-      crown(-w*.12,-69,w*.82,h*.47,'#3e6546',v===1?'#9fa45e':'#789751',v===1?'#d1c27b':'#afbc75');
-      crown(-w*.67,-36,w*.47,29,'#3b6348','#77935b','#a4b873');
-      for(const [x,y] of [[-15,-67],[10,-86],[25,-55],[-30,-41]])block(x,y,4,2,v===2?'#d4c282':'#b4c07c');
-      break;
-    }
     case 'fern':
       for(let i=-3;i<=3;i++){const x=i*4;polygon([[0,0],[x-3,-9-Math.abs(i)*2],[x+1,-13-Math.abs(i)*2]],i%2?'#607e54':'#9caf6a');block(x/2,-5-Math.abs(i),2,2,'#bdd08b');}break;
-    case 'tree': case 'willow': {
-      const willow = prop.kind === 'willow';
-      const w = prop.width * 7, h = 35 + v * 3;
-      polygon([[-3,0],[-2,-27],[4,-31],[5,-6],[9,-2]],'#695b41');
-      block(-1,-27,2,24,'#9b8357');
-      polygon([[0,-20],[-13,-30],[-12,-33],[2,-26],[15,-35],[17,-33],[3,-18]],'#756642');
-      if(willow || v===0) {
-        crown(0,-22,w,h,willow?'#486f58':'#42694d',willow?'#75966a':'#6c8e58',willow?'#a1b57b':'#a6b875');
-        crown(-w*.55,-17,w*.55,20,'#486f50','#7a9c64','#a1b57b');
-      } else if(v===1) {
-        polygon([[-w,-30],[-w*.85,-44],[-w*.35,-57],[0,-61],[w*.75,-53],[w,-36],[w*.5,-24],[-w*.45,-23]],'#6e844d');
-        polygon([[-w*.85,-40],[-w*.35,-57],[0,-61],[w*.75,-53],[w*.4,-36],[-w*.4,-31]],'#a6ac65');
-        for(let i=-2;i<3;i++) polygon([[0,-28],[i*8-2,-50-Math.abs(i)*2],[i*8+1,-51-Math.abs(i)*2]],'#bdc17d');
-      } else if(v===2) {
-        crown(-w*.5,-22,w*.65,25,'#4f7450','#8d9d65','#c3bd7c');
-        crown(w*.45,-25,w*.7,29,'#547a54','#8ba36d','#c2ca8a');
-        crown(0,-36,w*.65,25,'#5b7e53','#a2af70','#d0cf90');
-      } else {
-        crown(0,-38,w*.46,40,'#3f6550','#678b68','#99b386');
-        crown(-w*.12,-21,w*.7,31,'#416a52','#6c916b','#a7b980');
-        block(-3,-68,2,8,'#b1be8a');
-      }
-      if (willow) for (let i=-3;i<=3;i++) {
-        const sway = reducedMotion ? 0 : Math.round(Math.sin(elapsedMs/1200+i)*1.2);
-        block(i*6+sway,-35+(i%2)*3,2,22+((i+3)%3)*4,'#8eaa74');
-        block(i*6+sway+1,-18+(i%2)*3,2,8,'#668b61');
-      }
-      if (!willow && v===2) for (const [x,y] of [[-8,-34],[6,-43],[12,-28],[-15,-25]]) block(x,y,3,3,'#c9b06c');
-      break;
-    }
     case 'bamboo':
       for(let i=-2;i<=2;i++) {
         const x=i*5, top=-40-((i+3)%3)*6;

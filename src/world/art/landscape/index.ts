@@ -1,4 +1,5 @@
 import type { DrawMap, WorldRenderView, WorldArtModule, WorldRenderObject } from '../../render-contract';
+import { drawLandscapeGround } from './ground';
 import { drawLandscapeProp, landscapeMaterialColor, landscapeFoliageBounds } from './draw';
 
 function polygon(ctx: CanvasRenderingContext2D, view: WorldRenderView, points: {x:number;y:number}[], color: string, z = 0) {
@@ -32,42 +33,17 @@ export const drawMap: DrawMap = (ctx, map, view) => {
     const backdropExtent=Math.ceil((view.width+view.height)/Math.max(unit,1));
     for(let y=Math.floor((view.playerPosition.y-backdropExtent)/4)*4;y<view.playerPosition.y+backdropExtent;y+=4)for(let x=Math.floor((view.playerPosition.x-backdropExtent)/4)*4;x<view.playerPosition.x+backdropExtent;x+=4){
       if(x>=0&&y>=0&&x<=map.bounds.width&&y<=map.bounds.height)continue;
+      const group=Math.abs((Math.floor(x/10)*37+Math.floor(y/12)*61)%17);
+      if(group===3||group===11)continue;
       const n=Math.abs((x*x*37+y*y*71+x*y*13)%97),p=view.project({x,y});
       if(p.x<-unit*5||p.y<-unit*2||p.x>view.width+unit*5||p.y>view.height+unit*8)continue;
       ctx.save();ctx.globalAlpha*=.56;
-      drawLandscapeProp(ctx,{kind:n%11===0?'rock':'mature-tree',position:{x:x+n%3*.5,y:y+n%5*.3},width:4.5+n%5*.65,height:5,variant:n%2},(x,y,z=0)=>view.project({x,y},z),unit,0,true,shade);ctx.restore();
+      drawLandscapeProp(ctx,{kind:n%13===0?'rock':map.id==='riverbank'&&group%5===0?'willow':map.id==='park'&&y>44&&x<0?'tree':'mature-tree',position:{x:x+n%3*.45,y:y+n%5*.24},width:3.4+(n%6)*.55,height:5,variant:map.id==='park'&&y>44&&x<0?2:n%2},(x,y,z=0)=>view.project({x,y},z),unit,0,true,shade);ctx.restore();
     }
 
     const painted=new Set<string>();
     let floorPainted=false;
-    const forestFloor=()=>{
-      for(const patch of map.props.filter(p=>p.layer==='ground')){
-        const {x,y}=patch.position,w=patch.width,h=patch.height;
-        const at=view.project(patch.position);
-        if(at.x < -unit*w || at.y < -unit*h || at.x > view.width+unit*w || at.y > view.height+unit*h)continue;
-        if(patch.kind==='harvest-floor'){
-          const sx=w/13,sy=h/10;
-          ctx.save();
-          const soilPoints=[{x:x-5.7,y:y-2.4},{x:x-3.2,y:y-4.5},{x:x+.6,y:y-3.6},{x:x+4.2,y:y-2.2},{x:x+5.4,y:y+1.2},{x:x+2.7,y:y+3.8},{x:x-.9,y:y+3.1},{x:x-4.6,y:y+4}].map(p=>({x:x+(p.x-x)*sx,y:y+(p.y-y)*sy}));
-          polygon(ctx,view,soilPoints, '#a49a6c');
-          for(const [dx,dy,pw,ph] of [[-4,-1,1.7,.6],[-2,-3,2,.8],[2,-1,1.3,.5],[3,2,1.2,.7],[-1,2,2,.5]])polygon(ctx,view,[{x:x+dx*sx,y:y+dy*sy},{x:x+(dx+pw)*sx,y:y+(dy-.2)*sy},{x:x+(dx+pw-.2)*sx,y:y+(dy+ph)*sy},{x:x+(dx-.3)*sx,y:y+(dy+ph)*sy}], '#8f875c');
-          ctx.restore();continue;
-        }
-        for(let iy=0;iy<11;iy++)for(let ix=0;ix<13;ix++){
-          const dx=(ix/12-.5)*w,dy=(iy/10-.5)*h;
-          const radius=Math.hypot(dx/(w*.5),dy/(h*.5));
-          const n=(ix*37+iy*61+Number(patch.variant)*17)%97;
-          if(radius>1||n/97>Math.max(0,1-radius*.9)*.78)continue;
-          const p=view.project({x:x+dx+(n%3)*.06,y:y+dy});
-          ctx.fillStyle=shade(n%2?'#78915d':'#8a9c66');
-          ctx.fillRect(Math.round(p.x),Math.round(p.y),Math.max(2,unit*.32),Math.max(1,unit*.12));
-        }
-        for(let i=0;i<37;i++){
-          const dx=((i*37)%97/97-.5)*w*.7,dy=((i*61)%97/97-.5)*h*.7,p=view.project({x:x+dx,y:y+dy});
-          ctx.fillStyle=shade(i%3?'#a69e66':'#647753');ctx.fillRect(Math.round(p.x),Math.round(p.y),Math.max(1,unit*.13),Math.max(1,unit*.06));
-        }
-      }
-    };
+    const forestFloor=()=>drawLandscapeGround(ctx,map,view,'underlay');
     for (const terrain of map.terrain) {
       if(!floorPainted&&terrain.material!=='grass'){forestFloor();floorPainted=true;}
       if(terrain.material==='water'||terrain.material==='sand'){
@@ -118,6 +94,7 @@ export const drawMap: DrawMap = (ctx, map, view) => {
         }
       }
     }
+    drawLandscapeGround(ctx,map,view,'verges');
     drawContactShadows(ctx,map,view);
   }
 };
