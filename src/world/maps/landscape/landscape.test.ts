@@ -73,8 +73,8 @@ for (const raw of mapDefinitions) {
     if (map.id === 'riverbank') it('keeps both crossings clear and blocks deep water away from crossings', () => {
       for (const y of [19, 57]) for(let x=36;x<=58;x+=.5) expect(blocked(x,y), `${x},${y}`).toBe(false);
       for (const y of [10,30,45,70]) {
-        const water = map.terrain.find(t => t.id === `riverbank.river-${y}`)!.rect;
-        expect(blocked(water.x + water.width / 2,y + .5), `deep water ${y}`).toBe(true);
+        const water = map.terrain.find(t => t.material==='water'&&y+.2>=t.rect.y&&y+.2<t.rect.y+t.rect.height)!.rect;
+        expect(blocked(water.x + water.width / 2,y + .2), `deep water ${y}`).toBe(true);
       }
     });
   });
