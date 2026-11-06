@@ -82,3 +82,13 @@ After dynamic changes, retain the current valid exit-connected position where po
 ## Exact-head implementation findings
 
 At e6270d0 the compositor uses only player/object x+y order to fade, ignoring the supplied occlusion rectangle and height. Foundation must use the projected overlap condition above; otherwise unrelated buildings fade merely because they are deeper in the map. The sort currently lacks the stable-ID tie break, and the actor list currently contains only the player. Add NPC objects to this same list when integrating life. These are concrete gaps in the current implementation, not a competing adapter.
+
+## Physical restaurant targets and HUD ownership
+
+Foundation must bind restaurant activities to real map anchors before the contextual UI is considered integrated. Add table interactions with stable IDs `service.table.1` through `service.table.4` and a kitchen interaction `service.kitchen`. The map owner chooses approach points outside table/counter colliders, within a reachable interaction radius. Preserve the existing restaurant table-number mapping in one explicit projection shared with artist 0089. Generic `service` remains only a temporary entry fallback, not the finished table interaction.
+
+Resolve the binding into a discriminated presentation target (`table` with table number, `kitchen`, `repair` with job, `cat` with target, `garden` with plant or overview, `apartment` with item or overview). The active ActivityBinding remains the authoritative selected map anchor; presentation derives from it. Do not derive a target from whichever panel last rendered. Existing feature state/reducers still decide allowed actions and progression.
+
+UI owner 0090 exports typed presentational components under `src/world/ui/*`. Foundation supplies only the current target's dialogue, available actions and read-only view data, plus existing lookup/replay/journal/tray/action callbacks. A table shows that customer's current dialogue and relevant order/deliver/change actions. Kitchen shows food pickup and tray return. Do not mount all four table controls, kitchen, journal and an entire legacy feature page simultaneously in one panel.
+
+Keep a compact persistent journal/tray affordance outside the contextual panel. Opening the tray or journal is an explicit player choice. On phone, contextual content may scroll within an accessible region but its action footer and close control must remain reachable; no overflow clipping or CSS-hiding controls. Opening/closing preserves the visible map and returns focus to the invoking anchor. UI owner does not duplicate reducer rules or write shared styles/App. Foundation alone wires the components and maps world actions to existing domain actions.
