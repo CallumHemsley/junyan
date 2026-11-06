@@ -20,7 +20,8 @@ export function canStand(map: WorldMapDefinition, p: Point, radius = PLAYER_RADI
   return map.colliders.every(({rect}) => {
     const x = Math.max(rect.x, Math.min(p.x, rect.x+rect.width));
     const y = Math.max(rect.y, Math.min(p.y, rect.y+rect.height));
-    return Math.hypot(p.x-x,p.y-y) > radius;
+    const dx=p.x-x,dy=p.y-y;
+    return Math.abs(dx)>radius || Math.abs(dy)>radius || Math.hypot(dx,dy) > radius;
   });
 }
 export function canWalk(map: WorldMapDefinition, from: Point, to: Point, radius=PLAYER_RADIUS): boolean {
