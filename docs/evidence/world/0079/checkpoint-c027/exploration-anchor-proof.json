@@ -1,0 +1,129 @@
+{
+  "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+  "capturedAt": "2026-11-06T01:28:46.400Z",
+  "results": [
+    {
+      "device": "desktop",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "normalMotion": true,
+      "steps": [
+        {
+          "action": "keyboard left restaurant",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 34,
+              "y": 30.482999999999997
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.999500000000005,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 0,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          }
+        },
+        {
+          "action": "pointer approach book-observation",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 10.500000000000004,
+              "y": 30.000000325520848
+            },
+            "facing": "north",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.999500000000005,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 0,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          }
+        },
+        {
+          "action": "click rendered town.book-window arrow",
+          "changed": false,
+          "beforeWorld": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 10.500000000000004,
+              "y": 30.000000325520848
+            },
+            "facing": "north",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.999500000000005,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 0,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "afterWorld": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 10.500000000000004,
+              "y": 30.000000325520848
+            },
+            "facing": "north",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.999500000000005,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 0,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          }
+        }
+      ],
+      "consoleErrors": [],
+      "rawVideo": "/workspace/junyan/output/0079-raw/page@920cac2b701c25b16468417ffa65802c.webm"
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "sourceHead": "c1c81245872fd1ff62bce61235c1a67796da0850",
+  "capturedAt": "2026-11-06T00:54:18.758Z",
+  "results": [
+    {
+      "device": "desktop",
+      "sourceHead": "c1c81245872fd1ff62bce61235c1a67796da0850",
+      "normalMotion": true,
+      "steps": [
+        {
+          "action": "keyboard left restaurant",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 34,
+              "y": 30.4
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.91650000000001,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "pointer approach book-front-left-fixed",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 7.000000628547415,
+              "y": 29.399999985210695
+            },
+            "facing": "north",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.91650000000001,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "pointer approach book-front-right-fixed",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 13.900000628547414,
+              "y": 29.39999998521069
+            },
+            "facing": "east",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.91650000000001,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "pointer approach book-rear-fixed",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 13.000000628547411,
+              "y": 23.499999985210692
+            },
+            "facing": "west",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.91650000000001,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        }
+      ],
+      "consoleErrors": [],
+      "rawVideo": "/workspace/junyan/output/0079-raw/page@1647132a76c85d66b1d05bc5b0c46796.webm"
+    },
+    {
+      "device": "phone",
+      "sourceHead": "c1c81245872fd1ff62bce61235c1a67796da0850",
+      "normalMotion": true,
+      "steps": [
+        {
+          "action": "keyboard left restaurant",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 34,
+              "y": 30.4
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.917000000000016,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "touch approach book-front-left-fixed",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 6.999999999999986,
+              "y": 29.40000000000002
+            },
+            "facing": "north",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.917000000000016,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "touch approach book-front-right-fixed",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 13.899999791925593,
+              "y": 29.399999653209363
+            },
+            "facing": "east",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.917000000000016,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        },
+        {
+          "action": "touch approach book-rear-fixed",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 13.00000034679065,
+              "y": 23.500000208074418
+            },
+            "facing": "west",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.917000000000016,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "discoveries": [],
+              "reactions": []
+            }
+          }
+        }
+      ],
+      "consoleErrors": [],
+      "rawVideo": "/workspace/junyan/output/0079-raw/page@0a2f775543e98f5cdf35cb83731ccec1.webm"
+    }
+  ]
+}

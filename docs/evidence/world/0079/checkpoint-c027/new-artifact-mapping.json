@@ -1,0 +1,829 @@
+{
+  "purpose": "New and refreshed pending captures preserved in qualified namespace; not a relocation of committed numeric history. Coordinator owns historical migration.",
+  "artifacts": [
+    {
+      "status": " M",
+      "sourcePath": "docs/evidence/0079/desktop-breakfast.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "031cca9c392cde8ead01effb1583695436a2972903c5c802108fa7359ae9d8a9",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/desktop-breakfast.png"
+    },
+    {
+      "status": " M",
+      "sourcePath": "docs/evidence/0079/desktop-laundry.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "7df656e9d593d2435642536e7961ecda788e1015c4004e3bce836fb4dcf9dae4",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/desktop-laundry.png"
+    },
+    {
+      "status": " M",
+      "sourcePath": "docs/evidence/0079/desktop-market.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "197b9e77885179c3457d431b88c8da4fe347a4cc3abb33cb00c4a18dd900c91a",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/desktop-market.png"
+    },
+    {
+      "status": " M",
+      "sourcePath": "docs/evidence/0079/desktop-moon-gate.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "9f9c96a787f5e07fb97ac2d3eb372eab3976becf7b2f2b476b63eb0e3d3c4d37",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/desktop-moon-gate.png"
+    },
+    {
+      "status": " M",
+      "sourcePath": "docs/evidence/0079/desktop-river.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "3efb30c6907b1bdd1bb28259b0c9cae80c9be3408f7b8900b7aac80f5c11eb49",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/desktop-river.png"
+    },
+    {
+      "status": " M",
+      "sourcePath": "docs/evidence/0079/desktop-workshop.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "b031a913c2c6ddc476932a3ec97e10718d6681f131d0671f132d0c8e4f3be2ac",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/desktop-workshop.png"
+    },
+    {
+      "status": " M",
+      "sourcePath": "docs/evidence/0079/material-proof.json",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "771a54f73c6283fe42c6b292a2e693a5012286a22c9ff9af9ae4e10af0af7107",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/material-proof.json"
+    },
+    {
+      "status": " M",
+      "sourcePath": "docs/evidence/0079/phone-breakfast.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "5bfc065d112c43034022c6b0b6b7f3e3be330a88e3e2380983cd5b72362d137c",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/phone-breakfast.png"
+    },
+    {
+      "status": " M",
+      "sourcePath": "docs/evidence/0079/phone-laundry.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "f223e2181a844af362691c38a553826eb94d80420b6d79555192a27672ba7a4b",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/phone-laundry.png"
+    },
+    {
+      "status": " M",
+      "sourcePath": "docs/evidence/0079/phone-market.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "9fcc21e947ffbf1fdd7ca8c213ce9df9d98b583fc6ff64623652f85eaa99fdea",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/phone-market.png"
+    },
+    {
+      "status": " M",
+      "sourcePath": "docs/evidence/0079/phone-river.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "1fae75397056638635107050f75db666eebe6eb2e024f9f3afe5109220a73f2f",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/phone-river.png"
+    },
+    {
+      "status": " M",
+      "sourcePath": "docs/evidence/0079/production-desktop-evening.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "b291ef5e178484698178f77f1a3bd5b49e71a35600eb5265a7d5a9aaf8b4fd37",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/production-desktop-evening.png"
+    },
+    {
+      "status": " M",
+      "sourcePath": "docs/evidence/0079/production-desktop-morning.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "6c03251ad553c3207fe5bc4b202c1665a10cceddf68b6d3d756c53d60b3b4e95",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/production-desktop-morning.png"
+    },
+    {
+      "status": " M",
+      "sourcePath": "docs/evidence/0079/production-phone-evening.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "c63332d74acea3faa573fcd2713d51e0f33309dd640853628c6613d23c95cca2",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/production-phone-evening.png"
+    },
+    {
+      "status": " M",
+      "sourcePath": "docs/evidence/0079/production-phone-morning.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "1ee71bfe0594ecabd7757c4c07d83e39c78567a73d6877ef83b9e15c22d5aa41",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/production-phone-morning.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/attachment-depth-proof.json",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "6641933b40e932403e54d90ff703083a94e6aea9958dbc60ea3b2016f6771e7b",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/attachment-depth-proof.json"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/attachments-desktop.mp4",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "916f7fa8d2dc3a80359e6c528fece0f6c249fe707ed5a07fadb66180e105f9b9",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/attachments-desktop.mp4"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/attachments-phone.mp4",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "d53918f859741cf7161597aa460b431e1053d26f4266c4a782a578c448ab2e6e",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/attachments-phone.mp4"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/attachments.mjs",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "a97991b4a7dbdffda102b771ddf1441a2310bdb025ff745dd62fe428a58b711c",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/attachments.mjs"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/building-end-proof.json",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "f1b4586944ecf3654d6c99fb3e94f799ee6c5e739263e7fe7877909f6a9778f4",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/building-end-proof.json"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/building-ends.mjs",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "ca24a8bd5df0883d92622c1e2dd1d290ad1a64be17e82c055f9fc48cb84157ad",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/building-ends.mjs"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-desktop-book-window.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "f505747112c4b7062351939958ce1c166ed7d5565a87b45138942cdca9c62c93",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-desktop-book-window.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-desktop-junction.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "69d230ed1abca5a752dfcf9254e579e2f3b6d4449b80da3d32aa5b54283da1a5",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-desktop-junction.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-desktop-market.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "cf18c9e9af2e6392baad11379570a9f617693774c6ba601b0a7fb95056da9398",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-desktop-market.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-desktop-motion-000.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "ae9e4bc19e56faeb373939ec34ac838783b024a638e62fc1dba33dac5f66cf24",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-desktop-motion-000.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-desktop-motion-010.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "5818e84b914d946635d5b70be4e933a4c52f462fe4cea9d7eee6022671489837",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-desktop-motion-010.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-desktop-motion-020.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "34584ecc8c5861c5d20a55c736a1dc2f570020bfdb4154e781c9e68e5cb583cf",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-desktop-motion-020.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-desktop-motion-030.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "2367b6435248c3d55b4c9881fe8799b1684a33f13caeaa2a0bd36b2e25b64230",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-desktop-motion-030.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-desktop-motion-040.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "6eb9635c2c92ba638f02472d3c85d2f6065d4fb0790fbdf1d9d0e8d5610a85b6",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-desktop-motion-040.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-desktop-motion-050.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "c346f93461245d103f563432cd4d54d3dd6fa502e8e723cc5b17f6ca9261fbdd",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-desktop-motion-050.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-desktop-motion-060.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "7512d171511e4c02da429fcb728c6b92faadb1d1c5aa41bc3f6a3d63d0a370ed",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-desktop-motion-060.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-desktop-motion-070.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "67b38053bc60c8e4d2fc5d448c8ce4e0941eabef923c3605f5352a6edbd174f8",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-desktop-motion-070.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-desktop-motion-080.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "45a9aeb68f1716672ad7156fac1ab8164743aef05e86ec5b483ecb4c334d90c3",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-desktop-motion-080.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-desktop-motion-090.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "9926fcbe6172d96e11099f2d63379d1b086b8afecd9e0e92429119b7541f4ffc",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-desktop-motion-090.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-motion-desktop.mp4",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "96469920aaf49bf220972aa4936ea7f638d8282de148adebbab417ab54cc0ad9",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-motion-desktop.mp4"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-motion-phone.mp4",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "d777939c9d4c837a41433c94c5779ece06801f3b8e3ceb3d0a96dfc70badaed6",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-motion-phone.mp4"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-motion-proof.json",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "41d1ec9293e8cdf62d2634ea6b05df0c26fff2681ec3d69508b9389ac85a86f3",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-motion-proof.json"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-motion.mjs",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "e404e722b4a1e567a765fabfe37486356b1f574781c146bd357d7c57aa840d03",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-motion.mjs"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-phone-book-window.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "cbe5b08ce4a38fd853942d14d4d596b9c8da6c2422b9e45e2c7beddfec594f73",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-phone-book-window.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-phone-junction.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "7754215a1bc185538d475e97f6be36e155fb10e08d28df1dd32ca39fb58ce740",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-phone-junction.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-phone-market.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "f4369005564cc3e0ababd7c1ba06a98fa56cd922504f31f14410c9c92236ff62",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-phone-market.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-phone-motion-000.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "6807fcca73b19c946f75badbc8e62f04ee30233fdba9370d67d61b5a77073037",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-phone-motion-000.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-phone-motion-010.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "5f489cc878fcde25b9470e84f93c9aaebfea70fd3238253816d29b765a68c147",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-phone-motion-010.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-phone-motion-020.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "554294a3d2b09f23dee610373bf9391ac81d7281fee59b4794da161a0d87a108",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-phone-motion-020.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-phone-motion-030.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "52dd6c9e8ed90998d416bdd8bbe2c6b54bfb25120a944c62228e7f346c9fe4b2",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-phone-motion-030.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-phone-motion-040.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "150bc936df6d3ea353f70d84c65f71513cb7de4cfe1a7918364ae804313b187e",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-phone-motion-040.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-phone-motion-050.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "4b5dd8694ff2f7ccdef1451421aff7b7d8ce0de23747232e946fed7fcb94e4eb",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-phone-motion-050.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-phone-motion-060.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "1c0de648322b803a482c8b72f3d1d468cd9c3574858d2ac5369963de009d06a6",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-phone-motion-060.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-phone-motion-070.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "d119bb6f0dd5722fc841395934bb04fa4f06fdc20018b50b67b3be870d7eb83d",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-phone-motion-070.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-phone-motion-080.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "0da330e450402823e2d773ee454e5e5c3f2d2f50c177e5f6e99d9cf9ee8c4fc6",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-phone-motion-080.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/courier-phone-motion-090.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "25ae59e7797c5823aee204c2816fa61aae77af7a3ae04d6aa9775c6ab59a05c9",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/courier-phone-motion-090.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-bench-behind.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "5c204a0b621426f352ac0f09b69d95159596735a75ec9fd9b90f3ce0fdc889cd",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-bench-behind.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-bench-beside.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "2376daa26cc80ddf81a9924a81a937d5cbdc0e60ffb4afd1a670c9a3e07e194a",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-bench-beside.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-bench-front.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "96b8f17852f5c540e22f437864d4467ed02952e46819e6db19830f31eb348f9c",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-bench-front.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-book-display.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "e2e2250c029abf10b4c01d0bf9e77e3f1039827f858c143aa9bbac31d5accf18",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-book-display.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-book-front-left-fixed.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "9ac92827ff014b52185eb3f3ca5fe1138a58e8e8dbb8fc251549a113f459883c",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-book-front-left-fixed.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-book-front-right-fixed.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "ac6ef033f7c12513bd30726ec9163610e3600e3a52a16c3ca3ea1fd3a3da61a3",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-book-front-right-fixed.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-book-observation.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "8c3ce7e84c0303d49d8b322872c2d6e0d15399d8fe10b8dd45231fbdd589a219",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-book-observation.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-book-rear-fixed.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "0b61efb94650711c153bf16e0924daf4536788bae85592185cdbaddd5b88791b",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-book-rear-fixed.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-building-behind.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "f3214725ca1f83049d0b76e2c9276196e475642dddb842d189502811f70051f9",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-building-behind.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-building-beside.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "6e68c0361dd46fc7757cb6cafe5cd1f254a23b10529fe0773d7ea26135956a7c",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-building-beside.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-building-front.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "dbf19c4fe35715ccfa5a737770c3ab0325561850d37951790a9469ab521bd19e",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-building-front.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-canal.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "840b6ddb6429be2c11d7377878c7b935b2577f01270ea6c432a6e2bee40e097c",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-canal.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-failure.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "c471fa7262aef06b37efb3341b7807977998b576ca61f29d79f680871c95f11b",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-failure.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-residence-laundry-visible.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "e07b8a66a0c3969bd136a24f9227d70659aaa56405e2aaef74f255582ac87cc7",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-residence-laundry-visible.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-south-laundry-visible.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "056729f0468d13a18492c370c4a0efe2464a8a7085ce3c5fa994ce1dfb720cf7",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-south-laundry-visible.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-tree-behind.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "17214140e8e04476528c205dcb56255a2da3566005da7034ffbed3fb75fe5a8b",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-tree-behind.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-tree-beside.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "a4be7402abab455019a4a35174eb1585c1a2dddb5dc32992b608b0f25136a3b5",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-tree-beside.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-desktop-tree-front.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "887cd5d6bcc4b555689f3a85dd7b1645cd1a7e55461d3d07dbe375bb2689cf96",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-desktop-tree-front.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-phone-bench-behind.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "2956e59a37903aad32e48b416b5453dbd4b5bc2a0bee35e413d8c580f531d991",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-phone-bench-behind.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-phone-bench-beside.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "b08204b6c5c97aa950fddad8d44b0c4f2c9f997add0c6631bf0b664b4bf38664",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-phone-bench-beside.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-phone-bench-front.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "0177f5f0c91524e1f0ad227917e6b3bf9b2b66a61aefc81cb8661c6e8adad002",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-phone-bench-front.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-phone-book-display.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "37e97d4922a89c4678b8f8f148aa44bd59a83a6b1ab88ae516cc46fcfeffcce8",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-phone-book-display.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-phone-book-front-left-fixed.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "13fe7c10a57d39c70bdf8358d29a0381b75fc4162e198235976ae0726df7dd4f",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-phone-book-front-left-fixed.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-phone-book-front-right-fixed.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "59194c5af62190d38e8d0271ae35bc99a7096112abf197de8e33d2d42914425a",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-phone-book-front-right-fixed.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-phone-book-rear-fixed.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "69391cba1bd6837eef283ce3c2b81b42000aa6277c6b53a656accc2a8d02e657",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-phone-book-rear-fixed.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-phone-building-behind.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "0d1df65c373b7bd689c5d27ff6597059a13eda975a386babdbeea4279b358f4c",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-phone-building-behind.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-phone-building-beside.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "95e31e45bafc594f06d4edbc5e4d22cd8afb48deeae54e67d0886cafe716d2bc",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-phone-building-beside.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-phone-building-front.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "fb481e1a08f58d560e9a5a42e9cc28b729271dc2cb6b8fcde8aca25e6e1d941a",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-phone-building-front.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-phone-canal.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "41d09b08c49c64c98b55d8c48a013752a049e1466b64c1e2d00ee112158cdaba",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-phone-canal.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-phone-failure.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "6bfef25aa746d6aaf5a3919f5137c4e8ff59d477b15ed3ca1cf06fb1534695a7",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-phone-failure.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-phone-residence-laundry-visible.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "bff2537ec62ddb1c644ca0328cc56eca6527e702a6aaffce923194232fdfc621",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-phone-residence-laundry-visible.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-phone-south-laundry-visible.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "f2e5e59e39c9ded00c38b2bc15666898a2f3b97b37ad7a1e8dabf377b13c54b4",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-phone-south-laundry-visible.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-phone-tree-behind.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "97085eb90f28de0ec38d57dad2f981d32ebb0d64a7513162e2c641ee9417ec30",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-phone-tree-behind.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-phone-tree-beside.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "ce5c3dec5fdc12963f2ba6d8964e59d055e0b37a376c568ff627dbf2aa333c80",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-phone-tree-beside.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-phone-tree-front.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "3f5181505976c0e2f5348b99fc69c0113b1b4b72b482eb09f180bab5640e7338",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-phone-tree-front.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/depth-proof.json",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "324c2e83cb0e732ec5fc651b396505d4fc2592e57cb6508af5dcabbbcfac181d",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/depth-proof.json"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/exploration-anchor-proof.json",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "4097cc305e02458b9057f01f7d2e56ed2a892205c772b027d8846a9082c0c412",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/exploration-anchor-proof.json"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/exploration-anchor.mjs",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "18ce308c44c5b34c3621ecace27fb795c67bcbff9623aa29615b78e949afd6f9",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/exploration-anchor.mjs"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/exploration-desktop-after-click.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "3d2eb09eafe61fca891ef64b7e3751fa011639f553f2bb2cf1d6285efc16ffd4",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/exploration-desktop-after-click.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/occlusion.mjs",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "a1d82817bb8aba949677fa07b5e35aab1d69ea49793a34cdb3d790816952189c",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/occlusion.mjs"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/profile-desktop-town.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "456f6613b32ed200a7fa11a56b8afd0360c9f287d4bae3e99c8d98bd940d66ed",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/profile-desktop-town.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/profile-desktop.cpuprofile",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "1bb33cf05d7d2443f836438b4afd8516c30cca23697b2fdcb60f0e2e9ea1057e",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/profile-desktop.cpuprofile"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/profile-phone-town.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "0d9ddd0d1886b7dd9d005d2ebb504a21717d87d828d800507f6c1cde8df774e5",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/profile-phone-town.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/profile-phone.cpuprofile",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "1adea57eb2b948ade3f321d5447ef5611caafab2cf50b4e9e6d6afb97aa8b4a5",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/profile-phone.cpuprofile"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/profile-report.json",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "f0cce8c21ee1b26896a26e428e881c29995181fe907ba4dda41a4aae6c4b56fe",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/profile-report.json"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/profile.mjs",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "049426ed2ee23b6c2f423869a8ed812d901f1e49374caf91d34011bea219ad10",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/profile.mjs"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/reduced-desktop-after-toggle.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "fc9d9051b2a68f16f061ca3e850f2032f4a2d33aaaac493eb890ecb0ad5bfc2a",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/reduced-desktop-after-toggle.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/reduced-desktop-fresh.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "fc9d9051b2a68f16f061ca3e850f2032f4a2d33aaaac493eb890ecb0ad5bfc2a",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/reduced-desktop-fresh.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/reduced-phone-after-toggle.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "e2e28a64d698fa8586b8f869e37f5437e2fc986289bfa43d1b704e92f6d00f73",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/reduced-phone-after-toggle.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/reduced-phone-fresh.png",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "e2e28a64d698fa8586b8f869e37f5437e2fc986289bfa43d1b704e92f6d00f73",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/reduced-phone-fresh.png"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/reduced-plate-proof.json",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "6baf6555d17dd07fa4945ade797b7dae24035c3fcb330345ed9cc1f63372f324",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/reduced-plate-proof.json"
+    },
+    {
+      "status": "??",
+      "sourcePath": "docs/evidence/0079/reduced-plates.mjs",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "capturedProductHead": "See individual report; most runtime captures2c43a9e",
+      "sha256": "f1c7b4ee672918eaccbc502e1d28e82f9fb7e4f7fb7846f756180aadb0d72a3b",
+      "newPath": "docs/evidence/world/0079/checkpoint-c027/reduced-plates.mjs"
+    }
+  ]
+}

@@ -1,0 +1,4170 @@
+{
+  "sourceHead": "2c43a9eba832fbf5c2f32f30223f73030229d554",
+  "capturedAt": "2026-11-06T01:11:46.795Z",
+  "results": [
+    {
+      "device": "desktop",
+      "sourceHead": "2c43a9eba832fbf5c2f32f30223f73030229d554",
+      "plan": {
+        "diagnostics": [],
+        "actors": 1,
+        "route": [
+          {
+            "from": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "to": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "startMs": 0,
+            "endMs": 6500,
+            "action": "work"
+          },
+          {
+            "from": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "to": {
+              "x": 36.5,
+              "y": 44
+            },
+            "startMs": 6500,
+            "endMs": 7373.902227923556,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 36.5,
+              "y": 44
+            },
+            "to": {
+              "x": 36.5,
+              "y": 42.5
+            },
+            "startMs": 7373.902227923556,
+            "endMs": 8678.250054010512,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 36.5,
+              "y": 42.5
+            },
+            "to": {
+              "x": 22,
+              "y": 39.5
+            },
+            "startMs": 8678.250054010512,
+            "endMs": 21553.983006150378,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 22,
+              "y": 39.5
+            },
+            "to": {
+              "x": 20,
+              "y": 37.5
+            },
+            "startMs": 21553.983006150378,
+            "endMs": 24013.484853755763,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 20,
+              "y": 37.5
+            },
+            "to": {
+              "x": 16.5,
+              "y": 36.5
+            },
+            "startMs": 24013.484853755763,
+            "endMs": 27178.750023008164,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 16.5,
+              "y": 36.5
+            },
+            "to": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "startMs": 27178.750023008164,
+            "endMs": 36946.56492397289,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "to": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "startMs": 36946.56492397289,
+            "endMs": 43446.56492397289,
+            "action": "work"
+          },
+          {
+            "from": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "to": {
+              "x": 23,
+              "y": 31
+            },
+            "startMs": 43446.56492397289,
+            "endMs": 57203.29553306165,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 23,
+              "y": 31
+            },
+            "to": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "startMs": 57203.29553306165,
+            "endMs": 59134.04364707683,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "to": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "startMs": 59134.04364707683,
+            "endMs": 65634.04364707683,
+            "action": "work"
+          },
+          {
+            "from": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "to": {
+              "x": 28.5,
+              "y": 39
+            },
+            "startMs": 65634.04364707683,
+            "endMs": 74905.4196020416,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 28.5,
+              "y": 39
+            },
+            "to": {
+              "x": 28.5,
+              "y": 40
+            },
+            "startMs": 74905.4196020416,
+            "endMs": 75774.98481943291,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 28.5,
+              "y": 40
+            },
+            "to": {
+              "x": 36.5,
+              "y": 42.5
+            },
+            "startMs": 75774.98481943291,
+            "endMs": 83063.26943431995,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 36.5,
+              "y": 42.5
+            },
+            "to": {
+              "x": 36.5,
+              "y": 44
+            },
+            "startMs": 83063.26943431995,
+            "endMs": 84367.61726040691,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 36.5,
+              "y": 44
+            },
+            "to": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "startMs": 84367.61726040691,
+            "endMs": 85241.51948833046,
+            "action": "walk"
+          }
+        ],
+        "durationMs": 85241.51948833046,
+        "hasGreeting": false
+      },
+      "samples": [
+        {
+          "elapsedEstimate": 3176.2000000001863,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 14.575858401931502,
+              "y": 35.196549240018115
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 34,
+            "y": 30.4835
+          },
+          "click": {
+            "x": 562.2584656769955,
+            "y": 404.5116385623705
+          }
+        },
+        {
+          "elapsedEstimate": 4793.300000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 13.036206990383986,
+              "y": 34.15355957413109
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 31.7213623046875,
+            "y": 30.796246175130204
+          },
+          "click": {
+            "x": 553.8537260377261,
+            "y": 411.08265131817797
+          }
+        },
+        {
+          "elapsedEstimate": 6176.700000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 11.719062866499726,
+              "y": 33.261300651499816
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 29.521678670247397,
+            "y": 31.46810591634114
+          },
+          "click": {
+            "x": 557.5595389758998,
+            "y": 407.8965022164947
+          }
+        },
+        {
+          "elapsedEstimate": 7256.600000000559,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 10.690883063562268,
+              "y": 32.56479175273573
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 27.27755432128907,
+            "y": 31.971997924804686
+          },
+          "click": {
+            "x": 560.8637875794453,
+            "y": 405.454160181697
+          }
+        },
+        {
+          "elapsedEstimate": 8662.200000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 9.352602175509665,
+              "y": 31.65821437695816
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 25.007089233398446,
+            "y": 32.339407185872396
+          },
+          "click": {
+            "x": 565.6699322582466,
+            "y": 402.3889219200517
+          }
+        },
+        {
+          "elapsedEstimate": 9680.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 8.383072132606934,
+              "y": 31.001435960798243
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 22.71455179850261,
+            "y": 32.52453902180989
+          },
+          "click": {
+            "x": 569.4925785897976,
+            "y": 400.27054875155795
+          }
+        },
+        {
+          "elapsedEstimate": 10739.300000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.37498177669382,
+              "y": 30.31853604227646
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 20.415112304687508,
+            "y": 32.5753477376302
+          },
+          "click": {
+            "x": 573.8588387292459,
+            "y": 398.1274938645344
+          },
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 12157.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 18.117009480794273,
+            "y": 32.48195072428385
+          },
+          "click": {
+            "x": 574.7386558025813,
+            "y": 397.7268799469013
+          },
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 13428.400000000373,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 15.820215861002605,
+            "y": 32.36053552246093
+          },
+          "click": {
+            "x": 574.7386532458223,
+            "y": 397.72688109690955
+          },
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 14468.900000000373,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 13.523422241210938,
+            "y": 32.23912032063801
+          },
+          "click": {
+            "x": 574.7386480926448,
+            "y": 397.7268834147645
+          },
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 15495.700000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 11.226629638671875,
+            "y": 32.117706136067696
+          },
+          "click": {
+            "x": 576.7322949218747,
+            "y": 398.8349633789065
+          },
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 16694.300000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 8.999999999999998,
+            "y": 31.999999837239567
+          },
+          "click": null,
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 17788.700000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.619920668114427,
+              "y": 30.221261805980475
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 8.999999999999998,
+            "y": 31.999999837239567
+          },
+          "click": {
+            "x": 651.9597609812058,
+            "y": 440.61773955283
+          }
+        },
+        {
+          "elapsedEstimate": 18805.800000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 8.78808921459971,
+              "y": 30.28040958048606
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 9.419920857747393,
+            "y": 32.02126143391926
+          },
+          "click": {
+            "x": 673.2706063085653,
+            "y": 452.40974755128684
+          }
+        },
+        {
+          "elapsedEstimate": 19916.400000000373,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 10.063645195059259,
+              "y": 30.34499469342072
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 10.588090006510413,
+            "y": 32.08040958658853
+          },
+          "click": {
+            "x": 676.3291024514996,
+            "y": 454.1021044307155
+          }
+        },
+        {
+          "elapsedEstimate": 20948.400000000373,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 11.248926819257619,
+              "y": 30.405008952873803
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 11.863645426432292,
+            "y": 32.14499495442707
+          },
+          "click": {
+            "x": 673.7580218313578,
+            "y": 452.6794308690809
+          }
+        },
+        {
+          "elapsedEstimate": 21997.60000000056,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 12.45396313719283,
+              "y": 30.466023449984448
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 13.048926798502606,
+            "y": 32.20500980631509
+          },
+          "click": {
+            "x": 674.3206808506261,
+            "y": 452.9907497353937
+          }
+        },
+        {
+          "elapsedEstimate": 23126.10000000056,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 13.75007778148338,
+              "y": 30.53164950792321
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 14.253963216145834,
+            "y": 32.266023600260404
+          },
+          "click": {
+            "x": 676.9146597302422,
+            "y": 454.4261070950053
+          }
+        },
+        {
+          "elapsedEstimate": 24189.300000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 14.97119350129725,
+              "y": 30.59347815196442
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 15.550078328450521,
+            "y": 32.33164961751301
+          },
+          "click": {
+            "x": 674.7785991518596,
+            "y": 453.24415560947205
+          }
+        },
+        {
+          "elapsedEstimate": 25246.700000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 16.18564775461768,
+              "y": 30.65496950656292
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 16.771193440755212,
+            "y": 32.39347721354166
+          },
+          "click": {
+            "x": 674.5888606252363,
+            "y": 453.1391991032559
+          }
+        },
+        {
+          "elapsedEstimate": 26340.200000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 17.441563894211576,
+              "y": 30.718560197175268
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 17.985647583007818,
+            "y": 32.454969116210926
+          },
+          "click": {
+            "x": 675.7697569071825,
+            "y": 453.79261088252156
+          }
+        },
+        {
+          "elapsedEstimate": 27560.300000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 18.84288376793743,
+              "y": 30.78951310217405
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 19.241563924153652,
+            "y": 32.51855961100259
+          },
+          "click": {
+            "x": 679.9109905783696,
+            "y": 456.0841000243286
+          }
+        },
+        {
+          "elapsedEstimate": 28910.700000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 20.3938569320041,
+              "y": 30.86804338896223
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 20.64288431803386,
+            "y": 32.58951298014321
+          },
+          "click": {
+            "x": 684.1732661545365,
+            "y": 458.4425453418388
+          }
+        },
+        {
+          "elapsedEstimate": 30039.300000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 21.690086429165852,
+              "y": 30.933675262236246
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 22.193856811523446,
+            "y": 32.66804284667967
+          },
+          "click": {
+            "x": 676.9179160625748,
+            "y": 454.42793049798473
+          }
+        },
+        {
+          "elapsedEstimate": 31084.300000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 22.890298926537252,
+              "y": 30.99444551526771
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 23.4900858561198,
+            "y": 32.7336749674479
+          },
+          "click": {
+            "x": 674.183275677929,
+            "y": 452.9147542735589
+          }
+        },
+        {
+          "elapsedEstimate": 32165.300000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 23.663541360849667,
+              "y": 30.081250423438924
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 24.69029947916668,
+            "y": 32.79444563802081
+          },
+          "click": {
+            "x": 690.5931128879464,
+            "y": 431.90070000651656
+          }
+        },
+        {
+          "elapsedEstimate": 33292.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 25.463541666666675,
+            "y": 31.88124983723956
+          },
+          "click": {
+            "x": 685.5312451171867,
+            "y": 430.3281274414065
+          },
+          "stop": "junction"
+        },
+        {
+          "elapsedEstimate": 34612.300000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 26.10000000000001,
+            "y": 30.99999983723956
+          },
+          "click": null,
+          "stop": "junction"
+        },
+        {
+          "elapsedEstimate": 35696.200000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 26.10000000000001,
+            "y": 30.99999983723956
+          },
+          "click": null,
+          "stop": "junction"
+        },
+        {
+          "elapsedEstimate": 36800.200000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 26.10000000000001,
+            "y": 30.99999983723956
+          },
+          "click": null,
+          "stop": "junction"
+        },
+        {
+          "elapsedEstimate": 37835.800000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 26.10000000000001,
+            "y": 30.99999983723956
+          },
+          "click": null,
+          "stop": "junction"
+        },
+        {
+          "elapsedEstimate": 38972.200000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 26.10000000000001,
+            "y": 30.99999983723956
+          },
+          "click": null,
+          "stop": "junction"
+        },
+        {
+          "elapsedEstimate": 39982.90000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.46867154244689,
+              "y": 29.593566932376074
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 26.10000000000001,
+            "y": 30.99999983723956
+          },
+          "click": {
+            "x": 633.253133419311,
+            "y": 442.4335795637511
+          }
+        },
+        {
+          "elapsedEstimate": 41021,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.93893830988001,
+              "y": 30.69085605638669
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 26.268671671549487,
+            "y": 31.39356774902341
+          },
+          "click": {
+            "x": 621.1893499290172,
+            "y": 457.513324185407
+          }
+        },
+        {
+          "elapsedEstimate": 42293.700000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 25.515480564877056,
+              "y": 32.03612131804646
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 26.738938395182302,
+            "y": 32.490856770833304
+          },
+          "click": {
+            "x": 616.938328674448,
+            "y": 462.82710075361865
+          }
+        },
+        {
+          "elapsedEstimate": 43364.800000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 26.000696569691677,
+              "y": 33.16829199594725
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 27.315480550130218,
+            "y": 33.83612044270831
+          },
+          "click": {
+            "x": 620.5913339896756,
+            "y": 458.260813592006
+          }
+        },
+        {
+          "elapsedEstimate": 44492.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 26.51150748093106,
+              "y": 34.36018412217247
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 27.80069580078126,
+            "y": 34.96829207356768
+          },
+          "click": {
+            "x": 619.5675889463505,
+            "y": 459.5405559313188
+          }
+        },
+        {
+          "elapsedEstimate": 45528.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 26.980868233977446,
+              "y": 35.45535921261404
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 28.311507161458337,
+            "y": 36.16018457031247
+          },
+          "click": {
+            "x": 621.2255929065261,
+            "y": 457.4680357223103
+          }
+        },
+        {
+          "elapsedEstimate": 46612.800000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 27.472063933744582,
+              "y": 36.601482512070696
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 28.780868530273445,
+            "y": 37.25535974121091
+          },
+          "click": {
+            "x": 628.5900526739887,
+            "y": 385.54431637563647
+          }
+        },
+        {
+          "elapsedEstimate": 47639.700000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 27.93725702061192,
+              "y": 37.686933048094474
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 26.97551269531251,
+            "y": 35.83033634440101
+          },
+          "click": {
+            "x": 707.5717885967224,
+            "y": 469.19962139654297
+          }
+        },
+        {
+          "elapsedEstimate": 48697.300000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 28.416357428316097,
+              "y": 38.80483399940423
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 29.27502950032553,
+            "y": 35.877460571289035
+          },
+          "click": {
+            "x": 556.4101873472426,
+            "y": 459.1731167154414
+          }
+        },
+        {
+          "elapsedEstimate": 50510.800000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 29.33344305672121,
+              "y": 40.26045095522538
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 28.720970662434905,
+            "y": 38.1097278238932
+          },
+          "click": {
+            "x": 576.662714843749,
+            "y": 459.03952270507847
+          }
+        },
+        {
+          "elapsedEstimate": 51544.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 30.468085903009424,
+              "y": 40.61502684469045
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 28.500000000000004,
+            "y": 39.99999983723956
+          },
+          "click": {
+            "x": 660.8600984373228,
+            "y": 481.66250175238713
+          }
+        },
+        {
+          "elapsedEstimate": 52563.800000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 31.586922560863016,
+              "y": 40.96466330026969
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 30.43641866048177,
+            "y": 41.241081583658826
+          },
+          "click": {
+            "x": 669.650029763554,
+            "y": 480.48353400673295
+          }
+        },
+        {
+          "elapsedEstimate": 53724.800000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 32.86129650353649,
+              "y": 41.36290515735515
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 32.48003641764323,
+            "y": 42.29636519368487
+          },
+          "click": {
+            "x": 736.9705797053088,
+            "y": 428.55237043255613
+          }
+        },
+        {
+          "elapsedEstimate": 54745.700000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 33.98188940454823,
+              "y": 41.71309043892132
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 33.914625040690105,
+            "y": 40.49860111490883
+          },
+          "click": {
+            "x": 605.5832511953689,
+            "y": 399.22630531805925
+          }
+        },
+        {
+          "elapsedEstimate": 55813.60000000056,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 35.15407194837379,
+              "y": 42.079397483866806
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 32.18188985188802,
+            "y": 39.91309086100258
+          },
+          "click": {
+            "x": 656.0046230291488,
+            "y": 482.12964793579636
+          }
+        },
+        {
+          "elapsedEstimate": 56927.300000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 36.376526952642244,
+              "y": 42.461414672700705
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 34.052955118815106,
+            "y": 41.2506681722005
+          },
+          "click": {
+            "x": 655.0389868695634,
+            "y": 482.2074394516477
+          }
+        },
+        {
+          "elapsedEstimate": 57940.300000000745,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 36.5,
+              "y": 43.5355884102347
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 35.9105194091797,
+            "y": 42.606932413736956
+          },
+          "click": {
+            "x": 629.8247378296767,
+            "y": 402.7720488097708
+          }
+        },
+        {
+          "elapsedEstimate": 58969.60000000056,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 35.784286256515614,
+              "y": 44.07157137434844
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 34.70000000000001,
+            "y": 41.735587402343725
+          },
+          "click": {
+            "x": 602.449068535327,
+            "y": 431.3040534278047
+          }
+        },
+        {
+          "elapsedEstimate": 59989.200000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 33.98428649902344,
+            "y": 42.27157067871093
+          },
+          "click": {
+            "x": 630.6185253906247,
+            "y": 430.16214233398455
+          },
+          "stop": "market"
+        },
+        {
+          "elapsedEstimate": 61351.700000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 33.7,
+            "y": 42.299999837239575
+          },
+          "click": null,
+          "stop": "market"
+        },
+        {
+          "elapsedEstimate": 62357.10000000056,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 33.7,
+            "y": 42.299999837239575
+          },
+          "click": null,
+          "stop": "market"
+        },
+        {
+          "elapsedEstimate": 63386,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 33.7,
+            "y": 42.299999837239575
+          },
+          "click": null,
+          "stop": "market"
+        },
+        {
+          "elapsedEstimate": 64402.200000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 33.7,
+            "y": 42.299999837239575
+          },
+          "click": null,
+          "stop": "market"
+        },
+        {
+          "elapsedEstimate": 65409.200000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 33.7,
+            "y": 42.299999837239575
+          },
+          "click": null,
+          "stop": "market"
+        },
+        {
+          "elapsedEstimate": 66434.60000000056,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 36.319956265319924,
+              "y": 44.01800437346801
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 33.7,
+            "y": 42.299999837239575
+          },
+          "click": {
+            "x": 667.0585518727448,
+            "y": 445.0694120232253
+          }
+        },
+        {
+          "elapsedEstimate": 67508.80000000075,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 36.5,
+              "y": 42.94561171398947
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 34.51995544433594,
+            "y": 42.21800419108073
+          },
+          "click": {
+            "x": 690.9414624023436,
+            "y": 467.93060546874995
+          }
+        },
+        {
+          "elapsedEstimate": 68560.30000000075,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 35.75222373320013,
+              "y": 42.34528766893796
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 36.50000000000001,
+            "y": 42.499999837239585
+          },
+          "click": {
+            "x": 622.2080770450524,
+            "y": 474.4626734734775
+          }
+        },
+        {
+          "elapsedEstimate": 69567.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 34.61796597449428,
+              "y": 42.11061364989537
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 37.55222371419271,
+            "y": 44.14528792317708
+          },
+          "click": {
+            "x": 613.0124960074982,
+            "y": 413.46601980529795
+          }
+        },
+        {
+          "elapsedEstimate": 70654.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 33.393841487089425,
+              "y": 41.857346514570224
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 36.4179667154948,
+            "y": 43.910613850911446
+          },
+          "click": {
+            "x": 684.7794140624994,
+            "y": 414.0712915039063
+          }
+        },
+        {
+          "elapsedEstimate": 71863.70000000019,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 32.03210153293103,
+              "y": 41.575607213709866
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 36.5,
+            "y": 42.49999983723957
+          },
+          "click": {
+            "x": 641.022281389809,
+            "y": 385.2123095936074
+          }
+        },
+        {
+          "elapsedEstimate": 72908.20000000019,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 30.855838398529585,
+              "y": 41.33224242728198
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 34.89078165690104,
+            "y": 40.85670556640624
+          },
+          "click": {
+            "x": 542.4232158360949,
+            "y": 434.43908775621173
+          }
+        },
+        {
+          "elapsedEstimate": 74025.20000000019,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 29.59792942665174,
+              "y": 41.0719853986176
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 33.279138183593744,
+            "y": 42.497621500651036
+          },
+          "click": {
+            "x": 572.332820352743,
+            "y": 411.39732711536834
+          }
+        },
+        {
+          "elapsedEstimate": 75107.80000000075,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 28.37875999696896,
+              "y": 40.81974344764875
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 31.397929890950515,
+            "y": 42.871985717773434
+          },
+          "click": {
+            "x": 610.992171284294,
+            "y": 411.92881753840635
+          }
+        },
+        {
+          "elapsedEstimate": 76131.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 27.22603338675079,
+              "y": 40.581248286913954
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 30.178759765624992,
+            "y": 42.61974267578125
+          },
+          "click": {
+            "x": 612.5730402997926,
+            "y": 413.1316884838775
+          }
+        },
+        {
+          "elapsedEstimate": 77182.30000000075,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 26.042562895661355,
+              "y": 40.33639232324028
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 29.02603352864583,
+            "y": 42.38124780273437
+          },
+          "click": {
+            "x": 611.8415453952884,
+            "y": 412.57510831282127
+          }
+        },
+        {
+          "elapsedEstimate": 78397.60000000056,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.673953429660536,
+              "y": 40.053231744067695
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 27.84256286621094,
+            "y": 42.13639204915364
+          },
+          "click": {
+            "x": 607.4365260560663,
+            "y": 409.2234538754547
+          }
+        },
+        {
+          "elapsedEstimate": 80081.90000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 22.777179856398558,
+              "y": 39.660795832358325
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 26.473953247070316,
+            "y": 41.853231648763014
+          },
+          "click": {
+            "x": 594.8698727719882,
+            "y": 399.6618618938533
+          }
+        },
+        {
+          "elapsedEstimate": 81146.30000000075,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 21.695646822727802,
+              "y": 39.1956468227278
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 24.57717997233073,
+            "y": 41.4607959391276
+          },
+          "click": {
+            "x": 621.5084790039061,
+            "y": 410.79976600995906
+          }
+        },
+        {
+          "elapsedEstimate": 82531.10000000056,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 20.569565131552753,
+              "y": 38.06956513155275
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 23.49564717610678,
+            "y": 40.99564701334634
+          },
+          "click": {
+            "x": 684.9999951171868,
+            "y": 411.6305871582031
+          }
+        },
+        {
+          "elapsedEstimate": 83936.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 19.220580739793995,
+              "y": 37.277308782798286
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 23.50000000000001,
+            "y": 39.49999983723957
+          },
+          "click": {
+            "x": 583.5771574866392,
+            "y": 394.19276811083034
+          }
+        },
+        {
+          "elapsedEstimate": 85280.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 17.734338751066772,
+              "y": 36.85266821459051
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 21.2327117919922,
+            "y": 39.11347334798175
+          },
+          "click": {
+            "x": 651.4228466796865,
+            "y": 391.3072229003907
+          }
+        },
+        {
+          "elapsedEstimate": 86422.80000000075,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 16.47523420190042,
+              "y": 36.483223169029316
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 20.000000000000014,
+            "y": 37.499999837239564
+          },
+          "click": {
+            "x": 611.272552188882,
+            "y": 387.37186004605303
+          }
+        },
+        {
+          "elapsedEstimate": 87459.10000000056,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 15.48856624210458,
+              "y": 35.81483519626439
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 17.96693725585939,
+            "y": 36.4245196940104
+          },
+          "click": {
+            "x": 583.9394045197362,
+            "y": 441.6791673274875
+          }
+        },
+        {
+          "elapsedEstimate": 88541.70000000019,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 14.457815751633866,
+              "y": 35.116584864010036
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 17.288566080729183,
+            "y": 37.61483544921874
+          },
+          "click": {
+            "x": 679.7880810546867,
+            "y": 420.4489770507812
+          }
+        },
+        {
+          "elapsedEstimate": 89745.60000000056,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 13.311574743432775,
+              "y": 34.340099019744784
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 17.500000000000018,
+            "y": 36.49999983723957
+          },
+          "click": {
+            "x": 582.0514919562785,
+            "y": 394.74452135208793
+          }
+        },
+        {
+          "elapsedEstimate": 90795.80000000075,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 12.311672503369124,
+              "y": 33.66274588937908
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 15.225675455729181,
+            "y": 36.15729150390624
+          },
+          "click": {
+            "x": 627.416279865013,
+            "y": 406.8717714966918
+          }
+        },
+        {
+          "elapsedEstimate": 91928.20000000019,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 11.23350710949432,
+              "y": 32.93237578385099
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 14.111671956380224,
+            "y": 35.46274601236978
+          },
+          "click": {
+            "x": 629.5661614489866,
+            "y": 406.8719738689297
+          }
+        },
+        {
+          "elapsedEstimate": 92956.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 10.254456001650972,
+              "y": 32.26914761402163
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 13.03350728352866,
+            "y": 34.73237593587238
+          },
+          "click": {
+            "x": 630.5253111991921,
+            "y": 409.36580594407326
+          }
+        },
+        {
+          "elapsedEstimate": 93976.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 9.28340258835721,
+              "y": 31.61133723727424
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 12.05445658365887,
+            "y": 34.0691475830078
+          },
+          "click": {
+            "x": 630.6026905129571,
+            "y": 409.5670348844716
+          }
+        },
+        {
+          "elapsedEstimate": 95204.10000000056,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 8.11450144559763,
+              "y": 30.819500979275816
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 11.083402506510435,
+            "y": 33.411338134765614
+          },
+          "click": {
+            "x": 628.6880828373099,
+            "y": 404.5889267539609
+          }
+        },
+        {
+          "elapsedEstimate": 96225.80000000075,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 9.91450195312502,
+            "y": 32.61950056966145
+          },
+          "click": {
+            "x": 631.1499584960927,
+            "y": 410.9899621582032
+          },
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 97239.80000000075,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 9.000000000000014,
+            "y": 31.999999837239564
+          },
+          "click": null,
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 98267.30000000075,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 9.000000000000014,
+            "y": 31.999999837239564
+          },
+          "click": null,
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 99277.90000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 9.000000000000014,
+            "y": 31.999999837239564
+          },
+          "click": null,
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 100292.70000000019,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 9.000000000000014,
+            "y": 31.999999837239564
+          },
+          "click": null,
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 101345.20000000019,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 9.000000000000014,
+            "y": 31.999999837239564
+          },
+          "click": null,
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 102357,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 9.000000000000014,
+            "y": 31.999999837239564
+          },
+          "click": null,
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 103372.90000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 8.013499072623151,
+              "y": 30.24118982646193
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 9.000000000000014,
+            "y": 31.999999837239564
+          },
+          "click": {
+            "x": 663.1692725020231,
+            "y": 446.8203359276825
+          }
+        },
+        {
+          "elapsedEstimate": 104386.60000000056,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 9.177762621508904,
+              "y": 30.30013987957007
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 9.813498942057306,
+            "y": 32.04119042968748
+          },
+          "click": {
+            "x": 673.1594268870703,
+            "y": 452.3481969400129
+          }
+        },
+        {
+          "elapsedEstimate": 105562.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 10.528202673574997,
+              "y": 30.36851659106709
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 10.977762858072932,
+            "y": 32.10014021809894
+          },
+          "click": {
+            "x": 678.4619032760176,
+            "y": 455.28224282705315
+          }
+        }
+      ],
+      "landmarkEstimates": [
+        "book-window",
+        "junction",
+        "market"
+      ],
+      "consoleErrors": [],
+      "rawVideo": "/workspace/junyan/output/0079-raw/page@b05c52cb6448fa82e21f930b1e29d854.webm",
+      "clockNote": "Passive viewport-mount wall-time estimate guides only real player input. It does not set world time or NPC state. Images and video must be inspected for visible proof.",
+      "publishedVideo": "docs/evidence/0079/courier-motion-desktop.mp4"
+    },
+    {
+      "device": "phone",
+      "sourceHead": "2c43a9eba832fbf5c2f32f30223f73030229d554",
+      "plan": {
+        "diagnostics": [],
+        "actors": 1,
+        "route": [
+          {
+            "from": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "to": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "startMs": 0,
+            "endMs": 6500,
+            "action": "work"
+          },
+          {
+            "from": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "to": {
+              "x": 36.5,
+              "y": 44
+            },
+            "startMs": 6500,
+            "endMs": 7373.902227923556,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 36.5,
+              "y": 44
+            },
+            "to": {
+              "x": 36.5,
+              "y": 42.5
+            },
+            "startMs": 7373.902227923556,
+            "endMs": 8678.250054010512,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 36.5,
+              "y": 42.5
+            },
+            "to": {
+              "x": 22,
+              "y": 39.5
+            },
+            "startMs": 8678.250054010512,
+            "endMs": 21553.983006150378,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 22,
+              "y": 39.5
+            },
+            "to": {
+              "x": 20,
+              "y": 37.5
+            },
+            "startMs": 21553.983006150378,
+            "endMs": 24013.484853755763,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 20,
+              "y": 37.5
+            },
+            "to": {
+              "x": 16.5,
+              "y": 36.5
+            },
+            "startMs": 24013.484853755763,
+            "endMs": 27178.750023008164,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 16.5,
+              "y": 36.5
+            },
+            "to": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "startMs": 27178.750023008164,
+            "endMs": 36946.56492397289,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "to": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "startMs": 36946.56492397289,
+            "endMs": 43446.56492397289,
+            "action": "work"
+          },
+          {
+            "from": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "to": {
+              "x": 23,
+              "y": 31
+            },
+            "startMs": 43446.56492397289,
+            "endMs": 57203.29553306165,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 23,
+              "y": 31
+            },
+            "to": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "startMs": 57203.29553306165,
+            "endMs": 59134.04364707683,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "to": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "startMs": 59134.04364707683,
+            "endMs": 65634.04364707683,
+            "action": "work"
+          },
+          {
+            "from": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "to": {
+              "x": 28.5,
+              "y": 39
+            },
+            "startMs": 65634.04364707683,
+            "endMs": 74905.4196020416,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 28.5,
+              "y": 39
+            },
+            "to": {
+              "x": 28.5,
+              "y": 40
+            },
+            "startMs": 74905.4196020416,
+            "endMs": 75774.98481943291,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 28.5,
+              "y": 40
+            },
+            "to": {
+              "x": 36.5,
+              "y": 42.5
+            },
+            "startMs": 75774.98481943291,
+            "endMs": 83063.26943431995,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 36.5,
+              "y": 42.5
+            },
+            "to": {
+              "x": 36.5,
+              "y": 44
+            },
+            "startMs": 83063.26943431995,
+            "endMs": 84367.61726040691,
+            "action": "walk"
+          },
+          {
+            "from": {
+              "x": 36.5,
+              "y": 44
+            },
+            "to": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "startMs": 84367.61726040691,
+            "endMs": 85241.51948833046,
+            "action": "walk"
+          }
+        ],
+        "durationMs": 85241.51948833046,
+        "hasGreeting": false
+      },
+      "samples": [
+        {
+          "elapsedEstimate": 2292.9000000003725,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 15.41685406813592,
+              "y": 35.76625598164046
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 34,
+            "y": 30.482999999999997
+          },
+          "click": {
+            "x": 136.59961385858597,
+            "y": 433.32323224888785
+          }
+        },
+        {
+          "elapsedEstimate": 3453.4000000003725,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 14.311934481777454,
+              "y": 35.017762068300854
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 31.732865767045453,
+            "y": 30.870428977272727
+          },
+          "click": {
+            "x": 138.63926864994073,
+            "y": 431.9535265763068
+          }
+        },
+        {
+          "elapsedEstimate": 4543.9000000003725,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 13.273662350003299,
+              "y": 34.3144164306474
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 29.449827367609196,
+            "y": 31.149242079301317
+          },
+          "click": {
+            "x": 130.65366331533426,
+            "y": 438.3453764396614
+          }
+        },
+        {
+          "elapsedEstimate": 5976.299999999814,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 11.909865007910021,
+              "y": 33.39055371503582
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 27.275836250998754,
+            "y": 31.90008478060636
+          },
+          "click": {
+            "x": 133.89848847294328,
+            "y": 435.37659208744975
+          }
+        },
+        {
+          "elapsedEstimate": 7058.5999999996275,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 10.87940014938735,
+              "y": 32.69249687539143
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 25.04064663973721,
+            "y": 32.442236838600856
+          },
+          "click": {
+            "x": 136.80246806184357,
+            "y": 433.1807344251336
+          }
+        },
+        {
+          "elapsedEstimate": 8159.9000000003725,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 9.830845267476619,
+              "y": 31.982185503774485
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 22.771644939075813,
+            "y": 32.81857718450373
+          },
+          "click": {
+            "x": 140.22791911676785,
+            "y": 430.9742581242174
+          }
+        },
+        {
+          "elapsedEstimate": 9238.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 8.803903202982152,
+              "y": 31.28651507298791
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 20.480199640447438,
+            "y": 33.01677186168324
+          },
+          "click": {
+            "x": 144.04394966864876,
+            "y": 428.87928676057936
+          }
+        },
+        {
+          "elapsedEstimate": 10307.299999999814,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.786291782129311,
+              "y": 30.597165400797273
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 18.18025623668324,
+            "y": 33.03301276189631
+          },
+          "click": {
+            "x": 148.27150125706765,
+            "y": 426.9021799528458
+          }
+        },
+        {
+          "elapsedEstimate": 11409.700000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 15.886526281183423,
+            "y": 32.863305550315175
+          },
+          "click": {
+            "x": 151.08700653783796,
+            "y": 425.74947343326096
+          },
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 12555.400000000373,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 13.604389190673833,
+            "y": 32.57721365911311
+          },
+          "click": {
+            "x": 151.08701055389486,
+            "y": 425.749471872608
+          },
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 13606.299999999814,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 11.322252100164247,
+            "y": 32.29112176791105
+          },
+          "click": {
+            "x": 151.0870224633186,
+            "y": 425.7494672445681
+          },
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 14799.200000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 9.040115356445321,
+            "y": 32.00502952991833
+          },
+          "click": null,
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 15809.900000000373,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 9.040115356445321,
+            "y": 32.00502952991833
+          },
+          "click": null,
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 16851.900000000373,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 9.040115356445321,
+            "y": 32.00502952991833
+          },
+          "click": null,
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 17864.599999999627,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.707093996870235,
+              "y": 30.22567564541115
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 9.040115356445321,
+            "y": 32.00502952991833
+          },
+          "click": {
+            "x": 204.81931554850618,
+            "y": 459.3638723150951
+          }
+        },
+        {
+          "elapsedEstimate": 18900.799999999814,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 8.897199441632404,
+              "y": 30.28593414894341
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 9.507093602960767,
+            "y": 32.02567501831056
+          },
+          "click": {
+            "x": 219.85662757685336,
+            "y": 467.7540146623494
+          }
+        },
+        {
+          "elapsedEstimate": 19941.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 10.092473265569858,
+              "y": 30.3464543425605
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 10.697200081565168,
+            "y": 32.08593475064365
+          },
+          "click": {
+            "x": 219.96457902593266,
+            "y": 467.81372053513684
+          }
+        },
+        {
+          "elapsedEstimate": 21021.700000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 11.333113973379245,
+              "y": 30.409271593588823
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 11.892473394220527,
+            "y": 32.14645422918147
+          },
+          "click": {
+            "x": 220.91211072453004,
+            "y": 468.33803737922676
+          }
+        },
+        {
+          "elapsedEstimate": 22066.799999999814,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 12.533441323620778,
+              "y": 30.470047661955483
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 13.133114207874648,
+            "y": 32.2092718894265
+          },
+          "click": {
+            "x": 220.07012955077735,
+            "y": 467.8721317710262
+          }
+        },
+        {
+          "elapsedEstimate": 23136.599999999627,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 13.762137332891305,
+              "y": 30.53226011812108
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 14.333441300825642,
+            "y": 32.27004764626244
+          },
+          "click": {
+            "x": 220.66263832455468,
+            "y": 468.1999935431674
+          }
+        },
+        {
+          "elapsedEstimate": 24150.900000000373,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 14.927089999001069,
+              "y": 30.59124506324056
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 15.562136910178442,
+            "y": 32.33225946322356
+          },
+          "click": {
+            "x": 219.3312847537238,
+            "y": 467.46332557723593
+          }
+        },
+        {
+          "elapsedEstimate": 25287.299999999814,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 16.232278020065365,
+              "y": 30.657330532661536
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 16.727089621803973,
+            "y": 32.391244739879276
+          },
+          "click": {
+            "x": 222.26025732054097,
+            "y": 469.08401610148024
+          }
+        },
+        {
+          "elapsedEstimate": 26355.700000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 17.459366089148666,
+              "y": 30.719461574134108
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 18.032277887517747,
+            "y": 32.457330555308964
+          },
+          "click": {
+            "x": 220.62905802172713,
+            "y": 468.18141142501685
+          }
+        },
+        {
+          "elapsedEstimate": 27402.299999999814,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 18.661416232448627,
+              "y": 30.780324872529043
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 19.259365428577755,
+            "y": 32.519460876464855
+          },
+          "click": {
+            "x": 220.10610977174701,
+            "y": 467.8920627992856
+          }
+        },
+        {
+          "elapsedEstimate": 28476.900000000373,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 19.89562517950698,
+              "y": 30.842816464785162
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 20.461416071111493,
+            "y": 32.580324718128566
+          },
+          "click": {
+            "x": 220.77778195825556,
+            "y": 468.2637094055729
+          }
+        },
+        {
+          "elapsedEstimate": 29595.700000000186,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 21.180599095352814,
+              "y": 30.90787843520774
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 21.69562495838511,
+            "y": 32.64281604836205
+          },
+          "click": {
+            "x": 221.83805850268436,
+            "y": 468.85040176194735
+          }
+        },
+        {
+          "elapsedEstimate": 30650.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 22.39206717403906,
+              "y": 30.969218591090584
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 22.98059914328834,
+            "y": 32.707878484552566
+          },
+          "click": {
+            "x": 220.30281433267933,
+            "y": 468.0008895101761
+          }
+        },
+        {
+          "elapsedEstimate": 31716.900000000373,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 23.361627301854035,
+              "y": 30.499285274355955
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 24.192066886208266,
+            "y": 32.76921846979315
+          },
+          "click": {
+            "x": 226.66885944382534,
+            "y": 459.49589942229426
+          }
+        },
+        {
+          "elapsedEstimate": 32779.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.07709090374605,
+              "y": 29.50864336404393
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 25.161627682772544,
+            "y": 32.29928591364081
+          },
+          "click": {
+            "x": 232.53432695254853,
+            "y": 450.973027385143
+          }
+        },
+        {
+          "elapsedEstimate": 33868.59999999963,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 25.877090800892212,
+            "y": 31.308643019242727
+          },
+          "click": {
+            "x": 206.6941488037114,
+            "y": 453.05692797851566
+          },
+          "stop": "junction"
+        },
+        {
+          "elapsedEstimate": 35086.799999999814,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 26.099999514493064,
+            "y": 30.999999331387617
+          },
+          "click": null,
+          "stop": "junction"
+        },
+        {
+          "elapsedEstimate": 36202.299999999814,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 26.099999514493064,
+            "y": 30.999999331387617
+          },
+          "click": null,
+          "stop": "junction"
+        },
+        {
+          "elapsedEstimate": 37219.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 26.099999514493064,
+            "y": 30.999999331387617
+          },
+          "click": null,
+          "stop": "junction"
+        },
+        {
+          "elapsedEstimate": 38233.799999999814,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 26.099999514493064,
+            "y": 30.999999331387617
+          },
+          "click": null,
+          "stop": "junction"
+        },
+        {
+          "elapsedEstimate": 39240.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.3,
+              "y": 29.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 26.099999514493064,
+            "y": 30.999999331387617
+          },
+          "click": null,
+          "stop": "junction"
+        },
+        {
+          "elapsedEstimate": 40251.09999999963,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.590168071707325,
+              "y": 29.877058833983757
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 26.099999514493064,
+            "y": 30.999999331387617
+          },
+          "click": {
+            "x": 186.48839920159875,
+            "y": 464.6395086579144
+          }
+        },
+        {
+          "elapsedEstimate": 41288.09999999963,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 25.059936531227912,
+              "y": 30.97318523953179
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 26.390167583118775,
+            "y": 31.677058158180945
+          },
+          "click": {
+            "x": 181.22012106868252,
+            "y": 471.2248563240597
+          }
+        },
+        {
+          "elapsedEstimate": 42340.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 25.536681301526503,
+              "y": 32.08558970356184
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 26.859936454079357,
+            "y": 32.773185061368096
+          },
+          "click": {
+            "x": 181.01548451557508,
+            "y": 471.48064438604973
+          }
+        },
+        {
+          "elapsedEstimate": 43458,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 26.042916840113055,
+              "y": 33.266805960263795
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 27.33668171275744,
+            "y": 33.88558997136899
+          },
+          "click": {
+            "x": 180.15042104613778,
+            "y": 472.5619622787546
+          }
+        },
+        {
+          "elapsedEstimate": 44490.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 26.510646767263495,
+              "y": 34.358175790281486
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 27.84291631525211,
+            "y": 35.0668054310192
+          },
+          "click": {
+            "x": 181.2799220404802,
+            "y": 471.15010892401034
+          }
+        },
+        {
+          "elapsedEstimate": 45614.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 27.019826852606926,
+              "y": 35.546262656082824
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 28.31064709750087,
+            "y": 36.15817610029743
+          },
+          "click": {
+            "x": 180.06405038505468,
+            "y": 472.6699294198059
+          }
+        },
+        {
+          "elapsedEstimate": 46777.299999999814,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 27.546583617052875,
+              "y": 36.77536177312338
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 28.819826646284604,
+            "y": 37.3462621765137
+          },
+          "click": {
+            "x": 185.8441074855378,
+            "y": 418.5144760773368
+          }
+        },
+        {
+          "elapsedEstimate": 47845.09999999963,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 28.03030469812905,
+              "y": 37.90404429563445
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 26.99875918301667,
+            "y": 35.941371942693564
+          },
+          "click": {
+            "x": 242.61451762258613,
+            "y": 480.70944454480673
+          }
+        },
+        {
+          "elapsedEstimate": 48971.59999999963,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 28.5,
+              "y": 39.10311071735353
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 29.29497285322708,
+            "y": 36.07328937599878
+          },
+          "click": {
+            "x": 132.9056203418274,
+            "y": 471.7834755803437
+          }
+        },
+        {
+          "elapsedEstimate": 50195.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 28.987243623887714,
+              "y": 40.15226363246491
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 28.692076943137412,
+            "y": 38.29286508456146
+          },
+          "click": {
+            "x": 153.21733911132904,
+            "y": 470.66563769531234
+          }
+        },
+        {
+          "elapsedEstimate": 51299.90000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 30.19960022998836,
+              "y": 40.531125071871365
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 28.500000693581306,
+            "y": 40.00000037175962
+          },
+          "click": {
+            "x": 209.0608735301516,
+            "y": 489.0820888615868
+          }
+        },
+        {
+          "elapsedEstimate": 52345.09999999963,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 31.34686607398609,
+              "y": 40.889645648120656
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 30.414206418124095,
+            "y": 41.27507576404921
+          },
+          "click": {
+            "x": 216.67486322258355,
+            "y": 488.09882807473844
+          }
+        },
+        {
+          "elapsedEstimate": 53395,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 32.49929088226632,
+              "y": 41.24977840070822
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 32.45676318081941,
+            "y": 42.332411357532884
+          },
+          "click": {
+            "x": 264.8861335771802,
+            "y": 446.30831075717913
+          }
+        },
+        {
+          "elapsedEstimate": 54484.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 33.695072943548794,
+              "y": 41.623460294859
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 33.695462660355986,
+            "y": 40.39446815906875
+          },
+          "click": {
+            "x": 167.9535992428562,
+            "y": 427.91462660881365
+          }
+        },
+        {
+          "elapsedEstimate": 55513.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 34.824666590753615,
+              "y": 41.97645830961051
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 31.895072243430384,
+            "y": 39.8234596502131
+          },
+          "click": {
+            "x": 207.91973842655608,
+            "y": 489.1916195954
+          }
+        },
+        {
+          "elapsedEstimate": 56709.799999999814,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 36.137787648135216,
+              "y": 42.386808640042254
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 33.788321755149134,
+            "y": 41.129448308771345
+          },
+          "click": {
+            "x": 213.25841421185117,
+            "y": 488.59534040325553
+          }
+        },
+        {
+          "elapsedEstimate": 58034.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 36.5,
+              "y": 43.64380341023428
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 35.77580087835137,
+            "y": 42.286999814120236
+          },
+          "click": {
+            "x": 181.0827015617608,
+            "y": 437.29102989538956
+          }
+        },
+        {
+          "elapsedEstimate": 59108.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 35.62545842021451,
+              "y": 44.08745415797855
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 34.6999993757768,
+            "y": 41.843802737149346
+          },
+          "click": {
+            "x": 165.99976771938714,
+            "y": 449.26021511793607
+          },
+          "stop": "market"
+        },
+        {
+          "elapsedEstimate": 60271.09999999963,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 33.82545887340198,
+            "y": 42.28745445667616
+          },
+          "click": null,
+          "stop": "market"
+        },
+        {
+          "elapsedEstimate": 61305.90000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 33.82545887340198,
+            "y": 42.28745445667616
+          },
+          "click": null,
+          "stop": "market"
+        },
+        {
+          "elapsedEstimate": 62334.90000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 33.82545887340198,
+            "y": 42.28745445667616
+          },
+          "click": null,
+          "stop": "market"
+        },
+        {
+          "elapsedEstimate": 63377.299999999814,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 33.82545887340198,
+            "y": 42.28745445667616
+          },
+          "click": null,
+          "stop": "market"
+        },
+        {
+          "elapsedEstimate": 64387.59999999963,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 33.82545887340198,
+            "y": 42.28745445667616
+          },
+          "click": null,
+          "stop": "market"
+        },
+        {
+          "elapsedEstimate": 65403.90000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 35.5,
+              "y": 44.1
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 33.82545887340198,
+            "y": 42.28745445667616
+          },
+          "click": null,
+          "stop": "market"
+        },
+        {
+          "elapsedEstimate": 66436.20000000019,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 36.32178713374949,
+              "y": 44.01782128662505
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 33.82545887340198,
+            "y": 42.28745445667616
+          },
+          "click": {
+            "x": 211.85115146876979,
+            "y": 460.8936459932606
+          }
+        },
+        {
+          "elapsedEstimate": 67504.59999999963,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 36.5,
+              "y": 42.950441713990756
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 34.52178712324661,
+            "y": 42.21782131958011
+          },
+          "click": {
+            "x": 232.312752319337,
+            "y": 478.86430712890603
+          }
+        },
+        {
+          "elapsedEstimate": 68776.29999999981,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 35.50897544499561,
+              "y": 42.29496043689564
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 36.500000693581306,
+            "y": 42.50000037175962
+          },
+          "click": {
+            "x": 177.70832309812218,
+            "y": 480.4432829820536
+          }
+        },
+        {
+          "elapsedEstimate": 69840.90000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 34.310076705996636,
+              "y": 42.04691242193034
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 37.308974872935885,
+            "y": 44.09495963079282
+          },
+          "click": {
+            "x": 201.29166467285262,
+            "y": 422.0567204589842
+          }
+        },
+        {
+          "elapsedEstimate": 70926.09999999963,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 33.087979287661,
+              "y": 41.79406468020572
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 36.000000693581306,
+            "y": 42.50000037175962
+          },
+          "click": {
+            "x": 174.08388090590904,
+            "y": 419.7829137635823
+          }
+        },
+        {
+          "elapsedEstimate": 71973.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 31.908562934707902,
+              "y": 41.55004750373267
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 33.969312841241994,
+            "y": 41.4200453574441
+          },
+          "click": {
+            "x": 146.80345483790148,
+            "y": 472.36177463729916
+          }
+        },
+        {
+          "elapsedEstimate": 73070.20000000019,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 30.673402182375412,
+              "y": 41.294497003250086
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 33.708563371138126,
+            "y": 43.35004809015451
+          },
+          "click": {
+            "x": 173.44857775911743,
+            "y": 437.6021649676615
+          }
+        },
+        {
+          "elapsedEstimate": 74110.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 29.50198149074822,
+              "y": 41.052134101534115
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 32.47340254350141,
+            "y": 43.094497358842354
+          },
+          "click": {
+            "x": 174.56072850021107,
+            "y": 438.4483725893243
+          }
+        },
+        {
+          "elapsedEstimate": 75160.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 28.31941191924557,
+              "y": 40.80746453501632
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 31.301981145685357,
+            "y": 42.85213368918681
+          },
+          "click": {
+            "x": 174.36619841007553,
+            "y": 438.300377813287
+          }
+        },
+        {
+          "elapsedEstimate": 76274.29999999981,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 27.06510662571172,
+              "y": 40.54795309497484
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 30.119412162087166,
+            "y": 42.60746490201085
+          },
+          "click": {
+            "x": 173.11453795453258,
+            "y": 437.348009222474
+          }
+        },
+        {
+          "elapsedEstimate": 77335.20000000019,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 25.87037463979795,
+              "y": 40.30076716685475
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 28.865107102827572,
+            "y": 42.34795382135566
+          },
+          "click": {
+            "x": 174.15399221236856,
+            "y": 438.13888970716414
+          }
+        },
+        {
+          "elapsedEstimate": 78514,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 24.542869629905944,
+              "y": 40.02611095791158
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 27.670374436811944,
+            "y": 42.10076698719373
+          },
+          "click": {
+            "x": 171.83732689227537,
+            "y": 436.37623080193026
+          }
+        },
+        {
+          "elapsedEstimate": 79724.20000000019,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 23.18000352626511,
+              "y": 39.74413866060657
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 26.342869151722283,
+            "y": 41.826110518022034
+          },
+          "click": {
+            "x": 171.22033710308241,
+            "y": 435.90678768840104
+          }
+        },
+        {
+          "elapsedEstimate": 80766.59999999963,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 22.006105305777407,
+              "y": 39.50126316671257
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 24.980004050514896,
+            "y": 41.54413919344817
+          },
+          "click": {
+            "x": 174.51750020395838,
+            "y": 438.41547751379596
+          }
+        },
+        {
+          "elapsedEstimate": 81830,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 21.13968058048658,
+              "y": 38.639680580486576
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 23.806104833429494,
+            "y": 41.30126262040573
+          },
+          "click": {
+            "x": 227.8934713134772,
+            "y": 430.8189580078125
+          }
+        },
+        {
+          "elapsedEstimate": 82929.70000000019,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 20.245434454124954,
+              "y": 37.745434454124954
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 23.500000693581306,
+            "y": 39.5000003717596
+          },
+          "click": {
+            "x": 161.99999291992242,
+            "y": 438.499546271999
+          }
+        },
+        {
+          "elapsedEstimate": 84041.70000000019,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 19.104144997354634,
+              "y": 37.24404142781561
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 22.045434431596227,
+            "y": 39.545434109774504
+          },
+          "click": {
+            "x": 180.92227144978077,
+            "y": 435.9304967217947
+          }
+        },
+        {
+          "elapsedEstimate": 85106.70000000019,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 17.92651854248154,
+              "y": 36.907576726423294
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 20.904145674272005,
+            "y": 39.044042092063215
+          },
+          "click": {
+            "x": 209.07772119140654,
+            "y": 427.0699345703125
+          }
+        },
+        {
+          "elapsedEstimate": 86333.20000000019,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 16.570313052432848,
+              "y": 36.520089443552244
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 20.000000693581313,
+            "y": 37.50000037175959
+          },
+          "click": {
+            "x": 174.07032572753133,
+            "y": 419.7849859898889
+          }
+        },
+        {
+          "elapsedEstimate": 87420.70000000019,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 15.5251271314769,
+              "y": 35.83960225035532
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 17.96909783103249,
+            "y": 36.42044624744763
+          },
+          "click": {
+            "x": 154.011212545808,
+            "y": 460.32703833687316
+          }
+        },
+        {
+          "elapsedEstimate": 88466.70000000019,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 14.529223738688486,
+              "y": 35.16495801653091
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 17.32512664794921,
+            "y": 37.63960164572977
+          },
+          "click": {
+            "x": 223.91844995117233,
+            "y": 443.38798876953126
+          }
+        },
+        {
+          "elapsedEstimate": 89533.09999999963,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 13.513897373421747,
+              "y": 34.477156285221184
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 17.50000069358131,
+            "y": 36.5000003717596
+          },
+          "click": {
+            "x": 151.8082968603347,
+            "y": 427.5015785263222
+          }
+        },
+        {
+          "elapsedEstimate": 90663.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 12.43763619253418,
+              "y": 33.74807613042638
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 15.313897913152513,
+            "y": 36.27715650801226
+          },
+          "click": {
+            "x": 187.36201045328627,
+            "y": 434.1412369197536
+          }
+        },
+        {
+          "elapsedEstimate": 91714.29999999981,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 11.437162688574446,
+              "y": 33.070336014840755
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 14.237636219371439,
+            "y": 35.548075961026285
+          },
+          "click": {
+            "x": 187.8998611385479,
+            "y": 435.53965175319223
+          }
+        },
+        {
+          "elapsedEstimate": 92732.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 10.467727856320767,
+              "y": 32.413622096217296
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 13.23716215653852,
+            "y": 34.87033569058506
+          },
+          "click": {
+            "x": 188.12014447130034,
+            "y": 436.11237315955935
+          }
+        },
+        {
+          "elapsedEstimate": 93762.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 9.48715337808639,
+              "y": 31.749361965800457
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 12.267727591774669,
+            "y": 34.21362168468129
+          },
+          "click": {
+            "x": 188.04108111423628,
+            "y": 435.9068267417398
+          }
+        },
+        {
+          "elapsedEstimate": 94818.79999999981,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 8.481348077760266,
+              "y": 31.06800998816018
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 11.287153417413872,
+            "y": 33.54936220758612
+          },
+          "click": {
+            "x": 187.8620313549914,
+            "y": 435.44126685012503
+          }
+        },
+        {
+          "elapsedEstimate": 95880.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.470591823663959,
+              "y": 30.38330413861107
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 10.28134744817559,
+            "y": 32.86800941883435
+          },
+          "click": {
+            "x": 187.8268924256563,
+            "y": 435.3499300479161
+          }
+        },
+        {
+          "elapsedEstimate": 96933.5,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 9.270592429421148,
+            "y": 32.18330489834873
+          },
+          "click": {
+            "x": 193.07967431640677,
+            "y": 449.0071293945313
+          },
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 97985,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 9.000000693581306,
+            "y": 32.0000003717596
+          },
+          "click": null,
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 98991.90000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 9.000000693581306,
+            "y": 32.0000003717596
+          },
+          "click": null,
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 99997.09999999963,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 9.000000693581306,
+            "y": 32.0000003717596
+          },
+          "click": null,
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 101053.29999999981,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 9.000000693581306,
+            "y": 32.0000003717596
+          },
+          "click": null,
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 102057.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.2,
+              "y": 30.2
+            },
+            "activity": "work",
+            "action": "idle"
+          },
+          "player": {
+            "x": 9.000000693581306,
+            "y": 32.0000003717596
+          },
+          "click": null,
+          "stop": "book-window"
+        },
+        {
+          "elapsedEstimate": 103069.29999999981,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 7.664805757596714,
+              "y": 30.223534468739075
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 9.000000693581306,
+            "y": 32.0000003717596
+          },
+          "click": {
+            "x": 204.70796127479053,
+            "y": 459.3717307709437
+          }
+        },
+        {
+          "elapsedEstimate": 104105.40000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 8.85479634948875,
+              "y": 30.28378715693614
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 9.46480594981799,
+            "y": 32.02353462635388
+          },
+          "click": {
+            "x": 219.85423311994703,
+            "y": 467.75267223278325
+          }
+        },
+        {
+          "elapsedEstimate": 105148.90000000037,
+          "courier": {
+            "id": "resident-courier",
+            "position": {
+              "x": 10.05328605380172,
+              "y": 30.34447017993933
+            },
+            "activity": "walk",
+            "action": "walk"
+          },
+          "player": {
+            "x": 10.654796947132441,
+            "y": 32.083787769664426
+          },
+          "click": {
+            "x": 220.03174732067637,
+            "y": 467.850886686386
+          }
+        }
+      ],
+      "landmarkEstimates": [
+        "book-window",
+        "junction",
+        "market"
+      ],
+      "consoleErrors": [],
+      "rawVideo": "/workspace/junyan/output/0079-raw/page@f79cbcbde8f988d9bb3d8d0fed34adbe.webm",
+      "clockNote": "Passive viewport-mount wall-time estimate guides only real player input. It does not set world time or NPC state. Images and video must be inspected for visible proof.",
+      "publishedVideo": "docs/evidence/0079/courier-motion-phone.mp4"
+    }
+  ]
+}

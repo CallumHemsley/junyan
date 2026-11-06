@@ -1,0 +1,175 @@
+{
+  "sourceHead": "2c43a9eba832fbf5c2f32f30223f73030229d554",
+  "browser": "155.0.8059.79",
+  "purpose": "Diagnostic CPU profiles of actual production town rendering and real keyboard movement. Not a benchmark or a phone-hardware FPS acceptance claim.",
+  "controlled": "Sequential contexts; existing caches warmed after actual restaurant exit; no competing proof browser. Timings inside profiler are diagnostic only.",
+  "results": [
+    {
+      "device": "desktop",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "logicalCanvas": {
+        "width": 640,
+        "height": 358
+      },
+      "before": {
+        "version": 1,
+        "mapId": "town",
+        "position": {
+          "x": 34,
+          "y": 30.482999999999997
+        },
+        "facing": "south",
+        "returnPositions": {
+          "restaurant": {
+            "x": 12,
+            "y": 19.917000000000005,
+            "facing": "south"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "after": {
+        "version": 1,
+        "mapId": "town",
+        "position": {
+          "x": 34.27392135623732,
+          "y": 31.39254520189779
+        },
+        "facing": "east",
+        "returnPositions": {
+          "restaurant": {
+            "x": 12,
+            "y": 19.917000000000005,
+            "facing": "south"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "errors": [],
+      "profile": "profile-desktop.cpuprofile",
+      "profiledInputs": [
+        [
+          "ArrowDown",
+          "ArrowRight"
+        ],
+        [
+          "ArrowUp",
+          "ArrowLeft"
+        ],
+        [
+          "ArrowDown",
+          "ArrowLeft"
+        ],
+        [
+          "ArrowUp",
+          "ArrowRight"
+        ]
+      ]
+    },
+    {
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "logicalCanvas": {
+        "width": 195,
+        "height": 386
+      },
+      "before": {
+        "version": 1,
+        "mapId": "town",
+        "position": {
+          "x": 34,
+          "y": 30.4835
+        },
+        "facing": "south",
+        "returnPositions": {
+          "restaurant": {
+            "x": 12,
+            "y": 19.999999999999993,
+            "facing": "south"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "after": {
+        "version": 1,
+        "mapId": "town",
+        "position": {
+          "x": 34.15058683245817,
+          "y": 30.733879725676957
+        },
+        "facing": "east",
+        "returnPositions": {
+          "restaurant": {
+            "x": 12,
+            "y": 19.999999999999993,
+            "facing": "south"
+          }
+        },
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "elapsedMs": 0,
+          "discoveries": [],
+          "reactions": [],
+          "serviceDepartures": [],
+          "pauses": []
+        }
+      },
+      "errors": [],
+      "profile": "profile-phone.cpuprofile",
+      "profiledInputs": [
+        [
+          "ArrowDown",
+          "ArrowRight"
+        ],
+        [
+          "ArrowUp",
+          "ArrowLeft"
+        ],
+        [
+          "ArrowDown",
+          "ArrowLeft"
+        ],
+        [
+          "ArrowUp",
+          "ArrowRight"
+        ]
+      ]
+    }
+  ],
+  "performanceAcceptance": "open for central profiling and broader devices"
+}

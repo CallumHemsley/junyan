@@ -1,0 +1,18 @@
+{
+  "sourceHead": "2c43a9eba832fbf5c2f32f30223f73030229d554",
+  "surface": "production-renderer fixture, normal -> reduced compared with fresh reduced",
+  "results": [
+    {
+      "device": "desktop",
+      "equal": true,
+      "toggledHash": "fc9d9051b2a68f16f061ca3e850f2032f4a2d33aaaac493eb890ecb0ad5bfc2a",
+      "freshHash": "fc9d9051b2a68f16f061ca3e850f2032f4a2d33aaaac493eb890ecb0ad5bfc2a"
+    },
+    {
+      "device": "phone",
+      "equal": true,
+      "toggledHash": "e2e28a64d698fa8586b8f869e37f5437e2fc986289bfa43d1b704e92f6d00f73",
+      "freshHash": "e2e28a64d698fa8586b8f869e37f5437e2fc986289bfa43d1b704e92f6d00f73"
+    }
+  ]
+}

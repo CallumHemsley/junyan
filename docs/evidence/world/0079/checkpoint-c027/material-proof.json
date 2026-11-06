@@ -1,0 +1,90 @@
+{
+  "sourceHead": "2c43a9eba832fbf5c2f32f30223f73030229d554",
+  "capturedAt": "2026-11-06T01:08:56.728Z",
+  "results": [
+    {
+      "device": "desktop",
+      "probe": {
+        "calls": 26086,
+        "inheritedAlpha": 0.45
+      },
+      "phase": "morning",
+      "served": 0,
+      "validSave": true,
+      "particlesDisabled": true,
+      "renderer": "production paintWorld",
+      "camera": {
+        "width": 640,
+        "height": 400,
+        "focus": {
+          "x": 22,
+          "y": 30
+        },
+        "scale": 17
+      }
+    },
+    {
+      "device": "desktop",
+      "probe": {
+        "calls": 26086,
+        "inheritedAlpha": 0.45
+      },
+      "phase": "evening",
+      "served": 3,
+      "validSave": true,
+      "particlesDisabled": true,
+      "renderer": "production paintWorld",
+      "camera": {
+        "width": 640,
+        "height": 400,
+        "focus": {
+          "x": 22,
+          "y": 30
+        },
+        "scale": 17
+      }
+    },
+    {
+      "device": "phone",
+      "probe": {
+        "calls": 26086,
+        "inheritedAlpha": 0.45
+      },
+      "phase": "morning",
+      "served": 0,
+      "validSave": true,
+      "particlesDisabled": true,
+      "renderer": "production paintWorld",
+      "camera": {
+        "width": 195,
+        "height": 422,
+        "focus": {
+          "x": 22,
+          "y": 30
+        },
+        "scale": 17
+      }
+    },
+    {
+      "device": "phone",
+      "probe": {
+        "calls": 26086,
+        "inheritedAlpha": 0.45
+      },
+      "phase": "evening",
+      "served": 3,
+      "validSave": true,
+      "particlesDisabled": true,
+      "renderer": "production paintWorld",
+      "camera": {
+        "width": 195,
+        "height": 422,
+        "focus": {
+          "x": 22,
+          "y": 30
+        },
+        "scale": 17
+      }
+    }
+  ]
+}
