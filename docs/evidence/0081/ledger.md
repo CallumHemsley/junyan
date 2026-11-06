@@ -50,3 +50,11 @@ Explicit material calls now use the published shadeColor callback from foundatio
 All 21 focused residential/apartment tests and TypeScript pass. Retained route video metadata confirms a real 20.04-second desktop VP9 recording, 960 by 900. A decoded walking frame was inspected.
 
 The stair route remains visually flat in the shared player renderer. Proposed one pure surfaceHeight(mapId,point) seam to foundation/coordinator before altering shared rendering. Actual elevated treads, actor foot height and camera continuity remain open scope, along with independent art/experience review and full external route traversal.
+
+## Fixed-edge refinement and focused independent review
+
+Root's sparse-room critique remains open. The next pass changes the checkerboard wood into staggered planks, recesses window glass, varies book spines and plant silhouettes, and adds bathroom basin/towel/threshold details. All new fixed solids stay outside the placement region. Production normal-UI captures are refreshed with the actual saved bed/table layout; these are the current actor/camera, not a whole-room fit introduced by this owner.
+
+Read-only helper /root/residential_review found two weak assertions and a structural render issue. Fixed all three. The gift test confirms all three gifts actually placed. The route test now uses every legal single-item placement/rotation and the foundation collider/pathfinder to preserve the protected strips and home exit route. Each custom depth item now renders its actual supplied prop directly; it does not scan the map-wide prop collection. No comments or suppressions needed removal. This narrow code review is not the required independent Astra art/experience acceptance.
+
+The ground pass still rebuilds authored geometry each frame. Performance is unproven and should be profiled in the final integrated viewport before accepting it. Further optimization requires actual measurements. Native platform goal remains unavailable; objective stays ACTIVE in this committed record and ticket.
