@@ -1,6 +1,6 @@
 {
   "foundation": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
-  "ownerHead": "5d39236 + tested depth/emission correction (next commit)",
+  "ownerHead": "215cc8a",
   "runtime": "/workspace/junyan/output/world-0086-local-light-app",
   "mainReconciled": false,
   "sharedSource": "git archive; not a git checkout or shared merge",
@@ -17,5 +17,10 @@
     "ownerAtmosphereTests": 25,
     "pinnedRuntimeTests": 443,
     "pinnedRuntimeTestFiles": 58
-  }
+  },
+  "limitations": [
+    "Pre-main-reconciliation foundation snapshot",
+    "Matched fixtures do not prove ordinary progression",
+    "Native cloud Chromium visibility remained visible on real tab switches; no hidden suspension acceptance"
+  ]
 }
