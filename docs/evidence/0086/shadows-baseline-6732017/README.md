@@ -1,0 +1,1 @@
+This diagnostic pass combines atmosphere 5d0609a with old landscape 6732017. It preserves the legacy object-pass cards, not the entire pre-atmosphere renderer. Its contact mode was an explicitly labelled proposed fixture. The current shadows/ directory uses actual landscape 52a4046 contact ground callbacks and no object cards.

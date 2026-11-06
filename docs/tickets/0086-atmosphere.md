@@ -27,3 +27,5 @@ The scope in `docs/world-program/ledger.md` is implemented against `docs/world-p
 - ACTIVE: foundation wiring, actual connected-map traversal and independent review remain. No integrated quality PASS.
 
 - Follow-up: canonical named phases documented; explicit material/emissive boundary and exact emitters added. Native paintWorld snapshots for five maps in three phases inspected. Bridge cutouts and connected-water fill protect crossings. Latest Node 22 full suite: 389 passed, TypeScript passed. Visual findings remain open; see docs/evidence/0086/progress.md.
+
+- Shadow correction: atmosphere5d0609a plus unchanged landscape52a4046 establish one contact/cast boundary. Isolated native landmark captures, overlap/inherited-alpha/deck pixel checks and400-test Node22 regression evidence are in docs/evidence/0086/shadow-boundary.md. Focused review pending; full goal stays ACTIVE.

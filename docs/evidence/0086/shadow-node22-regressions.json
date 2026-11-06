@@ -1,0 +1,11 @@
+{
+  "source": "cd28a53eb98451940ce343d27cafd0ad69dbb325",
+  "atmosphere": "5d0609a",
+  "landscape": "52a4046",
+  "node": "22.23.4",
+  "testsPassed": 400,
+  "filesPassed": 45,
+  "failed": 0,
+  "typescript": "passed",
+  "scope": "Unit/type regression checks, not overall game acceptance."
+}
