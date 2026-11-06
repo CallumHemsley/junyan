@@ -1,0 +1,204 @@
+[
+  {
+    "name": "desktop",
+    "sourceHead": "86194a2ae93eb0d508285d931b8d8beaa1beace5",
+    "seededStart": "Courtyard only; every subsequent connection is real pointer/touch walking",
+    "transitions": [
+      {
+        "from": "courtyard",
+        "exit": "to-town",
+        "to": "town",
+        "arrival": {
+          "x": 44.9541524297547,
+          "y": 3.369188151461087
+        }
+      },
+      {
+        "from": "town",
+        "exit": "to-courtyard",
+        "to": "courtyard",
+        "arrival": {
+          "x": 23,
+          "y": 33.5
+        }
+      },
+      {
+        "from": "courtyard",
+        "exit": "to-residential-hall",
+        "to": "residential-hall",
+        "arrival": {
+          "x": 26.959617818431447,
+          "y": 17.338471273725794
+        }
+      },
+      {
+        "from": "residential-hall",
+        "exit": "to-courtyard",
+        "to": "courtyard",
+        "arrival": {
+          "x": 23,
+          "y": 5.5
+        }
+      },
+      {
+        "from": "courtyard",
+        "exit": "to-park",
+        "to": "park",
+        "arrival": {
+          "x": 5.154536666298261,
+          "y": 28.936695823444083
+        }
+      },
+      {
+        "from": "park",
+        "exit": "to-courtyard",
+        "to": "courtyard",
+        "arrival": {
+          "x": 43,
+          "y": 12
+        }
+      }
+    ],
+    "restoredWorld": {
+      "version": 1,
+      "mapId": "courtyard",
+      "position": {
+        "x": 43,
+        "y": 12
+      },
+      "facing": "west",
+      "returnPositions": {
+        "courtyard": {
+          "x": 45.9999,
+          "y": 11.33320000000001,
+          "facing": "south"
+        },
+        "town": {
+          "x": 44.985367577087075,
+          "y": 1.6199666490272129,
+          "facing": "north"
+        },
+        "residential-hall": {
+          "x": 28.95508806581894,
+          "y": 17.46535209099698,
+          "facing": "east"
+        },
+        "park": {
+          "x": 2.0774556695171613,
+          "y": 28.989997123504978,
+          "facing": "west"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "errors": [],
+    "frames": 276
+  },
+  {
+    "name": "phone",
+    "sourceHead": "86194a2ae93eb0d508285d931b8d8beaa1beace5",
+    "seededStart": "Courtyard only; every subsequent connection is real pointer/touch walking",
+    "transitions": [
+      {
+        "from": "courtyard",
+        "exit": "to-town",
+        "to": "town",
+        "arrival": {
+          "x": 44.9541524297547,
+          "y": 3.369188151461087
+        }
+      },
+      {
+        "from": "town",
+        "exit": "to-courtyard",
+        "to": "courtyard",
+        "arrival": {
+          "x": 23,
+          "y": 33.5
+        }
+      },
+      {
+        "from": "courtyard",
+        "exit": "to-residential-hall",
+        "to": "residential-hall",
+        "arrival": {
+          "x": 26.979869543121985,
+          "y": 17.419478172487935
+        }
+      },
+      {
+        "from": "residential-hall",
+        "exit": "to-courtyard",
+        "to": "courtyard",
+        "arrival": {
+          "x": 23,
+          "y": 5.5
+        }
+      },
+      {
+        "from": "courtyard",
+        "exit": "to-park",
+        "to": "park",
+        "arrival": {
+          "x": 5,
+          "y": 29
+        }
+      },
+      {
+        "from": "park",
+        "exit": "to-courtyard",
+        "to": "courtyard",
+        "arrival": {
+          "x": 43,
+          "y": 12
+        }
+      }
+    ],
+    "restoredWorld": {
+      "version": 1,
+      "mapId": "courtyard",
+      "position": {
+        "x": 43,
+        "y": 12
+      },
+      "facing": "west",
+      "returnPositions": {
+        "courtyard": {
+          "x": 45.9999,
+          "y": 11.333199999999986,
+          "facing": "south"
+        },
+        "town": {
+          "x": 44.98537664610156,
+          "y": 1.6194667312591378,
+          "facing": "north"
+        },
+        "residential-hall": {
+          "x": 28.978849426981377,
+          "y": 17.483348540621474,
+          "facing": "east"
+        },
+        "park": {
+          "x": 2.0000000000000036,
+          "y": 29,
+          "facing": "west"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "errors": [],
+    "frames": 225
+  }
+]

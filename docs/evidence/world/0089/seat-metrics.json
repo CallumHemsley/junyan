@@ -1,0 +1,1658 @@
+[
+  {
+    "name": "e02",
+    "rows": [
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 0.7853981633974483,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.4
+        },
+        "hipScreen": {
+          "x": 193.60000000000002,
+          "y": 283.8666666666667
+        },
+        "seatScreen": {
+          "x": 191.68,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": -0.3811111111111111,
+        "shoulderHeight": 1,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 2,
+        "totalTorsoPixels": 301,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/0/sit/idle/0"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 2.356194490192345,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.4
+        },
+        "hipScreen": {
+          "x": 513.6,
+          "y": 283.8666666666667
+        },
+        "seatScreen": {
+          "x": 511.68,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": -0.3811111111111111,
+        "shoulderHeight": 1,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 0,
+        "totalTorsoPixels": 178,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/6/sit/idle/0"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 3.9269908169872414,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.4
+        },
+        "hipScreen": {
+          "x": 833.6,
+          "y": 283.8666666666667
+        },
+        "seatScreen": {
+          "x": 831.6800000000001,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": -0.3811111111111111,
+        "shoulderHeight": 1,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 2,
+        "totalTorsoPixels": 301,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/4/sit/idle/0"
+      }
+    ]
+  },
+  {
+    "name": "e02",
+    "rows": [
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 0.7853981633974483,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.4
+        },
+        "hipScreen": {
+          "x": 185.20000000000002,
+          "y": 290.4
+        },
+        "seatScreen": {
+          "x": 183.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": -0.3811111111111111,
+        "shoulderHeight": 1,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 1,
+        "totalTorsoPixels": 178,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/0/sit/idle/0"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 2.356194490192345,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.4
+        },
+        "hipScreen": {
+          "x": 505.2,
+          "y": 290.4
+        },
+        "seatScreen": {
+          "x": 503.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": -0.3811111111111111,
+        "shoulderHeight": 1,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 0,
+        "totalTorsoPixels": 103,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/6/sit/idle/0"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 3.9269908169872414,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.4
+        },
+        "hipScreen": {
+          "x": 825.2,
+          "y": 290.4
+        },
+        "seatScreen": {
+          "x": 823.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": -0.3811111111111111,
+        "shoulderHeight": 1,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 1,
+        "totalTorsoPixels": 178,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/4/sit/idle/0"
+      }
+    ]
+  },
+  {
+    "name": "proportional",
+    "rows": [
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 0.7853981633974483,
+        "scale": 24,
+        "ratio": 0.7,
+        "attachment": 0.15011111111111103,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 191.68,
+          "y": 281.224
+        },
+        "seatScreen": {
+          "x": 191.68,
+          "y": 281.224
+        },
+        "hipSeatGapWorld": 0,
+        "shoulderHeight": 1.150111111111111,
+        "tableHeight": 1.008,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 111,
+        "totalTorsoPixels": 314,
+        "footLiftNativePixels": 2.7019999999999986,
+        "sampleFrame": "lin-jie/0/sit/idle/0"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 2.356194490192345,
+        "scale": 24,
+        "ratio": 0.7,
+        "attachment": 0.15011111111111103,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 511.68,
+          "y": 281.224
+        },
+        "seatScreen": {
+          "x": 511.68,
+          "y": 281.224
+        },
+        "hipSeatGapWorld": 0,
+        "shoulderHeight": 1.150111111111111,
+        "tableHeight": 1.008,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 48,
+        "totalTorsoPixels": 192,
+        "footLiftNativePixels": 2.7019999999999986,
+        "sampleFrame": "lin-jie/6/sit/idle/0"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 3.9269908169872414,
+        "scale": 24,
+        "ratio": 0.7,
+        "attachment": 0.15011111111111103,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 831.6800000000001,
+          "y": 281.224
+        },
+        "seatScreen": {
+          "x": 831.6800000000001,
+          "y": 281.224
+        },
+        "hipSeatGapWorld": 0,
+        "shoulderHeight": 1.150111111111111,
+        "tableHeight": 1.008,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 111,
+        "totalTorsoPixels": 314,
+        "footLiftNativePixels": 2.7019999999999986,
+        "sampleFrame": "lin-jie/4/sit/idle/0"
+      }
+    ]
+  },
+  {
+    "name": "proportional",
+    "rows": [
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 0.7853981633974483,
+        "scale": 18,
+        "ratio": 0.7,
+        "attachment": 0.15011111111111103,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 183.76,
+          "y": 288.418
+        },
+        "seatScreen": {
+          "x": 183.76,
+          "y": 288.418
+        },
+        "hipSeatGapWorld": 0,
+        "shoulderHeight": 1.150111111111111,
+        "tableHeight": 1.008,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 65,
+        "totalTorsoPixels": 178,
+        "footLiftNativePixels": 2.7019999999999986,
+        "sampleFrame": "lin-jie/0/sit/idle/0"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 2.356194490192345,
+        "scale": 18,
+        "ratio": 0.7,
+        "attachment": 0.15011111111111103,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 503.76,
+          "y": 288.418
+        },
+        "seatScreen": {
+          "x": 503.76,
+          "y": 288.418
+        },
+        "hipSeatGapWorld": 0,
+        "shoulderHeight": 1.150111111111111,
+        "tableHeight": 1.008,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 25,
+        "totalTorsoPixels": 103,
+        "footLiftNativePixels": 2.7019999999999986,
+        "sampleFrame": "lin-jie/6/sit/idle/0"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 3.9269908169872414,
+        "scale": 18,
+        "ratio": 0.7,
+        "attachment": 0.15011111111111103,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 823.76,
+          "y": 288.418
+        },
+        "seatScreen": {
+          "x": 823.76,
+          "y": 288.418
+        },
+        "hipSeatGapWorld": 0,
+        "shoulderHeight": 1.150111111111111,
+        "tableHeight": 1.008,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 65,
+        "totalTorsoPixels": 178,
+        "footLiftNativePixels": 2.7019999999999986,
+        "sampleFrame": "lin-jie/4/sit/idle/0"
+      }
+    ]
+  },
+  {
+    "name": "compact",
+    "rows": [
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 0.7853981633974483,
+        "scale": 24,
+        "ratio": 0.55,
+        "attachment": 0.03461111111111115,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 191.68,
+          "y": 283.996
+        },
+        "seatScreen": {
+          "x": 191.68,
+          "y": 283.996
+        },
+        "hipSeatGapWorld": 0,
+        "shoulderHeight": 1.0346111111111111,
+        "tableHeight": 0.792,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 117,
+        "totalTorsoPixels": 301,
+        "footLiftNativePixels": 0.6230000000000007,
+        "sampleFrame": "lin-jie/0/sit/idle/0"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 2.356194490192345,
+        "scale": 24,
+        "ratio": 0.55,
+        "attachment": 0.03461111111111115,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 511.68,
+          "y": 283.996
+        },
+        "seatScreen": {
+          "x": 511.68,
+          "y": 283.996
+        },
+        "hipSeatGapWorld": 0,
+        "shoulderHeight": 1.0346111111111111,
+        "tableHeight": 0.792,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 47,
+        "totalTorsoPixels": 178,
+        "footLiftNativePixels": 0.6230000000000007,
+        "sampleFrame": "lin-jie/6/sit/idle/0"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 3.9269908169872414,
+        "scale": 24,
+        "ratio": 0.55,
+        "attachment": 0.03461111111111115,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 831.6800000000001,
+          "y": 283.996
+        },
+        "seatScreen": {
+          "x": 831.6800000000001,
+          "y": 283.996
+        },
+        "hipSeatGapWorld": 0,
+        "shoulderHeight": 1.0346111111111111,
+        "tableHeight": 0.792,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 117,
+        "totalTorsoPixels": 301,
+        "footLiftNativePixels": 0.6230000000000007,
+        "sampleFrame": "lin-jie/4/sit/idle/0"
+      }
+    ]
+  },
+  {
+    "name": "compact",
+    "rows": [
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 0.7853981633974483,
+        "scale": 18,
+        "ratio": 0.55,
+        "attachment": 0.03461111111111115,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 183.76,
+          "y": 290.497
+        },
+        "seatScreen": {
+          "x": 183.76,
+          "y": 290.497
+        },
+        "hipSeatGapWorld": 0,
+        "shoulderHeight": 1.0346111111111111,
+        "tableHeight": 0.792,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 67,
+        "totalTorsoPixels": 178,
+        "footLiftNativePixels": 0.6230000000000007,
+        "sampleFrame": "lin-jie/0/sit/idle/0"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 2.356194490192345,
+        "scale": 18,
+        "ratio": 0.55,
+        "attachment": 0.03461111111111115,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 503.76,
+          "y": 290.497
+        },
+        "seatScreen": {
+          "x": 503.76,
+          "y": 290.497
+        },
+        "hipSeatGapWorld": 0,
+        "shoulderHeight": 1.0346111111111111,
+        "tableHeight": 0.792,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 25,
+        "totalTorsoPixels": 103,
+        "footLiftNativePixels": 0.6230000000000007,
+        "sampleFrame": "lin-jie/6/sit/idle/0"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "e02",
+        "multiplier": 1,
+        "yaw": 3.9269908169872414,
+        "scale": 18,
+        "ratio": 0.55,
+        "attachment": 0.03461111111111115,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 823.76,
+          "y": 290.497
+        },
+        "seatScreen": {
+          "x": 823.76,
+          "y": 290.497
+        },
+        "hipSeatGapWorld": 0,
+        "shoulderHeight": 1.0346111111111111,
+        "tableHeight": 0.792,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 67,
+        "totalTorsoPixels": 178,
+        "footLiftNativePixels": 0.6230000000000007,
+        "sampleFrame": "lin-jie/4/sit/idle/0"
+      }
+    ]
+  },
+  {
+    "name": "attached-original",
+    "rows": [
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 0.7853981633974483,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 191.68,
+          "y": 275.4933333333333
+        },
+        "seatScreen": {
+          "x": 191.68,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": 0.007777777777777772,
+        "shoulderHeight": 1.3888888888888888,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 150,
+        "totalTorsoPixels": 373,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/0/sit/idle/0/seat-0.77"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 2.356194490192345,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 511.68,
+          "y": 275.4933333333333
+        },
+        "seatScreen": {
+          "x": 511.68,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": 0.007777777777777772,
+        "shoulderHeight": 1.3888888888888888,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 65,
+        "totalTorsoPixels": 225,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/6/sit/idle/0/seat-0.77"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 3.9269908169872414,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 831.6800000000001,
+          "y": 275.4933333333333
+        },
+        "seatScreen": {
+          "x": 831.6800000000001,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": 0.007777777777777772,
+        "shoulderHeight": 1.3888888888888888,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 150,
+        "totalTorsoPixels": 373,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/4/sit/idle/0/seat-0.77"
+      }
+    ]
+  },
+  {
+    "name": "attached-original",
+    "rows": [
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 0.7853981633974483,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 183.76,
+          "y": 284.12
+        },
+        "seatScreen": {
+          "x": 183.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": 0.007777777777777772,
+        "shoulderHeight": 1.3888888888888888,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 84,
+        "totalTorsoPixels": 208,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/0/sit/idle/0/seat-0.77"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 2.356194490192345,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 503.76,
+          "y": 284.12
+        },
+        "seatScreen": {
+          "x": 503.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": 0.007777777777777772,
+        "shoulderHeight": 1.3888888888888888,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 35,
+        "totalTorsoPixels": 121,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/6/sit/idle/0/seat-0.77"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 3.9269908169872414,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 823.76,
+          "y": 284.12
+        },
+        "seatScreen": {
+          "x": 823.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": 0.007777777777777772,
+        "shoulderHeight": 1.3888888888888888,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 84,
+        "totalTorsoPixels": 208,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/4/sit/idle/0/seat-0.77"
+      }
+    ]
+  },
+  {
+    "name": "attached-proportional",
+    "rows": [
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 0.7853981633974483,
+        "scale": 24,
+        "ratio": 0.7,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 191.68,
+          "y": 280.82666666666665
+        },
+        "seatScreen": {
+          "x": 191.68,
+          "y": 281.224
+        },
+        "hipSeatGapWorld": 0.016555555555555657,
+        "shoulderHeight": 1.1666666666666667,
+        "tableHeight": 1.008,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 197,
+        "totalTorsoPixels": 374,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/0/sit/idle/0/seat-0.5389999999999999"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 2.356194490192345,
+        "scale": 24,
+        "ratio": 0.7,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 511.68,
+          "y": 280.82666666666665
+        },
+        "seatScreen": {
+          "x": 511.68,
+          "y": 281.224
+        },
+        "hipSeatGapWorld": 0.016555555555555657,
+        "shoulderHeight": 1.1666666666666667,
+        "tableHeight": 1.008,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 96,
+        "totalTorsoPixels": 225,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/6/sit/idle/0/seat-0.5389999999999999"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 3.9269908169872414,
+        "scale": 24,
+        "ratio": 0.7,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 831.6800000000001,
+          "y": 280.82666666666665
+        },
+        "seatScreen": {
+          "x": 831.6800000000001,
+          "y": 281.224
+        },
+        "hipSeatGapWorld": 0.016555555555555657,
+        "shoulderHeight": 1.1666666666666667,
+        "tableHeight": 1.008,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 197,
+        "totalTorsoPixels": 374,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/4/sit/idle/0/seat-0.5389999999999999"
+      }
+    ]
+  },
+  {
+    "name": "attached-proportional",
+    "rows": [
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 0.7853981633974483,
+        "scale": 18,
+        "ratio": 0.7,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 183.76,
+          "y": 288.12
+        },
+        "seatScreen": {
+          "x": 183.76,
+          "y": 288.418
+        },
+        "hipSeatGapWorld": 0.016555555555555657,
+        "shoulderHeight": 1.1666666666666667,
+        "tableHeight": 1.008,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 96,
+        "totalTorsoPixels": 208,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/0/sit/idle/0/seat-0.5389999999999999"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 2.356194490192345,
+        "scale": 18,
+        "ratio": 0.7,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 503.76,
+          "y": 288.12
+        },
+        "seatScreen": {
+          "x": 503.76,
+          "y": 288.418
+        },
+        "hipSeatGapWorld": 0.016555555555555657,
+        "shoulderHeight": 1.1666666666666667,
+        "tableHeight": 1.008,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 43,
+        "totalTorsoPixels": 121,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/6/sit/idle/0/seat-0.5389999999999999"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 3.9269908169872414,
+        "scale": 18,
+        "ratio": 0.7,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 823.76,
+          "y": 288.12
+        },
+        "seatScreen": {
+          "x": 823.76,
+          "y": 288.418
+        },
+        "hipSeatGapWorld": 0.016555555555555657,
+        "shoulderHeight": 1.1666666666666667,
+        "tableHeight": 1.008,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 96,
+        "totalTorsoPixels": 208,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/4/sit/idle/0/seat-0.5389999999999999"
+      }
+    ]
+  },
+  {
+    "name": "calibration-1.2",
+    "rows": [
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1.2,
+        "yaw": 0.7853981633974483,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 191.68,
+          "y": 274.96
+        },
+        "seatScreen": {
+          "x": 191.68,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": 0.029999999999999916,
+        "shoulderHeight": 1.5333333333333332,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 290,
+        "totalTorsoPixels": 554,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/0/sit/idle/0/seat-0.6416666666666667"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1.2,
+        "yaw": 2.356194490192345,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 511.68,
+          "y": 274.96
+        },
+        "seatScreen": {
+          "x": 511.68,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": 0.029999999999999916,
+        "shoulderHeight": 1.5333333333333332,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 136,
+        "totalTorsoPixels": 324,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/6/sit/idle/0/seat-0.6416666666666667"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1.2,
+        "yaw": 3.9269908169872414,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 831.6800000000001,
+          "y": 274.96
+        },
+        "seatScreen": {
+          "x": 831.6800000000001,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": 0.029999999999999916,
+        "shoulderHeight": 1.5333333333333332,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 290,
+        "totalTorsoPixels": 554,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/4/sit/idle/0/seat-0.6416666666666667"
+      }
+    ]
+  },
+  {
+    "name": "calibration-1.2",
+    "rows": [
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1.2,
+        "yaw": 0.7853981633974483,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 183.76,
+          "y": 283.72
+        },
+        "seatScreen": {
+          "x": 183.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": 0.029999999999999916,
+        "shoulderHeight": 1.5333333333333332,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 153,
+        "totalTorsoPixels": 298,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/0/sit/idle/0/seat-0.6416666666666667"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1.2,
+        "yaw": 2.356194490192345,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 503.76,
+          "y": 283.72
+        },
+        "seatScreen": {
+          "x": 503.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": 0.029999999999999916,
+        "shoulderHeight": 1.5333333333333332,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 76,
+        "totalTorsoPixels": 182,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/6/sit/idle/0/seat-0.6416666666666667"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1.2,
+        "yaw": 3.9269908169872414,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 823.76,
+          "y": 283.72
+        },
+        "seatScreen": {
+          "x": 823.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": 0.029999999999999916,
+        "shoulderHeight": 1.5333333333333332,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 153,
+        "totalTorsoPixels": 298,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/4/sit/idle/0/seat-0.6416666666666667"
+      }
+    ]
+  },
+  {
+    "name": "calibration-1.35",
+    "rows": [
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1.35,
+        "yaw": 0.7853981633974483,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 191.68,
+          "y": 276.15999999999997
+        },
+        "seatScreen": {
+          "x": 191.68,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": -0.020000000000000018,
+        "shoulderHeight": 1.5750000000000002,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 369,
+        "totalTorsoPixels": 696,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/0/sit/idle/0/seat-0.5703703703703703"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1.35,
+        "yaw": 2.356194490192345,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 511.68,
+          "y": 276.15999999999997
+        },
+        "seatScreen": {
+          "x": 511.68,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": -0.020000000000000018,
+        "shoulderHeight": 1.5750000000000002,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 174,
+        "totalTorsoPixels": 400,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/6/sit/idle/0/seat-0.5703703703703703"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1.35,
+        "yaw": 3.9269908169872414,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 831.6800000000001,
+          "y": 276.15999999999997
+        },
+        "seatScreen": {
+          "x": 831.6800000000001,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": -0.020000000000000018,
+        "shoulderHeight": 1.5750000000000002,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 369,
+        "totalTorsoPixels": 696,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/4/sit/idle/0/seat-0.5703703703703703"
+      }
+    ]
+  },
+  {
+    "name": "calibration-1.35",
+    "rows": [
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1.35,
+        "yaw": 0.7853981633974483,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 183.76,
+          "y": 284.62
+        },
+        "seatScreen": {
+          "x": 183.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": -0.020000000000000018,
+        "shoulderHeight": 1.5750000000000002,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 194,
+        "totalTorsoPixels": 374,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/0/sit/idle/0/seat-0.5703703703703703"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1.35,
+        "yaw": 2.356194490192345,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 503.76,
+          "y": 284.62
+        },
+        "seatScreen": {
+          "x": 503.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": -0.020000000000000018,
+        "shoulderHeight": 1.5750000000000002,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 96,
+        "totalTorsoPixels": 225,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/6/sit/idle/0/seat-0.5703703703703703"
+      },
+      {
+        "characterId": "lin-jie",
+        "source": "attached",
+        "multiplier": 1.35,
+        "yaw": 3.9269908169872414,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 823.76,
+          "y": 284.62
+        },
+        "seatScreen": {
+          "x": 823.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": -0.020000000000000018,
+        "shoulderHeight": 1.5750000000000002,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 194,
+        "totalTorsoPixels": 374,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "lin-jie/4/sit/idle/0/seat-0.5703703703703703"
+      }
+    ]
+  },
+  {
+    "name": "attached-elder",
+    "rows": [
+      {
+        "characterId": "zhang-laoshi",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 0.7853981633974483,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 191.68,
+          "y": 275.4933333333333
+        },
+        "seatScreen": {
+          "x": 191.68,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": 0.007777777777777772,
+        "shoulderHeight": 1.3888888888888888,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 102,
+        "totalTorsoPixels": 312,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "zhang-laoshi/0/sit/idle/0/seat-0.77"
+      },
+      {
+        "characterId": "zhang-laoshi",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 2.356194490192345,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 511.68,
+          "y": 275.4933333333333
+        },
+        "seatScreen": {
+          "x": 511.68,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": 0.007777777777777772,
+        "shoulderHeight": 1.3888888888888888,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 41,
+        "totalTorsoPixels": 201,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "zhang-laoshi/6/sit/idle/0/seat-0.77"
+      },
+      {
+        "characterId": "zhang-laoshi",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 3.9269908169872414,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 831.6800000000001,
+          "y": 275.4933333333333
+        },
+        "seatScreen": {
+          "x": 831.6800000000001,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": 0.007777777777777772,
+        "shoulderHeight": 1.3888888888888888,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 102,
+        "totalTorsoPixels": 312,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "zhang-laoshi/4/sit/idle/0/seat-0.77"
+      }
+    ]
+  },
+  {
+    "name": "attached-elder",
+    "rows": [
+      {
+        "characterId": "zhang-laoshi",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 0.7853981633974483,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 183.76,
+          "y": 284.12
+        },
+        "seatScreen": {
+          "x": 183.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": 0.007777777777777772,
+        "shoulderHeight": 1.3888888888888888,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 54,
+        "totalTorsoPixels": 168,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "zhang-laoshi/0/sit/idle/0/seat-0.77"
+      },
+      {
+        "characterId": "zhang-laoshi",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 2.356194490192345,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 503.76,
+          "y": 284.12
+        },
+        "seatScreen": {
+          "x": 503.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": 0.007777777777777772,
+        "shoulderHeight": 1.3888888888888888,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 23,
+        "totalTorsoPixels": 109,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "zhang-laoshi/6/sit/idle/0/seat-0.77"
+      },
+      {
+        "characterId": "zhang-laoshi",
+        "source": "attached",
+        "multiplier": 1,
+        "yaw": 3.9269908169872414,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 823.76,
+          "y": 284.12
+        },
+        "seatScreen": {
+          "x": 823.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": 0.007777777777777772,
+        "shoulderHeight": 1.3888888888888888,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 54,
+        "totalTorsoPixels": 168,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "zhang-laoshi/4/sit/idle/0/seat-0.77"
+      }
+    ]
+  },
+  {
+    "name": "calibration-elder-1.2",
+    "rows": [
+      {
+        "characterId": "zhang-laoshi",
+        "source": "attached",
+        "multiplier": 1.2,
+        "yaw": 0.7853981633974483,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 191.68,
+          "y": 274.96
+        },
+        "seatScreen": {
+          "x": 191.68,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": 0.029999999999999916,
+        "shoulderHeight": 1.5333333333333332,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 195,
+        "totalTorsoPixels": 434,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "zhang-laoshi/0/sit/idle/0/seat-0.6416666666666667"
+      },
+      {
+        "characterId": "zhang-laoshi",
+        "source": "attached",
+        "multiplier": 1.2,
+        "yaw": 2.356194490192345,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 511.68,
+          "y": 274.96
+        },
+        "seatScreen": {
+          "x": 511.68,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": 0.029999999999999916,
+        "shoulderHeight": 1.5333333333333332,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 103,
+        "totalTorsoPixels": 291,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "zhang-laoshi/6/sit/idle/0/seat-0.6416666666666667"
+      },
+      {
+        "characterId": "zhang-laoshi",
+        "source": "attached",
+        "multiplier": 1.2,
+        "yaw": 3.9269908169872414,
+        "scale": 24,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 831.6800000000001,
+          "y": 274.96
+        },
+        "seatScreen": {
+          "x": 831.6800000000001,
+          "y": 275.67999999999995
+        },
+        "hipSeatGapWorld": 0.029999999999999916,
+        "shoulderHeight": 1.5333333333333332,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 195,
+        "totalTorsoPixels": 434,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "zhang-laoshi/4/sit/idle/0/seat-0.6416666666666667"
+      }
+    ]
+  },
+  {
+    "name": "calibration-elder-1.2",
+    "rows": [
+      {
+        "characterId": "zhang-laoshi",
+        "source": "attached",
+        "multiplier": 1.2,
+        "yaw": 0.7853981633974483,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 183.76,
+          "y": 283.72
+        },
+        "seatScreen": {
+          "x": 183.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": 0.029999999999999916,
+        "shoulderHeight": 1.5333333333333332,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 113,
+        "totalTorsoPixels": 248,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "zhang-laoshi/0/sit/idle/0/seat-0.6416666666666667"
+      },
+      {
+        "characterId": "zhang-laoshi",
+        "source": "attached",
+        "multiplier": 1.2,
+        "yaw": 2.356194490192345,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 503.76,
+          "y": 283.72
+        },
+        "seatScreen": {
+          "x": 503.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": 0.029999999999999916,
+        "shoulderHeight": 1.5333333333333332,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 60,
+        "totalTorsoPixels": 166,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "zhang-laoshi/6/sit/idle/0/seat-0.6416666666666667"
+      },
+      {
+        "characterId": "zhang-laoshi",
+        "source": "attached",
+        "multiplier": 1.2,
+        "yaw": 3.9269908169872414,
+        "scale": 18,
+        "ratio": 1,
+        "attachment": 0,
+        "position": {
+          "x": 5,
+          "y": 7.48
+        },
+        "hipScreen": {
+          "x": 823.76,
+          "y": 283.72
+        },
+        "seatScreen": {
+          "x": 823.76,
+          "y": 284.26
+        },
+        "hipSeatGapWorld": 0.029999999999999916,
+        "shoulderHeight": 1.5333333333333332,
+        "tableHeight": 1.44,
+        "actorDrawBeforeTable": true,
+        "visibleTorsoPixels": 113,
+        "totalTorsoPixels": 248,
+        "footLiftNativePixels": 0,
+        "sampleFrame": "zhang-laoshi/4/sit/idle/0/seat-0.6416666666666667"
+      }
+    ]
+  }
+]

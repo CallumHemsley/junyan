@@ -1,0 +1,316 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node/26.12.1/bin/node",
+      "/private/tmp/junyan-0081-live-review/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config=playwright.neighbourhood.config.ts",
+      "e2e/neighbourhood-offline.spec.ts"
+    ],
+    "configFile": "/private/tmp/junyan-0081-live-review/playwright.neighbourhood.config.ts",
+    "rootDir": "/private/tmp/junyan-0081-live-review/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/private/tmp/junyan-0081-live-review/output/neighbourhood/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/private/tmp/junyan-0081-live-review/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 180000
+      },
+      {
+        "outputDir": "/private/tmp/junyan-0081-live-review/output/neighbourhood/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/private/tmp/junyan-0081-live-review/e2e",
+        "testIgnore": [
+          "**/offline.spec.ts",
+          "**/overnight-offline.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/private/tmp/junyan-0081-live-review/output/neighbourhood/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "/private/tmp/junyan-0081-live-review/e2e",
+        "snapshotDir": "/private/tmp/junyan-0081-live-review/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5286/junyan/",
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/private/tmp/junyan-0081-live-review/output/neighbourhood/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "phone",
+        "testDir": "/private/tmp/junyan-0081-live-review/e2e",
+        "snapshotDir": "/private/tmp/junyan-0081-live-review/e2e",
+        "testIgnore": [
+          "**/offline.spec.ts",
+          "**/overnight-offline.spec.ts"
+        ],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5286/junyan/",
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "phone"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "output/neighbourhood/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "pnpm build && node node_modules/vite/bin/vite.js preview --base /junyan/ --host 127.0.0.1 --port 5286 --strictPort",
+      "url": "http://127.0.0.1:5286/junyan/",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "neighbourhood-offline.spec.ts",
+      "file": "neighbourhood-offline.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real cached speech and words play in all four locations and saved furniture reloads offline",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 18413,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n    at expectNativeSpeech (/private/tmp/junyan-0081-live-review/e2e/neighbourhood-audio.ts:23:22)\n    at /private/tmp/junyan-0081-live-review/e2e/neighbourhood-offline.spec.ts:34:9",
+                    "location": {
+                      "file": "/private/tmp/junyan-0081-live-review/e2e/neighbourhood-audio.ts",
+                      "column": 22,
+                      "line": 23
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39mneighbourhood-audio.ts:23\n\n  21 |     return probe.__audioProbe.slice(since).some((row: any) => row.src.endsWith(path) && row.status === 'playing')\n  22 |       && probe.__audioElements.some((audio: HTMLAudioElement) => audio.src.endsWith(path) && !audio.error && audio.readyState >= 2 && Number.isFinite(audio.duration) && audio.duration > 0);\n> 23 |   }, {path, since})).toBe(true);\n     |                      ^\n  24 | }\n  25 |\n  26 | export async function checkLineAndWord(page: Page, line: Line, spoken: Locator, replay: Locator) {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/private/tmp/junyan-0081-live-review/e2e/neighbourhood-audio.ts",
+                        "column": 22,
+                        "line": 23
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n\n   at neighbourhood-audio.ts:23\n\n  21 |     return probe.__audioProbe.slice(since).some((row: any) => row.src.endsWith(path) && row.status === 'playing')\n  22 |       && probe.__audioElements.some((audio: HTMLAudioElement) => audio.src.endsWith(path) && !audio.error && audio.readyState >= 2 && Number.isFinite(audio.duration) && audio.duration > 0);\n> 23 |   }, {path, since})).toBe(true);\n     |                      ^\n  24 | }\n  25 |\n  26 | export async function checkLineAndWord(page: Page, line: Line, spoken: Locator, replay: Locator) {\n    at expectNativeSpeech (/private/tmp/junyan-0081-live-review/e2e/neighbourhood-audio.ts:23:22)\n    at /private/tmp/junyan-0081-live-review/e2e/neighbourhood-offline.spec.ts:34:9"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T00:54:34.494Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/private/tmp/junyan-0081-live-review/output/neighbourhood/results/neighbourhood-offline-real-9105c-d-furniture-reloads-offline-desktop/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/private/tmp/junyan-0081-live-review/output/neighbourhood/results/neighbourhood-offline-real-9105c-d-furniture-reloads-offline-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/private/tmp/junyan-0081-live-review/output/neighbourhood/results/neighbourhood-offline-real-9105c-d-furniture-reloads-offline-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/private/tmp/junyan-0081-live-review/e2e/neighbourhood-audio.ts",
+                    "column": 22,
+                    "line": 23
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "68fb6ffb9c2c2eeac9ec-63cbd3f890da13e866d6",
+          "file": "neighbourhood-offline.spec.ts",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "real cached speech and words play in all four locations and saved furniture reloads offline",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10364,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T00:54:53.723Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "real-offline-speech",
+                      "contentType": "application/json",
+                      "body": "WwogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9hcGFydG1lbnQvbGluZS13aW5kb3cud2F2IiwKICAgICJhdCI6IDcxLjU5OTk5OTk2NDIzNzIxLAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDcxLjU5OTk5OTk2NDIzNzIxLAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAiQWJvcnRFcnJvciIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9hcGFydG1lbnQvbGluZS13aW5kb3cud2F2IiwKICAgICJhdCI6IDE2NC4yOTk5OTk5NTIzMTYyOCwKICAgICJhY3RpdmUiOiB0cnVlLAogICAgInNpbmNlQ2xpY2siOiAwLjEwMDAwMDAyMzg0MTg1NzkxLAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9jYXRzL2xpbmUtY2x1ZS53YXYiLAogICAgImF0IjogMzAwLAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDIuMTAwMDAwMDIzODQxODU4LAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9jYXRzL2xpbmUtY2x1ZS53YXYiLAogICAgImF0IjogNDQ2LjUsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMCwKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogInBsYXlpbmciCiAgfSwKICB7CiAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NTI4Ni9qdW55YW4vYXVkaW8vd29yZC02MGRkYjMxM2RmMjllZjcyYmMzMjRhNmQwY2U0ZjYzNjI0ZDk0MjcyMWMzNTU2ZmJlNmRhYjRmODY0NGE1ZTUwLndhdiIsCiAgICAiYXQiOiA1OTguMjk5OTk5OTUyMzE2MywKICAgICJhY3RpdmUiOiB0cnVlLAogICAgInNpbmNlQ2xpY2siOiAwLjI5OTk5OTk1MjMxNjI4NDIsCiAgICAibXV0ZWQiOiBmYWxzZSwKICAgICJ2b2x1bWUiOiAxLAogICAgInN0YXR1cyI6ICJwbGF5aW5nIgogIH0sCiAgewogICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjUyODYvanVueWFuL2F1ZGlvL3dvcmQtNjBkZGIzMTNkZjI5ZWY3MmJjMzI0YTZkMGNlNGY2MzYyNGQ5NDI3MjFjMzU1NmZiZTZkYWI0Zjg2NDRhNWU1MC53YXYiLAogICAgImF0IjogNzQ3Ljg5OTk5OTk3NjE1ODEsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMC4xMDAwMDAwMjM4NDE4NTc5MSwKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogInBsYXlpbmciCiAgfSwKICB7CiAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NTI4Ni9qdW55YW4vYXVkaW8vcmVwYWlycy9saW5lLWxhbXAtaW50cm8ud2F2IiwKICAgICJhdCI6IDkzNS4zOTk5OTk5NzYxNTgxLAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDE5LjY5OTk5OTk4ODA3OTA3LAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9yZXBhaXJzL2xpbmUtbGFtcC1pbnRyby53YXYiLAogICAgImF0IjogOTgwLjM5OTk5OTk3NjE1ODEsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMC4xMDAwMDAwMjM4NDE4NTc5MSwKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogInBsYXlpbmciCiAgfSwKICB7CiAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NTI4Ni9qdW55YW4vYXVkaW8vcmVwYWlycy93b3JkLWNhbi53YXYiLAogICAgImF0IjogMTEzMCwKICAgICJhY3RpdmUiOiB0cnVlLAogICAgInNpbmNlQ2xpY2siOiAwLjQwMDAwMDAzNTc2Mjc4Njg3LAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9yZXBhaXJzL3dvcmQtY2FuLndhdiIsCiAgICAiYXQiOiAxMjYzLjE5OTk5OTk4ODA3OSwKICAgICJhY3RpdmUiOiB0cnVlLAogICAgInNpbmNlQ2xpY2siOiAwLjEwMDAwMDAyMzg0MTg1NzkxLAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9nYXJkZW4vbGluZS00NmM0ZDk5M2VhNWI2MGJjNmM4MDM3ZTEyZDFkZDQ3OGM4ZTJiYzkyODg1YmEyMDIyNTkzMjBlNTg2ZDQ0MTgxLndhdiIsCiAgICAiYXQiOiAxNDgwLjg5OTk5OTk3NjE1ODEsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMS4zOTk5OTk5NzYxNTgxNDIsCiAgICAibXV0ZWQiOiBmYWxzZSwKICAgICJ2b2x1bWUiOiAxLAogICAgInN0YXR1cyI6ICJwbGF5aW5nIgogIH0sCiAgewogICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjUyODYvanVueWFuL2F1ZGlvL2dhcmRlbi9saW5lLTQ2YzRkOTkzZWE1YjYwYmM2YzgwMzdlMTJkMWRkNDc4YzhlMmJjOTI4ODViYTIwMjI1OTMyMGU1ODZkNDQxODEud2F2IiwKICAgICJhdCI6IDE2MzAuNjk5OTk5OTg4MDc5LAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDAuMTAwMDAwMDIzODQxODU3OTEsCiAgICAibXV0ZWQiOiBmYWxzZSwKICAgICJ2b2x1bWUiOiAxLAogICAgInN0YXR1cyI6ICJwbGF5aW5nIgogIH0sCiAgewogICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjUyODYvanVueWFuL2F1ZGlvL2dhcmRlbi93b3JkLTViNmIwOThiNWNhYjlhZTI5YTdlNWU3NDE0MWU5ZjQyZWFjN2NiNzI4ODU4MWM3YzczMzJiODhmZGE1OTUxMzgud2F2IiwKICAgICJhdCI6IDE3NjMuMjk5OTk5OTUyMzE2MywKICAgICJhY3RpdmUiOiB0cnVlLAogICAgInNpbmNlQ2xpY2siOiAwLjI5OTk5OTk1MjMxNjI4NDIsCiAgICAibXV0ZWQiOiBmYWxzZSwKICAgICJ2b2x1bWUiOiAxLAogICAgInN0YXR1cyI6ICJwbGF5aW5nIgogIH0sCiAgewogICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjUyODYvanVueWFuL2F1ZGlvL2dhcmRlbi93b3JkLTViNmIwOThiNWNhYjlhZTI5YTdlNWU3NDE0MWU5ZjQyZWFjN2NiNzI4ODU4MWM3YzczMzJiODhmZGE1OTUxMzgud2F2IiwKICAgICJhdCI6IDE5MTMsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMCwKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogInBsYXlpbmciCiAgfQpd"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "68fb6ffb9c2c2eeac9ec-9605b63df55b9ab6998c",
+          "file": "neighbourhood-offline.spec.ts",
+          "line": 8,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-06T00:54:30.286Z",
+    "duration": 33936.185,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

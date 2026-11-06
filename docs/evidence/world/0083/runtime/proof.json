@@ -1,0 +1,164 @@
+[
+  {
+    "sourceHead": "e1e3fa3b520dd3fab21246f7860dbbd24524ae14",
+    "device": "desktop",
+    "keyboard": {
+      "x": 13.878858223313769,
+      "y": 27.621141776686237
+    },
+    "reached": [
+      {
+        "id": "garden",
+        "position": {
+          "x": 19.000000344618833,
+          "y": 19.999999946293862
+        }
+      },
+      {
+        "id": "water",
+        "position": {
+          "x": 11.64216938861561,
+          "y": 11.85783061138439
+        }
+      },
+      {
+        "id": "trellis",
+        "position": {
+          "x": 21.09254302666762,
+          "y": 9.04469288413033
+        }
+      },
+      {
+        "id": "lookout",
+        "position": {
+          "x": 44.20062255859375,
+          "y": 12.200622558593748
+        }
+      },
+      {
+        "id": "terrace",
+        "position": {
+          "x": 35.00000014729541,
+          "y": 29.49999985270459
+        }
+      }
+    ],
+    "beforeReload": {
+      "version": 1,
+      "mapId": "rooftop",
+      "position": {
+        "x": 35.00000014729541,
+        "y": 29.49999985270459
+      },
+      "facing": "west",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "afterReload": {
+      "version": 1,
+      "mapId": "rooftop",
+      "position": {
+        "x": 35.00000014729541,
+        "y": 29.49999985270459
+      },
+      "facing": "west",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "errors": [],
+    "note": "Seeded legacy garden save; actual App viewport keyboard/pointer/touch traversal and real activity. Full building-stair journey pending other maps."
+  },
+  {
+    "sourceHead": "e1e3fa3b520dd3fab21246f7860dbbd24524ae14",
+    "device": "phone",
+    "keyboard": {
+      "x": 14.150033673898806,
+      "y": 27.34996632610118
+    },
+    "reached": [
+      {
+        "id": "garden",
+        "position": {
+          "x": 18.99999998096152,
+          "y": 19.99999972960078
+        }
+      },
+      {
+        "id": "water",
+        "position": {
+          "x": 11.546726218632841,
+          "y": 11.95327378136716
+        }
+      },
+      {
+        "id": "trellis",
+        "position": {
+          "x": 20.77809833384503,
+          "y": 8.736433829239978
+        }
+      },
+      {
+        "id": "lookout",
+        "position": {
+          "x": 44.16806516926404,
+          "y": 11.831934830735959
+        }
+      },
+      {
+        "id": "terrace",
+        "position": {
+          "x": 34.999999847412624,
+          "y": 29.500000152587372
+        }
+      }
+    ],
+    "beforeReload": {
+      "version": 1,
+      "mapId": "rooftop",
+      "position": {
+        "x": 34.999999847412624,
+        "y": 29.500000152587372
+      },
+      "facing": "south",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "afterReload": {
+      "version": 1,
+      "mapId": "rooftop",
+      "position": {
+        "x": 34.999999847412624,
+        "y": 29.500000152587372
+      },
+      "facing": "south",
+      "returnPositions": {},
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "errors": [],
+    "note": "Seeded legacy garden save; actual App viewport keyboard/pointer/touch traversal and real activity. Full building-stair journey pending other maps."
+  }
+]

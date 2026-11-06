@@ -1,0 +1,278 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node/26.12.1/bin/node",
+      "/private/tmp/junyan-0081-live-review/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config=playwright.neighbourhood.config.ts",
+      "e2e/neighbourhood-offline.spec.ts",
+      "--project=desktop",
+      "--repeat-each=3"
+    ],
+    "configFile": "/private/tmp/junyan-0081-live-review/playwright.neighbourhood.config.ts",
+    "rootDir": "/private/tmp/junyan-0081-live-review/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/private/tmp/junyan-0081-live-review/output/neighbourhood/results",
+        "repeatEach": 3,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/private/tmp/junyan-0081-live-review/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 180000
+      },
+      {
+        "outputDir": "/private/tmp/junyan-0081-live-review/output/neighbourhood/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/private/tmp/junyan-0081-live-review/e2e",
+        "testIgnore": [
+          "**/offline.spec.ts",
+          "**/overnight-offline.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/private/tmp/junyan-0081-live-review/output/neighbourhood/results",
+        "repeatEach": 3,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "/private/tmp/junyan-0081-live-review/e2e",
+        "snapshotDir": "/private/tmp/junyan-0081-live-review/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5286/junyan/",
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "output/neighbourhood/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "pnpm build && node node_modules/vite/bin/vite.js preview --base /junyan/ --host 127.0.0.1 --port 5286 --strictPort",
+      "url": "http://127.0.0.1:5286/junyan/",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "neighbourhood-offline.spec.ts",
+      "file": "neighbourhood-offline.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real cached speech and words play in all four locations and saved furniture reloads offline",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10289,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T00:55:57.618Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "real-offline-speech",
+                      "contentType": "application/json",
+                      "body": "WwogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9hcGFydG1lbnQvbGluZS13aW5kb3cud2F2IiwKICAgICJhdCI6IDY1LjEwMDAwMDAyMzg0MTg2LAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDY1LjEwMDAwMDAyMzg0MTg2LAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAiQWJvcnRFcnJvciIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9hcGFydG1lbnQvbGluZS13aW5kb3cud2F2IiwKICAgICJhdCI6IDEzMS40MDAwMDAwMzU3NjI4LAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDAsCiAgICAibXV0ZWQiOiBmYWxzZSwKICAgICJ2b2x1bWUiOiAxLAogICAgInN0YXR1cyI6ICJwbGF5aW5nIgogIH0sCiAgewogICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjUyODYvanVueWFuL2F1ZGlvL2NhdHMvbGluZS1jbHVlLndhdiIsCiAgICAiYXQiOiAyNjYuMTAwMDAwMDIzODQxODYsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMS42MDAwMDAwMjM4NDE4NTgsCiAgICAibXV0ZWQiOiBmYWxzZSwKICAgICJ2b2x1bWUiOiAxLAogICAgInN0YXR1cyI6ICJwbGF5aW5nIgogIH0sCiAgewogICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjUyODYvanVueWFuL2F1ZGlvL2NhdHMvbGluZS1jbHVlLndhdiIsCiAgICAiYXQiOiA0MTQuNjAwMDAwMDIzODQxODYsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMCwKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogInBsYXlpbmciCiAgfSwKICB7CiAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NTI4Ni9qdW55YW4vYXVkaW8vd29yZC02MGRkYjMxM2RmMjllZjcyYmMzMjRhNmQwY2U0ZjYzNjI0ZDk0MjcyMWMzNTU2ZmJlNmRhYjRmODY0NGE1ZTUwLndhdiIsCiAgICAiYXQiOiA1NDgsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMC4wOTk5OTk5NjQyMzcyMTMxMywKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogInBsYXlpbmciCiAgfSwKICB7CiAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NTI4Ni9qdW55YW4vYXVkaW8vd29yZC02MGRkYjMxM2RmMjllZjcyYmMzMjRhNmQwY2U0ZjYzNjI0ZDk0MjcyMWMzNTU2ZmJlNmRhYjRmODY0NGE1ZTUwLndhdiIsCiAgICAiYXQiOiA2ODIuNjk5OTk5OTg4MDc5MSwKICAgICJhY3RpdmUiOiB0cnVlLAogICAgInNpbmNlQ2xpY2siOiAwLjA5OTk5OTk2NDIzNzIxMzEzLAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9yZXBhaXJzL2xpbmUtbGFtcC1pbnRyby53YXYiLAogICAgImF0IjogODYxLjY5OTk5OTk4ODA3OTEsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMTUuMTk5OTk5OTg4MDc5MDcxLAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9yZXBhaXJzL2xpbmUtbGFtcC1pbnRyby53YXYiLAogICAgImF0IjogODk2LjQwMDAwMDAzNTc2MjgsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMC4xMDAwMDAwMjM4NDE4NTc5MSwKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogInBsYXlpbmciCiAgfSwKICB7CiAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NTI4Ni9qdW55YW4vYXVkaW8vcmVwYWlycy93b3JkLWNhbi53YXYiLAogICAgImF0IjogMTAzMi45MDAwMDAwMzU3NjI4LAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDAuMzAwMDAwMDExOTIwOTI4OTYsCiAgICAibXV0ZWQiOiBmYWxzZSwKICAgICJ2b2x1bWUiOiAxLAogICAgInN0YXR1cyI6ICJwbGF5aW5nIgogIH0sCiAgewogICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjUyODYvanVueWFuL2F1ZGlvL3JlcGFpcnMvd29yZC1jYW4ud2F2IiwKICAgICJhdCI6IDExNjMuMzAwMDAwMDExOTIxLAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDAsCiAgICAibXV0ZWQiOiBmYWxzZSwKICAgICJ2b2x1bWUiOiAxLAogICAgInN0YXR1cyI6ICJwbGF5aW5nIgogIH0sCiAgewogICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjUyODYvanVueWFuL2F1ZGlvL2dhcmRlbi9saW5lLTQ2YzRkOTkzZWE1YjYwYmM2YzgwMzdlMTJkMWRkNDc4YzhlMmJjOTI4ODViYTIwMjI1OTMyMGU1ODZkNDQxODEud2F2IiwKICAgICJhdCI6IDEzODIuMTk5OTk5OTg4MDc5LAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDEuMjk5OTk5OTUyMzE2Mjg0MiwKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogInBsYXlpbmciCiAgfSwKICB7CiAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NTI4Ni9qdW55YW4vYXVkaW8vZ2FyZGVuL2xpbmUtNDZjNGQ5OTNlYTViNjBiYzZjODAzN2UxMmQxZGQ0NzhjOGUyYmM5Mjg4NWJhMjAyMjU5MzIwZTU4NmQ0NDE4MS53YXYiLAogICAgImF0IjogMTUzMC40MDAwMDAwMzU3NjI4LAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDAuMTAwMDAwMDIzODQxODU3OTEsCiAgICAibXV0ZWQiOiBmYWxzZSwKICAgICJ2b2x1bWUiOiAxLAogICAgInN0YXR1cyI6ICJwbGF5aW5nIgogIH0sCiAgewogICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjUyODYvanVueWFuL2F1ZGlvL2dhcmRlbi93b3JkLTViNmIwOThiNWNhYjlhZTI5YTdlNWU3NDE0MWU5ZjQyZWFjN2NiNzI4ODU4MWM3YzczMzJiODhmZGE1OTUxMzgud2F2IiwKICAgICJhdCI6IDE2NjUuMzAwMDAwMDExOTIxLAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDAuMzAwMDAwMDExOTIwOTI4OTYsCiAgICAibXV0ZWQiOiBmYWxzZSwKICAgICJ2b2x1bWUiOiAxLAogICAgInN0YXR1cyI6ICJwbGF5aW5nIgogIH0sCiAgewogICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjUyODYvanVueWFuL2F1ZGlvL2dhcmRlbi93b3JkLTViNmIwOThiNWNhYjlhZTI5YTdlNWU3NDE0MWU5ZjQyZWFjN2NiNzI4ODU4MWM3YzczMzJiODhmZGE1OTUxMzgud2F2IiwKICAgICJhdCI6IDE4MTQuOTAwMDAwMDM1NzYyOCwKICAgICJhY3RpdmUiOiB0cnVlLAogICAgInNpbmNlQ2xpY2siOiAwLjEwMDAwMDAyMzg0MTg1NzkxLAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9Cl0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "68fb6ffb9c2c2eeac9ec-63cbd3f890da13e866d6",
+          "file": "neighbourhood-offline.spec.ts",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "real cached speech and words play in all four locations and saved furniture reloads offline",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10045,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T00:56:08.391Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "real-offline-speech",
+                      "contentType": "application/json",
+                      "body": "WwogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9hcGFydG1lbnQvbGluZS13aW5kb3cud2F2IiwKICAgICJhdCI6IDYyLjYwMDAwMDAyMzg0MTg2LAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDYyLjcwMDAwMDA0NzY4MzcxNiwKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogIkFib3J0RXJyb3IiCiAgfSwKICB7CiAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NTI4Ni9qdW55YW4vYXVkaW8vYXBhcnRtZW50L2xpbmUtd2luZG93LndhdiIsCiAgICAiYXQiOiAxMjguNDAwMDAwMDM1NzYyOCwKICAgICJhY3RpdmUiOiB0cnVlLAogICAgInNpbmNlQ2xpY2siOiAwLjEwMDAwMDAyMzg0MTg1NzkxLAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9jYXRzL2xpbmUtY2x1ZS53YXYiLAogICAgImF0IjogMjY0LjYwMDAwMDAyMzg0MTg2LAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDEuNjk5OTk5OTg4MDc5MDcxLAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9jYXRzL2xpbmUtY2x1ZS53YXYiLAogICAgImF0IjogMzk3LjQwMDAwMDAzNTc2MjgsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMC4xOTk5OTk5ODgwNzkwNzEwNCwKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogInBsYXlpbmciCiAgfSwKICB7CiAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NTI4Ni9qdW55YW4vYXVkaW8vd29yZC02MGRkYjMxM2RmMjllZjcyYmMzMjRhNmQwY2U0ZjYzNjI0ZDk0MjcyMWMzNTU2ZmJlNmRhYjRmODY0NGE1ZTUwLndhdiIsCiAgICAiYXQiOiA1NDgsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMC4yOTk5OTk5NTIzMTYyODQyLAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby93b3JkLTYwZGRiMzEzZGYyOWVmNzJiYzMyNGE2ZDBjZTRmNjM2MjRkOTQyNzIxYzM1NTZmYmU2ZGFiNGY4NjQ0YTVlNTAud2F2IiwKICAgICJhdCI6IDY5NywKICAgICJhY3RpdmUiOiB0cnVlLAogICAgInNpbmNlQ2xpY2siOiAwLAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9yZXBhaXJzL2xpbmUtbGFtcC1pbnRyby53YXYiLAogICAgImF0IjogODc2LjYwMDAwMDAyMzg0MTksCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMTQuMTAwMDAwMDIzODQxODU4LAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9yZXBhaXJzL2xpbmUtbGFtcC1pbnRyby53YXYiLAogICAgImF0IjogOTEyLjYwMDAwMDAyMzg0MTksCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMC4xOTk5OTk5ODgwNzkwNzEwNCwKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogInBsYXlpbmciCiAgfSwKICB7CiAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NTI4Ni9qdW55YW4vYXVkaW8vcmVwYWlycy93b3JkLWNhbi53YXYiLAogICAgImF0IjogMTA0Ny42MDAwMDAwMjM4NDE5LAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDAuMzAwMDAwMDExOTIwOTI4OTYsCiAgICAibXV0ZWQiOiBmYWxzZSwKICAgICJ2b2x1bWUiOiAxLAogICAgInN0YXR1cyI6ICJwbGF5aW5nIgogIH0sCiAgewogICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjUyODYvanVueWFuL2F1ZGlvL3JlcGFpcnMvd29yZC1jYW4ud2F2IiwKICAgICJhdCI6IDExOTUuODAwMDAwMDExOTIxLAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDAuMDk5OTk5OTY0MjM3MjEzMTMsCiAgICAibXV0ZWQiOiBmYWxzZSwKICAgICJ2b2x1bWUiOiAxLAogICAgInN0YXR1cyI6ICJwbGF5aW5nIgogIH0sCiAgewogICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjUyODYvanVueWFuL2F1ZGlvL2dhcmRlbi9saW5lLTQ2YzRkOTkzZWE1YjYwYmM2YzgwMzdlMTJkMWRkNDc4YzhlMmJjOTI4ODViYTIwMjI1OTMyMGU1ODZkNDQxODEud2F2IiwKICAgICJhdCI6IDE0MTMuNjAwMDAwMDIzODQxOSwKICAgICJhY3RpdmUiOiB0cnVlLAogICAgInNpbmNlQ2xpY2siOiAxLjMwMDAwMDAxMTkyMDkyOSwKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogInBsYXlpbmciCiAgfSwKICB7CiAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NTI4Ni9qdW55YW4vYXVkaW8vZ2FyZGVuL2xpbmUtNDZjNGQ5OTNlYTViNjBiYzZjODAzN2UxMmQxZGQ0NzhjOGUyYmM5Mjg4NWJhMjAyMjU5MzIwZTU4NmQ0NDE4MS53YXYiLAogICAgImF0IjogMTU2My4zMDAwMDAwMTE5MjEsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMC4xOTk5OTk5ODgwNzkwNzEwNCwKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogInBsYXlpbmciCiAgfSwKICB7CiAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NTI4Ni9qdW55YW4vYXVkaW8vZ2FyZGVuL3dvcmQtNWI2YjA5OGI1Y2FiOWFlMjlhN2U1ZTc0MTQxZTlmNDJlYWM3Y2I3Mjg4NTgxYzdjNzMzMmI4OGZkYTU5NTEzOC53YXYiLAogICAgImF0IjogMTcxMy42MDAwMDAwMjM4NDE5LAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDAuMzAwMDAwMDExOTIwOTI4OTYsCiAgICAibXV0ZWQiOiBmYWxzZSwKICAgICJ2b2x1bWUiOiAxLAogICAgInN0YXR1cyI6ICJwbGF5aW5nIgogIH0sCiAgewogICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjUyODYvanVueWFuL2F1ZGlvL2dhcmRlbi93b3JkLTViNmIwOThiNWNhYjlhZTI5YTdlNWU3NDE0MWU5ZjQyZWFjN2NiNzI4ODU4MWM3YzczMzJiODhmZGE1OTUxMzgud2F2IiwKICAgICJhdCI6IDE4NjUuOTAwMDAwMDM1NzYyOCwKICAgICJhY3RpdmUiOiB0cnVlLAogICAgInNpbmNlQ2xpY2siOiAwLAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9Cl0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "68fb6ffb9c2c2eeac9ec-54163790e9a43cc75504",
+          "file": "neighbourhood-offline.spec.ts",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "real cached speech and words play in all four locations and saved furniture reloads offline",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10183,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T00:56:18.818Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "real-offline-speech",
+                      "contentType": "application/json",
+                      "body": "WwogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9hcGFydG1lbnQvbGluZS13aW5kb3cud2F2IiwKICAgICJhdCI6IDQ4LjYwMDAwMDAyMzg0MTg2LAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDQ4LjYwMDAwMDAyMzg0MTg2LAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAiQWJvcnRFcnJvciIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9hcGFydG1lbnQvbGluZS13aW5kb3cud2F2IiwKICAgICJhdCI6IDEwOS42MDAwMDAwMjM4NDE4NiwKICAgICJhY3RpdmUiOiB0cnVlLAogICAgInNpbmNlQ2xpY2siOiAwLAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9jYXRzL2xpbmUtY2x1ZS53YXYiLAogICAgImF0IjogMjQyLjUsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMS4xOTk5OTk5ODgwNzkwNzEsCiAgICAibXV0ZWQiOiBmYWxzZSwKICAgICJ2b2x1bWUiOiAxLAogICAgInN0YXR1cyI6ICJwbGF5aW5nIgogIH0sCiAgewogICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjUyODYvanVueWFuL2F1ZGlvL2NhdHMvbGluZS1jbHVlLndhdiIsCiAgICAiYXQiOiAzNzYuODAwMDAwMDExOTIwOTMsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMC4xMDAwMDAwMjM4NDE4NTc5MSwKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogInBsYXlpbmciCiAgfSwKICB7CiAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NTI4Ni9qdW55YW4vYXVkaW8vd29yZC02MGRkYjMxM2RmMjllZjcyYmMzMjRhNmQwY2U0ZjYzNjI0ZDk0MjcyMWMzNTU2ZmJlNmRhYjRmODY0NGE1ZTUwLndhdiIsCiAgICAiYXQiOiA1MDkuMTAwMDAwMDIzODQxODYsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMC4xOTk5OTk5ODgwNzkwNzEwNCwKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogInBsYXlpbmciCiAgfSwKICB7CiAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NTI4Ni9qdW55YW4vYXVkaW8vd29yZC02MGRkYjMxM2RmMjllZjcyYmMzMjRhNmQwY2U0ZjYzNjI0ZDk0MjcyMWMzNTU2ZmJlNmRhYjRmODY0NGE1ZTUwLndhdiIsCiAgICAiYXQiOiA2NDEuMzAwMDAwMDExOTIwOSwKICAgICJhY3RpdmUiOiB0cnVlLAogICAgInNpbmNlQ2xpY2siOiAwLjEwMDAwMDAyMzg0MTg1NzkxLAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9yZXBhaXJzL2xpbmUtbGFtcC1pbnRyby53YXYiLAogICAgImF0IjogODIwLjkwMDAwMDAzNTc2MjgsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMTIuMjAwMDAwMDQ3NjgzNzE2LAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9LAogIHsKICAgICJzcmMiOiAiaHR0cDovLzEyNy4wLjAuMTo1Mjg2L2p1bnlhbi9hdWRpby9yZXBhaXJzL2xpbmUtbGFtcC1pbnRyby53YXYiLAogICAgImF0IjogOTU3LjQwMDAwMDAzNTc2MjgsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMC4xMDAwMDAwMjM4NDE4NTc5MSwKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogInBsYXlpbmciCiAgfSwKICB7CiAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NTI4Ni9qdW55YW4vYXVkaW8vcmVwYWlycy93b3JkLWNhbi53YXYiLAogICAgImF0IjogMTA5My45MDAwMDAwMzU3NjI4LAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDAuMjAwMDAwMDQ3NjgzNzE1ODIsCiAgICAibXV0ZWQiOiBmYWxzZSwKICAgICJ2b2x1bWUiOiAxLAogICAgInN0YXR1cyI6ICJwbGF5aW5nIgogIH0sCiAgewogICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjUyODYvanVueWFuL2F1ZGlvL3JlcGFpcnMvd29yZC1jYW4ud2F2IiwKICAgICJhdCI6IDEyMjYuODAwMDAwMDExOTIxLAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDAuMTk5OTk5OTg4MDc5MDcxMDQsCiAgICAibXV0ZWQiOiBmYWxzZSwKICAgICJ2b2x1bWUiOiAxLAogICAgInN0YXR1cyI6ICJwbGF5aW5nIgogIH0sCiAgewogICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjUyODYvanVueWFuL2F1ZGlvL2dhcmRlbi9saW5lLTQ2YzRkOTkzZWE1YjYwYmM2YzgwMzdlMTJkMWRkNDc4YzhlMmJjOTI4ODViYTIwMjI1OTMyMGU1ODZkNDQxODEud2F2IiwKICAgICJhdCI6IDE0NDMuNDAwMDAwMDM1NzYyOCwKICAgICJhY3RpdmUiOiB0cnVlLAogICAgInNpbmNlQ2xpY2siOiAxLjEwMDAwMDAyMzg0MTg1OCwKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogInBsYXlpbmciCiAgfSwKICB7CiAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NTI4Ni9qdW55YW4vYXVkaW8vZ2FyZGVuL2xpbmUtNDZjNGQ5OTNlYTViNjBiYzZjODAzN2UxMmQxZGQ0NzhjOGUyYmM5Mjg4NWJhMjAyMjU5MzIwZTU4NmQ0NDE4MS53YXYiLAogICAgImF0IjogMTU3NS4zMDAwMDAwMTE5MjEsCiAgICAiYWN0aXZlIjogdHJ1ZSwKICAgICJzaW5jZUNsaWNrIjogMC4yMDAwMDAwNDc2ODM3MTU4MiwKICAgICJtdXRlZCI6IGZhbHNlLAogICAgInZvbHVtZSI6IDEsCiAgICAic3RhdHVzIjogInBsYXlpbmciCiAgfSwKICB7CiAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NTI4Ni9qdW55YW4vYXVkaW8vZ2FyZGVuL3dvcmQtNWI2YjA5OGI1Y2FiOWFlMjlhN2U1ZTc0MTQxZTlmNDJlYWM3Y2I3Mjg4NTgxYzdjNzMzMmI4OGZkYTU5NTEzOC53YXYiLAogICAgImF0IjogMTcwOS4xMDAwMDAwMjM4NDE5LAogICAgImFjdGl2ZSI6IHRydWUsCiAgICAic2luY2VDbGljayI6IDAuMTAwMDAwMDIzODQxODU3OTEsCiAgICAibXV0ZWQiOiBmYWxzZSwKICAgICJ2b2x1bWUiOiAxLAogICAgInN0YXR1cyI6ICJwbGF5aW5nIgogIH0sCiAgewogICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjUyODYvanVueWFuL2F1ZGlvL2dhcmRlbi93b3JkLTViNmIwOThiNWNhYjlhZTI5YTdlNWU3NDE0MWU5ZjQyZWFjN2NiNzI4ODU4MWM3YzczMzJiODhmZGE1OTUxMzgud2F2IiwKICAgICJhdCI6IDE4NTkuNjAwMDAwMDIzODQxOSwKICAgICJhY3RpdmUiOiB0cnVlLAogICAgInNpbmNlQ2xpY2siOiAwLAogICAgIm11dGVkIjogZmFsc2UsCiAgICAidm9sdW1lIjogMSwKICAgICJzdGF0dXMiOiAicGxheWluZyIKICB9Cl0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "68fb6ffb9c2c2eeac9ec-c25d70fd8e661b2bd689",
+          "file": "neighbourhood-offline.spec.ts",
+          "line": 8,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-06T00:55:53.431Z",
+    "duration": 35713.623999999996,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

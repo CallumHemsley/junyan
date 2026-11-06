@@ -1,0 +1,58 @@
+[
+  {
+    "name": "desktop",
+    "visits": [
+      {
+        "label": "beside",
+        "position": {
+          "x": 11.5,
+          "y": 8.8
+        }
+      },
+      {
+        "label": "behind",
+        "position": {
+          "x": 7.999999999999998,
+          "y": 6.800000000000001
+        }
+      },
+      {
+        "label": "front",
+        "position": {
+          "x": 8,
+          "y": 10.8
+        }
+      }
+    ],
+    "errors": [],
+    "setup": "disclosed initial workshop approach from validated actual repair save; all depth approaches use ordinary pointer input, production actors and compositor"
+  },
+  {
+    "name": "phone",
+    "visits": [
+      {
+        "label": "beside",
+        "position": {
+          "x": 11.49999930641868,
+          "y": 8.799999583851207
+        }
+      },
+      {
+        "label": "behind",
+        "position": {
+          "x": 7.999999306418678,
+          "y": 6.799999583851207
+        }
+      },
+      {
+        "label": "front",
+        "position": {
+          "x": 7.999999479814008,
+          "y": 10.799999410455879
+        }
+      }
+    ],
+    "errors": [],
+    "setup": "disclosed initial workshop approach from validated actual repair save; all depth approaches use ordinary pointer input, production actors and compositor"
+  }
+]

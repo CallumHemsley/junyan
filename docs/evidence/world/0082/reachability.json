@@ -1,0 +1,36 @@
+{
+  "method": "0.5-tile center lattice flood fill from safe town arrival; each edge uses foundation footprint-aware canWalk",
+  "reachableSamples": 1852,
+  "approximateReachableFloorArea": 463,
+  "boundsArea": 870,
+  "landmarks": 9,
+  "props": 40,
+  "anchors": 2,
+  "paths": [
+    {
+      "id": "workshop.lamp",
+      "length": 16.016564867272002,
+      "segments": 3
+    },
+    {
+      "id": "workshop.toy",
+      "length": 15.338839591051206,
+      "segments": 1
+    },
+    {
+      "id": "workshop.shelf-approach",
+      "length": 23.719192516460975,
+      "segments": 2
+    },
+    {
+      "id": "workshop.joinery-approach",
+      "length": 6.887670143089025,
+      "segments": 1
+    },
+    {
+      "id": "workshop.sewing-approach",
+      "length": 9.9309518948453,
+      "segments": 2
+    }
+  ]
+}

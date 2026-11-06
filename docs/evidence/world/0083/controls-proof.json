@@ -1,0 +1,284 @@
+[
+  {
+    "sourceHead": "e1e3fa3b520dd3fab21246f7860dbbd24524ae14",
+    "device": "desktop",
+    "before": {
+      "version": 1,
+      "day": 1,
+      "restored": true,
+      "shade": 0,
+      "plants": {
+        "flower": {
+          "site": 0,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "climber": {
+          "site": 2,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "tree": {
+          "site": 4,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        }
+      },
+      "planterEarned": false
+    },
+    "watered": {
+      "version": 1,
+      "day": 1,
+      "restored": true,
+      "shade": 0,
+      "plants": {
+        "flower": {
+          "site": 0,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "climber": {
+          "site": 2,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "tree": {
+          "site": 4,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        }
+      },
+      "planterEarned": false
+    },
+    "moved": {
+      "version": 1,
+      "day": 1,
+      "restored": true,
+      "shade": 0,
+      "plants": {
+        "flower": {
+          "site": 0,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "climber": {
+          "site": 1,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "tree": {
+          "site": 4,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        }
+      },
+      "planterEarned": false
+    },
+    "anchor": {
+      "id": "rooftop.pot.climber",
+      "position": {
+        "x": 24.7,
+        "y": 24.1
+      },
+      "radius": 1.6,
+      "featureId": "garden",
+      "interactionId": "garden.climber"
+    },
+    "sizes": [
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "errors": [],
+    "note": "Controls-only feature harness; shared App binding still requires foundation wiring."
+  },
+  {
+    "sourceHead": "e1e3fa3b520dd3fab21246f7860dbbd24524ae14",
+    "device": "phone",
+    "before": {
+      "version": 1,
+      "day": 1,
+      "restored": true,
+      "shade": 0,
+      "plants": {
+        "flower": {
+          "site": 0,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "climber": {
+          "site": 2,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "tree": {
+          "site": 4,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        }
+      },
+      "planterEarned": false
+    },
+    "watered": {
+      "version": 1,
+      "day": 1,
+      "restored": true,
+      "shade": 0,
+      "plants": {
+        "flower": {
+          "site": 0,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "climber": {
+          "site": 2,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "tree": {
+          "site": 4,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        }
+      },
+      "planterEarned": false
+    },
+    "moved": {
+      "version": 1,
+      "day": 1,
+      "restored": true,
+      "shade": 0,
+      "plants": {
+        "flower": {
+          "site": 0,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "climber": {
+          "site": 1,
+          "care": "ready",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        },
+        "tree": {
+          "site": 4,
+          "care": "dry",
+          "growth": 0,
+          "drooping": false,
+          "waited": false,
+          "result": null
+        }
+      },
+      "planterEarned": false
+    },
+    "anchor": {
+      "id": "rooftop.pot.climber",
+      "position": {
+        "x": 24.7,
+        "y": 24.1
+      },
+      "radius": 1.6,
+      "featureId": "garden",
+      "interactionId": "garden.climber"
+    },
+    "sizes": [
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      },
+      {
+        "width": 44,
+        "height": 44
+      }
+    ],
+    "errors": [],
+    "note": "Controls-only feature harness; shared App binding still requires foundation wiring."
+  }
+]

@@ -1,0 +1,323 @@
+{
+  "config": {
+    "argv": [
+      "/workspace/.junyan-tools/node_modules/node/bin/node",
+      "/workspace/junyan/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "docs/evidence/0088/save-repro/repro.config.ts"
+    ],
+    "configFile": "/workspace/junyan/docs/evidence/0088/save-repro/repro.config.ts",
+    "rootDir": "/workspace/junyan/docs/evidence/0088/save-repro",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/save-repro/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/save-repro",
+        "testIgnore": [],
+        "testMatch": [
+          "repro.spec.ts"
+        ],
+        "timeout": 120000
+      },
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/save-repro/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0088/save-repro",
+        "testIgnore": [],
+        "testMatch": [
+          "repro.spec.ts"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0088/save-repro/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/save-repro",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0088/save-repro",
+        "testIgnore": [],
+        "testMatch": "repro.spec.ts",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5491/junyan/",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "trace": "on",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0088/save-repro/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0088/save-repro",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0088/save-repro",
+        "testIgnore": [],
+        "testMatch": "repro.spec.ts",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5491/junyan/",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "trace": "on",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "phone"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "/workspace/.junyan-tools/node_modules/node/bin/node node_modules/vite/bin/vite.js preview --base /junyan/ --host 127.0.0.1 --port 5491 --strictPort",
+      "cwd": "/workspace/junyan",
+      "url": "http://127.0.0.1:5491/junyan/",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "repro.spec.ts",
+      "file": "repro.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "non-movement checkpoint followed by movement and reload",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10836,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"x\": 6.45,\u001b[39m\n\u001b[32m-   \"y\": 2.95,\u001b[39m\n\u001b[31m+   \"x\": 6,\u001b[39m\n\u001b[31m+   \"y\": 2.5,\u001b[39m\n\u001b[2m  }\u001b[22m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"x\": 6.45,\u001b[39m\n\u001b[32m-   \"y\": 2.95,\u001b[39m\n\u001b[31m+   \"x\": 6,\u001b[39m\n\u001b[31m+   \"y\": 2.5,\u001b[39m\n\u001b[2m  }\u001b[22m\n    at /workspace/junyan/docs/evidence/0088/save-repro/repro.spec.ts:34:35",
+                    "location": {
+                      "file": "/workspace/junyan/docs/evidence/0088/save-repro/repro.spec.ts",
+                      "column": 35,
+                      "line": 34
+                    },
+                    "snippet": "  32 |  expect(afterMovement.saved.player).not.toEqual(before.saved.player);\n  33 |  expect(afterMovement.checkpoint.player).toEqual(before.saved.player);\n> 34 |  expect(afterReload.saved.player).toEqual(afterMovement.saved.player);\n     |                                   ^\n  35 | });\n  36 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/junyan/docs/evidence/0088/save-repro/repro.spec.ts",
+                        "column": 35,
+                        "line": 34
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"x\": 6.45,\u001b[39m\n\u001b[32m-   \"y\": 2.95,\u001b[39m\n\u001b[31m+   \"x\": 6,\u001b[39m\n\u001b[31m+   \"y\": 2.5,\u001b[39m\n\u001b[2m  }\u001b[22m\n\n  32 |  expect(afterMovement.saved.player).not.toEqual(before.saved.player);\n  33 |  expect(afterMovement.checkpoint.player).toEqual(before.saved.player);\n> 34 |  expect(afterReload.saved.player).toEqual(afterMovement.saved.player);\n     |                                   ^\n  35 | });\n  36 |\n    at /workspace/junyan/docs/evidence/0088/save-repro/repro.spec.ts:34:35"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T00:00:52.266Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/junyan/docs/evidence/0088/save-repro/results/repro-non-movement-checkpo-4bec4-owed-by-movement-and-reload-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/save-repro/results/repro-non-movement-checkpo-4bec4-owed-by-movement-and-reload-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/junyan/docs/evidence/0088/save-repro/repro.spec.ts",
+                    "column": 35,
+                    "line": 34
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "39a77a05e0c54e188911-d5172fb4e26d52a95a4f",
+          "file": "repro.spec.ts",
+          "line": 12,
+          "column": 1
+        },
+        {
+          "title": "non-movement checkpoint followed by movement and reload",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10829,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"x\": 6.45,\u001b[39m\n\u001b[32m-   \"y\": 2.95,\u001b[39m\n\u001b[31m+   \"x\": 6,\u001b[39m\n\u001b[31m+   \"y\": 2.5,\u001b[39m\n\u001b[2m  }\u001b[22m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"x\": 6.45,\u001b[39m\n\u001b[32m-   \"y\": 2.95,\u001b[39m\n\u001b[31m+   \"x\": 6,\u001b[39m\n\u001b[31m+   \"y\": 2.5,\u001b[39m\n\u001b[2m  }\u001b[22m\n    at /workspace/junyan/docs/evidence/0088/save-repro/repro.spec.ts:34:35",
+                    "location": {
+                      "file": "/workspace/junyan/docs/evidence/0088/save-repro/repro.spec.ts",
+                      "column": 35,
+                      "line": 34
+                    },
+                    "snippet": "  32 |  expect(afterMovement.saved.player).not.toEqual(before.saved.player);\n  33 |  expect(afterMovement.checkpoint.player).toEqual(before.saved.player);\n> 34 |  expect(afterReload.saved.player).toEqual(afterMovement.saved.player);\n     |                                   ^\n  35 | });\n  36 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/junyan/docs/evidence/0088/save-repro/repro.spec.ts",
+                        "column": 35,
+                        "line": 34
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"x\": 6.45,\u001b[39m\n\u001b[32m-   \"y\": 2.95,\u001b[39m\n\u001b[31m+   \"x\": 6,\u001b[39m\n\u001b[31m+   \"y\": 2.5,\u001b[39m\n\u001b[2m  }\u001b[22m\n\n  32 |  expect(afterMovement.saved.player).not.toEqual(before.saved.player);\n  33 |  expect(afterMovement.checkpoint.player).toEqual(before.saved.player);\n> 34 |  expect(afterReload.saved.player).toEqual(afterMovement.saved.player);\n     |                                   ^\n  35 | });\n  36 |\n    at /workspace/junyan/docs/evidence/0088/save-repro/repro.spec.ts:34:35"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T00:01:04.245Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/junyan/docs/evidence/0088/save-repro/results/repro-non-movement-checkpo-4bec4-owed-by-movement-and-reload-phone/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/save-repro/results/repro-non-movement-checkpo-4bec4-owed-by-movement-and-reload-phone/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/junyan/docs/evidence/0088/save-repro/repro.spec.ts",
+                    "column": 35,
+                    "line": 34
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "39a77a05e0c54e188911-688f340d19484b5fd9dd",
+          "file": "repro.spec.ts",
+          "line": 12,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-06T00:00:51.422Z",
+    "duration": 24612.664,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

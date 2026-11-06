@@ -1,0 +1,87 @@
+{
+  "scope": "normal production renderer and actual saved furnishing fixture; real mouse/touch walking around table and wardrobe",
+  "results": [
+    {
+      "name": "desktop",
+      "errors": [],
+      "stops": [
+        {
+          "label": "table-front",
+          "position": {
+            "x": 10.000000476981752,
+            "y": 8.999999523018248
+          }
+        },
+        {
+          "label": "table-side",
+          "position": {
+            "x": 12.599999515733625,
+            "y": 8.600000484266374
+          }
+        },
+        {
+          "label": "table-behind",
+          "position": {
+            "x": 10.000000172273115,
+            "y": 5.399999827726884
+          }
+        },
+        {
+          "label": "wardrobe-front",
+          "position": {
+            "x": 4.699999999999999,
+            "y": 16.5
+          }
+        },
+        {
+          "label": "wardrobe-behind",
+          "position": {
+            "x": 2.9999999999999982,
+            "y": 13.3
+          }
+        }
+      ]
+    },
+    {
+      "name": "phone",
+      "errors": [],
+      "stops": [
+        {
+          "label": "table-front",
+          "position": {
+            "x": 9.99999984249844,
+            "y": 9.00000015750156
+          }
+        },
+        {
+          "label": "table-side",
+          "position": {
+            "x": 12.60000043117639,
+            "y": 8.600000678553723
+          }
+        },
+        {
+          "label": "table-behind",
+          "position": {
+            "x": 10.059043268366402,
+            "y": 5.340956176768541
+          }
+        },
+        {
+          "label": "wardrobe-front",
+          "position": {
+            "x": 4.664884171563449,
+            "y": 16.535116938166667
+          }
+        },
+        {
+          "label": "wardrobe-behind",
+          "position": {
+            "x": 2.9923480987000923,
+            "y": 13.307650791569795
+          }
+        }
+      ]
+    }
+  ]
+}

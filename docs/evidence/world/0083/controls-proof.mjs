@@ -1,0 +1,33 @@
+import {execFileSync} from 'node:child_process';
+import {chromium} from '@playwright/test';
+import {writeFile} from 'node:fs/promises';
+const dir=new URL('./',import.meta.url).pathname;
+const sourceHead=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox','--mute-audio']});
+const results=[];
+for(const [device,width,height] of [['desktop',1440,900],['phone',390,844]]){
+ const page=await browser.newPage({viewport:{width,height},hasTouch:device==='phone'}),errors=[];
+ page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:5485/src/features/garden/harness.html?test=1&presentation=controls&plant=climber');
+ await page.locator('.garden-tool-button[aria-label="收拾"]').click();
+ if(await page.locator('[data-selected-plant="climber"][data-presentation="controls"]').count()!==1)throw new Error('Plant binding mismatch');
+ if(await page.locator('canvas,.garden-pots').count())throw new Error('Legacy scene or generic plant selector remains');
+ const before=await page.evaluate(()=>window.__GARDEN_TEST__.state());
+ await page.locator('.garden-tool-button[aria-label="浇水"]').click();
+ const watered=await page.evaluate(()=>window.__GARDEN_TEST__.state());
+ if(watered.plants.climber.care!=='ready'||JSON.stringify(before.plants.tree)!==JSON.stringify(watered.plants.tree)||JSON.stringify(before.plants.flower)!==JSON.stringify(watered.plants.flower))throw new Error('Water applied to wrong plant');
+ await page.locator('.garden-tool-button[aria-label="搬"]').click();
+ const sizes=await page.locator('.garden-placement-choices button').evaluateAll(nodes=>nodes.map(n=>({width:n.getBoundingClientRect().width,height:n.getBoundingClientRect().height})));
+ if(sizes.length!==6||sizes.some(s=>s.width<44||s.height<44))throw new Error('Placement targets too small');
+ await page.screenshot({path:`${dir}controls-placement-${device}.png`,fullPage:true});
+ await page.locator('.garden-placement-choices button').nth(1).click();
+ const moved=await page.evaluate(()=>window.__GARDEN_TEST__.state());
+ if(moved.plants.climber.site!==1||moved.plants.flower.site!==0||moved.plants.tree.site!==4)throw new Error('Move applied to wrong plant');
+ const anchor=await page.evaluate(async()=>{const {projectGarden}=await import('/src/world/maps/rooftop/index.ts');return projectGarden(window.__GARDEN_TEST__.state()).anchors.find(a=>a.interactionId==='garden.climber');});
+ if(anchor.id!=='rooftop.pot.climber'||anchor.position.x!==24.7||anchor.position.y!==24.1)throw new Error('Stable anchor did not follow pot');
+ await page.screenshot({path:`${dir}controls-bound-climber-${device}.png`,fullPage:true});
+ results.push({sourceHead,device,before,watered,moved,anchor,sizes,errors,note:'Controls-only feature harness; shared App binding still requires foundation wiring.'});
+ await page.close();
+}
+await browser.close();await writeFile(`${dir}controls-proof.json`,JSON.stringify(results,null,2));
+if(results.some(r=>r.errors.length))throw new Error('Page error');

@@ -1,0 +1,142 @@
+{
+  "source": "8cd5bc209b7dc2d91cc0f765991de313f813f4eb",
+  "method": "Normal opening; actual menu clicks document baseline limitation, not world traversal acceptance; reload rooftop",
+  "errors": [],
+  "metrics": [
+    {
+      "id": "restaurant",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "document": {
+        "width": 1440,
+        "height": 1060
+      },
+      "canvases": [
+        {
+          "width": 360,
+          "height": 280,
+          "rect": {
+            "x": 321.421875,
+            "y": 207,
+            "width": 797.140625,
+            "height": 619.984375,
+            "top": 207,
+            "right": 1118.5625,
+            "bottom": 826.984375,
+            "left": 321.421875
+          }
+        }
+      ]
+    },
+    {
+      "id": "apartment",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "document": {
+        "width": 1440,
+        "height": 1093
+      },
+      "canvases": [
+        {
+          "width": 360,
+          "height": 280,
+          "rect": {
+            "x": 361,
+            "y": 158,
+            "width": 718,
+            "height": 558,
+            "top": 158,
+            "right": 1079,
+            "bottom": 716,
+            "left": 361
+          }
+        }
+      ]
+    },
+    {
+      "id": "cats",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "document": {
+        "width": 1440,
+        "height": 1000
+      },
+      "canvases": [
+        {
+          "width": 360,
+          "height": 280,
+          "rect": {
+            "x": 240,
+            "y": 235,
+            "width": 520,
+            "height": 404.4375,
+            "top": 235,
+            "right": 760,
+            "bottom": 639.4375,
+            "left": 240
+          }
+        }
+      ]
+    },
+    {
+      "id": "repairs",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "document": {
+        "width": 1440,
+        "height": 1000
+      },
+      "canvases": [
+        {
+          "width": 360,
+          "height": 280,
+          "rect": {
+            "x": 240,
+            "y": 235,
+            "width": 540,
+            "height": 420,
+            "top": 235,
+            "right": 780,
+            "bottom": 655,
+            "left": 240
+          }
+        }
+      ]
+    },
+    {
+      "id": "garden",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "document": {
+        "width": 1440,
+        "height": 1000
+      },
+      "canvases": [
+        {
+          "width": 360,
+          "height": 280,
+          "rect": {
+            "x": 360,
+            "y": 229,
+            "width": 720,
+            "height": 560,
+            "top": 229,
+            "right": 1080,
+            "bottom": 789,
+            "left": 360
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+import {chromium} from '@playwright/test';
+import {mkdir,writeFile} from 'node:fs/promises';
+const root='/workspace/junyan/docs/evidence/world/0086';
+await mkdir(`${root}/screens`,{recursive:true});
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox','--mute-audio']});
+const errors=[];
+for(const [name,width,height] of [['desktop',1280,800],['phone',390,844]]){
+ const context=await browser.newContext({viewport:{width,height},recordVideo:{dir:`${root}/motion`,size:{width:640,height:480}}});
+ const page=await context.newPage();
+ page.on('pageerror',e=>errors.push(String(e)));page.on('console',msg=>{if(msg.type()==='error')errors.push(msg.text());});
+ await page.goto('http://127.0.0.1:5488/src/world/atmosphere/harness.html');
+ await page.waitForFunction(()=>window.__ATMOSPHERE__?.frames>5);
+ await page.evaluate(()=>window.__ATMOSPHERE__.freeze(5000));
+ for(const phase of ['morning','noon','evening','night']){
+  await page.locator(`[data-phase="${phase}"]`).click();
+  await page.screenshot({path:`${root}/screens/${name}-${phase}.png`,fullPage:true});
+ }
+ await page.locator('[data-phase="evening"]').click();
+ await page.locator('#treatment').click();
+ await page.screenshot({path:`${root}/screens/${name}-wash.png`,fullPage:true});
+ await page.locator('#treatment').click();
+ await page.locator('#motion').click();
+ await page.screenshot({path:`${root}/screens/${name}-reduced.png`,fullPage:true});
+ await page.locator('#motion').click();
+ await page.evaluate(()=>window.__ATMOSPHERE__.animate());
+ const motion=await page.evaluate(async()=>{const c=document.querySelector('canvas'),a=c.toDataURL();for(let i=0;i<45;i++)await new Promise(requestAnimationFrame);return {changed:a!==c.toDataURL()};});
+ if(!motion.changed)throw Error('Atmosphere did not animate');
+ const before=await page.evaluate(()=>({...window.__ATMOSPHERE__.camera}));
+ await page.keyboard.press('ArrowRight');
+ const after=await page.evaluate(()=>({...window.__ATMOSPHERE__.camera}));
+ if(before.x===after.x)throw Error('Camera did not move');
+ await page.locator('canvas').click({position:{x:width/2,y:60}});
+ await page.screenshot({path:`${root}/screens/${name}-camera.png`,fullPage:true});
+ const video=page.video();
+ await context.close();
+ await writeFile(`${root}/${name}-capture.json`,JSON.stringify({before,after,motion,errors,video:await video.path()},null,2));
+}
+const adapterPage=await browser.newPage();
+await adapterPage.goto('http://127.0.0.1:5488/src/world/atmosphere/harness.html');
+await adapterPage.waitForFunction(()=>window.__ATMOSPHERE__);
+const opacity=await adapterPage.evaluate(()=>{const c=document.createElement('canvas');c.width=8;c.height=8;const ctx=c.getContext('2d');ctx.globalAlpha=.5;window.__ATMOSPHERE__.drawAtmosphere(ctx,{commands:[{layer:'ground',points:[{x:0,y:0},{x:8,y:0},{x:8,y:8},{x:0,y:8}],color:[255,255,255],opacity:.5}]},{project:p=>p,pass:'ground'});return {pixelAlpha:ctx.getImageData(4,4,1,1).data[3],restoredAlpha:ctx.globalAlpha};});
+if(Math.abs(opacity.pixelAlpha-64)>1||opacity.restoredAlpha!==.5)throw Error('Host fade opacity was not preserved');
+await writeFile(`${root}/adapter-opacity.json`,JSON.stringify(opacity,null,2));
+const emissive=await adapterPage.evaluate(()=>{const c=document.createElement('canvas');c.width=8;c.height=8;const ctx=c.getContext('2d');let materialCalls=0;window.__ATMOSPHERE__.drawAtmosphere(ctx,{commands:[{layer:'ground',points:[{x:0,y:0},{x:8,y:0},{x:8,y:8},{x:0,y:8}],color:[255,224,153],opacity:1}]},{project:p=>p,pass:'ground',shadeColor:()=>{materialCalls++;return '#000000';}});return {pixel:[...ctx.getImageData(4,4,1,1).data],materialCalls};});
+if(emissive.materialCalls!==0||String(emissive.pixel)!=='255,224,153,255')throw Error('Atmosphere emission was shaded twice');
+await writeFile(`${root}/emissive-boundary.json`,JSON.stringify(emissive,null,2));
+await adapterPage.close();
+const reducedContext=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
+const reducedPage=await reducedContext.newPage();
+await reducedPage.goto('http://127.0.0.1:5488/src/world/atmosphere/harness.html');
+await reducedPage.waitForFunction(()=>window.__ATMOSPHERE__?.frames>=1);
+const stable=await reducedPage.evaluate(async()=>{const c=document.querySelector('canvas'),before=c.toDataURL();for(let i=0;i<30;i++)await new Promise(requestAnimationFrame);return before===c.toDataURL();});
+if(!stable)throw Error('OS reduced-motion frames changed');
+await writeFile(`${root}/reduced-motion.json`,JSON.stringify({browserPreference:'reduce',stable},null,2));
+await reducedContext.close();
+await browser.close();
+if(errors.length)throw Error(errors.join('\n'));
+console.log('Captured four phases, wash comparison, reduced motion and camera input at two viewport sizes; console clean.');

@@ -1,0 +1,34 @@
+[
+  {
+    "name": "desktop",
+    "setup": "actual completed-repair save from production UI proof; gift claim and reload use normal UI",
+    "owned": [
+      "repairs.stool"
+    ],
+    "claimed": [
+      "repairs.stool"
+    ],
+    "claimAgain": 0,
+    "position": {
+      "x": 20.8,
+      "y": 10.8
+    },
+    "errors": []
+  },
+  {
+    "name": "phone",
+    "setup": "actual completed-repair save from production UI proof; gift claim and reload use normal UI",
+    "owned": [
+      "repairs.stool"
+    ],
+    "claimed": [
+      "repairs.stool"
+    ],
+    "claimAgain": 0,
+    "position": {
+      "x": 20.800000277432527,
+      "y": 10.800000277432527
+    },
+    "errors": []
+  }
+]

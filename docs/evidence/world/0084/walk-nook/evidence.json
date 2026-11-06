@@ -1,0 +1,44 @@
+{
+  "setup": "Valid day save seeded at riverbank; all route segments then use actual canvas pointer input and shared production pathfinding",
+  "proof": [
+    {
+      "id": "shore-watch",
+      "start": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 20,
+          "y": 19
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 50.99999918206036,
+          "y": 42.99999907182034
+        },
+        "facing": "south",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "actualPointerSegments": 11
+    }
+  ],
+  "consoleErrors": []
+}

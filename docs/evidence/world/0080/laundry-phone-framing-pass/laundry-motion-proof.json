@@ -1,0 +1,340 @@
+[
+  {
+    "name": "desktop",
+    "sourceHead": "cd98a8db25c9da44832191c0a64f82466f32cd0e",
+    "startFixture": "Existing town save; entered courtyard and walked using ordinary pointer/touch input. NPC is the sole registered canonical hook, not an injected spawn.",
+    "transitions": [
+      {
+        "from": "town",
+        "exit": "to-courtyard",
+        "to": "courtyard",
+        "arrival": {
+          "x": 23.04633130148325,
+          "y": 33.431134838249896
+        }
+      }
+    ],
+    "contract": {
+      "profile": {
+        "id": "resident-laundry-neighbour",
+        "kind": "resident",
+        "homeMap": "courtyard",
+        "speed": 0.65,
+        "radius": 0.22,
+        "dwellMs": 19000,
+        "resting": "work"
+      },
+      "actors": [
+        {
+          "id": "courtyard.laundry-neighbour",
+          "durationMs": 76941.2160724253,
+          "phases": [
+            {
+              "from": {
+                "x": 32.5,
+                "y": 10.8
+              },
+              "to": {
+                "x": 32.5,
+                "y": 10.8
+              },
+              "startMs": 0,
+              "endMs": 19000,
+              "action": "work"
+            },
+            {
+              "from": {
+                "x": 32.5,
+                "y": 10.8
+              },
+              "to": {
+                "x": 34,
+                "y": 19.5
+              },
+              "startMs": 19000,
+              "endMs": 32582.09751036507,
+              "action": "walk"
+            },
+            {
+              "from": {
+                "x": 34,
+                "y": 19.5
+              },
+              "to": {
+                "x": 30.4,
+                "y": 20.8
+              },
+              "startMs": 32582.09751036507,
+              "endMs": 38470.60803621265,
+              "action": "walk"
+            },
+            {
+              "from": {
+                "x": 30.4,
+                "y": 20.8
+              },
+              "to": {
+                "x": 30.4,
+                "y": 20.8
+              },
+              "startMs": 38470.60803621265,
+              "endMs": 57470.60803621265,
+              "action": "work"
+            },
+            {
+              "from": {
+                "x": 30.4,
+                "y": 20.8
+              },
+              "to": {
+                "x": 34,
+                "y": 19.5
+              },
+              "startMs": 57470.60803621265,
+              "endMs": 63359.118562060234,
+              "action": "walk"
+            },
+            {
+              "from": {
+                "x": 34,
+                "y": 19.5
+              },
+              "to": {
+                "x": 32.5,
+                "y": 10.8
+              },
+              "startMs": 63359.118562060234,
+              "endMs": 76941.2160724253,
+              "action": "walk"
+            }
+          ]
+        }
+      ],
+      "diagnostics": [
+        {
+          "hookId": "courtyard.white",
+          "reason": "blocked-route-stop"
+        }
+      ],
+      "frameId": "resident-laundry-neighbour/7/work/interact/0/laundry-basket"
+    },
+    "samples": [
+      {
+        "frame": 0,
+        "observedWallElapsedMs": 191,
+        "player": {
+          "x": 34.000000531626476,
+          "y": 16.999999787794174
+        }
+      },
+      {
+        "frame": 1,
+        "observedWallElapsedMs": 15925,
+        "player": {
+          "x": 34.000000531626476,
+          "y": 16.999999787794174
+        }
+      },
+      {
+        "frame": 2,
+        "observedWallElapsedMs": 31703,
+        "player": {
+          "x": 34.000000531626476,
+          "y": 16.999999787794174
+        }
+      },
+      {
+        "frame": 3,
+        "observedWallElapsedMs": 47582,
+        "player": {
+          "x": 34.000000531626476,
+          "y": 16.999999787794174
+        }
+      },
+      {
+        "frame": 4,
+        "observedWallElapsedMs": 63400,
+        "player": {
+          "x": 34.000000531626476,
+          "y": 16.999999787794174
+        }
+      }
+    ],
+    "ordinaryPlayerEnd": {
+      "x": 35.80000053162647,
+      "y": 11.999999787794177
+    },
+    "errors": [],
+    "frames": 1028,
+    "limits": "Real production motion capture and actual player traversal. Writer must inspect task phases; independent integrated review remains required. No actor clock or position was overridden."
+  },
+  {
+    "name": "phone",
+    "sourceHead": "cd98a8db25c9da44832191c0a64f82466f32cd0e",
+    "startFixture": "Existing town save; entered courtyard and walked using ordinary pointer/touch input. NPC is the sole registered canonical hook, not an injected spawn.",
+    "transitions": [
+      {
+        "from": "town",
+        "exit": "to-courtyard",
+        "to": "courtyard",
+        "arrival": {
+          "x": 23.04633130148325,
+          "y": 33.431134838249896
+        }
+      }
+    ],
+    "contract": {
+      "profile": {
+        "id": "resident-laundry-neighbour",
+        "kind": "resident",
+        "homeMap": "courtyard",
+        "speed": 0.65,
+        "radius": 0.22,
+        "dwellMs": 19000,
+        "resting": "work"
+      },
+      "actors": [
+        {
+          "id": "courtyard.laundry-neighbour",
+          "durationMs": 76941.2160724253,
+          "phases": [
+            {
+              "from": {
+                "x": 32.5,
+                "y": 10.8
+              },
+              "to": {
+                "x": 32.5,
+                "y": 10.8
+              },
+              "startMs": 0,
+              "endMs": 19000,
+              "action": "work"
+            },
+            {
+              "from": {
+                "x": 32.5,
+                "y": 10.8
+              },
+              "to": {
+                "x": 34,
+                "y": 19.5
+              },
+              "startMs": 19000,
+              "endMs": 32582.09751036507,
+              "action": "walk"
+            },
+            {
+              "from": {
+                "x": 34,
+                "y": 19.5
+              },
+              "to": {
+                "x": 30.4,
+                "y": 20.8
+              },
+              "startMs": 32582.09751036507,
+              "endMs": 38470.60803621265,
+              "action": "walk"
+            },
+            {
+              "from": {
+                "x": 30.4,
+                "y": 20.8
+              },
+              "to": {
+                "x": 30.4,
+                "y": 20.8
+              },
+              "startMs": 38470.60803621265,
+              "endMs": 57470.60803621265,
+              "action": "work"
+            },
+            {
+              "from": {
+                "x": 30.4,
+                "y": 20.8
+              },
+              "to": {
+                "x": 34,
+                "y": 19.5
+              },
+              "startMs": 57470.60803621265,
+              "endMs": 63359.118562060234,
+              "action": "walk"
+            },
+            {
+              "from": {
+                "x": 34,
+                "y": 19.5
+              },
+              "to": {
+                "x": 32.5,
+                "y": 10.8
+              },
+              "startMs": 63359.118562060234,
+              "endMs": 76941.2160724253,
+              "action": "walk"
+            }
+          ]
+        }
+      ],
+      "diagnostics": [
+        {
+          "hookId": "courtyard.white",
+          "reason": "blocked-route-stop"
+        }
+      ],
+      "frameId": "resident-laundry-neighbour/7/work/interact/0/laundry-basket"
+    },
+    "samples": [
+      {
+        "frame": 0,
+        "observedWallElapsedMs": 84,
+        "player": {
+          "x": 34.00000017019246,
+          "y": 16.99999982980754
+        }
+      },
+      {
+        "frame": 1,
+        "observedWallElapsedMs": 16181,
+        "player": {
+          "x": 34.00000017019246,
+          "y": 16.99999982980754
+        }
+      },
+      {
+        "frame": 2,
+        "observedWallElapsedMs": 31797,
+        "player": {
+          "x": 34.00000017019246,
+          "y": 16.99999982980754
+        }
+      },
+      {
+        "frame": 3,
+        "observedWallElapsedMs": 47377,
+        "player": {
+          "x": 34.00000017019246,
+          "y": 16.99999982980754
+        }
+      },
+      {
+        "frame": 4,
+        "observedWallElapsedMs": 62960,
+        "player": {
+          "x": 34.00000017019246,
+          "y": 16.99999982980754
+        }
+      }
+    ],
+    "ordinaryPlayerEnd": {
+      "x": 35.81836023877378,
+      "y": 11.940020997909462
+    },
+    "errors": [],
+    "frames": 1002,
+    "limits": "Real production motion capture and actual player traversal. Writer must inspect task phases; independent integrated review remains required. No actor clock or position was overridden."
+  }
+]

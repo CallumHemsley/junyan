@@ -1,0 +1,16 @@
+{
+  "ref": "74a5213",
+  "path": "src/world/lighting.ts",
+  "input": "#404040",
+  "first": "#202020",
+  "middle": "#404040",
+  "repeated": "#404040",
+  "orderIndependent": false,
+  "sourceTransform": "Removed only the import and transpiled exact git source; injected the actual atmosphere shadeAtmosphereColor function. No renderer/screenshot failure is inferred.",
+  "painterBoundary": [
+    "import {colorShader,shadedContext} from \"./lighting\";",
+    " const shadeColor=colorShader(atmosphere.light);view={...view,shadeColor};ctx=shadedContext(ctx,shadeColor);",
+    " drawAtmosphere(ctx,atmosphere,{...view,pass:\"ground\"});",
+    " drawAtmosphere(ctx,atmosphere,{...view,pass:\"foreground\"});"
+  ]
+}

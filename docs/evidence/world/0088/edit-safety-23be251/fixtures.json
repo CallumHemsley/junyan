@@ -1,0 +1,225 @@
+{
+  "before": {
+    "version": 1,
+    "id": "apartment",
+    "bounds": {
+      "width": 12,
+      "height": 10
+    },
+    "defaultSpawn": {
+      "x": 9,
+      "y": 8,
+      "facing": "north"
+    },
+    "walkable": [
+      {
+        "x": 0,
+        "y": 0,
+        "width": 12,
+        "height": 10
+      }
+    ],
+    "colliders": [
+      {
+        "id": "shelf.top",
+        "rect": {
+          "x": 3,
+          "y": 3,
+          "width": 4,
+          "height": 1
+        }
+      },
+      {
+        "id": "shelf.left",
+        "rect": {
+          "x": 3,
+          "y": 4,
+          "width": 1,
+          "height": 3
+        }
+      },
+      {
+        "id": "shelf.right",
+        "rect": {
+          "x": 6,
+          "y": 4,
+          "width": 1,
+          "height": 3
+        }
+      },
+      {
+        "id": "shelf.bottom.left",
+        "rect": {
+          "x": 4,
+          "y": 6,
+          "width": 0.5,
+          "height": 1
+        }
+      },
+      {
+        "id": "shelf.bottom.right",
+        "rect": {
+          "x": 5.5,
+          "y": 6,
+          "width": 0.5,
+          "height": 1
+        }
+      }
+    ],
+    "occluders": [],
+    "entrances": [
+      {
+        "id": "from-hall",
+        "position": {
+          "x": 9,
+          "y": 8
+        },
+        "facing": "north"
+      }
+    ],
+    "exits": [
+      {
+        "id": "to-hall",
+        "rect": {
+          "x": 8.5,
+          "y": 7.5,
+          "width": 1,
+          "height": 1
+        },
+        "targetMapId": "hall",
+        "targetEntranceId": "from-apartment",
+        "kind": "door"
+      }
+    ],
+    "anchors": [],
+    "terrain": [],
+    "props": [],
+    "palette": {},
+    "npcHooks": [],
+    "landmarks": []
+  },
+  "after": {
+    "version": 1,
+    "id": "apartment",
+    "bounds": {
+      "width": 12,
+      "height": 10
+    },
+    "defaultSpawn": {
+      "x": 9,
+      "y": 8,
+      "facing": "north"
+    },
+    "walkable": [
+      {
+        "x": 0,
+        "y": 0,
+        "width": 12,
+        "height": 10
+      }
+    ],
+    "colliders": [
+      {
+        "id": "shelf.top",
+        "rect": {
+          "x": 3,
+          "y": 3,
+          "width": 4,
+          "height": 1
+        }
+      },
+      {
+        "id": "shelf.left",
+        "rect": {
+          "x": 3,
+          "y": 4,
+          "width": 1,
+          "height": 3
+        }
+      },
+      {
+        "id": "shelf.right",
+        "rect": {
+          "x": 6,
+          "y": 4,
+          "width": 1,
+          "height": 3
+        }
+      },
+      {
+        "id": "shelf.bottom.left",
+        "rect": {
+          "x": 4,
+          "y": 6,
+          "width": 0.5,
+          "height": 1
+        }
+      },
+      {
+        "id": "shelf.bottom.right",
+        "rect": {
+          "x": 5.5,
+          "y": 6,
+          "width": 0.5,
+          "height": 1
+        }
+      },
+      {
+        "id": "placed.gate-cabinet",
+        "rect": {
+          "x": 4.5,
+          "y": 6,
+          "width": 1,
+          "height": 1
+        }
+      }
+    ],
+    "occluders": [],
+    "entrances": [
+      {
+        "id": "from-hall",
+        "position": {
+          "x": 9,
+          "y": 8
+        },
+        "facing": "north"
+      }
+    ],
+    "exits": [
+      {
+        "id": "to-hall",
+        "rect": {
+          "x": 8.5,
+          "y": 7.5,
+          "width": 1,
+          "height": 1
+        },
+        "targetMapId": "hall",
+        "targetEntranceId": "from-apartment",
+        "kind": "door"
+      }
+    ],
+    "anchors": [],
+    "terrain": [],
+    "props": [],
+    "palette": {},
+    "npcHooks": [],
+    "landmarks": []
+  },
+  "fixtures": [
+    {
+      "name": "still-standable-pocket",
+      "position": {
+        "x": 5,
+        "y": 5
+      }
+    },
+    {
+      "name": "overlap-nearest-pocket",
+      "position": {
+        "x": 5,
+        "y": 6.25
+      }
+    }
+  ]
+}
