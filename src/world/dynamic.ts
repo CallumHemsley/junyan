@@ -9,7 +9,7 @@ const apartments=new WeakMap<object,WorldMapDefinition>(),roofs=new WeakMap<obje
 export function mapsForNeighbourhood(state:NeighbourhoodState,day=state.garden.day??1):MapRegistry {
  let apartment=apartments.get(state.apartment.placements),rooftop=roofs.get(state.garden);
  if(!apartment&&worldMaps.apartment){apartment={...worldMaps.apartment,colliders:[...worldMaps.apartment.colliders,...furnitureColliders(state.apartment)]};apartments.set(state.apartment.placements,apartment);}
- if(!rooftop&&worldMaps.rooftop){const projected=projectGarden(state.garden);rooftop={...worldMaps.rooftop,anchors:[...worldMaps.rooftop.anchors,...projected.anchors],props:[...worldMaps.rooftop.props,...projected.props],colliders:[...worldMaps.rooftop.colliders,...projected.colliders],occluders:[...worldMaps.rooftop.occluders,...projected.occluders]};roofs.set(state.garden,rooftop);}
+ if(!rooftop&&worldMaps.rooftop){const projected=projectGarden(state.garden);rooftop={...worldMaps.rooftop,npcHooks:[...worldMaps.rooftop.npcHooks,...projected.npcHooks],anchors:[...worldMaps.rooftop.anchors,...projected.anchors],props:[...worldMaps.rooftop.props,...projected.props],colliders:[...worldMaps.rooftop.colliders,...projected.colliders],occluders:[...worldMaps.rooftop.occluders,...projected.occluders]};roofs.set(state.garden,rooftop);}
  let courtyard=courtyards.get(state.cats);if(worldMaps.courtyard&&courtyard?.day!==day){courtyard={day,map:courtyardForCats(worldMaps.courtyard,state.cats,day)};courtyards.set(state.cats,courtyard);}
  return {...worldMaps,...(courtyard?{courtyard:courtyard.map}:{}),...(apartment?{apartment}:{}),...(rooftop?{rooftop}:{})};
 }

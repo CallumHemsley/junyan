@@ -6,6 +6,9 @@ import { createWorld } from '../state';
 import { initialLifeState, worldLifeFrame } from './index';
 import { catHabitat } from '../maps/courtyard';
 import { actorsFor, lifeContext } from '../life-bridge';
+import { mapsForNeighbourhood } from '../dynamic';
+import { gardenSites } from '../maps/rooftop';
+import type { Site } from '../../features/garden/rules';
 
 it('uses one world-life frame for global service presence and authoritative courtyard clues', () => {
   const game = createGame(content, 42);
@@ -39,4 +42,22 @@ it('earns rooftop birds only from the restored mature tree, not another mature p
   expect(birds().every(actors => actors.length > 0)).toBe(true);
   garden.restored = false;
   expect(birds()).toEqual([[], []]);
+});
+
+it('keeps the earned bird beside the saved tree in production dynamic maps at every site', () => {
+  for (const site of [0, 1, 2, 3, 4, 5] as const) {
+    const game = createGame(content, 42);
+    const garden = game.neighbourhood!.garden;
+    const free = ([0, 1, 2, 3, 4, 5] as Site[]).filter(value => value !== site);
+    garden.restored = true;
+    garden.plants.tree = { ...garden.plants.tree, site, growth: 3 };
+    garden.plants.flower.site = free[0];
+    garden.plants.climber.site = free[1];
+    const maps = mapsForNeighbourhood(game.neighbourhood!);
+    const world = createWorld(maps, 'garden');
+    const bird = actorsFor(maps.rooftop, game, world, 10000, false).find(actor => actor.kind === 'bird');
+    expect(bird).toBeDefined();
+    expect(Math.hypot(bird!.position.x - gardenSites[site].x, bird!.position.y - gardenSites[site].y)).toBeLessThan(3);
+    expect(bird!.id).toBe('life.rooftop.sparrow');
+  }
 });

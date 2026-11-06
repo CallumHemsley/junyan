@@ -38,9 +38,13 @@ export function projectGarden(state: State) {
     return {id: `rooftop.pot.${id}`, position: {x: site.x + .7, y: site.y + 2.1}, radius: 1.6,
       featureId: 'garden' as const, interactionId: `garden.${id}`};
   });
+  const tree = anchors.find(anchor => anchor.id === 'rooftop.pot.tree')!.position;
   return {
     props,
     anchors,
+    npcHooks: [{id: 'life.rooftop.sparrow', characterId: 'bird',
+      position: {x: tree.x - .4, y: tree.y},
+      route: [{x: tree.x + .4, y: tree.y}, {x: tree.x, y: tree.y + .4}]}],
     colliders,
     occluders: [{id: 'rooftop.garden-shade', rect: {...props[3].position, width: 2, height: 2.2}, height: 3, fadeWhenPlayerBehind: true}],
   };
@@ -48,11 +52,8 @@ export function projectGarden(state: State) {
 
 export function rooftopForGarden(state: State) {
   const garden = projectGarden(state);
-  const tree = garden.anchors.find(anchor => anchor.id === 'rooftop.pot.tree')!.position;
   return {...definition,
-    npcHooks: [...definition.npcHooks, {id: 'life.rooftop.sparrow', characterId: 'bird',
-      position: {x: tree.x - .4, y: tree.y},
-      route: [{x: tree.x + .4, y: tree.y}, {x: tree.x, y: tree.y + .4}]}],
+    npcHooks: [...definition.npcHooks, ...garden.npcHooks],
     props: [...definition.props, ...garden.props],
     anchors: [...definition.anchors, ...garden.anchors],
     colliders: [...definition.colliders, ...garden.colliders], occluders: [...definition.occluders, ...garden.occluders]};
