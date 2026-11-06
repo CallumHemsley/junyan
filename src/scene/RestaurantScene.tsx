@@ -4,6 +4,7 @@ import {createRenderer, groundPosition, projectPosition} from './renderer.js';
 import {restaurantScene} from './restaurant-scene.js';
 import './scene.css';
 import {characterFor, content} from '../content';
+import {ui} from '../language/ui';
 
 export {projectPosition} from './renderer.js';
 export type RestaurantSceneProps = {
@@ -93,11 +94,11 @@ export default function RestaurantScene({state,onMove,onTable,onKitchen}:Restaur
         className="scene-target scene-table" style={percentPosition(table,-.8)}
         data-testid={`table-${table.table}`} data-phase={customer?.phase ?? 'empty'}
         aria-pressed={state.activeTable===table.table} onClick={()=>onTable(table.table)}>
-        <span>{table.table}桌</span><i aria-hidden="true"/>
+        <span>{ui.table(table.table)}</span><i aria-hidden="true"/>
       </button>;
     })}
     <button type="button" className="scene-target scene-kitchen" style={percentPosition(KITCHEN,1.8)}
-      data-testid="kitchen" onClick={onKitchen}>取餐</button>
+      data-testid="kitchen" onClick={onKitchen}>{ui.kitchenTarget}</button>
   </div>;
 }
 function percentPosition(position:Position,z=0) {

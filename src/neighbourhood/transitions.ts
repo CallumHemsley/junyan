@@ -11,15 +11,18 @@ import * as apartment from "../features/apartment/rules";
 import * as cats from "../features/cats/rules";
 import * as repairs from "../features/repairs/rules";
 import * as garden from "../features/garden/rules";
-import { wordByHanzi } from "../features/apartment/content";
 import type { GiftId, LocationId } from "./contracts";
 import { availableGifts, createNeighbourhood } from "./model";
 import { claimGift, visitLocation } from "./state";
+import { availableScenarios, practiceForTransition } from "../progression/scenarios";
+import { purchaseFurniture } from "../progression/purchases";
 
 export type NeighbourhoodAction =
   | WorldAction
   | WorldLifeAction
-  | {type:"advance-world-day"}
+  | {type:"advance-world-day";now?:number}
+  | { type: "purchase-furniture"; id: string }
+  | { type: "follow-scenario"; id: string }
   | { type: "visit-location"; location: LocationId }
   | { type: "claim-neighbourhood-gift"; giftId: GiftId }
   | ({ type: "feature-action"; now: number } & (
@@ -30,30 +33,18 @@ export type NeighbourhoodAction =
   ));
 
 export function isNeighbourhoodAction(action: { type: string }): action is NeighbourhoodAction {
-  return action.type==="advance-world-day" || action.type.startsWith("world-") || action.type === "visit-location" || action.type === "feature-action" || action.type === "claim-neighbourhood-gift";
+  return action.type === "follow-scenario" || action.type === "purchase-furniture" || action.type==="advance-world-day" || action.type.startsWith("world-") || action.type === "visit-location" || action.type === "feature-action" || action.type === "claim-neighbourhood-gift";
 }
 
-function apartmentRecovery(before: apartment.State, action: apartment.Action, after: apartment.State): string[] {
-  let words: string[] = [];
-  if (action.type === "accept-starter" && after.owned.length !== before.owned.length) words = ["桌子", "椅子"];
-  if (action.type === "choose-colour" && before.colour !== after.colour) words = [after.colour === "blue" ? "蓝色" : "米色", "靠垫"];
-  const changed = JSON.stringify(before.placements) !== JSON.stringify(after.placements);
-  if (action.type === "store" && changed) words = ["收起来"];
-  if (action.type === "place" && changed && before.selected) {
-    const names: Record<apartment.ItemId, string[]> = {
-      bed: ["床"], table: ["桌子"], chair: ["椅子"], rug: ["地毯"], cushion: ["靠垫"],
-      "repairs.stool": ["凳子"], "garden.planter": ["盆栽"], "cats.cushion": ["猫", "靠垫"],
-      vase: ["花瓶"], basket: ["篮子"], lamp: ["灯"],
-    };
-    words = [...names[before.selected], "放", "这里"];
-  }
-  return words.map(hanzi => wordByHanzi[hanzi].id);
-}
 
 export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAction, content: Content): GameState {
+  if (action.type === "purchase-furniture") {
+    if(game.world && game.world.mapId !== "apartment")return game;
+    return purchaseFurniture(game, action.id);
+  }
   const state = game.neighbourhood ?? createNeighbourhood(game.day);
   if(action.type==="advance-world-day") {
-    const next=reduceGame(game,{type:"next-day"},content);
+    const next=reduceGame(game,{type:"next-day",now:action.now},content);
     return next===game?game:{...next,...(game.world?{world:{...game.world,life:{...restoreLife(game.world.life),serviceDepartures:[]}}}:{})};
   }
   if(action.type==="world-life") {
@@ -91,6 +82,19 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
     }
     return { ...game, player, world: next, neighbourhood };
   }
+  if (action.type === "follow-scenario") {
+    const scenario = availableScenarios(game).find(s => s.id === action.id);
+    if (!scenario) return game;
+    let next = game.world ? state : visitLocation(state, scenario.location);
+    if (scenario.id === "repairs.lamp" || scenario.id === "repairs.toy") {
+      const job = scenario.id === "repairs.lamp" ? "lamp" : "toy";
+      next = { ...next, repairs: repairs.reduce(next.repairs, { type: next.repairs.jobs[job] ? "switch" : "start", job }, game.day) };
+    }
+    if (scenario.location === "cats" && scenario.id !== "cats.reunion" && next.cats.repeat.status !== "active") {
+      next = { ...next, cats: cats.reduce(next.cats, { type: "begin" }, game.day) };
+    }
+    return { ...game, neighbourhood: next };
+  }
   if (action.type === "visit-location") {
     const next = visitLocation(state, action.location);
     return next === state ? game : { ...game, neighbourhood: next };
@@ -108,7 +112,7 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
       const after = apartment.reduce(state.apartment, action.action, game.day);
       if (after === state.apartment) return game;
       next = { ...state, apartment: after };
-      recovered = apartmentRecovery(state.apartment, action.action, after);
+      recovered = apartment.recoveryForTransition(state.apartment, action.action, after);
       break;
     }
     case "cats": {
@@ -143,5 +147,6 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
       world={...world,position};
     }
   }
-  return { ...game, ...(world?{world}:{}), neighbourhood: next, journal };
+  const after = { ...game, ...(world?{world}:{}), neighbourhood: next, journal };
+  return { ...after, progression: practiceForTransition({ ...game, neighbourhood: state }, action, after, content) };
 }

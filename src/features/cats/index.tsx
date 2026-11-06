@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import type { Line, Word } from '../../contracts';
-import WordToken from '../../WordToken';
+import WordLine from '../../WordLine';
 import Courtyard from './Courtyard';
 import { lineFor } from './content';
 import { choices, recoveryForTransition, reduce, type Action, type State, type Target } from './rules';
@@ -38,8 +38,7 @@ export default function Cats({ state, day, onAction, onLookup, onRecover, onPlay
     if (recovered.length) onRecover(recovered);
     if (next !== state && (next.feedback !== state.feedback || action.type === 'select')) onPlay(lineFor(next.feedback));
   };
-  const tokens = (key: string) => lineFor(key).tokens.map((word, index) => <WordToken key={`${word.id}-${index}`} word={word}
-    look={freshWordIds.includes(word.id) ? 'dot' : recoveredWordIds.includes(word.id) ? 'plain' : 'fogged'} onLookup={onLookup} />);
+  const tokens = (key: string) => <WordLine line={lineFor(key)} look={word => freshWordIds.includes(word.id) ? 'dot' : recoveredWordIds.includes(word.id) ? 'plain' : 'fogged'} onLookup={onLookup} />;
   const inspect: Target[] = ['aunt', 'bicycle', 'bench', 'door', 'window'];
   return <section className="cats-view" data-presentation={presentation} aria-label={lineFor('label-courtyard').text} data-testid="cats-view">
     {presentation === 'scene' && <header className="cats-heading"><h2>{tokens('label-courtyard')}</h2><span className="cats-cast">{tokens('label-white')}<span aria-hidden="true"> · </span>{tokens('label-black')}</span></header>}

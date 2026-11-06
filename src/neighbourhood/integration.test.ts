@@ -1,8 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { content } from "./registry";
+import { content, featureContent } from "./registry";
+import { content as restaurantContent } from "../content";
+import { contentWords } from "../content/words";
+import { attachFeatureContent } from "./content";
+import { french } from "../content/fixtures/french";
 import { createNeighbourhood, availableGifts } from "./model";
 import { reduceNeighbourhoodGame, type NeighbourhoodAction } from "./transitions";
-import { KITCHEN, TABLES, type GameState } from "../contracts";
+import { KITCHEN, TABLES, type Content, type GameState } from "../contracts";
 import { createGame, getOrder, orderTotal, reduceGame } from "../game";
 import { validateSavedGame } from "../save";
 import { createSession, reduceSession } from "../opening";
@@ -10,7 +14,7 @@ import { startSession } from "../startup";
 import type { Action as CatsAction } from "../features/cats/rules";
 import type { Action as RepairAction } from "../features/repairs/rules";
 import { nextDots } from "../recovery";
-import { wordByHanzi } from "../features/apartment/content";
+
 
 const act = (game: GameState, action: NeighbourhoodAction) => reduceNeighbourhoodGame(game, action, content);
 const visit = (game: GameState, location: NonNullable<GameState["neighbourhood"]>["location"]) => act(game, { type: "visit-location", location });
@@ -109,7 +113,7 @@ describe("saved neighbourhood integration", () => {
     const rejected=act(game,{type:"feature-action",feature:"apartment",action:{type:"place",x:0,y:0},now:3});
     expect(rejected.journal).toBe(game.journal);
     const placed=act(rejected,{type:"feature-action",feature:"apartment",action:{type:"place",x:2,y:1},now:4});
-    expect(placed.journal[wordByHanzi["放"].id]).toMatchObject({recovered:true,lookups:0,lastSeen:4});
+    expect(placed.journal["apartment.put"]).toMatchObject({recovered:true,lookups:0,lastSeen:4});
     expect(reload(placed)).toMatchObject(placed);
     expect(placed.neighbourhood?.apartment.placements.some(item=>item.id==="table")).toBe(true);
   });
@@ -119,7 +123,7 @@ describe("saved neighbourhood integration", () => {
     const action: NeighbourhoodAction={type:"feature-action",feature:"apartment",action:{type:"accept-starter"},now:1};
     const learned=act(start,action);
     const dots=nextDots([],start,action,learned);
-    expect(dots).toEqual([wordByHanzi["桌子"].id,wordByHanzi["椅子"].id]);
+    expect(dots).toEqual(["table","apartment.chair"]);
     const select: NeighbourhoodAction={type:"feature-action",feature:"apartment",action:{type:"select",id:"table"},now:2};
     const selected=act(learned,select);
     expect(nextDots(dots,learned,select,selected)).toBe(dots);
@@ -130,9 +134,9 @@ describe("saved neighbourhood integration", () => {
 
   it("keeps lookup separate from successful-use recovery", () => {
     const game=visit(createGame(content),"apartment");
-    const looked=reduceSession({phase:"day",game},{type:"lookup",wordId:wordByHanzi["放"].id,now:2},content);
+    const looked=reduceSession({phase:"day",game},{type:"lookup",wordId:"apartment.put",now:2},content);
     expect(looked.phase).toBe("day");
-    if(looked.phase==="day") expect(looked.game.journal[wordByHanzi["放"].id]).toMatchObject({recovered:false,lookups:1});
+    if(looked.phase==="day") expect(looked.game.journal["apartment.put"]).toMatchObject({recovered:false,lookups:1});
   });
 
   it("claims optional rewards only when earned and retains them after reload and undo", () => {
@@ -179,4 +183,40 @@ describe("saved neighbourhood integration", () => {
     expect(reload(next)).toMatchObject(next);
     expect(reduceGame(next,{type:"next-day"},content)).toBe(next);
   });
+});
+
+it('keeps recovery, gifts and saved progress when the same IDs carry another language', () => {
+  const translatedWords = new Map(contentWords(content).map(word => [word.id, {
+    id: word.id, text: `mot-${word.id.replaceAll(".", "-").replace(/[0-9]/g, "a")}`, gloss: word.gloss, audio: word.audio,
+  }]));
+  const translate = (value: unknown): unknown => {
+    if (Array.isArray(value)) return value.map(translate);
+    if (!value || typeof value !== 'object') return value;
+    if ('gloss' in value && 'id' in value && typeof value.id === 'string') return translatedWords.get(value.id);
+    const result = Object.fromEntries(Object.entries(value).map(([key, child]) => [key, translate(child)]));
+    if ('tokens' in result && Array.isArray(result.tokens)) result.text = `${result.tokens.map(word => word.text).join(' ')}.`;
+    return result;
+  };
+  const alternative = attachFeatureContent({...translate(restaurantContent) as Content, language: french.id}, translate(featureContent) as typeof featureContent, french);
+  expect(contentWords(alternative).every(word => word.text.startsWith('mot-') && word.pronunciation === undefined)).toBe(true);
+  const run = (pack: Content) => {
+    let game = createGame(pack);
+    const dispatch = (action: NeighbourhoodAction) => { game = reduceNeighbourhoodGame(game, action, pack); };
+    dispatch({type: 'visit-location', location: 'apartment'});
+    for (const action of [{type: 'accept-starter'}, {type: 'choose-colour', colour: 'cream'}, {type: 'select', id: 'table'}, {type: 'place', x: 2, y: 1}, {type: 'select', id: 'table'}, {type: 'store'}] as const) {
+      dispatch({type: 'feature-action', feature: 'apartment', action, now: 12});
+    }
+    dispatch({type: 'visit-location', location: 'cats'});
+    for (const action of [{type:'select',target:'white'}, {type:'crouch'}, {type:'wait'}, {type:'approach'}, {type:'follow'}, {type:'reunite'}] as const) {
+      dispatch({type: 'feature-action', feature: 'cats', action, now: 13});
+    }
+    dispatch({type: 'claim-neighbourhood-gift', giftId: 'cats.cushion'});
+    return game;
+  };
+  const original = run(content), translated = run(alternative);
+  expect(translated).toEqual(original);
+  expect(translated.journal['apartment.put'].recovered).toBe(true);
+  expect(translated.journal['apartment.store'].recovered).toBe(true);
+  expect(translated.neighbourhood?.apartment.owned).toContain('cats.cushion');
+  expect(validateSavedGame(JSON.parse(JSON.stringify(translated)), alternative)).toEqual(translated);
 });

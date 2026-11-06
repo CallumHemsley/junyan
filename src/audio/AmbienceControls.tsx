@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Speaker } from "../icons";
+import { ui } from "../language/ui";
 import { ambienceAsset, createAmbience, type AmbienceError } from "./ambience";
 import { readAmbiencePreference, saveAmbiencePreference } from "./ambience-preferences";
 import "./ambience-controls.css";
@@ -64,17 +65,17 @@ export function AmbienceControls({ ambience }: { ambience: ReturnType<typeof use
         event.currentTarget.querySelector("summary")?.focus();
       }
     }}>
-      <summary aria-label="环境声设置" aria-description={preference.muted ? "环境声已关闭" : "环境声已开启"}>
+      <summary aria-label={ui.ambienceSettings} aria-description={preference.muted ? ui.ambienceOff : ui.ambienceOn}>
         {preference.muted ? <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4Zm12 0 5 6m0-6-5 6" /></svg> : <Speaker />}
-        <span className="ambience-label">环境声</span>
+        <span className="ambience-label">{ui.ambience}</span>
       </summary>
       <div className="ambience-options">
         <label><input type="checkbox" checked={!preference.muted}
-          onChange={event => update({ ...preference, muted: !event.target.checked })} />环境声</label>
-        <label><span className="ambience-level-label">音量</span><input type="range" aria-label="环境声音量" min="0" max="1" step="0.05"
+          onChange={event => update({ ...preference, muted: !event.target.checked })} />{ui.ambience}</label>
+        <label><span className="ambience-level-label">{ui.volume}</span><input type="range" aria-label={ui.ambienceVolume} min="0" max="1" step="0.05"
           value={preference.level}
           onChange={event => update({ ...preference, level: Number(event.target.value) })} /></label>
-        {error && !preference.muted && preference.level > 0 && <div role="status"><p>环境声暂时没有播出。</p><button type="button" onClick={ambience.retry}>重试</button></div>}
+        {error && !preference.muted && preference.level > 0 && <div role="status"><p>{ui.ambienceUnavailable}</p><button type="button" onClick={ambience.retry}>{ui.retry}</button></div>}
       </div>
     </details>
   );

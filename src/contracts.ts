@@ -1,10 +1,11 @@
 import type { NeighbourhoodState } from "./neighbourhood/model";
+import type { Progression } from "./progression/model";
 
 export type Position = { x: number; y: number };
 export type Word = {
   id: string;
-  hanzi: string;
-  pinyin: string;
+  text: string;
+  pronunciation?: string;
   gloss: string;
   audio: string;
 };
@@ -45,6 +46,7 @@ export type Character = {
   retry: Line;
 };
 export type Content = {
+  language?: string;
   neighbourhood?: { words: Word[]; lines: (Line & { text?: string })[] };
   help: {
     welcome: Line;
@@ -64,6 +66,7 @@ export type Customer = { table: number; orderId: string; phase: Phase };
 export type JournalEntry = { lookups: number; lastSeen: number; recovered: boolean };
 export type GameState = {
   world?: import("./world/schema").WorldState;
+  progression?: Progression;
   neighbourhood?: NeighbourhoodState;
   seed: number;
   day: number;
@@ -88,7 +91,7 @@ export type Action =
   | { type: "deliver"; table: number; now: number }
   | { type: "pay"; table: number; change: number }
   | { type: "lookup"; wordId: string; now: number }
-  | { type: "next-day" };
+  | { type: "next-day"; now?: number };
 export const TABLES = [
   { table: 1, x: 3, y: 4 },
   { table: 2, x: 9, y: 4 },

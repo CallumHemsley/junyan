@@ -5,11 +5,14 @@ import { z } from "zod";
 import { TABLES, TRAY_CAPACITY, type Content, type GameState } from "./contracts";
 import { getOrder, orderTotal } from "./game";
 import { canStand } from "./navigation";
+import { restoreProgression } from "./progression/save";
+import { restorePurchases } from "./progression/purchases";
 
 const boundedNumber = z.number().nonnegative().max(Number.MAX_SAFE_INTEGER);
 const tableSchema = z.number().int().min(1).max(TABLES.length);
 
 const stateSchema = z.object({
+  progression: z.unknown().optional(),
   neighbourhood: z.unknown().optional(),
   world: z.unknown().optional(),
   seed: z.number().int().min(0).max(0xffffffff),
@@ -54,7 +57,7 @@ export function validateSavedGame(
 ): GameState | null {
   const result = stateSchema.safeParse(value);
   if (!result.success) return null;
-  const { neighbourhood, world, ...state } = result.data;
+  const { neighbourhood, world, progression: savedProgression, ...state } = result.data;
   if (
     new Set(state.customers.map((customer) => customer.table)).size !==
       TABLES.length ||
@@ -70,7 +73,7 @@ export function validateSavedGame(
   let earnedToday = 0;
   for (const customer of state.customers) {
     const order = getOrder(state, customer.table, content);
-    if (!order || order.level !== state.level) return null;
+    if (!order || (state.day <= 3 ? order.level !== state.level : order.level > state.level)) return null;
     const total = orderTotal(order, content);
     if (
       !Number.isFinite(total) ||
@@ -106,8 +109,11 @@ export function validateSavedGame(
     const total = orderTotal(order, content);
     if (receipt.total !== total || receipt.change !== order.paid - total) return null;
   }
+  const progression = restoreProgression(savedProgression, state, content);
+  if (!progression) return null;
   const restored = restoreNeighbourhood(neighbourhood, state.day);
-  return { ...state, neighbourhood: restored, world: restoreWorld(world, mapsForNeighbourhood(restored), restored.location) };
+  const purchased = { ...restored, apartment: restorePurchases(restored.apartment, progression) };
+  return { ...state, ...(savedProgression === undefined ? {} : { progression }), neighbourhood: purchased, ...(world === undefined ? {} : {world: restoreWorld(world, mapsForNeighbourhood(purchased), purchased.location)}) };
 }
 
 function database(): Promise<IDBDatabase> {
@@ -126,12 +132,22 @@ function database(): Promise<IDBDatabase> {
     request.onerror = () => reject(request.error);
   });
 }
+export function saveKey(languageId = "zh-CN"): string {
+  return languageId === "zh-CN" ? "v1" : `v1:${languageId}`;
+}
+
+export function checkpointKey(languageId = "zh-CN"): string {
+  return languageId === "zh-CN"
+    ? "junyan-waiter-pending-v1"
+    : `junyan-waiter-pending-v1:${languageId}`;
+}
+
 export async function loadGame(content: Content): Promise<GameState | null> {
   const db = await database();
   try {
     return await new Promise((resolve, reject) => {
       const transaction = db.transaction("saves");
-      const request = transaction.objectStore("saves").get("v1");
+      const request = transaction.objectStore("saves").get(saveKey(content.language));
       transaction.oncomplete = () => {
         resolve(validateSavedGame(request.result, content));
       };
@@ -143,12 +159,12 @@ export async function loadGame(content: Content): Promise<GameState | null> {
     db.close();
   }
 }
-export async function saveGame(state: GameState): Promise<void> {
+export async function saveGame(state: GameState, languageId?: string): Promise<void> {
   const db = await database();
   try {
     await new Promise<void>((resolve, reject) => {
       const transaction = db.transaction("saves", "readwrite");
-      transaction.objectStore("saves").put(state, "v1");
+      transaction.objectStore("saves").put(state, saveKey(languageId));
       transaction.oncomplete = () => resolve();
       transaction.onerror = () => reject(transaction.error);
       transaction.onabort = () => reject(transaction.error);

@@ -1,30 +1,16 @@
 import { z } from 'zod';
 import type { Line, Word } from '../../contracts';
 import data from './content.json';
-import sharedData from '../../content/content.json';
+import { content as sharedContent } from '../../content';
+import { contentWords } from '../../content/words';
+import { createWordSchema, createPhraseSchema } from '../../content/schema';
+import { adaptMandarinContent } from '../../content/mandarin';
+import { language } from '../../language';
 
-const id = z.string().regex(/^(cats\.)?[a-z][a-z0-9-]*$/);
-const audio = z.string().regex(/^\/audio\/(cats\/)?[a-z0-9-]+\.(wav|m4a)$/);
-const wordSchema = z.strictObject({
-  id, hanzi: z.string().regex(/^[\p{Script=Han}]+$/u),
-  pinyin: z.string().min(1), gloss: z.string().min(1), audio,
-});
-const canonical = new Map<string, Word>();
-function readSharedWords(value: unknown) {
-  if (Array.isArray(value)) { value.forEach(readSharedWords); return; }
-  if (!value || typeof value !== 'object') return;
-  const word = wordSchema.safeParse(value);
-  if (word.success) canonical.set(word.data.id, word.data);
-  else Object.values(value).forEach(readSharedWords);
-}
-readSharedWords(sharedData);
-
-export const contentSchema = z.strictObject({
-  words: z.array(wordSchema),
-  lines: z.array(z.strictObject({
-    id: z.string().regex(/^cats\.[a-z][a-z0-9-]*$/), text: z.string().regex(/^[\p{Script=Han}，。！？]+$/u),
-    tokens: z.array(wordSchema).min(1), audio: z.string().regex(/^\/audio\/cats\/[a-z0-9-]+\.(wav|m4a)$/),
-  })),
+const canonical = new Map(contentWords(sharedContent).map(word => [word.id, word]));
+const schema = z.strictObject({
+  words: z.array(createWordSchema(language).refine(word => /^(?:cats\.)?[a-z][a-z0-9-]*$/.test(word.id) && /^\/audio\/(?:cats\/)?[a-z0-9-]+\.(?:wav|m4a)$/.test(word.audio), 'Invalid cats word ID or audio')),
+  lines: z.array(createPhraseSchema(language).refine(line => /^cats\.[a-z][a-z0-9-]*$/.test(line.id) && /^\/audio\/cats\/[a-z0-9-]+\.(?:wav|m4a)$/.test(line.audio), 'Invalid cats line ID or audio')),
 }).superRefine((value, ctx) => {
   const vocabulary = new Map(value.words.map(word => [word.id, word]));
   if (vocabulary.size !== value.words.length || new Set(value.lines.map(line => line.id)).size !== value.lines.length)
@@ -36,14 +22,13 @@ export const contentSchema = z.strictObject({
       ctx.addIssue({ code: 'custom', message: 'Shared word must match canonical content' });
   });
   value.lines.forEach((line, index) => {
-    if (line.text.replace(/[，。！？]/gu, '') !== line.tokens.map(word => word.hanzi).join(''))
-      ctx.addIssue({ code: 'custom', message: 'Text differs from authored tokens', path: ['lines', index] });
     for (const word of line.tokens) {
       if (JSON.stringify(vocabulary.get(word.id)) !== JSON.stringify(word))
         ctx.addIssue({ code: 'custom', message: 'Noncanonical word', path: ['lines', index] });
     }
   });
 });
+export const contentSchema = z.preprocess(adaptMandarinContent, schema);
 export const content = contentSchema.parse(data);
 export const words: Word[] = content.words;
 export const lines: Line[] = content.lines;

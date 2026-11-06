@@ -1,10 +1,12 @@
+import ProgressionView from "./progression/ProgressionView";
 import {ContextualInteraction,RestaurantTableControls,KitchenControls,WorldPocketBar} from "./world/ui";
 import {activityTarget} from "./world/activity";
 import {performLifeInteraction} from "./world/life-bridge";
 import WorldViewport from "./world/WorldViewport";
 import { restoreWorld } from "./world/state";
 import { mapsForNeighbourhood } from "./world/dynamic";
-import { useCallback, useEffect, useRef, useState } from "react";
+import WordToken from "./WordToken";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import type { Line, Word } from "./contracts";
 import { TABLES } from "./contracts";
 import { characterFor } from "./content";
@@ -22,11 +24,13 @@ import {
   canVisitKitchen,
 } from "./game";
 import FoodArt from "./FoodArt";
-import { loadGame, saveGame, validateSavedGame } from "./save";
+import { checkpointKey as getCheckpointKey, loadGame, saveGame, validateSavedGame } from "./save";
+import { lineText } from "./language";
+import { ui } from "./language/ui";
+import WordLine from "./WordLine";
 import { createSession, reduceSession, type Session, type SessionAction } from "./opening";
 import { startSession, type StartupRead } from "./startup";
 import HospitalOpening from "./HospitalOpening";
-import WordToken from "./WordToken";
 import { nextDots, wordState } from "./recovery";
 import { Speaker } from "./icons";
 import { createPlayback, type PlaybackError } from "./audio/playback";
@@ -39,14 +43,7 @@ const opening = import.meta.env.DEV ? new URLSearchParams(location.search).get("
 const requestedSeed = Number(new URLSearchParams(location.search).get("seed") || 42);
 const seed = Number.isFinite(requestedSeed) ? requestedSeed : 42;
 const testStart = () => createSession(content, seed, opening === "play" ? "opening" : "day");
-const checkpointKey = "junyan-waiter-pending-v1";
-const phases = {
-  seated: "等候点餐",
-  ordered: "等候上菜",
-  checkout: "等候找零",
-  served: "多谢",
-};
-const dayNames = ["", "第一天", "第二天", "第三天", "第四天", "第五天"];
+const checkpointKey = getCheckpointKey(content.language);
 const Book = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true">
     <path d="M4 4h7q3 0 3 3v14q-1-2-3-2H4Zm16 0h-3q-3 0-3 3m0 14q1-2 3-2h3Z" />
@@ -93,7 +90,7 @@ export default function App() {
   const [giftNotice, setGiftNotice] = useState(false);
   const [ambientLine,setAmbientLine]=useState<Line|null>(null);
   const dayEndOpen = activityOpen && locationId === "restaurant" && state.ended && panel === "none" && !word;
-  const ambience = useAmbience(ready && session.phase === "day" && locationId === "restaurant");
+  const ambience = useAmbience(ready && session.phase === "day" && world.mapId === "restaurant");
   const playback = useRef<ReturnType<typeof createPlayback> | null>(null);
   if (!playback.current)
     playback.current = createPlayback((url) => new Audio(url), setAudioError, ambience.speaking);
@@ -196,7 +193,7 @@ export default function App() {
     if (!ready || testMode || session.phase !== "day") return;
     const timer = setTimeout(() => {
       const checkpoint = JSON.stringify(state);
-      saveGame(state)
+      saveGame(state, content.language)
         .then(() => {
           if (localStorage.getItem(checkpointKey) === checkpoint)
             localStorage.removeItem(checkpointKey);
@@ -320,14 +317,7 @@ export default function App() {
   };
   const tokens = (line: Line) => (
     <div className="spoken">
-      {line.tokens.map((w, i) => (
-        <WordToken
-          key={`${w.id}-${i}`}
-          word={w}
-          look={wordState(state.journal[w.id], fresh.includes(w.id))}
-          onLookup={lookup}
-        />
-      ))}
+      <WordLine line={line} look={(w) => wordState(state.journal[w.id], fresh.includes(w.id))} onLookup={lookup} />
     </div>
   );
   const order = getOrder(state, table, content);
@@ -340,8 +330,8 @@ export default function App() {
       allWords.filter((w) => state.journal[w.id]).map((w) => [w.id, w]),
     ).values(),
   ];
-  const registered = (hanzi:string) => {
-    const word=allWords.find(word=>word.hanzi===hanzi);
+  const registered = (wordId:string) => {
+    const word=allWords.find(word=>word.id===wordId);
     return word?<WordToken word={word} look={wordState(state.journal[word.id],fresh.includes(word.id))} onLookup={lookup}/>:null;
   };
   const close = () => {
@@ -366,28 +356,28 @@ export default function App() {
       event.stopPropagation();
     }
   };
-  if (!ready) return <main className="loading">早安，小馆正在开门。</main>;
-  const audioNotice = audioError && <p className="save-note" role="status">{audioError === "policy" ? "点一下喇叭，再听一遍。" : "声音暂时没有播出，再点一次听听。"}</p>;
+  if (!ready) return <main className="loading">{ui.loading}</main>;
+  const audioNotice = audioError && <p className="save-note" role="status">{audioError === "policy" ? ui.audioPolicy : ui.audioUnavailable}</p>;
   const wordCard = word && (
     <div
       className="word-popover"
       role="dialog"
       aria-modal="false"
-      aria-label={`${word.hanzi}的意思`}
+      aria-label={ui.wordMeaning(word.text)}
     >
       <button
         className="close-button"
         onClick={() => setWord(null)}
-        aria-label="关闭词卡"
+        aria-label={ui.closeWord}
       >
         ×
       </button>
-      <span className="eyebrow">记在本子里</span>
+      <span className="eyebrow">{ui.noted}</span>
       <div className="word-card-title">
-        <h2 aria-live="polite">{word.hanzi}</h2>
+        <h2 aria-live="polite">{word.text}</h2>
         <button
           className="round-button"
-          aria-label="听这个词"
+          aria-label={ui.listenWord}
           onClick={() => play(word.audio)}
         >
           <Speaker />
@@ -398,16 +388,16 @@ export default function App() {
           kind={content.foods.find((f) => f.word.id === word.id)!.kind}
         />
       )}
-      <p className="pinyin">{word.pinyin}</p>
+      {word.pronunciation && <p className="pronunciation pinyin">{word.pronunciation}</p>}
     </div>
   );
   const brand = (
-    <a className="brand" href={import.meta.env.BASE_URL} aria-label="君言首页">
+    <a className="brand" href={import.meta.env.BASE_URL} aria-label={ui.home}>
       <span className="brand-seal">
-        君<br />言
+        {ui.seal.map((line, index) => <Fragment key={index}>{index > 0 && <br />}{line}</Fragment>)}
       </span>
       <span>
-        君言<span className="brand-divider"> / </span>早安小馆
+        {ui.brand}<span className="brand-divider"> / </span>{ui.restaurant}
       </span>
     </a>
   );
@@ -435,14 +425,14 @@ export default function App() {
     <div className={`app-shell connected-shell${wordOpen ? " word-card-open" : ""}`} onFocusCapture={rememberPanelTrigger} onClickCapture={(event) => { guardWordCard(event); rememberPanelTrigger(event); }}>
       <header className="topbar" inert={blockingPanel || dayEndOpen}>
         {brand}
-        <nav aria-label="小馆">
+        <nav aria-label={ui.navigation}>
           <AmbienceControls ambience={ambience} />
           <button
             className="help-button"
-            aria-label="怎么玩"
+            aria-label={ui.help}
             onClick={() => setPanel("help")}
           >
-            怎么玩
+            {ui.help}
           </button>
         </nav>
       </header>
@@ -459,27 +449,28 @@ export default function App() {
             else {const number=Number(id?.split("table-")[1]);if(number)visitTable(number);}
           }
         }} paused={panel !== "none" || wordOpen || dayEndOpen}/>
-        <WorldPocketBar journalControl={<><span>{registered("本子")}</span><button aria-label="本子" onClick={()=>setPanel("journal")}><Book/><span>{words.length}</span></button></>} trayControl={<><span>{registered("托盘")}</span><button aria-label="托盘" onClick={()=>setPanel("tray")}><span aria-hidden="true">▱</span><span>{state.tray.length}/6</span></button></>}/>
+        <WorldPocketBar journalControl={<><span>{registered("journal")}</span><button aria-label="本子" onClick={()=>setPanel("journal")}><Book/><span>{words.length}</span></button></>} trayControl={<><span>{registered("tray")}</span><button aria-label="托盘" onClick={()=>setPanel("tray")}><span aria-hidden="true">▱</span><span>{state.tray.length}/6</span></button></>}/>
         {activityOpen && binding && <ContextualInteraction target={binding}
-          title={<span aria-label={binding.kind==="table"?`${binding.table}桌点餐`:binding.kind==="kitchen"?"厨房":binding.kind==="repair"?"修理间":binding.kind==="cat"?"院子":binding.kind==="garden"?"花园":"家"}>{binding.kind==="table"?binding.table:null}{registered(binding.kind==="table"?"客人":binding.kind==="kitchen"?"厨房":binding.kind==="repair"?"修理间":binding.kind==="cat"?"院子":binding.kind==="garden"?"花园":"家")}</span>}
+          title={<span aria-label={binding.kind==="table"?`${binding.table}桌点餐`:binding.kind==="kitchen"?"厨房":binding.kind==="repair"?"修理间":binding.kind==="cat"?"院子":binding.kind==="garden"?"花园":"家"}>{binding.kind==="table"?binding.table:null}{registered(binding.kind==="table"?"customer":binding.kind==="kitchen"?"kitchen":binding.kind==="repair"?"repairs.workshop":binding.kind==="cat"?"cats.courtyard":binding.kind==="garden"?"garden.garden":"apartment.home")}</span>}
           dialogue={binding.kind==="table"&&order&&character&&customer?{current:{line:customer.phase==="served"?character.thanks:order.line},history:customer.phase==="ordered"?[{line:character.greeting}]:[]}:undefined}
           onClose={()=>{dispatch({type:"world-close"});setPanel("none");}} returnFocusTo={panelTrigger.current} suspended={wordOpen}
           onLookup={lookup} onPlay={playLine} recoveredWordIds={Object.keys(state.journal).filter(id=>state.journal[id].recovered)} freshWordIds={fresh}
           actions={binding.kind==="table"&&customer?[{id:"service",control:<button className="world-submit" aria-label={customer.phase==="served"?"继续招呼":customer.phase==="checkout"?"递上找零":"上菜"} onClick={()=>customer.phase==="served"?close():customer.phase==="checkout"?completePayment():dispatch({type:"deliver",table,now:Date.now()})}>→</button>}]:binding.kind==="kitchen"?[{id:"carry",control:<button className="world-submit" aria-label="端好了，去上菜" onClick={close}>↗</button>}]:[]}>
           {binding.kind==="table"&&order&&customer&&<RestaurantTableControls phase={customer.phase} order={order} foods={content.foods} change={change} onChange={setChange} onLookup={lookup}
-            summary={<p aria-label={`共${total}块，收到${order.paid}块`}>∑ {total} · ↓ {order.paid}</p>} changeLabel={<span>{registered("找零")} {change}</span>}
-            resetControl={<button aria-label="重来" onClick={()=>setChange(0)}>↺</button>} receiptSummary={<p>∑ {total} · {registered("找零")} {order.paid-total}</p>}
-            thanks={<span className="thanks-chop">{registered("多谢")}</span>}/>}
-          {binding.kind==="kitchen"&&<KitchenControls trayHeading={<span>{registered("托盘")} {state.tray.length}/6</span>} foods={content.foods} tray={state.tray} pickupEnabled={state.tray.length<6&&state.customers.some(c=>c.phase==="ordered")} onPickup={foodId=>dispatch({type:"pickup",foodId})} onReturn={index=>dispatch({type:"return-food",index})} onLookup={lookup}/>}
+            summary={<p aria-label={`共${total}块，收到${order.paid}块`}>∑ {total} · ↓ {order.paid}</p>} changeLabel={<span>{registered("change")} {change}</span>}
+            resetControl={<button aria-label="重来" onClick={()=>setChange(0)}>↺</button>} receiptSummary={<p>∑ {total} · {registered("change")} {order.paid-total}</p>}
+            thanks={<span className="thanks-chop">{registered("thanks")}</span>}/>}
+          {binding.kind==="kitchen"&&<KitchenControls trayHeading={<span>{registered("tray")} {state.tray.length}/6</span>} foods={content.foods} tray={state.tray} pickupEnabled={state.tray.length<6&&state.customers.some(c=>c.phase==="ordered")} onPickup={foodId=>dispatch({type:"pickup",foodId})} onReturn={index=>dispatch({type:"return-food",index})} onLookup={lookup}/>}
           {binding.kind!=="table"&&binding.kind!=="kitchen"&&<Neighbourhood contextual target={binding} state={neighbourhood} day={state.day} onAction={dispatch} onLookup={lookup} onPlay={playLine} onRecover={acknowledgeRecovery} recoveredWordIds={Object.keys(state.journal).filter(id=>state.journal[id].recovered)} freshWordIds={fresh}/>}
           {(state.feedback==="wrong-food"||state.feedback==="wrong-change")&&binding.kind==="table"&&character&&<div role="status">{tokens(character.retry)}</div>}
+          {binding.kind === "apartment" && <ProgressionView game={state} content={content} now={Date.now()} onAction={action=>{dispatch(action);if(action.type==="follow-scenario"){dispatch({type:"world-close"});close();}}} onLookup={lookup}/>}
           <NeighbourhoodGifts state={neighbourhood} onClaim={giftId=>{const before=sessionRef.current;const next=dispatch({type:"claim-neighbourhood-gift",giftId});if(next!==before)playLine(apartmentLines.gift);}}/>
           {giftNotice&&<FeatureLine line={apartmentLines.gift} onLookup={lookup} onPlay={playLine}/>}
         </ContextualInteraction>}
         {locationId !== "restaurant" && panel === "none" && audioNotice}
         {saveError && (
           <p role="status" className="save-note">
-            本次进度暂时无法保存，请保持页面打开。
+            {ui.saveUnavailable}
           </p>
         )}
       </main>
@@ -489,35 +480,35 @@ export default function App() {
             className="paper-panel"
             role="dialog"
             aria-modal={!wordOpen}
-            aria-label={panel==="journal"?"本子":panel==="tray"?"托盘":"怎么玩"}
+            aria-label={panel==="journal"?ui.journal:panel==="tray"?ui.tray:ui.help}
             onClick={(e) => e.stopPropagation()}
           >
-            <button className="close-button" aria-label="关闭" onClick={close}>
+            <button className="close-button" aria-label={ui.close} onClick={close}>
               ×
             </button>
             {panel === "help" && (
               <div className="learning-help">
                 <div className="help-line">
                   {tokens(content.help.welcome)}
-                  <button className="round-button" aria-label={`听${content.help.welcome.tokens.map((token) => token.hanzi).join("")}`} onClick={() => play(content.help.welcome.audio)}><Speaker /></button>
+                  <button className="round-button" aria-label={ui.listen(lineText(content.help.welcome))} onClick={() => play(content.help.welcome.audio)}><Speaker /></button>
                 </div>
                 <button className="primary" onClick={close}>
-                  开门迎客 <span>→</span>
+                  {ui.openRestaurant} <span>→</span>
                 </button>
                 <button className="help-disclosure" aria-expanded={helpExpanded} aria-controls="help-details" onClick={() => setHelpExpanded(!helpExpanded)}>
-                  怎么玩 <span aria-hidden="true">{helpExpanded ? "−" : "+"}</span>
+                  {ui.help} <span aria-hidden="true">{helpExpanded ? "−" : "+"}</span>
                 </button>
                 <div id="help-details">
                   {helpExpanded && (
                     <>
                       <div className="help-line">
                         {tokens(content.help.lookup)}
-                        <button className="round-button" aria-label={`听${content.help.lookup.tokens.map((token) => token.hanzi).join("")}`} onClick={() => play(content.help.lookup.audio)}><Speaker /></button>
+                        <button className="round-button" aria-label={ui.listen(lineText(content.help.lookup))} onClick={() => play(content.help.lookup.audio)}><Speaker /></button>
                       </div>
                       <ol className="learning-help-steps">
                         {content.help.steps.map((step, index) => (
                           <li key={step.id} data-help-step={step.id}>
-                            <span className="help-step-number" aria-hidden="true">{["一", "二", "三"][index]}</span>
+                            <span className="help-step-number" aria-hidden="true">{ui.helpStep(index)}</span>
                             <svg className="help-picture" viewBox="0 0 240 76" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                               {step.id === "order" ? <>
                                 <circle cx="35" cy="17" r="9" /><path d="M20 42q0-18 15-18t15 18M12 46h66M22 46v22m45-22v22" />
@@ -534,14 +525,14 @@ export default function App() {
                             </svg>
                             <div className="help-line">
                               {tokens(step.line)}
-                              <button className="round-button" aria-label={`听${step.line.tokens.map((token) => token.hanzi).join("")}`} onClick={() => play(step.line.audio)}><Speaker /></button>
+                              <button className="round-button" aria-label={ui.listen(lineText(step.line))} onClick={() => play(step.line.audio)}><Speaker /></button>
                             </div>
                           </li>
                         ))}
                       </ol>
                       <div className="help-line">
                         {tokens(content.help.pace)}
-                        <button className="round-button" aria-label="听慢慢来" onClick={() => play(content.help.pace.audio)}><Speaker /></button>
+                        <button className="round-button" aria-label={ui.listen(lineText(content.help.pace))} onClick={() => play(content.help.pace.audio)}><Speaker /></button>
                       </div>
                     </>
                   )}
@@ -551,20 +542,20 @@ export default function App() {
             {panel==="tray"&&<div className="tray-pocket" role="group" aria-label="托盘">{state.tray.map((id,index)=>{const food=content.foods.find(food=>food.id===id)!;return <div key={`${id}-${index}`}><FoodArt kind={food.kind}/><WordToken word={food.word} look={wordState(state.journal[food.word.id],fresh.includes(food.word.id))} onLookup={lookup}/></div>;})}</div>}
             {panel === "journal" && (
               <>
-                <p className="eyebrow">我的本子</p>
-                <h2>慢慢想起的词。</h2>
-                <p className="subtle">{words.length} 个词 · 点一下，再听一遍</p>
+                <p className="eyebrow">{ui.journalEyebrow}</p>
+                <h2>{ui.journalTitle}</h2>
+                <p className="subtle">{ui.journalCount(words.length)}</p>
                 {words.length === 0 ? (
                   <p className="journal-empty">
-                    听客人点餐时，点一个字，收进本子。
+                    {ui.journalEmpty}
                   </p>
                 ) : (
                   <div className="journal-list">
                     {words.map((w) => (
                       <button key={w.id} data-word-lookup onClick={(event) => lookup(w, event.currentTarget)}>
-                        <span>{w.hanzi}</span>
+                        <span>{w.text}</span>
                         {state.journal[w.id].lookups > 0 && (
-                          <small>听过 {state.journal[w.id].lookups} 次</small>
+                          <small>{ui.lookupCount(state.journal[w.id].lookups)}</small>
                         )}
                         <Speaker />
                       </button>
@@ -584,39 +575,36 @@ export default function App() {
             className="paper-panel day-end"
             role="dialog"
             aria-modal={!wordOpen}
-            aria-label="今日小结"
+            aria-label={ui.summary}
           >
-            <p className="eyebrow">打烊了</p>
-            <h2>四桌早饭，一点新收获。</h2>
+            <p className="eyebrow">{ui.closed}</p>
+            <h2>{ui.summaryTitle}</h2>
+            <ProgressionView game={state} content={content} now={Date.now()} onAction={action=>{dispatch(action);if(action.type==="follow-scenario"){dispatch({type:"world-close"});close();}}} onLookup={lookup}/>
             <div className="tally">
               <p>
-                <span>招呼客人</span>
-                <b>4 桌</b>
+                <span>{ui.servedLabel}</span>
+                <b>{ui.servedCount}</b>
               </p>
               <p>
-                <span>累计进账</span>
-                <b>{state.earnings} 块</b>
+                <span>{ui.earningsLabel}</span>
+                <b>{ui.moneySpaced(state.earnings)}</b>
               </p>
               <p>
-                <span>本子里的词</span>
-                <b>{words.length} 个</b>
+                <span>{ui.wordsLabel}</span>
+                <b>{ui.wordCount(words.length)}</b>
               </p>
             </div>
             <p className="subtle">
-              {state.level === 1
-                ? "明天，要记住数量和两样菜了。"
-                : state.level === 2
-                  ? "明天，试试三样菜的点餐。"
-                  : "明天，老朋友还会带来新点餐。"}
+              {ui.tomorrow(state.level)}
             </p>
             <button
               className="primary"
               onClick={() => {
-                dispatch({ type: "advance-world-day" });
+                dispatch({ type: "advance-world-day", now: Date.now() });
                 close();
               }}
             >
-              明天见 <span>→</span>
+              {ui.nextDay} <span>→</span>
             </button>
             <button className="secondary" onClick={() => {dispatch({type:"world-close"});close();}}>出去走走</button>
           </section>

@@ -1,11 +1,10 @@
 import { test, expect, type Page } from "@playwright/test";
-import data from "../src/content/content.json" with { type: "json" };
+import { content } from "../src/content";
 import type { Content } from "../src/contracts";
 import { createGame, reduceGame } from "../src/game";
 import { silentResponse } from "./audio-fixtures";
 import { seedDayOne } from "./opening";
 
-const content = data as Content;
 const preview = () => process.env.JUNYAN_PREVIEW_URL!;
 const app = () => `${preview()}?seed=42`;
 const wake = (page: Page) => page.getByRole("button", { name: "醒来" });

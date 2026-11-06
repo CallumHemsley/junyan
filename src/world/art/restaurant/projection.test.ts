@@ -5,7 +5,7 @@ import { TABLES } from '../../../contracts';
 import { restaurantObjects, RESTAURANT_FURNITURE_PROFILE } from './index';
 import type { RestaurantView } from './types';
 import { projectRestaurant } from './projection';
-import { restaurantMap } from '../../../../docs/evidence/0089/foundation-map';
+import { restaurantMap } from '../../restaurant';
 
 describe('authoritative restaurant projection', () => {
   it('resolves real display names to four canonical actors and stable seats', () => {

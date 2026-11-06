@@ -24,11 +24,11 @@ async function serve(page: Page, table: number) {
   ).toBeVisible();
   const character = content.characters.find(c => c.name === order.customer)!;
   await expect(page.locator(".character-greeting")).toHaveText(
-    character.greeting.tokens.map(w => w.hanzi).join(""),
+    character.greeting.tokens.map(w => w.text).join(""),
   );
   await page.getByRole("button", { name: "听招呼", exact: true }).click();
   await expect(page.locator(".spoken").last()).toContainText(
-    order.line.tokens[0].hanzi,
+    order.line.tokens[0].text,
   );
   if (table === 1) {
     await page.locator(".spoken .word").first().click();
@@ -41,7 +41,7 @@ async function serve(page: Page, table: number) {
     const food = content.foods.find((f) => f.id === item.foodId)!;
     for (let n = 0; n < item.quantity; n++)
       await page
-        .getByRole("button", { name: `拿${food.word.hanzi}`, exact: true })
+        .getByRole("button", { name: `拿${food.word.text}`, exact: true })
         .click();
   }
   await page.getByRole("button", { name: "端好了，去上菜" }).click();
@@ -80,7 +80,7 @@ async function serve(page: Page, table: number) {
     await page.getByRole("button", { name: "+1块", exact: true }).click();
   await page.getByRole("button", { name: "递上找零" }).click();
   await expect(page.locator(".thanks-chop")).toBeVisible();
-  await expect(page.locator(".spoken")).toHaveText(character.thanks.tokens.map(w => w.hanzi).join(""));
+  await expect(page.locator(".spoken")).toHaveText(character.thanks.tokens.map(w => w.text).join(""));
   await page.getByRole("button", { name: "再听一遍", exact: true }).click();
   await page.getByRole("button", { name: "继续招呼" }).click();
 }

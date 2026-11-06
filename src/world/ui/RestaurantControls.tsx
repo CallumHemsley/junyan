@@ -50,7 +50,7 @@ export function KitchenControls({ foods, tray, pickupEnabled, trayHeading, onPic
   return <>
     <div className="world-kitchen-foods">
       {foods.map(food => <div className="world-kitchen-food" key={food.id}>
-        <button aria-label={`拿${food.word.hanzi}`} disabled={!pickupEnabled} onClick={() => onPickup(food.id)}>
+        <button aria-label={`拿${food.word.text}`} disabled={!pickupEnabled} onClick={() => onPickup(food.id)}>
           <FoodArt kind={food.kind} /><small>{food.price}块</small>
         </button>
         <WordToken word={food.word} look="plain" onLookup={onLookup} />
@@ -62,7 +62,7 @@ export function KitchenControls({ foods, tray, pickupEnabled, trayHeading, onPic
         const food = foods.find(food => food.id === id)!;
         return <div className="world-tray-item" key={`${id}-${index}`}>
           <WordToken word={food.word} look="plain" onLookup={onLookup} />
-          <button aria-label={`放回${food.word.hanzi}`} onClick={() => onReturn(index)}>×</button>
+          <button aria-label={`放回${food.word.text}`} onClick={() => onReturn(index)}>×</button>
         </div>;
       })}</div>
     </div>

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const itemIds = ['bed', 'table', 'chair', 'rug', 'cushion', 'repairs.stool', 'garden.planter', 'cats.cushion', 'vase', 'basket', 'lamp'] as const;
+export const itemIds = ['bed', 'table', 'chair', 'rug', 'cushion', 'repairs.stool', 'garden.planter', 'cats.cushion', 'vase', 'basket', 'lamp', 'blue-vase', 'large-basket', 'small-lamp'] as const;
 export type ItemId = typeof itemIds[number];
 export type Rotation = 0 | 1;
 export type Placement = { id: ItemId; x: number; y: number; rotation: Rotation };
@@ -110,4 +110,19 @@ export function reduce(state: State, action: Action, day: number): State {
     }
     case 'receive-gift': return state.owned.includes(action.giftId) ? state : { ...state, owned: [...state.owned, action.giftId], notice: 'gift' };
   }
+}
+
+export const itemWordIds: Record<ItemId, string[]> = {
+  bed: ['apartment.bed'], table: ['table'], chair: ['apartment.chair'], rug: ['apartment.rug'], cushion: ['apartment.cushion'],
+  'repairs.stool': ['apartment.stool'], 'garden.planter': ['apartment.plant'], 'cats.cushion': ['apartment.cat', 'apartment.cushion'],
+  vase: ['apartment.vase'], basket: ['apartment.basket'], lamp: ['apartment.lamp'],
+  'blue-vase': ['apartment.blue', 'apartment.vase'], 'large-basket': ['apartment.large', 'apartment.basket'], 'small-lamp': ['apartment.small', 'apartment.lamp'],
+};
+export function recoveryForTransition(before: State, action: Action, after: State): string[] {
+  if (action.type === 'accept-starter' && after.owned.length !== before.owned.length) return ['table', 'apartment.chair'];
+  if (action.type === 'choose-colour' && before.colour !== after.colour) return [after.colour === 'blue' ? 'apartment.blue' : 'apartment.cream', 'apartment.cushion'];
+  const changed = JSON.stringify(before.placements) !== JSON.stringify(after.placements);
+  if (action.type === 'store' && changed) return ['apartment.store'];
+  if (action.type === 'place' && changed && before.selected) return [...itemWordIds[before.selected], 'apartment.put', 'apartment.here'];
+  return [];
 }
