@@ -14,7 +14,8 @@ export function drawMap(ctx: CanvasRenderingContext2D, map: RestaurantMap, v: Re
       const a=x+((x*7+y*11+n*17)%89)/100+.05;
       const b=y+((x*13+y*3+n*23)%89)/100+.05;
       const s=v.project({x:a,y:b});
-      ctx.fillStyle=n%2 ? '#d2c29f' : '#f5e8cb'; ctx.fillRect(Math.round(s.x),Math.round(s.y),1,1);
+      const color=n%2 ? '#d2c29f' : '#f5e8cb';
+      ctx.fillStyle=v.shadeColor?.(color) ?? color; ctx.fillRect(Math.round(s.x),Math.round(s.y),1,1);
     }
   }
   box(ctx,v,1,20.92,-.16,10,.14,.2,p.woodLight);
@@ -118,6 +119,7 @@ export function restaurantObjects(map: RestaurantMap, _view: RestaurantView, pro
     const prop=map.props.find(p=>p.id===meal.propId);
     if(!prop) return [];
     return [{id:`restaurant.meal.${meal.table}`,position:{x:prop.position.x+prop.width/2,y:prop.position.y+prop.height},
+      depth:prop.position.x+prop.width/2+prop.position.y+prop.height+.01,
       draw(ctx:CanvasRenderingContext2D,v:RestaurantView) {
         meal.foods.forEach((food,i)=>{
           const x=prop.position.x+.4+i*.5,y=prop.position.y+.9;

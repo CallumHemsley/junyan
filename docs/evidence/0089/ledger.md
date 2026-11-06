@@ -49,3 +49,13 @@ An initial standalone tsc command omitted strict mode and reported unrelated inf
 ## Next actions
 
 Publish first unit. Add reproducible preview using actual foundation projection and shared actor scale. Inspect desktop and phone captures, refine materials and warm light, then request integration and independent review. Active work must continue through integrated defects.
+
+## Projection review correction
+
+Coordinator found that Order.customer holds a Chinese display name, while Character.id is canonical. Fixed lookup to Character.name and retained canonical descriptor IDs. Added two tests with real createGame/content. Both pass. They check all four seats under reversed prop order, canonical characters, checkout/served meals, tray ordering, tally and no state mutation. Legacy scene and its tests explicitly use representative distinct food kinds, so the new projection retains that accepted quantity behavior.
+
+Shared lighting callback is now optional on the structural view for old isolated previews. All non-emissive polygon, box, bowl and floor fleck colors pass through shadeColor when supplied. Production host must supply it. No callback modifies inherited alpha. Steam remains an emissive translucent detail and shares the supplied elapsedMs/reducedMotion clock.
+
+First preview captures used /usr/bin/chromium because Playwright's managed executable was absent. `node docs/evidence/0089/capture.mjs` produced desktop, phone, kitchen and reduced-motion PNGs with no page errors. The preview copies the e627 restaurant map and uses actual foundation camera scales 24 desktop and 18 phone plus the same production legacy actor sprite crop/factor. It does not reproduce production collision or its occlusion compositor. It is evidence for art refinement only. Inspection found a meal/table equal-depth tie, fixed by placing meal objects .01 beyond their table support depth. Material detail and warm-light polish continue.
+
+Vite is running as exec session 49941 on strict port 5493. No standalone preview acceptance is claimed.

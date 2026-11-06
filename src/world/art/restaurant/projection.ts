@@ -38,7 +38,7 @@ export function projectRestaurant(
     const customer = state.customers.find(c => c.table === binding.table);
     if (!prop || !customer) continue;
     const order = content.orders.find(o => o.id === customer.orderId);
-    const character = content.characters.find(c => c.id === order?.customer);
+    const character = content.characters.find(c => c.name === order?.customer);
     if (!order || !character) continue;
     customers.push({
       id: `restaurant.customer.${binding.table}`, table: binding.table,

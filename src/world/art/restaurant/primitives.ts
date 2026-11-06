@@ -7,7 +7,7 @@ export const palette = {
 };
 export type Point3 = readonly [number, number, number];
 export function polygon(ctx: CanvasRenderingContext2D, view: RestaurantView, points: readonly Point3[], color: string) {
-  ctx.fillStyle = color;
+  ctx.fillStyle = view.shadeColor?.(color) ?? color;
   ctx.beginPath();
   points.forEach(([x,y,z], i) => {
     const p = view.project({ x,y }, z);
@@ -24,7 +24,7 @@ export function box(ctx: CanvasRenderingContext2D, v: RestaurantView, x: number,
 export function oval(ctx: CanvasRenderingContext2D, v: RestaurantView, x: number, y: number, z: number, radius: number, color: string) {
   const p=v.project({x,y},z), edge=v.project({x:x+radius,y},z);
   const r=Math.hypot(edge.x-p.x,edge.y-p.y);
-  ctx.fillStyle=color; ctx.beginPath(); ctx.ellipse(Math.round(p.x),Math.round(p.y),r,r*.48,0,0,Math.PI*2); ctx.fill();
+  ctx.fillStyle=v.shadeColor?.(color) ?? color; ctx.beginPath(); ctx.ellipse(Math.round(p.x),Math.round(p.y),r,r*.48,0,0,Math.PI*2); ctx.fill();
 }
 export function bowl(ctx: CanvasRenderingContext2D, v: RestaurantView, x: number, y: number, z: number, filled = true) {
   oval(ctx,v,x,y,z,.25,palette.jadeDark);
