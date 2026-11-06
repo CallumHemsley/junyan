@@ -38,7 +38,7 @@ export function authoredLocalLights(map:AtmosphereMap):AtmosphereHooks {
     const windows=['reading-room.broad-window','reading-room.alcove-window'].flatMap(id=>{
       const prop=fixture(id,'reading-window');if(!prop)return [];
       const {x,y}=prop.position,front=y+.625;
-      return [{id:prop.id,depth:x+y+(prop.width+prop.height)/2+.02,kind:'window' as const,position:{x:x+prop.width/2,y:front,z:1.9},radius:2.2,
+      return [{id:prop.id,depth:x+prop.width+y+.72,kind:'window' as const,position:{x:x+prop.width/2,y:front,z:1.9},radius:2.2,
         emitter:[{x:x+.08,y:front,z:1.08},{x:x+prop.width-.08,y:front,z:1.08},{x:x+prop.width-.08,y:front,z:2.88},{x:x+.08,y:front,z:2.88}],
         pool:[{x:x-.1,y:front+.15,z:.025},{x:x+prop.width+.1,y:front+.15,z:.025},{x:x+prop.width+.65,y:front+2.6,z:.025},{x:x+.45,y:front+2.6,z:.025}],
       }];

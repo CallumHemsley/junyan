@@ -1,5 +1,6 @@
 import {expect,it} from 'vitest';
 import {authoredLocalLights} from './local-lights';
+import {renderObjects as readingRoomObjects} from '../art/reading-room';
 import {worldMaps} from '../registry';
 import {atmosphereHooksForMap} from './map-hooks';
 import {sampleAtmosphere} from './index';
@@ -47,7 +48,10 @@ it('binds reading-room light to its real window panes and lamp shade without lig
   const prop=map.props.find(prop=>prop.id===light.id)!;
   expect(light.emitter!.every(point=>point.x>=prop.position.x-.15&&point.x<=prop.position.x+prop.width+.15)).toBe(true);
   expect(light.pool!.every(point=>point.z===.025)).toBe(true);
-  if(light.kind==='window')expect(light.emitter!.every(point=>point.y===prop.position.y+.625)).toBe(true);
+  if(light.kind==='window') {
+   expect(light.emitter!.every(point=>point.y===prop.position.y+.625)).toBe(true);
+   expect(light.depth).toBeGreaterThan(readingRoomObjects(map).find(object=>object.id===light.id)!.depth!);
+  }
   else expect(light.emitter!.every(point=>point.z===1.685)).toBe(true);
  }
  const input={mapId:map.id,day:1,timeOfDay:'morning' as const,elapsedMs:1000,seed:42,reducedMotion:true};
