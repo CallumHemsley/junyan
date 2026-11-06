@@ -1,5 +1,7 @@
 # Workshop builder: active objective
 
+Latest checkpoint: e02a747 re-verification completed. **The old phone waypoint blocker is RESOLVED** for the real recorded route and all six desktop/phone workstation approaches. Both jobs, repeat/reload and stool gift flows pass through the current HUD. See [exact-checkpoint evidence](e02a747/README.md). Interior phase lighting and broader program acceptance remain review items.
+
 Status: ACTIVE. Native create_goal and cross-thread send tools are unavailable; no platform goal registration is claimed.
 
 Build a richly dressed, walkable workshop and covered entry directly connected to town. Preserve all existing reversible lamp/toy rules, callbacks, voices, gifts, journal and saves. Separate repair benches must be reachable on foot, with contextual controls and safe returns. Meaningful circulation, player-scale object detail, window light and foreground occlusion must survive actual phone/desktop traversal and independent review. An isolated preview does not complete this objective.
@@ -72,7 +74,7 @@ Read-only cloud helper `/root/workshop_review`, GPT-6 Astra medium, independentl
 
 Additional accepted observations: floor light patches now multiply inherited alpha; chair/thread box inherit supporting bench depth and fading metadata; primitive face contrast is authored before the atmosphere callback rather than treating solar exposure as face brightness. Contact shadows preserve alpha through save/restore.
 
-## Open upstream findings and remaining gates
+## Historical upstream findings at f493451 (phone route superseded by e02a747)
 
 1. Interior morning/evening shading is visually too similar: sampleAtmosphere replaces phase ambient with the constant [.92,.89,.83]. Workshop explicitly consumes shadeColor for every non-emissive primitive/floor/shadow. Same-map/camera material-only captures report the difference separately from effects; do not treat many changed pixels of tiny RGB delta as strong visual acceptance. Atmospheric task lights use the standard lamp prop kind and central phase-driven emitter handling. Await atmosphere's corrected interior light, then recapture. No competing clock or full-screen tint added.
 2. Expanded real phone depth proof intermittently stops at an intermediate waypoint: target (8,10.8), from approximately (8,6.8), actual stop (11,10.5). Exact click and state are retained in phone-depth-failure.json/png. A previous stable run completed the lamp front/behind/beside routes on both viewports; the expanded foreground run succeeded on desktop but exposed this phone stall. Foundation controller may clear remaining path for an epsilon-length waypoint delta. This is an upstream request, not a patched or accepted movement PASS.
@@ -92,3 +94,7 @@ The actual production gift claim now passes on desktop and phone: one repairs.st
 Production video manifest labels the successful desktop and phone recordings separately from the retained failed-invalid-fixture run. The timed contact sheet now includes the return as well as departure. Same-camera lighting screenshots were refreshed after the material face-contrast fix. No phase-contrast acceptance claim: the upstream fixed interior ambient remains visible as a weak difference.
 
 The focused Astra reviewer re-read f493451 and confirmed its accepted P2 resolved; actual normal-UI repeat/reload captures for both jobs are now also present on both viewports. Phone expanded foreground depth remains blocked by the reproduced shared waypoint controller issue. The prior depth-results.json is the successful lamp-only run; expanded joinery desktop captures and phone failure are labeled separately in progress until the shared fix permits an end-to-end recapture.
+
+## e02a747 re-verification
+
+Requested current complete-art/HUD checkpoint merged with no production differences. Current advanceRoute fixes the residual waypoint issue in actual phone pointer traversal: behind-to-front lamp route and all six lamp/joinery positions pass on both viewports without retry. Both physical jobs complete, both repeat repairs retain partial state and visible objects after reload, and stool claim/reload/idempotence passes. Console/page error arrays are empty. TypeScript and 23 focused tests pass. Focused Astra re-review found no concrete current defect at the sampled positions/flows; it did not claim full program acceptance. Original failure artifacts are preserved as historical, not listed as a live blocker. Exact commands, limits, source provenance, video and fresh screenshots: e02a747/README.md.
