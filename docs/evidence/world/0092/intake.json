@@ -1,0 +1,10 @@
+{
+  "status": "ACTIVE",
+  "worker": "01a1ae1f-60be-71ac-b17f-c10bb16c706b",
+  "base": "38361754979f953bd18e8fa5f2348cac3b207faa",
+  "artIntake": "61e69107a87080247a7094e793e76ab95a866a86",
+  "artSha256": "2921d6cc05a6350e667727b8c4f8e78d3b0960256194c6c37ccf37b6e0887866",
+  "scope": "Only exact supported-stair art module carried forward; maps/elevation not copied. Foundation must consume ready0081 maps/elevation coherently. Current actor adapter default is18, all-human15 separately owned.",
+  "branch": "codex/0092-paid-item-world-art",
+  "port": 5504
+}

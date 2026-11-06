@@ -26,6 +26,15 @@ function wall(api: ResidentialArtApi, x: number, y: number, width: number, depth
 export function drawResidentialFloor(api: ResidentialArtApi, mapId: string) {
   const map = mapDefinitions.find(m => m.id === mapId);
   if (!map) return;
+  if (mapId === 'residential-stairs') for (const surface of stairSurfaces) {
+    const r = surface.rect;
+    if (surface.kind === 'tread') for (const edge of [r.x - .18, r.x + r.width]) {
+      api.box(edge, r.y, surface.height - .7, edge + .18, r.y + r.height, surface.height + .06, [137, 133, 111]);
+      api.box(edge, r.y, surface.height + .06, edge + .18, r.y + r.height, surface.height + .1, paleWood);
+    }
+    else api.box(r.x, r.y, surface.height - .65, r.x + r.width, r.y + r.height, surface.height - .44, [145, 145, 123]);
+  }
+  if (mapId === 'residential-stairs') api.box(3, 18.6, -.15, 15, 19, 2.4, [190, 181, 151]);
   const terrainAreas = mapId === 'residential-stairs'
     ? stairSurfaces.map(surface => ({ rect: surface.rect, material: surface.kind === 'tread' ? 'stairs' : 'terrazzo', baseZ: surface.height }))
     : map.terrain.map(terrain => ({ ...terrain, baseZ: 0 }));
@@ -38,7 +47,7 @@ export function drawResidentialFloor(api: ResidentialArtApi, mapId: string) {
       const base: Colour = material === 'timber' ? [187, 150, 103] : material === 'woven' ? [133, 137, 108] : material === 'glazed-tile' ? [145, 166, 153] : [171, 174, 159];
       const colour: Colour = base.map(c => c + variation * (material === 'timber' ? 1.2 : 2)) as Colour;
       const baseZ = terrain.baseZ, z = baseZ + (mapId === 'residential-stairs' ? 0 : material === 'woven' ? .045 : .01);
-      api.box(x, y, baseZ - .16, right, front, z, colour);
+      api.box(x, y, baseZ - (mapId === 'residential-stairs' ? .45 : .16), right, front, z, colour);
       if (material === 'timber') {
         api.box(x, y, z, x + .016, front, z + .007, [151, 122, 87]);
         if ((y + x % 2) % 3 === 0) api.box(x, y, z, right, y + .016, z + .007, [159, 127, 86]);
@@ -50,7 +59,8 @@ export function drawResidentialFloor(api: ResidentialArtApi, mapId: string) {
         if ((x + y) % 3 === 0) api.box(x + .1, y + .1, z, x + .35, y + .14, z + .012, [177, 191, 176]);
       } else if (material === 'stairs') {
         for (let step = y; step < front; step += .5) {
-          api.box(x, front - .065, baseZ + .01, right, front, baseZ + .018, cream);
+          api.box(x, front - .09, baseZ + .004, right, front, baseZ + .018, [115, 110, 88]);
+          api.box(x + .1, front - .055, baseZ + .018, right - .1, front - .03, baseZ + .023, [170, 162, 132]);
         }
       } else if (material === 'terrazzo' && (x + y) % 2 === 0) {
         api.box(x + .2, y + .3, baseZ + .012, x + .3, y + .4, baseZ + .018, [204, 203, 183]);
@@ -109,9 +119,19 @@ function drawResidentialProp(api: ResidentialArtApi, prop: Omit<WorldMapDefiniti
       box(x, y, 1.2, endX, endY, 2.5, wood);
       for (let at = x + .15; at < endX - .2; at += .55) box(at, endY, 1.5, at + .4, endY + .04, 2.2, linen);
       break;
-    case 'parcel':
-      box(x, y, 0, endX, endY, .65, [182, 151, 104]);box(x + w / 2 - .07, y, .65, x + w / 2 + .07, endY, .67, linen);
+    case 'parcel': {
+      const base = prop.variant === 1 ? .9 : 0;
+      if (base) {
+        for (const px of [x, endX - .15]) box(px, y, 0, px + .15, endY, .9, wood);
+        box(x, y, .14, endX, endY, .25, wood);
+        box(x - .08, y - .04, .8, endX + .08, endY + .05, .9, paleWood);
+        box(x + .2, y + .12, .25, x + .8, endY - .1, .5, jade);
+      }
+      box(x + .12, y + .1, base, endX - .15, endY - .1, base + .65, [182, 151, 104]);
+      box(x + w / 2 - .07, y + .1, base + .65, x + w / 2 + .07, endY - .1, base + .67, linen);
+      box(x + .25, endY - .09, base + .18, x + .55, endY - .075, base + .4, linen);
       break;
+    }
     case 'well':
       box(x, y, -.8, endX, endY, -.7, [72, 87, 79]);
       for (let at = y; at < endY; at += 1.5) box(x + .1, at, -.7, endX - .1, at + .07, -.65, [105, 119, 100]);
@@ -396,6 +416,26 @@ export const drawMap: DrawMap = (ctx, map, view) => {
 export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderView): WorldRenderObject[] {
   if (!mapDefinitions.some(m => m.id === map.id)) return [];
   return map.props.filter(p => p.layer === 'object').flatMap(prop => {
+    if (prop.kind === 'railing') {
+      const alongX = prop.width > prop.height, length = alongX ? prop.width : prop.height;
+      return Array.from({ length: Math.ceil(length) }, (_, index) => {
+        const size = Math.min(1, length - index), x = prop.position.x + (alongX ? index : 0), y = prop.position.y + (alongX ? 0 : index);
+        const width = alongX ? size : prop.width, height = alongX ? prop.height : size;
+        return {
+          id: index ? `${prop.id}.segment-${index}` : prop.id,
+          position: { x: x + width / 2, y: y + height / 2 },
+          occlusion: { rect: { x, y, width, height }, height: 1.2, fadeWhenPlayerBehind: false },
+          draw(ctx, view) { paintResidential(ctx, view, api => {
+            const elevated = onSurface(api, map.id), px = x + (alongX ? 0 : width / 2), py = y + (alongX ? height / 2 : 0);
+            const end: [number, number, number] = [px + (alongX ? size : 0), py + (alongX ? 0 : size), 1.2];
+            elevated.box(px - .08, py - .08, 0, px + .08, py + .08, 1.24, wood);
+            elevated.box(px - .11, py - .11, 1.19, px + .11, py + .11, 1.28, paleWood);
+            for (const z of [.42, 1.2]) elevated.capsule([px, py, z], [end[0], end[1], z], .055, .055, () => wood, 'solid');
+            elevated.box(end[0] - .065, end[1] - .065, 0, end[0] + .065, end[1] + .065, 1.24, wood);
+          }); },
+        };
+      });
+    }
     if (prop.kind === 'wall' || prop.kind === 'partition') {
       const parts: WorldRenderObject[] = [];
       for (let x = prop.position.x; x < prop.position.x + prop.width; x++) for (let y = prop.position.y; y < prop.position.y + prop.height; y++) {
@@ -403,10 +443,31 @@ export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderVie
         parts.push({
           id: parts.length ? `${prop.id}.segment-${parts.length}` : prop.id,
           position: { x: x + width / 2, y: y + height / 2 },
-          occlusion: { rect: { x, y, width, height }, height: 2.8, fadeWhenPlayerBehind: true },
-          draw(ctx, view) { paintResidential(ctx, view, api => wall(onSurface(api, map.id), x, y, width, height)); },
+          occlusion: { rect: { x, y, width, height }, height: prop.id === 'residential-stairs.middle-support' ? 3.8 : 2.8, fadeWhenPlayerBehind: true },
+          draw(ctx, view) { paintResidential(ctx, view, api => {
+            const elevated = onSurface(api, map.id);
+            if (prop.id === 'residential-stairs.middle-support') {
+              if (x >= 9 && x < 13) {
+                elevated.box(x, y, 0, x + width, y + height, .95, cream);
+                elevated.box(x, y, 3.7, x + width, y + height, 3.79, paleWood);
+              } else {
+                elevated.box(x, y, 0, x + width, y + height, 3.7, cream);
+                elevated.box(x, y, 3.7, x + width, y + height, 3.79, paleWood);
+              }
+              elevated.box(x, y, .04, x + width, y + height, .18, wood);
+            } else wall(elevated, x, y, width, height);
+          }); },
         });
       }
+      if (prop.id === 'residential-stairs.middle-support') for (const x of [8, 19]) parts.push({
+        id: `${prop.id}.pier-${x}`, position: { x: x + .5, y: 23.825 },
+        draw(ctx, view) { paintResidential(ctx, view, api => {
+          const landing = stairSurfaces.find(surface => surface.id === 'home-landing')!;
+          api.box(x, 23.65, -.7, x + 1, 24, landing.height - .45, [190, 181, 151]);
+          api.box(x - .06, 23.6, -.72, x + 1.06, 24.05, -.48, [125, 130, 115]);
+          for (const z of [.7, 1.35]) api.box(x, 23.995, z, x + 1, 24.015, z + .035, [163, 158, 132]);
+        }); },
+      });
       return parts;
     }
     const position = { x: prop.position.x + prop.width / 2, y: prop.position.y + prop.height / 2 };
