@@ -1,7 +1,7 @@
 ---
 id: 86
 title: Lighting, weather, water and foliage
-status: todo
+status: doing
 priority: high
 type: feature
 created: 2026-11-05
@@ -17,8 +17,8 @@ The scope in `docs/world-program/ledger.md` is implemented against `docs/world-p
 
 ## Notes
 
-- Owner: builder 9, GPT-6.1 Sol medium. Thread ID pending parent relay.
-- Branch: `codex/0086-atmosphere`. Cloud checkout and process handles must be recorded by owner. Strict port 5488.
+- Owner: builder 9, GPT-6.1 Sol medium. Thread 01a1ae20-d945-75c9-a467-153692bd804e.
+- Branch: `codex/0086-atmosphere`. Cloud checkout /workspace/junyan. Durable objective: docs/evidence/0086/goal.md; no native create_goal tool exposed. Strict port 5488.
 - Exclusive paths: src/world/atmosphere/*.
 - Also owns this ticket and `docs/evidence/0086/`. Do not edit shared contracts or other owners' files.
 - Publish map seam requests and integration instructions in the owned evidence directory.
