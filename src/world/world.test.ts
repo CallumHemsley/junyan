@@ -18,6 +18,11 @@ describe("world locomotion",()=>{
   expect(canStand(map,{x:9.9,y:2})).toBe(false);
   expect(canStand(map,{x:NaN,y:2})).toBe(false);
  });
+ it("rejects uncovered strips within the footprint and nonfinite segments",()=>{
+  const strip={...map,colliders:[],walkable:[{x:0,y:0,width:10,height:60},{x:10.1,y:0,width:69.9,height:60}]};
+  expect(canStand(strip,{x:10.05,y:3})).toBe(false);
+  expect(canWalk(map,{x:2,y:2},{x:NaN,y:3})).toBe(false);
+ });
  it("round trips moved cameras and CSS-scaled pointer edges",()=>{
   for(const focus of [{x:0,y:0},{x:53,y:29}])for(const width of [390,1280]) {
    const camera={focus,width,height:700,scale:24};

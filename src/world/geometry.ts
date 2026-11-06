@@ -6,8 +6,16 @@ export function contains(rect: Rect, p: Point): boolean {
 }
 export function canStand(map: WorldMapDefinition, p: Point, radius = PLAYER_RADIUS): boolean {
   if (!Number.isFinite(p.x) || !Number.isFinite(p.y) || p.x < radius || p.y < radius || p.x > map.bounds.width-radius || p.y > map.bounds.height-radius) return false;
-  const samples = [{x:p.x-radius,y:p.y-radius},{x:p.x+radius,y:p.y-radius},{x:p.x-radius,y:p.y+radius},{x:p.x+radius,y:p.y+radius}];
-  if (!samples.every(sample => map.walkable.some(rect => contains(rect, sample)))) return false;
+  const left=p.x-radius,right=p.x+radius,top=p.y-radius,bottom=p.y+radius;
+  const cuts=[left,right,...map.walkable.flatMap(r=>[r.x,r.x+r.width]).filter(x=>x>left&&x<right)].sort((a,b)=>a-b);
+  for(let i=1;i<cuts.length;i++) {
+    if(cuts[i]===cuts[i-1])continue;
+    const x=(cuts[i]+cuts[i-1])/2;
+    const spans=map.walkable.filter(r=>x>=r.x&&x<=r.x+r.width).map(r=>[r.y,r.y+r.height]).sort((a,b)=>a[0]-b[0]);
+    let covered=top;
+    for(const [start,end] of spans){if(start>covered)break;if(end>covered)covered=end;if(covered>=bottom)break;}
+    if(covered<bottom)return false;
+  }
   return map.colliders.every(({rect}) => {
     const x = Math.max(rect.x, Math.min(p.x, rect.x+rect.width));
     const y = Math.max(rect.y, Math.min(p.y, rect.y+rect.height));
@@ -15,6 +23,7 @@ export function canStand(map: WorldMapDefinition, p: Point, radius = PLAYER_RADI
   });
 }
 export function canWalk(map: WorldMapDefinition, from: Point, to: Point): boolean {
+  if(!canStand(map,from)||!canStand(map,to))return false;
   const steps = Math.max(1, Math.ceil(Math.hypot(to.x-from.x,to.y-from.y)/.1));
   for(let i=0;i<=steps;i++) if(!canStand(map,{x:from.x+(to.x-from.x)*i/steps,y:from.y+(to.y-from.y)*i/steps})) return false;
   return true;

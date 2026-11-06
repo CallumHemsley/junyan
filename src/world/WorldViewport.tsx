@@ -1,7 +1,7 @@
 import {useEffect,useRef,useState} from "react";
 import type {WorldState,Point} from "./schema";
 import type {MapRegistry} from "./registry";
-import {project,pointerGround,type Camera} from "./camera";
+import {project,pointerGround,cameraForMap,type Camera} from "./camera";
 import {findPath,movePlayer,nearbyAnchors} from "./geometry";
 import {paintWorld} from "./painter";
 import type {WorldAction} from "./state";
@@ -40,7 +40,7 @@ export default function WorldViewport({state,maps,onAction,paused=false}:{state:
    }
    const dpr=1,width=Math.ceil(viewport.width/2),height=Math.ceil(viewport.height/2);
    if(element.width!==Math.round(width*dpr)||element.height!==Math.round(height*dpr)){element.width=Math.round(width*dpr);element.height=Math.round(height*dpr);}
-   const camera={focus:current.state.position,width,height,scale:viewport.width<600?9:12};cameraRef.current=camera;
+   const camera=cameraForMap(map.bounds,current.state.position,width,height,viewport.width<600?11:15);cameraRef.current=camera;
    if(now-lastDraw>=1000/30||preference.matches){context.setTransform(dpr,0,0,dpr,0,0);paintWorld(context,map,{project:(p,z)=>project(p,camera,z),elapsedMs:preference.matches?0:elapsedMs,reducedMotion:preference.matches,playerPosition:current.state.position,width,height,pass:"ground"},current.state.facing,moving,camera.scale);lastDraw=now;element.dataset.rendered="true";}
    frame=requestAnimationFrame(tick);
   };
