@@ -34,7 +34,7 @@ export const drawMap: DrawMap = (ctx, map, view) => {
       if(x>=0&&y>=0&&x<=map.bounds.width&&y<=map.bounds.height)continue;
       const n=Math.abs((x*x*37+y*y*71+x*y*13)%97),p=view.project({x,y});
       if(p.x<-unit*5||p.y<-unit*2||p.x>view.width+unit*5||p.y>view.height+unit*8)continue;
-      ctx.save();ctx.globalAlpha=.56;
+      ctx.save();ctx.globalAlpha*=.56;
       drawLandscapeProp(ctx,{kind:n%7===0?'rock':'tree',position:{x:x+n%3*.3,y:y+n%5*.2},width:3.6,height:3.6,variant:n%4},(x,y,z=0)=>view.project({x,y},z),unit,0,true,shade);ctx.restore();
     }
 
@@ -46,9 +46,12 @@ export const drawMap: DrawMap = (ctx, map, view) => {
         const at=view.project(patch.position);
         if(at.x < -unit*w || at.y < -unit*h || at.x > view.width+unit*w || at.y > view.height+unit*h)continue;
         if(patch.kind==='harvest-floor'){
-          polygon(ctx,view,[{x:x-5.7,y:y-2.4},{x:x-3.2,y:y-4.5},{x:x+.6,y:y-3.6},{x:x+4.2,y:y-2.2},{x:x+5.4,y:y+1.2},{x:x+2.7,y:y+3.8},{x:x-.9,y:y+3.1},{x:x-4.6,y:y+4}], '#a49a6c');
-          for(const [dx,dy,w,h] of [[-4,-1,1.7,.6],[-2,-3,2,.8],[2,-1,1.3,.5],[3,2,1.2,.7],[-1,2,2,.5]])polygon(ctx,view,[{x:x+dx,y:y+dy},{x:x+dx+w,y:y+dy-.2},{x:x+dx+w-.2,y:y+dy+h},{x:x+dx-.3,y:y+dy+h}], '#8f875c');
-          continue;
+          const sx=w/13,sy=h/10;
+          ctx.save();
+          const soilPoints=[{x:x-5.7,y:y-2.4},{x:x-3.2,y:y-4.5},{x:x+.6,y:y-3.6},{x:x+4.2,y:y-2.2},{x:x+5.4,y:y+1.2},{x:x+2.7,y:y+3.8},{x:x-.9,y:y+3.1},{x:x-4.6,y:y+4}].map(p=>({x:x+(p.x-x)*sx,y:y+(p.y-y)*sy}));
+          polygon(ctx,view,soilPoints, '#a49a6c');
+          for(const [dx,dy,pw,ph] of [[-4,-1,1.7,.6],[-2,-3,2,.8],[2,-1,1.3,.5],[3,2,1.2,.7],[-1,2,2,.5]])polygon(ctx,view,[{x:x+dx*sx,y:y+dy*sy},{x:x+(dx+pw)*sx,y:y+(dy-.2)*sy},{x:x+(dx+pw-.2)*sx,y:y+(dy+ph)*sy},{x:x+(dx-.3)*sx,y:y+(dy+ph)*sy}], '#8f875c');
+          ctx.restore();continue;
         }
         for(let iy=0;iy<11;iy++)for(let ix=0;ix<13;ix++){
           const dx=(ix/12-.5)*w,dy=(iy/10-.5)*h;

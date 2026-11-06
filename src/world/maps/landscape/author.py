@@ -67,7 +67,9 @@ prop(park,'tea-pavilion','pavilion',53,14,7,5,solid=True)
 prop(park,'reading-bench','bench',29,26,3,1,solid=True)
 prop(park,'reading-stone','rock',31,26,2.2,1.5,3,True)
 prop(park,'planting-bed','seedling-bed',24.5,57.2,3,2,solid=True)
-prop(park,'empty-picking-crates','crates',10,62,2,1.5,solid=True)
+prop(park,'empty-picking-crates','crates',9,63,2,1.5,solid=True)
+prop(park,'arrival-cultivated-soil','harvest-floor',10,61,5,4)
+park['props'][-1]['layer']='ground'
 prop(park,'orchard-soil','harvest-floor',16,52,13,10)
 park['props'][-1]['layer']='ground'
 prop(park,'orchard-cart','cart',16,50,2,2,solid=True)
@@ -80,11 +82,12 @@ for x,y in [(48,30),(54,33),(47,36),(58,29)]: prop(park,f'lily-{x}-{y}','lilies'
 river=base('riverbank',96,80)
 terrain(river,'river-meadow',rect(0,0,96,80),'grass')
 # Authored one-tile water strips keep the banks irregular and align visual/collision edges.
-for y in range(80):
- x=43+round(4*math.sin(y*.1)+2*math.sin(y*.24))
- terrain(river,f'river-shore-{y}',rect(x-1,y,11,1),'sand')
- terrain(river,f'river-{y}',rect(x,y,9,1),'water')
- river['colliders'].append(dict(id=f'riverbank.water-{y}',rect=rect(x,y,9,1)))
+for step in range(160):
+ y=step/2 if step%2 else step//2
+ x=43+round((4*math.sin(y*.1)+2*math.sin(y*.24))*4)/4
+ terrain(river,f'river-shore-{y}',rect(x-.75,y,10.5,.5),'sand')
+ terrain(river,f'river-{y}',rect(x,y,9,.5),'water')
+ river['colliders'].append(dict(id=f'riverbank.water-{y}',rect=rect(x,y,9,.5)))
 path(river,'west-bank',[(6,79),(6,69),(31,69),(31,39),(35,39),(35,19),(20,19),(20,10),(1,10)],2.6)
 path(river,'east-bank',[(35,19),(72,19),(72,43),(80,43),(80,57),(31,57)],2.5)
 path(river,'shore-walk',[(61,19),(61,28),(56,28),(56,43),(62,43),(62,57)],2)

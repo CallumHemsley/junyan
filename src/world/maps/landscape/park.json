@@ -121,8 +121,8 @@
     {
       "id": "park.empty-picking-crates",
       "rect": {
-        "x": 9.52,
-        "y": 61.64,
+        "x": 8.52,
+        "y": 62.64,
         "width": 0.96,
         "height": 0.72
       }
@@ -2197,12 +2197,24 @@
       "id": "park.empty-picking-crates",
       "kind": "crates",
       "position": {
-        "x": 10,
-        "y": 62
+        "x": 9,
+        "y": 63
       },
       "width": 2,
       "height": 1.5,
       "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "park.arrival-cultivated-soil",
+      "kind": "harvest-floor",
+      "position": {
+        "x": 10,
+        "y": 61
+      },
+      "width": 5,
+      "height": 4,
+      "layer": "ground",
       "variant": 0
     },
     {
