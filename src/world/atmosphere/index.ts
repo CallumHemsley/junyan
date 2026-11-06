@@ -159,7 +159,7 @@ export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks 
     const strength=light.lampStrength;
     if(strength<.1) continue;
     if(lamp.pool?.length) {
-      add('light',[...lamp.pool],[255,200,121],.16*strength);
+      add('light',[...lamp.pool],[255,200,121],.26*strength);
     } else {
       for(const [scale,opacity] of [[1,.07],[.67,.10],[.36,.14]]) {
         const size=r*scale;
@@ -168,7 +168,7 @@ export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks 
     }
     const width=lamp.kind==='window'?.55:.16, height=lamp.kind==='window'?.48:.22;
     if(lamp.emitter) {
-      if(lamp.emitter.length>=3) add('objects',[...lamp.emitter],[255,224,153],strength*.48,{id:lamp.id,position:lamp.position,depth:lamp.depth});
+      if(lamp.emitter.length>=3) add('objects',[...lamp.emitter],[255,224,153],strength*.80,{id:lamp.id,position:lamp.position,depth:lamp.depth});
     } else {
       add('objects',[{x:x-width/2,y,z},{x:x+width/2,y,z},{x:x+width/2,y,z:z+height},{x:x-width/2,y,z:z+height}],[255,224,153],strength,{id:lamp.id,position:lamp.position,depth:lamp.depth});
       if(lamp.kind==='window') add('objects',[{x:x-.025,y:y-.005,z},{x:x+.025,y:y-.005,z},{x:x+.025,y:y-.005,z:z+height},{x:x-.025,y:y-.005,z:z+height}],[110,87,62],.9,{id:lamp.id,position:lamp.position,depth:lamp.depth});

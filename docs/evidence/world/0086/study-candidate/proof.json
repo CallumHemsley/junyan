@@ -1,0 +1,793 @@
+{
+  "variant": "candidate",
+  "scope": "Fixed native painter composition fixtures, not gameplay/performance acceptance.",
+  "errors": [],
+  "evidence": [
+    {
+      "name": "desktop",
+      "site": "workshop-bench",
+      "mapId": "workshop",
+      "position": {
+        "x": 11.5,
+        "y": 8.8
+      },
+      "phase": "morning",
+      "occupied": false,
+      "pocket": true,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 9.699999999254942,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-workshop-bench-morning-empty.png"
+    },
+    {
+      "name": "desktop",
+      "site": "workshop-bench",
+      "mapId": "workshop",
+      "position": {
+        "x": 11.5,
+        "y": 8.8
+      },
+      "phase": "morning",
+      "occupied": true,
+      "pocket": true,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 9.5,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-workshop-bench-morning-occupied.png"
+    },
+    {
+      "name": "desktop",
+      "site": "workshop-bench",
+      "mapId": "workshop",
+      "position": {
+        "x": 11.5,
+        "y": 8.8
+      },
+      "phase": "evening",
+      "occupied": false,
+      "pocket": true,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 7.7000000001862645,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-workshop-bench-evening-empty.png"
+    },
+    {
+      "name": "desktop",
+      "site": "workshop-bench",
+      "mapId": "workshop",
+      "position": {
+        "x": 11.5,
+        "y": 8.8
+      },
+      "phase": "evening",
+      "occupied": true,
+      "pocket": true,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 8.5,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-workshop-bench-evening-occupied.png"
+    },
+    {
+      "name": "desktop",
+      "site": "workshop-entry",
+      "mapId": "workshop",
+      "position": {
+        "x": 15,
+        "y": 22.5
+      },
+      "phase": "morning",
+      "occupied": true,
+      "pocket": false,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 7.7000000001862645,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-workshop-entry-morning-occupied.png"
+    },
+    {
+      "name": "desktop",
+      "site": "workshop-entry",
+      "mapId": "workshop",
+      "position": {
+        "x": 15,
+        "y": 22.5
+      },
+      "phase": "evening",
+      "occupied": true,
+      "pocket": false,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 8.5,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-workshop-entry-evening-occupied.png"
+    },
+    {
+      "name": "desktop",
+      "site": "courtyard-window",
+      "mapId": "courtyard",
+      "position": {
+        "x": 23.5,
+        "y": 21.5
+      },
+      "phase": "morning",
+      "occupied": false,
+      "pocket": true,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 48.19999999925494,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-courtyard-window-morning-empty.png"
+    },
+    {
+      "name": "desktop",
+      "site": "courtyard-window",
+      "mapId": "courtyard",
+      "position": {
+        "x": 23.5,
+        "y": 21.5
+      },
+      "phase": "morning",
+      "occupied": true,
+      "pocket": true,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [
+        "aunt",
+        "bird",
+        "white-cat",
+        "black-cat"
+      ],
+      "renderMs": 43.799999999813735,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-courtyard-window-morning-occupied.png"
+    },
+    {
+      "name": "desktop",
+      "site": "courtyard-window",
+      "mapId": "courtyard",
+      "position": {
+        "x": 23.5,
+        "y": 21.5
+      },
+      "phase": "evening",
+      "occupied": false,
+      "pocket": true,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 30.299999999813735,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-courtyard-window-evening-empty.png"
+    },
+    {
+      "name": "desktop",
+      "site": "courtyard-window",
+      "mapId": "courtyard",
+      "position": {
+        "x": 23.5,
+        "y": 21.5
+      },
+      "phase": "evening",
+      "occupied": true,
+      "pocket": true,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [
+        "aunt",
+        "bird",
+        "white-cat",
+        "black-cat"
+      ],
+      "renderMs": 29.600000000558794,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-courtyard-window-evening-occupied.png"
+    },
+    {
+      "name": "desktop",
+      "site": "courtyard-laundry",
+      "mapId": "courtyard",
+      "position": {
+        "x": 6,
+        "y": 11.5
+      },
+      "phase": "morning",
+      "occupied": true,
+      "pocket": false,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [
+        "aunt",
+        "bird",
+        "white-cat",
+        "black-cat"
+      ],
+      "renderMs": 23.299999999813735,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-courtyard-laundry-morning-occupied.png"
+    },
+    {
+      "name": "desktop",
+      "site": "courtyard-laundry",
+      "mapId": "courtyard",
+      "position": {
+        "x": 6,
+        "y": 11.5
+      },
+      "phase": "evening",
+      "occupied": true,
+      "pocket": false,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [
+        "aunt",
+        "bird",
+        "white-cat",
+        "black-cat"
+      ],
+      "renderMs": 27.300000000745058,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-courtyard-laundry-evening-occupied.png"
+    },
+    {
+      "name": "desktop",
+      "site": "rooftop-threshold",
+      "mapId": "rooftop",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "phase": "morning",
+      "occupied": false,
+      "pocket": true,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 12.900000000372529,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-rooftop-threshold-morning-empty.png"
+    },
+    {
+      "name": "desktop",
+      "site": "rooftop-threshold",
+      "mapId": "rooftop",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "phase": "morning",
+      "occupied": true,
+      "pocket": true,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 14.200000000186265,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-rooftop-threshold-morning-occupied.png"
+    },
+    {
+      "name": "desktop",
+      "site": "rooftop-threshold",
+      "mapId": "rooftop",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "phase": "evening",
+      "occupied": false,
+      "pocket": true,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 11,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-rooftop-threshold-evening-empty.png"
+    },
+    {
+      "name": "desktop",
+      "site": "rooftop-threshold",
+      "mapId": "rooftop",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "phase": "evening",
+      "occupied": true,
+      "pocket": true,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 7,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-rooftop-threshold-evening-occupied.png"
+    },
+    {
+      "name": "desktop",
+      "site": "rooftop-care",
+      "mapId": "rooftop",
+      "position": {
+        "x": 19,
+        "y": 20
+      },
+      "phase": "morning",
+      "occupied": true,
+      "pocket": false,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 9,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-rooftop-care-morning-occupied.png"
+    },
+    {
+      "name": "desktop",
+      "site": "rooftop-care",
+      "mapId": "rooftop",
+      "position": {
+        "x": 19,
+        "y": 20
+      },
+      "phase": "evening",
+      "occupied": true,
+      "pocket": false,
+      "scale": 15,
+      "logicalCanvas": [
+        720,
+        445
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 6.900000000372529,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/desktop-rooftop-care-evening-occupied.png"
+    },
+    {
+      "name": "phone",
+      "site": "workshop-bench",
+      "mapId": "workshop",
+      "position": {
+        "x": 11.5,
+        "y": 8.8
+      },
+      "phase": "morning",
+      "occupied": false,
+      "pocket": true,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 10.100000000558794,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-workshop-bench-morning-empty.png"
+    },
+    {
+      "name": "phone",
+      "site": "workshop-bench",
+      "mapId": "workshop",
+      "position": {
+        "x": 11.5,
+        "y": 8.8
+      },
+      "phase": "morning",
+      "occupied": true,
+      "pocket": true,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 10.100000000558794,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-workshop-bench-morning-occupied.png"
+    },
+    {
+      "name": "phone",
+      "site": "workshop-bench",
+      "mapId": "workshop",
+      "position": {
+        "x": 11.5,
+        "y": 8.8
+      },
+      "phase": "evening",
+      "occupied": false,
+      "pocket": true,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 11.199999999254942,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-workshop-bench-evening-empty.png"
+    },
+    {
+      "name": "phone",
+      "site": "workshop-bench",
+      "mapId": "workshop",
+      "position": {
+        "x": 11.5,
+        "y": 8.8
+      },
+      "phase": "evening",
+      "occupied": true,
+      "pocket": true,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 7.2000000001862645,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-workshop-bench-evening-occupied.png"
+    },
+    {
+      "name": "phone",
+      "site": "workshop-entry",
+      "mapId": "workshop",
+      "position": {
+        "x": 15,
+        "y": 22.5
+      },
+      "phase": "morning",
+      "occupied": true,
+      "pocket": false,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 7.599999999627471,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-workshop-entry-morning-occupied.png"
+    },
+    {
+      "name": "phone",
+      "site": "workshop-entry",
+      "mapId": "workshop",
+      "position": {
+        "x": 15,
+        "y": 22.5
+      },
+      "phase": "evening",
+      "occupied": true,
+      "pocket": false,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 7.7000000001862645,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-workshop-entry-evening-occupied.png"
+    },
+    {
+      "name": "phone",
+      "site": "courtyard-window",
+      "mapId": "courtyard",
+      "position": {
+        "x": 23.5,
+        "y": 21.5
+      },
+      "phase": "morning",
+      "occupied": false,
+      "pocket": true,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 20.100000000558794,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-courtyard-window-morning-empty.png"
+    },
+    {
+      "name": "phone",
+      "site": "courtyard-window",
+      "mapId": "courtyard",
+      "position": {
+        "x": 23.5,
+        "y": 21.5
+      },
+      "phase": "morning",
+      "occupied": true,
+      "pocket": true,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [
+        "white-cat"
+      ],
+      "renderMs": 25.90000000037253,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-courtyard-window-morning-occupied.png"
+    },
+    {
+      "name": "phone",
+      "site": "courtyard-window",
+      "mapId": "courtyard",
+      "position": {
+        "x": 23.5,
+        "y": 21.5
+      },
+      "phase": "evening",
+      "occupied": false,
+      "pocket": true,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 14.799999999813735,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-courtyard-window-evening-empty.png"
+    },
+    {
+      "name": "phone",
+      "site": "courtyard-window",
+      "mapId": "courtyard",
+      "position": {
+        "x": 23.5,
+        "y": 21.5
+      },
+      "phase": "evening",
+      "occupied": true,
+      "pocket": true,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [
+        "white-cat"
+      ],
+      "renderMs": 19.399999999441206,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-courtyard-window-evening-occupied.png"
+    },
+    {
+      "name": "phone",
+      "site": "courtyard-laundry",
+      "mapId": "courtyard",
+      "position": {
+        "x": 6,
+        "y": 11.5
+      },
+      "phase": "morning",
+      "occupied": true,
+      "pocket": false,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [
+        "bird",
+        "white-cat"
+      ],
+      "renderMs": 10.100000000558794,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-courtyard-laundry-morning-occupied.png"
+    },
+    {
+      "name": "phone",
+      "site": "courtyard-laundry",
+      "mapId": "courtyard",
+      "position": {
+        "x": 6,
+        "y": 11.5
+      },
+      "phase": "evening",
+      "occupied": true,
+      "pocket": false,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [
+        "bird",
+        "white-cat"
+      ],
+      "renderMs": 9.800000000745058,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-courtyard-laundry-evening-occupied.png"
+    },
+    {
+      "name": "phone",
+      "site": "rooftop-threshold",
+      "mapId": "rooftop",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "phase": "morning",
+      "occupied": false,
+      "pocket": true,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 12.399999999441206,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-rooftop-threshold-morning-empty.png"
+    },
+    {
+      "name": "phone",
+      "site": "rooftop-threshold",
+      "mapId": "rooftop",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "phase": "morning",
+      "occupied": true,
+      "pocket": true,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 12.199999999254942,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-rooftop-threshold-morning-occupied.png"
+    },
+    {
+      "name": "phone",
+      "site": "rooftop-threshold",
+      "mapId": "rooftop",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "phase": "evening",
+      "occupied": false,
+      "pocket": true,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 9.599999999627471,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-rooftop-threshold-evening-empty.png"
+    },
+    {
+      "name": "phone",
+      "site": "rooftop-threshold",
+      "mapId": "rooftop",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "phase": "evening",
+      "occupied": true,
+      "pocket": true,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 6.2000000001862645,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-rooftop-threshold-evening-occupied.png"
+    },
+    {
+      "name": "phone",
+      "site": "rooftop-care",
+      "mapId": "rooftop",
+      "position": {
+        "x": 19,
+        "y": 20
+      },
+      "phase": "morning",
+      "occupied": true,
+      "pocket": false,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 6,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-rooftop-care-morning-occupied.png"
+    },
+    {
+      "name": "phone",
+      "site": "rooftop-care",
+      "mapId": "rooftop",
+      "position": {
+        "x": 19,
+        "y": 20
+      },
+      "phase": "evening",
+      "occupied": true,
+      "pocket": false,
+      "scale": 11,
+      "logicalCanvas": [
+        195,
+        367
+      ],
+      "legalApproach": true,
+      "visibleActors": [],
+      "renderMs": 5.099999999627471,
+      "path": "/workspace/junyan/docs/evidence/world/0086/study-candidate/phone-rooftop-care-evening-occupied.png"
+    }
+  ]
+}

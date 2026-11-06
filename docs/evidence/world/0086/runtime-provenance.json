@@ -1,0 +1,21 @@
+{
+  "foundation": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+  "ownerHead": "5d39236 + tested depth/emission correction (next commit)",
+  "runtime": "/workspace/junyan/output/world-0086-local-light-app",
+  "mainReconciled": false,
+  "sharedSource": "git archive; not a git checkout or shared merge",
+  "ownedOverlay": {
+    "canvas.ts": "4ca13abb6d866f189754dab443b33fea72d8e8cb6c644aded718b695a24907b4",
+    "index.ts": "378723ec7a8ef8bfa76e2f894c4ed73738e84cc043b824f83c70b2e39cfaac70",
+    "local-lights.ts": "328d591d78ac57cc9a4f2b0e1523e73567ff064ab912eb7283569fd1f7e8c786",
+    "map-hooks.ts": "d084c36d1a1954fd683358d78b2ea779e92949ad8fc27e3c6ad4557ea9dcfde1",
+    "materials.ts": "0de49cd0f769fc7ab4026f13b9a7a9100e4d710ab9c88b2b8ce81fe05be0b353"
+  },
+  "variant": "candidate",
+  "sharedSourceReadOnly": true,
+  "unitVerification": {
+    "ownerAtmosphereTests": 25,
+    "pinnedRuntimeTests": 443,
+    "pinnedRuntimeTestFiles": 58
+  }
+}

@@ -5,10 +5,13 @@ type Fixture=AtmosphereMap['props'][number];
 const quad=(x:number,y:number,width:number,height:number,z:number):Point[]=>[
   {x,y,z},{x:x+width,y,z},{x:x+width,y:y+height,z},{x,y:y+height,z},
 ];
-function taskLamp(prop:Fixture):NonNullable<AtmosphereHooks['lights']>[number] {
+function taskLamp(prop:Fixture,props:AtmosphereMap['props']):NonNullable<AtmosphereHooks['lights']>[number] {
   const {x,y}=prop.position;
+  // The art owner places tabletop props after their host bench, not at prop centre depth.
+  const host=props.find(p=>p.id!==prop.id&&/bench|shelf/.test(p.kind)&&x>=p.position.x&&x<=p.position.x+p.width&&y>=p.position.y&&y<=p.position.y+p.height);
+  const depth=host?host.position.x+host.position.y+(host.width+host.height)/2+.02:x+y+(prop.width+prop.height)/2+.02;
   return {
-    id:prop.id,depth:prop.position.x+prop.position.y+(prop.width+prop.height)/2+.02,kind:'lamp',position:{x:x-.15,y:y+.25,z:2.5},radius:1.8,
+    id:prop.id,depth,kind:'lamp',position:{x:x-.15,y:y+.25,z:2.5},radius:1.8,
     emitter:quad(x-.30,y+.09,.28,.30,2.505),
     pool:quad(x-1.55,y-.03,2.05,1.02,1.675),
   };
@@ -27,7 +30,7 @@ export function authoredLocalLights(map:AtmosphereMap):AtmosphereHooks {
   const fixture=(id:string,kind:string)=>map.props.find(p=>p.id===id&&p.kind===kind);
   if(map.id==='workshop') {
     const lamps=['workshop.desk-lamp','workshop.toy-lamp'].flatMap(id=>{
-      const prop=fixture(id,'lamp');return prop?[taskLamp(prop)]:[];
+      const prop=fixture(id,'lamp');return prop?[taskLamp(prop,map.props)]:[];
     });
     return {lights:lamps,ambientByPhase:{morning:[.95,.96,.92],noon:[1,.99,.94],evening:[.64,.71,.84],night:[.49,.57,.72]}};
   }

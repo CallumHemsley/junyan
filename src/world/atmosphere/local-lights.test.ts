@@ -28,3 +28,10 @@ it('warms occupied rooftop architecture without turning plant beds into emitters
  expect(hooks.lights![0].pool!.every(p=>p.x<12&&p.y>27)).toBe(true);
  expect(authoredLocalLights({id:'park',terrain:[],props:[lamp]})).toEqual({});
 });
+
+it('draws a tabletop practical after its host bench and before later objects',()=>{
+ const bench={id:'workshop.lamp-bench',kind:'lamp-bench',position:{x:5,y:7},width:9,height:4};
+ const light=authoredLocalLights({id:'workshop',terrain:[],props:[lamp,bench]}).lights![0];
+ expect(light.depth).toBe(5+7+(9+4)/2+.02);
+ expect(light.depth).toBeGreaterThan(5+7+(9+4)/2+.01);
+});
