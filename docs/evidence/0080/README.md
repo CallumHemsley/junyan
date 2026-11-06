@@ -64,3 +64,9 @@ The legacy desktop cats stage still mounts in a narrow world overlay. At desktop
 Phone completed the existing cat reunion through real buttons and preserved it through reload. Desktop remains blocked by overlapping legacy scene targets. No full activity PASS is claimed. Foundation should mount `presentation="controls"` and select via bound world anchors. Production currently renders nonhuman actors as small generic rectangles and does not yet pass `catHabitat` through lifeContext; wire the existing `drawCat` helper and authoritative habitat sample for legible cats that match clues.
 
 The final type/geometry check after explicit material callback conversion passes. `paintGround` and `paintProp` are separate; each render object draws one prop directly rather than calling a whole-map pass for each prop. All fill materials, pixel foliage and cat fur route through the published optional `shadeColor` field; no context proxy is required by this module. Shared proxy removal and final morning/evening production proof remain pending.
+
+## Material and house-depth proof
+
+`material-proof.json` and same-camera desktop/phone morning/evening captures verify the explicit callback with actual `shadeAtmosphereColor`, shared production camera and character sampling, particles off, and no shared context proxy. Wood, foliage, masonry and cat fur change and remain distinct. All individual objects retain inherited alpha 0.45 after drawing. These are adapter proof captures, not a claim that production's transitional context proxy or phase binding is accepted. Screenshots were inspected.
+
+Long houses now expose separately sorted south/east facade sections and roofs with narrow per-face occlusion bounds. Each authored prop still has exactly one matching ID to suppress the generic fallback. An object's callback paints that object directly. This avoids one sort point for a long residential row. Integrated walk-behind captures and independent review remain next.
