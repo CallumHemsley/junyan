@@ -27,3 +27,11 @@ Do not place all five on one decorative line in production. The preview line is 
 Eleven actor tests pass, including silhouette masks in front/quarter/rear, every resident's distance-driven planted gait, contextual animation and reduced-motion freeze. The first gait test exposed insufficient phase distinction under long clothing, which was fixed. Existing cast preservation proof is recorded separately. Final captures must reflect the corrected stride and canonical river-walker hat before visual acceptance.
 
 Current dependency is foundation0974efd with the proxy-free shadeColor seam. Earlier notes about missing shader fields or the transitional proxy are historical and superseded. Next actions are final capture, canonical single-map route integration, real-world landmark motion and independent review. Goal ACTIVE.
+
+## Canonical candidate verification
+
+The final canonical five IDs follow coordinator c32f128 exactly. The generic passerby proposal was replaced by resident-river-walker, with a small travel hat; no sixth identity or bg-* sampler aliases exist. Supported poses, tools and sole maps are in integration.md.
+
+Final directions-native.png and motion-native.png were refreshed after the stride correction and canonical hat. Desktop/phone DPR2 browser screenshots and actual walking/working recordings passed movement, reduced-motion pixel equality and clean page-error checks. Motion strips were inspected. This is still an unregistered art fixture and does not establish production route/depth/clearance acceptance.
+
+Current integrated full suite passes387 tests in42 files; scoped actors pass11 tests. Build passes. cast-preservation.json proves exact pixels AND attachment data for all1,440 sampled player/four-regular cases against85d6d6e. No approved cast or audio change is introduced. Candidate remains ACTIVE pending owner registration and independent actual-landmark motion review.
