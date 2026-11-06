@@ -1,0 +1,11 @@
+import {it,expect} from 'vitest';
+import {restaurantMap} from '../src/world/restaurant';
+import {canStand} from '../src/world/geometry';
+import {exitComponent,safeExitPosition} from '../src/world/exit-safety';
+import {safeAfterEdit} from '../src/world/dynamic';
+import {createWorld,restoreWorld} from '../src/world/state';
+const before={...restaurantMap,id:'edit-room',bounds:{width:10,height:8},defaultSpawn:{x:1,y:4,facing:'east' as const},walkable:[{x:0,y:0,width:10,height:8}],colliders:[],anchors:[],exits:[{id:'out',rect:{x:.5,y:3,width:1,height:2},kind:'door' as const,targetMapId:'outside',targetEntranceId:'in'}]};
+const after={...before,colliders:[{id:'blocked-exit',rect:{x:0,y:2,width:3,height:4}}]};
+const position={x:8,y:4};
+it('reproduces empty exit component despite standable feet (synthetic API fixture)',()=>{expect(canStand(after,position)).toBe(true);expect(exitComponent(after)).toHaveLength(0);expect(()=>safeExitPosition(after,position)).toThrow('No exit-connected support');expect(()=>safeAfterEdit(before,after,position)).toThrow('No exit-connected support');});
+it('reproduces restore propagation for blocked dynamic map (not legal UI reproduction)',()=>{const world={...createWorld({restaurant:restaurantMap}),mapId:after.id,position};expect(()=>restoreWorld(world,{restaurant:restaurantMap,[after.id]:after})).toThrow('No exit-connected support');});

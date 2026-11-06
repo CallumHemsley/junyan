@@ -3,7 +3,7 @@
   "state": "prepared; NOT applied; apply only during serialized foundation documentation freeze",
   "heads": {
     "0077": "9b17f56b67316b108a0ecd869fe4b660b4526fb0",
-    "0078": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+    "0078": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
     "0079": "c027b547e75b24aa4822f56910723be3bafe300d",
     "0080": "2851a2fb044d952c753305df3c822f23f42f3de1",
     "0081": "bafbbfd2b58d6b0102883002bcd777ffb4830722",
@@ -19,17 +19,8 @@
   },
   "files": [
     {
-      "owner": "0077",
-      "sourceHead": "9b17f56b67316b108a0ecd869fe4b660b4526fb0",
-      "oldPath": "docs/tickets/0077-world-program.md",
-      "newPath": "docs/tickets/world/0077-world-program.md",
-      "sha256": "da347dfbcb12c6eaab4da79ba71c572cdbbb892bfa78568115c961c7d24b3a8c",
-      "bytes": 735,
-      "mainOwnsOldPath": false
-    },
-    {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/.gitignore",
       "newPath": "docs/evidence/world/0078/.gitignore",
       "sha256": "2db43ea46d4bbcbe8f08a722b961392e33892eb337b3e1257d8504709f0b3c05",
@@ -38,7 +29,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/adapter-v1.md",
       "newPath": "docs/evidence/world/0078/adapter-v1.md",
       "sha256": "7d905efaa514e43e754fffedc0dc96bf6e5a0946dc9ae5af8d26f3879aecb61c",
@@ -47,7 +38,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/contact-sheet.png",
       "newPath": "docs/evidence/world/0078/assembled/contact-sheet.png",
       "sha256": "db6c831b83721bd40ac65adfa3744604df107314784ed2b3a5a5b90faadb73fe",
@@ -56,7 +47,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/desktop-apartment.png",
       "newPath": "docs/evidence/world/0078/assembled/desktop-apartment.png",
       "sha256": "61472602777b8f741fdbed20a7d649a51e7423b54520ac4a8c3e9559aeb1c05f",
@@ -65,7 +56,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/desktop-courtyard.png",
       "newPath": "docs/evidence/world/0078/assembled/desktop-courtyard.png",
       "sha256": "df13bb78eb208b0fa4aecb0aeb026a25e117e8c75b8164bde73dddc2de498dcd",
@@ -74,7 +65,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/desktop-park.png",
       "newPath": "docs/evidence/world/0078/assembled/desktop-park.png",
       "sha256": "bf85aeae603a51402cbee8f0d5030d42a4e34c863be3f8a6fe0bce284f017956",
@@ -83,7 +74,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/desktop-residential-hall.png",
       "newPath": "docs/evidence/world/0078/assembled/desktop-residential-hall.png",
       "sha256": "e3edabb22a38792e63c1b7efdf55e10b2adfa79da9572ce5dc55e42b17da1142",
@@ -92,7 +83,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/desktop-residential-stairs.png",
       "newPath": "docs/evidence/world/0078/assembled/desktop-residential-stairs.png",
       "sha256": "cb86be46f675ab69e95a0cb7435b44ab0c547691ebf10eb724a05a226c8e8aba",
@@ -101,7 +92,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/desktop-restaurant.png",
       "newPath": "docs/evidence/world/0078/assembled/desktop-restaurant.png",
       "sha256": "9c7dd7a7226c6e68d55970f618f52b5d473a3a34d94a89325f7895c84ddf3346",
@@ -110,7 +101,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/desktop-riverbank.png",
       "newPath": "docs/evidence/world/0078/assembled/desktop-riverbank.png",
       "sha256": "45704e3a8b0400871ea459be0067e71be1bf7401d9b06039e81fb72ab7707978",
@@ -119,7 +110,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/desktop-rooftop.png",
       "newPath": "docs/evidence/world/0078/assembled/desktop-rooftop.png",
       "sha256": "bda313fc75641ff191ed49766977553144669af541e8f698b25fd8ddba20e65b",
@@ -128,7 +119,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/desktop-town.png",
       "newPath": "docs/evidence/world/0078/assembled/desktop-town.png",
       "sha256": "0daead1f3e42b2b3f32669e624d5b12b78b10fa18af2494428400b44960beb13",
@@ -137,7 +128,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/desktop-workshop.png",
       "newPath": "docs/evidence/world/0078/assembled/desktop-workshop.png",
       "sha256": "c6e8b13d95c2a90ddcc7e19037b6b4c26a051184cb87408b5ad82ca1adff464c",
@@ -146,7 +137,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/phone-apartment.png",
       "newPath": "docs/evidence/world/0078/assembled/phone-apartment.png",
       "sha256": "4a4d125d233215a788850701f9861a474e0b9de85bf774278438ec2ff2fd44ec",
@@ -155,7 +146,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/phone-courtyard.png",
       "newPath": "docs/evidence/world/0078/assembled/phone-courtyard.png",
       "sha256": "4d079473055691827419a6e6166957088f632367a0a5f7b668d7ca2faf537a32",
@@ -164,7 +155,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/phone-park.png",
       "newPath": "docs/evidence/world/0078/assembled/phone-park.png",
       "sha256": "11be9e27dc3b0041230a3a8df63bad8da0190b9932ada5694511d23c1f6374fb",
@@ -173,7 +164,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/phone-residential-hall.png",
       "newPath": "docs/evidence/world/0078/assembled/phone-residential-hall.png",
       "sha256": "dc44d0042d9aa6a8f2cf738e57d56319d7a2688f21a1f19f18666886ad6c9630",
@@ -182,7 +173,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/phone-residential-stairs.png",
       "newPath": "docs/evidence/world/0078/assembled/phone-residential-stairs.png",
       "sha256": "3ddfd054223ba2f93896fcfbbe005a9722c4c96f571ac0ec6b75cd5c346ba8bc",
@@ -191,7 +182,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/phone-restaurant.png",
       "newPath": "docs/evidence/world/0078/assembled/phone-restaurant.png",
       "sha256": "0c4a519fbd9bc11a18acbd728cf67b80056ff6a806813737bfe90492b4917be8",
@@ -200,7 +191,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/phone-riverbank.png",
       "newPath": "docs/evidence/world/0078/assembled/phone-riverbank.png",
       "sha256": "0fac877b22d143a7ad56f59d02027008261925929f119c84ea159fe850d60529",
@@ -209,7 +200,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/phone-rooftop.png",
       "newPath": "docs/evidence/world/0078/assembled/phone-rooftop.png",
       "sha256": "6d8bd112ee471a74f8d60418b0d69a978ea12024bee41724075685691b503ac5",
@@ -218,7 +209,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/phone-town.png",
       "newPath": "docs/evidence/world/0078/assembled/phone-town.png",
       "sha256": "3dcbcbd05b46a198704c371dbf7594cf5d288b6d4f2305f7cccfe7d5f7cfbff7",
@@ -227,7 +218,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/phone-workshop.png",
       "newPath": "docs/evidence/world/0078/assembled/phone-workshop.png",
       "sha256": "d3b28dc70640f0685ed7bef2a0f3c6ae5a11c7434b21b67766356f2ee6287d82",
@@ -236,7 +227,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembled/results.json",
       "newPath": "docs/evidence/world/0078/assembled/results.json",
       "sha256": "a464ef7e97bff035a9a037bacde76678fbdf7b4e61c063042d959b1d7bc06515",
@@ -245,7 +236,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembly-capture.mjs",
       "newPath": "docs/evidence/world/0078/assembly-capture.mjs",
       "sha256": "5ce196953cb4cdb36726fc3f5d90335f8f040d886e6d94c417b31f50d4536542",
@@ -254,7 +245,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembly-checks.json",
       "newPath": "docs/evidence/world/0078/assembly-checks.json",
       "sha256": "87aeecb68cb85f403759f6d0c0a5d101b2a36952194f6cc265eeca2bfa21e076",
@@ -263,7 +254,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/assembly-provenance.json",
       "newPath": "docs/evidence/world/0078/assembly-provenance.json",
       "sha256": "0be95f588f4d65c370fdeecbe00e9ab82036fb21c61416d501cd750ca05abc99",
@@ -272,7 +263,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/capture.mjs",
       "newPath": "docs/evidence/world/0078/capture.mjs",
       "sha256": "a9aaba136acfb4eb57f11a416fc1d39a87ed908042ff8e75a32b410ca7a4deec",
@@ -281,7 +272,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/desktop-apartment-arrival.png",
       "newPath": "docs/evidence/world/0078/desktop-apartment-arrival.png",
       "sha256": "1b2716b59b5bdbea4f0ffe73cdcf7d6a15b0e15cd6de7b0ef26df1cdb1820f9e",
@@ -290,7 +281,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/desktop-courtyard-arrival.png",
       "newPath": "docs/evidence/world/0078/desktop-courtyard-arrival.png",
       "sha256": "572b133a42e6af228141d1c7d244fea1be5dd72a003f5604447a0b5436616925",
@@ -299,7 +290,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/desktop-journey-proof.json",
       "newPath": "docs/evidence/world/0078/desktop-journey-proof.json",
       "sha256": "e356bd0b9bc9883ca7ffa609b0df24e63e35668a9886b8edd86b5d8f224b26ff",
@@ -308,7 +299,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/desktop-park-arrival.png",
       "newPath": "docs/evidence/world/0078/desktop-park-arrival.png",
       "sha256": "a70bd34d3b3b8be9a43164561e90022be833666cc291e2ddab6898bce2f0469f",
@@ -317,7 +308,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/desktop-residential-hall-arrival.png",
       "newPath": "docs/evidence/world/0078/desktop-residential-hall-arrival.png",
       "sha256": "1183a3dc1edbfcc7b17aab2847e90504839abca405fab73481f4e3b396c7bcf9",
@@ -326,7 +317,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/desktop-residential-stairs-arrival.png",
       "newPath": "docs/evidence/world/0078/desktop-residential-stairs-arrival.png",
       "sha256": "bfc150220c26c7d20f09bda46d87d6a4fbc9f28040b46abe5f7257bbc93d7239",
@@ -335,7 +326,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/desktop-restaurant-arrival.png",
       "newPath": "docs/evidence/world/0078/desktop-restaurant-arrival.png",
       "sha256": "45bdb9de36825e3237dd6d82e0d7f141a733389c7638f3bf4c9856242f634a50",
@@ -344,7 +335,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/desktop-riverbank-arrival.png",
       "newPath": "docs/evidence/world/0078/desktop-riverbank-arrival.png",
       "sha256": "69febd3c8ad29dfe63c32fd543ec06d4b7246b70a4416d43629948df1d498c56",
@@ -353,7 +344,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/desktop-rooftop-arrival.png",
       "newPath": "docs/evidence/world/0078/desktop-rooftop-arrival.png",
       "sha256": "a16336691fcbf7d54dc3c21b103ff0e7ecdd45be79d344fb0c896ce7e5656470",
@@ -362,7 +353,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/desktop-service-world.png",
       "newPath": "docs/evidence/world/0078/desktop-service-world.png",
       "sha256": "3c5dbdbdcd6bc009b84bbe1bdec50e16bdfb5b63c6f5ed3dc4412c2cb90850cd",
@@ -371,7 +362,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/desktop-town-arrival.png",
       "newPath": "docs/evidence/world/0078/desktop-town-arrival.png",
       "sha256": "1e4cf90f428b3a76d6e1108af426c000d42e3f8e9d7919df82c1fba40c4eccce",
@@ -380,7 +371,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/desktop-workshop-arrival.png",
       "newPath": "docs/evidence/world/0078/desktop-workshop-arrival.png",
       "sha256": "bb662e7f4c6b7e615968d78bf932fe0d9d89cdbfcf0087a595ad84dd6e79809d",
@@ -389,7 +380,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/desktop-world.png",
       "newPath": "docs/evidence/world/0078/desktop-world.png",
       "sha256": "83add4fa676a57e789ea1354fc0b336a4975fc4e7a959647babc8e0f1ae1c183",
@@ -398,7 +389,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/docs/evidence/0078/journey-results.json",
       "newPath": "docs/evidence/world/0078/docs/evidence/0078/journey-results.json",
       "sha256": "7bfe65e040a950ed29385149d73b8fc19d961390ad133e5da738cd4ddba2f196",
@@ -407,7 +398,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/docs/evidence/0078/journey-results/journey-ordinary-opening-p-f134d-connected-travel-and-reload-desktop/video.webm",
       "newPath": "docs/evidence/world/0078/docs/evidence/0078/journey-results/journey-ordinary-opening-p-f134d-connected-travel-and-reload-desktop/video.webm",
       "sha256": "d37fc8a6e555ca38a3f1a36d50c55025bad58f165452df82285418878acd55b4",
@@ -416,7 +407,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud-framed.mjs",
       "newPath": "docs/evidence/world/0078/hud-framed.mjs",
       "sha256": "dfaacb49607d0de2269aa3a1f09461294dd9625a97829f7e60e7eede43135481",
@@ -425,7 +416,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud-framed/desktop-checkout.png",
       "newPath": "docs/evidence/world/0078/hud-framed/desktop-checkout.png",
       "sha256": "a851a27941c489518cee30025419786cb7a060ec8be997e2e74c565e7057d7fc",
@@ -434,7 +425,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud-framed/desktop-ordered.png",
       "newPath": "docs/evidence/world/0078/hud-framed/desktop-ordered.png",
       "sha256": "d46958d7a7f10d06390a8d2d90fdfd6b42f70fe2712dd5bbd44db68e6c6018f4",
@@ -443,7 +434,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud-framed/desktop-served.png",
       "newPath": "docs/evidence/world/0078/hud-framed/desktop-served.png",
       "sha256": "1561490a009a885a3702e7c15b5ac2a4fa1b81d1e249a8ff34bbcebf823df2d6",
@@ -452,7 +443,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud-framed/phone-checkout.png",
       "newPath": "docs/evidence/world/0078/hud-framed/phone-checkout.png",
       "sha256": "eb5cbd20e4cd3cf026497cd65f982dcd654531550b1717fb00f6a1bed64285c6",
@@ -461,7 +452,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud-framed/phone-ordered.png",
       "newPath": "docs/evidence/world/0078/hud-framed/phone-ordered.png",
       "sha256": "9be2269bc1c2a95689e7961958e9aeef730eca6d5510836774f6348e1a68ca01",
@@ -470,7 +461,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud-framed/phone-served.png",
       "newPath": "docs/evidence/world/0078/hud-framed/phone-served.png",
       "sha256": "2eaccfd659128b354e023c086ecd269a6c639367d8a9920f2b2be388a6bfd076",
@@ -479,7 +470,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud-framed/results.json",
       "newPath": "docs/evidence/world/0078/hud-framed/results.json",
       "sha256": "304bbac7dc08a260268698a2f8888a38bee98de34e62c2a8b0a37b87fd6a15c4",
@@ -488,7 +479,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud-phases.mjs",
       "newPath": "docs/evidence/world/0078/hud-phases.mjs",
       "sha256": "976bc262a2d68978619a5bca718385074a56813ae25bc25beb2e928df95a411b",
@@ -497,7 +488,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud-phases/desktop-checkout.png",
       "newPath": "docs/evidence/world/0078/hud-phases/desktop-checkout.png",
       "sha256": "c11e4509cb10163a38f57450a9ea7b32b8d8d1609fb2c08dcfe2f4fee93df2c3",
@@ -506,7 +497,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud-phases/desktop-ordered.png",
       "newPath": "docs/evidence/world/0078/hud-phases/desktop-ordered.png",
       "sha256": "e030765d1db9558b057bbbe54bcde9701bac39468aba187aadace9a50c7299b9",
@@ -515,7 +506,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud-phases/desktop-served.png",
       "newPath": "docs/evidence/world/0078/hud-phases/desktop-served.png",
       "sha256": "654aad314ee0004c98d11e79994e867a530e44ef596b59b132b9f311eff16123",
@@ -524,7 +515,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud-phases/phone-checkout.png",
       "newPath": "docs/evidence/world/0078/hud-phases/phone-checkout.png",
       "sha256": "eb5cbd20e4cd3cf026497cd65f982dcd654531550b1717fb00f6a1bed64285c6",
@@ -533,7 +524,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud-phases/phone-ordered.png",
       "newPath": "docs/evidence/world/0078/hud-phases/phone-ordered.png",
       "sha256": "9be2269bc1c2a95689e7961958e9aeef730eca6d5510836774f6348e1a68ca01",
@@ -542,7 +533,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud-phases/phone-served.png",
       "newPath": "docs/evidence/world/0078/hud-phases/phone-served.png",
       "sha256": "2eaccfd659128b354e023c086ecd269a6c639367d8a9920f2b2be388a6bfd076",
@@ -551,7 +542,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud-phases/results.json",
       "newPath": "docs/evidence/world/0078/hud-phases/results.json",
       "sha256": "2e3f00875b9c480fd419562c3a91353179069fc87a58b0a904fc0ec492176a9a",
@@ -560,7 +551,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud-probe.mjs",
       "newPath": "docs/evidence/world/0078/hud-probe.mjs",
       "sha256": "6daef7f6c2b890020b9fcc083bb1af06da28cdb7e2f7c530dcd1a7535b01411e",
@@ -569,7 +560,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud/desktop-table.png",
       "newPath": "docs/evidence/world/0078/hud/desktop-table.png",
       "sha256": "9f59e6c7dfda3bf30d41c325b059dd01034b51ea5807d2e170b584681270911f",
@@ -578,7 +569,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud/phone-table.png",
       "newPath": "docs/evidence/world/0078/hud/phone-table.png",
       "sha256": "2873c71e4f26ca01b1fe61d5ebddfa97113f72d5b9ae8429147106851b9d5dda",
@@ -587,7 +578,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/hud/results.json",
       "newPath": "docs/evidence/world/0078/hud/results.json",
       "sha256": "3aa9e6652ab0783742039352e8f50a922cf6f8690bff89c0ba0f4975325d3b4f",
@@ -596,7 +587,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/journey.config.ts",
       "newPath": "docs/evidence/world/0078/journey.config.ts",
       "sha256": "3c72962502de40a7387ce1e44c8947f9aecb1480e5c890d1d9542d23c5b10a79",
@@ -605,7 +596,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/journey.spec.ts",
       "newPath": "docs/evidence/world/0078/journey.spec.ts",
       "sha256": "a73ffca5c46b4032bafd23ca5eb87622648abbc8349201989f9501f338039664",
@@ -614,7 +605,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/local-artifacts.json",
       "newPath": "docs/evidence/world/0078/local-artifacts.json",
       "sha256": "d29b731388ced5aea8cccbdc79e393b8dbf695a19c90320259fe8d23149e0101",
@@ -623,7 +614,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/phone-world.png",
       "newPath": "docs/evidence/world/0078/phone-world.png",
       "sha256": "91f59211131eed3cbb094e7a398f33c6c38fa15fc8586d45399167dc996be85b",
@@ -632,16 +623,16 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/progress.md",
       "newPath": "docs/evidence/world/0078/progress.md",
-      "sha256": "c08b27be8acce79e095e6f89ad0adafe92bada1d4fe92760d2d671764ce1d21f",
-      "bytes": 7657,
+      "sha256": "61ef58e75f2d2740cc195a321086d76d5028d03869b1fabbbaca593d59c8687f",
+      "bytes": 9111,
       "mainOwnsOldPath": false
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/reduced-motion-clock.mjs",
       "newPath": "docs/evidence/world/0078/reduced-motion-clock.mjs",
       "sha256": "0995c73fa776a892b281ae83dffe6e68a5bc4168d6e8f6d597536e3e1022a35f",
@@ -650,7 +641,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/reduced-motion/before.json",
       "newPath": "docs/evidence/world/0078/reduced-motion/before.json",
       "sha256": "4a124fbbdd0e4597ffc8bda7a48ce1e3f3ea3154f222d62607a923b6b8b2e28e",
@@ -659,7 +650,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/reduced-motion/phone.png",
       "newPath": "docs/evidence/world/0078/reduced-motion/phone.png",
       "sha256": "3810bbd557fe1e330bea409e59d7906822708bb0b8b626a494c8457f330c3f92",
@@ -668,7 +659,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/reduced-motion/results.json",
       "newPath": "docs/evidence/world/0078/reduced-motion/results.json",
       "sha256": "741a359352887b36d65e368f254fa64e4d401eefc2ccb8fd2b9bad403a3de521",
@@ -677,16 +668,142 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/stair-traversal.mjs",
       "newPath": "docs/evidence/world/0078/stair-traversal.mjs",
-      "sha256": "5f2caf7d29268781c03d7fedacaaa7ef93aa7cc67718b2c9e8d2c5e3bbb3d97e",
-      "bytes": 6969,
+      "sha256": "8a2dadc5cc6fdddc4442ec62aa1b6a0aad5269b6cbf12bd677eb5e894dd41efa",
+      "bytes": 7671,
       "mainOwnsOldPath": false
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
+      "oldPath": "docs/evidence/0078/stair-traversal/apartment.png",
+      "newPath": "docs/evidence/world/0078/stair-traversal/apartment.png",
+      "sha256": "7dd542e1ab426f4ea700c10fa0c7440963d0c25dfba8375e89f9c3f709ea92a0",
+      "bytes": 70086,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0078",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
+      "oldPath": "docs/evidence/0078/stair-traversal/descent-hall.png",
+      "newPath": "docs/evidence/world/0078/stair-traversal/descent-hall.png",
+      "sha256": "746816927a58d77b15cbe3bf9b4f9081527ad11eb75f8b58194cf750b4ab9353",
+      "bytes": 46966,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0078",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
+      "oldPath": "docs/evidence/0078/stair-traversal/hall-landing.png",
+      "newPath": "docs/evidence/world/0078/stair-traversal/hall-landing.png",
+      "sha256": "c7059cb27b5dcc19ed8681b1462bfe06a6088fe17ce93193d9e61884dc705aca",
+      "bytes": 45301,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0078",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
+      "oldPath": "docs/evidence/0078/stair-traversal/home-landing.png",
+      "newPath": "docs/evidence/world/0078/stair-traversal/home-landing.png",
+      "sha256": "d323dfba1d8aef4516993dfe4e254c6166d720563a5b514e40209c7b31894eff",
+      "bytes": 52755,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0078",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
+      "oldPath": "docs/evidence/0078/stair-traversal/lower-flight.png",
+      "newPath": "docs/evidence/world/0078/stair-traversal/lower-flight.png",
+      "sha256": "36945b5c7b6f7338d5115f8827cb67f3c45c14fcf52e7017debe4494db8de102",
+      "bytes": 51754,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0078",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
+      "oldPath": "docs/evidence/0078/stair-traversal/page@7568ceee5732a1c0ab6a3c0fc401a50e.webm",
+      "newPath": "docs/evidence/world/0078/stair-traversal/page@7568ceee5732a1c0ab6a3c0fc401a50e.webm",
+      "sha256": "bbed5e04ee8595c7676c3c7ea4d36cd1633e370dfc7cea2f2ea00b30caa3b247",
+      "bytes": 924221,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0078",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
+      "oldPath": "docs/evidence/0078/stair-traversal/page@7c012139081a8c899fc1712f3440e74f.webm",
+      "newPath": "docs/evidence/world/0078/stair-traversal/page@7c012139081a8c899fc1712f3440e74f.webm",
+      "sha256": "7698721782966c1a24bb4d822fdca72a2f25bac55e83f374fcab4314b33c30d4",
+      "bytes": 2335541,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0078",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
+      "oldPath": "docs/evidence/0078/stair-traversal/page@beac87b36d2a5212c7eceefbdb8862c3.webm",
+      "newPath": "docs/evidence/world/0078/stair-traversal/page@beac87b36d2a5212c7eceefbdb8862c3.webm",
+      "sha256": "944413d1d95da5ac939ca249a53689a8f1aa4616074aed704b5c32334b1adafa",
+      "bytes": 5572272,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0078",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
+      "oldPath": "docs/evidence/0078/stair-traversal/results.json",
+      "newPath": "docs/evidence/world/0078/stair-traversal/results.json",
+      "sha256": "ff1e13de97c8deb5bb6a3386788f46874d3f03ac1070a25c069de9c264b4cd25",
+      "bytes": 218877,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0078",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
+      "oldPath": "docs/evidence/0078/stair-traversal/roof-landing.png",
+      "newPath": "docs/evidence/world/0078/stair-traversal/roof-landing.png",
+      "sha256": "c1bb6bc3cba8d594f74f5958aad668eb03dae29b0fe225826ca5048b846ddc07",
+      "bytes": 38795,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0078",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
+      "oldPath": "docs/evidence/0078/stair-traversal/rooftop.png",
+      "newPath": "docs/evidence/world/0078/stair-traversal/rooftop.png",
+      "sha256": "2738f05e00a35c4de2192f60f561c9cbd9df9564a5bfa6a69ab2134b17e03d21",
+      "bytes": 50034,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0078",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
+      "oldPath": "docs/evidence/0078/stair-traversal/stalled.json",
+      "newPath": "docs/evidence/world/0078/stair-traversal/stalled.json",
+      "sha256": "5adcd431569435175a023bea7ba62a7e4f98492b1e9d2e1863315aaf636da1e2",
+      "bytes": 1307,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0078",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
+      "oldPath": "docs/evidence/0078/stair-traversal/stalled.png",
+      "newPath": "docs/evidence/world/0078/stair-traversal/stalled.png",
+      "sha256": "48eef9cdce5c235137004687ab5ad03825d3e1bcc08ea7dac1e60e33771467d5",
+      "bytes": 53858,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0078",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
+      "oldPath": "docs/evidence/0078/stair-traversal/upper-flight.png",
+      "newPath": "docs/evidence/world/0078/stair-traversal/upper-flight.png",
+      "sha256": "269a50dce2a3a4682ec384b7109445291300c642fc397c0f6844b116f914dee4",
+      "bytes": 53400,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0078",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/state-inspect.mjs",
       "newPath": "docs/evidence/world/0078/state-inspect.mjs",
       "sha256": "69d109f1a857a79ef6667f931654691566cc23526fb58ea82d8bfc96878ca2dd",
@@ -695,7 +812,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/video/page@49814e69ba0c0c503880b63affafdbff.webm",
       "newPath": "docs/evidence/world/0078/video/page@49814e69ba0c0c503880b63affafdbff.webm",
       "sha256": "4dde75e6847a1f4bba35dd38abe32501121545b79333566d45946d6ffe577e61",
@@ -704,7 +821,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/video/page@507e2cb9ca10d7b699c3682831f4d5a6.webm",
       "newPath": "docs/evidence/world/0078/video/page@507e2cb9ca10d7b699c3682831f4d5a6.webm",
       "sha256": "8842c5656a34f9628b167bfe1e8b8a9fc0aeb5e14c870bc1f0238f9967d9d940",
@@ -713,7 +830,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/video/page@e53e626bb3cb79f8f97a837e52125376.webm",
       "newPath": "docs/evidence/world/0078/video/page@e53e626bb3cb79f8f97a837e52125376.webm",
       "sha256": "b86cafc8ad9299c5a1101db2773aab1c5d32c27fddc4e6aff524d3a53862f36a",
@@ -722,7 +839,7 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/video/page@faed3934bf63db372a2886fa58eb2ae3.webm",
       "newPath": "docs/evidence/world/0078/video/page@faed3934bf63db372a2886fa58eb2ae3.webm",
       "sha256": "17bb8d5d10738bd9b5993d503a74f4e9947918565d366f98c72d5e4bc6e7c87a",
@@ -731,20 +848,11 @@
     },
     {
       "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
       "oldPath": "docs/evidence/0078/viewport-proof.json",
       "newPath": "docs/evidence/world/0078/viewport-proof.json",
       "sha256": "60110bba6b8f3cb0bb82a6c61a2616b5dcb34443b1529d5d4c9e7a4f7022a58a",
       "bytes": 7740,
-      "mainOwnsOldPath": false
-    },
-    {
-      "owner": "0078",
-      "sourceHead": "e48b10ed13427ff45d528edd8484a4a49ec537e8",
-      "oldPath": "docs/tickets/0078-world-foundation.md",
-      "newPath": "docs/tickets/world/0078-world-foundation.md",
-      "sha256": "8d9c616d7ce9ae6233bbf88ce7d1bcb69033918f1750cf8144b45358e26ccd70",
-      "bytes": 1674,
       "mainOwnsOldPath": false
     },
     {
@@ -1483,15 +1591,6 @@
       "newPath": "docs/evidence/world/0079/verification.json",
       "sha256": "184876d480e8db59092d6e92d58dcf1d39474c4d96b45108302c769bac6cbaf1",
       "bytes": 2551,
-      "mainOwnsOldPath": false
-    },
-    {
-      "owner": "0079",
-      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
-      "oldPath": "docs/tickets/0079-town-street.md",
-      "newPath": "docs/tickets/world/0079-town-street.md",
-      "sha256": "aede72d8f0bd4dde27ab074837d1fcbe888ca4dc550db4646e79bc44a1c81a8f",
-      "bytes": 1309,
       "mainOwnsOldPath": false
     },
     {
@@ -2917,15 +3016,6 @@
       "mainOwnsOldPath": false
     },
     {
-      "owner": "0080",
-      "sourceHead": "2851a2fb044d952c753305df3c822f23f42f3de1",
-      "oldPath": "docs/tickets/0080-courtyard.md",
-      "newPath": "docs/tickets/world/0080-courtyard.md",
-      "sha256": "958b3bd326a73e27ca166228550331e4cba2574e1593b5eb78ff018ade6f51ab",
-      "bytes": 4228,
-      "mainOwnsOldPath": false
-    },
-    {
       "owner": "0081",
       "sourceHead": "bafbbfd2b58d6b0102883002bcd777ffb4830722",
       "oldPath": "docs/evidence/0081/.gitignore",
@@ -3724,15 +3814,6 @@
       "newPath": "docs/evidence/world/0081/traverse.mjs",
       "sha256": "fad2ff81dd7a3a68061f30d97361c12023a1917c4dd10b13c465d8e9b6b1e16e",
       "bytes": 3115,
-      "mainOwnsOldPath": false
-    },
-    {
-      "owner": "0081",
-      "sourceHead": "bafbbfd2b58d6b0102883002bcd777ffb4830722",
-      "oldPath": "docs/tickets/0081-residential.md",
-      "newPath": "docs/tickets/world/0081-residential.md",
-      "sha256": "c1aceb200cca205c1ab5cabcf31d2797523fdf759635affe515c29392a75032b",
-      "bytes": 1231,
       "mainOwnsOldPath": false
     },
     {
@@ -4849,15 +4930,6 @@
       "newPath": "docs/evidence/world/0082/waypoint-reproduction.json",
       "sha256": "59104a709c1531e469059ee641260419c2711fdb0adfaee680f9830487026c7f",
       "bytes": 2344,
-      "mainOwnsOldPath": false
-    },
-    {
-      "owner": "0082",
-      "sourceHead": "24d5f9368806ae26e8741740d8a447713d51e21a",
-      "oldPath": "docs/tickets/0082-workshop.md",
-      "newPath": "docs/tickets/world/0082-workshop.md",
-      "sha256": "40408853cbd284c27a36aa0d0fa2bb03a0d1d75bc12e4ae47d2fa92d8e21fbfc",
-      "bytes": 2618,
       "mainOwnsOldPath": false
     },
     {
@@ -6046,15 +6118,6 @@
       "newPath": "docs/evidence/world/0083/walk-proof.mjs",
       "sha256": "01279305c7c1db2a6f50d4f6f52c97700c34f83de86f1e854e1f269648c4c737",
       "bytes": 8034,
-      "mainOwnsOldPath": false
-    },
-    {
-      "owner": "0083",
-      "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
-      "oldPath": "docs/tickets/0083-rooftop.md",
-      "newPath": "docs/tickets/world/0083-rooftop.md",
-      "sha256": "036eff51157b702ea85c4d0335460e795a74caa2cb574bbef06208d7c161dc02",
-      "bytes": 3289,
       "mainOwnsOldPath": false
     },
     {
@@ -7363,15 +7426,6 @@
       "mainOwnsOldPath": false
     },
     {
-      "owner": "0084",
-      "sourceHead": "94d7ec4c4385c355e3654feefd0cb82be419191b",
-      "oldPath": "docs/tickets/0084-landscape.md",
-      "newPath": "docs/tickets/world/0084-landscape.md",
-      "sha256": "6aa119938d27ac4485b6a9ba4ebd0430db4770b62ead9d9cbdc829c28db1fffa",
-      "bytes": 1352,
-      "mainOwnsOldPath": false
-    },
-    {
       "owner": "0085",
       "sourceHead": "28025759b823fea953bb5b4dcb5b43ee9f22e7c9",
       "oldPath": "docs/evidence/0085/README.md",
@@ -7972,15 +8026,6 @@
       "newPath": "docs/evidence/world/0085/seat-contract.md",
       "sha256": "6c32cb2f8d95ffda700282d189bf18109546c99433bba0a8a5bb079a7b95bc6b",
       "bytes": 3104,
-      "mainOwnsOldPath": false
-    },
-    {
-      "owner": "0085",
-      "sourceHead": "28025759b823fea953bb5b4dcb5b43ee9f22e7c9",
-      "oldPath": "docs/tickets/0085-characters.md",
-      "newPath": "docs/tickets/world/0085-characters.md",
-      "sha256": "62c96b4cbb526441ffced36c00a84b0ed8bcec27de24341398331f53491ed9c0",
-      "bytes": 8988,
       "mainOwnsOldPath": false
     },
     {
@@ -9550,15 +9595,6 @@
       "mainOwnsOldPath": false
     },
     {
-      "owner": "0086",
-      "sourceHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
-      "oldPath": "docs/tickets/0086-atmosphere.md",
-      "newPath": "docs/tickets/world/0086-atmosphere.md",
-      "sha256": "5e602825dfed75627260e829aa4ac395c07b4630fd1ded4c8e6d982de884838e",
-      "bytes": 2191,
-      "mainOwnsOldPath": false
-    },
-    {
       "owner": "0087",
       "sourceHead": "6858644ace1a3ae16d30f87d4826d3e10d924e28",
       "oldPath": "docs/evidence/0087/decisions.tsv",
@@ -9709,15 +9745,6 @@
       "newPath": "docs/evidence/world/0087/verification.md",
       "sha256": "dd9c914306d2529a1f925b2037a432eac5f072fffc267e3b7974e7461731c471",
       "bytes": 3411,
-      "mainOwnsOldPath": false
-    },
-    {
-      "owner": "0087",
-      "sourceHead": "6858644ace1a3ae16d30f87d4826d3e10d924e28",
-      "oldPath": "docs/tickets/0087-world-life.md",
-      "newPath": "docs/tickets/world/0087-world-life.md",
-      "sha256": "00f019b41719495eefb63a3a24a127181cf21e0829c4a10ba4158e9140680191",
-      "bytes": 2717,
       "mainOwnsOldPath": false
     },
     {
@@ -14302,15 +14329,6 @@
       "mainOwnsOldPath": false
     },
     {
-      "owner": "0088",
-      "sourceHead": "422fd99948cb085fa1a875ce82ae6786700be6e7",
-      "oldPath": "docs/tickets/0088-world-review.md",
-      "newPath": "docs/tickets/world/0088-world-review.md",
-      "sha256": "2ced98b63247388068c6ae7e83b1a9a43c19b56cef8af4f9cfcfe2d4660a3810",
-      "bytes": 2206,
-      "mainOwnsOldPath": false
-    },
-    {
       "owner": "0089",
       "sourceHead": "4ed9d98fae1b0a7aa340e55360dac3111176c1f6",
       "oldPath": "docs/evidence/0089/.gitignore",
@@ -14695,15 +14713,6 @@
       "newPath": "docs/evidence/world/0089/seat-study.md",
       "sha256": "edf69367d8df2a328a9943ab5cd6de18eccd48fb146c735cd9f32d3faf26c84c",
       "bytes": 6170,
-      "mainOwnsOldPath": false
-    },
-    {
-      "owner": "0089",
-      "sourceHead": "4ed9d98fae1b0a7aa340e55360dac3111176c1f6",
-      "oldPath": "docs/tickets/0089-restaurant-world-art.md",
-      "newPath": "docs/tickets/world/0089-restaurant-world-art.md",
-      "sha256": "811d0901653b93c7e771008b091543811d386eeeb2fedecc517121758252292c",
-      "bytes": 2669,
       "mainOwnsOldPath": false
     },
     {
@@ -15175,6 +15184,123 @@
       "mainOwnsOldPath": false
     },
     {
+      "owner": "0077",
+      "sourceHead": "9b17f56b67316b108a0ecd869fe4b660b4526fb0",
+      "oldPath": "docs/tickets/0077-world-program.md",
+      "newPath": "docs/tickets/world/0077-world-program.md",
+      "sha256": "da347dfbcb12c6eaab4da79ba71c572cdbbb892bfa78568115c961c7d24b3a8c",
+      "bytes": 735,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0078",
+      "sourceHead": "16ffc8061102eb598f2a1e6fc5382e6c4cde3be2",
+      "oldPath": "docs/tickets/0078-world-foundation.md",
+      "newPath": "docs/tickets/world/0078-world-foundation.md",
+      "sha256": "8d9c616d7ce9ae6233bbf88ce7d1bcb69033918f1750cf8144b45358e26ccd70",
+      "bytes": 1674,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0079",
+      "sourceHead": "c027b547e75b24aa4822f56910723be3bafe300d",
+      "oldPath": "docs/tickets/0079-town-street.md",
+      "newPath": "docs/tickets/world/0079-town-street.md",
+      "sha256": "aede72d8f0bd4dde27ab074837d1fcbe888ca4dc550db4646e79bc44a1c81a8f",
+      "bytes": 1309,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0080",
+      "sourceHead": "2851a2fb044d952c753305df3c822f23f42f3de1",
+      "oldPath": "docs/tickets/0080-courtyard.md",
+      "newPath": "docs/tickets/world/0080-courtyard.md",
+      "sha256": "958b3bd326a73e27ca166228550331e4cba2574e1593b5eb78ff018ade6f51ab",
+      "bytes": 4228,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0081",
+      "sourceHead": "bafbbfd2b58d6b0102883002bcd777ffb4830722",
+      "oldPath": "docs/tickets/0081-residential.md",
+      "newPath": "docs/tickets/world/0081-residential.md",
+      "sha256": "c1aceb200cca205c1ab5cabcf31d2797523fdf759635affe515c29392a75032b",
+      "bytes": 1231,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0082",
+      "sourceHead": "24d5f9368806ae26e8741740d8a447713d51e21a",
+      "oldPath": "docs/tickets/0082-workshop.md",
+      "newPath": "docs/tickets/world/0082-workshop.md",
+      "sha256": "40408853cbd284c27a36aa0d0fa2bb03a0d1d75bc12e4ae47d2fa92d8e21fbfc",
+      "bytes": 2618,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0083",
+      "sourceHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+      "oldPath": "docs/tickets/0083-rooftop.md",
+      "newPath": "docs/tickets/world/0083-rooftop.md",
+      "sha256": "036eff51157b702ea85c4d0335460e795a74caa2cb574bbef06208d7c161dc02",
+      "bytes": 3289,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0084",
+      "sourceHead": "94d7ec4c4385c355e3654feefd0cb82be419191b",
+      "oldPath": "docs/tickets/0084-landscape.md",
+      "newPath": "docs/tickets/world/0084-landscape.md",
+      "sha256": "6aa119938d27ac4485b6a9ba4ebd0430db4770b62ead9d9cbdc829c28db1fffa",
+      "bytes": 1352,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0085",
+      "sourceHead": "28025759b823fea953bb5b4dcb5b43ee9f22e7c9",
+      "oldPath": "docs/tickets/0085-characters.md",
+      "newPath": "docs/tickets/world/0085-characters.md",
+      "sha256": "62c96b4cbb526441ffced36c00a84b0ed8bcec27de24341398331f53491ed9c0",
+      "bytes": 8988,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0086",
+      "sourceHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "oldPath": "docs/tickets/0086-atmosphere.md",
+      "newPath": "docs/tickets/world/0086-atmosphere.md",
+      "sha256": "5e602825dfed75627260e829aa4ac395c07b4630fd1ded4c8e6d982de884838e",
+      "bytes": 2191,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0087",
+      "sourceHead": "6858644ace1a3ae16d30f87d4826d3e10d924e28",
+      "oldPath": "docs/tickets/0087-world-life.md",
+      "newPath": "docs/tickets/world/0087-world-life.md",
+      "sha256": "00f019b41719495eefb63a3a24a127181cf21e0829c4a10ba4158e9140680191",
+      "bytes": 2717,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0088",
+      "sourceHead": "422fd99948cb085fa1a875ce82ae6786700be6e7",
+      "oldPath": "docs/tickets/0088-world-review.md",
+      "newPath": "docs/tickets/world/0088-world-review.md",
+      "sha256": "2ced98b63247388068c6ae7e83b1a9a43c19b56cef8af4f9cfcfe2d4660a3810",
+      "bytes": 2206,
+      "mainOwnsOldPath": false
+    },
+    {
+      "owner": "0089",
+      "sourceHead": "4ed9d98fae1b0a7aa340e55360dac3111176c1f6",
+      "oldPath": "docs/tickets/0089-restaurant-world-art.md",
+      "newPath": "docs/tickets/world/0089-restaurant-world-art.md",
+      "sha256": "811d0901653b93c7e771008b091543811d386eeeb2fedecc517121758252292c",
+      "bytes": 2669,
+      "mainOwnsOldPath": false
+    },
+    {
       "owner": "0090",
       "sourceHead": "70148ab89b15ee7153bef7e2e77ab25b71431482",
       "oldPath": "docs/tickets/0090-contextual-world-ui.md",
@@ -15185,6 +15311,1538 @@
     }
   ],
   "protectedMainFiles": [
+    {
+      "path": "docs/evidence/0058/asr/asr-results.json",
+      "sha256": "769e655835f393e07b11576cdab3a7a5e07800af99dee77f0ed05bb5fbf736b4"
+    },
+    {
+      "path": "docs/evidence/0058/asr/transcribe-local.py",
+      "sha256": "a9e04837151341fd85888a3d6df6f73a33c10cbe16bab7cae2fb6104dfcfe6e6"
+    },
+    {
+      "path": "docs/evidence/0058/doctor-voice.md",
+      "sha256": "2283b2458491729a893f078f35371bb915eaaea45ba2d7101df3d8e8efcdc25a"
+    },
+    {
+      "path": "docs/evidence/0058/prepare-auditions.py",
+      "sha256": "f2114a868df0ed17e81e82c6ee4d69ed2125f9f1275e428e8e928912fdf95c96"
+    },
+    {
+      "path": "docs/evidence/0058/prepare-supported-auditions.py",
+      "sha256": "74b2b3fb2509c5ea2f62332ea59ef3270c38404faa034423ad54f3bed326b7fd"
+    },
+    {
+      "path": "docs/evidence/0058/screenshots/desktop-opening-01-say-en.png",
+      "sha256": "f5834191fae68d0f0c7765e259a9eb3f9735a302a6cd544121b61b748768ea5c"
+    },
+    {
+      "path": "docs/evidence/0058/screenshots/desktop-opening-05-say.png",
+      "sha256": "4c5fdab8a291b0ef739ffe031e3733966d673fb44e3c39753a6f640907377b6f"
+    },
+    {
+      "path": "docs/evidence/0058/screenshots/desktop-reduced-journal.png",
+      "sha256": "38e420f84ccb21ed7640225f8a04b238395d09339effdb7e2ffe4f2258cd8d9b"
+    },
+    {
+      "path": "docs/evidence/0058/screenshots/desktop-reduced-opening-01-say-en.png",
+      "sha256": "3ce62a8f3970ccc1de4e5a3a786385c64c647ad4d2ac2025f323fa7ccaa9c57f"
+    },
+    {
+      "path": "docs/evidence/0058/screenshots/phone-opening-01-say-en.png",
+      "sha256": "f38e22216200f8740bcd009bdf236be14ab57c9ddbcf81d9c8f8c33076dc3b75"
+    },
+    {
+      "path": "docs/evidence/0058/screenshots/phone-opening-05-say.png",
+      "sha256": "04e9bdba16c25187d2111072333ea0782b4f87cc50f8a968d5a109e43725de5c"
+    },
+    {
+      "path": "docs/evidence/0058/screenshots/phone-reduced-journal.png",
+      "sha256": "be87fc16c9a8ffe99cdfe8b442f3331ae0aff0df5d4d4f8d2dc05e49d3127f58"
+    },
+    {
+      "path": "docs/evidence/0058/screenshots/phone-reduced-opening-01-say-en.png",
+      "sha256": "b5b3667794b52ce10fd69d45dedd0ac09ffc8e4ea15c251fbfde64fe1d363980"
+    },
+    {
+      "path": "docs/evidence/0058/verification.md",
+      "sha256": "c04399a9abbe206162f30850a23645e3a837b89ec33eafe89ec12c64aa81606a"
+    },
+    {
+      "path": "docs/evidence/0059-ward-scene-flicker.md",
+      "sha256": "2595406ad6cb95b17127d84b04310638973d06f750cd7221dc2a85f856e76b14"
+    },
+    {
+      "path": "docs/evidence/0059/after-desktop-no-preference.mp4",
+      "sha256": "47d1822345d661578ed34eef32d36a1f417ececb6536777797ed797c7f77a1c7"
+    },
+    {
+      "path": "docs/evidence/0059/after-desktop-no-preference.png",
+      "sha256": "c7f90e71b9e92076a04e988fd4e266827fa87cbef026732c0e0c751beab69bcb"
+    },
+    {
+      "path": "docs/evidence/0059/after-desktop-reduce.mp4",
+      "sha256": "f8d17156d6397b79e4dec13324773a22f650e6c913886a6ed28e52e4a618049c"
+    },
+    {
+      "path": "docs/evidence/0059/after-desktop-reduce.png",
+      "sha256": "e8952df8994c63606e19cbdc1ecc7b379a488eb05359ede8bf9ee3c8ab38effe"
+    },
+    {
+      "path": "docs/evidence/0059/after-desktop-video-frames.png",
+      "sha256": "a4b372e42f28c1e56081cd9a725a64774eeb319ccfc42a19c68498c4b7296d8a"
+    },
+    {
+      "path": "docs/evidence/0059/after-phone-no-preference.mp4",
+      "sha256": "00f1efc39e157d509cb8a9aa039e6bd57d230907e068ffc56bda70b2bee98dd8"
+    },
+    {
+      "path": "docs/evidence/0059/after-phone-no-preference.png",
+      "sha256": "71fba68f49ceb68d63bc0a902e9e7252e3dfd4735374b01d8e294417b77c7349"
+    },
+    {
+      "path": "docs/evidence/0059/after-phone-reduce.mp4",
+      "sha256": "929a263d8aac0b79bdcde0c4d6d6a2254375a34f50feea6a81d555b4fe99ebab"
+    },
+    {
+      "path": "docs/evidence/0059/after-phone-reduce.png",
+      "sha256": "ecdd8e71b8392420339669ba0fe7ad4b174945644876d706a16e1b6cb099cb8c"
+    },
+    {
+      "path": "docs/evidence/0059/after-phone-video-frames.png",
+      "sha256": "e9d86a01012958f709b5d1bc002815888bd9a4a44fae68b213e4e14c12c0bd54"
+    },
+    {
+      "path": "docs/evidence/0059/before-desktop-no-preference.mp4",
+      "sha256": "92fc29e4b647171aa053377fbf6da3a98e906343de683c1f17a2c322e500d9d9"
+    },
+    {
+      "path": "docs/evidence/0059/before-desktop-no-preference.png",
+      "sha256": "c6e26cc6e3a9f6fbf078a7d2df1ea4a2dd751e9c9a23317cd26614fdc8c57d96"
+    },
+    {
+      "path": "docs/evidence/0059/before-desktop-reduce.mp4",
+      "sha256": "66991d8a38491e364b40d534544a65ca8c6ab683198edfb40c64096902414c58"
+    },
+    {
+      "path": "docs/evidence/0059/before-desktop-reduce.png",
+      "sha256": "e8952df8994c63606e19cbdc1ecc7b379a488eb05359ede8bf9ee3c8ab38effe"
+    },
+    {
+      "path": "docs/evidence/0059/before-desktop-video-frames.png",
+      "sha256": "ce45b5f5354a19b07988fb74c678d0887d96f22f0b06e973c173a8ec60520f3a"
+    },
+    {
+      "path": "docs/evidence/0059/before-phone-no-preference.mp4",
+      "sha256": "c84ab4dd83998d1d3e5830161865fbb7e4ac60d79fb17d50163b9377b79fa8d8"
+    },
+    {
+      "path": "docs/evidence/0059/before-phone-no-preference.png",
+      "sha256": "642c1e4b3ee6a265281440b40a2d64c3efa2c5464b55d775afdf63c2fec574ab"
+    },
+    {
+      "path": "docs/evidence/0059/before-phone-reduce.mp4",
+      "sha256": "8d987bd0fced1644559f028426c951f036cfebc7eaa1bea1640908f0f1f5dd2d"
+    },
+    {
+      "path": "docs/evidence/0059/before-phone-reduce.png",
+      "sha256": "ecdd8e71b8392420339669ba0fe7ad4b174945644876d706a16e1b6cb099cb8c"
+    },
+    {
+      "path": "docs/evidence/0059/before-phone-video-frames.png",
+      "sha256": "7d875459028695f8b1d994fb9a1922a3d65a76197a363bbf912bd0c7c6172531"
+    },
+    {
+      "path": "docs/evidence/0059/face-comparison.png",
+      "sha256": "faabe7f6d4093daec3f048ba11edc2df9e83a305aad609a1e32317c5ec149a92"
+    },
+    {
+      "path": "docs/evidence/0059/frame-proof.json",
+      "sha256": "9aae2c97c432abc0b5c775459fedefcc480ca74e6ef4764e635d797436c8e503"
+    },
+    {
+      "path": "docs/evidence/0059/journey-desktop-journal.png",
+      "sha256": "ba983420043337b792b15baa110ac820da820e50406e71d2d4426f279e816d02"
+    },
+    {
+      "path": "docs/evidence/0059/journey-desktop-restaurant.png",
+      "sha256": "815aaa51010601fb8e6c659a86c59711ea62518cb4dfb7d990d858c4ca6b4095"
+    },
+    {
+      "path": "docs/evidence/0059/journey-phone-journal.png",
+      "sha256": "be87fc16c9a8ffe99cdfe8b442f3331ae0aff0df5d4d4f8d2dc05e49d3127f58"
+    },
+    {
+      "path": "docs/evidence/0059/journey-phone-restaurant.png",
+      "sha256": "5ae8f729ad7f3559f7145f28238d5eaa0132ab565d06d1b3e28d928ade4d10f8"
+    },
+    {
+      "path": "docs/evidence/0060-final-import.md",
+      "sha256": "c48d8646a9fb9334f81615440ee4efe7eef2730ae98d4e170589b0b92dfbdf7c"
+    },
+    {
+      "path": "docs/evidence/0060-grandpa-1b7-handoff.md",
+      "sha256": "7ce1e594028fc9e3d730d85aef9c724a847a99bb2cc956b176d05a9be6cd5a88"
+    },
+    {
+      "path": "docs/evidence/0060-grandpa-performance.md",
+      "sha256": "93048e3469aadbbc5f1a941dbc364ad0150121f4f755422556dfedca1d700d80"
+    },
+    {
+      "path": "docs/evidence/0060/baseline-desktop-milk-thanks.png",
+      "sha256": "04b4ccb7a29a878da14653e7916c17bd70de375e3286575c604ea27d295ac190"
+    },
+    {
+      "path": "docs/evidence/0060/baseline-phone-egg-thanks.png",
+      "sha256": "e1412dc9521ab7169125cf35219198b48ff578dca35db6cb1c672e220703a6b3"
+    },
+    {
+      "path": "docs/evidence/0060/candidate-desktop-milk-thanks.png",
+      "sha256": "b437b6ef0729a4fe1b318235e70800f2eced20c6b18478ae10d1ade3374a06e1"
+    },
+    {
+      "path": "docs/evidence/0060/candidate-phone-egg-thanks.png",
+      "sha256": "6bc43ca36b47decd1bc1467c8a38feb7f137e328d2505c8e91146c39f3494377"
+    },
+    {
+      "path": "docs/evidence/0060/candidate-phone-reduced-milk-wrong.png",
+      "sha256": "d5bfe976a4278d796456ca50a45bd5ddfd217cf5bb53bf431191b400dd87c97c"
+    },
+    {
+      "path": "docs/evidence/0060/final-desktop-milk-thanks.png",
+      "sha256": "c242a0b24edfa94b7afec6b308fc821768b026478ae9626e888dddfeb9cdebed"
+    },
+    {
+      "path": "docs/evidence/0060/final-desktop-silent.webm",
+      "sha256": "6d17936281f2f41f1b02d7ff88ee5959102164738aefd11e1113c57518728be1"
+    },
+    {
+      "path": "docs/evidence/0060/final-offline-phone-journal.png",
+      "sha256": "b3dd0dba80f8c3e4de312091a5b5e180635dc1d93faa3591189e82a70a742035"
+    },
+    {
+      "path": "docs/evidence/0060/final-phone-egg-thanks.png",
+      "sha256": "578662c43c18dc6227b6347a21c4e61560b4f4a6aa248ba5c8264cf56c51275f"
+    },
+    {
+      "path": "docs/evidence/0060/final-phone-reduced-milk-wrong.png",
+      "sha256": "d5bfe976a4278d796456ca50a45bd5ddfd217cf5bb53bf431191b400dd87c97c"
+    },
+    {
+      "path": "docs/evidence/0060/final-video-samples.png",
+      "sha256": "654b5e08a1afb81b00be201be3cbb8d2be5fd00c6c9b1f348220b2e6b5b36021"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/README.md",
+      "sha256": "8d5dbb2971d3e9dacf705906940da779e36fe44c36c12de354429d336c07919b"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/asr-final.json",
+      "sha256": "55682076002319fed36ec90bbac388d6f48d710e95388bd8a0c2ddc4af87d86a"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/inventory.json",
+      "sha256": "0699c3302619de2ed0e9c1bb31dce2f46b23b0902df0dd442f0cef0069ae2c80"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/junyan-grandpa-final-egg-transcribe.py",
+      "sha256": "c5aacf52ee54b207dab000ce409a1e310257bf657a0f630d833bb7d3d40d3552"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/junyan-grandpa-full-transcribe.py",
+      "sha256": "daafaf94bf01e2a25960f518f69e78af33b3193e79880dbb4b6a1b5551c53048"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/junyan-retake-grandpa-wrong-egg.py",
+      "sha256": "68047e64ad914b5eb33f300d571c5c10537dc14feefc3c6cb9085fea87aea101"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/junyan-retake-grandpa.py",
+      "sha256": "e180540e044b661b59591f823b698fe81ac3f50544d6a43b344f2dfe20415024"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/line-2cefc3fe62be59203c6ef07c91f4342efc18641473fa68dacd7f54f31a90aa1b.wav",
+      "sha256": "c711c6bec0097b01d74d90839a4d6c29a8790647bbd3afeec280774ad75a3909"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/line-60ee82fdaf489803f5b64b4578ec054294c5b240d1f13d1c4c485ebbfde4b834.wav",
+      "sha256": "5575c662f354cc96d3a3296635168beaf33160bfee1f1bec9a2b76dbc41971bf"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/line-781984e84c2d96144788e190c7527bab41486694e474141d82437bcb01f377ca.wav",
+      "sha256": "e0364b994ac41c066c9ca17721a0f09315b2ecf0b0f7c5b3aea03c69ae0a7037"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/line-aa4ed24a26a593973279ebe664cfff1b1241682cf17d0e2fee03508224ecde88.wav",
+      "sha256": "bad3e4e2d9c83246b6ac71672339b6d472cd38e5062b78043d6332ae123b219f"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/line-e756047972fc829165e2ca4f0f9f13c40c1b02f8dc94e8116180e111a396816c.wav",
+      "sha256": "37f62966310a6627956505404ceab7ff5697c2101e2af2e432b6c274a626d1cd"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/line-f8c7a10d6944e2c84304d52a08300578d078efc600b295e85527303f6a5b7292.wav",
+      "sha256": "dd2dd017bb62acee753d73678219a548e4bc131f6f94b379d9a6191ed5c05cc4"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/manifest-entries.json",
+      "sha256": "130707bc87c242e21981f1a5040b7485194197a92543cef248f09b5a162a6de2"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/preset.json",
+      "sha256": "9b809cab586e3f494441b5c434216173da7d23496347ac95b493db51101a8c18"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/rejected-first-takes/asr-beam5-results.json",
+      "sha256": "aad1f0eb010c7c3b7d1a50946347ed577ed597f80158372b539779fda374b78a"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/rejected-first-takes/asr-results.json",
+      "sha256": "3fa9a1114ece973f5ee43e923d8921fbdd74f0991319729e2b17c1fbf2dbb16d"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/rejected-first-takes/manifest.json",
+      "sha256": "5959d607d795421c3a63ea257ef156b883352f1655f9ff41edf45f6b10469df8"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/rejected-second-wrong-egg/asr-beam5-results.json",
+      "sha256": "aad1f0eb010c7c3b7d1a50946347ed577ed597f80158372b539779fda374b78a"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/rejected-second-wrong-egg/asr-results.json",
+      "sha256": "ec675adbb70b8b266ffd3a451bdc2e147a9f90697920aa9de4e114e65bf9d3e4"
+    },
+    {
+      "path": "docs/evidence/0060/neutral-candidate/rejected-second-wrong-egg/manifest.json",
+      "sha256": "bd2d952447a68b8e4a2767f449b4f1cf0d373d8a3419a92cefba5515bd7f862c"
+    },
+    {
+      "path": "docs/evidence/0060/selected-A-final/README.md",
+      "sha256": "aca16ab9082fe81b71a37d8c456253467563d8ffcb6d9025469d9683548f09c4"
+    },
+    {
+      "path": "docs/evidence/0060/selected-A-final/desktop-journal.png",
+      "sha256": "b53235a978da52cae97a66ea99f1c7aaf3cb714f265ad87a3511a1c8e4eeec49"
+    },
+    {
+      "path": "docs/evidence/0060/selected-A-final/phone-reduced-journal.png",
+      "sha256": "f020228aa09c3f7399cf96851cbcf93da4693b42651c8f0389aa1623616574c6"
+    },
+    {
+      "path": "docs/evidence/0060/selected-A-final/selected-A-capture-console.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "docs/evidence/0060/selected-A-final/selected-A-desktop-milk-thanks.png",
+      "sha256": "bbc3f2bb3464cc05c002560a635b67024b1a42b1001965a6bccfa2e89abd2f5a"
+    },
+    {
+      "path": "docs/evidence/0060/selected-A-final/selected-A-desktop-reduced-milk-request.png",
+      "sha256": "ee346d8edc3137bd4ac38cc6b30c39fb8161dc1ddaf1e74fcb8bb6d89fb6a463"
+    },
+    {
+      "path": "docs/evidence/0060/selected-A-final/selected-A-offline-phone-journal.png",
+      "sha256": "208884f43110cb663a8c6e8c6b85b6d02450e349fc367f0dd135c71b16291a7f"
+    },
+    {
+      "path": "docs/evidence/0060/selected-A-final/selected-A-offline-result.json",
+      "sha256": "ffcb2b07378b189fe77658d485ae38a59bbf8ea2ee09ca1b0c4bd1585c330c17"
+    },
+    {
+      "path": "docs/evidence/0060/selected-A-final/selected-A-phone-egg-thanks.png",
+      "sha256": "7d90233f5784933a88a897dfa0f7998d2e20ef94b359484add07687858d87614"
+    },
+    {
+      "path": "docs/evidence/0060/selected-A-final/selected-A-phone-reduced-egg-wrong.png",
+      "sha256": "c1591af0ed4283c42ceba278fd49efea477645e7bc5af3934e10388ba699f20b"
+    },
+    {
+      "path": "docs/evidence/0060/selected-A-final/selected-A-replay-result.json",
+      "sha256": "3870dcefb16830ce6f22849a4b976d8bba845fc6d15eee3f69215b742cb6c5f8"
+    },
+    {
+      "path": "docs/evidence/0060/selected-A-final/selected-A-scene-with-sound.webm",
+      "sha256": "8c8546125450a555c6ddb5647ba08e93d28665bc90b29b0bf2553f1b41be6526"
+    },
+    {
+      "path": "docs/evidence/0060/selected-A-final/selected-A-video-samples.png",
+      "sha256": "7351fc2c0febbe06db94873f4fcaf5a65526c9e0963faac89d3033590a65f278"
+    },
+    {
+      "path": "docs/evidence/0061-switch-word-card-directly.md",
+      "sha256": "ba6589d38ca780f2eaa86dcff698acf7c22dfabd221181711f9188af9c502626"
+    },
+    {
+      "path": "docs/evidence/0061.playwright.config.ts",
+      "sha256": "e0eda5881f80a44b3a07c384683c9e79625cad2840b7e53e0ec8c5eaf78994a0"
+    },
+    {
+      "path": "docs/evidence/0061/affected-browser.log",
+      "sha256": "cb887cde6dcf97579a10804f512158d2b31afc2e371977e45baecb6386510cf6"
+    },
+    {
+      "path": "docs/evidence/0061/baseline.log",
+      "sha256": "7af57dceaddd10174c2a1d3a20b8128a7b5bdf75912d9a820e9710de765ac5b2"
+    },
+    {
+      "path": "docs/evidence/0061/build.log",
+      "sha256": "e5012e26482bbd57f4ab4ca9f2c65db2082fd9c42a3422174017ac1ae16bd0ae"
+    },
+    {
+      "path": "docs/evidence/0061/desktop-day-two-journal.png",
+      "sha256": "38e420f84ccb21ed7640225f8a04b238395d09339effdb7e2ffe4f2258cd8d9b"
+    },
+    {
+      "path": "docs/evidence/0061/desktop-help-reduced.png",
+      "sha256": "8fe1b75d99199b7b28e5878a8c28a9b9d974146ac9da6702cb05253035e34424"
+    },
+    {
+      "path": "docs/evidence/0061/desktop-help.png",
+      "sha256": "8fe1b75d99199b7b28e5878a8c28a9b9d974146ac9da6702cb05253035e34424"
+    },
+    {
+      "path": "docs/evidence/0061/desktop-reduced-opening-contact.png",
+      "sha256": "4ab9ead03d28f5aa9b6de8d4d468fd2cf54ecd5bee1103e049b344c6ed2bca84"
+    },
+    {
+      "path": "docs/evidence/0061/desktop-restaurant.png",
+      "sha256": "0859927aedd42c520ede1034c77950647ad1728a48bbca73ea1176ed9da0441d"
+    },
+    {
+      "path": "docs/evidence/0061/integrated-browser.log",
+      "sha256": "67aa08c3782bc85662d8a32aefd9015c95ce0dadd70afe142fc319a37a4ec97c"
+    },
+    {
+      "path": "docs/evidence/0061/integrated-desktop-hospital.png",
+      "sha256": "3e0bcc3311687c778dc34dbc3ba826a49ea680b3e3c8757af2ea86ad6e8833d0"
+    },
+    {
+      "path": "docs/evidence/0061/integrated-phone-restaurant.png",
+      "sha256": "a01ab0de0d710300013732b8224662ad9c8a4f66e7d1dec5bda3c87a85c6ad27"
+    },
+    {
+      "path": "docs/evidence/0061/integrated-unit.log",
+      "sha256": "5edfb39a253a0188b97c95ffbb4d7680d174f3a506b339ed3cc52fc8a7e7be26"
+    },
+    {
+      "path": "docs/evidence/0061/normal-browser.log",
+      "sha256": "ed0e031705effca21acc0a1d595d2000f1c0f72159bed70f5301f19972f1d08b"
+    },
+    {
+      "path": "docs/evidence/0061/phone-day-two-journal.png",
+      "sha256": "be87fc16c9a8ffe99cdfe8b442f3331ae0aff0df5d4d4f8d2dc05e49d3127f58"
+    },
+    {
+      "path": "docs/evidence/0061/phone-help-reduced.png",
+      "sha256": "9d37e5eaed456de588902856bbed330b2321a6e4c9980f58d849dfd94c15ad62"
+    },
+    {
+      "path": "docs/evidence/0061/phone-help.png",
+      "sha256": "9d37e5eaed456de588902856bbed330b2321a6e4c9980f58d849dfd94c15ad62"
+    },
+    {
+      "path": "docs/evidence/0061/phone-hospital.png",
+      "sha256": "b4d59c2e3d840fa78d3092819d5d5bf259a7478656e44021532ef2314d94fcf2"
+    },
+    {
+      "path": "docs/evidence/0061/phone-kitchen.png",
+      "sha256": "43c31348f344703ca74061d4dc166be53753a5dfc0c05140ad3dad5ea6af0453"
+    },
+    {
+      "path": "docs/evidence/0061/phone-reduced-opening-contact.png",
+      "sha256": "a5340d0a1d274ae763c51b5f8e6c4fa11ad05d295121aaf5f35865733b3e2c23"
+    },
+    {
+      "path": "docs/evidence/0061/reduced-offline-browser.log",
+      "sha256": "e5738b6f995638e92938c9f2a2b2e0953040108c5b21fbcd6ece37b887448c94"
+    },
+    {
+      "path": "docs/evidence/0061/unit.log",
+      "sha256": "adafa3290474410522634fd67ead759556db687fff374b1ad7d909bf422307a0"
+    },
+    {
+      "path": "docs/evidence/0062/asr/ASR-REVIEW.md",
+      "sha256": "79ed98729824bf8d7c2829caa868e25a96d19f15f91ad20f6b8dfa9b4d12c760"
+    },
+    {
+      "path": "docs/evidence/0062/asr/asr-baseline-flags.json",
+      "sha256": "103817c910f09e1910cf0acecf20c019780617b3cdd2c104a99e9d671c9c25d0"
+    },
+    {
+      "path": "docs/evidence/0062/asr/asr-crop-and-grandpa.json",
+      "sha256": "7b7a1cdda65147e63862ca6c54abf4486257eb1b8dd48b81408564d3c513a502"
+    },
+    {
+      "path": "docs/evidence/0062/asr/asr-results.json",
+      "sha256": "96f97677542cec096d41be4f404a73567af4d6df05edcee543584032da997fdf"
+    },
+    {
+      "path": "docs/evidence/0062/customer-performance.md",
+      "sha256": "aa41916fdc823a9bd661078d37d83c06c4ab3600cbc1300413a9c80a034be55b"
+    },
+    {
+      "path": "docs/evidence/0062/final-review.md",
+      "sha256": "88cd5b351acf2a3930542782aebbc058917abcffbefa95c391614470dc777d79"
+    },
+    {
+      "path": "docs/evidence/0062/final/desktop-restaurant.png",
+      "sha256": "a3b35094533e33213afa993eee47225bacbada870cfd70527d33efe38a52e4ba"
+    },
+    {
+      "path": "docs/evidence/0062/final/desktop-retry-3.png",
+      "sha256": "f301fecf0d068554b4bd2b10ec5ba159f35c37778d9cfdde85a0067202546490"
+    },
+    {
+      "path": "docs/evidence/0062/final/desktop-video-contact.png",
+      "sha256": "789b7953d2e2345d6081e69a4340c778d82188ec3a1c019685796d2b79f06782"
+    },
+    {
+      "path": "docs/evidence/0062/final/phone-reduced-journal.png",
+      "sha256": "f020228aa09c3f7399cf96851cbcf93da4693b42651c8f0389aa1623616574c6"
+    },
+    {
+      "path": "docs/evidence/0062/final/phone-retry-4.png",
+      "sha256": "712d90515ca8cac30dec8cfd91e1fa50f890a83dae5f97ed9ba0909198f5ff65"
+    },
+    {
+      "path": "docs/evidence/0062/final/phone-video-contact.png",
+      "sha256": "27aee68bc6fc3b99a16783fa32a8559193bc88da807a5b080694345a6ca63e36"
+    },
+    {
+      "path": "docs/evidence/0062/foundation-bridge-handoff.md",
+      "sha256": "f5b47a2a6b70c392d60defa61df54346e22f5e5449930f1e618a89fd4348926a"
+    },
+    {
+      "path": "docs/evidence/0062/independent-review.md",
+      "sha256": "09cf9221e74ead9863625b266398e4b48ff13c4d88eaee37ea1f2f8f3960f622"
+    },
+    {
+      "path": "docs/evidence/0062/retired-clips.json",
+      "sha256": "661b8c2fafa19ec7859c0b6e4c5be88aa5cb0e9aee1626eb7faa6ce6770a310f"
+    },
+    {
+      "path": "docs/evidence/0063/FINAL.md",
+      "sha256": "c63d272b2131f9b56c5ae0cd96a1191ae45e918cefcf131bf67b809f466968d0"
+    },
+    {
+      "path": "docs/evidence/0063/INTEGRATION.md",
+      "sha256": "b964ddee621fbfacd12641b8f70e4dae9bfd0cb312180e42cd8bfde7f55c27fa"
+    },
+    {
+      "path": "docs/evidence/0063/LISTENING.md",
+      "sha256": "d9082a1c115edc54cb9e59c1893dbd8986cd21d9ea825247b236b08cd3579007"
+    },
+    {
+      "path": "docs/evidence/0063/MIX.md",
+      "sha256": "32f84dd287256f1a1f03ba802a2391f42b1085673defea2375d4e7f741e64609"
+    },
+    {
+      "path": "docs/evidence/0063/P2-RESOLUTION.md",
+      "sha256": "600034d11848f5bbb8562cbb9e95ae24c1ac3db85dc64a6f049c971d7d41aae8"
+    },
+    {
+      "path": "docs/evidence/0063/README.md",
+      "sha256": "afa5590d58de9b9f12a04666768ed0c2b57d1fa73e334ebe87003e8b9e418c06"
+    },
+    {
+      "path": "docs/evidence/0063/RETRY-SEQUENCING.md",
+      "sha256": "286dc884025dfe1436c772fef4613ea9d586251d71b2a2e3ec517054238d1b25"
+    },
+    {
+      "path": "docs/evidence/0063/ROOT-FINAL-ACCEPTANCE.md",
+      "sha256": "5e6e4591ba14c447fd1c633802722d7117a26461b8496119a4b78a3b3f97d62a"
+    },
+    {
+      "path": "docs/evidence/0063/ROOT-VERIFICATION.md",
+      "sha256": "e1945e82c1429089c1b26757041ebc1e64a56032dfbd11f8a6866afea43c1888"
+    },
+    {
+      "path": "docs/evidence/0063/USER-LISTENING.md",
+      "sha256": "4cd5dc036bd320d96b244c1a626fbc237b0027878345d240f76847f2a1f50cfb"
+    },
+    {
+      "path": "docs/evidence/0063/audio-sha256.txt",
+      "sha256": "87387a1a4b367344a5ea6351516ec2aafa29609eea68a1844ae2109238583013"
+    },
+    {
+      "path": "docs/evidence/0063/browser-check.mjs",
+      "sha256": "927188317728158931537d4bd6d74b5b313f8d8d203bb287713faa8c63f0bb85"
+    },
+    {
+      "path": "docs/evidence/0063/browser-results.json",
+      "sha256": "25dcf9a52b9b96af085b38df23723bb7f3b125f55a3c7d45799458645ce845cb"
+    },
+    {
+      "path": "docs/evidence/0063/build-results.txt",
+      "sha256": "4b4091edafae76589310a823461b0f9d695b45fb743369ea1e7a028ee524e80b"
+    },
+    {
+      "path": "docs/evidence/0063/final-combined-browser-results.txt",
+      "sha256": "f3a57a1621c80e14142c8e9add2d41823de64d42202579948a6e0cd94442079c"
+    },
+    {
+      "path": "docs/evidence/0063/final-focused-results.txt",
+      "sha256": "bd6060e12c72303e5ad1260f22e56f8de1d1c455c9719ac36b282d9f7b7ae026"
+    },
+    {
+      "path": "docs/evidence/0063/final-native-observations.json",
+      "sha256": "fbfe7e535c07dd4b90401b51de0fc68289b84cae3fee15ab0f20e804e20c38c3"
+    },
+    {
+      "path": "docs/evidence/0063/integrated-build-results.txt",
+      "sha256": "d546d261044c11126ef20dbf0ed9ee859d687d835d6dc5e7d04e674565549889"
+    },
+    {
+      "path": "docs/evidence/0063/integrated-native-events.jsonl",
+      "sha256": "437fd6911eaafec922438153d7fe6b112159e673c8f5e931956433b6662868a0"
+    },
+    {
+      "path": "docs/evidence/0063/integrated-unit-results.txt",
+      "sha256": "4e7ec98c709e98bd809429cc1bfa3b320eb524cfa7cdbc8836e2f37272d8aaed"
+    },
+    {
+      "path": "docs/evidence/0063/integration-proposal.patch",
+      "sha256": "d6ba2d24f4427a3e9e0d6448934c9024e5defe62228dee632fb777635c641c20"
+    },
+    {
+      "path": "docs/evidence/0063/journey-results.txt",
+      "sha256": "accf3af4259071a10f1ad9ef2662c49b2941863cda37a0bb842eb00d6f07c172"
+    },
+    {
+      "path": "docs/evidence/0063/listening-comparison.json",
+      "sha256": "ee3f9da1a99fb2117b4be051b6c3951fe3ca6ad370b0a68b56311b76bb64605a"
+    },
+    {
+      "path": "docs/evidence/0063/listening-comparison.mp3",
+      "sha256": "230e3aeb34df04db7087c20e79a20a57e09fd80b5140b6e25d1fb365f8bfac8d"
+    },
+    {
+      "path": "docs/evidence/0063/mix-after.json",
+      "sha256": "b19bc7dab8980234ac806122224dda86a16565ece3ae13eb83ddb4d29652a3b8"
+    },
+    {
+      "path": "docs/evidence/0063/mix-before.json",
+      "sha256": "e02de932fb6417d7b95947bf0da63c51796aa0df96a61fda8f3810d9240fb381"
+    },
+    {
+      "path": "docs/evidence/0063/playwright.config.ts",
+      "sha256": "b5681d0d1d874a7e3f2f3d15821ebd5d021f8da8a8b08f43187fd9303fcf0886"
+    },
+    {
+      "path": "docs/evidence/0063/proposal-test-results.txt",
+      "sha256": "e5f8b58e649036abd3da02a38a466d0213ed797190ba870789041e99e587380c"
+    },
+    {
+      "path": "docs/evidence/0063/retry-boundary-diagnosis.txt",
+      "sha256": "80ae5a3cc629bb5228b998d8f212111526453d1f7a4a9f1f7afd7e789768d6e7"
+    },
+    {
+      "path": "docs/evidence/0063/retry-sequencing-observations.json",
+      "sha256": "c1414d096b0e53190f6b69f2f2f187f35e2d5e83c9f6655b490247c7e60599dd"
+    },
+    {
+      "path": "docs/evidence/0063/retry-sequencing-repeat-results.txt",
+      "sha256": "3b3f816ebeb9141a4ebda953956e314e323000472344d8d5f4b949b782b7bb85"
+    },
+    {
+      "path": "docs/evidence/0063/retry-sequencing-results.txt",
+      "sha256": "a03c04c8e7e2e23d6e2a4446f49fd2ceaeadfd2e0ecfe2f5fd153ba5b093d3e4"
+    },
+    {
+      "path": "docs/evidence/0063/retry-sequencing-source-sha256.json",
+      "sha256": "bc3b02bc4447ba7055ba1ce388537ce90c4fe1c6e26d0e14e7b297d3be01e67c"
+    },
+    {
+      "path": "docs/evidence/0063/route-drain-word-switch-results.txt",
+      "sha256": "a4d60d5d10b5e1dbcbf789cc4c4b3317ce63eed692595743ef406ee2f6c6266f"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/desktop-baseline-journal.png",
+      "sha256": "ba983420043337b792b15baa110ac820da820e50406e71d2d4426f279e816d02"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/desktop-baseline-opening.png",
+      "sha256": "ba5181329fe59483dbda20e9dc0eac59c8dc4273be4a859df23c14c6ceb90436"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/desktop-baseline-reduced-motion.png",
+      "sha256": "89957033aa09e09843f90fb1aa01b6828a07f885ba510cac7aa8d007f125d553"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/desktop-baseline-restaurant.png",
+      "sha256": "aa63e91dfafc58128c345b5bf01d2730cc51a5faeebcfbda69e6c7466b6dc81a"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/desktop-integrated-journal.png",
+      "sha256": "b53235a978da52cae97a66ea99f1c7aaf3cb714f265ad87a3511a1c8e4eeec49"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/desktop-integrated-narrow-320.png",
+      "sha256": "0e26134af9d189aafbfd2c2553c0a44d0c22586853fbf4b06040d73b2c301fb8"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/desktop-integrated-opening-request.png",
+      "sha256": "c243c23134d10f8cd452befb931b7399c8c5261772e429be4371070b4181d56e"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/desktop-integrated-reduced-motion.png",
+      "sha256": "40ebcc0494b665d0b0e7b98a2ed7a847a0b3d33a54ccd199a3f3f2f27bee361d"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/desktop-integrated-restaurant.png",
+      "sha256": "bc89154ecff5a17306ca1b42b0d50dcaa1251c2201fb10c118af6624c1a23562"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/desktop-integrated-settings.png",
+      "sha256": "2c10ba04b41019e9ffe76b8889935552046e46cbbcd08f3053081bd78e53116a"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/narrow-320-before.png",
+      "sha256": "f27c22d69cc780debd59a84eae13b5012808c99a9665c7bd62ebf0c4bd000a5b"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/phone-baseline-journal.png",
+      "sha256": "be87fc16c9a8ffe99cdfe8b442f3331ae0aff0df5d4d4f8d2dc05e49d3127f58"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/phone-baseline-opening-request.png",
+      "sha256": "ae8eb01e58e96f70ec3c72f074701c2eb7a0861c1808f7b505e0615194e2b090"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/phone-baseline-reduced-motion.png",
+      "sha256": "0b86a5dbb449934e8776795bbe0dff58d02901a9d472ec0b6a31a88a131a2e97"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/phone-baseline-restaurant.png",
+      "sha256": "0b7fa8c656227229172fe58d8d40c70c2391f10b057d742e1770c90f5d35adee"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/phone-integrated-journal.png",
+      "sha256": "f020228aa09c3f7399cf96851cbcf93da4693b42651c8f0389aa1623616574c6"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/phone-integrated-narrow-320.png",
+      "sha256": "64183289bcecf70c7a2c1f7ecdb304ae8dccb99377d11f9d4ff538a9ffdd2222"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/phone-integrated-opening-request.png",
+      "sha256": "21a00c9cbc4d0222bef14e76fc674df0d9be9894460dba16687756d2453903e5"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/phone-integrated-reduced-motion.png",
+      "sha256": "87b2d8c08716078a53e907d0ccdc8f000bcd82c70e46557f8e21353b279f89b9"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/phone-integrated-restaurant.png",
+      "sha256": "3eed8ca9bbac221d50cbc2a9038557574ca12b65860c863ea5eb32807a2955b3"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/phone-integrated-settings.png",
+      "sha256": "ed4ae91524564a76a52f2e1793f395897a453d29e407dba3157d822dd296add8"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/short-320x320.png",
+      "sha256": "2071dbe5df70abd54b416f613f1835566fde9bb4aa9df838dc42dba7bc10b27d"
+    },
+    {
+      "path": "docs/evidence/0063/screenshots/short-568x320.png",
+      "sha256": "0dd4215d01f7e60c9f660bb6365406607e3719bfe5286d2d48f37d5f9805c021"
+    },
+    {
+      "path": "docs/evidence/0063/short-viewport-check.mjs",
+      "sha256": "67b2a7d2011a8ff16c69ed8286399a89125f22fdb16f61a163a3e44b10c1c70e"
+    },
+    {
+      "path": "docs/evidence/0063/short-viewport-results.json",
+      "sha256": "87a20a7e957927febdd0ef63e3008c98a35073db9383460a726390db144d8a3c"
+    },
+    {
+      "path": "docs/evidence/0063/unit-results.txt",
+      "sha256": "6433668e5d0eb7f475af2793f2458da707b40f6bbcd257cf5aca1eea47191d96"
+    },
+    {
+      "path": "docs/evidence/0063/verified-source-sha256.json",
+      "sha256": "11771e17cd7e32f01ab7d097ddf7384ddc3a94d0aa980bd5f14d6899684ca3e1"
+    },
+    {
+      "path": "docs/evidence/0064/README.md",
+      "sha256": "4f8916d8b19b94629137d1d39f673f3ec989a7cb362016bc3c002598d7cb9a1b"
+    },
+    {
+      "path": "docs/evidence/0064/desktop-journal.png",
+      "sha256": "ba983420043337b792b15baa110ac820da820e50406e71d2d4426f279e816d02"
+    },
+    {
+      "path": "docs/evidence/0064/desktop-kitchen.png",
+      "sha256": "54278a34234f8ad1367938943d2671250a180546011a9e05752265e949778989"
+    },
+    {
+      "path": "docs/evidence/0064/desktop-order.png",
+      "sha256": "5532c4a98a5142b88b8ec4f9b163bbd084e6dc3acbb5c7d9ec853ed80dfa3563"
+    },
+    {
+      "path": "docs/evidence/0064/desktop-receipt.png",
+      "sha256": "4fd98f89c14f1cdc1da6dde4b590fa7538d7c4b0a23582e192a94b4509626356"
+    },
+    {
+      "path": "docs/evidence/0064/desktop-restaurant.png",
+      "sha256": "2ed46e464585a5e3b7c5a8716991051a5aa6f7d2860a84b063d18521e57aa11f"
+    },
+    {
+      "path": "docs/evidence/0064/desktop-revisit.png",
+      "sha256": "b1aa1ced190b1eb473415fbbcbdf2e444acd513a6d71327524829bf0a75df7f8"
+    },
+    {
+      "path": "docs/evidence/0064/exploration.json",
+      "sha256": "ace14e2fade638c4c3b55117f2a4331096f90f3b03d7411b9bc1935ea161b66f"
+    },
+    {
+      "path": "docs/evidence/0064/explore.mjs",
+      "sha256": "b74c3e687640cf55ec9f8d3a63680ec95533b2ff91b3255d2ae188ff5aa73d57"
+    },
+    {
+      "path": "docs/evidence/0064/phone-journal.png",
+      "sha256": "be87fc16c9a8ffe99cdfe8b442f3331ae0aff0df5d4d4f8d2dc05e49d3127f58"
+    },
+    {
+      "path": "docs/evidence/0064/phone-restaurant.png",
+      "sha256": "270ba0b4e961ef5d7ee7bd210810cc73348f0650e8f455d8b54d11def83cc40f"
+    },
+    {
+      "path": "docs/evidence/0065/decisions.tsv",
+      "sha256": "aafe5d6196991366a580c41bc460acca184f7a7959d86b62722c68a7c989181f"
+    },
+    {
+      "path": "docs/evidence/0066/baseline/desktop-journal.png",
+      "sha256": "38e420f84ccb21ed7640225f8a04b238395d09339effdb7e2ffe4f2258cd8d9b"
+    },
+    {
+      "path": "docs/evidence/0066/baseline/desktop-restaurant.png",
+      "sha256": "6c5eb3afbb29083bfdc77325042657cccbd507a89e522b109470d9b39a5573d8"
+    },
+    {
+      "path": "docs/evidence/0066/baseline/phone-journal.png",
+      "sha256": "be87fc16c9a8ffe99cdfe8b442f3331ae0aff0df5d4d4f8d2dc05e49d3127f58"
+    },
+    {
+      "path": "docs/evidence/0066/baseline/phone-restaurant.png",
+      "sha256": "9656163948d659e07af1f6cf758f8a041ab6b2c371fe462b9b846c2cec3576ce"
+    },
+    {
+      "path": "docs/evidence/0066/baseline/results.json",
+      "sha256": "f3a7118477aa8f565ea46ade4fa469a18f5c7a257ca670278ae2c1e1e0ba690d"
+    },
+    {
+      "path": "docs/evidence/0066/checkpoint.md",
+      "sha256": "cac7b8e2a3559a3228d942fb6e1fe54ec3c8a0207c55356434380fd01cee6828"
+    },
+    {
+      "path": "docs/evidence/0066/decisions.tsv",
+      "sha256": "2713e9d3fa81d05d0f1c067f4c0fe2add84a139b317af2e606011994e602e768"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/audio-pipeline-self-check.log",
+      "sha256": "9d0f36e9ac1b1e025660f2bbcd0a51d3cfecd116243a4ffb77cfb82c3738a011"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/capture-probe/README.md",
+      "sha256": "b319b1247ecaac52811acb82d6d5e0426072824de84290ae5b7dfe41d35a6d84"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/capture-probe/browser-capture-init.cjs",
+      "sha256": "62e93e31010b81f5e7ee10a8d10e9fd809a7819e20a70bf49245692a11dcedb3"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/capture-probe/technical-capture-probe.mp4",
+      "sha256": "e7de8b4eecd2391186bacd2b6337536bd066d16a3a5527646e68f6b05adb3d44"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/capture-probe/verification.json",
+      "sha256": "8711e76e1454f152784882bdb4696cab7bcd39932ebd8b99983a19e65a2734a0"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/corrected-regressions-before-focus-fix.log",
+      "sha256": "2c8d6ca4d4d8a8329487beeec6022882b1a68ddb8be9f0b1b3e25f3cac1c4849"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/desktop-apartment.png",
+      "sha256": "0ba317e7fc3759476ee50356d9a205463a4e801e4a17f60e6d57facf3e26b5b4"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/desktop-cats.png",
+      "sha256": "8c3f4dd2a64845f0d4439c4307d424c728db22b83dfa64a7238c1828a789b011"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/desktop-garden.png",
+      "sha256": "514473ef695ee9d575861563e5942fc40be3ebfa71521ae3842f98b66198c1bd"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/desktop-real-offline-return.png",
+      "sha256": "d0d5c809d7b3b8ad2626d494655fa816edbad01d3ebefe9b9c4cdea395d11b57"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/desktop-repairs.png",
+      "sha256": "4e4a9d4e525b12fb9b06d2c5c247bb741ba49144c878b6a23b5e5877c3213b96"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/development-results.json",
+      "sha256": "d90f4b1e52358ef4008c9868094019094dcf99d0b8ead63c14a6359d40eb4e73"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/final-affected-regressions.log",
+      "sha256": "15daa0d554a67eef353793e37f718fc690b42ecbe48681c050bea07ec42c7199"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/final-build.log",
+      "sha256": "892b8def3f02ea6e18d7d052d57d88731bd2f7f030a71981d9886bbe25095b66"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/independent-desktop.log",
+      "sha256": "3f0d129c9f2e90eb6cdc4906a2553b7f24fae7b3b776ff6c3e8c8cbc2c8c26a8"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/independent-phone.log",
+      "sha256": "f1375b1c94f5796af24871bfc01992dcc342393fabcaff0581e7782610d48de7"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/initial-failures/ambience-foreground-resour-0087d--and-direct-replay-recovers-desktop/error-context.md",
+      "sha256": "b0156b9e9de936d845f841655e65ee73afae04c472f928736611d5ace2e7e2f3"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/initial-failures/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-desktop/error-context.md",
+      "sha256": "b55bc26d1ed3a5fd12778508d991297b2a3cdc38972812252276c5746920fb9d"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/initial-failures/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-phone/error-context.md",
+      "sha256": "646e0220d7d0c44b1401d3a21e50d096af642b31f59f6728157d5f450f1bbb6a"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/integrated-build.log",
+      "sha256": "5d01973b6a643c72524164f29763697fbedabccae6edec3b42eda2d81de5b5db"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/integrated-routes.log",
+      "sha256": "906311c6b9200c6aa7850f8663305fbbee037b673b48120d890d24470f3324f2"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/integrated-unit.log",
+      "sha256": "5cd555f54110f6accbaac7ac856862ec29dd1fdf6994fdd0e0e775fed2a7bb4c"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/original-ambience/integrated-native-events.jsonl",
+      "sha256": "c85fff9621f0f9554e33f9ef4c498c4c45731f65f619729c199c49cc07e929e9"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/original-ambience/screenshots/desktop-integrated-narrow-320.png",
+      "sha256": "374031400dc1254664430ceca3156e661ed655d106853ba4742d3717bcaa45ff"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/original-ambience/screenshots/desktop-integrated-reduced-motion.png",
+      "sha256": "c80abefba6ed539b554e7915467aea7752e6d90418f5dec24c7e631fb8e743cb"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/original-ambience/screenshots/desktop-integrated-settings.png",
+      "sha256": "2c0d5e22668ae49afb8410bcb5bf43d2d0611501254ddeccf8cd4083f8de79a7"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/original-ambience/screenshots/phone-integrated-narrow-320.png",
+      "sha256": "7e72a3c0bd38daff3a26f5c263a36a82ba6a36e792ba4d5c08eef91361c99b4d"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/original-ambience/screenshots/phone-integrated-reduced-motion.png",
+      "sha256": "bcc46ef2e5b756a922e9e0165a09a3f1c1d1e1d8dc272754cbcef1630c3ebe7a"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/original-ambience/screenshots/phone-integrated-settings.png",
+      "sha256": "11145108189ab334fac75411cbd930a443043c3cecbaad8bbeac97ece87d6e96"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/original-regressions-initial.json",
+      "sha256": "d3845aa435bafdc1e5208801e0f49fd3fa1f6f96152b2140e6c5d19a99031bf6"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/original-regressions-initial.log",
+      "sha256": "4d63676ceb0db7cb38ed8377568a8e49888b8e06c5cbad0c210a59c2c684975f"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/phone-apartment.png",
+      "sha256": "ee261197f80f457a4de807199a5cb062b69c97dff3a11619a3af13b7e422a7e0"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/phone-cats.png",
+      "sha256": "3b15d1ce97f350158ffe592446d52ef7bd461305069ee99d7bbef9f556331db1"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/phone-garden.png",
+      "sha256": "2dae24c007563df5609ae25ce788be50fb771d0737205318ba4ff19b0a133090"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/phone-real-offline-return.png",
+      "sha256": "2bcf2a5dbe8c52df14cded664d924e4479cacd978bbd99f8325e47430e9e2c79"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/phone-repairs.png",
+      "sha256": "d4bc6d7c03515e685c14cda185e00fbb509426b14da438e28b47198c2f0e37c8"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/production-results.json",
+      "sha256": "7208568799891cbe98fe1f6bbb518f749fa667facab238b072695994f7650deb"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/production-routes-offline.log",
+      "sha256": "217b01a159da6f8b373aae0932b787ef4fa82d1268d8c4ba81dcc24a34511d0e"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/real-audio-audit.json",
+      "sha256": "0daced1482c718fa8669dda95f6ca6e3957f2e22f7d7c380a6cbfaed791d46df"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/receipt-exact-focus.json",
+      "sha256": "a778163699b66cf0ad36ac7c110c38bead7f90548e8abb3bcca13c5664985998"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/receipt-exact-focus.log",
+      "sha256": "2d18d4025e70f122a80f49e749c16dbca0911b7abee5f2540d21aa5e3d6b7d0e"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/receipt-focus-failure/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-desktop/error-context.md",
+      "sha256": "45841be55ed2d646df26bf84d670d741751d84e3c7d75292b3d718edea64a91e"
+    },
+    {
+      "path": "docs/evidence/0066/integrated/receipt-focus-failure/overnight-keyboard-keyboar-2e4ef-and-focus-across-a-full-day-phone/error-context.md",
+      "sha256": "977b5a65d0c3cf7a9a49e6aa93a2052057c8ff9775f7091b75b1dd0dc75a8365"
+    },
+    {
+      "path": "docs/evidence/0066/integration-plan.md",
+      "sha256": "3a2aa267cfbd757a14deebadc62f67de7aeaa7947d8208298c6fcfea5437d15c"
+    },
+    {
+      "path": "docs/evidence/0066/node22-baseline-browser.txt",
+      "sha256": "fabd89543446fc20370d33760c8c6463830f5d10b9600f5a23a0a6a97bd3f2e5"
+    },
+    {
+      "path": "docs/evidence/0066/node22-build.txt",
+      "sha256": "e2cfe8b2285502abc7c1605afa2382eb411ab57c6dddf18edf07a9c17b10226f"
+    },
+    {
+      "path": "docs/evidence/0066/node22-rules.txt",
+      "sha256": "28d37b0918cd6197fa3e42cf49c7f4f26cededd2027ae83262c95092c8e3253a"
+    },
+    {
+      "path": "docs/evidence/0066/registry-build.txt",
+      "sha256": "2b7b8e9836e2e0b0080b6d5335d28e3975eee82800d611012e2261944cd1f216"
+    },
+    {
+      "path": "docs/evidence/0066/registry-tests.txt",
+      "sha256": "396618f049af33e0ec00f74c7fa4d019bfdeb32b6d4f28530a7daff5867ebcdd"
+    },
+    {
+      "path": "docs/evidence/0066/review.md",
+      "sha256": "a3c38b7369ddb26093eca165503e5606301e9d458d78fd274a39584baa178824"
+    },
+    {
+      "path": "docs/evidence/0066/standalone-build.txt",
+      "sha256": "0cb0d6a305f39d6c40fd0c8e5aa89f3bf1d9c22db8bde611124ecabbc933b374"
+    },
+    {
+      "path": "docs/evidence/0066/standalone-tests.txt",
+      "sha256": "920c8862432b3b693aa8d550cbe269edb172657f36485fe6e7e407a107d0d965"
+    },
+    {
+      "path": "docs/evidence/0067/README.md",
+      "sha256": "b51c828c9e0323224c5278d34dcdc04a9b985290541f6a09679d274c5b417e17"
+    },
+    {
+      "path": "docs/evidence/0067/audio-availability.json",
+      "sha256": "ed2839868176b141000a44b07f40b17f5ae250e6e9a641c573e1e8bd0300bda4"
+    },
+    {
+      "path": "docs/evidence/0067/audit-audio.py",
+      "sha256": "9f3911a87b5a2a083d6a2e608a60dcdf584314dd3851fac8d4be0537e27b7809"
+    },
+    {
+      "path": "docs/evidence/0067/decisions.tsv",
+      "sha256": "489918adaa56909a2f35faac3e2d44cb8619ab2297119abf561d6167addfdd16"
+    },
+    {
+      "path": "docs/evidence/0067/desktop-arranging.png",
+      "sha256": "32cc4830c713502d85292807384bdbe20faa14e9664f908c9e4ac6da713d1cfe"
+    },
+    {
+      "path": "docs/evidence/0067/desktop.png",
+      "sha256": "b5f0b2cb9645cf3e41115e41f1261cf8cbc3877a383783433b696f8a726ab6e1"
+    },
+    {
+      "path": "docs/evidence/0067/favicon-failure.json",
+      "sha256": "6bdf5d6c5af831de3d54b209244cde869ade29e9cec8e0f8147d0591e839a030"
+    },
+    {
+      "path": "docs/evidence/0067/full-browser-results.json",
+      "sha256": "0112e3044f05680756023b1cc8a4fee058ca68ebee8162a586715e4991ac8c18"
+    },
+    {
+      "path": "docs/evidence/0067/phone-arranging.png",
+      "sha256": "650ec14c59f06a1021a9c1028633029ae66ea102706f56c732ac5820e1cccd8a"
+    },
+    {
+      "path": "docs/evidence/0067/phone.png",
+      "sha256": "5d8ad940be7f4c5238b0a359161e544bb849ceacbbd87925dfdeb8d9a4d7b29e"
+    },
+    {
+      "path": "docs/evidence/0067/playwright.config.ts",
+      "sha256": "93e8fdca17e271f906721548ca77e1ca3cb4bc8c0afc8443e9c30b999369d190"
+    },
+    {
+      "path": "docs/evidence/0067/results.json",
+      "sha256": "258492633e05ff54df9e979bd20c6ad12835cc98f29deb8625cee176226283e7"
+    },
+    {
+      "path": "docs/evidence/0067/results/.last-run.json",
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    {
+      "path": "docs/evidence/0067/vitest.log",
+      "sha256": "a0ec946756f26973c442d75e80feb7f7e0b915f9307571e7ddb075a653d33f54"
+    },
+    {
+      "path": "docs/evidence/0071/desktop-day-2.png",
+      "sha256": "dad571c1f13c72635c94f2adf065ed5b50578f130f4fbeeb72cc3609a92188dc"
+    },
+    {
+      "path": "docs/evidence/0071/phone-day-2.png",
+      "sha256": "eba549163bd5744c97f912e788fb3d8be17331f6748f662f0875e371dca906c0"
+    },
+    {
+      "path": "docs/evidence/0073/README.md",
+      "sha256": "204e69b83516aea2681f3ffd361e934d1f7e03f40ba7ccac6e26f8daeb7832d8"
+    },
+    {
+      "path": "docs/evidence/0073/asr-apartment-final.json",
+      "sha256": "eb4e76d9a82211aafcd93f6709bb223a270793d2256a88b06d55798cbf8b9af4"
+    },
+    {
+      "path": "docs/evidence/0073/asr-cats-first.json",
+      "sha256": "e7189642df2b598a0b436321faa6c654d0e3493271b1cb6563810067ab0e097e"
+    },
+    {
+      "path": "docs/evidence/0073/asr-final.json",
+      "sha256": "e59f9cf441957178ff859c522b105db082857899b51e0518860da1c89fd8257d"
+    },
+    {
+      "path": "docs/evidence/0073/asr-first-pass.json",
+      "sha256": "bf4ed95d81ac07756e5bdc2039444c8a625dcd3d68638600fd98aa8b2b0b4109"
+    },
+    {
+      "path": "docs/evidence/0073/asr-garden-first.json",
+      "sha256": "35d796b1b83ab50593c2e6b239d72e38d2af932714c6e196ca94c9d44df540da"
+    },
+    {
+      "path": "docs/evidence/0073/asr-repairs-first.json",
+      "sha256": "fbdfb287408905990a449cab6de999d97f4f04f8005f4806a1777a08bd127254"
+    },
+    {
+      "path": "docs/evidence/0073/asr-second-pass.json",
+      "sha256": "d9f123368a302e8c284b9053a9db43009ad92791db09bc732822795687f9f35d"
+    },
+    {
+      "path": "docs/evidence/0073/audio-audit.json",
+      "sha256": "2803a98875b51cdebb72ad860a85c0128d6bf0cb609d5ade53e0aedf16dcb238"
+    },
+    {
+      "path": "docs/evidence/0073/decisions.tsv",
+      "sha256": "40368aeba4c4a126206cc51cb105d88ef68f584cd3a3196527f34324685ee48e"
+    },
+    {
+      "path": "docs/evidence/0073/final-plan.jsonl",
+      "sha256": "50099e4888f6ca5763e4a712c6b0f1bdf9f3e17b1b58bd922548e778458ce2c0"
+    },
+    {
+      "path": "docs/evidence/0073/logs/kokoro-cached.log",
+      "sha256": "62adbfa9547ccf7494c615fadc4ff7fb1990ab09a90d95310a815f84f1978870"
+    },
+    {
+      "path": "docs/evidence/0073/logs/kokoro-default-cache-failed.log",
+      "sha256": "0da24d092fe1ac8befaf227a6c4704afcb37c1ebbbba84ed53880cf4cf6d3512"
+    },
+    {
+      "path": "docs/evidence/0073/logs/qwen-first.log",
+      "sha256": "db73a51d47edba67ec0ed962759c8e6627c39cc5d44a3249428d575c6b7e1c8d"
+    },
+    {
+      "path": "docs/evidence/0073/logs/qwen-line-retakes1.log",
+      "sha256": "2d9ea780b55bd773377a2c81159e56665485e49ced865d879aefabc578ab60d8"
+    },
+    {
+      "path": "docs/evidence/0073/logs/qwen-line-retakes2.log",
+      "sha256": "fd3b81347faa039ee2e4190902546cfa3b357f6bcc44fcbd3cd8afb95a1a5559"
+    },
+    {
+      "path": "docs/evidence/0073/logs/qwen-repairs-retakes1.log",
+      "sha256": "8c05ae3b3c358e0fcff15a2d31ba8a8b26e191421fc4c35ef5a97b0ec3368f2d"
+    },
+    {
+      "path": "docs/evidence/0073/logs/qwen-word-retry1.log",
+      "sha256": "a0968bb7e14b0aad713c33c4cfae3f1b52c63f8207ae21de3316d929e9e18f9d"
+    },
+    {
+      "path": "docs/evidence/0073/rejected-takes.json",
+      "sha256": "96f707313467cf7f8cb5025c369f1ba273349b98199029f2276f332a5140a79f"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/0f3b02ba944fc10d0e5847635809687f1b317668c3d3b398450b54f27c0bc9a2/line-label-bench.provenance.json",
+      "sha256": "14767af2d411b23023f9d9e165752376d46d6ba8de5785db00f4cabb96c6e0e5"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/0f3b02ba944fc10d0e5847635809687f1b317668c3d3b398450b54f27c0bc9a2/line-label-bench.wav",
+      "sha256": "0f3b02ba944fc10d0e5847635809687f1b317668c3d3b398450b54f27c0bc9a2"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/21ed8366f6ff75b7fbe0820c540d48354ccc59c9941f4014adefb716ad6d6d74/line-label-white.provenance.json",
+      "sha256": "ede2531fdc21dbdddd2afc57e838dd6387fc0680f138dd360f4e242e22cf4e9f"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/21ed8366f6ff75b7fbe0820c540d48354ccc59c9941f4014adefb716ad6d6d74/line-label-white.wav",
+      "sha256": "21ed8366f6ff75b7fbe0820c540d48354ccc59c9941f4014adefb716ad6d6d74"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/2d2247c7e86b824bfc39c721d0fafab1af22def73fe5af61f054c603d8a77c52/line-48aacdeab5f7e8a7335c3864d4c9c3187dcf7880a85b7b9a40f55b9b7151c9ce.provenance.json",
+      "sha256": "c603af8c8fd10c78f6f8acde44f97aab42b5fd66c7575eea314157df427ef267"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/2d2247c7e86b824bfc39c721d0fafab1af22def73fe5af61f054c603d8a77c52/line-48aacdeab5f7e8a7335c3864d4c9c3187dcf7880a85b7b9a40f55b9b7151c9ce.wav",
+      "sha256": "2d2247c7e86b824bfc39c721d0fafab1af22def73fe5af61f054c603d8a77c52"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/2e052554e2ec694b0732c64bb5b3aae8e69cf3e411cc90bfc346f0b31c9b1b3d/line-doorway.provenance.json",
+      "sha256": "766b072628f0cf9800044e85e7d1e2cac6753b65971b32a31dacdaff498b8d98"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/2e052554e2ec694b0732c64bb5b3aae8e69cf3e411cc90bfc346f0b31c9b1b3d/line-doorway.wav",
+      "sha256": "2e052554e2ec694b0732c64bb5b3aae8e69cf3e411cc90bfc346f0b31c9b1b3d"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/50975938907eaf1e5f68684fb680e1f2e3268f20260f297a23e124e55a3b13c5/line-lamp-tight.provenance.json",
+      "sha256": "7eff1110896e8e06d21b0e370c190ed3ca79fe2082b212441895b852222b1701"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/50975938907eaf1e5f68684fb680e1f2e3268f20260f297a23e124e55a3b13c5/line-lamp-tight.wav",
+      "sha256": "50975938907eaf1e5f68684fb680e1f2e3268f20260f297a23e124e55a3b13c5"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/8a3ef661bca68349cca0a461805a06e6f052b3b6de5e49e17ce5fe254f2acced/line-action-begin.provenance.json",
+      "sha256": "c4f656e901cf63f1ebef2099f33545e847ba89bd83a80fa51258931b4cea81af"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/8a3ef661bca68349cca0a461805a06e6f052b3b6de5e49e17ce5fe254f2acced/line-action-begin.wav",
+      "sha256": "8a3ef661bca68349cca0a461805a06e6f052b3b6de5e49e17ce5fe254f2acced"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/8acc1ade1e795864ef4b63c6bc39cb5bda4ca3120ebbb371f68e125e1474a71a/line-a00e19fb6fd7917efaf080a2e4c986d10c77627dd24af902cfaeb9d0a58a009f.provenance.json",
+      "sha256": "6f82e3c39a6812089260d45413a22910c5b381512622e464d7ae1c5edfcacdff"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/8acc1ade1e795864ef4b63c6bc39cb5bda4ca3120ebbb371f68e125e1474a71a/line-a00e19fb6fd7917efaf080a2e4c986d10c77627dd24af902cfaeb9d0a58a009f.wav",
+      "sha256": "8acc1ade1e795864ef4b63c6bc39cb5bda4ca3120ebbb371f68e125e1474a71a"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/a68f279abc032e762651a17a6b449f51d0a510159f9c299d104eea99e1163332/line-gift.provenance.json",
+      "sha256": "5a5cd60413f45e67087b6005805399527e953fa8751317056ad1a72fb68656dc"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/a68f279abc032e762651a17a6b449f51d0a510159f9c299d104eea99e1163332/line-gift.wav",
+      "sha256": "a68f279abc032e762651a17a6b449f51d0a510159f9c299d104eea99e1163332"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/a8aee0d81483575981a2e766ca9a53b13d7df130f78e9384cc707c506fccf57a/line-gift.provenance.json",
+      "sha256": "8d4e4b55af3c476542b80b8090681ba16c95dc580d2d8919765c393c3bb1d1ab"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/a8aee0d81483575981a2e766ca9a53b13d7df130f78e9384cc707c506fccf57a/line-gift.wav",
+      "sha256": "a8aee0d81483575981a2e766ca9a53b13d7df130f78e9384cc707c506fccf57a"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/b659078db8c1c9e75f7188bae75d8fc49e3c3865e023f5eb8607d90c8a08c263/line-lamp-returned.provenance.json",
+      "sha256": "d14c4b6e4f17c3c7df42311bbc324ae61078dae509fbb7232d5613f976edce09"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/b659078db8c1c9e75f7188bae75d8fc49e3c3865e023f5eb8607d90c8a08c263/line-lamp-returned.wav",
+      "sha256": "b659078db8c1c9e75f7188bae75d8fc49e3c3865e023f5eb8607d90c8a08c263"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/c3ec9a63fe20778831856b90a3cc3dd39510f1934c52a9a103d3a0eb35fb7f43/line-rotate.provenance.json",
+      "sha256": "0c2609dfbed0a05fcb4999778c6ca71433f11619782e914a4b9c360ae49a635e"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/c3ec9a63fe20778831856b90a3cc3dd39510f1934c52a9a103d3a0eb35fb7f43/line-rotate.wav",
+      "sha256": "c3ec9a63fe20778831856b90a3cc3dd39510f1934c52a9a103d3a0eb35fb7f43"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/d664d16e78f12b6a68a2fc6bf043a00b2916869cf4d106b1c16925a94c4206e2/line-lamp-loose.provenance.json",
+      "sha256": "e13c202d2194dbb479e917d943e5844ffb375c673529000d1818a9bfa65dd46c"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/d664d16e78f12b6a68a2fc6bf043a00b2916869cf4d106b1c16925a94c4206e2/line-lamp-loose.wav",
+      "sha256": "d664d16e78f12b6a68a2fc6bf043a00b2916869cf4d106b1c16925a94c4206e2"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/f06e0747cb1c9cf506da8622b841623a9c2538660a260d7d9f39578e56e72e34/line-label-door.provenance.json",
+      "sha256": "6481eb2c57d0f90f5446427284634021539bd6adfe738a3ebe8f9434a6613f71"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/f06e0747cb1c9cf506da8622b841623a9c2538660a260d7d9f39578e56e72e34/line-label-door.wav",
+      "sha256": "f06e0747cb1c9cf506da8622b841623a9c2538660a260d7d9f39578e56e72e34"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/f15f1663c9252758a211d3e8367b6c8f530c2f61876c73db9e3506fb4620f209/line-94071bc83fe7641966cc896d246319a6c75345dcea1a620f270acadab78a9f7d.provenance.json",
+      "sha256": "7be233785ba6000031710bbf031e990efedfa0462502d5f1887180c6c3325e93"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/f15f1663c9252758a211d3e8367b6c8f530c2f61876c73db9e3506fb4620f209/line-94071bc83fe7641966cc896d246319a6c75345dcea1a620f270acadab78a9f7d.wav",
+      "sha256": "f15f1663c9252758a211d3e8367b6c8f530c2f61876c73db9e3506fb4620f209"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/fe25df45f201f5b0fccdb4e54f7a39ca214218db914fc7b0bdbec66f9bd1949b/line-welcome.provenance.json",
+      "sha256": "b3bf7663571b67f2b2021166ed2a2c06b20f9c492ae967c0caa2ab2ac5202fa8"
+    },
+    {
+      "path": "docs/evidence/0073/rejected/fe25df45f201f5b0fccdb4e54f7a39ca214218db914fc7b0bdbec66f9bd1949b/line-welcome.wav",
+      "sha256": "fe25df45f201f5b0fccdb4e54f7a39ca214218db914fc7b0bdbec66f9bd1949b"
+    },
+    {
+      "path": "docs/evidence/0073/representative-speech.json",
+      "sha256": "a2ce8e255b6bbc8e4c21eb2ada623fb1978900f0ee069e006ed93d738e8d1d52"
+    },
+    {
+      "path": "docs/evidence/0073/representative-speech.wav",
+      "sha256": "c3caf6293134a9734b5e4c50b314ef0389ab78c1b70a1f49ff69dd2f699c845c"
+    },
+    {
+      "path": "docs/evidence/0074/README.md",
+      "sha256": "0070e432163654cd25152ad5b90b06d6028e08eaff7bf1471dd4e77780e70248"
+    },
+    {
+      "path": "docs/evidence/0074/final/apartment-encoded-frame.jpg",
+      "sha256": "27217c5a919802e6e33ecbd7197d012bd1d1373745f841e1677db333ca9b74bc"
+    },
+    {
+      "path": "docs/evidence/0074/final/apartment.ffprobe.json",
+      "sha256": "bde41fb787911dd52af7b32a11dea06940dfe80bb4087ddc455c99927b4e7f9d"
+    },
+    {
+      "path": "docs/evidence/0074/final/apartment.verification.json",
+      "sha256": "2d814cce813c20a01f8eaaf2c231dd6795f1a80b3acdc5458be0ea0284f547ac"
+    },
+    {
+      "path": "docs/evidence/0074/final/capture-proof.json",
+      "sha256": "724fd1a0dad1a38a55cc52a837b15fd09a6111de0641c44caf6187b6eda45c48"
+    },
+    {
+      "path": "docs/evidence/0074/final/cats-encoded-frame.jpg",
+      "sha256": "e4441f8121064bac5a79daa038f83ae17083b22901412a04bfd116fbedc60bfa"
+    },
+    {
+      "path": "docs/evidence/0074/final/cats.ffprobe.json",
+      "sha256": "8391f5f9f452970f1ad54db5faeef1a6c918def267822b565e479115a2fb9f8b"
+    },
+    {
+      "path": "docs/evidence/0074/final/cats.verification.json",
+      "sha256": "e858e85c36b1def0b7ef2017710578c82df73017051899a915d4d33daea4dbac"
+    },
+    {
+      "path": "docs/evidence/0074/final/garden-encoded-frame.jpg",
+      "sha256": "61eb326f19e66a91dae9eabdd157b10ddfae27c8b7eccd8395ec11567cbac85c"
+    },
+    {
+      "path": "docs/evidence/0074/final/garden.ffprobe.json",
+      "sha256": "e0fe5976ec8ab49c67389cf6dfc7b7dcb70e5ac5078575d8a2586538649dd5c9"
+    },
+    {
+      "path": "docs/evidence/0074/final/garden.verification.json",
+      "sha256": "e44a4264ceb1143709f9d1cb31bc7b36f6564feeaa282725bbc4be3c75620d79"
+    },
+    {
+      "path": "docs/evidence/0074/final/neighbourhood-combined.ffprobe.json",
+      "sha256": "2a80997fbc32569ee4ab025ff600ca712e55cd25ca8cff3dc9486690f13eab29"
+    },
+    {
+      "path": "docs/evidence/0074/final/neighbourhood-combined.verification.json",
+      "sha256": "3e76c5b294af49a0d21a8d1033942de6d8ef72e1643bc2009086b4d3fd734146"
+    },
+    {
+      "path": "docs/evidence/0074/final/repairs-encoded-frame.jpg",
+      "sha256": "02f97b89e9751154d1f0d4d1bd4cdb2995d2eb04e73918bc69a9fd61e3f85208"
+    },
+    {
+      "path": "docs/evidence/0074/final/repairs.ffprobe.json",
+      "sha256": "1bdadd5244adaa19a2faadf3f44f6a8933fe3cb1731a1362f3daff24640d2e1b"
+    },
+    {
+      "path": "docs/evidence/0074/final/repairs.verification.json",
+      "sha256": "1cdb85706a138f2e53d37c6b05fb95659686982d91939d16a73bc8508ad75d00"
+    },
+    {
+      "path": "docs/evidence/0074/final/walkthrough.ffprobe.json",
+      "sha256": "ecfb07655cb80f0910aa2678eb663d6ced0e211a6c9cd0b72dd7358021f518fa"
+    },
+    {
+      "path": "docs/evidence/0074/final/walkthrough.verification.json",
+      "sha256": "26eb0513a6e91874946de415c72bc58244dda05af33c5bc63815ae7916eb59dc"
+    },
+    {
+      "path": "docs/evidence/0074/rehearsal-ffprobe.json",
+      "sha256": "89587853fed38cd66d51b8e41e393473811a40313b95846134a04b1e4bdcd167"
+    },
+    {
+      "path": "docs/evidence/0074/rehearsal-speaking.jpg",
+      "sha256": "c96c434047aabc7eef93bb59b38218f94805496d1843f5c435455600e4943f34"
+    },
+    {
+      "path": "docs/evidence/0074/rehearsal-verification.json",
+      "sha256": "d916923c8fdecf5d64fd2cad604f3f2cff0b6b5636a6fcd2766d1d2fc722782f"
+    },
+    {
+      "path": "docs/evidence/0075/README.md",
+      "sha256": "7fc6b47f351f76d18c25e43b7a8d02085c4d2bdb50efbe25515230520334eb0e"
+    },
+    {
+      "path": "docs/evidence/0075/local-ui/README.md",
+      "sha256": "c57a7701a10a55343387fdbd54f5cbce025df6e5dfa070414c3650d49187446a"
+    },
+    {
+      "path": "docs/evidence/0075/local-ui/desktop-apartment.png",
+      "sha256": "6bc9cd639dd63255df273764da6cfb15c4257c343bfc0010aefc8752b7852738"
+    },
+    {
+      "path": "docs/evidence/0075/local-ui/desktop-cats.png",
+      "sha256": "80e7f6431cb6acbb7a0aff304ca729d1a0907456e0fededd1957bbb5a46cb25b"
+    },
+    {
+      "path": "docs/evidence/0075/local-ui/desktop-garden.png",
+      "sha256": "e728a8a74cf1664fcd62c985b282bd8538fd4d3bae107ae53b6a052b1f69205a"
+    },
+    {
+      "path": "docs/evidence/0075/local-ui/desktop-repairs.png",
+      "sha256": "aa13b86adc7f134589c0155f22e000dccad144c385125d46314c061582256d13"
+    },
+    {
+      "path": "docs/evidence/0075/local-ui/phone-apartment.png",
+      "sha256": "14806eb6aaf479da627cc06e6230725738ac2d97e919d501eddc6e70671c9b2d"
+    },
+    {
+      "path": "docs/evidence/0075/local-ui/phone-cats.png",
+      "sha256": "4c118fba68c5af54538aa6837a75cf3b6d4e68b28107f62d788753b24451c3b6"
+    },
+    {
+      "path": "docs/evidence/0075/local-ui/phone-garden.png",
+      "sha256": "029b18de926d79dd566627d8c0787674f67c73e24b48dcce7d3c285ae4091525"
+    },
+    {
+      "path": "docs/evidence/0075/local-ui/phone-repairs.png",
+      "sha256": "6d99be52bbe559017c75d683a2ba9769667dc1f3a85d44b2fc33b744a4ae6bc4"
+    },
+    {
+      "path": "docs/evidence/0075/local-ui/release-audio-gates.md",
+      "sha256": "7fe5d4bf284b996806ec5b9deb2542eb7213950ffce7d75aeb8fd319b9f0538e"
+    },
+    {
+      "path": "docs/evidence/0075/parent-video-check.json",
+      "sha256": "53f6b7418966bda4c10c67a6a02287215d178aa4fccde84fcdeb2dcfec4565a0"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/README.md",
+      "sha256": "fc9d8e6f530939c6f495d56cfb888068004922e5763bf03d3c5fca95c48dbd5b"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/ambience-native-events.jsonl",
+      "sha256": "afcddf7c2ce1f5487e93de0d6d5da8396f77dd049c1f5514593a46468ce385c4"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/build-identity.json",
+      "sha256": "c4280aa79bd1b5b6d0013c0f0e4817525ec205d0e91ec9b01801733fad67e0f1"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/desktop-apartment.png",
+      "sha256": "6bc9cd639dd63255df273764da6cfb15c4257c343bfc0010aefc8752b7852738"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/desktop-cats.png",
+      "sha256": "0588cdf6f166a98330c121fc17d7c684d9cfd2663c07cd3cf60d677478278acd"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/desktop-garden.png",
+      "sha256": "92e8a19f2dd27444975b10a9a620c36779276f9070e8c6457034f7712df73495"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/desktop-real-offline-return.png",
+      "sha256": "4326a7ce916f8c7b65cfd40ffd463c06626caff5a90d848cdf7bf96c3d637d1d"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/desktop-repairs.png",
+      "sha256": "bcfadc94e89e3e3b073daf43761f23840d208e23c61636e9c94708dac4833639"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/native-speech-events.json",
+      "sha256": "6c8988cc27e01601fbb3d9c38af60dc3b2a36ca28694f2acb657d30cfc04e78c"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/phone-apartment.png",
+      "sha256": "14806eb6aaf479da627cc06e6230725738ac2d97e919d501eddc6e70671c9b2d"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/phone-cats.png",
+      "sha256": "20df53a05dbfa1ad26b4c99f3a2af75a7b6addf4f3d31f18e08df047a9d292b3"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/phone-garden.png",
+      "sha256": "84beb5253e105be4975f7976e57c07123e7cf5cf482a3d20c541f6e17ed5fc16"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/phone-integrated-narrow-320.png",
+      "sha256": "332708680c032e9a96e4af10668a33cc46e3f519a329f5b8cba25a43bccebdcd"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/phone-integrated-settings.png",
+      "sha256": "c6d2eb594f51e785a460a1e42171805cfd0bc9c70577086df534e8cfbd3a8a5e"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/phone-real-offline-return.png",
+      "sha256": "801c9b895eb0189617a9b2c4f26895c95a669d0ae226c3694d3886ab86045bae"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/phone-repairs.png",
+      "sha256": "91183797d5dfb49a8cc99e94bdd703559768ccffa084c6a94edf7985d1496c01"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/production-results.json",
+      "sha256": "e1e03596a0bf0c6371c0fcbc9861c438ad2c73c31a80222a71e4afd894e60368"
+    },
+    {
+      "path": "docs/evidence/0075/release-7b27ca4/regression-results.json",
+      "sha256": "353f98277f47b6940cd2851d30ec11a11161e9749bb707054cd760e5cf53bdb1"
+    },
+    {
+      "path": "docs/evidence/0075/reviews/audio-final-assets.json",
+      "sha256": "78d005f0532c94ff6bff6e724a1d075b223a02be31685665d8697dabcd58d5e2"
+    },
+    {
+      "path": "docs/evidence/0075/reviews/audio-independent-asr.json",
+      "sha256": "603c654bf0f59debf87ab24504f8e83f216267fa1c0e6d4808031544a44c474e"
+    },
+    {
+      "path": "docs/evidence/0075/reviews/audio-source-checks.json",
+      "sha256": "f9c551ca5afb78d3e3784a72c2bdbb9cca8cf3e40c8de3c6312c513cc0c77b7e"
+    },
+    {
+      "path": "docs/evidence/0075/reviews/independent-audio.md",
+      "sha256": "aae796698f1ea78775f6dc106e1003ed42abdf6914487979face29e747760d21"
+    },
+    {
+      "path": "docs/evidence/0075/reviews/independent-game.md",
+      "sha256": "b6785cd1e32f884f4962de5a5c4bc64194bbf32939937e8669ecf2b75cac0231"
+    },
+    {
+      "path": "docs/evidence/0075/reviews/independent-production-media.md",
+      "sha256": "44da1237b14afdec9383f1369b7581299e416a3fbac73452de6e29c6a9bcc4f3"
+    },
     {
       "path": "docs/evidence/0077/README.md",
       "sha256": "2d7c7130d4b4b7ce58f0298977e2ddf6bd0fc0d313efa822d4c0c721a54a5949"
@@ -15294,6 +16952,310 @@
       "sha256": "f8f00df29fa98d993c0b2ab49bc1622df1c6a74f3bcb278d769e87b3d521ddda"
     },
     {
+      "path": "docs/tickets/0001-choose-first-language.md",
+      "sha256": "4b001c51c2ddaacf3a00f36ccc7a17832c286387210bfb567cf054bc4836cb60"
+    },
+    {
+      "path": "docs/tickets/0002-paper-prototype-one-counter.md",
+      "sha256": "d997c803017e219c1e5f5cc79a953fd8c1162b10615f7e0fc3c9496bd4599041"
+    },
+    {
+      "path": "docs/tickets/0003-spike-constrained-generation.md",
+      "sha256": "dffcf85142a51e9a170d45037c1855588b93ac1181ca28e31bdbd97b9a0ca9c3"
+    },
+    {
+      "path": "docs/tickets/0004-pin-down-the-hook.md",
+      "sha256": "4f664f756e47a8d1e8c609936d4655864c07afe2e51a7bb2c18b48bdc3acd380"
+    },
+    {
+      "path": "docs/tickets/0005-sketch-word-model-and-director.md",
+      "sha256": "e8dc237943793efc585b3a93467e6c35131acaa4af3e7512e98951689947dde6"
+    },
+    {
+      "path": "docs/tickets/0006-breakfast-stall-vertical-slice.md",
+      "sha256": "147b61944bf40bf1fa0e8fe40c50f972a2b4dd1fd4ca77cafcee6707bc6ed575"
+    },
+    {
+      "path": "docs/tickets/0007-style-bible-and-first-assets.md",
+      "sha256": "4a6f24881735a25960c6b2a8d630b4f0d82cd634cb3fc97c35d085c530ba94b1"
+    },
+    {
+      "path": "docs/tickets/0008-voice-bake-off.md",
+      "sha256": "5bbc754abf67607b83bb0b6808c47ed05a78965be8be2000694aa8dac28e3efc"
+    },
+    {
+      "path": "docs/tickets/0009-waiter-mvp.md",
+      "sha256": "4d7bba2854145263e484ab79a132c153ffe629213402e9df45a44c5f8d60835b"
+    },
+    {
+      "path": "docs/tickets/0010-waiter-rules.md",
+      "sha256": "3668bbded0891788b1db5045c849edafd10ee6b23f527a7a9ba1a2f2809b8844"
+    },
+    {
+      "path": "docs/tickets/0011-pixel-restaurant.md",
+      "sha256": "206f44162151f5e67841ea2a66fbb16dc7f725058095a69e522056caa1419b97"
+    },
+    {
+      "path": "docs/tickets/0012-mandarin-content.md",
+      "sha256": "e5d4ed727cd39902d5364de346e945939312e87b8ae28ed2bf0fe3191f930b80"
+    },
+    {
+      "path": "docs/tickets/0013-minimax-voice-samples.md",
+      "sha256": "112077f01f20107509a82478a1d3bd6a4493fa2735358fa7639c92fccaa588f3"
+    },
+    {
+      "path": "docs/tickets/0014-fish-voice-samples.md",
+      "sha256": "2bdbcdd34dcf6d390d1d1129ed642497d50685688bcf299942e325e133edc90b"
+    },
+    {
+      "path": "docs/tickets/0015-openai-voice-samples.md",
+      "sha256": "50a500399812a483e3d7487878891895cc7b296127507b0e98fb1a89f360175b"
+    },
+    {
+      "path": "docs/tickets/0016-qwen-local-voice-samples.md",
+      "sha256": "c206eb9863031acbb090cda41891c7e8798201962aeb24c502ddec6f06cd4b4d"
+    },
+    {
+      "path": "docs/tickets/0017-kokoro-local-voice-samples.md",
+      "sha256": "3da742152b06923977fb76ea54ca879acc4c279c23193568dfa4d127ef912970"
+    },
+    {
+      "path": "docs/tickets/0018-character-voices.md",
+      "sha256": "e8cd5f496810f906683dc37044eb74c33d295666df3a860470cf13682f524f05"
+    },
+    {
+      "path": "docs/tickets/0019-content-audio-pipeline.md",
+      "sha256": "1f5c5c43fa3e57bc8d6af4abb34fa737e70b995f2da26aec32f514c619ea4661"
+    },
+    {
+      "path": "docs/tickets/0020-github-pages.md",
+      "sha256": "0e6ab6bc7527bbe9ef5e43b39480f07ef6df9ff70ec0a3c5b3e4b47ccfe15f25"
+    },
+    {
+      "path": "docs/tickets/0021-first-dialogue-audio.md",
+      "sha256": "38aa8240aad2dc925f00585401a083143004b6904abd85b8a55ae9f2cf2ab5ad"
+    },
+    {
+      "path": "docs/tickets/0022-waiter-facing-and-tray.md",
+      "sha256": "cf9a32351d0892d9fdaf86778051e44ba2399b65805e18aa39930b8a25afb3c2"
+    },
+    {
+      "path": "docs/tickets/0023-usability-break-review.md",
+      "sha256": "e7b10a2fd7ed5259ec027b4e5dd7180d602bdc0c8a8520698a4b4a8540fbbe68"
+    },
+    {
+      "path": "docs/tickets/0024-personable-character-direction.md",
+      "sha256": "89a1a5ec27c03304396f0203cedc43c2b37bb96d28a7efabca60c57f7d2bc8a1"
+    },
+    {
+      "path": "docs/tickets/0025-word-card-focus.md",
+      "sha256": "57b5de76866e1ae297cde10a50081b4d763b73650e795313bfee11fa7488a982"
+    },
+    {
+      "path": "docs/tickets/0026-save-domain-validation.md",
+      "sha256": "ed078a148d6ad87fbfe1fba670c48dfad720aafb4c9d4a28909fc6eead39e8aa"
+    },
+    {
+      "path": "docs/tickets/0027-learning-help.md",
+      "sha256": "63052bdce8bdd40205067753f6011843f50681e5d0b8a7025031b2c5dd0c1e97"
+    },
+    {
+      "path": "docs/tickets/0028-calm-game-ui.md",
+      "sha256": "ade1ff61864d463e6d73d7bde3d4baafc25b52b75d94ba60bad82d21145028ac"
+    },
+    {
+      "path": "docs/tickets/0029-character-hair-and-eyes.md",
+      "sha256": "fc2954dcb0b8b26f17bfb11cccbb1c582774018076fc1e13d6aea631d28e2976"
+    },
+    {
+      "path": "docs/tickets/0030-overnight-pstack-pass.md",
+      "sha256": "257e7cf0b58d2ba90ff1d4d385ea1490b56e6b711f3799ff1288265d0ae06961"
+    },
+    {
+      "path": "docs/tickets/0031-repeatable-silent-verification.md",
+      "sha256": "50ae73b3f9d0ffdfec6058922fe622eec76827448d95038dee8304e07a96c6ea"
+    },
+    {
+      "path": "docs/tickets/0032-rules-invariants.md",
+      "sha256": "2795174ddd4970d37c1b9dbe023c96a23c3a1c1dd1dd643463c92cac847497ca"
+    },
+    {
+      "path": "docs/tickets/0033-save-recovery.md",
+      "sha256": "986622126dd957101c9e1837c93d5ba756aec7697df78996ca87486114a43e59"
+    },
+    {
+      "path": "docs/tickets/0034-audio-lifecycle.md",
+      "sha256": "c79cc60634bce7807ed080426bb4d466c8f1a19e7970e4dfe1fb65644edeae95"
+    },
+    {
+      "path": "docs/tickets/0035-offline-release.md",
+      "sha256": "c7e0f5933db3f09026f94c35d7dab7b7f7ce79a47f5fbf875dc6744719500590"
+    },
+    {
+      "path": "docs/tickets/0036-phone-polish.md",
+      "sha256": "a6b571546d3f5c20a5aae01a505ccf472a4f1f52cdb6b6275dff64296d509436"
+    },
+    {
+      "path": "docs/tickets/0037-keyboard-usability.md",
+      "sha256": "57eeb3f5304efb80b5b3c13b9d198f9df8427b329347bfd9da6bccbda1689c7f"
+    },
+    {
+      "path": "docs/tickets/0038-audio-content-tooling.md",
+      "sha256": "521258af27ab376381486c9016f396778958076575d204e0a58b2683ed537250"
+    },
+    {
+      "path": "docs/tickets/0039-render-review.md",
+      "sha256": "120a9922b157243e3f3fa5410aca5795e3477373913527d4055d850473c45255"
+    },
+    {
+      "path": "docs/tickets/0040-adversarial-review.md",
+      "sha256": "1aee5b8bd800e8fbd1e53f4bfb207e7a004b417b984c0f9d5f6fc082d9c9286a"
+    },
+    {
+      "path": "docs/tickets/0041-scene-scheduling.md",
+      "sha256": "d0f995bc27aa96b1361f06f5c4fc9acb3d224fea208398e89fed7435403ff9f4"
+    },
+    {
+      "path": "docs/tickets/0042-immediate-reload-saving.md",
+      "sha256": "0d2c25f7f5731f880ec567d885cf06cfd18b7504773a6b6b0ae7b7de6976318c"
+    },
+    {
+      "path": "docs/tickets/0043-first-batch-review.md",
+      "sha256": "9652014c4f44e5b32e5d8ea63f30ab8422450d7d257c5233f361c8d1e97e07f1"
+    },
+    {
+      "path": "docs/tickets/0044-keyboard-persistence-review.md",
+      "sha256": "70dbdf11208f60e874fc93c539422df767523783e033d267baa46e95ffa64847"
+    },
+    {
+      "path": "docs/tickets/0045-startup-and-focus.md",
+      "sha256": "6dc2755826f3e9fa3ee42cd765fea11a5b3b34019fc148d48ec79a5d33a0b3c1"
+    },
+    {
+      "path": "docs/tickets/0046-startup-focus-recheck.md",
+      "sha256": "11685e41cc42c8bcaf271598a95930832c5654aecb776949860b4703763aa1e8"
+    },
+    {
+      "path": "docs/tickets/0047-opening-rules-docs.md",
+      "sha256": "02c87671d2bbdc12fb3e229f45bb7519685046079bf1f9eac2efdc8a8df2c2aa"
+    },
+    {
+      "path": "docs/tickets/0048-journal-recovery.md",
+      "sha256": "46f927deae9402f426a618054c688981fa88a1da748983881d1dad2cf7a1b406"
+    },
+    {
+      "path": "docs/tickets/0049-voice-pipeline-english.md",
+      "sha256": "7f2afe41b7fcadf1f270a4387058201920ceea7385d4c3b305fe7af2125c30ed"
+    },
+    {
+      "path": "docs/tickets/0050-opening-content.md",
+      "sha256": "4fe4367c073687e8fa7f8f98988dcd7f8f4492480fff03a41e09563556e1e2a9"
+    },
+    {
+      "path": "docs/tickets/0051-opening-rules.md",
+      "sha256": "eeb4d53446921fb59be7467106b635eb3051612d8cd9471bd7b9c789aac3831b"
+    },
+    {
+      "path": "docs/tickets/0052-scene-seam.md",
+      "sha256": "c96fe2bbe371e92b611100bb2c87d7282ac6409bbf8e755afb5fa1c962cb2ccd"
+    },
+    {
+      "path": "docs/tickets/0053-ward-scene.md",
+      "sha256": "2acbf7f386a898648e3b6abe62becb33744d7eea114ee3d525a7ad25fff49e75"
+    },
+    {
+      "path": "docs/tickets/0054-e2e-opening-hooks.md",
+      "sha256": "201b64661909018ac388e53f300befd5d2d0b912d80ad4018fe57cdf29319008"
+    },
+    {
+      "path": "docs/tickets/0055-opening-ui.md",
+      "sha256": "05b62688465859a710ab0bb8b9a696d9445a56b5d3f4018e7fa2d12db187f28c"
+    },
+    {
+      "path": "docs/tickets/0056-fog-everywhere.md",
+      "sha256": "f80ade17e1a8ac7635919901653d3b5d10b84a204bc1a844dc38d958bd659259"
+    },
+    {
+      "path": "docs/tickets/0057-relevel-restaurant-audio.md",
+      "sha256": "4133dc30de45a351a66f9a92f8bf9faa2c5bc9bbf551c24ad69fe180afdb1b91"
+    },
+    {
+      "path": "docs/tickets/0058-doctor-opening-voice.md",
+      "sha256": "fe4b232916a7f279a663c4bdbac93ba32796ae8a10d4145eaadcf3aa4c889717"
+    },
+    {
+      "path": "docs/tickets/0059-ward-scene-flicker.md",
+      "sha256": "f053356e7ba297d5e731a3db9e315806e0a26fd4a034234b95245319f9a96861"
+    },
+    {
+      "path": "docs/tickets/0060-subdue-grandpa-opening-performance.md",
+      "sha256": "f90630741d49783333b7ba6b0d493cf5b0a909ac509c2b977230ef9d8f5f20a5"
+    },
+    {
+      "path": "docs/tickets/0061-switch-word-card-directly.md",
+      "sha256": "d9122c1cc29120891988acf997620e7b5188135d409b71a871e7e7272d6a803e"
+    },
+    {
+      "path": "docs/tickets/0062-natural-customer-performances.md",
+      "sha256": "37dc8930c027cfa23b3aba97fdd20920f0655e26fe8325e7a5f8221356965216"
+    },
+    {
+      "path": "docs/tickets/0063-restaurant-background-sounds.md",
+      "sha256": "d6853868a6e02b1bdc26e2963056c42af9fd498af727a384ad8181fa1a8befd3"
+    },
+    {
+      "path": "docs/tickets/0064-brainstorm-restaurant-interactions.md",
+      "sha256": "00e9eb5f04b4971e54e130f7892d8a246805b3fe5c4c1268b15ee0cfd530b3b6"
+    },
+    {
+      "path": "docs/tickets/0065-neighbourhood-coordination.md",
+      "sha256": "3860ca0652dd2a4cee7a4cb92dcce824e2f30538c9824f0f3a331b3f1e59ead1"
+    },
+    {
+      "path": "docs/tickets/0066-neighbourhood-foundation.md",
+      "sha256": "b3bfe65ada4c4f4a11834c9a8c1406bd686295e6c234440975923fe16427a75c"
+    },
+    {
+      "path": "docs/tickets/0067-apartment-home.md",
+      "sha256": "f018b151caaa4e86f22d70d012c79a704e52523e8fbd8378147dc4490f023e7b"
+    },
+    {
+      "path": "docs/tickets/0068-neighbourhood-cats.md",
+      "sha256": "8aa9a46b661b176e8f973bc727869a3ea1b423555792591b636a6f87a90585ee"
+    },
+    {
+      "path": "docs/tickets/0069-repair-workshop.md",
+      "sha256": "9ac165505880ab470884b7510fc745f2b7e6dcce19d44e91d91335f3064b5d1c"
+    },
+    {
+      "path": "docs/tickets/0070-rooftop-garden.md",
+      "sha256": "93fb416daf961a01ac8c762b88789a2eb9e4584728a7f430d5f9edb5406c90e9"
+    },
+    {
+      "path": "docs/tickets/0071-cumulative-earnings-label.md",
+      "sha256": "e65495431e4c640236b028e14d737b131aae5199cc0b0432e8c289644043c651"
+    },
+    {
+      "path": "docs/tickets/0072-served-food-props.md",
+      "sha256": "1c8daf4fbd5a35ccdfe3650ab1fb277ca89e1ec658df72eb8da707dd805fdb36"
+    },
+    {
+      "path": "docs/tickets/0073-neighbourhood-local-voices.md",
+      "sha256": "cdc41ea1e6cb674f4831b603830818e8d4240866c53591f7efeb6aac8b13a9aa"
+    },
+    {
+      "path": "docs/tickets/0074-neighbourhood-playable-demos.md",
+      "sha256": "2b7a755fafcce1d44c924beb4db5fb0ae3d25b736f8bc092a5f459ba07290f95"
+    },
+    {
+      "path": "docs/tickets/0075-neighbourhood-final-verification.md",
+      "sha256": "3559e3a30a4b04b357c7aad040be4da12db58875ef75ab0ad72ed6dee0bed5fe"
+    },
+    {
+      "path": "docs/tickets/0076-native-neighbourhood-listening.md",
+      "sha256": "cf419ae702f3a53ea8c84a91b9d790dc844572383473a435a20a0b78d8ad05e1"
+    },
+    {
       "path": "docs/tickets/0077-language-foundation.md",
       "sha256": "ff5ae2e95c86d82668acc5c7cc791a6a066111fc03590423db5a6f4f42cc289c"
     },
@@ -15316,6 +17278,743 @@
     {
       "path": "docs/tickets/0082-investigate-offline-speech-probe.md",
       "sha256": "48c93a396119bc775dc173a08a8cc1dd86e66b4c1f8c9214633eceac98c2f514"
+    },
+    {
+      "path": "docs/tickets/README.md",
+      "sha256": "466d2f70efac21492a9721c2be00c7fd80ca91fd9df7930c354e07b5dc02f9bf"
+    },
+    {
+      "path": "docs/tickets/attachments/0059-ward-flicker.png",
+      "sha256": "e1fa628cc090a8e17130b4883fec2926257d2006358e7bbe3d29bed9a9a634c0"
+    }
+  ],
+  "applyBase": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+  "foundationArchives": [
+    {
+      "oldPath": "docs/evidence/0079/decisions.tsv",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "c772e7f40fef793ed01a25fbc68ac406bb97e8ce40dff6509a1e15629e7707c5",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0079/decisions.tsv"
+    },
+    {
+      "oldPath": "docs/evidence/0079/goal.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "3e773bbe09c5af735483718ea167d1094c7cc8d14bed66e12cd941d10dd34bce",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0079/goal.md"
+    },
+    {
+      "oldPath": "docs/evidence/0079/integration.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "6c55793036c107d88f908b79048f2063a9c83016d9b30a2811adc6e13591f84e",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0079/integration.md"
+    },
+    {
+      "oldPath": "docs/evidence/0079/layout-proof.json",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "35af7cffa19dee365b53fff77801d5738db5f15c052125c22895e7c2a3bdcfca",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0079/layout-proof.json"
+    },
+    {
+      "oldPath": "docs/evidence/0080/README.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "68bd843870c4c38182c0f69cb7127f6b11c42568130389767340183526b27f8b",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0080/README.md"
+    },
+    {
+      "oldPath": "docs/evidence/0080/capture-app.mjs",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "518bd6b1de1a20e569245cf42b2d660c21fcaa5c3ddef150d94c6032a4131e11",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0080/capture-app.mjs"
+    },
+    {
+      "oldPath": "docs/evidence/0080/geometry-proof.json",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "92e4553f6b86fe03db6acb6e40a2f7c6f64ec873628c3b6d51d9f76e3dc26513",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0080/geometry-proof.json"
+    },
+    {
+      "oldPath": "docs/evidence/0081/desktop-apartment.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "c7b7abb656a65a4153abc553518af90f24a35c4692f0224b47b3c448f69d0771",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/desktop-apartment.png"
+    },
+    {
+      "oldPath": "docs/evidence/0081/desktop-evening-lit.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "1f18afbc1cc44c98eab8793c37ae4b0fd362531c2e9c4746db28af0012411d16",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/desktop-evening-lit.png"
+    },
+    {
+      "oldPath": "docs/evidence/0081/desktop-evening-materials.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "1f18afbc1cc44c98eab8793c37ae4b0fd362531c2e9c4746db28af0012411d16",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/desktop-evening-materials.png"
+    },
+    {
+      "oldPath": "docs/evidence/0081/desktop-morning-materials.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "0966f2a7c66969da9fd03fec8406328c501a4ab97c97a1082c7bb88aa176f959",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/desktop-morning-materials.png"
+    },
+    {
+      "oldPath": "docs/evidence/0081/desktop-normal-game-reloaded.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "e1ca01c9f512dc2acabe33d774c9caf1e7bc09080bb9d6a251313cf7d665eb78",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/desktop-normal-game-reloaded.png"
+    },
+    {
+      "oldPath": "docs/evidence/0081/desktop-normal-game-table.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "f1667483c7634545e20446587980c6e0dfdf6dee744c0334b63f540fed1cfa30",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/desktop-normal-game-table.png"
+    },
+    {
+      "oldPath": "docs/evidence/0081/desktop-residential-hall.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "1a2127f796250e1796a89a89a124d1bcfd903b948e75ec4b4be10e7b9bfa8681",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/desktop-residential-hall.png"
+    },
+    {
+      "oldPath": "docs/evidence/0081/desktop-residential-stairs.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "dc75111d7d7d862bdfb8b1154ff8103ea2d7042d1f84743fd948fa28e1d13e1d",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/desktop-residential-stairs.png"
+    },
+    {
+      "oldPath": "docs/evidence/0081/integration.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "67a2a578e09d64d3dfb84fde3be86de04729e2375647e5c73e095353baeb019a",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/integration.md"
+    },
+    {
+      "oldPath": "docs/evidence/0081/ledger.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "ee62cf519b7bc52ce84f4c219b7eb7d0c058e5df9780b0597569bf0b1cbd6b4c",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/ledger.md"
+    },
+    {
+      "oldPath": "docs/evidence/0081/lighting-proof.json",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "615cf7e484344b3458aac090f5e49a4e710ae117c49b84157a4bd005d39859d7",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/lighting-proof.json"
+    },
+    {
+      "oldPath": "docs/evidence/0081/phone-apartment.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "bc6a81339e5ec595a8af36ae8388d2eee4ee1c85e4b7c07d1327adfbfa9b9503",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/phone-apartment.png"
+    },
+    {
+      "oldPath": "docs/evidence/0081/phone-evening-lit.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "f4f5e5add086a478af5b9df345232fa2386d814e5bc798566132218f40ef9686",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/phone-evening-lit.png"
+    },
+    {
+      "oldPath": "docs/evidence/0081/phone-evening-materials.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "f4f5e5add086a478af5b9df345232fa2386d814e5bc798566132218f40ef9686",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/phone-evening-materials.png"
+    },
+    {
+      "oldPath": "docs/evidence/0081/phone-morning-materials.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "5d163e7129ab0432951c8ad8baeb85327039499ab19ede9eb0d309858882bb16",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/phone-morning-materials.png"
+    },
+    {
+      "oldPath": "docs/evidence/0081/phone-normal-game-reloaded.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "059cbb2faf1d8c59a137a30beb4b8bc22bbd4be259f7e6727977be7147487ee0",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/phone-normal-game-reloaded.png"
+    },
+    {
+      "oldPath": "docs/evidence/0081/phone-normal-game-table.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "ee1bdc062a624380e7ab8cd3ce47dbe0326864fb035821750470c28c3b7f984e",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/phone-normal-game-table.png"
+    },
+    {
+      "oldPath": "docs/evidence/0081/phone-residential-hall.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "88099cb857232675e1d2419fbaf592d060a4226f86aac449a7ea624c45b3860d",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/phone-residential-hall.png"
+    },
+    {
+      "oldPath": "docs/evidence/0081/phone-residential-stairs.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "570df388643aca5f2c465862e8bbeaa7ff3786bd2301610010d186ea6924ecf4",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/phone-residential-stairs.png"
+    },
+    {
+      "oldPath": "docs/evidence/0081/production-proof.json",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "359d7b88f1b53cb58ee0c14812ca4b6df490cbfc9df78a333c3c673fdbb5cbff",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/production-proof.json"
+    },
+    {
+      "oldPath": "docs/evidence/0081/production-proof.mjs",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "dc4549c7335843dc4fa88c4299216ce2796794b6da0937393d875c9d1bbadf19",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0081/production-proof.mjs"
+    },
+    {
+      "oldPath": "docs/evidence/0082/desktop-joinery.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "e2b421c9e02fd5eabd7005b6e3dcbf409beb845b1caa91216d07a1f4905320b4",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/desktop-joinery.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/desktop-lamp.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "eff915524ce41b7c227c5ebec18ae82b68502664cd09b941e25ce91a725195a8",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/desktop-lamp.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/desktop-returned.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "6fbc78c41fe97e0709c84a76024746bbaed0b72b84d19b4ed656867bae13a809",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/desktop-returned.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/desktop-shelf.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "a2ae8be4b39ffc40ea1d93221476302576562ad48f0be55ac998c6c282fdd481",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/desktop-shelf.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/desktop-toy.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "47e00f0bcd7b6209751f98ec78dde7d249bae0fd91e625500e16183eebf8d57d",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/desktop-toy.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/desktop-walk-entry.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "d8239a2ee4921d137915881eb934949ea8fe55c0fecda75fa839dedb12c8c71c",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/desktop-walk-entry.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/desktop-walk-joinery.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "84a5c4f9c74a3e513033b7b4bd80fadc7d49c9fa72ef367cffd7a59dd6fb4bc0",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/desktop-walk-joinery.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/desktop-walk-lamp.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "9b687b65224dba739ec9b350d743e273d20896b84c3af294b5ef972126f6ed52",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/desktop-walk-lamp.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/desktop-walk-shelf.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "2a29a4493f697801ee7f883c0b3791ec1f829807417aebe86c39460a34c1618c",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/desktop-walk-shelf.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/desktop-walk-toy.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "53140c849c5e91523ff00e1668e6aa9c731d17b3c365f559a085a8a23cc61761",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/desktop-walk-toy.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/phone-joinery.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "4144e00e1eeb8438f6687d609635731038af82078e6452d4269a0170258ddc8d",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/phone-joinery.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/phone-lamp.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "5e2c929395fc3c1dda19ecce3b7d4e81e4ece4ea17a080f1df68799913f6c85b",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/phone-lamp.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/phone-returned.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "70e70b5b6bb6abb5cc04b3f4f7e0fb89c76528036ac242905f433971a79c903a",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/phone-returned.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/phone-shelf.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "2a86d804f25790d96f6649228a7114e3101256b906d625d632cca92592f44894",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/phone-shelf.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/phone-toy.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "de9434579b6892bf5e5672ea8803fb213c57ca149befd9dc373ccd34eb309c6c",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/phone-toy.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/phone-walk-entry.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "1fe7a21e4d3248b3f02c5a2b04bde091f3251c478738984be291b0b458eac11e",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/phone-walk-entry.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/phone-walk-joinery.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "225e2998ed09f6f1865bc3eccfd0e4af4618a05dca667ed8036e2bba88e56fb2",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/phone-walk-joinery.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/phone-walk-lamp.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "430a9410165c88a0aa77720b28003ac11f492252ccd2874eddfdd80890d5654b",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/phone-walk-lamp.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/phone-walk-shelf.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "01361cc5aef1aa8bc5c0313d742984d2454645e6a0ff2ba35752bffb075a9c5d",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/phone-walk-shelf.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/phone-walk-toy.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "6c241989c074b505fb03df391e80a86da0ed972eed920170d7b94c7f54b4804f",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/phone-walk-toy.png"
+    },
+    {
+      "oldPath": "docs/evidence/0082/progress.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "af333905aa1a185dba7bf081cbec76800c8ad2cd38283f541a03e57b4ad87d24",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/progress.md"
+    },
+    {
+      "oldPath": "docs/evidence/0082/video/page@e2810f07a6984e83c50c8a65a1b66adf.webm",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/video/page@e2810f07a6984e83c50c8a65a1b66adf.webm"
+    },
+    {
+      "oldPath": "docs/evidence/0082/walk-results.json",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "54139edf2ae60c51f2af659fbf4e9a3031a61ea900b35e5f0a13e66f016fc380",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0082/walk-results.json"
+    },
+    {
+      "oldPath": "docs/evidence/0083/decisions.tsv",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "a3896d5b4b8b513c8ee3c1f78a51960c52527c6303cd390da56faf30f01516db",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0083/decisions.tsv"
+    },
+    {
+      "oldPath": "docs/evidence/0083/goal.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "90eabbd8b624d022bf9fce49fa468f6ee232698339c386f630ee9a2c68ea34af",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0083/goal.md"
+    },
+    {
+      "oldPath": "docs/evidence/0083/integration.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "9c51b90306bf7df2f95721b76d98aba6f6293489c2f5f59519c7827d00c56981",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0083/integration.md"
+    },
+    {
+      "oldPath": "docs/evidence/0083/runtime/desktop-before-ground-input.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "8f0ba5b600b36d99afc694088fd2b2a32a28378f6a36d402a4542c8b54f4d4fb",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0083/runtime/desktop-before-ground-input.png"
+    },
+    {
+      "oldPath": "docs/evidence/0083/walk-proof.mjs",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "e35207cc442f26e7c635e86337b1c7e68dc4d51f547dc0d27c38fe5652d4ccfb",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0083/walk-proof.mjs"
+    },
+    {
+      "oldPath": "docs/evidence/0084/app-traversal.mjs",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "d21f93696b6633759c5ce6684ae46ccfe4ca491756ce8de8c09b12d0ef6aa3ee",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0084/app-traversal.mjs"
+    },
+    {
+      "oldPath": "docs/evidence/0084/app/desktop-movement.webm",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "20fd9b100bd063fee46c6f402d99ddae9b9c2ea067603605bdabc5f192fe28c9",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0084/app/desktop-movement.webm"
+    },
+    {
+      "oldPath": "docs/evidence/0084/app/desktop-park.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "3e5305a3a6a41ed851a0a1f9594a0d518b8ff0e330e2359f2f8a709f325a59c7",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0084/app/desktop-park.png"
+    },
+    {
+      "oldPath": "docs/evidence/0084/app/desktop-reloaded.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "68d89f40ae64461e1b7a8d4a577004be0a4a7b78f2d06036f846123a91e2c0a7",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0084/app/desktop-reloaded.png"
+    },
+    {
+      "oldPath": "docs/evidence/0084/app/desktop-river-arrival.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "b2fbadd4bb7b0c9a9ba0a2860931963910cf4b1a658ae62ff583975bfdd8d822",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0084/app/desktop-river-arrival.png"
+    },
+    {
+      "oldPath": "docs/evidence/0084/app/evidence.json",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "9b202e32bb24a52e9b1396455093954ffadcc1d03fcb5e868970363778b787cc",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0084/app/evidence.json"
+    },
+    {
+      "oldPath": "docs/evidence/0084/app/phone-movement.webm",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "5f3007a26a22c010dd3af4def9a2ba42ea6d1b71f018cd334814b1f216fbf03d",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0084/app/phone-movement.webm"
+    },
+    {
+      "oldPath": "docs/evidence/0084/app/phone-park.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "360a6f59d6472244c9646cb17b5d4a20cd8fecff876c31fb6b10b1f59065846f",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0084/app/phone-park.png"
+    },
+    {
+      "oldPath": "docs/evidence/0084/app/phone-reloaded.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "06b713d3a9ec21626bfb4c77f125633aa90d2dcb36708a447c22e2947ccf6ffa",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0084/app/phone-reloaded.png"
+    },
+    {
+      "oldPath": "docs/evidence/0084/app/phone-river-arrival.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "e7d5065e5788967766b04174efd271c41697da2af04a5f225a92b6a21ec27233",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0084/app/phone-river-arrival.png"
+    },
+    {
+      "oldPath": "docs/evidence/0084/measure-landscape.mjs",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "29bead1326ff9b7773f00bfca6f7904583434c74b91b18207811122f025cfef9",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0084/measure-landscape.mjs"
+    },
+    {
+      "oldPath": "docs/evidence/0084/metrics.json",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "c1471c8fa769be520617b4d3d923afb2d33d6cff36b73070d3590d43bbd05042",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0084/metrics.json"
+    },
+    {
+      "oldPath": "docs/evidence/0084/progress.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "51a1fa099dc5b278cd0108b5e1fe238911042c567d0369a699c0af177fcceb1f",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0084/progress.md"
+    },
+    {
+      "oldPath": "docs/evidence/0085/README.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "11b46df39af65fae11e951769f0d3d0fd1cf6872f32e4f463ef514f6797bd52f",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0085/README.md"
+    },
+    {
+      "oldPath": "docs/evidence/0086/capture.mjs",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "1fbb0c5dbfc7568f424ca03ac450247a26ff7ba76221924a2a64ebccd61b50e2",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/capture.mjs"
+    },
+    {
+      "oldPath": "docs/evidence/0086/cost.json",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "c0cfa77dbc5d70084308d37a5e9938130eadd7af68cfbfc4d2b60f112fdff240",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/cost.json"
+    },
+    {
+      "oldPath": "docs/evidence/0086/desktop-capture.json",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "84ac2e7893f298adde01c365997dbb504285cb4a64a2a01ba03bf1d69e762f0a",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/desktop-capture.json"
+    },
+    {
+      "oldPath": "docs/evidence/0086/goal.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "4779ff6adaf113bd8bcce17d7803a3a07f80502dde8632df029bf3ec6870d5c9",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/goal.md"
+    },
+    {
+      "oldPath": "docs/evidence/0086/integration.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "0cc719c222e8c89ee41a035e106e7ca36e32f4b841677cee291eb7baa92efd2e",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/integration.md"
+    },
+    {
+      "oldPath": "docs/evidence/0086/phone-capture.json",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "84ac2e7893f298adde01c365997dbb504285cb4a64a2a01ba03bf1d69e762f0a",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/phone-capture.json"
+    },
+    {
+      "oldPath": "docs/evidence/0086/progress.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "e31276634036d3ccf3a474b095108da8e8522472ead94403a773f617ef11e632",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/progress.md"
+    },
+    {
+      "oldPath": "docs/evidence/0086/screens/desktop-camera.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "c5a895c38cd136aa27763846bc324edccbe8caedc4973eabdc68e486e1c9be86",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/screens/desktop-camera.png"
+    },
+    {
+      "oldPath": "docs/evidence/0086/screens/desktop-evening.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "45b4a07ecfeea33b169758ebddb35bd145d51aba912255e367a4efe65444bf5f",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/screens/desktop-evening.png"
+    },
+    {
+      "oldPath": "docs/evidence/0086/screens/desktop-morning.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "d3660ad03f3701f8c68a28ee3d947d49a459402f8b2bd84b099f60a4ea3c3fe3",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/screens/desktop-morning.png"
+    },
+    {
+      "oldPath": "docs/evidence/0086/screens/desktop-night.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "c2db4167ff3f59c994588e97c534551db3455b23d9b54b9e64df4581c0334a83",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/screens/desktop-night.png"
+    },
+    {
+      "oldPath": "docs/evidence/0086/screens/desktop-noon.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "1b304f543cbb4cd0008c8166220385c9cceefd62e650ad6c661ce99cbd7d2f08",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/screens/desktop-noon.png"
+    },
+    {
+      "oldPath": "docs/evidence/0086/screens/desktop-reduced.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "c60c39377daac8bfb110e43b16b9870a91c99eb94e04cfafd8d20ee84fb55a7c",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/screens/desktop-reduced.png"
+    },
+    {
+      "oldPath": "docs/evidence/0086/screens/desktop-wash.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "7c7a94aa10f73e28a1b19cb98c30d47f3db0e5fefff72b6022522adfb17bf8da",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/screens/desktop-wash.png"
+    },
+    {
+      "oldPath": "docs/evidence/0086/screens/phone-camera.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "271f08ed4d52392eb24fd9358fd251b0c2fcd5ba874db19c1ad44c7532426b06",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/screens/phone-camera.png"
+    },
+    {
+      "oldPath": "docs/evidence/0086/screens/phone-evening.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "677f5ed20e02135d1396bf14e7dfbe7a9fb3b5b0522e1955ff91192f46a19a03",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/screens/phone-evening.png"
+    },
+    {
+      "oldPath": "docs/evidence/0086/screens/phone-morning.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "240106a90bca32b4a22603bf7ad1a6f0f5c164d0b2c2e5805e852d6a8d5717a4",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/screens/phone-morning.png"
+    },
+    {
+      "oldPath": "docs/evidence/0086/screens/phone-night.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "b304defc8d9f700d4ee44c88714d0248b5439af2f9ec59b3d9e2958ad44f7843",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/screens/phone-night.png"
+    },
+    {
+      "oldPath": "docs/evidence/0086/screens/phone-noon.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "643d6c41533fdc1d0ebfd01f9bc77bdd5af8aca954069058c6f0dba9c7beed73",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/screens/phone-noon.png"
+    },
+    {
+      "oldPath": "docs/evidence/0086/screens/phone-reduced.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "3647a0e8a6b0a6980e312a7be29dedaf6fdfb2a6115ff046f743a9b7a50bbd4b",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/screens/phone-reduced.png"
+    },
+    {
+      "oldPath": "docs/evidence/0086/screens/phone-wash.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "8ad2dbb67e0725482dad61340d771ca67ef8491971d742ee7f9c181295116755",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0086/screens/phone-wash.png"
+    },
+    {
+      "oldPath": "docs/evidence/0087/decisions.tsv",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "3a0ff96c5ddac0a7e0a83536b67c72ee4c8fc129699d07ba018da9dfe3e21a3a",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0087/decisions.tsv"
+    },
+    {
+      "oldPath": "docs/evidence/0087/design.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "64f8c9a513c85f6784a00726368468a8cf6ff5a55c0a10e583e4f728eb2c1288",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0087/design.md"
+    },
+    {
+      "oldPath": "docs/evidence/0089/capture.mjs",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "4c6c3ed0142f94106ef8fe6b4e1188681708572bb94212191dfbc8cf1de51611",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0089/capture.mjs"
+    },
+    {
+      "oldPath": "docs/evidence/0089/desktop.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "a1c7b9d0ff58a97cf793ef3ee0d238d8f901acb9da0f2caf4dcb787177aa3d82",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0089/desktop.png"
+    },
+    {
+      "oldPath": "docs/evidence/0089/kitchen.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "e0c41627e3ab39022703baf31e65b2217ded3a7c5b4af6665049940fb7676325",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0089/kitchen.png"
+    },
+    {
+      "oldPath": "docs/evidence/0089/ledger.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "166587404d4880aca7629d5b3ad1aeda3c148dc291b911a8f0fde220abf9b23e",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0089/ledger.md"
+    },
+    {
+      "oldPath": "docs/evidence/0089/phone.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "35f6ab64334be485b0b300415c87e25c3e624f5e9e76e90ac085a543198506cd",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0089/phone.png"
+    },
+    {
+      "oldPath": "docs/evidence/0089/reduced.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "a1c7b9d0ff58a97cf793ef3ee0d238d8f901acb9da0f2caf4dcb787177aa3d82",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0089/reduced.png"
+    },
+    {
+      "oldPath": "docs/evidence/0090/1440-bottom.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "a0f9e2fe445e5f1c9b824bbf5569611498fb9cae50d96f048dd1da3d452e08ec",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0090/1440-bottom.png"
+    },
+    {
+      "oldPath": "docs/evidence/0090/1440-top.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "f8f844aa22f1ffc0413d43b63c316e2cf1828b3f79a8b775a5ce00959e54b014",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0090/1440-top.png"
+    },
+    {
+      "oldPath": "docs/evidence/0090/320x320-kitchen-reduce.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "fad9147bd514e3e66e37eb999828af9fc01d00a56266ecc2f3f60510c2dc8b91",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0090/320x320-kitchen-reduce.png"
+    },
+    {
+      "oldPath": "docs/evidence/0090/320x320-normal-reduce.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "5354d121adfd6d4e43b74812819d985e4b8eac3e774fad0df41447c5958b6ea8",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0090/320x320-normal-reduce.png"
+    },
+    {
+      "oldPath": "docs/evidence/0090/320x568-kitchen-reduce.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "98e25e0bbe396580f6d433e51ffcde71063c53baed94377d5b5720c8c993771e",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0090/320x568-kitchen-reduce.png"
+    },
+    {
+      "oldPath": "docs/evidence/0090/320x568-normal-reduce.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "4dabb7ba92f7da21cf62b4ac299ed2e61449166e0c9e5c9f005c46465c967bb8",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0090/320x568-normal-reduce.png"
+    },
+    {
+      "oldPath": "docs/evidence/0090/390-bottom.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "a30d17a90af221d7bba1891d29f1ef8bc0e603fead0b0126f99a7c7f853cf1d4",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0090/390-bottom.png"
+    },
+    {
+      "oldPath": "docs/evidence/0090/390-top.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "b3d15821517912a648e267c2e6b95029d6381aed8a1fccc622305719698646f3",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0090/390-top.png"
+    },
+    {
+      "oldPath": "docs/evidence/0090/390x664-kitchen-reduce.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "ca95b504a8be27f1330608dd9ed900aa3edb687309b8d67a6a58f338c7755fd1",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0090/390x664-kitchen-reduce.png"
+    },
+    {
+      "oldPath": "docs/evidence/0090/390x664-normal-reduce.png",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "7a6aa7f0bb7485994a0e764f19fa08c71c462dc034efec951ffb3cd240fefb6a",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0090/390x664-normal-reduce.png"
+    },
+    {
+      "oldPath": "docs/evidence/0090/README.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "454524025f76b95e67a623a4ac4c5c7edbe64b7003f571b01a3f0c30869bbd0d",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0090/README.md"
+    },
+    {
+      "oldPath": "docs/evidence/0090/probe-results.json",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "5934a36dab9bef07b4534340139d27efd627dda62a62eeb1d1e66f1062a59a08",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0090/probe-results.json"
+    },
+    {
+      "oldPath": "docs/evidence/0090/probe.mjs",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "e922cd8d475cfe1806a0b933249ea73845c80c8881ce0cf5b0a367fca5f709f5",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/evidence/0090/probe.mjs"
+    },
+    {
+      "oldPath": "docs/tickets/0080-courtyard.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "536d30c0dd53be4003e09654aad59c31ab78c507a002cc06b4a8c56ae1d6d869",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/tickets/0080-courtyard.md"
+    },
+    {
+      "oldPath": "docs/tickets/0082-workshop.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "f75b9f990fb4dd69425a20926cde71d5e197d92ce2c445177cdc07e547c03ff6",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/tickets/0082-workshop.md"
+    },
+    {
+      "oldPath": "docs/tickets/0083-rooftop.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "e1d3bd4ce18c9fbccdf4d5010ba5d01f5e9a673a488589799a01094f171f7936",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/tickets/0083-rooftop.md"
+    },
+    {
+      "oldPath": "docs/tickets/0085-characters.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "a21fbc92caa00b1739fcfaff53f78ad9f032f587ae52ae02df6fbbc89b8eeacf",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/tickets/0085-characters.md"
+    },
+    {
+      "oldPath": "docs/tickets/0086-atmosphere.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "d250235b82bfdbb4aadb7c83982975d8502e3995a9a448b633ed3ddbaeb96e19",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/tickets/0086-atmosphere.md"
+    },
+    {
+      "oldPath": "docs/tickets/0087-world-life.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "e5bea1f6cd4d54281aa92486a1896c38110067cc153d80b5e54ea19b4b8d2b98",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/tickets/0087-world-life.md"
+    },
+    {
+      "oldPath": "docs/tickets/0088-world-review.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "a7fd51f7ee919d2a6eb09cfd49f4e9d971fda78d063af91246fb5bbb98e97981",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/tickets/0088-world-review.md"
+    },
+    {
+      "oldPath": "docs/tickets/0089-restaurant-world-art.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "4184592eaf5c4fbe4f75c8fb5c7e4308abfc45071581c85c588e719b925c5ab7",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/tickets/0089-restaurant-world-art.md"
+    },
+    {
+      "oldPath": "docs/tickets/0090-contextual-world-ui.md",
+      "sourceHead": "1cf3532e9b40cbdd99d51ee860562e8f292a1d4e",
+      "sha256": "8566e99bb2103d4ba1954068e87caab10c615c30ed10625bae293534bcdebb6b",
+      "archivePath": "docs/world-program/main-reconciliation/archive-1cf3532/docs/tickets/0090-contextual-world-ui.md"
     }
   ]
 }
