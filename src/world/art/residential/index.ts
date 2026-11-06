@@ -321,6 +321,44 @@ export function drawApartmentFurniture(api: ResidentialArtApi, state: State) {
       case 'cushion': case 'cats.cushion':
         box(x, y, .02, endX, endY, .22, p.id === 'cats.cushion' ? [191, 162, 117] : state.colour === 'blue' ? [128, 155, 171] : linen);
         break;
+      case 'blue-vase': {
+        const cx = (x + endX) / 2, cy = (y + endY) / 2;
+        const glaze: Colour = [128, 155, 171];
+        box(cx - .27, cy - .27, 0, cx + .27, cy + .27, .12, [91, 119, 136]);
+        sphere(cx, cy, .44, .48, glaze, 'solid');
+        box(cx - .2, cy - .2, .48, cx + .2, cy + .2, 1.02, glaze);
+        box(cx - .25, cy - .25, .98, cx + .25, cy + .25, 1.09, [157, 180, 190]);
+        box(cx - .14, cy - .14, 1.09, cx + .14, cy + .14, 1.1, [72, 101, 119]);
+        box(cx - .3, cy + .3, .32, cx - .23, cy + .35, .57, [180, 200, 204]);
+        break;
+      }
+      case 'large-basket': {
+        box(x + .03, y + .03, .02, endX - .03, endY - .03, .85, paleWood);
+        box(x + .12, y + .12, .85, endX - .12, endY - .12, .87, [91, 76, 53]);
+        for (let at = .13; at < .8; at += .12) {
+          box(x + .02, endY - .06, at, endX - .02, endY - .02, at + .035, linen);
+          box(endX - .06, y + .02, at, endX - .02, endY - .02, at + .035, [152, 119, 77]);
+        }
+        for (let at = x + .18; at < endX - .1; at += .23) box(at, endY - .035, .12, at + .035, endY - .01, .8, wood);
+        for (let at = y + .18; at < endY - .1; at += .23) box(endX - .035, at, .12, endX - .01, at + .035, .8, linen);
+        const cx = (x + endX) / 2, cy = (y + endY) / 2;
+        const a: [number, number, number] = p.rotation ? [cx, y + .08, .85] : [x + .08, cy, .85];
+        const b: [number, number, number] = p.rotation ? [cx, endY - .08, .85] : [endX - .08, cy, .85];
+        const topA: [number, number, number] = [a[0], a[1], 1.28], topB: [number, number, number] = [b[0], b[1], 1.28];
+        for (const [from, to] of [[a, topA], [topA, topB], [topB, b]]) api.capsule(from, to, .055, .055, () => wood, 'solid');
+        break;
+      }
+      case 'small-lamp': {
+        const cx = (x + endX) / 2, cy = (y + endY) / 2;
+        box(cx - .3, cy - .3, .02, cx + .3, cy + .3, .13, ink);
+        api.capsule([cx, cy, .13], [cx, cy, .83], .05, .05, () => wood, 'solid');
+        box(cx - .5, cy - .5, .75, cx + .5, cy + .5, .83, [205, 182, 139]);
+        box(cx - .43, cy - .43, .83, cx + .43, cy + .43, 1.13, cream);
+        box(cx - .36, cy - .36, 1.13, cx + .36, cy + .36, 1.23, linen);
+        for (const dx of [-.27, 0, .27]) box(cx + dx, cy + .435, .85, cx + dx + .025, cy + .45, 1.11, [209, 196, 163]);
+        box(cx - .06, cy - .06, 1.23, cx + .06, cy + .06, 1.3, wood);
+        break;
+      }
       case 'vase': {
         const cx = (x + endX) / 2, cy = (y + endY) / 2;
         sphere(cx, cy, .42, .35, jade, 'solid');box(cx - .14, cy - .14, .55, cx + .14, cy + .14, .9, jade);
