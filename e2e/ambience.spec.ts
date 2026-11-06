@@ -38,7 +38,7 @@ test.beforeEach(async ({ page }) => {
 });
 test.afterEach(async ({ page }, info) => {
   const evidence = await native(page);
-  appendFileSync("docs/evidence/0063/integrated-native-events.jsonl", JSON.stringify({ project: info.project.name, title: info.title, native: evidence, console: diagnostics.get(page) }) + "\n");
+  appendFileSync(privateArtifact("0063/integrated-native-events.jsonl"), JSON.stringify({ project: info.project.name, title: info.title, native: evidence, console: diagnostics.get(page) }) + "\n");
   await info.attach("ambience-native-evidence", { body: JSON.stringify(evidence, null, 2), contentType: "application/json" });
   if (!info.title.includes("resource failure")) expect(diagnostics.get(page)).toEqual([]);
 });
