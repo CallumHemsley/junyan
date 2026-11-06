@@ -186,3 +186,60 @@ export function drawLandscapeGround(ctx:CanvasRenderingContext2D,map:Map,view:Wo
  }
  ctx.restore();
 }
+
+/** The river's existing strip contour is the only authority for wet and dry paint. */
+export function drawRiverbankWater(ctx:CanvasRenderingContext2D,map:Map,view:WorldRenderView){
+ if(map.id!=='riverbank')return;
+ const time=view.reducedMotion?0:view.elapsedMs/1000;
+ const water=map.terrain.filter(t=>t.material==='water').map(t=>t.rect).sort((a,b)=>a.y-b.y);
+ // Smooth only the flow inside the water; the stepped collision shoreline stays exact.
+ const flow=water.map((r,i)=>{const neighbors=water.slice(Math.max(0,i-2),i+3).filter(p=>Math.abs(p.y-r.y)<1.6);const first=neighbors[0],last=neighbors.at(-1)!;return{x:neighbors.reduce((sum,p)=>sum+p.x,0)/neighbors.length,slope:(last.x-first.x)/Math.max(.5,last.y-first.y)};});
+ const flowX=(r:typeof water[number],y:number)=>{const f=flow[water.indexOf(r)];return f.x+(y-r.y-r.height/2)*f.slope;};
+ const runs:typeof water[]=[];
+ for(const r of water){const last=runs.at(-1);if(!last||Math.abs(last.at(-1)!.y+last.at(-1)!.height-r.y)>.001)runs.push([r]);else last.push(r);}
+ const outline=(rects:typeof water)=>{
+  ctx.beginPath();
+  for(const r of rects){for(const [i,p]of [{x:r.x,y:r.y},{x:r.x+r.width,y:r.y},{x:r.x+r.width,y:r.y+r.height},{x:r.x,y:r.y+r.height}].entries()){const q=view.project(p);if(i)ctx.lineTo(q.x,q.y);else ctx.moveTo(q.x,q.y);}ctx.closePath();}
+ };
+ const mask=(material:'water'|'sand')=>{
+  outline(map.terrain.filter(t=>t.material===material).map(t=>t.rect));ctx.clip();
+  // Separate subtraction clips preserve overlapping deck elbows.
+  for(const t of map.terrain.filter(t=>t.material==='bridge'||t.material==='boardwalk')){
+   ctx.beginPath();ctx.rect(0,0,view.width,view.height);
+   const r=t.rect;for(const [i,p]of [{x:r.x,y:r.y},{x:r.x+r.width,y:r.y},{x:r.x+r.width,y:r.y+r.height},{x:r.x,y:r.y+r.height}].entries()){const q=view.project(p);if(i)ctx.lineTo(q.x,q.y);else ctx.moveTo(q.x,q.y);}ctx.closePath();ctx.clip('evenodd');
+  }
+ };
+ const band=(run:typeof water,left:(r:typeof water[number],y:number)=>number,right:(r:typeof water[number],y:number)=>number,color:string)=>{
+  const edge=(offset:typeof left)=>run.flatMap(r=>[{x:offset(r,r.y),y:r.y},{x:offset(r,r.y+r.height),y:r.y+r.height}]);
+  shape(ctx,view,[...edge(left),...edge(right).reverse()],color);
+ };
+ ctx.save();mask('sand');
+ for(const run of runs)for(const side of [-1,1]){
+  const bank=(r:typeof water[number])=>side<0?r.x:r.x+r.width;
+  band(run,r=>bank(r),r=>bank(r)+side*.72,'#b7b38b');
+  band(run,r=>bank(r),r=>bank(r)+side*.31,'#92a18a');
+ }
+ ctx.restore();
+ ctx.save();mask('water');
+ for(const run of runs){
+  // Broad deep water and narrow translucent margins retain a clearly wet blue body.
+  band(run,r=>r.x,r=>r.x+r.width,'#527f88');
+  band(run,(r,y)=>flowX(r,y)+1.65+Math.sin(y*.21)*.28,(r,y)=>flowX(r,y)+r.width-1.7+Math.sin(y*.17)*.35,'#4d7984');
+  for(const side of [-1,1]){
+   const bank=(r:typeof water[number])=>side<0?r.x:r.x+r.width;
+   band(run,r=>bank(r),r=>bank(r)-side*.65,'#659087');
+   band(run,r=>bank(r),r=>bank(r)-side*.18,'#7a9d8d');
+  }
+  // Longer broken ribbons follow the downstream contour, separated by quiet pools.
+  for(const [start,length,fraction]of [[2,4.8,.38],[10.5,2.8,.69],[24,6.8,.56],[34,3.7,.27],[43.5,5.5,.63],[60,4.5,.35],[68.5,6,.61],[76,2.5,.33]]){
+   const reach=run.filter(r=>r.y>=start&&r.y<start+length);
+   if(reach.length<2||!inView(view,{x:reach[0].x+reach[0].width*fraction,y:start},length+2))continue;
+   ctx.save();ctx.globalAlpha*=.82+Math.sin(time*.6+start*.3)*.12;
+   band(reach,(r,y)=>flowX(r,y)+r.width*fraction+Math.sin(y*.42-time*.65)*.18,(r,y)=>flowX(r,y)+r.width*fraction+Math.sin(y*.42-time*.65)*.18+.045,'#789e9b');
+   const tail=reach.slice(Math.floor(reach.length*.45));
+   band(tail,(r,y)=>flowX(r,y)+r.width*fraction+Math.sin(y*.42-time*.65)*.18+.25,(r,y)=>flowX(r,y)+r.width*fraction+Math.sin(y*.42-time*.65)*.18+.28,'#6c9695');
+   ctx.restore();
+  }
+ }
+ ctx.restore();
+}

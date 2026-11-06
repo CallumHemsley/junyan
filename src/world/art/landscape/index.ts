@@ -1,5 +1,5 @@
 import type { DrawMap, WorldRenderView, WorldArtModule, WorldRenderObject } from '../../render-contract';
-import { drawLandscapeGround } from './ground';
+import { drawLandscapeGround, drawRiverbankWater } from './ground';
 import { drawLandscapeProp, landscapeMaterialColor, landscapeFoliageBounds } from './draw';
 
 function polygon(ctx: CanvasRenderingContext2D, view: WorldRenderView, points: {x:number;y:number}[], color: string, z = 0) {
@@ -92,6 +92,7 @@ export const drawMap: DrawMap = (ctx, map, view) => {
       const r=terrain.rect;
       polygon(ctx,view,[{x:r.x,y:r.y},{x:r.x+r.width,y:r.y},{x:r.x+r.width,y:r.y+r.height},{x:r.x,y:r.y+r.height}],landscapeMaterialColor(terrain.material) ?? '#869d62');
     }
+    drawRiverbankWater(ctx,map,view);
     const ground = [...map.terrain].reverse();
     const focus = view.playerPosition;
     const extent = Math.ceil((view.width + view.height) / Math.max(unit,1));
@@ -108,7 +109,7 @@ export const drawMap: DrawMap = (ctx, map, view) => {
           const r=terrain!.rect,edge=Math.min(x+.5-r.x,r.x+r.width-x-.5,y+.5-r.y,r.y+r.height-y-.5);
           if(edge<.7){ctx.fillStyle=shade(n%2?'#a2a373':'#b3aa7d');ctx.fillRect(Math.round(p.x-3*pixel),Math.round(p.y),5*pixel,2*pixel);}
         }
-        if ((material==='water'&&n%3===0)||(material!=='grass'&&n%11===0)) ctx.fillRect(Math.round(p.x),Math.round(p.y),(material==='water'?7:2)*pixel,pixel);
+        if ((material!=='water'||map.id!=='riverbank')&&((material==='water'&&n%3===0)||(material!=='grass'&&n%11===0))) ctx.fillRect(Math.round(p.x),Math.round(p.y),(material==='water'?7:2)*pixel,pixel);
         if((material==='grass'||material==='moss'||material==='orchard-floor')&&((Math.floor(x/4)*19+Math.floor(y/5)*31)%13<3)&&n%4===0) {
           ctx.fillStyle=shade(n%2?'#78915e':'#94a76c');
           ctx.fillRect(Math.round(p.x-4*pixel),Math.round(p.y-3*pixel),pixel,2*pixel);
@@ -122,7 +123,7 @@ export const drawMap: DrawMap = (ctx, map, view) => {
     }
     const waters=map.terrain.filter(t=>t.material==='water');
     const wet=(x:number,y:number)=>waters.some(t=>x>=t.rect.x&&x<t.rect.x+t.rect.width&&y>=t.rect.y&&y<t.rect.y+t.rect.height);
-    for(const t of waters){const r=t.rect;
+    for(const t of map.id==='riverbank'?[]:waters){const r=t.rect;
       for(let y=r.y+.2;y<r.y+r.height;y+=.8){
         for(const side of [-1,1]){const x=side<0?r.x:r.x+r.width;
           if(wet(x+side*.05,y))continue;
