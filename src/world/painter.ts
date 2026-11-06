@@ -1,3 +1,4 @@
+import {surfaceHeight,atFeet} from "./surfaces";
 import {selectArtModules,artModules} from "./art-registry";
 import {restaurantObjects} from "./art/restaurant";
 import {content} from "../content";
@@ -62,16 +63,16 @@ export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,v
    for(let i=0;i<3;i++){const at=view.project({x:prop.position.x+(i-1)*.35,y:prop.position.y},2+i*.5);ctx.fillStyle=["#385e44","#557c4d","#789454"][i];ctx.beginPath();ctx.ellipse(at.x,at.y,scale*(1.1-i*.13),scale*.8,0,0,Math.PI*2);ctx.fill();}
   }else {const height=/building|house|wall|shed/.test(prop.kind)?3.4:/table|bench|counter/.test(prop.kind)?1.1:.65;box(ctx,view,prop.position,prop.width,prop.height,height,/roof|building|house/.test(prop.kind)?"#62756b":"#aa9167");}
   ctx.globalAlpha=1;
- }})),{depth:view.playerPosition.x+view.playerPosition.y,draw:()=>drawPlayer(ctx,view,view.playerPosition,facing,moving,scale,motion,(game?.tray.length??0)>0)}];
+ }})),{depth:view.playerPosition.x+view.playerPosition.y,draw:()=>drawPlayer(ctx,atFeet(view,surfaceHeight(map.id,view.playerPosition)),view.playerPosition,facing,moving,scale,motion,(game?.tray.length??0)>0)}];
  for(const object of custom) objects.push({depth:object.depth??object.position.x+object.position.y,draw:()=>{
   ctx.save();
   const occlusion=object.occlusion;
   if(occlusion?.fadeWhenPlayerBehind && occludesPlayer(occlusion,view.playerPosition))ctx.globalAlpha=.45;
   object.draw(ctx,view);ctx.restore();
  }});
- if(restaurant)for(const customer of restaurant.customers)objects.push({depth:customer.position.x+customer.position.y,draw:()=>drawActor(ctx,{...view,pass:"objects"},sampleActor({characterId:customer.characterId,facing:customer.facing,action:"idle",posture:"sit",elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion}),customer.position)});
+ if(restaurant)for(const customer of restaurant.customers)objects.push({depth:customer.position.x+customer.position.y,draw:()=>drawActor(ctx,atFeet({...view,pass:"objects"},surfaceHeight(map.id,customer.position)),sampleActor({characterId:customer.characterId,facing:customer.facing,action:"idle",posture:"sit",elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion}),customer.position)});
  const actors=game&&world?actorsFor(map,game,world,view.elapsedMs,view.reducedMotion):[];
- for(const actor of actors)objects.push({depth:actor.position.x+actor.position.y,draw:()=>drawLifeActor(ctx,actor,view,(_ctx,resident,_lifeView,posture)=>drawActor(ctx,{...view,pass:"objects"},sampleActor({characterId:resident.characterId,facing:resident.facing,action:resident.action,elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion,posture}),resident.position),world?.life)});
+ for(const actor of actors)objects.push({depth:actor.position.x+actor.position.y,draw:()=>drawLifeActor(ctx,actor,atFeet(view,surfaceHeight(map.id,actor.position)),(_ctx,resident,_lifeView,posture)=>drawActor(ctx,atFeet({...view,pass:"objects"},surfaceHeight(map.id,resident.position)),sampleActor({characterId:resident.characterId,facing:resident.facing,action:resident.action,elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion,posture}),resident.position),world?.life)});
  for(const module of modules)module.drawMap?.(ctx,map,{...view,pass:"objects"});
  objects.sort((a,b)=>a.depth-b.depth).forEach(object=>object.draw());
  for(const module of modules)module.drawMap?.(ctx,map,{...view,pass:"foreground"});

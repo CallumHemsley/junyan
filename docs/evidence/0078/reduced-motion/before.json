@@ -1,0 +1,71 @@
+{
+  "sourceHead": "b1ef8a59643e2e127e409d4aa09fd8b934215455",
+  "workingTreeObserved": true,
+  "method": "Actual App reduced-motion saved arrival; observation-only instrumented painter boundary",
+  "first": {
+    "at": 1109.0999999996275,
+    "elapsedMs": 0,
+    "reducedMotion": true,
+    "positions": [
+      {
+        "id": "town.canal-birds",
+        "position": {
+          "x": 66.5,
+          "y": 49.4
+        },
+        "phaseMs": 0
+      },
+      {
+        "id": "town.park-birds",
+        "position": {
+          "x": 10,
+          "y": 35.5
+        },
+        "phaseMs": 0
+      },
+      {
+        "id": "town.morning-walk",
+        "position": {
+          "x": 42.57721499004475,
+          "y": 23.718987884164253
+        },
+        "phaseMs": 0
+      }
+    ]
+  },
+  "last": {
+    "at": 3383.5999999996275,
+    "elapsedMs": 0,
+    "reducedMotion": true,
+    "positions": [
+      {
+        "id": "town.canal-birds",
+        "position": {
+          "x": 66.5,
+          "y": 49.4
+        },
+        "phaseMs": 0
+      },
+      {
+        "id": "town.park-birds",
+        "position": {
+          "x": 10,
+          "y": 35.5
+        },
+        "phaseMs": 0
+      },
+      {
+        "id": "town.morning-walk",
+        "position": {
+          "x": 42.57721499004475,
+          "y": 23.718987884164253
+        },
+        "phaseMs": 0
+      }
+    ]
+  },
+  "framesInLastSecond": 50,
+  "advances": false,
+  "staticPoses": true,
+  "errors": []
+}
