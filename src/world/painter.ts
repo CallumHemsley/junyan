@@ -90,4 +90,4 @@ export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,v
 }
 
 const hookCache=new WeakMap<WorldMapDefinition,ReturnType<typeof atmosphereHooksForMap>>();
-function hooksFor(map:WorldMapDefinition) {let hooks=hookCache.get(map);if(!hooks){hooks=atmosphereHooksForMap(map);hookCache.set(map,hooks);}return hooks;}
+function hooksFor(map:WorldMapDefinition) {let hooks=hookCache.get(map);if(!hooks){hooks=atmosphereHooksForMap(map,map.id==="riverbank"?{water:[]}:{});hookCache.set(map,hooks);}return hooks;}
