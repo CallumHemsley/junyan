@@ -13,3 +13,15 @@ Independent assembly source verification is ../assembly-e02a747.md:176/176manife
 ## Ordinary phone life/HUD/offline check
 
 Separate life.spec.ts starts via normal opening, no fixture/testmode/save writes. All6stages pass in16.7seconds, zero page errors: native CDP touch hold/release; word card; real journal/tray controls; physical restaurant→town door; actual town.restaurant-approach watch discovery/reaction; reload persistence; online service-worker warmup and real offline reload with unchanged map/position/discovery/reaction. Browser offline mode used without network mocking/cache insertion. Raw phone-life-results.json and phone-life.webm retained. This is a Chromium phone viewport, not physical hardware; actor greetings/sitting and all-world activity breadth are outside this short run.
+
+## Long ordinary-input route, partial outcome
+
+Both desktop and phone runs physically traversed all10maps, completed3table/kitchen services/change, nativeaudio replay/wordcard/tray/journal, receipt-seat→explicit-close departure, and physically followed the white cat through reunion/gift. Raw per-stage logs/screenshots/videos retained. The overall tests FAILED later because the reviewer clicked选格子 despite contextual mode already opening the grid, thereby hiding it before selecting a cell. This is a runner error, not an app defect. Do not call the entire journeyPASS or infer later furnishing/garden/repair/overnight coverage from it. Separate corrected targeted followups are prepared. Additional phone native directionalhold/release gate passed.
+
+## Production waypoint correction
+
+Separate ordinary-opening/door route to workshop, then walk behind lamp bench to(8,6.8) and issue ONE target(8,10.8) around it: desktop mouse and native phone touchscreen.tap both reach target.2/2pass. Exact-source5framesteps/jitter/residual checks remain separately reported. First launch used incorrect reviewer ffmpeg directory and failed before browser page creation; runner-path-error JSON retained, corrected installed path used for actual run. No network install/app edits.
+
+## Fourth-customer boundary — ongoing
+
+Initial runs verify finalreceipt/thanks/replay/wordcard/focus/retained presence then explicitdeparture. Desktop additionally explores endedtown, returns to kitchen summary, advancesday2, verifies reset and reload. Subsequent initialstalls are trace-proven reviewerclicks on UI: welcome button desktop, customer token phone. Details day-end-initial-diagnosis.md; no pathfindingfailure claimed. Corrected run checks actual hitcanvas and normally dismisseswelcome, still ongoing.

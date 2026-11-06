@@ -6,7 +6,9 @@ import {readFileSync} from 'node:fs';
 import definitions from './maps.json' with {type:'json'};
 import {restaurantMap} from './restaurant.mjs';
 import {findPath,canStand} from './geometry.mjs';
-import {buildSync} from 'esbuild';
+import {createRequire} from 'node:module';
+const requireHere=createRequire(import.meta.url);
+const {buildSync}=createRequire(requireHere.resolve('vite/package.json'))('esbuild');
 import {execFileSync} from 'node:child_process';
 const runtimeExports:{exports:any}={exports:{}};
 const source=buildSync({stdin:{contents:"export {projectGarden} from './src/world/maps/rooftop'; export {furnitureColliders} from './src/features/apartment/world'; export {courtyardForCats} from './src/world/maps/courtyard'; export {restaurantPresence} from './src/world/presence';",resolveDir:'/workspace/junyan-review-integration',loader:'ts'},bundle:true,write:false,platform:'node',format:'cjs'}).outputFiles[0].text;
@@ -37,7 +39,7 @@ async function walkTo(page:any,target:any,expectedMap:string){
  }
  throw new Error(`Route timeout ${expectedMap}`);
 }
-async function closeActivity(page:any){const close=page.getByRole('button',{name:'关闭',exact:true});if(await close.count())await close.last().click();const walk=page.getByRole('button',{name:'继续走走',exact:true});if(await walk.count())await walk.click();}
+async function closeActivity(page:any){const close=page.getByRole('button',{name:'关闭',exact:true});if(await close.count())await close.last().click();const walk=page.getByRole('button',{name:'继续走走',exact:true});if(await walk.count())await walk.click();await page.evaluate(()=>new Promise<void>(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve()))));}
 async function enter(page:any,id:string){const w=await world(page),m=dynamicMap(w.mapId,await game(page)),a=m.anchors.find((a:any)=>a.id===id);if(!a)throw new Error(`anchor absent ${id}`);let target=a.position;if(!canStand(m,target)){const options=[];for(let x=-a.radius;x<=a.radius;x+=.3)for(let y=-a.radius;y<=a.radius;y+=.3){const p={x:a.position.x+x,y:a.position.y+y};if(Math.hypot(x,y)<=a.radius&&canStand(m,p))options.push(p)}target=options.sort((p,q)=>Math.hypot(p.x-w.position.x,p.y-w.position.y)-Math.hypot(q.x-w.position.x,q.y-w.position.y))[0];}if(!target)throw new Error('no anchor approach');await walkTo(page,target,w.mapId);await page.locator(`[data-world-anchor="${id}"]`).click();}
 
 const content=JSON.parse(readFileSync('/workspace/junyan-review-integration/src/content/content.json','utf8'));
@@ -79,7 +81,7 @@ test('ordinary connected-world service, all ten places, saved activities and off
   // Complete breadth first, using only physical doors and ordinary ground clicks.
   await travel(page,['town','courtyard','residential-hall','residential-stairs','apartment','residential-stairs','rooftop','residential-stairs','residential-hall','town','workshop','town','riverbank','park','courtyard','town','restaurant'],note);
   await travel(page,['town','courtyard'],note);await enter(page,'courtyard.white');await expect(page.locator('.world-context[data-target="cat"]')).toBeVisible();expect((await game(page)).neighbourhood.cats.selected).toBe('white');
-  for(const action of ['crouch','wait','approach','follow','reunite']){await page.getByTestId(`cats-action-${action}`).click();await note(`cat-${action}`);}
+  for(const action of ['crouch','wait','approach','follow','reunite']){if(action!=='crouch'){await closeActivity(page);await enter(page,'courtyard.white');}await page.getByTestId(`cats-action-${action}`).click();await note(`cat-${action}`);}
   await expect.poll(async()=> (await game(page)).neighbourhood.cats.story.node).toBe('reunited');await page.getByRole('button',{name:'收下猫靠垫',exact:true}).click();await closeActivity(page);await note('cat-world-reunited');
   await travel(page,['residential-hall','residential-stairs','apartment'],note);await enter(page,'apartment.furnish');await page.getByRole('button',{name:'收下',exact:true}).click();const original=(await game(page)).neighbourhood.apartment.placements;
   await page.locator('.apartment-items').getByRole('button',{name:/桌子/}).click();await page.getByRole('button',{name:'选格子',exact:true}).click();await page.getByRole('button',{name:/第2行第3格/}).click();await page.getByRole('button',{name:'放这里',exact:true}).click();
