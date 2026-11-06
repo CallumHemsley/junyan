@@ -68,3 +68,9 @@ Next: publish baseline, relay contract clarifications to coordinator/foundation/
 Pstack Prove It Works required actual runtime evidence instead of producer claims. Experience First preserves the full requested exploration target rather than shrinking it to a convenient hub. Swarm guidance supplies exact-head independent coverage and aggregation. No native platform goal registration was claimed.
 
 Baseline Playwright traces remain in this cloud checkout and are not included in the branch; published screenshots, videos, JSON and rerunnable specs provide the durable evidence. The save-repro sub-review began while the parent advanced documentation commits; production src and built JS hashes stayed at baseline throughout.
+
+## Contract clarification recheck at 14f3634
+
+Read the actual updated contract and example. Entrance/exit IDs are now explicitly map-local with pair resolution. timeOfDay is now morning/noon/evening/night, elapsedMs is animation milliseconds, and required authoritative-clock conversion fixtures are explicit. Both documentation ambiguities are resolved; production conversion and geometry behavior still require independent checks. Contextual activity embedding now explicitly forbids replacing the world with a legacy diorama or nesting that scene in a panel. This is aligned with the acceptance target. The latest coordinator branch was merged without production changes or conflicts.
+
+Baseline plus save evidence published in draft PR https://github.com/CallumHemsley/junyan/pull/28 and relayed in coordinator PR 27 comment 6672824756. Review server ports 5490 and 5491 have no remaining listeners. Next concrete integration review is waiting on foundation runnable viewport, while published schema/camera/render interfaces are under an independent static pass.
