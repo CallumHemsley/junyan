@@ -476,7 +476,7 @@
     },
     {
       "id": "residential-hall.mail-lamp",
-      "kind": "wall-lamp",
+      "kind": "lantern",
       "position": {
         "x": 27,
         "y": 14

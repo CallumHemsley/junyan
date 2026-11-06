@@ -36,7 +36,7 @@ try {
    if(!await page.locator('.apartment-floor-grid').isVisible())await page.getByRole('button',{name:'选格子',exact:true}).click();
    await page.getByRole('button',{name:`第${row}行第${column}格`,exact:true}).click();
    await page.getByRole('button',{name:'放这里',exact:true}).click();
-   await page.waitForTimeout(250);
+   await page.waitForTimeout(500);
   }
   await place(2,3);
   const first=await saved();
@@ -44,7 +44,7 @@ try {
   const after=createHash('sha256').update(await canvas.screenshot()).digest('hex');
   await page.screenshot({path:evidence+`${name}-normal-game-table.png`});
   await place(3,4);
-  await page.getByRole('button',{name:'撤回',exact:true}).click();await page.waitForTimeout(250);
+  await page.getByRole('button',{name:'撤回',exact:true}).click();await page.waitForTimeout(500);
   const undone=await saved();
   if(JSON.stringify(undone.neighbourhood.apartment.placements)!==JSON.stringify(first.neighbourhood.apartment.placements))throw Error('undo failed');
   await page.reload();await page.getByTestId('world-viewport').waitFor();

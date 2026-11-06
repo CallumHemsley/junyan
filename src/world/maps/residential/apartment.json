@@ -560,7 +560,7 @@
     },
     {
       "id": "apartment.reading-lamp",
-      "kind": "floor-lamp",
+      "kind": "lamp",
       "position": {
         "x": 17.5,
         "y": 10
