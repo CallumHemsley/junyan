@@ -61,3 +61,9 @@ A 320×320 audit separately exposed a nearly collapsed kitchen scroll region. Th
 ### Narrow short-screen CSS repair
 
 The final combined max-width 360px and max-height 460px rule now supersedes the narrow portrait cap. In the owned harness at 320×320, panel height rises from 128px to 180px and center height from 16px to 56px. Close and footer remain within screen bounds. Pickup and return callbacks pass after scrolling, with a central viewport at least 44px tall. The 390×664 center remains 142px. Type checking passes. The small-screen tradeoff and reproducible probe are documented in the evidence reference. This source repair is not silently applied to assembly e02; foundation must consume it and recheck actual camera and world minimum height. Objective remains ACTIVE.
+
+### Arrival-guidance handoff
+
+Objective remains ACTIVE. Current foundation e48b10e was inspected after explicit tracking-ref refresh; ordinary branch fetch had left an older tracking ref and that mistaken source interpretation was corrected. New camera and authored-surface picking remain foundation-owned. Current nearby/life row rendering still lacks target identity.
+
+Adjacent town visual/setup comparison at 390×664 and 320×568 validates two existing inspect targets with the same registered 看看 label. Both have 44px controls and passing lookup Escape/focus. Evidence is explicitly a declared-arrival setup, not travel. No new presentational component is justified: existing Affordance already contains the identity, position and registered label. The concrete shared-wiring request is `src/world/ui/arrival-guidance.md`, with a single selected cue/action, exact identity reuse, keyboard selection, no duplicate exploration action and normal-arrival acceptance. Foundation must consume 9116478/8a6bf38 first and coordinate cue geometry with map owners.
