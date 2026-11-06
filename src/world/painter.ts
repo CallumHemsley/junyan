@@ -1,10 +1,12 @@
+import {drawLifeActor,drawLifeReactions} from "./life";
+import {colorShader} from "./lighting";
 import {occludesPlayer} from "./occlusion";
 import {sampleActor,drawActor} from "./characters";
 import {actorsFor} from "./life-bridge";
 import {sampleAtmosphere} from "./atmosphere";
 import {atmosphereHooksForMap} from "./atmosphere/map-hooks";
 import {drawAtmosphere,renderAtmosphereObjects} from "./atmosphere/canvas";
-import {drawFurniture} from "./art/residential";
+import {drawFurniture,renderFurnitureObjects} from "./art/residential";
 import {createWorkshopArt} from "./art/workshop";
 import type {GameState} from "../contracts";
 import type {WorldState} from "./schema";
@@ -15,19 +17,21 @@ const colors:Record<string,string>={wood:"#9c805e",stone:"#9aab9d",grass:"#68834
 const hash=(x:number,y:number)=>{const n=Math.sin(x*127.1+y*311.7)*43758.5453;return n-Math.floor(n);};
 function polygon(ctx:CanvasRenderingContext2D,points:Point[],color:string) {ctx.fillStyle=color;ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(Math.round(p.x),Math.round(p.y)):ctx.moveTo(Math.round(p.x),Math.round(p.y)));ctx.closePath();ctx.fill();}
 function floor(ctx:CanvasRenderingContext2D,view:WorldRenderView,x:number,y:number,w:number,h:number,color:string,z=0) {
- polygon(ctx,[{x,y},{x:x+w,y},{x:x+w,y:y+h},{x,y:y+h}].map(p=>view.project(p,z)),color);
+ polygon(ctx,[{x,y},{x:x+w,y},{x:x+w,y:y+h},{x,y:y+h}].map(p=>view.project(p,z)),view.shadeColor?.(color)??color);
 }
 function box(ctx:CanvasRenderingContext2D,view:WorldRenderView,p:Point,w:number,h:number,z:number,color:string) {
  const a=view.project(p),b=view.project({x:p.x+w,y:p.y}),c=view.project({x:p.x+w,y:p.y+h}),d=view.project({x:p.x,y:p.y+h});
  const at=view.project(p,z),bt=view.project({x:p.x+w,y:p.y},z),ct=view.project({x:p.x+w,y:p.y+h},z),dt=view.project({x:p.x,y:p.y+h},z);
- polygon(ctx,[b,c,ct,bt],"#574c42");polygon(ctx,[c,d,dt,ct],"#796953");polygon(ctx,[at,bt,ct,dt],color);
+ polygon(ctx,[b,c,ct,bt],view.shadeColor?.("#574c42")??"#574c42");polygon(ctx,[c,d,dt,ct],view.shadeColor?.("#796953")??"#796953");polygon(ctx,[at,bt,ct,dt],view.shadeColor?.(color)??color);
  ctx.strokeStyle="#544b3c";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(at.x,at.y);ctx.lineTo(bt.x,bt.y);ctx.lineTo(ct.x,ct.y);ctx.lineTo(dt.x,dt.y);ctx.closePath();ctx.stroke();void a;
 }
 export function drawPlayer(ctx:CanvasRenderingContext2D,view:WorldRenderView,p:Point,facing:Facing,moving:boolean,_scale:number) {
  const sample=sampleActor({characterId:"player",facing,action:moving?"walk":"idle",elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion});
  drawActor(ctx,{...view,pass:"objects"},sample,p);
 }
-export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,view:WorldRenderView,facing:Facing,moving:boolean,scale:number,game:GameState,world:WorldState) {
+export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,view:WorldRenderView,facing:Facing,moving:boolean,scale:number,game?:GameState,world?:WorldState) {
+ const atmosphere=sampleAtmosphere({mapId:map.id,day:game?.day??1,timeOfDay:(game?.served??0)<2?"morning":(game?.served??0)<3?"noon":(game?.served??0)<4?"evening":"night",seed:game?.seed??42,elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion},hooksFor(map));
+ const shadeColor=colorShader(atmosphere.light);view={...view,shadeColor};
  ctx.fillStyle="#334d47";ctx.fillRect(0,0,view.width,view.height);ctx.imageSmoothingEnabled=false;
  for(const terrain of map.terrain) {
   const r=terrain.rect;
@@ -39,12 +43,11 @@ export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,v
   }
  }
  const modules=Object.entries(art).filter(([path])=>!path.includes("/workshop/")).map(([,module])=>module);
- if(game.neighbourhood)modules.push(createWorkshopArt(game.neighbourhood.repairs));
- const atmosphere=sampleAtmosphere({mapId:map.id,day:game.day,timeOfDay:Math.min(.8,game.served/4*.65),seed:game.seed,elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion},atmosphereHooksForMap(map));
+ if(game?.neighbourhood)modules.push(createWorkshopArt(game.neighbourhood.repairs));
  for(const module of modules)module.drawMap?.(ctx,map,{...view,pass:"ground"});
- if(map.id==="apartment"&&game.neighbourhood)drawFurniture(ctx,game.neighbourhood.apartment,{...view,pass:"ground"});
+ if(map.id==="apartment"&&game?.neighbourhood)drawFurniture(ctx,game.neighbourhood.apartment,{...view,pass:"ground"});
  drawAtmosphere(ctx,atmosphere,{...view,pass:"ground"});
- const custom=[...modules.flatMap(module=>module.renderObjects?.(map,view)??[]),...renderAtmosphereObjects(atmosphere)];
+ const custom=[...modules.flatMap(module=>module.renderObjects?.(map,view)??[]),...renderAtmosphereObjects(atmosphere),...(map.id==="apartment"&&game?.neighbourhood?renderFurnitureObjects(game.neighbourhood.apartment):[])];
  const customIds=new Set(custom.map(object=>object.id));
  const objects=[...map.props.filter(p=>p.layer!=="ground"&&!customIds.has(p.id)).map(prop=>({depth:prop.position.x+prop.position.y+prop.width/2+prop.height/2,draw:()=>{
   const p=view.project(prop.position);if(p.x < -200||p.x>view.width+200||p.y < -200||p.y>view.height+300)return;
@@ -62,12 +65,14 @@ export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,v
   if(occlusion?.fadeWhenPlayerBehind && occludesPlayer(occlusion,view.playerPosition))ctx.globalAlpha=.45;
   object.draw(ctx,view);ctx.restore();
  }});
- for(const actor of actorsFor(map,game,world,view.elapsedMs,view.reducedMotion))objects.push({depth:actor.position.x+actor.position.y,draw:()=>{
-  if(actor.kind==="resident")drawActor(ctx,{...view,pass:"objects"},sampleActor({characterId:actor.characterId,facing:actor.facing,action:actor.action,elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion,posture:actor.activity==="sit"?"sit":actor.activity==="work"?"work":"stand"}),actor.position);
-  else {const at=view.project(actor.position);ctx.fillStyle=actor.kind==="bird"?"#5b5145":actor.characterId.includes("black")?"#393d3c":"#e8dec1";ctx.fillRect(Math.round(at.x-3),Math.round(at.y-5),7,5);ctx.fillRect(Math.round(at.x+1),Math.round(at.y-8),4,4);}
- }});
+ const actors=game&&world?actorsFor(map,game,world,view.elapsedMs,view.reducedMotion):[];
+ for(const actor of actors)objects.push({depth:actor.position.x+actor.position.y,draw:()=>drawLifeActor(ctx,actor,view,(_ctx,resident,_lifeView,posture)=>drawActor(ctx,{...view,pass:"objects"},sampleActor({characterId:resident.characterId,facing:resident.facing,action:resident.action,elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion,posture}),resident.position))});
  for(const module of modules)module.drawMap?.(ctx,map,{...view,pass:"objects"});
  objects.sort((a,b)=>a.depth-b.depth).forEach(object=>object.draw());
  for(const module of modules)module.drawMap?.(ctx,map,{...view,pass:"foreground"});
  drawAtmosphere(ctx,atmosphere,{...view,pass:"foreground"});
+ if(world?.life)drawLifeReactions(ctx,world.life,map.id,[...map.landmarks,...actors],view);
 }
+
+const hookCache=new WeakMap<WorldMapDefinition,ReturnType<typeof atmosphereHooksForMap>>();
+function hooksFor(map:WorldMapDefinition) {let hooks=hookCache.get(map);if(!hooks){hooks=atmosphereHooksForMap(map);hookCache.set(map,hooks);}return hooks;}

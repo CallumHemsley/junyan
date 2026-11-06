@@ -7,7 +7,9 @@ def rect(x,y,w,h): return dict(x=x,y=y,width=w,height=h)
 def point(x,y): return dict(x=x,y=y)
 def base(id,w,h):
  return dict(version=1,id=id,bounds=dict(width=w,height=h),defaultSpawn=dict(x=7,y=h-7,facing='north'),walkable=[rect(1,1,w-2,h-2)],colliders=[],occluders=[],entrances=[],exits=[],anchors=[],terrain=[],props=[],palette=PALETTE,npcHooks=[],landmarks=[])
-def terrain(m,id,r,material,variant=0): m['terrain'].append(dict(id=m['id']+'.'+id,rect=r,material=material,variant=variant))
+def terrain(m,id,r,material,variant=0):
+ x=max(0,r['x']);y=max(0,r['y']);right=min(m['bounds']['width'],r['x']+r['width']);bottom=min(m['bounds']['height'],r['y']+r['height'])
+ m['terrain'].append(dict(id=m['id']+'.'+id,rect=rect(x,y,right-x,bottom-y),material=material,variant=variant))
 def prop(m,id,kind,x,y,w=1,h=1,variant=0,solid=False):
  id=m['id']+'.'+id
  m['props'].append(dict(id=id,kind=kind,position=point(x,y),width=w,height=h,layer='object',variant=variant))
@@ -23,6 +25,15 @@ def edge(m,target,x,y,ex,ey,w,h,facing):
 def landmark(m,id,x,y,kind):
  m['landmarks'].append(dict(id=m['id']+'.'+id,position=point(x,y),kind=kind))
  m['anchors'].append(dict(id=m['id']+'.'+id,position=point(x,y),radius=1.4,featureId='exploration',interactionId='landscape.'+id))
+def carve(m,cut):
+ result=[]
+ for c in m['colliders']:
+  r=c['rect']; x=max(r['x'],cut['x']); y=max(r['y'],cut['y']); right=min(r['x']+r['width'],cut['x']+cut['width']); bottom=min(r['y']+r['height'],cut['y']+cut['height'])
+  if x>=right or y>=bottom: result.append(c); continue
+  for k,piece in enumerate([rect(r['x'],r['y'],r['width'],y-r['y']),rect(r['x'],bottom,r['width'],r['y']+r['height']-bottom),rect(r['x'],y,x-r['x'],bottom-y),rect(right,y,r['x']+r['width']-right,bottom-y)]):
+   if piece['width']>0 and piece['height']>0: result.append(dict(id=c['id']+f'-cut-{k}',rect=piece))
+ m['colliders']=result
+
 def inside(p,r,margin=0): return r['x']-margin<=p[0]<=r['x']+r['width']+margin and r['y']-margin<=p[1]<=r['y']+r['height']+margin
 
 def scatter(m,kind,areas,step,w,h):
@@ -30,10 +41,12 @@ def scatter(m,kind,areas,step,w,h):
  for cluster,(x0,y0,x1,y1) in enumerate(areas):
   for y in range(y0,y1,step):
    for x in range(x0,x1,step):
-    n=(x*37+y*71+cluster*17)%97
-    p=(x+(n%5)*.27,y+((n//5)%5)*.25)
-    if any(inside(p,t['rect'],2.2) for t in m['terrain'] if t['material'] in ['path','stone-path','bridge','water','boardwalk']): continue
+    n=(x*x*37+y*y*71+x*y*13+cluster*17)%97
+    p=(x+(n%7)*.3,y+((n//7)%7)*.3)
+    if any(inside(p,t['rect'],1.4) for t in m['terrain'] if t['material'] in ['path','stone-path','bridge','water','boardwalk']): continue
     if any(inside(p,c['rect'],1) for c in m['colliders']): continue
+    if any(math.hypot(p[0]-a['position']['x'],p[1]-a['position']['y'])<2.5 for a in m['landmarks']+m['entrances']): continue
+    if n<13: continue
     prop(m,f'{kind}-{cluster}-{x}-{y}',kind,*p,w,h,n%4,True)
 
 park=base('park',84,68)
@@ -110,5 +123,24 @@ scatter(river,'willow',[(18,23,31,43),(18,60,29,73),(57,24,66,48)],5,4,4)
 scatter(river,'tree',[(2,18,16,59),(62,3,94,38),(64,61,93,77)],5,3.8,3.8)
 scatter(river,'rock',[(78,3,94,16),(84,25,94,36)],4,2.5,2.2)
 scatter(river,'flowers',[(8,61,27,73),(64,35,74,53),(82,48,93,60)],4,1,1)
+park['npcHooks'].append(dict(id='park.reading-walk',position=point(54,18),route=[point(54,18),point(65,18),point(65,24),point(65,18)],characterId='zhang-laoshi'))
+river['npcHooks'].append(dict(id='riverbank.ferry-walk',position=point(62,57),route=[point(62,57),point(70,57),point(80,57),point(70,57)],characterId='xiao-zhou'))
+carve(park,rect(59.5,31.5,7,3))
+carve(river,rect(34,37.5,7.5,3))
+scatter(park,'tree',[(3,3,81,65)],4,3.6,3.6)
+scatter(river,'tree',[(3,3,94,77)],4,3.6,3.6)
 for m in [park,river]:
+ m['terrain'].sort(key=lambda t: 1 if t['material']=='sand' else 2 if t['material']=='water' else 3 if t['material'] in ['path','stone-path','bridge','boardwalk'] else 0)
+ # Small shoulder plants give the lanes a human-scale edge without blocking them.
+ for t in list(m['terrain']):
+  if t['material'] not in ['path','stone-path']: continue
+  r=t['rect'];long_x=r['width']>r['height']
+  length=r['width'] if long_x else r['height']
+  for i in range(2,int(length)-1,3):
+   x=r['x']+i if long_x else r['x']-.5
+   y=r['y']-.5 if long_x else r['y']+i
+   if x<1 or y<1 or x>m['bounds']['width']-1 or y>m['bounds']['height']-1:continue
+   if any(inside((x,y),water['rect'],.5) for water in m['terrain'] if water['material']=='water'):continue
+   prop(m,f'edge-{t["id"]}-{i}','flowers' if i%2 else 'shrub',x,y,1,1,i%3)
+
  ROOT.joinpath(m['id']+'.json').write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n')

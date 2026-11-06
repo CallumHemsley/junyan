@@ -1,4 +1,4 @@
-import type {WorldRenderView,WorldDrawCommand} from '../render-contract';
+import type {WorldRenderView,WorldDrawCommand,WorldRenderObject} from '../render-contract';
 import type {ActorSample} from './index';
 import type {RGB} from './artwork.mjs';
 
@@ -46,8 +46,11 @@ export function actorCommands(sample:Pick<ActorSample,'drawCommands'>,position:{
 }
 
 export function drawActor(context:CanvasRenderingContext2D,view:WorldRenderView,sample:ActorSample,position:{x:number;y:number}):void {
-  if(view.pass!=='objects')return;
   const p=view.project(position),unit=view.project({x:position.x+.5,y:position.y-.5});
   const scale=Math.abs(unit.x-p.x)/18;
   paintActorCanvas(context,sample,p.x,p.y,scale);
+}
+
+export function actorObject(id:string,sample:ActorSample,position:{x:number;y:number}):WorldRenderObject {
+  return {id,position,depth:position.x+position.y,draw:(context,view)=>drawActor(context,view,sample,position)};
 }

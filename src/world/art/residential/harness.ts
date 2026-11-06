@@ -1,8 +1,8 @@
-import { drawFurniture, drawMap } from './index';
+import { drawFurniture, drawMap, renderObjects, renderFurnitureObjects } from './index';
 import { mapDefinitions } from '../../maps/residential';
 import { worldMapSchema } from '../../schema';
 import { project } from '../../camera';
-import type { WorldRenderView } from '../../render-contract';
+import type { WorldRenderView, WorldRenderObject } from '../../render-contract';
 import { initialState, reduce } from '../../../features/apartment/rules';
 import { characterFigure, createRenderer } from '../../../scene/renderer.js';
 
@@ -21,8 +21,8 @@ for (const [id, x, y] of [['rug', 2, 1], ['table', 2, 1], ['chair', 4, 1], ['cus
   home = reduce(home, { type: 'select', id }, 1);home = reduce(home, { type: 'place', x, y }, 1);
 }
 drawMap(ctx, map, view);
-view.pass = 'objects';drawMap(ctx, map, view);
 if (map.id === 'apartment') drawFurniture(ctx, home, view);
+view.pass = 'objects';
 const actor = document.createElement('canvas');
 const actorRenderer = createRenderer(actor, {
   bake(api) { api.pix.fill(0);api.zb.fill(-1e9);api.groundZ.fill(-1e9); },
@@ -30,6 +30,9 @@ const actorRenderer = createRenderer(actor, {
 });
 actorRenderer.draw();
 const at = view.project(player), ratio = camera.scale / (18 / Math.SQRT2);
-ctx.drawImage(actor, 130, 80, 100, 80, at.x - 50 * ratio, at.y - 70 * ratio, 100 * ratio, 80 * ratio);
+const objects: WorldRenderObject[] = [...renderObjects(map, view), ...(map.id === 'apartment' ? renderFurnitureObjects(home) : []), {
+  id: 'player', position: player, draw() { ctx.drawImage(actor, 130, 80, 100, 80, at.x - 50 * ratio, at.y - 70 * ratio, 100 * ratio, 80 * ratio); },
+}];
+objects.sort((a, b) => (a.depth ?? a.position.x + a.position.y) - (b.depth ?? b.position.x + b.position.y)).forEach(object => object.draw(ctx, view));
 view.pass = 'foreground';drawMap(ctx, map, view);
 canvas.dataset.ready = 'true';

@@ -1,0 +1,141 @@
+[
+  {
+    "mapId": "park",
+    "bounds": {
+      "width": 84,
+      "height": 68
+    },
+    "footprintRadius": 0.22,
+    "sampledReachableAreaTiles": 4298.5,
+    "props": 314,
+    "distinctPropKinds": [
+      "pavilion",
+      "bench",
+      "cart",
+      "rock",
+      "steps",
+      "reeds",
+      "lilies",
+      "tree",
+      "bamboo",
+      "willow",
+      "flowers",
+      "shrub"
+    ],
+    "landmarks": [
+      {
+        "id": "park.orchard-basket",
+        "lengthTiles": 12.73,
+        "reachable": true
+      },
+      {
+        "id": "park.bamboo-court",
+        "lengthTiles": 69.11,
+        "reachable": true
+      },
+      {
+        "id": "park.old-reading-stone",
+        "lengthTiles": 52.43,
+        "reachable": true
+      },
+      {
+        "id": "park.pond-deck",
+        "lengthTiles": 79.34,
+        "reachable": true
+      },
+      {
+        "id": "park.ridge-view",
+        "lengthTiles": 95.75,
+        "reachable": true
+      },
+      {
+        "id": "park.tea-pavilion",
+        "lengthTiles": 76.08,
+        "reachable": true
+      },
+      {
+        "id": "park.lily-cove",
+        "lengthTiles": 54.3,
+        "reachable": true
+      }
+    ],
+    "customObjectCount": 314,
+    "allPropsOverrideFallback": true,
+    "registeredResidentHooks": [
+      "park.reading-walk"
+    ],
+    "note": "Half-tile shared-footprint flood area is a sampled estimate. Route distances use shared smoothed findPath. These measure authored content, not experience quality."
+  },
+  {
+    "mapId": "riverbank",
+    "bounds": {
+      "width": 96,
+      "height": 80
+    },
+    "footprintRadius": 0.22,
+    "sampledReachableAreaTiles": 5454.75,
+    "props": 399,
+    "distinctPropKinds": [
+      "shrine",
+      "boat",
+      "mooring",
+      "stool",
+      "laundry",
+      "reeds",
+      "picnic",
+      "rock",
+      "willow",
+      "tree",
+      "flowers",
+      "shrub"
+    ],
+    "landmarks": [
+      {
+        "id": "riverbank.moon-bridge",
+        "lengthTiles": 73.79,
+        "reachable": true
+      },
+      {
+        "id": "riverbank.reed-hide",
+        "lengthTiles": 33.66,
+        "reachable": true
+      },
+      {
+        "id": "riverbank.fishing-jetty",
+        "lengthTiles": 50.81,
+        "reachable": true
+      },
+      {
+        "id": "riverbank.washing-stones",
+        "lengthTiles": 33.04,
+        "reachable": true
+      },
+      {
+        "id": "riverbank.old-ferry",
+        "lengthTiles": 64.97,
+        "reachable": true
+      },
+      {
+        "id": "riverbank.hill-shrine",
+        "lengthTiles": 138.93,
+        "reachable": true
+      },
+      {
+        "id": "riverbank.heron-shallows",
+        "lengthTiles": 92.9,
+        "reachable": true
+      },
+      {
+        "id": "riverbank.lower-crossing",
+        "lengthTiles": 41.23,
+        "reachable": true
+      }
+    ],
+    "customObjectCount": 447,
+    "allPropsOverrideFallback": true,
+    "registeredResidentHooks": [
+      "riverbank.ferry-walk"
+    ],
+    "note": "Half-tile shared-footprint flood area is a sampled estimate. Route distances use shared smoothed findPath. These measure authored content, not experience quality."
+  }
+]
