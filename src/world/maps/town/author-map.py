@@ -32,6 +32,13 @@ for name,target,r,arrival,facing,kind in [('restaurant','restaurant',rect(33,28,
  landmark(name+'-approach',*arrival,kind)
 
 for name,x,y,w,h,var in [('restaurant-steps',32.5,28,3,1,'wide'),('residence-steps',10,21,3,1,'stone'),('workshop-landing',71.5,29,3.5,1,'loading'),('river-stairs',74,44.4,4,2,'river')]:prop(name,'steps',x,y,w,h,var,layer='ground')
+# Only real portals get an open leaf and a threshold mat. Closed shops keep shutters.
+for name,x,y,variant in [('restaurant',33,28,'woven-jade'),('residence',10.5,21,'home-stone'),('workshop',72.25,29,'workshop-slats')]:
+ prop(name+'-mat','threshold-mat',x+.15,y+.9,1.7,1.05,variant,layer='ground')
+ prop(name+'-open-leaf','open-door-leaf',x+.04,y+.28,.18,.7,variant,True,2.5)
+prop('gateway-threshold','threshold-mat',43.15,6.2,3.7,.6,'gate-stone',layer='ground')
+prop('book-delivery-ledge','delivery-ledge',6.7,28.65,1.2,.2,'wrapped-books',True,.9)
+prop('junction-rest-bag','rest-bag',20.8,28.2,.5,.3,'folded-cloth',False,1.2)
 prop('courtyard-moon-gate','gate',42,6.5,6,.35,'moon',False,4)
 m['colliders'] += [dict(id='town.gate-left',rect=rect(42,6.5,1.1,.35)),dict(id='town.gate-right',rect=rect(46.9,6.5,1.1,.35))]
 prop('breakfast-awning','awning',28,27.3,11,.7,'stripe-jade',False,3)

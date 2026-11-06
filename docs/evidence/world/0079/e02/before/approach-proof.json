@@ -1,0 +1,306 @@
+{
+  "sourceHead": "9cbdb94b138b0bdce1248815656d2e076bcec822",
+  "capturedAt": "2026-11-06T01:44:55.048Z",
+  "results": [
+    {
+      "device": "phone390",
+      "sourceHead": "9cbdb94b138b0bdce1248815656d2e076bcec822",
+      "normalMotion": true,
+      "steps": [
+        {
+          "action": "keyboard left restaurant",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 34,
+              "y": 30.482999999999997
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.9165,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 0,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          }
+        },
+        {
+          "action": "touch door town to residential-hall",
+          "state": {
+            "version": 1,
+            "mapId": "residential-hall",
+            "position": {
+              "x": 16,
+              "y": 21
+            },
+            "facing": "north",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.9165,
+                "facing": "south"
+              },
+              "town": {
+                "x": 12.564349781383157,
+                "y": 22.01154850075463,
+                "facing": "west"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 0,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          }
+        },
+        {
+          "action": "touch door residential-hall to town",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 11.5,
+              "y": 23.5
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.9165,
+                "facing": "south"
+              },
+              "town": {
+                "x": 12.564349781383157,
+                "y": 22.01154850075463,
+                "facing": "west"
+              },
+              "residential-hall": {
+                "x": 15.9999993968857,
+                "y": 22.999999999999915,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 0,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          }
+        },
+        {
+          "action": "touch door town to restaurant",
+          "state": {
+            "version": 1,
+            "mapId": "restaurant",
+            "position": {
+              "x": 12,
+              "y": 18
+            },
+            "facing": "north",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.9165,
+                "facing": "south"
+              },
+              "town": {
+                "x": 33.5324143601026,
+                "y": 29.254620265128885,
+                "facing": "north"
+              },
+              "residential-hall": {
+                "x": 15.9999993968857,
+                "y": 22.999999999999915,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 0,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          }
+        }
+      ],
+      "consoleErrors": [],
+      "rawVideo": "/workspace/junyan/output/0079-raw/page@0615fab034a7bcf9ba4d346512d20321.webm"
+    },
+    {
+      "device": "phone320",
+      "sourceHead": "9cbdb94b138b0bdce1248815656d2e076bcec822",
+      "normalMotion": true,
+      "steps": [
+        {
+          "action": "keyboard left restaurant",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 34,
+              "y": 30.4835
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.9165,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 0,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          }
+        },
+        {
+          "action": "touch door town to residential-hall",
+          "state": {
+            "version": 1,
+            "mapId": "residential-hall",
+            "position": {
+              "x": 16,
+              "y": 21
+            },
+            "facing": "north",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.9165,
+                "facing": "south"
+              },
+              "town": {
+                "x": 12.564348220825192,
+                "y": 22.01154790843616,
+                "facing": "west"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 0,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          }
+        },
+        {
+          "action": "touch door residential-hall to town",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 11.5,
+              "y": 23.5
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.9165,
+                "facing": "south"
+              },
+              "town": {
+                "x": 12.564348220825192,
+                "y": 22.01154790843616,
+                "facing": "west"
+              },
+              "residential-hall": {
+                "x": 15.999999547664242,
+                "y": 22.999999999999936,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 0,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          }
+        },
+        {
+          "action": "touch door town to restaurant",
+          "state": {
+            "version": 1,
+            "mapId": "restaurant",
+            "position": {
+              "x": 12.07477329515919,
+              "y": 18.036027133261452
+            },
+            "facing": "east",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.9165,
+                "facing": "south"
+              },
+              "town": {
+                "x": 33.5327049792948,
+                "y": 29.25421339846137,
+                "facing": "north"
+              },
+              "residential-hall": {
+                "x": 15.999999547664242,
+                "y": 22.999999999999936,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 0,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          }
+        }
+      ],
+      "consoleErrors": [],
+      "rawVideo": "/workspace/junyan/output/0079-raw/page@4a642bb7e02372818ac3403c1542a67e.webm"
+    }
+  ]
+}

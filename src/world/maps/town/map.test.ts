@@ -26,6 +26,18 @@ describe('authored town travel', () => {
       expect(exit.targetEntranceId).toBe('from-town');
     }
   });
+  it('preserves radius-aware threshold access beside the open door leaves', () => {
+    for (const id of ['restaurant', 'residential-hall', 'workshop']) {
+      const exit = map.exits.find(exit => exit.targetMapId === id)!;
+      const arrival = map.entrances.find(entry => entry.id === `from-${id}`)!;
+      const centre = { x: exit.rect.x + exit.rect.width / 2, y: exit.rect.y + exit.rect.height / 2 };
+      // The displayed aperture remains traversable along its centre at production radius.
+      expect(canWalk(map, arrival.position, centre), id).toBe(true);
+    }
+    // Previously reviewed bookstore-end approach stays clear of the delivery ledge.
+    expect(canStand(map, { x: 7, y: 29.4 })).toBe(true);
+    expect(canWalk(map, { x: 7, y: 30.2 }, { x: 7, y: 29.4 })).toBe(true);
+  });
   it('reaches every authored observation and landmark without crossing buildings', () => {
     for (const target of [...map.anchors, ...map.landmarks]) expect(findPath(map, map.defaultSpawn, target.position).length, target.id).toBeGreaterThan(0);
     expect(canWalk(map, { x: 34, y: 30 }, { x: 34, y: 20 })).toBe(false);

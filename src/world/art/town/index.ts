@@ -111,7 +111,7 @@ export function drawProp(ctx: CanvasRenderingContext2D | OffscreenCanvasRenderin
       box(x + w + .18, b + .56, 2.2, .02, .09, 1.5, C.cream);
     }
     const isDoor = ['town.restaurant', 'town.residence', 'town.workshop'].includes(prop.id);
-    const doorX = prop.id === 'town.residence' ? 10.5 : prop.id === 'town.workshop' ? 72 : 33;
+    const doorX = prop.id === 'town.residence' ? 10.5 : prop.id === 'town.workshop' ? 72.25 : 33;
     if (isDoor) {
       if (prop.kind === 'building-workshop') {
         box(x + .8, y + h + .02, .15, w - 1.6, .2, 3.1, C.slate);
@@ -119,9 +119,12 @@ export function drawProp(ctx: CanvasRenderingContext2D | OffscreenCanvasRenderin
       }
       box(doorX - .15, y + h + .02, .1, 2.3, .24, 2.8, C.wood);
       box(doorX, y + h + .27, .1, 2, .04, 2.5, [43, 65, 62]);
-      box(doorX + .12, y + h + .32, .25, 1.76, .04, 2.1, [78, 104, 96]);
-      box(doorX + 1.6, y + h + .38, 1.15, .12, .04, .12, C.brass);
-      box(doorX + .1, y + h + .34, 1.7, 1.8, .03, .12, C.wood);
+      // Deep open recess; the swung leaf is a separate depth-sorted map object.
+      box(doorX + .16, y + h + .32, .2, 1.68, .025, 2.25, [35, 49, 47]);
+      box(doorX + 1.5, y + h + .35, .2, .18, .02, 2.2, [75, 91, 80]);
+      box(doorX + .2, y + h + .36, .14, 1.6, .1, .12, [188, 170, 128]);
+      line([doorX + .35, y + h + .48, .28], [doorX + 1.6, y + h + .48, .28], C.cream);
+      box(doorX - .2, y + h + .38, 2.75, 2.4, .3, .12, C.cream);
     } else if (shop || prop.kind === 'building-shutter') {
       box(x + .6, y + h + .1, .2, w - 1.2, .15, 2.5, style?.includes('jade') ? C.jade : style?.includes('olive') ? [135, 146, 107] : style?.includes('cream') ? [190, 184, 155] : style?.includes('timber') ? C.wood : C.slate);
       for (let z = .35; z < 2.6; z += .26) line([x + .7, y + h + .26, z], [x + w - .7, y + h + .26, z], [72, 93, 91]);
@@ -219,6 +222,33 @@ export function drawProp(ctx: CanvasRenderingContext2D | OffscreenCanvasRenderin
       face([[x + a, y, 3.3], [x + Math.min(w, a + .65), y, 3.3], [x + Math.min(w, a + .65), y + h + .8, 2.85], [x + a, y + h + .8, 2.85]], fill);
       box(x + a, y + h + .8, 2.55, Math.min(.65, w - a), .05, .3, fill);
     }
+  } else if (prop.kind === 'threshold-mat') {
+    const home = style === 'home-stone' || style === 'gate-stone';
+    const fill = home ? C.cream : style === 'workshop-slats' ? C.wood : C.jade;
+    box(x, y, .025, w, h, .035, fill);
+    if (home) {
+      for (let a = .15; a < w; a += .6) line([x+a,y+.05,.065],[x+a,y+h-.05,.065],C.brick);
+      line([x+.08,y+h-.08,.065],[x+w-.08,y+h-.08,.065],C.paving);
+    } else {
+      for (let b = .1; b < h; b += .16) line([x+.07,y+b,.065],[x+w-.07,y+b,.065],style === 'workshop-slats' ? C.brass : [171,190,151]);
+      for (const a of [.12,w-.12]) line([x+a,y+.08,.07],[x+a,y+h-.08,.07],C.cream);
+    }
+  } else if (prop.kind === 'open-door-leaf') {
+    box(x,y,.12,w,h,2.4,style === 'home-stone' ? C.wood : C.jade);
+    for (const z of [.4,1.55]) box(x+w+.01,y+.12,z,.025,h-.24,.6,C.slate);
+    box(x+w+.04,y+h-.12,1.2,.06,.07,.09,C.brass);
+  } else if (prop.kind === 'delivery-ledge') {
+    box(x,y,0,.1,h,.8,C.wood); box(x+w-.1,y,0,.1,h,.8,C.wood);
+    box(x-.04,y-.04,.8,w+.08,h+.08,.1,C.wood);
+    box(x+.12,y,.9,.64,h,.16,C.cream);
+    box(x+.4,y-.01,.9,.06,h+.02,.18,C.wood);
+    box(x+.85,y,.9,.22,h,.24,C.jade);
+  } else if (prop.kind === 'rest-bag') {
+    box(x,y,.83,w,h,.3,C.wood);
+    line([x+.12,y+.1,1.1],[x+.12,y+.1,1.25],C.ink);
+    line([x+.12,y+.1,1.25],[x+.36,y+.1,1.25],C.ink);
+    line([x+.36,y+.1,1.25],[x+.36,y+.1,1.1],C.ink);
+    box(x+.05,y+h-.05,.84,w-.1,.18,.08,C.cream);
   } else if (prop.kind === 'steps') {
     for (let i = 0; i < 4; i++) box(x, y + h * i / 4, .03, w, h / 4, .28 - i * .06, C.paving);
   } else if (prop.kind === 'fence' || prop.kind === 'closed-gate' || prop.kind === 'gate') {
