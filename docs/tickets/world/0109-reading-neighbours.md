@@ -1,7 +1,7 @@
 ---
 id: 109
 title: Give the shared reading room neighbours and purpose
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-06
@@ -34,3 +34,5 @@ Independent comparisons prefer the material refinements but still find a showroo
 - Visual inspection exposed the initial west-facing host hiding her book; she now faces the ordinary approach, making the existing held asset legible without changing feet, contacts or actor artwork. This increment attributes room work to Lin and her response; it does not add solved-chair occupancy or a richer schedule. Raw capture/trace/state evidence remains private.
 
 - Independent source cross-review at cd8529d8 found no actionable defect. Separate harsh visual review accepts the narrow attributable host increment and sees no obvious still-frame contact defect, but rejects inhabited-room quality: the resident does not use the completed setup. Ticket 0112 owns the earned-use lifecycle and 0111 the purposeful material/composition pass; broader acceptance remains open. Root integrated 663 tests/102files, TypeScript/build and 11 chapter/target browser cases pass. Final-facing ordinary-input breakfast-to-room request/completion/thanks/reload proof is clean.
+
+- Completed the visible-purpose gate through 112: Lin safely approaches an earned arrangement, reads holding her native book beside it, and returns before queued edits apply. Separate source/motion review found no remaining defect; actual combined normal-input both-brief/return/restore journey passed. No chair occupancy, tabletop attachment or global travel simulation is claimed. Broader visual quality remains open.

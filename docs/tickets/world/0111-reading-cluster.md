@@ -1,7 +1,7 @@
 ---
 id: 111
 title: Give the reading room an authored material and use hierarchy
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-06
@@ -27,3 +27,5 @@ Independent visual critique finds coherent construction but a sparse furnishing 
 - All new raw QA stays private under /private/tmp/junyan-world-private-qa/0111; no public captures/reports/traces.
 - Root approved moving the return cart to (16.8,12.2) and lamp to (15.45,11.95), with their original footprints and matching colliders. The desk, all windows/anchors/project geometry and Lin's protected aisle stay fixed. Ticket112 was given the exact moves for its independent standing-use planner.
 - First candidate groups desk, lamp and supported return trays beneath the work bays, differentiates timber/paper/woven/metal values, grounds feet and quiets the broad floor. Existing phase-aware fixture lights own illumination rather than a permanent completed-floor sun stripe. Matched native before/after views and independent critique are pending; no material-quality acceptance yet.
+
+- Root acceptance: independent source/map/light review found no blocker; fresh version-withheld critic preferred six of eight matched native views, with two phone-editor ties and no preference for baseline. Gains are modest; publisher reference still wins. Combined 105 files/681 tests, types/build,15 chapter browser cases and both full opening/service journeys pass. A further ordinary full-service→both earned arrangements→reader use/return→hall reentry→phone/reduced motion→immediate restored greeting proof passed.Tickets 114/115 continue footprint and phone composition.

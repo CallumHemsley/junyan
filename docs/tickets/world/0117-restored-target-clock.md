@@ -1,7 +1,7 @@
 ---
 id: 117
 title: Initialize restored interaction targets at the saved world clock
-status: doing
+status: done
 priority: medium
 type: bug
 created: 2026-11-06
@@ -22,3 +22,5 @@ The actual full-service/both-reading-places journey restored a player beside the
 - Root owns branch codex/0117-restored-target-clock; worktree /private/tmp/junyan-world-restored-clock; integration preview5542 is used after intake for exact ordinary-input verification.
 - No new state/schema/timing mechanism, actor moves, save changes or deferred test-only workaround. The target clock should start from the existing saved life.elapsedMs, exactly like the render elapsed ref.
 - All new raw QA stays private0102/combined-normal-use and0117.
+
+- Independent no-edit review confirmed both initial clocks now agree without altering cadence or map behavior. 144 focused world/life/save/reading tests, TypeScript/build pass; exact ordinary-input opening→all four releases→both earned arrangements→return→hall reentry→phone/reduced motion→immediate restored greeting now passes cleanly with the original greeting helper and no timing workaround.
