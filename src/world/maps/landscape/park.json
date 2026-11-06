@@ -1836,12 +1836,34 @@
       "variant": 0
     },
     {
-      "id": "park.pond-2",
+      "id": "park.pond-2-cut-0",
       "rect": {
         "x": 40,
         "y": 29,
         "width": 23,
-        "height": 7
+        "height": 2.8000000000000007
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-2-cut-1",
+      "rect": {
+        "x": 40,
+        "y": 34.2,
+        "width": 23,
+        "height": 1.7999999999999972
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "park.pond-2-cut-2",
+      "rect": {
+        "x": 40,
+        "y": 31.8,
+        "width": 19.799999999999997,
+        "height": 2.400000000000002
       },
       "material": "water",
       "variant": 0

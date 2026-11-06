@@ -36,20 +36,12 @@ def carve(m,cut):
    if piece['width']>0 and piece['height']>0: result.append(dict(id=c['id']+f'-cut-{k}',rect=piece))
  m['colliders']=result
 
-def inside(p,r,margin=0): return r['x']-margin<=p[0]<=r['x']+r['width']+margin and r['y']-margin<=p[1]<=r['y']+r['height']+margin
+def carve_water(m,cut):
+ water={'colliders':[dict(id=t['id'],rect=t['rect']) for t in m['terrain'] if t['material']=='water']}
+ carve(water,cut)
+ m['terrain']=[t for t in m['terrain'] if t['material']!='water']+[dict(id=t['id'],rect=t['rect'],material='water',variant=0) for t in water['colliders']]
 
-def scatter(m,kind,areas,step,w,h):
- # Small authored groves, with deterministic offset and gaps along routes.
- for cluster,(x0,y0,x1,y1) in enumerate(areas):
-  for y in range(y0,y1,step):
-   for x in range(x0,x1,step):
-    n=(x*x*37+y*y*71+x*y*13+cluster*17)%97
-    p=(x+(n%7)*.3,y+((n//7)%7)*.3)
-    if any(inside(p,t['rect'],1.4) for t in m['terrain'] if t['material'] in ['path','stone-path','bridge','water','boardwalk']): continue
-    if any(inside(p,c['rect'],1) for c in m['colliders']): continue
-    if any(math.hypot(p[0]-a['position']['x'],p[1]-a['position']['y'])<2.5 for a in m['landmarks']+m['entrances']): continue
-    if n<13: continue
-    prop(m,f'{kind}-{cluster}-{x}-{y}',kind,*p,w,h,n%4,True)
+def inside(p,r,margin=0): return r['x']-margin<=p[0]<=r['x']+r['width']+margin and r['y']-margin<=p[1]<=r['y']+r['height']+margin
 
 park=base('park',84,68)
 terrain(park,'meadow',rect(0,0,84,68),'grass')
@@ -117,6 +109,11 @@ carve(park,rect(59.8,31.8,6.4,2.4))
 carve(river,rect(33.8,37.8,7.4,2.4))
 carve(river,rect(34,17.6,27,2.8))
 carve(river,rect(30,55.6,31,2.8))
+# Water effects use visible water surfaces; decks mask the water beneath them.
+carve_water(park,rect(59.8,31.8,6.4,2.4))
+carve_water(river,rect(33.8,37.8,7.4,2.4))
+carve_water(river,rect(34,17.6,27,2.8))
+carve_water(river,rect(30,55.6,31,2.8))
 def protected(m,x,y):
  return any(inside((x,y),t['rect'],.65) for t in m['terrain'] if t['material'] in ['path','stone-path','boardwalk','bridge','water']) or any(math.hypot(x-a['position']['x'],y-a['position']['y'])<2.2 for a in m['landmarks']+m['entrances'])
 

@@ -84,7 +84,7 @@ export const renderObjects: NonNullable<WorldArtModule['renderObjects']> = (map,
     const occlusion=map.occluders.find(o=>o.id===prop.id);
     return {
       id:prop.id,position:prop.position,
-      occlusion:occlusion?{...occlusion,fadeWhenPlayerBehind:occlusion.fadeWhenPlayerBehind&&Math.hypot(prop.position.x-view.playerPosition.x,prop.position.y-view.playerPosition.y)<3.5}:undefined,
+      occlusion,
       draw(ctx,current){
         const p=current.project(prop.position),origin=current.project({x:0,y:0}),axis=current.project({x:1,y:0}),unit=Math.abs(axis.x-origin.x);
         if(p.x < -unit*6 || p.y < -unit*2 || p.x > current.width+unit*6 || p.y > current.height+unit*8)return;
