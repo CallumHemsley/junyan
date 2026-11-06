@@ -33,3 +33,7 @@ PLAYWRIGHT_BROWSERS_PATH=/workspace/.junyan-tools/browsers /workspace/.junyan-to
 Keep each project's output separately when rerunning; Playwright cleans outputDir. Desktop route video was overwritten by the subsequent phone run and is not claimed as retained evidence. Screenshots, JSON and executable route remain; phone video will be retained after completion.
 
 Phone viewport route also passed: 17 transitions, 145185ms summed transition time. Zero page errors. Full motion recording phone-route.webm retained; not yet claimed frame-by-frame inspected.
+
+## Confirmed activity obstruction
+
+Corrected reviewer activity run served3 customers with real table/kitchen trips, change and journal lookup (17registeredwords). Then physically approached courtyard.white and opened cats activity. Normal center click cats-white repeatedly intercepted by cats-black (15s bounded timeout). Inspected desktop-activity-final.png shows collapsed/narrow scene and overlapping controls. src/features/cats/Courtyard.tsx54–62 retains absolute percent-positioned buttons; world/world.css1 hides legacy canvas and constrains its scene inside activity layout. Anchor opens activity but does not select white cat. Writer must provide usable contextual selection/controls, not force clicks. Exact runner failure/video retained; cats reunion, subsequent furnishings/roof/workshop activities NOT reached. Initial interrupted run was reviewer exact-label selector mismatch for 继续招呼 arrow, corrected before this failure.
