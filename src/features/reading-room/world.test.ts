@@ -28,7 +28,7 @@ it('keeps the door, activity desk and both protected circulation lanes connected
   for (const state of [initialState(), reduce(solveWindow(), { type: 'check' }), reduce(solveAlcove(), { type: 'check' })]) {
     const base = worldMapSchema.parse(readingRoomMap), projected = projectReadingRoom(state);
     const map = { ...base, colliders: [...base.colliders, ...projected.colliders] };
-    for (const point of [map.defaultSpawn, { x: 14, y: 13 }, gridToWorld({ x: 5, y: 2 }, 'window'), gridToWorld({ x: 2, y: 4 }, 'alcove')]) expect(isExitConnected(map, point)).toBe(true);
+    for (const point of [map.defaultSpawn, map.anchors[0].position, gridToWorld({ x: 5, y: 2 }, 'window'), gridToWorld({ x: 2, y: 4 }, 'alcove')]) expect(isExitConnected(map, point)).toBe(true);
   }
 });
 it('shows the durable first arrangement when its replay draft is cleared and the player changes brief', () => {

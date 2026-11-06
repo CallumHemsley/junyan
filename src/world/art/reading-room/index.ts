@@ -51,8 +51,13 @@ function drawProp(ctx: CanvasRenderingContext2D, view: WorldRenderView, p: Prop)
       break;
     case 'reading-low-wall': b(0, 0, 0, w, h, .28, '#c3b18b'); b(0, 0, .28, w + .06, h, .07, pale); break;
     case 'reading-window': {
-      b(-.15, .35, .86, w + .3, .2, 2.2, ink); b(-.05, .56, 1, w + .1, .045, 1.9, '#a2bec0');
+      b(-.15, .35, .86, w + .3, .2, 2.2, ink); b(-.05, .56, 1, w + .1, .045, 1.9, '#799a9d');
       for (let pane = 0; pane < w; pane += .75) {
+        const span = Math.min(.56, w - pane - .1);
+        b(pane + .09, .615, 1.09, span, .015, .55, '#7e9b8b');
+        b(pane + .21, .635, 1.35, .055, .016, .65, '#567b70');
+        b(pane + .12, .635, 1.72, Math.min(.3, span), .016, .2, '#668d7d');
+        b(pane + .13, .635, 2.4, span * .55, .014, .3, '#c3d4cc');
         b(pane, .62, 1, .07, .05, 1.9, pale);
         b(pane + .1, .63, 2.1, Math.min(.48, w - pane - .1), .015, .12, '#bed2c8');
       }
@@ -64,15 +69,23 @@ function drawProp(ctx: CanvasRenderingContext2D, view: WorldRenderView, p: Prop)
       break;
     }
     case 'reading-shelf': {
-      b(0, 0, .12, w, h, 1.95, '#805f40'); b(.09, .1, .24, w - .18, h - .1, 1.73, '#65533d');
-      for (const z of [.24, .86, 1.48, 2.1]) b(-.04, -.03, z, w + .08, h + .08, .1, wood);
+      const low = p.variant === 'low', scale = low ? .4 : 1;
+      b(0, 0, .12, w, h, 1.95 * scale, '#805f40'); b(.09, .1, .24 * scale, w - .18, h - .1, 1.73 * scale, '#65533d');
+      for (const z of [.24, .86, 1.48, 2.1]) b(-.04, -.03, z * scale, w + .08, h + .08, .1 * scale, wood);
       const colours = ['#839b8a', '#bfaa77', '#9b8f94', '#7e9ca4', '#d5c6a0', '#8f795e'];
       for (let level = 0; level < 3; level++) for (let i = 0; i < Math.floor((w - .2) / .18); i++) {
-        const dx = .12 + i * .18, z = .34 + level * .62, height = .38 + ((i + level * 3) % 4) * .045;
-        b(dx, h - .27, z, .145, .24, height, colours[(i + level * 2 + Number(p.variant)) % colours.length]);
-        b(dx + .02, h - .021, z + .1, .105, .022, .025, '#deceaa');
+        const dx = .12 + i * .18, z = (.34 + level * .62) * scale, height = (.38 + ((i + level * 3) % 4) * .045) * scale;
+        b(dx, h - .27, z, .145, .24, height, colours[(i + level * 2 + (low ? 0 : Number(p.variant))) % colours.length]);
+        b(dx + .02, h - .021, z + .1 * scale, .105, .022, .025 * scale, '#deceaa');
       }
-      b(-.06, -.02, 2.2, w + .12, h + .08, .1, pale);
+      b(-.06, -.02, 2.2 * scale, w + .12, h + .08, .1 * scale, pale);
+      for (let stack = 0; stack < Math.max(1, Math.floor(w / .65)); stack++) {
+        const dx = .14 + stack * .65, top = 2.3 * scale;
+        for (let book = 0; book < 2 + stack % 2; book++) {
+          b(dx + book % 2 * .04, .2 + stack % 2 * .12, top + book * .085, Math.min(.46, w - dx - .04), Math.min(.65, h - .26), .075, colours[(stack + book + (low ? 3 : 0)) % colours.length]);
+          b(dx + .03, .21 + stack % 2 * .12, top + book * .085 + .025, Math.min(.4, w - dx - .09), Math.min(.61, h - .3), .028, paper);
+        }
+      }
       break;
     }
     case 'reading-table': case 'reading-chair': furniture(ctx, view, p); break;
@@ -103,6 +116,12 @@ function drawProp(ctx: CanvasRenderingContext2D, view: WorldRenderView, p: Prop)
     case 'reading-lamp':
       b(0, 0, .02, w, h, .09, ink); b(w * .45, h * .45, .1, .07, .07, 1.8, '#8e7953');
       b(-.2, -.2, 1.6, w + .4, h + .4, .08, '#c3ab76'); b(-.14, -.14, 1.68, w + .28, h + .28, .4, '#e4d4a5'); b(-.04, -.04, 2.08, w + .08, h + .08, .08, pale); break;
+    case 'reading-entry':
+      for (const dx of [0, w - .18]) { b(dx, 0, 0, .18, h, 2.5, ink); b(dx + .03, .05, .15, .12, h - .1, 2.35, wood); }
+      b(-.04, .1, 2.5, w + .08, h - .2, .18, pale);
+      b(.2, .1, .02, w - .4, h - .2, .06, '#b4b5a0'); b(.25, .15, .08, w - .5, h - .3, .02, '#d3ceb0');
+      for (const yy of [.2, h - .2]) stroke(ctx, view, [x + .3, y + yy, .105], [x + w - .3, y + yy, .105], '#8e947f');
+      break;
   }
 }
 export const drawMap: DrawMap = (ctx, map, view) => {
@@ -118,6 +137,11 @@ export const drawMap: DrawMap = (ctx, map, view) => {
   for (const p of map.props.filter(prop => prop.layer === 'ground')) {
     const { x, y } = p.position, w = p.width, h = p.height;
     if (p.kind === 'reading-inlay') {
+      const rug = p.variant === 1 ? '#9eaa94' : '#8c9d8d';
+      box(ctx, view, x, y, .006, w, h, .015, '#6d7e72');
+      box(ctx, view, x + .13, y + .13, .022, w - .26, h - .26, .005, rug);
+      box(ctx, view, x + .35, y + .35, .028, w - .7, h - .7, .003, p.variant === 1 ? '#bdc0a2' : '#b0b99b');
+      for (let at = .55; at < h - .4; at += .24) stroke(ctx, view, [x + .4, y + at, .033], [x + w - .4, y + at, .033], p.variant === 1 ? '#afb597' : '#a4af92');
       for (const yy of [y, y + h]) stroke(ctx, view, [x, yy, .012], [x + w, yy, .012], '#8e805d');
       for (const xx of [x, x + w]) stroke(ctx, view, [xx, y, .012], [xx, y + h, .012], '#8e805d');
     } else if (p.kind === 'reading-mat') {
@@ -146,6 +170,7 @@ export function renderObjects(map: WorldMapDefinition): WorldRenderObject[] {
     }) : [p];
     return parts.map(part => ({
       id: part.id, position: { x: part.position.x + part.width / 2, y: part.position.y + part.height / 2 },
+      depth: p.kind === 'reading-window' ? p.position.x + p.width + p.position.y + .7 : p.kind === 'reading-open-book' ? (() => { const table = map.props.find(candidate => `${candidate.id}.book` === p.id)!; return table.position.x + table.position.y + (table.width + table.height) / 2 + .01; })() : undefined,
       occlusion: p.kind === 'reading-wall' ? { rect: { ...part.position, width: part.width, height: part.height }, height: 2.9, fadeWhenPlayerBehind: true } : map.occluders.find(o => o.id === p.id),
       draw(ctx: CanvasRenderingContext2D, view: WorldRenderView) { drawProp(ctx, view, part); },
     }));

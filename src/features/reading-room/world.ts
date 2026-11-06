@@ -27,8 +27,8 @@ export function projectReadingRoom(state: State): Projection {
       const rect = { x: region.x + fixture.x * region.cellSize, y: region.y + fixture.y * region.cellSize, width: region.cellSize, height: region.cellSize };
       const id = `reading-room.${brief}.shelf-${index}`;
       result.colliders.push({ id, rect });
-      result.props.push({ id, kind: 'reading-shelf', position: { x: rect.x, y: rect.y }, width: rect.width, height: rect.height, layer: 'object', variant: index });
-      result.occluders.push({ id, rect, height: 1.9, fadeWhenPlayerBehind: true });
+      result.props.push({ id, kind: 'reading-shelf', position: { x: rect.x, y: rect.y }, width: rect.width, height: rect.height, layer: 'object', variant: fixture.y > 0 ? 'low' : index });
+      result.occluders.push({ id, rect, height: fixture.y > 0 ? .9 : 1.9, fadeWhenPlayerBehind: true });
     }
     const layout = state.brief === brief && state.status === 'editing' ? state.layouts[brief] : state.completedLayouts[brief] ?? state.layouts[brief];
     for (const placement of layout) {
