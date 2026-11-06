@@ -1,3 +1,4 @@
+import { language } from "../src/language";
 import { expect, type Page } from "@playwright/test";
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
@@ -26,10 +27,10 @@ loadMaps(join(process.cwd(), "src/world/maps"));
 // Reading the player's actual save is observation; all changes below use visible controls.
 export async function savedGame(page: Page): Promise<GameState> {
   await expect(page.getByTestId("world-viewport")).toBeVisible();
-  const read = () => page.evaluate(async () => {
+  const read = () => page.evaluate(async languageId => {
     const hooks = (window as unknown as {__TEST__?: {getState: () => GameState}}).__TEST__;
     if (hooks) return hooks.getState();
-    const suffix = document.documentElement.lang === "zh-CN" ? "" : `:${document.documentElement.lang}`;
+    const suffix = languageId === "zh-CN" ? "" : `:${languageId}`;
     const pending = localStorage.getItem(`junyan-waiter-pending-v1${suffix}`);
     if (pending) return JSON.parse(pending);
     const db = await new Promise<IDBDatabase>((resolve, reject) => {
@@ -45,7 +46,7 @@ export async function savedGame(page: Page): Promise<GameState> {
         request.onerror = () => reject(request.error);
       });
     } finally { db.close(); }
-  });
+  }, language.id);
   let observed: GameState | null | undefined;
   await expect.poll(async () => { observed = await read(); return !!observed; }, {timeout:5_000}).toBe(true);
   const game = observed!;
@@ -101,8 +102,20 @@ export async function walkTo(page: Page, destination: Point) {
       const bounds = element.getBoundingClientRect();
       return document.elementFromPoint(bounds.left+position.x,bounds.top+position.y) === element;
     }, position);
-    if (!clear || map.id === "residential-stairs") {
-      // Use the visible pad where cards or overlapping stair surfaces cover the ground.
+    if (map.id === "residential-stairs") {
+      const dx=point.x-world.position.x, dy=point.y-world.position.y;
+      const directions = Math.abs(dx)>Math.abs(dy)*2.4 ? (dx>0?["ArrowDown","ArrowRight"]:["ArrowUp","ArrowLeft"])
+        : Math.abs(dy)>Math.abs(dx)*2.4 ? (dy>0?["ArrowDown","ArrowLeft"]:["ArrowUp","ArrowRight"])
+        : [Math.abs(dx+dy)>Math.abs(dx-dy)?(dx+dy>0?"ArrowDown":"ArrowUp"):(dx-dy>0?"ArrowRight":"ArrowLeft")];
+      await page.getByTestId("world-viewport").focus();
+      for (const key of directions) await page.keyboard.down(key);
+      try { await page.waitForTimeout(Math.min(180,Math.max(75,distance/5*1000))); }
+      finally { for (const key of directions) await page.keyboard.up(key); }
+      await expect.poll(async () => (await savedGame(page)).world!.position, {timeout:2_000}).not.toEqual(world.position);
+      continue;
+    }
+    if (!clear) {
+      // A nearby target card can cover the ground; use the visible movement pad.
       const controls = [{name:"向前走",x:-1,y:-1},{name:"向后走",x:1,y:1},{name:"向右走",x:1,y:-1},{name:"向左走",x:-1,y:1}];
       const candidates = controls.map(control => {
         const position = movePlayer(map, world.position, {x:control.x*.5/Math.SQRT2,y:control.y*.5/Math.SQRT2});

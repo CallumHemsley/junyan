@@ -93,7 +93,7 @@ test("kitchen, tray, journal and receipt sources keep switching", async ({ page,
   const state = await savedGame(page);
   const order = content.orders.find(order => order.id === state.customers[0].orderId)!;
   await interactAt(page, "restaurant.kitchen");
-  for (let index=0; index<state.tray.length; index++) await page.locator(".world-tray-item > button").first().click();
+  for (let index=0; index<state.tray.length; index++) await page.locator('.world-tray-item > button[aria-label^="放回"]').first().click();
   for (const item of order.items) {
     const food = content.foods.find(food => food.id === item.foodId)!;
     for (let index=0; index<item.quantity; index++) await page.getByRole("button", {name:`拿${food.word.text}`,exact:true}).click();
@@ -117,7 +117,7 @@ test("rapid keyboard/pointer selection records once and cancels prior native aud
   await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
   await interactAt(page, "restaurant.table-1");
-  const sources = page.locator(".world-context-dialogue .spoken .word");
+  const sources = page.locator(".world-context-scroll > .world-context-dialogue .spoken .word");
   const before = await page.evaluate(() => (window as any).__TEST__.getState().journal);
   const selected: string[] = [];
   for (const i of [0, 1, 2, 1]) {

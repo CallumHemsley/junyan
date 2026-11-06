@@ -77,6 +77,7 @@ test("completed IndexedDB save advances days and preserves journal and earnings"
   await seedDayOne(page, baseURL!, state);
   await page.goto(withSkip("/?seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
+  await page.getByRole("button", { name: "今日小结", exact:true }).click();
   await page.getByRole("button", { name: "明天见" }).click();
   await expect.poll(async () => (await stored(page))?.day).toBe(2);
   await page.reload();
