@@ -22,7 +22,13 @@ for (const [device, width, height] of [['desktop', 1440, 900], ['phone', 390, 84
   await page.goto('http://127.0.0.1:5485/?seed=42');
   await page.locator('[data-testid="world-viewport"][data-map="rooftop"] canvas[data-rendered="true"]').waitFor();
   const viewport = page.getByTestId('world-viewport');
-  const read = () => page.evaluate(() => JSON.parse(localStorage.getItem('junyan-waiter-pending-v1') ?? 'null'));
+  const read = () => page.evaluate(async () => {
+    const pending = localStorage.getItem('junyan-waiter-pending-v1');
+    if (pending) return JSON.parse(pending);
+    const {loadGame} = await import('/src/save.ts');
+    const {content} = await import('/src/neighbourhood/registry.ts');
+    return loadGame(content);
+  });
   await viewport.focus();
   await page.keyboard.down('ArrowRight'); await page.waitForTimeout(450); await page.keyboard.up('ArrowRight');
   await page.waitForTimeout(100);
@@ -43,29 +49,48 @@ for (const [device, width, height] of [['desktop', 1440, 900], ['phone', 390, 84
   const reached = [];
   for (const stop of stops) {
     saved = await read();
-    const path = await page.evaluate(async ({from,to}) => {
+    const path = await page.evaluate(async ({from,to,neighbourhood}) => {
       const {findPath} = await import('/src/world/geometry.ts');
-      const {worldMaps} = await import('/src/world/registry.ts');
-      return findPath(worldMaps.rooftop, from, to);
-    }, {from: saved.world.position, to: {x: stop.x,y:stop.y}});
+      const {mapsForNeighbourhood} = await import('/src/world/dynamic.ts');
+      return findPath(mapsForNeighbourhood(neighbourhood).rooftop, from, to);
+    }, {from: saved.world.position, neighbourhood: saved.neighbourhood, to: {x: stop.x,y:stop.y}});
     if (!path.length) throw new Error(`No path to ${stop.id}`);
     for (const end of path) {
+      await page.waitForTimeout(150);
       let current = (await read()).world.position;
-      while (Math.hypot(end.x-current.x,end.y-current.y) > .18) {
+      let steps = 0;
+      if ((await read()).world.mapId !== 'rooftop') throw new Error('Unexpected portal transition during roof route');
+      while (Math.hypot(end.x-current.x,end.y-current.y) > .35) {
+        if (++steps > 30) {await writeFile(`${dir}${device}-bounded-failure.json`,JSON.stringify({stop,end,current,path},null,2));await context.close();await browser.close();throw new Error("Route exceeded 30 pointer segments");}
         const distance=Math.hypot(end.x-current.x,end.y-current.y), step=Math.min(3,distance);
         const target={x:current.x+(end.x-current.x)/distance*step,y:current.y+(end.y-current.y)/distance*step};
-        const box=await viewport.locator('canvas').boundingBox(), scale=width<600?18:24;
-        const x=box.x+box.width/2+(target.x-current.x-target.y+current.y)*scale;
-        const y=box.y+box.height/2+(target.x-current.x+target.y-current.y)*scale*.5;
+        const box=await viewport.locator('canvas').boundingBox();
+        const pixel=await page.evaluate(async ({target,current,width,height})=>{
+          const {cameraForMap,project}=await import('/src/world/camera.ts');
+          const canvas=document.querySelector('[data-testid=world-viewport] canvas');
+          const camera=cameraForMap({width:48,height:36},current,canvas.width,canvas.height,width<600?11:15);
+          const pixel=project(target,camera);
+          return {x:pixel.x*width/canvas.width,y:pixel.y*height/canvas.height};
+        },{target,current,width:box.width,height:box.height});
+        const x=box.x+pixel.x,y=box.y+pixel.y;
         await page.screenshot({path:`${dir}${device}-before-ground-input.png`});
         if (device==='phone') await page.touchscreen.tap(x,y); else await page.mouse.click(x,y);
-        await page.waitForFunction(({target})=>{
-          const game=JSON.parse(localStorage.getItem('junyan-waiter-pending-v1')??'null');
-          return game?.world&&Math.hypot(game.world.position.x-target.x,game.world.position.y-target.y)<.18;
-        }, {target}, {timeout:7000});
+        try { await page.waitForFunction(async ({target})=>{
+          const pending=localStorage.getItem('junyan-waiter-pending-v1');
+          const {loadGame}=await import('/src/save.ts');
+          const {content}=await import('/src/neighbourhood/registry.ts');
+          const game=pending?JSON.parse(pending):await loadGame(content);
+          return game?.world&&Math.hypot(game.world.position.x-target.x,game.world.position.y-target.y)<.3;
+        }, {target}, {timeout:7000,polling:100}); } catch (error) {
+          await writeFile(`${dir}${device}-failure.json`,JSON.stringify({stop,current,target,path,saved:await read()},null,2));
+          await page.screenshot({path:`${dir}${device}-failure.png`});
+          await context.close(); await browser.close(); throw error;
+        }
+        await page.waitForTimeout(150);
         current=(await read()).world.position;
       }
     }
+    console.log(`${device}: reached ${stop.id}`);
     const final=(await read()).world.position;
     reached.push({id:stop.id,position:final});
     await page.screenshot({path:`${dir}${device}-${stop.id}.png`});
