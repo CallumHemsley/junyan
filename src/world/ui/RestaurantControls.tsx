@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { Food, Order, Phase } from "../../contracts";
 import WordToken from "../../WordToken";
 import FoodArt from "../../FoodArt";
@@ -7,18 +8,22 @@ export type RestaurantTableControlsProps = Pick<DialogueProps, "onLookup"> & {
   phase: Phase;
   order: Order;
   foods: readonly Food[];
-  total: number;
   change: number;
   onChange: (change: number) => void;
+  summary: ReactNode;
+  changeLabel: ReactNode;
+  resetControl: ReactNode;
+  receiptSummary: ReactNode;
+  thanks: ReactNode;
 };
 
-export function RestaurantTableControls({ phase, order, foods, total, change, onChange, onLookup }: RestaurantTableControlsProps) {
+export function RestaurantTableControls({ phase, order, foods, change, onChange, onLookup, summary, changeLabel, resetControl, receiptSummary, thanks }: RestaurantTableControlsProps) {
   if (phase === "checkout") return <div className="world-table-change">
-    <p>共 {total}块 · 收到 {order.paid}块</p>
-    <output aria-live="polite">找零 {change}块</output>
+    <div>{summary}</div>
+    <div className="world-change-output" aria-live="polite">{changeLabel}</div>
     <div className="world-context-options">
       {[1, 2, 5, 10].map(value => <button key={value} onClick={() => onChange(change + value)}>+{value}块</button>)}
-      <button onClick={() => onChange(0)}>重来</button>
+      {resetControl}
     </div>
   </div>;
   if (phase !== "served") return null;
@@ -27,8 +32,8 @@ export function RestaurantTableControls({ phase, order, foods, total, change, on
       const food = foods.find(food => food.id === item.foodId)!;
       return <p key={item.foodId}><WordToken word={food.word} look="plain" onLookup={onLookup} /><span>×{item.quantity}</span><span>{food.price * item.quantity}块</span></p>;
     })}
-    <p>共 {total}块 · 找零 {order.paid - total}块</p>
-    <span className="thanks-chop">多谢</span>
+    <div>{receiptSummary}</div>
+    {thanks}
   </div>;
 }
 
@@ -45,7 +50,7 @@ export function KitchenControls({ foods, tray, pickupEnabled, onPickup, onReturn
     <div className="world-kitchen-foods">
       {foods.map(food => <div className="world-kitchen-food" key={food.id}>
         <button aria-label={`拿${food.word.hanzi}`} disabled={!pickupEnabled} onClick={() => onPickup(food.id)}>
-          <FoodArt kind={food.kind} /><span>{food.word.hanzi}</span><small>{food.price}块</small>
+          <FoodArt kind={food.kind} /><small>{food.price}块</small>
         </button>
         <WordToken word={food.word} look="plain" onLookup={onLookup} />
       </div>)}

@@ -14,7 +14,7 @@ export type InteractionTarget =
   | { kind: "garden"; plantId: string | null }
   | { kind: "apartment"; itemId: string | null };
 export type DialogueProps = Pick<FeatureViewProps<unknown, unknown>, "onLookup" | "onPlay" | "recoveredWordIds" | "freshWordIds">;
-export type InteractionAction = { id: string; label: ReactNode; disabled?: boolean; onAction: () => void };
+export type InteractionAction = { id: string; control: ReactNode };
 export type ContextualInteractionProps = DialogueProps & {
   target: InteractionTarget;
   title: ReactNode;
@@ -23,9 +23,10 @@ export type ContextualInteractionProps = DialogueProps & {
   children?: ReactNode;
   onClose: () => void;
   returnFocusTo?: HTMLElement | null;
+  suspended?: boolean;
 };
 
-export function ContextualInteraction({ target, title, dialogue = [], actions = [], children, onClose, returnFocusTo, ...words }: ContextualInteractionProps) {
+export function ContextualInteraction({ target, title, dialogue = [], actions = [], children, onClose, returnFocusTo, suspended = false, ...words }: ContextualInteractionProps) {
   const titleId = useId();
   const closeButton = useRef<HTMLButtonElement>(null);
   const invokingElement = useRef(returnFocusTo ?? (typeof document === "undefined" ? null : document.activeElement));
@@ -35,7 +36,7 @@ export function ContextualInteraction({ target, title, dialogue = [], actions = 
     return () => { if (invoking instanceof HTMLElement && invoking.isConnected) invoking.focus({ preventScroll: true }); };
   }, []);
   return (
-    <section className="world-context" role="dialog" aria-labelledby={titleId} data-target={target.kind}
+    <section className="world-context" role="dialog" aria-labelledby={titleId} inert={suspended} data-target={target.kind}
       onKeyDown={event => { event.stopPropagation(); if (event.key === "Escape") { event.preventDefault(); onClose(); } }}
       onKeyUp={event => event.stopPropagation()}>
       <header className="world-context-heading">
@@ -50,7 +51,7 @@ export function ContextualInteraction({ target, title, dialogue = [], actions = 
         {children}
       </div>
       {actions.length > 0 && <footer className="world-context-actions">
-        {actions.map(action => <button key={action.id} disabled={action.disabled} onClick={action.onAction}>{action.label}</button>)}
+        {actions.map(action => <div className="world-context-action" key={action.id}>{action.control}</div>)}
       </footer>}
     </section>
   );
