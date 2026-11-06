@@ -12,13 +12,15 @@ export type AtmosphereHooks = {
   reflections?: readonly {id:string;position:Point;width:number;height:number;color:RGB}[];
   lights?: readonly { id: string; position: Point; radius: number; kind: 'window' | 'lamp'; emitter?:readonly Point[] }[];
   foliage?: readonly { id: string; position: Point; radius: number; kind: 'grass' | 'leaves'; motion?:boolean; depth?:number }[];
-  shadows?: readonly { id: string; position: Point; radius: number; height: number }[];
+  shadows?: readonly { id: string; position: Point; radius: number; height: number; shape?:'canopy'|'willow'|'bamboo'|'column'; contact?:boolean }[];
+  shadowExclusions?:readonly Rect[];
   particles?: readonly { id: string; rect: Rect; kind: 'pollen' | 'firefly' | 'dust'; count: number }[];
 };
 export type AtmosphereCommand = {
   layer: 'ground' | 'light' | 'objects' | 'foreground';
   object?: {id:string;position:Point;depth?:number};
-  role?:'water-base';
+  role?:'water-base'|'cast-shadow'|'contact-shadow';
+  exclusions?:readonly Rect[];
   points: readonly Point[]; color: RGB; opacity: number;
 };
 export type LightState = {
@@ -129,11 +131,25 @@ export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks 
     }
   }
   for(const shadow of hooks.shadows ?? []) {
-    const {x,y}=shadow.position, r=shadow.radius;
-    if(!visible({x:x-r,y:y-r,width:r*2,height:r*2})) continue;
-    const dx=light.shadowOffset[0]*shadow.height, dy=light.shadowOffset[1]*shadow.height;
-    add('ground',[{x:x-r,y:y-r*.4},{x:x+r,y:y-r*.4},{x:x+r+dx,y:y+r*.4+dy},{x:x-r+dx,y:y+r*.4+dy}],light.shadow,light.shadowOpacity);
-    add('ground',square(x-r*.6,y-r*.25,r*1.2,r*.5),light.shadow,.24);
+    const {x,y}=shadow.position,r=shadow.radius;
+    const dx=light.shadowOffset[0]*shadow.height,dy=light.shadowOffset[1]*shadow.height;
+    const cx=x+dx,cy=y+dy,shape=shadow.shape??'canopy';
+    if(visible({x:cx-r,y:cy-r,width:r*2,height:r*2})) {
+      const phase=variation(shadow.id,input.seed)*Math.PI*2;
+      const points=Array.from({length:20},(_,i)=>{
+        const angle=i/20*Math.PI*2;
+        const lobes=1+Math.cos(angle*3+phase)*.09+Math.sin(angle*5-phase)*.045;
+        const width=shape==='bamboo'?.56:shape==='willow'?1.12:shape==='column'?.22:1;
+        const depth=shape==='bamboo'?.86:shape==='willow'?.78:shape==='column'?.22:.86;
+        return {x:cx+Math.cos(angle)*r*width*lobes,y:cy+Math.sin(angle)*r*depth*lobes};
+      });
+      if(commands.length<MAX_ATMOSPHERE_COMMANDS)commands.push({layer:'ground',role:'cast-shadow',points,color:light.shadow,opacity:light.shadowOpacity*.65,exclusions:hooks.shadowExclusions});
+    }
+    if(shadow.contact!==false&&visible({x:x-.25,y:y-.25,width:.5,height:.5})) {
+      const contact=Math.min(.25,Math.max(.12,r*.14));
+      const points=Array.from({length:12},(_,i)=>({x:x+Math.cos(i/12*Math.PI*2)*contact,y:y+Math.sin(i/12*Math.PI*2)*contact*.75}));
+      if(commands.length<MAX_ATMOSPHERE_COMMANDS)commands.push({layer:'ground',role:'contact-shadow',points,color:light.shadow,opacity:.20});
+    }
   }
   for(const lamp of hooks.lights ?? []) {
     const {x,y,z=0}=lamp.position, r=lamp.radius;

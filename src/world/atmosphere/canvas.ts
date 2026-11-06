@@ -12,14 +12,22 @@ export function drawAtmosphereLayer(ctx: CanvasRenderingContext2D, commands: rea
     const p=project(point),x=Math.round(p.x),y=Math.round(p.y);
     if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
   });
-  const water=layer==='ground'?commands.filter(c=>c.layer===layer&&c.role==='water-base'):[];
-  if(water.length){
-    ctx.globalAlpha=inheritedOpacity;ctx.fillStyle=`rgb(${water[0].color.join(',')})`;ctx.beginPath();
-    for(const command of water){path(command);ctx.closePath();drawn++;}
-    ctx.fill();
-  }
+  const union=(role:AtmosphereCommand['role'])=>{
+    const group=layer==='ground'?commands.filter(c=>c.layer===layer&&c.role===role):[];
+    if(!group.length)return;
+    ctx.save();
+    for(const hole of group[0].exclusions??[]) {
+      ctx.beginPath();ctx.rect(0,0,ctx.canvas.width,ctx.canvas.height);
+      path({points:[{x:hole.x,y:hole.y},{x:hole.x+hole.width,y:hole.y},{x:hole.x+hole.width,y:hole.y+hole.height},{x:hole.x,y:hole.y+hole.height}],layer:'ground',color:[0,0,0],opacity:1});
+      ctx.closePath();ctx.clip('evenodd');
+    }
+    ctx.globalAlpha=inheritedOpacity*group[0].opacity;ctx.fillStyle=`rgb(${group[0].color.join(',')})`;ctx.beginPath();
+    for(const command of group){path(command);ctx.closePath();drawn++;}
+    ctx.fill();ctx.restore();
+  };
+  union('water-base');union('cast-shadow');union('contact-shadow');
   for(const command of commands) {
-    if(command.layer!==layer||command.role==='water-base')continue;
+    if(command.layer!==layer||command.role==='water-base'||command.role==='cast-shadow'||command.role==='contact-shadow')continue;
     ctx.globalAlpha=inheritedOpacity*command.opacity;
     ctx.fillStyle=`rgb(${command.color.join(',')})`;
     ctx.beginPath();path(command);ctx.closePath();ctx.fill();drawn++;
