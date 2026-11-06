@@ -7,12 +7,20 @@ export type Placement = Cell & { id: ItemId; rotation: 0 | 1 };
 const coordinate = z.number().int().min(0).max(5);
 const draftSchema = z.strictObject({ x: coordinate, y: z.number().int().min(0).max(4), rotation: z.union([z.literal(0), z.literal(1)]) });
 const placementSchema = draftSchema.extend({ id: z.enum(['table', 'chair']) });
+const usePoint = z.strictObject({ x: z.number().finite().min(0).max(1024), y: z.number().finite().min(0).max(1024) });
+const usePath = z.array(usePoint).min(2).max(256);
+const useSchema = z.strictObject({
+  brief: z.enum(briefIds), startedAt: z.number().finite().nonnegative(), path: usePath,
+  returnAt: z.number().finite().nonnegative().nullable(), returnPath: usePath.nullable(),
+  pending: z.enum(['restart', ...briefIds]).nullable(),
+});
 const schema = z.strictObject({
   version: z.literal(1), brief: z.enum(briefIds), status: z.enum(['editing', 'complete']), completed: z.array(z.enum(briefIds)).max(2),
   layouts: z.strictObject({ window: z.array(placementSchema).max(2), alcove: z.array(placementSchema).max(2) }),
   completedLayouts: z.strictObject({ window: z.array(placementSchema).length(2).nullable(), alcove: z.array(placementSchema).length(2).nullable() }),
   selected: z.enum(['table', 'chair']).nullable(), draft: draftSchema.nullable(),
   retries: z.strictObject({ window: z.number().int().nonnegative().max(Number.MAX_SAFE_INTEGER), alcove: z.number().int().nonnegative().max(Number.MAX_SAFE_INTEGER) }),
+  use: useSchema.nullable().default(null).catch(null),
   notice: z.enum(['window', 'left', 'rotate', 'okay', 'blocked']),
 });
 export type State = z.infer<typeof schema>;
@@ -21,7 +29,7 @@ export type Action =
   | { type: 'place' } | { type: 'rotate' } | { type: 'cancel' } | { type: 'check' } | { type: 'restart' }
   | { type: 'begin-brief'; brief: BriefId };
 export function initialState(): State {
-  return { version: 1, brief: 'window', status: 'editing', completed: [], layouts: { window: [], alcove: [] }, completedLayouts: { window: null, alcove: null }, selected: null, draft: null, retries: { window: 0, alcove: 0 }, notice: 'window' };
+  return { version: 1, brief: 'window', status: 'editing', completed: [], layouts: { window: [], alcove: [] }, completedLayouts: { window: null, alcove: null }, selected: null, draft: null, retries: { window: 0, alcove: 0 }, notice: 'window', use: null };
 }
 export function footprint(p: Pick<Placement, 'id' | 'rotation'>): [number, number] { return p.id === 'chair' ? [1, 1] : p.rotation ? [1, 2] : [2, 1]; }
 export function cells(p: Placement): Cell[] {
@@ -51,6 +59,7 @@ export function validate(value: unknown): State | null {
   const s = parsed.data;
   if (s.completed.some((id, index) => id !== briefIds[index]) || (s.brief === 'alcove' && !s.completed.includes('window'))) return null;
   if ((s.selected === null) !== (s.draft === null) || (s.status === 'complete' && (s.selected || !s.completed.includes(s.brief) || unmetGoal(s.brief, s.layouts[s.brief])))) return null;
+  if (s.use && (s.status !== 'complete' || s.use.brief !== s.brief || !s.completed.includes(s.use.brief) || ((s.use.returnAt === null) !== (s.use.returnPath === null)) || (s.use.returnAt !== null && s.use.pending === null) || (s.use.returnAt !== null && s.use.returnAt < s.use.startedAt))) s.use = null;
   for (const brief of briefIds) {
     const placements = s.layouts[brief];
     if (new Set(placements.map(p => p.id)).size !== placements.length || placements.some(p => !legal(brief, placements, p))) return null;
@@ -65,6 +74,7 @@ function retry(state: State, notice: State['notice']): State {
   return { ...state, notice, retries: { ...state.retries, [state.brief]: Math.min(Number.MAX_SAFE_INTEGER, state.retries[state.brief] + 1) } };
 }
 export function reduce(state: State, action: Action): State {
+  if (state.use) return state; // Furniture stays frozen until the reader is safely home.
   switch (action.type) {
     case 'begin-brief':
       if (!briefIds.includes(action.brief) || (action.brief === 'alcove' && !state.completed.includes('window'))) return state;

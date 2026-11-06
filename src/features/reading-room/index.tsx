@@ -12,10 +12,18 @@ export default function ReadingRoom({ state, onAction, onLookup, onPlay, onRecov
   const initial = useRef({ play: onPlay, line: instruction[state.notice] });
   useEffect(() => { initial.current.play(initial.current.line); }, []);
   const learning = { onLookup, onPlay, recoveredWordIds, freshWordIds };
+  const returning = Boolean(state.use?.pending);
+  const wasReturning = useRef(returning);
+  useEffect(() => {
+    if (wasReturning.current && !returning) onPlay(instruction[state.notice]);
+    wasReturning.current = returning;
+  }, [returning, state.notice, onPlay]);
   const placements = state.layouts[state.brief];
   const draft = state.selected && state.draft ? { id: state.selected, ...state.draft } : null;
   const valid = draft ? legal(state.brief, placements, draft) : false;
   function act(action: Action) {
+    if (returning) return;
+    if (state.use && (action.type === 'restart' || action.type === 'begin-brief')) { onAction(action); return; }
     const next = reduce(state, action);
     onAction(action);
     if (next !== state) onPlay(instruction[next.notice]);
@@ -28,11 +36,11 @@ export default function ReadingRoom({ state, onAction, onLookup, onPlay, onRecov
   }
   function briefButton(brief: BriefId, numeral: string) {
     const locked = brief === 'alcove' && !state.completed.includes('window');
-    return <button type="button" data-brief={brief} aria-label={locked ? copy.locked : brief === 'window' ? copy.first : copy.second} disabled={locked} aria-pressed={state.brief === brief} onClick={() => act({ type: 'begin-brief', brief })}>
+    return <button type="button" data-brief={brief} aria-label={locked ? copy.locked : brief === 'window' ? copy.first : copy.second} disabled={locked || returning} aria-pressed={state.brief === brief} onClick={() => act({ type: 'begin-brief', brief })}>
       <span>{numeral}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18H5zM12 3v18M5 12h14"/></svg>{state.completed.includes(brief) && <span className="reading-room-project-mark" aria-label={copy.progress}>◇</span>}
     </button>;
   }
-  return <section className="reading-room" aria-label={copy.title} data-brief={state.brief} data-status={state.status}>
+  return <section className="reading-room" aria-label={copy.title} data-brief={state.brief} data-status={state.status} data-returning={returning} aria-busy={returning}>
     <header className="reading-room-heading"><svg className="reading-room-book" viewBox="0 0 32 26" aria-hidden="true"><path d="M16 5Q9 0 2 3v20q7-3 14 1 7-4 14-1V3q-7-3-14 2Zm0 0v19M6 8l6 1M6 13l6 1m8-5 6-1m-6 6 6-1"/></svg><div>{token('table')}<span aria-hidden="true">·</span>{token('apartment.chair')}</div></header>
     <nav className="reading-room-briefs" aria-label={copy.briefs}>{briefButton('window', '①')}{briefButton('alcove', '②')}</nav>
     <div className="reading-room-current" aria-live="polite"><FeatureLine line={instruction[state.notice]} {...learning}/></div>
@@ -54,6 +62,6 @@ export default function ReadingRoom({ state, onAction, onLookup, onPlay, onRecov
         })}</div>
       </section>}
     </>}
-    <footer className="reading-room-actions"><button type="button" aria-label={copy.restart} onClick={() => act({ type: 'restart' })}>↺</button>{state.status === 'editing' && <button className="reading-room-check" type="button" aria-label={copy.check} onClick={() => act({ type: 'check' })}>◇</button>}{state.status === 'complete' && state.brief === 'window' && <button className="reading-room-next" type="button" aria-label={copy.second} onClick={() => act({ type: 'begin-brief', brief: 'alcove' })}>② →</button>}</footer>
+    <footer className="reading-room-actions"><button type="button" aria-label={copy.restart} disabled={returning} onClick={() => act({ type: 'restart' })}>↺</button>{state.status === 'editing' && <button className="reading-room-check" type="button" aria-label={copy.check} onClick={() => act({ type: 'check' })}>◇</button>}{state.status === 'complete' && state.brief === 'window' && <button className="reading-room-next" type="button" aria-label={copy.second} disabled={returning} onClick={() => act({ type: 'begin-brief', brief: 'alcove' })}>② →</button>}</footer>
   </section>;
 }

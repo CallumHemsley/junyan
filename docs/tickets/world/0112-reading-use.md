@@ -1,7 +1,7 @@
 ---
 id: 112
 title: Let a neighbour genuinely use an earned reading place
-status: todo
+status: doing
 priority: high
 type: feature
 created: 2026-11-06
@@ -21,6 +21,9 @@ The fixed host attributes the request and thanks, but independent critique still
 
 ## Notes
 
+- Owner: Codex reading-use worker; branch/worktree/ports below. Approved scope: a native held-book standing reader beside the earned table, with grounded feet and no claim of chair occupancy or tabletop attachment.
+- Implemented saved-clock approach, standing read and certified reverse route; replay/brief changes queue behind a visible return with disabled transition controls. Service exclusion and both life actor seams agree. Legacy saves default the new snapshot; invalid/future snapshot metadata is discarded without losing earned layouts.
+- Focused rules/save checks pass, including all 28 valid arrangements, fresh-clock reversal, greeting during walking, restore, service release and corruption recovery. Final full checks and independent source/motion review in progress.
 - Centrally reserved by root; branch codex/0112-reading-use; worktree /private/tmp/junyan-world-reading-use; ports5566/5567 strict.
 - Begin with a concrete smallest executable lifecycle and exact seam proposal, including all call sites and state/save implications. Root approves shared changes before coding.
 - Reuse existing native actor posture/seat/contact calibration, pathfinding, world clock/presence and pure reading-room rules where correct; inspect their actual contracts first. Keep the current protected-aisle host as safe fallback.
