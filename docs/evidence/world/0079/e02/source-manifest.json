@@ -1,0 +1,73 @@
+{
+  "sourceHead": "f2a932435e41d5ac18f2407b43e1254d617a2b38",
+  "scope": "Exact owned source tree for sole-foundation comparison/consumption; not a blanket shared-tree restore",
+  "exports": {
+    "maps": "mapDefinitions",
+    "art": [
+      "drawMap",
+      "renderObjects"
+    ]
+  },
+  "files": [
+    {
+      "path": "src/world/art/town/building-sections.test.ts",
+      "sha256": "6937c3d8f0c9128ce079dc69fdc21f477868477f3cc817ebde82790d13900814",
+      "bytes": 1904
+    },
+    {
+      "path": "src/world/art/town/building-sections.ts",
+      "sha256": "918ae4c51e14f0570740970f7b786c3c7285a743dc7f324fc2f80380ddf900d1",
+      "bytes": 4332
+    },
+    {
+      "path": "src/world/art/town/index.ts",
+      "sha256": "d083c7cfb27fe0dea9f3a08dab6642ae50915f9f344612b727f4c55836c580ec",
+      "bytes": 27241
+    },
+    {
+      "path": "src/world/art/town/preview.html",
+      "sha256": "ec51c3a2a5651106be553dad4bef3db1539c2884e739bc5eb7174dd80bb3d834",
+      "bytes": 479
+    },
+    {
+      "path": "src/world/art/town/preview.ts",
+      "sha256": "4d4938134bdccf4b20bf880d53a7232aa8dc3e3244b6ad941672ba481301c01f",
+      "bytes": 4753
+    },
+    {
+      "path": "src/world/art/town/variants.json",
+      "sha256": "061a6f63d2110a72b75f07df731420fca24b5631b08abcee3ad7ec98b69d930a",
+      "bytes": 667
+    },
+    {
+      "path": "src/world/maps/town/author-map.py",
+      "sha256": "f416b0f47f4f5a221584f0c7d3b65db355ea69035fbac035c63091b13c223226",
+      "bytes": 10891
+    },
+    {
+      "path": "src/world/maps/town/courier-hook.json",
+      "sha256": "88bb4a92e37ee350b31c346489a6819db67b3d1fc1237f8fb64324fdcf459f3b",
+      "bytes": 276
+    },
+    {
+      "path": "src/world/maps/town/index.ts",
+      "sha256": "37641b86db3467f882eb73ff33b0d92852d2abbd8e8662b06f6e2b709569156d",
+      "bytes": 82
+    },
+    {
+      "path": "src/world/maps/town/map.json",
+      "sha256": "04a5964793c8df9c91ee18554846c4a0573116ca5311c0f619da008d77e1d58d",
+      "bytes": 78906
+    },
+    {
+      "path": "src/world/maps/town/map.test.ts",
+      "sha256": "2146c2f159dc8dcb8cf302193971ffbeb2d40068552d520370bf756c378a7d1d",
+      "bytes": 5030
+    },
+    {
+      "path": "src/world/maps/town/reachability.py",
+      "sha256": "0db7b339fbc51fa5f04d14d05a4766687dd2325fe31b598e0c33a2e21865b78b",
+      "bytes": 1770
+    }
+  ]
+}
