@@ -78,6 +78,7 @@ export function drawResidentialProps(api: ResidentialArtApi, mapId: string, laye
         box(x + .5, endY - 1, .95, x + 1.2, endY - .2, 1.27, [143, 166, 168]);
         for (const at of [y + .08, endY - .35]) box(x + .2, at, .6, endX, at + .25, 1.1, [107, 143, 125]);
         break;
+      case 'lamp':
       case 'floor-lamp':
         box(x + .2, y + .2, 0, endX - .2, endY - .2, .12, ink);box(x + .45, y + .45, .12, x + .55, y + .55, 2.1, wood);
         box(x, y, 1.8, endX, endY, 2.15, [236, 209, 151]);
@@ -93,6 +94,7 @@ export function drawResidentialProps(api: ResidentialArtApi, mapId: string, laye
           for (let at = y + .2; at < endY - .2; at += .6) box(x + .1, at, z + .12, endX - .1, at + .3, z + .45, Math.floor(at) % 2 ? jade : linen);
         }
         break;
+      case 'lantern':
       case 'wall-lamp':
         box(x, y, 1.8, endX, endY, 2.5, wood);box(x + .15, y + .05, 1.9, endX - .15, endY + .05, 2.4, [240, 212, 158]);
         break;
@@ -282,7 +284,7 @@ export function drawApartmentFurniture(api: ResidentialArtApi, state: State) {
 type Paint = { depth: number; draw: () => void };
 function paintResidential(ctx: CanvasRenderingContext2D, view: WorldRenderView, draw: (api: ResidentialArtApi) => void) {
   const paints: Paint[] = [];
-  const colour = (c: Colour, light = 1) => `rgb(${c.map(value => Math.round(value * light)).join(',')})`;
+  const colour = (c: Colour, light = 1) => view.shadeColor?.(c, light) ?? `rgb(${c.map(value => Math.round(value * light)).join(',')})`;
   const polygon = (points: { x: number; y: number }[], fill: string) => {
     ctx.fillStyle = fill; ctx.beginPath();
     points.forEach((point, index) => {
@@ -319,7 +321,7 @@ function paintResidential(ctx: CanvasRenderingContext2D, view: WorldRenderView, 
     },
     castShadow(x, y, _z, size, strength = .45) {
       const p = view.project({ x, y }), r = radius(x, y, size);
-      paints.push({ depth: (x + y) * 2 - 3, draw() { ctx.save();ctx.globalAlpha = strength * .18;ctx.fillStyle = '#342c24';ctx.beginPath();ctx.ellipse(p.x, p.y, r, r * .5, 0, 0, Math.PI * 2);ctx.fill();ctx.restore(); } });
+      paints.push({ depth: (x + y) * 2 - 3, draw() { ctx.save();ctx.globalAlpha *= strength * .18;ctx.fillStyle = view.shadeColor?.('#342c24') ?? '#342c24';ctx.beginPath();ctx.ellipse(p.x, p.y, r, r * .5, 0, 0, Math.PI * 2);ctx.fill();ctx.restore(); } });
     },
   };
   draw(api);
@@ -376,3 +378,5 @@ export function renderFurnitureObjects(state: State): WorldRenderObject[] {
     };
   });
 }
+
+export { surfaceHeight } from '../../maps/residential/elevation';

@@ -26,3 +26,7 @@
 @media (prefers-reduced-motion: reduce) { .cats-view *, .cats-view *::before, .cats-view *::after { animation: none !important; transition: none !important; } }
 .cats-harness-word { position: fixed; bottom: 16px; left: 16px; right: 16px; z-index: 10; max-width: 360px; padding: 24px; border-radius: var(--radius-panel); border: 1px solid var(--hairline); background: var(--surface-card); box-shadow: var(--shadow-panel); }
 .cats-harness-word button { min-width: 44px; min-height: 44px; }
+
+.cats-view[data-presentation="controls"] { display: block; width: 100%; padding: 0; }
+.cats-view[data-presentation="controls"] .cats-dialogue { padding: 12px; box-shadow: none; }
+.cats-view[data-presentation="controls"] .cats-speech { font-size: 28px; line-height: 42px; }

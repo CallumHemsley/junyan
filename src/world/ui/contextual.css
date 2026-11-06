@@ -1,0 +1,53 @@
+.world-context {
+  position: absolute;
+  z-index: 20;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(76px, calc(env(safe-area-inset-bottom) + 64px));
+  display: flex;
+  flex-direction: column;
+  width: min(480px, calc(100% - 32px));
+  max-height: min(56dvh, 520px);
+  color: var(--text-primary);
+  background: var(--surface-card);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-panel);
+  pointer-events: auto;
+}
+.world-context-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 12px; border-bottom: 1px solid var(--hairline); flex-shrink: 0; }
+.world-context-heading h2 { font: 500 16px/24px var(--font-sans); margin: 0; min-width: 0; }
+.world-context button, .world-pocket-bar button { min-width: 44px; min-height: 44px; touch-action: manipulation; }
+.world-context button:focus-visible, .world-context-scroll:focus-visible, .world-pocket-bar button:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 2px; }
+.world-context-close { flex-shrink: 0; font-size: 28px; border: 0; background: var(--surface-control); border-radius: 50%; }
+.world-context-scroll { min-height: 0; overflow: auto; overscroll-behavior: contain; padding: 12px 16px; scrollbar-gutter: stable; }
+.world-context-speaker { margin: 0 0 4px; color: var(--text-secondary); font: 500 14px/20px var(--font-sans); }
+.world-context .help-line { display: flex; align-items: start; gap: 8px; margin: 0; }
+.world-context .spoken { font: 500 28px/44px var(--font-serif); min-width: 0; flex: 1; }
+.world-context .spoken .word { font: inherit; min-height: 44px; padding: 0 2px; }
+.world-context .round-button { flex-shrink: 0; width: 44px; height: 44px; }
+.world-context-dialogue + .world-context-dialogue { margin-top: 12px; }
+.world-context-actions { flex-shrink: 0; display: flex; flex-wrap: wrap; gap: 8px; padding: 8px 12px; border-top: 1px solid var(--hairline); }
+.world-context-action { flex: 1; }
+.world-context-action > button { width: 100%; padding: 8px 12px; background: var(--surface-control); border: 1px solid var(--hairline); border-radius: var(--radius-tile); font: 500 16px/24px var(--font-sans); }
+.world-context button:disabled { opacity: .5; cursor: default; }
+.world-pocket-bar { position: absolute; z-index: 21; right: max(16px, env(safe-area-inset-right)); bottom: max(12px, env(safe-area-inset-bottom)); display: flex; gap: 8px; pointer-events: auto; }
+.world-pocket-bar button { display: flex; gap: 8px; align-items: center; padding: 8px 12px; border: 1px solid var(--hairline); border-radius: var(--radius-chip); background: var(--surface-card); color: var(--text-primary); box-shadow: var(--shadow-chip); font: 500 16px/24px var(--font-sans); }
+.world-pocket-bar span { color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+.world-context-options { display: flex; flex-wrap: wrap; gap: 8px; }
+.world-context-options button { padding: 8px 12px; background: var(--surface-control); border: 1px solid var(--hairline); border-radius: var(--radius-tile); }
+.world-table-change p, .world-kitchen-tray p { margin: 8px 0; }
+.world-change-output { display: block; margin: 8px 0; font-size: 24px; font-variant-numeric: tabular-nums; }
+.world-table-receipt p { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 4px 0; }
+.world-kitchen-foods { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.world-kitchen-food { min-width: 0; border-radius: var(--radius-tile); background: var(--surface-raised); text-align: center; }
+.world-kitchen-food > button:first-child { display: flex; width: 100%; flex-direction: column; align-items: center; border: 0; background: transparent; padding: 4px; }
+.world-kitchen-food svg { width: 64px; height: 48px; }
+.world-kitchen-food > .word { font-size: 16px; }
+.world-kitchen-food small { color: var(--text-secondary); }
+@media (min-width: 800px) { .world-context { max-height: min(65dvh, 600px); } }
+@media (max-height: 460px) { .world-context { bottom: max(64px, env(safe-area-inset-bottom)); max-height: 72dvh; } }
+@media (prefers-reduced-motion: reduce) { .world-context *, .world-pocket-bar * { animation: none; transition: none; } }
+@media (max-width: 360px) {
+  .world-pocket-bar { flex-direction: column; }
+  .world-context { bottom: max(124px, calc(env(safe-area-inset-bottom) + 112px)); max-height: min(56dvh, calc(100dvh - 140px)); }
+}

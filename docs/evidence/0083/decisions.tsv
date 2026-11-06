@@ -2,3 +2,6 @@ ts	phase	decision	why	evidence	result
 2026-11-05T23:58:00Z	allocation	Use central 0083 ownership and contract v1	Avoid competing engine and shared-file writers	docs/tickets/0083-rooftop.md	active
 2026-11-06T00:01:00Z	layout	Use cross-connected service spine and garden terrace	Keep varied destinations reachable as pots and shade move	src/world/maps/rooftop/rooftop.test.ts	4 tests pass including 720 legal layouts
 2026-11-06T00:01:00Z	collision	Move basin interaction approach to x11.5	Player footprint touched basin at previous approach	src/world/maps/rooftop/map.json	failed case corrected and rerun
+2026-11-06T00:15:00Z	art	Reject the first pale repeated planting render	Inspected desktop and phone captures expose bare paving and square stamps	docs/evidence/0083/garden-phone.png	open art defect
+2026-11-06T00:15:00Z	depth	Adopt individual shared compositor objects	Actors must walk in front of and behind tall scenery	src/world/art/rooftop/art.test.ts	2 compositor tests pass
+2026-11-06T00:15:00Z	art	Differentiate herbs flowers vines and irregular tree crowns	Give garden destinations and skyline distinct silhouettes	docs/evidence/0083/v2-mature-overview-desktop.png	second visual iteration; acceptance pending

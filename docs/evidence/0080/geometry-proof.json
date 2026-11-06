@@ -4,10 +4,10 @@
     "width": 48,
     "height": 38
   },
-  "reachableAreaSampledTiles": 1115.5,
+  "reachableAreaSampledTiles": 1096.5,
   "sampleStep": 0.5,
   "authoredLandmarks": 12,
-  "props": 86,
+  "props": 92,
   "sharedFoundationSnapshot": "/workspace/junyan/src/world",
   "routes": [
     {
@@ -22,8 +22,12 @@
     },
     {
       "id": "from-residential-hall",
-      "length": 30.92,
+      "length": 31.03,
       "waypoints": [
+        {
+          "x": 20.5,
+          "y": 27.5
+        },
         {
           "x": 20,
           "y": 23
@@ -74,8 +78,12 @@
     },
     {
       "id": "courtyard.activity",
-      "length": 15.39,
+      "length": 15.5,
       "waypoints": [
+        {
+          "x": 20.5,
+          "y": 27.5
+        },
         {
           "x": 20,
           "y": 23
@@ -102,11 +110,11 @@
     },
     {
       "id": "courtyard.black",
-      "length": 17.88,
+      "length": 20.03,
       "waypoints": [
         {
           "x": 30.5,
-          "y": 26.5
+          "y": 31
         },
         {
           "x": 30.5,
@@ -124,8 +132,12 @@
     },
     {
       "id": "courtyard.bicycle",
-      "length": 17.08,
+      "length": 17.18,
       "waypoints": [
+        {
+          "x": 20.5,
+          "y": 27.5
+        },
         {
           "x": 20,
           "y": 23
@@ -138,11 +150,11 @@
     },
     {
       "id": "courtyard.bench",
-      "length": 22.3,
+      "length": 24.45,
       "waypoints": [
         {
           "x": 30.5,
-          "y": 26.5
+          "y": 31
         },
         {
           "x": 30.5,
@@ -160,8 +172,12 @@
     },
     {
       "id": "courtyard.door",
-      "length": 31.82,
+      "length": 31.92,
       "waypoints": [
+        {
+          "x": 20.5,
+          "y": 27.5
+        },
         {
           "x": 20,
           "y": 23
@@ -252,8 +268,12 @@
     },
     {
       "id": "to-residential-hall",
-      "length": 34.35,
+      "length": 34.46,
       "waypoints": [
+        {
+          "x": 20.5,
+          "y": 27.5
+        },
         {
           "x": 20,
           "y": 23
@@ -332,8 +352,12 @@
     },
     {
       "id": "courtyard.white.route.2",
-      "length": 14.95,
+      "length": 15.06,
       "waypoints": [
+        {
+          "x": 20.5,
+          "y": 27.5
+        },
         {
           "x": 20,
           "y": 23
@@ -346,8 +370,12 @@
     },
     {
       "id": "courtyard.white.route.3",
-      "length": 22.77,
+      "length": 22.88,
       "waypoints": [
+        {
+          "x": 20.5,
+          "y": 27.5
+        },
         {
           "x": 20,
           "y": 23
@@ -390,8 +418,12 @@
     },
     {
       "id": "courtyard.white.route.5",
-      "length": 30.15,
+      "length": 30.26,
       "waypoints": [
+        {
+          "x": 20.5,
+          "y": 27.5
+        },
         {
           "x": 20,
           "y": 23
@@ -442,11 +474,11 @@
     },
     {
       "id": "courtyard.black.route.0",
-      "length": 21.09,
+      "length": 23.23,
       "waypoints": [
         {
           "x": 30.5,
-          "y": 26.5
+          "y": 31
         },
         {
           "x": 30.5,
@@ -464,11 +496,11 @@
     },
     {
       "id": "courtyard.black.route.1",
-      "length": 17.61,
+      "length": 19.75,
       "waypoints": [
         {
           "x": 30.5,
-          "y": 26.5
+          "y": 31
         },
         {
           "x": 30.5,
@@ -486,11 +518,11 @@
     },
     {
       "id": "courtyard.black.route.2",
-      "length": 17.26,
+      "length": 19.41,
       "waypoints": [
         {
           "x": 30.5,
-          "y": 26.5
+          "y": 31
         },
         {
           "x": 30.5,
@@ -508,8 +540,24 @@
     },
     {
       "id": "courtyard.black.route.3",
-      "length": 20.67,
+      "length": 24.19,
       "waypoints": [
+        {
+          "x": 30.5,
+          "y": 31
+        },
+        {
+          "x": 30.5,
+          "y": 24.5
+        },
+        {
+          "x": 33,
+          "y": 22.5
+        },
+        {
+          "x": 34,
+          "y": 16.5
+        },
         {
           "x": 34,
           "y": 16
@@ -518,11 +566,11 @@
     },
     {
       "id": "courtyard.black.route.4",
-      "length": 17.61,
+      "length": 19.75,
       "waypoints": [
         {
           "x": 30.5,
-          "y": 26.5
+          "y": 31
         },
         {
           "x": 30.5,
@@ -540,11 +588,11 @@
     },
     {
       "id": "courtyard.black.route.5",
-      "length": 21.09,
+      "length": 23.23,
       "waypoints": [
         {
           "x": 30.5,
-          "y": 26.5
+          "y": 31
         },
         {
           "x": 30.5,
@@ -588,8 +636,12 @@
     },
     {
       "id": "courtyard.aunt.route.1",
-      "length": 30.15,
+      "length": 30.26,
       "waypoints": [
+        {
+          "x": 20.5,
+          "y": 27.5
+        },
         {
           "x": 20,
           "y": 23
@@ -614,8 +666,12 @@
     },
     {
       "id": "courtyard.aunt.route.2",
-      "length": 31.73,
+      "length": 31.84,
       "waypoints": [
+        {
+          "x": 20.5,
+          "y": 27.5
+        },
         {
           "x": 20,
           "y": 23
@@ -640,8 +696,12 @@
     },
     {
       "id": "courtyard.aunt.route.3",
-      "length": 30.15,
+      "length": 30.26,
       "waypoints": [
+        {
+          "x": 20.5,
+          "y": 27.5
+        },
         {
           "x": 20,
           "y": 23

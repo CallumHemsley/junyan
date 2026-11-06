@@ -1,16 +1,15 @@
 import {describe, expect, it} from 'vitest';
+import {worldMapSchema} from '../../schema';
+import {canStand, findPath} from '../../geometry';
 import {initialState, reduce, siteIds, type State} from '../../../features/garden/rules';
 import {gardenSites, rooftopForGarden, rooftopMap} from './index';
 
 type Rect = {x: number; y: number; width: number; height: number};
 const overlap = (a: Rect, b: Rect) => a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y;
 function reachable(map: ReturnType<typeof rooftopForGarden>) {
-  const step = .5, radius = .28;
-  const clear = (x: number, y: number) => {
-    const foot = {x: x - radius, y: y - radius, width: radius * 2, height: radius * 2};
-    return map.walkable.some(r => foot.x >= r.x && foot.y >= r.y && foot.x + foot.width <= r.x + r.width && foot.y + foot.height <= r.y + r.height)
-      && !map.colliders.some(c => overlap(foot, c.rect));
-  };
+  const step = .5;
+  const definition = worldMapSchema.parse(map);
+  const clear = (x: number, y: number) => canStand(definition, {x, y}, .28);
   const key = (x: number, y: number) => `${x},${y}`;
   const start = map.defaultSpawn;
   const seen = new Set([key(start.x, start.y)]), queue = [{x: start.x, y: start.y}];
@@ -26,6 +25,13 @@ function reachable(map: ReturnType<typeof rooftopForGarden>) {
 }
 
 describe('rooftop circulation and existing garden projection', () => {
+  it('validates against the shared schema and traverses to every landmark using foundation pathfinding', () => {
+    const map = worldMapSchema.parse(rooftopForGarden(initialState()));
+    for (const landmark of map.landmarks) {
+      expect(canStand(map, landmark.position), landmark.id).toBe(true);
+      expect(findPath(map, map.defaultSpawn, landmark.position).length, landmark.id).toBeGreaterThan(0);
+    }
+  });
   it('keeps every destination and stair threshold reachable with the player footprint', () => {
     const map = rooftopForGarden(initialState());
     const route = reachable(map);

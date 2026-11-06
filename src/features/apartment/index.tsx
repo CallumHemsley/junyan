@@ -6,6 +6,7 @@ import { cells, dailyFinds, legal, protectedCell, reduce, type Action, type Item
 import Scene from './Scene';
 import './style.css';
 export type Props = {
+  sceneMode?: 'room' | 'world';
   state: State; day: number; onAction: (action: Action) => void;
   onLookup: (word: Word, trigger: HTMLButtonElement) => void;
   onRecover: (wordIds: string[]) => void; onPlay: (line: Line) => void;
@@ -13,8 +14,8 @@ export type Props = {
 };
 export const itemNames: Record<ItemId, string> = { bed: '床', table: '桌子', chair: '椅子', rug: '地毯', cushion: '靠垫', 'repairs.stool': '凳子', 'garden.planter': '盆栽', 'cats.cushion': '猫靠垫', vase: '花瓶', basket: '篮子', lamp: '灯' };
 const itemVocabulary = (id: ItemId) => id === 'cats.cushion' ? ['猫', '靠垫'] : [itemNames[id]];
-export default function Apartment({ state, day, onAction, onLookup, onRecover, onPlay, recoveredWordIds = [], freshWordIds = [] }: Props) {
-  const [showGrid,setShowGrid]=useState(false);
+export default function Apartment({ sceneMode = 'room', state, day, onAction, onLookup, onRecover, onPlay, recoveredWordIds = [], freshWordIds = [] }: Props) {
+  const [showGrid,setShowGrid]=useState(sceneMode === 'world');
   const itemButtons=useRef(new Map<ItemId,HTMLButtonElement>());
   const welcome=useRef({play:onPlay,line:lineById[state.notice]});
   useEffect(()=>{welcome.current.play(welcome.current.line);},[]);
@@ -33,7 +34,7 @@ export default function Apartment({ state, day, onAction, onLookup, onRecover, o
   const token = (word: Word) => <WordToken key={word.id} word={word} look={freshWordIds.includes(word.id) ? 'dot' : recoveredWordIds.includes(word.id) ? 'plain' : 'fogged'} onLookup={onLookup}/>;
   return <section className="apartment" aria-label="家">
     <header className="apartment-heading"><h1>家</h1><span>林姐</span><button type="button" disabled={!state.undo} onClick={() => act({ type: 'undo' })}>撤回</button></header>
-    <Scene state={state} onPreview={(x,y)=>act({type:'preview',x,y})} onConfirm={confirm}/>
+    {sceneMode === 'room' && <Scene state={state} onPreview={(x,y)=>act({type:'preview',x,y})} onConfirm={confirm}/>}
     {draft && <section className="apartment-editor" aria-label="摆放家具"><div className="apartment-tools"><span>{itemNames[draft.id]}</span><button type="button" onClick={() => act({ type: 'rotate' })}>转一下</button><button type="button" onClick={confirm}>放这里</button><button type="button" onClick={() => act({ type: 'store' }, ['收起来'])}>收起来</button><button type="button" onClick={() => act({ type: 'cancel' })}>取消</button><button type="button" aria-expanded={showGrid} onClick={()=>setShowGrid(!showGrid)}>选格子</button></div>
       {showGrid && <div className="apartment-floor-grid" role="group" aria-label="地板">{Array.from({ length: 30 }, (_, i) => {
         const x = i % 6, y = Math.floor(i / 6);

@@ -1,7 +1,7 @@
 import {useEffect, useRef, useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import Garden from './index';
-import {initialState, reduce, type Action, type State} from './rules';
+import {initialState, reduce, plantIds, type PlantId, type Action, type State} from './rules';
 import type {Line, Word} from '../../contracts';
 import '../../../docs/design/tokens.css';
 import '../../style.css';
@@ -11,6 +11,9 @@ declare global {
     __GARDEN_TEST__?: {state: () => State; recoveries: () => string[]; plays: () => string[]; action: (action: Action) => void; nextDay: (day?: number) => void; snapshot: () => {state: State; day: number}; restore: (value: {state: State; day: number}) => void};
   }
 }
+const params = new URLSearchParams(location.search);
+const requestedPlant = params.get('plant');
+const plantId = plantIds.includes(requestedPlant as PlantId) ? requestedPlant as PlantId : undefined;
 function Harness() {
   const [state, setState] = useState(initialState);
   const [day, setDay] = useState(1);
@@ -27,7 +30,7 @@ function Harness() {
   window.__GARDEN_TEST__ = {state: () => state, recoveries: () => recovered, plays: () => history.current,
     action: dispatch, nextDay: value => setDay(value ?? day + 1), snapshot: () => ({state, day}), restore: value => {setDay(value.day); setState(value.state);}};
   return <main>
-    <div inert={Boolean(lookup)}><Garden state={state} day={day} onAction={dispatch}
+    <div inert={Boolean(lookup)}><Garden presentation={params.get('presentation') === 'controls' ? 'controls' : 'scene'} plantId={plantId} state={state} day={day} onAction={dispatch}
       onRecover={ids => setRecovered(value => [...new Set([...value, ...ids])])} recoveredWordIds={recovered}
       onLookup={(word, button) => {trigger.current = button; setLookup(word);}}
       onPlay={(value: Line) => {history.current.push(value.id);}}/></div>

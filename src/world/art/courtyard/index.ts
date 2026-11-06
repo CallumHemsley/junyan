@@ -1,4 +1,4 @@
-import type { DrawMap, WorldRenderView } from '../../render-contract';
+import type { DrawMap, WorldRenderView, WorldRenderObject } from '../../render-contract';
 
 type Point = { x: number; y: number };
 export type CourtyardView = WorldRenderView;
@@ -30,8 +30,18 @@ function painter(ctx: CanvasRenderingContext2D, view: CourtyardView) {
   };
   const line = (a: [number, number, number], b: [number, number, number], fill: string, width = 1) => {
     const p = view.project({ x: a[0], y: a[1] }, a[2]), q = view.project({ x: b[0], y: b[1] }, b[2]);
-    ctx.strokeStyle = fill; ctx.lineWidth = width; ctx.beginPath();
-    ctx.moveTo(Math.round(p.x), Math.round(p.y)); ctx.lineTo(Math.round(q.x), Math.round(q.y)); ctx.stroke();
+    let x = Math.round(p.x), y = Math.round(p.y);
+    const tx = Math.round(q.x), ty = Math.round(q.y), dx = Math.abs(tx - x), dy = Math.abs(ty - y);
+    const sx = x < tx ? 1 : -1, sy = y < ty ? 1 : -1;
+    let error = dx - dy;
+    ctx.fillStyle = fill;
+    for (;;) {
+      ctx.fillRect(x - Math.floor(width / 2), y - Math.floor(width / 2), width, width);
+      if (x === tx && y === ty) break;
+      const twice = 2 * error;
+      if (twice > -dy) { error -= dy; x += sx; }
+      if (twice < dx) { error += dx; y += sy; }
+    }
   };
   return { polygon, floor, box, line };
 }
@@ -44,7 +54,7 @@ function visible(view: CourtyardView, x: number, y: number, extent = 150) {
   return p.x > -extent && p.y > -extent && p.x < view.width + extent && p.y < view.height + extent;
 }
 
-export const drawMap: DrawMap = (ctx, map, view) => {
+const paintMap: DrawMap = (ctx, map, view) => {
   ctx.save(); ctx.imageSmoothingEnabled = false;
   const { box, floor, polygon, line } = painter(ctx, view);
   if (view.pass === 'ground') {
@@ -83,7 +93,7 @@ export const drawMap: DrawMap = (ctx, map, view) => {
     if (!visible(view, x + w / 2, y + d / 2, 230)) continue;
     const closestX = Math.max(x, Math.min(view.playerPosition.x, x + w));
     const closestY = Math.max(y, Math.min(view.playerPosition.y, y + d));
-    ctx.globalAlpha = view.pass === 'foreground' && Math.hypot(view.playerPosition.x - closestX, view.playerPosition.y - closestY) < 2 ? .42 : 1;
+    if (p.kind === 'bicycle-shed' && Math.hypot(view.playerPosition.x - closestX, view.playerPosition.y - closestY) < 2) ctx.globalAlpha *= .35;
     const pot = (px: number, py: number, variety: number) => {
       box(px, py, .8, .8, .55, '#a98b64', '#a08360', '#8e7557');
       box(px - .07, py - .07, .94, .94, .13, '#baa078', '#aa8d67', '#987c5c', .48);
@@ -106,7 +116,7 @@ export const drawMap: DrawMap = (ctx, map, view) => {
     };
     switch (p.kind) {
       case 'row-house': {
-        const h = 3.6 + v % 2 * .65;
+        const h = [3.3, 4.8, 4, 3.8, 3.1, 2.7][v % 6];
         box(x, y, w, d, h, color.brickLight, v % 2 ? '#c0ad8d' : color.brick, color.brickDark);
         for (let z = .4; z < h; z += .5) line([x, y + d + .01, z], [x + w, y + d + .01, z], '#af967b');
         box(x - .15, y - .15, w + .3, d + .3, .16, color.woodDark, color.woodDark, color.woodDark, h - .12);
@@ -130,6 +140,15 @@ export const drawMap: DrawMap = (ctx, map, view) => {
             polygon([[wx - .3, y + d + .03, 1.25], [wx - .08, y + d + .03, 1.25], [wx - .08, y + d + .03, 2.6], [wx - .3, y + d + .03, 2.6]], '#7a8f7c');
             polygon([[wx + 1.38, y + d + .03, 1.25], [wx + 1.6, y + d + .03, 1.25], [wx + 1.6, y + d + .03, 2.6], [wx + 1.38, y + d + .03, 2.6]], '#7a8f7c');
           }
+        }
+        if (v === 4) {
+          polygon([[x + 2, y + d, 2.6], [x + 6, y + d, 2.6], [x + 6, y + d + 1.2, 2.2], [x + 2, y + d + 1.2, 2.2]], '#a7ad8b');
+          for (let dx = 2; dx <= 6; dx += .65) line([x + dx, y + d, 2.62], [x + dx, y + d + 1.2, 2.22], '#d0c6a1');
+        }
+        if (v === 2) {
+          box(x + w - 3, y + 1, 1.4, 1.8, 1, '#9fa995', '#8c9783', '#747f70', h + .4);
+          line([x + w - 2.3, y + 1.8, h + 1.4], [x + w - 2.3, y + 1.8, h + 3], color.woodDark);
+          line([x + w - 3.2, y + 1.8, h + 2.7], [x + w - 1.4, y + 1.8, h + 2.7], color.woodDark);
         }
         box(x + .25, y + d, .2, .25, 2.95, color.roofDark, color.roofDark, color.roofDark);
         break;
@@ -194,9 +213,26 @@ export const drawMap: DrawMap = (ctx, map, view) => {
       case 'courtyard-tree': {
         const sway = view.reducedMotion ? 0 : Math.sin(view.elapsedMs / 2000 + x) * .06;
         box(x + .45, y + .45, .3, .3, 3, color.wood, color.woodDark, color.woodDark);
-        for (const [dx, dy, z, size] of [[-.7, -.5, 2.6, 1.8], [.3, -.6, 3.1, 1.6], [-.35, .5, 3.2, 1.7], [-.3, -.1, 3.9, 1.5]]) {
-          box(x + dx + sway, y + dy, size, size * .8, .65, v === 1 ? '#a0a971' : color.leafMid, color.leaf, color.leafDark, z);
-          floor(x + dx + .15 + sway, y + dy + .1, size * .55, size * .28, color.leafLight, z + .66);
+        const unit = Math.abs(view.project({ x: x + 1, y }).x - view.project({ x, y }).x);
+        line([x + .6, y + .6, 1.6], [x - .15, y + .3, 3], color.woodDark, 3);
+        line([x + .6, y + .6, 2.1], [x + 1.35, y + .7, 3.3], color.woodDark, 3);
+        const crowns = v === 1 ? [[0, 0, 3.3, .85], [.2, .1, 4.3, .8], [0, .1, 5.1, .6]]
+          : v === 2 ? [[-.85, -.2, 2.7, 1.15], [.7, .25, 2.85, 1.2], [-.15, .2, 3.6, 1.2]]
+          : [[-.7, -.15, 3.25, 1.1], [.65, .2, 3.4, 1.1], [.05, .3, 4.1, 1.2], [-.25, -.1, 4.55, .9]];
+        for (const [dx, dy, z, size] of crowns) {
+          const at = view.project({ x: x + .6 + dx + sway, y: y + .6 + dy }, z);
+          const radius = Math.round(unit * size), tall = Math.round(unit * (v === 1 ? 1.1 : v === 2 ? .85 : 1));
+          for (let row = -tall; row <= tall; row += 2) {
+            const span = Math.round(radius * Math.sqrt(Math.max(0, 1 - (row / tall) ** 2)) / 2) * 2;
+            const fringe = Math.floor(hash(row, x + y) * 3) * 2;
+            ctx.fillStyle = row > tall * .3 ? color.leafDark : color.leaf;
+            ctx.fillRect(Math.round(at.x) - span + fringe, Math.round(at.y) + row, span * 2 - fringe, 2);
+            if (row < tall * .3 && span > 4) {
+              ctx.fillStyle = v === 1 ? '#a1a973' : color.leafMid;
+              ctx.fillRect(Math.round(at.x) - span + 2, Math.round(at.y) + row, Math.max(2, span + fringe), 2);
+              if (row < -tall * .2) { ctx.fillStyle = color.leafLight; ctx.fillRect(Math.round(at.x) - span + 4 + fringe, Math.round(at.y) + row, Math.max(2, span / 2), 2); }
+            }
+          }
         }
         break;
       }
@@ -246,6 +282,12 @@ export const drawMap: DrawMap = (ctx, map, view) => {
       case 'watering-can':
         box(x, y, w, d, .5, color.roofLight, color.roof, color.roofDark);
         line([x + w, y + d / 2, .3], [x + w + .45, y + d / 2, .75], color.roof, 3); break;
+      case 'ledge':
+        box(x, y, w, d, .65, color.stoneLight, color.brick, color.brickDark);
+        floor(x + .12, y + .06, w - .24, d - .12, color.cream, .66); break;
+      case 'broom':
+        line([x, y, .15], [x + .3, y, 1.7], color.wood, 2);
+        for (let i = 0; i < 5; i++) line([x + .05, y, .5], [x - .2 + i * .12, y + .1, .02], color.brass); break;
       case 'utility-box':
         box(x, y, w, d, 1.05, '#a8a997', '#929985', '#7b8877');
         line([x + .1, y + d + .02, .5], [x + w - .1, y + d + .02, .5], color.ink); break;
@@ -253,6 +295,25 @@ export const drawMap: DrawMap = (ctx, map, view) => {
   }
   ctx.restore();
 };
+
+
+export const drawMap: DrawMap = (ctx, map, view) => {
+  if (map.id !== 'courtyard' || view.pass !== 'ground') return;
+  paintMap(ctx, { ...map, props: map.props.filter(p => p.layer === 'ground') }, view);
+};
+
+export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderView): WorldRenderObject[] {
+  if (map.id !== 'courtyard') return [];
+  return map.props.filter(p => p.layer !== 'ground').map(prop => ({
+    id: prop.id,
+    position: prop.position,
+    depth: prop.position.x + prop.position.y + prop.width / 2 + prop.height / 2,
+    occlusion: map.occluders.find(o => o.id === prop.id),
+    draw(ctx, view) {
+      paintMap(ctx, { ...map, props: [prop] }, { ...view, pass: prop.layer === 'foreground' ? 'foreground' : 'objects' });
+    },
+  }));
+}
 
 export function drawCat(ctx: CanvasRenderingContext2D, view: CourtyardView, point: Point, black: boolean, relaxed: boolean) {
   const { box, line, polygon } = painter(ctx, view);

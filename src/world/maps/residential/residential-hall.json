@@ -476,7 +476,7 @@
     },
     {
       "id": "residential-hall.mail-lamp",
-      "kind": "wall-lamp",
+      "kind": "lantern",
       "position": {
         "x": 27,
         "y": 14
@@ -582,7 +582,34 @@
       176
     ]
   },
-  "npcHooks": [],
+  "npcHooks": [
+    {
+      "id": "residential-hall.lin-jie-visit",
+      "position": {
+        "x": 10,
+        "y": 19
+      },
+      "route": [
+        {
+          "x": 10,
+          "y": 19
+        },
+        {
+          "x": 12,
+          "y": 17
+        },
+        {
+          "x": 22,
+          "y": 17
+        },
+        {
+          "x": 23,
+          "y": 19
+        }
+      ],
+      "characterId": "lin-jie"
+    }
+  ],
   "landmarks": [
     {
       "id": "residential-hall.west-door",

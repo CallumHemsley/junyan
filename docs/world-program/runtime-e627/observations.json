@@ -1,0 +1,28 @@
+{
+  "head": "e6270d0",
+  "method": "ordinary opening, held keyboard movement, read-only IndexedDB inspection, reload; no debug setters",
+  "before": null,
+  "moved": {
+    "version": 1,
+    "mapId": "restaurant",
+    "position": {
+      "x": 9.819636240211278,
+      "y": 14.819636240211274
+    },
+    "facing": "north",
+    "returnPositions": {},
+    "activeActivity": null
+  },
+  "restored": {
+    "version": 1,
+    "mapId": "restaurant",
+    "position": {
+      "x": 9.819636240211278,
+      "y": 14.819636240211274
+    },
+    "facing": "north",
+    "returnPositions": {},
+    "activeActivity": null
+  },
+  "errors": []
+}
