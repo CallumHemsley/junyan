@@ -12,35 +12,47 @@
       "version": 1,
       "mapId": "riverbank",
       "position": {
-        "x": 7.474873734152919,
-        "y": 7.525126265847078
+        "x": 7.333452377915607,
+        "y": 7.666547622084392
       },
       "facing": "north",
       "returnPositions": {
         "park": {
-          "x": 81.917,
+          "x": 81.91600000000004,
           "y": 10,
           "facing": "east"
         }
       },
-      "activeActivity": null
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
     },
     "loaded": {
       "version": 1,
       "mapId": "riverbank",
       "position": {
-        "x": 7.474873734152919,
-        "y": 7.525126265847078
+        "x": 7.333452377915607,
+        "y": 7.666547622084392
       },
       "facing": "north",
       "returnPositions": {
         "park": {
-          "x": 81.917,
+          "x": 81.91600000000004,
           "y": 10,
           "facing": "east"
         }
       },
-      "activeActivity": null
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
     },
     "consoleErrors": [],
     "scope": "actual App travel from park to riverbank and reload; initial valid day save seeded to isolate landscape integration; whole town/activity journey pending"
@@ -58,35 +70,47 @@
       "version": 1,
       "mapId": "riverbank",
       "position": {
-        "x": 6.6488889058430996,
-        "y": 9.20888900756836
+        "x": 10.732639093601989,
+        "y": 14.5748587979108
       },
-      "facing": "east",
+      "facing": "west",
       "returnPositions": {
         "park": {
-          "x": 81.999,
+          "x": 81.99950000000001,
           "y": 10,
           "facing": "east"
         }
       },
-      "activeActivity": null
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
     },
     "loaded": {
       "version": 1,
       "mapId": "riverbank",
       "position": {
-        "x": 6.6488889058430996,
-        "y": 9.20888900756836
+        "x": 10.732639093601989,
+        "y": 14.5748587979108
       },
-      "facing": "east",
+      "facing": "west",
       "returnPositions": {
         "park": {
-          "x": 81.999,
+          "x": 81.99950000000001,
           "y": 10,
           "facing": "east"
         }
       },
-      "activeActivity": null
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
     },
     "consoleErrors": [],
     "scope": "actual App travel from park to riverbank and reload; initial valid day save seeded to isolate landscape integration; whole town/activity journey pending"

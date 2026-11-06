@@ -15,9 +15,8 @@ try{
   for(;steps<70;steps++){
    const state=await read();if(steps%10===0)console.log(id,steps,JSON.stringify(state.position));if(Math.hypot(state.position.x-x,state.position.y-y)<.4)break;
    const target=await page.evaluate(async({from,goal,mapId})=>{const {findPath}=await import('/src/world/geometry.ts'),{worldMaps}=await import('/src/world/registry.ts');const path=findPath(worldMaps[mapId],from,goal);if(!path.length)throw Error('no shared path');const p=path.find(p=>Math.hypot(p.x-from.x,p.y-from.y)>.5)??goal;const dx=p.x-from.x,dy=p.y-from.y,d=Math.hypot(dx,dy),length=Math.min(6,d);return {x:from.x+dx/d*length,y:from.y+dy/d*length};},{from:state.position,goal:{x,y},mapId});
-   const r=await page.locator('[data-testid="world-viewport"] canvas').boundingBox();
-   const sx=r.x+r.width/2+(target.x-state.position.x-target.y+state.position.y)*24,sy=r.y+r.height/2+(target.x-state.position.x+target.y-state.position.y)*12;
-   await page.mouse.click(sx,sy);
+   const click=await page.evaluate(async({target,state})=>{const {cameraForMap,project}=await import('/src/world/camera.ts');const {worldMaps}=await import('/src/world/registry.ts');const canvas=document.querySelector('[data-testid="world-viewport"] canvas'),r=canvas.getBoundingClientRect();const camera=cameraForMap(worldMaps[state.mapId].bounds,state.position,canvas.width,canvas.height,r.width<600?11:15),p=project(target,camera);return {x:r.x+p.x*r.width/canvas.width,y:r.y+p.y*r.height/canvas.height};},{target,state});
+   await page.mouse.click(click.x,click.y);
    let reached=false;
    for(let poll=0;poll<50;poll++){await page.waitForTimeout(200);const current=await read();if(Math.hypot(current.position.x-target.x,current.position.y-target.y)<.35){reached=true;break;}}
    if(!reached){await page.screenshot({path:output+'/failed-route.png'});throw Error('Actual pointer movement did not reach '+JSON.stringify(target));}

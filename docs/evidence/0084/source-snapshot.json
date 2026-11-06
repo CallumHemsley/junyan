@@ -1,0 +1,24 @@
+{
+  "sourceComposition": "9860cd7",
+  "foundation": "74a52137814f8ed8c4a2b7f9c9f74089e4f6a15f",
+  "cloudThread": "01a1ae20-bd21-7127-bf23-09146cdb604d",
+  "port": 5486,
+  "goal": "ACTIVE",
+  "proof": [
+    "Current composition park/riverside real App pointer journeys",
+    "Current desktop/phone App transition and reload after explicit touch stop + checkpoint flush",
+    "Same-camera material pixels morning/evening with particles off and final lit views",
+    "14 landscape checks plus integrated graph passed"
+  ],
+  "limits": [
+    "Independent experience acceptance pending",
+    "Full ordinary opening-to-all-activities journey belongs integrated review",
+    "Original 380-test full suite ran before composition revision; current composition reran landscape and graph checks"
+  ],
+  "sourceContentHashes": {
+    "src/world/maps/landscape/park.json": "8c31ef09ff84a02044e8fa44b1838bbf9b980fabd7cf8a02f40373d39c0a36a0",
+    "src/world/maps/landscape/riverbank.json": "af8f6ff81cb57af07aedd0b2af34b32f1ec28f987f43c53b53bcea68b2144ef4",
+    "src/world/art/landscape/index.ts": "2de7df9ad6218d070e02da7dc0e58efb2ebbba7c2c35f88c494115b3a61fff27",
+    "src/world/art/landscape/draw.ts": "511fca0ad795f312da5d0f5a93361fe8f3ec599e45bb7e3a58b0ba3c1d6c93d5"
+  }
+}

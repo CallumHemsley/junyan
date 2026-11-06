@@ -1,0 +1,158 @@
+{
+  "setup": "Valid day save seeded at riverbank; all route segments then use actual canvas pointer input and shared production pathfinding",
+  "proof": [
+    {
+      "id": "moon-bridge",
+      "start": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 20,
+          "y": 19
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 48,
+          "y": 19
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "actualPointerSegments": 5
+    },
+    {
+      "id": "old-ferry",
+      "start": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 48,
+          "y": 19
+        },
+        "facing": "east",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 62.000000000000014,
+          "y": 56.999999999999986
+        },
+        "facing": "south",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "actualPointerSegments": 9
+    },
+    {
+      "id": "lower-crossing",
+      "start": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 62.000000000000014,
+          "y": 56.999999999999986
+        },
+        "facing": "south",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 45.000000000000014,
+          "y": 56.999999999999986
+        },
+        "facing": "west",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "actualPointerSegments": 3
+    },
+    {
+      "id": "fishing-jetty",
+      "start": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 45.000000000000014,
+          "y": 56.999999999999986
+        },
+        "facing": "west",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "end": {
+        "version": 1,
+        "mapId": "riverbank",
+        "position": {
+          "x": 40.000000000000014,
+          "y": 38.999999999999986
+        },
+        "facing": "north",
+        "returnPositions": {},
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
+      },
+      "actualPointerSegments": 6
+    }
+  ],
+  "consoleErrors": []
+}

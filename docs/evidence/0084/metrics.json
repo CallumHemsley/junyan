@@ -6,8 +6,8 @@
       "height": 68
     },
     "footprintRadius": 0.22,
-    "sampledReachableAreaTiles": 4298.5,
-    "props": 314,
+    "sampledReachableAreaTiles": 4887.5,
+    "props": 161,
     "distinctPropKinds": [
       "pavilion",
       "bench",
@@ -16,11 +16,13 @@
       "steps",
       "reeds",
       "lilies",
+      "woodland-floor",
+      "mature-tree",
       "tree",
+      "fern",
       "bamboo",
       "willow",
-      "flowers",
-      "shrub"
+      "flowers"
     ],
     "landmarks": [
       {
@@ -30,37 +32,37 @@
       },
       {
         "id": "park.bamboo-court",
-        "lengthTiles": 69.11,
+        "lengthTiles": 60.25,
         "reachable": true
       },
       {
         "id": "park.old-reading-stone",
-        "lengthTiles": 52.43,
+        "lengthTiles": 41.61,
         "reachable": true
       },
       {
         "id": "park.pond-deck",
-        "lengthTiles": 79.34,
+        "lengthTiles": 68.5,
         "reachable": true
       },
       {
         "id": "park.ridge-view",
-        "lengthTiles": 95.75,
+        "lengthTiles": 84.82,
         "reachable": true
       },
       {
         "id": "park.tea-pavilion",
-        "lengthTiles": 76.08,
+        "lengthTiles": 65.78,
         "reachable": true
       },
       {
         "id": "park.lily-cove",
-        "lengthTiles": 54.3,
+        "lengthTiles": 43.86,
         "reachable": true
       }
     ],
-    "customObjectCount": 314,
-    "allPropsOverrideFallback": true,
+    "customObjectCount": 146,
+    "allObjectPropsOverrideFallback": true,
     "registeredResidentHooks": [
       "park.reading-walk"
     ],
@@ -73,8 +75,8 @@
       "height": 80
     },
     "footprintRadius": 0.22,
-    "sampledReachableAreaTiles": 5454.75,
-    "props": 399,
+    "sampledReachableAreaTiles": 6434.5,
+    "props": 169,
     "distinctPropKinds": [
       "shrine",
       "boat",
@@ -84,55 +86,58 @@
       "reeds",
       "picnic",
       "rock",
-      "willow",
+      "woodland-floor",
+      "mature-tree",
       "tree",
-      "flowers",
-      "shrub"
+      "fern",
+      "bamboo",
+      "willow",
+      "flowers"
     ],
     "landmarks": [
       {
         "id": "riverbank.moon-bridge",
-        "lengthTiles": 73.79,
+        "lengthTiles": 70.35,
         "reachable": true
       },
       {
         "id": "riverbank.reed-hide",
-        "lengthTiles": 33.66,
+        "lengthTiles": 29.15,
         "reachable": true
       },
       {
         "id": "riverbank.fishing-jetty",
-        "lengthTiles": 50.81,
+        "lengthTiles": 47.39,
         "reachable": true
       },
       {
         "id": "riverbank.washing-stones",
-        "lengthTiles": 33.04,
+        "lengthTiles": 33.02,
         "reachable": true
       },
       {
         "id": "riverbank.old-ferry",
-        "lengthTiles": 64.97,
+        "lengthTiles": 58.39,
         "reachable": true
       },
       {
         "id": "riverbank.hill-shrine",
-        "lengthTiles": 138.93,
+        "lengthTiles": 109.99,
         "reachable": true
       },
       {
         "id": "riverbank.heron-shallows",
-        "lengthTiles": 92.9,
+        "lengthTiles": 80.18,
         "reachable": true
       },
       {
         "id": "riverbank.lower-crossing",
-        "lengthTiles": 41.23,
+        "lengthTiles": 41.6,
         "reachable": true
       }
     ],
-    "customObjectCount": 447,
-    "allPropsOverrideFallback": true,
+    "customObjectCount": 204,
+    "allObjectPropsOverrideFallback": true,
     "registeredResidentHooks": [
       "riverbank.ferry-walk"
     ],
