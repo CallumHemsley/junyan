@@ -1,0 +1,379 @@
+{
+  "config": {
+    "argv": [
+      "/workspace/.junyan-tools/node_modules/node/bin/node",
+      "/workspace/junyan/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "docs/evidence/0088/integrated-e02a747/remaining.config.ts"
+    ],
+    "configFile": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/remaining.config.ts",
+    "rootDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/remaining-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "testIgnore": [],
+        "testMatch": [
+          "remaining.spec.ts"
+        ],
+        "timeout": 900000
+      },
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/remaining-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "testIgnore": [],
+        "testMatch": [
+          "remaining.spec.ts"
+        ],
+        "timeout": 900000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/remaining-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "testIgnore": [],
+        "testMatch": "remaining.spec.ts",
+        "timeout": 900000,
+        "use": {
+          "actionTimeout": 15000,
+          "navigationTimeout": 15000,
+          "baseURL": "http://127.0.0.1:5490/junyan/",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "video": "on",
+          "trace": "on",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/remaining-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0088/integrated-e02a747",
+        "testIgnore": [],
+        "testMatch": "remaining.spec.ts",
+        "timeout": 900000,
+        "use": {
+          "actionTimeout": 15000,
+          "navigationTimeout": 15000,
+          "baseURL": "http://127.0.0.1:5490/junyan/",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "video": "on",
+          "trace": "on",
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "phone"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "remaining-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "/workspace/.junyan-tools/node_modules/node/bin/node node_modules/vite/bin/vite.js preview --base /junyan/ --host 127.0.0.1 --port 5490 --strictPort",
+      "cwd": "/workspace/junyan-review-integration",
+      "url": "http://127.0.0.1:5490/junyan/",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "remaining.spec.ts",
+      "file": "remaining.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "ordinary targeted furnishing garden repair followup",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 900000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 108377,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "desktop route-restaurant-to-town\n"
+                    },
+                    {
+                      "text": "desktop route-town-to-courtyard\n"
+                    },
+                    {
+                      "text": "desktop route-courtyard-to-residential-hall\n"
+                    },
+                    {
+                      "text": "desktop route-residential-hall-to-residential-stairs\n"
+                    },
+                    {
+                      "text": "desktop route-residential-stairs-to-apartment\n"
+                    },
+                    {
+                      "text": "desktop furnished\n"
+                    },
+                    {
+                      "text": "desktop restyled\n"
+                    },
+                    {
+                      "text": "desktop undo-reloaded\n"
+                    },
+                    {
+                      "text": "desktop route-apartment-to-residential-stairs\n"
+                    },
+                    {
+                      "text": "desktop route-residential-stairs-to-rooftop\n"
+                    },
+                    {
+                      "text": "desktop garden-cared\n"
+                    },
+                    {
+                      "text": "desktop route-rooftop-to-residential-stairs\n"
+                    },
+                    {
+                      "text": "desktop route-residential-stairs-to-residential-hall\n"
+                    },
+                    {
+                      "text": "desktop route-residential-hall-to-town\n"
+                    },
+                    {
+                      "text": "desktop route-town-to-workshop\n"
+                    },
+                    {
+                      "text": "desktop lamp-repaired\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T01:21:51.156Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/remaining-results/remaining-ordinary-targete-ec01a-hing-garden-repair-followup-desktop/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/remaining-results/remaining-ordinary-targete-ec01a-hing-garden-repair-followup-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d035e07c49cc0bb6ca3d-d261ebd428ff4e6f6081",
+          "file": "remaining.spec.ts",
+          "line": 53,
+          "column": 1
+        },
+        {
+          "title": "ordinary targeted furnishing garden repair followup",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 900000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 101104,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "phone route-restaurant-to-town\n"
+                    },
+                    {
+                      "text": "phone route-town-to-courtyard\n"
+                    },
+                    {
+                      "text": "phone route-courtyard-to-residential-hall\n"
+                    },
+                    {
+                      "text": "phone route-residential-hall-to-residential-stairs\n"
+                    },
+                    {
+                      "text": "phone route-residential-stairs-to-apartment\n"
+                    },
+                    {
+                      "text": "phone furnished\n"
+                    },
+                    {
+                      "text": "phone restyled\n"
+                    },
+                    {
+                      "text": "phone undo-reloaded\n"
+                    },
+                    {
+                      "text": "phone route-apartment-to-residential-stairs\n"
+                    },
+                    {
+                      "text": "phone route-residential-stairs-to-rooftop\n"
+                    },
+                    {
+                      "text": "phone garden-cared\n"
+                    },
+                    {
+                      "text": "phone route-rooftop-to-residential-stairs\n"
+                    },
+                    {
+                      "text": "phone route-residential-stairs-to-residential-hall\n"
+                    },
+                    {
+                      "text": "phone route-residential-hall-to-town\n"
+                    },
+                    {
+                      "text": "phone route-town-to-workshop\n"
+                    },
+                    {
+                      "text": "phone lamp-repaired\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T01:23:46.984Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/remaining-results/remaining-ordinary-targete-ec01a-hing-garden-repair-followup-phone/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-e02a747/remaining-results/remaining-ordinary-targete-ec01a-hing-garden-repair-followup-phone/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d035e07c49cc0bb6ca3d-01f013a8e38716f700bb",
+          "file": "remaining.spec.ts",
+          "line": 53,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-06T01:21:49.904Z",
+    "duration": 223454.888,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
