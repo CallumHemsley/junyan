@@ -1,5 +1,5 @@
 import type {ActorSample} from './index';
-export const ACTOR_PIXELS_PER_WORLD_UNIT=18;
+export {ACTOR_PIXELS_PER_WORLD_UNIT} from './calibration.mjs';
 export type ActorContactMetrics = {
   pixelsPerWorldUnit:number;
   groundPixel:{x:number;y:number};

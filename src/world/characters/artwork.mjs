@@ -1,9 +1,10 @@
+import {ACTOR_PIXELS_PER_WORLD_UNIT} from './calibration.mjs';
 export const W = 28, H = 40;
 const ink = [48,43,42], skin = [232,183,143], cream = [245,232,202];
 const jade = [111,154,134], wood = [115,86,58], brass = [190,157,97];
 const shade = (color, amount) => color.map(value => Math.max(0,Math.min(255,Math.round(value*amount))));
 
-export function frame({appearance={},direction=0,phase=0,action='idle',reducedMotion=false,carrying=false,blink=false,heldObject,acting=false,body,role,seatHeight,handRestHeight,pixelsPerWorldUnit=18}={}) {
+export function frame({appearance={},direction=0,phase=0,action='idle',reducedMotion=false,carrying=false,blink=false,heldObject,acting=false,body,role,seatHeight,handRestHeight,pixelsPerWorldUnit=ACTOR_PIXELS_PER_WORLD_UNIT}={}) {
   const attachedSeat=action==='sit'&&seatHeight!==undefined;
   const seatLift=attachedSeat?Math.round(seatHeight*pixelsPerWorldUnit)-9:0;
   const padding=attachedSeat?Math.max(0,seatLift)+2:0;

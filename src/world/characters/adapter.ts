@@ -1,3 +1,4 @@
+import {ACTOR_PIXELS_PER_WORLD_UNIT} from './calibration.mjs';
 import type {WorldRenderView,WorldDrawCommand,WorldRenderObject} from '../render-contract';
 import type {ActorSample} from './index';
 import type {RGB} from './artwork.mjs';
@@ -45,7 +46,7 @@ export function paintActorCanvas(context:CanvasRenderingContext2D,sample:ActorSa
   context.restore();
 }
 
-export function actorCommands(sample:Pick<ActorSample,'drawCommands'>&Partial<Pick<ActorSample,'pixelsPerWorldUnit'>>,position:{x:number;y:number},nativePixelsPerTile=sample.pixelsPerWorldUnit??18):WorldDrawCommand[] {
+export function actorCommands(sample:Pick<ActorSample,'drawCommands'>&Partial<Pick<ActorSample,'pixelsPerWorldUnit'>>,position:{x:number;y:number},nativePixelsPerTile=sample.pixelsPerWorldUnit??ACTOR_PIXELS_PER_WORLD_UNIT):WorldDrawCommand[] {
   const world=(x:number,y:number)=>({x:position.x+(x*.5+y)/nativePixelsPerTile,y:position.y+(y-x*.5)/nativePixelsPerTile});
   return sample.drawCommands.map(span=>({kind:'polygon',color:'#'+span.color.map(channel=>channel.toString(16).padStart(2,'0')).join(''),points:[
     world(span.x,span.y),world(span.x+span.width,span.y),world(span.x+span.width,span.y+1),world(span.x,span.y+1),

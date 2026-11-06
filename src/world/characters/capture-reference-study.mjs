@@ -1,4 +1,5 @@
 import{chromium}from'@playwright/test';
+import{ACTOR_PIXELS_PER_WORLD_UNIT}from'./calibration.mjs';
 import{mkdir,writeFile}from'node:fs/promises';
 import assert from'node:assert/strict';
 const output=new URL('../../../docs/evidence/world/0085/reference-scale-v1/',import.meta.url).pathname;
@@ -19,5 +20,5 @@ try{
   }
   assert.equal(errors.length,0,errors.join('\n'));await page.close();
  }
- await writeFile(output+'results.json',JSON.stringify({sourceDependency:'31908fd',chosenPlan:'f876255',d196PhysicalProfile:{tableTop:1.44,stoolTop:.77,rearStoolCenterOffsetY:-.52},studiesOnly:true,productionDefaultPixelsPerUnit:18,results},null,2));
+ await writeFile(output+'results.json',JSON.stringify({sourceDependency:'31908fd',chosenPlan:'f876255',d196PhysicalProfile:{tableTop:1.44,stoolTop:.77,rearStoolCenterOffsetY:-.52},studiesOnly:true,productionDefaultPixelsPerUnit:ACTOR_PIXELS_PER_WORLD_UNIT,results},null,2));
 }finally{await browser.close();}

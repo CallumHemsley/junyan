@@ -1,3 +1,4 @@
+import {ACTOR_PIXELS_PER_WORLD_UNIT} from './calibration.mjs';
 import type {HeldObject} from './background';
 import {getActorDefinition,diagnoseActorIds,UnsupportedActorError,type ActorDiagnostic} from './catalog';
 import {actorCommands} from './adapter';
@@ -44,7 +45,7 @@ export function directionFromYaw(yaw:number):number {
 export function sampleActor(input:ActorInput):ActorSample {
   const definition=getActorDefinition(input.characterId);
   if(!definition)throw new UnsupportedActorError(input.characterId);
-  const pixelsPerWorldUnit=input.pixelsPerWorldUnit??18;
+  const pixelsPerWorldUnit=input.pixelsPerWorldUnit??ACTOR_PIXELS_PER_WORLD_UNIT;
   if(!Number.isFinite(pixelsPerWorldUnit)||pixelsPerWorldUnit<=0)throw new RangeError('Actor pixelsPerWorldUnit must be positive and finite.');
   const posture=input.posture ?? 'stand';
   if(posture==='sit'&&input.seatHeight!==undefined&&(!Number.isFinite(input.seatHeight)||input.seatHeight<0))throw new RangeError('Actor seatHeight must be finite and nonnegative.');
