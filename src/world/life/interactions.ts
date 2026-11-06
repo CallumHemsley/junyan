@@ -30,8 +30,8 @@ export function reduceLife(state: LifeState, event: LifeEvent): LifeState {
   if (state.reactions.some(item => item.mapId === mapId && item.targetId === targetId && item.reaction === reaction && item.atMs === atMs)) return state;
   return { ...state, reactions: [...state.reactions.filter(item => item.mapId !== mapId || item.targetId !== targetId), { mapId, targetId, reaction, atMs }].slice(-100) };
 }
-function visible(player: Position, target: Position, reach: number, navigation: Navigation): boolean {
-  return Math.hypot(target.x - player.x, target.y - player.y) <= reach && navigation.canWalk(player, target, 0);
+function visible(player: Position, target: Position, reach: number, navigation: Navigation, inspect = false): boolean {
+  return Math.hypot(target.x - player.x, target.y - player.y) <= reach && (inspect && navigation.canSee ? navigation.canSee(player, target) : navigation.canWalk(player, target, 0));
 }
 export function nearbyLife(plan: LifePlan, actors: readonly ActorPose[], player: Position, navigation: Navigation): Affordance[] {
   const options: Affordance[] = [];
@@ -42,7 +42,7 @@ export function nearbyLife(plan: LifePlan, actors: readonly ActorPose[], player:
       label: lineFor(kind === 'greet' ? 'action-greet' : kind === 'sit' ? 'action-sit' : 'action-look') });
   }
   for (const landmark of plan.landmarks) {
-    if (!visible(player, landmark.position, 1.8, navigation)) continue;
+    if (!visible(player, landmark.position, 1.8, navigation, true)) continue;
     options.push({ id: `${landmark.id}/inspect`, targetId: landmark.id, kind: 'inspect', position: landmark.position, label: lineFor('action-look') });
   }
   return options.sort((a, b) => Math.hypot(a.position.x - player.x, a.position.y - player.y) - Math.hypot(b.position.x - player.x, b.position.y - player.y) || a.id.localeCompare(b.id));
@@ -58,7 +58,7 @@ export function interactLife(state: LifeState, plan: LifePlan, actors: readonly 
       events.push({ type: 'discovered', mapId: plan.mapId, landmarkId: option.targetId, day: context.day });
     }
     const landmark = plan.landmarks.find(item => item.id === option.targetId)!;
-    const reaction = ['pond', 'water', 'fountain', 'river'].includes(landmark.kind) ? 'ripple'
+    const reaction = ['pond', 'water', 'fountain', 'river', 'pond-deck', 'fishing-jetty', 'rainwater'].includes(landmark.kind) ? 'ripple'
       : ['windchime', 'tree', 'bamboo', 'flowers'].includes(landmark.kind) ? 'sway' : 'watch';
     events.push({ type: 'reacted', mapId: plan.mapId, targetId: option.targetId, reaction, atMs: context.elapsedMs });
   } else {

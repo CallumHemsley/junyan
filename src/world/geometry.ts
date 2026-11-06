@@ -6,6 +6,7 @@ export function contains(rect: Rect, p: Point): boolean {
 }
 export function canStand(map: WorldMapDefinition, p: Point, radius = PLAYER_RADIUS): boolean {
   if (!Number.isFinite(p.x) || !Number.isFinite(p.y) || p.x < radius || p.y < radius || p.x > map.bounds.width-radius || p.y > map.bounds.height-radius) return false;
+  if(!map.walkable.some(rect=>contains(rect,p)))return false;
   const left=p.x-radius,right=p.x+radius,top=p.y-radius,bottom=p.y+radius;
   const cuts=[left,right,...map.walkable.flatMap(r=>[r.x,r.x+r.width]).filter(x=>x>left&&x<right)].sort((a,b)=>a-b);
   for(let i=1;i<cuts.length;i++) {
