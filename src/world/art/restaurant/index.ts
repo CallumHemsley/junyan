@@ -1,5 +1,6 @@
 import type { RestaurantMap, RestaurantObject, RestaurantView } from './types';
-import type { RestaurantProjection } from './projection';
+import { RESTAURANT_TABLES, type RestaurantProjection } from './projection';
+import { drawFood } from './food';
 import { box, bowl, oval, palette as p, polygon } from './primitives';
 export { projectRestaurant, RESTAURANT_TABLES } from './projection';
 export type { RestaurantProjection, RestaurantCustomer } from './projection';
@@ -34,7 +35,6 @@ function table(ctx: CanvasRenderingContext2D, v: RestaurantView, x: number, y: n
   for(const dx of [.18,w-.32]) for(const dy of [.18,d-.32]) box(ctx,v,x+dx,y+dy,0,.14,.14,1.32,p.woodDark);
   box(ctx,v,x,y,1.27,w,d,.17,p.woodLight,p.woodDark,p.wood);
   for(let n=.15;n<w;n+=.36) box(ctx,v,x+n,y+.04,1.443,.015,d-.08,.003,'#b88d5c');
-  bowl(ctx,v,x+w*.32,y+d*.64,1.46,false);
   box(ctx,v,x+w-.48,y+.23,1.44,.25,.25,.35,p.cream,'#c3b594','#e1d4b4');
   for(let n=0;n<3;n++) box(ctx,v,x+w-.42+n*.06,y+.29,1.7,.025,.025,.3,p.woodDark);
   for(const sy of [y-.85,y+d+.22]) {
@@ -170,20 +170,21 @@ export function renderObjects(map: RestaurantMap, _view: RestaurantView): Restau
 }
 
 export function restaurantObjects(map: RestaurantMap, _view: RestaurantView, projection: RestaurantProjection): RestaurantObject[] {
-  return projection.meals.flatMap(meal => {
-    const prop=map.props.find(p=>p.id===meal.propId);
+  return projection.customers.flatMap(customer => {
+    const meal=projection.meals.find(m=>m.table===customer.table);
+    const binding=RESTAURANT_TABLES.find(b=>b.table===customer.table);
+    const prop=map.props.find(p=>p.id===binding?.propId);
     if(!prop) return [];
-    return [{id:`restaurant.meal.${meal.table}`,position:{x:prop.position.x+prop.width/2,y:prop.position.y+prop.height},
+    return [{id:`restaurant.table-setting.${customer.table}`,position:{x:prop.position.x+prop.width/2,y:prop.position.y+prop.height},
       depth:prop.position.x+prop.width/2+prop.position.y+prop.height+.01,
       draw(ctx:CanvasRenderingContext2D,v:RestaurantView) {
+        if(!meal) {
+          bowl(ctx,v,prop.position.x+prop.width*.32,prop.position.y+prop.height*.64,1.46,false);
+          return;
+        }
         meal.foods.forEach((food,i)=>{
           const x=prop.position.x+.4+i*.5,y=prop.position.y+.9;
-          if(food==='porridge'||food==='dumpling'||food==='milk') bowl(ctx,v,x,y,1.55);
-          else {
-            oval(ctx,v,x,y,1.51,.34,p.cream);
-            if(food==='youtiao') for(const dx of [-.1,.1]) box(ctx,v,x+dx-.05,y-.25,1.53,.1,.5,.16,p.brass);
-            else oval(ctx,v,x,y,1.68,.23,food==='egg'?p.brass:p.white);
-          }
+          drawFood(ctx,v,food,x,y,1.55);
         });
       }}];
   });

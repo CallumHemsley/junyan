@@ -69,3 +69,9 @@ Added deterministic one-pixel plaster and wood variation, less repetitive jar gr
 `node node_modules/vitest/vitest.mjs run` passed 27 files and 310 tests. `node node_modules/typescript/bin/tsc -b` and `node node_modules/vite/bin/vite.js build` passed. Refreshed four browser captures have no page errors. Installed runtime reports Node 24.22.1, TypeScript 5.9.3, Vite 7.3.7, Vitest 3.2.7 and Playwright 1.64.1. This is use of the installed environment, not a frozen dependency install.
 
 Draft PR is https://github.com/CallumHemsley/junyan/pull/35 against the coordinator branch. Opened with GitHub connector. No merge. Current independent and production gates remain unverified. Foundation is wiring the projection while art refinement continues.
+
+## Served food readability
+
+Restored seven distinct served-food drawings, including a tall soy-milk cup and straw, dumplings with folds, a pleated bun, sliced bread, egg, youtiao and porridge. Empty waiting bowls now belong to the state-derived table setting and disappear when the delivered meal replaces them, as in the legacy scene. Food is drawn after its table using explicit support depth.
+
+`node docs/evidence/0089/check-food.mjs` captured the same table with each real projected food kind and asserted seven distinct browser raster hashes. Inspected bun, milk and dumpling crop captures at actual production scale. Refreshed desktop, phone, kitchen and reduced-motion captures. TypeScript build passed again. This verifies distinct art output; shared renderer motion and integrated service acceptance remain pending.

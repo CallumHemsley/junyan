@@ -11,7 +11,10 @@ const params=new URLSearchParams(location.search);
 const state=createGame(content,42);
 state.customers=state.customers.map((c,i)=>({...c,phase:i===1?'checkout':i===3?'served':'seated'}));
 state.served=1;
-const projection=projectRestaurant(state,content,restaurantMap);
+const food=params.get('food');
+if(food) state.customers[0].phase='checkout';
+const projectedContent=food?{...content,orders:content.orders.map(order=>order.id===state.customers[0].orderId?{...order,items:[{foodId:food,quantity:1}]}:order)}:content;
+const projection=projectRestaurant(state,projectedContent,restaurantMap);
 const player={x:Number(params.get('x')??12),y:Number(params.get('y')??17)};
 const sprites=new Map<string,HTMLCanvasElement>();
 function actor(id:string,position:{x:number;y:number},appearance?:typeof projection.customers[number]['appearance'],phase?:typeof projection.customers[number]['phase']):RestaurantObject {
