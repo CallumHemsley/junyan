@@ -37,8 +37,8 @@ it('keeps a fitting small-room overview and follows locally only when a panel ne
  const bounds={width:30,height:22},position={x:11.5,y:7};
  const room={...worldMaps.apartment,id:'small-room',bounds,walkable:[{x:0,y:0,...bounds}],colliders:[]};
  const closed=explorationCamera(bounds,position,195,386);
- expect(closed).toEqual(cameraForMap(bounds,position,195,386,11));
- expect(project({x:0,y:0},closed).y).toBeLessThan(66);
+ expect(closed).toEqual(cameraForMap(bounds,position,195,386,11,66));
+ expect(project({x:0,y:0},closed).y*2).toBeLessThan(66);
  const open=explorationCamera(bounds,position,195,386,180);
  expect(open).not.toEqual(cameraForMap(bounds,position,195,386,11,180));
  for(const camera of [closed,open,explorationCamera(bounds,position,195,386)]){

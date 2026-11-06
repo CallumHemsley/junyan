@@ -29,7 +29,7 @@ export function explorationCamera(bounds:{width:number;height:number},position:P
  if(!portrait)return cameraForMap(bounds,position,width,height,width<300?11:15,insetBottom,insetRight,focusZ);
  const availableHeight=Math.max(height*.35,height-Math.max(66,insetBottom));
  // A room that already fits should keep its overview rather than acquire empty cutaway above it.
- if((bounds.width+bounds.height)*11*.5<=availableHeight)return cameraForMap(bounds,position,width,height,11,insetBottom,insetRight,focusZ);
+ if((bounds.width+bounds.height)*11*.5<=availableHeight)return cameraForMap(bounds,position,width,height,11,Math.max(66,insetBottom),insetRight,focusZ);
  const localHeight=Math.min(width,availableHeight);
  const camera=cameraForMap(bounds,position,width,localHeight,11,0,insetRight,focusZ);
  return {...camera,height,offsetY:(camera.offsetY??0)+availableHeight-localHeight/2-height/2};
