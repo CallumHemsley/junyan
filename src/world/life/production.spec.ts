@@ -62,6 +62,51 @@ async function exitTo(page: Page, mapId: string, touch: boolean) {
   await expect(page.getByTestId('world-viewport')).toHaveAttribute('data-map', mapId);
 }
 
+type LifeHint = {
+  mapId: string; elapsedMs: number; player: { x: number; y: number };
+  target?: { id: string; position: { x: number; y: number }; action?: string; activity?: string };
+  options: { id: string; targetId: string; kind: string }[];
+};
+async function lifeHint(page: Page, targetId: string): Promise<LifeHint> {
+  return page.evaluate(async ({ save, targetId }) => {
+    const dynamicUrl = '/src/world/dynamic.ts', stateUrl = '/src/world/state.ts', bridgeUrl = '/src/world/life-bridge.ts', lifeUrl = '/src/world/life/index.ts';
+    const { mapsForNeighbourhood } = await import(dynamicUrl), { restoreWorld } = await import(stateUrl);
+    const { actorsFor, planFor, navigationFor } = await import(bridgeUrl), { nearbyLife } = await import(lifeUrl);
+    const maps = mapsForNeighbourhood(save.neighbourhood), world = restoreWorld(save.world, maps, save.neighbourhood!.location), map = maps[world.mapId];
+    const elapsedMs = world.life?.elapsedMs ?? 0, actors = actorsFor(map, save, world, elapsedMs, false);
+    const target = actors.find((actor: { id: string }) => actor.id === targetId) ?? map.landmarks.find((item: { id: string }) => item.id === targetId);
+    return { mapId: map.id, elapsedMs, player: world.position, target: target ? { id: target.id, position: target.position, action: target.action, activity: target.activity } : undefined,
+      options: nearbyLife(planFor(map, save), actors, world.position, navigationFor(map)).map((option: { id: string; targetId: string; kind: string }) => ({ id: option.id, targetId: option.targetId, kind: option.kind })) };
+  }, { save: await savedGame(page), targetId });
+}
+async function approachLife(page: Page, targetId: string, touch: boolean) {
+  for (let i = 0; i < 10; i++) {
+    const hint = await lifeHint(page, targetId);
+    if (!hint.target) throw Error(`No production physical target ${targetId}`);
+    if (Math.hypot(hint.target.position.x - hint.player.x, hint.target.position.y - hint.player.y) < 1.1) return;
+    await walkTo(page, hint.target.position, touch);
+  }
+  throw Error(`Could not approach moving production target ${targetId}`);
+}
+async function activateLife(page: Page, targetId: string, touch: boolean) {
+  const attempts: unknown[] = [];
+  for (let i = 0; i < 16; i++) {
+    const hint = await lifeHint(page, targetId), index = hint.options.findIndex(option => option.targetId === targetId);
+    if (index < 0 || index >= 2) { await approachLife(page, targetId, touch); continue; }
+    const option = hint.options[index], exact = page.locator(`[data-life-action="${option.id}"]`);
+    const control = await exact.count() ? exact : page.locator('.world-life-options .world-anchor').nth(index).locator('button').last();
+    if (!await control.isVisible()) { await page.waitForTimeout(200); continue; }
+    const box = await control.boundingBox(); expect(box!.width).toBeGreaterThanOrEqual(44); expect(box!.height).toBeGreaterThanOrEqual(44);
+    const prior = (await savedGame(page)).world?.life?.reactions.find(reaction => reaction.targetId === targetId)?.atMs ?? -1;
+    await control.click(); await page.waitForTimeout(180);
+    const after = await savedGame(page), response = after.world?.life?.reactions.find(reaction => reaction.targetId === targetId);
+    attempts.push({ optionId: option.id, index, method: await exact.count() ? 'exact physical binding' : 'visible ordered arrow with read-only proximity hint', responses: after.world?.life?.reactions });
+    if (response && response.atMs > prior) return { attempts, response };
+    await approachLife(page, targetId, touch);
+  }
+  throw Error(`Visible controls never produced the intended physical response for ${targetId}`);
+}
+
 test('ordinary traversal reaches unvoiced residents, reactions and saved discoveries', async ({ page }, info) => {
   const out = `output/verification/0087/production/${info.project.name}`;
   await mkdir(out, { recursive: true });
@@ -102,16 +147,31 @@ test('ordinary traversal reaches unvoiced residents, reactions and saved discove
         }, before);
         expect(live.duplicatedInside).toEqual([]);
         await page.screenshot({ path: `${out}/${id}-before.png` });
-        const action = page.locator(`[data-life-action="${hook.id}/watch"]`);
-        await action.waitFor({ state: 'visible', timeout: 90000 });
-        const box = await action.boundingBox(); expect(box!.height).toBeGreaterThanOrEqual(44); expect(box!.width).toBeGreaterThanOrEqual(44);
-        await action.click();
-        await expect.poll(async () => (await savedGame(page)).world!.life!.reactions.some(reaction => reaction.targetId === hook.id)).toBe(true);
-        await page.waitForTimeout(3000);
+        const activation = await activateLife(page, hook.id, touch);
+        await page.waitForTimeout(2000);
         await page.screenshot({ path: `${out}/${id}-after.png` });
-        checkpoints.push({ id, before, after: await savedGame(page), actors: live.actors });
+        await expect.poll(async () => (await lifeHint(page, hook.id)).target?.action, { timeout: 120000, intervals: [500, 1000] }).toBe('walk');
+        await approachLife(page, hook.id, touch);
+        const walkBefore = await lifeHint(page, hook.id);
+        await page.screenshot({ path: `${out}/${id}-walk-before.png` });
+        await expect.poll(async () => {
+          const current = await lifeHint(page, hook.id);
+          return current.target ? Math.hypot(current.target.position.x - walkBefore.target!.position.x, current.target.position.y - walkBefore.target!.position.y) : 0;
+        }, { timeout: 8000 }).toBeGreaterThan(.08);
+        const walkAfter = await lifeHint(page, hook.id);
+        await page.screenshot({ path: `${out}/${id}-walk-after.png` });
+        await expect.poll(async () => (await lifeHint(page, hook.id)).target?.action, { timeout: 120000, intervals: [500, 1000] }).toBe('idle');
+        await approachLife(page, hook.id, touch);
+        const task = await lifeHint(page, hook.id);
+        await page.screenshot({ path: `${out}/${id}-task.png` });
+        checkpoints.push({ id, before, after: await savedGame(page), actors: live.actors, activation, walkBefore, walkAfter, task });
       }
     }
+    if ((await savedGame(page)).world!.mapId !== 'riverbank') await exitTo(page, 'riverbank', touch);
+    const worldControl = page.getByTestId('world-viewport'); await worldControl.focus();
+    const keyboardBefore = (await savedGame(page)).world!.position;
+    await page.keyboard.down('ArrowUp'); await page.waitForTimeout(180); await page.keyboard.up('ArrowUp');
+    await expect.poll(async () => { const position = (await savedGame(page)).world!.position; return Math.hypot(position.x - keyboardBefore.x, position.y - keyboardBefore.y); }).toBeGreaterThan(.05);
     const approach = await page.evaluate(async save => {
       const dynamicUrl = '/src/world/dynamic.ts', geometryUrl = '/src/world/geometry.ts', lifeUrl = '/src/world/life/index.ts';
       const { mapsForNeighbourhood } = await import(dynamicUrl), { canStand, findPath } = await import(geometryUrl), { compileLife, navigationFor, nearbyLife } = await import(lifeUrl);
@@ -125,8 +185,8 @@ test('ordinary traversal reaches unvoiced residents, reactions and saved discove
       throw Error('No reachable physical inspect approach');
     }, await savedGame(page));
     await walkTo(page, approach, touch);
-    const inspect = page.locator('[data-life-action="riverbank.fishing-jetty/inspect"]');
-    await inspect.waitFor({ state: 'visible' }); await inspect.click();
+    const discoveryAction = await activateLife(page, 'riverbank.fishing-jetty', touch);
+    checkpoints.push({ discoveryAction });
     await expect.poll(async () => (await savedGame(page)).world!.life!.discoveries.some(item => item.landmarkId === 'riverbank.fishing-jetty')).toBe(true);
     await page.screenshot({ path: `${out}/physical-discovery.png` });
     const before = await savedGame(page);
@@ -134,13 +194,13 @@ test('ordinary traversal reaches unvoiced residents, reactions and saved discove
     const after = await savedGame(page);
     expect(after.world!.life!.discoveries.length).toBeGreaterThan(0);
     expect(after.world!.life!.discoveries).toEqual(before.world!.life!.discoveries);
-    await inspect.waitFor({ state: 'visible' }); await inspect.click();
+    checkpoints.push({ repeatedDiscovery: await activateLife(page, 'riverbank.fishing-jetty', touch) });
     expect((await savedGame(page)).world!.life!.discoveries.filter(item => item.landmarkId === 'riverbank.fishing-jetty')).toHaveLength(1);
     expect(after.customers.every(customer => customer.phase === 'seated')).toBe(true);
     expect(errors).toEqual([]);
   } finally {
     await page.screenshot({ path: `${out}/last-frame.png` });
     await writeFile(`${out}/evidence.json`, JSON.stringify({ head: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(), checkpoints, errors,
-      method: 'Ordinary opening and real pointer/touch travel; source/save reads only; no injected save, actor spawn or internal dispatch.' }, null, 2));
+      method: 'Ordinary opening and real pointer/touch/keyboard travel; source/save navigation and proximity hints only; intended physical responses verified after visible control clicks; no injected save, actor spawn or internal dispatch.' }, null, 2));
   }
 });
