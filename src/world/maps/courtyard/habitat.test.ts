@@ -45,3 +45,17 @@ describe('world cat habitat preserves feature facts', () => {
     expect(catHabitat(after, 3).black).toMatchObject(habitatPoints.black);
   });
 });
+
+it('projects target anchors from the same authoritative cat habitat without mutating the authored map', async () => {
+  const { courtyardForCats } = await import('./habitat');
+  const { courtyardMap } = await import('./index');
+  const { worldMapSchema } = await import('../../schema');
+  const map = worldMapSchema.parse(courtyardMap);
+  const original = structuredClone(map);
+  const state = reduce(reunite(), { type: 'begin' }, 2);
+  const projected = courtyardForCats(map, state, 100);
+  expect(projected.anchors.find(a => a.interactionId === 'cats.white')?.position).toEqual(habitatPoints.door);
+  expect(projected.anchors.find(a => a.interactionId === 'cats.black')?.position).toEqual(habitatPoints.black);
+  expect(map).toEqual(original);
+  expect(projected.props).toBe(map.props);
+});
