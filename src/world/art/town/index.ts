@@ -46,7 +46,7 @@ export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldR
 
   if (isBuilding) {
     const residence = prop.kind === 'building-residence', shop = prop.kind === 'building-shop';
-    const height = residence ? 7.2 : prop.kind === 'building-row' ? 6.4 : prop.kind === 'building-utility' ? 3.1 : 4.5;
+    const height = residence ? 7.2 : prop.kind === 'building-row' ? style === 'ochre' ? 6.8 : style === 'jade' ? 5.8 : 6.2 : prop.kind === 'building-utility' ? 3.1 : style === 'timber-shutter' ? 5.6 : style === 'olive-shutter' ? 3.8 : 4.5;
     const wall = style?.includes('jade') ? [170, 186, 160] : style?.includes('ochre') ? [204, 179, 135] : style?.includes('warm') ? [212, 193, 162] : residence ? [196, 190, 167] : prop.kind === 'building-tea' ? [180, 157, 122] : prop.kind === 'building-workshop' ? [163, 170, 158] : C.plaster;
     box(x, y, 0, w, h, height, wall);
     box(x, y, 0, w, h, .32, [115, 126, 116]);
@@ -115,6 +115,34 @@ export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldR
       box(x + .6, y + h + .1, .2, w - 1.2, .15, 2.5, style?.includes('jade') ? C.jade : style?.includes('olive') ? [135, 146, 107] : style?.includes('cream') ? [190, 184, 155] : style?.includes('timber') ? C.wood : C.slate);
       for (let z = .35; z < 2.6; z += .26) line([x + .7, y + h + .26, z], [x + w - .7, y + h + .26, z], [72, 93, 91]);
       box(x + w / 2 - .12, y + h + .3, .3, .24, .08, .2, C.brass);
+    }
+    if (style === 'cream-shutter') {
+      box(x + .7, y + h + .3, .65, w * .57, .24, 2.6, C.wood);
+      box(x + .9, y + h + .56, .85, w * .57 - .4, .04, 2.2, [90, 122, 124]);
+      for (const z of [.95, 1.85]) {
+        box(x + .9, y + h + .61, z, w * .57 - .4, .05, .12, C.brass);
+        for (let a = 0; a < w * .57 - .7; a += .28) {
+          const lean = Math.floor(a * 10) % 3;
+          box(x + 1.05 + a, y + h + .64, z + .13, .18, .03, .5 + lean * .15, [C.cream, C.jade, C.brass, C.slate][Math.floor(a * 10) % 4]);
+        }
+      }
+      box(x + .75, y + h + .67, 2.1, w * .57 - .1, .05, .08, C.cream);
+      box(x + w * .34, y + h + .69, .8, .09, .03, 2.4, C.cream);
+    }
+    if (style === 'timber-shutter') {
+      box(x + 1.1, y + h + .3, 1, w - 2.2, .2, 1.5, C.wood);
+      for (let a = 0; a < w - 2.8; a += .7) {
+        box(x + 1.4 + a, y + h + .52, 1.2, .45, .15, 1, a % 1.4 ? [175, 184, 158] : [192, 170, 121]);
+        line([x + 1.6 + a, y + h + .7, 1.2], [x + 1.6 + a, y + h + .7, 2.2], C.cream);
+      }
+    }
+    if (residence) {
+      box(x + .35, y + h + .1, .4, .45, .22, .65, C.wood);
+      box(x + .39, y + h + .34, .45, .37, .04, .4, C.slate);
+      for (const a of [x + 2.4, x + w - 1]) {
+        box(a, y + h + .18, .1, .6, .4, .2, C.brick);
+        box(a + .1, y + h + .2, .3, .35, .3, .4, C.leaf);
+      }
     }
     for (let z = .5; z < Math.min(height, 3); z += .48) {
       const offset = Math.round(z * 2) % 2 * .35;
@@ -292,7 +320,7 @@ export const drawMap: DrawMap = (ctx, map, view) => {
         const x0 = Math.max(r.x, x), y0 = Math.max(r.y, y), x1 = Math.min(r.x + r.width, x + 1), y1 = Math.min(r.y + r.height, y + 1);
         const points = [{ x: x0, y: y0 }, { x: x1, y: y0 }, { x: x1, y: y1 }, { x: x0, y: y1 }].map(p => view.project(p));
         if (Math.max(...points.map(p => p.x)) < 0 || Math.min(...points.map(p => p.x)) > view.width || Math.max(...points.map(p => p.y)) < 0 || Math.min(...points.map(p => p.y)) > view.height) continue;
-        const base = terrain.material === 'water' ? [107, 151, 155] : terrain.material === 'stone' ? [147, 159, 144] : terrain.material === 'road' ? [134, 142, 135] : terrain.material === 'brick' ? [178, 164, 134] : C.paving;
+        const base = terrain.material === 'water' ? [107, 151, 155] : terrain.material === 'stone' ? [147, 159, 144] : terrain.material === 'road' ? [134, 142, 135] : terrain.material === 'brick' ? [168, 155, 122] : C.paving;
         ctx.fillStyle = color(base, .96 + hash(x, y) * .08);
         ctx.beginPath(); points.forEach((p, i) => i ? ctx.lineTo(Math.round(p.x), Math.round(p.y)) : ctx.moveTo(Math.round(p.x), Math.round(p.y))); ctx.closePath(); ctx.fill();
         if (terrain.material !== 'road' && terrain.material !== 'water') {
@@ -301,6 +329,10 @@ export const drawMap: DrawMap = (ctx, map, view) => {
         }
         const p = view.project({ x: x0 + .3 + hash(x, y) * .4, y: y0 + .3 });
         ctx.fillStyle = color(base, .75); ctx.fillRect(Math.round(p.x), Math.round(p.y), terrain.material === 'road' ? 2 : 1, 1);
+        if (hash(x + 71, y) > .92 && terrain.material !== 'water') {
+          ctx.strokeStyle = color(base, .75); ctx.beginPath();
+          ctx.moveTo(Math.round(p.x), Math.round(p.y)); ctx.lineTo(Math.round(p.x) + 3, Math.round(p.y) - 1); ctx.lineTo(Math.round(p.x) + 5, Math.round(p.y) + 1); ctx.stroke();
+        }
       }
     }
   }
