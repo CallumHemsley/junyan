@@ -1,0 +1,8782 @@
+{
+  "version": 1,
+  "id": "riverbank",
+  "bounds": {
+    "width": 96,
+    "height": 80
+  },
+  "defaultSpawn": {
+    "x": 40,
+    "y": 75,
+    "facing": "north"
+  },
+  "walkable": [
+    {
+      "x": 1,
+      "y": 1,
+      "width": 94,
+      "height": 78
+    }
+  ],
+  "colliders": [
+    {
+      "id": "riverbank.water-0",
+      "rect": {
+        "x": 43.0,
+        "y": 0,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-0.5",
+      "rect": {
+        "x": 43.5,
+        "y": 0.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-1",
+      "rect": {
+        "x": 43.75,
+        "y": 1,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-1.5",
+      "rect": {
+        "x": 44.25,
+        "y": 1.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-2",
+      "rect": {
+        "x": 44.75,
+        "y": 2,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-2.5",
+      "rect": {
+        "x": 45.0,
+        "y": 2.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-3",
+      "rect": {
+        "x": 45.5,
+        "y": 3,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-3.5",
+      "rect": {
+        "x": 45.75,
+        "y": 3.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-4",
+      "rect": {
+        "x": 46.25,
+        "y": 4,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-4.5",
+      "rect": {
+        "x": 46.5,
+        "y": 4.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-5",
+      "rect": {
+        "x": 46.75,
+        "y": 5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-5.5",
+      "rect": {
+        "x": 47.0,
+        "y": 5.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-6",
+      "rect": {
+        "x": 47.25,
+        "y": 6,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-6.5",
+      "rect": {
+        "x": 47.5,
+        "y": 6.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-7",
+      "rect": {
+        "x": 47.5,
+        "y": 7,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-7.5",
+      "rect": {
+        "x": 47.75,
+        "y": 7.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-8",
+      "rect": {
+        "x": 47.75,
+        "y": 8,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-8.5",
+      "rect": {
+        "x": 47.75,
+        "y": 8.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-9",
+      "rect": {
+        "x": 47.75,
+        "y": 9,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-9.5",
+      "rect": {
+        "x": 47.75,
+        "y": 9.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-10",
+      "rect": {
+        "x": 47.75,
+        "y": 10,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-10.5",
+      "rect": {
+        "x": 47.75,
+        "y": 10.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-11",
+      "rect": {
+        "x": 47.5,
+        "y": 11,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-11.5",
+      "rect": {
+        "x": 47.5,
+        "y": 11.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-12",
+      "rect": {
+        "x": 47.25,
+        "y": 12,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-12.5",
+      "rect": {
+        "x": 47.0,
+        "y": 12.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-13",
+      "rect": {
+        "x": 47.0,
+        "y": 13,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-13.5",
+      "rect": {
+        "x": 46.75,
+        "y": 13.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-14",
+      "rect": {
+        "x": 46.5,
+        "y": 14,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-14.5",
+      "rect": {
+        "x": 46.25,
+        "y": 14.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-15",
+      "rect": {
+        "x": 46.0,
+        "y": 15,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-15.5",
+      "rect": {
+        "x": 46.0,
+        "y": 15.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-16",
+      "rect": {
+        "x": 45.75,
+        "y": 16,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-16.5",
+      "rect": {
+        "x": 45.5,
+        "y": 16.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-17",
+      "rect": {
+        "x": 45.25,
+        "y": 17,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-17.5-cut-0",
+      "rect": {
+        "x": 45.25,
+        "y": 17.5,
+        "width": 9,
+        "height": 0.10000000000000142
+      }
+    },
+    {
+      "id": "riverbank.water-20-cut-1",
+      "rect": {
+        "x": 44.75,
+        "y": 20.400000000000002,
+        "width": 9,
+        "height": 0.09999999999999787
+      }
+    },
+    {
+      "id": "riverbank.water-20.5",
+      "rect": {
+        "x": 44.5,
+        "y": 20.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-21",
+      "rect": {
+        "x": 44.5,
+        "y": 21,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-21.5",
+      "rect": {
+        "x": 44.5,
+        "y": 21.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-22",
+      "rect": {
+        "x": 44.5,
+        "y": 22,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-22.5",
+      "rect": {
+        "x": 44.5,
+        "y": 22.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-23",
+      "rect": {
+        "x": 44.5,
+        "y": 23,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-23.5",
+      "rect": {
+        "x": 44.75,
+        "y": 23.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-24",
+      "rect": {
+        "x": 44.75,
+        "y": 24,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-24.5",
+      "rect": {
+        "x": 44.75,
+        "y": 24.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-25",
+      "rect": {
+        "x": 44.75,
+        "y": 25,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-25.5",
+      "rect": {
+        "x": 45.0,
+        "y": 25.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-26",
+      "rect": {
+        "x": 45.0,
+        "y": 26,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-26.5",
+      "rect": {
+        "x": 45.0,
+        "y": 26.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-27",
+      "rect": {
+        "x": 45.0,
+        "y": 27,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-27.5",
+      "rect": {
+        "x": 45.25,
+        "y": 27.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-28",
+      "rect": {
+        "x": 45.25,
+        "y": 28,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-28.5",
+      "rect": {
+        "x": 45.25,
+        "y": 28.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-29",
+      "rect": {
+        "x": 45.25,
+        "y": 29,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-29.5",
+      "rect": {
+        "x": 45.25,
+        "y": 29.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-30",
+      "rect": {
+        "x": 45.25,
+        "y": 30,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-30.5",
+      "rect": {
+        "x": 45.0,
+        "y": 30.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-31",
+      "rect": {
+        "x": 45.0,
+        "y": 31,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-31.5",
+      "rect": {
+        "x": 45.0,
+        "y": 31.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-32",
+      "rect": {
+        "x": 44.75,
+        "y": 32,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-32.5",
+      "rect": {
+        "x": 44.5,
+        "y": 32.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-33",
+      "rect": {
+        "x": 44.25,
+        "y": 33,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-33.5",
+      "rect": {
+        "x": 44.25,
+        "y": 33.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-34",
+      "rect": {
+        "x": 44.0,
+        "y": 34,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-34.5",
+      "rect": {
+        "x": 43.5,
+        "y": 34.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-35",
+      "rect": {
+        "x": 43.25,
+        "y": 35,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-35.5",
+      "rect": {
+        "x": 43.0,
+        "y": 35.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-36",
+      "rect": {
+        "x": 42.75,
+        "y": 36,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-36.5",
+      "rect": {
+        "x": 42.25,
+        "y": 36.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-37",
+      "rect": {
+        "x": 42.0,
+        "y": 37,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-37.5",
+      "rect": {
+        "x": 41.5,
+        "y": 37.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-38",
+      "rect": {
+        "x": 41.25,
+        "y": 38,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-38.5-cut-3",
+      "rect": {
+        "x": 41.199999999999996,
+        "y": 38.5,
+        "width": 8.550000000000004,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-39-cut-3",
+      "rect": {
+        "x": 41.199999999999996,
+        "y": 39,
+        "width": 8.300000000000004,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-39.5-cut-3",
+      "rect": {
+        "x": 41.199999999999996,
+        "y": 39.5,
+        "width": 7.800000000000004,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-40-cut-1",
+      "rect": {
+        "x": 39.5,
+        "y": 40.199999999999996,
+        "width": 9,
+        "height": 0.30000000000000426
+      }
+    },
+    {
+      "id": "riverbank.water-40-cut-3",
+      "rect": {
+        "x": 41.199999999999996,
+        "y": 40,
+        "width": 7.300000000000004,
+        "height": 0.19999999999999574
+      }
+    },
+    {
+      "id": "riverbank.water-40.5",
+      "rect": {
+        "x": 39.25,
+        "y": 40.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-41",
+      "rect": {
+        "x": 39.0,
+        "y": 41,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-41.5",
+      "rect": {
+        "x": 38.5,
+        "y": 41.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-42",
+      "rect": {
+        "x": 38.25,
+        "y": 42,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-42.5",
+      "rect": {
+        "x": 38.0,
+        "y": 42.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-43",
+      "rect": {
+        "x": 37.75,
+        "y": 43,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-43.5",
+      "rect": {
+        "x": 37.5,
+        "y": 43.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-44",
+      "rect": {
+        "x": 37.5,
+        "y": 44,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-44.5",
+      "rect": {
+        "x": 37.25,
+        "y": 44.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-45",
+      "rect": {
+        "x": 37.25,
+        "y": 45,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-45.5",
+      "rect": {
+        "x": 37.0,
+        "y": 45.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-46",
+      "rect": {
+        "x": 37.0,
+        "y": 46,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-46.5",
+      "rect": {
+        "x": 37.0,
+        "y": 46.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-47",
+      "rect": {
+        "x": 37.0,
+        "y": 47,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-47.5",
+      "rect": {
+        "x": 37.25,
+        "y": 47.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-48",
+      "rect": {
+        "x": 37.25,
+        "y": 48,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-48.5",
+      "rect": {
+        "x": 37.5,
+        "y": 48.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-49",
+      "rect": {
+        "x": 37.75,
+        "y": 49,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-49.5",
+      "rect": {
+        "x": 37.75,
+        "y": 49.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-50",
+      "rect": {
+        "x": 38.0,
+        "y": 50,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-50.5",
+      "rect": {
+        "x": 38.25,
+        "y": 50.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-51",
+      "rect": {
+        "x": 38.75,
+        "y": 51,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-51.5",
+      "rect": {
+        "x": 39.0,
+        "y": 51.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-52",
+      "rect": {
+        "x": 39.25,
+        "y": 52,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-52.5",
+      "rect": {
+        "x": 39.75,
+        "y": 52.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-53",
+      "rect": {
+        "x": 40.0,
+        "y": 53,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-53.5",
+      "rect": {
+        "x": 40.25,
+        "y": 53.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-54",
+      "rect": {
+        "x": 40.75,
+        "y": 54,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-54.5",
+      "rect": {
+        "x": 41.0,
+        "y": 54.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-55",
+      "rect": {
+        "x": 41.25,
+        "y": 55,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-55.5-cut-0",
+      "rect": {
+        "x": 41.75,
+        "y": 55.5,
+        "width": 9,
+        "height": 0.10000000000000142
+      }
+    },
+    {
+      "id": "riverbank.water-58-cut-1",
+      "rect": {
+        "x": 43.0,
+        "y": 58.4,
+        "width": 9,
+        "height": 0.10000000000000142
+      }
+    },
+    {
+      "id": "riverbank.water-58.5",
+      "rect": {
+        "x": 43.25,
+        "y": 58.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-59",
+      "rect": {
+        "x": 43.5,
+        "y": 59,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-59.5",
+      "rect": {
+        "x": 43.75,
+        "y": 59.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-60",
+      "rect": {
+        "x": 43.75,
+        "y": 60,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-60.5",
+      "rect": {
+        "x": 44.0,
+        "y": 60.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-61",
+      "rect": {
+        "x": 44.0,
+        "y": 61,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-61.5",
+      "rect": {
+        "x": 44.0,
+        "y": 61.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-62",
+      "rect": {
+        "x": 44.25,
+        "y": 62,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-62.5",
+      "rect": {
+        "x": 44.25,
+        "y": 62.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-63",
+      "rect": {
+        "x": 44.25,
+        "y": 63,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-63.5",
+      "rect": {
+        "x": 44.25,
+        "y": 63.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-64",
+      "rect": {
+        "x": 44.25,
+        "y": 64,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-64.5",
+      "rect": {
+        "x": 44.0,
+        "y": 64.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-65",
+      "rect": {
+        "x": 44.0,
+        "y": 65,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-65.5",
+      "rect": {
+        "x": 44.0,
+        "y": 65.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-66",
+      "rect": {
+        "x": 44.0,
+        "y": 66,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-66.5",
+      "rect": {
+        "x": 44.0,
+        "y": 66.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-67",
+      "rect": {
+        "x": 44.0,
+        "y": 67,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-67.5",
+      "rect": {
+        "x": 43.75,
+        "y": 67.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-68",
+      "rect": {
+        "x": 43.75,
+        "y": 68,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-68.5",
+      "rect": {
+        "x": 43.75,
+        "y": 68.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-69",
+      "rect": {
+        "x": 43.75,
+        "y": 69,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-69.5",
+      "rect": {
+        "x": 43.75,
+        "y": 69.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-70",
+      "rect": {
+        "x": 43.75,
+        "y": 70,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-70.5",
+      "rect": {
+        "x": 44.0,
+        "y": 70.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-71",
+      "rect": {
+        "x": 44.0,
+        "y": 71,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-71.5",
+      "rect": {
+        "x": 44.0,
+        "y": 71.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-72",
+      "rect": {
+        "x": 44.25,
+        "y": 72,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-72.5",
+      "rect": {
+        "x": 44.25,
+        "y": 72.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-73",
+      "rect": {
+        "x": 44.5,
+        "y": 73,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-73.5",
+      "rect": {
+        "x": 44.75,
+        "y": 73.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-74",
+      "rect": {
+        "x": 44.75,
+        "y": 74,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-74.5",
+      "rect": {
+        "x": 45.0,
+        "y": 74.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-75",
+      "rect": {
+        "x": 45.25,
+        "y": 75,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-75.5",
+      "rect": {
+        "x": 45.5,
+        "y": 75.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-76",
+      "rect": {
+        "x": 45.75,
+        "y": 76,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-76.5",
+      "rect": {
+        "x": 46.0,
+        "y": 76.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-77",
+      "rect": {
+        "x": 46.25,
+        "y": 77,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-77.5",
+      "rect": {
+        "x": 46.5,
+        "y": 77.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-78",
+      "rect": {
+        "x": 46.75,
+        "y": 78,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-78.5",
+      "rect": {
+        "x": 47.0,
+        "y": 78.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-79",
+      "rect": {
+        "x": 47.25,
+        "y": 79,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-79.5",
+      "rect": {
+        "x": 47.5,
+        "y": 79.5,
+        "width": 9,
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.hill-shrine",
+      "rect": {
+        "x": 86.04,
+        "y": 3.2800000000000002,
+        "width": 1.92,
+        "height": 1.44
+      }
+    },
+    {
+      "id": "riverbank.ferry-boat",
+      "rect": {
+        "x": 56.599999999999994,
+        "y": 60.220000000000006,
+        "width": 2.4,
+        "height": 0.96
+      }
+    },
+    {
+      "id": "riverbank.ferry-post",
+      "rect": {
+        "x": 60.26,
+        "y": 60.26,
+        "width": 0.48,
+        "height": 0.48
+      }
+    },
+    {
+      "id": "riverbank.arrival-willow",
+      "rect": {
+        "x": 35.225,
+        "y": 76.725,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.fisher-stool",
+      "rect": {
+        "x": 37.76,
+        "y": 36.76,
+        "width": 0.48,
+        "height": 0.48
+      }
+    },
+    {
+      "id": "riverbank.washing-rack",
+      "rect": {
+        "x": 33.8,
+        "y": 70.76,
+        "width": 2.4,
+        "height": 0.48
+      }
+    },
+    {
+      "id": "riverbank.reed-screen",
+      "rect": {
+        "x": 18.28,
+        "y": 47.28,
+        "width": 1.44,
+        "height": 1.44
+      }
+    },
+    {
+      "id": "riverbank.picnic",
+      "rect": {
+        "x": 83.04,
+        "y": 46.28,
+        "width": 1.92,
+        "height": 1.44
+      }
+    },
+    {
+      "id": "riverbank.shore-watch-bench",
+      "rect": {
+        "x": 50.28,
+        "y": 45.36,
+        "width": 1.44,
+        "height": 0.48
+      }
+    },
+    {
+      "id": "riverbank.bank-rock-5",
+      "rect": {
+        "x": 57.02,
+        "y": 4.52,
+        "width": 0.96,
+        "height": 0.96
+      }
+    },
+    {
+      "id": "riverbank.bank-rock-13",
+      "rect": {
+        "x": 57.02,
+        "y": 12.52,
+        "width": 0.96,
+        "height": 0.96
+      }
+    },
+    {
+      "id": "riverbank.bank-rock-27",
+      "rect": {
+        "x": 55.02,
+        "y": 26.52,
+        "width": 0.96,
+        "height": 0.96
+      }
+    },
+    {
+      "id": "riverbank.bank-rock-34",
+      "rect": {
+        "x": 54.02,
+        "y": 33.52,
+        "width": 0.96,
+        "height": 0.96
+      }
+    },
+    {
+      "id": "riverbank.bank-rock-45",
+      "rect": {
+        "x": 47.02,
+        "y": 44.52,
+        "width": 0.96,
+        "height": 0.96
+      }
+    },
+    {
+      "id": "riverbank.bank-rock-64",
+      "rect": {
+        "x": 54.02,
+        "y": 63.52,
+        "width": 0.96,
+        "height": 0.96
+      }
+    },
+    {
+      "id": "riverbank.bank-rock-71",
+      "rect": {
+        "x": 54.02,
+        "y": 70.52,
+        "width": 0.96,
+        "height": 0.96
+      }
+    },
+    {
+      "id": "riverbank.bridge-west-tree-1",
+      "rect": {
+        "x": 31.825000000000003,
+        "y": 13.525,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.bridge-west-tree-3",
+      "rect": {
+        "x": 37.825,
+        "y": 14.525,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.wetland-grove-tree-0",
+      "rect": {
+        "x": 22.6,
+        "y": 29.6,
+        "width": 0.8,
+        "height": 0.8
+      }
+    },
+    {
+      "id": "riverbank.wetland-grove-tree-1",
+      "rect": {
+        "x": 19.825000000000003,
+        "y": 30.525000000000002,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.wetland-grove-tree-2",
+      "rect": {
+        "x": 24.425,
+        "y": 27.425,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.wetland-grove-tree-3",
+      "rect": {
+        "x": 25.825000000000003,
+        "y": 31.525000000000002,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.wetland-grove-tree-4",
+      "rect": {
+        "x": 21.425,
+        "y": 33.125,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.reed-woods-tree-0",
+      "rect": {
+        "x": 20.6,
+        "y": 42.6,
+        "width": 0.8,
+        "height": 0.8
+      }
+    },
+    {
+      "id": "riverbank.reed-woods-tree-1",
+      "rect": {
+        "x": 17.825000000000003,
+        "y": 43.525,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.reed-woods-tree-2",
+      "rect": {
+        "x": 22.425,
+        "y": 40.425000000000004,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.reed-woods-tree-3",
+      "rect": {
+        "x": 23.825000000000003,
+        "y": 44.525,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.reed-woods-tree-4",
+      "rect": {
+        "x": 19.425,
+        "y": 46.125,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.wash-grove-tree-0",
+      "rect": {
+        "x": 22.6,
+        "y": 62.6,
+        "width": 0.8,
+        "height": 0.8
+      }
+    },
+    {
+      "id": "riverbank.wash-grove-tree-1",
+      "rect": {
+        "x": 19.825000000000003,
+        "y": 63.525,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.wash-grove-tree-2",
+      "rect": {
+        "x": 24.425,
+        "y": 60.425000000000004,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.wash-grove-tree-3",
+      "rect": {
+        "x": 25.825000000000003,
+        "y": 64.52499999999999,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.wash-grove-tree-4",
+      "rect": {
+        "x": 21.425,
+        "y": 66.125,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.town-grove-tree-0",
+      "rect": {
+        "x": 9.6,
+        "y": 70.6,
+        "width": 0.8,
+        "height": 0.8
+      }
+    },
+    {
+      "id": "riverbank.town-grove-tree-3",
+      "rect": {
+        "x": 12.825,
+        "y": 72.52499999999999,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.town-grove-tree-4",
+      "rect": {
+        "x": 8.424999999999999,
+        "y": 74.125,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.river-north-tree-0",
+      "rect": {
+        "x": 64.6,
+        "y": 8.6,
+        "width": 0.8,
+        "height": 0.8
+      }
+    },
+    {
+      "id": "riverbank.river-north-tree-1",
+      "rect": {
+        "x": 61.825,
+        "y": 9.525,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.river-north-tree-2",
+      "rect": {
+        "x": 66.425,
+        "y": 6.425,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.river-north-tree-3",
+      "rect": {
+        "x": 67.82499999999999,
+        "y": 10.525,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.river-north-tree-4",
+      "rect": {
+        "x": 63.425000000000004,
+        "y": 12.125,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.ridge-north-tree-0",
+      "rect": {
+        "x": 84.6,
+        "y": 15.6,
+        "width": 0.8,
+        "height": 0.8
+      }
+    },
+    {
+      "id": "riverbank.ridge-north-tree-1",
+      "rect": {
+        "x": 81.82499999999999,
+        "y": 16.525000000000002,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.ridge-north-tree-4",
+      "rect": {
+        "x": 83.425,
+        "y": 19.125,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.river-east-tree-0",
+      "rect": {
+        "x": 63.6,
+        "y": 33.6,
+        "width": 0.8,
+        "height": 0.8
+      }
+    },
+    {
+      "id": "riverbank.river-east-tree-1",
+      "rect": {
+        "x": 60.825,
+        "y": 34.525,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.river-east-tree-2",
+      "rect": {
+        "x": 65.425,
+        "y": 31.425,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.river-east-tree-3",
+      "rect": {
+        "x": 66.82499999999999,
+        "y": 35.525,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.river-east-tree-4",
+      "rect": {
+        "x": 62.425000000000004,
+        "y": 37.125,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.high-woods-tree-1",
+      "rect": {
+        "x": 83.82499999999999,
+        "y": 31.525000000000002,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.high-woods-tree-3",
+      "rect": {
+        "x": 89.82499999999999,
+        "y": 32.525,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.high-woods-tree-4",
+      "rect": {
+        "x": 85.425,
+        "y": 34.125,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.ferry-copse-tree-0",
+      "rect": {
+        "x": 68.6,
+        "y": 64.6,
+        "width": 0.8,
+        "height": 0.8
+      }
+    },
+    {
+      "id": "riverbank.ferry-copse-tree-1",
+      "rect": {
+        "x": 65.82499999999999,
+        "y": 65.52499999999999,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.ferry-copse-tree-2",
+      "rect": {
+        "x": 70.425,
+        "y": 62.425000000000004,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.ferry-copse-tree-3",
+      "rect": {
+        "x": 71.82499999999999,
+        "y": 66.52499999999999,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.ferry-copse-tree-4",
+      "rect": {
+        "x": 67.425,
+        "y": 68.125,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.south-copse-tree-0",
+      "rect": {
+        "x": 87.6,
+        "y": 69.6,
+        "width": 0.8,
+        "height": 0.8
+      }
+    },
+    {
+      "id": "riverbank.south-copse-tree-1",
+      "rect": {
+        "x": 84.82499999999999,
+        "y": 70.52499999999999,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.south-copse-tree-2",
+      "rect": {
+        "x": 89.425,
+        "y": 67.425,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.south-copse-tree-3",
+      "rect": {
+        "x": 90.82499999999999,
+        "y": 71.52499999999999,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.south-copse-tree-4",
+      "rect": {
+        "x": 86.425,
+        "y": 73.125,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.heron-copse-tree-0",
+      "rect": {
+        "x": 86.6,
+        "y": 48.6,
+        "width": 0.8,
+        "height": 0.8
+      }
+    },
+    {
+      "id": "riverbank.heron-copse-tree-1",
+      "rect": {
+        "x": 83.82499999999999,
+        "y": 49.525,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.heron-copse-tree-2",
+      "rect": {
+        "x": 88.425,
+        "y": 46.425000000000004,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.heron-copse-tree-3",
+      "rect": {
+        "x": 89.82499999999999,
+        "y": 50.525,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.heron-copse-tree-4",
+      "rect": {
+        "x": 85.425,
+        "y": 52.125,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.bridge-reveal-tree-0",
+      "rect": {
+        "x": 57.6,
+        "y": 24.6,
+        "width": 0.8,
+        "height": 0.8
+      }
+    },
+    {
+      "id": "riverbank.bridge-reveal-tree-1",
+      "rect": {
+        "x": 54.825,
+        "y": 25.525000000000002,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.bank-willow-0",
+      "rect": {
+        "x": 36.725,
+        "y": 31.725,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.bank-willow-1",
+      "rect": {
+        "x": 58.725,
+        "y": 23.725,
+        "width": 0.55,
+        "height": 0.55
+      }
+    },
+    {
+      "id": "riverbank.bank-willow-2",
+      "rect": {
+        "x": 27.725,
+        "y": 60.725,
+        "width": 0.55,
+        "height": 0.55
+      }
+    }
+  ],
+  "occluders": [
+    {
+      "id": "riverbank.arrival-willow",
+      "rect": {
+        "x": 32.75,
+        "y": 74.25,
+        "width": 5.5,
+        "height": 5.5
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.bridge-west-tree-1",
+      "rect": {
+        "x": 30.05,
+        "y": 11.75,
+        "width": 4.1,
+        "height": 4.1
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.bridge-west-tree-3",
+      "rect": {
+        "x": 36.25,
+        "y": 12.950000000000001,
+        "width": 3.7,
+        "height": 3.7
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.wetland-grove-tree-0",
+      "rect": {
+        "x": 19.5,
+        "y": 26.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.wetland-grove-tree-1",
+      "rect": {
+        "x": 18.05,
+        "y": 28.75,
+        "width": 4.1,
+        "height": 4.1
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.wetland-grove-tree-2",
+      "rect": {
+        "x": 22.45,
+        "y": 25.45,
+        "width": 4.5,
+        "height": 4.5
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.wetland-grove-tree-3",
+      "rect": {
+        "x": 24.25,
+        "y": 29.95,
+        "width": 3.7,
+        "height": 3.7
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.wetland-grove-tree-4",
+      "rect": {
+        "x": 19.75,
+        "y": 31.45,
+        "width": 3.9,
+        "height": 3.9
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.reed-woods-tree-0",
+      "rect": {
+        "x": 17.5,
+        "y": 39.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.reed-woods-tree-1",
+      "rect": {
+        "x": 16.05,
+        "y": 41.75,
+        "width": 4.1,
+        "height": 4.1
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.reed-woods-tree-2",
+      "rect": {
+        "x": 20.45,
+        "y": 38.45,
+        "width": 4.5,
+        "height": 4.5
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.reed-woods-tree-3",
+      "rect": {
+        "x": 22.25,
+        "y": 42.949999999999996,
+        "width": 3.7,
+        "height": 3.7
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.reed-woods-tree-4",
+      "rect": {
+        "x": 17.75,
+        "y": 44.449999999999996,
+        "width": 3.9,
+        "height": 3.9
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.wash-grove-tree-0",
+      "rect": {
+        "x": 19.5,
+        "y": 59.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.wash-grove-tree-1",
+      "rect": {
+        "x": 18.05,
+        "y": 61.75,
+        "width": 4.1,
+        "height": 4.1
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.wash-grove-tree-2",
+      "rect": {
+        "x": 22.45,
+        "y": 58.45,
+        "width": 4.5,
+        "height": 4.5
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.wash-grove-tree-3",
+      "rect": {
+        "x": 24.25,
+        "y": 62.949999999999996,
+        "width": 3.7,
+        "height": 3.7
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.wash-grove-tree-4",
+      "rect": {
+        "x": 19.75,
+        "y": 64.45,
+        "width": 3.9,
+        "height": 3.9
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.town-grove-tree-0",
+      "rect": {
+        "x": 6.5,
+        "y": 67.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.town-grove-tree-3",
+      "rect": {
+        "x": 11.25,
+        "y": 70.95,
+        "width": 3.7,
+        "height": 3.7
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.town-grove-tree-4",
+      "rect": {
+        "x": 6.749999999999999,
+        "y": 72.45,
+        "width": 3.9,
+        "height": 3.9
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.river-north-tree-0",
+      "rect": {
+        "x": 61.5,
+        "y": 5.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.river-north-tree-1",
+      "rect": {
+        "x": 60.050000000000004,
+        "y": 7.750000000000001,
+        "width": 4.1,
+        "height": 4.1
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.river-north-tree-2",
+      "rect": {
+        "x": 64.45,
+        "y": 4.45,
+        "width": 4.5,
+        "height": 4.5
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.river-north-tree-3",
+      "rect": {
+        "x": 66.25,
+        "y": 8.950000000000001,
+        "width": 3.7,
+        "height": 3.7
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.river-north-tree-4",
+      "rect": {
+        "x": 61.75,
+        "y": 10.450000000000001,
+        "width": 3.9,
+        "height": 3.9
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.ridge-north-tree-0",
+      "rect": {
+        "x": 81.5,
+        "y": 12.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.ridge-north-tree-1",
+      "rect": {
+        "x": 80.05,
+        "y": 14.75,
+        "width": 4.1,
+        "height": 4.1
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.ridge-north-tree-4",
+      "rect": {
+        "x": 81.75,
+        "y": 17.45,
+        "width": 3.9,
+        "height": 3.9
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.river-east-tree-0",
+      "rect": {
+        "x": 60.5,
+        "y": 30.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.river-east-tree-1",
+      "rect": {
+        "x": 59.050000000000004,
+        "y": 32.75,
+        "width": 4.1,
+        "height": 4.1
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.river-east-tree-2",
+      "rect": {
+        "x": 63.45,
+        "y": 29.45,
+        "width": 4.5,
+        "height": 4.5
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.river-east-tree-3",
+      "rect": {
+        "x": 65.25,
+        "y": 33.949999999999996,
+        "width": 3.7,
+        "height": 3.7
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.river-east-tree-4",
+      "rect": {
+        "x": 60.75,
+        "y": 35.449999999999996,
+        "width": 3.9,
+        "height": 3.9
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.high-woods-tree-1",
+      "rect": {
+        "x": 82.05,
+        "y": 29.75,
+        "width": 4.1,
+        "height": 4.1
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.high-woods-tree-3",
+      "rect": {
+        "x": 88.25,
+        "y": 30.949999999999996,
+        "width": 3.7,
+        "height": 3.7
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.high-woods-tree-4",
+      "rect": {
+        "x": 83.75,
+        "y": 32.449999999999996,
+        "width": 3.9,
+        "height": 3.9
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.ferry-copse-tree-0",
+      "rect": {
+        "x": 65.5,
+        "y": 61.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.ferry-copse-tree-1",
+      "rect": {
+        "x": 64.05,
+        "y": 63.75,
+        "width": 4.1,
+        "height": 4.1
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.ferry-copse-tree-2",
+      "rect": {
+        "x": 68.45,
+        "y": 60.45,
+        "width": 4.5,
+        "height": 4.5
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.ferry-copse-tree-3",
+      "rect": {
+        "x": 70.25,
+        "y": 64.95,
+        "width": 3.7,
+        "height": 3.7
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.ferry-copse-tree-4",
+      "rect": {
+        "x": 65.75,
+        "y": 66.45,
+        "width": 3.9,
+        "height": 3.9
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.south-copse-tree-0",
+      "rect": {
+        "x": 84.5,
+        "y": 66.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.south-copse-tree-1",
+      "rect": {
+        "x": 83.05,
+        "y": 68.75,
+        "width": 4.1,
+        "height": 4.1
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.south-copse-tree-2",
+      "rect": {
+        "x": 87.45,
+        "y": 65.45,
+        "width": 4.5,
+        "height": 4.5
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.south-copse-tree-3",
+      "rect": {
+        "x": 89.25,
+        "y": 69.95,
+        "width": 3.7,
+        "height": 3.7
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.south-copse-tree-4",
+      "rect": {
+        "x": 84.75,
+        "y": 71.45,
+        "width": 3.9,
+        "height": 3.9
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.heron-copse-tree-0",
+      "rect": {
+        "x": 83.5,
+        "y": 45.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.heron-copse-tree-1",
+      "rect": {
+        "x": 82.05,
+        "y": 47.75,
+        "width": 4.1,
+        "height": 4.1
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.heron-copse-tree-2",
+      "rect": {
+        "x": 86.45,
+        "y": 44.45,
+        "width": 4.5,
+        "height": 4.5
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.heron-copse-tree-3",
+      "rect": {
+        "x": 88.25,
+        "y": 48.949999999999996,
+        "width": 3.7,
+        "height": 3.7
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.heron-copse-tree-4",
+      "rect": {
+        "x": 83.75,
+        "y": 50.449999999999996,
+        "width": 3.9,
+        "height": 3.9
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.bridge-reveal-tree-0",
+      "rect": {
+        "x": 54.5,
+        "y": 21.5,
+        "width": 7,
+        "height": 7
+      },
+      "height": 7.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.bridge-reveal-tree-1",
+      "rect": {
+        "x": 53.050000000000004,
+        "y": 23.75,
+        "width": 4.1,
+        "height": 4.1
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.bank-willow-0",
+      "rect": {
+        "x": 34.25,
+        "y": 29.25,
+        "width": 5.5,
+        "height": 5.5
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.bank-willow-1",
+      "rect": {
+        "x": 56.25,
+        "y": 21.25,
+        "width": 5.5,
+        "height": 5.5
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "riverbank.bank-willow-2",
+      "rect": {
+        "x": 25.25,
+        "y": 58.25,
+        "width": 5.5,
+        "height": 5.5
+      },
+      "height": 3.5,
+      "fadeWhenPlayerBehind": true
+    }
+  ],
+  "entrances": [
+    {
+      "id": "from-town",
+      "position": {
+        "x": 40,
+        "y": 75
+      },
+      "facing": "north"
+    },
+    {
+      "id": "from-park",
+      "position": {
+        "x": 42,
+        "y": 10
+      },
+      "facing": "south"
+    }
+  ],
+  "exits": [
+    {
+      "id": "to-town",
+      "rect": {
+        "x": 38.5,
+        "y": 78,
+        "width": 3,
+        "height": 1
+      },
+      "targetMapId": "town",
+      "targetEntranceId": "from-riverbank",
+      "kind": "path"
+    },
+    {
+      "id": "to-park",
+      "rect": {
+        "x": 40.5,
+        "y": 6.5,
+        "width": 3,
+        "height": 1
+      },
+      "targetMapId": "park",
+      "targetEntranceId": "from-riverbank",
+      "kind": "path"
+    }
+  ],
+  "anchors": [
+    {
+      "id": "riverbank.moon-bridge",
+      "position": {
+        "x": 48,
+        "y": 19
+      },
+      "radius": 1.4,
+      "featureId": "exploration",
+      "interactionId": "landscape.moon-bridge"
+    },
+    {
+      "id": "riverbank.reed-hide",
+      "position": {
+        "x": 22,
+        "y": 48
+      },
+      "radius": 1.4,
+      "featureId": "exploration",
+      "interactionId": "landscape.reed-hide"
+    },
+    {
+      "id": "riverbank.fishing-jetty",
+      "position": {
+        "x": 40,
+        "y": 39
+      },
+      "radius": 1.4,
+      "featureId": "exploration",
+      "interactionId": "landscape.fishing-jetty"
+    },
+    {
+      "id": "riverbank.washing-stones",
+      "position": {
+        "x": 40,
+        "y": 74
+      },
+      "radius": 1.4,
+      "featureId": "exploration",
+      "interactionId": "landscape.washing-stones"
+    },
+    {
+      "id": "riverbank.old-ferry",
+      "position": {
+        "x": 62,
+        "y": 57
+      },
+      "radius": 1.4,
+      "featureId": "exploration",
+      "interactionId": "landscape.old-ferry"
+    },
+    {
+      "id": "riverbank.hill-shrine",
+      "position": {
+        "x": 88,
+        "y": 7
+      },
+      "radius": 1.4,
+      "featureId": "exploration",
+      "interactionId": "landscape.hill-shrine"
+    },
+    {
+      "id": "riverbank.heron-shallows",
+      "position": {
+        "x": 51,
+        "y": 43
+      },
+      "radius": 1.4,
+      "featureId": "exploration",
+      "interactionId": "landscape.heron-shallows"
+    },
+    {
+      "id": "riverbank.lower-crossing",
+      "position": {
+        "x": 45,
+        "y": 57
+      },
+      "radius": 1.4,
+      "featureId": "exploration",
+      "interactionId": "landscape.lower-crossing"
+    }
+  ],
+  "terrain": [
+    {
+      "id": "riverbank.river-meadow",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 80
+      },
+      "material": "grass",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-0",
+      "rect": {
+        "x": 42.25,
+        "y": 0,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-0.5",
+      "rect": {
+        "x": 42.75,
+        "y": 0.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-1",
+      "rect": {
+        "x": 43.0,
+        "y": 1,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-1.5",
+      "rect": {
+        "x": 43.5,
+        "y": 1.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-2",
+      "rect": {
+        "x": 44.0,
+        "y": 2,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-2.5",
+      "rect": {
+        "x": 44.25,
+        "y": 2.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-3",
+      "rect": {
+        "x": 44.75,
+        "y": 3,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-3.5",
+      "rect": {
+        "x": 45.0,
+        "y": 3.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-4",
+      "rect": {
+        "x": 45.5,
+        "y": 4,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-4.5",
+      "rect": {
+        "x": 45.75,
+        "y": 4.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-5",
+      "rect": {
+        "x": 46.0,
+        "y": 5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-5.5",
+      "rect": {
+        "x": 46.25,
+        "y": 5.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-6",
+      "rect": {
+        "x": 46.5,
+        "y": 6,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-6.5",
+      "rect": {
+        "x": 46.75,
+        "y": 6.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-7",
+      "rect": {
+        "x": 46.75,
+        "y": 7,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-7.5",
+      "rect": {
+        "x": 47.0,
+        "y": 7.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-8",
+      "rect": {
+        "x": 47.0,
+        "y": 8,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-8.5",
+      "rect": {
+        "x": 47.0,
+        "y": 8.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-9",
+      "rect": {
+        "x": 47.0,
+        "y": 9,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-9.5",
+      "rect": {
+        "x": 47.0,
+        "y": 9.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-10",
+      "rect": {
+        "x": 47.0,
+        "y": 10,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-10.5",
+      "rect": {
+        "x": 47.0,
+        "y": 10.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-11",
+      "rect": {
+        "x": 46.75,
+        "y": 11,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-11.5",
+      "rect": {
+        "x": 46.75,
+        "y": 11.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-12",
+      "rect": {
+        "x": 46.5,
+        "y": 12,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-12.5",
+      "rect": {
+        "x": 46.25,
+        "y": 12.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-13",
+      "rect": {
+        "x": 46.25,
+        "y": 13,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-13.5",
+      "rect": {
+        "x": 46.0,
+        "y": 13.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-14",
+      "rect": {
+        "x": 45.75,
+        "y": 14,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-14.5",
+      "rect": {
+        "x": 45.5,
+        "y": 14.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-15",
+      "rect": {
+        "x": 45.25,
+        "y": 15,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-15.5",
+      "rect": {
+        "x": 45.25,
+        "y": 15.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-16",
+      "rect": {
+        "x": 45.0,
+        "y": 16,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-16.5",
+      "rect": {
+        "x": 44.75,
+        "y": 16.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-17",
+      "rect": {
+        "x": 44.5,
+        "y": 17,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-17.5",
+      "rect": {
+        "x": 44.5,
+        "y": 17.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-18",
+      "rect": {
+        "x": 44.25,
+        "y": 18,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-18.5",
+      "rect": {
+        "x": 44.25,
+        "y": 18.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-19",
+      "rect": {
+        "x": 44.0,
+        "y": 19,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-19.5",
+      "rect": {
+        "x": 44.0,
+        "y": 19.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-20",
+      "rect": {
+        "x": 44.0,
+        "y": 20,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-20.5",
+      "rect": {
+        "x": 43.75,
+        "y": 20.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-21",
+      "rect": {
+        "x": 43.75,
+        "y": 21,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-21.5",
+      "rect": {
+        "x": 43.75,
+        "y": 21.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-22",
+      "rect": {
+        "x": 43.75,
+        "y": 22,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-22.5",
+      "rect": {
+        "x": 43.75,
+        "y": 22.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-23",
+      "rect": {
+        "x": 43.75,
+        "y": 23,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-23.5",
+      "rect": {
+        "x": 44.0,
+        "y": 23.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-24",
+      "rect": {
+        "x": 44.0,
+        "y": 24,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-24.5",
+      "rect": {
+        "x": 44.0,
+        "y": 24.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-25",
+      "rect": {
+        "x": 44.0,
+        "y": 25,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-25.5",
+      "rect": {
+        "x": 44.25,
+        "y": 25.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-26",
+      "rect": {
+        "x": 44.25,
+        "y": 26,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-26.5",
+      "rect": {
+        "x": 44.25,
+        "y": 26.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-27",
+      "rect": {
+        "x": 44.25,
+        "y": 27,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-27.5",
+      "rect": {
+        "x": 44.5,
+        "y": 27.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-28",
+      "rect": {
+        "x": 44.5,
+        "y": 28,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-28.5",
+      "rect": {
+        "x": 44.5,
+        "y": 28.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-29",
+      "rect": {
+        "x": 44.5,
+        "y": 29,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-29.5",
+      "rect": {
+        "x": 44.5,
+        "y": 29.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-30",
+      "rect": {
+        "x": 44.5,
+        "y": 30,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-30.5",
+      "rect": {
+        "x": 44.25,
+        "y": 30.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-31",
+      "rect": {
+        "x": 44.25,
+        "y": 31,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-31.5",
+      "rect": {
+        "x": 44.25,
+        "y": 31.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-32",
+      "rect": {
+        "x": 44.0,
+        "y": 32,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-32.5",
+      "rect": {
+        "x": 43.75,
+        "y": 32.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-33",
+      "rect": {
+        "x": 43.5,
+        "y": 33,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-33.5",
+      "rect": {
+        "x": 43.5,
+        "y": 33.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-34",
+      "rect": {
+        "x": 43.25,
+        "y": 34,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-34.5",
+      "rect": {
+        "x": 42.75,
+        "y": 34.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-35",
+      "rect": {
+        "x": 42.5,
+        "y": 35,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-35.5",
+      "rect": {
+        "x": 42.25,
+        "y": 35.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-36",
+      "rect": {
+        "x": 42.0,
+        "y": 36,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-36.5",
+      "rect": {
+        "x": 41.5,
+        "y": 36.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-37",
+      "rect": {
+        "x": 41.25,
+        "y": 37,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-37.5",
+      "rect": {
+        "x": 40.75,
+        "y": 37.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-38",
+      "rect": {
+        "x": 40.5,
+        "y": 38,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-38.5",
+      "rect": {
+        "x": 40.0,
+        "y": 38.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-39",
+      "rect": {
+        "x": 39.75,
+        "y": 39,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-39.5",
+      "rect": {
+        "x": 39.25,
+        "y": 39.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-40",
+      "rect": {
+        "x": 38.75,
+        "y": 40,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-40.5",
+      "rect": {
+        "x": 38.5,
+        "y": 40.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-41",
+      "rect": {
+        "x": 38.25,
+        "y": 41,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-41.5",
+      "rect": {
+        "x": 37.75,
+        "y": 41.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-42",
+      "rect": {
+        "x": 37.5,
+        "y": 42,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-42.5",
+      "rect": {
+        "x": 37.25,
+        "y": 42.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-43",
+      "rect": {
+        "x": 37.0,
+        "y": 43,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-43.5",
+      "rect": {
+        "x": 36.75,
+        "y": 43.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-44",
+      "rect": {
+        "x": 36.75,
+        "y": 44,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-44.5",
+      "rect": {
+        "x": 36.5,
+        "y": 44.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-45",
+      "rect": {
+        "x": 36.5,
+        "y": 45,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-45.5",
+      "rect": {
+        "x": 36.25,
+        "y": 45.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-46",
+      "rect": {
+        "x": 36.25,
+        "y": 46,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-46.5",
+      "rect": {
+        "x": 36.25,
+        "y": 46.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-47",
+      "rect": {
+        "x": 36.25,
+        "y": 47,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-47.5",
+      "rect": {
+        "x": 36.5,
+        "y": 47.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-48",
+      "rect": {
+        "x": 36.5,
+        "y": 48,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-48.5",
+      "rect": {
+        "x": 36.75,
+        "y": 48.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-49",
+      "rect": {
+        "x": 37.0,
+        "y": 49,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-49.5",
+      "rect": {
+        "x": 37.0,
+        "y": 49.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-50",
+      "rect": {
+        "x": 37.25,
+        "y": 50,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-50.5",
+      "rect": {
+        "x": 37.5,
+        "y": 50.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-51",
+      "rect": {
+        "x": 38.0,
+        "y": 51,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-51.5",
+      "rect": {
+        "x": 38.25,
+        "y": 51.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-52",
+      "rect": {
+        "x": 38.5,
+        "y": 52,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-52.5",
+      "rect": {
+        "x": 39.0,
+        "y": 52.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-53",
+      "rect": {
+        "x": 39.25,
+        "y": 53,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-53.5",
+      "rect": {
+        "x": 39.5,
+        "y": 53.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-54",
+      "rect": {
+        "x": 40.0,
+        "y": 54,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-54.5",
+      "rect": {
+        "x": 40.25,
+        "y": 54.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-55",
+      "rect": {
+        "x": 40.5,
+        "y": 55,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-55.5",
+      "rect": {
+        "x": 41.0,
+        "y": 55.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-56",
+      "rect": {
+        "x": 41.25,
+        "y": 56,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-56.5",
+      "rect": {
+        "x": 41.5,
+        "y": 56.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-57",
+      "rect": {
+        "x": 41.75,
+        "y": 57,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-57.5",
+      "rect": {
+        "x": 42.0,
+        "y": 57.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-58",
+      "rect": {
+        "x": 42.25,
+        "y": 58,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-58.5",
+      "rect": {
+        "x": 42.5,
+        "y": 58.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-59",
+      "rect": {
+        "x": 42.75,
+        "y": 59,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-59.5",
+      "rect": {
+        "x": 43.0,
+        "y": 59.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-60",
+      "rect": {
+        "x": 43.0,
+        "y": 60,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-60.5",
+      "rect": {
+        "x": 43.25,
+        "y": 60.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-61",
+      "rect": {
+        "x": 43.25,
+        "y": 61,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-61.5",
+      "rect": {
+        "x": 43.25,
+        "y": 61.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-62",
+      "rect": {
+        "x": 43.5,
+        "y": 62,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-62.5",
+      "rect": {
+        "x": 43.5,
+        "y": 62.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-63",
+      "rect": {
+        "x": 43.5,
+        "y": 63,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-63.5",
+      "rect": {
+        "x": 43.5,
+        "y": 63.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-64",
+      "rect": {
+        "x": 43.5,
+        "y": 64,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-64.5",
+      "rect": {
+        "x": 43.25,
+        "y": 64.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-65",
+      "rect": {
+        "x": 43.25,
+        "y": 65,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-65.5",
+      "rect": {
+        "x": 43.25,
+        "y": 65.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-66",
+      "rect": {
+        "x": 43.25,
+        "y": 66,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-66.5",
+      "rect": {
+        "x": 43.25,
+        "y": 66.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-67",
+      "rect": {
+        "x": 43.25,
+        "y": 67,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-67.5",
+      "rect": {
+        "x": 43.0,
+        "y": 67.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-68",
+      "rect": {
+        "x": 43.0,
+        "y": 68,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-68.5",
+      "rect": {
+        "x": 43.0,
+        "y": 68.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-69",
+      "rect": {
+        "x": 43.0,
+        "y": 69,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-69.5",
+      "rect": {
+        "x": 43.0,
+        "y": 69.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-70",
+      "rect": {
+        "x": 43.0,
+        "y": 70,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-70.5",
+      "rect": {
+        "x": 43.25,
+        "y": 70.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-71",
+      "rect": {
+        "x": 43.25,
+        "y": 71,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-71.5",
+      "rect": {
+        "x": 43.25,
+        "y": 71.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-72",
+      "rect": {
+        "x": 43.5,
+        "y": 72,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-72.5",
+      "rect": {
+        "x": 43.5,
+        "y": 72.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-73",
+      "rect": {
+        "x": 43.75,
+        "y": 73,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-73.5",
+      "rect": {
+        "x": 44.0,
+        "y": 73.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-74",
+      "rect": {
+        "x": 44.0,
+        "y": 74,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-74.5",
+      "rect": {
+        "x": 44.25,
+        "y": 74.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-75",
+      "rect": {
+        "x": 44.5,
+        "y": 75,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-75.5",
+      "rect": {
+        "x": 44.75,
+        "y": 75.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-76",
+      "rect": {
+        "x": 45.0,
+        "y": 76,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-76.5",
+      "rect": {
+        "x": 45.25,
+        "y": 76.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-77",
+      "rect": {
+        "x": 45.5,
+        "y": 77,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-77.5",
+      "rect": {
+        "x": 45.75,
+        "y": 77.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-78",
+      "rect": {
+        "x": 46.0,
+        "y": 78,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-78.5",
+      "rect": {
+        "x": 46.25,
+        "y": 78.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-79",
+      "rect": {
+        "x": 46.5,
+        "y": 79,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-shore-79.5",
+      "rect": {
+        "x": 46.75,
+        "y": 79.5,
+        "width": 10.5,
+        "height": 0.5
+      },
+      "material": "sand",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-0",
+      "rect": {
+        "x": 43.0,
+        "y": 0,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-0.5",
+      "rect": {
+        "x": 43.5,
+        "y": 0.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-1",
+      "rect": {
+        "x": 43.75,
+        "y": 1,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-1.5",
+      "rect": {
+        "x": 44.25,
+        "y": 1.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-2",
+      "rect": {
+        "x": 44.75,
+        "y": 2,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-2.5",
+      "rect": {
+        "x": 45.0,
+        "y": 2.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-3",
+      "rect": {
+        "x": 45.5,
+        "y": 3,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-3.5",
+      "rect": {
+        "x": 45.75,
+        "y": 3.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-4",
+      "rect": {
+        "x": 46.25,
+        "y": 4,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-4.5",
+      "rect": {
+        "x": 46.5,
+        "y": 4.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-5",
+      "rect": {
+        "x": 46.75,
+        "y": 5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-5.5",
+      "rect": {
+        "x": 47.0,
+        "y": 5.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-6",
+      "rect": {
+        "x": 47.25,
+        "y": 6,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-6.5",
+      "rect": {
+        "x": 47.5,
+        "y": 6.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-7",
+      "rect": {
+        "x": 47.5,
+        "y": 7,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-7.5",
+      "rect": {
+        "x": 47.75,
+        "y": 7.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-8",
+      "rect": {
+        "x": 47.75,
+        "y": 8,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-8.5",
+      "rect": {
+        "x": 47.75,
+        "y": 8.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-9",
+      "rect": {
+        "x": 47.75,
+        "y": 9,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-9.5",
+      "rect": {
+        "x": 47.75,
+        "y": 9.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-10",
+      "rect": {
+        "x": 47.75,
+        "y": 10,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-10.5",
+      "rect": {
+        "x": 47.75,
+        "y": 10.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-11",
+      "rect": {
+        "x": 47.5,
+        "y": 11,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-11.5",
+      "rect": {
+        "x": 47.5,
+        "y": 11.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-12",
+      "rect": {
+        "x": 47.25,
+        "y": 12,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-12.5",
+      "rect": {
+        "x": 47.0,
+        "y": 12.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-13",
+      "rect": {
+        "x": 47.0,
+        "y": 13,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-13.5",
+      "rect": {
+        "x": 46.75,
+        "y": 13.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-14",
+      "rect": {
+        "x": 46.5,
+        "y": 14,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-14.5",
+      "rect": {
+        "x": 46.25,
+        "y": 14.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-15",
+      "rect": {
+        "x": 46.0,
+        "y": 15,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-15.5",
+      "rect": {
+        "x": 46.0,
+        "y": 15.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-16",
+      "rect": {
+        "x": 45.75,
+        "y": 16,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-16.5",
+      "rect": {
+        "x": 45.5,
+        "y": 16.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-17",
+      "rect": {
+        "x": 45.25,
+        "y": 17,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-17.5-cut-0",
+      "rect": {
+        "x": 45.25,
+        "y": 17.5,
+        "width": 9.0,
+        "height": 0.10000000000000142
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-20-cut-1",
+      "rect": {
+        "x": 44.75,
+        "y": 20.400000000000002,
+        "width": 9.0,
+        "height": 0.09999999999999787
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-20.5",
+      "rect": {
+        "x": 44.5,
+        "y": 20.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-21",
+      "rect": {
+        "x": 44.5,
+        "y": 21,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-21.5",
+      "rect": {
+        "x": 44.5,
+        "y": 21.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-22",
+      "rect": {
+        "x": 44.5,
+        "y": 22,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-22.5",
+      "rect": {
+        "x": 44.5,
+        "y": 22.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-23",
+      "rect": {
+        "x": 44.5,
+        "y": 23,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-23.5",
+      "rect": {
+        "x": 44.75,
+        "y": 23.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-24",
+      "rect": {
+        "x": 44.75,
+        "y": 24,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-24.5",
+      "rect": {
+        "x": 44.75,
+        "y": 24.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-25",
+      "rect": {
+        "x": 44.75,
+        "y": 25,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-25.5",
+      "rect": {
+        "x": 45.0,
+        "y": 25.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-26",
+      "rect": {
+        "x": 45.0,
+        "y": 26,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-26.5",
+      "rect": {
+        "x": 45.0,
+        "y": 26.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-27",
+      "rect": {
+        "x": 45.0,
+        "y": 27,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-27.5",
+      "rect": {
+        "x": 45.25,
+        "y": 27.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-28",
+      "rect": {
+        "x": 45.25,
+        "y": 28,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-28.5",
+      "rect": {
+        "x": 45.25,
+        "y": 28.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-29",
+      "rect": {
+        "x": 45.25,
+        "y": 29,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-29.5",
+      "rect": {
+        "x": 45.25,
+        "y": 29.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-30",
+      "rect": {
+        "x": 45.25,
+        "y": 30,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-30.5",
+      "rect": {
+        "x": 45.0,
+        "y": 30.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-31",
+      "rect": {
+        "x": 45.0,
+        "y": 31,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-31.5",
+      "rect": {
+        "x": 45.0,
+        "y": 31.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-32",
+      "rect": {
+        "x": 44.75,
+        "y": 32,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-32.5",
+      "rect": {
+        "x": 44.5,
+        "y": 32.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-33",
+      "rect": {
+        "x": 44.25,
+        "y": 33,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-33.5",
+      "rect": {
+        "x": 44.25,
+        "y": 33.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-34",
+      "rect": {
+        "x": 44.0,
+        "y": 34,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-34.5",
+      "rect": {
+        "x": 43.5,
+        "y": 34.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-35",
+      "rect": {
+        "x": 43.25,
+        "y": 35,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-35.5",
+      "rect": {
+        "x": 43.0,
+        "y": 35.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-36",
+      "rect": {
+        "x": 42.75,
+        "y": 36,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-36.5",
+      "rect": {
+        "x": 42.25,
+        "y": 36.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-37",
+      "rect": {
+        "x": 42.0,
+        "y": 37,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-37.5",
+      "rect": {
+        "x": 41.5,
+        "y": 37.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-38",
+      "rect": {
+        "x": 41.25,
+        "y": 38,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-38.5-cut-3",
+      "rect": {
+        "x": 41.199999999999996,
+        "y": 38.5,
+        "width": 8.550000000000004,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-39-cut-3",
+      "rect": {
+        "x": 41.199999999999996,
+        "y": 39,
+        "width": 8.300000000000004,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-39.5-cut-3",
+      "rect": {
+        "x": 41.199999999999996,
+        "y": 39.5,
+        "width": 7.800000000000004,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-40-cut-1",
+      "rect": {
+        "x": 39.5,
+        "y": 40.199999999999996,
+        "width": 9.0,
+        "height": 0.30000000000000426
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-40-cut-3",
+      "rect": {
+        "x": 41.199999999999996,
+        "y": 40,
+        "width": 7.300000000000004,
+        "height": 0.19999999999999574
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-40.5",
+      "rect": {
+        "x": 39.25,
+        "y": 40.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-41",
+      "rect": {
+        "x": 39.0,
+        "y": 41,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-41.5",
+      "rect": {
+        "x": 38.5,
+        "y": 41.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-42",
+      "rect": {
+        "x": 38.25,
+        "y": 42,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-42.5",
+      "rect": {
+        "x": 38.0,
+        "y": 42.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-43",
+      "rect": {
+        "x": 37.75,
+        "y": 43,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-43.5",
+      "rect": {
+        "x": 37.5,
+        "y": 43.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-44",
+      "rect": {
+        "x": 37.5,
+        "y": 44,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-44.5",
+      "rect": {
+        "x": 37.25,
+        "y": 44.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-45",
+      "rect": {
+        "x": 37.25,
+        "y": 45,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-45.5",
+      "rect": {
+        "x": 37.0,
+        "y": 45.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-46",
+      "rect": {
+        "x": 37.0,
+        "y": 46,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-46.5",
+      "rect": {
+        "x": 37.0,
+        "y": 46.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-47",
+      "rect": {
+        "x": 37.0,
+        "y": 47,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-47.5",
+      "rect": {
+        "x": 37.25,
+        "y": 47.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-48",
+      "rect": {
+        "x": 37.25,
+        "y": 48,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-48.5",
+      "rect": {
+        "x": 37.5,
+        "y": 48.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-49",
+      "rect": {
+        "x": 37.75,
+        "y": 49,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-49.5",
+      "rect": {
+        "x": 37.75,
+        "y": 49.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-50",
+      "rect": {
+        "x": 38.0,
+        "y": 50,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-50.5",
+      "rect": {
+        "x": 38.25,
+        "y": 50.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-51",
+      "rect": {
+        "x": 38.75,
+        "y": 51,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-51.5",
+      "rect": {
+        "x": 39.0,
+        "y": 51.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-52",
+      "rect": {
+        "x": 39.25,
+        "y": 52,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-52.5",
+      "rect": {
+        "x": 39.75,
+        "y": 52.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-53",
+      "rect": {
+        "x": 40.0,
+        "y": 53,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-53.5",
+      "rect": {
+        "x": 40.25,
+        "y": 53.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-54",
+      "rect": {
+        "x": 40.75,
+        "y": 54,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-54.5",
+      "rect": {
+        "x": 41.0,
+        "y": 54.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-55",
+      "rect": {
+        "x": 41.25,
+        "y": 55,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-55.5-cut-0",
+      "rect": {
+        "x": 41.75,
+        "y": 55.5,
+        "width": 9.0,
+        "height": 0.10000000000000142
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-58-cut-1",
+      "rect": {
+        "x": 43.0,
+        "y": 58.4,
+        "width": 9.0,
+        "height": 0.10000000000000142
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-58.5",
+      "rect": {
+        "x": 43.25,
+        "y": 58.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-59",
+      "rect": {
+        "x": 43.5,
+        "y": 59,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-59.5",
+      "rect": {
+        "x": 43.75,
+        "y": 59.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-60",
+      "rect": {
+        "x": 43.75,
+        "y": 60,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-60.5",
+      "rect": {
+        "x": 44.0,
+        "y": 60.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-61",
+      "rect": {
+        "x": 44.0,
+        "y": 61,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-61.5",
+      "rect": {
+        "x": 44.0,
+        "y": 61.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-62",
+      "rect": {
+        "x": 44.25,
+        "y": 62,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-62.5",
+      "rect": {
+        "x": 44.25,
+        "y": 62.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-63",
+      "rect": {
+        "x": 44.25,
+        "y": 63,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-63.5",
+      "rect": {
+        "x": 44.25,
+        "y": 63.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-64",
+      "rect": {
+        "x": 44.25,
+        "y": 64,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-64.5",
+      "rect": {
+        "x": 44.0,
+        "y": 64.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-65",
+      "rect": {
+        "x": 44.0,
+        "y": 65,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-65.5",
+      "rect": {
+        "x": 44.0,
+        "y": 65.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-66",
+      "rect": {
+        "x": 44.0,
+        "y": 66,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-66.5",
+      "rect": {
+        "x": 44.0,
+        "y": 66.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-67",
+      "rect": {
+        "x": 44.0,
+        "y": 67,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-67.5",
+      "rect": {
+        "x": 43.75,
+        "y": 67.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-68",
+      "rect": {
+        "x": 43.75,
+        "y": 68,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-68.5",
+      "rect": {
+        "x": 43.75,
+        "y": 68.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-69",
+      "rect": {
+        "x": 43.75,
+        "y": 69,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-69.5",
+      "rect": {
+        "x": 43.75,
+        "y": 69.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-70",
+      "rect": {
+        "x": 43.75,
+        "y": 70,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-70.5",
+      "rect": {
+        "x": 44.0,
+        "y": 70.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-71",
+      "rect": {
+        "x": 44.0,
+        "y": 71,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-71.5",
+      "rect": {
+        "x": 44.0,
+        "y": 71.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-72",
+      "rect": {
+        "x": 44.25,
+        "y": 72,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-72.5",
+      "rect": {
+        "x": 44.25,
+        "y": 72.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-73",
+      "rect": {
+        "x": 44.5,
+        "y": 73,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-73.5",
+      "rect": {
+        "x": 44.75,
+        "y": 73.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-74",
+      "rect": {
+        "x": 44.75,
+        "y": 74,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-74.5",
+      "rect": {
+        "x": 45.0,
+        "y": 74.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-75",
+      "rect": {
+        "x": 45.25,
+        "y": 75,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-75.5",
+      "rect": {
+        "x": 45.5,
+        "y": 75.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-76",
+      "rect": {
+        "x": 45.75,
+        "y": 76,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-76.5",
+      "rect": {
+        "x": 46.0,
+        "y": 76.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-77",
+      "rect": {
+        "x": 46.25,
+        "y": 77,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-77.5",
+      "rect": {
+        "x": 46.5,
+        "y": 77.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-78",
+      "rect": {
+        "x": 46.75,
+        "y": 78,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-78.5",
+      "rect": {
+        "x": 47.0,
+        "y": 78.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-79",
+      "rect": {
+        "x": 47.25,
+        "y": 79,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-79.5",
+      "rect": {
+        "x": 47.5,
+        "y": 79.5,
+        "width": 9.0,
+        "height": 0.5
+      },
+      "material": "water",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.west-bank-0",
+      "rect": {
+        "x": 4.7,
+        "y": 67.7,
+        "width": 2.6000000000000005,
+        "height": 12.299999999999997
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.west-bank-1",
+      "rect": {
+        "x": 4.7,
+        "y": 67.7,
+        "width": 27.600000000000005,
+        "height": 2.5999999999999943
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.west-bank-2",
+      "rect": {
+        "x": 29.7,
+        "y": 37.7,
+        "width": 2.599999999999998,
+        "height": 32.60000000000001
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.west-bank-3",
+      "rect": {
+        "x": 29.7,
+        "y": 37.7,
+        "width": 6.599999999999998,
+        "height": 2.6000000000000014
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.west-bank-4",
+      "rect": {
+        "x": 33.7,
+        "y": 17.7,
+        "width": 2.6000000000000014,
+        "height": 22.599999999999998
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.west-bank-5",
+      "rect": {
+        "x": 18.7,
+        "y": 17.7,
+        "width": 17.599999999999998,
+        "height": 2.6000000000000014
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.west-bank-6",
+      "rect": {
+        "x": 18.7,
+        "y": 8.7,
+        "width": 2.6000000000000014,
+        "height": 11.599999999999998
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.west-bank-7",
+      "rect": {
+        "x": 0,
+        "y": 8.7,
+        "width": 21.3,
+        "height": 2.5999999999999996
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.east-bank-0",
+      "rect": {
+        "x": 33.75,
+        "y": 17.75,
+        "width": 39.5,
+        "height": 2.5
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.east-bank-1",
+      "rect": {
+        "x": 70.75,
+        "y": 17.75,
+        "width": 2.5,
+        "height": 26.5
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.east-bank-2",
+      "rect": {
+        "x": 70.75,
+        "y": 41.75,
+        "width": 10.5,
+        "height": 2.5
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.east-bank-3",
+      "rect": {
+        "x": 78.75,
+        "y": 41.75,
+        "width": 2.5,
+        "height": 16.5
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.east-bank-4",
+      "rect": {
+        "x": 29.75,
+        "y": 55.75,
+        "width": 51.5,
+        "height": 2.5
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.shore-walk-0",
+      "rect": {
+        "x": 60.0,
+        "y": 18.0,
+        "width": 2.0,
+        "height": 11.0
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.shore-walk-1",
+      "rect": {
+        "x": 55.0,
+        "y": 27.0,
+        "width": 7.0,
+        "height": 2.0
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.shore-walk-2",
+      "rect": {
+        "x": 55.0,
+        "y": 27.0,
+        "width": 2.0,
+        "height": 17.0
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.shore-walk-3",
+      "rect": {
+        "x": 55.0,
+        "y": 42.0,
+        "width": 8.0,
+        "height": 2.0
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.shore-walk-4",
+      "rect": {
+        "x": 61.0,
+        "y": 42.0,
+        "width": 2.0,
+        "height": 16.0
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bird-hide-0",
+      "rect": {
+        "x": 50.1,
+        "y": 42.1,
+        "width": 6.799999999999997,
+        "height": 1.7999999999999972
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.high-loop-0",
+      "rect": {
+        "x": 70.9,
+        "y": 5.9,
+        "width": 2.200000000000003,
+        "height": 14.200000000000001
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.high-loop-1",
+      "rect": {
+        "x": 70.9,
+        "y": 5.9,
+        "width": 18.200000000000003,
+        "height": 2.200000000000001
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.high-loop-2",
+      "rect": {
+        "x": 86.9,
+        "y": 5.9,
+        "width": 2.200000000000003,
+        "height": 25.200000000000003
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.high-loop-3",
+      "rect": {
+        "x": 70.9,
+        "y": 28.9,
+        "width": 18.200000000000003,
+        "height": 2.1999999999999993
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.low-loop-0",
+      "rect": {
+        "x": 78.9,
+        "y": 55.9,
+        "width": 2.200000000000003,
+        "height": 16.199999999999996
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.low-loop-1",
+      "rect": {
+        "x": 60.9,
+        "y": 69.9,
+        "width": 20.199999999999996,
+        "height": 2.200000000000003
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.low-loop-2",
+      "rect": {
+        "x": 60.9,
+        "y": 55.9,
+        "width": 2.200000000000003,
+        "height": 16.199999999999996
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.fishing-jetty-0",
+      "rect": {
+        "x": 33.8,
+        "y": 37.8,
+        "width": 7.399999999999999,
+        "height": 2.3999999999999986
+      },
+      "material": "boardwalk",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.reed-hide-0",
+      "rect": {
+        "x": 21.0,
+        "y": 56.0,
+        "width": 11.0,
+        "height": 2.0
+      },
+      "material": "boardwalk",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.reed-hide-1",
+      "rect": {
+        "x": 21.0,
+        "y": 47.0,
+        "width": 2.0,
+        "height": 11.0
+      },
+      "material": "boardwalk",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.laundry-0",
+      "rect": {
+        "x": 29.9,
+        "y": 67.9,
+        "width": 2.200000000000003,
+        "height": 7.200000000000003
+      },
+      "material": "stone-path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.laundry-1",
+      "rect": {
+        "x": 29.9,
+        "y": 72.9,
+        "width": 11.199999999999996,
+        "height": 2.200000000000003
+      },
+      "material": "stone-path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.moon-bridge",
+      "rect": {
+        "x": 34,
+        "y": 17.6,
+        "width": 27,
+        "height": 2.8000000000000007
+      },
+      "material": "bridge",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.low-footbridge",
+      "rect": {
+        "x": 30,
+        "y": 55.6,
+        "width": 31,
+        "height": 2.799999999999997
+      },
+      "material": "bridge",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.town-arrival-0",
+      "rect": {
+        "x": 38.9,
+        "y": 72.9,
+        "width": 2.200000000000003,
+        "height": 7.099999999999994
+      },
+      "material": "stone-path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.town-arrival-1",
+      "rect": {
+        "x": 29.9,
+        "y": 72.9,
+        "width": 11.199999999999996,
+        "height": 2.200000000000003
+      },
+      "material": "stone-path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.park-arrival-0",
+      "rect": {
+        "x": 33.9,
+        "y": 8.9,
+        "width": 9.199999999999996,
+        "height": 2.200000000000001
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.park-arrival-1",
+      "rect": {
+        "x": 33.9,
+        "y": 8.9,
+        "width": 2.200000000000003,
+        "height": 11.200000000000001
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.park-return-0",
+      "rect": {
+        "x": 40.9,
+        "y": 5.4,
+        "width": 2.200000000000003,
+        "height": 5.700000000000001
+      },
+      "material": "path",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.ferry-landing-0",
+      "rect": {
+        "x": 61.0,
+        "y": 56.0,
+        "width": 2.0,
+        "height": 6.5
+      },
+      "material": "stone-path",
+      "variant": 0
+    }
+  ],
+  "props": [
+    {
+      "id": "riverbank.hill-shrine",
+      "kind": "shrine",
+      "position": {
+        "x": 87,
+        "y": 4
+      },
+      "width": 4,
+      "height": 3,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.ferry-boat",
+      "kind": "boat",
+      "position": {
+        "x": 57.8,
+        "y": 60.7
+      },
+      "width": 5,
+      "height": 2,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.ferry-post",
+      "kind": "mooring",
+      "position": {
+        "x": 60.5,
+        "y": 60.5
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.ferry-rope",
+      "kind": "tied-rope",
+      "position": {
+        "x": 59.5,
+        "y": 60.6
+      },
+      "width": 2,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.ferry-worn-stones",
+      "kind": "worn-stones",
+      "position": {
+        "x": 63.3,
+        "y": 59.7
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.arrival-reed-pocket",
+      "kind": "reeds",
+      "position": {
+        "x": 43.8,
+        "y": 72
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.arrival-willow",
+      "kind": "willow",
+      "position": {
+        "x": 35.5,
+        "y": 77
+      },
+      "width": 5.5,
+      "height": 5.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.fisher-stool",
+      "kind": "stool",
+      "position": {
+        "x": 38,
+        "y": 37
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.washing-rack",
+      "kind": "laundry",
+      "position": {
+        "x": 35,
+        "y": 71
+      },
+      "width": 5,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.reed-screen",
+      "kind": "reeds",
+      "position": {
+        "x": 19,
+        "y": 48
+      },
+      "width": 3,
+      "height": 3,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.picnic",
+      "kind": "picnic",
+      "position": {
+        "x": 84,
+        "y": 47
+      },
+      "width": 4,
+      "height": 3,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.shore-watch-bench",
+      "kind": "bench",
+      "position": {
+        "x": 51,
+        "y": 45.6
+      },
+      "width": 3,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.shore-watch-reeds",
+      "kind": "reeds",
+      "position": {
+        "x": 49.2,
+        "y": 42
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bank-reeds-5",
+      "kind": "reeds",
+      "position": {
+        "x": 45.5,
+        "y": 5
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bank-rock-5",
+      "kind": "rock",
+      "position": {
+        "x": 57.5,
+        "y": 5
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.bank-reeds-13",
+      "kind": "reeds",
+      "position": {
+        "x": 45.5,
+        "y": 13
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bank-rock-13",
+      "kind": "rock",
+      "position": {
+        "x": 57.5,
+        "y": 13
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.bank-reeds-27",
+      "kind": "reeds",
+      "position": {
+        "x": 43.5,
+        "y": 27
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bank-rock-27",
+      "kind": "rock",
+      "position": {
+        "x": 55.5,
+        "y": 27
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.bank-reeds-34",
+      "kind": "reeds",
+      "position": {
+        "x": 42.5,
+        "y": 34
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bank-rock-34",
+      "kind": "rock",
+      "position": {
+        "x": 54.5,
+        "y": 34
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.bank-reeds-45",
+      "kind": "reeds",
+      "position": {
+        "x": 35.5,
+        "y": 45
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bank-rock-45",
+      "kind": "rock",
+      "position": {
+        "x": 47.5,
+        "y": 45
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.bank-reeds-64",
+      "kind": "reeds",
+      "position": {
+        "x": 42.5,
+        "y": 64
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bank-rock-64",
+      "kind": "rock",
+      "position": {
+        "x": 54.5,
+        "y": 64
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bank-reeds-71",
+      "kind": "reeds",
+      "position": {
+        "x": 42.5,
+        "y": 71
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bank-rock-71",
+      "kind": "rock",
+      "position": {
+        "x": 54.5,
+        "y": 71
+      },
+      "width": 2,
+      "height": 2,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.bridge-west-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 35,
+        "y": 13
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bridge-west-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 32.1,
+        "y": 13.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.bridge-west-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 38.1,
+        "y": 14.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.bridge-west-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 31.5,
+        "y": 11.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bridge-west-fern-1",
+      "kind": "fern",
+      "position": {
+        "x": 37.2,
+        "y": 16.9
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.bridge-west-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 39,
+        "y": 12.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.wetland-grove-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 23,
+        "y": 30
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.wetland-grove-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 23,
+        "y": 30
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.wetland-grove-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 20.1,
+        "y": 30.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.wetland-grove-tree-2",
+      "kind": "tree",
+      "position": {
+        "x": 24.7,
+        "y": 27.7
+      },
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.wetland-grove-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 26.1,
+        "y": 31.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.wetland-grove-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 21.7,
+        "y": 33.4
+      },
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.wetland-grove-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 19.5,
+        "y": 28.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.wetland-grove-fern-1",
+      "kind": "fern",
+      "position": {
+        "x": 25.2,
+        "y": 33.9
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.wetland-grove-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 22.2,
+        "y": 32.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.wetland-grove-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 27,
+        "y": 29.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.reed-woods-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 21,
+        "y": 43
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.reed-woods-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 21,
+        "y": 43
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.reed-woods-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 18.1,
+        "y": 43.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.reed-woods-tree-2",
+      "kind": "tree",
+      "position": {
+        "x": 22.7,
+        "y": 40.7
+      },
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.reed-woods-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 24.1,
+        "y": 44.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.reed-woods-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 19.7,
+        "y": 46.4
+      },
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.reed-woods-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 17.5,
+        "y": 41.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.reed-woods-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 20.2,
+        "y": 45.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.reed-woods-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 25,
+        "y": 42.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.wash-grove-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 23,
+        "y": 63
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.wash-grove-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 23,
+        "y": 63
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.wash-grove-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 20.1,
+        "y": 63.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.wash-grove-tree-2",
+      "kind": "tree",
+      "position": {
+        "x": 24.7,
+        "y": 60.7
+      },
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.wash-grove-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 26.1,
+        "y": 64.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.wash-grove-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 21.7,
+        "y": 66.4
+      },
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.wash-grove-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 19.5,
+        "y": 61.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.wash-grove-fern-1",
+      "kind": "fern",
+      "position": {
+        "x": 25.2,
+        "y": 66.9
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.wash-grove-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 22.2,
+        "y": 65.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.wash-grove-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 27,
+        "y": 62.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.town-grove-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 10,
+        "y": 71
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.town-grove-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 10,
+        "y": 71
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.town-grove-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 13.1,
+        "y": 72.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.town-grove-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 8.7,
+        "y": 74.4
+      },
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.town-grove-fern-1",
+      "kind": "fern",
+      "position": {
+        "x": 12.2,
+        "y": 74.9
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.town-grove-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 9.2,
+        "y": 73.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.river-north-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 65,
+        "y": 9
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-north-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 65,
+        "y": 9
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-north-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 62.1,
+        "y": 9.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.river-north-tree-2",
+      "kind": "tree",
+      "position": {
+        "x": 66.7,
+        "y": 6.7
+      },
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.river-north-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 68.1,
+        "y": 10.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.river-north-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 63.7,
+        "y": 12.4
+      },
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-north-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 61.5,
+        "y": 7.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-north-fern-1",
+      "kind": "fern",
+      "position": {
+        "x": 67.2,
+        "y": 12.9
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.river-north-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 64.2,
+        "y": 11.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.river-north-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 69,
+        "y": 8.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.ridge-north-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 85,
+        "y": 16
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.ridge-north-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 85,
+        "y": 16
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.ridge-north-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 82.1,
+        "y": 16.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.ridge-north-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 83.7,
+        "y": 19.4
+      },
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.ridge-north-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 81.5,
+        "y": 14.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.ridge-north-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 84.2,
+        "y": 18.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.river-east-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 64,
+        "y": 34
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-east-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 64,
+        "y": 34
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-east-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 61.1,
+        "y": 34.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.river-east-tree-2",
+      "kind": "tree",
+      "position": {
+        "x": 65.7,
+        "y": 31.7
+      },
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.river-east-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 67.1,
+        "y": 35.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.river-east-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 62.7,
+        "y": 37.4
+      },
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-east-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 60.5,
+        "y": 32.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.river-east-fern-1",
+      "kind": "fern",
+      "position": {
+        "x": 66.2,
+        "y": 37.9
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.river-east-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 63.2,
+        "y": 36.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.river-east-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 68,
+        "y": 33.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.high-woods-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 87,
+        "y": 31
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.high-woods-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 84.1,
+        "y": 31.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.high-woods-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 90.1,
+        "y": 32.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.high-woods-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 85.7,
+        "y": 34.4
+      },
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.high-woods-fern-1",
+      "kind": "fern",
+      "position": {
+        "x": 89.2,
+        "y": 34.9
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.high-woods-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 86.2,
+        "y": 33.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.high-woods-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 91,
+        "y": 30.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.ferry-copse-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 69,
+        "y": 65
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.ferry-copse-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 69,
+        "y": 65
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.ferry-copse-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 66.1,
+        "y": 65.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.ferry-copse-tree-2",
+      "kind": "tree",
+      "position": {
+        "x": 70.7,
+        "y": 62.7
+      },
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.ferry-copse-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 72.1,
+        "y": 66.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.ferry-copse-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 67.7,
+        "y": 68.4
+      },
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.ferry-copse-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 65.5,
+        "y": 63.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.ferry-copse-fern-1",
+      "kind": "fern",
+      "position": {
+        "x": 71.2,
+        "y": 68.9
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.ferry-copse-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 68.2,
+        "y": 67.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.ferry-copse-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 73,
+        "y": 64.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.south-copse-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 88,
+        "y": 70
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.south-copse-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 88,
+        "y": 70
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.south-copse-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 85.1,
+        "y": 70.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.south-copse-tree-2",
+      "kind": "tree",
+      "position": {
+        "x": 89.7,
+        "y": 67.7
+      },
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.south-copse-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 91.1,
+        "y": 71.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.south-copse-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 86.7,
+        "y": 73.4
+      },
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.south-copse-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 84.5,
+        "y": 68.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.south-copse-fern-1",
+      "kind": "fern",
+      "position": {
+        "x": 90.2,
+        "y": 73.9
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.south-copse-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 87.2,
+        "y": 72.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.south-copse-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 92,
+        "y": 69.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.heron-copse-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 87,
+        "y": 49
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.heron-copse-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 87,
+        "y": 49
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.heron-copse-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 84.1,
+        "y": 49.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.heron-copse-tree-2",
+      "kind": "tree",
+      "position": {
+        "x": 88.7,
+        "y": 46.7
+      },
+      "width": 4.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.heron-copse-tree-3",
+      "kind": "tree",
+      "position": {
+        "x": 90.1,
+        "y": 50.8
+      },
+      "width": 3.7,
+      "height": 3.7,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.heron-copse-tree-4",
+      "kind": "tree",
+      "position": {
+        "x": 85.7,
+        "y": 52.4
+      },
+      "width": 3.9,
+      "height": 3.9,
+      "layer": "object",
+      "variant": 3
+    },
+    {
+      "id": "riverbank.heron-copse-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 83.5,
+        "y": 47.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.heron-copse-fern-1",
+      "kind": "fern",
+      "position": {
+        "x": 89.2,
+        "y": 52.9
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.heron-copse-fern-2",
+      "kind": "fern",
+      "position": {
+        "x": 86.2,
+        "y": 51.1
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.heron-copse-fern-3",
+      "kind": "fern",
+      "position": {
+        "x": 91,
+        "y": 48.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bridge-reveal-floor",
+      "kind": "woodland-floor",
+      "position": {
+        "x": 58,
+        "y": 25
+      },
+      "width": 11,
+      "height": 9,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bridge-reveal-tree-0",
+      "kind": "mature-tree",
+      "position": {
+        "x": 58,
+        "y": 25
+      },
+      "width": 7,
+      "height": 7,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bridge-reveal-tree-1",
+      "kind": "tree",
+      "position": {
+        "x": 55.1,
+        "y": 25.8
+      },
+      "width": 4.1,
+      "height": 4.1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.bridge-reveal-fern-0",
+      "kind": "fern",
+      "position": {
+        "x": 54.5,
+        "y": 23.3
+      },
+      "width": 1.5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bank-willow-0",
+      "kind": "willow",
+      "position": {
+        "x": 37,
+        "y": 32
+      },
+      "width": 5.5,
+      "height": 5.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.bank-willow-1",
+      "kind": "willow",
+      "position": {
+        "x": 59,
+        "y": 24
+      },
+      "width": 5.5,
+      "height": 5.5,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.bank-willow-2",
+      "kind": "willow",
+      "position": {
+        "x": 28,
+        "y": 61
+      },
+      "width": 5.5,
+      "height": 5.5,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.flower-clump-0-0",
+      "kind": "flowers",
+      "position": {
+        "x": 28,
+        "y": 21
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.flower-clump-0-1",
+      "kind": "flowers",
+      "position": {
+        "x": 28.6,
+        "y": 21.3
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.flower-clump-0-2",
+      "kind": "flowers",
+      "position": {
+        "x": 27.5,
+        "y": 21.8
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.flower-clump-0-3",
+      "kind": "flowers",
+      "position": {
+        "x": 29.3,
+        "y": 21.5
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.flower-clump-0-5",
+      "kind": "flowers",
+      "position": {
+        "x": 28.1,
+        "y": 22.5
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.flower-clump-1-0",
+      "kind": "flowers",
+      "position": {
+        "x": 65,
+        "y": 22
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.flower-clump-1-1",
+      "kind": "flowers",
+      "position": {
+        "x": 65.6,
+        "y": 22.3
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.flower-clump-1-2",
+      "kind": "flowers",
+      "position": {
+        "x": 64.5,
+        "y": 22.8
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.flower-clump-1-3",
+      "kind": "flowers",
+      "position": {
+        "x": 66.3,
+        "y": 22.5
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.flower-clump-1-4",
+      "kind": "flowers",
+      "position": {
+        "x": 64,
+        "y": 21.6
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.flower-clump-1-5",
+      "kind": "flowers",
+      "position": {
+        "x": 65.1,
+        "y": 23.5
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.flower-clump-2-0",
+      "kind": "flowers",
+      "position": {
+        "x": 77,
+        "y": 46
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.flower-clump-2-1",
+      "kind": "flowers",
+      "position": {
+        "x": 77.6,
+        "y": 46.3
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.flower-clump-2-2",
+      "kind": "flowers",
+      "position": {
+        "x": 76.5,
+        "y": 46.8
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.flower-clump-2-4",
+      "kind": "flowers",
+      "position": {
+        "x": 76,
+        "y": 45.6
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.flower-clump-2-5",
+      "kind": "flowers",
+      "position": {
+        "x": 77.1,
+        "y": 47.5
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.flower-clump-3-0",
+      "kind": "flowers",
+      "position": {
+        "x": 60,
+        "y": 70
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.flower-clump-3-2",
+      "kind": "flowers",
+      "position": {
+        "x": 59.5,
+        "y": 70.8
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.flower-clump-3-4",
+      "kind": "flowers",
+      "position": {
+        "x": 59,
+        "y": 69.6
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.flower-clump-3-5",
+      "kind": "flowers",
+      "position": {
+        "x": 60.1,
+        "y": 71.5
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "riverbank.flower-clump-4-0",
+      "kind": "flowers",
+      "position": {
+        "x": 23,
+        "y": 46
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.flower-clump-4-1",
+      "kind": "flowers",
+      "position": {
+        "x": 23.6,
+        "y": 46.3
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "riverbank.flower-clump-4-3",
+      "kind": "flowers",
+      "position": {
+        "x": 24.3,
+        "y": 46.5
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "riverbank.flower-clump-4-4",
+      "kind": "flowers",
+      "position": {
+        "x": 22,
+        "y": 45.6
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 1
+    }
+  ],
+  "palette": {
+    "cream": [
+      245,
+      232,
+      202
+    ],
+    "jade": [
+      111,
+      154,
+      134
+    ],
+    "ink": [
+      48,
+      43,
+      42
+    ],
+    "wood": [
+      115,
+      86,
+      58
+    ],
+    "brass": [
+      190,
+      157,
+      97
+    ],
+    "grass": [
+      134,
+      157,
+      98
+    ],
+    "moss": [
+      86,
+      123,
+      96
+    ],
+    "water": [
+      99,
+      154,
+      163
+    ],
+    "sand": [
+      211,
+      195,
+      151
+    ],
+    "stone": [
+      137,
+      151,
+      143
+    ],
+    "leaf": [
+      88,
+      132,
+      102
+    ],
+    "flower": [
+      229,
+      204,
+      135
+    ]
+  },
+  "npcHooks": [
+    {
+      "id": "riverbank.resident-river-walker",
+      "position": {
+        "x": 23.6,
+        "y": 48.6
+      },
+      "route": [
+        {
+          "x": 23.6,
+          "y": 48.6
+        },
+        {
+          "x": 38.5,
+          "y": 39.4
+        }
+      ],
+      "characterId": "resident-river-walker"
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "riverbank.moon-bridge",
+      "position": {
+        "x": 48,
+        "y": 19
+      },
+      "kind": "moon-bridge"
+    },
+    {
+      "id": "riverbank.reed-hide",
+      "position": {
+        "x": 22,
+        "y": 48
+      },
+      "kind": "reed-hide"
+    },
+    {
+      "id": "riverbank.fishing-jetty",
+      "position": {
+        "x": 40,
+        "y": 39
+      },
+      "kind": "fishing-jetty"
+    },
+    {
+      "id": "riverbank.washing-stones",
+      "position": {
+        "x": 40,
+        "y": 74
+      },
+      "kind": "washing-stones"
+    },
+    {
+      "id": "riverbank.old-ferry",
+      "position": {
+        "x": 62,
+        "y": 57
+      },
+      "kind": "old-ferry"
+    },
+    {
+      "id": "riverbank.hill-shrine",
+      "position": {
+        "x": 88,
+        "y": 7
+      },
+      "kind": "hill-shrine"
+    },
+    {
+      "id": "riverbank.heron-shallows",
+      "position": {
+        "x": 51,
+        "y": 43
+      },
+      "kind": "river-view"
+    },
+    {
+      "id": "riverbank.lower-crossing",
+      "position": {
+        "x": 45,
+        "y": 57
+      },
+      "kind": "footbridge"
+    }
+  ]
+}

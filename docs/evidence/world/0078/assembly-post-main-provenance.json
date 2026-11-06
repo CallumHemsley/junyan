@@ -1,0 +1,1110 @@
+{
+  "baseFoundation": "3836175",
+  "method": "Exact fetched tips, owner map/art/life/actor/atmosphere leases only. NO shared App/save/schema/dependency or main feature tree restored. Explicit subsequent adaptations must retain source/result hashes.",
+  "owners": [
+    {
+      "branch": "codex/0079-town-street",
+      "publishedHead": "a9ff468e113b6dc47797d7811eb0cb29576147ee",
+      "consumedHead": "a9ff468e113b6dc47797d7811eb0cb29576147ee",
+      "lease": [
+        "src/world/maps/town",
+        "src/world/art/town"
+      ],
+      "files": [
+        {
+          "path": "src/world/art/town/building-sections.test.ts",
+          "sourceSha256": "6937c3d8f0c9128ce079dc69fdc21f477868477f3cc817ebde82790d13900814",
+          "resultSha256": "6937c3d8f0c9128ce079dc69fdc21f477868477f3cc817ebde82790d13900814",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/town/building-sections.ts",
+          "sourceSha256": "918ae4c51e14f0570740970f7b786c3c7285a743dc7f324fc2f80380ddf900d1",
+          "resultSha256": "918ae4c51e14f0570740970f7b786c3c7285a743dc7f324fc2f80380ddf900d1",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/town/index.ts",
+          "sourceSha256": "d083c7cfb27fe0dea9f3a08dab6642ae50915f9f344612b727f4c55836c580ec",
+          "resultSha256": "d083c7cfb27fe0dea9f3a08dab6642ae50915f9f344612b727f4c55836c580ec",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/town/preview.html",
+          "sourceSha256": "ec51c3a2a5651106be553dad4bef3db1539c2884e739bc5eb7174dd80bb3d834",
+          "resultSha256": "ec51c3a2a5651106be553dad4bef3db1539c2884e739bc5eb7174dd80bb3d834",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/town/preview.ts",
+          "sourceSha256": "4d4938134bdccf4b20bf880d53a7232aa8dc3e3244b6ad941672ba481301c01f",
+          "resultSha256": "4d4938134bdccf4b20bf880d53a7232aa8dc3e3244b6ad941672ba481301c01f",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/town/variants.json",
+          "sourceSha256": "061a6f63d2110a72b75f07df731420fca24b5631b08abcee3ad7ec98b69d930a",
+          "resultSha256": "061a6f63d2110a72b75f07df731420fca24b5631b08abcee3ad7ec98b69d930a",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/town/author-map.py",
+          "sourceSha256": "f416b0f47f4f5a221584f0c7d3b65db355ea69035fbac035c63091b13c223226",
+          "resultSha256": "f416b0f47f4f5a221584f0c7d3b65db355ea69035fbac035c63091b13c223226",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/town/courier-hook.json",
+          "sourceSha256": "88bb4a92e37ee350b31c346489a6819db67b3d1fc1237f8fb64324fdcf459f3b",
+          "resultSha256": "88bb4a92e37ee350b31c346489a6819db67b3d1fc1237f8fb64324fdcf459f3b",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/town/index.ts",
+          "sourceSha256": "37641b86db3467f882eb73ff33b0d92852d2abbd8e8662b06f6e2b709569156d",
+          "resultSha256": "37641b86db3467f882eb73ff33b0d92852d2abbd8e8662b06f6e2b709569156d",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/town/map.json",
+          "sourceSha256": "04a5964793c8df9c91ee18554846c4a0573116ca5311c0f619da008d77e1d58d",
+          "resultSha256": "04a5964793c8df9c91ee18554846c4a0573116ca5311c0f619da008d77e1d58d",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/town/map.test.ts",
+          "sourceSha256": "2146c2f159dc8dcb8cf302193971ffbeb2d40068552d520370bf756c378a7d1d",
+          "resultSha256": "2146c2f159dc8dcb8cf302193971ffbeb2d40068552d520370bf756c378a7d1d",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/town/reachability.py",
+          "sourceSha256": "0db7b339fbc51fa5f04d14d05a4766687dd2325fe31b598e0c33a2e21865b78b",
+          "resultSha256": "0db7b339fbc51fa5f04d14d05a4766687dd2325fe31b598e0c33a2e21865b78b",
+          "byteIdentical": true
+        }
+      ]
+    },
+    {
+      "branch": "codex/0080-courtyard",
+      "publishedHead": "ea30ed7ec7cd641b69a0b4ccd36e5b5594b497e1",
+      "consumedHead": "ea30ed7ec7cd641b69a0b4ccd36e5b5594b497e1",
+      "lease": [
+        "src/world/maps/courtyard",
+        "src/world/art/courtyard"
+      ],
+      "files": [
+        {
+          "path": "src/world/art/courtyard/compositor.test.ts",
+          "sourceSha256": "6f97d2c0dd92d809f04f66410db3ec2ad2040a88ae6fd45511feaf43f9c9d9d6",
+          "resultSha256": "6f97d2c0dd92d809f04f66410db3ec2ad2040a88ae6fd45511feaf43f9c9d9d6",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/courtyard/index.ts",
+          "sourceSha256": "aa3c1b0592fbc47904e1a8c7da29180a8414577515ef69356af9a33ffd9b5649",
+          "resultSha256": "aa3c1b0592fbc47904e1a8c7da29180a8414577515ef69356af9a33ffd9b5649",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/courtyard/habitat.test.ts",
+          "sourceSha256": "91bf0bd717bebda57ed42100915dcd40d5bee5e5421f8afbb70257481de1cb6e",
+          "resultSha256": "91bf0bd717bebda57ed42100915dcd40d5bee5e5421f8afbb70257481de1cb6e",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/courtyard/habitat.ts",
+          "sourceSha256": "156e8d65401fb91898051ddc7564cb6372181dc8de693c197c3e5da1d1ae3ab2",
+          "resultSha256": "156e8d65401fb91898051ddc7564cb6372181dc8de693c197c3e5da1d1ae3ab2",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/courtyard/index.ts",
+          "sourceSha256": "f12a1535f014b4b6ff01781095bc19acd4c25be1344bdfb7615b973687732300",
+          "resultSha256": "f12a1535f014b4b6ff01781095bc19acd4c25be1344bdfb7615b973687732300",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/courtyard/laundry.test.ts",
+          "sourceSha256": "3dc03f46a41655dc14493d1864504370e752e15e22a5b95462d662eaadeaf694",
+          "resultSha256": "3dc03f46a41655dc14493d1864504370e752e15e22a5b95462d662eaadeaf694",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/courtyard/map.json",
+          "sourceSha256": "8b1a34e39275592791088accc5bcae5a0f8a919079fdfbb690348091571e587f",
+          "resultSha256": "8b1a34e39275592791088accc5bcae5a0f8a919079fdfbb690348091571e587f",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/courtyard/pocket-preservation.fixture.json",
+          "sourceSha256": "65fd9769766c22421d8425ab371597bb72e4a4308330f7d49490af6a13e455da",
+          "resultSha256": "65fd9769766c22421d8425ab371597bb72e4a4308330f7d49490af6a13e455da",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/courtyard/pocket.test.ts",
+          "sourceSha256": "215c21912b77d49759f60798e661878a050866cde8fc75ed2006dab197ac43fc",
+          "resultSha256": "215c21912b77d49759f60798e661878a050866cde8fc75ed2006dab197ac43fc",
+          "byteIdentical": true
+        }
+      ]
+    },
+    {
+      "branch": "codex/0081-residential",
+      "publishedHead": "e3116bdae3f2140ef5413c5ecf67ef434ea9d355",
+      "consumedHead": "e3116bdae3f2140ef5413c5ecf67ef434ea9d355",
+      "lease": [
+        "src/world/maps/residential",
+        "src/world/art/residential"
+      ],
+      "files": [
+        {
+          "path": "src/world/art/residential/art.test.ts",
+          "sourceSha256": "2cac5b42c76befc5c0cbd24f420b3b9098b3c3387369c5b44c110f121014b7c7",
+          "resultSha256": "2cac5b42c76befc5c0cbd24f420b3b9098b3c3387369c5b44c110f121014b7c7",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/residential/harness.html",
+          "sourceSha256": "32dc52c62ac2f5421c90c78947b67fc9ebf091a422f0bf66fbaca707606d512f",
+          "resultSha256": "32dc52c62ac2f5421c90c78947b67fc9ebf091a422f0bf66fbaca707606d512f",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/residential/harness.ts",
+          "sourceSha256": "0139cc4c4e9bf994f44f8c1921c409f83ba50f55067b0c661b407e16a6ed75c0",
+          "resultSha256": "0139cc4c4e9bf994f44f8c1921c409f83ba50f55067b0c661b407e16a6ed75c0",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/residential/index.ts",
+          "sourceSha256": "2921d6cc05a6350e667727b8c4f8e78d3b0960256194c6c37ccf37b6e0887866",
+          "resultSha256": "2921d6cc05a6350e667727b8c4f8e78d3b0960256194c6c37ccf37b6e0887866",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/residential/lighting.html",
+          "sourceSha256": "d121a7f313f3a80ab98b1913ce3cfc2696682e35c93bcf398df72240d9397d2a",
+          "resultSha256": "d121a7f313f3a80ab98b1913ce3cfc2696682e35c93bcf398df72240d9397d2a",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/residential/lighting.ts",
+          "sourceSha256": "562b96040e92aa115890ce408f221e04574a1addab285518bc838f35ab00a158",
+          "resultSha256": "562b96040e92aa115890ce408f221e04574a1addab285518bc838f35ab00a158",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/residential/traversal.html",
+          "sourceSha256": "adde7ef9f4b741383185da150ff4472111f2f2997db4c9e2dbefa325235385f9",
+          "resultSha256": "adde7ef9f4b741383185da150ff4472111f2f2997db4c9e2dbefa325235385f9",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/residential/traversal.tsx",
+          "sourceSha256": "a6d84e2714a9b115623a4636da9ce4ce22be8be143b186c1fc81ef60f8aeb5b0",
+          "resultSha256": "a6d84e2714a9b115623a4636da9ce4ce22be8be143b186c1fc81ef60f8aeb5b0",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/residential/apartment.json",
+          "sourceSha256": "c0107e3ac16a08a9d2e60067b66ef19601976c3be43219049fded6c4506a809a",
+          "resultSha256": "c0107e3ac16a08a9d2e60067b66ef19601976c3be43219049fded6c4506a809a",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/residential/elevation.test.ts",
+          "sourceSha256": "92a1401742170ebe1b82cbd4ffa0d3ec8309987d7ca24a1fccec2d063717d86f",
+          "resultSha256": "92a1401742170ebe1b82cbd4ffa0d3ec8309987d7ca24a1fccec2d063717d86f",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/residential/elevation.ts",
+          "sourceSha256": "cc6045b4df5d97cbed3b506ebd4a18984e6e543d04339ba93bcc769ad667a539",
+          "resultSha256": "cc6045b4df5d97cbed3b506ebd4a18984e6e543d04339ba93bcc769ad667a539",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/residential/index.ts",
+          "sourceSha256": "927bf224a1b1503a18bf537c8130d4915365df83fda6757009378f93db37cc01",
+          "resultSha256": "927bf224a1b1503a18bf537c8130d4915365df83fda6757009378f93db37cc01",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/residential/maps.test.ts",
+          "sourceSha256": "7a65a9994ee2ef7079125482ad37993aa3ea77211c4f65cebde2b4b892027b7a",
+          "resultSha256": "7a65a9994ee2ef7079125482ad37993aa3ea77211c4f65cebde2b4b892027b7a",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/residential/residential-hall.json",
+          "sourceSha256": "1d3523bef16cd507147e046cafced2a60915f0bab6284d2401a32150cc8434a5",
+          "resultSha256": "1d3523bef16cd507147e046cafced2a60915f0bab6284d2401a32150cc8434a5",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/residential/residential-stairs.json",
+          "sourceSha256": "334a29df737a9fb00b66b7b4f241ab620b1f967fcb84f584e93ae16ce5052c33",
+          "resultSha256": "334a29df737a9fb00b66b7b4f241ab620b1f967fcb84f584e93ae16ce5052c33",
+          "byteIdentical": true
+        }
+      ]
+    },
+    {
+      "branch": "codex/0082-workshop",
+      "publishedHead": "d23476b7b1d1d3d9a54d55c8e56f98f892403796",
+      "consumedHead": "d23476b7b1d1d3d9a54d55c8e56f98f892403796",
+      "lease": [
+        "src/world/maps/workshop",
+        "src/world/art/workshop"
+      ],
+      "files": [
+        {
+          "path": "src/world/art/workshop/index.ts",
+          "sourceSha256": "abc68b382b069b5d083b6d8cf490653c9d76285da292cf5cdb7866ccb76d36b1",
+          "resultSha256": "abc68b382b069b5d083b6d8cf490653c9d76285da292cf5cdb7866ccb76d36b1",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/workshop/lighting-preview.ts",
+          "sourceSha256": "5d5e2534f53323d01fe2ce7520fdca27b4a332957d3f8216e3b541cfa26c0194",
+          "resultSha256": "5d5e2534f53323d01fe2ce7520fdca27b4a332957d3f8216e3b541cfa26c0194",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/workshop/lighting.html",
+          "sourceSha256": "20f662d825b3aa021811be9b4d3190121fb19437cb3276d03e0513655ecb3b6c",
+          "resultSha256": "20f662d825b3aa021811be9b4d3190121fb19437cb3276d03e0513655ecb3b6c",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/workshop/lighting.test.ts",
+          "sourceSha256": "f5317b5e113be6be00982f6e1e124dc9cc8bf1044c1050d34f71ca6427ea4fbb",
+          "resultSha256": "f5317b5e113be6be00982f6e1e124dc9cc8bf1044c1050d34f71ca6427ea4fbb",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/workshop/lighting.ts",
+          "sourceSha256": "e1f8a09c0d5691a41f8d4b2bd5df1ea382fe03a3fb2faadd7e18100fa006407a",
+          "resultSha256": "e1f8a09c0d5691a41f8d4b2bd5df1ea382fe03a3fb2faadd7e18100fa006407a",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/workshop/paint.test.ts",
+          "sourceSha256": "487b23881da9d50fbcbf52446bbd7bf4065b18ad3b8b4ed62d7ff2258d6215c0",
+          "resultSha256": "487b23881da9d50fbcbf52446bbd7bf4065b18ad3b8b4ed62d7ff2258d6215c0",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/workshop/paint.ts",
+          "sourceSha256": "4b5de8b83d792c968f49198db7dc7679096ced306a3dd6c2cb06ac7598bd43c8",
+          "resultSha256": "4b5de8b83d792c968f49198db7dc7679096ced306a3dd6c2cb06ac7598bd43c8",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/workshop/pocket-study.html",
+          "sourceSha256": "398988981abc14cf2723a80bb846e455710e31f56071df3d0e12dd5f910b594e",
+          "resultSha256": "398988981abc14cf2723a80bb846e455710e31f56071df3d0e12dd5f910b594e",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/workshop/pocket-study.ts",
+          "sourceSha256": "64bb99580b18f9ba085d729d4f80e70ebb922549d402bda23176c9de30f3d9f9",
+          "resultSha256": "64bb99580b18f9ba085d729d4f80e70ebb922549d402bda23176c9de30f3d9f9",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/workshop/preview-scene.ts",
+          "sourceSha256": "518450b07ec64476eda7da7858edfc102ca4d51f4158442328b62258aaa66628",
+          "resultSha256": "518450b07ec64476eda7da7858edfc102ca4d51f4158442328b62258aaa66628",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/workshop/preview.html",
+          "sourceSha256": "f5e9eb818dead9cb24a56c405d79230169d27fc8284c9642d4b065df9fef11de",
+          "resultSha256": "f5e9eb818dead9cb24a56c405d79230169d27fc8284c9642d4b065df9fef11de",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/workshop/preview.ts",
+          "sourceSha256": "72033aa01fc6c2492e2902c52c441b6507d24ed84422bb0432a6403664574149",
+          "resultSha256": "72033aa01fc6c2492e2902c52c441b6507d24ed84422bb0432a6403664574149",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/workshop/walk.html",
+          "sourceSha256": "d542f9bdea63456b138899662b42080fffb37ce3f513c1628fa9bdf49877621b",
+          "resultSha256": "d542f9bdea63456b138899662b42080fffb37ce3f513c1628fa9bdf49877621b",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/workshop/walk.ts",
+          "sourceSha256": "69ce775cbac5d46fd9f76ae3129bc0edd963256c9259e86491f51b6fa0dfd117",
+          "resultSha256": "69ce775cbac5d46fd9f76ae3129bc0edd963256c9259e86491f51b6fa0dfd117",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/workshop/index.ts",
+          "sourceSha256": "a783b60e0dbe08a1a47ba42687e4f52bb8fcf63ac74cef44ed994ee05c5f81a8",
+          "resultSha256": "a783b60e0dbe08a1a47ba42687e4f52bb8fcf63ac74cef44ed994ee05c5f81a8",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/workshop/map.json",
+          "sourceSha256": "a3b507c1f95e9b76de8ec82529318da5f4a4479c041dcbdd12a22bd167c2bd33",
+          "resultSha256": "a3b507c1f95e9b76de8ec82529318da5f4a4479c041dcbdd12a22bd167c2bd33",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/workshop/map.test.ts",
+          "sourceSha256": "214b2503fa2c76a33718e082d8867ba84deff61024105e809d5474290adc2836",
+          "resultSha256": "214b2503fa2c76a33718e082d8867ba84deff61024105e809d5474290adc2836",
+          "byteIdentical": true
+        }
+      ]
+    },
+    {
+      "branch": "codex/0083-rooftop",
+      "publishedHead": "f5ad8039978eb8e614a7733caf8369611f3d64e7",
+      "consumedHead": "f5ad8039978eb8e614a7733caf8369611f3d64e7",
+      "lease": [
+        "src/world/maps/rooftop",
+        "src/world/art/rooftop"
+      ],
+      "files": [
+        {
+          "path": "src/world/art/rooftop/art.test.ts",
+          "sourceSha256": "0a33eafc97a4673adf685b409397313a1f119805266e00aeb30925aa65de45f7",
+          "resultSha256": "0a33eafc97a4673adf685b409397313a1f119805266e00aeb30925aa65de45f7",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/rooftop/harness.html",
+          "sourceSha256": "2dd2611a5871b7df59c15ae8368fc0263d80ccd487e34909f2935b25dffa0116",
+          "resultSha256": "2dd2611a5871b7df59c15ae8368fc0263d80ccd487e34909f2935b25dffa0116",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/rooftop/harness.ts",
+          "sourceSha256": "33de8163296942e44589261638c3ca3cfc52099993bd0b2927372b9b9e45bc5c",
+          "resultSha256": "33de8163296942e44589261638c3ca3cfc52099993bd0b2927372b9b9e45bc5c",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/rooftop/index.ts",
+          "sourceSha256": "79724b94aa497f7350eb1af2c0304e1cc7bf09888fd17784eb84784ca6fea433",
+          "resultSha256": "79724b94aa497f7350eb1af2c0304e1cc7bf09888fd17784eb84784ca6fea433",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/rooftop/roofscape.ts",
+          "sourceSha256": "5e1be2d1317837d14f6343a6d5d34a09ae96eb9c71dc63ae6ce437686c899e77",
+          "resultSha256": "5e1be2d1317837d14f6343a6d5d34a09ae96eb9c71dc63ae6ce437686c899e77",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/rooftop/index.ts",
+          "sourceSha256": "091afe03b9a33c2ec72b3cf42c8bc82edc9dc366bbea99b9bbfc3da69174b2ca",
+          "resultSha256": "091afe03b9a33c2ec72b3cf42c8bc82edc9dc366bbea99b9bbfc3da69174b2ca",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/rooftop/map.json",
+          "sourceSha256": "04f1c70eb8f0eda867fa80381312b3622e4be5559142f1ad543aeaa5c86433ac",
+          "resultSha256": "04f1c70eb8f0eda867fa80381312b3622e4be5559142f1ad543aeaa5c86433ac",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/rooftop/rooftop.test.ts",
+          "sourceSha256": "5c7e9f8ea264659ace6678e8d140c60f47708e1daace3046a8f5ec6b351fe3a3",
+          "resultSha256": "5c7e9f8ea264659ace6678e8d140c60f47708e1daace3046a8f5ec6b351fe3a3",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/rooftop/work-pocket.test.ts",
+          "sourceSha256": "8d3d9b7f0e4c15c965d8d42e5b3df6a4b4e140674118126f79f93b77baec2668",
+          "resultSha256": "8d3d9b7f0e4c15c965d8d42e5b3df6a4b4e140674118126f79f93b77baec2668",
+          "byteIdentical": true
+        }
+      ]
+    },
+    {
+      "branch": "codex/0084-landscape",
+      "publishedHead": "400abbfb72d3e687e0883888cbace25f4b6021dd",
+      "consumedHead": "400abbfb72d3e687e0883888cbace25f4b6021dd",
+      "lease": [
+        "src/world/maps/landscape",
+        "src/world/art/landscape"
+      ],
+      "files": [
+        {
+          "path": "src/world/art/landscape/draw.ts",
+          "sourceSha256": "ab6376d5eac19d9ddff4b6ca2267f5d74a9891eb99ed6a344ff63c2a8b74a65b",
+          "resultSha256": "ab6376d5eac19d9ddff4b6ca2267f5d74a9891eb99ed6a344ff63c2a8b74a65b",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/landscape/foliage.ts",
+          "sourceSha256": "2209e85dc883987a092488e3cae8c1f939e9ea830db1b9ad61bebc84de2b2b96",
+          "resultSha256": "2209e85dc883987a092488e3cae8c1f939e9ea830db1b9ad61bebc84de2b2b96",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/landscape/index.ts",
+          "sourceSha256": "ad5954e6a16c539f7ab09fffa65eb96379592cf8e7776b166396ece553ce0054",
+          "resultSha256": "ad5954e6a16c539f7ab09fffa65eb96379592cf8e7776b166396ece553ce0054",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/landscape/preview.html",
+          "sourceSha256": "0ad38b3fcf1efcd32904a02a5470f3c46552ab14d4028082f018443b348a99ee",
+          "resultSha256": "0ad38b3fcf1efcd32904a02a5470f3c46552ab14d4028082f018443b348a99ee",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/landscape/preview.ts",
+          "sourceSha256": "e70d9004749e2ba060ea71344d7f932694c1a5fb51932ac6d1abecf31487dc7e",
+          "resultSha256": "e70d9004749e2ba060ea71344d7f932694c1a5fb51932ac6d1abecf31487dc7e",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/landscape/shadow-proof.html",
+          "sourceSha256": "5411af68ea8cd27080c339fbd35df8607bd9309deffeeb0983f9e4d395875409",
+          "resultSha256": "5411af68ea8cd27080c339fbd35df8607bd9309deffeeb0983f9e4d395875409",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/art/landscape/shadow-proof.ts",
+          "sourceSha256": "9eba1cb6c82d52ccbc85df19917668183c25f31950847b23325c23d60237244b",
+          "resultSha256": "9eba1cb6c82d52ccbc85df19917668183c25f31950847b23325c23d60237244b",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/landscape/author.py",
+          "sourceSha256": "bdc43b0b50d7d739ade7d63689bafc99c06e7c5221365c12f42fcccd6cd7637a",
+          "resultSha256": "bdc43b0b50d7d739ade7d63689bafc99c06e7c5221365c12f42fcccd6cd7637a",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/landscape/index.ts",
+          "sourceSha256": "aec4a60fee2e384c348e4dc5e60f58171db9d065c5c9ef2e7f0b8d6d54b383ea",
+          "resultSha256": "aec4a60fee2e384c348e4dc5e60f58171db9d065c5c9ef2e7f0b8d6d54b383ea",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/landscape/landscape.test.ts",
+          "sourceSha256": "b4c6bfb5a77169d7cc45eadd16bb3119fbb958efcb198a8afdd1d481dabc69d2",
+          "resultSha256": "b4c6bfb5a77169d7cc45eadd16bb3119fbb958efcb198a8afdd1d481dabc69d2",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/landscape/park.json",
+          "sourceSha256": "6b888b089480907f13b78295f43d32a1bc179ecca2e33f55f4535d5daef6f2f9",
+          "resultSha256": "6b888b089480907f13b78295f43d32a1bc179ecca2e33f55f4535d5daef6f2f9",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/maps/landscape/riverbank.json",
+          "sourceSha256": "46342797d1ea0f13b38ebff87b0d610bf786a50b5d2dc317ed396d813182f451",
+          "resultSha256": "46342797d1ea0f13b38ebff87b0d610bf786a50b5d2dc317ed396d813182f451",
+          "byteIdentical": true
+        }
+      ]
+    },
+    {
+      "branch": "codex/0085-characters",
+      "publishedHead": "4aad008970091fbd7e834b8d520f3cba4c7defaf",
+      "consumedHead": "4aad008970091fbd7e834b8d520f3cba4c7defaf",
+      "lease": [
+        "src/world/characters"
+      ],
+      "files": [
+        {
+          "path": "src/world/characters/actors.test.ts",
+          "sourceSha256": "e2a3d1eba23f265eae629b9dcc8a30e97d0a4bba5c52963d9423ac970b48a940",
+          "resultSha256": "e2a3d1eba23f265eae629b9dcc8a30e97d0a4bba5c52963d9423ac970b48a940",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/adapter.ts",
+          "sourceSha256": "88c48c0bd1d49bfc263d7d4d56a2df178ec968d5dddb22a646f07f39559ce992",
+          "resultSha256": "88c48c0bd1d49bfc263d7d4d56a2df178ec968d5dddb22a646f07f39559ce992",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/artwork.d.mts",
+          "sourceSha256": "e038d7f6f00fc83523ea059da2d9a09904c0a96399e7c3396e8ba11096ce4cd7",
+          "resultSha256": "e038d7f6f00fc83523ea059da2d9a09904c0a96399e7c3396e8ba11096ce4cd7",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/artwork.mjs",
+          "sourceSha256": "553bebe8344e2ae8c75cb047f161a8717c1254fe66f18da8768f2d523931616f",
+          "resultSha256": "553bebe8344e2ae8c75cb047f161a8717c1254fe66f18da8768f2d523931616f",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/background-harness.html",
+          "sourceSha256": "3968423e2b99a208145500c3f03713ffd181df5b5e1c695453e45fdf25b44ae3",
+          "resultSha256": "3968423e2b99a208145500c3f03713ffd181df5b5e1c695453e45fdf25b44ae3",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/background-harness.ts",
+          "sourceSha256": "ab34461ddab4846553d51478eb5d06c6e66c9c94579dc024fe35393824c54d92",
+          "resultSha256": "ab34461ddab4846553d51478eb5d06c6e66c9c94579dc024fe35393824c54d92",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/background.test.ts",
+          "sourceSha256": "6d68194a8883e4f6e670271ed60816e7fa0e037b026901ddd0a6585bf879b458",
+          "resultSha256": "6d68194a8883e4f6e670271ed60816e7fa0e037b026901ddd0a6585bf879b458",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/background.ts",
+          "sourceSha256": "3b244ce66d8358532a2aecb38eb8c15c155c8e590c830b97499f89b0855d5d2e",
+          "resultSha256": "3b244ce66d8358532a2aecb38eb8c15c155c8e590c830b97499f89b0855d5d2e",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/calibration.mjs",
+          "sourceSha256": "dacfcadf0cf462f9bbff554dec9f17897d018f993dc53cd4763089e66e3ec9df",
+          "resultSha256": "dacfcadf0cf462f9bbff554dec9f17897d018f993dc53cd4763089e66e3ec9df",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/calibration.test.ts",
+          "sourceSha256": "6cf686ab808be2132a892405e044c7a87331f2388c0e972c65e5baa4f592f271",
+          "resultSha256": "6cf686ab808be2132a892405e044c7a87331f2388c0e972c65e5baa4f592f271",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/capture-aunt-world.mjs",
+          "sourceSha256": "16529a4a62361e1673dffc89bf94229816474debc590f2fea37477c8a241a835",
+          "resultSha256": "16529a4a62361e1673dffc89bf94229816474debc590f2fea37477c8a241a835",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/capture-background.mjs",
+          "sourceSha256": "c316bbd2684755db277daa6af23a35cee876c77ed03490d26d87ffc9723d2ae3",
+          "resultSha256": "c316bbd2684755db277daa6af23a35cee876c77ed03490d26d87ffc9723d2ae3",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/capture-contact.mjs",
+          "sourceSha256": "8d9257c22048eb653c75d0e2055b38df87247c66faf38e166ba569a1223cdf85",
+          "resultSha256": "8d9257c22048eb653c75d0e2055b38df87247c66faf38e166ba569a1223cdf85",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/capture-lighting.mjs",
+          "sourceSha256": "916bf77d073d5e609c1b4b34b5b7bc72899492732202100bff9d355437fa9338",
+          "resultSha256": "916bf77d073d5e609c1b4b34b5b7bc72899492732202100bff9d355437fa9338",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/capture-reference-study.mjs",
+          "sourceSha256": "697450ad0e16142fe6b2c3a94113dad19f7fa0efd9d5a90e8af3223f406d1134",
+          "resultSha256": "697450ad0e16142fe6b2c3a94113dad19f7fa0efd9d5a90e8af3223f406d1134",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/capture.mjs",
+          "sourceSha256": "1f55f2de4117d26ceaae985c8348c26cb6e2874f66030ee7e94fd7c361edbf04",
+          "resultSha256": "1f55f2de4117d26ceaae985c8348c26cb6e2874f66030ee7e94fd7c361edbf04",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/catalog.test.ts",
+          "sourceSha256": "ae82908d218b05d93df8a1e0b6bc1ba449cbee50705b94d22f8479e84b4e7562",
+          "resultSha256": "ae82908d218b05d93df8a1e0b6bc1ba449cbee50705b94d22f8479e84b4e7562",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/catalog.ts",
+          "sourceSha256": "1fce83540a62fe46aadbf4694c4b9b6b05e09c83a5eff92a02c8b9fcb1d2089a",
+          "resultSha256": "1fce83540a62fe46aadbf4694c4b9b6b05e09c83a5eff92a02c8b9fcb1d2089a",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/contact-proof.html",
+          "sourceSha256": "9d272234d4e65cbc291fdadd0b5db7e85b1d75424fce6918ef6abcb7a69bfcf4",
+          "resultSha256": "9d272234d4e65cbc291fdadd0b5db7e85b1d75424fce6918ef6abcb7a69bfcf4",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/contact-proof.ts",
+          "sourceSha256": "3dfac58273f8b28cf65bb388411ace2319bf4542b1917fb70b3806d9c3a40e38",
+          "resultSha256": "3dfac58273f8b28cf65bb388411ace2319bf4542b1917fb70b3806d9c3a40e38",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/contacts.ts",
+          "sourceSha256": "bd795ac26644502e526b35d4438c91972d30287c0983397bbc92853578e8165e",
+          "resultSha256": "bd795ac26644502e526b35d4438c91972d30287c0983397bbc92853578e8165e",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/depth.test.ts",
+          "sourceSha256": "a3b7e7fa04f40ace2c19ffa7d8b26b82f06fd19fafc3a8eb8b2b2141d816a104",
+          "resultSha256": "a3b7e7fa04f40ace2c19ffa7d8b26b82f06fd19fafc3a8eb8b2b2141d816a104",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/harness.html",
+          "sourceSha256": "e9138b94162207b266df758ae75cdb70c661f539d5f3936eb99d2c1161fe7aee",
+          "resultSha256": "e9138b94162207b266df758ae75cdb70c661f539d5f3936eb99d2c1161fe7aee",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/harness.ts",
+          "sourceSha256": "4c41979473c48307c67a50603631cfe4226fc80d595737e9baa7bf905a7e81c2",
+          "resultSha256": "4c41979473c48307c67a50603631cfe4226fc80d595737e9baa7bf905a7e81c2",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/index.ts",
+          "sourceSha256": "d839a3a3339d416ebab17d8134d99bb5c77aeccb6691aa789b3c16dcef92337c",
+          "resultSha256": "d839a3a3339d416ebab17d8134d99bb5c77aeccb6691aa789b3c16dcef92337c",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/lighting-proof.html",
+          "sourceSha256": "5e0c3fa49508fae02a1d6cf5674d6297ee5e921eb081930bed5e52da3ebf3e28",
+          "resultSha256": "5e0c3fa49508fae02a1d6cf5674d6297ee5e921eb081930bed5e52da3ebf3e28",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/lighting-proof.ts",
+          "sourceSha256": "477d1128f0498c3a1724cfd61d29a0e1f17d128834ef4c0f9166da371cb4dde0",
+          "resultSha256": "477d1128f0498c3a1724cfd61d29a0e1f17d128834ef4c0f9166da371cb4dde0",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/playwright.config.ts",
+          "sourceSha256": "a1c05fffc0e14440c73e2e0245b957ee96043ef1db798deb279e4b0321b2153c",
+          "resultSha256": "a1c05fffc0e14440c73e2e0245b957ee96043ef1db798deb279e4b0321b2153c",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/production-capture.mjs",
+          "sourceSha256": "a83f02302ccd1e2dea848f2f18d744696e2a7602d09442b0f8c6f3135e0b1eb7",
+          "resultSha256": "a83f02302ccd1e2dea848f2f18d744696e2a7602d09442b0f8c6f3135e0b1eb7",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/reference-study.html",
+          "sourceSha256": "20216d384a915805589df1b25f5ca0d0408647b93daba94654ee2b18b746e90e",
+          "resultSha256": "20216d384a915805589df1b25f5ca0d0408647b93daba94654ee2b18b746e90e",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/reference-study.ts",
+          "sourceSha256": "3d130b1be8e969edfd0421bdb7eead5c26df5b65927db884800e909daa2c9c9f",
+          "resultSha256": "3d130b1be8e969edfd0421bdb7eead5c26df5b65927db884800e909daa2c9c9f",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/seated.test.ts",
+          "sourceSha256": "fc3b995943711fe62740bce55a8e15ab8ee41bbdc17c7b40c93a13bd383ba91e",
+          "resultSha256": "fc3b995943711fe62740bce55a8e15ab8ee41bbdc17c7b40c93a13bd383ba91e",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/characters/verify-cast-preservation.mjs",
+          "sourceSha256": "765b39f617561f54fffd52714ca0a14bc4f4c93b5bc5655c13ac7afb2f21d1c5",
+          "resultSha256": "765b39f617561f54fffd52714ca0a14bc4f4c93b5bc5655c13ac7afb2f21d1c5",
+          "byteIdentical": true
+        }
+      ]
+    },
+    {
+      "branch": "codex/0086-atmosphere",
+      "publishedHead": "c9c84395ec37c65a0c6578b605d9b94d00513cce",
+      "consumedHead": "c9c84395ec37c65a0c6578b605d9b94d00513cce",
+      "lease": [
+        "src/world/atmosphere"
+      ],
+      "files": [
+        {
+          "path": "src/world/atmosphere/canvas.test.ts",
+          "sourceSha256": "39736b0d25b3da7db474d14da588712bbf4b26a7ef24dcf54cd54aeddb1a6d37",
+          "resultSha256": "39736b0d25b3da7db474d14da588712bbf4b26a7ef24dcf54cd54aeddb1a6d37",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/canvas.ts",
+          "sourceSha256": "4ca13abb6d866f189754dab443b33fea72d8e8cb6c644aded718b695a24907b4",
+          "resultSha256": "4ca13abb6d866f189754dab443b33fea72d8e8cb6c644aded718b695a24907b4",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/harness.html",
+          "sourceSha256": "0f2978932212a98a8e5a79bac35a07ea83f092e4c1aa218653b467c92760d03b",
+          "resultSha256": "0f2978932212a98a8e5a79bac35a07ea83f092e4c1aa218653b467c92760d03b",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/harness.ts",
+          "sourceSha256": "86caf50ba1877bbdae8f04357b3e423fc4285df3771a439bbae4149993f60407",
+          "resultSha256": "86caf50ba1877bbdae8f04357b3e423fc4285df3771a439bbae4149993f60407",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/index.test.ts",
+          "sourceSha256": "c4f86cca89573e62a271efd971eacedbf631b4cbd71e77a6a1aee187b19a4aff",
+          "resultSha256": "c4f86cca89573e62a271efd971eacedbf631b4cbd71e77a6a1aee187b19a4aff",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/index.ts",
+          "sourceSha256": "378723ec7a8ef8bfa76e2f894c4ed73738e84cc043b824f83c70b2e39cfaac70",
+          "resultSha256": "378723ec7a8ef8bfa76e2f894c4ed73738e84cc043b824f83c70b2e39cfaac70",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/local-light-study.html",
+          "sourceSha256": "def5c5d51fe96b9c808b16c5589f9851b9e6ae8e16fb339d1373d1b4f31e444d",
+          "resultSha256": "def5c5d51fe96b9c808b16c5589f9851b9e6ae8e16fb339d1373d1b4f31e444d",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/local-light-study.ts",
+          "sourceSha256": "d040b4282c6cb812e40d3f7360f90c4191d1f2fc753ecaf62efa355ecf2f3951",
+          "resultSha256": "d040b4282c6cb812e40d3f7360f90c4191d1f2fc753ecaf62efa355ecf2f3951",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/local-lights.test.ts",
+          "sourceSha256": "9609c694d08a37e6e85465e0e6d22826578263756958a2c208302f6b761a4823",
+          "resultSha256": "9609c694d08a37e6e85465e0e6d22826578263756958a2c208302f6b761a4823",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/local-lights.ts",
+          "sourceSha256": "328d591d78ac57cc9a4f2b0e1523e73567ff064ab912eb7283569fd1f7e8c786",
+          "resultSha256": "328d591d78ac57cc9a4f2b0e1523e73567ff064ab912eb7283569fd1f7e8c786",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/map-hooks.test.ts",
+          "sourceSha256": "c3e8a190862ec0510e7d90b8700b9a60c30571e3276dc99f6d900e110498373f",
+          "resultSha256": "c3e8a190862ec0510e7d90b8700b9a60c30571e3276dc99f6d900e110498373f",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/map-hooks.ts",
+          "sourceSha256": "d084c36d1a1954fd683358d78b2ea779e92949ad8fc27e3c6ad4557ea9dcfde1",
+          "resultSha256": "d084c36d1a1954fd683358d78b2ea779e92949ad8fc27e3c6ad4557ea9dcfde1",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/materials-study.html",
+          "sourceSha256": "17a8df5abf3c6b416410d031ea44c6431bcf09d1fce1c0332b391a9d505cda1d",
+          "resultSha256": "17a8df5abf3c6b416410d031ea44c6431bcf09d1fce1c0332b391a9d505cda1d",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/materials-study.ts",
+          "sourceSha256": "554d1bc949a50d7d7838b903d3f8506958366055d87b5dcb33af5720deb88598",
+          "resultSha256": "554d1bc949a50d7d7838b903d3f8506958366055d87b5dcb33af5720deb88598",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/materials.test.ts",
+          "sourceSha256": "1e60322bc874941eb65aa92f4e71cdbe8c6d839fa670acf32ad55c71e302a9af",
+          "resultSha256": "1e60322bc874941eb65aa92f4e71cdbe8c6d839fa670acf32ad55c71e302a9af",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/materials.ts",
+          "sourceSha256": "0de49cd0f769fc7ab4026f13b9a7a9100e4d710ab9c88b2b8ce81fe05be0b353",
+          "resultSha256": "0de49cd0f769fc7ab4026f13b9a7a9100e4d710ab9c88b2b8ce81fe05be0b353",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/production-lighting.html",
+          "sourceSha256": "26f71d55c4c9e6a4b4e58ef20af8368813951772162c8df13b26f6465fe51114",
+          "resultSha256": "26f71d55c4c9e6a4b4e58ef20af8368813951772162c8df13b26f6465fe51114",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/production-lighting.ts",
+          "sourceSha256": "d15857f47712699096170d3bf0ef4b1d1a5daa2278c8be3068c0601e9723321f",
+          "resultSha256": "d15857f47712699096170d3bf0ef4b1d1a5daa2278c8be3068c0601e9723321f",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/proof.config.ts",
+          "sourceSha256": "ef230536246534fbc2f210eb026b936761e294bd61e39ca601e6aa0911292ba0",
+          "resultSha256": "ef230536246534fbc2f210eb026b936761e294bd61e39ca601e6aa0911292ba0",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/shadow-study.html",
+          "sourceSha256": "0a940c075605c607a7e129ea9191c41f87f2cff66c86fd6721b6a27035db49a0",
+          "resultSha256": "0a940c075605c607a7e129ea9191c41f87f2cff66c86fd6721b6a27035db49a0",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/shadow-study.ts",
+          "sourceSha256": "4ced50ed71c55798f2c11c43acd47b6ae0bf6b6db100de8148b2fb744eb61087",
+          "resultSha256": "4ced50ed71c55798f2c11c43acd47b6ae0bf6b6db100de8148b2fb744eb61087",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/atmosphere/shadows.test.ts",
+          "sourceSha256": "0e0794964d45e3f4beb56bcc5fdb08a51596d8f7700fb11325566b2650f7448c",
+          "resultSha256": "0e0794964d45e3f4beb56bcc5fdb08a51596d8f7700fb11325566b2650f7448c",
+          "byteIdentical": true
+        }
+      ]
+    },
+    {
+      "branch": "codex/0087-world-life",
+      "publishedHead": "e2730ae50822771f71773404d46b3837c4ba956d",
+      "consumedHead": "e2730ae50822771f71773404d46b3837c4ba956d",
+      "lease": [
+        "src/world/life"
+      ],
+      "files": [
+        {
+          "path": "src/world/life/LifePrompt.tsx",
+          "sourceSha256": "f8ed298ba4ee7f921336e8dba4034efb2ce68fc8950a416aba82037273e74ed9",
+          "resultSha256": "f8ed298ba4ee7f921336e8dba4034efb2ce68fc8950a416aba82037273e74ed9",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/background-maps.test.ts",
+          "sourceSha256": "306cba7c4b6394da215bd31bc14ec17250b71d22def01ef92e22d9d3700dfeb6",
+          "resultSha256": "306cba7c4b6394da215bd31bc14ec17250b71d22def01ef92e22d9d3700dfeb6",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/background.test.ts",
+          "sourceSha256": "fa73ed6dc5d2218bf9b5d4393adae959d09ae078a55c711697890ed4f50b1db6",
+          "resultSha256": "fa73ed6dc5d2218bf9b5d4393adae959d09ae078a55c711697890ed4f50b1db6",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/habitats.ts",
+          "sourceSha256": "23254d087e61440fa6acc82e3d19f6e074f92e0489a3ba7526e5b6a740b99811",
+          "resultSha256": "23254d087e61440fa6acc82e3d19f6e074f92e0489a3ba7526e5b6a740b99811",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/harness.html",
+          "sourceSha256": "ece8dd940b8597004ca794ac93f57272a6631d8b152b257607aef66fe6cb481c",
+          "resultSha256": "ece8dd940b8597004ca794ac93f57272a6631d8b152b257607aef66fe6cb481c",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/harness.ts",
+          "sourceSha256": "d55699241a57f535541e894be6e6f5117270d0388ec7b7799747a0c5bfc0e2a0",
+          "resultSha256": "d55699241a57f535541e894be6e6f5117270d0388ec7b7799747a0c5bfc0e2a0",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/index.ts",
+          "sourceSha256": "3c600b11cbed4d59bbf0a95c5b741d0f534b81405f6f8ba98afac59ccd8c2452",
+          "resultSha256": "3c600b11cbed4d59bbf0a95c5b741d0f534b81405f6f8ba98afac59ccd8c2452",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/interactions.ts",
+          "sourceSha256": "1ec3e8222f56569eb56d211ad241e291dff95f9981ce610deddcf57aaf4179f5",
+          "resultSha256": "1ec3e8222f56569eb56d211ad241e291dff95f9981ce610deddcf57aaf4179f5",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/landmarks.test.ts",
+          "sourceSha256": "c075a5d9677b1cdc08693dd7575da58f25785d411b10767ab31608df20ffe5e3",
+          "resultSha256": "c075a5d9677b1cdc08693dd7575da58f25785d411b10767ab31608df20ffe5e3",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/life.test.ts",
+          "sourceSha256": "19213e43c4a3a04d37bddf871594572714e0835237d755743796ad05141294fb",
+          "resultSha256": "19213e43c4a3a04d37bddf871594572714e0835237d755743796ad05141294fb",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/model.ts",
+          "sourceSha256": "c73616c5baa1f62f6e9f1a69305222992dc020273052da98689b29a7b0139574",
+          "resultSha256": "c73616c5baa1f62f6e9f1a69305222992dc020273052da98689b29a7b0139574",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/navigation.ts",
+          "sourceSha256": "4932b434579bab578bda4ccb9d017f36e53aeff4c436ad35d2336e181fa05003",
+          "resultSha256": "4932b434579bab578bda4ccb9d017f36e53aeff4c436ad35d2336e181fa05003",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/objects.ts",
+          "sourceSha256": "db1f39afa8cb46601c13905a7274481cc1a71fc7875b3c339099adc38865bf28",
+          "resultSha256": "db1f39afa8cb46601c13905a7274481cc1a71fc7875b3c339099adc38865bf28",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/prepare-proof.py",
+          "sourceSha256": "f27ca56e7e35d9b5a22d8be8eeee0a42f455d618dd7c08ffa682932436563485",
+          "resultSha256": "f27ca56e7e35d9b5a22d8be8eeee0a42f455d618dd7c08ffa682932436563485",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/presence.test.ts",
+          "sourceSha256": "bbb6bab46cbf12f6eed0624743c2cba93f4b773ee5e693f381ad835f5534fb62",
+          "resultSha256": "bbb6bab46cbf12f6eed0624743c2cba93f4b773ee5e693f381ad835f5534fb62",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/presence.ts",
+          "sourceSha256": "7522cb883133f774a7a901743508c337c30673b42e34bb6d1f4d054cfe41861b",
+          "resultSha256": "7522cb883133f774a7a901743508c337c30673b42e34bb6d1f4d054cfe41861b",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/production.config.ts",
+          "sourceSha256": "60c8f1bbbbad78b9866869505f5e5ff2d0d96b8f043cda723d995a597168b50d",
+          "resultSha256": "60c8f1bbbbad78b9866869505f5e5ff2d0d96b8f043cda723d995a597168b50d",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/production.spec.ts",
+          "sourceSha256": "bf21f99cdd15ed1c6124e557d9fbb0bf8ef2f1c13a306dc566520655f902b4ea",
+          "resultSha256": "bf21f99cdd15ed1c6124e557d9fbb0bf8ef2f1c13a306dc566520655f902b4ea",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/profiles.ts",
+          "sourceSha256": "40b4515ac93776cef51c0f6ef9e7f78106858ec0fe05e14450ee1b27a8abd9b6",
+          "resultSha256": "40b4515ac93776cef51c0f6ef9e7f78106858ec0fe05e14450ee1b27a8abd9b6",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/prompt.css",
+          "sourceSha256": "1a6094b9944b0cf4984398c261017b67da24f57852185694455e080e71dd3fac",
+          "resultSha256": "1a6094b9944b0cf4984398c261017b67da24f57852185694455e080e71dd3fac",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/proof.mjs",
+          "sourceSha256": "a342c5caf29109512242e184a31beab9e25b2b5df1bf2b6cc5ff96a4f8b79790",
+          "resultSha256": "a342c5caf29109512242e184a31beab9e25b2b5df1bf2b6cc5ff96a4f8b79790",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/render.test.ts",
+          "sourceSha256": "8002efbff8c8cf1d9a2b117c6215e8ecc70c330ed77908ff16b0d1a5d773c44a",
+          "resultSha256": "8002efbff8c8cf1d9a2b117c6215e8ecc70c330ed77908ff16b0d1a5d773c44a",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/render.ts",
+          "sourceSha256": "f6196ad148c7d99d72f9b380cef322a95e97cf0bfbb6e1cb93cf639178ef3474",
+          "resultSha256": "f6196ad148c7d99d72f9b380cef322a95e97cf0bfbb6e1cb93cf639178ef3474",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/routes.ts",
+          "sourceSha256": "501e5ef6e69ece6bea4a977638c8e61438fbace090ff5440eed45c9524d51b40",
+          "resultSha256": "501e5ef6e69ece6bea4a977638c8e61438fbace090ff5440eed45c9524d51b40",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/routines.json",
+          "sourceSha256": "ce5ec516ad70b27676a0c33d99547eae7c88cee05f2736cca1ecce6a4673454c",
+          "resultSha256": "ce5ec516ad70b27676a0c33d99547eae7c88cee05f2736cca1ecce6a4673454c",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/routines.test.ts",
+          "sourceSha256": "e84a67dfcd01f53b7fabaeee0fe193796127c2b9e160bb24a412f0b06ef65559",
+          "resultSha256": "e84a67dfcd01f53b7fabaeee0fe193796127c2b9e160bb24a412f0b06ef65559",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/routines.ts",
+          "sourceSha256": "10942c3f6a04e77bba0e075038b47f0af932b28b6ab9c0b7917fdbfd5f12e7b0",
+          "resultSha256": "10942c3f6a04e77bba0e075038b47f0af932b28b6ab9c0b7917fdbfd5f12e7b0",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/sample.ts",
+          "sourceSha256": "d661b0fb5c46810bc257576329bb9c685690db88c697e001752746d936c054d6",
+          "resultSha256": "d661b0fb5c46810bc257576329bb9c685690db88c697e001752746d936c054d6",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/scene.test.ts",
+          "sourceSha256": "08de0910567021b6f8abc2acfac7d484a125f645eba2f55f47bd235cc9acb4b4",
+          "resultSha256": "08de0910567021b6f8abc2acfac7d484a125f645eba2f55f47bd235cc9acb4b4",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/scene.ts",
+          "sourceSha256": "6efe44907e720ff7dd2b3d48f663b06c287381383ea4e54c5e9a5fd17fd057bd",
+          "resultSha256": "6efe44907e720ff7dd2b3d48f663b06c287381383ea4e54c5e9a5fd17fd057bd",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/solid-landmarks.fixture.json",
+          "sourceSha256": "7fb3a0f260cf744528b980410275aa805fb0283e3d57ee600b7d12315e860a33",
+          "resultSha256": "7fb3a0f260cf744528b980410275aa805fb0283e3d57ee600b7d12315e860a33",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/visibility.ts",
+          "sourceSha256": "3153e393cb9ef112165bb87b1da7a2e298b24090028af36d096510eda9086e10",
+          "resultSha256": "3153e393cb9ef112165bb87b1da7a2e298b24090028af36d096510eda9086e10",
+          "byteIdentical": true
+        },
+        {
+          "path": "src/world/life/word-display.ts",
+          "sourceSha256": "c145e3655c677cf3ec9566fc66f3d90011219408f53681310b6ab5ff5413ccf7",
+          "resultSha256": "c145e3655c677cf3ec9566fc66f3d90011219408f53681310b6ab5ff5413ccf7",
+          "byteIdentical": true
+        }
+      ]
+    }
+  ],
+  "sharedIntegration": [
+    "Workshop active-job light selector consumes authoritative repairs state and precompiled map hooks",
+    "Atmosphere receives conservative camera-derived visible world rectangle",
+    "Resident actor sampling consumes owner yaw",
+    "All human samples default to owner15 nativepx/world unit; original native artwork remains owner-preserved",
+    "Restaurant seated actors consume seatHeight and handRestHeight=authored tableTop in world units"
+  ],
+  "adaptations": [],
+  "inheritedModules": [
+    {
+      "owner": "0089",
+      "source": "d196bed",
+      "lease": "src/world/art/restaurant",
+      "note": "Exact contact/furniture source previously consumed. Main merge explicitly replaced one test-only obsolete numeric evidence import with production restaurantMap; runtime art unchanged."
+    },
+    {
+      "owner": "0090",
+      "source": "85e00ab",
+      "lease": "src/world/ui",
+      "note": "Inherited contextual UI;7551cde explicitly adapted Word.text/pronunciation. New0093 child handback pending; do not overwrite frozen viewport/CSS."
+    }
+  ],
+  "checks": {
+    "runtime": "Node22.23.4/pnpm10.34.9",
+    "build": "pass",
+    "tests": 561,
+    "testFiles": 80,
+    "viewportAndWorldCssEqualFrozen3836175": true,
+    "limits": [
+      "Fresh integrated render/motion/ordinary combined journeys pending",
+      "Paid main furniture IDs need residential world art cases",
+      "Old-ferry false foliage fade independently reproduced, fix pending",
+      "Whole-App frame cost/visible tree cost not accepted",
+      "Full visual goal ACTIVE"
+    ]
+  }
+}

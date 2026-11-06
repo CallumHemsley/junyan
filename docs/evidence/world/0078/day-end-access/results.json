@@ -1,0 +1,124 @@
+{
+  "method": "Declared valid fourth-receipt arrival; actual table anchor and reaction close; probes next-day summary reachability",
+  "records": [
+    {
+      "device": "desktop",
+      "nextDay": 1,
+      "summary": 1,
+      "advanced": {
+        "day": 2,
+        "served": 0,
+        "ended": false,
+        "earnings": 10,
+        "world": {
+          "version": 1,
+          "mapId": "restaurant",
+          "position": {
+            "x": 18.5,
+            "y": 9
+          },
+          "facing": "north",
+          "returnPositions": {},
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 1023.2999999999993,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [],
+            "pauses": []
+          }
+        }
+      },
+      "reloaded": {
+        "day": 2,
+        "served": 0,
+        "world": {
+          "version": 1,
+          "mapId": "restaurant",
+          "position": {
+            "x": 18.5,
+            "y": 9
+          },
+          "facing": "north",
+          "returnPositions": {},
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 1023.2999999999993,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [],
+            "pauses": []
+          }
+        }
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "nextDay": 1,
+      "summary": 1,
+      "advanced": {
+        "day": 2,
+        "served": 0,
+        "ended": false,
+        "earnings": 10,
+        "world": {
+          "version": 1,
+          "mapId": "restaurant",
+          "position": {
+            "x": 18.5,
+            "y": 9
+          },
+          "facing": "north",
+          "returnPositions": {},
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 1006.5000000000001,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [],
+            "pauses": []
+          }
+        }
+      },
+      "reloaded": {
+        "day": 2,
+        "served": 0,
+        "world": {
+          "version": 1,
+          "mapId": "restaurant",
+          "position": {
+            "x": 18.5,
+            "y": 9
+          },
+          "facing": "north",
+          "returnPositions": {},
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "elapsedMs": 1006.5000000000001,
+            "discoveries": [],
+            "reactions": [],
+            "serviceDepartures": [],
+            "pauses": []
+          }
+        }
+      },
+      "errors": []
+    }
+  ],
+  "baseHead": "e002c755fc5fe0785469735a629aedba1f3e6212",
+  "workingTreeObserved": true,
+  "productionFilesSha256": {
+    "src/App.tsx": "6602dbc02aa096c5c16115f48775724e41728eef5a1a5d488b95b386b590bc73",
+    "src/neighbourhood/transitions.ts": "abfd0036deae6aa5f9dee0af1e1bc8bd638790f026b2419e12b78b3c5fad7d81",
+    "src/world/world.css": "85dfa8c046bc6a5aa29d5a5fc22e26072162119e93c4ffb198fc9d21c808c32f"
+  }
+}

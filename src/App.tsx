@@ -1,14 +1,20 @@
 import ProgressionView from "./progression/ProgressionView";
+import {ContextualInteraction,RestaurantTableControls,KitchenControls,WorldPocketBar} from "./world/ui";
+import {activityTarget} from "./world/activity";
+import {performLifeInteraction} from "./world/life-bridge";
+import WorldViewport from "./world/WorldViewport";
+import { restoreWorld } from "./world/state";
+import { mapsForNeighbourhood } from "./world/dynamic";
+import WordToken from "./WordToken";
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
-import type { Line, Position, Word } from "./contracts";
-import { KITCHEN, TABLES } from "./contracts";
+import type { Line, Word } from "./contracts";
+import { TABLES } from "./contracts";
 import { characterFor } from "./content";
 import { content } from "./neighbourhood/registry";
-import Neighbourhood, { LocationNavigation, NeighbourhoodGifts } from "./neighbourhood/Neighbourhood";
+import Neighbourhood, { NeighbourhoodGifts } from "./neighbourhood/Neighbourhood";
 import FeatureLine from "./neighbourhood/FeatureLine";
 import { lineById as apartmentLines } from "./features/apartment/content";
 import { createNeighbourhood } from "./neighbourhood/model";
-import type { LocationId } from "./neighbourhood/contracts";
 import { contentWords } from "./content/words";
 import {
   createGame,
@@ -17,7 +23,6 @@ import {
   isNear,
   canVisitKitchen,
 } from "./game";
-import RestaurantScene from "./scene/RestaurantScene";
 import FoodArt from "./FoodArt";
 import { checkpointKey as getCheckpointKey, loadGame, saveGame, validateSavedGame } from "./save";
 import { lineText } from "./language";
@@ -28,7 +33,6 @@ import { startSession, type StartupRead } from "./startup";
 import HospitalOpening from "./HospitalOpening";
 import { nextDots, wordState } from "./recovery";
 import { Speaker } from "./icons";
-import { route } from "./navigation";
 import { createPlayback, type PlaybackError } from "./audio/playback";
 import { useAmbience, AmbienceControls } from "./audio/AmbienceControls";
 
@@ -64,28 +68,33 @@ export default function App() {
   const [ready, setReady] = useState(testMode);
   const [saveError, setSaveError] = useState(false);
   const [panel, setPanel] = useState<
-    "none" | "table" | "kitchen" | "journal" | "help"
+    "none" | "table" | "kitchen" | "journal" | "help" | "tray"
   >("help");
-  const [table, setTable] = useState(1);
+  const [requestedTable, setTable] = useState(1);
   const [helpExpanded, setHelpExpanded] = useState(false);
-  const [dayExpanded, setDayExpanded] = useState(false);
   const [word, setWord] = useState<Word | null>(null);
   const [fresh, setFresh] = useState<string[]>([]);
   const wordTrigger = useRef<HTMLButtonElement | null>(null);
   const panelTrigger = useRef<HTMLElement | null>(null);
   const wordOpen = word !== null;
   const [change, setChange] = useState(0);
-  const [moving, setMoving] = useState(false);
   const [audioError, setAudioError] = useState<PlaybackError>(null);
   const neighbourhood = state.neighbourhood ?? createNeighbourhood(state.day);
   const locationId = neighbourhood.location;
+  const worldRegistry = mapsForNeighbourhood(neighbourhood);
+  const world = restoreWorld(state.world, worldRegistry, locationId, false);
+  const binding=activityTarget(world,worldRegistry[world.mapId]);
+  const table=binding?.kind==="table"?binding.table:requestedTable;
+  const activityOpen = binding !== null;
+  const blockingPanel=panel==="help"||panel==="journal"||panel==="tray";
   const [giftNotice, setGiftNotice] = useState(false);
-  const dayEndOpen = locationId === "restaurant" && state.ended && panel === "none" && !word;
-  const ambience = useAmbience(ready && session.phase === "day" && locationId === "restaurant");
+  const [summaryOpen,setSummaryOpen]=useState(false);
+  const [ambientLine,setAmbientLine]=useState<Line|null>(null);
+  const dayEndOpen = summaryOpen && world.mapId === "restaurant" && state.ended && panel === "none" && !word;
+  const ambience = useAmbience(ready && session.phase === "day" && world.mapId === "restaurant");
   const playback = useRef<ReturnType<typeof createPlayback> | null>(null);
   if (!playback.current)
     playback.current = createPlayback((url) => new Audio(url), setAudioError, ambience.speaking);
-  const motion = useRef<{ path: Position[]; arrive?: () => void } | null>(null);
   const dispatch = useCallback(
     (action: SessionAction) => {
       const previous = sessionRef.current;
@@ -96,16 +105,14 @@ export default function App() {
         const { game: after } = next;
         setFresh((dots) => nextDots(dots, before, action, after));
         if (before.neighbourhood?.location !== after.neighbourhood?.location) {
-          motion.current = null;
           playback.current?.stop();
-          setMoving(false);
           setWord(null);
           setPanel("none");
           setGiftNotice(false);
         }
         if (action.type === "claim-neighbourhood-gift") setGiftNotice(true);
       }
-      if (!testMode && action.type !== "move" && next.phase === "day") {
+      if (!testMode && next.phase === "day") {
         try {
           localStorage.setItem(checkpointKey, JSON.stringify(next.game));
         } catch {
@@ -196,55 +203,10 @@ export default function App() {
     }, 350);
     return () => clearTimeout(timer);
   }, [state, ready, session.phase]);
-  useEffect(() => {
-    let frame: number;
-    let previous = 0;
-    const tick = (now: number) => {
-      const dt = Math.min((now - previous) / 1000, 0.04);
-      previous = now;
-      const task = motion.current;
-      if (task) {
-        const target = task.path[0];
-        const p = stateRef.current.player;
-        const dx = target.x - p.x,
-          dy = target.y - p.y,
-          d = Math.hypot(dx, dy),
-          step = dt * 5;
-        if (d <= Math.max(step, 0.06)) {
-          dispatch({ type: "move", position: target });
-          task.path.shift();
-          if (!task.path.length) {
-            motion.current = null;
-            setMoving(false);
-            task.arrive?.();
-          }
-        } else
-          dispatch({
-            type: "move",
-            position: { x: p.x + (dx / d) * step, y: p.y + (dy / d) * step },
-          });
-      }
-      frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [dispatch]);
-  const walk = useCallback((position: Position, arrive?: () => void) => {
-    const path = route(stateRef.current.player, {
-      x: Math.max(0, Math.min(12, position.x)),
-      y: Math.max(0, Math.min(10, position.y)),
-    });
-    if (!path.length) return;
-    setWord(null);
-    setPanel("none");
-    setMoving(true);
-    motion.current = {
-      path,
-      arrive,
-    };
-  }, []);
   const visitTable = useCallback(
     (number: number) => {
+      const active=stateRef.current.world;
+      if(active && active.activeAnchorId!==`restaurant.table-${number}`)return;
       const target = TABLES.find((t) => t.table === number)!;
       const open = () => {
         setTable(number);
@@ -260,25 +222,24 @@ export default function App() {
           play(order.line.audio);
       };
       if (isNear(stateRef.current.player, target)) open();
-      else walk({ x: target.x + 1.4, y: target.y }, open);
+
     },
-    [dispatch, play, walk],
+    [dispatch, play],
   );
   const visitKitchen = useCallback(() => {
+    if(stateRef.current.world && stateRef.current.world.activeAnchorId!=="restaurant.kitchen"){dispatch({type:"world-close"});setPanel("none");return;}
     const open = () => setPanel("kitchen");
     if (canVisitKitchen(stateRef.current)) open();
-    else walk({ x: KITCHEN.x, y: KITCHEN.y + 1.3 }, open);
-  }, [walk]);
+
+  }, [dispatch]);
   useEffect(() => {
     if (panel === "none" && !wordOpen) return;
-    motion.current = null;
-    setMoving(false);
   }, [panel, wordOpen]);
   useEffect(() => {
     if (!ready || (panel === "none" && !dayEndOpen)) return;
     const previous = panelTrigger.current;
     const dialog = document.querySelector<HTMLElement>(".paper-panel");
-    dialog?.querySelector<HTMLButtonElement>("button")?.focus();
+    dialog?.querySelector<HTMLButtonElement>(dayEndOpen ? ".day-next" : "button")?.focus();
     return () => {
       if (previous?.isConnected && !previous.closest("[inert]")) previous.focus();
     };
@@ -306,7 +267,7 @@ export default function App() {
       wordOpen
         ? "[data-word-lookup], .word-popover button"
         : ".paper-panel button:not(:disabled), .paper-panel a[href], .paper-panel input",
-    )].filter(element => !element.closest("[inert]") && element.getClientRects().length > 0);
+    )].filter(element => !element.closest("[inert]") && element.checkVisibility());
     const trap = (event: KeyboardEvent) => {
       if (event.key !== "Tab") return;
       const available = controls();
@@ -319,70 +280,10 @@ export default function App() {
     document.addEventListener("keydown", trap);
     return () => document.removeEventListener("keydown", trap);
   }, [panel, wordOpen, dayEndOpen, ready, session.phase]);
-  useEffect(() => {
-    const key = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        if (word) setWord(null);
-        else if (sessionRef.current.phase === "day") {
-          motion.current = null;
-          setMoving(false);
-          setPanel("none");
-        }
-        return;
-      }
-      if (
-        !ready ||
-        sessionRef.current.phase !== "day" ||
-        locationId !== "restaurant" ||
-        dayEndOpen ||
-        event.defaultPrevented ||
-        event.altKey ||
-        event.ctrlKey ||
-        event.metaKey ||
-        panel !== "none" ||
-        word ||
-        (event.target instanceof HTMLElement &&
-          (/INPUT|TEXTAREA|SELECT/.test(event.target.tagName) ||
-            event.target.isContentEditable))
-      )
-        return;
-      const directions: Record<string, [number, number]> = {
-        ArrowUp: [-0.45, -0.45],
-        w: [-0.45, -0.45],
-        ArrowDown: [0.45, 0.45],
-        s: [0.45, 0.45],
-        ArrowLeft: [-0.45, 0.45],
-        a: [-0.45, 0.45],
-        ArrowRight: [0.45, -0.45],
-        d: [0.45, -0.45],
-      };
-      const direction = directions[event.key];
-      if (direction) {
-        event.preventDefault();
-        motion.current = null;
-        setMoving(false);
-        setPanel("none");
-        setWord(null);
-        const p = stateRef.current.player;
-        dispatch({
-          type: "move",
-          position: { x: p.x + direction[0], y: p.y + direction[1] },
-        });
-      }
-      if (event.key === " " || event.key.toLowerCase() === "e") {
-        if (event.key === " " && event.target instanceof HTMLButtonElement)
-          return;
-        event.preventDefault();
-        if (canVisitKitchen(stateRef.current)) visitKitchen();
-        else {
-          const near = TABLES.find((t) => isNear(t, stateRef.current.player));
-          if (near) visitTable(near.table);
-        }
-      }
-    };
-    window.addEventListener("keydown", key);
-    return () => window.removeEventListener("keydown", key);
-  }, [dispatch, visitTable, visitKitchen, panel, word, ready, dayEndOpen, locationId]);
+  useEffect(()=>{
+    const key=(event:KeyboardEvent)=>{if(event.key!=="Escape"||event.defaultPrevented)return;if(word)setWord(null);else if(summaryOpen)setSummaryOpen(false);else if(sessionRef.current.phase==="day"){dispatch({type:"world-close"});setPanel("none");}};
+    window.addEventListener("keydown",key);return()=>window.removeEventListener("keydown",key);
+  },[dispatch,word,summaryOpen]);
   useEffect(() => {
     if (!testMode) return;
     const hooks = {
@@ -390,8 +291,6 @@ export default function App() {
       getSession: () => sessionRef.current,
       dispatch,
       reset: () => {
-        motion.current = null;
-        setMoving(false);
         const next = testStart();
         sessionRef.current = next;
         setSession(next);
@@ -411,7 +310,6 @@ export default function App() {
     if (!ready || session.phase !== "day") return;
     document.querySelector<HTMLElement>("[data-location-heading]")?.focus();
   }, [locationId, ready, session.phase]);
-  const visitLocation = (location: LocationId) => dispatch({type:"visit-location",location});
   const lookup = (w: Word, trigger: HTMLButtonElement) => {
     wordTrigger.current = trigger;
     setWord(w);
@@ -433,23 +331,24 @@ export default function App() {
       allWords.filter((w) => state.journal[w.id]).map((w) => [w.id, w]),
     ).values(),
   ];
+  const registered = (wordId:string) => {
+    const word=allWords.find(word=>word.id===wordId);
+    return word?<WordToken word={word} look={wordState(state.journal[word.id],fresh.includes(word.id))} onLookup={lookup}/>:null;
+  };
   const close = () => {
     setPanel("none");
     setWord(null);
+  };
+  const leaveRestaurant = () => {
+    if(state.ended && binding?.kind==="table")setSummaryOpen(true);
+    dispatch({type:"world-close"});
+    close();
   };
   const completePayment = () => {
     if (!order) return;
     dispatch({ type: "pay", table, change });
     if (change === order.paid - total) play(characterFor(order.customer).thanks.audio);
   };
-  const activeCustomer = state.customers.find((entry) => entry.table === state.activeTable);
-  const waitingCustomer = activeCustomer?.phase === "ordered"
-    ? activeCustomer
-    : state.customers.find((entry) => entry.phase === "ordered");
-  const nextCustomer = state.customers.find((entry) => entry.phase === "checkout")
-    ?? (state.tray.length > 0 ? waitingCustomer : undefined);
-  const needsKitchen = !nextCustomer && Boolean(waitingCustomer);
-  const nextTable = nextCustomer ?? state.customers.find((entry) => entry.phase === "seated");
   const rememberPanelTrigger = (event: { target: EventTarget | null }) => {
     if (!(event.target instanceof Element)) return;
     const trigger = event.target.closest<HTMLElement>(".topbar button, .topbar a, main button");
@@ -528,23 +427,11 @@ export default function App() {
       </div>
     );
   return (
-    <div className={`app-shell${wordOpen ? " word-card-open" : ""}`} onFocusCapture={rememberPanelTrigger} onClickCapture={(event) => { guardWordCard(event); rememberPanelTrigger(event); }}>
-      <header className="topbar" inert={panel !== "none" || dayEndOpen}>
+    <div className={`app-shell connected-shell${wordOpen ? " word-card-open" : ""}`} onFocusCapture={rememberPanelTrigger} onClickCapture={(event) => { guardWordCard(event); rememberPanelTrigger(event); }}>
+      <header className="topbar" inert={blockingPanel || dayEndOpen}>
         {brand}
         <nav aria-label={ui.navigation}>
           <AmbienceControls ambience={ambience} />
-          <button
-            onClick={() => {
-              motion.current = null;
-              setMoving(false);
-              setPanel("journal");
-              setWord(null);
-            }}
-          >
-            <Book />
-            <span>{ui.journal}</span>
-            <small>{words.length}</small>
-          </button>
           <button
             className="help-button"
             aria-label={ui.help}
@@ -554,114 +441,53 @@ export default function App() {
           </button>
         </nav>
       </header>
-      <main inert={panel !== "none" || dayEndOpen} data-location={locationId}>
-        <LocationNavigation location={locationId} onVisit={visitLocation}/>
-        {locationId === "restaurant" ? <div className="play-layout">
-          <section className="world-panel" aria-label={ui.restaurantRegion}>
-            <div className="world-caption">
-              <button className="day-toggle" aria-expanded={dayExpanded} aria-controls="day-details" onClick={() => setDayExpanded(!dayExpanded)}>
-                <Sun />
-                <span>{ui.marketDay(state.day)}</span>
-                <span aria-hidden="true">{dayExpanded ? "−" : "+"}</span>
-              </button>
-              <span className="day-progress" aria-label={ui.dayProgressLabel(state.served)}>{ui.dayProgress(state.served)}</span>
-            </div>
-            <div className="day-details" id="day-details" hidden={!dayExpanded}>
-              <span>{ui.earnings(state.earnings)}</span>
-              <span>{ui.dishes(state.level)}</span>
-            </div>
-            <RestaurantScene
-              state={state}
-              onMove={walk}
-              onTable={visitTable}
-              onKitchen={visitKitchen}
-            />
-            <div className="world-footer">
-              <span className="next-hint" role="status">{moving ? ui.walking : ""}</span>
-              <button className="primary next-action" disabled={!needsKitchen && !nextTable} onClick={() => needsKitchen ? visitKitchen() : nextTable && visitTable(nextTable.table)}>
-                {needsKitchen ? ui.collectFood : nextTable ? ui.nextTable(nextTable.table, nextTable.phase) : ui.thanks}<span aria-hidden="true">→</span>
-              </button>
-            </div>
-          </section>
-          <section className="service-strip" aria-label={ui.serviceRegion}>
-            <div className="customer-list" role="group" aria-label={ui.customers}>
-              {state.customers.map((c) => {
-                const o = getOrder(state, c.table, content);
-                return (
-                  <button
-                    key={c.table}
-                    className={`customer-row ${c.phase === "served" ? "customer-done" : ""}`}
-                    onClick={() => visitTable(c.table)}
-                    aria-label={ui.customer(c.table, o?.customer ?? "", c.phase)}
-                  >
-                    <span className="table-number">{ui.table(c.table)}</span>
-                    <span className="customer-info">
-                      <b>{o?.customer}</b>
-                      <small>{ui.phases[c.phase]}</small>
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-            <div className="tray-section" role="group" aria-label={ui.tray}>
-              <div className="section-label">
-                <span>{ui.tray}</span>
-                <span>{state.tray.length} / 6</span>
-              </div>
-              <div className="tray">
-                {state.tray.map((id, i) => {
-                    const food = content.foods.find((f) => f.id === id)!;
-                    return (
-                      <button
-                        key={`${id}-${i}`}
-                        data-word-lookup onClick={(event) => lookup(food.word, event.currentTarget)}
-                        className="tray-item"
-                        aria-label={ui.view(food.word.text)}
-                      >
-                        <FoodArt kind={food.kind} />
-                        <span>{food.word.text}</span>
-                      </button>
-                    );
-                  })}
-              </div>
-              <button className="kitchen-link" aria-label={ui.kitchen} onClick={visitKitchen}>
-                {ui.kitchen} <span aria-hidden="true">↗</span>
-              </button>
-            </div>
-          </section>
-        </div>
-        : <Neighbourhood state={neighbourhood} day={state.day} onAction={dispatch} onLookup={lookup} onPlay={playLine} onRecover={acknowledgeRecovery}
-            recoveredWordIds={Object.keys(state.journal).filter(id => state.journal[id].recovered)} freshWordIds={fresh}/>}
-        <ProgressionView game={state} content={content} now={Date.now()} onAction={dispatch} onLookup={lookup}/>
-        <NeighbourhoodGifts state={neighbourhood} onClaim={giftId => {
-          const before = sessionRef.current;
-          const next = dispatch({type:"claim-neighbourhood-gift",giftId});
-          if (next !== before) playLine(apartmentLines.gift);
-        }}/>
-        {giftNotice && <div className="neighbourhood-gift-note" role="status"><FeatureLine line={apartmentLines.gift} onLookup={lookup} onPlay={playLine}
-          recoveredWordIds={Object.keys(state.journal).filter(id => state.journal[id].recovered)} freshWordIds={fresh}/></div>}
-        {locationId !== "restaurant" && panel === "none" && audioNotice}
+      <main inert={blockingPanel || dayEndOpen} data-location={locationId}>
+        <WorldViewport state={world} maps={worldRegistry} game={state} onLookup={lookup} onPlay={playLine} dialogue={ambientLine} fresh={fresh} onAction={action=>{
+          if(action.type==="world-life") {
+            const result=performLifeInteraction(worldRegistry[world.mapId],state,world,action);
+            setAmbientLine(result.line??null);if(result.line)playLine(result.line);
+          }else if(action.type==="world-move")setAmbientLine(null);
+          const next=dispatch(action);
+          if(action.type==="world-interact"&&next.phase==="day"&&next.game.world?.activeActivity==="restaurant") {
+            const id=next.game.world.activeAnchorId;
+            if(id==="restaurant.kitchen")visitKitchen();
+            else {const number=Number(id?.split("table-")[1]);if(number)visitTable(number);}
+          }
+        }} paused={panel !== "none" || wordOpen || dayEndOpen}/>
+        <WorldPocketBar journalControl={<><span>{registered("journal")}</span><button aria-label="本子" onClick={()=>setPanel("journal")}><Book/><span>{words.length}</span></button></>} trayControl={<><span>{registered("tray")}</span><button aria-label="托盘" onClick={()=>setPanel("tray")}><span aria-hidden="true">▱</span><span>{state.tray.length}/6</span></button></>}/>
+        {state.ended && world.mapId==="restaurant" && <button className="world-day-summary" aria-label={ui.summary} onClick={()=>{setPanel("none");setSummaryOpen(true);}}><Sun/></button>}
+        {activityOpen && binding && <ContextualInteraction target={binding}
+          title={<span aria-label={binding.kind==="table"?`${binding.table}桌点餐`:binding.kind==="kitchen"?"厨房":binding.kind==="repair"?"修理间":binding.kind==="cat"?"院子":binding.kind==="garden"?"花园":"家"}>{binding.kind==="table"?binding.table:null}{registered(binding.kind==="table"?"customer":binding.kind==="kitchen"?"kitchen":binding.kind==="repair"?"repairs.workshop":binding.kind==="cat"?"cats.courtyard":binding.kind==="garden"?"garden.garden":"apartment.home")}</span>}
+          dialogue={binding.kind==="table"&&order&&character&&customer?{current:{line:customer.phase==="served"?character.thanks:order.line},history:customer.phase==="ordered"?[{line:character.greeting}]:[]}:undefined}
+          onClose={()=>{if(state.ended&&binding.kind==="table")setSummaryOpen(true);dispatch({type:"world-close"});setPanel("none");}} returnFocusTo={panelTrigger.current} suspended={wordOpen}
+          onLookup={lookup} onPlay={playLine} recoveredWordIds={Object.keys(state.journal).filter(id=>state.journal[id].recovered)} freshWordIds={fresh}
+          actions={binding.kind==="table"&&customer?[{id:"service",control:<button className="world-submit" aria-label={customer.phase==="served"?"继续招呼":customer.phase==="checkout"?"递上找零":"上菜"} onClick={()=>customer.phase==="served"?leaveRestaurant():customer.phase==="checkout"?completePayment():dispatch({type:"deliver",table,now:Date.now()})}>→</button>}]:binding.kind==="kitchen"?[{id:"carry",control:<button className="world-submit" aria-label="端好了，去上菜" onClick={leaveRestaurant}>↗</button>}]:[]}>
+          {binding.kind==="table"&&order&&customer&&<RestaurantTableControls phase={customer.phase} order={order} foods={content.foods} change={change} onChange={setChange} onLookup={lookup}
+            summary={<p aria-label={`共${total}块，收到${order.paid}块`}>∑ {total} · ↓ {order.paid}</p>} changeLabel={<span>{registered("change")} {change}</span>}
+            resetControl={<button aria-label="重来" onClick={()=>setChange(0)}>↺</button>} receiptSummary={<p>∑ {total} · {registered("change")} {order.paid-total}</p>}
+            thanks={<span className="thanks-chop">{registered("thanks")}</span>}/>}
+          {binding.kind==="kitchen"&&<KitchenControls trayHeading={<span>{registered("tray")} {state.tray.length}/6</span>} foods={content.foods} tray={state.tray} pickupEnabled={state.tray.length<6&&state.customers.some(c=>c.phase==="ordered")} onPickup={foodId=>dispatch({type:"pickup",foodId})} onReturn={index=>dispatch({type:"return-food",index})} onLookup={lookup}/>}
+          {binding.kind!=="table"&&binding.kind!=="kitchen"&&<Neighbourhood contextual target={binding} state={neighbourhood} day={state.day} onAction={dispatch} onLookup={lookup} onPlay={playLine} onRecover={acknowledgeRecovery} recoveredWordIds={Object.keys(state.journal).filter(id=>state.journal[id].recovered)} freshWordIds={fresh}/>}
+          {(state.feedback==="wrong-food"||state.feedback==="wrong-change")&&binding.kind==="table"&&character&&<div role="status">{tokens(character.retry)}</div>}
+          {binding.kind === "apartment" && <ProgressionView game={state} content={content} now={Date.now()} onAction={action=>{dispatch(action);if(action.type==="follow-scenario"){setSummaryOpen(false);dispatch({type:"world-close"});close();}}} onLookup={lookup}/>}
+          <NeighbourhoodGifts state={neighbourhood} onClaim={giftId=>{const before=sessionRef.current;const next=dispatch({type:"claim-neighbourhood-gift",giftId});if(next!==before)playLine(apartmentLines.gift);}}/>
+          {giftNotice&&<FeatureLine line={apartmentLines.gift} onLookup={lookup} onPlay={playLine}/>}
+          {audioNotice}
+        </ContextualInteraction>}
+        {locationId !== "restaurant" && panel === "none" && !activityOpen && audioNotice}
         {saveError && (
           <p role="status" className="save-note">
             {ui.saveUnavailable}
           </p>
         )}
       </main>
-      {panel !== "none" && (
+      {blockingPanel && (
         <div className="modal-backdrop" onClick={close}>
           <section
-            className={`paper-panel ${panel === "kitchen" ? "kitchen-panel" : ""}`}
+            className="paper-panel"
             role="dialog"
             aria-modal={!wordOpen}
-            aria-label={
-              panel === "kitchen"
-                ? ui.kitchen
-                : panel === "journal"
-                  ? ui.journal
-                  : panel === "help"
-                    ? ui.help
-                    : ui.tableOrder(table)
-            }
+            aria-label={panel==="journal"?ui.journal:panel==="tray"?ui.tray:ui.help}
             onClick={(e) => e.stopPropagation()}
           >
             <button className="close-button" aria-label={ui.close} onClick={close}>
@@ -720,175 +546,7 @@ export default function App() {
                 </div>
               </div>
             )}
-            {panel === "table" && order && customer && character && (
-              <>
-                <div className="dialogue-heading">
-                  <span>
-                    {ui.tableCustomer(table, order.customer)}
-                  </span>
-                  <button
-                      className="round-button"
-                      aria-label={ui.replay}
-                      onClick={() => play(customer.phase === "served" ? character.thanks.audio : order.line.audio)}
-                    >
-                      <Speaker />
-                    </button>
-                </div>
-                {customer.phase === "served" ? (
-                  <>
-                    <div className="receipt">
-                      <span className="receipt-title">{ui.restaurant}</span>
-                      {order.items.map((item) => {
-                        const f = content.foods.find(
-                          (f) => f.id === item.foodId,
-                        )!;
-                        return (
-                          <p key={item.foodId}>
-                            <button data-word-lookup onClick={(event) => lookup(f.word, event.currentTarget)}>
-                              {f.word.text}
-                            </button>
-                            <span>×{item.quantity}</span>
-                            <span>{ui.money(f.price * item.quantity)}</span>
-                          </p>
-                        );
-                      })}
-                      <p className="receipt-total">
-                        <b>{ui.total(total)}</b>
-                        <span>{ui.change(order.paid - total)}</span>
-                      </p>
-                      <span className="thanks-chop">{ui.thanks}</span>
-                    </div>
-                    {tokens(character.thanks)}
-                    <button className="primary" autoFocus onClick={close}>
-                      {ui.continueServing} <span>→</span>
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    {customer.phase === "ordered" && (
-                      <div className="character-greeting">
-                        {tokens(character.greeting)}
-                        <button className="round-button" aria-label={ui.listenGreeting} onClick={() => play(character.greeting.audio)}><Speaker /></button>
-                      </div>
-                    )}
-                    {tokens(order.line)}
-                    {customer.phase === "checkout" ? (
-                      <>
-                        <p className="checkout-title">
-                          {ui.checkout(total, order.paid)}
-                        </p>
-                        <p className="subtle">{ui.changeLabel}</p>
-                        <div className="change-display">
-                          {change}
-                          <span> {ui.moneyUnit}</span>
-                        </div>
-                        <div className="money-buttons">
-                          {[1, 2, 5, 10].map((n) => (
-                            <button key={n} onClick={() => setChange((c) => c + n)}>
-                              +{ui.money(n)}
-                            </button>
-                          ))}
-                          <button onClick={() => setChange(0)}>{ui.resetChange}</button>
-                        </div>
-                        {state.feedback === "wrong-change" && (
-                          <div role="status" className="gentle-feedback">
-                            {tokens(character.retry)}
-                            <p>{ui.retryChange}</p>
-                          </div>
-                        )}
-                        <button className="primary" onClick={completePayment}>
-                          {ui.giveChange} <span>→</span>
-                        </button>
-                      </>
-                    ) : (
-                      <>
-                        <p className="subtle">{ui.orderHint}</p>
-                        {state.feedback === "wrong-food" && (
-                          <div className="gentle-feedback" role="status">
-                            {tokens(character.retry)}
-                            <p>{ui.retryFood}</p>
-                          </div>
-                        )}
-                        <div className="dialogue-actions">
-                          <button className="secondary" onClick={visitKitchen}>
-                            {ui.visitKitchen}
-                          </button>
-                          <button
-                            className="primary"
-                            onClick={() => dispatch({ type: "deliver", table, now: Date.now() })}
-                          >
-                            {ui.deliver} <span>→</span>
-                          </button>
-                        </div>
-                      </>
-                    )}
-                  </>
-                )}
-              </>
-            )}
-            {panel === "kitchen" && (
-              <>
-                <p className="eyebrow">{ui.kitchenEyebrow}</p>
-                <h2>{ui.kitchenQuestion}</h2>
-                <p className="subtle">
-                  {state.customers.some((c) => c.phase === "ordered")
-                    ? ui.kitchenHint
-                    : ui.kitchenNoOrder}
-                </p>
-                <div className="food-grid">
-                  {content.foods.map((food) => (
-                    <div className="food-choice" key={food.id}>
-                      <button
-                        className="food-pick"
-                        onClick={() =>
-                          dispatch({ type: "pickup", foodId: food.id })
-                        }
-                        aria-label={ui.take(food.word.text)}
-                        disabled={
-                          state.tray.length >= 6 ||
-                          !state.customers.some((c) => c.phase === "ordered")
-                        }
-                      >
-                        <FoodArt kind={food.kind} />
-                        <span>{food.word.text}</span>
-                        <small>{ui.money(food.price)}</small>
-                        <i>＋</i>
-                      </button>
-                      <button
-                        className="food-listen"
-                        aria-label={ui.listen(food.word.text)}
-                        data-word-lookup onClick={(event) => lookup(food.word, event.currentTarget)}
-                      >
-                        <Speaker />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-                <div className="kitchen-tray">
-                  <span>{ui.trayCount(state.tray.length)}</span>
-                  <div>
-                    {state.tray.map((id, i) => (
-                      <button
-                        key={`${id}-${i}`}
-                        aria-label={ui.returnFood(content.foods.find((f) => f.id === id)!.word.text)}
-                        onClick={() =>
-                          dispatch({ type: "return-food", index: i })
-                        }
-                      >
-                        {content.foods.find((f) => f.id === id)!.word.text}{" "}
-                        <span>×</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                {state.feedback === "full" && (
-                  <p role="status">{ui.trayFull}</p>
-                )}
-                <button className="primary" onClick={close}>
-                  {ui.readyToDeliver} <span>→</span>
-                </button>
-              </>
-            )}
+            {panel==="tray"&&<div className="tray-pocket" role="group" aria-label="托盘">{state.tray.map((id,index)=>{const food=content.foods.find(food=>food.id===id)!;return <div key={`${id}-${index}`}><FoodArt kind={food.kind}/><WordToken word={food.word} look={wordState(state.journal[food.word.id],fresh.includes(food.word.id))} onLookup={lookup}/></div>;})}</div>}
             {panel === "journal" && (
               <>
                 <p className="eyebrow">{ui.journalEyebrow}</p>
@@ -928,6 +586,7 @@ export default function App() {
           >
             <p className="eyebrow">{ui.closed}</p>
             <h2>{ui.summaryTitle}</h2>
+            <ProgressionView game={state} content={content} now={Date.now()} onAction={action=>{dispatch(action);if(action.type==="follow-scenario"){setSummaryOpen(false);dispatch({type:"world-close"});close();}}} onLookup={lookup}/>
             <div className="tally">
               <p>
                 <span>{ui.servedLabel}</span>
@@ -946,15 +605,16 @@ export default function App() {
               {ui.tomorrow(state.level)}
             </p>
             <button
-              className="primary"
+              className="primary day-next"
               onClick={() => {
-                dispatch({ type: "next-day", now: Date.now() });
+                setSummaryOpen(false);
+                dispatch({ type: "advance-world-day", now: Date.now() });
                 close();
               }}
             >
               {ui.nextDay} <span>→</span>
             </button>
-            <button className="secondary" onClick={() => visitLocation("apartment")}>{ui.visitHome}</button>
+            <button className="secondary" onClick={() => {setSummaryOpen(false);dispatch({type:"world-close"});close();}}>出去走走</button>
           </section>
         </div>
       )}

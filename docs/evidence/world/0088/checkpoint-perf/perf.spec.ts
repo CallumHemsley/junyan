@@ -1,0 +1,30 @@
+import {test,expect} from '@playwright/test';
+import {playOpening} from '../../../../../e2e/opening';
+import {readFileSync,writeFileSync} from 'node:fs';
+const root='/workspace/junyan-review-integration';const out='/workspace/junyan/docs/evidence/world/0088/checkpoint-perf';
+const ids=new Set<string>();
+function walk(v:any){if(v&&typeof v==='object'){if(v.id&&v.hanzi&&v.pinyin)ids.add(v.id);for(const x of Object.values(v))walk(x)}}
+for(const p of ['src/content/content.json',...['apartment','cats','repairs','garden'].map(f=>`src/features/${f}/content.json`)])walk(JSON.parse(readFileSync(`${root}/${p}`,'utf8')));
+async function stored(page:any){return page.evaluate(async()=>{const db=await new Promise<IDBDatabase>((resolve,reject)=>{const r=indexedDB.open('junyan-waiter',1);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});return new Promise<any>((resolve,reject)=>{const t=db.transaction('saves');const r=t.objectStore('saves').get('v1');t.oncomplete=()=>{resolve(r.result);db.close()};t.onerror=()=>reject(t.error)})})}
+async function seed(page:any,save:any){await page.evaluate(async save=>{const db=await new Promise<IDBDatabase>((resolve,reject)=>{const r=indexedDB.open('junyan-waiter',1);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});await new Promise<void>((resolve,reject)=>{const t=db.transaction('saves','readwrite');t.objectStore('saves').put(save,'v1');t.oncomplete=()=>{db.close();resolve()};t.onerror=()=>reject(t.error)});localStorage.removeItem('junyan-waiter-pending-v1')},save);await page.reload();await page.getByTestId('world-viewport').waitFor();const welcome=page.getByRole('button',{name:'开门迎客'});if(await welcome.isVisible())await welcome.click();}
+test('observe production checkpoint writes during continuous walk',async({page})=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.addInitScript(()=>{
+  const data:any={active:false,writes:[],serializations:[],frames:[]};(window as any).__perf=data;
+  const original=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){const start=performance.now();const r=original.call(this,k,v);if(data.active&&k==='junyan-waiter-pending-v1')data.writes.push({ms:performance.now()-start,bytes:new Blob([v]).size});return r};
+  const stringify=JSON.stringify;JSON.stringify=function(v:any,...args:any[]){const start=performance.now();const r=(stringify as any).call(JSON,v,...args);if(data.active&&v?.world&&v?.journal)data.serializations.push(performance.now()-start);return r} as any;
+  let last=0;const frame=(t:number)=>{if(data.active&&last)data.frames.push(t-last);last=t;requestAnimationFrame(frame)};requestAnimationFrame(frame);
+ });
+ await page.goto('./?seed=42');await playOpening(page);await page.getByRole('button',{name:'开门迎客'}).click();await page.waitForTimeout(700);
+ await page.getByTestId('world-viewport').focus();await page.keyboard.down('ArrowUp');await page.waitForTimeout(100);await page.keyboard.up('ArrowUp');await page.waitForTimeout(700);
+ const base=await stored(page);expect(base.world).toBeTruthy();const heavy=structuredClone(base);heavy.journal=Object.fromEntries([...ids].map(id=>[id,{lookups:25,lastSeen:Date.now(),recovered:true}]));
+ const runs:any[]=[];
+ async function sample(label:string,n:number){const view=page.getByTestId('world-viewport');await view.focus();const before=await stored(page);await page.evaluate(()=>{const p=(window as any).__perf;p.writes=[];p.serializations=[];p.frames=[];p.active=true});const start=Date.now();
+ await page.keyboard.down('ArrowUp');await page.keyboard.down('ArrowRight');await page.waitForTimeout(1000);await page.keyboard.up('ArrowRight');await page.keyboard.up('ArrowUp');await page.keyboard.down('ArrowDown');await page.keyboard.down('ArrowLeft');await page.waitForTimeout(1000);await page.keyboard.up('ArrowLeft');await page.keyboard.up('ArrowDown');
+ const metrics=await page.evaluate(()=>{const p=(window as any).__perf;p.active=false;return p});await page.waitForTimeout(700);const after=await stored(page);const checkpoint=await page.evaluate(()=>localStorage.getItem('junyan-waiter-pending-v1'));runs.push({label,n,wallMs:Date.now()-start-700,saveBytes:Buffer.byteLength(JSON.stringify(before)),journalWords:Object.keys(before.journal).length,before:before.world,after:after.world,checkpoint,metrics});expect(metrics.writes.length).toBeGreaterThan(30);expect(Object.keys(after.journal)).toHaveLength(Object.keys(before.journal).length);return after;}
+ await sample('ordinary',0);
+ for(let n=0;n<5;n++){if(n>0){await seed(page,base);await sample('ordinary',n)}await seed(page,heavy);await sample('full-registered-journal',n)}
+ const last=await stored(page);await page.reload();await page.getByTestId('world-viewport').waitFor();await page.waitForTimeout(700);expect((await stored(page)).world.position).toEqual(last.world.position);
+ const cdp=await page.context().newCDPSession(page);await cdp.send('Profiler.enable');await cdp.send('Profiler.start');await page.getByTestId('world-viewport').focus();await page.keyboard.down('ArrowUp');await page.keyboard.down('ArrowRight');await page.waitForTimeout(1000);await page.keyboard.up('ArrowRight');await page.keyboard.up('ArrowUp');const profile=await cdp.send('Profiler.stop');writeFileSync(`${out}/separate-profile.json`,JSON.stringify(profile));
+ writeFileSync(`${out}/measurements.json`,JSON.stringify({source:'e6270d095dead66ccb1d6fe9fb1815bbee86d702',viewport:{width:390,height:664},claim:'Observe current production movement storage cost under ordinary and fully registered vocabulary saves; no physical-phone or optimization comparison claim.',instrumentation:'Native setItem retained; JSON.stringify retained; wrappers and RAF observer add overhead. Full journal is seeded diagnostic load; ordinary first run normal opening, later ordinary repeats restore captured ordinary save. Shared host concurrent reviews, no throttling.',registeredWords:ids.size,errors,runs},null,2));expect(errors).toEqual([]);
+});

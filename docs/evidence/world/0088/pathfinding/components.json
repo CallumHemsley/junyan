@@ -1,0 +1,13 @@
+{
+  "method": "half-tile valid standing grid, edges tested by published canWalk; not proof of all continuous-space topology",
+  "components": [
+    {
+      "count": 7462,
+      "sample": {
+        "x": 0.5,
+        "y": 29.5
+      },
+      "containsSpawn": true
+    }
+  ]
+}

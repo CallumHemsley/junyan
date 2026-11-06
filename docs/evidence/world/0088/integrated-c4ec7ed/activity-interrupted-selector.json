@@ -1,0 +1,220 @@
+{
+  "config": {
+    "argv": [
+      "/workspace/.junyan-tools/node_modules/node/bin/node",
+      "/workspace/junyan/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "docs/evidence/0088/integrated-c4ec7ed/activity.config.ts",
+      "--project",
+      "desktop"
+    ],
+    "configFile": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/activity.config.ts",
+    "rootDir": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/activity-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed",
+        "testIgnore": [],
+        "testMatch": [
+          "activity.spec.ts"
+        ],
+        "timeout": 900000
+      },
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/activity-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed",
+        "testIgnore": [],
+        "testMatch": [
+          "activity.spec.ts"
+        ],
+        "timeout": 900000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/activity-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed",
+        "testIgnore": [],
+        "testMatch": "activity.spec.ts",
+        "timeout": 900000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5490/junyan/",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "video": "on",
+          "trace": "on",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "activity-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "/workspace/.junyan-tools/node_modules/node/bin/node node_modules/vite/bin/vite.js preview --base /junyan/ --host 127.0.0.1 --port 5490 --strictPort",
+      "cwd": "/workspace/junyan-review-integration",
+      "url": "http://127.0.0.1:5490/junyan/",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "activity.spec.ts",
+      "file": "activity.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "physical service, journal, cats, furnishing undo, garden and repair continuity",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 900000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "interrupted",
+                  "duration": 103910,
+                  "error": {
+                    "message": "Error: page.evaluate: Target page, context or browser has been closed",
+                    "stack": "Error: page.evaluate: Target page, context or browser has been closed\n    at game (/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/activity.spec.ts:11:43)\n    at /workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/activity.spec.ts:81:162",
+                    "location": {
+                      "file": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/activity.spec.ts",
+                      "column": 43,
+                      "line": 11
+                    },
+                    "snippet": "   9 | const dir='docs/evidence/0088/integrated-c4ec7ed';\n  10 | const maps=Object.fromEntries([restaurantMap,...definitions].map(m=>[m.id,m]));\n> 11 | async function game(page:any){return page.evaluate(async()=>{const pending=localStorage.getItem('junyan-waiter-pending-v1');if(pending)return JSON.parse(pending);const db=await new Promise<IDBDatabase>((resolve,reject)=>{const r=indexedDB.open('junyan-waiter',1);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});return await new Promise<any>((resolve,reject)=>{const t=db.transaction('saves');const r=t.objectStore('saves').get('v1');t.oncomplete=()=>{resolve(r.result);db.close()};t.onerror=()=>reject(t.error)})})}\n     |                                           ^\n  12 | async function world(page:any){return (await game(page))?.world??{mapId:'restaurant',position:{x:12,y:17},activeActivity:null}}\n  13 | async function walkTo(page:any,target:any,expectedMap:string){\n  14 |  const canvas=page.getByTestId('world-viewport').locator('canvas');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/activity.spec.ts",
+                        "column": 43,
+                        "line": 11
+                      },
+                      "message": "Error: page.evaluate: Target page, context or browser has been closed\n\n   9 | const dir='docs/evidence/0088/integrated-c4ec7ed';\n  10 | const maps=Object.fromEntries([restaurantMap,...definitions].map(m=>[m.id,m]));\n> 11 | async function game(page:any){return page.evaluate(async()=>{const pending=localStorage.getItem('junyan-waiter-pending-v1');if(pending)return JSON.parse(pending);const db=await new Promise<IDBDatabase>((resolve,reject)=>{const r=indexedDB.open('junyan-waiter',1);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});return await new Promise<any>((resolve,reject)=>{const t=db.transaction('saves');const r=t.objectStore('saves').get('v1');t.oncomplete=()=>{resolve(r.result);db.close()};t.onerror=()=>reject(t.error)})})}\n     |                                           ^\n  12 | async function world(page:any){return (await game(page))?.world??{mapId:'restaurant',position:{x:12,y:17},activeActivity:null}}\n  13 | async function walkTo(page:any,target:any,expectedMap:string){\n  14 |  const canvas=page.getByTestId('world-viewport').locator('canvas');\n    at game (/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/activity.spec.ts:11:43)\n    at /workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/activity.spec.ts:81:162"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T00:27:08.935Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/activity-results/activity-physical-service--82852-arden-and-repair-continuity-desktop/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/activity-results/activity-physical-service--82852-arden-and-repair-continuity-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/activity-results/activity-physical-service--82852-arden-and-repair-continuity-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/junyan/docs/evidence/0088/integrated-c4ec7ed/activity.spec.ts",
+                    "column": 43,
+                    "line": 11
+                  }
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "616be4781cf8c32ae453-0e6fafe6f11ce76da9c3",
+          "file": "activity.spec.ts",
+          "line": 38,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-06T00:27:08.092Z",
+    "duration": 106366.919,
+    "expected": 0,
+    "skipped": 1,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

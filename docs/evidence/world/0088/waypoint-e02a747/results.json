@@ -1,0 +1,269 @@
+{
+  "head": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+  "method": "Exact new production geometry/advanceRoute; complete authored workshop route; prior controller sequence reproduced separately as control. No browser/player claim.",
+  "original": [
+    {
+      "x": 11,
+      "y": 7.5
+    },
+    {
+      "x": 11,
+      "y": 10.5
+    },
+    {
+      "x": 8,
+      "y": 10.8
+    }
+  ],
+  "results": [
+    {
+      "label": "prior-16",
+      "timing": [
+        16
+      ],
+      "oldController": true,
+      "position": {
+        "x": 8,
+        "y": 10.8
+      },
+      "frames": 115,
+      "blocked": false,
+      "remaining": [],
+      "reached": true,
+      "segmentsValid": true,
+      "maxStep": 0.08000000000000022
+    },
+    {
+      "label": "corrected-16",
+      "timing": [
+        16
+      ],
+      "oldController": false,
+      "position": {
+        "x": 8,
+        "y": 10.8
+      },
+      "frames": 114,
+      "blocked": false,
+      "remaining": [],
+      "reached": true,
+      "segmentsValid": true,
+      "maxStep": 0.08000000000000022
+    },
+    {
+      "label": "prior-16.6666666667",
+      "timing": [
+        16.6666666667
+      ],
+      "oldController": true,
+      "position": {
+        "x": 8,
+        "y": 10.8
+      },
+      "frames": 110,
+      "blocked": false,
+      "remaining": [],
+      "reached": true,
+      "segmentsValid": true,
+      "maxStep": 0.08333333333350083
+    },
+    {
+      "label": "corrected-16.6666666667",
+      "timing": [
+        16.6666666667
+      ],
+      "oldController": false,
+      "position": {
+        "x": 8,
+        "y": 10.8
+      },
+      "frames": 110,
+      "blocked": false,
+      "remaining": [],
+      "reached": true,
+      "segmentsValid": true,
+      "maxStep": 0.08333333333350083
+    },
+    {
+      "label": "prior-20",
+      "timing": [
+        20
+      ],
+      "oldController": true,
+      "position": {
+        "x": 11,
+        "y": 10.49999999999999
+      },
+      "frames": 62,
+      "blocked": true,
+      "remaining": [],
+      "reached": false,
+      "segmentsValid": true,
+      "maxStep": 0.10000000000000014
+    },
+    {
+      "label": "corrected-20",
+      "timing": [
+        20
+      ],
+      "oldController": false,
+      "position": {
+        "x": 8,
+        "y": 10.8
+      },
+      "frames": 91,
+      "blocked": false,
+      "remaining": [],
+      "reached": true,
+      "segmentsValid": true,
+      "maxStep": 0.10000000000000063
+    },
+    {
+      "label": "prior-33.3333333333",
+      "timing": [
+        33.3333333333
+      ],
+      "oldController": true,
+      "position": {
+        "x": 11,
+        "y": 10.499999999997016
+      },
+      "frames": 38,
+      "blocked": true,
+      "remaining": [],
+      "reached": false,
+      "segmentsValid": true,
+      "maxStep": 0.16666666666650135
+    },
+    {
+      "label": "corrected-33.3333333333",
+      "timing": [
+        33.3333333333
+      ],
+      "oldController": false,
+      "position": {
+        "x": 8,
+        "y": 10.8
+      },
+      "frames": 55,
+      "blocked": false,
+      "remaining": [],
+      "reached": true,
+      "segmentsValid": true,
+      "maxStep": 0.1666666666665018
+    },
+    {
+      "label": "prior-40",
+      "timing": [
+        40
+      ],
+      "oldController": true,
+      "position": {
+        "x": 11,
+        "y": 10.49999999999999
+      },
+      "frames": 32,
+      "blocked": true,
+      "remaining": [],
+      "reached": false,
+      "segmentsValid": true,
+      "maxStep": 0.20000000000000184
+    },
+    {
+      "label": "corrected-40",
+      "timing": [
+        40
+      ],
+      "oldController": false,
+      "position": {
+        "x": 8,
+        "y": 10.8
+      },
+      "frames": 46,
+      "blocked": false,
+      "remaining": [],
+      "reached": true,
+      "segmentsValid": true,
+      "maxStep": 0.20000000000000184
+    },
+    {
+      "label": "corrected-jitter",
+      "timing": [
+        0,
+        16,
+        40,
+        20,
+        33.3333333333,
+        16.6666666667
+      ],
+      "oldController": false,
+      "position": {
+        "x": 7.999999999999999,
+        "y": 10.8
+      },
+      "frames": 87,
+      "blocked": false,
+      "remaining": [],
+      "reached": true,
+      "segmentsValid": true,
+      "maxStep": 0.20000000000000184
+    },
+    {
+      "label": "corrected-duplicate-residual",
+      "timing": [
+        20,
+        40,
+        16
+      ],
+      "oldController": false,
+      "position": {
+        "x": 8,
+        "y": 10.8
+      },
+      "frames": 24,
+      "blocked": false,
+      "remaining": [],
+      "reached": true,
+      "segmentsValid": true,
+      "maxStep": 0.20000000000000126
+    }
+  ],
+  "zeroDt": {
+    "position": {
+      "x": 7.999999306418678,
+      "y": 6.799999583851207
+    },
+    "remaining": [
+      {
+        "x": 11,
+        "y": 7.5
+      },
+      {
+        "x": 11,
+        "y": 10.5
+      },
+      {
+        "x": 8,
+        "y": 10.8
+      }
+    ],
+    "blocked": false
+  },
+  "emptyRoute": {
+    "position": {
+      "x": 7.999999306418678,
+      "y": 6.799999583851207
+    },
+    "remaining": [],
+    "blocked": false
+  },
+  "collisionControl": {
+    "position": {
+      "x": 4.699999999999999,
+      "y": 5
+    },
+    "remaining": [],
+    "blocked": true
+  },
+  "dynamicSafeFunctionUnchanged": true
+}

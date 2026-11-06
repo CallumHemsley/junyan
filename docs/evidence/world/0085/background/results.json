@@ -1,0 +1,64 @@
+[
+  {
+    "name": "desktop",
+    "width": 1280,
+    "height": 1000,
+    "dpr": 1,
+    "first": {
+      "elapsedMs": 1866.578,
+      "paused": false,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "distance": 0,
+      "yaw": 0,
+      "moving": false
+    },
+    "walking": {
+      "elapsedMs": 2833.1779999999994,
+      "paused": false,
+      "offset": {
+        "x": 0.9543820225674828,
+        "y": -0.9543820225674828
+      },
+      "distance": 1.3496999999999995,
+      "yaw": -0.7853981633974483,
+      "moving": false
+    },
+    "errors": [],
+    "reducedMotionPixelsEqual": true,
+    "scope": "Unregistered visual candidate. Courtyard backdrop is real production paintWorld; staged resident cohort is an owned art fixture, not a life/map integration or collision proof."
+  },
+  {
+    "name": "phone",
+    "width": 390,
+    "height": 844,
+    "dpr": 2,
+    "first": {
+      "elapsedMs": 1299.4459999999997,
+      "paused": false,
+      "offset": {
+        "x": 0,
+        "y": 0
+      },
+      "distance": 0,
+      "yaw": 0,
+      "moving": false
+    },
+    "walking": {
+      "elapsedMs": 2199.045999999999,
+      "paused": false,
+      "offset": {
+        "x": 0.8835299230925906,
+        "y": -0.8835299230925906
+      },
+      "distance": 1.2494999999999992,
+      "yaw": -0.7853981633974483,
+      "moving": false
+    },
+    "errors": [],
+    "reducedMotionPixelsEqual": true,
+    "scope": "Unregistered visual candidate. Courtyard backdrop is real production paintWorld; staged resident cohort is an owned art fixture, not a life/map integration or collision proof."
+  }
+]

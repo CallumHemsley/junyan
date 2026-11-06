@@ -1,0 +1,144 @@
+import { drawFoliage, foliageBounds, type FoliageSpecies } from './foliage';
+/** Original landscape art. The caller supplies the shared camera projection. */
+export type LandscapePoint = { x: number; y: number };
+export type LandscapeProp = {
+  kind: string; position: LandscapePoint; width: number; height: number; variant: number | string;
+};
+export type LandscapeProject = (x: number, y: number, z?: number) => { x: number; y: number };
+
+
+export function foliageFor(prop: LandscapeProp): FoliageSpecies | undefined {
+  return prop.kind==='willow'?'willow':prop.kind==='mature-tree'?'camphor':prop.kind==='tree'?(Number(prop.variant)===2?'fruit':'camphor'):undefined;
+}
+export function landscapeFoliageBounds(prop: LandscapeProp) {
+  const species=foliageFor(prop); if(!species)return undefined;
+  const size=prop.kind==='mature-tree'?Math.min(1.2,prop.width/7):prop.kind==='willow'?Math.min(1.05,prop.width/6.5):Math.min(1,prop.width/6);
+  const raw=foliageBounds({species,seed:Number(prop.variant)||0});
+  return {minX:raw.minX*size,minY:raw.minY*size,maxX:raw.maxX*size,maxY:raw.maxY*size,size};
+}
+// Cache native groups, then composite once. Overlapping leaf spans must not accumulate
+// opacity when the shared compositor fades a canopy over the player.
+const foliageCache=new Map<string,HTMLCanvasElement>();
+const foliageBases=['#395b49','#537451','#789252','#a7b56b','#c3c780','#405f52','#5b7b5b','#819b68','#acb980','#c5c98e','#455e45','#627d4c','#899952','#b5b875','#d3cb8d','#61583f','#897249','#b29a69','#ba874b','#e3b771'];
+function foliageGroup(ctx:CanvasRenderingContext2D,prop:LandscapeProp,elapsedMs:number,reducedMotion:boolean,shadeColor:(base:string)=>string){
+  const species=foliageFor(prop)!;const seed=Number(prop.variant)||0,b=foliageBounds({species,seed});
+  const colors=new Map(foliageBases.map(base=>[base,shadeColor(base)]));
+  const frame=species==='willow'&&!reducedMotion?Math.floor(elapsedMs/150):0;
+  const key=[species,seed,frame,reducedMotion,...colors.values()].join('|');
+  let sprite=foliageCache.get(key);
+  if(!sprite){
+    sprite=ctx.canvas.ownerDocument.createElement('canvas');sprite.width=b.maxX-b.minX+1;sprite.height=b.maxY-b.minY+1;
+    const group=sprite.getContext('2d')!;group.translate(-b.minX,-b.minY);
+    drawFoliage(group,{species,seed,elapsedMs:frame*150,reducedMotion,shadeColor:base=>colors.get(base)??shadeColor(base)});
+    if(foliageCache.size>=128)foliageCache.delete(foliageCache.keys().next().value!);foliageCache.set(key,sprite);
+  }
+  const size=landscapeFoliageBounds(prop)!.size;
+  ctx.save();ctx.scale(size,size);ctx.imageSmoothingEnabled=false;ctx.drawImage(sprite,b.minX,b.minY);ctx.restore();
+}
+
+const colors: Record<string, string> = {
+  grass: '#869d62', moss: '#637f60', 'orchard-floor': '#a1aa70', ridge: '#abb39a',
+  water: '#639aa3', sand: '#d3c397', path: '#c6b78b', 'stone-path': '#a8b0a0',
+  boardwalk: '#ac9066', bridge: '#b6a079',
+};
+export function landscapeMaterialColor(material: string): string | undefined {
+  return colors[material];
+}
+
+export function drawLandscapeProp(
+  ctx: CanvasRenderingContext2D, prop: LandscapeProp, project: LandscapeProject,
+  unit = 18, elapsedMs = 0, reducedMotion = false,
+  shadeColor: (base: string) => string = base => base,
+): boolean {
+  const p = project(prop.position.x, prop.position.y, 0);
+  const scale = unit / 18;
+  ctx.save(); ctx.translate(Math.round(p.x), Math.round(p.y)); ctx.scale(scale, scale);
+  const block = (x: number, y: number, w: number, h: number, color: string) => {
+    ctx.fillStyle = shadeColor(color); ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h));
+  };
+  const polygon = (points: number[][], color: string) => {
+    ctx.fillStyle = shadeColor(color); ctx.beginPath();
+    points.forEach(([x, y], i) => i ? ctx.lineTo(Math.round(x), Math.round(y)) : ctx.moveTo(Math.round(x), Math.round(y)));
+    ctx.closePath(); ctx.fill();
+  };
+  const crown = (x: number, y: number, w: number, h: number, dark: string, mid: string, light: string) => {
+    polygon([[x-w,y],[x-w+3,y-h*.5],[x-w*.6,y-h*.5],[x-w*.6,y-h*.85],[x-3,y-h*.85],[x-3,y-h],[x+w*.5,y-h],[x+w*.5,y-h*.76],[x+w-2,y-h*.76],[x+w-2,y-h*.4],[x+w,y-h*.4],[x+w,y],[x+w*.6,y+4],[x-w*.5,y+4]],dark);
+    polygon([[x-w+4,y-3],[x-w+4,y-h*.4],[x-w*.5,y-h*.4],[x-w*.5,y-h*.8],[x+w*.35,y-h*.8],[x+w*.35,y-h*.6],[x+w-5,y-h*.6],[x+w-5,y-h*.2],[x+w*.3,y-1]],mid);
+    block(x-w*.5,y-h*.77,w*.65,3,light); block(x-w*.75,y-h*.4,w*.5,3,light); block(x+w*.2,y-h*.5,5,2,light);
+  };
+  if(foliageFor(prop)){foliageGroup(ctx,prop,elapsedMs,reducedMotion,shadeColor);ctx.restore();return true;}
+  const v = Number(prop.variant) || 0;
+  let painted = true;
+  switch (prop.kind) {
+    case 'fern':
+      for(let i=-3;i<=3;i++){const x=i*4;polygon([[0,0],[x-3,-9-Math.abs(i)*2],[x+1,-13-Math.abs(i)*2]],i%2?'#607e54':'#9caf6a');block(x/2,-5-Math.abs(i),2,2,'#bdd08b');}break;
+    case 'bamboo':
+      for(let i=-2;i<=2;i++) {
+        const x=i*5, top=-40-((i+3)%3)*6;
+        block(x,top,3,-top,'#638761'); block(x,top,1,-top,'#aec18b');
+        for(let y=top+5;y<-4;y+=9) {block(x-1,y,5,1,'#405f4b'); polygon([[x,y],[x-12,y-7],[x-6,y-8]],'#8ca671');polygon([[x+2,y-3],[x+14,y-10],[x+8,y-3]],'#60845c');}
+      }
+      break;
+    case 'rock': {
+      const w=prop.width*6, h=prop.height*5;
+      polygon([[-w,0],[-w*.8,-h],[-w*.2,-h*1.5],[w*.65,-h*1.3],[w,-h*.3],[w*.5,3]],'#75857d');
+      polygon([[-w*.8,-h],[-w*.2,-h*1.5],[w*.65,-h*1.3],[w*.4,-h*.6],[-w*.3,-h*.3]],'#b6bba5');
+      polygon([[w*.4,-h*.6],[w*.65,-h*1.3],[w,-h*.3],[w*.5,3]],'#5e756e');block(-w*.3,-h*.6,5,2,'#8d9e7b');break;
+    }
+    case 'reeds':
+      for(let i=0;i<9;i++) {const x=(i%5)*3-6,y=-4-(i%3)*3;block(x,y-11-i%4,1,13+i%4,'#71855c'); block(x-1,y-15-i%4,3,5,'#a69c68');}break;
+    case 'lilies':
+      for(const [x,y] of [[-5,0],[4,-3],[5,3]]) {polygon([[x-4,y],[x,y-2],[x+5,y],[x,y+2]],'#819b6a');block(x,y-3,2,2,'#f2e4be');}break;
+    case 'shrub':
+      crown(0,-3,10,10,'#557851','#83985f','#afba7c');break;
+    case 'flowers':
+      for(let i=0;i<5;i++){let x=(i*7)%15-7,y=(i*3)%8-4;block(x,y-4,1,6,'#668457');block(x-1,y-6,3,3,i%2?'#e8d49a':'#d0d8b5');}break;
+    case 'seedling-bed':
+      polygon([[-23,-3],[0,-14],[23,-3],[0,9]],'#746243');
+      polygon([[-20,-5],[0,-14],[20,-5],[0,5]],'#786943');
+      polygon([[-23,-3],[0,9],[0,5],[-23,-7]],'#a68c5a');
+      polygon([[0,9],[23,-3],[23,-7],[0,5]],'#856c48');
+      for(const [x,y] of [[-12,-5],[-5,-8],[2,-11],[-4,0],[3,-3],[10,-6]]){block(x,y-4,1,5,'#637d48');polygon([[x,y-2],[x-4,y-6],[x,y-5],[x+4,y-8],[x+2,y-2]],'#a5bc72');}break;
+    case 'pavilion':
+      polygon([[-34,0],[0,-18],[36,0],[0,18]],'#b1ae94');
+      for(const [x,y] of [[-26,-1],[0,-14],[26,-1],[0,12]]) {block(x-2,y-35,4,35,'#7e6d4e');block(x-1,y-35,1,35,'#b79a67');}
+      polygon([[-43,-35],[0,-59],[43,-35],[0,-12]],'#526b65');
+      polygon([[-43,-35],[0,-59],[0,-49],[-34,-31]],'#82958a');
+      polygon([[0,-59],[43,-35],[33,-31],[0,-49]],'#617c75');
+      polygon([[-46,-35],[0,-15],[46,-35],[43,-30],[0,-10],[-43,-30]],'#3e574f');
+      for(let i=-3;i<=3;i++) {block(i*7,-35+Math.abs(i)*2,3,2,'#a1b2a0');}
+      block(-2,-63,4,8,'#c4b18b');break;
+    case 'bench':
+      for(const x of [-15,14]) {block(x,-10,3,12,'#655f49');block(x,-23,2,18,'#655f49');}
+      for(let i=0;i<3;i++)block(-18,-23+i*4,39,3,i===0?'#b8a06b':'#9c895e');
+      polygon([[-21,-10],[0,-16],[22,-9],[1,-3]],'#c2aa76');break;
+    case 'crates':
+      for(const [x,y] of [[-10,0],[8,-5]]){polygon([[x-9,y-5],[x,y-10],[x+9,y-5],[x,y]],'#b39a69');block(x-9,y-5,18,7,'#92764f');block(x-7,y-4,14,2,'#594e3d');block(x-9,y-1,18,2,'#bea16b');for(const dx of [-7,5])block(x+dx,y-4,2,7,'#d0b67c');}break;
+    case 'tied-rope':
+      for(let i=0;i<18;i++)block(-16+i*2,-3+Math.round(Math.sin(i/17*Math.PI)*5),2,1,'#c3b083');break;
+    case 'worn-stones':
+      for(const [x,y] of [[-9,0],[2,-5],[13,2],[-1,7]]){polygon([[x-6,y],[x-4,y-3],[x+5,y-2],[x+7,y+1],[x,y+3]],'#a4a58c');block(x-3,y-2,6,1,'#c2bfa1');}break;
+    case 'cart':
+      for(const x of [-14,13]){block(x-3,-4,6,7,'#4c584d');block(x-1,-3,2,5,'#a5a78c');}
+      polygon([[-18,-13],[0,-21],[19,-13],[0,-4]],'#bba371');block(-18,-17,36,4,'#80694b');
+      for(let i=0;i<7;i++)block(-13+i*4,-22+(i%2)*3,4,4,i%2?'#d2bd79':'#a9b875');break;
+    case 'steps':
+      for(let i=0;i<6;i++)polygon([[-17,-i*4],[0,-8-i*4],[17,-i*4],[0,8-i*4]],i%2?'#9ba58f':'#bbc0a4');break;
+    case 'shrine':
+      block(-17,-6,34,7,'#b4b6a0');block(-13,-26,26,21,'#8f927d');block(-6,-20,12,14,'#50675b');
+      polygon([[-24,-28],[0,-43],[24,-28],[0,-17]],'#58736a');block(-23,-28,46,3,'#364f48');block(-2,-44,4,5,'#bdb18a');break;
+    case 'boat':
+      polygon([[-29,-1],[-17,-10],[21,-5],[30,2],[13,10],[-17,6]],'#6b6b52');polygon([[-23,-1],[-15,-7],[19,-2],[23,2],[11,6],[-15,3]],'#bca475');
+      for(let i=-2;i<3;i++)block(i*7,-5+i,2,10,'#8c7958');block(-3,-14,2,19,'#d1bd91');break;
+    case 'mooring': block(-3,-16,6,17,'#7c6d4c');block(-5,-17,10,3,'#b8a376');break;
+    case 'stool': block(-6,-8,3,9,'#756647');block(4,-8,3,9,'#756647');block(-8,-11,17,4,'#b7a06d');break;
+    case 'laundry':
+      block(-29,-30,3,31,'#807152');block(27,-30,3,31,'#807152');block(-29,-29,59,1,'#d3c59e');
+      for(let i=-2;i<=2;i++){block(i*10-4,-28,8,14+i%2*4,i%2?'#b8ccbe':'#e3dcc1');block(i*10-3,-27,2,11,'#c5cdb8');}break;
+    case 'picnic':
+      polygon([[-22,-3],[0,-14],[23,-3],[0,10]],'#c4ba8a');for(let i=-1;i<=1;i++)block(i*8-1,-4,3,3,'#8e9a78');block(-3,-12,8,5,'#b39560');break;
+    default: painted=false;
+  }
+  ctx.restore();
+  return painted;
+}

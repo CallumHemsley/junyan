@@ -1,3 +1,4 @@
+import { interactAt } from "./world-journey";
 import { test, expect } from "@playwright/test";
 import { withSkip } from "./opening";
 import { probeAudio, silentResponse } from "./audio-fixtures";
@@ -16,7 +17,7 @@ test("a native resource error after playback starts stays visible until replay",
   await page.route("**/unavailable-audio.wav", route => route.abort("failed"));
   await page.goto(withSkip("/?test=1&seed=42"));
   await page.getByRole("button", { name: "开门迎客" }).click();
-  await page.getByTestId("table-1").click();
+  await interactAt(page, "restaurant.table-1");
   await expect.poll(() => page.evaluate(() => (window as any).__audioProbe.at(-1)?.status)).toBe("playing");
   await expect.poll(() => page.evaluate(() => (window as any).__lastAudio.currentTime)).toBeGreaterThan(0);
   await page.evaluate(async () => {
@@ -30,7 +31,7 @@ test("a native resource error after playback starts stays visible until replay",
   expect(await page.evaluate(() => (window as any).__lastAudio.error?.code)).toBeGreaterThan(0);
   await expect(page.getByText(failure)).toBeVisible();
   await page.screenshot({ path: info.outputPath("resource-failure.png"), fullPage: true });
-  await page.getByRole("button", { name: "再听一遍", exact: true }).click();
+  await page.locator(".world-context-dialogue .round-button").first().click();
   await expect.poll(() => page.evaluate(() => (window as any).__audioProbe.at(-1)?.status)).toBe("playing");
   await expect(page.getByText(failure)).toBeHidden();
   await page.evaluate(async () => {
@@ -56,3 +57,5 @@ test("a native resource error after playback starts stays visible until replay",
   });
   await info.attach("expected-resource-error-console", { body: JSON.stringify(consoleErrors), contentType: "application/json" });
 });
+
+test.beforeEach(async ({ page }) => { page.setDefaultTimeout(8_000); });

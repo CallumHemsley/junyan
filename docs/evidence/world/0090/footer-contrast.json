@@ -1,0 +1,14 @@
+{
+  "before": {
+    "foreground": "rgb(251, 247, 239)",
+    "background": "rgb(241, 234, 221)",
+    "contrast": 1.1195882486984923
+  },
+  "after": {
+    "foreground": "rgb(36, 29, 22)",
+    "background": "rgb(241, 234, 221)",
+    "contrast": 13.905369230313035
+  },
+  "callback": "pointer and Enter activation passed",
+  "profile": "owned harness with same primary class and contextual footer cascade as e02; e02 assembly unchanged"
+}

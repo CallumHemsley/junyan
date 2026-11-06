@@ -1,0 +1,366 @@
+[
+  {
+    "name": "desktop",
+    "errors": [],
+    "fixture": "valid saved apartment arrival; actions and reload use normal UI and real IndexedDB",
+    "first": [
+      {
+        "id": "bed",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      },
+      {
+        "id": "table",
+        "x": 2,
+        "y": 1,
+        "rotation": 0
+      }
+    ],
+    "undo": [
+      {
+        "id": "bed",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      },
+      {
+        "id": "table",
+        "x": 2,
+        "y": 1,
+        "rotation": 0
+      }
+    ],
+    "reloaded": [
+      {
+        "id": "bed",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      },
+      {
+        "id": "table",
+        "x": 2,
+        "y": 1,
+        "rotation": 0
+      },
+      {
+        "id": "chair",
+        "x": 4,
+        "y": 1,
+        "rotation": 0
+      },
+      {
+        "id": "rug",
+        "x": 2,
+        "y": 1,
+        "rotation": 0
+      },
+      {
+        "id": "cushion",
+        "x": 3,
+        "y": 3,
+        "rotation": 0
+      },
+      {
+        "id": "vase",
+        "x": 4,
+        "y": 3,
+        "rotation": 0
+      }
+    ],
+    "preview": {
+      "selected": "table",
+      "placements": [
+        {
+          "id": "bed",
+          "x": 0,
+          "y": 0,
+          "rotation": 0
+        }
+      ],
+      "pixelsChanged": true
+    },
+    "home": {
+      "placements": [
+        {
+          "id": "bed",
+          "x": 0,
+          "y": 0,
+          "rotation": 0
+        },
+        {
+          "id": "table",
+          "x": 2,
+          "y": 1,
+          "rotation": 0
+        },
+        {
+          "id": "chair",
+          "x": 4,
+          "y": 1,
+          "rotation": 0
+        },
+        {
+          "id": "rug",
+          "x": 2,
+          "y": 1,
+          "rotation": 0
+        },
+        {
+          "id": "cushion",
+          "x": 3,
+          "y": 3,
+          "rotation": 0
+        },
+        {
+          "id": "vase",
+          "x": 4,
+          "y": 3,
+          "rotation": 0
+        }
+      ],
+      "colour": "blue",
+      "rugSize": "small",
+      "owned": [
+        "bed",
+        "table",
+        "chair",
+        "rug",
+        "cushion",
+        "vase"
+      ],
+      "starterClaimed": true,
+      "lastGiftDay": 1,
+      "selected": null,
+      "draft": null,
+      "undo": {
+        "placements": [
+          {
+            "id": "bed",
+            "x": 0,
+            "y": 0,
+            "rotation": 0
+          },
+          {
+            "id": "table",
+            "x": 2,
+            "y": 1,
+            "rotation": 0
+          },
+          {
+            "id": "chair",
+            "x": 4,
+            "y": 1,
+            "rotation": 0
+          },
+          {
+            "id": "rug",
+            "x": 2,
+            "y": 1,
+            "rotation": 0
+          },
+          {
+            "id": "cushion",
+            "x": 3,
+            "y": 3,
+            "rotation": 0
+          }
+        ],
+        "colour": "blue",
+        "rugSize": "small"
+      },
+      "notice": "okay"
+    },
+    "journal": {
+      "lookups": 2,
+      "lastSeen": 1.5,
+      "recovered": true
+    },
+    "canvasBefore": "ac61c2efee18c0d325d71a40f633216cc65f473a109884296ed8db3373d3b844",
+    "canvasAfter": "b0865ad23f4aec8dfe7d83a35863268101f811dacee95a0e3fc99f45d6a3534b",
+    "furniturePixelsChanged": true
+  },
+  {
+    "name": "phone",
+    "errors": [],
+    "fixture": "valid saved apartment arrival; actions and reload use normal UI and real IndexedDB",
+    "first": [
+      {
+        "id": "bed",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      },
+      {
+        "id": "table",
+        "x": 2,
+        "y": 1,
+        "rotation": 0
+      }
+    ],
+    "undo": [
+      {
+        "id": "bed",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      },
+      {
+        "id": "table",
+        "x": 2,
+        "y": 1,
+        "rotation": 0
+      }
+    ],
+    "reloaded": [
+      {
+        "id": "bed",
+        "x": 0,
+        "y": 0,
+        "rotation": 0
+      },
+      {
+        "id": "table",
+        "x": 2,
+        "y": 1,
+        "rotation": 0
+      },
+      {
+        "id": "chair",
+        "x": 4,
+        "y": 1,
+        "rotation": 0
+      },
+      {
+        "id": "rug",
+        "x": 2,
+        "y": 1,
+        "rotation": 0
+      },
+      {
+        "id": "cushion",
+        "x": 3,
+        "y": 3,
+        "rotation": 0
+      },
+      {
+        "id": "vase",
+        "x": 4,
+        "y": 3,
+        "rotation": 0
+      }
+    ],
+    "preview": {
+      "selected": "table",
+      "placements": [
+        {
+          "id": "bed",
+          "x": 0,
+          "y": 0,
+          "rotation": 0
+        }
+      ],
+      "pixelsChanged": true
+    },
+    "home": {
+      "placements": [
+        {
+          "id": "bed",
+          "x": 0,
+          "y": 0,
+          "rotation": 0
+        },
+        {
+          "id": "table",
+          "x": 2,
+          "y": 1,
+          "rotation": 0
+        },
+        {
+          "id": "chair",
+          "x": 4,
+          "y": 1,
+          "rotation": 0
+        },
+        {
+          "id": "rug",
+          "x": 2,
+          "y": 1,
+          "rotation": 0
+        },
+        {
+          "id": "cushion",
+          "x": 3,
+          "y": 3,
+          "rotation": 0
+        },
+        {
+          "id": "vase",
+          "x": 4,
+          "y": 3,
+          "rotation": 0
+        }
+      ],
+      "colour": "blue",
+      "rugSize": "small",
+      "owned": [
+        "bed",
+        "table",
+        "chair",
+        "rug",
+        "cushion",
+        "vase"
+      ],
+      "starterClaimed": true,
+      "lastGiftDay": 1,
+      "selected": null,
+      "draft": null,
+      "undo": {
+        "placements": [
+          {
+            "id": "bed",
+            "x": 0,
+            "y": 0,
+            "rotation": 0
+          },
+          {
+            "id": "table",
+            "x": 2,
+            "y": 1,
+            "rotation": 0
+          },
+          {
+            "id": "chair",
+            "x": 4,
+            "y": 1,
+            "rotation": 0
+          },
+          {
+            "id": "rug",
+            "x": 2,
+            "y": 1,
+            "rotation": 0
+          },
+          {
+            "id": "cushion",
+            "x": 3,
+            "y": 3,
+            "rotation": 0
+          }
+        ],
+        "colour": "blue",
+        "rugSize": "small"
+      },
+      "notice": "okay"
+    },
+    "journal": {
+      "lookups": 2,
+      "lastSeen": 1.5,
+      "recovered": true
+    },
+    "canvasBefore": "fae2eb37d3320abade67981fc73794b864e964ad7ef215fa25bf75e13905862a",
+    "canvasAfter": "667ae75b18dc4ca930c0fab3e16f8cf4c1f43a0b092ca176c19bb9ab77d7b82b",
+    "furniturePixelsChanged": true
+  }
+]

@@ -1,3 +1,4 @@
+import { privateArtifact } from "./private-artifacts";
 import { test, expect, type Page } from '@playwright/test';
 import type { State } from '../src/features/cats/rules';
 
@@ -19,28 +20,28 @@ test.describe('isolated cats contract surface', () => {
     await page.goto(harness);
     await expect(page.getByTestId('cats-view')).toBeVisible();
     await expect(page.locator('.cats-harness-word')).toHaveCount(0);
-    await page.screenshot({ path: `evidence/0068/${info.project.name}-initial-clue.png`, fullPage: true });
+    await page.screenshot({ path: privateArtifact(`evidence/0068/${info.project.name}-initial-clue.png`), fullPage: true });
     await page.getByTestId('cats-black').click();
     await expect(page.getByTestId('cats-dialogue')).toContainText('不是黑猫是白猫');
     await action(page, 'greet');
     await action(page, 'sit');
     expect((await state(page)).cats.black.satTogether).toBe(true);
-    await page.screenshot({ path: `evidence/0068/${info.project.name}-black-friend.png`, fullPage: true });
+    await page.screenshot({ path: privateArtifact(`evidence/0068/${info.project.name}-black-friend.png`), fullPage: true });
     await page.getByTestId('cats-white').click();
     await action(page, 'approach');
     await expect(page.getByTestId('cats-dialogue')).toContainText('慢慢来');
     await action(page, 'space');
     await action(page, 'crouch');
     await action(page, 'wait');
-    await page.screenshot({ path: `evidence/0068/${info.project.name}-emerged.png`, fullPage: true });
+    await page.screenshot({ path: privateArtifact(`evidence/0068/${info.project.name}-emerged.png`), fullPage: true });
     for (const type of ['approach', 'follow', 'reunite']) await action(page, type);
     await expect(page.getByTestId('cats-dialogue')).toContainText('这个垫子送给你');
-    await page.screenshot({ path: `evidence/0068/${info.project.name}-reunion.png`, fullPage: true });
+    await page.screenshot({ path: privateArtifact(`evidence/0068/${info.project.name}-reunion.png`), fullPage: true });
     const saved = await state(page);
     await page.goto(`${harness}&day=2&state=${encodeURIComponent(JSON.stringify(saved))}`);
     expect((await state(page)).story).toEqual(saved.story);
     await action(page, 'begin');
-    await page.screenshot({ path: `evidence/0068/${info.project.name}-rain-shelter.png`, fullPage: true });
+    await page.screenshot({ path: privateArtifact(`evidence/0068/${info.project.name}-rain-shelter.png`), fullPage: true });
     await page.getByTestId('cats-bicycle').click();
     const anchored = await state(page);
     await page.goto(`${harness}&day=3&state=${encodeURIComponent(JSON.stringify(anchored))}`);
@@ -127,7 +128,7 @@ test('repeat detours keep patient actions and visible companions consistent', as
   await action(page, 'space');
   expect((await state(page)).cats.white.gaveSpace).toBe(true);
   expect(await page.evaluate(() => window.__CATS_HARNESS__.events.recover.flat())).toContain('cats.back');
-  await page.screenshot({ path: `evidence/0068/${info.project.name}-rain-space.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`evidence/0068/${info.project.name}-rain-space.png`), fullPage: true });
   await action(page, 'wait');
   await page.evaluate(() => window.__CATS_HARNESS__.day(3));
   await action(page, 'begin');
@@ -135,7 +136,7 @@ test('repeat detours keep patient actions and visible companions consistent', as
   await action(page, 'follow');
   await action(page, 'approach');
   expect((await state(page)).cats.white.rested).toBe(true);
-  await page.screenshot({ path: `evidence/0068/${info.project.name}-window-friend.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`evidence/0068/${info.project.name}-window-friend.png`), fullPage: true });
   await page.evaluate(() => window.__CATS_HARNESS__.day(4));
   await action(page, 'begin');
   await page.getByTestId('cats-black').click();
@@ -177,7 +178,7 @@ test('companion landmark aliases preserve the rendered seated pose after reload'
   await restore(windowSaved, 4);
   expect((await state(page)).cats.white.rested).toBe(true);
   const windowAlias = await pixels();
-  await page.screenshot({ path: `evidence/0068/${info.project.name}-window-alias-reload.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`evidence/0068/${info.project.name}-window-alias-reload.png`), fullPage: true });
   await restore({ ...windowSaved, selected: 'white' }, 4);
   expect(windowAlias === await pixels()).toBe(true);
   await restore({ ...windowSaved, selected: 'door' }, 4);
@@ -203,6 +204,6 @@ test('companion landmark aliases preserve the rendered seated pose after reload'
     familiarRain = saved;
   }
   await restore(familiarRain!, 2);
-  await page.screenshot({ path: `evidence/0068/${info.project.name}-door-alias-reload.png`, fullPage: true });
+  await page.screenshot({ path: privateArtifact(`evidence/0068/${info.project.name}-door-alias-reload.png`), fullPage: true });
   expect(errors).toEqual([]);
 });

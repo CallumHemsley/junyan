@@ -1,0 +1,692 @@
+{
+  "version": 1,
+  "id": "residential-hall",
+  "bounds": {
+    "width": 32,
+    "height": 26
+  },
+  "defaultSpawn": {
+    "x": 16,
+    "y": 21,
+    "facing": "north"
+  },
+  "walkable": [
+    {
+      "x": 2,
+      "y": 12,
+      "width": 28,
+      "height": 12
+    },
+    {
+      "x": 11,
+      "y": 3,
+      "width": 10,
+      "height": 9
+    }
+  ],
+  "colliders": [
+    {
+      "id": "residential-hall.west-threshold",
+      "rect": {
+        "x": 5,
+        "y": 12,
+        "width": 3,
+        "height": 0.45
+      }
+    },
+    {
+      "id": "residential-hall.east-threshold",
+      "rect": {
+        "x": 24,
+        "y": 12,
+        "width": 3,
+        "height": 0.45
+      }
+    },
+    {
+      "id": "residential-hall.mail",
+      "rect": {
+        "x": 24,
+        "y": 14,
+        "width": 4,
+        "height": 1
+      }
+    },
+    {
+      "id": "residential-hall.bench",
+      "rect": {
+        "x": 3,
+        "y": 17,
+        "width": 5,
+        "height": 1.5
+      }
+    },
+    {
+      "id": "residential-hall.shoe-rack",
+      "rect": {
+        "x": 3,
+        "y": 14,
+        "width": 3,
+        "height": 1
+      }
+    },
+    {
+      "id": "residential-hall.laundry",
+      "rect": {
+        "x": 21,
+        "y": 13,
+        "width": 1.5,
+        "height": 2
+      }
+    },
+    {
+      "id": "residential-hall.fern",
+      "rect": {
+        "x": 9,
+        "y": 13,
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "id": "residential-hall.umbrella",
+      "rect": {
+        "x": 27,
+        "y": 20,
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "id": "residential-hall.bicycle",
+      "rect": {
+        "x": 22,
+        "y": 21,
+        "width": 3,
+        "height": 1
+      }
+    },
+    {
+      "id": "residential-hall.west-jamb",
+      "rect": {
+        "x": 2,
+        "y": 12,
+        "width": 0.5,
+        "height": 4
+      }
+    },
+    {
+      "id": "residential-hall.east-jamb",
+      "rect": {
+        "x": 29.5,
+        "y": 12,
+        "width": 0.5,
+        "height": 4
+      }
+    },
+    {
+      "id": "residential-hall.stair-rail",
+      "rect": {
+        "x": 11,
+        "y": 3,
+        "width": 0.4,
+        "height": 8
+      }
+    },
+    {
+      "id": "residential-hall.parcel-shelf",
+      "rect": {
+        "x": 2.1,
+        "y": 20,
+        "width": 1.8,
+        "height": 1.1
+      }
+    }
+  ],
+  "occluders": [
+    {
+      "id": "residential-hall.west-jamb",
+      "rect": {
+        "x": 2,
+        "y": 12,
+        "width": 0.5,
+        "height": 4
+      },
+      "height": 2.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "residential-hall.east-jamb",
+      "rect": {
+        "x": 29.5,
+        "y": 12,
+        "width": 0.5,
+        "height": 4
+      },
+      "height": 2.5,
+      "fadeWhenPlayerBehind": true
+    }
+  ],
+  "entrances": [
+    {
+      "id": "from-town",
+      "position": {
+        "x": 16,
+        "y": 21
+      },
+      "facing": "north"
+    },
+    {
+      "id": "from-courtyard",
+      "position": {
+        "x": 27,
+        "y": 17.5
+      },
+      "facing": "west"
+    },
+    {
+      "id": "from-residential-stairs",
+      "position": {
+        "x": 16,
+        "y": 6
+      },
+      "facing": "south"
+    }
+  ],
+  "exits": [
+    {
+      "id": "to-town",
+      "rect": {
+        "x": 15,
+        "y": 23,
+        "width": 2,
+        "height": 1
+      },
+      "targetMapId": "town",
+      "targetEntranceId": "from-residential-hall",
+      "kind": "door"
+    },
+    {
+      "id": "to-courtyard",
+      "rect": {
+        "x": 29,
+        "y": 16,
+        "width": 1,
+        "height": 3
+      },
+      "targetMapId": "courtyard",
+      "targetEntranceId": "from-residential-hall",
+      "kind": "door"
+    },
+    {
+      "id": "to-residential-stairs",
+      "rect": {
+        "x": 14,
+        "y": 3,
+        "width": 4,
+        "height": 1
+      },
+      "targetMapId": "residential-stairs",
+      "targetEntranceId": "from-residential-hall",
+      "kind": "stairs"
+    }
+  ],
+  "anchors": [],
+  "terrain": [
+    {
+      "id": "residential-hall.foyer",
+      "rect": {
+        "x": 2,
+        "y": 12,
+        "width": 28,
+        "height": 12
+      },
+      "material": "terrazzo",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.runner",
+      "rect": {
+        "x": 13,
+        "y": 12,
+        "width": 6,
+        "height": 12
+      },
+      "material": "woven",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.upper-hall",
+      "rect": {
+        "x": 11,
+        "y": 3,
+        "width": 10,
+        "height": 9
+      },
+      "material": "timber",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.entry-mat",
+      "rect": {
+        "x": 14,
+        "y": 21,
+        "width": 4,
+        "height": 2
+      },
+      "material": "woven",
+      "variant": 1
+    }
+  ],
+  "props": [
+    {
+      "id": "residential-hall.west-threshold",
+      "kind": "door",
+      "position": {
+        "x": 5,
+        "y": 12
+      },
+      "width": 3,
+      "height": 0.45,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.east-threshold",
+      "kind": "door",
+      "position": {
+        "x": 24,
+        "y": 12
+      },
+      "width": 3,
+      "height": 0.45,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "residential-hall.mail",
+      "kind": "mailboxes",
+      "position": {
+        "x": 24,
+        "y": 14
+      },
+      "width": 4,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.bench",
+      "kind": "bench",
+      "position": {
+        "x": 3,
+        "y": 17
+      },
+      "width": 5,
+      "height": 1.5,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.shoe-rack",
+      "kind": "shoe-rack",
+      "position": {
+        "x": 3,
+        "y": 14
+      },
+      "width": 3,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.laundry",
+      "kind": "laundry",
+      "position": {
+        "x": 21,
+        "y": 13
+      },
+      "width": 1.5,
+      "height": 2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.fern",
+      "kind": "plant",
+      "position": {
+        "x": 9,
+        "y": 13
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.umbrella",
+      "kind": "umbrella",
+      "position": {
+        "x": 27,
+        "y": 20
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.bicycle",
+      "kind": "bicycle",
+      "position": {
+        "x": 22,
+        "y": 21
+      },
+      "width": 3,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.west-jamb",
+      "kind": "partition",
+      "position": {
+        "x": 2,
+        "y": 12
+      },
+      "width": 0.5,
+      "height": 4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.east-jamb",
+      "kind": "partition",
+      "position": {
+        "x": 29.5,
+        "y": 12
+      },
+      "width": 0.5,
+      "height": 4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.stair-rail",
+      "kind": "railing",
+      "position": {
+        "x": 11,
+        "y": 3
+      },
+      "width": 0.4,
+      "height": 8,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.rear-plaster",
+      "kind": "wall",
+      "position": {
+        "x": 11,
+        "y": 2.6
+      },
+      "width": 10,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.west-room-facade",
+      "kind": "wall",
+      "position": {
+        "x": 2,
+        "y": 11.6
+      },
+      "width": 9,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.east-room-facade",
+      "kind": "wall",
+      "position": {
+        "x": 21,
+        "y": 11.6
+      },
+      "width": 9,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.west-wall",
+      "kind": "wall",
+      "position": {
+        "x": 1.6,
+        "y": 12
+      },
+      "width": 0.4,
+      "height": 12,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.stair-window",
+      "kind": "window",
+      "position": {
+        "x": 17,
+        "y": 2.6
+      },
+      "width": 3,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.mail-lamp",
+      "kind": "lantern",
+      "position": {
+        "x": 27,
+        "y": 14
+      },
+      "width": 1,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.notice-board",
+      "kind": "notice-board",
+      "position": {
+        "x": 23,
+        "y": 12.1
+      },
+      "width": 2,
+      "height": 0.3,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.bench-cushion",
+      "kind": "mat",
+      "position": {
+        "x": 4,
+        "y": 17.1
+      },
+      "width": 2,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.door-fern",
+      "kind": "plant",
+      "position": {
+        "x": 27,
+        "y": 13
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.laundry-bundle",
+      "kind": "parcel",
+      "position": {
+        "x": 21,
+        "y": 18
+      },
+      "width": 1,
+      "height": 1,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "residential-hall.parcel-shelf",
+      "kind": "parcel",
+      "position": {
+        "x": 2.1,
+        "y": 20
+      },
+      "width": 1.8,
+      "height": 1.1,
+      "layer": "object",
+      "variant": 1
+    }
+  ],
+  "palette": {
+    "cream": [
+      245,
+      232,
+      202
+    ],
+    "jade": [
+      111,
+      154,
+      134
+    ],
+    "ink": [
+      48,
+      43,
+      42
+    ],
+    "wood": [
+      115,
+      86,
+      58
+    ],
+    "brass": [
+      190,
+      157,
+      97
+    ],
+    "plaster": [
+      224,
+      210,
+      177
+    ],
+    "terrazzo": [
+      160,
+      169,
+      158
+    ],
+    "window": [
+      158,
+      175,
+      188
+    ],
+    "linen": [
+      218,
+      208,
+      176
+    ]
+  },
+  "npcHooks": [
+    {
+      "id": "residential-hall.lin-jie-visit",
+      "position": {
+        "x": 10,
+        "y": 19
+      },
+      "route": [
+        {
+          "x": 10,
+          "y": 19
+        },
+        {
+          "x": 12,
+          "y": 17
+        },
+        {
+          "x": 22,
+          "y": 17
+        },
+        {
+          "x": 23,
+          "y": 19
+        }
+      ],
+      "characterId": "lin-jie"
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "residential-hall.west-door",
+      "position": {
+        "x": 6.5,
+        "y": 13.5
+      },
+      "kind": "neighbour-threshold"
+    },
+    {
+      "id": "residential-hall.east-door",
+      "position": {
+        "x": 25.5,
+        "y": 13.5
+      },
+      "kind": "neighbour-threshold"
+    },
+    {
+      "id": "residential-hall.mail-stop",
+      "position": {
+        "x": 25,
+        "y": 16
+      },
+      "kind": "mailboxes"
+    },
+    {
+      "id": "residential-hall.foyer-bench",
+      "position": {
+        "x": 7,
+        "y": 19.5
+      },
+      "kind": "bench"
+    },
+    {
+      "id": "residential-hall.stair-window",
+      "position": {
+        "x": 18.5,
+        "y": 7
+      },
+      "kind": "window"
+    },
+    {
+      "id": "residential-hall.street-vestibule",
+      "position": {
+        "x": 16,
+        "y": 21
+      },
+      "kind": "entrance"
+    },
+    {
+      "id": "residential-hall.courtyard-door",
+      "position": {
+        "x": 27,
+        "y": 17.5
+      },
+      "kind": "courtyard-door"
+    }
+  ]
+}

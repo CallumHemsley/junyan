@@ -4,11 +4,13 @@ import WordToken from '../../WordToken';
 import { lineParts, lineText } from '../../language';
 import { featureUi } from '../copy';
 import GardenScene from './GardenScene';
+import {gardenSites} from '../../world/maps/rooftop';
 import {label, line} from './content';
-import {gifts, plantIds, recoveryForTransition, reduce, weather, type Action, type PlantId, type Site, type State} from './rules';
+import {gifts, plantIds, recoveryForTransition, reduce, weather, siteIds, type Action, type PlantId, type Site, type State} from './rules';
 import './garden.css';
 
 export type GardenProps = {
+  presentation?: 'scene' | 'controls'; plantId?: PlantId;
   state: State; day: number; onAction: (action: Action) => void;
   onLookup: (word: Word, trigger: HTMLButtonElement) => void;
   onRecover: (wordIds: string[]) => void; onPlay: (line: Line) => void;
@@ -29,11 +31,12 @@ function Icon({kind}: {kind: 'water' | 'wait' | 'move' | 'shade' | 'look' | 'tid
 }
 
 export default function Garden(props: GardenProps) {
-  const {state, day, onAction, onRecover, onLookup, onPlay, recoveredWordIds = [], freshWordIds = []} = props;
-  const [selected, setSelected] = useState<PlantId>('flower');
+  const {state, day, onAction, onRecover, onLookup, onPlay, presentation = 'scene', plantId, recoveredWordIds = [], freshWordIds = []} = props;
+  const [selected, setSelected] = useState<PlantId>(plantId ?? 'flower');
   const [moving, setMoving] = useState<'pot' | 'shade' | null>(null);
   const [confirm, setConfirm] = useState<PlantId | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  useEffect(() => {if (plantId) {setSelected(plantId); setNotice(null); setConfirm(null); setMoving(null);}}, [plantId]);
   const pending = useRef<{before: State; expected: State; action: Action; notice: string | null} | null>(null);
   const dialog = useRef<HTMLDivElement>(null);
   const waterButton = useRef<HTMLButtonElement>(null);
@@ -106,18 +109,18 @@ export default function Garden(props: GardenProps) {
     if (event.shiftKey && document.activeElement === first) {event.preventDefault(); last?.focus();}
     else if (!event.shiftKey && document.activeElement === last) {event.preventDefault(); first?.focus();}
   };
-  return <section className="garden" aria-labelledby={heading} data-testid="garden-view">
+  return <section className="garden" aria-labelledby={heading} data-testid="garden-view" data-selected-plant={selected} data-presentation={presentation}>
     <div className="garden-body" inert={Boolean(confirm)}>
     <header className="garden-heading">
       <h1 id={heading}>{text(label('roof'))}{text(label('garden'))}</h1>
       <span className="garden-weather" data-weather={weather(state.day)}>{text(label(weather(state.day) === 'rain' ? 'rain' : weather(state.day) === 'hot' ? 'hot' : 'clear'))}</span>
     </header>
-    <GardenScene state={state} selected={moving === 'shade' ? null : selected} movingShade={moving === 'shade'} onSite={place}/>
+    {presentation === 'scene' && <GardenScene state={state} selected={moving === 'shade' ? null : selected} movingShade={moving === 'shade'} onSite={place}/>}
     {!state.restored ? <div className="garden-arrival">
       {tool('tidy', 'tidy', () => act({type: 'tidy', value: true}))}
       <p>{text(label('crates'))}{text(label('put'))}{text(label('place'))}</p>
     </div> : <>
-      <div className="garden-pots" aria-label={name('pot')}>
+      {!plantId && <div className="garden-pots" aria-label={name('pot')}>
         {plantIds.map(id => <div key={id} className={`garden-pot-card${id === selected && moving !== 'shade' ? ' active' : ''}`}>
           <button type="button" className="garden-pot-select" aria-label={`${name('select')}${name(id)}`} aria-pressed={selected === id && moving !== 'shade'} onClick={() => choose(id)}>
             <span className={`garden-sprig ${id}`} aria-hidden="true"><i/><i/><i/></span>
@@ -125,7 +128,7 @@ export default function Garden(props: GardenProps) {
           </button>
           <div className="garden-pot-name">{text(label(id))}</div>
         </div>)}
-      </div>
+      </div>}
       <div className="garden-workbench">
         <div className="garden-selection">
           <strong>{text(label(selected))}</strong>
@@ -145,6 +148,20 @@ export default function Garden(props: GardenProps) {
           {moving && tool('cancel', 'cancel', () => setMoving(null))}
         </div>
       </div>
+      {presentation === 'controls' && moving && <div className="garden-placement-choices" role="group" aria-label={name('place')}>
+        {siteIds.map(site => {
+          const point = gardenSites[site];
+          const occupant = plantIds.find(id => state.plants[id].site === site);
+          return <div key={site} className="garden-placement-site" data-site={site}
+            style={{left: `${15 + (point.x - point.y + 14) / 33 * 70}%`, top: `${12 + (point.x + point.y - 37) / 16 * 54}%`}}>
+            <button type="button" aria-label={`${site + 1}${name('place')}${name(occupant ?? 'empty')}${state.shade === site ? name('shade-screen') : ''}`}
+              disabled={moving === 'pot' && Boolean(occupant)}
+              aria-pressed={moving === 'shade' ? state.shade === site : pot.site === site}
+              onClick={() => place(site)}>{site + 1}{state.shade === site && <Icon kind="shade"/>}</button>
+            <span className="garden-placement-label">{text(label(occupant ?? 'empty'))}</span>
+          </div>;
+        })}
+      </div>}
       <div className="garden-conversation" aria-live="polite">
         <div className="garden-speaker">{text(label('lin'))}<button type="button" aria-label={name('listen')} className="garden-replay" onClick={() => onPlay(line(speak))}><Icon kind="listen"/></button></div>
         <p className="garden-spoken" data-testid="garden-dialogue">{text(line(speak), true)}</p>

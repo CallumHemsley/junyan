@@ -1,9 +1,11 @@
+import { interactAt, savedGame } from "./world-journey";
+import { privateArtifact } from "./private-artifacts";
 import { test, expect } from "@playwright/test";
 import { withSkip } from "./opening";
 import type { Content, GameState } from "../src/contracts";
 
 test("two days label lifetime receipts without changing the running total", async ({ page }, info) => {
-  test.setTimeout(180_000);
+  test.setTimeout(420_000);
   const errors: string[] = [];
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
@@ -21,18 +23,18 @@ test("two days label lifetime receipts without changing the running total", asyn
       }, table);
       const total = order.items.reduce((sum, item) => sum + foods.find(food => food.id === item.foodId)!.price * item.quantity, 0);
       receipts += total;
-      await page.getByTestId(`table-${table}`).click();
-      await expect(page.getByRole("dialog", { name: `${table}桌点餐` })).toBeVisible();
-      await page.getByRole("button", { name: "去厨房", exact: true }).click();
+      await interactAt(page, `restaurant.table-${table}`);
+      await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
+      await interactAt(page, "restaurant.kitchen");
       for (const item of order.items) {
         const food = foods.find(food => food.id === item.foodId)!;
         for (let n = 0; n < item.quantity; n++)
           await page.getByRole("button", { name: `拿${food.word.text}`, exact: true }).click();
       }
       await page.getByRole("button", { name: "端好了，去上菜" }).click();
-      await page.getByTestId(`table-${table}`).click();
-      await expect(page.getByRole("dialog", { name: `${table}桌点餐` })).toBeVisible();
-      await page.getByRole("button", { name: "上菜", exact: false }).last().click();
+      await interactAt(page, `restaurant.table-${table}`);
+      await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
+      await page.getByRole("button", { name: "上菜", exact: true }).click();
       await expect(page.getByRole("button", { name: "递上找零" })).toBeVisible();
       for (let n = 0; n < order.paid - total; n++)
         await page.getByRole("button", { name: "+1块", exact: true }).click();
@@ -46,16 +48,16 @@ test("two days label lifetime receipts without changing the running total", asyn
     const earnings = await page.evaluate(() => (window as Window & { __TEST__?: { getState: () => GameState } }).__TEST__!.getState().earnings);
     expect(earnings).toBe(cumulative);
     evidence.push({ day, receipts, earnings, label: await summary.locator(".tally p").nth(1).innerText() });
-    await page.screenshot({ path: `output/playwright/0071/${info.project.name}-day-${day}.png`, fullPage: true });
+    await page.screenshot({ path: privateArtifact(`output/playwright/0071/${info.project.name}-day-${day}.png`), fullPage: true });
     await expect(summary.locator(".tally p").nth(1)).toHaveText(`累计进账${cumulative} 块`);
     await expect(page.getByRole("button", { name: "明天见" })).toBeVisible();
     await page.getByRole("button", { name: "明天见" }).click();
-    await page.locator(".day-toggle").click();
-    await expect(page.locator("#day-details")).toContainText(`累计进账 ${cumulative} 块`);
-    await page.locator(".day-toggle").click();
+    await expect.poll(async () => (await savedGame(page)).earnings).toBe(cumulative);
   }
   expect(evidence).toMatchObject([{ day: 1, receipts: 10, earnings: 10 }, { day: 2, receipts: 19, earnings: 29 }]);
   await info.attach("two-day-earnings", { body: JSON.stringify(evidence, null, 2), contentType: "application/json" });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   expect(errors).toEqual([]);
 });
+
+test.beforeEach(async ({ page }) => { page.setDefaultTimeout(8_000); });

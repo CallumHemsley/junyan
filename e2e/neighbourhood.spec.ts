@@ -1,3 +1,5 @@
+import { visitWorld, interactAt, closeActivity } from "./world-journey";
+import { privateArtifact } from "./private-artifacts";
 import { test, expect, type Page } from "@playwright/test";
 import type { Content, GameState } from "../src/contracts";
 import { content } from "../src/content";
@@ -27,10 +29,7 @@ async function stored(page: Page): Promise<GameState | null> {
     } finally { db.close(); }
   });
 }
-async function visit(page: Page, name: string) {
-  await page.getByRole("navigation",{name:"楼里",exact:true}).getByRole("button",{name,exact:true}).click();
-  await expect(page.getByRole("navigation",{name:"楼里",exact:true}).getByRole("button",{name,exact:true})).toHaveAttribute("aria-current","page");
-}
+const visit = visitWorld;
 async function startNormally(page: Page) {
   await page.goto(`${appRoot}?seed=42`);
   await expect(page.getByRole("navigation",{name:"楼里",exact:true})).toHaveCount(0);
@@ -44,17 +43,17 @@ async function serve(page: Page, table: number) {
   const saved=(await stored(page))!;
   const customer=saved.customers.find(value=>value.table===table)!;
   const order=content.orders.find(value=>value.id===customer.orderId)!;
-  await page.getByTestId(`table-${table}`).click();
-  const dialog=page.getByRole("dialog",{name:`${table}桌点餐`});
+  await interactAt(page, `restaurant.table-${table}`);
+  const dialog=page.locator(".world-context[data-target=table]");
   await expectNativeSpeech(page, order.line.audio);
   if(customer.phase==="seated" || saved.tray.length===0) {
-    await dialog.getByRole("button",{name:"去厨房",exact:true}).click();
+    await interactAt(page, "restaurant.kitchen");
     for(const item of order.items) {
       const food=content.foods.find(value=>value.id===item.foodId)!;
       for(let n=0;n<item.quantity;n++) await page.getByRole("button",{name:`拿${food.word.text}`,exact:true}).click();
     }
     await page.getByRole("button",{name:"端好了，去上菜"}).click();
-    await page.getByTestId(`table-${table}`).click();
+    await interactAt(page, `restaurant.table-${table}`);
   }
   await dialog.getByRole("button",{name:/^上菜/}).click();
   const total=order.items.reduce((sum,item)=>sum+content.foods.find(food=>food.id===item.foodId)!.price*item.quantity,0);
@@ -65,21 +64,21 @@ async function serve(page: Page, table: number) {
   await dialog.getByRole("button",{name:"继续招呼"}).click();
 }
 function restaurantSnapshot(game: GameState) {
-  const {neighbourhood,journal,progression,...restaurant}=game;
+  const {neighbourhood,journal,progression,world,...restaurant}=game;
   return restaurant;
 }
 
 test.describe("real shipped neighbourhood speech and saved journeys",()=>{
   test("normal opening, all four real locations, learning, gifts, reload and restaurant-only next day",async({page},info)=>{
-    test.setTimeout(240000);
+    test.setTimeout(600000);
     const errors:string[]=[];
     page.on("pageerror",error=>errors.push(error.message));
     page.on("console",message=>{if(message.type()==="error")errors.push(message.text());});
     await probeAudio(page);
     await startNormally(page);
     expect(await page.evaluate(() => "__TEST__" in window)).toBe(false);
-    await page.getByTestId("table-1").click();
-    await page.getByRole("button",{name:"去厨房",exact:true}).click();
+    await interactAt(page, "restaurant.table-1");
+    await interactAt(page, "restaurant.kitchen");
     await page.getByRole("button",{name:"拿包子",exact:true}).click();
     await page.getByRole("button",{name:"端好了，去上菜"}).click();
     await expect.poll(async()=> (await stored(page))?.tray.length).toBe(1);
@@ -90,7 +89,6 @@ test.describe("real shipped neighbourhood speech and saved journeys",()=>{
     await page.getByRole("button",{name:"收下",exact:true}).click();
     await expect(page.locator(".apartment .new-word").first()).toBeVisible();
     await page.locator(".apartment-items").getByRole("button",{name:/桌子/}).click();
-    await page.getByRole("button",{name:"选格子",exact:true}).click();
     const beforeInvalid=(await stored(page))!.journal;
     await page.getByRole("button",{name:/第1行第1格/}).click();
     await page.getByRole("button",{name:"放这里",exact:true}).click();
@@ -99,7 +97,7 @@ test.describe("real shipped neighbourhood speech and saved journeys",()=>{
     await page.getByRole("button",{name:/第2行第3格/}).click();
     await page.getByRole("button",{name:"放这里",exact:true}).click();
     await expect.poll(async()=> (await stored(page))?.neighbourhood?.apartment.placements.find(item=>item.id==="table")).toMatchObject({x:2,y:1});
-    await page.screenshot({path:`output/neighbourhood/${info.project.name}-apartment.png`,fullPage:true});
+    await page.screenshot({path:privateArtifact(`output/neighbourhood/${info.project.name}-apartment.png`),fullPage:true});
     expect(await page.evaluate(()=> (window as any).__ambienceElements.every((audio:HTMLAudioElement)=>audio.paused))).toBe(true);
     expect(await page.evaluate(()=> (window as any).__ambienceElements.length)).toBe(1);
 
@@ -110,24 +108,27 @@ test.describe("real shipped neighbourhood speech and saved journeys",()=>{
     await expect(page.locator(".word-popover .pinyin")).not.toBeEmpty();
     await page.getByRole("button",{name:"关闭词卡",exact:true}).click();
     await expect(clue).toBeFocused();
-    await page.getByTestId("cats-white").click();
+    await interactAt(page, "courtyard.white");
     await expect(page.locator(".cats-speech .new-word").first()).toBeVisible();
     await page.locator(".cats-replay").click();
     await page.getByTestId("cats-action-approach").click();
     await expect.poll(async()=> (await stored(page))?.neighbourhood?.cats.feedback).toBe("gentle");
     await page.getByTestId("cats-action-crouch").click();
     await page.getByTestId("cats-action-wait").click();
+    await interactAt(page, "courtyard.white");
     await page.getByTestId("cats-action-approach").click();
+    await interactAt(page, "courtyard.white");
     await page.getByTestId("cats-action-follow").click();
+    await interactAt(page, "courtyard.white");
     await page.getByTestId("cats-action-reunite").click();
     await expect.poll(async()=> (await stored(page))?.neighbourhood?.cats.story.node).toBe("reunited");
     await page.getByRole("button",{name:"收下猫靠垫",exact:true}).click();
-    const giftWord=page.locator(".neighbourhood-gift-note [data-word-lookup]").first();
+    const giftWord=page.locator(".world-context-scroll > .help-line [data-word-lookup]").first();
     await giftWord.click();
     await expect(page.locator(".word-popover .pinyin")).not.toBeEmpty();
     await page.getByRole("button",{name:"关闭词卡",exact:true}).click();
     await expect(giftWord).toBeFocused();
-    await page.screenshot({path:`output/neighbourhood/${info.project.name}-cats.png`,fullPage:true});
+    await page.screenshot({path:privateArtifact(`output/neighbourhood/${info.project.name}-cats.png`),fullPage:true});
 
     await visit(page,"修理间");
     await checkLineAndWord(page, featureLine("repairs", "lamp-intro"), page.locator(".repair-line"), page.locator(".repair-speaker button"));
@@ -135,7 +136,7 @@ test.describe("real shipped neighbourhood speech and saved journeys",()=>{
     await page.locator(".repair-part-actions").getByRole("button",{name:"拧紧",exact:true}).click();
     await page.locator(".repair-main-actions").getByRole("button",{name:"试试",exact:true}).click();
     await page.locator(".repair-main-actions").getByRole("button",{name:"放回",exact:true}).click();
-    await page.getByTestId("repair-job-toy").click();
+    await interactAt(page, "workshop.toy");
     await page.getByTestId("repair-part-cover").click();
     await page.locator(".repair-part-actions").getByRole("button",{name:"打开",exact:true}).click();
     await page.getByTestId("repair-part-lead").click();
@@ -147,7 +148,7 @@ test.describe("real shipped neighbourhood speech and saved journeys",()=>{
     await page.locator(".repair-main-actions").getByRole("button",{name:"试试",exact:true}).click();
     await page.locator(".repair-main-actions").getByRole("button",{name:"放回",exact:true}).click();
     await page.getByRole("button",{name:"收下凳子",exact:true}).click();
-    await page.screenshot({path:`output/neighbourhood/${info.project.name}-repairs.png`,fullPage:true});
+    await page.screenshot({path:privateArtifact(`output/neighbourhood/${info.project.name}-repairs.png`),fullPage:true});
 
     await visit(page,"屋顶花园");
     await gardenTool(page,"tidy").click();
@@ -161,13 +162,14 @@ test.describe("real shipped neighbourhood speech and saved journeys",()=>{
     await page.keyboard.press("Escape");
     await expect(confirmation).toHaveCount(0);
     for(const plant of ["climber","tree"] as const) {
-      await page.getByRole("button",{name:`${gardenName("select")}${gardenName(plant)}`,exact:true}).click();
+      await interactAt(page, `rooftop.pot.${plant}`);
       await gardenTool(page,"water-verb").click();
       await expect.poll(async()=> (await stored(page))?.neighbourhood?.garden.plants[plant].care).toBe("ready");
     }
-    await page.screenshot({path:`output/neighbourhood/${info.project.name}-garden.png`,fullPage:true});
+    await page.screenshot({path:privateArtifact(`output/neighbourhood/${info.project.name}-garden.png`),fullPage:true});
     const beforeReload=(await stored(page))!;
     await page.reload();
+    await visit(page,"屋顶花园");
     await expect(page.getByTestId("garden-view")).toBeVisible();
     await expect.poll(async()=> (await stored(page))?.neighbourhood).toEqual(beforeReload.neighbourhood);
     await visit(page,"家");
@@ -178,9 +180,10 @@ test.describe("real shipped neighbourhood speech and saved journeys",()=>{
     expect(await page.evaluate(()=> (window as any).__ambienceElements.length)).toBe(1);
     for(const table of [1,2,3,4]) await serve(page,table);
     await expect(page.getByRole("dialog",{name:"今日小结"})).toContainText("累计进账");
-    await page.getByRole("button",{name:"回家看看",exact:true}).click();
+    await page.getByRole("button",{name:"出去走走",exact:true}).click();
     await expect.poll(async()=> (await stored(page))?.day).toBe(1);
     await visit(page,"早安小馆");
+    await page.getByRole("button",{name:"今日小结",exact:true}).click();
     await page.getByRole("button",{name:"明天见",exact:false}).click();
     await visit(page,"屋顶花园");
     await expect.poll(async()=> (await stored(page))?.day).toBe(2);
@@ -189,6 +192,7 @@ test.describe("real shipped neighbourhood speech and saved journeys",()=>{
     await expect(page.locator(".garden-spoken .new-word").first()).toBeVisible();
     await page.getByRole("button",{name:"收下盆栽",exact:true}).click();
     await page.reload();
+    await visit(page,"屋顶花园");
     await expect(page.getByTestId("garden-view")).toBeVisible();
     await expect(page.getByRole("button",{name:"收下盆栽",exact:true})).toHaveCount(0);
     await expect.poll(async()=> (await stored(page))?.neighbourhood?.claimedGiftIds).toEqual(["cats.cushion","repairs.stool","garden.planter"]);
@@ -216,3 +220,6 @@ test("an explicitly unavailable feature voice reports failure and a real replay 
   await expect(page.getByText("声音暂时没有播出，再点一次听听。",{exact:true})).toHaveCount(0);
   await info.attach("injected-unavailable-audio",{body:JSON.stringify({nativeFailures,consoleErrors:failures},null,2),contentType:"application/json"});
 });
+
+// Physical walks have their own bounded waits; missing controls should fail promptly.
+test.beforeEach(async ({ page }) => { page.setDefaultTimeout(8_000); });

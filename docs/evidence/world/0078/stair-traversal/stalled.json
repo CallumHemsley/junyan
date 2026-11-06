@@ -1,0 +1,67 @@
+{
+  "step": {
+    "point": {
+      "x": 17,
+      "y": 14
+    },
+    "x": 208.2000122070312,
+    "y": 423.86
+  },
+  "picked": {
+    "point": {
+      "x": 17.000000110973012,
+      "y": 14.600000665838069
+    },
+    "camera": {
+      "focusZ": 3,
+      "focus": {
+        "x": 16.799999930641867,
+        "y": 16.700000069358133
+      },
+      "width": 195,
+      "height": 386,
+      "scale": 11,
+      "offsetY": 0,
+      "offsetX": 0
+    },
+    "client": {
+      "x": 245.59999084472656,
+      "y": 422.5400085449219
+    },
+    "position": {
+      "x": 17.000000485506924,
+      "y": 16.90000062422319
+    }
+  },
+  "state": {
+    "version": 1,
+    "mapId": "residential-stairs",
+    "position": {
+      "x": 17.000000110973012,
+      "y": 14.600000665838069
+    },
+    "facing": "north",
+    "returnPositions": {
+      "residential-stairs": {
+        "x": 18.991094873133694,
+        "y": 21.51884859195265,
+        "facing": "east"
+      },
+      "apartment": {
+        "x": 26.97223316539418,
+        "y": 21.183339899236508,
+        "facing": "east"
+      }
+    },
+    "activeActivity": null,
+    "activeAnchorId": null,
+    "life": {
+      "version": 1,
+      "elapsedMs": 42246.19999999988,
+      "discoveries": [],
+      "reactions": [],
+      "serviceDepartures": [],
+      "pauses": []
+    }
+  }
+}

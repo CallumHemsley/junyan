@@ -1,3 +1,4 @@
+import { privateArtifact } from "./private-artifacts";
 import { expect, test } from '@playwright/test';
 test('isolated apartment: arrange, rotate, reject, undo and look up', async ({page},info) => {
   const errors:string[]=[]; page.on('pageerror',e=>errors.push(e.message)); page.on('console',message=>{if(message.type()==='error') errors.push(message.text());});
@@ -21,7 +22,7 @@ test('isolated apartment: arrange, rotate, reject, undo and look up', async ({pa
   await page.locator('.apartment-line').getByRole('button',{name:'靠垫',exact:true}).click();
   await expect(page.getByRole('dialog')).toContainText('kào diàn');
   await page.getByRole('button',{name:'收起',exact:true}).click();
-  await page.screenshot({path:`docs/evidence/0067/${info.project.name}.png`,fullPage:true});
+  await page.screenshot({path:privateArtifact(`docs/evidence/0067/${info.project.name}.png`),fullPage:true});
   expect(errors).toEqual([]);
 });
 
@@ -65,7 +66,7 @@ test('direct floor tapping, keyboard placement and callback accuracy', async ({p
   await floor.focus();
   for(const key of ['ArrowLeft','ArrowLeft','ArrowUp','ArrowRight','ArrowRight','ArrowDown','ArrowLeft','ArrowUp','ArrowRight','ArrowDown']) await page.keyboard.press(key);
   await expect(page.locator('.apartment-scene canvas')).toHaveAttribute('data-rendered','true');
-  await page.screenshot({path:`docs/evidence/0067/${info.project.name}-arranging.png`,fullPage:true});
+  await page.screenshot({path:privateArtifact(`docs/evidence/0067/${info.project.name}-arranging.png`),fullPage:true});
   const sizes=await page.locator('.apartment button:visible').evaluateAll(buttons=>buttons.map(b=>({width:b.getBoundingClientRect().width,height:b.getBoundingClientRect().height})));
   expect(sizes.every(size=>size.width>=44 && size.height>=44)).toBe(true);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);

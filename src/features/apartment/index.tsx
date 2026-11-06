@@ -9,14 +9,15 @@ import './style.css';
 const copy = featureUi.apartment;
 
 export type Props = {
+  sceneMode?: 'room' | 'world';
   state: State; day: number; onAction: (action: Action) => void;
   onLookup: (word: Word, trigger: HTMLButtonElement) => void;
   onRecover: (wordIds: string[]) => void; onPlay: (line: Line) => void;
   recoveredWordIds?: readonly string[]; freshWordIds?: readonly string[];
 };
 export const itemNames = copy.items;
-export default function Apartment({ state, day, onAction, onLookup, onRecover, onPlay, recoveredWordIds = [], freshWordIds = [] }: Props) {
-  const [showGrid,setShowGrid]=useState(false);
+export default function Apartment({ sceneMode = 'room', state, day, onAction, onLookup, onRecover, onPlay, recoveredWordIds = [], freshWordIds = [] }: Props) {
+  const [showGrid,setShowGrid]=useState(sceneMode === 'world');
   const itemButtons=useRef(new Map<ItemId,HTMLButtonElement>());
   const welcome=useRef({play:onPlay,line:lineById[state.notice]});
   useEffect(()=>{welcome.current.play(welcome.current.line);},[]);
@@ -35,7 +36,7 @@ export default function Apartment({ state, day, onAction, onLookup, onRecover, o
 
   return <section className="apartment" aria-label={copy.title}>
     <header className="apartment-heading"><h1>{copy.title}</h1><span>{copy.resident}</span><button type="button" disabled={!state.undo} onClick={() => act({ type: 'undo' })}>{copy.undo}</button></header>
-    <Scene state={state} onPreview={(x,y)=>act({type:'preview',x,y})} onConfirm={confirm}/>
+    {sceneMode === 'room' && <Scene state={state} onPreview={(x,y)=>act({type:'preview',x,y})} onConfirm={confirm}/>}
     {draft && <section className="apartment-editor" aria-label={copy.editor}><div className="apartment-tools"><span>{itemNames[draft.id]}</span><button type="button" onClick={() => act({ type: 'rotate' })}>{copy.rotate}</button><button type="button" onClick={confirm}>{copy.place}</button><button type="button" onClick={() => act({ type: 'store' })}>{copy.store}</button><button type="button" onClick={() => act({ type: 'cancel' })}>{copy.cancel}</button><button type="button" aria-expanded={showGrid} onClick={()=>setShowGrid(!showGrid)}>{copy.grid}</button></div>
       {showGrid && <div className="apartment-floor-grid" role="group" aria-label={copy.floor}>{Array.from({ length: 30 }, (_, i) => {
         const x = i % 6, y = Math.floor(i / 6);

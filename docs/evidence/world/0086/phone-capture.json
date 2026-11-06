@@ -1,0 +1,15 @@
+{
+  "before": {
+    "x": 24,
+    "y": 15
+  },
+  "after": {
+    "x": 25,
+    "y": 14
+  },
+  "motion": {
+    "changed": true
+  },
+  "errors": [],
+  "video": "/workspace/junyan/docs/evidence/0086/motion/page@0de729971d11efd5e030a07db11c1b05.webm"
+}

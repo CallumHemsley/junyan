@@ -1,0 +1,217 @@
+{
+  "config": {
+    "argv": [
+      "/workspace/.junyan-tools/node_modules/node/bin/node",
+      "/workspace/junyan/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "docs/evidence/0088/integrated-23be251/activity.config.ts",
+      "--project",
+      "desktop"
+    ],
+    "configFile": "/workspace/junyan/docs/evidence/0088/integrated-23be251/activity.config.ts",
+    "rootDir": "/workspace/junyan/docs/evidence/0088/integrated-23be251",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-23be251/activity-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-23be251",
+        "testIgnore": [],
+        "testMatch": [
+          "activity.spec.ts"
+        ],
+        "timeout": 900000
+      },
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-23be251/activity-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-23be251",
+        "testIgnore": [],
+        "testMatch": [
+          "activity.spec.ts"
+        ],
+        "timeout": 900000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-23be251/activity-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-23be251",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0088/integrated-23be251",
+        "testIgnore": [],
+        "testMatch": "activity.spec.ts",
+        "timeout": 900000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://127.0.0.1:5490/junyan/",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "video": "on",
+          "trace": "on",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "activity-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "/workspace/.junyan-tools/node_modules/node/bin/node node_modules/vite/bin/vite.js preview --base /junyan/ --host 127.0.0.1 --port 5490 --strictPort",
+      "cwd": "/workspace/junyan-review-integration",
+      "url": "http://127.0.0.1:5490/junyan/",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "activity.spec.ts",
+      "file": "activity.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "physical service, journal, furnishing undo, garden and repair continuity; cats remain separate",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 900000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 136730,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "desktop served-1\n"
+                    },
+                    {
+                      "text": "desktop served-2\n"
+                    },
+                    {
+                      "text": "desktop served-3\n"
+                    },
+                    {
+                      "text": "desktop journal\n"
+                    },
+                    {
+                      "text": "desktop furnished\n"
+                    },
+                    {
+                      "text": "desktop undo-reloaded\n"
+                    },
+                    {
+                      "text": "desktop garden-cared\n"
+                    },
+                    {
+                      "text": "desktop lamp-repaired\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T00:40:48.342Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-23be251/activity-results/activity-physical-service--cafd1-inuity-cats-remain-separate-desktop/video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-23be251/activity-results/activity-physical-service--cafd1-inuity-cats-remain-separate-desktop/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "616be4781cf8c32ae453-f918f9826762354e771f",
+          "file": "activity.spec.ts",
+          "line": 40,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-06T00:40:46.624Z",
+    "duration": 143863.426,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

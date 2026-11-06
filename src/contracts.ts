@@ -65,6 +65,7 @@ export type Phase = "seated" | "ordered" | "checkout" | "served";
 export type Customer = { table: number; orderId: string; phase: Phase };
 export type JournalEntry = { lookups: number; lastSeen: number; recovered: boolean };
 export type GameState = {
+  world?: import("./world/schema").WorldState;
   progression?: Progression;
   neighbourhood?: NeighbourhoodState;
   seed: number;

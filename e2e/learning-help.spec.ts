@@ -1,3 +1,5 @@
+import { interactAt } from "./world-journey";
+import { privateArtifact } from "./private-artifacts";
 import { test, expect } from "@playwright/test";
 import { seedDayOne, withSkip } from "./opening";
 import content from "../src/content/content.json" with { type: "json" };
@@ -21,7 +23,7 @@ test("help narrates authored tokens, shows the sequence and journals lookups wit
   await expect(help.locator(".help-picture")).toHaveCount(3);
   await expect(help.locator(".pinyin, .gloss")).toHaveCount(0);
   expect(await help.innerText()).not.toMatch(/[a-z]/i);
-  await page.screenshot({ path: `output/playwright/0027/${info.project.name}-help.png` });
+  await page.screenshot({ path: privateArtifact(`output/playwright/0027/${info.project.name}-help.png`) });
   const lines = [content.help.welcome, content.help.lookup, ...content.help.steps.map(step => step.line), content.help.pace];
   for (const line of lines) {
     const label = `听${line.tokens.map(word => word.hanzi).join("")}`;
@@ -47,7 +49,7 @@ test("help narrates authored tokens, shows the sequence and journals lookups wit
   await expect(journal.locator(".journal-list > button")).toHaveCount(uniqueWords.length);
   await journal.getByRole("button", { name: /^厨房/ }).click();
   await expect(page.locator(".word-popover .pinyin")).toHaveText("chúfáng");
-  await page.screenshot({ path: `output/playwright/0027/${info.project.name}-journal-word.png` });
+  await page.screenshot({ path: privateArtifact(`output/playwright/0027/${info.project.name}-journal-word.png`) });
   expect(errors).toEqual([]);
 });
 
@@ -59,23 +61,20 @@ test("small-phone help stays within the viewport and food aids retain pictures w
   expect(box).not.toBeNull();
   expect(box!.x).toBeGreaterThanOrEqual(0);
   expect(box!.x + box!.width).toBeLessThanOrEqual(320);
-  await page.screenshot({ path: "output/playwright/0027/small-phone-help.png" });
+  await page.screenshot({ path: privateArtifact("output/playwright/0027/small-phone-help.png") });
   await help.getByRole("button", { name: "开门迎客" }).click();
-  await page.evaluate(() => {
-    const hooks = (window as any).__TEST__;
-    hooks.dispatch({ type: "move", position: { x: 3, y: 5.5 } });
-    hooks.dispatch({ type: "interact", table: 1 });
-    hooks.dispatch({ type: "move", position: { x: 6, y: 1 } });
-  });
+  await interactAt(page, 'restaurant.table-1');
+  await interactAt(page, 'restaurant.kitchen');
   for (const food of content.foods) {
-    await page.evaluate(foodId => (window as any).__TEST__.dispatch({ type: "pickup", foodId }), food.id);
-    await page.getByRole("button", { name: `查看${food.word.hanzi}`, exact: true }).click();
-    const card = page.locator(".word-popover");
-    await expect(card.locator(".food-art")).toBeVisible();
-    await expect(card.locator(".pinyin")).toHaveText(food.word.pinyin);
-    expect((await card.innerText()).replace(food.word.pinyin, "")).not.toMatch(/[a-z]/i);
-    await page.getByRole("button", { name: "关闭词卡" }).click();
-    await page.evaluate(() => (window as any).__TEST__.dispatch({ type: "return-food", index: 0 }));
+    await page.getByRole('button', {name: `拿${food.word.hanzi}`, exact: true}).click();
+    const tray = page.locator('.world-kitchen-tray');
+    await tray.getByRole('button', {name: food.word.hanzi, exact: true}).click();
+    const card = page.locator('.word-popover');
+    await expect(card.locator('.food-art')).toBeVisible();
+    await expect(card.locator('.pinyin')).toHaveText(food.word.pinyin);
+    expect((await card.innerText()).replace(food.word.pinyin, '')).not.toMatch(/[a-z]/i);
+    await page.getByRole('button', {name: '关闭词卡'}).click();
+    await tray.getByRole('button', {name: `放回${food.word.hanzi}`, exact: true}).click();
   }
 });
 

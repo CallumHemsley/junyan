@@ -1,0 +1,92 @@
+[
+  {
+    "viewport": {
+      "width": 390,
+      "height": 664
+    },
+    "profile": "valid declared-arrival visual/setup only, NOT ordinary travel",
+    "head": "e02a747",
+    "anchors": [
+      {
+        "text": "看看→",
+        "buttons": [
+          {
+            "aria": null,
+            "word": true,
+            "width": 56.015625,
+            "height": 44
+          },
+          {
+            "aria": "看看",
+            "word": false,
+            "width": 44,
+            "height": 44
+          }
+        ]
+      },
+      {
+        "text": "看看→",
+        "buttons": [
+          {
+            "aria": null,
+            "word": true,
+            "width": 56.015625,
+            "height": 44
+          },
+          {
+            "aria": "看看",
+            "word": false,
+            "width": 44,
+            "height": 44
+          }
+        ]
+      }
+    ],
+    "focusReturned": true
+  },
+  {
+    "viewport": {
+      "width": 320,
+      "height": 568
+    },
+    "profile": "valid declared-arrival visual/setup only, NOT ordinary travel",
+    "head": "e02a747",
+    "anchors": [
+      {
+        "text": "看看→",
+        "buttons": [
+          {
+            "aria": null,
+            "word": true,
+            "width": 56.015625,
+            "height": 44
+          },
+          {
+            "aria": "看看",
+            "word": false,
+            "width": 44,
+            "height": 44
+          }
+        ]
+      },
+      {
+        "text": "看看→",
+        "buttons": [
+          {
+            "aria": null,
+            "word": true,
+            "width": 56.015625,
+            "height": 44
+          },
+          {
+            "aria": "看看",
+            "word": false,
+            "width": 44,
+            "height": 44
+          }
+        ]
+      }
+    ],
+    "focusReturned": true
+  }
+]

@@ -1,0 +1,485 @@
+{
+  "sourceHead": "c5cee1a9",
+  "records": [
+    {
+      "device": "desktop",
+      "mapId": "restaurant",
+      "phase": "morning",
+      "position": {
+        "x": 12,
+        "y": 17
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "town",
+      "phase": "morning",
+      "position": {
+        "x": 34,
+        "y": 32
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "courtyard",
+      "phase": "morning",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "residential-hall",
+      "phase": "morning",
+      "position": {
+        "x": 16,
+        "y": 21
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "residential-stairs",
+      "phase": "morning",
+      "position": {
+        "x": 11.5,
+        "y": 37
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "apartment",
+      "phase": "morning",
+      "position": {
+        "x": 25,
+        "y": 20
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "workshop",
+      "phase": "morning",
+      "position": {
+        "x": 15,
+        "y": 25
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "rooftop",
+      "phase": "morning",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "park",
+      "phase": "morning",
+      "position": {
+        "x": 7,
+        "y": 61
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "riverbank",
+      "phase": "morning",
+      "position": {
+        "x": 40,
+        "y": 75
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "restaurant",
+      "phase": "evening",
+      "position": {
+        "x": 12,
+        "y": 17
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "town",
+      "phase": "evening",
+      "position": {
+        "x": 34,
+        "y": 32
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "courtyard",
+      "phase": "evening",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "residential-hall",
+      "phase": "evening",
+      "position": {
+        "x": 16,
+        "y": 21
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "residential-stairs",
+      "phase": "evening",
+      "position": {
+        "x": 11.5,
+        "y": 37
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "apartment",
+      "phase": "evening",
+      "position": {
+        "x": 25,
+        "y": 20
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "workshop",
+      "phase": "evening",
+      "position": {
+        "x": 15,
+        "y": 25
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "rooftop",
+      "phase": "evening",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "park",
+      "phase": "evening",
+      "position": {
+        "x": 7,
+        "y": 61
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "desktop",
+      "mapId": "riverbank",
+      "phase": "evening",
+      "position": {
+        "x": 40,
+        "y": 75
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "restaurant",
+      "phase": "morning",
+      "position": {
+        "x": 12,
+        "y": 17
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "town",
+      "phase": "morning",
+      "position": {
+        "x": 34,
+        "y": 32
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "courtyard",
+      "phase": "morning",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "residential-hall",
+      "phase": "morning",
+      "position": {
+        "x": 16,
+        "y": 21
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "residential-stairs",
+      "phase": "morning",
+      "position": {
+        "x": 11.5,
+        "y": 37
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "apartment",
+      "phase": "morning",
+      "position": {
+        "x": 25,
+        "y": 20
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "workshop",
+      "phase": "morning",
+      "position": {
+        "x": 15,
+        "y": 25
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "rooftop",
+      "phase": "morning",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "park",
+      "phase": "morning",
+      "position": {
+        "x": 7,
+        "y": 61
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "riverbank",
+      "phase": "morning",
+      "position": {
+        "x": 40,
+        "y": 75
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "restaurant",
+      "phase": "evening",
+      "position": {
+        "x": 12,
+        "y": 17
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "town",
+      "phase": "evening",
+      "position": {
+        "x": 34,
+        "y": 32
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "courtyard",
+      "phase": "evening",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "residential-hall",
+      "phase": "evening",
+      "position": {
+        "x": 16,
+        "y": 21
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "residential-stairs",
+      "phase": "evening",
+      "position": {
+        "x": 11.5,
+        "y": 37
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "apartment",
+      "phase": "evening",
+      "position": {
+        "x": 25,
+        "y": 20
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "workshop",
+      "phase": "evening",
+      "position": {
+        "x": 15,
+        "y": 25
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "rooftop",
+      "phase": "evening",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "park",
+      "phase": "evening",
+      "position": {
+        "x": 7,
+        "y": 61
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    },
+    {
+      "device": "phone",
+      "mapId": "riverbank",
+      "phase": "evening",
+      "position": {
+        "x": 40,
+        "y": 75
+      },
+      "lifeElapsedMs": 22000,
+      "errors": [],
+      "method": "Declared ordinary saved-arrival fixture; production App/registry/painter, no internal dispatch; visual assembly only"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+import ts from 'typescript';
+import {readFile,writeFile} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+const ref='74a5213',path='src/world/lighting.ts';
+const source=execFileSync('git',['show',`${ref}:${path}`],{encoding:'utf8'});
+const core=ts.transpileModule(await readFile('src/world/atmosphere/index.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
+const coreExports={};new Function('exports',core)(coreExports);
+const shader=ts.transpileModule(source.replace(/^import .*?;\n/m,''),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
+const exports={};new Function('exports','shadeAtmosphereColor',shader)(exports,coreExports.shadeAtmosphereColor);
+const light={...coreExports.sampleDayLight('morning'),ambient:[.5,.5,.5],sunStrength:0};
+const shade=exports.colorShader(light),first=shade('#404040'),middle=shade('#808080'),repeated=shade('#404040');
+const result={ref,path,input:'#404040',first,middle,repeated,orderIndependent:first===repeated,sourceTransform:'Removed only the import and transpiled exact git source; injected the actual atmosphere shadeAtmosphereColor function. No renderer/screenshot failure is inferred.',painterBoundary:execFileSync('git',['show',`${ref}:src/world/painter.ts`],{encoding:'utf8'}).split('\n').filter(line=>line.includes('shadedContext')||line.includes('drawAtmosphere('))};
+await writeFile('docs/evidence/world/0086/lighting-order-reproduction.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));
+if(first===repeated)throw Error('Expected reported source defect was not reproduced');

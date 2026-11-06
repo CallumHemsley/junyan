@@ -1,0 +1,94 @@
+{
+  "ordinary": {
+    "n": 5,
+    "saveBytes": {
+      "median": 2026,
+      "min": 2026,
+      "max": 2026
+    },
+    "journalWords": 4,
+    "writes": {
+      "median": 121,
+      "min": 120,
+      "max": 122
+    },
+    "nativeWriteTotalMs": {
+      "median": 6.899999998975545,
+      "min": 5.199999999254942,
+      "max": 7.100000001955777
+    },
+    "serializeTotalMs": {
+      "median": 3.9999999997671694,
+      "min": 3.1999999990221113,
+      "max": 4.699999999022111
+    },
+    "maxFrameGapMs": {
+      "median": 16.800000000000068,
+      "min": 16.799999999999272,
+      "max": 16.800000000000182
+    },
+    "framesOver50ms": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "frameMedianMs": {
+      "median": 16.699999999999818,
+      "min": 16.69999999999891,
+      "max": 16.69999999999999
+    },
+    "checkpointAfterIdle": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "full-registered-journal": {
+    "n": 5,
+    "saveBytes": {
+      "median": 20553,
+      "min": 20553,
+      "max": 20553
+    },
+    "journalWords": 267,
+    "writes": {
+      "median": 121,
+      "min": 120,
+      "max": 122
+    },
+    "nativeWriteTotalMs": {
+      "median": 10.00000000023283,
+      "min": 8.000000002328306,
+      "max": 13.200000000651926
+    },
+    "serializeTotalMs": {
+      "median": 8.099999999627471,
+      "min": 7.199999999720603,
+      "max": 8.500000000698492
+    },
+    "maxFrameGapMs": {
+      "median": 16.80000000000001,
+      "min": 16.799999999999955,
+      "max": 16.800000000000182
+    },
+    "framesOver50ms": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "frameMedianMs": {
+      "median": 16.699999999999932,
+      "min": 16.699999999999818,
+      "max": 16.699999999999932
+    },
+    "checkpointAfterIdle": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  }
+}

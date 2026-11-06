@@ -1,0 +1,13 @@
+{
+  "base": "1cf3532",
+  "main": "266e9bcd922151160d2edff48fb8078c874be135",
+  "mainDocsChecked": 494,
+  "mainDocsChanged": 0,
+  "sourceFiles": 1699,
+  "rewrittenText": 123,
+  "binaryModified": 0,
+  "foundationHistoricalVariants": 121,
+  "newQualifiedExitSafetyUnchanged": true,
+  "productionSourceChanged": false,
+  "scope": "Documentation namespace operation only; semantic main merge still required"
+}

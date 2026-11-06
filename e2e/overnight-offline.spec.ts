@@ -1,3 +1,4 @@
+import { interactAt } from "./world-journey";
 import { test as base, expect } from "@playwright/test";
 import { seedDayOne } from "./opening";
 import { createHash } from "node:crypto";
@@ -69,8 +70,8 @@ test("fresh production install completes before offline reload and preserves eve
   expect(duration).toBeGreaterThan(0);
   if (browserName === "chromium") {
     await page.getByRole("button", { name: "开门迎客" }).click();
-    await page.getByTestId("table-1").click();
-    await expect(page.getByRole("dialog", { name: "1桌点餐" })).toBeVisible();
+    await interactAt(page, "restaurant.table-1");
+    await expect(page.locator(".world-context[data-target=table]")).toBeVisible();
   }
   expect(requestedPaths.every(path => path.startsWith("/junyan/"))).toBe(true);
   expect(errors).toEqual([]);
@@ -119,3 +120,5 @@ test("a real rebuilt release replaces the old cache and remains usable offline",
     execFileSync("pnpm", ["build"], { stdio: "pipe" });
   }
 });
+
+test.beforeEach(async ({ page }) => { page.setDefaultTimeout(8_000); });

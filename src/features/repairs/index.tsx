@@ -20,13 +20,15 @@ export type RepairProps = {
   onPlay: (line: Line) => void;
   recoveredWordIds?: string[];
   freshWordIds?: string[];
+  contextualJob?: Job;
+  presentation?: 'legacy' | 'controls';
 };
 const partWords: Record<Part, string> = { bulb: 'repairs.bulb', cover: 'repairs.cover', lead: 'repairs.wire', cell: 'repairs.battery' };
 const partCenters: Record<Part, [number, number]> = { bulb: [49, 23], cover: [36, 47], lead: [52, 33], cell: [43, 31] };
 const partPositions: Record<Part, { left: string; top: string }> = {
   bulb: { left: '71%', top: '21%' }, cover: { left: '35%', top: '57%' }, lead: { left: '73%', top: '36%' }, cell: { left: '25%', top: '30%' },
 };
-export default function Repairs({ state, day, onAction, onLookup, onRecover, onPlay, recoveredWordIds = [], freshWordIds = [] }: RepairProps) {
+export default function Repairs({ state, day, onAction, onLookup, onRecover, onPlay, recoveredWordIds = [], freshWordIds = [], contextualJob, presentation = contextualJob ? 'controls' : 'legacy' }: RepairProps) {
   const latest = useRef(state);
   latest.current = state;
   const practice = useRef<HTMLButtonElement>(null);
@@ -58,16 +60,16 @@ export default function Repairs({ state, day, onAction, onLookup, onRecover, onP
   return <section className="repairs" aria-label={copy.title} data-testid="repairs">
     <header className="repair-header">
       <h2>{token(wordFor('repairs.workshop'))}</h2>
-      <nav className="repair-jobs" aria-label={copy.jobs}>
+      {!contextualJob && <nav className="repair-jobs" aria-label={copy.jobs}>
         {(['lamp', 'toy'] as Job[]).map(job => <button type="button" key={job} aria-pressed={state.active === job} onClick={() => send({ type: 'switch', job })} data-testid={`repair-job-${job}`}>
           <span className={`repair-job-icon ${job}`} aria-hidden="true" />{copy.jobNames[job]}{state.completed.includes(job) && <span className="repair-shelf-mark" aria-hidden="true">·</span>}
         </button>)}
-      </nav>
+      </nav>}
     </header>
     <div className="repair-layout">
-      <div className="repair-scene" data-testid="repair-scene" data-object={bench?.kind ?? 'shelf'} data-test={bench?.test ?? 'returned'}>
-        <RepairScene state={state} />
-        {bench && <svg className="repair-leaders" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <div className={`repair-scene ${presentation === 'controls' ? 'repair-controls' : ''}`} data-testid="repair-scene" data-object={bench?.kind ?? 'shelf'} data-test={bench?.test ?? 'returned'}>
+        {presentation === 'legacy' && <RepairScene state={state} />}
+        {presentation === 'legacy' && bench && <svg className="repair-leaders" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
           {visibleParts(bench).map(part => {
             const center = partCenters[part], label = partPositions[part];
             return <g key={part} data-selected={state.selected === part}>

@@ -1,0 +1,25 @@
+import { paintWorld } from '../../painter';
+import { cameraForMap, project } from '../../camera';
+import { mapsForNeighbourhood } from '../../dynamic';
+import { createGame } from '../../../game';
+import { content } from '../../../content';
+import { reduce } from '../../../features/apartment/rules';
+import type { Placement, State } from '../../../features/apartment/rules';
+import type { WorldState } from '../../schema';
+
+const params = new URLSearchParams(location.search);
+const proof: { reloaded: Placement[]; home?: State }[] = await fetch('/docs/evidence/0081/production-proof.json').then(response => response.json());
+const game = createGame(content);
+game.neighbourhood!.apartment = proof[0].home ?? { ...reduce(game.neighbourhood!.apartment, { type: 'accept-starter' }, 1), placements: proof[0].reloaded };
+game.served = params.get('phase') === 'evening' ? 3 : 0;
+const maps = mapsForNeighbourhood(game.neighbourhood!);
+const map = maps.apartment;
+const world: WorldState = { version: 1, mapId: map.id, position: { x: 15, y: 14 }, facing: 'north', returnPositions: {}, activeActivity: null, activeAnchorId: null };
+const canvas = document.querySelector('canvas')!;
+canvas.width = innerWidth;canvas.height = innerHeight;
+const ctx = canvas.getContext('2d')!;
+const camera = cameraForMap(map.bounds, world.position, canvas.width, canvas.height, innerWidth < 600 ? 18 : 24);
+paintWorld(ctx, map, { project: (p, z) => project(p, camera, z), elapsedMs: 0, reducedMotion: params.get('lit') !== '1', playerPosition: world.position, width: canvas.width, height: canvas.height, pass: 'ground' }, world.facing, false, camera.scale, game, world);
+canvas.dataset.ready = 'true';
+canvas.dataset.phase = params.get('phase') ?? 'morning';
+canvas.dataset.particles = params.get('lit') === '1' ? 'enabled' : 'disabled-by-reduced-motion';

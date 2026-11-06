@@ -1,0 +1,38 @@
+{
+  "head": "e6270d0",
+  "method": "Production normal opening, held keyboard on both emulated viewports, actual anchor and close controls, read-only saves. Not touch-only proof.",
+  "errors": [],
+  "moved": {
+    "version": 1,
+    "mapId": "restaurant",
+    "position": {
+      "x": 12,
+      "y": 8.916999999999987
+    },
+    "facing": "north",
+    "returnPositions": {},
+    "activeActivity": null
+  },
+  "closed": {
+    "version": 1,
+    "mapId": "restaurant",
+    "position": {
+      "x": 12,
+      "y": 8.916999999999987
+    },
+    "facing": "north",
+    "returnPositions": {},
+    "activeActivity": null
+  },
+  "restored": {
+    "version": 1,
+    "mapId": "restaurant",
+    "position": {
+      "x": 12,
+      "y": 8.916999999999987
+    },
+    "facing": "north",
+    "returnPositions": {},
+    "activeActivity": null
+  }
+}

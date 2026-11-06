@@ -1,0 +1,218 @@
+[
+  {
+    id: 'from-restaurant',
+    to: { x: 34, y: 30.4 },
+    stand: true,
+    direct: true,
+    ms: 1.3219679999999983,
+    length: 1
+  },
+  {
+    id: 'from-residential-hall',
+    to: { x: 11.5, y: 23.5 },
+    stand: true,
+    direct: false,
+    ms: 117.877384,
+    length: 4
+  },
+  {
+    id: 'from-courtyard',
+    to: { x: 45, y: 3.3 },
+    stand: true,
+    direct: false,
+    ms: 173.732149,
+    length: 3
+  },
+  {
+    id: 'from-workshop',
+    to: { x: 73.25, y: 31.4 },
+    stand: true,
+    direct: true,
+    ms: 1.203973000000019,
+    length: 1
+  },
+  {
+    id: 'from-park',
+    to: { x: 3.4, y: 33 },
+    stand: true,
+    direct: true,
+    ms: 1.0462200000000053,
+    length: 1
+  },
+  {
+    id: 'from-riverbank',
+    to: { x: 76.6, y: 47.5 },
+    stand: true,
+    direct: false,
+    ms: 222.15409400000004,
+    length: 4
+  },
+  {
+    id: 'town.restaurant-approach',
+    to: { x: 34, y: 30.4 },
+    stand: true,
+    direct: true,
+    ms: 0.06187199999999393,
+    length: 1
+  },
+  {
+    id: 'town.residence-approach',
+    to: { x: 11.5, y: 23.5 },
+    stand: true,
+    direct: false,
+    ms: 101.41577099999995,
+    length: 4
+  },
+  {
+    id: 'town.courtyard-approach',
+    to: { x: 45, y: 3.3 },
+    stand: true,
+    direct: false,
+    ms: 167.89038599999992,
+    length: 3
+  },
+  {
+    id: 'town.workshop-approach',
+    to: { x: 73.25, y: 31.4 },
+    stand: true,
+    direct: true,
+    ms: 1.1041149999999789,
+    length: 1
+  },
+  {
+    id: 'town.park-approach',
+    to: { x: 3.4, y: 33 },
+    stand: true,
+    direct: true,
+    ms: 0.9337329999999611,
+    length: 1
+  },
+  {
+    id: 'town.riverbank-approach',
+    to: { x: 76.6, y: 47.5 },
+    stand: true,
+    direct: false,
+    ms: 217.57559200000014,
+    length: 4
+  },
+  {
+    id: 'town.breakfast-steam',
+    to: { x: 34, y: 29.5 },
+    stand: true,
+    direct: true,
+    ms: 0.08383400000002439,
+    length: 1
+  },
+  {
+    id: 'town.camphor-junction',
+    to: { x: 22, y: 29 },
+    stand: true,
+    direct: false,
+    ms: 30.166314000000057,
+    length: 2
+  },
+  {
+    id: 'town.laundry-lane',
+    to: { x: 22.5, y: 18 },
+    stand: true,
+    direct: false,
+    ms: 71.63979599999993,
+    length: 2
+  },
+  {
+    id: 'town.lantern-cut',
+    to: { x: 42.5, y: 21 },
+    stand: true,
+    direct: false,
+    ms: 49.79240499999992,
+    length: 2
+  },
+  {
+    id: 'town.moon-gate',
+    to: { x: 45, y: 5 },
+    stand: true,
+    direct: false,
+    ms: 152.71142299999997,
+    length: 3
+  },
+  {
+    id: 'town.market-pocket',
+    to: { x: 34, y: 41 },
+    stand: true,
+    direct: true,
+    ms: 0.2626190000000861,
+    length: 1
+  },
+  {
+    id: 'town.sawtooth-roof',
+    to: { x: 72, y: 30.5 },
+    stand: true,
+    direct: true,
+    ms: 1.1432640000000447,
+    length: 1
+  },
+  {
+    id: 'town.river-overlook',
+    to: { x: 72, y: 47 },
+    stand: true,
+    direct: false,
+    ms: 206.382292,
+    length: 4
+  },
+  {
+    id: 'town.south-fig',
+    to: { x: 24, y: 53 },
+    stand: true,
+    direct: false,
+    ms: 112.25075900000002,
+    length: 2
+  },
+  {
+    id: 'town.closed-yard',
+    to: { x: 72, y: 45.2 },
+    stand: true,
+    direct: false,
+    ms: 208.30590099999995,
+    length: 4
+  },
+  {
+    id: 'town.junction-rest',
+    to: { x: 22, y: 29.2 },
+    stand: true,
+    direct: false,
+    ms: 29.628647,
+    length: 2
+  },
+  {
+    id: 'town.market-baskets',
+    to: { x: 34, y: 41 },
+    stand: true,
+    direct: true,
+    ms: 0.2606269999998858,
+    length: 1
+  },
+  {
+    id: 'town.river-view',
+    to: { x: 72, y: 47 },
+    stand: true,
+    direct: false,
+    ms: 233.37442600000008,
+    length: 4
+  },
+  {
+    id: 'town.laundry-lane',
+    to: { x: 22.5, y: 19 },
+    stand: true,
+    direct: false,
+    ms: 70.20882099999972,
+    length: 2
+  },
+  {
+    id: 'town.tea-terrace',
+    to: { x: 54, y: 15 },
+    stand: true,
+    direct: false,
+    ms: 167.63126399999965,
+    length: 5
+  }
+]

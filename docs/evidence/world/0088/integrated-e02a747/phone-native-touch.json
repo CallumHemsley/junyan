@@ -1,0 +1,51 @@
+{
+  "head": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+  "before": {
+    "mapId": "restaurant",
+    "position": {
+      "x": 12,
+      "y": 17
+    },
+    "activeActivity": null
+  },
+  "after": {
+    "version": 1,
+    "mapId": "restaurant",
+    "position": {
+      "x": 13.23743686707646,
+      "y": 18.23743686707646
+    },
+    "facing": "south",
+    "returnPositions": {},
+    "activeActivity": null,
+    "activeAnchorId": null,
+    "life": {
+      "version": 1,
+      "elapsedMs": 1016.5999999999995,
+      "discoveries": [],
+      "reactions": [],
+      "serviceDepartures": [],
+      "pauses": []
+    }
+  },
+  "final": {
+    "version": 1,
+    "mapId": "restaurant",
+    "position": {
+      "x": 13.23743686707646,
+      "y": 18.23743686707646
+    },
+    "facing": "south",
+    "returnPositions": {},
+    "activeActivity": null,
+    "activeAnchorId": null,
+    "life": {
+      "version": 1,
+      "elapsedMs": 1016.5999999999995,
+      "discoveries": [],
+      "reactions": [],
+      "serviceDepartures": [],
+      "pauses": []
+    }
+  }
+}

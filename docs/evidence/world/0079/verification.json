@@ -1,0 +1,42 @@
+{
+  "verifiedAt": "2026-11-06T01:28:19.438350+00:00",
+  "runtime": "Node v22.23.4 from /workspace/.junyan-tools/node_modules/node/bin/node",
+  "sourceReference": "2c43a9e plus the staged removal of the overlapping xiao-li map hook; exact owned files fingerprinted below",
+  "checks": [
+    {
+      "command": "node22 node_modules/typescript/bin/tsc --noEmit",
+      "result": "passed"
+    },
+    {
+      "command": "node22 node_modules/vitest/vitest.mjs run",
+      "result": "passed",
+      "files": 49,
+      "tests": 420
+    },
+    {
+      "command": "node22 node_modules/vite/bin/vite.js build",
+      "result": "passed",
+      "warnings": [
+        "Upstream Zod PURE annotations ignored by Rollup.",
+        "Main JS chunk 1055.72 kB minified, 264.53 kB gzip; central bundle/performance review remains open."
+      ]
+    }
+  ],
+  "priorFailure": "Initial full run 419/420 exposed an overlapping map-owned xiao-li hook suppressing a life-owned routine. Removed the map hook; the life owner now owns that regular route. No life-owned test was changed.",
+  "ownedFileHashes": {
+    "src/world/art/town/building-sections.test.ts": "6937c3d8f0c9128ce079dc69fdc21f477868477f3cc817ebde82790d13900814",
+    "src/world/art/town/building-sections.ts": "918ae4c51e14f0570740970f7b786c3c7285a743dc7f324fc2f80380ddf900d1",
+    "src/world/art/town/index.ts": "9657781d9d5be958feb30a8b9512de7bd596803f28912286e40e11fc5ff0dd5c",
+    "src/world/art/town/preview.html": "ec51c3a2a5651106be553dad4bef3db1539c2884e739bc5eb7174dd80bb3d834",
+    "src/world/art/town/preview.ts": "4d4938134bdccf4b20bf880d53a7232aa8dc3e3244b6ad941672ba481301c01f",
+    "src/world/art/town/variants.json": "3b51dc14b425daf8b1f1678c85063cef2b473846163561e9b837909bcdaa5c1e",
+    "src/world/maps/town/author-map.py": "e83ab7ae43845fbe7f2b7c3b0ce700daf387db8326491ac5957b21a406d047ac",
+    "src/world/maps/town/courier-hook.json": "88bb4a92e37ee350b31c346489a6819db67b3d1fc1237f8fb64324fdcf459f3b",
+    "src/world/maps/town/index.ts": "37641b86db3467f882eb73ff33b0d92852d2abbd8e8662b06f6e2b709569156d",
+    "src/world/maps/town/map.json": "3aeb59acef5cd85633b224a27c000bbefa3be02747bc55e454fc141bc0acdc6b",
+    "src/world/maps/town/map.test.ts": "1c926c5fe84981e80a861359e5b7a355943e60d45f28642cd3f6546633611d0b",
+    "src/world/maps/town/reachability.py": "0db7b339fbc51fa5f04d14d05a4766687dd2325fe31b598e0c33a2e21865b78b"
+  },
+  "audioChanges": "No public/audio changes relative to baseline8cd5bc2",
+  "acceptance": "Town objective ACTIVE; no overall game-quality or performance PASS"
+}

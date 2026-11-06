@@ -1,0 +1,192 @@
+[
+  {
+    "sourceHead": "e1e3fa3b520dd3fab21246f7860dbbd24524ae14",
+    "device": "desktop",
+    "transitions": [
+      {
+        "from": "rooftop",
+        "to": "residential-stairs",
+        "world": {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 6.033559869609672,
+            "y": 5.697164233956826
+          },
+          "facing": "south",
+          "returnPositions": {
+            "rooftop": {
+              "x": 10.500000000000007,
+              "y": 29,
+              "facing": "west"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "discoveries": [],
+            "reactions": []
+          }
+        }
+      },
+      {
+        "from": "residential-stairs",
+        "to": "rooftop",
+        "world": {
+          "version": 1,
+          "mapId": "rooftop",
+          "position": {
+            "x": 12.428470546678593,
+            "y": 28.813228649660765
+          },
+          "facing": "north",
+          "returnPositions": {
+            "rooftop": {
+              "x": 10.500000000000007,
+              "y": 29,
+              "facing": "west"
+            },
+            "residential-stairs": {
+              "x": 4.022639857068392,
+              "y": 5.540672371034228,
+              "facing": "west"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "discoveries": [],
+            "reactions": []
+          }
+        }
+      }
+    ],
+    "reloaded": {
+      "version": 1,
+      "mapId": "rooftop",
+      "position": {
+        "x": 12.428470546678593,
+        "y": 28.813228649660765
+      },
+      "facing": "north",
+      "returnPositions": {
+        "rooftop": {
+          "x": 10.500000000000007,
+          "y": 29,
+          "facing": "west"
+        },
+        "residential-stairs": {
+          "x": 4.022639857068392,
+          "y": 5.540672371034228,
+          "facing": "west"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "errors": [],
+    "note": "Real App ground input through reciprocal roof/stair triggers. Seeded legacy garden start; full town/courtyard journey remains global verification."
+  },
+  {
+    "sourceHead": "e1e3fa3b520dd3fab21246f7860dbbd24524ae14",
+    "device": "phone",
+    "transitions": [
+      {
+        "from": "rooftop",
+        "to": "residential-stairs",
+        "world": {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 6.027938591450052,
+            "y": 5.664139224769057
+          },
+          "facing": "south",
+          "returnPositions": {
+            "rooftop": {
+              "x": 10.516999999999996,
+              "y": 29,
+              "facing": "west"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "discoveries": [],
+            "reactions": []
+          }
+        }
+      },
+      {
+        "from": "residential-stairs",
+        "to": "rooftop",
+        "world": {
+          "version": 1,
+          "mapId": "rooftop",
+          "position": {
+            "x": 12.5,
+            "y": 29
+          },
+          "facing": "east",
+          "returnPositions": {
+            "rooftop": {
+              "x": 10.516999999999996,
+              "y": 29,
+              "facing": "west"
+            },
+            "residential-stairs": {
+              "x": 4.032640171055007,
+              "y": 5.534584357747271,
+              "facing": "west"
+            }
+          },
+          "activeActivity": null,
+          "activeAnchorId": null,
+          "life": {
+            "version": 1,
+            "discoveries": [],
+            "reactions": []
+          }
+        }
+      }
+    ],
+    "reloaded": {
+      "version": 1,
+      "mapId": "rooftop",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "facing": "east",
+      "returnPositions": {
+        "rooftop": {
+          "x": 10.516999999999996,
+          "y": 29,
+          "facing": "west"
+        },
+        "residential-stairs": {
+          "x": 4.032640171055007,
+          "y": 5.534584357747271,
+          "facing": "west"
+        }
+      },
+      "activeActivity": null,
+      "activeAnchorId": null,
+      "life": {
+        "version": 1,
+        "discoveries": [],
+        "reactions": []
+      }
+    },
+    "errors": [],
+    "note": "Real App ground input through reciprocal roof/stair triggers. Seeded legacy garden start; full town/courtyard journey remains global verification."
+  }
+]

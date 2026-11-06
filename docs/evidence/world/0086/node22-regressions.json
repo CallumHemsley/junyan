@@ -1,0 +1,15 @@
+{
+  "source": "7f394f02fe3f4cb5316215140e8c18b822fb4fe4",
+  "node": "v22.23.4",
+  "command": [
+    "node",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--maxWorkers=1"
+  ],
+  "filesPassed": 43,
+  "testsPassed": 389,
+  "failed": 0,
+  "typescript": "passed",
+  "acceptance": "Unit/type checks only; native visual findings remain open."
+}

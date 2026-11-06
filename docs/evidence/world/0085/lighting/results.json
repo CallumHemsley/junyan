@@ -1,0 +1,49 @@
+{
+  "results": {
+    "morning": {
+      "mapId": "courtyard",
+      "camera": {
+        "focus": {
+          "x": 23,
+          "y": 20
+        },
+        "width": 720,
+        "height": 480,
+        "scale": 18
+      },
+      "position": {
+        "x": 23,
+        "y": 20
+      },
+      "served": 0,
+      "elapsedMs": 0,
+      "reducedMotion": true,
+      "particleFree": true,
+      "actorPixelHash": "618e390877dd631adb71851a5871ee9c099cb9faeaa441864e29442bacb81d03"
+    },
+    "evening": {
+      "mapId": "courtyard",
+      "camera": {
+        "focus": {
+          "x": 23,
+          "y": 20
+        },
+        "width": 720,
+        "height": 480,
+        "scale": 18
+      },
+      "position": {
+        "x": 23,
+        "y": 20
+      },
+      "served": 3,
+      "elapsedMs": 0,
+      "reducedMotion": true,
+      "particleFree": true,
+      "actorPixelHash": "aead5be45489c02628d4456f291feaca9386eb1f1b238040c1a6ce1c60ad1598"
+    }
+  },
+  "errors": [],
+  "productionSource": "foundation74a5213 plus explicit actor shadeColor consumer",
+  "limitation": "Foundation still has the returned transitional context proxy. This demonstrates this actor consumer, not final whole-scene lighting acceptance."
+}

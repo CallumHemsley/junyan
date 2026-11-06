@@ -1,0 +1,148 @@
+[
+  {
+    "name": "desktop",
+    "sourceHead": "7341f313334738db025df990bffad157f50e52cf",
+    "seededStart": true,
+    "views": [
+      {
+        "id": "house-front",
+        "position": {
+          "x": 22.999999618981988,
+          "y": 20.50000038101802
+        }
+      },
+      {
+        "id": "house-side",
+        "position": {
+          "x": 28.59999961898199,
+          "y": 16.60000038101802
+        }
+      },
+      {
+        "id": "house-behind",
+        "position": {
+          "x": 22.999999618981995,
+          "y": 12.60000038101802
+        }
+      },
+      {
+        "id": "tree-behind",
+        "position": {
+          "x": 9.899999618981996,
+          "y": 25.400000381018028
+        }
+      },
+      {
+        "id": "tree-side",
+        "position": {
+          "x": 12.100000000000014,
+          "y": 26.600000000000016
+        }
+      },
+      {
+        "id": "tree-front",
+        "position": {
+          "x": 11.200000000000014,
+          "y": 28.100000000000016
+        }
+      },
+      {
+        "id": "bench-front",
+        "position": {
+          "x": 37.000000000000014,
+          "y": 20.00000000000003
+        }
+      },
+      {
+        "id": "bench-side",
+        "position": {
+          "x": 40.49999999999999,
+          "y": 18.200000000000006
+        }
+      },
+      {
+        "id": "bench-behind",
+        "position": {
+          "x": 36.99999999999999,
+          "y": 16.90000000000001
+        }
+      }
+    ],
+    "errors": [],
+    "failures": [],
+    "limits": "Actual physical pointer/touch walking to front/side/behind viewpoints in production. Screenshots require visual inspection; no automated visual-quality PASS is inferred."
+  },
+  {
+    "name": "phone",
+    "sourceHead": "7341f313334738db025df990bffad157f50e52cf",
+    "seededStart": true,
+    "views": [
+      {
+        "id": "house-front",
+        "position": {
+          "x": 22.994192539463132,
+          "y": 20.407427111637723
+        }
+      },
+      {
+        "id": "house-side",
+        "position": {
+          "x": 28.600000450729116,
+          "y": 16.600000659001005
+        }
+      },
+      {
+        "id": "house-behind",
+        "position": {
+          "x": 23.000000242654725,
+          "y": 12.600000312210344
+        }
+      },
+      {
+        "id": "tree-behind",
+        "position": {
+          "x": 9.8930527772783,
+          "y": 25.40694611299159
+        }
+      },
+      {
+        "id": "tree-side",
+        "position": {
+          "x": 12.100000450729118,
+          "y": 26.600000659001005
+        }
+      },
+      {
+        "id": "tree-front",
+        "position": {
+          "x": 11.199999618431534,
+          "y": 28.09999927183836
+        }
+      },
+      {
+        "id": "bench-front",
+        "position": {
+          "x": 36.99999989586405,
+          "y": 20.000000104135946
+        }
+      },
+      {
+        "id": "bench-side",
+        "position": {
+          "x": 40.50000058944537,
+          "y": 18.20000052028474
+        }
+      },
+      {
+        "id": "bench-behind",
+        "position": {
+          "x": 36.99999989586405,
+          "y": 16.89999954927089
+        }
+      }
+    ],
+    "errors": [],
+    "failures": [],
+    "limits": "Actual physical pointer/touch walking to front/side/behind viewpoints in production. Screenshots require visual inspection; no automated visual-quality PASS is inferred."
+  }
+]

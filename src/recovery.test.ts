@@ -69,9 +69,10 @@ describe("nextDots", () => {
     expect(nextDots(["soy"], state("checkout", withSoy), { type: "pay", table: 1, change: 0 }, paid)).toEqual(["soy"]);
   });
 
-  it("clears the dots on a new day", () => {
-    const ended = state("served", withSoy);
-    expect(nextDots(["soy"], ended, { type: "next-day" }, state("ordered", withSoy))).toEqual([]);
+  it.each([{ type: "next-day" }, { type: "advance-world-day", now: 2 }] as const)("clears the dots on a new day through $type", (action) => {
+    const ended = { ...state("served", withSoy), day: 1 };
+    const next = { ...state("ordered", withSoy), day: 2 };
+    expect(nextDots(["soy"], ended, action, next)).toEqual([]);
   });
 
   it("keeps the dots when the action changes nothing", () => {

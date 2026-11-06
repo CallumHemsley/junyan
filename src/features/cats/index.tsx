@@ -17,8 +17,9 @@ export type Props = {
   onPlay: (line: Line) => void;
   recoveredWordIds?: readonly string[];
   freshWordIds?: readonly string[];
+  presentation?: 'scene' | 'controls';
 };
-export default function Cats({ state, day, onAction, onLookup, onRecover, onPlay, recoveredWordIds = [], freshWordIds = [] }: Props) {
+export default function Cats({ state, day, onAction, onLookup, onRecover, onPlay, recoveredWordIds = [], freshWordIds = [], presentation = 'scene' }: Props) {
   const welcome = useRef({ play: onPlay, line: lineFor(state.feedback) });
   const actionControls = useRef<HTMLDivElement>(null);
   const actionTrigger = useRef<HTMLButtonElement | null>(null);
@@ -39,13 +40,13 @@ export default function Cats({ state, day, onAction, onLookup, onRecover, onPlay
   };
   const tokens = (key: string) => <WordLine line={lineFor(key)} look={word => freshWordIds.includes(word.id) ? 'dot' : recoveredWordIds.includes(word.id) ? 'plain' : 'fogged'} onLookup={onLookup} />;
   const inspect: Target[] = ['aunt', 'bicycle', 'bench', 'door', 'window'];
-  return <section className="cats-view" aria-label={lineFor('label-courtyard').text} data-testid="cats-view">
-    <header className="cats-heading"><h2>{tokens('label-courtyard')}</h2><span className="cats-cast">{tokens('label-white')}<span aria-hidden="true"> · </span>{tokens('label-black')}</span></header>
-    <Courtyard state={state} day={day} onSelect={target => act({ type: 'select', target })} />
-    <div className="cats-landmarks" aria-label={lineFor('action-look').text}>
+  return <section className="cats-view" data-presentation={presentation} aria-label={lineFor('label-courtyard').text} data-testid="cats-view">
+    {presentation === 'scene' && <header className="cats-heading"><h2>{tokens('label-courtyard')}</h2><span className="cats-cast">{tokens('label-white')}<span aria-hidden="true"> · </span>{tokens('label-black')}</span></header>}
+    {presentation === 'scene' && <Courtyard state={state} day={day} onSelect={target => act({ type: 'select', target })} />}
+    {presentation === 'scene' && <div className="cats-landmarks" aria-label={lineFor('action-look').text}>
       {inspect.map(target => <button key={target} type="button" aria-pressed={state.selected === target}
         data-testid={`cats-${target}`} onClick={() => act({ type: 'select', target })}>{lineFor(`label-${target}`).text}</button>)}
-    </div>
+    </div>}
     <div className="cats-dialogue" aria-live="polite" aria-atomic="true" data-testid="cats-dialogue">
       <p className="cats-speaker">{tokens('label-aunt')}</p>
       <div className="cats-speech">{tokens(state.feedback)}</div>

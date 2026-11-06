@@ -1,3 +1,4 @@
+import { privateArtifact } from "./private-artifacts";
 import {test,expect,type Page} from '@playwright/test';
 import {withSkip} from './opening';
 
@@ -14,8 +15,8 @@ async function scrollAway(page:Page){
 test.beforeEach(async({page})=>{
   await page.addInitScript(()=>{
     const counters=window as unknown as {sceneDraws:number};counters.sceneDraws=0;
-    const original=CanvasRenderingContext2D.prototype.putImageData;
-    CanvasRenderingContext2D.prototype.putImageData=function(...args:Parameters<typeof original>){counters.sceneDraws++;return original.apply(this,args);};
+    const original=CanvasRenderingContext2D.prototype.fillRect;
+    CanvasRenderingContext2D.prototype.fillRect=function(...args:Parameters<typeof original>){if(this.canvas instanceof HTMLCanvasElement&&this.canvas.closest('.connected-world')&&args[0]===0&&args[1]===0&&args[2]===this.canvas.width&&args[3]===this.canvas.height)counters.sceneDraws++;return original.apply(this,args);};
   });
 });
 
@@ -31,7 +32,8 @@ test('reduced motion draws on input, then stays idle and restores after scrollin
   expect(await draws(page)).toBe(before);
   expect(await page.locator('canvas').evaluate(canvas=>(canvas as HTMLCanvasElement).toDataURL())).toBe(pixels);
   // A real pointer movement changes player position and must repaint despite idle scheduling.
-  await page.locator('canvas').click({position:{x:130,y:250},force:true});
+  const viewport=page.getByTestId('world-viewport');await viewport.focus();
+  await page.keyboard.down('ArrowRight');await page.waitForTimeout(150);await page.keyboard.up('ArrowRight');
   await expect.poll(()=>draws(page)).toBeGreaterThan(before);
   // The game still advances an explicit walking route under reduced motion.
   // Wait for that real input-driven state change to finish before testing idle work.
@@ -41,7 +43,7 @@ test('reduced motion draws on input, then stays idle and restores after scrollin
   await page.waitForTimeout(350);expect(await draws(page)).toBe(offscreen);
   await page.evaluate(()=>window.scrollTo(0,0));
   await expect.poll(()=>draws(page)).toBeGreaterThan(offscreen);await settle(page);
-  await page.screenshot({path:`output/playwright/0041/${info.project.name}-restored.png`,fullPage:false});
+  await page.screenshot({path:privateArtifact(`output/playwright/0041/${info.project.name}-restored.png`),fullPage:false});
   expect(errors).toEqual([]);
 });
 

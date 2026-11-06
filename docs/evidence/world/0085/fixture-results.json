@@ -1,0 +1,92 @@
+[
+  {
+    "name": "desktop",
+    "start": {
+      "x": -1,
+      "y": -1,
+      "facing": "east",
+      "elapsedMs": 483.20599999999996,
+      "distance": 0,
+      "moving": false,
+      "carrying": false,
+      "frozen": false
+    },
+    "east": {
+      "x": 1.1664999999999996,
+      "y": -1,
+      "facing": "east",
+      "elapsedMs": 1366.5059999999999,
+      "distance": 2.1665,
+      "moving": true,
+      "carrying": false,
+      "frozen": false
+    },
+    "north": {
+      "x": 1.1664999999999996,
+      "y": -2.75,
+      "facing": "north",
+      "elapsedMs": 2083.206,
+      "distance": 3.916500000000003,
+      "moving": false,
+      "carrying": false,
+      "frozen": false
+    },
+    "touch": {
+      "x": 4.278933338745452,
+      "y": -1.060331108806862,
+      "facing": "east",
+      "elapsedMs": 3733.1059999999998,
+      "distance": 7.458000000000005,
+      "moving": true,
+      "carrying": false,
+      "frozen": false
+    },
+    "errors": [],
+    "reducedMotionPixelsEqual": true
+  },
+  {
+    "name": "phone",
+    "start": {
+      "x": -1,
+      "y": -1,
+      "facing": "east",
+      "elapsedMs": 283.238,
+      "distance": 0,
+      "moving": false,
+      "carrying": false,
+      "frozen": false
+    },
+    "east": {
+      "x": 1.125,
+      "y": -1,
+      "facing": "east",
+      "elapsedMs": 1149.938,
+      "distance": 2.125,
+      "moving": true,
+      "carrying": false,
+      "frozen": false
+    },
+    "north": {
+      "x": 1.125,
+      "y": -2.7497499999999984,
+      "facing": "north",
+      "elapsedMs": 1866.538,
+      "distance": 3.874750000000002,
+      "moving": false,
+      "carrying": false,
+      "frozen": false
+    },
+    "touch": {
+      "x": 4.246796964086737,
+      "y": -1.076915047735176,
+      "facing": "east",
+      "elapsedMs": 3416.538,
+      "distance": 7.4165000000000045,
+      "moving": true,
+      "carrying": false,
+      "frozen": false
+    },
+    "errors": [],
+    "reducedMotionPixelsEqual": true
+  }
+]

@@ -1,0 +1,601 @@
+{
+  "scope": "real shared viewport and three residential maps; external graph, activity, furniture save not integrated",
+  "results": [
+    {
+      "name": "desktop",
+      "errors": [],
+      "route": [
+        {
+          "version": 1,
+          "mapId": "residential-hall",
+          "position": {
+            "x": 16.00000031206242,
+            "y": 14.000000312062408
+          },
+          "facing": "north",
+          "returnPositions": {},
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-hall",
+          "position": {
+            "x": 16.00000031206242,
+            "y": 7.000500312062409
+          },
+          "facing": "north",
+          "returnPositions": {},
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 11.5,
+            "y": 37
+          },
+          "facing": "north",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 16.00000031206242,
+              "y": 4.000500312062405,
+              "facing": "north"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 6.007054291912228,
+            "y": 36.0012825985295
+          },
+          "facing": "west",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 16.00000031206242,
+              "y": 4.000500312062405,
+              "facing": "north"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 5.582152782595673,
+            "y": 29.014937794337946
+          },
+          "facing": "north",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 16.00000031206242,
+              "y": 4.000500312062405,
+              "facing": "north"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 5.500167667222252,
+            "y": 21.515385911668076
+          },
+          "facing": "north",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 16.00000031206242,
+              "y": 4.000500312062405,
+              "facing": "north"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 11.99949946228315,
+            "y": 21.499999965989552
+          },
+          "facing": "east",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 16.00000031206242,
+              "y": 4.000500312062405,
+              "facing": "north"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "apartment",
+          "position": {
+            "x": 25,
+            "y": 20
+          },
+          "facing": "west",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 16.00000031206242,
+              "y": 4.000500312062405,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 18.91649982054257,
+              "y": 21.499999966030057,
+              "facing": "east"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 17.083000000000002,
+            "y": 21.5
+          },
+          "facing": "east",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 16.00000031206242,
+              "y": 4.000500312062405,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 18.91649982054257,
+              "y": 21.499999966030057,
+              "facing": "east"
+            },
+            "apartment": {
+              "x": 26.928930336390376,
+              "y": 21.157358201834228,
+              "facing": "east"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 12.000999999999994,
+            "y": 21.5
+          },
+          "facing": "west",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 16.00000031206242,
+              "y": 4.000500312062405,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 18.91649982054257,
+              "y": 21.499999966030057,
+              "facing": "east"
+            },
+            "apartment": {
+              "x": 26.928930336390376,
+              "y": 21.157358201834228,
+              "facing": "east"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 5.49999981689453,
+            "y": 21.5
+          },
+          "facing": "west",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 16.00000031206242,
+              "y": 4.000500312062405,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 18.91649982054257,
+              "y": 21.499999966030057,
+              "facing": "east"
+            },
+            "apartment": {
+              "x": 26.928930336390376,
+              "y": 21.157358201834228,
+              "facing": "east"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 5.499999816885655,
+            "y": 28.99999993340655
+          },
+          "facing": "south",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 16.00000031206242,
+              "y": 4.000500312062405,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 18.91649982054257,
+              "y": 21.499999966030057,
+              "facing": "east"
+            },
+            "apartment": {
+              "x": 26.928930336390376,
+              "y": 21.157358201834228,
+              "facing": "east"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 5.499999816885655,
+            "y": 35.99899993340651
+          },
+          "facing": "south",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 16.00000031206242,
+              "y": 4.000500312062405,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 18.91649982054257,
+              "y": 21.499999966030057,
+              "facing": "east"
+            },
+            "apartment": {
+              "x": 26.928930336390376,
+              "y": 21.157358201834228,
+              "facing": "east"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-hall",
+          "position": {
+            "x": 16,
+            "y": 6
+          },
+          "facing": "south",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 16.00000031206242,
+              "y": 4.000500312062405,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 10.71316329780487,
+              "y": 38.96833096433077,
+              "facing": "east"
+            },
+            "apartment": {
+              "x": 26.928930336390376,
+              "y": 21.157358201834228,
+              "facing": "east"
+            }
+          },
+          "activeActivity": null
+        }
+      ],
+      "keyboardDistance": 1.9995000000000107
+    },
+    {
+      "name": "phone",
+      "errors": [],
+      "route": [
+        {
+          "version": 1,
+          "mapId": "residential-hall",
+          "position": {
+            "x": 15.997046763269271,
+            "y": 14.011663700077293
+          },
+          "facing": "north",
+          "returnPositions": {},
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-hall",
+          "position": {
+            "x": 15.999999338952865,
+            "y": 7.0000000512600185
+          },
+          "facing": "north",
+          "returnPositions": {},
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 11.5,
+            "y": 37
+          },
+          "facing": "north",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 15.999999338952865,
+              "y": 4.00000005126002,
+              "facing": "north"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 6.007054291912232,
+            "y": 36.0012825985295
+          },
+          "facing": "west",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 15.999999338952865,
+              "y": 4.00000005126002,
+              "facing": "north"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 5.499999645102337,
+            "y": 28.999999164827244
+          },
+          "facing": "north",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 15.999999338952865,
+              "y": 4.00000005126002,
+              "facing": "north"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 5.499999645102337,
+            "y": 21.499999164827244
+          },
+          "facing": "north",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 15.999999338952865,
+              "y": 4.00000005126002,
+              "facing": "north"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 11.999999645102337,
+            "y": 21.499999164827244
+          },
+          "facing": "east",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 15.999999338952865,
+              "y": 4.00000005126002,
+              "facing": "north"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "apartment",
+          "position": {
+            "x": 25,
+            "y": 20
+          },
+          "facing": "west",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 15.999999338952865,
+              "y": 4.00000005126002,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 18.999999645102303,
+              "y": 21.499999988990098,
+              "facing": "east"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 17,
+            "y": 21.5
+          },
+          "facing": "west",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 15.999999338952865,
+              "y": 4.00000005126002,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 18.999999645102303,
+              "y": 21.499999988990098,
+              "facing": "east"
+            },
+            "apartment": {
+              "x": 26.929359082853228,
+              "y": 21.157615449711937,
+              "facing": "east"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 12,
+            "y": 21.5
+          },
+          "facing": "west",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 15.999999338952865,
+              "y": 4.00000005126002,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 18.999999645102303,
+              "y": 21.499999988990098,
+              "facing": "east"
+            },
+            "apartment": {
+              "x": 26.929359082853228,
+              "y": 21.157615449711937,
+              "facing": "east"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 5.5,
+            "y": 21.5
+          },
+          "facing": "west",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 15.999999338952865,
+              "y": 4.00000005126002,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 18.999999645102303,
+              "y": 21.499999988990098,
+              "facing": "east"
+            },
+            "apartment": {
+              "x": 26.929359082853228,
+              "y": 21.157615449711937,
+              "facing": "east"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 5.5,
+            "y": 28.998999999999995
+          },
+          "facing": "south",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 15.999999338952865,
+              "y": 4.00000005126002,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 18.999999645102303,
+              "y": 21.499999988990098,
+              "facing": "east"
+            },
+            "apartment": {
+              "x": 26.929359082853228,
+              "y": 21.157615449711937,
+              "facing": "east"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-stairs",
+          "position": {
+            "x": 5.500000211927623,
+            "y": 35.99999999999994
+          },
+          "facing": "south",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 15.999999338952865,
+              "y": 4.00000005126002,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 18.999999645102303,
+              "y": 21.499999988990098,
+              "facing": "east"
+            },
+            "apartment": {
+              "x": 26.929359082853228,
+              "y": 21.157615449711937,
+              "facing": "east"
+            }
+          },
+          "activeActivity": null
+        },
+        {
+          "version": 1,
+          "mapId": "residential-hall",
+          "position": {
+            "x": 16,
+            "y": 6
+          },
+          "facing": "south",
+          "returnPositions": {
+            "residential-hall": {
+              "x": 15.999999338952865,
+              "y": 4.00000005126002,
+              "facing": "north"
+            },
+            "residential-stairs": {
+              "x": 10.610116189642726,
+              "y": 38.98090098700041,
+              "facing": "east"
+            },
+            "apartment": {
+              "x": 26.929359082853228,
+              "y": 21.157615449711937,
+              "facing": "east"
+            }
+          },
+          "activeActivity": null
+        }
+      ],
+      "keyboardDistance": 2.0000000000000036
+    }
+  ]
+}

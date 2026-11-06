@@ -1,0 +1,240 @@
+{
+  "config": {
+    "argv": [
+      "/workspace/.junyan-tools/node_modules/node/bin/node",
+      "/workspace/junyan/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "docs/evidence/0088/integrated-23be251/activity.config.ts",
+      "--project",
+      "desktop"
+    ],
+    "configFile": "/workspace/junyan/docs/evidence/0088/integrated-23be251/activity.config.ts",
+    "rootDir": "/workspace/junyan/docs/evidence/0088/integrated-23be251",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-23be251/activity-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-23be251",
+        "testIgnore": [],
+        "testMatch": [
+          "activity.spec.ts"
+        ],
+        "timeout": 900000
+      },
+      {
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-23be251/activity-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-23be251",
+        "testIgnore": [],
+        "testMatch": [
+          "activity.spec.ts"
+        ],
+        "timeout": 900000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/junyan/docs/evidence/0088/integrated-23be251/activity-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "/workspace/junyan/docs/evidence/0088/integrated-23be251",
+        "snapshotDir": "/workspace/junyan/docs/evidence/0088/integrated-23be251",
+        "testIgnore": [],
+        "testMatch": "activity.spec.ts",
+        "timeout": 900000,
+        "use": {
+          "actionTimeout": 15000,
+          "baseURL": "http://127.0.0.1:5490/junyan/",
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--mute-audio"
+            ]
+          },
+          "video": "on",
+          "trace": "on",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "activity-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "/workspace/.junyan-tools/node_modules/node/bin/node node_modules/vite/bin/vite.js preview --base /junyan/ --host 127.0.0.1 --port 5490 --strictPort",
+      "cwd": "/workspace/junyan-review-integration",
+      "url": "http://127.0.0.1:5490/junyan/",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "activity.spec.ts",
+      "file": "activity.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "physical service, journal, furnishing undo, garden and repair continuity; cats remain separate",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 900000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 103508,
+                  "error": {
+                    "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '选藤', exact: true })\u001b[22m\n",
+                    "stack": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '选藤', exact: true })\u001b[22m\n\n    at /workspace/junyan/docs/evidence/0088/integrated-23be251/activity.spec.ts:70:137",
+                    "location": {
+                      "file": "/workspace/junyan/docs/evidence/0088/integrated-23be251/activity.spec.ts",
+                      "column": 137,
+                      "line": 70
+                    },
+                    "snippet": "  68 |   await expect.poll(async()=> (await game(page)).neighbourhood).toEqual(beforeReload.neighbourhood);expect((await game(page)).world.position).toEqual(beforeReload.world.position);expect((await game(page)).world.activeAnchorId).toBe('apartment.furnish');await note('undo-reloaded');await closeActivity(page);\n  69 |   await travel(page,['residential-stairs','rooftop']);await enter(page,'rooftop.garden');await expect(page.getByTestId('garden-view')).toBeVisible();\n> 70 |   for(const plant of ['climber','tree']){await page.getByRole('button',{name:`${gardenName('select')}${gardenName(plant)}`,exact:true}).click();await page.locator(`.garden-tool-button[aria-label=\"${gardenName('water-verb')}\"]`).click();await expect.poll(async()=> (await game(page)).neighbourhood.garden.plants[plant].care).toBe('ready');}\n     |                                                                                                                                         ^\n  71 |   await note('garden-cared');const cared=(await game(page)).neighbourhood;await page.reload();await expect(page.getByTestId('garden-view')).toBeVisible();await expect.poll(async()=> (await game(page)).neighbourhood).toEqual(cared);await closeActivity(page);\n  72 |   await travel(page,['residential-stairs','residential-hall','town','workshop']);await enter(page,'workshop.lamp');\n  73 |   await page.getByTestId('repair-part-bulb').click();await page.locator('.repair-part-actions').getByRole('button',{name:'拧紧',exact:true}).click();await page.locator('.repair-main-actions').getByRole('button',{name:'试试',exact:true}).click();await page.locator('.repair-main-actions').getByRole('button',{name:'放回',exact:true}).click();await note('lamp-repaired');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/junyan/docs/evidence/0088/integrated-23be251/activity.spec.ts",
+                        "column": 137,
+                        "line": 70
+                      },
+                      "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: '选藤', exact: true })\u001b[22m\n\n\n  68 |   await expect.poll(async()=> (await game(page)).neighbourhood).toEqual(beforeReload.neighbourhood);expect((await game(page)).world.position).toEqual(beforeReload.world.position);expect((await game(page)).world.activeAnchorId).toBe('apartment.furnish');await note('undo-reloaded');await closeActivity(page);\n  69 |   await travel(page,['residential-stairs','rooftop']);await enter(page,'rooftop.garden');await expect(page.getByTestId('garden-view')).toBeVisible();\n> 70 |   for(const plant of ['climber','tree']){await page.getByRole('button',{name:`${gardenName('select')}${gardenName(plant)}`,exact:true}).click();await page.locator(`.garden-tool-button[aria-label=\"${gardenName('water-verb')}\"]`).click();await expect.poll(async()=> (await game(page)).neighbourhood.garden.plants[plant].care).toBe('ready');}\n     |                                                                                                                                         ^\n  71 |   await note('garden-cared');const cared=(await game(page)).neighbourhood;await page.reload();await expect(page.getByTestId('garden-view')).toBeVisible();await expect.poll(async()=> (await game(page)).neighbourhood).toEqual(cared);await closeActivity(page);\n  72 |   await travel(page,['residential-stairs','residential-hall','town','workshop']);await enter(page,'workshop.lamp');\n  73 |   await page.getByTestId('repair-part-bulb').click();await page.locator('.repair-part-actions').getByRole('button',{name:'拧紧',exact:true}).click();await page.locator('.repair-main-actions').getByRole('button',{name:'试试',exact:true}).click();await page.locator('.repair-main-actions').getByRole('button',{name:'放回',exact:true}).click();await note('lamp-repaired');\n    at /workspace/junyan/docs/evidence/0088/integrated-23be251/activity.spec.ts:70:137"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "desktop served-1\n"
+                    },
+                    {
+                      "text": "desktop served-2\n"
+                    },
+                    {
+                      "text": "desktop served-3\n"
+                    },
+                    {
+                      "text": "desktop journal\n"
+                    },
+                    {
+                      "text": "desktop furnished\n"
+                    },
+                    {
+                      "text": "desktop undo-reloaded\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T00:35:31.234Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-23be251/activity-results/activity-physical-service--cafd1-inuity-cats-remain-separate-desktop/video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-23be251/activity-results/activity-physical-service--cafd1-inuity-cats-remain-separate-desktop/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/junyan/docs/evidence/0088/integrated-23be251/activity-results/activity-physical-service--cafd1-inuity-cats-remain-separate-desktop/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/junyan/docs/evidence/0088/integrated-23be251/activity.spec.ts",
+                    "column": 137,
+                    "line": 70
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "616be4781cf8c32ae453-f918f9826762354e771f",
+          "file": "activity.spec.ts",
+          "line": 38,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-06T00:35:30.284Z",
+    "duration": 108382.962,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

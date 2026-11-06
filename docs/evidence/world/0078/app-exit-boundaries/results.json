@@ -1,0 +1,90 @@
+{
+  "method": "Validated saved apartment arrival; real keyboard walk, starter/select/preview/place/undo controls and reload. Observation-only safeExitPosition timing wrapper. Cloud Chromium, not physical phone.",
+  "workingTreeObserved": true,
+  "results": [
+    {
+      "device": "desktop",
+      "movement": {
+        "exitCalls": 0,
+        "frames": 93,
+        "p95FrameGapMs": 33.40000000000009,
+        "maxFrameGapMs": 50
+      },
+      "calls": [
+        {
+          "mapId": "apartment",
+          "ms": 2
+        },
+        {
+          "mapId": "apartment",
+          "ms": 0.7999999998137355
+        },
+        {
+          "mapId": "apartment",
+          "ms": 0.2999999998137355
+        },
+        {
+          "mapId": "apartment",
+          "ms": 0.20000000018626451
+        }
+      ],
+      "reloadCalls": [
+        {
+          "mapId": "apartment",
+          "ms": 2.2000000001862645
+        },
+        {
+          "mapId": "apartment",
+          "ms": 0.7000000001862645
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "movement": {
+        "exitCalls": 0,
+        "frames": 68,
+        "p95FrameGapMs": 83.40000000000009,
+        "maxFrameGapMs": 249.89999999999964
+      },
+      "calls": [
+        {
+          "mapId": "apartment",
+          "ms": 1.5
+        },
+        {
+          "mapId": "apartment",
+          "ms": 0.8999999994412065
+        },
+        {
+          "mapId": "apartment",
+          "ms": 0.40000000037252903
+        },
+        {
+          "mapId": "apartment",
+          "ms": 0.19999999925494194
+        }
+      ],
+      "reloadCalls": [
+        {
+          "mapId": "apartment",
+          "ms": 1.900000000372529
+        },
+        {
+          "mapId": "apartment",
+          "ms": 0.900000000372529
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "baseHead": "e1e6d78",
+  "productionFilesSha256": {
+    "src/world/exit-safety.ts": "219365f57e62fd962f20fc7e01adda50ad31c68df84850183eaa0f4fdf9177fa",
+    "src/world/state.ts": "6936639ca0f769d4ace65f0abd4ad63d8bd33abfbc59843f9db8a4603efd800e",
+    "src/world/dynamic.ts": "1c5fa8af6a0d3f5df5810298fffaea74f3e726e32edf17b28b7ae3e92efd6ca7",
+    "src/neighbourhood/transitions.ts": "62feffe6beddd1a2ee3d86811756d6138cd19ee32d2ef35a34bd74c6743b9605",
+    "src/App.tsx": "fc2979cde26c0a0d610df5829661694652b0cbb24b6cefa3abdf5bcc9eb0774c"
+  }
+}

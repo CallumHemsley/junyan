@@ -1,0 +1,680 @@
+{
+  "head": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+  "kind": "AUTHORIZED VISUAL ARRIVAL/SAVE FIXTURES; NOT NORMAL TRAVEL OR ACTIVITY PROOF",
+  "node": "22.23.4",
+  "sources": {
+    "docs/evidence/0088/integrated-c4ec7ed/desktop-final.json": {
+      "sha256": "94c1ffd44e5d12d3ffd016018d0249cfe03165c4372a20188b4bdb3de286f649",
+      "served": 0,
+      "origin": "actual prior ordinary-input journey; see source directory report"
+    },
+    "docs/evidence/0088/integrated-23be251/desktop-activity-final.json": {
+      "sha256": "34a2109e570d1d3e838f333999500f176be5a3a297dea58b07f844433fd95827",
+      "served": 3,
+      "origin": "actual prior ordinary-input journey; see source directory report"
+    }
+  },
+  "worldOverrides": [
+    "mapId",
+    "declared first entrance position/facing",
+    "activeActivity=null",
+    "activeAnchorId=null",
+    "returnPositions={}"
+  ],
+  "ordinaryActionBeforeCapture": "dismiss saved-game welcome using \u5f00\u95e8\u8fce\u5ba2",
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 1000,
+      "dpr": 1
+    },
+    "phone": {
+      "width": 390,
+      "height": 664,
+      "dpr": 3
+    }
+  },
+  "captureCount": 40,
+  "captures": [
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-morning-restaurant.png",
+      "map": "restaurant",
+      "phase": "morning",
+      "entranceId": "from-town",
+      "position": {
+        "x": 12,
+        "y": 18
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "036859150a2472c055d29388978975641bbe83b6154a5f0935f6f8e4e4a57eac"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-morning-courtyard.png",
+      "map": "courtyard",
+      "phase": "morning",
+      "entranceId": "from-town",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "ce255da9304713d40cc605323696193c70ebf50a81fc11e0b74020aa6e9b2cd3"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-morning-park.png",
+      "map": "park",
+      "phase": "morning",
+      "entranceId": "from-town",
+      "position": {
+        "x": 7,
+        "y": 63
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "ed232d13314aaa13be1e10c54f0c93a4751ad197562cd175c5d28cd8e5814223"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-morning-riverbank.png",
+      "map": "riverbank",
+      "phase": "morning",
+      "entranceId": "from-town",
+      "position": {
+        "x": 6,
+        "y": 75
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "29eaad673e42b7b2f0f36588ba7f364f3dcb1d15781b9eb01f96fa1454675573"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-morning-apartment.png",
+      "map": "apartment",
+      "phase": "morning",
+      "entranceId": "from-residential-stairs",
+      "position": {
+        "x": 25,
+        "y": 20
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "66514e3900291f92db00b0718c30e4f3d8bd458127d61f3d9dbf0f7355fca17d"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-morning-residential-hall.png",
+      "map": "residential-hall",
+      "phase": "morning",
+      "entranceId": "from-town",
+      "position": {
+        "x": 16,
+        "y": 21
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "5c53d5de147ccb1705fbebb23e0ba5c671549da63cec5999d3507f9f0b846440"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-morning-residential-stairs.png",
+      "map": "residential-stairs",
+      "phase": "morning",
+      "entranceId": "from-residential-hall",
+      "position": {
+        "x": 11.5,
+        "y": 37
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "167a29574b924c2788fc256b62a47a64d0c7712be3888bc6af1d52b7a6b21496"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-morning-rooftop.png",
+      "map": "rooftop",
+      "phase": "morning",
+      "entranceId": "from-residential-stairs",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "1764e9228306a6d4cee505aed046de8a64863a01c6f97c034685594d223817f5"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-morning-town.png",
+      "map": "town",
+      "phase": "morning",
+      "entranceId": "from-restaurant",
+      "position": {
+        "x": 34,
+        "y": 30.4
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "363b42f9bf4ce2391a8f015fdbfa9a2e507036efa539efefde70c9c1f5f7394b"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-morning-workshop.png",
+      "map": "workshop",
+      "phase": "morning",
+      "entranceId": "from-town",
+      "position": {
+        "x": 15,
+        "y": 25
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "5b58364558c3569d307e305784da3cd5f9983213e3be18a9b96e28a3b77c81c7"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-evening-restaurant.png",
+      "map": "restaurant",
+      "phase": "evening",
+      "entranceId": "from-town",
+      "position": {
+        "x": 12,
+        "y": 18
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "ee952331c4c49745e9ea4e643b4dcc064f90204adb9b22511f0dffc01fe9ddaa"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-evening-courtyard.png",
+      "map": "courtyard",
+      "phase": "evening",
+      "entranceId": "from-town",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "2eb9caa629d5ae2dca7e1446e93c63faaeb47f37c4287ce0ad344196cd21f66c"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-evening-park.png",
+      "map": "park",
+      "phase": "evening",
+      "entranceId": "from-town",
+      "position": {
+        "x": 7,
+        "y": 63
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "fa988b2976b03a8f50bd5470a16c842e6ea923b9302b6315c30a6d271759f339"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-evening-riverbank.png",
+      "map": "riverbank",
+      "phase": "evening",
+      "entranceId": "from-town",
+      "position": {
+        "x": 6,
+        "y": 75
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "c1959068388bd4021a44b988ab2501a7a27bc1894ff71df4c90053d9fc7f3fbf"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-evening-apartment.png",
+      "map": "apartment",
+      "phase": "evening",
+      "entranceId": "from-residential-stairs",
+      "position": {
+        "x": 25,
+        "y": 20
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "8532bac735657d7d71db084c1eb78a2e827bc418083f21798b8b5f1fffec9c3f"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-evening-residential-hall.png",
+      "map": "residential-hall",
+      "phase": "evening",
+      "entranceId": "from-town",
+      "position": {
+        "x": 16,
+        "y": 21
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "9f0fedace939d5811ad84552ebe018e2d7f10d1660ce9d21ce8268a625188619"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-evening-residential-stairs.png",
+      "map": "residential-stairs",
+      "phase": "evening",
+      "entranceId": "from-residential-hall",
+      "position": {
+        "x": 11.5,
+        "y": 37
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "6bbb66b507a842d6b1d4021234d4773e7430ef4b99cbf3e33b8bb0a311bd9063"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-evening-rooftop.png",
+      "map": "rooftop",
+      "phase": "evening",
+      "entranceId": "from-residential-stairs",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "5f2bc6cdd3783685f6cf59348212abd4aa7c1d1ea4a54fed34f31793a6fd83b1"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-evening-town.png",
+      "map": "town",
+      "phase": "evening",
+      "entranceId": "from-restaurant",
+      "position": {
+        "x": 34,
+        "y": 30.4
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "70db39f51bc7d65d60dc6b1d0ac0339426e27013bd7dc8fb1aa8f69d80a245b7"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/desktop-evening-workshop.png",
+      "map": "workshop",
+      "phase": "evening",
+      "entranceId": "from-town",
+      "position": {
+        "x": 15,
+        "y": 25
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "dpr": 1
+      },
+      "sha256": "941e43392a326a78e706e7c9826de90bd998e504a9e752a38d81c63db1800e3f"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-morning-restaurant.png",
+      "map": "restaurant",
+      "phase": "morning",
+      "entranceId": "from-town",
+      "position": {
+        "x": 12,
+        "y": 18
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "fdeacd28cf41c629558729f24c178d8dd753933b348b20321058473fded348d0"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-morning-courtyard.png",
+      "map": "courtyard",
+      "phase": "morning",
+      "entranceId": "from-town",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "720b772c8c3c093f042c408cff170517404557afe6c61421d171dc8e0e310403"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-morning-park.png",
+      "map": "park",
+      "phase": "morning",
+      "entranceId": "from-town",
+      "position": {
+        "x": 7,
+        "y": 63
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "3ae3886663be0a33f751a71bf9dbf0dccffff72ba711c67c321a32a8c491a26f"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-morning-riverbank.png",
+      "map": "riverbank",
+      "phase": "morning",
+      "entranceId": "from-town",
+      "position": {
+        "x": 6,
+        "y": 75
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "63a6e746246933aec5c2a4279f7fc9b18e8c378b8e3e6fd976d484462fe972bf"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-morning-apartment.png",
+      "map": "apartment",
+      "phase": "morning",
+      "entranceId": "from-residential-stairs",
+      "position": {
+        "x": 25,
+        "y": 20
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "2c35b596d77f07b47a12767ae3f006ed1b434012185f8f6b97d933ce395d7134"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-morning-residential-hall.png",
+      "map": "residential-hall",
+      "phase": "morning",
+      "entranceId": "from-town",
+      "position": {
+        "x": 16,
+        "y": 21
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "4c11a02d625d9e3bd13111ac18e3a203876878397fdd23c4f641a15be5066c20"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-morning-residential-stairs.png",
+      "map": "residential-stairs",
+      "phase": "morning",
+      "entranceId": "from-residential-hall",
+      "position": {
+        "x": 11.5,
+        "y": 37
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "43ea9e416b8ac5d34137e48eeeb2cc6e6c8d61198b196c0e3d6aa7fd04b5c1f9"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-morning-rooftop.png",
+      "map": "rooftop",
+      "phase": "morning",
+      "entranceId": "from-residential-stairs",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "b0c0afa95f1408f67cad6a4a47d9e233e66ca5facdcef65c6a28ef29488430f1"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-morning-town.png",
+      "map": "town",
+      "phase": "morning",
+      "entranceId": "from-restaurant",
+      "position": {
+        "x": 34,
+        "y": 30.4
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "98b37e33793c5f152103b322b6f4dcc750534eb6b1ff86fed10c58af5f474124"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-morning-workshop.png",
+      "map": "workshop",
+      "phase": "morning",
+      "entranceId": "from-town",
+      "position": {
+        "x": 15,
+        "y": 25
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "a9124d70302b1c9bd48e830b089bb2a792f0eb53c640a2c3ffa6333db2efa1ec"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-evening-restaurant.png",
+      "map": "restaurant",
+      "phase": "evening",
+      "entranceId": "from-town",
+      "position": {
+        "x": 12,
+        "y": 18
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "e49b0e999992ea3f961751878890e054ee565bff42d42bf234cb9215a0cadee6"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-evening-courtyard.png",
+      "map": "courtyard",
+      "phase": "evening",
+      "entranceId": "from-town",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "6dce5f6c722efa9592e054c467726e7743dcd0e47de9a0712ad4e6a5532c97c2"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-evening-park.png",
+      "map": "park",
+      "phase": "evening",
+      "entranceId": "from-town",
+      "position": {
+        "x": 7,
+        "y": 63
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "5b56c592191b0efbaf0787337722fc5e203bc6799997bd36056f24e9a4d43bb8"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-evening-riverbank.png",
+      "map": "riverbank",
+      "phase": "evening",
+      "entranceId": "from-town",
+      "position": {
+        "x": 6,
+        "y": 75
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "f6b1818511805a065e1d00054e9286342ac5a4f8055d18066390a02b60d928cc"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-evening-apartment.png",
+      "map": "apartment",
+      "phase": "evening",
+      "entranceId": "from-residential-stairs",
+      "position": {
+        "x": 25,
+        "y": 20
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "33301ba8719ba0f7abf6f09b138a4bd9d03096f0b0ed292b9872ef72f22a8807"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-evening-residential-hall.png",
+      "map": "residential-hall",
+      "phase": "evening",
+      "entranceId": "from-town",
+      "position": {
+        "x": 16,
+        "y": 21
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "2f06c28c767d26a7665f09a911713414d0c03871a7431eeb4337237e57a4f6d2"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-evening-residential-stairs.png",
+      "map": "residential-stairs",
+      "phase": "evening",
+      "entranceId": "from-residential-hall",
+      "position": {
+        "x": 11.5,
+        "y": 37
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "1132f6d576dc9f05049113380dc28602e8600447601aed47337c60ba07f2dc12"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-evening-rooftop.png",
+      "map": "rooftop",
+      "phase": "evening",
+      "entranceId": "from-residential-stairs",
+      "position": {
+        "x": 12.5,
+        "y": 29
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "3b44d490914cc665da3b73939f32604bc6941ea8ae56fa348b7c9ea0e6ff52d8"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-evening-town.png",
+      "map": "town",
+      "phase": "evening",
+      "entranceId": "from-restaurant",
+      "position": {
+        "x": 34,
+        "y": 30.4
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "fc6ba0a06519659edf449614edb3d18f9813e2493c1d9a3dee34497ef86fb2a3"
+    },
+    {
+      "path": "docs/evidence/0088/integrated-e02a747/phone-evening-workshop.png",
+      "map": "workshop",
+      "phase": "evening",
+      "entranceId": "from-town",
+      "position": {
+        "x": 15,
+        "y": 25
+      },
+      "viewport": {
+        "width": 390,
+        "height": 664,
+        "dpr": 3
+      },
+      "sha256": "11606daf6836373d63d699f886c8d434aa86a87754f0c20373c868f6b10999b3"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "scale": 18,
+    "dpr": 1,
+    "width": 256,
+    "height": 160,
+    "anchor": {
+      "x": 128,
+      "y": 80
+    }
+  },
+  {
+    "scale": 18,
+    "dpr": 2,
+    "width": 512,
+    "height": 320,
+    "anchor": {
+      "x": 128,
+      "y": 80
+    }
+  },
+  {
+    "scale": 24,
+    "dpr": 1,
+    "width": 256,
+    "height": 160,
+    "anchor": {
+      "x": 128,
+      "y": 80
+    }
+  },
+  {
+    "scale": 24,
+    "dpr": 2,
+    "width": 512,
+    "height": 320,
+    "anchor": {
+      "x": 128,
+      "y": 80
+    }
+  }
+]
