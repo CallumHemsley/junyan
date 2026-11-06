@@ -1,0 +1,27 @@
+# world/0092 paid furnishing artwork
+
+ACTIVE. Worker01a1ae1f-60be-71ac-b17f-c10bb16c706b, branch codex/0092-paid-item-world-art, cloud checkout /workspace/junyan-0092, strict port5504, PR44. Native goal registration unavailable; this ticket/evidence preserves the objective. Frozen0081 checkout/branch and supported61e6910 payload remain intact.
+
+Base3836175 is main-reconciled foundation. Initial6fc9ad7 imports only the exact61e6910 residential index.ts, with source SHA256 in intake.json. Foundation must consume ready0081 map/elevation files coherently; they are deliberately not copied through this narrow lease. Current artwork3206ee9 adds only three paid cases plus paid-items.test.ts. No shared rules, purchase/save/schema, dependency, actor, map, feature copy or App changes.
+
+blue-vase uses blue glaze, a vessel foot, neck, lip and dark opening; large-basket has a larger body than the free daily basket, woven bands, dark interior and a handle following saved rotation; small-lamp has a grounded base, short stem and folded fabric shade. Each uses authoritative footprint and saved location. All paid footprints are1x1 slots (2x2world), including large-basket; names do not alter collisions. The existing per-item depth entries and explicit shadeColor pipeline apply; no separate glow/time/shader system.
+
+45 focused checks pass (2new art/geometry/shader checks,4world-footprint checks,19progression checks,20existing art/apartment rule/content/legacy-scene checks). TypeScript and Vite production build pass with existing Zod annotation/large-bundle warnings. A read-only source review found no concrete case defect; actual source-specific UI review is recorded below.
+
+App proof starts from an explicitly declared, schema-validated day8/level3 home arrival with80 accumulated earnings and three existing gifts. Purchases themselves, selection, placement, rotation, move, undo and walking use actual DOM/pointer controls. It validates debits of8+8+24, unchanged earnings, retained ownership, saved cells/rotation, world colliders and exact reload. Morning/evening use the authoritative atmosphere; evening is separately declared by a validated served3 phase fixture after the normal workflow, not a claimed actual service journey. Interior ambient is intentionally phase-stable, so no broad outdoor-lighting contrast claim follows.
+
+Current foundation adapter is18; all captures are app-18 and explicitly not all-human15 acceptance. Foundation owns that integration. After intake, repeat actual workflows and visual references at15, preserving original gifts/stairs and main genericWord/progression semantics. Do not mark this goal done on current18 captures.
+
+Retained driver failures: app-18-fixture-level-error omitted level3 for day8 and was correctly rejected before UI; app-18-key-order-comparison used JSON key order instead of semantic equality after reload; app-18-checkpoint-observer-error read a cleared temporary checkpoint instead of IndexedDB after reload. No application regression is claimed from those failures. The final app-18 folder supersedes them only if both profiles complete with unchanged art hashes and no page errors. Raw earlier runs remain available.
+
+## Current18 source-specific result
+
+Both profiles in app-18/results.json pass13 checkpoints with zero page errors and unchanged art SHA256. Each item was bought through the actual shop, placed at saved y=1, moved/rotated to saved y=2, and restored by undo to its original saved row/rotation. All three remain owned; earnings80, spent40 and balance40 persist. Exact placements, player position(11,8.6), progression values and all gifts survive reload. Colliders match the committed2x2 footprints. Morning/evening and individual placed/moved/undo captures were inspected at1440x1000 and390x844; both recorded videos were decoded to inspected contact sheets [('desktop', '19.640000'), ('phone', '18.200000')].
+
+Read-only reviewer/root/residential_review inspected source and fresh requested captures and independently matched the recorded art hash. No blocking paid-art finding at current18 scale. This is not15-scale, latest-foundation, broad lighting or full-world acceptance. Interior morning/evening remain intentionally near-identical under existing ambient; shader forwarding is separately checked.
+
+Main intake instructions: consume this exact full residential painter (it retains61e6910) plus its focused paid-items test; preserve latest shared feature/actor contracts, and pair with ready0081 maps/elevation. No unpaid/schema/purchase/save edits are needed. Keep ticket ACTIVE through integrated all-human15 purchase→place→move→undo→reload and visual references.
+
+The final app-18 repeat uses explicit locator.tap for every phone shop/editor control and touchscreen.tap for walking; desktop uses mouse. Each final profile again passes13 checkpoints, zero page errors, unchanged art hash. Earlier app-18-pointer mobile UI used mouse-style locator clicks and is retained separately. Final source-hashes.json records the driver and relevant unchanged actor/rule/purchase/save contracts. No15-scale capture is implied.
+
+Verification uses the existing managed-cloud Node22 installation and a tooling-only node_modules symlink to the original checkout's installed packages; no fresh frozen install is claimed. Video includes ordinary reload/loading frames and the desktop recording's960px cap/letterboxing; full-size screenshots preserve actual1440x1000 and390x844 views. No user-local runtime or preview was used.

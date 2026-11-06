@@ -1,0 +1,24 @@
+{
+  "head": "3206ee94029c2b6931066af9a08d5e04bb6bf575",
+  "source": "621ffb69116fa8e3e56a97ad0869a9c74e58a408073172ffe585602f48787ccc",
+  "sourceAtEnd": "621ffb69116fa8e3e56a97ad0869a9c74e58a408073172ffe585602f48787ccc",
+  "method": "Declared valid day8 arrival with80 accumulated earnings and three existing gifts. Actual UI purchases/placement/move/undo, real walking and reload. Evening only uses a separately declared validated served=3 phase fixture. Actor adapter18; no15-pixel or full-opening acceptance.",
+  "results": [
+    {
+      "device": "desktop",
+      "errors": [],
+      "steps": [],
+      "status": "failed",
+      "failure": "page.evaluate: Error: Invalid declared accumulated-earnings arrival\n    at eval (eval at evaluate (:370:30), <anonymous>:1:932)\n    at async <anonymous>:396:30",
+      "video": "/workspace/junyan-0092/docs/evidence/world/0092/app-18/video/page@931599bb9239d3f025869c33b6ba2637.webm"
+    },
+    {
+      "device": "phone",
+      "errors": [],
+      "steps": [],
+      "status": "failed",
+      "failure": "page.evaluate: Error: Invalid declared accumulated-earnings arrival\n    at eval (eval at evaluate (:370:30), <anonymous>:1:932)\n    at async <anonymous>:396:30",
+      "video": "/workspace/junyan-0092/docs/evidence/world/0092/app-18/video/page@843c29439bd161871ce3f6670d3c26bd.webm"
+    }
+  ]
+}

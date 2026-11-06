@@ -1,0 +1,10 @@
+{
+  "src/world/art/residential/index.ts": "621ffb69116fa8e3e56a97ad0869a9c74e58a408073172ffe585602f48787ccc",
+  "src/world/art/residential/paid-items.test.ts": "3d33aa6617702187ec1719a942ee1d386056b17a37fc1528e9e3eebe5a0bb733",
+  "docs/evidence/world/0092/purchases.mjs": "ef54cd1359635ba1bde1a29bd2041a69f900c509cbf8272db676262634a72562",
+  "src/world/characters/adapter.ts": "8a24836aaf871d93405f9d4922497335a037e78fd8ace24ca93d518c3c01a45e",
+  "src/features/apartment/rules.ts": "46208826a43aa47e6d399d9cb0e8ffb7826b9cafbfbc569891ebabe4fec76c0b",
+  "src/features/apartment/world.ts": "bc9a71e6c46c13fafce7f39de625d4e1eb9785c09fe15ec5482c258174285a55",
+  "src/progression/purchases.ts": "a4f81b0231867577030beff512bf835c864c3fb53c3ade80e6a1f0161ec76556",
+  "src/save.ts": "a79ca5788260328dd380e06928c07f087e538a7b965d27548f4d4f00cb62b339"
+}

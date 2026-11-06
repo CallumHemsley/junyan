@@ -1,0 +1,4328 @@
+{
+  "head": "3206ee94029c2b6931066af9a08d5e04bb6bf575",
+  "source": "621ffb69116fa8e3e56a97ad0869a9c74e58a408073172ffe585602f48787ccc",
+  "sourceAtEnd": "621ffb69116fa8e3e56a97ad0869a9c74e58a408073172ffe585602f48787ccc",
+  "method": "Declared valid day8 arrival with80 accumulated earnings and three existing gifts. Actual UI purchases/placement/move/undo, real walking and reload. Evening only uses a separately declared validated served=3 phase fixture. Actor adapter18; no15-pixel or full-opening acceptance.",
+  "results": [
+    {
+      "device": "desktop",
+      "errors": [],
+      "steps": [
+        {
+          "name": "before",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 0,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": {
+              "placements": [
+                {
+                  "id": "bed",
+                  "x": 0,
+                  "y": 0,
+                  "rotation": 0
+                },
+                {
+                  "id": "garden.planter",
+                  "x": 0,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "repairs.stool",
+                  "x": 1,
+                  "y": 3,
+                  "rotation": 0
+                }
+              ],
+              "colour": "blue",
+              "rugSize": "small"
+            },
+            "notice": "okay"
+          },
+          "earnings": 80
+        },
+        {
+          "name": "blue-vase-placed",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 1003.4000000000001,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": {
+              "placements": [
+                {
+                  "id": "bed",
+                  "x": 0,
+                  "y": 0,
+                  "rotation": 0
+                },
+                {
+                  "id": "garden.planter",
+                  "x": 0,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "repairs.stool",
+                  "x": 1,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "cats.cushion",
+                  "x": 2,
+                  "y": 3,
+                  "rotation": 0
+                }
+              ],
+              "colour": "blue",
+              "rugSize": "small"
+            },
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 8,
+            "purchases": [
+              "blue-vase"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "blue-vase-moved",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 3010.1999999999994,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 2,
+                "rotation": 1
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": {
+              "placements": [
+                {
+                  "id": "bed",
+                  "x": 0,
+                  "y": 0,
+                  "rotation": 0
+                },
+                {
+                  "id": "garden.planter",
+                  "x": 0,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "repairs.stool",
+                  "x": 1,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "cats.cushion",
+                  "x": 2,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "blue-vase",
+                  "x": 2,
+                  "y": 1,
+                  "rotation": 0
+                }
+              ],
+              "colour": "blue",
+              "rugSize": "small"
+            },
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 8,
+            "purchases": [
+              "blue-vase"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "blue-vase-undo",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 3010.1999999999994,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 8,
+            "purchases": [
+              "blue-vase"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "large-basket-placed",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 5026.699999999999,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 1,
+                "rotation": 1
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": {
+              "placements": [
+                {
+                  "id": "bed",
+                  "x": 0,
+                  "y": 0,
+                  "rotation": 0
+                },
+                {
+                  "id": "garden.planter",
+                  "x": 0,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "repairs.stool",
+                  "x": 1,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "cats.cushion",
+                  "x": 2,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "blue-vase",
+                  "x": 2,
+                  "y": 1,
+                  "rotation": 0
+                }
+              ],
+              "colour": "blue",
+              "rugSize": "small"
+            },
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 16,
+            "purchases": [
+              "blue-vase",
+              "large-basket"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "large-basket-moved",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 6026.8,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 2,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": {
+              "placements": [
+                {
+                  "id": "bed",
+                  "x": 0,
+                  "y": 0,
+                  "rotation": 0
+                },
+                {
+                  "id": "garden.planter",
+                  "x": 0,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "repairs.stool",
+                  "x": 1,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "cats.cushion",
+                  "x": 2,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "blue-vase",
+                  "x": 2,
+                  "y": 1,
+                  "rotation": 0
+                },
+                {
+                  "id": "large-basket",
+                  "x": 3,
+                  "y": 1,
+                  "rotation": 1
+                }
+              ],
+              "colour": "blue",
+              "rugSize": "small"
+            },
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 16,
+            "purchases": [
+              "blue-vase",
+              "large-basket"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "large-basket-undo",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 7043.4,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 1,
+                "rotation": 1
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 16,
+            "purchases": [
+              "blue-vase",
+              "large-basket"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "small-lamp-placed",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 8059.999999999999,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 1,
+                "rotation": 1
+              },
+              {
+                "id": "small-lamp",
+                "x": 4,
+                "y": 1,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": {
+              "placements": [
+                {
+                  "id": "bed",
+                  "x": 0,
+                  "y": 0,
+                  "rotation": 0
+                },
+                {
+                  "id": "garden.planter",
+                  "x": 0,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "repairs.stool",
+                  "x": 1,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "cats.cushion",
+                  "x": 2,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "blue-vase",
+                  "x": 2,
+                  "y": 1,
+                  "rotation": 0
+                },
+                {
+                  "id": "large-basket",
+                  "x": 3,
+                  "y": 1,
+                  "rotation": 1
+                }
+              ],
+              "colour": "blue",
+              "rugSize": "small"
+            },
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 40,
+            "purchases": [
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子",
+                "小",
+                "灯"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "small-lamp-moved",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 9060.099999999997,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 1,
+                "rotation": 1
+              },
+              {
+                "id": "small-lamp",
+                "x": 4,
+                "y": 2,
+                "rotation": 1
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": {
+              "placements": [
+                {
+                  "id": "bed",
+                  "x": 0,
+                  "y": 0,
+                  "rotation": 0
+                },
+                {
+                  "id": "garden.planter",
+                  "x": 0,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "repairs.stool",
+                  "x": 1,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "cats.cushion",
+                  "x": 2,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "blue-vase",
+                  "x": 2,
+                  "y": 1,
+                  "rotation": 0
+                },
+                {
+                  "id": "large-basket",
+                  "x": 3,
+                  "y": 1,
+                  "rotation": 1
+                },
+                {
+                  "id": "small-lamp",
+                  "x": 4,
+                  "y": 1,
+                  "rotation": 0
+                }
+              ],
+              "colour": "blue",
+              "rugSize": "small"
+            },
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 40,
+            "purchases": [
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子",
+                "小",
+                "灯"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "small-lamp-undo",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 10060.099999999999,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 1,
+                "rotation": 1
+              },
+              {
+                "id": "small-lamp",
+                "x": 4,
+                "y": 1,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 40,
+            "purchases": [
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子",
+                "小",
+                "灯"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "morning-all",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 11,
+              "y": 8.6
+            },
+            "facing": "west",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 14083.300000000001,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 1,
+                "rotation": 1
+              },
+              {
+                "id": "small-lamp",
+                "x": 4,
+                "y": 1,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 40,
+            "purchases": [
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子",
+                "小",
+                "灯"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "reload",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 11,
+              "y": 8.6
+            },
+            "facing": "west",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 15099.900000000001,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 1,
+                "rotation": 1
+              },
+              {
+                "id": "small-lamp",
+                "x": 4,
+                "y": 1,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 40,
+            "purchases": [
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              }
+            },
+            "lastContext": "apartment.place",
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子",
+                "小",
+                "灯"
+              ]
+            }
+          }
+        },
+        {
+          "name": "evening-all",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 11,
+              "y": 8.6
+            },
+            "facing": "west",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 15099.900000000001,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 1,
+                "rotation": 1
+              },
+              {
+                "id": "small-lamp",
+                "x": 4,
+                "y": 1,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 40,
+            "purchases": [
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018484481,
+                "lastDay": 8,
+                "lastAt": 1793932084481,
+                "context": "apartment.place"
+              }
+            },
+            "lastContext": "apartment.place",
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子",
+                "小",
+                "灯"
+              ]
+            }
+          }
+        }
+      ],
+      "colliders": [
+        {
+          "id": "apartment.furniture.bed",
+          "rect": {
+            "x": 4,
+            "y": 4,
+            "width": 4,
+            "height": 4
+          }
+        },
+        {
+          "id": "apartment.furniture.garden.planter",
+          "rect": {
+            "x": 4,
+            "y": 10,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "id": "apartment.furniture.repairs.stool",
+          "rect": {
+            "x": 6,
+            "y": 10,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "id": "apartment.furniture.cats.cushion",
+          "rect": {
+            "x": 8,
+            "y": 10,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "id": "apartment.furniture.blue-vase",
+          "rect": {
+            "x": 8,
+            "y": 6,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "id": "apartment.furniture.large-basket",
+          "rect": {
+            "x": 10,
+            "y": 6,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "id": "apartment.furniture.small-lamp",
+          "rect": {
+            "x": 12,
+            "y": 6,
+            "width": 2,
+            "height": 2
+          }
+        }
+      ],
+      "status": "passed",
+      "video": "/workspace/junyan-0092/docs/evidence/world/0092/app-18/video/page@86aa856deb51702d0a3b3ee2c74f4e83.webm"
+    },
+    {
+      "device": "phone",
+      "errors": [],
+      "steps": [
+        {
+          "name": "before",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 0,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": {
+              "placements": [
+                {
+                  "id": "bed",
+                  "x": 0,
+                  "y": 0,
+                  "rotation": 0
+                },
+                {
+                  "id": "garden.planter",
+                  "x": 0,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "repairs.stool",
+                  "x": 1,
+                  "y": 3,
+                  "rotation": 0
+                }
+              ],
+              "colour": "blue",
+              "rugSize": "small"
+            },
+            "notice": "okay"
+          },
+          "earnings": 80
+        },
+        {
+          "name": "blue-vase-placed",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 1006.5000000000001,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": {
+              "placements": [
+                {
+                  "id": "bed",
+                  "x": 0,
+                  "y": 0,
+                  "rotation": 0
+                },
+                {
+                  "id": "garden.planter",
+                  "x": 0,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "repairs.stool",
+                  "x": 1,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "cats.cushion",
+                  "x": 2,
+                  "y": 3,
+                  "rotation": 0
+                }
+              ],
+              "colour": "blue",
+              "rugSize": "small"
+            },
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 8,
+            "purchases": [
+              "blue-vase"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "blue-vase-moved",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 2006.6000000000001,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 2,
+                "rotation": 1
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": {
+              "placements": [
+                {
+                  "id": "bed",
+                  "x": 0,
+                  "y": 0,
+                  "rotation": 0
+                },
+                {
+                  "id": "garden.planter",
+                  "x": 0,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "repairs.stool",
+                  "x": 1,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "cats.cushion",
+                  "x": 2,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "blue-vase",
+                  "x": 2,
+                  "y": 1,
+                  "rotation": 0
+                }
+              ],
+              "colour": "blue",
+              "rugSize": "small"
+            },
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 8,
+            "purchases": [
+              "blue-vase"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "blue-vase-undo",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 3006.6000000000004,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 8,
+            "purchases": [
+              "blue-vase"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "large-basket-placed",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 4023.1,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 1,
+                "rotation": 1
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": {
+              "placements": [
+                {
+                  "id": "bed",
+                  "x": 0,
+                  "y": 0,
+                  "rotation": 0
+                },
+                {
+                  "id": "garden.planter",
+                  "x": 0,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "repairs.stool",
+                  "x": 1,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "cats.cushion",
+                  "x": 2,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "blue-vase",
+                  "x": 2,
+                  "y": 1,
+                  "rotation": 0
+                }
+              ],
+              "colour": "blue",
+              "rugSize": "small"
+            },
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 16,
+            "purchases": [
+              "blue-vase",
+              "large-basket"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "large-basket-moved",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 5023.199999999999,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 2,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": {
+              "placements": [
+                {
+                  "id": "bed",
+                  "x": 0,
+                  "y": 0,
+                  "rotation": 0
+                },
+                {
+                  "id": "garden.planter",
+                  "x": 0,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "repairs.stool",
+                  "x": 1,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "cats.cushion",
+                  "x": 2,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "blue-vase",
+                  "x": 2,
+                  "y": 1,
+                  "rotation": 0
+                },
+                {
+                  "id": "large-basket",
+                  "x": 3,
+                  "y": 1,
+                  "rotation": 1
+                }
+              ],
+              "colour": "blue",
+              "rugSize": "small"
+            },
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 16,
+            "purchases": [
+              "blue-vase",
+              "large-basket"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "large-basket-undo",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 6039.699999999999,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 1,
+                "rotation": 1
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 16,
+            "purchases": [
+              "blue-vase",
+              "large-basket"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "small-lamp-placed",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 6039.699999999999,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 1,
+                "rotation": 1
+              },
+              {
+                "id": "small-lamp",
+                "x": 4,
+                "y": 1,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": {
+              "placements": [
+                {
+                  "id": "bed",
+                  "x": 0,
+                  "y": 0,
+                  "rotation": 0
+                },
+                {
+                  "id": "garden.planter",
+                  "x": 0,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "repairs.stool",
+                  "x": 1,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "cats.cushion",
+                  "x": 2,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "blue-vase",
+                  "x": 2,
+                  "y": 1,
+                  "rotation": 0
+                },
+                {
+                  "id": "large-basket",
+                  "x": 3,
+                  "y": 1,
+                  "rotation": 1
+                }
+              ],
+              "colour": "blue",
+              "rugSize": "small"
+            },
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 40,
+            "purchases": [
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子",
+                "小",
+                "灯"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "small-lamp-moved",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 7056.199999999999,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 1,
+                "rotation": 1
+              },
+              {
+                "id": "small-lamp",
+                "x": 4,
+                "y": 2,
+                "rotation": 1
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": {
+              "placements": [
+                {
+                  "id": "bed",
+                  "x": 0,
+                  "y": 0,
+                  "rotation": 0
+                },
+                {
+                  "id": "garden.planter",
+                  "x": 0,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "repairs.stool",
+                  "x": 1,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "cats.cushion",
+                  "x": 2,
+                  "y": 3,
+                  "rotation": 0
+                },
+                {
+                  "id": "blue-vase",
+                  "x": 2,
+                  "y": 1,
+                  "rotation": 0
+                },
+                {
+                  "id": "large-basket",
+                  "x": 3,
+                  "y": 1,
+                  "rotation": 1
+                },
+                {
+                  "id": "small-lamp",
+                  "x": 4,
+                  "y": 1,
+                  "rotation": 0
+                }
+              ],
+              "colour": "blue",
+              "rugSize": "small"
+            },
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 40,
+            "purchases": [
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子",
+                "小",
+                "灯"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "small-lamp-undo",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 17.5,
+              "y": 13.5
+            },
+            "facing": "north",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 8072.7,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 1,
+                "rotation": 1
+              },
+              {
+                "id": "small-lamp",
+                "x": 4,
+                "y": 1,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 40,
+            "purchases": [
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子",
+                "小",
+                "灯"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "morning-all",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 11,
+              "y": 8.6
+            },
+            "facing": "west",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 12105.900000000001,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 1,
+                "rotation": 1
+              },
+              {
+                "id": "small-lamp",
+                "x": 4,
+                "y": 1,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 40,
+            "purchases": [
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              }
+            },
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子",
+                "小",
+                "灯"
+              ]
+            },
+            "lastContext": "apartment.place"
+          }
+        },
+        {
+          "name": "reload",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 11,
+              "y": 8.6
+            },
+            "facing": "west",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 13105.900000000001,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 1,
+                "rotation": 1
+              },
+              {
+                "id": "small-lamp",
+                "x": 4,
+                "y": 1,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 40,
+            "purchases": [
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              }
+            },
+            "lastContext": "apartment.place",
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子",
+                "小",
+                "灯"
+              ]
+            }
+          }
+        },
+        {
+          "name": "evening-all",
+          "world": {
+            "version": 1,
+            "mapId": "apartment",
+            "position": {
+              "x": 11,
+              "y": 8.6
+            },
+            "facing": "west",
+            "returnPositions": {},
+            "activeActivity": null,
+            "activeAnchorId": null,
+            "life": {
+              "version": 1,
+              "elapsedMs": 13105.900000000001,
+              "discoveries": [],
+              "reactions": [],
+              "serviceDepartures": [],
+              "pauses": []
+            }
+          },
+          "home": {
+            "placements": [
+              {
+                "id": "bed",
+                "x": 0,
+                "y": 0,
+                "rotation": 0
+              },
+              {
+                "id": "garden.planter",
+                "x": 0,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "repairs.stool",
+                "x": 1,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "cats.cushion",
+                "x": 2,
+                "y": 3,
+                "rotation": 0
+              },
+              {
+                "id": "blue-vase",
+                "x": 2,
+                "y": 1,
+                "rotation": 0
+              },
+              {
+                "id": "large-basket",
+                "x": 3,
+                "y": 1,
+                "rotation": 1
+              },
+              {
+                "id": "small-lamp",
+                "x": 4,
+                "y": 1,
+                "rotation": 0
+              }
+            ],
+            "colour": "blue",
+            "rugSize": "small",
+            "owned": [
+              "bed",
+              "garden.planter",
+              "repairs.stool",
+              "cats.cushion",
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "starterClaimed": false,
+            "lastGiftDay": 0,
+            "selected": null,
+            "draft": null,
+            "undo": null,
+            "notice": "okay"
+          },
+          "earnings": 80,
+          "progression": {
+            "version": 1,
+            "spent": 40,
+            "purchases": [
+              "blue-vase",
+              "large-basket",
+              "small-lamp"
+            ],
+            "review": {
+              "放": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "这里": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "蓝色": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              },
+              "花瓶": {
+                "successes": 0,
+                "encounters": 1,
+                "interval": 1,
+                "dueDay": 9,
+                "dueAt": 1794018502922,
+                "lastDay": 8,
+                "lastAt": 1793932102922,
+                "context": "apartment.place"
+              }
+            },
+            "lastContext": "apartment.place",
+            "daily": {
+              "day": 8,
+              "completed": [
+                "apartment.place"
+              ],
+              "supported": [
+                "放",
+                "这里",
+                "蓝色",
+                "花瓶",
+                "大",
+                "篮子",
+                "小",
+                "灯"
+              ]
+            }
+          }
+        }
+      ],
+      "colliders": [
+        {
+          "id": "apartment.furniture.bed",
+          "rect": {
+            "x": 4,
+            "y": 4,
+            "width": 4,
+            "height": 4
+          }
+        },
+        {
+          "id": "apartment.furniture.garden.planter",
+          "rect": {
+            "x": 4,
+            "y": 10,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "id": "apartment.furniture.repairs.stool",
+          "rect": {
+            "x": 6,
+            "y": 10,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "id": "apartment.furniture.cats.cushion",
+          "rect": {
+            "x": 8,
+            "y": 10,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "id": "apartment.furniture.blue-vase",
+          "rect": {
+            "x": 8,
+            "y": 6,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "id": "apartment.furniture.large-basket",
+          "rect": {
+            "x": 10,
+            "y": 6,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "id": "apartment.furniture.small-lamp",
+          "rect": {
+            "x": 12,
+            "y": 6,
+            "width": 2,
+            "height": 2
+          }
+        }
+      ],
+      "status": "passed",
+      "video": "/workspace/junyan-0092/docs/evidence/world/0092/app-18/video/page@faa1c34150e97a4c07bdc81f13f8c4c6.webm"
+    }
+  ]
+}

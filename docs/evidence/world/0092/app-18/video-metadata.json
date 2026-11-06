@@ -1,0 +1,40 @@
+[
+  {
+    "device": "desktop",
+    "uiInput": "mouse",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp9",
+          "width": 960,
+          "height": 1000
+        }
+      ],
+      "format": {
+        "duration": "19.640000"
+      }
+    },
+    "contact": "docs/evidence/world/0092/app-18/desktop-video-contact.png"
+  },
+  {
+    "device": "phone",
+    "uiInput": "touch",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp9",
+          "width": 390,
+          "height": 844
+        }
+      ],
+      "format": {
+        "duration": "18.200000"
+      }
+    },
+    "contact": "docs/evidence/world/0092/app-18/phone-video-contact.png"
+  }
+]
