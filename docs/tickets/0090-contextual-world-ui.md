@@ -49,3 +49,11 @@ Next action remains foundation integration using the current exported props, fol
 The full objective and foundation integration remain ACTIVE. Current API supersedes prior ledger signatures. `dialogue` is now `{current, history?}` so current-line selection never depends on array order. Historical registered lines and replays remain accessible through native details. The panel caps at 40dvh in portrait and desktop, with a larger short-landscape allowance for close/footer reachability.
 
 `WorldPocketBar` now accepts complete `journalControl` and `trayControl` ReactNode slots. `KitchenControls` adds `trayHeading`. Every tray food is a real WordToken beside an icon-only return button. Currency keeps the accepted plain `块` convention documented in the design system and existing App. No new content or audio was invented. Source review used GitHub while the executor was unavailable; writes resumed only in the owned worktree after restoration.
+
+### Exact e02 integrated audit and footer repair
+
+Ordinary opening and physical pointer travel in production assembly e02a747 reached table 3, preserved word-card Escape and token focus, opened the journal, reached the kitchen through visible floor waypoints, picked up food and opened the tray. At 390×664 the actual player and target remain visible above the contextual panel. The isolated audit uses no fixture save writes or debug setters. Audit evidence is separate from the earlier static harness.
+
+The assembled footer exposed a cascade defect. App supplies `.primary`, whose light foreground survived the contextual shell's cream background override. The owned CSS now explicitly pairs `text-primary` with `surface-control`. The owned harness reproduces the same `.primary` cascade. Computed sRGB contrast changes from 1.12:1 to 13.91:1; pointer and Enter activation pass. Assembly e02 remains unchanged. The source fix needs the next integrated increment and review.
+
+A 320×320 audit separately exposed a nearly collapsed kitchen scroll region. The narrow-width cap overrides the short-landscape allowance. Reachability measurement and a separate repair remain pending. The full objective and integration review remain ACTIVE.

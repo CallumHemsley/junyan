@@ -28,7 +28,7 @@
 .world-context-dialogue + .world-context-dialogue { margin-top: 12px; }
 .world-context-actions { flex-shrink: 0; display: flex; flex-wrap: wrap; gap: 8px; padding: 8px 12px; border-top: 1px solid var(--hairline); }
 .world-context-action { flex: 1; }
-.world-context-action > button { width: 100%; padding: 8px 12px; background: var(--surface-control); border: 1px solid var(--hairline); border-radius: var(--radius-tile); font: 500 16px/24px var(--font-sans); }
+.world-context-action > button { color: var(--text-primary); width: 100%; padding: 8px 12px; background: var(--surface-control); border: 1px solid var(--hairline); border-radius: var(--radius-tile); font: 500 16px/24px var(--font-sans); }
 .world-context button:disabled { opacity: .5; cursor: default; }
 .world-pocket-bar { position: absolute; z-index: 21; right: max(16px, env(safe-area-inset-right)); bottom: max(12px, env(safe-area-inset-bottom)); display: flex; gap: 8px; pointer-events: auto; }
 .world-pocket-bar button { display: flex; gap: 8px; align-items: center; padding: 8px 12px; border: 1px solid var(--hairline); border-radius: var(--radius-chip); background: var(--surface-card); color: var(--text-primary); box-shadow: var(--shadow-chip); font: 500 16px/24px var(--font-sans); }

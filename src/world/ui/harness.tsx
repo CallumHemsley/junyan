@@ -30,7 +30,7 @@ function Harness() {
       dialogue={kitchen ? undefined : { current: { line: order.line }, history: long ? Array.from({ length: 7 }, () => ({ line: order.line })) : [] }} {...words} onClose={() => setOpen(false)} returnFocusTo={trigger}
       actions={kitchen ? [{ id: "close", control: <button onClick={() => setOpen(false)}>端好了，去上菜</button> }] : [
         { id: "kitchen", control: <button onClick={() => setKitchen(true)}>去厨房</button> },
-        { id: "pay", control: <button onClick={() => setNotice(`pay-${change}`)}>递上找零</button> },
+        { id: "pay", control: <button className="primary" onClick={() => setNotice(`pay-${change}`)}>递上找零</button> },
       ]}>
       {kitchen ? <KitchenControls foods={content.foods} tray={tray} pickupEnabled={tray.length < 6} trayHeading={<>托盘 {tray.length}/6</>} onPickup={id => setTray([...tray, id])} onReturn={index => setTray(tray.filter((_, i) => i !== index))} {...words} /> :
         <RestaurantTableControls phase="checkout" order={order} foods={content.foods} summary={<>共 4块 · 收到 {order.paid}块</>} changeLabel={<>找零 {change}块</>} resetControl={<button onClick={() => setChange(0)}>重来</button>} receiptSummary={null} thanks={null} change={change} onChange={setChange} {...words} />}
