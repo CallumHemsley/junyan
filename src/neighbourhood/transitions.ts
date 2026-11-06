@@ -1,3 +1,5 @@
+import { worldMaps } from "../world/registry";
+import { restoreWorld, reduceWorld, type WorldAction } from "../world/state";
 import type { Content, GameState } from "../contracts";
 import { recoverWords } from "../game";
 import { contentWords } from "../content/words";
@@ -11,6 +13,7 @@ import { availableGifts, createNeighbourhood } from "./model";
 import { claimGift, visitLocation } from "./state";
 
 export type NeighbourhoodAction =
+  | WorldAction
   | { type: "visit-location"; location: LocationId }
   | { type: "claim-neighbourhood-gift"; giftId: GiftId }
   | ({ type: "feature-action"; now: number } & (
@@ -21,7 +24,7 @@ export type NeighbourhoodAction =
   ));
 
 export function isNeighbourhoodAction(action: { type: string }): action is NeighbourhoodAction {
-  return action.type === "visit-location" || action.type === "feature-action" || action.type === "claim-neighbourhood-gift";
+  return action.type.startsWith("world-") || action.type === "visit-location" || action.type === "feature-action" || action.type === "claim-neighbourhood-gift";
 }
 
 function apartmentRecovery(before: apartment.State, action: apartment.Action, after: apartment.State): string[] {
@@ -43,6 +46,12 @@ function apartmentRecovery(before: apartment.State, action: apartment.Action, af
 
 export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAction, content: Content): GameState {
   const state = game.neighbourhood ?? createNeighbourhood(game.day);
+  if (action.type === "world-move" || action.type === "world-interact" || action.type === "world-close") {
+    const world = restoreWorld(game.world, worldMaps, state.location);
+    const next = reduceWorld(world, action, worldMaps);
+    if (next === world) return game;
+    return { ...game, world: next, neighbourhood: next.activeActivity ? { ...state, location: next.activeActivity } : state };
+  }
   if (action.type === "visit-location") {
     const next = visitLocation(state, action.location);
     return next === state ? game : { ...game, neighbourhood: next };
