@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import voiceData from './voices.json';
+import voiceData from './voices.json' with { type: 'json' };
 
 const id = z.string().regex(/^[a-z][a-z0-9-]*$/);
 const voicePreset = z.strictObject({
