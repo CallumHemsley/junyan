@@ -123,7 +123,7 @@ test.describe("real shipped neighbourhood speech and saved journeys",()=>{
     await page.getByTestId("cats-action-reunite").click();
     await expect.poll(async()=> (await stored(page))?.neighbourhood?.cats.story.node).toBe("reunited");
     await page.getByRole("button",{name:"收下猫靠垫",exact:true}).click();
-    const giftWord=page.locator(".neighbourhood-gift-note [data-word-lookup]").first();
+    const giftWord=page.locator(".world-context-scroll > .help-line [data-word-lookup]").first();
     await giftWord.click();
     await expect(page.locator(".word-popover .pinyin")).not.toBeEmpty();
     await page.getByRole("button",{name:"关闭词卡",exact:true}).click();
