@@ -1,0 +1,90 @@
+{
+  "equivalent": {
+    "hex": "#202020",
+    "rgb": "#202020",
+    "css": "#202020"
+  },
+  "head": "23be251185d989f7b97d36391a8f6478344b1a3b",
+  "evidenceType": "Node execution of exact git-source functions with recording context; no browser screenshot claim",
+  "orderIndependence": {
+    "input": [
+      "#404040",
+      "#808080",
+      "#404040"
+    ],
+    "actual": [
+      "#202020",
+      "#404040",
+      "#202020"
+    ],
+    "expected": [
+      "#202020",
+      "#404040",
+      "#202020"
+    ],
+    "pass": true
+  },
+  "exposure": {
+    "firstInput": "#404040",
+    "firstExposure": 1,
+    "firstOutput": "#909090",
+    "nextInput": "#909090",
+    "nextExposure": 0,
+    "expected": "#484848",
+    "actual": "#484848",
+    "pass": true
+  },
+  "phases": {
+    "morning": {
+      "lampPreserved": true,
+      "grassPreserved": true,
+      "lampAuthoredRGB": [
+        255,
+        224,
+        153
+      ],
+      "lampWrittenStyle": "rgb(255,224,153)",
+      "grassAlreadyShadedRGB": [
+        133,
+        162,
+        99
+      ],
+      "grassWrittenStyle": "rgb(133,162,99)",
+      "material404040": "#55544d"
+    },
+    "evening": {
+      "lampPreserved": true,
+      "grassPreserved": true,
+      "lampAuthoredRGB": [
+        255,
+        224,
+        153
+      ],
+      "lampWrittenStyle": "rgb(255,224,153)",
+      "grassAlreadyShadedRGB": [
+        119,
+        139,
+        92
+      ],
+      "grassWrittenStyle": "rgb(119,139,92)",
+      "material404040": "#544c48"
+    },
+    "night": {
+      "lampPreserved": true,
+      "grassPreserved": true,
+      "lampAuthoredRGB": [
+        255,
+        224,
+        153
+      ],
+      "lampWrittenStyle": "rgb(255,224,153)",
+      "grassAlreadyShadedRGB": [
+        75,
+        107,
+        83
+      ],
+      "grassWrittenStyle": "rgb(75,107,83)",
+      "material404040": "#2b3340"
+    }
+  }
+}
