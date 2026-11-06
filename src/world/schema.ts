@@ -32,4 +32,6 @@ export type WorldState = {
   version: 1; mapId: string; position: Point; facing: Facing;
   returnPositions: Record<string, Spawn>;
   activeActivity: Exclude<FeatureId, "exploration"> | null;
+  activeAnchorId: string | null;
+  life?: import("./life").LifeState;
 };
