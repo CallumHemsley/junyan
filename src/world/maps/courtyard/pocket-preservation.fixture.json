@@ -1,0 +1,297 @@
+{
+  "defaultSpawn": {
+    "x": 23,
+    "y": 33.5,
+    "facing": "north"
+  },
+  "entrances": [
+    {
+      "id": "from-town",
+      "position": {
+        "x": 23,
+        "y": 33.5
+      },
+      "facing": "north"
+    },
+    {
+      "id": "from-residential-hall",
+      "position": {
+        "x": 23,
+        "y": 5.5
+      },
+      "facing": "south"
+    },
+    {
+      "id": "from-park",
+      "position": {
+        "x": 43,
+        "y": 12
+      },
+      "facing": "west"
+    }
+  ],
+  "exits": [
+    {
+      "id": "to-town",
+      "rect": {
+        "x": 21.5,
+        "y": 36,
+        "width": 3,
+        "height": 1
+      },
+      "targetMapId": "town",
+      "targetEntranceId": "from-courtyard",
+      "kind": "path"
+    },
+    {
+      "id": "to-residential-hall",
+      "rect": {
+        "x": 21.5,
+        "y": 1,
+        "width": 3,
+        "height": 1
+      },
+      "targetMapId": "residential-hall",
+      "targetEntranceId": "from-courtyard",
+      "kind": "door"
+    },
+    {
+      "id": "to-park",
+      "rect": {
+        "x": 46,
+        "y": 10.5,
+        "width": 1,
+        "height": 3
+      },
+      "targetMapId": "park",
+      "targetEntranceId": "from-courtyard",
+      "kind": "path"
+    }
+  ],
+  "anchors": [
+    {
+      "id": "courtyard.activity",
+      "position": {
+        "x": 16,
+        "y": 21
+      },
+      "radius": 1.7,
+      "featureId": "cats",
+      "interactionId": "existing-cats-activity"
+    },
+    {
+      "id": "courtyard.white",
+      "position": {
+        "x": 14.8,
+        "y": 19.6
+      },
+      "radius": 1.7,
+      "featureId": "cats",
+      "interactionId": "cats.white"
+    },
+    {
+      "id": "courtyard.black",
+      "position": {
+        "x": 34.5,
+        "y": 20.6
+      },
+      "radius": 1.7,
+      "featureId": "cats",
+      "interactionId": "cats.black"
+    },
+    {
+      "id": "courtyard.bicycle",
+      "position": {
+        "x": 15.8,
+        "y": 18.5
+      },
+      "radius": 1.7,
+      "featureId": "cats",
+      "interactionId": "cats.bicycle"
+    },
+    {
+      "id": "courtyard.bench",
+      "position": {
+        "x": 36.6,
+        "y": 20
+      },
+      "radius": 1.7,
+      "featureId": "cats",
+      "interactionId": "cats.bench"
+    },
+    {
+      "id": "courtyard.door",
+      "position": {
+        "x": 23,
+        "y": 4.4
+      },
+      "radius": 1.7,
+      "featureId": "cats",
+      "interactionId": "cats.door"
+    },
+    {
+      "id": "courtyard.window",
+      "position": {
+        "x": 33.5,
+        "y": 7.7
+      },
+      "radius": 1.7,
+      "featureId": "cats",
+      "interactionId": "cats.window"
+    },
+    {
+      "id": "courtyard.aunt",
+      "position": {
+        "x": 25.3,
+        "y": 6.5
+      },
+      "radius": 1.7,
+      "featureId": "cats",
+      "interactionId": "cats.aunt"
+    }
+  ],
+  "npcHooks": [
+    {
+      "id": "courtyard.white",
+      "position": {
+        "x": 13.4,
+        "y": 17.7
+      },
+      "route": [
+        {
+          "x": 13.4,
+          "y": 17.7
+        },
+        {
+          "x": 14.8,
+          "y": 20
+        },
+        {
+          "x": 16.5,
+          "y": 21
+        },
+        {
+          "x": 16.5,
+          "y": 12
+        },
+        {
+          "x": 23,
+          "y": 12
+        },
+        {
+          "x": 23,
+          "y": 6.5
+        },
+        {
+          "x": 23.5,
+          "y": 4.8
+        }
+      ],
+      "characterId": "cats.white"
+    },
+    {
+      "id": "courtyard.black",
+      "position": {
+        "x": 35,
+        "y": 19.7
+      },
+      "route": [
+        {
+          "x": 35,
+          "y": 19.7
+        },
+        {
+          "x": 34,
+          "y": 20.6
+        },
+        {
+          "x": 34,
+          "y": 21
+        },
+        {
+          "x": 34,
+          "y": 16
+        },
+        {
+          "x": 34,
+          "y": 20.6
+        },
+        {
+          "x": 35,
+          "y": 19.7
+        }
+      ],
+      "characterId": "cats.black"
+    },
+    {
+      "id": "courtyard.aunt",
+      "position": {
+        "x": 25,
+        "y": 6.6
+      },
+      "route": [
+        {
+          "x": 25,
+          "y": 6.6
+        },
+        {
+          "x": 23,
+          "y": 6.5
+        },
+        {
+          "x": 23,
+          "y": 4.5
+        },
+        {
+          "x": 23,
+          "y": 6.5
+        },
+        {
+          "x": 25,
+          "y": 6.6
+        }
+      ],
+      "characterId": "aunt"
+    },
+    {
+      "id": "courtyard.sparrows",
+      "position": {
+        "x": 8,
+        "y": 24
+      },
+      "route": [
+        {
+          "x": 8,
+          "y": 24
+        },
+        {
+          "x": 12,
+          "y": 24
+        },
+        {
+          "x": 12,
+          "y": 27.7
+        },
+        {
+          "x": 8,
+          "y": 27.7
+        }
+      ],
+      "characterId": "sparrow"
+    },
+    {
+      "id": "courtyard.laundry-neighbour",
+      "characterId": "resident-laundry-neighbour",
+      "position": {
+        "x": 32.5,
+        "y": 10.8
+      },
+      "route": [
+        {
+          "x": 30.4,
+          "y": 20.8
+        }
+      ]
+    }
+  ]
+}

@@ -157,7 +157,12 @@ function paintProp(ctx: CanvasRenderingContext2D, view: WorldRenderView, p: Para
         for (const dx of [.3, w - .55]) for (const dy of [.12, d - .3]) box(x + dx, y + dy, .16, .16, .65, color.ink);
         for (let k = 0; k < 4; k++) box(x, y + k * d / 4, w, d / 4 - .04, .15, v === 1 ? '#a69a79' : color.wood, color.woodDark, color.woodDark, .65);
         for (const dx of [.3, w - .55]) box(x + dx, y, .14, .14, 1.5, color.ink);
-        for (const z of [1, 1.3]) box(x, y, w, .15, .21, color.wood, color.woodDark, color.woodDark, z); break;
+        for (const z of [1, 1.3]) box(x, y, w, .15, .21, color.wood, color.woodDark, color.woodDark, z);
+        if (p.id === 'courtyard.bench-sunny') {
+          floor(x + .25, y + .2, 1.1, .45, '#a18a64', .81);
+          for (let k = 0; k < 4; k++) line([x + .3 + k * .2, y + .26, .82], [x + .42 + k * .2, y + .38, .82], '#b6a17b');
+        }
+        break;
       case 'laundry': {
         const sway = view.reducedMotion ? 0 : Math.sin(view.elapsedMs / 1400 + x) * .08;
         for (const dx of [0, w]) box(x + dx, y, .08, .08, 2.5, color.woodDark);
@@ -236,7 +241,12 @@ function paintProp(ctx: CanvasRenderingContext2D, view: WorldRenderView, p: Para
       case 'water-jar': case 'bucket':
         box(x + .1, y + .1, w - .2, d - .2, p.kind === 'water-jar' ? 1.2 : .45, color.roofLight, color.roof, color.roofDark);
         floor(x, y, w, d, color.roofDark, p.kind === 'water-jar' ? 1.24 : .48);
-        floor(x + .15, y + .15, w - .3, d - .3, color.glass, p.kind === 'water-jar' ? 1.25 : .49); break;
+        floor(x + .15, y + .15, w - .3, d - .3, color.glass, p.kind === 'water-jar' ? 1.25 : .49);
+        if (p.id === 'courtyard.rain-jar') {
+          line([x + .2, y + d + .02, .86], [x + w - .2, y + d + .02, .86], '#a0ada0');
+          polygon([[x + .65, y + .1, 1.28], [x + .92, y + .1, 1.28], [x + .92, y + d + .03, .7], [x + .68, y + d + .03, .75]], '#c5c7ac');
+        }
+        break;
       case 'bowl':
         box(x, y, w, d, .13, color.cream, color.stoneDark, color.stoneDark);
         floor(x + .1, y + .1, w - .2, d - .2, color.glass, .14); break;
@@ -256,6 +266,67 @@ function paintProp(ctx: CanvasRenderingContext2D, view: WorldRenderView, p: Para
       case 'broom':
         line([x, y, .15], [x + .3, y, 1.7], color.wood, 2);
         for (let i = 0; i < 5; i++) line([x + .05, y, .5], [x - .2 + i * .12, y + .1, .02], color.brass); break;
+      case 'folding-board': {
+        for (const dx of [.08, w - .18]) for (const dy of [.08, d - .18]) box(x + dx, y + dy, .12, .12, .66, color.woodDark);
+        box(x, y, w, d, .12, '#b59d77', color.wood, color.woodDark, .66);
+        for (let dx = .18; dx < w; dx += .27) line([x + dx, y, .79], [x + dx, y + d, .79], '#998264');
+        box(x + .08, y + .08, .48, .36, .09, color.linen, '#c3c3ac', '#b1b7a2', .79);
+        box(x + .12, y + .08, .42, .31, .08, '#a7b6b0', '#8fa29a', '#7c9288', .88);
+        for (const z of [.84, .94]) line([x + .13, y + .43, z], [x + .5, y + .43, z], '#ddd6bd');
+        polygon([[x + .75, y + .2, .8], [x + 1.02, y + .2, .8], [x + 1.02, y + d + .05, .5], [x + .75, y + d + .05, .48]], '#d0c6a7');
+        break;
+      }
+      case 'sorting-basket': {
+        box(x + .06, y + .04, w - .12, d - .08, .42, '#ac936c', '#947d5c', '#7d7054');
+        floor(x + .1, y + .08, w - .2, d - .16, '#675f4c', .43);
+        for (let z = .1; z < .43; z += .1) line([x + .04, y + d, z], [x + w - .04, y + d, z], '#c5ae82');
+        for (let dx = .14; dx < w; dx += .18) line([x + dx, y + d, .05], [x + dx, y + d, .43], '#b59e75');
+        box(x + .13, y + .15, .36, .33, .12, '#b6bfb0', '#a1ad9d', '#8c9c8d', .43);
+        polygon([[x + .35, y + .1, .55], [x + .6, y + .15, .54], [x + .64, y + d + .04, .2], [x + .45, y + d + .04, .26]], color.cream);
+        break;
+      }
+      case 'damp-paving': {
+        const alpha = ctx.globalAlpha;
+        ctx.globalAlpha *= .36;
+        polygon([[x + .12, y + .22, .025], [x + w * .68, y, .025], [x + w, y + d * .46, .025], [x + w * .73, y + d * .9, .025], [x + w * .25, y + d, .025], [x, y + d * .53, .025]], '#718c88');
+        ctx.globalAlpha = alpha * .52;
+        for (const [dx, dy, ww, hh] of [[.28, .4, .55, .16], [.95, .95, .8, .23], [1.65, .65, .42, .13]]) floor(x + dx, y + dy, ww, hh, '#a0b4ab', .035);
+        ctx.globalAlpha = alpha;
+        break;
+      }
+      case 'runoff-channel':
+        floor(x, y, w, d, '#8b9384', .025);
+        line([x + w / 2, y, .03], [x + w / 2, y + d, .03], '#b7b9a2'); break;
+      case 'resting-mat':
+        polygon([[x + .08, y, .035], [x + w, y + .08, .035], [x + w - .08, y + d, .035], [x, y + d - .04, .035]], '#a8a688');
+        for (let dx = .14; dx < w - .08; dx += .14) line([x + dx, y + .1, .04], [x + dx - .04, y + d - .1, .04], '#8e947d');
+        floor(x + .25, y + .2, w - .5, d - .4, '#b9b499', .045);
+        for (const dx of [.06, .3, .7, 1]) line([x + dx, y + d - .06, .04], [x + dx + .04, y + d + .1, .04], '#b9b093'); break;
+      case 'entry-mat':
+        floor(x, y, w, d, '#718c80', .035);
+        for (let dy = .13; dy < d; dy += .17) line([x + .12, y + dy, .04], [x + w - .12, y + dy, .04], '#a0a992');
+        floor(x + .5, y + .12, w - 1, d - .24, '#8d9c88', .045); break;
+      case 'entry-gate':
+        for (const dx of [0, w - .4]) {
+          box(x + dx, y, .4, d, 2.65, '#c8b99a', '#b7a587', '#998c73');
+          box(x + dx - .08, y - .08, .56, d + .16, .18, color.roof, color.roofDark, color.roofDark, 2.65);
+          box(x + dx + .08, y + d, .12, .12, 1.9, color.woodDark);
+        }
+        box(x + .15, y + .15, w - .3, .32, .22, color.wood, color.woodDark, color.woodDark, 2.45);
+        for (let dx = .6; dx < w - .3; dx += .45) box(x + dx, y + .04, .12, d + .08, .1, color.roofLight, color.roof, color.roofDark, 2.68);
+        break;
+      case 'boundary-wall':
+        box(x, y, w, d, 1.05, '#c3af8c', '#b09a7b', '#94856d');
+        box(x - .05, y - .04, w + .1, d + .08, .16, color.cream, '#b6a689', '#a09278', 1.05);
+        for (let dx = .3; dx < w; dx += .7) line([x + dx, y + d + .01, .15], [x + dx, y + d + .01, .9], '#a18f73'); break;
+      case 'threshold-planter':
+        box(x, y, w, d, .55, '#a68c68', '#907958', '#7e6f52');
+        floor(x + .1, y + .1, w - .2, d - .2, '#5f6249', .56);
+        for (let k = 0; k < 6; k++) {
+          const dx = .15 + hash(k, x) * (w - .3), dy = .12 + hash(y, k) * (d - .24);
+          box(x + dx, y + dy, .32, .25, .35 + k % 2 * .12, color.leafMid, color.leaf, color.leafDark, .55);
+        }
+        break;
       case 'utility-box':
         box(x, y, w, d, 1.05, '#a8a997', '#929985', '#7b8877');
         line([x + .1, y + d + .02, .5], [x + w - .1, y + d + .02, .5], color.ink); break;

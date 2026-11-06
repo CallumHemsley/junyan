@@ -501,6 +501,78 @@
         "width": 0.6,
         "height": 0.6
       }
+    },
+    {
+      "id": "courtyard.folding-board",
+      "rect": {
+        "x": 30.8,
+        "y": 10.7,
+        "width": 1.1,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "courtyard.sorting-basket",
+      "rect": {
+        "x": 30.6,
+        "y": 12.3,
+        "width": 0.75,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "courtyard.town-entry-post-left",
+      "rect": {
+        "x": 20.6,
+        "y": 34.8,
+        "width": 0.4,
+        "height": 1.2
+      }
+    },
+    {
+      "id": "courtyard.town-entry-post-right",
+      "rect": {
+        "x": 25,
+        "y": 34.8,
+        "width": 0.4,
+        "height": 1.2
+      }
+    },
+    {
+      "id": "courtyard.town-entry-wall-left",
+      "rect": {
+        "x": 16.6,
+        "y": 35.4,
+        "width": 4,
+        "height": 0.4
+      }
+    },
+    {
+      "id": "courtyard.town-entry-wall-right",
+      "rect": {
+        "x": 25.4,
+        "y": 35.4,
+        "width": 4,
+        "height": 0.4
+      }
+    },
+    {
+      "id": "courtyard.town-entry-planter-left",
+      "rect": {
+        "x": 18.5,
+        "y": 34.1,
+        "width": 1.3,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "courtyard.town-entry-planter-right",
+      "rect": {
+        "x": 27.2,
+        "y": 34,
+        "width": 1.5,
+        "height": 0.9
+      }
     }
   ],
   "occluders": [
@@ -667,6 +739,17 @@
         "height": 0.5
       },
       "height": 2.7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "courtyard.town-entry-gate",
+      "rect": {
+        "x": 20.6,
+        "y": 34.8,
+        "width": 4.8,
+        "height": 1.2
+      },
+      "height": 2.8,
       "fadeWhenPlayerBehind": true
     }
   ],
@@ -981,6 +1064,17 @@
       },
       "material": "moss-earth",
       "variant": 1
+    },
+    {
+      "id": "courtyard.town-entry-stone",
+      "rect": {
+        "x": 21.2,
+        "y": 33.2,
+        "width": 3.6,
+        "height": 3.5
+      },
+      "material": "threshold-stone",
+      "variant": 3
     }
   ],
   "props": [
@@ -2087,6 +2181,162 @@
       "height": 0.6,
       "layer": "object",
       "variant": 0
+    },
+    {
+      "id": "courtyard.folding-board",
+      "kind": "folding-board",
+      "position": {
+        "x": 30.8,
+        "y": 10.7
+      },
+      "width": 1.1,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.sorting-basket",
+      "kind": "sorting-basket",
+      "position": {
+        "x": 30.6,
+        "y": 12.3
+      },
+      "width": 0.75,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.laundry-damp-floor",
+      "kind": "damp-paving",
+      "position": {
+        "x": 31.5,
+        "y": 11.2
+      },
+      "width": 2.7,
+      "height": 2.3,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.jar-damp-floor",
+      "kind": "damp-paving",
+      "position": {
+        "x": 28.7,
+        "y": 20.1
+      },
+      "width": 2.6,
+      "height": 1.8,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "courtyard.laundry-runoff",
+      "kind": "runoff-channel",
+      "position": {
+        "x": 33.65,
+        "y": 11.7
+      },
+      "width": 0.18,
+      "height": 2.1,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.laundry-runoff-drain",
+      "kind": "drain",
+      "position": {
+        "x": 33.4,
+        "y": 13.8
+      },
+      "width": 0.7,
+      "height": 0.35,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.black-cat-resting-mat",
+      "kind": "resting-mat",
+      "position": {
+        "x": 34.65,
+        "y": 19.35
+      },
+      "width": 1.2,
+      "height": 0.9,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.town-entry-mat",
+      "kind": "entry-mat",
+      "position": {
+        "x": 21.8,
+        "y": 34.4
+      },
+      "width": 2.4,
+      "height": 0.9,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.town-entry-gate",
+      "kind": "entry-gate",
+      "position": {
+        "x": 20.6,
+        "y": 34.8
+      },
+      "width": 4.8,
+      "height": 1.2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.town-entry-wall-left",
+      "kind": "boundary-wall",
+      "position": {
+        "x": 16.6,
+        "y": 35.4
+      },
+      "width": 4,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.town-entry-wall-right",
+      "kind": "boundary-wall",
+      "position": {
+        "x": 25.4,
+        "y": 35.4
+      },
+      "width": 4,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.town-entry-planter-left",
+      "kind": "threshold-planter",
+      "position": {
+        "x": 18.5,
+        "y": 34.1
+      },
+      "width": 1.3,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "courtyard.town-entry-planter-right",
+      "kind": "threshold-planter",
+      "position": {
+        "x": 27.2,
+        "y": 34
+      },
+      "width": 1.5,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 1
     }
   ],
   "palette": {
@@ -2397,6 +2647,14 @@
         "y": 20.8
       },
       "kind": "laundry-water-task"
+    },
+    {
+      "id": "courtyard.town-threshold",
+      "position": {
+        "x": 23,
+        "y": 34.2
+      },
+      "kind": "open-town-gateway"
     }
   ]
 }
