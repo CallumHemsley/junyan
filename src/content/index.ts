@@ -1,6 +1,6 @@
 import type { Character, Content } from '../contracts';
 import { mandarin } from '../language';
-import data from './content.json';
+import data from './content.json' with { type: 'json' };
 import { adaptMandarinContent } from './mandarin';
 import { createContentSchema } from './schema';
 import { voices } from './voices';
