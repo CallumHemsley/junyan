@@ -37,6 +37,12 @@ it('attaches compact contact shade to pot bases and actual canopy supports below
   expect(shade).toHaveLength(2);
   expect(shade.every(p => Math.max(...p.points.map(q => q.x)) - Math.min(...p.points.map(q => q.x)) === 24)).toBe(true);
   expect(groundPaint('post', .35, .35)).toHaveLength(1);
+  const bench = groundPaint('bench', 4, 1);
+  expect(bench).toHaveLength(2);
+  expect(bench.every(p => Math.max(...p.points.map(q => q.x)) - Math.min(...p.points.map(q => q.x)) === 27)).toBe(true);
+  const table = groundPaint('tea-table', 3, 2);
+  expect(table).toHaveLength(4);
+  expect(table.every(p => Math.max(...p.points.map(q => q.x)) - Math.min(...p.points.map(q => q.x)) === 26)).toBe(true);
   expect(groundPaint('pergola', 13, 3)).toHaveLength(0);
   expect(groundPaint('warm-window')).toHaveLength(0);
 });

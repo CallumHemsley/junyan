@@ -39,7 +39,7 @@ export function atmosphereHooksForMap(map:AtmosphereMap, overrides:AtmosphereHoo
     radius:trees.has(p.kind)?Math.min(3.2,p.width*(p.kind==='mature-tree'?.325:.275)):.28,
     height:Math.min(6,p.kind==='mature-tree'?p.height*.6:p.height*.55),
     shape:p.kind==='bamboo'?'bamboo' as const:p.kind==='willow'?'willow' as const:trees.has(p.kind)?'canopy' as const:'column' as const,
-    contact:!landscape||!trees.has(p.kind),
+    contact:(!landscape||!trees.has(p.kind))&&!(map.id==='rooftop'&&p.kind==='tree-bed'),
   }));
   return {interior:interiors.has(map.id),water,foliage,lights,shadows,shadowExclusions:decks.map(t=>t.rect),...authoredLocalLights(map),...overrides};
 }

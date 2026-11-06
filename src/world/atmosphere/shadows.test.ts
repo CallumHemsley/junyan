@@ -25,3 +25,10 @@ it('recognizes mature canopies and leaves landscape contacts to its ground-pass 
  expect(frame.shadows![0].radius).toBeGreaterThan(2);
  expect(sampleAtmosphere(input,frame).commands.find(c=>c.role==='cast-shadow')!.exclusions).toEqual([{x:12,y:10,width:3,height:2}]);
 });
+it('keeps rooftop tree-bed cast shade while its art owns the attached base contact',()=>{
+ const frame=atmosphereHooksForMap({id:'rooftop',terrain:[],props:[{id:'pot',kind:'tree-bed',position:{x:10,y:10},width:3,height:3}]});
+ expect(frame.shadows).toHaveLength(1);expect(frame.shadows![0].contact).toBe(false);
+ const commands=sampleAtmosphere({...input,mapId:'rooftop'},frame).commands;
+ expect(commands.filter(c=>c.role==='cast-shadow')).toHaveLength(1);
+ expect(commands.filter(c=>c.role==='contact-shadow')).toHaveLength(0);
+});

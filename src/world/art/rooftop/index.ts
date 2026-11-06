@@ -4,7 +4,7 @@ import type {Point, WorldMapDefinition} from '../../schema';
 type Prop = WorldMapDefinition['props'][number];
 const palette = {
   ink: '#354337', roof: '#b0baa4', mortar: '#8d9e86', edge: '#71856e',
-  cream: '#f5e8ca', jade: '#608c72', leaf: '#2f503d', leafLight: '#8fa969',
+  cream: '#f5e8ca', jade: '#608c72', leaf: '#2f503d', leafMid: '#718c56', leafLight: '#8fa969',
   wood: '#87704d', woodLight: '#b9a177', woodDark: '#495040',
   soil: '#5c4e39', wetSoil: '#3f4636', pot: '#a18a64', potLight: '#c9b18a',
   contact: '#3d4536',
@@ -33,6 +33,14 @@ const paintMap: DrawMap = (ctx, map, view) => {
     const p = project(a.x, a.y, za), q = project(b.x, b.y, zb);
     ctx.strokeStyle = material(color); ctx.lineWidth = width; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
   };
+  const timber = (x: number, y: number, w: number, h: number, z: number) => {
+    for (let row = Math.min(.18, h / 2); row < h - .08; row += .42) {
+      stem({x: x + .12, y: y + row}, {x: x + w - .12, y: y + row}, z, z, '#8b7653');
+      const joint = .35 + (Math.floor(row * 10) % 3) * .45;
+      if (joint < w - .15) stem({x: x + joint, y: y + Math.max(.04, row - .11)}, {x: x + joint, y: y + Math.min(h - .06, row + .2)}, z, z, palette.wood);
+      if (w > 1.4) stem({x: x + .28, y: y + row + .06}, {x: x + Math.min(w - .2, 1.25), y: y + row + .06}, z, z, '#c5af82');
+    }
+  };
   const cluster = (x: number, y: number, z: number, size: number, color: string, seed = 0) => {
     const p = project(x, y, z), px = Math.abs(project(x + size, y).x - project(x, y).x);
     const radius = Math.max(2, px);
@@ -47,6 +55,10 @@ const paintMap: DrawMap = (ctx, map, view) => {
     const {x, y} = p.position, w = p.width, h = p.height;
     box(x, y, w, h, 0, .55, palette.potLight, palette.pot, palette.woodDark);
     plane(x + .15, y + .15, w - .3, h - .3, .57, palette.soil);
+    for (let a = .65; a < w - .2; a += 1.35) {
+      stem({x: x + a, y: y + h}, {x: x + a, y: y + h}, .08, .47, '#88724f');
+      stem({x: x + a + .05, y: y + h}, {x: x + Math.min(w - .1, a + .6), y: y + h}, .28, .28, '#b59d73');
+    }
     for (let a = .4; a < w - .1; a += kind === 1 ? .85 : .8) for (let b = .4; b < h - .1; b += .75) {
       const n = Math.floor(a * 13 + b * 19) % 7;
       const px = x + a + (n % 3 - 1) * .09, py = y + b + (n % 2) * .13;
@@ -58,7 +70,7 @@ const paintMap: DrawMap = (ctx, map, view) => {
         }
       } else {
         stem({x: px, y: py}, {x: px + .07, y: py}, .55, tall, palette.leaf);
-        cluster(px, py, .75, .2 + n * .015, n % 2 ? palette.jade : palette.leafLight, n);
+        cluster(px, py, .75, .2 + n * .015, n % 3 === 0 ? palette.leafMid : n % 2 ? palette.jade : palette.leafLight, n);
         if (kind === 2) {
           const q = project(px + .07, py, tall + .1);
           const colors = [palette.lavender, palette.flower, '#d4a8b7', palette.cream];
@@ -82,9 +94,15 @@ const paintMap: DrawMap = (ctx, map, view) => {
   const bench = (p: Prop) => {
     const {x, y} = p.position, w = p.width;
     for (const dx of [.2, w - .4]) box(x + dx, y + .1, .16, .7, 0, .7, palette.woodDark);
-    for (let k = 0; k < 3; k++) box(x, y + k * .28, w, .22, .65, .12, palette.woodLight);
+    for (let k = 0; k < 3; k++) {
+      box(x, y + k * .28, w, .22, .65, .12, palette.woodLight);
+      timber(x, y + k * .28, w, .22, .775);
+    }
     for (const dx of [.1, w - .2]) box(x + dx, y + .08, .12, .12, .7, 1.1, palette.woodDark);
-    for (let k = 0; k < 3; k++) box(x, y + .03, w, .12, 1 + k * .25, .18, palette.woodLight);
+    for (let k = 0; k < 3; k++) {
+      box(x, y + .03, w, .12, 1 + k * .25, .18, palette.woodLight);
+      stem({x: x + .18, y: y + .155}, {x: x + w - .18, y: y + .155}, 1.08 + k * .25, 1.08 + k * .25, '#947c56');
+    }
   };
   const skyline = () => {
     for (let layer = 0; layer < 3; layer++) for (let i = 0; i < 13; i++) {
@@ -110,13 +128,28 @@ const paintMap: DrawMap = (ctx, map, view) => {
   if (view.pass === 'ground') {
     skyline();
     drawRoofscape({box, plane, polygon, project, stem}, view);
+    // Plaster wear stays on the existing garden-building faces, between its window rows.
+    for (const [x, z, w, h] of [[6, -1.35, 3.4, .35], [18, -4.2, 4, .5], [33, -1.6, 4.8, .4], [39, -6.95, 3.2, .3]]) {
+      polygon([[x, z], [x + w * .7, z + .06], [x + w, z + h * .5], [x + w * .8, z + h], [x + .3, z + h * .8]].map(([a, b]) => project(a, 35.012, b)), '#839585');
+      stem({x: x + .35, y: 35.014}, {x: x + w * .68, y: 35.014}, z + h * .82, z + h * .82, '#a4af99');
+    }
+    for (const [y, z] of [[7, -1.6], [18, -4.4], [28, -6.95]])
+      polygon([[y, z], [y + 2.5, z + .1], [y + 3, z + .35], [y + .4, z + .55]].map(([a, b]) => project(47.012, a, b)), '#6c877c');
     for (const {rect: r, material} of map.terrain) {
       const wood = material === 'roof-wood', brick = material === 'roof-brick';
       for (let y = r.y; y < r.y + r.height; y++) for (let x = r.x; x < r.x + r.width; x++) {
         const n = (x * 17 + y * 31) % 7;
         const base = wood ? ['#9b835f', '#a98f65', '#a58b61'][n % 3] : brick ? ['#9caa92', '#b0b99f', '#a5b098'][n % 3] : ['#a8b4a0', '#b6bea8', '#aeb8a3'][n % 3];
         plane(x + .018, y + .018, Math.min(.97, r.x + r.width - x), Math.min(.97, r.y + r.height - y), .005, base);
-        if (n === 0) plane(x + .2, y + .35, .35, .06, .01, wood ? '#918362' : '#b3b59f');
+        if (wood) {
+          timber(x + .03, y + .03, .9, .9, .012);
+        } else if (n === 0 || n === 4) {
+          polygon([[.1, .15], [.52, .09], [.81, .21], [.58, .29], [.18, .25]].map(([a, b]) => project(x + a, y + b, .012)), brick ? '#b6bea4' : '#bdc5ae');
+          if (n === 0) {
+            stem({x: x + .12, y: y + .76}, {x: x + .36, y: y + .68}, .013, .013, '#8f9d85');
+            stem({x: x + .36, y: y + .68}, {x: x + .43, y: y + .52}, .013, .013, '#8f9d85');
+          }
+        }
       }
     }
   }
@@ -137,6 +170,10 @@ const paintMap: DrawMap = (ctx, map, view) => {
         for (const dx of [0, w - .2]) plane(x + dx - .045, y - .045, .24, .24, .024, palette.contact);
       } else if (p.kind === 'post' || p.kind === 'threshold-post') {
         plane(x - .045, y - .045, w + .09, h + .09, .024, palette.contact);
+      } else if (p.kind === 'bench') {
+        for (const dx of [.2, w - .4]) plane(x + dx - .055, y + .045, .27, .81, .024, palette.contact);
+      } else if (p.kind === 'tea-table') {
+        for (const dx of [.15, w - .3]) for (const dy of [.15, h - .3]) plane(x + dx - .055, y + dy - .055, .26, .26, .024, palette.contact);
       } else if (['raised-bed', 'trellis-bed', 'tree-bed', 'border-pot', 'bamboo-screen', 'compost', 'garden-crate'].includes(p.kind) || /^garden-(tree|flower|climber)$/.test(p.kind)) {
         plane(x - .065, y - .065, w + .13, h + .13, .024, palette.contact);
       }
@@ -190,8 +227,15 @@ const paintMap: DrawMap = (ctx, map, view) => {
       box(x, y, w, h, -.35, 1.1, '#d2ceb4', '#a6ac95', '#939c88');
       box(x - .08, y - .08, w + .16, h + .16, .75, .14, '#e3dcc0', '#b1b69d', '#9ba58e');
       for (let i = 1; i < Math.max(w, h); i += 2.7) plane(x + (w > h ? i : .2), y + (w > h ? .2 : i), .3, .4, .9, '#b7bea2');
+      for (let i = 1.2; i < Math.max(w, h) - .3; i += 3.6) {
+        const face = w > h ? {x: x + i, y: y + h} : {x: x + w, y: y + i};
+        stem(face, face, -.12, .62, '#8e9c86');
+      }
     } else if (p.kind === 'stairhead') {
       box(x, y, w, h, 0, 3.7, '#b6bdab', '#a6ad98', '#8c9a89');
+      polygon([[.4, .45], [2.1, .5], [2.5, .85], [.7, 1.1]].map(([a, b]) => project(x + a, y + h, b)), '#98a28c');
+      polygon([[.35, 1.2], [1.8, 1.1], [2.1, 1.7], [.6, 1.9]].map(([a, b]) => project(x + w, y + a, b)), '#81937f');
+      stem({x: x + .5, y: y + h}, {x: x + w - .4, y: y + h}, 1.15, 1.15, '#b4baa4');
       for (let k = 0; k < 8; k++) box(x + k * w / 8 - .2, y - .2, w / 8, h + .4, 3.7, .22, k % 2 ? '#83958b' : '#94a496', '#72867d', '#687d74');
       polygon([project(x + w + .01, y + 2.8), project(x + w + .01, y + 5.2), project(x + w + .01, y + 5.2, 2.8), project(x + w + .01, y + 2.8, 2.8)], '#4b5d53');
       box(x + w, y + 2.55, .18, 2.95, 2.8, .16, palette.cream);
@@ -233,6 +277,7 @@ const paintMap: DrawMap = (ctx, map, view) => {
     else if (p.kind === 'tea-table') {
       for (const dx of [.15, w - .3]) for (const dy of [.15, h - .3]) box(x + dx, y + dy, .15, .15, 0, .9, palette.woodDark);
       box(x, y, w, h, .9, .13, palette.woodLight);
+      timber(x + .03, y + .03, w - .06, h - .06, 1.035);
       box(x + .4, y + .5, .35, .35, 1.03, .3, '#b9cbb6', '#96b7a7', '#779b8a');
       for (const dx of [1, 1.5]) box(x + dx, y + .8, .22, .22, 1.03, .15, palette.cream);
     } else if (p.kind === 'bamboo-screen') {
@@ -268,7 +313,10 @@ const paintMap: DrawMap = (ctx, map, view) => {
     else if (p.kind === 'pergola' || p.kind === 'garden-shade') {
       const shade = p.kind === 'garden-shade', z = shade ? 2.85 : 3.3;
       ctx.save();
-      for (let k = 0; k < w; k += shade ? .3 : .65) box(x + k, y, shade ? .2 : .16, h, z, .13, shade ? (Math.floor(k * 10) % 2 ? palette.cream : '#b8c5a4') : palette.woodLight);
+      for (let k = 0; k < w; k += shade ? .3 : .65) {
+        box(x + k, y, shade ? .2 : .16, h, z, .13, shade ? (Math.floor(k * 10) % 2 ? palette.cream : '#b8c5a4') : palette.woodLight);
+        if (!shade) plane(x + k + .045, y + .2, .07, h - .4, z + .13, '#9a8157');
+      }
       if (!shade) for (let k = .3; k < w; k += .55) {
         cluster(x + k, y + .2 + Math.sin(k * 2) * .25, z + .15, .5, k % 1 > .5 ? palette.jade : palette.leafLight, Math.floor(k));
         if (Math.floor(k * 4) % 3 === 0) {stem({x: x + k, y: y + .2}, {x: x + k + .15, y: y + .3}, z, z - .8, palette.leaf); cluster(x + k + .15, y + .3, z - .7, .25, palette.jade);}
