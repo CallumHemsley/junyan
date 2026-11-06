@@ -3,9 +3,9 @@
   "proof": {
     "phase": "evening-lit",
     "alphaPreserved": true,
-    "changedPixels": 402926,
-    "materialChangedPixels": 402756,
-    "materialMeanDelta": 1.0172461970899471
+    "changedPixels": 402886,
+    "materialChangedPixels": 402707,
+    "materialMeanDelta": 1.0446982473544975
   },
   "errors": []
 }

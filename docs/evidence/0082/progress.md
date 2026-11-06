@@ -84,3 +84,11 @@ Next: provide the fixed workshop tip and evidence to foundation/reviewer, verify
 ### Confirmed waypoint reproduction
 
 `waypoint-repro.mjs` evaluates the viewport's exact waypoint/move/clear sequence with shared geometry and this authored map. At 20ms, 33.333ms and 40ms injected frame steps, it reproduces the same stop at (11,10.5): a residual delta around 1e-14 (or 1e-12) shifts the intermediate node, then moving=false clears the still-valid remaining route. Shared canWalk confirms the final segment is clear. At 16ms and 16.667ms the same route reaches the target. The issue is thus frame-step dependent controller epsilon handling, not insufficient workshop clearance. See waypoint-reproduction.json. Foundation was asked to snap/skip reached nodes before testing displacement and retain remaining nodes on a non-blocked snap.
+
+### Stool gift and exact evidence labels
+
+The actual production gift claim now passes on desktop and phone: one repairs.stool in apartment.owned, one claimedGiftIds entry, no claim control after reload, same world approach position and no page errors. This closes the workshop's focused gift-claim/idempotence proof gap; it does not prove apartment placement or the full original game journey. See gift-proof.mjs, gift-results.json and gift-claimed screenshots.
+
+Production video manifest labels the successful desktop and phone recordings separately from the retained failed-invalid-fixture run. The timed contact sheet now includes the return as well as departure. Same-camera lighting screenshots were refreshed after the material face-contrast fix. No phase-contrast acceptance claim: the upstream fixed interior ambient remains visible as a weak difference.
+
+The focused Astra reviewer re-read f493451 and confirmed its accepted P2 resolved; actual normal-UI repeat/reload captures for both jobs are now also present on both viewports. Phone expanded foreground depth remains blocked by the reproduced shared waypoint controller issue. The prior depth-results.json is the successful lamp-only run; expanded joinery desktop captures and phone failure are labeled separately in progress until the shared fix permits an end-to-end recapture.
