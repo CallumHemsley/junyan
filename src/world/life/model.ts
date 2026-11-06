@@ -1,16 +1,11 @@
+import type { WorldMapDefinition, Facing, Rect } from '../schema';
 import type { Position, Line } from '../../contracts';
 import type { State as CatsState } from '../../features/cats/rules';
 
-export type Facing = 'north' | 'east' | 'south' | 'west';
-export type Rect = Position & { width: number; height: number };
-export type LifeMap = {
-  id: string;
-  entrances: readonly { position: Position }[];
-  exits: readonly { rect: Rect }[];
-  npcHooks: readonly { id: string; position: Position; route: readonly Position[]; characterId: string }[];
-  landmarks: readonly { id: string; position: Position; kind: string }[];
-};
+export type { Facing, Rect } from '../schema';
+export type LifeMap = Pick<WorldMapDefinition, 'id' | 'entrances' | 'exits' | 'npcHooks' | 'landmarks'>;
 export type Navigation = {
+  canSee?: (from: Position, target: Position) => boolean;
   canStand: (point: Position, radius: number) => boolean;
   canWalk: (from: Position, to: Position, radius: number) => boolean;
   route: (from: Position, to: Position, radius: number, exclusions: readonly Rect[]) => readonly Position[];
@@ -54,6 +49,7 @@ export type LifeContext = {
   excludedCharacterIds?: readonly string[];
   cats?: Pick<CatsState, 'story' | 'repeat'>;
   gardenMature?: boolean;
+  habitats?: readonly { characterId: string; position: Position; activity: 'sit' | 'work' | 'idle' }[];
 };
 export type ActorPose = {
   id: string;

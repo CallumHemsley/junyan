@@ -26,3 +26,11 @@ Foundation should import mapDefinitions from src/world/maps/residential. Publish
 ## Remaining proof
 
 All integrated acceptance remains pending. Need shared schema validation, reciprocal external portals, actual keyboard/touch stair traversal, correct return spawn/camera picking, real furniture editing/undo/save/reload, existing activity regression, inspected desktop/phone scenes, motion recording, console/focus/reduced-motion checks and independent review. No quality PASS.
+
+## Published work and review response
+
+Initial map unit 8770653. Furniture/art unit fedf388. Inspected adapter preview 190a9c0. Source includes the published foundation implementation as ancestry for real schema/render API verification. All residential code writes remain in assigned paths.
+
+Root reviewed the preview and rejected its sparse model-room appearance. Added headboard slats, bedding folds, chair backs, tabletop books and ceramics, sofa cushions, curtain folds, trim, shelves and entry detail outside valid furniture cells. Updated art uses per-object depth entries. Active work continues; no visual acceptance or integrated gameplay PASS.
+
+Focused verification on 2026-11-06 ran 18 tests across residential map routes, apartment reducer and world furniture adapter. TypeScript build passes. Muted cloud Chromium captured desktop and phone views of all three maps with zero page errors. Inspected apartment, foyer and stair captures against the baseline tiny apartment. Static captures remain limited to art proof.
