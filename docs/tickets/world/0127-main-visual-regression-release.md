@@ -24,3 +24,5 @@ Main still contains the shared flat-face shading and sparse restaurant regressio
 - All new raw QA stays private under /private/tmp/junyan-world-private-qa/0127. Ordinary source, tests and concise validation summaries may be published.
 
 - Ported accepted103 portrait exploration camera and104 player garment contrast, then118 restaurant,119 outdoor,120 residential,121 shared shader,122 bounded actor shading,124 workshop/courtyard and125 river materials. Main predates the camera helper/readability test: retained the new intentional test and camera checks, added explorationCamera, preserved main50 exit-cue handlers, and selected restaurant camera without reading-room presentationFrame dependencies. No experimental renderer/actor/bed sampler or reading-room feature is included. Exact release diff requires fresh independent review and own verification.
+
+- Initial port verification correctly failed because restaurantCamera also depends on generic frameCamera. Added the accepted pure frame-fitting helper and types, without reading-room presentation-area wiring. Initial failed logs remain private; exact repaired source needs new independent verification.
