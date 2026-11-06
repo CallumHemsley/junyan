@@ -1,25 +1,30 @@
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { createHash } from "node:crypto";
+import { join, relative, resolve, sep } from "node:path";
 import type { Plugin } from "vite";
 
 export function offline(): Plugin {
+  let outDir: string;
   return {
     name: "junyan-offline",
     apply: "build",
+    configResolved(config) {
+      outDir = resolve(config.root, config.build.outDir);
+    },
     closeBundle() {
-      const files = readdirSync("dist", {
+      const files = readdirSync(outDir, {
         recursive: true,
         withFileTypes: true,
       })
         .filter((file) => file.isFile() && file.name !== "sw.js")
         .map((file) =>
-          `${file.parentPath}/${file.name}`.replace(/^dist\//, ""),
+          relative(outDir, join(file.parentPath, file.name)).split(sep).join("/"),
         );
       const version = createHash("sha256");
-      for (const file of files) version.update(readFileSync(`dist/${file}`));
+      for (const file of files) version.update(readFileSync(join(outDir, file)));
       const cache = `junyan-${version.digest("hex").slice(0, 12)}`;
       writeFileSync(
-        "dist/sw.js",
+        join(outDir, "sw.js"),
         `
 const CACHE=${JSON.stringify(cache)};
 const FILES=${JSON.stringify(["./", ...files])}.map(file=>new URL(file,self.registration.scope).href);
