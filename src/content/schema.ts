@@ -140,7 +140,8 @@ export function createContentSchema(policy: LanguagePolicy, voices: VoiceCatalog
     const cast = new Map(opening.cast.map(member => [member.id, member]));
     if (cast.size !== opening.cast.length) issue('Duplicate cast IDs', 'cast');
     opening.cast.forEach((member, index) => {
-      for (const [slot, languages] of [['zh', policy.targetVoiceLanguages], ['en', ['English']]] as const) {
+      const slots: ['zh' | 'en', readonly string[]][] = [['zh', policy.targetVoiceLanguages], ['en', ['English']]];
+      for (const [slot, languages] of slots) {
         const voiceId = member.voices[slot];
         if (voiceId === undefined) continue;
         if (!languages.includes(voices.voices[voiceId]?.language)) issue(`Cast ${slot} voice must be a known ${slot === 'zh' ? policy.id : 'English'} preset`, 'cast', index, 'voices', slot);
