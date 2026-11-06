@@ -1,0 +1,368 @@
+{
+  "source": "c57926af0941ac5419e0183bce7796e9355ddb53",
+  "foundation": "23be251",
+  "claim": "Native production painter snapshots with explicit service-progress render fixtures. No gameplay/persistence acceptance.",
+  "errors": [],
+  "evidence": [
+    {
+      "name": "desktop",
+      "mapId": "courtyard",
+      "phase": "morning",
+      "served": 0,
+      "scale": 24,
+      "canvas": [
+        1280,
+        720
+      ],
+      "renderMs": 23.899999999906868
+    },
+    {
+      "name": "desktop",
+      "mapId": "courtyard",
+      "phase": "evening",
+      "served": 3,
+      "scale": 24,
+      "canvas": [
+        1280,
+        720
+      ],
+      "renderMs": 15.399999999906868
+    },
+    {
+      "name": "desktop",
+      "mapId": "courtyard",
+      "phase": "night",
+      "served": 4,
+      "scale": 24,
+      "canvas": [
+        1280,
+        720
+      ],
+      "renderMs": 13.399999999906868
+    },
+    {
+      "name": "desktop",
+      "mapId": "apartment",
+      "phase": "morning",
+      "served": 0,
+      "scale": 24,
+      "canvas": [
+        1280,
+        720
+      ],
+      "renderMs": 23.09999999962747
+    },
+    {
+      "name": "desktop",
+      "mapId": "apartment",
+      "phase": "evening",
+      "served": 3,
+      "scale": 24,
+      "canvas": [
+        1280,
+        720
+      ],
+      "renderMs": 17
+    },
+    {
+      "name": "desktop",
+      "mapId": "apartment",
+      "phase": "night",
+      "served": 4,
+      "scale": 24,
+      "canvas": [
+        1280,
+        720
+      ],
+      "renderMs": 16.100000000093132
+    },
+    {
+      "name": "desktop",
+      "mapId": "workshop",
+      "phase": "morning",
+      "served": 0,
+      "scale": 24,
+      "canvas": [
+        1280,
+        720
+      ],
+      "renderMs": 29.299999999813735
+    },
+    {
+      "name": "desktop",
+      "mapId": "workshop",
+      "phase": "evening",
+      "served": 3,
+      "scale": 24,
+      "canvas": [
+        1280,
+        720
+      ],
+      "renderMs": 15.200000000186265
+    },
+    {
+      "name": "desktop",
+      "mapId": "workshop",
+      "phase": "night",
+      "served": 4,
+      "scale": 24,
+      "canvas": [
+        1280,
+        720
+      ],
+      "renderMs": 13.200000000186265
+    },
+    {
+      "name": "desktop",
+      "mapId": "park",
+      "phase": "morning",
+      "served": 0,
+      "scale": 24,
+      "canvas": [
+        1280,
+        720
+      ],
+      "renderMs": 55.39999999990687
+    },
+    {
+      "name": "desktop",
+      "mapId": "park",
+      "phase": "evening",
+      "served": 3,
+      "scale": 24,
+      "canvas": [
+        1280,
+        720
+      ],
+      "renderMs": 32.1999999997206
+    },
+    {
+      "name": "desktop",
+      "mapId": "park",
+      "phase": "night",
+      "served": 4,
+      "scale": 24,
+      "canvas": [
+        1280,
+        720
+      ],
+      "renderMs": 18.299999999813735
+    },
+    {
+      "name": "desktop",
+      "mapId": "riverbank",
+      "phase": "morning",
+      "served": 0,
+      "scale": 24,
+      "canvas": [
+        1280,
+        720
+      ],
+      "renderMs": 41.39999999990687
+    },
+    {
+      "name": "desktop",
+      "mapId": "riverbank",
+      "phase": "evening",
+      "served": 3,
+      "scale": 24,
+      "canvas": [
+        1280,
+        720
+      ],
+      "renderMs": 23.699999999720603
+    },
+    {
+      "name": "desktop",
+      "mapId": "riverbank",
+      "phase": "night",
+      "served": 4,
+      "scale": 24,
+      "canvas": [
+        1280,
+        720
+      ],
+      "renderMs": 20.5
+    },
+    {
+      "name": "phone",
+      "mapId": "courtyard",
+      "phase": "morning",
+      "served": 0,
+      "scale": 18,
+      "canvas": [
+        390,
+        640
+      ],
+      "renderMs": 13.799999999813735
+    },
+    {
+      "name": "phone",
+      "mapId": "courtyard",
+      "phase": "evening",
+      "served": 3,
+      "scale": 18,
+      "canvas": [
+        390,
+        640
+      ],
+      "renderMs": 12.600000000093132
+    },
+    {
+      "name": "phone",
+      "mapId": "courtyard",
+      "phase": "night",
+      "served": 4,
+      "scale": 18,
+      "canvas": [
+        390,
+        640
+      ],
+      "renderMs": 9.799999999813735
+    },
+    {
+      "name": "phone",
+      "mapId": "apartment",
+      "phase": "morning",
+      "served": 0,
+      "scale": 18,
+      "canvas": [
+        390,
+        640
+      ],
+      "renderMs": 21.700000000186265
+    },
+    {
+      "name": "phone",
+      "mapId": "apartment",
+      "phase": "evening",
+      "served": 3,
+      "scale": 18,
+      "canvas": [
+        390,
+        640
+      ],
+      "renderMs": 14.199999999720603
+    },
+    {
+      "name": "phone",
+      "mapId": "apartment",
+      "phase": "night",
+      "served": 4,
+      "scale": 18,
+      "canvas": [
+        390,
+        640
+      ],
+      "renderMs": 15.299999999813735
+    },
+    {
+      "name": "phone",
+      "mapId": "workshop",
+      "phase": "morning",
+      "served": 0,
+      "scale": 18,
+      "canvas": [
+        390,
+        640
+      ],
+      "renderMs": 24.899999999906868
+    },
+    {
+      "name": "phone",
+      "mapId": "workshop",
+      "phase": "evening",
+      "served": 3,
+      "scale": 18,
+      "canvas": [
+        390,
+        640
+      ],
+      "renderMs": 11
+    },
+    {
+      "name": "phone",
+      "mapId": "workshop",
+      "phase": "night",
+      "served": 4,
+      "scale": 18,
+      "canvas": [
+        390,
+        640
+      ],
+      "renderMs": 12.299999999813735
+    },
+    {
+      "name": "phone",
+      "mapId": "park",
+      "phase": "morning",
+      "served": 0,
+      "scale": 18,
+      "canvas": [
+        390,
+        640
+      ],
+      "renderMs": 27.899999999906868
+    },
+    {
+      "name": "phone",
+      "mapId": "park",
+      "phase": "evening",
+      "served": 3,
+      "scale": 18,
+      "canvas": [
+        390,
+        640
+      ],
+      "renderMs": 19.399999999906868
+    },
+    {
+      "name": "phone",
+      "mapId": "park",
+      "phase": "night",
+      "served": 4,
+      "scale": 18,
+      "canvas": [
+        390,
+        640
+      ],
+      "renderMs": 15
+    },
+    {
+      "name": "phone",
+      "mapId": "riverbank",
+      "phase": "morning",
+      "served": 0,
+      "scale": 18,
+      "canvas": [
+        390,
+        640
+      ],
+      "renderMs": 39.39999999990687
+    },
+    {
+      "name": "phone",
+      "mapId": "riverbank",
+      "phase": "evening",
+      "served": 3,
+      "scale": 18,
+      "canvas": [
+        390,
+        640
+      ],
+      "renderMs": 17.399999999906868
+    },
+    {
+      "name": "phone",
+      "mapId": "riverbank",
+      "phase": "night",
+      "served": 4,
+      "scale": 18,
+      "canvas": [
+        390,
+        640
+      ],
+      "renderMs": 15.100000000093132
+    }
+  ]
+}

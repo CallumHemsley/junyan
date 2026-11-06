@@ -6,7 +6,8 @@ const ctx=canvas.getContext('2d')!;
 const resize=()=>{canvas.width=innerWidth<600?320:640;canvas.height=innerWidth<600?420:360;};
 resize();window.addEventListener('resize',resize);
 const output=document.querySelector('output')!;
-let phase:DayPhase='morning', reduced=false, wash=false, frozenMs:number|null=null;
+const preference=matchMedia('(prefers-reduced-motion: reduce)');
+let phase:DayPhase='morning', reduced=preference.matches, wash=false, frozenMs:number|null=null;
 const camera={x:24,y:15};
 const trees=Array.from({length:55},(_,i)=>({x:3+(i*13.7)%43,y:3+(i*7.31)%27})).filter(p=>!(p.y>11&&p.y<18)&&!(p.x>16&&p.x<31&&p.y>5&&p.y<12));
 const houses=[{x:16,y:7,w:5,h:3},{x:23,y:7,w:5,h:3},{x:33,y:20,w:4,h:4}];
@@ -67,4 +68,5 @@ document.querySelector<HTMLButtonElement>('#treatment')!.onclick=()=>{wash=!wash
 window.addEventListener('keydown',e=>{const moves:Record<string,[number,number]>={ArrowRight:[1,-1],ArrowLeft:[-1,1],ArrowUp:[-1,-1],ArrowDown:[1,1]};const m=moves[e.key];if(m){e.preventDefault();camera.x=Math.max(8,Math.min(40,camera.x+m[0]));camera.y=Math.max(6,Math.min(26,camera.y+m[1]));draw(elapsed);}});
 canvas.onclick=e=>{const rect=canvas.getBoundingClientRect(),u=((e.clientX-rect.left)/rect.width*canvas.width-canvas.width/2)/13,v=((e.clientY-rect.top)/rect.height*canvas.height-canvas.height/2)/6.5;camera.x=Math.max(8,Math.min(40,camera.x+(u+v)/2));camera.y=Math.max(6,Math.min(26,camera.y+(v-u)/2));draw(elapsed);};
 Object.assign(window,{__ATMOSPHERE__:{sampleAtmosphere,atmosphereHooksForMap,drawAtmosphere,renderAtmosphereObjects,hooks,draw,measures,camera,get frames(){return frames;},animate(){frozenMs=null;},freeze(ms:number){frozenMs=ms;draw(ms);},phase(value:DayPhase){phase=value;draw(elapsed);}}});
+preference.addEventListener('change',()=>{reduced=preference.matches;draw(elapsed);});
 requestAnimationFrame(loop);

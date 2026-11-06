@@ -1,0 +1,62 @@
+[
+  {
+    "function": "fill",
+    "url": "",
+    "hits": 60
+  },
+  {
+    "function": "k0",
+    "url": "http://127.0.0.1:5488/assets/materials-study-C6TlCeDS.js",
+    "hits": 37
+  },
+  {
+    "function": "set",
+    "url": "http://127.0.0.1:5488/assets/materials-study-C6TlCeDS.js",
+    "hits": 27
+  },
+  {
+    "function": "",
+    "url": "http://127.0.0.1:5488/assets/materials-study-C6TlCeDS.js",
+    "hits": 26
+  },
+  {
+    "function": "t",
+    "url": "http://127.0.0.1:5488/assets/materials-study-C6TlCeDS.js",
+    "hits": 20
+  },
+  {
+    "function": "ei",
+    "url": "http://127.0.0.1:5488/assets/materials-study-C6TlCeDS.js",
+    "hits": 15
+  },
+  {
+    "function": "set",
+    "url": "http://127.0.0.1:5488/assets/materials-study-C6TlCeDS.js",
+    "hits": 15
+  },
+  {
+    "function": "closePath",
+    "url": "",
+    "hits": 13
+  },
+  {
+    "function": "line",
+    "url": "http://127.0.0.1:5488/assets/materials-study-C6TlCeDS.js",
+    "hits": 13
+  },
+  {
+    "function": "(idle)",
+    "url": "",
+    "hits": 12
+  },
+  {
+    "function": "lineTo",
+    "url": "",
+    "hits": 11
+  },
+  {
+    "function": "stroke",
+    "url": "",
+    "hits": 10
+  }
+]
