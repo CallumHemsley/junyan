@@ -9,7 +9,7 @@ created: 2026-11-06
 
 ## Why
 
-Town and residential art pass face-value factors such as0.65/0.78 to shadeColor; their fallback multiplies the material by that factor. The shared shader instead forwards it only as solar exposure, leaving ambient unchanged. Interior ambient dominates and night has no sun, so intended side planes become nearly flat. This contributes to the user-reported visual downgrade across levels.
+Town and residential art pass face-value factors such as0.65/0.78 to shadeColor; their fallback multiplies the material by that factor. The shared shader instead forwards it only as solar exposure, leaving ambient unchanged. Interior ambient dominates and night directional light is weak, so intended side planes become nearly flat. This contributes to the user-reported visual downgrade across levels.
 
 ## Done when
 
