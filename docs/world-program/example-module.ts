@@ -13,8 +13,8 @@ export type WorldMapDefinitionV1 = {
   entrances: { id: string; position: WorldPoint; facing: WorldFacing }[];
   exits: { id: string; rect: WorldRect; targetMapId: string; targetEntranceId: string; kind: "door" | "stairs" | "path" }[];
   anchors: { id: string; position: WorldPoint; radius: number; featureId: "restaurant" | "apartment" | "cats" | "repairs" | "garden" | "exploration"; interactionId: string }[];
-  terrain: { id: string; rect: WorldRect; material: string; variant: number }[];
-  props: { id: string; kind: string; position: WorldPoint; width: number; height: number; layer: "ground" | "object" | "foreground"; variant: number }[];
+  terrain: { id: string; rect: WorldRect; material: string; variant: string | number }[];
+  props: { id: string; kind: string; position: WorldPoint; width: number; height: number; layer: "ground" | "object" | "foreground"; variant: string | number }[];
   palette: Record<string, [number, number, number]>;
   npcHooks: { id: string; position: WorldPoint; route: WorldPoint[]; characterId: string }[];
   landmarks: { id: string; position: WorldPoint; kind: string }[];

@@ -1,0 +1,78 @@
+{
+  "foundation": "2532c61e4388f96ea9c2b1470db8d0bd36a6a10c",
+  "note": "Schema and local standing samples only. This does not prove graph reachability, traversal or visual quality.",
+  "results": [
+    {
+      "ref": "refs/remotes/origin/codex/0080-courtyard",
+      "head": "c176f5ac0423d7fa6e3c0f7a8c42f0a3fcc793db",
+      "file": "src/world/maps/courtyard/map.json",
+      "mapId": "courtyard",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/0081-residential",
+      "head": "856d8a62198681021916200398aec489c061360c",
+      "file": "src/world/maps/residential/apartment.json",
+      "mapId": "apartment",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/0081-residential",
+      "head": "856d8a62198681021916200398aec489c061360c",
+      "file": "src/world/maps/residential/residential-hall.json",
+      "mapId": "residential-hall",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/0081-residential",
+      "head": "856d8a62198681021916200398aec489c061360c",
+      "file": "src/world/maps/residential/residential-stairs.json",
+      "mapId": "residential-stairs",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/0082-workshop",
+      "head": "2ed1ad32fd5a98670af92f471c669e7ab536c5de",
+      "file": "src/world/maps/workshop/map.json",
+      "mapId": "workshop",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/0084-landscape",
+      "head": "14a2ce1fb95eb00955bfc3f6f85aae34f6ef99b8",
+      "file": "src/world/maps/landscape/park.json",
+      "mapId": "park",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": [
+        "park.pond-deck"
+      ]
+    },
+    {
+      "ref": "refs/remotes/origin/codex/0084-landscape",
+      "head": "14a2ce1fb95eb00955bfc3f6f85aae34f6ef99b8",
+      "file": "src/world/maps/landscape/riverbank.json",
+      "mapId": "riverbank",
+      "schema": "pass",
+      "spawnCanStand": true,
+      "blockedEntrances": [],
+      "inaccessibleAnchorSamples": []
+    }
+  ]
+}

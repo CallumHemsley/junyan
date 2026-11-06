@@ -81,3 +81,32 @@ Pstack source was fetched from configured `cursor/plugins` into `/workspace/curs
 - Reviewer next reviews PR 27's ownership/contract and produces the independent baseline evidence under 0088. Its runtime identifier blocker has been resolved by parent clarification.
 - Each builder next records its branch head, checkout, process handle and first artifact in its own evidence directory. Coordinator compares actual diffs and integration instructions before accepting delivery.
 - The full goal remains ACTIVE. There is no integrated game head, runtime acceptance verdict or merge from this program yet.
+
+## Published artifact review, first data tranche
+
+Actual remote tips inspected after fetch:
+
+| Owner | Tip | Inspected artifact |
+|---|---|---|
+| 0078 | `2532c61` | Executable Zod schema, geometry, camera and adapter proposal |
+| 0079 | `d13dd48` | Active objective and layout rationale; no map at this tip |
+| 0080 | `c176f5a` | Courtyard map, habitat projection and layout study |
+| 0081 | `856d8a6` | Hall, stairs and apartment maps; furniture transform proposal |
+| 0082 | `2ed1ad3` | Workshop map and lamp/toy anchor integration requests |
+| 0084 | `14a2ce1` | Park and riverbank maps and authoring source |
+| 0085 | `b94fd1f` | Character direction prototype and image artifact |
+| 0087 | `78e65d6` | Schedule sampler design and canonical actor IDs |
+
+Rooftop and atmosphere had no remote branch at this fetch, but native thread snapshots showed active tool calls and reports of authored units. Reviewer reported a successful production baseline build and a capture setup failure. None of those status reports is a runtime acceptance verdict. All eleven threads remain accounted for.
+
+`audit-published.mjs` reads the published foundation schema/geometry and map JSON directly from git refs. `published-map-audit.json` records the exact tested heads. Seven map payloads passed Zod parsing and local default-spawn/entrance standing checks. This audit does not claim graph reachability or visual quality.
+
+### Required fixes and integration handoffs
+
+- **0084 landscape:** `park.pond-deck` at (61,33), radius 1.4, is wholly inside collider `park.pond-2`, rectangle (40,29,23,7), at head 14a2ce1. The nearest edge is 2 tiles away before accounting for player radius. No standing point can invoke this anchor. Move the anchor onto reachable decking or correct collision geometry, then prove an ordinary-control approach.
+- **0078 foundation and 0080 courtyard:** canonical actor IDs from world-life are `white-cat` and `black-cat`; courtyard currently proposes `cats.white` and `cats.black`. Use one explicit normalization at the registry boundary or update the courtyard hooks. Preserve cat clue anchors from `catHabitat` during encounters.
+- **0078 foundation:** the initial `WorldState.activeActivity` stores a feature ID only. Contextual entry needs the anchor/interaction identity too, or an equivalent explicit selected-target transition. Workshop's `repair-lamp` and `repair-toy` dispatch the existing switch action before controls open; cats need existing selected-target actions. Do not replace the map with legacy diorama views.
+- **0078 plus feature owners:** publish an embedding prop/hook for controls-only UI. The live world stays the main viewport for apartment, repairs, cats and garden. Feature owners own their component extraction; foundation alone wires App and shared state. Existing reducers, voices and saves remain authoritative.
+- **All art owners:** foundation adapter proposal is in `docs/evidence/0078/adapter-v1.md` at 2532c61. It uses logical canvas pixels, `project(point,z?)`, and ground/object/foreground passes. No DPR multiplication, loop or DOM in owner art. Foundation still needs a concrete per-object ordering contract so owner draw calls do not paint whole building layers over actors incorrectly.
+
+Cross-thread send remains absent. Root relays these same-scope fixes; no replacement workers are warranted by current evidence.
