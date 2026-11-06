@@ -3,9 +3,9 @@ const ink = [48,43,42], skin = [232,183,143], cream = [245,232,202];
 const jade = [111,154,134], wood = [115,86,58], brass = [190,157,97];
 const shade = (color, amount) => color.map(value => Math.max(0,Math.min(255,Math.round(value*amount))));
 
-export function frame({appearance={},direction=0,phase=0,action='idle',reducedMotion=false,carrying=false,blink=false,heldObject,acting=false,body,role,seatHeight,handRestHeight}={}) {
+export function frame({appearance={},direction=0,phase=0,action='idle',reducedMotion=false,carrying=false,blink=false,heldObject,acting=false,body,role,seatHeight,handRestHeight,pixelsPerWorldUnit=18}={}) {
   const attachedSeat=action==='sit'&&seatHeight!==undefined;
-  const seatLift=attachedSeat?Math.round(seatHeight*18)-9:0;
+  const seatLift=attachedSeat?Math.round(seatHeight*pixelsPerWorldUnit)-9:0;
   const padding=attachedSeat?Math.max(0,seatLift)+2:0;
   const frameHeight=H+padding;
   const pixels = new Uint8ClampedArray(W*frameHeight*4);
@@ -92,7 +92,7 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
     if(attachedSeat) {
       const center=profile?18:quarter?16:14;
       elbow[0]=root[0];elbow[1]=shoulder+6;
-      hand[0]=center+(near?4:-4);hand[1]=handRestHeight===undefined?shoulder+3:38-Math.round(handRestHeight*18);
+      hand[0]=center+(near?4:-4);hand[1]=handRestHeight===undefined?shoulder+3:38-Math.round(handRestHeight*pixelsPerWorldUnit);
     }
     if(acting&&!walking&&role)hand[1]-=1;
     if(action==='react'&&near){elbow[1]-=3;hand[1]-=7;}

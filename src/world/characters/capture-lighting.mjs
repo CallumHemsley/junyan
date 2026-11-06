@@ -2,7 +2,7 @@ import {chromium} from '@playwright/test';
 import {writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
-const output=new URL('../../../docs/evidence/0085/lighting/',import.meta.url).pathname;
+const output=new URL('../../../docs/evidence/world/0085/current/lighting/',import.meta.url).pathname;
 await mkdir(output,{recursive:true});
 const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--mute-audio']});
 try {

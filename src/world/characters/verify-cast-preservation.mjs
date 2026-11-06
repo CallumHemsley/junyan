@@ -1,5 +1,5 @@
 import {execFileSync} from 'node:child_process';
-import {readFileSync,writeFileSync} from 'node:fs';
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
 import {frame as after} from './artwork.mjs';
@@ -14,5 +14,6 @@ for(const appearance of appearances)for(let direction=0;direction<8;direction++)
  const prior=before(input),current=after(input);for(const field of Object.keys(prior))assert.deepEqual(current[field],prior[field]);digest.update(current.pixels);cases++;
 }
 const result={baseline,cases,exactFrameAndAttachmentEquality:true,comparison:'All preexisting frame fields, including pixels/anchor/held/feet. New pelvis metadata is additive.',pixelHash:digest.digest('hex'),scope:'Player and approved four regulars, all directions and six contextual actions. No background profile selected.'};
-writeFileSync(new URL('../../../docs/evidence/0085/background/cast-preservation.json',import.meta.url),JSON.stringify(result,null,2));
+mkdirSync(new URL('../../../docs/evidence/world/0085/current/background/',import.meta.url),{recursive:true});
+writeFileSync(new URL('../../../docs/evidence/world/0085/current/background/cast-preservation.json',import.meta.url),JSON.stringify(result,null,2));
 console.log(JSON.stringify(result));

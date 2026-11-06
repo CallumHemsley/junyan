@@ -8,4 +8,4 @@ export type PixelFrame = {
  feet:{x:number;y:number;planted:boolean}[];
  seatContact?:{x:number;y:number;height:number};
 };
-export function frame(input:{appearance?:{shirt?:RGB;hair?:RGB;legs?:RGB;accessory?:string};direction?:number;phase?:number;action?:string;reducedMotion?:boolean;carrying?:boolean;blink?:boolean;heldObject?:HeldObject;role?:BackgroundRole;body?:BackgroundResidentDefinition['body'];acting?:boolean;seatHeight?:number;handRestHeight?:number}):PixelFrame;
+export function frame(input:{appearance?:{shirt?:RGB;hair?:RGB;legs?:RGB;accessory?:string};direction?:number;phase?:number;action?:string;reducedMotion?:boolean;carrying?:boolean;blink?:boolean;heldObject?:HeldObject;role?:BackgroundRole;body?:BackgroundResidentDefinition['body'];acting?:boolean;seatHeight?:number;handRestHeight?:number;pixelsPerWorldUnit?:number}):PixelFrame;
