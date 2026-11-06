@@ -7,7 +7,7 @@ export type RestaurantMap = {
 };
 export type RestaurantView = {
   project(point: Position, z?: number): Position;
-  shadeColor?(base: string | readonly [number, number, number], exposure?: number): string;
+  shadeColor?(base: string, exposure?: number): string;
   elapsedMs: number;
   reducedMotion: boolean;
   playerPosition: Position;

@@ -59,3 +59,13 @@ Shared lighting callback is now optional on the structural view for old isolated
 First preview captures used /usr/bin/chromium because Playwright's managed executable was absent. `node docs/evidence/0089/capture.mjs` produced desktop, phone, kitchen and reduced-motion PNGs with no page errors. The preview copies the e627 restaurant map and uses actual foundation camera scales 24 desktop and 18 phone plus the same production legacy actor sprite crop/factor. It does not reproduce production collision or its occlusion compositor. It is evidence for art refinement only. Inspection found a meal/table equal-depth tie, fixed by placing meal objects .01 beyond their table support depth. Material detail and warm-light polish continue.
 
 Vite is running as exec session 49941 on strict port 5493. No standalone preview acceptance is claimed.
+
+## Material and per-object refinement
+
+Counter geometry is now six individually sorted three-unit sections. The first retains `counter` to suppress the generic fallback, and the remaining IDs are counter.section.3 through counter.section.15. Individual kitchen fixtures have separate support objects. Wall sections have local occlusion bounds. Two ceiling lamps have their own narrow bounds and explicit overhead depth. Warm lamp pools use inherited alpha and fixed emissive color. Static materials use the shared shadeColor callback. Reduced motion freezes steam at time zero while retaining its visible wisps.
+
+Added deterministic one-pixel plaster and wood variation, less repetitive jar groups, a folded cloth, a kitchen pot and a blank ledger with pencil. No text is painted. Desk and kitchen food remain original geometry. The assigned map and all colliders are unchanged.
+
+`node node_modules/vitest/vitest.mjs run` passed 27 files and 310 tests. `node node_modules/typescript/bin/tsc -b` and `node node_modules/vite/bin/vite.js build` passed. Refreshed four browser captures have no page errors. Installed runtime reports Node 24.22.1, TypeScript 5.9.3, Vite 7.3.7, Vitest 3.2.7 and Playwright 1.61.1. This is use of the installed environment, not a frozen dependency install.
+
+Draft PR is https://github.com/CallumHemsley/junyan/pull/35 against the coordinator branch. Opened with GitHub connector. No merge. Current independent and production gates remain unverified. Foundation is wiring the projection while art refinement continues.
