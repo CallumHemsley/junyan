@@ -10,7 +10,7 @@ export type AtmosphereHooks = {
   interior?: boolean;
   water?: readonly { id: string; rect: Rect; shore?: readonly ('north' | 'east' | 'south' | 'west')[] }[];
   reflections?: readonly {id:string;position:Point;width:number;height:number;color:RGB}[];
-  lights?: readonly { id: string; position: Point; radius: number; kind: 'window' | 'lamp' }[];
+  lights?: readonly { id: string; position: Point; radius: number; kind: 'window' | 'lamp'; emitter?:readonly Point[] }[];
   foliage?: readonly { id: string; position: Point; radius: number; kind: 'grass' | 'leaves'; motion?:boolean; depth?:number }[];
   shadows?: readonly { id: string; position: Point; radius: number; height: number }[];
   particles?: readonly { id: string; rect: Rect; kind: 'pollen' | 'firefly' | 'dust'; count: number }[];
@@ -18,6 +18,7 @@ export type AtmosphereHooks = {
 export type AtmosphereCommand = {
   layer: 'ground' | 'light' | 'objects' | 'foreground';
   object?: {id:string;position:Point;depth?:number};
+  role?:'water-base';
   points: readonly Point[]; color: RGB; opacity: number;
 };
 export type LightState = {
@@ -64,8 +65,8 @@ const square = (x: number,y: number,width: number,height=width,z=0): Point[] => 
   {x,y,z},{x:x+width,y,z},{x:x+width,y:y+height,z},{x,y:y+height,z},
 ];
 export function shadeAtmosphereColor(color: RGB, light: LightState, exposure=1): RGB {
-  const ambient = color.map((v,i)=>Math.min(255,Math.round(v*light.ambient[i]))) as unknown as RGB;
-  return mix(ambient,light.sun,light.sunStrength*Math.max(0,Math.min(1,exposure)));
+  const sun=light.sunStrength*Math.max(0,Math.min(1,exposure));
+  return color.map((v,i)=>Math.min(255,Math.round(v*(light.ambient[i]+light.sun[i]/255*sun)))) as unknown as RGB;
 }
 
 /** No timers or RNG state: identical explicit inputs produce identical frames. */
@@ -77,12 +78,12 @@ export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks 
   const wind = {x: Math.sin(t*.75)*.065 + Math.sin(t*.29)*.04, y: Math.sin(t*.53)*.025};
   const commands: AtmosphereCommand[] = [];
   const visible = (r: Rect, pad=2) => !viewport || r.x+r.width+pad>=viewport.x && r.x-pad<=viewport.x+viewport.width && r.y+r.height+pad>=viewport.y && r.y-pad<=viewport.y+viewport.height;
-  const add = (layer: AtmosphereCommand['layer'], points: Point[], color: RGB, opacity=1, object?:AtmosphereCommand['object']) => {if(commands.length<MAX_ATMOSPHERE_COMMANDS) commands.push({layer,points,color,opacity,object});};
+  const add = (layer: AtmosphereCommand['layer'], points: Point[], color: RGB, opacity=1, object?:AtmosphereCommand['object'],role?:AtmosphereCommand['role']) => {if(commands.length<MAX_ATMOSPHERE_COMMANDS) commands.push({layer,points,color,opacity,object,role});};
   for (const water of hooks.water ?? []) {
     const r = water.rect;
     if (!visible(r)) continue;
     // Base belongs below actors. Sparse reflected dashes preserve readable banks.
-    add('ground',square(r.x,r.y,r.width,r.height),light.water);
+    add('ground',square(r.x,r.y,r.width,r.height),light.water,1,undefined,'water-base');
     const x0 = Math.max(r.x,viewport?.x ?? r.x), y0 = Math.max(r.y,viewport?.y ?? r.y);
     const x1 = Math.min(r.x+r.width,viewport ? viewport.x+viewport.width : r.x+r.width);
     const y1 = Math.min(r.y+r.height,viewport ? viewport.y+viewport.height : r.y+r.height);
@@ -91,9 +92,10 @@ export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks 
       if(phase>.4) continue;
       const wave=Math.sin(t*1.2+phase*25+y*.7);
       const px=x+.15+phase*.55, py=y+.25+wave*.045;
-      if(px<r.x || px+.3>r.x+r.width || py<r.y || py+.035>r.y+r.height) continue;
-      add('ground',square(px,py,.22+phase*.45,.065),light.reflection,.28+(wave+1)*.10);
-      if(phase<.13) add('ground',square(px+.07,py+.15,.16,.05),light.reflection,.22);
+      const width=.22+phase*.45,height=.065;
+      if(px<r.x || px+width>r.x+r.width || py<r.y || py+height>r.y+r.height) continue;
+      add('ground',square(px,py,width,height),light.reflection,.28+(wave+1)*.10);
+      if(phase<.13 && px+.23<=r.x+r.width && py+.20<=r.y+r.height) add('ground',square(px+.07,py+.15,.16,.05),light.reflection,.22);
     }
     const shoreColor=mix(light.water,light.reflection,.43);
     for(const edge of water.shore ?? []) {
@@ -101,13 +103,14 @@ export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks 
       const length=horizontal?r.width:r.height;
       for(let i=0;i<length && commands.length<MAX_ATMOSPHERE_COMMANDS-64;i+=.5) {
         const d=Math.min(.34,length-i), phase=variation(`${water.id}:${edge}:${i}`,input.seed);
-        const inset=.04+phase*.07;
-        const x=horizontal?r.x+i:edge==='west'?r.x+inset:r.x+r.width-inset-.045;
-        const y=horizontal?(edge==='north'?r.y+inset:r.y+r.height-inset-.045):r.y+i;
+        const cross=horizontal?r.height:r.width,thickness=Math.min(.045,cross/4);
+        const inset=Math.min(.04+phase*.07,(cross-thickness)/2);
+        const x=horizontal?r.x+i:edge==='west'?r.x+inset:r.x+r.width-inset-thickness;
+        const y=horizontal?(edge==='north'?r.y+inset:r.y+r.height-inset-thickness):r.y+i;
         if(!visible({x,y,width:.5,height:.5},0)) continue;
         const outside={x:horizontal?x+d/2:edge==='west'?r.x-.01:r.x+r.width+.01, y:horizontal?(edge==='north'?r.y-.01:r.y+r.height+.01):y+d/2};
         if((hooks.water??[]).some(other=>other!==water && outside.x>other.rect.x && outside.x<other.rect.x+other.rect.width && outside.y>other.rect.y && outside.y<other.rect.y+other.rect.height)) continue;
-        add('ground',square(x,y,horizontal?d:.045,horizontal?.045:d),shoreColor,.7);
+        add('ground',square(x,y,horizontal?d:thickness,horizontal?thickness:d),shoreColor,.7);
       }
     }
   }
@@ -143,8 +146,12 @@ export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks 
       add('light',[{x:x-size,y:y-size*.4},{x:x+size*.2,y:y-size*.8},{x:x+size,y:y-size*.1},{x:x+size*.8,y:y+size*.65},{x:x-size*.6,y:y+size*.7}], [255,200,121], opacity*strength);
     }
     const width=lamp.kind==='window'?.55:.16, height=lamp.kind==='window'?.48:.22;
-    add('objects',[{x:x-width/2,y,z},{x:x+width/2,y,z},{x:x+width/2,y,z:z+height},{x:x-width/2,y,z:z+height}],[255,224,153],strength,{id:lamp.id,position:lamp.position});
-    if(lamp.kind==='window') add('objects',[{x:x-.025,y:y-.005,z},{x:x+.025,y:y-.005,z},{x:x+.025,y:y-.005,z:z+height},{x:x-.025,y:y-.005,z:z+height}],[110,87,62],.9,{id:lamp.id,position:lamp.position});
+    if(lamp.emitter) {
+      if(lamp.emitter.length>=3) add('objects',[...lamp.emitter],[255,224,153],strength*.48,{id:lamp.id,position:lamp.position});
+    } else {
+      add('objects',[{x:x-width/2,y,z},{x:x+width/2,y,z},{x:x+width/2,y,z:z+height},{x:x-width/2,y,z:z+height}],[255,224,153],strength,{id:lamp.id,position:lamp.position});
+      if(lamp.kind==='window') add('objects',[{x:x-.025,y:y-.005,z},{x:x+.025,y:y-.005,z},{x:x+.025,y:y-.005,z:z+height},{x:x-.025,y:y-.005,z:z+height}],[110,87,62],.9,{id:lamp.id,position:lamp.position});
+    }
     if(lamp.kind==='window') add('light',square(x-.2,y+.14,.52,.1),[255,213,145],strength*.18);
   }
   for(const plant of hooks.foliage ?? []) {

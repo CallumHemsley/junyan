@@ -1,10 +1,12 @@
+import {ContextualInteraction,RestaurantTableControls,KitchenControls,WorldPocketBar} from "./world/ui";
+import {activityTarget} from "./world/activity";
 import {performLifeInteraction} from "./world/life-bridge";
 import WorldViewport from "./world/WorldViewport";
 import { restoreWorld } from "./world/state";
 import { mapsForNeighbourhood } from "./world/dynamic";
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { Line, Position, Word } from "./contracts";
-import { KITCHEN, TABLES } from "./contracts";
+import type { Line, Word } from "./contracts";
+import { TABLES } from "./contracts";
 import { characterFor } from "./content";
 import { content } from "./neighbourhood/registry";
 import Neighbourhood, { NeighbourhoodGifts } from "./neighbourhood/Neighbourhood";
@@ -19,7 +21,6 @@ import {
   isNear,
   canVisitKitchen,
 } from "./game";
-import RestaurantScene from "./scene/RestaurantScene";
 import FoodArt from "./FoodArt";
 import { loadGame, saveGame, validateSavedGame } from "./save";
 import { createSession, reduceSession, type Session, type SessionAction } from "./opening";
@@ -28,7 +29,6 @@ import HospitalOpening from "./HospitalOpening";
 import WordToken from "./WordToken";
 import { nextDots, wordState } from "./recovery";
 import { Speaker } from "./icons";
-import { route } from "./navigation";
 import { createPlayback, type PlaybackError } from "./audio/playback";
 import { useAmbience, AmbienceControls } from "./audio/AmbienceControls";
 
@@ -71,24 +71,25 @@ export default function App() {
   const [ready, setReady] = useState(testMode);
   const [saveError, setSaveError] = useState(false);
   const [panel, setPanel] = useState<
-    "none" | "table" | "kitchen" | "journal" | "help"
+    "none" | "table" | "kitchen" | "journal" | "help" | "tray"
   >("help");
-  const [table, setTable] = useState(1);
+  const [requestedTable, setTable] = useState(1);
   const [helpExpanded, setHelpExpanded] = useState(false);
-  const [dayExpanded, setDayExpanded] = useState(false);
   const [word, setWord] = useState<Word | null>(null);
   const [fresh, setFresh] = useState<string[]>([]);
   const wordTrigger = useRef<HTMLButtonElement | null>(null);
   const panelTrigger = useRef<HTMLElement | null>(null);
   const wordOpen = word !== null;
   const [change, setChange] = useState(0);
-  const [moving, setMoving] = useState(false);
   const [audioError, setAudioError] = useState<PlaybackError>(null);
   const neighbourhood = state.neighbourhood ?? createNeighbourhood(state.day);
   const locationId = neighbourhood.location;
   const worldRegistry = mapsForNeighbourhood(neighbourhood);
   const world = restoreWorld(state.world, worldRegistry, locationId);
-  const activityOpen = world.activeActivity !== null;
+  const binding=activityTarget(world,worldRegistry[world.mapId]);
+  const table=binding?.kind==="table"?binding.table:requestedTable;
+  const activityOpen = binding !== null;
+  const blockingPanel=panel==="help"||panel==="journal"||panel==="tray";
   const [giftNotice, setGiftNotice] = useState(false);
   const [ambientLine,setAmbientLine]=useState<Line|null>(null);
   const dayEndOpen = activityOpen && locationId === "restaurant" && state.ended && panel === "none" && !word;
@@ -96,7 +97,6 @@ export default function App() {
   const playback = useRef<ReturnType<typeof createPlayback> | null>(null);
   if (!playback.current)
     playback.current = createPlayback((url) => new Audio(url), setAudioError, ambience.speaking);
-  const motion = useRef<{ path: Position[]; arrive?: () => void } | null>(null);
   const dispatch = useCallback(
     (action: SessionAction) => {
       const previous = sessionRef.current;
@@ -107,9 +107,7 @@ export default function App() {
         const { game: after } = next;
         setFresh((dots) => nextDots(dots, before, action, after));
         if (before.neighbourhood?.location !== after.neighbourhood?.location) {
-          motion.current = null;
           playback.current?.stop();
-          setMoving(false);
           setWord(null);
           setPanel("none");
           setGiftNotice(false);
@@ -207,53 +205,6 @@ export default function App() {
     }, 350);
     return () => clearTimeout(timer);
   }, [state, ready, session.phase]);
-  useEffect(() => {
-    let frame: number;
-    let previous = 0;
-    const tick = (now: number) => {
-      const dt = Math.min((now - previous) / 1000, 0.04);
-      previous = now;
-      const task = motion.current;
-      if (task) {
-        const target = task.path[0];
-        const p = stateRef.current.player;
-        const dx = target.x - p.x,
-          dy = target.y - p.y,
-          d = Math.hypot(dx, dy),
-          step = dt * 5;
-        if (d <= Math.max(step, 0.06)) {
-          dispatch({ type: "move", position: target });
-          task.path.shift();
-          if (!task.path.length) {
-            motion.current = null;
-            setMoving(false);
-            task.arrive?.();
-          }
-        } else
-          dispatch({
-            type: "move",
-            position: { x: p.x + (dx / d) * step, y: p.y + (dy / d) * step },
-          });
-      }
-      frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [dispatch]);
-  const walk = useCallback((position: Position, arrive?: () => void) => {
-    const path = route(stateRef.current.player, {
-      x: Math.max(0, Math.min(12, position.x)),
-      y: Math.max(0, Math.min(10, position.y)),
-    });
-    if (!path.length) return;
-    setWord(null);
-    setPanel("none");
-    setMoving(true);
-    motion.current = {
-      path,
-      arrive,
-    };
-  }, []);
   const visitTable = useCallback(
     (number: number) => {
       const active=stateRef.current.world;
@@ -273,20 +224,18 @@ export default function App() {
           play(order.line.audio);
       };
       if (isNear(stateRef.current.player, target)) open();
-      else walk({ x: target.x + 1.4, y: target.y }, open);
+
     },
-    [dispatch, play, walk],
+    [dispatch, play],
   );
   const visitKitchen = useCallback(() => {
     if(stateRef.current.world && stateRef.current.world.activeAnchorId!=="restaurant.kitchen"){dispatch({type:"world-close"});setPanel("none");return;}
     const open = () => setPanel("kitchen");
     if (canVisitKitchen(stateRef.current)) open();
-    else walk({ x: KITCHEN.x, y: KITCHEN.y + 1.3 }, open);
-  }, [walk]);
+
+  }, [dispatch]);
   useEffect(() => {
     if (panel === "none" && !wordOpen) return;
-    motion.current = null;
-    setMoving(false);
   }, [panel, wordOpen]);
   useEffect(() => {
     if (!ready || (panel === "none" && !dayEndOpen)) return;
@@ -333,71 +282,10 @@ export default function App() {
     document.addEventListener("keydown", trap);
     return () => document.removeEventListener("keydown", trap);
   }, [panel, wordOpen, dayEndOpen, ready, session.phase]);
-  useEffect(() => {
-    const key = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        if (word) setWord(null);
-        else if (sessionRef.current.phase === "day") {
-          motion.current = null;
-          setMoving(false);
-          setPanel("none");
-        }
-        return;
-      }
-      if (
-        !ready ||
-        sessionRef.current.phase !== "day" ||
-        !activityOpen ||
-        locationId !== "restaurant" ||
-        dayEndOpen ||
-        event.defaultPrevented ||
-        event.altKey ||
-        event.ctrlKey ||
-        event.metaKey ||
-        panel !== "none" ||
-        word ||
-        (event.target instanceof HTMLElement &&
-          (/INPUT|TEXTAREA|SELECT/.test(event.target.tagName) ||
-            event.target.isContentEditable))
-      )
-        return;
-      const directions: Record<string, [number, number]> = {
-        ArrowUp: [-0.45, -0.45],
-        w: [-0.45, -0.45],
-        ArrowDown: [0.45, 0.45],
-        s: [0.45, 0.45],
-        ArrowLeft: [-0.45, 0.45],
-        a: [-0.45, 0.45],
-        ArrowRight: [0.45, -0.45],
-        d: [0.45, -0.45],
-      };
-      const direction = directions[event.key];
-      if (direction) {
-        event.preventDefault();
-        motion.current = null;
-        setMoving(false);
-        setPanel("none");
-        setWord(null);
-        const p = stateRef.current.player;
-        dispatch({
-          type: "move",
-          position: { x: p.x + direction[0], y: p.y + direction[1] },
-        });
-      }
-      if (event.key === " " || event.key.toLowerCase() === "e") {
-        if (event.key === " " && event.target instanceof HTMLButtonElement)
-          return;
-        event.preventDefault();
-        if (canVisitKitchen(stateRef.current)) visitKitchen();
-        else {
-          const near = TABLES.find((t) => isNear(t, stateRef.current.player));
-          if (near) visitTable(near.table);
-        }
-      }
-    };
-    window.addEventListener("keydown", key);
-    return () => window.removeEventListener("keydown", key);
-  }, [dispatch, visitTable, visitKitchen, panel, word, ready, dayEndOpen, locationId, activityOpen]);
+  useEffect(()=>{
+    const key=(event:KeyboardEvent)=>{if(event.key!=="Escape"||event.defaultPrevented)return;if(word)setWord(null);else if(sessionRef.current.phase==="day"){dispatch({type:"world-close"});setPanel("none");}};
+    window.addEventListener("keydown",key);return()=>window.removeEventListener("keydown",key);
+  },[dispatch,word]);
   useEffect(() => {
     if (!testMode) return;
     const hooks = {
@@ -405,8 +293,6 @@ export default function App() {
       getSession: () => sessionRef.current,
       dispatch,
       reset: () => {
-        motion.current = null;
-        setMoving(false);
         const next = testStart();
         sessionRef.current = next;
         setSession(next);
@@ -454,6 +340,10 @@ export default function App() {
       allWords.filter((w) => state.journal[w.id]).map((w) => [w.id, w]),
     ).values(),
   ];
+  const registered = (hanzi:string) => {
+    const word=allWords.find(word=>word.hanzi===hanzi);
+    return word?<WordToken word={word} look={wordState(state.journal[word.id],fresh.includes(word.id))} onLookup={lookup}/>:null;
+  };
   const close = () => {
     if((panel==="table"||panel==="kitchen")&&world.activeActivity==="restaurant")dispatch({type:"world-close"});
     setPanel("none");
@@ -464,14 +354,6 @@ export default function App() {
     dispatch({ type: "pay", table, change });
     if (change === order.paid - total) play(characterFor(order.customer).thanks.audio);
   };
-  const activeCustomer = state.customers.find((entry) => entry.table === state.activeTable);
-  const waitingCustomer = activeCustomer?.phase === "ordered"
-    ? activeCustomer
-    : state.customers.find((entry) => entry.phase === "ordered");
-  const nextCustomer = state.customers.find((entry) => entry.phase === "checkout")
-    ?? (state.tray.length > 0 ? waitingCustomer : undefined);
-  const needsKitchen = !nextCustomer && Boolean(waitingCustomer);
-  const nextTable = nextCustomer ?? state.customers.find((entry) => entry.phase === "seated");
   const rememberPanelTrigger = (event: { target: EventTarget | null }) => {
     if (!(event.target instanceof Element)) return;
     const trigger = event.target.closest<HTMLElement>(".topbar button, .topbar a, main button");
@@ -551,22 +433,10 @@ export default function App() {
     );
   return (
     <div className={`app-shell connected-shell${wordOpen ? " word-card-open" : ""}`} onFocusCapture={rememberPanelTrigger} onClickCapture={(event) => { guardWordCard(event); rememberPanelTrigger(event); }}>
-      <header className="topbar" inert={panel !== "none" || dayEndOpen}>
+      <header className="topbar" inert={blockingPanel || dayEndOpen}>
         {brand}
         <nav aria-label="小馆">
           <AmbienceControls ambience={ambience} />
-          <button
-            onClick={() => {
-              motion.current = null;
-              setMoving(false);
-              setPanel("journal");
-              setWord(null);
-            }}
-          >
-            <Book />
-            <span>本子</span>
-            <small>{words.length}</small>
-          </button>
           <button
             className="help-button"
             aria-label="怎么玩"
@@ -576,7 +446,7 @@ export default function App() {
           </button>
         </nav>
       </header>
-      <main inert={panel !== "none" || dayEndOpen} data-location={locationId}>
+      <main inert={blockingPanel || dayEndOpen} data-location={locationId}>
         <WorldViewport state={world} maps={worldRegistry} game={state} onLookup={lookup} onPlay={playLine} dialogue={ambientLine} fresh={fresh} onAction={action=>{
           if(action.type==="world-life") {
             const result=performLifeInteraction(worldRegistry[world.mapId],state,world,action);
@@ -589,92 +459,23 @@ export default function App() {
             else {const number=Number(id?.split("table-")[1]);if(number)visitTable(number);}
           }
         }} paused={panel !== "none" || wordOpen || dayEndOpen}/>
-        {activityOpen && <div className="world-activity" data-world-activity={world.activeActivity}>
-        <button className="world-activity-close" onClick={() => {dispatch({type:"world-close"});setPanel("none");}}>继续走走</button>
-        {locationId === "restaurant" ? <div className="play-layout">
-          <section className="world-panel" aria-label="早安小馆餐厅">
-            <div className="world-caption">
-              <button className="day-toggle" aria-expanded={dayExpanded} aria-controls="day-details" onClick={() => setDayExpanded(!dayExpanded)}>
-                <Sun />
-                <span>{dayNames[state.day] || `第${state.day}天`} · 早市</span>
-                <span aria-hidden="true">{dayExpanded ? "−" : "+"}</span>
-              </button>
-              <span className="day-progress" aria-label={`招呼客人 ${state.served} / 4 桌`}>{state.served} / 4 桌</span>
-            </div>
-            <div className="day-details" id="day-details" hidden={!dayExpanded}>
-              <span>累计进账 {state.earnings} 块</span>
-              <span>{state.level === 1 ? "一道菜" : state.level === 2 ? "两样菜" : "三样菜"}</span>
-            </div>
-            <RestaurantScene
-              state={state}
-              onMove={walk}
-              onTable={visitTable}
-              onKitchen={visitKitchen}
-            />
-            <div className="world-footer">
-              <span className="next-hint" role="status">{moving ? "走过去…" : ""}</span>
-              <button className="primary next-action" disabled={!needsKitchen && !nextTable} onClick={() => needsKitchen ? visitKitchen() : nextTable && visitTable(nextTable.table)}>
-                {needsKitchen ? "去厨房取餐" : nextTable ? `${nextTable.table}桌 · ${nextTable.phase === "checkout" ? "找零" : nextTable.phase === "ordered" ? "上菜" : "听点餐"}` : "多谢"}<span aria-hidden="true">→</span>
-              </button>
-            </div>
-          </section>
-          <section className="service-strip" aria-label="今日客人和托盘">
-            <div className="customer-list" role="group" aria-label="今日客人">
-              {state.customers.map((c) => {
-                const o = getOrder(state, c.table, content);
-                return (
-                  <button
-                    key={c.table}
-                    className={`customer-row ${c.phase === "served" ? "customer-done" : ""}`}
-                    onClick={() => visitTable(c.table)}
-                    aria-label={`${c.table}桌 ${o?.customer} ${phases[c.phase]}`}
-                  >
-                    <span className="table-number">{c.table}桌</span>
-                    <span className="customer-info">
-                      <b>{o?.customer}</b>
-                      <small>{phases[c.phase]}</small>
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-            <div className="tray-section" role="group" aria-label="托盘">
-              <div className="section-label">
-                <span>托盘</span>
-                <span>{state.tray.length} / 6</span>
-              </div>
-              <div className="tray">
-                {state.tray.map((id, i) => {
-                    const food = content.foods.find((f) => f.id === id)!;
-                    return (
-                      <button
-                        key={`${id}-${i}`}
-                        data-word-lookup onClick={(event) => lookup(food.word, event.currentTarget)}
-                        className="tray-item"
-                        aria-label={`查看${food.word.hanzi}`}
-                      >
-                        <FoodArt kind={food.kind} />
-                        <span>{food.word.hanzi}</span>
-                      </button>
-                    );
-                  })}
-              </div>
-              <button className="kitchen-link" aria-label="厨房" onClick={visitKitchen}>
-                厨房 <span aria-hidden="true">↗</span>
-              </button>
-            </div>
-          </section>
-        </div>
-        : <Neighbourhood contextual state={neighbourhood} day={state.day} onAction={dispatch} onLookup={lookup} onPlay={playLine} onRecover={acknowledgeRecovery}
-            recoveredWordIds={Object.keys(state.journal).filter(id => state.journal[id].recovered)} freshWordIds={fresh}/>}
-        <NeighbourhoodGifts state={neighbourhood} onClaim={giftId => {
-          const before = sessionRef.current;
-          const next = dispatch({type:"claim-neighbourhood-gift",giftId});
-          if (next !== before) playLine(apartmentLines.gift);
-        }}/>
-        {giftNotice && <div className="neighbourhood-gift-note" role="status"><FeatureLine line={apartmentLines.gift} onLookup={lookup} onPlay={playLine}
-          recoveredWordIds={Object.keys(state.journal).filter(id => state.journal[id].recovered)} freshWordIds={fresh}/></div>}
-        </div>}
+        <WorldPocketBar journalControl={<><span>{registered("本子")}</span><button aria-label="本子" onClick={()=>setPanel("journal")}><Book/><span>{words.length}</span></button></>} trayControl={<><span>{registered("托盘")}</span><button aria-label="托盘" onClick={()=>setPanel("tray")}><span aria-hidden="true">▱</span><span>{state.tray.length}/6</span></button></>}/>
+        {activityOpen && binding && <ContextualInteraction target={binding}
+          title={<span aria-label={binding.kind==="table"?`${binding.table}桌点餐`:binding.kind==="kitchen"?"厨房":binding.kind==="repair"?"修理间":binding.kind==="cat"?"院子":binding.kind==="garden"?"花园":"家"}>{binding.kind==="table"?binding.table:null}{registered(binding.kind==="table"?"客人":binding.kind==="kitchen"?"厨房":binding.kind==="repair"?"修理间":binding.kind==="cat"?"院子":binding.kind==="garden"?"花园":"家")}</span>}
+          dialogue={binding.kind==="table"&&order&&character&&customer?{current:{line:customer.phase==="served"?character.thanks:order.line},history:customer.phase==="ordered"?[{line:character.greeting}]:[]}:undefined}
+          onClose={()=>{dispatch({type:"world-close"});setPanel("none");}} returnFocusTo={panelTrigger.current} suspended={wordOpen}
+          onLookup={lookup} onPlay={playLine} recoveredWordIds={Object.keys(state.journal).filter(id=>state.journal[id].recovered)} freshWordIds={fresh}
+          actions={binding.kind==="table"&&customer?[{id:"service",control:<button className="primary" aria-label={customer.phase==="served"?"继续招呼":customer.phase==="checkout"?"递上找零":"上菜"} onClick={()=>customer.phase==="served"?close():customer.phase==="checkout"?completePayment():dispatch({type:"deliver",table,now:Date.now()})}>→</button>}]:binding.kind==="kitchen"?[{id:"carry",control:<button className="primary" aria-label="端好了，去上菜" onClick={close}>↗</button>}]:[]}>
+          {binding.kind==="table"&&order&&customer&&<RestaurantTableControls phase={customer.phase} order={order} foods={content.foods} change={change} onChange={setChange} onLookup={lookup}
+            summary={<p aria-label={`共${total}块，收到${order.paid}块`}>∑ {total} · ↓ {order.paid}</p>} changeLabel={<span>{registered("找零")} {change}</span>}
+            resetControl={<button aria-label="重来" onClick={()=>setChange(0)}>↺</button>} receiptSummary={<p>∑ {total} · {registered("找零")} {order.paid-total}</p>}
+            thanks={<span className="thanks-chop">{registered("多谢")}</span>}/>}
+          {binding.kind==="kitchen"&&<KitchenControls trayHeading={<span>{registered("托盘")} {state.tray.length}/6</span>} foods={content.foods} tray={state.tray} pickupEnabled={state.tray.length<6&&state.customers.some(c=>c.phase==="ordered")} onPickup={foodId=>dispatch({type:"pickup",foodId})} onReturn={index=>dispatch({type:"return-food",index})} onLookup={lookup}/>}
+          {binding.kind!=="table"&&binding.kind!=="kitchen"&&<Neighbourhood contextual target={binding} state={neighbourhood} day={state.day} onAction={dispatch} onLookup={lookup} onPlay={playLine} onRecover={acknowledgeRecovery} recoveredWordIds={Object.keys(state.journal).filter(id=>state.journal[id].recovered)} freshWordIds={fresh}/>}
+          {(state.feedback==="wrong-food"||state.feedback==="wrong-change")&&binding.kind==="table"&&character&&<div role="status">{tokens(character.retry)}</div>}
+          <NeighbourhoodGifts state={neighbourhood} onClaim={giftId=>{const before=sessionRef.current;const next=dispatch({type:"claim-neighbourhood-gift",giftId});if(next!==before)playLine(apartmentLines.gift);}}/>
+          {giftNotice&&<FeatureLine line={apartmentLines.gift} onLookup={lookup} onPlay={playLine}/>}
+        </ContextualInteraction>}
         {locationId !== "restaurant" && panel === "none" && audioNotice}
         {saveError && (
           <p role="status" className="save-note">
@@ -682,21 +483,13 @@ export default function App() {
           </p>
         )}
       </main>
-      {panel !== "none" && (
+      {blockingPanel && (
         <div className="modal-backdrop" onClick={close}>
           <section
-            className={`paper-panel ${panel === "kitchen" ? "kitchen-panel" : ""}`}
+            className="paper-panel"
             role="dialog"
             aria-modal={!wordOpen}
-            aria-label={
-              panel === "kitchen"
-                ? "厨房"
-                : panel === "journal"
-                  ? "本子"
-                  : panel === "help"
-                    ? "怎么玩"
-                    : `${table}桌点餐`
-            }
+            aria-label={panel==="journal"?"本子":panel==="tray"?"托盘":"怎么玩"}
             onClick={(e) => e.stopPropagation()}
           >
             <button className="close-button" aria-label="关闭" onClick={close}>
@@ -755,175 +548,7 @@ export default function App() {
                 </div>
               </div>
             )}
-            {panel === "table" && order && customer && character && (
-              <>
-                <div className="dialogue-heading">
-                  <span>
-                    {table}桌 · {order.customer}
-                  </span>
-                  <button
-                      className="round-button"
-                      aria-label="再听一遍"
-                      onClick={() => play(customer.phase === "served" ? character.thanks.audio : order.line.audio)}
-                    >
-                      <Speaker />
-                    </button>
-                </div>
-                {customer.phase === "served" ? (
-                  <>
-                    <div className="receipt">
-                      <span className="receipt-title">早安小馆</span>
-                      {order.items.map((item) => {
-                        const f = content.foods.find(
-                          (f) => f.id === item.foodId,
-                        )!;
-                        return (
-                          <p key={item.foodId}>
-                            <button data-word-lookup onClick={(event) => lookup(f.word, event.currentTarget)}>
-                              {f.word.hanzi}
-                            </button>
-                            <span>×{item.quantity}</span>
-                            <span>{f.price * item.quantity}块</span>
-                          </p>
-                        );
-                      })}
-                      <p className="receipt-total">
-                        <b>共 {total}块</b>
-                        <span>找零 {order.paid - total}块</span>
-                      </p>
-                      <span className="thanks-chop">多谢</span>
-                    </div>
-                    {tokens(character.thanks)}
-                    <button className="primary" autoFocus onClick={close}>
-                      继续招呼 <span>→</span>
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    {customer.phase === "ordered" && (
-                      <div className="character-greeting">
-                        {tokens(character.greeting)}
-                        <button className="round-button" aria-label="听招呼" onClick={() => play(character.greeting.audio)}><Speaker /></button>
-                      </div>
-                    )}
-                    {tokens(order.line)}
-                    {customer.phase === "checkout" ? (
-                      <>
-                        <p className="checkout-title">
-                          共 {total}块 · 收到 {order.paid}块
-                        </p>
-                        <p className="subtle">找零</p>
-                        <div className="change-display">
-                          {change}
-                          <span> 块</span>
-                        </div>
-                        <div className="money-buttons">
-                          {[1, 2, 5, 10].map((n) => (
-                            <button key={n} onClick={() => setChange((c) => c + n)}>
-                              +{n}块
-                            </button>
-                          ))}
-                          <button onClick={() => setChange(0)}>重来</button>
-                        </div>
-                        {state.feedback === "wrong-change" && (
-                          <div role="status" className="gentle-feedback">
-                            {tokens(character.retry)}
-                            <p>再算一算，慢慢来。</p>
-                          </div>
-                        )}
-                        <button className="primary" onClick={completePayment}>
-                          递上找零 <span>→</span>
-                        </button>
-                      </>
-                    ) : (
-                      <>
-                        <p className="subtle">点字听词 · 记住后去厨房取餐</p>
-                        {state.feedback === "wrong-food" && (
-                          <div className="gentle-feedback" role="status">
-                            {tokens(character.retry)}
-                            <p>可以回厨房放下，再拿一次。</p>
-                          </div>
-                        )}
-                        <div className="dialogue-actions">
-                          <button className="secondary" onClick={visitKitchen}>
-                            去厨房
-                          </button>
-                          <button
-                            className="primary"
-                            onClick={() => dispatch({ type: "deliver", table, now: Date.now() })}
-                          >
-                            上菜 <span>→</span>
-                          </button>
-                        </div>
-                      </>
-                    )}
-                  </>
-                )}
-              </>
-            )}
-            {panel === "kitchen" && (
-              <>
-                <p className="eyebrow">厨房 · 热乎的早饭</p>
-                <h2>刚才，客人点了什么？</h2>
-                <p className="subtle">
-                  {state.customers.some((c) => c.phase === "ordered")
-                    ? "一次先送一桌，托盘最多六份。"
-                    : "先去桌边，听听客人点什么。"}
-                </p>
-                <div className="food-grid">
-                  {content.foods.map((food) => (
-                    <div className="food-choice" key={food.id}>
-                      <button
-                        className="food-pick"
-                        onClick={() =>
-                          dispatch({ type: "pickup", foodId: food.id })
-                        }
-                        aria-label={`拿${food.word.hanzi}`}
-                        disabled={
-                          state.tray.length >= 6 ||
-                          !state.customers.some((c) => c.phase === "ordered")
-                        }
-                      >
-                        <FoodArt kind={food.kind} />
-                        <span>{food.word.hanzi}</span>
-                        <small>{food.price}块</small>
-                        <i>＋</i>
-                      </button>
-                      <button
-                        className="food-listen"
-                        aria-label={`听${food.word.hanzi}`}
-                        data-word-lookup onClick={(event) => lookup(food.word, event.currentTarget)}
-                      >
-                        <Speaker />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-                <div className="kitchen-tray">
-                  <span>托盘 {state.tray.length}/6</span>
-                  <div>
-                    {state.tray.map((id, i) => (
-                      <button
-                        key={`${id}-${i}`}
-                        aria-label={`放回${content.foods.find((f) => f.id === id)!.word.hanzi}`}
-                        onClick={() =>
-                          dispatch({ type: "return-food", index: i })
-                        }
-                      >
-                        {content.foods.find((f) => f.id === id)!.word.hanzi}{" "}
-                        <span>×</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                {state.feedback === "full" && (
-                  <p role="status">托盘满了，先送一桌吧。</p>
-                )}
-                <button className="primary" onClick={close}>
-                  端好了，去上菜 <span>→</span>
-                </button>
-              </>
-            )}
+            {panel==="tray"&&<div className="tray-pocket" role="group" aria-label="托盘">{state.tray.map((id,index)=>{const food=content.foods.find(food=>food.id===id)!;return <div key={`${id}-${index}`}><FoodArt kind={food.kind}/><WordToken word={food.word} look={wordState(state.journal[food.word.id],fresh.includes(food.word.id))} onLookup={lookup}/></div>;})}</div>}
             {panel === "journal" && (
               <>
                 <p className="eyebrow">我的本子</p>
@@ -987,7 +612,7 @@ export default function App() {
             <button
               className="primary"
               onClick={() => {
-                dispatch({ type: "next-day" });
+                dispatch({ type: "advance-world-day" });
                 close();
               }}
             >

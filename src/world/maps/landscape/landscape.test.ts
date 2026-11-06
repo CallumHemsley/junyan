@@ -31,6 +31,15 @@ for (const raw of mapDefinitions) {
       const goal = map.anchors.find(a => a.id === id)!.position;
       expect(findPath(map,map.defaultSpawn,goal).length).toBeGreaterThan(0);
     });
+    it('keeps water effects off visible bridge and boardwalk decks', () => {
+      const decks=map.terrain.filter(t=>t.material==='bridge'||t.material==='boardwalk');
+      const water=map.terrain.filter(t=>t.material==='water');
+      for(const deck of decks)for(const surface of water){
+        const a=deck.rect,b=surface.rect;
+        const overlap=Math.min(a.x+a.width,b.x+b.width)-Math.max(a.x,b.x)>1e-7&&Math.min(a.y+a.height,b.y+b.height)-Math.max(a.y,b.y)>1e-7;
+        expect(overlap,`${deck.id} covered by ${surface.id}`).toBe(false);
+      }
+    });
     it('keeps resident hook segments walkable', () => {
       for(const hook of map.npcHooks)for(const point of hook.route)expect(canStand(map,point),hook.id).toBe(true);
     });

@@ -1,0 +1,6 @@
+body { margin: 0; }
+.ui-harness { position: relative; height: 100dvh; overflow: hidden; background: var(--surface-sunk); }
+.harness-world { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.harness-anchor { position: absolute; left: 28%; top: 26%; min-width: 44px; min-height: 44px; background: var(--surface-card); border: 1px solid var(--hairline); border-radius: var(--radius-tile); }
+.harness-notice { position: absolute; top: 8px; left: 8px; background: var(--surface-card); }
+.placement-top .world-context { top: max(12px, env(safe-area-inset-top)); bottom: auto; }

@@ -50,3 +50,11 @@ describe('actual occupied landmark geometry', () => {
     expect(approaches).toEqual([]);
   });
 });
+
+it('does not make an overlapping wall transparent because it also contains the target', () => {
+  const map = worldMapSchema.parse(fixtures.find(item => item.map.id === 'courtyard')!.map);
+  map.colliders.push({ id: 'overlapping-wall', rect: { x: 28, y: 20, width: 2, height: 2 } });
+  const player = { x: 27.25, y: 21 }, navigation = navigationFor(map);
+  expect(canStand(map, player)).toBe(true);
+  expect(nearbyLife(compileLife(map, navigation), [], player, navigation)).toEqual([]);
+});
