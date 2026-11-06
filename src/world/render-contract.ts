@@ -9,7 +9,17 @@ export type WorldRenderView = {
   pass:"ground"|"objects"|"foreground";
 };
 export type DrawMap = (ctx:CanvasRenderingContext2D,map:WorldMapDefinition,view:WorldRenderView)=>void;
-export type WorldArtModule = { drawMap:DrawMap };
+export type WorldRenderObject = {
+ id:string;
+ position:Point;
+ depth?:number;
+ occlusion?:{rect:{x:number;y:number;width:number;height:number};height:number;fadeWhenPlayerBehind:boolean};
+ draw(ctx:CanvasRenderingContext2D,view:WorldRenderView):void;
+};
+export type WorldArtModule = {
+ drawMap?:DrawMap;
+ renderObjects?:(map:WorldMapDefinition,view:WorldRenderView)=>WorldRenderObject[];
+};
 export type WorldDrawCommand =
  | {kind:"ellipse";position:Point;z?:number;radiusX:number;radiusY:number;color:string;alpha?:number}
  | {kind:"line";from:Point;to:Point;z?:number;width:number;color:string;alpha?:number}
