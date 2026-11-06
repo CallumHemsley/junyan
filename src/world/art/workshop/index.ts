@@ -1,6 +1,6 @@
 import type { RepairArtApi } from '../../../features/repairs/scene';
 import type { State } from '../../../features/repairs/rules';
-import type { DrawMap, WorldRenderView } from '../../render-contract';
+import type { DrawMap, WorldRenderView, WorldRenderObject, WorldArtModule } from '../../render-contract';
 import type { WorldMapDefinition } from '../../schema';
 import { drawWorkshopProp } from './paint';
 
@@ -34,7 +34,7 @@ function painter(ctx: CanvasRenderingContext2D, view: WorldRenderView): RepairAr
   };
 }
 
-function paint(ctx: CanvasRenderingContext2D, map: WorldMapDefinition, view: WorldRenderView, repairs?: State) {
+function paint(ctx: CanvasRenderingContext2D, map: WorldMapDefinition, view: WorldRenderView) {
   if(map.id!=='workshop') return;
   ctx.save();
   const api=painter(ctx,view);
@@ -59,25 +59,32 @@ function paint(ctx: CanvasRenderingContext2D, map: WorldMapDefinition, view: Wor
     ctx.save();ctx.globalAlpha=.16;
     for(const x of [10,14.2,17])tile(x,3,1.5,4.5,[221,237,224]);
     ctx.restore();
-  } else {
-    const props=[...map.props].sort((a,b)=>a.position.x+a.position.y-b.position.x-b.position.y);
-    for(const prop of props) {
-      const center={x:prop.position.x+prop.width/2,y:prop.position.y+prop.height/2};
-      const front=center.x+center.y>view.playerPosition.x+view.playerPosition.y;
-      if((view.pass==='foreground')!==front)continue;
-      const occluder=map.occluders.find(o=>o.id===prop.id);
-      const screen=view.project(center), player=view.project(view.playerPosition);
-      const fade=front&&occluder?.fadeWhenPlayerBehind&&Math.abs(screen.x-player.x)<Math.max(25,prop.width*12)&&screen.y-player.y<occluder.height*24;
-      ctx.save();ctx.globalAlpha=fade?.35:1;
-      drawWorkshopProp(api,prop,{repairs,elapsedSeconds:view.reducedMotion?0:view.elapsedMs/1000});
-      ctx.restore();
-    }
   }
   ctx.restore();
 }
 
 export const drawMap: DrawMap = (ctx,map,view) => paint(ctx,map,view);
+
+export function renderObjects(map: WorldMapDefinition, _view: WorldRenderView, repairs?: State): WorldRenderObject[] {
+  if(map.id!=='workshop')return [];
+  return map.props.map(prop=>({
+    id:prop.id,
+    position:{x:prop.position.x+prop.width/2,y:prop.position.y+prop.height/2},
+    depth:prop.position.x+prop.position.y+prop.width/2+prop.height/2,
+    occlusion:map.occluders.find(o=>o.id===prop.id),
+    draw(ctx,view){
+      // Contact shadows ground each workstation and shelf in the room.
+      if(!['wall','window','pegboard','paper','shavings','doormat','awning'].includes(prop.kind)){
+        const at=view.project({x:prop.position.x+prop.width/2,y:prop.position.y+prop.height/2});
+        const side=view.project({x:prop.position.x+prop.width,y:prop.position.y+prop.height});
+        ctx.save();ctx.globalAlpha*=.14;ctx.fillStyle='#342e28';ctx.beginPath();ctx.ellipse(at.x,at.y+3,Math.max(3,Math.abs(side.x-at.x)+prop.width*6),Math.max(2,Math.abs(side.y-at.y)*.65),0,0,Math.PI*2);ctx.fill();ctx.restore();
+      }
+      drawWorkshopProp(painter(ctx,view),prop,{repairs,elapsedSeconds:view.reducedMotion?0:view.elapsedMs/1000});
+    },
+  }));
+}
+
 // Foundation injects its authoritative feature state; this adapter owns no mutable game state.
-export function createWorkshopArt(repairs: State): DrawMap {
-  return (ctx,map,view) => paint(ctx,map,view,repairs);
+export function createWorkshopArt(repairs: State): WorldArtModule {
+  return {drawMap,renderObjects:(map,view)=>renderObjects(map,view,repairs)};
 }

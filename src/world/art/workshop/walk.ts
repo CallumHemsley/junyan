@@ -11,7 +11,7 @@ const canvas=document.querySelector('canvas')!;
 const ctx=canvas.getContext('2d')!;
 let position={...map.defaultSpawn},path:{x:number;y:number}[]=[],last=0;
 const keys=new Set<string>(),preference=matchMedia('(prefers-reduced-motion: reduce)');
-const drawMap=createWorkshopArt(initialState());
+const art=createWorkshopArt(initialState());
 const camera:Camera={focus:position,width:720,height:560,scale:24};
 const targets={lamp:{x:8,y:10.8},toy:{x:20.8,y:10.8},shelf:{x:23,y:5},joinery:{x:12,y:18.8},entry:{x:15,y:25}};
 const proof={position,visits:[] as string[],frames:0,errors:[] as string[]};
@@ -33,10 +33,13 @@ function render(now:number){
  const next=movePlayer(map,position,movement);position={...position,...next};
  camera.focus=position;proof.position=position;proof.frames++;
  const ratio=canvas.clientWidth/canvas.clientHeight;
- camera.width=720;camera.height=Math.round(720/ratio);canvas.width=camera.width;canvas.height=camera.height;
+ camera.width=Math.round(canvas.clientWidth);camera.height=Math.round(camera.width/ratio);camera.scale=camera.width<600?18:24;canvas.width=camera.width;canvas.height=camera.height;
  ctx.imageSmoothingEnabled=false;ctx.fillStyle='#444339';ctx.fillRect(0,0,canvas.width,canvas.height);
  const view={project:(p:{x:number;y:number},z=0)=>project(p,camera,z),elapsedMs:now,reducedMotion:preference.matches,playerPosition:position,width:camera.width,height:camera.height,pass:'ground' as const};
- drawMap(ctx,map,view);drawMap(ctx,map,{...view,pass:'objects'});actor();drawMap(ctx,map,{...view,pass:'foreground'});
+ art.drawMap?.(ctx,map,view);
+ const objects=art.renderObjects!(map,view);
+ objects.push({id:'proof-player',position,draw:actor});
+ objects.sort((a,b)=>(a.depth??a.position.x+a.position.y)-(b.depth??b.position.x+b.position.y)).forEach(o=>{ctx.save();if(o.occlusion?.fadeWhenPlayerBehind&&position.x+position.y<o.position.x+o.position.y)ctx.globalAlpha=.45;o.draw(ctx,view);ctx.restore();});
  document.querySelector('#position')!.textContent=`${position.x.toFixed(1)}, ${position.y.toFixed(1)} · ${nearbyAnchors(map,position).map(a=>a.interactionId==='repair-lamp'?'台灯':'玩具').join(' ')}`;
  if(!document.hidden)requestAnimationFrame(render);
 }
