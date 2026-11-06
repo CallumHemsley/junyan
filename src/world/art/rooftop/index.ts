@@ -1,3 +1,4 @@
+import {drawRoofscape} from './roofscape';
 import type {DrawMap, WorldRenderView, WorldRenderObject} from '../../render-contract';
 import type {Point, WorldMapDefinition} from '../../schema';
 type Prop = WorldMapDefinition['props'][number];
@@ -107,6 +108,7 @@ const paintMap: DrawMap = (ctx, map, view) => {
   ctx.save(); ctx.imageSmoothingEnabled = false;
   if (view.pass === 'ground') {
     skyline();
+    drawRoofscape({box, plane, polygon, project, stem}, view);
     for (const {rect: r, material} of map.terrain) {
       const wood = material === 'roof-wood', brick = material === 'roof-brick';
       for (let y = r.y; y < r.y + r.height; y++) for (let x = r.x; x < r.x + r.width; x++) {
