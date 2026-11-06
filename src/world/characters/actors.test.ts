@@ -34,3 +34,22 @@ describe('original pixel actors',()=>{
   expect(shadows.length).toBeGreaterThanOrEqual(2);
  });
 });
+
+describe('actor material boundary',()=>{
+ it('routes every pixel through the supplied material callback without resetting inherited alpha',async()=>{
+  const {paintActorCanvas}=await import('./adapter');
+  let alpha=.45,style='';const stack:number[]=[],fills:{style:string;alpha:number}[]=[],materials:number[][]=[];
+  const context={
+   save:()=>stack.push(alpha),restore:()=>{alpha=stack.pop()!;},
+   get globalAlpha(){return alpha;},set globalAlpha(value:number){alpha=value;},
+   get fillStyle(){return style;},set fillStyle(value:string){style=value;},
+   beginPath:()=>{},ellipse:()=>{},fill:()=>fills.push({style,alpha}),fillRect:()=>fills.push({style,alpha}),
+  } as unknown as CanvasRenderingContext2D;
+  paintActorCanvas(context,sampleActor(base),50,60,1,color=>{materials.push(color);return '#345678';});
+  expect(materials.length).toBeGreaterThan(100);
+  expect(fills.every(fill=>fill.style==='#345678')).toBe(true);
+  expect(fills.every(fill=>fill.alpha<=.45)).toBe(true);
+  expect(context.globalAlpha).toBe(.45);
+  expect(sampleActor(base).worldCommands.every(command=>/^#[0-9a-f]{6}$/.test(command.color))).toBe(true);
+ });
+});

@@ -24,19 +24,20 @@ export function paintActor(surface:ActorSurface,sample:ActorSample,position:Acto
   }
 }
 
-export function paintActorCanvas(context:CanvasRenderingContext2D,sample:ActorSample,x:number,y:number,scale=1):void {
+export function paintActorCanvas(context:CanvasRenderingContext2D,sample:ActorSample,x:number,y:number,scale=1,shadeColor:(base:RGB)=>string=color=>`rgb(${color.join(',')})`):void {
   context.save();
   context.imageSmoothingEnabled=false;
-  context.fillStyle='rgba(48,43,42,.18)';
+  context.save();context.globalAlpha*=.18;context.fillStyle=shadeColor([48,43,42]);
   context.beginPath();context.ellipse(x,y-1,8*scale,3*scale,0,0,Math.PI*2);context.fill();
-  context.fillStyle='rgba(48,43,42,.28)';
+  context.restore();context.save();context.globalAlpha*=.28;context.fillStyle=shadeColor([48,43,42]);
   for(const foot of sample.frame.feet)if(foot.planted) {
     const left=Math.round(x+(foot.x-sample.frame.anchor.x-2)*scale);
     const right=Math.round(x+(foot.x-sample.frame.anchor.x+2)*scale);
     context.fillRect(left,Math.round(y+(foot.y-sample.frame.anchor.y)*scale),right-left,Math.max(1,Math.round(scale)));
   }
+  context.restore();
   for(const command of sample.drawCommands) {
-    context.fillStyle=`rgb(${command.color.join(',')})`;
+    context.fillStyle=shadeColor(command.color);
     const left=Math.round(x+command.x*scale),top=Math.round(y+command.y*scale);
     const right=Math.round(x+(command.x+command.width)*scale),bottom=Math.round(y+(command.y+1)*scale);
     context.fillRect(left,top,right-left,bottom-top);
@@ -46,7 +47,7 @@ export function paintActorCanvas(context:CanvasRenderingContext2D,sample:ActorSa
 
 export function actorCommands(sample:Pick<ActorSample,'drawCommands'>,position:{x:number;y:number},nativePixelsPerTile=18):WorldDrawCommand[] {
   const world=(x:number,y:number)=>({x:position.x+(x*.5+y)/nativePixelsPerTile,y:position.y+(y-x*.5)/nativePixelsPerTile});
-  return sample.drawCommands.map(span=>({kind:'polygon',color:`rgb(${span.color.join(',')})`,points:[
+  return sample.drawCommands.map(span=>({kind:'polygon',color:'#'+span.color.map(channel=>channel.toString(16).padStart(2,'0')).join(''),points:[
     world(span.x,span.y),world(span.x+span.width,span.y),world(span.x+span.width,span.y+1),world(span.x,span.y+1),
   ]}));
 }
