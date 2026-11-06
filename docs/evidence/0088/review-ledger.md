@@ -26,7 +26,7 @@ Capture setup failures were infrastructure, not application defects: first defau
 | P1 evidence gap | e2e/neighbourhood.spec.ts:31-34 navigates by menu buttons. Those valuable activity regressions cannot demonstrate world traversal. | 0078 + review. New integrated ordinary-control journey and measured reachable content. |
 | P2 visual | All inspected images show detached cutaway floors surrounded by beige panels. Courtyard and workshop desktop layouts leave most lower viewport empty. Phone canvas heights 264-283 CSS px occupy only 40-43% of 664px viewport; apartment document is 856px tall. | 0078 + map owners. World-focused play area, contextual DOM controls, preserved readable learning UI. |
 
-Candidate checkpoint race is under independent runtime reproduction, not yet a confirmed defect. Do not fix from source suspicion alone.
+Confirmed P2 checkpoint rollback. Independent normal-UI desktop and phone reproduction moved within 52ms/38ms after return. IndexedDB saved {6.45,2.95}, stale checkpoint retained {6,2.5}, reload rewrote IndexedDB to {6,2.5}. See save-repro/README.md, full store snapshots and intentionally failing 2/2 regression. Foundation owns correction; unrelated progress loss is not claimed.
 
 ## Visual critique and prioritized targets
 
@@ -61,8 +61,10 @@ Ownership boundaries are coherent for a documentation proposal. No blocking owne
 
 ## Coverage and next actions
 
-Completed independent source slices: art/composition/world-life structural audit; movement/camera/save/UI structural audit. Completed actual baseline normal-opening/menu/reload captures on desktop and phone. Contract proposal independently reviewed. Save-race reproduction running separately. No full integrated-world head is available in this review yet.
+Completed independent source slices: art/composition/world-life structural audit; movement/camera/save/UI structural audit. Completed actual baseline normal-opening/menu/reload captures on desktop and phone. Contract proposal independently reviewed. Save-race reproduced independently on desktop and phone; 2/2 regression assertions fail as retained defect evidence. No full integrated-world head is available in this review yet.
 
-Next: publish baseline, relay contract clarifications to coordinator/foundation/atmosphere, finish save repro, then acquire the first published integrated walking head. Dispatch independent runtime art, movement/collision, world-life, touch/accessibility and regression/performance coverage against that exact head. Do not treat individual producer reports as acceptance.
+Next: publish baseline, relay contract clarifications to coordinator/foundation/atmosphere, return confirmed save defect to foundation, then acquire the first published integrated walking head. Dispatch independent runtime art, movement/collision, world-life, touch/accessibility and regression/performance coverage against that exact head. Do not treat individual producer reports as acceptance.
 
 Pstack Prove It Works required actual runtime evidence instead of producer claims. Experience First preserves the full requested exploration target rather than shrinking it to a convenient hub. Swarm guidance supplies exact-head independent coverage and aggregation. No native platform goal registration was claimed.
+
+Baseline Playwright traces remain in this cloud checkout and are not included in the branch; published screenshots, videos, JSON and rerunnable specs provide the durable evidence. The save-repro sub-review began while the parent advanced documentation commits; production src and built JS hashes stayed at baseline throughout.
