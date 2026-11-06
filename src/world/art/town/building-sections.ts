@@ -4,13 +4,13 @@ import type { WorldRenderObject, WorldRenderView } from '../../render-contract';
 type Prop = WorldMapDefinition['props'][number];
 type Occlusion = WorldRenderObject['occlusion'];
 type Painter = (ctx: CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D, prop: Prop, view: WorldRenderView) => void;
-type Plate = { canvas: OffscreenCanvas; scale: number; shader: WorldRenderView['shadeColor']; left: number; top: number; elapsedMs: number };
+type Plate = { canvas: OffscreenCanvas; scale: number; shader: WorldRenderView['shadeColor']; left: number; top: number; elapsedMs: number; reducedMotion: boolean };
 const plates = new WeakMap<Prop, Plate>();
 
 function plateFor(prop: Prop, view: WorldRenderView, paint: Painter): Plate {
   const at = view.project(prop.position), scale = Math.round(Math.abs(view.project({ x: prop.position.x + 1, y: prop.position.y }).x - at.x) * 1e6) / 1e6;
   const prior = plates.get(prop);
-  const reusable = prior && prior.scale === scale && prior.shader === view.shadeColor;
+  const reusable = prior && prior.scale === scale && prior.shader === view.shadeColor && prior.reducedMotion === view.reducedMotion;
   if (reusable && (prop.kind !== 'laundry' || view.reducedMotion || prior.elapsedMs === view.elapsedMs)) return prior;
   const left = -Math.ceil((prop.height + 2) * scale), top = -Math.ceil(12 * scale);
   const canvas = reusable ? prior.canvas : new OffscreenCanvas(Math.ceil((prop.width + prop.height + 4) * scale), Math.ceil(((prop.width + prop.height) * .5 + 14) * scale));
@@ -21,7 +21,7 @@ function plateFor(prop: Prop, view: WorldRenderView, paint: Painter): Plate {
     project(point, z) { const p = view.project(point, z); return { x: p.x - at.x - left, y: p.y - at.y - top }; },
   };
   paint(context, prop, localView);
-  const plate = { canvas, scale, shader: view.shadeColor, left, top, elapsedMs: view.elapsedMs };
+  const plate = { canvas, scale, shader: view.shadeColor, left, top, elapsedMs: view.elapsedMs, reducedMotion: view.reducedMotion };
   plates.set(prop, plate);
   return plate;
 }
