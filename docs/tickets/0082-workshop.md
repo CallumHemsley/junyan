@@ -1,7 +1,7 @@
 ---
 id: 82
 title: Workshop and repair yard
-status: todo
+status: doing
 priority: high
 type: feature
 created: 2026-11-05
@@ -17,8 +17,10 @@ The scope in `docs/world-program/ledger.md` is implemented against `docs/world-p
 
 ## Notes
 
-- Owner: builder 5, GPT-6.1 Sol medium. Thread ID pending parent relay.
+- Owner: builder 5, GPT-6.1 Sol medium. Thread 01a1ae20-69b1-74c6-855c-c2e228970064 on durable.
 - Branch: `codex/0082-workshop`. Cloud checkout and process handles must be recorded by owner. Strict port 5484.
 - Exclusive paths: src/world/maps/workshop/*; src/world/art/workshop/*; src/features/repairs/*.
 - Also owns this ticket and `docs/evidence/0082/`. Do not edit shared contracts or other owners' files.
 - Publish map seam requests and integration instructions in the owned evidence directory.
+
+- Active persistent objective and integration requests: [progress](../evidence/0082/progress.md). Native goal tool unavailable; no registration claimed. Cloud checkout /workspace/junyan; baseline preservation tests 33 passed.

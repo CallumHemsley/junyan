@@ -18,6 +18,11 @@ describe("world locomotion",()=>{
   expect(canStand(map,{x:9.9,y:2})).toBe(false);
   expect(canStand(map,{x:NaN,y:2})).toBe(false);
  });
+ it("rejects uncovered strips within the footprint and nonfinite segments",()=>{
+  const strip={...map,colliders:[],walkable:[{x:0,y:0,width:10,height:60},{x:10.1,y:0,width:69.9,height:60}]};
+  expect(canStand(strip,{x:10.05,y:3})).toBe(false);
+  expect(canWalk(map,{x:2,y:2},{x:NaN,y:3})).toBe(false);
+ });
  it("round trips moved cameras and CSS-scaled pointer edges",()=>{
   for(const focus of [{x:0,y:0},{x:53,y:29}])for(const width of [390,1280]) {
    const camera={focus,width,height:700,scale:24};
@@ -41,4 +46,12 @@ describe("world locomotion",()=>{
   const next=reduceWorld(start,{type:"world-move",position:{x:3.1,y:2.5}},{a,b});
   expect(next.mapId).toBe("b");expect(next.position).toEqual({x:2,y:2});expect(next.returnPositions.a.x).toBe(2.9);
  });
+});
+import {occludesPlayer} from "./occlusion";
+it("fades only scenery whose projected volume covers the player",()=>{
+ const wall={rect:{x:10,y:10,width:2,height:2},height:4};
+ expect(occludesPlayer(wall,{x:9,y:9})).toBe(true);
+ expect(occludesPlayer(wall,{x:2,y:10})).toBe(false);
+ expect(occludesPlayer(wall,{x:13,y:13})).toBe(false);
+ expect(occludesPlayer({...wall,height:.2},{x:9,y:9})).toBe(false);
 });

@@ -1,0 +1,62 @@
+[
+  {
+    "name": "desktop",
+    "initial": {
+      "x": 15,
+      "y": 25,
+      "facing": "north"
+    },
+    "keyboard": {
+      "x": 15,
+      "y": 19.799799999999966,
+      "facing": "north"
+    },
+    "state": {
+      "position": {
+        "x": 14.999837299592887,
+        "y": 24.999662824070253,
+        "facing": "north"
+      },
+      "visits": [
+        "lamp",
+        "toy",
+        "shelf",
+        "joinery",
+        "entry"
+      ],
+      "frames": 691,
+      "errors": []
+    },
+    "errors": []
+  },
+  {
+    "name": "phone",
+    "initial": {
+      "x": 15,
+      "y": 25,
+      "facing": "north"
+    },
+    "keyboard": {
+      "x": 15,
+      "y": 19.79979999999998,
+      "facing": "north"
+    },
+    "state": {
+      "position": {
+        "x": 14.999088268358744,
+        "y": 24.998110347164584,
+        "facing": "north"
+      },
+      "visits": [
+        "lamp",
+        "toy",
+        "shelf",
+        "joinery",
+        "entry"
+      ],
+      "frames": 722,
+      "errors": []
+    },
+    "errors": []
+  }
+]
