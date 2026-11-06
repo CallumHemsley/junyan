@@ -159,3 +159,7 @@ Latest nine map payloads parse and pass local spawn/entrance/anchor sampling. Th
 0090 first WIP 8b90816 publishes typed scoped shell/table/kitchen/pocket components. Coordinator returned nested-button risk from ReactNode action labels plus word-card Escape/focus and visible token-label concerns. Owner is fixing before final API acceptance. Main application integration remains foundation-owned.
 
 Actual town actors use appearance tags backpack/glasses. Alias mapping to xiao-zhou/zhang-laoshi was verified against current content and added to integration-v1.1. Root/foundation and owners notified through PR27 comments.
+
+Latest foundation 74a5213 now supplies shadeColor but also wraps the canvas in shadedContext. That wrapper recognizes outputs through a mutable set to avoid double shading. Coordinator requests that explicitly shaded art bypass the compatibility wrapper and emissive atmosphere layers use the raw context; otherwise base-color identity depends on paint history and glows can be shaded again. Callback remains the single material-lighting seam; no second clock or artist-specific phase logic.
+
+Residential 45ef838 proposes raised surfaces; current production view/camera remains flat. Integration-v1.1 specifies one piecewise tread/landing table, surfaceHeight + surfaceLevels, absolute-Z project, explicit actor/NPC foot height, camera focusZ and height-aware inverse picking. Foundation retains shared camera/picking; residential retains authored geometry. Life runtime consumers and species-specific rendering remain explicit acceptance gates.
