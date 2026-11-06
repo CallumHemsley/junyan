@@ -103,15 +103,22 @@ export async function walkTo(page: Page, destination: Point) {
       return document.elementFromPoint(bounds.left+position.x,bounds.top+position.y) === element;
     }, position);
     if (map.id === "residential-stairs") {
-      const dx=point.x-world.position.x, dy=point.y-world.position.y;
-      const directions = Math.abs(dx)>Math.abs(dy)*2.4 ? (dx>0?["ArrowDown","ArrowRight"]:["ArrowUp","ArrowLeft"])
-        : Math.abs(dy)>Math.abs(dx)*2.4 ? (dy>0?["ArrowDown","ArrowLeft"]:["ArrowUp","ArrowRight"])
-        : [Math.abs(dx+dy)>Math.abs(dx-dy)?(dx+dy>0?"ArrowDown":"ArrowUp"):(dx-dy>0?"ArrowRight":"ArrowLeft")];
+      const choices = [
+        {x:-1,y:-1,keys:["ArrowUp"]},{x:1,y:1,keys:["ArrowDown"]},{x:1,y:-1,keys:["ArrowRight"]},{x:-1,y:1,keys:["ArrowLeft"]},
+        {x:1,y:0,keys:["ArrowDown","ArrowRight"]},{x:-1,y:0,keys:["ArrowUp","ArrowLeft"]},{x:0,y:-1,keys:["ArrowUp","ArrowRight"]},{x:0,y:1,keys:["ArrowDown","ArrowLeft"]},
+      ];
+      const candidates = choices.map(choice => {
+        const length=Math.hypot(choice.x,choice.y);
+        const position=movePlayer(map,world.position,{x:choice.x/length*.35,y:choice.y/length*.35});
+        return {choice,position,distance:Math.hypot(position.x-point.x,position.y-point.y)};
+      }).filter(candidate=>canWalk(map,world.position,candidate.position)&&Math.hypot(candidate.position.x-world.position.x,candidate.position.y-world.position.y)>.05).sort((a,b)=>a.distance-b.distance);
+      expect(candidates.length, `keyboard stair route from ${JSON.stringify(world.position)}`).toBeGreaterThan(0);
+      const directions = candidates[0].choice.keys;
       await page.getByTestId("world-viewport").focus();
       for (const key of directions) await page.keyboard.down(key);
       try { await page.waitForTimeout(Math.min(180,Math.max(75,distance/5*1000))); }
       finally { for (const key of directions) await page.keyboard.up(key); }
-      await expect.poll(async () => (await savedGame(page)).world!.position, {timeout:2_000}).not.toEqual(world.position);
+      await expect.poll(async () => (await savedGame(page)).world!.position, {timeout:2_000,message:`stairs ${JSON.stringify({from:world.position,to:point,directions,route})}`}).not.toEqual(world.position);
       continue;
     }
     if (!clear) {
