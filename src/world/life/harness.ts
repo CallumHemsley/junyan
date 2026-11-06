@@ -6,6 +6,7 @@ import { advanceLife, compileLife, drawLifeActor, drawLifeReactions, initialLife
 import type { LifeContext, LifePlan } from './index';
 import type { WorldRenderView } from '../render-contract';
 import type { Line } from '../../contracts';
+import { wordText, wordPronunciation, lineLabel } from './word-display';
 
 const snapshots = await fetch('/output/verification/world/0087/maps.json').then(response => response.json()) as { sha: string; path: string; map: unknown }[];
 const maps = snapshots.map(item => worldMapSchema.parse(item.map));
@@ -43,8 +44,8 @@ function save() { localStorage.setItem(storageKey, JSON.stringify(life)); }
 function show(line: Line) {
   speech.replaceChildren();
   for (const word of line.tokens) {
-    const button = document.createElement('button'); button.textContent = word.hanzi;
-    button.onclick = () => { card.textContent = `${word.hanzi} ${word.pinyin}`; };
+    const button = document.createElement('button'); button.textContent = wordText(word);
+    button.onclick = () => { card.textContent = `${wordText(word)} ${wordPronunciation(word)}`; };
     speech.append(button);
   }
   const replay = document.createElement('button'); replay.textContent = '↻'; replay.ariaLabel = '再听';
@@ -87,7 +88,7 @@ function draw() {
     choices = key; hud.replaceChildren();
     for (const option of nearby.slice(0, 4)) {
       const button = document.createElement('button'); button.dataset.action = option.id;
-      button.textContent = option.label.tokens.map(word => word.hanzi).join(''); button.onclick = () => use(option.id); hud.append(button);
+      button.textContent = lineLabel(option.label); button.onclick = () => use(option.id); hud.append(button);
     }
   }
   frameCount++;

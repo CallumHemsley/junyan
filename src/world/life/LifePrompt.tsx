@@ -3,6 +3,7 @@ import WordToken from '../../WordToken';
 import FeatureLine from '../../neighbourhood/FeatureLine';
 import type { Affordance } from './model';
 import './prompt.css';
+import { lineLabel } from './word-display';
 
 export type LifePromptProps = {
   option?: Affordance;
@@ -20,7 +21,7 @@ export function LifePrompt({ option, line, onActivate, onLookup, onPlay, recover
     {option && <div className="life-prompt-action">
       <span>{option.label.tokens.map((word, index) => <WordToken key={`${word.id}-${index}`} word={word}
         look={freshWordIds.includes(word.id) ? 'dot' : recoveredWordIds.includes(word.id) ? 'plain' : 'fogged'} onLookup={onLookup} />)}</span>
-      <button className="life-activate" type="button" data-life-action={option.id} aria-label={option.label.tokens.map(word => word.hanzi).join('')} onClick={() => onActivate(option.id)}>→</button>
+      <button className="life-activate" type="button" data-life-action={option.id} aria-label={lineLabel(option.label)} onClick={() => onActivate(option.id)}>→</button>
     </div>}
   </div>;
 }
