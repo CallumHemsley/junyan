@@ -30,3 +30,8 @@
 .cats-view[data-presentation="controls"] { display: block; width: 100%; padding: 0; }
 .cats-view[data-presentation="controls"] .cats-dialogue { padding: 12px; box-shadow: none; }
 .cats-view[data-presentation="controls"] .cats-speech { font-size: 28px; line-height: 42px; }
+
+.cats-view { container-type: inline-size; container-name: cats-panel; }
+@container cats-panel (max-width: 600px) {
+  .cats-heading, .cats-scene, .cats-landmarks, .cats-dialogue { grid-column: 1 / -1; grid-row: auto; }
+}

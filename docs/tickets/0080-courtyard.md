@@ -26,3 +26,9 @@ The scope in `docs/world-program/ledger.md` is implemented against `docs/world-p
 - Persistent objective ACTIVE. No create_goal tool exposed. Full courtyard/alleys/cat-habitat objective remains active until integrated and independently verified.
 - Cloud checkout `/workspace/junyan`, based on central ledger `fb167fd`; strict port 5482. No product server running yet.
 - Prototype compares sequential courts and courtyard loop. Selected loop for multiple approaches and physical town/hall/park connections. See `docs/evidence/0080/README.md`.
+
+- Review checkpoint: draft PR https://github.com/CallumHemsley/junyan/pull/39, stacked on foundation through 23be251. Full objective ACTIVE; status remains doing.
+- Actual desktop/phone traversal through town, residential hall and park edges and back, stable return-position reload, cat reunion on both devices, clean consoles/requests. `docs/evidence/0080/connections-proof.json` and `app-proof.json` hold exact run details. Videos are actual CDP frames, not generated animation.
+- Owned narrow-container CSS fix resolves legacy cat-target overlap. Controls-only presentation and projected anchors are exported for foundation wiring. No cat trust/reunion/repeat/gift/audio rule changes.
+- Production material-lighting proof passes for same-camera morning/evening wood, masonry and foliage pixels. Per-object alpha preserved; facade sections and roofs interleave separately.
+- 39 focused owner tests, shared graph test, TypeScript and Vite build passed. Independent current-head experience/occlusion review and final binding integration remain next. No native platform goal tool exists.

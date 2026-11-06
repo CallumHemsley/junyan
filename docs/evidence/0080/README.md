@@ -4,6 +4,17 @@ Persistent objective ACTIVE. Build residential courtyards, alleys and cat habita
 
 No native create_goal or send-to-thread tool is exposed. This committed record is the fallback. Worker `01a1ae1f-7fc4-77ff-8d9d-144d1889304e`, cloud host `durable`, branch `codex/0080-courtyard`, checkout `/workspace/junyan`, strict Vite port `5482`. Central ownership/contract base `fb167fd5047010beaac7809b4d6a41a804b7fb42`. Contract v1. No local preview is used.
 
+## Current review checkpoint
+
+The objective remains ACTIVE. Draft PR https://github.com/CallumHemsley/junyan/pull/39 targets the foundation branch. No main merge or independent acceptance is claimed.
+
+- Authored 48×38 courtyard, 1,096.5 tile units of footprint-reachable area at 0.5-tile sampling, 12 landmarks and 92 props. Actual ground includes paved routes plus passable planted/bare-earth margins; bounds are not the reachable-area claim.
+- Actual desktop and phone walking traverses all three required courtyard edges and returns, with six transitions per device. Return positions survive reload. `connections-proof.json`, captures and actual CDP-frame videos retain the evidence.
+- Fresh actual desktop and phone journeys complete the existing cat reunion, return to the same approach, walk to the sunny bench and preserve progress after reload. Restaurant position/day remain unchanged. Console and request failures are empty. A narrow-container CSS fix resolves the earlier overlapping legacy cat targets without hiding controls. The historical blocked capture remains as evidence of the defect, now superseded by fresh completion runs.
+- `production-light-proof.json` verifies changed actual wood, masonry and foliage pixels in the real viewport at identical cameras under valid morning/evening progress fixtures. Courtyard has no default particle hooks. Local light overlays remain enabled. Foundation 23be251 removes the shared proxy and output-color heuristic. Adapter proof separately demonstrates alpha preservation.
+- TypeScript and Vite production build passed. 39 focused owner tests passed; shared registry graph test also passed. Existing audio assets have no branch diff.
+- Outstanding foundation wiring is explicit target binding through the existing cat select action, `presentation="controls"`, and `courtyardForCats` before all map consumers so target anchors follow cats. Life now consumes `catHabitat`; final target binding and independent desktop/phone occlusion/experience review remain open. Wider original opening/service/change/journal/offline acceptance remains foundation's program gate.
+
 ## Throughput checkpoint
 
 - Blocking first steps. Central ticket and contract acquired. Foundation's executable schema and draw-command adapter are still pending.
