@@ -28,7 +28,9 @@ for name,kind,x,y,w,h,var,z in buildings:
 # Real doors have clear landings. Other facades receive visibly closed shutters.
 for name,target,r,arrival,facing,kind in [('restaurant','restaurant',rect(33,28,2,1.2),(34,30.4),'south','door'),('residence','residential-hall',rect(10.5,21,2,1.2),(11.5,23.5),'south','door'),('courtyard','courtyard',rect(43,0,4,1.6),(45,3.3),'south','path'),('workshop','workshop',rect(72,29,2.5,1.1),(73.25,31.4),'south','door'),('park','park',rect(0,30,1.6,6),(3.4,33),'east','path'),('riverbank','riverbank',rect(78.4,44.5,1.6,6),(76.6,47.5),'west','path')]:
  m['entrances'].append(dict(id='from-'+target,position=point(*arrival),facing=facing))
- m['exits'].append(dict(id='to-'+target,rect=r,targetMapId=target,targetEntranceId='from-town',kind=kind))
+ exit=dict(id='to-'+target,rect=r,targetMapId=target,targetEntranceId='from-town',kind=kind)
+ if name == 'residence': exit['cueWordId']='apartment.home'
+ m['exits'].append(exit)
  landmark(name+'-approach',*arrival,kind)
 
 for name,x,y,w,h,var in [('restaurant-steps',32.5,28,3,1,'wide'),('residence-steps',10,21,3,1,'stone'),('workshop-landing',71.5,29,3.5,1,'loading'),('river-stairs',74,44.4,4,2,'river')]:prop(name,'steps',x,y,w,h,var,layer='ground')
