@@ -1,0 +1,40 @@
+{
+  "head": "23be251185d989f7b97d36391a8f6478344b1a3b",
+  "method": "ordinary opening, held keyboard movement, read-only IndexedDB inspection, reload; no debug setters",
+  "before": null,
+  "moved": {
+    "version": 1,
+    "mapId": "restaurant",
+    "position": {
+      "x": 9.819636240211278,
+      "y": 14.81963624021128
+    },
+    "facing": "north",
+    "returnPositions": {},
+    "activeActivity": null,
+    "activeAnchorId": null,
+    "life": {
+      "version": 1,
+      "discoveries": [],
+      "reactions": []
+    }
+  },
+  "restored": {
+    "version": 1,
+    "mapId": "restaurant",
+    "position": {
+      "x": 9.819636240211278,
+      "y": 14.81963624021128
+    },
+    "facing": "north",
+    "returnPositions": {},
+    "activeActivity": null,
+    "activeAnchorId": null,
+    "life": {
+      "version": 1,
+      "discoveries": [],
+      "reactions": []
+    }
+  },
+  "errors": []
+}

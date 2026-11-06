@@ -1,0 +1,15 @@
+{
+  "foundationDependency": "23be251185d989f7b97d36391a8f6478344b1a3b",
+  "productBytes": {
+    "src/features/cats/cats.css": "4761195decaaeb7bb169f817128f54a0a4939fbf6e19ac4bf47df63b66892afc",
+    "src/features/cats/index.tsx": "8b5c4a213bc83ca2015f3e12ebdd67623e3602dee85a34709461b5ec43e8665d",
+    "src/world/art/courtyard/index.ts": "48d0b0eda408287ef50a5c1a2a31fc073da08c121133fdea6bbff20072da65cd",
+    "src/world/maps/courtyard/map.json": "630796c5ef73e4dc2e48731ff083c397e5390a725d72e843d907787612750c11",
+    "src/world/maps/courtyard/habitat.ts": "156e8d65401fb91898051ddc7564cb6372181dc8de693c197c3e5da1d1ae3ab2",
+    "src/world/painter.ts": "91dfe672410c470f64711945082e8f7236b9e1309fbb153b80368b9afdb38be1",
+    "src/world/WorldViewport.tsx": "c5eb3e53358b086ca97770c7adc8a4a69a5a5c3b2de3672acdfec9261212d815",
+    "src/world/camera.ts": "66125421969ce61d30472bf7531d3929069a87964110595df0a54dcc4d6afb91",
+    "src/world/lighting.ts": "0f454018da200e8b8019ff23f538b64d1463698972b81a4c6d9be42635f8e317"
+  },
+  "note": "Fingerprints recorded after completed captures; no product source bytes changed between those runs and this record. Source head fields predate the evidence/stylesheet commit; fingerprints disambiguate the tested bytes."
+}
