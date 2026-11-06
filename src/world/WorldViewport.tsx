@@ -37,7 +37,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
  const actorMotion=useRef({yaw:Math.PI/2,distanceTravelled:0});
  const worker=useRef<Worker|null>(null),requestId=useRef(0),workerMap=useRef<object|null>(null);
  const elapsed=useRef(state.life?.elapsedMs??0),lastClockWrite=useRef(state.life?.elapsedMs??0);
- const [clock,setClock]=useState(0);
+ const [clock,setClock]=useState(state.life?.elapsedMs??0);
  const [interactionInset,setInteractionInset]=useState(0);
  const [interactionWidth,setInteractionWidth]=useState(0);
  const [viewport,setViewport]=useState({width:960,height:600});
