@@ -1,3 +1,4 @@
+import {performLifeInteraction} from "./world/life-bridge";
 import WorldViewport from "./world/WorldViewport";
 import { restoreWorld } from "./world/state";
 import { mapsForNeighbourhood } from "./world/dynamic";
@@ -89,6 +90,7 @@ export default function App() {
   const world = restoreWorld(state.world, worldRegistry, locationId);
   const activityOpen = world.activeActivity !== null;
   const [giftNotice, setGiftNotice] = useState(false);
+  const [ambientLine,setAmbientLine]=useState<Line|null>(null);
   const dayEndOpen = activityOpen && locationId === "restaurant" && state.ended && panel === "none" && !word;
   const ambience = useAmbience(ready && session.phase === "day" && locationId === "restaurant");
   const playback = useRef<ReturnType<typeof createPlayback> | null>(null);
@@ -276,7 +278,7 @@ export default function App() {
     [dispatch, play, walk],
   );
   const visitKitchen = useCallback(() => {
-    if(stateRef.current.world && stateRef.current.world.activeAnchorId!=="restaurant.kitchen")return;
+    if(stateRef.current.world && stateRef.current.world.activeAnchorId!=="restaurant.kitchen"){dispatch({type:"world-close"});setPanel("none");return;}
     const open = () => setPanel("kitchen");
     if (canVisitKitchen(stateRef.current)) open();
     else walk({ x: KITCHEN.x, y: KITCHEN.y + 1.3 }, open);
@@ -453,6 +455,7 @@ export default function App() {
     ).values(),
   ];
   const close = () => {
+    if((panel==="table"||panel==="kitchen")&&world.activeActivity==="restaurant")dispatch({type:"world-close"});
     setPanel("none");
     setWord(null);
   };
@@ -574,7 +577,11 @@ export default function App() {
         </nav>
       </header>
       <main inert={panel !== "none" || dayEndOpen} data-location={locationId}>
-        <WorldViewport state={world} maps={worldRegistry} game={state} onLookup={lookup} fresh={fresh} onAction={action=>{
+        <WorldViewport state={world} maps={worldRegistry} game={state} onLookup={lookup} onPlay={playLine} dialogue={ambientLine} fresh={fresh} onAction={action=>{
+          if(action.type==="world-life") {
+            const result=performLifeInteraction(worldRegistry[world.mapId],state,world,action);
+            setAmbientLine(result.line??null);if(result.line)playLine(result.line);
+          }else if(action.type==="world-move")setAmbientLine(null);
           const next=dispatch(action);
           if(action.type==="world-interact"&&next.phase==="day"&&next.game.world?.activeActivity==="restaurant") {
             const id=next.game.world.activeAnchorId;

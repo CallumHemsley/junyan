@@ -152,12 +152,18 @@
         "version": 1,
         "mapId": "restaurant",
         "position": {
-          "x": 7.40415947567804,
-          "y": 12.40415947567803
+          "x": 9.784280901151956,
+          "y": 14.78428090115196
         },
         "facing": "north",
         "returnPositions": {},
-        "activeActivity": null
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
       }
     }
   },
@@ -314,12 +320,18 @@
         "version": 1,
         "mapId": "restaurant",
         "position": {
-          "x": 7.40380592228744,
-          "y": 12.403805922287436
+          "x": 7.381178505289463,
+          "y": 12.381178505289466
         },
         "facing": "west",
         "returnPositions": {},
-        "activeActivity": null
+        "activeActivity": null,
+        "activeAnchorId": null,
+        "life": {
+          "version": 1,
+          "discoveries": [],
+          "reactions": []
+        }
       }
     }
   }
