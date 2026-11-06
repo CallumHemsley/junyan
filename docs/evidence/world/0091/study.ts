@@ -50,7 +50,7 @@ function scene(id:string,unit:number,timeOfDay:'morning'|'evening') {
 }
 scene('desktop',15,'morning');scene('phone',11,'morning');scene('evening',15,'evening');
 const actualViews:any[]=[];
-for(const mode of ['phone','desktop'])for(const s of species) {
+for(const mode of ['phone','desktop'])for(const s of ['old',...species] as const) {
  const phone=mode==='phone',w=phone?390:1120,h=phone?620:640,unit=phone?11:15;
  const canvas=document.createElement('canvas');canvas.id=`actual-${mode}-${s}`;canvas.width=Math.ceil(w/2);canvas.height=Math.ceil(h/2);canvas.style.width=w+'px';canvas.style.height=h+'px';
  const label=document.createElement('p');label.textContent=`${mode} · ${s} · actual App display scale`;
@@ -60,7 +60,7 @@ for(const mode of ['phone','desktop'])for(const s of species) {
  const camera=cameraForMap(map.bounds,actor,canvas.width,canvas.height,unit,0,0);
  const shadeColor=colorShader(sampleAtmosphere({mapId:'park',day:1,timeOfDay:'morning',elapsedMs:0,seed:42,reducedMotion:true}).light);
  const view={project:(p:any,z=0)=>project(p,camera,z),shadeColor,elapsedMs:0,reducedMotion:true,playerPosition:actor,width:canvas.width,height:canvas.height,pass:'ground'};
- drawMap(ctx,map,view);const at=view.project(foot);ctx.save();ctx.translate(Math.round(at.x),Math.round(at.y));ctx.scale(unit/18,unit/18);drawFoliage(ctx,input(s,0,true,shadeColor));ctx.restore();drawPlayer(ctx,view,actor,'east',false,unit);
+ drawMap(ctx,map,view);const at=view.project(foot);ctx.save();ctx.translate(Math.round(at.x),Math.round(at.y));ctx.scale(unit/18,unit/18);if(s==='old')oldTree(ctx,{kind:'mature-tree',position:{x:0,y:0},width:7,height:7,variant:0},()=>({x:0,y:0}),18,0,true,shadeColor);else drawFoliage(ctx,input(s,0,true,shadeColor));ctx.restore();drawPlayer(ctx,view,actor,'east',false,unit);
  actualViews.push({mode,species:s,cssViewport:{width:w,height:h},backing:{width:canvas.width,height:canvas.height},camera,specimenFoot:foot,treeFootRadius:.5,actor,playerRadius:.22,canStand:true,scope:'production cameraForMap / drawPlayer / drawMap component, no App controls; inset0'});
 }
 const check=document.createElement('canvas');check.width=200;check.height=160;const ctx=check.getContext('2d')!;

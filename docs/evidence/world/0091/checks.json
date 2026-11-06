@@ -4,6 +4,41 @@
   "actualViews": [
     {
       "mode": "phone",
+      "species": "old",
+      "cssViewport": {
+        "width": 390,
+        "height": 620
+      },
+      "backing": {
+        "width": 195,
+        "height": 310
+      },
+      "camera": {
+        "focus": {
+          "x": 46,
+          "y": 22
+        },
+        "width": 195,
+        "height": 310,
+        "scale": 11,
+        "offsetY": 0,
+        "offsetX": 0
+      },
+      "specimenFoot": {
+        "x": 44,
+        "y": 22
+      },
+      "treeFootRadius": 0.5,
+      "actor": {
+        "x": 46,
+        "y": 22
+      },
+      "playerRadius": 0.22,
+      "canStand": true,
+      "scope": "production cameraForMap / drawPlayer / drawMap component, no App controls; inset0"
+    },
+    {
+      "mode": "phone",
       "species": "camphor",
       "cssViewport": {
         "width": 390,
@@ -91,6 +126,41 @@
         "width": 195,
         "height": 310,
         "scale": 11,
+        "offsetY": 0,
+        "offsetX": 0
+      },
+      "specimenFoot": {
+        "x": 44,
+        "y": 22
+      },
+      "treeFootRadius": 0.5,
+      "actor": {
+        "x": 46,
+        "y": 22
+      },
+      "playerRadius": 0.22,
+      "canStand": true,
+      "scope": "production cameraForMap / drawPlayer / drawMap component, no App controls; inset0"
+    },
+    {
+      "mode": "desktop",
+      "species": "old",
+      "cssViewport": {
+        "width": 1120,
+        "height": 640
+      },
+      "backing": {
+        "width": 560,
+        "height": 320
+      },
+      "camera": {
+        "focus": {
+          "x": 46,
+          "y": 22
+        },
+        "width": 560,
+        "height": 320,
+        "scale": 15,
         "offsetY": 0,
         "offsetX": 0
       },
@@ -225,7 +295,7 @@
       "uniqueShadeBases": 8,
       "halfAlphaMax": 254,
       "sampledVisiblePixels": 614283,
-      "drawMsMean1000": 0.30970000000018627
+      "drawMsMean1000": 0.2952999999998137
     },
     {
       "species": "willow",
@@ -238,7 +308,7 @@
       "uniqueShadeBases": 8,
       "halfAlphaMax": 254,
       "sampledVisiblePixels": 492183,
-      "drawMsMean1000": 0.3524000000003725
+      "drawMsMean1000": 0.3399000000003725
     },
     {
       "species": "fruit",
@@ -251,7 +321,7 @@
       "uniqueShadeBases": 10,
       "halfAlphaMax": 255,
       "sampledVisiblePixels": 444050,
-      "drawMsMean1000": 0.25709999999962746
+      "drawMsMean1000": 0.2476000000005588
     }
   ],
   "consoleErrors": []
