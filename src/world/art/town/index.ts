@@ -99,6 +99,21 @@ export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldR
       for (let z = .35; z < 2.6; z += .26) line([x + .7, y + h + .26, z], [x + w - .7, y + h + .26, z], [72, 93, 91]);
       box(x + w / 2 - .12, y + h + .3, .3, .24, .08, .2, C.brass);
     }
+    for (let z = .5; z < Math.min(height, 3); z += .48) {
+      const offset = Math.round(z * 2) % 2 * .35;
+      for (let a = x + .25 + offset; a < x + w - .3; a += 1.1) {
+        if (hash(a, z + y) > .72) line([a, y + h + .015, z], [a + .65, y + h + .015, z], [172, 163, 137]);
+      }
+    }
+    if (prop.kind === 'building-restaurant') {
+      box(x + w + .05, y + 1.2, .1, .55, 2.5, 1.5, [138, 151, 140]);
+      for (let k = 0; k < 4; k++) box(x + w + .07, y + 1.4 + k * .5, 1.6, .5, .35, .1, C.cream);
+      box(x + w - .8, y + h - .6, height + .1, .3, .3, 1.3, C.slate);
+    }
+    if (prop.kind === 'building-tea') {
+      for (const a of [x + .4, x + w - .6]) box(a, y + h + .1, 0, .16, .16, height - .2, C.wood);
+      box(x + .3, y + h + .2, 3.5, w - .6, .1, .35, C.wood);
+    }
     box(x + w - .25, y + h + .15, .2, .14, .14, height - .25, [130, 145, 134]);
     if (residence) {
       box(x + w + .05, y + h - 2.7, 3.6, .65, 1.5, .85, [210, 208, 186]);
@@ -122,8 +137,18 @@ export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldR
       const z = hedge ? .6 + hash(i, x + 1) * .3 : 3.1 + hash(i, y + 2) * 2.2;
       const r = hedge ? .45 : .7 + hash(i + 1, x) * .65;
       const leaf = style === 'ginkgo' ? [161, 166, 98] : i % 3 === 0 ? C.darkLeaf : C.leaf;
-      face([[px - r, py, z], [px - r * .55, py - r, z + .25], [px + r * .5, py - r, z + .4], [px + r, py, z + .3], [px + r * .6, py + r, z], [px - r * .55, py + r, z - .2]], leaf, .9 + hash(i, y) * .25);
-      const p = project(px - r * .3, py, z + .25); ctx.fillStyle = color([172, 186, 125]); ctx.fillRect(Math.round(p.x), Math.round(p.y), 2, 1);
+      const p = project(px, py, z);
+      const scale = Math.abs(project(px + 1, py).x - p.x), rx = Math.max(3, Math.round(r * scale)), ry = Math.max(3, Math.round(rx * .78));
+      for (let row = -ry; row <= ry; row++) {
+        const span = Math.round(Math.sqrt(Math.max(0, 1 - row * row / (ry * ry))) * rx);
+        const edge = (Math.floor(row / 3) + i) % 2;
+        ctx.fillStyle = color(leaf, row < -ry * .3 ? 1.18 : row > ry * .3 ? .78 : 1);
+        ctx.fillRect(Math.round(p.x) - span + edge, Math.round(p.y) + row, span * 2 - edge, 1);
+        for (let col = -span + 2; col < span - 1; col += 4) if (hash(col + x * 11, row + y * 7 + i) > .64) {
+          ctx.fillStyle = color(row < 0 ? [169, 187, 121] : [86, 124, 86]);
+          ctx.fillRect(Math.round(p.x) + col, Math.round(p.y) + row, 2, 1);
+        }
+      }
     }
   } else if (prop.kind === 'awning') {
     for (let a = 0; a < w; a += .65) {
@@ -217,6 +242,14 @@ export const drawMap: DrawMap = (ctx, map, view) => {
   ctx.imageSmoothingEnabled = false;
   if (view.pass === 'ground') {
     ctx.fillStyle = color([104, 130, 103]); ctx.fillRect(0, 0, view.width, view.height);
+    for (let x = 0; x < map.bounds.width; x += .75) for (let y = 0; y < map.bounds.height; y += .75) {
+      const p = view.project({ x, y });
+      if (p.x < -5 || p.x > view.width + 5 || p.y < -5 || p.y > view.height + 5) continue;
+      const n = hash(x, y);
+      ctx.fillStyle = color(n > .7 ? [151, 164, 111] : n > .3 ? [85, 118, 91] : [119, 146, 106]);
+      ctx.fillRect(Math.round(p.x), Math.round(p.y), n > .7 ? 3 : 2, 1);
+      if (n < .3) ctx.fillRect(Math.round(p.x) + 1, Math.round(p.y) - 2, 1, 3);
+    }
     for (const terrain of map.terrain) {
       const r = terrain.rect;
       for (let x = Math.floor(r.x); x < r.x + r.width; x++) for (let y = Math.floor(r.y); y < r.y + r.height; y++) {
