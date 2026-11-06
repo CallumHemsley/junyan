@@ -254,6 +254,8 @@ export default function App() {
   }, []);
   const visitTable = useCallback(
     (number: number) => {
+      const active=stateRef.current.world;
+      if(active && active.activeAnchorId!==`restaurant.table-${number}`)return;
       const target = TABLES.find((t) => t.table === number)!;
       const open = () => {
         setTable(number);
@@ -274,6 +276,7 @@ export default function App() {
     [dispatch, play, walk],
   );
   const visitKitchen = useCallback(() => {
+    if(stateRef.current.world && stateRef.current.world.activeAnchorId!=="restaurant.kitchen")return;
     const open = () => setPanel("kitchen");
     if (canVisitKitchen(stateRef.current)) open();
     else walk({ x: KITCHEN.x, y: KITCHEN.y + 1.3 }, open);
@@ -571,7 +574,14 @@ export default function App() {
         </nav>
       </header>
       <main inert={panel !== "none" || dayEndOpen} data-location={locationId}>
-        <WorldViewport state={world} maps={worldRegistry} onAction={dispatch} paused={panel !== "none" || wordOpen || dayEndOpen}/>
+        <WorldViewport state={world} maps={worldRegistry} game={state} onLookup={lookup} fresh={fresh} onAction={action=>{
+          const next=dispatch(action);
+          if(action.type==="world-interact"&&next.phase==="day"&&next.game.world?.activeActivity==="restaurant") {
+            const id=next.game.world.activeAnchorId;
+            if(id==="restaurant.kitchen")visitKitchen();
+            else {const number=Number(id?.split("table-")[1]);if(number)visitTable(number);}
+          }
+        }} paused={panel !== "none" || wordOpen || dayEndOpen}/>
         {activityOpen && <div className="world-activity" data-world-activity={world.activeActivity}>
         <button className="world-activity-close" onClick={() => {dispatch({type:"world-close"});setPanel("none");}}>继续走走</button>
         {locationId === "restaurant" ? <div className="play-layout">
@@ -648,7 +658,7 @@ export default function App() {
             </div>
           </section>
         </div>
-        : <Neighbourhood state={neighbourhood} day={state.day} onAction={dispatch} onLookup={lookup} onPlay={playLine} onRecover={acknowledgeRecovery}
+        : <Neighbourhood contextual state={neighbourhood} day={state.day} onAction={dispatch} onLookup={lookup} onPlay={playLine} onRecover={acknowledgeRecovery}
             recoveredWordIds={Object.keys(state.journal).filter(id => state.journal[id].recovered)} freshWordIds={fresh}/>}
         <NeighbourhoodGifts state={neighbourhood} onClaim={giftId => {
           const before = sessionRef.current;

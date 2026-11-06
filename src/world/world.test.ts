@@ -47,3 +47,11 @@ describe("world locomotion",()=>{
   expect(next.mapId).toBe("b");expect(next.position).toEqual({x:2,y:2});expect(next.returnPositions.a.x).toBe(2.9);
  });
 });
+import {occludesPlayer} from "./occlusion";
+it("fades only scenery whose projected volume covers the player",()=>{
+ const wall={rect:{x:10,y:10,width:2,height:2},height:4};
+ expect(occludesPlayer(wall,{x:9,y:9})).toBe(true);
+ expect(occludesPlayer(wall,{x:2,y:10})).toBe(false);
+ expect(occludesPlayer(wall,{x:13,y:13})).toBe(false);
+ expect(occludesPlayer({...wall,height:.2},{x:9,y:9})).toBe(false);
+});

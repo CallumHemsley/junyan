@@ -22,10 +22,10 @@ export function canStand(map: WorldMapDefinition, p: Point, radius = PLAYER_RADI
     return Math.hypot(p.x-x,p.y-y) > radius;
   });
 }
-export function canWalk(map: WorldMapDefinition, from: Point, to: Point): boolean {
-  if(!canStand(map,from)||!canStand(map,to))return false;
+export function canWalk(map: WorldMapDefinition, from: Point, to: Point, radius=PLAYER_RADIUS): boolean {
+  if(!canStand(map,from,radius)||!canStand(map,to,radius))return false;
   const steps = Math.max(1, Math.ceil(Math.hypot(to.x-from.x,to.y-from.y)/.1));
-  for(let i=0;i<=steps;i++) if(!canStand(map,{x:from.x+(to.x-from.x)*i/steps,y:from.y+(to.y-from.y)*i/steps})) return false;
+  for(let i=0;i<=steps;i++) if(!canStand(map,{x:from.x+(to.x-from.x)*i/steps,y:from.y+(to.y-from.y)*i/steps},radius)) return false;
   return true;
 }
 export function movePlayer(map: WorldMapDefinition, from: Point, delta: Point): Point {
@@ -42,15 +42,15 @@ export function movePlayer(map: WorldMapDefinition, from: Point, delta: Point): 
   }
   return p;
 }
-export function findPath(map: WorldMapDefinition, from: Point, to: Point): Point[] {
-  if(!canStand(map,from)||!canStand(map,to)) return [];
-  if(canWalk(map,from,to)) return [to];
+export function findPath(map: WorldMapDefinition, from: Point, to: Point, radius=PLAYER_RADIUS): Point[] {
+  if(!canStand(map,from,radius)||!canStand(map,to,radius)) return [];
+  if(canWalk(map,from,to,radius)) return [to];
   const key=(p:Point)=>`${p.x},${p.y}`;
   const connect=(p:Point)=>{
     const found:Point[]=[];
     for(let x=Math.floor(p.x*2)/2-.5;x<=Math.ceil(p.x*2)/2+.5;x+=.5)
       for(let y=Math.floor(p.y*2)/2-.5;y<=Math.ceil(p.y*2)/2+.5;y+=.5)
-        if(canWalk(map,p,{x,y})) found.push({x,y});
+        if(canWalk(map,p,{x,y},radius)) found.push({x,y});
     return found;
   };
   const starts=connect(from),ends=new Set(connect(to).map(key));
@@ -68,12 +68,12 @@ export function findPath(map: WorldMapDefinition, from: Point, to: Point): Point
       const path:Point[]=[to]; let current:Point|null=p;
       while(current) {path.unshift(current);current=parents.get(key(current))??null;}
       const smooth:Point[]=[];let previous=from;
-      for(let n=0;n<path.length;n++) if(n===path.length-1 || !canWalk(map,previous,path[n+1])) {smooth.push(path[n]);previous=path[n];}
+      for(let n=0;n<path.length;n++) if(n===path.length-1 || !canWalk(map,previous,path[n+1],radius)) {smooth.push(path[n]);previous=path[n];}
       return smooth;
     }
     for(const [dx,dy] of [[.5,0],[-.5,0],[0,.5],[0,-.5]]) {
       const n={x:p.x+dx,y:p.y+dy},id=key(n),cost=node.cost+.5;
-      if(cost>=(costs.get(id)??Infinity)||!cachedEdge(map,p,n))continue;
+      if(cost>=(costs.get(id)??Infinity)||!cachedEdge(map,p,n,radius))continue;
       parents.set(id,p);costs.set(id,cost);push({p:n,cost,score:cost+Math.hypot(n.x-to.x,n.y-to.y)});
     }
   }
@@ -84,9 +84,9 @@ export function nearbyAnchors(map:WorldMapDefinition,p:Point) {
 }
 
 const edges=new WeakMap<WorldMapDefinition,Map<string,boolean>>();
-function cachedEdge(map:WorldMapDefinition,a:Point,b:Point) {
+function cachedEdge(map:WorldMapDefinition,a:Point,b:Point,radius:number) {
  let cache=edges.get(map);if(!cache){cache=new Map();edges.set(map,cache);}
- const ak=`${a.x},${a.y}`,bk=`${b.x},${b.y}`,key=ak<bk?`${ak}:${bk}`:`${bk}:${ak}`;
+ const ak=`${a.x},${a.y}`,bk=`${b.x},${b.y}`,key=ak<bk?`${radius}:${ak}:${bk}`:`${radius}:${bk}:${ak}`;
  const known=cache.get(key);if(known!==undefined)return known;
- const result=canWalk(map,a,b);cache.set(key,result);return result;
+ const result=canWalk(map,a,b,radius);cache.set(key,result);return result;
 }
