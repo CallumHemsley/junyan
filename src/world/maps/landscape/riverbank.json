@@ -317,30 +317,39 @@
       }
     },
     {
-      "id": "riverbank.water-38",
+      "id": "riverbank.water-38-cut-3",
       "rect": {
-        "x": 41,
+        "x": 41.5,
         "y": 38,
-        "width": 9,
+        "width": 8.5,
         "height": 1
       }
     },
     {
-      "id": "riverbank.water-39",
+      "id": "riverbank.water-39-cut-3",
       "rect": {
-        "x": 40,
+        "x": 41.5,
         "y": 39,
-        "width": 9,
+        "width": 7.5,
         "height": 1
       }
     },
     {
-      "id": "riverbank.water-40",
+      "id": "riverbank.water-40-cut-1",
       "rect": {
         "x": 40,
-        "y": 40,
+        "y": 40.5,
         "width": 9,
-        "height": 1
+        "height": 0.5
+      }
+    },
+    {
+      "id": "riverbank.water-40-cut-3",
+      "rect": {
+        "x": 41.5,
+        "y": 40,
+        "width": 7.5,
+        "height": 0.5
       }
     },
     {
@@ -4662,7 +4671,7 @@
         "x": 4.15,
         "y": 67.15,
         "width": 3.7,
-        "height": 13.7
+        "height": 12.849999999999994
       },
       "material": "path",
       "variant": 0
@@ -4672,8 +4681,8 @@
       "rect": {
         "x": 4.15,
         "y": 67.15,
-        "width": 28.7,
-        "height": 3.7
+        "width": 28.700000000000003,
+        "height": 3.700000000000003
       },
       "material": "path",
       "variant": 0
@@ -4683,8 +4692,8 @@
       "rect": {
         "x": 29.15,
         "y": 37.15,
-        "width": 3.7,
-        "height": 33.7
+        "width": 3.700000000000003,
+        "height": 33.699999999999996
       },
       "material": "path",
       "variant": 0
@@ -4694,8 +4703,8 @@
       "rect": {
         "x": 29.15,
         "y": 37.15,
-        "width": 7.7,
-        "height": 3.7
+        "width": 7.700000000000003,
+        "height": 3.700000000000003
       },
       "material": "path",
       "variant": 0
@@ -4705,8 +4714,8 @@
       "rect": {
         "x": 33.15,
         "y": 17.15,
-        "width": 3.7,
-        "height": 23.7
+        "width": 3.700000000000003,
+        "height": 23.699999999999996
       },
       "material": "path",
       "variant": 0
@@ -4716,8 +4725,8 @@
       "rect": {
         "x": 18.15,
         "y": 17.15,
-        "width": 18.7,
-        "height": 3.7
+        "width": 18.699999999999996,
+        "height": 3.6999999999999993
       },
       "material": "path",
       "variant": 0
@@ -4727,8 +4736,8 @@
       "rect": {
         "x": 18.15,
         "y": 8.15,
-        "width": 3.7,
-        "height": 12.7
+        "width": 3.6999999999999993,
+        "height": 12.700000000000001
       },
       "material": "path",
       "variant": 0
@@ -4736,10 +4745,10 @@
     {
       "id": "riverbank.west-bank-7",
       "rect": {
-        "x": -0.8500000000000001,
+        "x": 0,
         "y": 8.15,
-        "width": 22.7,
-        "height": 3.7
+        "width": 21.849999999999998,
+        "height": 3.700000000000001
       },
       "material": "path",
       "variant": 0
@@ -4804,8 +4813,8 @@
       "rect": {
         "x": 70.5,
         "y": 5.5,
-        "width": 3,
-        "height": 15
+        "width": 3.0,
+        "height": 15.0
       },
       "material": "path",
       "variant": 0
@@ -4815,8 +4824,8 @@
       "rect": {
         "x": 70.5,
         "y": 5.5,
-        "width": 19,
-        "height": 3
+        "width": 19.0,
+        "height": 3.0
       },
       "material": "path",
       "variant": 0
@@ -4826,8 +4835,8 @@
       "rect": {
         "x": 86.5,
         "y": 5.5,
-        "width": 3,
-        "height": 26
+        "width": 3.0,
+        "height": 26.0
       },
       "material": "path",
       "variant": 0
@@ -4837,8 +4846,8 @@
       "rect": {
         "x": 70.5,
         "y": 28.5,
-        "width": 19,
-        "height": 3
+        "width": 19.0,
+        "height": 3.0
       },
       "material": "path",
       "variant": 0
@@ -4848,8 +4857,8 @@
       "rect": {
         "x": 78.5,
         "y": 55.5,
-        "width": 3,
-        "height": 17
+        "width": 3.0,
+        "height": 17.0
       },
       "material": "path",
       "variant": 0
@@ -4859,8 +4868,8 @@
       "rect": {
         "x": 60.5,
         "y": 69.5,
-        "width": 21,
-        "height": 3
+        "width": 21.0,
+        "height": 3.0
       },
       "material": "path",
       "variant": 0
@@ -4870,8 +4879,8 @@
       "rect": {
         "x": 60.5,
         "y": 55.5,
-        "width": 3,
-        "height": 17
+        "width": 3.0,
+        "height": 17.0
       },
       "material": "path",
       "variant": 0
@@ -4881,8 +4890,8 @@
       "rect": {
         "x": 33.5,
         "y": 37.5,
-        "width": 8,
-        "height": 3
+        "width": 8.0,
+        "height": 3.0
       },
       "material": "boardwalk",
       "variant": 0
@@ -4892,8 +4901,8 @@
       "rect": {
         "x": 20.6,
         "y": 55.6,
-        "width": 11.8,
-        "height": 2.8
+        "width": 11.800000000000004,
+        "height": 2.799999999999997
       },
       "material": "boardwalk",
       "variant": 0
@@ -4903,8 +4912,8 @@
       "rect": {
         "x": 20.6,
         "y": 46.6,
-        "width": 2.8,
-        "height": 11.8
+        "width": 2.8000000000000007,
+        "height": 11.800000000000004
       },
       "material": "boardwalk",
       "variant": 0
@@ -4914,8 +4923,8 @@
       "rect": {
         "x": 29.5,
         "y": 67.5,
-        "width": 3,
-        "height": 8
+        "width": 3.0,
+        "height": 8.0
       },
       "material": "stone-path",
       "variant": 0
@@ -4925,8 +4934,8 @@
       "rect": {
         "x": 29.5,
         "y": 72.5,
-        "width": 12,
-        "height": 3
+        "width": 12.0,
+        "height": 3.0
       },
       "material": "stone-path",
       "variant": 0

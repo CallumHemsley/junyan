@@ -7,7 +7,9 @@ def rect(x,y,w,h): return dict(x=x,y=y,width=w,height=h)
 def point(x,y): return dict(x=x,y=y)
 def base(id,w,h):
  return dict(version=1,id=id,bounds=dict(width=w,height=h),defaultSpawn=dict(x=7,y=h-7,facing='north'),walkable=[rect(1,1,w-2,h-2)],colliders=[],occluders=[],entrances=[],exits=[],anchors=[],terrain=[],props=[],palette=PALETTE,npcHooks=[],landmarks=[])
-def terrain(m,id,r,material,variant=0): m['terrain'].append(dict(id=m['id']+'.'+id,rect=r,material=material,variant=variant))
+def terrain(m,id,r,material,variant=0):
+ x=max(0,r['x']);y=max(0,r['y']);right=min(m['bounds']['width'],r['x']+r['width']);bottom=min(m['bounds']['height'],r['y']+r['height'])
+ m['terrain'].append(dict(id=m['id']+'.'+id,rect=rect(x,y,right-x,bottom-y),material=material,variant=variant))
 def prop(m,id,kind,x,y,w=1,h=1,variant=0,solid=False):
  id=m['id']+'.'+id
  m['props'].append(dict(id=id,kind=kind,position=point(x,y),width=w,height=h,layer='object',variant=variant))
@@ -23,6 +25,15 @@ def edge(m,target,x,y,ex,ey,w,h,facing):
 def landmark(m,id,x,y,kind):
  m['landmarks'].append(dict(id=m['id']+'.'+id,position=point(x,y),kind=kind))
  m['anchors'].append(dict(id=m['id']+'.'+id,position=point(x,y),radius=1.4,featureId='exploration',interactionId='landscape.'+id))
+def carve(m,cut):
+ result=[]
+ for c in m['colliders']:
+  r=c['rect']; x=max(r['x'],cut['x']); y=max(r['y'],cut['y']); right=min(r['x']+r['width'],cut['x']+cut['width']); bottom=min(r['y']+r['height'],cut['y']+cut['height'])
+  if x>=right or y>=bottom: result.append(c); continue
+  for k,piece in enumerate([rect(r['x'],r['y'],r['width'],y-r['y']),rect(r['x'],bottom,r['width'],r['y']+r['height']-bottom),rect(r['x'],y,x-r['x'],bottom-y),rect(right,y,r['x']+r['width']-right,bottom-y)]):
+   if piece['width']>0 and piece['height']>0: result.append(dict(id=c['id']+f'-cut-{k}',rect=piece))
+ m['colliders']=result
+
 def inside(p,r,margin=0): return r['x']-margin<=p[0]<=r['x']+r['width']+margin and r['y']-margin<=p[1]<=r['y']+r['height']+margin
 
 def scatter(m,kind,areas,step,w,h):
@@ -110,5 +121,7 @@ scatter(river,'willow',[(18,23,31,43),(18,60,29,73),(57,24,66,48)],5,4,4)
 scatter(river,'tree',[(2,18,16,59),(62,3,94,38),(64,61,93,77)],5,3.8,3.8)
 scatter(river,'rock',[(78,3,94,16),(84,25,94,36)],4,2.5,2.2)
 scatter(river,'flowers',[(8,61,27,73),(64,35,74,53),(82,48,93,60)],4,1,1)
+carve(park,rect(59.5,31.5,7,3))
+carve(river,rect(34,37.5,7.5,3))
 for m in [park,river]:
  ROOT.joinpath(m['id']+'.json').write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n')
