@@ -1,0 +1,186 @@
+{
+  "base": "1b42875903d8f01b467bb9799a7232fd9dbe251c",
+  "scope": "Disposable review assembly; not published foundation, no new-main integration",
+  "files": [
+    {
+      "ownerHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+      "path": "src/world/art/rooftop/art.test.ts",
+      "sha256": "0a33eafc97a4673adf685b409397313a1f119805266e00aeb30925aa65de45f7"
+    },
+    {
+      "ownerHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+      "path": "src/world/art/rooftop/harness.html",
+      "sha256": "2dd2611a5871b7df59c15ae8368fc0263d80ccd487e34909f2935b25dffa0116"
+    },
+    {
+      "ownerHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+      "path": "src/world/art/rooftop/harness.ts",
+      "sha256": "33de8163296942e44589261638c3ca3cfc52099993bd0b2927372b9b9e45bc5c"
+    },
+    {
+      "ownerHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+      "path": "src/world/art/rooftop/index.ts",
+      "sha256": "508346b59a1317d8c1c6611338460e1e73cdd036fd819284d6c67b5648f36372"
+    },
+    {
+      "ownerHead": "2d22909ee0931b5acdb72311463007ae76fba3d6",
+      "path": "src/world/art/rooftop/roofscape.ts",
+      "sha256": "5e1be2d1317837d14f6343a6d5d34a09ae96eb9c71dc63ae6ce437686c899e77"
+    },
+    {
+      "ownerHead": "52a404683b6301ca83f305e2db4299889fb41c87",
+      "path": "src/world/art/landscape/draw.ts",
+      "sha256": "3fb0eb87e64c1f9844fbdbf41414786003058b21d1edd597406b8f719f56cb20"
+    },
+    {
+      "ownerHead": "52a404683b6301ca83f305e2db4299889fb41c87",
+      "path": "src/world/art/landscape/index.ts",
+      "sha256": "9c9d7e654d28b5c301200d5b0149fe13724ae9add8fa79219dc5107e89f6fa18"
+    },
+    {
+      "ownerHead": "52a404683b6301ca83f305e2db4299889fb41c87",
+      "path": "src/world/art/landscape/preview.html",
+      "sha256": "52c663a6bac2690f81767aec0e4ac0a91bf9bec06e02678937f9dcd2d6171bfd"
+    },
+    {
+      "ownerHead": "52a404683b6301ca83f305e2db4299889fb41c87",
+      "path": "src/world/art/landscape/preview.ts",
+      "sha256": "e70d9004749e2ba060ea71344d7f932694c1a5fb51932ac6d1abecf31487dc7e"
+    },
+    {
+      "ownerHead": "52a404683b6301ca83f305e2db4299889fb41c87",
+      "path": "src/world/art/landscape/shadow-proof.html",
+      "sha256": "dd9c779392f4c5eff51680f22133cff91fbafad5585e3157e1ce141bf90c6a24"
+    },
+    {
+      "ownerHead": "52a404683b6301ca83f305e2db4299889fb41c87",
+      "path": "src/world/art/landscape/shadow-proof.ts",
+      "sha256": "290cdaf4a881bd3c60a037f88d9212d3ee1bea14582ea700f6ceaa5f7ca602e4"
+    },
+    {
+      "ownerHead": "52a404683b6301ca83f305e2db4299889fb41c87",
+      "path": "src/world/maps/landscape/author.py",
+      "sha256": "3596ab255b0e276b365df0edff8494d9b3e0f44f12094c0e77c17fb573273627"
+    },
+    {
+      "ownerHead": "52a404683b6301ca83f305e2db4299889fb41c87",
+      "path": "src/world/maps/landscape/index.ts",
+      "sha256": "aec4a60fee2e384c348e4dc5e60f58171db9d065c5c9ef2e7f0b8d6d54b383ea"
+    },
+    {
+      "ownerHead": "52a404683b6301ca83f305e2db4299889fb41c87",
+      "path": "src/world/maps/landscape/landscape.test.ts",
+      "sha256": "71577ea84d160344d4febb0a5647b72e5f35bd57478e1e35224631718f00b100"
+    },
+    {
+      "ownerHead": "52a404683b6301ca83f305e2db4299889fb41c87",
+      "path": "src/world/maps/landscape/park.json",
+      "sha256": "27dde26614402308fc54dd7da9c08b7ad2f60e3a657ef248e6c2506774b8727b"
+    },
+    {
+      "ownerHead": "52a404683b6301ca83f305e2db4299889fb41c87",
+      "path": "src/world/maps/landscape/riverbank.json",
+      "sha256": "9f76825599ab1209ae9c1d9cd3f198eb761403d95a1f39291d7c713156c2c810"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/canvas.test.ts",
+      "sha256": "39736b0d25b3da7db474d14da588712bbf4b26a7ef24dcf54cd54aeddb1a6d37"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/canvas.ts",
+      "sha256": "4ca13abb6d866f189754dab443b33fea72d8e8cb6c644aded718b695a24907b4"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/harness.html",
+      "sha256": "0f2978932212a98a8e5a79bac35a07ea83f092e4c1aa218653b467c92760d03b"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/harness.ts",
+      "sha256": "86caf50ba1877bbdae8f04357b3e423fc4285df3771a439bbae4149993f60407"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/index.test.ts",
+      "sha256": "c4f86cca89573e62a271efd971eacedbf631b4cbd71e77a6a1aee187b19a4aff"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/index.ts",
+      "sha256": "8907905753630ff03ac4e53ec6733a3fd441762e2d78d2e64bb10819d159f8c4"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/map-hooks.test.ts",
+      "sha256": "c3e8a190862ec0510e7d90b8700b9a60c30571e3276dc99f6d900e110498373f"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/map-hooks.ts",
+      "sha256": "635e080ea3e69e5aa4c7c8f6da992d24af18360cfc16ab973b24b54500c71537"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/materials-study.html",
+      "sha256": "17a8df5abf3c6b416410d031ea44c6431bcf09d1fce1c0332b391a9d505cda1d"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/materials-study.ts",
+      "sha256": "554d1bc949a50d7d7838b903d3f8506958366055d87b5dcb33af5720deb88598"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/materials.test.ts",
+      "sha256": "1e60322bc874941eb65aa92f4e71cdbe8c6d839fa670acf32ad55c71e302a9af"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/materials.ts",
+      "sha256": "0de49cd0f769fc7ab4026f13b9a7a9100e4d710ab9c88b2b8ce81fe05be0b353"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/production-lighting.html",
+      "sha256": "26f71d55c4c9e6a4b4e58ef20af8368813951772162c8df13b26f6465fe51114"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/production-lighting.ts",
+      "sha256": "d15857f47712699096170d3bf0ef4b1d1a5daa2278c8be3068c0601e9723321f"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/proof.config.ts",
+      "sha256": "ef230536246534fbc2f210eb026b936761e294bd61e39ca601e6aa0911292ba0"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/shadow-study.html",
+      "sha256": "0a940c075605c607a7e129ea9191c41f87f2cff66c86fd6721b6a27035db49a0"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/shadow-study.ts",
+      "sha256": "4ced50ed71c55798f2c11c43acd47b6ae0bf6b6db100de8148b2fb744eb61087"
+    },
+    {
+      "ownerHead": "63a5803fef43e7fdead2c31853cd4a0fb8bad3c7",
+      "path": "src/world/atmosphere/shadows.test.ts",
+      "sha256": "0e0794964d45e3f4beb56bcc5fdb08a51596d8f7700fb11325566b2650f7448c"
+    }
+  ],
+  "validation": {
+    "node": "22.23.4",
+    "typecheck": "pass",
+    "productionBuild": "pass; existing Zod annotation/chunk warnings",
+    "targetedTests": {
+      "passed": 44,
+      "files": 8
+    },
+    "frozenInstall": "not independently rerun"
+  }
+}

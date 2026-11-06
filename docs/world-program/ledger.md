@@ -231,3 +231,6 @@ shadow-pair-63a5803/ preserves12 declared fixture captures from real App review 
 
 
 Main divergence discovered:266e9bc (language boundaries+progression) must be preserved. main-reconciliation/inventory.json records all119changed paths and overlap with foundation1b42875. PLAN.md assigns sole foundation semantic merge and coordinator-only world namespace migration; main evidence0077/0081 and tickets0077–0082 remain byte-preserved. Chosen world ticket/evidence namespace is docs/tickets/world and docs/evidence/world with original qualified IDs/source hashes, relocation not yet performed. Earlier test counts are not combined-main proof.
+
+
+Ready-art candidate1b42875 independently verifies44targeted tests/8files plus typecheck/build. Exact hashes in ready-art-1b42875/provenance.json for rooftop2d22909 +landscape52a4046+atmosphere63a5803. Disposable composition only; foundation sole publisher. Native Astra chosen plan10c522a published; root relay requested all original idle owners.0089d196bed seat attachment ready,4ed9d98 common15nativepx/world trial recommendation unapproved; no multiplier committed. Latest stair foundatione48b10e and newmain266e9bc require separate checks.
