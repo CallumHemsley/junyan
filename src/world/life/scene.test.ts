@@ -24,7 +24,7 @@ it('uses one world-life frame for global service presence and authoritative cour
 
 it('earns rooftop birds only from the restored mature tree, not another mature plant', () => {
   const game = createGame(content, 42);
-  const world = createWorld(worldMaps, 'rooftop');
+  const world = createWorld(worldMaps, 'garden');
   const garden = game.neighbourhood!.garden;
   garden.restored = true;
   garden.plants.flower.growth = 3;

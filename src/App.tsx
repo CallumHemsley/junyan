@@ -239,7 +239,7 @@ export default function App() {
     if (!ready || (panel === "none" && !dayEndOpen)) return;
     const previous = panelTrigger.current;
     const dialog = document.querySelector<HTMLElement>(".paper-panel");
-    dialog?.querySelector<HTMLButtonElement>("button")?.focus();
+    dialog?.querySelector<HTMLButtonElement>(dayEndOpen ? ".day-next" : "button")?.focus();
     return () => {
       if (previous?.isConnected && !previous.closest("[inert]")) previous.focus();
     };
@@ -336,10 +336,13 @@ export default function App() {
     return word?<WordToken word={word} look={wordState(state.journal[word.id],fresh.includes(word.id))} onLookup={lookup}/>:null;
   };
   const close = () => {
-    if(state.ended && world.mapId==="restaurant" && panel==="table")setSummaryOpen(true);
-    if((panel==="table"||panel==="kitchen")&&world.activeActivity==="restaurant")dispatch({type:"world-close"});
     setPanel("none");
     setWord(null);
+  };
+  const leaveRestaurant = () => {
+    if(state.ended && binding?.kind==="table")setSummaryOpen(true);
+    dispatch({type:"world-close"});
+    close();
   };
   const completePayment = () => {
     if (!order) return;
@@ -458,7 +461,7 @@ export default function App() {
           dialogue={binding.kind==="table"&&order&&character&&customer?{current:{line:customer.phase==="served"?character.thanks:order.line},history:customer.phase==="ordered"?[{line:character.greeting}]:[]}:undefined}
           onClose={()=>{if(state.ended&&binding.kind==="table")setSummaryOpen(true);dispatch({type:"world-close"});setPanel("none");}} returnFocusTo={panelTrigger.current} suspended={wordOpen}
           onLookup={lookup} onPlay={playLine} recoveredWordIds={Object.keys(state.journal).filter(id=>state.journal[id].recovered)} freshWordIds={fresh}
-          actions={binding.kind==="table"&&customer?[{id:"service",control:<button className="world-submit" aria-label={customer.phase==="served"?"继续招呼":customer.phase==="checkout"?"递上找零":"上菜"} onClick={()=>customer.phase==="served"?close():customer.phase==="checkout"?completePayment():dispatch({type:"deliver",table,now:Date.now()})}>→</button>}]:binding.kind==="kitchen"?[{id:"carry",control:<button className="world-submit" aria-label="端好了，去上菜" onClick={close}>↗</button>}]:[]}>
+          actions={binding.kind==="table"&&customer?[{id:"service",control:<button className="world-submit" aria-label={customer.phase==="served"?"继续招呼":customer.phase==="checkout"?"递上找零":"上菜"} onClick={()=>customer.phase==="served"?leaveRestaurant():customer.phase==="checkout"?completePayment():dispatch({type:"deliver",table,now:Date.now()})}>→</button>}]:binding.kind==="kitchen"?[{id:"carry",control:<button className="world-submit" aria-label="端好了，去上菜" onClick={leaveRestaurant}>↗</button>}]:[]}>
           {binding.kind==="table"&&order&&customer&&<RestaurantTableControls phase={customer.phase} order={order} foods={content.foods} change={change} onChange={setChange} onLookup={lookup}
             summary={<p aria-label={`共${total}块，收到${order.paid}块`}>∑ {total} · ↓ {order.paid}</p>} changeLabel={<span>{registered("change")} {change}</span>}
             resetControl={<button aria-label="重来" onClick={()=>setChange(0)}>↺</button>} receiptSummary={<p>∑ {total} · {registered("change")} {order.paid-total}</p>}
@@ -601,7 +604,7 @@ export default function App() {
               {ui.tomorrow(state.level)}
             </p>
             <button
-              className="primary"
+              className="primary day-next"
               onClick={() => {
                 setSummaryOpen(false);
                 dispatch({ type: "advance-world-day", now: Date.now() });
