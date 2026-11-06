@@ -10,7 +10,7 @@ Branch is `codex/0079-town-street`, checkout `/workspace/junyan`, strict Vite po
 
 ## Throughput checkpoint
 
-- Blocking first steps. Central allocation and contract v1 are acquired. Exact renderer adapter remains foundation-owned and pending.
+- Blocking first steps. Central allocation and contract v1 are acquired. Foundation renderer adapter and material-lighting seam are acquired and imported from production types.
 - Independent workstreams. Author map geometry and town-only props in separate owned modules. Read-only helper reviewed spatial alternatives and renderer risk.
 - Shared mutable state. No edits to shared code. Export `mapDefinitions` and publish adapter requests here.
 - Smallest safe decomposition. One writer owns map and art because their footprints must agree. Foundation integrates; an independent Astra reviewer checks real experience.
@@ -21,11 +21,11 @@ Branch is `codex/0079-town-street`, checkout `/workspace/junyan`, strict Vite po
 2. `architect` for parallel design exploration. Compared regular road-loop study with helper's staggered facade and offset-junction alternative. Choose the latter because it changes sightlines and places landmarks along actual routes.
 3. Write the throughput checkpoint as four todo items. Recorded above.
 4. Delegate code-writing to a subagent using your configured feature model. Adapted to parent delegation. This chat is the assigned Sol medium code writer; no second writer may own the ticket.
-5. Verify on the matching surface. Pending real foundation runtime. Isolated previews do not pass integration.
+5. Verify on the matching surface. Real foundation town walking, safe restaurant return and normal map reload are captured. Current complete-door and precise continuity proof is being collected. Isolated previews do not pass integration.
 6. Rebase into small, ordered commits. Stack follow-ups. Publish WIP units frequently.
 7. If the design is contested, `interrogate` before shipping. No contested design yet.
-8. Run Opening a PR. Pending useful validated artifact and independent review.
+8. Run Opening a PR. Draft PR 33 is open against foundation. Independent Astra acceptance remains pending.
 
 ## Current open gates
 
-Full foundation integration, keyboard/touch traversal, camera inverse mapping, reload/activity continuity, screenshots/video, console checks and independent Astra review remain open. No quality PASS is claimed.
+Full graph validation and town/life tests pass. Earlier desktop/pointer and phone/touch walking plus normal map reload are recorded. Current-head full-door video, precise save continuity, final visual polish, walk-behind/side coverage, original activity continuity and independent Astra acceptance remain open. No quality PASS is claimed.

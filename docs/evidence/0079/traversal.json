@@ -1,0 +1,270 @@
+{
+  "sourceHead": "a04cf3ae17e3c20bdf523aed0cf8472bc62ef22d",
+  "cloudPort": 5481,
+  "capturedAt": "2026-11-06T00:19:06.296005+00:00",
+  "journeys": [
+    {
+      "device": "desktop",
+      "walking": [
+        {
+          "action": "real keyboard restaurant door",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 34,
+              "y": 30.4
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.916500000000003,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null
+          }
+        },
+        {
+          "action": "pointer walking laundry",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 19.700000762939457,
+              "y": 22.49999974568685
+            },
+            "facing": "north",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.916500000000003,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null
+          }
+        },
+        {
+          "action": "pointer walking moon-gate",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 45.00000000000001,
+              "y": 9.500001017252604
+            },
+            "facing": "east",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.916500000000003,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null
+          }
+        },
+        {
+          "action": "pointer walking market",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 33.00000027284476,
+              "y": 40.49999975534467
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.916500000000003,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null
+          }
+        },
+        {
+          "action": "pointer walking workshop",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 73.249999001279,
+              "y": 31.400000009657827
+            },
+            "facing": "east",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.916500000000003,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null
+          }
+        },
+        {
+          "action": "pointer walking river",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 67.00000027284476,
+              "y": 48.99999975534468
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.916500000000003,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null
+          }
+        }
+      ],
+      "consoleErrors": [],
+      "saveReload": "not covered by test-mode journey",
+      "fullGraph": "other owner modules not yet present"
+    },
+    {
+      "device": "phone",
+      "walking": [
+        {
+          "action": "real keyboard restaurant door",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 34,
+              "y": 30.4
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.917,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null
+          }
+        },
+        {
+          "action": "touch walking laundry",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 19.700001014072566,
+              "y": 22.500000607747847
+            },
+            "facing": "north",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.917,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null
+          }
+        },
+        {
+          "action": "touch walking moon-gate",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 44.9999997254094,
+              "y": 9.49999978148331
+            },
+            "facing": "east",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.917,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null
+          }
+        },
+        {
+          "action": "touch walking market",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 32.99999917338563,
+              "y": 40.49999926163947
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.917,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null
+          }
+        },
+        {
+          "action": "touch walking workshop",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 73.24999917097938,
+              "y": 31.399999563314882
+            },
+            "facing": "east",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.917,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null
+          }
+        },
+        {
+          "action": "touch walking river",
+          "state": {
+            "version": 1,
+            "mapId": "town",
+            "position": {
+              "x": 66.99999964336075,
+              "y": 48.999999440835396
+            },
+            "facing": "south",
+            "returnPositions": {
+              "restaurant": {
+                "x": 12,
+                "y": 19.917,
+                "facing": "south"
+              }
+            },
+            "activeActivity": null
+          }
+        }
+      ],
+      "consoleErrors": [],
+      "saveReload": "not covered by test-mode journey",
+      "fullGraph": "other owner modules not yet present"
+    }
+  ],
+  "limitations": [
+    "Only town and restaurant are registered in this checkout at this checkpoint.",
+    "Test mode observes state but all travel input is real keyboard/pointer/touch.",
+    "Reduced motion was enabled. Character walk animation still requires a normal-motion capture.",
+    "Shared compositor broad-fade defect is visible.",
+    "First interrupted recording was invalidated by hot reload and is retained only in ignored cloud output."
+  ]
+}

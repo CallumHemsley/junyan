@@ -1,3 +1,10 @@
 ts	phase	decision	why	evidence	result
 2026-11-05T23:59:00Z	ownership	Use central contract v1 and town-only paths	Prevent competing edits to engine and shared schemas	docs/world-program/contract-v1.md	open
 2026-11-05T23:59:00Z	layout	Reject regular road grid after spatial study	Repeated long streets and green setbacks lacked distinctive places	/workspace/scratch/town-layout-study.png	choose staggered street composition
+2026-11-06T00:20:00Z	visual-review	Distinguish workshop gate canal and closed shop displays	Root and read-only review found repeated silhouettes and absent landmark cues	docs/evidence/0079/integration.md	polish in progress
+2026-11-06T00:20:00Z	proof	Drive real keyboard pointer and phone touch through town	Prove reachable paths with the rendered player and real controls	docs/evidence/0079/traversal.json	two journeys passed; compositor and full graph gates open
+2026-11-06T00:38:58.984795+00:00	audit	Correct missing flat-roof implementation after no-op replacement	Read-only audit disproved the earlier flat-roof claim	src/world/art/town/index.ts	explicit cream and blue roof branch now present; fresh captures next
+2026-11-06T00:38:58.984810+00:00	lighting	Route all owned materials through shared shadeColor	Use one authoritative phase and preserve object alpha	docs/evidence/0079/material-proof.json	callback and alpha probe passed; current captures next
+2026-11-06T00:38:58.984815+00:00	doors	Walk every required town door in normal motion on desktop and phone	Verify actual reciprocal transitions with real input	docs/evidence/0079/six-doors-proof.json	both passed at source 0ad4ede
+2026-11-06T00:38:58.984817+00:00	persistence	Compare complete saved values before and after normal reload	Map name alone did not prove position and journal continuity	docs/evidence/0079/reload-current-proof.json	semantic state equal; nonempty journal; fresh feature defaults
+2026-11-06T00:38:58.984819+00:00	layout	Add darker junction inset and planted margins outside traversable routes	Reduce bare pale pavement without changing navigation	src/world/maps/town/map.json	four town tests passed
