@@ -1,7 +1,9 @@
 import {createRenderer,characterFigure,type SceneApi} from '../../scene/renderer.js';
 import content from '../../content/content.json';
 import {sampleActor,type Facing,type ActorPosture,type ActorInput} from './index';
-import {paintActor,paintActorCanvas} from './adapter';
+import {project} from '../camera';
+import type {WorldRenderView} from '../render-contract';
+import {drawActor,paintActor,paintActorCanvas} from './adapter';
 const before=document.querySelector<HTMLCanvasElement>('#before')!;
 const after=document.querySelector<HTMLCanvasElement>('#after')!;
 const sheet=document.querySelector<HTMLCanvasElement>('#sheet')!;
@@ -63,5 +65,15 @@ document.querySelector('#freeze')!.addEventListener('click',()=>{state.frozen=!s
 cast.addEventListener('change',draw);pose.addEventListener('change',draw);
 let last=0;
 function tick(now:number){if(!document.hidden){if(last)update(Math.min(50,now-last));last=now;}else last=0;requestAnimationFrame(tick);}
-Object.assign(window,{__ACTOR_FIXTURE__:{state,draw,step:update,sample:()=>sampleActor(actorInput()),set:(value:Partial<typeof state>)=>{Object.assign(state,value);draw();}}});
+function cameraMatrix(scale:number,dpr:number) {
+ const canvas=document.createElement('canvas');canvas.width=256*dpr;canvas.height=160*dpr;
+ const context=canvas.getContext('2d')!;context.setTransform(dpr,0,0,dpr,0,0);
+ context.fillStyle='#c9c5a5';context.fillRect(0,0,256,160);
+ const position={x:3,y:3},camera={focus:position,width:256,height:160,scale};
+ const view:WorldRenderView={project:(point,z)=>project(point,camera,z),elapsedMs:300,reducedMotion:false,playerPosition:position,width:256,height:160,pass:'objects'};
+ const sample=sampleActor({...actorInput(),characterId:'lin-jie',heldObject:'watering-can',action:'walk',distanceTravelled:.25});
+ drawActor(context,view,sample,position);
+ return {png:canvas.toDataURL('image/png').split(',')[1],anchor:view.project(position),scale,dpr,width:canvas.width,height:canvas.height};
+}
+Object.assign(window,{__ACTOR_FIXTURE__:{cameraMatrix,state,draw,step:update,sample:()=>sampleActor(actorInput()),set:(value:Partial<typeof state>)=>{Object.assign(state,value);draw();}}});
 draw();requestAnimationFrame(tick);
