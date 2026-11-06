@@ -1,3 +1,4 @@
+import { readingRoomHost } from '../../features/reading-room/neighbours';
 import type { GameState } from '../../contracts';
 import type { WorldMapDefinition, WorldState } from '../schema';
 import { catHabitat } from '../maps/courtyard';
@@ -26,6 +27,7 @@ export function worldLifeFrame(map: WorldMapDefinition, game: GameState, world: 
     gardenMature: game.neighbourhood?.garden.restored === true && game.neighbourhood.garden.plants.tree.growth === 3,
   };
   const actors = sampleLife(source.plan, context, source.navigation, life);
+  if (map.id === 'reading-room' && game.neighbourhood) actors.push(...readingRoomHost(game.neighbourhood['reading-room'], context));
   const options = nearbyLife(source.plan, actors, world.position, source.navigation);
   return { ...source, life, context, actors, options };
 }

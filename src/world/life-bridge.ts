@@ -1,3 +1,4 @@
+import {readingRoomHost} from "../features/reading-room/neighbours";
 import {restaurantPresence} from "./presence";
 import {compileLife,sampleLife,interactLife,restoreLife,courtyardHabitats,type LifePlan,type LifeContext} from "./life";
 import {navigationFor} from "./life/navigation";
@@ -24,7 +25,11 @@ export function lifeContext(game:GameState,world:WorldState,elapsedMs:number,red
   habitats:habitat?courtyardHabitats(habitat):undefined,
   gardenMature:game.neighbourhood?.garden.restored === true && game.neighbourhood.garden.plants.tree.growth === 3};
 }
-export function actorsFor(map:WorldMapDefinition,game:GameState,world:WorldState,elapsedMs:number,reducedMotion:boolean) {return sampleLife(planFor(map,game),lifeContext(game,world,elapsedMs,reducedMotion),navigationFor(map),restoreLife(world.life));}
+export function actorsFor(map:WorldMapDefinition,game:GameState,world:WorldState,elapsedMs:number,reducedMotion:boolean) {
+ const context=lifeContext(game,world,elapsedMs,reducedMotion);
+ const actors=sampleLife(planFor(map,game),context,navigationFor(map),restoreLife(world.life));
+ return map.id==="reading-room"&&game.neighbourhood?[...actors,...readingRoomHost(game.neighbourhood["reading-room"],context)]:actors;
+}
 export function performLifeInteraction(map:WorldMapDefinition,game:GameState,world:WorldState,action:WorldLifeAction) {
  return interactLife(restoreLife(world.life),planFor(map,game),actorsFor(map,game,world,action.elapsedMs,false),lifeContext(game,world,action.elapsedMs,false),action.actionId,navigationFor(map));
 }
