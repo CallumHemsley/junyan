@@ -1,3 +1,4 @@
+import type {WorldRenderView,WorldDrawCommand} from '../render-contract';
 import type {ActorSample} from './index';
 import type {RGB} from './artwork.mjs';
 
@@ -30,7 +31,23 @@ export function paintActorCanvas(context:CanvasRenderingContext2D,sample:ActorSa
   context.beginPath();context.ellipse(x,y-1,8*scale,3*scale,0,0,Math.PI*2);context.fill();
   for(const command of sample.drawCommands) {
     context.fillStyle=`rgb(${command.color.join(',')})`;
-    context.fillRect(Math.round(x+command.x*scale),Math.round(y+command.y*scale),command.width*scale,scale);
+    const left=Math.round(x+command.x*scale),top=Math.round(y+command.y*scale);
+    const right=Math.round(x+(command.x+command.width)*scale),bottom=Math.round(y+(command.y+1)*scale);
+    context.fillRect(left,top,right-left,bottom-top);
   }
   context.restore();
+}
+
+export function actorCommands(sample:Pick<ActorSample,'drawCommands'>,position:{x:number;y:number},nativePixelsPerTile=18):WorldDrawCommand[] {
+  const world=(x:number,y:number)=>({x:position.x+(x*.5+y)/nativePixelsPerTile,y:position.y+(y-x*.5)/nativePixelsPerTile});
+  return sample.drawCommands.map(span=>({kind:'polygon',color:`rgb(${span.color.join(',')})`,points:[
+    world(span.x,span.y),world(span.x+span.width,span.y),world(span.x+span.width,span.y+1),world(span.x,span.y+1),
+  ]}));
+}
+
+export function drawActor(context:CanvasRenderingContext2D,view:WorldRenderView,sample:ActorSample,position:{x:number;y:number}):void {
+  if(view.pass!=='objects')return;
+  const p=view.project(position),unit=view.project({x:position.x+.5,y:position.y-.5});
+  const scale=Math.abs(unit.x-p.x)/18;
+  paintActorCanvas(context,sample,p.x,p.y,scale);
 }

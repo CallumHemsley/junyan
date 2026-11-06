@@ -6,4 +6,4 @@ export type PixelFrame = {
  anchor:{x:number;y:number}; held:{x:number;y:number};
  feet:{x:number;y:number;planted:boolean}[];
 };
-export function frame(input:{appearance?:{shirt?:RGB;hair?:RGB;legs?:RGB;accessory?:string};direction?:number;phase?:number;action?:string;reducedMotion?:boolean;carrying?:boolean;blink?:boolean}):PixelFrame;
+export function frame(input:{appearance?:{shirt?:RGB;hair?:RGB;legs?:RGB;accessory?:string};direction?:number;phase?:number;action?:string;reducedMotion?:boolean;carrying?:boolean;blink?:boolean;heldObject?:'tray'|'watering-can'|'tool';acting?:boolean}):PixelFrame;

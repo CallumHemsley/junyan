@@ -1,47 +1,173 @@
-export const W=28,H=40;
-const ink=[48,43,42],skin=[232,183,143],cream=[245,232,202],jade=[111,154,134];
-const shade=(c,n)=>c.map(v=>Math.max(0,Math.min(255,Math.round(v*n))));
-export function frame({appearance={},direction=0,phase=0,action='idle',reducedMotion=false,carrying=false,blink=false}={}) {
- const data=new Uint8ClampedArray(W*H*4), shirt=appearance.shirt||cream,hair=appearance.hair||[54,43,34],kind=appearance.accessory||'player';
- const rect=(x,y,w,h,c)=>{for(let j=y;j<y+h;j++)for(let i=x;i<x+w;i++)if(i>=0&&i<W&&j>=0&&j<H)data.set([...c,255],(j*W+i)*4);};
- const rows=(y,rs,c)=>rs.forEach(([x,w],i)=>rect(x,y+i,w,1,c));
- const rear=direction>=3&&direction<=5, side=direction===2||direction===6, diagonal=direction%2===1, flip=direction>4;
- const p=reducedMotion?0:phase%6, stride=action==='walk'?[0,2,3,0,-2,-3][p]:0;
- const sit=action==='sit'||action==='crouch', dy=action==='crouch'?8:sit?6:0, bob=!sit&&action==='walk'&&!reducedMotion&&(p===1||p===4)?-1:0;
- // Shoes and separate trouser hems retain a clear grounded gap.
- const legs=appearance.legs||[63,78,74];
- const screenStride=side?Math.round(stride):Math.round(stride*.5);
- const feet=[];
- for(const [x,s] of [[9,-1],[16,1]]) {
-  const step=screenStride*s, lift=stride*s<0?2:0, footX=x+step;
-  rect(x,28+dy/3,4,4,shade(legs,.78));
-  rect(footX,31,4,5-lift,legs);
-  rect(footX-1,35-lift,side?7:5,3,ink);
-  rect(footX,35-lift,side?5:4,1,shade(legs,1.25));
-  feet.push({x:footX+2,y:38-lift,planted:lift===0});
- }
- const top=18+dy+bob,bottom=30+dy/3;
- rows(top,[[9,10],[8,12],[7,14]],shade(shirt,.65));rect(7,top+3,14,bottom-top-3,shade(shirt,.7));rect(8,top+1,11,bottom-top-2,shirt);rect(9,top+2,3,bottom-top-3,shade(shirt,1.08));
- if(kind==='player'&&!rear){rect(10,top+3,8,bottom-top-3,jade);rect(11,top+1,1,4,jade);rect(17,top+1,1,4,jade);rect(12,top+7,4,2,shade(jade,.8));}
- if(kind==='tie'&&!rear){rect(10,top+1,3,2,cream);rect(15,top+1,3,2,cream);rect(13,top+3,2,6,[115,86,58]);}
- if(kind==='bun'&&!rear){rect(9,top+2,2,2,cream);rect(17,top+2,2,2,cream);}
- if(kind==='backpack'&&rear){rect(9,top+1,11,11,[190,157,97]);rect(10,top+2,9,7,[207,177,116]);rect(11,top+9,7,2,[150,124,77]);}
- for(const s of [-1,1]){const swing=action==='walk'&&!reducedMotion?Math.sign(stride)*s:0; const armX=s<0?5:20;rect(armX,top+3,3,7+swing,shade(shirt,s<0?1:.8));rect(armX,top+9+swing,3,3,skin);rect(armX,top+8+swing,3,1,cream);}
- // Contoured head with a coherent dark rim; no sphere highlights.
- const hy=5+dy+bob, faceShift=diagonal?(flip?-1:1):0;
- rows(hy,[[10,8],[8,12],[7,14],[7,14],[7,14],[7,14],[7,14],[8,12],[8,12],[9,10],[10,8],[11,6]],shade(skin,.72));
- rect(8,hy+3,12,5,skin);rect(9,hy+8,10,2,skin);rect(10,hy+10,8,1,skin);rect(10,hy+3,7,4,shade(skin,1.06));
- rows(hy-2,[[10,8],[8,12],[7,14],[7,14],[7,14],[7,14]],hair);rect(7,hy+2,2,6,hair);rect(19,hy+2,2,6,hair);rect(9,hy-1,7,1,shade(hair,1.22));
- if(rear){rect(8,hy+2,12,6,hair);rows(hy+8,[[9,10],[10,8]],hair);}else {
- rect(9,hy+2,4,1,hair);rect(17,hy+2,2,2,hair);
- const ex=side?(flip?9:17):10+faceShift;rect(ex,hy+5,blink?2:1,blink?1:2,ink);if(!side)rect(17+faceShift,hy+5,blink?2:1,blink?1:2,ink);rect(side?(flip?7:20):13,hy+7,2,1,shade(skin,.8));rect(side?(flip?10:17):12,hy+9,side?2:4,1,[176,119,88]);
- if(kind==='glasses'){rect(9,hy+4,4,1,ink);rect(9,hy+7,4,1,ink);rect(8,hy+5,1,2,ink);rect(13,hy+5,1,2,ink);if(!side){rect(15,hy+4,4,1,ink);rect(15,hy+7,4,1,ink);rect(14,hy+5,1,2,ink);rect(19,hy+5,1,2,ink);}}
- }
- if(diagonal){rect(flip?19:7,hy+3,2,6,hair);}
- if(kind==='bun'){rect(10,hy-5,7,4,hair);rect(11,hy-6,5,1,hair);rect(17,hy-4,2,1,jade);}
- if(kind==='backpack'){rect(flip?6:20,hy+5,3,9,hair);rect(flip?6:20,hy+8,3,1,[190,157,97]);}
- if(carrying&&rear&&diagonal){rect(flip?3:22,top+9,3,2,[115,86,58]);}
- if(carrying&&!rear){rect(side?(flip?0:18):5,top+10,side?10:18,2,[115,86,58]);rect(side?(flip?1:19):6,top+9,side?8:16,1,[190,157,97]);rect(side?(flip?2:20):8,top+6,5,3,cream);}
- if(action==='interact'&&!reducedMotion){const reach=phase%2;rect(flip?3:22,top+5-reach,3,4,skin);}
- return {width:W,height:H,pixels:data,anchor:{x:14,y:38},held:{x:side?(flip?5:23):14,y:top+10},feet};
+export const W = 28, H = 40;
+const ink = [48,43,42], skin = [232,183,143], cream = [245,232,202];
+const jade = [111,154,134], wood = [115,86,58], brass = [190,157,97];
+const shade = (color, amount) => color.map(value => Math.max(0,Math.min(255,Math.round(value*amount))));
+
+export function frame({appearance={},direction=0,phase=0,action='idle',reducedMotion=false,carrying=false,blink=false,heldObject,acting=false}={}) {
+  const pixels = new Uint8ClampedArray(W*H*4);
+  const shirt = appearance.shirt || cream, hair = appearance.hair || [54,43,34];
+  const trousers = appearance.legs || [63,78,74], kind = appearance.accessory || 'player';
+  const turn = Math.min(direction,8-direction), mirror = direction>4;
+  const rear = turn>=3, quarter = turn===1 || turn===3, profile = turn===2;
+  const older = kind==='glasses', fuller = kind==='bun', tall = kind==='tie' || kind==='backpack';
+  const seated = action==='sit', crouched = action==='crouch';
+  const walking = action==='walk' && !reducedMotion;
+  const stride = walking ? [-2,-1,1,2,1,-1][phase%6] : 0;
+  const lowering = crouched?8:seated?5:0;
+  const shoulder = 18 + lowering + (older?2:tall?-1:0);
+  const hip = 29 + (seated?2:crouched?3:0);
+  const faceX = 14 + (profile?2:quarter?1:0) + (older?1:0);
+  const headY = 4 + lowering + (older?2:tall?-1:0);
+  const transformX = x => mirror ? W-1-x : x;
+  let behind = false;
+
+  function rect(x,y,width,height,color) {
+    const left=Math.round(x),top=Math.round(y),right=Math.round(x+width),bottom=Math.round(y+height);
+    for(let py=top;py<bottom;py++)for(let px=left;px<right;px++) {
+      const tx=transformX(px);
+      if(tx>=0&&tx<W&&py>=0&&py<H) {
+        const offset=(py*W+tx)*4;
+        if(!behind||!pixels[offset+3])pixels.set([...color,255],offset);
+      }
+    }
+  }
+  function polygon(points,color) {
+    const minY=Math.floor(Math.min(...points.map(p=>p[1]))),maxY=Math.ceil(Math.max(...points.map(p=>p[1])));
+    for(let y=minY;y<maxY;y++) {
+      const intersections=[];
+      for(let i=0;i<points.length;i++) {
+        const a=points[i],b=points[(i+1)%points.length];
+        if((a[1]<=y+.5&&b[1]>y+.5)||(b[1]<=y+.5&&a[1]>y+.5))intersections.push(a[0]+(y+.5-a[1])*(b[0]-a[0])/(b[1]-a[1]));
+      }
+      intersections.sort((a,b)=>a-b);
+      for(let i=0;i<intersections.length;i+=2)rect(Math.ceil(intersections[i]),y,Math.floor(intersections[i+1])-Math.ceil(intersections[i])+1,1,color);
+    }
+  }
+  function stroke(from,to,width,color) {
+    const steps=Math.max(Math.abs(to[0]-from[0]),Math.abs(to[1]-from[1]),1);
+    for(let i=0;i<=steps;i++)rect(from[0]+(to[0]-from[0])*i/steps-width/2,from[1]+(to[1]-from[1])*i/steps,width,1,color);
+  }
+
+  const feet=[];
+  function leg(near) {
+    const side=near?1:-1;
+    const originX=profile?(near?14:12):quarter?(near?17:11):near?17:10;
+    const along=profile?stride*side:quarter?Math.round(stride*side*.7):Math.round(stride*side*.2);
+    const lift=walking&&stride*side>0?2:0;
+    const contactY=37-lift+(quarter&&!near?-1:0);
+    const footX=originX+along+(seated?2:0);
+    const knee=[originX+Math.round(along*.5),seated?34:crouched?35:33-lift];
+    const color=shade(trousers,near?1:.72);
+    stroke([originX,hip],knee,4,color);
+    stroke(knee,[footX,contactY-2],3,color);
+    const shoeWidth=profile?6:quarter?5:4;
+    rect(footX-2,contactY-1,shoeWidth,2,ink);
+    rect(footX-1,contactY-1,shoeWidth-1,1,shade(trousers,1.15));
+    feet.push({x:transformX(footX),y:contactY+1,planted:lift===0});
+  }
+  const bodyWidth=profile?8:quarter?11:fuller?16:kind==='backpack'?12:14;
+  const bodyX=14-bodyWidth/2+(quarter?0:profile?1:0);
+  const nearShoulder=[bodyX+bodyWidth,shoulder+(quarter?2:1)];
+  const farShoulder=[bodyX,shoulder+(quarter?0:1)];
+  let held={x:22,y:shoulder+9};
+  function arm(near) {
+    const root=near?nearShoulder:farShoulder;
+    const swing=walking?stride*(near?-1:1):0;
+    const working=(action==='interact'||action==='react')&&near;
+    const occupied=carrying||heldObject;
+    const elbow=working?[root[0]+1,root[1]+5]:occupied?[root[0]+1,root[1]+5]:[root[0]+swing*.5,root[1]+5];
+    const hand=working?[root[0]+3,root[1]+3+(reducedMotion?0:phase%3)]:occupied?[root[0]+2,root[1]+7]:[root[0]+swing,root[1]+9+(near?0:-1)];
+    if(action==='react'&&near){elbow[1]-=3;hand[1]-=7;}
+    if(acting&&!walking&&!occupied&&!working&&near){hand[0]-=3;hand[1]-=4;}
+    stroke(root,elbow,near?4:3,shade(shirt,near?.86:.64));
+    stroke(elbow,hand,3,shade(skin,near?1:.82));
+    rect(elbow[0]-1,elbow[1],3,1,cream);
+    rect(hand[0]-1,hand[1],3,2,skin);
+    if(near)held={x:hand[0]+1,y:hand[1]};
+  }
+
+  leg(false);
+  arm(false);
+  if(kind==='backpack'&&!rear)rect(bodyX-2,shoulder+3,3,9,brass);
+  polygon([[bodyX+2,shoulder],[bodyX+bodyWidth-2,shoulder+(quarter?1:0)],[bodyX+bodyWidth,shoulder+4],[bodyX+bodyWidth-1,hip+1],[bodyX,hip+1],[bodyX-1,shoulder+4]],shade(shirt,.65));
+  polygon([[bodyX+2,shoulder+1],[bodyX+bodyWidth-3,shoulder+1],[bodyX+bodyWidth-1,shoulder+4],[bodyX+bodyWidth-2,hip],[bodyX+1,hip],[bodyX,shoulder+4]],shirt);
+  rect(bodyX+2,shoulder+3,2,Math.max(2,hip-shoulder-4),shade(shirt,1.08));
+  leg(true);
+  if(!rear) {
+    if(kind==='player') {
+      rect(bodyX+2,shoulder+4,bodyWidth-4,hip-shoulder-3,jade);
+      rect(bodyX+3,shoulder+1,1,4,jade);
+      rect(bodyX+bodyWidth-4,shoulder+1,1,4,jade);
+      rect(bodyX+4,hip-3,Math.max(2,bodyWidth-8),1,shade(jade,.75));
+    } else if(kind==='tie') {
+      polygon([[bodyX+2,shoulder+1],[bodyX+6,shoulder+2],[bodyX+4,shoulder+4]],cream);
+      rect(bodyX+6,shoulder+3,2,6,wood);
+    } else if(fuller || older) {
+      rect(bodyX+4,shoulder+1,3,2,cream);
+      rect(bodyX+7,shoulder+4,1,1,shade(shirt,.7));
+      rect(bodyX+7,shoulder+7,1,1,shade(shirt,.7));
+    }
+  } else {
+    rect(bodyX+2,shoulder+3,bodyWidth-4,1,shade(shirt,.9));
+    if(kind==='backpack') {
+      rect(bodyX+1,shoulder+2,bodyWidth-1,10,shade(brass,.75));
+      rect(bodyX+2,shoulder+2,bodyWidth-3,8,brass);
+      rect(bodyX+3,shoulder+8,bodyWidth-5,3,shade(brass,1.1));
+      rect(bodyX+bodyWidth-3,shoulder+5,1,1,cream);
+    }
+    if(kind==='player')rect(bodyX+2,hip-3,bodyWidth-4,1,jade);
+  }
+  arm(true);
+
+  const headWidth=profile?11:quarter?13:older?13:14;
+  const left=faceX-headWidth/2;
+  rect(faceX-2,shoulder-3,4,4,shade(skin,.85));
+  polygon([[left+3,headY],[left+headWidth-3,headY],[left+headWidth,headY+3],[left+headWidth,headY+10],[left+headWidth-3,headY+13],[left+3,headY+13],[left,headY+9],[left,headY+3]],shade(skin,.77));
+  polygon([[left+2,headY+3],[left+headWidth-1,headY+3],[left+headWidth-1,headY+9],[left+headWidth-3,headY+12],[left+3,headY+12],[left+1,headY+8]],skin);
+  rect(left+3,headY+4,Math.max(3,headWidth-6),3,shade(skin,1.05));
+  polygon([[left+2,headY-1],[left+headWidth-3,headY-1],[left+headWidth-1,headY+1],[left+headWidth,headY+5],[left+headWidth-2,headY+5],[left+headWidth-3,headY+3],[left+2,headY+3],[left+1,headY+8],[left-1,headY+7],[left-1,headY+2]],hair);
+  rect(left+3,headY,Math.max(3,headWidth-7),1,shade(hair,1.22));
+  if(rear) {
+    polygon([[left,headY+3],[left+headWidth-1,headY+2],[left+headWidth,headY+8],[left+headWidth-3,headY+11],[left+2,headY+11],[left,headY+8]],hair);
+    if(quarter) {
+      rect(left+headWidth,headY+6,1,4,skin);
+      rect(left+headWidth-1,headY+6,1,2,shade(skin,.8));
+    }
+  } else {
+    const nearEye=left+headWidth-3,farEye=left+(quarter?4:3);
+    if(!profile)rect(farEye,headY+6,1,blink?1:2,ink);
+    rect(nearEye,headY+6,blink?2:1,blink?1:2,ink);
+    rect(left+headWidth-1,headY+8,profile?2:1,1,shade(skin,.85));
+    rect(profile?nearEye-1:faceX-1+(quarter?1:0),headY+10,profile?2:3,1,[176,119,88]);
+    if(older) {
+      for(const eye of profile?[nearEye]:[farEye,nearEye]) {
+        rect(eye-1,headY+5,3,1,wood);rect(eye-1,headY+8,3,1,wood);
+        rect(eye-2,headY+6,1,2,wood);rect(eye+2,headY+6,1,2,wood);
+      }
+      if(!profile)rect(farEye+2,headY+6,Math.max(1,nearEye-farEye-3),1,wood);
+    }
+  }
+  if(fuller) {
+    const bunX=rear?(quarter?left+2:faceX-2):left;
+    polygon([[bunX,headY-3],[bunX+4,headY-4],[bunX+6,headY-2],[bunX+5,headY+1],[bunX,headY+1],[bunX-1,headY-1]],hair);
+    rect(bunX+4,headY-2,2,1,jade);
+  }
+  if(kind==='backpack') {
+    const ponyX=rear?left-2:left;
+    polygon([[ponyX,headY+5],[ponyX+3,headY+5],[ponyX+4,headY+11],[ponyX+2,headY+16],[ponyX,headY+15],[ponyX+1,headY+10]],hair);
+    rect(ponyX,headY+8,3,1,brass);
+  }
+  behind=rear;
+  const object=heldObject || (carrying?'tray':undefined);
+  if(object==='tray') {
+    const ox=profile?held.x-4:quarter?held.x-9:7,oy=held.y;
+    rect(ox,oy,profile?9:16,2,wood);rect(ox+1,oy-1,profile?7:14,1,brass);
+    if(!rear){rect(ox+2,oy-4,4,3,cream);rect(ox+3,oy-5,2,1,shade(cream,.8));}
+  } else if(object==='watering-can') {
+    rect(held.x-3,held.y-2,5,5,jade);rect(held.x+2,held.y,3,1,shade(jade,.7));
+    rect(held.x-5,held.y-1,2,3,shade(jade,.8));rect(held.x-4,held.y-2,2,1,jade);
+  } else if(object==='tool') {
+    rect(held.x,held.y-4,1,5,wood);rect(held.x-1,held.y-5,3,2,[166,174,168]);
+  }
+  return {width:W,height:H,pixels,anchor:{x:14,y:38},held:{x:transformX(held.x),y:held.y},feet};
 }
