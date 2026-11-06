@@ -1,7 +1,7 @@
 ---
 id: 133
 title: Ship the independently retained native bed material renderer
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-07
@@ -24,5 +24,6 @@ Independent0130full review retains quiet printed cloth, clearer bed depth and st
 - New raw QA private under /private/tmp/junyan-world-private-qa/0133. Prior0130frozen evidence unchanged. No dependency/schema/game-rule change or unrelated actor/map edit without root coordination.
 
 - Production candidate: one ordered semantic recipe retains the original 19-command fallback sequence; the material path uses 15 structural boxes plus four 0.14-unit printed bands. The existing rasterizer has optional native-camera/material arguments; all default callers retain legacy output. The bed alone owns a 16-entry raw cache and per-shader weak graded cache, with no private study imports, diagnostics or raw mutation.
-- Source verification: 160 legacy frames byte-identical, 486 native projection cases and 1,468 analytical sphere/depth checks. The original fallback's 2,095 Canvas operations, all 19 bed commands, one shadow and world-object metadata match exactly. Full Vitest: 654 tests in 101 files pass with two workers; type/build pass. Nine focused material/projection tests cover source mutation, light, cache eviction, alpha, offscreen re-entry and scale fallback. Native movement/furnishing comparison preserves exact collision traces and fixed bed placement. Browser journeys and final independent acceptance are pending; status remains doing.
-- Raw captures, scripts and reports remain private under `/private/tmp/junyan-world-private-qa/0133`. The first reduced-motion 12-pair production/frozen matrix is pixel-identical across phone/desktop, morning/night and three camera states. This is a bounded single-prop improvement, with a maximum half-native-pixel body/contact displacement per axis; it does not claim whole-world depth, overall game polish or continuous-motion comfort.
+- Independent final review accepted combined source `e7c30804654da582f0b4f3af2881c41f0e95a490` with no unresolved findings. All 24 original phone/desktop production/prototype PNG pairs are byte-identical across normal/reduced preferences, morning/night saves and three camera states. Raw evidence and the review remain private under `/private/tmp/junyan-world-private-qa/0133`.
+- Verification: 659 tests in 102 files and TypeScript/production build pass on the combined head containing main PR 53 (`a5d951c12138cd84bd7c01cf733c2cfdec6e7cae`). The 28 phone/desktop browser cases passed before that unrelated shoreline merge; they cover opening, service, change, journal, furnishing, headings and physical world travel. Bed/renderer runtime bytes remain unchanged through the merge. The independent reviewer reran 17 focused tests, 160 byte-equal legacy frames, 486 native projection cases, 1,468 analytical sphere/depth checks and the original 2,095-operation fallback replay. Actual movement/furnishing records preserve collision traces and fixed bed placement.
+- Learned: the old fallback must retain its ordered 19 box commands even though the material path has only 15 structural boxes plus four printed bands. Public command and actual unsupported-camera Canvas digests now guard that ordering. The bed remains an illustrative bitmap with internal depth and at most half a native pixel of body/contact displacement per axis. Independent sampled holds/frames show no new contact defect; continuous playback comfort, whole-world depth and overall game art quality are not claimed.
