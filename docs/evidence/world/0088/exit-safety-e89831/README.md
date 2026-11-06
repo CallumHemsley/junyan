@@ -37,3 +37,7 @@ Source was acquired with `git show` at the full local commit, with Git blob and 
 ```
 
 All correction assertions and positive controls completed. The malformed fallback is recorded as an observed unresolved result (`malformedFallbackStillInvalid:true`), not hidden behind an overall PASS label. Production UI, persistence, main reconciliation and full experience acceptance remain open.
+
+## Source continuity through 3836175
+
+Parent independently fetched `src/world/state.ts` at `38361754979f953bd18e8fa5f2348cac3b207faa` through the GitHub connector. Its blob ID `1d48445b89adb52bb5043dec9af5d894e2bba345` equals the file's Git blob at e89831. Thus the fallback branches described above are source-identical through3836175. This is parent-provided single-file source continuity, **not execution at3836175, a full-tree comparison or integrated runtime acceptance**. No probe rerun was performed for this addendum.
