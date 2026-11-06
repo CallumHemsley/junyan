@@ -10,7 +10,7 @@ export type AtmosphereHooks = {
   interior?: boolean;
   water?: readonly { id: string; rect: Rect; shore?: readonly ('north' | 'east' | 'south' | 'west')[] }[];
   reflections?: readonly {id:string;position:Point;width:number;height:number;color:RGB}[];
-  lights?: readonly { id: string; position: Point; radius: number; kind: 'window' | 'lamp' }[];
+  lights?: readonly { id: string; position: Point; radius: number; kind: 'window' | 'lamp'; emitter?:readonly Point[] }[];
   foliage?: readonly { id: string; position: Point; radius: number; kind: 'grass' | 'leaves'; motion?:boolean; depth?:number }[];
   shadows?: readonly { id: string; position: Point; radius: number; height: number }[];
   particles?: readonly { id: string; rect: Rect; kind: 'pollen' | 'firefly' | 'dust'; count: number }[];
@@ -144,8 +144,12 @@ export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks 
       add('light',[{x:x-size,y:y-size*.4},{x:x+size*.2,y:y-size*.8},{x:x+size,y:y-size*.1},{x:x+size*.8,y:y+size*.65},{x:x-size*.6,y:y+size*.7}], [255,200,121], opacity*strength);
     }
     const width=lamp.kind==='window'?.55:.16, height=lamp.kind==='window'?.48:.22;
-    add('objects',[{x:x-width/2,y,z},{x:x+width/2,y,z},{x:x+width/2,y,z:z+height},{x:x-width/2,y,z:z+height}],[255,224,153],strength,{id:lamp.id,position:lamp.position});
-    if(lamp.kind==='window') add('objects',[{x:x-.025,y:y-.005,z},{x:x+.025,y:y-.005,z},{x:x+.025,y:y-.005,z:z+height},{x:x-.025,y:y-.005,z:z+height}],[110,87,62],.9,{id:lamp.id,position:lamp.position});
+    if(lamp.emitter) {
+      if(lamp.emitter.length>=3) add('objects',[...lamp.emitter],[255,224,153],strength*.48,{id:lamp.id,position:lamp.position});
+    } else {
+      add('objects',[{x:x-width/2,y,z},{x:x+width/2,y,z},{x:x+width/2,y,z:z+height},{x:x-width/2,y,z:z+height}],[255,224,153],strength,{id:lamp.id,position:lamp.position});
+      if(lamp.kind==='window') add('objects',[{x:x-.025,y:y-.005,z},{x:x+.025,y:y-.005,z},{x:x+.025,y:y-.005,z:z+height},{x:x-.025,y:y-.005,z:z+height}],[110,87,62],.9,{id:lamp.id,position:lamp.position});
+    }
     if(lamp.kind==='window') add('light',square(x-.2,y+.14,.52,.1),[255,213,145],strength*.18);
   }
   for(const plant of hooks.foliage ?? []) {

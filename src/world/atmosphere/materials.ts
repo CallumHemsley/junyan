@@ -21,10 +21,11 @@ export function createAtmosphereMaterialContext(ctx:CanvasRenderingContext2D,lig
   const colors=new Map<string,string>(),methods=new Map<PropertyKey,unknown>();
   return new Proxy(ctx,{
     get(target,key) {
+      const cached=methods.get(key);
+      if(cached!==undefined)return cached;
       const value=Reflect.get(target,key,target);
       if(typeof value!=='function')return value;
-      if(!methods.has(key))methods.set(key,value.bind(target));
-      return methods.get(key);
+      const method=value.bind(target);methods.set(key,method);return method;
     },
     set(target,key,value) {
       if((key==='fillStyle'||key==='strokeStyle')&&typeof value==='string') {
@@ -39,4 +40,18 @@ export function createAtmosphereMaterialContext(ctx:CanvasRenderingContext2D,lig
       return Reflect.set(target,key,value,target);
     },
   });
+}
+
+export type MaterialShade=(base:RGB|string,exposure?:number)=>string;
+
+/** Explicit material boundary; outputs never change how later base colours are interpreted. */
+export function createAtmosphereColorShader(light:LightState):MaterialShade {
+  const cache=new Map<string,string>();
+  return (base,exposure=1)=>{
+    const key=`${typeof base}:${base}:${exposure}`,cached=cache.get(key);
+    if(cached!==undefined)return cached;
+    const value=shadeAtmosphereCss(typeof base==='string'?base:`rgb(${base.join(',')})`,light,exposure);
+    if(cache.size>=2048)cache.clear();
+    cache.set(key,value);return value;
+  };
 }

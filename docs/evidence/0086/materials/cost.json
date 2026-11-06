@@ -1,0 +1,170 @@
+{
+  "claim": "Actual art-callback study cost, including canvas resize, map sampling and all drawing; excludes game movement and DOM. Five interleaved pairs of eight frames; no full-game performance verdict.",
+  "cost": [
+    {
+      "scene": "courtyard",
+      "runs": [
+        [
+          {
+            "lit": false,
+            "msPerFrame": 6.5
+          },
+          {
+            "lit": true,
+            "msPerFrame": 10.5
+          }
+        ],
+        [
+          {
+            "lit": false,
+            "msPerFrame": 6.337499999994179
+          },
+          {
+            "lit": true,
+            "msPerFrame": 11.387500000011642
+          }
+        ],
+        [
+          {
+            "lit": false,
+            "msPerFrame": 11.46249999999418
+          },
+          {
+            "lit": true,
+            "msPerFrame": 13.800000000017462
+          }
+        ],
+        [
+          {
+            "lit": false,
+            "msPerFrame": 7.137499999982538
+          },
+          {
+            "lit": true,
+            "msPerFrame": 11.012500000011642
+          }
+        ],
+        [
+          {
+            "lit": false,
+            "msPerFrame": 6.774999999994179
+          },
+          {
+            "lit": true,
+            "msPerFrame": 9.66250000000582
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "apartment",
+      "runs": [
+        [
+          {
+            "lit": false,
+            "msPerFrame": 12.875
+          },
+          {
+            "lit": true,
+            "msPerFrame": 15.049999999988358
+          }
+        ],
+        [
+          {
+            "lit": false,
+            "msPerFrame": 12.924999999988358
+          },
+          {
+            "lit": true,
+            "msPerFrame": 14.46249999999418
+          }
+        ],
+        [
+          {
+            "lit": false,
+            "msPerFrame": 11.050000000017462
+          },
+          {
+            "lit": true,
+            "msPerFrame": 13.0625
+          }
+        ],
+        [
+          {
+            "lit": false,
+            "msPerFrame": 12.1875
+          },
+          {
+            "lit": true,
+            "msPerFrame": 14.574999999982538
+          }
+        ],
+        [
+          {
+            "lit": false,
+            "msPerFrame": 13.0625
+          },
+          {
+            "lit": true,
+            "msPerFrame": 16.26250000001164
+          }
+        ]
+      ]
+    },
+    {
+      "scene": "workshop",
+      "runs": [
+        [
+          {
+            "lit": false,
+            "msPerFrame": 10.449999999982538
+          },
+          {
+            "lit": true,
+            "msPerFrame": 11.21249999999418
+          }
+        ],
+        [
+          {
+            "lit": false,
+            "msPerFrame": 9.462500000023283
+          },
+          {
+            "lit": true,
+            "msPerFrame": 10.16250000000582
+          }
+        ],
+        [
+          {
+            "lit": false,
+            "msPerFrame": 8.41250000000582
+          },
+          {
+            "lit": true,
+            "msPerFrame": 10.77499999999418
+          }
+        ],
+        [
+          {
+            "lit": false,
+            "msPerFrame": 11.39999999999418
+          },
+          {
+            "lit": true,
+            "msPerFrame": 11.387500000011642
+          }
+        ],
+        [
+          {
+            "lit": false,
+            "msPerFrame": 8.699999999982538
+          },
+          {
+            "lit": true,
+            "msPerFrame": 9.150000000023283
+          }
+        ]
+      ]
+    }
+  ]
+}

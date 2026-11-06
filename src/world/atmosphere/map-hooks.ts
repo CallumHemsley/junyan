@@ -5,10 +5,10 @@ export type AtmosphereMap = {
   terrain:readonly {id:string;rect:Rect;material:string}[];
   props:readonly {id:string;kind:string;position:Point;width:number;height:number}[];
 };
-const trees=new Set(['tree','willow','bamboo']);
-const plants=new Set(['grass','reeds','flowers','planter','plant']);
+const trees=new Set(['tree','willow','bamboo','courtyard-tree','tree-bed']);
+const plants=new Set(['grass','reeds','flowers','planter','plant','raised-bed','trellis-bed','border-pot','hedge']);
 const windows=new Set(['window','warm-window']);
-const lamps=new Set(['lamp','lantern','street-lamp']);
+const lamps=new Set(['lamp','lantern','street-lamp','floor-lamp','wall-lamp','task-lamp']);
 const interiors=new Set(['restaurant','apartment','workshop','residential-hall','residential-stairs']);
 
 /** Compile once when the validated map is registered; owners can override any hook. */
