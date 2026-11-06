@@ -1,0 +1,9 @@
+{
+  "head": "e1e6d78c548b8c9bcd7a2a727e0e71a2b5041200",
+  "node": "22.23.4",
+  "typecheck": "passed",
+  "productionBuild": "passed, 265 modules, 2.15 seconds",
+  "focusedTests": {"passed":12,"files":4,"durationSeconds":1.70,"paths":["src/world/actor-readiness.test.ts","src/world/characters/catalog.test.ts","src/world/characters/seated.test.ts","src/world/art/restaurant/projection.test.ts"]},
+  "captureRuns": {"passed":2,"durationSeconds":11.7},
+  "scope": "exact App visual fixtures, not fresh travel/service proof or15-pixel trial; full rules not rerun at e1"
+}

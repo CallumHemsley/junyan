@@ -1,0 +1,198 @@
+{
+  "head": "e1e6d78c548b8c9bcd7a2a727e0e71a2b5041200",
+  "sourceOwnerHeads": [
+    "b1fcbca6dc28d8d7327e014b34a518b74001d1a2",
+    "d196bed969d457574b2126452d0fd716bcb97a0e"
+  ],
+  "verifiedFiles": [
+    {
+      "path": "src/world/characters/actors.test.ts",
+      "expected": "e2a3d1eba23f265eae629b9dcc8a30e97d0a4bba5c52963d9423ac970b48a940",
+      "actual": "e2a3d1eba23f265eae629b9dcc8a30e97d0a4bba5c52963d9423ac970b48a940",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/adapter.ts",
+      "expected": "8a24836aaf871d93405f9d4922497335a037e78fd8ace24ca93d518c3c01a45e",
+      "actual": "8a24836aaf871d93405f9d4922497335a037e78fd8ace24ca93d518c3c01a45e",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/artwork.d.mts",
+      "expected": "abbbf8582f6430b1f6c8ce2d966eb874e54f3bf39af40fbe6875100fd0f84cfa",
+      "actual": "abbbf8582f6430b1f6c8ce2d966eb874e54f3bf39af40fbe6875100fd0f84cfa",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/artwork.mjs",
+      "expected": "ba29ea73c1afe595cb772bfe851f7aba3a2823061ba2bbd8735b17385d92f2dd",
+      "actual": "ba29ea73c1afe595cb772bfe851f7aba3a2823061ba2bbd8735b17385d92f2dd",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/background-harness.html",
+      "expected": "3968423e2b99a208145500c3f03713ffd181df5b5e1c695453e45fdf25b44ae3",
+      "actual": "3968423e2b99a208145500c3f03713ffd181df5b5e1c695453e45fdf25b44ae3",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/background-harness.ts",
+      "expected": "ab34461ddab4846553d51478eb5d06c6e66c9c94579dc024fe35393824c54d92",
+      "actual": "ab34461ddab4846553d51478eb5d06c6e66c9c94579dc024fe35393824c54d92",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/background.test.ts",
+      "expected": "6d68194a8883e4f6e670271ed60816e7fa0e037b026901ddd0a6585bf879b458",
+      "actual": "6d68194a8883e4f6e670271ed60816e7fa0e037b026901ddd0a6585bf879b458",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/background.ts",
+      "expected": "3b244ce66d8358532a2aecb38eb8c15c155c8e590c830b97499f89b0855d5d2e",
+      "actual": "3b244ce66d8358532a2aecb38eb8c15c155c8e590c830b97499f89b0855d5d2e",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/capture-background.mjs",
+      "expected": "40434aab3c34a5bdc644cbec23d76c83124bfbd7332b2e2eab7b70d69083a2cc",
+      "actual": "40434aab3c34a5bdc644cbec23d76c83124bfbd7332b2e2eab7b70d69083a2cc",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/capture-lighting.mjs",
+      "expected": "2c83ef997fc3aab1dae7fecb199caca36b6a4edf4d0bb29d76c84f4ec53136ee",
+      "actual": "2c83ef997fc3aab1dae7fecb199caca36b6a4edf4d0bb29d76c84f4ec53136ee",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/capture.mjs",
+      "expected": "fcbd9bfcbf9c199fcb0af5ffda5c7f48f89cd7425ce8eb317667a7123aab47b0",
+      "actual": "fcbd9bfcbf9c199fcb0af5ffda5c7f48f89cd7425ce8eb317667a7123aab47b0",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/catalog.test.ts",
+      "expected": "ae82908d218b05d93df8a1e0b6bc1ba449cbee50705b94d22f8479e84b4e7562",
+      "actual": "ae82908d218b05d93df8a1e0b6bc1ba449cbee50705b94d22f8479e84b4e7562",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/catalog.ts",
+      "expected": "1fce83540a62fe46aadbf4694c4b9b6b05e09c83a5eff92a02c8b9fcb1d2089a",
+      "actual": "1fce83540a62fe46aadbf4694c4b9b6b05e09c83a5eff92a02c8b9fcb1d2089a",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/depth.test.ts",
+      "expected": "a3b7e7fa04f40ace2c19ffa7d8b26b82f06fd19fafc3a8eb8b2b2141d816a104",
+      "actual": "a3b7e7fa04f40ace2c19ffa7d8b26b82f06fd19fafc3a8eb8b2b2141d816a104",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/harness.html",
+      "expected": "e9138b94162207b266df758ae75cdb70c661f539d5f3936eb99d2c1161fe7aee",
+      "actual": "e9138b94162207b266df758ae75cdb70c661f539d5f3936eb99d2c1161fe7aee",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/harness.ts",
+      "expected": "4c41979473c48307c67a50603631cfe4226fc80d595737e9baa7bf905a7e81c2",
+      "actual": "4c41979473c48307c67a50603631cfe4226fc80d595737e9baa7bf905a7e81c2",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/index.ts",
+      "expected": "bcc2d2a9ae926383782b95e5c4253db536ddd696e9109eaa9032cbf2b0586a88",
+      "actual": "bcc2d2a9ae926383782b95e5c4253db536ddd696e9109eaa9032cbf2b0586a88",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/lighting-proof.html",
+      "expected": "5e0c3fa49508fae02a1d6cf5674d6297ee5e921eb081930bed5e52da3ebf3e28",
+      "actual": "5e0c3fa49508fae02a1d6cf5674d6297ee5e921eb081930bed5e52da3ebf3e28",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/lighting-proof.ts",
+      "expected": "477d1128f0498c3a1724cfd61d29a0e1f17d128834ef4c0f9166da371cb4dde0",
+      "actual": "477d1128f0498c3a1724cfd61d29a0e1f17d128834ef4c0f9166da371cb4dde0",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/playwright.config.ts",
+      "expected": "a1c05fffc0e14440c73e2e0245b957ee96043ef1db798deb279e4b0321b2153c",
+      "actual": "a1c05fffc0e14440c73e2e0245b957ee96043ef1db798deb279e4b0321b2153c",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/production-capture.mjs",
+      "expected": "815c2c6567ee06b31ef124a4d930a40e5ca68c6b39da8ce1531ccd999867b41d",
+      "actual": "815c2c6567ee06b31ef124a4d930a40e5ca68c6b39da8ce1531ccd999867b41d",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/seated.test.ts",
+      "expected": "d11f84723be2668d8df7062b24a875c9ccb9d02f159b25c8a358e90323b447b4",
+      "actual": "d11f84723be2668d8df7062b24a875c9ccb9d02f159b25c8a358e90323b447b4",
+      "match": true
+    },
+    {
+      "path": "src/world/characters/verify-cast-preservation.mjs",
+      "expected": "56a1498b2a82345b59fd21aba50c38e4f7abe35edcb23e155b5847fef946800c",
+      "actual": "56a1498b2a82345b59fd21aba50c38e4f7abe35edcb23e155b5847fef946800c",
+      "match": true
+    },
+    {
+      "path": "src/world/art/restaurant/food.ts",
+      "expected": "beebeaff71ddda862b3b9dc2e24848a0dc6a75ace60c42faa02413655b0f23a7",
+      "actual": "beebeaff71ddda862b3b9dc2e24848a0dc6a75ace60c42faa02413655b0f23a7",
+      "match": true
+    },
+    {
+      "path": "src/world/art/restaurant/furniture.ts",
+      "expected": "a34e1aa02c73565b8e11615ebc18ed11d1b5b578501a21de58577a42adac09b6",
+      "actual": "a34e1aa02c73565b8e11615ebc18ed11d1b5b578501a21de58577a42adac09b6",
+      "match": true
+    },
+    {
+      "path": "src/world/art/restaurant/index.ts",
+      "expected": "4851c55492f9419d35bb2c7338fa3ae736d9bef4b2bbe25b8976fb783e9c9d0a",
+      "actual": "4851c55492f9419d35bb2c7338fa3ae736d9bef4b2bbe25b8976fb783e9c9d0a",
+      "match": true
+    },
+    {
+      "path": "src/world/art/restaurant/primitives.ts",
+      "expected": "3015075cedaa530f34e1dca3ff80943ecbab7c49beb6689d8c6b02acfe4f5d55",
+      "actual": "3015075cedaa530f34e1dca3ff80943ecbab7c49beb6689d8c6b02acfe4f5d55",
+      "match": true
+    },
+    {
+      "path": "src/world/art/restaurant/projection.test.ts",
+      "expected": "470001ea10b8d29dcdd5ddb015fcdb8951b396a7ad23e5f66fceae422d6c12b9",
+      "actual": "470001ea10b8d29dcdd5ddb015fcdb8951b396a7ad23e5f66fceae422d6c12b9",
+      "match": true
+    },
+    {
+      "path": "src/world/art/restaurant/projection.ts",
+      "expected": "5999a5115faa021b8ddb400c9a8ff14d7b099ff5a209c3ed1efbc2058f8c43e0",
+      "actual": "5999a5115faa021b8ddb400c9a8ff14d7b099ff5a209c3ed1efbc2058f8c43e0",
+      "match": true
+    },
+    {
+      "path": "src/world/art/restaurant/types.ts",
+      "expected": "a27b059bee3fdf5b0d9c7e2dc4783e9fb096acd7569701126c2040fef789e991",
+      "actual": "a27b059bee3fdf5b0d9c7e2dc4783e9fb096acd7569701126c2040fef789e991",
+      "match": true
+    }
+  ],
+  "scale": "18 pixels/worldunit; not15 trial",
+  "images": {
+    "desktop-morning-town.png": "4359c8e4c5fcf8366d1de466e45ae681291b428111fa72641aa8d06f22f685ed",
+    "desktop-morning-restaurant.png": "07471ce16609d21e0260192d7737ccdb7548d9592df75e8515094008db07fe82",
+    "desktop-receipt-seated-1.png": "594b7b1740bd1935f0679c6f5b56047e313d790b79e31a4515d6603c3236dad9",
+    "phone-morning-restaurant.png": "e376eb9c5e47052977458fd93ba1336e3c326f61876536c3cad081967acc7e43",
+    "phone-receipt-seated-1.png": "7bc04a419819499f64a28dd018aea550eb88ce6ca059a77d93d1339b233f2943",
+    "phone-morning-town.png": "98b37e33793c5f152103b322b6f4dcc750534eb6b1ff86fed10c58af5f474124"
+  }
+}
