@@ -1,7 +1,7 @@
 ---
 id: 96
 title: Verify world overlays and keyboard journeys
-status: doing
+status: done
 priority: high
 type: chore
 created: 2026-11-06
@@ -17,11 +17,8 @@ The seven assigned browser specs use current world controls, retain their gamepl
 
 ## Notes
 
-- Reserved centrally after world/0095; owner GPT-6.1 Sol medium, branch `codex/0096-world-ui-browser-tests`, worktree `/private/tmp/junyan-world-ui-tests`, strict development port 5520 and preview port 5521.
-- Exclusive paths: `e2e/calm-ui.spec.ts`, `startup-focus.spec.ts`, `overlay-focus.spec.ts`, `overnight-keyboard.spec.ts`, `learning-help.spec.ts`, `scene-scheduling.spec.ts`, `cumulative-earnings.spec.ts`, and this ticket. No production source, shared helpers, dependency or configuration edits.
-- Base: world/0095 checkpoint `1826f16c423a37b672b0678c4fec08a6ba26a3a1`. New generated artifacts stay outside the repository.
-- Migrated the seven specs to physical world anchors, contextual service controls and journal/tray pockets. Keyboard service uses held arrow input and Tab/Enter; game/save reads are observational. Removed legacy gameplay dispatch setup from normal receipt, food-card and day-summary journeys; database fault fixtures retain their explicit fault-test identity.
-- Preserved lookup sharing and focus restoration, 44px controls, small-screen fit, receipt totals, two-day cumulative earnings, persistence/fault recovery, keyboard cancellation/modifiers, reduced-motion idle and offscreen suspension assertions. Removed HUD controls are checked through current contextual controls, pockets, summaries and authoritative saved state.
-- Intermediate verification reproduced two production regressions for the coordinator: idle reduced-motion rendering still painted at 30Hz, and collapsed dialogue-history words passed `getClientRects()` yet could not receive focus, trapping reverse Tab at word-card close. Root owns production fixes. Raw QA is private under `/private/tmp/junyan-world-private-qa/ui-tests`, never repository evidence.
-- Coordinator fixes through `7808f16` are present locally, with lead helper through `a8a7efb`. The exact rendering/source-word regression batch passed 12/12 on desktop/phone, including development and production nested-focus checks. Full all-enabled verification is running across 76 cases; this checkpoint does not claim ticket completion or integration acceptance.
-- Follow-up keeps the old-read race deterministic across longer physical travel: the explicit database fault fixture releases captured native completion only after the real new lookup. Keyboard walking now Tabs back from restored activity buttons to the world; summary wrap assertions use actual first/last controls, including progression controls. Standalone desktop keyboard full-day and old-read race checks passed; the summary-boundary adjustment is included in final verification.
+- Owner: Codex garden/UI worker. Branch `codex/0096-world-ui-browser-tests`, worktree `/private/tmp/junyan-world-ui-tests`, strict development port 5520 and preview port 5521.
+- Exclusive source: `e2e/calm-ui.spec.ts`, `startup-focus.spec.ts`, `overlay-focus.spec.ts`, `overnight-keyboard.spec.ts`, `learning-help.spec.ts`, `scene-scheduling.spec.ts`, `cumulative-earnings.spec.ts`, and this ticket. Shared helpers and production fixes stayed with their owners.
+- Normal play now uses physical world anchors, contextual controls and journal/tray pockets with read-only state observation. Keyboard service uses Tab, held arrows and Enter. Explicit database-fault fixtures retain fault identity; the stale native read is released only after the real new-word lookup. Preserved focus sharing/relookup, receipts, lifetime earnings, offline help/audio, 44px targets, viewport fit, persistence and strict idle/offscreen rendering checks.
+- Verification: all-enabled desktop/phone run on `3785cc8` passed 74/76; only the two animated-to-reduced cases failed because equivalent life metadata had different field order after restoration. Coordinator fix `7863d78` canonicalizes that comparison and adds a real create/restore/clock regression. All four strict scheduling cases then passed (4/4, 26.5s), without tolerance or initialization waits. Combined coverage completes all 76 requested cases. Production preview rebuild passed; desktop/phone screenshots inspected; console assertions clean. Raw QA remains exclusively in `/private/tmp/junyan-world-private-qa/ui-tests`, with none published or committed.
+- Cross-review: initial migration `80dae81` passed independent Sol High review; coordinator independently reviewed follow-up `3785cc8` and accepted final coverage. Learned: restored opener focus requires Tab back to the world before arrow movement, summary wrapping must include current progression controls, and physical travel must not let a delayed-read fixture finish before its intended race.
