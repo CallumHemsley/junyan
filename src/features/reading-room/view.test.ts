@@ -29,7 +29,7 @@ it('keeps each whole usable floor, furniture height and authored window inside t
       const placement = { id, rotation, x, y };
       if (!legal(brief, [], placement)) continue;
       const r = placementRect(placement, brief);
-      for (const x of [r.x, r.x + r.width]) for (const y of [r.y, r.y + r.height]) for (const z of [0, 1.25]) visible({ x, y, z });
+      for (const x of [r.x, r.x + r.width]) for (const y of [r.y, r.y + r.height]) for (const z of [0, 1.7]) visible({ x, y, z });
     }
     const window = readingRoomMap.props.find(p => p.id === `reading-room.${brief === 'window' ? 'broad' : 'alcove'}-window`)!;
     for (const x of [window.position.x - readingWindowFrame.overhang, window.position.x + window.width + readingWindowFrame.overhang]) {
@@ -42,6 +42,6 @@ it('includes an outlying selected ghost without altering project state', () => {
   const state = { brief: 'alcove' as const, selected: 'table' as const, draft: { x: 5, y: 4, rotation: 1 as const } };
   const before = structuredClone(state), rect = placementRect({ id: state.selected, ...state.draft }, state.brief);
   const frame = readingRoomFrame(state);
-  expect(frame).toContainEqual({ x: rect.x + rect.width, y: rect.y + rect.height, z: 1.25 });
+  expect(frame).toContainEqual({ x: rect.x + rect.width, y: rect.y + rect.height, z: 1.7 });
   expect(state).toEqual(before);
 });

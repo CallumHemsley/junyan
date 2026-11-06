@@ -16,7 +16,7 @@ function briefFrame(brief: BriefId): FramePoint[] {
   const region = regions[brief], points: FramePoint[] = [];
   for (let x = 0; x < region.columns; x++) for (let y = 0; y < region.rows; y++) {
     const placement = { id: 'chair' as const, x, y, rotation: 0 as const };
-    if (legal(brief, [], placement)) points.push(...extent(placementRect(placement, brief), 0, 1.25));
+    if (legal(brief, [], placement)) points.push(...extent(placementRect(placement, brief), 0, 1.7));
   }
   const window = readingRoomMap.props.find(prop => prop.id === `reading-room.${brief === 'window' ? 'broad' : 'alcove'}-window`)!;
   const frame = readingWindowFrame;
@@ -29,6 +29,6 @@ const frames = { window: briefFrame(briefIds[0]), alcove: briefFrame(briefIds[1]
 export function readingRoomFrame(state: Pick<State, 'brief' | 'selected' | 'draft'>): readonly FramePoint[] {
   const frame = frames[state.brief];
   return state.selected && state.draft
-    ? [...frame, ...extent(placementRect({ id: state.selected, ...state.draft }, state.brief), 0, 1.25)]
+    ? [...frame, ...extent(placementRect({ id: state.selected, ...state.draft }, state.brief), 0, 1.7)]
     : frame;
 }
