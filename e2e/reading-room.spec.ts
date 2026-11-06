@@ -33,8 +33,14 @@ async function place(page: Page, id: 'table' | 'chair', x: number, y: number, br
     if (await page.evaluate(() => navigator.maxTouchPoints > 0)) await control.tap();
     else { await control.focus(); await control.press('Enter'); }
   }
+  const since = await page.evaluate(() => (window as any).__audioProbe.length);
   await activate(page.locator(`.reading-room [data-item="${id}"]`));
-  if (turn) await activate(page.getByRole('button', { name: '转一下', exact: true }));
+  await expectNativeSpeech(page, `/audio/apartment/line-${id === 'table' ? 'window' : 'left'}.wav`, since);
+  if (turn) {
+    const beforeRotate = await page.evaluate(() => (window as any).__audioProbe.length);
+    await activate(page.getByRole('button', { name: '转一下', exact: true }));
+    await expectNativeSpeech(page, '/audio/apartment/line-rotate.wav', beforeRotate);
+  }
   if (native) await floorPoint(page, x, y, brief);
   else await activate(page.locator(`.reading-room [data-cell="${x},${y}"]`));
   await activate(page.getByRole('button', { name: '放这里', exact: true }));
