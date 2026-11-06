@@ -1,7 +1,7 @@
 ---
 id: 119
 title: Review and improve outdoor world craft against actual native views
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-06
@@ -25,7 +25,7 @@ The user wants different levels reviewed and improved in parallel. Outdoor scene
 - Candidate frozen: original staggered slate tiles, RGB material-value ramps, ridge/eave construction and connected interior boughs. Maps, water, routes, doors, actor/fade bounds and shared rendering are untouched. An initial geometric canopy backplate was rejected.
 - Verification: 683 rules passed with two workers, 23 outdoor navigation checks passed, six final art checks passed, TypeScript/build passed; desktop and phone opening/service/change/journal journeys passed. Detailed matched native captures and remaining journey results stay private.
 - Learning: the shared color shader treats exposure as sunlight strength, so traditional face factors do not establish material values; root coordinates that contract separately. Flat acreage, repeated building shapes and phone framing still limit quality.
-- Independent source and version-withheld visual gates are pending; this ticket remains doing and the broad Stardew craftsmanship bar remains open.
+- Independent source review found no actionable blocker. Version-withheld review verified local town-roof and park-crown gains, while both riverbank pairs tied and publisher references remained stronger. Accept this bounded pass; river water/shoreline work continues separately in0125 and the broad Stardew craftsmanship bar remains open.
 
 - Centrally reserved by root. Branch codex/0119-outdoor-visual-quality; worktree /private/tmp/junyan-world-outdoor-quality.
 - Lease art/town and art/landscape modules only initially. Propose any map/geometry/shared rendering change before editing. No restaurant/residential/shared painter/camera/schema/dependency changes. Ports5578/5579 strict.

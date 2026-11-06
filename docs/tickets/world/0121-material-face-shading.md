@@ -1,7 +1,7 @@
 ---
 id: 121
 title: Restore material face brightness through the shared world shader
-status: doing
+status: done
 priority: high
 type: bug
 created: 2026-11-06
@@ -23,3 +23,5 @@ Town and residential art pass face-value factors such as0.65/0.78 to shadeColor;
 - Root owns branch codex/0121-material-face-shading; worktree /private/tmp/junyan-world-material-shading; strict ports5584/5585.
 - Shared lighting.ts/type/tests only initially; preserve shadeAtmosphereColor’s physical sunlight-exposure semantics.119/120 own art callers and118 explicit restaurantRGB remains defaultfactor1.
 - All raw QA/diagnosis and captures stay private under /private/tmp/junyan-world-private-qa/0121. No public evidence bundle.
+
+- Reproduced missing ambient-side contrast with two failing regression cases, then restored material multiplication before atmospheric shading while keeping the solar-exposure API unchanged. Independent source review,46 focused checks and32 native original before/after images passed; matched16fixtures were identical with no console errors and no crushed night values. The combined artist passes retain that separation without applying it twice. Integrated verification:694 rules tests, production build,27 browser cases (one redundant size case skipped), and two actual production offline checks pass. This fixes a concrete shared regression; overall visual parity remains unmet.

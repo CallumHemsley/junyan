@@ -1,7 +1,7 @@
 ---
 id: 120
 title: Review and improve residential and rooftop visual craft
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-06
@@ -30,3 +30,5 @@ The user wants multiple levels reviewed and improved in parallel. Homes, circula
 - Independent visual/source acceptance and final verification are pending. Local material gains do not resolve the wider cutaway composition / blank-wall / renderer quality ceiling.
 - Verification: 685/685 Vitest tests pass (`--maxWorkers=2`), production build passes, native full-world physical door/stair journey passes on desktop and phone (2/2, 5.5 minutes), 14 matching native comparison fixtures have no console errors. First unconstrained suite hit an existing character-readability timeout; its focused retry and final complete suite passed. Independent acceptance remains outstanding.
 - Independent round016 found a stair-well floor overrun caused by splitting elevated floors and ground props. Fixed by retaining their original joint elevation sort for residential-stairs only; flat rooms keep floor-before-mat ordering. The actual painter boundary assertion failed with dark well colour before the fix and passes with the pale landing colour. Focused art/elevation/surface/furniture checks pass23/23; build passes. Six native rechecks have matching validated states: four stair images are byte-identical to baseline; two furnished-apartment images are byte-identical to the accepted candidate. Fresh independent visual recheck remains pending.
+
+- Integration acceptance: independent source review found no remaining blocker; four final stair captures were independently confirmed byte-identical to baseline and furnished views unchanged from the candidate. Combined day/night phone/desktop visual review confirmed the original well/tread containment remains correct. The integrated source passes694 rules tests, production build,27 browser cases (one redundant size case skipped) and two production offline checks. Local material gains are accepted; broad scene craft remains open.
