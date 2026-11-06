@@ -11,8 +11,8 @@ export type Props = {
   onRecover: (wordIds: string[]) => void; onPlay: (line: Line) => void;
   recoveredWordIds?: readonly string[]; freshWordIds?: readonly string[];
 };
-export const itemNames: Record<ItemId, string> = { bed: '床', table: '桌子', chair: '椅子', rug: '地毯', cushion: '靠垫', 'repairs.stool': '凳子', 'garden.planter': '盆栽', 'cats.cushion': '猫靠垫', vase: '花瓶', basket: '篮子', lamp: '灯' };
-const itemVocabulary = (id: ItemId) => id === 'cats.cushion' ? ['猫', '靠垫'] : [itemNames[id]];
+export const itemNames: Record<ItemId, string> = { bed: '床', table: '桌子', chair: '椅子', rug: '地毯', cushion: '靠垫', 'repairs.stool': '凳子', 'garden.planter': '盆栽', 'cats.cushion': '猫靠垫', vase: '花瓶', basket: '篮子', lamp: '灯', 'blue-vase': '蓝色花瓶', 'large-basket': '大篮子', 'small-lamp': '小灯' };
+const itemVocabulary = (id: ItemId) => id === 'blue-vase' ? ['蓝色', '花瓶'] : id === 'large-basket' ? ['大', '篮子'] : id === 'small-lamp' ? ['小', '灯'] : id === 'cats.cushion' ? ['猫', '靠垫'] : [itemNames[id]];
 export default function Apartment({ state, day, onAction, onLookup, onRecover, onPlay, recoveredWordIds = [], freshWordIds = [] }: Props) {
   const [showGrid,setShowGrid]=useState(false);
   const itemButtons=useRef(new Map<ItemId,HTMLButtonElement>());

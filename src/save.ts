@@ -3,11 +3,14 @@ import { z } from "zod";
 import { TABLES, TRAY_CAPACITY, type Content, type GameState } from "./contracts";
 import { getOrder, orderTotal } from "./game";
 import { canStand } from "./navigation";
+import { restoreProgression } from "./progression/save";
+import { restorePurchases } from "./progression/purchases";
 
 const boundedNumber = z.number().nonnegative().max(Number.MAX_SAFE_INTEGER);
 const tableSchema = z.number().int().min(1).max(TABLES.length);
 
 const stateSchema = z.object({
+  progression: z.unknown().optional(),
   neighbourhood: z.unknown().optional(),
   seed: z.number().int().min(0).max(0xffffffff),
   day: z.number().int().positive(),
@@ -51,7 +54,7 @@ export function validateSavedGame(
 ): GameState | null {
   const result = stateSchema.safeParse(value);
   if (!result.success) return null;
-  const { neighbourhood, ...state } = result.data;
+  const { neighbourhood, progression: savedProgression, ...state } = result.data;
   if (
     new Set(state.customers.map((customer) => customer.table)).size !==
       TABLES.length ||
@@ -67,7 +70,7 @@ export function validateSavedGame(
   let earnedToday = 0;
   for (const customer of state.customers) {
     const order = getOrder(state, customer.table, content);
-    if (!order || order.level !== state.level) return null;
+    if (!order || (state.day <= 3 ? order.level !== state.level : order.level > state.level)) return null;
     const total = orderTotal(order, content);
     if (
       !Number.isFinite(total) ||
@@ -103,7 +106,10 @@ export function validateSavedGame(
     const total = orderTotal(order, content);
     if (receipt.total !== total || receipt.change !== order.paid - total) return null;
   }
-  return { ...state, neighbourhood: restoreNeighbourhood(neighbourhood, state.day) };
+  const progression = restoreProgression(savedProgression, state, content);
+  if (!progression) return null;
+  const restored = restoreNeighbourhood(neighbourhood, state.day);
+  return { ...state, ...(savedProgression === undefined ? {} : { progression }), neighbourhood: { ...restored, apartment: restorePurchases(restored.apartment, progression) } };
 }
 
 function database(): Promise<IDBDatabase> {

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const itemIds = ['bed', 'table', 'chair', 'rug', 'cushion', 'repairs.stool', 'garden.planter', 'cats.cushion', 'vase', 'basket', 'lamp'] as const;
+export const itemIds = ['bed', 'table', 'chair', 'rug', 'cushion', 'repairs.stool', 'garden.planter', 'cats.cushion', 'vase', 'basket', 'lamp', 'blue-vase', 'large-basket', 'small-lamp'] as const;
 export type ItemId = typeof itemIds[number];
 export type Rotation = 0 | 1;
 export type Placement = { id: ItemId; x: number; y: number; rotation: Rotation };

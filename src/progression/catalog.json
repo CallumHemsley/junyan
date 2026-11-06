@@ -1,0 +1,142 @@
+{
+  "furniture": [
+    {
+      "id": "blue-vase",
+      "word": "花瓶",
+      "modifier": "蓝色",
+      "price": 8
+    },
+    {
+      "id": "large-basket",
+      "word": "篮子",
+      "modifier": "大",
+      "price": 8
+    },
+    {
+      "id": "small-lamp",
+      "word": "灯",
+      "modifier": "小",
+      "price": 24
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "cats.reunion",
+      "location": "cats",
+      "label": [
+        "看看",
+        "猫"
+      ],
+      "targets": [
+        "猫",
+        "白",
+        "跟着",
+        "来"
+      ]
+    },
+    {
+      "id": "cats.sunny",
+      "location": "cats",
+      "label": [
+        "猫",
+        "坐下"
+      ],
+      "targets": [
+        "猫",
+        "黑",
+        "坐下"
+      ]
+    },
+    {
+      "id": "cats.rainy",
+      "location": "cats",
+      "label": [
+        "看看",
+        "猫"
+      ],
+      "targets": [
+        "猫",
+        "门口",
+        "等一等"
+      ]
+    },
+    {
+      "id": "cats.route",
+      "location": "cats",
+      "label": [
+        "跟着",
+        "猫"
+      ],
+      "targets": [
+        "猫",
+        "窗边",
+        "来"
+      ]
+    },
+    {
+      "id": "repairs.lamp",
+      "location": "repairs",
+      "label": [
+        "修好",
+        "台灯"
+      ],
+      "targets": [
+        "台灯",
+        "灯泡",
+        "拧紧"
+      ]
+    },
+    {
+      "id": "repairs.toy",
+      "location": "repairs",
+      "label": [
+        "修好",
+        "玩具"
+      ],
+      "targets": [
+        "玩具",
+        "电池",
+        "换#replace",
+        "接上"
+      ]
+    },
+    {
+      "id": "garden.water",
+      "location": "garden",
+      "label": [
+        "浇",
+        "水"
+      ],
+      "targets": [
+        "干",
+        "浇",
+        "水"
+      ]
+    },
+    {
+      "id": "garden.observe",
+      "location": "garden",
+      "label": [
+        "看看",
+        "花"
+      ],
+      "targets": [
+        "比",
+        "昨天",
+        "高"
+      ]
+    },
+    {
+      "id": "apartment.place",
+      "location": "apartment",
+      "label": [
+        "放",
+        "这里"
+      ],
+      "targets": [
+        "放",
+        "这里"
+      ]
+    }
+  ]
+}

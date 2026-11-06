@@ -10,6 +10,7 @@ import type {
   Position,
 } from "./contracts";
 import { canStand } from "./navigation";
+import { canonicalWords, chooseOrder, initialProgression, orderTargets, progressionForDay, recordPractice, supportWords } from "./progression/model";
 
 export function isNear(a: Position, b: Position): boolean {
   return (
@@ -64,13 +65,13 @@ function playable(order: Order, content: Content): boolean {
   );
 }
 
-function startDay(content: Content, seed: number, day: number): GameState {
+function startDay(content: Content, seed: number, day: number, previous?: GameState, now = 0): GameState {
   const level = Math.min(day, 3);
   const customers: Customer[] = TABLES.map(({ table }) => {
     const orders = content.orders.filter(
       (order) =>
         order.table === table &&
-        order.level === level &&
+        (day > 3 ? order.level <= level : order.level === level) &&
         playable(order, content),
     );
     if (orders.length === 0)
@@ -78,7 +79,8 @@ function startDay(content: Content, seed: number, day: number): GameState {
     seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
     return {
       table,
-      orderId: orders[Math.floor((seed / 0x100000000) * orders.length)].id,
+      orderId: chooseOrder(orders, previous?.customers.find(c => c.table === table)?.orderId,
+        previous ? progressionForDay({ ...previous, day }) : initialProgression(day), day, now, seed / 0x100000000, content).id,
       phase: "seated",
     };
   });
@@ -180,13 +182,14 @@ export function reduceGame(
 ): GameState {
   if (action.type === "lookup") {
     const journal = recordLookup(state.journal, action, content);
-    return journal === state.journal ? state : { ...state, journal };
+    return journal === state.journal ? state : { ...state, journal, progression: supportWords(state, canonicalWords([action.wordId], content)) };
   }
   if (state.neighbourhood && state.neighbourhood.location !== "restaurant") return state;
   if (action.type === "next-day") {
     if (!state.ended) return state;
     return {
-      ...startDay(content, state.seed, state.day + 1),
+      ...startDay(content, state.seed, state.day + 1, state, Number.isFinite(action.now) && action.now! >= 0 ? action.now : 0),
+      progression: progressionForDay({ ...state, day: state.day + 1 }),
       journal: state.journal,
       earnings: state.earnings,
       neighbourhood: advanceNeighbourhood(state.neighbourhood ?? createNeighbourhood(state.day), state.day + 1),
@@ -270,6 +273,7 @@ export function reduceGame(
           activeTable: action.table,
           feedback: "wrong-food",
           mistakes: state.mistakes + 1,
+          progression: supportWords(state, orderTargets(order, content)),
         };
       return {
         ...state,
@@ -278,6 +282,7 @@ export function reduceGame(
         feedback: "none",
         receipt: null,
         customers: setPhase(state, action.table, "checkout"),
+        progression: recordPractice(state, `restaurant.${order.id}`, orderTargets(order, content), action.now),
         journal: recoverWords(
           state.journal,
           order.line.tokens.map((token) => token.id),
