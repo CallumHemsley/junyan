@@ -1,0 +1,8 @@
+ts	phase	decision	why	evidence	result
+2026-11-06T12:00:00Z	design	Separate progression from permanent recovery	Uncertain action evidence must not erase story progress	docs/ideas/research-progression-architecture.md	chosen
+2026-11-06T00:35:02.191437+00:00	design	Keep old daily finds and add three new visible purchases	Returning players need a purchase goal without losing legacy ownership	src/features/apartment/scene-data.ts	implemented
+2026-11-06T00:35:02.191564+00:00	design	Select any reached order level after day three	One authored order per table and level made same-level variety impossible	src/game.ts	twelve-shift regression passed
+2026-11-06T00:35:02.191566+00:00	evidence	Treat guided neighbourhood routines as supported exposure	Their controls guide the correct action and cannot establish independent recall	src/progression/scenarios.ts	rules tests passed
+2026-11-06T00:35:02.191568+00:00	evidence	Preserve early due times and require two clocks for growth	Rapid game days and early practice must not manufacture or postpone spaced recall	src/progression/progression.test.ts	16 progression tests passed
+2026-11-06T00:35:02.191569+00:00	verification	Add JSON import attributes	Playwright Node loading requires explicit JSON module type	src/progression/model.ts	browser check rerunning
+2026-11-06T00:35:02.191571+00:00	verification	Run full rules suite and production build	Check save roundtrips and runtime compilation before independent review	/private/tmp/junyan-0077-writer-tests.log	324 tests passed; build passed
