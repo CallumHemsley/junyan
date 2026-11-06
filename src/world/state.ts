@@ -1,3 +1,4 @@
+import {safeExitPosition,isExitConnected} from "./exit-safety";
 import {restoreLife,advanceLife} from "./life";
 import { z } from "zod";
 import { facingSchema, pointSchema, type WorldState, type Point, type FeatureId } from "./schema";
@@ -15,8 +16,8 @@ export function restoreWorld(value:unknown,maps:MapRegistry,location="restaurant
   if(!parsed.success) return createWorld(maps,location);
   const state=parsed.data,map=maps[state.mapId];
   if(!map) return createWorld(maps,location);
-  const position=canStand(map,state.position)?state.position:map.defaultSpawn;
-  const returnPositions=Object.fromEntries(Object.entries(state.returnPositions).filter(([id,p])=>maps[id]&&canStand(maps[id],p)));
+  const position=safeExitPosition(map,state.position);
+  const returnPositions=Object.fromEntries(Object.entries(state.returnPositions).filter(([id,p])=>maps[id]&&isExitConnected(maps[id],p)));
   const activeActivity=state.activeActivity && nearbyAnchors(map,position).some(a=>a.featureId===state.activeActivity)?state.activeActivity:null;
   const activeAnchorId=activeActivity?(nearbyAnchors(map,position).find(a=>a.id===state.activeAnchorId&&a.featureId===activeActivity)?.id??nearbyAnchors(map,position).find(a=>a.featureId===activeActivity)?.id??null):null;
   return {...state,position:{x:position.x,y:position.y},returnPositions,activeActivity,activeAnchorId,life:restoreLife(state.life)};
