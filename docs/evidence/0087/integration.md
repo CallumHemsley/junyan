@@ -35,3 +35,13 @@ Verify actual keyboard/touch approaches in courtyard, workshop, rooftop and exte
 ## Authored ecology content
 
 compileLife includes life-owned, schema-validated routine recipes relative to stable authored landmarks. They add the office regular at town.market-pocket and birds at the park reading stone, river jetty bank and mature rooftop pots. A map-owned hook for the same canonical character suppresses its supplemental recipe. Every waypoint and segment still uses shared navigation and entrance exclusions. No map JSON or shared schema is edited. Actual current town, park, riverbank and rooftop geometry tests verify the recipes. Rooftop bird presence reads garden maturity supplied by foundation.
+
+## One restaurant/world presence policy
+
+Use `restaurantPresence(game,life)` for BOTH restaurant art projection and global world-life exclusions. `insideCharacterIds` is independent of the player's current map. `tables` reports canonical characterId, inside, reactionVisible and mealVisible. Never independently filter phase !== served in one consumer while the other still draws served people.
+
+A seated, ordered or checkout customer stays inside. A served customer also stays inside until the player acknowledges their visible reaction with the existing continue/close action. At that exact action, foundation calls `releaseServedCustomer(life,game,table)` and checkpoints the returned life state. The helper is a no-op before served and idempotent after acknowledgment. It stores day/table/order identity, so reload preserves presence and another day's order does not inherit a release. No real-clock deadline or new day progression exists.
+
+Restaurant art draws the person only when table.inside. It keeps accepted meal props when table.mealVisible even after departure. The existing receipt/order/game state remains unchanged. Neighbourhood life receives `excludedCharacterIds:restaurantPresence(game,life).insideCharacterIds` on EVERY map. Once released, existing authored routines become eligible. An unacknowledged reaction stays present across reload.
+
+For independent unvoiced background life, proposed canonical actor IDs are neighbour-reader, neighbour-caretaker and neighbour-courier. Character owner must register distinct silhouettes/palettes first; map owners author matching safe hooks at reading, work and delivery places. Life will add profiles/routines only after those contracts land, so unknown IDs cannot silently render as the player's default sprite. No new dialogue or audio is requested.

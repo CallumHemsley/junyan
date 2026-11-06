@@ -11,13 +11,14 @@ export const lifeStateSchema = z.strictObject({
   elapsedMs: z.number().finite().nonnegative().default(0),
   discoveries: z.array(discovery).max(10000),
   reactions: z.array(reaction).max(100),
+  serviceDepartures: z.array(z.strictObject({ day: z.number().int().positive().max(Number.MAX_SAFE_INTEGER), table: z.number().int().min(1).max(4), orderId: id })).max(4).default([]),
   pauses: z.array(z.strictObject({ mapId: id, targetId: id, startMs: z.number().finite().nonnegative(), durationMs: z.number().finite().positive(), previousMs: z.number().finite().nonnegative() })).max(100).default([]),
 }).superRefine((value, context) => {
   const keys = value.discoveries.map(item => JSON.stringify([item.mapId, item.landmarkId]));
   if (new Set(keys).size !== keys.length) context.addIssue({ code: 'custom', message: 'Duplicate discovery' });
 });
 export type LifeState = z.infer<typeof lifeStateSchema>;
-export const initialLifeState = (): LifeState => ({ version: 1, elapsedMs: 0, discoveries: [], reactions: [], pauses: [] });
+export const initialLifeState = (): LifeState => ({ version: 1, elapsedMs: 0, discoveries: [], reactions: [], pauses: [], serviceDepartures: [] });
 export function advanceLife(state: LifeState, deltaMs: number, visible: boolean): LifeState {
   if (!visible || !Number.isFinite(deltaMs) || deltaMs <= 0 || !Number.isFinite(state.elapsedMs + deltaMs)) return state;
   return { ...state, elapsedMs: state.elapsedMs + deltaMs };

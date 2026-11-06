@@ -21,7 +21,7 @@ it('shades cat and bird materials explicitly and preserves inherited occlusion a
     const { ctx, drawn } = surface(.45);
     const bases: unknown[] = [];
     const actor: ActorPose = { id: 'life.actor', characterId: kind === 'cat' ? 'white-cat' : 'bird', kind, position: { x: 2, y: 2 }, facing: 'south', action: 'idle', activity: 'sit', phaseMs: 100, radius: .16 };
-    drawLifeActor(ctx, actor, { project: point => point, elapsedMs: 100, reducedMotion: true, shadeColor: base => { bases.push(base); return '#010203'; } }, () => { throw Error('Wildlife must not use a human renderer'); });
+    drawLifeActor(ctx, actor, { playerPosition: { x: 0, y: 0 }, width: 200, height: 100, pass: 'objects', project: point => point, elapsedMs: 100, reducedMotion: true, shadeColor: base => { bases.push(base); return '#010203'; } }, () => { throw Error('Wildlife must not use a human renderer'); });
     expect(drawn.length).toBeGreaterThan(5);
     expect(drawn.every(item => item.color === '#010203')).toBe(true);
     expect(drawn.every(item => item.alpha <= .45)).toBe(true);
@@ -32,7 +32,7 @@ it('shades cat and bird materials explicitly and preserves inherited occlusion a
 it('shades non-emissive reaction strokes without replacing inherited alpha', () => {
   const { ctx, drawn } = surface(.45);
   const state = { ...initialLifeState(), reactions: [{ mapId: 'riverbank', targetId: 'jetty', reaction: 'ripple' as const, atMs: 0 }] };
-  drawLifeReactions(ctx, state, 'riverbank', [{ id: 'jetty', position: { x: 3, y: 3 } }], { project: point => point, elapsedMs: 900, reducedMotion: false, shadeColor: () => '#010203' });
+  drawLifeReactions(ctx, state, 'riverbank', [{ id: 'jetty', position: { x: 3, y: 3 } }], { playerPosition: { x: 0, y: 0 }, width: 200, height: 100, pass: 'objects', project: point => point, elapsedMs: 900, reducedMotion: false, shadeColor: () => '#010203' });
   expect(drawn).toHaveLength(3);
   expect(drawn.every(item => item.color === '#010203' && item.alpha === .225)).toBe(true);
   expect(ctx.globalAlpha).toBe(.45);

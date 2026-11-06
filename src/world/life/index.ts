@@ -9,3 +9,4 @@ export type { LifeView, ResidentDrawer } from './render';
 export { navigationFor } from './navigation';
 export { courtyardHabitats } from './habitats';
 export { lifeObjects } from './objects';
+export { restaurantPresence, releaseServedCustomer } from './presence';

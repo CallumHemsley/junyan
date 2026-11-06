@@ -39,7 +39,7 @@ export function sampleLife(plan: LifePlan, context: LifeContext, navigation?: Na
       id: actor.id, characterId: actor.characterId, kind: actor.profile.kind, position,
       facing: nearby && !walking ? facing(position, context.player) : walking ? facing(phase.from, phase.to) : 'south',
       action: walking ? 'walk' : nearby && actor.profile.kind === 'resident' ? 'interact' : 'idle',
-      activity, phaseMs: context.reducedMotion ? 0 : time - phase.startMs,
+      activity, phaseMs: context.reducedMotion ? 0 : paused ? context.elapsedMs - pause!.startMs : time - phase.startMs,
       greeting: actor.profile.greeting, radius: actor.profile.radius,
     } satisfies ActorPose];
   });

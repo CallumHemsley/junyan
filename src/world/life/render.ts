@@ -3,7 +3,7 @@ import type { Position } from '../../contracts';
 import type { ActorPose } from './model';
 import type { LifeState } from './interactions';
 
-export type LifeView = Pick<WorldRenderView, 'project' | 'elapsedMs' | 'reducedMotion' | 'shadeColor'>;
+export type LifeView = WorldRenderView;
 export type ResidentDrawer = (ctx: CanvasRenderingContext2D, actor: ActorPose, view: LifeView, posture: 'stand' | 'sit' | 'work' | 'react') => void;
 
 function wildlife(ctx: CanvasRenderingContext2D, actor: ActorPose, view: LifeView) {
