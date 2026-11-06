@@ -80,3 +80,7 @@ Additional accepted observations: floor light patches now multiply inherited alp
 4. Full original opening/service/change/journal/offline/audio journey, final contextual HUD review, gift claim/idempotence in real UI, and program-wide independent Astra experience acceptance remain central gates. Focused review has not declared them passed.
 
 Next: provide the fixed workshop tip and evidence to foundation/reviewer, verify the route stall and phase correction on their new executable head, rerun foreground/repeat proof if integration changes, and address concrete independent experience findings. Keep 0082 doing until those gates are satisfied.
+
+### Confirmed waypoint reproduction
+
+`waypoint-repro.mjs` evaluates the viewport's exact waypoint/move/clear sequence with shared geometry and this authored map. At 20ms, 33.333ms and 40ms injected frame steps, it reproduces the same stop at (11,10.5): a residual delta around 1e-14 (or 1e-12) shifts the intermediate node, then moving=false clears the still-valid remaining route. Shared canWalk confirms the final segment is clear. At 16ms and 16.667ms the same route reaches the target. The issue is thus frame-step dependent controller epsilon handling, not insufficient workshop clearance. See waypoint-reproduction.json. Foundation was asked to snap/skip reached nodes before testing displacement and retain remaining nodes on a non-blocked snap.

@@ -1,0 +1,127 @@
+{
+  "method": "exact viewport waypoint/move/clear sequence evaluated with actual shared geometry and authored map; this is a controller reproduction, not an independent movement engine",
+  "original": [
+    {
+      "x": 11,
+      "y": 7.5
+    },
+    {
+      "x": 11,
+      "y": 10.5
+    },
+    {
+      "x": 8,
+      "y": 10.8
+    }
+  ],
+  "runs": [
+    {
+      "milliseconds": 16,
+      "position": {
+        "x": 8,
+        "y": 10.8
+      },
+      "stall": null,
+      "reached": true
+    },
+    {
+      "milliseconds": 16.6666666667,
+      "position": {
+        "x": 8,
+        "y": 10.8
+      },
+      "stall": null,
+      "reached": true
+    },
+    {
+      "milliseconds": 20,
+      "position": {
+        "x": 11,
+        "y": 10.49999999999999
+      },
+      "stall": {
+        "frame": 61,
+        "position": {
+          "x": 11,
+          "y": 10.49999999999999
+        },
+        "next": {
+          "x": 11,
+          "y": 10.5
+        },
+        "delta": {
+          "x": 0,
+          "y": 1.0658141036401503e-14
+        },
+        "remaining": [
+          {
+            "x": 8,
+            "y": 10.8
+          }
+        ],
+        "segmentIsWalkable": true
+      },
+      "reached": false
+    },
+    {
+      "milliseconds": 33.3333333333,
+      "position": {
+        "x": 11,
+        "y": 10.499999999997016
+      },
+      "stall": {
+        "frame": 37,
+        "position": {
+          "x": 11,
+          "y": 10.499999999997016
+        },
+        "next": {
+          "x": 11,
+          "y": 10.5
+        },
+        "delta": {
+          "x": 0,
+          "y": 2.9842794901924208e-12
+        },
+        "remaining": [
+          {
+            "x": 8,
+            "y": 10.8
+          }
+        ],
+        "segmentIsWalkable": true
+      },
+      "reached": false
+    },
+    {
+      "milliseconds": 40,
+      "position": {
+        "x": 11,
+        "y": 10.49999999999999
+      },
+      "stall": {
+        "frame": 31,
+        "position": {
+          "x": 11,
+          "y": 10.49999999999999
+        },
+        "next": {
+          "x": 11,
+          "y": 10.5
+        },
+        "delta": {
+          "x": 0,
+          "y": 1.0658141036401503e-14
+        },
+        "remaining": [
+          {
+            "x": 8,
+            "y": 10.8
+          }
+        ],
+        "segmentIsWalkable": true
+      },
+      "reached": false
+    }
+  ]
+}
