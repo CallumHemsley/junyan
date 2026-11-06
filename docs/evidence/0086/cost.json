@@ -1,6 +1,6 @@
 {
   "source": "origin/codex/0084-landscape",
-  "tip": "14a2ce1fb95eb00955bfc3f6f85aae34f6ef99b8",
+  "tip": "e6402f6ab6f762364ffd2b7acb583b77430d1690",
   "claim": "Absolute isolated atmosphere sampling and Canvas2D drawing cost on authored broad-map hooks; no end-to-end traversal performance claim.",
   "iterations": 200,
   "runs": 5,
@@ -16,44 +16,44 @@
   "errors": [],
   "hotspots": [
     {
-      "function": "R",
-      "url": "http://127.0.0.1:5488/assets/harness-D6mEUwVm.js",
-      "hits": 142
+      "function": "G",
+      "url": "http://127.0.0.1:5488/assets/canvas-CYPRSz6K.js",
+      "hits": 193
     },
     {
-      "function": "nt",
-      "url": "http://127.0.0.1:5488/assets/harness-D6mEUwVm.js",
-      "hits": 134
+      "function": "L",
+      "url": "http://127.0.0.1:5488/assets/canvas-CYPRSz6K.js",
+      "hits": 177
+    },
+    {
+      "function": "T",
+      "url": "http://127.0.0.1:5488/assets/canvas-CYPRSz6K.js",
+      "hits": 146
     },
     {
       "function": "",
-      "url": "http://127.0.0.1:5488/assets/harness-D6mEUwVm.js",
-      "hits": 123
-    },
-    {
-      "function": "q",
-      "url": "http://127.0.0.1:5488/assets/harness-D6mEUwVm.js",
-      "hits": 104
+      "url": "http://127.0.0.1:5488/assets/canvas-CYPRSz6K.js",
+      "hits": 115
     },
     {
       "function": "fill",
       "url": "",
-      "hits": 98
+      "hits": 103
     },
     {
       "function": "(idle)",
       "url": "",
-      "hits": 43
+      "hits": 83
     },
     {
-      "function": "(garbage collector)",
-      "url": "",
-      "hits": 42
+      "function": "T",
+      "url": "http://127.0.0.1:5488/assets/canvas-CYPRSz6K.js",
+      "hits": 67
     },
     {
       "function": "(program)",
       "url": "",
-      "hits": 31
+      "hits": 64
     }
   ],
   "rows": [
@@ -64,60 +64,60 @@
         "height": 68
       },
       "hooks": {
-        "water": 5,
-        "foliage": 94,
-        "shadows": 71,
+        "water": 7,
+        "foliage": 231,
+        "shadows": 154,
         "lights": 0
       },
       "samples": [
         {
           "sample": {
-            "msPerFrame": 0.16050000000046566,
-            "commandsPerFrame": 642
+            "msPerFrame": 0.24300000000046565,
+            "commandsPerFrame": 932
           },
           "sampleAndDraw": {
-            "msPerFrame": 0.7865000000002328,
-            "commandsPerFrame": 642
+            "msPerFrame": 1.295,
+            "commandsPerFrame": 932
           }
         },
         {
           "sample": {
-            "msPerFrame": 0.14949999999953434,
-            "commandsPerFrame": 642
+            "msPerFrame": 0.26949999999953433,
+            "commandsPerFrame": 932
           },
           "sampleAndDraw": {
-            "msPerFrame": 0.7640000000002328,
-            "commandsPerFrame": 642
+            "msPerFrame": 1.361500000001397,
+            "commandsPerFrame": 932
           }
         },
         {
           "sample": {
-            "msPerFrame": 0.1525,
-            "commandsPerFrame": 642
+            "msPerFrame": 0.3039999999990687,
+            "commandsPerFrame": 932
           },
           "sampleAndDraw": {
-            "msPerFrame": 0.7790000000002328,
-            "commandsPerFrame": 642
+            "msPerFrame": 1.3960000000009314,
+            "commandsPerFrame": 932
           }
         },
         {
           "sample": {
-            "msPerFrame": 0.16449999999953435,
-            "commandsPerFrame": 642
+            "msPerFrame": 0.27700000000186265,
+            "commandsPerFrame": 932
           },
           "sampleAndDraw": {
-            "msPerFrame": 0.8359999999997672,
-            "commandsPerFrame": 642
+            "msPerFrame": 1.2764999999990687,
+            "commandsPerFrame": 932
           }
         },
         {
           "sample": {
-            "msPerFrame": 0.15650000000023284,
-            "commandsPerFrame": 642
+            "msPerFrame": 0.24,
+            "commandsPerFrame": 932
           },
           "sampleAndDraw": {
-            "msPerFrame": 0.7680000000004656,
-            "commandsPerFrame": 642
+            "msPerFrame": 1.2029999999981373,
+            "commandsPerFrame": 932
           }
         }
       ],
@@ -135,75 +135,75 @@
         "height": 80
       },
       "hooks": {
-        "water": 80,
-        "foliage": 114,
-        "shadows": 88,
+        "water": 71,
+        "foliage": 311,
+        "shadows": 224,
         "lights": 0
       },
       "samples": [
         {
           "sample": {
-            "msPerFrame": 0.7784999999997672,
-            "commandsPerFrame": 677
+            "msPerFrame": 0.7014999999990686,
+            "commandsPerFrame": 938
           },
           "sampleAndDraw": {
-            "msPerFrame": 1.4475,
-            "commandsPerFrame": 677
+            "msPerFrame": 1.8494999999995343,
+            "commandsPerFrame": 938
           }
         },
         {
           "sample": {
-            "msPerFrame": 0.7419999999995344,
-            "commandsPerFrame": 677
+            "msPerFrame": 0.7935000000009313,
+            "commandsPerFrame": 938
           },
           "sampleAndDraw": {
-            "msPerFrame": 1.3905000000004657,
-            "commandsPerFrame": 677
+            "msPerFrame": 1.963499999998603,
+            "commandsPerFrame": 938
           }
         },
         {
           "sample": {
-            "msPerFrame": 0.7544999999995343,
-            "commandsPerFrame": 677
+            "msPerFrame": 0.7570000000018626,
+            "commandsPerFrame": 938
           },
           "sampleAndDraw": {
-            "msPerFrame": 1.380999999999767,
-            "commandsPerFrame": 677
+            "msPerFrame": 2.1694999999995344,
+            "commandsPerFrame": 938
           }
         },
         {
           "sample": {
-            "msPerFrame": 0.7069999999995343,
-            "commandsPerFrame": 677
+            "msPerFrame": 0.8675,
+            "commandsPerFrame": 938
           },
           "sampleAndDraw": {
-            "msPerFrame": 1.4240000000002329,
-            "commandsPerFrame": 677
+            "msPerFrame": 1.9144999999995342,
+            "commandsPerFrame": 938
           }
         },
         {
           "sample": {
-            "msPerFrame": 0.73,
-            "commandsPerFrame": 677
+            "msPerFrame": 0.7930000000004657,
+            "commandsPerFrame": 938
           },
           "sampleAndDraw": {
-            "msPerFrame": 1.4429999999993015,
-            "commandsPerFrame": 677
+            "msPerFrame": 1.9164999999990686,
+            "commandsPerFrame": 938
           }
         }
       ],
       "centerPixel": [
-        0,
-        0,
-        0,
-        0
+        44,
+        50,
+        84,
+        82
       ]
     }
   ],
   "studyFrame": {
-    "count": 42,
-    "medianMs": 2.199999999953434,
-    "minMs": 1.3000000000465661,
-    "maxMs": 21.899999999906868
+    "count": 50,
+    "medianMs": 2.2000000001862645,
+    "minMs": 1.3999999999068677,
+    "maxMs": 23.40000000037253
   }
 }
