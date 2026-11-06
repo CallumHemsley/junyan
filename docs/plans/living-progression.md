@@ -1,7 +1,7 @@
 ---
 title: Living progression implementation and verification
 created: 2026-11-06
-status: doing
+status: done
 ---
 
 ## Chosen direction
@@ -35,3 +35,7 @@ The separately named `show-me` skill was not found in the installed skill roots.
 ## Concurrent main integration
 
 Main advanced to `ba4419b` with the language boundary work and tickets 0077 through 0080. This feature moved to ticket 0081 and branch `codex/0081-living-progression`. Its existing worktree and ports remain `/private/tmp/junyan-0077-progression` and 5277/5278. Progression catalog entries now use stable word IDs, shop and invitation tokens use WordLine, chrome uses progressionUi, and the merged apartment recovery and language-scoped save boundaries remain intact. Prior c7ceebf verification is historical; the integrated revision is verified again.
+
+## Completion
+
+Runtime `c544efa` passed 353 tests and build, 37 writer browser cases, independent integrated rules and live review, and inspected phone/desktop evidence. The coordinator repeated tests/build and both new saved-game browser journeys on Node 22.23.4. The initial desktop offline audio predicate timeout and four unchanged passing reruns are retained in the evidence and follow-up ticket 0082. Implementation and review are complete; the coordinator owns the authorized PR merge. See [verification receipts](../evidence/0081/README.md).

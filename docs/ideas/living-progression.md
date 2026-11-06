@@ -35,7 +35,7 @@ Adding another sense requires an explicit identity decision. Translating or rena
 
 Spendable money is cumulative `earnings - progression.spent`. A purchase changes the debit and durable purchase receipt in one reducer result. Duplicate and unaffordable purchases do nothing. Placement and undo never refund a purchase.
 
-Old saves without progression remain valid and retain all story and furniture state. Malformed review entries are discarded independently. Conflicting alias records are discarded conservatively. Purchase receipts restore paid furniture if the apartment payload resets during validation. A debit lower than the receipt prices is repaired upward. A higher valid debit is preserved. Negative, nonfinite, unknown, duplicate, or unaffordable financial records reject the save rather than minting money. The existing startup recovery UI handles a rejected save.
+Old saves without progression remain valid and retain all story and furniture state. Malformed review entries are discarded independently. Conflicting alias records are discarded conservatively. Purchase receipts restore paid furniture if the apartment payload resets during validation. A debit lower than the receipt prices is repaired upward. A higher valid debit is preserved. Negative, nonfinite, unknown, duplicate, or unaffordable financial records reject the save rather than minting money. The existing startup path treats a rejected save as unavailable.
 
 ## Extending the slice
 
