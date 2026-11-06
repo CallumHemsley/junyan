@@ -22,3 +22,10 @@ The scope in `docs/world-program/ledger.md` is implemented against `docs/world-p
 - Exclusive paths: src/world/atmosphere/*.
 - Also owns this ticket and `docs/evidence/0086/`. Do not edit shared contracts or other owners' files.
 - Publish map seam requests and integration instructions in the owned evidence directory.
+
+- Reusable module, depth adapter and reflection hooks published. Draft PR https://github.com/CallumHemsley/junyan/pull/29. Current full suite 324 passed; atmosphere 11. Production study desktop/phone motion, browser reduced-motion and cost evidence: docs/evidence/0086/progress.md.
+- ACTIVE: foundation wiring, actual connected-map traversal and independent review remain. No integrated quality PASS.
+
+- Follow-up: canonical named phases documented; explicit material/emissive boundary and exact emitters added. Native paintWorld snapshots for five maps in three phases inspected. Bridge cutouts and connected-water fill protect crossings. Latest Node 22 full suite: 389 passed, TypeScript passed. Visual findings remain open; see docs/evidence/0086/progress.md.
+
+- Shadow correction: atmosphere5d0609a plus unchanged landscape52a4046 establish one contact/cast boundary. Isolated native landmark captures, overlap/inherited-alpha/deck pixel checks and400-test Node22 regression evidence are in docs/evidence/0086/shadow-boundary.md. Focused review pending; full goal stays ACTIVE.

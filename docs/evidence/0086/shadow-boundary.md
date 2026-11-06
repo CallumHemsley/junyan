@@ -1,0 +1,20 @@
+# Shadow boundary correction
+
+Status ACTIVE. Root inspected geometric cards in landscape c5243d5. Latest inspected landscape 6732017 still calls its .4-alpha diamond shadow() from depth-sorted drawLandscapeProp for mature-tree, tree, willow, bamboo and other props. Atmosphere also emitted a cast quad and contact rectangle for standard vegetation. These are overlapping ownership, not deliberate deeper grove shade.
+
+Boundary for coordinator/landscape owner: landscape draws small trunk/base contact shadows in its ground pass only, preserving inherited alpha. Remove shadow cards from its depth-sorted object callbacks. Atmosphere owns phase-driven cast silhouettes for trees, mature trees, willow and bamboo. Automatic park/riverbank vegetation hooks set contact:false. No art files are edited by atmosphere.
+
+Atmosphere now emits one low-opacity, 20-point lobed cast silhouette per canopy in ground pass, with type-specific proportions and a seeded stable outline. Its center follows explicit phase direction/height. Mature tree radius is calibrated to the authored canopy width. Optional contacts are small 12-point ovals, at most .5 tile wide, rather than canopy-sized rectangles. Cast silhouettes share an explicit cast-shadow role and are union-filled once, so overlapping trees do not multiply darkness. This preserves shade coverage and removes stacked cards. Current phase alpha is multiplied by .65; the adapter also multiplies inherited host alpha.
+
+Authored bridge/boardwalk/deck rectangles are explicit shadow exclusions. The cast union is clipped against each exclusion, below actors and crossing surfaces. No blur, global filter, hidden clock, collision edit or new animation loop is added. Phase and injected seed determine the silhouette; reduced motion does not change it.
+
+Verification plan: isolated no-shadow/contact/cast/composite captures on pond deck, moon bridge and evening grove, plus pixel checks for overlap union, inherited alpha and deck exclusions. Landscape contact export/removal is required before the composed boundary can be accepted. Old object cards must not be hidden by reducing all shade to zero.
+
+
+Combined verification completed locally with atmosphere 5d0609a and landscape 52a4046. The landscape owner removed object-pass shadow() calls, exported drawContactShadows and replaced the broad forest-floor fill cards with broken moss/leaf texture. This owner change is imported unchanged; atmosphere authored no landscape files. Ground includes the actual contact pass; contact, cast and object layers are captured separately against neutral backing. Combined captures include the native player in the same depth queue. Evening pond deck, moon bridge and grove were inspected at desktop/phone sizes; morning cast/composite comparisons are also retained. Organic cast coverage remains, small contacts ground the trunks, cards are absent from object-only layers and the bridge/player stay above the cast pass.
+
+Real Canvas2D checks in shadows/proof.json: one cast alpha=64 and duplicate-overlap cast alpha=64; inherited .5 fade yields alpha=32 and restores .5. Deck exclusion alpha=0 while the unexcluded outside pixel remains64. The actual landscape contact helper yields alpha51 at full parent opacity and26 at half opacity, restoring the inherited .5. There are zero browser errors. Source module hashes and both owner heads are recorded. The earlier legacy-object diagnostic remains in shadows-baseline-6732017 with its scope explained.
+
+Node22.23.4 full suite on combined source cd28a53 passed400 tests across45 files; TypeScript passed. Component cost was remeasured on landscape52a4046 with 5 interleaved runs of200 frames on a640x360 logical canvas/44x44 visible rectangle: park median0.9835ms/frame (range0.944–1.0295), riverbank1.4245 (range1.4115–1.5585). These are component costs, not a whole-App responsiveness verdict.
+
+The focused correction is ready for root/independent visual review. The full atmosphere ticket remains ACTIVE for reviewed production integration and broader game acceptance; no overall quality PASS or main merge is claimed.

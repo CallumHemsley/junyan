@@ -7,11 +7,11 @@ Own coherent morning, noon, evening and night light; warm windows and lamps; rea
 Owner: builder 9, thread 01a1ae20-d945-75c9-a467-153692bd804e, cloud environment ccarenv_8ab563cfdc2481919e97b0163e598afa, checkout /workspace/junyan. Ticket 0086. Branch codex/0086-atmosphere. Strict port 5488. Contract v1, central allocation fb167fd. Owned paths: src/world/atmosphere, this evidence directory and ticket.
 
 Throughput checkpoint:
-- Blocking first steps: central allocation acquired; foundation draw adapter pending.
+- Blocking first steps: central allocation acquired; foundation adapter and depth queue acquired; final explicit material callback adoption and integrated proof pending.
 - Independent workstreams: pure sampler, local canvas adapter and visual proof stay inside owned paths.
 - Shared mutable state: no App, renderer, schema, dependencies or save edits. Foundation owns integration and the only animation loop.
 - Smallest safe decomposition: one writer owns coupled atmosphere math and tests; independent review belongs to 0088.
 
 First deliverable: explicit pure sampling and a projection adapter. No persistent clock, random state, global listeners, blur, audio or collision changes. Time of day is supplied by foundation from the authoritative game; this module does not infer it from wall time.
 
-Prototype comparison, 10 atmosphere tests, production study cost evidence and foundation adapter alignment are published. Remaining: production wiring, authored reflection silhouettes, actual world traversal and independent review. See progress.md. Goal remains active.
+Prototype comparison, actual-art material studies, determinism/emissive checks and foundation adapter alignment are published. Canonical input uses named day phases. See progress.md for current test scope and limitations. Remaining: production wiring, actual world traversal and independent review. See progress.md. Goal remains active.

@@ -1,0 +1,221 @@
+{
+  "errors": [],
+  "evidence": [
+    {
+      "name": "desktop",
+      "mapId": "courtyard",
+      "phase": "morning",
+      "lit": true,
+      "canvas": [
+        1280,
+        720
+      ],
+      "scale": 24,
+      "lights": 8
+    },
+    {
+      "name": "desktop",
+      "mapId": "courtyard",
+      "phase": "evening",
+      "lit": true,
+      "canvas": [
+        1280,
+        720
+      ],
+      "scale": 24,
+      "lights": 8
+    },
+    {
+      "name": "desktop",
+      "mapId": "courtyard",
+      "phase": "night",
+      "lit": true,
+      "canvas": [
+        1280,
+        720
+      ],
+      "scale": 24,
+      "lights": 8
+    },
+    {
+      "name": "desktop",
+      "mapId": "apartment",
+      "phase": "morning",
+      "lit": true,
+      "canvas": [
+        1280,
+        720
+      ],
+      "scale": 24,
+      "lights": 15
+    },
+    {
+      "name": "desktop",
+      "mapId": "apartment",
+      "phase": "evening",
+      "lit": true,
+      "canvas": [
+        1280,
+        720
+      ],
+      "scale": 24,
+      "lights": 15
+    },
+    {
+      "name": "desktop",
+      "mapId": "apartment",
+      "phase": "night",
+      "lit": true,
+      "canvas": [
+        1280,
+        720
+      ],
+      "scale": 24,
+      "lights": 15
+    },
+    {
+      "name": "desktop",
+      "mapId": "workshop",
+      "phase": "morning",
+      "lit": true,
+      "canvas": [
+        1280,
+        720
+      ],
+      "scale": 24,
+      "lights": 14
+    },
+    {
+      "name": "desktop",
+      "mapId": "workshop",
+      "phase": "evening",
+      "lit": true,
+      "canvas": [
+        1280,
+        720
+      ],
+      "scale": 24,
+      "lights": 14
+    },
+    {
+      "name": "desktop",
+      "mapId": "workshop",
+      "phase": "night",
+      "lit": true,
+      "canvas": [
+        1280,
+        720
+      ],
+      "scale": 24,
+      "lights": 14
+    },
+    {
+      "name": "phone",
+      "mapId": "courtyard",
+      "phase": "morning",
+      "lit": true,
+      "canvas": [
+        390,
+        560
+      ],
+      "scale": 18,
+      "lights": 8
+    },
+    {
+      "name": "phone",
+      "mapId": "courtyard",
+      "phase": "evening",
+      "lit": true,
+      "canvas": [
+        390,
+        560
+      ],
+      "scale": 18,
+      "lights": 8
+    },
+    {
+      "name": "phone",
+      "mapId": "courtyard",
+      "phase": "night",
+      "lit": true,
+      "canvas": [
+        390,
+        560
+      ],
+      "scale": 18,
+      "lights": 8
+    },
+    {
+      "name": "phone",
+      "mapId": "apartment",
+      "phase": "morning",
+      "lit": true,
+      "canvas": [
+        390,
+        560
+      ],
+      "scale": 18,
+      "lights": 15
+    },
+    {
+      "name": "phone",
+      "mapId": "apartment",
+      "phase": "evening",
+      "lit": true,
+      "canvas": [
+        390,
+        560
+      ],
+      "scale": 18,
+      "lights": 15
+    },
+    {
+      "name": "phone",
+      "mapId": "apartment",
+      "phase": "night",
+      "lit": true,
+      "canvas": [
+        390,
+        560
+      ],
+      "scale": 18,
+      "lights": 15
+    },
+    {
+      "name": "phone",
+      "mapId": "workshop",
+      "phase": "morning",
+      "lit": true,
+      "canvas": [
+        390,
+        560
+      ],
+      "scale": 18,
+      "lights": 14
+    },
+    {
+      "name": "phone",
+      "mapId": "workshop",
+      "phase": "evening",
+      "lit": true,
+      "canvas": [
+        390,
+        560
+      ],
+      "scale": 18,
+      "lights": 14
+    },
+    {
+      "name": "phone",
+      "mapId": "workshop",
+      "phase": "night",
+      "lit": true,
+      "canvas": [
+        390,
+        560
+      ],
+      "scale": 18,
+      "lights": 14
+    }
+  ]
+}
