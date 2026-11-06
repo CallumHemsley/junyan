@@ -1,0 +1,29 @@
+{
+  "head": "e02a747c3b4d4fc6a476ea744ecb6bdc1a738132",
+  "records": [
+    {
+      "device": "desktop",
+      "map": "park",
+      "fixture": {
+        "x": 54,
+        "y": 18,
+        "facing": "north"
+      },
+      "tag": "park.tea-pavilion",
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    },
+    {
+      "device": "phone",
+      "map": "park",
+      "fixture": {
+        "x": 54,
+        "y": 18,
+        "facing": "north"
+      },
+      "tag": "park.tea-pavilion",
+      "actual": "park",
+      "method": "Declared defaultSpawn save fixture from independently completed ordinary opening; production renderer; not traversal proof"
+    }
+  ]
+}
