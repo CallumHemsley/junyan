@@ -70,7 +70,7 @@ export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,v
   if(occlusion?.fadeWhenPlayerBehind && occludesPlayer(occlusion,view.playerPosition))ctx.globalAlpha=.45;
   object.draw(ctx,view);ctx.restore();
  }});
- if(restaurant)for(const customer of restaurant.customers)objects.push({depth:customer.position.x+customer.position.y,draw:()=>drawActor(ctx,atFeet({...view,pass:"objects"},surfaceHeight(map.id,customer.position)),sampleActor({characterId:customer.characterId,facing:customer.facing,action:"idle",posture:"sit",elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion}),customer.position)});
+ if(restaurant)for(const customer of restaurant.customers)objects.push({depth:customer.position.x+customer.position.y,draw:()=>drawActor(ctx,atFeet({...view,pass:"objects"},surfaceHeight(map.id,customer.position)),sampleActor({characterId:customer.characterId,facing:customer.facing,action:"idle",posture:"sit",seatHeight:customer.seatHeight,elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion}),customer.position)});
  const actors=game&&world?actorsFor(map,game,world,view.elapsedMs,view.reducedMotion):[];
  for(const actor of actors)objects.push({depth:actor.position.x+actor.position.y,draw:()=>drawLifeActor(ctx,actor,atFeet(view,surfaceHeight(map.id,actor.position)),(_ctx,resident,_lifeView,posture)=>drawActor(ctx,atFeet({...view,pass:"objects"},surfaceHeight(map.id,resident.position)),sampleActor({characterId:resident.characterId,facing:resident.facing,action:resident.action,elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion,posture}),resident.position),world?.life)});
  for(const module of modules)module.drawMap?.(ctx,map,{...view,pass:"objects"});

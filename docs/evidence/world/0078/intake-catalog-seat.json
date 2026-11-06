@@ -1,0 +1,152 @@
+{
+  "method": "Only exact reviewed owner leases restored; no shared App/save/schema from owners",
+  "owners": [
+    {
+      "consumedHead": "b1fcbca6dc28d8d7327e014b34a518b74001d1a2",
+      "lease": [
+        "src/world/characters"
+      ],
+      "files": [
+        {
+          "path": "src/world/characters/actors.test.ts",
+          "sha256": "e2a3d1eba23f265eae629b9dcc8a30e97d0a4bba5c52963d9423ac970b48a940"
+        },
+        {
+          "path": "src/world/characters/adapter.ts",
+          "sha256": "8a24836aaf871d93405f9d4922497335a037e78fd8ace24ca93d518c3c01a45e"
+        },
+        {
+          "path": "src/world/characters/artwork.d.mts",
+          "sha256": "abbbf8582f6430b1f6c8ce2d966eb874e54f3bf39af40fbe6875100fd0f84cfa"
+        },
+        {
+          "path": "src/world/characters/artwork.mjs",
+          "sha256": "ba29ea73c1afe595cb772bfe851f7aba3a2823061ba2bbd8735b17385d92f2dd"
+        },
+        {
+          "path": "src/world/characters/background-harness.html",
+          "sha256": "3968423e2b99a208145500c3f03713ffd181df5b5e1c695453e45fdf25b44ae3"
+        },
+        {
+          "path": "src/world/characters/background-harness.ts",
+          "sha256": "ab34461ddab4846553d51478eb5d06c6e66c9c94579dc024fe35393824c54d92"
+        },
+        {
+          "path": "src/world/characters/background.test.ts",
+          "sha256": "6d68194a8883e4f6e670271ed60816e7fa0e037b026901ddd0a6585bf879b458"
+        },
+        {
+          "path": "src/world/characters/background.ts",
+          "sha256": "3b244ce66d8358532a2aecb38eb8c15c155c8e590c830b97499f89b0855d5d2e"
+        },
+        {
+          "path": "src/world/characters/capture-background.mjs",
+          "sha256": "40434aab3c34a5bdc644cbec23d76c83124bfbd7332b2e2eab7b70d69083a2cc"
+        },
+        {
+          "path": "src/world/characters/capture-lighting.mjs",
+          "sha256": "2c83ef997fc3aab1dae7fecb199caca36b6a4edf4d0bb29d76c84f4ec53136ee"
+        },
+        {
+          "path": "src/world/characters/capture.mjs",
+          "sha256": "fcbd9bfcbf9c199fcb0af5ffda5c7f48f89cd7425ce8eb317667a7123aab47b0"
+        },
+        {
+          "path": "src/world/characters/catalog.test.ts",
+          "sha256": "ae82908d218b05d93df8a1e0b6bc1ba449cbee50705b94d22f8479e84b4e7562"
+        },
+        {
+          "path": "src/world/characters/catalog.ts",
+          "sha256": "1fce83540a62fe46aadbf4694c4b9b6b05e09c83a5eff92a02c8b9fcb1d2089a"
+        },
+        {
+          "path": "src/world/characters/depth.test.ts",
+          "sha256": "a3b7e7fa04f40ace2c19ffa7d8b26b82f06fd19fafc3a8eb8b2b2141d816a104"
+        },
+        {
+          "path": "src/world/characters/harness.html",
+          "sha256": "e9138b94162207b266df758ae75cdb70c661f539d5f3936eb99d2c1161fe7aee"
+        },
+        {
+          "path": "src/world/characters/harness.ts",
+          "sha256": "4c41979473c48307c67a50603631cfe4226fc80d595737e9baa7bf905a7e81c2"
+        },
+        {
+          "path": "src/world/characters/index.ts",
+          "sha256": "bcc2d2a9ae926383782b95e5c4253db536ddd696e9109eaa9032cbf2b0586a88"
+        },
+        {
+          "path": "src/world/characters/lighting-proof.html",
+          "sha256": "5e0c3fa49508fae02a1d6cf5674d6297ee5e921eb081930bed5e52da3ebf3e28"
+        },
+        {
+          "path": "src/world/characters/lighting-proof.ts",
+          "sha256": "477d1128f0498c3a1724cfd61d29a0e1f17d128834ef4c0f9166da371cb4dde0"
+        },
+        {
+          "path": "src/world/characters/playwright.config.ts",
+          "sha256": "a1c05fffc0e14440c73e2e0245b957ee96043ef1db798deb279e4b0321b2153c"
+        },
+        {
+          "path": "src/world/characters/production-capture.mjs",
+          "sha256": "815c2c6567ee06b31ef124a4d930a40e5ca68c6b39da8ce1531ccd999867b41d"
+        },
+        {
+          "path": "src/world/characters/seated.test.ts",
+          "sha256": "d11f84723be2668d8df7062b24a875c9ccb9d02f159b25c8a358e90323b447b4"
+        },
+        {
+          "path": "src/world/characters/verify-cast-preservation.mjs",
+          "sha256": "56a1498b2a82345b59fd21aba50c38e4f7abe35edcb23e155b5847fef946800c"
+        }
+      ]
+    },
+    {
+      "consumedHead": "d196bed969d457574b2126452d0fd716bcb97a0e",
+      "lease": [
+        "src/world/art/restaurant"
+      ],
+      "files": [
+        {
+          "path": "src/world/art/restaurant/food.ts",
+          "sha256": "beebeaff71ddda862b3b9dc2e24848a0dc6a75ace60c42faa02413655b0f23a7"
+        },
+        {
+          "path": "src/world/art/restaurant/furniture.ts",
+          "sha256": "a34e1aa02c73565b8e11615ebc18ed11d1b5b578501a21de58577a42adac09b6"
+        },
+        {
+          "path": "src/world/art/restaurant/index.ts",
+          "sha256": "4851c55492f9419d35bb2c7338fa3ae736d9bef4b2bbe25b8976fb783e9c9d0a"
+        },
+        {
+          "path": "src/world/art/restaurant/primitives.ts",
+          "sha256": "3015075cedaa530f34e1dca3ff80943ecbab7c49beb6689d8c6b02acfe4f5d55"
+        },
+        {
+          "path": "src/world/art/restaurant/projection.test.ts",
+          "sha256": "470001ea10b8d29dcdd5ddb015fcdb8951b396a7ad23e5f66fceae422d6c12b9"
+        },
+        {
+          "path": "src/world/art/restaurant/projection.ts",
+          "sha256": "5999a5115faa021b8ddb400c9a8ff14d7b099ff5a209c3ed1efbc2058f8c43e0"
+        },
+        {
+          "path": "src/world/art/restaurant/types.ts",
+          "sha256": "a27b059bee3fdf5b0d9c7e2dc4783e9fb096acd7569701126c2040fef789e991"
+        }
+      ]
+    }
+  ],
+  "scale": "Existing native18 pixels per world unit retained; candidate15 not applied",
+  "checks": [
+    "Node22 build passed",
+    "19 actor/seat/projection/presence/preflight tests passed"
+  ],
+  "limits": [
+    "Current plan IDs preflight only; later life payloads require recheck",
+    "NPC tread support is labelled deterministic fixture, not authored stair resident",
+    "Seated five-reference visual calibration remains open",
+    "Not reconciled with advanced main266e9bc"
+  ]
+}

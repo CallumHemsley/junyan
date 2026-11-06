@@ -1,5 +1,6 @@
 import type { Character, Content, Food, GameState, Phase, Position } from '../../../contracts';
 import type { RestaurantMap } from './types';
+import { RESTAURANT_FURNITURE_PROFILE as furniture } from './furniture';
 
 export const RESTAURANT_TABLES = [
   { table: 1, propId: 'table-5-9' },
@@ -17,6 +18,7 @@ export type RestaurantCustomer = {
   position: Position;
   facing: 'south';
   seated: true;
+  seatHeight: number;
 };
 export type RestaurantMeal = { table: number; propId: string; foods: readonly Food['kind'][] };
 export type RestaurantProjection = {
@@ -44,8 +46,8 @@ export function projectRestaurant(
     if (!departedCharacterIds.includes(character.id)) customers.push({
       id: `restaurant.customer.${binding.table}`, table: binding.table,
       characterId: character.id, appearance: character.appearance, phase: customer.phase,
-      position: { x: prop.position.x + prop.width / 2, y: prop.position.y - .6 },
-      facing: 'south', seated: true,
+      position: { x: prop.position.x + prop.width / 2, y: prop.position.y + furniture.rearStoolCenterOffsetY },
+      facing: 'south', seated: true, seatHeight: furniture.stoolTop,
     });
     if (customer.phase === 'checkout' || customer.phase === 'served') {
       meals.push({ table: binding.table, propId: binding.propId,

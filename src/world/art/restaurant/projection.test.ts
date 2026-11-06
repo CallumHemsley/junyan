@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { content } from '../../../content';
 import { createGame, orderTotal, reduceGame } from '../../../game';
 import { TABLES } from '../../../contracts';
-import { restaurantObjects } from './index';
+import { restaurantObjects, RESTAURANT_FURNITURE_PROFILE } from './index';
 import type { RestaurantView } from './types';
 import { projectRestaurant } from './projection';
 import { restaurantMap } from '../../../../docs/evidence/0089/foundation-map';
@@ -14,9 +14,11 @@ describe('authoritative restaurant projection', () => {
     const result = projectRestaurant(state, content, map);
     expect(result.customers).toHaveLength(4);
     expect(result.customers.map(c => c.position)).toEqual([
-      { x: 5, y: 7.4 }, { x: 17, y: 7.4 }, { x: 5, y: 12.4 }, { x: 17, y: 12.4 },
+      { x: 5, y: 7.48 }, { x: 17, y: 7.48 }, { x: 5, y: 12.48 }, { x: 17, y: 12.48 },
     ]);
     expect(result.customers.every(c => content.characters.some(character => character.id === c.characterId))).toBe(true);
+    expect(result.customers.every(c => c.seatHeight === RESTAURANT_FURNITURE_PROFILE.stoolTop)).toBe(true);
+    expect(result.customers.every(c => !('z' in c.position))).toBe(true);
     expect(result.meals).toEqual([]);
   });
 
