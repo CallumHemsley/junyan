@@ -4,7 +4,7 @@ import { contentWords } from '../content/words';
 import { worldMaps } from './registry';
 import { nearbyExitTargets } from './exit-targets';
 import { canStand, canWalk, findPath } from './geometry';
-import { explorationCamera, project } from './camera';
+import { cameraForMap, project } from './camera';
 import { pickSurface } from './surfaces';
 import { advanceRoute } from './locomotion';
 import { createWorld, reduceWorld } from './state';
@@ -23,7 +23,7 @@ it('offers the real residence threshold from its clear nearby landing using the 
 
 it('distinguishes the unsupported elevated face inverse from the existing reachable threshold', () => {
   const map = worldMaps.town, player = { x: 20.3, y: 29.1 };
-  const camera = explorationCamera(map.bounds, player, 720, 462);
+  const camera = cameraForMap(map.bounds, player, 720, 462, 15);
   expect(canStand(map, player)).toBe(true);
   expect(pickSurface(project({ x: 11.5, y: 21.32 }, camera, 1.325), camera, map)).toBeNull();
   expect(findPath(map, player, { x: 11.5, y: 21.6 })).not.toHaveLength(0);
