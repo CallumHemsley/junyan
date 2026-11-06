@@ -63,7 +63,8 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
     }
     if (next === world) return game;
     let player=game.player;
-    let neighbourhood=next.activeActivity ? { ...state, location: next.activeActivity } : state;
+    const physicalLocation:LocationId|undefined=({restaurant:"restaurant",apartment:"apartment",courtyard:"cats",workshop:"repairs",rooftop:"garden"} as Record<string,LocationId>)[next.mapId];
+    let neighbourhood=physicalLocation&&physicalLocation!==state.location?{...state,location:physicalLocation}:state;
     if(action.type==="world-interact" && next.activeActivity) {
       const anchor=maps[next.mapId].anchors.find(a=>a.id===next.activeAnchorId);
       if(next.activeActivity==="restaurant"&&anchor) {

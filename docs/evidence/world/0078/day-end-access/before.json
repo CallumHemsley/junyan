@@ -1,0 +1,17 @@
+{
+  "method": "Declared valid fourth-receipt arrival; actual table anchor and reaction close; probes next-day summary reachability",
+  "records": [
+    {
+      "device": "desktop",
+      "nextDay": 0,
+      "summary": 0,
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "nextDay": 0,
+      "summary": 0,
+      "errors": []
+    }
+  ]
+}

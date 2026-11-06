@@ -38,3 +38,8 @@ it('keeps paid ownership, debit, placement collision and learning through corrup
  expect(reduceNeighbourhoodGame(restored,{type:'purchase-furniture',id:'blue-vase'},content)).toBe(restored);
  expect(restored.progression?.spent).toBe(spent);
 });
+it('synchronizes physical restaurant return before legacy location can block the next shift',()=>{
+ const base=earned(),game={...base,neighbourhood:{...base.neighbourhood!,location:'apartment' as const},world:createWorld(worldMaps)};
+ const returned=reduceNeighbourhoodGame(game,{type:'world-clock',elapsedMs:1000},content);
+ expect(returned.neighbourhood?.location).toBe('restaurant');expect(reduceNeighbourhoodGame(returned,{type:'advance-world-day',now:1000},content).day).toBe(2);
+});

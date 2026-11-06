@@ -88,8 +88,9 @@ export default function App() {
   const activityOpen = binding !== null;
   const blockingPanel=panel==="help"||panel==="journal"||panel==="tray";
   const [giftNotice, setGiftNotice] = useState(false);
+  const [summaryOpen,setSummaryOpen]=useState(false);
   const [ambientLine,setAmbientLine]=useState<Line|null>(null);
-  const dayEndOpen = activityOpen && locationId === "restaurant" && state.ended && panel === "none" && !word;
+  const dayEndOpen = summaryOpen && world.mapId === "restaurant" && state.ended && panel === "none" && !word;
   const ambience = useAmbience(ready && session.phase === "day" && world.mapId === "restaurant");
   const playback = useRef<ReturnType<typeof createPlayback> | null>(null);
   if (!playback.current)
@@ -280,9 +281,9 @@ export default function App() {
     return () => document.removeEventListener("keydown", trap);
   }, [panel, wordOpen, dayEndOpen, ready, session.phase]);
   useEffect(()=>{
-    const key=(event:KeyboardEvent)=>{if(event.key!=="Escape"||event.defaultPrevented)return;if(word)setWord(null);else if(sessionRef.current.phase==="day"){dispatch({type:"world-close"});setPanel("none");}};
+    const key=(event:KeyboardEvent)=>{if(event.key!=="Escape"||event.defaultPrevented)return;if(word)setWord(null);else if(summaryOpen)setSummaryOpen(false);else if(sessionRef.current.phase==="day"){dispatch({type:"world-close"});setPanel("none");}};
     window.addEventListener("keydown",key);return()=>window.removeEventListener("keydown",key);
-  },[dispatch,word]);
+  },[dispatch,word,summaryOpen]);
   useEffect(() => {
     if (!testMode) return;
     const hooks = {
@@ -335,6 +336,7 @@ export default function App() {
     return word?<WordToken word={word} look={wordState(state.journal[word.id],fresh.includes(word.id))} onLookup={lookup}/>:null;
   };
   const close = () => {
+    if(state.ended && world.mapId==="restaurant" && panel==="table")setSummaryOpen(true);
     if((panel==="table"||panel==="kitchen")&&world.activeActivity==="restaurant")dispatch({type:"world-close"});
     setPanel("none");
     setWord(null);
@@ -450,10 +452,11 @@ export default function App() {
           }
         }} paused={panel !== "none" || wordOpen || dayEndOpen}/>
         <WorldPocketBar journalControl={<><span>{registered("journal")}</span><button aria-label="本子" onClick={()=>setPanel("journal")}><Book/><span>{words.length}</span></button></>} trayControl={<><span>{registered("tray")}</span><button aria-label="托盘" onClick={()=>setPanel("tray")}><span aria-hidden="true">▱</span><span>{state.tray.length}/6</span></button></>}/>
+        {state.ended && world.mapId==="restaurant" && <button className="world-day-summary" aria-label={ui.summary} onClick={()=>{setPanel("none");setSummaryOpen(true);}}><Sun/></button>}
         {activityOpen && binding && <ContextualInteraction target={binding}
           title={<span aria-label={binding.kind==="table"?`${binding.table}桌点餐`:binding.kind==="kitchen"?"厨房":binding.kind==="repair"?"修理间":binding.kind==="cat"?"院子":binding.kind==="garden"?"花园":"家"}>{binding.kind==="table"?binding.table:null}{registered(binding.kind==="table"?"customer":binding.kind==="kitchen"?"kitchen":binding.kind==="repair"?"repairs.workshop":binding.kind==="cat"?"cats.courtyard":binding.kind==="garden"?"garden.garden":"apartment.home")}</span>}
           dialogue={binding.kind==="table"&&order&&character&&customer?{current:{line:customer.phase==="served"?character.thanks:order.line},history:customer.phase==="ordered"?[{line:character.greeting}]:[]}:undefined}
-          onClose={()=>{dispatch({type:"world-close"});setPanel("none");}} returnFocusTo={panelTrigger.current} suspended={wordOpen}
+          onClose={()=>{if(state.ended&&binding.kind==="table")setSummaryOpen(true);dispatch({type:"world-close"});setPanel("none");}} returnFocusTo={panelTrigger.current} suspended={wordOpen}
           onLookup={lookup} onPlay={playLine} recoveredWordIds={Object.keys(state.journal).filter(id=>state.journal[id].recovered)} freshWordIds={fresh}
           actions={binding.kind==="table"&&customer?[{id:"service",control:<button className="world-submit" aria-label={customer.phase==="served"?"继续招呼":customer.phase==="checkout"?"递上找零":"上菜"} onClick={()=>customer.phase==="served"?close():customer.phase==="checkout"?completePayment():dispatch({type:"deliver",table,now:Date.now()})}>→</button>}]:binding.kind==="kitchen"?[{id:"carry",control:<button className="world-submit" aria-label="端好了，去上菜" onClick={close}>↗</button>}]:[]}>
           {binding.kind==="table"&&order&&customer&&<RestaurantTableControls phase={customer.phase} order={order} foods={content.foods} change={change} onChange={setChange} onLookup={lookup}
@@ -463,7 +466,7 @@ export default function App() {
           {binding.kind==="kitchen"&&<KitchenControls trayHeading={<span>{registered("tray")} {state.tray.length}/6</span>} foods={content.foods} tray={state.tray} pickupEnabled={state.tray.length<6&&state.customers.some(c=>c.phase==="ordered")} onPickup={foodId=>dispatch({type:"pickup",foodId})} onReturn={index=>dispatch({type:"return-food",index})} onLookup={lookup}/>}
           {binding.kind!=="table"&&binding.kind!=="kitchen"&&<Neighbourhood contextual target={binding} state={neighbourhood} day={state.day} onAction={dispatch} onLookup={lookup} onPlay={playLine} onRecover={acknowledgeRecovery} recoveredWordIds={Object.keys(state.journal).filter(id=>state.journal[id].recovered)} freshWordIds={fresh}/>}
           {(state.feedback==="wrong-food"||state.feedback==="wrong-change")&&binding.kind==="table"&&character&&<div role="status">{tokens(character.retry)}</div>}
-          {binding.kind === "apartment" && <ProgressionView game={state} content={content} now={Date.now()} onAction={action=>{dispatch(action);if(action.type==="follow-scenario"){dispatch({type:"world-close"});close();}}} onLookup={lookup}/>}
+          {binding.kind === "apartment" && <ProgressionView game={state} content={content} now={Date.now()} onAction={action=>{dispatch(action);if(action.type==="follow-scenario"){setSummaryOpen(false);dispatch({type:"world-close"});close();}}} onLookup={lookup}/>}
           <NeighbourhoodGifts state={neighbourhood} onClaim={giftId=>{const before=sessionRef.current;const next=dispatch({type:"claim-neighbourhood-gift",giftId});if(next!==before)playLine(apartmentLines.gift);}}/>
           {giftNotice&&<FeatureLine line={apartmentLines.gift} onLookup={lookup} onPlay={playLine}/>}
         </ContextualInteraction>}
@@ -579,7 +582,7 @@ export default function App() {
           >
             <p className="eyebrow">{ui.closed}</p>
             <h2>{ui.summaryTitle}</h2>
-            <ProgressionView game={state} content={content} now={Date.now()} onAction={action=>{dispatch(action);if(action.type==="follow-scenario"){dispatch({type:"world-close"});close();}}} onLookup={lookup}/>
+            <ProgressionView game={state} content={content} now={Date.now()} onAction={action=>{dispatch(action);if(action.type==="follow-scenario"){setSummaryOpen(false);dispatch({type:"world-close"});close();}}} onLookup={lookup}/>
             <div className="tally">
               <p>
                 <span>{ui.servedLabel}</span>
@@ -600,13 +603,14 @@ export default function App() {
             <button
               className="primary"
               onClick={() => {
+                setSummaryOpen(false);
                 dispatch({ type: "advance-world-day", now: Date.now() });
                 close();
               }}
             >
               {ui.nextDay} <span>→</span>
             </button>
-            <button className="secondary" onClick={() => {dispatch({type:"world-close"});close();}}>出去走走</button>
+            <button className="secondary" onClick={() => {setSummaryOpen(false);dispatch({type:"world-close"});close();}}>出去走走</button>
           </section>
         </div>
       )}
