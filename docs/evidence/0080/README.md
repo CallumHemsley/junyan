@@ -81,3 +81,15 @@ The final type/geometry check after explicit material callback conversion passes
 `material-proof.json` and same-camera desktop/phone morning/evening captures verify the explicit callback with actual `shadeAtmosphereColor`, shared production camera and character sampling, particles off, and no shared context proxy. Wood, foliage, masonry and cat fur change and remain distinct. All individual objects retain inherited alpha 0.45 after drawing. These are adapter proof captures, not a claim that production's transitional context proxy or phase binding is accepted. Screenshots were inspected.
 
 Long houses now expose separately sorted south/east facade sections and roofs with narrow per-face occlusion bounds. Each authored prop still has exactly one matching ID to suppress the generic fallback. An object's callback paints that object directly. This avoids one sort point for a long residential row. Integrated walk-behind captures and independent review remain next.
+
+## Depth traversal inspection
+
+`capture-depth.mjs` walks through the production viewport on desktop and phone to nine front/side/behind viewpoints covering the central house, courtyard tree and sunny bench. All intended viewpoints were reached by actual input with clean consoles. `depth-proof.json`, screenshots and actual motion videos retain positions and source head. Inspected desktop and phone house-side, house-behind, tree-behind and bench-behind captures. Side approaches keep the player in front of the correct facade; roofs/crowns fade over the player behind them, while the bench naturally occludes the lower body. These writer observations do not replace independent experience review or demonstrate every possible depth ordering.
+
+## Remaining integration requests
+
+Foundation must consume `courtyardForCats(map,state,day)` before interaction as well as rendering so moving white-cat targets do not retain the introductory bicycle approach. Bind `cats.<target>` to the existing select action once. Mount controls-only presentation to remove legacy remote-target chrome from the world overlay. Fresh owner CSS fixes its immediate overlap, but it is not the final contextual UI.
+
+Life already accepts authoritative habitats. Its current override fixes cats at their sampled endpoint. A state change can therefore jump white between courtyard and doorway/window rather than visibly traversing the route. Coordinate injected-time transition animation through the life owner using shared footprint paths; do not rewrite cat progression or create a second clock. The authored white route already clears the central house and basket.
+
+The preserved rainy repeat has no rain consumer in current production atmosphere. `catHabitat(state,day).routine` retains anchored rainy conditions and should drive a coordinated atmosphere effect with a dry doorway shelter. This owner has not invented a competing weather field or renderer. This visual/gameplay inference remains open with atmosphere/foundation.
