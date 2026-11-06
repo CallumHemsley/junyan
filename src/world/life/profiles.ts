@@ -1,4 +1,5 @@
 import { content } from '../../content';
+import type { BackgroundResidentId } from '../characters';
 import type { Profile } from './model';
 
 const residents: Profile[] = content.characters.map(character => ({
@@ -7,7 +8,8 @@ const residents: Profile[] = content.characters.map(character => ({
   resting: character.id === 'zhang-laoshi' ? 'sit' : character.id === 'lin-jie' ? 'work' : 'idle',
   greeting: character.greeting,
 }));
-export const backgroundProfiles: readonly Profile[] = [
+type BackgroundProfile = Omit<Profile, 'id' | 'greeting'> & { id: BackgroundResidentId; greeting?: never };
+export const backgroundProfiles: readonly BackgroundProfile[] = [
   { id: 'resident-reader', kind: 'resident', homeMap: 'park', speed: .58, radius: .22, dwellMs: 22000, resting: 'sit' },
   { id: 'resident-courier', kind: 'resident', homeMap: 'town', speed: 1.15, radius: .22, dwellMs: 6500, resting: 'work' },
   { id: 'resident-groundskeeper', kind: 'resident', homeMap: 'park', speed: .7, radius: .22, dwellMs: 17000, resting: 'work' },

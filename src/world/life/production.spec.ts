@@ -72,10 +72,11 @@ test('ordinary traversal reaches unvoiced residents, reactions and saved discove
   expect(await page.evaluate(() => '__TEST__' in window)).toBe(false);
   expect((await savedGame(page)).customers.every(customer => customer.phase === 'seated')).toBe(true);
   const visits = [
-    { mapId: 'town', ids: ['resident-courier'] },
+    { mapId: 'town', ids: [] },
     { mapId: 'courtyard', ids: ['resident-laundry-neighbour'] },
     { mapId: 'park', ids: ['resident-reader', 'resident-groundskeeper'] },
     { mapId: 'riverbank', ids: ['resident-river-walker'] },
+    { mapId: 'town', ids: ['resident-courier'] },
   ];
   try {
     for (const visit of visits) {
