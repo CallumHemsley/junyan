@@ -28,3 +28,13 @@ Provide `canStand`, swept `canWalk`, and `route` callbacks with NPC footprint an
 Map owners should use canonical character IDs `lin-jie`, `xiao-li`, `zhang-laoshi`, `xiao-zhou`, `aunt`, `white-cat`, `black-cat`, or `bird`. Place route hooks at benches, safe work positions, tree edges, or roof planters, away from exit triggers. Unknown actors are diagnosed, not rendered as random icons.
 
 Life state validation and named event reducers are standalone exports for foundation's save boundary. No shared save or schema writes occur here. Existing activity state remains authoritative. No new audio or dialogue is authored.
+
+## First rules verification
+
+`node node_modules/vitest/vitest.mjs run src/world/life/life.test.ts` passed 12 tests. `node node_modules/typescript/bin/tsc --noEmit` passed. These prove pure module behavior with explicit test geometry, not connected-map experience. The pnpm wrapper tried a dependency reinstall and stopped before compilation; direct installed binaries work without dependency changes.
+
+Foundation published `src/world/schema.ts`, `geometry.ts`, `camera.ts`, and `render-contract.ts`. Its current `canWalk` and `findPath` use a fixed .22 radius. Life requests optional actor-radius inputs for those functions and a path map with entrance exclusion colliders. Current Navigation injection deliberately leaves that adaptation at the shared integration boundary.
+
+Courtyard exports `catHabitat(state, day)` for authoritative cat positions. Life will consume that owner API once the committed module shape is read, avoiding duplicate cat story placement rules. Do not enable generic roaming white-cat hooks during story/repeat sequences.
+
+Exports ready for foundation are `compileLife(map,navigation)`, `sampleLife(plan,context)`, `nearbyLife(plan,actors,player,navigation)`, `interactLife(state,plan,actors,context,actionId,navigation)`, and `restoreLife(value)`. Persist the nested LifeState through the foundation save boundary. Reactions are named data events awaiting the visual adapter. No integrated visual acceptance is claimed.

@@ -1,2 +1,4 @@
 ts	phase	decision	why	evidence	result
 2026-11-05T00:00:00Z	allocation	Acquired ticket 0087 and contract v1	Keep one writer per production directory	docs/world-program/ledger.md	active
+2026-11-06T00:02:27.797206+00:00	audit	The initial allocation row used a date-only placeholder time	Its timestamp is not an observed clock reading; this row supersedes that timestamp	docs/evidence/0087/decisions.tsv:2	corrected
+2026-11-06T00:02:27.797206+00:00	rules	Validated routes through injected navigation and entrance exclusions	Use shared geometry and keep doorway arrivals clear	src/world/life/life.test.ts	12 focused tests and TypeScript passed
