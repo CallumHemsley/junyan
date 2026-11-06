@@ -50,19 +50,6 @@ const paintMap: DrawMap = (ctx, map, view) => {
     polygon([[-.98, -.15], [-.85, -.58], [-.5, -.66], [-.3, -1], [.24, -.93], [.56, -.7], [.86, -.61], [.97, -.2], [.5, -.02], [.08, -.17], [-.32, .04]].map(([dx, dy]) => point(dx, dy)), color);
     if (radius > 4) polygon([[-.65, -.52], [-.42, -.66], [-.22, -.91], [.2, -.83], [.41, -.58], [.1, -.46], [-.18, -.5], [-.4, -.32]].map(([dx, dy]) => point(dx + seed % 2 * .05, dy)), palette.leafLight);
   };
-  const leaf = (x: number, y: number, z: number, dx: number, dy: number, dz: number, width: number, color: string) => {
-    const a = project(x, y, z), b = project(x + dx, y + dy, z + dz);
-    const length = Math.hypot(b.x - a.x, b.y - a.y) || 1;
-    const radius = Math.abs(project(x + width, y).x - project(x, y).x);
-    const nx = (b.y - a.y) / length * radius, ny = (a.x - b.x) / length * radius;
-    const middle = {x: a.x + (b.x - a.x) * .48, y: a.y + (b.y - a.y) * .48};
-    polygon([a, {x: middle.x + nx, y: middle.y + ny}, b, {x: middle.x - nx * .65, y: middle.y - ny * .65}], color);
-  };
-  const bloom = (x: number, y: number, z: number, color: string, seed: number) => {
-    const p = project(x, y, z), r = seed % 3 === 0 ? 4 : 3;
-    polygon([[-1, -r], [1, -r], [2, -2], [r, -1], [r, 1], [1, 2], [0, r], [-2, 2], [-r, 0], [-2, -1]].map(([dx, dy]) => ({x: p.x + dx, y: p.y + dy})), color);
-    ctx.fillStyle = material(palette.flower); ctx.fillRect(p.x - 1, p.y - 1, 2, 2);
-  };
   const bed = (p: Prop, kind: number) => {
     const {x, y} = p.position, w = p.width, h = p.height;
     box(x, y, w, h, 0, .55, palette.potLight, palette.pot, palette.woodDark);
@@ -80,17 +67,16 @@ const paintMap: DrawMap = (ctx, map, view) => {
           const angle = blade * 1.5 + n;
           stem({x: px, y: py}, {x: px + Math.cos(angle) * .3, y: py + Math.sin(angle) * .3}, .6, .9 + blade % 3 * .18, blade % 2 ? palette.leaf : palette.leafLight, 2);
         }
-      } else if (kind === 2) {
-        const top = tall + .12 + (n % 3) * .13;
-        stem({x: px, y: py}, {x: px + .07, y: py}, .57, top, palette.leaf);
-        leaf(px, py, .62, -.3, -.06, .28, .12, palette.jade);
-        leaf(px, py, .68, .34, .04, .32, .13, palette.leafMid);
-        if (n % 2) leaf(px, py, .84, -.18, .08, .28, .09, palette.leafLight);
-        const colors = [palette.lavender, palette.flower, '#d4a8b7', palette.cream];
-        bloom(px + .07, py, top + .05, colors[n % colors.length], n);
       } else {
         stem({x: px, y: py}, {x: px + .07, y: py}, .55, tall, palette.leaf);
         cluster(px, py, .75, .2 + n * .015, n % 3 === 0 ? palette.leafMid : n % 2 ? palette.jade : palette.leafLight, n);
+        if (kind === 2) {
+          const q = project(px + .07, py, tall + .1);
+          const colors = [palette.lavender, palette.flower, '#d4a8b7', palette.cream];
+          ctx.fillStyle = material(colors[n % colors.length]);
+          ctx.fillRect(q.x - 3, q.y - 1, 7, 3);ctx.fillRect(q.x - 1, q.y - 3, 3, 7);
+          ctx.fillStyle = material(n % 2 ? palette.cream : palette.flower);ctx.fillRect(q.x, q.y, 2, 2);
+        }
       }
     }
   };
@@ -424,12 +410,11 @@ const paintMap: DrawMap = (ctx, map, view) => {
           const a = k * 2.4, dx = Math.cos(a) * .4 + sway, dy = Math.sin(a) * .4;
           const top = droop ? height * .65 : height;
           stem({x: x + .7, y: y + .7}, {x: x + .7 + dx, y: y + .7 + dy}, .8, top, palette.leaf, 2);
-          if (p.kind === 'garden-flower') {
-            const lift = droop ? -.08 : .25;
-            leaf(x + .7 + dx * .35, y + .7 + dy * .35, .85 + growth * .06, dx * .6 - .14, dy * .6, lift, .11 + growth * .02, k % 2 ? palette.jade : palette.leafMid);
-            leaf(x + .7 + dx * .45, y + .7 + dy * .45, .9 + growth * .08, dx * .4 + .17, dy * .4, lift * .8, .1 + growth * .015, palette.leafLight);
-            if (growth) bloom(x + .7 + dx, y + .7 + dy, top + .12 + k % 3 * .06, k % 2 ? palette.lavender : palette.cream, k);
-          } else cluster(x + .7 + dx, y + .7 + dy, top, .22, k % 2 ? palette.jade : palette.leafLight, k);
+          cluster(x + .7 + dx, y + .7 + dy, top, .22, k % 2 ? palette.jade : palette.leafLight, k);
+          if (growth && p.kind === 'garden-flower') {
+            const q = project(x + .7 + dx, y + .7 + dy, top + .15);
+            ctx.fillStyle = material(k % 2 ? palette.lavender : palette.cream); ctx.fillRect(q.x - 2, q.y - 2, 4, 4);ctx.fillStyle = material(palette.flower);ctx.fillRect(q.x, q.y, 1, 1);
+          }
         }
       }
     } else if (p.kind === 'border-pot') {

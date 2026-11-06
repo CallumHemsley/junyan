@@ -23,3 +23,5 @@ Independent rooftop review retains the lighting fix but still sees repeated crow
 - Owner rooftop plant writer; branch codex/0136-rooftop-plant-character; worktree /private/tmp/junyan-world-rooftop-plant-character; strict ports5616/5617.
 - Base the independently retained rooftop cast-light candidate0135; root separately owns its main release. No shared renderer/dependency/schema edits without coordination.
 - Raw QA private under /private/tmp/junyan-world-private-qa/0136. Earlier independent critique and original captures are private0135-review. Do not publish raw evidence.
+
+- Small independent blind gate preferred tree treatment in all four native pairs; rejected flower treatment (baseline preferred in three, one tie). Restored baseline flowers byte-for-byte and retained only the joined tree canopy/fork for a two-view repeat gate. Wider verification remains pending this gate.
