@@ -8,14 +8,20 @@ const discovery = z.strictObject({ mapId: id, landmarkId: id, day: z.number().in
 const reaction = z.strictObject({ mapId: id, targetId: id, reaction: z.enum(['wave', 'sit', 'watch', 'flutter', 'ripple', 'sway']), atMs: z.number().finite().nonnegative() });
 export const lifeStateSchema = z.strictObject({
   version: z.literal(1),
+  elapsedMs: z.number().finite().nonnegative().default(0),
   discoveries: z.array(discovery).max(10000),
   reactions: z.array(reaction).max(100),
+  pauses: z.array(z.strictObject({ mapId: id, targetId: id, startMs: z.number().finite().nonnegative(), durationMs: z.number().finite().positive(), previousMs: z.number().finite().nonnegative() })).max(100).default([]),
 }).superRefine((value, context) => {
   const keys = value.discoveries.map(item => JSON.stringify([item.mapId, item.landmarkId]));
   if (new Set(keys).size !== keys.length) context.addIssue({ code: 'custom', message: 'Duplicate discovery' });
 });
 export type LifeState = z.infer<typeof lifeStateSchema>;
-export const initialLifeState = (): LifeState => ({ version: 1, discoveries: [], reactions: [] });
+export const initialLifeState = (): LifeState => ({ version: 1, elapsedMs: 0, discoveries: [], reactions: [], pauses: [] });
+export function advanceLife(state: LifeState, deltaMs: number, visible: boolean): LifeState {
+  if (!visible || !Number.isFinite(deltaMs) || deltaMs <= 0 || !Number.isFinite(state.elapsedMs + deltaMs)) return state;
+  return { ...state, elapsedMs: state.elapsedMs + deltaMs };
+}
 export function restoreLife(value: unknown): LifeState {
   const parsed = lifeStateSchema.safeParse(value);
   return parsed.success ? parsed.data : initialLifeState();
@@ -28,7 +34,13 @@ export function reduceLife(state: LifeState, event: LifeEvent): LifeState {
   }
   const { mapId, targetId, reaction, atMs } = event;
   if (state.reactions.some(item => item.mapId === mapId && item.targetId === targetId && item.reaction === reaction && item.atMs === atMs)) return state;
-  return { ...state, reactions: [...state.reactions.filter(item => item.mapId !== mapId || item.targetId !== targetId), { mapId, targetId, reaction, atMs }].slice(-100) };
+  const previous = state.pauses.find(item => item.mapId === mapId && item.targetId === targetId);
+  const durationMs = reaction === 'sit' ? 9000 : reaction === 'wave' ? 1800 : 0;
+  const pauses = durationMs ? [...state.pauses.filter(item => item.mapId !== mapId || item.targetId !== targetId), {
+    mapId, targetId, startMs: atMs, durationMs,
+    previousMs: previous ? previous.previousMs + Math.min(previous.durationMs, Math.max(0, atMs - previous.startMs)) : 0,
+  }].slice(-100) : state.pauses;
+  return { ...state, pauses, reactions: [...state.reactions.filter(item => item.mapId !== mapId || item.targetId !== targetId), { mapId, targetId, reaction, atMs }].slice(-100) };
 }
 function visible(player: Position, target: Position, reach: number, navigation: Navigation, inspect = false): boolean {
   return Math.hypot(target.x - player.x, target.y - player.y) <= reach && (inspect && navigation.canSee ? navigation.canSee(player, target) : navigation.canWalk(player, target, 0));

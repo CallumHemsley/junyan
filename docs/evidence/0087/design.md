@@ -52,3 +52,11 @@ Parent review caught inspect logic requiring a walkable solid-object center. Thi
 Actual authored-input browser diagnostics found these remaining map defects. Town morning-walk home fails entrance clearance. Courtyard white-cat route has a blocked stop. Park pond-deck at (61,33) has no walkable point within 1.8 tiles. Park and riverbank have no NPC hooks in the fetched snapshots. Other courtyard actors, both workshop residents and the rooftop resident compile. These are not life acceptance passes.
 
 17 focused life tests and TypeScript pass. Browser harness uses cloud /usr/bin/chromium because the matching Playwright bundle is absent. Initial harness had a reduced-motion variable initialization error; fixed before collecting proof. The first browser diagnostics reported no page errors after that fix, plus an irrelevant favicon 404 to remove before final evidence. The harness uses actual map geometry and character-owner artwork, with schematic ground rendering. It is interaction proof, not polished world-art acceptance. No original saved game is touched.
+
+## Independent read-only review and fixes
+
+Native cloud helper `/root/life_readonly_review` reported four actionable findings. Cat sit events now pause the actor timeline for nine seconds, persist the elapsed pause, and resume without teleporting. Greetings pause residents for a brief wave. Authoritative habitat overrides now obey entrance exclusions. Ambiguous overlapping target colliders now remain opaque. Browser proof now asserts actual actor displacement. Regression coverage is 21 life tests. No extra implementation writer was delegated.
+
+Explicit visible play time is now a validated LifeState field with `advanceLife(state,deltaMs,visible)`. Reload never adds offline time. Foundation must pass the persisted LifeState as sampleLife's fourth argument so bounded interactions affect production actors. This supersedes the earlier three-argument call when reactions are enabled.
+
+LifePrompt is a controls-only component using existing WordToken/FeatureLine/replay. It accepts one selected physical option and caller-provided line. It has no game clock, save, audio synthesis, world loop or copied activity reducer.

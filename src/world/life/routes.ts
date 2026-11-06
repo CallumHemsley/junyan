@@ -52,5 +52,5 @@ export function compileLife(map: LifeMap, navigation: Navigation): LifePlan {
     if (!valid) { fail('unreachable-route-or-entrance-crossing'); continue; }
     actors.push({ id: hook.id, characterId: profile.id, profile, home: hook.position, phases, durationMs: elapsed });
   }
-  return { mapId: map.id, actors, landmarks: map.landmarks, diagnostics };
+  return { mapId: map.id, actors, landmarks: map.landmarks, exclusions, diagnostics };
 }

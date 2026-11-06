@@ -18,17 +18,18 @@ function wildlife(ctx: CanvasRenderingContext2D, actor: ActorPose, view: LifeVie
   if (actor.kind === 'cat') {
     const white = actor.characterId === 'white-cat';
     const fur = white ? '#ede5ce' : '#343c38', edge = white ? '#b3a88a' : '#202b28';
+    const sitting = actor.activity === 'sit' || actor.activity === 'watch';
     const stride = actor.action === 'walk' ? Math.floor(phase / 140) % 2 : 0;
     const tail = view.reducedMotion ? 0 : Math.floor(phase / 600) % 2;
     ctx.fillStyle = edge;
-    ctx.fillRect(-7, -9, 13, 8);
+    ctx.fillRect(sitting ? -4 : -7, sitting ? -12 : -9, sitting ? 9 : 13, sitting ? 11 : 8);
     ctx.fillRect(2, -13, 7, 9);
     ctx.fillRect(2, -15, 2, 3);
     ctx.fillRect(7, -15, 2, 3);
     ctx.fillRect(-10, -8 - tail, 4, 3);
     ctx.fillRect(-12, -11 - tail, 3, 4);
     ctx.fillStyle = fur;
-    ctx.fillRect(-6, -8, 11, 6);
+    ctx.fillRect(sitting ? -3 : -6, sitting ? -11 : -8, sitting ? 7 : 11, sitting ? 9 : 6);
     ctx.fillRect(3, -12, 5, 6);
     ctx.fillRect(-5 + stride, -3, 3, 3);
     ctx.fillRect(2 - stride, -3, 3, 3);
@@ -55,9 +56,10 @@ function wildlife(ctx: CanvasRenderingContext2D, actor: ActorPose, view: LifeVie
   ctx.restore();
 }
 
-export function drawLifeActor(ctx: CanvasRenderingContext2D, actor: ActorPose, view: LifeView, drawResident: ResidentDrawer): void {
+export function drawLifeActor(ctx: CanvasRenderingContext2D, actor: ActorPose, view: LifeView, drawResident: ResidentDrawer, state?: LifeState): void {
   if (actor.kind !== 'resident') { wildlife(ctx, actor, view); return; }
-  const posture = actor.activity === 'sit' ? 'sit' : actor.activity === 'work' ? 'work' : actor.activity === 'watch' ? 'react' : 'stand';
+  const reacting = state?.reactions.some(event => event.targetId === actor.id && event.reaction === 'wave' && view.elapsedMs >= event.atMs && view.elapsedMs - event.atMs < 1800);
+  const posture = reacting ? 'react' : actor.activity === 'sit' ? 'sit' : actor.activity === 'work' ? 'work' : actor.activity === 'watch' ? 'react' : 'stand';
   drawResident(ctx, actor, view, posture);
 }
 
