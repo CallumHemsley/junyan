@@ -13,6 +13,7 @@ export function currentPlaceWords(mapId: string, dictionary: readonly Word[]): W
 }
 
 export function targetWords(target: NearbyTarget, dictionary: readonly Word[]): readonly Word[] {
+  if (target.source === 'exit') return [target.word];
   if (target.source === 'life') return target.affordance.label.tokens;
   const id = target.anchor.featureId === 'restaurant' ? target.anchor.interactionId.startsWith('table-') ? 'customer' : 'kitchen' : 'look';
   const word = dictionary.find(word => word.id === id);
