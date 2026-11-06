@@ -5,8 +5,8 @@ import { compileLife, entranceExclusions, initialLifeState, interactLife, nearby
 import type { LifeContext, LifeMap, Navigation } from './model';
 
 const map = (): LifeMap => ({
-  id: 'park', entrances: [{ position: { x: 1, y: 1 } }],
-  exits: [{ rect: { x: 0, y: 0, width: .5, height: .5 } }],
+  id: 'park', entrances: [{ id: 'from-town', facing: 'south', position: { x: 1, y: 1 } }],
+  exits: [{ id: 'to-town', targetMapId: 'town', targetEntranceId: 'from-park', kind: 'path', rect: { x: 0, y: 0, width: .5, height: .5 } }],
   npcHooks: [{ id: 'park.teacher', characterId: 'zhang-laoshi', position: { x: 4, y: 4 }, route: [{ x: 8, y: 4 }, { x: 8, y: 8 }] }],
   landmarks: [{ id: 'park.pond', kind: 'pond', position: { x: 4, y: 6 } }],
 });
@@ -46,10 +46,10 @@ describe('world life routes and motion', () => {
 
   it('rejects a route across door/stair triggers and safe arrival clearances', () => {
     const input = map();
-    input.exits = [{ rect: { x: 5, y: 3, width: 1, height: 2 } }];
+    input.exits = [{ id: 'to-town', targetMapId: 'town', targetEntranceId: 'from-park', kind: 'path', rect: { x: 5, y: 3, width: 1, height: 2 } }];
     expect(compileLife(input, navigation).actors).toEqual([]);
     input.exits = [];
-    input.entrances = [{ position: { x: 6, y: 4 } }];
+    input.entrances = [{ id: 'from-town', facing: 'south', position: { x: 6, y: 4 } }];
     expect(compileLife(input, navigation).actors).toEqual([]);
     expect(entranceExclusions(input)).toHaveLength(1);
   });
@@ -57,7 +57,7 @@ describe('world life routes and motion', () => {
   it('passes entrance exclusions to the shared planner and accepts a collision-free detour', () => {
     const input = map();
     input.npcHooks = [{ id: 'park.walker', characterId: 'xiao-li', position: { x: 3, y: 5 }, route: [{ x: 9, y: 5 }] }];
-    input.entrances = [{ position: { x: 6, y: 5 } }];
+    input.entrances = [{ id: 'from-town', facing: 'south', position: { x: 6, y: 5 } }];
     const nav: Navigation = { ...navigation, route: (a, b, _radius, exclusions) => {
       expect(exclusions.length).toBeGreaterThan(0);
       return [{ x: a.x, y: 8 }, { x: b.x, y: 8 }, b];

@@ -1,0 +1,60 @@
+[
+  {
+    "device": "desktop",
+    "before": {
+      "mapId": "riverbank",
+      "player": {
+        "x": 39,
+        "y": 19
+      },
+      "blocked": false
+    },
+    "after": {
+      "mapId": "riverbank",
+      "player": {
+        "x": 50.20000000000026,
+        "y": 19
+      },
+      "blocked": false
+    },
+    "pointer": {
+      "mapId": "riverbank",
+      "player": {
+        "x": 53.13132138136875,
+        "y": 20.911139829821934
+      },
+      "blocked": false
+    },
+    "consoleErrors": [],
+    "scope": "shared geometry/camera and production art in isolated authoring harness; full App/save integration pending"
+  },
+  {
+    "device": "phone",
+    "before": {
+      "mapId": "riverbank",
+      "player": {
+        "x": 39,
+        "y": 19
+      },
+      "blocked": false
+    },
+    "after": {
+      "mapId": "riverbank",
+      "player": {
+        "x": 50.199300000000264,
+        "y": 19
+      },
+      "blocked": false
+    },
+    "pointer": {
+      "mapId": "riverbank",
+      "player": {
+        "x": 53.2663388401282,
+        "y": 20.917091120199245
+      },
+      "blocked": false
+    },
+    "consoleErrors": [],
+    "scope": "shared geometry/camera and production art in isolated authoring harness; full App/save integration pending"
+  }
+]

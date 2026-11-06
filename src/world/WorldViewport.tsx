@@ -7,7 +7,7 @@ import {useEffect,useRef,useState} from "react";
 import type {WorldState,Point} from "./schema";
 import type {MapRegistry} from "./registry";
 import {project,pointerGround,cameraForMap,type Camera} from "./camera";
-import {findPath,movePlayer,nearbyAnchors} from "./geometry";
+import {movePlayer,nearbyAnchors} from "./geometry";
 import {paintWorld} from "./painter";
 import type {WorldAction} from "./state";
 import "./world.css";
@@ -17,9 +17,17 @@ export default function WorldViewport({state,maps,game,onLookup,fresh,onAction,p
  const canvas=useRef<HTMLCanvasElement>(null),root=useRef<HTMLElement>(null);
  const latest=useRef({state,maps,game,onAction,paused});latest.current={state,maps,game,onAction,paused};
  const keys=useRef(new Set<string>()),path=useRef<Point[]>([]),cameraRef=useRef<Camera>({focus:state.position,width:960,height:600,scale:22});
+ const worker=useRef<Worker|null>(null),requestId=useRef(0),workerMap=useRef<object|null>(null);
  const [viewport,setViewport]=useState({width:960,height:600});
  const map=maps[state.mapId];
- useEffect(()=>{path.current=[];keys.current.clear();root.current?.focus();},[state.mapId,state.activeActivity]);
+ useEffect(()=>{path.current=[];keys.current.clear();requestId.current++;root.current?.focus();},[state.mapId,state.activeActivity]);
+ useEffect(()=>{
+  const instance=new Worker(new URL("./path-worker.ts",import.meta.url),{type:"module"});worker.current=instance;
+  instance.onmessage=(event:MessageEvent<{id:number;path:Point[];mapId:string}>)=>{
+   if(event.data.id===requestId.current&&event.data.mapId===latest.current.state.mapId&&!latest.current.state.activeActivity)path.current=event.data.path;
+  };
+  return()=>{instance.terminate();worker.current=null;};
+ },[]);
  useEffect(()=>{
   const element=root.current;if(!element||!canvas.current)return;
   const resize=new ResizeObserver(entries=>{const bounds=entries[0].contentRect;setViewport({width:Math.round(bounds.width),height:Math.round(bounds.height)});});resize.observe(element);
@@ -39,7 +47,7 @@ export default function WorldViewport({state,maps,game,onLookup,fresh,onAction,p
    if(canMove){
     let delta={x:0,y:0};for(const key of keys.current){const d=directions[key];if(d){delta.x+=d.x;delta.y+=d.y;}}
     const length=Math.hypot(delta.x,delta.y);
-    if(length){path.current=[];delta={x:delta.x/length*dt*5,y:delta.y/length*dt*5};}
+    if(length){path.current=[];requestId.current++;delta={x:delta.x/length*dt*5,y:delta.y/length*dt*5};}
     else if(path.current.length){const target=path.current[0],p=current.state.position,dx=target.x-p.x,dy=target.y-p.y,d=Math.hypot(dx,dy),step=dt*5;if(d<=Math.max(step,.03)){delta={x:dx,y:dy};path.current.shift();}else delta={x:dx/d*step,y:dy/d*step};}
     if(delta.x||delta.y){const next=movePlayer(map,current.state.position,delta);moving=Math.hypot(next.x-current.state.position.x,next.y-current.state.position.y)>.0001;if(moving)current.onAction({type:"world-move",position:next});else path.current=[];}
    }
@@ -66,7 +74,8 @@ export default function WorldViewport({state,maps,game,onLookup,fresh,onAction,p
   <canvas ref={canvas} aria-hidden="true" onPointerDown={event=>{
    if(paused||state.activeActivity)return;
    root.current?.focus();const rect=event.currentTarget.getBoundingClientRect(),p=pointerGround({x:event.clientX,y:event.clientY},rect,cameraRef.current);
-   path.current=findPath(map,state.position,p);
+   const id=++requestId.current;
+   worker.current?.postMessage({id,from:state.position,to:p,...(workerMap.current!==map?{map}:{})});workerMap.current=map;
   }}/>
   <div className="world-place" aria-live="polite">{(place[map.id]??["看看"]).map(token)}</div>
   <div className="world-nearby">{!state.activeActivity&&nearby.map(a=><div className="world-anchor" key={a.id}>{token(a.featureId==="restaurant"&&a.interactionId.startsWith("table-")?"客人":"看看")}<button data-world-anchor={a.id} aria-label={a.featureId==="restaurant"&&a.interactionId.startsWith("table-")?`${a.interactionId.split("-")[1]}桌点餐`:a.featureId==="restaurant"?"厨房":"看看"} onClick={()=>onAction({type:"world-interact",anchorId:a.id})}>→</button></div>)}</div>

@@ -1,0 +1,693 @@
+[
+  {
+    "sha": "c176f5ac0423d7fa6e3c0f7a8c42f0a3fcc793db",
+    "path": "src/world/maps/courtyard/map.json",
+    "map": {
+      "version": 1,
+      "id": "courtyard",
+      "bounds": {
+        "width": 48,
+        "height": 38
+      },
+      "defaultSpawn": {
+        "x": 23,
+        "y": 33.5,
+        "facing": "north"
+      },
+      "walkable": [
+        {
+          "x": 26,
+          "y": 10,
+          "width": 16,
+          "height": 15
+        },
+        {
+          "x": 20,
+          "y": 21,
+          "width": 20,
+          "height": 9
+        }
+      ],
+      "colliders": [
+        {
+          "id": "courtyard.central-home",
+          "rect": {
+            "x": 18,
+            "y": 14,
+            "width": 10,
+            "height": 5
+          }
+        },
+        {
+          "id": "courtyard.herb-island",
+          "rect": {
+            "x": 29,
+            "y": 14,
+            "width": 3,
+            "height": 4
+          }
+        },
+        {
+          "id": "courtyard.rain-jar",
+          "rect": {
+            "x": 28.5,
+            "y": 20.3,
+            "width": 1,
+            "height": 1
+          }
+        },
+        {
+          "id": "courtyard.bird-bath",
+          "rect": {
+            "x": 32.8,
+            "y": 23,
+            "width": 1,
+            "height": 1
+          }
+        }
+      ],
+      "occluders": [],
+      "entrances": [],
+      "exits": [],
+      "anchors": [
+        {
+          "id": "courtyard.activity",
+          "position": {
+            "x": 16,
+            "y": 21
+          },
+          "radius": 1.7,
+          "featureId": "cats",
+          "interactionId": "existing-cats-activity"
+        },
+        {
+          "id": "courtyard.white",
+          "position": {
+            "x": 14.8,
+            "y": 19.6
+          },
+          "radius": 1.7,
+          "featureId": "cats",
+          "interactionId": "cats.white"
+        },
+        {
+          "id": "courtyard.black",
+          "position": {
+            "x": 34.5,
+            "y": 20.6
+          },
+          "radius": 1.7,
+          "featureId": "cats",
+          "interactionId": "cats.black"
+        },
+        {
+          "id": "courtyard.bicycle",
+          "position": {
+            "x": 14.6,
+            "y": 17.8
+          },
+          "radius": 1.7,
+          "featureId": "cats",
+          "interactionId": "cats.bicycle"
+        },
+        {
+          "id": "courtyard.bench",
+          "position": {
+            "x": 36.6,
+            "y": 20
+          },
+          "radius": 1.7,
+          "featureId": "cats",
+          "interactionId": "cats.bench"
+        },
+        {
+          "id": "courtyard.door",
+          "position": {
+            "x": 23,
+            "y": 4.4
+          },
+          "radius": 1.7,
+          "featureId": "cats",
+          "interactionId": "cats.door"
+        },
+        {
+          "id": "courtyard.window",
+          "position": {
+            "x": 33.5,
+            "y": 7
+          },
+          "radius": 1.7,
+          "featureId": "cats",
+          "interactionId": "cats.window"
+        },
+        {
+          "id": "courtyard.aunt",
+          "position": {
+            "x": 25.3,
+            "y": 6.5
+          },
+          "radius": 1.7,
+          "featureId": "cats",
+          "interactionId": "cats.aunt"
+        }
+      ],
+      "terrain": [],
+      "props": [],
+      "palette": {
+        "cream": [
+          236,
+          225,
+          201
+        ],
+        "jade": [
+          109,
+          145,
+          119
+        ],
+        "ink": [
+          51,
+          61,
+          57
+        ],
+        "wood": [
+          139,
+          107,
+          75
+        ],
+        "brass": [
+          185,
+          159,
+          105
+        ],
+        "brick": [
+          187,
+          154,
+          122
+        ],
+        "slate": [
+          91,
+          119,
+          120
+        ],
+        "moss": [
+          113,
+          133,
+          97
+        ],
+        "stone": [
+          185,
+          177,
+          153
+        ],
+        "linen": [
+          217,
+          213,
+          188
+        ]
+      },
+      "npcHooks": [],
+      "landmarks": [
+        {
+          "id": "courtyard.water-jar",
+          "position": {
+            "x": 29,
+            "y": 21
+          },
+          "kind": "rainwater"
+        }
+      ]
+    }
+  },
+  {
+    "sha": "14a2ce1fb95eb00955bfc3f6f85aae34f6ef99b8",
+    "path": "src/world/maps/landscape/park.json",
+    "map": {
+      "version": 1,
+      "id": "park",
+      "bounds": {
+        "width": 84,
+        "height": 68
+      },
+      "defaultSpawn": {
+        "x": 7,
+        "y": 61,
+        "facing": "north"
+      },
+      "walkable": [
+        {
+          "x": 1,
+          "y": 1,
+          "width": 82,
+          "height": 66
+        }
+      ],
+      "colliders": [
+        {
+          "id": "park.pond-2",
+          "rect": {
+            "x": 40,
+            "y": 29,
+            "width": 23,
+            "height": 7
+          }
+        },
+        {
+          "id": "park.pond-3",
+          "rect": {
+            "x": 42,
+            "y": 36,
+            "width": 19,
+            "height": 3
+          }
+        },
+        {
+          "id": "park.pond-bench",
+          "rect": {
+            "x": 61.28,
+            "y": 29.76,
+            "width": 1.44,
+            "height": 0.48
+          }
+        }
+      ],
+      "occluders": [],
+      "entrances": [],
+      "exits": [],
+      "anchors": [
+        {
+          "id": "park.orchard-basket",
+          "position": {
+            "x": 16,
+            "y": 52
+          },
+          "radius": 1.4,
+          "featureId": "exploration",
+          "interactionId": "landscape.orchard-basket"
+        },
+        {
+          "id": "park.bamboo-court",
+          "position": {
+            "x": 29,
+            "y": 8
+          },
+          "radius": 1.4,
+          "featureId": "exploration",
+          "interactionId": "landscape.bamboo-court"
+        },
+        {
+          "id": "park.old-reading-stone",
+          "position": {
+            "x": 31,
+            "y": 28
+          },
+          "radius": 1.4,
+          "featureId": "exploration",
+          "interactionId": "landscape.old-reading-stone"
+        },
+        {
+          "id": "park.pond-deck",
+          "position": {
+            "x": 61,
+            "y": 33
+          },
+          "radius": 1.4,
+          "featureId": "exploration",
+          "interactionId": "landscape.pond-deck"
+        },
+        {
+          "id": "park.ridge-view",
+          "position": {
+            "x": 79,
+            "y": 29
+          },
+          "radius": 1.4,
+          "featureId": "exploration",
+          "interactionId": "landscape.ridge-view"
+        },
+        {
+          "id": "park.tea-pavilion",
+          "position": {
+            "x": 54,
+            "y": 18
+          },
+          "radius": 1.4,
+          "featureId": "exploration",
+          "interactionId": "landscape.tea-pavilion"
+        },
+        {
+          "id": "park.lily-cove",
+          "position": {
+            "x": 47,
+            "y": 43
+          },
+          "radius": 1.4,
+          "featureId": "exploration",
+          "interactionId": "landscape.lily-cove"
+        }
+      ],
+      "terrain": [],
+      "props": [],
+      "palette": {
+        "cream": [
+          245,
+          232,
+          202
+        ],
+        "jade": [
+          111,
+          154,
+          134
+        ],
+        "ink": [
+          48,
+          43,
+          42
+        ],
+        "wood": [
+          115,
+          86,
+          58
+        ],
+        "brass": [
+          190,
+          157,
+          97
+        ],
+        "grass": [
+          134,
+          157,
+          98
+        ],
+        "moss": [
+          86,
+          123,
+          96
+        ],
+        "water": [
+          99,
+          154,
+          163
+        ],
+        "sand": [
+          211,
+          195,
+          151
+        ],
+        "stone": [
+          137,
+          151,
+          143
+        ],
+        "leaf": [
+          88,
+          132,
+          102
+        ],
+        "flower": [
+          229,
+          204,
+          135
+        ]
+      },
+      "npcHooks": [],
+      "landmarks": [
+        {
+          "id": "park.pond-deck",
+          "position": {
+            "x": 61,
+            "y": 33
+          },
+          "kind": "pond-deck"
+        }
+      ]
+    }
+  },
+  {
+    "sha": "14a2ce1fb95eb00955bfc3f6f85aae34f6ef99b8",
+    "path": "src/world/maps/landscape/riverbank.json",
+    "map": {
+      "version": 1,
+      "id": "riverbank",
+      "bounds": {
+        "width": 96,
+        "height": 80
+      },
+      "defaultSpawn": {
+        "x": 7,
+        "y": 73,
+        "facing": "north"
+      },
+      "walkable": [
+        {
+          "x": 1,
+          "y": 1,
+          "width": 94,
+          "height": 78
+        }
+      ],
+      "colliders": [
+        {
+          "id": "riverbank.water-35",
+          "rect": {
+            "x": 43,
+            "y": 35,
+            "width": 9,
+            "height": 1
+          }
+        },
+        {
+          "id": "riverbank.water-36",
+          "rect": {
+            "x": 43,
+            "y": 36,
+            "width": 9,
+            "height": 1
+          }
+        },
+        {
+          "id": "riverbank.water-37",
+          "rect": {
+            "x": 42,
+            "y": 37,
+            "width": 9,
+            "height": 1
+          }
+        },
+        {
+          "id": "riverbank.water-38",
+          "rect": {
+            "x": 41,
+            "y": 38,
+            "width": 9,
+            "height": 1
+          }
+        },
+        {
+          "id": "riverbank.water-39",
+          "rect": {
+            "x": 40,
+            "y": 39,
+            "width": 9,
+            "height": 1
+          }
+        },
+        {
+          "id": "riverbank.water-40",
+          "rect": {
+            "x": 40,
+            "y": 40,
+            "width": 9,
+            "height": 1
+          }
+        },
+        {
+          "id": "riverbank.water-41",
+          "rect": {
+            "x": 39,
+            "y": 41,
+            "width": 9,
+            "height": 1
+          }
+        },
+        {
+          "id": "riverbank.water-42",
+          "rect": {
+            "x": 38,
+            "y": 42,
+            "width": 9,
+            "height": 1
+          }
+        },
+        {
+          "id": "riverbank.fisher-stool",
+          "rect": {
+            "x": 37.76,
+            "y": 36.76,
+            "width": 0.48,
+            "height": 0.48
+          }
+        }
+      ],
+      "occluders": [],
+      "entrances": [],
+      "exits": [],
+      "anchors": [
+        {
+          "id": "riverbank.moon-bridge",
+          "position": {
+            "x": 48,
+            "y": 19
+          },
+          "radius": 1.4,
+          "featureId": "exploration",
+          "interactionId": "landscape.moon-bridge"
+        },
+        {
+          "id": "riverbank.reed-hide",
+          "position": {
+            "x": 22,
+            "y": 48
+          },
+          "radius": 1.4,
+          "featureId": "exploration",
+          "interactionId": "landscape.reed-hide"
+        },
+        {
+          "id": "riverbank.fishing-jetty",
+          "position": {
+            "x": 40,
+            "y": 39
+          },
+          "radius": 1.4,
+          "featureId": "exploration",
+          "interactionId": "landscape.fishing-jetty"
+        },
+        {
+          "id": "riverbank.washing-stones",
+          "position": {
+            "x": 40,
+            "y": 74
+          },
+          "radius": 1.4,
+          "featureId": "exploration",
+          "interactionId": "landscape.washing-stones"
+        },
+        {
+          "id": "riverbank.old-ferry",
+          "position": {
+            "x": 62,
+            "y": 57
+          },
+          "radius": 1.4,
+          "featureId": "exploration",
+          "interactionId": "landscape.old-ferry"
+        },
+        {
+          "id": "riverbank.hill-shrine",
+          "position": {
+            "x": 88,
+            "y": 7
+          },
+          "radius": 1.4,
+          "featureId": "exploration",
+          "interactionId": "landscape.hill-shrine"
+        },
+        {
+          "id": "riverbank.heron-shallows",
+          "position": {
+            "x": 80,
+            "y": 43
+          },
+          "radius": 1.4,
+          "featureId": "exploration",
+          "interactionId": "landscape.heron-shallows"
+        },
+        {
+          "id": "riverbank.lower-crossing",
+          "position": {
+            "x": 45,
+            "y": 57
+          },
+          "radius": 1.4,
+          "featureId": "exploration",
+          "interactionId": "landscape.lower-crossing"
+        }
+      ],
+      "terrain": [],
+      "props": [],
+      "palette": {
+        "cream": [
+          245,
+          232,
+          202
+        ],
+        "jade": [
+          111,
+          154,
+          134
+        ],
+        "ink": [
+          48,
+          43,
+          42
+        ],
+        "wood": [
+          115,
+          86,
+          58
+        ],
+        "brass": [
+          190,
+          157,
+          97
+        ],
+        "grass": [
+          134,
+          157,
+          98
+        ],
+        "moss": [
+          86,
+          123,
+          96
+        ],
+        "water": [
+          99,
+          154,
+          163
+        ],
+        "sand": [
+          211,
+          195,
+          151
+        ],
+        "stone": [
+          137,
+          151,
+          143
+        ],
+        "leaf": [
+          88,
+          132,
+          102
+        ],
+        "flower": [
+          229,
+          204,
+          135
+        ]
+      },
+      "npcHooks": [],
+      "landmarks": [
+        {
+          "id": "riverbank.fishing-jetty",
+          "position": {
+            "x": 40,
+            "y": 39
+          },
+          "kind": "fishing-jetty"
+        }
+      ]
+    }
+  }
+]
