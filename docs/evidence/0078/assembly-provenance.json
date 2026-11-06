@@ -825,5 +825,17 @@
         }
       ]
     }
+  ],
+  "reviewedPatches": [
+    {
+      "sourceCommit": "0c3f0459c667859bf8045868648754108581e403",
+      "paths": [
+        {
+          "path": "src/world/life/routines.test.ts",
+          "sha256": "e84a67dfcd01f53b7fabaeee0fe193796127c2b9e160bb24a412f0b06ef65559"
+        }
+      ],
+      "reason": "Reviewed test correction only; no partial background population imported"
+    }
   ]
 }

@@ -27,13 +27,14 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
  const elapsed=useRef(state.life?.elapsedMs??0),lastClockWrite=useRef(state.life?.elapsedMs??0);
  const [clock,setClock]=useState(0);
  const [interactionInset,setInteractionInset]=useState(0);
+ const [interactionWidth,setInteractionWidth]=useState(0);
  const [viewport,setViewport]=useState({width:960,height:600});
  const map=maps[state.mapId];
  useEffect(()=>{path.current=[];keys.current.clear();requestId.current++;root.current?.focus();},[state.mapId,state.activeActivity]);
  useEffect(()=>{
   const context=document.querySelector<HTMLElement>(".world-context");
-  if(!context||!state.activeActivity){setInteractionInset(0);return;}
-  const observer=new ResizeObserver(()=>setInteractionInset(context.getBoundingClientRect().height+84));observer.observe(context);
+  if(!context||!state.activeActivity){setInteractionInset(0);setInteractionWidth(0);return;}
+  const observer=new ResizeObserver(()=>{const bounds=context.getBoundingClientRect();setInteractionInset(bounds.height+84);setInteractionWidth(bounds.width+32);});observer.observe(context);
   return()=>observer.disconnect();
  },[state.activeActivity,state.activeAnchorId]);
  useEffect(()=>{
@@ -70,15 +71,15 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
    }
    const dpr=1,width=Math.ceil(viewport.width/2),height=Math.ceil(viewport.height/2);
    if(element.width!==Math.round(width*dpr)||element.height!==Math.round(height*dpr)){element.width=Math.round(width*dpr);element.height=Math.round(height*dpr);}
-   const camera=cameraForMap(map.bounds,current.state.position,width,height,viewport.width<600?11:15,viewport.width<800?interactionInset/2:0);cameraRef.current=camera;
-   if(now-lastDraw>=1000/30||preference.matches){context.setTransform(dpr,0,0,dpr,0,0);paintWorld(context,map,{project:(p,z)=>project(p,camera,z),elapsedMs:preference.matches?0:elapsedMs,reducedMotion:preference.matches,playerPosition:current.state.position,width,height,pass:"ground"},current.state.facing,moving,camera.scale,current.game,current.state,actorMotion.current);lastDraw=now;element.dataset.rendered="true";}
+   const camera=cameraForMap(map.bounds,current.state.position,width,height,viewport.width<600?11:15,viewport.width<800?interactionInset/2:0,viewport.width>=800?interactionWidth/2:0);cameraRef.current=camera;
+   if(now-lastDraw>=1000/30){context.setTransform(dpr,0,0,dpr,0,0);paintWorld(context,map,{project:(p,z)=>project(p,camera,z),elapsedMs,reducedMotion:preference.matches,playerPosition:current.state.position,width,height,pass:"ground"},current.state.facing,moving,camera.scale,current.game,current.state,actorMotion.current);lastDraw=now;element.dataset.rendered="true";}
    frame=requestAnimationFrame(tick);
   };
   const refresh=()=>{last=0;keys.current.clear();if(document.hidden){cancelAnimationFrame(frame);frame=0;}else if(!frame)frame=requestAnimationFrame(tick);};
   document.addEventListener("visibilitychange",refresh);frame=requestAnimationFrame(tick);
   const up=(event:KeyboardEvent)=>keys.current.delete(event.key);window.addEventListener("keyup",up);window.addEventListener("blur",refresh);
   return()=>{cancelAnimationFrame(frame);document.removeEventListener("visibilitychange",refresh);window.removeEventListener("keyup",up);window.removeEventListener("blur",refresh);};
- },[viewport,interactionInset]);
+ },[viewport,interactionInset,interactionWidth]);
  const nearby=nearbyAnchors(map,state.position);
  const lifeOptions=nearbyLife(planFor(map,game),actorsFor(map,game,state,clock,false),state.position,navigationFor(map));
  const dictionary=contentWords(content);

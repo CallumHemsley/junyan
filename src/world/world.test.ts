@@ -62,3 +62,9 @@ it("keeps pointer round trips aligned when contextual controls reserve phone spa
  const p={x:30,y:20},screen=project(p,camera),again=unproject(screen,camera);
  expect(again.x).toBeCloseTo(p.x);expect(again.y).toBeCloseTo(p.y);expect(screen.y).toBeLessThan(193);
 });
+
+it("keeps the desktop player outside a tall right-hand payment panel with inverse picking intact",()=>{
+ const camera=cameraForMap({width:24,height:22},{x:18.5,y:9},720,458,15,0,256);
+ const screen=project({x:18.5,y:9},camera),again=unproject(screen,camera);
+ expect(screen.x*2).toBeLessThan(944);expect(again.x).toBeCloseTo(18.5);expect(again.y).toBeCloseTo(9);
+});
