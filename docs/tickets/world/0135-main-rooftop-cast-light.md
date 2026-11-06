@@ -1,7 +1,7 @@
 ---
 id: 135
 title: Release retained rooftop cast-light refinement on main
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-07
@@ -21,3 +21,9 @@ The independently reviewed current rooftop candidate replaces broad offset slabs
 
 - Owner root; branch codex/0135-main-rooftop-cast-light; worktree /private/tmp/junyan-world-main-rooftop-cast-light; strict ports5614/5615.
 - Raw QA private under /private/tmp/junyan-world-private-qa/0135; initial independent critic packet /private/tmp/junyan-world-private-qa/0135-review. No public raw export.
+
+### Accepted main port
+
+- Independent source gate accepts4e10ac1c against maina5d951c1: exactly the two reviewed rooftop files, no unfinished feature or foliage/paving reversion. Earlier24original captures support the bounded visual judgement.
+- Own exact-port checks pass653rules/100files, types/production build,12desktop/phone opening/service/change/journal and physical-door journeys, plus2actual production/offline asset/audio checks. All12fresh native main-port PNGs match the independently reviewed integration captures byte-for-byte; root inspected original phone/desktop day/night examples. Console/page assertions are empty.
+- Learned: sampled slat/support shadows give coherent grounding without replacing current fuller crowns. Repeated planting, uniform paving, weak night actor contrast and portrait facade dominance remain shared limitations. This is a modest retained lighting improvement, not an overall AAA claim. New raw QA stays private.
