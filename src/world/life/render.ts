@@ -82,6 +82,14 @@ export function drawLifeReactions(ctx: CanvasRenderingContext2D, state: LifeStat
         const size = 3 + progress * 16 + i * 5;
         ctx.beginPath(); ctx.ellipse(p.x, p.y - 2, size, size * .4, 0, 0, Math.PI * 2); ctx.stroke();
       }
+    } else if (event.reaction === 'watch') {
+      const span = Math.round(7 + progress * 3);
+      ctx.fillStyle = view.shadeColor?.('#d4dfc2') ?? '#d4dfc2';
+      for (const side of [-1, 1]) for (const end of [-1, 1]) {
+        const x = Math.round(p.x) + side * span, y = Math.round(p.y) + end * 4;
+        ctx.fillRect(x - (side > 0 ? 3 : 0), y, 4, 1);
+        ctx.fillRect(x, y - (end > 0 ? 2 : 0), 1, 3);
+      }
     } else if (event.reaction === 'sway' || event.reaction === 'flutter') {
       for (let i = 0; i < 4; i++) {
         const x = p.x + (i - 1.5) * 5, y = p.y - 10 - progress * 14 - i % 2 * 4;

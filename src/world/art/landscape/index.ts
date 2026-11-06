@@ -1,10 +1,24 @@
 import type { DrawMap, WorldRenderView, WorldArtModule, WorldRenderObject } from '../../render-contract';
-import { drawLandscapeProp, landscapeMaterialColor } from './draw';
+import { drawLandscapeProp, landscapeMaterialColor, landscapeFoliageBounds } from './draw';
 
 function polygon(ctx: CanvasRenderingContext2D, view: WorldRenderView, points: {x:number;y:number}[], color: string, z = 0) {
   ctx.fillStyle = view.shadeColor?.(color) ?? color; ctx.beginPath();
   points.forEach((point, index) => {const p=view.project(point,z);if(index)ctx.lineTo(Math.round(p.x),Math.round(p.y));else ctx.moveTo(Math.round(p.x),Math.round(p.y));});
   ctx.closePath(); ctx.fill();
+}
+
+export function drawContactShadows(ctx:CanvasRenderingContext2D,map:Parameters<DrawMap>[1],view:WorldRenderView){
+  const origin=view.project({x:0,y:0}),axis=view.project({x:1,y:0}),unit=Math.abs(axis.x-origin.x);
+  ctx.save();ctx.globalAlpha*=.2;ctx.fillStyle=view.shadeColor?.('#394f3c')??'#394f3c';
+  for(const prop of map.props){
+    if(!['tree','mature-tree','willow','bamboo','rock','bench'].includes(prop.kind))continue;
+    const p=view.project(prop.position);
+    if(p.x < -unit*2 || p.y < -unit || p.x > view.width+unit*2 || p.y > view.height+unit)continue;
+    const radius=prop.kind==='mature-tree'?.65:prop.kind==='bamboo'?.6:prop.kind==='rock'?Math.min(.5,prop.width*.18):.26;
+    const spots=prop.kind==='bench'?[-.8,.8]:[0];
+    for(const offset of spots){ctx.beginPath();ctx.ellipse(Math.round(p.x+offset*unit),Math.round(p.y+unit*.04),unit*radius,unit*radius*.32,0,0,Math.PI*2);ctx.fill();}
+  }
+  ctx.restore();
 }
 
 export const drawMap: DrawMap = (ctx, map, view) => {
@@ -20,8 +34,8 @@ export const drawMap: DrawMap = (ctx, map, view) => {
       if(x>=0&&y>=0&&x<=map.bounds.width&&y<=map.bounds.height)continue;
       const n=Math.abs((x*x*37+y*y*71+x*y*13)%97),p=view.project({x,y});
       if(p.x<-unit*5||p.y<-unit*2||p.x>view.width+unit*5||p.y>view.height+unit*8)continue;
-      ctx.save();ctx.globalAlpha=.56;
-      drawLandscapeProp(ctx,{kind:n%7===0?'rock':'tree',position:{x:x+n%3*.3,y:y+n%5*.2},width:3.6,height:3.6,variant:n%4},(x,y,z=0)=>view.project({x,y},z),unit,0,true,shade);ctx.restore();
+      ctx.save();ctx.globalAlpha*=.56;
+      drawLandscapeProp(ctx,{kind:n%11===0?'rock':'mature-tree',position:{x:x+n%3*.5,y:y+n%5*.3},width:4.5+n%5*.65,height:5,variant:n%2},(x,y,z=0)=>view.project({x,y},z),unit,0,true,shade);ctx.restore();
     }
 
     const painted=new Set<string>();
@@ -29,8 +43,25 @@ export const drawMap: DrawMap = (ctx, map, view) => {
     const forestFloor=()=>{
       for(const patch of map.props.filter(p=>p.layer==='ground')){
         const {x,y}=patch.position,w=patch.width,h=patch.height;
-        const points=[[-.45,0],[-.5,-.15],[-.31,-.27],[-.34,-.43],[-.12,-.5],[.08,-.42],[.25,-.5],[.43,-.25],[.5,-.14],[.42,.04],[.48,.2],[.25,.3],[.18,.47],[-.08,.5],[-.22,.35],[-.4,.35],[-.37,.15]].map(([dx,dy])=>({x:x+dx*w,y:y+dy*h}));
-        polygon(ctx,view,points,Number(patch.variant)%2?'#75815b':'#607b55');
+        const at=view.project(patch.position);
+        if(at.x < -unit*w || at.y < -unit*h || at.x > view.width+unit*w || at.y > view.height+unit*h)continue;
+        if(patch.kind==='harvest-floor'){
+          const sx=w/13,sy=h/10;
+          ctx.save();
+          const soilPoints=[{x:x-5.7,y:y-2.4},{x:x-3.2,y:y-4.5},{x:x+.6,y:y-3.6},{x:x+4.2,y:y-2.2},{x:x+5.4,y:y+1.2},{x:x+2.7,y:y+3.8},{x:x-.9,y:y+3.1},{x:x-4.6,y:y+4}].map(p=>({x:x+(p.x-x)*sx,y:y+(p.y-y)*sy}));
+          polygon(ctx,view,soilPoints, '#a49a6c');
+          for(const [dx,dy,pw,ph] of [[-4,-1,1.7,.6],[-2,-3,2,.8],[2,-1,1.3,.5],[3,2,1.2,.7],[-1,2,2,.5]])polygon(ctx,view,[{x:x+dx*sx,y:y+dy*sy},{x:x+(dx+pw)*sx,y:y+(dy-.2)*sy},{x:x+(dx+pw-.2)*sx,y:y+(dy+ph)*sy},{x:x+(dx-.3)*sx,y:y+(dy+ph)*sy}], '#8f875c');
+          ctx.restore();continue;
+        }
+        for(let iy=0;iy<11;iy++)for(let ix=0;ix<13;ix++){
+          const dx=(ix/12-.5)*w,dy=(iy/10-.5)*h;
+          const radius=Math.hypot(dx/(w*.5),dy/(h*.5));
+          const n=(ix*37+iy*61+Number(patch.variant)*17)%97;
+          if(radius>1||n/97>Math.max(0,1-radius*.9)*.78)continue;
+          const p=view.project({x:x+dx+(n%3)*.06,y:y+dy});
+          ctx.fillStyle=shade(n%2?'#78915d':'#8a9c66');
+          ctx.fillRect(Math.round(p.x),Math.round(p.y),Math.max(2,unit*.32),Math.max(1,unit*.12));
+        }
         for(let i=0;i<37;i++){
           const dx=((i*37)%97/97-.5)*w*.7,dy=((i*61)%97/97-.5)*h*.7,p=view.project({x:x+dx,y:y+dy});
           ctx.fillStyle=shade(i%3?'#a69e66':'#647753');ctx.fillRect(Math.round(p.x),Math.round(p.y),Math.max(1,unit*.13),Math.max(1,unit*.06));
@@ -63,8 +94,8 @@ export const drawMap: DrawMap = (ctx, map, view) => {
           const r=terrain!.rect,edge=Math.min(x+.5-r.x,r.x+r.width-x-.5,y+.5-r.y,r.y+r.height-y-.5);
           if(edge<.7){ctx.fillStyle=shade(n%2?'#a2a373':'#b3aa7d');ctx.fillRect(Math.round(p.x-3*pixel),Math.round(p.y),5*pixel,2*pixel);}
         }
-        if (n%3===0) ctx.fillRect(Math.round(p.x),Math.round(p.y),(material==='water'?7:2)*pixel,pixel);
-        if(material==='grass'||material==='moss'||material==='orchard-floor') {
+        if ((material==='water'&&n%3===0)||(material!=='grass'&&n%11===0)) ctx.fillRect(Math.round(p.x),Math.round(p.y),(material==='water'?7:2)*pixel,pixel);
+        if((material==='grass'||material==='moss'||material==='orchard-floor')&&((Math.floor(x/4)*19+Math.floor(y/5)*31)%13<3)&&n%4===0) {
           ctx.fillStyle=shade(n%2?'#78915e':'#94a76c');
           ctx.fillRect(Math.round(p.x-4*pixel),Math.round(p.y-3*pixel),pixel,2*pixel);
           ctx.fillRect(Math.round(p.x-2*pixel),Math.round(p.y-2*pixel),pixel,2*pixel);
@@ -75,19 +106,35 @@ export const drawMap: DrawMap = (ctx, map, view) => {
         }
       }
     }
+    const waters=map.terrain.filter(t=>t.material==='water');
+    const wet=(x:number,y:number)=>waters.some(t=>x>=t.rect.x&&x<t.rect.x+t.rect.width&&y>=t.rect.y&&y<t.rect.y+t.rect.height);
+    for(const t of waters){const r=t.rect;
+      for(let y=r.y+.2;y<r.y+r.height;y+=.8){
+        for(const side of [-1,1]){const x=side<0?r.x:r.x+r.width;
+          if(wet(x+side*.05,y))continue;
+          const inner=x-side*(.18+((Math.floor(y)*7)%3)*.07),a=view.project({x:inner,y}),b=view.project({x:inner,y:Math.min(y+.58,r.y+r.height)});
+          if(a.x< -4||a.x>view.width+4||a.y< -4||a.y>view.height+4)continue;
+          ctx.strokeStyle=shade(Math.floor(y)%3?'#91b4a8':'#b4c3a4');ctx.lineWidth=Math.max(1,unit*.16);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+        }
+      }
+    }
+    drawContactShadows(ctx,map,view);
   }
 };
 
 export const renderObjects: NonNullable<WorldArtModule['renderObjects']> = (map, view) => {
   if(map.id!=='park'&&map.id!=='riverbank')return [];
   const objects:WorldRenderObject[]=map.props.filter(prop=>prop.layer!=='ground').map(prop=>{
-    const occlusion=map.occluders.find(o=>o.id===prop.id);
+    const authored=map.occluders.find(o=>o.id===prop.id),bounds=landscapeFoliageBounds(prop);
+    const span=bounds?Math.max(Math.abs(bounds.minX),Math.abs(bounds.maxX))/18:0;
+    const occlusion=authored&&bounds?{...authored,rect:{x:prop.position.x-span/2,y:prop.position.y-span/2,width:span,height:span},height:-bounds.minY/18}:authored;
     return {
       id:prop.id,position:prop.position,
       occlusion,
       draw(ctx,current){
         const p=current.project(prop.position),origin=current.project({x:0,y:0}),axis=current.project({x:1,y:0}),unit=Math.abs(axis.x-origin.x);
-        if(p.x < -unit*6 || p.y < -unit*2 || p.x > current.width+unit*6 || p.y > current.height+unit*8)return;
+        if(bounds){const scale=unit/18;if(p.x+bounds.maxX*scale<0||p.y+bounds.maxY*scale<0||p.x+bounds.minX*scale>current.width||p.y+bounds.minY*scale>current.height)return;}
+        else if(p.x < -unit*6 || p.y < -unit*2 || p.x > current.width+unit*6 || p.y > current.height+unit*8)return;
         drawLandscapeProp(ctx,prop,(x,y,z=0)=>current.project({x,y},z),unit,current.elapsedMs,current.reducedMotion,color=>current.shadeColor?.(color)??color);
       },
     };

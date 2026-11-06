@@ -32,6 +32,13 @@ for name,target,r,arrival,facing,kind in [('restaurant','restaurant',rect(33,28,
  landmark(name+'-approach',*arrival,kind)
 
 for name,x,y,w,h,var in [('restaurant-steps',32.5,28,3,1,'wide'),('residence-steps',10,21,3,1,'stone'),('workshop-landing',71.5,29,3.5,1,'loading'),('river-stairs',74,44.4,4,2,'river')]:prop(name,'steps',x,y,w,h,var,layer='ground')
+# Only real portals get an open leaf and a threshold mat. Closed shops keep shutters.
+for name,x,y,variant in [('restaurant',33,28,'woven-jade'),('residence',10.5,21,'home-stone'),('workshop',72.25,29,'workshop-slats')]:
+ prop(name+'-mat','threshold-mat',x+.15,y+.9,1.7,1.05,variant,layer='ground')
+ prop(name+'-open-leaf','open-door-leaf',x+.04,y+.28,.18,.7,variant,True,2.5)
+prop('gateway-threshold','threshold-mat',43.15,6.2,3.7,.6,'gate-stone',layer='ground')
+prop('book-delivery-ledge','delivery-ledge',6.7,28.65,1.2,.2,'wrapped-books',True,.9)
+prop('junction-rest-bag','rest-bag',20.8,28.2,.5,.3,'folded-cloth',False,1.2)
 prop('courtyard-moon-gate','gate',42,6.5,6,.35,'moon',False,4)
 m['colliders'] += [dict(id='town.gate-left',rect=rect(42,6.5,1.1,.35)),dict(id='town.gate-right',rect=rect(46.9,6.5,1.1,.35))]
 prop('breakfast-awning','awning',28,27.3,11,.7,'stripe-jade',False,3)
@@ -56,8 +63,8 @@ prop('market-verge','flowerbed',40.2,40,2,4,'mixed',False,layer='ground')
 prop('workshop-verge','flowerbed',67.2,37.4,1.5,6,'mixed',False,layer='ground')
 prop('market-stall','market-stall',29,38.2,3.2,1.4,'vegetables',True,2.2)
 prop('market-baskets','baskets',34,43,2,.7,'bamboo',True,.7)
-prop('residence-laundry','laundry',4.8,18.8,10.8,.2,'cream-jade',False,4)
-prop('south-laundry','laundry',7.8,47.5,10.5,.2,'blue-ochre',False,4)
+prop('residence-laundry','laundry',4.8,21.35,10.8,.2,'cream-jade',False,4)
+prop('south-laundry','laundry',7.8,50.35,10.5,.2,'blue-ochre',False,4)
 prop('alley-laundry','laundry',39.5,17,5.7,.2,'cream-jade',False,4)
 prop('north-utility','utility-pole',24.8,7,.3,.3,'crossbar',True,6)
 prop('south-utility','utility-pole',61.8,57,.3,.3,'crossbar',True,6)
@@ -72,8 +79,11 @@ prop('tea-stone-table','stone-table',50,16.5,1.7,1.2,'stone',True,1.1)
 for name,x,y,kind in [('book-window',10.5,30,'closed-bookshop-display'),('breakfast-steam',34,29.5,'restaurant-frontage'),('camphor-junction',22,29,'tree-junction'),('laundry-lane',19.7,22.5,'residential-lane'),('lantern-cut',42.5,21,'narrow-lane'),('moon-gate',45,9.5,'moon-gate'),('market-pocket',33,40.5,'market'),('sawtooth-roof',72,30.5,'workshop-frontage'),('river-overlook',67,49,'river-approach'),('south-fig',24,53,'garden-lane'),('closed-yard',72,45.2,'closed-yard')]:landmark(name,x,y,kind)
 for name,x,y,interaction in [('book-window',10.5,30,'observe-window'),('junction-rest',22,29.2,'rest'),('market-baskets',34,41,'observe-market'),('river-view',67,49,'look-river'),('laundry-lane',22.5,19,'observe-laundry'),('tea-terrace',54,15,'rest')]:
  m['anchors'].append(dict(id='town.'+name,position=point(x,y),radius=1.4,featureId='exploration',interactionId='town.'+interaction))
-for name,actor,route in [('market-tender','lin-jie',[(30.6,40.3)]),('book-window-reader','xiao-li',[(11,30),(14,30),(18,32),(21,32)]),('canal-birds','bird',[(66.5,49.4),(65.3,50.3),(63,48.5)]),('park-birds','bird',[(7,35.5),(10,35.5),(12,35.5)]),('morning-walk','aunt',[(35.5,31.5),(42.5,31.5),(42.5,14),(45,10)]),('market-regular','zhang-laoshi',[(32,43.2)]),('workshop-delivery','xiao-zhou',[(70,33),(62,33),(62,47),(70,47)])]:
+for name,actor,route in [('market-tender','lin-jie',[(30.6,40.3)]),('canal-birds','bird',[(66.5,49.4),(65.3,50.3),(63,48.5)]),('park-birds','bird',[(7,35.5),(10,35.5),(12,35.5)]),('morning-walk','aunt',[(35.5,31.5),(42.5,31.5),(42.5,14),(45,10)]),('market-regular','zhang-laoshi',[(32,43.2)]),('workshop-delivery','xiao-zhou',[(70,33),(62,33),(62,47),(70,47)])]:
  m['npcHooks'].append(dict(id='town.'+name,position=point(*route[0]),route=[point(*p) for p in route],characterId=actor))
+m['npcHooks'] = [hook for hook in m['npcHooks'] if hook['characterId'] != 'aunt']
+m['npcHooks'].append(json.loads(Path(__file__).with_name('courier-hook.json').read_text()))
+
 variants = list(dict.fromkeys(item['variant'] for item in m['props'] + m['terrain']))
 Path(__file__).parents[2].joinpath('art/town/variants.json').write_text(json.dumps(variants, indent=2)+'\n')
 for item in m['props'] + m['terrain']: item['variant'] = variants.index(item['variant'])

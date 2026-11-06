@@ -65,6 +65,7 @@ export function interactLife(state: LifeState, plan: LifePlan, actors: readonly 
 } {
   const option = nearbyLife(plan, actors, context.player, navigation).find(item => item.id === actionId);
   if (!option || !Number.isFinite(context.elapsedMs) || context.elapsedMs < 0 || !Number.isSafeInteger(context.day) || context.day < 1) return { state, events: [] };
+  const checkpoint = context.elapsedMs > state.elapsedMs ? { ...state, elapsedMs: context.elapsedMs } : state;
   const events: LifeEvent[] = [];
   if (option.kind === 'inspect') {
     if (!state.discoveries.some(item => item.mapId === plan.mapId && item.landmarkId === option.targetId)) {
@@ -77,8 +78,8 @@ export function interactLife(state: LifeState, plan: LifePlan, actors: readonly 
   } else {
     const actor = actors.find(actor => actor.id === option.targetId)!;
     events.push({ type: 'reacted', mapId: plan.mapId, targetId: actor.id,
-      reaction: option.kind === 'greet' ? 'wave' : option.kind === 'sit' ? 'sit' : actor.kind === 'bird' ? 'flutter' : 'watch', atMs: context.elapsedMs });
-    return { state: events.reduce(reduceLife, state), events, line: actor.greeting };
+      reaction: option.kind === 'greet' ? 'wave' : option.kind === 'sit' ? 'sit' : actor.kind === 'bird' ? 'flutter' : actor.kind === 'resident' ? 'wave' : 'watch', atMs: context.elapsedMs });
+    return { state: events.reduce(reduceLife, checkpoint), events, line: actor.greeting };
   }
-  return { state: events.reduce(reduceLife, state), events };
+  return { state: events.reduce(reduceLife, checkpoint), events };
 }

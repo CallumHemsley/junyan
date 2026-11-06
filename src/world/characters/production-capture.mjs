@@ -1,7 +1,7 @@
 import {chromium} from '@playwright/test';
 import {writeFile,mkdir} from 'node:fs/promises';
 import assert from 'node:assert/strict';
-const output=new URL('../../../docs/evidence/0085/production/',import.meta.url).pathname;
+const output=new URL('../../../docs/evidence/world/0085/current/production/',import.meta.url).pathname;
 await mkdir(output,{recursive:true});
 const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--mute-audio']});
 const results=[];

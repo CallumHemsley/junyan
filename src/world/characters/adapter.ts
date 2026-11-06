@@ -1,3 +1,4 @@
+import {ACTOR_PIXELS_PER_WORLD_UNIT} from './calibration.mjs';
 import type {WorldRenderView,WorldDrawCommand,WorldRenderObject} from '../render-contract';
 import type {ActorSample} from './index';
 import type {RGB} from './artwork.mjs';
@@ -9,7 +10,7 @@ export type ActorSurface = {
 };
 export type ActorPosition = {x:number;y:number;z?:number};
 
-export function paintActor(surface:ActorSurface,sample:ActorSample,position:ActorPosition,nativePixelsPerTile=18):void {
+export function paintActor(surface:ActorSurface,sample:ActorSample,position:ActorPosition,nativePixelsPerTile=sample.pixelsPerWorldUnit):void {
   const base=position.z??0;
   surface.shadow?.(position.x,position.y,base,.40,.22);
   for(const foot of sample.frame.feet)if(foot.planted) {
@@ -45,7 +46,7 @@ export function paintActorCanvas(context:CanvasRenderingContext2D,sample:ActorSa
   context.restore();
 }
 
-export function actorCommands(sample:Pick<ActorSample,'drawCommands'>,position:{x:number;y:number},nativePixelsPerTile=18):WorldDrawCommand[] {
+export function actorCommands(sample:Pick<ActorSample,'drawCommands'>&Partial<Pick<ActorSample,'pixelsPerWorldUnit'>>,position:{x:number;y:number},nativePixelsPerTile=sample.pixelsPerWorldUnit??ACTOR_PIXELS_PER_WORLD_UNIT):WorldDrawCommand[] {
   const world=(x:number,y:number)=>({x:position.x+(x*.5+y)/nativePixelsPerTile,y:position.y+(y-x*.5)/nativePixelsPerTile});
   return sample.drawCommands.map(span=>({kind:'polygon',color:'#'+span.color.map(channel=>channel.toString(16).padStart(2,'0')).join(''),points:[
     world(span.x,span.y),world(span.x+span.width,span.y),world(span.x+span.width,span.y+1),world(span.x,span.y+1),
@@ -54,10 +55,20 @@ export function actorCommands(sample:Pick<ActorSample,'drawCommands'>,position:{
 
 export function drawActor(context:CanvasRenderingContext2D,view:WorldRenderView,sample:ActorSample,position:{x:number;y:number}):void {
   const p=view.project(position),unit=view.project({x:position.x+.5,y:position.y-.5});
-  const scale=Math.abs(unit.x-p.x)/18;
+  const scale=Math.abs(unit.x-p.x)/sample.pixelsPerWorldUnit;
   paintActorCanvas(context,sample,p.x,p.y,scale,color=>view.shadeColor?.(color)??`rgb(${color.join(',')})`);
 }
 
 export function actorObject(id:string,sample:ActorSample,position:{x:number;y:number}):WorldRenderObject {
   return {id,position,depth:position.x+position.y,draw:(context,view)=>drawActor(context,view,sample,position)};
+}
+
+export type ActorScreenBounds = {x:number;y:number;width:number;height:number};
+export function projectActorBounds(view:WorldRenderView,sample:ActorSample,position:{x:number;y:number}):ActorScreenBounds {
+  const origin=view.project(position),unit=view.project({x:position.x+.5,y:position.y-.5});
+  const scale=Math.abs(unit.x-origin.x)/sample.pixelsPerWorldUnit;
+  const left=Math.min(...sample.drawCommands.map(span=>span.x)),right=Math.max(...sample.drawCommands.map(span=>span.x+span.width));
+  const top=Math.min(...sample.drawCommands.map(span=>span.y)),bottom=Math.max(...sample.drawCommands.map(span=>span.y+1));
+  const x=Math.round(origin.x+left*scale),y=Math.round(origin.y+top*scale);
+  return {x,y,width:Math.round(origin.x+right*scale)-x,height:Math.round(origin.y+bottom*scale)-y};
 }

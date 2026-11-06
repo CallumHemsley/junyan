@@ -8,17 +8,20 @@ export type AtmosphereInput = {
 };
 export type AtmosphereHooks = {
   interior?: boolean;
+  ambientByPhase?:Partial<Record<DayPhase,RGB>>;
   water?: readonly { id: string; rect: Rect; shore?: readonly ('north' | 'east' | 'south' | 'west')[] }[];
   reflections?: readonly {id:string;position:Point;width:number;height:number;color:RGB}[];
-  lights?: readonly { id: string; position: Point; radius: number; kind: 'window' | 'lamp'; emitter?:readonly Point[] }[];
+  lights?: readonly { id: string; position: Point; radius: number; kind: 'window' | 'lamp'; emitter?:readonly Point[]; pool?:readonly Point[]; depth?:number }[];
   foliage?: readonly { id: string; position: Point; radius: number; kind: 'grass' | 'leaves'; motion?:boolean; depth?:number }[];
-  shadows?: readonly { id: string; position: Point; radius: number; height: number }[];
+  shadows?: readonly { id: string; position: Point; radius: number; height: number; shape?:'canopy'|'willow'|'bamboo'|'column'; contact?:boolean }[];
+  shadowExclusions?:readonly Rect[];
   particles?: readonly { id: string; rect: Rect; kind: 'pollen' | 'firefly' | 'dust'; count: number }[];
 };
 export type AtmosphereCommand = {
   layer: 'ground' | 'light' | 'objects' | 'foreground';
   object?: {id:string;position:Point;depth?:number};
-  role?:'water-base';
+  role?:'water-base'|'cast-shadow'|'contact-shadow';
+  exclusions?:readonly Rect[];
   points: readonly Point[]; color: RGB; opacity: number;
 };
 export type LightState = {
@@ -72,7 +75,8 @@ export function shadeAtmosphereColor(color: RGB, light: LightState, exposure=1):
 /** No timers or RNG state: identical explicit inputs produce identical frames. */
 export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks = {}, viewport?: Rect): AtmosphereFrame {
   const source = sampleDayLight(input.timeOfDay);
-  const light: LightState = hooks.interior ? {...source, ambient: [.92,.89,.83], sunStrength: .04, shadowOpacity: .22} : source;
+  const localAmbient=typeof input.timeOfDay==='string'?hooks.ambientByPhase?.[input.timeOfDay]:undefined;
+  const light: LightState = hooks.interior ? {...source, ambient:localAmbient??[.92,.89,.83], sunStrength: .04, shadowOpacity: .22} : source;
   const animationMs = input.reducedMotion ? 0 : input.elapsedMs;
   const t = animationMs/1000;
   const wind = {x: Math.sin(t*.75)*.065 + Math.sin(t*.29)*.04, y: Math.sin(t*.53)*.025};
@@ -129,30 +133,47 @@ export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks 
     }
   }
   for(const shadow of hooks.shadows ?? []) {
-    const {x,y}=shadow.position, r=shadow.radius;
-    if(!visible({x:x-r,y:y-r,width:r*2,height:r*2})) continue;
-    const dx=light.shadowOffset[0]*shadow.height, dy=light.shadowOffset[1]*shadow.height;
-    add('ground',[{x:x-r,y:y-r*.4},{x:x+r,y:y-r*.4},{x:x+r+dx,y:y+r*.4+dy},{x:x-r+dx,y:y+r*.4+dy}],light.shadow,light.shadowOpacity);
-    add('ground',square(x-r*.6,y-r*.25,r*1.2,r*.5),light.shadow,.24);
+    const {x,y}=shadow.position,r=shadow.radius;
+    const dx=light.shadowOffset[0]*shadow.height,dy=light.shadowOffset[1]*shadow.height;
+    const cx=x+dx,cy=y+dy,shape=shadow.shape??'canopy';
+    if(visible({x:cx-r,y:cy-r,width:r*2,height:r*2})) {
+      const phase=variation(shadow.id,input.seed)*Math.PI*2;
+      const points=Array.from({length:20},(_,i)=>{
+        const angle=i/20*Math.PI*2;
+        const lobes=1+Math.cos(angle*3+phase)*.09+Math.sin(angle*5-phase)*.045;
+        const width=shape==='bamboo'?.56:shape==='willow'?1.12:shape==='column'?.22:1;
+        const depth=shape==='bamboo'?.86:shape==='willow'?.78:shape==='column'?.22:.86;
+        return {x:cx+Math.cos(angle)*r*width*lobes,y:cy+Math.sin(angle)*r*depth*lobes};
+      });
+      if(commands.length<MAX_ATMOSPHERE_COMMANDS)commands.push({layer:'ground',role:'cast-shadow',points,color:light.shadow,opacity:light.shadowOpacity*.65,exclusions:hooks.shadowExclusions});
+    }
+    if(shadow.contact!==false&&visible({x:x-.25,y:y-.25,width:.5,height:.5})) {
+      const contact=Math.min(.25,Math.max(.12,r*.14));
+      const points=Array.from({length:12},(_,i)=>({x:x+Math.cos(i/12*Math.PI*2)*contact,y:y+Math.sin(i/12*Math.PI*2)*contact*.75}));
+      if(commands.length<MAX_ATMOSPHERE_COMMANDS)commands.push({layer:'ground',role:'contact-shadow',points,color:light.shadow,opacity:.20});
+    }
   }
   for(const lamp of hooks.lights ?? []) {
     const {x,y,z=0}=lamp.position, r=lamp.radius;
     if(!visible({x:x-r,y:y-r,width:r*2,height:r*2})) continue;
     const strength=light.lampStrength;
     if(strength<.1) continue;
-    // Three hard-edged pools, no blur/filter/full-screen wash.
-    for(const [scale,opacity] of [[1,.07],[.67,.10],[.36,.14]]) {
-      const size=r*scale;
-      add('light',[{x:x-size,y:y-size*.4},{x:x+size*.2,y:y-size*.8},{x:x+size,y:y-size*.1},{x:x+size*.8,y:y+size*.65},{x:x-size*.6,y:y+size*.7}], [255,200,121], opacity*strength);
+    if(lamp.pool?.length) {
+      add('light',[...lamp.pool],[255,200,121],.26*strength);
+    } else {
+      for(const [scale,opacity] of [[1,.07],[.67,.10],[.36,.14]]) {
+        const size=r*scale;
+        add('light',[{x:x-size,y:y-size*.4},{x:x+size*.2,y:y-size*.8},{x:x+size,y:y-size*.1},{x:x+size*.8,y:y+size*.65},{x:x-size*.6,y:y+size*.7}], [255,200,121], opacity*strength);
+      }
     }
     const width=lamp.kind==='window'?.55:.16, height=lamp.kind==='window'?.48:.22;
     if(lamp.emitter) {
-      if(lamp.emitter.length>=3) add('objects',[...lamp.emitter],[255,224,153],strength*.48,{id:lamp.id,position:lamp.position});
+      if(lamp.emitter.length>=3) add('objects',[...lamp.emitter],[255,224,153],strength*.80,{id:lamp.id,position:lamp.position,depth:lamp.depth});
     } else {
-      add('objects',[{x:x-width/2,y,z},{x:x+width/2,y,z},{x:x+width/2,y,z:z+height},{x:x-width/2,y,z:z+height}],[255,224,153],strength,{id:lamp.id,position:lamp.position});
-      if(lamp.kind==='window') add('objects',[{x:x-.025,y:y-.005,z},{x:x+.025,y:y-.005,z},{x:x+.025,y:y-.005,z:z+height},{x:x-.025,y:y-.005,z:z+height}],[110,87,62],.9,{id:lamp.id,position:lamp.position});
+      add('objects',[{x:x-width/2,y,z},{x:x+width/2,y,z},{x:x+width/2,y,z:z+height},{x:x-width/2,y,z:z+height}],[255,224,153],strength,{id:lamp.id,position:lamp.position,depth:lamp.depth});
+      if(lamp.kind==='window') add('objects',[{x:x-.025,y:y-.005,z},{x:x+.025,y:y-.005,z},{x:x+.025,y:y-.005,z:z+height},{x:x-.025,y:y-.005,z:z+height}],[110,87,62],.9,{id:lamp.id,position:lamp.position,depth:lamp.depth});
     }
-    if(lamp.kind==='window') add('light',square(x-.2,y+.14,.52,.1),[255,213,145],strength*.18);
+    if(lamp.kind==='window'&&!lamp.pool) add('light',square(x-.2,y+.14,.52,.1),[255,213,145],strength*.18);
   }
   for(const plant of hooks.foliage ?? []) {
     const {x,y,z=0}=plant.position, radius=plant.radius;

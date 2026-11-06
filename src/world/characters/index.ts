@@ -1,3 +1,4 @@
+import {ACTOR_PIXELS_PER_WORLD_UNIT} from './calibration.mjs';
 import type {HeldObject} from './background';
 import {getActorDefinition,diagnoseActorIds,UnsupportedActorError,type ActorDiagnostic} from './catalog';
 import {actorCommands} from './adapter';
@@ -18,11 +19,14 @@ export type ActorInput = {
   yaw?:number;
   carrying?:boolean;
   heldObject?:HeldObject;
+  pixelsPerWorldUnit?:number;
   seatHeight?:number;
+  handRestHeight?:number;
 };
 export type PixelSpan = {x:number;y:number;width:number;color:RGB};
 export type ActorSample = {
   version:1;
+  pixelsPerWorldUnit:number;
   characterId:string;
   facing:Facing;
   direction:number;
@@ -41,6 +45,8 @@ export function directionFromYaw(yaw:number):number {
 export function sampleActor(input:ActorInput):ActorSample {
   const definition=getActorDefinition(input.characterId);
   if(!definition)throw new UnsupportedActorError(input.characterId);
+  const pixelsPerWorldUnit=input.pixelsPerWorldUnit??ACTOR_PIXELS_PER_WORLD_UNIT;
+  if(!Number.isFinite(pixelsPerWorldUnit)||pixelsPerWorldUnit<=0)throw new RangeError('Actor pixelsPerWorldUnit must be positive and finite.');
   const posture=input.posture ?? 'stand';
   if(posture==='sit'&&input.seatHeight!==undefined&&(!Number.isFinite(input.seatHeight)||input.seatHeight<0))throw new RangeError('Actor seatHeight must be finite and nonnegative.');
   const direction=input.yaw===undefined?facingDirections[input.facing]:directionFromYaw(input.yaw);
@@ -49,7 +55,7 @@ export function sampleActor(input:ActorInput):ActorSample {
   const phase=input.reducedMotion?0:Math.floor(Math.max(0,clock))%6;
   const action=posture==='sit'||posture==='crouch'?posture:posture==='react'?'react':posture==='work'?'interact':input.action;
   const appearance=definition.appearance;
-  const picture=frame({appearance,seatHeight:posture==='sit'?input.seatHeight:undefined,body:definition.body,role:definition.role,direction,phase,action,reducedMotion:input.reducedMotion,carrying:input.carrying,heldObject,acting:!input.reducedMotion&&input.elapsedMs%6000>5200,blink:!input.reducedMotion&&input.action==='idle'&&input.elapsedMs%4400>=4160});
+  const picture=frame({appearance,pixelsPerWorldUnit,seatHeight:posture==='sit'?input.seatHeight:undefined,handRestHeight:input.handRestHeight,body:definition.body,role:definition.role,direction,phase,action,reducedMotion:input.reducedMotion,carrying:input.carrying,heldObject,acting:!input.reducedMotion&&input.elapsedMs%6000>5200,blink:!input.reducedMotion&&input.action==='idle'&&input.elapsedMs%4400>=4160});
   const commands:PixelSpan[]=[];
   for(let y=0;y<picture.height;y++)for(let x=0;x<picture.width;) {
     const offset=(y*picture.width+x)*4;
@@ -64,12 +70,12 @@ export function sampleActor(input:ActorInput):ActorSample {
     commands.push({x:x-picture.anchor.x,y:y-picture.anchor.y,width:end-x,color});
     x=end;
   }
-  return {version:1,characterId:input.characterId,facing:input.facing,direction,
-    frameId:`${input.characterId}/${direction}/${posture}/${input.action}/${phase}${input.carrying?'/carry':''}${heldObject?'/'+heldObject:''}${posture==='sit'&&input.seatHeight!==undefined?'/seat-'+input.seatHeight:''}${!input.reducedMotion&&input.action==='idle'&&input.elapsedMs%4400>=4160?'/blink':''}${!input.reducedMotion&&input.elapsedMs%6000>5200?'/acting':''}`,
-    phase,posture,frame:picture,drawCommands:commands,worldCommands:actorCommands({drawCommands:commands},{x:0,y:0})};
+  return {version:1,pixelsPerWorldUnit,characterId:input.characterId,facing:input.facing,direction,
+    frameId:`${input.characterId}/${direction}/${posture}/${input.action}/${phase}${pixelsPerWorldUnit===18?'':'/ppu-'+pixelsPerWorldUnit}${input.carrying?'/carry':''}${heldObject?'/'+heldObject:''}${posture==='sit'&&input.seatHeight!==undefined?'/seat-'+input.seatHeight:''}${input.handRestHeight===undefined?'':'/hands-'+input.handRestHeight}${!input.reducedMotion&&input.action==='idle'&&input.elapsedMs%4400>=4160?'/blink':''}${!input.reducedMotion&&input.elapsedMs%6000>5200?'/acting':''}`,
+    phase,posture,frame:picture,drawCommands:commands,worldCommands:actorCommands({drawCommands:commands,pixelsPerWorldUnit},{x:0,y:0})};
 }
 
-export {drawActor,actorCommands,actorObject} from './adapter';
+export {drawActor,actorCommands,actorObject,projectActorBounds,type ActorScreenBounds} from './adapter';
 
 export {backgroundResidents,isBackgroundResidentId,type BackgroundResidentId,type HeldObject} from './background';
 
@@ -79,3 +85,5 @@ export function trySampleActor(input:ActorInput):ActorSampleResult {
   return diagnostic?{ok:false,diagnostic}:{ok:true,sample:sampleActor(input)};
 }
 export {actorCatalog,supportedActorIds,supportsActor,getActorDefinition,diagnoseActorIds,UnsupportedActorError,type ActorCatalogEntry,type ActorDiagnostic} from './catalog';
+
+export {actorContactMetrics,ACTOR_PIXELS_PER_WORLD_UNIT,type ActorContactMetrics} from './contacts';

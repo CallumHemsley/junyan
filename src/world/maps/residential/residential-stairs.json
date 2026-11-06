@@ -47,9 +47,9 @@
       "id": "residential-stairs.lower-rail",
       "rect": {
         "x": 8,
-        "y": 25,
+        "y": 24,
         "width": 0.35,
-        "height": 8
+        "height": 9
       }
     },
     {
@@ -58,7 +58,7 @@
         "x": 14.65,
         "y": 9,
         "width": 0.35,
-        "height": 9
+        "height": 10
       }
     },
     {
@@ -74,7 +74,7 @@
       "id": "residential-stairs.middle-window",
       "rect": {
         "x": 9,
-        "y": 19,
+        "y": 18.6,
         "width": 4,
         "height": 0.4
       }
@@ -140,6 +140,15 @@
         "y": 19,
         "width": 2,
         "height": 1
+      }
+    },
+    {
+      "id": "residential-stairs.middle-support",
+      "rect": {
+        "x": 3,
+        "y": 18.6,
+        "width": 12,
+        "height": 0.4
       }
     }
   ],
@@ -272,10 +281,10 @@
       "kind": "railing",
       "position": {
         "x": 8,
-        "y": 25
+        "y": 24
       },
       "width": 0.35,
-      "height": 8,
+      "height": 9,
       "layer": "object",
       "variant": 0
     },
@@ -287,7 +296,7 @@
         "y": 9
       },
       "width": 0.35,
-      "height": 9,
+      "height": 10,
       "layer": "object",
       "variant": 0
     },
@@ -308,7 +317,7 @@
       "kind": "window",
       "position": {
         "x": 9,
-        "y": 19
+        "y": 18.6
       },
       "width": 4,
       "height": 0.4,
@@ -428,9 +437,9 @@
       "kind": "railing",
       "position": {
         "x": 8,
-        "y": 23
+        "y": 23.825
       },
-      "width": 6,
+      "width": 12,
       "height": 0.35,
       "layer": "object",
       "variant": 0
@@ -499,7 +508,7 @@
       "id": "residential-stairs.top-rail",
       "kind": "railing",
       "position": {
-        "x": 14.6,
+        "x": 14.65,
         "y": 4
       },
       "width": 0.35,
@@ -511,12 +520,24 @@
       "id": "residential-stairs.well-foundation",
       "kind": "well",
       "position": {
-        "x": 8,
-        "y": 24
+        "x": 7.9,
+        "y": 23.5
       },
-      "width": 7,
-      "height": 9,
+      "width": 12.2,
+      "height": 9.5,
       "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "residential-stairs.middle-support",
+      "kind": "wall",
+      "position": {
+        "x": 3,
+        "y": 18.6
+      },
+      "width": 12,
+      "height": 0.4,
+      "layer": "object",
       "variant": 0
     }
   ],

@@ -55,7 +55,7 @@ function paint(ctx: CanvasRenderingContext2D, map: WorldMapDefinition, view: Wor
     }
     for(let x=2;x<28;x+=1.2) for(let y=21;y<27;y+=.9) {
       const offset=Math.floor((x-2)/1.2)%2*.4,top=Math.max(21,y-offset),bottom=Math.min(27,y+.86-offset);
-      if(bottom>top)tile(x,top,Math.min(1.15,28-x),bottom-top,[176+(x%3)*2,174+(y%2)*2,150]);
+      if(bottom>top)tile(x,top,Math.min(1.15,28-x),bottom-top,[153+(x%3)*2,166+(y%2)*2,173]);
     }
     for(const [x,y,w,h] of [[5,7.5,5.5,4],[18,7.5,6,4]]) {
       tile(x,y,w,h,[148,143,111]);tile(x+.12,y+.12,w-.24,h-.24,[109,132,115]);
@@ -89,7 +89,7 @@ export function renderObjects(map: WorldMapDefinition, view: WorldRenderView, re
     occlusion:overlaps?candidate:undefined,
     draw(ctx,view){
       // Contact shadows ground each workstation and shelf in the room.
-      if(!['wall','window','pegboard','paper','shavings','doormat','awning'].includes(prop.kind)){
+      if(!host&&!['wall','window','pegboard','paper','shavings','doormat','awning'].includes(prop.kind)){
         const at=view.project({x:prop.position.x+prop.width/2,y:prop.position.y+prop.height/2});
         const side=view.project({x:prop.position.x+prop.width,y:prop.position.y+prop.height});
         ctx.save();ctx.globalAlpha*=.14;ctx.fillStyle=material(view,'#342e28');ctx.beginPath();ctx.ellipse(at.x,at.y+3,Math.max(3,Math.abs(side.x-at.x)+prop.width*6),Math.max(2,Math.abs(side.y-at.y)*.65),0,0,Math.PI*2);ctx.fill();ctx.restore();

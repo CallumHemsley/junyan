@@ -20,7 +20,7 @@ const actions:Record<Job,Action[]>={
 };
 describe('physical repair bench occupancy',()=>{
   for(const job of ['lamp','toy'] as const)it(`puts the ${job} back on its physical bench when repeating a completed repair`,()=>{
-    const fresh=initialState();
+    const fresh=reduce(initialState(),{type:'switch',job},1);
     const returned=actions[job].reduce((state,action)=>reduce(state,action,1),fresh);
     expect(returned.completed).toContain(job);
     expect(returned.jobs[job]).toBeNull();

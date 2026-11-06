@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { mapDefinitions } from './index';
 import { worldMapSchema } from '../../schema';
-import { canStand, findPath } from '../../geometry';
+import { canStand, canWalk, findPath } from '../../geometry';
+import { compileLife, sampleLife } from '../../life';
+import { navigationFor } from '../../life/navigation';
 
 // Footprint clearance is deliberately tested without the rendering adapter.
 const radius = .3;
@@ -40,8 +42,15 @@ for (const raw of mapDefinitions) {
         expect(overlap,`${deck.id} covered by ${surface.id}`).toBe(false);
       }
     });
-    it('keeps resident hook segments walkable', () => {
-      for(const hook of map.npcHooks)for(const point of hook.route)expect(canStand(map,point),hook.id).toBe(true);
+    it('compiles radius-safe resident approaches and every route segment', () => {
+      for(const hook of map.npcHooks){
+        for(const point of [hook.position,...hook.route])expect(canStand(map,point,.25),hook.id).toBe(true);
+        for(let i=1;i<hook.route.length;i++){
+          let from=hook.route[i-1];const path=findPath(map,from,hook.route[i]);
+          expect(path.length,hook.id).toBeGreaterThan(0);
+          for(const to of path){expect(canWalk(map,from,to),hook.id).toBe(true);from=to;}
+        }
+      }
     });
     it('places safe arrivals outside exit triggers', () => {
       for (const entrance of map.entrances) for (const exit of map.exits) {
@@ -76,4 +85,47 @@ it('provides reciprocal park and riverbank path connections', () => {
     const exit = map.exits.find(e => e.targetMapId === other.id)!;
     expect(other.entrances.some(e => e.id === exit.targetEntranceId)).toBe(true);
   }
+});
+
+it('keeps canonical background residents assigned to one landscape home each', () => {
+  const expected={'resident-reader':'park','resident-groundskeeper':'park','resident-river-walker':'riverbank'};
+  for(const [id,home] of Object.entries(expected)){
+    const homes=mapDefinitions.flatMap(map=>map.npcHooks.filter(h=>h.characterId===id).map(()=>map.id));
+    expect(homes).toEqual([home]);
+  }
+});
+
+it('consumes real canonical profiles without diagnostics or background greetings', () => {
+  for(const raw of mapDefinitions){
+    const map=worldMapSchema.parse(raw),navigation=navigationFor(map),plan=compileLife(map,navigation);
+    expect(plan.diagnostics).toEqual([]);
+    const assigned=plan.actors.filter(actor=>map.npcHooks.some(hook=>hook.id===actor.id));
+    expect(assigned).toHaveLength(map.npcHooks.length);
+    for(const actor of assigned){
+      expect(actor.profile.homeMap).toBe(map.id);
+      expect(actor.profile.greeting).toBeUndefined();
+      expect(actor.phases.some(p=>p.action==='walk')).toBe(true);
+      expect(actor.phases.some(p=>p.action===actor.profile.resting)).toBe(true);
+    }
+    const context={day:1,seed:42,elapsedMs:12345,player:map.defaultSpawn,reducedMotion:false};
+    expect(sampleLife(plan,context,navigation)).toEqual(sampleLife(plan,context,navigation));
+    expect(sampleLife(plan,{...context,reducedMotion:true},navigation).every(a=>a.phaseMs===0)).toBe(true);
+  }
+});
+
+
+it('keeps bank arrivals, return triggers and legacy saved positions footprint-safe',()=>{
+ const map=worldMapSchema.parse(mapDefinitions.find(m=>m.id==='riverbank'));
+ for(const legacy of [{x:7,y:73},{x:6,y:75},{x:5,y:10}])expect(canStand(map,legacy,.3)).toBe(true);
+ for(const entrance of map.entrances){
+  const exit=map.exits.find(e=>e.id===entrance.id.replace('from-','to-'))!;
+  const center={x:exit.rect.x+exit.rect.width/2,y:exit.rect.y+exit.rect.height/2};
+  expect(canStand(map,center,.3)).toBe(true);
+  const route=findPath(map,entrance.position,center);expect(route.length).toBeGreaterThan(0);
+  let from=entrance.position;for(const to of route){expect(canWalk(map,from,to,.3)).toBe(true);from=to;}
+  const goal=map.landmarks.find(l=>l.id===(entrance.id==='from-town'?'riverbank.washing-stones':'riverbank.moon-bridge'))!.position;
+  expect(findPath(map,entrance.position,goal).length).toBeGreaterThan(0);
+  const distance=Math.min(...map.terrain.filter(t=>t.material==='water').map(t=>Math.hypot(Math.max(t.rect.x-entrance.position.x,0,entrance.position.x-t.rect.x-t.rect.width),Math.max(t.rect.y-entrance.position.y,0,entrance.position.y-t.rect.y-t.rect.height))));
+  expect(distance).toBeLessThan(7);
+ }
 });
