@@ -43,6 +43,7 @@ describe('selected nearby target', () => {
     const next = cycleTarget(rows, rows.find(row => row.targetId === 'door')!.key, 1)!;
     expect(next.targetId).toBe('npc/greet');
     expect(cycleTarget([...rows].reverse(), next.key, -1)?.targetId).toBe('door');
+    expect(cycleTarget(rows, 'missing', 1)?.targetId).toBe('door');
     expect(cycleTarget([], 'missing', 1)).toBeNull();
   });
 });

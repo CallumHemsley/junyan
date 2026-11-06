@@ -39,5 +39,5 @@ export function cycleTarget(targets: readonly NearbyTarget[], currentKey: string
   if (!targets.length) return null;
   const ordered = [...targets].sort((a, b) => compareKey(a.key, b.key));
   const index = ordered.findIndex(target => target.key === currentKey);
-  return ordered[(Math.max(0, index) + direction + ordered.length) % ordered.length];
+  return index < 0 ? ordered[0] : ordered[(index + direction + ordered.length) % ordered.length];
 }

@@ -17,17 +17,17 @@ import {movePlayer,nearbyAnchors} from "./geometry";
 import {paintWorld} from "./painter";
 import type {WorldAction} from "./state";
 import {nearbyTargets,selectTarget,cycleTarget,type NearbyTarget,type TargetSelection} from "./target-selection";
-import {currentPlaceWords,targetWords} from "./target-labels";
+import {currentPlaceWords,targetWords,placeBadgePaths,worldPlaceName,worldRegionName} from "./target-labels";
 import {mandarinUi as ui} from "../language/ui";
 import {language} from "../language";
 import "./world.css";
-const mapNames:Record<string,string>={restaurant:"早安小馆",town:"早市街",courtyard:"院子",workshop:"修理间",rooftop:"屋顶花园",apartment:"家","residential-hall":"楼下","residential-stairs":"楼梯",park:"河畔公园",riverbank:"河岸"};
 const directions:Record<string,Point>={ArrowUp:{x:-1,y:-1},w:{x:-1,y:-1},ArrowDown:{x:1,y:1},s:{x:1,y:1},ArrowLeft:{x:-1,y:1},a:{x:-1,y:1},ArrowRight:{x:1,y:-1},d:{x:1,y:-1}};
 export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},dialogue=null,fresh,onAction,paused=false}:{state:WorldState;maps:MapRegistry;game:GameState;onPlay?:(line:Line)=>void;dialogue?:Line|null;onLookup:(word:Word,trigger:HTMLButtonElement)=>void;fresh:string[];onAction:(action:WorldAction|WorldLifeAction)=>void;paused?:boolean}) {
  const canvas=useRef<HTMLCanvasElement>(null),root=useRef<HTMLElement>(null);
  const latest=useRef({state,maps,game,onAction,paused});latest.current={state,maps,game,onAction,paused};
  const keys=useRef(new Set<string>()),path=useRef<Point[]>([]),cameraRef=useRef<Camera>({focus:state.position,width:960,height:600,scale:22});
- const cue=useRef<HTMLDivElement>(null),targetForFrame=useRef<NearbyTarget|null>(null);
+ const cue=useRef<HTMLDivElement>(null),targetForFrame=useRef<NearbyTarget|null>(null),visibleTarget=useRef<NearbyTarget|null>(null);
+ const activationButton=useRef<HTMLButtonElement>(null),lookupTrigger=useRef<HTMLButtonElement|null>(null),wasPaused=useRef(paused);
  const [selection,setSelection]=useState<TargetSelection|null>(null);
  const actorMotion=useRef({yaw:Math.PI/2,distanceTravelled:0});
  const worker=useRef<Worker|null>(null),requestId=useRef(0),workerMap=useRef<object|null>(null);
@@ -93,14 +93,19 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   return()=>{cancelAnimationFrame(frame);document.removeEventListener("visibilitychange",refresh);window.removeEventListener("keyup",up);window.removeEventListener("blur",refresh);};
  },[viewport,interactionInset,interactionWidth]);
  const targets=nearbyTargets(map.id,nearbyAnchors(map,state.position),nearbyLife(planFor(map,game),actorsFor(map,game,state,clock,false),state.position,navigationFor(map)),state.position);
- const selected=paused?targets.find(target=>target.key===selection?.key)??selectTarget(targets,state.position,selection):selectTarget(targets,state.position,selection);
+ const selected=paused&&visibleTarget.current?.mapId===map.id?visibleTarget.current:selectTarget(targets,state.position,selection);
+ if(!paused||!visibleTarget.current)visibleTarget.current=selected;
  targetForFrame.current=state.activeActivity?null:selected;
  useEffect(()=>{
   if(paused)return;
   if(selected?.key!==selection?.key)setSelection(selected?{key:selected.key,mode:"automatic"}:null);
  },[paused,selected?.key,selection?.key]);
+ useEffect(()=>{
+  if(!paused&&wasPaused.current&&lookupTrigger.current&&!lookupTrigger.current.isConnected)(activationButton.current??root.current)?.focus({preventScroll:true});
+  wasPaused.current=paused;
+ },[paused]);
  const dictionary=contentWords(content);
- const wordToken=(word:Word)=><WordToken key={word.id} word={word} look={wordState(game.journal[word.id],fresh.includes(word.id))} onLookup={onLookup}/>;
+ const wordToken=(word:Word)=><WordToken key={word.id} word={word} look={wordState(game.journal[word.id],fresh.includes(word.id))} onLookup={(word,trigger)=>{lookupTrigger.current=trigger;onLookup(word,trigger);}}/>;
  const label=selected?targetWords(selected,dictionary):[];
  const next=selected?cycleTarget(targets,selected.key,1):null;
  function cycle(direction:-1|1){if(paused||!selected)return;const next=cycleTarget(targets,selected.key,direction);if(next)setSelection({key:next.key,mode:"manual"});}
@@ -110,7 +115,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   if(selected.source==="anchor")onAction({type:"world-interact",anchorId:selected.anchor.id});
   else onAction({type:"world-life",actionId:selected.affordance.id,elapsedMs:elapsed.current});
  }
- return <section ref={root} className="connected-world" data-testid="world-viewport" data-map={map.id} tabIndex={0} aria-label={`${mapNames[map.id]??"街坊"}，方向键走动，点地面走过去`} onKeyDown={event=>{
+ return <section ref={root} className="connected-world" data-testid="world-viewport" data-map={map.id} tabIndex={0} aria-label={worldRegionName(map.id)} onKeyDown={event=>{
   if(paused||state.activeActivity||event.target instanceof HTMLButtonElement)return;
   if(directions[event.key]){event.preventDefault();event.stopPropagation();keys.current.add(event.key);}
   else if((event.key==="e"||event.key==="Enter")&&selected){event.preventDefault();event.stopPropagation();activate();}
@@ -122,13 +127,13 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
    const id=++requestId.current;
    worker.current?.postMessage({id,from:state.position,to:p,...(workerMap.current!==map?{map}:{})});workerMap.current=map;
   }}/>
-  <div className="world-place" aria-live="polite">{currentPlaceWords(map.id,dictionary).map(wordToken)}</div>
+  <div className="world-place" role="group" aria-label={worldPlaceName(map.id)} aria-live="polite"><svg className="world-place-badge" viewBox="0 0 24 24" aria-hidden="true">{placeBadgePaths(map.id).map((path,index)=><path key={index} d={path}/>)}</svg>{currentPlaceWords(map.id,dictionary).map(wordToken)}</div>
   <div ref={cue} className="world-target-cue" data-target-id={selected?.targetId} aria-hidden="true" hidden>
     <svg viewBox="0 0 40 24"><ellipse cx="20" cy="12" rx="17" ry="7"/><ellipse cx="20" cy="12" rx="14" ry="4"/></svg>
   </div>
   {!state.activeActivity&&selected&&<div className="world-target-group" data-selected-target={selected.key} data-target-id={selected.targetId}>
    <span className="world-target-label">{selected.source==="anchor"&&selected.anchor.interactionId.startsWith("table-")&&<span>{selected.anchor.interactionId.split("-")[1]}</span>}{label.map(wordToken)}</span>
-   <button className="world-target-activate" data-world-anchor={selected.source==="anchor"?selected.anchor.id:undefined} data-world-life={selected.source==="life"?selected.affordance.id:undefined}
+   <button ref={activationButton} className="world-target-activate" data-world-anchor={selected.source==="anchor"?selected.anchor.id:undefined} data-world-life={selected.source==="life"?selected.affordance.id:undefined}
     disabled={paused} aria-label={selected.source==="anchor"&&selected.anchor.featureId==="restaurant"?(selected.anchor.interactionId.startsWith("table-")?ui.tableOrder(Number(selected.anchor.interactionId.split("-")[1])):ui.kitchen):label.map(word=>word.text).join(language.tokenSeparator)}
     onClick={activate} onKeyDown={event=>{if(event.key==="ArrowLeft"||event.key==="ArrowRight"){event.preventDefault();event.stopPropagation();cycle(event.key==="ArrowLeft"?-1:1);}}}>
     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="m10 8 4 4-4 4"/></svg>

@@ -20,3 +20,6 @@
 .world-place .word{font-size:18px;line-height:28px;min-height:44px;min-width:44px;padding:0 3px}
 @media(max-height:460px){.connected-world{min-height:0}.world-target-group{left:auto;right:12px;top:12px;bottom:auto;transform:none;max-width:calc(100% - 128px)}}
 @media(prefers-reduced-motion:reduce){.world-target-cue,.world-target-group{animation:none;transition:none}}
+
+.world-place{display:flex;align-items:center;gap:6px;padding:8px 12px;min-height:52px}
+.world-place-badge{flex:0 0 28px;width:28px;height:28px;fill:none;stroke:var(--text-secondary);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
