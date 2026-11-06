@@ -381,7 +381,9 @@ export function renderObjects(map: WorldMapDefinition, _view: WorldRenderView): 
   if (map.id !== 'town') return [];
   return map.props.filter(prop => prop.layer === 'object').flatMap(prop => {
     const occlusion = map.occluders.find(item => item.id === prop.id);
-    if (prop.kind.startsWith('building-')) return buildingSections(prop, _view, occlusion, drawProp);
+    if (prop.kind.startsWith('building-') || ['awning', 'gate', 'closed-gate', 'laundry'].includes(prop.kind) || prop.kind === 'fence' && Math.max(prop.width, prop.height) > 2) {
+      return buildingSections(prop, _view, occlusion, drawProp, prop.kind === 'awning' ? .8 : prop.kind === 'gate' ? .5 : 0);
+    }
     return [{
       id: prop.id,
       position: { x: prop.position.x + prop.width / 2, y: prop.position.y + prop.height / 2 },
