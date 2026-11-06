@@ -66,7 +66,7 @@ async function serve(page: Page, table: number) {
   await dialog.getByRole("button",{name:"继续招呼"}).click();
 }
 function restaurantSnapshot(game: GameState) {
-  const {neighbourhood,journal,...restaurant}=game;
+  const {neighbourhood,journal,progression,...restaurant}=game;
   return restaurant;
 }
 

@@ -91,6 +91,22 @@ describe("conservative spaced evidence", () => {
     expect(canonicalWords(["repairs.replace", "apartment.change"], content)).toEqual(["换#replace", "换#change"]);
     const future = { ...content, neighbourhood: { ...content.neighbourhood!, words: [...content.neighbourhood!.words, { id: "future.cat", hanzi: "猫", pinyin: "māo", gloss: "another sense", audio: "/audio/cat.wav" }] } };
     expect(canonicalWords(["future.cat"], future)).toEqual(["猫#future.cat"]);
+    expect(canonicalWords(["cats.cat", "apartment.cat"], future)).toEqual(["猫"]);
+  });
+  it("preserves a food identity, saved evidence, and lookup support when a new homograph arrives", () => {
+    const word = content.foods.find(f => f.word.id === "youtiao")!.word;
+    const expanded = { ...content, neighbourhood: { ...content.neighbourhood!, words: [...content.neighbourhood!.words, { ...word, id: "apartment.slick-person", gloss: "slick person" }] } };
+    expect(() => validateCatalog(expanded)).not.toThrow();
+    let game = practice(createGame(content), "restaurant.order-04", ["油条"], 100);
+    expect(validateSavedGame(game, expanded)!.progression!.review["油条"]).toEqual(game.progression!.review["油条"]);
+    expect(canonicalWords(["youtiao", "apartment.slick-person"], expanded)).toEqual(["油条", "油条#apartment.slick-person"]);
+    game = reduceGame(createGame(expanded), { type: "lookup", wordId: "youtiao", now: 100 }, expanded);
+    for (const action of [
+      { type: "move", position: { x: 7.5, y: 8 } }, { type: "interact", table: 4 },
+      { type: "move", position: { x: 6, y: 2.5 } }, { type: "pickup", foodId: "youtiao" },
+      { type: "move", position: { x: 7.5, y: 8 } }, { type: "deliver", table: 4, now: 200 },
+    ] as const) game = reduceGame(game, action, expanded);
+    expect(game.progression!.review["油条"]).toMatchObject({ successes: 0, encounters: 1 });
   });
 });
 

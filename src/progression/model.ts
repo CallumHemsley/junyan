@@ -2,10 +2,10 @@ import { z } from "zod";
 import type { Content, GameState, Order } from "../contracts";
 import { contentWords } from "../content/words";
 import data from "./catalog.json" with { type: "json" };
-import aliasData from "./aliases.json" with { type: "json" };
+import identityData from "./identities.json" with { type: "json" };
 
-export const aliases = z.array(z.array(z.string()).min(2)).parse(aliasData);
-const separateSenses: Record<string, string> = { "cats.bench": "椅子#bench", "repairs.replace": "换#replace", "apartment.change": "换#change" };
+export const identities = z.record(z.string(), z.array(z.string()).min(1)).parse(identityData);
+const identityById = new Map(Object.entries(identities).flatMap(([identity, ids]) => ids.map(id => [id, identity] as const)));
 export const scenarioIds = ["cats.reunion", "cats.sunny", "cats.rainy", "cats.route", "repairs.lamp", "repairs.toy", "garden.water", "garden.observe", "apartment.place"] as const;
 
 export const catalog = z.strictObject({
@@ -16,6 +16,11 @@ export function validateCatalog(content: Content): void {
   const words = contentWords(content);
   const hanzi = new Set(words.map(w => w.hanzi));
   const canonical = new Set(canonicalWords(words.map(w => w.id), content));
+  const registeredIds = Object.values(identities).flat();
+  if (new Set(registeredIds).size !== registeredIds.length) throw new Error("A word has multiple semantic identities");
+  for (const [identity, ids] of Object.entries(identities)) {
+    if (!ids.every(id => words.some(w => w.id === id && w.hanzi === identity.split("#")[0]))) throw new Error(`Unknown semantic identity: ${identity}`);
+  }
   for (const item of catalog.furniture) {
     if (!hanzi.has(item.word) || !hanzi.has(item.modifier)) throw new Error(`Unknown furniture vocabulary: ${item.id}`);
   }
@@ -49,10 +54,7 @@ export function canonicalWords(ids: readonly string[], content: Content): string
   return [...new Set(ids.flatMap(id => {
     const word = words.find(word => word.id === id);
     if (!word) return [];
-    if (separateSenses[id]) return [separateSenses[id]];
-    const peers = [...new Set(words.filter(w => w.hanzi === word.hanzi && !separateSenses[w.id]).map(w => w.id))];
-    const approved = peers.length <= 1 || aliases.some(group => group.includes(id));
-    return [approved ? word.hanzi : `${word.hanzi}#${id}`];
+    return [identityById.get(id) ?? `${word.hanzi}#${id}`];
   }))];
 }
 export function supportWords(game: GameState, words: readonly string[]): Progression {
@@ -92,7 +94,7 @@ export function dueScore(p: Progression, words: readonly string[], day: number, 
   }, 0);
 }
 export function orderTargets(order: Order, content: Content): string[] {
-  return [...new Set(order.items.flatMap(item => content.foods.find(food => food.id === item.foodId)?.word.hanzi ?? []))];
+  return canonicalWords(order.items.flatMap(item => content.foods.find(food => food.id === item.foodId)?.word.id ?? []), content);
 }
 export function chooseOrder(orders: Order[], previousId: string | undefined, p: Progression, day: number, now: number, random: number, content: Content): Order {
   const alternatives = orders.filter(order => order.id !== previousId);

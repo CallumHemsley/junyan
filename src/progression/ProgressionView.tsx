@@ -28,7 +28,7 @@ export default function ProgressionView({ game, content, now, onAction, onLookup
         </div>;
       })}</div>
     </section>}
-    {invitation && (location !== "restaurant" || game.ended) && <aside className="neighbourhood-invitation" aria-label="去楼里看看">
+    {invitation && invitation.location !== location && (location !== "restaurant" || game.ended) && <aside className="neighbourhood-invitation" aria-label="去楼里看看">
       <span className="invitation-label">{invitation.label.map(token)}</span>
       <button type="button" data-follow-scenario={invitation.id} onClick={() => onAction({ type: "follow-scenario", id: invitation.id })}>去看看</button>
     </aside>}

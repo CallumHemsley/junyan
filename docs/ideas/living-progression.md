@@ -19,7 +19,7 @@ The apartment and neighbourhood show one optional invitation. Its button opens t
 
 Restaurant delivery assesses food nouns only. A correct tray does not establish comprehension of every sentence token or a quantity's written form. Lookup or a wrong delivery marks the relevant words supported for the rest of that game day. Help never changes earnings. Cats, repairs, garden care, and first apartment placement are guided routines, so their completions provide supported exposure rather than independent recall evidence.
 
-Each word receives at most one recorded encounter per game day. Each scenario has one daily completion receipt. Repeated repairs use the actual live-job return transition. Repeat cat encounters use the active-to-complete transition, even when their kind was completed before. Visits, clicks, colour changes, gifts, purchases, and rearranging an already placed object earn no practice credit or money.
+Each word receives at most one recorded encounter per game day. Each scenario has one daily completion receipt. Repeated repairs use the actual live-job return transition. Repeat cat encounters use the active-to-complete transition, even when their kind was completed before. Visits, clicks, colour changes, gifts, purchases, and moves of an already placed object earn no practice credit or money. Storing and replacing an object on a later game day can record supported exposure. It never supplies independent recall credit or money.
 
 An independent revisit requires both a later eligible game day and elapsed real time. The prototype interval starts at one real day and one game day. It grows by one, up to seven, when independent evidence arrives in a changed context. Early encounters preserve the existing due time. Supported encounters keep a one-day interval. Clock rollback reanchors conservatively without credit. These constants are design hypotheses, not research-validated learning intervals.
 
@@ -27,7 +27,7 @@ The director can prefer a word when either clock says it is due. A long absence 
 
 ## Semantic identity
 
-`aliases.json` lists reviewed same-sense aliases from the current content. Those aliases share a canonical hanzi key. The courtyard's 椅子 means a bench and stays separate from the apartment chair. Repair 换 and apartment 换 also remain separate because replacing a battery and changing a colour are different evidence. Unreviewed duplicate spellings use an ID-qualified key.
+`identities.json` fixes each current vocabulary ID to its reviewed semantic identity. Same-sense aliases share a canonical hanzi key. Adding a new spelling or sense cannot rename an existing identity. The courtyard's 椅子 means a bench and stays separate from the apartment chair. Repair 换 and apartment 换 also remain separate because replacing a battery and changing a colour are different evidence. Unregistered vocabulary uses an ID-qualified key until its identity is reviewed.
 
 Adding another sense requires an explicit identity decision. Adding the same spelling to a future pack is not evidence that its meaning is interchangeable. Catalog validation checks every displayed label and furniture modifier against the vocabulary and every target against canonical identities.
 
