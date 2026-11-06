@@ -1,5 +1,6 @@
 import type { Point, WorldMapDefinition } from '../../schema';
 import variants from './variants.json';
+import { buildingSections } from './building-sections';
 import type { WorldRenderView, DrawMap, WorldRenderObject } from '../../render-contract';
 
 type RGB = readonly number[];
@@ -16,7 +17,7 @@ const hash = (x: number, y: number) => {
   return n - Math.floor(n);
 };
 
-export function drawProp(ctx: CanvasRenderingContext2D, prop: Prop, view: WorldRenderView) {
+export function drawProp(ctx: CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D, prop: Prop, view: WorldRenderView) {
   const color = (c: RGB, exposure = 1) => view.shadeColor?.([c[0], c[1], c[2]], exposure) ?? baseColor(c, exposure);
   const { x, y } = prop.position, w = prop.width, h = prop.height;
   const project = (a: number, b: number, z = 0) => view.project({ x: a, y: b }, z);
@@ -378,10 +379,14 @@ export const drawMap: DrawMap = (ctx, map, view) => {
 
 export function renderObjects(map: WorldMapDefinition, _view: WorldRenderView): WorldRenderObject[] {
   if (map.id !== 'town') return [];
-  return map.props.filter(prop => prop.layer === 'object').map(prop => ({
-    id: prop.id,
-    position: { x: prop.position.x + prop.width / 2, y: prop.position.y + prop.height / 2 },
-    occlusion: map.occluders.find(item => item.id === prop.id),
-    draw(ctx, view) { drawProp(ctx, prop, view); },
-  }));
+  return map.props.filter(prop => prop.layer === 'object').flatMap(prop => {
+    const occlusion = map.occluders.find(item => item.id === prop.id);
+    if (prop.kind.startsWith('building-')) return buildingSections(prop, _view, occlusion, drawProp);
+    return [{
+      id: prop.id,
+      position: { x: prop.position.x + prop.width / 2, y: prop.position.y + prop.height / 2 },
+      occlusion,
+      draw(ctx: CanvasRenderingContext2D, view: WorldRenderView) { drawProp(ctx, prop, view); },
+    }];
+  });
 }

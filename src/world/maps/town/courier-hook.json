@@ -1,0 +1,10 @@
+{
+  "id": "town.courier-circuit",
+  "characterId": "resident-courier",
+  "position": { "x": 35.5, "y": 44.1 },
+  "route": [
+    { "x": 35.5, "y": 44.1 },
+    { "x": 13.2, "y": 30.2 },
+    { "x": 24.3, "y": 29.2 }
+  ]
+}

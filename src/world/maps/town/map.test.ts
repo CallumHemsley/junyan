@@ -3,7 +3,8 @@ import { worldMapSchema } from '../../schema';
 import { canStand, canWalk, contains, findPath } from '../../geometry';
 import { project, unproject } from '../../camera';
 import definition from './map.json';
-import { compileLife } from '../../life';
+import courier from './courier-hook.json';
+import { compileLife, entranceExclusions } from '../../life';
 import { navigationFor } from '../../life/navigation';
 
 const map = worldMapSchema.parse(definition);
@@ -28,6 +29,15 @@ describe('authored town travel', () => {
     for (const target of [...map.anchors, ...map.landmarks]) expect(findPath(map, map.defaultSpawn, target.position).length, target.id).toBeGreaterThan(0);
     expect(canWalk(map, { x: 34, y: 30 }, { x: 34, y: 20 })).toBe(false);
     expect(canStand(map, { x: 72, y: 42 })).toBe(false);
+  });
+  it('keeps the allocated courier circuit clear of doors and active targets', () => {
+    const navigation = navigationFor(map), exclusions = entranceExclusions(map);
+    const points = courier.route;
+    for (const point of points) {
+      expect(navigation.canStand(point, .22)).toBe(true);
+      for (const anchor of map.anchors) expect(Math.hypot(point.x-anchor.position.x, point.y-anchor.position.y)).toBeGreaterThan(anchor.radius+.22);
+    }
+    for (let i=0; i<points.length; i++) expect(navigation.route(points[i], points[(i+1)%points.length], .22, exclusions).length).toBeGreaterThan(0);
   });
   it('registers every authored resident and bird without blocking door arrivals', () => {
     const plan = compileLife(map, navigationFor(map));
