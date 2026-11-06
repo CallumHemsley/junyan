@@ -145,3 +145,7 @@ PR28 exact f9ad801 evidence audit, independently checked by Astra subagent `/roo
 ## Contextual HUD allocation
 
 Verified highest fetched remote ticket 0089, then reserved **0090 contextual world UI**. Independent phone capture showed the legacy service page covering the world and clipping tray controls. Exclusive lease `src/world/ui/*`, own ticket and `docs/evidence/0090/*`; foundation retains App/shared CSS/state/save and dispatch. Branch `codex/0090-contextual-world-ui`, isolated cloud `/workspace/junyan-0090`, port 5494. This is a focused UI module, not a second application integration writer. Selected physical restaurant targets are now explicit in integration-v1.1; foundation must implement them before UI acceptance.
+
+0090 native cloud agent `/root/contextual_world_ui` is running on GPT-6.1 Sol medium with isolated lease and explicit physical-target contract. Both focused additions preserve foundation as sole App/shared-schema writer.
+
+Atmosphere PR29 at ad741f1 inspected. Its base material shade function is present, but map art hardcoded fills do not automatically call it. Integration-v1.1 now specifies one optional backwards-compatible `WorldRenderView.shadeColor` callback, mandatory in production. Foundation supplies one authoritative-phase shader; map/art and generic painter use it for material colors. Phase-independent base materials plus particles is not lighting acceptance. PR29 remains draft and full integrated lighting verification is open.
