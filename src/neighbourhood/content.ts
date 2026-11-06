@@ -3,34 +3,25 @@ import type { Content, Line, Word } from "../contracts";
 import { featureIds, type FeatureId } from "./contracts";
 import { contentWords } from "../content/words";
 
-const id = z.string().regex(/^[a-z][a-z0-9-]*(?:\.[a-z][a-z0-9-]*)*$/);
-const audio = z.string().regex(/^\/audio\/(?:[a-z0-9-]+\/)*[a-z0-9-]+\.(m4a|wav)$/);
-export const wordSchema: z.ZodType<Word> = z.strictObject({
-  id,
-  hanzi: z.string().regex(/^[\p{Script=Han}]+$/u),
-  pinyin: z.string().trim().min(1),
-  gloss: z.string().trim().min(1),
-  audio,
-});
-export type RegisteredLine = Line & { text?: string };
-export const lineSchema: z.ZodType<RegisteredLine> = z.strictObject({
-  id, tokens: z.array(wordSchema).min(1), audio,
-  text: z.string().regex(/^[\p{Script=Han}，。！？·]+$/u).optional(),
-}).refine(line => line.text === undefined || line.text.replace(/[，。！？·]/gu, "") === line.tokens.map(word => word.hanzi).join(""), "Phrase text must equal its tokens plus punctuation");
-export const featureContentSchema = z.strictObject({
-  words: z.array(wordSchema),
-  lines: z.array(lineSchema),
-});
+import { createWordSchema, createLineSchema } from '../content/schema';
+import { language, type LanguagePolicy } from '../language';
+
+export type RegisteredLine = Line;
+export function createFeatureContentSchema(policy: LanguagePolicy) {
+  return z.strictObject({ words: z.array(createWordSchema(policy)), lines: z.array(createLineSchema(policy)) });
+}
 export type FeatureContent = { words: readonly Word[]; lines: readonly Line[] };
 
 function sameWord(left: Word, right: Word): boolean {
-  return left.hanzi === right.hanzi && left.pinyin === right.pinyin && left.gloss === right.gloss && left.audio === right.audio;
+  return left.text === right.text && left.pronunciation === right.pronunciation && left.gloss === right.gloss && left.audio === right.audio;
 }
 
 export function registerFeatureContent(
   canonicalWords: readonly Word[],
   features: Record<FeatureId, FeatureContent>,
+  policy: LanguagePolicy = language,
 ): { words: Word[]; lines: RegisteredLine[]; audio: string[] } {
+  const featureContentSchema = createFeatureContentSchema(policy);
   const words = new Map<string, Word>();
   const lines = new Map<string, RegisteredLine>();
   for (const word of canonicalWords) {
@@ -67,7 +58,7 @@ export function registerFeatureContent(
   };
 }
 
-export function attachFeatureContent(base: Content, features: Record<FeatureId, FeatureContent>): Content {
-  const registered = registerFeatureContent(contentWords({ ...base, neighbourhood: undefined }), features);
+export function attachFeatureContent(base: Content, features: Record<FeatureId, FeatureContent>, policy: LanguagePolicy = language): Content {
+  const registered = registerFeatureContent(contentWords({ ...base, neighbourhood: undefined }), features, policy);
   return { ...base, neighbourhood: { words: registered.words, lines: registered.lines } };
 }

@@ -1,0 +1,39 @@
+{
+  "commit": "9231a4b385a213e1abfeff80b6d39187a87554f9",
+  "node": "22.23.4",
+  "command": "JUNYAN_NEIGHBOURHOOD_PREVIEW=1 JUNYAN_PREVIEW_PORT=5301 pnpm exec playwright test e2e/neighbourhood-offline.spec.ts --config playwright.neighbourhood.config.ts",
+  "stats": {
+    "startTime": "2026-11-06T00:37:33.105Z",
+    "duration": 26919.127,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "real cached speech and words play in all four locations and saved furniture reloads offline",
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 10148,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "real cached speech and words play in all four locations and saved furniture reloads offline",
+      "project": "phone",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 10063,
+          "errors": []
+        }
+      ]
+    }
+  ]
+}

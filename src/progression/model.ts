@@ -14,18 +14,17 @@ export const catalog = z.strictObject({
 }).parse(data);
 export function validateCatalog(content: Content): void {
   const words = contentWords(content);
-  const hanzi = new Set(words.map(w => w.hanzi));
-  const canonical = new Set(canonicalWords(words.map(w => w.id), content));
+  const wordIds = new Set(words.map(w => w.id));
   const registeredIds = Object.values(identities).flat();
   if (new Set(registeredIds).size !== registeredIds.length) throw new Error("A word has multiple semantic identities");
   for (const [identity, ids] of Object.entries(identities)) {
-    if (!ids.every(id => words.some(w => w.id === id && w.hanzi === identity.split("#")[0]))) throw new Error(`Unknown semantic identity: ${identity}`);
+    if (!ids.every(id => wordIds.has(id))) throw new Error(`Unknown semantic identity: ${identity}`);
   }
   for (const item of catalog.furniture) {
-    if (!hanzi.has(item.word) || !hanzi.has(item.modifier)) throw new Error(`Unknown furniture vocabulary: ${item.id}`);
+    if (!wordIds.has(item.word) || !wordIds.has(item.modifier)) throw new Error(`Unknown furniture vocabulary: ${item.id}`);
   }
   for (const scenario of catalog.scenarios) {
-    if (!scenario.label.every(word => hanzi.has(word)) || !scenario.targets.every(word => canonical.has(word))) throw new Error(`Unknown scenario vocabulary: ${scenario.id}`);
+    if (!scenario.label.every(word => wordIds.has(word)) || !scenario.targets.every(word => wordIds.has(word))) throw new Error(`Unknown scenario vocabulary: ${scenario.id}`);
   }
   if (new Set(catalog.scenarios.map(s => s.id)).size !== catalog.scenarios.length || new Set(catalog.furniture.map(f => f.id)).size !== catalog.furniture.length) throw new Error("Duplicate progression content");
 }
@@ -54,7 +53,7 @@ export function canonicalWords(ids: readonly string[], content: Content): string
   return [...new Set(ids.flatMap(id => {
     const word = words.find(word => word.id === id);
     if (!word) return [];
-    return [identityById.get(id) ?? `${word.hanzi}#${id}`];
+    return [identityById.get(id) ?? `word:${id}`];
   }))];
 }
 export function supportWords(game: GameState, words: readonly string[]): Progression {

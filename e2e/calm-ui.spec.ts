@@ -66,7 +66,7 @@ for (const viewport of [
     const foodNames = await page.evaluate(() => {
       const hooks = (window as Window & { __TEST__?: { content: Content; getState: () => GameState } }).__TEST__!;
       const order = hooks.content.orders.find(entry => entry.id === hooks.getState().customers[0].orderId)!;
-      return order.items.map(item => hooks.content.foods.find(food => food.id === item.foodId)!.word.hanzi);
+      return order.items.map(item => hooks.content.foods.find(food => food.id === item.foodId)!.word.text);
     });
     await page.keyboard.press("Escape");
     await expect(page.locator(".next-action")).toBeFocused();
@@ -142,7 +142,7 @@ test("primary action names the checkout phase", async ({ page }) => {
   const foods = await page.evaluate(() => {
     const hooks = (window as Window & { __TEST__?: { content: Content; getState: () => GameState } }).__TEST__!;
     const order = hooks.content.orders.find(entry => entry.id === hooks.getState().customers[0].orderId)!;
-    return order.items.map(item => ({ name: hooks.content.foods.find(food => food.id === item.foodId)!.word.hanzi, quantity: item.quantity }));
+    return order.items.map(item => ({ name: hooks.content.foods.find(food => food.id === item.foodId)!.word.text, quantity: item.quantity }));
   });
   for (const food of foods) {
     for (let i = 0; i < food.quantity; i++) await kitchen.getByRole("button", { name: `拿${food.name}`, exact: true }).click();

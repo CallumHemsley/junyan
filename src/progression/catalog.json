@@ -2,20 +2,20 @@
   "furniture": [
     {
       "id": "blue-vase",
-      "word": "花瓶",
-      "modifier": "蓝色",
+      "word": "apartment.vase",
+      "modifier": "apartment.blue",
       "price": 8
     },
     {
       "id": "large-basket",
-      "word": "篮子",
-      "modifier": "大",
+      "word": "apartment.basket",
+      "modifier": "apartment.large",
       "price": 8
     },
     {
       "id": "small-lamp",
-      "word": "灯",
-      "modifier": "小",
+      "word": "apartment.lamp",
+      "modifier": "apartment.small",
       "price": 24
     }
   ],
@@ -24,118 +24,118 @@
       "id": "cats.reunion",
       "location": "cats",
       "label": [
-        "看看",
-        "猫"
+        "look",
+        "apartment.cat"
       ],
       "targets": [
-        "猫",
-        "白",
-        "跟着",
-        "来"
+        "apartment.cat",
+        "cats.white",
+        "cats.follow",
+        "bring"
       ]
     },
     {
       "id": "cats.sunny",
       "location": "cats",
       "label": [
-        "猫",
-        "坐下"
+        "apartment.cat",
+        "cats.sit"
       ],
       "targets": [
-        "猫",
-        "黑",
-        "坐下"
+        "apartment.cat",
+        "cats.black",
+        "cats.sit"
       ]
     },
     {
       "id": "cats.rainy",
       "location": "cats",
       "label": [
-        "看看",
-        "猫"
+        "look",
+        "apartment.cat"
       ],
       "targets": [
-        "猫",
-        "门口",
-        "等一等"
+        "apartment.cat",
+        "cats.door",
+        "cats.wait"
       ]
     },
     {
       "id": "cats.route",
       "location": "cats",
       "label": [
-        "跟着",
-        "猫"
+        "cats.follow",
+        "apartment.cat"
       ],
       "targets": [
-        "猫",
-        "窗边",
-        "来"
+        "apartment.cat",
+        "cats.window",
+        "bring"
       ]
     },
     {
       "id": "repairs.lamp",
       "location": "repairs",
       "label": [
-        "修好",
-        "台灯"
+        "repairs.done",
+        "repairs.lamp"
       ],
       "targets": [
-        "台灯",
-        "灯泡",
-        "拧紧"
+        "repairs.lamp",
+        "repairs.bulb",
+        "repairs.tighten"
       ]
     },
     {
       "id": "repairs.toy",
       "location": "repairs",
       "label": [
-        "修好",
-        "玩具"
+        "repairs.done",
+        "repairs.toy"
       ],
       "targets": [
-        "玩具",
-        "电池",
-        "换#replace",
-        "接上"
+        "repairs.toy",
+        "repairs.battery",
+        "repairs.replace",
+        "repairs.connect"
       ]
     },
     {
       "id": "garden.water",
       "location": "garden",
       "label": [
-        "浇",
-        "水"
+        "garden.pour",
+        "garden.water"
       ],
       "targets": [
-        "干",
-        "浇",
-        "水"
+        "garden.dry",
+        "garden.pour",
+        "garden.water"
       ]
     },
     {
       "id": "garden.observe",
       "location": "garden",
       "label": [
-        "看看",
-        "花"
+        "look",
+        "garden.flower"
       ],
       "targets": [
-        "比",
-        "昨天",
-        "高"
+        "garden.than",
+        "garden.yesterday",
+        "garden.tall"
       ]
     },
     {
       "id": "apartment.place",
       "location": "apartment",
       "label": [
-        "放",
-        "这里"
+        "apartment.put",
+        "apartment.here"
       ],
       "targets": [
-        "放",
-        "这里"
+        "apartment.put",
+        "apartment.here"
       ]
     }
   ]

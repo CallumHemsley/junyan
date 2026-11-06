@@ -13,8 +13,8 @@ import {
 
 const word: Word = {
   id: "bun",
-  hanzi: "包子",
-  pinyin: "bāozi",
+  text: "包子",
+  pronunciation: "bāozi",
   gloss: "bun",
   audio: "/bun.wav",
 };
@@ -28,7 +28,7 @@ const content: Content = {
     { id: "bun", word, price: 2, kind: "bun" },
     {
       id: "milk",
-      word: { ...word, id: "milk", hanzi: "豆浆" },
+      word: { ...word, id: "milk", text: "豆浆" },
       price: 3,
       kind: "milk",
     },
@@ -57,12 +57,12 @@ const content: Content = {
   thanks: {
     ...line,
     id: "thanks",
-    tokens: [{ ...word, id: "thanks", hanzi: "多谢" }],
+    tokens: [{ ...word, id: "thanks", text: "多谢" }],
   },
   retry: {
     ...line,
     id: "retry",
-    tokens: [{ ...word, id: "retry", hanzi: "再试试" }],
+    tokens: [{ ...word, id: "retry", text: "再试试" }],
   },
   opening: { cast: [], tray: [], steps: [] },
 };
@@ -517,7 +517,7 @@ describe("determinism, journal and content safety", () => {
 });
 
 describe("recovery in the restaurant", () => {
-  const soy = { ...word, id: "soy", hanzi: "豆浆" };
+  const soy = { ...word, id: "soy", text: "豆浆" };
   const spoken = { ...line, tokens: [word, soy, word] };
   const twoWords: Content = {
     ...content,

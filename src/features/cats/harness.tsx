@@ -1,3 +1,4 @@
+import { featureUi } from '../copy';
 import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import Cats from './index';
@@ -30,7 +31,7 @@ function Harness() {
     onRecover={ids => { events.recover.push(ids); setRecovered(current => [...new Set([...current, ...ids])]); }}
     onLookup={word => { events.lookup.push(word.id); lookup(word); }}
     onPlay={line => events.play.push(line.id)} recoveredWordIds={recovered} />
-    {word && <aside className="cats-harness-word" role="dialog" aria-label={word.hanzi}><strong>{word.hanzi}</strong><p>{word.pinyin}</p><button onClick={() => lookup(null)} aria-label="关闭">×</button></aside>}
+    {word && <aside className="cats-harness-word" role="dialog" aria-label={word.text}><strong>{word.text}</strong>{word.pronunciation && <p>{word.pronunciation}</p>}<button onClick={() => lookup(null)} aria-label={featureUi.dismiss}>×</button></aside>}
   </>;
 }
 createRoot(document.getElementById('cats-harness')!).render(<Harness />);

@@ -27,9 +27,9 @@ The director can prefer a word when either clock says it is due. A long absence 
 
 ## Semantic identity
 
-`identities.json` fixes each current vocabulary ID to its reviewed semantic identity. Same-sense aliases share a canonical hanzi key. Adding a new spelling or sense cannot rename an existing identity. The courtyard's 椅子 means a bench and stays separate from the apartment chair. Repair 换 and apartment 换 also remain separate because replacing a battery and changing a colour are different evidence. Unregistered vocabulary uses an ID-qualified key until its identity is reviewed.
+`identities.json` fixes each current vocabulary ID to its reviewed semantic identity. Same-sense aliases share an opaque canonical key. Some existing keys contain Chinese characters for save continuity, but rules never compare them with displayed text. Adding a new spelling or sense cannot rename an existing identity. The courtyard's 椅子 means a bench and stays separate from the apartment chair. Repair 换 and apartment 换 also remain separate because replacing a battery and changing a colour are different evidence. Unregistered vocabulary uses a word:ID key until its identity is reviewed.
 
-Adding another sense requires an explicit identity decision. Adding the same spelling to a future pack is not evidence that its meaning is interchangeable. Catalog validation checks every displayed label and furniture modifier against the vocabulary and every target against canonical identities.
+Adding another sense requires an explicit identity decision. Translating or renaming display text cannot change an existing identity or the ID-based fallback. Adding the same spelling to a future pack is not evidence that its meaning is interchangeable. Catalog labels, modifiers, and targets reference stable word IDs. Validation checks that those IDs exist. Rendering resolves the current display text and uses WordLine with the selected spacing policy. Progression chrome and money formatting live in the selected progressionUi copy catalog.
 
 ## Ownership and saves
 

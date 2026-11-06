@@ -29,7 +29,7 @@ describe('repair workshop physical rules', () => {
     const action: Action = { type: 'turn', job: 'lamp', direction };
     const after = reduce(before, action, 1);
     expect(after.feedback).toBe('power-first');
-    expect(lineFor(after.feedback).tokens.map(word => word.hanzi).join('')).toBe('先关掉');
+    expect(lineFor(after.feedback).tokens.map(word => word.text).join('')).toBe('先关掉');
     expect(currentBench(after)).toEqual(currentBench(before));
     expect(recovered(before, action, after)).toEqual([]);
     expect(validate(after)).toEqual(after);

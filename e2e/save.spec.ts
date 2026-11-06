@@ -1,10 +1,9 @@
 import { test, expect, type Page } from "@playwright/test";
-import data from "../src/content/content.json" with { type: "json" };
+import { content } from "../src/content";
 import { KITCHEN, TABLES, type Content, type GameState } from "../src/contracts";
 import { createGame, getOrder, orderTotal, reduceGame } from "../src/game";
 import { seedDayOne, withSkip } from "./opening";
 
-const content = data as Content;
 
 function completedDay() {
   let state = createGame(content);
@@ -85,7 +84,7 @@ test("completed IndexedDB save advances days and preserves journal and earnings"
   expect(saved.earnings).toBe(state.earnings);
   expect(saved.journal).toEqual(state.journal);
   await page.getByRole("button", { name: /本子/ }).click();
-  await expect(page.locator(".journal-list")).toContainText(content.foods[0].word.hanzi);
+  await expect(page.locator(".journal-list")).toContainText(content.foods[0].word.text);
   await page.screenshot({ path: `output/playwright/save-${info.project.name}-journal-next-day.png`, fullPage: true });
 });
 

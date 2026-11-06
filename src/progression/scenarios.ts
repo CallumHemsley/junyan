@@ -1,4 +1,5 @@
 import type { Content, GameState } from "../contracts";
+import { itemWordIds } from "../features/apartment/rules";
 import { routineForDay } from "../features/cats/rules";
 import { createNeighbourhood } from "../neighbourhood/model";
 import type { NeighbourhoodAction } from "../neighbourhood/transitions";
@@ -25,10 +26,10 @@ export function availableScenarios(game: GameState): Scenario[] {
     }
   });
 }
-export function recommendation(game: GameState, now: number): Scenario | null {
+export function recommendation(game: GameState, now: number, content: Content): Scenario | null {
   const p = progressionForDay(game);
   const ranked = availableScenarios(game).map((s, index) => ({
-    s, score: dueScore(p, s.targets, game.day, now, s.id) + (p.lastContext?.split(".")[0] !== s.location ? 2 : 0),
+    s, score: dueScore(p, canonicalWords(s.targets, content), game.day, now, s.id) + (p.lastContext?.split(".")[0] !== s.location ? 2 : 0),
     tie: (index + game.day + game.seed) % catalog.scenarios.length,
   })).sort((a, b) => b.score - a.score || a.tie - b.tie);
   return ranked[0]?.s ?? null;
@@ -59,21 +60,20 @@ export function practiceForTransition(before: GameState, action: NeighbourhoodAc
         if (a.garden.plants[action.action.plant].result?.outcome !== "grew") context = null;
       }
       mistake = action.action.type === "water-extra";
-      targets = ["干", "浇", "水"];
+      targets = ["garden.dry", "garden.pour", "garden.water"];
       break;
     case "apartment": {
       const id = b.apartment.selected;
       if (action.action.type === "place" && id && !b.apartment.placements.some(p => p.id === id) && a.apartment.placements.some(p => p.id === id)) {
         context = "apartment.place";
-        targets = ["放", "这里", ...canonicalWords(
-          catalog.furniture.filter(f => f.id === id).flatMap(f => content.neighbourhood?.words.filter(w => w.hanzi === f.word).map(w => w.id) ?? []), content)];
+        targets = ["apartment.put", "apartment.here", ...itemWordIds[id]];
       }
       break;
     }
   }
-  if (mistake) return supportWords(before, targets);
+  if (mistake) return supportWords(before, canonicalWords(targets, content));
   if (!context) return before.progression;
-  const practiced = action.feature === "apartment" ? targets : catalog.scenarios.find(s => s.id === context)!.targets;
+  const practiced = canonicalWords(action.feature === "apartment" ? targets : catalog.scenarios.find(s => s.id === context)!.targets, content);
   // These authored routines guide the next action. Completion is exposure, not an independent recall test.
   return recordPractice({ ...before, progression: supportWords(before, practiced) }, context, practiced, action.now);
 }

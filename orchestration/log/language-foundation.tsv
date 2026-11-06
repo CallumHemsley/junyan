@@ -1,0 +1,11 @@
+ts	phase	decision	why	evidence	result
+2026-11-06T00:27:35.040454+00:00	frame	Use neutral runtime words with a Mandarin boundary adapter	Keep existing audio source assets valid while removing script assumptions from rules and rendering	docs/plans/multiple-languages.md	implementation in progress
+2026-11-06T00:27:35.040454+00:00	baseline	Run baseline unit suite before changes	Compare actual behavior against the refactor	8cd5bc2	308 tests passed
+2026-11-06T00:38:09.113811+00:00	implementation	Adapt raw Mandarin into neutral runtime words and extract catalogs	Preserve the audio pipeline and move script-specific policy out of game rules	69c61e6;efd2cbc;d3e0592	implemented
+2026-11-06T00:38:09.113866+00:00	integration	Add explicit JSON import attributes for Node browser tests	Runtime fixtures now import validated content through Node ESM	4cadef8	six browser cases collect
+2026-11-06T00:38:09.113868+00:00	review	Reject arbitrary repairs speaker metadata at the content boundary	Independent review reproduced unknown voice and invalid-script name acceptance	085c0f7	six regression tests pass
+2026-11-06T00:38:09.113869+00:00	verification	Run final unit suite on project Node 22	Check the integrated artifact on the specified runtime	9231a4b	332 tests pass
+2026-11-06T00:38:09.113870+00:00	verification	Rerun production offline cases with their required preview configuration	The broad runner omitted JUNYAN_NEIGHBOURHOOD_PREVIEW and two config guards failed	e2e/neighbourhood-offline.spec.ts:9	rerun in progress
+2026-11-06T00:38:38.166940+00:00	review	Accept independent repair-boundary fix verdict	A fresh reviewer tested negative inputs and French positive cases	085c0f7	PASS
+2026-11-06T00:38:38.167086+00:00	verification	Complete production offline checks on desktop and phone	Verify real cached speech and persisted furniture in all four locations	docs/evidence/0077/offline-results.json	2 tests pass; 48 selected browser cases now pass
+2026-11-06T00:38:38.167089+00:00	verification	Inspect actual phone and desktop screenshots	Preserve the Mandarin game while changing its language boundaries	docs/evidence/0077/README.md	no material visual regression

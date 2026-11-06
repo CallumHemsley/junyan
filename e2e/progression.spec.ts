@@ -1,9 +1,8 @@
 import { test, expect, type Page } from "@playwright/test";
-import type { Content, GameState } from "../src/contracts";
+import type { GameState } from "../src/contracts";
 import { withSkip } from "./opening";
-import data from "../src/content/content.json" with { type: "json" };
+import { content } from "../src/content";
 
-const content = data as Content;
 const state = (page: Page): Promise<GameState> => page.evaluate(async () => {
   const pending = localStorage.getItem("junyan-waiter-pending-v1");
   if (pending) return JSON.parse(pending);
@@ -24,7 +23,7 @@ async function serve(page: Page, table: number) {
   await expect(page.getByRole("dialog", { name: `${table}桌点餐` })).toBeVisible();
   await page.getByRole("button", { name: "去厨房", exact: true }).click();
   await expect(page.getByRole("dialog", { name: "厨房", exact: true })).toBeVisible();
-  for (const item of order.items) for (let n = 0; n < item.quantity; n++) await page.getByRole("button", { name: `拿${foods.find(f => f.id === item.foodId)!.word.hanzi}`, exact: true }).click();
+  for (const item of order.items) for (let n = 0; n < item.quantity; n++) await page.getByRole("button", { name: `拿${foods.find(f => f.id === item.foodId)!.word.text}`, exact: true }).click();
   await page.getByRole("button", { name: "端好了，去上菜" }).click();
   await page.getByRole("button", { name: new RegExp(`^${table}桌 ${order.customer}`) }).click();
   await expect(page.getByRole("dialog", { name: `${table}桌点餐` })).toBeVisible();

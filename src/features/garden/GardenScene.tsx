@@ -3,6 +3,7 @@ import {createRenderer, projectPosition} from '../../scene/renderer.js';
 import {gardenScene, sites} from './scene';
 import {type PlantId, type Site, type State, plantIds, siteIds} from './rules';
 import {label} from './content';
+import {lineText} from '../../language';
 
 export default function GardenScene({state, selected, movingShade, onSite}: {
   state: State; selected: PlantId | null; movingShade: boolean; onSite: (site: Site) => void;
@@ -46,7 +47,7 @@ export default function GardenScene({state, selected, movingShade, onSite}: {
       const chosen = movingShade ? state.shade === site : pot === selected;
       return <button type="button" key={site} className={`garden-site${chosen ? ' selected' : ''}${pot ? ' occupied' : ''}`}
         style={{left: `${position.left}%`, top: `${position.top}%`}}
-        aria-label={`${label(numbers[site]).tokens[0].hanzi}${label(pot ?? 'empty').tokens[0].hanzi}`}
+        aria-label={`${lineText(label(numbers[site]))}${lineText(label(pot ?? 'empty'))}`}
         aria-pressed={chosen} onClick={() => onSite(site)} data-testid={`garden-site-${site}`}>
 
       </button>;

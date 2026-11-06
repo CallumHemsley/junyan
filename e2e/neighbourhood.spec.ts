@@ -1,6 +1,6 @@
 import { test, expect, type Page } from "@playwright/test";
 import type { Content, GameState } from "../src/contracts";
-import base from "../src/content/content.json" with {type:"json"};
+import { content } from "../src/content";
 import gardenData from "../src/features/garden/content.json" with {type:"json"};
 import { playOpening } from "./opening";
 import { probeAudio } from "./audio-fixtures";
@@ -8,7 +8,6 @@ import { checkLineAndWord, expectNativeSpeech, featureLine } from "./neighbourho
 
 test.use({serviceWorkers:"block"});
 
-const content = base as Content;
 const appRoot = process.env.JUNYAN_NEIGHBOURHOOD_PREVIEW === "1" ? "/junyan/" : "/";
 const gardenName = (id: string) => gardenData.words.find(word => word.id === gardenData.labels[id as keyof typeof gardenData.labels])!.hanzi;
 const gardenTool = (page: Page, id: string) => page.locator(`.garden-tool-button[aria-label="${gardenName(id)}"]`);
@@ -52,7 +51,7 @@ async function serve(page: Page, table: number) {
     await dialog.getByRole("button",{name:"去厨房",exact:true}).click();
     for(const item of order.items) {
       const food=content.foods.find(value=>value.id===item.foodId)!;
-      for(let n=0;n<item.quantity;n++) await page.getByRole("button",{name:`拿${food.word.hanzi}`,exact:true}).click();
+      for(let n=0;n<item.quantity;n++) await page.getByRole("button",{name:`拿${food.word.text}`,exact:true}).click();
     }
     await page.getByRole("button",{name:"端好了，去上菜"}).click();
     await page.getByTestId(`table-${table}`).click();

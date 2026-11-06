@@ -31,3 +31,7 @@ This is a reversible implementation choice under Callum's explicit autonomous bu
 Primary research supports revisiting words and investigating context variation. It does not establish an optimal algorithm or prove that game success means language recall. Currency should purchase belongings, never language knowledge. Subjective fun and delayed retention remain explicit playtest questions.
 
 The separately named `show-me` skill was not found in the installed skill roots. PR descriptions will still contain a concise, accurate GitHub-compatible flow. The installed `show-me-your-work` skill supplies the decision trail and is a different skill.
+
+## Concurrent main integration
+
+Main advanced to `ba4419b` with the language boundary work and tickets 0077 through 0080. This feature moved to ticket 0081 and branch `codex/0081-living-progression`. Its existing worktree and ports remain `/private/tmp/junyan-0077-progression` and 5277/5278. Progression catalog entries now use stable word IDs, shop and invitation tokens use WordLine, chrome uses progressionUi, and the merged apartment recovery and language-scoped save boundaries remain intact. Prior c7ceebf verification is historical; the integrated revision is verified again.

@@ -12,6 +12,10 @@ import { createRenderer } from "../scene/renderer.js";
 import { captureCanvas, sha256 } from "../scene/scene-frame-hashes.mjs";
 import { apartmentScene } from "../features/apartment/scene-data";
 import { nextDots } from "../recovery";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { french } from "../content/fixtures/french";
+import ProgressionView from "./ProgressionView";
 
 function practice(game: GameState, context: string, words: string[], now: number): GameState {
   return { ...game, progression: recordPractice(game, context, words, now) };
@@ -89,8 +93,8 @@ describe("conservative spaced evidence", () => {
     expect(canonicalWords(["cats.cat", "apartment.cat"], content)).toEqual(["猫"]);
     expect(canonicalWords(["cats.bench", "apartment.chair"], content)).toEqual(["椅子#bench", "椅子"]);
     expect(canonicalWords(["repairs.replace", "apartment.change"], content)).toEqual(["换#replace", "换#change"]);
-    const future = { ...content, neighbourhood: { ...content.neighbourhood!, words: [...content.neighbourhood!.words, { id: "future.cat", hanzi: "猫", pinyin: "māo", gloss: "another sense", audio: "/audio/cat.wav" }] } };
-    expect(canonicalWords(["future.cat"], future)).toEqual(["猫#future.cat"]);
+    const future = { ...content, neighbourhood: { ...content.neighbourhood!, words: [...content.neighbourhood!.words, { id: "future.cat", text: "猫", pronunciation: "māo", gloss: "another sense", audio: "/audio/cat.wav" }] } };
+    expect(canonicalWords(["future.cat"], future)).toEqual(["word:future.cat"]);
     expect(canonicalWords(["cats.cat", "apartment.cat"], future)).toEqual(["猫"]);
   });
   it("preserves a food identity, saved evidence, and lookup support when a new homograph arrives", () => {
@@ -99,7 +103,7 @@ describe("conservative spaced evidence", () => {
     expect(() => validateCatalog(expanded)).not.toThrow();
     let game = practice(createGame(content), "restaurant.order-04", ["油条"], 100);
     expect(validateSavedGame(game, expanded)!.progression!.review["油条"]).toEqual(game.progression!.review["油条"]);
-    expect(canonicalWords(["youtiao", "apartment.slick-person"], expanded)).toEqual(["油条", "油条#apartment.slick-person"]);
+    expect(canonicalWords(["youtiao", "apartment.slick-person"], expanded)).toEqual(["油条", "word:apartment.slick-person"]);
     game = reduceGame(createGame(expanded), { type: "lookup", wordId: "youtiao", now: 100 }, expanded);
     for (const action of [
       { type: "move", position: { x: 7.5, y: 8 } }, { type: "interact", table: 4 },
@@ -107,6 +111,40 @@ describe("conservative spaced evidence", () => {
       { type: "move", position: { x: 7.5, y: 8 } }, { type: "deliver", table: 4, now: 200 },
     ] as const) game = reduceGame(game, action, expanded);
     expect(game.progression!.review["油条"]).toMatchObject({ successes: 0, encounters: 1 });
+  });
+  it("keeps evidence, assistance and recommendations stable when every display word changes", () => {
+    const renamed = JSON.parse(JSON.stringify(content, (_key, value) => value && typeof value === "object" && "gloss" in value
+      ? { ...value, text: "mot", pronunciation: undefined } : value));
+    expect(() => validateCatalog(renamed)).not.toThrow();
+    let game = createGame(renamed);
+    const before = recommendation(game, 100, content);
+    expect(recommendation(game, 100, renamed)).toEqual(before);
+    game = reduceGame(game, { type: "lookup", wordId: "youtiao", now: 100 }, renamed);
+    for (const action of [
+      { type: "move", position: { x: 7.5, y: 8 } }, { type: "interact", table: 4 },
+      { type: "move", position: { x: 6, y: 2.5 } }, { type: "pickup", foodId: "youtiao" },
+      { type: "move", position: { x: 7.5, y: 8 } }, { type: "deliver", table: 4, now: 200 },
+    ] as const) game = reduceGame(game, action, renamed);
+    expect(game.progression!.review["油条"]).toMatchObject({ successes: 0, encounters: 1 });
+    expect(validateSavedGame(game, renamed)).toEqual(game);
+    const unknown = { ...renamed, neighbourhood: { ...renamed.neighbourhood, words: [...renamed.neighbourhood.words, { id: "future.word", text: "avant", gloss: "fixture", audio: "/audio/fixture.wav" }] } };
+    const identity = canonicalWords(["future.word"], unknown);
+    unknown.neighbourhood.words.at(-1)!.text = "après";
+    expect(canonicalWords(["future.word"], unknown)).toEqual(identity);
+  });
+  it("renders translated shop and invitation tokens with the selected spacing and copy", () => {
+    const translations: Record<string, string> = { "apartment.blue": "bleu", "apartment.vase": "vase", "repairs.done": "réparer", "repairs.toy": "jouet" };
+    const renamed = JSON.parse(JSON.stringify(content, (_key, value) => value && typeof value === "object" && "gloss" in value
+      ? { ...value, text: translations[value.id] ?? "mot", pronunciation: undefined } : value));
+    const markup = renderToStaticMarkup(createElement(ProgressionView, {
+      game: visit(createGame(content), "apartment"), content: renamed, now: 0, onAction: () => {}, onLookup: () => {}, policy: french,
+      copy: { furniture: "Meubles", balance: "Solde", invitation: "Visite", visit: "Aller", owned: "Acheté", money: n => `${n} pièces`, buy: n => `Acheter ${n}` },
+    }));
+    const visible = markup.replace(/<[^>]+>/g, "");
+    expect(visible).toContain("bleu vase");
+    expect(visible).toContain("réparer jouet");
+    expect(visible).toContain("Meubles");
+    expect(visible).not.toMatch(/[\p{Script=Han}]/u);
   });
 });
 
@@ -146,7 +184,7 @@ describe("a director with reachable variety", () => {
     const p = initialProgression(1);
     p.review["水"] = { successes: 1, encounters: 1, interval: 7, dueDay: 8, dueAt: 100, lastDay: 1, lastAt: 0, context: "restaurant.order-01" };
     game.progression = p;
-    expect(recommendation(game, REAL_DAY)?.id).toBe("garden.water");
+    expect(recommendation(game, REAL_DAY, content)?.id).toBe("garden.water");
     game = act(game, { type: "follow-scenario", id: "garden.water" });
     expect(game.neighbourhood!.location).toBe("garden");
     expect(nextDots(["milk"], createGame(content), { type: "follow-scenario", id: "garden.water" }, game)).toEqual([]);

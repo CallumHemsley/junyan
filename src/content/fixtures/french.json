@@ -1,0 +1,585 @@
+{
+  "language": "fr-FR",
+  "help": {
+    "welcome": {
+      "id": "help.welcome",
+      "tokens": [
+        {
+          "id": "welcome",
+          "text": "Bonjour",
+          "gloss": "hello",
+          "audio": "/audio/fixture-welcome.wav"
+        }
+      ],
+      "text": "Bonjour.",
+      "audio": "/audio/fixture-help-welcome.wav"
+    },
+    "lookup": {
+      "id": "help.lookup",
+      "tokens": [
+        {
+          "id": "welcome",
+          "text": "Bonjour",
+          "gloss": "hello",
+          "audio": "/audio/fixture-welcome.wav"
+        }
+      ],
+      "text": "Bonjour.",
+      "audio": "/audio/fixture-help-lookup.wav"
+    },
+    "pace": {
+      "id": "help.pace",
+      "tokens": [
+        {
+          "id": "welcome",
+          "text": "Bonjour",
+          "gloss": "hello",
+          "audio": "/audio/fixture-welcome.wav"
+        }
+      ],
+      "text": "Bonjour.",
+      "audio": "/audio/fixture-help-pace.wav"
+    },
+    "steps": [
+      {
+        "id": "order",
+        "line": {
+          "id": "help.order",
+          "tokens": [
+            {
+              "id": "welcome",
+              "text": "Bonjour",
+              "gloss": "hello",
+              "audio": "/audio/fixture-welcome.wav"
+            }
+          ],
+          "text": "Bonjour.",
+          "audio": "/audio/fixture-help-order.wav"
+        }
+      },
+      {
+        "id": "kitchen",
+        "line": {
+          "id": "help.kitchen",
+          "tokens": [
+            {
+              "id": "welcome",
+              "text": "Bonjour",
+              "gloss": "hello",
+              "audio": "/audio/fixture-welcome.wav"
+            }
+          ],
+          "text": "Bonjour.",
+          "audio": "/audio/fixture-help-kitchen.wav"
+        }
+      },
+      {
+        "id": "deliver",
+        "line": {
+          "id": "help.deliver",
+          "tokens": [
+            {
+              "id": "welcome",
+              "text": "Bonjour",
+              "gloss": "hello",
+              "audio": "/audio/fixture-welcome.wav"
+            }
+          ],
+          "text": "Bonjour.",
+          "audio": "/audio/fixture-help-deliver.wav"
+        }
+      }
+    ]
+  },
+  "characters": [
+    {
+      "id": "elodie",
+      "name": "Élodie",
+      "voiceId": "french",
+      "personality": "A regular customer",
+      "appearance": {
+        "shirt": [
+          80,
+          90,
+          100
+        ],
+        "hair": [
+          40,
+          30,
+          20
+        ],
+        "accessory": "bun"
+      },
+      "greeting": {
+        "id": "elodie.hello",
+        "tokens": [
+          {
+            "id": "welcome",
+            "text": "Bonjour",
+            "gloss": "hello",
+            "audio": "/audio/fixture-welcome.wav"
+          }
+        ],
+        "text": "Bonjour.",
+        "audio": "/audio/fixture-elodie-hello.wav"
+      },
+      "thanks": {
+        "id": "elodie.thanks",
+        "tokens": [
+          {
+            "id": "thanks",
+            "text": "Merci",
+            "gloss": "thanks",
+            "audio": "/audio/fixture-thanks.wav"
+          }
+        ],
+        "text": "Merci.",
+        "audio": "/audio/fixture-elodie-thanks.wav"
+      },
+      "retry": {
+        "id": "elodie.retry",
+        "tokens": [
+          {
+            "id": "retry",
+            "text": "Encore",
+            "gloss": "again",
+            "audio": "/audio/fixture-retry.wav"
+          }
+        ],
+        "text": "Encore.",
+        "audio": "/audio/fixture-elodie-retry.wav"
+      }
+    }
+  ],
+  "foods": [
+    {
+      "id": "tea",
+      "word": {
+        "id": "tea",
+        "text": "thé",
+        "gloss": "tea",
+        "audio": "/audio/fixture-tea.wav"
+      },
+      "price": 3,
+      "kind": "milk"
+    }
+  ],
+  "orders": [
+    {
+      "id": "order-1",
+      "level": 1,
+      "customer": "Élodie",
+      "table": 1,
+      "line": {
+        "id": "order.one",
+        "tokens": [
+          {
+            "id": "one",
+            "text": "Un",
+            "gloss": "one",
+            "audio": "/audio/fixture-one.wav"
+          },
+          {
+            "id": "tea",
+            "text": "thé",
+            "gloss": "tea",
+            "audio": "/audio/fixture-tea.wav"
+          },
+          {
+            "id": "please",
+            "text": "s’il",
+            "gloss": "if it",
+            "audio": "/audio/fixture-please.wav"
+          },
+          {
+            "id": "you",
+            "text": "vous",
+            "gloss": "you",
+            "audio": "/audio/fixture-you.wav"
+          },
+          {
+            "id": "kindly",
+            "text": "plaît",
+            "gloss": "pleases",
+            "audio": "/audio/fixture-kindly.wav"
+          }
+        ],
+        "text": "Un thé, s’il vous plaît.",
+        "audio": "/audio/fixture-order-one.wav"
+      },
+      "items": [
+        {
+          "foodId": "tea",
+          "quantity": 1
+        }
+      ],
+      "paid": 5
+    },
+    {
+      "id": "order-2",
+      "level": 1,
+      "customer": "Élodie",
+      "table": 2,
+      "line": {
+        "id": "order.two",
+        "tokens": [
+          {
+            "id": "one",
+            "text": "Un",
+            "gloss": "one",
+            "audio": "/audio/fixture-one.wav"
+          },
+          {
+            "id": "tea",
+            "text": "thé",
+            "gloss": "tea",
+            "audio": "/audio/fixture-tea.wav"
+          },
+          {
+            "id": "please",
+            "text": "s’il",
+            "gloss": "if it",
+            "audio": "/audio/fixture-please.wav"
+          },
+          {
+            "id": "you",
+            "text": "vous",
+            "gloss": "you",
+            "audio": "/audio/fixture-you.wav"
+          },
+          {
+            "id": "kindly",
+            "text": "plaît",
+            "gloss": "pleases",
+            "audio": "/audio/fixture-kindly.wav"
+          }
+        ],
+        "text": "Un thé, s’il vous plaît.",
+        "audio": "/audio/fixture-order-two.wav"
+      },
+      "items": [
+        {
+          "foodId": "tea",
+          "quantity": 1
+        }
+      ],
+      "paid": 5
+    },
+    {
+      "id": "order-3",
+      "level": 1,
+      "customer": "Élodie",
+      "table": 3,
+      "line": {
+        "id": "order.three",
+        "tokens": [
+          {
+            "id": "one",
+            "text": "Un",
+            "gloss": "one",
+            "audio": "/audio/fixture-one.wav"
+          },
+          {
+            "id": "tea",
+            "text": "thé",
+            "gloss": "tea",
+            "audio": "/audio/fixture-tea.wav"
+          },
+          {
+            "id": "please",
+            "text": "s’il",
+            "gloss": "if it",
+            "audio": "/audio/fixture-please.wav"
+          },
+          {
+            "id": "you",
+            "text": "vous",
+            "gloss": "you",
+            "audio": "/audio/fixture-you.wav"
+          },
+          {
+            "id": "kindly",
+            "text": "plaît",
+            "gloss": "pleases",
+            "audio": "/audio/fixture-kindly.wav"
+          }
+        ],
+        "text": "Un thé, s’il vous plaît.",
+        "audio": "/audio/fixture-order-three.wav"
+      },
+      "items": [
+        {
+          "foodId": "tea",
+          "quantity": 1
+        }
+      ],
+      "paid": 5
+    },
+    {
+      "id": "order-4",
+      "level": 1,
+      "customer": "Élodie",
+      "table": 4,
+      "line": {
+        "id": "order.four",
+        "tokens": [
+          {
+            "id": "one",
+            "text": "Un",
+            "gloss": "one",
+            "audio": "/audio/fixture-one.wav"
+          },
+          {
+            "id": "tea",
+            "text": "thé",
+            "gloss": "tea",
+            "audio": "/audio/fixture-tea.wav"
+          },
+          {
+            "id": "please",
+            "text": "s’il",
+            "gloss": "if it",
+            "audio": "/audio/fixture-please.wav"
+          },
+          {
+            "id": "you",
+            "text": "vous",
+            "gloss": "you",
+            "audio": "/audio/fixture-you.wav"
+          },
+          {
+            "id": "kindly",
+            "text": "plaît",
+            "gloss": "pleases",
+            "audio": "/audio/fixture-kindly.wav"
+          }
+        ],
+        "text": "Un thé, s’il vous plaît.",
+        "audio": "/audio/fixture-order-four.wav"
+      },
+      "items": [
+        {
+          "foodId": "tea",
+          "quantity": 1
+        }
+      ],
+      "paid": 5
+    }
+  ],
+  "thanks": {
+    "id": "thanks",
+    "tokens": [
+      {
+        "id": "thanks",
+        "text": "Merci",
+        "gloss": "thanks",
+        "audio": "/audio/fixture-thanks.wav"
+      }
+    ],
+    "text": "Merci.",
+    "audio": "/audio/fixture-thanks.wav"
+  },
+  "retry": {
+    "id": "retry",
+    "tokens": [
+      {
+        "id": "retry",
+        "text": "Encore",
+        "gloss": "again",
+        "audio": "/audio/fixture-retry.wav"
+      }
+    ],
+    "text": "Encore.",
+    "audio": "/audio/fixture-retry.wav"
+  },
+  "opening": {
+    "cast": [
+      {
+        "id": "nurse",
+        "name": "Élodie",
+        "voices": {
+          "zh": "french",
+          "en": "premise"
+        }
+      }
+    ],
+    "tray": [
+      "tea"
+    ],
+    "steps": [
+      {
+        "type": "say-en",
+        "who": "nurse",
+        "en": "You are staying here while you recover.",
+        "audio": "/audio/fixture-premise.wav"
+      },
+      {
+        "type": "say",
+        "who": "nurse",
+        "line": {
+          "id": "opening.hello",
+          "tokens": [
+            {
+              "id": "welcome",
+              "text": "Bonjour",
+              "gloss": "hello",
+              "audio": "/audio/fixture-welcome.wav"
+            }
+          ],
+          "text": "Bonjour.",
+          "audio": "/audio/fixture-opening-hello.wav"
+        },
+        "recover": [
+          "welcome"
+        ]
+      },
+      {
+        "type": "request",
+        "who": "nurse",
+        "line": {
+          "id": "opening.request",
+          "tokens": [
+            {
+              "id": "one",
+              "text": "Un",
+              "gloss": "one",
+              "audio": "/audio/fixture-one.wav"
+            },
+            {
+              "id": "tea",
+              "text": "thé",
+              "gloss": "tea",
+              "audio": "/audio/fixture-tea.wav"
+            },
+            {
+              "id": "please",
+              "text": "s’il",
+              "gloss": "if it",
+              "audio": "/audio/fixture-please.wav"
+            },
+            {
+              "id": "you",
+              "text": "vous",
+              "gloss": "you",
+              "audio": "/audio/fixture-you.wav"
+            },
+            {
+              "id": "kindly",
+              "text": "plaît",
+              "gloss": "pleases",
+              "audio": "/audio/fixture-kindly.wav"
+            }
+          ],
+          "text": "Un thé, s’il vous plaît.",
+          "audio": "/audio/fixture-opening-request.wav"
+        },
+        "want": "tea",
+        "wrong": {
+          "id": "opening.wrong",
+          "tokens": [
+            {
+              "id": "some",
+              "text": "Du",
+              "gloss": "some",
+              "audio": "/audio/fixture-some.wav"
+            },
+            {
+              "id": "tea",
+              "text": "thé",
+              "gloss": "tea",
+              "audio": "/audio/fixture-tea.wav"
+            }
+          ],
+          "text": "Du thé.",
+          "audio": "/audio/fixture-opening-wrong.wav"
+        },
+        "ok": {
+          "id": "opening.ok",
+          "tokens": [
+            {
+              "id": "thanks",
+              "text": "Merci",
+              "gloss": "thanks",
+              "audio": "/audio/fixture-thanks.wav"
+            }
+          ],
+          "text": "Merci.",
+          "audio": "/audio/fixture-opening-ok.wav"
+        },
+        "recover": [
+          "tea"
+        ]
+      },
+      {
+        "type": "reply",
+        "who": "nurse",
+        "options": [
+          {
+            "word": {
+              "id": "yes",
+              "text": "Oui",
+              "gloss": "yes",
+              "audio": "/audio/fixture-yes.wav"
+            },
+            "answer": {
+              "id": "opening.yes",
+              "tokens": [
+                {
+                  "id": "thanks",
+                  "text": "Merci",
+                  "gloss": "thanks",
+                  "audio": "/audio/fixture-thanks.wav"
+                }
+              ],
+              "text": "Merci.",
+              "audio": "/audio/fixture-opening-yes.wav"
+            },
+            "recover": [
+              "yes"
+            ]
+          },
+          {
+            "word": {
+              "id": "no",
+              "text": "Non",
+              "gloss": "no",
+              "audio": "/audio/fixture-no.wav"
+            },
+            "answer": {
+              "id": "opening.no",
+              "tokens": [
+                {
+                  "id": "retry",
+                  "text": "Encore",
+                  "gloss": "again",
+                  "audio": "/audio/fixture-retry.wav"
+                }
+              ],
+              "text": "Encore.",
+              "audio": "/audio/fixture-opening-no.wav"
+            },
+            "recover": [
+              "no"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "end",
+        "title": {
+          "id": "opening.end",
+          "tokens": [
+            {
+              "id": "welcome",
+              "text": "Bonjour",
+              "gloss": "hello",
+              "audio": "/audio/fixture-welcome.wav"
+            }
+          ],
+          "text": "Bonjour.",
+          "audio": "/audio/fixture-opening-end.wav"
+        }
+      }
+    ]
+  }
+}
