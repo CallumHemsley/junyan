@@ -76,13 +76,35 @@ export function drawProp(ctx: CanvasRenderingContext2D | OffscreenCanvasRenderin
       face([[x - .3, y - .3, height + .28], [x + w + .3, y - .3, height + .28], [x + w + .3, mid, ridge], [x - .3, mid, ridge]], roof, .78);
       face([[x - .3, mid, ridge], [x + w + .3, mid, ridge], [x + w + .3, y + h + .35, height + .28], [x - .3, y + h + .35, height + .28]], roof, 1.1);
       face([[x + w + .3, y - .3, height + .28], [x + w + .3, mid, ridge], [x + w + .3, y + h + .35, height + .28]], wall, .64);
-      for (let a = x; a < x + w; a += .55) {
-        line([a, mid, ridge + .02], [a, y + h + .33, height + .3], [78, 101, 103]);
-        line([a, y - .3, height + .3], [a, mid, ridge + .02], [71, 93, 97]);
+      // Staggered tile laps describe the roof planes; seams stop at each tile. RGB ramps own material values independently of sunlight.
+      const roofZ = (b: number) => b < mid
+        ? height + .28 + (b - y + .3) / (mid - y + .3) * (ridge - height - .28)
+        : ridge - (b - mid) / (h * .54 + .35) * (ridge - height - .28);
+      for (const [start, end, exposure] of [[y - .3, mid, .77], [mid, y + h + .35, 1.02]]) {
+        const courses = Math.ceil((end - start) / .62);
+        for (let row = 0; row < courses; row++) {
+          const top = start + (end - start) * row / courses;
+          const bottom = start + (end - start) * (row + 1) / courses;
+          for (let col = -1; col < w / .84 + 1; col++) {
+            const left = Math.max(x - .3, x - .3 + col * .84 + (row % 2) * .42);
+            const right = Math.min(x + w + .3, x - .3 + (col + 1) * .84 + (row % 2) * .42);
+            if (right <= left) continue;
+            const value = exposure + (hash(col + x, row + y) - .5) * .12;
+            const tile = roof.map(v=>Math.round(v*value));
+            face([[left,top,roofZ(top)+.02],[right,top,roofZ(top)+.02],[right,bottom,roofZ(bottom)+.02],[left,bottom,roofZ(bottom)+.02]],tile);
+            const lap = Math.max(top, bottom - .055);
+            face([[left,lap,roofZ(lap)+.02],[right,lap,roofZ(lap)+.02],[right,bottom,roofZ(bottom)+.02],[left,bottom,roofZ(bottom)+.02]],tile.map(v=>Math.round(v*.72)));
+            // A short raised shoulder catches light; no continuous wire-grid seam.
+            if ((col + row) % 3 !== 0) line([left+.08,top+.06,roofZ(top+.06)+.02],[left+.08,Math.max(top+.06,bottom-.12),roofZ(Math.max(top+.06,bottom-.12))+.02],roof.map(v=>v*1.13));
+          }
+        }
       }
-      for (let b = y + .3; b < y + h; b += .7) {
-        const z = b < mid ? height + .28 + (b - y + .3) / (mid - y + .3) * (ridge - height - .28) : ridge - (b - mid) / (h * .54 + .35) * (ridge - height - .28);
-        line([x - .25, b, z + .02], [x + w + .25, b, z + .02], b < mid ? [91, 117, 118] : [140, 156, 145]);
+      face([[x-.3,y+h+.35,height+.28],[x+w+.3,y+h+.35,height+.28],[x+w+.3,y+h+.35,height+.1],[x-.3,y+h+.35,height+.1]],roof.map(v=>Math.round(v*.56)));
+      line([x-.3,y+h+.35,height+.29],[x+w+.3,y+h+.35,height+.29],roof.map(v=>v*1.18));
+      for(let a=x-.3;a<x+w+.3;a+=.72){
+        const end=Math.min(a+.68,x+w+.3);
+        face([[a,mid-.09,ridge+.015],[end,mid-.09,ridge+.015],[end,mid+.09,ridge+.015],[a,mid+.09,ridge+.015]],roof.map(v=>Math.round(v*1.22)));
+        line([end,mid-.08,ridge+.02],[end,mid+.08,ridge+.02],roof,.8);
       }
     }
     if (prop.kind === 'building-restaurant' || style === 'timber-shutter') {
