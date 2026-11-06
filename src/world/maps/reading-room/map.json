@@ -68,9 +68,9 @@
       "id": "reading-room.window-plant",
       "rect": {
         "x": 11.5,
-        "y": 3.5,
+        "y": 2.9,
         "width": 1,
-        "height": 1
+        "height": 0.7
       }
     },
     {
@@ -158,7 +158,7 @@
       "id": "reading-room.project",
       "position": {
         "x": 14,
-        "y": 13
+        "y": 9.5
       },
       "radius": 2.3,
       "featureId": "reading-room",
@@ -231,7 +231,7 @@
       "id": "reading-room.alcove-window",
       "kind": "reading-window",
       "position": {
-        "x": 20,
+        "x": 16.5,
         "y": 2.65
       },
       "width": 1.5,
@@ -304,10 +304,10 @@
       "kind": "reading-plant",
       "position": {
         "x": 11.5,
-        "y": 3.5
+        "y": 2.9
       },
       "width": 1,
-      "height": 1,
+      "height": 0.7,
       "layer": "object",
       "variant": 1
     },
@@ -339,7 +339,7 @@
       "id": "reading-room.alcove-inlay",
       "kind": "reading-inlay",
       "position": {
-        "x": 16.6,
+        "x": 13.1,
         "y": 3.6
       },
       "width": 9.7,
@@ -388,7 +388,7 @@
       "id": "reading-room.shared-desk",
       "position": {
         "x": 14,
-        "y": 13
+        "y": 9.5
       },
       "kind": "workbench"
     }

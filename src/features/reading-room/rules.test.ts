@@ -68,9 +68,18 @@ describe('communal arrangement briefs', () => {
     expect(replay.completed).toEqual(done.completed);
     expect(replay.layouts.alcove).toEqual(done.layouts.alcove);
     expect(replay.layouts.window).toEqual([]);
+    expect(replay.completedLayouts).toEqual(done.completedLayouts);
     expect(recoveryForTransition(solveWindow(), { type: 'check' }, reduce(solveWindow(), { type: 'check' }))).toContain('apartment.beside');
     expect(recoveryForTransition(solveAlcove(), { type: 'check' }, done)).toContain('apartment.turn');
     expect(recoveryForTransition(done, { type: 'check' }, done)).toEqual([]);
     expect(recoveryForTransition(initialState(), { type: 'check' }, reduce(initialState(), { type: 'check' }))).toEqual([]);
+  });
+  it('retains completed furnishings after replay reset and switching to the other brief', () => {
+    const first = reduce(solveWindow(), { type: 'check' });
+    const next = act(first, { type: 'restart' }, { type: 'begin-brief', brief: 'alcove' });
+    expect(next.layouts.window).toEqual([]);
+    expect(next.completedLayouts.window).toEqual(first.layouts.window);
+    expect(validate(JSON.parse(JSON.stringify(next)))).toEqual(next);
+    expect(validate({ ...next, completedLayouts: { window: null, alcove: null } })).toBeNull();
   });
 });

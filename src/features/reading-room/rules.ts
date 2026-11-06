@@ -10,6 +10,7 @@ const placementSchema = draftSchema.extend({ id: z.enum(['table', 'chair']) });
 const schema = z.strictObject({
   version: z.literal(1), brief: z.enum(briefIds), status: z.enum(['editing', 'complete']), completed: z.array(z.enum(briefIds)).max(2),
   layouts: z.strictObject({ window: z.array(placementSchema).max(2), alcove: z.array(placementSchema).max(2) }),
+  completedLayouts: z.strictObject({ window: z.array(placementSchema).length(2).nullable(), alcove: z.array(placementSchema).length(2).nullable() }),
   selected: z.enum(['table', 'chair']).nullable(), draft: draftSchema.nullable(),
   retries: z.strictObject({ window: z.number().int().nonnegative().max(Number.MAX_SAFE_INTEGER), alcove: z.number().int().nonnegative().max(Number.MAX_SAFE_INTEGER) }),
   notice: z.enum(['window', 'left', 'rotate', 'okay', 'blocked']),
@@ -20,7 +21,7 @@ export type Action =
   | { type: 'place' } | { type: 'rotate' } | { type: 'cancel' } | { type: 'check' } | { type: 'restart' }
   | { type: 'begin-brief'; brief: BriefId };
 export function initialState(): State {
-  return { version: 1, brief: 'window', status: 'editing', completed: [], layouts: { window: [], alcove: [] }, selected: null, draft: null, retries: { window: 0, alcove: 0 }, notice: 'window' };
+  return { version: 1, brief: 'window', status: 'editing', completed: [], layouts: { window: [], alcove: [] }, completedLayouts: { window: null, alcove: null }, selected: null, draft: null, retries: { window: 0, alcove: 0 }, notice: 'window' };
 }
 export function footprint(p: Pick<Placement, 'id' | 'rotation'>): [number, number] { return p.id === 'chair' ? [1, 1] : p.rotation ? [1, 2] : [2, 1]; }
 export function cells(p: Placement): Cell[] {
@@ -53,6 +54,9 @@ export function validate(value: unknown): State | null {
   for (const brief of briefIds) {
     const placements = s.layouts[brief];
     if (new Set(placements.map(p => p.id)).size !== placements.length || placements.some(p => !legal(brief, placements, p))) return null;
+    const completed = s.completedLayouts[brief];
+    if (s.completed.includes(brief) !== Boolean(completed)) return null;
+    if (completed && (new Set(completed.map(p => p.id)).size !== completed.length || completed.some(p => !legal(brief, completed, p)) || unmetGoal(brief, completed))) return null;
   }
   if (!s.completed.includes('window') && s.layouts.alcove.length) return null;
   return s;
@@ -88,7 +92,7 @@ export function reduce(state: State, action: Action): State {
       if (state.status === 'complete') return state;
       const goal = unmetGoal(state.brief, state.layouts[state.brief]);
       if (goal) return retry(state, goal);
-      return { ...state, status: 'complete', completed: state.completed.includes(state.brief) ? state.completed : [...state.completed, state.brief], selected: null, draft: null, notice: 'okay' };
+      return { ...state, status: 'complete', completed: state.completed.includes(state.brief) ? state.completed : [...state.completed, state.brief], completedLayouts: { ...state.completedLayouts, [state.brief]: state.layouts[state.brief].map(p => ({ ...p })) }, selected: null, draft: null, notice: 'okay' };
     }
   }
 }

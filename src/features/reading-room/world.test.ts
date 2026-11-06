@@ -31,3 +31,12 @@ it('keeps the door, activity desk and both protected circulation lanes connected
     for (const point of [map.defaultSpawn, { x: 14, y: 13 }, gridToWorld({ x: 5, y: 2 }, 'window'), gridToWorld({ x: 2, y: 4 }, 'alcove')]) expect(isExitConnected(map, point)).toBe(true);
   }
 });
+it('shows the durable first arrangement when its replay draft is cleared and the player changes brief', () => {
+  const first = reduce(solveWindow(), { type: 'check' });
+  const replay = reduce(first, { type: 'restart' });
+  const second = reduce(replay, { type: 'begin-brief', brief: 'alcove' });
+  const projection = projectReadingRoom(second);
+  expect(projection.props.find(p => p.id === 'reading-room.window.table')?.position).toEqual({ x: 7, y: 4 });
+  expect(projection.props.some(p => p.id === 'reading-room.window.chair')).toBe(true);
+  expect(projection.colliders.find(c => c.id === 'reading-room.window.table')?.rect).toEqual(placementRect(first.layouts.window[0], 'window'));
+});

@@ -4,7 +4,7 @@ import { footprint, legal, type Cell, type Placement, type State } from './rules
 
 export const regions = {
   window: { x: 4, y: 4, columns: 6, rows: 5, cellSize: 1.5 },
-  alcove: { x: 17, y: 4, columns: 6, rows: 5, cellSize: 1.5 },
+  alcove: { x: 13.5, y: 4, columns: 6, rows: 5, cellSize: 1.5 },
 } as const;
 export function worldToGrid(point: Point, brief: BriefId): Cell | null {
   const region = regions[brief], x = Math.floor((point.x - region.x) / region.cellSize), y = Math.floor((point.y - region.y) / region.cellSize);
@@ -27,13 +27,14 @@ export function projectReadingRoom(state: State): Projection {
       const rect = { x: region.x + fixture.x * region.cellSize, y: region.y + fixture.y * region.cellSize, width: region.cellSize, height: region.cellSize };
       const id = `reading-room.${brief}.shelf-${index}`;
       result.colliders.push({ id, rect });
-      result.props.push({ id, kind: 'reading-shelf', position: rect, width: rect.width, height: rect.height, layer: 'object', variant: index });
+      result.props.push({ id, kind: 'reading-shelf', position: { x: rect.x, y: rect.y }, width: rect.width, height: rect.height, layer: 'object', variant: index });
       result.occluders.push({ id, rect, height: 1.9, fadeWhenPlayerBehind: true });
     }
-    for (const placement of state.layouts[brief]) {
+    const layout = state.brief === brief && state.status === 'editing' ? state.layouts[brief] : state.completedLayouts[brief] ?? state.layouts[brief];
+    for (const placement of layout) {
       const rect = placementRect(placement, brief), id = `reading-room.${brief}.${placement.id}`;
       result.colliders.push({ id, rect });
-      result.props.push({ id, kind: `reading-${placement.id}`, position: rect, width: rect.width, height: rect.height, layer: 'object', variant: placement.rotation });
+      result.props.push({ id, kind: `reading-${placement.id}`, position: { x: rect.x, y: rect.y }, width: rect.width, height: rect.height, layer: 'object', variant: placement.rotation });
       if (placement.id === 'table') {
         result.occluders.push({ id, rect, height: 1.2, fadeWhenPlayerBehind: false });
         if (state.completed.includes(brief)) result.props.push({ id: `${id}.book`, kind: 'reading-open-book', position: { x: rect.x + rect.width * .3, y: rect.y + rect.height * .3 }, width: .8, height: .65, layer: 'object', variant: brief });
@@ -42,7 +43,7 @@ export function projectReadingRoom(state: State): Projection {
     if (state.completed.includes(brief)) result.props.push({ id: `reading-room.${brief}.sunlight`, kind: 'reading-sunlight', position: { x: region.x + 2.5 * region.cellSize, y: region.y }, width: 2.8, height: 4.2, layer: 'ground', variant: brief });
     if (state.brief === brief && state.selected && state.draft) {
       const p = { id: state.selected, ...state.draft }, rect = placementRect(p, brief);
-      result.props.push({ id: 'reading-room.draft', kind: 'reading-draft', position: rect, width: rect.width, height: rect.height, layer: 'ground', variant: legal(brief, state.layouts[brief], p) ? 'valid' : 'blocked' });
+      result.props.push({ id: 'reading-room.draft', kind: 'reading-draft', position: { x: rect.x, y: rect.y }, width: rect.width, height: rect.height, layer: 'ground', variant: legal(brief, state.layouts[brief], p) ? 'valid' : 'blocked' });
     }
   }
   return result;

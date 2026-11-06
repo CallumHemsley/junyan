@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { lineById, words as apartmentWords } from '../apartment/content';
-import data from './briefs.json';
+import data from './briefs.json' with { type: 'json' };
 
 export const briefIds = ['window', 'alcove'] as const;
 export type BriefId = typeof briefIds[number];
