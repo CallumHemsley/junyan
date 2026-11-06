@@ -46,3 +46,15 @@ export function renderAtmosphereObjects(frame:{commands:readonly AtmosphereComma
     draw(ctx,view){drawAtmosphereLayer(ctx,group.commands,'objects',point=>view.project(point,point.z??0));},
   }));
 }
+
+/** Invert the host's affine ground projection; no second camera or persistent state. */
+export function visibleAtmosphereRect(view:Pick<WorldRenderView,'project'|'width'|'height'>,padding=96):import('./index').Rect {
+  const origin=view.project({x:0,y:0}),x=view.project({x:1,y:0}),y=view.project({x:0,y:1});
+  const ax=x.x-origin.x,ay=x.y-origin.y,bx=y.x-origin.x,by=y.y-origin.y,det=ax*by-ay*bx;
+  const corners=[[-padding,-padding],[view.width+padding,-padding],[-padding,view.height+padding],[view.width+padding,view.height+padding]].map(([sx,sy])=>({
+    x:((sx-origin.x)*by-(sy-origin.y)*bx)/det,
+    y:(ax*(sy-origin.y)-ay*(sx-origin.x))/det,
+  }));
+  const left=Math.min(...corners.map(p=>p.x)),top=Math.min(...corners.map(p=>p.y));
+  return {x:left,y:top,width:Math.max(...corners.map(p=>p.x))-left,height:Math.max(...corners.map(p=>p.y))-top};
+}
