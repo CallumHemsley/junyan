@@ -29,6 +29,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
  const keys=useRef(new Set<string>()),path=useRef<Point[]>([]),cameraRef=useRef<Camera>({focus:state.position,width:960,height:600,scale:22});
  const cue=useRef<HTMLDivElement>(null),targetForFrame=useRef<NearbyTarget|null>(null),visibleTarget=useRef<NearbyTarget|null>(null);
  const activationButton=useRef<HTMLButtonElement>(null),lookupTrigger=useRef<HTMLButtonElement|null>(null),wasPaused=useRef(paused);
+ const invocation=useRef<{key:string;fromControl:boolean}|null>(null),previousActivity=useRef(state.activeActivity),pendingActivityFocus=useRef(false);
  const [selection,setSelection]=useState<TargetSelection|null>(null);
  const actorMotion=useRef({yaw:Math.PI/2,distanceTravelled:0});
  const worker=useRef<Worker|null>(null),requestId=useRef(0),workerMap=useRef<object|null>(null);
@@ -107,13 +108,27 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   if(!paused&&wasPaused.current&&lookupTrigger.current&&!lookupTrigger.current.isConnected)(activationButton.current??root.current)?.focus({preventScroll:true});
   wasPaused.current=paused;
  },[paused]);
+ useEffect(()=>{
+  if(previousActivity.current&&!state.activeActivity)pendingActivityFocus.current=true;
+  previousActivity.current=state.activeActivity;
+  if(!pendingActivityFocus.current||paused||state.activeActivity)return;
+  const frame=requestAnimationFrame(()=>{
+   if(latest.current.paused||latest.current.state.activeActivity)return;
+   const target=invocation.current;
+   if(target?.fromControl&&visibleTarget.current?.key===target.key&&activationButton.current)activationButton.current.focus({preventScroll:true});
+   else root.current?.focus({preventScroll:true});
+   pendingActivityFocus.current=false;invocation.current=null;
+  });
+  return()=>cancelAnimationFrame(frame);
+ },[state.activeActivity,paused,selected?.key]);
  const dictionary=contentWords(content);
  const wordToken=(word:Word)=><WordToken key={word.id} word={word} look={wordState(game.journal[word.id],fresh.includes(word.id))} onLookup={(word,trigger)=>{lookupTrigger.current=trigger;onLookup(word,trigger);}}/>;
  const label=selected?targetWords(selected,dictionary):[];
  const next=selected?cycleTarget(targets,selected.key,1):null;
  function cycle(direction:-1|1){if(paused||!selected)return;const next=cycleTarget(targets,selected.key,direction);if(next)setSelection({key:next.key,mode:"manual"});}
- function activate(){
+ function activate(fromControl=false){
   if(paused||state.activeActivity||!selected)return;
+  invocation.current={key:selected.key,fromControl};setSelection({key:selected.key,mode:"manual"});
   path.current=[];keys.current.clear();requestId.current++;
   if(selected.source==="anchor")onAction({type:"world-interact",anchorId:selected.anchor.id});
   else onAction({type:"world-life",actionId:selected.affordance.id,elapsedMs:elapsed.current});
@@ -138,7 +153,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
    <span className="world-target-label">{selected.source==="anchor"&&selected.anchor.interactionId.startsWith("table-")&&<span>{selected.anchor.interactionId.split("-")[1]}</span>}{label.map(wordToken)}</span>
    <button ref={activationButton} className="world-target-activate" data-world-anchor={selected.source==="anchor"?selected.anchor.id:undefined} data-world-life={selected.source==="life"?selected.affordance.id:undefined}
     disabled={paused} aria-label={selected.source==="anchor"&&selected.anchor.featureId==="restaurant"?(selected.anchor.interactionId.startsWith("table-")?ui.tableOrder(Number(selected.anchor.interactionId.split("-")[1])):ui.kitchen):label.map(word=>word.text).join(language.tokenSeparator)}
-    onClick={activate} onKeyDown={event=>{if(event.key==="ArrowLeft"||event.key==="ArrowRight"){event.preventDefault();event.stopPropagation();cycle(event.key==="ArrowLeft"?-1:1);}}}>
+    onClick={()=>activate(true)} onKeyDown={event=>{if(event.key==="ArrowLeft"||event.key==="ArrowRight"){event.preventDefault();event.stopPropagation();cycle(event.key==="ArrowLeft"?-1:1);}}}>
     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="m10 8 4 4-4 4"/></svg>
    </button>
    {targets.length>1&&<button className="world-target-switch" disabled={paused} aria-label={`${ui.view(next?targetWords(next,dictionary).map(word=>word.text).join(language.tokenSeparator):"")} ${targets.length}`} onClick={()=>cycle(1)}>
