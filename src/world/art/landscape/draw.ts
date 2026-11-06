@@ -149,18 +149,24 @@ export function drawLandscapeProp(
     case 'stool': block(-6,-8,3,9,'#756647');block(4,-8,3,9,'#756647');block(-8,-11,17,4,'#b7a06d');break;
     case 'laundry':
       for(const x of [-29,27]){
-        block(x-1,-34,5,35,'#5f563c');block(x,-33,2,32,'#ad905b');block(x-2,-34,7,2,'#c9ae79');
-        block(x-2,-4,8,3,'#6e6d48');block(x,-14,4,2,'#7c6843');
+        block(x-2,-43,7,44,'#4e4934');block(x-1,-42,3,41,'#ab8853');block(x-3,-44,9,3,'#c9ae79');
+        polygon([[x-4,1],[x+1,-12],[x+5,1],[x+2,3]],'#6b6241');
+        block(x-2,-4,8,3,'#6e6d48');block(x,-18,4,2,'#7c6843');
       }
-      block(-28,-33,58,2,'#64563c');block(-28,-33,58,1,'#ceb780');
+      block(-31,-42,64,4,'#514932');block(-31,-42,64,1,'#cfb67c');
+      polygon([[-28,-38],[-18,-29],[-18,-26],[-28,-34]],'#887047');
+      polygon([[27,-38],[17,-29],[17,-26],[27,-34]],'#887047');
+      block(-27,-37,56,1,'#c6b27a');
       for(let i=-2;i<=2;i++){
-        const x=i*10-4,drop=[20,16,23,18,20][i+2],jade=i%2!==0;
-        polygon([[x,-30],[x+8,-30],[x+9,-30+drop],[x+3,-29+drop],[x,-30+drop]],'#788b75');
-        block(x,-30,7,drop-1,jade?'#9fb4a0':'#e2d5ac');
-        block(x+1,-29,2,drop-3,jade?'#c1cbb0':'#f0e5c4');
-        block(x+6,-28,1,drop-4,jade?'#7e9b85':'#b8b291');
-        block(x+1,-31,2,4,'#a0804f');block(x+5,-31,2,3,'#c5a66c');
-        block(x,-31+drop,7,1,jade?'#6a8773':'#a6a17f');
+        const x=i*10-4,drop=[23,18,29,24,20][i+2],jade=i%2!==0;
+        polygon([[x,-36],[x+8,-36],[x+9,-36+drop],[x+3,-35+drop],[x,-36+drop]],'#6a7f69');
+        block(x,-36,7,drop-1,jade?'#769b8c':'#e2d5ac');
+        block(x+1,-35,2,drop-3,jade?'#b3c2a7':'#f0e5c4');
+        block(x+6,-34,1,drop-4,jade?'#557a6e':'#b8b291');
+        if(i===-1){block(x-3,-35,3,6,'#769b8c');block(x+7,-35,3,6,'#557a6e');}
+        if(i===0){block(x,-15,7,2,'#7c9986');block(x,-11,7,1,'#a1b099');}
+        block(x+1,-38,2,4,'#a0804f');block(x+5,-38,2,3,'#c5a66c');
+        block(x,-37+drop,7,1,jade?'#58786a':'#a6a17f');
       }
       break;
     case 'picnic':

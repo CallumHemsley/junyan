@@ -8,16 +8,13 @@ function polygon(ctx: CanvasRenderingContext2D, view: WorldRenderView, points: {
   ctx.closePath(); ctx.fill();
 }
 
-function forestMargin(ctx:CanvasRenderingContext2D,map:Parameters<DrawMap>[1],view:WorldRenderView){
-  // Rooted fringes soften the map rectangle; they are forest floor, never an extra path.
-  for(const side of ['north','south','west','east'] as const){
-    const horizontal=side==='north'||side==='south',length=horizontal?map.bounds.width:map.bounds.height;
-    const point=(along:number,out:number)=>horizontal?{x:along,y:side==='north'?-out:map.bounds.height+out}:{x:side==='west'?-out:map.bounds.width+out,y:along};
-    const edge=[];
-    for(let d=0,n=0;d<=length+3;d+=3,n++)edge.push(point(Math.min(d,length),[1.6,2.5,1.3,2.1,2.9,1.8][n%6]));
-    polygon(ctx,view,[point(0,0),...edge,point(length,0)],'#647b51');
-    polygon(ctx,view,[point(0,0),...edge.map((_,n)=>point(Math.min(n*3,length),[.65,1.2,.5,.9,1.4,.75][n%6])),point(length,0)],'#80965d');
-  }
+function forestBed(ctx:CanvasRenderingContext2D,view:WorldRenderView,prop:Parameters<typeof drawLandscapeProp>[1]){
+  const {x,y}=prop.position,w=prop.width*1.4,h=prop.width;
+  const contour=[[-.52,-.05],[-.48,-.27],[-.31,-.32],[-.23,-.46],[.04,-.48],[.18,-.37],[.43,-.3],[.51,-.08],[.45,.08],[.49,.23],[.26,.41],[.02,.44],[-.1,.35],[-.33,.38],[-.5,.19]];
+  polygon(ctx,view,contour.map(([dx,dy])=>({x:x+dx*w,y:y+dy*h})),'#60764d');
+  polygon(ctx,view,contour.map(([dx,dy])=>({x:x-.4+dx*w*.63,y:y+.2+dy*h*.65})),'#536e49');
+  // Smaller lit floor windows separate the canopy groups instead of a map-wide shade band.
+  polygon(ctx,view,[{x:x-w*.4,y:y+h*.1},{x:x-w*.18,y:y-h*.02},{x:x+w*.06,y:y+h*.13},{x:x-w*.02,y:y+h*.32},{x:x-w*.26,y:y+h*.3}], '#8b9965');
 }
 
 /** Timber stays inside the existing deck, including at the clipped water interfaces. */
@@ -64,8 +61,8 @@ export const drawMap: DrawMap = (ctx, map, view) => {
   const shade=(base:string)=>view.shadeColor?.(base)??base;
   if (view.pass === 'ground') {
     // Distant forest is decorative; the map's authored walkable boundary is unchanged.
-    ctx.fillStyle=shade('#526c50');ctx.fillRect(0,0,view.width,view.height);
-    forestMargin(ctx,map,view);
+    ctx.fillStyle=shade('#73895b');ctx.fillRect(0,0,view.width,view.height);
+    const forest:Parameters<typeof drawLandscapeProp>[1][]=[];
     const backdropExtent=Math.ceil((view.width+view.height)/Math.max(unit,1));
     for(let y=Math.floor((view.playerPosition.y-backdropExtent)/4)*4;y<view.playerPosition.y+backdropExtent;y+=4)for(let x=Math.floor((view.playerPosition.x-backdropExtent)/4)*4;x<view.playerPosition.x+backdropExtent;x+=4){
       if(x>=0&&y>=0&&x<=map.bounds.width&&y<=map.bounds.height)continue;
@@ -73,15 +70,20 @@ export const drawMap: DrawMap = (ctx, map, view) => {
       if(group===3||group===11)continue;
       const n=Math.abs((x*x*37+y*y*71+x*y*13)%97),p=view.project({x,y});
       if(p.x<-unit*5||p.y<-unit*2||p.x>view.width+unit*5||p.y>view.height+unit*8)continue;
-      ctx.save();ctx.globalAlpha*=.56;
-      drawLandscapeProp(ctx,{kind:n%13===0?'rock':map.id==='riverbank'&&group%5===0?'willow':map.id==='park'&&y>44&&x<0?'tree':'mature-tree',position:{x:x+n%3*.45,y:y+n%5*.24},width:3.4+(n%6)*.55,height:5,variant:map.id==='park'&&y>44&&x<0?2:n%2},(x,y,z=0)=>view.project({x,y},z),unit,0,true,shade);ctx.restore();
+      forest.push({kind:n%13===0?'rock':map.id==='riverbank'&&group%5===0?'willow':map.id==='park'&&y>44&&x<0?'tree':'mature-tree',position:{x:x+n%3*.45,y:y+n%5*.24},width:3.4+(n%6)*.55,height:5,variant:map.id==='park'&&y>44&&x<0?2:n%2});
     }
-
     const painted=new Set<string>();
     let floorPainted=false;
     const forestFloor=()=>drawLandscapeGround(ctx,map,view,'underlay');
     for (const terrain of map.terrain) {
-      if(!floorPainted&&terrain.material!=='grass'){forestFloor();floorPainted=true;}
+      if(!floorPainted&&terrain.material!=='grass'){
+        forestFloor();
+        // Let grouped roots and canopies cross the grass edge; the map rectangle must not cut them off.
+        // Water and authored routes paint next, keeping their real surfaces visible through this backdrop.
+        for(const prop of forest)forestBed(ctx,view,prop);
+        for(const prop of forest){ctx.save();ctx.globalAlpha*=.56;drawLandscapeProp(ctx,prop,(x,y,z=0)=>view.project({x,y},z),unit,0,true,shade);ctx.restore();}
+        floorPainted=true;
+      }
       if(terrain.material==='water'||terrain.material==='sand'){
         if(painted.has(terrain.material))continue;painted.add(terrain.material);ctx.fillStyle=shade(landscapeMaterialColor(terrain.material)!);ctx.beginPath();
         for(const t of map.terrain.filter(t=>t.material===terrain.material)){const r=t.rect;for(const [i,point] of [{x:r.x,y:r.y},{x:r.x+r.width,y:r.y},{x:r.x+r.width,y:r.y+r.height},{x:r.x,y:r.y+r.height}].entries()){const p=view.project(point);if(i)ctx.lineTo(Math.round(p.x),Math.round(p.y));else ctx.moveTo(Math.round(p.x),Math.round(p.y));}ctx.closePath();}

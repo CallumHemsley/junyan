@@ -50,6 +50,7 @@ function leafCluster(ctx:CanvasRenderingContext2D,view:WorldRenderView,x:number,
  }else{
   const blades=style===0?[[-10,-6],[-6,-12],[0,-14],[5,-10],[11,-7]]:[[-9,-3],[-6,-8],[1,-11],[7,-6],[12,-2]];
   blades.forEach(([dx,dy],i)=>{leaf([[-1,1],[dx-2,dy+1],[dx,dy],[dx+2,dy+4],[1,2]],i%2);ctx.fillStyle=colors[2];ctx.fillRect(Math.round(dx*.7),Math.round(dy*.7),2,2);});
+  if(style===3){ctx.fillStyle=view.shadeColor?.('#e1d4a1')??'#e1d4a1';for(const [dx,dy]of [[-6,-9],[1,-12],[7,-7]]){ctx.fillRect(dx-1,dy-1,3,2);ctx.fillRect(dx,dy-2,1,4);}}
  }
  ctx.restore();
 }
@@ -75,6 +76,16 @@ function riverbankCraft(ctx:CanvasRenderingContext2D,view:WorldRenderView){
   }
   for(const [x,y,style]of [[33.7,72,0],[36,70.3,1],[37.8,76.8,2],[42.1,76.1,0],[41.9,72.3,1]])leafCluster(ctx,view,x,y,style);
  }
+ // A damp perennial bed belongs to the washing bank; the middle stays open for passing feet.
+ if(inView(view,{x:40.2,y:66.7},8)){
+  island(ctx,view,40.2,66.8,5.5,9.2,'#718453');
+  island(ctx,view,40.7,66.2,3.4,6.9,'#5f7952',1);
+  island(ctx,view,39.6,68.3,2.8,3.1,'#929364');
+  for(const [x,y]of [[38.5,64],[38,65.2],[37.9,66.5],[38.2,67.8],[38.7,69.1],[39.4,70.3]])pavingStone(ctx,view,x,y,.68,.45,Math.round(y));
+  for(const [i,[x,y]]of [[39.4,63.8],[40.4,64.7],[39.3,65.8],[41.1,65.4],[40.3,67.2],[39.1,67.9],[41.1,68.3],[40.4,69.6]].entries()){
+   leafCluster(ctx,view,x,y,i%3===0?3:i%2);leafCluster(ctx,view,x+.55,y+.45,i%2);
+  }
+ }
  // A rooted verge connects the domestic terrace to the timber approach without tiling the lawn.
  for(const [i,y]of [59.2,62.7,66.3,69.3].entries())if(inView(view,{x:31,y},6)){
   shape(ctx,view,[{x:27.8,y:y-2.5},{x:29.7,y:y-2.1},{x:30.1,y:y-.5},{x:29.4,y:y+1.4},{x:28.7,y:y+2.5},{x:26.9,y:y+1.9},{x:27.5,y}],i%2?'#718751':'#758a53');
@@ -88,9 +99,10 @@ function riverbankCraft(ctx:CanvasRenderingContext2D,view:WorldRenderView){
  if(inView(view,{x:59.9,y:60.1},10)){
   shape(ctx,view,[{x:53.1,y:59.4},{x:55,y:58.4},{x:58.2,y:58.7},{x:60.3,y:56.7},{x:62.5,y:56.8},{x:65.7,y:58.5},{x:66,y:60.7},{x:64.4,y:63.6},{x:61.7,y:63.3},{x:59.6,y:64.1},{x:56.8,y:62.8},{x:54.1,y:61.9}], '#7c7750');
   shape(ctx,view,[{x:53.8,y:59.8},{x:56.1,y:59.2},{x:59.3,y:59.6},{x:61.3,y:57.3},{x:63.3,y:57.9},{x:65,y:60.2},{x:63.3,y:62.6},{x:60,y:62.9},{x:57.3,y:62.3},{x:55.1,y:61.4}], '#a6976c');
-  for(let row=0;row<6;row++)for(let col=0;col<5;col++){
-   const x=61+col*.84+(row%2)*.3,y=57.3+row*.85;
-   if(Math.hypot((x-62.3)/2.7,(y-59.8)/3)>1.1)continue;
+  // The entry fans to the exposed side of the existing canopy, keeping this junction visible.
+  for(let row=0;row<5;row++)for(let col=0;col<7;col++){
+   const x=61.3+col*.87+(row%2)*.26,y=55.9+row*.68;
+   if(Math.hypot((x-64)/3.5,(y-57.1)/1.8)>1.1)continue;
    pavingStone(ctx,view,x,y,.82,.75,col+row*3);
   }
   // Two broken skid lines explain the hauled-out hull on its real dry bank.
@@ -99,6 +111,17 @@ function riverbankCraft(ctx:CanvasRenderingContext2D,view:WorldRenderView){
    shape(ctx,view,[{x,y},{x:x+.5,y:y-.03},{x:x+.52,y:y+.07},{x:x-.1,y:y+.12}], '#7d724e');
   }
   for(const [x,y,style]of [[54.1,58.9,1],[54.5,62.1,0],[58.7,63.4,2],[63.2,63,0],[65.5,59.9,1],[60.3,56.5,2]])leafCluster(ctx,view,x,y,style);
+ }
+ // Low seed heads and a stony dry rise give the ferry's inland meadow its own material story.
+ if(inView(view,{x:70,y:51.1},9)){
+  island(ctx,view,70.1,51.2,8.3,7.9,'#929363',1);
+  island(ctx,view,70.7,51.7,5.3,4.9,'#a09a6a');
+  island(ctx,view,68.1,50.2,3.6,4.3,'#728450');
+  for(const [i,[x,y]]of [[67.2,49.5],[68.4,48.7],[70.1,48.4],[71.9,49.3],[72.7,50.9],[72.2,52.6],[70.7,53.4],[68.9,53.6],[67.5,52.2]].entries()){
+   if(i%2===0)pavingStone(ctx,view,x,y,.95,.6,i);
+   leafCluster(ctx,view,x-.25,y+.4,i%3===0?3:1);
+  }
+  for(const [x,y,style]of [[68.6,50,3],[69.4,50.8,1],[70.3,50.1,3],[71.5,51.2,1],[70.6,52,3],[69.2,52.4,0]])leafCluster(ctx,view,x,y,style);
  }
  for(const [x,y]of [[30.1,55],[31.4,59.1],[59.6,55.2],[62.1,58.8]])if(inView(view,{x,y},4)){
   island(ctx,view,x,y,3.4,2.7,'#788651');
