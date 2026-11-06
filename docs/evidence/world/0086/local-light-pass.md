@@ -50,3 +50,7 @@ Matched CPU deltas range roughly -19% to +21%, including maps unchanged by this 
 ## Remaining gates
 
 Foundation consumption and main reconciliation; profile alignment with newer owner art; independent Astra experience review in the actual reconciled production viewport; actual hidden-tab proof; focused performance attribution; broader day/night and sustained resident task/rest evidence. Full connected-world/atmosphere acceptance remains ACTIVE. No shared merge, deploy, audio generation or unrelated local preview work was performed.
+
+## Latest consumer handshake
+
+After publishing the evidence, explicitly fetched foundation `3836175` (fourth-receipt fix). Foundation reports that the owner assembly checkpoint and workshop state-selected light wiring are still being prepared. The proof above stays pinned to e48b10e and does not certify this newer consumer. Inspected workshop d23476b `workshopAtmosphereHooks(map, repairs, base)`: it filters the existing profile IDs to the authoritative active job, retaining any windows, and delegates geometry/phase/shadows to atmosphere. This is compatible with the two task-lamp profiles here; foundation should apply that selector to the cached base hooks, not add a second emissive layer. Recheck the resulting active/returned lamp presentation and reconciled saves when that assembly is published.
