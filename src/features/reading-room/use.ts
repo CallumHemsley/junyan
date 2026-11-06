@@ -62,7 +62,7 @@ function validVisit(state: State, map: WorldMapDefinition): boolean {
 }
 export function readingUsePose(state: State, map: WorldMapDefinition, elapsedMs: number): Pick<ActorPose, 'position' | 'facing' | 'yaw' | 'action' | 'activity'> | null {
   const use = state.use;
-  if (!use || elapsedMs < use.startedAt || !validVisit(state, map)) return null;
+  if (!use || !Number.isFinite(elapsedMs) || elapsedMs < use.startedAt || use.returnAt !== null && elapsedMs < use.returnAt || !validVisit(state, map)) return null;
   const returning = use.returnAt !== null;
   const path = returning ? use.returnPath! : use.path;
   const sample = samplePath(path, elapsedMs - (use.returnAt ?? use.startedAt));

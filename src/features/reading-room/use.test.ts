@@ -105,3 +105,12 @@ it('discards a future-clock pending visit without applying its destructive edit'
   expect(recovered.layouts).toBe(state.layouts);
   expect(recovered.completedLayouts).toBe(state.completedLayouts);
 });
+
+it('does not sample a return before its saved clock or at an invalid clock', () => {
+  const state = completed(), map = mapFor(state), started = advanceReadingUse(state, map, 1000, true, true);
+  const returning = advanceReadingUse(queueReadingEdit(started, { type: 'restart' }, 2000)!, map, 2900, true, true);
+  expect(readingUsePose(returning, map, 2899)).toBeNull();
+  expect(readingUsePose(returning, map, NaN)).toBeNull();
+  expect(readingUsePose(returning, map, Infinity)).toBeNull();
+  expect(readingUsePose(returning, map, 2900)).not.toBeNull();
+});
