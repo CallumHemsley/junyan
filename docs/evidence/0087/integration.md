@@ -67,3 +67,9 @@ The proof branch now consumes character01e67d2, landscape6732017, courtyard11b46
 Nearby background residents retain their task posture. A reader keeps reading and a caretaker keeps working until an explicit observation produces a bounded nonverbal acknowledgment. There is no automatic stand-and-wave loop from player proximity. Role-specific resting direction remains world-fixed.
 
 The ordinary-input production proof has been strengthened to derive legacy initial world state before its first checkpoint. Its first run's initial save-reader failure was a proof bug, not a game defect. The proof does not inject a save or spawn and never accepts an absent world checkpoint as successful movement.
+
+## Interaction checkpoint continuity
+
+An accepted interactLife call now checkpoints the injected context.elapsedMs into its returned state when newer. This closes the sub-second gap between the last periodic world-clock write and a sit/wave action. Reload begins at the exact saved reaction/actor position; no second clock or wall-time catch-up is introduced. An invalid action remains a no-op, and time never rewinds.
+
+Node22.23.4 verification passes 47 life tests and TypeScript, including an 800ms-stale previous checkpoint followed by a walking-cat sit, serialization and exact-position reload.

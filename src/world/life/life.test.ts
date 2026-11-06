@@ -209,3 +209,20 @@ it('does not duplicate a named regular through two canonical aliases on one map'
   expect(plan.actors).toHaveLength(1);
   expect(plan.diagnostics.map(item => item.reason)).toContain('duplicate-character');
 });
+
+
+it('checkpoints accepted interaction time atomically so a reloaded pause starts at the same position', () => {
+  const input = map();
+  input.npcHooks = [{ id: 'park.black', characterId: 'black-cat', position: { x: 4, y: 4 }, route: [{ x: 8, y: 4 }] }];
+  const plan = compileLife(input, navigation);
+  let elapsedMs = 1000;
+  while (sampleLife(plan, context(elapsedMs))[0].action !== 'walk') elapsedMs += 100;
+  const actor = sampleLife(plan, context(elapsedMs))[0], ctx = { ...context(elapsedMs), player: actor.position };
+  const before = { ...initialLifeState(), elapsedMs: elapsedMs - 800 };
+  const result = interactLife(before, plan, [actor], ctx, `${actor.id}/sit`, navigation);
+  const restored = restoreLife(JSON.parse(JSON.stringify(result.state)));
+  expect(restored.elapsedMs).toBe(elapsedMs);
+  const reloaded = sampleLife(plan, { ...ctx, elapsedMs: restored.elapsedMs }, navigation, restored)[0];
+  expect(reloaded.position).toEqual(actor.position);
+  expect(reloaded.activity).toBe('sit');
+});
