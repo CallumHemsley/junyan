@@ -1,0 +1,10 @@
+# Vegetation shadow ownership
+
+Active correction from root's inspected c5243d5 pond-deck/moon-bridge/evening captures. Landscape drawLandscapeProp emits .4-alpha diamond shadows in depth-sorted objects. Atmosphere emits a phase-offset quadrilateral and additional .24 contact square. Both may shade the same tree; exact contribution needs isolated capture, not guessing from the combined screenshot.
+
+- Landscape0084 owns small grounded trunk/foot contact shapes in drawMap ground pass. Remove broad vegetation diamonds from object drawing. Contact radius follows trunk/root footprint, not crown. Preserve inherited alpha with multiplication and save/restore.
+- Atmosphere0086 owns phase-driven canopy cast shapes in ground pass. Use deterministic organic species-appropriate outlines/extents for tree, willow, bamboo and mature-tree; remove its second vegetation contact square. Existing map-hooks classification must include mature-tree. Preserve raw lit colours, inherited alpha and authoritative phase/time.
+- Foundation0078 keeps both below actors and bridge/deck objects. A raised shadow receiver needs explicit support; never render ground shade over a bridge by moving it into object/foreground passes. Map owners retain guard/prop ownership. No duplicate clock or extra renderer.
+- Architecture/rocks retain useful grounding through explicit ownership; this is not a blanket shadow deletion or another request for tree count. Artists and atmosphere compare canopy footprint shape rather than generic rectangles.
+
+Capture same camera, input state and elapsed time at pond-deck and moon-bridge in morning/evening with four diagnostic modes: neither shadow layer, contact only, cast only, combined. Keep toggles out of product UI. Record commit/phase and inspect opacity overlap, organic outline, grounded roots, actor/bridge order. Automated checks cover zero vegetation shadow calls in object pass, one cast hook per canonical prop, mature-tree coverage and inherited alpha restoration. Final combined production recapture required after owner integration. Full visual goal remains ACTIVE.
