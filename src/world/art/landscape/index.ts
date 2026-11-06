@@ -7,6 +7,20 @@ function polygon(ctx: CanvasRenderingContext2D, view: WorldRenderView, points: {
   ctx.closePath(); ctx.fill();
 }
 
+export function drawContactShadows(ctx:CanvasRenderingContext2D,map:Parameters<DrawMap>[1],view:WorldRenderView){
+  const origin=view.project({x:0,y:0}),axis=view.project({x:1,y:0}),unit=Math.abs(axis.x-origin.x);
+  ctx.save();ctx.globalAlpha*=.2;ctx.fillStyle=view.shadeColor?.('#394f3c')??'#394f3c';
+  for(const prop of map.props){
+    if(!['tree','mature-tree','willow','bamboo','rock','bench'].includes(prop.kind))continue;
+    const p=view.project(prop.position);
+    if(p.x < -unit*2 || p.y < -unit || p.x > view.width+unit*2 || p.y > view.height+unit)continue;
+    const radius=prop.kind==='mature-tree'?.65:prop.kind==='bamboo'?.6:prop.kind==='rock'?Math.min(.5,prop.width*.18):.26;
+    const spots=prop.kind==='bench'?[-.8,.8]:[0];
+    for(const offset of spots){ctx.beginPath();ctx.ellipse(Math.round(p.x+offset*unit),Math.round(p.y+unit*.04),unit*radius,unit*radius*.32,0,0,Math.PI*2);ctx.fill();}
+  }
+  ctx.restore();
+}
+
 export const drawMap: DrawMap = (ctx, map, view) => {
   if (map.id !== 'park' && map.id !== 'riverbank') return;
   const origin = view.project({x:0,y:0}), axis = view.project({x:1,y:0});
@@ -29,8 +43,17 @@ export const drawMap: DrawMap = (ctx, map, view) => {
     const forestFloor=()=>{
       for(const patch of map.props.filter(p=>p.layer==='ground')){
         const {x,y}=patch.position,w=patch.width,h=patch.height;
-        const points=[[-.45,0],[-.5,-.15],[-.31,-.27],[-.34,-.43],[-.12,-.5],[.08,-.42],[.25,-.5],[.43,-.25],[.5,-.14],[.42,.04],[.48,.2],[.25,.3],[.18,.47],[-.08,.5],[-.22,.35],[-.4,.35],[-.37,.15]].map(([dx,dy])=>({x:x+dx*w,y:y+dy*h}));
-        polygon(ctx,view,points,Number(patch.variant)%2?'#75815b':'#607b55');
+        const at=view.project(patch.position);
+        if(at.x < -unit*w || at.y < -unit*h || at.x > view.width+unit*w || at.y > view.height+unit*h)continue;
+        for(let iy=0;iy<11;iy++)for(let ix=0;ix<13;ix++){
+          const dx=(ix/12-.5)*w,dy=(iy/10-.5)*h;
+          const radius=Math.hypot(dx/(w*.5),dy/(h*.5));
+          const n=(ix*37+iy*61+Number(patch.variant)*17)%97;
+          if(radius>1||n/97>Math.max(0,1-radius*.9)*.78)continue;
+          const p=view.project({x:x+dx+(n%3)*.06,y:y+dy});
+          ctx.fillStyle=shade(n%2?'#78915d':'#8a9c66');
+          ctx.fillRect(Math.round(p.x),Math.round(p.y),Math.max(2,unit*.32),Math.max(1,unit*.12));
+        }
         for(let i=0;i<37;i++){
           const dx=((i*37)%97/97-.5)*w*.7,dy=((i*61)%97/97-.5)*h*.7,p=view.project({x:x+dx,y:y+dy});
           ctx.fillStyle=shade(i%3?'#a69e66':'#647753');ctx.fillRect(Math.round(p.x),Math.round(p.y),Math.max(1,unit*.13),Math.max(1,unit*.06));
@@ -75,6 +98,7 @@ export const drawMap: DrawMap = (ctx, map, view) => {
         }
       }
     }
+    drawContactShadows(ctx,map,view);
   }
 };
 

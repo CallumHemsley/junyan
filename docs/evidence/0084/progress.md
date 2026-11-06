@@ -83,3 +83,9 @@ Reader approaches: (29,26.9) outside the reading bench collider, and (54,18.5) a
 Actor producer support is published at `codex/0085-characters` 538a115 with canonical IDs and existing walk/idle/interact plus sit/work poses and book/broom/umbrella silhouettes. The fetched life producer e110f6e still lacks the new canonical profiles. No substitute profile or fake people are added here. Real resident task/motion acceptance waits for 0087's profiles and foundation assembly. Root/coordinator should relay these exact hooks to 0087/0078.
 
 The shoreline loop now includes a closer footpath and an actual water-view bench/reed nook at (51,43), keeping its stable landmark ID. `walk-nook/` records ordinary player travel to this reachable location; the updated river recording also passed. Background resident motion proof is separate and still pending producer integration. Goal ACTIVE.
+
+## Shadow review response
+
+Root accepted the improved mature scale/clusters provisionally and flagged stacked geometric shadows. Landscape has removed all object-pass diamond shadows. Small contact ellipses now draw in the ground pass; inherited alpha is multiplied/restored. Solid woodland-floor cards are replaced by broken moss/leaf marks. `shadow-boundary.md` and the isolated contact/cast/combined image identify the remaining atmosphere-owned cast quadrilateral plus duplicate contact rectangle. Atmosphere still needs organic single casts and mature-tree recognition; do not call the combined result accepted.
+
+Canonical actor producer 538a115 is merged unchanged. Life producer f95f253 now publishes the canonical unvoiced resident profiles; it will be acquired next for actual park/river task-and-walk proof. No background resident is claimed visible from the earlier profile-missing checkpoint.

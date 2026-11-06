@@ -1,0 +1,11 @@
+{
+  "sourceHead": "23be251185d989f7b97d36391a8f6478344b1a3b",
+  "artifacts": [
+    {
+      "path": "/workspace/junyan/docs/evidence/0078/docs/evidence/0078/journey-results/journey-ordinary-opening-p-f134d-connected-travel-and-reload-desktop/trace.zip",
+      "bytes": 460714980,
+      "sha256": "801fbef721430baa7a14222213eb5500a5291ae82914c112bc128e5ab3905ee8",
+      "storage": "cloud checkout only; intentionally not published to GitHub because trace exceeds its file limit"
+    }
+  ]
+}
