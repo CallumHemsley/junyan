@@ -94,6 +94,9 @@ export function frame({appearance={},direction=0,phase=0,action='idle',reducedMo
       elbow[0]=root[0];elbow[1]=shoulder+6;
       hand[0]=center+(near?4:-4);hand[1]=handRestHeight===undefined?shoulder+3:38-Math.round(handRestHeight*pixelsPerWorldUnit);
     }
+    if(!attachedSeat&&handRestHeight!==undefined&&action==='interact') {
+      elbow[1]=shoulder+4;hand[1]=38-Math.round(handRestHeight*pixelsPerWorldUnit);
+    }
     if(acting&&!walking&&role)hand[1]-=1;
     if(action==='react'&&near){elbow[1]-=3;hand[1]-=7;}
     if(acting&&!walking&&!occupied&&!working&&near){hand[0]-=3;hand[1]-=4;}

@@ -22,6 +22,12 @@ describe('explicit whole-human calibration study',()=>{
    expect(metrics.feet.every(foot=>Math.abs(foot.height)<=tolerance)).toBe(true);
   }
  });
+ it('reaches an explicit work surface in world units at both calibrations',()=>{
+  for(const pixelsPerWorldUnit of [18,15])for(const actor of actorCatalog){
+   const sample=sampleActor({...base,characterId:actor.id,pixelsPerWorldUnit,posture:'work',handRestHeight:1.63});
+   expect(Math.abs(actorContactMetrics(sample).hand.height-1.63)).toBeLessThanOrEqual(1/pixelsPerWorldUnit);
+  }
+ });
  it('keeps default18 and rejects invalid calibration instead of producing corrupt draw commands',()=>{
   expect(sampleActor(base).pixelsPerWorldUnit).toBe(18);
   expect(()=>sampleActor({...base,pixelsPerWorldUnit:0})).toThrow(RangeError);
