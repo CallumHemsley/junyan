@@ -47,6 +47,16 @@ describe('residential object composition', () => {
     const slabs = topFaces.filter(face => /^rgb\((165|167|169|171|173|175|177),/.test(face.colour));
     expect(slabs.length).toBeGreaterThan(100);
     expect(slabs.every(face => Math.max(...face.points.map(p => p.x)) - Math.min(...face.points.map(p => p.x)) <= 100)).toBe(true);
+    const sample = {x: 1400, y: 3310};
+    const covering = topFaces.filter(({points}) => {
+      let inside = false;
+      for (let i = 0, j = points.length - 1; i < points.length; j = i++) {
+        const a = points[i], b = points[j];
+        if ((a.y > sample.y) !== (b.y > sample.y) && sample.x < (b.x - a.x) * (sample.y - a.y) / (b.y - a.y) + a.x) inside = !inside;
+      }
+      return inside;
+    });
+    expect(covering.at(-1)?.colour, 'the pale lower landing covers the recessed well stripe').toBe('rgb(167,170,155)');
   });
   it('never paints or registers props for an unowned map', () => {
     const context = new Proxy({} as CanvasRenderingContext2D, { get() { throw new Error('Residential art painted an unowned map'); } });
