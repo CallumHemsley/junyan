@@ -9,7 +9,7 @@ import {findPath} from "../src/world/geometry";
 test.use({ launchOptions: { args: ["--mute-audio"] } });
 const diagnostics = new WeakMap<Page, string[]>();
 
-async function activate(page: Page, control: Locator) {
+async function focusControl(page: Page, control: Locator) {
   await expect(control).toBeVisible();
   await expect(control).toHaveAccessibleName(/\S/);
   for (let step = 0; step < 80; step++) {
@@ -17,6 +17,9 @@ async function activate(page: Page, control: Locator) {
     await page.keyboard.press("Tab");
   }
   await expect(control).toBeFocused();
+}
+async function activate(page: Page, control: Locator) {
+  await focusControl(page,control);
   await page.keyboard.press("Enter");
 }
 
@@ -32,10 +35,11 @@ async function snapshot(page: Page) {
 async function approach(page: Page, anchorId: string) {
   await closeActivity(page);
   const target=restaurantMap.anchors.find(anchor=>anchor.id===anchorId)!;
-  const viewport=page.getByTestId('world-viewport');await viewport.focus();
+  const viewport=page.getByTestId('world-viewport');await focusControl(page,viewport);
   for(let step=0;step<250;step++){
     const position=(await savedGame(page)).world!.position;
-    if(Math.hypot(position.x-target.position.x,position.y-target.position.y)<.55)break;
+    if(Math.hypot(position.x-target.position.x,position.y-target.position.y)<target.radius-.25)break;
+    if(!(await viewport.evaluate(element=>element===document.activeElement)))await focusControl(page,viewport);
     const next=findPath(restaurantMap,position,target.position)[0];expect(next).toBeDefined();
     const dx=next.x-position.x,dy=next.y-position.y;
     const horizontal=dx-dy,vertical=dx+dy;
@@ -44,6 +48,8 @@ async function approach(page: Page, anchorId: string) {
     await page.waitForTimeout(Math.max(45,Math.min(120,Math.hypot(dx,dy)/5*1000)));
     for(const key of keys)await page.keyboard.up(key);
   }
+  const arrived=(await savedGame(page)).world!.position;
+  expect(Math.hypot(arrived.x-target.position.x,arrived.y-target.position.y),`${anchorId}: ${JSON.stringify(arrived)}`).toBeLessThan(target.radius);
   const trigger=page.locator(`[data-world-anchor="${anchorId}"]`);
   for(let n=0;n<20&&!(await trigger.isVisible());n++)await activate(page,page.locator('.world-target-switch'));
   await activate(page,trigger);
@@ -101,6 +107,7 @@ test("day summary blocks movement and interaction shortcuts", async ({ page }) =
   await page.keyboard.press("e");
   await expect(page.getByRole("dialog", { name: "今日小结" })).toBeVisible();
   await expect(page.getByRole("button", { name: "明天见" })).toBeFocused();
+  await focusControl(page,page.getByRole("dialog",{name:"今日小结"}).locator("button").first());
   await page.keyboard.press("Shift+Tab");
   await expect(page.getByRole("button", { name: "出去走走" })).toBeFocused();
   await page.keyboard.press("Escape");
@@ -117,7 +124,7 @@ test("table and kitchen close back to their local keyboard triggers after walkin
 });
 
 test("modified arrow shortcuts do not move the waiter", async ({ page }) => {
-  await page.getByTestId("world-viewport").focus();
+  await focusControl(page,page.getByTestId("world-viewport"));
   const before = (await savedGame(page)).world!.position;
   for (const modifier of ["Control", "Alt", "Meta"]) {
     await page.keyboard.down(modifier);await page.keyboard.down("ArrowRight");await page.waitForTimeout(150);await page.keyboard.up("ArrowRight");await page.keyboard.up(modifier);

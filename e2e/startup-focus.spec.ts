@@ -49,14 +49,14 @@ test('a queued database open without a checkpoint has a bounded playable fallbac
 });
 test('a timed-out old read cannot replace new gameplay when it finally completes',async({page,context})=>{
   await page.goto(url());await expect(page.getByRole('button',{name:'开门迎客'})).toBeVisible();await page.waitForTimeout(700);
-  // Delay only native completion delivery, after a real read has captured its snapshot.
+  // Hold native completion until the physical walk and new lookup finish, after a real read captures its snapshot.
   await context.addInitScript(()=>{
     const original=IDBDatabase.prototype.transaction;const descriptor=Object.getOwnPropertyDescriptor(IDBTransaction.prototype,'oncomplete')!;let next=true;
     IDBDatabase.prototype.transaction=function(...args:Parameters<typeof original>){
       const transaction=original.apply(this,args);
       if(next&&transaction.mode==='readonly'){
         next=false;let assigned:unknown;
-        Object.defineProperty(transaction,'oncomplete',{get:()=>assigned,set(handler){assigned=handler;descriptor.set!.call(transaction,typeof handler==='function'?function(event:Event){setTimeout(()=>handler.call(transaction,event),2500)}:handler)}});
+        Object.defineProperty(transaction,'oncomplete',{get:()=>assigned,set(handler){assigned=handler;descriptor.set!.call(transaction,typeof handler==='function'?function(event:Event){(window as Window & {__RELEASE_OLD_READ__?:()=>void}).__RELEASE_OLD_READ__=()=>handler.call(transaction,event)}:handler)}});
       }
       return transaction;
     };
@@ -64,7 +64,8 @@ test('a timed-out old read cannot replace new gameplay when it finally completes
   await page.reload();await expect(page.getByRole('button',{name:'开门迎客'})).toBeVisible({timeout:2200});
   await page.getByRole('button',{name:'开门迎客'}).click();await interactAt(page, "restaurant.table-1");
   await page.locator('.world-context').getByRole('button',{name:'包子',exact:true}).click();await page.keyboard.press('Escape');await page.keyboard.press('Escape');
-  await page.waitForTimeout(1500);
+  await expect.poll(()=>page.evaluate(()=>typeof (window as Window & {__RELEASE_OLD_READ__?:()=>void}).__RELEASE_OLD_READ__)).toBe('function');
+  await page.evaluate(()=>(window as Window & {__RELEASE_OLD_READ__?:()=>void}).__RELEASE_OLD_READ__!());
   await page.getByRole('button',{name:/^本子/}).click();await expect(page.locator('.journal-list')).toContainText('包子');
 });
 test('real keyboard focus returns to the opener across nested and replacement dialogs',async({page},info)=>{
