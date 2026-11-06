@@ -1,10 +1,9 @@
 import { test, expect, type Page } from "@playwright/test";
-import data from "../src/content/content.json" with { type: "json" };
+import { content } from "../src/content";
 import { KITCHEN, TABLES, type Action, type Content, type GameState } from "../src/contracts";
 import { createGame, getOrder, orderTotal } from "../src/game";
 import { seedDayOne, withSkip } from "./opening";
 
-const content = data as Content;
 const previewURL = process.env.JUNYAN_PREVIEW_URL || "http://127.0.0.1:5177/junyan/";
 
 async function stored(page: Page) {
