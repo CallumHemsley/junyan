@@ -3,7 +3,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const root = process.cwd();
-const out = path.join(root, 'output/verification/0087/browser');
+const out = path.join(root, 'output/verification/world/0087/browser');
 await mkdir(out, { recursive: true });
 const browser = await chromium.launch({ executablePath: '/usr/bin/chromium', headless: true, args: ['--no-sandbox', '--mute-audio'] });
 const reports = [];

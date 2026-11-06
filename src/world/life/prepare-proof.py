@@ -6,7 +6,7 @@ import subprocess
 import tarfile
 
 root = Path(__file__).resolve().parents[3]
-out = root / 'output/verification/0087'
+out = root / 'output/verification/world/0087'
 out.mkdir(parents=True, exist_ok=True)
 refs = {
     'town': ('0079-town-street', 'town/map.json'),
