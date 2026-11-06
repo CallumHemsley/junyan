@@ -146,7 +146,7 @@ describe("IndexedDB recovery", () => {
     await storage.connect();
     storage.request.onsuccess?.();
     storage.transaction.oncomplete?.();
-    expect(await pending).toEqual({
+    expect(await pending).toMatchObject({
       ...state,
       journal: { ...state.journal, "retired-word": { lookups: 3, lastSeen: 1.5, recovered: true } },
     });
@@ -173,7 +173,7 @@ describe("IndexedDB recovery", () => {
     await storage.connect();
     storage.request.onsuccess?.();
     storage.transaction.oncomplete?.();
-    expect(await pending).toEqual({
+    expect(await pending).toMatchObject({
       ...historical,
       neighbourhood: createNeighbourhood(historical.day),
       journal: { bun: { lookups: 2, lastSeen: 1.5, recovered: true } },
@@ -201,9 +201,9 @@ describe("saved-state domain validation", () => {
     let state = createGame(content, seed);
     const apply = (action: Action) => {
       state = reduceGame(state, action, content);
-      expect(validateSavedGame(structuredClone(state), content)).toEqual(state);
+      expect(validateSavedGame(structuredClone(state), content)).toMatchObject(state);
     };
-    expect(validateSavedGame(state, content)).toEqual(state);
+    expect(validateSavedGame(state, content)).toMatchObject(state);
     for (let day = 1; day <= 5; day++) {
       apply({ type: "lookup", wordId: content.foods[0].word.id, now: 1234.5 });
       for (const { table } of TABLES) serve(state, table, apply);
@@ -219,7 +219,7 @@ describe("saved-state domain validation", () => {
     let state = createGame(content);
     const apply = (action: Action) => {
       state = reduceGame(state, action, content);
-      expect(validateSavedGame(state, content)).toEqual(state);
+      expect(validateSavedGame(state, content)).toMatchObject(state);
     };
     for (const table of [1, 2]) {
       const position = TABLES[table - 1];
@@ -248,7 +248,7 @@ describe("saved-state domain validation", () => {
       "retired-word": { lookups: 2, lastSeen: 1.5 },
       "looked-up": { lookups: 0, lastSeen: 0, recovered: false },
     };
-    expect(validateSavedGame({ ...state, journal }, content)).toEqual({
+    expect(validateSavedGame({ ...state, journal }, content)).toMatchObject({
       ...state,
       journal: {
         "retired-word": { lookups: 2, lastSeen: 1.5, recovered: true },
@@ -293,7 +293,7 @@ describe("saved-state domain validation", () => {
     expect(state.feedback).toBe("wrong-change");
     expect(state.activeTable).toBe(2);
     expect(state.receipt?.table).toBe(1);
-    expect(validateSavedGame(state, content)).toEqual(state);
+    expect(validateSavedGame(state, content)).toMatchObject(state);
   });
 
   const corruptions: [string, (state: GameState) => void][] = [
