@@ -1,4 +1,4 @@
-import type { DrawMap, WorldRenderView } from '../../render-contract';
+import type { DrawMap, WorldRenderView, WorldArtModule, WorldRenderObject } from '../../render-contract';
 import { drawLandscapeProp, landscapeMaterialColor } from './draw';
 
 function polygon(ctx: CanvasRenderingContext2D, view: WorldRenderView, points: {x:number;y:number}[], color: string, z = 0) {
@@ -46,30 +46,34 @@ export const drawMap: DrawMap = (ctx, map, view) => {
         }
       }
     }
-  } else {
-    const playerDepth=view.playerPosition.x+view.playerPosition.y;
-    const foreground=view.pass==='foreground';
-    for(const prop of [...map.props].sort((a,b)=>a.position.x+a.position.y-b.position.x-b.position.y)) {
-      if((prop.position.x+prop.position.y>playerDepth)!==foreground)continue;
-      const p=view.project(prop.position);
-      if(p.x < -unit*6 || p.y < -unit*2 || p.x > view.width+unit*6 || p.y > view.height+unit*8)continue;
-      ctx.save();
-      if(foreground && ['tree','bamboo','willow'].includes(prop.kind) && Math.hypot(prop.position.x-view.playerPosition.x,prop.position.y-view.playerPosition.y)<3.5)ctx.globalAlpha=.48;
-      drawLandscapeProp(ctx,prop,(x,y,z=0)=>view.project({x,y},z),unit,view.elapsedMs,view.reducedMotion);
-      ctx.restore();
-    }
-    // Rails frame each crossing while leaving the playable deck clear.
-    for(const terrain of map.terrain.filter(t=>t.material==='bridge')) {
-      const r=terrain.rect;
-      for(const y of [r.y,r.y+r.height]) {
-        if((r.x+r.width/2+y>playerDepth)!==foreground)continue;
-        const a=view.project({x:r.x,y},.8),b=view.project({x:r.x+r.width,y},.8);
-        ctx.strokeStyle='#756c50';ctx.lineWidth=Math.max(1,unit*.09);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
-        for(let x=r.x+.5;x<r.x+r.width;x+=2.5) {
-          const foot=view.project({x,y}),top=view.project({x,y},1);
-          ctx.strokeStyle='#b8a376';ctx.beginPath();ctx.moveTo(foot.x,foot.y);ctx.lineTo(top.x,top.y);ctx.stroke();
-        }
-      }
+  }
+};
+
+export const renderObjects: NonNullable<WorldArtModule['renderObjects']> = (map, view) => {
+  if(map.id!=='park'&&map.id!=='riverbank')return [];
+  const objects:WorldRenderObject[]=map.props.map(prop=>{
+    const occlusion=map.occluders.find(o=>o.id===prop.id);
+    return {
+      id:prop.id,position:prop.position,
+      occlusion:occlusion?{...occlusion,fadeWhenPlayerBehind:occlusion.fadeWhenPlayerBehind&&Math.hypot(prop.position.x-view.playerPosition.x,prop.position.y-view.playerPosition.y)<3.5}:undefined,
+      draw(ctx,current){
+        const p=current.project(prop.position),origin=current.project({x:0,y:0}),axis=current.project({x:1,y:0}),unit=Math.abs(axis.x-origin.x);
+        if(p.x < -unit*6 || p.y < -unit*2 || p.x > current.width+unit*6 || p.y > current.height+unit*8)return;
+        drawLandscapeProp(ctx,prop,(x,y,z=0)=>current.project({x,y},z),unit,current.elapsedMs,current.reducedMotion);
+      },
+    };
+  });
+  for(const terrain of map.terrain.filter(t=>t.material==='bridge')) {
+    const r=terrain.rect;
+    for(const y of [r.y,r.y+r.height])for(let x=r.x+.5;x<r.x+r.width;x+=2.5) {
+      const end=Math.min(x+2.5,r.x+r.width);
+      objects.push({id:`${terrain.id}.rail-${x}-${y}`,position:{x:(x+end)/2,y},draw(ctx,current){
+        const a=current.project({x,y},.8),b=current.project({x:end,y},.8),foot=current.project({x,y}),top=current.project({x,y},1);
+        const origin=current.project({x:0,y:0}),axis=current.project({x:1,y:0}),unit=Math.abs(axis.x-origin.x);
+        ctx.lineWidth=Math.max(1,unit*.09);ctx.strokeStyle='#756c50';ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+        ctx.strokeStyle='#b8a376';ctx.beginPath();ctx.moveTo(foot.x,foot.y);ctx.lineTo(top.x,top.y);ctx.stroke();
+      }});
     }
   }
+  return objects;
 };

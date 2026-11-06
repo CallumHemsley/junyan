@@ -18,7 +18,7 @@ try {
   await page.keyboard.down('ArrowRight');await page.keyboard.down('ArrowDown');await page.waitForTimeout(1600);await page.keyboard.up('ArrowRight');await page.keyboard.up('ArrowDown');
   const after=await page.evaluate(()=>window.__LANDSCAPE_PREVIEW__.getState());
   if(after.blocked||after.player.x<before.player.x+5)throw Error('Prototype bridge keyboard traversal did not advance');
-  await page.mouse.click(viewport.width/2+45,viewport.height*.58+30);await page.waitForTimeout(500);
+  if(device==='phone')await page.touchscreen.tap(viewport.width/2+45,viewport.height*.58+30);else await page.mouse.click(viewport.width/2+45,viewport.height*.58+30);await page.waitForTimeout(500);
   const pointer=await page.evaluate(()=>window.__LANDSCAPE_PREVIEW__.getState());
   const bytes=await page.evaluate(()=>new Promise(resolve=>{const {recorder,chunks}=window.__recording;recorder.onstop=async()=>resolve(Array.from(new Uint8Array(await new Blob(chunks,{type:'video/webm'}).arrayBuffer())));recorder.stop();}));
   await writeFile(`${output}/${device}-bridge-walk.webm`,new Uint8Array(bytes));

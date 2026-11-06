@@ -3,7 +3,7 @@ import { mapDefinitions } from '../../maps/landscape';
 import { worldMapSchema, type Point } from '../../schema';
 import { canStand, movePlayer, findPath } from '../../geometry';
 import { project, pointerGround, type Camera } from '../../camera';
-import { drawMap } from './index';
+import { paintWorld } from '../../painter';
 const canvas=document.querySelector('canvas')!;
 const ctx=canvas.getContext('2d')!;
 const maps=mapDefinitions.map(raw=>worldMapSchema.parse(raw));
@@ -25,10 +25,7 @@ function paint(time:number){
   if(length)player=movePlayer(map,player,{x:dx/length*dt*7,y:dy/length*dt*7});
   ctx.fillStyle='#8fa68a';ctx.fillRect(0,0,canvas.width,canvas.height);
   const view={project:(p:Point,z=0)=>project(p,camera(),z),elapsedMs:time,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches,playerPosition:player,width:canvas.width,height:canvas.height};
-  drawMap(ctx,map,{...view,pass:'ground'});drawMap(ctx,map,{...view,pass:'objects'});
-  const p=project(player,camera());
-  ctx.fillStyle='#465d4a66';ctx.fillRect(p.x-5,p.y-1,11,4);ctx.fillStyle='#4d574d';ctx.fillRect(p.x-4,p.y-9,3,9);ctx.fillRect(p.x+2,p.y-9,3,9);ctx.fillStyle='#eee0b6';ctx.fillRect(p.x-5,p.y-19,11,11);ctx.fillStyle='#dfb187';ctx.fillRect(p.x-4,p.y-27,9,9);ctx.fillStyle='#4b4437';ctx.fillRect(p.x-5,p.y-29,11,5);
-  drawMap(ctx,map,{...view,pass:'foreground'});
+  paintWorld(ctx,map,{...view,pass:'ground'},'east',!!length,camera().scale);
  }
  requestAnimationFrame(paint);
 }
