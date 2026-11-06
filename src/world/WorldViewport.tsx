@@ -72,7 +72,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
    const dpr=1,width=Math.ceil(viewport.width/2),height=Math.ceil(viewport.height/2);
    if(element.width!==Math.round(width*dpr)||element.height!==Math.round(height*dpr)){element.width=Math.round(width*dpr);element.height=Math.round(height*dpr);}
    const camera=cameraForMap(map.bounds,current.state.position,width,height,viewport.width<600?11:15,viewport.width<800?interactionInset/2:0,viewport.width>=800?interactionWidth/2:0);cameraRef.current=camera;
-   if(now-lastDraw>=1000/30||preference.matches){context.setTransform(dpr,0,0,dpr,0,0);paintWorld(context,map,{project:(p,z)=>project(p,camera,z),elapsedMs:preference.matches?0:elapsedMs,reducedMotion:preference.matches,playerPosition:current.state.position,width,height,pass:"ground"},current.state.facing,moving,camera.scale,current.game,current.state,actorMotion.current);lastDraw=now;element.dataset.rendered="true";}
+   if(now-lastDraw>=1000/30){context.setTransform(dpr,0,0,dpr,0,0);paintWorld(context,map,{project:(p,z)=>project(p,camera,z),elapsedMs,reducedMotion:preference.matches,playerPosition:current.state.position,width,height,pass:"ground"},current.state.facing,moving,camera.scale,current.game,current.state,actorMotion.current);lastDraw=now;element.dataset.rendered="true";}
    frame=requestAnimationFrame(tick);
   };
   const refresh=()=>{last=0;keys.current.clear();if(document.hidden){cancelAnimationFrame(frame);frame=0;}else if(!frame)frame=requestAnimationFrame(tick);};
