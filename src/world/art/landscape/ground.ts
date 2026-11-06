@@ -54,6 +54,57 @@ function leafCluster(ctx:CanvasRenderingContext2D,view:WorldRenderView,x:number,
  ctx.restore();
 }
 function inView(view:WorldRenderView,p:Point,r=8){const q=view.project(p),o=view.project({x:0,y:0}),a=view.project({x:1,y:0}),u=Math.abs(a.x-o.x);return q.x>-u*r&&q.y>-u*r&&q.x<view.width+u*r&&q.y<view.height+u*r;}
+
+function pavingStone(ctx:CanvasRenderingContext2D,view:WorldRenderView,x:number,y:number,w:number,h:number,variant:number){
+ const points=[{x:x-w*.46,y:y-h*.36},{x:x+w*.27,y:y-h*.48},{x:x+w*.48,y:y-h*.21},{x:x+w*.43,y:y+h*.35},{x:x-w*.28,y:y+h*.47},{x:x-w*.5,y:y+h*.16}];
+ shape(ctx,view,points,'#626d60');
+ shape(ctx,view,points.map(p=>({x:x+(p.x-x)*.82,y:y+(p.y-y)*.76-.035})),['#aaa88b','#92977e','#b8b197','#9ea38d'][variant%4]);
+ shape(ctx,view,[points[0],points[1],{x:x+w*.2,y:y-h*.25},{x:x-w*.36,y:y-h*.15}],'#ccc4a4');
+ if(variant%3===0)shape(ctx,view,[{x:x-w*.13,y:y-h*.3},{x:x+w*.02,y:y-h*.06},{x:x-w*.03,y:y+h*.15},{x:x+w*.07,y:y-h*.02}], '#777e69');
+}
+
+/** Original wear follows the existing wash → crossing → ferry route, inside the dry mask. */
+function riverbankCraft(ctx:CanvasRenderingContext2D,view:WorldRenderView){
+ if(inView(view,{x:37.5,y:73.4},9)){
+  shape(ctx,view,[{x:32.7,y:71.7},{x:34.8,y:69.8},{x:37.3,y:70.4},{x:39.2,y:71.5},{x:42.1,y:72.6},{x:43,y:75.1},{x:41,y:77.4},{x:38.4,y:77},{x:36.1,y:75.8},{x:33.6,y:74.3}], '#77794f');
+  shape(ctx,view,[{x:33.6,y:72},{x:35.1,y:70.7},{x:37.5,y:71.5},{x:40.4,y:72.5},{x:42.1,y:74.8},{x:40.7,y:76.5},{x:38.2,y:76},{x:36,y:74.6}], '#a49b72');
+  for(let row=0;row<7;row++)for(let col=0;col<8;col++){
+   const x=34.4+col*.98+(row%2)*.4,y=71.4+row*.82;
+   if(Math.hypot((x-38)/4.3,(y-73.8)/2.8)>1||col===0&&row%3===0)continue;
+   pavingStone(ctx,view,x,y,.94+(col%3)*.06,.78,(row*7+col)%4);
+  }
+  for(const [x,y,style]of [[33.7,72,0],[36,70.3,1],[37.8,76.8,2],[42.1,76.1,0],[41.9,72.3,1]])leafCluster(ctx,view,x,y,style);
+ }
+ // A rooted verge connects the domestic terrace to the timber approach without tiling the lawn.
+ for(const [i,y]of [59.2,62.7,66.3,69.3].entries())if(inView(view,{x:31,y},6)){
+  shape(ctx,view,[{x:27.8,y:y-2.5},{x:29.7,y:y-2.1},{x:30.1,y:y-.5},{x:29.4,y:y+1.4},{x:28.7,y:y+2.5},{x:26.9,y:y+1.9},{x:27.5,y}],i%2?'#718751':'#758a53');
+  shape(ctx,view,[{x:32.1,y:y-1.7},{x:33.2,y:y-2.3},{x:34.8,y:y-1.2},{x:34,y:y+.5},{x:32.8,y:y+2},{x:32.1,y:y+1.3},{x:32.6,y}], '#798b55');
+  for(let j=0;j<4;j++){
+   const x=j%2?32.5:29.4,cy=y-1.6+j*.87;
+   island(ctx,view,x,cy,.9,.4,j%2?'#b0a176':'#8b8058',i+j);
+   leafCluster(ctx,view,x+(j%2?.5:-.7),cy+.4,(i+j)%3);
+  }
+ }
+ if(inView(view,{x:59.9,y:60.1},10)){
+  shape(ctx,view,[{x:53.1,y:59.4},{x:55,y:58.4},{x:58.2,y:58.7},{x:60.3,y:56.7},{x:62.5,y:56.8},{x:65.7,y:58.5},{x:66,y:60.7},{x:64.4,y:63.6},{x:61.7,y:63.3},{x:59.6,y:64.1},{x:56.8,y:62.8},{x:54.1,y:61.9}], '#7c7750');
+  shape(ctx,view,[{x:53.8,y:59.8},{x:56.1,y:59.2},{x:59.3,y:59.6},{x:61.3,y:57.3},{x:63.3,y:57.9},{x:65,y:60.2},{x:63.3,y:62.6},{x:60,y:62.9},{x:57.3,y:62.3},{x:55.1,y:61.4}], '#a6976c');
+  for(let row=0;row<6;row++)for(let col=0;col<5;col++){
+   const x=61+col*.84+(row%2)*.3,y=57.3+row*.85;
+   if(Math.hypot((x-62.3)/2.7,(y-59.8)/3)>1.1)continue;
+   pavingStone(ctx,view,x,y,.82,.75,col+row*3);
+  }
+  // Two broken skid lines explain the hauled-out hull on its real dry bank.
+  for(let i=0;i<5;i++)for(const side of [-.45,.45]){
+   const x=54.8+i*.66,y=60.7+side;
+   shape(ctx,view,[{x,y},{x:x+.5,y:y-.03},{x:x+.52,y:y+.07},{x:x-.1,y:y+.12}], '#7d724e');
+  }
+  for(const [x,y,style]of [[54.1,58.9,1],[54.5,62.1,0],[58.7,63.4,2],[63.2,63,0],[65.5,59.9,1],[60.3,56.5,2]])leafCluster(ctx,view,x,y,style);
+ }
+ for(const [x,y]of [[30.1,55],[31.4,59.1],[59.6,55.2],[62.1,58.8]])if(inView(view,{x,y},4)){
+  island(ctx,view,x,y,3.4,2.7,'#788651');
+  for(let n=0;n<3;n++)pavingStone(ctx,view,x+(n-1)*.72,y+(n%2)*.42,1,.7,n);
+ }
+}
 export function drawLandscapeGround(ctx:CanvasRenderingContext2D,map:Map,view:WorldRenderView,stage:'underlay'|'verges'){
  ctx.save();dryClip(ctx,map,view);
  const composed=sites[map.id]??[];
@@ -108,6 +159,7 @@ export function drawLandscapeGround(ctx:CanvasRenderingContext2D,map:Map,view:Wo
     if(i!==2)island(ctx,view,x+dx,y+dy+.12,.65,.4,'#89915e',i);
    }
   }
+  if(map.id==='riverbank')riverbankCraft(ctx,view);
  }
  ctx.restore();
 }
