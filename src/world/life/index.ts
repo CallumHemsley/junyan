@@ -8,5 +8,4 @@ export { drawLifeActor, drawLifeReactions } from './render';
 export type { LifeView, ResidentDrawer } from './render';
 export { navigationFor } from './navigation';
 export { courtyardHabitats } from './habitats';
-export { LifePrompt } from './LifePrompt';
-export type { LifePromptProps } from './LifePrompt';
+export { lifeObjects } from './objects';

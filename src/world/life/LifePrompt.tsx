@@ -1,7 +1,6 @@
 import type { Line, Word } from '../../contracts';
 import WordToken from '../../WordToken';
 import FeatureLine from '../../neighbourhood/FeatureLine';
-import { wordState } from '../../recovery';
 import type { Affordance } from './model';
 import './prompt.css';
 
@@ -20,7 +19,7 @@ export function LifePrompt({ option, line, onActivate, onLookup, onPlay, recover
     {line && <div aria-live="polite"><FeatureLine line={line} onLookup={onLookup} onPlay={onPlay} recoveredWordIds={recoveredWordIds} freshWordIds={freshWordIds} /></div>}
     {option && <div className="life-prompt-action">
       <span>{option.label.tokens.map((word, index) => <WordToken key={`${word.id}-${index}`} word={word}
-        look={wordState(recoveredWordIds.includes(word.id) ? { recovered: true, lookups: 0, lastSeen: 0 } : undefined, freshWordIds.includes(word.id))} onLookup={onLookup} />)}</span>
+        look={freshWordIds.includes(word.id) ? 'dot' : recoveredWordIds.includes(word.id) ? 'plain' : 'fogged'} onLookup={onLookup} />)}</span>
       <button className="life-activate" type="button" data-life-action={option.id} aria-label={option.label.tokens.map(word => word.hanzi).join('')} onClick={() => onActivate(option.id)}>→</button>
     </div>}
   </div>;
