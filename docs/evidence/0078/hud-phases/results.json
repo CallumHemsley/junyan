@@ -1,0 +1,180 @@
+{
+  "sourceHead": "6f6329e",
+  "method": "Validated saved table-phase fixtures; actual physical anchor click and current App/HUD/renderer; not normal service journey",
+  "records": [
+    {
+      "device": "desktop",
+      "phase": "ordered",
+      "metrics": {
+        "panel": {
+          "x": 944,
+          "y": 644,
+          "width": 480,
+          "height": 272,
+          "top": 644,
+          "right": 1424,
+          "bottom": 916,
+          "left": 944
+        },
+        "player": {
+          "x": 975,
+          "y": 601.5
+        },
+        "playerCovered": false,
+        "footer": {
+          "color": "rgb(36, 29, 22)",
+          "background": "rgb(241, 234, 221)",
+          "width": 454,
+          "height": 44
+        },
+        "nestedButtons": 0
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "checkout",
+      "metrics": {
+        "panel": {
+          "x": 944,
+          "y": 547,
+          "width": 480,
+          "height": 369,
+          "top": 547,
+          "right": 1424,
+          "bottom": 916,
+          "left": 944
+        },
+        "player": {
+          "x": 975,
+          "y": 601.5
+        },
+        "playerCovered": true,
+        "footer": {
+          "color": "rgb(36, 29, 22)",
+          "background": "rgb(241, 234, 221)",
+          "width": 454,
+          "height": 44
+        },
+        "nestedButtons": 0
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "phase": "served",
+      "metrics": {
+        "panel": {
+          "x": 944,
+          "y": 578,
+          "width": 480,
+          "height": 338,
+          "top": 578,
+          "right": 1424,
+          "bottom": 916,
+          "left": 944
+        },
+        "player": {
+          "x": 975,
+          "y": 601.5
+        },
+        "playerCovered": true,
+        "footer": {
+          "color": "rgb(36, 29, 22)",
+          "background": "rgb(241, 234, 221)",
+          "width": 454,
+          "height": 44
+        },
+        "nestedButtons": 0
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "ordered",
+      "metrics": {
+        "panel": {
+          "x": 16,
+          "y": 492,
+          "width": 358,
+          "height": 272,
+          "top": 492,
+          "right": 374,
+          "bottom": 764,
+          "left": 16
+        },
+        "player": {
+          "x": 194.99999999999997,
+          "y": 280.5
+        },
+        "playerCovered": false,
+        "footer": {
+          "color": "rgb(36, 29, 22)",
+          "background": "rgb(241, 234, 221)",
+          "width": 332,
+          "height": 44
+        },
+        "nestedButtons": 0
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "checkout",
+      "metrics": {
+        "panel": {
+          "x": 16,
+          "y": 426.40625,
+          "width": 358,
+          "height": 337.59375,
+          "top": 426.40625,
+          "right": 374,
+          "bottom": 764,
+          "left": 16
+        },
+        "player": {
+          "x": 195,
+          "y": 243.203125
+        },
+        "playerCovered": false,
+        "footer": {
+          "color": "rgb(36, 29, 22)",
+          "background": "rgb(241, 234, 221)",
+          "width": 332,
+          "height": 44
+        },
+        "nestedButtons": 0
+      },
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "phase": "served",
+      "metrics": {
+        "panel": {
+          "x": 16,
+          "y": 426.40625,
+          "width": 358,
+          "height": 337.59375,
+          "top": 426.40625,
+          "right": 374,
+          "bottom": 764,
+          "left": 16
+        },
+        "player": {
+          "x": 195,
+          "y": 243.203125
+        },
+        "playerCovered": false,
+        "footer": {
+          "color": "rgb(36, 29, 22)",
+          "background": "rgb(241, 234, 221)",
+          "width": 332,
+          "height": 44
+        },
+        "nestedButtons": 0
+      },
+      "errors": []
+    }
+  ]
+}
