@@ -1,3 +1,5 @@
+import { restoreWorld } from "./world/state";
+import { mapsForNeighbourhood } from "./world/dynamic";
 import { restoreNeighbourhood } from "./neighbourhood/model";
 import { z } from "zod";
 import { TABLES, TRAY_CAPACITY, type Content, type GameState } from "./contracts";
@@ -9,6 +11,7 @@ const tableSchema = z.number().int().min(1).max(TABLES.length);
 
 const stateSchema = z.object({
   neighbourhood: z.unknown().optional(),
+  world: z.unknown().optional(),
   seed: z.number().int().min(0).max(0xffffffff),
   day: z.number().int().positive(),
   level: z.number().int().min(1).max(3),
@@ -51,7 +54,7 @@ export function validateSavedGame(
 ): GameState | null {
   const result = stateSchema.safeParse(value);
   if (!result.success) return null;
-  const { neighbourhood, ...state } = result.data;
+  const { neighbourhood, world, ...state } = result.data;
   if (
     new Set(state.customers.map((customer) => customer.table)).size !==
       TABLES.length ||
@@ -103,7 +106,8 @@ export function validateSavedGame(
     const total = orderTotal(order, content);
     if (receipt.total !== total || receipt.change !== order.paid - total) return null;
   }
-  return { ...state, neighbourhood: restoreNeighbourhood(neighbourhood, state.day) };
+  const restored = restoreNeighbourhood(neighbourhood, state.day);
+  return { ...state, neighbourhood: restored, world: restoreWorld(world, mapsForNeighbourhood(restored), restored.location) };
 }
 
 function database(): Promise<IDBDatabase> {

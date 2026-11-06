@@ -1,0 +1,60 @@
+[
+  {
+    "device": "desktop",
+    "before": {
+      "mapId": "riverbank",
+      "player": {
+        "x": 39,
+        "y": 19
+      },
+      "blocked": false
+    },
+    "after": {
+      "mapId": "riverbank",
+      "player": {
+        "x": 50.28196078272075,
+        "y": 18.91733921727929
+      },
+      "blocked": false
+    },
+    "pointer": {
+      "mapId": "riverbank",
+      "player": {
+        "x": 51.667890112516254,
+        "y": 19.115328845322136
+      },
+      "blocked": false
+    },
+    "consoleErrors": [],
+    "scope": "isolated authoring preview, not production travel proof"
+  },
+  {
+    "device": "phone",
+    "before": {
+      "mapId": "riverbank",
+      "player": {
+        "x": 39,
+        "y": 19
+      },
+      "blocked": false
+    },
+    "after": {
+      "mapId": "riverbank",
+      "player": {
+        "x": 50.199300000000044,
+        "y": 19
+      },
+      "blocked": false
+    },
+    "pointer": {
+      "mapId": "riverbank",
+      "player": {
+        "x": 51.585922193868434,
+        "y": 19.19808932700087
+      },
+      "blocked": false
+    },
+    "consoleErrors": [],
+    "scope": "isolated authoring preview, not production travel proof"
+  }
+]

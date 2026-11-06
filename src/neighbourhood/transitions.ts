@@ -1,5 +1,9 @@
+import { mapsForNeighbourhood, safeAfterEdit } from "../world/dynamic";
+import { restoreWorld, reduceWorld, type WorldAction } from "../world/state";
 import type { Content, GameState } from "../contracts";
 import { recoverWords } from "../game";
+import {TABLES,KITCHEN} from "../contracts";
+import {repairActionForWorldAnchor} from "../features/repairs/world";
 import { contentWords } from "../content/words";
 import * as apartment from "../features/apartment/rules";
 import * as cats from "../features/cats/rules";
@@ -11,6 +15,7 @@ import { availableGifts, createNeighbourhood } from "./model";
 import { claimGift, visitLocation } from "./state";
 
 export type NeighbourhoodAction =
+  | WorldAction
   | { type: "visit-location"; location: LocationId }
   | { type: "claim-neighbourhood-gift"; giftId: GiftId }
   | ({ type: "feature-action"; now: number } & (
@@ -21,7 +26,7 @@ export type NeighbourhoodAction =
   ));
 
 export function isNeighbourhoodAction(action: { type: string }): action is NeighbourhoodAction {
-  return action.type === "visit-location" || action.type === "feature-action" || action.type === "claim-neighbourhood-gift";
+  return action.type.startsWith("world-") || action.type === "visit-location" || action.type === "feature-action" || action.type === "claim-neighbourhood-gift";
 }
 
 function apartmentRecovery(before: apartment.State, action: apartment.Action, after: apartment.State): string[] {
@@ -43,6 +48,26 @@ function apartmentRecovery(before: apartment.State, action: apartment.Action, af
 
 export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAction, content: Content): GameState {
   const state = game.neighbourhood ?? createNeighbourhood(game.day);
+  if (action.type === "world-move" || action.type === "world-interact" || action.type === "world-close") {
+    const maps = mapsForNeighbourhood(state);
+    const world = restoreWorld(game.world, maps, state.location);
+    const next = reduceWorld(world, action, maps);
+    if (next === world) return game;
+    let player=game.player;
+    let neighbourhood=next.activeActivity ? { ...state, location: next.activeActivity } : state;
+    if(action.type==="world-interact" && next.activeActivity) {
+      const anchor=maps[next.mapId].anchors.find(a=>a.id===next.activeAnchorId);
+      if(next.activeActivity==="restaurant"&&anchor) {
+        const table=TABLES.find(t=>anchor.interactionId===`table-${t.table}`);
+        player=table?{x:table.x+1.4,y:table.y}:{x:KITCHEN.x,y:KITCHEN.y+1.3};
+      }
+      if(next.activeActivity==="repairs"&&anchor) {
+        const repairAction=repairActionForWorldAnchor(anchor.interactionId);
+        if(repairAction)neighbourhood={...neighbourhood,repairs:repairs.reduce(state.repairs,repairAction,game.day)};
+      }
+    }
+    return { ...game, player, world: next, neighbourhood };
+  }
   if (action.type === "visit-location") {
     const next = visitLocation(state, action.location);
     return next === state ? game : { ...game, neighbourhood: next };
@@ -86,5 +111,10 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
   }
   const known = new Set(contentWords(content).map(word => word.id));
   const journal = recoverWords(game.journal, recovered.filter(id => known.has(id)), action.now);
-  return { ...game, neighbourhood: next, journal };
+  let world = game.world;
+  if(world) {
+    const beforeMap=mapsForNeighbourhood(state)[world.mapId],afterMap=mapsForNeighbourhood(next)[world.mapId];
+    if(beforeMap&&afterMap&&beforeMap!==afterMap)world={...world,position:safeAfterEdit(beforeMap,afterMap,world.position)};
+  }
+  return { ...game, ...(world?{world}:{}), neighbourhood: next, journal };
 }

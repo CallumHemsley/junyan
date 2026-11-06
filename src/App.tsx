@@ -1,13 +1,15 @@
+import WorldViewport from "./world/WorldViewport";
+import { restoreWorld } from "./world/state";
+import { mapsForNeighbourhood } from "./world/dynamic";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Line, Position, Word } from "./contracts";
 import { KITCHEN, TABLES } from "./contracts";
 import { characterFor } from "./content";
 import { content } from "./neighbourhood/registry";
-import Neighbourhood, { LocationNavigation, NeighbourhoodGifts } from "./neighbourhood/Neighbourhood";
+import Neighbourhood, { NeighbourhoodGifts } from "./neighbourhood/Neighbourhood";
 import FeatureLine from "./neighbourhood/FeatureLine";
 import { lineById as apartmentLines } from "./features/apartment/content";
 import { createNeighbourhood } from "./neighbourhood/model";
-import type { LocationId } from "./neighbourhood/contracts";
 import { contentWords } from "./content/words";
 import {
   createGame,
@@ -83,8 +85,11 @@ export default function App() {
   const [audioError, setAudioError] = useState<PlaybackError>(null);
   const neighbourhood = state.neighbourhood ?? createNeighbourhood(state.day);
   const locationId = neighbourhood.location;
+  const worldRegistry = mapsForNeighbourhood(neighbourhood);
+  const world = restoreWorld(state.world, worldRegistry, locationId);
+  const activityOpen = world.activeActivity !== null;
   const [giftNotice, setGiftNotice] = useState(false);
-  const dayEndOpen = locationId === "restaurant" && state.ended && panel === "none" && !word;
+  const dayEndOpen = activityOpen && locationId === "restaurant" && state.ended && panel === "none" && !word;
   const ambience = useAmbience(ready && session.phase === "day" && locationId === "restaurant");
   const playback = useRef<ReturnType<typeof createPlayback> | null>(null);
   if (!playback.current)
@@ -109,7 +114,7 @@ export default function App() {
         }
         if (action.type === "claim-neighbourhood-gift") setGiftNotice(true);
       }
-      if (!testMode && action.type !== "move" && next.phase === "day") {
+      if (!testMode && next.phase === "day") {
         try {
           localStorage.setItem(checkpointKey, JSON.stringify(next.game));
         } catch {
@@ -249,6 +254,8 @@ export default function App() {
   }, []);
   const visitTable = useCallback(
     (number: number) => {
+      const active=stateRef.current.world;
+      if(active && active.activeAnchorId!==`restaurant.table-${number}`)return;
       const target = TABLES.find((t) => t.table === number)!;
       const open = () => {
         setTable(number);
@@ -269,6 +276,7 @@ export default function App() {
     [dispatch, play, walk],
   );
   const visitKitchen = useCallback(() => {
+    if(stateRef.current.world && stateRef.current.world.activeAnchorId!=="restaurant.kitchen")return;
     const open = () => setPanel("kitchen");
     if (canVisitKitchen(stateRef.current)) open();
     else walk({ x: KITCHEN.x, y: KITCHEN.y + 1.3 }, open);
@@ -337,6 +345,7 @@ export default function App() {
       if (
         !ready ||
         sessionRef.current.phase !== "day" ||
+        !activityOpen ||
         locationId !== "restaurant" ||
         dayEndOpen ||
         event.defaultPrevented ||
@@ -386,7 +395,7 @@ export default function App() {
     };
     window.addEventListener("keydown", key);
     return () => window.removeEventListener("keydown", key);
-  }, [dispatch, visitTable, visitKitchen, panel, word, ready, dayEndOpen, locationId]);
+  }, [dispatch, visitTable, visitKitchen, panel, word, ready, dayEndOpen, locationId, activityOpen]);
   useEffect(() => {
     if (!testMode) return;
     const hooks = {
@@ -415,7 +424,6 @@ export default function App() {
     if (!ready || session.phase !== "day") return;
     document.querySelector<HTMLElement>("[data-location-heading]")?.focus();
   }, [locationId, ready, session.phase]);
-  const visitLocation = (location: LocationId) => dispatch({type:"visit-location",location});
   const lookup = (w: Word, trigger: HTMLButtonElement) => {
     wordTrigger.current = trigger;
     setWord(w);
@@ -539,7 +547,7 @@ export default function App() {
       </div>
     );
   return (
-    <div className={`app-shell${wordOpen ? " word-card-open" : ""}`} onFocusCapture={rememberPanelTrigger} onClickCapture={(event) => { guardWordCard(event); rememberPanelTrigger(event); }}>
+    <div className={`app-shell connected-shell${wordOpen ? " word-card-open" : ""}`} onFocusCapture={rememberPanelTrigger} onClickCapture={(event) => { guardWordCard(event); rememberPanelTrigger(event); }}>
       <header className="topbar" inert={panel !== "none" || dayEndOpen}>
         {brand}
         <nav aria-label="小馆">
@@ -566,7 +574,16 @@ export default function App() {
         </nav>
       </header>
       <main inert={panel !== "none" || dayEndOpen} data-location={locationId}>
-        <LocationNavigation location={locationId} onVisit={visitLocation}/>
+        <WorldViewport state={world} maps={worldRegistry} game={state} onLookup={lookup} fresh={fresh} onAction={action=>{
+          const next=dispatch(action);
+          if(action.type==="world-interact"&&next.phase==="day"&&next.game.world?.activeActivity==="restaurant") {
+            const id=next.game.world.activeAnchorId;
+            if(id==="restaurant.kitchen")visitKitchen();
+            else {const number=Number(id?.split("table-")[1]);if(number)visitTable(number);}
+          }
+        }} paused={panel !== "none" || wordOpen || dayEndOpen}/>
+        {activityOpen && <div className="world-activity" data-world-activity={world.activeActivity}>
+        <button className="world-activity-close" onClick={() => {dispatch({type:"world-close"});setPanel("none");}}>继续走走</button>
         {locationId === "restaurant" ? <div className="play-layout">
           <section className="world-panel" aria-label="早安小馆餐厅">
             <div className="world-caption">
@@ -641,7 +658,7 @@ export default function App() {
             </div>
           </section>
         </div>
-        : <Neighbourhood state={neighbourhood} day={state.day} onAction={dispatch} onLookup={lookup} onPlay={playLine} onRecover={acknowledgeRecovery}
+        : <Neighbourhood contextual state={neighbourhood} day={state.day} onAction={dispatch} onLookup={lookup} onPlay={playLine} onRecover={acknowledgeRecovery}
             recoveredWordIds={Object.keys(state.journal).filter(id => state.journal[id].recovered)} freshWordIds={fresh}/>}
         <NeighbourhoodGifts state={neighbourhood} onClaim={giftId => {
           const before = sessionRef.current;
@@ -650,6 +667,7 @@ export default function App() {
         }}/>
         {giftNotice && <div className="neighbourhood-gift-note" role="status"><FeatureLine line={apartmentLines.gift} onLookup={lookup} onPlay={playLine}
           recoveredWordIds={Object.keys(state.journal).filter(id => state.journal[id].recovered)} freshWordIds={fresh}/></div>}
+        </div>}
         {locationId !== "restaurant" && panel === "none" && audioNotice}
         {saveError && (
           <p role="status" className="save-note">
@@ -968,7 +986,7 @@ export default function App() {
             >
               明天见 <span>→</span>
             </button>
-            <button className="secondary" onClick={() => visitLocation("apartment")}>回家看看</button>
+            <button className="secondary" onClick={() => {dispatch({type:"world-close"});close();}}>出去走走</button>
           </section>
         </div>
       )}
