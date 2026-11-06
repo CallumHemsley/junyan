@@ -1,3 +1,4 @@
+import { additionalHooks } from './routines';
 import { segmentIntersects } from './visibility';
 import type { Position } from '../../contracts';
 import type { ActorRoute, LifeMap, LifePlan, Navigation, Rect, RoutePhase } from './model';
@@ -5,7 +6,6 @@ import { profileFor } from './profiles';
 
 const distance = (a: Position, b: Position) => Math.hypot(b.x - a.x, b.y - a.y);
 const finite = (p: Position) => Number.isFinite(p.x) && Number.isFinite(p.y);
-
 
 export function entranceExclusions(map: LifeMap): Rect[] {
   return [
@@ -15,15 +15,19 @@ export function entranceExclusions(map: LifeMap): Rect[] {
 }
 
 export function compileLife(map: LifeMap, navigation: Navigation): LifePlan {
-  const actors: ActorRoute[] = [], diagnostics: { hookId: string; reason: string }[] = [];
+  const actors: ActorRoute[] = [], habitatActors: LifePlan['habitatActors'][number][] = [], diagnostics: { hookId: string; reason: string }[] = [];
   const exclusions = entranceExclusions(map);
-  const ids = new Set<string>();
-  for (const hook of map.npcHooks) {
+  const ids = new Set<string>(), characters = new Set<string>();
+  for (const hook of [...map.npcHooks, ...additionalHooks(map)]) {
     const profile = profileFor(hook.characterId);
     const fail = (reason: string) => diagnostics.push({ hookId: hook.id, reason });
     if (ids.has(hook.id)) { fail('duplicate-hook'); continue; }
     ids.add(hook.id);
     if (!profile) { fail('unknown-character'); continue; }
+    if (profile.homeMap && map.id !== profile.homeMap) { fail('wrong-home-map'); continue; }
+    if (profile.kind !== 'bird' && characters.has(profile.id)) { fail('duplicate-character'); continue; }
+    characters.add(profile.id);
+    habitatActors.push({ id: hook.id, characterId: profile.id, profile, home: hook.position });
     const stand = (p: Position) => finite(p) && navigation.canStand(p, profile.radius) && !exclusions.some(rect => segmentIntersects(p, p, rect, profile.radius));
     const walk = (a: Position, b: Position) => stand(a) && stand(b) && navigation.canWalk(a, b, profile.radius) && !exclusions.some(rect => segmentIntersects(a, b, rect, profile.radius));
     if (!stand(hook.position)) { fail('blocked-home-or-entrance'); continue; }
@@ -52,5 +56,5 @@ export function compileLife(map: LifeMap, navigation: Navigation): LifePlan {
     if (!valid) { fail('unreachable-route-or-entrance-crossing'); continue; }
     actors.push({ id: hook.id, characterId: profile.id, profile, home: hook.position, phases, durationMs: elapsed });
   }
-  return { mapId: map.id, actors, landmarks: map.landmarks, diagnostics };
+  return { mapId: map.id, actors, habitatActors, landmarks: map.landmarks, exclusions, diagnostics };
 }
