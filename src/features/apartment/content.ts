@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import type { Word, Line } from '../../contracts';
-import data from './content.json';
+import data from './content.json' with { type: 'json' };
 import { createWordSchema, createPhraseSchema } from '../../content/schema';
 import { adaptMandarinContent } from '../../content/mandarin';
 import { language } from '../../language';
