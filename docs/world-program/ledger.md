@@ -81,3 +81,71 @@ Pstack source was fetched from configured `cursor/plugins` into `/workspace/curs
 - Reviewer next reviews PR 27's ownership/contract and produces the independent baseline evidence under 0088. Its runtime identifier blocker has been resolved by parent clarification.
 - Each builder next records its branch head, checkout, process handle and first artifact in its own evidence directory. Coordinator compares actual diffs and integration instructions before accepting delivery.
 - The full goal remains ACTIVE. There is no integrated game head, runtime acceptance verdict or merge from this program yet.
+
+## Published artifact review, first data tranche
+
+Actual remote tips inspected after fetch:
+
+| Owner | Tip | Inspected artifact |
+|---|---|---|
+| 0078 | `2532c61` | Executable Zod schema, geometry, camera and adapter proposal |
+| 0079 | `d13dd48` | Active objective and layout rationale; no map at this tip |
+| 0080 | `c176f5a` | Courtyard map, habitat projection and layout study |
+| 0081 | `856d8a6` | Hall, stairs and apartment maps; furniture transform proposal |
+| 0082 | `2ed1ad3` | Workshop map and lamp/toy anchor integration requests |
+| 0084 | `14a2ce1` | Park and riverbank maps and authoring source |
+| 0085 | `b94fd1f` | Character direction prototype and image artifact |
+| 0087 | `78e65d6` | Schedule sampler design and canonical actor IDs |
+
+Rooftop and atmosphere had no remote branch at this fetch, but native thread snapshots showed active tool calls and reports of authored units. Reviewer reported a successful production baseline build and a capture setup failure. None of those status reports is a runtime acceptance verdict. All eleven threads remain accounted for.
+
+`audit-published.mjs` reads the published foundation schema/geometry and map JSON directly from git refs. `published-map-audit.json` records the exact tested heads. Seven map payloads passed Zod parsing and local default-spawn/entrance standing checks. This audit does not claim graph reachability or visual quality.
+
+### Required fixes and integration handoffs
+
+- **0084 landscape:** `park.pond-deck` at (61,33), radius 1.4, is wholly inside collider `park.pond-2`, rectangle (40,29,23,7), at head 14a2ce1. The nearest edge is 2 tiles away before accounting for player radius. No standing point can invoke this anchor. Move the anchor onto reachable decking or correct collision geometry, then prove an ordinary-control approach.
+- **0078 foundation and 0080 courtyard:** canonical actor IDs from world-life are `white-cat` and `black-cat`; courtyard currently proposes `cats.white` and `cats.black`. Use one explicit normalization at the registry boundary or update the courtyard hooks. Preserve cat clue anchors from `catHabitat` during encounters.
+- **0078 foundation:** the initial `WorldState.activeActivity` stores a feature ID only. Contextual entry needs the anchor/interaction identity too, or an equivalent explicit selected-target transition. Workshop's `repair-lamp` and `repair-toy` dispatch the existing switch action before controls open; cats need existing selected-target actions. Do not replace the map with legacy diorama views.
+- **0078 plus feature owners:** publish an embedding prop/hook for controls-only UI. The live world stays the main viewport for apartment, repairs, cats and garden. Feature owners own their component extraction; foundation alone wires App and shared state. Existing reducers, voices and saves remain authoritative.
+- **All art owners:** foundation adapter proposal is in `docs/evidence/0078/adapter-v1.md` at 2532c61. It uses logical canvas pixels, `project(point,z?)`, and ground/object/foreground passes. No DPR multiplication, loop or DOM in owner art. Foundation still needs a concrete per-object ordering contract so owner draw calls do not paint whole building layers over actors incorrectly.
+
+Cross-thread send remains absent. Root relays these same-scope fixes; no replacement workers are warranted by current evidence.
+
+## Toolchain and second artifact checkpoint
+
+The default pnpm wrapper can try to reconcile dependencies before running a command and abort without a TTY. Do not churn the lockfile to solve this. Direct installed entry points bypass that wrapper:
+
+```sh
+node node_modules/typescript/bin/tsc --noEmit
+node node_modules/vitest/vitest.mjs run
+node node_modules/vite/bin/vite.js --host 0.0.0.0 --port YOUR_ASSIGNED_PORT --strictPort
+node node_modules/@playwright/test/cli.js test --config YOUR_OWNED_CONFIG
+```
+
+Paths exist in this cloud checkout. The TypeScript example check passed; Vitest, Vite and Playwright version commands started successfully. Installed versions here are Vitest 3.2.7, Vite 7.3.7, Playwright 1.64.1 and Node 24.22.1. This is not a frozen-install or required-Node-22 verification claim. Review's existing Node 22 toolchain and browser cache are reported in its owned ledger; each worker verifies its own paths. `pnpm --config.verify-deps-before-run=false` is a suggested alternative from root, not tested by this coordinator.
+
+Foundation now publishes the executable art contract at `9f144d5`. Root should relay that exact import path to all art owners. Rooftop `0a88378`, atmosphere `9f019f4`, and reviewer `340adcc` are now remote, so every initial builder/reviewer has a recoverable published branch. Town has advanced to `3747266` with its map.
+
+The repeated schema/standing audit now covers nine map payloads, including town and rooftop. All parse and have standable default spawns and entrances. The pond anchor issue remains at landscape's last fetched head; parent reports owner is actively fixing it. Await a corrected pushed head before closing it.
+
+Independent review at `340adcc` supplies real baseline phone/desktop captures and 2 passing normal-opening/menu/reload journeys. This proves the current baseline's limitations, not connected-world acceptance. Its contract review found no ownership collision and requested precise time units and portal-ID scope. Contract and typed example now clarify both. Executable rendering/depth and clock conversion still need foundation integration proof.
+
+Coordinator visually inspected the character direction sheet at `b94fd1f` and courtyard composition study at `c176f5a`. Character palette/accessory identities are readable, but adjacent directions repeat silhouettes; motion/diagonal readability is not established by the still sheet. Courtyard loop B gives alternate approaches, but broad paving, repeated grass texture and sparse architecture remain prototype-level. These are same-scope art iteration notes, not a claim to have inspected production scenes.
+
+## Runtime-driven follow-up allocation
+
+Re-scanned all fetched remote ticket paths: highest 0088. Reserved **0089 restaurant world art** on 2026-11-06. This adds a focused discovered scope after actual e6270d0 runtime captures exposed generic restaurant blocks. Exclusive lease is `src/world/art/restaurant/*`, ticket 0089 and `docs/evidence/0089/*`; it is removed from foundation's broad art ownership. Foundation retains restaurant map, service rules, App/save/renderer and all integration. Branch `codex/0089-restaurant-world-art`, isolated cloud worktree `/workspace/junyan-0089`, strict port 5493. Native subagent handle follows spawn.
+
+Actual foundation e6270d0 build and one normal-opening/held-movement/reload check passed in isolated coordinator cloud worktree. Evidence is `runtime-e627/`. Full graph, activities, touch, visuals and the distinct checkpoint-race regression remain open.
+
+PR28 exact f9ad801 evidence audit, independently checked by Astra subagent `/root/review_evidence_integrity`: 27 published artifact hashes match; two manifest entries reference missing .last-run.json blobs. Returned as P2 via PR28 comment 6672933089. Stored baseline passes and intentionally failing save regression agree with snapshots. No gameplay acceptance or merge verdict given. New review head 2229625 adds static seam probes, not a manifest fix.
+
+0089 spawned as native cloud collaboration agent `/root/restaurant_world_art`, model GPT-6.1 Sol, medium reasoning. Parent owns this handle and can message it directly. Brief includes isolated branch/worktree, exact lease, active goal, current implemented renderObjects, evidence-driven art gap, no shared writes and no audio. Builder is running; no authored tip yet. Foundation/root notified through PR27 comment. This is the first added focused builder beyond the initial ten.
+
+## Contextual HUD allocation
+
+Verified highest fetched remote ticket 0089, then reserved **0090 contextual world UI**. Independent phone capture showed the legacy service page covering the world and clipping tray controls. Exclusive lease `src/world/ui/*`, own ticket and `docs/evidence/0090/*`; foundation retains App/shared CSS/state/save and dispatch. Branch `codex/0090-contextual-world-ui`, isolated cloud `/workspace/junyan-0090`, port 5494. This is a focused UI module, not a second application integration writer. Selected physical restaurant targets are now explicit in integration-v1.1; foundation must implement them before UI acceptance.
+
+0090 native cloud agent `/root/contextual_world_ui` is running on GPT-6.1 Sol medium with isolated lease and explicit physical-target contract. Both focused additions preserve foundation as sole App/shared-schema writer.
+
+Atmosphere PR29 at ad741f1 inspected. Its base material shade function is present, but map art hardcoded fills do not automatically call it. Integration-v1.1 now specifies one optional backwards-compatible `WorldRenderView.shadeColor` callback, mandatory in production. Foundation supplies one authoritative-phase shader; map/art and generic painter use it for material colors. Phase-independent base materials plus particles is not lighting acceptance. PR29 remains draft and full integrated lighting verification is open.

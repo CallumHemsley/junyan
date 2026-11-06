@@ -20,13 +20,13 @@ Each map owner exports a JSON-compatible `WorldMapDefinition` from `src/world/ma
 | `entrances` | Array of `{id,position,facing}` specifying safe arrival points |
 | `exits` | Array of `{id,rect,targetMapId,targetEntranceId,kind}`; kind is `door`, `stairs` or `path` |
 | `anchors` | Array of `{id,position,radius,featureId,interactionId}`; featureId uses existing `restaurant`, `apartment`, `cats`, `repairs`, `garden`, or `exploration` |
-| `terrain` | Array of `{id,rect,material,variant}`; material and variant refer to owner art |
+| `terrain` | Array of `{id,rect,material,variant}`; material and variant refer to owner art; variant accepts a string or number, matching the foundation schema |
 | `props` | Array of `{id,kind,position,width,height,layer,variant}`; layer is `ground`, `object` or `foreground` |
 | `palette` | Named RGB triples, extending accepted cream/jade/ink/wood/brass relationships |
 | `npcHooks` | Array of `{id,position,route,characterId}`; route is an array of points |
 | `landmarks` | Array of `{id,position,kind}` for coverage and experience review |
 
-IDs are namespaced by map. The shared registry, schema, validator and loader belong to foundation. Do not create ten validators or ten world engines. Unsupported fields go in an owner's proposal, not an unannounced divergent schema.
+Entrance and exit IDs are unique within a map, not globally. Resolve an exit through the pair `(targetMapId, targetEntranceId)`. Two maps may both define `from-town`. Other authored object IDs use map prefixes to make evidence and diagnostics readable. The shared registry, schema, validator and loader belong to foundation. Do not create ten validators or ten world engines. Unsupported fields go in an owner's proposal, not an unannounced divergent schema.
 
 ## Map graph and ownership
 
@@ -92,3 +92,19 @@ The first prototype runtime snapshot is `{mapId, position, facing, camera:{x,y},
 `example-module.ts` contains the typed authoring shape and initial player, camera, actor and atmosphere inputs. It is documentation, not a second production contract. Foundation promotes/refines it in its own production files and reports the concrete import path.
 
 Residential furniture can change collision. The foundation navigation API must accept a validated map plus explicit dynamic colliders. After a furniture edit, use a deterministic nearest reachable safe position in the same connected component, retaining the valid previous position when possible. Apartment owns furniture state; world state must not duplicate it. The residential owner supplies the transform between its existing furniture region and map coordinates.
+
+## Contextual activities keep the world visible
+
+Entering an anchor keeps the real walkable map/interior as the main viewport. Do not replace it with the legacy fixed diorama page. Foundation owns the application integration. Feature owners expose their existing controls and dialogue as embeddable components or hooks, preserving their reducers, audio, journal/recovery and save state.
+
+Activity controls occupy a compact contextual DOM panel or overlay anchored to the relevant object/resident. The live world, player position and surrounding scene remain visible. The legacy scene is not nested inside that panel. Closing controls restores focus and movement at the same approach position. Movement input pauses while typing or operating focused controls, and resumes without an unintended step after dismissal.
+
+Apartment edits update visible world furniture and explicit dynamic colliders through the residential transform. Repair progress, cats and garden state update their world props/actors through owner render data. Preserve existing replay and tappable words in all activity dialogue. Foundation must agree the embedding seam with feature owners before wiring production anchors.
+
+Acceptance requires real input entry and dismissal of each activity on phone and desktop, verifying the world remains the main view and activity state survives travel and reload. The initial map graph is a connected tranche, not a final scale ceiling.
+
+## Published executable seam and time semantics
+
+Foundation head `9f144d5` publishes `src/world/schema.ts`, `geometry.ts`, `camera.ts`, `registry.ts`, `state.ts` and `render-contract.ts`. Art imports `WorldRenderView`, `DrawMap`, `WorldArtModule` and `WorldDrawCommand` from the foundation render contract. Map modules export `mapDefinitions`; art modules export `drawMap`. The current adapter is an initial executable unit, not final depth/occlusion acceptance.
+
+Atmosphere `timeOfDay` is the explicit union `morning | noon | evening | night`, matching atmosphere head `9f019f4`. It is not an hour, fraction or milliseconds. `elapsedMs` alone measures active animation time in milliseconds and freezes while hidden. Foundation derives the day phase from authoritative restaurant progression through one named conversion; atmosphere does not read wall time or advance the day. Foundation must publish the conversion and fixtures for morning, dusk, day rollover and reload before integration acceptance. Night may be exercised in the visual harness without changing production day rules.
