@@ -66,6 +66,6 @@ Counter geometry is now six individually sorted three-unit sections. The first r
 
 Added deterministic one-pixel plaster and wood variation, less repetitive jar groups, a folded cloth, a kitchen pot and a blank ledger with pencil. No text is painted. Desk and kitchen food remain original geometry. The assigned map and all colliders are unchanged.
 
-`node node_modules/vitest/vitest.mjs run` passed 27 files and 310 tests. `node node_modules/typescript/bin/tsc -b` and `node node_modules/vite/bin/vite.js build` passed. Refreshed four browser captures have no page errors. Installed runtime reports Node 24.22.1, TypeScript 5.9.3, Vite 7.3.7, Vitest 3.2.7 and Playwright 1.61.1. This is use of the installed environment, not a frozen dependency install.
+`node node_modules/vitest/vitest.mjs run` passed 27 files and 310 tests. `node node_modules/typescript/bin/tsc -b` and `node node_modules/vite/bin/vite.js build` passed. Refreshed four browser captures have no page errors. Installed runtime reports Node 24.22.1, TypeScript 5.9.3, Vite 7.3.7, Vitest 3.2.7 and Playwright 1.64.1. This is use of the installed environment, not a frozen dependency install.
 
 Draft PR is https://github.com/CallumHemsley/junyan/pull/35 against the coordinator branch. Opened with GitHub connector. No merge. Current independent and production gates remain unverified. Foundation is wiring the projection while art refinement continues.
