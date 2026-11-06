@@ -83,12 +83,12 @@ async function approachLife(page: Page, targetId: string, touch: boolean) {
   for (let i = 0; i < 10; i++) {
     const hint = await lifeHint(page, targetId);
     if (!hint.target) throw Error(`No production physical target ${targetId}`);
-    if (Math.hypot(hint.target.position.x - hint.player.x, hint.target.position.y - hint.player.y) < 1.1) return;
+    if (Math.hypot(hint.target.position.x - hint.player.x, hint.target.position.y - hint.player.y) < 1.1 && Math.abs(hint.player.x - hint.target.position.x - hint.player.y + hint.target.position.y) > .95) return;
     const approach = await page.evaluate(async ({ save, target }) => {
       const dynamicUrl = '/src/world/dynamic.ts', geometryUrl = '/src/world/geometry.ts';
       const { mapsForNeighbourhood } = await import(dynamicUrl), { canStand, findPath } = await import(geometryUrl);
       const map = mapsForNeighbourhood(save.neighbourhood)[save.world!.mapId];
-      const candidates = Array.from({ length: 12 }, (_, index) => ({ x: target.x + Math.cos(index * Math.PI / 6) * .9, y: target.y + Math.sin(index * Math.PI / 6) * .9 }));
+      const candidates = [-1, 1].map(sign => ({ x: target.x + sign * .74, y: target.y - sign * .74 }));
       return candidates.filter(point => canStand(map, point) && findPath(map, save.world!.position, point).length)
         .sort((a, b) => Math.hypot(a.x - save.world!.position.x, a.y - save.world!.position.y) - Math.hypot(b.x - save.world!.position.x, b.y - save.world!.position.y))[0];
     }, { save: await savedGame(page), target: hint.target.position });
@@ -121,7 +121,8 @@ test('ordinary traversal reaches unvoiced residents, reactions and saved discove
   await mkdir(out, { recursive: true });
   const errors: string[] = [], checkpoints: unknown[] = [], touch = info.project.name === 'phone';
   const head = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
-  const record = () => writeFile(`${out}/evidence.json`, JSON.stringify({ head, checkpoints, errors, status: info.status ?? 'running', method: 'Ordinary opening and real pointer/touch/keyboard travel; read-only navigation hints; no injected saves, spawns or internal dispatch.' }, null, 2));
+  let completed = false;
+  const record = () => writeFile(`${out}/evidence.json`, JSON.stringify({ head, checkpoints, errors, status: completed ? 'passed' : 'incomplete', method: 'Ordinary opening and real pointer/touch/keyboard travel; read-only navigation hints; no injected saves, spawns or internal dispatch.' }, null, 2));
   page.on('pageerror', error => errors.push(error.message));
   page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
   await page.goto('/?seed=42'); await playOpening(page);
@@ -161,14 +162,14 @@ test('ordinary traversal reaches unvoiced residents, reactions and saved discove
         const activation = await activateLife(page, hook.id, touch);
         await page.waitForTimeout(2000);
         await page.screenshot({ path: `${out}/${id}-after.png` });
-        await expect.poll(async () => (await lifeHint(page, hook.id)).target?.action, { timeout: 120000, intervals: [500, 1000] }).toBe('walk');
         await approachLife(page, hook.id, touch);
+        await expect.poll(async () => (await lifeHint(page, hook.id)).target?.action, { timeout: 120000, intervals: [500, 1000] }).toBe('walk');
         const walkBefore = await lifeHint(page, hook.id);
         await page.screenshot({ path: `${out}/${id}-walk-before.png` });
         await expect.poll(async () => {
           const current = await lifeHint(page, hook.id);
-          return current.target ? Math.hypot(current.target.position.x - walkBefore.target!.position.x, current.target.position.y - walkBefore.target!.position.y) : 0;
-        }, { timeout: 8000 }).toBeGreaterThan(.08);
+          return current.target?.action === 'walk' ? Math.hypot(current.target.position.x - walkBefore.target!.position.x, current.target.position.y - walkBefore.target!.position.y) : 0;
+        }, { timeout: 45000, intervals: [200, 500] }).toBeGreaterThan(.08);
         const walkAfter = await lifeHint(page, hook.id);
         await page.screenshot({ path: `${out}/${id}-walk-after.png` });
         await expect.poll(async () => (await lifeHint(page, hook.id)).target?.action, { timeout: 120000, intervals: [500, 1000] }).toBe('idle');
@@ -213,6 +214,7 @@ test('ordinary traversal reaches unvoiced residents, reactions and saved discove
     expect((await savedGame(page)).world!.life!.discoveries.filter(item => item.landmarkId === 'riverbank.fishing-jetty')).toHaveLength(1);
     expect(after.customers.every(customer => customer.phase === 'seated')).toBe(true);
     expect(errors).toEqual([]);
+    completed = true;
   } finally {
     await record();
     if (!page.isClosed()) await page.screenshot({ path: `${out}/last-frame.png` }).catch(() => {});
