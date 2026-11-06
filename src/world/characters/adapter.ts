@@ -55,7 +55,7 @@ export function actorCommands(sample:Pick<ActorSample,'drawCommands'>,position:{
 export function drawActor(context:CanvasRenderingContext2D,view:WorldRenderView,sample:ActorSample,position:{x:number;y:number}):void {
   const p=view.project(position),unit=view.project({x:position.x+.5,y:position.y-.5});
   const scale=Math.abs(unit.x-p.x)/18;
-  paintActorCanvas(context,sample,p.x,p.y,scale);
+  paintActorCanvas(context,sample,p.x,p.y,scale,color=>view.shadeColor?.(color)??`rgb(${color.join(',')})`);
 }
 
 export function actorObject(id:string,sample:ActorSample,position:{x:number;y:number}):WorldRenderObject {

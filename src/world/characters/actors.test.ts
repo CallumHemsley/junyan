@@ -37,7 +37,7 @@ describe('original pixel actors',()=>{
 
 describe('actor material boundary',()=>{
  it('routes every pixel through the supplied material callback without resetting inherited alpha',async()=>{
-  const {paintActorCanvas}=await import('./adapter');
+  const {drawActor}=await import('./adapter');
   let alpha=.45,style='';const stack:number[]=[],fills:{style:string;alpha:number}[]=[],materials:number[][]=[];
   const context={
    save:()=>stack.push(alpha),restore:()=>{alpha=stack.pop()!;},
@@ -45,7 +45,7 @@ describe('actor material boundary',()=>{
    get fillStyle(){return style;},set fillStyle(value:string){style=value;},
    beginPath:()=>{},ellipse:()=>{},fill:()=>fills.push({style,alpha}),fillRect:()=>fills.push({style,alpha}),
   } as unknown as CanvasRenderingContext2D;
-  paintActorCanvas(context,sampleActor(base),50,60,1,color=>{materials.push(color);return '#345678';});
+  drawActor(context,{project:point=>({x:(point.x-point.y)*18+50,y:(point.x+point.y)*9+60}),elapsedMs:0,reducedMotion:false,playerPosition:{x:0,y:0},width:100,height:100,pass:'objects',shadeColor:color=>{if(typeof color==='string')throw new Error('Actor material should pass authored RGB');materials.push([...color]);return '#345678';}},sampleActor(base),{x:0,y:0});
   expect(materials.length).toBeGreaterThan(100);
   expect(fills.every(fill=>fill.style==='#345678')).toBe(true);
   expect(fills.every(fill=>fill.alpha<=.45)).toBe(true);

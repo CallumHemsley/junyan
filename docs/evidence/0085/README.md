@@ -52,3 +52,13 @@ Foundation production integration `1450bf6` is now consumed on this branch. `pro
 A real integration defect remains. Rightward keyboard movement changes world x positively and y negatively, while saved four-way facing resolves north and the actor shows its rear three-quarter view. Production only passes cardinal facing. The actor sampler already supports exact yaw. Foundation must pass movement yaw and retain it while idle; this request is posted on PR30. Production NPC contextual work passes posture but does not yet supply held objects. These are open integration findings, not an art redesign request.
 
 The requested single material-lighting seam was read from coordinator integration-v1.1. At observed foundation `c4ec7ed`, WorldRenderView still lacks shadeColor. The actor consumer will use the exact published callback once foundation supplies the type. No independent clock or competing shader was introduced. Morning/evening production material proof is pending that seam.
+
+## Explicit material consumer, foundation74a5213
+
+The real optional WorldRenderView.shadeColor type was acquired from foundation74a5213. drawActor now explicitly routes all owned pixel colors and contact-shadow colors through it. Absence is identity only for old fixtures. Canvas alpha is inherited and multiplied only for actor shadows, then restored. World polygon commands emit authored #RRGGBB colors, compatible with the shared shader input.
+
+The public drawActor material test verifies that every fill uses the supplied callback and that inherited alpha .45 remains .45 after drawing. All 7 actor checks pass. Current integrated full suite passes **381 tests in 40 files**, including the previously failing park graph test after the landscape owner's dependency update. Build passes.
+
+`lighting/` contains inspected same-map/same-camera morning and evening captures from the actual production paintWorld courtyard renderer. The supplied game.served values 0 and 3 select foundation's authoritative morning/evening phase; no new clock is introduced. Reduced motion suppresses particles, actor time/position/camera are identical, and the actor-region hashes differ. These are explicit consumer evidence. The foundation74a5213 context proxy/output-color heuristic has been returned by root and still appears in this dependency source, so final whole-scene lighting acceptance remains OPEN until foundation replaces it.
+
+Remaining integration findings are movement yaw, contextual held objects and independent whole-experience review. No final quality PASS is claimed. Goal ACTIVE.

@@ -46,3 +46,7 @@ Finish pure typed actor sampling and crisp original pixel commands. Verify diago
 - Full rules 318 passed. Scoped actor/raster checks 6 passed. Build passed. Actual desktop/phone fixture keyboard/touch and reduced-motion checks passed with clean consoles; inspected motion videos retained.
 - Original desktop journey and phone movement/reload passed. Phone full journey had an interrupted run during concurrent source/build work, then passed unchanged-checkout isolated rerun. See evidence README for exact limitation.
 - Next actions are production compositor camera/DPR/scenery/context checks and independent review. Goal remains ACTIVE; no integration PASS claimed.
+
+### Material lighting and current integration
+
+The production actor is integrated by foundation1450bf6. Actual desktop and phone browser DPR1/2 traversal recordings and scenery screenshots are published at45b842b. They confirm correct table overlap but expose cardinal-facing mismatch during diagonal ground travel; foundation has the exact yaw API request. Current74a5213 adds the actual shadeColor type; the owned consumer now explicitly uses it while preserving inherited alpha. Seven actor checks, all381 integrated rule tests and build pass. Inspected same-camera production courtyard morning/evening material proof is in lighting/. Foundation's returned context proxy, player yaw, NPC held-object contexts and final independent review remain open. Objective remains ACTIVE.
