@@ -1,7 +1,7 @@
 ---
 id: 119
 title: Review and improve outdoor world craft against actual native views
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-06
@@ -30,3 +30,5 @@ The user wants different levels reviewed and improved in parallel. Outdoor scene
 - Centrally reserved by root. Branch codex/0119-outdoor-visual-quality; worktree /private/tmp/junyan-world-outdoor-quality.
 - Lease art/town and art/landscape modules only initially. Propose any map/geometry/shared rendering change before editing. No restaurant/residential/shared painter/camera/schema/dependency changes. Ports5578/5579 strict.
 - All detailed plans, new native captures, traces and reports stay private under /private/tmp/junyan-world-private-qa/0119; no public raw QA or merges before independent gates.
+
+- Main-only release127: independently accepted bounded art/source gains ported without the reading-room chapter or experimental renderer. Exact release passes645 rules tests/99files, types/build,12 desktop/phone service/save/navigation journeys and two production offline checks. Phone and desktop native affected scenes inspected. This completes the scoped repair, while broader authored-world and character quality work remains active.
