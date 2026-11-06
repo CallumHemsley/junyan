@@ -19,6 +19,20 @@ export function drawMap(ctx: CanvasRenderingContext2D, map: RestaurantMap, v: Re
       ctx.fillStyle=v.shadeColor?.(color) ?? color; ctx.fillRect(Math.round(s.x),Math.round(s.y),1,1);
     }
   }
+  ctx.save();ctx.globalAlpha*=.18;
+  for(const prop of map.props.filter(prop=>prop.kind==='table')) {
+    const {x,y}=prop.position;
+    polygon(ctx,v,[[x-.24,y-.56,.012],[x+.7,y-.9,.012],[x+1.25,y-.55,.012],[x+1.1,y+.15,.012],[x+.22,y+.2,.012]],'#a99575');
+    polygon(ctx,v,[[x+.3,y+2.1,.012],[x+1.6,y+2.03,.012],[x+1.85,y+2.65,.012],[x+.75,y+2.85,.012],[x+.12,y+2.5,.012]],'#b8a584');
+  }
+  polygon(ctx,v,[[10.8,19.8,.012],[11.2,17.4,.012],[12.1,16.1,.012],[13.4,17.3,.012],[13.1,19.8,.012]],'#b29b77');
+  polygon(ctx,v,[[10.3,7.9,.012],[10.5,6,.012],[14.1,5.8,.012],[14.8,7.1,.012],[13.7,8.8,.012],[11.4,8.6,.012]],'#b8a17b');
+  ctx.restore();
+  for(const y of [3,9,15]) {
+    ctx.save();ctx.globalAlpha*=.1;
+    polygon(ctx,v,[[1.2,y+.2,.015],[1.2,y+1.65,.015],[4.5,y+3.2,.015],[5.2,y+1.8,.015]],'#e5e6d5');
+    ctx.restore();
+  }
   for(const x of [8,16]) {
     ctx.save();ctx.globalAlpha*=.07;
     oval(ctx,{...v,shadeColor:undefined},x,7,.012,2.8,'#ffd492');
@@ -31,7 +45,8 @@ export function drawMap(ctx: CanvasRenderingContext2D, map: RestaurantMap, v: Re
 }
 
 function table(ctx: CanvasRenderingContext2D, v: RestaurantView, x: number, y: number, w: number, d: number) {
-  oval(ctx,v,x+w/2+.25,y+d/2+.25,.01,1.35,'#b3a58d');
+  ctx.save();ctx.globalAlpha*=.18;
+  oval(ctx,v,x+w/2+.25,y+d/2+.25,.01,1.35,p.ink);ctx.restore();
   for(const dx of [.18,w-.32]) for(const dy of [.18,d-.32]) box(ctx,v,x+dx,y+dy,0,.14,.14,1.32,p.woodDark);
   box(ctx,v,x,y,1.27,w,d,.17,p.woodLight,p.woodDark,p.wood);
   for(let n=.15;n<w;n+=.36) box(ctx,v,x+n,y+.04,1.443,.015,d-.08,.003,'#b88d5c');
@@ -51,8 +66,8 @@ function counter(ctx: CanvasRenderingContext2D, v: RestaurantView, x: number, y:
 
 function kitchenObjects(prop: RestaurantMap['props'][number]): RestaurantObject[] {
   const {x,y}=prop.position,w=prop.width;
-  const fixtures: {id:string;x:number;draw:RestaurantObject['draw']}[] = [];
-  for(const a of [1.7,4.2]) fixtures.push({id:`steamer.${a}`,x:x+a+.8,draw(ctx,v) {
+  const fixtures: {id:string;x:number;extent?:number;draw:RestaurantObject['draw']}[] = [];
+  for(const a of [1.7,4.2]) fixtures.push({id:`steamer.${a}`,x:x+a+.8,extent:1,draw(ctx,v) {
     for(let k=0;k<3;k++) {
       box(ctx,v,x+a,y+.65,1.87+k*.26,1.65,1.45,.23,'#dec28d','#ad8755','#c5a16a');
       box(ctx,v,x+a-.04,y+.61,2.06+k*.26,1.73,1.53,.06,p.cream);
@@ -65,8 +80,21 @@ function kitchenObjects(prop: RestaurantMap['props'][number]): RestaurantObject[
       ctx.fillStyle='#fff3d799';ctx.fillRect(Math.round(at.x),Math.round(at.y),2,4);
     }
   }});
-  for(const a of [8.5,10,11.5]) fixtures.push({id:`bowl.${a}`,x:x+a,draw(ctx,v){bowl(ctx,v,x+a,y+1.5,1.93);}});
-  fixtures.push({id:'youtiao',x:x+w-3,draw(ctx,v) {
+  for(const a of [8.4,8.95,10.2]) fixtures.push({id:`bowl.${a}`,x:x+a,draw(ctx,v){
+    const row=a===8.95?.85:1.5;
+    if(a===8.4) for(let k=0;k<3;k++) bowl(ctx,v,x+a,y+row,1.93+k*.12,false);
+    else bowl(ctx,v,x+a,y+row,1.93);
+  }});
+  fixtures.push({id:'utensils',x:x+12.1,draw(ctx,v) {
+    box(ctx,v,x+11.95,y+.95,1.87,.38,.38,.52,p.jade,p.jadeDark,p.jade);
+    for(let k=0;k<5;k++) box(ctx,v,x+12+k*.055,y+1.02+k%2*.08,2.35,.025,.025,.45+k%2*.14,p.woodDark);
+  }});
+  fixtures.push({id:'plate-stack',x:x+15.5,draw(ctx,v) {
+    for(let k=0;k<4;k++) oval(ctx,v,x+15.5,y+2.35,1.9+k*.07,.37,k%2?p.cream:'#c6b79b');
+    box(ctx,v,x+16.4,y+.5,1.87,.23,.23,.62,'#af965e','#796344','#927c51');
+    box(ctx,v,x+16.44,y+.54,2.49,.15,.15,.13,p.woodDark);
+  }});
+  fixtures.push({id:'youtiao',x:x+w-3,extent:1.4,draw(ctx,v) {
     box(ctx,v,x+w-4.4,y+.8,1.87,2.6,1.45,.12,p.woodDark);
     for(let k=0;k<5;k++) box(ctx,v,x+w-4.15+k*.43,y+1,2,.24,1.05,.19,p.brass,'#b68b4a','#c99c54');
   }});
@@ -74,6 +102,11 @@ function kitchenObjects(prop: RestaurantMap['props'][number]): RestaurantObject[
     box(ctx,v,x+6.1,y+.6,1.87,1.1,1.2,.1,p.cream);
     for(let i=0;i<5;i++) box(ctx,v,x+6.2+i*.15,y+.65,1.976,.04,1.08,.008,'#bbab8d');
     oval(ctx,v,x+6.65,y+1.1,2.05,.36,p.white);
+    box(ctx,v,x+5.95,y+.52,2.08,1.3,.12,.11,p.woodLight);
+    box(ctx,v,x+7.25,y+.545,2.1,.27,.07,.06,p.woodDark);
+    box(ctx,v,x+6.7,y+2.65,1.885,.7,.4,.045,p.cream);
+    box(ctx,v,x+6.7,y+3.045,.95,.7,.025,.96,'#e3d4b1','#c5b799','#e3d4b1');
+    for(const dx of [.14,.48]) box(ctx,v,x+6.7+dx,y+3.075,1.02,.045,.015,.82,'#b3b69a');
   }});
   fixtures.push({id:'ledger',x:x+13.75,draw(ctx,v) {
     box(ctx,v,x+13.2,y+.4,1.88,1.15,.8,.06,p.cream);
@@ -85,8 +118,14 @@ function kitchenObjects(prop: RestaurantMap['props'][number]): RestaurantObject[
     box(ctx,v,x+10.7,y+.35,1.88,.9,.7,.48,'#9caaa0','#5a706b','#7e928a');
     oval(ctx,v,x+11.15,y+.7,2.4,.4,'#b2beb0');
     box(ctx,v,x+11.11,y+.65,2.4,.09,.09,.12,p.woodDark);
+    box(ctx,v,x+10.67,y+.72,2.13,.8,.05,.045,p.woodDark);
+    oval(ctx,v,x+10.65,y+.75,2.16,.12,p.cream);
   }});
-  return fixtures.map(f=>({id:`restaurant.kitchen.${f.id}`,position:{x:f.x,y:y+prop.height},draw:f.draw}));
+  return fixtures.map(f=>{
+    const section=Math.min(Math.ceil(w/3)-1,Math.floor((f.x+(f.extent??.5)-x)/3));
+    const support=x+section*3+Math.min(3,w-section*3)/2;
+    return {id:`restaurant.kitchen.${f.id}`,position:{x:f.x,y:y+prop.height},depth:support+y+prop.height+.02,draw:f.draw};
+  });
 }
 
 export function renderObjects(map: RestaurantMap, _view: RestaurantView): RestaurantObject[] {
@@ -148,7 +187,10 @@ export function renderObjects(map: RestaurantMap, _view: RestaurantView): Restau
       box(ctx,v,.94,y,.1,.025,2,.4,p.wood);
       if([3,9,15].includes(y)) {
         box(ctx,v,.96,y+.1,1.2,.08,1.8,1.8,p.woodDark);
-        box(ctx,v,1.05,y+.22,1.33,.035,1.56,1.52,p.cool,'#8dabb6','#8dabb6');
+        const sky=y===3?'#9bb9c0':y===9?'#90acb5':'#819fab';
+        box(ctx,v,1.05,y+.22,1.33,.035,1.56,1.52,sky,sky,sky);
+        polygon(ctx,v,[[1.09,y+.23,2.6],[1.09,y+.7,2.85],[1.09,y+1.5,1.55],[1.09,y+1.13,1.34]],'#b6c8c6');
+        polygon(ctx,v,[[1.095,y+.3,1.4],[1.095,y+.75,1.4],[1.095,y+.6,1.8],[1.095,y+.28,1.73]],'#83999d');
         box(ctx,v,1.09,y+.95,1.3,.04,.07,1.6,p.cream);
         box(ctx,v,1.09,y+.2,2.04,.04,1.6,.07,p.cream);
         box(ctx,v,.96,y,1.17,.44,2,.14,p.woodLight);

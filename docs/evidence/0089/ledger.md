@@ -75,3 +75,13 @@ Draft PR is https://github.com/CallumHemsley/junyan/pull/35 against the coordina
 Restored seven distinct served-food drawings, including a tall soy-milk cup and straw, dumplings with folds, a pleated bun, sliced bread, egg, youtiao and porridge. Empty waiting bowls now belong to the state-derived table setting and disappear when the delivered meal replaces them, as in the legacy scene. Food is drawn after its table using explicit support depth.
 
 `node docs/evidence/0089/check-food.mjs` captured the same table with each real projected food kind and asserted seven distinct browser raster hashes. Inspected bun, milk and dumpling crop captures at actual production scale. Refreshed desktop, phone, kitchen and reduced-motion captures. TypeScript build passed again. This verifies distinct art output; shared renderer motion and integrated service acceptance remain pending.
+
+## Purposeful working-room polish
+
+Coordinator reviewed desktop.png and requested less sterile working detail. Added irregular wear at the threshold, service approach and stool feet. Contact shadows now preserve floor texture. Windows have different cool panes and angled daylight reflections, with faint corresponding floor light. Countertop groups now include stacked and staggered bowls, a utensil cup, rolling pin, folded and hanging striped cloth, ladle, plate stack and oil bottle. All remain original noncolliding drawings inside the existing geometry.
+
+Inspection caught neighboring cabinet segments covering raised fixtures. Each kitchen fixture now sorts just beyond the last cabinet support its footprint spans. It retains its own stable ID and actual position. No map, collision or actor scale changed. Non-emissive paints call shared shadeColor once; explicit glows keep raw colors and inherited alpha.
+
+After cloud recovery local HEAD was confirmed as 3acb275 matching GitHub. No unpublished source remained. Prior Vite process died with the connection. New strict-port preview process is exec session 19754 on port 5493.
+
+`node docs/evidence/0089/capture.mjs` refreshed four actual-scale captures, checked no page errors and compared supplied-time steam. Normal time 0 and 1200ms differ. Reduced-motion frames at those times are byte-identical. This checks art behavior from the host clock only, not production player motion. TypeScript and both projection tests pass. Independent production review remains pending.
