@@ -61,3 +61,47 @@ it('binds reading-room light to its real window panes and lamp shade without lig
  expect(authoredLocalLights({...map,props:[]} ).lights).toEqual([]);
  expect(authoredLocalLights({...map,props:map.props.map(prop=>({...prop,kind:'changed'}))}).lights).toEqual([]);
 });
+
+it('distinguishes an explicit empty pool from legacy undefined and authored nonempty receivers',()=>{
+ const input={mapId:'apartment',day:1,timeOfDay:'night' as const,elapsedMs:1000,seed:42,reducedMotion:true};
+ for(const kind of ['lamp','window'] as const){
+  const light={id:'fixture',kind,position:{x:3,y:4,z:2},radius:2};
+  const sample=(pool?:readonly {x:number;y:number;z:number}[])=>sampleAtmosphere(input,{interior:true,lights:[{...light,...(pool===undefined?{}:{pool})}]}).commands;
+  expect(sample().filter(c=>c.layer==='light')).toHaveLength(kind==='window'?4:3);
+  expect(sample([]).filter(c=>c.layer==='light')).toHaveLength(0);
+  const pool=[{x:2,y:3,z:.02},{x:4,y:3,z:.02},{x:4,y:5,z:.02},{x:2,y:5,z:.02}];
+  const authored=sample(pool).filter(c=>c.layer==='light');
+  expect(authored).toHaveLength(1);expect(authored[0].points).toEqual(pool);
+  expect(sample([]).filter(c=>c.layer==='objects')).toEqual(sample().filter(c=>c.layer==='objects'));
+ }
+});
+
+it('binds apartment apertures to actual movable lamp and pane geometry without foreground pools',()=>{
+ const lamp={id:'apartment.reading-lamp',kind:'lamp',position:{x:18.4,y:15.5},width:1,height:1};
+ const window={id:'apartment.window-one',kind:'window',position:{x:5,y:2},width:5,height:.25};
+ const hooks=authoredLocalLights({id:'apartment',terrain:[],props:[lamp,window]});
+ const practical=hooks.lights!.find(l=>l.id===lamp.id)!;
+ expect(practical.position).toEqual({x:18.9,y:16,z:1.83});
+ expect(practical.emitter!.every(p=>p.z===1.835&&p.x>18.4&&p.x<19.4&&p.y>15.5&&p.y<16.5)).toBe(true);
+ expect(hooks.lights!.every(l=>l.pool?.length===0)).toBe(true);
+ const panes=hooks.lights!.filter(l=>l.kind==='window');expect(panes.length).toBeGreaterThan(1);
+ expect(panes.every(l=>l.emitter!.every(p=>p.y===2.325&&p.x>5&&p.x<10&&p.z! >1.1&&p.z! <3.4))).toBe(true);
+ const moved=authoredLocalLights({id:'apartment',terrain:[],props:[{...lamp,position:{x:8.4,y:5.5}}]}).lights![0];
+ expect(moved.position).toEqual({x:8.9,y:6,z:1.83});
+ const input={mapId:'apartment',day:1,timeOfDay:'morning' as const,elapsedMs:0,seed:42,reducedMotion:true};
+ const frame=(phase:'morning'|'noon'|'evening'|'night')=>sampleAtmosphere({...input,timeOfDay:phase},{...hooks,interior:true});
+ expect(frame('morning').light.ambient).toEqual([.92,.89,.83]);expect(frame('noon').light.ambient).toEqual([.92,.89,.83]);
+ expect(frame('night').light.ambient[0]).toBeLessThan(frame('evening').light.ambient[0]);
+ expect(frame('night').light.ambient[2]).toBeGreaterThan(frame('night').light.ambient[0]);
+ expect(frame('night').commands.filter(c=>c.layer==='light')).toEqual([]);
+ expect(frame('night').commands.filter(c=>c.layer==='objects').every(c=>c.color===practical.color||panes.some(p=>p.color===c.color))).toBe(true);
+});
+
+it('uses optional authored emitter color while undefined emitters retain legacy bytes',()=>{
+ const input={mapId:'workshop',day:1,timeOfDay:'night' as const,elapsedMs:0,seed:42,reducedMotion:true};
+ const fixture={id:'light',kind:'lamp' as const,position:{x:2,y:3,z:2},radius:2};
+ const legacy=sampleAtmosphere(input,{lights:[fixture]}),explicit=sampleAtmosphere(input,{lights:[{...fixture,color:undefined}]});
+ expect(explicit).toEqual(legacy);
+ expect(legacy.commands.find(c=>c.layer==='objects')!.color).toEqual([255,224,153]);
+ expect(sampleAtmosphere(input,{lights:[{...fixture,color:[100,120,140]}]}).commands.find(c=>c.layer==='objects')!.color).toEqual([100,120,140]);
+});
