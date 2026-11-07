@@ -1,3 +1,5 @@
+import {advanceReadingUse,queueReadingEdit} from "../features/reading-room/use";
+import {restaurantPresence} from "../world/presence";
 import {releaseServedCustomer,restoreLife} from "../world/life";
 import {performLifeInteraction,type WorldLifeAction} from "../world/life-bridge";
 import { mapsForNeighbourhood, safeAfterEdit } from "../world/dynamic";
@@ -10,6 +12,7 @@ import { contentWords } from "../content/words";
 import * as apartment from "../features/apartment/rules";
 import * as cats from "../features/cats/rules";
 import * as repairs from "../features/repairs/rules";
+import * as readingRoom from "../features/reading-room/rules";
 import * as garden from "../features/garden/rules";
 import type { GiftId, LocationId } from "./contracts";
 import { availableGifts, createNeighbourhood } from "./model";
@@ -30,12 +33,26 @@ export type NeighbourhoodAction =
     | { feature: "cats"; action: cats.Action }
     | { feature: "repairs"; action: repairs.Action }
     | { feature: "garden"; action: garden.Action }
+    | { feature: "reading-room"; action: readingRoom.Action }
   ));
 
 export function isNeighbourhoodAction(action: { type: string }): action is NeighbourhoodAction {
   return action.type === "follow-scenario" || action.type === "purchase-furniture" || action.type==="advance-world-day" || action.type.startsWith("world-") || action.type === "visit-location" || action.type === "feature-action" || action.type === "claim-neighbourhood-gift";
 }
 
+
+function reconcileReadingUse(game: GameState, freshClock = false): GameState {
+  if (!game.world || !game.neighbourhood) return game;
+  const state = game.neighbourhood, before = state['reading-room'], maps = mapsForNeighbourhood(state);
+  const available = !restaurantPresence(game).some(actor => actor.characterId === 'lin-jie' && actor.inside);
+  if (!freshClock && available && (!before.use || before.use.pending && before.use.returnAt === null)) return game;
+  const reading = advanceReadingUse(before, maps['reading-room'], restoreLife(game.world.life).elapsedMs, available, game.world.mapId === 'reading-room');
+  if (reading === before) return game;
+  const neighbourhood = { ...state, 'reading-room': reading };
+  const afterMap = mapsForNeighbourhood(neighbourhood)[game.world.mapId];
+  const position = safeAfterEdit(maps[game.world.mapId], afterMap, game.world.position);
+  return position ? { ...game, neighbourhood, world: { ...game.world, position } } : game;
+}
 
 export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAction, content: Content): GameState {
   if (action.type === "purchase-furniture") {
@@ -45,7 +62,7 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
   const state = game.neighbourhood ?? createNeighbourhood(game.day);
   if(action.type==="advance-world-day") {
     const next=reduceGame(game,{type:"next-day",now:action.now},content);
-    return next===game?game:{...next,...(game.world?{world:{...game.world,life:{...restoreLife(game.world.life),serviceDepartures:[]}}}:{})};
+    return next===game?game:reconcileReadingUse({...next,...(game.world?{world:{...game.world,life:{...restoreLife(game.world.life),serviceDepartures:[]}}}:{})});
   }
   if(action.type==="world-life") {
     const maps=mapsForNeighbourhood(state),world=restoreWorld(game.world,maps,state.location,false);
@@ -63,7 +80,7 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
     }
     if (next === world) return game;
     let player=game.player;
-    const physicalLocation:LocationId|undefined=({restaurant:"restaurant",apartment:"apartment",courtyard:"cats",workshop:"repairs",rooftop:"garden"} as Record<string,LocationId>)[next.mapId];
+    const physicalLocation:LocationId|undefined=({restaurant:"restaurant",apartment:"apartment",courtyard:"cats",workshop:"repairs",rooftop:"garden","reading-room":"reading-room"} as Record<string,LocationId>)[next.mapId];
     const neighbourhood=physicalLocation&&physicalLocation!==state.location?{...state,location:physicalLocation}:state;
     if(action.type==="world-interact" && next.activeActivity) {
       const anchor=maps[next.mapId].anchors.find(a=>a.id===next.activeAnchorId);
@@ -81,7 +98,7 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
         if(repairAction)return reduceNeighbourhoodGame({...game,player,world:next,neighbourhood},{type:"feature-action",feature:"repairs",action:repairAction,now:action.now??0},content);
       }
     }
-    return { ...game, player, world: next, neighbourhood };
+    return reconcileReadingUse({ ...game, player, world: next, neighbourhood }, action.type === "world-clock");
   }
   if (action.type === "follow-scenario") {
     const scenario = availableScenarios(game).find(s => s.id === action.id);
@@ -128,6 +145,14 @@ export function reduceNeighbourhoodGame(game: GameState, action: NeighbourhoodAc
       if (after === state.repairs) return game;
       next = { ...state, repairs: after };
       recovered = repairs.recovered(state.repairs, action.action, after);
+      break;
+    }
+    case "reading-room": {
+      if (game.world && (game.world.mapId !== "reading-room" || game.world.activeActivity !== "reading-room")) return game;
+      const after = queueReadingEdit(state["reading-room"], action.action, restoreLife(game.world?.life).elapsedMs) ?? readingRoom.reduce(state["reading-room"], action.action);
+      if (after === state["reading-room"]) return game;
+      next = { ...state, "reading-room": after };
+      recovered = readingRoom.recoveryForTransition(state["reading-room"], action.action, after);
       break;
     }
     case "garden": {

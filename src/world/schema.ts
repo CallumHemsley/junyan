@@ -5,7 +5,7 @@ export const pointSchema = z.object({ x: finite, y: finite });
 export const facingSchema = z.enum(["north", "east", "south", "west"]);
 export const rectSchema = pointSchema.extend({ width: finite.positive(), height: finite.positive() });
 const spawnSchema = pointSchema.extend({ facing: facingSchema });
-export const featureSchema = z.enum(["restaurant", "apartment", "cats", "repairs", "garden", "exploration"]);
+export const featureSchema = z.enum(["restaurant", "apartment", "cats", "repairs", "garden", "reading-room", "exploration"]);
 export const worldMapSchema = z.object({
   version: z.literal(1), id: z.string().min(1),
   bounds: z.object({ width: finite.positive().max(1024), height: finite.positive().max(1024) }),

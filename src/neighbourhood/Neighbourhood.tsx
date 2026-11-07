@@ -4,6 +4,7 @@ import type { Line, Word } from "../contracts";
 import Apartment from "../features/apartment";
 import Cats from "../features/cats";
 import Repairs from "../features/repairs";
+import ReadingRoom from "../features/reading-room";
 import Garden from "../features/garden";
 import type { GiftId, LocationId } from "./contracts";
 import type { NeighbourhoodState } from "./model";
@@ -30,6 +31,7 @@ export default function Neighbourhood({ state, day, onAction, contextual, target
     {state.location === "apartment" && <Apartment {...shared} sceneMode={contextual?"world":"room"} state={state.apartment} onAction={action => onAction({type:"feature-action",feature:"apartment",action,now:Date.now()})}/>}
     {state.location === "cats" && <Cats {...shared} presentation={contextual?"controls":"scene"} state={state.cats} onAction={action => onAction({type:"feature-action",feature:"cats",action,now:Date.now()})}/>}
     {state.location === "repairs" && <Repairs {...shared} contextualJob={contextual ? state.repairs.active : undefined} state={state.repairs} onAction={action => onAction({type:"feature-action",feature:"repairs",action,now:Date.now()})}/>}
+    {state.location === "reading-room" && <ReadingRoom {...shared} state={state["reading-room"]} onAction={action => onAction({type:"feature-action",feature:"reading-room",action,now:Date.now()})}/>}
     {state.location === "garden" && <Garden {...shared} presentation={contextual?"controls":"scene"} plantId={target?.kind==="garden"?plantIds.find(id=>id===target.plantId):undefined} state={state.garden} onAction={action => onAction({type:"feature-action",feature:"garden",action,now:Date.now()})}/>}
   </div>;
 }

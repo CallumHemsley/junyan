@@ -1,5 +1,6 @@
 import type { WorldMapDefinition, Facing, Rect } from '../schema';
 import type { Position, Line } from '../../contracts';
+import type { HeldObject } from '../characters/background';
 import type { State as CatsState } from '../../features/cats/rules';
 
 export type { Facing, Rect } from '../schema';
@@ -66,6 +67,7 @@ export type ActorPose = {
   activity: RoutePhase['action'] | 'watch' | 'startle';
   phaseMs: number;
   greeting?: Line;
+  heldObject?: HeldObject;
   radius: number;
 };
 export type Affordance = {

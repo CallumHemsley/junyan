@@ -1,3 +1,4 @@
+import { readingRoomHost } from '../../features/reading-room/neighbours';
 import type { GameState } from '../../contracts';
 import type { WorldMapDefinition, WorldState } from '../schema';
 import { catHabitat } from '../maps/courtyard';
@@ -6,7 +7,7 @@ import { sampleLife } from './sample';
 import { navigationFor } from './navigation';
 import { nearbyLife, initialLifeState } from './interactions';
 import { courtyardHabitats } from './habitats';
-import { restaurantPresence } from './presence';
+import { lifeExcludedCharacterIds } from './resident-presence';
 import type { LifeContext, LifePlan, Navigation } from './model';
 
 const prepared = new WeakMap<WorldMapDefinition, { plan: LifePlan; navigation: Navigation }>();
@@ -22,10 +23,11 @@ export function worldLifeFrame(map: WorldMapDefinition, game: GameState, world: 
   const context: LifeContext = {
     day: game.day, seed: game.seed, elapsedMs: life.elapsedMs, player: world.position, reducedMotion,
     cats, habitats: map.id === 'courtyard' && cats ? courtyardHabitats(catHabitat(cats, game.day)) : undefined,
-    excludedCharacterIds: restaurantPresence(game, life).insideCharacterIds,
+    excludedCharacterIds: lifeExcludedCharacterIds(game, life, map.id),
     gardenMature: game.neighbourhood?.garden.restored === true && game.neighbourhood.garden.plants.tree.growth === 3,
   };
   const actors = sampleLife(source.plan, context, source.navigation, life);
+  if (map.id === 'reading-room' && game.neighbourhood) actors.push(...readingRoomHost(game.neighbourhood['reading-room'], context, map));
   const options = nearbyLife(source.plan, actors, world.position, source.navigation);
   return { ...source, life, context, actors, options };
 }

@@ -1,12 +1,13 @@
 import * as apartment from "../features/apartment/rules";
 import * as cats from "../features/cats/rules";
 import * as repairs from "../features/repairs/rules";
+import * as readingRoom from "../features/reading-room/rules";
 import * as garden from "../features/garden/rules";
 import type { GiftId, Neighbourhood } from "./contracts";
 import { initialNeighbourhood, restoreClaimedGifts, validateNeighbourhood } from "./state";
 
-export type NeighbourhoodState = Neighbourhood<apartment.State, cats.State, repairs.State, garden.State>;
-const boundaries = { apartment, cats, repairs, garden };
+export type NeighbourhoodState = Neighbourhood<apartment.State, cats.State, repairs.State, garden.State, readingRoom.State>;
+const boundaries = { apartment, cats, repairs, garden, "reading-room": readingRoom };
 
 export function createNeighbourhood(day: number): NeighbourhoodState {
   const state = initialNeighbourhood(boundaries);

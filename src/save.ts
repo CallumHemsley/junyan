@@ -113,7 +113,11 @@ export function validateSavedGame(
   if (!progression) return null;
   const restored = restoreNeighbourhood(neighbourhood, state.day);
   const purchased = { ...restored, apartment: restorePurchases(restored.apartment, progression) };
-  return { ...state, ...(savedProgression === undefined ? {} : { progression }), neighbourhood: purchased, ...(world === undefined ? {} : {world: restoreWorld(world, mapsForNeighbourhood(purchased), purchased.location)}) };
+  const restoredWorld = world === undefined ? undefined : restoreWorld(world, mapsForNeighbourhood(purchased), purchased.location);
+  const reading = purchased['reading-room'], clock = restoredWorld?.life?.elapsedMs ?? 0;
+  const futureUse = reading.use && (reading.use.startedAt > clock || reading.use.returnAt !== null && reading.use.returnAt > clock);
+  const safeNeighbourhood = futureUse ? { ...purchased, 'reading-room': { ...reading, use: null } } : purchased;
+  return { ...state, ...(savedProgression === undefined ? {} : { progression }), neighbourhood: safeNeighbourhood, ...(restoredWorld ? { world: restoredWorld } : {}) };
 }
 
 function database(): Promise<IDBDatabase> {

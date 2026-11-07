@@ -5,8 +5,8 @@ import { facingSchema, pointSchema, type WorldState, type Point, type FeatureId 
 import type { MapRegistry } from "./registry";
 import { canStand, canWalk, contains, nearbyAnchors } from "./geometry";
 const spawn=pointSchema.extend({facing:facingSchema});
-const savedSchema=z.object({version:z.literal(1),mapId:z.string(),position:pointSchema,facing:facingSchema,returnPositions:z.record(z.string(),spawn),activeActivity:z.enum(["restaurant","apartment","cats","repairs","garden"]).nullable(),activeAnchorId:z.string().nullable().default(null),life:z.unknown().optional()});
-const locationMap:Record<string,string>={restaurant:"restaurant",apartment:"apartment",cats:"courtyard",repairs:"workshop",garden:"rooftop"};
+const savedSchema=z.object({version:z.literal(1),mapId:z.string(),position:pointSchema,facing:facingSchema,returnPositions:z.record(z.string(),spawn),activeActivity:z.enum(["restaurant","apartment","cats","repairs","garden","reading-room"]).nullable(),activeAnchorId:z.string().nullable().default(null),life:z.unknown().optional()});
+const locationMap:Record<string,string>={restaurant:"restaurant",apartment:"apartment",cats:"courtyard",repairs:"workshop",garden:"rooftop","reading-room":"reading-room"};
 export function createWorld(maps:MapRegistry,location="restaurant"):WorldState {
   const map=maps[locationMap[location]]??maps.restaurant;
   return {version:1,mapId:map.id,position:{x:map.defaultSpawn.x,y:map.defaultSpawn.y},facing:map.defaultSpawn.facing,returnPositions:{},activeActivity:null,activeAnchorId:null,life:restoreLife(null)};

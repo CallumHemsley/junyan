@@ -10,7 +10,7 @@ const trees=new Set(['mature-tree','tree','willow','bamboo','courtyard-tree','tr
 const plants=new Set(['grass','reeds','flowers','planter','plant','raised-bed','trellis-bed','border-pot','hedge']);
 const windows=new Set(['window','warm-window']);
 const lamps=new Set(['lamp','lantern','street-lamp','floor-lamp','wall-lamp','task-lamp']);
-const interiors=new Set(['restaurant','apartment','workshop','residential-hall','residential-stairs']);
+const interiors=new Set(['restaurant','apartment','workshop','residential-hall','residential-stairs','reading-room']);
 
 function subtractWaterRect(water:Rect,deck:Rect):Rect[] {
   const left=Math.max(water.x,deck.x),top=Math.max(water.y,deck.y),right=Math.min(water.x+water.width,deck.x+deck.width),bottom=Math.min(water.y+water.height,deck.y+deck.height);

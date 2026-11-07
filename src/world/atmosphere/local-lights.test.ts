@@ -1,5 +1,8 @@
 import {expect,it} from 'vitest';
 import {authoredLocalLights} from './local-lights';
+import {renderObjects as readingRoomObjects} from '../art/reading-room';
+import {worldMaps} from '../registry';
+import {atmosphereHooksForMap} from './map-hooks';
 import {sampleAtmosphere} from './index';
 const lamp={id:'workshop.desk-lamp',kind:'lamp',position:{x:9,y:8.5},width:.6,height:.6};
 it('binds light to the actual fixture and does not scatter fallback emitters',()=>{
@@ -34,6 +37,29 @@ it('draws a tabletop practical after its host bench and before later objects',()
  const light=authoredLocalLights({id:'workshop',terrain:[],props:[lamp,bench]}).lights![0];
  expect(light.depth).toBe(5+7+(9+4)/2+.02);
  expect(light.depth).toBeGreaterThan(5+7+(9+4)/2+.01);
+});
+
+
+it('binds reading-room light to its real window panes and lamp shade without lighting the room as outdoors',()=>{
+ const map=worldMaps['reading-room'],hooks=atmosphereHooksForMap(map);
+ expect(hooks.interior).toBe(true);
+ expect(hooks.lights!.map(light=>light.id)).toEqual(['reading-room.broad-window','reading-room.alcove-window','reading-room.lamp']);
+ for(const light of hooks.lights!) {
+  const prop=map.props.find(prop=>prop.id===light.id)!;
+  expect(light.emitter!.every(point=>point.x>=prop.position.x-.15&&point.x<=prop.position.x+prop.width+.15)).toBe(true);
+  expect(light.pool!.every(point=>point.z===.025)).toBe(true);
+  if(light.kind==='window') {
+   expect(light.emitter!.every(point=>point.y===prop.position.y+.625)).toBe(true);
+   expect(light.depth).toBeGreaterThan(readingRoomObjects(map).find(object=>object.id===light.id)!.depth!);
+  }
+  else expect(light.emitter!.every(point=>point.z===1.685)).toBe(true);
+ }
+ const input={mapId:map.id,day:1,timeOfDay:'morning' as const,elapsedMs:1000,seed:42,reducedMotion:true};
+ const morning=sampleAtmosphere(input,hooks),evening=sampleAtmosphere({...input,timeOfDay:'evening'},hooks);
+ expect(evening.light.ambient[0]).toBeLessThan(morning.light.ambient[0]);
+ expect(evening.commands.filter(command=>command.layer==='light')).toHaveLength(3);
+ expect(authoredLocalLights({...map,props:[]} ).lights).toEqual([]);
+ expect(authoredLocalLights({...map,props:map.props.map(prop=>({...prop,kind:'changed'}))}).lights).toEqual([]);
 });
 
 it('distinguishes an explicit empty pool from legacy undefined and authored nonempty receivers',()=>{

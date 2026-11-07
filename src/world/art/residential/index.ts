@@ -204,8 +204,13 @@ function drawResidentialProp(api: ResidentialArtApi, prop: Omit<WorldMapDefiniti
       } else {
         box(x, y, 0, x + .2, endY, 2.8, wood); box(endX - .2, y, 0, endX, endY, 2.8, wood);
         box(x, y, 2.7, endX, endY, 2.9, wood);
-        box(x + .22, y, .1, endX - .22, endY, 2.65, prop.variant ? [121, 146, 132] : [160, 127, 89]);
-        sphere(endX - .55, endY + .05, 1.2, .08, [194, 163, 103], 'solid');
+        if (prop.variant === 'open') {
+          box(x + .2, y - 1.8, .1, x + .4, y, 2.65, [160, 127, 89]);
+          sphere(x + .45, y - 1.5, 1.2, .08, [194, 163, 103], 'solid');
+        } else {
+          box(x + .22, y, .1, endX - .22, endY, 2.65, prop.variant ? [121, 146, 132] : [160, 127, 89]);
+          sphere(endX - .55, endY + .05, 1.2, .08, [194, 163, 103], 'solid');
+        }
       }
       break;
     }

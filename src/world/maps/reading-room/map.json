@@ -1,0 +1,437 @@
+{
+  "version": 1,
+  "id": "reading-room",
+  "bounds": {
+    "width": 28,
+    "height": 19
+  },
+  "defaultSpawn": {
+    "x": 14,
+    "y": 14.5,
+    "facing": "north"
+  },
+  "walkable": [
+    {
+      "x": 2,
+      "y": 3,
+      "width": 24,
+      "height": 14
+    }
+  ],
+  "colliders": [
+    {
+      "id": "reading-room.back-bookcase",
+      "rect": {
+        "x": 23.2,
+        "y": 3,
+        "width": 2.6,
+        "height": 1.1
+      }
+    },
+    {
+      "id": "reading-room.front-bookcase",
+      "rect": {
+        "x": 3,
+        "y": 12.5,
+        "width": 1.1,
+        "height": 3.3
+      }
+    },
+    {
+      "id": "reading-room.return-cart",
+      "rect": {
+        "x": 16.8,
+        "y": 12.2,
+        "width": 2.3,
+        "height": 1.4
+      }
+    },
+    {
+      "id": "reading-room.project-desk",
+      "rect": {
+        "x": 12.8,
+        "y": 12,
+        "width": 2.4,
+        "height": 1.2
+      }
+    },
+    {
+      "id": "reading-room.plant",
+      "rect": {
+        "x": 21.9,
+        "y": 12.35,
+        "width": 1.2,
+        "height": 1.2
+      }
+    },
+    {
+      "id": "reading-room.window-plant",
+      "rect": {
+        "x": 11.5,
+        "y": 2.9,
+        "width": 1,
+        "height": 0.7
+      }
+    },
+    {
+      "id": "reading-room.lamp",
+      "rect": {
+        "x": 15.45,
+        "y": 11.95,
+        "width": 0.6,
+        "height": 0.6
+      }
+    },
+    {
+      "id": "reading-room.entry-left",
+      "rect": {
+        "x": 12.6,
+        "y": 16,
+        "width": 0.18,
+        "height": 0.8
+      }
+    },
+    {
+      "id": "reading-room.entry-right",
+      "rect": {
+        "x": 15.22,
+        "y": 16,
+        "width": 0.18,
+        "height": 0.8
+      }
+    }
+  ],
+  "occluders": [
+    {
+      "id": "reading-room.back-wall",
+      "rect": {
+        "x": 2,
+        "y": 2.6,
+        "width": 24,
+        "height": 0.4
+      },
+      "height": 2.9,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "reading-room.west-wall",
+      "rect": {
+        "x": 1.6,
+        "y": 3,
+        "width": 0.4,
+        "height": 14
+      },
+      "height": 2.9,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "reading-room.back-bookcase",
+      "rect": {
+        "x": 23.2,
+        "y": 3,
+        "width": 2.6,
+        "height": 1.1
+      },
+      "height": 2.9,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "reading-room.front-bookcase",
+      "rect": {
+        "x": 3,
+        "y": 12.5,
+        "width": 1.1,
+        "height": 3.3
+      },
+      "height": 2.9,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "reading-room.hall-threshold",
+      "rect": {
+        "x": 12.6,
+        "y": 16,
+        "width": 2.8,
+        "height": 0.8
+      },
+      "height": 2.7,
+      "fadeWhenPlayerBehind": true
+    }
+  ],
+  "entrances": [
+    {
+      "id": "reading-room.from-hall",
+      "position": {
+        "x": 14,
+        "y": 14.5
+      },
+      "facing": "north"
+    }
+  ],
+  "exits": [
+    {
+      "id": "to-hall",
+      "rect": {
+        "x": 13,
+        "y": 16,
+        "width": 2,
+        "height": 1
+      },
+      "targetMapId": "residential-hall",
+      "targetEntranceId": "hall.from-reading-room",
+      "kind": "door"
+    }
+  ],
+  "anchors": [
+    {
+      "id": "reading-room.project",
+      "position": {
+        "x": 11.5,
+        "y": 7
+      },
+      "radius": 2.3,
+      "featureId": "reading-room",
+      "interactionId": "reading-room.project"
+    }
+  ],
+  "terrain": [
+    {
+      "id": "reading-room.floor",
+      "rect": {
+        "x": 2,
+        "y": 3,
+        "width": 24,
+        "height": 14
+      },
+      "material": "timber",
+      "variant": 0
+    }
+  ],
+  "props": [
+    {
+      "id": "reading-room.back-wall",
+      "kind": "reading-wall",
+      "position": {
+        "x": 2,
+        "y": 2.6
+      },
+      "width": 24,
+      "height": 0.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "reading-room.west-wall",
+      "kind": "reading-wall",
+      "position": {
+        "x": 1.6,
+        "y": 3
+      },
+      "width": 0.4,
+      "height": 14,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "reading-room.east-wall",
+      "kind": "reading-low-wall",
+      "position": {
+        "x": 26,
+        "y": 3
+      },
+      "width": 0.3,
+      "height": 14,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "reading-room.broad-window",
+      "kind": "reading-window",
+      "position": {
+        "x": 7,
+        "y": 2.65
+      },
+      "width": 5,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "reading-room.alcove-window",
+      "kind": "reading-window",
+      "position": {
+        "x": 16.5,
+        "y": 2.65
+      },
+      "width": 1.5,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "reading-room.back-bookcase",
+      "kind": "reading-shelf",
+      "position": {
+        "x": 23.2,
+        "y": 3
+      },
+      "width": 2.6,
+      "height": 1.1,
+      "layer": "object",
+      "variant": 4
+    },
+    {
+      "id": "reading-room.front-bookcase",
+      "kind": "reading-shelf",
+      "position": {
+        "x": 3,
+        "y": 12.5
+      },
+      "width": 1.1,
+      "height": 3.3,
+      "layer": "object",
+      "variant": 2
+    },
+    {
+      "id": "reading-room.return-cart",
+      "kind": "reading-cart",
+      "position": {
+        "x": 16.8,
+        "y": 12.2
+      },
+      "width": 2.3,
+      "height": 1.4,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "reading-room.project-desk",
+      "kind": "reading-notice",
+      "position": {
+        "x": 12.8,
+        "y": 12
+      },
+      "width": 2.4,
+      "height": 1.2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "reading-room.plant",
+      "kind": "reading-plant",
+      "position": {
+        "x": 21.9,
+        "y": 12.35
+      },
+      "width": 1.2,
+      "height": 1.2,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "reading-room.window-plant",
+      "kind": "reading-plant",
+      "position": {
+        "x": 11.5,
+        "y": 2.9
+      },
+      "width": 1,
+      "height": 0.7,
+      "layer": "object",
+      "variant": 1
+    },
+    {
+      "id": "reading-room.mat",
+      "kind": "reading-mat",
+      "position": {
+        "x": 12.5,
+        "y": 13.7
+      },
+      "width": 3,
+      "height": 2,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "reading-room.floor-inlay",
+      "kind": "reading-inlay",
+      "position": {
+        "x": 3.75,
+        "y": 3.75
+      },
+      "width": 7.9,
+      "height": 6.1,
+      "layer": "ground",
+      "variant": 0
+    },
+    {
+      "id": "reading-room.alcove-inlay",
+      "kind": "reading-inlay",
+      "position": {
+        "x": 13.25,
+        "y": 3.75
+      },
+      "width": 7.9,
+      "height": 6.1,
+      "layer": "ground",
+      "variant": 1
+    },
+    {
+      "id": "reading-room.lamp",
+      "kind": "reading-lamp",
+      "position": {
+        "x": 15.45,
+        "y": 11.95
+      },
+      "width": 0.6,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 0
+    },
+    {
+      "id": "reading-room.hall-threshold",
+      "kind": "reading-entry",
+      "position": {
+        "x": 12.6,
+        "y": 16
+      },
+      "width": 2.8,
+      "height": 0.8,
+      "layer": "object",
+      "variant": 0
+    }
+  ],
+  "palette": {
+    "cream": [
+      237,
+      223,
+      190
+    ],
+    "wood": [
+      159,
+      119,
+      77
+    ],
+    "jade": [
+      111,
+      154,
+      134
+    ],
+    "ink": [
+      76,
+      65,
+      51
+    ]
+  },
+  "npcHooks": [],
+  "landmarks": [
+    {
+      "id": "reading-room.shared-desk",
+      "position": {
+        "x": 11.5,
+        "y": 7
+      },
+      "kind": "workbench"
+    }
+  ]
+}

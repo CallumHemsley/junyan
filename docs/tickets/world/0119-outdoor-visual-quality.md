@@ -25,10 +25,8 @@ The user wants different levels reviewed and improved in parallel. Outdoor scene
 - Candidate frozen: original staggered slate tiles, RGB material-value ramps, ridge/eave construction and connected interior boughs. Maps, water, routes, doors, actor/fade bounds and shared rendering are untouched. An initial geometric canopy backplate was rejected.
 - Verification: 683 rules passed with two workers, 23 outdoor navigation checks passed, six final art checks passed, TypeScript/build passed; desktop and phone opening/service/change/journal journeys passed. Detailed matched native captures and remaining journey results stay private.
 - Learning: the shared color shader treats exposure as sunlight strength, so traditional face factors do not establish material values; root coordinates that contract separately. Flat acreage, repeated building shapes and phone framing still limit quality.
-- Independent source and version-withheld visual gates are pending; this ticket remains doing and the broad Stardew craftsmanship bar remains open.
+- Independent source review found no actionable blocker. Version-withheld review verified local town-roof and park-crown gains, while both riverbank pairs tied and publisher references remained stronger. Accept this bounded pass; river water/shoreline work continues separately in0125 and the broad Stardew craftsmanship bar remains open.
 
 - Centrally reserved by root. Branch codex/0119-outdoor-visual-quality; worktree /private/tmp/junyan-world-outdoor-quality.
 - Lease art/town and art/landscape modules only initially. Propose any map/geometry/shared rendering change before editing. No restaurant/residential/shared painter/camera/schema/dependency changes. Ports5578/5579 strict.
 - All detailed plans, new native captures, traces and reports stay private under /private/tmp/junyan-world-private-qa/0119; no public raw QA or merges before independent gates.
-
-- Main-only release127: independently accepted bounded art/source gains ported without the reading-room chapter or experimental renderer. Exact release passes645 rules tests/99files, types/build,12 desktop/phone service/save/navigation journeys and two production offline checks. Phone and desktop native affected scenes inspected. This completes the scoped repair, while broader authored-world and character quality work remains active.

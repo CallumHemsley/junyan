@@ -1,5 +1,5 @@
 import {expect,it} from 'vitest';
-import {cameraForMap,explorationCamera,project} from './camera';
+import {cameraForMap,explorationCamera,frameCamera,presentationArea,project,unprojectAtHeight} from './camera';
 import {worldMaps} from './registry';
 import {pickSurface,surfaceHeight} from './surfaces';
 import {stairSurfaces} from './maps/residential/elevation';
@@ -55,6 +55,20 @@ it('preserves desktop and explicit-scale cameras',()=>{
  const bounds={width:24,height:22},position={x:18.5,y:9};
  expect(explorationCamera(bounds,position,720,458,0,256,2.4)).toEqual(cameraForMap(bounds,position,720,458,15,0,256,2.4));
  expect(cameraForMap(bounds,position,195,386,11).scale).toBe(11);
+});
+
+it('uses real clipping and panel positions while reserving persistent controls for short panels',()=>{
+ const canvas={x:0,y:68,width:390,height:772},screen={width:390,height:844};
+ const short=presentationArea(canvas,canvas,{x:16,y:750,width:358,height:40},screen);
+ expect(short.height*canvas.height).toBe(640);
+ const clipped=presentationArea(canvas,{...canvas,height:544},{x:16,y:200,width:358,height:336},screen);
+ expect(clipped.height*canvas.height).toBeCloseTo(124);
+ const frame=[{x:13.5,y:4,z:3.06},{x:21,y:10,z:0}];
+ const camera=frameCamera(frame,195,386,clipped,11);
+ for(const p of frame){
+  const hit=unprojectAtHeight(project(p,camera,p.z),camera,p.z);
+  expect(hit.x).toBeCloseTo(p.x);expect(hit.y).toBeCloseTo(p.y);
+ }
 });
 
 it('bounds workshop portrait follow by the painted room without shrinking actors or changing horizontal follow',()=>{

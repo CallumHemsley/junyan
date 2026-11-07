@@ -13,6 +13,7 @@ const bundles = (): Record<FeatureId, FeatureContent> => ({
   cats: { words: [], lines: [] },
   repairs: { words: [], lines: [] },
   garden: { words: [], lines: [] },
+  "reading-room": { words: [], lines: [] },
 });
 
 describe("feature content registration", () => {

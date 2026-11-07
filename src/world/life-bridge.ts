@@ -1,4 +1,5 @@
-import {restaurantPresence} from "./presence";
+import {readingRoomHost} from "../features/reading-room/neighbours";
+import {lifeExcludedCharacterIds} from "./life/resident-presence";
 import {compileLife,sampleLife,interactLife,restoreLife,courtyardHabitats,type LifePlan,type LifeContext} from "./life";
 import {navigationFor} from "./life/navigation";
 import {catHabitat} from "./maps/courtyard/habitat";
@@ -19,12 +20,16 @@ export function planFor(map:WorldMapDefinition,game?:GameState):LifePlan {
 }
 export function lifeContext(game:GameState,world:WorldState,elapsedMs:number,reducedMotion:boolean):LifeContext {
  const cats=game.neighbourhood?.cats,habitat=cats&&world.mapId==="courtyard"?catHabitat(cats,game.day):null;
- const seated=restaurantPresence({...game,world}).filter(p=>p.inside).map(p=>p.characterId);
- return {day:game.day,seed:game.seed,elapsedMs,player:world.position,reducedMotion,cats,excludedCharacterIds:seated,
+ const excludedCharacterIds=lifeExcludedCharacterIds(game,restoreLife(world.life),world.mapId,elapsedMs);
+ return {day:game.day,seed:game.seed,elapsedMs,player:world.position,reducedMotion,cats,excludedCharacterIds,
   habitats:habitat?courtyardHabitats(habitat):undefined,
   gardenMature:game.neighbourhood?.garden.restored === true && game.neighbourhood.garden.plants.tree.growth === 3};
 }
-export function actorsFor(map:WorldMapDefinition,game:GameState,world:WorldState,elapsedMs:number,reducedMotion:boolean) {return sampleLife(planFor(map,game),lifeContext(game,world,elapsedMs,reducedMotion),navigationFor(map),restoreLife(world.life));}
+export function actorsFor(map:WorldMapDefinition,game:GameState,world:WorldState,elapsedMs:number,reducedMotion:boolean) {
+ const context=lifeContext(game,world,elapsedMs,reducedMotion);
+ const actors=sampleLife(planFor(map,game),context,navigationFor(map),restoreLife(world.life));
+ return map.id==="reading-room"&&game.neighbourhood?[...actors,...readingRoomHost(game.neighbourhood["reading-room"],context,map)]:actors;
+}
 export function performLifeInteraction(map:WorldMapDefinition,game:GameState,world:WorldState,action:WorldLifeAction) {
  return interactLife(restoreLife(world.life),planFor(map,game),actorsFor(map,game,world,action.elapsedMs,false),lifeContext(game,world,action.elapsedMs,false),action.actionId,navigationFor(map));
 }

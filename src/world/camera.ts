@@ -49,6 +49,15 @@ function boundCameraVertically(camera:Camera,frame:readonly FramePoint[],availab
  return {...camera,offsetY:(camera.offsetY??0)+shift};
 }
 
+/** Visible scene rectangle as fractions of the canvas, excluding controls and the actual panel. */
+export function presentationArea(canvas:Rect,main:Rect,panel:Rect|null,screen:{width:number;height:number}):Rect {
+ const left=Math.max(canvas.x,main.x,0),top=Math.max(canvas.y,main.y,0);
+ let right=Math.min(canvas.x+canvas.width,main.x+main.width,screen.width);
+ let bottom=Math.min(canvas.y+canvas.height-132,main.y+main.height,screen.height);
+ if(panel){if(canvas.width>=800)right=Math.min(right,panel.x-8);else bottom=Math.min(bottom,panel.y-8);}
+ return {x:(left-canvas.x)/canvas.width,y:(top-canvas.y)/canvas.height,width:Math.max(0,right-left)/canvas.width,height:Math.max(0,bottom-top)/canvas.height};
+}
+
 /** Fit explicit world geometry into the visible area; player state and projection stay independent. */
 export function frameCamera(frame:readonly FramePoint[],width:number,height:number,available:Rect,maxScale:number):Camera {
  const xs=frame.map(p=>p.x-p.y),ys=frame.map(p=>(p.x+p.y)*.5-p.z);

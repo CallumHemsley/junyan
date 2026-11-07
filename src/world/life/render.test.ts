@@ -62,3 +62,15 @@ it('visibly acknowledges a reachable real reading-stone inspection without speec
     expect(drawn).toHaveLength(0);
   }
 });
+
+it('keeps a greeted walking resident in native walking posture while a settled resident acknowledges', () => {
+  const { ctx } = surface(1);
+  const state = { ...initialLifeState(), reactions: [{ mapId: 'reading-room', targetId: 'reading-room.host', reaction: 'wave' as const, atMs: 0 }] };
+  const view = { playerPosition: { x: 0, y: 0 }, width: 200, height: 100, pass: 'objects' as const, project: (point: { x: number; y: number }) => point, elapsedMs: 100, reducedMotion: false };
+  for (const walking of [true, false]) {
+    const actor: ActorPose = { id: 'reading-room.host', characterId: 'lin-jie', kind: 'resident', position: { x: 2, y: 2 }, facing: 'south', action: walking ? 'walk' : 'idle', activity: walking ? 'walk' : 'work', phaseMs: 100, radius: .22 };
+    let posture = '';
+    drawLifeActor(ctx, actor, view, (_ctx, _actor, _view, selected) => { posture = selected; }, state);
+    expect(posture).toBe(walking ? 'stand' : 'react');
+  }
+});

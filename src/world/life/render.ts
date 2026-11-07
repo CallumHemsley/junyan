@@ -59,7 +59,7 @@ function wildlife(ctx: CanvasRenderingContext2D, actor: ActorPose, view: LifeVie
 
 export function drawLifeActor(ctx: CanvasRenderingContext2D, actor: ActorPose, view: LifeView, drawResident: ResidentDrawer, state?: LifeState): void {
   if (actor.kind !== 'resident') { wildlife(ctx, actor, view); return; }
-  const reacting = state?.reactions.some(event => event.targetId === actor.id && event.reaction === 'wave' && view.elapsedMs >= event.atMs && view.elapsedMs - event.atMs < 1800);
+  const reacting = actor.action !== 'walk' && state?.reactions.some(event => event.targetId === actor.id && event.reaction === 'wave' && view.elapsedMs >= event.atMs && view.elapsedMs - event.atMs < 1800);
   const posture = reacting ? 'react' : actor.activity === 'sit' ? 'sit' : actor.activity === 'work' ? 'work' : actor.activity === 'watch' ? 'react' : 'stand';
   drawResident(ctx, actor, view, posture);
 }
