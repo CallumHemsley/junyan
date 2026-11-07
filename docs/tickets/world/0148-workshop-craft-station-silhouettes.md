@@ -24,3 +24,9 @@ Fresh source-fixed opening/workshop review initially prioritized rear storage, b
 - Evidence private next-opening-review and148; no new raw public exports. Source/test/ticket only. Overall Stardew comparison remains unmet.
 
 - Owner: opening/workshop reviewer turned writer; branch `codex/0148-workshop-craft-station-silhouettes`; worktree `/private/tmp/junyan-world-workshop-craft`; strict ports5653/5654. Initial contract check: all art routes through inherited material shader and renderer alpha; compound chair/sewing heights exceed existing host occluders, escalated to root before growing silhouettes. Early candidate first, then independent native gate.
+
+## Current-state merge / remaining work
+
+- Merged current frozen2fad5a7a snapshot at the user's2026-11-07 quota wrap-up request. Independent native direction review retained the construction improvements; source cross-review found no functional blocker and independently passed2 focused tests. Final combined release passes749 unit tests/122files, types/build.
+- This ticket remains doing/WIP: sewing base is visually dense/dark on phone/night, machine head ambiguous, cloth fringe comb-like and tool/timber separation weak. Broad final workshop gameplay journeys were not run; earlier native44pairs+18supportviews and5focusedchecks remain the scoped evidence. No shipping/AAA/whole-game parity acceptance.
+- No further polish cycle runs after the user's wrap-up request; raw QA stays private.
