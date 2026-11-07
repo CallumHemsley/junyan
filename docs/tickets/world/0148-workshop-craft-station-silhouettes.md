@@ -1,7 +1,7 @@
 ---
 id: 148
 title: Give workshop foreground craft stations distinct construction and silhouettes
-status: todo
+status: doing
 priority: high
 type: feature
 created: 2026-11-07
@@ -22,3 +22,5 @@ Fresh source-fixed opening/workshop review initially prioritized rear storage, b
 
 - Root centrally reserved after next-opening-review proposal; writer records own branch/worktree/strict ports5653/5654. Baseline readonlyc7b42169 preview5651 belongs same review agent.
 - Evidence private next-opening-review and148; no new raw public exports. Source/test/ticket only. Overall Stardew comparison remains unmet.
+
+- Owner: opening/workshop reviewer turned writer; branch `codex/0148-workshop-craft-station-silhouettes`; worktree `/private/tmp/junyan-world-workshop-craft`; strict ports5653/5654. Initial contract check: all art routes through inherited material shader and renderer alpha; compound chair/sewing heights exceed existing host occluders, escalated to root before growing silhouettes. Early candidate first, then independent native gate.

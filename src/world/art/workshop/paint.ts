@@ -5,6 +5,7 @@ import type { State } from '../../../features/repairs/rules';
 
 type Color = [number, number, number];
 type Prop = Pick<WorldMapDefinition['props'][number], 'kind' | 'position' | 'width' | 'height' | 'variant'>;
+export const workshopCraftHeights = { joinery: 2.6, sewing: 2.53, timber: 2.775 } as const;
 export type WorkshopPaintState = { repairs?: State; elapsedSeconds: number };
 const wood: Color = [156, 111, 70], edge: Color = [92, 69, 48], cream: Color = [239, 220, 182];
 const jade: Color = [111, 154, 134], metal: Color = [153, 159, 151], ink: Color = [58, 58, 52];
@@ -138,18 +139,66 @@ export function drawWorkshopProp(api: RepairArtApi, prop: Prop, state: WorkshopP
       if(state.repairs?.active===job&&state.repairs.jobs[job])drawWorkbenchPocket(api,x,y,w,job);
       break;
     case 'wood-bench':
-      bench(prop.variant?[177,138,88]:wood);
-      for(let i=0;i<4;i++) b(.2+i*.18,.2,1.64,.3+i*.18,h-.2,1.72,[203-i*8,172-i*6,115-i*5]);
-      b(w-.8,h-.35,1.4,w-.3,h+.18,1.86,metal); b(w-.7,h+.18,1.5,w-.4,h+.3,1.74,edge);
-      line([w-.55,h+.32,1.6],[w-.55,h+.32,1.2],.04,metal);
+      if(prop.variant){
+        // A trestle base and front vise distinguish joinery from the electrical tables.
+        for(const a of [.25,w-.85]){
+          b(a,.12,.04,a+.6,h-.12,.24,edge);
+          for(const c of [.25,h-.5]) b(a+.12,c,.24,a+.46,c+.25,1.47,wood);
+          b(a-.05,.18,1.25,a+.65,h-.18,1.45,edge);
+        }
+        b(.55,h/2-.13,.35,w-.55,h/2+.13,.57,wood);
+        for(const a of [.65,w-1.35]) line([a,h/2,.57],[a+.4,h/2,1.4],.09,edge);
+        b(0,0,1.45,w,h,1.64,[180,139,87]);
+        for(const c of [.13,.72,1.31]) b(.15,c,1.64,w-.15,c+.53,1.67,[193,153,98]);
+        b(0,0,1.45,.18,h,1.67,edge);b(w-.18,0,1.45,w,h,1.67,edge);
+        for(const a of [.7,1.5,2.3]) b(a,h-.28,1.672,a+.11,h-.17,1.68,edge);
+        b(w-1.2,h-.5,1.18,w-.35,h-.2,1.5,edge);
+        b(w-1.2,h-.2,1.25,w-.35,h-.06,1.7,wood);
+        line([w-.78,h-.24,1.39],[w-.78,h-.04,1.39],.07,metal);
+        line([w-.78,h-.04,1.12],[w-.78,h-.04,1.63],.055,edge);
+        b(.38,.32,1.67,1.85,.7,1.79,[211,177,120]);
+        b(.8,.32,1.79,1.32,.7,1.9,edge);
+        line([.95,.43,1.91],[1.16,.43,1.91],.07,wood);
+      }else{
+        bench();
+        for(let i=0;i<3;i++) b(.2+i*.25,.2,1.64,.38+i*.25,h-.3,1.73,[203-i*8,172-i*6,115-i*5]);
+        b(.15,h-.8,1.64,w-.15,h-.3,1.84,edge);
+        b(.22,h-.75,1.84,w-.22,h-.35,1.86,metal);
+      }
       break;
-    case 'sewing-bench':
-      bench(); b(1,.3,1.64,2.4,1.3,1.68,cream); b(1.35,.4,1.68,2.15,1,1.85,ink);
-      b(1.9,.45,1.85,2.15,.85,2.5,ink); b(1.3,.45,2.35,2.15,.85,2.53,ink);
-      line([1.35,.65,2.35],[1.35,.65,1.83],.04,metal);
-      dot(2.15,.97,2.2,.25,edge);
-      for(let i=0;i<3;i++){b(3+i*.28,.4,1.64,3.18+i*.28,.65,2.08,i%2?jade:straw);}
-      b(.3,.3,1.64,.8,1.85,1.72,blue); break;
+    case 'sewing-bench': {
+      // The open iron base and machine throat remain visible at the native raster scale.
+      for(const a of [.45,w-.65]){
+        for(const c of [.2,h-.35]) line([a,c,.15],[a,c,1.48],.075,ink);
+        line([a,.2,.18],[a,h-.35,1.42],.055,ink);
+        line([a,h-.35,.18],[a,.2,1.42],.055,ink);
+        b(a-.17,.15,.06,a+.17,h-.15,.18,ink);
+      }
+      line([.45,h-.3,.47],[w-.65,h-.3,.47],.065,ink);
+      b(1.5,.55,.31,2.65,1.4,.4,ink);
+      for(const a of [1.65,1.95,2.25,2.55]) line([a,.62,.42],[a,1.32,.42],.025,metal);
+      b(0,0,1.45,w,h,1.63,wood);b(.08,h-.12,1.5,w-.08,h,1.63,[191,149,96]);
+      b(w-.95,.2,1.06,w-.2,h-.2,1.45,edge);b(w-.92,h-.24,1.12,w-.23,h-.17,1.4,wood);
+      b(w-.67,h-.15,1.22,w-.48,h-.1,1.28,metal);
+      b(.85,.37,1.64,2.95,1.35,1.73,ink);b(1.05,.48,1.735,2.7,1.22,1.76,[86,87,71]);
+      line([2.38,.82,1.8],[2.38,.82,2.34],.19,ink);
+      line([2.38,.82,2.34],[1.42,.82,2.34],.15,ink);
+      line([1.42,.82,2.34],[1.42,.82,2.08],.145,ink);
+      line([1.42,.82,2.04],[1.42,.82,1.78],.025,metal);
+      b(1.23,.57,1.765,1.57,1.06,1.79,metal);
+      for(let i=0;i<12;i++){
+        const a=i*Math.PI/6,c=(i+1)*Math.PI/6;
+        line([2.76,.82+Math.cos(a)*.28,2.2+Math.sin(a)*.28],[2.76,.82+Math.cos(c)*.28,2.2+Math.sin(c)*.28],.045,edge);
+      }
+      for(const a of [0,Math.PI/2,Math.PI,Math.PI*1.5]) line([2.76,.82,2.2],[2.76,.82+Math.cos(a)*.25,2.2+Math.sin(a)*.25],.025,metal);
+      line([2.2,.82,2.46],[2.2,.82,2.49],.035,metal);
+      b(2.08,.71,2.44,2.32,.93,2.52,straw);
+      b(.18,.45,1.64,.98,1.94,1.68,blue);b(.18,1.91,1.12,.98,1.97,1.68,[134,155,167]);
+      for(const a of [.28,.57,.86]) b(a,1.975,1.14,a+.07,1.99,1.67,[173,190,195]);
+      b(.18,1.91,1.1,.98,1.99,1.17,blue);
+      for(let i=0;i<3;i++){b(3.25+i*.28,.35,1.64,3.45+i*.28,.6,1.99,i%2?jade:straw);}
+      break;
+    }
     case 'stool':
       for(const a of [.1,.7]) for(const c of [.1,.7]) b(a,c,0,a+.12,c+.12,.78,edge);
       b(0,0,.78,.9,.9,.92,wood); break;
@@ -158,8 +207,19 @@ export function drawWorkshopProp(api: RepairArtApi, prop: Prop, state: WorkshopP
       for(let c=.1;c<h;c+=.95) for(let z=.15;z<2.4;z+=.7){b(.05,c,z,w+.03,c+.8,z+.6,wood);b(w,c+.3,z+.25,w+.1,c+.5,z+.32,metal);}
       break;
     case 'timber-rack':
-      for(let a=.1;a<w;a+=.25) b(a,.1,0,a+.15,h-.2,2.6+a*.18,a%.5<.25?wood:straw);
-      b(0,h-.5,.7,w,h-.35,.85,edge); break;
+      for(const c of [.15,h-.3]){
+        b(.05,c,.04,w-.05,c+.2,.23,edge);
+        for(const a of [.08,w-.2]) b(a,c,.23,a+.12,c+.2,2.65,edge);
+      }
+      for(let i=0;i<4;i++) b(.2+i*.27,.4,.24,.39+i*.27,h-.45,.39+i%2*.09,i%2?wood:straw);
+      for(let row=0;row<2;row++)for(let i=0;i<4;i++){
+        const a=.2+i*.27,c=.35+row*.3,top=2.12+((i+row*2)%4)*.21;
+        b(a,c,.35,a+.2,c+.19,top,i%2?[181,139,87]:wood);
+        b(a+.03,c+.02,top,a+.17,c+.16,top+.025,[213,181,123]);
+      }
+      b(.05,h-.45,.62,w-.05,h-.3,.78,edge);
+      b(.05,.86,1.15,w-.05,1.01,1.3,wood);
+      break;
     case 'bins': case 'crates': case 'basket':
       b(0,0,0,w,h,.75,prop.variant?blue:wood); b(.12,.12,.6,w-.12,h-.12,.78,edge);
       for(let z=.15;z<.7;z+=.2) b(-.01,h,z,w+.01,h+.04,z+.04,straw);
@@ -173,8 +233,18 @@ export function drawWorkshopProp(api: RepairArtApi, prop: Prop, state: WorkshopP
     case 'kettle': dot(.3,.3,1.95,.28,metal);b(.15,.15,2.15,.45,.45,2.24,ink);line([.45,.3,2],[.65,.3,2.15],.07,metal);break;
     case 'task-lamp': case 'lamp': b(0,0,1.65,.5,.5,1.73,edge);line([.25,.25,1.73],[.3,.25,2.8],.045,metal);line([.3,.25,2.8],[-.15,.25,2.7],.05,metal);b(-.35,.05,2.5,.05,.45,2.7,jade);break;
     case 'chair-repair':
-      b(0,0,1.67,1,1,1.78,wood);for(const a of [.1,.8]) for(const c of [.1,.8]) b(a,c,1.78,a+.1,c+.1,2.5,edge);
-      b(.05,.05,2.4,.95,.2,2.6,wood); b(-.15,.3,1.65,1.15,.4,1.72,metal);break;
+      b(.1,.1,1.67,1.1,1,1.8,wood);
+      for(const c of [.22,.53,.84]) b(.13,c,1.8,1.07,c+.12,1.83,[196,153,96]);
+      for(const a of [.15,.92])for(const c of [.15,.87]){
+        const top=a>.8&&c>.8?2.23:2.6;
+        b(a,c,1.83,a+.13,c+.13,top,edge);
+        b(a+.02,c+.02,2.1,a+.11,c+.11,top,[184,139,83]);
+      }
+      for(const c of [.2,.9]) line([.22,c,2.15],[.99,c,2.15],.04,wood);
+      b(.02,.35,1.67,.1,.72,2.02,metal);b(1.1,.35,1.67,1.18,.72,2.02,metal);
+      line([.07,.55,1.91],[1.13,.55,1.91],.035,metal);
+      b(.47,.44,1.83,.7,.67,1.96,edge);
+      break;
     case 'shavings': for(let i=0;i<12;i++){const a=(i*1.31)%w,c=(i*.77)%h;line([a,c,.03],[a+.15,c+.1,.05],.035,straw);}break;
     case 'paper': b(0,0,1.67,w,h,1.69,cream);for(let i=0;i<3;i++) line([.2,.15+i*.13,1.7],[.7,.2+i*.13,1.7],.015,blue);break;
     case 'door-post': b(0,0,0,w,h,3.5,edge);b(.04,.04,0,w-.04,h-.04,3.5,wood);break;
