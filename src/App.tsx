@@ -5,6 +5,7 @@ import {performLifeInteraction} from "./world/life-bridge";
 import WorldViewport from "./world/WorldViewport";
 import { restoreWorld } from "./world/state";
 import { mapsForNeighbourhood } from "./world/dynamic";
+import { serviceDayPhase } from "./world/lighting";
 import WordToken from "./WordToken";
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Line, Word } from "./contracts";
@@ -79,6 +80,7 @@ export default function App() {
   const wordTrigger = useRef<HTMLButtonElement | null>(null);
   const panelTrigger = useRef<HTMLElement | null>(null);
   const wordOpen = word !== null;
+  const dayPhase = serviceDayPhase(state.served);
   const [change, setChange] = useState(0);
   const [audioError, setAudioError] = useState<PlaybackError>(null);
   const neighbourhood = state.neighbourhood ?? createNeighbourhood(state.day);
@@ -430,7 +432,7 @@ export default function App() {
       </div>
     );
   return (
-    <div className={`app-shell connected-shell${wordOpen ? " word-card-open" : ""}`} onFocusCapture={rememberPanelTrigger} onClickCapture={(event) => { guardWordCard(event); rememberPanelTrigger(event); }}>
+    <div className={`app-shell connected-shell${wordOpen ? " word-card-open" : ""}`} data-theme={dayPhase === "evening" || dayPhase === "night" ? "evening" : "morning"} onFocusCapture={rememberPanelTrigger} onClickCapture={(event) => { guardWordCard(event); rememberPanelTrigger(event); }}>
       <header className="topbar" inert={blockingPanel || dayEndOpen}>
         {brand}
         <nav aria-label={ui.navigation}>

@@ -175,14 +175,43 @@ function paintProp(ctx: CanvasRenderingContext2D, view: WorldRenderView, p: Para
         break;
       }
       case 'planter': pot(x, y, v); break;
-      case 'raised-bed':
+      case 'raised-bed': {
         box(x, y, w, d, .42, color.woodDark, color.wood, color.woodDark);
         floor(x + .13, y + .13, w - .26, d - .26, '#615d47', .44);
-        for (let yy = y + .4; yy < y + d - .2; yy += .65) for (let xx = x + .3; xx < x + w - .2; xx += .6) {
-          box(xx, yy, .4, .34, .25, color.leafLight, color.leafMid, color.leaf, .43);
-          line([xx + .1, yy + .1, .65], [xx + .23, yy + .15, .88], color.leaf, 2);
+        const leafMass = (cx: number, cy: number, ry: number, rx: number) => {
+          polygon([[cx - rx, cy, .63], [cx - rx * .5, cy + ry, .49], [cx + rx * .5, cy + ry, .49], [cx + rx, cy, .63], [cx + rx * .5, cy + ry, .7], [cx - rx * .5, cy + ry, .7]], color.leafDark);
+          polygon([[cx - rx, cy, .63], [cx - rx * .5, cy - ry, .65], [cx + rx * .5, cy - ry, .65], [cx + rx, cy, .63], [cx + rx * .5, cy + ry, .7], [cx - rx * .5, cy + ry, .7]], color.leaf);
+          polygon([[cx - rx, cy, .63], [cx - rx * .5, cy - ry, .65], [cx, cy - ry * .6, .76], [cx + rx * .3, cy, .78], [cx - rx * .5, cy + ry, .7]], color.leafMid);
+        };
+        const rosette = (cx: number, cy: number, h: number) => {
+          leafMass(cx, cy, .35, h > .9 ? .44 : .4);
+          for (const [dx, dy, fill] of [[0, -.34, color.leaf], [-.42, 0, color.leafMid], [.42, 0, color.leafMid], [0, .34, color.leafLight]] as const) {
+            const sx = dy * .64, sy = -dx * .64;
+            polygon([[cx, cy, h], [cx + dx * .35 + sx, cy + dy * .35 + sy, h - .04], [cx + dx * .85 + sx * .55, cy + dy * .85 + sy * .55, h - .17], [cx + dx, cy + dy, .57], [cx + dx * .85 - sx * .55, cy + dy * .85 - sy * .55, h - .2], [cx + dx * .35 - sx, cy + dy * .35 - sy, h - .07]], fill);
+          }
+          polygon([[cx - .18, cy, h], [cx, cy - .16, h + .07], [cx + .18, cy, h], [cx, cy + .17, h - .06]], color.leafLight);
+        };
+        if (v === 2) {
+          for (const [dx, dy, h] of [[.57, .5, .85], [1.32, .5, .93], [2.3, .53, .9], [.61, d - .49, .92], [1.35, d - .5, .85], [2.32, d - .49, .97]]) rosette(x + dx, y + dy, h);
+        } else if (v === 1) {
+          for (let row = 0; row < 2; row++) for (let col = 0; col < 4; col++) {
+            const cx = x + .55 + col * (w - 1.1) / 3, cy = y + .56 + row * (d - 1.12) + (col === 1 ? .03 : col === 2 ? -.03 : 0);
+            const h = .99 + (col + row) % 3 * .07;
+            leafMass(cx, cy, .38 + col % 2 * .02, .4 + (col + row) % 2 * .02);
+            for (const side of [-1, 1]) polygon([[cx, cy, .77], [cx + side * .36, cy + side * .14, .8], [cx + side * .3, cy + side * .37, .65], [cx, cy + side * .27, .69]], side === 1 ? color.leafMid : color.leaf);
+            for (const [dx, dy, rise, fill] of [[-.29, -.1, -.15, color.leaf], [.28, -.12, -.03, color.leafMid], [-.18, .15, .02, color.leafMid], [.26, .14, -.16, color.leafLight], [0, 0, .06, color.leafLight]] as const) {
+              polygon([[cx - .1, cy, .57], [cx + dx - .12, cy + dy, h + rise - .15], [cx + dx, cy + dy, h + rise], [cx + dx + .1, cy + dy, h + rise - .21], [cx + .1, cy + .06, .57]], fill);
+            }
+          }
+        } else {
+          const rows = Math.max(2, Math.floor(d / .75));
+          for (let row = 0; row < rows; row++) for (let col = 0; col < 3; col++) {
+            const inset = .57 + row % 2 * .04;
+            rosette(x + inset + col * (w - inset * 2) / 2 + (col === 1 ? (row % 2 ? -.07 : .05) : 0), y + .51 + row * (d - 1.02) / (rows - 1), .84 + (row + col) % 3 * .06);
+          }
         }
         break;
+      }
       case 'courtyard-tree': {
         const sway = view.reducedMotion ? 0 : Math.sin(view.elapsedMs / 2000 + x) * .06;
         box(x + .45, y + .45, .3, .3, 3, color.wood, color.woodDark, color.woodDark);

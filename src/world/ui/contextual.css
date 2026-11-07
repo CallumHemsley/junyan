@@ -57,3 +57,34 @@
 .world-tray-item { display: inline-flex; align-items: center; gap: 4px; }
 
 .world-dialogue-history > summary { min-height: 44px; display: flex; align-items: center; width: 44px; justify-content: center; cursor: pointer; border-radius: var(--radius-tile); background: var(--surface-control); }
+
+.connected-shell .world-context {
+  background: var(--world-paper);
+  border: 2px solid var(--world-rim);
+  border-radius: var(--radius-receipt);
+  box-shadow: var(--world-inset), 0 3px 0 var(--world-frame), var(--shadow-panel);
+}
+.connected-shell .world-context-heading {
+  border-bottom-color: var(--world-rim);
+  box-shadow: inset 0 -2px var(--hairline);
+}
+.connected-shell .world-context-close,
+.connected-shell .world-context-action > button,
+.connected-shell .world-context-options button {
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--radius-receipt);
+  box-shadow: var(--world-inset);
+}
+.connected-shell .world-pocket-bar {
+  gap: 2px;
+  padding: 3px;
+  background: var(--world-frame);
+  border-radius: var(--radius-receipt);
+  box-shadow: 0 2px 0 var(--world-rim);
+}
+.connected-shell .world-pocket-bar button {
+  background: var(--world-paper);
+  border-color: var(--world-rim);
+  border-radius: var(--radius-receipt);
+  box-shadow: var(--world-inset);
+}
