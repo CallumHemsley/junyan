@@ -6,7 +6,7 @@ import {RESTAURANT_FURNITURE_PROFILE,restaurantObjects} from "./art/restaurant";
 import {content} from "../content";
 import {restaurantPresentation} from "./restaurant-view";
 import {drawLifeActor,drawLifeReactions} from "./life";
-import {colorShader} from "./lighting";
+import {colorShader,serviceDayPhase} from "./lighting";
 import {canFadeOccluder} from "./occlusion";
 import {foliageOcclusionBounds} from "./foliage-occlusion";
 import {sampleActor,drawActor,projectActorBounds} from "./characters";
@@ -40,7 +40,7 @@ export function drawPlayer(ctx:CanvasRenderingContext2D,view:WorldRenderView,p:P
 }
 export function paintWorld(ctx:CanvasRenderingContext2D,map:WorldMapDefinition,view:WorldRenderView,facing:Facing,moving:boolean,scale:number,game?:GameState,world?:WorldState,motion?:{yaw?:number;distanceTravelled:number}) {
  const baseHooks=hooksFor(map),hooks=map.id==="workshop"&&game?.neighbourhood?workshopAtmosphereHooks(map,game.neighbourhood.repairs,baseHooks):baseHooks;
- const atmosphere=sampleAtmosphere({mapId:map.id,day:game?.day??1,timeOfDay:(game?.served??0)<2?"morning":(game?.served??0)<3?"noon":(game?.served??0)<4?"evening":"night",seed:game?.seed??42,elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion},hooks,worldViewBounds(view));
+ const atmosphere=sampleAtmosphere({mapId:map.id,day:game?.day??1,timeOfDay:serviceDayPhase(game?.served??0),seed:game?.seed??42,elapsedMs:view.elapsedMs,reducedMotion:view.reducedMotion},hooks,worldViewBounds(view));
  const shadeColor=colorShader(atmosphere.light);view={...view,shadeColor,castLight:atmosphere.light};
  const modules=selectArtModules(artModules,map.id).filter(module=>module!==artModules["./art/workshop/index.ts"]);
  if(map.id==="workshop"&&game?.neighbourhood)modules.push(createWorkshopArt(game.neighbourhood.repairs));

@@ -1,4 +1,7 @@
-import {shadeAtmosphereColor,type LightState,type RGB} from "./atmosphere";
+import {shadeAtmosphereColor,type DayPhase,type LightState,type RGB} from "./atmosphere";
+export function serviceDayPhase(served:number):DayPhase {
+ return served<2?"morning":served<3?"noon":served<4?"evening":"night";
+}
 export type ShadeColor=(base:RGB|string,brightness?:number)=>string;
 const shaders=new Map<string,ShadeColor>();
 export function colorShader(light:LightState):ShadeColor {

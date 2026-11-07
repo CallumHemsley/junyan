@@ -4,7 +4,7 @@ import {restaurantMap} from './restaurant';
 const fixture=vi.hoisted(()=>({objects:[] as WorldRenderObject[],draws:[] as {id:string;alpha:number}[],authored:true}));
 vi.mock('./art-registry',()=>({artModules:{},selectArtModules:()=>fixture.authored?[{renderObjects:()=>fixture.objects}]:[]}));
 vi.mock('./characters',()=>({sampleActor:()=>({}),projectActorBounds:()=>({x:0,y:0,width:10,height:20}),drawActor:(ctx:CanvasRenderingContext2D)=>fixture.draws.push({id:'player',alpha:ctx.globalAlpha})}));
-vi.mock('./lighting',()=>({colorShader:()=>((color:string)=>color)}));
+vi.mock('./lighting',async importOriginal=>({...await importOriginal<typeof import('./lighting')>(),colorShader:()=>((color:string)=>color)}));
 vi.mock('./atmosphere',()=>({sampleAtmosphere:()=>({light:{}})}));
 vi.mock('./atmosphere/canvas',()=>({drawAtmosphere:()=>{},renderAtmosphereObjects:()=>[]}));
 import {paintWorld} from './painter';

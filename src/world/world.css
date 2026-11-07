@@ -1,11 +1,11 @@
-.connected-world{position:relative;width:100%;height:calc(100dvh - 84px);min-height:480px;background:#334d47;overflow:hidden;outline:none;touch-action:none}.connected-world:focus-visible{outline:2px solid var(--text-primary);outline-offset:-3px}.connected-world canvas{width:100%;height:100%;display:block;image-rendering:pixelated}.world-place{position:absolute;top:20px;left:24px;background:#fbf7efe8;border:1px solid #241d163d;border-radius:8px;padding:10px 18px;color:#241d16;font-size:18px;pointer-events:none;box-shadow:0 3px 12px #182d2730}.world-nearby{position:absolute;bottom:110px;left:50%;transform:translateX(-50%);display:flex;gap:8px}.world-nearby button{min-height:48px;padding:8px 20px;background:#fbf7ef;color:#241d16;border:1px solid #241d1640;border-radius:8px;box-shadow:0 3px 10px #10282055}.world-pad{position:absolute;bottom:20px;left:24px;display:grid;grid-template-columns:repeat(3,48px);grid-template-rows:repeat(2,48px);gap:3px}.world-pad button{min-width:48px;min-height:48px;background:#fbf7efd9;border:1px solid #241d1640;border-radius:8px;color:#241d16;touch-action:none;font-size:22px}.world-pad button:first-child{grid-column:2}.world-pad button:nth-child(2){grid-row:2;grid-column:1}.world-pad button:nth-child(3){grid-row:2;grid-column:2}.world-pad button:nth-child(4){grid-row:2;grid-column:3}.world-activity{position:absolute;right:20px;top:100px;width:min(430px,40vw);max-height:calc(100dvh - 130px);overflow:auto;background:var(--surface-card);border:1px solid var(--hairline-strong);border-radius:12px;box-shadow:0 10px 28px #152c2755;padding:16px;z-index:2}.world-activity-close{min-height:44px;width:100%;margin-bottom:8px}.world-activity .play-layout{display:block}.world-activity .world-panel{padding:0}.world-activity .restaurant-scene{display:none}.world-activity .service-strip{display:block}.world-activity .neighbourhood-feature{min-height:0}.connected-shell main{position:relative;padding:0;max-width:none}.connected-shell .topbar{position:relative;z-index:4}.world-activity .neighbourhood-gifts{margin-top:12px}.world-activity .apartment-scene canvas,.world-activity .cats-scene canvas,.world-activity .garden-scene canvas,.world-activity .repair-scene canvas{display:none}.world-activity .apartment-scene,.world-activity .cats-scene,.world-activity .garden-scene,.world-activity .repair-scene{max-height:180px}.world-activity .apartment-scene:has(canvas:only-child){display:none}@media(max-width:600px){.connected-world{height:calc(100dvh - 72px);min-height:440px}.world-place{top:12px;left:12px;padding:8px 14px}.world-pad{left:12px;bottom:12px}.world-activity{top:auto;bottom:12px;right:8px;left:8px;width:auto;max-height:48dvh;padding:10px}.world-nearby{bottom:125px}.world-activity .spoken{font-size:28px;line-height:1.4}}
+.connected-world{position:relative;width:100%;height:calc(100dvh - 84px);min-height:480px;background:var(--world-frame);overflow:hidden;outline:none;touch-action:none}.connected-world:focus-visible{outline:2px solid var(--text-primary);outline-offset:-3px}.connected-world canvas{width:100%;height:100%;display:block;image-rendering:pixelated}.world-place{position:absolute;top:20px;left:24px;background:var(--world-paper);border:1px solid var(--hairline-strong);border-radius:8px;padding:10px 18px;color:var(--text-primary);font-size:18px;pointer-events:none;box-shadow:0 3px 12px #182d2730}.world-nearby{position:absolute;bottom:110px;left:50%;transform:translateX(-50%);display:flex;gap:8px}.world-nearby button{min-height:48px;padding:8px 20px;background:var(--world-paper);color:var(--text-primary);border:1px solid var(--hairline-strong);border-radius:8px;box-shadow:0 3px 10px #10282055}.world-pad{position:absolute;bottom:20px;left:24px;display:grid;grid-template-columns:repeat(3,48px);grid-template-rows:repeat(2,48px);gap:3px}.world-pad button{min-width:48px;min-height:48px;background:var(--world-paper);border:1px solid var(--hairline-strong);border-radius:8px;color:var(--text-primary);touch-action:none;font-size:22px}.world-pad button:first-child{grid-column:2}.world-pad button:nth-child(2){grid-row:2;grid-column:1}.world-pad button:nth-child(3){grid-row:2;grid-column:2}.world-pad button:nth-child(4){grid-row:2;grid-column:3}.world-activity{position:absolute;right:20px;top:100px;width:min(430px,40vw);max-height:calc(100dvh - 130px);overflow:auto;background:var(--surface-card);border:1px solid var(--hairline-strong);border-radius:12px;box-shadow:0 10px 28px #152c2755;padding:16px;z-index:2}.world-activity-close{min-height:44px;width:100%;margin-bottom:8px}.world-activity .play-layout{display:block}.world-activity .world-panel{padding:0}.world-activity .restaurant-scene{display:none}.world-activity .service-strip{display:block}.world-activity .neighbourhood-feature{min-height:0}.connected-shell main{position:relative;padding:0;max-width:none}.connected-shell .topbar{position:relative;z-index:4}.world-activity .neighbourhood-gifts{margin-top:12px}.world-activity .apartment-scene canvas,.world-activity .cats-scene canvas,.world-activity .garden-scene canvas,.world-activity .repair-scene canvas{display:none}.world-activity .apartment-scene,.world-activity .cats-scene,.world-activity .garden-scene,.world-activity .repair-scene{max-height:180px}.world-activity .apartment-scene:has(canvas:only-child){display:none}@media(max-width:600px){.connected-world{height:calc(100dvh - 72px);min-height:440px}.world-place{top:12px;left:12px;padding:8px 14px}.world-pad{left:12px;bottom:12px}.world-activity{top:auto;bottom:12px;right:8px;left:8px;width:auto;max-height:48dvh;padding:10px}.world-nearby{bottom:125px}.world-activity .spoken{font-size:28px;line-height:1.4}}
 
 .app-shell.connected-shell{max-width:none;margin:0;padding:0}.connected-shell .topbar{padding:0 24px}.connected-shell main{width:100%}@media(max-width:600px){.connected-shell .topbar{padding:0 12px}}
-.world-place{pointer-events:auto}.world-place .word-token{font-size:18px;line-height:28px;padding:0 3px;min-height:44px}.world-anchor{display:flex;align-items:center;background:#fbf7efee;border-radius:8px;padding:0 5px;box-shadow:0 3px 12px #18382f44}.world-anchor .word-token{font-size:20px;line-height:30px}.world-anchor>button{box-shadow:none;border:0;padding:8px 12px}.world-activity .customer-list,.world-activity .next-action,.world-activity .kitchen-link{display:none}
-.world-life-options{position:absolute;right:20px;bottom:24px;display:flex;gap:8px}.world-life-options .word-token{font-size:18px;line-height:30px}.world-life-options button{min-height:44px;min-width:44px}.world-life-dialogue{position:absolute;left:50%;bottom:100px;transform:translateX(-50%);max-width:min(560px,90%);background:#fbf7efec;border-radius:12px;padding:12px 20px;box-shadow:0 6px 20px #17382c55}.world-place:empty{display:none}@media(max-width:600px){.world-life-options{right:8px;bottom:18px;max-width:190px;flex-wrap:wrap}.world-life-dialogue{bottom:140px;padding:8px 12px}.world-life-dialogue .word-token{font-size:24px}}
+.world-place{pointer-events:auto}.world-place .word-token{font-size:18px;line-height:28px;padding:0 3px;min-height:44px}.world-anchor{display:flex;align-items:center;background:var(--world-paper);border-radius:8px;padding:0 5px;box-shadow:0 3px 12px #18382f44}.world-anchor .word-token{font-size:20px;line-height:30px}.world-anchor>button{box-shadow:none;border:0;padding:8px 12px}.world-activity .customer-list,.world-activity .next-action,.world-activity .kitchen-link{display:none}
+.world-life-options{position:absolute;right:20px;bottom:24px;display:flex;gap:8px}.world-life-options .word-token{font-size:18px;line-height:30px}.world-life-options button{min-height:44px;min-width:44px}.world-life-dialogue{position:absolute;left:50%;bottom:100px;transform:translateX(-50%);max-width:min(560px,90%);background:var(--world-paper);border-radius:12px;padding:12px 20px;box-shadow:0 6px 20px #17382c55}.world-place:empty{display:none}@media(max-width:600px){.world-life-options{right:8px;bottom:18px;max-width:190px;flex-wrap:wrap}.world-life-dialogue{bottom:140px;padding:8px 12px}.world-life-dialogue .word-token{font-size:24px}}
 .connected-shell .world-context{z-index:6}.connected-shell .world-pocket-bar{z-index:7}.connected-shell .world-context .neighbourhood-feature{padding:0;min-height:0}.connected-shell .world-context .apartment-view,.connected-shell .world-context .garden,.connected-shell .world-context .repairs,.connected-shell .world-context .cats-view{max-width:none;padding:0;background:transparent;box-shadow:none;border:0}.connected-shell .world-context .spoken{font-size:28px}.connected-shell .world-context h2 .word{font-size:16px;line-height:24px}.connected-shell .world-life-options{bottom:80px}.tray-pocket{display:flex;flex-wrap:wrap;gap:12px}.tray-pocket>div{display:flex;flex-direction:column;align-items:center}.tray-pocket svg{width:64px;height:64px}.connected-shell .world-context .apartment-layout,.connected-shell .world-context .repair-layout,.connected-shell .world-context .garden-layout{display:block}.connected-shell .world-context .apartment-grid{max-width:100%;overflow:auto}.connected-shell .world-context .word{max-width:100%}.connected-shell .world-context-actions .word{font-size:18px}
 
-.world-day-summary{position:absolute;right:16px;top:16px;z-index:2;width:44px;height:44px;border:1px solid #241d1640;border-radius:8px;background:#fbf7efee;color:#241d16}.world-day-summary svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.5}
+.world-day-summary{position:absolute;right:16px;top:16px;z-index:2;width:44px;height:44px;border:1px solid var(--hairline-strong);border-radius:8px;background:var(--world-paper);color:var(--text-primary)}.world-day-summary svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.5}
 
 .world-target-cue{position:absolute;width:40px;height:24px;transform:translate(-50%,-50%);pointer-events:none;z-index:1}
 .world-target-cue svg{width:100%;height:100%;fill:none;stroke:var(--surface-card);stroke-width:3}
@@ -23,3 +23,90 @@
 
 .world-place{display:flex;align-items:center;gap:6px;padding:8px 12px;min-height:52px}
 .world-place-badge{flex:0 0 28px;width:28px;height:28px;fill:none;stroke:var(--text-secondary);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* The frame uses the same paper and timber values as the readable panels. */
+.connected-shell {
+  min-height: 100dvh;
+  --world-frame: color-mix(in srgb, var(--text-primary) 75%, var(--surface-sunk));
+  --world-frame-ink: var(--surface-card);
+  --world-paper: color-mix(in srgb, var(--surface-sunk) 85%, var(--text-secondary));
+  --world-rim: color-mix(in srgb, var(--text-secondary) 70%, var(--surface-sunk));
+  --world-inset: inset 0 1px var(--surface-raised), inset 0 -2px var(--hairline-strong);
+  background: var(--world-frame);
+  color: var(--text-primary);
+}
+.connected-shell[data-theme="evening"] {
+  --world-frame: var(--surface-sunk);
+  --world-frame-ink: var(--text-primary);
+  --world-paper: var(--surface-card);
+  --world-rim: var(--slot-edge);
+}
+.connected-shell .topbar {
+  color: var(--world-frame-ink);
+  background: var(--world-frame);
+  border-bottom: 3px solid var(--world-rim);
+  box-shadow: inset 0 1px var(--hairline-strong);
+}
+.connected-shell .brand-seal {
+  border-color: currentColor;
+  border-radius: var(--radius-receipt);
+  box-shadow: 2px 2px var(--hairline-strong);
+}
+.connected-shell .brand-divider { color: inherit; opacity: .65; }
+.connected-shell .topbar nav button {
+  border-radius: var(--radius-receipt);
+  border: 1px solid transparent;
+}
+.connected-shell .topbar nav button:hover:not(:disabled) {
+  background: transparent;
+  border-color: currentColor;
+}
+.connected-shell .topbar button:focus-visible {
+  outline-color: var(--world-frame-ink);
+}
+.connected-shell .ambience-settings > summary { color: var(--world-frame-ink); border-radius: var(--radius-receipt); }
+.connected-shell .ambience-settings[open] > summary { color: var(--text-primary); }
+.connected-shell .ambience-settings > summary:focus-visible { outline-color: var(--world-frame-ink); }
+.connected-shell .ambience-options { color: var(--text-primary); }
+.connected-world { box-shadow: inset 0 0 0 3px var(--world-frame); }
+.connected-world:focus-visible { outline: 3px solid var(--text-primary); outline-offset: -5px; }
+.world-place,
+.world-target-group,
+.world-life-dialogue,
+.world-day-summary {
+  color: var(--text-primary);
+  background: var(--world-paper);
+  border: 2px solid var(--world-rim);
+  border-radius: var(--radius-receipt);
+  box-shadow: var(--world-inset), 0 3px 0 var(--world-frame), 0 5px 8px var(--hairline-strong);
+}
+.world-place { border-left: 5px solid var(--world-frame); }
+.world-place-badge { stroke-width: 2; stroke-linecap: square; stroke-linejoin: miter; }
+.world-pad {
+  gap: 2px;
+  padding: 4px;
+  border-radius: var(--radius-receipt);
+  background: var(--world-frame);
+  box-shadow: 0 2px 0 var(--world-rim);
+}
+.world-pad button,
+.world-target-activate,
+.world-target-switch {
+  background: var(--world-paper);
+  border: 1px solid var(--world-rim);
+  border-radius: var(--radius-receipt);
+  box-shadow: var(--world-inset);
+  color: var(--text-primary);
+}
+.world-pad button { font-family: var(--font-serif); font-weight: 600; }
+.world-pad button:active,
+.world-target-activate:active,
+.world-target-switch:active { background: var(--surface-sunk); box-shadow: inset 0 2px var(--hairline-strong); }
+.world-target-cue svg { stroke: var(--surface-card); stroke-width: 2; }
+.world-target-cue ellipse+ellipse { stroke: var(--text-primary); stroke-width: 2; }
+.world-target-group button:focus-visible,
+.world-place .word:focus-visible,
+.world-pad button:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
