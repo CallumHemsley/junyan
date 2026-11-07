@@ -1,7 +1,7 @@
 ---
 id: 145
 title: Compose the rooftop as a worked kitchen garden
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-07
@@ -28,3 +28,5 @@ Native full-App reviews show repeated isolated beds and a broad tile grid domina
 - Verification at `b5b53678`: 682 tests/107 files and TypeScript/build passed. All six actual desktop/phone neighbourhood learning, waiter opening/service/change/journal and physical traversal journeys passed (15.3m). An earlier interrupted run has no verdict and is retained separately.
 - Reconciled accepted main #63 (`121c7aaa`) once in `009f32fc`; rooftop source/test SHA256 stayed identical. Combined 685 tests/108 files and TypeScript/build pass. Eight actual-App native phone/desktop morning/evening support/overlap frames inspected; console clean, updated interface present, trolley support/fade and actor readability retained. Independent reconciliation acceptance remains pending; status stays doing.
 - Evidence remains private under `/private/tmp/junyan-world-private-qa/0145`. Earlier manifest camera fields were reconstructed, not observed actual production cameras; supplemental provenance corrects that limitation. Reconciled frames omit reconstructed camera values.
+
+- Final independent reconciliation approval: exact `e7b79ce5` plus accepted main #63 approved; reviewer verified unchanged art/test hashes, all six actual journeys with exit 0, combined 685 tests/build and fresh updated-interface native originals. Completion is bounded to the worked-garden composition and trolley contract; the broader paving/repetition/visual-craft gap remains open. Camera/source provenance corrections and the interrupted run without verdict remain retained privately. Root owns publication and current-main integration; no additional runtime edits or merges are part of this completion.
