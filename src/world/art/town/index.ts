@@ -28,6 +28,15 @@ export function drawProp(ctx: CanvasRenderingContext2D | OffscreenCanvasRenderin
     ctx.closePath(); ctx.fill();
   };
   const face = (points: number[][], fill: RGB, value = 1) => polygon(points.map(p => project(p[0], p[1], p[2])), fill, value);
+  // Apertures emit like atmosphere lights, inside their host plate so frames and roof fades still occlude them.
+  const emit = (points: number[][], opacity: number) => {
+    const strength = view.castLight?.lampStrength ?? 0;
+    if (strength < .1) return;
+    ctx.save(); ctx.globalAlpha *= strength * opacity;
+    ctx.fillStyle = 'rgb(255,224,153)'; ctx.beginPath();
+    points.forEach((p, i) => { const at = project(p[0], p[1], p[2]); i ? ctx.lineTo(Math.round(at.x), Math.round(at.y)) : ctx.moveTo(Math.round(at.x), Math.round(at.y)); });
+    ctx.closePath(); ctx.fill(); ctx.restore();
+  };
   const line = (a: number[], b: number[], fill: RGB, thickness = 1) => {
     const p = project(a[0], a[1], a[2]), q = project(b[0], b[1], b[2]);
     ctx.strokeStyle = color(fill); ctx.lineWidth = thickness;
@@ -130,6 +139,9 @@ export function drawProp(ctx: CanvasRenderingContext2D | OffscreenCanvasRenderin
     for (let b = y + 1; b < y + h - 1; b += 3.1) {
       box(x + w + .02, b, 2.1, .1, 1.25, 1.65, C.wood);
       box(x + w + .13, b + .12, 2.23, .04, 1.02, 1.39, C.glass);
+      if (prop.id === 'town.restaurant' && b === y + 1 || prop.id === 'town.residence' && Math.abs(b - y - 4.1) < .01) {
+        emit([[x+w+.171,b+.12,2.23],[x+w+.171,b+1.14,2.23],[x+w+.171,b+1.14,3.62],[x+w+.171,b+.12,3.62]], .80);
+      }
       box(x + w + .18, b + .56, 2.2, .02, .09, 1.5, C.cream);
     }
     const isDoor = ['town.restaurant', 'town.residence', 'town.workshop'].includes(prop.id);
@@ -143,6 +155,10 @@ export function drawProp(ctx: CanvasRenderingContext2D | OffscreenCanvasRenderin
       box(doorX, y + h + .27, .1, 2, .04, 2.5, [43, 65, 62]);
       // Deep open recess; the swung leaf is a separate depth-sorted map object.
       box(doorX + .16, y + h + .32, .2, 1.68, .025, 2.25, [35, 49, 47]);
+      if (prop.id === 'town.restaurant') {
+        emit([[doorX+.16,y+h+.346,.2],[doorX+1.84,y+h+.346,.2],[doorX+1.84,y+h+.346,2.45],[doorX+.16,y+h+.346,2.45]], .62);
+        emit([[doorX+.2,y+h+.48,.025],[doorX+1.8,y+h+.48,.025],[doorX+2,y+h+1.25,.025],[doorX,y+h+1.25,.025]], .17);
+      }
       box(doorX + 1.5, y + h + .35, .2, .18, .02, 2.2, [75, 91, 80]);
       box(doorX + .2, y + h + .36, .14, 1.6, .1, .12, [188, 170, 128]);
       line([doorX + .35, y + h + .48, .28], [doorX + 1.6, y + h + .48, .28], C.cream);
