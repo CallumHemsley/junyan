@@ -56,6 +56,50 @@ function leafCluster(ctx:CanvasRenderingContext2D,view:WorldRenderView,x:number,
 }
 function inView(view:WorldRenderView,p:Point,r=8){const q=view.project(p),o=view.project({x:0,y:0}),a=view.project({x:1,y:0}),u=Math.abs(a.x-o.x);return q.x>-u*r&&q.y>-u*r&&q.x<view.width+u*r&&q.y<view.height+u*r;}
 
+/** Worked soil follows the picking place, not a second tree-shadow ellipse. */
+function harvestPocket(ctx:CanvasRenderingContext2D,map:Map,view:WorldRenderView,site:Site){
+ const paint=(points:number[][],color:string)=>{
+  // Cut the authored corners once: broad worn contours, not sharp camouflage polygons.
+  const rounded=points.flatMap(([x,y],i)=>{const [nx,ny]=points[(i+1)%points.length];return [[x*.75+nx*.25,y*.75+ny*.25],[x*.25+nx*.75,y*.25+ny*.75]];});
+  shape(ctx,view,rounded.map(([x,y])=>({x:site.x+x*site.w,y:site.y+y*site.h})),color);
+ };
+ const routes=site.w<10?[
+  [[-.36,-.31],[-.17,-.37],[-.01,-.19],[.18,-.02],[.24,.21],[.08,.33],[-.09,.2],[-.19,-.02],[-.37,-.12]],
+  [[-.16,.1],[.02,.06],[.16,.22],[.04,.38],[-.16,.32],[-.29,.2]],
+ ]:[
+  [[-.4,-.32],[-.3,-.39],[-.12,-.25],[.02,-.19],[.08,-.05],[.04,.03],[-.08,-.03],[-.16,-.14],[-.29,-.18],[-.4,-.25]],
+  [[.05,-.15],[.18,-.25],[.45,-.37],[.49,-.25],[.36,-.11],[.21,-.13],[.13,-.04],[.08,.13],[.04,.18],[-.04,.11],[-.02,-.01]],
+  [[-.16,-.14],[-.03,-.26],[.13,-.18],[.18,-.06],[.15,.1],[.07,.18],[-.06,.16],[-.17,.03]],
+ ];
+ for(const route of routes){
+  paint(route,'#9b8964');
+  // Foot-worn centers are lighter, leaving quiet grass between the arms.
+  const center=route.reduce((p,[x,y])=>({x:p.x+x/route.length,y:p.y+y/route.length}),{x:0,y:0});
+  paint(route.map(([x,y])=>[center.x+(x-center.x)*.68,center.y+(y-center.y)*.56]),'#b19b70');
+ }
+ if(site.w>=10){
+  // Grass enters the worn margin asymmetrically: no enclosed cart ring or tidy pipe.
+  for(const bite of [
+   [[-.19,-.03],[-.09,-.01],[-.1,.09],[-.22,.12],[-.22,.03]],
+   [[.12,.025],[.24,.07],[.21,.19],[.12,.13],[.1,.085]],
+   [[.21,-.13],[.285,-.14],[.32,-.055],[.25,-.065]],
+  ])paint(bite,'#869d62');
+  // A few uneven fragments belong to the worked surface, never a uniform grit pass.
+  for(const [dx,dy]of [[-.24,-.22],[.23,-.18],[-.045,-.165]]){
+   const x=site.x+dx*site.w,y=site.y+dy*site.h;
+   shape(ctx,view,[{x:x-.42,y:y-.11},{x:x+.03,y:y-.23},{x:x+.46,y:y-.06},{x:x+.21,y:y+.21},{x:x-.23,y:y+.17}], '#8d805d');
+   shape(ctx,view,[{x:x-.16,y:y-.08},{x:x+.1,y:y-.12},{x:x+.26,y:y+.01},{x:x+.02,y:y+.09}], '#bca77d');
+  }
+ }
+ // Small leaf/root skirts attach to the actual trunks, not the former island centers.
+ for(const p of map.props.filter(p=>p.id.startsWith('park.working-fruit-'))){
+  const {x,y}=p.position;
+  if(Math.abs(x-site.x)>site.w*.57||Math.abs(y-site.y)>site.h*.57)continue;
+  island(ctx,view,x,y+.12,1.7,1.1,'#8e8c5d');
+  shape(ctx,view,[{x:x-.15,y:y-.12},{x:x+.41,y:y+.1},{x:x+.7,y:y+.2},{x:x+.18,y:y+.27},{x:x-.25,y:y+.09}], '#b1a176');
+ }
+}
+
 function pavingStone(ctx:CanvasRenderingContext2D,view:WorldRenderView,x:number,y:number,w:number,h:number,variant:number){
  const points=[{x:x-w*.46,y:y-h*.36},{x:x+w*.27,y:y-h*.48},{x:x+w*.48,y:y-h*.21},{x:x+w*.43,y:y+h*.35},{x:x-w*.28,y:y+h*.47},{x:x-w*.5,y:y+h*.16}];
  shape(ctx,view,points,'#626d60');
@@ -139,6 +183,10 @@ export function drawLandscapeGround(ctx:CanvasRenderingContext2D,map:Map,view:Wo
    island(ctx,view,p.position.x-.7,p.position.y+.4,p.width*.63,p.height*.57,'#758d59',i+1);
   }
   for(const [i,s]of composed.entries()){
+   if(map.id==='park'&&s.kind==='harvest'){
+    if(inView(view,s,Math.max(s.w,s.h)))harvestPocket(ctx,map,view,s);
+    continue;
+   }
    if(!inView(view,s))continue;
    const harvest=s.kind==='harvest';
    island(ctx,view,s.x,s.y,s.w,s.h,harvest?'#929766':s.kind==='bank'?'#899b68':'#7b925f',i);

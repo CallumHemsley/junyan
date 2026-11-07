@@ -1,7 +1,7 @@
 ---
 id: 139
 title: Give the park orchard an authored worked-earth pocket
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-07
@@ -23,3 +23,11 @@ Independent district review finds broad smooth soil islands weaker than the frui
 - Owner root; branch codex/0139-park-orchard-ground; worktree /private/tmp/junyan-world-park-orchard-ground; strict ports5626/5627.
 - Base merged main6d11a876. Only landscape ground material composition is leased; no other writer is changing that file. Independent critique private district-critic/review.md.
 - New raw QA private /private/tmp/junyan-world-private-qa/0139. No new public captures or reports. Art gate precedes broad matrix work.
+
+### Accepted verification
+
+- Retained source e52f6b89 against main14b8f7b6 changes only the two harvest-site underlays and three material-contract tests. No terrain, collider, prop, route, content or state data changed. Initial angular trial was self-rejected; localized second trial won six meaningful blind pairs/two ties, and the warmer interrupted third treatment earned independent follow-up retention. Cart crescent/flat night material remain bounded limits.
+- Candidate checks pass675rules/105files, types/build,9craft tests and10desktop/phone waiter checks (opening, four customers/change, journal, input and persistence). Four built-production phone/desktop normal/reduced cases pass actual keyboard roundtrip, mouse/touch route, word lookup/journal and reload contracts; no hooks/errors. Input uses stepped browser time and still samples, not continuous realtime motion or physical-phone FPS proof.
+- Eight fresh post-merge originals exactly match retained candidate3 PNG bytes, with camera/save/canvas/wall identity separately verified. Candidate3 observed-life differences versus baseline are -32ms desktop orchard morning and +16ms phone arrival morning; the underlay is time-independent. Older matched-proof.json is candidate2 evidence. All raw attempts remain private.
+- Independent final review accepts exacte52f6b89 with no defects, independently runs9focused tests, audits source/material/clipping/culling contracts, verifies573artifact hashes and all8before/candidate3 pairs, then rechecks104recorded production movement segments plus all4lookup/reload contracts and final journey logs. Final ticket commit is metadata only.
+- Learned: worked ground gains character through localized masses and deliberate grass interruptions, not uniform noise or larger filled islands. Whole-source Stardew comparison still prefers the reference in all3views; this modest landscape improvement does not complete the overall art objective.

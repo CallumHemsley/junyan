@@ -3,6 +3,7 @@ import {cameraForMap,explorationCamera,frameCamera,presentationArea,project,unpr
 import {worldMaps} from './registry';
 import {pickSurface,surfaceHeight} from './surfaces';
 import {stairSurfaces} from './maps/residential/elevation';
+import {workshopFrame} from './art/workshop/framing';
 
 it('follows portrait exploration in a local ground window above the controls',()=>{
  const bounds={width:120,height:120};
@@ -68,4 +69,27 @@ it('uses real clipping and panel positions while reserving persistent controls f
   const hit=unprojectAtHeight(project(p,camera,p.z),camera,p.z);
   expect(hit.x).toBeCloseTo(p.x);expect(hit.y).toBeCloseTo(p.y);
  }
+});
+
+it('bounds workshop portrait follow by the painted room without shrinking actors or changing horizontal follow',()=>{
+ const map=worldMaps.workshop;
+ for(const height of [298,386,444])for(const position of [{x:8,y:10.8},{x:20.8,y:10.8},{x:15,y:25},{x:3,y:5},{x:14,y:4.8},{x:27.5,y:19.5},{x:15,y:26.5}])for(const inset of [0,175,211,0]){
+  const original=explorationCamera(map.bounds,position,195,height,inset);
+  const camera=explorationCamera(map.bounds,position,195,height,inset,0,0,workshopFrame);
+  const safeHeight=Math.max(height*.35,height-Math.max(66,inset));
+  const ys=workshopFrame.map(p=>project(p,camera,p.z).y);
+  const top=Math.min(...ys),bottom=Math.max(...ys);
+  if(bottom-top>safeHeight-24){
+   expect(top).toBeLessThanOrEqual(12.00001);
+   expect(bottom).toBeGreaterThanOrEqual(safeHeight-12.00001);
+  }else expect(top+bottom).toBeCloseTo(safeHeight);
+  expect(camera.scale).toBe(11);
+  expect(project(position,camera).x).toBe(project(position,original).x);
+  const screen=project(position,camera);
+  expect(screen.y).toBeGreaterThan(25);
+  expect(screen.y).toBeLessThan(safeHeight);
+  expect(pickSurface(screen,camera,map)).toEqual(position);
+ }
+ const position={x:8,y:10.8};
+ expect(explorationCamera(map.bounds,position,720,458,0,0,0,workshopFrame)).toEqual(explorationCamera(map.bounds,position,720,458));
 });

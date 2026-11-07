@@ -25,15 +25,28 @@ export function cameraForMap(bounds:{width:number;height:number},position:Point,
 }
 
 // Canvas units are half CSS pixels; the portrait ground window sits above the 132px control strip.
-export function explorationCamera(bounds:{width:number;height:number},position:Point,width:number,height:number,insetBottom=0,insetRight=0,focusZ=0):Camera {
+export function explorationCamera(bounds:{width:number;height:number},position:Point,width:number,height:number,insetBottom=0,insetRight=0,focusZ=0,verticalFrame?:readonly FramePoint[]):Camera {
  const portrait=width<300&&height>width;
  if(!portrait)return cameraForMap(bounds,position,width,height,width<300?11:15,insetBottom,insetRight,focusZ);
  const availableHeight=Math.max(height*.35,height-Math.max(66,insetBottom));
  // A room that already fits should keep its overview rather than acquire empty cutaway above it.
- if((bounds.width+bounds.height)*11*.5<=availableHeight)return cameraForMap(bounds,position,width,height,11,Math.max(66,insetBottom),insetRight,focusZ);
+ if((bounds.width+bounds.height)*11*.5<=availableHeight){
+  const camera=cameraForMap(bounds,position,width,height,11,Math.max(66,insetBottom),insetRight,focusZ);
+  return verticalFrame?boundCameraVertically(camera,verticalFrame,availableHeight):camera;
+ }
  const localHeight=Math.min(width,availableHeight);
  const camera=cameraForMap(bounds,position,width,localHeight,11,0,insetRight,focusZ);
- return {...camera,height,offsetY:(camera.offsetY??0)+availableHeight-localHeight/2-height/2};
+ const fullCamera={...camera,height,offsetY:(camera.offsetY??0)+availableHeight-localHeight/2-height/2};
+ return verticalFrame?boundCameraVertically(fullCamera,verticalFrame,availableHeight):fullCamera;
+}
+
+/** Keep native-scale room follow inside its painted envelope, without changing horizontal follow. */
+function boundCameraVertically(camera:Camera,frame:readonly FramePoint[],availableHeight:number):Camera {
+ const ys=frame.map(p=>project(p,camera,p.z).y),top=Math.min(...ys),bottom=Math.max(...ys);
+ const gutter=Math.min(12,availableHeight/4);
+ const lower=availableHeight-gutter-bottom,upper=gutter-top;
+ const shift=lower>upper?(lower+upper)/2:Math.max(lower,Math.min(upper,0));
+ return {...camera,offsetY:(camera.offsetY??0)+shift};
 }
 
 /** Visible scene rectangle as fractions of the canvas, excluding controls and the actual panel. */
