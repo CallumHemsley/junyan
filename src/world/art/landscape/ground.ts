@@ -56,6 +56,34 @@ function leafCluster(ctx:CanvasRenderingContext2D,view:WorldRenderView,x:number,
 }
 function inView(view:WorldRenderView,p:Point,r=8){const q=view.project(p),o=view.project({x:0,y:0}),a=view.project({x:1,y:0}),u=Math.abs(a.x-o.x);return q.x>-u*r&&q.y>-u*r&&q.x<view.width+u*r&&q.y<view.height+u*r;}
 
+/** Worked soil follows the picking place, not a second tree-shadow ellipse. */
+function harvestPocket(ctx:CanvasRenderingContext2D,map:Map,view:WorldRenderView,site:Site){
+ const small=site.w<10;
+ const paint=(points:number[][],color:string)=>shape(ctx,view,points.map(([x,y])=>({x:site.x+x*site.w,y:site.y+y*site.h})),color);
+ paint(small?
+  [[-.48,-.15],[-.27,-.38],[-.02,-.3],[.17,-.36],[.35,-.16],[.43,.05],[.28,.31],[.05,.25],[-.12,.38],[-.37,.24],[-.42,.03]]:
+  [[-.39,-.23],[-.28,-.32],[-.14,-.22],[.04,-.3],[.16,-.2],[.36,-.15],[.46,-.03],[.4,.13],[.24,.2],[.1,.31],[-.05,.24],[-.17,.3],[-.3,.19],[-.43,.14],[-.37,.02],[-.45,-.1]], '#8e9060');
+ // Two broad worn masses leave grass/roots between them; no map-wide grit layer.
+ paint([[-.29,-.18],[-.13,-.15],[.01,-.21],[.13,-.1],[.12,.01],[.26,.11],[.2,.18],[.04,.12],[-.07,.21],[-.17,.1],[-.29,.13],[-.33,0]], '#a59b70');
+ paint([[.18,-.17],[.34,-.1],[.38,.02],[.3,.11],[.18,.07],[.1,-.04]], '#9b9567');
+ paint([[-.4,-.09],[-.3,-.03],[-.22,.1],[-.29,.18],[-.38,.1],[-.35,.01]], '#a9a177');
+ // Attached margins break the soil edge in larger leaf-sized shapes rather than stipple.
+ for(const [dx,dy,turn] of (small?[[-.32,-.27,-1],[.3,.2,1]]:[[-.31,-.25,-1],[.35,-.1,1],[-.24,.24,-1],[.14,.25,1]])){
+  const x=site.x+dx*site.w,y=site.y+dy*site.h;
+  shape(ctx,view,[{x:x-.7,y:y-.2},{x:x-.15,y:y-.5},{x:x+.6,y:y-.24},{x:x+.9,y:y+.12},{x:x+.2,y:y+.4},{x:x-.45,y:y+.22}], '#7c8d54');
+  shape(ctx,view,[{x:x-.4,y:y-.04},{x:x+.03,y:y-.24},{x:x+.55,y:y-.02},{x:x+.17,y:y+.16}], '#a0a66a');
+  const toe={x:x+turn*.5,y:y+.3};
+  shape(ctx,view,[toe,{x:toe.x+turn*.36,y:toe.y+.04},{x:toe.x+turn*.49,y:toe.y+.2},{x:toe.x+turn*.1,y:toe.y+.18}], '#b2a77d');
+ }
+ // The root/leaf skirt is anchored to each real orchard trunk, including the arrival tree.
+ for(const p of map.props.filter(p=>p.id.startsWith('park.working-fruit-'))){
+  const {x,y}=p.position;
+  if(Math.abs(x-site.x)>site.w*.57||Math.abs(y-site.y)>site.h*.57)continue;
+  shape(ctx,view,[{x:x-.7,y:y-.3},{x:x-.21,y:y-.56},{x:x+.35,y:y-.4},{x:x+.7,y:y-.03},{x:x+.35,y:y+.4},{x:x-.15,y:y+.46},{x:x-.8,y:y+.16}], '#8d895b');
+  shape(ctx,view,[{x:x-.15,y:y-.12},{x:x+.41,y:y+.1},{x:x+.7,y:y+.2},{x:x+.18,y:y+.27},{x:x-.25,y:y+.09}], '#afa276');
+ }
+}
+
 function pavingStone(ctx:CanvasRenderingContext2D,view:WorldRenderView,x:number,y:number,w:number,h:number,variant:number){
  const points=[{x:x-w*.46,y:y-h*.36},{x:x+w*.27,y:y-h*.48},{x:x+w*.48,y:y-h*.21},{x:x+w*.43,y:y+h*.35},{x:x-w*.28,y:y+h*.47},{x:x-w*.5,y:y+h*.16}];
  shape(ctx,view,points,'#626d60');
@@ -139,6 +167,10 @@ export function drawLandscapeGround(ctx:CanvasRenderingContext2D,map:Map,view:Wo
    island(ctx,view,p.position.x-.7,p.position.y+.4,p.width*.63,p.height*.57,'#758d59',i+1);
   }
   for(const [i,s]of composed.entries()){
+   if(map.id==='park'&&s.kind==='harvest'){
+    if(inView(view,s,Math.max(s.w,s.h)))harvestPocket(ctx,map,view,s);
+    continue;
+   }
    if(!inView(view,s))continue;
    const harvest=s.kind==='harvest';
    island(ctx,view,s.x,s.y,s.w,s.h,harvest?'#929766':s.kind==='bank'?'#899b68':'#7b925f',i);
