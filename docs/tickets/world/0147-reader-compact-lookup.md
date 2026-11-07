@@ -1,7 +1,7 @@
 ---
 id: 147
 title: Keep reading-room word sources fully visible at tiny landscape heights
-status: todo
+status: doing
 priority: high
 type: bug
 created: 2026-11-07
@@ -23,3 +23,5 @@ Root's separate reader integration regression is red on main63 at844x390. After 
 - Centrally reserved by root from concrete integration failure; writer branch/worktree/ports assigned next. Depends on unpublished0102 chapter, so isolate from root reader integration rather than main. No direct main PR of the dependent chapter.
 - Private red baseline/main143 comparison and test source: /private/tmp/junyan-world-private-qa/0102/reader-landscape/{baseline.log,final.log,lookup.spec.ts}. Four of eight combined profiles pass; four568x320 fail source effective height/hits. Source must be inspected rather than assuming an observation issue.
 - Raw QA private0147 only. New source regression must use repo-relative imports when committed; original private probes remain unchanged evidence.
+- Owner: reader compact-lookup writer; branch codex/0147-reader-compact-lookup; worktree /private/tmp/junyan-world-reader-compact-lookup; strict ports 5647/5648. Base root integration d1c97800 includes draft reader and accepted 143. Diagnosing the concrete reader-only 568×320 failure; no source lease in root integration or 146 tree is assumed.
+- Copied the root native test into repo-relative e2e/reading-lookup.spec.ts and reproduced the 568×320 night red before reader CSS edits. Native ancestor/hit probe records a 60×46 word at y70–116 (44px line plus 2px token border), against the accepted 48px contextual panel whose 2px edges leave client y70–114. Bottom hit points y115 hit the panel border; top points hit the correct word. No pocket overlay or incorrect source invoker is involved. Original outer-box predicate reports height true while ignoring the client border; its failure/probe/trace remain private.
