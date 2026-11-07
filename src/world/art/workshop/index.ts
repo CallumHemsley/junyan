@@ -2,7 +2,7 @@ import type { RepairArtApi } from '../../../features/repairs/scene';
 import type { State } from '../../../features/repairs/rules';
 import type { DrawMap, WorldRenderView, WorldRenderObject, WorldArtModule } from '../../render-contract';
 import type { WorldMapDefinition } from '../../schema';
-import { drawWorkshopProp } from './paint';
+import { drawWorkshopProp, workshopCraftHeights } from './paint';
 
 type Color = [number, number, number];
 const css = (c: Color, light = 1) => `rgb(${c.map(v => Math.max(0, Math.min(255, Math.round(v * light)))).join(',')})`;
@@ -75,7 +75,9 @@ export function renderObjects(map: WorldMapDefinition, view: WorldRenderView, re
   return map.props.map(prop=>{
     const surfaceKinds=new Set(['task-lamp','lamp','radio','kettle','paper','chair-repair','thread-box']);
     const host=surfaceKinds.has(prop.kind)?map.props.find(p=>p.id!==prop.id&&/bench|shelf/.test(p.kind)&&prop.position.x>=p.position.x&&prop.position.x<=p.position.x+p.width&&prop.position.y>=p.position.y&&prop.position.y<=p.position.y+p.height):undefined;
-    const candidate=map.occluders.find(o=>o.id===prop.id||o.id===host?.id);
+    const authored=map.occluders.find(o=>o.id===prop.id||o.id===host?.id);
+    const craftHeight=prop.kind==='sewing-bench'?workshopCraftHeights.sewing:prop.kind==='timber-rack'?workshopCraftHeights.timber:prop.kind==='chair-repair'||prop.kind==='wood-bench'&&prop.variant===1?workshopCraftHeights.joinery:null;
+    const candidate=authored&&craftHeight!==null?{...authored,height:craftHeight}:authored;
     const depth=prop.kind==='wall'&&prop.position.x<3?prop.position.x+prop.position.y:host?host.position.x+host.position.y+host.width/2+host.height/2+.01:prop.position.x+prop.position.y+prop.width/2+prop.height/2;
     const player=view.project(view.playerPosition);
     const corners=[{x:prop.position.x,y:prop.position.y},{x:prop.position.x+prop.width,y:prop.position.y},{x:prop.position.x,y:prop.position.y+prop.height},{x:prop.position.x+prop.width,y:prop.position.y+prop.height}];
