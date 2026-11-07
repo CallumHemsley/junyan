@@ -1,6 +1,9 @@
 import {it,expect} from "vitest";
-import {colorShader} from "./lighting";
+import {colorShader,serviceDayPhase} from "./lighting";
 import {sampleDayLight,shadeAtmosphereColor} from "./atmosphere";
+it("keeps scene and interface on the existing service-progress day phases",()=>{
+ expect([0,1,2,3,4,5].map(serviceDayPhase)).toEqual(["morning","morning","noon","evening","night","night"]);
+});
 it("shades identical base material independently of earlier outputs",()=>{
  const shade=colorShader({...sampleDayLight("morning"),ambient:[.5,.5,.5],sunStrength:0});
  expect(shade("#404040")).toBe("#202020");expect(shade("#808080")).toBe("#404040");expect(shade("#404040")).toBe("#202020");
