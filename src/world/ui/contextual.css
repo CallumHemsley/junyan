@@ -46,6 +46,17 @@
 .world-kitchen-food small { color: var(--text-secondary); }
 @media (min-width: 800px) { .world-context { max-height: min(40dvh, 400px); } }
 @media (max-height: 460px) { .world-context { bottom: max(64px, env(safe-area-inset-bottom)); max-height: 72dvh; } }
+@media (max-height: 460px) {
+  /* Lookup shortens main; scroll the whole panel so its heading cannot consume the word's 44px. */
+  .connected-shell.word-card-open .world-context {
+    bottom: 0;
+    max-height: 100%;
+    display: block;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+  .connected-shell.word-card-open .world-context-scroll { overflow: visible; }
+}
 @media (prefers-reduced-motion: reduce) { .world-context *, .world-pocket-bar * { animation: none; transition: none; } }
 @media (max-width: 360px) {
   .world-pocket-bar { flex-direction: column; }

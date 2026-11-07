@@ -36,6 +36,11 @@ export function ContextualInteraction({ target, title, dialogue, actions = [], c
     closeButton.current?.focus({ preventScroll: true });
     return () => { if (invoking instanceof HTMLElement && invoking.isConnected) invoking.focus({ preventScroll: true }); };
   }, []);
+  useEffect(() => {
+    if (suspended && returnFocusTo?.isConnected && returnFocusTo.hasAttribute("data-word-lookup")) {
+      returnFocusTo.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "instant" });
+    }
+  }, [suspended, returnFocusTo]);
   return (
     <section className="world-context" role="dialog" aria-labelledby={titleId} data-target={target.kind}
       onKeyDown={event => { if (suspended) return; event.stopPropagation(); if (event.key === "Escape") { event.preventDefault(); onClose(); } }}

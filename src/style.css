@@ -976,6 +976,10 @@ h2 {
   max-height: calc(100dvh - 100px - var(--word-card-space));
   overflow-y: auto;
 }
+@media (max-height: 460px) {
+  /* Leave room for a 44px word and the contextual panel's two 2px edges. */
+  .connected-shell.word-card-open > main { min-height: 48px; }
+}
 .word-card-open .word-popover {
   bottom: var(--space-12);
   right: var(--space-16);
