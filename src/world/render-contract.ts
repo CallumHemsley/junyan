@@ -2,7 +2,7 @@ import type { Point, WorldMapDefinition } from "./schema";
 export type WorldRenderView = {
   project(point:Point,z?:number):Point;
   shadeColor?: import("./lighting").ShadeColor;
-  castLight?: Pick<import("./atmosphere").LightState,"shadowOffset"|"shadowOpacity"|"shadow">;
+  castLight?: Pick<import("./atmosphere").LightState,"shadowOffset"|"shadowOpacity"|"shadow"> & Partial<Pick<import("./atmosphere").LightState,"lampStrength">>;
   elapsedMs:number;
   reducedMotion:boolean;
   playerPosition:Point;
