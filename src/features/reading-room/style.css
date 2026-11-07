@@ -28,3 +28,7 @@
 .reading-room-grid-fallback[open]>summary{width:48px;justify-self:end}
 .reading-room-grid-fallback summary:focus-visible,.reading-room-instructions summary:focus-visible{outline:2px solid var(--text-primary);outline-offset:2px}
 @media(prefers-reduced-motion:reduce){.reading-room *{transition:none!important;animation:none!important}}
+@media(max-height:460px){
+  /* A 42px spoken line plus its 2px word border fits the compact 44px lookup client. */
+  .connected-shell.word-card-open .reading-room .spoken .word{line-height:42px}
+}
