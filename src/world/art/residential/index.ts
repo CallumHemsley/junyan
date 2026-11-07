@@ -1,4 +1,6 @@
 import { bedRecipe, drawBed } from './bed';
+import { drawNativeObject } from './native-object';
+import { wardrobeRecipe } from './wardrobe';
 import type { DrawMap, WorldRenderObject, WorldRenderView } from '../../render-contract';
 import type { SceneApi } from '../../../scene/renderer.js';
 import { stairSurfaces, supportHeight } from '../../maps/residential/elevation';
@@ -227,7 +229,10 @@ function drawResidentialProp(api: ResidentialArtApi, prop: Omit<WorldMapDefiniti
       capsule([x + 1.2, y + .2, 1.3], [x + 1.2, y + .2, 1.85], .05, .05, () => ink, 'solid');
       sphere(endX - 1, y + h / 2, 1.45, .3, jade, 'solid');
       break;
-    case 'wardrobe': case 'bookcase':
+    case 'wardrobe':
+      for (const command of wardrobeRecipe(x, y, endX, endY).commands) box(...command.box);
+      break;
+    case 'bookcase':
       box(x, y, 0, endX, endY, 2.5, wood);
       if (prop.kind === 'bookcase') for (const z of [.3, 1.1, 1.9]) {
         box(x + .08, endY - .1, z, endX - .08, endY + .04, z + .08, paleWood);
@@ -237,7 +242,7 @@ function drawResidentialProp(api: ResidentialArtApi, prop: Omit<WorldMapDefiniti
           box(at, endY - .18, z + .08, at + .12, endY + .02, top, spine[index % spine.length]);
           box(at + .02, endY + .02, top - .12, at + .1, endY + .03, top - .09, linen);
         }
-      } else { box(x + w / 2, endY, .15, x + w / 2 + .05, endY + .03, 2.3, ink); sphere(x + w / 2 + .15, endY + .1, 1.2, .06, cream, 'solid'); }
+      }
       break;
     case 'railing': {
       const alongX = w > h, length = alongX ? w : h;
@@ -526,7 +531,12 @@ export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderVie
     return [{
       id: prop.id, position,
       occlusion: occluder ?? (tall ? { rect: { ...prop.position, width: prop.width, height: prop.height }, height: 2.7, fadeWhenPlayerBehind: true } : undefined),
-      draw(ctx, view) { paintResidential(ctx, view, api => drawResidentialProp(onSurface(api, map.id), prop)); },
+      draw(ctx, view) {
+        if (prop.kind === 'wardrobe' && drawNativeObject(ctx, view, wardrobeRecipe(prop.position.x, prop.position.y, prop.position.x + prop.width, prop.position.y + prop.height), () => {
+          paintResidential(ctx, view, api => onSurface(api, map.id).castShadow(position.x, position.y, .12, Math.max(prop.width, prop.height) * .45, .45, 0));
+        })) return;
+        paintResidential(ctx, view, api => drawResidentialProp(onSurface(api, map.id), prop));
+      },
     }];
   });
 }
