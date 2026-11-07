@@ -31,6 +31,8 @@ for(const viewport of [{name:'landscape',width:844,height:390,served:4},{name:'l
  await page.locator('[data-world-anchor="workshop.lamp"]').click();
  const sources=page.locator('.repair-line .word');let source=sources.first();await source.click();
  const card=page.locator('.word-popover');await expect(card).toBeVisible();
+ await expect.poll(async()=>(await effectiveTarget(source)).visible.height).toBeGreaterThanOrEqual(44);
+ expect((await effectiveTarget(source)).corners).toEqual([true,true,true,true]);
  await source.scrollIntoViewIfNeeded();
  const target=await effectiveTarget(source);
  await page.screenshot({path:privateArtifact(`landscape-lookup/${info.project.name}-${viewport.name}-open.png`)});
@@ -40,6 +42,7 @@ for(const viewport of [{name:'landscape',width:844,height:390,served:4},{name:'l
   source=sources.nth(index);await source.scrollIntoViewIfNeeded();const next=await effectiveTarget(source);
   expect(next.visible.width).toBeGreaterThanOrEqual(44);expect(next.visible.height).toBeGreaterThanOrEqual(44);expect(next.corners).toEqual([true,true,true,true]);
   const text=await source.innerText();await source.click();await expect(card.locator('h2')).toHaveText(text);
+  expect((await effectiveTarget(source)).visible.height).toBeGreaterThanOrEqual(44);expect((await effectiveTarget(source)).corners).toEqual([true,true,true,true]);
  }
  const wordCard=await card.boundingBox();expect(wordCard!.y).toBeGreaterThanOrEqual(0);expect(wordCard!.y+wordCard!.height).toBeLessThanOrEqual(viewport.height);
  const position=(await savedGame(page)).world!.position;await page.keyboard.press('ArrowRight');await page.waitForTimeout(300);expect((await savedGame(page)).world!.position).toEqual(position);
