@@ -58,29 +58,31 @@ function inView(view:WorldRenderView,p:Point,r=8){const q=view.project(p),o=view
 
 /** Worked soil follows the picking place, not a second tree-shadow ellipse. */
 function harvestPocket(ctx:CanvasRenderingContext2D,map:Map,view:WorldRenderView,site:Site){
- const small=site.w<10;
- const paint=(points:number[][],color:string)=>shape(ctx,view,points.map(([x,y])=>({x:site.x+x*site.w,y:site.y+y*site.h})),color);
- paint(small?
-  [[-.48,-.15],[-.27,-.38],[-.02,-.3],[.17,-.36],[.35,-.16],[.43,.05],[.28,.31],[.05,.25],[-.12,.38],[-.37,.24],[-.42,.03]]:
-  [[-.39,-.23],[-.28,-.32],[-.14,-.22],[.04,-.3],[.16,-.2],[.36,-.15],[.46,-.03],[.4,.13],[.24,.2],[.1,.31],[-.05,.24],[-.17,.3],[-.3,.19],[-.43,.14],[-.37,.02],[-.45,-.1]], '#8e9060');
- // Two broad worn masses leave grass/roots between them; no map-wide grit layer.
- paint([[-.29,-.18],[-.13,-.15],[.01,-.21],[.13,-.1],[.12,.01],[.26,.11],[.2,.18],[.04,.12],[-.07,.21],[-.17,.1],[-.29,.13],[-.33,0]], '#a59b70');
- paint([[.18,-.17],[.34,-.1],[.38,.02],[.3,.11],[.18,.07],[.1,-.04]], '#9b9567');
- paint([[-.4,-.09],[-.3,-.03],[-.22,.1],[-.29,.18],[-.38,.1],[-.35,.01]], '#a9a177');
- // Attached margins break the soil edge in larger leaf-sized shapes rather than stipple.
- for(const [dx,dy,turn] of (small?[[-.32,-.27,-1],[.3,.2,1]]:[[-.31,-.25,-1],[.35,-.1,1],[-.24,.24,-1],[.14,.25,1]])){
-  const x=site.x+dx*site.w,y=site.y+dy*site.h;
-  shape(ctx,view,[{x:x-.7,y:y-.2},{x:x-.15,y:y-.5},{x:x+.6,y:y-.24},{x:x+.9,y:y+.12},{x:x+.2,y:y+.4},{x:x-.45,y:y+.22}], '#7c8d54');
-  shape(ctx,view,[{x:x-.4,y:y-.04},{x:x+.03,y:y-.24},{x:x+.55,y:y-.02},{x:x+.17,y:y+.16}], '#a0a66a');
-  const toe={x:x+turn*.5,y:y+.3};
-  shape(ctx,view,[toe,{x:toe.x+turn*.36,y:toe.y+.04},{x:toe.x+turn*.49,y:toe.y+.2},{x:toe.x+turn*.1,y:toe.y+.18}], '#b2a77d');
+ const paint=(points:number[][],color:string)=>{
+  // Cut the authored corners once: broad worn contours, not sharp camouflage polygons.
+  const rounded=points.flatMap(([x,y],i)=>{const [nx,ny]=points[(i+1)%points.length];return [[x*.75+nx*.25,y*.75+ny*.25],[x*.25+nx*.75,y*.25+ny*.75]];});
+  shape(ctx,view,rounded.map(([x,y])=>({x:site.x+x*site.w,y:site.y+y*site.h})),color);
+ };
+ const routes=site.w<10?[
+  [[-.36,-.31],[-.17,-.37],[-.01,-.19],[.18,-.02],[.24,.21],[.08,.33],[-.09,.2],[-.19,-.02],[-.37,-.12]],
+  [[-.16,.1],[.02,.06],[.16,.22],[.04,.38],[-.16,.32],[-.29,.2]],
+ ]:[
+  [[-.4,-.32],[-.3,-.39],[-.12,-.25],[.02,-.19],[.08,-.05],[.04,.03],[-.08,-.03],[-.16,-.14],[-.29,-.18],[-.4,-.25]],
+  [[.05,-.15],[.18,-.25],[.45,-.37],[.49,-.25],[.36,-.11],[.21,-.13],[.13,-.04],[.08,.13],[.04,.18],[-.04,.11],[-.02,-.01]],
+  [[-.16,-.14],[-.03,-.26],[.13,-.18],[.18,-.06],[.15,.1],[.07,.18],[-.06,.16],[-.17,.03]],
+ ];
+ for(const route of routes){
+  paint(route,'#939064');
+  // Foot-worn centers are lighter, leaving quiet grass between the arms.
+  const center=route.reduce((p,[x,y])=>({x:p.x+x/route.length,y:p.y+y/route.length}),{x:0,y:0});
+  paint(route.map(([x,y])=>[center.x+(x-center.x)*.68,center.y+(y-center.y)*.56]),'#afa177');
  }
- // The root/leaf skirt is anchored to each real orchard trunk, including the arrival tree.
+ // Small leaf/root skirts attach to the actual trunks, not the former island centers.
  for(const p of map.props.filter(p=>p.id.startsWith('park.working-fruit-'))){
   const {x,y}=p.position;
   if(Math.abs(x-site.x)>site.w*.57||Math.abs(y-site.y)>site.h*.57)continue;
-  shape(ctx,view,[{x:x-.7,y:y-.3},{x:x-.21,y:y-.56},{x:x+.35,y:y-.4},{x:x+.7,y:y-.03},{x:x+.35,y:y+.4},{x:x-.15,y:y+.46},{x:x-.8,y:y+.16}], '#8d895b');
-  shape(ctx,view,[{x:x-.15,y:y-.12},{x:x+.41,y:y+.1},{x:x+.7,y:y+.2},{x:x+.18,y:y+.27},{x:x-.25,y:y+.09}], '#afa276');
+  island(ctx,view,x,y+.12,1.7,1.1,'#8e8c5d');
+  shape(ctx,view,[{x:x-.15,y:y-.12},{x:x+.41,y:y+.1},{x:x+.7,y:y+.2},{x:x+.18,y:y+.27},{x:x-.25,y:y+.09}], '#b1a176');
  }
 }
 
