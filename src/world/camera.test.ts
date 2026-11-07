@@ -59,7 +59,7 @@ it('preserves desktop and explicit-scale cameras',()=>{
 
 it('bounds workshop portrait follow by the painted room without shrinking actors or changing horizontal follow',()=>{
  const map=worldMaps.workshop;
- for(const height of [298,386,466])for(const position of [{x:8,y:10.8},{x:20.8,y:10.8},{x:15,y:25}])for(const inset of [0,175,211,0]){
+ for(const height of [298,386,444])for(const position of [{x:8,y:10.8},{x:20.8,y:10.8},{x:15,y:25},{x:3,y:5},{x:14,y:4.8},{x:27.5,y:19.5},{x:15,y:26.5}])for(const inset of [0,175,211,0]){
   const original=explorationCamera(map.bounds,position,195,height,inset);
   const camera=explorationCamera(map.bounds,position,195,height,inset,0,0,workshopFrame);
   const safeHeight=Math.max(height*.35,height-Math.max(66,inset));
