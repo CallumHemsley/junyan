@@ -67,7 +67,7 @@ it('uses authoritative phase strength and inherited alpha without clock or motio
 });
 it('invalidates host plates for strength changes with a stable shader and inherits compositor fade',()=>{
   const offscreen=context(1), target=context(.45);
-  vi.stubGlobal('OffscreenCanvas',class {getContext(){return offscreen.ctx;}});
+  vi.stubGlobal('OffscreenCanvas',class {constructor(public width:number,public height:number) {} getContext(){return offscreen.ctx;}});
   const prop={...map.props.find(p=>p.id==='town.restaurant')!};
   const painter=vi.fn(), shader=()=> 'graded-material';
   const phaseView=(strength:number):WorldRenderView=>({...view,shadeColor:shader,castLight:{...sampleDayLight('night'),lampStrength:strength}});
@@ -83,4 +83,5 @@ it('invalidates host plates for strength changes with a stable shader and inheri
   expect(painter).toHaveBeenCalledTimes(6);
   expect(offscreen.ctx.clearRect).toHaveBeenCalledTimes(6);
   expect(target.ctx.drawImage).toHaveBeenCalled();
+  for(const [, ...coordinates] of vi.mocked(target.ctx.drawImage).mock.calls)expect(coordinates.every(Number.isFinite)).toBe(true);
 });
