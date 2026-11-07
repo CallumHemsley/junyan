@@ -1,7 +1,7 @@
 ---
 id: 102
 title: Integrate the reading-room chapter without losing saves
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-06
@@ -34,3 +34,9 @@ The real fifth feature is connected through the residential hall, its isolated s
 - Stable draft5543 serves the main66+147 build; main5530 serves acceptedmain66. Experimental lighting146 and craft148 are outside both verified builds. The chapter remains draft while broader art acceptance stays open.
 - Source/logs/native evidence private0102/main66-* and main-accepted-20261107/main66-*. Initial reader landscape red and143-combined4/8 outcomes remain private historical evidence;147 final actual-client/hit/camera checks and37-case combined pass supersede them. All source-specific browser captures use isolated JUNYAN_PRIVATE_QA; older shared-default PNGs are not immutable source proof. Bounded units use2workers/15-secondCLI timeout without changing source timeout defaults.
 - No overallAAA, continuous-animation/physical-device certification or Stardew superiority claim. Native comparisons and further scoped improvements continue separately.
+
+### User-requested current-state merge
+
+- User requested merging the current work into main to conserve their remaining quota on2026-11-07. Integrated reviewed lighting146 and current workshop148 WIP after its independent source/native check found no functional blocker. Workshop visual limitations remain ticket148 work, not a shipping-quality claim.
+- Final combined runtime64f8ae07 passes749 tests across122 files, TypeScript and production build. Earlier exact reader/main66 combination passes37 browser cases/1 intentional skip and2 actual production/offline checks; lighting separately passes its4journeys/4night-walk cases. No final broad workshop gameplay rerun or whole-game AAA acceptance is claimed.
+- Further art/perfection cycles stop at the user's wrap-up request; all raw QA stays private.
