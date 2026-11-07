@@ -29,7 +29,7 @@ function apartmentFixtures(map:AtmosphereMap):NonNullable<AtmosphereHooks['light
   return map.props.flatMap(prop=>{
     const {x,y}=prop.position,depth=x+y+(prop.width+prop.height)/2+.02;
     if(prop.id==='apartment.reading-lamp'&&prop.kind==='lamp')return [{
-      id:prop.id,kind:'lamp' as const,position:{x:x+prop.width/2,y:y+prop.height/2,z:1.83},radius:6,color:[255,216,150] as const,depth,
+      id:prop.id,kind:'lamp' as const,position:{x:x+prop.width/2,y:y+prop.height/2,z:1.83},radius:8,color:[255,216,150] as const,depth,
       // Aperture is the real lower opening of the 144 lamp shade, not its stem or prop origin.
       emitter:quad(x+.12,y+.12,prop.width-.24,prop.height-.24,1.835),pool:[],
     }];
@@ -39,7 +39,7 @@ function apartmentFixtures(map:AtmosphereMap):NonNullable<AtmosphereHooks['light
     for(let at=.28,column=0;at<prop.width-.3;at+=1.1,column++)for(const [bottom,top] of [[1.18,2.13],[2.25,3.28]]) {
       const left=x+at,right=Math.min(x+at+.78,x+prop.width-.28);
       if(right<=left)continue;
-      windows.push({id:`${prop.id}.pane-${column}-${bottom}`,kind:'window',position:{x:(left+right)/2,y:front,z:(bottom+top)/2},radius:4.5,color:[143,170,195],depth,
+      windows.push({id:`${prop.id}.pane-${column}-${bottom}`,kind:'window',position:{x:(left+right)/2,y:front,z:(bottom+top)/2},radius:4.5,color:[92,117,146],depth,
         emitter:[{x:left,y:front,z:bottom},{x:right,y:front,z:bottom},{x:right,y:front,z:top},{x:left,y:front,z:top}],pool:[]});
     }
     return windows;
@@ -49,7 +49,7 @@ function apartmentFixtures(map:AtmosphereMap):NonNullable<AtmosphereHooks['light
 /** Bind only existing fixtures. Missing or changed fixture kinds emit no guessed light. */
 export function authoredLocalLights(map:AtmosphereMap):AtmosphereHooks {
   const fixture=(id:string,kind:string)=>map.props.find(p=>p.id===id&&p.kind===kind);
-  if(map.id==='apartment')return {lights:apartmentFixtures(map),ambientByPhase:{morning:[.92,.89,.83],noon:[.92,.89,.83],evening:[.62,.65,.74],night:[.40,.46,.60]}};
+  if(map.id==='apartment')return {lights:apartmentFixtures(map),ambientByPhase:{morning:[.92,.89,.83],noon:[.92,.89,.83],evening:[.70,.72,.79],night:[.52,.57,.68]}};
   if(map.id==='workshop') {
     const lamps=['workshop.desk-lamp','workshop.toy-lamp'].flatMap(id=>{
       const prop=fixture(id,'lamp');return prop?[taskLamp(prop,map.props)]:[];

@@ -492,8 +492,18 @@ function paintResidential(ctx: CanvasRenderingContext2D, view: WorldRenderView, 
   const radius = (x: number, y: number, size: number) => Math.abs(view.project({ x: x + size, y }).x - view.project({ x, y }).x);
   const api: ResidentialArtApi = {
     box(x, y, z, right, front, top, c) {
-      // Local receivers sample long flat boards at bounded intervals only after daylight.
-      if ((top !== z || receiving) && (right - x > 1.01 || front - y > 1.01)) {
+      // Receiver samples stay inside their original authored plane's painter group.
+      if (receiving && top === z && (right - x > 1.01 || front - y > 1.01)) {
+        paints.push({depth:x+y+right+front+top*.1,draw(){
+          for(let px=x;px<right;px+=1)for(let py=y;py<front;py+=1){
+            const r=Math.min(px+1,right),f=Math.min(py+1,front);
+            polygon([view.project({x:px,y:py},top),view.project({x:r,y:py},top),view.project({x:r,y:f},top),view.project({x:px,y:f},top)],
+              colour(c,1,{x:(px+r)/2,y:(py+f)/2,z:top,normal:[0,0,1]}));
+          }
+        }});
+        return;
+      }
+      if (top !== z && (right - x > 1.01 || front - y > 1.01)) {
         for (let px = x; px < right; px += 1) for (let py = y; py < front; py += 1) api.box(px, py, z, Math.min(px + 1, right), Math.min(py + 1, front), top, c);
         return;
       }
