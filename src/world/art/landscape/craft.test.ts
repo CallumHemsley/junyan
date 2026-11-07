@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
 import { drawLowerCrossing, renderObjects } from './index';
-import { drawRiverbankWater } from './ground';
+import { drawLandscapeGround, drawRiverbankWater } from './ground';
 import { drawLandscapeProp } from './draw';
 import { worldMaps } from '../../registry';
 import type { WorldRenderView } from '../../render-contract';
@@ -28,6 +28,36 @@ function recordingContext() {
   };
   return { context: context as unknown as CanvasRenderingContext2D, draws, clips, stack,strokes };
 }
+
+it('keeps orchard soil in the dry/deck mask, shades once and preserves the caller and map',()=>{
+ const {context,draws,stack}=recordingContext(),map=worldMaps.park,before=JSON.stringify(map),inputs:string[]=[];
+ const view:WorldRenderView={project:p=>({x:1000+(p.x-p.y)*11,y:100+(p.x+p.y)*5.5}),shadeColor:base=>{inputs.push(String(base));return '#010203';},width:2000,height:1500,playerPosition:{x:15.7,y:52},elapsedMs:42000,reducedMotion:true,pass:'ground'};
+ drawLandscapeGround(context,map,view,'underlay');
+ const decks=map.terrain.filter(t=>t.material==='bridge'||t.material==='boardwalk');
+ expect(draws.length).toBeGreaterThan(0);
+ expect(draws.every(draw=>draw.color==='#010203'&&draw.clips===1+decks.length&&draw.alpha===.45)).toBe(true);
+ expect(inputs.every(color=>color!=='#010203')).toBe(true);
+ expect(context.globalAlpha).toBe(.45);expect(stack).toHaveLength(0);expect(JSON.stringify(map)).toBe(before);
+});
+
+it('anchors orchard material to world geometry across camera translation and motion clocks',()=>{
+ const view:WorldRenderView={project:p=>({x:1000+(p.x-p.y)*11,y:100+(p.x+p.y)*5.5}),width:2000,height:1500,playerPosition:{x:15.7,y:52},elapsedMs:42000,reducedMotion:true,pass:'ground'};
+ const first=recordingContext(),later=recordingContext(),moved=recordingContext();
+ drawLandscapeGround(first.context,worldMaps.park,view,'underlay');
+ drawLandscapeGround(later.context,worldMaps.park,{...view,elapsedMs:98000,reducedMotion:false},'underlay');
+ drawLandscapeGround(moved.context,worldMaps.park,{...view,project:p=>{const q=view.project(p);return{x:q.x+20,y:q.y+10};}},'underlay');
+ expect(later.draws).toEqual(first.draws);
+ expect(moved.draws.map(draw=>({...draw,path:draw.path.map(p=>({x:p.x-20,y:p.y-10}))}))).toEqual(first.draws);
+});
+
+it('retains visible orchard ground when its site pivot has moved beyond the viewport edge',()=>{
+ const map={...worldMaps.park,props:worldMaps.park.props.filter(p=>p.id.startsWith('park.working-fruit-'))};
+ const {context,draws}=recordingContext();
+ const view:WorldRenderView={project:p=>({x:(p.x-p.y-(15.7-52))*11-110,y:160+(p.x+p.y-15.7-52)*5.5}),width:200,height:300,playerPosition:{x:15.7,y:52},elapsedMs:42000,reducedMotion:true,pass:'ground'};
+ expect(view.project({x:15.7,y:52}).x).toBe(-110);
+ drawLandscapeGround(context,map,view,'underlay');
+ expect(draws.some(draw=>draw.path.some(p=>p.x>=0&&p.x<=200&&p.y>=0&&p.y<=300))).toBe(true);
+});
 
 it('clips every timber mark to the real lower deck and shades original materials once', () => {
   const { context, draws, clips, stack } = recordingContext(), inputs: string[] = [];
