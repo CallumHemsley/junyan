@@ -11,7 +11,7 @@ export type AtmosphereHooks = {
   ambientByPhase?:Partial<Record<DayPhase,RGB>>;
   water?: readonly { id: string; rect: Rect; shore?: readonly ('north' | 'east' | 'south' | 'west')[] }[];
   reflections?: readonly {id:string;position:Point;width:number;height:number;color:RGB}[];
-  lights?: readonly { id: string; position: Point; radius: number; kind: 'window' | 'lamp'; emitter?:readonly Point[]; pool?:readonly Point[]; depth?:number }[];
+  lights?: readonly { id: string; position: Point; radius: number; kind: 'window' | 'lamp'; color?:RGB; emitter?:readonly Point[]; pool?:readonly Point[]; depth?:number }[];
   foliage?: readonly { id: string; position: Point; radius: number; kind: 'grass' | 'leaves'; motion?:boolean; depth?:number }[];
   shadows?: readonly { id: string; position: Point; radius: number; height: number; shape?:'canopy'|'willow'|'bamboo'|'column'; contact?:boolean }[];
   shadowExclusions?:readonly Rect[];
@@ -158,8 +158,11 @@ export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks 
     if(!visible({x:x-r,y:y-r,width:r*2,height:r*2})) continue;
     const strength=light.lampStrength;
     if(strength<.1) continue;
-    if(lamp.pool?.length) {
-      add('light',[...lamp.pool],[255,200,121],.26*strength);
+    if(lamp.pool!==undefined) {
+      // An explicit empty receiver list suppresses the generic foreground decal.
+      if(lamp.pool.length) {
+        add('light',[...lamp.pool],[255,200,121],.26*strength);
+      }
     } else {
       for(const [scale,opacity] of [[1,.07],[.67,.10],[.36,.14]]) {
         const size=r*scale;
@@ -168,9 +171,9 @@ export function sampleAtmosphere(input: AtmosphereInput, hooks: AtmosphereHooks 
     }
     const width=lamp.kind==='window'?.55:.16, height=lamp.kind==='window'?.48:.22;
     if(lamp.emitter) {
-      if(lamp.emitter.length>=3) add('objects',[...lamp.emitter],[255,224,153],strength*.80,{id:lamp.id,position:lamp.position,depth:lamp.depth});
+      if(lamp.emitter.length>=3) add('objects',[...lamp.emitter],lamp.color??[255,224,153],strength*.80,{id:lamp.id,position:lamp.position,depth:lamp.depth});
     } else {
-      add('objects',[{x:x-width/2,y,z},{x:x+width/2,y,z},{x:x+width/2,y,z:z+height},{x:x-width/2,y,z:z+height}],[255,224,153],strength,{id:lamp.id,position:lamp.position,depth:lamp.depth});
+      add('objects',[{x:x-width/2,y,z},{x:x+width/2,y,z},{x:x+width/2,y,z:z+height},{x:x-width/2,y,z:z+height}],lamp.color??[255,224,153],strength,{id:lamp.id,position:lamp.position,depth:lamp.depth});
       if(lamp.kind==='window') add('objects',[{x:x-.025,y:y-.005,z},{x:x+.025,y:y-.005,z},{x:x+.025,y:y-.005,z:z+height},{x:x-.025,y:y-.005,z:z+height}],[110,87,62],.9,{id:lamp.id,position:lamp.position,depth:lamp.depth});
     }
     if(lamp.kind==='window'&&!lamp.pool) add('light',square(x-.2,y+.14,.52,.1),[255,213,145],strength*.18);

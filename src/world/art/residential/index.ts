@@ -1,3 +1,4 @@
+import {apartmentReceiver, type ReceivingFace} from './apartment-light';
 import { bedRecipe, drawBed } from './bed';
 import { drawNativeObject } from './native-object';
 import { wardrobeRecipe } from './wardrobe';
@@ -472,9 +473,14 @@ function onSurface(api: ResidentialArtApi, mapId: string): ResidentialArtApi {
 }
 
 type Paint = { depth: number; draw: () => void };
-function paintResidential(ctx: CanvasRenderingContext2D, view: WorldRenderView, draw: (api: ResidentialArtApi) => void) {
+function paintResidential(ctx: CanvasRenderingContext2D, view: WorldRenderView, draw: (api: ResidentialArtApi) => void, map?: import('../../atmosphere/map-hooks').AtmosphereMap) {
   const paints: Paint[] = [];
-  const colour = (c: Colour, light = 1) => view.shadeColor?.(c, light) ?? `rgb(${c.map(value => Math.round(value * light)).join(',')})`;
+  const receive=map?.id==='apartment'?apartmentReceiver(map,view.castLight?.lampStrength):undefined;
+  const receiving=!!receive&&(view.castLight?.lampStrength??0)>.22;
+  const colour = (c: Colour, light = 1, face?:ReceivingFace) => {
+    const graded=view.shadeColor?.(c, light) ?? `rgb(${c.map(value => Math.round(value * light)).join(',')})`;
+    return receive&&face?receive(graded,c,light,face):graded;
+  };
   const polygon = (points: { x: number; y: number }[], fill: string) => {
     ctx.fillStyle = fill; ctx.beginPath();
     points.forEach((point, index) => {
@@ -486,6 +492,17 @@ function paintResidential(ctx: CanvasRenderingContext2D, view: WorldRenderView, 
   const radius = (x: number, y: number, size: number) => Math.abs(view.project({ x: x + size, y }).x - view.project({ x, y }).x);
   const api: ResidentialArtApi = {
     box(x, y, z, right, front, top, c) {
+      // Receiver samples stay inside their original authored plane's painter group.
+      if (receiving && top === z && (right - x > 1.01 || front - y > 1.01)) {
+        paints.push({depth:x+y+right+front+top*.1,draw(){
+          for(let px=x;px<right;px+=1)for(let py=y;py<front;py+=1){
+            const r=Math.min(px+1,right),f=Math.min(py+1,front);
+            polygon([view.project({x:px,y:py},top),view.project({x:r,y:py},top),view.project({x:r,y:f},top),view.project({x:px,y:f},top)],
+              colour(c,1,{x:(px+r)/2,y:(py+f)/2,z:top,normal:[0,0,1]}));
+          }
+        }});
+        return;
+      }
       if (top !== z && (right - x > 1.01 || front - y > 1.01)) {
         for (let px = x; px < right; px += 1) for (let py = y; py < front; py += 1) api.box(px, py, z, Math.min(px + 1, right), Math.min(py + 1, front), top, c);
         return;
@@ -493,19 +510,21 @@ function paintResidential(ctx: CanvasRenderingContext2D, view: WorldRenderView, 
       paints.push({ depth: x + y + right + front + top * .1, draw() {
         const a = view.project({ x, y }, top), b = view.project({ x: right, y }, top), e = view.project({ x: right, y: front }, top), f = view.project({ x, y: front }, top);
         const lowB = view.project({ x: right, y }, z), lowE = view.project({ x: right, y: front }, z), lowF = view.project({ x, y: front }, z);
-        polygon([f, e, lowE, lowF], colour(c, .78)); polygon([b, e, lowE, lowB], colour(c, .65)); polygon([a, b, e, f], colour(c));
+        polygon([f, e, lowE, lowF], colour(c, .78, {x:(x+right)/2,y:front,z:(z+top)/2,normal:[0,1,0]}));
+        polygon([b, e, lowE, lowB], colour(c, .65, {x:right,y:(y+front)/2,z:(z+top)/2,normal:[1,0,0]}));
+        polygon([a, b, e, f], colour(c,1,{x:(x+right)/2,y:(y+front)/2,z:top,normal:[0,0,1]}));
       } });
     },
     sphere(x, y, z, size, c) {
       paints.push({ depth: (x + y) * 2 + z * .1, draw() {
         const p = view.project({ x, y }, z), r = radius(x, y, size);
-        ctx.fillStyle = colour(c); ctx.beginPath();ctx.ellipse(Math.round(p.x), Math.round(p.y), r, r * .85, 0, 0, Math.PI * 2);ctx.fill();
+        ctx.fillStyle = colour(c,1,{x,y,z,normal:[0,0,1]}); ctx.beginPath();ctx.ellipse(Math.round(p.x), Math.round(p.y), r, r * .85, 0, 0, Math.PI * 2);ctx.fill();
       } });
     },
     capsule(from, to, startRadius, endRadius, colorOf) {
       paints.push({ depth: from[0] + from[1] + to[0] + to[1] + to[2] * .1, draw() {
         const a = view.project({ x: from[0], y: from[1] }, from[2]), b = view.project({ x: to[0], y: to[1] }, to[2]);
-        ctx.strokeStyle = colour(colorOf(to[2]));ctx.lineWidth = Math.max(1, radius(from[0], from[1], startRadius + endRadius));ctx.lineCap = 'round';
+        ctx.strokeStyle = colour(colorOf(to[2]),1,{x:(from[0]+to[0])/2,y:(from[1]+to[1])/2,z:(from[2]+to[2])/2,normal:[0,0,1]});ctx.lineWidth = Math.max(1, radius(from[0], from[1], startRadius + endRadius));ctx.lineCap = 'round';
         ctx.beginPath();ctx.moveTo(Math.round(a.x), Math.round(a.y));ctx.lineTo(Math.round(b.x), Math.round(b.y));ctx.stroke();
       } });
     },
@@ -525,10 +544,10 @@ export const drawMap: DrawMap = (ctx, map, view) => {
       drawResidentialFloor(api, map.id);
       // The recessed stair well must sort below its raised landing edges.
       if (map.id === 'residential-stairs') drawResidentialProps(api, map.id, 'ground');
-    });
-    if (map.id !== 'residential-stairs') paintResidential(ctx, view, api => drawResidentialProps(api, map.id, 'ground'));
+    },map);
+    if (map.id !== 'residential-stairs') paintResidential(ctx, view, api => drawResidentialProps(api, map.id, 'ground'),map);
   }
-  if (view.pass === 'foreground') paintResidential(ctx, view, api => drawResidentialProps(api, map.id, 'foreground'));
+  if (view.pass === 'foreground') paintResidential(ctx, view, api => drawResidentialProps(api, map.id, 'foreground'),map);
 };
 
 export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderView): WorldRenderObject[] {
@@ -598,7 +617,7 @@ export function renderObjects(map: Parameters<DrawMap>[1], _view: WorldRenderVie
         if (prop.kind === 'wardrobe' && drawNativeObject(ctx, view, wardrobeRecipe(prop.position.x, prop.position.y, prop.position.x + prop.width, prop.position.y + prop.height), () => {
           paintResidential(ctx, view, api => onSurface(api, map.id).castShadow(position.x, position.y, .12, Math.max(prop.width, prop.height) * .45, .45, 0));
         })) return;
-        paintResidential(ctx, view, api => drawResidentialProp(onSurface(api, map.id), prop));
+        paintResidential(ctx, view, api => drawResidentialProp(onSurface(api, map.id), prop),map);
       },
     }];
   });
@@ -620,7 +639,7 @@ export function drawFurniture(ctx: CanvasRenderingContext2D, state: State, view:
       api.box(rect.x, rect.y + at, .075, rect.x + .055, rect.y + Math.min(at + segment, rect.height), .09, colour);
       api.box(rect.x + rect.width - .055, rect.y + at, .075, rect.x + rect.width, rect.y + Math.min(at + segment, rect.height), .09, colour);
     }
-  });
+  },mapDefinitions.find(map=>map.id==='apartment'));
 }
 
 export function renderFurnitureObjects(state: State): WorldRenderObject[] {
@@ -634,7 +653,7 @@ export function renderFurnitureObjects(state: State): WorldRenderObject[] {
         if (p.id === 'bed' && drawBed(ctx, view, bedRecipe(rect.x + .14, rect.y + .14, rect.x + rect.width - .14, rect.y + rect.height - .14), () => {
           paintResidential(ctx, view, api => api.castShadow((rect.x + rect.width / 2) + .12, (rect.y + rect.height / 2) + .12, .012, Math.max(rect.width, rect.height) * .55, .28, 0));
         })) return;
-        paintResidential(ctx, view, api => drawApartmentFurniture(api, { ...state, placements: [p] }));
+        paintResidential(ctx, view, api => drawApartmentFurniture(api, { ...state, placements: [p] }),mapDefinitions.find(map=>map.id==='apartment'));
       },
     };
   });
