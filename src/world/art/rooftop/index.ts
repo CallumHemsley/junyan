@@ -82,7 +82,7 @@ const paintMap: DrawMap = (ctx, map, view) => {
   };
 
   const tree = (x: number, y: number, growth = 3, droop = false) => {
-    const height = 1.4 + growth * .48, lean = droop ? .5 : 0;
+    const height = 1.4 + growth * .48 - (droop ? .5 : 0), lean = droop ? .5 : 0;
     const hand = Math.floor(x * 3 + y * 7) % 2 ? 1 : -1;
     const fork = {x: x + hand * .1 + lean * .4, y};
     polygon([project(x - .08, y, .55), project(x + .08, y, .55), project(fork.x + .04, y, height - .2), project(fork.x - .05, y, height - .2)], palette.woodDark);
@@ -90,7 +90,7 @@ const paintMap: DrawMap = (ctx, map, view) => {
     for (const [dx, dy, dz] of [[-.48, .04, -.03], [.4, .03, .12], [.08, -.18, .38]]) {
       stem(fork, {x: x + dx * hand + lean, y: y + dy}, height - .75, height + dz - .15, palette.woodDark, 2);
     }
-    const p = project(x + lean, y, height + .12 - (droop ? .5 : 0));
+    const p = project(x + lean, y, height + .12);
     const radius = Math.abs(project(x + .58 + growth * .18, y).x - project(x, y).x);
     const point = (dx: number, dy: number) => ({x: p.x + Math.round(dx * radius * hand), y: p.y + Math.round(dy * radius * .95)});
     // Broad joined boughs keep an irregular crown, with light carried across the leaf mass.
