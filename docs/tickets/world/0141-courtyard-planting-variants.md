@@ -23,3 +23,7 @@ Independent district review finds four planting beds rendered as repeated cuboid
 - Owner courtyard plant writer; branch codex/0141-courtyard-planting-variants; worktree /private/tmp/junyan-world-courtyard-planting-variants; strict ports5634/5635.
 - Base accepted main6d11a876; reconcile latest main later. Independent critique private district-critic/review.md. Shared courtyard art source only; no current writer uses that module.
 - All new raw QA private /private/tmp/junyan-world-private-qa/0141; source/tests/ticket only committed. Parent owns reviewers and merges.
+
+- Early candidate: existing variant0 now paints low broad leaf rosettes; variant1 sparse upright paired leaves; variant2 worked soil with three remaining low plants. Timber, soil inset, prop depth/culling and map are unchanged. Taller stems intentionally reach1.25 world units inside the bed inset; final tests and player-depth inspection pending.
+- Four matched actual App before/candidate phone390×844 and desktop1440×1000 morning/night originals captured privately under0141/native. Seed42, courtyard23/23, north pose, life42000ms and frozen clock; clean consoles. Capture fixture restores a validated save, so it establishes rendering, not map traversal.
+- Early source freeze for independent preference; ticket remains doing. No broad QA run before that gate. Latest main14b8f7b6 reconciliation, material/variant/alpha/bounds checks, normal/reduced inspection and required real journeys remain pending.

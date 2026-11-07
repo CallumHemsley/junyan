@@ -175,14 +175,37 @@ function paintProp(ctx: CanvasRenderingContext2D, view: WorldRenderView, p: Para
         break;
       }
       case 'planter': pot(x, y, v); break;
-      case 'raised-bed':
+      case 'raised-bed': {
         box(x, y, w, d, .42, color.woodDark, color.wood, color.woodDark);
         floor(x + .13, y + .13, w - .26, d - .26, '#615d47', .44);
-        for (let yy = y + .4; yy < y + d - .2; yy += .65) for (let xx = x + .3; xx < x + w - .2; xx += .6) {
-          box(xx, yy, .4, .34, .25, color.leafLight, color.leafMid, color.leaf, .43);
-          line([xx + .1, yy + .1, .65], [xx + .23, yy + .15, .88], color.leaf, 2);
+        const rosette = (cx: number, cy: number) => {
+          polygon([[cx - .34, cy, .49], [cx, cy - .3, .5], [cx + .34, cy, .5], [cx, cy + .3, .48]], color.leafDark);
+          for (const [dx, dy, fill] of [[-.34, 0, color.leafMid], [0, -.3, color.leaf], [.34, 0, color.leafMid], [0, .3, color.leafLight]] as const) {
+            const sideX = dy * .45, sideY = -dx * .45;
+            polygon([[cx, cy, .66], [cx + dx * .5 + sideX, cy + dy * .5 + sideY, .64], [cx + dx, cy + dy, .51], [cx + dx * .5 - sideX, cy + dy * .5 - sideY, .59]], fill);
+          }
+          polygon([[cx - .11, cy, .68], [cx, cy - .1, .76], [cx + .12, cy, .69], [cx, cy + .12, .63]], color.leafMid);
+        };
+        if (v === 2) {
+          for (const dy of [.35, .7]) floor(x + .4, y + d * dy, w - .8, .08, color.woodDark, .45);
+          for (const [dx, dy] of [[.6, .5], [1.3, .85], [.6, d - .5]]) rosette(x + dx, y + dy);
+        } else if (v === 1) {
+          for (let row = 0; row < 2; row++) for (let col = 0; col < 3; col++) {
+            const cx = x + .5 + col * (w - 1) / 2, cy = y + .38 + row * (d - .76);
+            const h = 1.1 + (col + row) % 2 * .15;
+            line([cx, cy, .45], [cx, cy, h], color.leafDark);
+            for (const side of [-1, 1]) {
+              const z = h - (side === 1 ? .3 : .15);
+              polygon([[cx, cy, z - .12], [cx + side * .25, cy - .12, z + .12], [cx + side * .3, cy + .04, z + .08], [cx + side * .12, cy + .12, z - .05]], side === 1 ? color.leafMid : color.leaf);
+            }
+          }
+        } else {
+          const rows = Math.max(2, Math.floor(d / .85));
+          for (let row = 0; row < rows; row++) for (let col = 0; col < 2; col++)
+            rosette(x + .65 + col * (w - 1.3), y + .5 + row * (d - 1) / (rows - 1));
         }
         break;
+      }
       case 'courtyard-tree': {
         const sway = view.reducedMotion ? 0 : Math.sin(view.elapsedMs / 2000 + x) * .06;
         box(x + .45, y + .45, .3, .3, 3, color.wood, color.woodDark, color.woodDark);
