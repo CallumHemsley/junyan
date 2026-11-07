@@ -8,6 +8,7 @@ import { restaurantMap } from "../src/world/restaurant";
 import { findPath, canStand, canWalk, movePlayer } from "../src/world/geometry";
 import {restaurantCamera} from "../src/world/art/restaurant/camera";
 import { explorationCamera, project } from "../src/world/camera";
+import { workshopFrame } from "../src/world/art/workshop/framing";
 import { courtyardForCats } from "../src/world/maps/courtyard/habitat";
 import { furnitureColliders } from "../src/features/apartment/world";
 import { surfaceHeight } from "../src/world/maps/residential/elevation";
@@ -96,7 +97,7 @@ export async function walkTo(page: Page, destination: Point) {
     const point = { x: world.position.x+(next.x-world.position.x)*step, y: world.position.y+(next.y-world.position.y)*step };
     const canvas = page.locator(".connected-world canvas");
     const box = (await canvas.boundingBox())!;
-    const camera = map.id === "restaurant" ? restaurantCamera(map.bounds, world.position, Math.ceil(box.width/2), Math.ceil(box.height/2)) : explorationCamera(map.bounds, world.position, Math.ceil(box.width/2), Math.ceil(box.height/2), 0, 0, surfaceHeight(map.id, world.position));
+    const camera = map.id === "restaurant" ? restaurantCamera(map.bounds, world.position, Math.ceil(box.width/2), Math.ceil(box.height/2)) : explorationCamera(map.bounds, world.position, Math.ceil(box.width/2), Math.ceil(box.height/2), 0, 0, surfaceHeight(map.id, world.position), map.id === "workshop" ? workshopFrame : undefined);
     const screen = project(point, camera, surfaceHeight(map.id, point));
     const position = { x: screen.x*box.width/camera.width, y: screen.y*box.height/camera.height };
     const clear = await canvas.evaluate((element, position) => {
