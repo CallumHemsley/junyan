@@ -68,7 +68,7 @@
 .connected-shell .ambience-settings > summary:focus-visible { outline-color: var(--world-frame-ink); }
 .connected-shell .ambience-options { color: var(--text-primary); }
 .connected-world { box-shadow: inset 0 0 0 3px var(--world-frame); }
-.connected-world:focus-visible { outline: 2px solid var(--world-rim); outline-offset: -3px; }
+.connected-world:focus-visible { outline: 3px solid var(--text-primary); outline-offset: -5px; }
 .world-place,
 .world-target-group,
 .world-life-dialogue,
@@ -101,8 +101,8 @@
 .world-pad button:active,
 .world-target-activate:active,
 .world-target-switch:active { background: var(--surface-sunk); box-shadow: inset 0 2px var(--hairline-strong); }
-.world-target-cue svg { stroke: var(--world-paper); stroke-width: 2; }
-.world-target-cue ellipse+ellipse { stroke: var(--world-frame); stroke-width: 2; }
+.world-target-cue svg { stroke: var(--surface-card); stroke-width: 2; }
+.world-target-cue ellipse+ellipse { stroke: var(--text-primary); stroke-width: 2; }
 .world-target-group button:focus-visible,
 .world-place .word:focus-visible,
 .world-pad button:focus-visible {
