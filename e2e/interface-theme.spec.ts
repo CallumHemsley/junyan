@@ -39,6 +39,7 @@ test('service phases preserve control, cue and lookup contrast through night and
   await page.locator('[data-world-anchor="workshop.lamp"]').click();
   const source=page.locator('.repair-line .word').first();await source.click();
   const wordCard=page.locator('.word-popover');await expect(wordCard).toBeVisible();
+  expect(await page.locator('.connected-shell').evaluate(element=>element.getBoundingClientRect().bottom>=innerHeight)).toBe(true);
   const wordStyle=await wordCard.evaluate(element=>({ink:getComputedStyle(element).color,paper:getComputedStyle(element).backgroundColor}));
   expect(contrast(wordStyle.ink,wordStyle.paper)).toBeGreaterThan(4.5);
   await expect(wordCard.locator('.pinyin')).not.toBeEmpty();

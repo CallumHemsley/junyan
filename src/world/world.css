@@ -26,6 +26,7 @@
 
 /* The frame uses the same paper and timber values as the readable panels. */
 .connected-shell {
+  min-height: 100dvh;
   --world-frame: color-mix(in srgb, var(--text-primary) 75%, var(--surface-sunk));
   --world-frame-ink: var(--surface-card);
   --world-paper: color-mix(in srgb, var(--surface-sunk) 85%, var(--text-secondary));
