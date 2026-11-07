@@ -1,7 +1,7 @@
 ---
 id: 141
 title: Give courtyard planting beds distinct authored silhouettes
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-07
@@ -38,3 +38,6 @@ Independent district review finds four planting beds rendered as repeated cuboid
 - Reconciled accepted main dedd81e6a2e8a39c48aa1b5fd79488435d56bc57 once before final QA. All 107 files / 678 tests and TypeScript/production build pass. Two focused tests cover all four authored bed dimensions, soil-inset/height bounds, unchanged support materials, inherited grading/alpha/depth, time/motion invariance and 32 phone/desktop edge cases.
 - Required Playwright checks 10/10 pass across desktop/phone: ward-to-service/change/journal/progression, physical world doors/stairs, courtyard motion harness and scene visibility/preference scheduling. Private QA root explicitly `/private/tmp/junyan-world-private-qa/0141/journeys`; strict ports 5634/5635. Final native original morning/night normal/reduced views, all four beds from near/far, visible cat corridor, phone camera edges and actual pad movement in both motion modes inspected; consoles clean. Provenance/scripts/reports and all raw media remain private under `/private/tmp/junyan-world-private-qa/0141`.
 - Ready for independent exact-source/native review; status stays doing until it resolves. Remaining modest art limits: the middle bed is intentionally less full and cultivated rows remain visible. Variant2's fixed composition is authored for its current 3×1.6 bed; future size reuse needs a new arrangement/check. No map, gameplay state, schema, save, route, text or audio changes.
+
+- Completed after independent `courtyard_final_141` review approved exact source freeze `7aba1d566085b09bcb2ec1c2586bef00d06893dc` and independently confirmed unchanged art/test hashes, all 40 private native PNGs and the 10 passing journey results. Final evidence and hashes remain in `/private/tmp/junyan-world-private-qa/0141/provenance-final.json` and `final-writer-report.md`; this completion change touches ticket metadata only.
+- Learned: silhouette differences needed overlapping lower leaf volume to survive phone daylight as well as night. Gate 03 improved all four blind comparisons; the final review retains the modest middle-bed/row-pattern limits and current-size-only variant 2 arrangement documented above.
