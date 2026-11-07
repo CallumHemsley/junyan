@@ -82,13 +82,22 @@ const paintMap: DrawMap = (ctx, map, view) => {
   };
 
   const tree = (x: number, y: number, growth = 3, droop = false) => {
-    const height = 1.4 + growth * .48, lean = droop ? .5 : 0;
-    stem({x, y}, {x: x + lean, y}, .55, height, palette.woodDark, 3);
-    for (let i = 0; i < 3 + growth; i++) {
-      const a = i * 2.4, dx = Math.cos(a) * (.3 + growth * .12), dy = Math.sin(a) * (.25 + growth * .1);
-      stem({x, y}, {x: x + dx + lean, y: y + dy}, height - .65, height - .2 + i % 2 * .2, palette.woodDark);
-      cluster(x + dx + lean, y + dy, height + i % 2 * .3 - (droop ? .5 : 0), .4 + growth * .07, i % 2 ? palette.jade : palette.leafLight, i);
+    const height = 1.4 + growth * .48 - (droop ? .5 : 0), lean = droop ? .5 : 0;
+    const hand = Math.floor(x * 3 + y * 7) % 2 ? 1 : -1;
+    const fork = {x: x + hand * .1 + lean * .4, y};
+    polygon([project(x - .08, y, .55), project(x + .08, y, .55), project(fork.x + .04, y, height - .2), project(fork.x - .05, y, height - .2)], palette.woodDark);
+    stem({x: x + .025, y}, fork, .65, height - .5, palette.wood, 1);
+    for (const [dx, dy, dz] of [[-.48, .04, -.03], [.4, .03, .12], [.08, -.18, .38]]) {
+      stem(fork, {x: x + dx * hand + lean, y: y + dy}, height - .75, height + dz - .15, palette.woodDark, 2);
     }
+    const p = project(x + lean, y, height + .12);
+    const radius = Math.abs(project(x + .58 + growth * .18, y).x - project(x, y).x);
+    const point = (dx: number, dy: number) => ({x: p.x + Math.round(dx * radius * hand), y: p.y + Math.round(dy * radius * .95)});
+    // Broad joined boughs keep an irregular crown, with light carried across the leaf mass.
+    polygon([[-1, .05], [-1.04, -.28], [-.91, -.45], [-.84, -.68], [-.52, -.7], [-.42, -.9], [-.1, -1.03], [.1, -.9], [.4, -.96], [.61, -.73], [.84, -.66], [.98, -.42], [.96, -.19], [1.07, .04], [.91, .23], [.66, .29], [.47, .44], [.19, .38], [-.05, .51], [-.26, .36], [-.58, .38], [-.75, .2]].map(([dx, dy]) => point(dx, dy)), palette.leaf);
+    polygon([[-.96, -.04], [-.99, -.26], [-.86, -.43], [-.79, -.63], [-.48, -.64], [-.38, -.84], [-.1, -.96], [.08, -.82], [.37, -.89], [.57, -.67], [.8, -.59], [.92, -.4], [.85, -.15], [.63, -.08], [.42, .11], [.1, .06], [-.12, .22], [-.38, .11], [-.68, .19]].map(([dx, dy]) => point(dx, dy)), palette.jade);
+    polygon([[-.81, -.45], [-.75, -.59], [-.46, -.59], [-.34, -.8], [-.1, -.89], [.03, -.75], [.22, -.77], [.34, -.58], [.18, -.39], [-.05, -.43], [-.22, -.22], [-.5, -.31], [-.64, -.21]].map(([dx, dy]) => point(dx, dy)), palette.leafLight);
+    if (growth > 0) polygon([[.25, -.52], [.42, -.76], [.58, -.61], [.78, -.54], [.84, -.37], [.7, -.23], [.49, -.25], [.34, -.1], [.1, -.18]].map(([dx, dy]) => point(dx, dy)), palette.leafMid);
   };
   const bench = (p: Prop) => {
     const {x, y} = p.position, w = p.width;
