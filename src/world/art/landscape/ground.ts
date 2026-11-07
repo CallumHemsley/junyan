@@ -72,10 +72,24 @@ function harvestPocket(ctx:CanvasRenderingContext2D,map:Map,view:WorldRenderView
   [[-.16,-.14],[-.03,-.26],[.13,-.18],[.18,-.06],[.15,.1],[.07,.18],[-.06,.16],[-.17,.03]],
  ];
  for(const route of routes){
-  paint(route,'#939064');
+  paint(route,'#9b8964');
   // Foot-worn centers are lighter, leaving quiet grass between the arms.
   const center=route.reduce((p,[x,y])=>({x:p.x+x/route.length,y:p.y+y/route.length}),{x:0,y:0});
-  paint(route.map(([x,y])=>[center.x+(x-center.x)*.68,center.y+(y-center.y)*.56]),'#afa177');
+  paint(route.map(([x,y])=>[center.x+(x-center.x)*.68,center.y+(y-center.y)*.56]),'#b19b70');
+ }
+ if(site.w>=10){
+  // Grass enters the worn margin asymmetrically: no enclosed cart ring or tidy pipe.
+  for(const bite of [
+   [[-.19,-.03],[-.09,-.01],[-.1,.09],[-.22,.12],[-.22,.03]],
+   [[.12,.025],[.24,.07],[.21,.19],[.12,.13],[.1,.085]],
+   [[.21,-.13],[.285,-.14],[.32,-.055],[.25,-.065]],
+  ])paint(bite,'#869d62');
+  // A few uneven fragments belong to the worked surface, never a uniform grit pass.
+  for(const [dx,dy]of [[-.24,-.22],[.23,-.18],[-.045,-.165]]){
+   const x=site.x+dx*site.w,y=site.y+dy*site.h;
+   shape(ctx,view,[{x:x-.42,y:y-.11},{x:x+.03,y:y-.23},{x:x+.46,y:y-.06},{x:x+.21,y:y+.21},{x:x-.23,y:y+.17}], '#8d805d');
+   shape(ctx,view,[{x:x-.16,y:y-.08},{x:x+.1,y:y-.12},{x:x+.26,y:y+.01},{x:x+.02,y:y+.09}], '#bca77d');
+  }
  }
  // Small leaf/root skirts attach to the actual trunks, not the former island centers.
  for(const p of map.props.filter(p=>p.id.startsWith('park.working-fruit-'))){
