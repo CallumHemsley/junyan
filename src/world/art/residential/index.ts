@@ -106,23 +106,29 @@ function drawResidentialProp(api: ResidentialArtApi, prop: Omit<WorldMapDefiniti
       break;
     case 'sofa':
       if (prop.id === 'apartment.sofa') {
-        box(x + .15, y + .15, .1, endX - .15, endY - .15, .3, wood);
-        box(x + .08, y + .12, .3, endX - .08, endY - .12, .64, [105, 138, 119]);
-        box(endX - .42, y + .15, .62, endX - .1, endY - .15, 1.36, jade);
-        box(endX - .35, y + .26, 1.36, endX - .16, endY - .26, 1.44, [144, 165, 139]);
-        for (const at of [y + .27, y + h / 2 + .06]) {
-          const front = at + h / 2 - .34;
-          box(x + .13, at, .64, endX - .4, front, .81, [128, 157, 130]);
-          box(x + .2, at + .06, .81, endX - .47, front - .06, .92, [158, 177, 146]);
-          box(x + .3, at + .13, .92, endX - .53, front - .13, .97, [166, 182, 152]);
-          box(endX - .64, at + .1, .94, endX - .34, front - .1, 1.27, [139, 163, 136]);
+        for (const px of [x + .24, endX - .42]) for (const py of [y + .26, endY - .44]) {
+          api.castShadow(px + .09, py + .09, .085, .2, .5, 0);
+          box(px, py, .08, px + .18, py + .18, .3, ink);
+        }
+        box(x + .14, y + .16, .27, endX - .14, endY - .16, .38, [129, 99, 69]);
+        box(x + .1, y + .14, .38, endX - .1, endY - .14, .65, [94, 127, 110]);
+        box(x + .12, y + .19, .62, x + .28, endY - .19, .75, [143, 166, 137]);
+        for (let seat = 0; seat < 2; seat++) {
+          const at = y + .32 + seat * (h - .5) / 2, front = at + (h - .5) / 2 - .16;
+          box(endX - .47, at, .6, endX - .1, front, 1.21, [99, 135, 116]);
+          box(endX - .4, at + .08, 1.21, endX - .16, front - .08, 1.29 + seat * .03, [147, 169, 141]);
+          box(endX - .61, at + .04, .66, endX - .45, front - .04, .85, [67, 103, 88]);
+          box(x + .15, at, .65, endX - .57, front, .82, [126, 156, 128]);
+          box(x + .22, at + .07, .82, endX - .61, front - .07, .92, [160, 179, 147]);
+          box(x + .31, at + .15, .92, endX - .69, front - .15, .97, [172, 185, 157]);
+          box(endX - .73, at + .16, .91, endX - .45, front - .16, 1.14, [132, 160, 133]);
         }
         for (const at of [y + .12, endY - .4]) {
-          box(x + .1, at, .62, endX - .1, at + .28, 1.04, jade);
-          box(x + .22, at + .04, 1.04, endX - .2, at + .24, 1.12, [144, 166, 140]);
+          box(x + .1, at, .6, endX - .1, at + .28, 1.01, [107, 144, 123]);
+          box(x + .22, at + .05, 1.01, endX - .2, at + .23, 1.09, [155, 175, 145]);
         }
-        box(endX - .99, y + .43, .96, endX - .55, y + 1.25, 1.16, linen);
-        box(x + .28, endY - 1.25, .97, x + .87, endY - .5, 1.12, [143, 166, 168]);
+        box(endX - 1.02, y + .49, .97, endX - .65, y + 1.16, 1.12, linen);
+        box(x + .3, endY - 1.19, .97, x + .81, endY - .57, 1.1, [143, 166, 168]);
         break;
       }
       box(x, y, .1, endX, endY, .5, wood);box(x + .1, y + .1, .5, endX - .1, endY - .1, .9, jade);
@@ -217,6 +223,26 @@ function drawResidentialProp(api: ResidentialArtApi, prop: Omit<WorldMapDefiniti
       box(x - .3, y, 3.6, endX + .3, endY + .3, 3.7, wood);
       break;
     case 'bench': case 'tea-table': case 'stool': {
+      if (prop.id === 'apartment.tea-corner') {
+        for (const px of [x + .22, endX - .42]) for (const py of [y + .22, endY - .42]) {
+          api.castShadow(px + .1, py + .1, .085, .2, .5, 0);
+          box(px, py, .08, px + .2, py + .2, .66, [112, 85, 59]);
+        }
+        for (const px of [x + .15, endX - .28]) box(px, y + .16, .49, px + .13, endY - .16, .69, wood);
+        for (const py of [y + .15, endY - .28]) box(x + .16, py, .49, endX - .16, py + .13, .69, wood);
+        box(x, y, .65, endX, endY, .77, [172, 132, 88]);
+        box(x + .06, y + .06, .77, endX - .06, endY - .06, .8, [193, 155, 105]);
+        box(x + .4, y + .42, .805, x + 1.02, y + 1.04, .815, linen);
+        sphere(x + .71, y + .73, .94, .16, jade, 'solid');
+        for (const at of [x + 1.65, x + 2.05]) box(at, y + .62, .805, at + .18, y + .8, .96, cream);
+        break;
+      }
+      if (prop.id === 'apartment.tea-stool') {
+        for (const px of [x + .14, endX - .27]) for (const py of [y + .14, endY - .27]) box(px, py, .08, px + .13, py + .13, .47, ink);
+        box(x + .03, y + .03, .47, endX - .03, endY - .03, .55, wood);
+        box(x + .09, y + .09, .55, endX - .09, endY - .09, .58, paleWood);
+        break;
+      }
       const height = prop.kind === 'tea-table' ? .8 : .63;
       for (const px of [x + .15, endX - .3]) for (const py of [y + .15, endY - .3]) box(px, py, 0, px + .16, py + .16, height, ink);
       box(x, y, height, endX, endY, height + .15, paleWood);
