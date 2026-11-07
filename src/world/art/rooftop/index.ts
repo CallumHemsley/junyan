@@ -238,6 +238,14 @@ const paintMap: DrawMap = (ctx, map, view) => {
         } else if (p.kind === 'tea-table') {
           cast(x, y, w, h, 1.03, 1.03);
           for (const dx of [.15, w - .3]) for (const dy of [.15, h - .3]) cast(x + dx, y + dy, .15, .15, .9);
+        } else if (p.kind === 'potting-tray') {
+          cast(x, y, w, h, 1.25, 1.12);
+          cast(x + .08, y + .08, w - .16, h - .16, .36, .28);
+          for (const dx of [.08, w - .17]) for (const dy of [.08, h - .17]) cast(x + dx, y + dy, .09, .09, 1.12);
+          cast(x + .2, y + .15, .42, .36, 1.61, 1.26);
+          cast(x + .29, y + .185, .23, .03, 1.85, 1.85);
+          for (const dx of [.29, .52]) cast(x + dx - .015, y + .185, .03, .03, 1.85, 1.61);
+          cast(x + .6, y + .23, .4, .09, 1.65, 1.46);
         } else if (p.kind === 'threshold-lintel') cast(x - .12, y - .02, w + .24, h + .04, 2.68, 2.5);
         else if (p.kind === 'laundry') {
           for (const dx of [0, w]) cast(x + dx - .04, y - .04, .08, .08, 2.4);
@@ -246,7 +254,7 @@ const paintMap: DrawMap = (ctx, map, view) => {
           const height: Record<string, number> = {'stairhead': 3.92, 'water-tank': 3.18, 'basin': .8, 'tool-bay': 1.83,
             'compost': 1, 'raised-bed': .57, 'trellis-bed': .57, 'border-pot': .6, 'bamboo-screen': .5,
             'post': 3.3, 'threshold-post': 2.6, 'garden-crate': .85, 'wash-bowl': .25, 'sun-clock': .7,
-            'potting-tray': .48, 'soil-sack': .57, 'garden-tree': .8, 'garden-flower': .8, 'garden-climber': .8};
+            'soil-sack': .57, 'garden-tree': .8, 'garden-flower': .8, 'garden-climber': .8};
           if (height[p.kind]) cast(x, y, w, h, height[p.kind]);
         }
         // One nonzero fill unions support/slat overlap instead of accumulating opacity.
@@ -264,6 +272,8 @@ const paintMap: DrawMap = (ctx, map, view) => {
         plane(x - .045, y - .045, w + .09, h + .09, .024, palette.contact);
       } else if (p.kind === 'bench') {
         for (const dx of [.2, w - .4]) plane(x + dx - .055, y + .045, .27, .81, .024, palette.contact);
+      } else if (p.kind === 'potting-tray') {
+        for (const dx of [.08, w - .17]) for (const dy of [.08, h - .17]) plane(x + dx - .035, y + dy - .035, .16, .16, .024, palette.contact);
       } else if (p.kind === 'tea-table') {
         for (const dx of [.15, w - .3]) for (const dy of [.15, h - .3]) plane(x + dx - .055, y + dy - .055, .26, .26, .024, palette.contact);
       } else if (['raised-bed', 'trellis-bed', 'tree-bed', 'border-pot', 'bamboo-screen', 'compost', 'garden-crate'].includes(p.kind) || /^garden-(tree|flower|climber)$/.test(p.kind)) {
@@ -486,7 +496,7 @@ export function renderObjects(map: WorldMapDefinition, _view: WorldRenderView): 
     id: p.id,
     position: {x: p.position.x + p.width / 2, y: p.position.y + p.height / 2},
     depth: p.position.x + p.position.y + (p.width + p.height) / 2,
-    occlusion: map.occluders.find(o => o.id === p.id) ?? (/stairhead|tree|bamboo|trellis/.test(p.kind) ? {rect: {...p.position, width: p.width, height: p.height}, height: 3, fadeWhenPlayerBehind: true} : undefined),
+    occlusion: map.occluders.find(o => o.id === p.id) ?? (p.kind === 'potting-tray' ? {rect: {...p.position, width: p.width, height: p.height}, height: 1.85, fadeWhenPlayerBehind: true} : /stairhead|tree|bamboo|trellis/.test(p.kind) ? {rect: {...p.position, width: p.width, height: p.height}, height: 3, fadeWhenPlayerBehind: true} : undefined),
     draw: (ctx, view) => paintMap(ctx, {...map, props: [p]}, {...view, pass: 'objects'}),
   }));
 }
