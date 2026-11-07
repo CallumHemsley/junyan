@@ -20,7 +20,7 @@ Independent district review finds four planting beds rendered as repeated cuboid
 
 ## Notes
 
-- Owner courtyard plant writer; branch codex/0141-courtyard-planting-variants; worktree /private/tmp/junyan-world-courtyard-planting-variants; strict ports5634/5635.
+- Owner courtyard plant writer; branch codex/0141-courtyard-planting-variants; worktree /private/tmp/junyan-world-courtyard-planting-variants; strict ports 5634/5635.
 - Base accepted main6d11a876; reconcile latest main later. Independent critique private district-critic/review.md. Shared courtyard art source only; no current writer uses that module.
 - All new raw QA private /private/tmp/junyan-world-private-qa/0141; source/tests/ticket only committed. Parent owns reviewers and merges.
 
@@ -33,3 +33,8 @@ Independent district review finds four planting beds rendered as repeated cuboid
 
 - Gate02 returned revise: candidate02 narrowly preferred in both night views; original baseline narrowly preferred in both morning views. No overall improvement established. Prior source and originals retained.
 - Candidate03 keeps the same plant counts and upper leaf families, adds continuous low shaded leafy bodies/skirts, closes the widest internal soil channels and offsets selected cluster centers. The variant2 gap is a narrow soil window. One stable composition serves all phases. Four matched originals under0141/native/candidate03 inspected at native dimensions with clean consoles; broad QA remains pending the independent gate.
+
+- Gate03 retained candidate03: all four blind preferences favored it. Accepted art then stayed byte-identical (SHA256 ed83441546f9afecea88d5661df7f9c220568d43473aaef43e53cabe77ddee18); no further art expansion.
+- Reconciled accepted main dedd81e6a2e8a39c48aa1b5fd79488435d56bc57 once before final QA. All 107 files / 678 tests and TypeScript/production build pass. Two focused tests cover all four authored bed dimensions, soil-inset/height bounds, unchanged support materials, inherited grading/alpha/depth, time/motion invariance and 32 phone/desktop edge cases.
+- Required Playwright checks 10/10 pass across desktop/phone: ward-to-service/change/journal/progression, physical world doors/stairs, courtyard motion harness and scene visibility/preference scheduling. Private QA root explicitly `/private/tmp/junyan-world-private-qa/0141/journeys`; strict ports 5634/5635. Final native original morning/night normal/reduced views, all four beds from near/far, visible cat corridor, phone camera edges and actual pad movement in both motion modes inspected; consoles clean. Provenance/scripts/reports and all raw media remain private under `/private/tmp/junyan-world-private-qa/0141`.
+- Ready for independent exact-source/native review; status stays doing until it resolves. Remaining modest art limits: the middle bed is intentionally less full and cultivated rows remain visible. Variant2's fixed composition is authored for its current 3×1.6 bed; future size reuse needs a new arrangement/check. No map, gameplay state, schema, save, route, text or audio changes.
