@@ -1,7 +1,7 @@
 ---
 id: 144
 title: Compose the apartment everyday living area
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-07
@@ -40,3 +40,7 @@ The current-source independent comparison still favors Stardew; the apartment ti
 - Browser evidence is split honestly: initial managed suite completed8 passing existing service/world/furnishing cases plus2 authored composition setup failures (exact startup name). A second setup attempt failed both reload cases because test=1 bypasses persistence. Both failed logs/JSON/test snapshots/traces remain private. The corrected ordinary seedDayOne/IndexedDB test at ae09e3cad7627a18f380f09ef923b36203d8ba38 completed with JSON expected2/unexpected0/skipped0/flaky0, on both devices: real arrival, rotate/place/store/undo/lookup, actual saved row/reload, relocated tea discovery/watch, furnishing access and physical departure. All managed processes are terminal; no production fix was needed.
 - Final native proof:14 reconciled full-App originals individually inspected, covering day/night starter views, changed masses near/far, tight clearance/tea gap and validated crowded protected edge under normal/reduced motion. All console-error arrays empty. Camera metadata is an actual read-only cameraRef observation, not reconstruction. Four successful ordinary-journey furnishing/tea-response originals also inspected. Exact hashes/result snapshots live in `/private/tmp/junyan-world-private-qa/0144/provenance-final.json` and `final-writer-report.md`; no raw publication.
 - Ready for independent exact-source/native review; status remains doing. Room-scale floor dominance, phone cropping and compressed sofa back remain limits. Interior day/night response is separate ticket146; no light/camera expansion is included.
+
+- Completed after independent final review approved exact `1ea314f5682685332edb032bda4b6ad54d8b7a60` (`/private/tmp/junyan-world-private-qa/0144/independent-final-review.md`). Reviewer checked source/provenance, collision/life/render paths, representative originals and the completed ordinary-persistence JSON; their own 14 focused checks pass. This is bounded approval of the grouped living area and supported forms, not overall benchmark parity.
+- The two authored harness failures remain explicit above and preserved privately: exact startup-name mismatch, then test-mode persistence bypass. The corrected ordinary startup test completed expected 2 / unexpected 0 / skipped 0 / flaky 0. No production workaround was introduced.
+- Remaining limits are retained: a compressed bench-like sofa back, room-scale empty floor, phone framing and weak day/night response. Lighting belongs to separate ticket 146. This completion commit changes ticket metadata only; production art/map leases remain released and no extra main reconciliation is included.

@@ -50,10 +50,30 @@ const paintMap: DrawMap = (ctx, map, view) => {
     polygon([[-.98, -.15], [-.85, -.58], [-.5, -.66], [-.3, -1], [.24, -.93], [.56, -.7], [.86, -.61], [.97, -.2], [.5, -.02], [.08, -.17], [-.32, .04]].map(([dx, dy]) => point(dx, dy)), color);
     if (radius > 4) polygon([[-.65, -.52], [-.42, -.66], [-.22, -.91], [.2, -.83], [.41, -.58], [.1, -.46], [-.18, -.5], [-.4, -.32]].map(([dx, dy]) => point(dx + seed % 2 * .05, dy)), palette.leafLight);
   };
+  const herb = (x: number, y: number, size: number, seed: number) => {
+    // Wide folded leaves join into a low edible crown rather than a row of identical V marks.
+    for (let k = 0; k < 6; k++) {
+      const angle = k * 1.07 + seed * .7, dx = Math.cos(angle), dy = Math.sin(angle);
+      const base = {x, y}, tip = {x: x + dx * size, y: y + dy * size};
+      const middle = {x: x + dx * size * .48, y: y + dy * size * .48};
+      polygon([project(base.x, base.y, .72), project(middle.x - dy * size * .3, middle.y + dx * size * .3, 1.02),
+        project(tip.x, tip.y, .88 + k % 2 * .18), project(middle.x + dy * size * .3, middle.y - dx * size * .3, 1.12)],
+      k % 3 === 0 ? '#486c45' : k % 2 ? '#789459' : '#9baa68');
+      stem(base, tip, .75, .96 + k % 2 * .12, '#b1b87a');
+    }
+    cluster(x, y, 1.05, size * .34, '#6b884e', seed);
+  };
   const bed = (p: Prop, kind: number) => {
     const {x, y} = p.position, w = p.width, h = p.height;
     box(x, y, w, h, 0, .55, palette.potLight, palette.pot, palette.woodDark);
     plane(x + .15, y + .15, w - .3, h - .3, .57, palette.soil);
+    if (kind === 1 || p.kind === 'trellis-bed') {
+      // Thick retaining boards and dark moist soil are contained inside the original planter.
+      for (const dy of [.05, h - .16]) box(x + .05, y + dy, w - .1, .11, .52, .12, '#c2a97e', '#957e57', '#665d43');
+      for (const dx of [.05, w - .16]) box(x + dx, y + .16, .11, h - .32, .52, .12, '#c2a97e', '#957e57', '#665d43');
+      plane(x + .21, y + .21, w - .42, h - .42, .585, '#494c35');
+      stem({x: x + .2, y: y + h + .01}, {x: x + w - .2, y: y + h + .01}, .25, .25, '#79694a');
+    }
     for (let a = .65; a < w - .2; a += 1.35) {
       stem({x: x + a, y: y + h}, {x: x + a, y: y + h}, .08, .47, '#88724f');
       stem({x: x + a + .05, y: y + h}, {x: x + Math.min(w - .1, a + .6), y: y + h}, .28, .28, '#b59d73');
@@ -63,10 +83,7 @@ const paintMap: DrawMap = (ctx, map, view) => {
       const px = x + a + (n % 3 - 1) * .09, py = y + b + (n % 2) * .13;
       const tall = kind === 2 ? .95 + n * .08 : .8 + n * .04;
       if (kind === 1) {
-        for (let blade = 0; blade < 5; blade++) {
-          const angle = blade * 1.5 + n;
-          stem({x: px, y: py}, {x: px + Math.cos(angle) * .3, y: py + Math.sin(angle) * .3}, .6, .9 + blade % 3 * .18, blade % 2 ? palette.leaf : palette.leafLight, 2);
-        }
+        herb(px, py, .43 + n % 3 * .035, n);
       } else {
         stem({x: px, y: py}, {x: px + .07, y: py}, .55, tall, palette.leaf);
         cluster(px, py, .75, .2 + n * .015, n % 3 === 0 ? palette.leafMid : n % 2 ? palette.jade : palette.leafLight, n);
@@ -162,6 +179,20 @@ const paintMap: DrawMap = (ctx, map, view) => {
     }
   }
   if (view.pass === 'ground') {
+    // A repaired brick work apron groups care, beds and circulation without exposing earth on the roof.
+    const apron = [[14.3, 12.7], [22.7, 12.7], [22.7, 16.8], [23.5, 16.8], [23.5, 19.7], [21.8, 19.7], [21.8, 20.4], [17.2, 20.4], [17.2, 19.6], [14.3, 19.6]];
+    ctx.save();ctx.beginPath();
+    apron.map(([x, y]) => project(x, y, .016)).forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
+    ctx.closePath();ctx.clip();
+    plane(14, 12.5, 10, 8.2, .016, '#898b73');
+    for (let row = 0; row < 14; row++) for (let column = 0; column < 10; column++) {
+      const x = 13.9 + column * 1.15 + row % 2 * .55, y = 12.5 + row * .62;
+      const color = ['#b1a183', '#aa9c7e', '#baaa89', '#a99c80'][(column * 3 + row) % 4];
+      plane(x + .035, y + .035, 1.08, .55, .018, color);
+    }
+    // Darker receiving stones sit at the planter/trolley feet, with clear walking room between.
+    plane(19.9, 16.5, 2.5, 3.1, .021, '#9c9678');
+    ctx.restore();
     const light = view.castLight;
     if (light) {
       ctx.save(); ctx.globalAlpha *= light.shadowOpacity;
@@ -207,6 +238,14 @@ const paintMap: DrawMap = (ctx, map, view) => {
         } else if (p.kind === 'tea-table') {
           cast(x, y, w, h, 1.03, 1.03);
           for (const dx of [.15, w - .3]) for (const dy of [.15, h - .3]) cast(x + dx, y + dy, .15, .15, .9);
+        } else if (p.kind === 'potting-tray') {
+          cast(x, y, w, h, 1.25, 1.12);
+          cast(x + .08, y + .08, w - .16, h - .16, .36, .28);
+          for (const dx of [.08, w - .17]) for (const dy of [.08, h - .17]) cast(x + dx, y + dy, .09, .09, 1.12);
+          cast(x + .2, y + .15, .42, .36, 1.61, 1.26);
+          cast(x + .29, y + .185, .23, .03, 1.85, 1.85);
+          for (const dx of [.29, .52]) cast(x + dx - .015, y + .185, .03, .03, 1.85, 1.61);
+          cast(x + .6, y + .23, .4, .09, 1.65, 1.46);
         } else if (p.kind === 'threshold-lintel') cast(x - .12, y - .02, w + .24, h + .04, 2.68, 2.5);
         else if (p.kind === 'laundry') {
           for (const dx of [0, w]) cast(x + dx - .04, y - .04, .08, .08, 2.4);
@@ -215,7 +254,7 @@ const paintMap: DrawMap = (ctx, map, view) => {
           const height: Record<string, number> = {'stairhead': 3.92, 'water-tank': 3.18, 'basin': .8, 'tool-bay': 1.83,
             'compost': 1, 'raised-bed': .57, 'trellis-bed': .57, 'border-pot': .6, 'bamboo-screen': .5,
             'post': 3.3, 'threshold-post': 2.6, 'garden-crate': .85, 'wash-bowl': .25, 'sun-clock': .7,
-            'potting-tray': .48, 'soil-sack': .57, 'garden-tree': .8, 'garden-flower': .8, 'garden-climber': .8};
+            'soil-sack': .57, 'garden-tree': .8, 'garden-flower': .8, 'garden-climber': .8};
           if (height[p.kind]) cast(x, y, w, h, height[p.kind]);
         }
         // One nonzero fill unions support/slat overlap instead of accumulating opacity.
@@ -233,6 +272,8 @@ const paintMap: DrawMap = (ctx, map, view) => {
         plane(x - .045, y - .045, w + .09, h + .09, .024, palette.contact);
       } else if (p.kind === 'bench') {
         for (const dx of [.2, w - .4]) plane(x + dx - .055, y + .045, .27, .81, .024, palette.contact);
+      } else if (p.kind === 'potting-tray') {
+        for (const dx of [.08, w - .17]) for (const dy of [.08, h - .17]) plane(x + dx - .035, y + dy - .035, .16, .16, .024, palette.contact);
       } else if (p.kind === 'tea-table') {
         for (const dx of [.15, w - .3]) for (const dy of [.15, h - .3]) plane(x + dx - .055, y + dy - .055, .26, .26, .024, palette.contact);
       } else if (['raised-bed', 'trellis-bed', 'tree-bed', 'border-pot', 'bamboo-screen', 'compost', 'garden-crate'].includes(p.kind) || /^garden-(tree|flower|climber)$/.test(p.kind)) {
@@ -257,16 +298,19 @@ const paintMap: DrawMap = (ctx, map, view) => {
         cluster(x + k, y, 2.72 + Math.sin(k * 3) * .08, .28, k % 1 > .5 ? palette.jade : palette.leafLight, Math.round(k * 10));
       }
     } else if (p.kind === 'potting-tray') {
-      box(x, y, w, h, 0, .12, palette.woodLight, palette.wood, palette.woodDark);
-      for (let k = .2; k < w; k += .25) plane(x + k, y + .04, .025, h - .08, .125, palette.woodDark);
-      box(x + .2, y + .15, .42, .36, .13, .35, '#a2b7a7', '#76988b', '#547d6e');
-      stem({x: x + .6, y: y + .32}, {x: x + 1, y: y + .23}, .33, .52, '#8eafa0', 2);
-      stem({x: x + .29, y: y + .2}, {x: x + .29, y: y + .2}, .48, .72, '#779988');
-      stem({x: x + .29, y: y + .2}, {x: x + .52, y: y + .2}, .72, .72, '#779988');
-      stem({x: x + .52, y: y + .2}, {x: x + .52, y: y + .2}, .72, .48, '#779988');
-      box(x + .76, y + .46, .25, .22, .13, .2, palette.soil, palette.pot, palette.woodDark);
-      plane(x + .08, y + .52, .35, .15, .14, palette.cream);
-      for (let k = 0; k < 3; k++) plane(x + .11 + k * .08, y + .55, .02, .08, .145, '#b7bba5');
+      for (const dx of [.08, w - .17]) for (const dy of [.08, h - .17]) box(x + dx, y + dy, .09, .09, 0, 1.12, palette.wood, palette.woodDark, palette.woodDark);
+      box(x + .08, y + .08, w - .16, h - .16, .28, .08, palette.woodLight, palette.wood, palette.woodDark);
+      box(x, y, w, h, 1.12, .13, palette.woodLight, palette.wood, palette.woodDark);
+      box(x + .04, y + .04, w - .08, .05, 1.25, .13, palette.wood);
+      for (let k = .2; k < w; k += .25) plane(x + k, y + .08, .025, h - .16, 1.255, palette.woodDark);
+      box(x + .2, y + .15, .42, .36, 1.26, .35, '#a2b7a7', '#76988b', '#547d6e');
+      stem({x: x + .6, y: y + .32}, {x: x + 1, y: y + .23}, 1.46, 1.65, '#8eafa0', 2);
+      stem({x: x + .29, y: y + .2}, {x: x + .29, y: y + .2}, 1.61, 1.85, '#779988');
+      stem({x: x + .29, y: y + .2}, {x: x + .52, y: y + .2}, 1.85, 1.85, '#779988');
+      stem({x: x + .52, y: y + .2}, {x: x + .52, y: y + .2}, 1.85, 1.61, '#779988');
+      box(x + .76, y + .46, .25, .22, 1.26, .2, palette.soil, palette.pot, palette.woodDark);
+      plane(x + .08, y + .52, .35, .15, 1.27, palette.cream);
+      for (let k = 0; k < 3; k++) plane(x + .11 + k * .08, y + .55, .02, .08, 1.275, '#b7bba5');
     } else if (p.kind === 'soil-sack') {
       box(x, y, w, h, 0, .5, '#d4c9a9', '#bcae89', '#9a9c7b');
       box(x + .05, y + .08, w - .1, h - .16, .5, .07, '#b9ae8d');
@@ -328,10 +372,14 @@ const paintMap: DrawMap = (ctx, map, view) => {
       if (p.kind === 'trellis-bed') {
         for (let k = 0; k <= w; k += 2) stem({x: x + k, y: y + h / 2}, {x: x + k, y: y + h / 2}, .5, 3, palette.wood, 2);
         for (let z = 1; z < 3.1; z += .6) stem({x, y: y + h / 2}, {x: x + w, y: y + h / 2}, z, z, palette.woodLight);
-        for (let k = 0; k < w; k += .55) {
-          const top = 1.3 + k % 1.7, curl = Math.sin(k * 2) * .3;
+        for (let k = .45, i = 0; k < w - .25; k += .83, i++) {
+          const top = 1.7 + i % 4 * .32, curl = Math.sin(k * 2) * .22;
           stem({x: x + k, y: y + h / 2}, {x: x + k + curl, y: y + h / 2}, .6, top, palette.leaf, 2);
-          for (let z = 1; z < top + .2; z += .5) cluster(x + k + Math.sin(z * 4) * .2, y + h / 2, z, .3, k % 1 > .5 ? palette.jade : palette.leafLight, Math.floor(k * 10));
+          for (let z = .95; z < top + .15; z += .48) {
+            if (i % 5 === 3 && z > 1.8) continue;
+            cluster(x + k + Math.sin(z * 4) * .17, y + h / 2, z, .48 + i % 3 * .04, i % 3 === 0 ? '#6f9159' : '#587c4d', i);
+          }
+          if (i % 3 === 1) stem({x: x + k + .15, y: y + h / 2 + .08}, {x: x + k + .15, y: y + h / 2 + .08}, top - .3, top - .65, '#bec17a', 2);
         }
       }
     } else if (p.kind === 'bench') bench(p);
@@ -448,7 +496,7 @@ export function renderObjects(map: WorldMapDefinition, _view: WorldRenderView): 
     id: p.id,
     position: {x: p.position.x + p.width / 2, y: p.position.y + p.height / 2},
     depth: p.position.x + p.position.y + (p.width + p.height) / 2,
-    occlusion: map.occluders.find(o => o.id === p.id) ?? (/stairhead|tree|bamboo|trellis/.test(p.kind) ? {rect: {...p.position, width: p.width, height: p.height}, height: 3, fadeWhenPlayerBehind: true} : undefined),
+    occlusion: map.occluders.find(o => o.id === p.id) ?? (p.kind === 'potting-tray' ? {rect: {...p.position, width: p.width, height: p.height}, height: 1.85, fadeWhenPlayerBehind: true} : /stairhead|tree|bamboo|trellis/.test(p.kind) ? {rect: {...p.position, width: p.width, height: p.height}, height: 3, fadeWhenPlayerBehind: true} : undefined),
     draw: (ctx, view) => paintMap(ctx, {...map, props: [p]}, {...view, pass: 'objects'}),
   }));
 }
