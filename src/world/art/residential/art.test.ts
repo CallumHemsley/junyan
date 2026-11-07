@@ -41,7 +41,7 @@ describe('residential object composition', () => {
     const boards = topFaces.filter(face => /^rgb\((177|179|181|183|185),/.test(face.colour));
     expect(boards.some(face => Math.max(...face.points.map(p => p.y)) - Math.min(...face.points.map(p => p.y)) > 400)).toBe(true);
     const lastBoard = topFaces.map(face => boards.includes(face)).lastIndexOf(true);
-    expect(topFaces.findIndex(face => face.colour === 'rgb(174,180,146)')).toBeGreaterThan(lastBoard);
+    expect(topFaces.findIndex(face => face.colour === 'rgb(143,157,129)'), 'fixed tea rug remains above the timber').toBeGreaterThan(lastBoard);
     topFaces.length = 0;
     drawMap(ctx as unknown as CanvasRenderingContext2D, worldMapSchema.parse(mapDefinitions.find(map => map.id === 'residential-stairs')), ground);
     const slabs = topFaces.filter(face => /^rgb\((165|167|169|171|173|175|177),/.test(face.colour));
