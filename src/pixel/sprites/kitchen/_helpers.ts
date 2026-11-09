@@ -76,70 +76,92 @@ export function toneOf(ramp: readonly Color[], u: number, shift = 0, base = 1): 
 
 const BAMBOO_RAMP: readonly Color[] = ["bamboo1", "bamboo2", "bamboo3", "bamboo4", "bamboo5"];
 
+/** How used a piece of bamboo is: 0 new and pale, 1 seasoned, 2 dark with years of steam. */
+export type Age = 0 | 1 | 2;
+const bambooTone = (level: number, shift: number, age: Age): Color =>
+  BAMBOO_RAMP[Math.max(0, Math.min(4, level + shift + (age === 0 ? 1 : age === 2 ? -1 : 0)))];
+
 /**
- * One bamboo steamer tier, front band only, `h` rows from the ellipse line `yt`: a lit lip one pixel
- * proud of the body, the bent-strip body, a dark seam where it sits into the tier below. The strip's
- * overlap is bound with rattan at `lash` (u, -1..1). promote?
+ * One bamboo steamer tier, front band only, `h` rows (8 or more) from the ellipse line `yt`:
+ * a proud lip, the doubled rim strip and its shadow, the bent-strip body with grain, a lower
+ * strip and a dark seam where it sits into the tier below. Rattan binds the strip's overlap at u =
+ * `lash`. Old tiers carry tide-marks of condensed steam. promote?
  */
-export function steamerTier(p: Px, cx: number, rx: number, ry: number, yt: number, h: number, lash: number) {
-  const LIP = ["bamboo3", "bamboo4", "bamboo4", "bamboo5"] as const;
-  const BODY = ["bamboo2", "bamboo2", "bamboo3", "bamboo4"] as const;
-  const SEAM = ["bamboo1", "bamboo1", "bamboo1", "bamboo2"] as const;
+export function steamerTier(p: Px, cx: number, rx: number, ry: number, yt: number, h: number, age: Age, lash: number, seed = 0) {
   eachColumn(cx, rx, ry, (x, u, off) => {
-    p.px(x, yt + off, LIP[roundLevel(u)]);
-    for (let j = 1; j < h - 1; j++) p.px(x, yt + off + j, BODY[roundLevel(u)]);
-    p.px(x, yt + off + h - 1, SEAM[roundLevel(u)]);
-    // The lip throws a hairline of shade on the strip just under it, on the sunny half only.
-    if (roundLevel(u) === 3 && h > 4) p.px(x, yt + off + 1, "bamboo3");
+    const lv = roundLevel(u), top = yt + off;
+    p.px(x, top, bambooTone(lv, 1, age));
+    p.px(x, top + 1, bambooTone(lv, 0, age));
+    p.px(x, top + 2, bambooTone(lv, -1, age));
+    for (let j = 3; j < h - 2; j++) p.px(x, top + j, bambooTone(lv, 0, age));
+    p.px(x, top + h - 2, bambooTone(lv, 0, age));
+    p.px(x, top + h - 1, bambooTone(lv, -2, age));
+    // Grain of the bent strip: short streaks a step darker, staggered.
+    const k = Math.floor((x - cx + rx + seed * 3) / 4);
+    if (Math.abs(u) < 0.85 && (k * 7 + seed) % 5 < 2) p.px(x, top + 4 + ((k + seed) % 3), bambooTone(lv, -1, age));
+    if (age === 2 && Math.abs(u) < 0.8 && (k * 3 + seed) % 7 === 0) p.px(x, top + 3, bambooTone(lv, -2, age)).px(x, top + 4, bambooTone(lv, -1, age));
   });
-  // The lip stands one pixel proud at each side.
-  p.px(Math.floor(cx - rx) - 1, yt, LIP[2]).px(Math.ceil(cx + rx), yt, LIP[0]);
-  // The overlap of the bent strip, bound with rattan: dark wraps with a lit edge.
-  const lx = Math.floor(cx + lash * rx);
-  const lu = (lx + 0.5 - cx) / rx;
+  // The lip stands a pixel proud at each side.
+  p.px(Math.floor(cx - rx) - 1, yt, bambooTone(2, 1, age)).px(Math.floor(cx - rx) - 1, yt + 1, bambooTone(2, 0, age));
+  p.px(Math.ceil(cx + rx), yt, bambooTone(0, 1, age)).px(Math.ceil(cx + rx), yt + 1, bambooTone(0, 0, age));
+  // Rattan binding over the strip's overlap: wraps alternating dark and lit, a pixel wider than the strip.
+  const lx = Math.floor(cx + lash * rx), lu = (lx + 0.5 - cx) / rx;
   const loff = Math.round(ry * Math.sqrt(Math.max(0, 1 - lu * lu)) - 0.15);
-  for (let j = 1; j < h - 1; j++) p.px(lx, yt + loff + j, j % 2 ? "bamboo1" : "bamboo2");
-  p.px(lx + 1, yt + loff + 1, LIP[roundLevel(lu)]);
-  if (h > 4) p.px(lx + 1, yt + loff + 3, LIP[roundLevel(lu)]);
+  for (let j = 0; j < h - 1; j++) {
+    p.px(lx, yt + loff + j, j % 2 ? "bamboo1" : "wood4");
+    p.px(lx + 1, yt + loff + j, j % 2 ? "bamboo2" : "wood5");
+  }
 }
 
 /**
- * Domed woven bamboo lid: a two-row side band under the rim ellipse at `y` (radius rx, ry) and a
- * dome rising `dome` rows above the rim, woven, lit from the upper left. promote?
+ * Domed bamboo lid: a basket-woven field inside a lit hoop, a two-row side band under the rim
+ * ellipse at `y`, the dome rising `dome` rows. `knot` re-ties the knob with string. promote?
  */
-export function steamerLid(p: Px, cx: number, rx: number, ry: number, y: number, dome: number) {
-  const LIP = ["bamboo3", "bamboo4", "bamboo4", "bamboo5"] as const;
-  const BODY = ["bamboo2", "bamboo2", "bamboo3", "bamboo4"] as const;
+export function steamerLid(p: Px, cx: number, rx: number, ry: number, y: number, dome: number, age: Age, knot = false) {
   const m = (a: number, b: number) => ((a % b) + b) % b;
-  const inside = (x: number, yy: number, ex: number, ey: number, cy = y) => {
+  const inside = (x: number, yy: number, ex: number, ey: number, cy: number) => {
     const u = (x + 0.5 - cx) / ex, v = (yy + 0.5 - cy) / ey;
     return u * u + v * v <= 1;
   };
+  const fy = y - dome * 0.6;
   for (let yy = Math.floor(y - ry - dome); yy < y + ry; yy++) for (let x = Math.floor(cx - rx); x < cx + rx; x++) {
-    const onTop = inside(x, yy, rx, ry) || inside(x, yy, rx - 1, ry, y - dome);
-    if (!onTop) continue;
-    const u = (x + 0.5 - cx) / rx, v = (yy + 0.5 - y) / ry;
-    const light = -0.7 * u - 0.45 * v;
-    const field = inside(x, yy, rx - 2, ry - 1.2, y - dome / 2);
-    if (!field) {
-      // The bamboo hoop round the top, lit on its far-left and near-left arcs.
-      p.px(x, yy, light > 0.35 ? "bamboo5" : light > -0.3 ? "bamboo4" : "bamboo3");
+    if (!inside(x, yy, rx, ry, y) && !inside(x, yy, rx - 1, ry, y - dome)) continue;
+    const u = (x + 0.5 - cx) / rx, v = (yy + 0.5 - fy) / ry;
+    const light = -0.7 * u - 0.5 * v;
+    const lv = light > 0.4 ? 3 : light > -0.15 ? 2 : light > -0.6 ? 1 : 0;
+    if (!inside(x, yy, rx - 2.5, ry - 1.6, fy)) {
+      // The bamboo hoop round the top.
+      p.px(x, yy, bambooTone(lv, 1, age));
       continue;
     }
-    // Woven field: staggered over-under dashes, one step darker where a strand dips under.
-    const tone = light > 0.3 ? 3 : light > -0.25 ? 2 : 1;
-    const under = m(yy, 2) === 0 ? m(x, 4) === 0 : m(x, 4) === 2;
-    p.px(x, yy, BAMBOO_RAMP[tone - (under ? 1 : 0)]);
+    // Basket weave: 2×2 cells alternate a strand running across (lit top row) and one running down (lit left column).
+    const across = m((x >> 1) + (yy >> 1), 2) === 0;
+    const lit = across ? m(yy, 2) === 0 : m(x, 2) === 0;
+    p.px(x, yy, bambooTone(lv, lit ? 0 : -1, age));
   }
-  // The hoop's inner edge, a hairline of shade on the far (north) side where it rises over the weave.
-  for (let x = Math.floor(cx - rx); x < cx + rx; x++) for (let yy = Math.floor(y - ry - dome); yy < y; yy++)
-    if (inside(x, yy, rx - 2, ry - 1.2, y - dome / 2) && !inside(x, yy - 1, rx - 2, ry - 1.2, y - dome / 2)) p.px(x, yy, "bamboo2");
-  // Side band of the lid under the hoop.
+  // Hairline of shade where the far hoop rises over the weave.
+  for (let x = Math.floor(cx - rx); x < cx + rx; x++) for (let yy = Math.floor(y - ry - dome); yy < fy; yy++)
+    if (inside(x, yy, rx - 2.5, ry - 1.6, fy) && !inside(x, yy - 1, rx - 2.5, ry - 1.6, fy)) p.px(x, yy, bambooTone(1, -1, age));
   eachColumn(cx, rx, ry, (x, u, off) => {
-    p.px(x, Math.floor(y) + off, BODY[roundLevel(u)]);
-    p.px(x, Math.floor(y) + off + 1, "bamboo1");
+    p.px(x, Math.floor(y) + off, bambooTone(roundLevel(u), 0, age));
+    p.px(x, Math.floor(y) + off + 1, bambooTone(roundLevel(u), -1, age));
+    p.px(x, Math.floor(y) + off + 2, bambooTone(roundLevel(u), -2, age));
   });
-  void LIP;
+  if (knot) {
+    // The knob: a bent bamboo bridge; one foot snapped and was re-tied with kitchen string.
+    const kx = Math.round(cx) - 6, ky = Math.round(fy) - 6;
+    p.rows(kx, ky, [
+      "...oooooo...",
+      "..oLLlllbo..",
+      ".oLoooooobo.",
+      ".oLo....obo.",
+      "oSSo....oSSo",
+      "oSsso..osSso",
+      ".oso....os.s",
+      "..o......s.s",
+      "..........s.",
+    ], { o: "bamboo1", L: "bamboo5", l: "bamboo4", b: "bamboo3", S: "cream5", s: "cream3" });
+  }
 }
 
 /** Draw into a fresh canvas the size of `p`, for parts that need their own outline. promote? */
