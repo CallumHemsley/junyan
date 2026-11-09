@@ -7,7 +7,17 @@ tags: [design, art, pixel]
 
 # Pixel art style bible
 
-The bar is Stardew Valley or better: hand-finished, warm, dense with small true details, readable at a glance. This document is binding for every sprite. The reference sprites live in `src/pixel/sprites/exemplar/exemplar.ts`; render them first and match their finish.
+The bar is Stardew Valley or better: hand-finished, warm, dense with small true details, readable at a glance. This document is binding for every sprite. The reference sprites live in `src/pixel/sprites/exemplar/exemplar.ts`; render them first, then beat them.
+
+## Nothing generic
+
+Callum's first note on the first reference image, at half today's resolution: **"I want more detail. It's too generic. Give me some personality on the characters, as well as the chairs, tables etc."** That note now governs everything. We doubled the resolution to make room for it; use the room.
+
+- **Draw a specific thing, not a category.** Not "a table": the corner table whose drawer never shuts, with a tea ring and a folded card under the short leg. Not "a stool": the one with the blue check cushion somebody's grandmother tied on. Before drawing, decide who owns it, how old it is, what happened to it and what it is made of, and put the answers in the sprite's doc comment in a line or two.
+- **No two alike.** Four tables are four different tables. Seats are mismatched the way a real shop's are: a turned stool, a bamboo one, a repainted chair, a plastic one. Variants differ in design, not in one moved pixel.
+- **Spend the pixels.** Wood has grain, joinery, pegs and worn edges. Cloth has a weave or a print and folds. Metal has dents and a reflection of the room. Painted things chip to show what is underneath. Ceramic has a glaze highlight and a pattern. A flat fill wider than about eight pixels is unfinished unless it is deliberately calm ground.
+- **People are people.** Each character is recognisable from any side by silhouette, and carries at least three things that say who they are: a hair shape, a signature object, a way of standing or sitting. Faces have brows, a mouth with an expression, cheeks, ears. Clothes have collars, buttons, pockets, hems, creases, patterns.
+- **Layer the detail.** Read first as a clear silhouette and three big tones; reward a closer look with the small true things. Detail must never turn into noise: if it does not read at 3× zoom as *something*, it is clutter.
 
 ## How art is made here
 
@@ -15,13 +25,13 @@ Art is code. A sprite is a function that draws palette colours into a `Px` canva
 
 ```bash
 # every sprite whose id contains "furn/", 8× zoom, on a neutral ground
-node src/pixel/tools/sheet.ts furn/ --scale 8
+node src/pixel/tools/sheet.ts furn/ --scale 5
 # in context, true relative scale, with contact shadows
-node src/pixel/tools/compose.ts --size 176x128 --floor ex/floor-wood-a,ex/floor-wood-b --wall ex/wall \
-  "ex/table@56,96" "ex/stool@28,98" "ex/waiter@92,112" --scale 5 --out output/pixel/try.png
+node src/pixel/tools/compose.ts --size 352x240 --floor ex/floor-wood-a,ex/floor-wood-b,ex/floor-wood-c,ex/floor-wood-d --wall ex/wall \
+  "ex/table@112,176" "ex/stool@56,180" "ex/waiter@190,224" --scale 3 --out output/pixel/try.png
 ```
 
-Then open the PNG with the Read tool and look at it. **Looking is the job.** Nobody ships a sprite they have not viewed at 8× and at 3×, alone and composed on the floor next to the waiter and a table.
+Then open the PNG with the Read tool and look at it. **Looking is the job.** Nobody ships a sprite they have not viewed at 5× or more and at 2–3×, alone and composed on the floor next to the waiter and a table.
 
 The loop for every sprite: block the silhouette → form shading → material texture → story detail → outline → look → fix what is wrong → look again. Expect four or more passes on anything that matters. When a piece is weak, redraw it; do not polish a bad silhouette.
 
@@ -33,21 +43,22 @@ Three-quarter top-down, like Stardew Valley. The camera looks north and slightly
 
 - You see the **top** and the **front (south) face** of every object. Never the sides, never diagonals, never isometric.
 - Tops are foreshortened to about 60–70% of their true depth. Front faces are drawn at full height.
-- The back wall of a room is drawn face-on, three tiles (48px) tall. Side and front walls show only their caps.
+- The back wall of a room is drawn face-on, three tiles (96px) tall. Side and front walls show only their caps.
 - Things further north are drawn first; an object hides what stands behind it.
 
 ## Scale
 
 | Thing | Size in art pixels |
 | --- | --- |
-| World tile | 16 × 16 |
-| Person | 16 × 32 frame, feet near the bottom, about 28 tall |
-| Dining table (seats 2–4) | 32 × 28 (see `ex/table`) |
-| Stool | 14 × 15 |
-| Counter | 16 wide modules; 10–11 top + 15 front = about 26 tall |
-| Tall appliance, shelf unit | 16–32 wide, 36–44 tall |
-| Back wall | 48 tall: 5 cap, 26 plaster, 13 dado, 4 skirting (see `ex/wall`) |
-| Plate or bowl on a table | about 10 × 7 |
+| World tile | 32 × 32 |
+| Person | 32 × 64 frame, feet near the bottom, about 54 tall; head about 22 wide and 24 tall with hair (see `ex/waiter`) |
+| Dining table (seats 2–4) | about 64 × 57 (see `ex/table`) |
+| Stool | about 28 × 31 (see `ex/stool`) |
+| Counter | 32 wide modules; about 22 of top over a 30 front = about 52 tall |
+| Tall appliance, shelf unit | 32–64 wide, 72–88 tall |
+| Back wall | 96 tall: 10 cap and cornice, 52 plaster, 26 dado, 8 skirting (see `ex/wall`) |
+| Plate or bowl on a table | about 20 × 14 |
+| Food hero icon (interface) | 48 × 48 |
 
 A standing person's waist is level with a table top. Counters come to mid-chest. Check new work against `ex/waiter` in a compose render.
 
@@ -78,7 +89,7 @@ Morning sun from the **upper left**.
 6. **Silhouette first.** Filled solid black, the sprite must still read as what it is.
 7. **A story detail on every object.** A chipped corner, a tea stain ring, a chopstick left askew, a faded patch where a calendar hung, steam, a scuffed kick-plate. This is what makes the room feel lived in, and it is the difference between a proof of concept and Stardew.
 8. **Variation.** Anything placed more than twice needs at least two variants (tiles: three or more).
-9. **Readable at 1×.** The game shows art at 3–4× zoom; details smaller than 2px must carry by contrast.
+9. **Readable in play.** The game shows art at about 2× zoom on a desktop (a tile is roughly 64 screen pixels); a one-pixel detail must carry by contrast or be two pixels.
 
 ## Colour
 
@@ -97,10 +108,10 @@ import { defineSprites } from "../../kit/index.ts";
 
 export default defineSprites({
   "furn/stool": {
-    w: 14, h: 15,
-    anchor: [7, 14],            // the pixel that touches the ground at the object's position
-    foot: [-5, -6, 10, 6],      // solid footprint, px relative to the anchor: [dx, dy, w, h]
-    shadow: { rx: 7, ry: 3 },   // contact shadow ellipse centred on the anchor
+    w: 28, h: 31,
+    anchor: [14, 30],             // the pixel that touches the ground at the object's position
+    foot: [-10, -12, 20, 11],     // solid footprint, px relative to the anchor: [dx, dy, w, h]
+    shadow: { rx: 13, ry: 5 },    // contact shadow ellipse centred on the anchor
     draw: (p) => { /* … */ },
   },
 });
@@ -110,7 +121,7 @@ export default defineSprites({
 - One file per small family, in `src/pixel/sprites/<domain>/`. Files starting with `_` are private helpers and are not loaded as sprite sets.
 - `layer: "floor"` for anything flat that people walk over or that is painted on a wall (tiles, rugs, windows, shelves, wall decor). Default `object` is depth-sorted against people. `over` hangs above everyone (lantern, lamp shade, door lintel).
 - Animated sprites set `frames` and `fps`; `draw(p, frame)` draws one frame. Loops must be seamless. Idle life is slow: 2–6 fps.
-- Tiles must repeat seamlessly; check with `sheet.ts --tile`.
+- Tiles are 32×32 and must repeat seamlessly; check with `sheet.ts --tile`.
 - Translucent pixels (glass, steam, light) use `p.faded(alpha, …)`. Solid art never does.
 - Sprites are deterministic. Use `hash()` for placement variety, never `Math.random` or time.
 
@@ -120,12 +131,12 @@ Ids are `char/<who>/<action>-<dir>` with `dir` in `down | up | left | right`.
 
 | Action | Frames | Notes |
 | --- | --- | --- |
-| `idle` | 2 at 2 fps | a one-pixel breath |
-| `walk` | 4 at 8 fps | contact, pass, contact, pass; arms counter-swing |
+| `idle` | 2–4 at 2–3 fps | a breath; a blink or a small habit is welcome |
+| `walk` | 4 or 6, a full cycle in about 0.6 s | contact, (down,) pass, contact, (down,) pass; arms counter-swing, a head bob |
 | `sit` | 1–2 | seated on a stool; legs foreshortened |
 | `carry-idle`, `carry-walk` | as above | waiter only: both hands on a loaded tray |
 
-`left` may be the mirror of `right` unless the character is asymmetric. Proportions follow `ex/waiter`: a big head (about 14 wide, 13 tall with hair), a two-pixel-tall eye, a body about 10 wide, short legs.
+Frames are 32×64 with anchor `[16, 62]`, `foot: [-8, -8, 16, 8]`, `shadow: { rx: 11, ry: 4 }`. `left` may be the mirror of `right` unless the character is asymmetric. Proportions follow `ex/waiter`: a big head (about 22 wide, 24 tall with hair), eyes two wide and three tall with a catch-light, a body about 20 wide with the arms, short legs.
 
 ## The room everyone is drawing for
 
