@@ -1,7 +1,7 @@
 /**
  * Contact sheet: render sprites to a labelled PNG so they can be looked at.
  *
- *   node src/pixel/tools/sheet.ts [filter …] [--scale 6] [--bg stone4] [--width 1500] [--out file.png] [--tile]
+ *   node src/pixel/tools/sheet.ts [filter …] [--scale 4] [--bg stone4] [--width 1500] [--out file.png] [--tile]
  *
  * Filters are substrings of sprite ids (any match). `--tile` repeats each sprite 3×3 to check seams.
  * Animation frames are laid side by side. Default output: output/pixel/sheet-<filters>.png
@@ -26,7 +26,7 @@ const GLYPHS: Record<string, string> = {
 const args = process.argv.slice(2);
 const flag = (name: string, fallback: string) => { const i = args.indexOf(`--${name}`); return i >= 0 ? args.splice(i, 2)[1] : fallback; };
 const tile = args.includes("--tile") ? (args.splice(args.indexOf("--tile"), 1), true) : false;
-const scale = Number(flag("scale", "6"));
+const scale = Number(flag("scale", "4"));
 const bgName = flag("bg", "stone4") as Color;
 const maxWidth = Number(flag("width", "1500"));
 const filters = args;
