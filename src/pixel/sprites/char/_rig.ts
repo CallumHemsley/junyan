@@ -1,0 +1,106 @@
+/**
+ * The character rig. Every person is assembled from layered parts of hand-placed pixels written
+ * in slot letters (skin, top, bottom, hair…), coloured by the character's slot palette and
+ * outlined in `ink`.
+ *
+ * - The body (head shape, torso, arms, legs) is drawn once per direction and pose in `_body.ts`.
+ * - A character supplies a slot palette, a hairstyle and optional extras (apron, cardigan,
+ *   glasses, backpack, tray), each a `Piece`: a function from the pose to parts.
+ * - `left` is the mirror of `right` unless a piece supplies its own `left` art.
+ *
+ * Frame 16×32, anchor [8, 31] between the feet. Head rows 3–16, body 17–30.
+ */
+import type { SpriteDef, SpriteSet } from "../../kit/index.ts";
+import { ARMS, FACE, HEAD, LEGS, SIT_BODY, TORSO } from "./_body.ts";
+import { DIRS, mirror, render, sided, type Build, type Part, type Piece, type Pose, type Slots } from "./_core.ts";
+
+export * from "./_core.ts";
+export { FACE, HEAD, SIT_BODY, TORSO } from "./_body.ts";
+
+type FrameSpec = Omit<Pose, "dir" | "action" | "frame">;
+
+const IDLE: FrameSpec[] = [
+  { legs: "stand", arms: "rest", body: 0, head: 0 },
+  { legs: "stand", arms: "rest", body: 1, head: 0 },
+];
+const WALK: FrameSpec[] = [
+  { legs: "stepA", arms: "swingA", body: 0, head: 0 },
+  { legs: "passA", arms: "rest", body: -1, head: 0 },
+  { legs: "stepB", arms: "swingB", body: 0, head: 0 },
+  { legs: "passB", arms: "rest", body: -1, head: 0 },
+];
+const SIT: FrameSpec[] = [
+  { legs: "sit", arms: "sit", body: SIT_BODY, head: 0 },
+  { legs: "sit", arms: "sit", body: SIT_BODY, head: 1 },
+];
+
+export type Action = "idle" | "walk" | "sit" | "carry-idle" | "carry-walk";
+export const ACTIONS: Record<Action, { frames: FrameSpec[]; fps: number }> = {
+  idle: { frames: IDLE, fps: 2 },
+  walk: { frames: WALK, fps: 8 },
+  sit: { frames: SIT, fps: 1 },
+  "carry-idle": { frames: IDLE.map((f) => ({ ...f, arms: "carry" })), fps: 2 },
+  "carry-walk": { frames: WALK.map((f) => ({ ...f, arms: "carry" })), fps: 8 },
+};
+
+/** Sprite contract shared by every person. */
+export const PERSON = { w: 16, h: 32, anchor: [8, 31], foot: [-4, -4, 8, 4], shadow: { rx: 6, ry: 2 } } as const;
+
+/** Run a right-facing piece for `left` and mirror it. */
+export function facing(piece: Piece): Piece {
+  return (pose) => (pose.dir === "left" ? piece({ ...pose, dir: "right" }).map(mirror) : piece(pose));
+}
+
+export type BodyPieces = { head: Piece; face: Piece; torso: Piece; arms: Piece; legs: Piece };
+
+/** The default body. Characters override single pieces (a wider torso, a skirt, their own face). */
+export const RIG: BodyPieces = {
+  head: sided({ down: [HEAD.down], up: [HEAD.up], right: [HEAD.right] }),
+  face: sided({ down: [FACE.down], up: [], right: [FACE.right] }),
+  torso: sided({ down: [TORSO.down], up: [TORSO.up], right: [TORSO.right] }),
+  arms: facing(ARMS),
+  legs: facing(LEGS),
+};
+
+export type CharacterDef = {
+  id: string;
+  slots: Slots;
+  hair: Piece;
+  /** Clothes and accessories layered on the body. */
+  extras?: readonly Piece[];
+  /** Replace single body pieces. */
+  body?: Partial<BodyPieces>;
+  build?: Build;
+  /** Walk playback speed (default 8). */
+  walkFps?: number;
+  /** Adjust a frame's pose (a slower, smaller bob; a different breath). */
+  pose?: (pose: Pose) => Pose;
+};
+
+/** Every part of one frame, before colouring. */
+export function partsFor(def: CharacterDef, pose: Pose): Part[] {
+  const body = { ...RIG, ...def.body };
+  return [body.legs, body.torso, body.arms, body.head, body.face, def.hair, ...(def.extras ?? [])].flatMap((piece) => piece(pose));
+}
+
+/** Sprite definitions `char/<id>/<action>-<dir>` for a character. */
+export function defineCharacter(def: CharacterDef, actions: readonly Action[]): SpriteSet {
+  const out: SpriteSet = {};
+  for (const action of actions) {
+    const spec = ACTIONS[action];
+    for (const dir of DIRS) {
+      const sprite: SpriteDef = {
+        ...PERSON,
+        frames: spec.frames.length,
+        fps: action.endsWith("walk") ? def.walkFps ?? spec.fps : spec.fps,
+        draw: (p, frame) => {
+          let pose: Pose = { ...spec.frames[frame], dir, action, frame };
+          if (def.pose) pose = def.pose(pose);
+          render(p, partsFor(def, pose), def.slots, pose, def.build);
+        },
+      };
+      out[`char/${def.id}/${action}-${dir}`] = sprite;
+    }
+  }
+  return out;
+}
