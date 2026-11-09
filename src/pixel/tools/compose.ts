@@ -1,8 +1,8 @@
 /**
  * Quick composition: place sprites on a floor to judge them in context and at true scale.
  *
- *   node src/pixel/tools/compose.ts --size 160x112 --floor ex/floor-wood-a,ex/floor-wood-b \
- *     --wall ex/wall "ex/table@48,84" "ex/stool@24,88" "ex/waiter@80,96" --scale 5 --out output/pixel/try.png
+ *   node src/pixel/tools/compose.ts --size 320x224 --floor ex/floor-wood-a,ex/floor-wood-b \
+ *     --wall ex/wall "ex/table@96,168" "ex/stool@48,176" "ex/waiter@160,192" --scale 3 --out output/pixel/try.png
  *
  * A placement is `id@x,y` (the sprite's anchor lands on x,y) with an optional `#frame`.
  * `--wall id` repeats a sprite along the top edge. Sprites are depth-sorted by anchor y and get
@@ -10,14 +10,14 @@
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
-import { bakeSprite, hash, type BakedSprite } from "../kit/index.ts";
+import { TILE, bakeSprite, hash, type BakedSprite } from "../kit/index.ts";
 import { loadSprites } from "./load.ts";
 import { encodePng, upscale } from "./png.ts";
 
 const args = process.argv.slice(2);
 const flag = (name: string, fallback: string) => { const i = args.indexOf(`--${name}`); return i >= 0 ? args.splice(i, 2)[1] : fallback; };
-const [width, height] = flag("size", "160x112").split("x").map(Number);
-const scale = Number(flag("scale", "5"));
+const [width, height] = flag("size", "320x224").split("x").map(Number);
+const scale = Number(flag("scale", "3"));
 const floorIds = flag("floor", "").split(",").filter(Boolean);
 const wallId = flag("wall", "");
 const out = resolve(flag("out", "output/pixel/compose.png"));
@@ -53,8 +53,8 @@ if (wallId) {
   wallHeight = wall.def.h;
   for (let x = 0; x < width; x += wall.def.w) stamp(wall, x, 0);
 }
-if (floorIds.length) for (let y = wallHeight; y < height; y += 16) for (let x = 0; x < width; x += 16)
-  stamp(baked(floorIds[Math.floor(hash(x / 16, y / 16, 9) * floorIds.length)]), x, y);
+if (floorIds.length) for (let y = wallHeight; y < height; y += TILE) for (let x = 0; x < width; x += TILE)
+  stamp(baked(floorIds[Math.floor(hash(x / TILE, y / TILE, 9) * floorIds.length)]), x, y);
 
 const placements = args.map((arg) => {
   const match = /^(.+)@(-?\d+),(-?\d+)(?:#(\d+))?$/.exec(arg);
