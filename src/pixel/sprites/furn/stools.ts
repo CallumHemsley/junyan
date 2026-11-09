@@ -4,7 +4,7 @@
  * seat's anchor. Draw the sitter after their seat. "Hips" is the centre of the seat surface.
  */
 import { defineSprites, Px, type Color, type Legend } from "../../kit/index.ts";
-import { boards, each, grid, oval, ovalHalves, peg, roundCorners, TEA, topEdges } from "./_helpers.ts";
+import { boards, each, grid, oval, ovalHalves, peg, roundCorners, topEdges } from "./_helpers.ts";
 
 const W: Legend = { "1": "wood1", "2": "wood2", "3": "wood3", "4": "wood4", "5": "wood5", "6": "wood6" };
 const BAM: Legend = { "1": "bamboo1", "2": "bamboo2", "3": "bamboo3", "4": "bamboo4", "5": "bamboo5" };
@@ -295,4 +295,3 @@ export default defineSprites({
   },
 });
 
-void TEA;

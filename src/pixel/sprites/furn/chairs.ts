@@ -157,14 +157,13 @@ function foldingSide(p: Px, flip: boolean) {
 
 // ── the regular's chair, with his jacket on it ───────────────────────────────────────────────
 
-function spindleChairBase(p: Px, backTop: number) {
+function spindleChairBase(p: Px) {
   const L = mirrorable(p, 28, false);
   L.post(3, 37, 4, 11, TEA); L.post(21, 37, 4, 11, TEA);
   p.hline(7, 41, 14, "wood4").hline(7, 42, 14, "wood2");
   seat(p, TEA);
   boards(p, 2, 23, 24, 11, { dir: "h", seams: [], seed: 91, density: 2 });
   p.over(() => p.hline(9, 30, 10, "wood3").hline(11, 31, 7, "wood3"));
-  void backTop;
 }
 
 /**
@@ -189,7 +188,7 @@ function corduroy(p: Px, x0: number, y0: number, mask: readonly string[]) {
 
 function jacketDown(p: Px) {
   const L = mirrorable(p, 28, false);
-  spindleChairBase(p, 1);
+  spindleChairBase(p);
   L.post(3, 5, 3, 18, TEA); L.post(22, 5, 3, 18, TEA);
   for (const x of [9, 13, 17]) p.rect(x, 7, 2, 16, "wood3").vline(x, 7, 16, "wood4");
   p.rect(1, 2, 26, 4, "wood4").hline(2, 2, 24, "wood5").hline(1, 5, 26, "wood3");
@@ -236,7 +235,7 @@ function jacketDown(p: Px) {
 
 function jacketUp(p: Px) {
   const L = mirrorable(p, 28, false);
-  spindleChairBase(p, 11);
+  spindleChairBase(p);
   L.post(3, 16, 3, 32, TEA); L.post(22, 16, 3, 32, TEA);
   // The jacket's back: collar turned up, a yoke seam, the centre seam and vent, an elbow patch.
   corduroy(p, 0, 8, [
