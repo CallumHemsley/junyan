@@ -148,10 +148,10 @@ export default defineSprites({
       p.rows(2, 15, [".gg.", "gGGd", ".dd."], { g: "gold4", G: "gold5", d: "gold2" });
     },
   },
-  /** Blue-and-white rice bowls, five stacked a little crooked, the second one chipped years ago and kept anyway. */
+  /** Blue-and-white rice bowls, four in a crooked pile, the second one chipped years ago and kept anyway. */
   "kitchen/bowl-stack": {
-    w: 18, h: 23, anchor: [9, 62], shadow: { rx: 7, ry: 2, dy: -41 },
-    draw: (p) => { bowlStack(p, 1, 0, 5, 1); },
+    w: 20, h: 29, anchor: [10, 68], shadow: { rx: 8, ry: 2, dy: -41 },
+    draw: (p) => { bowlStack(p, 0, 0, 4, 1); },
   },
   /**
    * Serving trays: a scratched aluminium one on top of the old lacquer tray, whose corner has

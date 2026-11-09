@@ -111,24 +111,31 @@ export default defineSprites({
       // Splash upstand, steel deck with a basin and a ribbed drainboard, rolled front rim.
       p.rect(1, 26, 62, 4, "steel4").hline(1, 26, 62, "steel6").hline(1, 29, 62, "steel2");
       p.rect(1, 30, 62, 16, "steel4").hline(1, 30, 62, "steel5").vline(1, 31, 15, "steel5").vline(62, 31, 15, "steel3");
-      p.rect(4, 32, 30, 12, "steel2").hline(4, 32, 30, "steel1").vline(4, 32, 12, "steel1").hline(5, 43, 29, "steel5").vline(33, 33, 11, "steel5");
-      // Grey water and a bowl soaking in it.
-      p.rect(6, 36, 27, 7, "blue2");
-      p.over(() => p.hline(8, 37, 10, "blue3").hline(20, 40, 8, "blue3").hline(10, 41, 5, "steel4"));
-      p.rows(16, 34, ["..oooooo..", ".oWbWWbWo.", "oWWWWWWWso", ".ossssso.."], { o: "blue1", W: "white", b: "blue3", s: "cream3" });
+      // The basin: a back wall in shade, the left wall lit, the right in shadow, the near lip bright.
+      p.rect(4, 32, 30, 12, "steel3").hline(4, 32, 30, "steel1").vline(4, 32, 12, "steel1");
+      p.hline(5, 33, 28, "steel2").vline(5, 33, 10, "steel5").vline(6, 34, 9, "steel4").vline(32, 33, 10, "steel2").vline(33, 33, 11, "steel5");
+      // Grey water: a dark line where it meets the back wall, the window caught on its surface.
+      p.rect(7, 36, 25, 7, "blue2").hline(7, 36, 25, "blue1");
+      p.over(() => {
+        p.rect(9, 38, 7, 3, "blue3").hline(10, 38, 5, "blue4").px(10, 39, "blue5").px(11, 39, "blue5").px(10, 38, "white");
+        p.hline(20, 41, 7, "blue3").hline(24, 39, 4, "blue3");
+      });
+      // A bowl soaking, half under.
+      p.ellipse(23, 39, 6.5, 2.6, "blue1").ellipse(23, 39, 5.5, 1.8, "white").ellipse(23, 39.4, 4.5, 1.2, "blue2");
+      p.px(18, 38, "blue3").px(28, 39, "blue3");
+      p.hline(5, 43, 29, "steel6");
       for (let x = 37; x < 61; x += 3) p.vline(x, 32, 12, "steel3").vline(x + 1, 32, 12, "steel5");
       p.hline(1, 46, 62, "steel6").hline(1, 47, 62, "steel4").hline(1, 48, 62, "steel2");
-      // The curtain: blue check, gathered on a wire, hem a little ragged.
-      p.rect(1, 49, 62, 20, "blue4");
+      // The curtain: soft blue check, gathered on a wire, hem a little ragged.
+      p.rect(1, 49, 62, 20, "blue5");
       p.over(() => {
-        for (let x = 1; x < 63; x += 4) p.vline(x, 49, 20, "blue5");
-        for (let y = 51; y < 69; y += 4) p.hline(1, y, 62, "blue5");
-        for (let x = 1; x < 63; x += 4) for (let y = 51; y < 69; y += 4) p.px(x, y, "blue6");
-        // Folds: shade in the troughs.
-        for (const x of [6, 14, 21, 29, 36, 44, 51, 58]) p.vline(x, 49, 20, "blue3").vline(x + 1, 52, 16, "blue3");
+        for (let x = 1; x < 63; x += 4) p.vline(x, 49, 20, "blue6");
+        for (let y = 51; y < 69; y += 4) p.hline(1, y, 62, "blue6");
+        // Folds: shade in the troughs, a lit crest beside each.
+        for (const x of [6, 14, 21, 29, 36, 44, 51, 58]) p.vline(x, 50, 19, "blue4").vline(x - 2, 52, 15, "blue6");
       });
-      p.hline(1, 49, 62, "blue2");
-      p.rows(1, 69, ["c.cc.c.cc.c.cc..c.c.cc.cc.c.c.cc.c.c.cc.c.cc.c.cc.c.cc.c.c.cc."], { c: "blue3" });
+      p.hline(1, 49, 62, "blue3");
+      p.rows(1, 69, ["c.cc.c.cc.c.cc..c.c.cc.cc.c.c.cc.c.c.cc.c.cc.c.cc.c.cc.c.c.cc."], { c: "blue4" });
       p.outline("steel1");
       // Tap: a brass gooseneck from the upstand, a drip that falls on frame 1.
       p.rows(16, 7, [
@@ -147,17 +154,27 @@ export default defineSprites({
       // Sponge and soap on the upstand.
       p.rows(2, 24, ["ggggg", "gGGGg", "lllll"], { g: "gold4", G: "gold5", l: "leaf3" });
       p.rows(26, 25, [".ccc.", "cCCCc"], { c: "cream3", C: "cream5" });
-      // Dish rack on the drainboard: a wire frame, bowls on edge, one chipped.
+      // Dish rack on the drainboard: plates and bowls on edge, one behind another, the back ones
+      // standing higher; low wires in front. The second bowl has its chip turned to the back.
       const rack = layer(p, (q) => {
-        for (const [x, chip] of [[37, 0], [43, 1], [49, 0], [55, 0]] as const) {
-          q.ellipse(x + 4, 25, 4.5, 7, "blue1");
-          q.ellipse(x + 4, 25, 3.5, 6, "white");
-          q.ellipse(x + 4.5, 25, 2.5, 4.5, "cream4");
-          q.vline(x + 4, 20, 10, "blue3");
-          if (chip) q.px(x + 1, 21, "cream3").px(x + 1, 20, null);
-        }
-        q.hline(36, 32, 26, "steel4").hline(36, 18, 26, "steel5");
-        for (const x of [36, 42, 48, 54, 61]) q.vline(x, 18, 15, "steel4");
+        const disc = (cx: number, cy: number, deep: boolean, chip = false) => {
+          q.ellipse(cx, cy, 6.5, 6.5, "blue1");
+          q.ellipse(cx, cy, 5.5, 5.5, "white");
+          q.ellipse(cx, cy, 4.5, 4.5, "blue3");
+          q.ellipse(cx, cy, 3.5, 3.5, deep ? "cream4" : "white");
+          if (deep) q.ellipse(cx - 0.5, cy - 0.5, 2.5, 2.5, "cream5");
+          else q.rows(Math.floor(cx) - 1, Math.floor(cy) - 1, [".b.", "b.b", ".b."], { b: "blue3" });
+          // Glaze highlight on the upper left, a little shade on the lower right.
+          q.px(Math.floor(cx) - 4, Math.floor(cy) - 3, "white").px(Math.floor(cx) - 3, Math.floor(cy) - 4, "white");
+          q.px(Math.floor(cx) + 3, Math.floor(cy) + 4, "cream4").px(Math.floor(cx) + 4, Math.floor(cy) + 3, "cream4");
+          if (chip) q.px(Math.floor(cx) + 5, Math.floor(cy) - 3, "cream3").px(Math.floor(cx) + 6, Math.floor(cy) - 3, null);
+        };
+        disc(55, 24, false);
+        disc(49.5, 26, true, true);
+        disc(44, 28, false);
+        disc(39, 31, true);
+        q.hline(34, 36, 28, "steel4").hline(34, 40, 28, "steel5");
+        for (const x of [34, 42, 50, 58]) q.vline(x, 36, 5, "steel4");
       });
       rack.outline("steel1");
       p.blit(rack, 0, 0);

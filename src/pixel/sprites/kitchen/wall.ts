@@ -62,7 +62,7 @@ export default defineSprites({
   },
 
   /**
-   * The crockery shelf: rice bowls stacked crooked with the chipped one second from the top, plates
+   * The crockery shelf: a pile of rice bowls with the chipped one on top, plates
    * leaning on edge, the floral thermos everyone in the family has dropped once, and a teapot with
    * a mended lid knob.
    */
@@ -79,10 +79,10 @@ export default defineSprites({
         if (!back) p.rows(Math.floor(cx) - 2, Math.floor(cy) - 1, [".b.b", "bbbb", ".b.b"], { b: "blue3" }).px(Math.floor(cx) - 3, Math.floor(cy) - 4, "white");
       }
       p.px(3, 9, "cream5").px(4, 8, "cream5");
-      // Bowls, the chipped one second from the top.
-      bowlStack(p, 15, 2, 4, 1);
+      // Two bowls in a pile, the top one chipped.
+      bowlStack(p, 14, 0, 2, 0, 4);
       // A squat teapot whose knob was glued back on, the seam showing.
-      p.rows(31, 6, [
+      p.rows(34, 7, [
         ".......oo......",
         "......oWWo.....",
         ".....oooooo....",
@@ -95,7 +95,7 @@ export default defineSprites({
         "....osssssso...",
         ".....oooooo....",
       ], { o: "blue1", W: "white", b: "blue3", s: "cream3" });
-      p.px(38, 7, "cream2").px(39, 7, "cream2");
+      p.px(41, 8, "cream2").px(42, 8, "cream2");
       // Floral thermos: pink enamel, a dented shoulder, a cork-coloured cup for a lid.
       p.rows(48, 0, [
         "..oooooo..",
