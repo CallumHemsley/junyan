@@ -1,7 +1,7 @@
 import { Px } from "./px.ts";
 
-/** World tiles are 16 art pixels square. */
-export const TILE = 16;
+/** World tiles are 32 art pixels square. */
+export const TILE = 32;
 
 export type SpriteDef = {
   /** Frame size in art pixels. */
