@@ -92,7 +92,7 @@ const HANDS_SIDE = part(42, Z.hands, [
   ".......................skk.....",
 ]);
 
-export const TRAY: Piece = (pose): Part[] => {
+export const TRAY: Piece = (pose) => {
   if (pose.arms !== "carry") return [];
   return frontSide(
     (p) => (p.dir === "up" ? [BOARD_UP, FOOD_UP] : [BOARD_DOWN, FOOD_DOWN, HANDS_DOWN]),
