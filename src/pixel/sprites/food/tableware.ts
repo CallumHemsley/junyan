@@ -11,13 +11,14 @@ const BAMBOO: Ramp = ["bamboo1", "bamboo2", "bamboo3", "bamboo4", "bamboo5"];
 /** A pair of bamboo chopsticks lying a little apart, square at the top, tips stained from years of soy. 24×7. */
 function chopsticks(): Px {
   return part(24, 8, (q) => {
-    // Each stick a single lit line with a square head; the pair lies a little apart and askew.
+    // Each stick a single lit line, a pixel wider at the square head; the pair lies a little askew.
     for (const [x0, y0, x1, y1] of [[1, 2, 22, 1], [2, 6, 22, 4]] as const) {
       q.line(x0, y0, x1, y1, "bamboo4");
-      q.px(x0, y0, "bamboo5").px(x0 + 1, y0, "bamboo5").px(x0 + 2, y0, "bamboo5");
+      q.hline(x0, y0 - 1, 4, "bamboo5");
     }
     q.each((x, _y, c) => (c && x > 18 ? "wood4" : undefined));
-    selout(q, "bamboo1", "bamboo2");
+    // A hairline shadow under and to the right only, so they stay slender.
+    q.outline("bamboo1", { sides: ["bottom", "right"] });
   });
 }
 
@@ -32,38 +33,41 @@ const SPOON = [
 ];
 
 function tray(p: Px) {
-  // Floor of the tray: oak boards worn pale in the middle where the bowls slide.
-  p.rect(2, 2, 40, 16, "wood4");
-  for (const y of [7, 12]) p.hline(3, y, 38, "wood3");
+  // Rim top: a two-pixel lip all round, lit along the back and left.
+  p.rect(1, 0, 42, 20, "wood5");
+  p.hline(2, 0, 40, "wood6").vline(0, 1, 18, "wood5").vline(1, 1, 18, "wood6");
+  p.vline(42, 1, 19, "wood4").vline(43, 1, 18, "wood4").hline(2, 18, 40, "wood4").hline(2, 19, 40, "wood5");
+  // Inner walls: the back and left ones face away from the sun.
+  p.rect(2, 2, 40, 16, "wood3");
+  p.hline(3, 2, 38, "wood2").vline(2, 2, 16, "wood2");
+  // Floor of the tray: two boards, worn pale down the middle where bowls slide.
+  p.rect(4, 4, 37, 14, "wood4");
+  p.hline(4, 10, 37, "wood3").hline(4, 11, 37, "wood5");
   p.over(() => {
-    for (const [x, y, n] of [[6, 4, 9], [20, 3, 14], [10, 9, 16], [30, 9, 8], [5, 14, 12], [22, 15, 15]] as const) p.hline(x, y, n, "wood5");
-    for (const [x, y, n] of [[14, 5, 14], [12, 10, 18], [15, 11, 12]] as const) p.hline(x, y, n, "wood5");
-    // A tea ring from a cup set down wet, years ago.
-    p.rows(31, 12, [".rrrr.", "r....r", ".rrrr."], { r: "wood3" });
-    // The far rim's shadow falls on the floor.
-    p.hline(2, 2, 40, "wood2").hline(2, 3, 40, "wood3");
+    for (const [x, y, n] of [[7, 6, 8], [22, 5, 12], [9, 8, 14], [28, 8, 9], [6, 13, 10], [21, 15, 14], [33, 13, 6]] as const) p.hline(x, y, n, y % 2 ? "wood5" : "wood3");
+    for (const [x, y, n] of [[15, 7, 13], [13, 12, 17], [16, 14, 11]] as const) p.hline(x, y, n, "wood5");
+    // A tea ring from a cup set down wet, years ago, and a nick from a dropped cleaver.
+    p.rows(30, 12, [".rrrr.", "r....r", ".rrrr."], { r: "wood3" });
+    p.line(9, 15, 12, 16, "wood2");
+    // The right wall catches the sun.
+    p.vline(41, 3, 15, "wood5");
   });
-  // Raised rim: lit top edge round the back and left, a front face below.
-  p.rect(0, 0, 44, 2, "wood5").hline(1, 0, 42, "wood6");
-  p.rect(0, 0, 2, 19, "wood5").vline(0, 1, 18, "wood6");
-  p.rect(42, 0, 2, 19, "wood3");
-  p.rect(0, 18, 44, 2, "wood5").hline(1, 18, 42, "wood6");
-  p.rect(0, 20, 44, 4, "wood3").hline(0, 20, 44, "wood4").hline(0, 23, 44, "wood2");
-  // Hand slots in the ends.
+  // Hand slots in the rim at each end.
   p.rect(0, 7, 2, 5, "wood1").rect(42, 7, 2, 5, "wood1");
-  // A chipped front corner, sanded smooth by hands.
-  p.rows(39, 20, ["..55", ".544", "5444"], { "5": "wood5", "4": "wood4" });
-  p.over(() => p.hline(6, 21, 10, "wood4").hline(24, 22, 12, "wood2"));
-  // The tea-cloth, folded over the back-right corner: cream with blue stripes.
-  grid(p, 30, -0, [
-    "..cccccccccc",
-    ".cWWWwwwwwwc",
-    "cWbbbBBBBbbc",
-    "cWwwwwwwwwwc",
-    ".cbbbBBBBbbc",
-    "..cWwwwwwwc.",
-    "...ccccccc..",
-  ], { c: "cream2", W: "white", w: "cream4", b: "blue4", B: "blue3" });
+  // Front face, with the grain running along it and a chipped corner sanded smooth by hands.
+  p.rect(0, 20, 44, 4, "wood3").hline(0, 20, 44, "wood4").hline(0, 23, 44, "wood2");
+  p.over(() => p.hline(5, 21, 11, "wood4").hline(24, 22, 13, "wood2"));
+  p.rows(40, 18, ["..55", ".544", "5444"], { "5": "wood5", "4": "wood4" });
+  // The tea-cloth, folded in three and laid over the back-left corner: cream, two blue stripes.
+  grid(p, 1, 1, [
+    ".cccccccccccc.",
+    "cWWWWwwwwwwwwc",
+    "cbbbbBBBBBbbbc",
+    "cWwwwwwwwwwwkc",
+    "cwwwkwwwwwwwkc",
+    "cbbbbBBBBBbbbc",
+    ".ckkkkkkkkkkc.",
+  ], { c: "cream2", W: "white", w: "cream4", k: "cream3", b: "blue4", B: "blue3" });
   p.outline("wood1");
 }
 

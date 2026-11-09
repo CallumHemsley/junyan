@@ -54,12 +54,12 @@ export function plate(q: Px, cx: number, cy: number, rx: number, ry: number, o: 
 export const RIMS = {
   /** A single blue line round the well and a darker band at the edge. */
   banded: (s: RimSpot) => (s.r > 0.82 ? (s.lit ? "blue3" : "blue2") : s.r < 0.2 ? "blue4" : undefined),
-  /** Little two-pixel dots round the rim between two hairlines. */
+  /** Little two-pixel dots round the rim inside a blue edge. */
   dotted: (s: RimSpot) => {
-    if (s.r < 0.14 || s.r > 0.9) return s.lit ? "blue3" : "blue2";
-    const n = Math.max(10, Math.round(s.rx * 1.1)), k = Math.round((s.a / (2 * Math.PI)) * n), a = (k / n) * 2 * Math.PI;
-    const m = s.well + (1 - s.well) * 0.52;
-    if (Math.abs(s.dx - Math.cos(a) * m * s.rx) < 1 && Math.abs(s.dy - Math.sin(a) * m * s.ry) < 0.6) return s.lit ? "blue3" : "blue2";
+    if (s.r > 0.86) return s.lit ? "blue3" : "blue2";
+    const n = Math.max(10, Math.round(s.rx * 0.9)), k = Math.round((s.a / (2 * Math.PI)) * n), a = (k / n) * 2 * Math.PI;
+    const m = s.well + (1 - s.well) * 0.45;
+    if (Math.abs(s.dx - Math.cos(a) * m * s.rx) < 1 && Math.abs(s.dy - Math.sin(a) * m * s.ry) < 0.55) return s.lit ? "blue3" : "blue2";
     return undefined;
   },
   /** A scalloped wave band. */
@@ -152,9 +152,11 @@ export function steamer(q: Px, cx: number, cy: number, rx: number, ry: number, d
         if (!inBand) continue;
         const u = (x + 0.5 - cx) / rx;
         // Cylinder light across the band, then a basket weave of strips riding over and under.
-        let i = u < -0.55 ? 3 : u < 0.1 ? 3 : u < 0.6 ? 2 : 1;
-        const row = Math.floor((y - cy) / 2), over = (Math.floor((x + row * 2) / 3) + row) % 2 === 0;
-        if (!over) i -= 1;
+        let i = u < 0.1 ? 3 : u < 0.6 ? 2 : 1;
+        // Woven strips two pixels tall; each passes over and under the uprights every four pixels.
+        const row = Math.floor((y - Math.floor(cy)) / 2), under = Math.floor((x + (row % 2) * 2) / 4) % 2 === 0;
+        if (under) i -= 1;
+        if ((y - Math.floor(cy)) % 2 === 1 && !under) i = Math.max(0, i - 1) + (u < -0.3 ? 1 : 0);
         q.px(x, y, BAMBOO[Math.max(0, Math.min(4, i))]);
       }
     // Shadow under the rim's lip, a lit bead at the foot.

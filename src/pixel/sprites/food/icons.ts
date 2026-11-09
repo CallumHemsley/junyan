@@ -145,17 +145,19 @@ function tornBun(): Px {
   });
 }
 
-/** The steamer's cotton liner, folded over the rim at the front left, with a blue stripe at the hem. */
+/** The steamer's cotton liner: a corner hangs over the rim at the front left, blue stripe at the hem. */
 function liner(p: Px) {
-  grid(p, 2, 27, [
-    "..ccccc....",
-    ".cCCCCCc...",
-    "cCCwCCCCc..",
-    "cCwwCCCCCc.",
-    ".cCCbbbbCCc",
-    "..ccbBBbcc.",
-    "....ccc....",
-  ], { c: "cream2", C: "cream4", w: "cream5", b: "blue4", B: "blue3" });
+  grid(p, 4, 32, [
+    "..cccccccc..",
+    ".cCCwwCCCCc.",
+    "cCCCwCCkCCCc",
+    ".cCCCCkCCCc.",
+    "..cCCkCCCc..",
+    "..cbbbbbbc..",
+    "...cBBBBc...",
+    "...cbbbbc...",
+    "....cccc....",
+  ], { c: "cream2", C: "cream4", w: "cream5", k: "cream3", b: "blue4", B: "blue3" });
 }
 
 /**
@@ -169,6 +171,8 @@ function bunIcon(p: Px) {
     q.over(() => {
       for (let y = 22; y < 36; y++) for (let x = 3; x < 46; x++)
         if (q.get(x, y) === "bamboo2" && inEllipse(24, 30, 19, 6, x, y)) q.px(x, y, "cream4");
+      // Folds in the damp cloth.
+      for (const [x, y, n] of [[6, 27, 3], [38, 26, 4], [10, 31, 4], [33, 32, 3], [24, 34, 4]] as const) q.hline(x, y, n, "cream3").hline(x + 1, y - 1, n - 1, "cream5");
     });
   });
   p.blit(selout(basket, "bamboo1", "bamboo2"), 0, 0);
@@ -224,7 +228,7 @@ function bittenMantou(): Px {
  * couldn't wait and took a bite out of one on the way to the table.
  */
 function breadIcon(p: Px) {
-  plate(p, 24, 33, 22, 10, { rim: RIMS.dotted, well: 0.64, chip: [[42, 39], [43, 38]] });
+  plate(p, 24, 34, 22.5, 10, { rim: RIMS.dotted, well: 0.62, chip: [[43, 39], [44, 38]] });
   // Soft shade where each bread sits.
   p.over(() => {
     p.ellipse(15, 31, 10, 3.2, "blue6");
@@ -232,7 +236,7 @@ function breadIcon(p: Px) {
     p.ellipse(15.5, 30.5, 8, 2.2, "blue5");
     p.ellipse(31.5, 36.5, 8, 2.2, "blue5");
   });
-  p.blit(part(22, 16, (q) => grid(q, 0, 0, MANTOU, MANTOU_KEY)), 3, 16);
+  p.blit(part(22, 16, (q) => grid(q, 0, 0, MANTOU, MANTOU_KEY)), 4, 16);
   p.blit(bittenMantou(), 20, 22);
   // A crumb fallen from the bite.
   grid(p, 38, 40, ["cC", ".c"], { c: "cream4", C: "cream5" });
@@ -311,16 +315,16 @@ function starAnise(): Px {
  * in a shallow wave-rim dish with a spoonful of the tea, a star anise and a stray tea leaf.
  */
 function eggIcon(p: Px) {
-  plate(p, 24, 33, 21, 9.5, { rim: RIMS.wave, well: 0.7 });
+  plate(p, 24, 33, 22.5, 10, { rim: RIMS.wave, well: 0.7 });
   // A pool of the dark tea in the well, with one glint.
   p.ellipse(25, 35, 12, 4.2, "wood3");
   p.ellipse(24, 34.4, 11, 3.4, "wood2");
   p.hline(18, 33, 4, "wood4").px(17, 34, "oak3").px(32, 37, "wood4");
-  p.blit(teaEgg(), 9, 18);
+  p.blit(teaEgg(), 11, 17);
   grid(p, 22, 29, HALF_EGG, { c: "oak2", o: "wood3", b: "oak3", t: "cream4", W: "white", w: "cream5", r: "jade4", y: "gold4", Y: "gold3", z: "gold5", e: "oak4", v: "wood4" });
   p.blit(starAnise(), 33, 24);
   // A tea leaf, unfurled from the brew.
-  grid(p, 12, 36, [".ll..", "lLvll", ".lll."], { l: "leaf1", L: "leaf2", v: "leaf3" });
+  grid(p, 8, 35, ["..ll...", ".lLLll.", "lLvvvLl", ".llLll.", "...l..."], { l: "leaf1", L: "leaf2", v: "leaf3" });
 }
 
 // ── soy milk 豆浆 ────────────────────────────────────────────────────────────
@@ -356,7 +360,7 @@ function motif(p: Px, x: number, y: number, rows: readonly string[], litBelow: n
       const k = row[i];
       if (k === ".") continue;
       const lit = x + i < litBelow;
-      p.px(x + i, y + j, k === "o" ? ink(lit) : k === "O" ? (lit ? "blue5" : "blue4") : k === "d" ? "blue1" : "white");
+      p.px(x + i, y + j, k === "o" ? (lit ? "blue2" : "blue1") : k === "O" ? (lit ? "blue4" : "blue3") : k === "d" ? "blue1" : "white");
     }
   }));
 }
@@ -388,23 +392,26 @@ function milkIcon(p: Px) {
   for (const [x, y] of [[15, 32], [27, 34], [5, 35], [38, 34]] as const) motif(p, x, y, LEAF, 22);
   surface(p, 23.6, 20.2, 17, 5.6, ["cream3", "cream4", "cream5"]);
   // A skin starting to form: a wrinkled sheet drifting on the far right of the surface.
-  grid(p, 22, 16, [
-    "..sSSs.....",
-    ".sSkkSSs...",
-    "sSkSSkSSs..",
-    ".sSSkkSkSs.",
-    "..ssSSkSs..",
-    ".....sss...",
-  ], { s: "cream4", S: "cream5", k: "cream3" });
+  grid(p, 20, 15, [
+    "...kkkk.......",
+    ".kkSSSSkkk....",
+    "kSSkkSSSSSkk..",
+    "kSkSSkkSSkSSk.",
+    ".kSSkSSkkSSSk.",
+    "..kkSSkSSSkk..",
+    "....kkkkk.....",
+  ], { k: "cream3", S: "cream5" });
   // Sheen along the lit side.
   p.hline(11, 18, 5, "white").hline(9, 19, 3, "white").px(17, 18, "cream5");
   grid(p, 30, 8, SPOON, { o: "blue2", b: "blue3", W: "white", w: "blue6" });
   // The dunked fried-dough end, soaked dark where it meets the milk, with a ripple round it.
   p.ellipse(13, 21.5, 4, 1.4, "cream5");
   const stick = part(48, 48, (q) => {
-    tube(q, [[4, 7], [12.5, 19]], (t) => 3 + 0.5 * Math.sin(t * 23), FRIED, [0.12, 0.38, 0.66, 0.9]);
+    tube(q, [[3, 3], [12, 19]], (t) => 2.1 + 0.45 * Math.sin(t * 33) + 0.25 * Math.sin(t * 71), FRIED, [0.12, 0.38, 0.66, 0.9]);
+    tube(q, [[6.4, 1.6], [15.2, 17.4]], (t) => 1.9 + 0.4 * Math.sin(t * 29 + 2), FRIED, [0.12, 0.38, 0.66, 0.9]);
     q.over(() => {
-      for (const [x, y] of [[4, 6], [7, 10], [9, 13]] as const) q.px(x, y, "gold5").px(x + 1, y + 1, "gold2");
+      for (let d = 0; d < 15; d++) q.px(Math.round(5.3 + d * 0.58), Math.round(3 + d * 1.05), d % 4 === 0 ? "gold1" : "orange1");
+      for (const [x, y] of [[3, 4], [5, 9], [8, 4], [10, 9], [7, 13], [12, 13]] as const) q.px(x, y, "gold5").px(x + 1, y + 1, "gold2");
       for (let y = 16; y < 24; y++) for (let x = 7; x < 18; x++) if (q.solid(x, y) && y > 22 - (x - 7) * 0.45) q.px(x, y, q.get(x, y) === "gold5" || q.get(x, y) === "gold4" ? "oak4" : "oak3");
     });
     selout(q, "wood2", "gold1");
@@ -418,14 +425,21 @@ function milkIcon(p: Px) {
 // ── congee 粥 ────────────────────────────────────────────────────────────────
 
 /** A little carp swimming left: an eye, a fin, a forked tail. */
-const CARP = ["..oooo....", ".ooooooo.o", "oeoOoOooo.", ".ooooooo.o", "...o.o...."];
+const CARP = [
+  "...ooo.......",
+  "..ooooo...oo.",
+  ".oooooooooo..",
+  "oeodooddoo...",
+  ".oooooooooo..",
+  "..oo.oo...oo.",
+];
 
 /** The congee bowl: a broad blue collar with a white wave running through it, a hairline below. */
 function carpBowl(depth: number): BodyPattern {
   return (u, t, lit) => {
     const py = t * depth;
-    if (py < 3) return ink(lit);
-    if (py > 4.4 && py < 5.2) return lit ? "blue4" : "blue3";
+    if (py < 2.4) return ink(lit);
+    if (py > 3 && py < 3.6) return lit ? "blue4" : "blue3";
     if (py > depth - 1.4) return ink(lit);
     return undefined;
   };
@@ -437,8 +451,8 @@ function carpBowl(depth: number): BodyPattern {
  */
 function porridgeIcon(p: Px) {
   bowl(p, 24, 20, 22, 8, 17, { belly: 0.86, body: carpBowl(17) });
-  motif(p, 10, 34, CARP, 24);
-  motif(p, 28, 35, CARP.map((r) => [...r].reverse().join("")), 24);
+  motif(p, 8, 32, CARP, 24);
+  motif(p, 27, 32, CARP.map((r) => [...r].reverse().join("")), 24);
   surface(p, 24.6, 21.3, 19.6, 6.2, ["cream3", "cream5", "white"]);
   // Grains: short soft streaks.
   p.over(() => {
@@ -529,29 +543,38 @@ function youtiaoIcon(p: Px) {
 
 // ── dumplings 饺子 ───────────────────────────────────────────────────────────
 
-/** A boiled crescent dumpling seen from above: crimped arc behind, plump belly, horns curling down. 14×8. */
+/**
+ * A boiled pork-and-chive crescent seen from above: crimped edge along the arc, a plump belly where
+ * the green of the chives shows faintly through the skin, horns curling down. 16×9.
+ */
 const DUMPLING = [
-  ".....cccc.....",
-  "...ccWpWpoo...",
-  "..cWpW55WpPo..",
-  ".cWp5WW555pPo.",
-  "c5p55WW55544Po",
-  "c455555544433o",
-  "o43oooooooo32o",
-  ".oo........oo.",
+  ".....cccccc.....",
+  "...ccWpWpWpoo...",
+  "..cWpW5WW555pPo.",
+  ".cWp55WW5554pPo.",
+  "cWp55555554444Po",
+  "c4j5555544443j3o",
+  "o3jj44444433jj2o",
+  "o32oooooooooo22o",
+  ".oo..........oo.",
 ];
-const DUMPLING_KEY = { c: "oak2", o: "wood3", W: "white", "5": "cream5", "4": "cream4", "3": "cream3", "2": "cream2", p: "cream3", P: "cream2" } as const;
+const DUMPLING_KEY = { c: "oak2", o: "wood3", W: "white", "5": "cream5", "4": "cream4", "3": "cream3", "2": "cream2", p: "cream3", P: "cream2", j: "jade6" } as const;
 
 function dumpling(bitten = false): Px {
-  return part(14, 8, (q) => {
+  return part(16, 9, (q) => {
     grid(q, 0, 0, DUMPLING, DUMPLING_KEY);
     if (!bitten) return;
-    // A bite from the right horn: skin edge, then pork and chive filling.
-    for (let y = 0; y < 8; y++) for (let x = 0; x < 14; x++) {
-      if (inEllipse(13.5, 2.5, 4, 3.2, x, y)) q.px(x, y, null);
-      else if (inEllipse(13.5, 2.5, 5.2, 4.3, x, y) && q.solid(x, y) && q.get(x, y) !== "wood3") q.px(x, y, (x + y) % 3 === 0 ? "leaf3" : (x + y) % 3 === 1 ? "rose4" : "pink2");
-    }
-    q.each((x, y, c) => (c === "wood3" && !inEllipse(13.5, 2.5, 5.6, 4.6, x, y) ? undefined : c === "wood3" ? null : undefined));
+    // A bite from the right horn: the skin's cut edge, then pork and chive.
+    q.each((x, y, c) => (c && inEllipse(16, 3.5, 4.5, 3.6, x, y) ? null : undefined));
+    grid(q, 9, 1, [
+      "...cc",
+      "..cmM",
+      ".cmgm",
+      ".cMmg",
+      "cmgmm",
+      "cmmG.",
+    ], { c: "cream4", m: "wood4", M: "oak3", g: "leaf3", G: "leaf2" });
+    q.each((x, y, c) => (c === "wood3" && x > 12 && y < 6 ? null : undefined));
     selout(q, "wood3", "oak2");
   });
 }
@@ -570,9 +593,10 @@ function dumplingIcon(p: Px) {
   });
   p.px(41, 12, "orange3").px(35, 11, "white").px(36, 11, "wood3");
   plate(p, 23, 32, 22, 10, { rim: RIMS.banded, well: 0.68 });
-  const spots = [[5, 22], [17, 21], [29, 22], [9, 29], [21, 29], [33, 29]] as const;
+  // Three at the back, two in the middle, the bitten one in front.
+  const spots = [[3, 20], [16, 19], [29, 20], [9, 26], [23, 26], [16, 32]] as const;
   spots.forEach(([x, y], i) => {
-    p.over(() => p.ellipse(x + 7, y + 7, 6, 1.6, "blue5"));
+    p.over(() => p.ellipse(x + 8, y + 7.5, 7, 1.6, "blue5"));
     p.blit(dumpling(i === 5), x, y);
   });
   steam(p, [curl(14, 20, 9, 0.5, 0.5), curl(27, 19, 8, 2.2, 0.45)]);
