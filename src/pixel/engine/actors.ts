@@ -1,0 +1,66 @@
+import { TILE } from "../kit/index.ts";
+import { frameAt, type Atlas, type AtlasSprite } from "./atlas.ts";
+import type { Actor, Facing } from "./types.ts";
+
+/** The sprite every missing character falls back to. */
+export const FALLBACK_CHARACTER = "ex/waiter";
+/** Walk animations advance one frame per this many art pixels travelled (when driven by distance). */
+export const WALK_PX_PER_FRAME = 6;
+
+export type ResolvedActor = {
+  sprite: AtlasSprite;
+  flipX: boolean;
+  /** Set when a fallback was used: what was asked for and what was drawn instead. */
+  fallback?: string;
+};
+
+/**
+ * Which sprite draws an actor. Tries, in order:
+ * `${sprite}/${action}-${facing}`; for `left`, the mirrored `-right`; the same two with `idle`;
+ * `${sprite}/idle-down`; `sprite` itself as a plain sprite id; and finally `ex/waiter`.
+ */
+export function resolveActorSprite(atlas: Atlas, sprite: string, action = "idle", facing: Facing = "down"): ResolvedActor {
+  const tries: [string, boolean][] = [];
+  const add = (act: string) => {
+    tries.push([`${sprite}/${act}-${facing}`, false]);
+    if (facing === "left") tries.push([`${sprite}/${act}-right`, true]);
+  };
+  add(action);
+  if (action !== "idle") add("idle");
+  tries.push([`${sprite}/idle-down`, false], [sprite, facing === "left"], [FALLBACK_CHARACTER, false]);
+  const wanted = `${sprite}/${action}-${facing}`;
+  for (let i = 0; i < tries.length; i++) {
+    const [id, flipX] = tries[i];
+    if (!atlas.has(id)) continue;
+    // A mirrored right is the documented way to draw left, not a fallback worth warning about.
+    const expected = i === 0 || (i === 1 && facing === "left") || (id === sprite && !sprite.startsWith("char/"));
+    return { sprite: atlas.get(id), flipX, fallback: expected ? undefined : `${wanted} → ${id}${flipX ? " (mirrored)" : ""}` };
+  }
+  throw new Error(`No sprite for actor "${wanted}" and no fallback "${FALLBACK_CHARACTER}"`);
+}
+
+/** Animation frame for an actor: walk cycles follow distance when `distance` is set, else time. */
+export function actorFrame(actor: Actor, sprite: AtlasSprite, time: number): number {
+  const action = actor.action ?? "idle";
+  if (actor.distance !== undefined && action.includes("walk") && sprite.frameCount > 1) {
+    const step = Math.floor((actor.distance * TILE) / WALK_PX_PER_FRAME + (actor.phase ?? 0));
+    return ((step % sprite.frameCount) + sprite.frameCount) % sprite.frameCount;
+  }
+  return frameAt(sprite, time, actor.phase ?? 0);
+}
+
+/** Resolution with a per-request cache and one warning per distinct fallback. */
+export function createActorResolver(atlas: Atlas, warn?: (message: string) => void) {
+  const cache = new Map<string, ResolvedActor>();
+  return (actor: Actor): ResolvedActor => {
+    const action = actor.action ?? "idle", facing = actor.facing ?? "down";
+    const key = `${actor.sprite}|${action}|${facing}`;
+    let hit = cache.get(key);
+    if (!hit) {
+      hit = resolveActorSprite(atlas, actor.sprite, action, facing);
+      cache.set(key, hit);
+      if (hit.fallback) warn?.(`[pixel] actor "${actor.id}": ${hit.fallback}`);
+    }
+    return hit;
+  };
+}
