@@ -24,6 +24,9 @@ export const CAFE_TABLES = [
   { table: 4, at: [15.2, 11.5], stools: [[15.2, 10.15], [15.2, 12.55]], seat: { at: [15.2, 10.15], facing: "down" } },
 ] as const;
 
+/** Mismatched seats, two per table, in table order. */
+const SEATS = ["furn/stool-turned", "furn/stool-bamboo", "furn/stool-plastic", "furn/stool-square", "furn/stool-plastic-jade", "furn/stool-bamboo", "furn/stool-turned", "furn/stool-plastic"];
+
 const COUNTER_ROW = 7, LEG_COL = 11;
 const counterY = rowBase(COUNTER_ROW);
 /** Things standing on the long counter: their anchors sit one pixel below the counter's. */
@@ -83,10 +86,10 @@ const dining: Prop[] = [
   { sprite: "decor/clock", at: px(292, 16) },
   { sprite: "wall/post", at: px(352, 96) },
   { sprite: "decor/lantern-red", at: px(322, 4) },
-  // Tables and stools. Placeholders until the furniture set lands.
+  // Tables and their mismatched seats.
   ...CAFE_TABLES.flatMap((t): Prop[] => [
-    { id: `table-${t.table}`, sprite: "ex/table", at: t.at },
-    ...t.stools.map((at): Prop => ({ sprite: "ex/stool", at })),
+    { id: `table-${t.table}`, sprite: `furn/table-${t.table}`, at: t.at },
+    ...t.stools.map((at, i): Prop => ({ sprite: SEATS[(t.table - 1) * 2 + i], at })),
   ]),
   // Plants, deliveries, the broom, the runner in front of the pass.
   { sprite: "decor/plant-rubber", at: [1.65, 3.75] },
@@ -96,7 +99,11 @@ const dining: Prop[] = [
   { sprite: "decor/broom", at: [1.45, 8.4] },
   { sprite: "decor/crate-bottles", at: px(652, 306) },
   { sprite: "decor/boxes", at: px(614, 312) },
-  { sprite: "decor/rug-runner", at: [15.5, 9.45] },
+  { sprite: "decor/rug-runner", at: [13.6, 9.45] },
+  { sprite: "furn/sideboard", at: [5.25, 3.6] },
+  { sprite: "furn/water-dispenser", at: [9.15, 3.6] },
+  { sprite: "furn/coat-rack", at: [9.3, 12.8] },
+  { sprite: "furn/umbrella-stand", at: [12.75, 12.85] },
   { sprite: "tile/mat", at: px(352, 414) },
   // Mantou, asleep in the sun under the window, and watching the street by the door.
   { id: "cat", sprite: "decor/cat-sleep", at: [6.05, 4.75], solid: false },
@@ -169,5 +176,5 @@ export default defineScene({
     ...Object.fromEntries(CAFE_TABLES.map((t) => [`seat/table-${t.table}`, t.seat])),
     ...Object.fromEntries(CAFE_TABLES.map((t) => [`table/${t.table}`, { at: t.at }])),
   },
-  actors: [{ id: "waiter", sprite: "char/player", at: [14.2, 9.3], facing: "down", action: "idle" }],
+  actors: [{ id: "waiter", sprite: "char/player", at: [17.2, 9.5], facing: "down", action: "idle" }],
 });
