@@ -22,14 +22,14 @@ export function block(p: Px, x: number, y: number, rows: readonly string[], lege
 // ── caps ─────────────────────────────────────────────────────────────────────
 
 /** Wall-top colours by profile letter: edge, timber plate, plaster core, lit lip, glint. */
-export const CAP: Legend = { v: "ink", 1: "wood1", 2: "wood2", 3: "wood3", 4: "wood4", 5: "wood5", p: "cream1", P: "cream2", q: "stone2", n: "wood1" };
+export const CAP: Legend = { v: "ink", 1: "wood1", 2: "wood2", 3: "wood3", 4: "wood4", 5: "wood5", p: "stone2", P: "cream1", q: "stone1", n: "wood1" };
 
 /** The side-cap profile, outer edge to inner edge, 16px: plate, core, lipped inner plate. */
-export const SIDE_PROFILE = "1221pppppp123431";
+export const SIDE_PROFILE = "1221pppppp123421";
 /** The back cap, rows 0–5, outer (north) to inner. */
-export const BACK_PROFILE = "12pp31";
+export const BACK_PROFILE = "12pp41";
 /** The front cap, rows 0–9, inner (north, against the floor) to outer. */
-export const FRONT_PROFILE = "1342pppp21";
+export const FRONT_PROFILE = "1243pppp21";
 
 /**
  * Texture laid along a cap run, by position along the run (`t`) and across it (profile index `i`):
@@ -39,8 +39,8 @@ export const FRONT_PROFILE = "1342pppp21";
 export function capTexture(letter: string, t: number, i: number, seed: number): string {
   const r = hash(t >> 2, i, seed);
   if (letter === "2" && hash(t >> 3, i, seed + 1) > 0.7) return "1";
-  if (letter === "p" && hash(t >> 1, i >> 1, seed + 2) > 0.9) return "P";
-  if (letter === "3" && r > 0.8) return "4";
+  if (letter === "p" && hash(t >> 1, i, seed + 2) > 0.94) return "P";
+  if (letter === "4" && r > 0.75) return "5";
   return letter;
 }
 
