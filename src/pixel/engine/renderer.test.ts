@@ -216,7 +216,7 @@ describe("frames", () => {
     const frame = draw(busy, { time: 1234, phase: "morning", actors, debug: true });
     expect(hashFrame(frame)).toBe(hashFrame(draw(busy, { time: 1234, phase: "morning", actors, debug: true })));
     // Pinned per tile size: the art scale legitimately changes every pixel. Add an entry when TILE changes.
-    const PINS: Record<number, string> = { 16: "822d800b" };
+    const PINS: Record<number, string> = { 16: "822d800b", 32: "c3ebd3aa" };
     expect(hashFrame(frame)).toBe(PINS[T]);
   });
 

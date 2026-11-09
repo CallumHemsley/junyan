@@ -11,7 +11,7 @@ export default defineScene({
   background: "ink",
   legend: {
     W: "ex/wall",
-    f: ["ex/floor-wood-a", "ex/floor-wood-a", "ex/floor-wood-b", "ex/floor-wood-b", "ex/floor-wood-c"],
+    f: ["ex/floor-wood-a", "ex/floor-wood-a", "ex/floor-wood-b", "ex/floor-wood-b", "ex/floor-wood-c", "ex/floor-wood-d"],
   },
   layers: [
     // The three-tile-tall wall slice is anchored at its top-left cell and spills down over rows 1 and 2.
