@@ -202,8 +202,15 @@ export default defineSprites({
           q.vline(1, 13, 60, "jade6").vline(2, 13, 60, "jade6");
           q.vline(36, 13, 60, "jade4").vline(37, 13, 60, "jade3").vline(38, 13, 60, "jade3");
           q.hline(3, 15, 33, "jade6");
-          // A broad soft sheen down the left of the door, a shadowed band to the right.
-          q.vline(5, 18, 50, "jade6").vline(6, 20, 44, "jade6").vline(33, 18, 50, "jade4").vline(34, 18, 50, "jade4");
+          // The window reflected in the round door: two pale panes split by a glazing bar, softening
+          // as the door curves away; a shadowed band down the right.
+          q.rect(21, 19, 3, 36, "jade6").rect(25, 19, 2, 36, "jade6").hline(21, 33, 6, "jade6");
+          q.vline(21, 19, 36, "white").vline(22, 21, 4, "white");
+          q.dither(21, 52, 6, 3, "jade5", "checker");
+          q.vline(33, 18, 50, "jade4").vline(34, 18, 50, "jade4");
+          // Below the chrome trim the door is a step darker: years of knees and mop water.
+          q.rect(3, 59, 33, 11, "jade4").hline(3, 59, 33, "jade5");
+          q.over(() => q.hline(6, 63, 9, "jade5").hline(20, 66, 7, "jade3"));
           // Chrome trim strip across the door.
           q.hline(2, 57, 35, "steel5").hline(2, 58, 35, "steel3");
           // Grubby finger marks round the handle.
@@ -214,6 +221,7 @@ export default defineSprites({
           q.dither(4, 71, 32, 2, "steel2", "rows");
           // Paint chipped to the grey primer on the kick corner.
           q.rows(3, 66, [".pp", "ppP", "pP."], { p: "steel4", P: "steel3" });
+          q.px(3, 59, "jade5");
         });
         // Feet.
         q.rect(3, 74, 4, 4, "steel2").rect(33, 74, 4, 4, "steel2").vline(3, 74, 4, "steel4");
@@ -234,7 +242,7 @@ export default defineSprites({
       });
       p.blit(b, 0, 7);
       // Chrome badge, blank.
-      p.rows(14, 20, ["sssssssssss", "s66666666Ss", "sSSSSSSSSSs"], { s: "steel3", 6: "steel6", S: "steel4" });
+      p.rows(13, 19, [".sssssssssss.", "s6666666666Ss", "s6SSSSSSSS4Ss", ".s444444444s.", "..sssssssss.."], { s: "steel2", 6: "steel6", S: "steel5", 4: "steel4" });
       // The lever handle, bound in tape, and the towel through it.
       p.rows(31, 24, [
         ".oo.",

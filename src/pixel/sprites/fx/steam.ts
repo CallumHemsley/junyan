@@ -16,7 +16,7 @@ type Wisp = {
   stream: number;
 };
 
-const ALPHA = [0.4, 0.66, 0.84] as const;
+const ALPHA = [0.42, 0.72, 0.92] as const;
 
 /**
  * A thin unbroken stream leaves the source and breaks into puffs. Each puff rises along a lazy S,
@@ -56,7 +56,7 @@ function steam(p: Px, frame: number, s: Wisp) {
       if (d > 1) continue;
       const ex = x + 0.5 - bx, ey = y + 0.5 - by;
       if (br > 0.5 && ex * ex + ey * ey < br * br) continue;
-      put(x, y, d < 0.42 ? level : d < 0.72 ? Math.max(1, level - 1) : 1);
+      put(x, y, d < 0.26 && a > 0.08 && a < 0.52 ? 3 : d < 0.45 ? level : d < 0.74 ? Math.max(1, level - 1) : 1);
     }
   }
   const at = (x: number, y: number) => (x < 0 || y < 0 || x >= w || y >= h ? 0 : grid[y * w + x]);
