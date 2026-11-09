@@ -52,14 +52,41 @@ export const BAMBOO_RIM: readonly Stop[] = [
   [-0.82, "bamboo4"], [-0.25, "bamboo5"], [0.35, "bamboo4"], [0.78, "bamboo3"], [2, "bamboo2"],
 ];
 
-/** A tiny blue-and-white rice bowl seen from the front, 7×4, drawn at (x, y). promote? */
-export function bowlFront(p: Px, x: number, y: number) {
-  p.rows(x, y, [
-    "ownnwwo",
-    "owbwbso",
-    ".obbbo.",
-    "..ooo..",
-  ], { o: "blue1", w: "white", n: "cream4", b: "blue3", s: "cream3" });
+const BOWL = [
+  "...oooooooooo...",
+  ".ooWWWWWWWWWWoo.",
+  "oWWbbbbbbbbbbWWo",
+  "oWbiiiiiiiiiibWo",
+  "oWWiiiiiiiiiiWso",
+  "ocWWWWWWWWWWWsso",
+  "ocwbwwbbwwbbwbso",
+  ".ocwBBwwBBwwBso.",
+  "..ocwwwwwwwwso..",
+  "...ooBBBBBBoo...",
+  "....oooooooo....",
+];
+const BOWL_INK = { o: "blue1", W: "white", w: "cream5", c: "cream4", s: "cream3", i: "cream4", b: "blue3", B: "blue2" } as const;
+
+/**
+ * A nested stack of `n` blue-and-white rice bowls, 16 wide, the top one showing its glazed inside;
+ * each lower bowl's rim lip shows two pixels below the one above. `chip` (0 = top) has a chipped
+ * rim showing the pale biscuit. Returns the stack's height. promote?
+ */
+export function bowlStack(p: Px, x: number, y: number, n: number, chip = -1): number {
+  // Bottom bowl first: its whole outside; then each bowl above it, nudged a pixel side to side,
+  // shows its rim lip and the first row of its pattern before the next one hides the rest.
+  const shift = (i: number) => (i % 3 === 1 ? 1 : i % 3 === 2 ? -1 : 0);
+  const bottom = y + (n - 1) * 3;
+  p.rows(x + shift(n - 1), bottom, BOWL, BOWL_INK);
+  for (let i = n - 2; i >= 0; i--) {
+    const by = y + i * 3;
+    p.rows(x + shift(i), by, i === 0 ? BOWL.slice(0, 8) : BOWL.slice(0, 7), BOWL_INK);
+  }
+  if (chip >= 0) {
+    const cy = y + chip * 3 + 5, cx = x + shift(chip) + 10;
+    p.px(cx, cy, "cream2").px(cx + 1, cy, "cream3").px(cx, cy - 1, "cream3").px(cx + 1, cy - 1, "blue1");
+  }
+  return (n - 1) * 3 + 11;
 }
 
 /**
