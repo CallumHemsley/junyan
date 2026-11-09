@@ -1,370 +1,321 @@
 /**
- * The shared body, drawn once in slot letters. Rows are 16 wide (ruler: 0123456789abcdef).
- * Light from the upper left. In profile, shading runs top-to-bottom and near-to-far rather
- * than left-to-right, so the mirrored `left` still reads.
+ * The shared body, drawn once in slot letters on the 32×64 frame (ruler 0123456789abcdef0123456789abcdef).
+ * Front views are drawn as a left half, mirrored by `sym`, with the sun-side shading applied after.
+ * In profile, shading runs top-to-bottom and near-to-far rather than left-to-right, so the mirrored
+ * `left` still reads.
+ *
+ * Rows: hair from 8, face 17–32, collar 33, torso 34–46, hips 46–51, legs 52–57, shoes 58–60.
  */
-import { part, Z, type ArmPose, type LegPose, type Part, type Piece, type Pose } from "./_core.ts";
+import { darken, mirror, part, sym, Z, type Part, type Piece, type Pose } from "./_core.ts";
 
 const head = (y: number, rows: readonly string[]) => part(y, Z.head, rows, { group: "head" });
-const face = (y: number, rows: readonly string[]) => part(y, Z.face, rows, { group: "head" });
-const legs = (y: number, rows: readonly string[]) => part(y, Z.legs, rows, { group: "legs" });
+const legs = (y: number, rows: readonly string[], z: number = Z.legs) => part(y, z, rows, { group: "legs" });
+const arms = (y: number, rows: readonly string[], z: number = Z.arms) => part(y, z, rows);
 
-// ── heads (skin only; hair and faces are layered on) ───────────────────────
+// ── heads (skin and ears; hair and faces are layered on) ───────────────────
 
 export const HEAD = {
-  down: head(5, [
-    "....SSSSSSSS....",
-    "...SSSSSSSSSS...",
-    "..SSSSSSSSSSSs..",
-    "..SSSSSSSSSSSs..",
-    "..SSSSSSSSSSSs..",
-    "..SSSSSSSSSSSs..",
-    "..SSSSSSSSSSss..",
-    "..SSSSSSSSSSsk..",
-    "..SSSSSSSSSSsk..",
-    "...SSSSSSSSsk...",
-    "...sSSSSSSSsk...",
-    "....sssssskk....",
-  ]),
-  up: head(5, [
-    "....SSSSSSSS....",
-    "...SSSSSSSSSS...",
-    "..SSSSSSSSSSSs..",
-    "..SSSSSSSSSSSs..",
-    "..SSSSSSSSSSSs..",
-    "..SSSSSSSSSSSs..",
-    "..SSSSSSSSSSss..",
-    "..sSSSSSSSSSsk..",
-    "..sSSSSSSSSSsk..",
-    "...sSSSSSSSsk...",
-    "......ssss......",
-    "......kkkk......",
-  ]),
-  right: head(5, [
-    "....SSSSSSSS....",
-    "...SSSSSSSSSS...",
-    "..SSSSSSSSSSSS..",
-    "..SSSSSSSSSSSS..",
-    "..SSSSSSSSSSSS..",
-    "..SSSSSSSSSSSS..",
-    "..SSSSSSSSSSSS..",
-    "..SSSSSSSSSSSS..",
-    "..SSSSSSSSSSSSS.",
-    "...SSSSSSSSSSS..",
-    "....sSSSSSSSSs..",
-    ".....ssssssk....",
+  down: head(12, sym([
+    "........SSSSSSSS",
+    ".......SSSSSSSSS",
+    "......SSSSSSSSSS",
+    "......SSSSSSSSSS",
+    ".....SSSSSSSSSSS",
+    ".....SSSSSSSSSSS",
+    ".....SSSSSSSSSSS",
+    ".....SSSSSSSSSSS",
+    ".....SSSSSSSSSSS",
+    ".....sSSSSSSSSSS",
+    ".....sSSSSSSSSSS",
+    "....SssSSSSSSSSS",
+    "....SkksSSSSSSSS",
+    "....SkksSSSSSSSS",
+    "....skssSSSSSSSS",
+    ".....kssSSSSSSSS",
+    "......ssSSSSSSSS",
+    "......ksSSSSSSSS",
+    ".......ksSSSSSSS",
+    ".........ksSSSSS",
+    "..........kkssss",
+  ], 22)),
+  up: head(12, sym([
+    "........SSSSSSSS",
+    ".......SSSSSSSSS",
+    "......SSSSSSSSSS",
+    "......SSSSSSSSSS",
+    ".....SSSSSSSSSSS",
+    ".....SSSSSSSSSSS",
+    ".....SSSSSSSSSSS",
+    ".....SSSSSSSSSSS",
+    ".....SSSSSSSSSSS",
+    ".....sSSSSSSSSSS",
+    ".....sSSSSSSSSSS",
+    "....SssSSSSSSSSS",
+    "....SkksSSSSSSSS",
+    "....SkksSSSSSSSS",
+    "....skssSSSSSSSS",
+    ".....kssSSSSSSSS",
+    "......ssSSSSSSSS",
+    "......kkssssssss",
+    "...........kssss",
+    "...........kkkss",
+    "............kkkk",
+  ], 22)),
+  right: head(12, [
+    "........SSSSSSSSSSSS............",
+    ".......SSSSSSSSSSSSSSS..........",
+    "......SSSSSSSSSSSSSSSSS.........",
+    "......SSSSSSSSSSSSSSSSSS........",
+    ".....SSSSSSSSSSSSSSSSSSSS.......",
+    ".....SSSSSSSSSSSSSSSSSSSS.......",
+    ".....SSSSSSSSSSSSSSSSSSSSS......",
+    ".....SSSSSSSSSSSSSSSSSSSSS......",
+    ".....SSSSSSSSSSSSSSSSSSSSS......",
+    ".....SSSSSSSSSSSSSSSSSSSSS......",
+    ".....SSSSSSSSSSSSSSSSSSSSS......",
+    ".....SSSSSSSSSSSSSSSSSSSSS......",
+    ".....SSSSSSSSSSSSSSSSSSSSSs.....",
+    ".....SSSSSSSSSSSSSSSSSSSSSSs....",
+    ".....SSSSSSSSSSSSSSSSSSSSSs.....",
+    "......SSSSSSSSSSSSSSSSSSSS......",
+    "........SSSSSSSSSSSSSSSSSS......",
+    "..........sSSSSSSSSSSSSSSs......",
+    "...........sSSSSSSSSSSSSs.......",
+    "............ssSSSSSSSSss........",
+    "..............kksssssk..........",
   ]),
 };
 
-/** The default face: two-pixel eyes, blush, a small mouth. Characters may replace it. */
-export const FACE = {
-  down: face(12, [
-    ".....e....e.....",
-    ".....e....e.....",
-    "....b......b....",
-    ".......mm.......",
-  ]),
-  right: face(12, [
-    "...........e....",
-    "...........e....",
-    "..........b.....",
-    "............m...",
-  ]),
-};
+/** A profile ear, for hairstyles that show it. Move it with `shift`. */
+export const EAR_RIGHT = part(22, Z.face, [
+  ".Ss.",
+  "SkkS",
+  "SksS",
+  "Skss",
+  ".ss.",
+], { x: 13, group: "head" });
 
 // ── torsos ─────────────────────────────────────────────────────────────────
 
 export const TORSO = {
-  down: part(17, Z.torso, [
-    "......kkkk......",
-    "....TTCkkCTt....",
-    ".....TTCCTtu....",
-    ".....TTTTTtu....",
-    ".....TTTTttu....",
-    ".....tTTTttu....",
-    ".....ttttuuu....",
-  ]),
-  up: part(17, Z.torso, [
-    "......kkkk......",
-    "....TTCCCCTt....",
-    ".....TTTTTtu....",
-    ".....TTTTTtu....",
-    ".....TTTtTtu....",
-    ".....tTTtttu....",
-    ".....ttttuuu....",
-  ]),
-  right: part(17, Z.torso, [
-    ".......kkk......",
-    "......TTTTCC....",
-    ".....TTTuTTt....",
-    ".....TTTuTTt....",
-    ".....TTTuTtt....",
-    ".....tTTtttt....",
-    ".....tttttu.....",
+  down: part(33, Z.torso, sym([
+    "..........cCkkss",
+    "......TTTTTCCkks",
+    ".....TTTTTTTCCkk",
+    ".....TTTTTTTTCCk",
+    ".....TTTTTTTTTCC",
+    "........TTTTTTTT",
+    "........TTTTTTTT",
+    "........TTTTTTTT",
+    "........tTTTTTTT",
+    "........tTTTTTTT",
+    "........tTTTTTTT",
+    "........tTTTTTTT",
+    "........ttTTTTTT",
+    "........tttttttt",
+  ], 21)),
+  up: part(33, Z.torso, sym([
+    "..........ccCCCC",
+    "......TTTTTTcccc",
+    ".....TTTTTTTTTTT",
+    ".....TTTTTTTTTTT",
+    ".....TTtttTTTTTT",
+    "........TTTttttt",
+    "........TTTTTTTT",
+    "........TTTTTTTt",
+    "........tTTTTTTt",
+    "........tTTTTTTT",
+    "........tTTTTTTT",
+    "........tTTuTTTT",
+    "........ttTTTTTT",
+    "........tttttttt",
+  ], 21)),
+  right: part(33, Z.torso, [
+    "..............kkkk..............",
+    ".............TTTCCCC............",
+    "...........TTTTTTCCCt...........",
+    "...........TTTTTTTTTtt..........",
+    "...........TTTTTTTTTTt..........",
+    "...........TTTTTTTTTTt..........",
+    "...........TTTTTTTTTTt..........",
+    "...........TTTTTTTTTTt..........",
+    "...........tTTTTTTTTtt..........",
+    "...........tTTTTTTTTt...........",
+    "...........tTTTTTTTTt...........",
+    "...........tTTTTTTTTt...........",
+    "...........ttTTTTTTtt...........",
+    "...........tttttttttt...........",
   ]),
 };
 
 // ── arms ───────────────────────────────────────────────────────────────────
 
-const arms = (y: number, rows: readonly string[], z: number = Z.arms) => part(y, z, rows);
-
-const ARMS_FRONT: Record<"rest" | "leftFwd" | "rightFwd" | "carry" | "sit", Part[]> = {
-  rest: [arms(18, [
-    "....V......v....",
-    "...VV......vv...",
-    "...Vv......vv...",
-    "...FF......ff...",
-    "...FF......ff...",
-    "...SS......sk...",
-  ])],
-  // Screen-left arm swung toward the camera (hand lower), screen-right arm back (hand higher).
-  leftFwd: [arms(18, [
-    "....V......v....",
-    "...VV......vv...",
-    "...Vv......vv...",
-    "...FF......ff...",
-    "...FF......sk...",
-    "...FF...........",
-    "...SS...........",
-  ])],
-  rightFwd: [arms(18, [
-    "....V......v....",
-    "...VV......vv...",
-    "...Vv......vv...",
-    "...FF......ff...",
-    "...SS......ff...",
-    "...........ff...",
-    "...........sk...",
-  ])],
-  carry: [arms(18, [
-    "....V......v....",
-    "...VV......vv...",
-    "...Vv......vv...",
-    "...FF......ff...",
-  ])],
-  sit: [arms(18, [
-    "....V......v....",
-    "...VV......vv...",
-    "...Vv......vv...",
-    "...VFF....ffv...",
-    "....FSS..skf....",
-  ])],
-};
-
-const ARMS_SIDE: Record<"rest" | "nearFwd" | "nearBack" | "carry" | "sit", Part[]> = {
-  rest: [arms(18, [
-    "......VV........",
-    "......VV........",
-    "......vv........",
-    "......FF........",
-    "......Ff........",
-    "......Sk........",
-  ])],
-  nearFwd: [
-    arms(18, [
-      "......VV........",
-      "......VVv.......",
-      ".......Vv.......",
-      ".......FFf......",
-      "........FSk.....",
-    ]),
-    arms(20, [
-      ".....v..........",
-      "....ff..........",
-      "...kf...........",
-    ], Z.farArm),
+/** The screen-left arm, front view, from row 34. The right arm is its mirror, a step darker. */
+const ARM_L = {
+  rest: [
+    "......VVV.......",
+    ".....VVVVv......",
+    ".....VVVVv......",
+    ".....VVVvv......",
+    ".....VVVvo......",
+    ".....VVvvo......",
+    ".....XXXxo......",
+    ".....FFFfo......",
+    ".....FFFfo......",
+    ".....SSSko......",
+    ".....SSSko......",
+    ".....sSsk.......",
+    "......ss........",
   ],
-  nearBack: [
-    arms(18, [
-      "......VV........",
-      ".....VVv........",
-      ".....Vv.........",
-      "....FF..........",
-      "...Sk...........",
-    ]),
-    arms(20, [
-      "..........v.....",
-      "..........ff....",
-      "...........fk...",
-    ], Z.farArm),
+  fwd: [
+    "......VVV.......",
+    ".....VVVVv......",
+    ".....VVVVv......",
+    ".....VVVvv......",
+    ".....VVVvo......",
+    ".....VVvvo......",
+    ".....XXXxo......",
+    ".....FFFfo......",
+    ".....FFFfo......",
+    "......FFfo......",
+    "......SSSk......",
+    "......SSSk......",
+    "......SSSk......",
+    "......sSk.......",
   ],
-  carry: [arms(18, [
-    "......VV........",
-    "......VV........",
-    "......VvFFf.....",
-  ])],
-  sit: [arms(18, [
-    "......VV........",
-    "......VV........",
-    "......VvFFFSk...",
-  ])],
+  back: [
+    "......VVV.......",
+    ".....VVVVv......",
+    ".....VVVVv......",
+    ".....VVVvv......",
+    ".....VVVvo......",
+    ".....VVvvo......",
+    ".....XXXxo......",
+    ".....FFFfo......",
+    ".....SSSko......",
+    ".....sSsk.......",
+    "......ss........",
+  ],
+  carry: [
+    "......VVV.......",
+    ".....VVVVv......",
+    ".....VVVVv......",
+    ".....VVVvv......",
+    ".....VVVvo......",
+    ".....VVvvo......",
+    ".....XXXx.......",
+    "....FFFf........",
+  ],
+  sit: [
+    "......VVV.......",
+    ".....VVVVv......",
+    ".....VVVVv......",
+    ".....VVVvv......",
+    ".....VVVvo......",
+    ".....VVvvo......",
+    ".....XXXXx......",
+    "......FFFFf.....",
+    ".......FFSSSk...",
+    "........sSSSk...",
+  ],
 };
 
-export const ARMS: Piece = (pose) => {
-  const { dir, arms: a, legs: l } = pose;
-  if (dir === "down" || dir === "up") {
-    if (a === "carry") return ARMS_FRONT.carry;
-    if (a === "sit") return dir === "up" ? ARMS_FRONT.carry : ARMS_FRONT.sit;
-    if (a === "rest") return ARMS_FRONT.rest;
-    // Walking toward the camera, the arm opposite the forward leg swings toward us; walking away it is reversed.
-    const leftLegFwd = l === "stepA";
-    const leftArmFwd = dir === "down" ? !leftLegFwd : leftLegFwd;
-    return leftArmFwd ? ARMS_FRONT.leftFwd : ARMS_FRONT.rightFwd;
-  }
-  const flip = (parts: Part[]) => parts; // the right-facing art; `left` is mirrored by the caller
-  if (a === "carry") return flip(ARMS_SIDE.carry);
-  if (a === "sit") return flip(ARMS_SIDE.sit);
-  if (a === "rest") return flip(ARMS_SIDE.rest);
-  // stepA: near leg forward, so the near arm swings back.
-  return flip(l === "stepA" ? ARMS_SIDE.nearBack : ARMS_SIDE.nearFwd);
+export type ArmShape = keyof typeof ARM_L;
+const armLeft = (shape: ArmShape): Part => arms(34, ARM_L[shape]);
+const armRight = (shape: ArmShape): Part => {
+  const m = mirror(arms(34, ARM_L[shape]));
+  return { ...m, rows: darken(m.rows, 0) };
 };
+/** Both front arms; an arm swung toward the camera hangs lower. */
+export const frontArms = (left: ArmShape, right: ArmShape): Part[] => [armLeft(left), armRight(right)];
 
 // ── legs ───────────────────────────────────────────────────────────────────
 
-const LEGS_FRONT: Record<"stand" | "leftFwd" | "rightLift" | "rightFwd" | "leftLift" | "sit" | "sitBack", Part> = {
-  stand: legs(23, [
-    ".....PPPPPP.....",
-    ".....PPPPPp.....",
-    ".....PPPpPp.....",
-    ".....PP..Pp.....",
-    ".....PP..Pp.....",
-    ".....Pp..Pp.....",
-    "....NNn..NNn....",
-  ]),
-  leftFwd: legs(23, [
-    ".....PPPPPP.....",
-    ".....PPPPPp.....",
-    ".....PPPpPp.....",
-    ".....PP..Pp.....",
-    ".....PP..Pp.....",
-    ".....PP..NNn....",
-    ".....Pp.........",
-    "....NNn.........",
-  ]),
-  rightLift: legs(23, [
-    ".....PPPPPP.....",
-    ".....PPPPPp.....",
-    ".....PPPpPp.....",
-    ".....PP..Pp.....",
-    ".....PP..Pp.....",
-    ".....Pp..NNn....",
-    "....NNn.........",
-  ]),
-  rightFwd: legs(23, [
-    ".....PPPPPP.....",
-    ".....PPPPPp.....",
-    ".....PPPpPp.....",
-    ".....PP..Pp.....",
-    ".....PP..Pp.....",
-    "....NNn..Pp.....",
-    ".........Pp.....",
-    ".........NNn....",
-  ]),
-  leftLift: legs(23, [
-    ".....PPPPPP.....",
-    ".....PPPPPp.....",
-    ".....PPPpPp.....",
-    ".....PP..Pp.....",
-    ".....PP..Pp.....",
-    "....NNn..Pp.....",
-    ".........NNn....",
-  ]),
-  sit: legs(20, [
-    ".....PPPPPP.....",
-    "....PPPPPPpp....",
-    "....PPPppPPp....",
-    "....pPp..Ppp....",
-    ".....Pp..Pp.....",
-    ".....Pp..Pp.....",
-    ".....Pp..Pp.....",
-    ".....Pp..Pp.....",
-    ".....Pp..Pp.....",
-    "....NNn..NNn....",
-  ]),
-  sitBack: legs(20, [
-    ".....PPPPPP.....",
-    "....PPPPPPPp....",
-    "....pPPPPPpp....",
-  ]),
+/** Hips and seat of the trousers, front view, rows 46–51. */
+const HIPS_FRONT = legs(46, sym([
+  "........PPPPPPPP",
+  "........PPPPPPPP",
+  "........PPPPPPPP",
+  "........PPPPPPPP",
+  "........PPPPPPPp",
+  "........PPPPPPp.",
+], 21));
+
+/** One trouser leg and shoe, screen-left: `len` rows of leg from row 52, then the shoe. */
+function legFront(len: number): string[] {
+  const shin = ["........pPPPPPp.", "........pPPPPPp.", "........pPPpPPp.", "........pPPpPPp.", "........pPPPPPp.", "........pPPPPPp.", "........pPPPPPp."];
+  return [...shin.slice(0, len - 1), "........ppppppp.", "........NNNNNN..", ".......NNNNNNNn.", ".......YYYYYYYY."];
+}
+const legLeft = (len: number): Part => legs(52, legFront(len));
+const legRight = (len: number): Part => {
+  const m = mirror(legs(52, legFront(len)));
+  return { ...m, rows: darken(m.rows, 5) };
 };
 
-const LEGS_SIDE: Record<LegPose, Part> = {
-  stand: legs(23, [
-    ".....PPPPPP.....",
-    ".....PPPPPp.....",
-    "......PPPp......",
-    "......PPPp......",
-    "......PPPp......",
-    "......PPPp......",
-    "......NNNNn.....",
-  ]),
-  stepA: legs(23, [
-    ".....PPPPPP.....",
-    ".....pPPPPP.....",
-    ".....pPPPPP.....",
-    "....pp..PPP.....",
-    "....pp...PP.....",
-    "...pp....PPP....",
-    "...nn....PNNN...",
-  ]),
-  passA: legs(23, [
-    ".....PPPPPP.....",
-    ".....PPPPPp.....",
-    ".....pPPPp......",
-    ".....ppPPp......",
-    "....pp.PPp......",
-    "....n..PPp......",
-    ".......NNNNn....",
-  ]),
-  stepB: legs(23, [
-    ".....PPPPPP.....",
-    ".....PPPPPp.....",
-    ".....PPPPpp.....",
-    "....PPP..pp.....",
-    "....PP...pp.....",
-    "...PP....ppp....",
-    "...NN....pnnn...",
-  ]),
-  passB: legs(23, [
-    ".....PPPPPP.....",
-    ".....PPPPPp.....",
-    "......pPPPP.....",
-    "......pPPPP.....",
-    "......pPPP......",
-    "......pPNNN.....",
-    "......nnn.......",
-  ]),
-  sit: legs(20, [
-    ".....PPPPPP.....",
-    ".....PPPPPPPPP..",
-    ".....ppppPPPPp..",
-    "..........pPPp..",
-    "..........pPPp..",
-    "..........pPPp..",
-    "..........pPPp..",
-    "..........pPPp..",
-    "..........pPPp..",
-    "..........nNNNN.",
-  ]),
-};
+/** Front legs by length: 6 is planted, 7 steps toward the camera, 4–5 is lifted. */
+export const frontLegs = (left: number, right: number): Part[] => [HIPS_FRONT, legLeft(left), legRight(right)];
 
-export const LEGS: Piece = (pose) => {
-  const { dir, legs: l } = pose;
-  if (dir === "down" || dir === "up") {
-    if (l === "sit") return [dir === "up" ? LEGS_FRONT.sitBack : LEGS_FRONT.sit];
-    if (l === "stand") return [LEGS_FRONT.stand];
-    // Toward the camera the forward foot is lower; walking away it is higher. Same art, swapped.
-    const away = dir === "up";
-    const map: Record<string, Part> = away
-      ? { stepA: LEGS_FRONT.rightFwd, passA: LEGS_FRONT.leftLift, stepB: LEGS_FRONT.leftFwd, passB: LEGS_FRONT.rightLift }
-      : { stepA: LEGS_FRONT.leftFwd, passA: LEGS_FRONT.rightLift, stepB: LEGS_FRONT.rightFwd, passB: LEGS_FRONT.leftLift };
-    return [map[l]];
+// ── seated legs (front and back) ───────────────────────────────────────────
+
+/** Facing the camera on a stool: thighs come toward us, shins drop to the floor. */
+const SIT_FRONT: Part[] = [legs(40, sym([
+  "........PPPPPPPP",
+  "........PPPPPPPP",
+  ".......PPPPPPPPP",
+  ".......PPPPPPPPP",
+  ".......PPPPPPPPp",
+  ".......PPPPPPPp.",
+  ".......pPPPPPp..",
+  "........pPPPPp..",
+  "........pPPPPp..",
+  "........pPPPPp..",
+  "........pPPPPp..",
+  "........pPPPPp..",
+  "........pPPPPp..",
+  "........pPPPPp..",
+  "........pPPPPp..",
+  "........pppppp..",
+  ".......NNNNNNn..",
+  ".......NNNNNNNn.",
+  ".......YYYYYYYY.",
+], 20))];
+
+/** Back to the camera: only the seat of the trousers shows; the legs are hidden in front. */
+const SIT_BACK: Part[] = [legs(40, sym([
+  "........PPPPPPPP",
+  "........PPPPPPPP",
+  ".......PPPPPPPPP",
+  ".......PPPPPPPPP",
+  ".......pPPPPPPPP",
+  "........ppppPPPP",
+], 21))];
+
+// ── pieces ─────────────────────────────────────────────────────────────────
+
+/** Seated, the torso and head sit this far above standing. */
+export const SIT_BODY = -6;
+
+/** Front and back walking: leg lengths and which arm swings toward the camera. */
+function frontStep(pose: Pose): { legs: [number, number]; arms: [ArmShape, ArmShape] } {
+  const away = pose.dir === "up";
+  // stepA: the screen-left leg leads. Toward the camera a leading foot is lower; walking away, higher.
+  const lead = away ? 4 : 7, trail = away ? 7 : 4;
+  switch (pose.legs) {
+    case "stepA": return { legs: [lead, trail], arms: away ? ["fwd", "back"] : ["back", "fwd"] };
+    case "passA": return { legs: [6, 5], arms: ["rest", "rest"] };
+    case "stepB": return { legs: [trail, lead], arms: away ? ["back", "fwd"] : ["fwd", "back"] };
+    case "passB": return { legs: [5, 6], arms: ["rest", "rest"] };
+    default: return { legs: [6, 6], arms: ["rest", "rest"] };
   }
-  return [LEGS_SIDE[l]];
+}
+
+export const FRONT_ARMS: Piece = (pose) => {
+  if (pose.arms === "carry") return frontArms("carry", "carry");
+  if (pose.arms === "sit") return pose.dir === "up" ? frontArms("carry", "carry") : frontArms("sit", "sit");
+  return frontArms(...frontStep(pose).arms);
 };
 
-export const SIT_BODY = -3;
-
-/** Helpers for pieces that only care about the coarse pose. */
-export const isStep = (pose: Pose) => pose.legs === "stepA" || pose.legs === "stepB";
-export const armsIn = (pose: Pose, ...poses: ArmPose[]) => poses.includes(pose.arms);
+export const FRONT_LEGS: Piece = (pose) => {
+  if (pose.legs === "sit") return pose.dir === "up" ? SIT_BACK : SIT_FRONT;
+  return frontLegs(...frontStep(pose).legs);
+};

@@ -6,8 +6,8 @@ import type { Color, Paint, Px } from "../../kit/index.ts";
 export type Dir = "down" | "up" | "left" | "right";
 export const DIRS: readonly Dir[] = ["down", "up", "left", "right"];
 
-export const W = 16;
-export const H = 32;
+export const W = 32;
+export const H = 64;
 
 /** Which offset a part rides on: legs stay planted, the body bobs, the head bobs with the body plus its own breath. */
 export type Group = "legs" | "body" | "head";
@@ -46,6 +46,8 @@ export const Z = {
 
 export type LegPose = "stand" | "stepA" | "passA" | "stepB" | "passB" | "sit";
 export type ArmPose = "rest" | "swingA" | "swingB" | "carry" | "sit";
+/** What the frame is for, beyond the body pose: pieces use it for blinks, glances and habits. */
+export type Beat = "rest" | "breath" | "blink" | "habit";
 
 export type Pose = {
   dir: Dir;
@@ -57,6 +59,7 @@ export type Pose = {
   body: number;
   /** Extra vertical offset of the head (breath). */
   head: number;
+  beat: Beat;
 };
 
 export type Piece = (pose: Pose) => readonly Part[];
@@ -92,6 +95,28 @@ export function part(y: number, z: number, rows: readonly string[], options: Par
 export function mirror(p: Part): Part {
   const width = Math.max(...p.rows.map((r) => r.length));
   return { ...p, x: W - (p.x ?? 0) - width, rows: p.rows.map((r) => [...r.padEnd(width, ".")].reverse().join("")) };
+}
+
+/** Shading map: each slot letter to the next darker one. */
+export const DARKER: Readonly<Record<string, string>> = {
+  S: "s", s: "k", T: "t", t: "u", V: "v", F: "f", P: "p", H: "h", h: "d", A: "a", a: "Q", N: "n", C: "c", G: "g", X: "x", Y: "y",
+};
+
+/**
+ * Mirror half-rows into a symmetric figure, then shade everything from column `shadeFrom`
+ * rightward one step darker, as the sun is upper left. Asymmetries go on as separate parts.
+ */
+export function sym(half: readonly string[], shadeFrom = W): string[] {
+  return half.map((row) => {
+    const left = row.padEnd(W / 2, ".");
+    const full = left + [...left].reverse().join("");
+    return [...full].map((c, x) => (x >= shadeFrom && DARKER[c] ? DARKER[c] : c)).join("");
+  });
+}
+
+/** Shade a region of rows one step darker (columns x0..x1 inclusive). */
+export function darken(rows: readonly string[], x0: number, x1 = W - 1): string[] {
+  return rows.map((row) => [...row].map((c, x) => (x >= x0 && x <= x1 && DARKER[c] ? DARKER[c] : c)).join(""));
 }
 
 /** Move a part. */
