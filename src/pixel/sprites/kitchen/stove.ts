@@ -5,7 +5,7 @@
  * 24 rows (a rolled steel lip, two courses of white tile, a sooty kick), so the line reads as one run.
  */
 import { defineSprites, type Px } from "../../kit/index.ts";
-import { STEEL, eachColumn, layer, steamerLid, steamerTier, stopAt } from "./_helpers.ts";
+import { STEEL, STEEL_DULL, cylinderBand, eachColumn, layer, steamerLid, steamerTier, stopAt } from "./_helpers.ts";
 
 /** Coals in an arched firebox, 12×12 at (x, y), three flicker frames. */
 function firebox(p: Px, x: number, y: number, frame: number) {
@@ -84,6 +84,45 @@ function range(p: Px, w: number, h: number, deck: number, fires: readonly number
   }
 }
 
+/** A 油条 frying, lying east–west: two fused strands, the lit one on top, 17×7 at (x, y). */
+function floatingStick(p: Px, x: number, y: number, flip = false) {
+  const art = [
+    "..ooooooooooooo..",
+    ".oHHhhhHHhhhHhho.",
+    "oHhhmhhhhmhhhhmmo",
+    "ogmgggmgggggmgggo",
+    "ommmhmmmmmhmmmmgo",
+    ".ommmmgmmmmmgmmo.",
+    "..ooooooooooooo..",
+  ];
+  p.rows(x, y, flip ? art.map((r) => [...r].reverse().join("")) : art, { o: "gold1", H: "gold5", h: "gold4", m: "gold3", g: "gold2" });
+}
+
+/** A finished 油条 standing to drain: two fused strands with a groove, blistered, golden brown. */
+function standingStick(p: Px, x: number, top: number, bottom: number, seed: number) {
+  for (let y = top; y < bottom; y++) {
+    const k = y - top + seed;
+    p.px(x, y, k % 5 === 2 ? "gold3" : "gold4").px(x + 1, y, "gold4").px(x + 2, y, k % 4 === 0 ? "gold2" : "orange3");
+    p.px(x + 3, y, k % 3 === 1 ? "gold4" : "gold3").px(x + 4, y, k % 5 === 0 ? "orange3" : "orange2");
+    // Blisters where the dough puffed in the oil.
+    if (k % 6 === 0) p.px(x - 1, y, "gold4").px(x - 1, y + 1, "gold3");
+    if (k % 7 === 3) p.px(x + 5, y, "orange2").px(x + 5, y + 1, "orange2");
+    if (k % 9 === 4) p.px(x + 1, y, "gold5");
+  }
+  p.hline(x + 1, top - 1, 3, "gold3").px(x, top, "gold3").px(x + 4, top, "orange3");
+}
+
+/** Bubbling oil: each site cycles bead → swell → ring → pop over four frames. */
+function bubbles(p: Px, frame: number, sites: readonly (readonly [number, number, number])[]) {
+  for (const [x, y, phase] of sites) {
+    const stage = (frame + phase) % 4;
+    if (stage === 0) p.px(x, y, "gold4");
+    if (stage === 1) p.rows(x, y - 1, ["w.", "hh"], { w: "gold5", h: "gold4" });
+    if (stage === 2) p.rows(x - 1, y - 1, [".hh.", "h..h", ".hh."], { h: "gold4" });
+    if (stage === 3) p.rows(x - 1, y - 1, ["w..w", "....", ".w.."], { w: "gold3" });
+  }
+}
+
 export default defineSprites({
   /**
    * The hero. Two stacks of bamboo steamers on their boiler pans: the tall one has four tiers, dark
@@ -148,6 +187,151 @@ export default defineSprites({
         q.outline("bamboo1");
       });
       p.blit(tall, 0, 0);
+    },
+  },
+
+  /**
+   * The wok: a forty-year-old iron wok seasoned black with a blue sheen, two 油条 frying in amber
+   * oil, long chopsticks resting on the rim, finished sticks draining upright in a wire rack. Behind
+   * it a tiled splash-back stained amber by years of spitting oil, capped with steel. The oil
+   * bubbles over four frames.
+   */
+  "kitchen/wok-station": {
+    w: 64, h: 80, anchor: [32, 79], foot: [-31, -26, 62, 26], shadow: { rx: 32, ry: 6, dy: -2 },
+    frames: 4, fps: 6,
+    draw: (p, frame) => {
+      // Splash-back: two courses of tile under a steel cap, spattered with old oil.
+      p.rect(1, 4, 62, 3, "steel4").hline(1, 4, 62, "steel6").hline(1, 6, 62, "steel2");
+      tiles(p, 1, 7, 62, [[0, 3, 2], [1, 6, 1]]);
+      p.rect(1, 23, 62, 4, "cream4");
+      tiles(p, 1, 23, 62, [[0, 1, 2], [0, 5, 2], [1, 3, 2]]);
+      p.clip(0, 0, 64, 31, () => p.over(() => {
+        // Old spits of oil: amber blots, the bigger ones run in a drip down the glaze.
+        const blots = [
+          [".aa.", "aAAa", "aAA.", ".aa.", "..a.", "..a."],
+          ["aa.", "aAa", ".a."],
+          [".a", "aA", ".a"],
+          ["a"],
+        ];
+        for (const [x, y, k] of [[12, 11, 0], [21, 9, 1], [27, 15, 2], [8, 19, 1], [33, 20, 0], [16, 24, 2], [24, 26, 1], [38, 11, 2], [30, 9, 3], [5, 26, 3], [19, 16, 3], [35, 26, 3], [42, 22, 1], [14, 17, 3]] as const)
+          p.rows(x, y, blots[k], { a: "oak4", A: "oak3" });
+      }));
+      range(p, 64, 80, 31, [16], frame % 3, [[52, 52]], [[0, 6, 0]]);
+      p.outline("steel1");
+
+      // The wok, sunk in the deck: black iron, a blue sheen on the far wall, ear handles.
+      p.rows(1, 41, ["ooo", "oso", "o.o", "ooo"], { o: "steel1", s: "steel4" });
+      p.rows(40, 41, ["ooo", "oso", "o.o", "ooo"], { o: "steel1", s: "steel3" });
+      p.ellipse(22, 44, 19, 10, "steel1");
+      p.ellipse(22, 44, 18, 9, "ink2");
+      p.ellipse(22, 42, 15, 6, "ink");
+      p.rows(9, 37, ["..bbbbbb....pp", ".bBBbb.....pPp", "bb..........p"], { b: "blue1", B: "blue2", p: "plum1", P: "plum2" });
+      p.rows(27, 36, ["sss...s", "...ss"], { s: "steel2" });
+      // The oil: deep amber pooled in the bowl, a window caught on its far-left.
+      p.ellipse(22, 46.5, 13.5, 6, "gold1");
+      p.ellipse(22, 46.5, 12.5, 5, "gold2");
+      p.rows(11, 42, ["..gggggg", ".gg..GG", "gg"], { g: "gold3", G: "gold4" });
+      // Rim: bright on the far-left arc, shading round to the right and front.
+      eachColumn(22, 19, 10, (x, u, off) => {
+        p.px(x, 44 - off, u < -0.3 ? "steel6" : u < 0.4 ? "steel4" : "steel3");
+        p.px(x, 44 + off - 1, u < -0.4 ? "steel4" : u < 0.3 ? "steel3" : "steel2");
+      });
+      // Two sticks frying, bobbing a pixel out of step.
+      const bob = [0, 0, 1, 1][frame], bob2 = [1, 0, 0, 1][frame];
+      floatingStick(p, 9, 40 + bob);
+      floatingStick(p, 17, 45 + bob2, true);
+      bubbles(p, frame, [[11, 49, 0], [15, 50, 2], [29, 42, 1], [32, 45, 3], [26, 51, 0], [10, 46, 3], [20, 52, 1], [33, 49, 2], [8, 44, 1]]);
+
+      // Long cooking chopsticks: tips in the oil, resting on the rim, ends up and to the right.
+      p.line(18, 46, 41, 18, "bamboo4").line(19, 46, 42, 18, "bamboo3").line(20, 46, 43, 19, "bamboo1");
+      p.line(21, 47, 44, 20, "bamboo4").line(22, 47, 45, 21, "bamboo2");
+      p.rows(41, 16, ["rr..", ".rrr", "..r."], { r: "red2" });
+
+      // Draining rack: finished sticks standing in a wire basket over a drip tray.
+      const rack = layer(p, (q) => {
+        standingStick(q, 47, 17, 50, 0);
+        standingStick(q, 55, 21, 50, 5);
+        q.outline("orange1");
+        q.rect(44, 52, 19, 2, "steel3").hline(44, 52, 19, "steel5");
+        q.hline(44, 38, 19, "steel5").hline(44, 50, 19, "steel4");
+        for (const x of [44, 47, 50, 53, 56, 59, 62]) q.vline(x, 39, 11, x === 44 ? "steel5" : x === 62 ? "steel2" : "steel4");
+        q.hline(44, 44, 19, "steel3");
+      });
+      rack.outline("steel1", { sides: ["left", "right", "bottom"] });
+      p.blit(rack, 0, 0);
+    },
+  },
+
+  /**
+   * The soy-milk vat: a tall steel pot on an iron gas ring. A dent in its belly from the day it fell
+   * off the cart; a ladle whose handle the cook wrapped in cloth tape after one burn too many; a brass
+   * tap low on the front with a bead of milk; a dried dribble under the rim; an orange gas hose.
+   * Put `fx/steam-small` on the rim at (14, 12).
+   */
+  "kitchen/soymilk-pot": {
+    w: 40, h: 84, anchor: [20, 83], foot: [-17, -12, 34, 12], shadow: { rx: 17, ry: 4, dy: -1 },
+    frames: 3, fps: 6,
+    draw: (p, frame) => {
+      // The gas hose curling away to the right.
+      p.rows(29, 72, ["..oo....", ".oOOo...", "oO..Oo..", "o....Oo.", ".......Oo", "........o"], { o: "orange1", O: "orange2" });
+      // Iron ring stand on three splayed legs.
+      const stand = layer(p, (q) => {
+        q.ellipse(20, 68, 16, 5, "steel2");
+        q.ellipse(20, 67.5, 14, 3.6, "steel1");
+        for (const [x, d] of [[5, -1], [19, 0], [33, 1]] as const) {
+          q.rect(x, 71, 3, 7, "steel2").vline(x, 71, 7, "steel3");
+          q.rect(x + d, 78, 3, 4, "steel2").vline(x + d, 78, 4, "steel3");
+        }
+        q.hline(5, 75, 30, "steel2");
+        q.outline("steel1");
+      });
+      p.blit(stand, 0, 0);
+      const flames = [
+        ["b..B..b..B..b..B", "BbdBbBdBbBBdbBdB", "dBBdBBdBBdBBdBBd"],
+        [".bB..Bb..bB..B.b", "dBbBdBBbdBbBdBBb", "BdBBdBBdBBdBBdBB"],
+        ["B..b.B..b..Bb..B", "bBdBBbdBBbBdBbdB", "dBBdBBdBBdBBdBBd"],
+      ][frame];
+      p.rows(12, 70, flames, { b: "blue5", B: "blue4", d: "blue3" });
+
+      const vat = layer(p, (q) => {
+        cylinderBand(q, 20, 16, 7, 16, 64, STEEL_DULL);
+        // Rolled bands near the top and the base.
+        eachColumn(20, 16, 7, (x, u, off) => {
+          for (const band of [24, 57]) {
+            q.px(x, band + off, u < 0.1 ? "steel6" : u < 0.6 ? "steel5" : "steel3");
+            q.px(x, band + off + 1, u < 0.5 ? "steel3" : "steel2");
+          }
+          q.px(x, 63 + off, "steel2");
+        });
+        // Brushed vertical streaks so the steel isn't a flat fill.
+        q.over(() => { for (const [x, y, n] of [[8, 30, 12], [11, 36, 9], [26, 29, 14], [29, 40, 8], [15, 44, 10]] as const) q.vline(x, y, n, x < 16 ? "steel6" : "steel3"); });
+        // The dent: a dark crescent, its lit lower lip catching the window.
+        q.rows(21, 37, ["..333...", ".33443..", "3344443.", ".3444466", "..6666.."], { 3: "steel3", 4: "steel4", 6: "steel6" });
+        // Riveted ear handles.
+        q.rows(1, 28, [".sss", "s..s", "s..o", ".sss"], { s: "steel4", o: "steel2" });
+        q.rows(35, 28, ["sss.", "o..s", "o..s", "sss."], { s: "steel3", o: "steel2" });
+        q.px(5, 29, "steel2").px(5, 31, "steel2").px(34, 29, "steel1").px(34, 31, "steel1");
+        // Mouth: rolled rim round soy milk, a wrinkled skin drawn to one side.
+        q.ellipse(20, 16, 16, 7, "steel5");
+        q.ellipse(20, 16.5, 14, 5.5, "cream4");
+        q.ellipse(19, 16.5, 12, 4.4, "cream5");
+        q.rows(10, 13, ["..cccc......", ".c....cc....", "c..cc...c...", ".cc..ccc.c..", "....c....c.."], { c: "cream3" });
+        eachColumn(20, 16, 7, (x, u, off) => { q.px(x, 16 - off, u < -0.1 ? "steel6" : "steel4"); q.px(x, 16 + off - 1, "steel4"); });
+        // A dried dribble down the front from the rim.
+        q.vline(13, 23, 1, "cream3").vline(13, 26, 6, "cream3").px(13, 32, "cream2").px(14, 28, "cream3");
+        // Brass tap low on the front, a bead of milk at its spout.
+        q.rows(24, 50, ["..gg..", "gGGGGd", "gGGGGd", "..Gd..", "..Gd..", "...w..", "...w.."], { g: "gold4", G: "gold3", d: "gold1", w: "cream5" });
+        q.outline("steel1");
+      });
+      p.blit(vat, 0, 0);
+      // The ladle: steel handle on the rim, wrapped in blue cloth tape where the hand goes.
+      const ladle = layer(p, (q) => {
+        q.line(25, 15, 36, 2, "steel5").line(26, 15, 37, 2, "steel3");
+        q.rows(32, 0, ["...wb", "..bwb", ".wbw.", "bwb..", "wb..."], { w: "blue5", b: "blue3" });
+        q.outline("steel1", { sides: ["right", "bottom", "top"] });
+      });
+      p.blit(ladle, 0, 0);
+      p.rows(20, 15, [".sss.", "s222s", ".sss."], { s: "steel4", 2: "steel3" });
     },
   },
 });
