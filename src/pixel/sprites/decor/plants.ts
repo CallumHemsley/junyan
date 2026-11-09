@@ -1,7 +1,7 @@
 /**
  * The owners' plants. Every one is a particular plant with a particular history. Floor-standing
  * plants anchor at the middle of the pot's foot; the hanging pothos is wall art (layer `floor`)
- * anchored at the bottom-centre of its frame.
+ * anchored at its nail, like the other wall pieces.
  */
 import { defineSprites, type Color, type Px } from "../../kit/index.ts";
 import { art, autoOutline, cylinder, stamp } from "./_helpers.ts";
@@ -434,7 +434,7 @@ export default defineSprites({
    * (four frames at 2 fps).
    */
   "decor/plant-hanging": {
-    w: 32, h: 48, layer: "floor", frames: 4, fps: 2,
+    w: 32, h: 48, anchor: [16, 0], layer: "floor", frames: 4, fps: 2,
     draw: (p, frame) => {
       const sway = (y: number) => (y < 24 ? 0 : [0, 1, 0, -1][frame]);
       const o = { outline: "leaf1" } as const;

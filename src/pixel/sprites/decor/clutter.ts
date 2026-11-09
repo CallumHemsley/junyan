@@ -73,7 +73,7 @@ export default defineSprites({
         art(p, 8, 19, LEAFLET, shade);
         art(p, 1, 13, ["g", "g"], ink);
         // The dent catches a sliver of light on its lower lip.
-        art(p, 8, 19, ["cc.", "c.W", ".WW"].map((r) => r), { c: "cream2", W: "white" });
+        art(p, 8, 19, ["cc.", "c.W", ".WW"], { c: "cream2", W: "white" });
         // Chips at the base showing steel.
         art(p, 3, 22, ["ss.", ".s."], { s: "steel3" });
         art(p, 10, 23, ["s"], { s: "steel2" });
@@ -133,26 +133,29 @@ export default defineSprites({
         "oWGgWoooooooWWWWo.",
         "oWWWWWWWWWWWWWWWo.",
         "oWWWWWWWWWWWWWWco.",
-        "oWWkkWWWWWWkkWWco.",
-        "oWWskWWWWWWskWWco.",
+        "oWWWkWWWWWWkWWWco.",
+        "oWWkWkWWWWkWkWWco.",
         "hhPWWWWnnWWWWPhho.",
         "oWWWWWWmmWWWWWWco.",
         "hhWWWWWWWWWWWWhho.",
-        ".oWWWWWWWWWWWWco..",
-        ".orRRRRRYRRrrrro..",
-        "oWWWWWWWGWWWWWWcco",
-        "oWWWWWWWYWWWWWWcco",
-        "oWWoooWWWWWWWWccco",
-        "oWoGGGoWWWWWWWccco",
-        "oWoGYgoWWWWWWcccco",
-        "oWoGggoWWWWWWcccco",
-        "oWWoooWWWWWWWcccco",
-        "oWwWWWWWWWWWWccCCo",
-        "owwwWWWWWWWWccCCCo",
-        ".orrrrrrrrrrrrrrm.",
-        ".oRRRRrrrrrrrrrrm.",
-        "..oooooooooooooo..",
+        ".ooWWWWWWWWWWcoo..",
+        "..orRRRRYRRrrro...",
+        "..oWWWWWGWWWWco...",
+        ".oWWWWWWYWWWWcco..",
+        ".oWWWWWWWWWWWcco..",
+        "oWWoooooWWWWWccco.",
+        "oWoGGGGGoWWWWccco.",
+        "oWoGYYgGoWWWWccco.",
+        "oWoGYggGoWWWWccco.",
+        "oWWoWWWoWWWWcccco.",
+        "oWwWwWwWWWWWccCCo.",
+        ".owwwWWWWWWccCCo..",
+        "..orrrrrrrrrrrmo..",
+        "..oRRRRrrrrrrrmo..",
+        "...oooooooooooo...",
       ], PORCELAIN);
+      // A painted plum blossom on the belly, half rubbed away.
+      art(p, 11, 21, [".P.", "PnP", ".P."], PORCELAIN);
       // The beckoning paw, raised on its right side: up, folding, folded, folding.
       const paws = [
         [".ooo..", "oWWWo.", "oWPWco", "oWWWco", ".oWcco", ".oWco.", ".oWco.", ".oWco.", "oWWco.", "oWcco."],
@@ -275,8 +278,6 @@ export default defineSprites({
       // The bristle head: a fan of sorghum straw, cut at a slant.
       for (let y = 28; y < 48; y++) {
         const half = Math.min(8, 1 + Math.floor((y - 28) * 0.6));
-        const bottom = 46 - Math.round(((y - 28) / 20) * 0);
-        void bottom;
         for (let dx = -half; dx <= half; dx++) {
           const x = 13 + dx;
           const cut = 47 - Math.round((dx + 8) * 0.25);
@@ -302,7 +303,7 @@ export default defineSprites({
         "s3333.33333ss",
         "S5555555555Ss",
         "sssssssssssss",
-      ], { s: "steel2", S: "steel5", 3: "steel4", 5: "steel5", h: "jade3", H: "jade4", d: "stone2", ".": null } as never);
+      ], { s: "steel2", S: "steel5", 3: "steel4", 5: "steel5", h: "jade3", H: "jade4", d: "stone2" });
       p.px(5, 41, "stone3").px(6, 43, "stone2").px(9, 41, "stone3");
       autoOutline(p);
     },
@@ -321,14 +322,6 @@ export default defineSprites({
         p.px(x, y, "wood4").px(x + 1, y, "wood3");
       }
       p.px(18, 0, "red3").px(19, 0, "red2");
-      // Frayed mop strands hanging over the rim.
-      art(p, 8, 30, [
-        "..ggGGgg..",
-        ".gGGgGGgg.",
-        "gGgGGgGgGg",
-        "gg.Gg.gGgg",
-        "g..g..g.g.",
-      ], { g: "stone3", G: "stone4" });
       // Bucket: rim, water, tapering body.
       art(p, 3, 34, [
         "..bbbbbbbbbbbbbbbbbb..",
@@ -347,6 +340,18 @@ export default defineSprites({
       art(p, 2, 36, ["r.......................r", ".r.....................r.", "..rrrrrrrrrrrrrrrrrrrrr.."].map((r) => r.slice(0, 24)), { r: "bamboo3" });
       // A grey drip on the floor side, soaked into the plastic.
       autoOutline(p);
+      // The frayed mop head flopped over the rim and down the front, grey with use.
+      art(p, 9, 29, [
+        "....ggGGgg....",
+        "..gGGgGGgGgg..",
+        ".gGgGGgGgGGgg.",
+        "gGg.GgGgg.Ggg.",
+        "gg.gGg.gGg.gg.",
+        "g..gg..g.g..g.",
+        "...g...g.g....",
+        "...g......g...",
+      ], { g: "stone3", G: "stone4" });
+      p.px(12, 37, "stone2").px(16, 38, "stone2");
     },
   },
 
@@ -358,25 +363,26 @@ export default defineSprites({
     w: 32, h: 34, anchor: [16, 33], foot: [-15, -12, 30, 12], shadow: { rx: 15, ry: 4, dy: -2 },
     draw: (p) => {
       // Bottles in two rows: back row higher, front row partly hidden by the crate's front.
+      // A soy bottle: dark glass with a highlight down its left, a gold cap, a blank paper label.
       const bottle = (x: number, y: number, label: boolean, unstuck = false) => {
         art(p, x, y, [
+          ".gG.",
           ".gg.",
-          ".rr.",
-          ".rk.",
-          ".rk.",
-          "rRkk",
-          "rRkk",
-          "rRkk",
-          "rRkk",
-          "rRkk",
-          "rRkk",
-          "rRkk",
-          "rRkk",
-          "rRkk",
-          "rRkk",
-          "rrkk",
-        ], { g: "gold3", r: "rose2", R: "rose3", k: "rose1" });
-        if (label) art(p, x, y + 7, unstuck ? ["cCc.", "cCcc", "cC.."] : ["cCcc", "cCcc", "cCcc"], { c: "cream4", C: "cream5" });
+          ".hk.",
+          ".hk.",
+          "hHkk",
+          "hHkk",
+          "hHkk",
+          "hHkk",
+          "hHkk",
+          "hHkk",
+          "hHkk",
+          "hHkk",
+          "hHkk",
+          "hHkk",
+          "hkkk",
+        ], { g: "gold2", G: "gold4", h: "rose2", H: "red4", k: "rose1" });
+        if (label) art(p, x, y + 7, unstuck ? ["wCc.", "rrc.", "wCcc", "wC.."] : ["wCCc", "rrrr", "wCCc", "wCCc"], { w: "cream5", C: "cream4", c: "cream3", r: "red3" });
       };
       for (const x of [5, 10, 15, 20]) bottle(x, 0, true);
       for (const [x, i] of [[3, 0], [8, 1], [13, 2], [23, 3]] as const) bottle(x, 4, true, i === 1);
@@ -393,7 +399,11 @@ export default defineSprites({
           for (const [gx, gy, n] of [[4, y + 2, 7], [15, y + 3, 9], [8, y + 4, 5], [22, y + 2, 5]] as const) p.hline(gx, gy, n, "oak3");
         });
       }
-      p.rect(1, 24, 29, 1, "oak1");
+      // The gap between the slats shows the bottles inside, in shadow.
+      p.rect(4, 24, 23, 1, "wood1");
+      for (const x of [6, 11, 16, 24]) p.px(x, 24, "rose2");
+      // A hand-hold cut through the top slat.
+      art(p, 12, 19, [".kkkkk.", "kkkkkkk", ".KKKKK."], { k: "wood1", K: "oak2" });
       // Corner posts with nail heads.
       for (const x of [1, 27]) {
         p.rect(x, 17, 3, 15, "oak3").vline(x, 17, 15, "oak4");
@@ -412,26 +422,37 @@ export default defineSprites({
   "decor/boxes": {
     w: 34, h: 40, anchor: [16, 39], foot: [-15, -12, 30, 12], shadow: { rx: 16, ry: 4, dy: -2 },
     draw: (p) => {
-      const box = (x: number, y: number, w: number, top: number, front: number, seed: number) => {
-        // Top face (lit), then the front face; tape down the middle of both.
+      const box = (x: number, y: number, w: number, top: number, front: number) => {
+        // Top face (lit), with the seam where the flaps meet; the front face below its fold.
         p.rect(x, y, w, top, "oak4").hline(x, y, w, "oak5").vline(x, y, top, "oak5");
-        p.rect(x, y + top, w, front, "oak3").hline(x, y + top, w, "oak2").vline(x + w - 1, y + top, front, "oak2");
+        p.rect(x, y + top, w, front, "oak3").hline(x, y + top, w, "oak2").hline(x, y + top + 1, w, "oak4").vline(x + w - 1, y + top, front, "oak2");
         const mid = x + Math.floor(w / 2) - 1;
-        p.rect(mid, y, 3, top, "bamboo4").hline(mid, y, 3, "bamboo5");
-        p.rect(mid, y + top, 3, 3, "bamboo3");
-        // Corrugation showing at a crushed corner.
-        void seed;
+        p.vline(mid + 1, y, top, "oak3");
+        // Packing tape over the seam and a hand's width down the front.
+        p.rect(mid, y, 3, top, "bamboo4").vline(mid, y, top, "bamboo5");
+        p.rect(mid, y + top, 3, 4, "bamboo3").vline(mid, y + top, 4, "bamboo4");
+        // Fibre grain: faint long streaks on the front.
+        p.over(() => { for (let j = y + top + 4; j < y + top + front - 1; j += 3) p.hline(x + 2 + ((j * 5) % 7), j, w - 10, "oak4"); });
       };
-      box(1, 16, 30, 7, 16, 1);
-      // The kicked-in corner.
-      art(p, 1, 30, ["d...", "Dd..", "dDd.", "dddd", "...."], { d: "oak2", D: "oak1" });
-      // Top box, smaller and askew: drawn with a step to suggest the twist.
-      box(6, 2, 22, 6, 9, 2);
+      box(1, 16, 30, 7, 16);
+      // Two "this way up" arrows printed on the front (pictograms, not text).
+      art(p, 4, 25, [".d...d", "ddd.ddd", ".d...d.", ".d...d."], { d: "oak2" });
+      // Hand-hold slot on the right of the front.
+      art(p, 22, 27, [".kkkk.", "kkkkkk"], { k: "oak1" });
+      // A water mark where it stood in a puddle.
+      p.over(() => { p.hline(2, 37, 28, "oak2"); art(p, 8, 34, ["..ddd...", ".d...dd.", "d......d"], { d: "oak2" }); });
+      // The kicked-in corner: the crushed card shows its corrugated core.
+      art(p, 1, 30, ["d....", "Dd...", "dcd..", "cdcd.", "dcdcd", "....."], { d: "oak2", D: "oak1", c: "oak4" });
+      // Top box, smaller and twisted on the stack: its top sits a pixel right of its front.
+      box(6, 2, 22, 6, 9);
       p.rect(6, 17, 22, 1, "oak2");
-      // An open flap folded back over the top.
-      art(p, 18, 0, ["..aaaaa", ".aAAAAa", "aAAAAa.", "aaaaa.."], { a: "oak3", A: "oak5" });
-      // Peeling tape.
-      art(p, 15, 10, ["tt", ".T"], { t: "bamboo5", T: "bamboo4" });
+      // An open flap standing up at the back, its inside paler, napkins showing in the gap.
+      art(p, 17, 0, ["..aaaaaa", ".aAAAAAa", "aAAAAAa.", "aaaaaa.."], { a: "oak3", A: "oak5" });
+      art(p, 9, 2, ["wWwwWw", "cccccc"], { w: "white", W: "cream4", c: "oak2" });
+      // Peeling tape on the top box.
+      art(p, 15, 10, ["tt.", ".tT", "..T"], { t: "bamboo5", T: "bamboo4" });
+      // String tied round the bottom box.
+      p.vline(8, 16, 7, "cream2").vline(8, 23, 16, "cream2");
       autoOutline(p, { map: { oak: "wood1", bamboo: "wood1" } });
     },
   },

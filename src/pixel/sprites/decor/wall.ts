@@ -4,7 +4,7 @@
  * Each piece casts a hairline shadow on its bottom and right edges only. No text anywhere: the
  * boards are blank and their overlay rectangles are given in their doc comments, in sprite pixels.
  */
-import { defineSprites, type Color, type Px } from "../../kit/index.ts";
+import { Px, defineSprites, type Color } from "../../kit/index.ts";
 import { art, wallEdge } from "./_helpers.ts";
 
 const NAIL = { n: "steel2", N: "steel4" } as const;
@@ -132,7 +132,6 @@ export default defineSprites({
         "..g....g....",
         "...gGGg.....",
       ].map((r) => r.padEnd(12, ".")), { g: "gold3", G: "gold4", Y: "gold5" });
-      art(p, 8, 8, ["", "", "", "", "", "", "", "", "", ""], {});
       // Tape on the top corner.
       p.faded(0.7, () => p.rect(11, 0, 6, 3, "cream4"));
       // The unstuck bottom corner, curling to show the paler back.
@@ -240,7 +239,7 @@ export default defineSprites({
         q.rect(2, 8, 9, 3, "leaf3");
         art(q, 3, 3, [".hhh.", "hsssh", ".sss.", ".rrr.", "rrrrr", ".s.s."], { h: "hair1", s: "skin4", r: "red4" });
       };
-      const small = new (p.constructor as new (w: number, h: number) => Px)(13, 13);
+      const small = new Px(13, 13);
       kid(small);
       // Rotate a few degrees by shearing rows: the frame leans right.
       for (let y = 0; y < 13; y++) for (let x = 0; x < 13; x++) {
@@ -254,9 +253,10 @@ export default defineSprites({
   /**
    * The oscillating wall fan, cream plastic gone yellow at the motor. Someone tied a strip of paper
    * to the grille to see that it is running. Three frames at 8 fps: the blur turns, the paper flutters.
+   * Anchored at the screw in the middle of its wall bracket.
    */
   "decor/wall-fan": {
-    w: 32, h: 34, anchor: [16, 33], layer: "floor", frames: 3, fps: 8,
+    w: 32, h: 34, anchor: [16, 30], layer: "floor", frames: 3, fps: 8,
     draw: (p, frame) => {
       // Wall bracket and the neck.
       p.rect(13, 28, 6, 5, "cream3").hline(13, 28, 6, "cream4").hline(13, 32, 6, "cream2");
