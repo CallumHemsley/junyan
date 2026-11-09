@@ -148,11 +148,11 @@ export default defineSprites({
     block(p, 4, 55, [
       "yyyyyyyyyyyyyyyyyyyyyyy.",
       "Yyyyyyyyyyyyyyyyyyyyyyy.",
-      ".Yyyyyyyyyyyyyyyyyyyyyy.",
-      ".yyyyyyyyyyyyyyyyyyyyyY.",
-      "..YyyyyyyyyyyyyyyyyyyY..",
-      "..YyyyyyyyyyyyyyyyyyY...",
-      "...YYyyyyyyyyyyyyyyY....",
+      ".YyyyyyyYyyyyyyyyyyyyyY.",
+      "..YyyyyY.YyyyyyyyyYyyY..",
+      "...YyyY...YyyyyyyY.YY...",
+      "....YY.....YyyyyY.......",
+      "............YyyY........",
     ], { y: "bamboo5", Y: "bamboo4" }, "tide");
     // The rail swelled and darkened where the water ran over it.
     p.hline(8, 62, 15, "wood4").hline(9, 63, 13, "wood3").hline(9, 64, 13, "wood2");

@@ -65,7 +65,7 @@ function mat(p: Px) {
   for (let y = T; y <= B; y++) for (let x = L; x <= R; x++) {
     const cell = ((x - L) >> 1) + ((y - T) >> 1);
     const across = cell % 2 === 0;
-    const c = across ? ((y - T) % 2 === 0 ? "bamboo4" : "bamboo3") : ((x - L) % 2 === 0 ? "bamboo3" : "bamboo2");
+    const c = across ? ((y - T) % 2 === 0 ? "bamboo4" : "bamboo3") : ((x - L) % 2 === 0 || (y - T) % 2 === 0 ? "bamboo3" : "bamboo2");
     p.px(x, y, c);
   }
   // Bald middle: the weave pressed flat and bleached where every customer wipes their feet.
