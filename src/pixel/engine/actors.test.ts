@@ -59,7 +59,7 @@ describe("actor frames", () => {
   it("step by distance when distance is given", () => {
     const at = (distance: number) => actorFrame({ id: "a", sprite: "char/cook", at: [0, 0], action: "walk", distance }, walk, 99999);
     expect(at(0)).toBe(0);
-    expect(at(6 / 16)).toBe(1);
-    expect(at(24 / 16)).toBe(0);
+    expect(at(0.375)).toBe(1);
+    expect(at(1.5)).toBe(0);
   });
 });

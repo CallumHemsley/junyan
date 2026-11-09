@@ -1,11 +1,10 @@
-import { TILE } from "../kit/index.ts";
 import { frameAt, type Atlas, type AtlasSprite } from "./atlas.ts";
 import type { Actor, Facing } from "./types.ts";
 
 /** The sprite every missing character falls back to. */
 export const FALLBACK_CHARACTER = "ex/waiter";
-/** Walk animations advance one frame per this many art pixels travelled (when driven by distance). */
-export const WALK_PX_PER_FRAME = 6;
+/** Walk animations advance one frame per this many tiles travelled (when driven by distance). */
+export const WALK_TILES_PER_FRAME = 0.375;
 
 export type ResolvedActor = {
   sprite: AtlasSprite;
@@ -43,7 +42,7 @@ export function resolveActorSprite(atlas: Atlas, sprite: string, action = "idle"
 export function actorFrame(actor: Actor, sprite: AtlasSprite, time: number): number {
   const action = actor.action ?? "idle";
   if (actor.distance !== undefined && action.includes("walk") && sprite.frameCount > 1) {
-    const step = Math.floor((actor.distance * TILE) / WALK_PX_PER_FRAME + (actor.phase ?? 0));
+    const step = Math.floor(actor.distance / WALK_TILES_PER_FRAME + (actor.phase ?? 0));
     return ((step % sprite.frameCount) + sprite.frameCount) % sprite.frameCount;
   }
   return frameAt(sprite, time, actor.phase ?? 0);

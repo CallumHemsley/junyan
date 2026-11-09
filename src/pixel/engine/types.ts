@@ -2,7 +2,7 @@
  * Plain-data types for the pixel engine. Everything an author writes by hand lives here.
  *
  * Units: positions in scenes, props, actors, marks, lights and colliders are **tile units**
- * (1 = 16 art pixels), continuous, origin at the scene's top-left corner. `[2, 5]` is the
+ * (1 = `TILE` art pixels, see `kit/sprite.ts`), continuous, origin at the scene's top-left corner. `[2, 5]` is the
  * top-left corner of cell (2,5); `[2.5, 6]` is the middle of that cell's bottom edge, which is
  * where you usually want a standing thing's anchor (its feet).
  */
@@ -24,7 +24,7 @@ export type Layer = "floor" | "object" | "over";
  * A grid of tiles. Each character of `rows` is one cell; `.` and space are empty.
  * The legend maps a character to a sprite id, or to several ids from which one is picked per cell
  * by `hash(x, y, seed)` (repeat an id to weight it). A tile sprite is drawn with its top-left
- * corner on its cell, whatever its anchor; sprites bigger than 16×16 (a 16×48 wall slice) spill
+ * corner on its cell, whatever its anchor; sprites bigger than one tile (a back-wall slice three tiles tall) spill
  * right and down over the following cells. Layers draw in order; cells draw row by row.
  */
 export type TileLayer = {

@@ -51,6 +51,8 @@ export function createSceneRenderer(scene: Scene, atlas: Atlas, options: Rendere
 
   let staticCache: Frame | null = null;
   let shadowMask = new Uint8Array(0);
+  // Bounding box of this frame's shadow stamps, frame px; only it is cleared and blended.
+  let sx0 = 0, sy0 = 0, sx1 = 0, sy1 = 0;
   const sorted: Placed[] = [];
   const actorPool: Placed[] = [];
   const actorFrames: number[] = [];
@@ -96,6 +98,9 @@ export function createSceneRenderer(scene: Scene, atlas: Atlas, options: Rendere
     }
     const left = placed.ax + Math.round(shadow.dx ?? 0) - stamp.ox - view.x;
     const top = placed.ay + Math.round(shadow.dy ?? 0) - stamp.oy - view.y;
+    if (left >= frame.w || top >= frame.h || left + stamp.w <= 0 || top + stamp.h <= 0) return;
+    sx0 = Math.min(sx0, Math.max(0, left)); sy0 = Math.min(sy0, Math.max(0, top));
+    sx1 = Math.max(sx1, Math.min(frame.w, left + stamp.w)); sy1 = Math.max(sy1, Math.min(frame.h, top + stamp.h));
     for (let j = Math.max(0, -top); j < stamp.h && top + j < frame.h; j++)
       for (let i = Math.max(0, -left); i < stamp.w && left + i < frame.w; i++) {
         const a = stamp.alpha[j * stamp.w + i], at = (top + j) * frame.w + left + i;
@@ -106,10 +111,11 @@ export function createSceneRenderer(scene: Scene, atlas: Atlas, options: Rendere
 
   function applyShadows(frame: Frame) {
     const data = frame.data, [sr, sg, sb] = SHADOW_RGB;
-    for (let i = 0, p = 0; i < shadowMask.length; i++, p += 4) {
+    for (let y = sy0; y < sy1; y++) for (let i = y * frame.w + sx0, end = y * frame.w + sx1; i < end; i++) {
       const m = shadowMask[i];
       if (!m) continue;
-      const a = m / 255;
+      shadowMask[i] = 0; // leave the mask clean for the next frame
+      const a = m / 255, p = i * 4;
       data[p] += (sr - data[p]) * a;
       data[p + 1] += (sg - data[p + 1]) * a;
       data[p + 2] += (sb - data[p + 2]) * a;
@@ -151,7 +157,7 @@ export function createSceneRenderer(scene: Scene, atlas: Atlas, options: Rendere
     for (const mark of Object.values(compiled.marks)) {
       const x = Math.round(mark.at[0] * TILE), y = Math.round(mark.at[1] * TILE);
       if (mark.size) box([mark.at[0], mark.at[1], mark.size[0], mark.size[1]], gold);
-      for (let d = -2; d <= 2; d++) { put(x + d, y, gold); put(x, y + d, gold); }
+      for (let d = -(TILE >> 3); d <= TILE >> 3; d++) { put(x + d, y, gold); put(x, y + d, gold); }
     }
     for (const actor of state.actors ?? []) put(Math.round(actor.at[0] * TILE), Math.round(actor.at[1] * TILE), white);
   }
@@ -165,7 +171,8 @@ export function createSceneRenderer(scene: Scene, atlas: Atlas, options: Rendere
 
       // Background and the cached static floor.
       staticCache ??= buildStaticCache();
-      frame.words.fill(backgroundWord);
+      // The void colour is only needed where the view reaches past the scene.
+      if (view.x < 0 || view.y < 0 || view.x + frame.w > compiled.widthPx || view.y + frame.h > compiled.heightPx) frame.words.fill(backgroundWord);
       copyRegion(frame, staticCache, view.x, view.y, 0, 0, frame.w, frame.h);
 
       // Animated floor content, then run-time floor props.
@@ -185,7 +192,7 @@ export function createSceneRenderer(scene: Scene, atlas: Atlas, options: Rendere
 
       // Contact shadows for everything standing in the room, merged into one mask.
       if (shadowMask.length !== frame.w * frame.h) shadowMask = new Uint8Array(frame.w * frame.h);
-      else shadowMask.fill(0);
+      sx0 = frame.w; sy0 = frame.h; sx1 = 0; sy1 = 0;
       for (const placed of sorted) stampShadow(frame, view, placed);
       for (const placed of compiled.over) stampShadow(frame, view, placed);
       applyShadows(frame);

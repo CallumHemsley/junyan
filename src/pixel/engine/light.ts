@@ -29,8 +29,8 @@ const ADD = 18;
 /** Falloff steps. Fewer is chunkier. */
 const STEPS = 6;
 
-/** Shaft edge softness in art pixels. */
-const SHAFT_SOFT = 3;
+/** Shaft edge softness, in art pixels: three-sixteenths of a tile. */
+const SHAFT_SOFT = Math.max(2, Math.round((TILE * 3) / 16));
 
 /**
  * Tone curve applied after lighting: identity up to 224, then a soft shoulder that approaches 255,
@@ -126,6 +126,23 @@ export function flickerAt(light: CompiledLight, time: number, frozen: boolean): 
   return Math.round((1 + light.flicker * 0.5 * wave) * 20) / 20;
 }
 
+const MOTE_SIZE = Math.max(1, TILE >> 4);
+const LITTLE_ENDIAN = new Uint8Array(new Uint32Array([1]).buffer)[0] === 1;
+
+/** Ambient-only pixels `start…end` (pixel indices) through per-channel lookup tables, a word at a time. */
+function ambientRun(frame: Frame, start: number, end: number, tr: Uint8Array, tg: Uint8Array, tb: Uint8Array): void {
+  if (LITTLE_ENDIAN) {
+    const words = frame.words;
+    for (let i = start; i < end; i++) {
+      const w = words[i];
+      words[i] = (tr[w & 255] | (tg[(w >>> 8) & 255] << 8) | (tb[(w >>> 16) & 255] << 16) | 0xff000000) >>> 0;
+    }
+    return;
+  }
+  const data = frame.data;
+  for (let p = start * 4; p < end * 4; p += 4) { data[p] = tr[data[p]]; data[p + 1] = tg[data[p + 1]]; data[p + 2] = tb[data[p + 2]]; }
+}
+
 export type Mote = { x: number; y: number; alpha: number };
 
 /** Dust motes in a shaft at `time`, world px. Slow and deterministic; frozen at t=0 when asked. */
@@ -133,13 +150,13 @@ export function motesAt(light: CompiledLight, time: number, frozen: boolean, out
   out.length = 0;
   const shaft = light.shaft;
   if (!shaft) return out;
-  const t = frozen ? 0 : time / 1000;
+  const t = frozen ? 0 : time / 1000, inset = TILE / 8;
   for (let i = 0; i < shaft.motes; i++) {
     const h = (k: number) => hash(i, k, 101 + light.seed);
     const v = (h(1) + t * (0.015 + 0.012 * h(2))) % 1;
-    const sway = 1.5 * Math.sin(t * 0.5 + 6.283 * h(3));
+    const sway = (TILE / 10) * Math.sin(t * 0.5 + 6.283 * h(3));
     const yy = shaft.y0 + Math.floor(v * shaft.length * 0.9);
-    const xx = shaft.x0 + Math.floor((yy - shaft.y0) * shaft.slant + 2 + h(0) * (shaft.width - 4) + sway);
+    const xx = shaft.x0 + Math.floor((yy - shaft.y0) * shaft.slant + inset + h(0) * (shaft.width - 2 * inset) + sway);
     const twinkle = 0.5 + 0.5 * Math.sin(t * 0.9 + 6.283 * h(4));
     const ends = Math.min(1, v * 6, (1 - v) * 4);
     const alpha = Math.round(twinkle * ends * 3) / 3; // 0, 1/3, 2/3, 1
@@ -148,31 +165,53 @@ export function motesAt(light: CompiledLight, time: number, frozen: boolean, out
   return out;
 }
 
-/** Holds the per-viewport light buffers so a frame allocates nothing. */
+/**
+ * Holds the per-viewport light buffers so a frame allocates nothing. Lights only touch the float
+ * buffers inside their boxes; each row remembers its lit span, and everything outside the spans
+ * takes an integer lookup table for the ambient alone. The buffers are zeroed span by span after
+ * use, so they never need a full clear.
+ */
 export function createLighting(lights: readonly CompiledLight[], ambientByPhase: Record<DayPhase, Rgb>) {
   let lr = new Float32Array(0), lg = new Float32Array(0), lb = new Float32Array(0);
+  let spanFrom = new Int32Array(0), spanTo = new Int32Array(0);
   const motes: Mote[] = [];
   const moteColor = rgbOf("cream5");
+  const ambientLut = new Map<DayPhase, [Uint8Array, Uint8Array, Uint8Array]>();
+  const lutFor = (phase: DayPhase) => {
+    let lut = ambientLut.get(phase);
+    if (!lut) {
+      const [ar, ag, ab] = ambientByPhase[phase];
+      const make = (k: number) => Uint8Array.from({ length: 256 }, (_, c) => TONE[Math.min(1023, (c * k) | 0)]);
+      lut = [make(ar), make(ag), make(ab)];
+      ambientLut.set(phase, lut);
+    }
+    return lut;
+  };
 
   return {
     /** Light `frame`, whose top-left is world px (vx, vy). */
     apply(frame: Frame, vx: number, vy: number, phase: DayPhase, time: number, frozen: boolean): void {
-      const n = frame.w * frame.h;
+      const n = frame.w * frame.h, W = frame.w, H = frame.h;
       if (lr.length !== n) { lr = new Float32Array(n); lg = new Float32Array(n); lb = new Float32Array(n); }
+      if (spanFrom.length !== H) { spanFrom = new Int32Array(H); spanTo = new Int32Array(H); }
+      spanFrom.fill(W); spanTo.fill(0);
       const [ar, ag, ab] = ambientByPhase[phase];
-      let any = ar !== 1 || ag !== 1 || ab !== 1;
-      lr.fill(0); lg.fill(0); lb.fill(0);
+      const ambientOnly = ar !== 1 || ag !== 1 || ab !== 1;
+      let anyLight = false;
       for (const light of lights) {
         if (!isLit(light, phase)) continue;
         const gain = light.kind === "glow" ? GLOW_GAIN[phase] : 1;
         const s = light.strength * gain * flickerAt(light, time, frozen) / 255;
         const x0 = Math.max(light.x, vx), y0 = Math.max(light.y, vy);
-        const x1 = Math.min(light.x + light.w, vx + frame.w), y1 = Math.min(light.y + light.h, vy + frame.h);
+        const x1 = Math.min(light.x + light.w, vx + W), y1 = Math.min(light.y + light.h, vy + H);
         if (x0 >= x1 || y0 >= y1) continue;
-        any = true;
+        anyLight = true;
         const [cr, cg, cb] = light.color;
         for (let y = y0; y < y1; y++) {
-          let m = (y - light.y) * light.w + (x0 - light.x), d = (y - vy) * frame.w + (x0 - vx);
+          const row = y - vy;
+          if (x0 - vx < spanFrom[row]) spanFrom[row] = x0 - vx;
+          if (x1 - vx > spanTo[row]) spanTo[row] = x1 - vx;
+          let m = (y - light.y) * light.w + (x0 - light.x), d = row * W + (x0 - vx);
           for (let x = x0; x < x1; x++, m++, d++) {
             const v = light.mask[m];
             if (!v) continue;
@@ -181,27 +220,40 @@ export function createLighting(lights: readonly CompiledLight[], ambientByPhase:
           }
         }
       }
-      if (any) {
-        const data = frame.data;
-        for (let i = 0, p = 0; i < n; i++, p += 4) {
-          const r = lr[i], g = lg[i], b = lb[i];
-          data[p] = TONE[Math.min(1023, (data[p] * (ar + r * MULTIPLY) + r * ADD) | 0)];
-          data[p + 1] = TONE[Math.min(1023, (data[p + 1] * (ag + g * MULTIPLY) + g * ADD) | 0)];
-          data[p + 2] = TONE[Math.min(1023, (data[p + 2] * (ab + b * MULTIPLY) + b * ADD) | 0)];
+      if (ambientOnly || anyLight) {
+        const data = frame.data, [tr, tg, tb] = lutFor(phase);
+        for (let y = 0; y < H; y++) {
+          const from = spanFrom[y], to = spanTo[y], row = y * W;
+          if (ambientOnly) {
+            // Unlit parts of the row: identical to the full formula with no light, but table-driven.
+            if (from < to) { ambientRun(frame, row, row + from, tr, tg, tb); ambientRun(frame, row + to, row + W, tr, tg, tb); }
+            else ambientRun(frame, row, row + W, tr, tg, tb);
+          }
+          for (let i = row + from, p = i * 4; i < row + to; i++, p += 4) {
+            const r = lr[i], g = lg[i], b = lb[i];
+            data[p] = TONE[Math.min(1023, (data[p] * (ar + r * MULTIPLY) + r * ADD) | 0)];
+            data[p + 1] = TONE[Math.min(1023, (data[p + 1] * (ag + g * MULTIPLY) + g * ADD) | 0)];
+            data[p + 2] = TONE[Math.min(1023, (data[p + 2] * (ab + b * MULTIPLY) + b * ADD) | 0)];
+            lr[i] = 0; lg[i] = 0; lb[i] = 0;
+          }
         }
       }
       // Dust motes catch the light: a single brightened art pixel each.
       for (const light of lights) {
         if (!light.shaft || !isLit(light, phase)) continue;
         for (const mote of motesAt(light, time, frozen, motes)) {
-          const x = mote.x - vx, y = mote.y - vy;
-          if (x < 0 || y < 0 || x >= frame.w || y >= frame.h) continue;
           const mx = mote.x - light.x, my = mote.y - light.y;
           if (mx < 0 || my < 0 || mx >= light.w || my >= light.h || !light.mask[my * light.w + mx]) continue;
-          const p = (y * frame.w + x) * 4, a = mote.alpha * 0.55;
-          frame.data[p] += (moteColor[0] - frame.data[p]) * a;
-          frame.data[p + 1] += (moteColor[1] - frame.data[p + 1]) * a;
-          frame.data[p + 2] += (moteColor[2] - frame.data[p + 2]) * a;
+          const a = mote.alpha * 0.55;
+          // A mote is one sixteenth of a tile square: one art pixel at 16px tiles, 2×2 at 32px.
+          for (let j = 0; j < MOTE_SIZE; j++) for (let i = 0; i < MOTE_SIZE; i++) {
+            const x = mote.x - vx + i, y = mote.y - vy + j;
+            if (x < 0 || y < 0 || x >= frame.w || y >= frame.h) continue;
+            const p = (y * frame.w + x) * 4;
+            frame.data[p] += (moteColor[0] - frame.data[p]) * a;
+            frame.data[p + 1] += (moteColor[1] - frame.data[p + 1]) * a;
+            frame.data[p + 2] += (moteColor[2] - frame.data[p + 2]) * a;
+          }
         }
       }
     },

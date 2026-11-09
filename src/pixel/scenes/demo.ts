@@ -14,7 +14,7 @@ export default defineScene({
     f: ["ex/floor-wood-a", "ex/floor-wood-a", "ex/floor-wood-b", "ex/floor-wood-b", "ex/floor-wood-c"],
   },
   layers: [
-    // The 16×48 wall slice is anchored at its top-left cell and spills down over rows 1 and 2.
+    // The three-tile-tall wall slice is anchored at its top-left cell and spills down over rows 1 and 2.
     { name: "wall", rows: ["WWWWWWWWWWWW"] },
     {
       name: "floor", origin: [0, 3], seed: 3,
