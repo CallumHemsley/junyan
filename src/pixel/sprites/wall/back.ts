@@ -7,24 +7,23 @@
  * Wall-mounted pieces (windows, the post) anchor at the wall's foot, 96px below the slice top, so they
  * sort after the wall slices they hang on.
  */
-import { defineSprites, type Color, type Px } from "../../kit/index.ts";
+import { defineSprites, Px, type Color } from "../../kit/index.ts";
 import { PLASTER, block, diningWall, kitchenWall } from "./_helpers.ts";
 
 const slice = (draw: (p: Px) => void) => ({ w: 32, h: 96, anchor: [0, 0] as const, layer: "floor" as const, draw });
 
 /**
- * A plaster patch: a mask of `#`, filled with fresher, whiter plaster. Its trowelled ridge catches
- * the sun on the top and left edges and throws a hairline shade on the bottom and right.
+ * A plaster patch: an irregular polygon of fresher, whiter plaster with crisp edges. Its trowelled
+ * ridge catches the sun along the top and left and throws a hairline shade along the bottom and right.
  */
-function patch(p: Px, x0: number, y0: number, mask: readonly string[], strokes: readonly (readonly [number, number, number])[]) {
-  const inside = (x: number, y: number) => mask[y]?.[x] === "#";
-  for (let y = -1; y <= mask.length; y++) for (let x = -1; x <= mask[0].length; x++) {
-    if (inside(x, y)) {
-      const edge = !inside(x - 1, y) || !inside(x, y - 1);
-      p.px(x0 + x, y0 + y, edge ? "white" : "cream5");
-    } else if (inside(x - 1, y) || inside(x, y - 1)) p.px(x0 + x, y0 + y, "cream3");
+function patch(p: Px, points: readonly (readonly [number, number])[]) {
+  const m = new Px(32, 96);
+  m.poly(points, "white");
+  const inside = (x: number, y: number) => m.solid(x, y);
+  for (let y = 10; y < 62; y++) for (let x = 0; x < 32; x++) {
+    if (inside(x, y)) p.px(x, y, !inside(x - 1, y) || !inside(x, y - 1) ? "white" : "cream5");
+    else if (inside(x - 1, y) || inside(x, y - 1)) p.px(x, y, "cream3");
   }
-  for (const [x, y, n] of strokes) p.hline(x0 + x, y0 + y, n, "cream4");
 }
 
 /** Soft occlusion where the back wall meets a side wall. `depth[i]` is how far down column i darkens. */
@@ -56,12 +55,12 @@ export default defineSprites({
   /** Quiet plaster. The workhorse. */
   "wall/back-a": slice((p) => diningWall(p, 11)),
 
-  /** Quiet plaster, other trowel strokes, so a run of quiet slices never repeats. */
-  "wall/back-b": slice((p) => diningWall(p, 23, 6)),
+  /** Quiet plaster with a different broken cornice shadow and skirting grain. */
+  "wall/back-b": slice((p) => diningWall(p, 23)),
 
   /** A crack from the '99 earthquake, filled with whiter plaster that is starting to crack again below. */
   "wall/back-c": slice((p) => {
-    diningWall(p, 31, 4);
+    diningWall(p, 31);
     block(p, 9, 14, [
       "........CKC.",
       ".......CkC..",
@@ -97,7 +96,7 @@ export default defineSprites({
    * along its top, one nail still in, one hole where the other was pulled.
    */
   "wall/back-d": slice((p) => {
-    diningWall(p, 41, 4);
+    diningWall(p, 41);
     p.rect(6, 20, 20, 23, "cream5");
     p.hline(6, 19, 20, "cream3").vline(6, 20, 23, "cream5");
     p.hline(7, 43, 19, "cream4");
@@ -107,22 +106,10 @@ export default defineSprites({
 
   /** Replastered after the old wiring came out: a whiter patch, trowel arcs still showing. */
   "wall/back-e": slice((p) => {
-    diningWall(p, 53, 4);
-    patch(p, 5, 22, [
-      ".......####.......",
-      "....#########.....",
-      "...############...",
-      "..###############.",
-      ".################.",
-      ".#################",
-      "##################",
-      ".#################",
-      "..###############.",
-      "..##############..",
-      "...####..######...",
-      "..........###.....",
-    ], []);
-    p.hline(10, 26, 5, "white").hline(8, 27, 4, "white").hline(14, 30, 6, "white");
+    diningWall(p, 53);
+    patch(p, [[7, 24], [15, 21], [24, 23], [27, 29], [25, 36], [17, 38], [12, 35], [6, 33], [9, 29]]);
+    // The wiring chase it covers, ghosting through as a faint straight line.
+    p.vline(16, 14, 7, "cream3");
   }),
 
   /** Chair backs have knocked the dado here for decades: rubbed paint, chips down through the cream undercoat to bare wood. */
@@ -144,7 +131,7 @@ export default defineSprites({
    * sill and blistered, streaked paint on the dado. Hang a window above it (its sill ends at row 54).
    */
   "wall/back-g": slice((p) => {
-    diningWall(p, 73, 5);
+    diningWall(p, 73);
     block(p, 4, 55, [
       "yyyyyyyyyyyyyyyyyyyyyyy.",
       "Yyyyyyyyyyyyyyyyyyyyyyy.",
@@ -166,7 +153,7 @@ export default defineSprites({
    * yellowed tape, and one torn corner still held by a red drawing pin.
    */
   "wall/back-h": slice((p) => {
-    diningWall(p, 83, 4);
+    diningWall(p, 83);
     for (const [x, y] of [[6, 21], [16, 20], [6, 33], [17, 34], [11, 26], [24, 27], [13, 40], [25, 41], [21, 18]] as const) p.px(x, y, "cream2").px(x + 1, y + 1, "cream5");
     block(p, 9, 37, ["yy", "y."], { y: "bamboo4" }, "tape-1");
     block(p, 23, 37, ["yy", ".y"], { y: "bamboo4" }, "tape-2");
@@ -185,7 +172,7 @@ export default defineSprites({
    * fed by twisted cloth cable stapled down from the cornice. Fingers have greyed the plaster round it.
    */
   "wall/back-i": slice((p) => {
-    diningWall(p, 97, 4);
+    diningWall(p, 97);
     // Cloth cable, a twist catching the light every third pixel.
     for (let y = 10; y < 39; y++) p.px(21, y, y % 3 ? "stone2" : "stone3").px(22, y, "stone1");
     for (const y of [15, 24, 33]) p.hline(20, y, 4, "steel4").px(23, y, "steel2");
@@ -222,10 +209,10 @@ export default defineSprites({
   }),
 
   /** The leftmost slice, against the left side wall, in its shadow. */
-  "wall/back-end-left": slice((p) => { diningWall(p, 101, 5); cornerShadow(p, "left"); }),
+  "wall/back-end-left": slice((p) => { diningWall(p, 101); cornerShadow(p, "left"); }),
 
   /** The rightmost dining slice, for a room with no kitchen on that side. */
-  "wall/back-end-right": slice((p) => { diningWall(p, 103, 5); cornerShadow(p, "right"); }),
+  "wall/back-end-right": slice((p) => { diningWall(p, 103); cornerShadow(p, "right"); }),
 
   // ── kitchen ───────────────────────────────────────────────────────────────
 

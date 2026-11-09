@@ -24,23 +24,20 @@ export function block(p: Px, x: number, y: number, rows: readonly string[], lege
 /** Wall-top colours by profile letter: edge, timber plate, plaster core, lit lip, glint. */
 export const CAP: Legend = { v: "ink", 1: "wood1", 2: "wood2", 3: "wood3", 4: "wood4", 5: "wood5", p: "cream1", P: "cream2", q: "wood1", n: "wood1" };
 
-/** The side-cap profile, outer edge to inner edge, 16px: plate, core, lipped inner plate. */
-export const SIDE_PROFILE = "12221pppp1234421";
+/** The side-cap profile, outer edge to inner edge, 16px: dark timber, one lit line on the inner edge. */
+export const SIDE_PROFILE = "1222222222222241";
 /** The back cap, rows 0–5, outer (north) to inner. */
-export const BACK_PROFILE = "12pp41";
+export const BACK_PROFILE = "122241";
 /** The front cap, rows 0–9, inner (north, against the floor) to outer. */
-export const FRONT_PROFILE = "1243ppp221";
+export const FRONT_PROFILE = "1422222221";
 
 /**
- * Texture laid along a cap run, by position along the run (`t`) and across it (profile index `i`):
- * grain streaks in the plates, flecks and hairline cracks in the plaster, glints on the lip.
+ * Texture laid along a cap run, by position along the run (`t`) and across it (profile index `i`).
  * Returns a replacement profile letter or the original.
  */
 export function capTexture(letter: string, t: number, i: number, seed: number): string {
-  const r = hash(t >> 2, i, seed);
-  if (letter === "2" && hash(t >> 3, i, seed + 1) > 0.7) return "1";
-  if (letter === "p" && hash(t >> 1, i, seed + 2) > 0.94) return "P";
-  if (letter === "4" && r > 0.75) return "5";
+  // Long, quiet grain in the timber: a darker run now and then, aligned to 8px so it never cuts at a seam.
+  if (letter === "2" && i % 3 === 1 && hash(t >> 3, i, seed + 1) > 0.72) return "1";
   return letter;
 }
 
@@ -61,20 +58,16 @@ export function capAndCornice(p: Px, seed: number): void {
 }
 
 /**
- * Plaster rows 10–61 with the cornice's shadow and trowel strokes. Strokes are 4–9px runs, lit (the
- * ridge a trowel leaves) or shaded (the hollow beside it), placed from `seed` so every slice differs.
+ * Plaster rows 10–61: flat lime wash under the cornice's soft shadow. Deliberately quiet; the stories
+ * on the wall (crack, ghost rectangle, patch, stain, switch) carry the interest. Light washes of any
+ * shape were tried and read as clouds or drips at play zoom, so the field stays one tone.
  */
-export function plaster(p: Px, seed: number, strokes = 7): void {
+export function plaster(p: Px, seed: number): void {
   p.rect(0, 10, 32, 52, "cream4");
   p.hline(0, 10, 32, "cream2").hline(0, 11, 32, "cream3").hline(0, 12, 32, "cream3");
   for (let x = 0; x < 32; x++) if (hash(x >> 1, 13, seed) > 0.45) p.px(x, 13, "cream3");
-  for (let i = 0; i < strokes; i++) {
-    const x = 1 + Math.floor(hash(i, 0, seed) * 22), y = 16 + Math.floor(hash(i, 1, seed) * 42);
-    const n = 5 + Math.floor(hash(i, 2, seed) * 6), lit = hash(i, 3, seed) > 0.2;
-    // A soft lit cluster (lime wash laid thicker) or, rarely, a shallow trowel hollow.
-    if (lit) p.hline(x + 2, y, n - 3, "cream5").hline(x, y + 1, n, "cream5").hline(x + 1, y + 2, n - 2, "cream5");
-    else p.hline(x, y, n - 1, "cream3").hline(x + 2, y + 1, n - 4, "cream3");
-  }
+  // Grime gathers faintly just above the rail, where hands and chair backs reach.
+  for (let x = 0; x < 32; x++) if (hash(x >> 2, 61, seed) > 0.5) p.px(x, 61, "cream3");
 }
 
 // ── dado and skirting ────────────────────────────────────────────────────────
@@ -117,9 +110,9 @@ export function skirting(p: Px, seed: number): void {
 }
 
 /** A complete, quiet dining-wall slice. */
-export function diningWall(p: Px, seed: number, strokes = 7): void {
+export function diningWall(p: Px, seed: number): void {
   capAndCornice(p, seed);
-  plaster(p, seed, strokes);
+  plaster(p, seed);
   dado(p, seed);
   skirting(p, seed);
 }
