@@ -1,6 +1,8 @@
 /**
- * Things on the counter top. Each anchor is where it rests: put it on a counter's top surface
- * (for a counter module anchored at y, the top runs from y - 50 to y - 33; y - 40 sits mid-board).
+ * Things on the counter top. So they sort in front of the counter they stand on, each anchor sits
+ * 40px below the art's base, at counter-ground level: place a piece at (x, counterAnchorY + 1) and
+ * its base lands mid-board on that counter's top (the top runs from counterAnchorY - 50 to - 33).
+ * The contact shadow is lifted the same 40px onto the counter top. No footprint: the counter has it.
  */
 import { defineSprites, type Px } from "../../kit/index.ts";
 import { bowlStack, layer, steamerLid, steamerTier } from "./_helpers.ts";
@@ -23,15 +25,15 @@ function bun(p: Px, x: number, y: number) {
 /** A tea egg in its cracked, marbled shell, 7×6 at (x, y). */
 function teaEgg(p: Px, x: number, y: number, flip = false) {
   const art = [
-    ".oooooo.",
-    "oLLmdmmo",
-    "oLmdmmdo",
+    "..oooo..",
+    ".oHLmmo.",
+    "oLLdmmdo",
+    "oLmmdmmo",
     "omdmmdmo",
-    "ommdmmDo",
-    ".oDDDDo.",
+    ".oDmmDo.",
     "..oooo..",
   ];
-  p.rows(x, y, flip ? art.map((r) => [...r].reverse().join("")) : art, { o: "brown1", L: "tan3", m: "tan2", d: "brown2", D: "brown2" });
+  p.rows(x, y, flip ? art.map((r) => [...r].reverse().join("")) : art, { o: "brown1", H: "tan4", L: "tan3", m: "tan2", d: "brown2", D: "brown3" });
 }
 
 export default defineSprites({
@@ -40,7 +42,7 @@ export default defineSprites({
    * rim from sitting on the stove, the upper newer. Anchor at the middle of its base.
    */
   "kitchen/steamer-stack": {
-    w: 28, h: 33, anchor: [14, 31], foot: [-12, -6, 24, 6], shadow: { rx: 12, ry: 3, dy: -1 },
+    w: 28, h: 33, anchor: [14, 71], shadow: { rx: 12, ry: 3, dy: -41 },
     draw: (p) => {
       const q = layer(p, (q) => {
         steamerTier(q, 14, 12, 5.5, 18, 8, 2, -0.55, 1);
@@ -58,22 +60,15 @@ export default defineSprites({
    * shows a fleck of filling. Anchor at the middle of its base.
    */
   "kitchen/steamer-open": {
-    w: 28, h: 24, anchor: [14, 22], foot: [-12, -6, 24, 6], shadow: { rx: 12, ry: 3, dy: -1 },
+    w: 28, h: 24, anchor: [14, 62], shadow: { rx: 12, ry: 3, dy: -41 },
     draw: (p) => {
       const q = layer(p, (q) => {
         q.ellipse(14, 8, 12.5, 5.5, "bamboo4");
         q.ellipse(14, 8.5, 11, 4.4, "bamboo2");
         // Slatted floor, and a round paper liner a little crumpled.
-        for (let x = 4; x < 25; x += 3) q.over(() => q.vline(x, 4, 10, "bamboo1"));
-        q.ellipse(14, 9, 9.5, 3.6, "cream4");
-        q.over(() => q.hline(7, 7, 6, "cream5").hline(15, 11, 5, "cream3"));
-        q.ellipse(14, 8, 12.5, 5.5, null);
-        q.ellipse(14, 8, 12.5, 5.5, "bamboo4");
-        q.ellipse(14, 8.5, 11, 4.4, "bamboo2");
+        q.over(() => { for (let x = 4; x < 25; x += 3) q.vline(x, 4, 10, "bamboo1"); });
         q.ellipse(14, 9, 9.5, 3.6, "cream4");
         q.over(() => q.hline(7, 7, 6, "cream5").hline(15, 11, 5, "cream3").hline(5, 9, 2, "cream3"));
-        // Far rim, lit.
-        q.over(() => { for (let x = 4; x < 24; x++) if (!q.solid(x, 2)) continue; });
         bun(q, 4, 2);
         bun(q, 13, 1);
         bun(q, 8, 6);
@@ -91,7 +86,7 @@ export default defineSprites({
    * soy and tea with star anise and a strip of cinnamon bark. Put `fx/steam-small` at (12, 6).
    */
   "kitchen/tea-egg-pot": {
-    w: 26, h: 22, anchor: [13, 21], foot: [-11, -6, 22, 6], shadow: { rx: 11, ry: 3, dy: -1 },
+    w: 26, h: 22, anchor: [13, 61], shadow: { rx: 11, ry: 3, dy: -41 },
     draw: (p) => {
       const q = layer(p, (q) => {
         // Body: a squat round pot, glaze lit upper-left with a long highlight.
@@ -106,8 +101,8 @@ export default defineSprites({
         q.rows(0, 7, ["rr", "r."], { r: "rose3" }).rows(24, 7, ["rr", ".r"], { r: "rose1" });
         // Mouth and broth.
         q.ellipse(13, 6, 12, 4.5, "rose3");
-        q.ellipse(13, 6.3, 10.5, 3.5, "wood1");
-        q.over(() => q.hline(6, 4, 5, "wood2").hline(14, 8, 4, "brown2"));
+        q.ellipse(13, 6.3, 10.5, 3.5, "ink2");
+        q.over(() => q.hline(5, 5, 4, "wood2").hline(15, 8, 4, "wood2"));
         teaEgg(q, 3, 2);
         teaEgg(q, 10, 4, true);
         teaEgg(q, 16, 1);
@@ -115,7 +110,6 @@ export default defineSprites({
         q.rows(13, 2, [".b.", "bBb", ".b."], { b: "brown1", B: "brown2" });
         q.rows(8, 8, ["cccc", ".CC."], { c: "brown3", C: "brown2" });
         // Lip, lit at the back, with a chip showing pale clay.
-        for (let x = 3; x < 23; x++) q.px(x, x < 13 ? 2 : 2, q.get(x, 2) === null ? null : q.get(x, 2));
         q.hline(5, 1, 16, "rose4").hline(3, 2, 2, "rose4");
         q.rows(18, 9, ["cc.", ".C."], { c: "cream3", C: "cream2" });
         q.outline("rose1");
@@ -128,7 +122,7 @@ export default defineSprites({
    * the lid where it's opened a hundred times a day; the lid sits crooked on a banknote corner.
    */
   "kitchen/cash-box": {
-    w: 26, h: 18, anchor: [13, 17], foot: [-12, -8, 24, 8], shadow: { rx: 12, ry: 3, dy: -1 },
+    w: 26, h: 18, anchor: [13, 57], shadow: { rx: 12, ry: 3, dy: -41 },
     draw: (p) => {
       const q = layer(p, (q) => {
         // Body front band.
@@ -156,7 +150,7 @@ export default defineSprites({
   },
   /** Blue-and-white rice bowls, five stacked a little crooked, the second one chipped years ago and kept anyway. */
   "kitchen/bowl-stack": {
-    w: 18, h: 23, anchor: [9, 22], foot: [-7, -5, 14, 5], shadow: { rx: 7, ry: 2, dy: -1 },
+    w: 18, h: 23, anchor: [9, 62], shadow: { rx: 7, ry: 2, dy: -41 },
     draw: (p) => { bowlStack(p, 1, 0, 5, 1); },
   },
   /**
@@ -164,7 +158,7 @@ export default defineSprites({
    * worn through the red to the wood.
    */
   "kitchen/tray-stack": {
-    w: 30, h: 13, anchor: [15, 12], foot: [-14, -8, 28, 8], shadow: { rx: 14, ry: 3, dy: -1 },
+    w: 30, h: 13, anchor: [15, 52], shadow: { rx: 14, ry: 3, dy: -41 },
     draw: (p) => {
       const q = layer(p, (q) => {
         // Lacquer tray underneath, a pixel lower and to the right.
@@ -182,7 +176,7 @@ export default defineSprites({
   },
   /** The order spike, its walnut base worn smooth; three blank slips, one curled, one tea-stained. */
   "kitchen/order-spike": {
-    w: 14, h: 24, anchor: [7, 23], foot: [-5, -4, 10, 4], shadow: { rx: 5, ry: 2, dy: -1 },
+    w: 14, h: 24, anchor: [7, 63], shadow: { rx: 5, ry: 2, dy: -41 },
     draw: (p) => {
       const q = layer(p, (q) => {
         q.ellipse(7, 21, 6, 2.5, "wood2");

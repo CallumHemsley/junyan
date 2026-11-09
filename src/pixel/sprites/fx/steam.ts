@@ -16,7 +16,7 @@ type Wisp = {
   stream: number;
 };
 
-const ALPHA = [0.34, 0.55, 0.78] as const;
+const ALPHA = [0.4, 0.66, 0.84] as const;
 
 /**
  * A thin unbroken stream leaves the source and breaks into puffs. Each puff rises along a lazy S,
