@@ -133,6 +133,31 @@ export function roundCorners(p: Px, x: number, y: number, w: number, h: number, 
   });
 }
 
+/**
+ * Drawing calls that can be mirrored left-to-right inside a sprite `w` wide, while vertical
+ * members stay lit on their screen-left side. Used to draw left- and right-facing chairs from one
+ * description without flipping the light.
+ */
+export function mirrorable(p: Px, w: number, flip: boolean) {
+  const X = (x: number, width = 1) => (flip ? w - x - width : x);
+  return {
+    flip,
+    X,
+    rect: (x: number, y: number, rw: number, rh: number, c: Color | null) => p.rect(X(x, rw), y, rw, rh, c),
+    hline: (x: number, y: number, n: number, c: Color) => p.hline(X(x, n), y, n, c),
+    px: (x: number, y: number, c: Color) => p.px(X(x), y, c),
+    grid: (x: number, y: number, gw: number, rows: readonly string[], legend: Legend) =>
+      grid(p, X(x, gw), y, gw, flip ? rows.map((r) => [...r].reverse().join("")) : rows, legend),
+    /** A vertical member lit on its screen-left: lit, base…, shade, deep. */
+    post: (x: number, y: number, pw: number, ph: number, t: Tones) => {
+      const left = X(x, pw);
+      p.rect(left, y, pw, ph, t.base).vline(left, y, ph, t.lit);
+      if (pw > 2) p.vline(left + pw - 1, y, ph, t.deep);
+      if (pw > 3) p.vline(left + pw - 2, y, ph, t.shade);
+    },
+  };
+}
+
 /** Run `fn` for every pixel of the box. Handy for patterns that depend on position. */
 export function each(x: number, y: number, w: number, h: number, fn: (x: number, y: number) => void): void {
   for (let j = y; j < y + h; j++) for (let i = x; i < x + w; i++) fn(i, j);
