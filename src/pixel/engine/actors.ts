@@ -52,6 +52,7 @@ export function actorFrame(actor: Actor, sprite: AtlasSprite, time: number): num
 /** Resolution with a per-request cache and one warning per distinct fallback. */
 export function createActorResolver(atlas: Atlas, warn?: (message: string) => void) {
   const cache = new Map<string, ResolvedActor>();
+  const warned = new Set<string>();
   return (actor: Actor): ResolvedActor => {
     const action = actor.action ?? "idle", facing = actor.facing ?? "down";
     const key = `${actor.sprite}|${action}|${facing}`;
@@ -59,7 +60,12 @@ export function createActorResolver(atlas: Atlas, warn?: (message: string) => vo
     if (!hit) {
       hit = resolveActorSprite(atlas, actor.sprite, action, facing);
       cache.set(key, hit);
-      if (hit.fallback) warn?.(`[pixel] actor "${actor.id}": ${hit.fallback}`);
+      // A wholly missing character warns once, not once per action and facing.
+      const topic = hit.sprite.id === FALLBACK_CHARACTER && actor.sprite !== FALLBACK_CHARACTER ? `missing:${actor.sprite}` : key;
+      if (hit.fallback && !warned.has(topic)) {
+        warned.add(topic);
+        warn?.(`[pixel] actor "${actor.id}": ${hit.fallback}${topic.startsWith("missing:") ? ` (no ${actor.sprite}/* sprites yet)` : ""}`);
+      }
     }
     return hit;
   };

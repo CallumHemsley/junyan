@@ -41,6 +41,7 @@ describe("actor sprite resolution", () => {
     const warn = vi.fn();
     const resolve = createActorResolver(atlas, warn);
     for (let i = 0; i < 3; i++) resolve({ id: "a", sprite: "char/nobody", at: [0, 0] });
+    resolve({ id: "a", sprite: "char/nobody", at: [0, 0], action: "walk", facing: "up" });
     resolve({ id: "b", sprite: "char/cook", at: [0, 0], facing: "left" });
     expect(warn).toHaveBeenCalledTimes(1);
   });
