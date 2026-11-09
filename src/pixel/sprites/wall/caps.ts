@@ -60,7 +60,7 @@ const FRONT = [
   /** The plaster core cracked across where the street door slams. */
   (p: Px) => {
     frontCap(p, 13);
-    block(p, 9, 4, ["q.....qq..", ".qq.qq..q.", "...q......"], CAP, "crack");
+    block(p, 8, 4, ["qq.........", "..qq.......", "....qqq....", ".......qq..", ".........qq"], CAP, "crack");
   },
 ];
 

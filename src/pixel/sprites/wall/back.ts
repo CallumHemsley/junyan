@@ -240,7 +240,7 @@ export default defineSprites({
 
   /** Above the stove: grease has yellowed the tiles and grout, spattered heaviest at wok height. */
   "wall/back-kitchen-c": slice((p) => {
-    kitchenWall(p, 203, (_col, course) => (course >= 2 && course <= 4 ? { lit: "cream5", face: course === 3 ? "bamboo5" : "cream4", shade: course === 3 ? "bamboo4" : "cream3", grout: "bamboo3" } : undefined));
+    kitchenWall(p, 203, (col, course) => (course === 3 && col !== 1 ? { lit: "cream5", face: "cream4", shade: "cream3", grout: "bamboo4" } : course === 2 || course === 4 ? { lit: "white", face: "cream5", shade: "cream4", grout: "bamboo4" } : undefined));
     for (const [x, y] of [[4, 40], [12, 43], [21, 39], [27, 45], [8, 49], [17, 48], [25, 52], [3, 55], [14, 56], [29, 58]] as const) p.px(x, y, "bamboo3").px(x + 1, y, "bamboo4").px(x, y + 1, "bamboo4");
     for (const [x, y, n] of [[10, 50, 6], [23, 54, 5]] as const) p.vline(x, y, n, "bamboo3");
     p.hline(0, 62, 32, "jade5");
@@ -258,7 +258,7 @@ export default defineSprites({
 
   /** Hard over the wok: grease thick enough to have browned at the grout, a hairline crack through one tile. */
   "wall/back-kitchen-e": slice((p) => {
-    kitchenWall(p, 205, (_col, course) => (course >= 2 && course <= 4 ? { lit: "cream4", face: "bamboo5", shade: "bamboo4", grout: "bamboo2" } : course === 1 ? { lit: "cream5", face: "cream4", shade: "cream3", grout: "bamboo3" } : undefined));
+    kitchenWall(p, 205, (col, course) => (course === 3 ? { lit: "cream5", face: col === 0 ? "bamboo5" : "cream4", shade: "cream3", grout: "bamboo3" } : course === 2 || course === 4 ? { lit: "cream5", face: "cream4", shade: "cream3", grout: "bamboo4" } : undefined));
     for (const [x, y] of [[6, 41], [15, 44], [24, 40], [10, 52], [20, 50], [28, 55], [4, 58]] as const) p.px(x, y, "bamboo3").px(x, y + 1, "bamboo2").px(x + 1, y, "bamboo4");
     block(p, 9, 46, ["..K", ".K.", ".K.", "K..", "K.."], PLASTER, "crack");
   }),
