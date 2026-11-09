@@ -49,10 +49,8 @@ export function wallEdge(p: Px, c: Color = "cream1"): Px {
   return p.outline(c, { sides: ["bottom", "right"] });
 }
 
-/** `rows()` that first checks every row is the same width, so hand-drawn maps cannot shear. */
+/** `rows()` under a decor name; rows are left-aligned, so a short row simply stops early. */
 export function art(p: Px, x: number, y: number, rows: readonly string[], legend: Legend): Px {
-  const w = rows[0]?.length ?? 0;
-  rows.forEach((row, i) => { if (row.length !== w) throw new Error(`art(): row ${i} is ${row.length} wide, expected ${w}: "${row}"`); });
   return p.rows(x, y, rows, legend);
 }
 
