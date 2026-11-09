@@ -5,6 +5,7 @@
  */
 import { defineSprites } from "../../kit/index.ts";
 import { defineCharacter, EAR_RIGHT, part, sided, sidedBy, Z, type Part, type Pose } from "./_rig.ts";
+import { TRAY } from "./_tray.ts";
 
 const h = (y: number, rows: readonly string[]) => part(y, Z.hair, rows, { group: "head" });
 const f = (y: number, rows: readonly string[]) => part(y, Z.face, rows, { group: "head" });
@@ -93,6 +94,17 @@ const hair = sided({
 /** Eager: brows up, a lopsided grin. Blinks on the breath; glances aside as a habit. */
 const face = sidedBy({
   down: (pose: Pose): Part[] => {
+    // Carrying: eyes on the tray, brows knitted, lips pressed in concentration.
+    if (pose.arms === "carry") return [f(21, [
+      "................................",
+      ".........rrr........rrr.........",
+      "...........r........r...........",
+      "................................",
+      "..........ee........ee..........",
+      "..........we........we..........",
+      ".......bb..............bb.......",
+      ".......bb......mm......bb.......",
+    ])];
     const glance = pose.beat === "habit", blink = pose.beat === "breath" && pose.action === "idle";
     const eyes = blink
       ? ["................................", "................................", "..........ee........ee.........."]
@@ -111,6 +123,16 @@ const face = sidedBy({
   },
   up: () => [],
   right: (pose: Pose): Part[] => {
+    if (pose.arms === "carry") return [f(21, [
+      "................................",
+      "....................rrr.........",
+      "......................r.........",
+      "................................",
+      ".....................ee.........",
+      ".....................we.........",
+      "..................bb............",
+      "..................bb...mm.......",
+    ])];
     const blink = pose.beat === "breath" && pose.action === "idle";
     const eye = blink
       ? ["......................", "......................", ".....................ee"]
@@ -246,9 +268,9 @@ export const PLAYER = {
   },
   hair,
   face,
-  extras: [apron, pencil],
+  extras: [apron, pencil, TRAY],
 } as const;
 
 export default defineSprites({
-  ...defineCharacter(PLAYER, ["idle", "walk"]),
+  ...defineCharacter(PLAYER, ["idle", "walk", "carry-idle", "carry-walk"]),
 });
