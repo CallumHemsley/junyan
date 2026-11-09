@@ -118,11 +118,11 @@ export function steamerTier(p: Px, cx: number, rx: number, ry: number, yt: numbe
   eachColumn(cx, rx, ry, (x, u, off) => {
     const lv = roundLevel(u), top = yt + off;
     p.px(x, top, bambooTone(lv, 1, age));
-    p.px(x, top + 1, bambooTone(lv, 0, age));
+    p.px(x, top + 1, bambooTone(lv, lv === 3 ? 0 : 1, age));
     p.px(x, top + 2, bambooTone(lv, -1, age));
-    for (let j = 3; j < h - 2; j++) p.px(x, top + j, bambooTone(lv, 0, age));
-    p.px(x, top + h - 2, bambooTone(lv, 0, age));
-    p.px(x, top + h - 1, bambooTone(lv, -2, age));
+    for (let j = 3; j < h - 1; j++) p.px(x, top + j, bambooTone(lv, 0, age));
+    // A dark gap where the tier sits into the one below.
+    p.px(x, top + h - 1, lv === 3 ? "bamboo2" : "bamboo1");
     // Grain of the bent strip: short streaks a step darker, staggered.
     const k = Math.floor((x - cx + rx + seed * 3) / 4);
     if (Math.abs(u) < 0.85 && (k * 7 + seed) % 5 < 2) p.px(x, top + 4 + ((k + seed) % 3), bambooTone(lv, -1, age));
@@ -130,7 +130,7 @@ export function steamerTier(p: Px, cx: number, rx: number, ry: number, yt: numbe
   });
   // The lip stands a pixel proud at each side.
   p.px(Math.floor(cx - rx) - 1, yt, bambooTone(2, 1, age)).px(Math.floor(cx - rx) - 1, yt + 1, bambooTone(2, 0, age));
-  p.px(Math.ceil(cx + rx), yt, bambooTone(0, 1, age)).px(Math.ceil(cx + rx), yt + 1, bambooTone(0, 0, age));
+  p.px(Math.ceil(cx + rx), yt, bambooTone(0, 1, age)).px(Math.ceil(cx + rx), yt + 1, bambooTone(0, 0, age)).px(Math.ceil(cx + rx), yt + 2, bambooTone(0, -1, age));
   // Rattan binding over the strip's overlap: wraps alternating dark and lit, a pixel wider than the strip.
   const lx = Math.floor(cx + lash * rx), lu = (lx + 0.5 - cx) / rx;
   const loff = Math.round(ry * Math.sqrt(Math.max(0, 1 - lu * lu)) - 0.15);
@@ -157,14 +157,13 @@ export function steamerLid(p: Px, cx: number, rx: number, ry: number, y: number,
     const light = -0.7 * u - 0.5 * v;
     const lv = light > 0.4 ? 3 : light > -0.15 ? 2 : light > -0.6 ? 1 : 0;
     if (!inside(x, yy, rx - 2.5, ry - 1.6, fy)) {
-      // The bamboo hoop round the top.
-      p.px(x, yy, bambooTone(lv, 1, age));
+      // The bamboo hoop round the top, a step brighter than the weave.
+      p.px(x, yy, bambooTone(Math.min(3, lv + 1), 1, age));
       continue;
     }
-    // Basket weave: 2×2 cells alternate a strand running across (lit top row) and one running down (lit left column).
-    const across = m((x >> 1) + (yy >> 1), 2) === 0;
-    const lit = across ? m(yy, 2) === 0 : m(x, 2) === 0;
-    p.px(x, yy, bambooTone(lv, lit ? 0 : -1, age));
+    // Weave, only suggested: the field's own tone, with a sparse stagger of strands one step down.
+    const strand = m(yy, 2) === 0 ? m(x + (yy >> 1) * 2, 4) === 0 : false;
+    p.px(x, yy, bambooTone(lv, strand ? -1 : 0, age));
   }
   // Hairline of shade where the far hoop rises over the weave.
   for (let x = Math.floor(cx - rx); x < cx + rx; x++) for (let yy = Math.floor(y - ry - dome); yy < fy; yy++)

@@ -11,7 +11,7 @@
  *
  * The leg of the L runs north–south, seen from above: `counter-v-top` (its back end, against the
  * wall), `counter-v-mid` / `counter-v-mid-b`, then `counter-v-bottom` (a free end) or
- * `counter-corner` (joining a run that leaves east). Place every piece with its anchor on its own
+ * `counter-corner` (joining a run that leaves east). `counter-v-mid-c` is a third leg variant. Place every piece with its anchor on its own
  * tile's bottom row (y = 32r + 31); the leg's tops are drawn lifted to the counter-top height and
  * butt seamlessly into the corner. The v-top and v-mid anchors therefore sit below their art.
  */
@@ -152,13 +152,41 @@ function horizontal(p: Px, end: End, joints: readonly [number, number], panel: (
   ends(p, end, true);
 }
 
-/** Leg of the L, seen from above: two boards running north–south across rows y..y+h-1. */
-function legBoards(p: Px, y: number, h: number, seamX = 15) {
+/**
+ * Leg of the L, seen from above: three boards running north–south over rows y..y+h-1. The west
+ * edge is a lit bevel; the east edge falls into a two-pixel shade so the slab has thickness.
+ * `joints` are [board, row] butt joints (boards are 0..2), each with a nail either side.
+ */
+const LEG_SEAMS = [10, 20] as const;
+function legBoards(p: Px, y: number, h: number, joints: readonly (readonly [number, number])[] = [], east = true) {
   p.rect(1, y, 30, h, "wood4");
-  p.vline(seamX, y, h, "wood3").vline(seamX + 1, y, h, "wood5");
-  for (let j = 0; j < h; j++) if (((y + j) * 5) % 9 < 2) p.px(seamX + 1, y + j, "wood4");
-  p.vline(1, y, h, "wood5").vline(2, y, h, "wood5").vline(29, y, h, "wood4").vline(30, y, h, "wood3");
-  p.vline(0, y, h, "wood1").vline(31, y, h, "wood1");
+  for (const sx of LEG_SEAMS) p.vline(sx, y, h, "wood3").vline(sx + 1, y, h, "wood5");
+  // The lip of each seam is broken where the board has worn.
+  for (let j = 0; j < h; j++) for (const sx of LEG_SEAMS) if (((y + j) * 7 + sx) % 11 < 3) p.px(sx + 1, y + j, "wood4");
+  p.vline(1, y, h, "wood6").vline(2, y, h, "wood5");
+  if (east) p.vline(28, y, h, "wood3").vline(29, y, h, "wood3").vline(30, y, h, "wood2");
+  const span = [[3, 9], [12, 19], [22, 27]] as const;
+  for (const [board, row] of joints) {
+    const [x0, x1] = span[board];
+    p.hline(x0, y + row, x1 - x0 + 1, "wood3").hline(x0, y + row + 1, x1 - x0 + 1, "wood5");
+    p.px(x0 + 1, y + row - 2, "wood2").px(x1 - 1, y + row + 3, "wood2");
+  }
+  p.vline(0, y, h, "wood1");
+  if (east) p.vline(31, y, h, "wood1");
+}
+
+/** A pale track rubbed down the leg by plates slid along it to the corner: wood5 streaks, wood6 core. */
+function slideTrack(p: Px, y0: number, h: number, wobble: number) {
+  p.over(() => {
+    // Long soft streaks along the boards, drifting a pixel side to side down the leg.
+    for (const [dx, phase, light] of [[0, 0, 0], [2, 3, 1], [3, 9, 0], [5, 5, 1], [6, 13, 0], [4, 1, 2]] as const) {
+      for (let j = 0; j < h; j++) {
+        if (((j + phase) % 17) > 12) continue;
+        const x = 12 + dx + Math.round(Math.sin((y0 + j) / 11 + wobble));
+        p.px(x, y0 + j, light === 2 ? "wood6" : "wood5");
+      }
+    }
+  });
 }
 
 const SHADOW = { rx: 16, ry: 4 } as const;
@@ -247,35 +275,73 @@ export default defineSprites({
     },
   },
 
-  /** North end of the leg, against the wall: a burn ring from the kettle that always sits here. */
+  /**
+   * North end of the leg, against the wall: the board ends show their end grain, and the kettle that
+   * always stands here has left a burnt ring.
+   */
   "kitchen/counter-v-top": {
     w: 32, h: 33, anchor: [16, 52], foot: FOOT,
     draw: (p) => {
-      legBoards(p, 1, 32);
-      p.hline(2, 0, 28, "wood1").hline(3, 1, 26, "wood5").hline(5, 2, 9, "wood6");
-      p.px(0, 0, null).px(1, 0, null).px(0, 1, null).px(1, 1, "wood1").px(31, 0, null).px(30, 0, null).px(31, 1, null).px(30, 1, "wood1");
-      grainV(p, [[6, 5, 12, 0], [10, 14, 10, 1], [21, 4, 9, 1], [25, 16, 12, 0], [5, 22, 8, 1]]);
-      p.rows(17, 12, ["..cccc..", ".cdddc..", "cd....dc", "cd....dc", ".cdddDc.", "..cccc.."], { c: "wood3", d: "wood2", D: "wood1" });
+      legBoards(p, 1, 32, [[1, 19]]);
+      grainV(p, [[5, 8, 12, 0], [7, 20, 9, 1], [14, 6, 10, 1], [17, 23, 8, 0], [24, 9, 14, 0], [25, 26, 5, 1]]);
+      // End grain: the boards' cut ends, rings in arcs, the top arris catching the sun.
+      p.rect(1, 1, 30, 4, "wood3");
+      for (const [x0, x1] of [[2, 9], [12, 19], [22, 29]] as const) {
+        p.hline(x0, 1, x1 - x0 + 1, "wood5");
+        p.rows(x0 + 1, 2, [".dddd.", "d....d"], { d: "wood2" });
+        p.rows(x0 + 2, 3, ["dd"], { d: "wood2" });
+      }
+      for (const sx of LEG_SEAMS) p.vline(sx, 1, 4, "wood1");
+      p.hline(1, 5, 30, "wood5").vline(29, 1, 4, "wood2").vline(30, 1, 4, "wood2");
+      p.hline(2, 0, 28, "wood1").vline(0, 1, 32, "wood1").vline(31, 1, 32, "wood1").px(1, 0, null).px(30, 0, null).px(0, 0, null).px(31, 0, null);
+      p.px(1, 1, "wood1").px(30, 1, "wood1");
+      // The kettle ring, scorched dark on its back arc.
+      p.rows(13, 10, ["...cccccc...", ".cCddddddCc.", "cCd......dCc", "cd........dc", "cCd......dCc", ".ccCCddCCc..", "...cccccc..."], { c: "wood3", C: "wood2", d: "wood1" });
     },
   },
-  /** Leg of the L, plain but for a knot and the grain bending round it. */
+  /** Leg of the L: the slide track where plates travel to the corner, and a knot the boards bend round. */
   "kitchen/counter-v-mid": {
     w: 32, h: 32, anchor: [16, 51], foot: FOOT,
     draw: (p) => {
-      legBoards(p, 0, 32);
-      grainV(p, [[7, 2, 14, 1], [11, 15, 11, 0], [20, 1, 9, 0], [24, 12, 15, 1], [5, 20, 9, 0]]);
-      p.rows(8, 7, [".kk.", "kKdk", "kddk", ".kk."], { k: "wood3", K: "wood2", d: "wood1" });
-      p.over(() => p.vline(7, 4, 3, "wood3").vline(12, 11, 4, "wood3"));
+      legBoards(p, 0, 32, [[0, 20], [2, 6]]);
+      grainV(p, [[5, 2, 14, 1], [7, 23, 8, 0], [16, 3, 9, 0], [24, 14, 15, 1], [26, 1, 9, 0]]);
+      slideTrack(p, 0, 32, 0);
+      p.rows(23, 21, [".kk.", "kKdk", "kddk", ".kk."], { k: "wood3", K: "wood2", d: "wood1" });
+      p.over(() => p.vline(23, 17, 3, "wood3").vline(26, 26, 4, "wood3"));
     },
   },
-  /** Leg of the L where the waiter waits: knife nicks and a tea ring. */
+  /** Leg of the L where the waiter leans: two cup rings overlapping, and a few nicks. */
   "kitchen/counter-v-mid-b": {
     w: 32, h: 32, anchor: [16, 51], foot: FOOT,
     draw: (p) => {
-      legBoards(p, 0, 32, 16);
-      grainV(p, [[5, 4, 10, 0], [10, 18, 9, 1], [22, 2, 12, 1], [26, 17, 10, 0]]);
-      p.rows(19, 4, ["..rrrr..", ".r....r.", "r......r", "r......r", ".r....R.", "..rrRR.."], { r: "wood3", R: "wood2" });
-      p.rows(5, 21, ["d..d.", "ld..d", ".ld.l", "..l.."], { d: "wood2", l: "wood5" });
+      legBoards(p, 0, 32, [[1, 12]]);
+      grainV(p, [[4, 3, 10, 0], [7, 18, 11, 1], [15, 20, 9, 1], [23, 2, 12, 1], [26, 17, 10, 0]]);
+      slideTrack(p, 0, 32, 2.2);
+      p.rows(18, 4, ["..rrrr..", ".r....r.", "r......r", "r......r", ".r....R.", "..rrRR.."], { r: "wood3", R: "wood2" });
+      p.rows(21, 7, ["..rrrr..", ".r....r.", "......Rr", "r......r", ".r...R..", "..rrR..."], { r: "wood3", R: "wood2" });
+      p.rows(4, 22, ["d..d.", "ld..d", ".ld.l", "..l.."], { d: "wood2", l: "wood5" });
+    },
+  },
+  /**
+   * Leg of the L by the stove: a block of crosshatched knife marks where 油条 are cut, and a long
+   * scorch from a hot spatula laid down without thinking.
+   */
+  "kitchen/counter-v-mid-c": {
+    w: 32, h: 32, anchor: [16, 51], foot: FOOT,
+    draw: (p) => {
+      legBoards(p, 0, 32, [[0, 5], [2, 25]]);
+      grainV(p, [[6, 9, 12, 1], [13, 2, 8, 0], [17, 15, 12, 1], [24, 4, 9, 1], [26, 12, 6, 0]]);
+      slideTrack(p, 0, 32, 4.1);
+      p.rows(3, 11, [
+        "d..d..d.",
+        "ld.ld.ld",
+        ".ldd.ld.",
+        "d.dld.ld",
+        "ld.dl.d.",
+        ".ld.ldl.",
+        "..l..l..",
+      ], { d: "wood2", l: "wood5" });
+      p.rows(20, 18, ["..cc....", ".cddc...", "cdDDdc..", ".cdDDdc.", "..cddDdc", "...cdddc", "....ccc."], { c: "wood3", d: "wood2", D: "wood1" });
     },
   },
   /** A free south end of the leg: top plus a plain framed face. */
@@ -283,22 +349,41 @@ export default defineSprites({
     w: 32, h: 52, anchor: [16, 51], foot: FOOT, shadow: SHADOW,
     draw: (p) => {
       legBoards(p, 0, 19);
-      grainV(p, [[6, 2, 10, 1], [23, 4, 11, 0], [11, 9, 8, 0]]);
+      grainV(p, [[6, 2, 10, 1], [24, 4, 11, 0], [14, 9, 8, 0]]);
+      slideTrack(p, 0, 17, 1.3);
       nosing(p);
       face(p, plainPanel([10, 17, 22]), false);
       ends(p, "both", false);
       scuffs(p, [[12, 48, 3]]);
     },
   },
-  /** The corner of the L: the leg's boards run through; the run butts against them. */
+  /**
+   * The corner of the L: the leg's boards and the run's boards meet on a mitre, a diagonal joint from
+   * the outer front corner to the inner back corner, the groove dark and its lower lip lit. The slide
+   * track comes down the leg and swings round the corner onto the run.
+   */
   "kitchen/counter-corner": {
     w: 32, h: 52, anchor: [16, 51], foot: FOOT, shadow: SHADOW,
     draw: (p) => {
-      legBoards(p, 0, 19);
-      // The run's front board butts in here, on the right.
-      p.vline(31, 0, 19, "wood3").vline(30, 0, 19, "wood4").px(31, 9, "wood3").px(31, 10, "wood5");
-      grainV(p, [[6, 1, 9, 0], [11, 6, 10, 1], [22, 2, 8, 1]]);
-      p.over(() => p.hline(18, 13, 9, "wood5").hline(16, 14, 12, "wood5").hline(19, 15, 6, "wood5"));
+      // Mitre line: y = 18 - (x - 1) * 18 / 30.
+      const side = (x: number, y: number) => y - (18 - ((x - 1) * 18) / 30);
+      legBoards(p, 0, 19, [], false);
+      grainV(p, [[5, 1, 8, 0], [14, 2, 6, 1]]);
+      p.each((x, y) => {
+        const t = side(x, y);
+        if (x < 1 || y > 18 || t < -0.6) return undefined;
+        if (t <= 0.6) return "wood2";
+        // The run's boards: east–west, the same seam rows as the run modules.
+        if (y === 9) return "wood3";
+        if (y === 10 || side(x, y - 1) <= 0.6) return "wood5";
+        return "wood4";
+      }, [0, 0, 32, 19]);
+      grainH(p, [[22, 4, 8, 1], [16, 13, 10, 0], [24, 15, 7, 1]]);
+      // The slide track swinging round the corner.
+      p.over(() => {
+        for (const [x, y, n] of [[12, 0, 7], [12, 2, 6], [13, 4, 6], [13, 6, 7], [14, 8, 8], [15, 10, 9], [16, 12, 10], [18, 14, 13], [21, 16, 11]] as const) p.hline(x, y, n, "wood5");
+        p.hline(14, 6, 3, "wood6").hline(17, 12, 4, "wood6").hline(22, 14, 6, "wood6");
+      });
       nosing(p);
       face(p, plainPanel([11, 16, 23]), false);
       ends(p, "left", false);
