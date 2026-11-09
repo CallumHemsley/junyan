@@ -42,17 +42,17 @@ export default defineSprites({
    * rim from sitting on the stove, the upper newer. Anchor at the middle of its base.
    */
   "kitchen/steamer-stack": {
-    w: 28, h: 33, anchor: [14, 71], shadow: { rx: 12, ry: 3, dy: -41 },
+    w: 30, h: 33, anchor: [15, 71], shadow: { rx: 12, ry: 3, dy: -41 },
     draw: (p) => {
       const q = layer(p, (q) => {
-        steamerTier(q, 14, 12, 5.5, 18, 8, 2, -0.55, 1);
-        steamerTier(q, 14, 12, 5.5, 10, 8, 1, 0.4, 4);
-        steamerLid(q, 14, 12.5, 5.5, 8, 2, 1);
+        steamerTier(q, 15, 12.5, 5, 19, 8, 2, -0.55, 1);
+        steamerTier(q, 15, 12.5, 5, 11, 8, 1, 0.4, 4);
+        steamerLid(q, 15, 13, 5, 8, 1, 1);
         q.outline("bamboo1");
       });
       p.blit(q, 0, 0);
       // Scorch on the lower tier's foot where it sat too close to the flame.
-      p.rows(4, 26, ["..dd.", ".dDDd", "dDdd."], { d: "bamboo1", D: "wood1" });
+      p.rows(5, 26, ["..dd.", ".dDDd", "dDdd."], { d: "bamboo1", D: "wood1" });
     },
   },
   /**
@@ -148,10 +148,10 @@ export default defineSprites({
       p.rows(2, 15, [".gg.", "gGGd", ".dd."], { g: "gold4", G: "gold5", d: "gold2" });
     },
   },
-  /** Blue-and-white rice bowls, five stacked a little crooked, the second one chipped years ago and kept anyway. */
+  /** Blue-and-white rice bowls, four in a crooked pile, the second one chipped years ago and kept anyway. */
   "kitchen/bowl-stack": {
-    w: 18, h: 23, anchor: [9, 62], shadow: { rx: 7, ry: 2, dy: -41 },
-    draw: (p) => { bowlStack(p, 1, 0, 5, 1); },
+    w: 20, h: 29, anchor: [10, 68], shadow: { rx: 8, ry: 2, dy: -41 },
+    draw: (p) => { bowlStack(p, 0, 0, 4, 1); },
   },
   /**
    * Serving trays: a scratched aluminium one on top of the old lacquer tray, whose corner has

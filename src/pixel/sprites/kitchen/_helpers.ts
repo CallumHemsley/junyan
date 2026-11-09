@@ -52,41 +52,46 @@ export const BAMBOO_RIM: readonly Stop[] = [
   [-0.82, "bamboo4"], [-0.25, "bamboo5"], [0.35, "bamboo4"], [0.78, "bamboo3"], [2, "bamboo2"],
 ];
 
+/** A blue-and-white rice bowl, 18×14: glazed inside, lit rim lip, a tapering outer wall with a
+ * blue band and two little sprays, a foot ring. Row 5 is the front rim lip. */
 const BOWL = [
-  "...oooooooooo...",
-  ".ooWWWWWWWWWWoo.",
-  "oWWbbbbbbbbbbWWo",
-  "oWbiiiiiiiiiibWo",
-  "oWWiiiiiiiiiiWso",
-  "ocWWWWWWWWWWWsso",
-  "ocwbwwbbwwbbwbso",
-  ".ocwBBwwBBwwBso.",
-  "..ocwwwwwwwwso..",
-  "...ooBBBBBBoo...",
-  "....oooooooo....",
+  "....oooooooooo....",
+  "..ooWWWWWWWWWWoo..",
+  ".oWbbbbbbbbbbbbWo.",
+  "oWbiiiiiiiiiiiibWo",
+  "oWWiiiiiiiiiiiisWo",
+  "oWWWWWWWWWWWWWWsso",
+  "ocwwwwwwwwwwwwwsso",
+  "ocbBbBbBbBbBbBbsso",
+  ".ocwwwwwwwwwwwsso.",
+  ".ocwwbbwwwwbbwsso.",
+  "..ocwwwwwwwwwsso..",
+  "...oocwwwwwwsoo...",
+  ".....oBBBBBBo.....",
+  ".....oooooooo.....",
 ];
 const BOWL_INK = { o: "blue1", W: "white", w: "cream5", c: "cream4", s: "cream3", i: "cream4", b: "blue3", B: "blue2" } as const;
 
 /**
- * A nested stack of `n` blue-and-white rice bowls, 16 wide, the top one showing its glazed inside;
- * each lower bowl's rim lip shows two pixels below the one above. `chip` (0 = top) has a chipped
- * rim showing the pale biscuit. Returns the stack's height. promote?
+ * A slightly crooked pile of `n` rice bowls, 18 wide plus the lean. Each bowl sits in the one below
+ * and shows `step` rows of its outer wall above that bowl's rim (5 shows the blue band); only the
+ * top bowl shows its glazed inside. `chip` (0 = top) has a chipped rim showing the pale biscuit.
+ * Returns the pile's height. promote?
  */
-export function bowlStack(p: Px, x: number, y: number, n: number, chip = -1): number {
-  // Bottom bowl first: its whole outside; then each bowl above it, nudged a pixel side to side,
-  // shows its rim lip and the first row of its pattern before the next one hides the rest.
-  const shift = (i: number) => (i % 3 === 1 ? 1 : i % 3 === 2 ? -1 : 0);
-  const bottom = y + (n - 1) * 3;
-  p.rows(x + shift(n - 1), bottom, BOWL, BOWL_INK);
-  for (let i = n - 2; i >= 0; i--) {
-    const by = y + i * 3;
-    p.rows(x + shift(i), by, i === 0 ? BOWL.slice(0, 8) : BOWL.slice(0, 7), BOWL_INK);
+export function bowlStack(p: Px, x: number, y: number, n: number, chip = -1, step = 5): number {
+  const lean = [0, 1, -1, 1, 0];
+  // Top bowl first; each bowl below is drawn over the lower half of the one above it, which sits
+  // inside it, so only rim lip, outer wall and band of every bowl stay visible.
+  for (let i = 0; i < n; i++) {
+    const bx = x + 1 + lean[i % lean.length], by = y + i * step;
+    if (i === 0) p.rows(bx, by, BOWL, BOWL_INK);
+    else p.rows(bx, by + 5, BOWL.slice(5), BOWL_INK);
   }
   if (chip >= 0) {
-    const cy = y + chip * 3 + 5, cx = x + shift(chip) + 10;
-    p.px(cx, cy, "cream2").px(cx + 1, cy, "cream3").px(cx, cy - 1, "cream3").px(cx + 1, cy - 1, "blue1");
+    const cx = x + 1 + lean[chip % lean.length] + 11, cy = y + chip * step + 5;
+    p.px(cx, cy, "cream2").px(cx + 1, cy, "cream3").px(cx + 1, cy + 1, "cream3").px(cx, cy - 1, chip === 0 ? "cream3" : "blue1");
   }
-  return (n - 1) * 3 + 11;
+  return (n - 1) * step + 14;
 }
 
 /**
@@ -118,11 +123,11 @@ export function steamerTier(p: Px, cx: number, rx: number, ry: number, yt: numbe
   eachColumn(cx, rx, ry, (x, u, off) => {
     const lv = roundLevel(u), top = yt + off;
     p.px(x, top, bambooTone(lv, 1, age));
-    p.px(x, top + 1, bambooTone(lv, 0, age));
+    p.px(x, top + 1, bambooTone(lv, lv === 3 ? 0 : 1, age));
     p.px(x, top + 2, bambooTone(lv, -1, age));
-    for (let j = 3; j < h - 2; j++) p.px(x, top + j, bambooTone(lv, 0, age));
-    p.px(x, top + h - 2, bambooTone(lv, 0, age));
-    p.px(x, top + h - 1, bambooTone(lv, -2, age));
+    for (let j = 3; j < h - 1; j++) p.px(x, top + j, bambooTone(lv, 0, age));
+    // A dark gap where the tier sits into the one below.
+    p.px(x, top + h - 1, lv === 3 ? "bamboo2" : "bamboo1");
     // Grain of the bent strip: short streaks a step darker, staggered.
     const k = Math.floor((x - cx + rx + seed * 3) / 4);
     if (Math.abs(u) < 0.85 && (k * 7 + seed) % 5 < 2) p.px(x, top + 4 + ((k + seed) % 3), bambooTone(lv, -1, age));
@@ -130,7 +135,7 @@ export function steamerTier(p: Px, cx: number, rx: number, ry: number, yt: numbe
   });
   // The lip stands a pixel proud at each side.
   p.px(Math.floor(cx - rx) - 1, yt, bambooTone(2, 1, age)).px(Math.floor(cx - rx) - 1, yt + 1, bambooTone(2, 0, age));
-  p.px(Math.ceil(cx + rx), yt, bambooTone(0, 1, age)).px(Math.ceil(cx + rx), yt + 1, bambooTone(0, 0, age));
+  p.px(Math.ceil(cx + rx), yt, bambooTone(0, 1, age)).px(Math.ceil(cx + rx), yt + 1, bambooTone(0, 0, age)).px(Math.ceil(cx + rx), yt + 2, bambooTone(0, -1, age));
   // Rattan binding over the strip's overlap: wraps alternating dark and lit, a pixel wider than the strip.
   const lx = Math.floor(cx + lash * rx), lu = (lx + 0.5 - cx) / rx;
   const loff = Math.round(ry * Math.sqrt(Math.max(0, 1 - lu * lu)) - 0.15);
@@ -157,14 +162,13 @@ export function steamerLid(p: Px, cx: number, rx: number, ry: number, y: number,
     const light = -0.7 * u - 0.5 * v;
     const lv = light > 0.4 ? 3 : light > -0.15 ? 2 : light > -0.6 ? 1 : 0;
     if (!inside(x, yy, rx - 2.5, ry - 1.6, fy)) {
-      // The bamboo hoop round the top.
-      p.px(x, yy, bambooTone(lv, 1, age));
+      // The bamboo hoop round the top, a step brighter than the weave.
+      p.px(x, yy, bambooTone(Math.min(3, lv + 1), 1, age));
       continue;
     }
-    // Basket weave: 2×2 cells alternate a strand running across (lit top row) and one running down (lit left column).
-    const across = m((x >> 1) + (yy >> 1), 2) === 0;
-    const lit = across ? m(yy, 2) === 0 : m(x, 2) === 0;
-    p.px(x, yy, bambooTone(lv, lit ? 0 : -1, age));
+    // Weave, only suggested: the field's own tone, with a sparse stagger of strands one step down.
+    const strand = m(yy, 2) === 0 ? m(x + (yy >> 1) * 2, 4) === 0 : false;
+    p.px(x, yy, bambooTone(lv, strand ? -1 : 0, age));
   }
   // Hairline of shade where the far hoop rises over the weave.
   for (let x = Math.floor(cx - rx); x < cx + rx; x++) for (let yy = Math.floor(y - ry - dome); yy < fy; yy++)
