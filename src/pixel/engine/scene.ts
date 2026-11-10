@@ -104,7 +104,7 @@ export function compileScene(scene: Scene, atlas: Atlas): CompiledScene {
   });
 
   for (const prop of scene.props ?? []) {
-    if (prop.hidden) continue;
+    if (prop.hidden || (prop.optional && !atlas.has(prop.sprite))) continue;
     const placed = placeProp(prop, atlas);
     (placed.layer === "floor" ? floor : placed.layer === "over" ? over : objects).push(placed);
   }

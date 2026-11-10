@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import town, { SHOPFRONT_KINDS } from "../../pixel/scenes/town.ts";
+import town, { LAMP_GLASS, SHOPFRONT_KINDS, shadeSpriteId } from "../../pixel/scenes/town.ts";
 import { compileScene, createAtlas, createSceneRenderer, renderToFrame, resolveActorSprite, type Rect } from "../../pixel/engine/index.ts";
 import { TILE, type SpriteDef } from "../../pixel/kit/index.ts";
 import { sprites } from "../../pixel/registry.ts";
@@ -32,17 +32,22 @@ describe("the town scene is the town map", () => {
     }
   });
 
-  it("draws one sprite per map prop, at its footprint's bottom-centre, on the map's layer", () => {
+  it("draws one sprite per map prop, at its footprint's bottom-centre, on the map's layer, with its optional shade under it", () => {
     const props = town.props ?? [];
-    expect(props.map(p => p.id)).toEqual(map.props.map(p => p.id));
+    expect(props.filter(p => !p.optional).map(p => p.id)).toEqual(map.props.map(p => p.id));
     for (const p of map.props) {
-      const prop = props.find(q => q.id === p.id)!;
+      const prop = props.find(q => q.id === p.id)!, anchor = townAnchor(p as Parameters<typeof townAnchor>[0]);
       expect(prop.sprite).toBe(townSpriteId(p.id));
-      expect(prop.at).toEqual(townAnchor(p as Parameters<typeof townAnchor>[0]));
+      expect(prop.at).toEqual(anchor);
       expect(prop.solid).toBe(false);
       expect(prop.layer).toBe(p.layer === "ground" ? "floor" : "object");
+      expect(props.find(q => q.id === `${p.id}-shade`)).toEqual({ id: `${p.id}-shade`, sprite: shadeSpriteId(p.id), at: anchor, layer: "floor", solid: false, optional: true });
     }
-    expect(compiled.objects.length + compiled.over.length + compiled.floor.filter(f => !f.tile).length).toBe(map.props.length);
+    // Shades are drawn only where their art exists.
+    const shades = map.props.filter(p => atlas.has(shadeSpriteId(p.id))).length;
+    expect(compiled.objects.length + compiled.over.length + compiled.floor.filter(f => !f.tile).length).toBe(map.props.length + shades);
+    const withShade = compileScene(liveTown, createAtlas({ ...sprites, "town/junction-shade": { w: 8, h: 4, layer: "floor", draw: p => p.rect(0, 0, 8, 4, "leaf1") } }, townAtlasOptions()));
+    expect(withShade.floor.some(f => f.prop?.id === "town.junction-shade")).toBe(true);
   });
 
   it("marks every exit, entrance, anchor and landmark where the map has it, and a sign on every shopfront", () => {
@@ -65,15 +70,32 @@ describe("the town scene is the town map", () => {
     expect(Object.keys(compiled.marks).filter(k => k.startsWith("sign/")).length).toBe(shops.length);
   });
 
-  it("lights the street lamps and shop windows at dusk only", () => {
+  it("lights the street lamps' glass and the shop windows at dusk only", () => {
     const lamps = map.props.filter(p => p.kind === "street-lamp");
     const glows = compiled.lights.filter(l => l.phases?.includes("night"));
     expect(glows.length).toBeGreaterThanOrEqual(lamps.length + 4);
     expect(compiled.lights.every(l => !l.phases?.includes("morning"))).toBe(true);
-    const at = (phase: "morning" | "night") => renderToFrame(createSceneRenderer(liveTown, atlas), { x: 15 * TILE, y: 24 * TILE, w: 6 * TILE, h: 4 * TILE }, { time: 0, phase });
-    // Under lamp-0 (18, 26.5) the night is lifted above the plain night ambient elsewhere.
-    const lit = at("night"), px = (x: number, y: number) => lit.data[(y * lit.w + x) * 4];
-    expect(px(3 * TILE, Math.round(1.5 * TILE))).toBeGreaterThan(px(0, 0));
+    for (const lamp of lamps) {
+      const [x, y] = townAnchor(lamp as Parameters<typeof townAnchor>[0]);
+      expect(town.lights!.some(l => l.kind === "glow" && l.at[0] === x && Math.abs(l.at[1] - (y - LAMP_GLASS)) < 1e-9)).toBe(true);
+    }
+    // At night lamp-0's glass (18.175, 26.85 − 2.9) lifts the picture round it above the same night unlit.
+    const view = { x: 16 * TILE, y: 22 * TILE, w: 4 * TILE, h: 4 * TILE };
+    const lit = renderToFrame(createSceneRenderer(liveTown, atlas), view, { time: 0, phase: "night" });
+    const dark = renderToFrame(createSceneRenderer({ ...liveTown, lights: [] }, atlas), view, { time: 0, phase: "night" });
+    const i = (Math.round(2 * TILE) * view.w + Math.round(2.2 * TILE)) * 4;
+    expect(lit.data[i] + lit.data[i + 1]).toBeGreaterThan(dark.data[i] + dark.data[i + 1] + 20);
+    const morning = (scene: typeof liveTown) => renderToFrame(createSceneRenderer(scene, atlas), view, { time: 0, phase: "morning" }).data[i];
+    expect(morning(liveTown)).toBe(morning({ ...liveTown, lights: [] }));
+  });
+
+  it("keeps parked bicycles off the canal and the south hedge clear of the fig's base", () => {
+    const box = (p: { position: { x: number; y: number }; width: number; height: number }) => ({ x: p.position.x, y: p.position.y, width: p.width, height: p.height });
+    const overlaps = (a: { x: number; y: number; width: number; height: number }, b: typeof a) => a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y;
+    const water = map.terrain.filter(t => t.material === "water").map(t => t.rect);
+    for (const bike of map.props.filter(p => p.kind === "bicycle")) for (const w of water) expect(overlaps(box(bike), w), bike.id).toBe(false);
+    const hedge = map.props.find(p => p.id === "town.hedge-6")!, fig = map.props.find(p => p.id === "town.south-fig")!;
+    expect(overlaps(box(hedge), box(fig))).toBe(false);
   });
 
   it("walks the town on the screen's axes", () => {
@@ -82,14 +104,24 @@ describe("the town scene is the town map", () => {
 });
 
 describe("missing town art", () => {
+  // Today's sprites without the town's own art, as before the parallel workers landed it.
+  const pending = (id: string) => /^(town|ground|critter)\//.test(id) || id.startsWith("char/courier/");
+  const bare = Object.fromEntries(Object.entries(sprites).filter(([id]) => !pending(id)));
+  const placeholderAtlas = createAtlas(bare, townAtlasOptions());
+
   it("draws as placeholders: every prop, tile and town character resolves, and none falls back to the stand-in waiter", () => {
-    expect(() => compileScene(liveTown, createAtlas(sprites))).toThrow(/unknown sprite/);
-    for (const p of map.props) expect(atlas.find(townSpriteId(p.id))).toBeDefined();
+    expect(() => compileScene(liveTown, createAtlas(bare))).toThrow(/unknown sprite/);
+    const boxes = compileScene(liveTown, placeholderAtlas);
+    expect(boxes.floor.filter(f => f.tile).every(f => f.sprite.placeholder)).toBe(true);
+    for (const p of map.props) expect(placeholderAtlas.find(townSpriteId(p.id))?.placeholder).toBe(true);
+    // Shades never become placeholders.
+    expect([...boxes.floor, ...boxes.objects].some(f => f.prop?.optional)).toBe(false);
     for (const sprite of ["char/courier", "critter/sparrow", "critter/pigeon", "char/lin-jie", "char/zhang-laoshi", "char/xiao-zhou", "char/player"]) {
-      expect(resolveActorSprite(atlas, sprite, "walk", "down").sprite.id).not.toBe("ex/waiter");
+      expect(resolveActorSprite(placeholderAtlas, sprite, "walk", "down").sprite.id).not.toBe("ex/waiter");
     }
     // Real art wins over its placeholder.
-    expect(atlas.get("char/lin-jie/walk-down").placeholder).toBeUndefined();
+    expect(placeholderAtlas.get("char/lin-jie/walk-down").placeholder).toBeUndefined();
+    expect(atlas.get("town/restaurant").placeholder).toBeUndefined();
     // Boxes sit on the footprint.
     const restaurant = map.props.find(p => p.id === "town.restaurant")!;
     expect(townPlaceholder("town/restaurant")).toMatchObject({ w: restaurant.width * TILE, h: restaurant.height * TILE });
@@ -98,7 +130,7 @@ describe("missing town art", () => {
 
   it("lists each missing id once, in one batch", async () => {
     const report = vi.fn();
-    const listed = createAtlas(sprites, townAtlasOptions(report));
+    const listed = createAtlas(bare, townAtlasOptions(report));
     compileScene(liveTown, listed);
     compileScene(liveTown, listed);
     await Promise.resolve();
@@ -144,7 +176,9 @@ describe("walking behind tall things", () => {
   // A stand-in canopy for the junction tree (footprint 1.5×1.5 at 18, 28.2): 48×160 art px rising from its footprint.
   const canopy: SpriteDef = { w: 48, h: 160, anchor: [24, 159], draw: p => p.rect(0, 0, 48, 160, "leaf2") };
   const tall = placedById(compileScene(liveTown, createAtlas({ ...sprites, "town/junction": canopy }, townAtlasOptions())));
-  const boxes = placedById(compiled);
+  const pending = (id: string) => /^(town|ground)\//.test(id);
+  const boxes = placedById(compileScene(liveTown, createAtlas(Object.fromEntries(Object.entries(sprites).filter(([id]) => !pending(id))), townAtlasOptions())));
+  const real = placedById(compiled);
 
   it("fades a canopy the player stands behind, never one the player stands in front of or beside", () => {
     expect(occluderFade(tall, map.occluders, { x: 18.75, y: 27.4 })).toMatchObject({ "town.junction": FADED });
@@ -156,5 +190,10 @@ describe("walking behind tall things", () => {
     expect(occluderFade(tall, map.occluders.map(o => ({ ...o, fadeWhenPlayerBehind: false })), { x: 18.75, y: 27.4 })).toEqual({});
     // A placeholder box only covers its footprint, which the player cannot be behind and inside at once.
     expect(occluderFade(boxes, map.occluders, { x: 18.75, y: 27.4 })).toEqual({});
+  });
+
+  it("fades the drawn junction tree's crown while the player is behind it", () => {
+    expect(occluderFade(real, map.occluders, { x: 18.75, y: 27.4 })).toMatchObject({ "town.junction": FADED });
+    expect(occluderFade(real, map.occluders, { x: 18.75, y: 30.6 })["town.junction"]).toBeUndefined();
   });
 });

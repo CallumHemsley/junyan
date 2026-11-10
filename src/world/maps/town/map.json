@@ -470,9 +470,9 @@
       "id": "town.hedge-6",
       "rect": {
         "x": 21,
-        "y": 58,
+        "y": 58.8,
         "width": 1.2,
-        "height": 5
+        "height": 4.2
       }
     },
     {
@@ -730,7 +730,7 @@
     {
       "id": "town.bike-3",
       "rect": {
-        "x": 64.6,
+        "x": 62.4,
         "y": 53,
         "width": 1.8,
         "height": 0.6
@@ -1492,9 +1492,9 @@
       "id": "town.hedge-6",
       "rect": {
         "x": 21,
-        "y": 58,
+        "y": 58.8,
         "width": 1.2,
-        "height": 5
+        "height": 4.2
       },
       "height": 1,
       "fadeWhenPlayerBehind": true
@@ -1810,7 +1810,7 @@
     {
       "id": "town.bike-3",
       "rect": {
-        "x": 64.6,
+        "x": 62.4,
         "y": 53,
         "width": 1.8,
         "height": 0.6
@@ -3230,10 +3230,10 @@
       "kind": "hedge",
       "position": {
         "x": 21,
-        "y": 58
+        "y": 58.8
       },
       "width": 1.2,
-      "height": 5,
+      "height": 4.2,
       "layer": "object",
       "variant": 28
     },
@@ -3577,7 +3577,7 @@
       "id": "town.bike-3",
       "kind": "bicycle",
       "position": {
-        "x": 64.6,
+        "x": 62.4,
         "y": 53
       },
       "width": 1.8,

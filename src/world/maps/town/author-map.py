@@ -50,11 +50,11 @@ prop('workshop-canopy','awning',67,28.2,11,.8,'slate',False,3)
 # Edge planting is authored around routes, with interruptions for the real entrances.
 trees=[('junction',18,28.2,1.5,1.5),('park-sentinel',3,37.5,2,2),('courtyard-left',37.8,3,2,2),('courtyard-right',49,12.5,1.5,1.5),('east-lane',65.6,39.5,1.5,1.5),('river-view',73.5,41,2,2),('south-fig',20.3,56.8,2,2),('tea-garden',55.2,15.6,1.8,1.8),('west-shade',15.5,6,2,2),('market-tree',38.2,41.8,1.2,1.2),('east-corner',77,15.2,1.8,1.8),('south-grove',59.4,60,2,2)]
 for i,(name,x,y,w,h) in enumerate(trees):prop(name,'tree',x,y,w,h,['camphor','ginkgo','willow'][i%3],True,5.5)
-for i,(x,y,w,h) in enumerate([(1,6,15,1.3),(1,7,1.2,16),(27,15,1,12),(49,15,4,1),(66.5,15.5,12,1),(1,51,18,1),(21,58,1.2,5),(41,58,6,1),(66.5,60.5,12,1.5),(77.5,36.5,1.2,7),(66.5,51.5,1,10),(1,40,1.5,9)]):prop('hedge-'+str(i),'hedge',x,y,w,h,'mixed',True,1)
+for i,(x,y,w,h) in enumerate([(1,6,15,1.3),(1,7,1.2,16),(27,15,1,12),(49,15,4,1),(66.5,15.5,12,1),(1,51,18,1),(21,58.8,1.2,4.2),(41,58,6,1),(66.5,60.5,12,1.5),(77.5,36.5,1.2,7),(66.5,51.5,1,10),(1,40,1.5,9)]):prop('hedge-'+str(i),'hedge',x,y,w,h,'mixed',True,1)
 for i,(x,y,w,h) in enumerate([(1,9,2,14),(3,8,14,.35),(27,14,11,.3),(49,14,3,.35),(56,14,2,.35),(66.5,16,12,.25),(1,53,19,.3),(21,57,7,.3),(40,62,7,.3),(66.5,62,12,.3)]):prop('fence-'+str(i),'fence',x,y,w,h,'wood' if i%2 else 'iron',True,1.2)
 
 for i,(x,y,var) in enumerate([(27,28.4,'herbs'),(39.8,27,'flowers'),(48.2,27.2,'broadleaf'),(58.3,28.2,'herbs'),(66.2,28.2,'broadleaf'),(77.5,28.8,'herbs'),(14.5,21.5,'flowers'),(39.2,46.5,'broadleaf'),(29.2,55.8,'herbs'),(67,53,'flowers')]):prop('planter-'+str(i),'planter',x,y,.65,.65,var,True,1.2)
-for i,(x,y,var) in enumerate([(28.3,29.1,'jade'),(47.8,39.5,'ochre'),(20.2,16,'steel'),(64.6,53,'jade')]):prop('bike-'+str(i),'bicycle',x,y,1.8,.6,var,True,1.5)
+for i,(x,y,var) in enumerate([(28.3,29.1,'jade'),(47.8,39.5,'ochre'),(20.2,16,'steel'),(62.4,53,'jade')]):prop('bike-'+str(i),'bicycle',x,y,1.8,.6,var,True,1.5)
 for i,(x,y,w,h) in enumerate([(20.2,28,2.2,.6),(31,43.8,2.7,.6),(68.5,50.3,2.8,.6),(56.3,49.3,2,.6)]):prop('bench-'+str(i),'bench',x,y,w,h,'wood',True,1.2)
 for i,(x,y) in enumerate([(18,26.5),(26.7,36.4),(58.1,35.9),(65.9,13.5),(41.2,47.7),(5,30),(75.8,50)]):prop('lamp-'+str(i),'street-lamp',x,y,.35,.35,'brass',True,4.5)
 for i,(x,y,w,h) in enumerate([(30,30.5,2,.25),(50,30.4,1.8,.25),(68,30.5,2,.25),(25.8,18,.25,2),(62,48.7,2,.25),(43.5,43,.25,1.5)]):prop('drain-'+str(i),'drain',x,y,w,h,'iron',layer='ground')

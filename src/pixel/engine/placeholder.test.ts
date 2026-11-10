@@ -62,6 +62,15 @@ describe("missing-sprite placeholders", () => {
     }
   });
 
+  it("never stand in for optional props: those are left out when their art is missing", () => {
+    const atlas = createAtlas(testSprites, { placeholder: spec });
+    const compiled = compileScene(scene({ props: [{ id: "shade", sprite: "todo/shade", at: [1, 1], optional: true, layer: "floor" }, { id: "real", sprite: "t/rug", at: [1, 1], optional: true }] }), atlas);
+    const ids = [...compiled.floor, ...compiled.objects].map(p => p.prop?.id).filter(Boolean);
+    expect(ids).toEqual(["real"]);
+    const plain = scene({ layers: [{ rows: ["aa", "aa"], legend: { a: "t/floor-a" } }], props: [{ sprite: "nope/x", at: [1, 1], optional: true }] });
+    expect(compileScene(plain, createAtlas(testSprites)).objects).toEqual([]);
+  });
+
   it("stand in for a missing character before the stand-in waiter, quietly", () => {
     const warn = vi.fn();
     const atlas = createAtlas(testSprites, { placeholder: spec });

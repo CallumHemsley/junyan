@@ -63,6 +63,11 @@ export type Prop = {
   sortY?: number;
   /** Skip drawing (and colliding) without deleting. */
   hidden?: boolean;
+  /**
+   * Art that may not exist (a tree's optional shade): a scene prop whose sprite the atlas lacks is
+   * left out silently instead of failing the scene, and never becomes a placeholder.
+   */
+  optional?: boolean;
 };
 
 export type GlowLight = {

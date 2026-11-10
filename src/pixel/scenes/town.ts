@@ -4,10 +4,11 @@
  * map moves and the scene follows.
  *
  * - Ground: `groundLayers()` (ticket 0163 owns it).
- * - Props: one sprite per map prop, `town/<id>` at the footprint's bottom-centre, visual only. The
+ * - Props: one sprite per map prop, `town/<id>` at the footprint's bottom-centre, visual only, under it
+ *   its optional floor shade `town/<id>-shade` when that sprite exists (trees). The
  *   map's colliders are the scene's `blocked` rects and its walkable rects bound the scene, so the game's
  *   collision is exactly the map's.
- * - Lights: a pool under every street lamp and a glow at every shop window, evening and night.
+ * - Lights: a glow on every street lamp's glass and at every shop window, evening and night.
  * - Marks: `exit/<id>` (areas), `entrance/<id>` (with facing), `anchor/<id>`, `landmark/<id>`, and
  *   `sign/<prop id>` boards on shopfronts where the DOM puts the shop's name.
  */
@@ -35,6 +36,8 @@ const layerOf = (p: TownProp): Layer | undefined => p.layer === "ground" ? "floo
 export const SHOPFRONT_KINDS = ["building-restaurant", "building-tea", "building-workshop", "building-shop", "building-shutter"];
 const LIT_KINDS = ["building-restaurant", "building-tea", "building-workshop", "building-shop"];
 const DUSK = ["evening", "night"] as const;
+/** Height of a street lamp's glass above its anchor, tiles. */
+export const LAMP_GLASS = 2.9;
 
 /**
  * Where a shopfront's sign board is, in tiles: centred on the facade, up to four tiles wide, its
@@ -46,15 +49,21 @@ export function signRect(p: TownProp): Rect {
   return [p.position.x + (p.width - w) / 2, p.position.y + p.height - 2.25 - h, w, h];
 }
 
+/** A prop's optional ground shade (`town/<id>-shade`, trees ship one), on the floor at the same anchor. */
+export const shadeSpriteId = (propId: string) => `${townSpriteId(propId)}-shade`;
+
 function props(): Prop[] {
-  return TOWN.props.map((p) => ({ id: p.id, sprite: townSpriteId(p.id), at: townAnchor(p), layer: layerOf(p), solid: false }));
+  return TOWN.props.flatMap((p): Prop[] => [
+    { id: `${p.id}-shade`, sprite: shadeSpriteId(p.id), at: townAnchor(p), layer: "floor", solid: false, optional: true },
+    { id: p.id, sprite: townSpriteId(p.id), at: townAnchor(p), layer: layerOf(p), solid: false },
+  ]);
 }
 
 function lights(): GlowLight[] {
   const lamps = TOWN.props.filter((p) => p.kind === "street-lamp").map((p): GlowLight => {
     const [x, y] = townAnchor(p);
-    // The pool falls round the foot of the post; centred a little up it so the head glows too.
-    return { kind: "glow", at: [x, y - 1], radius: 3.2, color: "gold4", strength: 0.6, aspect: 0.75, phases: DUSK };
+    // On the lamp's glass, about three tiles above its foot (art y 19–32 of the 120 px lamp).
+    return { kind: "glow", at: [x, y - LAMP_GLASS], radius: 3.4, color: "gold4", strength: 0.6, aspect: 0.8, phases: DUSK };
   });
   const windows = TOWN.props.filter((p) => LIT_KINDS.includes(p.kind)).flatMap((p) => {
     // One warm glow per four tiles of frontage, a tile above the street.

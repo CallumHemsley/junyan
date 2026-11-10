@@ -66,12 +66,13 @@ for (const size of SIZES) test.describe(size.name, () => {
     await settle(page);
     await shot(page, "2-market", size.name);
 
-    // Behind the junction tree: its canopy fades once drawn taller than its footprint (a placeholder box does not cover the player).
+    // Behind the junction tree its crown fades so the player stays visible; stepping out in front restores it.
     await walkTo(page, { x: 18.75, y: 27.6 });
+    await expect(town).toHaveAttribute("data-faded", /(^|,)town\.junction(,|$)/);
     await settle(page);
     await shot(page, "3-behind-tree", size.name);
-    const faded = await town.getAttribute("data-faded");
-    expect(faded === null || faded.split(",").includes("town.junction")).toBe(true);
+    await walkTo(page, { x: 18.75, y: 30.6 });
+    await expect(town).not.toHaveAttribute("data-faded", /town\.junction/);
 
     // Back in at the restaurant door.
     await walkTo(page, { x: 34, y: 28.6 });
