@@ -8,7 +8,7 @@
 import { defineSprites, hash, TILE, type Px, type SpriteDef } from "../../kit/index.ts";
 import { footprintPx, openingsOn, townProps, townSpriteId, type TownProp } from "../../town/map.ts";
 import {
-  acUnit, aerial, block, bricks, castShadow, downpipe, eave, facadeShell, laneRoof, laneWindow, laundryPole, meterBox, moss,
+  acUnit, aerial, basePot, block, bricks, castShadow, downpipe, hoseReel, meterCluster, paintedRepair, stoolAndBasin, wornPatch, eave, facadeShell, laneRoof, laneWindow, laundryPole, meterBox, moss,
   numberPlate, partyWall, pigeonLoft, quiltRack, renderPatch, roofGarden, sillPlants, skylight, solarHeater,
   stain, stoneGate, stringCourse, tarp, tigerWindow, waterTank, type GateOptions, type Pediment,
 } from "./_lane.ts";
@@ -52,9 +52,12 @@ const residence: Draw = (p, prop, W, H) => {
   eave(p, gateL, wallTop, gateR - gateL, 2);
   stoneGate(p, door.x0, door.x1, base, { doorH: 68, pediment: "triangle", open: door.open ? "left" : null, couplets: true, seed });
   numberPlate(p, door.x1 + 12, base - 58);
-  meterBox(p, gateR - 24, base - 66, gateR - 6);
-  // A bicycle has rubbed a pale stripe into the gate wall's brick at handlebar height.
-  for (let x = gateL + 10; x < gateL + 40; x++) if (hash(x, 1, seed) > 0.3) p.px(x, base - 26, "stone4");
+  meterCluster(p, gateR - 34, base - 66, wallTop + 2);
+  // Bicycles lean left of the gate every night: the brick is rubbed dark and a pale scrape at handlebar height.
+  wornPatch(p, gateL + 12, base - 34, 30, 26, seed);
+  for (let x = gateL + 14; x < gateL + 40; x++) if (hash(x, 1, seed) > 0.3) p.px(x, base - 26, "stone4");
+  stoolAndBasin(p, door.x0 - 30, base - 1);
+  basePot(p, door.x1 + 10, base - 1);
   p.vline(gateL, wallTop - 3, base - wallTop + 3, "steel1").vline(gateR - 1, wallTop - 3, base - wallTop + 3, "steel1");
 
   // Left wing: barred kitchen windows below; above, a caged window full of plants and a shuttered one.
@@ -63,7 +66,8 @@ const residence: Draw = (p, prop, W, H) => {
   laneWindow(p, 24, top + 14, 26, 36, { seed: seed + 2, cage: true, glass: "curtain", curtain: "plum", frame: "wood" });
   laneWindow(p, 100, top + 14, 26, 36, { seed: seed + 3, shutters: "open", shutterTone: "jade", glass: "sky", sill: "plants", ajar: true });
   acUnit(p, 60, top + 26, seed, [84, top + 18]);
-  renderPatch(p, 60, base - 40, 14, 10, seed);
+  paintedRepair(p, 58, base - 44, 18, 13, seed);
+  hoseReel(p, 132, base - 46);
   // Right wing: one window each floor; the downpipe from the eave gutter at the corner.
   laneWindow(p, 360, base - 70, 24, 34, { seed: seed + 4, bars: true, glass: "dark", sill: "shoes" });
   laneWindow(p, 358, top + 14, 26, 36, { seed: seed + 5, shutters: "half", shutterTone: "wood", glass: "curtain", curtain: "pink", sill: "plants" });
@@ -79,9 +83,7 @@ const residence: Draw = (p, prop, W, H) => {
   moss(p, 8, roofH - 34, 140, 26, seed, 4);
   moss(p, 300, ridgeY + 10, 100, 30, seed + 1, 2);
   moss(p, 8, 6, 140, ridgeY - 10, seed + 2, 3);
-  castShadow(p, 96, ridgeY + 34, 5, 36, 0.15);
   tigerWindow(p, 56, ridgeY + 30, seed, { plant: true, w: 40 });
-  castShadow(p, 362, ridgeY + 34, 5, 32, 0.15);
   tigerWindow(p, 334, ridgeY + 30, seed + 1, { w: 36, frame: "jade3", curtain: "cream4" });
   tarp(p, 176, ridgeY + 66, 36, 18, seed);
   skylight(p, 262, ridgeY + 34, 22, 16);
@@ -177,6 +179,12 @@ const southResidence: Draw = (p, prop, W, H) => {
   for (const [x, i] of [[40, 0], [108, 1], [W - 64, 2], [W - 132, 3]] as const)
     laneWindow(p, x, base - 72, 24, 34, { seed: seed + i, bars: i !== 1, shutters: i === 1 ? "open" : null, shutterTone: "blue", glass: i % 2 ? "curtain" : "dark", curtain: "jade", sill: i === 2 ? "jar" : "plain" });
   sillPlants(p, door.x1 + 12, base - 6, 34, seed + 4);
+  wornPatch(p, door.x0 - 40, base - 34, 28, 26, seed);
+  stoolAndBasin(p, 76, base - 1);
+  hoseReel(p, 12, base - 48);
+  meterCluster(p, W - 104, base - 70, base - 92);
+  basePot(p, W - 40, base - 1);
+  paintedRepair(p, 140, base - 30, 16, 11, seed + 3);
   // Upper storey: a French window onto a cast-iron balcony, a centre window over the gate, a caged window.
   laneWindow(p, 62, top + 14, 30, 44, { seed: seed + 5, shutters: "open", shutterTone: "blue", glass: "curtain", curtain: "cream", frame: "cream" });
   balcony(p, 46, top + 54, 62, seed);
@@ -188,7 +196,6 @@ const southResidence: Draw = (p, prop, W, H) => {
   laundryPole(p, W - 102, top + 64, 64, seed, ["trousers", "shirt", "shirt", "socks"]);
   downpipe(p, 4, top + 4, base);
   downpipe(p, W - 8, top + 4, base);
-  renderPatch(p, W - 40, base - 40, 16, 12, seed + 1);
 
   // Above the facade: a short front roof, then the third storey set back behind it, then the main roof.
   const mainH = 148, ridgeY = 52, upperTop = mainH - 4, frontTop = 190;
@@ -198,9 +205,7 @@ const southResidence: Draw = (p, prop, W, H) => {
   laneRoof(p, 0, 0, W, mainH, { seed: seed + 2, ridgeY, damp: 0.12 });
   moss(p, 8, mainH - 30, W - 16, 22, seed, 5);
   moss(p, 8, frontTop + 4, W - 16, 24, seed + 3, 4);
-  castShadow(p, 126, ridgeY + 22, 5, 34, 0.15);
   tigerWindow(p, 90, ridgeY + 18, seed, { open: true, w: 36 });
-  castShadow(p, W - 92, ridgeY + 22, 5, 34, 0.15);
   tigerWindow(p, W - 128, ridgeY + 18, seed + 1, { plant: true, frame: "jade3", w: 36 });
   castShadow(p, 214, 74, 5, 26, 0.4);
   solarHeater(p, 174, 70);
