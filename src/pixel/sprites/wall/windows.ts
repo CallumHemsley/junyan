@@ -20,7 +20,8 @@ const topAt = (shape: Shape, x: number) => (shape === "transom" ? 0 : Math.round
 
 /**
  * The window's plan as a grid of letters: `.` outside, `F` frame, `g` glass, `b` a fine glazing bar,
- * `T` the heavier transom or meeting rail. Frame is 3px; the casements meet at x 33–34.
+ * `T` the heavier transom or meeting rail, `H` the fanlight's hub. Frame is 3px; the casements meet
+ * at x 33–34, which is also the window's mirror line.
  */
 function plan(shape: Shape): string[][] {
   const g = Array.from({ length: SILL }, () => Array.from({ length: W }, () => "."));
@@ -42,21 +43,20 @@ function plan(shape: Shape): string[][] {
     // Transom lights: uprights every 8px.
     for (let x = 12; x < 62; x += 8) for (let y = 0; y < 12; y++) set(x, y, "b");
   } else {
-    // Fanlight: five bars radiating from a half-round hub on the transom rail.
-    const line = (x0: number, y0: number, x1: number, y1: number) => {
-      const dx = Math.abs(x1 - x0), dy = -Math.abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1;
-      let e = dx + dy;
-      for (;;) {
-        set(x0, y0, "b");
-        if (x0 === x1 && y0 === y1) break;
-        const e2 = 2 * e;
-        if (e2 >= dy) { e += dy; x0 += sx; }
-        if (e2 <= dx) { e += dx; y0 += sy; }
-      }
-    };
-    for (const ex of [6, 19, 47, 61]) line(ex < 34 ? 31 : 36, 9, ex, topAt(shape, ex) + 3);
-    line(33, 8, 33, topAt(shape, 33) + 3);
-    for (let y = 8; y < 12; y++) for (let x = 30; x < 38; x++) if (((x + 0.5 - 34) / 4) ** 2 + ((y + 0.5 - 12) / 4) ** 2 <= 1) set(x, y, "T");
+    // Fanlight: a half-round hub on the transom rail and five bars fanning from it at even angles
+    // (about 30°, 60° and 90° once the fan's flattening is undone). The left half is drawn as runs and
+    // mirrored about the meeting stile (x 33|34), so the two sides match pixel for pixel. The side bars
+    // step in constant runs, 2 for the steep pair and 5 for the shallow pair, and each ends flush in a
+    // step of the arch, so no bar leaves a stray glass pixel against the frame.
+    const both = (x: number, y: number, c: string) => { set(x, y, c); set(W - 1 - x, y, c); };
+    // Hub, a 10×5 half-round sitting on the rail.
+    for (const [y, x0] of [[7, 31], [8, 30], [9, 29], [10, 29], [11, 29]] as const) for (let x = x0; x <= 33; x++) both(x, y, "H");
+    // The upright bar continues the meeting stile up to the arch.
+    for (let y = 3; y < 7; y++) both(33, y, "T");
+    // The steep bars: two pixels per row, rows 4–8.
+    for (let y = 4; y <= 8; y++) for (let x = 12 + 2 * y; x < 14 + 2 * y; x++) both(x, y, "b");
+    // The shallow bars: five pixels per row, rows 6–10 (the top run clipped to three by the arch).
+    for (let y = 6; y <= 10; y++) for (let x = 5 * y - 26; x < 5 * y - 21; x++) both(x, y, "b");
   }
   return g;
 }
@@ -93,7 +93,11 @@ function joinery(p: Px, g: string[][], mended?: readonly [number, number, number
       const inDown = at(x, y - 1) === "g" || at(x - 1, y) === "g";
       p.px(x, y, outUp ? "jade3" : outDown ? "jade1" : inUp ? "jade1" : inDown ? "jade3" : "jade2");
     } else if (c === "T") {
-      p.px(x, y, at(x, y - 1) === "g" || at(x - 1, y) === "g" ? "jade3" : "jade1");
+      p.px(x, y, at(x, y - 1) === "g" || at(x - 1, y) === "g" ? "jade3" : at(x, y - 1) === "H" ? "jade2" : "jade1");
+    } else if (c === "H") {
+      // The fanlight hub, a little dome: lit along its upper-left arc, shaded down its right shoulder.
+      const lit = at(x - 1, y) === "g" || (at(x, y - 1) === "g" && x < 35);
+      p.px(x, y, lit ? "jade3" : at(x + 1, y) === "g" || at(x, y - 1) === "g" ? "jade1" : "jade2");
     } else if (c === "b") {
       const isMended = mended && x >= mended[0] && x <= mended[1] && y === mended[2];
       p.px(x, y, isMended ? "wood5" : "jade1");
