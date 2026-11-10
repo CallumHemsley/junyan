@@ -21,7 +21,14 @@ describe("the restaurant map is the pixel cafe's room", () => {
     const [x, y, width, height] = compiled.walkable;
     expect(restaurantMap.walkable).toEqual([{ x, y, width, height }]);
     const fromMap = restaurantMap.colliders.map(({ rect: r }) => rect([r.x, r.y, r.width, r.height])).sort();
+    // On a mismatch: node src/pixel/tools/colliders.ts cafe --out src/world/pixel/cafe-colliders.json
     expect(fromMap).toEqual(compiled.colliders.map(rect).sort());
+    // The map's table props (stable ids) stand on the scene's tables.
+    ["table-5-9", "table-17-9", "table-5-14", "table-17-14"].forEach((id, index) => {
+      const prop = restaurantMap.props.find(p => p.id === id)!;
+      const table = restaurantMap.colliders.find(c => c.id === `table-${index + 1}`)!.rect;
+      expect(rect([prop.position.x, prop.position.y, prop.width, prop.height])).toBe(rect([table.x, table.y, table.width, table.height]));
+    });
   });
 
   it("puts the kitchen at the pickup mark, the door at the street door and a service spot by each table", () => {

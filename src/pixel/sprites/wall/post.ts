@@ -1,57 +1,46 @@
 /**
- * The timber post that breaks the long back wall and marks where dining ends and kitchen begins.
+ * The pilaster that breaks the long back wall and marks where dining ends and kitchen begins.
  */
-import { defineSprites, hash, type Px } from "../../kit/index.ts";
+import { defineSprites, type Color, type Px } from "../../kit/index.ts";
 import { block } from "./_helpers.ts";
 
-/** One row of squared timber from x `l` to `r`: lit on the sun side, falling into shade on the right. */
-function timberRow(p: Px, y: number, l: number, r: number) {
-  p.px(l, y, "wood5").px(l + 1, y, "wood4").hline(l + 2, y, r - l - 4, "wood3").px(r - 2, y, "wood2").px(r - 1, y, "wood2").px(r, y, "wood1");
-}
+/** Columns of the fluted shaft, left to right: lit arris, two flutes (groove, lit edge), shaded arris. */
+const SHAFT: readonly Color[] = ["wood3", "wood2", "wood1", "wood3", "wood2", "wood2", "wood1", "wood3", "wood2", "wood1"];
 
 /**
- * A square fir post, 32×96 with transparent sides: lay it over the wall slices, usually across the
- * seam between the last dining slice and the first kitchen slice. A carved bracket under the cornice,
- * a granite plinth against damp. The owner's two daughters were measured against it every New Year:
- * knife nicks climb its left edge. A seasoning check runs down the face, the timber is rubbed pale
- * at hand height, and a nail holds the loop of string the broom hangs from.
+ * A slim fluted pilaster in dark-stained wood, 32×96 with transparent sides: lay it over the wall
+ * slices, usually across the seam between the last dining slice and the first kitchen slice. A moulded
+ * capital under the cornice, a plinth block at the floor. The owner's two daughters were measured
+ * against it every New Year: knife nicks climb its left arris. The flutes are rubbed pale at hand
+ * height, and a nail holds the loop of string the broom hangs from.
  * Anchors at the wall's foot: place at (x, 96) with the wall starting at y = 0.
  */
-function post(p: Px) {
-  const L = 10, R = 21;
-  for (let y = 16; y < 88; y++) timberRow(p, y, L, R);
-  // Grain: long streaks down the face.
-  for (let i = 0; i < 9; i++) {
-    const x = L + 2 + Math.floor(hash(i, 0, 7) * 7), y = 18 + Math.floor(hash(i, 1, 7) * 60), n = 6 + Math.floor(hash(i, 2, 7) * 12);
-    p.vline(x, y, Math.min(n, 87 - y), hash(i, 3, 7) > 0.5 ? "wood4" : "wood2");
-  }
-  // Seasoning check.
-  block(p, 15, 22, ["1.", "1.", "2.", ".1", ".1", ".1", ".2", "1.", "1.", "1.", "2.", ".2"], { 1: "wood1", 2: "wood2" }, "check");
-  // Rubbed lighter at hand height, where everyone steadies themselves going behind the counter.
-  p.swap({ wood3: "wood4", wood2: "wood3" }, [L + 2, 60, 6, 12]);
+function pilaster(p: Px) {
+  const L = 11;
+  for (let y = 18; y < 86; y++) SHAFT.forEach((c, i) => p.px(L + i, y, c));
+  // Flutes stop short of capital and base, with rounded ends.
+  for (const x of [L + 2, L + 6]) { p.px(x, 18, "wood2").px(x, 19, "wood2").px(x, 84, "wood2").px(x, 85, "wood2"); }
+  // Rubbed pale at hand height, where everyone steadies themselves going behind the counter.
+  p.swap({ wood2: "wood3" }, [L + 4, 61, 2, 8]).swap({ wood2: "wood3" }, [L + 1, 63, 1, 5]).swap({ wood2: "wood3" }, [L + 8, 62, 1, 4]);
   // The daughters' height marks: short knife nicks with a lit lower lip, climbing year by year.
-  for (const y of [53, 58, 62, 67]) p.hline(L + 1, y, 3, "wood1").hline(L + 1, y + 1, 3, "wood5");
+  for (const y of [52, 57, 61, 66]) p.hline(L, y, 3, "wood1").hline(L, y + 1, 3, "wood4");
   // Nail and broom string.
-  block(p, 16, 36, ["ss.", "Ss.", ".c.", "c.c", "c.c", "c.c", ".cc"], { s: "steel5", S: "steel3", c: "cream4" }, "nail");
+  block(p, 17, 36, ["ss.", "Ss.", ".c.", "c.c", "c.c", "c.c", ".cc"], { s: "steel5", S: "steel3", c: "cream4" }, "nail");
 
-  // Capital under the cornice: a wide block, a narrower one, then a quarter-round easing into the shaft.
-  p.hline(5, 6, 22, "wood5").hline(5, 7, 22, "wood4").hline(5, 8, 22, "wood3").hline(5, 9, 22, "wood1");
-  p.px(26, 7, "wood2").px(26, 8, "wood2");
-  timberRow(p, 10, 7, 24); p.hline(8, 10, 15, "wood5");
-  timberRow(p, 11, 7, 24); p.hline(7, 12, 18, "wood2");
-  for (const [y, l, r] of [[13, 8, 23], [14, 9, 22], [15, 10, 21]] as const) timberRow(p, y, l, r);
-  p.px(8, 13, "wood4").px(9, 14, "wood4");
-
-  // Granite plinth.
-  p.rect(8, 88, 16, 8, "stone4").hline(8, 88, 16, "stone5").vline(8, 88, 8, "stone5");
-  p.vline(23, 88, 8, "stone2").hline(8, 95, 16, "stone2").vline(22, 89, 6, "stone3");
-  p.px(12, 91, "stone3").px(13, 91, "stone3").px(18, 93, "stone3").px(19, 93, "stone3");
-  block(p, 20, 88, ["..2", ".22", "222"], { 2: "stone2" }, "chip");
-
+  // Capital: a stepped moulding, widest at the top, lit on its upper faces.
+  const rows: readonly [number, number, number, Color][] = [
+    [10, 7, 18, "wood4"], [11, 7, 18, "wood3"], [12, 7, 18, "wood2"], [13, 7, 18, "wood1"],
+    [14, 9, 14, "wood3"], [15, 9, 14, "wood2"], [16, 10, 12, "wood4"], [17, 10, 12, "wood1"],
+  ];
+  for (const [y, x, w, c] of rows) { p.hline(x, y, w, c); p.px(x + w - 1, y, "wood1"); }
+  // Plinth.
+  p.hline(10, 86, 12, "wood3").hline(10, 87, 12, "wood1");
+  p.rect(9, 88, 14, 7, "wood2").hline(9, 88, 14, "wood3").vline(9, 88, 7, "wood3").vline(22, 88, 7, "wood1").hline(9, 95, 14, "ink");
+  p.hline(11, 91, 6, "wood3");
   // Hairline shadow thrown on the wall to the right.
-  p.faded(0.22, () => { p.rect(R + 1, 16, 2, 72, "ink"); p.rect(27, 6, 2, 10, "ink"); p.rect(24, 89, 2, 7, "ink"); });
+  p.faded(0.22, () => { p.rect(L + 10, 18, 2, 68, "ink"); p.rect(25, 10, 2, 8, "ink"); p.rect(23, 88, 2, 7, "ink"); });
 }
 
 export default defineSprites({
-  "wall/post": { w: 32, h: 96, anchor: [16, 96], layer: "floor", draw: post },
+  "wall/post": { w: 32, h: 96, anchor: [16, 96], layer: "floor", draw: pilaster },
 });

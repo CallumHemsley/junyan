@@ -31,28 +31,37 @@ function firebox(p: Px, x: number, y: number, frame: number) {
 }
 
 /**
- * White glazed tiles, two courses of 8 in running bond, across x..x+w-1 from row y. Each tile has a
- * glaze highlight top-left and a shaded bottom-right corner; `odd` lists tiles that are different:
- * [course, index, kind] with kind 0 a pale blue replacement, 1 a crack, 2 a grease stain.
+ * White metro tiles to match the kitchen wall: 16×7 bevelled bricks (lit top and left, shaded
+ * bottom and right) in running bond on a stone grout, with a glossy black pencil course after
+ * course `trim` (-1 for none). Fills x..x+w-1, rows y..y+h-1. `odd` lists tiles that differ:
+ * [course, index, kind] with kind 0 an off-white replacement, 1 a crack, 2 a grease stain.
  */
-function tiles(p: Px, x: number, y: number, w: number, odd: readonly (readonly [number, number, number])[] = []) {
-  for (let course = 0; course < 2; course++) {
-    const top = y + course * 8, shift = course ? 4 : 0;
-    p.hline(x, top, w, "stone4");
-    for (let i = 0, tx = x - 8 + shift; tx < x + w; i++, tx += 8) {
-      const kind = odd.find(([c, n]) => c === course && n === i)?.[2];
-      p.clip(x, top, w, 8, () => {
-        p.clip(tx - x, 0, 8, 8, () => {
-          p.rect(1, 1, 7, 7, kind === 0 ? "blue6" : "cream4");
-          p.vline(0, 1, 7, "stone4");
-          p.hline(1, 1, 4, kind === 0 ? "white" : "cream5").vline(1, 2, 2, kind === 0 ? "white" : "cream5");
-          p.px(7, 7, kind === 0 ? "blue5" : "cream3").px(6, 7, kind === 0 ? "blue5" : "cream3").px(7, 6, kind === 0 ? "blue5" : "cream3");
-          if (kind === 1) p.rows(2, 1, ["c...", ".c..", ".cc.", "...c", "...c", "..c."], { c: "cream2" });
-          if (kind === 2) p.rows(1, 3, ["..gg..", ".gGGg.", "gGGGGg", ".gGGg.", "..g..."], { g: "cream3", G: "cream2" });
-        });
-      });
+function tiles(p: Px, x: number, y: number, w: number, h: number, trim: number, odd: readonly (readonly [number, number, number])[] = []) {
+  p.clip(x, y, w, h, () => {
+    let top = 0;
+    for (let course = 0; top < h; course++) {
+      const shift = course % 2 ? 8 : 0;
+      for (let i = 0, tx = -16 + shift; tx < w; i++, tx += 16) {
+        const kind = odd.find(([c, n]) => c === course && n === i)?.[2];
+        const face = kind === 0 ? "blue6" : "cream5", lit = "white", shade = kind === 0 ? "blue5" : "cream4";
+        p.rect(tx, top, 15, 6, face);
+        p.hline(tx, top, 14, lit).vline(tx, top + 1, 4, lit);
+        p.hline(tx + 1, top + 5, 14, shade).vline(tx + 14, top + 1, 5, shade);
+        p.px(tx + 3, top + 1, "white").px(tx + 4, top + 1, "white").px(tx + 2, top + 2, "white");
+        p.vline(tx + 15, top, 7, "stone4").hline(tx, top + 6, 16, "stone4");
+        if (kind === 1) p.rows(tx + 5, top + 1, ["c....", ".cc..", "...c.", "...cc"], { c: "stone4" });
+        if (kind === 2) p.rows(tx + 4, top + 1, ["..gg..", ".gGGg.", "gGGGGg", ".gGg.."], { g: "cream3", G: "oak4" });
+      }
+      top += 7;
+      if (course === trim) {
+        // The black pencil course, glossy, with its own joints.
+        p.hline(0, top, w, "ink2").hline(0, top + 1, w, "ink");
+        for (let tx = 3; tx < w; tx += 12) p.px(tx, top, "steel2").px(tx + 1, top, "steel2");
+        for (let tx = 11; tx < w; tx += 16) p.vline(tx, top, 2, "stone2");
+        top += 2;
+      }
     }
-  }
+  });
 }
 
 /**
@@ -72,8 +81,7 @@ function range(p: Px, w: number, h: number, deck: number, fires: readonly number
   p.hline(1, lip, w - 2, "steel6").hline(1, lip + 1, w - 2, "steel5").hline(1, lip + 2, w - 2, "steel3");
   p.px(right, lip, "steel4").px(right, lip + 1, "steel3").px(right, lip + 2, "steel2");
   for (const x of [9, 10, 37, 51]) p.px(x, lip, "steel5");
-  tiles(p, 1, lip + 3, w - 2, odd);
-  p.vline(1, lip + 4, 15, "cream5");
+  tiles(p, 1, lip + 3, w - 2, 16, 0, odd);
   // Kick-plate: soot and mop water.
   p.rect(1, h - 5, w - 2, 4, "stone2").hline(1, h - 5, w - 2, "stone1");
   p.over(() => p.hline(6, h - 3, 7, "stone3").hline(w - 20, h - 2, 9, "stone3"));
@@ -193,7 +201,7 @@ export default defineSprites({
   /**
    * The wok: a forty-year-old iron wok seasoned black with a blue sheen, two 油条 frying in amber
    * oil, long chopsticks resting on the rim, finished sticks draining upright in a wire rack. Behind
-   * it a tiled splash-back stained amber by years of spitting oil, capped with steel. The oil
+   * it a splash-back of white metro tile with a black pencil course, stained amber by years of spitting oil, capped with steel. The oil
    * bubbles over four frames.
    */
   "kitchen/wok-station": {
@@ -202,9 +210,7 @@ export default defineSprites({
     draw: (p, frame) => {
       // Splash-back: two courses of tile under a steel cap, spattered with old oil.
       p.rect(1, 4, 62, 3, "steel4").hline(1, 4, 62, "steel6").hline(1, 6, 62, "steel2");
-      tiles(p, 1, 7, 62, [[0, 3, 2], [1, 6, 1]]);
-      p.rect(1, 23, 62, 4, "cream4");
-      tiles(p, 1, 23, 62, [[0, 1, 2], [0, 5, 2], [1, 3, 2]]);
+      tiles(p, 1, 7, 62, 24, 1, [[0, 1, 2], [1, 3, 2], [2, 2, 1], [0, 3, 2]]);
       p.clip(0, 0, 64, 31, () => p.over(() => {
         // Old spits of oil: amber blots, the bigger ones run in a drip down the glaze.
         const blots = [

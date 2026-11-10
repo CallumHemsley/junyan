@@ -1,105 +1,99 @@
 /**
- * The dining-room floor: honey-oak boards laid in the seventies, four 8px boards per tile running
- * east–west. Most variants are quiet ground so furniture reads on top; the stories live in a few.
- * Tiles anchor at their top-left corner and sit on the 32px grid.
- *
- * Suggested mix for open floor: mostly a and b, c now and then, d and i rarely, g once.
- * Only e, f and h carry paler wood, never more than one step (oak5 on oak4); d differs by finish, not tone. The worn path (e, f) runs from the
- * doorway to the counter; lay e and f alternately along it. h goes where the sun from a window lands.
+ * The dining-room floor. The ids keep their old name, but since the shop became a 1930s Concession
+ * bistro the floor is a small cream octagon-and-dot mosaic, laid when the building was new: cream
+ * cells a little yellowed, a dark cabochon dot at every corner, thin grout. Quiet, so furniture reads on it.
+ * Tiles anchor at their top-left corner. The scene weights a and b heavily, c moderately, d and i rarely.
+ * The worn path (e, f) runs from the door to the counter; g is a stain; h the sun-faded patch.
  */
-import { defineSprites, type Px } from "../../kit/index.ts";
-import { OAK, block, oakBoards, type BoardSpec } from "./_helpers.ts";
+import { defineSprites, type Legend, type Px } from "../../kit/index.ts";
+import { block } from "./_helpers.ts";
+import { border, mosaic } from "./_mosaic.ts";
+import { hash } from "../../kit/index.ts";
 
 const tile = (draw: (p: Px) => void) => ({ w: 32, h: 32, anchor: [0, 0] as const, layer: "floor" as const, draw });
-const boards = (seed: number, spec: readonly BoardSpec[]) => (p: Px) => oakBoards(p, seed, spec);
+const M: Legend = { G: "stone3", g: "stone4", k: "cream3", K: "cream2", y: "bamboo4", Y: "bamboo3", z: "bamboo2", w: "white", c: "cream5", L: "gold4", l: "gold3", m: "gold2", d: "gold1" };
 
-/** Pale worn streaks `[x, y, length, colour]`, drawn only over existing art. */
-function wear(p: Px, streaks: readonly (readonly [number, number, number, "oak5" | "cream4" | "oak4"])[]) {
-  p.over(() => { for (const [x, y, n, c] of streaks) p.hline(x, y, n, c); });
+/** A soft blob mask centred on (cx, cy). */
+const blob = (x: number, y: number, cx: number, cy: number, rx: number, ry: number) => ((x + 0.5 - cx) / rx) ** 2 + ((y + 0.5 - cy) / ry) ** 2 <= 1;
+
+/** The worn lane: glaze worn matt and grey, the ink rosettes rubbed toward grey, strongest down the middle. */
+function worn(p: Px, seed: number, cx: number) {
+  mosaic(p, seed, (c, x) => {
+    const d = Math.abs(x - cx - Math.sin((c.key + seed) * 1.7) * 2);
+    if (d < 6) return { cream: "stone5", aged: "stone5", lit: "stone5", ink: "stone3", inkLit: "stone3", grout: "cream3" };
+    if (d < 10 && hash(c.key, 5, seed) > 0.45) return { cream: "stone5", aged: "stone5", lit: "cream4", ink: "stone3" };
+    return undefined;
+  });
 }
 
 export default defineSprites({
-  /** Quiet boards, two staggered joints. */
-  "tile/floor-wood-a": tile(boards(1, [{ joints: [9] }, { grain: 2 }, { joints: [22] }, { grain: 2 }])),
+  /** Quiet mosaic. */
+  "tile/floor-wood-a": tile((p) => mosaic(p, 1)),
 
-  /** Quiet boards, joints elsewhere so runs never line up. */
-  "tile/floor-wood-b": tile(boards(2, [{ grain: 2 }, { joints: [5] }, { grain: 2 }, { joints: [18] }])),
+  /** Quiet mosaic, a different scatter of yellowed cells. */
+  "tile/floor-wood-b": tile((p) => mosaic(p, 2)),
 
-  /** A knot the planer went round, the grain parting about it like water round a stone. */
+  /** A cracked cell, the crack running on through its neighbour where a chair leg came down hard. */
   "tile/floor-wood-c": tile((p) => {
-    oakBoards(p, 3, [{ joints: [26] }, { grain: 0 }, { grain: 2 }, { joints: [11] }]);
-    block(p, 9, 9, [
-      "...bbbbbbb....",
-      ".bb..llll.bb..",
-      "b...bbcccb..bb",
-      "...bbccdcb....",
-      ".bb.lbbbbl.bb.",
-      "b..........b..",
-    ], OAK, "knot");
+    mosaic(p, 3);
+    p.over(() => block(p, 18, 9, [
+      "G.......",
+      ".G......",
+      ".GG.....",
+      "...G....",
+      "...G.G..",
+      "....G.GG",
+      "....G...",
+    ], M, "crack"));
   }),
 
-  /** A board replaced after the radiator leak: clean new oak with a crisp edge and bright new nail heads, the same tone as its neighbours. */
-  "tile/floor-wood-d": tile(boards(4, [{ grain: 2 }, { joints: [14] }, { joints: [6, 25], tone: [7, 25, "new"], grain: 2 }, { grain: 2 }])),
+  /** A patch relaid after the plumber: whiter cells, the ink rosette matched in a blacker glaze, fresh grout. */
+  "tile/floor-wood-d": tile((p) => mosaic(p, 4, (c) => ((c.kind === "dot" ? [6, 10] : [5, 6, 10]).includes(c.key)
+    ? { cream: "cream5", aged: "cream5", lit: "cream5", ink: "stone1", inkLit: "stone2", grout: "cream4" } : undefined))),
 
-  /** The path worn pale between the door and the counter, centred so a run of tiles joins up. */
-  "tile/floor-wood-e": tile((p) => {
-    oakBoards(p, 5, [{ grain: 2 }, { joints: [27] }, { grain: 1 }, { joints: [4] }]);
-    wear(p, [
-      [7, 2, 9, "oak5"], [19, 2, 4, "oak5"], [10, 3, 14, "oak5"], [6, 4, 6, "oak5"], [15, 5, 8, "oak5"],
-      [12, 9, 7, "oak5"], [7, 10, 11, "oak5"], [21, 10, 4, "oak5"], [11, 12, 13, "oak5"], [8, 13, 5, "oak5"],
-      [14, 17, 9, "oak5"], [6, 18, 10, "oak5"], [18, 19, 8, "oak5"], [9, 21, 12, "oak5"],
-      [8, 25, 6, "oak5"], [16, 25, 8, "oak5"], [11, 27, 14, "oak5"], [7, 29, 9, "oak5"], [19, 29, 4, "oak5"],
-    ]);
-  }),
+  /** The path worn grey between the door and the counter. */
+  "tile/floor-wood-e": tile((p) => worn(p, 5, 16)),
 
-  /** More of the worn path, scuffed by the same feet a little to one side. */
-  "tile/floor-wood-f": tile((p) => {
-    oakBoards(p, 6, [{ joints: [20] }, { grain: 2 }, { joints: [12] }, { grain: 1 }]);
-    wear(p, [
-      [11, 1, 7, "oak5"], [6, 3, 12, "oak5"], [20, 3, 5, "oak5"], [9, 5, 10, "oak5"],
-      [15, 9, 9, "oak5"], [7, 11, 7, "oak5"], [16, 11, 7, "oak5"], [10, 13, 11, "oak5"],
-      [8, 17, 13, "oak5"], [22, 18, 3, "oak5"], [12, 20, 10, "oak5"], [6, 21, 5, "oak5"],
-      [10, 25, 9, "oak5"], [7, 27, 7, "oak5"], [15, 27, 9, "oak5"], [9, 29, 12, "oak5"],
-    ]);
-  }),
+  /** More of the worn path, drifting a little to one side. */
+  "tile/floor-wood-f": tile((p) => worn(p, 6, 14)),
 
-  /** The dark ring where the mop bucket stood every night for years, and a splash beside it. */
-  "tile/floor-wood-g": tile((p) => {
-    oakBoards(p, 7, [{ grain: 2 }, { joints: [3] }, { grain: 1 }, { joints: [24] }]);
-    p.over(() => block(p, 13, 9, [
-      "...bbbbbbb...",
-      ".bb.......bb.",
-      "b...........b",
-      "b...........c",
-      ".b.........c.",
-      "..cbbbbbccc..",
-      ".............",
-      "..........bb.",
-      "....bb....b..",
-    ], OAK, "bucket-ring"));
-  }),
+  /** Where the soy-milk churn was set down every morning: a brown ring soaked into the grout. */
+  "tile/floor-wood-g": tile((p) => mosaic(p, 7, (c, x, y) => {
+    if (blob(x, y, 16, 16, 9, 6) && !blob(x, y, 16, 16, 6.5, 4)) return { cream: "bamboo4", aged: "bamboo4", lit: "bamboo5", grout: "bamboo3" };
+    if (blob(x, y, 16, 16, 6.5, 4)) return { cream: "cream3", grout: "bamboo4" };
+    return undefined;
+  })),
 
-  /** Where the morning sun lies across the boards, bleached a shade paler: a cat-sized patch. */
-  "tile/floor-wood-h": tile((p) => {
-    oakBoards(p, 8, [{ joints: [28] }, { grain: 2 }, { grain: 2 }, { joints: [7] }]);
-    const inside = (x: number, y: number, rx: number, ry: number) => ((x + 0.5 - 16) / rx) ** 2 + ((y + 0.5 - 15) / ry) ** 2 <= 1;
-    p.each((x, y, c) => {
-      if (inside(x, y, 8.5, 5.5)) return c === "oak4" ? "oak5" : c === "oak3" ? "oak4" : undefined;
-      if (inside(x, y, 12, 8) && (x + y) % 3 !== 0) return c === "oak3" ? "oak4" : undefined;
-      return undefined;
-    });
-  }),
+  /** Under the window: the morning sun has faded the ink rosettes and bleached the cream. */
+  "tile/floor-wood-h": tile((p) => mosaic(p, 8, (_c, x, y) => (blob(x, y, 16, 16, 13, 10) ? { cream: "cream5", aged: "cream4", ink: "stone3", inkLit: "stone4", grout: "cream3" } : undefined))),
 
-  /** Two curved scratches where somebody always drags the same stool out from the same table. */
+  /** A brass access plate over the old gas cock, screwed down, its edge polished by passing feet. */
   "tile/floor-wood-i": tile((p) => {
-    oakBoards(p, 9, [{ grain: 2 }, { joints: [16] }, { grain: 2 }, { grain: 2, joints: [29] }]);
-    p.over(() => block(p, 4, 17, [
-      "ccc.....................",
-      "lllcccc.................",
-      "...llllccccc............",
-      "cc.....lllllcccccc......",
-      "llcccc......llllllcccc..",
-      "..lllllcccccc.....llll..",
-    ], OAK, "scratches"));
+    mosaic(p, 9);
+    block(p, 9, 11, [
+      ".ddddddddddddd.",
+      "dlLLLLLLLLLLlmd",
+      "dLdlllllllllmmd",
+      "dLlmmmmmmmmmlmd",
+      "dLlmmmmmmmmmlmd",
+      "dLlmmmmmmmmmlmd",
+      "dLlllllllllldmd",
+      "dlmmmmmmmmmmmmd",
+      ".ddddddddddddd.",
+    ], M, "plate");
   }),
+
+  // ── border band along the walls ────────────────────────────────────────────
+  /** Border along a wall to the north (the back wall). */
+  "tile/floor-border-h": tile((p) => border(p, ["n"], 11)),
+  /** Border along a wall to the south (the front wall). */
+  "tile/floor-border-h-s": tile((p) => border(p, ["s"], 12)),
+  /** Border along a wall to the west. */
+  "tile/floor-border-v": tile((p) => border(p, ["w"], 13)),
+  /** Border along a wall to the east. */
+  "tile/floor-border-v-e": tile((p) => border(p, ["e"], 14)),
+  "tile/floor-border-corner-tl": tile((p) => border(p, ["n", "w"], 15)),
+  "tile/floor-border-corner-tr": tile((p) => border(p, ["n", "e"], 16)),
+  "tile/floor-border-corner-bl": tile((p) => border(p, ["s", "w"], 17)),
+  "tile/floor-border-corner-br": tile((p) => border(p, ["s", "e"], 18)),
 });
