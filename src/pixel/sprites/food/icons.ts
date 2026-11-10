@@ -5,7 +5,7 @@
  */
 import { defineSprites, hash, Px, type Color } from "../../kit/index.ts";
 import { grid, inEllipse, part, selout, shift, tube, type Ramp } from "./_helpers.ts";
-import { bowl, plate, RIMS, steamer, surface, type BodyPattern } from "./_ware.ts";
+import { bowl, plate, RIMS, steamer, surface, tumbler, type BodyPattern } from "./_ware.ts";
 
 const DOUGH: Ramp = ["cream2", "cream3", "cream4", "cream5", "white"];
 const DOUGH_CUTS = [0.24, 0.48, 0.7, 0.9];
@@ -246,32 +246,38 @@ function breadIcon(p: Px) {
 
 /**
  * A peeled tea egg standing on its broad end. The shell was cracked all over and simmered in tea
- * and soy, so the white is marbled by a web of brown where the liquid crept in.
- * The web is the edges of cells round hand-placed seeds, darker where a cell soaked longer.
+ * and soy, so the pale white is netted with crisp brown lines where the liquid crept in.
+ * The net is the borders between cells round jittered seeds, one pixel wide. `w` × `h`.
  */
-function teaEgg(): Px {
-  return part(14, 18, (q) => {
-    const cx = 7, cy = 9.6, ry = 8.2;
-    const rxAt = (y: number) => 6.2 * (1 - 0.16 * Math.max(0, (cy - (y + 0.5)) / ry));
-    const LIGHT: Ramp = ["oak3", "oak4", "oak5", "cream4", "cream5"];
-    // Seeds on a jittered three-pixel lattice, so the cells are small and uneven.
+function teaEgg(w = 15, h = 20, seed = 3): Px {
+  return part(w, h, (q) => {
+    const cx = w / 2, cy = h * 0.54, ry = h / 2 - 1;
+    const rxAt = (y: number) => (w / 2 - 1) * (1 - 0.2 * Math.max(0, (cy - (y + 0.5)) / ry));
+    const TEA: Ramp = ["oak3", "oak4", "oak5", "cream4"];
+    const step = Math.max(2.6, w / 4.2);
     const seeds: [number, number][] = [];
-    for (let gy = 0; gy < 7; gy++) for (let gx = 0; gx < 5; gx++)
-      seeds.push([gx * 3 + 0.5 + hash(gx, gy, 3) * 2.4, gy * 3 - 0.5 + hash(gx, gy, 4) * 2.6]);
-    for (let y = 0; y < 18; y++) for (let x = 0; x < 14; x++) {
+    for (let gy = -1; gy < h / step + 1; gy++) for (let gx = -1; gx < w / step + 1; gx++)
+      seeds.push([gx * step + hash(gx, gy, seed) * step, gy * step + hash(gx, gy, seed + 1) * step]);
+    const cell = (x: number, y: number) => {
+      let best = 0, d = Infinity;
+      seeds.forEach(([sx, sy], k) => { const e = Math.hypot(x + 0.5 - sx, y + 0.5 - sy); if (e < d) { d = e; best = k; } });
+      return best;
+    };
+    const inside = (x: number, y: number) => {
       const u = (x + 0.5 - cx) / rxAt(y), v = (y + 0.5 - cy) / ry;
-      if (u * u + v * v > 1) continue;
-      const nz = Math.sqrt(1 - u * u - v * v), l = Math.max(0, -0.55 * u - 0.6 * v + 0.6 * nz);
-      let i = l < 0.25 ? 0 : l < 0.48 ? 1 : l < 0.7 ? 2 : l < 0.88 ? 3 : 4;
-      const d = seeds.map(([sx, sy], k) => [Math.hypot(x + 0.5 - sx, y + 0.5 - sy), k] as const).sort((a, b) => a[0] - b[0]);
-      // Some cells soaked longer and came out darker.
-      if (hash(d[0][1], 0, 9) < 0.3) i = Math.max(0, i - 1);
-      let c: Color = LIGHT[i];
-      // Crack lines; a few edges stayed closed, so the web is broken in places.
-      if (d[1][0] - d[0][0] < 0.75 && hash(d[0][1] + d[1][1] * 31, 1, 5) > 0.25) c = i >= 3 ? "oak3" : i >= 1 ? "wood4" : "wood3";
-      q.px(x, y, c);
+      return u * u + v * v <= 1;
+    };
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+      if (!inside(x, y)) continue;
+      const u = (x + 0.5 - cx) / rxAt(y), v = (y + 0.5 - cy) / ry, nz = Math.sqrt(Math.max(0, 1 - u * u - v * v));
+      const l = Math.max(0, -0.55 * u - 0.6 * v + 0.6 * nz);
+      const i = l < 0.3 ? 0 : l < 0.55 ? 1 : l < 0.8 ? 2 : 3;
+      const c = cell(x, y), edge = (inside(x + 1, y) && cell(x + 1, y) !== c) || (inside(x, y + 1) && cell(x, y + 1) !== c);
+      q.px(x, y, edge ? (i >= 2 ? "wood4" : i === 1 ? "wood3" : "brown2") : TEA[i]);
     }
-    q.px(4, 4, "white").px(5, 4, "white").px(4, 5, "white");
+    // One strong glint where the sun hits the wet white.
+    const gx = Math.round(cx - w * 0.2), gy = Math.round(cy - ry * 0.45);
+    q.rows(gx - 1, gy - 1, [".cc.", "cWWc", "cWc.", ".c.."], { c: "cream5", W: "white" });
     selout(q, "brown1", "wood3");
   });
 }
@@ -292,20 +298,27 @@ const HALF_EGG = [
   "....oooooooo....",
 ];
 
-/** One star anise, eight boat-shaped pods round a centre, two with a glossy seed showing. 13×11. */
+/** One star anise, eight pointed boats round a centre, each split along its top; two show a glossy seed. 19×15. */
 function starAnise(): Px {
-  return part(13, 11, (q) => {
-    for (let k = 0; k < 8; k++) {
-      const a = (k * Math.PI) / 4 + 0.25, lit = Math.cos(a) + Math.sin(a) < 0.2;
-      for (let s = 0.5; s <= 5.2; s += 0.35) {
-        const x = Math.round(6 + Math.cos(a) * s - 0.5), y = Math.round(5.5 + Math.sin(a) * s * 0.8 - 0.5);
-        q.px(x, y, s < 1.5 ? "rose2" : lit ? "rose4" : "rose3");
-        // Boats are two wide near the middle.
-        if (s > 1.4 && s < 3.6) q.px(x + Math.round(-Math.sin(a)), y + Math.round(Math.cos(a) * 0.8), lit ? "rose3" : "rose2");
+  return part(19, 15, (q) => {
+    const cx = 9.5, cy = 7.5;
+    for (let y = 0; y < 15; y++) for (let x = 0; x < 19; x++) {
+      const dx = x + 0.5 - cx, dy = (y + 0.5 - cy) / 0.82, r = Math.hypot(dx, dy);
+      if (r > 8.4) continue;
+      for (let k = 0; k < 8; k++) {
+        const a = (k * Math.PI) / 4 + 0.2, ax = Math.cos(a), ay = Math.sin(a);
+        const along = dx * ax + dy * ay, across = Math.abs(-dx * ay + dy * ax);
+        if (along < 0.8 || along > 8.2) continue;
+        const half = 1.55 * Math.sin((Math.PI * (along - 0.4)) / 8.2);
+        if (across > half) continue;
+        const lit = ax + ay < 0.3;
+        // The seam along each boat's back, where it has split open.
+        const seam = across < 0.45 && along > 2 && along < 6.5;
+        q.px(x, y, seam ? "rose1" : across > half - 0.8 ? (lit ? "rose3" : "rose2") : lit ? "rose4" : "rose3");
       }
     }
-    q.px(6, 5, "rose1");
-    for (const [x, y] of [[8, 3], [3, 7]] as const) q.px(x, y, "gold3").px(x + 1, y, "gold1");
+    q.rows(8, 6, ["rr.", "rRr", ".r."], { r: "rose2", R: "rose1" });
+    for (const [x, y] of [[13, 4], [5, 10]] as const) q.px(x, y, "gold4").px(x + 1, y, "gold2");
     selout(q, "rose1");
   });
 }
@@ -315,36 +328,28 @@ function starAnise(): Px {
  * in a shallow wave-rim dish with a spoonful of the tea, a star anise and a stray tea leaf.
  */
 function eggIcon(p: Px) {
-  plate(p, 24, 33, 22.5, 10, { rim: RIMS.wave, well: 0.7 });
-  // A pool of the dark tea in the well, with one glint.
-  p.ellipse(25, 35, 12, 4.2, "wood3");
-  p.ellipse(24, 34.4, 11, 3.4, "wood2");
-  p.hline(18, 33, 4, "wood4").px(17, 34, "oak3").px(32, 37, "wood4");
-  p.blit(teaEgg(), 11, 17);
-  grid(p, 22, 29, HALF_EGG, { c: "oak2", o: "wood3", b: "oak3", t: "cream4", W: "white", w: "cream5", r: "jade4", y: "gold4", Y: "gold3", z: "gold5", e: "oak4", v: "wood4" });
-  p.blit(starAnise(), 33, 24);
+  plate(p, 24, 34, 22, 9.5, { rim: RIMS.plain, well: 0.7 });
+  p.over(() => { p.ellipse(17, 38.5, 7, 2.2, "blue5"); p.ellipse(30, 39, 8, 2, "blue5"); });
+  p.blit(teaEgg(15, 20), 10, 20);
+  grid(p, 23, 31, HALF_EGG, { c: "oak2", o: "wood3", b: "oak3", t: "cream4", W: "white", w: "cream5", r: "jade4", y: "gold4", Y: "gold3", z: "gold5", e: "oak4", v: "wood4" });
+  p.blit(starAnise(), 27, 17);
   // A tea leaf, unfurled from the brew.
-  grid(p, 8, 35, ["..ll...", ".lLLll.", "lLvvvLl", ".llLll.", "...l..."], { l: "leaf1", L: "leaf2", v: "leaf3" });
+  grid(p, 6, 36, ["..ll...", ".lLLll.", "lLvvvLl", ".llLll.", "...l..."], { l: "leaf1", L: "leaf2", v: "leaf3" });
 }
 
 // ── soy milk 豆浆 ────────────────────────────────────────────────────────────
 
 const FRIED: Ramp = ["orange1", "gold2", "gold3", "gold4", "gold5"];
 
-/** A porcelain spoon with a blue rim, its bowl in the milk and its handle resting on the lip. 14×12. */
-const SPOON = [
-  "..........oo..",
-  ".........obbo.",
-  "........obWbo.",
-  ".......obWbo..",
-  "......obWbo...",
-  ".....obWbo....",
-  "..oooobWbo....",
-  ".obbbbWwbo....",
-  "obWWWwwbo.....",
-  "obWwwwwbo.....",
-  ".obbbbbo......",
-  "..ooooo.......",
+/** A porcelain spoon lying on the saucer: deep bowl, short flat handle, blue rim line. 17×7. */
+const FLAT_SPOON = [
+  "...ooooo.........",
+  "..obWWWbo........",
+  ".obWwwwwbooooooo.",
+  "obWwwwwwbbbbbbWbo",
+  "obwwwwwwbooooooo.",
+  ".obwwwwbo........",
+  "..ooooo..........",
 ];
 
 /** Blue ink for a body pixel: lighter on the lit side, deeper round the shaded side. */
@@ -365,61 +370,30 @@ function motif(p: Px, x: number, y: number, rows: readonly string[], litBelow: n
   }));
 }
 
-const PEONY = ["..ooo..", ".oOOOo.", "ooOdOoo", ".oOOOo.", "..o.o.."];
-const LEAF = ["oo.", ".oo"];
-
-/** The milk bowl: a double line under the lip, a vine of peonies round the belly, lotus panels at the foot. */
-function peonyBowl(depth: number): BodyPattern {
-  return (u, t, lit) => {
-    const py = t * depth;
-    if ((py > 1 && py < 2) || (py > 3 && py < 4)) return ink(lit);
-    if (Math.abs(py - (9.5 + 1.2 * Math.sin(u * 8))) < 0.5) return ink(lit);
-    // Lotus panels: pointed arches round the foot.
-    const k = ((u + 1) * 4.5) % 1, h = depth - 0.8 - py;
-    if (h > 0 && h < 4.5 && Math.abs(Math.abs(k - 0.5) * 9 - h) < 0.7) return ink(lit);
-    if (py > depth - 1.2) return ink(lit);
-    return undefined;
-  };
-}
-
 /**
- * 豆浆. Hot soy milk in the peony bowl, a skin starting to form on the far side, the blue-rimmed
- * spoon, and the end of somebody's 油条 dunked in it the way it should be.
+ * 豆浆. Soy milk the way the stall pours it for people who sit down: a tall ribbed glass on a
+ * saucer, a skin just forming, a bead running down from where it was filled too full, and the
+ * porcelain spoon laid beside it.
  */
 function milkIcon(p: Px) {
-  bowl(p, 23, 19, 19.5, 7.5, 18, { belly: 0.8, body: peonyBowl(18) });
-  for (const [x, y] of [[8, 32], [20, 33], [32, 32]] as const) motif(p, x, y, PEONY, 22);
-  for (const [x, y] of [[15, 32], [27, 34], [5, 35], [38, 34]] as const) motif(p, x, y, LEAF, 22);
-  surface(p, 23.6, 20.2, 17, 5.6, ["cream3", "cream4", "cream5"]);
-  // A skin starting to form: a wrinkled sheet drifting on the far right of the surface.
-  grid(p, 20, 15, [
-    "...kkkk.......",
-    ".kkSSSSkkk....",
-    "kSSkkSSSSSkk..",
-    "kSkSSkkSSkSSk.",
-    ".kSSkSSkkSSSk.",
-    "..kkSSkSSSkk..",
-    "....kkkkk.....",
+  plate(p, 24, 40, 21, 5.5, { rim: RIMS.banded, well: 0.6 });
+  p.over(() => p.ellipse(22, 41.5, 10, 2.2, "blue5"));
+  p.blit(tumbler(48, 48, 21, 7, 40, 10.5, 8.5, 3.2, { headroom: 3, base: 3, ribs: 3, fill: ["cream3", "cream4", "cream5", "white"] }), 0, 0);
+  // A skin wrinkling on the far right of the surface, and the sheen on the left.
+  grid(p, 21, 8, [
+    "..kkkk...",
+    ".kSSkSkk.",
+    "kSkSSkSSk",
+    ".kkSkkSk.",
+    "...kkk...",
   ], { k: "cream3", S: "cream5" });
-  // Sheen along the lit side.
-  p.hline(11, 18, 5, "white").hline(9, 19, 3, "white").px(17, 18, "cream5");
-  grid(p, 30, 8, SPOON, { o: "blue2", b: "blue3", W: "white", w: "blue6" });
-  // The dunked fried-dough end, soaked dark where it meets the milk, with a ripple round it.
-  p.ellipse(13, 21.5, 4, 1.4, "cream5");
-  const stick = part(48, 48, (q) => {
-    tube(q, [[3, 3], [12, 19]], (t) => 2.1 + 0.45 * Math.sin(t * 33) + 0.25 * Math.sin(t * 71), FRIED, [0.12, 0.38, 0.66, 0.9]);
-    tube(q, [[6.4, 1.6], [15.2, 17.4]], (t) => 1.9 + 0.4 * Math.sin(t * 29 + 2), FRIED, [0.12, 0.38, 0.66, 0.9]);
-    q.over(() => {
-      for (let d = 0; d < 15; d++) q.px(Math.round(5.3 + d * 0.58), Math.round(3 + d * 1.05), d % 4 === 0 ? "gold1" : "orange1");
-      for (const [x, y] of [[3, 4], [5, 9], [8, 4], [10, 9], [7, 13], [12, 13]] as const) q.px(x, y, "gold5").px(x + 1, y + 1, "gold2");
-      for (let y = 16; y < 24; y++) for (let x = 7; x < 18; x++) if (q.solid(x, y) && y > 22 - (x - 7) * 0.45) q.px(x, y, q.get(x, y) === "gold5" || q.get(x, y) === "gold4" ? "oak4" : "oak3");
-    });
-    selout(q, "wood2", "gold1");
-    // It dips under the surface: cut it off at the milk line.
-    for (let y = 0; y < 48; y++) for (let x = 0; x < 48; x++) if (y + 0.5 > 21 - (x - 9) * 0.1 && x > 6) q.px(x, y, null);
-  });
-  p.blit(stick, 0, 0);
-  selout(p, "blue2", "blue3");
+  p.hline(14, 9, 4, "white").hline(13, 10, 2, "white");
+  // The meniscus catching light along the near edge of the surface.
+  p.over(() => { for (let x = 13; x < 30; x++) { const y = Math.round(10.2 + 2.4 * Math.sqrt(Math.max(0, 1 - ((x + 0.5 - 21) / 9.3) ** 2))); p.px(x, y, x < 22 ? "white" : "cream5"); } });
+  // A bead of milk run over the lip and down the outside of the glass, swelling into a drop.
+  grid(p, 30, 7, ["ww.", ".W.", ".w.", ".W.", ".w.", ".W.", ".w.", "wWw", "WwW", ".k."], { w: "cream5", W: "cream4", k: "cream3" });
+  p.px(31, 14, "white");
+  grid(p, 29, 37, FLAT_SPOON, { o: "blue2", b: "blue3", W: "white", w: "blue6" });
 }
 
 // ── congee 粥 ────────────────────────────────────────────────────────────────
