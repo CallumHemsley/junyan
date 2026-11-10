@@ -410,4 +410,33 @@ export default defineSprites({
       wallEdge(p);
     },
   },
+  /**
+   * A window charm a regular brought back from a temple trip: a little jade disc on a red cord
+   * with a glass bead and a short tassel, hung on the window latch. The cord has faded to rose in
+   * the sun. Four frames at 2 fps: the disc turns slowly on its cord and the bead catches the
+   * light. Anchored at the top of the cord.
+   */
+  "decor/sun-catcher": {
+    w: 10, h: 20, anchor: [5, 0], layer: "floor", frames: 4, fps: 2,
+    draw: (p, frame) => {
+      // The disc, turning: full face, three-quarter, edge on, three-quarter.
+      const rx = [4, 3, 1.2, 3][frame], cx = 5, cy = 9.5;
+      for (let y = 5; y < 14; y++) for (let x = 0; x < 10; x++) {
+        const u = (x + 0.5 - cx) / rx, v = (y + 0.5 - cy) / 4.2, d = u * u + v * v;
+        if (d > 1) continue;
+        if (rx > 2 && u * u * 6 + v * v * 6 < 1) continue;
+        const l = -0.7 * u - 0.5 * v;
+        p.px(x, y, l > 0.45 ? "jade6" : l > 0 ? "jade5" : l > -0.4 ? "jade4" : "jade3");
+      }
+      p.outline("jade1");
+      // Faded cord and a small knot, threaded through the disc.
+      p.vline(5, 0, 3, "rose3").px(5, 14, "rose3");
+      art(p, 4, 3, ["rR", "Rr"], { r: "red3", R: "rose4" });
+      // Glass bead, catching the sun on alternate frames.
+      p.faded(0.75, () => art(p, 4, 15, ["bB", "bb"], { b: "blue5", B: "blue6" }));
+      if (frame % 2 === 0) p.px(4, 15, "white");
+      // Short tassel.
+      art(p, 4, 17, ["rR", "rR", "r."], { r: "red3", R: "red4" });
+    },
+  },
 });
