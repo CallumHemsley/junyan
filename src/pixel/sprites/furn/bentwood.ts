@@ -10,9 +10,10 @@
 import { defineSprites, type Color, type Px } from "../../kit/index.ts";
 import { each, grid, mirrorable, oval, ovalHalves } from "./_helpers.ts";
 
-type Finish = { hi: Color; lit: Color; base: Color; dark: Color; line: Color; wear?: readonly [Color, Color] };
+type Facing = "down" | "up" | "left" | "right";
+type Finish = { hi: Color; lit: Color; base: Color; dark: Color; line: Color; lacquer?: boolean };
 const WALNUT: Finish = { hi: "wood5", lit: "wood4", base: "wood3", dark: "wood2", line: "wood1" };
-const LACQUER: Finish = { hi: "steel3", lit: "steel2", base: "ink2", dark: "steel1", line: "ink", wear: ["wood3", "wood4"] };
+const LACQUER: Finish = { hi: "steel3", lit: "steel2", base: "ink2", dark: "steel1", line: "ink", lacquer: true };
 
 /** A steam-bent member: lit top edge, body, dark underside, along a polyline. */
 function bent(p: Px, pts: readonly (readonly [number, number])[], f: Finish, thick = 2) {
@@ -93,8 +94,7 @@ function chairDown(p: Px, f: Finish, split: boolean) {
   L.rect(9, 10, 1, 9, f.base); L.rect(18, 10, 1, 9, f.dark);
   legsDown(p, L, f, true);
   seat(p, f, split);
-  wear(p, f, [[8, 2, 9], [7, 3, 3], [17, 3, 2], [5, 12, 1], [5, 13, 1]]);
-  p.outline(f.line);
+  finish(p, f, "down");
 }
 
 function chairUp(p: Px, f: Finish, split: boolean) {
@@ -109,8 +109,7 @@ function chairUp(p: Px, f: Finish, split: boolean) {
   post(L, 5, 18, 13, f); post(L, 21, 18, 13, f);
   bent(p, [[5, 31], [4, 37], [3, 42]], f, 1); bent(p, [[6, 31], [5, 37], [4, 42]], f, 1);
   bent(p, [[22, 31], [23, 37], [24, 42]], f, 1); bent(p, [[21, 31], [22, 37], [23, 42]], f, 1);
-  wear(p, f, [[8, 11, 9], [7, 12, 3], [17, 12, 2]]);
-  p.outline(f.line);
+  finish(p, f, "up");
 }
 
 function chairSide(p: Px, f: Finish, split: boolean, flip: boolean) {
@@ -143,15 +142,121 @@ function chairSide(p: Px, f: Finish, split: boolean, flip: boolean) {
     "..ab..bd",
   ], { a: f.lit, b: f.base, c: flip ? f.lit : f.dark, d: f.dark });
   bent(p, near([[3, 20], [3, 31], [2, 37], [1, 42]]), f, 1); bent(p, near([[4, 20], [4, 31], [3, 37], [2, 42]]), f, 1);
-  wear(p, f, [[L.X(3, 4), 2, 4], [L.X(2, 2), 3, 2]]);
-  p.outline(f.line);
+  finish(p, f, flip ? "left" : "right");
 }
 
-/** The lacquer worn through to the brown wood where hands grab the hoop. */
-function wear(p: Px, f: Finish, runs: readonly (readonly [number, number, number])[]) {
-  if (!f.wear) return;
-  p.over(() => { for (const [x, y, n] of runs) { p.hline(x, y, n, f.wear![0]); if (n > 3) p.hline(x + 1, y, n - 3, f.wear![1]); } });
+/**
+ * Outline the chair. Walnut is outlined everywhere; black lacquer only around its silhouette, so
+ * the floor shows through the openwork instead of a second ring of ink around every member, and it
+ * gets its gloss and wear first.
+ */
+function finish(p: Px, f: Finish, facing: Facing) {
+  if (!f.lacquer) { p.outline(f.line); return; }
+  relight(p);
+  p.over(() => { for (const [x, y, row] of LACQUER_DETAIL[facing]) p.rows(x, y, [row], LACQUER_LEGEND); });
+  outlineOutside(p, f.line);
 }
+
+const FRAME = new Set<Color>(["ink2", "steel1", "steel2", "steel3"]);
+
+/**
+ * Re-light every lacquered member from the upper left: the warm plum black where an edge faces up
+ * or left, the cool black where it faces down or right. The shine itself is hand-placed after.
+ */
+function relight(p: Px) {
+  const empty = (x: number, y: number) => !p.solid(x, y);
+  const hits: [number, number, Color][] = [];
+  each(0, 0, p.w, p.h, (x, y) => {
+    const c = p.get(x, y);
+    if (!c || !FRAME.has(c)) return;
+    if (empty(x - 1, y) || empty(x, y - 1)) hits.push([x, y, "ink2"]);
+    else if (empty(x + 1, y) || empty(x, y + 1)) hits.push([x, y, "steel1"]);
+  });
+  for (const [x, y, c] of hits) p.px(x, y, c);
+}
+
+/** One-pixel outline on the transparent pixels that the outside of the silhouette reaches, leaving enclosed holes clear. */
+function outlineOutside(p: Px, c: Color) {
+  const outside = new Uint8Array(p.w * p.h), stack: [number, number][] = [];
+  const visit = (x: number, y: number) => {
+    if (x < 0 || y < 0 || x >= p.w || y >= p.h || outside[y * p.w + x] || p.solid(x, y)) return;
+    outside[y * p.w + x] = 1;
+    stack.push([x, y]);
+  };
+  for (let x = 0; x < p.w; x++) { visit(x, 0); visit(x, p.h - 1); }
+  for (let y = 0; y < p.h; y++) { visit(0, y); visit(p.w - 1, y); }
+  while (stack.length) { const [x, y] = stack.pop()!; visit(x + 1, y); visit(x - 1, y); visit(x, y + 1); visit(x, y - 1); }
+  const hits: [number, number][] = [];
+  each(0, 0, p.w, p.h, (x, y) => {
+    if (outside[y * p.w + x] && [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => p.solid(x + dx, y + dy))) hits.push([x, y]);
+  });
+  for (const [x, y] of hits) p.px(x, y, c);
+}
+
+/** Gloss and wear, hand-placed per facing: 3 and 4 are the cool reflection of the window along the bent wood; b–e are the brown wood where the lacquer has worn through. */
+const LACQUER_LEGEND = { "1": "steel1", "2": "steel2", "3": "steel3", "4": "steel4", K: "ink2", b: "wood2", c: "wood3", d: "wood4", e: "wood5" } as const;
+type Detail = readonly (readonly [x: number, y: number, row: string])[];
+/** Wear that a seat front, both knees and the stretcher share in every facing, mirrored for the left. */
+const LEGS: Detail = [
+  [21, 31, "2"], [21, 32, "3"], [21, 33, "2"],
+  [22, 36, "c"], [22, 37, "dc"], [22, 38, "b"],
+  [12, 40, "bcddcb"],
+];
+const LACQUER_DETAIL: Record<Facing, Detail> = {
+  down: [
+    // The shine along the hoop's upper-left arc and down the left post, broken where the lacquer is crazed.
+    [11, 2, "22"], [8, 3, "332"], [7, 4, "43"], [6, 5, "3"], [6, 6, "3"], [5, 7, "2"], [5, 8, "2"],
+    [5, 9, "2"], [5, 10, "3"], [5, 11, "3"], [5, 12, "2"], [5, 13, "2"], [5, 14, "2"], [5, 17, "2"], [5, 18, "2"],
+    [12, 6, "23"], [10, 7, "22"], [9, 8, "2"], [9, 9, "2"], [9, 10, "2"], [9, 11, "2"], [9, 13, "2"],
+    [21, 9, "2"], [21, 10, "2"], [21, 11, "2"], [21, 14, "2"], [21, 15, "2"],
+    // Worn through where hands pull the chair out by the top of the hoop.
+    [13, 2, "cded"], [13, 3, "bcdcb"], [19, 4, "c"],
+    // The seat rim: shine at the back, the front edge rubbed bare by thighs.
+    [6, 19, "2332"], [4, 20, "22"], [3, 21, "2"], [2, 22, "2"], [2, 23, "2"],
+    [11, 27, "bccb"], [10, 28, "bcdedcb"], [12, 29, "bccb"], [18, 28, "c"],
+    // Legs: shine high on the front legs, the knees and the stretcher worn by shoes.
+    [5, 31, "2"], [5, 32, "3"], [5, 33, "2"], [4, 34, "2"],
+    [4, 36, "c"], [4, 37, "dc"], [4, 38, "cb"],
+    ...LEGS,
+  ],
+  up: [
+    // From behind: the same shine, and the heaviest wear, where the chair is pulled from the table.
+    [11, 11, "2"], [8, 12, "332"], [7, 13, "43"], [6, 14, "3"], [6, 15, "3"], [5, 16, "2"], [5, 17, "2"],
+    [5, 18, "2"], [5, 19, "3"], [5, 20, "3"], [5, 21, "2"], [5, 22, "2"], [5, 23, "2"], [5, 26, "2"], [5, 27, "2"],
+    [12, 15, "23"], [10, 16, "22"], [9, 17, "2"], [9, 18, "2"], [9, 19, "2"], [9, 20, "2"], [9, 22, "2"],
+    [12, 11, "bcded"], [12, 12, "bcdcbb"], [19, 13, "c"],
+    [12, 28, "bcdcb"], [13, 29, "bc"],
+    [5, 31, "2"], [5, 32, "3"], [5, 33, "2"], [4, 34, "2"],
+    [4, 36, "c"], [4, 37, "dc"], [4, 38, "cb"],
+    ...LEGS,
+  ],
+  right: [
+    // The hoop's top, worn at the back where it is gripped; shine down its outer edge and the back leg.
+    [3, 2, "3cdd"], [6, 3, "dc"], [7, 4, "b"],
+    [2, 3, "3"], [1, 4, "3"], [1, 5, "4"], [2, 6, "3"], [2, 7, "2"], [2, 8, "2"], [2, 9, "3"], [2, 10, "2"], [2, 11, "2"],
+    [3, 13, "2"], [3, 14, "2"], [3, 16, "2"], [3, 17, "2"], [3, 21, "2"], [3, 22, "2"], [3, 23, "3"], [3, 24, "2"], [3, 27, "2"], [3, 28, "2"],
+    [6, 9, "2"], [6, 10, "3"], [6, 11, "2"], [6, 13, "2"], [6, 14, "2"],
+    [10, 18, "2332"], [5, 19, "2"],
+    // The front of the seat rim, rubbed bare.
+    [24, 23, "c"], [23, 24, "dc"], [23, 25, "cb"], [23, 26, "b"],
+    [2, 36, "c"], [2, 37, "cb"],
+    ...LEGS,
+  ],
+  left: [
+    [21, 2, "ddc2"], [20, 3, "cd"], [20, 4, "b"],
+    [19, 5, "4"], [19, 6, "3"], [19, 7, "2"], [19, 8, "2"], [19, 9, "3"], [19, 10, "2"], [19, 11, "2"],
+    [19, 13, "2"], [19, 14, "2"], [19, 16, "2"], [19, 17, "2"],
+    [21, 8, "1"], [21, 9, "1"], [21, 10, "1"], [21, 11, "1"], [21, 12, "1"], [21, 13, "1"], [21, 14, "1"], [21, 15, "1"], [21, 16, "1"], [21, 17, "1"],
+    [24, 6, "2"], [24, 8, "2"], [24, 9, "2"], [24, 10, "3"], [23, 13, "2"], [23, 14, "2"], [23, 16, "2"],
+    [23, 21, "2"], [23, 22, "2"], [23, 23, "3"], [23, 24, "2"], [23, 30, "2"], [23, 31, "2"],
+    [5, 19, "2332"], [4, 20, "2"], [3, 21, "2"], [2, 22, "2"],
+    [3, 23, "c"], [3, 24, "dc"], [3, 25, "cb"], [3, 26, "b"],
+    [5, 31, "2"], [5, 32, "3"], [5, 33, "2"], [4, 34, "2"],
+    [4, 36, "c"], [4, 37, "dc"], [4, 38, "cb"],
+    [24, 36, "c"], [24, 37, "cb"],
+    [10, 40, "bcddcb"],
+  ],
+};
 
 const def = { w: 28, h: 45, anchor: [14, 43], foot: [-12, -12, 24, 11], shadow: { rx: 13, ry: 5, dy: -1 } } as const;
 
@@ -165,9 +270,14 @@ export default defineSprites({
   /** Walnut bentwood chair, sitter facing right. */
   "furn/chair-bentwood-right": { ...def, draw: (p) => chairSide(p, WALNUT, false, false) },
 
-  /** A black-lacquered bentwood chair bought second-hand, the lacquer worn through to brown on the hoop where hands pull it out, its cane seat split. Facing the camera. */
+  /**
+   * A black-lacquered bentwood chair bought second-hand, its cane seat split. The lacquer still
+   * catches the window along the hoop, but it has worn through to brown wood on the hoop top where
+   * hands pull it out, on the seat's front edge, on the knees of the legs and on the stretcher where
+   * shoes rest. Facing the camera.
+   */
   "furn/chair-bentwood-b-down": { ...def, draw: (p) => chairDown(p, LACQUER, true) },
-  /** Black bentwood chair from behind, the worn patch on the hoop. */
+  /** Black bentwood chair from behind, the hoop worn most here, where it is pulled from the table. */
   "furn/chair-bentwood-b-up": { ...def, draw: (p) => chairUp(p, LACQUER, true) },
   /** Black bentwood chair, sitter facing left. */
   "furn/chair-bentwood-b-left": { ...def, draw: (p) => chairSide(p, LACQUER, true, true) },

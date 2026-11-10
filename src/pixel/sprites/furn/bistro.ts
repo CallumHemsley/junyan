@@ -120,6 +120,63 @@ function banquette(p: Px, end: "left" | "right" | "none", seed: number) {
   }
 }
 
+const CAMEL: Legend = { T: "tan1", t: "tan2", n: "tan3", N: "tan4", v: "brown1", V: "brown2", W: "brown3", p: "plum1", P: "plum2", b: "brown1", s: "brown3", S: "brown2" };
+
+/**
+ * The camel coat left on the banquette's right end: hung by its shoulders over the back rail, the
+ * collar standing up, lapels open on a plum lining, one sleeve hanging down past the seat front and
+ * the other ending at the seat, the skirt folded forward onto the cushion. A Chesterfield: brown
+ * velvet on the collar, a suede patch sewn on the left elbow, leather gloves pushed into the right
+ * pocket. 20 wide, drawn from `x`.
+ */
+function coat(p: Px, x: number) {
+  grid(p, x, 0, 20, [
+    "......TWWWWWWT......",
+    "...TTTVWppppWVTTT...",
+    "..TNNNTVWppWVTNNnT..",
+    ".TNnnnNTVVVVTNnnntT.",
+    "TNntTnnNTPPTNnnTNntT",
+    "TNntTnnnNTpTNnnTNntT",
+    "TNntTnnnnNTTnnnTNntT",
+    "TNntTnnnnnbtnnnTNntT",
+    "TNntTnNnnnntnnnTNntT",
+    "TNntTnNtnnntnnnTNntT",
+    "TNntTnNtnnntnnnTNntT",
+    "TNntTnNtnnbtnnnTNntT",
+    "TtttTnnNtnntnnnTNntT",
+    ".TNntTnNtnntnnnTtttT",
+    ".TsstTnNnnntnnTNntT.",
+    ".TSstTnnnnbtnnTNntT.",
+    ".TNntTNNNnntNNTNntT.",
+    ".TNntTtttnntttTNntT.",
+    ".TNntTnnnnntNtTNNnT.",
+    ".TNntTnNnnntNtTtttT.",
+    ".TNntTnNtnntnNTvvvT.",
+    ".TNntTtTTtTTTtTTTT..",
+    ".TNntTNNnNNNNnNNNNT.",
+    ".TNtNTnnTnnnnnTnnntT",
+    ".TNtTnnnnTnnnnntnntT",
+    ".TNtTnnnnntnnnnntnPT",
+    ".TNtTnnnnnnTnnnnPPpT",
+    ".TNtTttttTTTttttTTT.",
+    ".TNtT...............",
+    ".TNtT...............",
+    ".TNNT...............",
+    ".TNtT...............",
+    ".TtttT..............",
+    ".TNNtT..............",
+    ".TvvvT..............",
+  ], CAMEL);
+  // The owner's brown leather gloves, stuffed into the right pocket.
+  p.rows(x + 12, 14, ["WV", "Vv"], CAMEL);
+  // Its shadow on the rail and leather to the right, under the skirt, and beside the hanging cuff.
+  const shade = { rose4: "rose3", rose3: "rose2", rose2: "rose1", wood4: "wood3", wood3: "wood2", wood2: "wood1" } as const;
+  p.swap(shade, [x + 20, 0, 1, 22]);
+  p.swap(shade, [x + 6, 28, 14, 1]);
+  p.swap(shade, [x + 5, 28, 1, 3]);
+  p.swap(shade, [x + 6, 31, 1, 4]);
+}
+
 export default defineSprites({
   /**
    * Table 1. A round white-marble bistro table on a tripod of cast-iron scroll feet, from the old
@@ -289,40 +346,15 @@ export default defineSprites({
   },
 
   /**
-   * The banquette's right end, with a camel coat somebody left folded over the back and onto the
-   * seat yesterday; the owner keeps it there until they come back. Sitter (−2, −4).
+   * The banquette's right end, with a camel coat somebody left hanging over the back yesterday, its
+   * skirt folded onto the seat and a sleeve hanging down the front; the owner keeps it there until
+   * they come back. Sitter (−2, −4).
    */
   "furn/banquette-right": {
     w: 32, h: 41, anchor: [16, 40], foot: [-16, -12, 32, 12], shadow: { rx: 16, ry: 4, dy: -1 },
     draw: (p) => {
       banquette(p, "right", 4);
-      // The coat: collar over the rail, the body down the back, a sleeve across the seat.
-      grid(p, 10, 0, 18, [
-        "....cccccc........",
-        "..cctttttcc.......",
-        ".ctTTttttttc......",
-        "ctTttttttttc......",
-        "cTtttttdtttc......",
-        "cTtttttdtttc......",
-        "cTtttttdttttc.....",
-        "cTtttttdbttttc....",
-        "cTtttttdttttttc...",
-        "cTtttttdtttttttc..",
-        "cTtttttdbttttttc..",
-        "cTtttttdttttttc...",
-        "cTtttttdtttttc....",
-        "cTtttttdttttc.....",
-        "cTtttttdbtttc.....",
-        "cTtttttdttttc.....",
-        "cTtttttdttttc.....",
-        "cTtttttdttttc.....",
-        "cTtttttdtttttcc...",
-        "cTttttttttttttttc.",
-        "cTTTTTTTttttttttc.",
-        "cttttttttttttttttc",
-        "cddddddddddddddddc",
-        ".ccccccccccccccccc",
-      ], { c: "tan1", t: "tan3", T: "tan4", d: "tan2", b: "wood2" });
+      coat(p, 6);
       p.outline("wood1", { sides: ["top", "right", "bottom"] });
     },
   },
