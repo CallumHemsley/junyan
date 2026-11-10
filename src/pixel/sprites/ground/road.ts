@@ -44,29 +44,25 @@ function snake(p: Px, points: readonly [number, number][]) {
   }
 }
 
-/**
- * A patch: newer asphalt over a trench, still dark with binder, its saw-cut edge stepping where the crew
- * cut round an obstacle. Lit where the old road's lip faces the sun, a dark seam where it has sunk.
- */
-function patch(p: Px, outline: readonly (readonly [number, number])[], seed: number) {
-  const inside = (x: number, y: number) => probeHas(outline, x, y);
-  for (let y = 0; y < T; y++) for (let x = 0; x < T; x++) {
-    if (!inside(x, y)) continue;
-    p.px(x, y, hash(x, y, seed) < 0.04 ? "steel3" : "steel2");
-    if (!inside(x, y - 1) || !inside(x - 1, y)) p.px(x, y, "steel3");
-    else if (!inside(x, y + 1) || !inside(x + 1, y)) p.px(x, y, hash(x >> 1, y >> 1, seed) < 0.7 ? "steel1" : "steel2");
-  }
+/** A wheel track along the road: a band polished paler by tyres, its edges wandering but meeting every tile. */
+function track(p: Px, centre: number, seed: number) {
+  p.faded(0.12, () => {
+    for (let x = 0; x < T; x++) {
+      const top = centre - 2 + Math.round(Math.sin((x / T) * Math.PI * 2 + seed) * 0.8);
+      const bottom = centre + 2 + Math.round(Math.sin((x / T) * Math.PI * 4 + seed * 2) * 0.8);
+      for (let y = top; y <= bottom; y++) if (y !== top && y !== bottom || hash(x >> 1, y, seed) < 0.5) p.px(x, y, "steel5");
+    }
+  });
 }
 
-/** Point-in-polygon at the pixel centre (even-odd), matching `Px.poly`. */
-function probeHas(outline: readonly (readonly [number, number])[], x: number, y: number): boolean {
-  let inside = false;
-  const px = x + 0.5, py = y + 0.5;
-  for (let i = 0, j = outline.length - 1; i < outline.length; j = i++) {
-    const [ax, ay] = outline[i], [bx, by] = outline[j];
-    if ((ay > py) !== (by > py) && px < ((bx - ax) * (py - ay)) / (by - ay) + ax) inside = !inside;
+/** The crown: the middle of the road a touch paler and drier, fading toward the kerbs. */
+function crown(p: Px, toward: "n" | "s") {
+  for (let y = 0; y < T; y++) {
+    const d = toward === "s" ? y : T - 1 - y;
+    const alpha = Math.max(0, (d - 12) / 20) * 0.08;
+    if (alpha <= 0) continue;
+    p.faded(alpha, () => p.hline(0, y, T, "steel4"));
   }
-  return inside;
 }
 
 export default defineSprites({
@@ -80,15 +76,14 @@ export default defineSprites({
   }),
 
   /**
-   * The gas-main trench: a strip of newer, darker asphalt crossing the road kerb to kerb, its saw-cut
-   * edges lit on the west and sunk on the east. The scene stacks it down one column of road.
+   * A crack that forked as it ran, sealed in two passes of tar by different crews, a few loose chips of
+   * aggregate kicked out beside it.
    */
   "ground/road-c": tile((p) => {
     asphalt(p, 3);
-    // The trench runs north–south through the whole tile, so stacked cells make one strip kerb to kerb.
-    patch(p, [[10, 0], [22, 0], [22, 32], [10, 32]], 31);
-    // It has sunk a little along its middle and cracked.
-    stamp(p, 15, 11, ["i.", ".i", ".i", "i.", "i."], L, false);
+    snake(p, [[5, 20], [10, 18], [15, 19], [19, 15]]);
+    snake(p, [[15, 19], [20, 21], [25, 20]]);
+    stamp(p, 9, 23, ["j..k", "...j"], L, false);
   }),
 
   /**
@@ -106,4 +101,14 @@ export default defineSprites({
     p.each((x, y) => (inBlob(x, y, 23, 25, 5, 3) ? "stone1" : undefined));
     stamp(p, 20, 24, [".pP.", "u..p"], L, false);
   }),
+
+  // ── overlays along the road's length, placed by the scene by lane position ──
+  /** Overlay: a wheel track in the upper half of a road cell. */
+  "ground/road-track-n": tile((p) => track(p, 9, 1)),
+  /** Overlay: a wheel track in the lower half of a road cell. */
+  "ground/road-track-s": tile((p) => track(p, 23, 2)),
+  /** Overlay: the crown, palest at the cell's south edge (the cell north of the road's middle). */
+  "ground/road-crown-s": tile((p) => crown(p, "s")),
+  /** Overlay: the crown, palest at the cell's north edge (the cell south of the road's middle). */
+  "ground/road-crown-n": tile((p) => crown(p, "n")),
 });

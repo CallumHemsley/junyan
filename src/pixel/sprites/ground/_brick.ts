@@ -35,35 +35,27 @@ export function brickAt(x: number, y: number): Brick {
 
 export type BrickTone = { face: Color; lit: Color; dark: Color };
 /**
- * Fired clay faded by ninety years of sun and soot: mostly a soft brown-red, some dark overburnt ones,
- * some bleached to a dusty mauve, and the grey 青砖 slipped in from a demolished wall. Grey joints keep
- * the red quiet.
+ * Fired clay faded by ninety years of sun, soot and mopping: mostly a dusty grey-brown, some brown,
+ * a few still warm, and the grey 青砖 slipped in from a demolished wall. Each face is one flat tone with
+ * a dark joint on its lower and right side, so the herringbone reads as bricks, not speckle.
  */
-export const TONES: Record<"dusty" | "warm" | "dark" | "grey", BrickTone> = {
+export const TONES: Record<"dusty" | "brown" | "warm" | "grey", BrickTone> = {
   dusty: { face: "cream1", lit: "cream2", dark: "stone2" },
+  brown: { face: "oak1", lit: "oak2", dark: "wood2" },
   warm: { face: "tan2", lit: "tan3", dark: "tan1" },
-  dark: { face: "wood3", lit: "tan2", dark: "wood2" },
   grey: { face: "stone3", lit: "stone4", dark: "stone2" },
 };
-export const JOINT: Color = "stone2";
+export const JOINT: Color = "stone1";
 
 /** Pick a brick's tone. Shared bricks use a fixed seed so both tiles draw the same brick. */
 export function toneOf(b: Brick, seed: number): BrickTone {
   const r = hash(b.bi, b.bj + (b.horizontal ? 0 : 8), b.shared ? 77 : seed);
-  return r < 0.18 ? TONES.dusty : r < 0.4 ? TONES.dark : TONES.warm;
+  return r < 0.66 ? TONES.dusty : r < 0.86 ? TONES.brown : r < 0.89 ? TONES.warm : TONES.grey;
 }
 
-/**
- * Paint one pixel of a brick: joints on the bottom row and right column, a lit corner at the top left,
- * and a darker heel at the lower right where years of feet have rounded it.
- */
+/** One pixel of a brick: a flat face, the joint on its bottom row and right column. */
 export function brickPixel(b: Brick, tone: BrickTone): Color {
-  const last = b.w - 1, bottom = b.h - 1;
-  if (b.u === last || b.v === bottom) return JOINT;
-  if (b.v === 0 && b.u < (b.horizontal ? 3 : 1)) return tone.lit;
-  if (b.u === 0 && b.v < (b.horizontal ? 1 : 3)) return tone.lit;
-  if (b.u === last - 1 && b.v === bottom - 1) return tone.dark;
-  return tone.face;
+  return b.u === b.w - 1 || b.v === b.h - 1 ? JOINT : tone.face;
 }
 
 /** Lay the whole tile. `override(b, x, y)` may change a brick's tone (a replacement, a stain). */
