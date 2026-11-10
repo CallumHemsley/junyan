@@ -1,7 +1,7 @@
 ---
 id: 165
 title: Draw the town's shopfronts
-status: todo
+status: doing
 priority: high
 type: feature
 created: 2026-11-10
@@ -18,5 +18,7 @@ The restaurant's street face, the tea house, the workshop and the shops are the 
 - `tsc -b` and pixel tests pass.
 
 ## Notes
+
+- 2026-11-10: owner Claude (pixel worker), branch `claude/0165-pixel-shopfronts`, worktree `/Users/callumhemsley/Personal/junyan-px-0165`, no dev server.
 
 - Contracts: `docs/design/pixel-contracts.md`. Base branch `claude/0162-pixel-hospital-town`.
