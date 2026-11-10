@@ -134,7 +134,7 @@ Ids are `char/<who>/<action>-<dir>` with `dir` in `down | up | left | right`.
 | `idle` | 2–4 at 2–3 fps | a breath; a blink or a small habit is welcome |
 | `walk` | 4 or 6, a full cycle in about 0.6 s | contact, (down,) pass, contact, (down,) pass; arms counter-swing, a head bob |
 | `sit` | 1–2 | seated on a stool; legs foreshortened |
-| `carry-idle`, `carry-walk` | as above | waiter only: both hands on a loaded tray |
+| `carry-idle`, `carry-walk` | as above | waiter only: both hands on the tray; the food on it is drawn separately from game state (`food/tray-*`, placed by `trayActors` in `src/world/pixel/cafe.ts`) |
 
 Frames are 32×64 with anchor `[16, 62]`, `foot: [-8, -8, 16, 8]`, `shadow: { rx: 11, ry: 4 }`. `left` may be the mirror of `right` unless the character is asymmetric. Proportions follow `ex/waiter`: a big head (about 22 wide, 24 tall with hair), eyes two wide and three tall with a catch-light, a body about 20 wide with the arms, short legs.
 

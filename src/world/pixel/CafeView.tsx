@@ -1,5 +1,5 @@
 /**
- * The restaurant map drawn by the pixel engine: the cafe scene, the waiter, the regulars at their
+ * The restaurant map drawn by the pixel engine: the cafe scene, the waiter and what is on the tray, the regulars at their
  * tables and the food they were served. Thin: everything it draws comes from `./cafe.ts`.
  * DOM overlays (labels, the target cue) stay in `WorldViewport`, positioned with `onApi`'s `toScreen`.
  */
@@ -12,7 +12,7 @@ import { restoreLife } from "../life";
 import { serviceDayPhase } from "../lighting";
 import type { GameState } from "../../contracts";
 import type { WorldState } from "../schema";
-import { cafeCast, cafeDishes, cafePhase, liveCafe, serviceFacing, waiterActor, type WaiterMotion } from "./cafe";
+import { cafeCast, cafeDishes, cafePhase, liveCafe, serviceFacing, waiterActors, type WaiterMotion } from "./cafe";
 
 let shared: SceneRenderer | null = null;
 /** One renderer for the session: the atlas bakes sprites lazily, the scene compiles once. */
@@ -54,14 +54,14 @@ export default function CafeView({ game, world, motion, size, inset, onPointerDo
   const reducedMotion = usePrefersReducedMotion();
   const [camera, setCamera] = useState<Camera | null>(null);
   const { x, y } = world.position, walking = motion.walking;
-  const carrying = game.tray.length > 0;
+  const tray = game.tray, trayKey = tray.join(",");
   const distance = walking ? motion.distance : 0;
   const facing = serviceFacing({ x, y }, world.activeAnchorId) ?? world.facing;
-  const waiter = useMemo(() => waiterActor({ x, y }, facing, carrying ? ["tray"] : [], { walking, distance }), [x, y, facing, carrying, walking, distance]);
+  const waiter = useMemo(() => waiterActors({ x, y }, facing, tray, { walking, distance }), [x, y, facing, trayKey, walking, distance]);
   // Who is seated and what is on the tables changes only with service, not with the clock.
   const serviceKey = JSON.stringify([game.day, game.customers, restoreLife(game.world?.life).serviceDepartures]);
   const service = useMemo(() => ({ cast: cafeCast(game), dishes: cafeDishes(game) }), [serviceKey]);
-  const actors = useMemo(() => [...service.cast, waiter], [service, waiter]);
+  const actors = useMemo(() => [...service.cast, ...waiter], [service, waiter]);
   const phase = cafePhase(serviceDayPhase(game.served));
   const dpr = typeof devicePixelRatio === "number" ? devicePixelRatio : 1;
   const zoom = chooseZoom(Math.max(1, size.width), Math.max(1, size.height), dpr, TARGETS);

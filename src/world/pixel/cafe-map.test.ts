@@ -9,7 +9,8 @@ import { createWorld, reduceWorld } from "../state";
 import { worldMaps } from "../registry";
 import { restaurantMap } from "../restaurant";
 import { releaseServedCustomer, restoreLife } from "../life";
-import { cafeCast, cafeDishes, cafePhase, liveCafe, MAX_DISHES, serviceFacing, tapDestination, waiterActor } from "./cafe";
+import { cafeCast, cafeDishes, cafePhase, liveCafe, MAX_DISHES, serviceFacing, tapDestination, trayActors, trayDishes, traySlot, TRAY_SLOTS, waiterActor, waiterActors } from "./cafe";
+import { TILE } from "../../pixel/kit/index.ts";
 import { cardinalDirections, isPixelMap } from "./maps";
 
 const compiled = compileScene(liveCafe, createAtlas(sprites));
@@ -106,6 +107,59 @@ describe("cafe cast and tables from game state", () => {
     const life = releaseServedCustomer(restoreLife(undefined), game, 4);
     const released = { ...game, world: { ...createWorld(worldMaps), life } };
     expect(cafeCast(released).some(a => a.id === "customer-4")).toBe(false);
+  });
+
+  it("shows what is really on the tray: distinct foods first, at most three, unknown foods skipped", () => {
+    expect(trayDishes([])).toEqual([]);
+    expect(trayDishes(["milk"])).toEqual(["milk"]);
+    expect(trayDishes(["bun", "bun", "milk"])).toEqual(["bun", "milk", "bun"]);
+    expect(trayDishes(["bun", "bun", "bun", "milk", "egg", "egg"])).toEqual(["bun", "milk", "egg"]);
+    expect(trayDishes(["teapot", "egg"])).toEqual(["egg"]);
+    // Every food the game serves has a tray sprite for each carrying action, framed like the waiter's.
+    const atlas = createAtlas(sprites);
+    for (const food of content.foods) for (const action of ["carry-idle", "carry-walk"]) {
+      const dish = atlas.get(`food/tray-${food.id}/${action}-down`), waiter = atlas.get(`char/player/${action}-down`);
+      expect([dish.frameCount, dish.fps]).toEqual([waiter.frameCount, waiter.fps]);
+    }
+  });
+
+  it("puts the tray's dishes on the waiter, riding the same frames, in front unless facing away", () => {
+    const at = { x: 3, y: 4 };
+    expect(waiterActors(at, "south", [], { walking: true, distance: 1 })).toHaveLength(1);
+    const [waiter, ...dishes] = waiterActors(at, "south", ["bun", "egg", "porridge", "milk"], { walking: true, distance: 1.2 });
+    expect(dishes.map(d => d.sprite)).toEqual(["food/tray-bun", "food/tray-egg", "food/tray-porridge"]);
+    for (const dish of dishes) {
+      expect(dish).toMatchObject({ at: waiter.at, action: "carry-walk", distance: 1.2, facing: "down" });
+      // Just in front of the waiter: within two art pixels.
+      expect(dish.sortY! - 4).toBeGreaterThan(0);
+      expect(dish.sortY! - 4).toBeLessThan(2 / TILE);
+    }
+    // The nearest dish (first picked) sits lowest on the board and draws over the two behind it.
+    expect(dishes[0].offset![1]).toBeGreaterThan(dishes[1].offset![1]);
+    expect(dishes[0].sortY!).toBeGreaterThan(dishes[1].sortY!);
+    expect(dishes.map(d => d.offset)).toEqual(TRAY_SLOTS.down[2]);
+    // Facing away, the body hides the tray, so the dishes draw behind the waiter.
+    for (const dish of trayActors(waiterActor(at, "north", ["bun", "egg"], { walking: false, distance: 0 }), ["bun", "egg"])) {
+      expect(dish.sortY!).toBeLessThan(4);
+      expect(dish.sortY!).toBeGreaterThan(4 - 2 / TILE);
+    }
+    // Left is the mirror of right.
+    for (const count of [1, 2, 3]) for (let i = 0; i < count; i++) {
+      const [rx, ry] = traySlot("right", count, i), [lx, ly] = traySlot("left", count, i);
+      expect([lx, ly]).toEqual([-1 - rx, ry]);
+    }
+    // Every slot keeps the dish (11 wide, centred on dx) within the waiter's 32-wide frame and on the board's rows.
+    for (const slots of Object.values(TRAY_SLOTS)) for (const [count, layout] of slots.entries()) {
+      expect(layout).toHaveLength(count + 1);
+      for (const [dx, dy] of layout) {
+        expect(16 + dx - 5).toBeGreaterThanOrEqual(0);
+        expect(16 + dx + 5).toBeLessThanOrEqual(31);
+        expect(62 + dy).toBeGreaterThanOrEqual(40);
+        expect(62 + dy).toBeLessThanOrEqual(44);
+      }
+    }
+    // Not carrying, nothing rides along.
+    expect(trayActors(waiterActor(at, "south", [], { walking: false, distance: 0 }), ["bun"])).toEqual([]);
   });
 
   it("carries a tray while the tray holds food and maps the service light", () => {
