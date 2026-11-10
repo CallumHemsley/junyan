@@ -5,88 +5,100 @@
  * The lamps are the French Concession's own: cast-iron posts put up by the Municipal Council in
  * the 1920s, repainted by every administration since, so the paint is bottle green on some, black
  * on others and council grey over green on the oldest. The glass is drawn unlit; the scene adds
- * the glow (put a `glow` light about 3 tiles above the anchor: the glass is at art y 11–22).
+ * the glow (put a `glow` light about 3 tiles above the anchor: the glass is at art y 19–32).
+ *
+ * Footprint exception (granted by the orchestrator, as for the utility poles): a lamp sprite is
+ * 22 px wide, centred on its anchor, while its footprint is 0.35 tiles (11 px). The post itself
+ * stands on the footprint; only the plinth's outer step, the ladder-rest crossbar and the lantern
+ * head reach past it, because at 11 px the lamp read as a stick.
  */
 import { defineSprites, type SpriteDef } from "../../kit/index.ts";
 import { footprintPx, townProps, townSpriteId } from "../../town/map.ts";
 import { PAINT, art, autoOutline, bollard, lampPost, tone, type BollardStyle, type LampStyle, type Ramp } from "./_helpers.ts";
 
-const LAMP_H = 112;
+const LAMP_W = 22, LAMP_H = 120;
 
-/** Per-instance design: which head, which paint, and the one thing that happened to it. */
-const LAMPS: { style: LampStyle; paint: Ramp; story: string }[] = [
-  { style: "lantern", paint: PAINT.green, story: "flyer" }, // lamp-0, the junction: notices pasted and torn off for years
-  { style: "globe", paint: PAINT.black, story: "lock" }, // lamp-1: bicycles chained to it have rubbed a bright ring
-  { style: "hex", paint: PAINT.grey, story: "bag" }, // lamp-2: council grey over green; a plastic bag tied on as a marker
-  { style: "lantern", paint: PAINT.black, story: "vine" }, // lamp-3: a morning glory climbing from the verge
-  { style: "globe", paint: PAINT.green, story: "collar" }, // lamp-4: hit by a van once, its foot set in a concrete collar
-  { style: "hex", paint: PAINT.green, story: "nest" }, // lamp-5, by the park: sparrows nest in the cap
-  { style: "lantern", paint: PAINT.grey, story: "plate" }, // lamp-6: a blank enamel number plate, rust round its screws
+/** Per-instance design: which head, which paint, whether the ladder rest has scrolls, and the one thing that happened to it. */
+const LAMPS: { style: LampStyle; paint: Ramp; scrolls: boolean; story: string }[] = [
+  { style: "lantern", paint: PAINT.green, scrolls: true, story: "flyer" }, // lamp-0, the junction: notices pasted and torn off for years
+  { style: "globe", paint: PAINT.black, scrolls: false, story: "lock" }, // lamp-1: bicycles chained to it have rubbed a bright ring
+  { style: "lantern", paint: PAINT.grey, scrolls: false, story: "bag" }, // lamp-2: council grey over green; a plastic bag tied on as a marker
+  { style: "lantern", paint: PAINT.black, scrolls: true, story: "vine" }, // lamp-3: a morning glory climbing from the verge
+  { style: "globe", paint: PAINT.green, scrolls: true, story: "collar" }, // lamp-4: hit by a van once, its foot set in a concrete collar
+  { style: "lantern", paint: PAINT.green, scrolls: false, story: "nest" }, // lamp-5, by the park: sparrows nest under the cap
+  { style: "globe", paint: PAINT.grey, scrolls: true, story: "plate" }, // lamp-6: a blank enamel number plate, rust round its screws
 ];
 
-function lampSprite(i: number, w: number): SpriteDef {
+function lampSprite(i: number): SpriteDef {
   const d = LAMPS[i % LAMPS.length];
+  const w = LAMP_W;
   return {
-    w, h: LAMP_H, anchor: [Math.round(w / 2), LAMP_H - 1],
-    foot: [-3, -4, 6, 4], shadow: { rx: 5, ry: 2 },
+    w, h: LAMP_H, anchor: [w / 2, LAMP_H - 1],
+    foot: [-4, -4, 8, 4], shadow: { rx: 7, ry: 2 },
     draw: (p) => {
-      const L = lampPost(p, { style: d.style, paint: d.paint, w, h: LAMP_H });
+      const L = lampPost(p, { style: d.style, paint: d.paint, w, h: LAMP_H, scrolls: d.scrolls });
       const { cx } = L;
       const r = d.paint;
-      if (d.paint === PAINT.grey) {
-        // The grey is chipping off the old green beneath, worst at the plinth where feet kick it.
-        p.over(() => {
-          for (const [x, y] of [[cx - 3, LAMP_H - 4], [cx + 2, LAMP_H - 3], [cx - 1, L.shaftBottom - 9], [cx, L.ring + 6], [cx - 1, L.shaftTop + 14]] as const)
-            art(p, x, y, ["12", "1."], { 1: "stone1", 2: "jade2" });
-        });
-      }
-      // Rust weeping from the plinth seam.
-      p.over(() => { p.px(cx + 3, LAMP_H - 6, "orange1").px(cx + 3, LAMP_H - 5, "rose2").px(cx - 2, LAMP_H - 10, "orange1"); });
+      // Wear, kept calm: the plinth's top step scuffed through to bare iron where feet rest, and on
+      // the grey lamps one worn patch of the old green showing at the step's edge.
+      p.over(() => {
+        p.hline(cx - 3, L.plinthTop, 2, tone(r, 4));
+        if (d.paint === PAINT.grey) p.hline(cx + 2, L.plinthTop + 1, 3, "jade3").px(cx + 3, L.plinthTop + 2, "jade2");
+        // A single rust tear from the plinth seam.
+        p.px(cx + 5, LAMP_H - 5, "orange1").px(cx + 5, LAMP_H - 4, "rose2");
+      });
       autoOutline(p, { map: { jade: "jade1", steel: "ink", stone: "stone1", cream: "stone1", blue: "steel1", gold: "wood1", white: "stone1" } });
       const S = L.shaftBottom;
       if (d.story === "flyer") {
         // Layers of pasted notices, scraped: a fresh one over the torn edges of older ones. Blank.
-        art(p, cx - 2, S - 22, ["c55c.", "5554c", "4544c", "55c4.", ".5c4.", "c444c", ".c4c."], { 4: "cream4", 5: "cream5", c: "cream3" });
-        p.px(cx - 1, S - 20, "stone3").px(cx, S - 20, "stone3").px(cx - 1, S - 18, "stone3");
-        p.px(cx + 1, S - 8, "cream3").px(cx - 1, S - 7, "cream4").px(cx, S - 7, "cream3");
+        art(p, cx - 3, S - 22, [".c55c..", "c5554c.", "c4544c.", ".55c4..", "..5c4..", ".c444c.", "..c4c.."], { 4: "cream4", 5: "cream5", c: "cream3" });
+        p.px(cx - 1, S - 7, "cream4").px(cx, S - 7, "cream3");
       } else if (d.story === "lock") {
-        p.hline(cx - 1, S - 6, 3, "steel5").hline(cx - 1, S - 5, 3, "steel4").px(cx - 1, S - 6, "steel6");
+        p.hline(cx - 2, S - 8, 5, "steel5").hline(cx - 2, S - 7, 5, "steel3").px(cx - 2, S - 8, "steel6");
       } else if (d.story === "bag") {
         // A blue plastic bag knotted round the shaft, its loose end lifting in the breeze.
-        art(p, cx - 2, S - 30, [".bB..", "bBBbb", "1bb1b", "..bb.", "..b1.", "...b."], { b: "blue4", B: "blue5", 1: "blue3" });
+        art(p, cx - 3, S - 30, ["..bB...", ".bBBbb.", ".1bb1bb", "...bb..", "...b1..", "....b.."], { b: "blue4", B: "blue5", 1: "blue3" });
       } else if (d.story === "vine") {
-        // Morning glory up the urn: leaves and one pale blue flower, still open this early.
-        art(p, cx - 4, LAMP_H - 28, [
-          "....l....",
-          "...lL....",
-          "....l.b..",
-          "...l.bBb.",
-          "..lLl.b..",
-          "...l.....",
-          "..l.lL...",
-          ".lL.l....",
-          "..l..l...",
-          "...l.lLl.",
-          "..lL.l...",
-          "...l.l...",
-          "....ll...",
-          "..lLl....",
-          "...l.l...",
-          "....l....",
+        // Morning glory up the fluted base: leaves and one pale blue flower, still open this early.
+        art(p, cx - 5, L.plinthTop - 24, [
+          ".....l.....",
+          "....lL.....",
+          ".....l.b...",
+          "....l.bBb..",
+          "...lLl.b...",
+          "....l......",
+          "...l.lL....",
+          "..lL.l.....",
+          "...l..l....",
+          "....l.lLl..",
+          "...lL.l....",
+          "....l.l....",
+          ".....ll....",
+          "...lLl.....",
+          "....l.l....",
+          "..lL.l.lL..",
+          "...l..l....",
+          ".....l.....",
+          "....lL.....",
+          ".....l.....",
+          "....lLl....",
+          ".....l.....",
+          "...lL.l....",
+          ".....l.....",
         ], { l: "leaf2", L: "leaf4", b: "blue4", B: "white" });
       } else if (d.story === "collar") {
-        // The foot set into a rough concrete collar after the van; the plinth's top step is gone into it.
-        p.rect(0, LAMP_H - 4, w, 4, "stone3");
-        p.hline(0, LAMP_H - 4, w, "stone4").hline(0, LAMP_H - 1, w, "stone2").vline(w - 1, LAMP_H - 4, 4, "stone2");
-        p.px(2, LAMP_H - 3, "stone2").px(7, LAMP_H - 2, "stone2").px(8, LAMP_H - 3, "stone2");
+        // The foot set into a rough concrete collar after the van; the bottom step is gone into it.
+        p.rect(cx - 8, LAMP_H - 4, 17, 4, "stone3");
+        p.hline(cx - 8, LAMP_H - 4, 17, "stone4").hline(cx - 8, LAMP_H - 1, 17, "stone2").vline(cx + 8, LAMP_H - 4, 4, "stone2");
+        p.px(cx - 6, LAMP_H - 3, "stone2").px(cx - 1, LAMP_H - 2, "stone2").px(cx + 4, LAMP_H - 3, "stone2");
       } else if (d.story === "nest") {
-        // Straw poking from under the lantern cap where sparrows have moved in.
+        // Straw poking from under the lantern's eave where sparrows have moved in.
         const y = L.glass.y0 - 1;
-        art(p, cx + 2, y - 1, ["b..", ".bB", "bb."], { b: "bamboo3", B: "bamboo4" });
-        art(p, cx - 5, y, ["..b", "Bb."], { b: "bamboo3", B: "bamboo4" });
+        art(p, cx + 4, y, ["b.b", ".bB", "b.."], { b: "bamboo3", B: "bamboo4" });
+        art(p, cx - 7, y, ["..b", "Bb.", ".b."], { b: "bamboo3", B: "bamboo4" });
       } else if (d.story === "plate") {
         // A small blank enamel number plate screwed to the shaft, chipped at a corner.
-        art(p, cx - 2, S - 26, ["kkkkk", "kWWWk", "kWwWk", "kWWok", "kkkkk"], { k: tone(r, 1), W: "cream5", w: "cream4", o: "orange1" });
+        art(p, cx - 3, S - 26, ["kkkkkkk", "kWsWWsk", "kWWWWWk", "kWwWWWk", "kWWWWok", "kkkkkkk"], { k: tone(r, 1), W: "cream5", w: "cream4", o: "orange1", s: "steel3" });
       }
     },
   };
@@ -168,7 +180,7 @@ function milestone(w: number, h: number): SpriteDef {
 }
 
 const sprites: Record<string, SpriteDef> = {};
-townProps("street-lamp").forEach((prop, i) => { sprites[townSpriteId(prop.id)] = lampSprite(i, footprintPx(prop).w); });
+townProps("street-lamp").forEach((prop, i) => { sprites[townSpriteId(prop.id)] = lampSprite(i); });
 townProps("bollard").forEach((prop, i) => { sprites[townSpriteId(prop.id)] = bollardSprite(i, footprintPx(prop).w); });
 townProps("milestone").forEach((prop) => { const f = footprintPx(prop); sprites[townSpriteId(prop.id)] = milestone(f.w, f.h); });
 

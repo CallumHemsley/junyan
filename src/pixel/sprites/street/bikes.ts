@@ -49,8 +49,10 @@ function bikeSprite(i: number, w: number): SpriteDef {
           ".wWwW..",
         ], { s: "cream3", w: "cream4", W: "white" });
       } else if (d.story === "basket") {
-        // A grey plastic basket ahead of the bars.
-        art(p, front[0] - 6, headTop[1] - 9, [
+        // A grey plastic basket on its bracket at the head tube, its floor resting on the bars.
+        p.line(headTop[0] + 2, headTop[1] - 2, headTop[0] + 1, headTop[1] + 2, "steel2");
+        p.line(headTop[0] + 8, headTop[1] - 2, headTop[0] + 2, headTop[1] + 3, "steel2");
+        art(p, headTop[0], headTop[1] - 8, [
           "kkkkkkkkkk",
           "k66666665k",
           "k5.5.5.54k",
@@ -58,12 +60,12 @@ function bikeSprite(i: number, w: number): SpriteDef {
           "k4.4.4.43k",
           "kkkkkkkkkk",
         ], { k: "steel1", 3: "steel3", 4: "steel4", 5: "steel5", 6: "steel6" });
-        p.px(front[0] - 2, headTop[1] - 10, "cream5").px(front[0] - 1, headTop[1] - 10, "cream4");
+        p.px(headTop[0] + 5, headTop[1] - 9, "cream5").px(headTop[0] + 6, headTop[1] - 9, "cream4");
         // The lock box on the rear wheel, with its little status light off.
         art(p, rear[0] - 3, rear[1] - 5, ["kkkkk", "k554k", "k4j3k", "kkkkk"], { k: "steel1", 3: "steel3", 4: "steel4", 5: "steel5", j: "jade4" });
       } else if (d.story === "childseat") {
         // Bamboo child seat on the carrier: woven sides, a back, a faded check cushion.
-        art(p, rear[0] - 9, rack - 11, [
+        art(p, rear[0] - 9, rack - 10, [
           "....kkkk....",
           "...kBbBbk...",
           "...kbBbBk...",
@@ -74,7 +76,6 @@ function bikeSprite(i: number, w: number): SpriteDef {
           "kBbbbbbbbBk.",
           "kbBbBbBbBbk.",
           "kkkkkkkkkkk.",
-          "..k.....k...",
         ], { k: "wood1", b: "bamboo3", B: "bamboo4", p: "pink2", P: "cream4" });
       } else if (d.story === "fishing") {
         // Rust blooms on the chain guard and mudguard; a fishing rod tied along the top tube.

@@ -14,7 +14,7 @@ import { defineSprites, type SpriteDef } from "../../kit/index.ts";
 import { footprintPx, townProps, townSpriteId } from "../../town/map.ts";
 import { OAK, PAINT, TEAK, WEATHERED, art, autoOutline, bench, type Ramp } from "./_helpers.ts";
 
-const H = 40;
+const H = 42;
 const GREEN_SLATS: Ramp = ["jade1", "jade2", "jade3", "jade4", "jade5", "jade6"];
 
 const BENCHES: { wood: Ramp; iron: Ramp; concrete?: boolean; newSlat?: number; story: string }[] = [

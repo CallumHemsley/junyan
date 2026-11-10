@@ -92,38 +92,59 @@ export function cable(p: Px, a: readonly [number, number], b: readonly [number, 
 
 /* ───────────────────────────── lamp posts ───────────────────────────── */
 
-export type LampStyle = "lantern" | "globe" | "hex";
-export type LampOptions = { style: LampStyle; paint: Ramp; w: number; h: number };
+export type LampStyle = "lantern" | "globe";
+export type LampOptions = { style: LampStyle; paint: Ramp; w: number; h: number; scrolls?: boolean };
 
 /**
- * A French Concession cast-iron lamp post on a footprint `w` px wide (about 11): a stepped plinth,
- * a fluted urn, a slender shaft with a moulded ring, an acanthus collar and a lantern head. The glass
- * is drawn pale and unlit; the scene adds the glow. Returns the lantern's glass box for story detail.
+ * A French Concession cast-iron lamp post, centred in a canvas `w` px wide (about 22): a two-step
+ * plinth, a fluted bell-shaped base with a moulded ring, a tapered shaft with a collar, the
+ * lamplighter's crossbar (ladder rest) with ball ends and, if `scrolls`, curled brackets under it,
+ * an acanthus collar, and a head: `lantern`, a four-pane glass box widening upward under a pointed
+ * cap with corner crockets and a finial, or `globe`, an opal globe held in a four-strap cage. The
+ * glass is drawn unlit; the scene adds the glow. Returns the key rows for story detail.
  */
 export function lampPost(p: Px, o: LampOptions) {
   const { paint: r, h } = o;
-  const cx = Math.floor(o.w / 2); // centre column
+  const cx = Math.floor(o.w / 2);
   const B = h - 1;
+  const t = (i: number) => tone(r, i);
   const band = (y: number, half: number, lift = 0) => across(half * 2 + 1, r, lift).forEach((c, i) => p.px(cx - half + i, y, c));
-  // Plinth: two steps, top faces catching the sun.
-  for (let y = B - 4; y <= B; y++) band(y, 4, y === B ? -1 : 0);
-  p.hline(cx - 4, B - 5, 9, tone(r, 3)).hline(cx - 4, B - 5, 3, tone(r, 4));
-  for (let y = B - 9; y <= B - 7; y++) band(y, 3);
-  p.hline(cx - 3, B - 10, 7, tone(r, 3)).px(cx - 3, B - 10, tone(r, 4));
-  p.hline(cx - 4, B, 9, tone(r, 1));
-  // Fluted urn: swells, then pinches into the shaft. The flutes are dark grooves.
-  const urn = [2, 3, 3, 3, 3, 3, 2, 2, 2, 1, 1, 2];
-  urn.forEach((half, k) => band(B - 11 - k, half));
-  p.over(() => {
-    for (let k = 1; k < 7; k++) { p.px(cx - 1, B - 11 - k, tone(r, 1)); p.px(cx + 1, B - 11 - k, tone(r, 1)); }
+  const legend = { 1: t(1), 2: t(2), 3: t(3), 4: t(4) };
+  // Plinth: a broad bottom step and a narrower one, each top face catching the sun.
+  for (let y = B - 4; y <= B; y++) band(y, 6);
+  p.hline(cx - 6, B - 5, 13, t(3)).hline(cx - 6, B - 5, 4, t(4));
+  p.hline(cx - 6, B, 13, t(1));
+  for (let y = B - 9; y <= B - 7; y++) band(y, 5);
+  p.hline(cx - 5, B - 10, 11, t(3)).hline(cx - 5, B - 10, 3, t(4));
+  p.hline(cx - 5, B - 6, 11, t(1));
+  // Fluted base: a bell that narrows as it rises, grooves every two pixels, a torus at the foot.
+  const bell = [5, 5, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2];
+  bell.forEach((half, k) => {
+    const y = B - 11 - k;
+    band(y, half);
+    if (k > 1) for (let x = cx - half + 1; x < cx + half; x += 2) p.px(x, y, x < cx ? t(2) : t(1));
   });
-  p.hline(cx - 2, B - 23, 5, tone(r, 3));
-  // Shaft, three wide, a ring two-thirds of the way down.
-  const top = 30;
-  for (let y = top; y < B - 23; y++) band(y, 1);
-  const ring = Math.round(top + (B - 23 - top) * 0.55);
-  band(ring, 2); band(ring + 1, 2, -1); p.px(cx - 2, ring, tone(r, 4));
-  // Acanthus collar: three leaves curling out under the lantern.
+  band(B - 11, 5, 1); band(B - 12, 5);
+  const ringY = B - 11 - bell.length;
+  band(ringY, 3, 1); band(ringY - 1, 3); band(ringY - 2, 2, 1);
+  p.px(cx - 3, ringY, t(4));
+  // Shaft: five wide, tapering to three in its top quarter; a collar ring part way up.
+  const top = 40;
+  const shaftBottom = ringY - 3;
+  const taper = top + Math.round((shaftBottom - top) * 0.25);
+  for (let y = top; y <= shaftBottom; y++) band(y, y < taper ? 1 : 2);
+  const ring = Math.round(top + (shaftBottom - top) * 0.45);
+  band(ring - 1, 3, 1); band(ring, 3); band(ring + 1, 2, -1);
+  p.px(cx - 3, ring - 1, t(4));
+  // The ladder rest: a crossbar with ball ends, curled brackets under it.
+  const bar = top + 4;
+  rod(p, cx - 8, bar, 17, 2, r);
+  for (const x of [cx - 10, cx + 8]) art(p, x, bar - 1, [".3.", "342", ".21"].map((row) => row), legend);
+  if (o.scrolls) {
+    art(p, cx - 7, bar + 2, ["3332.", ".1.32", "..132", "...1."], legend);
+    art(p, cx + 3, bar + 2, [".2333", "23.1.", "231..", ".1..."], legend);
+  }
+  // Acanthus collar under the head.
   art(p, cx - 4, top - 6, [
     "..12221..",
     ".1234321.",
@@ -131,66 +152,71 @@ export function lampPost(p: Px, o: LampOptions) {
     ".1.343.1.",
     "...232...",
     "...121...",
-  ].map((row) => row), { 1: tone(r, 1), 2: tone(r, 2), 3: tone(r, 3), 4: tone(r, 4) });
-  const glass = { x0: cx - 3, x1: cx + 3, y0: 0, y1: 0 };
+  ], legend);
+  const glass = { x0: cx - 5, x1: cx + 5, y0: 0, y1: 0 };
   if (o.style === "globe") {
-    // Frosted opal globe on a crown ring.
-    p.hline(cx - 3, top - 7, 7, tone(r, 2)).hline(cx - 2, top - 8, 5, tone(r, 3));
-    p.ellipse(cx + 0.5, top - 14, 4.5, 5.2, "cream4");
+    // Gallery ring, then an opal globe in a cage of four iron straps meeting at a crown.
+    const gy = top - 7;
+    p.hline(cx - 4, gy, 9, t(2)).hline(cx - 3, gy - 1, 7, t(3)).px(cx - 4, gy, t(3));
+    const gc = gy - 8;
+    p.ellipse(cx + 0.5, gc, 6, 6.5, "cream4");
     p.over(() => {
-      p.ellipse(cx - 0.5, top - 15, 3, 3.6, "cream5");
-      p.ellipse(cx - 1.2, top - 16, 1.4, 1.6, "white");
-      for (let y = top - 19; y < top - 8; y++) p.px(cx + 4, y, "cream3");
-      p.hline(cx - 2, top - 9, 5, "cream3");
+      p.ellipse(cx - 0.5, gc - 1, 4.4, 4.8, "cream5");
+      p.ellipse(cx - 1.6, gc - 2.4, 1.8, 2, "white");
+      for (let a = -0.4; a < 1.3; a += 0.05) p.px(Math.round(cx + 0.5 + Math.cos(a) * 5.6), Math.round(gc + Math.sin(a) * 6), "cream3");
+      p.px(cx, gc + 1, "gold5").px(cx + 1, gc + 1, "gold4").px(cx, gc + 2, "gold4");
     });
-    p.px(cx, top - 13, "gold5");
-    art(p, cx - 2, top - 21, [".121.", "12321"], { 1: tone(r, 1), 2: tone(r, 2), 3: tone(r, 3) });
-    p.px(cx, top - 22, tone(r, 3)).px(cx, top - 23, tone(r, 2));
-    Object.assign(glass, { y0: top - 19, y1: top - 9 });
+    // Cage straps: the outer two follow the globe's curve; the inner two cross its face.
+    for (let y = gc - 6; y <= gc + 5; y++) {
+      const k = (y - gc) / 6.5, half = Math.sqrt(Math.max(0, 1 - k * k));
+      p.px(Math.round(cx + 0.5 - half * 6.2), y, t(3)).px(Math.round(cx - 0.5 + half * 6.2), y, t(1));
+      p.px(Math.round(cx + 0.5 - half * 2.4), y, t(2)).px(Math.round(cx - 0.5 + half * 2.4), y, t(2));
+    }
+    p.hline(cx - 5, gc, 11, t(2)); p.over(() => p.hline(cx - 5, gc, 4, t(3)));
+    art(p, cx - 3, gc - 9, ["..3..", ".343.", "33421", ".222."], legend);
+    p.px(cx, gc - 10, t(3)).px(cx, gc - 11, t(4)).px(cx, gc - 12, t(2));
+    Object.assign(glass, { y0: gc - 6, y1: gc + 6 });
   } else {
-    // Lantern: a tray, glass that widens toward the top, a pyramidal or crowned cap, a finial.
-    const gTop = top - 19, gBot = top - 8;
-    p.hline(cx - 3, gBot + 1, 7, tone(r, 2)).hline(cx - 2, gBot + 2, 5, tone(r, 1));
+    // Four-pane glass box, wider at the top as the Paris lanterns are: a tray, the glazing with a
+    // mullion and a transom, the burner and a cool reflection of the sky.
+    const gTop = top - 21, gBot = top - 8;
+    p.hline(cx - 4, gBot + 1, 9, t(2)).hline(cx - 3, gBot + 2, 7, t(1)).px(cx - 4, gBot + 1, t(3));
     for (let y = gTop; y <= gBot; y++) {
-      const half = o.style === "hex" ? 3 : y < gTop + 4 ? 4 : y < gTop + 8 ? 3 : 3;
-      const halfW = o.style === "lantern" ? (y - gTop < 5 ? 4 : 3) : half;
-      for (let x = cx - halfW; x <= cx + halfW; x++) {
-        const edge = x === cx - halfW || x === cx + halfW;
-        const bar = o.style === "hex" ? x === cx - 1 || x === cx + 2 : x === cx;
-        p.px(x, y, edge ? tone(r, x < cx ? 3 : 1) : bar ? tone(r, 2) : y - gTop < 3 ? "blue6" : "cream5");
+      const half = y - gTop < 5 ? 5 : y - gTop < 10 ? 4 : 4;
+      const hw = y === gTop ? 5 : half;
+      for (let x = cx - hw; x <= cx + hw; x++) {
+        const edge = x === cx - hw || x === cx + hw;
+        const bar = x === cx || y === gTop + 6;
+        p.px(x, y, edge ? t(x < cx ? 3 : 1) : bar ? t(2) : y - gTop < 3 ? "blue6" : x > cx ? "cream4" : "cream5");
       }
     }
-    // Glass: a cool reflection of the sky up top, a streak on the left pane, the cold bulb.
     p.over(() => {
-      p.line(cx - 2, gTop + 1, cx - 2, gTop + 6, "white");
-      p.px(cx + 2, gTop + 7, "steel5").px(cx + 2, gTop + 8, "steel5");
-      p.px(cx - 1, gBot - 2, "gold4").px(cx + 1, gBot - 2, "gold4").px(cx - 1, gBot - 3, "gold5").px(cx + 1, gBot - 3, "gold5");
+      // Sky in the top panes, a streak on the left pane, the mantle and burner below the transom.
+      p.line(cx - 3, gTop + 1, cx - 2, gTop + 4, "white");
+      p.px(cx - 3, gTop + 8, "white").px(cx - 3, gTop + 9, "white");
+      art(p, cx - 1, gBot - 5, [".5.", "545", "545", ".4.", "s.s"], { 4: "gold4", 5: "gold5", s: "steel3" });
+      p.px(cx + 2, gTop + 9, "steel5").px(cx + 3, gTop + 10, "steel5");
     });
-    p.hline(cx - 3, gTop + 4, 7, tone(r, 2));
-    if (o.style === "lantern") {
-      art(p, cx - 4, gTop - 6, [
-        "....3....",
-        "...343...",
-        "..33421..",
-        ".3443221.",
-        "344432221",
-        "111111111",
-      ], { 1: tone(r, 1), 2: tone(r, 2), 3: tone(r, 3), 4: tone(r, 4) });
-      art(p, cx - 1, gTop - 9, [".2.", "232", ".1."], { 1: tone(r, 1), 2: tone(r, 2), 3: tone(r, 4) });
-      p.px(cx, gTop - 10, tone(r, 2));
-    } else {
-      art(p, cx - 4, gTop - 5, [
-        "3.3.3.3.2",
-        "343434321",
-        ".3443221.",
-        "344432221",
-        "111111111",
-      ], { 1: tone(r, 1), 2: tone(r, 2), 3: tone(r, 3), 4: tone(r, 4) });
-      art(p, cx - 1, gTop - 8, [".3.", "232", ".1."], { 1: tone(r, 1), 2: tone(r, 2), 3: tone(r, 4) });
-    }
+    // Pointed cap: an eave with corner crockets, a pyramid with ribs, a ball and a spike.
+    art(p, cx - 7, gTop - 10, [
+      ".......3.......",
+      "......343......",
+      "......121......",
+      ".....34321.....",
+      "....3443221....",
+      "...344432221...",
+      "..34443322221..",
+      ".3444332222221.",
+      "3.33333222222.1",
+      "211111111111111",
+    ], legend);
+    // Crockets: little iron leaves curling up from the eave corners.
+    art(p, cx - 7, gTop - 3, ["3.", "13"], legend);
+    art(p, cx + 6, gTop - 3, [".2", "21"], legend);
+    p.px(cx, gTop - 11, t(2)).px(cx, gTop - 12, t(3));
     Object.assign(glass, { y0: gTop, y1: gBot });
   }
-  return { cx, shaftTop: top, shaftBottom: B - 23, ring, glass };
+  return { cx, shaftTop: top, shaftBottom, ring, bar, glass, plinthTop: B - 10 };
 }
 
 /* ───────────────────────────── bollards ───────────────────────────── */
@@ -260,8 +286,9 @@ export type BenchOptions = {
 export function bench(p: Px, o: BenchOptions) {
   const { w, h, wood, iron, seed } = o;
   const B = h - 1;
-  // Rows: backrest slats B-34..B-24, an open gap, seat slats from B-20, the front rail at B-12.
-  const backTop = B - 34, seatTop = B - 20, seatFront = B - 12;
+  // Rows: backrest slats B-37..B-26, an open gap of five rows where only the iron uprights cross
+  // (so the ground shows between back and seat), seat slats from B-20, the front rail at B-12.
+  const backTop = B - 37, seatTop = B - 20, seatFront = B - 12;
   const ends = [2, w - 6];
   const supports = w > 76 ? [...ends, Math.floor(w / 2) - 2] : ends;
   const slat = (y: number, rows: number, face: "top" | "front", k: number) => {
