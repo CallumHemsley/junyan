@@ -10,7 +10,7 @@
  * of tiles stood on edge and round drip-tile eaves. The restaurant's flat Deco roof and the
  * workshop's sawtooth are the deliberate exceptions.
  */
-import { hash, Px, ramp, TILE, type Color, type Legend, type Paint, type SpriteDef } from "../../kit/index.ts";
+import { hash, Px, ramp, type Color, type Legend, type Paint, type SpriteDef } from "../../kit/index.ts";
 import { footprintPx, townProps, townSpriteId, type TownProp } from "../../town/map.ts";
 
 // ── sprite plumbing ─────────────────────────────────────────────────────────
@@ -112,7 +112,7 @@ export const AWNING_MOUNT: Record<string, { building: string; mount: number; dep
  * Cream stucco: a calm render with gentle weathering. Rain streaks run down from `streaks` (x, y)
  * points; a repaired patch is a slightly fresher rectangle.
  */
-export function stucco(p: Px, x: number, y: number, w: number, h: number, seed: number, o: { base?: Color; lit?: Color; dim?: Color; dark?: Color } = {}) {
+export function stucco(p: Px, x: number, y: number, w: number, h: number, seed: number, o: { base?: Color; lit?: Color; dim?: Color } = {}) {
   const base = o.base ?? "cream3", lit = o.lit ?? "cream4", dim = o.dim ?? "cream2";
   p.rect(x, y, w, h, base);
   // Big soft unevenness of the render: lit blobs to the upper left, tired ones low down.
@@ -123,7 +123,6 @@ export function stucco(p: Px, x: number, y: number, w: number, h: number, seed: 
   }
   // A lit top margin under whatever caps it.
   p.hline(x, y, w, lit);
-  void o.dark;
 }
 
 /** A rain streak running down a wall from (x, y), `len` long, tapering. */
@@ -236,17 +235,12 @@ export function pantileRoof(p: Px, x: number, y: number, w: number, h: number, o
       }
       q.px(i, e + 4, "ink2");
     }
-    // Weather: moss in the channels low on the slope and along the ridge, a few slipped or new tiles.
+    // Weather: moss in the channels low on the slope and along the ridge.
     for (let i = 3; i < w - 3; i += pitch) {
       const r = hash(i, 1, o.seed);
       if (r < 0.22) {
         const my = h - eaveH - 3 - Math.floor(r * 30);
         q.rect(i, my, 2, 3, "jade2").px(i, my - 1, "jade3").px(i + 1, my + 3, "leaf2");
-      }
-      if (r > 0.92 && h - nearTop > 30) {
-        // A couple of newer tiles, paler and not yet weathered, two courses on one roll.
-        const ty = nearTop + 6 * (1 + Math.floor((r - 0.92) * 100) % Math.max(1, Math.floor((h - nearTop - 18) / 6)));
-        q.rect(i - 3, ty + 1, 3, 11, "grey3").vline(i - 3, ty + 1, 11, "steel5").vline(i - 1, ty + 1, 11, "grey2").hline(i - 3, ty + 6, 3, "grey2");
       }
       if (hash(i, 2, o.seed) < 0.18) q.px(i + 1, rTop + 8, "jade3").px(i + 2, rTop + 8, "jade2");
     }
@@ -552,12 +546,6 @@ export function sillPot(p: Px, x: number, y: number, kind: "fern" | "geranium" |
   block(p, x, y, pot.map((r) => r.padEnd(8, ".")), L, "pot");
 }
 
-/**
- * Bottle-green and cream canvas: stripe colour for column `i`, `sw` wide stripes.
- * Returns `[base, shade, lit]` for that stripe.
- */
-export type Stripe = { base: Color; shade: Color; lit: Color };
-
 /** A soft cast shadow on a wall: translucent ink. Shadows are light, so they may be translucent. */
 export function shadowBand(p: Px, x: number, y: number, w: number, h: number, alpha = 0.22) {
   p.faded(alpha, () => p.rect(x, y, w, h, "ink"));
@@ -600,6 +588,3 @@ export function lattice(p: Px, x: number, y: number, w: number, h: number, seed:
     p.rect(tx, ty, 5, 4, "white").px(tx + 4, ty + 3, "cream4");
   }
 }
-
-/** The width of `TILE` in art px, re-exported for sprite files. */
-export { TILE };

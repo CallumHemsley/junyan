@@ -14,7 +14,7 @@
  * hangs from z 100, over the roller door.
  */
 import { defineSprites, hash, type Color, type Legend, type Px } from "../../kit/index.ts";
-import { acUnit, block, cable, darkRoom, downpipe, greyBrick, perProp, plotFoot, signboard, step, zrect } from "./_front.ts";
+import { acUnit, block, cable, downpipe, greyBrick, perProp, plotFoot, signboard, step, zrect } from "./_front.ts";
 
 const F = 128; // facade height, to the top of the parapet
 const TEETH = 5;
@@ -65,7 +65,9 @@ function roof(p: Px, w: number, H: number) {
     const y0 = Math.round(n * T), gt = Math.round((n + 1) * T) - 17;
     for (let k = 0; k < 4; k++) {
       const rx = 8 + Math.floor(hash(n, k, 18) * (w - 30)), ry = y0 + 3 + Math.floor(hash(k, n, 19) * (gt - y0 - 9));
-      p.rect(rx + 1, ry, 6, 2, "wood3").hline(rx, ry + 1, 8, "wood3").hline(rx + 2, ry + 2, 4, "orange1").px(rx + 3, ry + 3, "orange1");
+      // Rust along a lap, weeping down the ribs below it.
+      p.hline(rx, ry, 10, "wood3").hline(rx + 1, ry + 1, 8, "orange1");
+      for (let i = 1; i < 10; i += 4) for (let j = 2; j < 5 + (i % 3); j++) p.px(rx + i, ry + j, j < 4 ? "wood3" : "orange1");
     }
     if (n === 1) for (let y = y0; y < gt - 1; y++) for (let x = 120; x < 140; x++) p.px(x, y, x % 4 === 0 ? "gold4" : x % 4 === 3 ? "bamboo3" : "bamboo4");
     if (n === 3) for (let y = y0; y < gt - 1; y++) for (let x = 230; x < 254; x++) p.px(x, y, x % 4 === 0 ? "steel5" : x % 4 === 3 ? "steel3" : "steel4");
@@ -147,7 +149,6 @@ function facade(p: Px, H: number, w: number) {
   // Edges.
   zrect(p, H, 0, 0, 1, F, "stone1");
   zrect(p, H, w - 1, 0, 1, F, "stone1");
-  void darkRoom;
 }
 
 /** Inside the workshop: pegboard with tools, the bench and its vice, a bicycle frame on a stand. */

@@ -94,10 +94,10 @@ function draw(p: Px, id: string, w: number, H: number) {
       if (Math.abs(i) < 2 * (y - (r0 + m.depth - 5))) p.px(deep + i, y, step(p.get(deep + i, y) ?? "cream3", -1));
   }
   if (s.oil) {
-    // Oil and soot from the work beneath: smudges along the hem.
-    for (let i = x0 + 20; i < x1 - 20; i++) if (hash(i, 9, 3) < 0.07) {
-      const b = bottoms[i - x0];
-      for (let y = b - 3; y < b; y++) p.px(i, y, step(p.get(i, y) ?? "stone2", -1));
+    // Oil and soot from the work beneath: a few broad smudges along the hem, where hands pull it.
+    for (let i = x0 + 30; i < x1 - 40; i += 70) {
+      const sx = i + Math.floor(hash(i, 9, 3) * 30);
+      for (let k = 0; k < 9; k++) { const b = bottoms[sx + k - x0]; for (let y = b - 2 - (k > 1 && k < 7 ? 1 : 0); y < b; y++) p.px(sx + k, y, step(p.get(sx + k, y) ?? "stone2", -1)); }
     }
   }
   if (s.patch) {

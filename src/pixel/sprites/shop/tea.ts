@@ -316,7 +316,6 @@ function facade(p: Px, H: number, w: number) {
     p.rect(i, H - 157, 4, 4, "jade2").px(i, H - 157, "jade3").px(i + 1, H - 156, "cream4").px(i + 3, H - 154, "jade1");
   }
   zrect(p, H, 0, 150, w, 151, "ink2");
-  void step;
 }
 
 export default defineSprites(perProp("building-tea", (_prop, w, h) => ({

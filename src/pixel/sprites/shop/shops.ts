@@ -19,7 +19,7 @@
 import { defineSprites, hash, type Color, type Legend, type Px } from "../../kit/index.ts";
 import type { TownProp } from "../../town/map.ts";
 import {
-  acUnit, block, boards, cable, darkRoom, downpipe, greyBrick, lattice, pantileRoof, perProp, plotFoot,
+  acUnit, block, boards, cable, downpipe, greyBrick, lattice, pantileRoof, perProp, plotFoot,
   signboard, sillPot, step, stucco, tileSkirt, wisp, zrect,
 } from "./_front.ts";
 
@@ -234,7 +234,6 @@ function marketHouse(p: Px, w: number, H: number) {
   }
   // A paper notice on one post, blank, its corner curling.
   p.rect(159, H - 52, 6, 9, "cream5").px(164, H - 44, "cream3");
-  void cable; void darkRoom;
 }
 
 function counter(p: Px, H: number, x: number, w: number, k: number) {
