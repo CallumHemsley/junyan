@@ -12,6 +12,10 @@
  */
 import { hash, Px, ramp, type Color, type Legend, type Paint, type SpriteDef } from "../../kit/index.ts";
 import { footprintPx, townProps, townSpriteId, type TownProp } from "../../town/map.ts";
+// The lane houses' roof kit (ticket 0164), used read-only so the whole town's roofs speak one language.
+import { aerial, eave, laneRoof, lichen, moss, pantiles, shadowWedge, tarp } from "../bldg/_lane.ts";
+
+export { aerial, eave, lichen, moss, pantiles, shadowWedge, tarp };
 
 // ── sprite plumbing ─────────────────────────────────────────────────────────
 
@@ -175,97 +179,30 @@ export type TileRoof = {
   /** Rows from the top of the region down to the top of the ridge. */
   ridge: number;
   seed: number;
-  /** Left and right ends: an upturned curl, or plain gables. */
-  ends?: "curl" | "plain";
-  /** Column period of the pantiles (roll + channel). */
-  pitch?: number;
+  /** Where a stretch was re-laid in new tiles, `[x, y, w, h]` in canvas px. */
+  mend?: readonly [number, number, number, number];
+  /** How much damp staining (lane default 0.08). */
+  damp?: number;
 };
 
-/** Roll-tile column shades across one pantile period, left to right: lit roll, roll, shaded roll, channel… */
-function tileColumn(i: number, pitch: number, near: boolean): Color {
-  const k = i % pitch;
-  if (near) return k === 0 ? "stone4" : k === 1 ? "stone4" : k === 2 ? "stone3" : k === pitch - 1 ? "stone1" : "stone2";
-  return k === 0 ? "stone5" : k === 1 ? "stone4" : k === 2 ? "stone4" : k === pitch - 1 ? "stone2" : "stone3";
-}
-
 /**
- * A grey pantile roof seen from above and in front: the far slope over the ridge (lighter, short,
- * foreshortened), the ridge of tiles stood on edge, the near slope down to a row of round drip-tile
- * ends at the eave. Fills `x, y, w, h`; the eave's bottom row is `y + h - 1`.
+ * A grey pantile roof seen from above and in front, in the lane houses' own language (0164's
+ * `laneRoof`, used read-only): the lit north slope over the ridge, the ridge of tiles on edge, the
+ * long south slope with per-tile tone, re-laid strips, replaced and slipped tiles, lichen and damp,
+ * the eave's tile ends in the last 5 rows, gable copings. Moss is added in the low channels.
  */
 export function pantileRoof(p: Px, x: number, y: number, w: number, h: number, o: TileRoof) {
-  const pitch = o.pitch ?? 6;
-  const rTop = o.ridge, rH = 8, nearTop = rTop + rH, eaveH = 5;
-  p.clip(x, y, w, h, (q) => {
-    // Far slope: short courses of 3 rows.
-    for (let j = 0; j < rTop; j++) for (let i = 0; i < w; i++) {
-      let c = tileColumn(i, pitch, false);
-      if ((rTop - j) % 3 === 0) c = i % pitch < 3 ? "stone5" : "stone2";
-      q.px(i, j, c);
-    }
-    // Near slope: courses every 6 rows, each lip a lit catch-light over a shadow line in the channel.
-    for (let j = nearTop; j < h - eaveH; j++) for (let i = 0; i < w; i++) {
-      const course = (j - nearTop) % 6;
-      let c = tileColumn(i, pitch, true);
-      if (course === 0) c = i % pitch < 3 ? (i % pitch === 0 ? "stone5" : "stone4") : "stone1";
-      else if (course === 1 && i % pitch >= 3) c = "stone2";
-      q.px(i, j, c);
-    }
-    // The ridge: a base course, tiles on edge, a lit coping line, a shadow onto the near slope.
-    q.hline(0, rTop, w, "stone4");
-    q.rect(0, rTop + 1, w, 4, "stone2");
-    for (let i = 0; i < w; i += 2) q.vline(i, rTop + 1, 4, hash(i, 9, o.seed) < 0.1 ? "stone3" : "stone4");
-    q.hline(0, rTop + 5, w, "stone1");
-    q.hline(0, rTop + 6, w, "stone3");
-    q.hline(0, rTop + 7, w, "stone2");
-    // Eave: drip-tile discs on the rolls, pointed drip tiles under the channels, then the shadow line.
-    const e = h - eaveH;
-    for (let i = 0; i < w; i++) {
-      const k = i % pitch;
-      if (k < 3) {
-        q.px(i, e, "stone4");
-        q.px(i, e + 1, k === 1 ? "stone5" : "stone3");
-        q.px(i, e + 2, k === 1 ? "stone3" : "stone2");
-        q.px(i, e + 3, "stone1");
-      } else {
-        q.px(i, e, "stone2");
-        q.px(i, e + 1, "stone2");
-        q.px(i, e + 2, k === 4 ? "stone2" : "stone1");
-        q.px(i, e + 3, k === 4 ? "stone1" : "ink2");
-      }
-      q.px(i, e + 4, "ink2");
-    }
-    // Weather: moss in the channels low on the slope and along the ridge.
-    for (let i = 3; i < w - 3; i += pitch) {
-      const r = hash(i, 1, o.seed);
-      if (r < 0.22) {
-        const my = h - eaveH - 3 - Math.floor(r * 30);
-        q.rect(i, my, 2, 3, "jade2").px(i, my - 1, "jade3").px(i + 1, my + 3, "leaf2");
-      }
-      if (hash(i, 2, o.seed) < 0.18) q.px(i + 1, rTop + 8, "jade3").px(i + 2, rTop + 8, "jade2");
-    }
-    // Gable barge tiles down both ends.
-    for (const bx of [0, w - 4]) {
-      q.rect(bx, 0, 4, h - 1, "stone2");
-      q.vline(bx + (bx ? 0 : 1), 0, h - 1, "stone3");
-      q.vline(bx === 0 ? 0 : w - 1, 0, h, "stone1");
-      for (let j = 3; j < h - 2; j += 6) q.hline(bx, j, 4, "stone1");
-    }
-  });
-  if (o.ends !== "plain") {
-    // Upturned ridge ends: a little scroll at each end of the ridge.
-    const L: Legend = { a: "stone1", b: "stone2", c: "stone4", d: "stone5" };
-    const curl = ["..aa..", ".adca.", "adbba.", "abba..", "abbbaa", "abbbba"];
-    block(p, x + 1, y + rTop - 5, curl, L, "curl");
-    block(p, x + w - 7, y + rTop - 5, curl.map((r) => [...r].reverse().join("")), L, "curl");
-  }
+  laneRoof(p, x, y, w, h, { seed: o.seed, ridgeY: o.ridge, mend: o.mend, damp: o.damp });
+  moss(p, x + 8, y + h - 26, w - 16, 18, o.seed + 3, Math.max(2, Math.round(w / 90)));
+  if (o.ridge > 16) moss(p, x + 8, y + 4, w - 16, o.ridge - 8, o.seed + 4, 2);
 }
 
-/** A short pantile strip (a lean-to or a skirt roof): no ridge, just courses and the eave. */
+/** A short pantile strip (a lean-to or a skirt roof): flashing against the wall, courses, the eave. */
 export function tileSkirt(p: Px, x: number, y: number, w: number, h: number, seed: number) {
-  pantileRoof(p, x, y - 8, w, h + 8, { ridge: 0, seed, ends: "plain" });
-  // Overwrite the ridge with a flashing line against the wall above.
-  p.hline(x, y, w, "stone1").hline(x, y + 1, w, "stone4");
+  pantiles(p, x, y + 2, w, h - 7, seed, "south", { damp: 0.05 });
+  lichen(p, x + 6, y + 2, w - 12, h - 7, seed, Math.round(w / 120));
+  eave(p, x, y + h - 5, w, 2);
+  p.hline(x, y, w, "steel1").hline(x, y + 1, w, "stone4");
 }
 
 /**
@@ -506,14 +443,14 @@ export function cable(p: Px, x0: number, y0: number, x1: number, y1: number, sag
  * Steam or smoke rising from (x, y): three soft puffs on a lazy S, a seamless loop over `frames`,
  * `rise` rows tall. Over art it brightens; over nothing it is translucent.
  */
-export function wisp(p: Px, x: number, y: number, frame: number, frames: number, rise: number, smoke = false, seed = 0) {
+export function wisp(p: Px, x: number, y: number, frame: number, frames: number, rise: number, smoke = false, seed = 0, scale = 1) {
   const t = frame / frames;
   softLayer(p, p.w, p.h, (put) => {
     for (let n = 0; n < 3; n++) {
       const k = (n / 3 + t) % 1;
       const cy = y - k * rise;
-      const cx = x + Math.sin((k * 1.6 + seed * 0.37) * Math.PI * 2) * (2 + k * 4) + k * 5;
-      const r = 1.5 + k * 3.2;
+      const cx = x + (Math.sin((k * 1.6 + seed * 0.37) * Math.PI * 2) * (2 + k * 4) + k * 5) * scale;
+      const r = (1.5 + k * 3.2) * scale;
       const strength = (k < 0.15 ? k / 0.15 : 1) * (1 - k);
       const core = strength > 0.5 ? 3 : 2;
       for (let j = Math.floor(cy - r); j <= Math.ceil(cy + r); j++) for (let i = Math.floor(cx - r); i <= Math.ceil(cx + r); i++) {
@@ -528,6 +465,31 @@ export function wisp(p: Px, x: number, y: number, frame: number, frames: number,
     }
     for (let j = 1; j <= 3; j++) put(x + (j === 3 ? 1 : 0), y - j, 2);
   }, smoke);
+}
+
+/**
+ * A grey tabby sitting on a roof with her back to the street, tail curled round her feet, ears up:
+ * 15 × 15 from (x, y), her feet on row y + 14.
+ */
+export function roofCat(p: Px, x: number, y: number) {
+  shadowWedge(p, x + 3, y + 14, 12, 4);
+  block(p, x, y, [
+    "..a......a.....",
+    ".aba....aba....",
+    ".abdaaaadba....",
+    ".abbbbbbbba....",
+    ".adcbbbbcba....",
+    "..abbbbbba.....",
+    "..adbbbbba.....",
+    ".adcbbbbcba....",
+    ".abbbbbbbba....",
+    "adbcbbbbcbba...",
+    "adbbbbbbbbba...",
+    "adbcbbbbcbbaaa.",
+    "abbbbbbbbbbabba",
+    ".abbbbbbbbbbba.",
+    "..aaaaaaaaaaa..",
+  ], { a: "ink2", b: "grey2", c: "grey1", d: "grey3" }, "cat");
 }
 
 /** A potted plant on a sill: a terracotta-ish pot (oak) and a few leaves. */

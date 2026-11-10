@@ -8,8 +8,8 @@
  * Blank sign field (DOM text): the black plaque between the upper windows, x 108..180, rows 175..187.
  * The canvas awning `town/tea-awning` is strung under the skirt roof at z 88.
  */
-import { defineSprites, hash, type Color, type Legend, type Px } from "../../kit/index.ts";
-import { block, boards, lattice, perProp, plotFoot, signboard, sillPot, step, tileSkirt, zrect } from "./_front.ts";
+import { defineSprites, hash, Px, type Color, type Legend } from "../../kit/index.ts";
+import { block, boards, eave, lattice, lichen, moss, pantiles, perProp, plotFoot, shadowWedge, signboard, sillPot, step, tileSkirt, zrect } from "./_front.ts";
 
 const COLS = [6, 78, 144, 210, 282];
 
@@ -149,35 +149,26 @@ function roof(p: Px, w: number) {
     }
     return y < r0 ? "N" : "S";
   };
+  // The slopes are laid with the lane houses' pantiles (per-tile tone, re-laid strips, damp), then cut
+  // to the hip's faces: the west hip in the sun, the east hip a step into shade.
+  const south = new Px(w, RH), north = new Px(w, RH);
+  pantiles(south, 0, r1, w, RH - r1, 23, "south", { mend: [150, 96, 40, 24], damp: 0.1 });
+  pantiles(south, 0, 0, w, r1, 24, "south");
+  pantiles(north, 0, 0, w, r0, 25, "north");
   for (let y = 0; y < RH; y++) for (let x = 0; x < w; x++) {
     const f = face(x, y);
     if (!f) continue;
-    let c: Color;
-    if (f === "S") {
-      const k = x % 6, course = (y - r1) % 6;
-      c = k === 0 || k === 1 ? "stone4" : k === 2 ? "stone3" : k === 5 ? "stone1" : "stone2";
-      if (course === 0) c = k < 3 ? (k === 0 ? "stone5" : "stone4") : "stone1";
-      if (y > fe(x) - 5) {
-        const e = y - (fe(x) - 4);
-        c = k < 3 ? (["stone4", k === 1 ? "stone5" : "stone3", "stone2", "stone1", "ink2"] as Color[])[e] : (["stone2", "stone2", "stone1", "ink2", "ink2"] as Color[])[e];
-      }
-    } else if (f === "N") {
-      const k = x % 6, course = (r0 - y) % 3;
-      c = k === 0 ? "stone5" : k < 3 ? "stone4" : k === 5 ? "stone2" : "stone3";
-      if (course === 0) c = k < 3 ? "stone5" : "stone2";
-    } else if (f === "L" || f === "R") {
-      // Hip faces: tile rows run down toward the eave at the side; the west hip catches the sun.
-      const k = y % 5, course = x % 6;
-      const lit = f === "L";
-      c = k === 0 ? (lit ? "stone5" : "stone3") : k < 3 ? (lit ? "stone4" : "stone3") : k === 4 ? "stone1" : (lit ? "stone3" : "stone2");
-      if (course === 0) c = k < 3 ? (lit ? "stone5" : "stone4") : "stone1";
-      const edge = f === "L" ? x : w - 1 - x;
-      if (edge < 3) c = edge === 0 ? "stone1" : "stone2";
-    } else {
-      c = "stone2";
-    }
+    let c: Color = (f === "N" ? north.get(x, y) : south.get(x, y)) ?? "stone2";
+    if (f === "R") c = step(c, -1);
+    if (f === "ridge") c = "stone2";
+    const edge = f === "L" ? x : f === "R" ? w - 1 - x : 9;
+    if (edge < 3) c = edge === 0 ? "steel1" : "stone2";
     p.px(x, y, c);
   }
+  // Tile ends along the sweeping front eave, laid column by column so they follow the curve.
+  for (let x = 0; x < w; x++) eave(p, x, fe(x) - 4, 1, 0);
+  lichen(p, 20, r1 + 10, w - 40, RH - r1 - 30, 26, 4);
+  moss(p, 16, RH - 34, w - 32, 20, 27, 4);
   // Main ridge: tiles on edge, a lit coping, the shadow it throws on the near slope.
   for (let x = ra; x < rb; x++) {
     p.px(x, r0 - 3, "stone4").px(x, r0 - 2, "stone5");
@@ -219,23 +210,28 @@ function roof(p: Px, w: number) {
     if (r > 0.9) for (let y = r1 + 8; y < r1 + 20; y++) if (face(x, y) === "S") p.px(x, y, (y - r1) % 6 === 0 ? "grey3" : "grey2").px(x + 1, y, (y - r1) % 6 === 0 ? "grey3" : "grey2");
   }
   // Stonecrop (瓦松) in tufts on the old tiles, the sure sign of a roof nobody has relaid in decades.
-  for (const [sx, sy] of [[96, 70], [180, 96], [130, 128], [228, 118], [60, 120]] as const) {
+  for (const [sx, sy] of [[92, 66], [176, 98], [124, 124], [226, 116], [58, 118], [100, 74]] as const) {
     if (face(sx, sy) !== "S" && face(sx, sy) !== "L" && face(sx, sy) !== "R") continue;
-    block(p, sx, sy, ["..n..", ".nmn.", "nmlmn", ".lml."], { l: "jade2", m: "jade3", n: "jade5" }, "stonecrop");
+    block(p, sx, sy, ["...n...", "..nmn..", ".nmlmn.", "nmlmlmn", ".mlmlm.", "..lll.."], { l: "jade2", m: "jade3", n: "jade5" }, "stonecrop");
   }
-  // A child's kite, caught on the south slope months ago: a faded paper diamond and its tail.
-  block(p, 200, 60, [
-    "....a....",
-    "...aba...",
-    "..abcba..",
-    ".abcccba.",
-    "abcccccba",
-    ".abcccba.",
-    "..abcba..",
-    "...aba...",
-    "....a....",
-  ], { a: "bamboo2", b: "blue4", c: "cream4" }, "kite");
-  for (let j = 0; j < 22; j++) p.px(204 + Math.round(Math.sin(j / 3) * 3) + Math.floor(j / 4), 69 + j, j % 5 === 4 ? "plum3" : "cream2");
+  // A child's kite, caught on the south slope months ago: a faded paper swallow (blue and cream) with
+  // its bamboo cross, and a long tail of paper bows trailing down the tiles.
+  const kx = 196, ky = 66, kr = 15, kh = 13;
+  shadowWedge(p, kx - 6, ky + kh, 18, 8);
+  for (let j = -kh; j <= kh; j++) for (let i = -kr; i <= kr; i++) {
+    const d = Math.abs(i) / kr + Math.abs(j) / kh;
+    if (d > 1) continue;
+    let c: Color = d > 0.88 ? "bamboo1" : i < 0 ? (j < 0 ? "blue4" : "blue3") : j < 0 ? "cream5" : "cream4";
+    if (d < 0.3 && d > 0.18) c = "blue2";
+    if (i === 0 || j === 0) c = "bamboo2";
+    p.px(kx + i, ky + j, c);
+  }
+  p.px(kx - 1, ky - 1, "white").px(kx, ky, "bamboo3");
+  for (let j = 0; j < 44; j++) {
+    const tx = kx + Math.round(Math.sin(j / 5) * 5) + Math.floor(j / 3), ty = ky + kh + j;
+    p.px(tx, ty, "cream2").px(tx + 1, ty, "cream1");
+    if (j % 9 === 5) block(p, tx - 3, ty - 2, ["aa.aa", "abcba", ".aca.", "abcba", "aa.aa"], { a: "plum2", b: "plum3", c: "plum4" }, "bow");
+  }
   // A shadow strip under the eave: the rafters' dark gap.
   for (let x = 0; x < w; x++) p.px(x, fe(x) + 1, "ink2").px(x, fe(x) + 2, "ink");
 }

@@ -15,7 +15,7 @@
  */
 import { defineSprites, hash, type Color, type Px } from "../../kit/index.ts";
 import type { TownProp } from "../../town/map.ts";
-import { block, darkRoom, downpipe, greyBrick, pantileRoof, perProp, plotFoot, rollerShutter, signboard, step, stucco, tileSkirt, zrect } from "./_front.ts";
+import { block, darkRoom, downpipe, greyBrick, pantileRoof, perProp, plotFoot, rollerShutter, signboard, step, stucco, tarp, tileSkirt, zrect } from "./_front.ts";
 
 // ── west store ─────────────────────────────────────────────────────────────
 
@@ -84,12 +84,10 @@ function riverStore(p: Px, w: number, H: number) {
   pantileRoof(p, 0, 0, w, H - F + 1, { ridge: 16, seed: 81 });
   // A hole where tiles slid off, the battens showing, half covered by a blue tarp held with bricks.
   for (let j = 30; j < 52; j++) for (let i = 160; i < 196; i++) p.px(i, j, (i % 6 < 2) ? "wood2" : "ink");
-  for (let j = 26; j < 50; j++) for (let i = 172; i < 220; i++) {
-    const wave = Math.floor((i - 172) / 6) % 2;
-    p.px(i, j, j === 26 ? "blue5" : wave ? "blue3" : "blue4");
-  }
-  p.hline(172, 49, 48, "blue2");
-  for (const [bx, by] of [[176, 30], [206, 40], [190, 44]] as const) block(p, bx, by, ["aaaaaa", "abbbbc", "cccccc"], { a: "stone4", b: "stone3", c: "stone2" }, "brick");
+  tarp(p, 174, 24, 46, 24, 3);
+  // Roof weeds: a clump of grass and a young paper mulberry in the gutter of the slid tiles.
+  block(p, 128, 40, ["..m...n..", ".mnm.mnm.", "mnlmnmlnm", ".lmlmlml.", "..l.l.l.."], { l: "leaf1", m: "leaf2", n: "leaf3" }, "roof-grass");
+  block(p, 92, 30, ["...nn.mm...", "..nmnnmnm..", ".mnmlnmnmn.", "..mnmlmnm..", "....l.l....", ".....l.....", ".....l....."], { l: "wood2", m: "leaf2", n: "leaf3" }, "sapling");
   // Upper storey: grey brick, one window bricked up, the other with broken louvred shutters.
   greyBrick(p, 0, H - F, w, F - 80, 82);
   zrect(p, H, 0, 124, w, 128, "stone4");
@@ -148,7 +146,17 @@ function riverStore(p: Px, w: number, H: number) {
   for (let i = 0; i < 20; i++) p.px(134 + i, H - 12 + Math.round(Math.sin(i / 3) * 1.5), i % 2 ? "steel4" : "steel2");
   block(p, 142, H - 10, [".aa.", "a..a", "bbbb", "bccb", "bbbb"], { a: "steel3", b: "orange1", c: "wood3" }, "padlock");
   // Weeds at the foot of the shutter and in the gutter, pigeon marks under the ledge.
-  for (let i = 4; i < w - 4; i += 7) if (hash(i, 8, 8) < 0.55) block(p, i, H - 6, [".m.n", "mnmn", "lmlm", ".l.l"], { l: "leaf1", m: "leaf2", n: "leaf3" }, "weed");
+  // Weeds along the foot of the shutter: grass clumps, a dandelion in flower, a dock leaf.
+  const WL = { l: "leaf1", m: "leaf2", n: "leaf3", o: "leaf4", y: "gold4", Y: "gold3" } as const;
+  const weeds = [
+    ["..n...n.", ".nm..nm.", ".mn.nmo.", "nmlnmlmn", "mlmlmlml", ".l.l.l.."],
+    ["...yy...", "..yYYy..", "...yy...", "...m....", "..nm..n.", ".nmlnmm.", "nmlmlmln", ".l.l.l.."],
+    [".nnn....", "noonn...", "nonmmn..", ".nmmlmn.", "..mlmlm.", "...l.l.."],
+  ];
+  for (let i = 4; i < w - 10; i += 13) if (hash(i, 8, 8) < 0.7) {
+    const wd = weeds[Math.floor(hash(i, 9, 8) * weeds.length)];
+    block(p, i, H - wd.length, wd, WL, "weed");
+  }
   for (let i = 0; i < w; i += 5) if (hash(i, 9, 8) < 0.3) p.px(i, H - 78, "white").px(i + 1, H - 77, "cream4");
   downpipe(p, 2, H - F + 2, H - 1);
   zrect(p, H, w - 1, 0, 1, F, "stone1");
