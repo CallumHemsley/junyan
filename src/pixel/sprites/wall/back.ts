@@ -128,19 +128,11 @@ export default defineSprites({
   }),
 
   /**
-   * Under a window that has leaked in every typhoon: a tea-coloured tide mark on the plaster below the
-   * sill, and the varnish on the rail and panel bloomed milky where the water ran. Hang a window above it.
+   * Under a window that has leaked in every typhoon: the varnish on the rail and panel has bloomed milky
+   * where the water ran down from the sill. Hang a window above it.
    */
   "wall/back-g": slice((p) => {
     diningWall(p, 73);
-    block(p, 4, 52, [
-      "yyyyyyyyyyyyyyyyyyyyyyy.",
-      "Yyyyyyyyyyyyyyyyyyyyyyy.",
-      ".YyyyyyyYyyyyyyyyyyyyyY.",
-      "..YyyyyY.YyyyyyyyyYyyY..",
-      "...YyyY...YyyyyyyY.YY...",
-      "....YY.....YyyyyY.......",
-    ], { y: "bamboo5", Y: "bamboo4" }, "tide");
     // Water bloom: the varnish gone milky in soft clusters on the rail and down the panel.
     for (const [x, y, n] of [[8, 59, 9], [10, 60, 6], [9, 61, 8], [12, 64, 4], [11, 65, 6], [14, 68, 3], [13, 69, 5], [15, 73, 3]] as const) p.hline(x, y, n, "cream1");
     for (const [x, y, n] of [[11, 66, 5], [16, 70, 4], [14, 74, 3]] as const) p.vline(x, y, n, "cream1");
