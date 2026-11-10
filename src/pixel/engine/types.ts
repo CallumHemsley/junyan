@@ -170,6 +170,11 @@ export type FrameState = {
   actors?: readonly Actor[];
   /** Props added at run time (food on a table), drawn exactly like scene props. */
   props?: readonly Prop[];
+  /**
+   * Opacity, 0..1, of scene or run-time props by their `id` (a tree the player walks behind). Props not
+   * listed draw opaque. Shadows and colliders are unaffected.
+   */
+  fade?: Readonly<Record<string, number>>;
   /** Freezes flicker and dust motes. */
   reducedMotion?: boolean;
   /** Draws colliders, the walkable rect and marks. */

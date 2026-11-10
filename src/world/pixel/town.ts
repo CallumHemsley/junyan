@@ -1,0 +1,117 @@
+/**
+ * The town map, drawn as the pixel town: pure functions from game state to what the pixel engine
+ * draws (scene, cast, light, which props fade). No DOM; `TownView.tsx` renders the result. The town
+ * map's units are the scene's tiles, so a world position is an actor position as it is.
+ */
+import town from "../../pixel/scenes/town.ts";
+import { townPlaceholderOptions } from "../../pixel/town/placeholders.ts";
+import type { Actor, AtlasOptions, CompiledScene, DayPhase, Facing, Placed, Scene } from "../../pixel/engine/index.ts";
+import { TILE, hash } from "../../pixel/kit/index.ts";
+import type { ActorPose } from "../life";
+import { serviceDayPhase } from "../lighting";
+import type { Facing as WorldFacing, Point } from "../schema";
+import { cafePhase, pixelFacing, waiterActor, type WaiterMotion } from "./cafe";
+
+/** The scene the game walks: the compiled town, with no cast of its own (the game supplies it). */
+export const liveTown: Scene = { ...town, actors: undefined };
+
+/**
+ * Atlas options for the town in the game: art still being drawn shows as placeholder boxes in every
+ * build (so the town never throws), and dev builds list the missing ids once.
+ */
+export function townAtlasOptions(report?: (message: string) => void): AtlasOptions {
+  const options = townPlaceholderOptions(report ?? (() => {}));
+  return report ? options : { placeholder: options.placeholder };
+}
+
+/** The light follows the day's service, as in the cafe. */
+export const townPhase = (served: number): DayPhase => cafePhase(serviceDayPhase(served));
+
+/** The player walking the lanes: the same character as the waiter, with empty hands. */
+export const townPlayer = (position: Point, facing: WorldFacing, motion: WaiterMotion): Actor => waiterActor(position, facing, [], motion);
+
+/** Life characters → pixel characters. Unknown residents use `char/<id>` (a placeholder until drawn). */
+export const TOWN_CHARACTERS: Readonly<Record<string, string>> = {
+  "lin-jie": "char/lin-jie",
+  "zhang-laoshi": "char/zhang-laoshi",
+  "xiao-zhou": "char/xiao-zhou",
+  "resident-courier": "char/courier",
+};
+
+/** Birds by flock: pigeons by the canal, sparrows everywhere else. */
+export const birdSprite = (hookId: string) => hookId.includes("canal") ? "critter/pigeon" : "critter/sparrow";
+
+/** Critters face down, left or right; one heading north turns to the side it is drifting. */
+function critterFacing(pose: ActorPose): Facing {
+  const facing = pixelFacing(pose.facing);
+  if (facing !== "up") return facing;
+  return pose.yaw !== undefined && Math.cos(pose.yaw) < 0 ? "left" : "right";
+}
+
+/** A bird's action: flying off when startled, hopping along its route, else idling with the odd peck. */
+function birdAction(pose: ActorPose): string {
+  if (pose.activity === "startle") return "fly";
+  if (pose.action === "walk") return "hop";
+  return Math.floor(pose.phaseMs / 1600) % 3 === 1 ? "peck" : "idle";
+}
+
+/** One life actor (a regular on their route, the courier, a bird) as a pixel actor. */
+export function lifeActor(pose: ActorPose): Actor {
+  const id = `life/${pose.id}`, at = [pose.position.x, pose.position.y] as const;
+  // A per-actor animation offset, so a flock does not bob in step.
+  const phase = Math.floor(hash(pose.id.length, pose.id.charCodeAt(pose.id.length - 1), 7) * 4);
+  if (pose.kind === "bird") return { id, sprite: birdSprite(pose.id), at, facing: critterFacing(pose), action: birdAction(pose), phase };
+  if (pose.kind === "cat") return { id, sprite: "critter/cat-tabby", at, facing: critterFacing(pose), action: pose.action === "walk" ? "walk" : pose.activity === "sit" ? "sit" : "idle", phase };
+  const action = pose.action === "walk" ? "walk" : pose.activity === "sit" ? "sit" : "idle";
+  return { id, sprite: TOWN_CHARACTERS[pose.characterId] ?? `char/${pose.characterId}`, at, facing: pixelFacing(pose.facing), action, phase };
+}
+
+/** The town's cast: everyone life places in the town, then the player. */
+export function townActors(poses: readonly ActorPose[], player: Actor): Actor[] {
+  return [...poses.map(lifeActor), player];
+}
+
+/** The player's body in art px from the feet `[dx, dy, w, h]`: a person in a 32×64 frame is about 18×54. */
+export const PLAYER_BODY = [-9, -54, 18, 54] as const;
+/** How opaque a prop is while the player is behind it. */
+export const FADED = 0.35;
+/** Fade only when the prop's art really covers this many of the player's pixels (a leaf tip is not enough). */
+export const MIN_COVER = 40;
+
+export type Occluder = { id: string; fadeWhenPlayerBehind?: boolean };
+
+/** Scene props by id, objects and over-layer alike, for occlusion. */
+export function placedById(compiled: CompiledScene): Map<string, Placed> {
+  const out = new Map<string, Placed>();
+  for (const placed of [...compiled.objects, ...compiled.over]) if (placed.prop?.id) out.set(placed.prop.id, placed);
+  return out;
+}
+
+/** Opaque pixels of `placed` (as drawn now) inside the world-px rectangle. */
+function coverage(placed: Placed, x0: number, y0: number, x1: number, y1: number): number {
+  const image = placed.sprite.frame(placed.frame >= 0 ? placed.frame : 0, placed.flipX);
+  let count = 0;
+  for (let y = Math.max(y0, placed.top); y < Math.min(y1, placed.top + image.h); y++)
+    for (let x = Math.max(x0, placed.left); x < Math.min(x1, placed.left + image.w); x++)
+      if (image.data[((y - placed.top) * image.w + x - placed.left) * 4 + 3] > 0) count++;
+  return count;
+}
+
+/**
+ * Which props to fade so the player stays visible: the map's occluders marked
+ * `fadeWhenPlayerBehind` whose art is drawn over the player (they sort in front, or hang above
+ * everyone) and covers at least `MIN_COVER` of the player's body pixels. Keyed by prop id, for `FrameState.fade`.
+ */
+export function occluderFade(placed: ReadonlyMap<string, Placed>, occluders: readonly Occluder[], player: Point): Record<string, number> {
+  const feetX = Math.round(player.x * TILE), feetY = Math.round(player.y * TILE);
+  const x0 = feetX + PLAYER_BODY[0], y0 = feetY + PLAYER_BODY[1], x1 = x0 + PLAYER_BODY[2], y1 = y0 + PLAYER_BODY[3];
+  const fade: Record<string, number> = {};
+  for (const occluder of occluders) {
+    if (!occluder.fadeWhenPlayerBehind) continue;
+    const prop = placed.get(occluder.id);
+    if (!prop || (prop.layer === "object" && prop.sortY <= feetY)) continue;
+    if (prop.left >= x1 || prop.top >= y1 || prop.left + prop.sprite.w <= x0 || prop.top + prop.sprite.h <= y0) continue;
+    if (coverage(prop, x0, y0, x1, y1) >= MIN_COVER) fade[occluder.id] = FADED;
+  }
+  return fade;
+}

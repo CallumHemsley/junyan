@@ -1,7 +1,7 @@
 ---
 id: 174
 title: Walk the town in pixel art
-status: todo
+status: doing
 priority: high
 type: feature
 created: 2026-11-10
@@ -19,3 +19,4 @@ The town still renders through the old isometric painter.
 ## Notes
 
 - Contracts: `docs/design/pixel-contracts.md`. Base branch `claude/0162-pixel-hospital-town`.
+- Owner: Claude worker (Opus). Branch `claude/0174-pixel-town-integration`; worktree `/Users/callumhemsley/Personal/junyan-px-0174`; Vite port 5198 strict (preview 5199 for production journeys). Silent: no audio, headless browser only.

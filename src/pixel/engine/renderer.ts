@@ -5,6 +5,7 @@
  *   background → tile layers → floor props (scene order) → contact shadows →
  *   object props and actors, depth-sorted by anchor y (ties keep scene order, then run-time props,
  *   then actors) → over props → light (ambient × map + glow) → dust motes → debug overlay.
+ *   Props named in `state.fade` draw at that opacity (the player walking behind a tree).
  *
  * The static prefix of the floor (every tile and floor prop up to the first animated one) is baked
  * once per scene into a world-size buffer; each frame copies the visible part and draws the rest.
@@ -75,8 +76,11 @@ export function createSceneRenderer(scene: Scene, atlas: Atlas, options: Rendere
     return cache;
   }
 
+  let fade: Readonly<Record<string, number>> | undefined;
   function draw(frame: Frame, view: ViewOrigin, placed: Placed, frameIndex: number, dx = 0, dy = 0) {
-    blit(frame, placed.sprite.frame(frameIndex, placed.flipX), placed.left + dx - view.x, placed.top + dy - view.y);
+    const id = placed.prop?.id;
+    const opacity = fade && id !== undefined ? fade[id] ?? 1 : 1;
+    blit(frame, placed.sprite.frame(frameIndex, placed.flipX), placed.left + dx - view.x, placed.top + dy - view.y, opacity);
   }
 
   function stampShadow(frame: Frame, view: ViewOrigin, placed: Placed) {
@@ -168,6 +172,7 @@ export function createSceneRenderer(scene: Scene, atlas: Atlas, options: Rendere
     render(frame, view, state) {
       const time = state.time, phase = state.phase ?? "morning";
       const props = state.props ?? [], actors = state.actors ?? [];
+      fade = state.fade;
 
       // Background and the cached static floor.
       staticCache ??= buildStaticCache();

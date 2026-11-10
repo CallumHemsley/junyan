@@ -1,4 +1,4 @@
-import { bakeSprite, type SpriteDef, type SpriteSet } from "../kit/index.ts";
+import { bakeSprite, type Color, type SpriteDef, type SpriteSet } from "../kit/index.ts";
 
 /** One baked frame: straight RGBA, row-major, plus a 32-bit view of the same bytes. */
 export type Image = { w: number; h: number; data: Uint8ClampedArray; words: Uint32Array };
@@ -12,16 +12,57 @@ export type AtlasSprite = {
   frameCount: number;
   fps: number;
   layer: "floor" | "object" | "over";
+  /** True when this is a stand-in box for a sprite that is not drawn yet (see `AtlasOptions.placeholder`). */
+  placeholder?: boolean;
   /** Frame `i`, optionally mirrored. Baked on first use and cached. */
   frame(index: number, flipX?: boolean): Image;
 };
 
 export type Atlas = {
+  /** Whether the set really has this sprite (placeholders do not count). */
   has(id: string): boolean;
-  /** Throws a helpful error for an unknown id. */
+  /** The sprite, or its placeholder when the atlas was given one for this id, or undefined. */
+  find(id: string): AtlasSprite | undefined;
+  /** Like `find`, but throws a helpful error for an unknown id. */
   get(id: string): AtlasSprite;
   ids(): string[];
 };
+
+/** A stand-in for a missing sprite: a flat box, `w`×`h` art px, standing on its anchor. */
+export type Placeholder = {
+  w: number;
+  h: number;
+  /** Default bottom-centre, `[floor(w / 2), h]`, so the box's base sits on the anchor. */
+  anchor?: readonly [number, number];
+  /** Default `stone4`. */
+  color?: Color;
+  /** Opacity of the fill, 0..1 (default 0.35); the one-pixel edge is a little stronger. 1 draws an opaque fill with no edge (ground). */
+  alpha?: number;
+  layer?: AtlasSprite["layer"];
+};
+
+export type AtlasOptions = {
+  /**
+   * Dev and tool fallback for art that is still being drawn: the box to show for an id the set lacks,
+   * or null to keep treating it as unknown. Leave it out in production, where a missing id is a bug.
+   */
+  placeholder?: (id: string) => Placeholder | null;
+  /** Told once per id the first time it is drawn as a placeholder. */
+  onPlaceholder?: (id: string) => void;
+};
+
+/** The sprite definition of a placeholder box. */
+export function placeholderSprite(spec: Placeholder): SpriteDef {
+  const { w, h, color = "stone4", alpha = 0.35 } = spec;
+  return {
+    w, h, anchor: spec.anchor ?? [Math.floor(w / 2), h], layer: spec.layer,
+    draw: (p) => {
+      if (alpha >= 1) { p.rect(0, 0, w, h, color); return; }
+      p.faded(alpha, () => p.rect(0, 0, w, h, color));
+      p.faded(Math.min(1, alpha * 1.8), () => p.frame(0, 0, w, h, color));
+    },
+  };
+}
 
 function image(w: number, h: number, data: Uint8ClampedArray): Image {
   return { w, h, data, words: new Uint32Array(data.buffer, data.byteOffset, w * h) };
@@ -44,13 +85,22 @@ export function frameAt(sprite: Pick<AtlasSprite, "frameCount" | "fps">, time: n
  * Lazily bakes sprites from an injected set. In the browser the set comes from `../registry.ts`,
  * in Node from `../tools/load.ts`, in tests from a literal.
  */
-export function createAtlas(set: SpriteSet): Atlas {
+export function createAtlas(set: SpriteSet, options: AtlasOptions = {}): Atlas {
   const cache = new Map<string, AtlasSprite>();
-  const get = (id: string): AtlasSprite => {
+  const missing = new Set<string>();
+  const find = (id: string): AtlasSprite | undefined => {
     const hit = cache.get(id);
     if (hit) return hit;
-    const def = set[id];
-    if (!def) throw new Error(`No sprite "${id}". Known: ${Object.keys(set).sort().join(", ")}`);
+    const real: SpriteDef | undefined = set[id];
+    let spec: Placeholder | null | undefined;
+    if (!real) {
+      if (missing.has(id)) return undefined;
+      spec = options.placeholder?.(id);
+      if (!spec) { missing.add(id); return undefined; }
+      options.onPlaceholder?.(id);
+    }
+    const stand = !real;
+    const def: SpriteDef = real ?? placeholderSprite(spec!);
     let baked: ReturnType<typeof bakeSprite> | undefined;
     const count = def.frames ?? 1;
     const plain: Image[] = [], flipped: Image[] = [];
@@ -60,6 +110,7 @@ export function createAtlas(set: SpriteSet): Atlas {
       frameCount: count,
       fps: def.fps ?? 6,
       layer: def.layer ?? "object",
+      ...(stand ? { placeholder: true } : {}),
       frame(index, flipX = false) {
         const i = ((index % count) + count) % count;
         if (!plain[i]) {
@@ -73,5 +124,10 @@ export function createAtlas(set: SpriteSet): Atlas {
     cache.set(id, sprite);
     return sprite;
   };
-  return { has: (id) => id in set, get, ids: () => Object.keys(set).sort() };
+  const get = (id: string): AtlasSprite => {
+    const sprite = find(id);
+    if (!sprite) throw new Error(`No sprite "${id}". Known: ${Object.keys(set).sort().join(", ")}`);
+    return sprite;
+  };
+  return { has: (id) => id in set, find, get, ids: () => Object.keys(set).sort() };
 }

@@ -11,6 +11,7 @@
 import { writeFileSync } from "node:fs";
 import { compileScene, createAtlas, propCollider } from "../engine/index.ts";
 import { scenes } from "../scenes/index.ts";
+import { townPlaceholderOptions } from "../town/placeholders.ts";
 import { loadSprites } from "./load.ts";
 
 const args = process.argv.slice(2);
@@ -19,7 +20,8 @@ const out = outAt >= 0 ? args.splice(outAt, 2)[1] : "";
 const scene = scenes[args[0]];
 if (!scene) { console.error(`Usage: colliders.ts <sceneId> [--out file.json]. Scenes: ${Object.keys(scenes).join(", ")}`); process.exit(1); }
 
-const compiled = compileScene(scene, createAtlas(await loadSprites()));
+// Placeholders never collide (they have no foot), so art still being drawn does not change the output.
+const compiled = compileScene(scene, createAtlas(await loadSprites(), townPlaceholderOptions((m) => console.warn(m))));
 const counts = new Map<string, number>();
 const round = (v: number) => Math.round(v * 1e5) / 1e5;
 const entries = compiled.objects.flatMap((placed) => {
