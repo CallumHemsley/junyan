@@ -85,7 +85,7 @@ const kitchen: Prop[] = [
   { sprite: "kitchen/counter-v-mid-b", at: px(colX(LEG_COL), rowBase(5)) },
   { sprite: "kitchen/counter-v-mid", at: px(colX(LEG_COL), rowBase(6)) },
   { sprite: "kitchen/counter-corner", at: px(colX(LEG_COL), counterY) },
-  ...(["a", "b", "c", "a", "b", "a", "c", "b"] as const).map((v, i): Prop => ({ sprite: `kitchen/counter-mid-${v}`, at: px(colX(12 + i), counterY) })),
+  ...(["a", "b", "a", "a", "b", "c", "b", "a"] as const).map((v, i): Prop => ({ sprite: `kitchen/counter-mid-${v}`, at: px(colX(12 + i), counterY) })),
   { sprite: "kitchen/counter-right", at: px(colX(20), counterY) },
   // What stands on it.
   { sprite: "kitchen/order-spike", at: px(370, rowBase(6) + 1), solid: false },
