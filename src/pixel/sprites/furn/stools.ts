@@ -118,37 +118,41 @@ export default defineSprites({
   },
 
   /**
-   * A bamboo stool from the market in the next street: poles with knuckled nodes, lashed joints
-   * and a woven split-bamboo seat. One strip has snapped and curls up at the front right. Hands
-   * have darkened the front rail. Sitter anchor (0, -4); hips (0, -22).
+   * A bamboo stool from the market in the next street: poles with knuckled nodes, rattan lashing
+   * at every joint and a basket-woven split-bamboo seat. One strip has snapped and sticks up at
+   * the front right. Hands have darkened the front rail. Sitter anchor (0, -4); hips (0, -21).
    */
   "furn/stool-bamboo": {
     w: 28, h: 30, anchor: [14, 29], foot: [-10, -11, 20, 10], shadow: { rx: 13, ry: 5, dy: -1 },
     draw: (p) => {
-      // Back legs, the low stretcher, then the front poles with their nodes.
-      for (const x of [7, 19]) p.rect(x, 14, 2, 10, "bamboo2").px(x, 19, "bamboo1");
-      p.rect(5, 22, 18, 2, "bamboo3").hline(5, 22, 18, "bamboo4").px(9, 22, "bamboo2").px(9, 23, "bamboo1").px(18, 22, "bamboo2");
+      // Back legs and the low stretcher.
+      for (const x of [7, 19]) p.rect(x, 15, 2, 9, "bamboo2").hline(x, 19, 2, "bamboo1");
+      p.rect(5, 22, 18, 2, "bamboo3").hline(5, 22, 18, "bamboo4").hline(5, 23, 18, "bamboo2").vline(13, 22, 2, "bamboo1").px(14, 22, "bamboo5");
+      // Front poles: each node a knuckle that swells a pixel past the pole.
       for (const [x, right] of [[2, false], [23, true]] as const) {
-        p.rect(x, 13, 3, 15, right ? "bamboo2" : "bamboo3").vline(x, 13, 15, right ? "bamboo3" : "bamboo4").vline(x + 2, 13, 15, right ? "bamboo1" : "bamboo2");
-        for (const ny of [19, 25]) p.hline(x, ny, 3, "bamboo1").hline(x, ny + 1, 3, right ? "bamboo3" : "bamboo5");
+        p.rect(x, 15, 3, 13, right ? "bamboo3" : "bamboo4").vline(x, 15, 13, right ? "bamboo3" : "bamboo5").vline(x + 2, 15, 13, right ? "bamboo1" : "bamboo2");
+        for (const ny of [19, 25]) p.hline(x - 1, ny, 5, "bamboo1").hline(x - 1, ny + 1, 5, right ? "bamboo3" : "bamboo5").px(x + 3, ny + 1, "bamboo2");
+        p.hline(x, 28, 3, "bamboo2");
       }
-      // Seat frame: a round pole along the front with a node, and the weave above it.
-      p.rect(1, 2, 26, 10, "bamboo3");
-      roundCorners(p, 1, 2, 26, 10, 2, "tl tr");
-      each(2, 2, 24, 10, (x, y) => {
-        const lane = Math.floor((x - 2) / 3), row = Math.floor((y - 2) / 2);
-        const overStrip = (lane + row) % 2 === 0;
-        const c: Color = overStrip ? ((x - 2) % 3 === 2 ? "bamboo3" : (y % 2 ? "bamboo4" : "bamboo5")) : ((y - 2) % 2 === 1 ? "bamboo2" : "bamboo3");
+      // The weave: three-pixel strips going over and under, a dark gap between them.
+      p.rect(1, 3, 26, 9, "bamboo2");
+      roundCorners(p, 1, 3, 26, 9, 2, "tl tr");
+      each(2, 3, 24, 9, (x, y) => {
+        const lx = (x - 2) % 4, ly = (y - 3) % 3, cx = Math.floor((x - 2) / 4), cy = Math.floor((y - 3) / 3);
+        let c: Color;
+        if ((cx + cy) % 2 === 0) c = ly === 0 ? "bamboo5" : ly === 1 ? "bamboo4" : "bamboo2";
+        else c = lx === 3 ? "bamboo1" : lx === 2 ? "bamboo3" : "bamboo4";
         p.px(x, y, c);
       });
-      p.over(() => { p.vline(1, 4, 7, "bamboo4"); p.vline(26, 4, 7, "bamboo2"); });
+      p.over(() => { p.vline(1, 5, 6, "bamboo4"); p.vline(26, 5, 6, "bamboo2"); });
+      // Seat frame: a round pole along the front, darkened by hands in the middle, with a node.
       p.rect(1, 12, 26, 3, "bamboo3").hline(1, 12, 26, "bamboo5").hline(1, 14, 26, "bamboo2");
       p.hline(9, 13, 9, "bamboo2").hline(10, 12, 7, "bamboo3");
-      p.hline(20, 12, 1, "bamboo1").hline(20, 13, 1, "bamboo1").px(21, 12, "bamboo5");
-      // Rattan lashing at the front joints.
-      for (const x of [2, 23]) grid(p, x - 1, 12, 5, ["15151", "51515", "15151"], { "1": "bamboo1", "5": "bamboo4" });
-      // The snapped strip curling up.
-      grid(p, 18, 6, 5, ["...54", "..54.", ".43..", "43..."], BAM);
+      p.vline(19, 12, 3, "bamboo1").px(20, 12, "bamboo5");
+      // Rattan lashing wrapped round the front joints, standing proud of the poles.
+      for (const x of [1, 22]) grid(p, x, 11, 5, [".151.", "15151", "51515", "15151", ".515."], { "1": "bamboo1", "5": "bamboo4" });
+      // The snapped strip sticking up out of the weave: a two-pixel break in the silhouette.
+      grid(p, 18, 0, 4, ["..54", ".54.", "543.", "43.."], BAM);
       p.outline("bamboo1");
     },
   },
@@ -197,35 +201,32 @@ export default defineSprites({
   },
 
   /**
-   * A square tea-wood stool with a waist and a humpbacked stretcher, from a set of four of which
-   * this is the last. The shop cat sharpens its claws on the left leg. Sitter anchor (0, -4);
-   * hips (0, -22).
+   * A plain square tea-wood stool: a thick slab seat with chamfered edges, the four legs
+   * through-tenoned and wedged so their end grain shows on top. The last of a set of four. The
+   * shop cat sharpens its claws on the left leg. Sitter anchor (0, -4); hips (0, -22).
    */
   "furn/stool-square": {
     w: 26, h: 31, anchor: [13, 30], foot: [-10, -11, 20, 10], shadow: { rx: 12, ry: 5, dy: -1 },
     draw: (p) => {
-      // Frame-and-panel top: a mitred frame round a floating panel.
-      p.rect(1, 1, 24, 11, "wood4");
-      p.rect(4, 3, 18, 7, "wood4");
-      boards(p, 4, 3, 18, 7, { dir: "h", seams: [], seed: 71, density: 2 });
-      p.over(() => {
-        p.hline(3, 2, 20, "wood3").hline(3, 10, 20, "wood5").vline(3, 2, 9, "wood3").vline(22, 2, 9, "wood5");
-        p.px(2, 1, "wood3").px(23, 1, "wood3").px(2, 11, "wood3").px(23, 11, "wood3");
-      });
-      topEdges(p, 1, 1, 24, 11);
-      p.hline(1, 12, 24, "wood5").rect(1, 13, 24, 2, "wood3");
-      // Waist, apron, and the humpbacked stretcher.
-      p.rect(3, 15, 20, 2, "wood2").hline(3, 15, 20, "wood1");
-      p.rect(2, 17, 22, 3, "wood3").hline(2, 17, 22, "wood4").hline(2, 19, 22, "wood2");
-      grid(p, 5, 20, 16, ["2..............2", ".33..........33.", "...4433333332...", ".......22......."], W);
-      // Legs.
-      p.rect(1, 15, 4, 15, "wood3").vline(1, 16, 13, "wood4").vline(2, 16, 12, "wood4").vline(4, 15, 15, "wood2");
-      p.rect(21, 15, 4, 15, "wood3").vline(21, 16, 13, "wood3").vline(23, 15, 15, "wood2").vline(24, 15, 15, "wood2");
-      // Claw marks.
-      grid(p, 1, 19, 4, ["6.6.", "56.6", "5656", ".565", ".5.5", "..5."], { "5": "wood5", "6": "wood6" });
-      p.over(() => p.hline(1, 25, 4, "wood2"));
+      // Back legs, the apron rail and the front stretcher.
+      for (const x of [7, 17]) p.rect(x, 15, 2, 10, "wood2");
+      p.rect(2, 15, 22, 2, "wood2").hline(2, 15, 22, "wood1");
+      p.rect(6, 23, 14, 2, "wood3").hline(6, 23, 14, "wood4").hline(6, 24, 14, "wood2");
+      // Front legs, six wide.
+      p.rect(1, 15, 6, 15, "wood3").vline(1, 16, 13, "wood4").vline(2, 16, 13, "wood4").vline(6, 15, 15, "wood2");
+      p.rect(19, 15, 6, 15, "wood3").vline(23, 15, 15, "wood2").vline(24, 15, 15, "wood2");
+      p.hline(1, 29, 6, "wood2").hline(19, 29, 6, "wood2");
+      // Slab seat with grain, a lit chamfer round the top, then the front chamfer and face.
+      p.rect(1, 2, 24, 10, "wood4");
+      boards(p, 1, 2, 24, 10, { dir: "h", seams: [], seed: 72, density: 2.2 });
+      p.over(() => { p.hline(2, 2, 22, "wood5").vline(1, 3, 8, "wood5").hline(3, 2, 8, "wood6").vline(24, 3, 9, "wood3"); });
+      roundCorners(p, 1, 2, 24, 10, 1, "tl tr");
+      p.hline(1, 12, 24, "wood5").rect(1, 13, 24, 1, "wood3").hline(1, 14, 24, "wood2");
+      // Wedged through-tenons: end grain with a pale wedge line.
+      for (const [x, y] of [[2, 3], [20, 3], [2, 8], [20, 8]] as const) grid(p, x, y, 4, ["3223", "2552", "3223"], { "3": "wood3", "2": "wood2", "5": "wood5" });
+      // Three pale claw scores down the left leg.
+      for (let i = 0; i < 3; i++) grid(p, 1 + i * 2, 18 + i, 2, ["6.", "6.", "56", ".5", ".5"], { "5": "wood5", "6": "wood6" });
       p.outline("wood1");
-      p.px(0, 22, "wood5").px(0, 24, "wood4");
     },
   },
 
