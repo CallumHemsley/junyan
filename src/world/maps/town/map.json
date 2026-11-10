@@ -253,7 +253,7 @@
     {
       "id": "town.restaurant-open-leaf",
       "rect": {
-        "x": 33.04,
+        "x": 32.78,
         "y": 28.28,
         "width": 0.18,
         "height": 0.7
@@ -262,7 +262,7 @@
     {
       "id": "town.residence-open-leaf",
       "rect": {
-        "x": 10.54,
+        "x": 10.28,
         "y": 21.28,
         "width": 0.18,
         "height": 0.7
@@ -271,7 +271,7 @@
     {
       "id": "town.workshop-open-leaf",
       "rect": {
-        "x": 72.29,
+        "x": 71.78,
         "y": 29.28,
         "width": 0.18,
         "height": 0.7
@@ -1194,7 +1194,7 @@
     {
       "id": "town.restaurant-open-leaf",
       "rect": {
-        "x": 33.04,
+        "x": 32.78,
         "y": 28.28,
         "width": 0.18,
         "height": 0.7
@@ -1205,7 +1205,7 @@
     {
       "id": "town.residence-open-leaf",
       "rect": {
-        "x": 10.54,
+        "x": 10.28,
         "y": 21.28,
         "width": 0.18,
         "height": 0.7
@@ -1216,7 +1216,7 @@
     {
       "id": "town.workshop-open-leaf",
       "rect": {
-        "x": 72.29,
+        "x": 71.78,
         "y": 29.28,
         "width": 0.18,
         "height": 0.7
@@ -2869,7 +2869,7 @@
       "id": "town.restaurant-open-leaf",
       "kind": "open-door-leaf",
       "position": {
-        "x": 33.04,
+        "x": 32.78,
         "y": 28.28
       },
       "width": 0.18,
@@ -2893,7 +2893,7 @@
       "id": "town.residence-open-leaf",
       "kind": "open-door-leaf",
       "position": {
-        "x": 10.54,
+        "x": 10.28,
         "y": 21.28
       },
       "width": 0.18,
@@ -2917,7 +2917,7 @@
       "id": "town.workshop-open-leaf",
       "kind": "open-door-leaf",
       "position": {
-        "x": 72.29,
+        "x": 71.78,
         "y": 29.28
       },
       "width": 0.18,

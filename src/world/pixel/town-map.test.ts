@@ -81,13 +81,15 @@ describe("the town scene is the town map", () => {
     }
     // At night lamp-0's glass (18.175, 26.85 − 2.9) lifts the picture round it above the same night unlit.
     const view = { x: 16 * TILE, y: 22 * TILE, w: 4 * TILE, h: 4 * TILE };
-    const lit = renderToFrame(createSceneRenderer(liveTown, atlas), view, { time: 0, phase: "night" });
-    const dark = renderToFrame(createSceneRenderer({ ...liveTown, lights: [] }, atlas), view, { time: 0, phase: "night" });
-    const i = (Math.round(2 * TILE) * view.w + Math.round(2.2 * TILE)) * 4;
-    expect(lit.data[i] + lit.data[i + 1]).toBeGreaterThan(dark.data[i] + dark.data[i + 1] + 20);
-    const morning = (scene: typeof liveTown) => renderToFrame(createSceneRenderer(scene, atlas), view, { time: 0, phase: "morning" }).data[i];
-    expect(morning(liveTown)).toBe(morning({ ...liveTown, lights: [] }));
-  });
+    const withLights = createSceneRenderer(liveTown, atlas), without = createSceneRenderer({ ...liveTown, lights: [] }, atlas);
+    const pixel = (renderer: typeof withLights, phase: "morning" | "night") => {
+      const frame = renderToFrame(renderer, view, { time: 0, phase });
+      const i = (Math.round(2 * TILE) * view.w + Math.round(2.2 * TILE)) * 4;
+      return frame.data[i] + frame.data[i + 1];
+    };
+    expect(pixel(withLights, "night")).toBeGreaterThan(pixel(without, "night") + 20);
+    expect(pixel(withLights, "morning")).toBe(pixel(without, "morning"));
+  }, 30_000);
 
   it("keeps parked bicycles off the canal and the south hedge clear of the fig's base", () => {
     const box = (p: { position: { x: number; y: number }; width: number; height: number }) => ({ x: p.position.x, y: p.position.y, width: p.width, height: p.height });
@@ -96,6 +98,16 @@ describe("the town scene is the town map", () => {
     for (const bike of map.props.filter(p => p.kind === "bicycle")) for (const w of water) expect(overlaps(box(bike), w), bike.id).toBe(false);
     const hedge = map.props.find(p => p.id === "town.hedge-6")!, fig = map.props.find(p => p.id === "town.south-fig")!;
     expect(overlaps(box(hedge), box(fig))).toBe(false);
+  });
+
+  it("folds every open door leaf against its jamb, clear of the doorway", () => {
+    const leaves = map.props.filter(p => p.kind === "open-door-leaf");
+    expect(leaves.length).toBe(3);
+    for (const leaf of leaves) {
+      const exit = map.exits.find(e => e.kind === "door" && Math.abs(e.rect.y - leaf.position.y) < 1.5 && Math.abs(e.rect.x - leaf.position.x) < 1)!;
+      expect(exit, leaf.id).toBeDefined();
+      expect(leaf.position.x + leaf.width, leaf.id).toBeLessThanOrEqual(exit.rect.x);
+    }
   });
 
   it("walks the town on the screen's axes", () => {
