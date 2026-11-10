@@ -8,7 +8,7 @@
  */
 import { defineSprites, type Px } from "../../kit/index.ts";
 import { grid, part, selout, tube, type Ramp } from "./_helpers.ts";
-import { bowl, plate, RIMS, steamer, surface, type BodyPattern } from "./_ware.ts";
+import { bowl, plate, RIMS, steamer, surface, tumbler, type BodyPattern } from "./_ware.ts";
 
 const DOUGH_KEY = { c: "oak2", o: "wood3", W: "white", "5": "cream5", "4": "cream4", "3": "cream3", "2": "cream2", g: "cream3" } as const;
 const FRIED: Ramp = ["orange1", "gold2", "gold3", "gold4", "gold5"];
@@ -44,10 +44,21 @@ const MINI_DUMPLING = [
   ".o...o.",
 ];
 
-function steamedBuns(p: Px) {
-  const basket = part(24, 18, (q) => steamer(q, 12, 9, 11, 4.5, 5, "back", [5, 17]));
+function steamedBuns(p: Px, eaten = false) {
+  const basket = part(24, 18, (q) => {
+    steamer(q, 12, 9, 11, 4.5, 5, "back", [5, 17]);
+    // Half-finished: the liner shows where two buns were, with a torn scrap of skin left on it.
+    if (eaten) q.over(() => {
+      for (let y = 4; y < 12; y++) for (let x = 2; x < 22; x++) {
+        const c = q.get(x, y);
+        if ((c === "bamboo2" || c === "bamboo1") && y > 5) q.px(x, y, y === 6 ? "cream3" : "cream4");
+      }
+      q.px(6, 7, "cream5").px(7, 7, "white").px(6, 8, "cream3");
+    });
+  });
   p.blit(selout(basket, "bamboo1", "bamboo2"), 0, 0);
-  for (const [x, y] of [[2, 2], [13, 2], [7, 5]] as const) p.blit(part(9, 7, (q) => grid(q, 0, 0, MINI_BUN, DOUGH_KEY)), x, y);
+  const spots = eaten ? ([[12, 4]] as const) : ([[2, 2], [13, 2], [7, 5]] as const);
+  for (const [x, y] of spots) p.blit(part(9, 7, (q) => grid(q, 0, 0, MINI_BUN, DOUGH_KEY)), x, y);
   steamer(p, 12, 9, 11, 4.5, 5, "front");
 }
 
@@ -59,18 +70,26 @@ function mantouPlate(p: Px) {
   selout(p, "blue2", "blue3");
 }
 
+/** A small peeled tea egg standing up: a clean egg shape netted with crisp brown cracks. 9×11. */
+const MINI_TEA_EGG = [
+  "...ccc...",
+  "..c5hho..",
+  ".c5hWh4o.",
+  ".c5hv54o.",
+  "c55v5v44o",
+  "c5v555v4o",
+  "c4v45v43o",
+  "o44v4V33o",
+  ".o4V4332o",
+  "..o3322o.",
+  "...ooo...",
+];
+
 function teaEggs(p: Px) {
-  plate(p, 11, 9, 10, 4.2, { rim: RIMS.wave, well: 0.7 });
-  p.ellipse(11.5, 10, 6, 2, "wood2");
-  grid(p, 3, 3, [
-    "..cccc..",
-    ".chhv5o.",
-    "c5vh5v4o",
-    "c45v4v3o",
-    ".o3v32o.",
-    "..oooo..",
-  ], { c: "wood3", o: "brown1", h: "cream5", "5": "cream4", "4": "oak5", "3": "oak4", "2": "oak3", v: "wood4" });
-  grid(p, 11, 5, [
+  plate(p, 11, 10, 10, 4.2, { rim: RIMS.plain, well: 0.7 });
+  p.over(() => { p.ellipse(7, 12, 4, 1.2, "blue5"); p.ellipse(15, 12.5, 4.5, 1.2, "blue5"); });
+  grid(p, 2, 1, MINI_TEA_EGG, { c: "oak2", o: "wood2", h: "cream5", W: "white", "5": "cream5", "4": "cream4", "3": "oak5", "2": "oak4", v: "oak3", V: "wood4" });
+  grid(p, 11, 6, [
     "..cccc..",
     ".cWwwbo.",
     "cbwyywbo",
@@ -81,22 +100,16 @@ function teaEggs(p: Px) {
   selout(p, "blue2", "blue3");
 }
 
-/** The milk bowl's pattern at table scale: a line under the lip, a row of blooms, a foot band. */
-const smallPeony = (depth: number): BodyPattern => (u, t, lit) => {
-  const py = t * depth, ink = lit ? "blue3" : "blue2";
-  if (py > 0.8 && py < 1.8) return ink;
-  if (py > 3.2 && py < 5.2 && Math.abs(((u + 1) * 3) % 1 - 0.5) < 0.18) return lit ? "blue2" : "blue1";
-  if (py > 3.6 && py < 4.8 && Math.abs(((u + 1) * 3) % 1 - 0.5) < 0.34) return ink;
-  if (py > depth - 1) return ink;
-  return undefined;
-};
-
+/** Soy milk in a ribbed glass on a saucer, the spoon standing in it; no bowl, so it never reads as congee. */
 function soyMilk(p: Px) {
-  bowl(p, 11, 5, 10, 3.8, 9, { belly: 0.8, body: smallPeony(9) });
-  surface(p, 11.3, 5.6, 8.4, 2.6, ["cream3", "cream4", "cream5"]);
-  p.hline(5, 5, 3, "white");
-  grid(p, 14, 0, ["...oo", "..obo", ".obo.", "obWo.", ".oo.."], { o: "blue2", b: "blue3", W: "white" });
-  selout(p, "blue2", "blue3");
+  plate(p, 10, 17, 9, 3, { rim: RIMS.banded, well: 0.6, thick: 1 });
+  p.over(() => p.ellipse(9.5, 17.5, 4.5, 1.1, "blue5"));
+  // The spoon's handle, standing up out of the glass behind the rim.
+  grid(p, 11, 0, ["..oo", ".obo", "obo.", "ob.."], { o: "blue2", b: "white" });
+  p.blit(tumbler(20, 21, 9.5, 4, 17, 4.6, 3.9, 1.6, { headroom: 1.5, base: 2, ribs: 2, fill: ["cream3", "cream4", "cream5", "white"] }), 0, 0);
+  p.px(6, 4, "white").px(7, 4, "white").px(11, 5, "cream3");
+  // A bead of milk down the outside.
+  p.px(14, 5, "cream5").px(14, 6, "cream4").px(14, 7, "cream5").px(14, 8, "cream4");
 }
 
 /** The congee bowl at table scale: a solid blue collar, a hairline, a single carp. */
@@ -119,42 +132,55 @@ function congee(p: Px) {
   selout(p, "blue2", "blue3");
 }
 
-function friedDough(p: Px) {
+function friedDough(p: Px, eaten = false) {
   // A sheet of greaseproof paper with one oil spot showing through.
   p.poly([[1, 6], [24, 2], [27, 9], [4, 13]], "cream5");
   p.over(() => { p.poly([[4, 13], [27, 9], [27, 10], [4, 14]], "cream3"); p.ellipse(20, 9, 2, 1, "oak5"); });
+  // Half-finished: one stick gone, the other bitten short, crumbs of crust on the paper.
+  const end = eaten ? 15 : 24;
   const sticks = part(28, 14, (q) => {
-    tube(q, [[3.5, 9], [24, 5]], (t) => 1.9 + 0.35 * Math.sin(t * 27), FRIED, [0.1, 0.34, 0.62, 0.88]);
-    tube(q, [[3, 6.5], [23.5, 2.5]], (t) => 1.9 + 0.35 * Math.sin(t * 27 + 2), FRIED, [0.1, 0.34, 0.62, 0.88]);
-    q.over(() => { for (let x = 4; x < 23; x++) q.px(x, Math.round(7.9 - (x - 3.5) * 0.195), x % 4 === 0 ? "gold1" : "orange1"); });
+    tube(q, [[3.5, 9], [end, 9 - (end - 3.5) * 0.195]], (t) => 1.9 + 0.35 * Math.sin(t * 27), FRIED, [0.1, 0.34, 0.62, 0.88]);
+    if (!eaten) tube(q, [[3, 6.5], [23.5, 2.5]], (t) => 1.9 + 0.35 * Math.sin(t * 27 + 2), FRIED, [0.1, 0.34, 0.62, 0.88]);
+    if (!eaten) q.over(() => { for (let x = 4; x < 23; x++) q.px(x, Math.round(7.9 - (x - 3.5) * 0.195), x % 4 === 0 ? "gold1" : "orange1"); });
+    // The bitten end: airy pale crumb.
+    if (eaten) q.over(() => q.px(end - 1, 6, "cream4").px(end - 1, 7, "gold5").px(end - 2, 7, "cream4").px(end - 1, 8, "gold4"));
     selout(q, "wood2", "gold1");
   });
   p.blit(sticks, 0, 0);
+  if (eaten) p.px(19, 8, "gold3").px(21, 6, "gold2").px(22, 7, "gold4");
 }
 
-function dumplings(p: Px) {
+function dumplings(p: Px, eaten = false) {
   plate(p, 21.5, 3.6, 4.2, 1.8, { rim: RIMS.plain, well: 0.7, thick: 1 });
   p.ellipse(21.7, 3.7, 2.6, 1, "brown1");
   p.px(23, 3, "red3");
   plate(p, 12, 9, 11.5, 4.8, { rim: RIMS.banded, well: 0.68 });
-  for (const [x, y] of [[3, 4], [9, 3], [15, 4], [5, 8], [11, 8], [17, 8]] as const)
-    p.blit(part(7, 5, (q) => grid(q, 0, 0, MINI_DUMPLING, { ...DOUGH_KEY, g: "cream3" })), x, y);
+  // Half-finished: three left, a smear of vinegar where the others were dipped and dragged.
+  if (eaten) p.over(() => p.rows(13, 7, [".sss..", "sSSsss", "..ss.."], { s: "wood3", S: "wood2" }));
+  const spots = eaten ? ([[3, 4], [9, 3], [5, 8]] as const) : ([[3, 4], [9, 3], [15, 4], [5, 8], [11, 8], [17, 8]] as const);
+  for (const [x, y] of spots) p.blit(part(7, 5, (q) => grid(q, 0, 0, MINI_DUMPLING, { ...DOUGH_KEY, g: "cream3" })), x, y);
   selout(p, "blue2", "blue3");
 }
 
 export default defineSprites({
   /** 包子: three buns in a small bamboo steamer with its lid off. */
-  "food/bun": { w: 24, h: 18, anchor: [12, 17], draw: steamedBuns },
+  "food/bun": { w: 24, h: 18, anchor: [12, 17], draw: (p) => steamedBuns(p) },
   /** 馒头: two plain steamed breads on the dotted plate. */
   "food/bread": { w: 24, h: 16, anchor: [12, 15], draw: mantouPlate },
-  /** 鸡蛋: a whole and a halved tea egg in the wave-rim dish with a little tea. */
-  "food/egg": { w: 22, h: 15, anchor: [11, 14], draw: teaEggs },
-  /** 豆浆: soy milk in the peony bowl, spoon in. */
-  "food/milk": { w: 22, h: 19, anchor: [11, 18], draw: soyMilk },
+  /** 鸡蛋: a whole tea egg standing and a halved one in a plain dish. */
+  "food/egg": { w: 22, h: 16, anchor: [11, 15], draw: teaEggs },
+  /** 豆浆: soy milk in a ribbed glass on a saucer, spoon standing in it. */
+  "food/milk": { w: 20, h: 21, anchor: [10, 20], draw: soyMilk },
   /** 粥: congee in the carp bowl with egg and scallion. */
   "food/porridge": { w: 24, h: 18, anchor: [12, 17], draw: congee },
   /** 油条: a twinned pair of fried dough sticks on greaseproof paper. */
-  "food/youtiao": { w: 28, h: 15, anchor: [14, 14], draw: friedDough },
+  "food/youtiao": { w: 28, h: 15, anchor: [14, 14], draw: (p) => friedDough(p) },
+  /** Mid-meal: one bun left on the liner. */
+  "food/bun-eaten": { w: 24, h: 18, anchor: [12, 17], draw: (p) => steamedBuns(p, true) },
+  /** Mid-meal: one stick left, bitten short. */
+  "food/youtiao-eaten": { w: 28, h: 15, anchor: [14, 14], draw: (p) => friedDough(p, true) },
+  /** Mid-meal: three dumplings left and a vinegar smear. */
+  "food/dumpling-eaten": { w: 26, h: 16, anchor: [12, 15], draw: (p) => dumplings(p, true) },
   /** 饺子: six dumplings on the banded plate, a dish of black vinegar beside. */
-  "food/dumpling": { w: 26, h: 16, anchor: [12, 15], draw: dumplings },
+  "food/dumpling": { w: 26, h: 16, anchor: [12, 15], draw: (p) => dumplings(p) },
 });

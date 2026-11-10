@@ -3,7 +3,7 @@
  * Blue-and-white porcelain plates and bowls, each with its own pattern, and bamboo steamers.
  * Everything is seen from above and in front, lit from the upper left.
  */
-import { type Color, type Px } from "../../kit/index.ts";
+import { Px, type Color } from "../../kit/index.ts";
 import { inEllipse, type Ramp } from "./_helpers.ts";
 
 /** Where a pixel sits on a plate's rim: angle round the plate (0 = right, π/2 = front) and r from well (0) to edge (1). */
@@ -141,10 +141,11 @@ const BAMBOO: Ramp = ["bamboo1", "bamboo2", "bamboo3", "bamboo4", "bamboo5"];
  * `back` draws the band, rim and dark well; `front` redraws only the near half of the rim so it
  * can sit in front of whatever is inside. `binds` are the x positions of rattan lashings.
  */
-export function steamer(q: Px, cx: number, cy: number, rx: number, ry: number, depth: number, which: "back" | "front", binds: readonly number[] = []): void {
-  const lip = Math.max(1.5, rx * 0.08);
+export function steamer(q: Px, cx: number, cy: number, rx: number, ry: number, depth: number, which: "back" | "front", binds: readonly number[] = [], lipWidth?: number): void {
+  const lip = lipWidth ?? Math.max(1.5, rx * 0.08);
   const inRim = (x: number, y: number) => inEllipse(cx, cy, rx, ry, x, y);
-  const inWell = (x: number, y: number) => inEllipse(cx, cy + 0.4, rx - lip, ry - lip * (ry / rx) - 0.4, x, y);
+  // The rim reads as a strip with a visible top face, so its near edge keeps most of its width.
+  const inWell = (x: number, y: number) => inEllipse(cx, cy + 0.4, rx - lip, ry - lip * 0.75 - 0.4, x, y);
   if (which === "back") {
     for (let y = Math.floor(cy); y <= Math.ceil(cy + ry + depth); y++)
       for (let x = Math.floor(cx - rx); x <= Math.ceil(cx + rx); x++) {
@@ -183,7 +184,7 @@ export function steamer(q: Px, cx: number, cy: number, rx: number, ry: number, d
       if (!inRim(x, y) || inWell(x, y)) continue;
       if (which === "front" && y + 0.5 < cy) continue;
       const u = (x + 0.5 - cx) / rx, v = (y + 0.5 - cy) / ry;
-      const inner = inEllipse(cx, cy + 0.2, rx - lip * 0.5, ry - lip * 0.5 * (ry / rx), x, y);
+      const inner = inEllipse(cx, cy + 0.2, rx - lip * 0.5, ry - lip * 0.4, x, y);
       let c: Color = v < 0 ? (u < 0.35 ? "bamboo5" : "bamboo4") : u < 0.5 ? "bamboo4" : "bamboo3";
       if (inner && v > 0) c = u < 0.5 ? "bamboo5" : "bamboo4";
       if (inner && v <= 0) c = "bamboo3";
@@ -192,4 +193,71 @@ export function steamer(q: Px, cx: number, cy: number, rx: number, ry: number, d
   if (which === "back") for (let y = Math.floor(cy - ry); y <= Math.ceil(cy + ry); y++)
     for (let x = Math.floor(cx - rx); x <= Math.ceil(cx + rx); x++)
       if (inWell(x, y)) q.px(x, y, inEllipse(cx + 1.5, cy + 1.5, rx - lip - 1.5, ry - lip - 1, x, y) ? "bamboo2" : "bamboo1");
+}
+
+export type TumblerOptions = {
+  /** Px of empty glass between the rim and the milk. */
+  headroom: number;
+  /** Px of thick solid glass at the bottom. */
+  base: number;
+  /** Ridge spacing for the ribbed glass, in px. */
+  ribs: number;
+  /** [shade, mid, light, highlight] of what fills the glass. */
+  fill: Ramp;
+};
+
+/**
+ * A tall ribbed glass tumbler, slightly tapered, rim at `top` and foot at `bottom` (pixel rows),
+ * radii rxTop/rxBot, ellipse depth ry. Filled to `headroom` below the rim. The glass itself is
+ * translucent (`p.faded`); what it holds is solid. Draws onto its own canvas, outlined.
+ */
+export function tumbler(w: number, h: number, cx: number, top: number, bottom: number, rxTop: number, rxBot: number, ry: number, o: TumblerOptions): Px {
+  const q = new Px(w, h);
+  const rxAt = (y: number) => rxTop + (rxBot - rxTop) * Math.max(0, Math.min(1, (y - top) / (bottom - top)));
+  const ryBot = ry * (rxBot / rxTop);
+  const inside = (x: number, y: number) => {
+    const py = y + 0.5;
+    if (py >= top && py <= bottom && Math.abs(x + 0.5 - cx) <= rxAt(py)) return true;
+    return inEllipse(cx, top, rxTop, ry, x, y) || inEllipse(cx, bottom, rxBot, ryBot, x, y);
+  };
+  const milkTop = top + o.headroom, milkBottom = bottom - o.base;
+  const [shade, mid, light, high] = o.fill;
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+    if (!inside(x, y)) continue;
+    const py = y + 0.5, r = rxAt(py) - 1, u = (x + 0.5 - cx) / r;
+    const inMilk = Math.abs(u) <= 1 && py >= milkTop && (py <= milkBottom || inEllipse(cx, milkBottom, r, ryBot - 0.4, x, y));
+    if (inMilk) {
+      let c = u < -0.55 ? light : u < 0.3 ? mid : shade;
+      // Ribs: each ridge of the glass bends the light, a step lighter on the sunny side, darker round the back.
+      const rib = Math.round((u + 1) * r) % o.ribs === 0;
+      if (rib) c = u < 0.3 ? (c === mid ? light : high) : u < 0.7 ? shade : mid;
+      if (u < -0.62 && u > -0.85) c = high;
+      q.px(x, y, c);
+    } else q.faded(py > milkBottom ? 0.6 : 0.35, () => q.px(x, y, py > milkBottom ? "blue6" : "blue6"));
+  }
+  // The milk's surface: shade under the far rim, then a sheen.
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+    const r = rxAt(milkTop) - 1;
+    if (!inEllipse(cx, milkTop, r, ry - 0.5, x, y)) continue;
+    q.px(x, y, inEllipse(cx + r * 0.12, milkTop + ry * 0.35, r, ry - 0.5, x, y) ? mid : shade);
+  }
+  // Glass: a long highlight down the left, the rim's lip (solid in front, faint behind), the thick base.
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+    if (!inside(x, y)) continue;
+    const py = y + 0.5, d = x + 0.5 - (cx - rxAt(py));
+    if (d > 1 && d < 2.2 && py > top + 1 && py < bottom - 1) q.faded(0.85, () => q.px(x, y, "white"));
+    const onRim = inEllipse(cx, top, rxTop, ry, x, y) && !inEllipse(cx, top, rxTop - 1, ry - 1, x, y);
+    if (onRim) py > top ? q.px(x, y, "white") : q.faded(0.6, () => q.px(x, y, "white"));
+    if (py > milkBottom + 1 && py < bottom && Math.abs(x + 0.5 - cx) < rxBot - 2 && Math.round(py) === Math.round(bottom - 1)) q.faded(0.7, () => q.px(x, y, "white"));
+  }
+  // Outline: the glass edge, darker round the shaded side and foot.
+  const hits: [number, number, Color][] = [];
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+    if (q.solid(x, y)) continue;
+    const r = q.solid(x - 1, y), l = q.solid(x + 1, y), u = q.solid(x, y + 1), d = q.solid(x, y - 1);
+    if (!(r || l || u || d)) continue;
+    hits.push([x, y, (l || u) && !r && !d && x < cx ? "steel3" : "steel2"]);
+  }
+  for (const [x, y, c] of hits) q.px(x, y, c);
+  return q;
 }
