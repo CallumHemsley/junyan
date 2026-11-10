@@ -1,7 +1,7 @@
 ---
 id: 149
 title: Rebuild the game graphics from the ground up as detailed top-down pixel art
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-09
@@ -23,3 +23,5 @@ Callum: the graphics are a proof of concept and worse than before. Rebuild them 
 - Owner: Claude Code (orchestrator, art direction). Branch `claude/0149-pixel-art-foundation`; worktree `/Users/callumhemsley/Personal/junyan-pixel-art`; port 5190 strict.
 - Style bible: [[design/pixel-art]]. Proposed decision: [[decisions/0005-top-down-pixel-art]].
 - Worker tickets: 0150 engine, 0151 architecture tiles, 0152 kitchen, 0153 furniture, 0154 decor, 0155 food, 0156 characters. Workers branch from this ticket's foundation commit and merge back here after review.
+
+- Done 2026-11-10: merged to main with the pixel cafe (Shanghai bistro) and the 0158–0161 polish pass. Learned: art as deterministic code over one palette lets workers iterate by rendering PNGs headless; depth sorting of table items and seated actors needs explicit sortY.

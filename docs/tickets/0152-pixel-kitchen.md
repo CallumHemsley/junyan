@@ -1,7 +1,7 @@
 ---
 id: 152
 title: Draw the cafe kitchen and service counter
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-09
@@ -26,3 +26,5 @@ The kitchen is where the food comes from and the liveliest part of the room.
 - Review renders: `output/pixel/kitchen-sheet.png`, `output/pixel/steam-sheet.png`, `output/pixel/kitchen-compose.png` (command in the round-1 report).
 - 2026-11-09, round 2 (after the coordinator's review): the leg of the L is now three boards with seams, butt joints and nails, end grain at the wall end, a lit west bevel and a shaded east edge, and different wear on each piece (a slide track, cup rings, knife crosshatch, a spatula scorch, the kettle ring). `counter-v-mid-c` is new. The corner is a mitre, and the slide track swings round it. Steamer tiers have a two-row proud lip, a shadow under it and a dark gap between tiers. The lid weave is only suggested now, inside a brighter hoop. Bowls are tapered piles (`bowlStack`). The sink rack holds overlapping plates and bowls with blue rims; the basin has a dark water line and a window reflection; the curtain's check is a step calmer. Steam body is more opaque with soft bright cores. The fridge door has a window reflection, a darker lower door and an oval chrome badge.
 - 2026-11-10, round 3 (French Concession bistro): the service counter is now a bistro bar. Every id, anchor and footprint is kept. The run has a zinc top (soft patina, a rolled bead polished bright where forearms rest, dents, a glass ring, a scratch, a soldered patch, a dull slide track), a dark polished front of mitred raised panels with a lit top-left bevel, and a brass foot rail on cast brackets, rubbed bright where shoes rest and tarnished elsewhere, with ball ends. The leg of the L and the corner are a white marble slab with grey veins, tea rings, a chip, a filled crack and a soy blot; a brass cover strip runs where marble meets zinc. The stories stay: the replaced panel (now a redder rose wood), scuffs under the rail, the cloth on the hook. The stove line and wok splash-back are retiled in white metro tile with a black pencil course.
+
+- Done 2026-11-10: merged to main with the pixel cafe (Shanghai bistro) and the 0158–0161 polish pass. Learned: art as deterministic code over one palette lets workers iterate by rendering PNGs headless; depth sorting of table items and seated actors needs explicit sortY.

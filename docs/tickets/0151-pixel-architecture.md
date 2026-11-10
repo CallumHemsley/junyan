@@ -1,7 +1,7 @@
 ---
 id: 151
 title: Draw the cafe architecture tiles: floors, walls, windows, doorway
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-09
@@ -35,3 +35,5 @@ The room shell sets the mood of every screenshot.
   - Windows: 68×47, anchor [34, 85] (top on wall row 11, sill under row 57): green-painted frames, fine bars, transom (`window-lattice`) or segmental arch with fanlight (`-b`), linen café curtain on a brass rod; sill stories kept; mended bar on `-b`.
   - New: `wall/mirror-long` 96×40 (anchor [48, 80]), `wall/lamp-globe` 16×25 ([8, 82]), `wall/menu-board-tall` 30×44 ([15, 82], overlay x 4–25, y 4–37), `wall/awning-edge` 64×12 (layer over, [32, 12]). `wall/post` is now a fluted dark pilaster. `tile/door-threshold` has a marble sill and brass kick strip.
   - Review: `bash output/pixel/room.png.sh`, `bash output/pixel/room-b.png.sh` (bistro furniture from 0153 was not on this branch; composes use table-round and the older chairs).
+
+- Done 2026-11-10: merged to main with the pixel cafe (Shanghai bistro) and the 0158–0161 polish pass. Learned: art as deterministic code over one palette lets workers iterate by rendering PNGs headless; depth sorting of table items and seated actors needs explicit sortY.

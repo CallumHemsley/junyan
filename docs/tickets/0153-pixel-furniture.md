@@ -1,7 +1,7 @@
 ---
 id: 153
 title: Draw the cafe dining furniture and table settings
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-09
@@ -34,3 +34,5 @@ Tables are where customers sit and where most play happens.
   - `furn/sideboard` is now the bistro dresser: 64×86, anchor [32, 84], marble top, glazed upper doors full of Chinese crockery.
   - Kept as they were: the Chinese stools, the earlier chairs, `table-small`, `table-round`, the table-top set, the condiment sets, `coat-rack`, `water-dispenser`, `umbrella-stand`, `newspaper-rack`, `bin`.
   - Compose: `output/pixel/furn-bistro-corner.png` at 2× (play scale), rendered with `_scene.ts`.
+
+- Done 2026-11-10: merged to main with the pixel cafe (Shanghai bistro) and the 0158–0161 polish pass. Learned: art as deterministic code over one palette lets workers iterate by rendering PNGs headless; depth sorting of table items and seated actors needs explicit sortY.

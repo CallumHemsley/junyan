@@ -1,7 +1,7 @@
 ---
 id: 155
 title: Draw the breakfast foods and tableware
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-09
@@ -32,3 +32,5 @@ Food is what the player carries and what customers ask for; it must be appetisin
   - `food/plate-empty` (now 31×14): chopsticks across the near rim so the vinegar smear and crumbs show. `food/bowl-empty`: a rice-water tide line, a cloudy puddle and a spoon left in it.
   - `fx/steam-wisp`: one stem, thick and bright at the base, curling over and thinning; no fork.
   - New: `food/bun-eaten`, `food/youtiao-eaten`, `food/dumpling-eaten` (one bun left; one stick bitten short; three dumplings and a vinegar smear).
+
+- Done 2026-11-10: merged to main with the pixel cafe (Shanghai bistro) and the 0158–0161 polish pass. Learned: art as deterministic code over one palette lets workers iterate by rendering PNGs headless; depth sorting of table items and seated actors needs explicit sortY.

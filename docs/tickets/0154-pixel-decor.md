@@ -1,7 +1,7 @@
 ---
 id: 154
 title: Draw the cafe decor and small life
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-09
@@ -41,3 +41,5 @@ Lived-in detail is the difference between a proof of concept and a place.
   Everything earlier stays. 45 decor sprites.
 - Learned (palm): an `autoOutline` over pinnate leaflets fills the gaps between them and turns every frond into a solid blade. Draw the fronds after the outline, inside `p.under()`, and give each a bare stalk before the leaflets start.
 - Learned: draw translucent puddles inside `p.under()` after outlining. Otherwise `autoOutline` treats faded pixels as solid and rings them in ink.
+
+- Done 2026-11-10: merged to main with the pixel cafe (Shanghai bistro) and the 0158–0161 polish pass. Learned: art as deterministic code over one palette lets workers iterate by rendering PNGs headless; depth sorting of table items and seated actors needs explicit sortY.

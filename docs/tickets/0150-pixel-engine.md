@@ -1,7 +1,7 @@
 ---
 id: 150
 title: Build the top-down pixel scene engine
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-09
@@ -41,3 +41,5 @@ All twelve deliverables built; the status is left at `doing` for the orchestrato
 - **Actor warnings.** A wholly missing character warns once, not once per action and facing.
 - **Art scale doubling (TILE 16 → 32).** No literal 16 remains in the engine. Pixel constants that are really tile fractions now derive from `TILE`: walk stride `WALK_TILES_PER_FRAME`, shaft edge softness, mote sway, inset and size (`TILE/16` px squares), and debug cross size. Camera targets stay in tiles, so the zoom halves on its own. Tests derive every pixel position from `TILE`, and the frame-hash pin is keyed by `TILE`.
 - **Performance at 4× the pixels.** The ambient multiply over every pixel dominated (about 4 ms at 1280×800). Lights now write their float buffers only inside their boxes and record a lit span per row; everything outside the spans goes through a per-phase lookup table, one 32-bit word at a time. The shadow mask is cleared and blended only inside its bounding box, and the void fill runs only when the view reaches past the scene. Output is pixel-identical: the old pin reproduced before re-pinning.
+
+- Done 2026-11-10: merged to main with the pixel cafe (Shanghai bistro) and the 0158–0161 polish pass. Learned: art as deterministic code over one palette lets workers iterate by rendering PNGs headless; depth sorting of table items and seated actors needs explicit sortY.

@@ -1,7 +1,7 @@
 ---
 id: 157
 title: Play the waiter loop in the new pixel cafe
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-10
@@ -44,3 +44,5 @@ The cafe is redrawn as top-down pixel art (tickets 0149–0156) and composed as 
 - Customers appear and leave seated; presence does not model walking in or out, so no customer walk.
 - The chalkboard's `sign/board` mark has no DOM text yet (no content line for it).
 - The waiter's tray sprite carries its own drawn steamer and soy milk, not the actual tray contents.
+
+- Done 2026-11-10: merged to main with the pixel cafe (Shanghai bistro) and the 0158–0161 polish pass. Learned: art as deterministic code over one palette lets workers iterate by rendering PNGs headless; depth sorting of table items and seated actors needs explicit sortY.

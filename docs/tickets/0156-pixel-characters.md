@@ -1,7 +1,7 @@
 ---
 id: 156
 title: Draw the waiter and the regulars
-status: doing
+status: done
 priority: high
 type: feature
 created: 2026-11-09
@@ -25,3 +25,5 @@ People carry the game's warmth; they must be expressive and recognisable at 32×
   - Seating: sit frames put the hips about 21px above the seat anchor; place the sitter at the seat anchor + (0,-4) (chairs per `furn/chairs.ts`) and draw them after the seat. `compose.ts` sorts by anchor y only, so it draws a stool over its sitter; review composes used a scratch copy with a sort bias.
   - Learned: at 32×64 a profile arm only reads if it hangs at the back half so the ink outline defines it; front views drawn as a mirrored half plus sun-side `darken` keep the light consistent; the back-view head must narrow to the neck below the ears or it reads as a bald band.
   - Known weak: profile hair silhouettes are close to one another (the bun and ponytail carry identity there); front walk is subtle (feet and hands only move 1–2px); 林姐's seated skirt from the front and 小周's wave read better than the seated profile poses.
+
+- Done 2026-11-10: merged to main with the pixel cafe (Shanghai bistro) and the 0158–0161 polish pass. Learned: art as deterministic code over one palette lets workers iterate by rendering PNGs headless; depth sorting of table items and seated actors needs explicit sortY.
