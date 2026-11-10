@@ -20,4 +20,21 @@ The cafe is redrawn as top-down pixel art (tickets 0149–0156) and composed as 
 
 ## Notes
 
-- Owner: Claude worker (Opus). Branch `claude/0157-pixel-cafe-integration`; worktree `/Users/callumhemsley/Personal/junyan-px-integration`; port 5192 strict. Silent: no audio, headless browser only.
+- Owner: Claude worker (Opus). Branch `claude/0157-pixel-cafe-integration`; worktree `/Users/callumhemsley/Personal/junyan-px-integration`; port 5192 strict (preview 5193 for production journeys). Silent: no audio, headless browser only. Merged `claude/0149-pixel-art-foundation` (b348a61) for the round-2 food and furniture.
+
+### Progress (2026-11-10)
+
+- **One coordinate system.** `src/world/restaurant.ts` is re-authored in the cafe scene's tile units (22×14): the scene's walkable rect, its 45 compiled colliders as data (tables keep their ids `table-5-9`…), the kitchen anchor at the `pickup` mark, a service spot beside each table, the `to-town` exit in the street door, the `from-town` entrance just inside it. All stable ids are unchanged, so game rules, saves and transitions work as before; the game's own abstract `TABLES`/`KITCHEN` positions were never tied to the map. `src/world/pixel/cafe-map.test.ts` fails if the scene's colliders, walkable rect or marks drift from the map.
+- **Seam.** `src/world/pixel/maps.ts` (`isPixelMap`, `cardinalDirections`, `PIXEL_WALK_SPEED`; pure, also imported by Playwright helpers). `src/world/pixel/cafe.ts` (pure: the live scene without demo cast or leftovers, cook, seated customers from `restaurantPresence`, dishes from delivered orders, waiter actor, light mapping, tap destination, service facing). `src/world/pixel/CafeView.tsx` (thin React over `PixelView`). `WorldViewport` keeps all DOM UI, focus, targets, the path worker and the movement loop; on pixel maps it renders `CafeView` instead of the canvas, walks on the screen's axes at 3.2 tiles/s, and places the target cue with the camera's `toScreen`.
+- **Cafe scene.** Only change: the previous customers' leftover food in `SETTINGS` carries ids `remains/table-N-i`, so the live game can leave it out (`liveCafe`); tools still render the scene exactly as before.
+- **Engine.** `PixelView` redraws once when the view comes back on screen or the page becomes visible (a hidden canvas may be discarded). Tests 56/56.
+- **Camera.** The zoom is chosen from the whole viewport (`portraitTiles: 9` on phones), so opening a panel never rescales the room. A phone bottom sheet shrinks the view to what stays visible; a desktop side panel offsets the focus by half its width. Under reduced motion the clock is frozen (no steam or flicker) and the canvas only redraws on change.
+- **Food.** Up to three servings per table in per-table `DISH_SLOTS`, nearest the customer first, sorted with the table; once paid (`served`) the bun, youtiao and dumpling show their `-eaten` sprites.
+- **Journeys.** `e2e/world-journey.ts` reads the published `data-pixel-camera` (after it holds still) to tap the cafe, and its pad fallback walks the cafe's axes; `overnight-keyboard` steers with cardinal arrows; two hard-coded old coordinates in `overlay-focus` and `startup-focus` moved to the cafe's; `scene-scheduling` also counts the pixel view's full-frame `putImageData`; `avatar-heading` (the isometric avatar artwork) now restores in the town, which that artwork still draws, and leaves the cafe through its door. New `e2e/pixel-cafe.spec.ts` plays the loop and writes screenshots.
+- The isometric restaurant painter (`src/world/art/restaurant`, the restaurant branch of `painter.ts`, `restaurantCamera`) no longer draws anything in the game; its own tests use `src/world/art/restaurant/fixture.ts`. Removing it is follow-up work.
+
+### Known gaps
+
+- Customers appear and leave seated; presence does not model walking in or out, so no customer walk.
+- The chalkboard's `sign/board` mark has no DOM text yet (no content line for it).
+- The waiter's tray sprite carries its own drawn steamer and soy milk, not the actual tray contents.
