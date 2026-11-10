@@ -3,7 +3,7 @@
  * corner, carrying a small bamboo steamer (lid on) and a blue-and-white bowl of soy milk with a
  * porcelain spoon. Held in both hands at the bottom of the chest so the food never covers the face.
  */
-import { part, Z, type Part, type Piece } from "./_core.ts";
+import { part, Z, type Piece } from "./_core.ts";
 import { frontSide } from "./_rig.ts";
 
 const L = {
