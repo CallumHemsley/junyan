@@ -81,8 +81,9 @@ describe("wardStage with today's sprites", () => {
     }
   });
 
-  it("stands existing characters in for the cast, sitting on benches in the beds", () => {
-    const stage = wardStage(frame({ present: ["doctor", "nurse", "aunt"] }), today);
+  it("stands existing characters in for the cast, sitting on benches in the beds, when the ward art is missing", () => {
+    const withoutArt: HasSprite = (id) => today(id) && !/^(ward\/|char\/(patient|elder|doctor|nurse|aunt)\/)/.test(id);
+    const stage = wardStage(frame({ present: ["doctor", "nurse", "aunt"] }), withoutArt);
     expect(stage.actors.map((a) => a.id)).toEqual(["patient", "elder", "doctor", "nurse", "aunt"]);
     expect(stage.actors.every((a) => !["char/patient", "char/elder", "char/doctor", "char/nurse", "char/aunt"].includes(a.sprite))).toBe(true);
     expect(actor(stage.actors, "patient").action).toBe("sit");
