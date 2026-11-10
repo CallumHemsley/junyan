@@ -45,15 +45,16 @@ export function oakBoards(p: Px, seed: number, boards: readonly BoardSpec[]): vo
     for (let x = 0; x < T; x++) {
       const t = toneAt(x);
       p.vline(x, top, 7, t.face).px(x, top + 7, t.seam);
-      // The lip of the board catches the sun in broken runs.
-      if (hash(x >> 2, b, seed) > 0.45) p.px(x, top, t.light);
+      // The lip of the board catches the sun in broken runs, and the varnish holds a soft sheen below it.
+      if (hash(x >> 2, b, seed) > 0.3) p.px(x, top, t.light);
+      if (hash((x + 3) >> 3, b, seed + 5) > 0.4) p.px(x, top + 1, t.light);
     }
     // Grain: long quiet streaks that follow the board and drift a row once.
     const near = (x: number) => x < 1 || x > T - 2 || joints.some((j) => Math.abs(x - j) <= 1);
     for (let s = 0; s < (spec.grain ?? 3); s++) {
       const x0 = 1 + Math.floor(hash(s, b, seed + 7) * 22), len = 5 + Math.floor(hash(s, b, seed + 13) * 9);
       let y = top + 2 + Math.floor(hash(s, b, seed + 11) * 4);
-      const lit = hash(s, b, seed + 17) > 0.62, step = 2 + Math.floor(hash(s, b, seed + 19) * (len - 3));
+      const lit = hash(s, b, seed + 17) > 0.4, step = 2 + Math.floor(hash(s, b, seed + 19) * (len - 3));
       const drift = hash(s, b, seed + 23) > 0.5 ? 1 : -1;
       for (let i = 0; i < len; i++) {
         const x = x0 + i;
