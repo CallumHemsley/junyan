@@ -8,41 +8,118 @@ import { block } from "./_helpers.ts";
 
 /**
  * The long bevelled mirror, 96×40, in a gilt frame gone brown in the hollows. It has hung over the
- * banquette since the thirties: the silvering has foxed into dark spots at the corners, and it holds a
- * soft, cool reflection of the room opposite (plaster, the dark wainscot, the bright glazed door, a
- * globe lamp). Frame top on wall row 16.
+ * banquette since the thirties and nobody has dared re-silver it: the silver has darkened and foxed in
+ * from the edges, worst in the corners and along the bottom where the steam from the kitchen settles.
+ * What it reflects is only suggested: the bright street door opposite as a tall pale glow, the warm
+ * blur of a lit globe lamp, the dark wainscot low down, and two diagonal bands of window light on the
+ * glass. Frame top on wall row 16.
  */
 function mirror(p: Px) {
-  const w = 96, h = 40;
-  // Gilt frame: lit top and left edges, shaded bottom and right, a bright bead inside.
-  p.rect(0, 0, w, h, "gold2");
-  p.hline(0, 0, w, "gold3").vline(0, 0, h, "gold3").hline(1, 1, w - 2, "gold2").vline(1, 1, h - 2, "gold2");
-  p.hline(0, h - 1, w, "gold1").vline(w - 1, 0, h, "gold1").hline(1, h - 2, w - 2, "gold1").vline(w - 2, 1, h - 2, "gold1");
-  p.hline(3, 3, w - 6, "gold1").vline(3, 3, h - 6, "gold1").hline(3, h - 4, w - 6, "gold3").vline(w - 4, 3, h - 6, "gold3");
-  for (let x = 2; x < w - 2; x++) if (hash(x >> 3, 2, 5) > 0.6) p.px(x, 1, "gold4");
-  // Glass: the room opposite, reflected soft and cool. Bands top to bottom: cornice, plaster, wainscot.
-  const gx = 4, gy = 4, gw = w - 8, gh = h - 8;
+  const w = 96, h = 40, gx = 4, gy = 4, gw = w - 8, gh = h - 8;
+  const smooth = (a: number, b: number, v: number) => { const t = Math.max(0, Math.min(1, (v - a) / (b - a))); return t * t * (3 - 2 * t); };
+
+  // ── Glass. A brightness field over the reflection, quantised to a warm grey ramp in clean flat steps.
+  // Only the lamp's blur is dithered: checker seams on the slow steps read as stitching, not glass.
+  const RAMP: readonly Color[] = ["stone2", "stone3", "stone4", "stone5", "cream4", "cream5"];
+  const lamp = (x: number, y: number) => Math.exp(-(((x + 0.5 - 14) / 3.4) ** 2 + ((y + 0.5 - 9) / 2.6) ** 2));
+  const field = (x: number, y: number) => {
+    // The plaster opposite, calm and pale; its moulded rail and dark wainscot as a soft step down in
+    // the lower third; the round-headed street door opposite as a tall pale glow (x 56–64, its head
+    // from row 6); the lit globe lamp as a small warm blur.
+    const dx = x + 0.5 - 60, dy = y + 0.5 - 10.5;
+    const door = (dy < 0 ? Math.hypot(dx, dy) : Math.abs(dx)) - 4.5;
+    const room = 3.45 - 0.3 * (y / gh) - 1.3 * smooth(16, 22, y);
+    // The door's glazed upper light is daylight, flat and bright; its wooden lower panel only a little
+    // paler than the wainscot round it.
+    const inDoor = 1 - smooth(-0.4, 0.4, door), daylight = y < 20 ? 4.3 - room : 0.7;
+    return room + inDoor * daylight + 1.9 * lamp(x, y);
+  };
   for (let y = 0; y < gh; y++) for (let x = 0; x < gw; x++) {
-    let c: Color = y < 3 ? "stone4" : y < 20 ? "stone5" : y < 22 ? "stone4" : "stone3";
-    // The glazed street door, bright, and the frame of it.
-    if (x >= 52 && x < 66 && y >= 6 && y < gh) c = y < 8 || x === 52 || x === 65 || x === 58 || x === 59 ? "stone4" : "cream5";
-    // A globe lamp's glow and the soft dark shape of the hat stand.
-    if (((x + 0.5 - 24) / 3) ** 2 + ((y + 0.5 - 10) / 3) ** 2 <= 1) c = "cream5";
-    if (x >= 34 && x < 36 && y >= 9) c = "stone3";
-    if (x >= 32 && x < 38 && y >= 8 && y < 10) c = "stone3";
-    p.px(gx + x, gy + y, c);
+    const b = field(x, y);
+    const reach = lamp(x, y) > 0.12 ? 0.2 : 0;
+    const step = Math.floor(b + ((x + y) % 2 === 0 ? reach : -reach));
+    p.px(gx + x, gy + y, lamp(x, y) > 0.78 ? "gold5" : RAMP[Math.max(0, Math.min(RAMP.length - 1, step))]);
   }
-  // A long soft sheen across the glass, the mark of a good old mirror.
-  for (let i = 0; i < 18; i++) p.px(gx + 8 + i, gy + 20 - i, "steel6").px(gx + 9 + i, gy + 20 - i, "steel6");
-  for (let i = 0; i < 10; i++) p.px(gx + 70 + i, gy + 24 - i, "steel6");
-  // Bevel: a bright band along the top and left of the glass, a darker one bottom and right.
-  p.hline(gx, gy, gw, "white").vline(gx, gy, gh, "white").hline(gx + 1, gy + 1, gw - 2, "steel5").vline(gx + 1, gy + 1, gh - 2, "steel5");
-  p.hline(gx, gy + gh - 1, gw, "steel3").vline(gx + gw - 1, gy, gh, "steel3");
-  // Foxing: the silvering failed in dark ragged spots, heaviest at the corners.
-  const spots: readonly (readonly [number, number])[] = [[6, 6], [9, 8], [7, 27], [12, 29], [84, 6], [80, 8], [86, 27], [44, 29]];
-  for (const [x, y] of spots) block(p, x, y, hash(x, y, 3) > 0.5 ? [".s.", "sSs", ".s."] : ["ss.", "sSs"], { s: "stone3", S: "stone1" }, "foxing");
-  // Corner rosettes on the frame.
-  for (const [x, y] of [[0, 0], [w - 5, 0], [0, h - 5], [w - 5, h - 5]] as const) block(p, x, y, [".lll.", "lLmLl", "lmdml", "lLmLl", ".lll."], { l: "gold3", L: "gold4", m: "gold2", d: "gold1" }, "rosette");
+
+  // ── Two bands of window light lying diagonally across the glass, a broad one with a thin echo, and
+  // a fainter one far right, each fading out (dithered) before it reaches the top and bottom.
+  for (let y = 0; y < gh; y++) for (let x = 0; x < gw; x++) {
+    const d = x + (y >> 1), end = y < 3 || y > gh - 4, faint = y < 6 || y > gh - 7;
+    if (end && (x + y) % 2 === 1) continue;
+    if (d >= 30 && d <= 32) p.px(gx + x, gy + y, d === 30 ? "steel5" : "steel6");
+    else if (d === 35) p.px(gx + x, gy + y, "steel5");
+    else if ((d === 72 || d === 73) && (!faint || (x + y) % 2 === 0)) p.px(gx + x, gy + y, "steel5");
+  }
+
+  // ── Bevel: the glass edge catches the light along the top and left, falls dark bottom and right.
+  p.hline(gx, gy, gw, "steel6").vline(gx, gy, gh, "steel6");
+  p.hline(gx + 1, gy + gh - 1, gw - 1, "stone3").vline(gx + gw - 1, gy + 1, gh - 1, "stone3");
+
+  // ── Desilvering. The silver dims from the edges in: along each edge a shallow ragged margin that
+  // rises and falls a pixel at a time (deeper along the bottom, where the kitchen steam settles), and a
+  // ragged bloom in each corner. Dimmed glass is the local tone one step down (two in the deepest
+  // wear), so the reflection still shows through. Every worn pixel is joined to an edge: no speckle.
+  const DIM: Partial<Record<Color, Color>> = {
+    cream5: "stone5", cream4: "stone4", gold5: "cream4", stone5: "stone4", stone4: "stone3", stone3: "stone2",
+    stone2: "stone1", stone1: "stone1", steel6: "steel4", steel5: "steel4", steel4: "steel3", steel3: "stone2",
+  };
+  const dim = (x: number, y: number, times: number) => {
+    let c = p.get(gx + x, gy + y);
+    for (let i = 0; i < times && c; i++) c = DIM[c] ?? c;
+    if (c) p.px(gx + x, gy + y, c);
+  };
+  /** How far the wear reaches in from edge `side` (0 top, 1 left, 2 right, 3 bottom) at `along`. */
+  const bite = (side: number, along: number) => {
+    const a = along / 3, i = Math.floor(a), t = a - i;
+    const r = hash(i, side, 11) * (1 - t) + hash(i + 1, side, 11) * t;
+    return r * r * (side === 3 ? 3.2 : 2.4);
+  };
+  /** A ragged quarter-round bloom in each corner, each its own size. */
+  const BLOOM = [7, 4.5, 5.5, 8] as const; // top-left, top-right, bottom-left, bottom-right
+  const bloom = (x: number, y: number) => {
+    const k = (x < gw / 2 ? 0 : 1) + (y < gh / 2 ? 0 : 2);
+    const ex = x < gw / 2 ? x : gw - 1 - x, ey = y < gh / 2 ? y : gh - 1 - y;
+    const ragged = BLOOM[k] + (hash(Math.floor(Math.atan2(ey, ex) * 7), k, 13) - 0.5) * 3;
+    return ragged - Math.hypot(ex * 0.75, ey * 1.25);
+  };
+  const wear: [number, number, number][] = [];
+  for (let y = 0; y < gh; y++) for (let x = 0; x < gw; x++) {
+    const over = Math.max(bite(0, x) - y, bite(1, y) - x, bite(2, y) - (gw - 1 - x), bite(3, x) - (gh - 1 - y), bloom(x, y));
+    if (over > 0.5) wear.push([x, y, over > 3.5 ? 2 : 1]);
+  }
+  for (const [x, y, t] of wear) dim(x, y, t);
+  // Foxing: a few small ragged blots further in, each with a darker heart.
+  const FOX = [[".ss", "sSs", "ss."], ["ss.", "sSs", ".s."], ["sS", "ss"], [".s", "sS", "s."]] as const;
+  const fox: readonly (readonly [number, number, number])[] = [[8, 4, 0], [22, 2, 2], [17, 26, 1], [46, 27, 3], [65, 3, 1], [80, 8, 0], [83, 20, 2], [4, 16, 3]];
+  for (const [x, y, k] of fox) FOX[k].forEach((row, j) => [...row].forEach((ch, i) => { if (ch !== ".") dim(x + i, y + j, ch === "S" ? 2 : 1); }));
+
+  // ── Gilt frame, 4px: the outer moulding lit on its top and left faces and shaded bottom and right;
+  // the sight edge (the lip against the glass) the other way round, since it faces into the frame.
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+    const i = Math.min(x, y, w - 1 - x, h - 1 - y);
+    if (i > 3) continue;
+    const topLeft = w - 1 - x !== i && h - 1 - y !== i; // on the top or left side of the frame
+    const c: Color =
+      i === 0 ? (topLeft ? "gold3" : "wood2")
+      : i === 1 ? (topLeft ? "gold4" : "gold1")
+      : i === 2 ? "gold2"
+      : topLeft ? "gold1" : "gold3";
+    p.px(x, y, c);
+  }
+  // The gilding rubbed through to the brown bole in the hollow of the moulding, in short runs.
+  for (let x = 6; x < w - 6; x++) {
+    if (hash(x >> 2, 0, 31) > 0.78) p.px(x, 2, "gold1");
+    if (hash(x >> 2, 1, 31) > 0.7) p.px(x, h - 3, "gold1");
+  }
+  for (let y = 6; y < h - 6; y++) if (hash(y >> 2, 2, 31) > 0.75) p.px(w - 3, y, "gold1");
+  // Glints on the lit top-left of the frame.
+  p.hline(5, 1, 6, "gold5").vline(1, 5, 4, "gold5").px(40, 1, "gold5").px(41, 1, "gold5");
+  // Corner blocks with a carved rosette, and a small shell at the top centre.
+  for (const [x, y] of [[0, 0], [w - 5, 0], [0, h - 5], [w - 5, h - 5]] as const) {
+    const lit = x === 0 && y === 0;
+    block(p, x, y, [".lll.", "lLmLl", "lmdml", "lLmLl", ".lll."], { l: lit ? "gold4" : "gold3", L: lit ? "gold5" : "gold4", m: "gold2", d: "gold1" }, "rosette");
+  }
+  block(p, w / 2 - 4, 0, [".llLll.", "lLmLmLl", "lmdmdml", ".ddddd."].map((r) => r.padEnd(8, ".")), { l: "gold3", L: "gold5", m: "gold4", d: "gold1" }, "shell");
 }
 
 /**
