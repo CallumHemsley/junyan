@@ -205,34 +205,41 @@ function leafSprite(prop: TownProp): SpriteDef {
     shadow: { rx: 4, ry: 2 },
     draw: (p) => {
       const t = spec.tone;
+      // Columns, west to east: outline, the lit end of the stile (it faces the lane), the stile's
+      // shaded return, the inner face sliver with its panel recess, hinge knuckles, outline.
       // Top edge seen from above, running from the hinge (top) to the free end.
       p.rect(1, 0, w - 2, foot, t.top);
-      p.vline(1, 0, foot, t.gloss).vline(w - 2, 0, foot, t.rail);
-      // The leaf's end and the sliver of its inner face, full height.
+      p.vline(1, 0, foot, t.top).vline(2, 0, foot, t.gloss).vline(w - 2, 0, foot, t.face);
+      for (let y = 3; y < foot; y += 7) p.hline(2, y, w - 4, t.gloss);
       const y0 = foot;
       p.rect(1, y0, w - 2, spec.h, t.face);
-      p.vline(1, y0, spec.h, t.gloss).vline(2, y0, spec.h, t.face).vline(w - 3, y0, spec.h, t.gloss).vline(w - 2, y0, spec.h, t.edge);
-      // Rails across the inner face where the panels are.
-      for (const k of [0.06, 0.48, 0.55, 0.94]) p.hline(1, y0 + Math.floor(spec.h * k), w - 3, t.rail);
+      p.vline(1, y0, spec.h, t.top).vline(2, y0, spec.h, t.gloss).vline(3, y0, spec.h, t.rail);
+      // The panel: a recessed line down the inner face between the rails, lit at its top.
+      const rails = [0.06, 0.46, 0.54, 0.94].map((k) => y0 + Math.floor(spec.h * k));
+      p.vline(4, rails[0] + 2, rails[1] - rails[0] - 3, t.rail).vline(4, rails[2] + 2, rails[3] - rails[2] - 3, t.rail);
+      for (const ry of rails) { p.hline(1, ry, 4, t.rail); p.px(1, ry + 1, t.top); }
+      // Hinge knuckles on the hinge side, standing proud.
+      for (const k of [0.12, 0.86]) { const hy = y0 + Math.floor(spec.h * k); p.vline(w - 1, hy, 5, "steel2"); p.px(w - 1, hy, "steel4"); p.px(w - 2, hy + 2, "steel1"); }
       if (spec.story === "glazed") {
-        for (let y = y0 + 6; y < y0 + Math.floor(spec.h * 0.46); y++) { p.px(2, y, "blue5"); p.px(3, y, (y & 3) ? "blue4" : "white"); }
-        p.rect(1, y0 + spec.h - 9, w - 3, 6, "gold2");
-        p.vline(1, y0 + spec.h - 9, 6, "gold4").hline(1, y0 + spec.h - 4, w - 3, "gold1");
+        for (let y = rails[0] + 2; y < rails[1]; y++) { p.px(3, y, "blue5"); p.px(4, y, (y & 3) ? "blue4" : "white"); }
+        p.rect(1, y0 + spec.h - 9, 4, 6, "gold2");
+        p.vline(1, y0 + spec.h - 9, 6, "gold4").hline(1, y0 + spec.h - 4, 4, "gold1");
       }
       if (spec.story === "planks") {
-        for (const k of [0.15, 0.8]) { const y = y0 + Math.floor(spec.h * k); p.hline(0, y, w, "steel2"); p.px(w - 1, y, "steel1"); }
+        for (const k of [0.15, 0.8]) { const y = y0 + Math.floor(spec.h * k); p.hline(1, y, w - 2, "steel2"); p.px(1, y, "steel3"); }
         for (let y = y0 + 4; y < y0 + spec.h - 4; y += 9) if (hash(y, 1, prop.variant) > 0.4) p.px(2, y, "stone4");
       }
       if (spec.story === "lacquer") {
         // The brass ring hangs from the outer face and stands out past the leaf's edge.
         p.rows(0, y0 + 28, ["b.", "ab", "a.", "ab", "c."], { a: "gold4", b: "gold3", c: "gold1" });
-        // An iron bolt on the inner face, and a brick wedged under the foot to hold the leaf open.
-        p.rect(2, y0 + 30, 2, 5, "steel3").px(2, y0 + 30, "steel5");
+        p.rect(3, y0 + 30, 2, 5, "steel3").px(3, y0 + 30, "steel5");
         block(p, 0, H - 4, ["abbbbc", "bcccdd", "dddddd"], { a: "rose4", b: "rose3", c: "rose2", d: "rose1" }, "brick");
       }
-      p.under((q) => q.vline(0, 0, H - (spec.story === "lacquer" ? 4 : 0), t.edge));
-      p.vline(w - 1, 0, H - (spec.story === "lacquer" ? 4 : 0), t.edge);
+      const bottom = H - (spec.story === "lacquer" ? 4 : 0);
+      p.under((q) => q.vline(0, 0, bottom, t.edge));
+      p.under((q) => q.vline(w - 1, 0, bottom, t.edge));
       p.hline(1, 0, w - 2, t.edge);
+      if (spec.story !== "lacquer") p.hline(1, H - 1, w - 2, t.edge);
     },
   };
 }

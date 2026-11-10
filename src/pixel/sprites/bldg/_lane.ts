@@ -120,36 +120,57 @@ export function renderPatch(p: Px, x: number, y: number, w: number, h: number, s
 
 /** Tones for one slope of grey pantiles: cap roll lit/mid/shade, channel shadow/floor/rise, course lip. */
 type TileTone = { capHead: Color; capLit: Color; cap: Color; capShade: Color; chDeep: Color; ch: Color; chRise: Color; lip: Color };
-const SOUTH_TILES: TileTone = { capHead: "steel5", capLit: "steel4", cap: "steel3", capShade: "steel2", chDeep: "steel2", ch: "steel2", chRise: "steel3", lip: "steel1" };
-const NORTH_TILES: TileTone = { capHead: "steel6", capLit: "steel5", cap: "steel4", capShade: "steel3", chDeep: "steel3", ch: "steel3", chRise: "steel4", lip: "steel2" };
 /** Newer tiles laid in a mend, warmer and paler: not yet weathered. */
 const NEW_TILES: TileTone = { capHead: "stone5", capLit: "stone5", cap: "stone4", capShade: "stone3", chDeep: "stone3", ch: "stone3", chRise: "stone4", lip: "stone2" };
-/** Lichen-darkened tiles in the damp patches: a warm brown-grey, a step down. */
-const OLD_TILES: TileTone = { capHead: "steel4", capLit: "steel3", cap: "stone2", capShade: "steel2", chDeep: "steel1", ch: "steel2", chRise: "steel2", lip: "steel1" };
 
 export type Slope = "south" | "north";
 
 /** Pantile column period and course height, art px. */
 export const TILE_COL = 8, TILE_COURSE = 6;
 
+/** Damp tiles: a stain one step down, the channels holding their shadow, never black. */
+const DAMP_TILES: TileTone = { capHead: "steel3", capLit: "steel3", cap: "stone2", capShade: "steel2", chDeep: "steel1", ch: "steel2", chRise: "stone2", lip: "steel1" };
+const STEEL: readonly Color[] = ["steel1", "steel2", "steel3", "steel4", "steel5", "steel6"];
+const STONE: readonly Color[] = ["stone1", "stone2", "stone3", "stone4", "stone5"];
+
+/** The tones of a tile at brightness level `L` (the cap's mid tone) along a ramp. */
+function toneAt(ramp: readonly Color[], L: number): TileTone {
+  const at = (i: number) => ramp[Math.max(0, Math.min(ramp.length - 1, i))];
+  return { capHead: at(L + 2), capLit: at(L + 1), cap: at(L), capShade: at(L - 1), chDeep: at(L - 1), ch: at(L - 1), chRise: at(L), lip: at(L - 2) };
+}
+
 /**
  * Grey clay pantiles (小青瓦) on one slope, seen from above: columns 8px wide (a 4px convex cap roll over
- * the joint, then a 4px channel of concave pan tiles), courses 6px down the slope. Weathering comes in
- * patches (damp corners go brown with lichen), never as single dark tiles; a cap or two has slipped.
- * `mend` paints a rectangle of newer tiles.
+ * the joint, then a 4px channel of concave pan tiles), courses 6px down the slope.
+ *
+ * Each tile gets a brightness level from a few broad influences, then is drawn whole in that level's
+ * tones, so variation is tile by tile and never pixel noise:
+ *   - the sun from the upper left: paler toward the ridge (sun-bleached) and the slope's west end;
+ *   - strips re-laid over the decades: runs of columns down the slope in warmer or cooler, older or
+ *     newer tiles, with ragged ends;
+ *   - damp: soft blobs and the last courses over the eave go one step darker, a stain, not a hole;
+ *   - single tiles: a few replaced in warm clay, a few caps slipped to show the channel under them.
+ * `mend` paints a rectangle of new tiles; `damp` scales the stains.
  */
 export function pantiles(p: Px, x: number, y: number, w: number, h: number, seed: number, slope: Slope = "south",
   options: { mend?: readonly [number, number, number, number]; damp?: number } = {}): void {
-  const base = slope === "south" ? SOUTH_TILES : NORTH_TILES;
+  const baseL = slope === "south" ? 2 : 3;
   const damp = options.damp ?? 0.08;
-  // Damp patches: soft elliptical blobs, more of them low on the slope where the water runs off.
-  const blobs = Array.from({ length: Math.round((w * h * damp) / 900) }, (_, i) => {
-    const ry = 6 + hash(i, 3, seed + 5) * 10;
-    return { cx: x + hash(i, 1, seed + 5) * w, cy: y + h * Math.sqrt(hash(i, 2, seed + 5)), rx: ry * (1.4 + hash(i, 4, seed + 5)), ry };
+  const blobs = Array.from({ length: Math.max(1, Math.round((w * h * damp) / 1400)) }, (_, i) => {
+    const ry = 8 + hash(i, 3, seed + 5) * 12;
+    return { cx: x + hash(i, 1, seed + 5) * w, cy: y + h * (0.35 + 0.65 * Math.sqrt(hash(i, 2, seed + 5))), rx: ry * (1.6 + hash(i, 4, seed + 5)), ry };
   });
   const wetness = (px0: number, py0: number) => blobs.reduce((m, b) => Math.max(m, 1 - Math.hypot((px0 - b.cx) / b.rx, (py0 - b.cy) / b.ry)), 0);
+  // Re-laid strips: a run of columns from some course down to (nearly) the eave.
+  const strips = Array.from({ length: Math.max(1, Math.round(w / 110)) }, (_, i) => {
+    const c0 = Math.floor((x + hash(i, 1, seed + 17) * w) / TILE_COL), cw = 3 + Math.floor(hash(i, 2, seed + 17) * 6);
+    const top = y + Math.floor(hash(i, 3, seed + 17) * h * 0.5), bottom = y + h - Math.floor(hash(i, 4, seed + 17) * h * 0.3);
+    const kind = hash(i, 5, seed + 17);
+    return { c0, c1: c0 + cw, top, bottom, warm: kind < 0.5, shift: kind < 0.5 ? 0 : kind < 0.8 ? 0.7 : -0.6 };
+  });
   // Old roofs sag between the gable walls: courses dip a little toward the middle of the run.
   const sag = (xx: number) => Math.round(2 * Math.sin((Math.PI * (xx - x)) / Math.max(1, w)));
+  const tileCache = new Map<string, TileTone>();
   for (let xx = x; xx < x + w; xx++) {
     const col = Math.floor(xx / TILE_COL), c = ((xx % TILE_COL) + TILE_COL) % TILE_COL;
     // Each column's courses are laid by hand: a pixel of drift between neighbours.
@@ -161,22 +182,81 @@ export function pantiles(p: Px, x: number, y: number, w: number, h: number, seed
       // The mend is laid course by course, so its edge is ragged by whole tiles.
       const ragTop = m ? Math.floor(hash(col, 1, seed + 13) * 2) * TILE_COURSE : 0, ragBot = m ? Math.floor(hash(col, 2, seed + 13) * 2) * TILE_COURSE : 0;
       const inMend = m && xx >= m[0] && xx < m[0] + m[2] && yy >= m[1] + ragTop && yy < m[1] + m[3] - ragBot;
-      // A tile is damp if the blob field reaches it, with a ragged edge decided tile by tile.
-      const tileX = col * TILE_COL + 2, tileY = course * TILE_COURSE + 3;
-      const patch = wetness(tileX, tileY) > 0.15 + 0.5 * hash(col, course, seed);
-      const t = inMend ? NEW_TILES : patch ? (slope === "south" ? OLD_TILES : SOUTH_TILES) : base;
-      const slipped = !inMend && hash(col, course, seed + 11) > 0.992;
+      const key = `${col},${course}`;
+      let t = tileCache.get(key);
+      if (!t) {
+        const tx = col * TILE_COL + 3, tyc = course * TILE_COURSE + 3;
+        const fy = Math.max(0, Math.min(1, (tyc - y) / Math.max(1, h))), fx = Math.max(0, Math.min(1, (tx - x) / Math.max(1, w)));
+        // Smooth fields only, with a whisper of jitter so the bleached zone has a ragged, tile-wide edge.
+        const amp = slope === "south" ? 1 : 0.5;
+        let v = baseL + 0.1 + amp * (0.75 * (0.5 - fy) + 0.45 * (0.5 - fx)) + (hash(col, course, seed + 1) - 0.5) * 0.14;
+        let warm = false;
+        for (const st of strips) if (col >= st.c0 && col < st.c1 && tyc >= st.top + Math.floor(hash(col, 7, seed) * 2) * TILE_COURSE && tyc < st.bottom) { v += st.shift; warm ||= st.warm; }
+        const wet = wetness(tx, tyc) + (slope === "south" ? Math.max(0, (fy - 0.86) * 2.5) : 0);
+        const isWet = wet > 0.25 + 0.45 * hash(col, course, seed + 2);
+        const replaced = hash(col, course, seed + 19) > 0.993;
+        if (replaced) warm = !warm;
+        const L = Math.max(baseL, Math.min(slope === "south" ? baseL + 1 : baseL, Math.round(v)));
+        t = inMend ? NEW_TILES : isWet ? (slope === "south" ? DAMP_TILES : toneAt(STEEL, 2))
+          : warm ? toneAt(STONE, slope === "south" ? L : L - 1) : toneAt(STEEL, L);
+        tileCache.set(key, t);
+      }
+      if (inMend) t = NEW_TILES;
+      const slipped = !inMend && hash(col, course, seed + 11) > 0.99;
       let paint: Color;
       if (c < 4 && !slipped) {
         paint = c === 0 ? t.capLit : c === 3 ? t.capShade : t.cap;
         if (r === TILE_COURSE - 1) paint = c === 0 ? t.capShade : t.lip;     // the tile's lower end, in shadow
         else if (r === 0 && c < 2) paint = t.capHead;                       // its rounded head catches the sun
+      } else if (slipped && c < 4) {
+        // The cap has slid two courses down the slope: a dark gap where it was.
+        paint = r < 2 ? t.lip : c === 0 ? t.chDeep : t.ch;
       } else {
-        const k = slipped ? c % 4 : c - 4;
+        const k = c - 4;
         paint = k === 0 ? t.chDeep : k === 3 ? t.chRise : t.ch;
         if (r === TILE_COURSE - 1 && k < 3) paint = t.lip;
       }
       p.px(xx, yy, paint);
+    }
+  }
+}
+
+/**
+ * Lichen on the caps, in `count` colonies: rosettes of pale grey-green and ochre, each colony a few
+ * rosettes on neighbouring caps. Only lands on tiles (drawn over the roof).
+ */
+export function lichen(p: Px, x: number, y: number, w: number, h: number, seed: number, count: number): void {
+  const rosettes = [["ab.", "bbc"], [".a.", "abc", ".c."], ["abb", ".bc"], [".ab", "abc"]];
+  p.over((q) => {
+    for (let i = 0; i < count; i++) {
+      const cx = x + hash(i, 1, seed + 41) * w, cy = y + h * (0.3 + 0.7 * hash(i, 2, seed + 41));
+      const n = 3 + Math.floor(hash(i, 3, seed + 41) * 4);
+      for (let k = 0; k < n; k++) {
+        const tx = cx + (hash(i, k + 10, seed + 41) - 0.5) * 18, ty = cy + (hash(i, k + 20, seed + 41) - 0.5) * 8;
+        const sx = Math.floor(tx / TILE_COL) * TILE_COL + 1;
+        if (sx < x || sx > x + w - 3 || ty < y || ty > y + h - 3) continue;
+        const ochre = false;
+        q.rows(sx, Math.floor(ty), rosettes[Math.floor(hash(i, k + 30, seed + 41) * rosettes.length)],
+          ochre ? { a: "bamboo3", b: "bamboo2", c: "bamboo1" } : { a: "jade5", b: "jade4", c: "jade3" });
+      }
+    }
+  });
+}
+
+/**
+ * A soft shadow wedge cast down and to the right of something on a roof (sun upper left): `w` wide at
+ * its root (x, y), narrowing to nothing over `h` rows as it leans right. The core is one step darker;
+ * the fringe darkens only the lit tones, so the edge is soft without dithering.
+ */
+export function shadowWedge(p: Px, x: number, y: number, w: number, h: number): void {
+  for (let j = 0; j < h; j++) {
+    const width = Math.round(w * (1 - j / h));
+    for (let i = 0; i < width; i++) {
+      const xx = x + i + Math.round(j * 0.6), c = p.get(xx, y + j);
+      if (!c || !DARKER[c]) continue;
+      const core = i < width * 0.6;
+      const lit = /[456]$/.test(c);
+      if (core || lit) p.px(xx, y + j, DARKER[c]!);
     }
   }
 }
@@ -267,6 +347,9 @@ export function tigerWindow(p: Px, x: number, y: number, seed: number,
   options: { w?: number; open?: boolean; plant?: boolean; frame?: Color; curtain?: Color } = {}): void {
   const W = options.w ?? 36, half = W / 2, H = W - 2;
   const roofRows = Math.round(W * 0.3);
+  // Its shadow on the slope, a short wedge to the lower right.
+  shadowWedge(p, x + W - 2, y + Math.round(W * 0.3), 7, 12);
+  shadowWedge(p, x + 8, y + H, W - 8, 4);
   // Dormer roof seen from above: two slopes meeting at a ridge down the middle.
   for (let j = 0; j < roofRows; j++) for (let i = 1; i < W - 1; i++) {
     const left = i < half;
@@ -1009,6 +1092,7 @@ export function laneRoof(p: Px, x: number, y: number, w: number, h: number, o: R
   const eaveY = y + h - 5;
   pantiles(p, x, y, w, o.ridgeY, o.seed, "north", { damp: (o.damp ?? 0.08) + 0.04 });
   pantiles(p, x, y + o.ridgeY + 6, w, eaveY - (y + o.ridgeY + 6), o.seed + 1, "south", { mend: o.mend, damp: o.damp });
+  lichen(p, x + 6, y + o.ridgeY + 6, w - 12, eaveY - (y + o.ridgeY + 6), o.seed, Math.round(w / 90));
   ridge(p, x, y + o.ridgeY, w, o.seed);
   eave(p, x, eaveY, w);
   p.hline(x, y, w, "steel1");
@@ -1018,4 +1102,138 @@ export function laneRoof(p: Px, x: number, y: number, w: number, h: number, o: R
     ridgeEnd(p, x, y + o.ridgeY + 1);
     ridgeEnd(p, x + w - 5, y + o.ridgeY + 1, true);
   }
+}
+
+// ── life at the foot of a wall ───────────────────────────────────────────────
+
+/** Grime rubbed into brick by bicycles and shoulders beside a door: a darker, smoother patch, w × h. */
+export function wornPatch(p: Px, x: number, y: number, w: number, h: number, seed: number): void {
+  for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) {
+    const u = (i + 0.5 - w / 2) / (w / 2), v = (j + 0.5 - h / 2) / (h / 2);
+    if (u * u + v * v > 1 - hash(i >> 2, j >> 1, seed) * 0.3) continue;
+    const c = p.get(x + i, y + j);
+    // Mortar fills with dirt; the brick faces polish smooth, the paler ones a step greyer.
+    if (c === "stone3" && ((y + j) & 3) === 3) p.px(x + i, y + j, "stone2");
+    else if (c === "stone3" && hash((x + i) >> 3, (y + j) >> 2, seed) > 0.5) p.px(x + i, y + j, "steel3");
+  }
+}
+
+/**
+ * A repair painted over by hand: grey cement slapped on and painted a not-quite-matching cream, the
+ * brush strokes showing at its edges, w × h.
+ */
+export function paintedRepair(p: Px, x: number, y: number, w: number, h: number, seed: number): void {
+  for (let j = 0; j < h; j++) {
+    const l = Math.floor(hash(j, 1, seed) * 3), r = Math.floor(hash(j, 2, seed) * 3);
+    p.hline(x + l, y + j, w - l - r, j === 0 ? "cream4" : "cream3");
+    p.px(x + w - r - 1, y + j, "cream2");
+  }
+  // Strokes.
+  for (let j = 2; j < h - 1; j += 3) p.hline(x + 2 + Math.floor(hash(j, 3, seed) * 4), y + j, 4 + Math.floor(hash(j, 4, seed) * 5), "cream4");
+  p.hline(x + 2, y + h, w - 4, "stone2");
+}
+
+/** A hose reel on a wall bracket, the hose looping down to a tap: 14 × 20 from (x, y). */
+export function hoseReel(p: Px, x: number, y: number): void {
+  block(p, x, y, [
+    "....aaaaa.....",
+    "..abbbbbbbc...",
+    ".abcccccccbd..",
+    "abcbbbbbbbcbd.",
+    "abcb.eee.bcbd.",
+    "abcb.efe.bcbd.",
+    "abcb.eee.bcbd.",
+    "abcbbbbbbbcbd.",
+    ".bcccccccccd..",
+    "..ddbbbbbdd...",
+    "....dd.b......",
+    ".......b......",
+    "......b.......",
+    ".....b........",
+    "....b.....ggh.",
+    "...b......gih.",
+    "..b......ggh..",
+    "..bb.....h....",
+    "...bbbbbb.....",
+    "..............",
+  ], { a: "jade5", b: "jade4", c: "jade3", d: "jade2", e: "steel3", f: "steel5", g: "steel4", h: "steel2", i: "gold3" }, "hoseReel");
+}
+
+/**
+ * A low wooden stool set against the wall, an enamel basin on it, the morning's vegetables waiting to
+ * be washed: 18 × 16, (x, base) at the stool's bottom-left on the wall's foot.
+ */
+export function stoolAndBasin(p: Px, x: number, base: number): void {
+  block(p, x, base - 15, [
+    "...aaaaaaaaaa.....",
+    ".abbbbbbbbbbbbc...",
+    "abccdcceccccdbbc..",
+    "abcffcgccghhcbbc..",
+    ".abbbbbbbbbbbbc...",
+    "..ccccccccccccc...",
+    "..iiiiiiiiiiiii...",
+    "..jkkkkkkkkkkkl...",
+    "..jjjjjjjjjjjjl...",
+    "..k.k.......k.l...",
+    "..k.k.......k.l...",
+    "..k.mmmmmmmmk.l...",
+    "..k.k.......k.l...",
+    "..k.k.......k.l...",
+    "..k.k.......k.l...",
+    "..l.l.......l.l...",
+  ], {
+    a: "white", b: "steel6", c: "steel4", d: "leaf4", e: "leaf3", f: "leaf2", g: "orange2", h: "orange1",
+    i: "oak4", j: "oak3", k: "oak2", l: "oak1", m: "oak3",
+  }, "stoolBasin");
+}
+
+/** A cluster of three electricity meters and a junction box, wires bundled up the wall, 26 × 22. */
+export function meterCluster(p: Px, x: number, y: number, wireTop: number): void {
+  for (const [dx, tone] of [[0, "steel4"], [9, "cream3"], [18, "steel4"]] as const) {
+    const bx = x + dx;
+    p.rect(bx, y + 4, 8, 12, tone);
+    p.hline(bx, y + 4, 8, tone === "cream3" ? "cream4" : "steel5").vline(bx + 7, y + 4, 12, "steel2").hline(bx, y + 15, 8, "steel2");
+    p.rect(bx + 2, y + 6, 4, 3, "cream5").frame(bx + 2, y + 6, 4, 3, "steel2");
+    p.px(bx + 3, y + 7, "ink2");
+    p.vline(bx + 3, y + 16, 3, "ink2");
+  }
+  // Each meter's lead runs into one grey conduit that climbs to the eave, with a loose loop of cable.
+  p.line(x + 3, y + 3, x + 11, y - 1, "ink2").line(x + 21, y + 3, x + 14, y - 1, "ink2").vline(x + 12, y, 4, "ink2");
+  p.rect(x + 11, wireTop, 3, y - wireTop, "steel3");
+  p.vline(x + 11, wireTop, y - wireTop, "steel4").vline(x + 13, wireTop, y - wireTop, "steel2");
+  for (let yy = wireTop + 6; yy < y - 2; yy += 14) p.hline(x + 10, yy, 5, "steel1");
+  block(p, x + 14, y - 16, ["a..", ".a.", "..a", "..a", ".a.", "a.."], { a: "ink2" }, "loop");
+  p.rect(x + 4, y + 18, 18, 4, "steel3").hline(x + 4, y + 18, 18, "steel5").hline(x + 4, y + 21, 18, "steel1");
+}
+
+/** A big glazed pot at the wall's foot with a pomegranate bush in it, 20 × 26, bottom row `base`. */
+export function basePot(p: Px, x: number, base: number): void {
+  block(p, x, base - 25, [
+    "......a..b..a.......",
+    "....abcb.bcab.a.....",
+    "...abccbbcccbab.....",
+    "..abcdcccdcrcbcb....",
+    ".abcccdcccdccccba...",
+    "abccrcddcccdcrccb...",
+    ".bcccdccdccdcccbb...",
+    "..bcdccrcdcccdcb....",
+    "..bccdcccdcccdcb....",
+    "...bcccdccdccdb.....",
+    "....bddcccddcb......",
+    "......ddeedd........",
+    ".......deed.........",
+    "........ee..........",
+    "....ffffffffff......",
+    "...fggggggggggh.....",
+    "...hiiiiiiiiiih.....",
+    "...fgjggjggjggh.....",
+    "...fggggggggggh.....",
+    "....fgjggggjgh......",
+    "....fggggggggh......",
+    "....fggggggggh......",
+    ".....fgggggghh......",
+    ".....hhhhhhhh.......",
+    "......kkkkkk........",
+    "....kkkkkkkkkk......",
+  ], { a: "leaf5", b: "leaf4", c: "leaf3", d: "leaf2", r: "orange2", e: "wood2", f: "blue4", g: "blue3", h: "blue2", i: "blue5", j: "white", k: "steel1" }, "basePot");
 }
