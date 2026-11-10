@@ -311,47 +311,61 @@ export default defineSprites({
 
   /**
    * The mop in its bucket. The bucket is blue plastic with a crack mended with tape; the handle
-   * snapped years ago and was replaced with a loop of rope. The mop head is grey and frayed.
+   * snapped years ago and was replaced with a loop of rope. The string mop is grey and sodden,
+   * slumped over the rim with strands hanging down the side and dripping into a ring of water.
    */
   "decor/mop-bucket": {
-    w: 28, h: 52, anchor: [13, 51], foot: [-12, -6, 24, 6], shadow: { rx: 12, ry: 3, dy: -1 },
+    w: 30, h: 52, anchor: [14, 49], foot: [-12, -6, 24, 6], shadow: { rx: 12, ry: 3, dy: -1 },
     draw: (p) => {
-      // Mop handle leaning back against the wall.
-      for (let y = 0; y < 32; y++) {
-        const x = 18 - Math.round(y * 0.12);
+      // Wooden handle leaning back against the wall, a string loop at the top for the hook.
+      for (let y = 1; y < 33; y++) {
+        const x = 21 - Math.round(y * 0.3);
         p.px(x, y, "wood4").px(x + 1, y, "wood3");
+        if (y % 11 === 5) p.px(x, y, "wood5");
       }
-      p.px(18, 0, "red3").px(19, 0, "red2");
-      // Bucket: rim, water, tapering body.
+      art(p, 20, 0, [".cc.", "c..c", "cc.."], { c: "cream2" });
+      // Bucket: rim, dark water, tapering body.
       art(p, 3, 34, [
         "..bbbbbbbbbbbbbbbbbb..",
         ".bBBBBBBBBBBBBBBBBBBbb",
         "bBwwwWwwwwwwwwwwwwwBbb",
         "bbbbbbbbbbbbbbbbbbbbbb",
-      ], { b: "blue3", B: "blue4", w: "blue2", W: "blue5" });
-      cylinder(p, 3, 38, 22, 12, ["blue1", "blue2", "blue3", "blue4", "blue5"], (r) => (r >= 6 ? Math.floor((r - 5) / 2) : 0));
+      ], { b: "blue3", B: "blue4", w: "blue1", W: "blue4" });
+      cylinder(p, 3, 38, 22, 10, ["blue1", "blue2", "blue3", "blue4", "blue5"], (r) => (r >= 6 ? Math.floor((r - 5) / 2) : 0));
       p.over(() => {
-        for (const y of [41, 46]) p.hline(3, y, 22, "blue2");
+        for (const y of [41, 45]) p.hline(3, y, 22, "blue2");
         // The crack, taped over.
-        art(p, 16, 40, [".TTt", "TTTt", "TtTt", ".Tt."], { T: "cream4", t: "cream3" });
-        p.px(15, 44, "blue1").px(15, 45, "blue1");
+        art(p, 18, 39, [".TTt", "TTTt", "TtTt", ".Tt."], { T: "cream4", t: "cream3" });
+        p.px(17, 43, "blue1").px(17, 44, "blue1");
       });
-      // Rope handle, the replacement.
-      art(p, 2, 36, ["r.......................r", ".r.....................r.", "..rrrrrrrrrrrrrrrrrrrrr.."].map((r) => r.slice(0, 24)), { r: "bamboo3" });
-      // A grey drip on the floor side, soaked into the plastic.
+      // Rope handle, the replacement, slack against the front.
+      art(p, 2, 36, ["r....................r", ".r..................r.", "..rr..............rr..", "....rrrrrrrrrrrrrr...."], { r: "bamboo3" });
       autoOutline(p);
-      // The frayed mop head flopped over the rim and down the front, grey with use.
-      art(p, 9, 29, [
-        "....ggGGgg....",
-        "..gGGgGGgGgg..",
-        ".gGgGGgGgGGgg.",
-        "gGg.GgGgg.Ggg.",
-        "gg.gGg.gGg.gg.",
-        "g..gg..g.g..g.",
-        "...g...g.g....",
-        "...g......g...",
-      ], { g: "stone3", G: "stone4" });
-      p.px(12, 37, "stone2").px(16, 38, "stone2");
+      // The sodden mop head: a heap of grey string in the bucket, slumped over the front rim,
+      // strands hanging down the side, darker where wet, a drip forming at the longest.
+      art(p, 3, 27, [
+        ".......dgGGgd......",
+        ".....dgGG5GGgGd....",
+        "...dgGG5GGgGGgGgd..",
+        "..dgGgGGgGGgGgGgGd.",
+        ".dgGgGgGgGgGgGgGgd.",
+        "dgGgGgdgGgGgdGgGgd.",
+        "dgGd.gGdgGd.gGdgd..",
+        "dgd.dgdgdgd.dGd.d..",
+        "dg..dgd.dgd..gd....",
+        "dg...gd..gd..gd....",
+        ".g...gd..g...g.....",
+        ".d...gd..d...d.....",
+        ".d....d......d.....",
+        "......d............",
+        "......b............",
+      ], { g: "stone3", G: "stone4", 5: "stone5", d: "stone2", b: "blue4" });
+      p.faded(0.7, () => p.px(9, 44, "blue5"));
+      // The ring of water it always leaves, showing round the base.
+      p.under(() => {
+        p.faded(0.45, () => p.ellipse(13, 49.5, 13, 2.5, "blue3"));
+        p.faded(0.6, () => { p.hline(1, 49, 4, "blue5"); p.hline(21, 51, 4, "blue4"); });
+      });
     },
   },
 
@@ -417,43 +431,165 @@ export default defineSprites({
 
   /**
    * Cardboard boxes of paper bowls and napkins, stacked by the kitchen door. The bottom one has
-   * been kicked in at a corner, the top one sits askew with a flap open and tape peeling.
+   * been kicked in at a corner and stood in a puddle; the top one was dumped on it twisted, with a
+   * flap open, the box cutter and a ball of string left on it, and a strip of tape torn and hanging.
    */
   "decor/boxes": {
-    w: 34, h: 40, anchor: [16, 39], foot: [-15, -12, 30, 12], shadow: { rx: 16, ry: 4, dy: -2 },
+    w: 36, h: 44, anchor: [16, 43], foot: [-15, -12, 30, 12], shadow: { rx: 16, ry: 4, dy: -2 },
     draw: (p) => {
-      const box = (x: number, y: number, w: number, top: number, front: number) => {
-        // Top face (lit), with the seam where the flaps meet; the front face below its fold.
-        p.rect(x, y, w, top, "oak4").hline(x, y, w, "oak5").vline(x, y, top, "oak5");
-        p.rect(x, y + top, w, front, "oak3").hline(x, y + top, w, "oak2").hline(x, y + top + 1, w, "oak4").vline(x + w - 1, y + top, front, "oak2");
-        const mid = x + Math.floor(w / 2) - 1;
-        p.vline(mid + 1, y, top, "oak3");
-        // Packing tape over the seam and a hand's width down the front.
-        p.rect(mid, y, 3, top, "bamboo4").vline(mid, y, top, "bamboo5");
-        p.rect(mid, y + top, 3, 4, "bamboo3").vline(mid, y + top, 4, "bamboo4");
-        // Fibre grain: faint long streaks on the front.
-        p.over(() => { for (let j = y + top + 4; j < y + top + front - 1; j += 3) p.hline(x + 2 + ((j * 5) % 7), j, w - 10, "oak4"); });
+      // ── the bottom box, square on ──
+      const bx = 1, by = 20, bw = 30, top = 7, front = 16;
+      p.rect(bx, by, bw, top, "oak4").hline(bx, by, bw, "oak5").vline(bx, by, top, "oak5");
+      p.vline(bx + 15, by, top, "oak3");
+      p.rect(bx, by + top, bw, front, "oak3");
+      // The fold where the top flaps bend over: a lit lip and the shadow under it.
+      p.hline(bx, by + top, bw, "oak4").hline(bx, by + top + 1, bw, "oak2").hline(bx + 1, by + top + 2, bw - 2, "oak2");
+      p.vline(bx + bw - 1, by + top, front, "oak2");
+      // Corrugation showing at the cut edges.
+      for (let y = by + top + 1; y < by + top + front; y++) { p.px(bx, y, y % 2 ? "oak4" : "oak2"); p.px(bx + bw - 1, y, y % 2 ? "oak3" : "oak1"); }
+      for (let x = bx + 1; x < bx + bw - 1; x++) p.px(x, by, x % 2 ? "oak5" : "oak4");
+      // Fibre grain on the front.
+      p.over(() => { for (const [x, y, n] of [[4, 31, 9], [17, 33, 10], [7, 36, 12], [20, 38, 6]] as const) p.hline(x, y, n, "oak4"); });
+      // "This way up" arrows (pictograms), the hand-hold slot.
+      art(p, 4, 30, [".d...d.", "ddd.ddd", ".d...d.", ".d...d."], { d: "oak2" });
+      art(p, 22, 31, [".kkkk.", "kkkkkk", ".KKKK."], { k: "oak1", K: "oak2" });
+      // Packing tape over the top seam, torn off the front: a strip hangs loose and curls.
+      p.rect(bx + 14, by, 3, top, "bamboo4").vline(bx + 14, by, top, "bamboo5");
+      art(p, bx + 14, by + top, ["ttT", "tT.", "tT.", ".tT", ".tT", "..t", ".tT", "tT.", "t.."], { t: "bamboo4", T: "bamboo3" });
+      p.over(() => p.vline(bx + 17, by + top + 1, 8, "oak2"));
+      // The corner that stood in water: wrinkled, darker, its edge warped.
+      p.over(() => {
+        art(p, 1, 34, ["dd.....", ".ddd.d.", "DD..dd.", "..DDD.d", "dd..DD.", "DDDDDDD", "......."], { d: "oak2", D: "oak1" });
+        p.hline(8, 42, 22, "oak2");
+      });
+      p.px(1, 42, null).px(2, 42, null);
+      // The kicked-in corner on the right.
+      art(p, 26, 22, ["....d", "...dD", "..dcd", ".dcdc"], { d: "oak2", D: "oak1", c: "oak4" });
+
+      // ── the top box, dumped twisted on the stack ──
+      const A: [number, number] = [6, 7], B: [number, number] = [25, 3], C: [number, number] = [28, 9], D: [number, number] = [9, 13];
+      const drop = 11;
+      const D2: [number, number] = [D[0], D[1] + drop], C2: [number, number] = [C[0], C[1] + drop], A2: [number, number] = [A[0], A[1] + drop];
+      // Its shadow falls on the bottom box's top.
+      p.poly([[10, 22], [30, 18], [31, 22], [12, 27]], "oak3");
+      // Left side face in shadow, the front face, the lit top.
+      p.poly([A, D, D2, A2], "oak2");
+      p.poly([D, C, C2, D2], "oak3");
+      p.poly([A, B, C, D], "oak4");
+      // Edges: the lit lip of the top, the dark corner where front meets side.
+      p.line(A[0], A[1], B[0], B[1], "oak5").line(A[0], A[1], D[0], D[1], "oak5").line(D[0], D[1], C[0], C[1], "oak5");
+      p.line(D[0], D[1] + 1, C[0], C[1] + 1, "oak2");
+      p.line(D[0], D[1] + 1, D2[0], D2[1], "oak1");
+      // The seam of its flaps and the tape over it, skewed with the box.
+      p.line(10, 10, 27, 6, "oak3");
+      p.line(14, 5, 17, 12, "bamboo4").line(15, 5, 18, 12, "bamboo5").line(16, 5, 19, 12, "bamboo4");
+      // Grain on its front.
+      p.over(() => { p.line(12, 18, 22, 16, "oak4"); p.line(14, 21, 25, 19, "oak4"); });
+      // Where it sits on the box below, a dark contact edge; its far edge in shade.
+      p.line(A2[0], A2[1], D2[0], D2[1], "wood1").line(D2[0], D2[1], C2[0], C2[1], "wood1").line(C[0], C[1] + 1, C2[0], C2[1], "oak1");
+      p.line(D2[0] + 1, D2[1] - 1, C2[0] - 1, C2[1] - 1, "oak2");
+      // The box cutter left on top.
+      art(p, 20, 4, ["....s", "...sY", "..yY.", ".yYy.", "yYy..", "yy..."], { y: "gold3", Y: "gold5", s: "steel5" });
+      autoOutline(p, { map: { oak: "wood1", bamboo: "wood1", gold: "wood1" } });
+    },
+  },
+
+  /**
+   * The owner's old cloth shoes, black cotton uppers on layered white soles, left by the door to be
+   * slipped on for the yard. He walks on the backs, so both heels are trodden flat; the left toe is
+   * fraying. Floor art.
+   */
+  "decor/slippers": {
+    w: 22, h: 14, layer: "floor",
+    draw: (p) => {
+      // One shoe from above: the trodden-flat heel showing its lining, the dark opening, the black
+      // cotton vamp with its centre seam, and the white layered sole round the toe.
+      const shoe = (x: number, y: number, flip: boolean, fray: boolean) => {
+        const rows = [
+          "..sssss..",
+          ".sLLLLLs.",
+          ".sliiils.",
+          "sKiiiiiKs",
+          "sKkiiiKKs",
+          "sKkkhKKKs",
+          "sKkKhKKKs",
+          "sKkKhKKKs",
+          ".sKkhKKs.",
+          ".SKKhKKS.",
+          ".sSSSSSs.",
+          "..sSSSs..",
+        ];
+        art(p, x, y, flip ? rows.map((r) => [...r].reverse().join("")) : rows, { s: "cream2", S: "cream4", L: "cream3", l: "cream2", K: "hair2", k: "hair3", i: "ink", h: "hair1" });
+        if (fray) art(p, x + 3, y + 9, ["c.c"], { c: "cream3" });
       };
-      box(1, 16, 30, 7, 16);
-      // Two "this way up" arrows printed on the front (pictograms, not text).
-      art(p, 4, 25, [".d...d", "ddd.ddd", ".d...d.", ".d...d."], { d: "oak2" });
-      // Hand-hold slot on the right of the front.
-      art(p, 22, 27, [".kkkk.", "kkkkkk"], { k: "oak1" });
-      // A water mark where it stood in a puddle.
-      p.over(() => { p.hline(2, 37, 28, "oak2"); art(p, 8, 34, ["..ddd...", ".d...dd.", "d......d"], { d: "oak2" }); });
-      // The kicked-in corner: the crushed card shows its corrugated core.
-      art(p, 1, 30, ["d....", "Dd...", "dcd..", "cdcd.", "dcdcd", "....."], { d: "oak2", D: "oak1", c: "oak4" });
-      // Top box, smaller and twisted on the stack: its top sits a pixel right of its front.
-      box(6, 2, 22, 6, 9);
-      p.rect(6, 17, 22, 1, "oak2");
-      // An open flap standing up at the back, its inside paler, napkins showing in the gap.
-      art(p, 17, 0, ["..aaaaaa", ".aAAAAAa", "aAAAAAa.", "aaaaaa.."], { a: "oak3", A: "oak5" });
-      art(p, 9, 2, ["wWwwWw", "cccccc"], { w: "white", W: "cream4", c: "oak2" });
-      // Peeling tape on the top box.
-      art(p, 15, 10, ["tt.", ".tT", "..T"], { t: "bamboo5", T: "bamboo4" });
-      // String tied round the bottom box.
-      p.vline(8, 16, 7, "cream2").vline(8, 23, 16, "cream2");
-      autoOutline(p, { map: { oak: "wood1", bamboo: "wood1" } });
+      shoe(1, 0, false, true);
+      // The right one, kicked off a little forward and askew.
+      shoe(11, 2, true, false);
+      autoOutline(p, { map: { cream: "ink2", hair: "ink" } });
+    },
+  },
+
+  /**
+   * A navy umbrella left furled in the corner after the morning shower, leaning on its bamboo
+   * crook, dripping into a little puddle. Four frames at 3 fps: a drop gathers at the tip, falls
+   * and rings the puddle.
+   */
+  "decor/umbrella-wet": {
+    w: 18, h: 46, anchor: [9, 43], foot: [-4, -2, 8, 2], frames: 4, fps: 3,
+    draw: (p, frame) => {
+      // Bamboo crook handle at the top, leaning right against the wall.
+      art(p, 8, 1, [
+        "..bbbb..",
+        ".bB..bb.",
+        ".b....b.",
+        "......b.",
+        "......bB",
+        "......b.",
+      ], { b: "bamboo2", B: "bamboo4" });
+      // Shaft.
+      p.vline(14, 7, 10, "steel3");
+      // Furled canopy: folds of wet nylon, a strap and snap round the middle.
+      art(p, 8, 17, [
+        ".....fF.",
+        "....fFFf",
+        "....fFHf",
+        "...fFHFf",
+        "...fFHff",
+        "..fFHFff",
+        "..fFHFff",
+        "..fFHFf.",
+        ".fFHFff.",
+        ".fFHFff.",
+        ".fFHFff.",
+        ".tTTTtt.",
+        ".tTgTtt.",
+        "fFHFff..",
+        "fFHFff..",
+        "fFHFff..",
+        "fFHFf...",
+        "fFHFf...",
+        ".fHFf...",
+        ".fFf....",
+        ".fFf....",
+        "..ff....",
+        "..ff....",
+        "..ss....",
+        "..S.....",
+      ], { f: "blue1", F: "blue2", H: "blue3", t: "blue1", T: "blue2", g: "steel5", s: "steel3", S: "steel5" });
+      // Beads of water on the fabric.
+      for (const [x, y] of [[12, 21], [11, 27], [10, 33], [12, 35]] as const) p.px(x, y, "blue5");
+      autoOutline(p, { map: { blue: "blue1", bamboo: "wood1", steel: "steel1" } });
+      // The drip.
+      // The puddle, translucent, with a pale sheen, round the tip.
+      p.under(() => {
+        p.faded(0.45, () => p.ellipse(9, 43.5, 8, 2.5, "blue3"));
+        p.faded(0.7, () => p.hline(3, 43, 4, "blue5"));
+      });
+      const tipX = 8, tipY = 37;
+      if (frame === 0) p.faded(0.8, () => p.px(tipX, tipY, "blue5"));
+      if (frame === 1) p.faded(0.8, () => art(p, tipX, tipY, ["w", "w"], { w: "blue5" }));
+      if (frame === 2) p.faded(0.8, () => p.px(tipX - 1, tipY + 4, "blue5"));
+      if (frame === 3) p.faded(0.7, () => art(p, tipX - 4, 43, ["w...w", ".www."], { w: "blue5" }));
     },
   },
 
