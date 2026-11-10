@@ -135,84 +135,108 @@ const face = sidedBy({
   },
 });
 
-// ── the coat: lapels over the jumper, stethoscope, breast pocket ──────────
+// ── the coat: lapels over the jumper, stethoscope, breast pocket, folds ──
 
+/**
+ * The coat is white in the light and cools to steel in its folds and on the shadow side (lower
+ * right), so it stays clearly white without going flat.
+ */
 const COAT = {
-  L: "cream3", l: "cream4", K: "blue5", J: "blue2", j: "blue1", i: "ink2", M: "steel5", m: "steel3",
-  b: "blue3", T: "white", c: "cream2",
+  L: "steel4", l: "steel5", T: "white", t: "steel6", u: "steel5",
+  K: "blue5", J: "blue2", j: "blue1", i: "ink2", M: "steel5", m: "steel3", b: "blue3", c: "steel4",
 } as const;
 const COAT_FRONT = part(33, Z.clothes, [
   "..........LKK......KKL..........",
   "..........iLKJ....JKLi..........",
   "..........iLlJJ..JJlLi..........",
-  "..........i.LlJJJjlL.i..........",
+  "..........i.LlJJJjlL.it.........",
   "..........i..LlJjlL.bMi.........",
-  "..........i...LllL..bM..........",
-  "..........i.....L..LLLLL........",
-  ".........mMm....L..lTTTl........",
-  ".........MMm....c..lTTTl........",
-  "..........m.....L...lll.........",
-  "................L...............",
-  "................c...............",
-  "................L...............",
+  "..........i...LllL..bMt.........",
+  "..........it....Lt.LLLLL........",
+  ".........mMm....Lt.lTTTu........",
+  ".........MMm....ct.luuuu........",
+  "..........mt....Lt..............",
+  "...........t....Lt...t..........",
+  "...........t....ct...t..........",
+  "...........u....Lt...u..........",
 ], { legend: COAT });
 const COAT_SIDE = part(33, Z.clothes, [
   "...............LKKK.............",
   "...............iLKJJ............",
   "...............i.LJJi...........",
-  "...............i..LJi...........",
-  "..............mMm.L.............",
-  "..............MMm.L.............",
-  "...............m..c.............",
+  "...............i..LJit..........",
+  "..............mMm.L..t..........",
+  "..............MMm.L..t..........",
+  "...............m..c..t..........",
+  "...........t.........t..........",
+  "...........t.........u..........",
+  "...........t.........u..........",
+  "...........u.........u..........",
+  "................................",
+  "...........LLLLLLL..............",
 ], { legend: COAT });
-/** From behind: a half-belt with two buttons across the small of the back. */
+/** From behind: two folds down from the shoulder blades and a half-belt across the small of the back. */
 const COAT_BACK = part(33, Z.clothes, [
   "...........iiiiiiiiii...........",
   "................................",
   "................................",
-  "................................",
-  "................................",
-  "................................",
-  "................................",
-  "................................",
-  "................................",
+  "...........t........t...........",
+  "...........t........t...........",
+  "...........t........u...........",
+  "...........t........u...........",
+  "............t......u............",
+  "............u......u............",
   "................................",
   "........LLLLLLLLLLLLLLLL........",
-  "........llLlllllllllLlll........",
+  "........ttMtttttttttMtuu........",
 ], { legend: COAT });
 
-/** The coat skirt over the trousers, open at the front, swinging a pixel with the stride. */
+/**
+ * The coat skirt over the trousers, open at the front, two folds running on from the chest, pocket
+ * flaps that cast a line of shadow. Walking, the lower skirt swings a pixel and the hem two.
+ */
+const SKIRT_FRONT = [
+  "........TTTtTTTTtTTTTTtt........",
+  "........TTTtTTTTtTTTTutt........",
+  "........TLLLLTTTtTLLLLtt........",
+  "........TlllTTTt.tTlllut........",
+  "........TTTtTTTt..tTTutt........",
+  ".......TTTTtTTTt..tTTTuut.......",
+  ".......TTTTuTTt....tTTtut.......",
+  ".......TTTtTTTt....tTTTuut......",
+  ".......uuuuuuuu....uuuuuuu......",
+];
+const SKIRT_BACK = [
+  "........TTTtTTTTTTTTTTtt........",
+  "........TTTtTTTTTTTTTutt........",
+  "........TTTtTTTTTTTTTutt........",
+  "........TTTtTTTtLTTTTtut........",
+  "........TTTtTTTtLTTTTutt........",
+  ".......TTTTtTTTtLTTTTuut........",
+  ".......TTTTuTTTtLtTTTtut........",
+  ".......TTTtTTTtl.ltTTTuut.......",
+  ".......uuuuuuuu...uuuuuuu.......",
+];
+const SKIRT_SIDE = [
+  "...........TTTTTTTTTTt..........",
+  "...........TTTtTTTTTtt..........",
+  "...........TLLLLTTTTut..........",
+  "...........TlllTTTTTut..........",
+  "..........TTTTtTTTTTtt..........",
+  "..........TTTTtTTTTTtuu.........",
+  "..........TTTTuTTTTTtut.........",
+  ".........TTTTTuTTTTTtuu.........",
+  ".........uuuuuuuuuuuuuu.........",
+];
+const swing = (rows: readonly string[], sway: number) => rows.map((r, i) => shiftRow(r, i < 3 ? 0 : i < 7 ? sway : 2 * sway));
 const skirt: Piece = (pose) => {
   const sway = pose.legs === "stepA" ? -1 : pose.legs === "stepB" ? 1 : 0;
-  if (pose.dir === "down" || pose.dir === "up") {
-    const open = pose.dir === "down";
-    return [part(46, Z.skirt, [
-      "........TTTTTTTTTTTTTTTt........",
-      "........TTTTTTTttTTTTTTt........",
-      "........TTTTTTTttTTTTTtt........",
-      "........TTuuuuTttTuuuutt........",
-      open ? "........TTTTTTt..tTTTTtt........" : "........TTTTTTTttTTTTTtt........",
-      open ? ".......TTTtTTTt..tTTTTutt......." : ".......TTTtTTTttTTTTTutt.......",
-      open ? ".......TTTtTTTt..tTTTTutt......." : ".......TTTtTTTt.tTTTTutt.......",
-      open ? ".......TTtTTTt....tTTTutt......." : ".......TTtTTTTt.tTTTuttt.......",
-      open ? ".......uuuuuuu....uuuuuuu......." : ".......uuuuuuuu.uuuuuuuu.......",
-    ].map((r) => shiftRow(r, sway)), { group: "legs" })];
-  }
-  const rows = [
-    "...........TTTTTTTTTTt..........",
-    "...........TTTTTTTTTTt..........",
-    "...........TTTTTTTTTtt..........",
-    "...........TTTuuuuTTtt..........",
-    "..........TTTTTTTTTTtt..........",
-    "..........TTTTTTTTTTttt.........",
-    "..........TTTTTTTTTTttt.........",
-    ".........TTTTTTTTTTTttt.........",
-    ".........uuuuuuuuuuuuuu.........",
-  ].map((r) => shiftRow(r, -sway));
-  const p = part(46, Z.skirt, rows, { group: "legs" });
+  if (pose.dir === "down") return [part(46, Z.skirt, swing(SKIRT_FRONT, sway), { group: "legs", legend: COAT })];
+  if (pose.dir === "up") return [part(46, Z.skirt, swing(SKIRT_BACK, -sway), { group: "legs", legend: COAT })];
+  const p = part(46, Z.skirt, swing(SKIRT_SIDE, -sway), { group: "legs", legend: COAT });
   return [pose.dir === "left" ? mirror(p) : p];
 };
-const shiftRow = (row: string, dx: number) => (dx > 0 ? "." + row.slice(0, -1) : dx < 0 ? row.slice(1) + "." : row);
+const shiftRow = (row: string, dx: number): string => (dx > 0 ? shiftRow("." + row.slice(0, -1), dx - 1) : dx < 0 ? shiftRow(row.slice(1) + ".", dx + 1) : row);
 
 const coat: Piece = (pose) => {
   if (pose.dir === "down") return [COAT_FRONT];
@@ -255,8 +279,8 @@ export const DOCTOR = {
   id: "doctor",
   slots: {
     S: "skin4", s: "skin3", k: "skin2", b: "blush", m: "skin1", r: "hair1",
-    T: "white", t: "cream4", u: "cream3", C: "white", c: "cream3",
-    V: "white", v: "cream4", X: "cream3", x: "cream2", F: "white", f: "cream4",
+    T: "white", t: "steel6", u: "steel5", C: "white", c: "steel5",
+    V: "white", v: "steel6", X: "steel5", x: "steel4", F: "white", f: "steel6",
     P: "stone2", p: "stone1", N: "wood3", n: "wood2", Y: "wood1", y: "wood1",
     H: "hair3", h: "hair2", d: "hair1", G: "grey2", g: "grey1", O: "steel2",
   },

@@ -154,33 +154,37 @@ const face = sidedBy({
 
 // ── the uniform: piping, belt, pens, fob watch; the dress below the belt ──
 
-const KIT = { W: "white", w: "cream4", c: "cream3", J: "blue4", j: "blue3", b: "blue2", G: "gold4", g: "gold2", M: "steel5", m: "steel3" } as const;
+/** The uniform is white in the light and cools to steel in its folds and on the shadow side. */
+const KIT = {
+  W: "white", w: "steel6", c: "steel5", t: "steel6", u: "steel5",
+  J: "blue4", j: "blue3", b: "blue2", G: "gold4", g: "gold2", M: "steel5", m: "steel3",
+} as const;
 const BODICE_DOWN = part(33, Z.clothes, [
   "..........JJ........JJ..........",
   "..........jJJ......JJj..........",
   "...........jJJ....JJj...........",
-  "............jJJJJJJj............",
-  "................................",
-  "..................bJ............",
+  "...........tjJJJJJJjt...........",
+  "............tt....tbJ...........",
   "..................bjW...........",
-  "...............c.wwwww..........",
-  "..................GG............",
-  "..................gG............",
-  "...............c................",
-  "................................",
+  "...........t...c.wwwwu..........",
+  "...........t.....uuuu...........",
+  "...........t......GG.t..........",
+  "...........t......gG.t..........",
+  "...........u...c.....t..........",
+  "...........u.........u..........",
   "........JJJJJJJJJJJJJJJj........",
   "........jjjjjjjcMjjjjjjj........",
 ], { legend: KIT });
 const BODICE_UP = part(33, Z.clothes, [
   "..........jJJJJJJJJJJj..........",
+  "...........tttttttttt...........",
   "................................",
-  "................................",
-  "................................",
-  "................................",
-  "................................",
-  "................................",
-  "................................",
-  "................................",
+  "...........t........t...........",
+  "...........t........t...........",
+  "...........t........u...........",
+  "...........t........u...........",
+  "............t......u............",
+  "............u......u............",
   "................................",
   "................................",
   "................................",
@@ -190,12 +194,12 @@ const BODICE_UP = part(33, Z.clothes, [
 const BODICE_SIDE = part(33, Z.clothes, [
   "...............JJJj.............",
   "................jJJj............",
-  "..................jJ............",
-  "................................",
-  "................................",
-  "................................",
-  "................................",
-  "................................",
+  "...............t..jJ............",
+  "...............t....t...........",
+  "...............t....t...........",
+  "...............t....u...........",
+  "...............u....u...........",
+  "...............u................",
   "................................",
   "................................",
   "................................",
@@ -210,39 +214,43 @@ const bodice: Piece = (pose) => {
   return [pose.dir === "left" ? mirror(BODICE_SIDE) : BODICE_SIDE];
 };
 
-/** The dress from the belt to just below the knee, a box pleat at the front. */
+/**
+ * The dress from the belt to just below the knee: a band of shadow under the belt, a box pleat at
+ * the front, two soft folds to the hem, the shadow side cooler. The hem swings with the stride.
+ */
 const dress: Piece = (pose) => {
   const stride = pose.legs === "stepA" ? 1 : pose.legs === "stepB" ? -1 : 0;
   if (pose.dir === "down" || pose.dir === "up") {
     const hem = stride === 0
-      ? [".......DDDDDDDDEEDDDDDDEE.......", ".......BBBBBBBBBBBBBBBBBB......."]
+      ? [".......DDDEDDDDEEDDDDDEEE.......", ".......BBBBBBBBBBBBBBBBBB......."]
       : stride > 0
-        ? ["......DDDDDDDDDEEDDDDDDEE.......", "......BBBBBBBBBBBBBBBBBBB......."]
-        : [".......DDDDDDDDEEDDDDDDEEE......", ".......BBBBBBBBBBBBBBBBBBB......"];
+        ? ["......DDDDEDDDDEEDDDDDEEE.......", "......BBBBBBBBBBBBBBBBBBB......."]
+        : [".......DDDEDDDDEEDDDDDEEEE......", ".......BBBBBBBBBBBBBBBBBBB......"];
+    const pockets = pose.dir === "down";
     return [part(47, Z.skirt, [
-      "........DDDDDDDEEDDDDDDE........",
-      "........DDDDDDDEEDDDDDDE........",
-      "........DEEEEDDEEDDEEEEE........",
-      ".......DDEDDEDDEEDDEDDEEE.......",
-      ".......DDDDDDDDEEDDDDDDEE.......",
-      ".......DDDDDDDDEEDDDDDEEE.......",
-      ".......DDDDDDDDEEDDDDDEEE.......",
+      "........EEEEEEEEEEEEEEEB........",
+      "........DDDEDDDEEDDDDEDE........",
+      pockets ? "........DEEEEDDEEDDEEEEE........" : "........DDDEDDDEEDDDDEEE........",
+      pockets ? ".......DDBBBBDDEEDDBBBBEE......." : ".......DDDDEDDDEEDDDDEEEE.......",
+      ".......DDDEDDDDEEDDDDDEEE.......",
+      ".......DDDEDDDDEEDDDDEDEE.......",
+      ".......DDDEDDDDEEDDDDEEBE.......",
       ...hem,
     ], { group: "legs" })];
   }
   const hem = stride === 0
-    ? ["..........DDDDDDDDDDDEE.........", "..........BBBBBBBBBBBBB........."]
+    ? ["..........DDDEDDDDDDDEE.........", "..........BBBBBBBBBBBBB........."]
     : stride > 0
-      ? [".........DDDDDDDDDDDDDEE........", ".........BBBBBBBBBBBBBBB........"]
-      : [".......DDDDDDDDDDDDDDEE.........", ".......BBBBBBBBBBBBBBBB........."];
+      ? [".........DDDDEDDDDDDDDEE........", ".........BBBBBBBBBBBBBBB........"]
+      : [".......DDDDDDEDDDDDDDEE.........", ".......BBBBBBBBBBBBBBBB........."];
   const p = part(47, Z.skirt, [
-    "...........DDDDDDDDDE...........",
-    "...........DDDDDDDDDE...........",
-    "..........DDDDDDDDDDEE..........",
-    "..........DDDDDDDDDDEE..........",
-    "..........DDDDDDDDDDEE..........",
-    "..........DDDDDDDDDDEE..........",
-    "..........DDDDDDDDDDDEE.........",
+    "...........EEEEEEEEEB...........",
+    "...........DDEDDDDDDE...........",
+    "..........DDDEDDDDDDEE..........",
+    "..........DDDEDDDDDEEE..........",
+    "..........DDDEDDDDDDEE..........",
+    "..........DDDEDDDDDEBE..........",
+    "..........DDDDEDDDDDDEE.........",
     ...hem,
   ], { group: "legs" });
   return [pose.dir === "left" ? mirror(p) : p];
@@ -275,11 +283,11 @@ export const NURSE = {
   id: "nurse",
   slots: {
     S: "skin4", s: "skin3", k: "skin2", b: "blush", m: "skin1", r: "hair2",
-    T: "white", t: "cream4", u: "cream3", C: "white", c: "cream3",
-    V: "white", v: "cream4", X: "blue4", x: "blue3", F: "skin4", f: "skin3",
+    T: "white", t: "steel6", u: "steel5", C: "white", c: "steel5",
+    V: "white", v: "steel6", X: "blue4", x: "blue3", F: "skin4", f: "skin3",
     J: "blue4", j: "blue3",
     P: "cream5", p: "cream3", N: "white", n: "cream3", Y: "stone3", y: "stone3",
-    D: "white", E: "cream4", B: "cream3",
+    D: "white", E: "steel6", B: "steel5",
     H: "hair3", h: "hair2", d: "hair1",
   },
   hair,
