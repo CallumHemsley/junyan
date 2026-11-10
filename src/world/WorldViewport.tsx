@@ -217,7 +217,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   if(directions[event.key]){event.preventDefault();event.stopPropagation();keys.current.add(event.key);}
   else if((event.key==="e"||event.key==="Enter")&&selected){event.preventDefault();event.stopPropagation();activate();}
  }} onBlur={event=>{if(!event.currentTarget.contains(event.relatedTarget))keys.current.clear();}}>
-  {pixel?<CafeView game={game} world={state} motion={{walking,distance:actorMotion.current.mapId===map.id?actorMotion.current.distanceTravelled:0}}
+  {pixel?<CafeView game={game} world={state} size={viewport} motion={{walking,distance:actorMotion.current.mapId===map.id?actorMotion.current.distanceTravelled:0}}
    inset={{bottom:viewport.width<800?interactionInset:0,right:viewport.width>=800?interactionWidth:0}} onApi={api=>{pixelApi.current=api;}}
    onPointerDown={point=>{
     const current=latest.current;if(current.paused)return;

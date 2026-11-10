@@ -9,7 +9,7 @@ import { createWorld, reduceWorld } from "../state";
 import { worldMaps } from "../registry";
 import { restaurantMap } from "../restaurant";
 import { releaseServedCustomer, restoreLife } from "../life";
-import { cafeCast, cafeDishes, cafePhase, liveCafe, MAX_DISHES, tapDestination, waiterActor } from "./cafe";
+import { cafeCast, cafeDishes, cafePhase, liveCafe, MAX_DISHES, serviceFacing, tapDestination, waiterActor } from "./cafe";
 import { cardinalDirections, isPixelMap } from "./maps";
 
 const compiled = compileScene(liveCafe, createAtlas(sprites));
@@ -106,6 +106,13 @@ describe("cafe cast and tables from game state", () => {
     expect(waiterActor({ x: 3, y: 4 }, "north", ["bun"], { walking: false, distance: 0 }).action).toBe("carry-idle");
     expect(waiterActor({ x: 3, y: 4 }, "south", ["bun"], { walking: true, distance: 0 }).action).toBe("carry-walk");
     expect(cafePhase("noon")).toBe("midday");
+    // Serving, the waiter turns to the table or the pass from their service spot.
+    const spot = (id: string) => restaurantMap.anchors.find(a => a.id === id)!.position;
+    expect(serviceFacing(spot("restaurant.table-1"), "restaurant.table-1")).toBe("up");
+    expect(serviceFacing(spot("restaurant.table-2"), "restaurant.table-2")).toBe("left");
+    expect(serviceFacing(spot("restaurant.table-4"), "restaurant.table-4")).toBe("right");
+    expect(serviceFacing(spot("restaurant.kitchen"), "restaurant.kitchen")).toBe("up");
+    expect(serviceFacing(spot("restaurant.kitchen"), null)).toBeNull();
     expect(cafePhase("night")).toBe("night");
   });
 

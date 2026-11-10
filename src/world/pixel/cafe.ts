@@ -35,11 +35,24 @@ export function cafePhase(phase: ServiceDayPhase): DayPhase {
   return phase === "noon" ? "midday" : phase;
 }
 
+/**
+ * While serving, the waiter turns to what they are serving: the table, or the counter at the pass.
+ * Null when no service anchor is active.
+ */
+export function serviceFacing(position: Point, anchorId: string | null): Facing | null {
+  const table = anchorId?.match(/^restaurant\.table-([1-4])$/);
+  const target: Vec | null = table ? [CAFE_TABLES[Number(table[1]) - 1].at[0], CAFE_TABLES[Number(table[1]) - 1].at[1] - .45]
+    : anchorId === "restaurant.kitchen" ? [position.x, position.y - 1] : null;
+  if (!target) return null;
+  const dx = target[0] - position.x, dy = target[1] - position.y;
+  return Math.abs(dx) > Math.abs(dy) ? (dx < 0 ? "left" : "right") : dy < 0 ? "up" : "down";
+}
+
 export type WaiterMotion = { walking: boolean; distance: number };
 /** The waiter: `carry-*` while the tray holds food; the walk cycle steps by distance travelled. */
-export function waiterActor(position: Point, facing: WorldFacing, tray: readonly string[], motion: WaiterMotion): Actor {
+export function waiterActor(position: Point, facing: WorldFacing | Facing, tray: readonly string[], motion: WaiterMotion): Actor {
   const carry = tray.length > 0 ? "carry-" : "";
-  return { id: "player", sprite: "char/player", at: [position.x, position.y], facing: pixelFacing(facing), action: `${carry}${motion.walking ? "walk" : "idle"}`, distance: motion.distance };
+  return { id: "player", sprite: "char/player", at: [position.x, position.y], facing: facing in FACING ? pixelFacing(facing as WorldFacing) : facing as Facing, action: `${carry}${motion.walking ? "walk" : "idle"}`, distance: motion.distance };
 }
 
 type TableNumber = 1 | 2 | 3 | 4;

@@ -12,6 +12,7 @@ import { workshopFrame } from "../src/world/art/workshop/framing";
 import { courtyardForCats } from "../src/world/maps/courtyard/habitat";
 import { furnitureColliders } from "../src/features/apartment/world";
 import { surfaceHeight } from "../src/world/maps/residential/elevation";
+import { cardinalDirections, isPixelMap } from "../src/world/pixel/maps";
 
 const maps: Record<string, WorldMapDefinition> = { restaurant: restaurantMap };
 function loadMaps(directory: string) {
@@ -97,9 +98,17 @@ export async function walkTo(page: Page, destination: Point) {
     const point = { x: world.position.x+(next.x-world.position.x)*step, y: world.position.y+(next.y-world.position.y)*step };
     const canvas = page.locator(".connected-world canvas");
     const box = (await canvas.boundingBox())!;
-    const camera = map.id === "restaurant" ? restaurantCamera(map.bounds, world.position, Math.ceil(box.width/2), Math.ceil(box.height/2)) : explorationCamera(map.bounds, world.position, Math.ceil(box.width/2), Math.ceil(box.height/2), 0, 0, surfaceHeight(map.id, world.position), map.id === "workshop" ? workshopFrame : undefined);
-    const screen = project(point, camera, surfaceHeight(map.id, point));
-    const position = { x: screen.x*box.width/camera.width, y: screen.y*box.height/camera.height };
+    let position: Point;
+    if (isPixelMap(map.id)) {
+      // Pixel maps publish their camera; tile units → CSS px from the canvas's top-left corner.
+      const camera = JSON.parse((await page.locator(".pixel-cafe").getAttribute("data-pixel-camera"))!) as {x:number;y:number;zoom:number;dpr:number;tile:number};
+      const scale = camera.zoom / camera.dpr;
+      position = { x: (point.x*camera.tile-camera.x)*scale, y: (point.y*camera.tile-camera.y)*scale };
+    } else {
+      const camera = map.id === "restaurant" ? restaurantCamera(map.bounds, world.position, Math.ceil(box.width/2), Math.ceil(box.height/2)) : explorationCamera(map.bounds, world.position, Math.ceil(box.width/2), Math.ceil(box.height/2), 0, 0, surfaceHeight(map.id, world.position), map.id === "workshop" ? workshopFrame : undefined);
+      const screen = project(point, camera, surfaceHeight(map.id, point));
+      position = { x: screen.x*box.width/camera.width, y: screen.y*box.height/camera.height };
+    }
     const clear = await canvas.evaluate((element, position) => {
       const bounds = element.getBoundingClientRect();
       return document.elementFromPoint(bounds.left+position.x,bounds.top+position.y) === element;
@@ -125,9 +134,12 @@ export async function walkTo(page: Page, destination: Point) {
     }
     if (!clear) {
       // A nearby target card can cover the ground; use the visible movement pad.
-      const controls = [{name:"向前走",x:-1,y:-1},{name:"向后走",x:1,y:1},{name:"向右走",x:1,y:-1},{name:"向左走",x:-1,y:1}];
+      const controls = isPixelMap(map.id)
+        ? [{name:"向前走",...cardinalDirections.ArrowUp},{name:"向后走",...cardinalDirections.ArrowDown},{name:"向右走",...cardinalDirections.ArrowRight},{name:"向左走",...cardinalDirections.ArrowLeft}]
+        : [{name:"向前走",x:-1,y:-1},{name:"向后走",x:1,y:1},{name:"向右走",x:1,y:-1},{name:"向左走",x:-1,y:1}];
       const candidates = controls.map(control => {
-        const position = movePlayer(map, world.position, {x:control.x*.5/Math.SQRT2,y:control.y*.5/Math.SQRT2});
+        const length = Math.hypot(control.x, control.y);
+        const position = movePlayer(map, world.position, {x:control.x*.5/length,y:control.y*.5/length});
         const path = findPath(map,position,destination);
         let previous=position, distance=0;
         for (const waypoint of path) {distance+=Math.hypot(waypoint.x-previous.x,waypoint.y-previous.y);previous=waypoint;}
