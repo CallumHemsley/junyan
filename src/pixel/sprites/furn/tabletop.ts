@@ -232,6 +232,26 @@ export default defineSprites({
     },
   },
 
+  /**
+   * A small glass bud vase with one white magnolia bud (白兰花) in it, bought for a few coins from
+   * the old woman at the tram stop each morning, the water a little low.
+   */
+  "furn/bud-vase": {
+    w: 9, h: 21, anchor: [4, 20], shadow: { rx: 3, ry: 1 },
+    draw: (p) => {
+      // The bud, its green sepals, a single leaf, the stem.
+      grid(p, 2, 0, 5, ["..w..", ".wW..", ".wWc.", ".cWc.", "..cg.", ".Lg..", "LLg..", "L.g..", "..g.."], { w: "white", W: "cream5", c: "cream4", g: "leaf2", L: "leaf3" });
+      // The glass: neck and body, translucent, the water line and the stem through it.
+      p.faded(0.5, () => { p.rect(3, 9, 3, 3, "blue6"); p.rect(2, 12, 5, 1, "blue6"); p.rect(1, 13, 7, 6, "blue6"); });
+      p.faded(0.7, () => p.rect(1, 15, 7, 4, "blue5"));
+      p.hline(1, 15, 7, "blue4");
+      p.vline(4, 9, 10, "leaf2");
+      p.px(2, 13, "white").px(2, 14, "white").px(3, 10, "white").px(2, 16, "white");
+      p.hline(1, 19, 7, "stone4").hline(2, 19, 4, "stone5");
+      p.outline("steel2");
+    },
+  },
+
   /** Table 1's setting: tin, vinegar and chili jar on the small bamboo tray the owner carved a notch into. */
   "furn/condiment-set-1": {
     w: 30, h: 30, anchor: [15, 29], shadow: { rx: 13, ry: 3, dy: -1 },
