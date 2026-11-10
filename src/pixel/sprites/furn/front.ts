@@ -1,21 +1,13 @@
 /**
- * Front-of-house furniture: the sideboard, the water dispenser, and the things by the door.
+ * Front-of-house furniture: the bistro dresser (id `furn/sideboard`), the water dispenser, and the things by the door.
  * Anchors are the front of the base on the floor.
  */
 import { defineSprites, Px, type Legend } from "../../kit/index.ts";
-import { boards, grid, roundCorners, topEdges } from "./_helpers.ts";
+import { each, grid, roundCorners } from "./_helpers.ts";
 
 const S: Legend = { "1": "steel1", "2": "steel2", "3": "steel3", "4": "steel4", "5": "steel5", "6": "steel6" };
 const BW: Legend = { w: "white", "6": "blue6", "5": "blue5", "4": "blue4", "3": "blue3", "2": "blue2", "1": "blue1" };
 const W: Legend = { "1": "wood1", "2": "wood2", "3": "wood3", "4": "wood4", "5": "wood5", "6": "wood6" };
-
-/** A raised door panel: frame lit top and left, panel field, shade bottom and right. */
-function panelDoor(p: Px, x: number, y: number, w: number, h: number) {
-  p.rect(x, y, w, h, "wood3").hline(x, y, w, "wood4").vline(x, y, h, "wood4").hline(x, y + h - 1, w, "wood2").vline(x + w - 1, y, h, "wood2");
-  p.rect(x + 3, y + 3, w - 6, h - 6, "wood4");
-  p.hline(x + 3, y + 3, w - 6, "wood2").vline(x + 3, y + 3, h - 6, "wood2").hline(x + 4, y + h - 4, w - 7, "wood5").vline(x + w - 4, y + 4, h - 7, "wood5");
-  p.over(() => p.hline(x + 6, y + 6, w - 14, "wood5").hline(x + 8, y + 9, w - 18, "wood3").hline(x + 5, y + h - 7, w - 12, "wood3"));
-}
 
 /** The big inverted water bottle, `bubble` 0–3 for the rising-bubble frames. 24×36. */
 function waterBottle(bubble: number): Px {
@@ -39,71 +31,61 @@ function waterBottle(bubble: number): Px {
 
 export default defineSprites({
   /**
-   * The tea-wood sideboard by the counter, bought with table 1 and just as old. The middle
-   * drawer of spoons and chopsticks is left ajar all day with a tea towel over it; a stack of
-   * bowls and a cup of porcelain spoons wait on top; the key lives in the left door.
+   * The bistro dresser: dark stained wood, a marble top, glass-fronted doors above, bought with
+   * the marble tables and now full of the shop's Chinese crockery: plates standing on edge, rice
+   * bowls in stacks, the good teapot, a big blue-and-white jar. One pane has a crack across it
+   * that nobody has had replaced; the brass pulls are polished pale by hands.
    */
   "furn/sideboard": {
-    w: 64, h: 60, anchor: [32, 58], foot: [-31, -14, 62, 13], shadow: { rx: 33, ry: 6, dy: -2 },
+    w: 64, h: 86, anchor: [32, 84], foot: [-31, -14, 62, 13], shadow: { rx: 33, ry: 6, dy: -2 },
     draw: (p) => {
-      // Top.
-      p.rect(2, 14, 60, 1, "wood5").rect(1, 15, 62, 10, "wood4");
-      boards(p, 1, 14, 62, 11, { dir: "h", seams: [5], seed: 101, flush: [40] });
-      topEdges(p, 1, 14, 62, 11);
-      p.over(() => grid(p, 26, 17, 8, ["..3333..", ".3....3.", "..3333.."], { "3": "wood3" }));
-      p.hline(1, 25, 62, "wood5").rect(1, 26, 62, 2, "wood3").hline(1, 28, 62, "wood2");
-      // Carcass front.
-      p.rect(1, 29, 62, 25, "wood2");
-      // Drawers: left and right shut, the middle one pulled out with its contents showing.
-      for (const x of [3, 43]) {
-        p.rect(x, 30, 18, 7, "wood3").hline(x, 30, 18, "wood4").vline(x, 30, 7, "wood4").vline(x + 17, 30, 7, "wood2").hline(x, 36, 18, "wood2");
-        grid(p, x + 7, 32, 4, ["g55g", "G44G"], { g: "gold2", G: "gold1", "5": "gold5", "4": "gold3" });
+      // Cornice.
+      p.rect(0, 0, 64, 6, "wood2").hline(1, 0, 62, "wood3").hline(0, 1, 64, "wood4").hline(0, 4, 64, "wood3").hline(0, 5, 64, "wood1");
+      p.over(() => p.hline(3, 1, 20, "wood5"));
+      // Hutch carcass with two glazed doors.
+      p.rect(3, 6, 58, 37, "wood2").vline(3, 6, 37, "wood3").vline(60, 6, 37, "wood1");
+      for (const dx of [6, 33]) {
+        p.rect(dx, 7, 25, 34, "wood2").hline(dx, 7, 25, "wood3").vline(dx, 7, 34, "wood3").vline(dx + 24, 7, 34, "wood1").hline(dx, 40, 25, "wood1");
+        // The cabinet's dark inside, shelves, and what stands on them.
+        p.rect(dx + 2, 9, 21, 30, "wood1");
+        for (const y of [19, 29]) p.hline(dx + 2, y, 21, "wood3").hline(dx + 2, y + 1, 21, "wood2");
       }
-      p.rect(23, 29, 18, 3, "wood1");
-      grid(p, 24, 29, 16, ["c.cc.bb.bbb.cc.c", "cccccbbbbbbccccc", "...............".padEnd(16, ".")], { c: "cream5", b: "bamboo4" });
-      p.rect(23, 32, 18, 7, "wood3").hline(23, 32, 18, "wood5").hline(23, 33, 18, "wood4").vline(23, 33, 6, "wood4").vline(40, 33, 6, "wood2").hline(23, 38, 18, "wood2");
-      // Doors with raised panels, ring pulls, the key.
-      panelDoor(p, 3, 40, 28, 13);
-      panelDoor(p, 33, 40, 28, 13);
-      for (const x of [27, 35]) grid(p, x, 44, 3, [".g.", "g.g", ".G."], { g: "gold3", G: "gold1" });
-      grid(p, 24, 45, 3, ["gg.", "g5g", ".g.", ".j.", ".j."], { g: "gold2", "5": "gold5", j: "jade3" });
-      // Plinth with bracket feet.
-      p.rect(1, 54, 62, 3, "wood3").hline(1, 54, 62, "wood4").hline(1, 56, 62, "wood2");
-      p.rect(1, 57, 7, 1, "wood2").rect(56, 57, 7, 1, "wood2");
-      // The tea towel over the open drawer.
-      grid(p, 28, 31, 8, [
-        "cccccccc", "cbcccbcc", "cccccccC", "cbcccbcC", "cccccccC", "cbcccbcC", "ccccccCC", "cbcccbC.", "cccccc..", ".ccc.C..", "..c.....",
-      ], { c: "cream5", C: "cream3", b: "blue4" });
-      // On top: a stack of bowls, and a cup of porcelain spoons.
-      grid(p, 5, 6, 16, [
-        "....wwwwwwww....",
-        "..ww66666666ww..",
-        ".w6555555555556.",
-        "w66666666666665w",
-        "w2w22w2w22w2w225",
-        ".w66666666666656",
-        "..w2222222222256",
-        "..w66666666665..",
-        "...w66666666552.",
-        "....w666666552..",
-        ".....33333333...",
-        "....w66666665...",
-        ".....3333333....",
-      ], BW);
-      grid(p, 42, 3, 12, [
-        "..w...w.....",
-        ".w6..w6..w..",
-        ".66.w6..w6..",
-        "..6.66.w6...",
-        "..66.6.66...",
-        ".6666666666.",
-        ".w2w2w2w225.",
-        ".w666666665.",
-        ".w666666665.",
-        ".w2w22w2225.",
-        ".w666666655.",
-        "..55555555..",
-      ], BW);
+      // Left door: plates on edge, a teapot; bowls; the big jar.
+      for (const x of [9, 13, 17]) grid(p, x, 10, 5, [".www.", "w656w", "w525w", "w656w", "w656w", "w525w", "w656w", ".w55.", "..5.."], BW);
+      grid(p, 23, 13, 7, ["..33...", ".w665..", "6w66653", ".66655.", "..555.."], BW);
+      for (const x of [8, 16, 23]) grid(p, x, 23, 6, [".wwww.", "w6666w", "w2w2w5", "w6666w", ".5555.", ".wwww.", "w2w2w5"], BW);
+      grid(p, 10, 30, 12, ["...wwwwww...", "..w666665...", ".w66666665..", ".w62w2w265..", ".w66666665..", ".w62222265..", "..w666665...", "...555555..."], BW);
+      // Right door: cups on hooks, a stack of saucers, a bamboo steamer.
+      for (const x of [36, 41, 46, 51]) grid(p, x, 11, 4, ["..1.", "ww1.", "w65.", "w65.", ".5.."], { ...BW, "1": "gold3" });
+      p.hline(35, 11, 21, "gold2");
+      grid(p, 36, 23, 18, ["wwwwwwwwwwwww.....", "6666666666665.....", "wwwwwwwwwwwww.....", "6666666666665.....", "wwwwwwwwwwwww.....", "5555555555555....."], BW);
+      grid(p, 37, 31, 18, ["..bbbbbbbbbbbb....", ".b5454545454543...", "b44444444444443...", "b3b3b3b3b3b3b32...", "b44444444444443...", ".b3333333333332...", "..222222222222...."], { b: "bamboo2", "5": "bamboo5", "4": "bamboo4", "3": "bamboo3", "2": "bamboo1" });
+      // Glazing bars, then the glass: two soft sheens per door, and the crack.
+      for (const dx of [6, 33]) {
+        p.rect(dx + 12, 9, 1, 30, "wood3");
+        p.hline(dx + 2, 19, 21, "wood3").hline(dx + 2, 29, 21, "wood3");
+        p.faded(0.18, () => each(dx + 2, 9, 21, 30, (x, y) => { const u = x - dx - (y - 9) * 0.6; if ((u > 2 && u < 5) || (u > 7 && u < 8)) p.px(x, y, "white"); }));
+      }
+      p.faded(0.9, () => p.line(45, 21, 50, 25, "white").line(50, 25, 55, 24, "white").line(50, 25, 51, 28, "white"));
+      for (const x of [29, 34]) grid(p, x, 23, 2, ["g5", "gg"], { g: "gold2", "5": "gold5" });
+      // The marble top of the base, in front of the hutch.
+      p.rect(1, 43, 62, 7, "cream5").hline(1, 43, 62, "stone4").hline(2, 44, 25, "white").vline(1, 44, 6, "white");
+      p.over(() => { p.line(6, 48, 14, 46, "stone4"); p.line(14, 46, 22, 47, "stone3"); p.line(40, 45, 52, 48, "stone4"); });
+      p.hline(1, 50, 62, "cream4").hline(1, 51, 62, "stone4").hline(1, 52, 62, "stone3");
+      // On it: a stack of rice bowls and the tea caddy.
+      grid(p, 6, 36, 12, ["..wwwwwwww..", ".w66666666w.", ".w2w2w2w25w.", "..w666665w..", ".w66666666w.", ".w2w2w2w25w.", "..w666665w..", ".w66666666w.", ".w2w2w2w25w.", "..w666665w..", "...555555..."], BW);
+      grid(p, 47, 38, 8, ["..3333..", ".w6665..", "w666665.", "w626265.", "w666665.", "w626265.", "w666665.", ".w5555..", "........", "........", "........"], BW);
+      // The base: two drawers with brass cup pulls, two panelled doors, the plinth.
+      p.rect(1, 53, 62, 27, "wood2").vline(1, 53, 27, "wood3").vline(62, 53, 27, "wood1");
+      for (const dx of [3, 33]) {
+        p.rect(dx, 54, 28, 7, "wood2").hline(dx, 54, 28, "wood3").vline(dx, 54, 7, "wood3").hline(dx, 60, 28, "wood1").vline(dx + 27, 54, 7, "wood1");
+        grid(p, dx + 11, 56, 6, [".gggg.", "g5444g", ".gggg."], { g: "gold2", "5": "gold5", "4": "gold3" });
+        p.rect(dx, 62, 28, 16, "wood2").hline(dx, 62, 28, "wood3").vline(dx, 62, 16, "wood3").hline(dx, 77, 28, "wood1").vline(dx + 27, 62, 16, "wood1");
+        p.rect(dx + 3, 65, 22, 10, "wood3").hline(dx + 3, 65, 22, "wood1").vline(dx + 3, 65, 10, "wood1").hline(dx + 4, 74, 21, "wood4").vline(dx + 24, 66, 9, "wood4");
+        p.over(() => p.hline(dx + 6, 68, 10, "wood4").hline(dx + 8, 71, 12, "wood2"));
+      }
+      for (const x of [28, 35]) grid(p, x, 68, 2, ["g5", "gg", ".g"], { g: "gold2", "5": "gold5" });
+      p.rect(0, 79, 64, 5, "wood1").hline(0, 79, 64, "wood2").hline(2, 80, 60, "wood3");
       p.outline("wood1");
     },
   },
