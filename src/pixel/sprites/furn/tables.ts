@@ -10,7 +10,7 @@ const STEEL = { "1": "steel1", "2": "steel2", "3": "steel3", "4": "steel4", "5":
 
 /** One step lighter or darker for a colour inside a ramp, used to light patterned surfaces. */
 const LIGHTER: Partial<Record<Color, Color>> = {
-  cream4: "cream5", cream5: "white", gold2: "gold3", gold3: "gold4", gold4: "gold5", jade5: "jade6", jade4: "jade5", jade6: "white",
+  cream3: "cream4", cream4: "cream5", cream5: "white", gold5: "white", gold2: "gold3", gold3: "gold4", gold4: "gold5", jade5: "jade6", jade4: "jade5", jade6: "white",
   steel4: "steel5", steel5: "steel6", blue4: "blue5", blue3: "blue4", rose2: "rose3", rose3: "rose4", rose4: "wood5",
 };
 const DARKER: Partial<Record<Color, Color>> = {
@@ -80,7 +80,7 @@ export default defineSprites({
   },
 
   /**
-   * Table 2. A cheap round-cornered table under sunflower-yellow gingham oilcloth that the owner's
+   * Table 2. A cheap round-cornered table under soft butter-yellow gingham oilcloth that the owner's
    * wife wipes forty times a morning. A regular's cigarette burn, a fold crease from the shop it
    * came from, and the torn front corner patched with yellowed tape. Plates: x 8–56, y 5–28.
    */
@@ -96,10 +96,11 @@ export default defineSprites({
       // The top, then the cloth hanging over its front edge.
       const gingham = (x: number, y: number, face: boolean) => {
         const col = ((x + 1) % 8) < 4, row = face ? ((y - 33) % 6) < 3 : ((y + 1) % 6) < 3;
-        const c: Color = col && row ? "gold3" : col || row ? "gold4" : "cream5";
+        const c: Color = col && row ? "cream3" : col ? "gold5" : row ? "cream4" : "cream5";
         if (!face) return c;
-        const d = DARKER[c] ?? c;
-        return y > 34 ? (DARKER[d] ?? d) : d;
+        // The hanging hem is in the shade of the table edge; the gold threads stay soft.
+        const deep = y > 34;
+        return col && row ? "cream2" : col ? (deep ? "gold4" : "gold5") : row ? "cream3" : deep ? "cream3" : "cream4";
       };
       each(1, 1, 62, 32, (x, y) => p.px(x, y, gingham(x, y, false)));
       roundCorners(p, 1, 1, 62, 32, 4, "tl tr");

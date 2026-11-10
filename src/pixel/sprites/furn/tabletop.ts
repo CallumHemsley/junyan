@@ -204,6 +204,34 @@ export default defineSprites({
     },
   },
 
+  /**
+   * The little tea-wood dish the bill comes on, a brass clip holding the slip and the change
+   * left on it in two coins. Blank: the overlay area for the bill's DOM text is x 4–8, y 2–5.
+   */
+  "furn/bill-holder": {
+    w: 14, h: 11, anchor: [7, 10], shadow: { rx: 6, ry: 2 },
+    draw: (p) => {
+      grid(p, 0, 0, 14, [
+        "......gg......",
+        ".....g55g.....",
+        "...cccGGccc...",
+        "...cllllllc...",
+        "..5cccccccC4..",
+        ".54cllllllC33.",
+        ".43ccccccCyY3.",
+        ".43333333sSyy.",
+        ".555555555s555",
+        ".333333333333.",
+        ".222222222222.",
+      ].map((r) => r.slice(0, 14).padEnd(14, ".")), {
+        g: "gold2", "5": "wood5", G: "gold3", c: "cream5", C: "cream3", l: "stone3", "4": "wood4", "3": "wood3", "2": "wood2",
+        y: "gold3", Y: "gold5", s: "steel4", S: "steel6",
+      });
+      p.px(6, 1, "gold5");
+      p.outline("wood1");
+    },
+  },
+
   /** Table 1's setting: tin, vinegar and chili jar on the small bamboo tray the owner carved a notch into. */
   "furn/condiment-set-1": {
     w: 30, h: 30, anchor: [15, 29], shadow: { rx: 13, ry: 3, dy: -1 },

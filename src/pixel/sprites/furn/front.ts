@@ -145,7 +145,7 @@ export default defineSprites({
 
   /**
    * The coat rack inside the door, tea wood on three splayed feet. A delivery rider's navy padded
-   * jacket and old Mr Liu's tweed flat cap hang on it; the hook that broke was replaced with a
+   * jacket hangs by its hood, old Mr Liu's tweed flat cap beside it; the hook that broke was replaced with a
    * bent nail.
    */
   "furn/coat-rack": {
@@ -176,38 +176,32 @@ export default defineSprites({
         "kkkkkkkkkkkkg",
         ".kkk.........",
       ], { g: "grey2", G: "grey3", k: "grey1" });
-      // The navy padded jacket on the right hook: quilted, hood down, a sleeve hanging forward.
-      grid(p, 13, 13, 18, [
-        "....ddddd.........",
-        "..dd5555dd........",
-        ".d55444445d.......",
-        ".d444444444d......",
-        "d44444444444d.....",
-        "d44222242224dd....",
-        "d4444443444443d...",
-        "d4444443444444d...",
-        "d44222243222224d..",
-        "d4444443444444d4d.",
-        "d4444443444444d44d",
-        "d44222243222224d4d",
-        "d4444443444444d44d",
-        "d4444443444444d44d",
-        "d44222243222224d4d",
-        "d4444443444444dd4d",
-        "d4444443444444d.4d",
-        "d44222243222224.4d",
-        "d4444443444444d.dd",
-        "d4444443444444d.ss",
-        "d44222243222224.ss",
-        "d4444444s44444d...",
-        "dddddddddddddd....",
-      ], { d: "blue1", "5": "blue4", "4": "blue3", "3": "blue2", "2": "blue2", s: "grey3" });
       p.outline("wood1");
+      // The navy padded jacket, hung by its hood on the right hook: quilted, zipped, sleeves down.
+      const j = new Px(20, 28);
+      for (const x of [0, 17]) {
+        j.rect(x, 8, 3, 15, "blue3").vline(x, 8, 15, x ? "blue3" : "blue4").vline(x + 2, 8, 15, x ? "blue2" : "blue3");
+        j.rect(x, 21, 3, 2, "blue2").px(x + 1, 22, "blue1");
+        // One fold where the sleeve bends.
+        j.px(x, 14, "blue2").px(x + 1, 15, "blue2").px(x + 2, 16, "blue2").px(x + 1, 14, "blue4");
+      }
+      j.rect(3, 6, 14, 19, "blue3").vline(3, 7, 17, "blue4").vline(16, 7, 18, "blue2").px(3, 6, null).px(16, 6, null);
+      for (const y of [11, 15, 19, 23]) j.hline(4, y, 12, "blue2").hline(4, y - 1, 12, "blue4");
+      for (const x of [0, 17]) for (const y of [12, 17]) j.hline(x, y, 3, "blue2");
+      j.vline(10, 8, 17, "steel4").rect(10, 13, 1, 2, "steel6").px(11, 14, "steel3");
+      j.hline(5, 20, 4, "blue1").hline(4, 24, 12, "blue2");
+      // The hood, its dark opening, and the drawstrings.
+      j.ellipse(10.5, 3.5, 5, 3.5, "blue3");
+      j.over(() => j.hline(7, 1, 5, "blue4").hline(6, 2, 2, "blue4"));
+      j.ellipse(10.5, 4.5, 3, 1.8, "blue1").hline(9, 3, 3, "blue2");
+      j.vline(8, 7, 4, "cream5").vline(13, 7, 3, "cream5").px(8, 11, "cream3").px(13, 10, "cream3");
+      j.outline("blue1");
+      p.blit(j, 12, 10);
     },
   },
 
   /**
-   * A blue-and-white umbrella pot by the door, a wave scroll and a lotus on it, with two umbrellas:
+   * A blue-and-white umbrella pot by the door, a wave scroll and one loose brushed band on it, with two umbrellas:
    * the owner's long plum one with a bamboo crook, and a little jade folding one a customer forgot
    * in the rain last week.
    */
@@ -230,10 +224,10 @@ export default defineSprites({
         "w6w2..2..2..2..2.5",
         "w6w....22....22..5",
         "w6w666666666666655",
-        "w6w666666266666655",
-        "w6w666626262666655",
-        "w6w666622222666655",
-        "w6w666662226666655",
+        "w6w666226622666655",
+        "w6w222222222222255",
+        "w6w222222222222255",
+        "w6w662262226226655",
         "w6w666666666666655",
         "w6w666666666666655",
         "w6w666666666666655",
