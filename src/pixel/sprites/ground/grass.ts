@@ -1,51 +1,23 @@
 /**
- * The town's grass: the scruffy verges of a Concession lane, not a lawn. Nobody mows it; the street
- * sweeper strims it twice a year and the neighbours' dogs and short cuts do the rest. Mid-green with
- * darker blade clumps and a few sunlit tips; clover where it is damp, bare earth where feet cut the
- * corner, and in November the plane trees drop leaves and seed balls on everything.
+ * The town's grass: the scruffy verges of a Concession lane under its plane trees, not a lawn. Nobody
+ * mows it; the street sweeper strims it twice a year and the neighbours' dogs and short cuts do the rest.
+ * A dark, muted green with sage and straw in it; clover where it is damp; in November the plane trees
+ * drop leaves and seed balls on everything.
  *
- * Blade marks sit on a jittered grid and wrap at the tile edge, so each variant tiles on its own and
- * against the others. The scene weights a and b heavily, c moderately and d rarely.
+ * `grass-a..d` are the ordinary verge. Over them the scene lays tone bands that span many tiles:
+ * `grass-shade-<nw ne sw se bits>` where the canopy keeps the ground dark and damp, and `grass-worn-…`
+ * along every pavement and short cut, trampled to straw and earth (see `_turf.ts`). The full-band tiles
+ * have two variants (`-1111`, `-1111b`). The scene weights a and b heavily, c moderately and d rarely.
  */
-import { defineSprites, hash, type Legend, type Px } from "../../kit/index.ts";
-import { T, jitter, stamp, tile, wrap } from "./_helpers.ts";
+import { defineSprites, hash, type Legend, type Px, type SpriteDef } from "../../kit/index.ts";
+import { stamp, tile } from "./_helpers.ts";
+import { bandMask, turf, turfWhere } from "./_turf.ts";
 
 const L: Legend = {
-  d: "leaf2", D: "leaf1", g: "leaf3", h: "leaf4", H: "leaf5",
-  j: "jade4", J: "jade5", k: "jade3", w: "white", c: "cream4", p: "pink3",
+  d: "leaf2", D: "leaf1", g: "leaf3", k: "jade3", j: "jade4", w: "cream5", c: "cream3", p: "pink2",
   e: "oak2", E: "oak1", f: "oak3", s: "stone4", S: "stone2", t: "stone3",
-  b: "bamboo3", B: "bamboo2", n: "bamboo4", o: "oak4", r: "brown2", R: "brown3", y: "gold4", Y: "gold3",
+  b: "bamboo3", B: "bamboo2", n: "bamboo4", o: "oak4", r: "brown2", R: "brown3",
 };
-
-/** Blade clumps: shade strokes with a lit tip, a few shapes so the field never reads as a stamp. */
-const CLUMPS: readonly (readonly string[])[] = [
-  [".h.", "d.d"],
-  ["h..", "dh.", ".d."],
-  [".h.h", "d.dd"],
-  ["..h", ".d.", "d.."],
-  ["d.d", ".d."],
-  [".d.", "d.d"],
-  ["h.", "d."],
-];
-
-/** The base field: leaf3 with clumps of shade blades and sunlit tips on a jittered grid. */
-function field(p: Px, seed: number, density = 1) {
-  p.rect(0, 0, T, T, "leaf3");
-  // Broad, quiet tone: darker damp tufts (small clusters, never single pixels) take a fair share of the green.
-  for (const [x, y, r] of jitter(8, seed + 7, 1)) {
-    if (r > 0.65) continue;
-    stamp(p, x, y, r < 0.2 ? ["dd.", ".dd"] : r < 0.35 ? [".d", "dd", "d."] : ["d.d", "dd."], L);
-  }
-  for (const [x, y, r] of jitter(8, seed, 1)) {
-    if (r > density) continue;
-    stamp(p, x, y, CLUMPS[Math.floor(hash(x, y, seed + 3) * CLUMPS.length)], L);
-  }
-  // Small shade marks between the clumps, so the green never sits flat; lit marks are rarer.
-  for (const [x, y, r] of jitter(4, seed + 11, 0)) {
-    if (r > 0.34 * density) continue;
-    wrap(p, x, y, r < 0.29 * density ? "leaf2" : "leaf4");
-  }
-}
 
 /** A fallen plane-tree leaf, dry and curled, five lobes reduced to what reads at 2×. */
 function planeLeaf(p: Px, x: number, y: number, flip = false) {
@@ -61,49 +33,43 @@ function planeLeaf(p: Px, x: number, y: number, flip = false) {
   stamp(p, x, y, flip ? rows.map((r) => [...r].reverse().join("")) : rows, L);
 }
 
-export default defineSprites({
+const sprites: Record<string, SpriteDef> = {
   /** Plain verge. */
-  "ground/grass-a": tile((p) => field(p, 1)),
+  "ground/grass-a": tile((p) => turf(p, "mid", 1)),
 
   /** Plain verge, a different scatter. */
-  "ground/grass-b": tile((p) => field(p, 2)),
+  "ground/grass-b": tile((p) => turf(p, "mid", 2)),
 
-  /** A clover patch where the downpipe drains: rounder, bluer leaves and two white clover heads. */
+  /** A clover patch where the downpipe drains: rounder, bluer leaves and one white clover head. */
   "ground/grass-c": tile((p) => {
-    field(p, 3, 0.7);
+    turf(p, "mid", 3, 0.7);
     const leaves = [[6, 7], [11, 5], [9, 11], [15, 9], [4, 13], [13, 14], [18, 12], [8, 17]];
     for (const [x, y] of leaves) {
-      const pick = hash(x, y, 33);
-      stamp(p, x, y, pick < 0.5
-        ? [".j.j.", "jJkJj", ".jkj.", "..k.."]
-        : [".jj.", "jJJj", ".kk.", ".k.."], L);
+      stamp(p, x, y, hash(x, y, 33) < 0.5 ? [".k.k.", "kjDjk", ".kDk.", "..D.."] : [".kk.", "kjjk", ".DD.", ".D.."], L);
     }
-    // One white clover head on a short stalk, lit from the upper left.
-    stamp(p, 12, 9, [".ww.", "wwcw", ".cp.", "..d."], L);
+    stamp(p, 12, 9, [".ww.", "wwcw", ".cp.", "..D."], L);
   }),
 
   /**
-   * Where everyone cuts the corner: the turf thinned to straw and scuffed through to earth in places,
-   * fading out at the edges rather than stopping, a plane tree's seed ball (the spiky brown bauble the
-   * kids throw at each other in autumn) and one dry leaf.
+   * A scuffed spot where the kids play: straw and a little earth, two pebbles, a plane tree's seed ball
+   * (the spiky brown bauble they throw at each other in autumn) and one dry leaf.
    */
   "ground/grass-d": tile((p) => {
-    field(p, 4, 0.8);
-    const cx = 15, cy = 15;
-    // Two-pixel clusters, more of them toward the middle: straw first, earth at the heart.
-    for (let y = 2; y < 30; y += 2) for (let x = 2; x < 30; x += 2) {
-      const d = Math.hypot((x - cx) / 12, (y - cy) / 8);
-      const r = hash(x, y, 47);
-      if (d > 1 || r > 1.05 - d) continue;
-      const earth = d < 0.55 && r < 0.6;
-      const c = earth ? "oak2" : r < 0.5 ? "bamboo3" : "bamboo4";
-      p.px(x, y, c).px(x + 1, y, c);
-      if (earth) { p.px(x, y + 1, "oak2").px(x + 1, y + 1, hash(x, y, 48) < 0.5 ? "oak3" : "oak2"); if (p.get(x, y - 1) !== "oak2") p.hline(x, y - 1, 2, "oak1"); }
-    }
-    stamp(p, 9, 13, ["h.", "d."], L);
-    stamp(p, 21, 18, [".h", "dd"], L);
+    turf(p, "mid", 4, 0.8);
+    turfWhere(p, "worn", 4, (x, y) => Math.hypot((x - 15) / 10, (y - 16) / 7) + (hash(x >> 1, y >> 1, 49) - 0.5) * 0.5 < 0.9);
     stamp(p, 12, 19, ["ss", "tS"], L);
     stamp(p, 15, 13, [".R.", "RoR", "rRr", ".r."], L);
-    planeLeaf(p, 21, 21, true);
+    planeLeaf(p, 21, 20, true);
   }),
-});
+};
+
+// Tone bands: every corner combination but "none", each tone with its own seeds.
+for (let m = 1; m < 16; m++) {
+  const bits = m.toString(2).padStart(4, "0");
+  sprites[`ground/grass-shade-${bits}`] = tile((p) => turfWhere(p, "shade", 20 + m, bandMask(bits, 20 + m)));
+  sprites[`ground/grass-worn-${bits}`] = tile((p) => turfWhere(p, "worn", 40 + m, bandMask(bits, 40 + m)));
+}
+sprites["ground/grass-shade-1111b"] = tile((p) => turf(p, "shade", 61));
+sprites["ground/grass-worn-1111b"] = tile((p) => turf(p, "worn", 62));
+
+export default defineSprites(sprites);
