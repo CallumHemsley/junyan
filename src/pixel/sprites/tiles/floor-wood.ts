@@ -3,7 +3,8 @@
  * east–west. Most variants are quiet ground so furniture reads on top; the stories live in a few.
  * Tiles anchor at their top-left corner and sit on the 32px grid.
  *
- * Suggested mix for open floor: a ×4, b ×4, c, d, g, i once each. The worn path (e, f) runs from the
+ * Suggested mix for open floor: mostly a and b, c now and then, d and i rarely, g once.
+ * Only e, f and h carry paler wood, never more than one step (oak5 on oak4); d differs by finish, not tone. The worn path (e, f) runs from the
  * doorway to the counter; lay e and f alternately along it. h goes where the sun from a window lands.
  */
 import { defineSprites, type Px } from "../../kit/index.ts";
@@ -37,7 +38,7 @@ export default defineSprites({
     ], OAK, "knot");
   }),
 
-  /** A board replaced after the radiator leak: paler new oak, bright new nail heads. */
+  /** A board replaced after the radiator leak: clean new oak with a crisp edge and bright new nail heads, the same tone as its neighbours. */
   "tile/floor-wood-d": tile(boards(4, [{ grain: 2 }, { joints: [14] }, { joints: [6, 25], tone: [7, 25, "new"], grain: 2 }, { grain: 2 }])),
 
   /** The path worn pale between the door and the counter, centred so a run of tiles joins up. */
@@ -83,7 +84,7 @@ export default defineSprites({
     oakBoards(p, 8, [{ joints: [28] }, { grain: 2 }, { grain: 2 }, { joints: [7] }]);
     const inside = (x: number, y: number, rx: number, ry: number) => ((x + 0.5 - 16) / rx) ** 2 + ((y + 0.5 - 15) / ry) ** 2 <= 1;
     p.each((x, y, c) => {
-      if (inside(x, y, 8.5, 5.5)) return c === "oak4" ? "oak5" : c === "oak3" ? "oak4" : c === "oak5" ? "cream4" : undefined;
+      if (inside(x, y, 8.5, 5.5)) return c === "oak4" ? "oak5" : c === "oak3" ? "oak4" : undefined;
       if (inside(x, y, 12, 8) && (x + y) % 3 !== 0) return c === "oak3" ? "oak4" : undefined;
       return undefined;
     });
