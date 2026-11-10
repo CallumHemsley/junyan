@@ -4,19 +4,23 @@
  * A 1930s Concession shopfront in bottle-green painted timber between two fluted cream pilasters,
  * the same green lattice and linen café curtains as the windows inside, a glazed double door exactly
  * at the map's opening (x 160..224), brass on everything a hand touches. Above the green fascia, a
- * cream Streamline upper storey: three steel windows, speed-line grooves, a stepped Deco crown. The
- * kitchen is at the east end, so the louvred vent there breathes steam up the render, and a second
- * stack on the roof does too. On the flat roof the cook dries his whites beside the water tank,
- * grows scallions in fish boxes and keeps one broken bentwood chair for his break.
+ * cream Streamline upper storey: three steel windows and speed-line grooves, topped by a stepped
+ * Art Deco parapet with fluted end piers and a three-step crest round a jade roundel. Behind the
+ * parapet, a narrow tiled terrace where the household lives (the pigeon loft and scallion boxes at the
+ * west end, the cook's whites on their line and his folding chair and thermos at the east), and over
+ * that a grey pantile roof in the lanes' own language, ridge east–west, a tiger window, and the
+ * kitchen's brick chimney steaming at the east end. The louvred vent on the facade steams too.
  *
  * Blank sign field (DOM text): x 107..245, rows 213..225 (the gilt lacquer board on the fascia).
  * The doorway is 64 px tall; its left half stands open (the open leaf is another worker's prop).
  * The awning `town/breakfast-awning` hangs from the fascia's foot at z 90; its hem clears z 64.
  */
-import { defineSprites, hash, type Legend, type Px } from "../../kit/index.ts";
+import { defineSprites, hash, type Color, type Legend, type Px } from "../../kit/index.ts";
+// The lane houses' roof kit (ticket 0164), read-only, so the bistro's roof speaks the lanes' language.
+import { laneRoof, tigerWindow } from "../bldg/_lane.ts";
 import {
-  acUnit, block, boards, cable, cafeCurtain, castShadow, flatRoof, greenFrame, perProp, plotFoot, signboard,
-  sillPot, step, streak, streetGlass, stucco, wisp, zrect,
+  acUnit, block, boards, cable, cafeCurtain, greenFrame, greyBrick, moss, perProp, plotFoot, shadowWedge,
+  signboard, sillPot, step, streetGlass, stucco, wisp, zrect,
 } from "./_front.ts";
 
 const DOOR = [160, 224] as const;
@@ -275,90 +279,6 @@ function upperWindow(p: Px, H: number, x: number, z: number, seed: number, story
   }
 }
 
-/** The stepped Deco crown over the centre of the parapet, with fins and a jade-glazed roundel. */
-function crown(p: Px, H: number) {
-  const steps: [number, number, number][] = [[132, 220, 166], [146, 206, 172], [160, 192, 178]];
-  for (const [x0, x1, z1] of steps) {
-    zrect(p, H, x0, 150, x1 - x0, z1, "cream3");
-    zrect(p, H, x0, z1 - 2, x1 - x0, z1, "cream5");
-    zrect(p, H, x0, z1 - 3, x1 - x0, z1 - 2, "cream4");
-    zrect(p, H, x1 - 1, 150, 1, z1, "cream1");
-    zrect(p, H, x0, 150, 1, z1 - 2, "cream4");
-  }
-  for (const fx of [150, 156, 196, 202]) { zrect(p, H, fx, 152, 1, 168, "cream2"); zrect(p, H, fx + 1, 152, 1, 168, "cream5"); }
-  const cy = H - 166, cx = 176;
-  p.ellipse(cx, cy, 6, 6, "jade1");
-  p.ellipse(cx, cy, 5, 5, "jade3");
-  p.ellipse(cx - 1, cy - 1, 3, 3, "jade4");
-  p.px(cx - 3, cy - 3, "jade6").px(cx - 2, cy - 3, "jade5");
-  p.ellipse(cx, cy, 1.5, 1.5, "gold3");
-}
-
-// ── the roof ────────────────────────────────────────────────────────────────
-
-function roof(p: Px, frame: number) {
-  flatRoof(p, 0, 0, 352, 161, 41);
-  castShadow(p, 16, 20, 68, 56, 4);
-  castShadow(p, 96, 30, 38, 42, 4);
-  castShadow(p, 144, 76, 68, 44, 3);
-  castShadow(p, 150, 30, 60, 40, 4);
-  castShadow(p, 24, 114, 84, 22, 2);
-  castShadow(p, 238, 120, 34, 24, 3);
-  castShadow(p, 310, 66, 18, 74, 3);
-  stairHut(p, 18, 20);
-  waterTank(p, 96, 22);
-  pigeonLoft(p, 150, 26);
-  laundry(p, 228, 20);
-  skylight(p, 146, 80);
-  fishBoxes(p, 24, 108);
-  brokenChair(p, 120, 112);
-  roofCondenser(p, 238, 120);
-  kitchenStack(p, 312, 60, frame);
-  // The roof drain in the front corner, and the stain it leaves.
-  p.rect(336, 150, 6, 4, "stone2").rect(337, 151, 4, 2, "ink2");
-  for (let i = 0; i < 18; i++) for (let j = 0; j < 6; j++) if (hash(i, j, 3) < 0.35 - j * 0.05) p.px(322 + i, 152 + j - (i > 9 ? 1 : 0), "stone3");
-}
-
-function stairHut(p: Px, x: number, y: number) {
-  const w = 64;
-  // Slab roof seen from above, its lip, then the stucco face with a green door.
-  p.rect(x - 2, y, w + 4, 16, "stone4").frame(x - 2, y, w + 4, 16, "stone3");
-  p.hline(x - 2, y, w + 4, "cream5").hline(x - 2, y + 15, w + 4, "stone2");
-  p.rect(x + 46, y + 4, 4, 6, "steel3").hline(x + 45, y + 3, 6, "steel5").vline(x + 49, y + 4, 6, "steel1");
-  stucco(p, x, y + 16, w, 40, 9);
-  p.hline(x, y + 16, w, "cream2");
-  p.vline(x + w - 1, y + 16, 40, "cream1");
-  // Door, bottle green like the shop's, the paint scuffed off round the handle.
-  const dx = x + 22, dy = y + 24;
-  p.rect(dx, dy, 20, 32, "jade2").frame(dx, dy, 20, 32, "jade1");
-  p.hline(dx, dy, 20, "jade3").vline(dx, dy, 32, "jade3");
-  p.rect(dx + 3, dy + 3, 14, 10, "jade3").rect(dx + 4, dy + 4, 12, 8, "jade2");
-  p.rect(dx + 3, dy + 16, 14, 13, "jade3").rect(dx + 4, dy + 17, 12, 11, "jade2");
-  p.rect(dx + 14, dy + 13, 4, 4, "wood4").px(dx + 15, dy + 14, "gold3").px(dx + 15, dy + 15, "gold1");
-  // A lamp over the door and a bucket by it.
-  p.rect(dx + 7, dy - 6, 6, 3, "steel4").hline(dx + 7, dy - 3, 6, "gold5");
-  block(p, x + 4, y + 44, ["abbbbba", "acdddca", "acdddca", ".accca."], { a: "steel1", b: "steel5", c: "steel3", d: "steel4" }, "bucket");
-}
-
-function waterTank(p: Px, x: number, y: number) {
-  const w = 38;
-  // Brick piers.
-  for (const px0 of [x + 4, x + w - 12]) { p.rect(px0, y + 40, 8, 12, "stone3"); p.hline(px0, y + 44, 8, "stone4"); p.hline(px0, y + 48, 8, "stone4"); p.vline(px0 + 7, y + 40, 12, "stone1"); }
-  // Body: a steel drum, banded, rust weeping from the seams.
-  p.rect(x, y + 6, w, 36, "steel3");
-  p.vline(x, y + 6, 36, "steel1").vline(x + 1, y + 6, 36, "steel4").vline(x + 3, y + 6, 36, "steel5").vline(x + w - 1, y + 6, 36, "steel1").vline(x + w - 2, y + 6, 36, "steel2");
-  for (const by of [y + 14, y + 28]) p.hline(x, by, w, "steel2").hline(x, by + 1, w, "steel4");
-  for (const [rx, ry] of [[x + 12, y + 16], [x + 25, y + 30], [x + 30, y + 16]]) streak(p, rx, ry, 9, "orange1", "wood3");
-  p.hline(x, y + 41, w, "steel1");
-  // Lid ellipse.
-  p.ellipse(x + w / 2, y + 6, w / 2, 6, "steel4");
-  p.ellipse(x + w / 2, y + 6, w / 2 - 2, 4.5, "steel5");
-  p.ellipse(x + w / 2 - 3, y + 5, 7, 2.5, "steel6");
-  p.rect(x + 16, y + 3, 6, 3, "steel2").hline(x + 16, y + 3, 6, "steel4");
-  // The pipe down to the roof.
-  p.rect(x + w - 6, y + 42, 3, 12, "steel2").vline(x + w - 6, y + 42, 12, "steel4");
-}
-
 /**
  * The pigeon loft: a timber box on legs with a wire-mesh landing cage, roofed in tar felt. Somebody
  * upstairs still races pigeons; two are home.
@@ -425,25 +345,6 @@ function laundry(p: Px, x: number, y: number) {
   for (const pegx of [x + 10, x + 20, x + 29, x + 41, x + 49, x + 58, x + 63, x + 68]) p.px(pegx, y + 7 + Math.round(4 * 4 * ((pegx - x) / 72) * (1 - (pegx - x) / 72)) - 1, "bamboo4");
 }
 
-function skylight(p: Px, x: number, y: number) {
-  const w = 64, h = 38;
-  // Upstand kerb, then two glass slopes meeting at a ridge: the far slope catches the sky.
-  p.rect(x - 2, y - 2, w + 4, h + 6, "cream2").hline(x - 2, y - 2, w + 4, "cream4").hline(x - 2, y + h + 3, w + 4, "cream1");
-  p.rect(x, y, w, 14, "blue5");
-  p.rect(x, y + 14, w, h - 14, "blue3");
-  for (let j = y + 15; j < y + h; j++) for (let i = x; i < x + w; i++) if ((i + j) % 2 === 0 && j > y + h - 8) p.px(i, j, "blue2");
-  p.hline(x, y + 13, w, "jade3").hline(x, y + 14, w, "jade1");
-  for (let i = x; i <= x + w; i += 16) { p.vline(i, y, h, "jade2"); p.vline(i + 1, y, h, "jade1"); }
-  p.frame(x, y, w + 2, h, "jade1");
-  // Glints, and the pane mended with yellowed corrugated plastic.
-  p.line(x + 4, y + 10, x + 10, y + 3, "white").line(x + 20, y + 30, x + 28, y + 20, "blue5");
-  const mx = x + 34, my = y + 16;
-  p.rect(mx, my, 14, h - 17, "bamboo4");
-  for (let i = 0; i < 14; i += 3) p.vline(mx + i, my, h - 17, "bamboo3");
-  for (let i = 1; i < 14; i += 3) p.vline(mx + i, my, h - 17, "bamboo5");
-  p.hline(mx, my, 14, "bamboo2");
-}
-
 function fishBoxes(p: Px, x: number, y: number) {
   // Three polystyrene fish boxes: scallions, coriander, one chili plant (the roof's only red).
   const box = (bx: number, by: number, w: number) => {
@@ -460,62 +361,145 @@ function fishBoxes(p: Px, x: number, y: number) {
   block(p, x + 63, y - 2, ["...m.n...", "..mnmnm..", ".mnr.nmr.", "mnmnmr.m.", ".lmnmnml.", "..lm.ml..", "...l.l...", "...l.l..."], { l: "leaf1", m: "leaf2", n: "leaf3", r: "red3" }, "chili");
 }
 
-function brokenChair(p: Px, x: number, y: number) {
-  // The bentwood chair that lost its cane seat, now a plank; a coffee-tin ashtray beside it.
+/** Height of the Deco parapet's top at column x: end piers, low runs, a stepped centre crest. */
+function parapetTop(x: number) {
+  if (x < 12 || x >= 340) return 178;
+  if (x >= 158 && x < 194) return 192;
+  if (x >= 140 && x < 212) return 184;
+  if (x >= 122 && x < 230) return 176;
+  return 168;
+}
+
+/**
+ * The stepped Art Deco parapet over the cornice: cream render rising to fluted end piers and a
+ * three-step crest with the jade roundel, a lit coping on every step (its top seen from above), and
+ * behind it the hard shadow line it throws on the terrace floor.
+ */
+function parapet(p: Px, H: number) {
+  for (let x = 0; x < 352; x++) {
+    const t = parapetTop(x);
+    // Shadow line on the terrace just behind the coping.
+    for (let k = 0; k < 5; k++) { const y = H - 1 - (t + 3 + k), c = p.get(x, y); if (c && (k < 3 || (k === 3 && x % 2 === 0) || (k === 4 && x % 4 === 0))) p.px(x, y, k < 3 ? (k === 0 ? "ink2" : step(c, -2)) : step(c, -1)); }
+    zrect(p, H, x, 154, 1, t, "cream3");
+    zrect(p, H, x, t, 1, t + 2, "cream5");
+    zrect(p, H, x, t + 2, 1, t + 3, "cream4");
+    zrect(p, H, x, t - 2, 1, t, "cream2");
+    const prev = x > 0 ? parapetTop(x - 1) : t, next = x < 351 ? parapetTop(x + 1) : t;
+    if (next < t) zrect(p, H, x, next, 1, t, "cream1");
+    if (prev < t) zrect(p, H, x, prev, 1, t - 2, "cream5");
+  }
+  // Render texture and the flutes: three on each pier, the crest's flanks fluted, speed lines across.
+  for (let x = 0; x < 352; x += 9) if (hash(x, 4, 23) < 0.35) zrect(p, H, x + 2, 158, 4, 159, "cream4");
+  for (const fx of [3, 6, 9, 343, 346, 349, 144, 148, 204, 208]) { zrect(p, H, fx, 156, 1, parapetTop(fx) - 3, "cream2"); zrect(p, H, fx + 1, 156, 1, parapetTop(fx) - 3, "cream5"); }
+  for (const z of [160, 163]) { zrect(p, H, 12, z, 110, z + 1, "cream2"); zrect(p, H, 230, z, 110, z + 1, "cream2"); zrect(p, H, 12, z - 1, 110, z, "cream5"); zrect(p, H, 230, z - 1, 110, z, "cream5"); }
+  // The roundel.
+  const cy = H - 1 - 180, cx = 176;
+  p.ellipse(cx, cy, 7, 7, "jade1");
+  p.ellipse(cx, cy, 6, 6, "jade3");
+  p.ellipse(cx - 1, cy - 1, 3.5, 3.5, "jade4");
+  p.px(cx - 4, cy - 3, "jade6").px(cx - 3, cy - 4, "jade5");
+  p.ellipse(cx, cy, 1.5, 1.5, "gold3");
+  for (const dx of [-11, 10]) zrect(p, H, cx + dx, 172, 1, 188, "cream2");
+}
+
+// ── the roof ────────────────────────────────────────────────────────────────
+
+const EAVE_ROWS = 98; // the pitched roof covers rows 0..97; the terrace runs from there to the parapet
+
+/**
+ * Up top: a grey pantile roof in the lanes' own language (ridge east–west, one tiger window, the
+ * kitchen's brick chimney steaming at the east end), and in front of it a narrow tiled terrace behind
+ * the Deco parapet where the household lives: the pigeon loft and the scallion boxes at the west end,
+ * the cook's whites on their line and his folding chair and thermos at the east.
+ */
+function roof(p: Px, frame: number) {
+  terraceFloor(p, 0, EAVE_ROWS - 6, 352, 80);
+  laneRoof(p, 0, 0, 352, EAVE_ROWS, { seed: 41, ridgeY: 22, damp: 0.06 });
+  moss(p, 10, EAVE_ROWS - 26, 330, 16, 44, 4);
+  tigerWindow(p, 66, 36, 41, { w: 40, plant: true, frame: "jade3", curtain: "cream4" });
+  chimney(p, 300, frame);
+  // West group: the loft and the scallions in front of it.
+  shadowWedge(p, 82, 108, 10, 32);
+  pigeonLoft(p, 24, 96);
+  shadowWedge(p, 108, 124, 18, 16);
+  fishBoxes(p, 88, 114);
+  // East group: the whites on the line, the chair and thermos beside the chimney's foot.
+  shadowWedge(p, 296, 100, 4, 40);
+  laundry(p, 222, 86);
+  shadowWedge(p, 328, 122, 10, 18);
+  chairAndThermos(p, 304, 116);
+  // The terrace drain in the east corner.
+  p.rect(338, 140, 6, 3, "stone1").rect(339, 141, 4, 1, "ink");
+}
+
+/** Square cement tiles laid on the terrace, the joints dark, a worn pale path to the stair hatch. */
+function terraceFloor(p: Px, x: number, y: number, w: number, h: number) {
+  p.rect(x, y, w, h, "stone3");
+  for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) {
+    const tx = Math.floor((x + i) / 16), ty = Math.floor((y + j) / 10);
+    const joint = (x + i) % 16 === 0 || (y + j) % 10 === 0;
+    const r = hash(tx, ty, 61);
+    let c: Color = joint ? "stone2" : r < 0.12 ? "stone4" : r > 0.9 ? "steel3" : "stone3";
+    if (!joint && (y + j) % 10 === 1) c = step(c, 1);
+    p.px(x + i, y + j, c);
+  }
+}
+
+/** The kitchen chimney: grey brick through the slope, a steel flue, a rain cap, breakfast steam. */
+function chimney(p: Px, x: number, frame: number) {
+  const top = 48, base = 84;
+  shadowWedge(p, x + 18, top + 8, 5, 12);
+  greyBrick(p, x, top + 4, 18, base - top - 4, 77);
+  p.vline(x, top + 4, base - top - 4, "stone4").vline(x + 17, top + 4, base - top - 4, "stone1");
+  // Its cap seen from above, then the flue and its rain cap.
+  p.rect(x - 2, top, 22, 5, "stone4").hline(x - 2, top, 22, "stone5").hline(x - 2, top + 4, 22, "stone2");
+  p.rect(x + 5, top - 16, 8, 17, "steel4").vline(x + 5, top - 16, 17, "steel5").vline(x + 12, top - 16, 17, "steel2");
+  block(p, x + 1, top - 22, [".aaaaaaaaaaaaaa.", "abbcccccccccddda", ".....e....e.....", ".....e....e....."], { a: "steel1", b: "steel5", c: "steel4", d: "steel3", e: "steel2" }, "rain-cap");
+  for (let j = top - 12; j < top; j++) if (j % 3 === 0) p.px(x + 8, j, "steel3");
+  // Lead flashing where it meets the tiles.
+  p.hline(x - 1, base, 20, "steel3").hline(x - 1, base + 1, 20, "steel1");
+  wisp(p, x + 9, top - 23, frame, FRAMES, 22, false, 2, 1.3);
+  wisp(p, x + 6, top - 22, (frame + 2) % FRAMES, FRAMES, 18, false, 5, 1.1);
+}
+
+/** The cook's folding chair (steel tube, faded jade canvas) and his flowered thermos beside it. */
+function chairAndThermos(p: Px, x: number, y: number) {
   block(p, x, y, [
-    "..aaaaaaa...",
-    ".ab.....ba..",
-    ".a.aaaaa.a..",
-    ".a.a...a.a..",
-    ".ab.....ba..",
-    "..a.....a...",
-    ".cccccccccc.",
-    ".ddddddddde.",
-    "..a.....a...",
-    "..a.....a...",
-    "..a.a.a.a...",
-    "..a.aaa.a...",
-    "..a.....a...",
-    ".aa.....aa..",
-  ], { a: "wood1", b: "wood3", c: "oak4", d: "oak2", e: "oak1" }, "chair");
-  block(p, x + 13, y + 9, ["abbba", "acdca", "acdca", ".aaa."], { a: "steel1", b: "steel2", c: "gold2", d: "gold3" }, "tin");
-}
-
-function roofCondenser(p: Px, x: number, y: number) {
-  // The dining room's condenser, seen from above: a fan grille in a steel box on rubber feet.
-  p.rect(x, y, 34, 14, "steel5").frame(x, y, 34, 14, "steel3").hline(x, y, 34, "steel6");
-  p.ellipse(x + 17, y + 7, 9, 5.5, "steel2");
-  p.ellipse(x + 17, y + 7, 8, 4.5, "steel1");
-  for (let i = -7; i <= 7; i += 2) p.vline(x + 17 + i, y + 3, 9, "steel3");
-  p.rect(x + 16, y + 6, 3, 2, "steel4");
-  p.rect(x, y + 14, 34, 10, "steel4").hline(x, y + 14, 34, "steel5").hline(x, y + 23, 34, "steel2").vline(x + 33, y + 14, 10, "steel2");
-  for (let i = x + 4; i < x + 30; i += 3) p.vline(i, y + 16, 6, "steel3");
-  p.rect(x + 2, y + 24, 4, 2, "ink2").rect(x + 28, y + 24, 4, 2, "ink2");
-  cable(p, x + 34, y + 18, x + 54, y + 34, 2, "cream2");
-}
-
-function kitchenStack(p: Px, x: number, y: number, frame: number) {
-  // Duct across the roof from the kitchen at the east end, up into a stack under a rain cap.
-  p.rect(x - 2, y + 66, 18, 8, "steel3").hline(x - 2, y + 66, 18, "steel5").hline(x - 2, y + 73, 18, "steel1");
-  p.rect(x, y + 8, 12, 62, "steel4");
-  p.vline(x, y + 8, 62, "steel5").vline(x + 1, y + 8, 62, "steel6").vline(x + 10, y + 8, 62, "steel2").vline(x + 11, y + 8, 62, "steel1");
-  for (let j = y + 20; j < y + 66; j += 14) p.hline(x, j, 12, "steel3");
-  // Guy wires.
-  p.line(x, y + 30, x - 14, y + 70, "stone2");
-  p.line(x + 11, y + 30, x + 24, y + 70, "stone2");
-  // Rain cap: a little coolie hat on legs, soot under it.
-  block(p, x - 5, y, [
-    ".....aaaaaa.....",
-    "...aaeeeeeeaa...",
-    ".aaeeffffeeddaa.",
-    "abbbbbbbbbbbbbba",
-    "...c........c...",
-    "...c.gggggg.c...",
-    "...c.g....g.c...",
-    "..aaaaaaaaaaaa..",
-  ], { a: "steel1", b: "steel2", c: "steel3", d: "steel4", e: "steel5", f: "steel6", g: "ink2" }, "cap");
-  wisp(p, x + 6, y - 1, frame, FRAMES, 46, false, 2);
-  wisp(p, x + 3, y, (frame + 1) % FRAMES, FRAMES, 34, false, 5);
+    ".aaaaaaaaaaa......",
+    ".abbbbbbbbba......",
+    ".accccccccca......",
+    ".abbbbbbbbba......",
+    ".accccccccca......",
+    ".abbbbbbbbba......",
+    ".a.........a......",
+    "aaaaaaaaaaaaa.....",
+    "addddddddddda.....",
+    "aeeeeeeeeeeea.....",
+    ".a.a.....a.a......",
+    "..a.a...a.a.......",
+    "...a.a.a.a........",
+    "....a.a.a.........",
+    "...a.a.a.a........",
+    "..a.a...a.a.......",
+    ".a.a.....a.a......",
+    "aa.........aa.....",
+  ].map((r) => r.slice(0, 18)), { a: "steel2", b: "jade4", c: "jade3", d: "jade5", e: "jade3" }, "chair");
+  // Thermos: enamel jade body with a pink peony, a steel cap, a cup upturned on top.
+  block(p, x + 14, y + 4, [
+    "..aaaa..",
+    ".abbbba.",
+    "..cccc..",
+    ".cddddc.",
+    ".cdefdc.",
+    ".cefedc.",
+    ".cdedgc.",
+    ".cddddc.",
+    ".cdgddc.",
+    ".cddddc.",
+    ".cddddc.",
+    ".cbbbbc.",
+    "..cccc..",
+  ], { a: "steel5", b: "steel3", c: "jade1", d: "jade3", e: "pink2", f: "pink3", g: "leaf3" }, "thermos");
 }
 
 // ── the facade ──────────────────────────────────────────────────────────────
@@ -538,8 +522,6 @@ function facade(p: Px, H: number, frame: number) {
   zrect(p, H, 0, 148, W, 150, "cream2");
   zrect(p, H, 0, 147, W, 148, "cream1");
   for (let i = 4; i < W; i += 6) zrect(p, H, i, 148, 2, 150, "cream1");
-  stucco(p, 0, H - 160, W, 6, 23);
-  zrect(p, H, 0, 159, W, 160, "cream5");
   // Fascia: bottle-green board with mouldings, brass bead, the blank gilt sign.
   zrect(p, H, 0, 88, W, 110, "jade2");
   zrect(p, H, 0, 109, W, 110, "jade4");
@@ -583,7 +565,12 @@ function facade(p: Px, H: number, frame: number) {
   p.rect(138, H - 148, 4, 4, "stone2").px(139, H - 147, "stone4");
   // A hairline crack in the render, filled once in a fresher cream.
   block(p, 112, H - 144, ["a..", ".a.", ".a.", "..b", "..a", ".a.", ".ab", "..a"], { a: "cream2", b: "cream5" }, "crack");
-  crown(p, H);
+  parapet(p, H);
+  // Pots along the parapet coping: a geranium, a jade plant, a scallion tin.
+  sillPot(p, 36, H - 1 - 171, "geranium");
+  sillPot(p, 52, H - 1 - 171, "fern");
+  sillPot(p, 262, H - 1 - 171, "scallion");
+  sillPot(p, 300, H - 1 - 171, "cactus");
   // Building edges.
   zrect(p, H, 351, 0, 1, 160, "cream1");
 }
