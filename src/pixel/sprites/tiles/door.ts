@@ -14,17 +14,12 @@ const STONE: Legend = {
 
 /**
  * The doorway, two tiles wide, filling the gap between `wall/cap-door-left` and `-right`.
- * An oak sill worn into a dip by forty years of feet, a granite step polished pale in the middle and
- * cracked at one end, then the street pavement in full morning sun, brighter the further out it is.
+ * The marble sill the glazed double doors close onto, with a screwed brass kick strip polished bright
+ * in the middle by ninety years of feet; a granite step worn pale and cracked at one end; then the
+ * street pavement in full morning sun, brighter the further out it is.
  * Anchors at its top-left; place it on the front-wall row.
  */
 function doorThreshold(p: Px) {
-  // Oak sill (rows 0–4).
-  p.hline(0, 0, 64, "oak2").rect(0, 1, 64, 3, "oak4").hline(0, 4, 64, "oak2");
-  for (let x = 0; x < 64; x++) if ((x >> 2) % 3 !== 1) p.px(x, 1, "oak5");
-  for (const [x, y, n] of [[20, 2, 24], [16, 3, 32], [25, 1, 14]] as const) p.hline(x, y, n, y === 1 ? "cream4" : "oak5");
-  p.hline(28, 2, 8, "cream4");
-  for (const x of [4, 59]) p.px(x, 2, "oak2");
   // Granite step (rows 5–13), two slabs, the nose lit (14), the riser in shade (15–18).
   p.hline(0, 5, 64, "stone5").rect(0, 6, 64, 8, "stone4").hline(0, 14, 64, "stone5");
   p.rect(0, 15, 64, 3, "stone2").hline(0, 18, 64, "stone1");
@@ -42,6 +37,14 @@ function doorThreshold(p: Px) {
   // A crack across the left slab and a corner knocked off the right one.
   block(p, 3, 6, ["3...", ".3..", ".33.", "...3", "...3", "..3.", "..3."], STONE, "crack");
   block(p, 58, 13, ["...44", "..222", ".2222", "22222", "11111"], STONE, "chip");
+  // Marble sill under the double doors (rows 0–2), veined, and the brass kick strip (3–5) the doors
+  // close on, dull except where feet have polished it.
+  p.hline(0, 0, 64, "stone3").hline(0, 1, 64, "white").hline(0, 2, 64, "cream5");
+  for (const [x, n] of [[6, 5], [24, 3], [40, 6], [55, 4]] as const) p.hline(x, 2, n, "stone5");
+  p.px(12, 1, "stone5").px(13, 2, "stone4").px(47, 1, "stone5");
+  p.hline(0, 3, 64, "gold3").hline(0, 4, 64, "gold2").hline(0, 5, 64, "gold1");
+  p.hline(20, 3, 24, "gold4").hline(24, 4, 16, "gold3");
+  for (const x of [4, 31, 58]) p.px(x, 4, "gold4").px(x + 1, 4, "gold1");
   // The street: big paving slabs, in the door's shade at first, then full sun.
   p.rect(0, 19, 64, 13, "cream4");
   p.rect(0, 19, 64, 2, "stone4").hline(0, 21, 64, "cream3");

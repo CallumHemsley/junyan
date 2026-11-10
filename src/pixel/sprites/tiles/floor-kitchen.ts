@@ -1,53 +1,36 @@
 /**
- * The kitchen floor: cream octagon tiles with small jade diamond insets where four octagons meet,
- * the classic old-shop pattern, laid when the shop opened. Quiet on purpose: the stove and counter
- * stand on it. Octagons sit on a 16px pitch with 1px stone grout; a few catch the window in their glaze.
- * Every variant tiles with every other. Tiles anchor at their top-left corner.
+ * The kitchen floor: plain glazed quarry squares behind the counter, plainer than the dining mosaic
+ * so the two rooms read apart. 16px squares on stone grout in two close creams, laid in a loose
+ * checker; a few catch the window in their glaze. Every variant tiles with every other.
+ * Tiles anchor at their top-left corner.
  *
  * Suggested mix: a ×4, b ×2, g ×2, then c, d once each; e is the drain by the sink, f the grease by the stove.
  *
  * Threshold tiles are kitchen tiles with a dull brass strip, screwed to a wooden bed, along the edge
- * that meets the oak: `threshold-h` along the bottom (oak to the south), `threshold-v` along the left
- * (oak to the west), `threshold-corner` both (the kitchen's south-west tile).
+ * that meets the dining floor: `threshold-h` along the bottom (dining to the south), `threshold-v`
+ * along the left (dining to the west), `threshold-corner` both (the kitchen's south-west tile).
  */
 import { defineSprites, type Color, type Legend, type Px } from "../../kit/index.ts";
 import { block } from "./_helpers.ts";
 
-type Kind = "octagon" | "diamond" | "grout";
-type Inset = { lit: Color; face: Color; shade: Color };
-const JADE: Inset = { lit: "jade5", face: "jade4", shade: "jade3" };
-/** The replacement diamond from a different batch: a shade too pale and minty. */
-const WRONG_JADE: Inset = { lit: "jade6", face: "jade5", shade: "jade4" };
-
-/** What sits at tile pixel (x, y): a diamond centred on every 16px grid corner, grout, or octagon. */
-function kindAt(x: number, y: number): Kind {
-  const u = ((x % 16) + 16) % 16, v = ((y % 16) + 16) % 16;
-  const du = u <= 8 ? u : u - 16, dv = v <= 8 ? v : v - 16;
-  const md = Math.abs(du) + Math.abs(dv);
-  if (md <= 3) return "diamond";
-  if (md === 4 || u === 0 || v === 0) return "grout";
-  return "octagon";
-}
+type Glaze = { lit: Color; face: Color; shade: Color };
+const PALE: Glaze = { lit: "cream4", face: "cream3", shade: "cream2" };
+const WARM: Glaze = { lit: "cream4", face: "stone5", shade: "stone4" };
+/** The replacement square from a different batch: too white. */
+const WRONG: Glaze = { lit: "cream5", face: "cream4", shade: "cream3" };
 
 /**
- * The whole tile. Octagons are lit along the edges that face up and left (they meet grout there) and
- * shaded along the edges facing down and right. `glints` lists which of the four octagons (0 top-left,
- * 1 top-right, 2 bottom-left, 3 bottom-right) hold a small window reflection.
+ * The whole tile: four squares, pale and warm on the diagonals, lit along their top-left edges and
+ * shaded on the bottom-right. `glints` lists which squares (0 top-left … 3 bottom-right) hold a small
+ * reflection of the window. `glaze(i)` may swap one square's glaze.
  */
-function octagons(p: Px, glints: readonly number[] = [], inset: (cx: number, cy: number) => Inset = () => JADE) {
-  for (let y = 0; y < 32; y++) for (let x = 0; x < 32; x++) {
-    const k = kindAt(x, y);
-    if (k === "grout") { p.px(x, y, "stone4"); continue; }
-    if (k === "diamond") {
-      const cx = Math.round(x / 16) * 16, cy = Math.round(y / 16) * 16;
-      const ins = inset(cx % 32, cy % 32);
-      const du = x - cx, dv = y - cy, md = Math.abs(du) + Math.abs(dv);
-      p.px(x, y, md === 3 && du + dv < 0 ? ins.lit : md === 3 && du + dv > 0 ? ins.shade : ins.face);
-      continue;
-    }
-    const upLeft = kindAt(x, y - 1) !== "octagon" || kindAt(x - 1, y) !== "octagon";
-    const downRight = kindAt(x, y + 1) !== "octagon" || kindAt(x + 1, y) !== "octagon";
-    p.px(x, y, upLeft ? "cream4" : downRight ? "cream2" : "cream3");
+function squares(p: Px, glints: readonly number[] = [], glaze: (i: number) => Glaze | undefined = () => undefined, grout: (i: number) => Color = () => "stone3") {
+  for (let i = 0; i < 4; i++) {
+    const x0 = (i % 2) * 16, y0 = (i >> 1) * 16, g = glaze(i) ?? (i === 0 || i === 3 ? PALE : WARM);
+    p.rect(x0, y0, 16, 16, g.face);
+    p.hline(x0 + 1, y0 + 1, 14, g.lit).vline(x0 + 1, y0 + 2, 6, g.lit);
+    p.hline(x0 + 2, y0 + 15, 14, g.shade).vline(x0 + 15, y0 + 8, 7, g.shade);
+    p.hline(x0, y0, 16, grout(i)).vline(x0, y0, 16, grout(i));
   }
   const shine = [["..ww", ".w..", "w..."], ["..w", ".w.", "w.."]];
   for (const g of glints) p.rows((g % 2) * 16 + 5, (g >> 1) * 16 + 4, shine[g % 2], { w: "cream5" });
@@ -88,32 +71,32 @@ function stripLeft(p: Px, rows = 32) {
 const tile = (draw: (p: Px) => void) => ({ w: 32, h: 32, anchor: [0, 0] as const, layer: "floor" as const, draw });
 
 export default defineSprites({
-  /** Clean, one octagon catching the window. */
-  "tile/floor-kitchen-a": tile((p) => octagons(p, [0])),
+  /** Clean, one square catching the window. */
+  "tile/floor-kitchen-a": tile((p) => squares(p, [0])),
 
-  /** Clean, the window caught in another octagon. */
-  "tile/floor-kitchen-g": tile((p) => octagons(p, [3])),
+  /** Clean, the window caught in another square. */
+  "tile/floor-kitchen-g": tile((p) => squares(p, [3])),
 
-  /** One octagon crazed with a fine net of hairlines in its glaze, as old glaze does. */
+  /** One square crazed with a fine net of hairlines in its glaze, as old glaze does. */
   "tile/floor-kitchen-b": tile((p) => {
-    octagons(p, []);
+    squares(p, []);
     p.over(() => block(p, 19, 18, [
-      "...k.........",
-      "...k....k....",
-      "..k.kk.k.....",
-      ".k....k......",
-      "k.....k...k..",
-      "......k.kk...",
-      ".....k.k.....",
-      "...kk........",
-      "..k..k.......",
-      ".k....k......",
+      "...K.........",
+      "...K....K....",
+      "..K.KK.K.....",
+      ".K....K......",
+      "K.....K...K..",
+      "......K.KK...",
+      ".....K.K.....",
+      "...KK........",
+      "..K..K.......",
+      ".K....K......",
     ], K, "crazing"));
   }),
 
-  /** A cracked octagon someone filled with grout rather than replace: a grey seam with a lumpy edge. */
+  /** A cracked square someone filled with grout rather than replace: a grey seam with a lumpy edge. */
   "tile/floor-kitchen-c": tile((p) => {
-    octagons(p, [1]);
+    squares(p, [1]);
     p.over(() => block(p, 3, 2, [
       "........G.",
       ".......Gg.",
@@ -130,15 +113,12 @@ export default defineSprites({
     ], K, "filled-crack"));
   }),
 
-  /** One jade diamond replaced from a different batch: too pale, its grout ring still fresh. */
-  "tile/floor-kitchen-d": tile((p) => {
-    octagons(p, [2], (cx, cy) => (cx === 16 && cy === 16 ? WRONG_JADE : JADE));
-    for (let y = 11; y < 22; y++) for (let x = 11; x < 22; x++) if (Math.abs(x - 16) + Math.abs(y - 16) === 4) p.px(x, y, "stone5");
-  }),
+  /** One square replaced from a different batch: too white, its grout still fresh. */
+  "tile/floor-kitchen-d": tile((p) => squares(p, [2], (i) => (i === 1 ? WRONG : undefined), (i) => (i === 1 ? "stone5" : "stone3"))),
 
-  /** By the sink: a round floor drain set where four octagons meet, its grate ringed with old grime. */
+  /** By the sink: a round floor drain set where four squares meet, its grate ringed with old grime. */
   "tile/floor-kitchen-e": tile((p) => {
-    octagons(p, []);
+    squares(p, []);
     block(p, 9, 11, [
       "....GGGGGG....",
       "..GGssssssGG..",
@@ -155,9 +135,9 @@ export default defineSprites({
     p.hline(3, 16, 5, "stone3").hline(24, 16, 5, "stone3").vline(16, 4, 6, "stone3").vline(16, 22, 6, "stone3");
   }),
 
-  /** By the stove: a grease spot soaked into the glaze and grout, and an octagon corner chipped by a dropped wok. */
+  /** By the stove: a grease spot soaked into the glaze and grout, and a square's corner chipped by a dropped wok. */
   "tile/floor-kitchen-f": tile((p) => {
-    octagons(p, [0]);
+    squares(p, [0]);
     block(p, 18, 4, [
       ".....yyyy...",
       "..yyyYYYyy..",
@@ -169,10 +149,10 @@ export default defineSprites({
     block(p, 26, 26, ["..KK", ".Kmk", "Kmkk"], K, "chip");
   }),
 
-  "tile/threshold-h": tile((p) => { octagons(p, []); stripBottom(p); }),
-  "tile/threshold-v": tile((p) => { octagons(p, []); stripLeft(p); }),
+  "tile/threshold-h": tile((p) => { squares(p, []); stripBottom(p); }),
+  "tile/threshold-v": tile((p) => { squares(p, []); stripLeft(p); }),
   "tile/threshold-corner": tile((p) => {
-    octagons(p, []);
+    squares(p, []);
     stripBottom(p);
     stripLeft(p, 28);
     block(p, 0, 28, ["mmm", "mmm", "ddd"], BRASS, "mitre");
