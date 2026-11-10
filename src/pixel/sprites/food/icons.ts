@@ -166,20 +166,29 @@ function liner(p: Px) {
  */
 function bunIcon(p: Px) {
   const basket = part(48, 48, (q) => {
-    steamer(q, 24, 29, 22.5, 8.5, 9, "back", [9, 24, 38]);
-    // The liner shows round the buns inside the well.
-    q.over(() => {
-      for (let y = 22; y < 36; y++) for (let x = 3; x < 46; x++)
-        if (q.get(x, y) === "bamboo2" && inEllipse(24, 30, 19, 6, x, y)) q.px(x, y, "cream4");
-      // Folds in the damp cloth.
-      for (const [x, y, n] of [[6, 27, 3], [38, 26, 4], [10, 31, 4], [33, 32, 3], [24, 34, 4]] as const) q.hline(x, y, n, "cream3").hline(x + 1, y - 1, n - 1, "cream5");
-    });
+    steamer(q, 24, 29, 22.5, 8.5, 9, "back", [9, 24, 38], 3);
+    // The liner fills the well, its cloth gathered into soft folds that radiate from the middle.
+    for (let y = 18; y < 38; y++) for (let x = 2; x < 46; x++) {
+      const c = q.get(x, y);
+      if ((c !== "bamboo2" && c !== "bamboo1") || !inEllipse(24, 29.4, 19.5, 5.9, x, y)) continue;
+      if (!inEllipse(24, 30.2, 19.5, 5.9, x, y)) { q.px(x, y, "cream3"); continue; }
+      const a = Math.atan2((y + 0.5 - 30) / 7, (x + 0.5 - 24) / 20.6), r = Math.hypot((x + 0.5 - 24) / 20.6, (y + 0.5 - 30) / 7);
+      const f = Math.sin(a * 9 + r * 3);
+      q.px(x, y, f > 0.86 ? "cream5" : f < -0.8 ? "cream3" : "cream4");
+    }
   });
   p.blit(selout(basket, "bamboo1", "bamboo2"), 0, 0);
   p.blit(pleatedBun(0), 2, 8);
   p.blit(pleatedBun(1), 23, 7);
   p.blit(tornBun(), 12, 15);
-  steamer(p, 24, 29, 22.5, 8.5, 9, "front");
+  steamer(p, 24, 29, 22.5, 8.5, 9, "front", [], 3);
+  // Rattan lashings wrap the near rim too: two strands, the lit one up-left.
+  for (const bx of [9, 24, 38]) {
+    const u = (bx + 0.5 - 24) / 22.5, yb = Math.round(29 + 8.5 * Math.sqrt(1 - u * u));
+    for (let j = -3; j <= 0; j++) p.px(bx - 1, yb + j, j % 2 ? "bamboo1" : "bamboo5").px(bx, yb + j, j % 2 ? "bamboo5" : "bamboo2").px(bx + 1, yb + j, "bamboo1");
+  }
+  // One strip of the band has split along its grain, a splinter lifting at the end.
+  p.hline(27, 41, 8, "bamboo1").hline(28, 40, 6, "bamboo5").px(35, 40, "bamboo4").px(35, 41, "bamboo5").px(36, 40, "bamboo1");
   liner(p);
   steam(p, [curl(14, 9, 9, 0, 0.55), curl(33, 7, 7, 2, 0.45), curl(23, 14, 8, 1, 0.5)]);
 }
@@ -252,9 +261,9 @@ function breadIcon(p: Px) {
 function teaEgg(w = 15, h = 20, seed = 3): Px {
   return part(w, h, (q) => {
     const cx = w / 2, cy = h * 0.54, ry = h / 2 - 1;
-    const rxAt = (y: number) => (w / 2 - 1) * (1 - 0.2 * Math.max(0, (cy - (y + 0.5)) / ry));
-    const TEA: Ramp = ["oak3", "oak4", "oak5", "cream4"];
-    const step = Math.max(2.6, w / 4.2);
+    const rxAt = (y: number) => (w / 2 - 1) * (1 - 0.3 * Math.max(0, (cy - (y + 0.5)) / ry));
+    const TEA: Ramp = ["oak4", "oak5", "cream4", "cream5"];
+    const step = Math.max(3, w / 3.2);
     const seeds: [number, number][] = [];
     for (let gy = -1; gy < h / step + 1; gy++) for (let gx = -1; gx < w / step + 1; gx++)
       seeds.push([gx * step + hash(gx, gy, seed) * step, gy * step + hash(gx, gy, seed + 1) * step]);
@@ -273,7 +282,7 @@ function teaEgg(w = 15, h = 20, seed = 3): Px {
       const l = Math.max(0, -0.55 * u - 0.6 * v + 0.6 * nz);
       const i = l < 0.3 ? 0 : l < 0.55 ? 1 : l < 0.8 ? 2 : 3;
       const c = cell(x, y), edge = (inside(x + 1, y) && cell(x + 1, y) !== c) || (inside(x, y + 1) && cell(x, y + 1) !== c);
-      q.px(x, y, edge ? (i >= 2 ? "wood4" : i === 1 ? "wood3" : "brown2") : TEA[i]);
+      q.px(x, y, edge ? (i >= 2 ? "wood4" : "wood3") : TEA[i]);
     }
     // One strong glint where the sun hits the wet white.
     const gx = Math.round(cx - w * 0.2), gy = Math.round(cy - ry * 0.45);
@@ -298,27 +307,26 @@ const HALF_EGG = [
   "....oooooooo....",
 ];
 
-/** One star anise, eight pointed boats round a centre, each split along its top; two show a glossy seed. 19×15. */
+/** One star anise: eight pointed boats round a centre, sunlit up-left, two showing a glossy seed. 17×15. */
+const STAR_ANISE = [
+  ".......R.......",
+  ".R.....Rr....r.",
+  "..RR...Rr...rd.",
+  "...Rs..Rr..rd..",
+  "....RR.Rr.rd...",
+  ".....RRRrrd....",
+  "RRRRRRRrrdddddd",
+  ".....rrrdd.....",
+  "....rr.rd.dd...",
+  "...rr..rd..sd..",
+  "..rr...rd...dd.",
+  ".r.....rd.....d",
+  ".......d.......",
+];
+
 function starAnise(): Px {
-  return part(19, 15, (q) => {
-    const cx = 9.5, cy = 7.5;
-    for (let y = 0; y < 15; y++) for (let x = 0; x < 19; x++) {
-      const dx = x + 0.5 - cx, dy = (y + 0.5 - cy) / 0.82, r = Math.hypot(dx, dy);
-      if (r > 8.4) continue;
-      for (let k = 0; k < 8; k++) {
-        const a = (k * Math.PI) / 4 + 0.2, ax = Math.cos(a), ay = Math.sin(a);
-        const along = dx * ax + dy * ay, across = Math.abs(-dx * ay + dy * ax);
-        if (along < 0.8 || along > 8.2) continue;
-        const half = 1.55 * Math.sin((Math.PI * (along - 0.4)) / 8.2);
-        if (across > half) continue;
-        const lit = ax + ay < 0.3;
-        // The seam along each boat's back, where it has split open.
-        const seam = across < 0.45 && along > 2 && along < 6.5;
-        q.px(x, y, seam ? "rose1" : across > half - 0.8 ? (lit ? "rose3" : "rose2") : lit ? "rose4" : "rose3");
-      }
-    }
-    q.rows(8, 6, ["rr.", "rRr", ".r."], { r: "rose2", R: "rose1" });
-    for (const [x, y] of [[13, 4], [5, 10]] as const) q.px(x, y, "gold4").px(x + 1, y, "gold2");
+  return part(17, 15, (q) => {
+    grid(q, 1, 1, STAR_ANISE, { R: "rose4", r: "rose3", d: "rose2", s: "gold4" });
     selout(q, "rose1");
   });
 }
@@ -332,7 +340,7 @@ function eggIcon(p: Px) {
   p.over(() => { p.ellipse(17, 38.5, 7, 2.2, "blue5"); p.ellipse(30, 39, 8, 2, "blue5"); });
   p.blit(teaEgg(15, 20), 10, 20);
   grid(p, 23, 31, HALF_EGG, { c: "oak2", o: "wood3", b: "oak3", t: "cream4", W: "white", w: "cream5", r: "jade4", y: "gold4", Y: "gold3", z: "gold5", e: "oak4", v: "wood4" });
-  p.blit(starAnise(), 27, 17);
+  p.blit(starAnise(), 29, 20);
   // A tea leaf, unfurled from the brew.
   grid(p, 6, 36, ["..ll...", ".lLLll.", "lLvvvLl", ".llLll.", "...l..."], { l: "leaf1", L: "leaf2", v: "leaf3" });
 }

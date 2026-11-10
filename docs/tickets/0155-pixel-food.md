@@ -25,3 +25,10 @@ Food is what the player carries and what customers ask for; it must be appetisin
   - Tableware and till: tray 44×25, plate/bowl/steamer empties, chopsticks, spoon, soy dish, coins, notes, receipt (DOM overlay x 3–8, y 3–12). `fx/steam-wisp` 16×24, 8 frames at 5 fps, `layer: over`.
   - Learned: procedural dome shading plus field-based pleats reads as mush on dough; hand-placed grids (bun, mantou, dumpling, half egg) are what made them read. Bowl bodies must take the shallowest ring that reaches a pixel or patterns land in the wrong place. Motifs on porcelain read only in the deepest blues.
   - Palette gap: a warm dough shadow between `cream3` and `cream2` (cream2 drifts grey-mauve under buns).
+- 2026-11-10, round 2 (art director's review of round 1):
+  - Soy milk (`food/milk-icon`, `food/milk`) is now a tall ribbed glass tumbler on a saucer, with a skin, a sheen and a meniscus, a bead of milk down the glass, and the spoon on the saucer (icon) or standing in the glass (serving). The fried-dough stick is gone: the 豆浆 picture must not contain 油条. The glass is drawn by the new `tumbler()` in `_ware.ts`; the glass is translucent and the milk is solid.
+  - Tea egg (`food/egg-icon`, `food/egg`): a clean egg shape that narrows at the top, a paler tea-brown, a crackle web one pixel wide (the borders between cells) instead of mottling, and one strong glint. A hand-drawn eight-point star anise, a plain dish, and no tea pool.
+  - `food/bun-icon`: the steamer's near rim is a real strip now (the `steamer()` lip keeps its width at the front), with rattan lashings over it and a split strip in the band; the liner fills the well with folds.
+  - `food/plate-empty` (now 31×14): chopsticks across the near rim so the vinegar smear and crumbs show. `food/bowl-empty`: a rice-water tide line, a cloudy puddle and a spoon left in it.
+  - `fx/steam-wisp`: one stem, thick and bright at the base, curling over and thinning; no fork.
+  - New: `food/bun-eaten`, `food/youtiao-eaten`, `food/dumpling-eaten` (one bun left; one stick bitten short; three dumplings and a vinegar smear).

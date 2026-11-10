@@ -72,27 +72,38 @@ function tray(p: Px) {
 }
 
 function emptyPlate(p: Px) {
-  plate(p, 12, 6, 11, 4.6, { rim: RIMS.wave, well: 0.66, chip: [[22, 7]] });
-  // Crumbs and a smear of vinegar.
+  plate(p, 12, 6, 11, 4.6, { rim: RIMS.wave, well: 0.66, chip: [[2, 7]] });
+  // A smear of vinegar dragged by the last dumpling, and crumbs of skin.
   p.over(() => {
-    p.rows(7, 5, ["ss..", ".sss"], { s: "wood3" });
-    for (const [x, y] of [[13, 7], [9, 8], [15, 5]] as const) p.px(x, y, "cream3").px(x + 1, y, "cream4");
+    p.rows(6, 4, [".sss..", "ssSsss", "..sss."], { s: "wood3", S: "wood2" });
+    for (const [x, y] of [[13, 4], [15, 6], [11, 7], [8, 7]] as const) p.px(x, y, "cream3").px(x + 1, y, "cream4");
   });
   selout(p, "blue2", "blue3");
-  // Chopsticks laid across, as people do when they have finished.
-  p.blit(chopsticks(), 0, 2);
+  // Chopsticks laid across the near rim, as people do when they have finished.
+  p.blit(chopsticks(), 7, 6);
 }
 
 const plainBody: BodyPattern = (_u, t, lit) => (t * 8 > 0.8 && t * 8 < 1.6 ? (lit ? "blue3" : "blue2") : undefined);
 
 function emptyBowl(p: Px) {
   bowl(p, 10, 5, 9, 3.6, 8, { belly: 0.8, body: plainBody });
-  // The empty well: pale glaze with a dried smear of congee and a few grains.
+  // The empty well, a cloudy puddle of rice water at the bottom and the tide line it left on the wall.
   p.ellipse(10.3, 5.6, 7.4, 2.4, "blue6");
-  p.over(() => {
-    p.hline(5, 6, 4, "cream4").hline(6, 7, 5, "cream4").px(13, 5, "cream5").px(14, 6, "cream4");
-  });
-  grid(p, 12, 0, ["...oo", "..obo", ".obo.", "obWo.", ".oo.."], { o: "blue2", b: "blue3", W: "white" });
+  for (let x = 3; x < 18; x++) {
+    const u = (x + 0.5 - 10.3) / 7.4;
+    if (Math.abs(u) < 0.95) p.px(x, Math.round(5.1 - 1.6 * Math.sqrt(1 - u * u)), x < 9 ? "cream3" : "cream4");
+  }
+  p.ellipse(10.5, 6.6, 4.6, 1.2, "cream4");
+  p.ellipse(10.2, 6.4, 3.4, 0.8, "cream5");
+  // The spoon left in it, handle over the rim.
+  grid(p, 10, 0, [
+    "......oo",
+    ".....obo",
+    "..ooobo.",
+    ".obWwbo.",
+    "obwwbo..",
+    ".oooo...",
+  ], { o: "blue2", b: "blue3", W: "white", w: "blue6" });
   selout(p, "blue2", "blue3");
 }
 
@@ -121,7 +132,7 @@ function soyDish(p: Px) {
 export default defineSprites({
   /** The waiter's tray: oak, its middle worn pale, a tea ring, a chipped corner, the tea-cloth folded on it. */
   "food/tray": { w: 44, h: 25, anchor: [22, 24], draw: tray },
-  "food/plate-empty": { w: 24, h: 13, anchor: [12, 12], draw: emptyPlate },
+  "food/plate-empty": { w: 31, h: 14, anchor: [12, 12], draw: emptyPlate },
   "food/bowl-empty": { w: 20, h: 17, anchor: [10, 16], draw: emptyBowl },
   "food/steamer-empty": { w: 24, h: 15, anchor: [12, 14], draw: emptySteamer },
   /** Bamboo chopsticks, the tips darkened from years of soy. */

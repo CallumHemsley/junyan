@@ -141,10 +141,11 @@ const BAMBOO: Ramp = ["bamboo1", "bamboo2", "bamboo3", "bamboo4", "bamboo5"];
  * `back` draws the band, rim and dark well; `front` redraws only the near half of the rim so it
  * can sit in front of whatever is inside. `binds` are the x positions of rattan lashings.
  */
-export function steamer(q: Px, cx: number, cy: number, rx: number, ry: number, depth: number, which: "back" | "front", binds: readonly number[] = []): void {
-  const lip = Math.max(1.5, rx * 0.08);
+export function steamer(q: Px, cx: number, cy: number, rx: number, ry: number, depth: number, which: "back" | "front", binds: readonly number[] = [], lipWidth?: number): void {
+  const lip = lipWidth ?? Math.max(1.5, rx * 0.08);
   const inRim = (x: number, y: number) => inEllipse(cx, cy, rx, ry, x, y);
-  const inWell = (x: number, y: number) => inEllipse(cx, cy + 0.4, rx - lip, ry - lip * (ry / rx) - 0.4, x, y);
+  // The rim reads as a strip with a visible top face, so its near edge keeps most of its width.
+  const inWell = (x: number, y: number) => inEllipse(cx, cy + 0.4, rx - lip, ry - lip * 0.75 - 0.4, x, y);
   if (which === "back") {
     for (let y = Math.floor(cy); y <= Math.ceil(cy + ry + depth); y++)
       for (let x = Math.floor(cx - rx); x <= Math.ceil(cx + rx); x++) {
@@ -183,7 +184,7 @@ export function steamer(q: Px, cx: number, cy: number, rx: number, ry: number, d
       if (!inRim(x, y) || inWell(x, y)) continue;
       if (which === "front" && y + 0.5 < cy) continue;
       const u = (x + 0.5 - cx) / rx, v = (y + 0.5 - cy) / ry;
-      const inner = inEllipse(cx, cy + 0.2, rx - lip * 0.5, ry - lip * 0.5 * (ry / rx), x, y);
+      const inner = inEllipse(cx, cy + 0.2, rx - lip * 0.5, ry - lip * 0.4, x, y);
       let c: Color = v < 0 ? (u < 0.35 ? "bamboo5" : "bamboo4") : u < 0.5 ? "bamboo4" : "bamboo3";
       if (inner && v > 0) c = u < 0.5 ? "bamboo5" : "bamboo4";
       if (inner && v <= 0) c = "bamboo3";
