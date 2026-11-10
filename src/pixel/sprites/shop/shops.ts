@@ -19,8 +19,8 @@
 import { defineSprites, hash, type Color, type Legend, type Px } from "../../kit/index.ts";
 import type { TownProp } from "../../town/map.ts";
 import {
-  acUnit, block, boards, cable, downpipe, greyBrick, lattice, pantileRoof, perProp, plotFoot,
-  signboard, sillPot, step, stucco, tileSkirt, wisp, zrect,
+  acUnit, aerial, block, boards, cable, downpipe, greyBrick, lattice, pantileRoof, perProp, plotFoot,
+  roofCat, shadowWedge, signboard, sillPot, step, stucco, tileSkirt, wisp, zrect,
 } from "./_front.ts";
 
 const BOOK: Color[] = ["blue2", "jade2", "rose2", "oak4", "cream4", "plum2", "wood3", "blue3", "jade3", "gold2", "grey2", "cream3"];
@@ -70,10 +70,10 @@ function cornerStore(p: Px, w: number, H: number) {
   p.hline(sx - 2, sy + 38, 104, "steel3").hline(sx - 2, sy + 39, 104, "steel1");
   for (const lx of [sx, sx + 98]) p.rect(lx, sy + 38, 3, 8, "steel2");
   cable(p, sx + 104, sy - 6, 190, 160, 6, "ink2");
-  // The dead aerial on the ridge and a satellite dish.
-  p.vline(230, 20, 36, "steel2");
-  for (const [j, wd] of [[22, 22], [28, 18], [34, 14]] as const) p.hline(230 - wd / 2, j, wd, "steel2");
-  block(p, 262, 116, ["...aaaa..", ".abbbbca.", "abbbbbbca", "abbbcbbca", ".abbbbca.", "..aaaa...", "....d....", "...ddd..."], { a: "steel3", b: "steel6", c: "steel5", d: "steel2" }, "dish");
+  // The dead aerial on the ridge, a plastic bag snagged on it, and a satellite dish at real size.
+  aerial(p, 226, 56);
+  block(p, 218, 32, ["..aa.", ".abba", "abbba", ".abb.", "..a.."], { a: "steel5", b: "white" }, "bag");
+  satelliteDish(p, 246, 108);
   // Facade: grey brick upper storey over a white-tiled ground floor.
   greyBrick(p, 0, H - F, w, F - 76, 32);
   // Cornice and a cream string course.
@@ -145,6 +145,23 @@ function cornerStore(p: Px, w: number, H: number) {
   p.rect(206, H - 20, 3, 4, "steel2").px(207, H - 21, "steel5");
   downpipe(p, 2, H - F + 4, H - 1);
   zrect(p, H, w - 1, 0, 1, F, "stone1");
+}
+
+/** A satellite dish on a bracket bolted to the slope: a 26 × 22 pale bowl, its arm and LNB. */
+function satelliteDish(p: Px, x: number, y: number) {
+  shadowWedge(p, x + 6, y + 20, 18, 7);
+  p.ellipse(x + 12, y + 10, 12, 10, "steel3");
+  p.ellipse(x + 12, y + 10, 11, 9, "steel5");
+  p.ellipse(x + 10, y + 8, 8, 6, "steel6");
+  p.ellipse(x + 14, y + 12, 5, 4, "steel4");
+  p.px(x + 5, y + 4, "white").px(x + 6, y + 3, "white");
+  // The feed arm reaching out to the LNB, and its mast.
+  p.line(x + 12, y + 18, x + 20, y + 4, "steel2");
+  p.rect(x + 19, y + 2, 4, 3, "steel1").px(x + 19, y + 2, "steel4");
+  p.rect(x + 11, y + 19, 3, 6, "steel2").vline(x + 11, y + 19, 6, "steel4");
+  p.rect(x + 8, y + 24, 9, 2, "steel1");
+  // A streak of rust from the bolt.
+  p.vline(x + 13, y + 26, 3, "orange1");
 }
 
 function cagedWindow(p: Px, H: number, x: number, z: number, story: number) {
@@ -294,24 +311,27 @@ function bakery(p: Px, w: number, H: number, frame: number) {
   breads(p, bx + 4, gy + 20, bw - 8, 1);
   breads(p, bx + 4, gy + 36, bw - 8, 2);
   breads(p, bx + 4, gy + gh - 2, bw - 50, 3);
-  // The cake: two pink tiers with cream piping under a glass dome.
-  const kx = bx + bw - 40, ky = gy + gh - 2;
-  block(p, kx, ky - 22, [
-    "......aaaa......",
-    "....aa....ba....",
-    "...a........b...",
-    "..a..........b..",
-    ".a....cccc....b.",
-    ".a...cdddde...b.",
-    "a....ceeeee....b",
-    "a...cddddddde..b",
-    "a...cffffffff..b",
-    "a..cdddddddddeeb",
-    "a..cffffffffff.b",
-    "a..ceeeeeeeeee.b",
-    "a..gggggggggggb.",
-    ".gggggggggggggg.",
-  ].map((r) => r.padEnd(16, ".")), { a: "white", b: "steel5", c: "pink1", d: "pink3", e: "pink2", f: "cream5", g: "steel4" }, "cake");
+  // The cake on its own glass stand at the end of the window: three pink tiers, cream piping, a
+  // glass dome catching the light. Big enough to see from across the street.
+  const kx = bx + bw - 38, kb = gy + gh - 2;
+  p.rect(kx - 2, gy + 9, 38, gh - 11, "cream3");
+  p.rect(kx - 2, gy + 9, 38, 3, "cream2");
+  const tiers: [number, number, Color, Color][] = [[30, 7, "pink2", "pink3"], [22, 7, "pink2", "pink3"], [14, 6, "pink1", "pink2"]];
+  let ty = kb - 4;
+  p.rect(kx + 2, kb - 4, 30, 2, "steel5").rect(kx + 14, kb - 2, 6, 2, "steel4").hline(kx + 10, kb - 1, 14, "steel3");
+  for (const [tw, th, side, top] of tiers) {
+    const tx = kx + 17 - tw / 2;
+    p.rect(tx, ty - th, tw, th, side).hline(tx, ty - th, tw, top).vline(tx, ty - th, th, top).vline(tx + tw - 1, ty - th, th, "pink1");
+    for (let i = 1; i < tw - 1; i += 3) p.px(tx + i, ty - th + 1, "cream5").px(tx + i + 1, ty - 1, "cream5");
+    ty -= th;
+  }
+  p.rect(kx + 15, ty - 3, 4, 3, "white").px(kx + 16, ty - 4, "leaf3");
+  // The dome: an outline of pale glass with two highlights.
+  for (let a2 = 0; a2 <= 180; a2 += 2) {
+    const r2 = (a2 * Math.PI) / 180;
+    p.px(Math.round(kx + 17 - Math.cos(r2) * 17), Math.round(kb - 4 - Math.sin(r2) * 28), a2 < 90 ? "white" : "steel5");
+  }
+  p.line(kx + 5, kb - 16, kx + 8, kb - 25, "white");
   // Glazing bars curving with the bow, glints.
   for (let i = bx; i <= bx + bw; i += 31) p.vline(i, gy, gh, "blue2").vline(i + 1, gy, gh, "blue5");
   p.frame(bx - 2, gy - 2, bw + 4, gh + 4, "blue2");
@@ -341,15 +361,19 @@ function bakery(p: Px, w: number, H: number, frame: number) {
   block(p, rx + 10, H - 42, ["aaaaaaaaaaaa", "abbbbbbbbbba", "abcdcdcdcdba", "abbbbbbbbbba", "aaaaaaaaaaaa", ".e........e."], { a: "steel2", b: "steel4", c: "oak4", d: "oak3", e: "steel1" }, "slicer");
   zrect(p, H, rx - 2, 4, 44, 22, "blue3");
   // The oven flue on the roof, smoking.
-  const fx = 258, fy = 26;
-  p.rect(fx, fy, 16, 34, "stone3");
-  for (let j = fy + 3; j < fy + 34; j += 4) p.hline(fx, j, 16, "stone4");
-  for (let j = fy + 1; j < fy + 34; j += 8) p.vline(fx + 8, j, 3, "stone4");
-  p.vline(fx, fy, 34, "stone4").vline(fx + 15, fy, 34, "stone1");
+  const fx = 258, fy = 38;
+  shadowWedge(p, fx + 14, fy + 4, 8, 20);
+  p.rect(fx, fy, 16, 24, "stone3");
+  for (let j = fy + 3; j < fy + 24; j += 4) p.hline(fx, j, 16, "stone4");
+  for (let j = fy + 1; j < fy + 24; j += 8) p.vline(fx + 8, j, 3, "stone4");
+  p.vline(fx, fy, 24, "stone4").vline(fx + 15, fy, 24, "stone1");
   p.rect(fx - 2, fy - 3, 20, 4, "stone4").hline(fx - 2, fy - 3, 20, "stone5").hline(fx - 2, fy + 1, 20, "stone2");
   p.rect(fx + 4, fy - 4, 8, 2, "ink").rect(fx + 3, fy - 2, 10, 1, "stone1");
-  for (let j = fy + 2; j < fy + 18; j++) p.px(fx + 5 + (j % 3 === 0 ? 1 : 0), j, "stone2");
-  wisp(p, fx + 8, fy - 5, frame, 4, 22, true, 4);
+  for (let j = fy + 2; j < fy + 16; j++) p.px(fx + 5 + (j % 3 === 0 ? 1 : 0), j, "stone2");
+  wisp(p, fx + 8, fy - 5, frame, 4, 34, true, 4, 1.6);
+  wisp(p, fx + 6, fy - 4, (frame + 2) % 4, 4, 26, true, 7, 1.2);
+  // The baker's cat, on the ridge by the warm flue.
+  roofCat(p, fx - 26, 6);
   zrect(p, H, w - 1, 0, 1, F, "cream1");
 }
 
@@ -374,6 +398,7 @@ function bookshop(p: Px, w: number, H: number) {
   const F = 144;
   pantileRoof(p, 0, 0, w, H - F + 1, { ridge: 30, seed: 63 });
   dormer(p, 132, 42);
+  chilliTray(p, 214, 60);
   // Upper storey: dark boards, sliding lattice windows, books on the sill.
   boards(p, 0, H - F, w, 52, 61, 7);
   zrect(p, H, 0, 140, w, 144, "wood2");
@@ -446,6 +471,29 @@ function bookshop(p: Px, w: number, H: number) {
   block(p, dx + dw - 2, H - 84, ["aaa..", "...a.", "..bbb", ".bccb", ".bbbb", "..d.."], { a: "gold1", b: "gold2", c: "gold4", d: "gold1" }, "bell");
   zrect(p, H, w - 1, 0, 1, F, "wood1");
   zrect(p, H, 0, 0, 1, F, "wood1");
+}
+
+/** A flat bamboo tray of chillies drying in the sun on the slope, 36 × 16 from (x, y). */
+function chilliTray(p: Px, x: number, y: number) {
+  shadowWedge(p, x + 6, y + 15, 30, 6);
+  // A woven bamboo winnowing tray: a dark bound rim, rings of weave, a lit near edge.
+  p.ellipse(x + 18, y + 8, 18, 8, "bamboo1");
+  p.ellipse(x + 18, y + 7.5, 16.5, 7, "bamboo2");
+  p.ellipse(x + 18, y + 7.5, 15, 6, "bamboo4");
+  for (const [rx, ry] of [[11, 4.3], [7, 2.7]] as const) for (let a = 0; a < 360; a += 4) {
+    const t = (a * Math.PI) / 180;
+    p.px(Math.round(x + 18 + Math.cos(t) * rx), Math.round(y + 7.5 + Math.sin(t) * ry), "bamboo3");
+  }
+  // Chillies laid out in loose rows, long pods with green stalks, a couple still green.
+  const pods: [number, number, boolean][] = [[6, 4, true], [12, 3, false], [19, 3, true], [26, 4, false], [5, 8, false], [11, 7, true], [18, 7, false], [24, 8, true], [29, 7, false], [9, 11, true], [16, 11, false], [23, 11, true]];
+  pods.forEach(([px0, py0, right], n) => {
+    const green = n === 4 || n === 10;
+    const body: Color = green ? "leaf3" : "red3", dark: Color = green ? "leaf2" : "red2";
+    const d = right ? 1 : -1;
+    p.px(x + px0, y + py0, "leaf2");
+    p.px(x + px0 + d, y + py0, body).px(x + px0 + 2 * d, y + py0, body).px(x + px0 + 3 * d, y + py0 + 1, dark).px(x + px0 + 4 * d, y + py0 + 1, dark);
+    if (!green) p.px(x + px0 + d, y + py0 - 1, "red4");
+  });
 }
 
 /** The 老虎窗: a little gabled dormer sticking out of the slope, its window lit warm. */
