@@ -44,8 +44,9 @@ export const Z = {
   hands: 75, // hands gripping the tray
 } as const;
 
-export type LegPose = "stand" | "stepA" | "passA" | "stepB" | "passB" | "sit";
-export type ArmPose = "rest" | "swingA" | "swingB" | "carry" | "sit";
+/** `lie` and `sit-bed` are in bed: no legs are drawn, the blanket covers the figure from the chest or waist. */
+export type LegPose = "stand" | "stepA" | "passA" | "stepB" | "passB" | "sit" | "lie" | "sit-bed";
+export type ArmPose = "rest" | "swingA" | "swingB" | "carry" | "sit" | "lie" | "lap";
 /** What the frame is for, beyond the body pose: pieces use it for blinks, glances and habits. */
 export type Beat = "rest" | "breath" | "blink" | "habit";
 
