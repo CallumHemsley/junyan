@@ -73,11 +73,14 @@ function menuBoard(p: Px) {
   p.hline(0, 0, 30, "wood3").vline(0, 0, 41, "wood3").hline(1, 1, 28, "wood2").vline(1, 1, 39, "wood2");
   p.rect(3, 3, 24, 36, "steel1");
   p.hline(3, 3, 24, "ink").vline(3, 3, 36, "ink");
-  // Yesterday's menu wiped off in big swirls: a chalk haze (dither is right for dust), nothing legible.
-  const haze = (x: number, y: number, cx: number, cy: number, rx: number, ry: number) => ((x + 0.5 - cx) / rx) ** 2 + ((y + 0.5 - cy) / ry) ** 2 <= 1;
-  for (let y = 4; y < 38; y++) for (let x = 4; x < 26; x++) {
-    if ((haze(x, y, 13, 14, 9, 7) || haze(x, y, 17, 29, 8, 6)) && (x + y) % 2 === 0) p.px(x, y, "steel2");
+  // Yesterday's menu wiped off with one broad sweep of the cloth, and chalk dust settling at the foot.
+  for (let x = 5; x < 25; x++) {
+    const y = Math.round(27 - (x - 5) * 0.55 + ((x - 15) / 10) ** 2 * 2);
+    p.px(x, y, "steel2");
+    if (x > 6 && x < 23) p.px(x, y + 1, "steel2");
   }
+  for (let x = 4; x < 26; x++) if (hash(x >> 1, 37, 4) > 0.4) p.px(x, 37, "steel2");
+  for (let x = 4; x < 26; x++) if (hash(x >> 2, 38, 4) > 0.3) p.px(x, 38, "steel3");
   // Chalk ledge with a stub of chalk and the dust under it.
   p.rect(0, 41, 30, 2, "wood2").hline(0, 41, 30, "wood3").hline(0, 43, 30, "wood1");
   p.hline(20, 40, 3, "white").px(23, 40, "cream4").hline(18, 42, 7, "cream3");
