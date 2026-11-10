@@ -5,7 +5,7 @@ import FoodArt from "./FoodArt";
 import { Speaker } from "./icons";
 import { NEXT_BED, type OpeningState, type Session, type SessionAction } from "./opening";
 import { tokenLook, wardFrame } from "./opening-view";
-import WardScene from "./scene/WardScene";
+import WardView from "./world/pixel/WardView";
 import WordToken from "./WordToken";
 import WordLine from "./WordLine";
 import { ui } from "./language/ui";
@@ -253,7 +253,7 @@ export default function HospitalOpening({
       <div className="opening-layout">
         <section className="world-panel opening-world" aria-label={ui.ward}>
           <div inert>
-            <WardScene frame={frame} />
+            <WardView frame={frame} />
           </div>
           <div className="wake-veil" aria-hidden="true" />
         </section>
