@@ -55,6 +55,65 @@ export function waiterActor(position: Point, facing: WorldFacing | Facing, tray:
   return { id: "player", sprite: "char/player", at: [position.x, position.y], facing: facing in FACING ? pixelFacing(facing as WorldFacing) : facing as Facing, action: `${carry}${motion.walking ? "walk" : "idle"}`, distance: motion.distance };
 }
 
+/** At most this many dishes are drawn on the waiter's tray (the tray itself holds more). */
+export const MAX_TRAY_ITEMS = 3;
+export type TraySlot = readonly [dx: number, dy: number];
+/**
+ * Where carried dishes sit, in art pixels from the waiter's feet to each dish's bottom-centre, for
+ * one, two and three dishes, nearest first. In the waiter's 32×64 frame the feet are at [16, 62]:
+ * facing down the board's top face spans rows 41–44 between thumbs at columns 1–5 and 26–29; in
+ * profile it reaches forward over columns 12–28 with its top on row 42 (dishes further back stand a
+ * row or two higher so they show over the near one); facing up it is behind the
+ * body with only its ends showing, so the dishes go to the ends where they can peep out.
+ * `left` mirrors `right` (dishes are 11 wide on a frame symmetric about x = 16: dx → −1 − dx).
+ */
+export const TRAY_SLOTS: Record<Exclude<Facing, "left">, readonly (readonly TraySlot[])[]> = {
+  down: [[[0, -18]], [[-5, -18], [5, -19]], [[0, -18], [-6, -21], [5, -21]]],
+  right: [[[6, -20]], [[3, -20], [8, -22]], [[6, -20], [2, -22], [9, -22]]],
+  up: [[[9, -22]], [[9, -22], [-10, -22]], [[9, -22], [-10, -22], [0, -22]]],
+};
+
+/**
+ * Which foods show on the tray, nearest first: each different food once, in the order picked up,
+ * then repeats, so a full tray still shows its variety. Unknown foods are skipped.
+ */
+export function trayDishes(tray: readonly string[], data: Pick<Content, "foods"> = defaultContent): string[] {
+  const known = tray.filter(foodId => data.foods.some(food => food.id === foodId));
+  const firsts = known.filter((foodId, index) => known.indexOf(foodId) === index);
+  const repeats = known.filter((foodId, index) => known.indexOf(foodId) !== index);
+  return [...firsts, ...repeats].slice(0, MAX_TRAY_ITEMS);
+}
+
+/** The slot for one of `count` dishes, mirrored for a waiter facing left. */
+export function traySlot(facing: Facing, count: number, index: number): TraySlot {
+  const [dx, dy] = TRAY_SLOTS[facing === "left" ? "right" : facing][Math.min(count, MAX_TRAY_ITEMS) - 1][index];
+  return facing === "left" ? [-1 - dx, dy] : [dx, dy];
+}
+
+/**
+ * The dishes on the waiter's tray as actors (`food/tray-<foodId>`) that ride with the waiter: the
+ * same position, action and walk distance, so they step on the same frames and bob with the
+ * body. Drawn just in front of the waiter, or just behind when the waiter faces away and the
+ * body hides the tray; further-back dishes draw first. Empty unless the waiter is carrying.
+ */
+export function trayActors(waiter: Actor, tray: readonly string[], data: Pick<Content, "foods"> = defaultContent): Actor[] {
+  if (!waiter.action?.startsWith("carry-")) return [];
+  const dishes = trayDishes(tray, data), facing = waiter.facing ?? "down";
+  return dishes.map((foodId, index): Actor => {
+    const offset = traySlot(facing, dishes.length, index);
+    // One to two art pixels from the waiter's own sort point, ordered by how far back the dish sits.
+    const depth = (offset[1] + 2 * TILE) / (2 * TILE);
+    const sortY = waiter.at[1] + (facing === "up" ? depth - 2 : 1 + depth) / TILE;
+    return { id: `tray-${index}`, sprite: `food/tray-${foodId}`, at: waiter.at, facing: "down", action: waiter.action, distance: waiter.distance, phase: waiter.phase, offset, sortY };
+  });
+}
+
+/** The waiter followed by the dishes on the tray. */
+export function waiterActors(position: Point, facing: WorldFacing | Facing, tray: readonly string[], motion: WaiterMotion, data: Pick<Content, "foods"> = defaultContent): Actor[] {
+  const waiter = waiterActor(position, facing, tray, motion);
+  return [waiter, ...trayActors(waiter, tray, data)];
+}
+
 type TableNumber = 1 | 2 | 3 | 4;
 const isTable = (table: number): table is TableNumber => table >= 1 && table <= CAFE_TABLES.length;
 
