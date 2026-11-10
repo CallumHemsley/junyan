@@ -209,4 +209,4 @@ const LEGS = {
   ]),
 };
 
-export const SIDE_LEGS: Piece = (pose) => [LEGS[pose.legs]];
+export const SIDE_LEGS: Piece = (pose) => (pose.legs in LEGS ? [LEGS[pose.legs as keyof typeof LEGS]] : []);
