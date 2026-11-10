@@ -11,17 +11,20 @@ import { block } from "./_helpers.ts";
 
 const GLASS_TOP = 4, GLASS_H = 29, CASE_W = 27;
 
-/** The morning sky through the glass, top to bottom, with how opaque each band is. */
+/**
+ * The morning sky through the glass, luminous: near-white toward the top-left panes where the sun is,
+ * pale blue across the middle, warm cream low down where the light comes off the street. The bands run
+ * diagonally and meet in a one-pixel checker, so the gradient never bands. Glass may dither.
+ */
 function sky(p: Px) {
-  const bands: [number, Color, number][] = [[0, "blue4", 0.78], [9, "blue5", 0.78], [18, "blue6", 0.8], [25, "gold5", 0.82]];
-  for (let y = 0; y < GLASS_H; y++) {
-    const band = [...bands].reverse().find(([from]) => y >= from)!;
-    p.faded(band[2], () => p.hline(6, GLASS_TOP + y, 56, band[1]));
-  }
-  // Soften band edges with a staggered row so the gradient never bands.
-  for (const [from, , ] of bands.slice(1)) {
-    const prev = bands[bands.indexOf(bands.find((b) => b[0] === from)!) - 1];
-    p.faded(prev[2], () => { for (let x = 6; x < 62; x += 2) p.px(x + (from % 2), GLASS_TOP + from, prev[1]); });
+  const bands: [number, Color][] = [[0, "white"], [0.3, "blue6"], [0.62, "cream5"], [0.86, "gold5"]];
+  const bandAt = (t: number) => bands.reduce((i, [from], j) => (t >= from ? j : i), 0);
+  for (let y = 0; y < GLASS_H; y++) for (let x = 0; x < 56; x++) {
+    const t = (y / GLASS_H) * 0.75 + (x / 56) * 0.35;
+    let i = bandAt(t);
+    // Within a short reach of a boundary, alternate pixels take the neighbouring band.
+    if (i > 0 && t - bands[i][0] < 0.035 && (x + y) % 2 === 0) i -= 1;
+    p.faded(0.9, () => p.px(6 + x, GLASS_TOP + y, bands[i][1]));
   }
 }
 
@@ -123,7 +126,7 @@ export default defineSprites({
       "...........................................hhhhhhhh...",
       "............................................hhhhhhhhhh",
       "..............................................hh..hhhh",
-    ], { h: "leaf2" }, 0.55, 2, 0);
+    ], { h: "leaf2" }, 0.75, 2, 0);
     beyond(p, [
       "....................bbbbbbbbbbbbbbbb....................",
       "................bbbbbbbbbbbbbbbbbbbbbbbb................",
@@ -131,7 +134,7 @@ export default defineSprites({
       "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
       "bBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbBbB",
       "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-    ], { b: "blue4", B: "blue3" }, 0.55, 0, 23);
+    ], { b: "blue3", B: "blue2" }, 0.8, 0, 23);
     glints(p);
     lattice(p, 6, STEP_BROCADE);
     lattice(p, 35, STEP_BROCADE.map((r) => [...r].reverse().join("")));
@@ -180,16 +183,18 @@ export default defineSprites({
   "wall/window-lattice-b": windowDef((p) => {
     architrave(p);
     sky(p);
+    // A neighbour's laundry on a bamboo pole: a blue work shirt, jade trousers, a pink towel.
     beyond(p, [
       "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu",
-      "......q..q.............ww..ww.............jj..jj........",
-      "....qqqqqqqq..........wwwwwwww...........jjjjjjj........",
-      "....qqqqqqqq...........wwwwww............jjjjjjj........",
-      ".....qqqqqq............wwwwww.............jjjjj.........",
-      ".....qqqqqq............wwwwww.............jjjjj.........",
-      ".....qqqqqq............wwwwww...........................",
-      "......................................................",
-    ].map((r) => r.padEnd(56, ".")), { u: "bamboo3", q: "blue3", w: "white", j: "jade4" }, 0.7, 0, 7);
+      "..q..qq..q..............jj..jj..........pppppp..........",
+      ".qqqqqqqqqq.............jjjjjj..........pppppp..........",
+      "qqqqqqqqqqqq............jjjjjj..........PPPPPP..........",
+      "qq.qqqqqq.qq............jjjjjj..........pppppp..........",
+      "....qqqqqq..............jj..jj..........pppppp..........",
+      "....qqqqqq..............jj..jj..........pppppp..........",
+      "....QQQQQQ..............jj..jj..........................",
+      "........................JJ..JJ..........................",
+    ], { u: "bamboo2", q: "blue3", Q: "blue2", j: "jade3", J: "jade2", p: "pink2", P: "pink1" }, 0.85, 0, 6);
     glints(p);
     lattice(p, 6, BRICK, { x: 12, y: 11, w: 2, h: 7 });
     lattice(p, 35, BRICK.map((r) => [...r].reverse().join("")));
