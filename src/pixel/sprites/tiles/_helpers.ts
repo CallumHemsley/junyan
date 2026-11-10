@@ -20,8 +20,8 @@ export const OAK_TONES: Record<"old" | "normal" | "new", Tone> = {
   /** An older, darker board that has soaked up decades of tea and mop water. */
   old: { face: "oak3", light: "oak4", dark: "oak2", seam: "oak2", nail: "oak1" },
   normal: { face: "oak4", light: "oak5", dark: "oak3", seam: "oak3", nail: "oak2" },
-  /** A newer replacement: paler, less grain, bright new nail heads. */
-  new: { face: "oak5", light: "cream4", dark: "oak4", seam: "oak3", nail: "steel3" },
+  /** A newer replacement: the same tone, but clean (no grain shows), a crisp unbroken lit edge and bright new nail heads. */
+  new: { face: "oak4", light: "oak5", dark: "oak4", seam: "oak3", nail: "steel3" },
 };
 
 export type BoardSpec = {
@@ -45,10 +45,9 @@ export function oakBoards(p: Px, seed: number, boards: readonly BoardSpec[]): vo
     for (let x = 0; x < T; x++) {
       const t = toneAt(x);
       p.vline(x, top, 7, t.face).px(x, top + 7, t.seam);
-      // The lip of the board catches the sun in broken runs, and the varnish holds a soft sheen below it.
-      if (hash(x >> 2, b, seed) > 0.3) p.px(x, top, t.light);
-      if (hash((x + 3) >> 3, b, seed + 5) > 0.15) p.px(x, top + 1, t.light);
-      if (hash((x + 3) >> 3, b, seed + 5) > 0.4 && hash((x + 1) >> 2, b, seed + 4) > 0.25) p.px(x, top + 2, t.light);
+      // The lip of the board catches the sun in broken runs. No sheen bands below it: across a big floor
+      // any lighter run reads as a pale board segment and the floor gets busy.
+      if (t === OAK_TONES.new || hash(x >> 2, b, seed) > 0.3) p.px(x, top, t.light);
     }
     // Grain: long quiet streaks that follow the board and drift a row once.
     const near = (x: number) => x < 1 || x > T - 2 || joints.some((j) => Math.abs(x - j) <= 1);
