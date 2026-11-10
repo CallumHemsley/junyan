@@ -131,8 +131,10 @@ export function PixelView(props: PixelViewProps) {
       if (!handle && onScreen && !document.hidden) handle = requestAnimationFrame(tick);
     };
     const stop = () => { if (handle) cancelAnimationFrame(handle); handle = 0; };
-    const visibility = () => (document.hidden ? stop() : schedule());
-    const intersection = new IntersectionObserver(([entry]) => { onScreen = entry.isIntersecting; onScreen ? schedule() : stop(); });
+    // Coming back into view redraws once: a hidden page's canvas may have been discarded.
+    const resume = () => { live.current.dirty = true; schedule(); };
+    const visibility = () => (document.hidden ? stop() : resume());
+    const intersection = new IntersectionObserver(([entry]) => { onScreen = entry.isIntersecting; onScreen ? resume() : stop(); });
     intersection.observe(element);
     document.addEventListener("visibilitychange", visibility);
     schedule();

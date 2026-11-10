@@ -30,14 +30,16 @@ export function frame(options){
   });
   return errors;
 }
-async function restore(page:Page,baseURL:string,facing:Facing,position:Point={x:9,y:14}){
+// The restaurant is drawn by the pixel cafe now (ticket 0157); this artwork still draws the town.
+const TOWN={x:34,y:32};
+async function restore(page:Page,baseURL:string,facing:Facing,position:Point=TOWN,mapId='town'){
   const game=createGame(content,42);
-  game.world={version:1,mapId:'restaurant',position,facing,returnPositions:{},activeActivity:null,activeAnchorId:null};
+  game.world={version:1,mapId,position,facing,returnPositions:{},activeActivity:null,activeAnchorId:null};
   await seedDayOne(page,baseURL,game);
   await page.goto('/?opening=skip');
   await page.getByRole('button',{name:'开门迎客'}).click();
-  await expect(page.getByTestId('world-viewport')).toHaveAttribute('data-map','restaurant');
-  await expect.poll(async()=>(await samples(page)).length).toBeGreaterThan(0);
+  await expect(page.getByTestId('world-viewport')).toHaveAttribute('data-map',mapId);
+  if(mapId!=='restaurant')await expect.poll(async()=>(await samples(page)).length).toBeGreaterThan(0);
 }
 
 for(const [facing,direction]of [['north',3],['east',1],['south',7],['west',5]] as const){
@@ -50,7 +52,7 @@ for(const [facing,direction]of [['north',3],['east',1],['south',7],['west',5]] a
     await page.screenshot({path:privateArtifact(`heading/${info.project.name}-restore-${facing}.png`),fullPage:true});
     expect(trace[0].direction).toBe(direction);
     expect(trace.every(sample=>sample.direction===direction)).toBe(true);
-    expect((await savedGame(page)).world).toMatchObject({position:{x:9,y:14},facing});
+    expect((await savedGame(page)).world).toMatchObject({position:TOWN,facing});
     expect(errors).toEqual([]);
   });
 }
@@ -80,7 +82,8 @@ test('continuous diagonal heading and gait survive stopping, then a discrete pad
 
 test('the first rendered sample after a physical doorway uses the destination entrance facing',async({page,baseURL},info)=>{
   const errors=await observeHeading(page);
-  await restore(page,baseURL!,'west',{x:8.5,y:14});
+  // From inside the cafe's street door (cafe tile units), one step down leaves for town.
+  await restore(page,baseURL!,'west',{x:11,y:12.3},'restaurant');
   await page.getByTestId('world-viewport').focus();
   await page.keyboard.down('ArrowDown');
   try{await expect(page.getByTestId('world-viewport')).toHaveAttribute('data-map','town');}

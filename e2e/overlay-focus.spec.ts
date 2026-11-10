@@ -30,7 +30,7 @@ for (const build of ["development", "production"]) {
         page.on("console", message => {
           if (message.type() === "error") errors.push(message.text());
         });
-        await walkTo(page,{x:6.5,y:9});
+        await walkTo(page,{x:3.4,y:7.2}); // just south of table 1 (cafe tile units)
         const tableTrigger = page.locator('[data-world-anchor="restaurant.table-1"]');
         await tableTrigger.click();
         const tableDialog = page.locator(".world-context[data-target=table]");

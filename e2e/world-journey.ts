@@ -101,7 +101,14 @@ export async function walkTo(page: Page, destination: Point) {
     let position: Point;
     if (isPixelMap(map.id)) {
       // Pixel maps publish their camera; tile units → CSS px from the canvas's top-left corner.
-      const camera = JSON.parse((await page.locator(".pixel-cafe").getAttribute("data-pixel-camera"))!) as {x:number;y:number;zoom:number;dpr:number;tile:number};
+      // Closing a bottom sheet resizes the view, so wait until the camera holds still for a few frames.
+      const readCamera = () => page.locator(".pixel-cafe").evaluate(async element => {
+        const frame = () => new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+        let before = element.getAttribute("data-pixel-camera");
+        for (let stable = 0; stable < 3;) { await frame(); const now = element.getAttribute("data-pixel-camera"); stable = now === before ? stable + 1 : 0; before = now; }
+        return before;
+      });
+      const camera = JSON.parse((await readCamera())!) as {x:number;y:number;zoom:number;dpr:number;tile:number};
       const scale = camera.zoom / camera.dpr;
       position = { x: (point.x*camera.tile-camera.x)*scale, y: (point.y*camera.tile-camera.y)*scale };
     } else {
