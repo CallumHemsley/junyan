@@ -8,7 +8,7 @@
  */
 import { TILE } from "../kit/index.ts";
 import { defineScene } from "../engine/index.ts";
-import type { Prop, Vec } from "../engine/index.ts";
+import type { Actor, Prop, Vec } from "../engine/index.ts";
 
 /** Art pixels to tile units. Most pieces were designed on the pixel grid, so place them in pixels. */
 const px = (x: number, y: number): Vec => [x / TILE, y / TILE];
@@ -33,11 +33,24 @@ const SEATS = ["furn/stool-turned", "furn/stool-bamboo", "furn/stool-plastic", "
  * Customers' food is added at run time by the game.
  */
 const SETTINGS: readonly (readonly [sprite: string, dx: number, dy: number])[][] = [
-  [["furn/condiment-set-1", -18, -32], ["furn/teapot", 14, -36], ["furn/teacup", 22, -29]],
-  [["furn/condiment-set-2", 14, -34], ["furn/teacup-empty", -14, -31]],
-  [["furn/condiment-set-3", -16, -32], ["furn/menu-stand", 16, -36], ["food/bowl-empty", 4, -28]],
-  [["furn/chopstick-tin", -20, -32], ["furn/vinegar-bottle", -12, -33], ["furn/chili-jar", -4, -31], ["furn/teacup-empty", 18, -30]],
+  [["furn/condiment-set-1", 8, -38], ["furn/teapot", 20, -32], ["food/bun", -12, -30]],
+  [["furn/condiment-set-2", 18, -32], ["food/milk", -2, -29], ["furn/teacup", -18, -31]],
+  [["furn/condiment-set-3", -16, -38], ["food/youtiao", 2, -29], ["food/egg", -14, -28]],
+  [["furn/chopstick-tin", -22, -36], ["furn/chili-jar", -14, -34], ["food/dumpling", 4, -31], ["food/soy-dish", 20, -30]],
 ];
+
+/**
+ * A customer sitting at table `table`. A sitter is drawn 4px up on the seat. Someone facing down sits
+ * behind the table, so the table covers their lap; side and front sitters draw over its edge.
+ */
+export function seatedActor(id: string, character: string, table: 1 | 2 | 3 | 4, phase = 0): Actor {
+  const t = CAFE_TABLES[table - 1];
+  const facing = t.seat.facing;
+  return {
+    id, sprite: `char/${character}`, at: t.seat.at, facing, action: "sit", offset: [0, -4], phase,
+    sortY: facing === "down" ? t.seat.at[1] + 1 / TILE : t.at[1] + 3 / TILE,
+  };
+}
 
 const COUNTER_ROW = 7, LEG_COL = 11;
 const counterY = rowBase(COUNTER_ROW);
@@ -118,6 +131,8 @@ const dining: Prop[] = [
   { sprite: "furn/coat-rack", at: [1.55, 10.4] },
   { sprite: "furn/umbrella-stand", at: [13.3, 12.85] },
   { sprite: "tile/mat", at: px(352, 414) },
+  { sprite: "char/lin-jie/bag", at: [1.35, 6.25], solid: false },
+  { sprite: "char/xiao-zhou/backpack", at: [16.1, 10.3], solid: false },
   { sprite: "decor/slippers", at: [12.55, 12.9], solid: false },
   { sprite: "decor/umbrella-wet", at: [13.85, 12.85] },
   { sprite: "decor/sun-catcher", at: px(240 + 26, 56) },
@@ -192,5 +207,13 @@ export default defineScene({
     ...Object.fromEntries(CAFE_TABLES.map((t) => [`seat/table-${t.table}`, t.seat])),
     ...Object.fromEntries(CAFE_TABLES.map((t) => [`table/${t.table}`, { at: t.at }])),
   },
-  actors: [{ id: "waiter", sprite: "char/player", at: [17.2, 9.5], facing: "down", action: "idle" }],
+  // The morning's regulars, for tools and screenshots. The game supplies its own cast from state.
+  actors: [
+    { id: "waiter", sprite: "char/player", at: [12.9, 9.25], facing: "left", action: "carry-idle" },
+    { id: "cook", sprite: "char/cook", at: [14.2, 5.7], facing: "down", action: "work" },
+    seatedActor("lin-jie", "lin-jie", 1),
+    seatedActor("zhang-laoshi", "zhang-laoshi", 2, 1),
+    seatedActor("xiao-li", "xiao-li", 3, 2),
+    seatedActor("xiao-zhou", "xiao-zhou", 4, 3),
+  ],
 });
