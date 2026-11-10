@@ -29,12 +29,12 @@ function frontCap(p: Px, seed: number, from = 0, to = 32) {
 
 /** A joint across a side cap's timber plates at row `y`, with a nail either side. */
 function sideJoint(p: Px, y: number) {
-  for (const i of [1, 2, 3, 10, 11, 12, 13, 14]) p.px(16 + i, y, "wood1");
-  p.px(18, y - 2, "wood4").px(28, y + 2, "wood4");
+  for (let i = 1; i < 14; i++) p.px(16 + i, y, "wood1");
+  p.px(19, y - 2, "wood3").px(27, y + 2, "wood3");
 }
 function frontJoint(p: Px, x: number) {
-  for (const y of [1, 2, 3, 8]) p.px(x, y, "wood1");
-  p.px(x - 2, 2, "wood4").px(x + 2, 8, "wood4");
+  for (let y = 2; y < 9; y++) p.px(x, y, "wood1");
+  p.px(x - 2, 4, "wood3").px(x + 2, 6, "wood3");
 }
 
 const LEFT = [
@@ -43,13 +43,12 @@ const LEFT = [
   (p: Px) => {
     sideCap(p, 2);
     sideJoint(p, 13);
-    block(p, 21, 18, ["q.", "q.", ".q", ".q", "q."], CAP, "crack");
+    block(p, 22, 18, ["q.", "q.", ".q", ".q", "q."], CAP, "crack");
   },
-  /** A chip knocked out of the lip by a ladder, and a newer, paler patch of plaster in the core. */
+  /** A chip knocked out of the lit edge by a ladder. */
   (p: Px) => {
     sideCap(p, 3);
-    block(p, 20, 5, ["PPPP.", "PPPPP", ".PPPP", "..PP."], CAP, "patch");
-    block(p, 27, 22, [".21", ".21", ".1."], CAP, "chip");
+    p.px(30, 22, "wood2").px(30, 23, "wood2").px(30, 24, "wood1").px(29, 24, "wood1");
   },
 ];
 

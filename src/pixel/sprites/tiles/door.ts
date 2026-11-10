@@ -56,23 +56,23 @@ function doorThreshold(p: Px) {
 
 /**
  * The coir doormat inside the door: a jade-dyed stripe in its border, its middle trodden bald and
- * pale, its ends fraying, and the top-right corner curled up showing the rubber back.
- * Lies on the floor: layer `floor`, anchor at the middle of its front edge.
+ * pale, its ends fraying, and the top-right corner lifted where it has curled for years: its lit top
+ * edge rises off the floor and shows the dark rubber underside.
+ * Lies on the floor: layer `floor`, anchor at the middle of its front edge. 60×28; the mat itself
+ * occupies rows 4–27, the rows above are room for the lifted corner.
  */
 function mat(p: Px) {
-  const L = 2, R = 57, T = 0, B = 21;
-  // Woven field: a two-by-two basket weave, horizontal fibres lit, vertical fibres shaded.
+  const L = 2, R = 57, T = 4, B = 25;
+  // Woven field in two close tones: a quiet two-by-two basket weave.
   for (let y = T; y <= B; y++) for (let x = L; x <= R; x++) {
-    const cell = ((x - L) >> 1) + ((y - T) >> 1);
-    const across = cell % 2 === 0;
-    const c = across ? ((y - T) % 2 === 0 ? "bamboo4" : "bamboo3") : ((x - L) % 2 === 0 || (y - T) % 2 === 0 ? "bamboo3" : "bamboo2");
-    p.px(x, y, c);
+    const across = (((x - L) >> 1) + ((y - T) >> 1)) % 2 === 0;
+    p.px(x, y, across === ((y - T) % 2 === 0) ? "bamboo3" : "bamboo4");
   }
   // Bald middle: the weave pressed flat and bleached where every customer wipes their feet.
-  const bald = (x: number, y: number, rx: number, ry: number) => ((x + 0.5 - 30) / rx) ** 2 + ((y + 0.5 - 11) / ry) ** 2 <= 1;
+  const bald = (x: number, y: number, rx: number, ry: number) => ((x + 0.5 - 29) / rx) ** 2 + ((y + 0.5 - 15) / ry) ** 2 <= 1;
   p.each((x, y, c) => {
-    if (bald(x, y, 12, 5.5)) return c === "bamboo2" ? "bamboo3" : c === "bamboo3" ? "bamboo4" : c === "bamboo4" ? "bamboo5" : undefined;
-    if (bald(x, y, 17, 8)) return c === "bamboo2" ? "bamboo3" : undefined;
+    if (bald(x, y, 11, 5)) return c === "bamboo3" ? "bamboo4" : c === "bamboo4" ? "bamboo5" : undefined;
+    if (bald(x, y, 16, 7.5) && (x + y) % 2 === 0) return c === "bamboo3" ? "bamboo4" : undefined;
     return undefined;
   });
   // Border: dark binding, then the jade stripe.
@@ -80,7 +80,7 @@ function mat(p: Px) {
   p.hline(L + 2, T + 2, R - L - 3, "jade3").hline(L + 2, B - 2, R - L - 3, "jade2");
   p.vline(L + 2, T + 2, B - T - 3, "jade3").vline(R - 2, T + 2, B - T - 3, "jade2");
   // Thickness: the front edge of the mat.
-  p.hline(L, B + 1, R - L + 1, "bamboo1").hline(L + 1, B + 2, R - L - 1, "bamboo1");
+  p.hline(L, B + 1, R - L + 1, "bamboo1").hline(L + 1, B + 2, R - L - 1, "bamboo2");
   // Frayed ends: fibres working loose on both short sides.
   for (let y = T + 1; y < B; y += 2) {
     if (y % 4 !== 3) p.px(L - 1, y, "bamboo3");
@@ -88,21 +88,21 @@ function mat(p: Px) {
     if (y % 4 !== 1) p.px(R + 1, y, "bamboo3");
     if (y % 6 === 3) p.px(R + 2, y, "bamboo2");
   }
-  // The curled corner, top right: the dark rubber backing shows.
-  block(p, R - 7, T, [
-    "........",
-    "......11",
-    ".....121",
-    "....1221",
-    "...12321",
-    "..123221",
-    ".1111111",
-  ], { 1: "stone1", 2: "stone2", 3: "stone3" }, "curl");
+  // The lifted corner: erase the flat corner, then draw it raised. Its lit coir top edge curls up and
+  // over; beneath, the rubber underside faces us in shade, darkest where it meets the floor.
+  for (let y = T; y < T + 7; y++) for (let x = R - 8 + (y - T); x <= R; x++) p.px(x, y, null);
+  // The raised flap: hinged on the fold from (R-8, T) to (R, T+8), its tip lifted to the top of the canvas.
+  p.poly([[R - 8, T], [R + 1, 0], [R + 1, T + 9]], "stone2");
+  p.poly([[R - 8, T], [R + 1, T + 3], [R + 1, T + 9]], "stone1");
+  p.line(R - 8, T, R, 0, "bamboo4").line(R - 7, T, R, 1, "stone3");
+  p.px(R, 0, "bamboo5").px(R - 1, 0, "bamboo5").vline(R, 1, T + 7, "bamboo1");
+  // Where the fold meets the floor: the flattened coir of the crease.
+  p.line(R - 8, T + 1, R - 1, T + 8, "bamboo2");
 }
 
 export default defineSprites({
   "tile/door-threshold": { w: 64, h: 32, anchor: [0, 0], layer: "floor", draw: doorThreshold },
-  "tile/mat": { w: 60, h: 24, anchor: [30, 23], layer: "floor", draw: mat },
+  "tile/mat": { w: 60, h: 28, anchor: [30, 27], layer: "floor", draw: mat },
   /** Outside the room. */
   "tile/void": { w: 32, h: 32, anchor: [0, 0], layer: "floor", draw: (p) => p.rect(0, 0, 32, 32, "ink") },
 });
