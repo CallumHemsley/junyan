@@ -27,6 +27,18 @@ export const CAFE_TABLES = [
 /** Mismatched seats, two per table, in table order. */
 const SEATS = ["furn/stool-turned", "furn/stool-bamboo", "furn/stool-plastic", "furn/stool-square", "furn/stool-plastic-jade", "furn/stool-bamboo", "furn/stool-turned", "furn/stool-plastic"];
 
+/**
+ * What already stands on each table: its own condiments, and the remains or tea of whoever was
+ * there before. Offsets are art pixels from the table's anchor; the top surface spans dy −49…−27.
+ * Customers' food is added at run time by the game.
+ */
+const SETTINGS: readonly (readonly [sprite: string, dx: number, dy: number])[][] = [
+  [["furn/condiment-set-1", -18, -32], ["furn/teapot", 14, -36], ["furn/teacup", 22, -29]],
+  [["furn/condiment-set-2", 14, -34], ["furn/napkin-box", -16, -36]],
+  [["furn/condiment-set-3", -16, -32], ["furn/menu-stand", 16, -36], ["food/bowl-empty", 4, -28]],
+  [["furn/chopstick-tin", -20, -32], ["furn/vinegar-bottle", -12, -33], ["furn/chili-jar", -4, -31], ["furn/teacup-empty", 18, -30]],
+];
+
 const COUNTER_ROW = 7, LEG_COL = 11;
 const counterY = rowBase(COUNTER_ROW);
 /** Things standing on the long counter: their anchors sit one pixel below the counter's. */
@@ -90,6 +102,7 @@ const dining: Prop[] = [
   ...CAFE_TABLES.flatMap((t): Prop[] => [
     { id: `table-${t.table}`, sprite: `furn/table-${t.table}`, at: t.at },
     ...t.stools.map((at, i): Prop => ({ sprite: SEATS[(t.table - 1) * 2 + i], at })),
+    ...SETTINGS[t.table - 1].map(([sprite, dx, dy]): Prop => ({ sprite, at: [t.at[0] + dx / TILE, t.at[1] + dy / TILE], solid: false, sortY: t.at[1] + 0.01 })),
   ]),
   // Plants, deliveries, the broom, the runner in front of the pass.
   { sprite: "decor/plant-rubber", at: [1.65, 3.75] },
@@ -102,8 +115,8 @@ const dining: Prop[] = [
   { sprite: "decor/rug-runner", at: [13.6, 9.45] },
   { sprite: "furn/sideboard", at: [5.25, 3.6] },
   { sprite: "furn/water-dispenser", at: [9.15, 3.6] },
-  { sprite: "furn/coat-rack", at: [9.3, 12.8] },
-  { sprite: "furn/umbrella-stand", at: [12.75, 12.85] },
+  { sprite: "furn/coat-rack", at: [8.7, 12.85] },
+  { sprite: "furn/umbrella-stand", at: [13.3, 12.85] },
   { sprite: "tile/mat", at: px(352, 414) },
   // Mantou, asleep in the sun under the window, and watching the street by the door.
   { id: "cat", sprite: "decor/cat-sleep", at: [6.05, 4.75], solid: false },
@@ -130,7 +143,7 @@ export default defineScene({
       name: "floor", origin: [1, 3], seed: 7,
       legend: {
         // Oak boards: mostly quiet, with the room's history in a minority of tiles.
-        w: ["tile/floor-wood-a", "tile/floor-wood-a", "tile/floor-wood-a", "tile/floor-wood-b", "tile/floor-wood-b", "tile/floor-wood-b", "tile/floor-wood-c", "tile/floor-wood-d", "tile/floor-wood-i"],
+        w: ["tile/floor-wood-a", "tile/floor-wood-a", "tile/floor-wood-a", "tile/floor-wood-a", "tile/floor-wood-b", "tile/floor-wood-b", "tile/floor-wood-b", "tile/floor-wood-b", "tile/floor-wood-c", "tile/floor-wood-c", "tile/floor-wood-d", "tile/floor-wood-i"],
         p: "tile/floor-wood-e", q: "tile/floor-wood-f", s: "tile/floor-wood-h", m: "tile/floor-wood-g",
         k: ["tile/floor-kitchen-a", "tile/floor-kitchen-a", "tile/floor-kitchen-a", "tile/floor-kitchen-b", "tile/floor-kitchen-c", "tile/floor-kitchen-d", "tile/floor-kitchen-f"],
         x: "tile/floor-kitchen-e",
