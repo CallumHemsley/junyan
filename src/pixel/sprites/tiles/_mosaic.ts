@@ -16,11 +16,11 @@ export function cellAt(x: number, y: number): Cell {
   const du = u <= 4 ? u : u - 8, dv = v <= 4 ? v : v - 8;
   const md = Math.abs(du) + Math.abs(dv);
   const ci = ((Math.floor(x / 8) % 4) + 4) % 4, cj = ((Math.floor(y / 8) % 4) + 4) % 4;
-  if (md <= 2) {
+  if (md <= 1) {
     const di = ((Math.round(x / 8) % 4) + 4) % 4, dj = ((Math.round(y / 8) % 4) + 4) % 4;
     return { kind: "dot", key: di + dj * 4, u, v };
   }
-  if (md === 3 || u === 0 || v === 0) return { kind: "grout", key: ci + cj * 4, u, v };
+  if (md === 2 || u === 0 || v === 0) return { kind: "grout", key: ci + cj * 4, u, v };
   return { kind: "cell", key: ci + cj * 4, u, v };
 }
 
@@ -37,7 +37,7 @@ export function mosaic(p: Px, seed: number, tint?: (c: Cell, x: number, y: numbe
     const c = cellAt(x, y);
     const pal = { ...MOSAIC, ...(tint?.(c, x, y) ?? {}) };
     if (c.kind === "grout") { p.px(x, y, pal.grout); continue; }
-    if (c.kind === "dot") { p.px(x, y, (c.u === 7 && c.v === 7) || (c.u === 0 && c.v === 6) || (c.u === 6 && c.v === 0) ? pal.inkLit : pal.ink); continue; }
+    if (c.kind === "dot") { p.px(x, y, c.u === 7 && c.v === 0 ? pal.inkLit : pal.ink); continue; }
     const aged = hash(c.key, 3, seed) < 0.14;
     const lit = cellAt(x, y - 1).kind !== "cell" && c.u < 5;
     p.px(x, y, aged ? pal.aged : lit ? pal.lit : pal.cream);
