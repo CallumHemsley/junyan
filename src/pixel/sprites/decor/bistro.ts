@@ -335,8 +335,8 @@ export default defineSprites({
         // A blade is a wedge, widening toward its tip, with soft edges.
         const half = 0.06 + r * 0.06, edge = Math.abs(k - 0.5);
         const core = r < 0.12;
-        if (core) p.faded(0.22, () => p.px(x, y, "ink"));
-        else if (r > 0.18 && edge < half) p.faded(edge < half * 0.6 ? 0.18 : 0.09, () => p.px(x, y, "ink"));
+        if (core) p.faded(0.26, () => p.px(x, y, "ink"));
+        else if (r > 0.18 && edge < half) p.faded(edge < half * 0.6 ? 0.22 : 0.11, () => p.px(x, y, "ink"));
       }
     },
   },
