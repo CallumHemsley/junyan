@@ -258,35 +258,41 @@ export default defineSprites({
   "decor/wall-fan": {
     w: 32, h: 34, anchor: [16, 30], layer: "floor", frames: 3, fps: 8,
     draw: (p, frame) => {
-      // Wall bracket and the neck.
-      p.rect(13, 28, 6, 5, "cream3").hline(13, 28, 6, "cream4").hline(13, 32, 6, "cream2");
-      p.rect(15, 23, 2, 6, "cream2").px(15, 23, "cream4");
-      // Motor housing behind the cage.
-      p.ellipse(16, 15, 5, 4, "cream2");
-      // Blur of the blades: a pale disc with three denser sectors that turn.
+      // Wall bracket and the neck, jade-painted metal.
+      art(p, 12, 27, [".jJJJjj.", "jJjjjjjk", "jJjjjjjk", "jjjjjjkk", ".kkkkkk."], { J: "jade5", j: "jade3", k: "jade2" });
+      p.px(15, 29, "steel5").px(16, 29, "steel2");
+      p.rect(15, 22, 2, 5, "jade3").vline(15, 22, 5, "jade4").vline(16, 22, 5, "jade2");
+      // Motor housing behind the cage: a jade enamel dome, lit upper left, chipped at the rim.
       const cx = 16, cy = 13, R = 11;
-      for (let y = 2; y < 25; y++) for (let x = 5; x < 27; x++) {
+      for (let y = 4; y < 23; y++) for (let x = 7; x < 26; x++) {
+        const u = (x + 0.5 - cx) / 8, v = (y + 0.5 - cy - 1) / 7.5, d = u * u + v * v;
+        if (d > 1) continue;
+        const l = -0.5 * u - 0.5 * v + 0.5 * Math.sqrt(1 - d);
+        p.px(x, y, l > 0.62 ? "jade5" : l > 0.3 ? "jade4" : l > 0 ? "jade3" : "jade2");
+      }
+      // Blur of the blades: three dark sectors that turn, a faint disc between them.
+      for (let y = 1; y < 26; y++) for (let x = 4; x < 28; x++) {
         const dx = x + 0.5 - cx, dy = y + 0.5 - cy, d = Math.hypot(dx, dy);
         if (d > R - 0.5 || d < 3) continue;
         const a = (((Math.atan2(dy, dx) / (Math.PI * 2) + 1 + frame / 9) % (1 / 3)) * 3);
-        const alpha = a < 0.35 ? 0.8 : a < 0.6 ? 0.5 : 0.25;
-        p.faded(alpha, () => p.px(x, y, a < 0.35 ? (d > 7 ? "jade5" : "jade4") : "jade6"));
+        if (a < 0.28) p.faded(d > 7.5 ? 0.75 : 0.55, () => p.px(x, y, d > 7.5 ? "steel3" : "steel1"));
+        else if (a < 0.45) p.faded(d > 7.5 ? 0.35 : 0.25, () => p.px(x, y, d > 7.5 ? "steel4" : "steel1"));
       }
       // The wire cage: a rim, one inner ring and eight spokes, lit at the upper left.
       for (let y = 0; y < 27; y++) for (let x = 3; x < 29; x++) {
         const dx = x + 0.5 - cx, dy = y + 0.5 - cy, d = Math.hypot(dx, dy);
         const lit = -dx - dy > 0;
-        if (Math.abs(d - (R + 0.5)) < 0.62) p.px(x, y, lit ? "steel5" : "steel2");
-        else if (Math.abs(d - 6.5) < 0.42) p.px(x, y, lit ? "steel4" : "steel3");
+        if (Math.abs(d - (R + 0.5)) < 0.62) p.px(x, y, lit ? "steel4" : "steel1");
+        else if (Math.abs(d - 6.5) < 0.42) p.px(x, y, lit ? "steel3" : "steel2");
       }
       for (let k = 0; k < 8; k++) {
         const t = (k * Math.PI) / 4 + Math.PI / 8;
-        p.line(Math.round(cx - 0.5 + Math.cos(t) * 3.5), Math.round(cy - 0.5 + Math.sin(t) * 3.5), Math.round(cx - 0.5 + Math.cos(t) * 11), Math.round(cy - 0.5 + Math.sin(t) * 11), k < 2 || k > 5 ? "steel3" : "steel4");
+        p.line(Math.round(cx - 0.5 + Math.cos(t) * 3.5), Math.round(cy - 0.5 + Math.sin(t) * 3.5), Math.round(cx - 0.5 + Math.cos(t) * 11), Math.round(cy - 0.5 + Math.sin(t) * 11), k < 2 || k > 5 ? "steel2" : "steel3");
       }
-      // Hub badge.
-      p.ellipse(16, 13, 3, 3, "jade3");
-      art(p, 14, 11, [".jj.", "jJj.", "j..."], { j: "jade4", J: "jade5" });
-      p.px(17, 15, "jade2").px(16, 15, "jade2");
+      // Hub badge: a cream roundel in a steel ring.
+      p.ellipse(16, 13, 3, 3, "steel2");
+      p.ellipse(16, 13, 2, 2, "cream4");
+      p.px(15, 12, "white").px(17, 14, "cream2");
       // The paper strip, fluttering out to the right from the cage.
       const strips = [["ww..", ".wWw", "...w"], ["www.", "..Ww", "...."], [".w..", "w.ww", "...W"]];
       art(p, 26, 10, strips[frame], { w: "cream5", W: "cream3" });

@@ -239,11 +239,12 @@ export default defineSprites({
       // [tipX, tipY, baseX, width, tone shift, yellow margin, dry tip]
       const swords: [number, number, number, number, number, boolean, boolean][] = [
         [15, 1, 15, 6, -1, false, false],
-        [6, 8, 10, 5, -1, true, true],
-        [26, 5, 21, 5, -1, false, false],
-        [10, 15, 12, 5, 0, true, false],
-        [22, 18, 19, 5, 0, false, false],
-        [4, 22, 8, 4, 0, false, false],
+        [6, 9, 12, 5, -1, true, true],
+        [27, 6, 19, 5, -1, false, false],
+        [2, 21, 11, 4, 0, false, false],
+        [30, 23, 21, 4, 0, false, false],
+        [22, 13, 18, 5, 0, false, false],
+        [10, 16, 14, 5, 1, true, false],
       ];
       const darker: Partial<Record<Color, Color>> = { leaf4: "leaf3", leaf3: "leaf2", jade4: "jade3", jade5: "jade4", bamboo4: "bamboo3", leaf2: "leaf1" };
       const lighter: Partial<Record<Color, Color>> = { leaf2: "leaf3", leaf3: "leaf4", jade3: "jade4" };
@@ -251,7 +252,7 @@ export default defineSprites({
         const spans: [number, number, number][] = [];
         for (let y = ty; y < base; y++) {
           const t = (y - ty) / (base - ty);
-          const cx = tx + (bx - tx) * Math.sqrt(t);
+          const cx = tx + (bx - tx) * Math.pow(t, 0.7);
           const width = t > 0.88 ? w - 1 : Math.max(1, Math.min(w, Math.round(1 + (y - ty) * 0.55)));
           spans.push([y, Math.round(cx - width / 2), width]);
         }
@@ -273,7 +274,7 @@ export default defineSprites({
         if (dry) art(p, spans[0][1] - 1, ty, [".b", "bB", "bB", "Bb"], DRY);
       }
       // The snapped leaf, folded over to the right.
-      art(p, 19, 18, [
+      art(p, 17, 24, [
         "..oooooooo....",
         ".o4444333oo...",
         "o44jj4433332oo",

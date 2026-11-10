@@ -33,71 +33,132 @@ const SLEEP_HEAD = [
   ".oooo...oooo.",
 ];
 /**
- * His tail, wrapped round the front of his body and tucked toward his nose: a curve that thins
- * to the tip, lit along its top, ringed every few pixels.
+ * His tail, wrapped along the front of the curl with its tip tucked under his chin: lit along its
+ * top, three plain rings, nothing busier.
  */
 function tail(p: Px) {
   const cells = new Map<string, Color>();
-  for (let a = 168; a >= 58; a -= 1.5) {
-    const t = (a * Math.PI) / 180, x = 12.5 + Math.cos(t) * 11.2, y = 11.2 + Math.sin(t) * 5.8;
-    const r = a > 90 ? 1.3 : 1.3 - (90 - a) / 70;
+  for (let a = 168; a >= 70; a -= 1.5) {
+    const t = (a * Math.PI) / 180, x = 14.5 + Math.cos(t) * 12, y = 11.5 + Math.sin(t) * 7.2;
+    const r = a > 95 ? 1.3 : 1.05;
     for (let dy = -2; dy <= 2; dy++) for (let dx = -2; dx <= 2; dx++) {
       if (dx * dx + dy * dy > r * r + 0.3) continue;
       const px = Math.round(x + dx - 0.5), py = Math.round(y + dy - 0.5);
-      const ring = Math.floor(a / 14) % 2 === 0 && a < 160;
-      const tone: Color = ring ? (dy < 0 ? "orange2" : "orange1") : dy < 0 ? "orange3" : dy === 0 ? "orange2" : "orange1";
+      const ring = [150, 128, 106].some((c) => Math.abs(a - c) < 3);
+      const tone: Color = ring ? "orange1" : dy < 0 ? "gold4" : dy === 0 ? "orange3" : "orange2";
       cells.set(`${px},${py}`, tone);
     }
   }
   for (const [key] of cells) {
     const [x, y] = key.split(",").map(Number);
-    for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) if (!cells.has(`${x + dx},${y + dy}`)) p.px(x + dx, y + dy, "brown1");
+    for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) if (!cells.has(`${x + dx},${y + dy}`) && !p.solid(x + dx, y + dy)) p.px(x + dx, y + dy, "brown1");
   }
   for (const [key, c] of cells) { const [x, y] = key.split(",").map(Number); p.px(x, y, c); }
+  // Where the tail lies over his belly, a dark fur crease above it keeps it a tail.
+  for (const [key] of cells) {
+    const [x, y] = key.split(",").map(Number);
+    if (!cells.has(`${x},${y - 1}`) && p.solid(x, y - 1)) p.px(x, y - 1, "brown2");
+  }
 }
 
-/** The curled body, lit by the sun from the upper left, with tabby stripes running off the spine. */
+/**
+ * The curl: one round arc of back lit by the sun from the upper left, stripes running off the
+ * spine like hoops, the haunch rounding into the front. `lift` raises the crown of the back.
+ */
 function curledBody(p: Px, lift: number) {
-  const cx = 12, cy = 10, rx = 10.5, ry = 7;
-  for (let y = 0; y < 18; y++) for (let x = 0; x < 24; x++) {
-    // Breathing in lifts the top of his back without moving his belly.
-    const yy = y < cy ? y + lift * (1 - Math.abs(x - cx) / rx) : y;
+  const cx = 14, cy = 10.5, rx = 13, ry = 8.5;
+  for (let y = 0; y < 21; y++) for (let x = 0; x < 29; x++) {
+    const yy = y < cy ? y + lift * Math.max(0, 1 - Math.abs(x + 0.5 - cx + 3) / rx) : y;
     const u = (x + 0.5 - cx) / rx, v = (yy + 0.5 - cy) / ry, d = u * u + v * v;
     if (d > 1) continue;
     const z = Math.sqrt(1 - d), light = -0.45 * u - 0.65 * v + 0.5 * z;
-    p.px(x, y, light > 0.86 ? "gold4" : light > 0.5 ? "orange3" : light > 0.08 ? "orange2" : "orange1");
+    p.px(x, y, light > 0.9 ? "gold4" : light > 0.52 ? "orange3" : light > 0.1 ? "orange2" : "orange1");
   }
-  // Stripes: short dashes running down from the spine, softened where the sun lands.
-  for (let a = 200; a <= 335; a += 13) {
+  // Stripes: hoops off the spine, every so often, fading where the sun lands.
+  const stripe: Partial<Record<Color, Color>> = { gold4: "orange3", orange3: "orange1", orange2: "orange1", orange1: "brown2" };
+  for (let a = 168; a <= 300; a += 17) {
     const t = (a * Math.PI) / 180;
-    for (let k = 0; k < 4; k++) {
-      const r = 0.92 - k * 0.11, x = Math.round(cx + Math.cos(t) * rx * r - 0.5 + k * 0.4), y = Math.round(cy + Math.sin(t) * ry * r - 0.5 - (k === 0 ? lift : 0));
+    for (let k = 0; k < 3; k++) {
+      const r = 0.93 - k * 0.12;
+      const x = Math.round(cx + Math.cos(t) * rx * r - 0.5), y = Math.round(cy + Math.sin(t) * ry * r - 0.5 - (k === 0 ? Math.round(lift) : 0));
       const here = p.get(x, y);
-      const stripe: Partial<Record<Color, Color>> = { gold4: "orange3", orange3: "orange1", orange2: "orange1", orange1: "brown2" };
-      if (here && stripe[here] && !(k === 3 && a % 2)) p.px(x, y, stripe[here]!);
+      if (here && stripe[here]) p.px(x, y, stripe[here]!);
     }
   }
-  // The line of his thigh, curled under.
-  for (let a = 150; a <= 260; a += 6) {
-    const t = (a * Math.PI) / 180, x = Math.round(7 + Math.cos(t) * 5.5), y = Math.round(12 + Math.sin(t) * 4);
+  // The rounded haunch at the back-left, a soft fold line.
+  for (let a = 200; a <= 280; a += 7) {
+    const t = (a * Math.PI) / 180, x = Math.round(8 + Math.cos(t) * 5), y = Math.round(13 + Math.sin(t) * 4);
     const here = p.get(x, y);
     if (here === "orange3" || here === "orange2") p.px(x, y, here === "orange3" ? "orange2" : "orange1");
   }
 }
 
 export default defineSprites({
-  /** Asleep in the sun patch. Two frames at 1 fps: his back rises and falls a pixel. */
+  /**
+   * Asleep in the sun patch, curled nose to tail. Eight frames at 2 fps: a slow breath in and out
+   * (the crown of his back rises a pixel), a pause, and on the last frame his right ear flicks.
+   */
   "decor/cat-sleep": {
-    w: 31, h: 19, anchor: [15, 17], foot: [-13, -8, 26, 8], shadow: { rx: 14, ry: 3, dy: -1 },
-    frames: 2, fps: 1,
+    w: 30, h: 21, anchor: [14, 19], foot: [-13, -8, 26, 8], shadow: { rx: 14, ry: 3, dy: -1 },
+    frames: 8, fps: 2,
     draw: (p, frame) => {
-      curledBody(p, frame === 1 ? 1 : 0);
+      curledBody(p, [0, 0.5, 1, 1, 0.5, 0, 0, 0][frame]);
       autoOutline(p, { map: CAT_OUTLINE });
       tail(p);
-      art(p, 17, 1, SLEEP_HEAD, FUR);
-      // Whiskers, pale against the fur and the floor.
-      art(p, 15, 9, ["hh"], FUR);
-      art(p, 30, 9, ["h"], FUR);
+      art(p, 16, 4, SLEEP_HEAD, FUR);
+      if (frame === 7) {
+        // The right ear flicks flat: repaint the ear as back fur, then draw it folded.
+        art(p, 24, 4, ["AAaaA", "aaaaa", "....."], FUR);
+        art(p, 24, 4, ["..ooo", ".oaao", "oaaao"], FUR);
+      }
+      // Whiskers, pale against the fur.
+      art(p, 14, 12, ["hh"], FUR);
+    },
+  },
+
+  /**
+   * Awake and loafed on the floor, paws tucked under, watching you. Three frames at 1 fps: eyes
+   * open, half closed, closed: a slow cat blink, which is how cats say they like you.
+   */
+  "decor/cat-loaf": {
+    w: 24, h: 21, anchor: [12, 19], foot: [-10, -6, 20, 6], shadow: { rx: 11, ry: 3, dy: -1 },
+    frames: 3, fps: 1,
+    draw: (p, frame) => {
+      // The loaf: a low dome of back behind the head.
+      const cx = 12, cy = 12.5, rx = 11, ry = 7;
+      for (let y = 2; y < 21; y++) for (let x = 0; x < 24; x++) {
+        const u = (x + 0.5 - cx) / rx, v = (y + 0.5 - cy) / ry, d = u * u + v * v;
+        if (d > 1) continue;
+        const z = Math.sqrt(1 - d), light = -0.45 * u - 0.65 * v + 0.5 * z;
+        p.px(x, y, light > 0.9 ? "gold4" : light > 0.5 ? "orange3" : light > 0.08 ? "orange2" : "orange1");
+      }
+      for (const [x, y] of [[3, 9], [4, 8], [19, 8], [20, 9], [2, 12], [21, 12], [2, 15], [21, 15]] as const) p.px(x, y, "orange1");
+      autoOutline(p, { map: CAT_OUTLINE });
+      // Tail tucked round his right side to the front.
+      art(p, 15, 15, ["......o", ".....oA", "....oAa", "oooobao", "AAAaao.", "oooooo."], FUR);
+      // Head, the same face as when he sits; the eyes change.
+      const eyes = [
+        ["bAAAAAAAAAaaab", "bAskAAAAAskaab", "bAkkAwwwwkkaab"],
+        ["bAAAAAAAAAaaab", "bAddAAAAAddaab", "bAkkAwwwwkkaab"],
+        ["bAAAAAAAAAaaab", "bAAAAAAAAAaaab", "bAeeAwwwweeaab"],
+      ][frame];
+      art(p, 5, 0, [
+        "..o.o......oo.",
+        ".oAoAo....oaao",
+        ".oApAAooooapao",
+        "oAAAbAbAbAaaao",
+        "bAAAAbAAbAaaab",
+        ...eyes,
+        "bwwwwwnnwwwwab",
+        "bwwwwwwwwwwwab",
+        ".owwwwwwwwwwo.",
+        "..orRRRRYrrro.",
+        "..owwwwyYwwwo.",
+        "..owwoowwoowo.",
+        "...oo..oo..o..",
+      ], FUR);
+      art(p, 3, 9, ["h.", ".h"], FUR);
+      art(p, 19, 9, [".h", "h."], FUR);
     },
   },
 
