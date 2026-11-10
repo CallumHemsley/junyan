@@ -18,7 +18,11 @@ const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 // ── canopies ──────────────────────────────────────────────────────────────────
 
 /** One mass of foliage. `sway` (0..1) is how far it moves in the wind; the crown top moves most. */
-export type Clump = { x: number; y: number; rx: number; ry: number; shift?: number; sway?: number; seed?: number; group?: number };
+export type Clump = {
+  x: number; y: number; rx: number; ry: number; shift?: number; sway?: number; seed?: number; group?: number;
+  /** The leaf mass this clump belongs to: it, not the clump, sets the big light and shade. */
+  mass?: { x: number; y: number; rx: number; ry: number };
+};
 
 /**
  * A foliage texture: a leaf drawing stamped over a jittered grid. Leaf digits are relative tones,
@@ -58,11 +62,23 @@ export function canopy(
   const seed = options.seed ?? 1;
   // Which group drew each pixel: clumps of one mass melt together, masses cut seams into each other.
   const owner = new Map<number, number>();
-  const toneAt = (c: Clump, x: number, y: number) => {
+  // Value structure per mass: a yellow-green rim on its sunny upper left (the ramp's last tone,
+  // used nowhere else), a mid body, and a dark underside; the whole crown darkens to the lower right.
+  const body = n - 2; // highest tone a leaf may take away from the rim
+  const light = (c: Clump, x: number, y: number) => {
+    const m = c.mass ?? c;
+    const mu = (x - m.x) / m.rx, mv = (y - m.y) / m.ry;
     const local = sphereLight((x - c.x) / c.rx, (y - c.y) / c.ry);
+    const massL = sphereLight(mu * 0.95, mv * 0.95);
     const global = sphereLight((x - crown.x) / crown.rx * 0.9, (y - crown.y) / crown.ry * 0.9);
-    const t = clamp(0.58 * local + 0.42 * global + (c.shift ?? 0) * 0.12, 0, 0.999);
-    return 1 + Math.floor(t * (n - 1)); // 1 .. n-1 (index into ramp)
+    let t = 0.2 * local + 0.5 * massL + 0.3 * global + (c.shift ?? 0) * 0.12;
+    if (mv > 0.3) t -= (mv - 0.3) * 0.55;
+    const rim = (c.shift ?? 0) >= 0 && mu * mu + mv * mv > 0.55 && mu * 0.55 + mv * 0.85 < -0.5 && global > 0.35;
+    return { t: clamp(t, 0, 0.999), rim };
+  };
+  const toneAt = (c: Clump, x: number, y: number) => {
+    const { t, rim } = light(c, x, y);
+    return rim ? n - 1 : clamp(1 + Math.floor(Math.pow(t, 1.15) * body * 1.08), 1, body);
   };
   clumps.forEach((c, ci) => {
     const off = Math.round((c.sway ?? 0) * (options.dx ?? 0));
@@ -74,7 +90,7 @@ export function canopy(
       for (let x = Math.floor(c.x - c.rx); x <= Math.ceil(c.x + c.rx); x++) {
         const u = (x + 0.5 - c.x) / (c.rx - 0.5), v = (y + 0.5 - c.y) / (c.ry - 0.5);
         if (u * u + v * v > 1) continue;
-        cells.set(key(x + off, y), ramp[Math.max(1, toneAt(c, x, y) - 2)]);
+        cells.set(key(x + off, y), ramp[Math.max(1, Math.min(body, toneAt(c, x, y)) - 1)]);
       }
     // Leaves on a jittered grid, local to the clump so the texture rides along when it sways.
     const [sx, sy] = step;
@@ -89,7 +105,8 @@ export function canopy(
         const u = (cx - c.x) / c.rx, v = (cy - c.y) / c.ry;
         if (u * u + v * v > 1.02) continue;
         const base = toneAt(c, cx, cy);
-        const tone = base + (h < 0.14 ? -1 : h > 0.9 && base >= n - 2 ? 1 : 0);
+        const tone = base - (h < 0.06 ? 1 : 0);
+        const cap = base === n - 1 ? n - 1 : body;
         const odd = foliage.odd && hash(lx, ly, cs + 9) < foliage.odd.chance ? foliage.odd.ramp : null;
         const flip = hash(lx, ly, cs + 3) < 0.5;
         if (foliage.outlineLeaves) {
@@ -104,7 +121,7 @@ export function canopy(
           for (let ri = 0; ri < row.length; ri++) {
             const ch = row[ri];
             if (ch === ".") continue;
-            const t = clamp(tone + Number(ch) - 2, 1, n - 1);
+            const t = clamp(tone + Number(ch) - 2, 1, cap);
             const color = odd ? odd[clamp(t - 1, 0, odd.length - 1)] : ramp[t];
             cells.set(key(x0 + (flip ? lw - 1 - ri : ri) + off, y0 + rj), color);
           }
@@ -129,6 +146,30 @@ export function canopy(
 
 export type Ellipse = { x: number; y: number; rx: number; ry: number };
 
+/** Smooth 2-D value noise, 0..1, with cells `sx` by `sy` px. */
+export function noise2(x: number, y: number, seed: number, sx = 6, sy = 4): number {
+  const fx = x / sx, fy = y / sy, ix = Math.floor(fx), iy = Math.floor(fy);
+  const u = fx - ix, v = fy - iy, su = u * u * (3 - 2 * u), sv = v * v * (3 - 2 * v);
+  const a = hash(ix, iy, seed), b = hash(ix + 1, iy, seed), c = hash(ix, iy + 1, seed), d = hash(ix + 1, iy + 1, seed);
+  return lerp(lerp(a, b, su), lerp(c, d, su), sv);
+}
+
+/**
+ * Punch see-through gaps in a finished crown: sky-and-ground holes, each with the shaded
+ * undersides of the leaves above it darkened and the lit tops below it left alone.
+ */
+export function punchGaps(p: Px, gaps: readonly Ellipse[], dark: Color): Px {
+  const hole = (x: number, y: number) => gaps.some((g) => ((x + 0.5 - g.x) / g.rx) ** 2 + ((y + 0.5 - g.y) / g.ry) ** 2 <= 1);
+  const rim: [number, number][] = [];
+  for (const g of gaps) for (let y = Math.floor(g.y - g.ry) - 1; y <= g.y + g.ry + 1; y++) for (let x = Math.floor(g.x - g.rx) - 1; x <= g.x + g.rx + 1; x++) {
+    if (hole(x, y)) continue;
+    if (hole(x, y + 1) || hole(x + 1, y) || hole(x - 1, y) || hole(x, y - 1)) rim.push([x, y]);
+  }
+  for (const g of gaps) for (let y = Math.floor(g.y - g.ry); y <= g.y + g.ry; y++) for (let x = Math.floor(g.x - g.rx); x <= g.x + g.rx; x++) if (hole(x, y)) p.px(x, y, null);
+  p.over(() => { for (const [x, y] of rim) p.px(x, y, dark); });
+  return p;
+}
+
 /**
  * A crown built of separate masses, each a cloud of clumps on the end of a limb, so the limbs show
  * in the gaps between them. Masses are drawn top first; every clump's sway is measured against the
@@ -136,7 +177,7 @@ export type Ellipse = { x: number; y: number; rx: number; ry: number };
  */
 export function massClumps(crown: Ellipse, masses: readonly Ellipse[], r: number, seed: number, squash = 0.8): Clump[] {
   return [...masses].sort((a, b) => a.y - b.y).flatMap((m, i) => crownClumps(m, Math.min(r, m.rx * 0.8, m.ry), seed + i * 7, { squash })
-    .map((c) => ({ ...c, group: i, sway: clamp((crown.y + crown.ry * 0.3 - c.y) / (crown.ry * 1.1), 0, 1) })));
+    .map((c) => ({ ...c, mass: m, group: i, sway: clamp((crown.y + crown.ry * 0.3 - c.y) / (crown.ry * 1.1), 0, 1) })));
 }
 
 /**
@@ -168,7 +209,11 @@ export function crownClumps(crown: { x: number; y: number; rx: number; ry: numbe
 // ── bark ──────────────────────────────────────────────────────────────────────
 
 /** Three tones (shade, body, lit) per bark material. */
-export type Bark = { materials: readonly (readonly [Color, Color, Color])[]; pick: (cell: number, y: number) => number; cell: readonly [number, number]; seams?: boolean };
+export type Bark = {
+  materials: readonly (readonly [Color, Color, Color])[]; pick: (cell: number, y: number) => number; cell: readonly [number, number]; seams?: boolean;
+  /** Deep fissures between bark plates in this colour, instead of a soft step. */
+  fissure?: Color;
+};
 
 /**
  * London plane: the outer grey-brown bark flakes away in jigsaw patches, showing olive, cream and
@@ -180,7 +225,7 @@ export function planeBark(seed: number, top: number, bottom: number): Bark {
     materials: [
       ["stone1", "stone2", "stone3"], // grey-brown outer bark
       ["bamboo1", "bamboo2", "bamboo3"], // olive
-      ["stone4", "cream4", "cream5"], // cream, freshly exposed
+      ["stone3", "stone4", "cream4"], // cream, freshly exposed
       ["jade2", "jade3", "jade4"], // green underbark, rare
     ],
     cell: [5, 7],
@@ -188,21 +233,22 @@ export function planeBark(seed: number, top: number, bottom: number): Bark {
     pick: (cell, y) => {
       const h = hash(cell, 3, seed);
       const pale = clamp((bottom - y) / Math.max(1, bottom - top), 0, 1); // 0 at the base, 1 at the crown
-      if (h < 0.05) return 3;
-      if (h < 0.5 - pale * 0.25) return 0;
-      if (h < 0.8 - pale * 0.3) return 1;
+      if (h < 0.06) return 3;
+      if (h < 0.56 - pale * 0.22) return 0;
+      if (h < 0.86 - pale * 0.26) return 1;
       return 2;
     },
   };
 }
 
-/** Camphor: dark grey-brown, furrowed in long vertical plates. */
+/** Camphor: grey-brown bark broken by deep fissures into small, thick, slightly lifted plates. */
 export function camphorBark(seed: number): Bark {
   return {
-    materials: [["wood1", "wood2", "wood3"], ["stone1", "stone2", "stone3"], ["brown1", "brown2", "brown3"]],
-    cell: [3, 11],
+    materials: [["wood1", "wood2", "wood3"], ["brown1", "brown2", "brown3"], ["stone1", "stone2", "stone3"], ["wood2", "wood3", "wood4"]],
+    cell: [4, 7],
     seams: true,
-    pick: (cell) => { const h = hash(cell, 9, seed); return h < 0.5 ? 0 : h < 0.9 ? 2 : 1; },
+    fissure: "ink2",
+    pick: (cell) => { const h = hash(cell, 9, seed); return h < 0.4 ? 0 : h < 0.72 ? 1 : h < 0.9 ? 2 : 3; },
   };
 }
 
@@ -251,6 +297,11 @@ export function limb(p: Px, x0: number, y0: number, x1: number, y1: number, w0: 
       const cell = barkCell(x, y, bark.cell, seed);
       const mat = bark.materials[bark.pick(cell.id, y)];
       let level = u < 0.18 ? 2 : u < 0.62 ? 1 : 0;
+      if (bark.fissure && cell.edge) {
+        // A fissure: dark, but its lower lip catches light where a plate lifts.
+        p.px(x, y, cell.below && u < 0.6 ? mat[Math.min(2, level + 1)] : u < 0.15 ? mat[0] : bark.fissure);
+        continue;
+      }
       if (bark.seams && cell.edge) level = cell.below ? Math.min(2, level + 1) : Math.max(0, level - 1);
       if (width >= 4 && i === width - 1) level = 0;
       // Inside the crown the limbs are in leaf shade.
@@ -366,6 +417,14 @@ export const PLANE_LEAVES: readonly (readonly string[])[] = [
   [".33.", "3322", ".21."],
   ["..3.", "3332", "3222", ".21."],
 ];
+/** Plane leaves gathered into clusters of three or four, lit on their upper left: the crown's grain. */
+export const PLANE_CLUSTERS: readonly (readonly string[])[] = [
+  ["..3.3..", ".33332.", "3332222", ".322221", "..2211."],
+  [".3.3...", "333322.", "3322221", ".22111.", "..1...."],
+  ["..33.", ".3332", "33222", ".2221", "..11."],
+];
+/** Camphor leaves in small dense sprays. */
+export const CAMPHOR_CLUSTERS: readonly (readonly string[])[] = [[".33.", "3322", "2221", ".11."], ["33..", "3322", ".221", "..1."], [".3.", "332", "221"]];
 /** Camphor: small glossy ovals, tight. */
 export const CAMPHOR_LEAVES: readonly (readonly string[])[] = [["33", "22", "1."], ["3.", "32", "21"], [".3", "32", "2."]];
 /** Fig: big three-lobed leaves. */
@@ -377,9 +436,11 @@ export const FIG_LEAVES: readonly (readonly string[])[] = [
 export const BOX_LEAVES: readonly (readonly string[])[] = [["32", "21"], ["3.", "22"], [".3", "32"], ["33", "2."]];
 /** Clipped hedge surface: soft rounded tufts, each lit on its upper left, so the shear-cut face reads bumpy, not noisy. */
 export const TUFTS: readonly (readonly string[])[] = [
-  [".332.", "33322", "32221", ".211."],
-  [".33..", "33322", "32222", ".221."],
-  ["..32.", ".3322", "33221", ".221."],
+  [".33.", "3322", "2221", ".11."],
+  ["..3..", ".332.", "32221", ".221."],
+  [".3.", "322", ".1."],
+  [".333.", "33222", "22221", ".211."],
+  ["33.", "322", "21."],
 ];
 
 /** A fallen plane leaf, 8×8, lying flat: a palmate blade with a stem. `ramp` is 3 tones. */
@@ -427,15 +488,27 @@ export function leafFace(
   const tone = (t: number) => clamp(1 + Math.floor(clamp(t, 0, 0.999) * (n - 1)), 1, n - 1);
   p.clip(x, y, w, h, () => {
     for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) p.px(i, j, ramp[Math.max(0, tone(light(x + i, y + j)) - 1)]);
-    for (let j = -1, gy = -1; gy < h; j++, gy += step[1])
-      for (let gx = -2 + ((j & 1) ? Math.floor(step[0] / 2) : 0); gx < w; gx += step[0]) {
+    // Tufts on a loose grid: each row starts somewhere new, spacing and nudges vary, and they are
+    // laid in a shuffled order, so overlaps never line up into a woven diagonal.
+    const tufts: [number, number, number][] = [];
+    for (let j = -1, gy = -1; gy < h; j++, gy += step[1]) {
+      let gx = -3 + Math.floor(hash(j, y, seed + 7) * step[0]);
+      while (gx < w) {
         const hx = x + gx, hy = y + gy;
-        const leaf = leaves[Math.floor(hash(hx, hy, seed + 5) * leaves.length)];
-        const ox = gx + (hash(hx, hy, seed + 1) < 0.5 ? 0 : 1), oy = gy + (hash(hx, hy, seed + 2) < 0.7 ? 0 : 1);
-        const hh = hash(hx, hy, seed);
-        const t = tone(light(x + ox + 2, y + oy + 1)) + (hh < 0.08 ? -1 : hh > 0.96 ? 1 : 0);
-        leaf.forEach((row, rj) => { for (let ri = 0; ri < row.length; ri++) if (row[ri] !== ".") p.px(ox + ri, oy + rj, ramp[clamp(t + Number(row[ri]) - 2, 1, n - 1)]); });
+        tufts.push([gx + Math.floor(hash(hx, hy, seed + 1) * 3) - 1, gy + Math.floor(hash(hx, hy, seed + 2) * 3) - 1, hash(hx, hy, seed + 3)]);
+        gx += step[0] - 1 + Math.floor(hash(hx, hy, seed + 4) * 3);
       }
+    }
+    tufts.sort((a, b) => a[2] - b[2]);
+    for (const [ox, oy, k] of tufts) {
+      const hx = x + ox, hy = y + oy;
+      const leaf = leaves[Math.floor(k * 997) % leaves.length];
+      const flip = false; // mirrored tufts would be lit from the wrong side
+      const hh = hash(hx, hy, seed);
+      const t = tone(light(x + ox + 2, y + oy + 1)) + (hh < 0.06 ? -1 : 0);
+      const lw = Math.max(...leaf.map((r) => r.length));
+      leaf.forEach((row, rj) => { for (let ri = 0; ri < row.length; ri++) if (row[ri] !== ".") p.px(ox + (flip ? lw - 1 - ri : ri), oy + rj, ramp[clamp(t + Number(row[ri]) - 2, 1, n - 1)]); });
+    }
   });
   return p;
 }

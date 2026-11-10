@@ -14,7 +14,7 @@
  * hangs from z 100, over the roller door.
  */
 import { defineSprites, hash, type Color, type Legend, type Px } from "../../kit/index.ts";
-import { acUnit, block, cable, downpipe, greyBrick, perProp, plotFoot, signboard, step, zrect } from "./_front.ts";
+import { acUnit, block, cable, downpipe, greyBrick, moss, perProp, plotFoot, signboard, step, zrect } from "./_front.ts";
 
 const F = 128; // facade height, to the top of the parapet
 const TEETH = 5;
@@ -65,12 +65,53 @@ function roof(p: Px, w: number, H: number) {
     const y0 = Math.round(n * T), gt = Math.round((n + 1) * T) - 17;
     for (let k = 0; k < 4; k++) {
       const rx = 8 + Math.floor(hash(n, k, 18) * (w - 30)), ry = y0 + 3 + Math.floor(hash(k, n, 19) * (gt - y0 - 9));
-      // Rust along a lap, weeping down the ribs below it.
-      p.hline(rx, ry, 10, "wood3").hline(rx + 1, ry + 1, 8, "orange1");
-      for (let i = 1; i < 10; i += 4) for (let j = 2; j < 5 + (i % 3); j++) p.px(rx + i, ry + j, j < 4 ? "wood3" : "orange1");
+      // A rust bloom on the iron: an irregular stain, darker at its heart.
+      const bloom = [[".aab.....", "abccbaab.", ".abcccba.", "..aabba.."], ["..ab....", ".abcbaa.", "abccccba", ".aabba.."]][k % 2];
+      p.rows(rx, ry, bloom, { a: "steel2", b: "wood3", c: "orange1" });
     }
     if (n === 1) for (let y = y0; y < gt - 1; y++) for (let x = 120; x < 140; x++) p.px(x, y, x % 4 === 0 ? "gold4" : x % 4 === 3 ? "bamboo3" : "bamboo4");
     if (n === 3) for (let y = y0; y < gt - 1; y++) for (let x = 230; x < 254; x++) p.px(x, y, x % 4 === 0 ? "steel5" : x % 4 === 3 ? "steel3" : "steel4");
+  }
+  // Tooth three was re-roofed after a typhoon: bright new sheets, no rust yet, and its glazing
+  // replaced with ribbed clear polycarbonate.
+  {
+    const y0 = Math.round(2 * T), y1 = Math.round(3 * T), gt = y1 - 17;
+    for (let y = y0; y < gt - 1; y++) for (let x = 1; x < w - 1; x++) {
+      const k = x % 4;
+      p.px(x, y, k === 0 ? "steel5" : k === 3 ? "steel3" : y === y0 + Math.round((gt - y0) / 2) ? "steel5" : "steel4");
+    }
+    for (let y = gt + 2; y < y1 - 2; y++) for (let x = 1; x < w - 1; x++) {
+      const k = x % 3;
+      p.px(x, y, (y - gt) % 7 === 0 ? "steel3" : k === 0 ? "blue6" : k === 1 ? "blue5" : "blue4");
+    }
+    // Shiny new screw heads in rows.
+    for (let x = 6; x < w - 4; x += 16) for (const yy of [y0 + 4, gt - 5]) p.px(x, yy, "steel2");
+  }
+  // Moss gathering on the oldest, lowest slope, where the gutter overflows.
+  moss(p, 20, Math.round(4 * T) + 2, 120, 22, 91, 5);
+  moss(p, 220, Math.round(3 * T) + 4, 90, 18, 92, 3);
+  // A sparrows' nest of straw jammed in the second gutter, one bird at home.
+  {
+    const nx = 296, ny = Math.round(2 * T) - 8;
+    block(p, nx, ny, [
+      "....ab.......",
+      "..aabbaab....",
+      ".abccdbcca...",
+      "abcceeeccba..",
+      "acdcbbbbcdca.",
+      ".aaccccccaa..",
+      "...a.aa.a....",
+    ], { a: "bamboo1", b: "bamboo2", c: "bamboo3", d: "bamboo4", e: "ink2" }, "nest");
+    block(p, nx + 4, ny - 5, [".ab..", "abbc.", "dbbbc", ".ee.."], { a: "brown2", b: "brown3", c: "brown1", d: "cream4", e: "skin2" }, "sparrow");
+  }
+  // An aluminium ladder from the street up over the parapet onto the first slope.
+  {
+    const lx = 40, top = Math.round(4 * T) - 22, bot = bottom + 26;
+    // Its shadow: a step darker just right of each rail.
+    for (const rx of [lx + 2, lx + 13]) for (let y = top + 2; y < bot; y++) { const c = p.get(rx, y); if (c) p.px(rx, y, step(c, -1)); }
+    for (const rx of [lx, lx + 11]) { p.vline(rx, top, bot - top, "steel5"); p.vline(rx + 1, top, bot - top, "steel3"); }
+    for (let y = top + 3; y < bot; y += 6) p.hline(lx + 2, y, 9, "steel4").hline(lx + 2, y + 1, 9, "steel2");
+    p.rect(lx - 1, top, 3, 2, "steel1").rect(lx + 10, top, 3, 2, "steel1");
   }
   // A ventilator cowl on the third slope, a pigeon on a ridge, the street cable over the edge.
   block(p, 286, Math.round(2 * T) + 6, [

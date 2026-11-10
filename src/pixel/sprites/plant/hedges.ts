@@ -11,7 +11,7 @@
  */
 import { defineSprites, hash, type Color, type Px, type SpriteDef } from "../../kit/index.ts";
 import { footprintPx, townProps, townSpriteId, type TownProp } from "../../town/map.ts";
-import { TUFTS, art, autoOutline, clamp, leafFace, wobble } from "./_helpers.ts";
+import { TUFTS, art, autoOutline, clamp, leafFace, noise2, wobble } from "./_helpers.ts";
 
 const BOX: Color[] = ["jade1", "jade2", "jade3", "leaf2", "leaf3", "leaf4"];
 const PRIVET: Color[] = ["leaf1", "leaf1", "leaf2", "leaf3", "leaf4", "leaf5"];
@@ -121,11 +121,13 @@ function drawHedge(p: Px, prop: TownProp, spec: HedgeSpec) {
   // Dead patches: a bite of brown leaves and bare twigs.
   for (const d of deads) {
     const half = 15 + Math.floor(hash(d, 0, seed) * 7);
-    // A ragged bite: widest on the top, thinning down the front, never the whole height.
+    // A ragged bite: a blotchy edge from 2-D noise, green tufts surviving inside it, widest on the
+    // top and thinning down the front. On a long north–south top it eats in from the shady east side.
     const inside = (x: number, y: number) => {
-      // On a long north–south top the patch eats in from the shady east side, never right across.
-      const depth = vertical ? Math.max(0, w * 0.35 - x) * 1.2 : Math.max(0, y - yf) * 0.5;
-      return Math.abs(along(x, y) - d) < half - depth - wobble(vertical ? x * 2 : y * 2, seed + d, 5) * 5;
+      const depth = vertical ? Math.max(0, w * 0.3 - x) * 1.2 : Math.max(0, y - yf) * 0.5;
+      const ragged = (noise2(x, y, seed + d, 5, 4) - 0.5) * 12 + (hash(x >> 1, y >> 1, seed + d) - 0.5) * 3;
+      const survivor = noise2(x, y, seed + d + 1, 4, 3) > 0.78;
+      return !survivor && Math.abs(along(x, y) - d) + depth + ragged < half;
     };
     const dead = new Map<string, Color>();
     const scratch = p.clone();

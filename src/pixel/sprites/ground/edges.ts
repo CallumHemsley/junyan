@@ -18,6 +18,7 @@
 import { defineSprites, hash, type Color, type Px, type SpriteDef } from "../../kit/index.ts";
 import { T, type Corner, type Side, mod, sided, tile, stamp } from "./_helpers.ts";
 import { TONES, type BrickTone } from "./_brick.ts";
+import { FRAY } from "./_turf.ts";
 
 // ── kerbs ────────────────────────────────────────────────────────────────────
 
@@ -72,6 +73,45 @@ function kerbSide(p: Px, side: "w" | "e", seed: number) {
   }
 }
 
+/**
+ * Where the raised kerb meets the dropped kerb of a crossing, on a road cell with pavement on two sides.
+ * North corners: the raised kerb's face ramps down to nothing as it turns into the flush kerb, the
+ * ramp's top catching the sun on the west side. South corners: the two caps meet in one corner stone.
+ */
+function kerbCorner(p: Px, corner: Corner) {
+  const west = corner.endsWith("w");
+  const X = (x: number) => (west ? x : T - 1 - x);
+  if (corner.startsWith("n")) {
+    for (let y = 0; y < 10; y++) for (let x = 0; x < 11; x++) {
+      let c: Color | null;
+      if (x === 0 || y === 0) c = "stone2";
+      else if (x <= 4 && y <= 4) c = x === 1 || y === 1 ? "stone5" : "stone4";
+      else if (y <= 4) c = y === 1 ? "stone5" : y === 4 ? "cream4" : "stone4";
+      else if (x <= 4) c = x === 1 ? "stone5" : x === 4 ? "stone3" : "stone4";
+      else {
+        const faceH = Math.round(((x - 5) * 4) / 6);
+        const faceTop = 9 - faceH;
+        if (y < faceTop) c = west ? (y === faceTop - 1 ? "stone4" : "stone5") : "stone4";
+        else if (y < 8) c = y === faceTop ? "stone3" : "stone2";
+        else if (y === 8) c = x >= 6 ? "steel1" : "stone2";
+        else c = x >= 7 ? "steel1" : null;
+      }
+      if (c) p.px(X(x), y, c);
+    }
+    // The shadow the dropped kerb casts on the road resumes under the ramp.
+    for (let y = 9; y < 12; y++) p.px(X(5), y, west ? "steel1" : "steel2");
+  } else {
+    for (let y = 24; y < T; y++) for (let x = 0; x < 6; x++) {
+      let c: Color | null = null;
+      if (x === 0 || y === T - 1) c = "stone2";
+      else if (x <= 4 && y >= 27) c = x === 1 || y === 27 ? "stone5" : y === 30 ? "stone3" : "stone4";
+      else if (x <= 4 && y >= 25) c = y === 26 ? "steel1" : null;
+      else if (x === 5 && y >= 26) c = "steel1";
+      if (c) p.px(X(x), y, c);
+    }
+  }
+}
+
 // ── grass fraying onto hard ground ──────────────────────────────────────────
 
 /** How far the fray reaches at each point along an edge: 3 at both ends so runs join. */
@@ -87,23 +127,18 @@ function grassFray(p: Px, side: Side, seed: number) {
   p.faded(0.3, () => sided(p, side, (plot) => {
     for (let a = 0; a < T; a++) { const d = frayDepth(a, seed); plot(a, d, "ink2"); if (hash(a >> 1, 7, seed) < 0.4) plot(a, d + 1, "ink2"); }
   }));
+  // The verge beside a pavement is always the worn tone (see `_turf.ts`), so the fray matches it.
   sided(p, side, (plot) => {
     for (let a = 0; a < T; a++) {
       const depth = frayDepth(a, seed);
-      for (let d = 0; d < depth; d++) plot(a, d, d === depth - 1 ? "leaf2" : "leaf3");
-      // Soil showing between the roots on the fray's edge, here and there.
-      if (hash(a >> 1, 3, seed) < 0.3) plot(a, depth - 1, "oak1");
+      for (let d = 0; d < depth; d++) plot(a, d, d === depth - 1 ? FRAY.edge : hash(a >> 1, d >> 1, seed + 9) < 0.3 ? FRAY.straw : FRAY.base);
+      if (hash(a >> 1, 3, seed) < 0.3) plot(a, depth - 1, FRAY.soil);
     }
-    // Blades poking out past the fray: shade stroke with a sunlit tip.
+    // Blades poking out past the fray: shade stroke with a dry tip.
     for (let k = 0; k < 6; k++) {
       const a = 3 + Math.floor(hash(k, 1, seed) * 26), depth = frayDepth(a, seed);
       const len = 1 + Math.floor(hash(k, 2, seed) * 3);
-      for (let i = 0; i < len; i++) plot(a + (i === len - 1 && k % 2 ? 1 : 0), depth + i, i === len - 1 ? "leaf4" : "leaf2");
-    }
-    // A sunlit clump inside the fray, so it reads as grass, not paint.
-    for (let k = 0; k < 4; k++) {
-      const a = 2 + Math.floor(hash(k, 4, seed) * 28);
-      plot(a, 1, "leaf4"); plot(a + 1, 0, "leaf4"); plot(a, 2, "leaf2");
+      for (let i = 0; i < len; i++) plot(a + (i === len - 1 && k % 2 ? 1 : 0), depth + i, i === len - 1 ? FRAY.tip : FRAY.edge);
     }
   });
 }
@@ -111,29 +146,28 @@ function grassFray(p: Px, side: Side, seed: number) {
 function grassCorner(p: Px, corner: Corner, seed: number) {
   const fx = (x: number) => (corner.endsWith("w") ? x : T - 1 - x);
   const fy = (y: number) => (corner.startsWith("n") ? y : T - 1 - y);
-  p.faded(0.3, () => { for (let y = 0; y < 6; y++) for (let x = 0; x < 6; x++) if (x + y === 5 || x + y === 6 && hash(x, y, seed) < 0.5) p.px(fx(x), fy(y), "ink2"); });
+  p.faded(0.3, () => { for (let y = 0; y < 6; y++) for (let x = 0; x < 6; x++) if (x + y === 5 || (x + y === 6 && hash(x, y, seed) < 0.5)) p.px(fx(x), fy(y), "ink2"); });
   for (let y = 0; y < 5; y++) for (let x = 0; x < 5; x++) {
     if (x + y > 4) continue;
-    p.px(fx(x), fy(y), x + y === 4 ? "leaf2" : "leaf3");
+    p.px(fx(x), fy(y), x + y === 4 ? FRAY.edge : FRAY.base);
   }
-  p.px(fx(1), fy(1), "leaf4").px(fx(5), fy(1), "leaf2").px(fx(6), fy(1), "leaf4");
+  p.px(fx(1), fy(1), FRAY.straw).px(fx(5), fy(1), FRAY.edge).px(fx(6), fy(1), FRAY.tip);
 }
 
 // ── header course ───────────────────────────────────────────────────────────
 
-/** A brick rectangle with its joint on the bottom row and right column, lit top-left, a darker heel. */
+/** A brick rectangle with its joint on the bottom row and right column and a sunlit top arris. */
 function brickRect(p: Px, x: number, y: number, w: number, h: number, tone: BrickTone) {
   for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) {
     let c: Color = tone.face;
-    if (i === w - 1 || j === h - 1) c = "stone2";
-    else if ((j === 0 && i < 2) || (i === 0 && j < 2)) c = tone.lit;
-    else if (i === w - 2 && j === h - 2) c = tone.dark;
+    if (i === w - 1 || j === h - 1) c = "stone1";
+    else if (j === 0 && i < w - 2) c = tone.lit;
     p.px(x + i, y + j, c);
   }
 }
 const headerTone = (k: number, salt: number): BrickTone => {
   const r = hash(k, salt, 61);
-  return r < 0.18 ? TONES.dusty : r < 0.4 ? TONES.dark : TONES.warm;
+  return r < 0.66 ? TONES.dusty : r < 0.86 ? TONES.brown : r < 0.89 ? TONES.warm : TONES.grey;
 };
 
 function header(p: Px, side: Side) {
@@ -149,7 +183,7 @@ function header(p: Px, side: Side) {
 function headerCorner(p: Px, corner: Corner) {
   const x = corner.endsWith("w") ? 0 : 24, y = corner.startsWith("n") ? 0 : 24;
   // A cut square brick where two soldier courses meet.
-  brickRect(p, x, y, 8, 8, TONES.warm);
+  brickRect(p, x, y, 8, 8, TONES.dusty);
 }
 
 // ── canal coping and wall ───────────────────────────────────────────────────
@@ -271,6 +305,7 @@ for (const side of SIDES) {
   sprites[`ground/edge-header-${side}`] = tile((p) => header(p, side));
 }
 for (const corner of CORNERS) {
+  sprites[`ground/edge-kerb-${corner}`] = tile((p) => kerbCorner(p, corner));
   sprites[`ground/edge-grass-${corner}`] = tile((p) => grassCorner(p, corner, 3));
   sprites[`ground/edge-header-${corner}`] = tile((p) => headerCorner(p, corner));
 }

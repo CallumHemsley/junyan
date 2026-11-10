@@ -44,7 +44,7 @@ describe("town ground", () => {
 
   it("puts kerbs on the road and header courses where brick meets paving", () => {
     const ids = new Set(groundLayers().flatMap((l) => Object.values(l.legend ?? {}) as string[]));
-    for (const id of ["ground/edge-kerb-n-a", "ground/edge-kerb-s-a", "ground/edge-header-n", "ground/edge-grass-n-a", "ground/edge-coping-e", "ground/edge-water-n", "ground/road-c", "ground/paving-d"])
+    for (const id of ["ground/edge-kerb-n-a", "ground/edge-kerb-s-a", "ground/edge-header-n", "ground/edge-grass-n-a", "ground/edge-coping-e", "ground/edge-water-n", "ground/road-track-n", "ground/road-crown-s", "ground/edge-kerb-ne", "ground/paving-h", "ground/paving-d"])
       expect(ids.has(id), id).toBe(true);
   });
 

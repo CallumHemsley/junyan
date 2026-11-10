@@ -13,7 +13,7 @@
 import type { TileLayer } from "../engine/index.ts";
 import { groundMaterials, type Material } from "./ground-grid.ts";
 
-type Variant = "a" | "b" | "c" | "d";
+type Variant = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h";
 const SEED = 163;
 
 /**
@@ -29,18 +29,18 @@ function hash(x: number, y: number, seed: number): number {
 }
 
 /**
- * Relative weights of the four variants per material. Paving's d (the manhole) and road's c (the trench,
- * one column per stretch of road) are placed separately.
+ * Relative weights of the four variants per material. Paving's d (the manhole) and paving's h (weeds by
+ * the verge) are placed separately.
  */
-const WEIGHTS: Record<Material, Record<Variant, number>> = {
+const WEIGHTS: Record<Material, Partial<Record<Variant, number>>> = {
   grass: { a: 8, b: 8, c: 2, d: 1 },
-  paving: { a: 8, b: 5, c: 2, d: 0 },
-  road: { a: 8, b: 1.4, c: 0, d: 0.35 },
+  paving: { a: 9, b: 3, c: 1, d: 0, e: 3, f: 0.8, g: 0.4 },
+  road: { a: 8, b: 1.2, c: 1, d: 0.15 },
   brick: { a: 8, b: 4, c: 2, d: 0.8 },
   stone: { a: 4, b: 4, c: 2, d: 1 },
   water: { a: 4, b: 4, c: 1, d: 1 },
 };
-const RARE: readonly Variant[] = ["c", "d"];
+const RARE: readonly Variant[] = ["c", "d", "f", "g", "h"];
 
 const HARD: readonly Material[] = ["paving", "road", "brick", "stone"];
 /** Ground a brick lane's header course stops against. */
@@ -58,7 +58,7 @@ function pickVariant(material: Material, x: number, y: number, left: string | nu
   const total = Object.values(weights).reduce((a, b) => a + b, 0);
   let r = hash(x, y, SEED) * total;
   let pick: Variant = "a";
-  for (const v of ["a", "b", "c", "d"] as const) { if (r < weights[v]) { pick = v; break; } r -= weights[v]; }
+  for (const [v, wt] of Object.entries(weights) as [Variant, number][]) { if (r < wt) { pick = v; break; } r -= wt; }
   const id = `ground/${material}-${pick}`;
   if (RARE.includes(pick) && (left === id || up === id)) pick = hash(x, y, SEED + 1) < 0.55 ? "a" : "b";
   return pick;
@@ -78,28 +78,69 @@ function manholes(grid: Material[][]): Set<string> {
   return out;
 }
 
-/** Trenches: in each east–west stretch of road at least 8 wide, one column of road-c from kerb to kerb. */
-function trenches(grid: Material[][]): Set<string> {
-  const out = new Set<string>();
-  const w = grid[0].length;
-  const rows = grid.map((row, y) => (row.includes("road") ? y : -1)).filter((y) => y >= 0);
-  if (!rows.length) return out;
-  const y0 = rows[0];
-  for (let x = 0; x < w;) {
-    if (grid[y0][x] !== "road") { x++; continue; }
-    let end = x;
-    while (end < w && grid[y0][end] === "road") end++;
-    if (end - x >= 8) {
-      const col = x + 2 + Math.floor(hash(x, end, SEED + 9) * (end - x - 4));
-      for (const y of rows) if (grid[y][col] === "road") out.add(`${col},${y}`);
-    }
-    x = end;
-  }
+/** Paving by a verge, where nobody walks, sometimes has weeds and moss in its joints. */
+function weedy(grid: Material[][], x: number, y: number): boolean {
+  if (grid[y][x] !== "paving" || hash(x, y, SEED + 40) > 0.3) return false;
+  for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) if (grid[y + dy]?.[x + dx] === "grass") return true;
+  return false;
+}
+
+/**
+ * Wear along the road by lane position, for a run of road cells from kerb to kerb: a wheel track in each
+ * lane, nearer the kerb in the outer cells, and the crown paler either side of the middle.
+ */
+function roadWear(grid: Material[][], x: number, y: number): string[] {
+  let top = y, bottom = y;
+  while (grid[top - 1]?.[x] === "road") top--;
+  while (grid[bottom + 1]?.[x] === "road") bottom++;
+  const i = y - top, n = bottom - top + 1;
+  if (n < 2) return [];
+  const out: string[] = [];
+  const mid = (n - 1) / 2;
+  if (i === 0 || (n >= 4 && i === n - 2)) out.push("ground/road-track-n");
+  if (i === n - 1 || (n >= 4 && i === 1)) out.push("ground/road-track-s");
+  if (i === Math.floor(mid) && n % 2 === 0) out.push("ground/road-crown-s");
+  if (i === Math.ceil(mid) && n % 2 === 0) out.push("ground/road-crown-n");
   return out;
 }
 
+/** Smooth value noise over tile coordinates: lattice values every `scale` tiles, smoothstepped between. */
+function valueNoise(x: number, y: number, scale: number, seed: number): number {
+  const fx = x / scale, fy = y / scale, i = Math.floor(fx), j = Math.floor(fy);
+  const s = (t: number) => t * t * (3 - 2 * t);
+  const u = s(fx - i), v = s(fy - j);
+  const a = hash(i, j, seed), b = hash(i + 1, j, seed), c = hash(i, j + 1, seed), d = hash(i + 1, j + 1, seed);
+  return a * (1 - u) * (1 - v) + b * u * (1 - v) + c * (1 - u) * v + d * u * v;
+}
+
+/**
+ * The grass's tone bands, decided per tile corner so bands span many tiles and their edges meet:
+ * worn along every pavement (and a little further where the noise is low, like short cuts), shade
+ * where the noise is high and no path is near.
+ */
+function toneCorners(grid: Material[][]) {
+  const h = grid.length, w = grid[0].length;
+  const hardNear = (cx: number, cy: number, r: number) => {
+    for (let y = cy - r; y < cy + r; y++) for (let x = cx - r; x < cx + r; x++)
+      if (x >= 0 && y >= 0 && x < w && y < h && HARD.includes(grid[y][x])) return true;
+    return false;
+  };
+  const worn: boolean[][] = [], shade: boolean[][] = [];
+  for (let cy = 0; cy <= h; cy++) {
+    worn.push([]); shade.push([]);
+    for (let cx = 0; cx <= w; cx++) {
+      const n = 0.65 * valueNoise(cx, cy, 7, SEED + 20) + 0.35 * valueNoise(cx, cy, 3, SEED + 21);
+      const near1 = hardNear(cx, cy, 1), near2 = hardNear(cx, cy, 2);
+      const isWorn = near1 || (near2 && n < 0.48) || n < 0.2;
+      worn[cy].push(isWorn);
+      shade[cy].push(!isWorn && !near2 && n > 0.6);
+    }
+  }
+  return { worn, shade };
+}
+
 /** The overlays a cell needs, in draw order: kerbs, header courses, coping, grass, then corner pieces. */
-export function edgesOf(grid: Material[][], x: number, y: number): string[] {
+export function edgesOf(grid: Material[][], x: number, y: number, tones?: ReturnType<typeof toneCorners>): string[] {
   const h = grid.length, w = grid[0].length, m = grid[y][x];
   const at = (d: Dir): Material => {
     const [dx, dy] = OFFSETS[d], nx = x + dx, ny = y + dy;
@@ -112,6 +153,12 @@ export function edgesOf(grid: Material[][], x: number, y: number): string[] {
     for (const s of ["n", "w", "e"] as const) if (at(s) !== "water") out.push(`ground/edge-water-${s}`);
     return out;
   }
+  if (m === "grass" && tones) for (const [name, band] of [["worn", tones.worn], ["shade", tones.shade]] as const) {
+    const bits = [band[y][x], band[y][x + 1], band[y + 1][x], band[y + 1][x + 1]].map((b) => (b ? "1" : "0")).join("");
+    if (bits === "0000") continue;
+    out.push(`ground/grass-${name}-${bits}${bits === "1111" && hash(x, y, SEED + 30) < 0.5 ? "b" : ""}`);
+  }
+  if (m === "road") out.push(...roadWear(grid, x, y));
   if (m === "road") for (const s of SIDES) {
     if (!KERB_STOP.includes(at(s))) continue;
     out.push(s === "n" || s === "s" ? `ground/edge-kerb-${s}-${ab(s)}` : `ground/edge-kerb-${s}`);
@@ -127,6 +174,7 @@ export function edgesOf(grid: Material[][], x: number, y: number): string[] {
       const outer = HEADER_STOP.includes(at(c)) && at(v) === "brick" && at(hz) === "brick";
       if (inner || outer) out.push(`ground/edge-header-${c}`);
     }
+    if (m === "road" && KERB_STOP.includes(at(v)) && KERB_STOP.includes(at(hz))) out.push(`ground/edge-kerb-${c}`);
     if (HARD.includes(m) && at(c) === "grass" && at(v) !== "grass" && at(hz) !== "grass") out.push(`ground/edge-grass-${c}`);
     if ((c === "se" || c === "sw") && at(c) === "water" && at(v) !== "water" && at(hz) !== "water") out.push(`ground/edge-coping-${c}`);
   }
@@ -160,15 +208,16 @@ function stacked(prefix: string, lists: string[][][]): TileLayer[] {
 
 export function groundLayers(): TileLayer[] {
   const grid = groundMaterials();
-  const holes = manholes(grid), trench = trenches(grid);
+  const holes = manholes(grid);
   const base: (string | null)[][] = grid.map((row) => row.map(() => null));
   const water: (string | null)[][] = grid.map((row) => row.map(() => null));
   grid.forEach((row, y) => row.forEach((m, x) => {
     const target = m === "water" ? water : base;
-    target[y][x] = holes.has(`${x},${y}`) ? "ground/paving-d" : trench.has(`${x},${y}`) ? "ground/road-c"
+    target[y][x] = holes.has(`${x},${y}`) ? "ground/paving-d" : weedy(grid, x, y) ? "ground/paving-h"
       : `ground/${m}-${pickVariant(m, x, y, target[y][x - 1] ?? null, target[y - 1]?.[x] ?? null)}`;
   }));
-  const edges = grid.map((row, y) => row.map((m, x) => (m === "water" ? [] : edgesOf(grid, x, y))));
+  const tones = toneCorners(grid);
+  const edges = grid.map((row, y) => row.map((m, x) => (m === "water" ? [] : edgesOf(grid, x, y, tones))));
   const waterEdges = grid.map((row, y) => row.map((m, x) => (m === "water" ? edgesOf(grid, x, y) : [])));
   return [
     layerOf("ground", base),

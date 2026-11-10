@@ -37,7 +37,7 @@ const plus = ([x, y]: Vec, [dx, dy]: Vec): Vec => [x + px(dx), y + px(dy)];
  * pillow at (24, 20), a touch in front of it. Assumes the head's centre is about row 14 of the
  * frame, as on a standing character; the orchestrator tunes these when the cast art lands.
  */
-export const IN_BED_OFFSET: Record<WardPose, Vec> = { lying: [0, -22], sitting: [0, -24] };
+export const IN_BED_OFFSET: Record<WardPose, Vec> = { lying: [0, -32], sitting: [0, -32] };
 
 /**
  * Stand-ins while the cast and the beds are being drawn: an existing character sitting (`sit`) on
