@@ -71,14 +71,14 @@ test('a timed-out old read cannot replace new gameplay when it finally completes
 test('real keyboard focus returns to the opener across nested and replacement dialogs',async({page},info)=>{
   const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
   await page.goto(url());await activate(page,page.getByRole('button',{name:'开门迎客'}));
-  await walkTo(page,{x:6.5,y:9});
+  await walkTo(page,{x:3.4,y:7.2}); // just south of table 1 (cafe tile units)
   for(let i=0;i<8;i++){
     await activate(page,customer(page));await expect(page.getByRole('dialog',{name:'1桌点餐'})).toBeVisible();
     const word=page.locator('.world-context').getByRole('button',{name:'包子',exact:true});
     await activate(page,word);await page.keyboard.press('Escape');await expect(word).toBeFocused();
     await page.keyboard.press('Escape');await expect(page.getByRole('dialog')).toHaveCount(0);await expect(customer(page)).toBeFocused({timeout:1500});
   }
-  await walkTo(page,{x:12,y:6.5});
+  await walkTo(page,{x:15.5,y:9}); // at the kitchen pass
   const kitchenTrigger=page.locator('[data-world-anchor="restaurant.kitchen"]');
   await activate(page,kitchenTrigger);
   await expect(page.getByRole('dialog',{name:'厨房',exact:true})).toBeVisible();await page.keyboard.press('Escape');await expect(kitchenTrigger).toBeFocused();

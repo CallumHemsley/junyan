@@ -110,3 +110,6 @@
   outline: 2px solid var(--text-primary);
   outline-offset: 2px;
 }
+
+/* The pixel cafe fills the viewport; the scene paints its own void beyond the room. */
+.pixel-cafe{position:absolute;inset:0}

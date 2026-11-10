@@ -17,6 +17,9 @@ test.beforeEach(async({page})=>{
     const counters=window as unknown as {sceneDraws:number};counters.sceneDraws=0;
     const original=CanvasRenderingContext2D.prototype.fillRect;
     CanvasRenderingContext2D.prototype.fillRect=function(...args:Parameters<typeof original>){if(this.canvas instanceof HTMLCanvasElement&&this.canvas.closest('.connected-world')&&args[0]===0&&args[1]===0&&args[2]===this.canvas.width&&args[3]===this.canvas.height)counters.sceneDraws++;return original.apply(this,args);};
+    // The pixel cafe composites a whole frame and puts it in one call.
+    const put=CanvasRenderingContext2D.prototype.putImageData as (this:CanvasRenderingContext2D,image:ImageData,x:number,y:number)=>void;
+    CanvasRenderingContext2D.prototype.putImageData=function(this:CanvasRenderingContext2D,image:ImageData,x:number,y:number){if(this.canvas instanceof HTMLCanvasElement&&this.canvas.closest('.connected-world')&&x===0&&y===0&&image.width===this.canvas.width&&image.height===this.canvas.height)counters.sceneDraws++;return put.call(this,image,x,y);} as typeof CanvasRenderingContext2D.prototype.putImageData;
   });
 });
 

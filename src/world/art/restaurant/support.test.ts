@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {renderObjects} from './index';
-import {restaurantMap} from '../../restaurant';
+import {isometricRestaurantFixture as restaurantMap} from './fixture';
 import type {RestaurantView} from './types';
 
 it('keeps every rescaled kitchen fixture on its real supporting counter and paints it after that support',()=>{

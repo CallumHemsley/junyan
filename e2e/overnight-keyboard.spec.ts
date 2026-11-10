@@ -42,7 +42,8 @@ async function approach(page: Page, anchorId: string) {
     if(!(await viewport.evaluate(element=>element===document.activeElement)))await focusControl(page,viewport);
     const next=findPath(restaurantMap,position,target.position)[0];expect(next).toBeDefined();
     const dx=next.x-position.x,dy=next.y-position.y;
-    const horizontal=dx-dy,vertical=dx+dy;
+    // The restaurant is top-down: arrows walk the screen's axes, not the old isometric diagonals.
+    const horizontal=dx,vertical=dy;
     const keys=[...(Math.abs(horizontal)>.05?[horizontal>0?'ArrowRight':'ArrowLeft']:[]),...(Math.abs(vertical)>.05?[vertical>0?'ArrowDown':'ArrowUp']:[])];
     for(const key of keys)await page.keyboard.down(key);
     await page.waitForTimeout(Math.max(45,Math.min(120,Math.hypot(dx,dy)/5*1000)));
