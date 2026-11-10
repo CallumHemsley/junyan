@@ -1,5 +1,6 @@
 /**
- * 早安小馆, the breakfast shop, at about seven in the morning.
+ * 早安小馆, the breakfast shop, at about seven in the morning: a Chinese breakfast shop in an old
+ * Shanghai French Concession bistro (mosaic floor, panelled walls, a zinc bar, bentwood and marble).
  *
  * 22×14 tiles. The back wall fills rows 0–2; the floor is rows 3–12; row 13 is the front wall's cap
  * with the street door at columns 10–11. The kitchen is the north-east corner (columns 12–20,
@@ -19,13 +20,21 @@ const rowBase = (r: number) => r * TILE + TILE - 1;
 /** The four dining tables: where each stands, and its two seats. `seat` is where the customer sits. */
 export const CAFE_TABLES = [
   { table: 1, at: [3.4, 6.0], stools: [[2.0, 5.85], [4.8, 5.85]], seat: { at: [2.0, 5.85], facing: "right" } },
-  { table: 2, at: [7.9, 6.3], stools: [[7.9, 4.95], [7.9, 7.35]], seat: { at: [7.9, 4.95], facing: "down" } },
+  { table: 2, at: [7.9, 5.85], stools: [[7.9, 4.45], [7.9, 6.95]], seat: { at: [7.9, 4.45], facing: "down" } },
   { table: 3, at: [4.2, 11.0], stools: [[2.8, 10.85], [5.6, 10.85]], seat: { at: [5.6, 10.85], facing: "left" } },
   { table: 4, at: [15.2, 11.5], stools: [[15.2, 10.15], [15.2, 12.55]], seat: { at: [15.2, 10.15], facing: "down" } },
 ] as const;
 
-/** Mismatched seats, two per table, in table order. */
-const SEATS = ["furn/stool-turned", "furn/stool-bamboo", "furn/stool-plastic", "furn/stool-square", "furn/stool-plastic-jade", "furn/stool-bamboo", "furn/stool-turned", "furn/stool-plastic"];
+/**
+ * Seats, two per table, in table order: bentwood bistro chairs facing the table, with a couple of
+ * Chinese stools that crept in over the years. Table 2's back seat is the banquette (`null` here).
+ */
+const SEATS: readonly (string | null)[] = [
+  "furn/chair-bentwood-right", "furn/chair-bentwood-b-left",
+  null, "furn/chair-bentwood-b-up",
+  "furn/stool-turned", "furn/chair-bentwood-left",
+  "furn/chair-bentwood-b-down", "furn/stool-plastic-jade",
+];
 
 /**
  * What already stands on each table: its own condiments, and the remains or tea of whoever was
@@ -33,9 +42,9 @@ const SEATS = ["furn/stool-turned", "furn/stool-bamboo", "furn/stool-plastic", "
  * Customers' food is added at run time by the game.
  */
 const SETTINGS: readonly (readonly [sprite: string, dx: number, dy: number])[][] = [
-  [["furn/condiment-set-1", 8, -38], ["furn/teapot", 20, -32], ["food/bun", -12, -30]],
+  [["furn/condiment-set-1", 8, -40], ["furn/bud-vase", -4, -38], ["furn/teapot", 20, -32], ["food/bun", -12, -30]],
   [["furn/condiment-set-2", 18, -32], ["food/milk", -2, -29], ["furn/teacup", -18, -31]],
-  [["furn/condiment-set-3", -16, -38], ["food/youtiao", 2, -29], ["food/egg", -14, -28]],
+  [["furn/condiment-set-3", -16, -40], ["furn/bud-vase", 18, -38], ["food/youtiao", 2, -29], ["food/egg", -14, -28]],
   [["furn/chopstick-tin", -22, -36], ["furn/chili-jar", -14, -34], ["food/dumpling", 4, -31], ["food/soy-dish", 20, -30]],
 ];
 
@@ -94,7 +103,8 @@ const kitchen: Prop[] = [
   onCounter("kitchen/steamer-stack", 438),
   onCounter("kitchen/tea-egg-pot", 471),
   { sprite: "fx/steam-small", at: px(470, counterY - 51), phase: 2 },
-  onCounter("kitchen/tray-stack", 508),
+  setOnCounter("decor/saucer-stack", 506, 223),
+  setOnCounter("decor/bell-counter", 524, 223),
   onCounter("kitchen/cash-box", 544),
   setOnCounter("decor/lucky-cat", 574, 220),
   onCounter("kitchen/bowl-stack", 604),
@@ -103,41 +113,45 @@ const kitchen: Prop[] = [
 ];
 
 const dining: Prop[] = [
-  // On the dining wall: a scroll, the two windows with the day's board between them, the clock, a lantern by the post.
-  { sprite: "decor/scroll-landscape", at: px(47, 12) },
-  { sprite: "wall/window-lattice-b", at: px(96, 96) },
-  { id: "board", sprite: "decor/chalkboard", at: px(168, 14) },
-  { sprite: "wall/window-lattice", at: px(240, 96) },
-  { sprite: "decor/clock", at: px(292, 16) },
+  // The dining wall: two bistro windows, the long gilt mirror over the banquette, a globe lamp by the pilaster.
+  { sprite: "wall/window-lattice-b", at: px(88, 96) },
+  { sprite: "decor/sun-catcher", at: px(88 + 22, 56) },
+  { sprite: "wall/window-lattice", at: px(160, 96) },
+  { sprite: "wall/mirror-long", at: px(253, 96) },
+  { sprite: "wall/lamp-globe", at: px(318, 96) },
   { sprite: "wall/post", at: px(352, 96) },
-  { sprite: "decor/lantern-red", at: px(322, 4) },
+  // The banquette under the mirror: table 2's back seat.
+  { sprite: "furn/banquette-left", at: [6.9, 4.45] },
+  { sprite: "furn/banquette-mid", at: [7.9, 4.45] },
+  { sprite: "furn/banquette-right", at: [8.9, 4.45] },
   // Tables and their mismatched seats.
   ...CAFE_TABLES.flatMap((t): Prop[] => [
     { id: `table-${t.table}`, sprite: `furn/table-${t.table}`, at: t.at },
-    ...t.stools.map((at, i): Prop => ({ sprite: SEATS[(t.table - 1) * 2 + i], at })),
+    ...t.stools.flatMap((at, i): Prop[] => { const sprite = SEATS[(t.table - 1) * 2 + i]; return sprite ? [{ sprite, at }] : []; }),
     ...SETTINGS[t.table - 1].map(([sprite, dx, dy]): Prop => ({ sprite, at: [t.at[0] + dx / TILE, t.at[1] + dy / TILE], solid: false, sortY: t.at[1] + 2 / TILE })),
   ]),
-  // Plants, deliveries, the broom, the runner in front of the pass.
-  { sprite: "decor/plant-rubber", at: [1.65, 3.75] },
-  { sprite: "decor/plant-bamboo", at: [10.45, 8.1] },
-  { sprite: "decor/plant-snake", at: [1.6, 12.75] },
+  // The gramophone in the corner, a palm by the bar, ferns and the owners' plants, deliveries.
+  { sprite: "decor/gramophone", at: [1.75, 3.95] },
+  { sprite: "decor/palm-brass", at: [10.35, 3.95] },
+  { sprite: "decor/fern-stand", at: [1.6, 12.8] },
   { sprite: "decor/plant-money-tree", at: [20.3, 12.75] },
+  { sprite: "decor/plant-bamboo", at: [10.45, 8.1] },
   { sprite: "decor/broom", at: [1.45, 8.4] },
+  { sprite: "furn/hat-stand-bentwood", at: [1.55, 10.6] },
   { sprite: "decor/crate-bottles", at: px(652, 306) },
   { sprite: "decor/boxes", at: px(614, 312) },
   { sprite: "decor/rug-runner", at: [13.6, 9.45] },
-  { sprite: "furn/sideboard", at: [5.25, 3.6] },
-  { sprite: "furn/water-dispenser", at: [9.15, 3.6] },
-  { sprite: "furn/coat-rack", at: [1.55, 10.4] },
+  { sprite: "decor/ceiling-fan-shadow", at: [6.4, 8.6] },
+  // By the door: the easel with the day's board, umbrellas, the owner's slippers, the mat.
+  { id: "board", sprite: "decor/easel-board", at: [8.85, 12.85] },
   { sprite: "furn/umbrella-stand", at: [13.3, 12.85] },
+  { sprite: "decor/umbrella-wet", at: [13.85, 12.85] },
+  { sprite: "decor/slippers", at: [12.55, 12.9], solid: false },
   { sprite: "tile/mat", at: px(352, 414) },
   { sprite: "char/lin-jie/bag", at: [1.35, 6.25], solid: false },
   { sprite: "char/xiao-zhou/backpack", at: [16.1, 10.3], solid: false },
-  { sprite: "decor/slippers", at: [12.55, 12.9], solid: false },
-  { sprite: "decor/umbrella-wet", at: [13.85, 12.85] },
-  { sprite: "decor/sun-catcher", at: px(240 + 26, 56) },
   // Mantou, asleep in the sun under the window.
-  { id: "cat", sprite: "decor/cat-sleep", at: [6.05, 4.75], solid: false },
+  { id: "cat", sprite: "decor/cat-sleep", at: [6.7, 7.4], solid: false },
 ];
 
 export default defineScene({
@@ -160,23 +174,27 @@ export default defineScene({
     {
       name: "floor", origin: [1, 3], seed: 7,
       legend: {
-        // Oak boards: mostly quiet, with the room's history in a minority of tiles.
-        w: ["tile/floor-wood-a", "tile/floor-wood-a", "tile/floor-wood-a", "tile/floor-wood-a", "tile/floor-wood-b", "tile/floor-wood-b", "tile/floor-wood-b", "tile/floor-wood-b", "tile/floor-wood-c", "tile/floor-wood-c", "tile/floor-wood-d", "tile/floor-wood-i"],
-        p: "tile/floor-wood-e", q: "tile/floor-wood-f", s: "tile/floor-wood-h", m: "tile/floor-wood-g",
+        // Cream mosaic: mostly quiet, with the room's history in a minority of tiles.
+        w: ["tile/floor-wood-a", "tile/floor-wood-a", "tile/floor-wood-a", "tile/floor-wood-a", "tile/floor-wood-b", "tile/floor-wood-b", "tile/floor-wood-b", "tile/floor-wood-b", "tile/floor-wood-c", "tile/floor-wood-d"],
+        B: "tile/floor-wood-i",
+        p: "tile/floor-wood-e", q: "tile/floor-wood-f", S: "tile/floor-wood-h", m: "tile/floor-wood-g",
         k: ["tile/floor-kitchen-a", "tile/floor-kitchen-a", "tile/floor-kitchen-a", "tile/floor-kitchen-b", "tile/floor-kitchen-c", "tile/floor-kitchen-d", "tile/floor-kitchen-f"],
         x: "tile/floor-kitchen-e",
+        // The border band along the walls.
+        T: "tile/floor-border-corner-tl", h: "tile/floor-border-h", V: "tile/floor-border-v", E: "tile/floor-border-v-e",
+        L: "tile/floor-border-corner-bl", R: "tile/floor-border-corner-br", s: "tile/floor-border-h-s",
       },
       rows: [
-        "wwwwwwwwwwwkkkkkkkkk",
-        "wwwwswwwwwwkkkkkkkkk",
-        "wwwwwwwwwwwkkkkxkkkk",
-        "wwwwwwwwwwwkkkkkkkkk",
-        "wwwwwwwwwwwwwwwwwwww",
-        "mwwwwwwwwwwwwwwwwwww",
-        "wwwwwwwwwpwwwwwwwwww",
-        "wwwwwwwwwqwwwwwwwwww",
-        "wwwwwwwwwpwwwwwwwwww",
-        "wwwwwwwwwqwwwwwwwwww",
+        "Thhhhhhhhhhkkkkkkkkk",
+        "VwwwSwwwwwwkkkkkkkkk",
+        "Vwwwwwwwwwwkkkkxkkkk",
+        "Vwwwwwwwwwwkkkkkkkkk",
+        "Vwwwwwwwwwwwwwwwwwww",
+        "mwwwwwwwwwwwwwwwwwwE",
+        "VwwwwwwwwpwwwwwwwwwE",
+        "VwwwwwwwwqwwwwBwwwwE",
+        "VwwwwwwwwpwwwwwwwwwE",
+        "LssssssssqpssssssssR",
       ],
     },
     {
@@ -190,20 +208,20 @@ export default defineScene({
   props: [...dining, ...kitchen],
   lights: [
     // Morning sun through the two lattice windows.
-    { kind: "shaft", from: [2.1, 3.0], width: 1.9, length: 4.2, slant: 0.5, strength: 0.5, panes: [4, 2], motes: 7 },
-    { kind: "shaft", from: [6.6, 3.0], width: 1.9, length: 4.2, slant: 0.5, strength: 0.5, panes: [4, 2], motes: 7 },
+    { kind: "shaft", from: [1.95, 3.0], width: 1.75, length: 4.2, slant: 0.5, strength: 0.5, panes: [3, 2], motes: 7 },
+    { kind: "shaft", from: [4.2, 3.0], width: 1.75, length: 4.2, slant: 0.5, strength: 0.5, panes: [3, 2], motes: 7 },
     // Daylight spilling in at the street door.
     { kind: "glow", at: [11, 13.4], radius: 3.4, color: "cream5", strength: 0.5, phases: ["morning", "midday"] },
     // The stove's coals, the lantern, the warm kitchen.
     { kind: "glow", at: [13, 4.3], radius: 1.8, color: "orange3", strength: 0.35, flicker: 0.3 },
-    { kind: "glow", at: [10.06, 1.3], radius: 2.2, color: "red5", strength: 0.3, flicker: 0.1 },
+    { kind: "glow", at: [9.94, 2.4], radius: 2.0, color: "gold4", strength: 0.3, flicker: 0.05 },
     { kind: "glow", at: [16, 5], radius: 6, color: "gold5", strength: 0.18 },
   ],
   walkable: [1, 3.1, 20, 9.9],
   marks: {
     door: { at: [11, 12.7], facing: "up" },
     pickup: { at: [15.5, 8.5], facing: "up" },
-    "sign/board": { at: px(168 - 18, 14 + 8), size: [36 / TILE, 25 / TILE] },
+    "sign/board": { at: [8.85 - 10 / TILE, 12.85 - 50 / TILE], size: [20 / TILE, 28 / TILE] },
     ...Object.fromEntries(CAFE_TABLES.map((t) => [`seat/table-${t.table}`, t.seat])),
     ...Object.fromEntries(CAFE_TABLES.map((t) => [`table/${t.table}`, { at: t.at }])),
   },
