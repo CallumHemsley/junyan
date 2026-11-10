@@ -34,7 +34,7 @@ const SEATS = ["furn/stool-turned", "furn/stool-bamboo", "furn/stool-plastic", "
  */
 const SETTINGS: readonly (readonly [sprite: string, dx: number, dy: number])[][] = [
   [["furn/condiment-set-1", -18, -32], ["furn/teapot", 14, -36], ["furn/teacup", 22, -29]],
-  [["furn/condiment-set-2", 14, -34], ["furn/napkin-box", -16, -36]],
+  [["furn/condiment-set-2", 14, -34], ["furn/teacup-empty", -14, -31]],
   [["furn/condiment-set-3", -16, -32], ["furn/menu-stand", 16, -36], ["food/bowl-empty", 4, -28]],
   [["furn/chopstick-tin", -20, -32], ["furn/vinegar-bottle", -12, -33], ["furn/chili-jar", -4, -31], ["furn/teacup-empty", 18, -30]],
 ];
@@ -102,7 +102,7 @@ const dining: Prop[] = [
   ...CAFE_TABLES.flatMap((t): Prop[] => [
     { id: `table-${t.table}`, sprite: `furn/table-${t.table}`, at: t.at },
     ...t.stools.map((at, i): Prop => ({ sprite: SEATS[(t.table - 1) * 2 + i], at })),
-    ...SETTINGS[t.table - 1].map(([sprite, dx, dy]): Prop => ({ sprite, at: [t.at[0] + dx / TILE, t.at[1] + dy / TILE], solid: false, sortY: t.at[1] + 0.01 })),
+    ...SETTINGS[t.table - 1].map(([sprite, dx, dy]): Prop => ({ sprite, at: [t.at[0] + dx / TILE, t.at[1] + dy / TILE], solid: false, sortY: t.at[1] + 2 / TILE })),
   ]),
   // Plants, deliveries, the broom, the runner in front of the pass.
   { sprite: "decor/plant-rubber", at: [1.65, 3.75] },
@@ -115,10 +115,13 @@ const dining: Prop[] = [
   { sprite: "decor/rug-runner", at: [13.6, 9.45] },
   { sprite: "furn/sideboard", at: [5.25, 3.6] },
   { sprite: "furn/water-dispenser", at: [9.15, 3.6] },
-  { sprite: "furn/coat-rack", at: [8.7, 12.85] },
+  { sprite: "furn/coat-rack", at: [1.55, 10.4] },
   { sprite: "furn/umbrella-stand", at: [13.3, 12.85] },
   { sprite: "tile/mat", at: px(352, 414) },
-  // Mantou, asleep in the sun under the window, and watching the street by the door.
+  { sprite: "decor/slippers", at: [12.55, 12.9], solid: false },
+  { sprite: "decor/umbrella-wet", at: [13.85, 12.85] },
+  { sprite: "decor/sun-catcher", at: px(240 + 26, 56) },
+  // Mantou, asleep in the sun under the window.
   { id: "cat", sprite: "decor/cat-sleep", at: [6.05, 4.75], solid: false },
 ];
 
