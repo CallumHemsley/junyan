@@ -30,13 +30,14 @@ const SEATS = ["furn/stool-turned", "furn/stool-bamboo", "furn/stool-plastic", "
 /**
  * What already stands on each table: its own condiments, and the remains or tea of whoever was
  * there before. Offsets are art pixels from the table's anchor; the top surface spans dy −49…−27.
- * Customers' food is added at run time by the game.
+ * Customers' food is added at run time by the game, which leaves out the leftovers (`remains`): in the
+ * game, food on a table always means an order that was served.
  */
-const SETTINGS: readonly (readonly [sprite: string, dx: number, dy: number])[][] = [
-  [["furn/condiment-set-1", 8, -38], ["furn/teapot", 20, -32], ["food/bun", -12, -30]],
-  [["furn/condiment-set-2", 18, -32], ["food/milk", -2, -29], ["furn/teacup", -18, -31]],
-  [["furn/condiment-set-3", -16, -38], ["food/youtiao", 2, -29], ["food/egg", -14, -28]],
-  [["furn/chopstick-tin", -22, -36], ["furn/chili-jar", -14, -34], ["food/dumpling", 4, -31], ["food/soy-dish", 20, -30]],
+const SETTINGS: readonly (readonly [sprite: string, dx: number, dy: number, remains?: "remains"])[][] = [
+  [["furn/condiment-set-1", 8, -38], ["furn/teapot", 20, -32], ["food/bun", -12, -30, "remains"]],
+  [["furn/condiment-set-2", 18, -32], ["food/milk", -2, -29, "remains"], ["furn/teacup", -18, -31]],
+  [["furn/condiment-set-3", -16, -38], ["food/youtiao", 2, -29, "remains"], ["food/egg", -14, -28, "remains"]],
+  [["furn/chopstick-tin", -22, -36], ["furn/chili-jar", -14, -34], ["food/dumpling", 4, -31, "remains"], ["food/soy-dish", 20, -30]],
 ];
 
 /**
@@ -115,7 +116,7 @@ const dining: Prop[] = [
   ...CAFE_TABLES.flatMap((t): Prop[] => [
     { id: `table-${t.table}`, sprite: `furn/table-${t.table}`, at: t.at },
     ...t.stools.map((at, i): Prop => ({ sprite: SEATS[(t.table - 1) * 2 + i], at })),
-    ...SETTINGS[t.table - 1].map(([sprite, dx, dy]): Prop => ({ sprite, at: [t.at[0] + dx / TILE, t.at[1] + dy / TILE], solid: false, sortY: t.at[1] + 2 / TILE })),
+    ...SETTINGS[t.table - 1].map(([sprite, dx, dy, remains], i): Prop => ({ ...(remains && { id: `remains/table-${t.table}-${i}` }), sprite, at: [t.at[0] + dx / TILE, t.at[1] + dy / TILE], solid: false, sortY: t.at[1] + 2 / TILE })),
   ]),
   // Plants, deliveries, the broom, the runner in front of the pass.
   { sprite: "decor/plant-rubber", at: [1.65, 3.75] },

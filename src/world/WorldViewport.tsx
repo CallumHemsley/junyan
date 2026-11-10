@@ -27,7 +27,13 @@ import {createFrameCadence,advanceFrameCadence} from "./frame-cadence";
 import {reducedWorldChanged} from "./render-invalidation";
 import {visibleLifeReactions} from "./life/render";
 import "./world.css";
-const directions:Record<string,Point>={ArrowUp:{x:-1,y:-1},w:{x:-1,y:-1},ArrowDown:{x:1,y:1},s:{x:1,y:1},ArrowLeft:{x:-1,y:1},a:{x:-1,y:1},ArrowRight:{x:1,y:-1},d:{x:1,y:-1}};
+import CafeView from "./pixel/CafeView";
+import {tapDestination} from "./pixel/cafe";
+import {isPixelMap,cardinalDirections,PIXEL_WALK_SPEED} from "./pixel/maps";
+import type {PixelViewApi} from "../pixel/engine/PixelView.tsx";
+const isoDirections:Record<string,Point>={ArrowUp:{x:-1,y:-1},w:{x:-1,y:-1},ArrowDown:{x:1,y:1},s:{x:1,y:1},ArrowLeft:{x:-1,y:1},a:{x:-1,y:1},ArrowRight:{x:1,y:-1},d:{x:1,y:-1}};
+/** Keys and pad buttons walk the isometric diagonals, or straight along the screen on pixel maps. */
+const directionsFor=(mapId:string)=>isPixelMap(mapId)?cardinalDirections:isoDirections;
 export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},dialogue=null,fresh,onAction,onScenePoint,presentationFrame=null,paused=false}:{state:WorldState;maps:MapRegistry;game:GameState;onPlay?:(line:Line)=>void;dialogue?:Line|null;onLookup:(word:Word,trigger:HTMLButtonElement)=>void;fresh:string[];onAction:(action:WorldAction|WorldLifeAction)=>void;onScenePoint?:(point:Point)=>void;presentationFrame?:readonly FramePoint[]|null;paused?:boolean}) {
  const canvas=useRef<HTMLCanvasElement>(null),root=useRef<HTMLElement>(null);
  const latest=useRef({state,maps,game,onAction,paused,presentationFrame});latest.current={state,maps,game,onAction,paused,presentationFrame};
@@ -45,6 +51,9 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
  const [viewport,setViewport]=useState({width:960,height:600});
  const [frameArea,setFrameArea]=useState<Rect>({x:0,y:0,width:1,height:1});
  const map=maps[state.mapId];
+ const pixel=isPixelMap(map.id),directions=directionsFor(map.id);
+ const pixelApi=useRef<PixelViewApi|null>(null),walkingRef=useRef(false);
+ const [walking,setWalking]=useState(false);
  useEffect(()=>{path.current=[];keys.current.clear();requestId.current++;root.current?.focus();},[state.mapId,state.activeActivity]);
  useEffect(()=>{if(paused){path.current=[];keys.current.clear();requestId.current++;}},[paused]);
  useEffect(()=>{
@@ -74,17 +83,19 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   return()=>{instance.terminate();worker.current=null;};
  },[]);
  useEffect(()=>{
-  const element=root.current;if(!element||!canvas.current)return;
+  const element=root.current;if(!element)return;
   const resize=new ResizeObserver(entries=>{const bounds=entries[0].contentRect;setViewport({width:Math.round(bounds.width),height:Math.round(bounds.height)});});resize.observe(element);
   return()=>resize.disconnect();
  },[]);
  useEffect(()=>{
-  const element=canvas.current;if(!element)return;
-  const context=element.getContext("2d");if(!context)return;
+  // Pixel maps draw in their own view (CafeView); this loop still walks, keeps time and places the cue.
+  const element=canvas.current,context=element?.getContext("2d")??null;
+  if(!pixel&&!context)return;
+  const observed_=element??root.current;if(!observed_)return;
   const preference=matchMedia("(prefers-reduced-motion: reduce)");
-  let frame=0,last=0,elapsedMs=elapsed.current;
+  let frame=0,last=0,lastStep=0,elapsedMs=elapsed.current;
   let cadence=createFrameCadence();
-  const bounds=element.getBoundingClientRect();
+  const bounds=observed_.getBoundingClientRect();
   let inViewport=bounds.bottom>0&&bounds.top<innerHeight&&bounds.right>0&&bounds.left<innerWidth,dirty=true;
   let observed={game:latest.current.game,state:latest.current.state,map:latest.current.maps[latest.current.state.mapId]};
   let observedFrame=latest.current.presentationFrame;
@@ -103,17 +114,29 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
    }
    if(elapsedMs-lastClockWrite.current>=1000){lastClockWrite.current=elapsedMs;current.onAction({type:"world-clock",elapsedMs});}
    const canMove=!current.paused&&!current.state.activeActivity;
+   const onPixel=isPixelMap(map.id),keyDirections=directionsFor(map.id),speed=onPixel?PIXEL_WALK_SPEED:5;
    let moving=false;
    if(canMove){
     let routePosition:Point|null=null;
-    let delta={x:0,y:0};for(const key of keys.current){const d=directions[key];if(d){delta.x+=d.x;delta.y+=d.y;}}
+    let delta={x:0,y:0};for(const key of keys.current){const d=keyDirections[key];if(d){delta.x+=d.x;delta.y+=d.y;}}
     const length=Math.hypot(delta.x,delta.y);
-    if(length){path.current=[];requestId.current++;delta={x:delta.x/length*dt*5,y:delta.y/length*dt*5};}
-    else if(path.current.length){const next=advanceRoute(map,current.state.position,path.current,dt);path.current=next.remaining;routePosition=next.position;delta={x:next.position.x-current.state.position.x,y:next.position.y-current.state.position.y};}
+    if(length){path.current=[];requestId.current++;delta={x:delta.x/length*dt*speed,y:delta.y/length*dt*speed};}
+    else if(path.current.length){const next=advanceRoute(map,current.state.position,path.current,dt,speed);path.current=next.remaining;routePosition=next.position;delta={x:next.position.x-current.state.position.x,y:next.position.y-current.state.position.y};}
     if(delta.x||delta.y){const next=routePosition??movePlayer(map,current.state.position,delta);moving=Math.hypot(next.x-current.state.position.x,next.y-current.state.position.y)>.0001;if(moving){actorMotion.current={mapId:map.id,yaw:Math.atan2(next.y-current.state.position.y,next.x-current.state.position.x),distanceTravelled:actorMotion.current.distanceTravelled+Math.hypot(next.x-current.state.position.x,next.y-current.state.position.y)};current.onAction({type:"world-move",position:next});}}
    }
    // A doorway dispatch can commit the new map before this frame finishes.
    if(latest.current.state.mapId!==map.id){frame=requestAnimationFrame(tick);return;}
+   if(moving)lastStep=now;
+   const walkingNow=moving||(walkingRef.current&&now-lastStep<140);
+   if(walkingNow!==walkingRef.current){walkingRef.current=walkingNow;setWalking(walkingNow);}
+   if(onPixel||!element||!context){
+    const api=pixelApi.current,target=targetForFrame.current;
+    if(cue.current){
+     if(target&&api&&onPixel){const [x,y]=api.toScreen([target.position.x,target.position.y]);cue.current.style.left=`${x}px`;cue.current.style.top=`${y}px`;cue.current.hidden=x<0||y<0||x>viewport.width||y>viewport.height;}
+     else cue.current.hidden=true;
+    }
+    frame=requestAnimationFrame(tick);return;
+   }
    const dpr=1,width=Math.ceil(viewport.width/2),height=Math.ceil(viewport.height/2);
    if(element.width!==Math.round(width*dpr)||element.height!==Math.round(height*dpr)){element.width=Math.round(width*dpr);element.height=Math.round(height*dpr);}
    const camera=current.presentationFrame?frameCamera(current.presentationFrame,width,height,frameArea,viewport.width<600?11:15):map.id==="restaurant"?restaurantCamera(map.bounds,current.state.position,width,height,viewport.width<800?interactionInset/2:0,viewport.width>=800?interactionWidth/2:0):explorationCamera(map.bounds,current.state.position,width,height,viewport.width<800?interactionInset/2:0,viewport.width>=800?interactionWidth/2:0,surfaceHeight(map.id,current.state.position),map.id==="workshop"?workshopFrame:undefined);cameraRef.current=camera;
@@ -134,11 +157,11 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
    frame=requestAnimationFrame(tick);
   };
   const refresh=()=>{last=0;dirty=true;cadence=createFrameCadence();keys.current.clear();if(!visible()){cancelAnimationFrame(frame);frame=0;}else if(!frame)frame=requestAnimationFrame(tick);};
-  const observer=new IntersectionObserver(entries=>{inViewport=entries[0].isIntersecting;refresh();});observer.observe(element);
+  const observer=new IntersectionObserver(entries=>{inViewport=entries[0].isIntersecting;refresh();});observer.observe(observed_);
   document.addEventListener("visibilitychange",refresh);preference.addEventListener("change",refresh);if(visible())frame=requestAnimationFrame(tick);
   const up=(event:KeyboardEvent)=>keys.current.delete(event.key);window.addEventListener("keyup",up);window.addEventListener("blur",refresh);
   return()=>{cancelAnimationFrame(frame);observer.disconnect();preference.removeEventListener("change",refresh);document.removeEventListener("visibilitychange",refresh);window.removeEventListener("keyup",up);window.removeEventListener("blur",refresh);};
- },[viewport,interactionInset,interactionWidth,frameArea]);
+ },[viewport,interactionInset,interactionWidth,frameArea,pixel]);
  const dictionary=contentWords(content);
  const targets=[...nearbyTargets(map.id,nearbyAnchors(map,state.position),nearbyLife(planFor(map,game),actorsFor(map,game,state,clock,false),state.position,navigationFor(map)),state.position),...nearbyExitTargets(map,state.position,dictionary)];
  const selected=paused&&visibleTarget.current?.mapId===map.id?visibleTarget.current:selectTarget(targets,state.position,selection);
@@ -181,7 +204,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   const current=latest.current;
   if(current.paused||current.state.activeActivity)return;
   path.current=[];requestId.current++;
-  const direction=directions[key],distance=.5/Math.SQRT2;
+  const direction=directionsFor(current.state.mapId)[key],distance=.5/Math.hypot(direction.x,direction.y);
   const position=movePlayer(current.maps[current.state.mapId],current.state.position,{x:direction.x*distance,y:direction.y*distance});
   const dx=position.x-current.state.position.x,dy=position.y-current.state.position.y;
   if(dx||dy)actorMotion.current={mapId:current.state.mapId,yaw:Math.atan2(dy,dx),distanceTravelled:(actorMotion.current.mapId===current.state.mapId?actorMotion.current.distanceTravelled:0)+Math.hypot(dx,dy)};
@@ -194,7 +217,17 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   if(directions[event.key]){event.preventDefault();event.stopPropagation();keys.current.add(event.key);}
   else if((event.key==="e"||event.key==="Enter")&&selected){event.preventDefault();event.stopPropagation();activate();}
  }} onBlur={event=>{if(!event.currentTarget.contains(event.relatedTarget))keys.current.clear();}}>
-  <canvas ref={canvas} aria-hidden="true" onPointerDown={event=>{
+  {pixel?<CafeView game={game} world={state} motion={{walking,distance:actorMotion.current.mapId===map.id?actorMotion.current.distanceTravelled:0}}
+   inset={{bottom:viewport.width<800?interactionInset:0,right:viewport.width>=800?interactionWidth:0}} onApi={api=>{pixelApi.current=api;}}
+   onPointerDown={point=>{
+    const current=latest.current;if(current.paused)return;
+    root.current?.focus();
+    onScenePoint?.({x:point[0],y:point[1]});
+    if(current.state.activeActivity)return;
+    const to=tapDestination(map,point);if(!to)return;
+    const id=++requestId.current;
+    worker.current?.postMessage({id,from:current.state.position,to,...(workerMap.current!==map?{map}:{})});workerMap.current=map;
+   }}/>:<canvas ref={canvas} aria-hidden="true" onPointerDown={event=>{
    if(paused)return;
    root.current?.focus();const rect=event.currentTarget.getBoundingClientRect(),p=pickSurface({x:(event.clientX-rect.left)*cameraRef.current.width/rect.width,y:(event.clientY-rect.top)*cameraRef.current.height/rect.height},cameraRef.current,map);
    if(!p)return;
@@ -202,7 +235,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
    if(state.activeActivity)return;
    const id=++requestId.current;
    worker.current?.postMessage({id,from:state.position,to:p,...(workerMap.current!==map?{map}:{})});workerMap.current=map;
-  }}/>
+  }}/>}
   <div className="world-place" role="group" aria-label={worldPlaceName(map.id)} aria-live="polite"><svg className="world-place-badge" viewBox="0 0 24 24" aria-hidden="true">{placeBadgePaths(map.id).map((path,index)=><path key={index} d={path}/>)}</svg>{currentPlaceWords(map.id,dictionary).map(wordToken)}</div>
   <div ref={cue} className="world-target-cue" data-target-id={selected?.targetId} aria-hidden="true" hidden>
     <svg viewBox="0 0 40 24"><ellipse cx="20" cy="12" rx="17" ry="7"/><ellipse cx="20" cy="12" rx="14" ry="4"/></svg>
