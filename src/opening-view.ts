@@ -1,6 +1,20 @@
 import type { Content } from "./contracts";
 import type { OpeningState } from "./opening";
-import type { WardCastId, WardFood, WardFrame } from "./scene/ward.js";
+
+/** The ward foods (the opening's bedside tray) and the visitors who come and go. */
+export type WardFood = "milk" | "egg" | "bread";
+export type WardCastId = "doctor" | "nurse" | "aunt";
+export type WardPose = "lying" | "sitting";
+/** What the ward shows at one moment of the opening; `src/world/pixel/ward.ts` stages it. */
+export type WardFrame = {
+  elder: WardPose;
+  player: WardPose;
+  present: WardCastId[];
+  /** Foods still on the bedside cabinet. */
+  table: WardFood[];
+  /** The food in the player's hands. */
+  held: WardFood | null;
+};
 
 export type TokenLook = "fogged" | "dot" | "plain";
 

@@ -845,8 +845,15 @@ h2 {
 .wake-button svg { width: 28px; height: 28px; }
 .opening-layout { display: grid; gap: var(--space-16); }
 .opening-world { position: relative; }
-.opening-world .restaurant-scene { border-radius: 0; box-shadow: none; }
-.ward-scene canvas { cursor: default; }
+/* The pixel ward: a 6 : 5 box (the ward scene's `view` mark) that the camera fills at a whole zoom. */
+.opening-world .pixel-ward {
+  position: relative;
+  width: min(100%, max(560px, calc((100svh - 380px) * 6 / 5)));
+  aspect-ratio: 6 / 5;
+  margin: auto;
+  overflow: hidden;
+  background: var(--surface-sunk);
+}
 .wake-veil {
   position: absolute;
   inset: 0;
@@ -958,8 +965,7 @@ h2 {
   .opening .spoken { font-size: var(--spoken-font-size); line-height: var(--spoken-line-height); }
 }
 @media (max-width: 760px) {
-  .opening-world .restaurant-scene { aspect-ratio: 3 / 2; }
-  .opening-world canvas { object-fit: cover; object-position: 50% 30%; }
+  .opening-world .pixel-ward { width: 100%; aspect-ratio: 3 / 2; }
   .opening-layout { gap: var(--space-12); }
   .paper-card { padding: var(--space-16); }
   .tile { width: 96px; }
