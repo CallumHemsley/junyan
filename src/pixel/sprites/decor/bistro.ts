@@ -41,6 +41,98 @@ function frond(
   for (let i = 0; i < steps; i++) p.line(Math.round(pts[i][0]), Math.round(pts[i][1]), Math.round(pts[i + 1][0]), Math.round(pts[i + 1][1]), tone(i < steps * 0.6 ? 1 : 2));
 }
 
+type V3 = readonly [number, number, number];
+const v3 = {
+  add: (a: V3, b: V3): V3 => [a[0] + b[0], a[1] + b[1], a[2] + b[2]],
+  scale: (a: V3, k: number): V3 => [a[0] * k, a[1] * k, a[2] * k],
+  dot: (a: V3, b: V3) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2],
+  cross: (a: V3, b: V3): V3 => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]],
+  norm: (a: V3): V3 => { const m = Math.hypot(a[0], a[1], a[2]) || 1; return [a[0] / m, a[1] / m, a[2] / m]; },
+};
+
+/**
+ * The gramophone's morning-glory horn, modelled rather than painted so the flare reads in the
+ * game's camera. A tube sweeps along a cubic spine (world east, north, up) from the tone arm's
+ * elbow, its radius flaring hard near the mouth; every surface sample is projected the way the
+ * room is drawn (screen y = base − up − 0.65·north), depth-tested, and shaded by the upper-left
+ * sun into the brass ramp. Where the camera sees the inside of the tube, depth darkens it into the
+ * throat. Returns a pixel map, built once: the horn does not animate.
+ */
+let hornCache: Map<number, Color> | undefined;
+function hornPixels(): Map<number, Color> {
+  if (hornCache) return hornCache;
+  const P: V3[] = [[29.5, 0, 1.5], [29.5, 0, 11], [19, 4, 15.5], [14, -3, 18.5]];
+  const at = (t: number): V3 => {
+    const s = 1 - t;
+    return [0, 1, 2].map((k) => s * s * s * P[0][k] + 3 * s * s * t * P[1][k] + 3 * s * t * t * P[2][k] + t * t * t * P[3][k]) as unknown as V3;
+  };
+  const tangent = (t: number): V3 => {
+    const s = 1 - t;
+    return [0, 1, 2].map((k) => 3 * s * s * (P[1][k] - P[0][k]) + 6 * s * t * (P[2][k] - P[1][k]) + 3 * t * t * (P[3][k] - P[2][k])) as unknown as V3;
+  };
+  const radius = (t: number) => 1.3 + 9.9 * Math.pow(t, 3.4);
+  const view: V3 = v3.norm([0, 1, -0.65]);
+  const sun: V3 = v3.norm([-0.55, 0.35, 0.75]);
+  const W = 40, depth = new Float64Array(W * 40).fill(Infinity), neck = new Uint8Array(W * 40), soft = new Uint8Array(W * 40);
+  const out = new Map<number, Color>();
+  const T_STEPS = 360, A_STEPS = 260;
+  for (let i = 0; i <= T_STEPS; i++) {
+    const t = i / T_STEPS, c = at(t), d = tangent(t), T = v3.norm(d), len = Math.hypot(d[0], d[1], d[2]);
+    const B1 = v3.norm(v3.cross(T, [0, 1, 0])), B2 = v3.cross(B1, T);
+    const r = radius(t), dr = (radius(Math.min(1, t + 0.001)) - radius(Math.max(0, t - 0.001))) / 0.002 / len;
+    for (let j = 0; j < A_STEPS; j++) {
+      const a = (j / A_STEPS) * Math.PI * 2, radial = v3.add(v3.scale(B1, Math.cos(a)), v3.scale(B2, Math.sin(a)));
+      const q = v3.add(c, v3.scale(radial, r));
+      const x = Math.floor(q[0]), y = Math.floor(31 - q[2] - 0.65 * q[1]);
+      if (x < 0 || y < 0 || x >= W || y >= 40) continue;
+      const z = v3.dot(q, view);
+      if (z >= depth[y * W + x]) continue;
+      depth[y * W + x] = z;
+      const n = v3.norm(v3.add(radial, v3.scale(T, -dr)));
+      const outside = v3.dot(n, view) < 0;
+      let tone: Color;
+      if (outside) {
+        // The narrow neck is polished tube and catches more light than the broad bell.
+        const l = v3.dot(n, sun) + 0.25 * Math.max(0, Math.min(1, (0.75 - t) / 0.3));
+        tone = l > 0.55 ? "gold5" : l > 0.2 ? "gold4" : l > -0.15 ? "gold3" : l > -0.5 ? "gold2" : "gold1";
+      } else {
+        // Inside the bell: lit wall near the lip, falling off into the throat.
+        const l = -v3.dot(n, sun) + (t - 0.85) * 4;
+        tone = t < 0.66 ? "ink2" : t < 0.78 ? "wood1" : l > 0.55 ? "gold3" : l > 0 ? "gold2" : "gold1";
+      }
+      // Soldered seams between the seven petals, only where the bell is wide enough to show them.
+      const seam = r > 4.5 && t < 0.97 && Math.abs(((a / (Math.PI * 2 / 7)) % 1 + 1.5) % 1 - 0.5) * (Math.PI * 2 / 7) * r < 0.45;
+      if (seam) tone = ({ gold5: "gold4", gold4: "gold3", gold3: "gold2", gold2: "gold1", gold1: "wood1" } as Partial<Record<Color, Color>>)[tone] ?? tone;
+      out.set(y * W + x, tone);
+      neck[y * W + x] = t < 0.62 ? 1 : 0;
+      soft[y * W + x] = !outside && !seam ? 1 : 0;
+    }
+  }
+  // Where the inside wall is seen edge-on, neighbouring pixels land on very different depths and
+  // flicker between two tones; settle any lone pixel that disagrees with both horizontal neighbours.
+  for (let k = 1; k < W * 40 - 1; k++) {
+    const l = out.get(k - 1), m = out.get(k), r = out.get(k + 1);
+    if (l && l === r && m && m !== l && soft[k]) out.set(k, l);
+  }
+  // The neck's sunlit left edge, a single bright line down the tube.
+  for (let k = 0; k < W * 40; k++) if (neck[k] && k % W > 0 && !out.has(k - 1)) out.set(k, "gold4");
+  // The rolled lip, two rings deep and drawn over everything: the mouth faces the room, so all of it
+  // shows, and a solid lip keeps the inside and outside from blurring where they meet.
+  {
+    const c = at(1), T = v3.norm(tangent(1)), B1 = v3.norm(v3.cross(T, [0, 1, 0])), B2 = v3.cross(B1, T);
+    for (let j = 0; j < 1440; j++) {
+      const a = (j / 720) * Math.PI * 2, radial = v3.add(v3.scale(B1, Math.cos(a)), v3.scale(B2, Math.sin(a)));
+      const q = v3.add(c, v3.scale(radial, radius(1) - (j < 720 ? 0.05 : 0.75)));
+      const x = Math.floor(q[0]), y = Math.floor(31 - q[2] - 0.65 * q[1]);
+      if (x < 0 || y < 0 || x >= W || y >= 40) continue;
+      const l = v3.dot(radial, sun);
+      out.set(y * W + x, l > 0.35 ? "gold5" : l > -0.15 ? "gold4" : l > -0.6 ? "gold3" : "gold2");
+    }
+  }
+  hornCache = out;
+  return out;
+}
+
 export default defineSprites({
   /**
    * A kentia palm in a hammered brass planter, a fixture since the French owners had the place.
@@ -141,8 +233,10 @@ export default defineSprites({
   },
 
   /**
-   * The gramophone in the corner, brought from a flea market on Fuxing Road. The brass horn has a
-   * dent in its bell; a short stack of records in paper sleeves leans against the cabinet. Four
+   * The gramophone in the corner, brought from a flea market on Fuxing Road. Its seven-petal brass
+   * horn rises from the tone arm's elbow and turns its bell to the room; the bell has a dent in its
+   * shaded flank, and verdigris has crept up under it where the polishing cloth never reaches. A
+   * short stack of records in paper sleeves leans against the cabinet. Four
    * frames at 6 fps: the record turns (the label's mark goes round; the shine on the vinyl stays).
    */
   "decor/gramophone": {
@@ -179,29 +273,13 @@ export default defineSprites({
       art(p, 26, 31, ["...gg", "..gG.", ".gg..", "gg...", "s...."], { g: "gold3", G: "gold5", s: "steel4" });
       autoOutline(p, { map: { rose: "rose1", gold: "wood1", steel: "steel1", ink: "ink" } });
       // The horn: a brass morning glory rising from the back, its bell open toward the room.
-      const horn = (q: Px) => {
-        // Neck, curving up from the tone arm's base.
-        for (let i = 0; i < 12; i++) {
-          const x = 30 - Math.round(i * 0.9), y = 30 - i;
-          q.px(x, y, "gold3").px(x + 1, y, "gold2").px(x - 1, y, "gold4");
-        }
-        // The bell, an open flare with petal seams.
-        for (let y = 2; y < 24; y++) for (let x = 1; x < 30; x++) {
-          const u = (x + 0.5 - 14) / 13, v = (y + 0.5 - 11) / 9;
-          const d = u * u + v * v;
-          if (d > 1) continue;
-          const inner = d < 0.62;
-          const l = -0.6 * u - 0.6 * v;
-          q.px(x, y, inner ? (d < 0.12 ? "wood1" : d < 0.3 ? "gold1" : l > 0.2 ? "gold2" : "gold1") : l > 0.4 ? "gold5" : l > 0 ? "gold4" : l > -0.4 ? "gold3" : "gold2");
-        }
-        for (let k = 0; k < 8; k++) {
-          const a = (k / 8) * Math.PI * 2;
-          q.line(Math.round(14 + Math.cos(a) * 4), Math.round(11 + Math.sin(a) * 3), Math.round(14 + Math.cos(a) * 12.5), Math.round(11 + Math.sin(a) * 8.6), "gold2");
-        }
-        // The dent, lower right of the bell.
-        art(q, 21, 15, [".2.", "2.5", ".55"], { 2: "gold1", 5: "gold5" });
-      };
-      horn(p);
+      for (const [k, c] of hornPixels()) p.px(k % 40, Math.floor(k / 40), c);
+      // The sleeve where the neck is fitted onto the tone arm's elbow.
+      art(p, 27, 28, ["34442", "23321"], { 1: "gold1", 2: "gold2", 3: "gold3", 4: "gold4" });
+      // The flea-market dent in the bell's shaded flank: a dark upper-left wall, a lit lower lip.
+      art(p, 22, 14, ["11.", "1.4", ".44"], { 1: "gold1", 4: "gold4" });
+      // Verdigris under the bell where the neck joins, the place a polishing cloth never reaches.
+      art(p, 27, 23, [".j.", "jJj", ".jj"], { j: "jade3", J: "jade4" });
       autoOutline(p, { map: { gold: "wood1", rose: "rose1", jade: "jade1", cream: "ink2", steel: "steel1" } });
       // Records in sleeves leaning on the cabinet's left side.
       art(p, 2, 44, [
