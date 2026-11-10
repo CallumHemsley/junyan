@@ -140,14 +140,17 @@ Frames are 32×64 with anchor `[16, 62]`, `foot: [-8, -8, 16, 8]`, `shadow: { rx
 
 ## The room everyone is drawing for
 
-早安小馆, a neighbourhood breakfast shop at about seven in the morning. About 18 tiles wide and 13 deep.
+早安小馆, a neighbourhood breakfast shop at about seven in the morning, in an old **Shanghai French Concession** building. Callum's note, 2026-11-10: "I'd like the cafe to have a French bistro style to it." So: a 1930s Shanghai bistro that serves Chinese breakfast. Paris bones, Shanghai life: the architecture and furniture speak bistro, the food, the people, the clutter and the habits are a Chinese neighbourhood breakfast shop. About 18 tiles wide and 10 deep.
 
-- **Back wall** (north): cream plaster over a jade painted dado. Two wooden lattice windows on the dining side throw warm light onto the floor. On the kitchen side: shelves of bowls and jars, blank wooden menu plaques, a clock, a calendar, a range hood.
-- **Kitchen** (north-east, behind a counter): a stove with stacked bamboo steamers breathing steam, a wok of oil for 油条, a tall soy-milk pot, a sink, a fridge, flour sacks. Small jade-and-cream floor tiles.
-- **Service counter**: tea wood with a worn top, an L that fences off the kitchen. On it: a steamer of buns under a lid, a pot of tea eggs, a cash box, a waving lucky cat. The waiter collects food at its dining side.
-- **Dining room**: honey oak boards, four square tables with stools, each with a chopstick tin, a vinegar bottle and a chili jar. Customers sit and eat here.
-- **Front wall** (south): only the wall cap is visible, with a doorway gap, a worn mat and daylight spilling in from the street.
-- **Life**: potted plants, a red lantern or two by the door, a thermos, a radio, a broom, a cat asleep in a sun patch.
+- **Back wall** (north): cream plaster over dark-stained **wood panelling** (raised panels, a moulded rail); a long **bevelled mirror** in a gilt frame on the dining side with a few faded spots in the silvering; two tall arched or transomed windows with fine glazing bars; **globe lamps** on brass brackets; a tall blank menu board in a black frame. On the kitchen side: white **metro tiles** with a black trim course, shelves of bowls and jars, a range hood.
+- **Floor**: dining room in small **black-and-white (cream and ink) hexagon or octagon-and-dot mosaic**, with a border band where it meets the walls, worn and a little yellowed, a few tiles cracked or replaced; the kitchen floor in plainer square tiles.
+- **Service counter**: a bistro bar: **dark polished wood** front with raised panels and a **brass foot rail**, a **zinc or white marble top**; on it the Chinese breakfast business (steamers, tea eggs, a cash box, the lucky cat) plus a brass bell and a stack of saucers.
+- **Kitchen** (north-east, behind the counter): unchanged in spirit. Bamboo steamers, the wok, the soy-milk vat, sink and fridge.
+- **Dining room**: **round marble-topped bistro tables on black cast-iron pedestal bases**, a long **banquette** in worn oxblood or bottle-green leather along one wall with small tables in front, and **bentwood chairs** (the classic curved-back café chair) in four facings, mismatched with the odd Chinese stool that has crept in. Table settings stay Chinese: chopstick tins, vinegar, chili oil, a blue-and-white teapot.
+- **Front** (south): the wall cap with a glazed double door, a striped awning edge seen from inside, daylight spilling in; a hat stand, an umbrella stand.
+- **Life**: potted palms and ferns in brass and ceramic pots, a ceiling fan's shadow, a gramophone or old radio, a blank enamel advertising sign, a cat asleep in a sun patch, a wall calendar, red paper accents kept rare.
+
+Colour: keep the warm palette; the bistro adds deep wood (`wood1`–`wood3`, `rose1`–`rose3`), brass (`gold1`–`gold4`), marble and zinc (`cream5`/`white`/`stone4`–`stone5`, `steel3`–`steel6`), bottle green (`jade1`–`jade3`) and oxblood (`rose2`–`rose3`). The vermilion rule still holds: red stays rare.
 
 Foods on the menu: 包子 steamed bun, 馒头 plain steamed bread, 鸡蛋 tea egg, 豆浆 soy milk, 粥 congee, 油条 fried dough stick, 饺子 dumplings.
 
