@@ -9,6 +9,7 @@
  */
 import { Px, type SpriteDef } from "../kit/index.ts";
 import type { AtlasSprite } from "./atlas.ts";
+import type { SceneRenderer } from "./renderer.ts";
 import type { CompiledScene } from "./scene.ts";
 
 /** Frame `index` of a sprite as straight RGBA: byte for byte what `Atlas.frame` bakes. */
@@ -23,6 +24,24 @@ export function sceneSprites(compiled: CompiledScene): AtlasSprite[] {
   const seen = new Set<AtlasSprite>();
   for (const list of [compiled.floor, compiled.objects, compiled.over]) for (const p of list) if (!p.sprite.placeholder) seen.add(p.sprite);
   return [...seen];
+}
+
+/**
+ * Free the memory of scenes the player has left: every baked frame of the `drop` renderers' sprites
+ * that no `keep` scene draws, and the dropped renderers' floor caches and view buffers. Sprites
+ * outside every scene (characters, critters) are never touched. Everything rebuilds lazily (or by
+ * prebaking) if a dropped scene is drawn again. Returns the bytes released.
+ */
+export function releaseScenes(keep: readonly CompiledScene[], drop: readonly SceneRenderer[]): number {
+  const kept = new Set<AtlasSprite>();
+  for (const compiled of keep) for (const sprite of sceneSprites(compiled)) kept.add(sprite);
+  let freed = 0;
+  for (const renderer of drop) {
+    for (const sprite of sceneSprites(renderer.compiled)) if (!kept.has(sprite)) freed += sprite.release();
+    freed += renderer.cachedBytes();
+    renderer.release();
+  }
+  return freed;
 }
 
 /** Frames of `sprite` not baked yet. */

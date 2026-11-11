@@ -3,7 +3,7 @@ import { bakeFrame, compileScene, createAtlas, createSceneRenderer, hashFrame, r
 import { TILE } from "../../pixel/kit/index.ts";
 import { sprites } from "../../pixel/registry.ts";
 import { liveOutdoor, outdoorAtlasOptions } from "./outdoor";
-import { neighbourMaps } from "./prebake";
+import { keptMaps, neighbourMaps } from "./prebake";
 
 describe("prebaking the next maps", () => {
   it("knows each map's outdoor neighbours from the exits, both ways", () => {
@@ -12,6 +12,13 @@ describe("prebaking the next maps", () => {
     expect(neighbourMaps("park")).toEqual(["courtyard", "riverbank", "town"]);
     expect(neighbourMaps("riverbank")).toEqual(["park", "town"]);
     expect(neighbourMaps("ward")).toEqual([]);
+  });
+
+  it("keeps one neighbourhood baked: the current outdoor map and its neighbours", () => {
+    expect(keptMaps("restaurant")).toEqual(["town"]);
+    expect(keptMaps("park")).toEqual(["courtyard", "park", "riverbank", "town"]);
+    expect(keptMaps("riverbank")).toEqual(["park", "riverbank", "town"]);
+    expect(keptMaps("ward")).toEqual([]);
   });
 
   it("renders a map byte-identically from pre-baked frames (worker bytes) and from lazy baking", () => {

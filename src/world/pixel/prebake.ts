@@ -6,12 +6,15 @@
  * are compiled in idle slices and their sprites baked in a worker, frame by frame, then handed to the
  * atlas. Nothing visual changes: a pre-baked frame is the same bytes as a lazily baked one.
  *
+ * Maps further away than one step are released again (ticket 0203), so the session holds one
+ * neighbourhood's art at a time, not every map ever visited.
+ *
  * Without workers (an old browser, a failed load) the sprites bake in idle slices on the main
  * thread instead: one sprite per slice, which can still cost a long frame for a big tree, but never
  * the whole map at once.
  */
 import {
-  DAY_PHASES, GRADES, browserIdleSchedule, createAtlas, createIdleQueue, createSceneRenderer, gradeLut, sceneSprites, unbakedFrames,
+  DAY_PHASES, GRADES, browserIdleSchedule, createAtlas, createIdleQueue, createSceneRenderer, gradeLut, releaseScenes, sceneSprites, unbakedFrames,
   type Atlas, type IdleQueue, type SceneRenderer,
 } from "../../pixel/engine/index.ts";
 import { OUTDOOR_MAP_IDS, outdoorMap } from "../../pixel/world/maps.ts";
@@ -25,8 +28,12 @@ let atlas: Atlas | null = null;
 /** One atlas for every outdoor map. Art still being drawn shows as boxes; dev builds list it once. */
 export const outdoorAtlas = (): Atlas => (atlas ??= createAtlas(sprites, outdoorAtlasOptions(warn)));
 
-/** One renderer per map for the session, over the one atlas. */
-export function outdoorRenderer(mapId: string): SceneRenderer {
+/** The outdoor map last asked for by a view: it is drawing, so it is never released. */
+let drawing: string | null = null;
+
+/** One renderer per map for the session, over the one atlas. A view calls it on every render. */
+export function outdoorRenderer(mapId: string, view = false): SceneRenderer {
+  if (view) drawing = mapId;
   let renderer = renderers.get(mapId);
   if (!renderer) renderers.set(mapId, renderer = createSceneRenderer(liveOutdoor(mapId), outdoorAtlas(), { warn }));
   return renderer;
@@ -46,10 +53,14 @@ export function neighbourMaps(mapId: string): string[] {
 }
 
 type BakeJob = { map: string; sprites: { id: string; frames: number[] }[] };
-type BakeResult = { id: string; index: number; data: Uint8ClampedArray } | { map: string; done: true };
+type BakeResult = { map: string; id: string; index: number; data: Uint8ClampedArray } | { map: string; done: true };
 
 let queue: IdleQueue | null = null;
 let worker: Worker | null | undefined;
+let gradesWarmed = false;
+/** The map the player is on (or the restaurant), and the maps kept baked: it and its neighbours. */
+let current: string | null = null;
+let wanted = new Set<string>();
 const started = new Set<string>();
 /** Maps whose sprites went to the worker and have not come back finished. */
 const posted = new Set<string>();
@@ -69,7 +80,8 @@ function bakeWorker(): Worker | null {
     w.onmessage = (event: MessageEvent<BakeResult>) => {
       const message = event.data;
       if ("done" in message) idle().push(() => finish(message.map));
-      else outdoorAtlas().find(message.id)?.adopt(message.index, message.data);
+      // A frame for a map the player has since walked away from is dropped, not kept.
+      else if (wanted.has(message.map)) outdoorAtlas().find(message.id)?.adopt(message.index, message.data);
     };
     w.onerror = () => {
       // The worker could not load: bake what is left on the main thread instead.
@@ -87,17 +99,18 @@ function bakeWorker(): Worker | null {
 /** The map's floor cache, once its sprites are in: the last bit of first-frame work. */
 function finish(mapId: string) {
   posted.delete(mapId);
-  outdoorRenderer(mapId).warm();
+  if (wanted.has(mapId)) outdoorRenderer(mapId).warm();
   ready.get(mapId)?.();
   ready.delete(mapId);
 }
 
 function bakeOnMainThread(mapId: string) {
-  for (const sprite of sceneSprites(outdoorRenderer(mapId).compiled)) idle().push(() => { for (const i of unbakedFrames(sprite)) sprite.frame(i); });
+  for (const sprite of sceneSprites(outdoorRenderer(mapId).compiled)) idle().push(() => { if (wanted.has(mapId)) for (const i of unbakedFrames(sprite)) sprite.frame(i); });
   idle().push(() => finish(mapId));
 }
 
 function prepare(mapId: string) {
+  if (!wanted.has(mapId)) return finish(mapId);
   const job: BakeJob = { map: mapId, sprites: [] };
   for (const sprite of sceneSprites(outdoorRenderer(mapId).compiled)) {
     const frames = unbakedFrames(sprite);
@@ -108,20 +121,61 @@ function prepare(mapId: string) {
   else bakeOnMainThread(mapId);
 }
 
+/** The outdoor maps kept baked while the player is on `mapId`: it (if outdoor) and its neighbours. */
+export function keptMaps(mapId: string): string[] {
+  return [...new Set([...(OUTDOOR_MAP_IDS.includes(mapId) ? [mapId] : []), ...neighbourMaps(mapId)])].sort();
+}
+
 /**
- * Start baking the maps next to `mapId` (each map once per session). Scenes compile in idle slices;
- * sprites bake in the worker. Returns at once.
+ * Release the art of every outdoor map outside the current neighbourhood (ticket 0203): baked frames
+ * no kept map draws, floor caches and view buffers. The cafe and ward have their own atlases and are
+ * never touched. A released map bakes again if it becomes a neighbour (prebake) or is drawn.
+ * Returns the bytes released.
+ */
+export function releaseAway(): number {
+  const keepIds = new Set(wanted);
+  if (drawing) keepIds.add(drawing);
+  const keep = [...keepIds].map((id) => outdoorRenderer(id).compiled);
+  const drop: SceneRenderer[] = [];
+  for (const [id, renderer] of renderers) {
+    if (keepIds.has(id)) continue;
+    drop.push(renderer);
+    started.delete(id);
+    posted.delete(id);
+    ready.get(id)?.();
+    ready.delete(id);
+    readyPromises.delete(id);
+  }
+  return releaseScenes(keep, drop);
+}
+
+/**
+ * The player is on `mapId` (an outdoor map, or the restaurant): start baking its neighbours (each
+ * once while they stay neighbours) and, after that, release maps further away. Scenes compile in idle
+ * slices; sprites bake in the worker. Returns at once.
  */
 export function prebakeAround(mapId: string): void {
+  current = mapId;
+  wanted = new Set(keptMaps(mapId));
+  if (!OUTDOOR_MAP_IDS.includes(mapId)) drawing = null;
   // The colour grade's tables (about 20 ms each, shared by every map), once, so no phase's first frame builds one.
-  if (!started.size) for (const phase of DAY_PHASES) idle().push(() => gradeLut(GRADES[phase]));
+  if (!gradesWarmed) { gradesWarmed = true; for (const phase of DAY_PHASES) idle().push(() => gradeLut(GRADES[phase])); }
   for (const neighbour of neighbourMaps(mapId)) {
     if (started.has(neighbour)) continue;
     started.add(neighbour);
     readyPromises.set(neighbour, new Promise<void>((resolve) => ready.set(neighbour, resolve)));
     idle().push(() => prepare(neighbour));
   }
+  // Runs for whichever map is current by then, so a quick walk through never drops where the player is.
+  idle().push(() => { if (current) releaseAway(); });
 }
 
 /** Resolves once `mapId` is fully baked by `prebakeAround` (tests and timing; never awaited by the game). */
 export const whenPrebaked = (mapId: string): Promise<void> | undefined => readyPromises.get(mapId);
+
+/** Bytes held by the outdoor maps' baked frames and their renderers' caches (rough, from frame buffers). */
+export function outdoorBytes(): { frames: number; caches: number } {
+  let caches = 0;
+  for (const renderer of renderers.values()) caches += renderer.cachedBytes();
+  return { frames: atlas?.bakedBytes() ?? 0, caches };
+}

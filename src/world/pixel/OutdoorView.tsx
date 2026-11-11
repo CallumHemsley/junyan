@@ -56,7 +56,7 @@ export type OutdoorViewProps = {
 };
 
 export default function OutdoorView({ map, game, world, motion, lifeClock, size, inset, onPointerDown, onApi }: OutdoorViewProps) {
-  const renderer = outdoorRenderer(map.id);
+  const renderer = outdoorRenderer(map.id, true);
   // Bake the next maps' art while the player is here, so stepping onto them does not stall.
   useEffect(() => prebakeAround(map.id), [map.id]);
   const reducedMotion = usePrefersReducedMotion();
