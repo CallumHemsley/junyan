@@ -13,7 +13,8 @@ import { createWorld } from "../state";
 import { actorsFor } from "../life-bridge";
 import { courtyardForCats } from "../maps/courtyard/habitat";
 import { isPixelMap } from "./maps";
-import { FADED, liveOutdoor, occluderFade, outdoorActors, outdoorAtlasOptions, outdoorPlayer, placedById } from "./outdoor";
+import { FADED, catSprite, lifeActor, liveOutdoor, occluderFade, outdoorActors, outdoorAtlasOptions, outdoorPlayer, placedById } from "./outdoor";
+import type { ActorPose } from "../life";
 
 const map = worldMaps.courtyard;
 const scene = scenes.courtyard;
@@ -105,7 +106,7 @@ describe("the courtyard cast from game state", () => {
     expect(actors.at(-1)).toMatchObject({ id: "player", sprite: "char/player", at: [23, 33.5], facing: "up" });
     const cats = actors.filter((_, i) => poses[i]?.kind === "cat");
     expect(cats.length).toBe(2);
-    for (const cat of cats) expect(cat.sprite).toBe("critter/cat-tabby");
+    expect(cats.map(cat => cat.sprite).sort()).toEqual(["critter/cat-black", "critter/cat-white"]);
     for (const actor of actors) {
       expect(actor.sprite).toMatch(/^(char|critter)\//);
       expect(resolveActorSprite(atlas, actor.sprite, actor.action ?? "idle", actor.facing ?? "down").sprite.id).not.toBe("ex/waiter");
@@ -123,5 +124,26 @@ describe("walking behind the courtyard's tall things", () => {
     expect(occluderFade(placed, map.occluders, { x: 34, y: 8.6 })).toEqual({ "courtyard.laundry-east": FADED });
     // In front of it (south of its line), the washing hangs behind the player.
     expect(occluderFade(placed, map.occluders, { x: 34, y: 11 })["courtyard.laundry-east"]).toBeUndefined();
+  });
+});
+
+describe("the courtyard's story cats", () => {
+  const cat = (characterId: string, extra: Partial<ActorPose> = {}): ActorPose => ({ id: `courtyard.${characterId}`, characterId, kind: "cat", position: { x: 5, y: 6 }, facing: "south", action: "idle", activity: "sit", phaseMs: 0, radius: .16, ...extra });
+
+  it("draws the white cat white and the black cat black, and any other cat as the tabby", () => {
+    expect(catSprite("white-cat")).toBe("critter/cat-white");
+    expect(catSprite("cats.white")).toBe("critter/cat-white");
+    expect(catSprite("black-cat")).toBe("critter/cat-black");
+    expect(catSprite("cats.black")).toBe("critter/cat-black");
+    expect(catSprite("lane-cat")).toBe("critter/cat-tabby");
+    expect(lifeActor(cat("white-cat"))).toMatchObject({ sprite: "critter/cat-white", action: "idle", facing: "down" });
+    expect(lifeActor(cat("black-cat", { action: "walk", facing: "east" }))).toMatchObject({ sprite: "critter/cat-black", action: "walk", facing: "right" });
+    expect(lifeActor(cat("stray"))).toMatchObject({ sprite: "critter/cat-tabby" });
+  });
+
+  it("has every action the cats are given, in every facing, without falling back", () => {
+    for (const sprite of ["critter/cat-white", "critter/cat-black", "critter/cat-tabby"])
+      for (const action of ["idle", "walk", "sleep"]) for (const facing of ["down", "left", "right"] as const)
+        expect(resolveActorSprite(atlas, sprite, action, facing).fallback, `${sprite} ${action} ${facing}`).toBeUndefined();
   });
 });
