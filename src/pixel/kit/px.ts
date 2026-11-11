@@ -11,7 +11,7 @@ const RGB = COLOR_NAMES.map((name) => {
 export type Paint = Color | null;
 export type Legend = Record<string, Paint>;
 export type Region = [x: number, y: number, w: number, h: number];
-type Mode = "normal" | "over" | "under";
+export type Mode = "normal" | "over" | "under";
 
 /** Deterministic 0..1 noise for texture placement. Never use Math.random in a sprite. */
 export function hash(x: number, y: number, seed = 0): number {
@@ -79,6 +79,29 @@ export class Px {
     this.ink[at] = index;
     this.alpha[at] = Math.round(Math.max(0, Math.min(1, this.opacity)) * 255);
     return this;
+  }
+
+  /**
+   * What `px(x, y, …)` would meet at a whole-pixel position: -1 outside the clip box, 0 on a
+   * transparent pixel, 1 on artwork. For generators that resolve overdraw themselves and then
+   * write each pixel once (see `canopy` in the plant helpers).
+   */
+  peek(x: number, y: number): -1 | 0 | 1 {
+    x += this.ox;
+    y += this.oy;
+    const b = this.clipBox;
+    if (x < b[0] || y < b[1] || x >= b[0] + b[2] || y >= b[1] + b[3]) return -1;
+    return this.ink[y * this.w + x] !== 0 ? 1 : 0;
+  }
+  /** The scoped drawing mode `px` is in: "normal", or "over"/"under" inside those scopes. */
+  get drawMode(): Mode {
+    return this.mode;
+  }
+  /** `px` in normal mode whatever the current scope: for writing pixels already resolved against the mode. */
+  put(x: number, y: number, c: Paint): this {
+    const keep = this.mode;
+    this.mode = "normal";
+    try { return this.px(x, y, c); } finally { this.mode = keep; }
   }
 
   // ── shapes ─────────────────────────────────────────────────────────────────

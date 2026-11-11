@@ -16,6 +16,17 @@ export type AtlasSprite = {
   placeholder?: boolean;
   /** Frame `i`, optionally mirrored. Baked on first use and cached. */
   frame(index: number, flipX?: boolean): Image;
+  /** Whether frame `i` is already baked (by use or by `adopt`). */
+  baked(index: number): boolean;
+  /**
+   * Take frame `i` baked elsewhere (a worker, an idle slice; see `prebake.ts`) as straight RGBA,
+   * w×h×4 bytes, exactly what `frame` would bake. Ignored when the frame is already baked.
+   */
+  adopt(index: number, rgba: Uint8ClampedArray): void;
+  /** Bytes held by baked frames (plain and mirrored). */
+  bytes(): number;
+  /** Drop every baked frame; the next `frame` call bakes again. Returns the bytes released. */
+  release(): number;
 };
 
 export type Atlas = {
@@ -26,6 +37,8 @@ export type Atlas = {
   /** Like `find`, but throws a helpful error for an unknown id. */
   get(id: string): AtlasSprite;
   ids(): string[];
+  /** Bytes held by every baked frame in the atlas. */
+  bakedBytes(): number;
 };
 
 /** A stand-in for a missing sprite: a flat box, `w`×`h` art px, standing on its anchor. */
@@ -120,6 +133,26 @@ export function createAtlas(set: SpriteSet, options: AtlasOptions = {}): Atlas {
         if (!flipX) return plain[i];
         return (flipped[i] ??= mirror(plain[i]));
       },
+      baked: (index) => !!plain[((index % count) + count) % count],
+      bytes() {
+        let total = 0;
+        for (const image of plain) if (image) total += image.data.byteLength;
+        for (const image of flipped) if (image) total += image.data.byteLength;
+        return total;
+      },
+      release() {
+        const freed = sprite.bytes();
+        plain.length = 0;
+        flipped.length = 0;
+        baked = undefined;
+        return freed;
+      },
+      adopt(index, rgba) {
+        const i = ((index % count) + count) % count;
+        if (plain[i]) return;
+        if (rgba.length !== def.w * def.h * 4) throw new Error(`Adopted frame ${i} of "${id}" is ${rgba.length} bytes, not ${def.w}×${def.h}×4`);
+        plain[i] = image(def.w, def.h, rgba);
+      },
     };
     cache.set(id, sprite);
     return sprite;
@@ -129,5 +162,6 @@ export function createAtlas(set: SpriteSet, options: AtlasOptions = {}): Atlas {
     if (!sprite) throw new Error(`No sprite "${id}". Known: ${Object.keys(set).sort().join(", ")}`);
     return sprite;
   };
-  return { has: (id) => id in set, find, get, ids: () => Object.keys(set).sort() };
+  const bakedBytes = () => { let total = 0; for (const sprite of cache.values()) total += sprite.bytes(); return total; };
+  return { has: (id) => id in set, find, get, ids: () => Object.keys(set).sort(), bakedBytes };
 }

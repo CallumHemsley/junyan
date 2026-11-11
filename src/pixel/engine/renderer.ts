@@ -43,6 +43,12 @@ export type SceneRenderer = {
   render(frame: Frame, view: ViewOrigin, state: FrameState): void;
   /** Changes whenever time would change the picture (animation frame, flicker, motes). */
   timeKey(state: FrameState): number;
+  /** Build the cached static floor now (it bakes the floor's sprites) rather than on the first frame. */
+  warm(): void;
+  /** Bytes held by the cached static floor and the per-view buffers. */
+  cachedBytes(): number;
+  /** Drop the cached static floor and per-view buffers; they are rebuilt on the next frame. */
+  release(): void;
   /** Scene colliders plus any run-time props', tile units. */
   colliders(props?: readonly Prop[]): Rect[];
 };
@@ -236,6 +242,16 @@ export function createSceneRenderer(scene: Scene, atlas: Atlas, options: Rendere
       lighting.apply(frame, view.x, view.y, phase, time, !!state.reducedMotion, runtimeLights(state.lights));
       if (graded) applyGradeLut(frame, gradeLut(GRADES[phase]));
       if (state.debug) drawDebug(frame, view, state);
+    },
+
+    warm() { staticCache ??= buildStaticCache(); },
+
+    cachedBytes() { return (staticCache?.data.byteLength ?? 0) + shadowMask.byteLength + lighting.bytes(); },
+
+    release() {
+      staticCache = null;
+      shadowMask = new Uint8Array(0);
+      lighting.release();
     },
 
     timeKey(state) {

@@ -48,10 +48,72 @@ function sphereLight(nx: number, ny: number): number {
 }
 
 /**
+ * A leaf drawing as numbers: the digit at each pixel (relative tone), or -1 where the leaf is clear.
+ * `w` is the first row's length (the leaf's width for centring and flipping, as drawn); `stride` the
+ * longest row's, so a ragged row still draws all its pixels.
+ */
+type LeafGrid = { w: number; h: number; stride: number; tone: Int8Array };
+const leafGrids = new WeakMap<readonly string[], LeafGrid>();
+function leafGrid(leaf: readonly string[]): LeafGrid {
+  let grid = leafGrids.get(leaf);
+  if (!grid) {
+    const w = leaf[0].length, h = leaf.length, stride = Math.max(...leaf.map((row) => row.length)), tone = new Int8Array(stride * h).fill(-1);
+    for (let rj = 0; rj < h; rj++) for (let ri = 0; ri < leaf[rj].length; ri++) if (leaf[rj][ri] !== ".") tone[rj * stride + ri] = Number(leaf[rj][ri]);
+    leafGrids.set(leaf, grid = { w, h, stride, tone });
+  }
+  return grid;
+}
+
+/** The clump-ownership sentinel: no clump has drawn this pixel yet. */
+const NO_OWNER = -2147483648;
+
+/**
+ * Scratch grids shared by every `canopy` call, grown as needed. `owner` and `state` are valid only
+ * where their generation stamp is the current call's, so nothing is cleared between calls; `cell`
+ * and `final` are zeroed as they are used.
+ */
+let scratchGen = 0;
+let scratchBuffers = makeScratch(0);
+function makeScratch(size: number) {
+  return {
+    size,
+    owner: new Int32Array(size), ownerGen: new Int32Array(size), cell: new Int16Array(size), order: new Int32Array(size),
+    state: new Int8Array(size), stateGen: new Int32Array(size), final: new Int16Array(size), written: new Int32Array(size),
+  };
+}
+function scratch(size: number) {
+  if (scratchBuffers.size < size) { scratchBuffers = makeScratch(Math.ceil(size * 1.25)); scratchGen = 0; }
+  if (scratchGen >= 0x7ffffff0) { scratchBuffers.ownerGen.fill(0); scratchBuffers.stateGen.fill(0); scratchGen = 0; }
+  return scratchBuffers;
+}
+
+/**
+ * Each clump's cells (x before its sway shift, y, colour index), in the order first set. They do not
+ * depend on the wind (`dx` only shifts them), so a tree's sway frames, baked one after another,
+ * share them: keyed by everything else the cells do depend on, the last few kept.
+ */
+type ClumpCells = { x: Int32Array; y: Int32Array; color: Int16Array };
+const cellCache = new Map<string, ClumpCells[]>();
+const CELL_CACHE_SIZE = 6;
+function canopyKey(clumps: readonly Clump[], foliage: Foliage, crown: Ellipse, seed: number): string {
+  const parts: (string | number)[] = [seed, crown.x, crown.y, crown.rx, crown.ry, foliage.ramp.join(","), foliage.step.join(","), foliage.outlineLeaves ? 1 : 0,
+    foliage.odd ? `${foliage.odd.ramp.join(",")}@${foliage.odd.chance}` : "-", foliage.leaves.map((l) => l.join("/")).join("|")];
+  for (const c of clumps) {
+    const m = c.mass;
+    parts.push(c.x, c.y, c.rx, c.ry, c.shift ?? "", c.seed ?? "", c.group ?? "", m ? `${m.x},${m.y},${m.rx},${m.ry}` : "");
+  }
+  return parts.join(";");
+}
+
+/**
  * Draw foliage clumps back to front. Each clump is shaded as a ball within the crown (`crown`, the
  * whole canopy's ellipse, darkens the underside and lights the upper-left), gets a scalloped rim
  * from the leaves that overhang it, and cuts a dark seam into the clumps already drawn behind it.
  * `dx` shifts clumps sideways by their `sway` for a wind frame.
+ *
+ * Ticket 0203 made this fast without changing a pixel: the per-clump cells and the crown's owners
+ * live in typed grids over the crown's bounds (with an insertion-order list standing in for a Map's
+ * order), leaf drawings are parsed once, and nothing is allocated per pixel.
  */
 export function canopy(
   p: Px, clumps: readonly Clump[], foliage: Foliage,
@@ -60,12 +122,58 @@ export function canopy(
   const { ramp, leaves, step } = foliage;
   const n = ramp.length;
   const seed = options.seed ?? 1;
-  // Which group drew each pixel: clumps of one mass melt together, masses cut seams into each other.
-  const owner = new Map<number, number>();
+  const odd = foliage.odd;
+  // Colours by index: the ramp, then the off-colour ramp.
+  const colors: Color[] = odd ? [...ramp, ...odd.ramp] : [...ramp];
+  const grids = leaves.map(leafGrid);
+  let leafW = 1, leafH = 1;
+  for (const g of grids) { leafW = Math.max(leafW, g.stride); leafH = Math.max(leafH, g.h); }
+  // One grid over every pixel any clump can touch: body, jittered leaves with their outlines, seams.
+  const margin = 8 + Math.max(leafW, leafH);
+  let X0 = Infinity, Y0 = Infinity, X1 = -Infinity, Y1 = -Infinity;
+  for (const c of clumps) {
+    const off = Math.round((c.sway ?? 0) * (options.dx ?? 0));
+    X0 = Math.min(X0, Math.floor(c.x - c.rx) + off - margin); X1 = Math.max(X1, Math.ceil(c.x + c.rx) + off + margin);
+    Y0 = Math.min(Y0, Math.floor(c.y - c.ry) - margin); Y1 = Math.max(Y1, Math.ceil(c.y + c.ry) + margin);
+  }
+  if (!clumps.length) return p;
+  const GW = X1 - X0 + 1, GH = Y1 - Y0 + 1;
+  const at = (x: number, y: number) => {
+    const gx = x - X0, gy = y - Y0;
+    if (gx < 0 || gy < 0 || gx >= GW || gy >= GH) throw new Error(`canopy: pixel ${x},${y} outside its grid`);
+    return gy * GW + gx;
+  };
+  const { owner, ownerGen, cell, order, state, stateGen, final, written } = scratch(GW * GH);
+  const gen = ++scratchGen;
+  // Which group drew each pixel (valid where `ownerGen` is this call's): clumps of one mass melt
+  // together, masses cut seams into each other.
+  const ownerOf = (i: number) => (ownerGen[i] === gen ? owner[i] : NO_OWNER);
+  // This clump's cells: colour index + 1 (0 = none), and the order they were first set in.
+  let count = 0;
+  const set = (x: number, y: number, color: number) => {
+    const i = at(x, y);
+    if (!cell[i]) order[count++] = i;
+    cell[i] = color + 1;
+  };
+  const seamAt: number[] = [], seamColor: number[] = [];
+  // Overdraw resolved here, each pixel written to `p` once at the end: what `p` held before
+  // (-2 not looked at yet, -1 outside the clip, 0 transparent, 1 art), and the last colour written
+  // (index + 1, 0 = never), with the order pixels were first written in.
+  let writes = 0;
+  const stateAt = (i: number) => {
+    if (stateGen[i] !== gen) { stateGen[i] = gen; state[i] = p.peek((i % GW) + X0, Math.floor(i / GW) + Y0); }
+    return state[i];
+  };
+  const write = (i: number, color: number) => {
+    if (!final[i]) written[writes++] = i;
+    final[i] = color + 1;
+    state[i] = 1;
+  };
+  const mode = p.drawMode;
   // Value structure per mass: a yellow-green rim on its sunny upper left (the ramp's last tone,
   // used nowhere else), a mid body, and a dark underside; the whole crown darkens to the lower right.
   const body = n - 2; // highest tone a leaf may take away from the rim
-  const light = (c: Clump, x: number, y: number) => {
+  const toneAt = (c: Clump, x: number, y: number): number => {
     const m = c.mass ?? c;
     const mu = (x - m.x) / m.rx, mv = (y - m.y) / m.ry;
     const local = sphereLight((x - c.x) / c.rx, (y - c.y) / c.ry);
@@ -74,32 +182,38 @@ export function canopy(
     let t = 0.2 * local + 0.5 * massL + 0.3 * global + (c.shift ?? 0) * 0.12;
     if (mv > 0.3) t -= (mv - 0.3) * 0.55;
     const rim = (c.shift ?? 0) >= 0 && mu * mu + mv * mv > 0.55 && mu * 0.55 + mv * 0.85 < -0.5 && global > 0.35;
-    return { t: clamp(t, 0, 0.999), rim };
-  };
-  const toneAt = (c: Clump, x: number, y: number) => {
-    const { t, rim } = light(c, x, y);
+    t = clamp(t, 0, 0.999);
     return rim ? n - 1 : clamp(1 + Math.floor(Math.pow(t, 1.15) * body * 1.08), 1, body);
   };
-  clumps.forEach((c, ci) => {
+  const [sx, sy] = step;
+  const cacheKey = canopyKey(clumps, foliage, crown, seed);
+  const cached = cellCache.get(cacheKey);
+  const recorded: ClumpCells[] = [];
+  for (let ci = 0; ci < clumps.length; ci++) {
+    const c = clumps[ci];
     const off = Math.round((c.sway ?? 0) * (options.dx ?? 0));
     const cs = (c.seed ?? ci * 31) + seed * 977;
-    const cells = new Map<number, Color>();
-    const key = (x: number, y: number) => (y + 512) * 4096 + (x + 512);
+    count = 0;
+    const known = cached?.[ci];
+    if (known) {
+      // Recorded cells are already unique: no first-set check needed.
+      const kx = known.x, ky = known.y, kc = known.color;
+      for (let k = 0; k < kx.length; k++) { const i = at(kx[k] + off, ky[k]); order[count++] = i; cell[i] = kc[k] + 1; }
+    } else {
     // Body: a step darker than the leaves, so gaps read as depth.
     for (let y = Math.floor(c.y - c.ry); y <= Math.ceil(c.y + c.ry); y++)
       for (let x = Math.floor(c.x - c.rx); x <= Math.ceil(c.x + c.rx); x++) {
         const u = (x + 0.5 - c.x) / (c.rx - 0.5), v = (y + 0.5 - c.y) / (c.ry - 0.5);
         if (u * u + v * v > 1) continue;
-        cells.set(key(x + off, y), ramp[Math.max(1, Math.min(body, toneAt(c, x, y)) - 1)]);
+        set(x + off, y, Math.max(1, Math.min(body, toneAt(c, x, y)) - 1));
       }
     // Leaves on a jittered grid, local to the clump so the texture rides along when it sways.
-    const [sx, sy] = step;
     for (let j = -1, gy = c.y - c.ry - 2; gy <= c.y + c.ry + 1; j++, gy += sy)
       for (let gx = c.x - c.rx - 3 + ((j & 1) ? sx / 2 : 0); gx <= c.x + c.rx + 1; gx += sx) {
         const lx = Math.round(gx - c.x), ly = Math.round(gy - c.y);
         const h = hash(lx, ly, cs);
-        const leaf = leaves[Math.floor(hash(ly, lx, cs + 5) * leaves.length)];
-        const lw = leaf[0].length, lh = leaf.length;
+        const leaf = grids[Math.floor(hash(ly, lx, cs + 5) * grids.length)];
+        const lw = leaf.w, lh = leaf.h, ls = leaf.stride, lt = leaf.tone;
         const x0 = Math.round(gx + (hash(lx, ly, cs + 1) - 0.5) * 2), y0 = Math.round(gy + (hash(lx, ly, cs + 2) - 0.5) * 2);
         const cx = x0 + lw / 2, cy = y0 + lh / 2;
         const u = (cx - c.x) / c.rx, v = (cy - c.y) / c.ry;
@@ -107,40 +221,61 @@ export function canopy(
         const base = toneAt(c, cx, cy);
         const tone = base - (h < 0.06 ? 1 : 0);
         const cap = base === n - 1 ? n - 1 : body;
-        const odd = foliage.odd && hash(lx, ly, cs + 9) < foliage.odd.chance ? foliage.odd.ramp : null;
+        const oddLeaf = odd && hash(lx, ly, cs + 9) < odd.chance;
         const flip = hash(lx, ly, cs + 3) < 0.5;
         if (foliage.outlineLeaves) {
-          const on = (ri: number, rj: number) => rj >= 0 && rj < lh && ri >= 0 && ri < lw && leaf[rj][ri] !== undefined && leaf[rj][ri] !== ".";
+          const ring = Math.max(0, Math.min(1, base - 3));
           for (let rj = -1; rj <= lh; rj++) for (let ri = -1; ri <= lw; ri++) {
-            if (on(ri, rj)) continue;
-            if (on(ri + 1, rj) || on(ri - 1, rj) || on(ri, rj + 1) || on(ri, rj - 1))
-              cells.set(key(x0 + (flip ? lw - 1 - ri : ri) + off, y0 + rj), ramp[Math.max(0, Math.min(1, base - 3))]);
+            if (rj >= 0 && rj < lh && ri >= 0 && ri < lw && lt[rj * ls + ri] >= 0) continue;
+            const on = (i: number, k: number) => k >= 0 && k < lh && i >= 0 && i < lw && lt[k * ls + i] >= 0;
+            if (on(ri + 1, rj) || on(ri - 1, rj) || on(ri, rj + 1) || on(ri, rj - 1)) set(x0 + (flip ? lw - 1 - ri : ri) + off, y0 + rj, ring);
           }
         }
-        leaf.forEach((row, rj) => {
-          for (let ri = 0; ri < row.length; ri++) {
-            const ch = row[ri];
-            if (ch === ".") continue;
-            const t = clamp(tone + Number(ch) - 2, 1, cap);
-            const color = odd ? odd[clamp(t - 1, 0, odd.length - 1)] : ramp[t];
-            cells.set(key(x0 + (flip ? lw - 1 - ri : ri) + off, y0 + rj), color);
-          }
-        });
+        for (let rj = 0; rj < lh; rj++) for (let ri = 0; ri < ls; ri++) {
+          const d = lt[rj * ls + ri];
+          if (d < 0) continue;
+          const t = clamp(tone + d - 2, 1, cap);
+          set(x0 + (flip ? lw - 1 - ri : ri) + off, y0 + rj, oddLeaf ? n + clamp(t - 1, 0, odd.ramp.length - 1) : t);
+        }
       }
+    const cells: ClumpCells = { x: new Int32Array(count), y: new Int32Array(count), color: new Int16Array(count) };
+    for (let k = 0; k < count; k++) {
+      const i = order[k];
+      cells.x[k] = (i % GW) + X0 - off; cells.y[k] = Math.floor(i / GW) + Y0; cells.color[k] = cell[i] - 1;
+    }
+    recorded.push(cells);
+    }
     // The seam: where this clump overlaps the ones behind, a dark rim on its lower right, a softer
     // one on its upper left. Only over existing art, so the silhouette is left to the final outline.
     const group = c.group ?? -1 - ci;
-    const seams: [number, number, Color][] = [];
-    for (const k of cells.keys()) {
-      const x = (k % 4096) - 512, y = Math.floor(k / 4096) - 512;
-      for (const [dx, dy] of [[1, 0], [0, 1], [-1, 0], [0, -1]] as const) {
-        const nk = key(x + dx, y + dy);
-        if (!cells.has(nk) && owner.get(nk) !== group) seams.push([x + dx, y + dy, dx + dy > 0 ? ramp[0] : ramp[1]]);
+    seamAt.length = 0; seamColor.length = 0;
+    for (let k = 0; k < count; k++) {
+      const i = order[k];
+      for (let d = 0; d < 4; d++) {
+        const dx = d === 0 ? 1 : d === 2 ? -1 : 0, dy = d === 1 ? 1 : d === 3 ? -1 : 0;
+        const ni = i + dy * GW + dx;
+        if (!cell[ni] && ownerOf(ni) !== group) { seamAt.push(ni); seamColor.push(dx + dy > 0 ? 0 : 1); }
       }
     }
-    p.over(() => { for (const [x, y, col] of seams) p.px(x, y, col); });
-    for (const [k, col] of cells) { p.px((k % 4096) - 512, Math.floor(k / 4096) - 512, col); owner.set(k, group); }
-  });
+    // Seams land only on art (as `p.over` would); then the clump's cells, in the caller's mode.
+    for (let k = 0; k < seamAt.length; k++) if (stateAt(seamAt[k]) === 1) write(seamAt[k], seamColor[k]);
+    for (let k = 0; k < count; k++) {
+      const i = order[k], st = stateAt(i);
+      if (st >= 0 && (mode === "normal" || (mode === "over" ? st === 1 : st === 0))) write(i, cell[i] - 1);
+      owner[i] = group;
+      ownerGen[i] = gen;
+      cell[i] = 0;
+    }
+  }
+  if (!cached) {
+    cellCache.set(cacheKey, recorded);
+    if (cellCache.size > CELL_CACHE_SIZE) cellCache.delete(cellCache.keys().next().value!);
+  }
+  for (let k = 0; k < writes; k++) {
+    const i = written[k];
+    p.put((i % GW) + X0, Math.floor(i / GW) + Y0, colors[final[i] - 1]);
+    final[i] = 0;
+  }
   return p;
 }
 
