@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { TILE as T } from "../kit/index.ts";
 import { createAtlas } from "./atlas.ts";
 import { hashFrame } from "./frame.ts";
-import { bakeFrame, createIdleQueue, sceneSprites, unbakedFrames, type IdleDeadline } from "./prebake.ts";
+import { bakeFrame, createIdleQueue, releaseScenes, sceneSprites, unbakedFrames, type IdleDeadline } from "./prebake.ts";
 import { createSceneRenderer, renderToFrame } from "./renderer.ts";
 import { defineScene } from "./scene.ts";
 import { testSprites } from "./test-sprites.ts";
@@ -99,5 +99,59 @@ describe("pre-baked frames", () => {
     red.adopt(0, new Uint8ClampedArray(red.w * red.h * 4));
     expect(red.frame(0)).toBe(first);
     expect(red.baked(0)).toBe(true);
+  });
+});
+
+describe("releasing scenes the player has left", () => {
+  const room = (id: string, props: { sprite: string; at: readonly [number, number] }[]) => defineScene({
+    id, size: [3, 3], background: "ink",
+    layers: [{ rows: ["aaa", "aaa", "aaa"], legend: { a: "t/floor-a" } }],
+    props: props.map((p) => ({ ...p, at: [p.at[0], p.at[1]] as const })),
+    lights: [{ kind: "glow", at: [1.5, 1.5], radius: 1.5 }],
+  });
+  const view = { x: 0, y: 0, w: 3 * T, h: 3 * T };
+  const state = { time: 0, phase: "night" as const };
+
+  it("drops only what no kept scene draws, frees the floor cache, and redraws identically later", () => {
+    const atlas = createAtlas(testSprites);
+    // Both rooms share the floor; only the away room has the lamp and the blue box.
+    const here = createSceneRenderer(room("here", [{ sprite: "t/red", at: [1, 1] }]), atlas);
+    const away = createSceneRenderer(room("away", [{ sprite: "t/lamp", at: [1, 1] }, { sprite: "t/blue", at: [2, 2] }, { sprite: "t/red", at: [2, 1] }]), atlas);
+    renderToFrame(here, view, state);
+    const before = hashFrame(renderToFrame(away, view, state));
+    const bytes = atlas.bakedBytes() + away.cachedBytes();
+    expect(away.cachedBytes()).toBeGreaterThan(0);
+
+    const freed = releaseScenes([here.compiled], [away]);
+    expect(freed).toBeGreaterThan(0);
+    expect(atlas.bakedBytes() + away.cachedBytes()).toBe(bytes - freed);
+    expect(away.cachedBytes()).toBe(0);
+    expect(atlas.get("t/lamp").baked(0)).toBe(false);
+    expect(atlas.get("t/blue").baked(0)).toBe(false);
+    expect(atlas.get("t/red").baked(0)).toBe(true); // the room the player is in still draws it
+    expect(atlas.get("t/floor-a").baked(0)).toBe(true);
+
+    expect(hashFrame(renderToFrame(away, view, state))).toBe(before);
+    expect(atlas.get("t/lamp").baked(0)).toBe(true);
+  });
+
+  it("never touches sprites outside every scene (characters)", () => {
+    const atlas = createAtlas(testSprites);
+    const away = createSceneRenderer(room("away", [{ sprite: "t/blue", at: [2, 2] }]), atlas);
+    renderToFrame(away, view, { ...state, actors: [{ id: "c", sprite: "char/cook", at: [1, 2] }] });
+    const cook = atlas.get("char/cook/idle-down");
+    expect(cook.baked(0)).toBe(true);
+    releaseScenes([], [away]);
+    expect(cook.baked(0)).toBe(true);
+    expect(atlas.get("t/blue").baked(0)).toBe(false);
+  });
+
+  it("counts a sprite's bytes and frees them all on release", () => {
+    const atlas = createAtlas(testSprites), half = atlas.get("t/half");
+    half.frame(0); half.frame(0, true);
+    expect(half.bytes()).toBe(half.w * half.h * 4 * 2);
+    expect(half.release()).toBe(half.w * half.h * 4 * 2);
+    expect(half.bytes()).toBe(0);
+    expect(half.baked(0)).toBe(false);
   });
 });

@@ -377,6 +377,16 @@ export function createLighting(lights: readonly CompiledLight[], ambientByPhase:
         }
       }
     },
+    /** Bytes held by the per-view light buffers. */
+    bytes(): number {
+      return lr.byteLength * 3 + hr.byteLength * 3 + spanFrom.byteLength * 2;
+    },
+    /** Drop the per-view light buffers (a map the player has left); `apply` makes them again. */
+    release(): void {
+      lr = new Float32Array(0); lg = new Float32Array(0); lb = new Float32Array(0);
+      hr = new Float32Array(0); hg = new Float32Array(0); hb = new Float32Array(0);
+      spanFrom = new Int32Array(0); spanTo = new Int32Array(0);
+    },
     /** A number that changes whenever flicker or motes would draw differently. */
     key(phase: DayPhase, time: number, frozen: boolean): number {
       let h = 0;

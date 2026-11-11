@@ -45,6 +45,10 @@ export type SceneRenderer = {
   timeKey(state: FrameState): number;
   /** Build the cached static floor now (it bakes the floor's sprites) rather than on the first frame. */
   warm(): void;
+  /** Bytes held by the cached static floor and the per-view buffers. */
+  cachedBytes(): number;
+  /** Drop the cached static floor and per-view buffers; they are rebuilt on the next frame. */
+  release(): void;
   /** Scene colliders plus any run-time props', tile units. */
   colliders(props?: readonly Prop[]): Rect[];
 };
@@ -235,6 +239,14 @@ export function createSceneRenderer(scene: Scene, atlas: Atlas, options: Rendere
     },
 
     warm() { staticCache ??= buildStaticCache(); },
+
+    cachedBytes() { return (staticCache?.data.byteLength ?? 0) + shadowMask.byteLength + lighting.bytes(); },
+
+    release() {
+      staticCache = null;
+      shadowMask = new Uint8Array(0);
+      lighting.release();
+    },
 
     timeKey(state) {
       const time = state.time;

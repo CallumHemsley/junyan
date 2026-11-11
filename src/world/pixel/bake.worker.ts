@@ -14,7 +14,7 @@ self.onmessage = (event: MessageEvent<BakeJob>) => {
     if (!def) continue;
     for (const index of frames) {
       const data = bakeFrame(def, index);
-      (self as unknown as Worker).postMessage({ id, index, data }, [data.buffer]);
+      (self as unknown as Worker).postMessage({ map, id, index, data }, [data.buffer]);
     }
   }
   (self as unknown as Worker).postMessage({ map, done: true });
