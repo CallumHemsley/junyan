@@ -190,11 +190,17 @@ const carrying = (frames: HeroFrame[]): HeroFrame[] => frames.map((f) => ({ ...f
 const WALK: Record<Drawn, HeroFrame[]> = { down: WALK_DOWN, up: WALK_UP, right: WALK_RIGHT };
 const IDLE: Record<Drawn, HeroFrame[]> = { down: idle("down"), up: idle("up"), right: idle("right") };
 
-export const HERO_ACTIONS: Record<HeroAction, { fps: number; frames: Record<Drawn, HeroFrame[]> }> = {
+/**
+ * Tiles walked per frame when the engine steps a walk by distance (`SpriteDef.stride`): the 8-frame
+ * cycle at the waiter's 3.2 tiles/s then plays in its designed 0.8 s (the 4-frame cast keeps 0.375).
+ */
+export const HERO_STRIDE = 0.32;
+
+export const HERO_ACTIONS: Record<HeroAction, { fps: number; stride?: number; frames: Record<Drawn, HeroFrame[]> }> = {
   idle: { fps: 5, frames: IDLE },
-  walk: { fps: 10, frames: WALK },
+  walk: { fps: 10, stride: HERO_STRIDE, frames: WALK },
   "carry-idle": { fps: 5, frames: { down: carrying(IDLE.down), up: carrying(IDLE.up), right: carrying(IDLE.right) } },
-  "carry-walk": { fps: 10, frames: { down: carrying(WALK.down), up: carrying(WALK.up), right: carrying(WALK.right) } },
+  "carry-walk": { fps: 10, stride: HERO_STRIDE, frames: { down: carrying(WALK.down), up: carrying(WALK.up), right: carrying(WALK.right) } },
 };
 
 /**

@@ -155,6 +155,7 @@ for (const [foodId, dish] of Object.entries(CARRIED_DISHES)) {
       anchor: [(CARRIED_BOX.w - 1) / 2, BASE],
       frames: bob.length,
       fps: HERO_ACTIONS[action].fps,
+      ...(HERO_ACTIONS[action].stride ? { stride: HERO_ACTIONS[action].stride } : {}),
       draw: (p, frame) => drawDish(p, dish, bob[frame]),
     };
   }

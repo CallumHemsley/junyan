@@ -18,10 +18,10 @@ import { HERO_ACTIONS, type HeroAction } from "./_hero-poses.ts";
 import { DIRS, PERSON } from "./_rig.ts";
 
 const sprites: SpriteSet = {};
-for (const [action, { fps, frames }] of Object.entries(HERO_ACTIONS) as [HeroAction, (typeof HERO_ACTIONS)[HeroAction]][]) {
+for (const [action, { fps, stride, frames }] of Object.entries(HERO_ACTIONS) as [HeroAction, (typeof HERO_ACTIONS)[HeroAction]][]) {
   for (const dir of DIRS) {
     const poses = frames[dir === "left" ? "right" : dir];
-    sprites[`char/player/${action}-${dir}`] = { ...PERSON, frames: poses.length, fps, draw: (p, i) => drawHero(p, poses[i], dir) };
+    sprites[`char/player/${action}-${dir}`] = { ...PERSON, frames: poses.length, fps, ...(stride ? { stride } : {}), draw: (p, i) => drawHero(p, poses[i], dir) };
   }
 }
 
