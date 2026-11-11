@@ -43,11 +43,26 @@ export function signRect(p: RawProp): Rect {
 /** A prop's optional ground shade (`<map>/<id>-shade`, trees ship one), on the floor at the same anchor. */
 export const shadeSpriteId = (mapId: string, propId: string) => `${propSpriteId(mapId, propId)}-shade`;
 
+/**
+ * A mat lying on something (the hall bench's cushion) sorts just in front of it, so the bench never
+ * hides it: the object prop whose footprint holds the mat's.
+ */
+function restsOn(map: OutdoorMap, p: RawProp): number | undefined {
+  if (p.kind !== "mat" || p.layer === "ground") return undefined;
+  const host = map.props.find((o) => o !== p && o.kind !== "mat" && o.layer !== "ground"
+    && o.position.x <= p.position.x && o.position.y <= p.position.y
+    && o.position.x + o.width >= p.position.x + p.width && o.position.y + o.height >= p.position.y + p.height);
+  return host ? propAnchor(host)[1] + 1 / 32 : undefined;
+}
+
 function props(map: OutdoorMap): Prop[] {
-  return map.props.flatMap((p): Prop[] => [
-    { id: `${p.id}-shade`, sprite: shadeSpriteId(map.id, p.id), at: propAnchor(p), layer: "floor", solid: false, optional: true },
-    { id: p.id, sprite: propSpriteId(map.id, p.id), at: propAnchor(p), layer: layerOf(p), solid: false },
-  ]);
+  return map.props.flatMap((p): Prop[] => {
+    const sortY = restsOn(map, p);
+    return [
+      { id: `${p.id}-shade`, sprite: shadeSpriteId(map.id, p.id), at: propAnchor(p), layer: "floor", solid: false, optional: true },
+      { id: p.id, sprite: propSpriteId(map.id, p.id), at: propAnchor(p), layer: layerOf(p), solid: false, ...(sortY !== undefined ? { sortY } : {}) },
+    ];
+  });
 }
 
 /** Lamps inside a map, at the points its art publishes (bulb or dial, tile units): lit all day. */

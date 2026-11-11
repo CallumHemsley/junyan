@@ -86,8 +86,8 @@ function parcel(p: Px, w: number, h: number, kind: number): void {
 /** A mat by kind: the bench's patchwork cushion (hall), a towelling bath mat, the tea corner's big rug. */
 function mat(p: Px, w: number, h: number, prop: MapProp): void {
   if (prop.map === "residential-hall") {
-    // A patchwork cushion on the bench, its seat 18 px up.
-    const y = h - 1 - 22;
+    // A patchwork cushion on the bench's seat (the scene sorts it just in front of the bench).
+    const y = h - 1 - 10;
     const patches: Color[] = ["blue4", "pink3", "jade4", "gold4", "plum3", "cream4"];
     for (let i = 0; i < Math.floor(w / 8); i++) p.rect(i * 8 + 1, y, 8, 8, patches[i % patches.length]);
     p.hline(1, y, w - 2, "white").hline(1, y + 7, w - 2, "steel2");
@@ -422,6 +422,27 @@ function furnishingSprites(): Record<string, SpriteDef> {
   return out;
 }
 
+/**
+ * The outline of a furnishing's cells while it is being placed: a thin warm cream frame with corner
+ * marks where it can go, a broken cool grey one where it cannot. Never red, never green.
+ */
+function placementOutline(p: Px, w: number, h: number, valid: boolean): void {
+  const line: Color = valid ? "cream5" : "steel3", under: Color = valid ? "cream2" : "steel1";
+  const on = (k: number) => valid || Math.floor(k / 6) % 2 === 0;
+  for (let x = 2; x < w - 2; x++) { if (on(x)) { p.px(x, 2, line).px(x, h - 3, line); p.px(x, 3, under).px(x, h - 2, under); } }
+  for (let y = 2; y < h - 2; y++) { if (on(y)) { p.px(2, y, line).px(w - 3, y, line); p.px(3, y, under).px(w - 2, y, under); } }
+  if (valid) for (const [cx, cy] of [[2, 2], [w - 7, 2], [2, h - 7], [w - 7, h - 7]] as const) { p.rect(cx, cy, 5, 2, line); p.rect(cx, cy, 2, 5, line); }
+}
+
+function outlineSprites(): Record<string, SpriteDef> {
+  const out: Record<string, SpriteDef> = {};
+  for (const cw of [1, 2]) for (const ch of [1, 2]) for (const valid of [true, false]) {
+    const w = cw * 2 * TILE, h = ch * 2 * TILE;
+    out[`apartment/furniture-outline.${cw}x${ch}.${valid ? "valid" : "blocked"}`] = { w, h, anchor: [w / 2, h - 1], layer: "floor", draw: (p) => placementOutline(p, w, h, valid) };
+  }
+  return out;
+}
+
 // ── sprites ─────────────────────────────────────────────────────────────────
 
 export default defineSprites(Object.fromEntries([
@@ -441,4 +462,5 @@ export default defineSprites(Object.fromEntries([
   ...props("coat-hook").map((p) => [propSpriteId(p.map, p.id), sprite(p, 30, (q, w, h) => coatHook(q, w, h))] as const),
   ...props("sunlight").map((p) => [propSpriteId(p.map, p.id), sprite(p, 0, (q, w, h) => sunlight(q, w, h), { layer: "floor" })] as const),
   ...Object.entries(furnishingSprites()),
+  ...Object.entries(outlineSprites()),
 ]));

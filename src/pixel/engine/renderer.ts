@@ -17,9 +17,9 @@ import { frameAt, type Atlas } from "./atlas.ts";
 import { rgbOf } from "./color.ts";
 import { blit, copyRegion, createFrame, packRgb, type Frame } from "./frame.ts";
 import { GRADES, applyGradeLut, gradeLut, type ContactShadow } from "./grade.ts";
-import { createLighting } from "./light.ts";
+import { compileLight, createLighting, type CompiledLight } from "./light.ts";
 import { compileScene, placeProp, propCollider, type CompiledScene, type Placed } from "./scene.ts";
-import type { Actor, DayPhase, FrameState, Prop, Rect, Rgb, Scene } from "./types.ts";
+import type { Actor, DayPhase, FrameState, Light, Prop, Rect, Rgb, Scene } from "./types.ts";
 
 /** Ungraded contact shadow: plum, two stepped opacities (core, rim), 0..255, round. */
 const PLAIN_SHADOW: ContactShadow = { color: "plum1", core: 82, rim: 44, stretch: 1, shift: 0 };
@@ -55,6 +55,12 @@ export function createSceneRenderer(scene: Scene, atlas: Atlas, options: Rendere
     ? { morning: GRADES.morning.ambient, midday: GRADES.midday.ambient, evening: GRADES.evening.ambient, night: GRADES.night.ambient, ...scene.ambient }
     : compiled.ambient;
   const lighting = createLighting(compiled.lights, ambient, graded ? GRADES : undefined);
+  // Run-time lights (FrameState.lights), compiled once per array.
+  let extraSource: readonly Light[] | undefined, extraLights: CompiledLight[] = [];
+  const runtimeLights = (lights: readonly Light[] | undefined) => {
+    if (lights !== extraSource) { extraSource = lights; extraLights = (lights ?? []).map((l, i) => compileLight(l, 1000 + i)); }
+    return extraLights;
+  };
   const shadowFor = (phase: DayPhase) => (graded ? GRADES[phase].shadow : PLAIN_SHADOW);
   const shadowRgbs = new Map<string, Rgb>();
   let shadowStyle = PLAIN_SHADOW, shadowRgb = rgbOf(PLAIN_SHADOW.color);
@@ -227,7 +233,7 @@ export function createSceneRenderer(scene: Scene, atlas: Atlas, options: Rendere
         if (placed.layer === "over") draw(frame, view, placed, frameOf(placed, time));
       }
 
-      lighting.apply(frame, view.x, view.y, phase, time, !!state.reducedMotion);
+      lighting.apply(frame, view.x, view.y, phase, time, !!state.reducedMotion, runtimeLights(state.lights));
       if (graded) applyGradeLut(frame, gradeLut(GRADES[phase]));
       if (state.debug) drawDebug(frame, view, state);
     },

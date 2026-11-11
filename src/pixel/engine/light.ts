@@ -228,6 +228,13 @@ function compileHalo(light: CompiledLight): Halo | null {
  * floor instead of black, glows take the grade's gain, and small glows get an additive halo.
  * Without it the output is exactly the ungraded light.
  */
+/** Halos of run-time lights, made once per compiled light. */
+const extraHalos = new WeakMap<CompiledLight, Halo | null>();
+function haloOf(light: CompiledLight): Halo | null {
+  if (!extraHalos.has(light)) extraHalos.set(light, compileHalo(light));
+  return extraHalos.get(light)!;
+}
+
 export function createLighting(lights: readonly CompiledLight[], ambientByPhase: Record<DayPhase, Rgb>, grades?: Record<DayPhase, Grade>) {
   let lr = new Float32Array(0), lg = new Float32Array(0), lb = new Float32Array(0);
   // Graded only: additive halo light, summed before the shoulder so it rolls off with everything else.
@@ -256,7 +263,7 @@ export function createLighting(lights: readonly CompiledLight[], ambientByPhase:
 
   return {
     /** Light `frame`, whose top-left is world px (vx, vy). */
-    apply(frame: Frame, vx: number, vy: number, phase: DayPhase, time: number, frozen: boolean): void {
+    apply(frame: Frame, vx: number, vy: number, phase: DayPhase, time: number, frozen: boolean, extra: readonly CompiledLight[] = []): void {
       const n = frame.w * frame.h, W = frame.w, H = frame.h;
       if (lr.length !== n) { lr = new Float32Array(n); lg = new Float32Array(n); lb = new Float32Array(n); }
       if (grades && hr.length !== n) { hr = new Float32Array(n); hg = new Float32Array(n); hb = new Float32Array(n); }
@@ -267,7 +274,7 @@ export function createLighting(lights: readonly CompiledLight[], ambientByPhase:
       const ambientOnly = ar !== 1 || ag !== 1 || ab !== 1 || fr !== 0 || fg !== 0 || fb !== 0;
       const glowGain = grades ? grades[phase].glowGain : GLOW_GAIN[phase];
       let anyLight = false;
-      for (const light of lights) {
+      for (const light of extra.length ? [...lights, ...extra] : lights) {
         if (!isLit(light, phase)) continue;
         const gain = light.kind === "glow" ? glowGain : 1;
         const s = light.strength * gain * flickerAt(light, time, frozen) / 255;
@@ -291,8 +298,10 @@ export function createLighting(lights: readonly CompiledLight[], ambientByPhase:
       }
       // Halos: a small additive bloom round lamp glass and windows, after dark. Inside lit spans
       // (a halo sits inside its own glow's box).
-      const halo = grades ? grades[phase].halo : 0, haloOn = halo > 0 && halos.length > 0;
-      if (haloOn) for (const h of halos) {
+      const halo = grades ? grades[phase].halo : 0;
+      const allHalos = extra.length && grades ? [...halos, ...extra.map(haloOf).filter((h): h is Halo => !!h)] : halos;
+      const haloOn = halo > 0 && allHalos.length > 0;
+      if (haloOn) for (const h of allHalos) {
         if (!isLit(h.light, phase)) continue;
         const s = h.light.strength * halo * HALO_ADD * flickerAt(h.light, time, frozen);
         const [cr, cg, cb] = h.light.color, kr = cr * s, kg = cg * s, kb = cb * s;

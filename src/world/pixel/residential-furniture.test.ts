@@ -4,7 +4,8 @@ import { furnitureProps, furnitureWorldRect } from "../../features/apartment/wor
 import { mapsForNeighbourhood } from "../dynamic";
 import { createGame } from "../../game";
 import { content } from "../../content";
-import { runtimeProps } from "./outdoor";
+import { PREVIEW_OPACITY, previewState, runtimeFade, runtimeLights, runtimeProps } from "./outdoor";
+import { outdoorScene } from "../../pixel/world/scene";
 import apartment from "../maps/residential/apartment.json";
 import residentialSprites from "../../pixel/sprites/life/residential";
 
@@ -41,5 +42,47 @@ describe("owned furnishings in the pixel apartment", () => {
     const ids = maps.apartment!.props.map((p) => p.id);
     expect(ids).toContain("apartment.furniture.small-lamp.r0");
     expect(maps.apartment!.colliders.map((c) => c.id)).toContain("apartment.furniture.small-lamp");
+  });
+
+  it("previews the furnishing being placed at its draft cells, translucent, over an outline that says whether it fits", () => {
+    const base = { placements: [placed("bed", 0, 0)], colour: "blue", rugSize: "small" } as const;
+    const fits = furnitureProps({ ...base, selected: "table", draft: { x: 2, y: 1, rotation: 1 } } as never);
+    const preview = fits.find((p) => p.id.endsWith(".preview"))!, outline = fits.find((p) => p.kind === "furniture-outline")!;
+    expect(preview.id).toBe("apartment.furniture.table.r1.preview");
+    expect({ ...preview.position, width: preview.width, height: preview.height }).toEqual(furnitureWorldRect(placed("table", 2, 1, 1), "small"));
+    expect(outline.id).toBe("apartment.furniture-outline.1x2.valid");
+    expect(previewState(fits as never)).toBe("valid");
+    // The preview draws the table's own sprite, translucent; the outline its own; nothing is solid.
+    const drawn = runtimeProps("apartment", fits as never);
+    expect(drawn.find((p) => p.id === preview.id)!.sprite).toBe("apartment/furniture.table.r1");
+    expect(drawn.find((p) => p.id === outline.id)).toMatchObject({ sprite: "apartment/furniture-outline.1x2.valid", layer: "floor" });
+    expect(runtimeFade(fits as never)).toEqual({ [preview.id]: PREVIEW_OPACITY });
+    for (const id of ["apartment/furniture-outline.1x2.valid", "apartment/furniture-outline.2x2.blocked"]) expect((residentialSprites as Record<string, unknown>)[id], id).toBeDefined();
+    // On the bed it cannot go: the outline says so.
+    const blocked = furnitureProps({ ...base, selected: "table", draft: { x: 0, y: 0, rotation: 0 } } as never);
+    expect(previewState(blocked as never)).toBe("blocked");
+    expect(blocked.find((p) => p.kind === "furniture-outline")!.id).toBe("apartment.furniture-outline.2x1.blocked");
+    // Nothing being placed, nothing previewed.
+    const settled = furnitureProps(base as never);
+    expect(previewState(settled as never)).toBeNull();
+    expect(runtimeFade(settled as never)).toEqual({});
+  });
+
+  it("lights an owned lamp at its bulb where it stands, but not one still being placed", () => {
+    const props = furnitureProps({ placements: [placed("bed", 0, 0), placed("lamp", 3, 0), placed("small-lamp", 4, 2)], colour: "blue", rugSize: "small", selected: "lamp", draft: { x: 2, y: 3, rotation: 0 } } as never);
+    const lights = runtimeLights(props as never);
+    expect(lights).toHaveLength(2);
+    const lamp = furnitureWorldRect(placed("lamp", 3, 0), "small"), small = furnitureWorldRect(placed("small-lamp", 4, 2), "small");
+    expect(lights[0].at[0]).toBe(lamp.x + lamp.width / 2);
+    expect(lights[0].at[1]).toBeLessThan(lamp.y + lamp.height - 2);
+    expect(lights[1].at[0]).toBe(small.x + small.width / 2);
+    expect(lights.every((l) => l.kind === "glow" && l.color === "gold4")).toBe(true);
+  });
+
+  it("sorts the hall bench's cushion just in front of the bench it lies on", () => {
+    const scene = outdoorScene("residential-hall");
+    const cushion = scene.props!.find((p) => p.id === "residential-hall.bench-cushion")!, bench = scene.props!.find((p) => p.id === "residential-hall.bench")!;
+    expect(cushion.sortY).toBeGreaterThan(bench.at[1]);
+    expect(cushion.sortY! - bench.at[1]).toBeLessThan(0.1);
   });
 });

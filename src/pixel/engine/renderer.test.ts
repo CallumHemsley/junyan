@@ -68,6 +68,19 @@ describe("draw order", () => {
     expect(at(draw(room({ props: [bowl, table] })), T, T - 4)).toEqual(rgb("blue3"));
   });
 
+  it("lights run-time lights from state.lights like the scene's own, and only while they are given", () => {
+    const lamp = [{ kind: "glow" as const, at: [2, 2] as const, radius: 1.5, color: "gold4" as const, strength: 0.8 }];
+    const dark = draw(room(), { phase: "night" }), lit = draw(room(), { phase: "night", lights: lamp });
+    const sum = (f: { w: number; data: Uint8ClampedArray }) => at(f, 2 * T, 2 * T).reduce((a, b) => a + b, 0);
+    expect(sum(lit)).toBeGreaterThan(sum(dark) + 20);
+    // A corner far outside the glow is untouched.
+    expect(at(lit, 1, 1)).toEqual(at(dark, 1, 1));
+    // Same renderer, lights withdrawn: back to dark.
+    const renderer = createSceneRenderer(room(), atlas, { grade: false }), view = { x: 0, y: 0, w: 4 * T, h: 4 * T };
+    renderToFrame(renderer, view, { time: 0, phase: "night", lights: lamp });
+    expect(at(renderToFrame(renderer, view, { time: 0, phase: "night" }), 2 * T, 2 * T)).toEqual(at(dark, 2 * T, 2 * T));
+  });
+
   it("draws run-time props like scene props", () => {
     const frame = draw(room(), { props: [{ sprite: "t/red", at: [1, 1] }] });
     expect(at(frame, T, T - 4)).toEqual(rgb("red3"));
