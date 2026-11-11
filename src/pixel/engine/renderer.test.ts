@@ -20,9 +20,12 @@ const room = (extra: Partial<Scene> = {}): Scene => defineScene({
   layers: [{ rows: ["aaaa", "aaaa", "aaaa", "aaaa"], legend: { a: "t/floor-a" } }],
   ...extra,
 });
-/** Midday has an ambient of exactly 1, so with no lights pixels are the art's own colours. */
+/**
+ * Ungraded (`grade: false`, see grade.test.ts for the grade): midday has an ambient of exactly 1, so
+ * with no lights pixels are the art's own colours.
+ */
 const draw = (scene: Scene, state: Partial<FrameState> = {}) =>
-  renderToFrame(createSceneRenderer(scene, atlas), { x: 0, y: 0, w: scene.size[0] * T, h: scene.size[1] * T }, { time: 0, phase: "midday", ...state });
+  renderToFrame(createSceneRenderer(scene, atlas, { grade: false }), { x: 0, y: 0, w: scene.size[0] * T, h: scene.size[1] * T }, { time: 0, phase: "midday", ...state });
 
 describe("draw order", () => {
   it("draws the more southern object over the northern one", () => {
@@ -139,7 +142,7 @@ describe("tile layers", () => {
     });
     expect(compileScene(scene, atlas).staticFloor).toBe(0);
     // The rug covers the water cell's left three quarters; its right quarter shows the water.
-    const renderer = createSceneRenderer(scene, atlas), frame = createFrame(4 * T, 4 * T);
+    const renderer = createSceneRenderer(scene, atlas, { grade: false }), frame = createFrame(4 * T, 4 * T);
     renderer.render(frame, { x: 0, y: 0 }, { time: 0, phase: "midday" });
     expect(at(frame, T - 2, 2)).toEqual(rgb("jade3"));
     expect(at(frame, 3, 3)).toEqual(rgb("red3"));

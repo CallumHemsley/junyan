@@ -2,11 +2,11 @@
  * Render a registered scene to PNG through the same compositor the game uses.
  *
  *   node src/pixel/tools/render-scene.ts <sceneId> [--scale 3] [--time ms] [--phase morning]
- *     [--view WxH] [--focus tx,ty] [--debug] [--reduced-motion] [--strict] [--out file.png]
+ *     [--view WxH] [--focus tx,ty] [--debug] [--reduced-motion] [--strict] [--no-grade] [--out file.png]
  *
  * Without `--view` the whole scene is rendered. `--view` is in art pixels and follows `--focus`
  * (tile units, default the first actor, else the scene centre) with the game camera's clamping.
- * The scene's own `actors` are drawn. Default output: output/pixel/scene-<id>.png
+ * The scene's own `actors` are drawn. `--no-grade` turns the colour grade off (engine `grade: false`). Default output: output/pixel/scene-<id>.png
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
@@ -30,6 +30,7 @@ const outArg = flag("out", "");
 const debug = toggle("debug");
 const reducedMotion = toggle("reduced-motion");
 const strict = toggle("strict");
+const grade = !toggle("no-grade");
 const sceneId = args[0];
 
 if (!sceneId || !scenes[sceneId]) {
@@ -41,7 +42,7 @@ if (!DAY_PHASES.includes(phase)) { console.error(`--phase must be one of ${DAY_P
 const scene = scenes[sceneId];
 // Art still being drawn renders as placeholder boxes, listed once on stderr (`--strict` throws instead).
 const atlas = createAtlas(await loadSprites(), strict ? {} : townPlaceholderOptions((m) => console.warn(m)));
-const renderer = createSceneRenderer(scene, atlas, { warn: (m) => console.warn(m) });
+const renderer = createSceneRenderer(scene, atlas, { warn: (m) => console.warn(m), grade });
 const sceneW = scene.size[0] * TILE, sceneH = scene.size[1] * TILE;
 const [w, h] = viewArg ? viewArg.split("x").map(Number) : [sceneW, sceneH];
 const focus = focusArg ? focusArg.split(",").map(Number) : scene.actors?.[0]?.at ?? [scene.size[0] / 2, scene.size[1] / 2];

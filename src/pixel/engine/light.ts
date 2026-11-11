@@ -7,6 +7,7 @@
 import { TILE, hash } from "../kit/index.ts";
 import { rgbOf } from "./color.ts";
 import type { Frame } from "./frame.ts";
+import type { Grade } from "./grade.ts";
 import type { DayPhase, Light, Rgb } from "./types.ts";
 
 /** Ambient multipliers per phase. The art is drawn for a bright morning, so morning is near 1. */
@@ -28,6 +29,14 @@ const MULTIPLY = 0.5;
 const ADD = 18;
 /** Falloff steps. Fewer is chunkier. */
 const STEPS = 6;
+
+/** Grading only: glows up to this radius (tiles) are sources (lamp glass, a window) and get a halo; wider ones are fill light. */
+const HALO_MAX_RADIUS = 4;
+/** Halo radius as a share of the glow's, clamped to these tile sizes; and its additive strength at full gain. */
+const HALO_SHARE = 0.4, HALO_MIN = 0.5, HALO_MAX = 1.4, HALO_ADD = 0.45;
+
+/** Grading only: how fast light washes out the ambient tint (1 / summed light at which it is gone). */
+const NEUTRALISE = 0.6;
 
 /** Shaft edge softness, in art pixels: three-sixteenths of a tile. */
 const SHAFT_SOFT = Math.max(2, Math.round((TILE * 3) / 16));
@@ -51,6 +60,8 @@ export type CompiledLight = {
   strength: number;
   flicker: number;
   phases: readonly DayPhase[] | undefined;
+  /** Glow geometry (world px): centre, radius, vertical squash. */
+  glow?: { cx: number; cy: number; r: number; aspect: number };
   /** Shaft geometry for dust motes (world px). */
   shaft?: { x0: number; y0: number; width: number; length: number; slant: number; motes: number };
   seed: number;
@@ -79,7 +90,10 @@ export function compileLight(light: Light, index: number): CompiledLight {
       const d = Math.sqrt(dx * dx + dy * dy);
       if (d < 1) mask[j * w + i] = Math.round(quantise((1 - d) ** 1.5, x + i, y + j) * 255);
     }
-    return { kind: "glow", x, y, w, h, mask, color: unit(rgbOf(light.color ?? "gold4")), strength: light.strength ?? 0.6, flicker: light.flicker ?? 0, phases: light.phases, seed: index };
+    return {
+      kind: "glow", x, y, w, h, mask, color: unit(rgbOf(light.color ?? "gold4")), strength: light.strength ?? 0.6, flicker: light.flicker ?? 0,
+      phases: light.phases, glow: { cx, cy, r, aspect }, seed: index,
+    };
   }
   const slant = light.slant ?? 0.5;
   const x0 = Math.round(light.from[0] * TILE), y0 = Math.round(light.from[1] * TILE);
@@ -165,24 +179,49 @@ export function motesAt(light: CompiledLight, time: number, frozen: boolean, out
   return out;
 }
 
+/** A halo mask round a glow source: a small, stepped, additive bloom. */
+type Halo = { light: CompiledLight; x: number; y: number; w: number; h: number; mask: Uint8Array };
+
+function compileHalo(light: CompiledLight): Halo | null {
+  const glow = light.glow;
+  if (!glow || glow.r > HALO_MAX_RADIUS * TILE) return null;
+  const r = Math.min(HALO_MAX * TILE, Math.max(HALO_MIN * TILE, glow.r * HALO_SHARE)), ry = r * glow.aspect;
+  const x = Math.floor(glow.cx - r), y = Math.floor(glow.cy - ry);
+  const w = Math.ceil(glow.cx + r) - x, h = Math.ceil(glow.cy + ry) - y;
+  const mask = new Uint8Array(w * h);
+  for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) {
+    const dx = (x + i + 0.5 - glow.cx) / r, dy = (y + j + 0.5 - glow.cy) / ry;
+    const d = Math.sqrt(dx * dx + dy * dy);
+    if (d < 1) mask[j * w + i] = Math.round(quantise((1 - d) * (1 - d), x + i, y + j) * 255);
+  }
+  return { light, x, y, w, h, mask };
+}
+
 /**
  * Holds the per-viewport light buffers so a frame allocates nothing. Lights only touch the float
  * buffers inside their boxes; each row remembers its lit span, and everything outside the spans
  * takes an integer lookup table for the ambient alone. The buffers are zeroed span by span after
  * use, so they never need a full clear.
+ *
+ * With `grades` (the colour-graded renderer) the ambient darkens towards each phase's coloured
+ * floor instead of black, glows take the grade's gain, and small glows get an additive halo.
+ * Without it the output is exactly the ungraded light.
  */
-export function createLighting(lights: readonly CompiledLight[], ambientByPhase: Record<DayPhase, Rgb>) {
+export function createLighting(lights: readonly CompiledLight[], ambientByPhase: Record<DayPhase, Rgb>, grades?: Record<DayPhase, Grade>) {
   let lr = new Float32Array(0), lg = new Float32Array(0), lb = new Float32Array(0);
   let spanFrom = new Int32Array(0), spanTo = new Int32Array(0);
   const motes: Mote[] = [];
   const moteColor = rgbOf("cream5");
+  const halos = grades ? lights.map(compileHalo).filter((h): h is Halo => !!h) : [];
+  const noFloor: Rgb = [0, 0, 0];
+  const floorOf = (phase: DayPhase) => grades?.[phase].floor ?? noFloor;
   const ambientLut = new Map<DayPhase, [Uint8Array, Uint8Array, Uint8Array]>();
   const lutFor = (phase: DayPhase) => {
     let lut = ambientLut.get(phase);
     if (!lut) {
-      const [ar, ag, ab] = ambientByPhase[phase];
-      const make = (k: number) => Uint8Array.from({ length: 256 }, (_, c) => TONE[Math.min(1023, (c * k) | 0)]);
-      lut = [make(ar), make(ag), make(ab)];
+      const [ar, ag, ab] = ambientByPhase[phase], [fr, fg, fb] = floorOf(phase);
+      const make = (k: number, f: number) => Uint8Array.from({ length: 256 }, (_, c) => TONE[Math.min(1023, (c * k + (f * (255 - c)) / 255) | 0)]);
+      lut = [make(ar, fr), make(ag, fg), make(ab, fb)];
       ambientLut.set(phase, lut);
     }
     return lut;
@@ -195,12 +234,14 @@ export function createLighting(lights: readonly CompiledLight[], ambientByPhase:
       if (lr.length !== n) { lr = new Float32Array(n); lg = new Float32Array(n); lb = new Float32Array(n); }
       if (spanFrom.length !== H) { spanFrom = new Int32Array(H); spanTo = new Int32Array(H); }
       spanFrom.fill(W); spanTo.fill(0);
-      const [ar, ag, ab] = ambientByPhase[phase];
-      const ambientOnly = ar !== 1 || ag !== 1 || ab !== 1;
+      const [ar, ag, ab] = ambientByPhase[phase], [fr, fg, fb] = floorOf(phase);
+      const am = (ar + ag + ab) / 3;
+      const ambientOnly = ar !== 1 || ag !== 1 || ab !== 1 || fr !== 0 || fg !== 0 || fb !== 0;
+      const glowGain = grades ? grades[phase].glowGain : GLOW_GAIN[phase];
       let anyLight = false;
       for (const light of lights) {
         if (!isLit(light, phase)) continue;
-        const gain = light.kind === "glow" ? GLOW_GAIN[phase] : 1;
+        const gain = light.kind === "glow" ? glowGain : 1;
         const s = light.strength * gain * flickerAt(light, time, frozen) / 255;
         const x0 = Math.max(light.x, vx), y0 = Math.max(light.y, vy);
         const x1 = Math.min(light.x + light.w, vx + W), y1 = Math.min(light.y + light.h, vy + H);
@@ -229,12 +270,44 @@ export function createLighting(lights: readonly CompiledLight[], ambientByPhase:
             if (from < to) { ambientRun(frame, row, row + from, tr, tg, tb); ambientRun(frame, row + to, row + W, tr, tg, tb); }
             else ambientRun(frame, row, row + W, tr, tg, tb);
           }
-          for (let i = row + from, p = i * 4; i < row + to; i++, p += 4) {
+          if (!grades) for (let i = row + from, p = i * 4; i < row + to; i++, p += 4) {
             const r = lr[i], g = lg[i], b = lb[i];
             data[p] = TONE[Math.min(1023, (data[p] * (ar + r * MULTIPLY) + r * ADD) | 0)];
             data[p + 1] = TONE[Math.min(1023, (data[p + 1] * (ag + g * MULTIPLY) + g * ADD) | 0)];
             data[p + 2] = TONE[Math.min(1023, (data[p + 2] * (ab + b * MULTIPLY) + b * ADD) | 0)];
             lr[i] = 0; lg[i] = 0; lb[i] = 0;
+          }
+          else for (let i = row + from, p = i * 4; i < row + to; i++, p += 4) {
+            const r = lr[i], g = lg[i], b = lb[i];
+            // Light owns the pixels it reaches: it washes out the ambient's tint before adding its
+            // own colour, so a lamp at night pools warm instead of turning the blue world white.
+            const w = Math.min(1, (r + g + b) * NEUTRALISE);
+            const mr = ar + (am - ar) * w + r * MULTIPLY, mg = ag + (am - ag) * w + g * MULTIPLY, mb = ab + (am - ab) * w + b * MULTIPLY;
+            const cr = data[p], cg = data[p + 1], cb = data[p + 2];
+            data[p] = TONE[Math.min(1023, (cr * mr + r * ADD + (fr * (255 - cr)) / 255) | 0)];
+            data[p + 1] = TONE[Math.min(1023, (cg * mg + g * ADD + (fg * (255 - cg)) / 255) | 0)];
+            data[p + 2] = TONE[Math.min(1023, (cb * mb + b * ADD + (fb * (255 - cb)) / 255) | 0)];
+            lr[i] = 0; lg[i] = 0; lb[i] = 0;
+          }
+        }
+      }
+      // Halos: a small additive bloom round lamp glass and windows, after dark.
+      const halo = grades ? grades[phase].halo : 0;
+      if (halo > 0) for (const h of halos) {
+        if (!isLit(h.light, phase)) continue;
+        const s = h.light.strength * halo * HALO_ADD * flickerAt(h.light, time, frozen);
+        const [cr, cg, cb] = h.light.color, kr = cr * s, kg = cg * s, kb = cb * s;
+        const x0 = Math.max(h.x, vx), y0 = Math.max(h.y, vy);
+        const x1 = Math.min(h.x + h.w, vx + W), y1 = Math.min(h.y + h.h, vy + H);
+        const data = frame.data;
+        for (let y = y0; y < y1; y++) {
+          let m = (y - h.y) * h.w + (x0 - h.x), p = ((y - vy) * W + (x0 - vx)) * 4;
+          for (let x = x0; x < x1; x++, m++, p += 4) {
+            const v = h.mask[m];
+            if (!v) continue;
+            data[p] = TONE[Math.min(1023, (data[p] + v * kr) | 0)];
+            data[p + 1] = TONE[Math.min(1023, (data[p + 1] + v * kg) | 0)];
+            data[p + 2] = TONE[Math.min(1023, (data[p + 2] + v * kb) | 0)];
           }
         }
       }
