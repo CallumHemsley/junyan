@@ -106,7 +106,6 @@ prop('south-utility','utility-pole',63.9,59.7,.3,.3,'crossbar',True,6)
 prop('pump-pipes','pipes',58.1,39,.35,4,'steel',True,2)
 prop('closed-yard-gate','closed-gate',69.2,43.2,8.6,.3,'locked',True,1.8)
 prop('park-milestone','milestone',2.6,28.8,.6,.6,'stone',True,.8)
-prop('river-rail-left','fence',71,43.3,7,.25,'iron',True,1.2)
 m['terrain'] += [dict(id='town.canal-water',rect=rect(65,51,2,13),material='water',variant='canal'),dict(id='town.canal-bank',rect=rect(64.5,51,.5,13),material='stone',variant='bank')]
 prop('canal-rail','fence',64.3,51,.15,12.5,'iron',False,1.2)
 prop('tea-stone-table','stone-table',50,16.5,1.7,1.2,'stone',True,1.1)

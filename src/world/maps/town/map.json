@@ -1274,15 +1274,6 @@
       }
     },
     {
-      "id": "town.river-rail-left",
-      "rect": {
-        "x": 71,
-        "y": 43.3,
-        "width": 7,
-        "height": 0.25
-      }
-    },
-    {
       "id": "town.tea-stone-table",
       "rect": {
         "x": 50,
@@ -2911,17 +2902,6 @@
         "height": 0.6
       },
       "height": 0.8,
-      "fadeWhenPlayerBehind": true
-    },
-    {
-      "id": "town.river-rail-left",
-      "rect": {
-        "x": 71,
-        "y": 43.3,
-        "width": 7,
-        "height": 0.25
-      },
-      "height": 1.2,
       "fadeWhenPlayerBehind": true
     },
     {
@@ -5603,18 +5583,6 @@
       "height": 0.6,
       "layer": "object",
       "variant": 14
-    },
-    {
-      "id": "town.river-rail-left",
-      "kind": "fence",
-      "position": {
-        "x": 71,
-        "y": 43.3
-      },
-      "width": 7,
-      "height": 0.25,
-      "layer": "object",
-      "variant": 29
     },
     {
       "id": "town.canal-rail",
