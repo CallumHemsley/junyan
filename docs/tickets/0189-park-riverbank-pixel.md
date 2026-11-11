@@ -39,3 +39,20 @@ The park and the riverbank still drew with the old painter. The outdoor-map pipe
   - `pnpm exec tsc -b`: clean.
   - `pnpm exec vitest run`: green (138 files).
   - No e2e spec names the park or the riverbank, so I ran `e2e/pixel-town.spec.ts` and `e2e/world-journey.spec.ts` headless and muted on ports 5226/5227: 4 passed, 2 skipped by the specs' own project filters.
+- **Follow-up, 2026-11-11 (landmarks, branch `claude/0189-park-landmarks`, worktree `/Users/callumhemsley/Personal/junyan-px-0189b`):** the last placeholders are drawn. Neither map logs a placeholder any more.
+  - `src/pixel/sprites/bldg/park.ts`:
+    - `pavilion` (park/tea-pavilion): a square Suzhou-style pavilion on a granite platform with three steps. Chestnut columns stand on stone drums, under a jade lintel with a fretwork frieze and side bench rails. Inside are a round stone table and drum stools with a tea tray. A pine in a glazed pot stands at each front corner. The pyramidal tile roof has courses fanning to a gourd finial and upswept corner horns, with leaves caught in the channels. A blank plaque hangs under the eave for the DOM. No red.
+    - `shrine` (riverbank/hill-shrine): a brick earth-god niche under a tiny tiled roof, with a worn, faceless seated figure and blank paper strips. It has an incense bowl whose smoke curls in 4 frames, oranges and a cup of tea, moss, and a kneeling apron.
+  - `src/pixel/sprites/life/riverbank.ts`:
+    - `boat`: a black-awning sampan with three woven hoods, a sculling oar, a rope coil and a tea jar. It bobs in 4 frames with ripples.
+    - `mooring`: a granite post with rope grooves and an iron ring.
+    - `tied-rope`: a sagging rope ending in a coil.
+    - `worn-stones`: polished stepping stones with moss (`floor`).
+    - `picnic`: a check cloth with a corner folded back, a mooncake tin, mandarins, cups, a thermos, chestnuts and a straw hat (`floor`).
+    - `cart`: a plank handcart on a spoked wheel, loaded with persimmons, pears and chestnuts.
+  - **Map issue, not fixed here:** `riverbank.ferry-boat` sits east of the water. Its footprint is x 55.9–60.9 at y 59.3–61.3, but the river's edge there is x ≈ 55.1–55.5. So the boat rests on the grass, and its footprint covers `ferry-post` (60–61) and most of `ferry-rope`, which draw behind it. Two possible fixes:
+    - move the boat about 5 tiles west (centre ≈ 53.4, 60.3), keeping the post and rope at the landing;
+    - or cut a water inlet up to x ≈ 61 at y 59–62.
+  - `riverbank.picnic` lies under the heron copse's crowns, so most of the cloth is hidden at play zoom.
+  - Learned: a pyramid roof's top has to be foreshortened like any other top, or its side slopes fill the corners and the roof reads as a box. Tile courses fanning from the apex make it converge on the finial.
+  - Checks: `tsc -b` is clean; `vitest run src/pixel src/world` passed 96 files, 503 tests.
