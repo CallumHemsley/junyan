@@ -4,7 +4,8 @@
  *
  *   background → tile layers → floor props (scene order) → contact shadows →
  *   object props and actors, depth-sorted by anchor y (ties keep scene order, then run-time props,
- *   then actors) → over props → light (ambient × map + glow) → dust motes → debug overlay.
+ *   then actors) → over props → light (ambient × map + glow, halos) → dust motes → colour grade →
+ *   debug overlay.
  *   Props named in `state.fade` draw at that opacity (the player walking behind a tree).
  *
  * The static prefix of the floor (every tile and floor prop up to the first animated one) is baked
@@ -15,18 +16,22 @@ import { actorFrame, createActorResolver } from "./actors.ts";
 import { frameAt, type Atlas } from "./atlas.ts";
 import { rgbOf } from "./color.ts";
 import { blit, copyRegion, createFrame, packRgb, type Frame } from "./frame.ts";
+import { GRADES, applyGradeLut, gradeLut, type ContactShadow } from "./grade.ts";
 import { createLighting } from "./light.ts";
 import { compileScene, placeProp, propCollider, type CompiledScene, type Placed } from "./scene.ts";
-import type { Actor, FrameState, Prop, Rect, Scene } from "./types.ts";
+import type { Actor, DayPhase, FrameState, Prop, Rect, Rgb, Scene } from "./types.ts";
 
-/** Contact shadow tint and its two stepped opacities (core, rim), 0..255. */
-const SHADOW_RGB = rgbOf("plum1");
-const SHADOW_CORE = 82;
-const SHADOW_RIM = 44;
+/** Ungraded contact shadow: plum, two stepped opacities (core, rim), 0..255, round. */
+const PLAIN_SHADOW: ContactShadow = { color: "plum1", core: 82, rim: 44, stretch: 1, shift: 0 };
 
 export type RendererOptions = {
   /** Called once per distinct actor fallback. Pass `console.warn` in dev, nothing in production. */
   warn?: (message: string) => void;
+  /**
+   * Colour grading per day phase (`grade.ts`): coloured shadows, warm light, halos and a final
+   * split-tone pass. Default on. `false` renders exactly the ungraded compositor.
+   */
+  grade?: boolean;
 };
 
 /** Where the frame sits in the world: its top-left, in art pixels. The frame's size is the view's. */
@@ -45,7 +50,14 @@ export type SceneRenderer = {
 export function createSceneRenderer(scene: Scene, atlas: Atlas, options: RendererOptions = {}): SceneRenderer {
   const compiled = compileScene(scene, atlas);
   const resolveActor = createActorResolver(atlas, options.warn);
-  const lighting = createLighting(compiled.lights, compiled.ambient);
+  const graded = options.grade !== false;
+  const ambient: Record<DayPhase, Rgb> = graded
+    ? { morning: GRADES.morning.ambient, midday: GRADES.midday.ambient, evening: GRADES.evening.ambient, night: GRADES.night.ambient, ...scene.ambient }
+    : compiled.ambient;
+  const lighting = createLighting(compiled.lights, ambient, graded ? GRADES : undefined);
+  const shadowFor = (phase: DayPhase) => (graded ? GRADES[phase].shadow : PLAIN_SHADOW);
+  const shadowRgbs = new Map<string, Rgb>();
+  let shadowStyle = PLAIN_SHADOW, shadowRgb = rgbOf(PLAIN_SHADOW.color);
   const placedProps = new WeakMap<Prop, Placed>();
   const backgroundWord = packRgb(compiled.background);
   const shadowStamps = new Map<string, { w: number; h: number; ox: number; oy: number; alpha: Uint8Array }>();
@@ -84,20 +96,21 @@ export function createSceneRenderer(scene: Scene, atlas: Atlas, options: Rendere
   }
 
   function stampShadow(frame: Frame, view: ViewOrigin, placed: Placed) {
-    const shadow = placed.sprite.def.shadow;
+    const shadow = placed.sprite.def.shadow, style = shadowStyle;
     if (!shadow) return;
-    const key = `${shadow.rx},${shadow.ry}`;
+    const key = `${shadow.rx},${shadow.ry},${style.core},${style.rim},${style.stretch},${style.shift}`;
     let stamp = shadowStamps.get(key);
     if (!stamp) {
-      const { rx, ry } = shadow;
+      const rx = shadow.rx * style.stretch, ry = shadow.ry, { core, rim } = style;
       const ox = Math.ceil(rx), oy = Math.ceil(ry), w = ox * 2 + 1, h = oy * 2 + 1;
       const alpha = new Uint8Array(w * h);
       // Same sampling as Px.ellipse: pixel centres against an ellipse centred on a pixel edge.
       for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) {
         const u = (i - ox + 0.5) / rx, v = (j - oy + 0.5) / ry, d = u * u + v * v;
-        alpha[j * w + i] = d <= 0.42 ? SHADOW_CORE : d <= 1 ? SHADOW_RIM : 0;
+        alpha[j * w + i] = d <= 0.42 ? core : d <= 1 ? rim : 0;
       }
-      stamp = { w, h, ox, oy, alpha };
+      // A stretched (low-sun) shadow slides east by `shift` radii so it still starts at the feet.
+      stamp = { w, h, ox: ox - Math.round(shadow.rx * style.shift), oy, alpha };
       shadowStamps.set(key, stamp);
     }
     const left = placed.ax + Math.round(shadow.dx ?? 0) - stamp.ox - view.x;
@@ -114,7 +127,7 @@ export function createSceneRenderer(scene: Scene, atlas: Atlas, options: Rendere
   }
 
   function applyShadows(frame: Frame) {
-    const data = frame.data, [sr, sg, sb] = SHADOW_RGB;
+    const data = frame.data, [sr, sg, sb] = shadowRgb;
     for (let y = sy0; y < sy1; y++) for (let i = y * frame.w + sx0, end = y * frame.w + sx1; i < end; i++) {
       const m = shadowMask[i];
       if (!m) continue;
@@ -171,6 +184,8 @@ export function createSceneRenderer(scene: Scene, atlas: Atlas, options: Rendere
 
     render(frame, view, state) {
       const time = state.time, phase = state.phase ?? "morning";
+      shadowStyle = shadowFor(phase);
+      shadowRgb = shadowRgbs.get(shadowStyle.color) ?? shadowRgbs.set(shadowStyle.color, rgbOf(shadowStyle.color)).get(shadowStyle.color)!;
       const props = state.props ?? [], actors = state.actors ?? [];
       fade = state.fade;
 
@@ -213,6 +228,7 @@ export function createSceneRenderer(scene: Scene, atlas: Atlas, options: Rendere
       }
 
       lighting.apply(frame, view.x, view.y, phase, time, !!state.reducedMotion);
+      if (graded) applyGradeLut(frame, gradeLut(GRADES[phase]));
       if (state.debug) drawDebug(frame, view, state);
     },
 

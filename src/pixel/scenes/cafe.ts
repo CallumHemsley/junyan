@@ -217,6 +217,13 @@ export default defineScene({
     { kind: "glow", at: [13, 4.3], radius: 1.8, color: "orange3", strength: 0.35, flicker: 0.3 },
     { kind: "glow", at: [9.94, 2.4], radius: 2.0, color: "gold4", strength: 0.3, flicker: 0.05 },
     { kind: "glow", at: [16, 5], radius: 6, color: "gold5", strength: 0.18 },
+    // After dark the dining room is lit by pendant lamps over the tables (above the camera) and the
+    // wall globe turned up: warm pools on each table so the room never goes flat blue.
+    { kind: "glow", at: [3.4, 5.4], radius: 2.4, color: "gold4", strength: 0.5, phases: ["evening", "night"] },
+    { kind: "glow", at: [7.9, 5.3], radius: 2.4, color: "gold4", strength: 0.5, phases: ["evening", "night"] },
+    { kind: "glow", at: [4.2, 10.4], radius: 2.4, color: "gold4", strength: 0.5, phases: ["evening", "night"] },
+    { kind: "glow", at: [15.2, 10.9], radius: 2.4, color: "gold4", strength: 0.45, phases: ["evening", "night"] },
+    { kind: "glow", at: [9.94, 2.6], radius: 3.2, color: "gold4", strength: 0.45, phases: ["night"] },
   ],
   walkable: [1, 3.1, 20, 9.9],
   marks: {
