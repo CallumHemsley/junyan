@@ -44,11 +44,14 @@ export function resolveActorSprite(atlas: Atlas, sprite: string, action = "idle"
   throw new Error(`No sprite for actor "${wanted}" and no fallback "${FALLBACK_CHARACTER}"`);
 }
 
-/** Animation frame for an actor: walk cycles follow distance when `distance` is set, else time. */
+/**
+ * Animation frame for an actor: walk cycles follow distance when `distance` is set (one frame per
+ * `stride` tiles, the sprite's own or `WALK_TILES_PER_FRAME`), else time.
+ */
 export function actorFrame(actor: Actor, sprite: AtlasSprite, time: number): number {
   const action = actor.action ?? "idle";
   if (actor.distance !== undefined && action.includes("walk") && sprite.frameCount > 1) {
-    const step = Math.floor(actor.distance / WALK_TILES_PER_FRAME + (actor.phase ?? 0));
+    const step = Math.floor(actor.distance / (sprite.def.stride ?? WALK_TILES_PER_FRAME) + (actor.phase ?? 0));
     return ((step % sprite.frameCount) + sprite.frameCount) % sprite.frameCount;
   }
   return frameAt(sprite, time, actor.phase ?? 0);

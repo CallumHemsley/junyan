@@ -11,6 +11,12 @@ export type SpriteDef = {
   frames?: number;
   fps?: number;
   /**
+   * Walk cycles only: tiles walked per frame when the game steps a walk by distance (default
+   * `WALK_TILES_PER_FRAME`, 0.375). Set it so a cycle with more frames covers the ground its stride
+   * was drawn for, e.g. an 8-frame walk designed to loop in 0.8 s at 3.2 tiles/s uses 0.32.
+   */
+  stride?: number;
+  /**
    * The pixel that sits on the object's world position: where it touches the ground.
    * Defaults to bottom-centre, `[w / 2, h]`. Objects are depth-sorted by this point.
    */
