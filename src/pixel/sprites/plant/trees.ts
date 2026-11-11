@@ -16,7 +16,7 @@ import { defineSprites, hash, type Color, type Px, type SpriteDef } from "../../
 import { mapProps, propSpriteId, type MapProp } from "../../world/maps.ts";
 import {
   CAMPHOR_CLUSTERS, FIG_LEAVES, PLANE_CLUSTERS, art, autoOutline, camphorBark, canopy, crownClumps, figBark,
-  ironGrate, kerbPit, limb, massClumps, noise2, planeBark, punchGaps, roots, type Ellipse, type Foliage,
+  ironGrate, kerbPit, limb, massClumps, noise2, planeBark, punchGaps, roots, WOODLAND_MAPS, type Ellipse, type Foliage,
 } from "./_helpers.ts";
 
 const SWAY = [0, 1, 0, -1];
@@ -455,4 +455,5 @@ export const treeSprites = (props: readonly MapProp[]): Record<string, SpriteDef
   [`${propSpriteId(prop.map, prop.id)}-shade`, shadeDef(prop)],
 ]));
 
-export default defineSprites(treeSprites(mapProps("all", "tree")));
+// Woodland maps' trees are drawn by `woods.ts`.
+export default defineSprites(treeSprites(mapProps("all", "tree").filter((p) => !WOODLAND_MAPS.has(p.map))));

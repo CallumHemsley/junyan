@@ -9,7 +9,7 @@ import type { Point } from "../schema";
  * as the pixel registry `src/pixel/world/maps.ts` (a test checks), which this module does not import
  * so Node stays free of the map JSON and the sprites.
  */
-export const OUTDOOR_PIXEL_MAPS: readonly string[] = ["town", "courtyard"];
+export const OUTDOOR_PIXEL_MAPS: readonly string[] = ["town", "courtyard", "park", "riverbank"];
 /** Maps drawn top-down by `src/pixel`; every other map keeps the isometric painter until redrawn. */
 export const PIXEL_MAPS: ReadonlySet<string> = new Set(["restaurant", ...OUTDOOR_PIXEL_MAPS]);
 export const isPixelMap = (mapId: string) => PIXEL_MAPS.has(mapId);

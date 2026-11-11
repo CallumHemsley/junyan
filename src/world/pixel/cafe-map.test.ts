@@ -73,7 +73,7 @@ describe("the restaurant map is the pixel cafe's room", () => {
   it("walks the screen's axes on pixel maps", () => {
     expect(isPixelMap("restaurant")).toBe(true);
     expect(isPixelMap("town")).toBe(true);
-    expect(isPixelMap("park")).toBe(false);
+    expect(isPixelMap("reading-room")).toBe(false);
     expect(cardinalDirections.ArrowUp).toEqual({ x: 0, y: -1 });
     expect(cardinalDirections.d).toEqual({ x: 1, y: 0 });
   });

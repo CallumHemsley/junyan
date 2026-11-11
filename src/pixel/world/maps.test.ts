@@ -1,7 +1,5 @@
 import { describe, expect, it } from "vitest";
 import rooftop from "../../world/maps/rooftop/map.json" with { type: "json" };
-import park from "../../world/maps/landscape/park.json" with { type: "json" };
-import riverbank from "../../world/maps/landscape/riverbank.json" with { type: "json" };
 import { OUTDOOR_PIXEL_MAPS } from "../../world/pixel/maps.ts";
 import { createAtlas } from "../engine/index.ts";
 import { TILE } from "../kit/sprite.ts";
@@ -23,7 +21,7 @@ import {
 
 const groundSprites = new Set(Object.keys({ ...grass, ...paving, ...road, ...brick, ...stone, ...water, ...edges, ...courtyardGround }));
 /** Outdoor maps still on the old painter: their ground must already compile for the day they are registered. */
-const LATER = [rooftop, park, riverbank] as unknown as (GroundMap & { id: string; props: { kind: string }[] })[];
+const LATER = [rooftop] as unknown as (GroundMap & { id: string; props: { kind: string }[] })[];
 
 describe("the outdoor map registry", () => {
   it("registers the game's outdoor pixel maps, the town first", () => {
@@ -44,7 +42,7 @@ describe("the outdoor map registry", () => {
   it("tags props with their map, map by map in registry order, filtered by kind", () => {
     const benches = mapProps("all", "bench");
     expect(benches.map((p) => p.map)).toEqual([...benches.map((p) => p.map)].sort((a, b) => OUTDOOR_MAP_IDS.indexOf(a) - OUTDOOR_MAP_IDS.indexOf(b)));
-    expect(new Set(benches.map((p) => p.map))).toEqual(new Set(["town", "courtyard"]));
+    expect(new Set(benches.map((p) => p.map))).toEqual(new Set(["town", "courtyard", "park", "riverbank"]));
     expect(mapProps("courtyard", "bench", "bicycle").map((p) => p.id)).toEqual(
       OUTDOOR_MAPS.courtyard.props.filter((p) => p.kind === "bench" || p.kind === "bicycle").map((p) => p.id));
     expect(mapProps(["courtyard", "town"], "stone-table").map((p) => p.map)).toEqual(["courtyard", "town"]);
@@ -86,6 +84,24 @@ describe("the outdoor map registry", () => {
     const all = mapProps("all");
     expect(propsBySprite().size).toBe(all.length);
     for (const p of all) expect(propsBySprite().get(spriteIdOf(p))).toBe(p);
+  });
+});
+
+describe("the landscape maps", () => {
+  it("reads their centred props as footprints, a tree's narrowed to the trunk on its collider", () => {
+    for (const id of ["park", "riverbank"]) {
+      const map = outdoorMap(id);
+      for (const kind of ["tree", "mature-tree", "willow"]) for (const p of mapProps(id, kind)) {
+        const collider = map.colliders.find((c) => c.id === p.id)!.rect;
+        const [ax, ay] = propAnchor(p);
+        expect(ax).toBeCloseTo(collider.x + collider.width / 2, 5);
+        expect(ay - p.height / 2).toBeCloseTo(collider.y + collider.height / 2, 5);
+        expect(p.spread).toBeGreaterThan(p.width);
+      }
+      // Everything else keeps its authored size, centred where the author put it.
+      const fern = mapProps(id, "fern")[0];
+      expect(fern.width).toBe(1.5);
+    }
   });
 });
 
@@ -133,8 +149,8 @@ describe("shared kinds on new maps", () => {
     expect(a.frame(0).data).toEqual(b.frame(0).data);
     expect(a.frame(0).data.some((v) => v > 0)).toBe(true);
     expect(atlas().get("elsewhere/new-plane-shade").h).toBeGreaterThan(0);
-    // Every tree in the later maps draws.
-    const later = (LATER as unknown as { id: string; props: Omit<MapProp, "map">[] }[]).flatMap((m) => m.props.filter((p) => p.kind === "tree").slice(0, 3).map((p) => ({ ...p, map: m.id })));
+    // The plane generator still draws any tree it is handed, even the landscape maps' woodland trees.
+    const later = [...mapProps("park", "tree").slice(0, 2), ...mapProps("riverbank", "tree").slice(0, 2)];
     expect(later.length).toBeGreaterThan(0);
     expect(() => { const set = createAtlas(treeSprites(later)); for (const p of later) set.get(spriteIdOf(p)).frame(0); }).not.toThrow();
   }, 30_000);
