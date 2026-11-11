@@ -62,4 +62,14 @@ describe("actor frames", () => {
     expect(at(0.375)).toBe(1);
     expect(at(1.5)).toBe(0);
   });
+
+  it("step by the sprite's own stride when it sets one", () => {
+    const strided = { ...walk, frameCount: 8, def: { ...walk.def, frames: 8, stride: 0.32 } };
+    const at = (distance: number) => actorFrame({ id: "a", sprite: "char/cook", at: [0, 0], action: "walk", distance }, strided, 99999);
+    expect(at(0.31)).toBe(0);
+    expect(at(0.32)).toBe(1);
+    expect(at(0.32 * 8)).toBe(0);
+    // Without a stride, the shared default still applies.
+    expect(actorFrame({ id: "a", sprite: "char/cook", at: [0, 0], action: "walk", distance: 0.375 }, walk, 99999)).toBe(1);
+  });
 });
