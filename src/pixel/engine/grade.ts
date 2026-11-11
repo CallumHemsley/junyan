@@ -89,6 +89,9 @@ export const GRADES: Record<DayPhase, Grade> = {
   },
 };
 
+/** Where the final pass starts rolling a highlight lift off toward 255 instead of clipping it. */
+const LIFT_SOFT = 240;
+
 /** Bits per channel of the table's index. */
 export const LUT_BITS = 5;
 const CELLS = 1 << LUT_BITS;
@@ -168,6 +171,12 @@ function guardVermilion(r: number, g: number, b: number, dr: number, dg: number,
   return lo;
 }
 
+function rollLift(c: number, c1: number): number {
+  if (c1 <= c || c1 <= LIFT_SOFT) return c1;
+  const e = c1 - c, room = 255 - c, w = Math.min(1, (c1 - LIFT_SOFT) / (255 - LIFT_SOFT));
+  return room > 0 ? c + e * (1 - w + (w * room) / (e + room)) : c;
+}
+
 /**
  * The graded colour for one input colour, unrounded. `half` is the half-width of the table cell
  * whose offset this becomes (0 for a single colour). Exported for tests and tools.
@@ -189,6 +198,10 @@ export function gradeColor(grade: Grade, r: number, g: number, b: number, half =
   r1 += dL + ws * (sr - sl) + wh * (hr - hl);
   g1 += dL + ws * (sg - sl) + wh * (hg - hl);
   b1 += dL + ws * (sb - sl) + wh * (hb - hl);
+  // Never clip (ticket 0181): a channel lifted past LIFT_SOFT has the lift rolled into the room left
+  // below 255, so two bright tones stay two tones. Lifts ending below LIFT_SOFT, and every
+  // downward move, are untouched; the roll-off fades in between LIFT_SOFT and 255, so it is smooth.
+  r1 = rollLift(r, r1); g1 = rollLift(g, g1); b1 = rollLift(b, b1);
   r1 = clamp(r1, 0, 255); g1 = clamp(g1, 0, 255); b1 = clamp(b1, 0, 255);
   const s = guardVermilion(r, g, b, r1 - r, g1 - g, b1 - b, half);
   return [r + (r1 - r) * s, g + (g1 - g) * s, b + (b1 - b) * s];
