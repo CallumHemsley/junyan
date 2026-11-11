@@ -13,6 +13,8 @@
 import townMap from "../../world/maps/town/map.json" with { type: "json" };
 import courtyardMap from "../../world/maps/courtyard/map.json" with { type: "json" };
 import rooftopMap from "../../world/maps/rooftop/map.json" with { type: "json" };
+import parkMap from "../../world/maps/landscape/park.json" with { type: "json" };
+import riverbankMap from "../../world/maps/landscape/riverbank.json" with { type: "json" };
 import workshopMap from "../../world/maps/workshop/map.json" with { type: "json" };
 import { TILE } from "../kit/sprite.ts";
 
@@ -23,6 +25,8 @@ export type MapFacing = "north" | "south" | "east" | "west";
 /** A prop as the map JSON has it. */
 export type RawProp = {
   id: string; kind: string; position: MapPoint; width: number; height: number; variant: number; layer?: string;
+  /** Crown spread in tiles, for a landscape tree whose footprint the registry narrowed to its trunk. */
+  spread?: number;
 };
 /** A prop tagged with the id of the map it stands on. */
 export type MapProp = RawProp & { map: string };
@@ -46,6 +50,27 @@ export type OutdoorMap = {
 };
 
 /**
+ * The landscape maps (park, riverbank; `src/world/maps/landscape/author.py`) position each prop by
+ * its centre, where every other map uses the footprint's top-left. The pixel pipeline reads them
+ * through this adapter, so their props sit on their colliders (a tree's trunk on its trunk) and
+ * everything downstream keeps the one convention.
+ */
+function centredProps(map: OutdoorMap): OutdoorMap {
+  return {
+    ...map,
+    props: map.props.map((p) => {
+      // A landscape tree's authored size is its crown's spread; its footprint here is its trunk (the
+      // map's own trunk collider), so it depth-sorts at the trunk like the town's trees.
+      const trunk = LANDSCAPE_TRUNKS[p.kind];
+      const w = trunk ?? p.width, h = trunk ?? p.height;
+      return { ...p, position: { x: p.position.x - w / 2, y: p.position.y - h / 2 }, width: w, height: h, ...(trunk ? { spread: p.width } : {}) };
+    }),
+  };
+}
+/** Trunk widths in tiles, as `author.py` sizes the trunk colliders. */
+const LANDSCAPE_TRUNKS: Record<string, number> = { "mature-tree": 0.8, tree: 0.55, willow: 0.55 };
+
+/**
  * The registered outdoor maps, in sprite order. The town comes first and stays first: kind generators
  * that seed by index (benches, bicycles, lamps, planters…) keep the town's sprites byte-identical.
  */
@@ -53,6 +78,8 @@ export const OUTDOOR_MAPS: Readonly<Record<string, OutdoorMap>> = {
   town: townMap as unknown as OutdoorMap,
   courtyard: courtyardMap as unknown as OutdoorMap,
   rooftop: rooftopMap as unknown as OutdoorMap,
+  park: centredProps(parkMap as unknown as OutdoorMap),
+  riverbank: centredProps(riverbankMap as unknown as OutdoorMap),
   workshop: workshopMap as unknown as OutdoorMap,
 };
 export const OUTDOOR_MAP_IDS: readonly string[] = Object.keys(OUTDOOR_MAPS);
