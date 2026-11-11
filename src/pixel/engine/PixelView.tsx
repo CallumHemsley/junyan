@@ -38,6 +38,8 @@ export type PixelViewProps = {
   clock?: () => number;
   /** Force a zoom (device px per art px). Default: chosen from the size. */
   zoom?: number;
+  /** Centre exactly on `focus`, past the scene's edges if need be (see `CameraInput.free`). */
+  free?: boolean;
   targets?: ZoomTargets;
   className?: string;
   style?: CSSProperties;
@@ -66,7 +68,7 @@ function usePrefersReducedMotion(): boolean {
 const sameCamera = (a: Camera | null, b: Camera) => !!a && a.x === b.x && a.y === b.y && a.w === b.w && a.h === b.h && a.zoom === b.zoom && a.dpr === b.dpr;
 
 export function PixelView(props: PixelViewProps) {
-  const { renderer, actors, phase = "morning", focus, debug = false, zoom, targets, className, style, onPointerDown, onCamera, children } = props;
+  const { renderer, actors, phase = "morning", focus, debug = false, zoom, free = false, targets, className, style, onPointerDown, onCamera, children } = props;
   const prefersReduced = usePrefersReducedMotion();
   const reducedMotion = props.reducedMotion ?? prefersReduced;
   const clock = props.clock ?? (() => performance.now());
@@ -93,12 +95,12 @@ export function PixelView(props: PixelViewProps) {
   const cameraRef = useRef<Camera | null>(null);
   const camera = useMemo(() => {
     if (!box) return null;
-    const next = createCamera({ cssWidth: box.w, cssHeight: box.h, dpr: box.dpr, sceneSize: size, focus, zoom, targets });
+    const next = createCamera({ cssWidth: box.w, cssHeight: box.h, dpr: box.dpr, sceneSize: size, focus, zoom, targets, free });
     // Keep the same object when nothing moved, so overlays do not re-render needlessly.
     if (sameCamera(cameraRef.current, next)) return cameraRef.current;
     cameraRef.current = next;
     return next;
-  }, [box, size[0], size[1], focus?.[0], focus?.[1], zoom, targets?.landscapeTiles, targets?.portraitTiles]);
+  }, [box, size[0], size[1], focus?.[0], focus?.[1], zoom, free, targets?.landscapeTiles, targets?.portraitTiles]);
 
   useEffect(() => { if (camera) onCamera?.(camera); }, [camera]);
 
@@ -124,6 +126,8 @@ export function PixelView(props: PixelViewProps) {
         const cam = now.camera ?? camera;
         now.renderer.render(frame, cam, state);
         context.putImageData(image, 0, 0);
+        // Report the first drawn frame, as the isometric painter's canvas does, so callers can wait for it.
+        if (!canvas.dataset.rendered) canvas.dataset.rendered = "true";
         now.dirty = false;
         lastKey = key;
       }

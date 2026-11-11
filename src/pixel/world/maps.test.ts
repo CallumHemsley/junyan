@@ -16,12 +16,13 @@ import edges from "../sprites/ground/edges.ts";
 import courtyardGround from "../sprites/ground/courtyard.ts";
 import rooftopGround from "../sprites/ground/rooftop.ts";
 import workshopGround from "../sprites/ground/workshop.ts";
+import readingGround from "../sprites/ground/reading-room.ts";
 import { treeSprites } from "../sprites/plant/trees.ts";
 import {
   OUTDOOR_MAPS, OUTDOOR_MAP_IDS, footprintPx, mapProps, openingsOn, outdoorMap, propAnchor, propSpriteId, propsBySprite, spriteIdOf, type MapProp,
 } from "./maps.ts";
 
-const groundSprites = new Set(Object.keys({ ...grass, ...paving, ...road, ...brick, ...stone, ...water, ...edges, ...courtyardGround, ...rooftopGround, ...workshopGround }));
+const groundSprites = new Set(Object.keys({ ...grass, ...paving, ...road, ...brick, ...stone, ...water, ...edges, ...courtyardGround, ...rooftopGround, ...workshopGround, ...readingGround }));
 /** Outdoor maps still on the old painter: their ground must already compile for the day they are registered. */
 const LATER = [rooftop] as unknown as (GroundMap & { id: string; props: { kind: string }[] })[];
 
@@ -34,7 +35,7 @@ describe("the outdoor map registry", () => {
     for (const id of OUTDOOR_MAP_IDS) expect(outdoorMap(id).id).toBe(id);
     expect(OUTDOOR_MAP_IDS).toContain("park");
     expect(OUTDOOR_MAP_IDS).toContain("riverbank");
-    expect(() => outdoorMap("reading-room")).toThrow(/No outdoor pixel map "reading-room"/);
+    expect(() => outdoorMap("residential-stairs")).toThrow(/No outdoor pixel map "residential-stairs"/);
   });
 
   it("names a prop's sprite after its map, without the map's prefix", () => {
@@ -139,7 +140,11 @@ describe("ground for any outdoor map", () => {
     const shop = outdoorMap("workshop");
     const shopIds = groundLayers(shop).flatMap((layer) => Object.values(layer.legend ?? {}).map(String));
     for (const prefix of ["ground/workshop-planks-", "ground/workshop-cobbles-", "ground/workshop-rug-", "ground/edge-workshop-rug-"]) expect(shopIds.some((id) => id.startsWith(prefix)), prefix).toBe(true);
-    for (const map of [yard, shop, ...LATER]) {
+    // And the reading room (ticket 0204): parquet with its worn paths, the dark beyond its walls.
+    const reading = outdoorMap("reading-room");
+    const readingIds = groundLayers(reading).flatMap((layer) => Object.values(layer.legend ?? {}).map(String));
+    for (const prefix of ["ground/reading-parquet-", "ground/reading-outside-", "ground/reading-worn-", "ground/edge-reading-parquet-"]) expect(readingIds.some((id) => id.startsWith(prefix)), prefix).toBe(true);
+    for (const map of [yard, shop, reading, ...LATER]) {
       const layers = groundLayers(map);
       for (const layer of layers) {
         expect(layer.rows, `${map.id} ${layer.name}`).toHaveLength(map.bounds.height);

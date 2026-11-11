@@ -15,6 +15,7 @@ import type { Facing, GlowLight, Layer, Mark, Prop, Rect, Scene } from "../engin
 import { groundLayers } from "../town/ground.ts";
 import { OUTDOOR_MAP_IDS, outdoorMap, propAnchor, propSpriteId, type MapFacing, type MapRect, type OutdoorMap, type RawProp } from "./maps.ts";
 import { LIGHTS as WORKSHOP_LIGHTS } from "../sprites/life/workshop.ts";
+import { LAMP_LIGHT as READING_LIGHTS } from "../sprites/life/reading-room.ts";
 
 const FACING: Record<MapFacing, Facing> = { north: "up", south: "down", east: "right", west: "left" };
 const rectOf = (r: MapRect): Rect => [r.x, r.y, r.width, r.height];
@@ -52,10 +53,12 @@ function props(map: OutdoorMap): Prop[] {
 
 /** Lamps inside a map, at the points its art publishes (bulb or dial, tile units): lit all day. */
 function interiorLights(map: OutdoorMap): GlowLight[] {
-  if (map.id !== "workshop") return [];
-  return Object.entries(WORKSHOP_LIGHTS).map(([id, at]): GlowLight => id.endsWith("radio")
+  if (map.id === "workshop") return Object.entries(WORKSHOP_LIGHTS).map(([id, at]): GlowLight => id.endsWith("radio")
     ? { kind: "glow", at, radius: 1.2, color: "orange3", strength: 0.35, flicker: 0.03 }
     : { kind: "glow", at, radius: 2.6, color: "gold4", strength: 0.55, flicker: 0.02 });
+  // The reading room's green-shaded standard lamp throws a warm pool round the desk.
+  if (map.id === "reading-room") return Object.values(READING_LIGHTS).map((at): GlowLight => ({ kind: "glow", at, radius: 3, color: "gold4", strength: 0.5, flicker: 0.02 }));
+  return [];
 }
 
 function lights(map: OutdoorMap): GlowLight[] {

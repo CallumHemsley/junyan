@@ -229,7 +229,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   if(directions[event.key]){event.preventDefault();event.stopPropagation();keys.current.add(event.key);}
   else if((event.key==="e"||event.key==="Enter")&&selected){event.preventDefault();event.stopPropagation();activate();}
  }} onBlur={event=>{if(!event.currentTarget.contains(event.relatedTarget))keys.current.clear();}}>
-  {pixel?(map.id==="restaurant"?<CafeView game={game} world={state} {...pixelProps}/>:<OutdoorView key={map.id} map={map} game={game} world={state} lifeClock={()=>elapsed.current} {...pixelProps}/>):<canvas ref={canvas} aria-hidden="true" onPointerDown={event=>{
+  {pixel?(map.id==="restaurant"?<CafeView game={game} world={state} {...pixelProps}/>:<OutdoorView key={map.id} map={map} game={game} world={state} lifeClock={()=>elapsed.current} frame={presentationFrame} frameArea={frameArea} {...pixelProps}/>):<canvas ref={canvas} aria-hidden="true" onPointerDown={event=>{
    if(paused)return;
    root.current?.focus();const rect=event.currentTarget.getBoundingClientRect(),p=pickSurface({x:(event.clientX-rect.left)*cameraRef.current.width/rect.width,y:(event.clientY-rect.top)*cameraRef.current.height/rect.height},cameraRef.current,map);
    if(!p)return;
