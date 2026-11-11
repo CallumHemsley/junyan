@@ -142,6 +142,12 @@ export function sidedBy(art: Sided<Piece>): Piece {
 
 /** Composite parts into a Px, colour them with the slots and outline the silhouette in ink. */
 export function render(p: Px, parts: readonly Part[], slots: Slots, pose: Pose, build: Build = {}): void {
+  paint(p, parts, slots, pose, build);
+  p.outline("ink");
+}
+
+/** `render` without the outline: for figures that add more art before outlining (the player, the patient). */
+export function paint(p: Px, parts: readonly Part[], slots: Slots, pose: Pose, build: Build = {}): void {
   const sorted = parts.map((part, i) => ({ part, i })).sort((a, b) => a.part.z - b.part.z || a.i - b.i);
   const lean = build.lean ? (pose.dir === "right" ? [1, 1] : pose.dir === "left" ? [-1, 1] : [0, 1]) : [0, 0];
   for (const { part } of sorted) {
@@ -159,5 +165,4 @@ export function render(p: Px, parts: readonly Part[], slots: Slots, pose: Pose, 
       }
     });
   }
-  p.outline("ink");
 }
