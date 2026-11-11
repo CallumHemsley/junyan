@@ -49,6 +49,27 @@ const KNEE = 224;
 const TONE = new Uint8ClampedArray(1024);
 for (let v = 0; v < TONE.length; v++) TONE[v] = v <= KNEE ? v : 255 - ((255 - KNEE) ** 2) / (v - KNEE + 255 - KNEE);
 
+/**
+ * Grading only: the highlight shoulder (ticket 0181). Above SHOULDER_KNEE (85%) values roll off
+ * toward white, `K + R·x/√(1+x²)` with `x = (v − K)/R`, instead of clipping. Slope 1 at the knee;
+ * 255 maps to about 244, close to the ungraded TONE curve's 240, so unlit whites look as before.
+ *
+ * Up to 255 each channel rolls off on its own (the art's own range, and the ambient-only tables).
+ * Past it, light is over-exposing the pixel, and a per-channel roll-off would merge every bright tone
+ * into the same pale yellow: there the curve moves onto the brightest channel and scales all three
+ * together, keeping the hue differences between, say, skin, blush and shirt under a lantern. The
+ * per-channel share falls from 1 at 255 to BLEACH_MIN at 255 + BLEACH_SPAN.
+ */
+export const SHOULDER_KNEE = 216;
+const SHOULDER_ROOM = 255 - SHOULDER_KNEE;
+const BLEACH_MIN = 0.5, BLEACH_SPAN = 600;
+/** The shoulder on one value ≥ 0. Arithmetic and one square root. */
+export function shoulder(v: number): number {
+  if (v <= SHOULDER_KNEE) return v;
+  const x = (v - SHOULDER_KNEE) / SHOULDER_ROOM;
+  return SHOULDER_KNEE + (SHOULDER_ROOM * x) / Math.sqrt(1 + x * x);
+}
+
 export type CompiledLight = {
   kind: "glow" | "shaft";
   /** Bounding box of the falloff mask, world art px. */
@@ -209,6 +230,8 @@ function compileHalo(light: CompiledLight): Halo | null {
  */
 export function createLighting(lights: readonly CompiledLight[], ambientByPhase: Record<DayPhase, Rgb>, grades?: Record<DayPhase, Grade>) {
   let lr = new Float32Array(0), lg = new Float32Array(0), lb = new Float32Array(0);
+  // Graded only: additive halo light, summed before the shoulder so it rolls off with everything else.
+  let hr = new Float32Array(0), hg = new Float32Array(0), hb = new Float32Array(0);
   let spanFrom = new Int32Array(0), spanTo = new Int32Array(0);
   const motes: Mote[] = [];
   const moteColor = rgbOf("cream5");
@@ -220,7 +243,11 @@ export function createLighting(lights: readonly CompiledLight[], ambientByPhase:
     let lut = ambientLut.get(phase);
     if (!lut) {
       const [ar, ag, ab] = ambientByPhase[phase], [fr, fg, fb] = floorOf(phase);
-      const make = (k: number, f: number) => Uint8Array.from({ length: 256 }, (_, c) => TONE[Math.min(1023, (c * k + (f * (255 - c)) / 255) | 0)]);
+      // Graded: the shoulder instead of TONE (ambient-only values stay within 0..255, where it is per channel).
+      const make = (k: number, f: number) => Uint8Array.from({ length: 256 }, (_, c) => {
+        const v = (c * k + (f * (255 - c)) / 255) | 0;
+        return grades ? Math.round(shoulder(Math.min(255, v))) : TONE[Math.min(1023, v)];
+      });
       lut = [make(ar, fr), make(ag, fg), make(ab, fb)];
       ambientLut.set(phase, lut);
     }
@@ -232,6 +259,7 @@ export function createLighting(lights: readonly CompiledLight[], ambientByPhase:
     apply(frame: Frame, vx: number, vy: number, phase: DayPhase, time: number, frozen: boolean): void {
       const n = frame.w * frame.h, W = frame.w, H = frame.h;
       if (lr.length !== n) { lr = new Float32Array(n); lg = new Float32Array(n); lb = new Float32Array(n); }
+      if (grades && hr.length !== n) { hr = new Float32Array(n); hg = new Float32Array(n); hb = new Float32Array(n); }
       if (spanFrom.length !== H) { spanFrom = new Int32Array(H); spanTo = new Int32Array(H); }
       spanFrom.fill(W); spanTo.fill(0);
       const [ar, ag, ab] = ambientByPhase[phase], [fr, fg, fb] = floorOf(phase);
@@ -261,6 +289,29 @@ export function createLighting(lights: readonly CompiledLight[], ambientByPhase:
           }
         }
       }
+      // Halos: a small additive bloom round lamp glass and windows, after dark. Inside lit spans
+      // (a halo sits inside its own glow's box).
+      const halo = grades ? grades[phase].halo : 0, haloOn = halo > 0 && halos.length > 0;
+      if (haloOn) for (const h of halos) {
+        if (!isLit(h.light, phase)) continue;
+        const s = h.light.strength * halo * HALO_ADD * flickerAt(h.light, time, frozen);
+        const [cr, cg, cb] = h.light.color, kr = cr * s, kg = cg * s, kb = cb * s;
+        const x0 = Math.max(h.x, vx), y0 = Math.max(h.y, vy);
+        const x1 = Math.min(h.x + h.w, vx + W), y1 = Math.min(h.y + h.h, vy + H);
+        if (x0 >= x1 || y0 >= y1) continue;
+        anyLight = true;
+        for (let y = y0; y < y1; y++) {
+          const row = y - vy;
+          if (x0 - vx < spanFrom[row]) spanFrom[row] = x0 - vx;
+          if (x1 - vx > spanTo[row]) spanTo[row] = x1 - vx;
+          let m = (y - h.y) * h.w + (x0 - h.x), d = row * W + (x0 - vx);
+          for (let x = x0; x < x1; x++, m++, d++) {
+            const v = h.mask[m];
+            if (!v) continue;
+            hr[d] += v * kr; hg[d] += v * kg; hb[d] += v * kb;
+          }
+        }
+      }
       if (ambientOnly || anyLight) {
         const data = frame.data, [tr, tg, tb] = lutFor(phase);
         for (let y = 0; y < H; y++) {
@@ -279,35 +330,31 @@ export function createLighting(lights: readonly CompiledLight[], ambientByPhase:
           }
           else for (let i = row + from, p = i * 4; i < row + to; i++, p += 4) {
             const r = lr[i], g = lg[i], b = lb[i];
+            const h0 = haloOn ? hr[i] : 0, h1 = haloOn ? hg[i] : 0, h2 = haloOn ? hb[i] : 0;
+            if (r === 0 && g === 0 && b === 0 && h0 === 0 && h1 === 0 && h2 === 0) {
+              // Unlit pixel inside a lit span: exactly the ambient-only path.
+              data[p] = tr[data[p]]; data[p + 1] = tg[data[p + 1]]; data[p + 2] = tb[data[p + 2]];
+              continue;
+            }
             // Light owns the pixels it reaches: it washes out the ambient's tint before adding its
             // own colour, so a lamp at night pools warm instead of turning the blue world white.
             const w = Math.min(1, (r + g + b) * NEUTRALISE);
             const mr = ar + (am - ar) * w + r * MULTIPLY, mg = ag + (am - ag) * w + g * MULTIPLY, mb = ab + (am - ab) * w + b * MULTIPLY;
             const cr = data[p], cg = data[p + 1], cb = data[p + 2];
-            data[p] = TONE[Math.min(1023, (cr * mr + r * ADD + (fr * (255 - cr)) / 255) | 0)];
-            data[p + 1] = TONE[Math.min(1023, (cg * mg + g * ADD + (fg * (255 - cg)) / 255) | 0)];
-            data[p + 2] = TONE[Math.min(1023, (cb * mb + b * ADD + (fb * (255 - cb)) / 255) | 0)];
+            let vr = cr * mr + r * ADD + (fr * (255 - cr)) / 255 + h0;
+            let vg = cg * mg + g * ADD + (fg * (255 - cg)) / 255 + h1;
+            let vb = cb * mb + b * ADD + (fb * (255 - cb)) / 255 + h2;
+            const m = vr > vg ? (vr > vb ? vr : vb) : vg > vb ? vg : vb;
+            if (m > 255) {
+              const k = shoulder(m) / m, bleach = Math.max(BLEACH_MIN, 1 - (m - 255) / BLEACH_SPAN);
+              vr = vr * k + bleach * (shoulder(vr) - vr * k);
+              vg = vg * k + bleach * (shoulder(vg) - vg * k);
+              vb = vb * k + bleach * (shoulder(vb) - vb * k);
+            } else if (m > SHOULDER_KNEE) { vr = shoulder(vr); vg = shoulder(vg); vb = shoulder(vb); }
+            // Round to nearest; the shoulder keeps every channel within 0..255.
+            data[p] = (vr + 0.5) | 0; data[p + 1] = (vg + 0.5) | 0; data[p + 2] = (vb + 0.5) | 0;
             lr[i] = 0; lg[i] = 0; lb[i] = 0;
-          }
-        }
-      }
-      // Halos: a small additive bloom round lamp glass and windows, after dark.
-      const halo = grades ? grades[phase].halo : 0;
-      if (halo > 0) for (const h of halos) {
-        if (!isLit(h.light, phase)) continue;
-        const s = h.light.strength * halo * HALO_ADD * flickerAt(h.light, time, frozen);
-        const [cr, cg, cb] = h.light.color, kr = cr * s, kg = cg * s, kb = cb * s;
-        const x0 = Math.max(h.x, vx), y0 = Math.max(h.y, vy);
-        const x1 = Math.min(h.x + h.w, vx + W), y1 = Math.min(h.y + h.h, vy + H);
-        const data = frame.data;
-        for (let y = y0; y < y1; y++) {
-          let m = (y - h.y) * h.w + (x0 - h.x), p = ((y - vy) * W + (x0 - vx)) * 4;
-          for (let x = x0; x < x1; x++, m++, p += 4) {
-            const v = h.mask[m];
-            if (!v) continue;
-            data[p] = TONE[Math.min(1023, (data[p] + v * kr) | 0)];
-            data[p + 1] = TONE[Math.min(1023, (data[p + 1] + v * kg) | 0)];
-            data[p + 2] = TONE[Math.min(1023, (data[p + 2] + v * kb) | 0)];
+            if (haloOn) { hr[i] = 0; hg[i] = 0; hb[i] = 0; }
           }
         }
       }

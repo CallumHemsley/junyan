@@ -3,13 +3,20 @@ import { TILE as T, PALETTE, type Color } from "../kit/index.ts";
 import { createAtlas } from "./atlas.ts";
 import { createFrame, hashFrame } from "./frame.ts";
 import { GRADES, LUT_BITS, VERMILION, applyGradeLut, buildGradeLut, gradeLut, lookupGrade } from "./grade.ts";
+import { SHOULDER_KNEE, shoulder } from "./light.ts";
 import { createSceneRenderer, renderToFrame } from "./renderer.ts";
 import { defineScene } from "./scene.ts";
 import { solid, testSprites } from "./test-sprites.ts";
 import { DAY_PHASES, type FrameState, type Rgb, type Scene } from "./types.ts";
 
 const greys = ["steel1", "stone1", "grey1"] as const;
-const atlas = createAtlas({ ...testSprites, ...Object.fromEntries(greys.map((c) => [`t/${c}`, solid(T, T, c, { layer: "floor" })])) });
+/** A face's tones side by side, two pixels each: what a lantern lights on a character. */
+const faceTones: Color[] = ["skin1", "skin2", "blush", "skin3", "skin4", "cream5"];
+const atlas = createAtlas({
+  ...testSprites,
+  ...Object.fromEntries(greys.map((c) => [`t/${c}`, solid(T, T, c, { layer: "floor" })])),
+  "t/face": { w: faceTones.length * 2, h: 4, anchor: [faceTones.length, 4], layer: "floor", draw: (p) => faceTones.forEach((c, i) => p.rect(i * 2, 0, 2, 4, c)) },
+});
 const rgb = (c: Color): Rgb => [parseInt(PALETTE[c].slice(1, 3), 16), parseInt(PALETTE[c].slice(3, 5), 16), parseInt(PALETTE[c].slice(5, 7), 16)];
 const at = (frame: { w: number; data: Uint8ClampedArray }, x: number, y: number) => Array.from(frame.data.subarray((y * frame.w + x) * 4, (y * frame.w + x) * 4 + 3));
 const luma = ([r, g, b]: Rgb) => (54 * r + 183 * g + 19 * b) / 256;
@@ -41,10 +48,10 @@ describe("grade table", () => {
   it("is pinned (arithmetic only, so Node and browsers agree; update the pins when retuning GRADES)", () => {
     expect(Object.fromEntries(DAY_PHASES.map((p) => [p, fnv(gradeLut(GRADES[p]))]))).toMatchInlineSnapshot(`
       {
-        "evening": "d9885c94",
-        "midday": "03148152",
-        "morning": "a6f39017",
-        "night": "bce6303c",
+        "evening": "094ea4df",
+        "midday": "43381bcc",
+        "morning": "393471d3",
+        "night": "558efc74",
       }
     `);
   });
@@ -111,6 +118,21 @@ describe("grade per phase on the palette", () => {
   });
 });
 
+describe("highlight shoulder", () => {
+  it("is the identity up to the knee, then rises smoothly toward white without reaching it", () => {
+    for (let v = 0; v <= SHOULDER_KNEE; v++) expect(shoulder(v)).toBe(v);
+    let last = shoulder(SHOULDER_KNEE);
+    for (let v = SHOULDER_KNEE + 1; v < 4000; v++) {
+      const s = shoulder(v);
+      expect(s).toBeGreaterThan(last);
+      expect(s - last).toBeLessThanOrEqual(1 + 1e-9);
+      expect(s).toBeLessThan(255);
+      last = s;
+    }
+    expect(shoulder(255)).toBeGreaterThan(240);
+  });
+});
+
 describe("graded renderer", () => {
   const room = (extra: Partial<Scene> = {}): Scene => defineScene({
     id: "test", size: [4, 4], background: "ink",
@@ -171,6 +193,24 @@ describe("graded renderer", () => {
       expect(graded[2], `${phase} ${c} leans cool`).toBeGreaterThan(graded[1]);
       expect(graded[2] - graded[0], `${phase} ${c} cooler than ungraded`).toBeGreaterThan(plain[2] - plain[0]);
     });
+  });
+
+  it("keeps a face's tones distinct under a strong lantern, where the ungraded light merges them", () => {
+    const distinct = (strength: number, phase: "evening" | "night", grade: boolean) => {
+      const scene = room({ props: [{ sprite: "t/face", at: [2, 2] }], lights: [{ kind: "glow", at: [2, 2 - 2 / T], radius: 3, strength }] });
+      const frame = draw(scene, { phase }, grade), y = 2 * T - 2;
+      const tones = faceTones.map((_, i) => at(frame, 2 * T - faceTones.length + i * 2, y));
+      let min = Infinity;
+      for (let i = 0; i < tones.length; i++) for (let j = i + 1; j < tones.length; j++) min = Math.min(min, Math.hypot(...tones[i].map((v, k) => v - tones[j][k])));
+      return { min, tones };
+    };
+    for (const phase of ["evening", "night"] as const) for (const strength of [0.6, 1.2, 1.8]) {
+      const { min, tones } = distinct(strength, phase, true);
+      expect(min, `${phase} at ${strength}: ${tones.map((t) => t.join(",")).join(" ")}`).toBeGreaterThanOrEqual(10);
+      for (const t of tones) expect(Math.min(...t), `${phase} at ${strength}: no tone burns to white`).toBeLessThan(240);
+    }
+    // A night-market stall light: the ungraded tone curve has merged the face; the shoulder has not.
+    expect(distinct(1.8, "night", true).min).toBeGreaterThan(3 * distinct(1.8, "night", false).min);
   });
 
   it("adds a halo round small glows after dark only", () => {
