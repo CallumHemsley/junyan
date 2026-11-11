@@ -15,7 +15,7 @@ import type { GameState } from "../../contracts";
 import type { WorldMapDefinition, WorldState } from "../schema";
 import type { WaiterMotion } from "./cafe";
 import { Surface, usePrefersReducedMotion } from "./PixelSurface";
-import { liveOutdoor, occluderFade, outdoorActors, outdoorAtlasOptions, outdoorPhase, outdoorPlayer, placedById } from "./outdoor";
+import { liveOutdoor, occluderFade, outdoorActors, outdoorAtlasOptions, outdoorPhase, outdoorPlayer, placedById, runtimeProps } from "./outdoor";
 
 const renderers = new Map<string, SceneRenderer>();
 let atlas: Atlas | null = null;
@@ -78,6 +78,8 @@ export default function OutdoorView({ map, game, world, motion, lifeClock, size,
   const castKey = poses.map(p => `${p.id}:${Math.round(p.position.x * TILE)},${Math.round(p.position.y * TILE)}:${p.facing}:${p.action}:${p.activity}:${Math.floor(p.phaseMs / 1600) % 3}`).join("|");
   const cast = useMemo(() => poses, [castKey]);
   const actors = useMemo(() => outdoorActors(cast, player), [cast, player]);
+  // Props the game projects at run time (the rooftop garden's pots) draw beside the compiled scene's.
+  const props = useMemo(() => runtimeProps(map.id, map.props), [map.id, map.props]);
   const placed = useMemo(() => placedById(renderer.compiled), [renderer]);
   const fadeKey = useRef("");
   const fadeRef = useRef<Record<string, number>>({});
@@ -101,7 +103,7 @@ export default function OutdoorView({ map, game, world, motion, lifeClock, size,
     // Under a bottom sheet the view shrinks to what stays visible, so the camera keeps the player in it.
     <div className={`pixel-map pixel-outdoor pixel-${map.id}`} data-pixel-scene={map.id} style={{ bottom: inset.bottom }} data-pixel-camera={camera ? JSON.stringify({ x: camera.x, y: camera.y, zoom: camera.zoom, dpr: camera.dpr, tile: TILE }) : undefined}
       data-faded={key || undefined}>
-      <Surface renderer={renderer} actors={actors} fade={fadeRef.current} phase={phase} focus={focus} zoom={zoom} reducedMotion={reducedMotion} onPointerDown={down} onCamera={setCamera} onApi={api} />
+      <Surface renderer={renderer} actors={actors} props={props} fade={fadeRef.current} phase={phase} focus={focus} zoom={zoom} reducedMotion={reducedMotion} onPointerDown={down} onCamera={setCamera} onApi={api} />
     </div>
   );
 }

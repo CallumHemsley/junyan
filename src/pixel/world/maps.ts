@@ -12,6 +12,7 @@
  */
 import townMap from "../../world/maps/town/map.json" with { type: "json" };
 import courtyardMap from "../../world/maps/courtyard/map.json" with { type: "json" };
+import rooftopMap from "../../world/maps/rooftop/map.json" with { type: "json" };
 import parkMap from "../../world/maps/landscape/park.json" with { type: "json" };
 import riverbankMap from "../../world/maps/landscape/riverbank.json" with { type: "json" };
 import { TILE } from "../kit/sprite.ts";
@@ -75,6 +76,7 @@ const LANDSCAPE_TRUNKS: Record<string, number> = { "mature-tree": 0.8, tree: 0.5
 export const OUTDOOR_MAPS: Readonly<Record<string, OutdoorMap>> = {
   town: townMap as unknown as OutdoorMap,
   courtyard: courtyardMap as unknown as OutdoorMap,
+  rooftop: rooftopMap as unknown as OutdoorMap,
   park: centredProps(parkMap as unknown as OutdoorMap),
   riverbank: centredProps(riverbankMap as unknown as OutdoorMap),
 };
