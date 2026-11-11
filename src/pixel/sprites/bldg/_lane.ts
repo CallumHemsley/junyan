@@ -171,13 +171,14 @@ export function pantiles(p: Px, x: number, y: number, w: number, h: number, seed
   // Old roofs sag between the gable walls: courses dip a little toward the middle of the run.
   const sag = (xx: number) => Math.round(2 * Math.sin((Math.PI * (xx - x)) / Math.max(1, w)));
   const tileCache = new Map<string, TileTone>();
+  const courseH = slope === "south" ? TILE_COURSE : 4;
   for (let xx = x; xx < x + w; xx++) {
-    const col = Math.floor(xx / TILE_COL), c = ((xx % TILE_COL) + TILE_COL) % TILE_COL;
-    // Each column's courses are laid by hand: a pixel of drift between neighbours.
-    const drift = hash(col, 3, seed) > 0.7 ? 1 : 0;
     for (let yy = y; yy < y + h; yy++) {
-      const ty = yy + drift - (slope === "south" ? sag(xx) : 0);
-      const course = Math.floor(ty / TILE_COURSE), r = ((ty % TILE_COURSE) + TILE_COURSE) % TILE_COURSE;
+      const ty = yy - (slope === "south" ? sag(xx) : 0);
+      const course = Math.floor(ty / courseH), r = ((ty % courseH) + courseH) % courseH;
+      // Courses run across the slope, each laid half a tile over from the one above.
+      const sx = xx + (course & 1 ? TILE_COL / 2 : 0);
+      const col = Math.floor(sx / TILE_COL), c = ((sx % TILE_COL) + TILE_COL) % TILE_COL;
       const m = options.mend;
       // The mend is laid course by course, so its edge is ragged by whole tiles.
       const ragTop = m ? Math.floor(hash(col, 1, seed + 13) * 2) * TILE_COURSE : 0, ragBot = m ? Math.floor(hash(col, 2, seed + 13) * 2) * TILE_COURSE : 0;
@@ -185,13 +186,13 @@ export function pantiles(p: Px, x: number, y: number, w: number, h: number, seed
       const key = `${col},${course}`;
       let t = tileCache.get(key);
       if (!t) {
-        const tx = col * TILE_COL + 3, tyc = course * TILE_COURSE + 3;
+        const tx = col * TILE_COL + 3, tyc = course * courseH + 2;
         const fy = Math.max(0, Math.min(1, (tyc - y) / Math.max(1, h))), fx = Math.max(0, Math.min(1, (tx - x) / Math.max(1, w)));
         // Smooth fields only, with a whisper of jitter so the bleached zone has a ragged, tile-wide edge.
         const amp = slope === "south" ? 1 : 0.5;
-        let v = baseL + 0.1 + amp * (0.75 * (0.5 - fy) + 0.45 * (0.5 - fx)) + (hash(col, course, seed + 1) - 0.5) * 0.14;
+        let v = baseL + 0.1 + amp * (0.95 * (0.5 - fy) + 0.4 * (0.5 - fx)) + (hash(col, course, seed + 1) - 0.5) * 0.14;
         let warm = false;
-        for (const st of strips) if (col >= st.c0 && col < st.c1 && tyc >= st.top + Math.floor(hash(col, 7, seed) * 2) * TILE_COURSE && tyc < st.bottom) { v += st.shift; warm ||= st.warm; }
+        for (const st of strips) if (col >= st.c0 && col < st.c1 && tyc >= st.top + Math.floor(hash(col, 7, seed) * 2) * courseH && tyc < st.bottom) { v += st.shift; warm ||= st.warm; }
         const wet = wetness(tx, tyc) + (slope === "south" ? Math.max(0, (fy - 0.86) * 2.5) : 0);
         const isWet = wet > 0.25 + 0.45 * hash(col, course, seed + 2);
         const replaced = hash(col, course, seed + 19) > 0.993;
@@ -203,22 +204,23 @@ export function pantiles(p: Px, x: number, y: number, w: number, h: number, seed
       }
       if (inMend) t = NEW_TILES;
       const slipped = !inMend && hash(col, course, seed + 11) > 0.99;
-      let paint: Color;
-      if (c < 4 && !slipped) {
-        paint = c === 0 ? t.capLit : c === 3 ? t.capShade : t.cap;
-        if (r === TILE_COURSE - 1) paint = c === 0 ? t.capShade : t.lip;     // the tile's lower end, in shadow
-        else if (r === 0 && c < 2) paint = t.capHead;                       // its rounded head catches the sun
-      } else if (slipped && c < 4) {
-        // The cap has slid two courses down the slope: a dark gap where it was.
-        paint = r < 2 ? t.lip : c === 0 ? t.chDeep : t.ch;
-      } else {
-        const k = c - 4;
-        paint = k === 0 ? t.chDeep : k === 3 ? t.chRise : t.ch;
-        if (r === TILE_COURSE - 1 && k < 3) paint = t.lip;
-      }
-      p.px(xx, yy, paint);
+      p.px(xx, yy, slipped ? (r === 0 || c === 0 ? t.lip : t.chDeep) : tileCell(t, c, r, courseH));
     }
   }
+}
+
+/**
+ * One pixel of a tile seen from above, by its column `c` (0..7) across the tile and row `r` down a
+ * course `h` rows tall. The tile's head catches the sun, its body is lit on the left, and its rounded
+ * lower end overlaps the course below with a dark lip, scalloped at the joints: the courses read as
+ * horizontal rows stepping down the slope.
+ */
+function tileCell(t: TileTone, c: number, r: number, h: number): Color {
+  const last = h - 1;
+  if (r === last) return c === 0 || c === TILE_COL - 1 ? t.chDeep : t.lip;
+  if (r === last - 1) return c === 0 || c === TILE_COL - 1 ? t.lip : c === 1 ? t.cap : t.capShade;
+  if (r === 0) return c === 0 ? t.ch : c === 1 ? t.capHead : c < 4 ? t.capLit : t.cap;
+  return c === 0 ? t.ch : c === 1 ? t.capLit : c === TILE_COL - 1 ? t.capShade : t.cap;
 }
 
 /**
@@ -261,17 +263,20 @@ export function shadowWedge(p: Px, x: number, y: number, w: number, h: number): 
   }
 }
 
-/** The ridge: lime-mortared tiles stood on edge, 6 rows. Its shadow falls on the south slope. */
+/**
+ * The ridge, 6 rows: a dark break against the far slope, a bright lime cap line catching the sun,
+ * tiles stood on edge, a mortar bed, and its shadow on the near slope.
+ */
 export function ridge(p: Px, x: number, y: number, w: number, seed: number): void {
-  p.hline(x, y, w, "stone3").hline(x, y + 1, w, "stone5");
+  p.hline(x, y, w, "steel2").hline(x, y + 1, w, "steel6");
   for (let xx = x; xx < x + w; xx++) {
     const k = ((xx % 3) + 3) % 3;
-    p.px(xx, y + 2, k === 0 ? "steel2" : k === 1 ? "steel4" : "steel3");
-    p.px(xx, y + 3, k === 0 ? "steel1" : k === 1 ? "steel3" : "steel2");
-    if (hash(xx >> 2, y, seed) > 0.75) p.px(xx, y + 1, "stone4");
+    p.px(xx, y + 2, k === 0 ? "stone4" : "stone5");
+    p.px(xx, y + 3, k === 0 ? "steel2" : k === 1 ? "steel4" : "steel3");
+    if (hash(xx >> 2, y, seed) > 0.8) p.px(xx, y + 1, "stone5");
   }
-  p.hline(x, y + 4, w, "stone4").hline(x, y + 5, w, "steel1");
-  for (let xx = x; xx < x + w; xx++) if (hash(xx >> 1, y + 4, seed) > 0.65) p.px(xx, y + 4, "stone3");
+  p.hline(x, y + 4, w, "stone3").hline(x, y + 5, w, "steel1");
+  for (let xx = x; xx < x + w; xx++) if (hash(xx >> 1, y + 4, seed) > 0.65) p.px(xx, y + 4, "stone4");
 }
 
 /** Upturned ridge end (a little plaster horn) at x, ridge row y; `flip` for the east end. */
@@ -283,27 +288,26 @@ export function ridgeEnd(p: Px, x: number, y: number, flip = false): void {
 }
 
 /**
- * The eave: a row of round tile ends (瓦当) under the cap rolls and pointed drip tiles (滴水) under the
- * channels, 5 rows, then a soft shadow on the wall below (`shadowRows`).
+ * The eave, where the roof starts: 5 rows from `y`, a row of round drip-tile ends (瓦当) scalloped
+ * along the edge, lit on their upper left, then the dark underside of the overhang; below it a soft
+ * shadow cast on the wall (`shadowRows`, default 3): two rows one step darker, then a row that only
+ * darkens the lit tones, so the shadow fades without dithering.
  */
 export function eave(p: Px, x: number, y: number, w: number, shadowRows = 3): void {
+  const DISC = ["abbbbbc.", "abbbccdd", "bbcccddd", ".cccddd.", "eeeeeeee"];
+  const tone: Record<string, Color> = { a: "steel6", b: "steel4", c: "steel3", d: "steel2", e: "ink" };
   for (let xx = x; xx < x + w; xx++) {
     const c = ((xx % TILE_COL) + TILE_COL) % TILE_COL;
-    const cap = ["abb.", "abbc", "bbcc", "bccd", ".dd."], drip = ["bbbc", "bccc", ".ccd", ".dd.", "...."];
-    const col = c < 4 ? cap : drip, k = c % 4;
     for (let r = 0; r < 5; r++) {
-      const ch = col[r][k];
-      const paint: Color | null = ch === "a" ? "steel5" : ch === "b" ? "steel4" : ch === "c" ? "steel3" : ch === "d" ? "steel1" : null;
-      if (paint) p.px(xx, y + r, paint);
+      const ch = DISC[r][c];
+      p.px(xx, y + r, ch === "." ? (r === 0 ? "steel2" : "steel1") : tone[ch]);
     }
   }
-  for (let r = 0; r < shadowRows; r++) p.over((q) => {
-    for (let xx = x; xx < x + w; xx++) {
-      const yy = y + 5 + r;
-      if (!q.get(xx, yy) || q.get(xx, yy - 1) === null) continue;
-      if (r === 0 || (r === 1 && (xx & 1) === 0) || (r === 2 && (xx % 4) === 0)) q.px(xx, yy, r === 0 ? "steel1" : "steel2");
-    }
-  });
+  for (let r = 0; r < shadowRows; r++) for (let xx = x; xx < x + w; xx++) {
+    const yy = y + 5 + r, cur = p.get(xx, yy);
+    if (!cur || !DARKER[cur]) continue;
+    if (r < 2 || /[456]$/.test(cur)) p.px(xx, yy, DARKER[cur]!);
+  }
 }
 
 /** A gable wall's coping running down the roof edge: a lime-capped brick wall top, 5px wide. */
@@ -1075,33 +1079,100 @@ export function facadeShell(p: Px, x: number, top: number, w: number, base: numb
   p.vline(x, top, base - top + 1, "steel1").vline(x + w - 1, top, base - top + 1, "steel1");
 }
 
+/**
+ * How a roof ends east and west. `hip`: the ends slope back as triangular hip faces (the west hip lit,
+ * the east hip in shade) under diagonal hip ridges. `gable`: the ends stop on gable walls whose
+ * copings climb diagonally from the eave corners to the ridge, a vent in each. `square`: the old flat
+ * ends with straight copings. Either diagonal end gives the roof its silhouette and shows where it starts.
+ */
+export type RoofEnds = "hip" | "gable" | "square";
+/** The house style for roof ends. A setting, so comparison renders can switch every roof at once. */
+export const roofStyle: { ends: RoofEnds } = { ends: "hip" };
+
 export type RoofOptions = {
   seed: number;
   /** Row of the ridge's top, relative to `y`. Above it is the north slope. */
   ridgeY: number;
+  /** `false` is the same as `ends: "square"` without copings. */
   copings?: boolean;
+  ends?: RoofEnds;
   mend?: readonly [number, number, number, number];
   damp?: number;
 };
 
+const HIP_LIT = toneAt(STEEL, 3);
+const HIP_DARK: TileTone = { capHead: "steel3", capLit: "steel3", cap: "steel2", capShade: "steel2", chDeep: "steel1", ch: "steel2", chRise: "steel2", lip: "steel1" };
+
 /**
- * A pitched pantile roof over (x, y, w, h): the north slope above the ridge (lit), the ridge, the long
- * south slope toward the lane, and the eave's tile ends in its last 5 rows. Gable copings frame it.
+ * A pitched pantile roof over (x, y, w, h): the far (north) slope above the ridge, foreshortened and
+ * lit; the ridge; the long near (south) slope toward the lane; the eave's tile ends in the last 5 rows.
+ * Its east and west ends follow `ends` (default `roofStyle.ends`).
  */
 export function laneRoof(p: Px, x: number, y: number, w: number, h: number, o: RoofOptions): void {
-  const eaveY = y + h - 5;
+  const ends: RoofEnds = o.ends ?? (o.copings === false ? "square" : roofStyle.ends);
+  const eaveY = y + h - 5, rY = y + o.ridgeY, sTop = rY + 6;
   pantiles(p, x, y, w, o.ridgeY, o.seed, "north", { damp: (o.damp ?? 0.08) + 0.04 });
-  pantiles(p, x, y + o.ridgeY + 6, w, eaveY - (y + o.ridgeY + 6), o.seed + 1, "south", { mend: o.mend, damp: o.damp });
-  lichen(p, x + 6, y + o.ridgeY + 6, w - 12, eaveY - (y + o.ridgeY + 6), o.seed, Math.round(w / 90));
-  ridge(p, x, y + o.ridgeY, w, o.seed);
+  pantiles(p, x, sTop, w, eaveY - sTop, o.seed + 1, "south", { mend: o.mend, damp: o.damp });
+  lichen(p, x + 6, sTop, w - 12, eaveY - sTop, o.seed, Math.round(w / 90));
+  if (ends === "square") {
+    ridge(p, x, rY, w, o.seed);
+    eave(p, x, eaveY, w);
+    p.hline(x, y, w, "steel1");
+    if (o.copings ?? true) {
+      coping(p, x, y, h - 5, "left");
+      coping(p, x + w - 5, y, h - 5, "right");
+      ridgeEnd(p, x, rY + 1);
+      ridgeEnd(p, x + w - 5, rY + 1, true);
+    }
+    return;
+  }
+  // The ends: how far each reaches in from the side at row yy. Zero at the eave and the top edge,
+  // widest (`gw`) along the ridge, so each end is a chevron pointing in at the ridge's end.
+  const gw = Math.max(6, Math.min(Math.round((eaveY - rY) * 0.5), Math.floor(w * 0.2)));
+  const reach = (yy: number) => yy <= rY ? Math.round((gw * (yy - y)) / Math.max(1, rY - y)) : yy <= sTop ? gw : Math.round((gw * (eaveY - yy)) / Math.max(1, eaveY - sTop));
+  ridge(p, x + gw, rY, w - 2 * gw, o.seed);
+  for (const side of ["left", "right"] as const) {
+    const lit = side === "left";
+    for (let yy = y; yy < eaveY; yy++) {
+      const b = reach(yy);
+      for (let i = 0; i < b; i++) {
+        const xx = lit ? x + i : x + w - 1 - i;
+        p.px(xx, yy, ends === "hip" ? hipPixel(lit, i, yy, o.seed) : gablePixel(lit, i, yy));
+      }
+      // The diagonal edge: a hip ridge (a lit bead over a shadow) or a gable coping (lime cap).
+      const at = (i: number) => (lit ? x + b + i : x + w - 1 - b - i);
+      if (b > 0 || (yy > rY && yy < eaveY)) {
+        if (ends === "hip") { p.px(at(-1), yy, lit ? "steel6" : "steel4"); p.px(at(0), yy, lit ? "stone5" : "steel3"); p.px(at(1), yy, "steel1"); }
+        else { p.px(at(-2), yy, lit ? "stone4" : "stone3"); p.px(at(-1), yy, "stone5"); p.px(at(0), yy, lit ? "stone4" : "stone3"); p.px(at(1), yy, "steel1"); }
+      }
+    }
+    if (ends === "gable") {
+      // A small round vent in the gable, under the ridge's end.
+      const vx = lit ? x + Math.round(gw * 0.3) : x + w - 1 - Math.round(gw * 0.3) - 4, vy = rY + 1;
+      block(p, vx, vy, [".aa.", "abbc", "abbc", ".cc."], { a: "stone2", b: "ink", c: "stone5" }, "gableVent");
+    }
+    p.vline(lit ? x : x + w - 1, y, eaveY - y, "steel1");
+  }
+  ridgeEnd(p, x + gw - 3, rY + 1);
+  ridgeEnd(p, x + w - gw - 2, rY + 1, true);
   eave(p, x, eaveY, w);
   p.hline(x, y, w, "steel1");
-  if (o.copings ?? true) {
-    coping(p, x, y, h - 5, "left");
-    coping(p, x + w - 5, y, h - 5, "right");
-    ridgeEnd(p, x, y + o.ridgeY + 1);
-    ridgeEnd(p, x + w - 5, y + o.ridgeY + 1, true);
-  }
+}
+
+/** A hip face's tile, courses running down toward the side eave (lips facing out), lit west, shaded east. */
+function hipPixel(lit: boolean, i: number, yy: number, seed: number): Color {
+  const course = Math.floor(i / 5), r = 4 - (i % 5);
+  const sy = yy + (course & 1 ? TILE_COL / 2 : 0);
+  const c = ((sy % TILE_COL) + TILE_COL) % TILE_COL;
+  const t = lit ? (hash(course, Math.floor(sy / TILE_COL), seed) > 0.85 ? toneAt(STEEL, 2) : HIP_LIT) : HIP_DARK;
+  return tileCell(t, c, r, 5);
+}
+
+/** A gable wall's face: lime-washed brick, the west gable in sun, the east in shade, courses every 4 rows. */
+function gablePixel(lit: boolean, i: number, yy: number): Color {
+  if ((yy & 3) === 3) return lit ? "stone3" : "stone2";
+  if (((yy >> 2) & 1 ? i + 3 : i) % 8 === 7) return lit ? "stone3" : "stone2";
+  return lit ? "stone4" : "stone3";
 }
 
 // ── life at the foot of a wall ───────────────────────────────────────────────
