@@ -47,6 +47,15 @@ export const LIFE_CHARACTERS: Readonly<Record<string, string>> = {
 /** Birds by flock: pigeons by the canal, sparrows everywhere else. */
 export const birdSprite = (hookId: string) => hookId.includes("canal") ? "critter/pigeon" : "critter/sparrow";
 
+/** The courtyard story's two cats, told apart by colour in a clue; every other cat is the street tabby. */
+export const STORY_CATS: Readonly<Record<string, string>> = {
+  "white-cat": "critter/cat-white",
+  "cats.white": "critter/cat-white",
+  "black-cat": "critter/cat-black",
+  "cats.black": "critter/cat-black",
+};
+export const catSprite = (characterId: string) => STORY_CATS[characterId] ?? "critter/cat-tabby";
+
 /** Critters face down, left or right; one heading north turns to the side it is drifting. */
 function critterFacing(pose: ActorPose): Facing {
   const facing = pixelFacing(pose.facing);
@@ -67,7 +76,8 @@ export function lifeActor(pose: ActorPose): Actor {
   // A per-actor animation offset, so a flock does not bob in step.
   const phase = Math.floor(hash(pose.id.length, pose.id.charCodeAt(pose.id.length - 1), 7) * 4);
   if (pose.kind === "bird") return { id, sprite: birdSprite(pose.id), at, facing: critterFacing(pose), action: birdAction(pose), phase };
-  if (pose.kind === "cat") return { id, sprite: "critter/cat-tabby", at, facing: critterFacing(pose), action: pose.action === "walk" ? "walk" : pose.activity === "sit" ? "sit" : "idle", phase };
+  // A cat's `idle` is already sitting up; it has no separate `sit`.
+  if (pose.kind === "cat") return { id, sprite: catSprite(pose.characterId), at, facing: critterFacing(pose), action: pose.action === "walk" ? "walk" : "idle", phase };
   const action = pose.action === "walk" ? "walk" : pose.activity === "sit" ? "sit" : "idle";
   return { id, sprite: LIFE_CHARACTERS[pose.characterId] ?? `char/${pose.characterId}`, at, facing: pixelFacing(pose.facing), action, phase };
 }
