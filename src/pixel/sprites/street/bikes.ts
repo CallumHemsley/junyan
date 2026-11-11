@@ -11,7 +11,7 @@
  *   tube and a wicker basket holding a tin bait box.
  */
 import { defineSprites, type SpriteDef } from "../../kit/index.ts";
-import { footprintPx, townProps, townSpriteId } from "../../town/map.ts";
+import { footprintPx, mapProps, propSpriteId } from "../../world/maps.ts";
 import { PAINT, art, autoOutline, bicycle, flipInPlace, type BikeStyle, type Ramp } from "./_helpers.ts";
 
 const H = 40;
@@ -155,6 +155,6 @@ const scooter: SpriteDef = {
 };
 
 const sprites: Record<string, SpriteDef> = { "street/e-scooter": scooter };
-townProps("bicycle").forEach((prop, i) => { sprites[townSpriteId(prop.id)] = bikeSprite(i, footprintPx(prop).w); });
+mapProps("all", "bicycle").forEach((prop, i) => { sprites[propSpriteId(prop.map, prop.id)] = bikeSprite(i, footprintPx(prop).w); });
 
 export default defineSprites(sprites);

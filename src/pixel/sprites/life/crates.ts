@@ -4,7 +4,7 @@
  * map instance, sized to its footprint; the stacks differ by instance, not by variant alone.
  */
 import { defineSprites, type Px } from "../../kit/index.ts";
-import { townProps, townSpriteId } from "../../town/map.ts";
+import { mapProps, propSpriteId } from "../../world/maps.ts";
 import {
   BLUE, BROWN_GLASS, GREEN_GLASS, JADE, art, autoOutline, bottleNeck, cardboardPile, plasticCrate, seedOf,
   townFoot, townFrame, woodCrate, type Ramp,
@@ -106,10 +106,10 @@ const STACKS: Record<string, Stack> = {
   "town.crates-3": shortB,
 };
 
-export default defineSprites(Object.fromEntries(townProps("crates").map((prop, i) => {
+export default defineSprites(Object.fromEntries(mapProps("all", "crates").map((prop, i) => {
   const f = townFrame(prop, f0Rise(prop.width));
   const stack = STACKS[prop.id] ?? (prop.width > 1.5 ? (i % 2 ? longB : longA) : i % 2 ? shortB : shortA);
-  return [townSpriteId(prop.id), {
+  return [propSpriteId(prop.map, prop.id), {
     w: f.w, h: f.h, anchor: f.anchor, foot: townFoot(prop), shadow: { rx: Math.round(f.w / 2) - 1, ry: 4, dy: -4 },
     draw: (p: Px) => {
       stack(p, f.w, f.gy, seedOf(prop.id));

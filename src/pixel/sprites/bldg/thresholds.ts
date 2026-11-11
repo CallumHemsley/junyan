@@ -8,10 +8,10 @@
  * its inner face. The sprite is the footprint's 6px wide and 22 + the leaf's height tall.
  */
 import { defineSprites, hash, TILE, type Color, type Px, type SpriteDef } from "../../kit/index.ts";
-import { footprintPx, townProps, townSpriteId, type TownProp } from "../../town/map.ts";
+import { footprintPx, mapProps, propSpriteId, type MapProp } from "../../world/maps.ts";
 import { block, moss } from "./_lane.ts";
 
-type Draw = (p: Px, w: number, h: number, prop: TownProp) => void;
+type Draw = (p: Px, w: number, h: number, prop: MapProp) => void;
 
 // ── steps ───────────────────────────────────────────────────────────────────
 
@@ -195,7 +195,7 @@ const LEAF: Record<number, { h: number; tone: LeafTone; story: "lacquer" | "glaz
   19: { h: 64, tone: { edge: "jade1", face: "jade3", gloss: "jade4", top: "jade5", rail: "jade2" }, story: "planks" },
 };
 
-function leafSprite(prop: TownProp): SpriteDef {
+function leafSprite(prop: MapProp): SpriteDef {
   const { w, h: foot } = footprintPx(prop);
   const spec = LEAF[prop.variant] ?? LEAF[18];
   const H = foot + spec.h;
@@ -249,13 +249,13 @@ function leafSprite(prop: TownProp): SpriteDef {
 const STEPS: Record<number, Draw> = { 13: restaurantSteps, 14: residenceSteps, 15: workshopLanding, 16: riverStairs };
 const MATS: Record<number, Draw> = { 17: coirMat, 18: ragRug, 19: cardboardMat, 20: gatewaySill };
 
-function flatSprite(prop: TownProp, draw: Draw): SpriteDef {
+function flatSprite(prop: MapProp, draw: Draw): SpriteDef {
   const { w, h } = footprintPx(prop);
   return { w, h, anchor: [Math.round((prop.width * TILE) / 2), h - 1], layer: "floor", draw: (p) => draw(p, w, h, prop) };
 }
 
 export default defineSprites(Object.fromEntries([
-  ...townProps("steps").map((prop) => [townSpriteId(prop.id), flatSprite(prop, STEPS[prop.variant] ?? residenceSteps)] as const),
-  ...townProps("threshold-mat").map((prop) => [townSpriteId(prop.id), flatSprite(prop, MATS[prop.variant] ?? coirMat)] as const),
-  ...townProps("open-door-leaf").map((prop) => [townSpriteId(prop.id), leafSprite(prop)] as const),
+  ...mapProps("all", "steps").map((prop) => [propSpriteId(prop.map, prop.id), flatSprite(prop, STEPS[prop.variant] ?? residenceSteps)] as const),
+  ...mapProps("all", "threshold-mat").map((prop) => [propSpriteId(prop.map, prop.id), flatSprite(prop, MATS[prop.variant] ?? coirMat)] as const),
+  ...mapProps("all", "open-door-leaf").map((prop) => [propSpriteId(prop.map, prop.id), leafSprite(prop)] as const),
 ]));

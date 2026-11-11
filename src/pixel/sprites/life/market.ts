@@ -4,7 +4,7 @@
  * anchored on its bottom-centre (pixel-contracts).
  */
 import { defineSprites, type Px } from "../../kit/index.ts";
-import { townProps, townSpriteId } from "../../town/map.ts";
+import { mapProps, propSpriteId } from "../../world/maps.ts";
 import {
   BLUE, art, autoOutline, basket, bokChoy, cloth, egg, eggplant, garlic, ginger, orange, orangeHeap,
   plasticCrate, printMotif, scallion, townFoot, townFrame, tray, JADE, lowPlasticStool,
@@ -146,9 +146,9 @@ function winterMelon(p: Px, x: number, y: number): void {
   p.px(x + 19, y + 2, "steel6").px(x + 20, y + 3, "steel6");
 }
 
-const stall = townProps("market-stall").map((prop) => {
+const stall = mapProps("all", "market-stall").map((prop) => {
   const f = townFrame(prop, 70);
-  return [townSpriteId(prop.id), {
+  return [propSpriteId(prop.map, prop.id), {
     w: f.w, h: f.h, anchor: f.anchor, foot: townFoot(prop), shadow: { rx: Math.round(f.w / 2) - 4, ry: 6, dy: -12 },
     /**
      * Auntie Xu's vegetable and fruit stall, twenty years on this corner; Lin Jie from upstairs minds it
@@ -265,9 +265,9 @@ const stall = townProps("market-stall").map((prop) => {
 
 // ── baskets on the bricks ──────────────────────────────────────────────────────
 
-const baskets = townProps("baskets").map((prop) => {
+const baskets = mapProps("all", "baskets").map((prop) => {
   const f = townFrame(prop, 28);
-  return [townSpriteId(prop.id), {
+  return [propSpriteId(prop.map, prop.id), {
     w: f.w, h: f.h, anchor: f.anchor, foot: townFoot(prop), shadow: { rx: Math.round(f.w / 2) - 2, ry: 4, dy: -4 },
     /**
      * What Auntie Xu sets out on the bricks: her husband's back-basket (背篓) bristling with leeks, its

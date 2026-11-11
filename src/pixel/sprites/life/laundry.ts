@@ -8,7 +8,7 @@
  * Four frames at 2 fps: a slow breeze lifts the hems a pixel east and lets them fall.
  */
 import { defineSprites, hash, type Color, type Px } from "../../kit/index.ts";
-import { TOWN, townProps, townSpriteId, type TownProp } from "../../town/map.ts";
+import { outdoorMap, mapProps, propSpriteId, type MapProp } from "../../world/maps.ts";
 import { TILE } from "../../kit/sprite.ts";
 import {
   art, cloth, peg, pole, printCheck, printMotif, printStripes, seedOf, townFrame, type Cloth, type Ramp,
@@ -288,11 +288,12 @@ function bracket(p: Px, x: number): void {
 }
 
 /** Spans (sprite px) under doors: exits, steps and door leaves touching the line, padded a little. */
-function doorSpans(prop: TownProp): [number, number][] {
+function doorSpans(prop: MapProp): [number, number][] {
   const near = (y: number) => Math.abs(y - prop.position.y) < 1.6;
+  const map = outdoorMap(prop.map);
   const rects = [
-    ...TOWN.exits.map((e) => e.rect),
-    ...TOWN.props.filter((q) => q.kind === "steps" || q.kind === "open-door-leaf").map((q) => ({ x: q.position.x, y: q.position.y, width: q.width })),
+    ...map.exits.map((e) => e.rect),
+    ...map.props.filter((q) => q.kind === "steps" || q.kind === "open-door-leaf").map((q) => ({ x: q.position.x, y: q.position.y, width: q.width })),
   ];
   return rects
     .filter((r) => near(r.y) && r.x < prop.position.x + prop.width && r.x + r.width > prop.position.x)
@@ -393,12 +394,12 @@ const HOUSEHOLDS: Record<string, (seed: number) => Household> = {
   "town.alley-laundry": cooks,
 };
 
-export default defineSprites(Object.fromEntries(townProps("laundry").map((prop) => {
+export default defineSprites(Object.fromEntries(mapProps("all", "laundry").map((prop) => {
   const f = townFrame(prop, RISE);
   const seed = seedOf(prop.id);
   const household = (HOUSEHOLDS[prop.id] ?? (prop.variant % 2 ? couple : wangs))(seed);
   const avoid = doorSpans(prop);
-  return [townSpriteId(prop.id), {
+  return [propSpriteId(prop.map, prop.id), {
     w: f.w, h: f.h, anchor: f.anchor, frames: SWAY.length, fps: 2,
     draw: (p: Px, frame: number) => {
       const W = f.w, sway = SWAY[frame];

@@ -6,7 +6,7 @@
  * The parts live in `_lane.ts`; each building here is a short composition with its own story.
  */
 import { defineSprites, hash, TILE, type Color, type Px, type SpriteDef } from "../../kit/index.ts";
-import { footprintPx, openingsOn, townProps, townSpriteId, type TownProp } from "../../town/map.ts";
+import { footprintPx, openingsOn, mapProps, propSpriteId, type MapProp } from "../../world/maps.ts";
 import {
   acUnit, aerial, basePot, birdcage, block, brickedWindow, bricks, castShadow, chimney, downpipe, homeSign, hoseReel, meterCluster,
   paintedRepair, satelliteDish, stoolAndBasin, wallBicycle, wornPatch, type Lacquer, eave, facadeShell, laneRoof, laneWindow, laundryPole, meterBox, moss,
@@ -14,11 +14,11 @@ import {
   RED_BRICK, shadowWedge, stain, stoneGate, stringCourse, tarp, tigerWindow, waterTank, type GateOptions, type Pediment,
 } from "./_lane.ts";
 
-type Draw = (p: Px, prop: TownProp, w: number, h: number) => void;
+type Draw = (p: Px, prop: MapProp, w: number, h: number) => void;
 
 /** The door opening on the prop's bottom edge, from the map's exits, or a fallback centred at `cx`. */
-function doorOf(prop: TownProp, cx: number, width: number): { x0: number; x1: number; open: boolean } {
-  const door = openingsOn(prop).find((o) => o.kind === "door");
+function doorOf(prop: MapProp, cx: number, width: number): { x0: number; x1: number; open: boolean } {
+  const door = openingsOn(prop.map, prop).find((o) => o.kind === "door");
   return door ? { x0: door.x0, x1: door.x1, open: true } : { x0: cx - width / 2, x1: cx + width / 2, open: false };
 }
 
@@ -283,7 +283,7 @@ type BayStyle = {
  * A row of two-storey shikumen bays sharing one roof, 128px a bay: a gate per bay, two upper windows,
  * party walls up the roof between bays. `bays` sets each bay's character.
  */
-function rowHouses(p: Px, prop: TownProp, W: number, H: number, bays: readonly BayStyle[], roof: (p: Px, roofH: number, bayW: number) => void): void {
+function rowHouses(p: Px, prop: MapProp, W: number, H: number, bays: readonly BayStyle[], roof: (p: Px, roofH: number, bayW: number) => void): void {
   const seed = prop.variant * 31 + 7;
   const F = 128, top = H - F, base = H - 1;
   const bayW = Math.floor(W / bays.length);
@@ -757,7 +757,7 @@ const DRAW: Record<string, Draw> = {
 /** Every other lane building on the map is generated, so no two rows repeat. */
 const BY_KIND: Record<string, Draw> = { "building-residence": laneRow, "building-row": laneRow, "building-utility": laneRow };
 
-function buildingSprite(prop: TownProp): SpriteDef {
+function buildingSprite(prop: MapProp): SpriteDef {
   const { w, h } = footprintPx(prop);
   const draw = DRAW[prop.id] ?? BY_KIND[prop.kind];
   const ax = Math.round((prop.width * TILE) / 2);
@@ -770,5 +770,5 @@ function buildingSprite(prop: TownProp): SpriteDef {
 }
 
 export default defineSprites(Object.fromEntries(
-  townProps("building-residence", "building-row", "building-utility").map((prop) => [townSpriteId(prop.id), buildingSprite(prop)]),
+  mapProps("all", "building-residence", "building-row", "building-utility").map((prop) => [propSpriteId(prop.map, prop.id), buildingSprite(prop)]),
 ));

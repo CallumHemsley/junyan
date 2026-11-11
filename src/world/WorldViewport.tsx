@@ -28,7 +28,7 @@ import {reducedWorldChanged} from "./render-invalidation";
 import {visibleLifeReactions} from "./life/render";
 import "./world.css";
 import CafeView from "./pixel/CafeView";
-import TownView from "./pixel/TownView";
+import OutdoorView from "./pixel/OutdoorView";
 import {tapDestination} from "./pixel/cafe";
 import {isPixelMap,cardinalDirections,PIXEL_WALK_SPEED} from "./pixel/maps";
 import type {PixelViewApi} from "../pixel/engine/PixelView.tsx";
@@ -89,7 +89,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   return()=>resize.disconnect();
  },[]);
  useEffect(()=>{
-  // Pixel maps draw in their own view (CafeView, TownView); this loop still walks, keeps time and places the cue.
+  // Pixel maps draw in their own view (CafeView, OutdoorView); this loop still walks, keeps time and places the cue.
   const element=canvas.current,context=element?.getContext("2d")??null;
   if(!pixel&&!context)return;
   const observed_=element??root.current;if(!observed_)return;
@@ -229,7 +229,7 @@ export default function WorldViewport({state,maps,game,onLookup,onPlay=()=>{},di
   if(directions[event.key]){event.preventDefault();event.stopPropagation();keys.current.add(event.key);}
   else if((event.key==="e"||event.key==="Enter")&&selected){event.preventDefault();event.stopPropagation();activate();}
  }} onBlur={event=>{if(!event.currentTarget.contains(event.relatedTarget))keys.current.clear();}}>
-  {pixel?(map.id==="town"?<TownView map={map} game={game} world={state} lifeClock={()=>elapsed.current} {...pixelProps}/>:<CafeView game={game} world={state} {...pixelProps}/>):<canvas ref={canvas} aria-hidden="true" onPointerDown={event=>{
+  {pixel?(map.id==="restaurant"?<CafeView game={game} world={state} {...pixelProps}/>:<OutdoorView key={map.id} map={map} game={game} world={state} lifeClock={()=>elapsed.current} {...pixelProps}/>):<canvas ref={canvas} aria-hidden="true" onPointerDown={event=>{
    if(paused)return;
    root.current?.focus();const rect=event.currentTarget.getBoundingClientRect(),p=pickSurface({x:(event.clientX-rect.left)*cameraRef.current.width/rect.width,y:(event.clientY-rect.top)*cameraRef.current.height/rect.height},cameraRef.current,map);
    if(!p)return;

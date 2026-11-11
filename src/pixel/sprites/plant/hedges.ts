@@ -10,7 +10,7 @@
  * patch where somebody's mop water goes, the cat's hole, the shuttlecock nobody could reach.
  */
 import { defineSprites, hash, type Color, type Px, type SpriteDef } from "../../kit/index.ts";
-import { footprintPx, townProps, townSpriteId, type TownProp } from "../../town/map.ts";
+import { footprintPx, mapProps, propSpriteId, type MapProp } from "../../world/maps.ts";
 import { TUFTS, art, autoOutline, clamp, leafFace, noise2, wobble } from "./_helpers.ts";
 
 const BOX: Color[] = ["jade1", "jade2", "jade3", "leaf2", "leaf3", "leaf4"];
@@ -41,13 +41,13 @@ const HEDGES: Record<string, HedgeSpec> = {
 const TOP_MARGIN = 6; // headroom for untrimmed shoots
 const FRONT = 22; // the hedge's height: its front face
 
-function dims(prop: TownProp) {
+function dims(prop: MapProp) {
   const { w, h: fh } = footprintPx(prop);
   const top = Math.max(14, fh - 10);
   return { w, fh, top, h: TOP_MARGIN + top + FRONT };
 }
 
-function drawHedge(p: Px, prop: TownProp, spec: HedgeSpec) {
+function drawHedge(p: Px, prop: MapProp, spec: HedgeSpec) {
   const { w, top } = dims(prop);
   const seed = Math.round(prop.position.x * 13 + prop.position.y * 29);
   const vertical = prop.height > prop.width;
@@ -191,7 +191,7 @@ function drawHedge(p: Px, prop: TownProp, spec: HedgeSpec) {
   autoOutline(p, { map: { leaf: "leaf1", jade: "jade1", oak: "wood1", bamboo: "wood1", wood: "wood1", stone: "stone1" } });
 }
 
-function hedgeDef(prop: TownProp): SpriteDef {
+function hedgeDef(prop: MapProp): SpriteDef {
   const { w, h, fh } = dims(prop);
   const spec = HEDGES[prop.id] ?? { species: "box", features: [] };
   return {
@@ -202,4 +202,4 @@ function hedgeDef(prop: TownProp): SpriteDef {
   };
 }
 
-export default defineSprites(Object.fromEntries(townProps("hedge").map((prop) => [townSpriteId(prop.id), hedgeDef(prop)])));
+export default defineSprites(Object.fromEntries(mapProps("all", "hedge").map((prop) => [propSpriteId(prop.map, prop.id), hedgeDef(prop)])));

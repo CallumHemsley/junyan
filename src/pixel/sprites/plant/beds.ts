@@ -9,7 +9,7 @@
  * verge is the mechanic's: hardy things, an old enamel basin of succulents, his trowel.
  */
 import { defineSprites, hash, type Color, type Px, type SpriteDef } from "../../kit/index.ts";
-import { footprintPx, townProps, townSpriteId, type TownProp } from "../../town/map.ts";
+import { footprintPx, mapProps, propSpriteId, type MapProp } from "../../world/maps.ts";
 import { art, blade, bloom, mound, star, sticker } from "./_helpers.ts";
 
 const LEAF: Color[] = ["leaf1", "leaf1", "leaf2", "leaf3", "leaf4", "leaf5"];
@@ -185,7 +185,7 @@ const BEDS: Record<string, Planting> = {
   ],
 };
 
-function drawBed(p: Px, prop: TownProp, planting: Planting) {
+function drawBed(p: Px, prop: MapProp, planting: Planting) {
   const { w, h } = footprintPx(prop);
   const seed = Math.round(prop.position.x * 11 + prop.position.y * 7);
   const top = h - FRONT; // the coping ring's outer depth
@@ -229,9 +229,9 @@ function drawBed(p: Px, prop: TownProp, planting: Planting) {
   planting.forEach(([plant, x, y], i) => sticker(p, sx + x, sy + y, plant.w, plant.h, (q) => plant.draw(q, seed + i * 17)));
 }
 
-function bedDef(prop: TownProp): SpriteDef {
+function bedDef(prop: MapProp): SpriteDef {
   const { w, h } = footprintPx(prop);
   return { w, h, anchor: [Math.round(w / 2), h - 1], layer: "floor", draw: (p) => drawBed(p, prop, BEDS[prop.id] ?? []) };
 }
 
-export default defineSprites(Object.fromEntries(townProps("flowerbed").map((prop) => [townSpriteId(prop.id), bedDef(prop)])));
+export default defineSprites(Object.fromEntries(mapProps("all", "flowerbed").map((prop) => [propSpriteId(prop.map, prop.id), bedDef(prop)])));

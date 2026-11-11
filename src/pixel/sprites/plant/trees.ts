@@ -6,14 +6,14 @@
  *
  * Trees cast no contact-shadow ellipse. Each has a separate floor sprite, `town/<id>-shade`: the
  * crown's dappled shade, cast down and right of the trunk by the morning sun, translucent, with
- * sun-flecks. Place it exactly as the tree, its anchor on `townAnchor(prop)`.
+ * sun-flecks. Place it exactly as the tree, its anchor on `propAnchor(prop)`.
  *
  * Most are London planes (法国梧桐), the French Concession's signature: jigsaw bark in grey, olive
  * and cream, pale upper limbs, broad clustered crowns. The junction tree is an old camphor (樟树),
  * the south garden tree a fig.
  */
 import { defineSprites, hash, type Color, type Px, type SpriteDef } from "../../kit/index.ts";
-import { townProps, townSpriteId, type TownProp } from "../../town/map.ts";
+import { mapProps, propSpriteId, type MapProp } from "../../world/maps.ts";
 import {
   CAMPHOR_CLUSTERS, FIG_LEAVES, PLANE_CLUSTERS, art, autoOutline, camphorBark, canopy, crownClumps, figBark,
   ironGrate, kerbPit, limb, massClumps, noise2, planeBark, punchGaps, roots, type Ellipse, type Foliage,
@@ -55,6 +55,25 @@ const PLANES: Record<string, PlaneSpec> = {
   "town.south-grove": { lean: 2, crown: 7, trunk: 3.4, hue: "blue", base: "kerb", details: ["ivy"], story: "ivy has climbed it to the first fork" },
 };
 
+const HUES = ["green", "green", "yellow", "blue"] as const;
+const BASES = ["iron", "kerb", "pebble"] as const;
+
+/**
+ * Who a plane is: its own spec, or for a tree this file does not know (a new map's, a new lane's) a
+ * plain, deterministic plane picked from its id, so a new tree never throws.
+ */
+function planeSpec(prop: MapProp): PlaneSpec {
+  const known = PLANES[prop.id];
+  if (known) return known;
+  let seed = 0;
+  for (const ch of prop.id) seed = (seed * 31 + ch.charCodeAt(0)) | 0;
+  const pick = (k: number) => hash(k, 5, seed);
+  return {
+    lean: Math.round((pick(1) - 0.5) * 10), crown: 5 + Math.round(pick(2) * 5) / 2, trunk: 3 + Math.round(pick(3) * 6) / 10,
+    hue: HUES[Math.floor(pick(4) * HUES.length)], base: BASES[Math.floor(pick(5) * BASES.length)], details: [], story: "a plane like any on the lanes",
+  };
+}
+
 type Layout = {
   kind: "plane" | "camphor" | "fig"; seed: number; young: boolean; fpx: number; W: number; H: number; ax: number;
   baseY: number; forkX: number; forkY: number; crown: Ellipse; masses: Ellipse[]; gaps: Ellipse[];
@@ -65,9 +84,9 @@ type Layout = {
  * the top of the canvas, the main fork just inside its underside, the trunk below it, and the
  * footprint (grate or pit) at the bottom with the trunk standing in its middle.
  */
-function layout(prop: TownProp): Layout {
+function layout(prop: MapProp): Layout {
   const kind = prop.id === "town.junction" ? "camphor" : prop.id === "town.south-fig" ? "fig" : "plane";
-  const spec = PLANES[prop.id];
+  const spec = planeSpec(prop);
   const seed = Math.round(prop.position.x * 31 + prop.position.y * 17);
   const young = kind === "plane" && spec.crown < 4.5;
   const crownW = kind === "camphor" ? 304 : kind === "fig" ? 116 : Math.round(spec.crown * 32);
@@ -138,7 +157,7 @@ function planeMasses(crown: Ellipse, young: boolean, seed: number, count?: numbe
   return out;
 }
 
-function drawPlane(p: Px, frame: number, prop: TownProp, spec: PlaneSpec) {
+function drawPlane(p: Px, frame: number, prop: MapProp, spec: PlaneSpec) {
   const L = layout(prop);
   const { seed, young, fpx, H, ax, baseY, forkX, forkY, crown, masses } = L;
   const foliage = plane(spec.hue);
@@ -255,7 +274,7 @@ const CAMPHOR_FOLIAGE: Foliage = {
  * straw rope against the winter (no red ribbon); one root has surfaced over the stone ring and
  * been sat smooth by forty years of people waiting for the bus.
  */
-function drawCamphor(p: Px, frame: number, prop: TownProp) {
+function drawCamphor(p: Px, frame: number, prop: MapProp) {
   const L = layout(prop);
   const { seed, fpx, ax, baseY, forkX, forkY, crown, masses } = L;
   const bark = camphorBark(seed);
@@ -330,7 +349,7 @@ const FIG_FOLIAGE: Foliage = {
  * grandmother: low, multi-stemmed, smooth grey bark, big three-lobed leaves and green figs
  * turning purple. One heavy limb is propped on a forked bamboo pole.
  */
-function drawFig(p: Px, frame: number, prop: TownProp) {
+function drawFig(p: Px, frame: number, prop: MapProp) {
   const L = layout(prop);
   const { seed, fpx, ax, baseY, crown, masses } = L;
   const bark = figBark(seed);
@@ -384,7 +403,7 @@ function shadeGeometry(L: Layout) {
   return { blobs, x0, y0, w: x1 - x0, h: y1 - y0 };
 }
 
-function shadeDef(prop: TownProp): SpriteDef {
+function shadeDef(prop: MapProp): SpriteDef {
   const L = layout(prop);
   const { blobs, x0, y0, w, h } = shadeGeometry(L);
   return {
@@ -417,10 +436,10 @@ function shadeDef(prop: TownProp): SpriteDef {
 
 // ── emit one sprite per tree prop, plus its shade ──────────────────────────────
 
-function treeDef(prop: TownProp): SpriteDef {
+function treeDef(prop: MapProp): SpriteDef {
   const draw = prop.id === "town.junction" ? drawCamphor : prop.id === "town.south-fig" ? drawFig : null;
   const { W, H, ax, fpx } = layout(prop);
-  const spec = PLANES[prop.id];
+  const spec = planeSpec(prop);
   return {
     w: W, h: H, frames: 4, fps: 2,
     anchor: [ax, H - 1],
@@ -430,7 +449,10 @@ function treeDef(prop: TownProp): SpriteDef {
   };
 }
 
-export default defineSprites(Object.fromEntries(townProps("tree").flatMap((prop) => [
-  [townSpriteId(prop.id), treeDef(prop)],
-  [`${townSpriteId(prop.id)}-shade`, shadeDef(prop)],
-])));
+/** A tree and its shade for each prop, by sprite id. */
+export const treeSprites = (props: readonly MapProp[]): Record<string, SpriteDef> => Object.fromEntries(props.flatMap((prop) => [
+  [propSpriteId(prop.map, prop.id), treeDef(prop)],
+  [`${propSpriteId(prop.map, prop.id)}-shade`, shadeDef(prop)],
+]));
+
+export default defineSprites(treeSprites(mapProps("all", "tree")));

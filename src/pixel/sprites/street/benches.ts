@@ -11,7 +11,7 @@
  *   folded paper fan.
  */
 import { defineSprites, type SpriteDef } from "../../kit/index.ts";
-import { footprintPx, townProps, townSpriteId } from "../../town/map.ts";
+import { footprintPx, mapProps, propSpriteId } from "../../world/maps.ts";
 import { OAK, PAINT, TEAK, WEATHERED, art, autoOutline, bench, type Ramp } from "./_helpers.ts";
 
 const H = 42;
@@ -125,6 +125,6 @@ function benchSprite(i: number, w: number): SpriteDef {
 }
 
 const sprites: Record<string, SpriteDef> = {};
-townProps("bench").forEach((prop, i) => { sprites[townSpriteId(prop.id)] = benchSprite(i, footprintPx(prop).w); });
+mapProps("all", "bench").forEach((prop, i) => { sprites[propSpriteId(prop.map, prop.id)] = benchSprite(i, footprintPx(prop).w); });
 
 export default defineSprites(sprites);
