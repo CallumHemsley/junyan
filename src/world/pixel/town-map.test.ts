@@ -100,6 +100,16 @@ describe("the town scene is the town map", () => {
     expect(overlaps(box(hedge), box(fig))).toBe(false);
   });
 
+  it("packs buildings plot to plot without overlap, and stands nothing inside a building's plot but its awning", () => {
+    const box = (p: { position: { x: number; y: number }; width: number; height: number }) => ({ x: p.position.x, y: p.position.y, width: p.width, height: p.height });
+    const overlaps = (a: { x: number; y: number; width: number; height: number }, b: typeof a) => a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y;
+    const buildings = map.props.filter(p => p.kind.startsWith("building-"));
+    expect(buildings.length).toBeGreaterThan(30);
+    buildings.forEach((a, i) => buildings.slice(i + 1).forEach(b => expect(overlaps(box(a), box(b)), `${a.id} / ${b.id}`).toBe(false)));
+    for (const p of map.props.filter(p => !p.kind.startsWith("building-") && p.kind !== "awning"))
+      for (const b of buildings) expect(overlaps(box(p), box(b)), `${p.id} in ${b.id}`).toBe(false);
+  });
+
   it("folds every open door leaf against its jamb, clear of the doorway", () => {
     const leaves = map.props.filter(p => p.kind === "open-door-leaf");
     expect(leaves.length).toBe(3);
