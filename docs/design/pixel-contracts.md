@@ -68,6 +68,16 @@ Each owner may also add unattached extras in its own domain folder, for the scen
 - **Cat:** an optional street cat, `critter/cat-tabby`.
 - The regulars `char/lin-jie`, `char/zhang-laoshi`, `char/xiao-zhou` and `char/player` already exist.
 
+## Any outdoor map (ticket 0176)
+
+The town's rules apply to every outdoor map in the registry `src/pixel/world/maps.ts` (town, courtyard; rooftop, park and riverbank next):
+- **Ids:** one sprite per prop instance, `<map>/<prop id without "<map>.">`. For example `courtyard.well-cover` becomes `courtyard/well-cover`. Use `mapProps("all" | mapId, kind…)` and `propSpriteId(map, id)`. The `town/` helpers in `src/pixel/town/map.ts` still work.
+- **Anchors and footprints:** the same as the town: the footprint's bottom-centre, placed at `propAnchor(prop)`.
+- **Shared kinds:** a kind's generator iterates every map, so a planter or a bench drawn once appears wherever the map uses it.
+- **Ground:** a map may ship its own tile table (`GROUND_SPECS` in `src/pixel/town/ground-spec.ts`; the courtyard's is `ground-courtyard-legend.ts`). Otherwise its materials use the town tiles through `MATERIAL_ALIASES`.
+- **Tree shade:** `<map>/<tree id>-shade` on the floor layer, at the tree's anchor.
+- **Missing art:** a missing sprite draws as a translucent footprint box (the atlas placeholder option), never a crash.
+
 ## Hospital ward (scene `ward`, composed by the orchestrator)
 
 ### Architecture (0171)

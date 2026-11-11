@@ -6,7 +6,7 @@
  * style bible's: from the upper left, tops lightest, right and under edges darkest.
  */
 import { Px, hash, type Color, type Legend } from "../../kit/index.ts";
-import { footprintPx, type TownProp } from "../../town/map.ts";
+import { footprintPx, type MapProp } from "../../world/maps.ts";
 
 export { autoOutline, cylinder, stamp, lance } from "../decor/_helpers.ts";
 export { dome, part, relief } from "../food/_helpers.ts";
@@ -40,14 +40,14 @@ export const step = (ramp: Ramp, i: number): Color => ramp[Math.max(0, Math.min(
  * taller than its depth, anchored on the footprint's bottom-centre (pixel-contracts). `gy` is the
  * ground row the footprint's front edge stands on, `back` the row of its back edge.
  */
-export function townFrame(prop: TownProp, rise: number) {
+export function townFrame(prop: MapProp, rise: number) {
   const { w, h: depth } = footprintPx(prop);
   const h = depth + rise;
   return { w, h, depth, gy: h - 1, back: h - depth, anchor: [Math.round(w / 2), h - 1] as const };
 }
 
 /** The solid footprint relative to the anchor, for `foot`. */
-export function townFoot(prop: TownProp): [number, number, number, number] {
+export function townFoot(prop: MapProp): [number, number, number, number] {
   const { w, h } = footprintPx(prop);
   return [-Math.round(w / 2), -h, w, h];
 }

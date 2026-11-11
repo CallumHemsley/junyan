@@ -7,7 +7,7 @@
  * split-bamboo garden fences. Each instance has its own small history placed along it.
  */
 import { defineSprites, hash, type Px, type SpriteDef } from "../../kit/index.ts";
-import { footprintPx, townProps, townSpriteId, type TownProp } from "../../town/map.ts";
+import { footprintPx, mapProps, propSpriteId, type MapProp } from "../../world/maps.ts";
 import { PAINT, art, autoOutline, bambooH, bambooV, railingH, railingV, rod, seedOf, tone, type Ramp } from "./_helpers.ts";
 
 const RISE = 34;
@@ -45,14 +45,14 @@ function fenceStories(p: Px, w: number, top: number, B: number, seed: number, ir
  * town.river-rail-left on the same line as the closed yard gate). There the fence keeps only its
  * kerb, as a sill in front of the gate, rather than drawing a railing through the gate's bars.
  */
-function gateSpans(prop: TownProp): [number, number][] {
-  return townProps("gate", "closed-gate")
+function gateSpans(prop: MapProp): [number, number][] {
+  return mapProps(prop.map, "gate", "closed-gate")
     .filter((g) => Math.abs(g.position.y + g.height - (prop.position.y + prop.height)) < 0.5)
     .map((g) => [Math.round((g.position.x - prop.position.x) * 32), Math.round((g.position.x + g.width - prop.position.x) * 32)] as [number, number])
     .filter(([a, b]) => b > 0 && a < prop.width * 32);
 }
 
-function fenceSprite(prop: TownProp): SpriteDef {
+function fenceSprite(prop: MapProp): SpriteDef {
   const f = footprintPx(prop);
   const vertical = f.h > f.w;
   const iron = prop.variant % 2 === 1;
@@ -99,7 +99,7 @@ function fenceSprite(prop: TownProp): SpriteDef {
  * blank pink paper, damp climbing the plaster from the granite footing, and a patch where the
  * plaster has fallen to show the grey brick. The opening is transparent.
  */
-function moonGate(prop: TownProp): SpriteDef {
+function moonGate(prop: MapProp): SpriteDef {
   const { w } = footprintPx(prop);
   const H = 100, B = H - 1;
   const cx = w / 2, R = 33, cy = B - 4 - R + 4; // the circle's foot sinks under the sill
@@ -214,7 +214,7 @@ function moonGate(prop: TownProp): SpriteDef {
  * dent at kicking height, bars with spear tips above; a chain wound through the meeting stiles and
  * a heavy brass padlock; a blank notice board wired on, and weeds where nobody sweeps.
  */
-function closedGate(prop: TownProp): SpriteDef {
+function closedGate(prop: MapProp): SpriteDef {
   const { w } = footprintPx(prop);
   const H = 82, B = H - 1;
   const PW = 18; // pillar width
@@ -287,8 +287,8 @@ function closedGate(prop: TownProp): SpriteDef {
 }
 
 const sprites: Record<string, SpriteDef> = {};
-for (const prop of townProps("fence")) sprites[townSpriteId(prop.id)] = fenceSprite(prop);
-for (const prop of townProps("gate")) sprites[townSpriteId(prop.id)] = moonGate(prop);
-for (const prop of townProps("closed-gate")) sprites[townSpriteId(prop.id)] = closedGate(prop);
+for (const prop of mapProps("all", "fence")) sprites[propSpriteId(prop.map, prop.id)] = fenceSprite(prop);
+for (const prop of mapProps("all", "gate")) sprites[propSpriteId(prop.map, prop.id)] = moonGate(prop);
+for (const prop of mapProps("all", "closed-gate")) sprites[propSpriteId(prop.map, prop.id)] = closedGate(prop);
 
 export default defineSprites(sprites);

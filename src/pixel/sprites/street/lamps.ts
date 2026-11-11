@@ -13,7 +13,7 @@
  * head reach past it, because at 11 px the lamp read as a stick.
  */
 import { defineSprites, type SpriteDef } from "../../kit/index.ts";
-import { footprintPx, townProps, townSpriteId } from "../../town/map.ts";
+import { footprintPx, mapProps, propSpriteId } from "../../world/maps.ts";
 import { PAINT, art, autoOutline, bollard, lampPost, tone, type BollardStyle, type LampStyle, type Ramp } from "./_helpers.ts";
 
 const LAMP_W = 22, LAMP_H = 120;
@@ -180,8 +180,8 @@ function milestone(w: number, h: number): SpriteDef {
 }
 
 const sprites: Record<string, SpriteDef> = {};
-townProps("street-lamp").forEach((prop, i) => { sprites[townSpriteId(prop.id)] = lampSprite(i); });
-townProps("bollard").forEach((prop, i) => { sprites[townSpriteId(prop.id)] = bollardSprite(i, footprintPx(prop).w); });
-townProps("milestone").forEach((prop) => { const f = footprintPx(prop); sprites[townSpriteId(prop.id)] = milestone(f.w, f.h); });
+mapProps("all", "street-lamp").forEach((prop, i) => { sprites[propSpriteId(prop.map, prop.id)] = lampSprite(i); });
+mapProps("all", "bollard").forEach((prop, i) => { sprites[propSpriteId(prop.map, prop.id)] = bollardSprite(i, footprintPx(prop).w); });
+mapProps("all", "milestone").forEach((prop) => { const f = footprintPx(prop); sprites[propSpriteId(prop.map, prop.id)] = milestone(f.w, f.h); });
 
 export default defineSprites(sprites);

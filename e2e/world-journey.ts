@@ -95,10 +95,9 @@ export async function walkTo(page: Page, destination: Point) {
     const next = route[0];
     const distance = Math.hypot(next.x-world.position.x, next.y-world.position.y);
     const step = Math.min(1, 3 / distance);
-    const point = { x: world.position.x+(next.x-world.position.x)*step, y: world.position.y+(next.y-world.position.y)*step };
     const canvas = page.locator(".connected-world canvas");
     const box = (await canvas.boundingBox())!;
-    let position: Point;
+    let toScreen: (point: Point) => Point;
     if (isPixelMap(map.id)) {
       // Pixel maps publish their camera; tile units → CSS px from the canvas's top-left corner.
       // Closing a bottom sheet resizes the view, so wait until the camera holds still for a few frames.
@@ -110,16 +109,29 @@ export async function walkTo(page: Page, destination: Point) {
       });
       const camera = JSON.parse((await readCamera())!) as {x:number;y:number;zoom:number;dpr:number;tile:number};
       const scale = camera.zoom / camera.dpr;
-      position = { x: (point.x*camera.tile-camera.x)*scale, y: (point.y*camera.tile-camera.y)*scale };
+      toScreen = point => ({ x: (point.x*camera.tile-camera.x)*scale, y: (point.y*camera.tile-camera.y)*scale });
     } else {
       const camera = map.id === "restaurant" ? restaurantCamera(map.bounds, world.position, Math.ceil(box.width/2), Math.ceil(box.height/2)) : explorationCamera(map.bounds, world.position, Math.ceil(box.width/2), Math.ceil(box.height/2), 0, 0, surfaceHeight(map.id, world.position), map.id === "workshop" ? workshopFrame : undefined);
-      const screen = project(point, camera, surfaceHeight(map.id, point));
-      position = { x: screen.x*box.width/camera.width, y: screen.y*box.height/camera.height };
+      toScreen = point => { const screen = project(point, camera, surfaceHeight(map.id, point)); return { x: screen.x*box.width/camera.width, y: screen.y*box.height/camera.height }; };
     }
-    const clear = await canvas.evaluate((element, position) => {
-      const bounds = element.getBoundingClientRect();
-      return document.elementFromPoint(bounds.left+position.x,bounds.top+position.y) === element;
+    // The canvas must own the tapped point. A touch tap also lands on the nearest control within a
+    // finger's reach (touch adjustment), so on touch screens no button may be near it either; a shorter
+    // step toward the player is tried before falling back to the movement pad.
+    const isClear = (position: Point) => canvas.evaluate((element, position) => {
+      const bounds = element.getBoundingClientRect(), x = bounds.left+position.x, y = bounds.top+position.y;
+      if (document.elementFromPoint(x,y) !== element) return false;
+      const reach = navigator.maxTouchPoints > 0 ? 24 : 0;
+      return [-reach,0,reach].every(dx => [-reach,0,reach].every(dy => !document.elementFromPoint(x+dx,y+dy)?.closest("button,a,[role=button]")));
     }, position);
+    let point = { x: world.position.x+(next.x-world.position.x)*step, y: world.position.y+(next.y-world.position.y)*step };
+    let position = toScreen(point), clear = await isClear(position);
+    for (const fraction of [.6, .35]) {
+      if (clear) break;
+      const shorter = { x: world.position.x+(next.x-world.position.x)*step*fraction, y: world.position.y+(next.y-world.position.y)*step*fraction };
+      if (Math.hypot(shorter.x-world.position.x, shorter.y-world.position.y) < .3) break;
+      const at = toScreen(shorter);
+      if (await isClear(at)) { point = shorter; position = at; clear = true; }
+    }
     if (map.id === "residential-stairs") {
       const choices = [
         {x:-1,y:-1,keys:["ArrowUp"]},{x:1,y:1,keys:["ArrowDown"]},{x:1,y:-1,keys:["ArrowRight"]},{x:-1,y:1,keys:["ArrowLeft"]},

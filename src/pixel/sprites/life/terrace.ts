@@ -3,7 +3,7 @@
  * the shopping bag left on the junction bench. One sprite per map instance, footprint-sized.
  */
 import { defineSprites, type Px } from "../../kit/index.ts";
-import { townProps, townSpriteId, type TownProp } from "../../town/map.ts";
+import { mapProps, propSpriteId, type MapProp } from "../../world/maps.ts";
 import { STONE, art, autoOutline, drumStool, scallion, townFoot, townFrame } from "./_helpers.ts";
 
 /** One xiangqi piece, 4×3. */
@@ -12,7 +12,7 @@ function piece(p: Px, x: number, y: number, side: "red" | "black"): void {
   art(p, x, y, [".WW.", "WccW", ".ee."], { W: "oak5", c: side === "red" ? "red3" : "ink", e: "oak2" });
 }
 
-function stoneTable(prop: TownProp) {
+function stoneTable(prop: MapProp) {
   const f = townFrame(prop, 22);
   return {
     w: f.w, h: f.h, anchor: f.anchor, foot: townFoot(prop), shadow: { rx: Math.round(f.w / 2) - 2, ry: 7, dy: -9 },
@@ -72,7 +72,7 @@ function stoneTable(prop: TownProp) {
   };
 }
 
-function deliveryLedge(prop: TownProp) {
+function deliveryLedge(prop: MapProp) {
   const f = townFrame(prop, 22);
   return {
     w: f.w, h: f.h, anchor: f.anchor, foot: townFoot(prop), shadow: { rx: Math.round(f.w / 2) - 1, ry: 3, dy: -2 },
@@ -117,7 +117,7 @@ function deliveryLedge(prop: TownProp) {
   };
 }
 
-function restBag(prop: TownProp) {
+function restBag(prop: MapProp) {
   const f = townFrame(prop, 18);
   return {
     w: f.w, h: f.h, anchor: f.anchor, shadow: { rx: 6, ry: 2, dy: -12 },
@@ -149,7 +149,7 @@ function restBag(prop: TownProp) {
 }
 
 export default defineSprites(Object.fromEntries([
-  ...townProps("stone-table").map((p) => [townSpriteId(p.id), stoneTable(p)]),
-  ...townProps("delivery-ledge").map((p) => [townSpriteId(p.id), deliveryLedge(p)]),
-  ...townProps("rest-bag").map((p) => [townSpriteId(p.id), restBag(p)]),
+  ...mapProps("all", "stone-table").map((p) => [propSpriteId(p.map, p.id), stoneTable(p)]),
+  ...mapProps("all", "delivery-ledge").map((p) => [propSpriteId(p.map, p.id), deliveryLedge(p)]),
+  ...mapProps("all", "rest-bag").map((p) => [propSpriteId(p.map, p.id), restBag(p)]),
 ]));

@@ -8,7 +8,7 @@
  * because a pole without them is a stick.
  */
 import { defineSprites, type SpriteDef } from "../../kit/index.ts";
-import { footprintPx, townProps, townSpriteId, type TownProp } from "../../town/map.ts";
+import { footprintPx, mapProps, propSpriteId, type MapProp } from "../../world/maps.ts";
 import { CONCRETE, STEEL, across, art, autoOutline, cable, column, rod, seedOf } from "./_helpers.ts";
 
 /**
@@ -17,7 +17,7 @@ import { CONCRETE, STEEL, across, art, autoOutline, cable, column, rod, seedOf }
  * telecom cable sagging in loops off the arms and a coil of spare fibre hung halfway down; a grey
  * junction box; layers of torn small-ad flyers at hand height (blank, no text).
  */
-function utilityPole(prop: TownProp, i: number): SpriteDef {
+function utilityPole(prop: MapProp, i: number): SpriteDef {
   const W = 48, H = 168, B = H - 1, cx = W / 2;
   const seed = seedOf(prop.id);
   return {
@@ -93,7 +93,7 @@ function utilityPole(prop: TownProp, i: number): SpriteDef {
  * water main and a thin lagged pipe beside it on concrete saddles, flanged joints, a handwheel
  * valve, a gauge, and at the north end the main rising out of the ground toward the pump house.
  */
-function pipes(prop: TownProp): SpriteDef {
+function pipes(prop: MapProp): SpriteDef {
   const f = footprintPx(prop);
   const W = f.w, rise = 14, H = f.h + rise, B = H - 1;
   return {
@@ -133,8 +133,8 @@ function pipes(prop: TownProp): SpriteDef {
 }
 
 const sprites: Record<string, SpriteDef> = {};
-townProps("utility-pole").forEach((prop, i) => { sprites[townSpriteId(prop.id)] = utilityPole(prop, i); });
-for (const prop of townProps("pipes")) sprites[townSpriteId(prop.id)] = pipes(prop);
+mapProps("all", "utility-pole").forEach((prop, i) => { sprites[propSpriteId(prop.map, prop.id)] = utilityPole(prop, i); });
+for (const prop of mapProps("all", "pipes")) sprites[propSpriteId(prop.map, prop.id)] = pipes(prop);
 
 /**
  * A split-system condenser standing on two bricks against a wall: a fan grille, side louvres, its

@@ -4,7 +4,7 @@
  * different plant in a different pot; the variant only sets the kind of container.
  */
 import { defineSprites, hash, type Color, type Px } from "../../kit/index.ts";
-import { townProps, townSpriteId, type TownProp } from "../../town/map.ts";
+import { mapProps, propSpriteId, type MapProp } from "../../world/maps.ts";
 import {
   FOAM, LEAF, art, autoOutline, lance, pot, scallion, seedOf, stamp, townFoot, townFrame, type Ramp,
 } from "./_helpers.ts";
@@ -274,7 +274,7 @@ const PLANTS: Record<string, Plant> = {
 
 const BY_VARIANT: Record<number, Plant[]> = { 31: [gardenia, orchid, geranium, pothos], 32: [scallions, cutScallions, coriander], 33: [echeveria, jadePlant, aloe] };
 
-function planter(prop: TownProp, i: number) {
+function planter(prop: MapProp, i: number) {
   const f = townFrame(prop, 26);
   const plant = PLANTS[prop.id] ?? (BY_VARIANT[prop.variant] ?? BY_VARIANT[31])[i % 3];
   return {
@@ -286,4 +286,4 @@ function planter(prop: TownProp, i: number) {
   };
 }
 
-export default defineSprites(Object.fromEntries(townProps("planter").map((prop, i) => [townSpriteId(prop.id), planter(prop, i)])));
+export default defineSprites(Object.fromEntries(mapProps("all", "planter").map((prop, i) => [propSpriteId(prop.map, prop.id), planter(prop, i)])));

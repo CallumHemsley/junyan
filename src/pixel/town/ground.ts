@@ -1,6 +1,8 @@
 /**
- * The town's ground as tile layers, built from the map's terrain rects. Owned by the ground worker
- * (ticket 0163); the town scene (ticket 0174) only calls `groundLayers()` and must not depend on its insides.
+ * An outdoor map's ground as tile layers, built from the map's terrain rects (the town's by default).
+ * Owned by the ground worker (ticket 0163); the outdoor scenes (tickets 0174, 0176) only call
+ * `groundLayers(map)` and must not depend on its insides. Other maps' materials draw with the town's
+ * tiles through `MATERIAL_ALIASES` (`ground-grid.ts`) until they get their own.
  *
  * Layers, in draw order:
  * 1. `ground`: one base tile per cell, the variant picked by hash with plain variants weighted heavier and
@@ -11,7 +13,8 @@
  *    Water comes last so everything before it bakes into the renderer's static floor cache.
  */
 import type { TileLayer } from "../engine/index.ts";
-import { groundMaterials, type Material } from "./ground-grid.ts";
+import { groundMaterials, type GroundMap, type Material } from "./ground-grid.ts";
+import { GROUND_SPECS, specGroundLayers } from "./ground-spec.ts";
 
 type Variant = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h";
 const SEED = 163;
@@ -206,8 +209,11 @@ function stacked(prefix: string, lists: string[][][]): TileLayer[] {
   return Array.from({ length: depth }, (_, k) => layerOf(`${prefix}-${k + 1}`, lists.map((row) => row.map((l) => l[k] ?? null))));
 }
 
-export function groundLayers(): TileLayer[] {
-  const grid = groundMaterials();
+export function groundLayers(map?: GroundMap): TileLayer[] {
+  // Maps with their own tile table (the courtyard) use it; the rest use the town tiles via aliases.
+  const table = map && "id" in map ? GROUND_SPECS[(map as GroundMap & { id: string }).id] : undefined;
+  if (map && table) return specGroundLayers(map, table.specs, table.fill);
+  const grid = groundMaterials(map);
   const holes = manholes(grid);
   const base: (string | null)[][] = grid.map((row) => row.map(() => null));
   const water: (string | null)[][] = grid.map((row) => row.map(() => null));

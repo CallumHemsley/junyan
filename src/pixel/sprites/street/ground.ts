@@ -4,10 +4,10 @@
  * North–south runs are the same drawing laid on its side.
  */
 import { defineSprites, type SpriteDef } from "../../kit/index.ts";
-import { footprintPx, townProps, townSpriteId, type TownProp } from "../../town/map.ts";
+import { footprintPx, mapProps, propSpriteId, type MapProp } from "../../world/maps.ts";
 import { art, grate, gutter, seedOf, strip } from "./_helpers.ts";
 
-function floorPiece(prop: TownProp, draw: (q: import("../../kit/index.ts").Px, len: number, depth: number, seed: number) => void): SpriteDef {
+function floorPiece(prop: MapProp, draw: (q: import("../../kit/index.ts").Px, len: number, depth: number, seed: number) => void): SpriteDef {
   const { w, h } = footprintPx(prop);
   const vertical = h > w;
   const seed = seedOf(prop.id);
@@ -18,8 +18,8 @@ function floorPiece(prop: TownProp, draw: (q: import("../../kit/index.ts").Px, l
 }
 
 const sprites: Record<string, SpriteDef> = {};
-for (const prop of townProps("drain")) {
-  sprites[townSpriteId(prop.id)] = floorPiece(prop, (q, len, depth, seed) => {
+for (const prop of mapProps("all", "drain")) {
+  sprites[propSpriteId(prop.map, prop.id)] = floorPiece(prop, (q, len, depth, seed) => {
     grate(q, len, depth, seed);
     // What the morning dropped: a plane leaf caught across the bars, a bottle cap, a youtiao bag.
     const x = 6 + (seed % Math.max(1, len - 20));
@@ -28,7 +28,7 @@ for (const prop of townProps("drain")) {
     if (seed % 3 === 2) art(q, x, 2, ["wwW", "wWw"], { w: "cream4", W: "white" });
   });
 }
-for (const prop of townProps("gutter")) sprites[townSpriteId(prop.id)] = floorPiece(prop, gutter);
+for (const prop of mapProps("all", "gutter")) sprites[propSpriteId(prop.map, prop.id)] = floorPiece(prop, gutter);
 
 /** A square cast-iron water meter cover, a raised diamond pattern, the hinge rusted. 14×10. */
 sprites["street/water-meter"] = {
