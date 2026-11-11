@@ -30,8 +30,9 @@ describe("the outdoor map registry", () => {
     expect(OUTDOOR_MAP_IDS).toEqual(OUTDOOR_PIXEL_MAPS);
     expect(OUTDOOR_MAP_IDS[0]).toBe("town");
     expect(OUTDOOR_MAP_IDS).toContain("courtyard");
+    expect(OUTDOOR_MAP_IDS).toContain("rooftop");
     for (const id of OUTDOOR_MAP_IDS) expect(outdoorMap(id).id).toBe(id);
-    expect(() => outdoorMap("rooftop")).toThrow(/No outdoor pixel map "rooftop"/);
+    expect(() => outdoorMap("park")).toThrow(/No outdoor pixel map "park"/);
   });
 
   it("names a prop's sprite after its map, without the map's prefix", () => {
@@ -44,7 +45,7 @@ describe("the outdoor map registry", () => {
   it("tags props with their map, map by map in registry order, filtered by kind", () => {
     const benches = mapProps("all", "bench");
     expect(benches.map((p) => p.map)).toEqual([...benches.map((p) => p.map)].sort((a, b) => OUTDOOR_MAP_IDS.indexOf(a) - OUTDOOR_MAP_IDS.indexOf(b)));
-    expect(new Set(benches.map((p) => p.map))).toEqual(new Set(["town", "courtyard"]));
+    expect(new Set(benches.map((p) => p.map))).toEqual(new Set(["town", "courtyard", "rooftop"]));
     expect(mapProps("courtyard", "bench", "bicycle").map((p) => p.id)).toEqual(
       OUTDOOR_MAPS.courtyard.props.filter((p) => p.kind === "bench" || p.kind === "bicycle").map((p) => p.id));
     expect(mapProps(["courtyard", "town"], "stone-table").map((p) => p.map)).toEqual(["courtyard", "town"]);

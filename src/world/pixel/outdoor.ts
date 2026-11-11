@@ -5,8 +5,9 @@
  * so a world position is an actor position as it is.
  */
 import { outdoorScene } from "../../pixel/world/scene.ts";
+import { outdoorMap, propSpriteId } from "../../pixel/world/maps.ts";
 import { townPlaceholderOptions } from "../../pixel/town/placeholders.ts";
-import type { Actor, AtlasOptions, CompiledScene, DayPhase, Facing, Placed, Scene } from "../../pixel/engine/index.ts";
+import type { Actor, AtlasOptions, CompiledScene, DayPhase, Facing, Placed, Prop, Scene } from "../../pixel/engine/index.ts";
 import { TILE, hash } from "../../pixel/kit/index.ts";
 import type { ActorPose } from "../life";
 import { serviceDayPhase } from "../lighting";
@@ -19,6 +20,23 @@ export function liveOutdoor(mapId: string): Scene {
   let scene = live.get(mapId);
   if (!scene) live.set(mapId, scene = { ...outdoorScene(mapId), actors: undefined });
   return scene;
+}
+
+/** A map prop as game state hands it over: the static map's props plus any projected at run time. */
+export type LiveProp = { id: string; kind: string; position: Point; width: number; height: number; variant: number | string; layer?: string };
+
+/**
+ * Props the game projects onto a map at run time (the rooftop garden's pots, its shade and crates),
+ * which the compiled scene does not know: each draws as `<map>/<id without "<map>.">` on its
+ * footprint's bottom-centre like any map prop, showing frame `variant` (mod its frame count), so one
+ * sprite carries every state of a growing plant. Static props are the scene's and are skipped.
+ */
+export function runtimeProps(mapId: string, props: readonly LiveProp[]): Prop[] {
+  const known = new Set(outdoorMap(mapId).props.map((p) => p.id));
+  return props.filter((p) => !known.has(p.id)).map((p): Prop => ({
+    id: p.id, sprite: propSpriteId(mapId, p.id), at: [p.position.x + p.width / 2, p.position.y + p.height], frame: typeof p.variant === "number" ? p.variant : 0, solid: false,
+    ...(p.layer === "ground" ? { layer: "floor" as const } : {}),
+  }));
 }
 
 /**

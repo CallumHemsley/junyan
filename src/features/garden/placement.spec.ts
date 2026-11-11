@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test';
 
-test('roof placement plan maps destinations and saved occupants on the same isometric axes', async ({page}, info) => {
+test('roof placement plan maps destinations and saved occupants on the same top-down axes as the pixel rooftop', async ({page}, info) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   page.on('console', message => {if (message.type() === 'error') errors.push(message.text());});
@@ -30,8 +30,8 @@ test('roof placement plan maps destinations and saved occupants on the same isom
   }));
   for (const a of positions) for (const b of positions) {
     const first = gardenSites[a.site], second = gardenSites[b.site];
-    expect(Math.sign(a.x - b.x)).toBe(Math.sign(first.x - first.y - (second.x - second.y)));
-    expect(Math.sign(a.y - b.y)).toBe(Math.sign(first.x + first.y - (second.x + second.y)));
+    expect(Math.sign(a.x - b.x)).toBe(Math.sign(first.x - second.x));
+    expect(Math.sign(a.y - b.y)).toBe(Math.sign(first.y - second.y));
   }
   await expect(sites.nth(0).getByRole('button').first()).toBeDisabled();
   await expect(sites.nth(0).getByRole('button', {name: '花', exact: true})).toBeVisible();
