@@ -9,4 +9,5 @@ export { GRADES, LUT_BITS, applyGradeLut, buildGradeLut, gradeLut, type ContactS
 export { DEFAULT_AMBIENT, compileLight, flickerAt, motesAt, createLighting, type CompiledLight, type Mote } from "./light.ts";
 export { chooseZoom, viewSize, followPoint, createCamera, toScreen, toWorld, type Camera, type CameraInput, type ZoomTargets } from "./camera.ts";
 export { move, isFree, overlaps, PERSON_RADIUS, type Radius } from "./collision.ts";
+export { bakeFrame, sceneSprites, unbakedFrames, createIdleQueue, browserIdleSchedule, type IdleDeadline, type IdleSchedule, type IdleQueue } from "./prebake.ts";
 export { createSceneRenderer, renderToFrame, type SceneRenderer, type RendererOptions, type ViewOrigin } from "./renderer.ts";

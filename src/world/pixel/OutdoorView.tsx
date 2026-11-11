@@ -6,26 +6,16 @@
  * `src/pixel/world/maps.ts` draws here.
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { chooseZoom, createAtlas, createSceneRenderer, type Atlas, type Camera, type SceneRenderer, type Vec, type ZoomTargets } from "../../pixel/engine/index.ts";
+import { chooseZoom, type Camera, type Vec, type ZoomTargets } from "../../pixel/engine/index.ts";
 import { TILE } from "../../pixel/kit/index.ts";
 import type { PixelViewApi } from "../../pixel/engine/PixelView.tsx";
-import { sprites } from "../../pixel/registry.ts";
 import { actorsFor } from "../life-bridge";
 import type { GameState } from "../../contracts";
 import type { WorldMapDefinition, WorldState } from "../schema";
 import type { WaiterMotion } from "./cafe";
 import { Surface, usePrefersReducedMotion } from "./PixelSurface";
-import { liveOutdoor, occluderFade, outdoorActors, outdoorAtlasOptions, outdoorPhase, outdoorPlayer, placedById, runtimeProps } from "./outdoor";
-
-const renderers = new Map<string, SceneRenderer>();
-let atlas: Atlas | null = null;
-/** One renderer per map for the session, over one atlas. Art still being drawn shows as boxes; dev builds list it once. */
-function outdoorRenderer(mapId: string): SceneRenderer {
-  const warn = import.meta.env.DEV ? (message: string) => console.warn(message) : undefined;
-  let renderer = renderers.get(mapId);
-  if (!renderer) renderers.set(mapId, renderer = createSceneRenderer(liveOutdoor(mapId), atlas ??= createAtlas(sprites, outdoorAtlasOptions(warn)), { warn }));
-  return renderer;
-}
+import { occluderFade, outdoorActors, outdoorPhase, outdoorPlayer, placedById, runtimeProps } from "./outdoor";
+import { outdoorRenderer, prebakeAround } from "./prebake";
 
 /** Phones show about ten tiles across; landscape screens keep the engine's twenty. */
 const TARGETS: ZoomTargets = { portraitTiles: 10 };
@@ -67,6 +57,8 @@ export type OutdoorViewProps = {
 
 export default function OutdoorView({ map, game, world, motion, lifeClock, size, inset, onPointerDown, onApi }: OutdoorViewProps) {
   const renderer = outdoorRenderer(map.id);
+  // Bake the next maps' art while the player is here, so stepping onto them does not stall.
+  useEffect(() => prebakeAround(map.id), [map.id]);
   const reducedMotion = usePrefersReducedMotion();
   const [camera, setCamera] = useState<Camera | null>(null);
   const time = useLifeTime(lifeClock);

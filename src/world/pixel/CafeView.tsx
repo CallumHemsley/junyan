@@ -14,6 +14,7 @@ import { serviceDayPhase } from "../lighting";
 import type { GameState } from "../../contracts";
 import type { WorldState } from "../schema";
 import { cafeCast, cafeDishes, cafePhase, liveCafe, serviceFacing, waiterActors, type WaiterMotion } from "./cafe";
+import { prebakeAround } from "./prebake";
 
 let shared: SceneRenderer | null = null;
 /** One renderer for the session: the atlas bakes sprites lazily, the scene compiles once. */
@@ -38,6 +39,8 @@ export type CafeViewProps = {
 
 export default function CafeView({ game, world, motion, size, inset, onPointerDown, onApi }: CafeViewProps) {
   const renderer = cafeRenderer();
+  // The town is next door: bake its art while the player works the cafe.
+  useEffect(() => prebakeAround("restaurant"), []);
   const reducedMotion = usePrefersReducedMotion();
   const [camera, setCamera] = useState<Camera | null>(null);
   const { x, y } = world.position, walking = motion.walking;
