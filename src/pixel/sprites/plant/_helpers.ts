@@ -551,3 +551,73 @@ export function bloom(p: Px, x: number, y: number, tones: readonly [Color, Color
 export function star(p: Px, x: number, y: number, petal: Color, shade: Color, centre: Color): Px {
   return p.rows(x, y, [".p.", "pcs", ".s."], { p: petal, s: shade, c: centre });
 }
+
+// ── crowns and their shade, for any tree generator ─────────────────────────────
+
+/**
+ * A crown's masses round a dome, from low on one side over the top to low on the other, a heavier
+ * heart mass, and (when `hang`) one or two hanging lower at the sides, leaving the middle of the
+ * underside open so the fork and limbs show. Deterministic from `seed`.
+ */
+export function domeMasses(crown: Ellipse, seed: number, options: { count?: number; size?: number; hang?: boolean } = {}): Ellipse[] {
+  const { x, y, rx, ry } = crown;
+  const h = (k: number, s: number) => hash(k, s, seed);
+  const n = options.count ?? 5 + Math.floor(h(0, 9) * 2);
+  const base = options.size ?? 0.4;
+  const out: Ellipse[] = [];
+  for (let k = 0; k < n; k++) {
+    const a = Math.PI * (1.08 + (0.84 * (k + (h(k, 1) - 0.5) * 0.5)) / Math.max(1, n - 1));
+    const size = base + h(k, 2) * 0.16;
+    const mrx = rx * size, mry = ry * size * 1.15;
+    out.push({ x: x + Math.cos(a) * (rx - mrx) * 0.98, y: y + Math.sin(a) * (ry - mry) * 0.95 + ry * 0.08, rx: mrx, ry: mry });
+  }
+  out.push({ x: x + (h(7, 3) - 0.5) * rx * 0.2, y: y - ry * 0.15, rx: rx * 0.45, ry: ry * 0.5 });
+  if (options.hang ?? true) for (const side of [-1, 1]) {
+    if (h(side + 3, 4) < 0.25) continue;
+    const size = 0.3 + h(side + 3, 5) * 0.12;
+    out.push({ x: x + side * rx * (0.62 + h(side + 3, 6) * 0.1), y: y + ry * (0.35 + h(side + 3, 7) * 0.15), rx: rx * size, ry: ry * size * 1.2 });
+  }
+  return out;
+}
+
+/**
+ * A crown's dappled shade on the ground: each mass cast down and right by the sun and flattened onto
+ * the ground about `groundY`, a ragged edge, a lighter fringe and sun-flecks, in translucent plum.
+ * Returns the canvas box (in the tree's canvas coordinates) and a draw function for it.
+ */
+export function dappledShade(masses: readonly Ellipse[], crown: Ellipse, groundY: number, seed: number, options: { strength?: number; reach?: number } = {}) {
+  const shiftX = Math.round(crown.rx * 0.3), shiftY = 8;
+  const reach = options.reach ?? 0.32;
+  const blobs = masses.map((m) => ({ x: m.x + shiftX, y: groundY + shiftY + (m.y - crown.y) * reach, rx: m.rx * 0.98, ry: m.ry * 0.46 }));
+  const x0 = Math.floor(Math.min(...blobs.map((b) => b.x - b.rx * 1.15))) - 2, x1 = Math.ceil(Math.max(...blobs.map((b) => b.x + b.rx * 1.15))) + 2;
+  const y0 = Math.floor(Math.min(...blobs.map((b) => b.y - b.ry * 1.15))) - 2, y1 = Math.ceil(Math.max(...blobs.map((b) => b.y + b.ry * 1.15))) + 2;
+  const core = options.strength ?? 0.32;
+  const draw = (p: Px) => {
+    const flecks: Ellipse[] = [];
+    const area = blobs.reduce((s, b) => s + b.rx * b.ry, 0);
+    for (let k = 0; k < Math.round(area / 260); k++) {
+      const b = blobs[Math.floor(hash(k, 1, seed) * blobs.length)];
+      const a = hash(k, 2, seed) * Math.PI * 2, d = Math.sqrt(hash(k, 3, seed)) * 0.85;
+      flecks.push({ x: b.x + Math.cos(a) * b.rx * d, y: b.y + Math.sin(a) * b.ry * d, rx: 1.5 + hash(k, 4, seed) * 2.5, ry: 1 + hash(k, 5, seed) * 1.2 });
+    }
+    const inFleck = (x: number, y: number) => flecks.find((f) => ((x + 0.5 - f.x) / f.rx) ** 2 + ((y + 0.5 - f.y) / f.ry) ** 2 <= 1);
+    for (let j = 0; j < y1 - y0; j++) for (let i = 0; i < x1 - x0; i++) {
+      const x = i + x0, y = j + y0;
+      let d = Infinity;
+      for (const b of blobs) d = Math.min(d, Math.hypot((x + 0.5 - b.x) / b.rx, (y + 0.5 - b.y) / b.ry));
+      d += (noise2(x, y, seed, 7, 4) - 0.5) * 0.34;
+      if (d > 1.08) continue;
+      const f = inFleck(x, y);
+      const inner = d < 0.86;
+      if (f && (!inner || Math.max(f.rx, f.ry) > 2.6)) continue;
+      p.faded(inner && !f ? core : core * 0.53, () => p.px(i, j, "plum1"));
+    }
+  };
+  return { x0, y0, w: x1 - x0, h: y1 - y0, draw };
+}
+
+/**
+ * Maps whose `tree` props are woodland trees (drawn by `woods.ts`, no grates, species mixed), not the
+ * town's street planes (`trees.ts`).
+ */
+export const WOODLAND_MAPS: ReadonlySet<string> = new Set(["park", "riverbank"]);
