@@ -153,7 +153,7 @@ export default function Garden(props: GardenProps) {
           const point = gardenSites[site];
           const occupant = plantIds.find(id => state.plants[id].site === site);
           return <div key={site} className="garden-placement-site" data-site={site}
-            style={{left: `${15 + (point.x - point.y + 14) / 33 * 70}%`, top: `${12 + (point.x + point.y - 37) / 16 * 54}%`}}>
+            style={{left: `${15 + (point.x - 15) / 17 * 70}%`, top: `${12 + (point.y - 12) / 17 * 54}%`}}>
             <button type="button" aria-label={`${site + 1}${name('place')}${name(occupant ?? 'empty')}${state.shade === site ? name('shade-screen') : ''}`}
               disabled={moving === 'pot' && Boolean(occupant)}
               aria-pressed={moving === 'shade' ? state.shade === site : pot.site === site}

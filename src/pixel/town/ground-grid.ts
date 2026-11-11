@@ -42,9 +42,14 @@ export function tileSpan(at: number, length: number): [number, number] {
   return [start, end];
 }
 
+/** What a map drawn through the aliases shows where no terrain rect covers a cell, when not grass. Maps
+ *  with their own tile table (`GROUND_SPECS` in `ground-spec.ts`) set their fill there instead. */
+export const MAP_FILL: Readonly<Record<string, Material>> = {};
+
 export function groundMaterials(map: GroundMap = TOWN): Material[][] {
   const { width, height } = map.bounds;
-  const grid: Material[][] = Array.from({ length: height }, () => Array.from({ length: width }, (): Material => "grass"));
+  const fill: Material = ("id" in map ? MAP_FILL[(map as GroundMap & { id: string }).id] : undefined) ?? "grass";
+  const grid: Material[][] = Array.from({ length: height }, () => Array.from({ length: width }, (): Material => fill));
   for (const t of map.terrain) {
     const material = groundMaterial(t.material);
     if (!material) throw new Error(`Terrain ${t.id} has unknown material "${t.material}"`);
