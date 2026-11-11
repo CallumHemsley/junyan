@@ -87,10 +87,6 @@ export async function walkTo(page: Page, destination: Point) {
   const initial = game.world!;
   const map = currentMap(game);
   const deadline = Date.now() + 75_000;
-  // The last movement-pad direction: never reverse it on the next press while another direction still
-  // makes progress, so the pad fallback cannot oscillate forward/back beside a tap-blocking button.
-  let lastPad: string | null = null;
-  const opposite: Record<string, string> = { 向前走: "向后走", 向后走: "向前走", 向右走: "向左走", 向左走: "向右走" };
   while (Date.now() < deadline) {
     const world = (await savedGame(page)).world!;
     if (world.mapId !== initial.mapId || Math.hypot(world.position.x-destination.x, world.position.y-destination.y) < .28) return;
@@ -169,16 +165,13 @@ export async function walkTo(page: Page, destination: Point) {
         return {control,position,distance:path.length?distance:Infinity};
       }).filter(candidate=>Number.isFinite(candidate.distance) && canWalk(map,world.position,candidate.position) && Math.hypot(candidate.position.x-world.position.x,candidate.position.y-world.position.y)>.1).sort((a,b)=>a.distance-b.distance);
       expect(candidates.length, `movement pad route in ${map.id}`).toBeGreaterThan(0);
-      const forward = candidates.filter(candidate => !lastPad || candidate.control.name !== opposite[lastPad]);
-      const direction = (forward[0] ?? candidates[0]).control.name;
-      lastPad = direction;
+      const direction = candidates[0].control.name;
       const pad = page.getByRole("button", {name:direction,exact:true});
       await pad.focus();
       await pad.press("Enter");
       await expect.poll(async () => (await savedGame(page)).world!.position, {timeout:2_000}).not.toEqual(world.position);
       continue;
     }
-    lastPad = null;
     if (page.context().browser()?.browserType().name() === "chromium" && await page.evaluate(() => navigator.maxTouchPoints > 0)) await canvas.tap({ position });
     else await canvas.click({ position });
     await expect.poll(async () => {
