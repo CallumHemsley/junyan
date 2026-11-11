@@ -7,7 +7,7 @@
 import { outdoorScene } from "../../pixel/world/scene.ts";
 import { outdoorMap, propSpriteId } from "../../pixel/world/maps.ts";
 import { townPlaceholderOptions } from "../../pixel/town/placeholders.ts";
-import type { Actor, AtlasOptions, CompiledScene, DayPhase, Facing, Placed, Prop, Scene, Vec } from "../../pixel/engine/index.ts";
+import type { Actor, AtlasOptions, CompiledScene, DayPhase, Facing, GlowLight, Placed, Prop, Scene, Vec } from "../../pixel/engine/index.ts";
 import { TILE, hash } from "../../pixel/kit/index.ts";
 import { viewSize } from "../../pixel/engine/index.ts";
 import type { ActorPose } from "../life";
@@ -27,28 +27,33 @@ export function liveOutdoor(mapId: string): Scene {
 export type LiveProp = { id: string; kind: string; position: Point; width: number; height: number; variant: number | string; layer?: string };
 
 /**
- * Props the game projects onto a map at run time (the rooftop garden's pots, the reading room's
- * furniture), which the compiled scene does not know: each draws as `<map>/<id without "<map>.">` on
- * its footprint's bottom-centre like any map prop, showing frame `variant` when that is a number (mod
- * its frame count), so one sprite carries every state of a growing plant. Static props are skipped.
+ * Props the game projects onto a map at run time (the rooftop garden's pots, the reading room's and
+ * the apartment's furniture), which the compiled scene does not know: each draws as
+ * `<map>/<id without "<map>.">` on its footprint's bottom-centre like any map prop, showing frame
+ * `variant` when that is a number (mod its frame count), so one sprite carries every state of a growing
+ * plant. Static props are the scene's and are skipped.
  *
  * Projected props can change shape and state, so when the atlas has them (`has`) a more specific
  * sprite wins, first match of: `<sprite>-<state>-<w>x<h>`, `<sprite>-<state>` (a string `variant`),
  * then `<sprite>-<w>x<h>` (the footprint in tenths of a tile, `30x15` for 3 × 1.5), then `<sprite>`.
  * A turned table is `-15x30`, a blocked draft ghost `-blocked-30x15`.
  *
+ * A prop whose id ends in `.preview` (the furnishing being placed) draws the sprite of the id without
+ * that suffix; `runtimeFade` makes it translucent.
+ *
  * A prop whose id extends another projected prop's (`….table.book` on `….table`) sits on it: it sorts
- * just in front of its parent, so the parent's top never hides it.
+ * just in front of its parent, so the parent's top never hides it. A preview is never on anything.
  */
 export function runtimeProps(mapId: string, props: readonly LiveProp[], has: (sprite: string) => boolean = () => false): Prop[] {
   const known = new Set(outdoorMap(mapId).props.map((p) => p.id));
   const projected = props.filter((p) => !known.has(p.id));
   const bottoms = new Map(projected.map((p) => [p.id, p.position.y + p.height]));
   return projected.map((p): Prop => {
-    const base = propSpriteId(mapId, p.id), size = `${Math.round(p.width * 10)}x${Math.round(p.height * 10)}`;
+    const preview = p.id.endsWith(PREVIEW);
+    const base = propSpriteId(mapId, preview ? p.id.slice(0, -PREVIEW.length) : p.id), size = `${Math.round(p.width * 10)}x${Math.round(p.height * 10)}`;
     const state = typeof p.variant === "string" ? p.variant : null;
     const sprite = [...(state ? [`${base}-${state}-${size}`, `${base}-${state}`] : []), `${base}-${size}`].find(has) ?? base;
-    const parent = projected.find((q) => q.id !== p.id && p.id.startsWith(`${q.id}.`));
+    const parent = preview ? undefined : projected.find((q) => q.id !== p.id && p.id.startsWith(`${q.id}.`));
     return {
       id: p.id, sprite, at: [p.position.x + p.width / 2, p.position.y + p.height], frame: typeof p.variant === "number" ? p.variant : 0, solid: false,
       ...(p.layer === "ground" ? { layer: "floor" as const } : {}),
@@ -88,6 +93,34 @@ export function frameView(
   };
   for (let z = zoom; z > 1; z--) { const a = attempt(z); if (a.fits) return { zoom: a.zoom, focus: a.focus }; }
   return { zoom: 1, focus: attempt(1).focus };
+}
+
+const PREVIEW = ".preview";
+/** How opaque a preview is: the item reads as itself, but plainly not yet put down. */
+export const PREVIEW_OPACITY = 0.55;
+
+/** Opacity of run-time props that draw translucent: the furnishing being placed. Keyed by prop id. */
+export function runtimeFade(props: readonly LiveProp[]): Record<string, number> {
+  return Object.fromEntries(props.filter((p) => p.id.endsWith(PREVIEW)).map((p) => [p.id, PREVIEW_OPACITY]));
+}
+
+/** The preview's state for the view's `data-preview`: "valid", "blocked", or null when nothing is being placed. */
+export function previewState(props: readonly LiveProp[]): "valid" | "blocked" | null {
+  const outline = props.find((p) => p.kind === "furniture-outline");
+  return outline ? (outline.id.endsWith(".blocked") ? "blocked" : "valid") : null;
+}
+
+/** Owned lamps and how far above their anchor (tiles) the bulb is: the standard lamp's shade, the small lamp's. */
+const LAMP_BULBS: Readonly<Record<string, number>> = { "furniture-lamp": 2.25, "furniture-small-lamp": 1 };
+
+/**
+ * Light from run-time props: an owned lamp glows at its bulb (as `interiorLights` does for the scene's
+ * lamps), wherever the player has put it. A lamp still being placed does not.
+ */
+export function runtimeLights(props: readonly LiveProp[]): GlowLight[] {
+  return props.filter((p) => p.kind in LAMP_BULBS && !p.id.endsWith(PREVIEW)).map((p): GlowLight => ({
+    kind: "glow", at: [p.position.x + p.width / 2, p.position.y + p.height - LAMP_BULBS[p.kind]], radius: p.kind === "furniture-lamp" ? 2.6 : 1.8, color: "gold4", strength: 0.5,
+  }));
 }
 
 /**

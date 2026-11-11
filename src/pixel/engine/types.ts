@@ -180,6 +180,11 @@ export type FrameState = {
    * listed draw opaque. Shadows and colliders are unaffected.
    */
   fade?: Readonly<Record<string, number>>;
+  /**
+   * Lights added at run time (a lamp the player has put down), lit with the scene's own. Compiled once
+   * per array: pass the same array while they hold still.
+   */
+  lights?: readonly Light[];
   /** Freezes flicker and dust motes. */
   reducedMotion?: boolean;
   /** Draws colliders, the walkable rect and marks. */

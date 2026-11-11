@@ -8,9 +8,12 @@ import { keptMaps, neighbourMaps } from "./prebake";
 describe("prebaking the next maps", () => {
   it("knows each map's outdoor neighbours from the exits, both ways", () => {
     expect(neighbourMaps("restaurant")).toEqual(["town"]);
-    expect(neighbourMaps("town")).toEqual(["courtyard", "park", "riverbank", "workshop"]);
+    expect(neighbourMaps("town")).toEqual(["courtyard", "park", "residential-hall", "riverbank", "workshop"]);
     expect(neighbourMaps("park")).toEqual(["courtyard", "riverbank", "town"]);
     expect(neighbourMaps("riverbank")).toEqual(["park", "town"]);
+    // The reading room opens off the hall, so each bakes the other.
+    expect(neighbourMaps("reading-room")).toContain("residential-hall");
+    expect(neighbourMaps("residential-hall")).toContain("reading-room");
     expect(neighbourMaps("ward")).toEqual([]);
   });
 

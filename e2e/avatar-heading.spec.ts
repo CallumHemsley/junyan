@@ -30,12 +30,12 @@ export function frame(options){
   });
   return errors;
 }
-// The restaurant, the town and the courtyard are drawn by the pixel engine now (tickets 0157, 0174,
-// 0176); this artwork still draws the residential hall, so the heading is observed there, at its
-// entrance from the courtyard.
-const HALL={x:27,y:17.5};
-const OBSERVED='residential-hall';
-async function restore(page:Page,baseURL:string,facing:Facing,position:Point=HALL,mapId=OBSERVED){
+// The restaurant, the town, the courtyard and (ticket 0202) the residential hall and the apartment are
+// drawn by the pixel engine now; this artwork still draws the residential stairs, so the heading is
+// observed there, on the flat landing at the foot of the stairs.
+const STAIRS={x:15,y:36.5};
+const OBSERVED='residential-stairs';
+async function restore(page:Page,baseURL:string,facing:Facing,position:Point=STAIRS,mapId=OBSERVED){
   const game=createGame(content,42);
   game.world={version:1,mapId,position,facing,returnPositions:{},activeActivity:null,activeAnchorId:null};
   await seedDayOne(page,baseURL,game);
@@ -55,7 +55,7 @@ for(const [facing,direction]of [['north',3],['east',1],['south',7],['west',5]] a
     await page.screenshot({path:privateArtifact(`heading/${info.project.name}-restore-${facing}.png`),fullPage:true});
     expect(trace[0].direction).toBe(direction);
     expect(trace.every(sample=>sample.direction===direction)).toBe(true);
-    expect((await savedGame(page)).world).toMatchObject({position:HALL,facing});
+    expect((await savedGame(page)).world).toMatchObject({position:STAIRS,facing});
     expect(errors).toEqual([]);
   });
 }
@@ -85,9 +85,9 @@ test('continuous diagonal heading and gait survive stopping, then a discrete pad
 
 test('the first rendered sample after a physical doorway uses the destination entrance facing',async({page,baseURL},info)=>{
   const errors=await observeHeading(page);
-  // From the pixel courtyard below the hall's back door, walking up leaves for the residential hall,
-  // whose entrance from the courtyard faces west.
-  await restore(page,baseURL!,'south',{x:23,y:6},'courtyard');
+  // From the pixel residential hall below the stairs, walking up leaves for the residential stairs,
+  // whose entrance from the hall faces north.
+  await restore(page,baseURL!,'south',{x:16,y:4.8},'residential-hall');
   expect(await samples(page)).toEqual([]);
   await page.getByTestId('world-viewport').focus();
   await page.keyboard.down('ArrowUp');
@@ -95,7 +95,7 @@ test('the first rendered sample after a physical doorway uses the destination en
   finally{await page.keyboard.up('ArrowUp');}
   await expect.poll(async()=>(await samples(page)).some(sample=>sample.map===OBSERVED)).toBe(true);
   const trace=await samples(page);
-  expect(trace.find(sample=>sample.map===OBSERVED)).toMatchObject({direction:5,phase:0,action:'idle'});
+  expect(trace.find(sample=>sample.map===OBSERVED)).toMatchObject({direction:3,phase:0,action:'idle'});
   await page.screenshot({path:privateArtifact(`heading/${info.project.name}-doorway.png`),fullPage:true});
   await writeFile(privateArtifact(`heading/${info.project.name}-doorway.json`),JSON.stringify(trace,null,2));
   expect(errors).toEqual([]);

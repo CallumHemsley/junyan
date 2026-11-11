@@ -16,13 +16,14 @@ import edges from "../sprites/ground/edges.ts";
 import courtyardGround from "../sprites/ground/courtyard.ts";
 import rooftopGround from "../sprites/ground/rooftop.ts";
 import workshopGround from "../sprites/ground/workshop.ts";
+import residentialGround from "../sprites/ground/residential.ts";
 import readingGround from "../sprites/ground/reading-room.ts";
 import { treeSprites } from "../sprites/plant/trees.ts";
 import {
   OUTDOOR_MAPS, OUTDOOR_MAP_IDS, footprintPx, mapProps, openingsOn, outdoorMap, propAnchor, propSpriteId, propsBySprite, spriteIdOf, type MapProp,
 } from "./maps.ts";
 
-const groundSprites = new Set(Object.keys({ ...grass, ...paving, ...road, ...brick, ...stone, ...water, ...edges, ...courtyardGround, ...rooftopGround, ...workshopGround, ...readingGround }));
+const groundSprites = new Set(Object.keys({ ...grass, ...paving, ...road, ...brick, ...stone, ...water, ...edges, ...courtyardGround, ...rooftopGround, ...workshopGround, ...residentialGround, ...readingGround }));
 /** Outdoor maps still on the old painter: their ground must already compile for the day they are registered. */
 const LATER = [rooftop] as unknown as (GroundMap & { id: string; props: { kind: string }[] })[];
 
@@ -48,7 +49,7 @@ describe("the outdoor map registry", () => {
   it("tags props with their map, map by map in registry order, filtered by kind", () => {
     const benches = mapProps("all", "bench");
     expect(benches.map((p) => p.map)).toEqual([...benches.map((p) => p.map)].sort((a, b) => OUTDOOR_MAP_IDS.indexOf(a) - OUTDOOR_MAP_IDS.indexOf(b)));
-    expect(new Set(benches.map((p) => p.map))).toEqual(new Set(["town", "courtyard", "rooftop", "park", "riverbank"]));
+    expect(new Set(benches.map((p) => p.map))).toEqual(new Set(["town", "courtyard", "rooftop", "park", "riverbank", "residential-hall"]));
     expect(mapProps("courtyard", "bench", "bicycle").map((p) => p.id)).toEqual(
       OUTDOOR_MAPS.courtyard.props.filter((p) => p.kind === "bench" || p.kind === "bicycle").map((p) => p.id));
     expect(mapProps(["courtyard", "town"], "stone-table").map((p) => p.map)).toEqual(["courtyard", "town"]);
@@ -140,11 +141,15 @@ describe("ground for any outdoor map", () => {
     const shop = outdoorMap("workshop");
     const shopIds = groundLayers(shop).flatMap((layer) => Object.values(layer.legend ?? {}).map(String));
     for (const prefix of ["ground/workshop-planks-", "ground/workshop-cobbles-", "ground/workshop-rug-", "ground/edge-workshop-rug-"]) expect(shopIds.some((id) => id.startsWith(prefix)), prefix).toBe(true);
+    // And the residential hall and the apartment (ticket 0202): terrazzo, parquet, matting, glazed tile.
+    const homes = [outdoorMap("residential-hall"), outdoorMap("apartment")];
+    const homeIds = homes.flatMap((m) => groundLayers(m).flatMap((layer) => Object.values(layer.legend ?? {}).map(String)));
+    for (const prefix of ["ground/terrazzo-", "ground/timber-", "ground/woven-", "ground/glazed-tile-", "ground/edge-woven-"]) expect(homeIds.some((id) => id.startsWith(prefix)), prefix).toBe(true);
     // And the reading room (ticket 0204): parquet with its worn paths, the dark beyond its walls.
     const reading = outdoorMap("reading-room");
     const readingIds = groundLayers(reading).flatMap((layer) => Object.values(layer.legend ?? {}).map(String));
     for (const prefix of ["ground/reading-parquet-", "ground/reading-outside-", "ground/reading-worn-", "ground/edge-reading-parquet-"]) expect(readingIds.some((id) => id.startsWith(prefix)), prefix).toBe(true);
-    for (const map of [yard, shop, reading, ...LATER]) {
+    for (const map of [yard, shop, ...homes, reading, ...LATER]) {
       const layers = groundLayers(map);
       for (const layer of layers) {
         expect(layer.rows, `${map.id} ${layer.name}`).toHaveLength(map.bounds.height);

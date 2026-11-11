@@ -52,3 +52,15 @@ The neighbourhood reading room (`src/world/maps/reading-room/map.json`, 28×19, 
   - `tsc -b`: clean.
   - `vitest run`: 932 of 933 passed. `world/characters/readability.test.ts` timed out under the full run's load once; it passes alone and with `src/world` (399 passed). `pixel/engine/renderer.test.ts`'s timing test flaked the same way once.
   - Playwright headless on ports 5226/5227: `reading-room.spec.ts` and `reading-targets.spec.ts` 11 passed, 1 skipped by the spec's own filter; `world-journey.spec.ts` and `pixel-town.spec.ts` 4 passed, 2 skipped by project filters. "restores an old save" timed out once in a parallel run and passed twice alone.
+- 2026-11-11, merge of `origin/main` (ticket 0202, the residential hall and apartment):
+  - `runtimeProps` keeps both behaviours. A `.preview` id draws the sprite of the id without the suffix, and that stripped id also drives the per-shape and per-state lookup. Run-time props still sit on their parent, though a preview never does.
+  - `runtimeFade`, `runtimeLights`, `previewState` and `frameView` are all exported.
+  - `OutdoorView`, `Surface` and `PixelView` pass `free` as well as `lights`, the preview fade and `data-preview`.
+  - `interiorLights` has residential, workshop and reading-room branches.
+  - The `timber` alias is listed once; `reading-outside` sits beside main's `terrazzo`, `woven` and `glazed-tile`. The reading-room, residential-hall and apartment ground tables are all registered.
+  - The map lists and the scene test name all nine maps in order.
+  - `prebake.test.ts` pins that the hall and the reading room are each other's neighbours.
+  - Checks after the merge:
+    - `tsc -b`: clean. `vitest run`: 144 files, 940 tests passed.
+    - Playwright headless on ports 5226/5227: `reading-room`, `reading-targets`, `apartment`, `apartment-composition` and `avatar-heading` 29 passed, 1 skipped; `pixel-town` passed; `world-journey` desktop passed.
+    - `world-journey` on phone timed out once in the combined run, in a town `walkTo` (the helper issue noted in ticket 0182). It passed on its own rerun (3.8 min).

@@ -14,7 +14,7 @@ import type { GameState } from "../../contracts";
 import type { WorldMapDefinition, WorldState } from "../schema";
 import type { WaiterMotion } from "./cafe";
 import { Surface, usePrefersReducedMotion } from "./PixelSurface";
-import { frameView, occluderFade, outdoorActors, outdoorPhase, outdoorPlayer, placedById, runtimeProps } from "./outdoor";
+import { frameView, occluderFade, outdoorActors, outdoorPhase, outdoorPlayer, placedById, previewState, runtimeFade, runtimeLights, runtimeProps } from "./outdoor";
 import { outdoorAtlas, outdoorRenderer, prebakeAround } from "./prebake";
 
 /** Phones show about ten tiles across; landscape screens keep the engine's twenty. */
@@ -80,6 +80,10 @@ export default function OutdoorView({ map, game, world, motion, lifeClock, size,
   const actors = useMemo(() => outdoorActors(cast, player), [cast, player]);
   // Props the game projects at run time (the rooftop garden's pots) draw beside the compiled scene's.
   const props = useMemo(() => { const atlas = outdoorAtlas(); return runtimeProps(map.id, map.props, (id) => atlas.has(id)); }, [map.id, map.props]);
+  // An owned lamp glows where it stands; a furnishing being placed draws translucent.
+  const lights = useMemo(() => runtimeLights(map.props), [map.props]);
+  const translucent = useMemo(() => runtimeFade(map.props), [map.props]);
+  const preview = previewState(map.props);
   const placed = useMemo(() => placedById(renderer.compiled), [renderer]);
   const fadeKey = useRef("");
   const fadeRef = useRef<Record<string, number>>({});
@@ -87,6 +91,7 @@ export default function OutdoorView({ map, game, world, motion, lifeClock, size,
   const key = Object.keys(nextFade).join(",");
   // The same object while the faded set holds, so walking in the open never re-renders the surface for it.
   if (key !== fadeKey.current) { fadeKey.current = key; fadeRef.current = nextFade; }
+  const fade = useMemo(() => (Object.keys(translucent).length ? { ...fadeRef.current, ...translucent } : fadeRef.current), [fadeRef.current, translucent]);
   const phase = outdoorPhase(game.served);
   const dpr = typeof devicePixelRatio === "number" ? devicePixelRatio : 1;
   const usual = chooseZoom(Math.max(1, size.width), Math.max(1, size.height), dpr, TARGETS);
@@ -108,8 +113,8 @@ export default function OutdoorView({ map, game, world, motion, lifeClock, size,
   return (
     // Under a bottom sheet the view shrinks to what stays visible, so the camera keeps the player in it.
     <div className={`pixel-map pixel-outdoor pixel-${map.id}`} data-pixel-scene={map.id} style={{ bottom: inset.bottom }} data-pixel-camera={camera ? JSON.stringify({ x: camera.x, y: camera.y, zoom: camera.zoom, dpr: camera.dpr, tile: TILE }) : undefined}
-      data-faded={key || undefined}>
-      <Surface renderer={renderer} actors={actors} props={props} fade={fadeRef.current} phase={phase} focus={focus} zoom={zoom} free={!!framed} reducedMotion={reducedMotion} onPointerDown={down} onCamera={setCamera} onApi={api} />
+      data-faded={key || undefined} data-preview={preview ?? undefined}>
+      <Surface renderer={renderer} actors={actors} props={props} fade={fade} lights={lights} phase={phase} focus={focus} zoom={zoom} free={!!framed} reducedMotion={reducedMotion} onPointerDown={down} onCamera={setCamera} onApi={api} />
     </div>
   );
 }
