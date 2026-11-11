@@ -6,6 +6,7 @@ import restaurant from "./restaurant.ts";
 import shops from "./shops.ts";
 import shutters from "./shutters.ts";
 import tea from "./tea.ts";
+import { lockupOf, tradeOf } from "./_lane-shop.ts";
 import workshop from "./workshop.ts";
 
 const all: SpriteSet = mergeSpriteSets([awnings, restaurant, shops, shutters, tea, workshop]);
@@ -59,5 +60,15 @@ describe("shopfront sprites (pixel contract)", () => {
         for (let x = 0; x < f.w; x++) expect(f.solid(x, f.h - 1) && f.alpha[(f.h - 1) * f.w + x] === 255, `${id} x${x}`).toBe(true);
       }
     }
+  });
+
+  it("generates lane shops and lock-ups for unnamed props instead of repeating a landmark", () => {
+    const named = new Set(["town.corner-store", "town.market-house", "town.south-bakery", "town.bookshop", "town.west-store", "town.river-store"]);
+    const shops = townProps("building-shop").filter((p) => !named.has(p.id)).map(tradeOf);
+    const lockups = townProps("building-shutter").filter((p) => !named.has(p.id)).map(lockupOf);
+    if (shops.length > 1) expect(new Set(shops).size).toBeGreaterThan(1);
+    if (lockups.length > 1) expect(new Set(lockups).size).toBeGreaterThan(1);
+    // Same id, same shop, every bake.
+    for (const p of townProps("building-shop")) expect(tradeOf(p)).toBe(tradeOf({ ...p }));
   });
 });

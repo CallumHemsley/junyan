@@ -15,6 +15,7 @@
  */
 import { defineSprites, hash, type Color, type Px } from "../../kit/index.ts";
 import type { TownProp } from "../../town/map.ts";
+import { laneShutter } from "./_lane-shop.ts";
 import { block, darkRoom, downpipe, greyBrick, pantileRoof, perProp, plotFoot, rollerShutter, signboard, step, stucco, tarp, tileSkirt, zrect } from "./_front.ts";
 
 // ── west store ─────────────────────────────────────────────────────────────
@@ -164,5 +165,10 @@ function riverStore(p: Px, w: number, H: number) {
 
 export default defineSprites(perProp("building-shutter", (prop: TownProp, w, h) => ({
   foot: plotFoot(w, h),
-  draw: (p) => (prop.id === "town.west-store" ? westStore(p, w, h) : riverStore(p, w, h)),
+  draw: (p) => {
+    if (prop.id === "town.west-store") westStore(p, w, h);
+    else if (prop.id === "town.river-store") riverStore(p, w, h);
+    // Every other lock-up is generated from its id, variant and footprint.
+    else laneShutter(p, prop, w, h, 0);
+  },
 })));

@@ -18,6 +18,7 @@
  */
 import { defineSprites, hash, type Color, type Legend, type Px } from "../../kit/index.ts";
 import type { TownProp } from "../../town/map.ts";
+import { laneShop } from "./_lane-shop.ts";
 import {
   acUnit, aerial, block, boards, cable, downpipe, greyBrick, lattice, pantileRoof, perProp, plotFoot,
   roofCat, shadowWedge, signboard, sillPot, step, stucco, tileSkirt, wisp, zrect,
@@ -524,9 +525,13 @@ function dormer(p: Px, x: number, y: number) {
   for (let j = y + 22; j < y + 52; j++) p.px(x + w, j, step(p.get(x + w, j) ?? "stone2", -1)).px(x + w + 1, j, step(p.get(x + w + 1, j) ?? "stone2", -1));
 }
 
+const LANDMARKS = ["town.corner-store", "town.market-house", "town.south-bakery", "town.bookshop"];
+
 export default defineSprites(perProp("building-shop", (prop: TownProp, w, h) => {
   const id = prop.id;
   if (id === "town.south-bakery") return { frames: 4, fps: 3, foot: plotFoot(w, h), draw: (p, f) => bakery(p, w, h, f) };
+  // Every shop that is not a named landmark is generated from its id, variant and footprint.
+  if (!LANDMARKS.includes(id)) return { frames: 4, fps: 4, foot: plotFoot(w, h), draw: (p, f) => laneShop(p, prop, w, h, f) };
   return {
     foot: plotFoot(w, h),
     draw: (p) => {
