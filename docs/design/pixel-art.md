@@ -148,6 +148,8 @@ Ids are `char/<who>/<action>-<dir>` with `dir` in `down | up | left | right`.
 | `sit` | 1–2 | seated on a stool; legs foreshortened |
 | `carry-idle`, `carry-walk` | as above | waiter only: both hands on the tray; the food on it is drawn separately from game state (`food/tray-*`, placed by `trayActors` in `src/world/pixel/cafe.ts`) |
 
+The player (`char/player`, ticket 0194) is ahead of this table: a joint puppet with an 8-frame hand-keyed walk at 10 fps and an 8-frame idle at 5 fps (`src/pixel/sprites/char/_hero-*.ts`), and his carry actions use the same frames. The tray dishes take their frame count, fps and bob from `carryBob`, so they always match him. The rest of the cast is still on the rig and this table until they are redrawn.
+
 Frames are 32×64 with anchor `[16, 62]`, `foot: [-8, -8, 16, 8]`, `shadow: { rx: 11, ry: 4 }`. `left` may be the mirror of `right` unless the character is asymmetric. Proportions follow `ex/waiter`: a big head (about 22 wide, 24 tall with hair), eyes two wide and three tall with a catch-light, a body about 20 wide with the arms, short legs.
 
 ## The room everyone is drawing for

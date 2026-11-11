@@ -120,7 +120,7 @@ describe("cafe cast and tables from game state", () => {
     const atlas = createAtlas(sprites);
     for (const food of content.foods) for (const action of ["carry-idle", "carry-walk"]) {
       const dish = atlas.get(`food/tray-${food.id}/${action}-down`), waiter = atlas.get(`char/player/${action}-down`);
-      expect([dish.frameCount, dish.fps]).toEqual([waiter.frameCount, waiter.fps]);
+      expect([dish.frameCount, dish.fps, dish.def.stride]).toEqual([waiter.frameCount, waiter.fps, waiter.def.stride]);
     }
   });
 

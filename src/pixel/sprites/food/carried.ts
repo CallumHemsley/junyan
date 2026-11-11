@@ -7,19 +7,20 @@
  *
  * They are drawn as actors beside the waiter (`trayActors` in `src/world/pixel/cafe.ts` places
  * them), so each one animates on the waiter's `carry-idle` and `carry-walk` beats and rides the same
- * body bob as the tray in the rig. Every sprite is a 12×12 box with the dish centred and its
- * bottom on the anchor row, one spare row above and below for the bob. Every dish is 11 wide with
+ * body bob as the tray in his hands (`carryBob` in `char/_hero-poses.ts`), on the same number of
+ * frames at the same fps. Every sprite is a 12×12 box with the dish centred and its bottom on the
+ * anchor row, one spare row above and below for the bob. Every dish is 11 wide with
  * the anchor on its middle column, so a left-facing layout mirrors a right-facing offset `dx` to
  * `-1 - dx` (the waiter's frame is symmetric about the edge between columns 15 and 16).
  */
 import { defineSprites, type Legend, type Px, type SpriteSet } from "../../kit/index.ts";
-import { ACTIONS, type Action } from "../char/_rig.ts";
+import { HERO_ACTIONS, carryBob, type HeroAction } from "../char/_hero-poses.ts";
 
 /** Sprite box, art pixels: exactly one dish wide. The dish's bottom row sits on `BASE` when the body is level. */
 export const CARRIED_BOX = { w: 11, h: 12 } as const;
 const BASE = 10;
 /** The actions the waiter carries with; each tray dish follows the same frames. */
-export const CARRY_ACTIONS = ["carry-idle", "carry-walk"] as const satisfies readonly Action[];
+export const CARRY_ACTIONS = ["carry-idle", "carry-walk"] as const satisfies readonly HeroAction[];
 
 const DOUGH = { k: "oak2", K: "wood3", W: "white", "5": "cream5", "4": "cream4", "3": "cream3" } as const;
 const BAMBOO = { a: "bamboo1", b: "bamboo2", c: "bamboo3", d: "bamboo4", e: "bamboo5" } as const;
@@ -148,13 +149,14 @@ for (const [foodId, dish] of Object.entries(CARRIED_DISHES)) {
   if (dish.rows.some((row) => row.length !== CARRIED_BOX.w)) throw new Error(`food/tray-${foodId}: every row must be ${CARRIED_BOX.w} wide`);
   if (dish.rows.length > BASE) throw new Error(`food/tray-${foodId}: at most ${BASE} rows`);
   for (const action of CARRY_ACTIONS) {
-    const spec = ACTIONS[action];
+    const bob = carryBob(action);
     sprites[`food/tray-${foodId}/${action}-down`] = {
       ...CARRIED_BOX,
       anchor: [(CARRIED_BOX.w - 1) / 2, BASE],
-      frames: spec.frames.length,
-      fps: spec.fps,
-      draw: (p, frame) => drawDish(p, dish, spec.frames[frame].body),
+      frames: bob.length,
+      fps: HERO_ACTIONS[action].fps,
+      ...(HERO_ACTIONS[action].stride ? { stride: HERO_ACTIONS[action].stride } : {}),
+      draw: (p, frame) => drawDish(p, dish, bob[frame]),
     };
   }
 }
