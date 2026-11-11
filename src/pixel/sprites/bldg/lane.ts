@@ -5,12 +5,13 @@
  *
  * The parts live in `_lane.ts`; each building here is a short composition with its own story.
  */
-import { defineSprites, hash, TILE, type Px, type SpriteDef } from "../../kit/index.ts";
+import { defineSprites, hash, TILE, type Color, type Px, type SpriteDef } from "../../kit/index.ts";
 import { footprintPx, openingsOn, townProps, townSpriteId, type TownProp } from "../../town/map.ts";
 import {
-  acUnit, aerial, basePot, block, bricks, castShadow, downpipe, hoseReel, meterCluster, paintedRepair, stoolAndBasin, wornPatch, eave, facadeShell, laneRoof, laneWindow, laundryPole, meterBox, moss,
+  acUnit, aerial, basePot, birdcage, block, brickedWindow, bricks, castShadow, chimney, downpipe, homeSign, hoseReel, meterCluster,
+  paintedRepair, satelliteDish, stoolAndBasin, wallBicycle, wornPatch, type Lacquer, eave, facadeShell, laneRoof, laneWindow, laundryPole, meterBox, moss,
   numberPlate, partyWall, pigeonLoft, quiltRack, renderPatch, roofGarden, sillPlants, skylight, solarHeater,
-  stain, stoneGate, stringCourse, tarp, tigerWindow, waterTank, type GateOptions, type Pediment,
+  RED_BRICK, shadowWedge, stain, stoneGate, stringCourse, tarp, tigerWindow, waterTank, type GateOptions, type Pediment,
 } from "./_lane.ts";
 
 type Draw = (p: Px, prop: TownProp, w: number, h: number) => void;
@@ -582,6 +583,166 @@ function cistern(p: Px, x: number, y: number, d: number, seed: number): void {
   block(p, cx + 18, lidY - 12, ["..aa..", ".abbc.", "abbbcc", "..dd..", "..dd.."], { a: "steel6", b: "steel5", c: "steel3", d: "steel2" }, "ventCap");
 }
 
+// ── the row-house generator ─────────────────────────────────────────────────
+
+/** FNV-1a over a prop id: the seed that makes every generated row its own. */
+function idHash(id: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < id.length; i++) { h ^= id.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return h >>> 0;
+}
+
+/** A deterministic stream of 0..1 numbers from a seed. */
+function stream(seed: number): () => number {
+  let k = 0;
+  return () => hash(seed, k++, 977);
+}
+
+function shuffled<T>(list: readonly T[], next: () => number): T[] {
+  const out = [...list];
+  for (let i = out.length - 1; i > 0; i--) { const j = Math.floor(next() * (i + 1)); [out[i], out[j]] = [out[j], out[i]]; }
+  return out;
+}
+
+type Finish = "grey" | "banded" | "render";
+type Treatment = "shutters-jade" | "shutters-wood" | "shutters-blue" | "shutters-cream" | "cage" | "bars" | "bricked" | "curtain";
+type Story = "ac" | "quilt" | "birdcage" | "laundry" | "pomegranate" | "bicycle" | "sign" | "dish" | "tarp" | "loft" | "tiger";
+const PEDIMENTS: readonly Pediment[] = ["triangle", "arch", "scroll", "plain"];
+const DOORS: readonly Lacquer[] = ["black", "oxblood", "jade", "blue", "wood"];
+const FINISHES: readonly Finish[] = ["grey", "banded", "render"];
+const TREATMENTS: readonly Treatment[] = ["shutters-jade", "shutters-wood", "shutters-blue", "shutters-cream", "cage", "bars", "bricked", "curtain"];
+const STORIES: readonly Story[] = ["ac", "quilt", "birdcage", "laundry", "pomegranate", "bicycle", "sign", "dish", "tarp", "loft", "tiger"];
+
+/** One window in a generated bay, dressed by `t`. */
+function dressedWindow(p: Px, x: number, y: number, w: number, h: number, t: Treatment, seed: number, finish: Finish): void {
+  if (t === "bricked") { brickedWindow(p, x, y, w, h, seed, finish === "render"); return; }
+  const curtains = ["cream", "plum", "jade", "pink"] as const;
+  const curtain = curtains[seed % 4];
+  if (t.startsWith("shutters-")) {
+    const tone = t.slice(9) as "jade" | "wood" | "blue" | "cream";
+    const state = (["open", "half", "closed"] as const)[seed % 3];
+    laneWindow(p, x, y, w, h, { seed, shutters: state, shutterTone: tone, glass: seed % 2 ? "sky" : "curtain", curtain, sill: "plants" });
+  } else if (t === "cage") laneWindow(p, x, y, w, h, { seed, cage: true, glass: "curtain", curtain, frame: "cream" });
+  else if (t === "bars") laneWindow(p, x, y, w, h, { seed, bars: true, glass: "dark", sill: seed % 2 ? "jar" : "shoes" });
+  else laneWindow(p, x, y, w, h, { seed, glass: "curtain", curtain, ajar: true, sill: "plants", frame: seed % 2 ? "cream" : "jade" });
+}
+
+/** Lay a bay's wall finish over the grey brick shell: red banding courses, or lime render gone patchy. */
+function bayFinish(p: Px, bx: number, top: number, bw: number, base: number, finish: Finish, seed: number): void {
+  if (finish === "banded") {
+    for (let yy = ((top + 12) & ~3); yy < base - 16; yy += 20) bricks(p, bx, yy, bw, 4, seed + yy, RED_BRICK);
+  } else if (finish === "render") {
+    p.rect(bx, top + 4, bw, base - top - 11, "cream3");
+    for (let yy = top + 4; yy < base - 7; yy++) for (let xx = bx; xx < bx + bw; xx++) if (hash(xx >> 2, yy >> 3, seed) > 0.82) p.px(xx, yy, "cream2");
+    // Where the render has fallen away, the brick shows; a hairline crack wanders down from a sill.
+    for (let i = 0; i < 2; i++) {
+      const sx = bx + 6 + Math.floor(hash(i, 1, seed) * (bw - 26)), sy = top + 20 + Math.floor(hash(i, 2, seed) * (base - top - 50));
+      bricks(p, sx, sy, 16, 8, seed + i);
+      p.hline(sx, sy - 1, 16, "cream4").vline(sx - 1, sy, 8, "cream4").hline(sx, sy + 8, 16, "cream1");
+    }
+    let cx = bx + Math.floor(bw * 0.6);
+    for (let yy = top + 40; yy < top + 70 && yy < base - 8; yy++) { p.px(cx, yy, "cream1"); if (hash(yy, 3, seed) > 0.6) cx += hash(yy, 4, seed) > 0.5 ? 1 : -1; }
+  }
+}
+
+/**
+ * Any lane row the map adds that has no hand-made drawing: bays from the width, storeys from the depth,
+ * and per bay a pediment, door paint, window dressing, wall finish and one story, all chosen from the
+ * prop's id and variant so neighbouring rows differ and no two adjacent bays match. A deep plot gets a
+ * back terrace; a utility plot (the hot-water shop) gets a plain door, render and a steaming chimney.
+ */
+const laneRow: Draw = (p, prop, W, H) => {
+  const seed = (idHash(prop.id) ^ Math.imul(prop.variant + 1, 7919)) & 0xffff;
+  const next = stream(seed);
+  const utility = prop.kind === "building-utility";
+  const F = Math.min(H - 40, H >= 176 ? 128 : H >= 152 ? 112 : 96);
+  const two = F >= 112, top = H - F, base = H - 1;
+  const n = utility ? 1 : Math.max(1, Math.round(W / 124));
+  const bayW = Math.floor(W / n);
+  const peds = utility ? ["plain" as Pediment] : shuffled(PEDIMENTS, next);
+  const doors = utility ? ["wood" as Lacquer] : shuffled(DOORS, next);
+  const finishes = utility ? ["render" as Finish] : shuffled(FINISHES, next);
+  const treatments = shuffled(TREATMENTS, next);
+  let stories = shuffled(STORIES, next);
+  const roofH = top + 4;
+  const ridgeY = roofH > 110 ? Math.round(roofH * 0.38) : Math.max(8, Math.min(28, Math.round(roofH * 0.22)));
+  const slope = roofH - 5 - (ridgeY + 6);
+  // Roof stories need room on the slope.
+  if (slope < 34) stories = stories.filter((st) => st !== "loft" && st !== "tiger");
+  if (utility) stories = ["sign"];
+
+  facadeShell(p, 0, top, W, base, { seed, groundH: two ? Math.round(F * 0.66) : F - 10, quoins: next() > 0.5, bandCourses: two ? 2 : 0 });
+  const roofJobs: (() => void)[] = [];
+  for (let i = 0; i < n; i++) {
+    const bx = i * bayW, bw = i === n - 1 ? W - bx : bayW, s = seed + i * 131;
+    const finish = finishes[i % finishes.length];
+    bayFinish(p, bx, top, bw, base, finish, s);
+    if (i > 0) {
+      p.rect(bx - 2, top + 4, 4, F - 5, "steel3");
+      p.vline(bx - 2, top + 4, F - 5, "steel4").vline(bx + 1, top + 4, F - 5, "steel1");
+      for (let yy = top + 8; yy < base - 8; yy += 8) p.hline(bx - 2, yy, 4, (yy >> 3) & 1 ? "rose3" : "stone3");
+    }
+    const doorW = bw >= 112 ? 44 : 40, doorH = F >= 128 ? 62 : F >= 112 ? 56 : 50;
+    const lo = bx + doorW / 2 + 12, hi = bx + bw - doorW / 2 - 12;
+    const cx = Math.round(Math.max(lo, Math.min(hi, bx + bw * (0.36 + 0.28 * next()))));
+    const x0 = cx - doorW / 2, x1 = cx + doorW / 2;
+    const leftRoom = x0 - 9 - bx, rightRoom = bx + bw - (x1 + 9);
+    const story = stories[i % stories.length];
+    // Windows: two upstairs if the bay is wide enough; one downstairs on the roomier side of the door.
+    const ww = 22, wh = F >= 128 ? 28 : 24, wy = top + 12;
+    const wins: [number, number, number, number][] = [];
+    if (two) {
+      if (bw >= 100) wins.push([bx + 12, wy, ww, wh], [bx + bw - 12 - ww, wy, ww, wh]);
+      else wins.push([cx - ww / 2, wy, ww, wh]);
+    }
+    const gwH = two ? 22 : 28, gwW = two ? 18 : 22, gy = base - Math.round(F * (two ? 0.42 : 0.62));
+    const groundSide = leftRoom >= rightRoom ? "left" : "right";
+    const groundRoom = Math.max(leftRoom, rightRoom);
+    if (groundRoom >= gwW + 14) wins.push([groundSide === "left" ? bx + Math.round((leftRoom - gwW) / 2) : x1 + 9 + Math.round((rightRoom - gwW) / 2), gy, gwW, gwH]);
+    wins.forEach(([x, y, w, h], k) => dressedWindow(p, x, y, w, h, treatments[(i * 3 + k) % treatments.length], s + k, finish));
+    stoneGate(p, x0, x1, base, { doorH, pediment: peds[i % peds.length], lacquer: doors[i % doors.length], seed: s });
+    // The bay's story.
+    const freeX = groundSide === "left" ? x1 + 10 : bx + 6, freeW = groundSide === "left" ? rightRoom : leftRoom;
+    const first = wins[0];
+    if (story === "ac") acUnit(p, two && bw >= 100 ? cx - 11 : Math.min(bx + bw - 26, x1 + 12), two ? top + 18 : top + 14, s, first ? [first[0] + first[2], first[1] + 6] : undefined);
+    else if (story === "quilt" && first) {
+      const [qx0, qy0, qw0, qh0] = first, qx = qx0 - 2, qw = qw0 + 4, qy = qy0 + qh0 - 4;
+      const cloth = (["pink", "jade", "blue"] as const)[s % 3];
+      const tone = { pink: ["pink3", "pink2", "pink1"], jade: ["jade5", "jade4", "jade2"], blue: ["blue5", "blue4", "blue2"] }[cloth] as [Color, Color, Color];
+      p.rect(qx, qy, qw, 20, tone[1]);
+      p.hline(qx, qy, qw, tone[0]).hline(qx, qy + 1, qw, tone[0]).vline(qx + qw - 1, qy + 2, 18, tone[2]);
+      for (let k = 2; k < qw; k += 6) block(p, qx + k - 1, qy + 6 + ((k / 6) % 2) * 6, [".a.", "aba", ".a."], { a: tone[2], b: "gold4" }, "quiltFlower");
+      for (let k = 0; k < qw; k++) if ((k * 7) % 5 < 2) p.px(qx + k, qy + 19, tone[2]);
+    } else if (story === "birdcage") birdcage(p, first ? Math.min(bx + bw - 13, first[0] + first[2] + 4) : x1 + 10, first ? first[1] + 2 : top + 10);
+    else if (story === "laundry") laundryPole(p, bx + 10, two ? top + 50 : top + 12, bw - 20, s, shuffled(["shirt", "trousers", "towel", "socks", "vest", "pillow"] as const, next));
+    else if (story === "pomegranate") basePot(p, freeW >= 22 ? freeX : x1 + 8, base - 1);
+    else if (story === "bicycle") wallBicycle(p, freeW >= 34 ? freeX : bx + 4, base - 1);
+    else if (story === "sign") homeSign(p, Math.max(bx + 4, Math.min(bx + bw - 34, freeX)), base - doorH + 4, 30);
+    else roofJobs.push(() => {
+      const rx = Math.max(bx + 26, Math.min(bx + bw - 60, bx + Math.floor(bw * 0.3 + next() * bw * 0.3)));
+      const ry = ridgeY + 8;
+      if (story === "dish") satelliteDish(p, rx, ry + Math.floor(slope / 3));
+      else if (story === "tarp") tarp(p, rx, ry + Math.floor(slope / 2) - 6, 30, 14, s);
+      else if (story === "loft") { shadowWedge(p, rx + 29, ry + 6, 6, 20); pigeonLoft(p, rx, ry + 2); }
+      else if (story === "tiger") tigerWindow(p, rx, ry + 2, s, { w: slope >= 44 ? 36 : 28, plant: s % 2 === 0, frame: s % 3 ? "wood3" : "jade3" });
+    });
+  }
+  downpipe(p, 3, top + 4, base);
+  downpipe(p, W - 7, top + 4, base);
+  if (!utility && next() > 0.65) ivy(p, next() > 0.5 ? 2 : W - 44, top + 6, 40, F - 12, seed);
+
+  laneRoof(p, 0, 0, W, roofH, { seed, ridgeY, damp: 0.06 + next() * 0.08, mend: next() > 0.5 ? [Math.floor(next() * (W - 60)) + 20, ridgeY + 12, 30, 18] : undefined });
+  for (let i = 1; i < n; i++) partyWall(p, i * bayW - 2, ridgeY + 6, roofH - ridgeY - 11);
+  moss(p, 6, roofH - 22, W - 12, 16, seed, Math.max(1, Math.floor(W / 60)));
+  for (const job of roofJobs) job();
+  if (utility) chimney(p, Math.floor(W * 0.6), Math.max(0, ridgeY - 12));
+  // A deep plot keeps a sun terrace at the back.
+  if (roofH > 110 && ridgeY - 8 >= 40 && W >= 140) {
+    const tw = Math.min(W - 20, 120 + Math.floor(next() * 60));
+    sunTerrace(p, next() > 0.5 ? 0 : W - tw, 0, tw, ridgeY - 8, seed);
+  }
+};
+
 // ── sprites ─────────────────────────────────────────────────────────────────
 
 const DRAW: Record<string, Draw> = {
@@ -593,8 +754,8 @@ const DRAW: Record<string, Draw> = {
   "town.pump-house": pumpHouse,
 };
 
-/** Fallback by kind, for any lane building added to the map later. */
-const BY_KIND: Record<string, Draw> = { "building-residence": residence, "building-row": northRow, "building-utility": pumpHouse };
+/** Every other lane building on the map is generated, so no two rows repeat. */
+const BY_KIND: Record<string, Draw> = { "building-residence": laneRow, "building-row": laneRow, "building-utility": laneRow };
 
 function buildingSprite(prop: TownProp): SpriteDef {
   const { w, h } = footprintPx(prop);

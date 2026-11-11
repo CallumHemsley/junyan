@@ -555,22 +555,31 @@ export function tarp(p: Px, x: number, y: number, w: number, h: number, seed: nu
 
 // ── gates and doors ──────────────────────────────────────────────────────────
 
-export type Pediment = "triangle" | "arch" | "scroll";
+export type Pediment = "triangle" | "arch" | "scroll" | "plain";
 export type GateOptions = {
   /** Door opening height, from the threshold's top. */
   doorH: number;
   pediment: Pediment;
   /** Which leaf stands open (the scene adds the open leaf as its own sprite), or none. */
   open?: "left" | null;
-  /** Door lacquer: black (most), or a family's oxblood. */
-  lacquer?: "black" | "oxblood";
+  /** Door paint: black lacquer (most), a family's oxblood, jade, faded blue, or plain varnished wood. */
+  lacquer?: Lacquer;
   /** Faded paper couplets on the jambs, from New Year. */
   couplets?: boolean;
   seed: number;
 };
 
 /** Height the gate rises above `baseY`, threshold to pediment tip. */
-export const gateHeight = (o: Pick<GateOptions, "doorH" | "pediment">) => o.doorH + 3 + 10 + 3 + (o.pediment === "scroll" ? 14 : 18);
+export const gateHeight = (o: Pick<GateOptions, "doorH" | "pediment">) => o.doorH + 3 + 10 + 3 + (o.pediment === "plain" ? 0 : o.pediment === "scroll" ? 14 : 18);
+
+export type Lacquer = "black" | "oxblood" | "jade" | "blue" | "wood";
+const LACQUER: Record<Lacquer, { field: Color; deep: Color; gloss: Color; shine: Color; worn: Color }> = {
+  black: { field: "steel1", deep: "ink", gloss: "steel2", shine: "steel3", worn: "wood1" },
+  oxblood: { field: "rose1", deep: "ink", gloss: "rose2", shine: "rose3", worn: "rose2" },
+  jade: { field: "jade2", deep: "jade1", gloss: "jade3", shine: "jade4", worn: "stone3" },
+  blue: { field: "blue2", deep: "blue1", gloss: "blue3", shine: "blue4", worn: "stone3" },
+  wood: { field: "wood3", deep: "wood1", gloss: "wood4", shine: "wood5", worn: "wood2" },
+};
 
 /**
  * A shikumen stone gate: granite jambs and lintel round a black-lacquered double door with brass
@@ -632,9 +641,7 @@ export function stoneGate(p: Px, x0: number, x1: number, baseY: number, o: GateO
 
 /** One lacquered door leaf at (x, y), w × h. `hinge` is the jamb side. */
 function leaf(p: Px, x: number, y: number, w: number, h: number, side: "left" | "right", o: GateOptions): void {
-  const tone = o.lacquer === "oxblood"
-    ? { field: "rose1" as Color, deep: "ink" as Color, gloss: "rose2" as Color, shine: "rose3" as Color }
-    : { field: "steel1" as Color, deep: "ink" as Color, gloss: "steel2" as Color, shine: "steel3" as Color };
+  const tone = LACQUER[o.lacquer ?? "black"];
   p.rect(x, y, w, h, tone.field);
   // Two raised panels: a deep recess line round each, lit top-left bevel.
   const panels = [[y + 4, Math.floor(h * 0.42)], [y + Math.floor(h * 0.42) + 8, h - Math.floor(h * 0.42) - 12]] as const;
@@ -662,7 +669,7 @@ function leaf(p: Px, x: number, y: number, w: number, h: number, side: "left" | 
     "..ff..",
   ], { a: "gold5", b: "gold4", c: "gold3", d: "gold2", e: "gold3", f: "gold1" }, "knocker");
   // Kick wear: lacquer scuffed to the wood at the foot.
-  for (let i = 0; i < w - 4; i++) if (hash(i, y, o.seed + 9) > 0.55) p.px(x + 2 + i, y + h - 2, o.lacquer === "oxblood" ? "rose2" : "wood1");
+  for (let i = 0; i < w - 4; i++) if (hash(i, y, o.seed + 9) > 0.55) p.px(x + 2 + i, y + h - 2, tone.worn);
 }
 
 /** Through the open leaf: the courtyard (天井) in sunlight, a carved hall door beyond, a potted plant. */
@@ -702,6 +709,7 @@ function courtyard(p: Px, x: number, y: number, w: number, h: number, seed: numb
 /** The carved pediment over a gate, its base the cornice row `cy`, spanning x0..x1. */
 function pediment(p: Px, x0: number, x1: number, cy: number, o: GateOptions): void {
   const w = x1 - x0, cx = x0 + w / 2;
+  if (o.pediment === "plain") return;
   if (o.pediment === "triangle") {
     const H = 18;
     p.poly([[x0, cy], [cx, cy - H], [x1, cy]], "stone4");
@@ -1307,4 +1315,91 @@ export function basePot(p: Px, x: number, base: number): void {
     "......kkkkkk........",
     "....kkkkkkkkkk......",
   ], { a: "leaf5", b: "leaf4", c: "leaf3", d: "leaf2", r: "orange2", e: "wood2", f: "blue4", g: "blue3", h: "blue2", i: "blue5", j: "white", k: "steel1" }, "basePot");
+}
+
+// ── more lane life, for the row generator ────────────────────────────────────
+
+/**
+ * A window bricked up long ago: the granite lintel and sill still there, the opening filled with
+ * newer brick (red, or rendered over), a ghost of the old frame at its edge. (x, y, w, h) as `laneWindow`.
+ */
+export function brickedWindow(p: Px, x: number, y: number, w: number, h: number, seed: number, rendered = false): void {
+  p.rect(x - 2, y - 4, w + 4, 4, "stone4");
+  p.hline(x - 2, y - 4, w + 4, "stone5").vline(x + w + 1, y - 4, 4, "stone3");
+  if (rendered) {
+    p.rect(x, y, w, h, "stone4");
+    for (let i = 0; i < 3; i++) p.hline(x + 2 + Math.floor(hash(i, 1, seed) * (w - 8)), y + 4 + i * Math.floor(h / 3), 4, "stone3");
+  } else bricks(p, x, y, w, h, seed + 5, RED_BRICK);
+  p.vline(x, y, h, "stone2").hline(x, y, w, "stone2");
+  p.rect(x - 3, y + h, w + 6, 3, "stone4");
+  p.hline(x - 3, y + h, w + 6, "stone5").hline(x - 2, y + h + 3, w + 4, "steel2");
+}
+
+/** A bamboo birdcage hung from a hook beside a window, a songbird inside, 11 × 16 from (x, y). */
+export function birdcage(p: Px, x: number, y: number): void {
+  block(p, x, y, [
+    ".....a.....",
+    ".....a.....",
+    "....bbb....",
+    "..bcbcbcb..",
+    ".bc.c.c.cb.",
+    "bc.c.c.c.cb",
+    "b.c.c.c.c.b",
+    "bc.cdec.c.b",
+    "b.c.ddfc.cb",
+    "bc.c.c.c.cb",
+    "bbbbbbbbbbb",
+    ".ggggggggg.",
+    "..hhhhhhh..",
+  ], { a: "steel2", b: "bamboo3", c: "bamboo2", d: "gold4", e: "ink", f: "orange2", g: "bamboo4", h: "bamboo1" }, "birdcage");
+}
+
+/** An old black roadster bicycle leant against the wall, front wheel to the left, 32 × 20, bottom row `base`. */
+export function wallBicycle(p: Px, x: number, base: number): void {
+  for (const cx of [x + 7, x + 25]) {
+    // A tyre: a ring, so the wall shows through the spokes.
+    for (let yy = base - 14; yy <= base; yy++) for (let xx = cx - 7; xx <= cx + 7; xx++) {
+      const d = Math.hypot(xx + 0.5 - cx, yy + 0.5 - (base - 6.5));
+      if (d <= 7 && d > 5.5) p.px(xx, yy, "ink");
+    }
+    p.px(cx, base - 7, "steel3").line(cx - 4, base - 7, cx + 3, base - 7, "steel4").line(cx, base - 11, cx, base - 3, "steel4");
+  }
+  p.line(x + 7, base - 7, x + 14, base - 15, "ink").line(x + 14, base - 15, x + 24, base - 15, "ink");
+  p.line(x + 24, base - 15, x + 25, base - 7, "ink").line(x + 16, base - 7, x + 24, base - 15, "ink").line(x + 16, base - 7, x + 25, base - 7, "ink");
+  p.hline(x + 21, base - 17, 6, "wood2").hline(x + 22, base - 18, 4, "wood3");
+  p.line(x + 12, base - 18, x + 15, base - 15, "steel2").hline(x + 10, base - 19, 4, "steel4");
+  p.px(x + 16, base - 7, "steel5").px(x + 17, base - 6, "steel3");
+  // A wicker basket on the front.
+  block(p, x + 3, base - 21, ["abbbc", "bcbcc", ".ccc."], { a: "bamboo4", b: "bamboo3", c: "bamboo2" }, "basket");
+}
+
+/** A satellite dish on a short mast, bolted to the roof, 16 × 16 from (x, y). */
+export function satelliteDish(p: Px, x: number, y: number): void {
+  p.ellipse(x + 7, y + 6, 7, 6, "steel4");
+  p.ellipse(x + 6.5, y + 5.5, 6, 5, "steel6");
+  p.ellipse(x + 7.5, y + 6.5, 4, 3, "steel5");
+  p.line(x + 7, y + 6, x + 12, y + 2, "steel2").rect(x + 12, y + 1, 2, 2, "steel1");
+  p.vline(x + 7, y + 12, 4, "steel2").hline(x + 4, y + 15, 7, "steel1");
+  p.px(x + 2, y + 3, "white");
+}
+
+/** A blank signboard for a home business (a tailor, a key cutter): DOM may label it. w × 12 from (x, y). */
+export function homeSign(p: Px, x: number, y: number, w: number): void {
+  p.rect(x, y, w, 12, "wood2");
+  p.hline(x, y, w, "wood4").vline(x, y, 12, "wood3").hline(x, y + 11, w, "wood1").vline(x + w - 1, y, 12, "wood1");
+  p.rect(x + 2, y + 2, w - 4, 8, "cream4");
+  p.hline(x + 2, y + 2, w - 4, "cream5").hline(x + 2, y + 9, w - 4, "cream3");
+  for (const hx of [x + 3, x + w - 4]) p.px(hx, y - 1, "steel2");
+}
+
+/** A brick chimney stack with a clay pot and steam, 16 × 30 from (x, y): the hot-water shop's boiler. */
+export function chimney(p: Px, x: number, y: number): void {
+  p.faded(0.55, (q) => q.rows(x + 4, y, ["..aa.", ".aaa.", "aa..a", ".aa..", "..aa.", "...a."], { a: "white" }));
+  p.rect(x + 3, y + 6, 10, 4, "rose3");
+  p.hline(x + 3, y + 6, 10, "rose4").rect(x + 5, y + 6, 6, 2, "ink");
+  bricks(p, x + 1, y + 10, 14, 18, 7, RED_BRICK);
+  p.hline(x, y + 10, 16, "stone4").hline(x, y + 11, 16, "stone2");
+  p.vline(x + 1, y + 10, 18, "rose4").vline(x + 14, y + 10, 18, "rose1");
+  p.hline(x, y + 28, 16, "steel1").hline(x + 1, y + 29, 14, "steel2");
+  for (let i = 0; i < 5; i++) p.px(x + 3 + i * 2, y + 12 + (i % 2), "steel1");
 }
