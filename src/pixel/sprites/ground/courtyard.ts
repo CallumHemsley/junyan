@@ -15,8 +15,10 @@
  * `edge-brick-paving-…`, `edge-cobble-…`, `edge-sill-…`) are overlays; the placement rules are in
  * `src/pixel/town/ground-courtyard-legend.ts`. The scene weights a and b heavily, c and d rarely.
  */
-import { defineSprites, hash, type Color, type Legend, type Px, type SpriteDef } from "../../kit/index.ts";
-import { T, inBlob, jitter, mod, sided, stamp, tile, wrap, type Corner, type Side } from "./_helpers.ts";
+import { defineSprites, hash, Px, type Color, type Legend, type SpriteDef } from "../../kit/index.ts";
+import { CELLS, cellAt, centreOf, isJoint, isShared, layCobbles, type CobbleTone } from "./_cobble.ts";
+import { T, inBlob, jitter, sided, stamp, tile, type Corner, type Side } from "./_helpers.ts";
+import { bandMask } from "./_turf.ts";
 
 const L: Legend = {
   a: "stone1", b: "stone2", c: "stone3", d: "stone4", e: "stone5",
@@ -51,64 +53,96 @@ function mossJoints(p: Px, cx: number, cy: number, rx: number, ry: number, seed:
   p.each((x, y, c) => (c === joint && inBlob(x, y, cx, cy, rx, ry) && hash(x >> 1, y >> 1, seed) < 0.6 ? (hash(x, y, seed + 1) < 0.2 ? "leaf2" : "jade2") : undefined));
 }
 
-// ── courtyard-stone: big granite slabs ──────────────────────────────────────
+// ── courtyard-stone: big granite slabs in windmill bond ─────────────────────
+
+type Slab = { x: number; y: number; w: number; h: number; key: number };
+/**
+ * Windmill bond: four 20×12 slabs turning round a small square, repeating every 32 px. No joint runs on
+ * past a slab, so courses never line up into bands. Every slab lies inside its tile, so each variant may
+ * treat each slab its own way.
+ */
+const SLABS: Slab[] = [
+  { x: 0, y: 0, w: 20, h: 12, key: 0 }, { x: 20, y: 0, w: 12, h: 20, key: 1 },
+  { x: 12, y: 20, w: 20, h: 12, key: 2 }, { x: 0, y: 12, w: 12, h: 20, key: 3 },
+  { x: 12, y: 12, w: 8, h: 8, key: 4 },
+];
+type SlabTone = { face: Color; lit: Color; shade: Color };
+const GRANITE: SlabTone = { face: "stone3", lit: "stone4", shade: "stone2" };
+const GRANITE_PALE: SlabTone = { face: "stone4", lit: "stone5", shade: "stone3" };
+const GRANITE_DARK: SlabTone = { face: "stone2", lit: "stone3", shade: "stone1" };
 
 /**
- * Big granite slabs, a tile deep, laid in courses: every course's bed joint is on row 31, and a slab
- * ends at x 15 or x 31 depending on the variant, so slabs run 16, 32 or 48 px and more along a course
- * and no grid shows. Warm grey granite, darker than the sills, top lip catching the sun and the lower
- * lip settled, worn paler where feet and wheels pass, flecked in pairs.
+ * Warm grey granite, darker than the sills: each slab's top and left lips catch the sun, its lower and
+ * right lips have settled; worn paler toward the middle where feet and wheels pass; flecked in pairs.
  */
-function slab(p: Px, seed: number, ends: readonly number[]) {
+function slabs(p: Px, seed: number, tones: Partial<Record<number, SlabTone>> = {}) {
   p.rect(0, 0, T, T, "stone1");
-  for (let j = 0; j < T - 1; j++) for (let x = 0; x < T; x++) {
-    if (ends.includes(x)) continue;
-    const start = ends.includes(mod(x - 1));
-    let c: Color = "stone3";
-    if (j === 0 && hash(x >> 2, 1, 7) > 0.3) c = "stone4";
-    else if (start && j < T - 3) c = "stone4";
-    else if (j === T - 2) c = "stone2";
-    else if (ends.includes(x + 1) && hash(j >> 2, 2, 7) > 0.35) c = "stone2";
-    p.px(x, j, c);
-  }
-  for (let k = 0; k < 8; k++) {
-    const fx = 4 + Math.floor(hash(k, 3, seed) * 23), fy = 6 + Math.floor(hash(k, 4, seed) * 18);
-    if (!ends.some((e) => Math.abs(e - fx) < 2 || Math.abs(e - fx - 1) < 2)) p.px(fx, fy, "stone4").px(fx + 1, fy, "stone4");
-  }
-  for (let k = 0; k < 9; k++) {
-    const fx = 2 + Math.floor(hash(k, 5, seed) * 27), fy = 2 + Math.floor(hash(k, 6, seed) * 26);
-    if (ends.includes(fx) || ends.includes(fx + 1)) continue;
-    const c: Color = k % 3 === 0 ? "steel3" : "stone2";
-    p.px(fx, fy, c).px(fx + 1, fy, c);
+  for (const sl of SLABS) {
+    const t = tones[sl.key] ?? GRANITE;
+    for (let j = 0; j < sl.h - 1; j++) for (let i = 0; i < sl.w - 1; i++) {
+      let c: Color = t.face;
+      if (j === 0 && hash(i >> 2, sl.key, seed) > 0.3) c = t.lit;
+      else if (j === sl.h - 2 || (i === sl.w - 2 && hash(j >> 2, sl.key + 5, seed) > 0.35)) c = t.shade;
+      p.px(sl.x + i, sl.y + j, c);
+    }
+    const n = Math.round((sl.w * sl.h) / 60);
+    for (let k = 0; k < n; k++) {
+      const fx = sl.x + 2 + Math.floor(hash(k, sl.key, seed + 3) * (sl.w - 5)), fy = sl.y + 2 + Math.floor(hash(k, sl.key, seed + 4) * (sl.h - 5));
+      const c: Color = k % 3 === 0 ? t.lit : k % 3 === 1 ? "steel3" : t.shade;
+      p.px(fx, fy, c).px(fx + 1, fy, c);
+    }
   }
 }
 
 // ── moss-earth ──────────────────────────────────────────────────────────────
 
-function earth(p: Px, seed: number, moss: number) {
+/**
+ * Packed earth, damp and dark olive-brown: a few darker and greener clusters for tone, grit, and a
+ * sparse pebble or two. Moss and bare trodden patches come as bands over many tiles (below), not here.
+ */
+function earth(p: Px, seed: number) {
   p.rect(0, 0, T, T, "bamboo1");
   for (const [x, y, r] of jitter(8, seed, 1)) {
-    if (r < 0.4) stamp(p, x, y, ["rr.", ".rr"], { r: "wood2" });
-    else if (r < 0.6) stamp(p, x, y, [".t", "tt"], { t: "stone2" });
+    if (r < 0.28) stamp(p, x, y, ["rr.", ".rr"], { r: "wood2" });
+    else if (r < 0.46) stamp(p, x, y, [".mm", "mm."], { m: "leaf1" });
+    else if (r < 0.56) stamp(p, x, y, ["t"], { t: "stone2" });
   }
-  // Moss: soft cushions on a coarse jittered grid, bigger and more of them as `moss` rises, dark at the
-  // rim, lit on the upper left; small clumps between them. Cushions wrap at the tile edge.
-  for (const [cx, cy, r] of jitter(16, seed + 9, 2)) {
-    if (r > moss) continue;
-    const rx = 3 + (moss - r) * 6, ry = rx * 0.7;
-    for (let y = Math.floor(cy - ry - 2); y <= cy + ry + 2; y++) for (let x = Math.floor(cx - rx - 2); x <= cx + rx + 2; x++) {
-      const d = ((x + 0.5 - cx) / rx) ** 2 + ((y + 0.5 - cy) / ry) ** 2 + (hash(mod(x) >> 1, mod(y) >> 1, seed + 19) - 0.5) * 0.6;
-      if (d > 1) continue;
-      const lit = (x - cx) / rx + (y - cy) / ry < -0.6;
-      wrap(p, x, y, d > 0.75 ? "leaf1" : lit ? (hash(x, y, seed) < 0.4 ? "leaf3" : "leaf2") : hash(x, y, seed + 2) < 0.2 ? "jade2" : "leaf2");
-    }
+  for (const [x, y, r] of jitter(16, seed + 17, 3)) if (r < 0.22) stamp(p, x, y, r < 0.1 ? [".dd", "dcc", ".bb"] : ["dc", "bb"], L);
+}
+
+/** Moss: a dark cushion (leaf1) with greener patches and a few lit tips. */
+function mossTexture(p: Px, seed: number) {
+  p.rect(0, 0, T, T, "leaf1");
+  for (const [x, y, r] of jitter(8, seed, 1)) {
+    if (r < 0.5) stamp(p, x, y, [".gg", "ggg", "gg."], { g: "leaf2" });
+    else if (r < 0.7) stamp(p, x, y, ["mm", ".m"], { m: "jade2" });
   }
-  for (const [x, y, r] of jitter(8, seed + 21, 1)) {
-    if (r > moss * 0.6) continue;
-    stamp(p, x - 1, y - 1, [".gg.", "MgGM", ".MM."], L);
+  for (const [x, y, r] of jitter(8, seed + 5, 2)) if (r < 0.35) stamp(p, x, y, ["G", "g"], { G: "leaf3", g: "leaf2" });
+}
+
+/** Damp earth: darker and greener, where the ground holds water; a broad, quiet tone across many tiles. */
+function damp(p: Px, seed: number) {
+  earth(p, seed);
+  for (const [x, y, r] of jitter(8, seed + 40, 0)) {
+    if (r < 0.65) stamp(p, x - 2, y - 1, [".mmm.", "mmmmm", ".mmm."], { m: "leaf1" });
   }
-  // Pebbles half sunk in the earth, a shadow under each.
-  for (const [x, y, r] of jitter(16, seed + 17, 3)) if (r < 0.6) stamp(p, x, y, r < 0.3 ? [".dd", "dcc", ".bb"] : ["dc", "bb"], L);
+}
+
+/** Trodden earth: paler, smoother, packed hard by feet stepping off the paths. */
+function trodden(p: Px, seed: number) {
+  p.rect(0, 0, T, T, "cream1");
+  for (const [x, y, r] of jitter(8, seed, 1)) {
+    if (r < 0.55) stamp(p, x, y, ["tt.", ".tt"], { t: "bamboo1" });
+    else if (r < 0.5) stamp(p, x, y, ["c"], { c: "stone3" });
+  }
+}
+
+/** Paint `draw` only inside the band mask (see `_turf.ts` for how corner bits shape it). */
+function inBand(p: Px, bits: string, seed: number, draw: (q: Px) => void) {
+  const full = new Px(T, T);
+  draw(full);
+  const inside = bandMask(bits, seed);
+  for (let y = 0; y < T; y++) for (let x = 0; x < T; x++) if (inside(x, y)) p.px(x, y, full.get(x, y));
 }
 
 // ── threshold-stone: long sills ─────────────────────────────────────────────
@@ -140,53 +174,56 @@ function sills(p: Px, seed: number, joints: readonly [boolean, boolean]) {
 
 // ── worn-stone: cobbles ─────────────────────────────────────────────────────
 
-/** Four rows of cobbles, 8 tall with the joint; each row's cobble widths and offset are fixed for every variant. */
-const COBBLE_ROWS: readonly { offset: number; widths: readonly number[] }[] = [
-  { offset: 0, widths: [7, 9, 8, 8] },
-  { offset: 4, widths: [8, 7, 9, 8] },
-  { offset: 2, widths: [9, 8, 7, 8] },
-  { offset: 6, widths: [8, 8, 9, 7] },
-];
-type Cobble = { row: number; index: number; x: number; w: number; shared: boolean };
-const COBBLES: Cobble[] = COBBLE_ROWS.flatMap((r, row) => {
-  let x = r.offset;
-  return r.widths.map((w, index) => { const c = { row, index, x, w, shared: x + w > T }; x += w; return c; });
-});
-const COBBLE_FACES: readonly [Color, number][] = [["stone3", 0.68], ["stone4", 0.86], ["cream2", 0.94], ["stone2", 1]];
+const COBBLE: Record<"grey" | "light" | "warm" | "dark" | "worn" | "wornGrey" | "polished", CobbleTone> = {
+  grey: { face: "stone3", lit: "stone4", shade: "stone2" },
+  light: { face: "stone4", lit: "stone5", shade: "stone3" },
+  warm: { face: "cream2", lit: "cream3", shade: "cream1" },
+  dark: { face: "stone2", lit: "stone3", shade: "stone1" },
+  /** On the worn path: paler and smoother. */
+  worn: { face: "stone4", lit: "stone5", shade: "stone3" },
+  wornGrey: { face: "stone3", lit: "stone4", shade: "stone3" },
+  polished: { face: "stone4", lit: "cream4", shade: "stone4" },
+};
+const cobbleTone = (cell: number, seed: number): CobbleTone => {
+  const r = hash(cell, 7, isShared(cell) ? 600 : seed);
+  return r < 0.72 ? COBBLE.grey : r < 0.86 ? COBBLE.light : r < 0.94 ? COBBLE.warm : COBBLE.dark;
+};
 
-/**
- * Lay the cobbles. `wet(x, y)` marks puddle pixels: there faces reflect the sky and joints go dark and
- * blue. Each cobble is a rounded block with a polished highlight on its upper left and a shaded base.
- */
-function cobbles(p: Px, seed: number, opts: { wet?: (x: number, y: number) => boolean; jointMoss?: number } = {}) {
-  p.rect(0, 0, T, T, "stone1");
-  for (const cb of COBBLES) {
-    const s = cb.shared ? 600 : seed;
-    const face = COBBLE_FACES.find(([, upTo]) => hash(cb.index, cb.row, s) < upTo)![0];
-    const shade: Color = face === "stone4" ? "stone3" : face === "cream2" ? "cream1" : "stone2";
-    const y0 = cb.row * 8;
-    for (let j = 0; j < 7; j++) for (let i = 0; i < cb.w - 1; i++) {
-      const corner = (i === 0 || i === cb.w - 2) && (j === 0 || j === 6);
-      if (corner) continue;
-      let c: Color = face;
-      if (j >= 5 && !(j === 5 && (i === 0 || i === cb.w - 2))) c = shade;
-      else if (j === 1 && i >= 1 && i <= 2) c = "stone5";
-      else if (j === 0 && i === 1) c = face === "stone2" ? "stone3" : "stone5";
-      p.px(mod(cb.x + i), y0 + j, c);
+/** Lay the cobbles; `wet(x, y)` marks a puddle: the sky in it, the joints dark under the water, a wet rim. */
+function cobbles(p: Px, seed: number, wet?: (x: number, y: number) => boolean) {
+  layCobbles((x, y, c) => p.px(x, y, c), (cell) => cobbleTone(cell, seed), "stone1");
+  if (!wet) return;
+  p.each((x, y, c) => {
+    if (!wet(x, y)) return undefined;
+    if (c === "stone1") return "steel2";
+    if (c === "stone5" || c === "stone4" && isJoint(x - 1, y) && isJoint(x, y - 1)) return "blue5";
+    return isJoint(x, y + 1) ? "steel3" : hash(x >> 1, y, 5) < 0.3 ? "blue4" : "steel4";
+  });
+  p.each((x, y, c) => (!wet(x, y) && (wet(x + 1, y) || wet(x - 1, y) || wet(x, y + 1) || wet(x, y - 1)) && c !== "stone1" ? "stone2" : undefined));
+}
+
+/** The worn path down a lane: setts whose seed lies in the band are relaid paler and smoother, joints full of grit. */
+function wornPath(p: Px, bits: string, seed: number) {
+  const inside = bandMask(bits, seed);
+  const on = new Set<number>();
+  for (const c of CELLS) { const ct = centreOf(c); if (inside(ct.x, ct.y)) on.add(c); }
+  layCobbles((x, y, c) => {
+    const cell = cellAt(x, y);
+    if (isJoint(x, y) ? on.has(cell) && on.has(cellAt(x + 1, y + 1)) : on.has(cell)) p.px(x, y, c);
+  }, (cell) => {
+    const r = hash(cell, 9, isShared(cell) ? 610 : seed);
+    return r < 0.12 ? COBBLE.polished : r < 0.6 ? COBBLE.worn : COBBLE.wornGrey;
+  }, "stone2", true);
+}
+
+/** Moss in the joints along a lane's edge, thinning away from it. */
+function cobbleMoss(p: Px, side: Side, seed: number) {
+  sided(p, side, (plot) => {
+    for (let d = 0; d < 10; d++) for (let a = 0; a < T; a++) {
+      const [x, y] = side === "n" ? [a, d] : side === "s" ? [a, T - 1 - d] : side === "w" ? [d, a] : [T - 1 - d, a];
+      if (isJoint(x, y) && hash(a >> 1, d >> 1, seed) < 0.75 - d * 0.08) plot(a, d, hash(a, d, seed + 1) < 0.25 ? "leaf2" : "jade2");
     }
-  }
-  if (opts.jointMoss) mossJoints(p, 10, 22, 11, 8, seed + 31);
-  if (opts.wet) {
-    const wet = opts.wet;
-    p.each((x, y, c) => {
-      if (!wet(x, y)) return undefined;
-      if (c === "stone1" || c === "jade2" || c === "leaf2") return "steel2";
-      if (c === "stone5") return "blue5";
-      return y % 8 >= 5 ? "steel3" : hash(x >> 1, y, 5) < 0.3 ? "blue4" : "steel4";
-    });
-    // The puddle's rim: wet dark stone just outside it.
-    p.each((x, y, c) => (!wet(x, y) && (wet(x + 1, y) || wet(x - 1, y) || wet(x, y + 1) || wet(x, y - 1)) && c !== "stone1" ? "stone2" : undefined));
-  }
+  });
 }
 
 // ── edges ───────────────────────────────────────────────────────────────────
@@ -261,14 +298,21 @@ function cobbleCorner(p: Px, corner: Corner) {
  * The sills' own edge: the hall approach is a low platform of sills, so to the south its front face
  * shows (shaded, a shadow at its foot); to the north and sides a dark joint and a lit or shaded arris.
  */
-function sillEdge(p: Px, side: Side) {
+function sillEdge(p: Px, side: Side, dips: readonly [number, number][] = []) {
   if (side === "s") {
-    for (let x = 0; x < T; x++) {
-      p.px(x, 26, "stone5");
-      p.px(x, 27, "stone3").px(x, 28, "stone3").px(x, 29, "stone2").px(x, 30, "stone2");
-      p.px(x, 31, "stone1");
+    // Worn dips in the top of the step where feet land, dished pale and smooth, nibbling the arris.
+    for (const [cx, w] of dips) for (let y = 20; y < 25; y++) for (let x = cx - w; x <= cx + w; x++) {
+      if (inBlob(x, y, cx + 0.5, 24.5, w + 0.5, 3)) p.px(x, y, y >= 23 && Math.abs(x - cx) < w ? "stone5" : hash(x, y, 3) < 0.5 ? "stone5" : "stone4");
     }
-    for (let x = 15; x < T; x += 16) for (let y = 27; y < 31; y++) p.px(x, y, "stone1");
+    for (let x = 0; x < T; x++) {
+      const dipped = dips.some(([cx, w]) => Math.abs(x - cx) <= w - 1);
+      p.px(x, 24, dipped ? "stone4" : "stone5");
+      // The riser, in shade: darker toward its foot, a line of shadow where it meets the ground.
+      p.px(x, 25, dipped ? "stone3" : "stone2").px(x, 26, "stone2").px(x, 27, "stone2").px(x, 28, "stone1").px(x, 29, "stone1");
+      p.faded(0.35, () => p.px(x, 30, "ink2").px(x, 31, "ink2"));
+    }
+    for (let y = 25; y < 30; y++) p.px(T - 1, y, "ink2");
+    p.px(30, 26, "stone1").px(29, 27, "stone3");
   } else if (side === "n") {
     for (let x = 0; x < T; x++) p.px(x, 0, "stone2").px(x, 1, "stone5");
   } else {
@@ -280,7 +324,7 @@ function sillCorner(p: Px, corner: Corner) {
   // Only the south corners need closing: the front face turns the corner and the arris meets it.
   if (corner.startsWith("n")) { const x = corner === "nw" ? 0 : T - 1; p.px(x, 0, "stone2").px(x, 1, "stone2"); return; }
   const x0 = corner === "sw" ? 0 : T - 2;
-  for (let y = 26; y < T; y++) for (let x = x0; x < x0 + 2; x++) p.px(x, y, y === T - 1 ? "stone1" : y === 26 ? "stone4" : "stone2");
+  for (let y = 24; y < 30; y++) for (let x = x0; x < x0 + 2; x++) p.px(x, y, y === 24 ? "stone4" : y >= 28 ? "stone1" : "stone2");
 }
 
 // ── sprites ─────────────────────────────────────────────────────────────────
@@ -310,46 +354,48 @@ const sprites: Record<string, SpriteDef> = {
   }),
 
   // courtyard-stone
-  /** A slab course whose slab ends at the tile's east edge. */
-  "ground/courtyard-stone-a": tile((p) => slab(p, 1, [31])),
-  /** A slab course whose slab ends mid-tile. */
-  "ground/courtyard-stone-b": tile((p) => slab(p, 2, [15])),
+  /** Granite slabs in windmill bond. */
+  "ground/courtyard-stone-a": tile((p) => slabs(p, 1)),
+  /** Windmill bond, the little square replaced with a darker stone. */
+  "ground/courtyard-stone-b": tile((p) => slabs(p, 2, { 4: GRANITE_DARK })),
   /**
-   * The yard's drain: a shallow channel cut in the top slab, its upper wall in shadow and its floor
-   * damp, running into a cast-iron grate with a rust stain weeping from it.
+   * The yard's drain: a shallow channel cut along a slab, its upper wall in shadow and its floor damp,
+   * running into a cast-iron grate set in the little square, a rust stain weeping from it.
    */
   "ground/courtyard-stone-c": tile((p) => {
-    slab(p, 3, [31]);
-    for (let x = 3; x < 19; x++) { p.px(x, 13, "stone1").px(x, 14, "stone2").px(x, 15, x % 5 === 0 ? "jade2" : "stone2").px(x, 16, "stone4"); }
-    stamp(p, 19, 11, [
-      "aaaaaaaaa",
-      "aIjIjIjIa",
-      "aiaiaiaia",
-      "aIjIjIjIa",
-      "aiaiaiaia",
-      "aIjIjIjIa",
-      "aiaiaiaia",
-      "aaaaaaaaa",
+    slabs(p, 3);
+    for (let x = 2; x < 12; x++) { p.px(x, 14, "stone1").px(x, 15, "stone2").px(x, 16, x % 4 === 0 ? "jade2" : "stone2").px(x, 17, "stone4"); }
+    stamp(p, 12, 12, [
+      "aaaaaaa",
+      "aIjIjIa",
+      "aiaiaia",
+      "aIjIjIa",
+      "aiaiaia",
+      "aIjIjIa",
+      "aaaaaaa",
     ], L, false);
-    stamp(p, 22, 19, ["xx", ".x"], L, false);
+    stamp(p, 15, 19, ["xx", ".x"], L, false);
   }),
-  /** Where the big glazed water jar stood for forty years before it cracked: a pale ring, moss in the joint below. */
+  /** Where the big glazed water jar stood for forty years before it cracked: a pale ring, moss in the joints. */
   "ground/courtyard-stone-d": tile((p) => {
-    slab(p, 4, [15]);
-    p.each((x, y, c) => (c && x > 16 && inBlob(x, y, 24, 14, 6, 5) && !inBlob(x, y, 24, 14, 4.5, 3.6) ? "stone2" : undefined));
-    p.each((x, y, c) => (c === "stone1" && (y === T - 1 || x === 15) && hash((x + y) >> 1, 0, 44) < 0.5 ? "jade2" : undefined));
+    slabs(p, 4, { 2: GRANITE_PALE });
+    p.each((x, y, c) => (c && x > 12 && y > 20 && inBlob(x, y, 22, 26, 6, 4) && !inBlob(x, y, 22, 26, 4.6, 2.8) ? "stone4" : undefined));
+    p.each((x, y, c) => (c === "stone1" && hash((x + y) >> 1, 0, 44) < 0.4 ? "jade2" : undefined));
   }),
 
   // moss-earth
-  /** Damp packed earth, a little moss. */
-  "ground/moss-earth-a": tile((p) => earth(p, 1, 0.4)),
-  /** Damp earth, mossier. */
-  "ground/moss-earth-b": tile((p) => earth(p, 2, 0.7)),
-  /** A carpet of moss with earth showing through, where the eaves drip all winter. */
-  "ground/moss-earth-c": tile((p) => earth(p, 3, 1)),
-  /** Earth and stones, and a wooden clothes peg dropped from the laundry poles overhead. */
+  /** Packed earth. */
+  "ground/moss-earth-a": tile((p) => earth(p, 1)),
+  /** Packed earth, a different scatter. */
+  "ground/moss-earth-b": tile((p) => earth(p, 2)),
+  /** Packed earth with a sprig of moss starting in a hollow. */
+  "ground/moss-earth-c": tile((p) => {
+    earth(p, 3);
+    stamp(p, 12, 14, [".gg..", "MgGg.", ".MgmM", "..MM."], L, false);
+  }),
+  /** Packed earth and a wooden clothes peg dropped from the laundry poles overhead. */
   "ground/moss-earth-d": tile((p) => {
-    earth(p, 4, 0.2);
+    earth(p, 4);
     stamp(p, 12, 13, [
       "QQQq.....",
       "qqqqjjo..",
@@ -377,14 +423,14 @@ const sprites: Record<string, SpriteDef> = {
   }),
 
   // worn-stone
-  /** Cobbles polished by feet. */
+  /** Cobbles: setts of mixed size in courses that wander. */
   "ground/worn-stone-a": tile((p) => cobbles(p, 1)),
-  /** Cobbles, moss creeping along the joints. */
-  "ground/worn-stone-b": tile((p) => cobbles(p, 2, { jointMoss: 1 })),
+  /** Cobbles, a different lie of tones. */
+  "ground/worn-stone-b": tile((p) => cobbles(p, 2)),
   /** Last night's rain in a dip in the cobbles: the sky in it, the joints dark. */
-  "ground/worn-stone-c": tile((p) => cobbles(p, 3, { wet: (x, y) => inBlob(x, y, 15, 15, 10 + Math.sin(y * 0.8) * 1.2, 6.5) })),
+  "ground/worn-stone-c": tile((p) => cobbles(p, 3, (x, y) => inBlob(x, y, 15, 15, 10 + Math.sin(y * 0.8) * 1.2, 6.5))),
   /** A smaller puddle, two lobes, where the drainpipe empties. */
-  "ground/worn-stone-d": tile((p) => cobbles(p, 4, { wet: (x, y) => inBlob(x, y, 11, 18, 6, 4) || inBlob(x, y, 19, 21, 5, 3.2) })),
+  "ground/worn-stone-d": tile((p) => cobbles(p, 4, (x, y) => inBlob(x, y, 11, 18, 6, 4) || inBlob(x, y, 19, 21, 5, 3.2))),
 };
 
 const SIDES: readonly Side[] = ["n", "s", "w", "e"];
@@ -397,14 +443,37 @@ for (const side of SIDES) {
   sprites[`ground/edge-brick-paving-${side}`] = tile((p) => brickHeader(p, side));
   /** On cobbles: granite edging setts where they stop against slabs on this side. */
   sprites[`ground/edge-cobble-${side}`] = tile((p) => cobbleEdge(p, side));
+  /** On cobbles: moss in the joints along the lane's edge on this side. */
+  sprites[`ground/edge-cobble-moss-${side}`] = tile((p) => cobbleMoss(p, side, 51));
   /** On threshold stone: the platform's edge on this side (its front face, to the south). */
   sprites[`ground/edge-sill-${side}`] = tile((p) => sillEdge(p, side));
 }
+/** The step's riser with one deep dip worn where feet land on the way up to the hall door. */
+sprites["ground/edge-sill-s-b"] = tile((p) => sillEdge(p, "s", [[11, 4]]));
+/** The step's riser with two shallow dips side by side, where people stand to knock. */
+sprites["ground/edge-sill-s-c"] = tile((p) => sillEdge(p, "s", [[7, 3], [22, 3]]));
 for (const corner of CORNERS) {
   sprites[`ground/edge-moss-${corner}`] = tile((p) => mossCorner(p, corner));
   sprites[`ground/edge-brick-paving-${corner}`] = tile((p) => brickCorner(p, corner));
   sprites[`ground/edge-cobble-${corner}`] = tile((p) => cobbleCorner(p, corner));
   sprites[`ground/edge-sill-${corner}`] = tile((p) => sillCorner(p, corner));
 }
+
+// Bands laid over many tiles by corner (bits: nw ne sw se), placed by `ground-courtyard-legend.ts`.
+for (let m = 1; m < 16; m++) {
+  const bits = m.toString(2).padStart(4, "0");
+  /** On moss-earth: darker damp ground in broad soft patches. */
+  sprites[`ground/moss-earth-damp-${bits}`] = tile((p) => inBand(p, bits, 150 + m, (q) => damp(q, 150 + m)));
+  /** On moss-earth: moss gathering in the shade, by walls and the sill platform. */
+  sprites[`ground/moss-earth-moss-${bits}`] = tile((p) => inBand(p, bits, 70 + m, (q) => mossTexture(q, 70 + m)));
+  /** On moss-earth: bare earth trodden pale where feet step off the paths. */
+  sprites[`ground/moss-earth-bare-${bits}`] = tile((p) => inBand(p, bits, 90 + m, (q) => trodden(q, 90 + m)));
+  /** On worn-stone: the worn path down the middle of a lane, paler and smoother setts. */
+  sprites[`ground/worn-stone-path-${bits}`] = tile((p) => wornPath(p, bits, 110 + m));
+}
+sprites["ground/moss-earth-damp-1111b"] = tile((p) => damp(p, 166));
+sprites["ground/moss-earth-moss-1111b"] = tile((p) => mossTexture(p, 131));
+sprites["ground/moss-earth-bare-1111b"] = tile((p) => trodden(p, 132));
+sprites["ground/worn-stone-path-1111b"] = tile((p) => wornPath(p, "1111", 133));
 
 export default defineSprites(sprites);
