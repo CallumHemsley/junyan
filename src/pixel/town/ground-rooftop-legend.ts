@@ -23,12 +23,20 @@ const others = (m: string) => DECK.filter((d) => d !== m);
 
 export const ROOFTOP_FILL = "roof-below";
 
+/** Which bay along one axis a corner coordinate falls in, bays cycling through `sizes` (in tiles). */
+function bayIndex(v: number, sizes: readonly number[]): number {
+  const period = sizes.reduce((a, b) => a + b, 0);
+  let rest = ((v % period) + period) % period, i = 0;
+  while (rest >= sizes[i]) { rest -= sizes[i]; i++; }
+  return i + Math.floor(v / period) * sizes.length;
+}
+
 export const ROOFTOP_GROUND: Readonly<Record<string, GroundMaterialSpec>> = {
   "roof-tile": {
     base: [["ground/roof-tile-a", 8], ["ground/roof-tile-b", 8], ["ground/roof-tile-c", 0.8], ["ground/roof-tile-d", 0.5]],
     bands: [
       // Sun-faded patches across the open deck.
-      { prefix: "ground/roof-tile-faded", inBand: (c) => c.noise(6, 21) > 0.6 },
+      { prefix: "ground/roof-tile-faded", inBand: (c) => c.noise(9, 21) > 0.48 },
       // Damp and moss along the parapet foot, where the sun rarely reaches the joints.
       { prefix: "ground/roof-tile-moss", inBand: (c) => c.near([ROOFTOP_FILL], 1) && c.noise(3, 22) > 0.35 },
     ],
@@ -36,11 +44,18 @@ export const ROOFTOP_GROUND: Readonly<Record<string, GroundMaterialSpec>> = {
   },
   "roof-concrete": {
     base: [["ground/roof-concrete-a", 8], ["ground/roof-concrete-b", 8], ["ground/roof-concrete-c", 1], ["ground/roof-concrete-d", 0.3]],
-    bands: [{ prefix: "ground/roof-concrete-stain", inBand: (c) => c.noise(4, 23) > 0.62 }],
+    bands: [
+      // Bays two or three tiles across, laid out on a plan: alternate bays are "in", so every bay
+      // boundary gets a sealed joint (drawn through the middle of the tiles either side of it).
+      { prefix: "ground/roof-concrete-bay", inBand: (c) => (bayIndex(c.x, [2, 3, 2, 3, 3, 2]) + bayIndex(c.y, [3, 2, 3, 2])) % 2 === 1 },
+      { prefix: "ground/roof-concrete-stain", inBand: (c) => c.noise(4, 23) > 0.62 },
+    ],
     edges: [{ against: others("roof-concrete"), sides: sidesOf("ground/edge-roof-concrete") }],
   },
   "roof-brick": {
-    base: [["ground/roof-brick-a", 8], ["ground/roof-brick-b", 8], ["ground/roof-brick-c", 0.8], ["ground/roof-brick-d", 0.6]],
+    base: [["ground/roof-brick-a", 8], ["ground/roof-brick-b", 8], ["ground/roof-brick-c", 0.6], ["ground/roof-brick-d", 0.3]],
+    // Bleached down the middle of the walkway, where feet go; its edges stay darker.
+    bands: [{ prefix: "ground/roof-brick-worn", inBand: (c) => !c.near(others("roof-brick"), 1) && !c.near([ROOFTOP_FILL], 1) }],
     edges: [{ against: ["roof-tile", "roof-concrete"], sides: sidesOf("ground/edge-roof-brick"), corners: { ids: cornersOf("ground/edge-roof-brick"), when: "both" } }],
   },
   "roof-wood": {
