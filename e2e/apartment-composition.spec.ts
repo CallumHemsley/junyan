@@ -24,11 +24,22 @@ test('grouped apartment supports real furnishing persistence, relocated tea insp
   await page.getByRole('button',{name:'收下',exact:true}).click();
   const inventory=page.locator('.apartment-items');
   await inventory.getByRole('button',{name:/桌子.*收着/}).click();
+  // The pixel apartment previews the furnishing in the room while it is being placed (ticket 0202).
+  const room=page.locator('.pixel-apartment');
   await page.getByRole('button',{name:'第2行第3格',exact:true}).click();
   await page.getByRole('button',{name:'转一下',exact:true}).click();
+  await expect(room).toHaveAttribute('data-preview','valid');
   await page.getByRole('button',{name:'放这里',exact:true}).click();
+  await expect(room).not.toHaveAttribute('data-preview',/./);
   const table={id:'table',x:2,y:1,rotation:1};
   await expect.poll(async()=>(await savedGame(page)).neighbourhood!.apartment.placements.find(p=>p.id==='table')).toEqual(table);
+  // Over the bed the preview says it will not fit; cancelling takes it away and leaves the room as it was.
+  await inventory.getByRole('button',{name:/靠垫.*收着/}).click();
+  await page.getByRole('button',{name:'第1行第1格，床',exact:true}).click();
+  await expect(room).toHaveAttribute('data-preview','blocked');
+  await page.getByRole('button',{name:'取消',exact:true}).click();
+  await expect(room).not.toHaveAttribute('data-preview',/./);
+  expect((await savedGame(page)).neighbourhood!.apartment.placements.some(p=>p.id==='cushion')).toBe(false);
   await inventory.getByRole('button',{name:/桌子.*屋里/}).click();
   await page.getByRole('button',{name:'收起来',exact:true}).click();
   await expect.poll(async()=>(await savedGame(page)).neighbourhood!.apartment.placements.some(p=>p.id==='table')).toBe(false);

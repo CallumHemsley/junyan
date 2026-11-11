@@ -11,7 +11,7 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerE
 import { createCamera, toScreen, toWorld, type Camera, type ZoomTargets } from "./camera.ts";
 import { createFrame } from "./frame.ts";
 import type { SceneRenderer } from "./renderer.ts";
-import type { Actor, DayPhase, Prop, Vec } from "./types.ts";
+import type { Actor, DayPhase, Light, Prop, Vec } from "./types.ts";
 
 export type PixelViewApi = {
   camera: Camera;
@@ -28,6 +28,8 @@ export type PixelViewProps = {
   props?: readonly Prop[];
   /** Opacity of props by id (see `FrameState.fade`). */
   fade?: Readonly<Record<string, number>>;
+  /** Run-time lights (see `FrameState.lights`); keep the same array while they hold still. */
+  lights?: readonly Light[];
   phase?: DayPhase;
   /** Tile units; the camera follows it. Default: scene centre. */
   focus?: Vec;
@@ -103,8 +105,8 @@ export function PixelView(props: PixelViewProps) {
   useEffect(() => { if (camera) onCamera?.(camera); }, [camera]);
 
   // Latest inputs for the loop, and a dirty flag whenever any of them change.
-  const live = useRef({ actors, props: props.props, fade: props.fade, phase, debug, reducedMotion, camera, renderer, clock, dirty: true });
-  live.current = { actors, props: props.props, fade: props.fade, phase, debug, reducedMotion, camera, renderer, clock, dirty: true };
+  const live = useRef({ actors, props: props.props, fade: props.fade, lights: props.lights, phase, debug, reducedMotion, camera, renderer, clock, dirty: true });
+  live.current = { actors, props: props.props, fade: props.fade, lights: props.lights, phase, debug, reducedMotion, camera, renderer, clock, dirty: true };
 
   useEffect(() => {
     const canvas = canvasRef.current, element = containerRef.current;
@@ -118,7 +120,7 @@ export function PixelView(props: PixelViewProps) {
     const tick = () => {
       handle = 0;
       const now = live.current;
-      const state = { time: now.clock(), phase: now.phase, actors: now.actors, props: now.props, fade: now.fade, reducedMotion: now.reducedMotion, debug: now.debug };
+      const state = { time: now.clock(), phase: now.phase, actors: now.actors, props: now.props, fade: now.fade, lights: now.lights, reducedMotion: now.reducedMotion, debug: now.debug };
       const key = now.renderer.timeKey(state);
       if (now.dirty || key !== lastKey) {
         const cam = now.camera ?? camera;

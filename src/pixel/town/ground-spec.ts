@@ -11,12 +11,15 @@ import { tileSpan } from "./ground-grid.ts";
 import { COURTYARD_GROUND, bandCorners, type GroundMaterialSpec } from "./ground-courtyard-legend.ts";
 import { ROOFTOP_FILL, ROOFTOP_GROUND } from "./ground-rooftop-legend.ts";
 import { WORKSHOP_FILL, WORKSHOP_GROUND } from "./ground-workshop-legend.ts";
+import { RESIDENTIAL_FILL, RESIDENTIAL_GROUND } from "./ground-residential-legend.ts";
 
 /** Ground tables by map id, with the material used where no terrain rect covers a cell. */
 export const GROUND_SPECS: Readonly<Record<string, { specs: Readonly<Record<string, GroundMaterialSpec>>; fill: string }>> = {
   courtyard: { specs: COURTYARD_GROUND, fill: "moss-earth" },
   rooftop: { specs: ROOFTOP_GROUND, fill: ROOFTOP_FILL },
   workshop: { specs: WORKSHOP_GROUND, fill: WORKSHOP_FILL },
+  "residential-hall": { specs: RESIDENTIAL_GROUND, fill: RESIDENTIAL_FILL },
+  apartment: { specs: RESIDENTIAL_GROUND, fill: RESIDENTIAL_FILL },
 };
 
 /** A well-mixed placement hash in 0..1 (the kit's `hash` streaks diagonally when picking per tile). */
