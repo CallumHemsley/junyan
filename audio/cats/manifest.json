@@ -1,0 +1,6220 @@
+{
+  "clips": [
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "看见",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "kàn jiàn"
+        ]
+      },
+      "content_digest": "f62df38b1dedf152821c62fa9c0ee5e03235771b13b0673767fa23a945cdae7a",
+      "filename": "word-see.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "3b0d34e0b1cbc61f19dc5e964d00814489d1f61ae6f8266d2acc158dad46c13e",
+      "created_at": "2026-11-05T23:03:12.840429+00:00",
+      "attempts": [
+        {
+          "seed": 4130206603,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.4292672920273617,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 24960,
+        "duration_seconds": 1.04,
+        "peak_absolute": 0.26240214705467224,
+        "rms": 0.030671803582983135
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 24960,
+        "duration_seconds": 1.04,
+        "peak_absolute": 0.26239013671875,
+        "rms": 0.03067172515685794
+      },
+      "engine_details": {
+        "token_count": 13,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "小白",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xiǎo bái"
+        ]
+      },
+      "content_digest": "24c7d7bd5a1926fe18df96a536178bcddd55108b79766fd17f7e09dacf40b2b0",
+      "filename": "word-white-name.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "768b9e7a6a01081920e32044009d450bb1357ddc3cbd1fb340265b3a61e24a44",
+      "created_at": "2026-11-05T23:03:13.364889+00:00",
+      "attempts": [
+        {
+          "seed": 617076669,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.5212942499783821,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 32640,
+        "duration_seconds": 1.36,
+        "peak_absolute": 0.2575957477092743,
+        "rms": 0.03365163215235171
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 32640,
+        "duration_seconds": 1.36,
+        "peak_absolute": 0.257598876953125,
+        "rms": 0.033651624114821574
+      },
+      "engine_details": {
+        "token_count": 17,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "小黑",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xiǎo hēi"
+        ]
+      },
+      "content_digest": "073b029bbf4f233b6154afa073a201f2eb985bd1e336f00ef5de5607ea44dff4",
+      "filename": "word-black-name.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "ada0cefddd0ce5009b38722919ed1225a9797483519b3d12db0be72fb88be4b2",
+      "created_at": "2026-11-05T23:03:13.957423+00:00",
+      "attempts": [
+        {
+          "seed": 121307803,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.5891070420038886,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 36480,
+        "duration_seconds": 1.52,
+        "peak_absolute": 0.39058855175971985,
+        "rms": 0.05246778255666363
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 36480,
+        "duration_seconds": 1.52,
+        "peak_absolute": 0.390594482421875,
+        "rms": 0.05246779769855937
+      },
+      "engine_details": {
+        "token_count": 19,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "白",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "bái"
+        ]
+      },
+      "content_digest": "ad41033d38064907b328c9f820180a369237fc911e1b7e353119997aec543528",
+      "filename": "word-white.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "2ba5dc3d7c3399f390a7026fcd86b1f9cba990f23a42c7639dc3f454e424622a",
+      "created_at": "2026-11-05T23:03:14.283197+00:00",
+      "attempts": [
+        {
+          "seed": 2906719037,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.30829716700827703,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 17280,
+        "duration_seconds": 0.72,
+        "peak_absolute": 0.352766215801239,
+        "rms": 0.028378184485799807
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 17280,
+        "duration_seconds": 0.72,
+        "peak_absolute": 0.352752685546875,
+        "rms": 0.028378126131723733
+      },
+      "engine_details": {
+        "token_count": 9,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "黑",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "hēi"
+        ]
+      },
+      "content_digest": "e0ac278b08988e4b13c604ffc438a73dbbcdb8bdf2ddc4cf77c03315100edea9",
+      "filename": "word-black.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "d2a9e3ae73795a79bf2a50dfd4f8f1c0fad844509c6a08aefce3d7df0742bfd5",
+      "created_at": "2026-11-05T23:03:14.889194+00:00",
+      "attempts": [
+        {
+          "seed": 3769378699,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.6014213750022464,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 28800,
+        "duration_seconds": 1.2,
+        "peak_absolute": 0.37443652749061584,
+        "rms": 0.0333332930688227
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 28800,
+        "duration_seconds": 1.2,
+        "peak_absolute": 0.37445068359375,
+        "rms": 0.033333207394030145
+      },
+      "engine_details": {
+        "token_count": 15,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "猫",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "māo"
+        ]
+      },
+      "content_digest": "66973c5746078ca89294fb8e955059962e4428df4855d3b7fd8fadaf09aabc76",
+      "filename": "word-cat.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "7fd986da7529158e01813bff6c461b96a7d98f7bb92b7761d56c0f26cbb13a9e",
+      "created_at": "2026-11-05T23:02:47.909394+00:00",
+      "attempts": [
+        {
+          "seed": 1721187415,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.34290854196297005,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 19200,
+        "duration_seconds": 0.8,
+        "peak_absolute": 0.45668867230415344,
+        "rms": 0.08979524904383372
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 19200,
+        "duration_seconds": 0.8,
+        "peak_absolute": 0.456695556640625,
+        "rms": 0.0897952809622862
+      },
+      "engine_details": {
+        "token_count": 10,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "reused_from": "apartment/word-cat.wav"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "在",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "zài"
+        ]
+      },
+      "content_digest": "d6372f4994466ff1ae8c580244270539eff72d788f633a135c50d0ab36d27995",
+      "filename": "word-at.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "029fb456a874e466f26e000c0a8ec3e70646ec085a2915e0d01f76f64ee5d7e9",
+      "created_at": "2026-11-05T23:01:59.576573+00:00",
+      "attempts": [
+        {
+          "seed": 3593940809,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.46041954099200666,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 26880,
+        "duration_seconds": 1.12,
+        "peak_absolute": 0.24595418572425842,
+        "rms": 0.034024515211013684
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 26880,
+        "duration_seconds": 1.12,
+        "peak_absolute": 0.245941162109375,
+        "rms": 0.034024626741599506
+      },
+      "engine_details": {
+        "token_count": 14,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "reused_from": "apartment/word-at.wav"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "自行车",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "zì xíng chē"
+        ]
+      },
+      "content_digest": "16fc5d898ed95296c4fd498d829991e9117a149d00c4611cc5f782e4f673298d",
+      "filename": "word-bicycle.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "f9e1173c418b74458c7e564e0ac73e7f9a784e3b36d1e20fc22c99fa1cf3f0cc",
+      "created_at": "2026-11-05T23:03:15.591261+00:00",
+      "attempts": [
+        {
+          "seed": 385637769,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.6831386249978095,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 40320,
+        "duration_seconds": 1.68,
+        "peak_absolute": 0.20564545691013336,
+        "rms": 0.03372660634597761
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 40320,
+        "duration_seconds": 1.68,
+        "peak_absolute": 0.205657958984375,
+        "rms": 0.03372662779913287
+      },
+      "engine_details": {
+        "token_count": 21,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "下面",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xià miàn"
+        ]
+      },
+      "content_digest": "1723e5b23612b3c92653c37ac050168df9dd5b2a52481a0ec387df5ca8063fc0",
+      "filename": "word-under.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "76c35a6f95d8eef1a86fa94c2893fb6616ad2bf72a571ba9a051bc7593ebb3d5",
+      "created_at": "2026-11-05T23:03:16.125277+00:00",
+      "attempts": [
+        {
+          "seed": 388228530,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.5299814169993624,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 23040,
+        "duration_seconds": 0.96,
+        "peak_absolute": 0.13838200271129608,
+        "rms": 0.028327199958141123
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 23040,
+        "duration_seconds": 0.96,
+        "peak_absolute": 0.138397216796875,
+        "rms": 0.028327139178023097
+      },
+      "engine_details": {
+        "token_count": 12,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "不是",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "bú shì"
+        ]
+      },
+      "content_digest": "9c3345395ff1dc5618dd460a791c5bf1ad4fc94a6cab0346a4b7dcf966985541",
+      "filename": "word-not.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "5d00061675b95930a35449ceca2aa6d4deb1b1a4ed64fa27a3f888dde6196dc5",
+      "created_at": "2026-11-05T23:03:21.374872+00:00",
+      "attempts": [
+        {
+          "seed": 2620605753,
+          "accepted": false,
+          "error": "Qwen returned multiple chunks or reached token cap"
+        },
+        {
+          "seed": 2620606753,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 5.246230042015668,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 63360,
+        "duration_seconds": 2.64,
+        "peak_absolute": 0.10294395685195923,
+        "rms": 0.019144584696272508
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 63360,
+        "duration_seconds": 2.64,
+        "peak_absolute": 0.102935791015625,
+        "rms": 0.019144614584226758
+      },
+      "engine_details": {
+        "token_count": 33,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "蹲下",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "dūn xià"
+        ]
+      },
+      "content_digest": "d611f7206f8c4385925a4976e4bbf2ed15393b70191fa674738e76eaad6d8b34",
+      "filename": "word-crouch.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "947867cb36fdb35dfa77b27adaa23f2fb4de1169af8a05bb096ea4cf93cea05f",
+      "created_at": "2026-11-05T23:03:22.091058+00:00",
+      "attempts": [
+        {
+          "seed": 3591501600,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.6952690840116702,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 36480,
+        "duration_seconds": 1.52,
+        "peak_absolute": 0.5511531233787537,
+        "rms": 0.06457341685321744
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 36480,
+        "duration_seconds": 1.52,
+        "peak_absolute": 0.5511474609375,
+        "rms": 0.06457341689182199
+      },
+      "engine_details": {
+        "token_count": 19,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "等一等",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "děng yi děng"
+        ]
+      },
+      "content_digest": "1495ade9cf0e91483b39dfef1011e5ccfba48c5595ebe91308145406754530b9",
+      "filename": "word-wait.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "e19cf773436274d71d4db477aac222f2aceef5e3fd01269a598c96c6579f8792",
+      "created_at": "2026-11-05T23:03:22.663026+00:00",
+      "attempts": [
+        {
+          "seed": 345353705,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.5662824580213055,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 24960,
+        "duration_seconds": 1.04,
+        "peak_absolute": 0.3231016993522644,
+        "rms": 0.04509464829641962
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 24960,
+        "duration_seconds": 1.04,
+        "peak_absolute": 0.323089599609375,
+        "rms": 0.045094748258246435
+      },
+      "engine_details": {
+        "token_count": 13,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "出来",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "chū lái"
+        ]
+      },
+      "content_digest": "3e655acd70b69037a93372b6fa95eb055e857449dd676624f2d35ab2a4114011",
+      "filename": "word-emerge.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "06728d6b12d6c059582a81dc2bd1c78f28d0a197cf60e0e69b5fa99446fa11e0",
+      "created_at": "2026-11-05T23:03:24.933070+00:00",
+      "attempts": [
+        {
+          "seed": 1046829773,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 2.255082959018182,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 59520,
+        "duration_seconds": 2.48,
+        "peak_absolute": 0.21146993339061737,
+        "rms": 0.03411088307935403
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 59520,
+        "duration_seconds": 2.48,
+        "peak_absolute": 0.211456298828125,
+        "rms": 0.034110941358720684
+      },
+      "engine_details": {
+        "token_count": 31,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "跟着",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "gēn zhe"
+        ]
+      },
+      "content_digest": "5c1da4ca76e6c89b2bea1f29aa66193ea966ab0352bd784fd234e80cfb83a301",
+      "filename": "word-follow.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "f3ca95349adba1c335c4226330f5cf00f724e095f8c29d84fd35ce77a9534c75",
+      "created_at": "2026-11-05T23:03:26.229147+00:00",
+      "attempts": [
+        {
+          "seed": 1545446602,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.2742674589972012,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 38400,
+        "duration_seconds": 1.6,
+        "peak_absolute": 0.3593885004520416,
+        "rms": 0.05682707322143331
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 38400,
+        "duration_seconds": 1.6,
+        "peak_absolute": 0.359375,
+        "rms": 0.05682708198945181
+      },
+      "engine_details": {
+        "token_count": 20,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "走",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "zǒu"
+        ]
+      },
+      "content_digest": "9fa3e5b8910c8e84c6b5a3cd3425901a1a9fe7e569eb3e0c98229bf711704651",
+      "filename": "word-walk.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "ac2a550d066c2a686ec8359bd00cbe973d3f5849dc55dc1527b55d5e06ffc679",
+      "created_at": "2026-11-05T23:03:26.924061+00:00",
+      "attempts": [
+        {
+          "seed": 2678318520,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.6894973330199718,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 28800,
+        "duration_seconds": 1.2,
+        "peak_absolute": 0.6245648264884949,
+        "rms": 0.09070139809224198
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 28800,
+        "duration_seconds": 1.2,
+        "peak_absolute": 0.62457275390625,
+        "rms": 0.0907014350502398
+      },
+      "engine_details": {
+        "token_count": 15,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "她",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "tā"
+        ]
+      },
+      "content_digest": "3357fce17ed070c30bba3db3a5a8902284ff3bd5ecc6fa156cbc3346712d3672",
+      "filename": "word-she.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "1c4d0b45bf27cd1d0418af1bc0c7df9288801b574550d08f1281aab0088fcf32",
+      "created_at": "2026-11-05T23:03:28.328204+00:00",
+      "attempts": [
+        {
+          "seed": 861404385,
+          "accepted": false,
+          "error": "Word speech lasts 1.38s, over 1.10s"
+        },
+        {
+          "seed": 861405385,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.396452583023347,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 19200,
+        "duration_seconds": 0.8,
+        "peak_absolute": 0.6617494821548462,
+        "rms": 0.06453553797227594
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 19200,
+        "duration_seconds": 0.8,
+        "peak_absolute": 0.6617431640625,
+        "rms": 0.0645356424052029
+      },
+      "engine_details": {
+        "token_count": 10,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "门口",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "mén kǒu"
+        ]
+      },
+      "content_digest": "48712840a68302e712610258e3d24593dd774131166aaeb86be6cbd033d184d7",
+      "filename": "word-door.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "916a809ab040075959c477e965a44921d2d7d8b911ab06f17cadc925300be261",
+      "created_at": "2026-11-05T23:03:29.295773+00:00",
+      "attempts": [
+        {
+          "seed": 1215375424,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.9637545829755254,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.1700136512517929,
+        "rms": 0.017652811143088733
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.170013427734375,
+        "rms": 0.017652877215944433
+      },
+      "engine_details": {
+        "token_count": 18,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "找到",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "zhǎo dào"
+        ]
+      },
+      "content_digest": "257b59fb6befc9981dc354a498304bc65461932d2992bb4d2003a67fbd525113",
+      "filename": "word-found.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "761f337806e4e5e3d6f0c6f4b48c648cf8b7b04a39d6ace8a3675997ff0a8684",
+      "created_at": "2026-11-05T23:02:58.401258+00:00",
+      "attempts": [
+        {
+          "seed": 628840955,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.623998292023316,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.31864050030708313,
+        "rms": 0.05568298140997343
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.318634033203125,
+        "rms": 0.055683032807808036
+      },
+      "engine_details": {
+        "token_count": 18,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "reused_from": "apartment/word-find.wav"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "这个",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "zhè ge"
+        ]
+      },
+      "content_digest": "5a0f9234cf3464e5c3f5a585fa607386744092c927792a997b9f8183398dfa19",
+      "filename": "word-this.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "5e4724616b8d7fe9b0983fe4d2526d23bea5502ee1d61ae3b7353fa4acca37fb",
+      "created_at": "2026-11-05T23:02:11.508709+00:00",
+      "attempts": [
+        {
+          "seed": 1510969908,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.5309296249761246,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.12783433496952057,
+        "rms": 0.0303708260539774
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.127838134765625,
+        "rms": 0.03037076134181859
+      },
+      "engine_details": {
+        "token_count": 18,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "reused_from": "apartment/word-this.wav"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "垫子",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "diàn zi"
+        ]
+      },
+      "content_digest": "d6c0d266a570342984234c3d536c1bd5269e5dbf7cff08b38009e638c959b576",
+      "filename": "word-cushion.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "13d180f75fa49c07cf8b112771a0b4739be622cc0ce2e53178d2ddc90958d3f0",
+      "created_at": "2026-11-05T23:03:30.908459+00:00",
+      "attempts": [
+        {
+          "seed": 3602960998,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.5822970420122147,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 30720,
+        "duration_seconds": 1.28,
+        "peak_absolute": 0.40045297145843506,
+        "rms": 0.0509746896558684
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 30720,
+        "duration_seconds": 1.28,
+        "peak_absolute": 0.40045166015625,
+        "rms": 0.05097464496376712
+      },
+      "engine_details": {
+        "token_count": 16,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "送给",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "sòng gěi"
+        ]
+      },
+      "content_digest": "3cf3aa8a431d4fa07820e5bc1ecdb5b1a49a3751e40340ad9084a4c1f927f0f2",
+      "filename": "word-give.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "25c945981cdaa0b56b0a84e8bf030f7a08679d9bf2beac2b7a8001d344e1ab38",
+      "created_at": "2026-11-05T23:03:32.356593+00:00",
+      "attempts": [
+        {
+          "seed": 1022601866,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.4388793330290355,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 26880,
+        "duration_seconds": 1.12,
+        "peak_absolute": 0.5081289410591125,
+        "rms": 0.0474130984527208
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 26880,
+        "duration_seconds": 1.12,
+        "peak_absolute": 0.50811767578125,
+        "rms": 0.04741309932880066
+      },
+      "engine_details": {
+        "token_count": 14,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "下雨",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xià yǔ"
+        ]
+      },
+      "content_digest": "09960b18e73b5fc44f514f89525d70bddac9614a96581ee18878cbdfa780b283",
+      "filename": "word-rain.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "074a58cd9eb6eec6487c85542c33d2f600440840a5d898dc18c53881a06acb09",
+      "created_at": "2026-11-05T23:03:35.874625+00:00",
+      "attempts": [
+        {
+          "seed": 160828184,
+          "accepted": false,
+          "error": "Word speech lasts 2.58s, over 1.60s"
+        },
+        {
+          "seed": 160829184,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 3.5104792910278775,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 48000,
+        "duration_seconds": 2.0,
+        "peak_absolute": 0.1487266570329666,
+        "rms": 0.021670126865921752
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 48000,
+        "duration_seconds": 2.0,
+        "peak_absolute": 0.148712158203125,
+        "rms": 0.021670064838735643
+      },
+      "engine_details": {
+        "token_count": 25,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "椅子",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "yǐ zi"
+        ]
+      },
+      "content_digest": "311fcb7974be981f41deaeb7ccbec9569779daa50ea56b93f9570421c0504173",
+      "filename": "word-bench.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "08d9c3824bd5a60ab1bf3cc78a622fc43f63b13ecafe2e7435e94c97ffe0f904",
+      "created_at": "2026-11-05T23:01:25.719435+00:00",
+      "attempts": [
+        {
+          "seed": 824167289,
+          "accepted": false,
+          "error": "Word speech lasts 2.34s, over 1.60s"
+        },
+        {
+          "seed": 824168289,
+          "accepted": false,
+          "error": "Qwen returned multiple chunks or reached token cap"
+        },
+        {
+          "seed": 824169289,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 13.225909333035816,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 49920,
+        "duration_seconds": 2.08,
+        "peak_absolute": 0.1029631495475769,
+        "rms": 0.017312009932961826
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 49920,
+        "duration_seconds": 2.08,
+        "peak_absolute": 0.10296630859375,
+        "rms": 0.01731208485975729
+      },
+      "engine_details": {
+        "token_count": 26,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "reused_from": "apartment/word-chair.wav"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "旁边",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "páng biān"
+        ]
+      },
+      "content_digest": "c77fef23869ef852f7af7413fa004d3a2b3e687205a79ea31f9cde90035e19a4",
+      "filename": "word-beside.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "04f18382ed45196a083e82c274665047306a59536096d6fcc4da17543131c9fd",
+      "created_at": "2026-11-05T23:01:26.902304+00:00",
+      "attempts": [
+        {
+          "seed": 3347050275,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.6810999999870546,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 42240,
+        "duration_seconds": 1.76,
+        "peak_absolute": 0.38876330852508545,
+        "rms": 0.04983435009036808
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 42240,
+        "duration_seconds": 1.76,
+        "peak_absolute": 0.388763427734375,
+        "rms": 0.04983439188844853
+      },
+      "engine_details": {
+        "token_count": 22,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "reused_from": "apartment/word-beside.wav"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "你好",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "nǐ hǎo"
+        ]
+      },
+      "content_digest": "3ab47ea2d68ab926bc495a3fc09b00676c5f3f9e78b0d0d08eb6e5a2bc6418a5",
+      "filename": "word-hello.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "302fd7db38e5218d5bb7550b8f178de819b90ac06a0ae428a9b803308b106eaa",
+      "created_at": "2026-11-01T20:29:51.283985+00:00",
+      "attempts": [
+        {
+          "seed": 984907426,
+          "accepted": true
+        }
+      ],
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 21120,
+        "duration_seconds": 0.88,
+        "peak_absolute": 0.48891890048980713,
+        "rms": 0.08373084095126056
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 21120,
+        "duration_seconds": 0.88,
+        "peak_absolute": 0.488922119140625,
+        "rms": 0.0837307565963918
+      },
+      "engine_details": {
+        "token_count": 11,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "reused_from": "word-3ab47ea2d68ab926bc495a3fc09b00676c5f3f9e78b0d0d08eb6e5a2bc6418a5.wav"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "坐下",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "zuò xià"
+        ]
+      },
+      "content_digest": "bf1e940cdaa7fa854457703152129ff13fca85b47894fb789ae8fff536a07307",
+      "filename": "word-sit.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "5fb3750eedf821cc099ca81c7b4f2eec08e3a70aa24492f040361dff6e2475a6",
+      "created_at": "2026-11-05T23:03:36.521144+00:00",
+      "attempts": [
+        {
+          "seed": 3206452236,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.6128106669639237,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 32640,
+        "duration_seconds": 1.36,
+        "peak_absolute": 0.33456242084503174,
+        "rms": 0.04046349982232309
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 32640,
+        "duration_seconds": 1.36,
+        "peak_absolute": 0.334564208984375,
+        "rms": 0.04046347848994285
+      },
+      "engine_details": {
+        "token_count": 17,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "去",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "qù"
+        ]
+      },
+      "content_digest": "3a4103f578e96269384daedcdb02cb62801509c742311c1b0994ff760d10dca1",
+      "filename": "word-go.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "f4810ad104a133788f2a3cb9d07e925060a6c9fd4fca1e4f2b5f8126d67a6c9a",
+      "created_at": "2026-11-01T21:52:05.369112+00:00",
+      "attempts": [
+        {
+          "seed": 977339381,
+          "accepted": true
+        }
+      ],
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 23040,
+        "duration_seconds": 0.96,
+        "peak_absolute": 0.2746778428554535,
+        "rms": 0.04202525507429861
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 23040,
+        "duration_seconds": 0.96,
+        "peak_absolute": 0.274688720703125,
+        "rms": 0.04202525285633271
+      },
+      "engine_details": {
+        "token_count": 12,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "reused_from": "word-3a4103f578e96269384daedcdb02cb62801509c742311c1b0994ff760d10dca1.wav"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "窗边",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "chuāng biān"
+        ]
+      },
+      "content_digest": "85e91f8d0ae9bb4a6aa28215246c6e8e7a7012e0576ce1bf81b4516dad293ab7",
+      "filename": "word-window.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "a825b41a8541f082fe6ee4b3c509c194dcdfa64fd0ae557d1b9e727a6d2f496f",
+      "created_at": "2026-11-05T23:03:37.230828+00:00",
+      "attempts": [
+        {
+          "seed": 2246647693,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.682434042042587,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.38526904582977295,
+        "rms": 0.06738031116061001
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.38525390625,
+        "rms": 0.06738035582862643
+      },
+      "engine_details": {
+        "token_count": 18,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "太阳",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "tài yáng"
+        ]
+      },
+      "content_digest": "93ff3c9a02741c88512db1a044d8fc57eb2ad2bca355f67fc5b96f547cb90751",
+      "filename": "word-sun.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "16f531e6011258205f1b855e2de649489b07665b80d036aa4ab6c26ded09cd1e",
+      "created_at": "2026-11-05T23:03:37.912900+00:00",
+      "attempts": [
+        {
+          "seed": 2482977946,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.6745680830208585,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.6633576154708862,
+        "rms": 0.1013160446270431
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.663360595703125,
+        "rms": 0.10131609633012435
+      },
+      "engine_details": {
+        "token_count": 18,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "不在",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "bú zài"
+        ]
+      },
+      "content_digest": "9fc0c3b93e17af8a64a45b492ec0fde9b08d6bf4d6b188776bd36d05ed90de30",
+      "filename": "word-empty.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "2bfce6bacde6c6b4b169affec59d512aa571a55ef2aff9b83b4050567a71813d",
+      "created_at": "2026-11-05T23:03:38.562947+00:00",
+      "attempts": [
+        {
+          "seed": 2680210361,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.6427550840307958,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 32640,
+        "duration_seconds": 1.36,
+        "peak_absolute": 0.5223602056503296,
+        "rms": 0.06981195337328686
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 32640,
+        "duration_seconds": 1.36,
+        "peak_absolute": 0.522369384765625,
+        "rms": 0.06981195872577452
+      },
+      "engine_details": {
+        "token_count": 17,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "看看",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "kàn kan"
+        ]
+      },
+      "content_digest": "32fc89df287e7cc343218f042d06cefa16d081d44f91274929a81a2f1d2c0c2e",
+      "filename": "word-look.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "230541adc705c5539486644e9f35a0915fdafca079848aecae87b884381230db",
+      "created_at": "2026-11-05T23:03:43.843631+00:00",
+      "attempts": [
+        {
+          "seed": 855411167,
+          "accepted": false,
+          "error": "Abnormal audio duration: 5.04s"
+        },
+        {
+          "seed": 855412167,
+          "accepted": false,
+          "error": "Word speech lasts 2.28s, over 1.60s"
+        },
+        {
+          "seed": 855413167,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 5.273592209035996,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.14822150766849518,
+        "rms": 0.01919569096416948
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.148223876953125,
+        "rms": 0.0191957042130579
+      },
+      "engine_details": {
+        "token_count": 18,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "退后",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "tuì hòu"
+        ]
+      },
+      "content_digest": "bd9ef67d544a30768d34f224931ed31d519696eafcd2ba8b86e9b2b3d7f7d30b",
+      "filename": "word-back.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "efa9f75895e7da9af5c38a3c1a29f4565108a5a74784aec5fb008e87e2a8e336",
+      "created_at": "2026-11-05T23:03:46.557977+00:00",
+      "attempts": [
+        {
+          "seed": 3181311613,
+          "accepted": false,
+          "error": "Word speech lasts 2.25s, over 1.60s"
+        },
+        {
+          "seed": 3181312613,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 2.7023794999695383,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 24960,
+        "duration_seconds": 1.04,
+        "peak_absolute": 0.4787200093269348,
+        "rms": 0.06558046146509874
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 24960,
+        "duration_seconds": 1.04,
+        "peak_absolute": 0.478729248046875,
+        "rms": 0.06558046719584848
+      },
+      "engine_details": {
+        "token_count": 13,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "叫",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "jiào"
+        ]
+      },
+      "content_digest": "30d297b1a3a34ea7cde90d01c58236d006e7cdc393fa84b3be140b5f301b7398",
+      "filename": "word-call.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "ed2ac7c219b0a78053a8af4f25edb82722f207a6fa8571d3018c317a6f870a08",
+      "created_at": "2026-11-05T23:03:47.166555+00:00",
+      "attempts": [
+        {
+          "seed": 819107761,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.5906269169645384,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 15360,
+        "duration_seconds": 0.64,
+        "peak_absolute": 0.3811056613922119,
+        "rms": 0.05054173375590918
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 15360,
+        "duration_seconds": 0.64,
+        "peak_absolute": 0.381103515625,
+        "rms": 0.050541646459142046
+      },
+      "engine_details": {
+        "token_count": 8,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "阿姨",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "ā yí"
+        ]
+      },
+      "content_digest": "2bd659feb04cc5fe8fca9318e8f8c468b73d5c581143d747aa055d5ceaa14f61",
+      "filename": "word-aunt.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "5784ada8294cd22fb45f361b510d5d95d1bc7a23e8d405e43996b57ffca1ece1",
+      "created_at": "2026-11-05T23:03:47.977793+00:00",
+      "attempts": [
+        {
+          "seed": 735468030,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.8032607500208542,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.14150606095790863,
+        "rms": 0.021621543708486523
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.141510009765625,
+        "rms": 0.021621577773433924
+      },
+      "engine_details": {
+        "token_count": 18,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "院子",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "yuàn zi"
+        ]
+      },
+      "content_digest": "0f1c7cec45b453d1b2d09f3b44af405e022a7bc50e596f6b3385d23bb4c34fb6",
+      "filename": "word-courtyard.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "20b3df9c9810d681b646886e768212b06b8535c337ae52f783d6f4fb3c185a18",
+      "created_at": "2026-11-05T23:03:48.980272+00:00",
+      "attempts": [
+        {
+          "seed": 253525228,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.9934397920151241,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 36480,
+        "duration_seconds": 1.52,
+        "peak_absolute": 0.1500479131937027,
+        "rms": 0.023221036462926177
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 36480,
+        "duration_seconds": 1.52,
+        "peak_absolute": 0.150054931640625,
+        "rms": 0.023220996594304547
+      },
+      "engine_details": {
+        "token_count": 19,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "一起",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "yì qǐ"
+        ]
+      },
+      "content_digest": "995be76101241f9b8019eff6cf4803fa91856d5c61556f5fda35124bcef5add0",
+      "filename": "word-together.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "4b92f31a0be4765844b566a67c58aff1d12ceee9e1c60d15a3a676c391295fde",
+      "created_at": "2026-11-05T23:03:56.973655+00:00",
+      "attempts": [
+        {
+          "seed": 2572937057,
+          "accepted": false,
+          "error": "Qwen returned multiple chunks or reached token cap"
+        },
+        {
+          "seed": 2572938057,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 7.981979625008535,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 26880,
+        "duration_seconds": 1.12,
+        "peak_absolute": 0.6593888998031616,
+        "rms": 0.07989988683179457
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 26880,
+        "duration_seconds": 1.12,
+        "peak_absolute": 0.659393310546875,
+        "rms": 0.0798998537859217
+      },
+      "engine_details": {
+        "token_count": 14,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "今天",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "jīn tiān"
+        ]
+      },
+      "content_digest": "b80079fce21cb00fc27bcbcf3ffc8d068997f032bc824dde0324cf6aa83d4b82",
+      "filename": "word-today.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "a61dd478367f2be31f9db9532c671d8e3d7a0360e83e99ad65c903660106d206",
+      "created_at": "2026-11-05T23:03:58.027395+00:00",
+      "attempts": [
+        {
+          "seed": 3087038972,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.0274102090043016,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 36480,
+        "duration_seconds": 1.52,
+        "peak_absolute": 0.23614485561847687,
+        "rms": 0.03214386038377619
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 36480,
+        "duration_seconds": 1.52,
+        "peak_absolute": 0.23614501953125,
+        "rms": 0.032143851893891615
+      },
+      "engine_details": {
+        "token_count": 19,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "明天",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "míng tiān"
+        ]
+      },
+      "content_digest": "120ef5a73a4ff8b0cca43f6ea443d472f3e431de3d9816923408f778d4b7d1af",
+      "filename": "word-tomorrow.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "30c49c64798258e82fa242e5f43537dc55b3d053dd583e9b5d94d28f5882cb1c",
+      "created_at": "2026-11-05T23:04:05.300243+00:00",
+      "attempts": [
+        {
+          "seed": 302970279,
+          "accepted": false,
+          "error": "Word speech lasts 1.65s, over 1.60s"
+        },
+        {
+          "seed": 302971279,
+          "accepted": false,
+          "error": "Abnormal audio duration: 5.20s"
+        },
+        {
+          "seed": 302972279,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 7.2601474589901045,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 46080,
+        "duration_seconds": 1.92,
+        "peak_absolute": 0.08598948270082474,
+        "rms": 0.013131631837597725
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 46080,
+        "duration_seconds": 1.92,
+        "peak_absolute": 0.08599853515625,
+        "rms": 0.013131591682099339
+      },
+      "engine_details": {
+        "token_count": 24,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "见",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "jiàn"
+        ]
+      },
+      "content_digest": "cf24122f0185367cd42a13acdc2015ae3a376169f9c4d4bdd608c20d03ea55f3",
+      "filename": "word-meet.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "40b3a1d648cbc7f62c40ec6dfc2d8bbe7d70772a73ad945794ab2f6806a94e82",
+      "created_at": "2026-11-01T20:29:24.325594+00:00",
+      "attempts": [
+        {
+          "seed": 3475247663,
+          "accepted": true
+        }
+      ],
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 23040,
+        "duration_seconds": 0.96,
+        "peak_absolute": 0.4277946949005127,
+        "rms": 0.05964288484250185
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 23040,
+        "duration_seconds": 0.96,
+        "peak_absolute": 0.42779541015625,
+        "rms": 0.05964289423262092
+      },
+      "engine_details": {
+        "token_count": 12,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "reused_from": "word-cf24122f0185367cd42a13acdc2015ae3a376169f9c4d4bdd608c20d03ea55f3.wav"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "过来",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "guò lái"
+        ]
+      },
+      "content_digest": "21acedfbc8b2df5652efef5e5f97da267dafb48aa0695466fe4a6403d9b09ee4",
+      "filename": "word-invite.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "5fc4ad37ea6a6e7d9aac276a121871b53c05d276e965bb4a33085007e17d421a",
+      "created_at": "2026-11-05T23:04:05.969940+00:00",
+      "attempts": [
+        {
+          "seed": 564981243,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.6353327079559676,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 21120,
+        "duration_seconds": 0.88,
+        "peak_absolute": 0.49110716581344604,
+        "rms": 0.08379897464213783
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 21120,
+        "duration_seconds": 0.88,
+        "peak_absolute": 0.491119384765625,
+        "rms": 0.08379902451155104
+      },
+      "engine_details": {
+        "token_count": 11,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "安静",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "ān jìng"
+        ]
+      },
+      "content_digest": "99c660703f049a81537c8945df479f0053d5702fe82b81ec1d1fa75acea384ed",
+      "filename": "word-quiet.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "e4025821f5f72dfe845db7945b1baab4277eeca74e389e9501dcc1c4a5cbb2bb",
+      "created_at": "2026-11-05T23:04:07.274105+00:00",
+      "attempts": [
+        {
+          "seed": 2579914864,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.2845535419764929,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 51840,
+        "duration_seconds": 2.16,
+        "peak_absolute": 0.2538018524646759,
+        "rms": 0.03747011726089181
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 51840,
+        "duration_seconds": 2.16,
+        "peak_absolute": 0.253814697265625,
+        "rms": 0.03747012415791163
+      },
+      "engine_details": {
+        "token_count": 27,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "已经",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "yǐ jīng"
+        ]
+      },
+      "content_digest": "b238eec65bb7a3ca0d881d7f1eba15bbe819a9a261462175f76ba05f0ad3bf1d",
+      "filename": "word-already.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "11da6d58dbbf77ad0939865af6bd9b4a6dbbfd7ec0a1b0ce05bdbc503143c81f",
+      "created_at": "2026-11-05T23:04:17.995636+00:00",
+      "attempts": [
+        {
+          "seed": 2990075590,
+          "accepted": false,
+          "error": "Word speech lasts 1.98s, over 1.60s"
+        },
+        {
+          "seed": 2990076590,
+          "accepted": false,
+          "error": "Word speech lasts 3.00s, over 1.60s"
+        },
+        {
+          "seed": 2990077590,
+          "accepted": false,
+          "error": "Qwen returned multiple chunks or reached token cap"
+        },
+        {
+          "seed": 2990078590,
+          "accepted": false,
+          "error": "Word speech lasts 2.55s, over 1.60s"
+        },
+        {
+          "seed": 2990079590,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 10.709393833007198,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 26880,
+        "duration_seconds": 1.12,
+        "peak_absolute": 0.2547779381275177,
+        "rms": 0.03459492427793436
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 26880,
+        "duration_seconds": 1.12,
+        "peak_absolute": 0.254791259765625,
+        "rms": 0.034594897032425666
+      },
+      "engine_details": {
+        "token_count": 14,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "word",
+      "text": "朋友",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "péng you"
+        ]
+      },
+      "content_digest": "f52d302c97162de34cfa41a6c25aac5af161819f7c7e59af22a0fb6f12487b90",
+      "filename": "word-friend.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "762a72da84fc57f09d85589682839a3a346c333a013165716293f0b1cf7d20bc",
+      "created_at": "2026-11-05T23:04:18.850903+00:00",
+      "attempts": [
+        {
+          "seed": 4113379372,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.844466165988706,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 51840,
+        "duration_seconds": 2.16,
+        "peak_absolute": 0.18207986652851105,
+        "rms": 0.02808389100134906
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 51840,
+        "duration_seconds": 2.16,
+        "peak_absolute": 0.18206787109375,
+        "rms": 0.028083950820795327
+      },
+      "engine_details": {
+        "token_count": 27,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "你看见小白了吗？",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "nǐ",
+          "kàn jiàn",
+          "xiǎo bái",
+          "le",
+          "ma"
+        ]
+      },
+      "content_digest": "dabb09b2c33744825d4c8afa252e9d02db99566691f0441bc9f4f0745e2e9162",
+      "filename": "line-clue.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "42db022a8e8d49976d841beefa25e7ed5db4df26048fe00f1f406c0bf882541e",
+      "created_at": "2026-11-05T23:04:19.630553+00:00",
+      "attempts": [
+        {
+          "seed": 3669690802,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.7693087080260739,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 48000,
+        "duration_seconds": 2.0,
+        "peak_absolute": 0.19669067859649658,
+        "rms": 0.029649604172280245
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 48000,
+        "duration_seconds": 2.0,
+        "peak_absolute": 0.196685791015625,
+        "rms": 0.02964965386815814
+      },
+      "engine_details": {
+        "token_count": 25,
+        "max_tokens": 192,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "白猫在自行车下面。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "bái",
+          "māo",
+          "zài",
+          "zì xíng chē",
+          "xià miàn"
+        ]
+      },
+      "content_digest": "736573d68bd916532f749d4ab6e2084c94f07b153a43941ea8d9126432faf249",
+      "filename": "line-bicycle-clue.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "5decb5d63ba1ebb276a39707b2770083e759d64d271053fe9755b1082c1c5753",
+      "created_at": "2026-11-05T23:04:20.658964+00:00",
+      "attempts": [
+        {
+          "seed": 1936028630,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.0236889580264688,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 63360,
+        "duration_seconds": 2.64,
+        "peak_absolute": 0.28102967143058777,
+        "rms": 0.03996112487690018
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 63360,
+        "duration_seconds": 2.64,
+        "peak_absolute": 0.281036376953125,
+        "rms": 0.03996114832727172
+      },
+      "engine_details": {
+        "token_count": 33,
+        "max_tokens": 208,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "不是黑猫，是白猫。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "bú shì",
+          "hēi",
+          "māo",
+          "shì",
+          "bái",
+          "māo"
+        ]
+      },
+      "content_digest": "697e80ec5b2873af0c2f7cf203873557aaf85d35356f5c47e809fb9d06b79ed8",
+      "filename": "line-wrong-cat.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "18d319b494ede61c014eccfa4835b73afacec231cf2593b72aa32ff38cb34598",
+      "created_at": "2026-11-05T23:04:21.773000+00:00",
+      "attempts": [
+        {
+          "seed": 1769898220,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.1090917499968782,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 72960,
+        "duration_seconds": 3.04,
+        "peak_absolute": 0.31498461961746216,
+        "rms": 0.052270967098306115
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 72960,
+        "duration_seconds": 3.04,
+        "peak_absolute": 0.314971923828125,
+        "rms": 0.05227102082383448
+      },
+      "engine_details": {
+        "token_count": 38,
+        "max_tokens": 208,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "慢慢来，蹲下，等一等。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "mànmàn",
+          "lái",
+          "dūn xià",
+          "děng yi děng"
+        ]
+      },
+      "content_digest": "38f02a394565b30dee8c1117865849994ff3697395fbe60cbc0174b112f01d44",
+      "filename": "line-gentle.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "d50c026222a7696eda001ba4f85bfd7d3a1afdb432c2113cfecfc3ff475bc912",
+      "created_at": "2026-11-05T23:04:23.007637+00:00",
+      "attempts": [
+        {
+          "seed": 955263545,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.2296497499919496,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 80640,
+        "duration_seconds": 3.36,
+        "peak_absolute": 0.25974830985069275,
+        "rms": 0.03903478634501701
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 80640,
+        "duration_seconds": 3.36,
+        "peak_absolute": 0.259735107421875,
+        "rms": 0.03903483666653764
+      },
+      "engine_details": {
+        "token_count": 42,
+        "max_tokens": 240,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "好，等一等。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "hǎo",
+          "děng yi děng"
+        ]
+      },
+      "content_digest": "b2d601689f0d7626cb0ec9f0ef0836134ecd0f106de6db6e013bfd8ce655035c",
+      "filename": "line-crouched.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "c55458bda9c3ae17b3fab7bd72f3b81aafcdbee28b83e6deaf8115a24b53bf3a",
+      "created_at": "2026-11-05T23:04:24.423991+00:00",
+      "attempts": [
+        {
+          "seed": 3000369512,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.4109997499617748,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 78720,
+        "duration_seconds": 3.28,
+        "peak_absolute": 0.39963090419769287,
+        "rms": 0.02978417046985235
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 78720,
+        "duration_seconds": 3.28,
+        "peak_absolute": 0.399627685546875,
+        "rms": 0.02978410702493147
+      },
+      "engine_details": {
+        "token_count": 41,
+        "max_tokens": 160,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "退后，小白安静了。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "tuì hòu",
+          "xiǎo bái",
+          "ān jìng",
+          "le"
+        ]
+      },
+      "content_digest": "04327358d02e79d94aafabf2773114630ee32829c8c4976c45d7025ac99a44ed",
+      "filename": "line-space.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "bf2466dbd9fc63298efbd0f2cde5a0ef89d4e96b5bf0290380e4995ebce6d703",
+      "created_at": "2026-11-05T23:04:25.791809+00:00",
+      "attempts": [
+        {
+          "seed": 70415192,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.3622679159743711,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 88320,
+        "duration_seconds": 3.68,
+        "peak_absolute": 0.28544318675994873,
+        "rms": 0.029700417525699116
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 88320,
+        "duration_seconds": 3.68,
+        "peak_absolute": 0.285430908203125,
+        "rms": 0.029700435977839664
+      },
+      "engine_details": {
+        "token_count": 46,
+        "max_tokens": 208,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "小白出来了。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xiǎo bái",
+          "chū lái",
+          "le"
+        ]
+      },
+      "content_digest": "daca7da6a5a3f4c9baebcb2ccced2c04dbda0e96daf848514d1f4fb0a338d35c",
+      "filename": "line-emerged.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "519dd3028d939f4ea4d0f984344aa0aa26c8a783b1b449d5d49aa5787f700066",
+      "created_at": "2026-11-05T23:04:26.799507+00:00",
+      "attempts": [
+        {
+          "seed": 3670703526,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.0022264159633778,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 65280,
+        "duration_seconds": 2.72,
+        "peak_absolute": 0.22619804739952087,
+        "rms": 0.03113739706932951
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 65280,
+        "duration_seconds": 2.72,
+        "peak_absolute": 0.2261962890625,
+        "rms": 0.031137470720379787
+      },
+      "engine_details": {
+        "token_count": 34,
+        "max_tokens": 160,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "跟着小白走。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "gēn zhe",
+          "xiǎo bái",
+          "zǒu"
+        ]
+      },
+      "content_digest": "132c998f6f53fba97b12d0cdee8f32ee12003bcaa931890033db647996399a54",
+      "filename": "line-invited.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "c5fc8073e2c8e3b59a1ae0c87f7a89248147c7f0a755b38e0c7665dbb9e34ec6",
+      "created_at": "2026-11-05T23:04:28.264141+00:00",
+      "attempts": [
+        {
+          "seed": 321689999,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.4598145419731736,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 94080,
+        "duration_seconds": 3.92,
+        "peak_absolute": 0.7211705446243286,
+        "rms": 0.12024100603435708
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 94080,
+        "duration_seconds": 3.92,
+        "peak_absolute": 0.721160888671875,
+        "rms": 0.12024096989611457
+      },
+      "engine_details": {
+        "token_count": 49,
+        "max_tokens": 160,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "找到了，谢谢你。这个垫子送给你。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "zhǎo dào",
+          "le",
+          "xièxie",
+          "nǐ",
+          "zhè ge",
+          "diàn zi",
+          "sòng gěi",
+          "nǐ"
+        ]
+      },
+      "content_digest": "a646a07ed7bb6d950d4f671944759ba8854281bb73ed6581e900d292945d153f",
+      "filename": "line-reunion.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "076e9809cffd40e137029ade60ffeda5ef72ef006cbc6e5e02500827528b04a4",
+      "created_at": "2026-11-05T23:04:31.381266+00:00",
+      "attempts": [
+        {
+          "seed": 2789646462,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 2.0386505000060424,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 128640,
+        "duration_seconds": 5.36,
+        "peak_absolute": 0.3760831654071808,
+        "rms": 0.05070428534217324
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 128640,
+        "duration_seconds": 5.36,
+        "peak_absolute": 0.376068115234375,
+        "rms": 0.05070429431149534
+      },
+      "engine_details": {
+        "token_count": 67,
+        "max_tokens": 320,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "小黑，你好。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xiǎo hēi",
+          "nǐ hǎo"
+        ]
+      },
+      "content_digest": "c2145385d4e1cbb164ecb7957560ea9b03e712ec6f5acaf4a502c2b5b09f96f3",
+      "filename": "line-black-greeting.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "bf951c5e0e9766734271c9e16e7e6c14b86667dbee3874bfdb3c9e8579af3096",
+      "created_at": "2026-11-05T23:04:32.214761+00:00",
+      "attempts": [
+        {
+          "seed": 3256112005,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.8269740840187296,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 48000,
+        "duration_seconds": 2.0,
+        "peak_absolute": 0.4363671541213989,
+        "rms": 0.05596460365408335
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 48000,
+        "duration_seconds": 2.0,
+        "peak_absolute": 0.436370849609375,
+        "rms": 0.055964683025290556
+      },
+      "engine_details": {
+        "token_count": 25,
+        "max_tokens": 160,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "小黑和你一起坐下。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xiǎo hēi",
+          "hé",
+          "nǐ",
+          "yì qǐ",
+          "zuò xià"
+        ]
+      },
+      "content_digest": "1b8131ae13485e367c576c563dec5dfa21462be70046591770a52bb3d2c64433",
+      "filename": "line-black-sitting.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "86ae9fe66126c1c890acd5d87ee3c1bd0c2b2f31e9f33bb7d1578a6a06048e2a",
+      "created_at": "2026-11-05T23:04:33.114984+00:00",
+      "attempts": [
+        {
+          "seed": 461451694,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.8949454170069657,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 53760,
+        "duration_seconds": 2.24,
+        "peak_absolute": 0.3969952166080475,
+        "rms": 0.05510973131980434
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 53760,
+        "duration_seconds": 2.24,
+        "peak_absolute": 0.397003173828125,
+        "rms": 0.05510970081511234
+      },
+      "engine_details": {
+        "token_count": 29,
+        "max_tokens": 208,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "小黑在椅子旁边。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xiǎo hēi",
+          "zài",
+          "yǐ zi",
+          "páng biān"
+        ]
+      },
+      "content_digest": "0f9c87ca92ce935acb17b74614bad110f2073ebdfbc8afba23f18a80988d65c4",
+      "filename": "line-black-clue.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "8f88945155c0e4d7e569a9b2c0087873e138e06b24773e49f059b8bf8f581d2b",
+      "created_at": "2026-11-05T23:04:33.969302+00:00",
+      "attempts": [
+        {
+          "seed": 261916618,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.8490257090306841,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 55680,
+        "duration_seconds": 2.32,
+        "peak_absolute": 0.29264989495277405,
+        "rms": 0.06013060834060315
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 55680,
+        "duration_seconds": 2.32,
+        "peak_absolute": 0.29266357421875,
+        "rms": 0.060130622555428115
+      },
+      "engine_details": {
+        "token_count": 29,
+        "max_tokens": 192,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "太阳出来了。小黑在椅子旁边。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "tài yáng",
+          "chū lái",
+          "le",
+          "xiǎo hēi",
+          "zài",
+          "yǐ zi",
+          "páng biān"
+        ]
+      },
+      "content_digest": "f80840f4abebb2377a0fecef3a6c73e349452f7004dd295482840d724140056d",
+      "filename": "line-sunny.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "dd09aa383d74711a5cad708738eae3a90ca6d12d36be91c904b40bbab49659d2",
+      "created_at": "2026-11-05T23:04:36.428584+00:00",
+      "attempts": [
+        {
+          "seed": 4161290484,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 2.4540223329677247,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 92160,
+        "duration_seconds": 3.84,
+        "peak_absolute": 0.2279452681541443,
+        "rms": 0.04004587685717282
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 92160,
+        "duration_seconds": 3.84,
+        "peak_absolute": 0.227935791015625,
+        "rms": 0.040045882619528135
+      },
+      "engine_details": {
+        "token_count": 48,
+        "max_tokens": 288,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "下雨了。小白在门口。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xià yǔ",
+          "le",
+          "xiǎo bái",
+          "zài",
+          "mén kǒu"
+        ]
+      },
+      "content_digest": "f13de2562ba9d8fa96bc59af477aabce7fda8b78bf4577a8e7d1cb1a97112e2a",
+      "filename": "line-rainy.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "315aa5a58fccbb93448e2de482f52445ff665828fb69c4779c894a08f1c764e0",
+      "created_at": "2026-11-05T23:04:37.749912+00:00",
+      "attempts": [
+        {
+          "seed": 4047364694,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.3136073329951614,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 80640,
+        "duration_seconds": 3.36,
+        "peak_absolute": 0.3148615062236786,
+        "rms": 0.04339835253389961
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 80640,
+        "duration_seconds": 3.36,
+        "peak_absolute": 0.314849853515625,
+        "rms": 0.04339833971282964
+      },
+      "engine_details": {
+        "token_count": 42,
+        "max_tokens": 224,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "小白不在自行车下面。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xiǎo bái",
+          "bú zài",
+          "zì xíng chē",
+          "xià miàn"
+        ]
+      },
+      "content_digest": "466f3ca541646f1f06df89f6fe3e16896a227a0523cfc86eedee56c4fefb9c9b",
+      "filename": "line-empty-bicycle.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "2473407049ef62c63d11a7fd2c7bfc4dac9e1c161d383f88f7727cc287dde85e",
+      "created_at": "2026-11-05T23:04:39.018627+00:00",
+      "attempts": [
+        {
+          "seed": 1181695141,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.2596754999831319,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 72960,
+        "duration_seconds": 3.04,
+        "peak_absolute": 0.4485638439655304,
+        "rms": 0.056801262555914826
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 72960,
+        "duration_seconds": 3.04,
+        "peak_absolute": 0.448577880859375,
+        "rms": 0.056801273431888136
+      },
+      "engine_details": {
+        "token_count": 38,
+        "max_tokens": 224,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "找到小白了。一起等一等。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "zhǎo dào",
+          "xiǎo bái",
+          "le",
+          "yì qǐ",
+          "děng yi děng"
+        ]
+      },
+      "content_digest": "5f2f842d08f9b799de95696618a5fa2a1d8e9604c6b7eca387e1753f49efea01",
+      "filename": "line-rain-found.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "e6ff82eafe8386d16702893afd0df993e52bc65774b12686edd0bb2976d72284",
+      "created_at": "2026-11-05T23:04:41.376392+00:00",
+      "attempts": [
+        {
+          "seed": 1596949549,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 2.351396207988728,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 153600,
+        "duration_seconds": 6.4,
+        "peak_absolute": 0.28302010893821716,
+        "rms": 0.044212340865514906
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 153600,
+        "duration_seconds": 6.4,
+        "peak_absolute": 0.28302001953125,
+        "rms": 0.04421233241579242
+      },
+      "engine_details": {
+        "token_count": 81,
+        "max_tokens": 256,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "小白去窗边。跟着小白走。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xiǎo bái",
+          "qù",
+          "chuāng biān",
+          "gēn zhe",
+          "xiǎo bái",
+          "zǒu"
+        ]
+      },
+      "content_digest": "b47f23aff280331cbcde20471c710410b7a950b1868f24f3299cb9153afdb6cf",
+      "filename": "line-route.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "dddab3cf80e48568f9fe29b1b4a8e118985c78c63294631a298f0f22b9cf89e9",
+      "created_at": "2026-11-05T23:04:43.046583+00:00",
+      "attempts": [
+        {
+          "seed": 3028231087,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.6620422499836423,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 101760,
+        "duration_seconds": 4.24,
+        "peak_absolute": 0.4830033481121063,
+        "rms": 0.04435429908078444
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 101760,
+        "duration_seconds": 4.24,
+        "peak_absolute": 0.483001708984375,
+        "rms": 0.04435429888998912
+      },
+      "engine_details": {
+        "token_count": 53,
+        "max_tokens": 256,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "小白在窗边。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xiǎo bái",
+          "zài",
+          "chuāng biān"
+        ]
+      },
+      "content_digest": "9c1cf993a2c196b3f749917115788e5c368f163ab3c7d9190fd742bd9cf95240",
+      "filename": "line-window-found.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "23226ed739abee81a142bd2dbf8e963f02b8a658812f34426bd1049ac496e47b",
+      "created_at": "2026-11-05T23:04:45.568548+00:00",
+      "attempts": [
+        {
+          "seed": 2619144595,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 2.514794999966398,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 115200,
+        "duration_seconds": 4.8,
+        "peak_absolute": 0.20263457298278809,
+        "rms": 0.02983928203880185
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 115200,
+        "duration_seconds": 4.8,
+        "peak_absolute": 0.20263671875,
+        "rms": 0.029839287710196248
+      },
+      "engine_details": {
+        "token_count": 60,
+        "max_tokens": 160,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "好朋友，明天见。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "hǎo",
+          "péng you",
+          "míng tiān",
+          "jiàn"
+        ]
+      },
+      "content_digest": "e1e5d7a8478368fb9bd4bfef0e269303d1747c52c7d1e17bd17b8daba07d0de5",
+      "filename": "line-visit-complete.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "5e621aa62b6a1236146df7289139c8eac76d4d8c3a80e2e23a7d353020edda84",
+      "created_at": "2026-11-05T23:04:46.643879+00:00",
+      "attempts": [
+        {
+          "seed": 3789936552,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.065747749991715,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 53760,
+        "duration_seconds": 2.24,
+        "peak_absolute": 0.27527353167533875,
+        "rms": 0.04995606771889049
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 53760,
+        "duration_seconds": 2.24,
+        "peak_absolute": 0.2752685546875,
+        "rms": 0.04995613257357441
+      },
+      "engine_details": {
+        "token_count": 28,
+        "max_tokens": 192,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "小白，小黑，你好。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xiǎo bái",
+          "xiǎo hēi",
+          "nǐ hǎo"
+        ]
+      },
+      "content_digest": "5f284f2a89ea82b98e0a49e050ac82570aff28aa7560cafc85a9a9f346d53600",
+      "filename": "line-return.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "a977433b16b05cccd530011e0c8d547c079966644a29cbedb8ae7bbe2c0a77e0",
+      "created_at": "2026-11-05T23:04:47.852620+00:00",
+      "attempts": [
+        {
+          "seed": 1596477226,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.2021944160223939,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 80640,
+        "duration_seconds": 3.36,
+        "peak_absolute": 0.30880531668663025,
+        "rms": 0.0455403810715596
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 80640,
+        "duration_seconds": 3.36,
+        "peak_absolute": 0.308807373046875,
+        "rms": 0.045540351885289224
+      },
+      "engine_details": {
+        "token_count": 42,
+        "max_tokens": 208,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "今天已经见了。明天再来。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "jīn tiān",
+          "yǐ jīng",
+          "jiàn",
+          "le",
+          "míng tiān",
+          "zài",
+          "lái"
+        ]
+      },
+      "content_digest": "1676e318a8c68d265ede2cf675f841b77909f32f1e29e9c93b700ba54991915e",
+      "filename": "line-later.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "3347038294e28b73c28c44c9ad87ebc215e868a7de24c3028662626230a7c136",
+      "created_at": "2026-11-05T23:04:49.365252+00:00",
+      "attempts": [
+        {
+          "seed": 376890136,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 1.5032197919790633,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 88320,
+        "duration_seconds": 3.68,
+        "peak_absolute": 0.3134852349758148,
+        "rms": 0.05724360228809509
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 88320,
+        "duration_seconds": 3.68,
+        "peak_absolute": 0.3134765625,
+        "rms": 0.057243551670780816
+      },
+      "engine_details": {
+        "token_count": 46,
+        "max_tokens": 256,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "院子",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "yuàn zi"
+        ]
+      },
+      "content_digest": "b5bd7d16c58838b9a6c2a784cd01138848a08fca7d8c03a6f48543862bf7470f",
+      "filename": "line-label-courtyard.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "b6f5fd91d5de95edb9b77d1b74cdc7a8984412ff95cb55edbd7d5a07cc729c07",
+      "created_at": "2026-11-05T23:04:49.942975+00:00",
+      "attempts": [
+        {
+          "seed": 3049094422,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.570088709006086,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 36480,
+        "duration_seconds": 1.52,
+        "peak_absolute": 0.37926986813545227,
+        "rms": 0.045660981793241684
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 36480,
+        "duration_seconds": 1.52,
+        "peak_absolute": 0.3792724609375,
+        "rms": 0.04566098508955251
+      },
+      "engine_details": {
+        "token_count": 19,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "小黑",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xiǎo hēi"
+        ]
+      },
+      "content_digest": "424dea5e2a8f85e4c3999c220b80a0617f18f9f2931190d297b0300f0ae0c364",
+      "filename": "line-label-black.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "0b4ad0b1dce76e228388fc443d5d97f1c7df82de961eac5c14cf5d2aaa5b6738",
+      "created_at": "2026-11-05T23:04:53.655756+00:00",
+      "attempts": [
+        {
+          "seed": 1112402526,
+          "accepted": false,
+          "error": "Abnormal audio duration: 4.72s"
+        },
+        {
+          "seed": 1112403526,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 2.5330412079929374,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 40320,
+        "duration_seconds": 1.68,
+        "peak_absolute": 0.491899311542511,
+        "rms": 0.0712499590697053
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 40320,
+        "duration_seconds": 1.68,
+        "peak_absolute": 0.491912841796875,
+        "rms": 0.07124992729872605
+      },
+      "engine_details": {
+        "token_count": 21,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "自行车",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "zì xíng chē"
+        ]
+      },
+      "content_digest": "89eab0ff2568fa31324a5f20ad1cb35ff69554173ea2e22bdfae6ade12299a16",
+      "filename": "line-label-bicycle.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "885297749565d7ea552b35fbe3913576b1882f7fb393c527a08e1d8c7286b97a",
+      "created_at": "2026-11-05T23:04:54.174724+00:00",
+      "attempts": [
+        {
+          "seed": 2313859327,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.5130817499593832,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 32640,
+        "duration_seconds": 1.36,
+        "peak_absolute": 0.1908864974975586,
+        "rms": 0.026405650051310892
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 32640,
+        "duration_seconds": 1.36,
+        "peak_absolute": 0.190887451171875,
+        "rms": 0.026405597451317216
+      },
+      "engine_details": {
+        "token_count": 17,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "窗边",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "chuāng biān"
+        ]
+      },
+      "content_digest": "2f8b375b9ee4675aef5db6baae53835bfdbdd2686c84711ed430e49bb5e8f50b",
+      "filename": "line-label-window.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "bf72b2a80b1a2908ac38ef36e487e60dc2ebc6f01bbea064a80bb2297e3ea0fa",
+      "created_at": "2026-11-05T23:04:56.356416+00:00",
+      "attempts": [
+        {
+          "seed": 797652827,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.6249738750047982,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 40320,
+        "duration_seconds": 1.68,
+        "peak_absolute": 0.10961980372667313,
+        "rms": 0.015843521868963414
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 40320,
+        "duration_seconds": 1.68,
+        "peak_absolute": 0.109619140625,
+        "rms": 0.015843550531766348
+      },
+      "engine_details": {
+        "token_count": 21,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "阿姨",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "ā yí"
+        ]
+      },
+      "content_digest": "2bbf0bbc78a61c0590cfbf48be1708e4c640783e01431ab127726b240dbdb1f4",
+      "filename": "line-label-aunt.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "d7f949142acec298e4a3a1480b449fd1ccb6a5c9308d5825f934d51a4913170f",
+      "created_at": "2026-11-05T23:04:56.726608+00:00",
+      "attempts": [
+        {
+          "seed": 733940668,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.36370187503052875,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 23040,
+        "duration_seconds": 0.96,
+        "peak_absolute": 0.3469676971435547,
+        "rms": 0.042204300628717245
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 23040,
+        "duration_seconds": 0.96,
+        "peak_absolute": 0.346954345703125,
+        "rms": 0.042204392940059426
+      },
+      "engine_details": {
+        "token_count": 12,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "看看",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "kàn kan"
+        ]
+      },
+      "content_digest": "9566f12674b6f21e645d9d71d46a5cbc1ef9fd649a2c3b9e48a04c1f3511d46a",
+      "filename": "line-action-look.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "4b51bfc1c6e0e21d4c95f83dc7d1a0cfd3c25d83cad4aa516a17e569e4ca3174",
+      "created_at": "2026-11-05T23:04:57.334986+00:00",
+      "attempts": [
+        {
+          "seed": 2506551590,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.6015450829872862,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 40320,
+        "duration_seconds": 1.68,
+        "peak_absolute": 0.25421619415283203,
+        "rms": 0.020716969488799482
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 40320,
+        "duration_seconds": 1.68,
+        "peak_absolute": 0.25421142578125,
+        "rms": 0.02071698905460733
+      },
+      "engine_details": {
+        "token_count": 21,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "蹲下",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "dūn xià"
+        ]
+      },
+      "content_digest": "0426f3886a38a198dc685809f00eac2dfc680bb4ee021cd3cc015da5114db939",
+      "filename": "line-action-crouch.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "ad8993acea7f2091f622f7071972f08933cd95b665b9bf663217268644b8e63b",
+      "created_at": "2026-11-05T23:04:57.774712+00:00",
+      "attempts": [
+        {
+          "seed": 69661576,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.4337306250235997,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 28800,
+        "duration_seconds": 1.2,
+        "peak_absolute": 0.5531338453292847,
+        "rms": 0.10281923573460437
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 28800,
+        "duration_seconds": 1.2,
+        "peak_absolute": 0.553131103515625,
+        "rms": 0.10281928411419126
+      },
+      "engine_details": {
+        "token_count": 15,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "等一等",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "děng yi děng"
+        ]
+      },
+      "content_digest": "dd8c8346e9db18bc3bbc4215fdaa1c06546d1bde1063cb42dc8ce7ddd2967d21",
+      "filename": "line-action-wait.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "19560391bc4f62e28385582b380710516570cf2e5597803d5a896490e1f87382",
+      "created_at": "2026-11-05T23:04:58.246379+00:00",
+      "attempts": [
+        {
+          "seed": 3716973382,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.465845208032988,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 30720,
+        "duration_seconds": 1.28,
+        "peak_absolute": 0.2889801263809204,
+        "rms": 0.05468473557756269
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 30720,
+        "duration_seconds": 1.28,
+        "peak_absolute": 0.288970947265625,
+        "rms": 0.05468472524718976
+      },
+      "engine_details": {
+        "token_count": 16,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "退后",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "tuì hòu"
+        ]
+      },
+      "content_digest": "51b651a2f6632de08bac9fd2ffbfad041d55c5d693277a4d028ce02f9cc0aec1",
+      "filename": "line-action-space.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "26587fb83cba4188a4279a0b8217e2659be6b4fbe93238dabe6e7a2ebe144a2d",
+      "created_at": "2026-11-05T23:04:58.721186+00:00",
+      "attempts": [
+        {
+          "seed": 1370902946,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.4680611669900827,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 30720,
+        "duration_seconds": 1.28,
+        "peak_absolute": 0.15582013130187988,
+        "rms": 0.01864066213467846
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 30720,
+        "duration_seconds": 1.28,
+        "peak_absolute": 0.15582275390625,
+        "rms": 0.018640710757710392
+      },
+      "engine_details": {
+        "token_count": 16,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "过来",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "guò lái"
+        ]
+      },
+      "content_digest": "39ef2ab52d32cd1642647f1b82dc17c882bbd77d8e5c368caaf69efe67abd4c5",
+      "filename": "line-action-approach.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "a502c700575441745cb077086be368db5ecc040e2170dc45115f8869da90a650",
+      "created_at": "2026-11-05T23:04:59.111207+00:00",
+      "attempts": [
+        {
+          "seed": 971975349,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.3838798339711502,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 24960,
+        "duration_seconds": 1.04,
+        "peak_absolute": 0.40550193190574646,
+        "rms": 0.06439492041371389
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 24960,
+        "duration_seconds": 1.04,
+        "peak_absolute": 0.405487060546875,
+        "rms": 0.06439507604500272
+      },
+      "engine_details": {
+        "token_count": 13,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "跟着小白走",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "gēn zhe",
+          "xiǎo bái",
+          "zǒu"
+        ]
+      },
+      "content_digest": "a5449234c2dde626e413927408f6a30ffaefdc9f67f34ea2ed943aa4144e1848",
+      "filename": "line-action-follow.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "dbbdff473dc2e805bb52b3d1090ac45776e5aaad854845dd495cc157957f4633",
+      "created_at": "2026-11-05T23:04:59.889741+00:00",
+      "attempts": [
+        {
+          "seed": 2772734516,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.7717075000400655,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 51840,
+        "duration_seconds": 2.16,
+        "peak_absolute": 0.4511891305446625,
+        "rms": 0.0402732264975083
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 51840,
+        "duration_seconds": 2.16,
+        "peak_absolute": 0.451202392578125,
+        "rms": 0.04027327217110323
+      },
+      "engine_details": {
+        "token_count": 27,
+        "max_tokens": 144,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "叫阿姨",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "jiào",
+          "ā yí"
+        ]
+      },
+      "content_digest": "741fe6fd0b07dfd710c486c324bceb4f94a28f93f47ee8ca85d80c919a81a3fe",
+      "filename": "line-action-call.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "3f129ba63cd6b35cdc3466bee0f7f0a5ba3433e9423864c5d29597509066fdc7",
+      "created_at": "2026-11-05T23:05:00.483417+00:00",
+      "attempts": [
+        {
+          "seed": 1948247805,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.5854920420097187,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 38400,
+        "duration_seconds": 1.6,
+        "peak_absolute": 0.24677768349647522,
+        "rms": 0.034087926771166184
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 38400,
+        "duration_seconds": 1.6,
+        "peak_absolute": 0.24676513671875,
+        "rms": 0.034087971179208774
+      },
+      "engine_details": {
+        "token_count": 20,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "你好",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "nǐ hǎo"
+        ]
+      },
+      "content_digest": "85315b5dd27cf33a40b22eaa653c9adaf5837eb494e858dabed6cfdfa6952dc3",
+      "filename": "line-action-greet.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "3e316e81c54b507210eebf5a6c99a9095296571357e153eafd69205fdc957886",
+      "created_at": "2026-11-05T23:05:00.942960+00:00",
+      "attempts": [
+        {
+          "seed": 2234604381,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.4524474579957314,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 28800,
+        "duration_seconds": 1.2,
+        "peak_absolute": 0.47736310958862305,
+        "rms": 0.06816961353223402
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 28800,
+        "duration_seconds": 1.2,
+        "peak_absolute": 0.47735595703125,
+        "rms": 0.06816965313114719
+      },
+      "engine_details": {
+        "token_count": 15,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "坐下",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "zuò xià"
+        ]
+      },
+      "content_digest": "a6f821cd914670ba2d4b6ab9ee5d53ee996ce24ac582ca86eee4b36e5f3388ce",
+      "filename": "line-action-sit.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "24ef773b1b0955b8b737c9c2321ce578112fe37f650148f71d9da6245c2412a7",
+      "created_at": "2026-11-05T23:05:01.476192+00:00",
+      "attempts": [
+        {
+          "seed": 2801279437,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.526072499982547,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.3570935130119324,
+        "rms": 0.051463675082946796
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.357086181640625,
+        "rms": 0.05146358351077778
+      },
+      "engine_details": {
+        "token_count": 18,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "再听",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "zài",
+          "tīng"
+        ]
+      },
+      "content_digest": "8016d42018cd6dab278a07296bc3735c1fab286c5769d71cbe64a54b2a45ee5c",
+      "filename": "line-action-replay.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "76a473e7eb1107a7c56e421a067d0a8224f41fe16540be394b4130ab149462f6",
+      "created_at": "2026-11-05T23:05:02.408973+00:00",
+      "attempts": [
+        {
+          "seed": 2148979744,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.47508574998937547,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 30720,
+        "duration_seconds": 1.28,
+        "peak_absolute": 0.46251294016838074,
+        "rms": 0.040948959109146386
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 30720,
+        "duration_seconds": 1.28,
+        "peak_absolute": 0.4625244140625,
+        "rms": 0.040949014311723556
+      },
+      "engine_details": {
+        "token_count": 16,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "小白和你一起坐下。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xiǎo bái",
+          "hé",
+          "nǐ",
+          "yì qǐ",
+          "zuò xià"
+        ]
+      },
+      "content_digest": "e7cd3f31b5414384966accfc68e5814319a7c1a461a0a815e9e86cab70dbaa56",
+      "filename": "line-white-sitting.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "59cc68669b28aa86c191859bae1ff955da2728597f209644d8d8177c55d3a930",
+      "created_at": "2026-11-05T23:05:03.332267+00:00",
+      "attempts": [
+        {
+          "seed": 3888987953,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.9164639580412768,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 59520,
+        "duration_seconds": 2.48,
+        "peak_absolute": 0.3834387958049774,
+        "rms": 0.06347539552395338
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 59520,
+        "duration_seconds": 2.48,
+        "peak_absolute": 0.383453369140625,
+        "rms": 0.06347532599822846
+      },
+      "engine_details": {
+        "token_count": 32,
+        "max_tokens": 208,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending"
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "她在门口。",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "tā",
+          "zài",
+          "mén kǒu"
+        ]
+      },
+      "content_digest": "7372818f054bb46094fe0ec6c18486eaffe8c74478fc7cc6e2e24134b422243f",
+      "filename": "line-doorway.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "9b826e9f5f480feea16a4eb226f6c55e2826e6cea603eb67304741385fe50105",
+      "created_at": "2026-11-05T23:09:58.335614+00:00",
+      "attempts": [
+        {
+          "seed": 1936892111,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.8093003749963827,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 44160,
+        "duration_seconds": 1.84,
+        "peak_absolute": 0.1892676204442978,
+        "rms": 0.030876196188672357
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 44160,
+        "duration_seconds": 1.84,
+        "peak_absolute": 0.18927001953125,
+        "rms": 0.030876209328882184
+      },
+      "engine_details": {
+        "token_count": 23,
+        "max_tokens": 144,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "retry_round": 1
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "小白",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "xiǎo bái"
+        ]
+      },
+      "content_digest": "913c9130bc42181f955142bc5d75e5ac88911397cd19861a140b688726716914",
+      "filename": "line-label-white.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "3ddb25f740945fec101e8c18453a462aa447bbe4cd31dc3f006d3ba3246d9abf",
+      "created_at": "2026-11-05T23:09:59.270764+00:00",
+      "attempts": [
+        {
+          "seed": 2436673648,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.9193874589982443,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 55680,
+        "duration_seconds": 2.32,
+        "peak_absolute": 0.24624082446098328,
+        "rms": 0.03956835727491841
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 55680,
+        "duration_seconds": 2.32,
+        "peak_absolute": 0.246246337890625,
+        "rms": 0.03956837235845406
+      },
+      "engine_details": {
+        "token_count": 29,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "retry_round": 1
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "椅子",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "yǐ zi"
+        ]
+      },
+      "content_digest": "a803da16769d954456724113ee70799dabde91e4bb76609f37f9f1a2eb6385dc",
+      "filename": "line-label-bench.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "1eb8ec71b2dd78b5b33e4d18fed425ba7159eb08c1028238a8d1a62a509c4439",
+      "created_at": "2026-11-05T23:09:59.905185+00:00",
+      "attempts": [
+        {
+          "seed": 2818832726,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.6198451669770293,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.5860649943351746,
+        "rms": 0.07197976581834624
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 34560,
+        "duration_seconds": 1.44,
+        "peak_absolute": 0.5860595703125,
+        "rms": 0.07197971612195665
+      },
+      "engine_details": {
+        "token_count": 18,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "retry_round": 1
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "门口",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "mén kǒu"
+        ]
+      },
+      "content_digest": "7f2e4d4c46ba17210a4d5a13d8d39ee9c9b9738c62a6b8c13c26419ce54ee169",
+      "filename": "line-label-door.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "49b2257a498c417008fc3e3ac46c7c8563474f40940503e73a27045dec25db94",
+      "created_at": "2026-11-05T23:10:00.581846+00:00",
+      "attempts": [
+        {
+          "seed": 2133748876,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 0.6631427500396967,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 32640,
+        "duration_seconds": 1.36,
+        "peak_absolute": 0.4442659318447113,
+        "rms": 0.06109082698288416
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 32640,
+        "duration_seconds": 1.36,
+        "peak_absolute": 0.44427490234375,
+        "rms": 0.06109082589073219
+      },
+      "engine_details": {
+        "token_count": 17,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "retry_round": 1
+    },
+    {
+      "generator_version": "content-audio-v1",
+      "kind": "line",
+      "text": "看看院子",
+      "voice": {
+        "engine": "qwen",
+        "model": "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit",
+        "revision": "08c72cad5e2fd0f41730c8bd1f28149585e46361",
+        "speaker": "Serena",
+        "language": "Chinese",
+        "speed": 1,
+        "instructions": null
+      },
+      "pronunciation": {
+        "normalization": "unicode-nfc-native-frontend-no-sandhi-overrides-v1",
+        "authored_pinyin": [
+          "kàn kan",
+          "yuàn zi"
+        ]
+      },
+      "content_digest": "bd46d213ff561601d21bf0f0852be8d59808dc2c7f7bfec39c9b2e9e1661481e",
+      "filename": "line-action-begin.wav",
+      "voice_ids": [
+        "serena"
+      ],
+      "sha256": "f4a51d376b0bc30419ee9a79327e6a034595af083d6a731a336bffc7310c6f26",
+      "created_at": "2026-11-05T23:10:03.543708+00:00",
+      "attempts": [
+        {
+          "seed": 3175543123,
+          "accepted": false,
+          "error": "Abnormal audio duration: 4.72s"
+        },
+        {
+          "seed": 3175544123,
+          "accepted": true
+        }
+      ],
+      "generation_seconds": 2.944654459017329,
+      "packages": {
+        "mlx-audio": "0.6.3",
+        "mlx": "0.32.4",
+        "numpy": "2.5.4",
+        "soundfile": "0.14.0",
+        "transformers": "5.22.1",
+        "huggingface-hub": "2.4.0"
+      },
+      "python": "3.12.16 (main, Oct 26 2026, 13:59:40) [Clang 23.1.3 ]",
+      "raw_metrics": {
+        "sample_rate": 24000,
+        "samples": 28800,
+        "duration_seconds": 1.2,
+        "peak_absolute": 0.3342471718788147,
+        "rms": 0.05941632226020227
+      },
+      "wav_metrics": {
+        "sample_rate": 24000,
+        "samples": 28800,
+        "duration_seconds": 1.2,
+        "peak_absolute": 0.334259033203125,
+        "rms": 0.05941638173988847
+      },
+      "engine_details": {
+        "token_count": 15,
+        "max_tokens": 128,
+        "settings": {
+          "temperature": 0.9,
+          "top_k": 50,
+          "top_p": 1.0,
+          "repetition_penalty": 1.05,
+          "stream": false,
+          "verbose": false
+        }
+      },
+      "postprocessing": "PCM16 quantization only; no gain, normalization, trim or resampling",
+      "review_status": "Native Mandarin exact-text/pronunciation listening review pending",
+      "retry_round": 1
+    }
+  ]
+}
