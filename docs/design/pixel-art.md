@@ -19,6 +19,17 @@ Callum's first note on the first reference image, at half today's resolution: **
 - **People are people.** Each character is recognisable from any side by silhouette, and carries at least three things that say who they are: a hair shape, a signature object, a way of standing or sitting. Faces have brows, a mouth with an expression, cheeks, ears. Clothes have collars, buttons, pockets, hems, creases, patterns.
 - **Layer the detail.** Read first as a clear silhouette and three big tones; reward a closer look with the small true things. Detail must never turn into noise: if it does not read at 3× zoom as *something*, it is clutter.
 
+## References
+
+Callum's references (2026-11-11). Each one names the trait we take, not the whole game.
+
+- **Eastward: colour and light.** Saturated warm light against cool, *coloured* shadows (teal, plum; never neutral grey). Highlights glow. Every time of day has a mood: morning gold, evening amber with long violet shadows, night deep blue with warm windows. Environments are dense with small true detail.
+- **Sea of Stars: characters and animation.** More frames where it matters (walk 6–8, idles with a habit), squash and stretch on steps and gestures, secondary motion (hair, hems, held things lag and settle), expressive faces.
+- **Kynseed: hair.** Hair is soft clumps with a gentle gradient, a few bright strand highlights and a lumpy silhouette, never a flat helmet.
+- **Stardew Valley: readability.** The cosy, readable baseline: clear silhouettes, warm palette, nothing fighting the player.
+- **Coffee Talk: long dialogue.** For long conversations, large character portraits beside the text in a calm visual-novel frame, with expressions that change per line; the world stays visible behind, dimmed.
+- **Owlboy: high-res pixel art.** Pixel density, smooth ramps and rich shading where the camera is close. That density belongs in the dialogue portraits and close-ups. The world keeps its 32px tile so it stays readable at play zoom.
+
 ## How art is made here
 
 Art is code. A sprite is a function that draws palette colours into a `Px` canvas (`src/pixel/kit`). There are no image files: the game bakes sprites at start-up, and Node renders the same code to PNG so you can look at it.
