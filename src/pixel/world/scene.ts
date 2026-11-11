@@ -51,7 +51,23 @@ function props(map: OutdoorMap): Prop[] {
 }
 
 /** Lamps inside a map, at the points its art publishes (bulb or dial, tile units): lit all day. */
+/**
+ * Lamps in the residential hall and the apartment: the hall's hanging lantern, the flat's wall sconce
+ * and reading lamp. Each glows where its light is drawn, this many tiles above the prop's anchor.
+ */
+const RESIDENTIAL_LIGHTS: Readonly<Record<string, { height: number; radius: number; strength: number }>> = {
+  "residential-hall/lantern": { height: 2.2, radius: 3, strength: 0.55 },
+  "apartment/lantern": { height: 1.25, radius: 1.9, strength: 0.5 },
+  "apartment/lamp": { height: 0.6, radius: 2.2, strength: 0.45 },
+};
+
 function interiorLights(map: OutdoorMap): GlowLight[] {
+  if (map.id === "residential-hall" || map.id === "apartment") return map.props.flatMap((p): GlowLight[] => {
+    const spec = RESIDENTIAL_LIGHTS[`${map.id}/${p.kind}`];
+    if (!spec) return [];
+    const [x, y] = propAnchor(p);
+    return [{ kind: "glow", at: [x, y - spec.height], radius: spec.radius, color: "gold4", strength: spec.strength, flicker: 0.02 }];
+  });
   if (map.id !== "workshop") return [];
   return Object.entries(WORKSHOP_LIGHTS).map(([id, at]): GlowLight => id.endsWith("radio")
     ? { kind: "glow", at, radius: 1.2, color: "orange3", strength: 0.35, flicker: 0.03 }

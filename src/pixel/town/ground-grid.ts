@@ -23,6 +23,8 @@ export const MATERIAL_ALIASES: Readonly<Record<string, Material>> = {
   "roof-brick": "brick", "roof-concrete": "paving", "roof-tile": "stone", "roof-wood": "paving",
   // Workshop (drawn by its own table; these are the town builder's stand-ins)
   "workshop-planks": "brick", "workshop-stone": "stone", "workshop-cobbles": "paving", "workshop-rug": "brick", "workshop-runner": "brick",
+  // Residential hall and apartment (their own table; town-builder stand-ins)
+  terrazzo: "stone", timber: "brick", woven: "brick", "glazed-tile": "stone",
   // Park and riverbank
   path: "paving", "stone-path": "stone", sand: "paving", boardwalk: "brick", bridge: "stone",
 };
