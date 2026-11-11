@@ -14,6 +14,7 @@
  */
 import type { TileLayer } from "../engine/index.ts";
 import { groundMaterials, type GroundMap, type Material } from "./ground-grid.ts";
+import { GROUND_SPECS, specGroundLayers } from "./ground-spec.ts";
 
 type Variant = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h";
 const SEED = 163;
@@ -209,6 +210,9 @@ function stacked(prefix: string, lists: string[][][]): TileLayer[] {
 }
 
 export function groundLayers(map?: GroundMap): TileLayer[] {
+  // Maps with their own tile table (the courtyard) use it; the rest use the town tiles via aliases.
+  const table = map && "id" in map ? GROUND_SPECS[(map as GroundMap & { id: string }).id] : undefined;
+  if (map && table) return specGroundLayers(map, table.specs, table.fill);
   const grid = groundMaterials(map);
   const holes = manholes(grid);
   const base: (string | null)[][] = grid.map((row) => row.map(() => null));
