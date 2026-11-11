@@ -15,6 +15,7 @@ import courtyardMap from "../../world/maps/courtyard/map.json" with { type: "jso
 import rooftopMap from "../../world/maps/rooftop/map.json" with { type: "json" };
 import parkMap from "../../world/maps/landscape/park.json" with { type: "json" };
 import riverbankMap from "../../world/maps/landscape/riverbank.json" with { type: "json" };
+import workshopMap from "../../world/maps/workshop/map.json" with { type: "json" };
 import { TILE } from "../kit/sprite.ts";
 
 export type MapRect = { x: number; y: number; width: number; height: number };
@@ -79,6 +80,7 @@ export const OUTDOOR_MAPS: Readonly<Record<string, OutdoorMap>> = {
   rooftop: rooftopMap as unknown as OutdoorMap,
   park: centredProps(parkMap as unknown as OutdoorMap),
   riverbank: centredProps(riverbankMap as unknown as OutdoorMap),
+  workshop: workshopMap as unknown as OutdoorMap,
 };
 export const OUTDOOR_MAP_IDS: readonly string[] = Object.keys(OUTDOOR_MAPS);
 
