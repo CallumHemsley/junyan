@@ -11,6 +11,9 @@ describe("prebaking the next maps", () => {
     expect(neighbourMaps("town")).toEqual(["courtyard", "park", "residential-hall", "riverbank", "workshop"]);
     expect(neighbourMaps("park")).toEqual(["courtyard", "riverbank", "town"]);
     expect(neighbourMaps("riverbank")).toEqual(["park", "town"]);
+    // The reading room opens off the hall, so each bakes the other.
+    expect(neighbourMaps("reading-room")).toContain("residential-hall");
+    expect(neighbourMaps("residential-hall")).toContain("reading-room");
     expect(neighbourMaps("ward")).toEqual([]);
   });
 

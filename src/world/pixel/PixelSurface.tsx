@@ -31,6 +31,8 @@ export type SurfaceProps = {
   phase: DayPhase;
   focus: Vec;
   zoom: number;
+  /** Centre exactly on `focus`, past the scene's edges if need be. */
+  free?: boolean;
   reducedMotion: boolean;
   onPointerDown: (point: [number, number]) => void;
   onCamera: (camera: Camera) => void;
@@ -38,9 +40,9 @@ export type SurfaceProps = {
 };
 
 /** Memoised so the world clock's re-renders never mark the canvas dirty; only real changes redraw. */
-export const Surface = memo(function Surface({ renderer, actors, props, fade, lights, phase, focus, zoom, reducedMotion, onPointerDown, onCamera, onApi }: SurfaceProps) {
+export const Surface = memo(function Surface({ renderer, actors, props, fade, lights, phase, focus, zoom, free, reducedMotion, onPointerDown, onCamera, onApi }: SurfaceProps) {
   return (
-    <PixelView renderer={renderer} actors={actors} props={props} fade={fade} lights={lights} phase={phase} focus={focus} zoom={zoom} reducedMotion={reducedMotion}
+    <PixelView renderer={renderer} actors={actors} props={props} fade={fade} lights={lights} phase={phase} focus={focus} zoom={zoom} free={free} reducedMotion={reducedMotion}
       clock={reducedMotion ? frozenClock : undefined} onPointerDown={onPointerDown} onCamera={onCamera}>
       {api => <ApiBridge api={api} onApi={onApi} />}
     </PixelView>

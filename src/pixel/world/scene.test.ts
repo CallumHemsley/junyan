@@ -83,7 +83,7 @@ describe("registered outdoor scenes", () => {
   it("compiles each registered map once and lists it among the scenes", () => {
     expect(outdoorScene("courtyard")).toBe(outdoorScene("courtyard"));
     expect(town).toBe(outdoorScene("town"));
-    expect(Object.keys(outdoorScenes())).toEqual(["town", "courtyard", "rooftop", "park", "riverbank", "workshop", "residential-hall", "apartment"]);
+    expect(Object.keys(outdoorScenes())).toEqual(["town", "courtyard", "rooftop", "park", "riverbank", "workshop", "residential-hall", "apartment", "reading-room"]);
     expect(scenes.workshop).toBe(outdoorScene("workshop"));
     expect(scenes.rooftop).toBe(outdoorScene("rooftop"));
     expect(scenes.courtyard).toBe(outdoorScene("courtyard"));

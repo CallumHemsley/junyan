@@ -4,7 +4,6 @@ import { visitWorld, interactAt, savedGame, closeActivity } from './world-journe
 import { probeAudio } from './audio-fixtures';
 import { expectNativeSpeech } from './neighbourhood-audio';
 import { privateArtifact } from './private-artifacts';
-import { frameCamera, presentationArea, project } from '../src/world/camera';
 import { readingRoomMap } from '../src/world/maps/reading-room';
 import { gridToWorld } from '../src/features/reading-room/world';
 import { readingRoomFrame } from '../src/features/reading-room/view';
@@ -17,16 +16,28 @@ import type { Locator } from '@playwright/test';
 import { activateReadingControl, readingCell, readingGrid } from './reading-grid';
 
 async function projectState(page: Page) { return (await savedGame(page)).neighbourhood!['reading-room']; }
+/** The pixel camera (ticket 0204: the room is drawn top-down by the pixel engine) once it has held still for a few frames. */
+async function stableCamera(page: Page) {
+  const view = page.locator('.pixel-reading-room');
+  await expect(view).toHaveAttribute('data-pixel-camera', /zoom/);
+  return view.evaluate(async element => {
+    const frame = () => new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+    let before = element.getAttribute('data-pixel-camera');
+    for (let stable = 0; stable < 3;) { await frame(); const now = element.getAttribute('data-pixel-camera'); stable = now === before ? stable + 1 : 0; before = now; }
+    return JSON.parse(before!) as { x: number; y: number; zoom: number; dpr: number; tile: number };
+  });
+}
+/** World tiles (with a height in tiles) to CSS px from the canvas's top-left, through the pixel camera. */
+async function projector(page: Page) {
+  const camera = await stableCamera(page), scale = camera.zoom / camera.dpr;
+  // Heights draw up the screen; nothing draws above the map's top edge, so a point there shows at the edge.
+  return (p: { x: number; y: number; z?: number }) => ({ x: (p.x * camera.tile - camera.x) * scale, y: (Math.max(0.05, p.y - (p.z ?? 0)) * camera.tile - camera.y) * scale });
+}
 async function floorPoint(page: Page, x: number, y: number, brief: 'window' | 'alcove') {
   await readingGrid(page, false);
-  const game = await savedGame(page), canvas = page.locator('.connected-world canvas');
-  const bounds = (await canvas.boundingBox())!, context = (await page.locator('.world-context').boundingBox())!;
-  const width = Math.ceil(bounds.width / 2), height = Math.ceil(bounds.height / 2);
-  const main = (await page.locator('main').boundingBox())!, screen = await page.evaluate(() => ({ width: innerWidth, height: innerHeight }));
-  const camera = frameCamera(readingRoomFrame(game.neighbourhood!['reading-room']), width, height, presentationArea(bounds, main, context, screen), bounds.width < 600 ? 11 : 15);
-  await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))));
-  const point = project(gridToWorld({ x, y }, brief), camera);
-  const position = { x: point.x * bounds.width / width, y: point.y * bounds.height / height };
+  const canvas = page.locator('.connected-world canvas'), project = await projector(page);
+  const bounds = (await canvas.boundingBox())!;
+  const position = project(gridToWorld({ x, y }, brief));
   expect(position.x).toBeGreaterThan(0); expect(position.x).toBeLessThan(bounds.width);
   expect(position.y).toBeGreaterThan(0); expect(position.y).toBeLessThan(bounds.height);
   expect(await canvas.evaluate((element, position) => { const r = element.getBoundingClientRect(); return document.elementFromPoint(r.x + position.x, r.y + position.y) === element; }, position)).toBe(true);
@@ -35,15 +46,12 @@ async function floorPoint(page: Page, x: number, y: number, brief: 'window' | 'a
   await expect.poll(async () => (await projectState(page)).draft).toMatchObject({ x, y });
 }
 async function expectBriefContext(page: Page) {
-  await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))));
   const game = await savedGame(page), canvas = page.locator('.connected-world canvas');
-  const bounds = (await canvas.boundingBox())!, main = (await page.locator('main').boundingBox())!, panel = (await page.locator('.world-context').boundingBox())!;
-  const screen = await page.evaluate(() => ({ width: innerWidth, height: innerHeight }));
-  const width = Math.ceil(bounds.width / 2), height = Math.ceil(bounds.height / 2), area = presentationArea(bounds, main, panel, screen);
-  const frame = readingRoomFrame(game.neighbourhood!['reading-room']), camera = frameCamera(frame, width, height, area, bounds.width < 600 ? 11 : 15);
-  const points = frame.map(p => { const screen = project(p, camera, p.z); return { x: screen.x * bounds.width / width, y: screen.y * bounds.height / height }; });
+  const project = await projector(page), bounds = (await canvas.boundingBox())!;
+  const points = readingRoomFrame(game.neighbourhood!['reading-room']).map(p => project(p));
   const blocked = await canvas.evaluate((element, points) => { const r = element.getBoundingClientRect(); return points.filter(p => { const hit = document.elementFromPoint(r.x + p.x, r.y + p.y); return hit !== element && !(element.inert && hit === element.parentElement); }).slice(0, 3).map(p => ({...p, hit: document.elementFromPoint(r.x + p.x, r.y + p.y)?.className})); }, points);
-  expect(blocked, JSON.stringify({bounds,main,panel,area,camera})).toEqual([]);
+  const panel = await page.locator('.world-context').boundingBox(), camera = await page.locator('.pixel-reading-room').getAttribute('data-pixel-camera');
+  expect(blocked, JSON.stringify({ bounds, panel, camera })).toEqual([]);
 }
 async function place(page: Page, id: 'table' | 'chair', x: number, y: number, brief: 'window' | 'alcove', turn = false, native = false) {
   async function activate(control: Locator) {

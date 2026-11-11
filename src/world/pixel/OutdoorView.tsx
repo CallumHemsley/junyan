@@ -14,8 +14,8 @@ import type { GameState } from "../../contracts";
 import type { WorldMapDefinition, WorldState } from "../schema";
 import type { WaiterMotion } from "./cafe";
 import { Surface, usePrefersReducedMotion } from "./PixelSurface";
-import { occluderFade, outdoorActors, outdoorPhase, outdoorPlayer, placedById, previewState, runtimeFade, runtimeLights, runtimeProps } from "./outdoor";
-import { outdoorRenderer, prebakeAround } from "./prebake";
+import { frameView, occluderFade, outdoorActors, outdoorPhase, outdoorPlayer, placedById, previewState, runtimeFade, runtimeLights, runtimeProps } from "./outdoor";
+import { outdoorAtlas, outdoorRenderer, prebakeAround } from "./prebake";
 
 /** Phones show about ten tiles across; landscape screens keep the engine's twenty. */
 const TARGETS: ZoomTargets = { portraitTiles: 10 };
@@ -53,9 +53,17 @@ export type OutdoorViewProps = {
   inset: { bottom: number; right: number };
   onPointerDown: (point: [number, number]) => void;
   onApi: (api: PixelViewApi | null) => void;
+  /**
+   * An activity's presentation frame (the reading room's work bay): world points with a height in
+   * tiles. While set, the camera frames them all in the part of the view the panel leaves visible,
+   * zooming out (whole steps only) if they do not fit at the usual zoom.
+   */
+  frame?: readonly { x: number; y: number; z?: number }[] | null;
+  /** Where the frame must fit, as fractions of the whole view (`presentationArea`). */
+  frameArea?: { x: number; y: number; width: number; height: number };
 };
 
-export default function OutdoorView({ map, game, world, motion, lifeClock, size, inset, onPointerDown, onApi }: OutdoorViewProps) {
+export default function OutdoorView({ map, game, world, motion, lifeClock, size, inset, onPointerDown, onApi, frame, frameArea }: OutdoorViewProps) {
   const renderer = outdoorRenderer(map.id, true);
   // Bake the next maps' art while the player is here, so stepping onto them does not stall.
   useEffect(() => prebakeAround(map.id), [map.id]);
@@ -71,7 +79,7 @@ export default function OutdoorView({ map, game, world, motion, lifeClock, size,
   const cast = useMemo(() => poses, [castKey]);
   const actors = useMemo(() => outdoorActors(cast, player), [cast, player]);
   // Props the game projects at run time (the rooftop garden's pots) draw beside the compiled scene's.
-  const props = useMemo(() => runtimeProps(map.id, map.props), [map.id, map.props]);
+  const props = useMemo(() => { const atlas = outdoorAtlas(); return runtimeProps(map.id, map.props, (id) => atlas.has(id)); }, [map.id, map.props]);
   // An owned lamp glows where it stands; a furnishing being placed draws translucent.
   const lights = useMemo(() => runtimeLights(map.props), [map.props]);
   const translucent = useMemo(() => runtimeFade(map.props), [map.props]);
@@ -86,10 +94,16 @@ export default function OutdoorView({ map, game, world, motion, lifeClock, size,
   const fade = useMemo(() => (Object.keys(translucent).length ? { ...fadeRef.current, ...translucent } : fadeRef.current), [fadeRef.current, translucent]);
   const phase = outdoorPhase(game.served);
   const dpr = typeof devicePixelRatio === "number" ? devicePixelRatio : 1;
-  const zoom = chooseZoom(Math.max(1, size.width), Math.max(1, size.height), dpr, TARGETS);
-  // A side panel covers part of the view, so the camera looks past the player by half its width.
-  const fx = x + inset.right / 2 / ((TILE * zoom) / dpr);
-  const focus = useMemo<Vec>(() => [fx, y], [fx, y]);
+  const usual = chooseZoom(Math.max(1, size.width), Math.max(1, size.height), dpr, TARGETS);
+  // An activity that frames part of the map (the reading room's work bay) centres it and may zoom out.
+  const area = frameArea ?? { x: 0, y: 0, width: 1, height: 1 };
+  const framed = frame && frame.length
+    ? frameView(frame, { width: size.width, height: size.height - inset.bottom }, { x: area.x * size.width, y: area.y * size.height, width: area.width * size.width, height: area.height * size.height }, dpr, usual)
+    : null;
+  const zoom = framed?.zoom ?? usual;
+  // Otherwise a side panel covers part of the view, so the camera looks past the player by half its width.
+  const [fx, fy] = framed?.focus ?? [x + inset.right / 2 / ((TILE * zoom) / dpr), y];
+  const focus = useMemo<Vec>(() => [fx, fy], [fx, fy]);
   const pointer = useRef(onPointerDown);
   pointer.current = onPointerDown;
   const down = useCallback((point: [number, number]) => pointer.current(point), []);
@@ -100,7 +114,7 @@ export default function OutdoorView({ map, game, world, motion, lifeClock, size,
     // Under a bottom sheet the view shrinks to what stays visible, so the camera keeps the player in it.
     <div className={`pixel-map pixel-outdoor pixel-${map.id}`} data-pixel-scene={map.id} style={{ bottom: inset.bottom }} data-pixel-camera={camera ? JSON.stringify({ x: camera.x, y: camera.y, zoom: camera.zoom, dpr: camera.dpr, tile: TILE }) : undefined}
       data-faded={key || undefined} data-preview={preview ?? undefined}>
-      <Surface renderer={renderer} actors={actors} props={props} fade={fade} lights={lights} phase={phase} focus={focus} zoom={zoom} reducedMotion={reducedMotion} onPointerDown={down} onCamera={setCamera} onApi={api} />
+      <Surface renderer={renderer} actors={actors} props={props} fade={fade} lights={lights} phase={phase} focus={focus} zoom={zoom} free={!!framed} reducedMotion={reducedMotion} onPointerDown={down} onCamera={setCamera} onApi={api} />
     </div>
   );
 }

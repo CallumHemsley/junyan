@@ -51,6 +51,8 @@ export type CameraInput = {
   /** Force a zoom instead of choosing one. */
   zoom?: number;
   targets?: ZoomTargets;
+  /** Centre exactly on `focus`, even past the scene's edges (framing an activity's area). */
+  free?: boolean;
 };
 
 export function createCamera(input: CameraInput): Camera {
@@ -59,7 +61,7 @@ export function createCamera(input: CameraInput): Camera {
   const [w, h] = viewSize(input.cssWidth, input.cssHeight, dpr, zoom);
   const sceneW = input.sceneSize[0] * TILE, sceneH = input.sceneSize[1] * TILE;
   const focus: Vec = input.focus ? [input.focus[0] * TILE, input.focus[1] * TILE] : [sceneW / 2, sceneH / 2];
-  const [x, y] = followPoint(w, h, sceneW, sceneH, focus);
+  const [x, y] = input.free ? [Math.round(focus[0] - w / 2), Math.round(focus[1] - h / 2)] : followPoint(w, h, sceneW, sceneH, focus);
   return { x, y, w, h, zoom, dpr };
 }
 

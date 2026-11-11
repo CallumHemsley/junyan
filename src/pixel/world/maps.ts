@@ -18,6 +18,7 @@ import riverbankMap from "../../world/maps/landscape/riverbank.json" with { type
 import workshopMap from "../../world/maps/workshop/map.json" with { type: "json" };
 import hallMap from "../../world/maps/residential/residential-hall.json" with { type: "json" };
 import apartmentMap from "../../world/maps/residential/apartment.json" with { type: "json" };
+import readingRoomMap from "../../world/maps/reading-room/map.json" with { type: "json" };
 import { TILE } from "../kit/sprite.ts";
 
 export type MapRect = { x: number; y: number; width: number; height: number };
@@ -85,6 +86,7 @@ export const OUTDOOR_MAPS: Readonly<Record<string, OutdoorMap>> = {
   workshop: workshopMap as unknown as OutdoorMap,
   "residential-hall": hallMap as unknown as OutdoorMap,
   apartment: apartmentMap as unknown as OutdoorMap,
+  "reading-room": readingRoomMap as unknown as OutdoorMap,
 };
 export const OUTDOOR_MAP_IDS: readonly string[] = Object.keys(OUTDOOR_MAPS);
 

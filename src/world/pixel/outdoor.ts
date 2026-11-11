@@ -7,8 +7,9 @@
 import { outdoorScene } from "../../pixel/world/scene.ts";
 import { outdoorMap, propSpriteId } from "../../pixel/world/maps.ts";
 import { townPlaceholderOptions } from "../../pixel/town/placeholders.ts";
-import type { Actor, AtlasOptions, CompiledScene, DayPhase, Facing, GlowLight, Placed, Prop, Scene } from "../../pixel/engine/index.ts";
+import type { Actor, AtlasOptions, CompiledScene, DayPhase, Facing, GlowLight, Placed, Prop, Scene, Vec } from "../../pixel/engine/index.ts";
 import { TILE, hash } from "../../pixel/kit/index.ts";
+import { viewSize } from "../../pixel/engine/index.ts";
 import type { ActorPose } from "../life";
 import { serviceDayPhase } from "../lighting";
 import type { Facing as WorldFacing, Point } from "../schema";
@@ -26,21 +27,72 @@ export function liveOutdoor(mapId: string): Scene {
 export type LiveProp = { id: string; kind: string; position: Point; width: number; height: number; variant: number | string; layer?: string };
 
 /**
- * Props the game projects onto a map at run time (the rooftop garden's pots, its shade and crates),
- * which the compiled scene does not know: each draws as `<map>/<id without "<map>.">` on its
- * footprint's bottom-centre like any map prop, showing frame `variant` (mod its frame count), so one
- * sprite carries every state of a growing plant. Static props are the scene's and are skipped.
+ * Props the game projects onto a map at run time (the rooftop garden's pots, the reading room's and
+ * the apartment's furniture), which the compiled scene does not know: each draws as
+ * `<map>/<id without "<map>.">` on its footprint's bottom-centre like any map prop, showing frame
+ * `variant` when that is a number (mod its frame count), so one sprite carries every state of a growing
+ * plant. Static props are the scene's and are skipped.
+ *
+ * Projected props can change shape and state, so when the atlas has them (`has`) a more specific
+ * sprite wins, first match of: `<sprite>-<state>-<w>x<h>`, `<sprite>-<state>` (a string `variant`),
+ * then `<sprite>-<w>x<h>` (the footprint in tenths of a tile, `30x15` for 3 × 1.5), then `<sprite>`.
+ * A turned table is `-15x30`, a blocked draft ghost `-blocked-30x15`.
  *
  * A prop whose id ends in `.preview` (the furnishing being placed) draws the sprite of the id without
  * that suffix; `runtimeFade` makes it translucent.
+ *
+ * A prop whose id extends another projected prop's (`….table.book` on `….table`) sits on it: it sorts
+ * just in front of its parent, so the parent's top never hides it. A preview is never on anything.
  */
-export function runtimeProps(mapId: string, props: readonly LiveProp[]): Prop[] {
+export function runtimeProps(mapId: string, props: readonly LiveProp[], has: (sprite: string) => boolean = () => false): Prop[] {
   const known = new Set(outdoorMap(mapId).props.map((p) => p.id));
-  return props.filter((p) => !known.has(p.id)).map((p): Prop => ({
-    id: p.id, sprite: propSpriteId(mapId, p.id.endsWith(PREVIEW) ? p.id.slice(0, -PREVIEW.length) : p.id),
-    at: [p.position.x + p.width / 2, p.position.y + p.height], frame: typeof p.variant === "number" ? p.variant : 0, solid: false,
-    ...(p.layer === "ground" ? { layer: "floor" as const } : {}),
-  }));
+  const projected = props.filter((p) => !known.has(p.id));
+  const bottoms = new Map(projected.map((p) => [p.id, p.position.y + p.height]));
+  return projected.map((p): Prop => {
+    const preview = p.id.endsWith(PREVIEW);
+    const base = propSpriteId(mapId, preview ? p.id.slice(0, -PREVIEW.length) : p.id), size = `${Math.round(p.width * 10)}x${Math.round(p.height * 10)}`;
+    const state = typeof p.variant === "string" ? p.variant : null;
+    const sprite = [...(state ? [`${base}-${state}-${size}`, `${base}-${state}`] : []), `${base}-${size}`].find(has) ?? base;
+    const parent = preview ? undefined : projected.find((q) => q.id !== p.id && p.id.startsWith(`${q.id}.`));
+    return {
+      id: p.id, sprite, at: [p.position.x + p.width / 2, p.position.y + p.height], frame: typeof p.variant === "number" ? p.variant : 0, solid: false,
+      ...(p.layer === "ground" ? { layer: "floor" as const } : {}),
+      ...(parent ? { sortY: bottoms.get(parent.id)! + 0.01 } : {}),
+    };
+  });
+}
+
+/** Margin round a presentation frame, CSS px, so its edges never touch the panel or the screen edge. */
+const FRAME_MARGIN = 24;
+
+/**
+ * The zoom and camera focus (tiles) that show every point of `frame` inside `area` (CSS px from the
+ * view's top-left: the part of the view no panel, pad or edge covers): the largest whole zoom up to
+ * `zoom` (never below 1) at which the box, centred in `area`, keeps every point at least `FRAME_MARGIN`
+ * inside it. The camera for it is free (`CameraInput.free`): it may look past the scene's edges, as the
+ * scene must not stop a work bay from sitting in the free part of the screen.
+ * `view` is the drawn view's size, CSS px. Points draw `z` tiles above their ground position, as tall
+ * things do in the three-quarter view, and never above the map's top edge (a window the old painter drew
+ * taller than the room can only show at that edge).
+ */
+export function frameView(
+  frame: readonly { x: number; y: number; z?: number }[], view: { width: number; height: number },
+  area: { x: number; y: number; width: number; height: number }, dpr: number, zoom: number,
+): { zoom: number; focus: Vec } {
+  const xs = frame.map((p) => p.x), ys = frame.map((p) => Math.max(0, p.y - (p.z ?? 0)));
+  const x0 = Math.min(...xs) * TILE, x1 = Math.max(...xs) * TILE, y0 = Math.min(...ys) * TILE, y1 = Math.max(...ys) * TILE;
+  const attempt = (z: number) => {
+    const k = dpr / z;
+    const [w, h] = viewSize(Math.max(1, view.width), Math.max(1, view.height), dpr, z);
+    const ax0 = area.x * k, ax1 = (area.x + area.width) * k, ay0 = area.y * k, ay1 = (area.y + area.height) * k, margin = FRAME_MARGIN * k;
+    // The view's top-left that puts the box's centre on the area's centre, as a focus for the camera.
+    const left = (x0 + x1) / 2 - (ax0 + ax1) / 2, top = (y0 + y1) / 2 - (ay0 + ay1) / 2;
+    const focus: Vec = [(left + w / 2) / TILE, (top + h / 2) / TILE];
+    const fits = x1 - x0 <= ax1 - ax0 - 2 * margin && y1 - y0 <= ay1 - ay0 - 2 * margin;
+    return { zoom: z, focus, fits };
+  };
+  for (let z = zoom; z > 1; z--) { const a = attempt(z); if (a.fits) return { zoom: a.zoom, focus: a.focus }; }
+  return { zoom: 1, focus: attempt(1).focus };
 }
 
 const PREVIEW = ".preview";
