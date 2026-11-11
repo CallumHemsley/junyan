@@ -42,9 +42,9 @@ export function tileSpan(at: number, length: number): [number, number] {
   return [start, end];
 }
 
-/** What a map shows where no terrain rect covers a cell: grass by default; the rooftop looks down onto
- *  neighbouring tiled roofs past its parapets. */
-export const MAP_FILL: Readonly<Record<string, Material>> = { rooftop: "stone" };
+/** What a map drawn through the aliases shows where no terrain rect covers a cell, when not grass. Maps
+ *  with their own tile table (`GROUND_SPECS` in `ground-spec.ts`) set their fill there instead. */
+export const MAP_FILL: Readonly<Record<string, Material>> = {};
 
 export function groundMaterials(map: GroundMap = TOWN): Material[][] {
   const { width, height } = map.bounds;

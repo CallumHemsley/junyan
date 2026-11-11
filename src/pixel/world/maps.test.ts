@@ -16,12 +16,13 @@ import stone from "../sprites/ground/stone.ts";
 import water from "../sprites/ground/water.ts";
 import edges from "../sprites/ground/edges.ts";
 import courtyardGround from "../sprites/ground/courtyard.ts";
+import rooftopGround from "../sprites/ground/rooftop.ts";
 import { treeSprites } from "../sprites/plant/trees.ts";
 import {
   OUTDOOR_MAPS, OUTDOOR_MAP_IDS, footprintPx, mapProps, openingsOn, outdoorMap, propAnchor, propSpriteId, propsBySprite, spriteIdOf, type MapProp,
 } from "./maps.ts";
 
-const groundSprites = new Set(Object.keys({ ...grass, ...paving, ...road, ...brick, ...stone, ...water, ...edges, ...courtyardGround }));
+const groundSprites = new Set(Object.keys({ ...grass, ...paving, ...road, ...brick, ...stone, ...water, ...edges, ...courtyardGround, ...rooftopGround }));
 /** Outdoor maps still on the old painter: their ground must already compile for the day they are registered. */
 const LATER = [rooftop, park, riverbank] as unknown as (GroundMap & { id: string; props: { kind: string }[] })[];
 
@@ -110,6 +111,11 @@ describe("ground for any outdoor map", () => {
     expect(grid[37][0]).toBe("grass");
     // The courtyard ships its own tile table (ticket 0178), so its layers use its own tiles.
     expect(Object.values(groundLayers(yard)[0].legend ?? {}).some((id) => String(id).startsWith("ground/moss-earth"))).toBe(true);
+    // So does the rooftop (ticket 0188): its deck is roof tile, and past the parapets the roofs below.
+    const roof = LATER.find((m) => m.id === "rooftop")!;
+    const roofIds = Object.values(groundLayers(roof)[0].legend ?? {}).map(String);
+    expect(roofIds.some((id) => id.startsWith("ground/roof-tile-"))).toBe(true);
+    expect(roofIds.some((id) => id.startsWith("ground/roof-below-"))).toBe(true);
     for (const map of [yard, ...LATER]) {
       const layers = groundLayers(map);
       for (const layer of layers) {
