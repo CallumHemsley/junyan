@@ -1159,7 +1159,7 @@
       },
       "width": 4,
       "height": 1.2,
-      "layer": "object",
+      "layer": "ground",
       "variant": 0
     },
     {
@@ -1999,7 +1999,7 @@
       },
       "width": 1.6,
       "height": 0.7,
-      "layer": "object",
+      "layer": "ground",
       "variant": 0
     },
     {
@@ -2011,7 +2011,7 @@
       },
       "width": 1.6,
       "height": 0.7,
-      "layer": "object",
+      "layer": "ground",
       "variant": 1
     },
     {
@@ -2023,7 +2023,7 @@
       },
       "width": 1.6,
       "height": 0.7,
-      "layer": "object",
+      "layer": "ground",
       "variant": 2
     },
     {
@@ -2035,7 +2035,7 @@
       },
       "width": 1.6,
       "height": 0.7,
-      "layer": "object",
+      "layer": "ground",
       "variant": 0
     },
     {
@@ -2047,7 +2047,7 @@
       },
       "width": 1.6,
       "height": 0.7,
-      "layer": "object",
+      "layer": "ground",
       "variant": 1
     },
     {
