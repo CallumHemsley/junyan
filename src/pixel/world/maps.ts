@@ -13,6 +13,7 @@
 import townMap from "../../world/maps/town/map.json" with { type: "json" };
 import courtyardMap from "../../world/maps/courtyard/map.json" with { type: "json" };
 import rooftopMap from "../../world/maps/rooftop/map.json" with { type: "json" };
+import workshopMap from "../../world/maps/workshop/map.json" with { type: "json" };
 import { TILE } from "../kit/sprite.ts";
 
 export type MapRect = { x: number; y: number; width: number; height: number };
@@ -52,6 +53,7 @@ export const OUTDOOR_MAPS: Readonly<Record<string, OutdoorMap>> = {
   town: townMap as unknown as OutdoorMap,
   courtyard: courtyardMap as unknown as OutdoorMap,
   rooftop: rooftopMap as unknown as OutdoorMap,
+  workshop: workshopMap as unknown as OutdoorMap,
 };
 export const OUTDOOR_MAP_IDS: readonly string[] = Object.keys(OUTDOOR_MAPS);
 
