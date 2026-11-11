@@ -48,7 +48,7 @@ describe("missing-sprite placeholders", () => {
   it("draw a quiet translucent box on the footprint, and opaque tiles", () => {
     const atlas = createAtlas(testSprites, { placeholder: spec });
     // The box's base sits on its anchor: anchored at (1, 1) tiles it covers x T-4..T+3, y T-4..T-1.
-    const frame = renderToFrame(createSceneRenderer(scene({ props: [{ id: "bench", sprite: "todo/bench", at: [1, 1] }] }), atlas),
+    const frame = renderToFrame(createSceneRenderer(scene({ props: [{ id: "bench", sprite: "todo/bench", at: [1, 1] }] }), atlas, { grade: false }),
       { x: 0, y: 0, w: 2 * T, h: 2 * T }, { time: 0, phase: "midday" });
     const ground = rgb("leaf3"), red = rgb("red4");
     expect(at(frame, 2, 2)).toEqual(ground);
