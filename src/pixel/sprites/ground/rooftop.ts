@@ -2,18 +2,19 @@
  * The rooftop garden's ground: a flat roof above the lanes that the neighbours share, laid piece by piece
  * over forty years. Five materials:
  *
- * - `roof-tile`: the main deck, 16 px square terracotta roof tiles, sun-faded unevenly, grey grout,
- *   moss creeping into the joints where the parapet keeps them damp.
- * - `roof-concrete`: the poured deck round the water tank and stairhead, pale screed cast in bays
- *   a tile square, every bay joint sealed with a wandering dark bead; water stains and a drain.
- * - `roof-brick`: the walkways, small red-grey quarry tiles (8 px) in light grout.
+ * - `roof-tile`: the main deck, faded terracotta tiles in courses, of irregular length, thin light grout,
+ *   sun-faded in broad patches, moss in the bed joints where the parapet keeps them damp.
+ * - `roof-concrete`: the poured deck round the water tank and stairhead, pale screed cast in bays two or
+ *   three tiles across, every bay joint sealed with a wandering dark bead; water stains and a drain.
+ * - `roof-brick`: the walkways, 16 px red-grey quarry tiles in grey grout, bleached down the middle.
  * - `roof-wood`: decking boards under the pergola, weathered silver, nail heads in lines over the joists.
  * - `roof-below`: past the parapets, the neighbours' grey pantile roofs a storey down: cooler, darker
  *   and lower in contrast than anything on the deck, so they read as below and far.
  *
  * Every pattern repeats every 32 px and anything crossing a tile edge is the same in every variant, so
  * any mix tiles. Edges (`ground/edge-roof-…`) and bands (`ground/roof-tile-faded-<nw ne sw se>`,
- * `roof-tile-moss-…`, `roof-concrete-stain-…`) are placed by `src/pixel/town/ground-rooftop-legend.ts`.
+ * `roof-tile-moss-…`, `roof-brick-worn-…`, `roof-concrete-bay-…`, `roof-concrete-stain-…`) are placed
+ * by `src/pixel/town/ground-rooftop-legend.ts`.
  */
 import { defineSprites, hash, Px, type Color, type SpriteDef } from "../../kit/index.ts";
 import { T, inBlob, jitter, sided, stamp, tile, type Corner, type Side } from "./_helpers.ts";
@@ -26,51 +27,53 @@ function mix(x: number, y: number, seed: number): number {
   return (v >>> 0) / 4294967296;
 }
 
-// ── roof-tile: square terracotta ────────────────────────────────────────────
+// ── roof-tile: the main deck ────────────────────────────────────────────────
 
-type TileTone = { face: Color; lit: Color; shade: Color };
+type TileTone = { face: Color; speck: Color };
 /**
- * Terracotta after decades of sun: most tiles faded to a dusty buff, some still warm, a few bleached
- * pale or fired darker. The quarry-tile walkways are the red-grey ones; the deck is the faded one.
+ * Terracotta after decades of sun: most tiles faded to a dusty buff, some still warm, a few paler.
+ * The quarry-tile walkways are the red-grey ones; the deck is the faded one.
  */
-const TERRACOTTA: Record<"faded" | "warm" | "pale" | "dark", TileTone> = {
-  faded: { face: "cream2", lit: "cream3", shade: "cream1" },
-  warm: { face: "tan3", lit: "tan4", shade: "tan2" },
-  pale: { face: "stone4", lit: "stone5", shade: "stone3" },
-  dark: { face: "tan2", lit: "tan3", shade: "tan1" },
-};
-const squareTone = (key: number, seed: number): TileTone => {
-  const r = mix(key, 3, seed);
-  return r < 0.74 ? TERRACOTTA.faded : r < 0.84 ? TERRACOTTA.warm : r < 0.94 ? TERRACOTTA.pale : TERRACOTTA.dark;
+const TERRACOTTA: Record<"faded" | "warm" | "pale", TileTone> = {
+  faded: { face: "cream2", speck: "cream1" },
+  warm: { face: "tan3", speck: "tan2" },
+  pale: { face: "stone4", speck: "stone3" },
 };
 
-/** Four 16 px tiles, grout on their right and bottom. `tone(key)` may override a tile (key 0..3). */
-function roofTiles(p: Px, seed: number, tone?: (key: number) => TileTone | undefined, grout: Color = "cream1") {
-  for (let y = 0; y < T; y++) for (let x = 0; x < T; x++) {
-    const u = x % 16, v = y % 16, key = (x >> 4) + (y >> 4) * 2;
-    if (u === 15 || v === 15) { p.px(x, y, grout); continue; }
-    const t = tone?.(key) ?? squareTone(key, seed);
-    let c = t.face;
-    if (v === 0 && hash(u >> 2, key, seed + 1) > 0.35) c = t.lit;
-    else if (v === 14 || (u === 14 && hash(v >> 2, key, seed + 2) > 0.5)) c = t.shade;
-    p.px(x, y, c);
+/**
+ * Two courses of 16 per tile with a thin, light grout on their bottom row. A course's joints fall where
+ * the variant says, so tiles run anything from 8 to 50 px along a course and the courses never line up.
+ * Tiles that reach a tile edge are always the faded buff, so they match whatever lies next door; tiles
+ * wholly inside one take their own tone.
+ */
+function deck(p: Px, seed: number, joints: readonly [readonly number[], readonly number[]], tones: Readonly<Record<number, TileTone>> = {}) {
+  for (let r = 0; r < 2; r++) {
+    const y0 = r * 16, js = joints[r];
+    let piece = 0;
+    for (let x = 0; x < T; x++) {
+      if (js.includes(x)) { piece++; for (let j = 0; j < 16; j++) p.px(x, y0 + j, "cream3"); continue; }
+      const inner = piece > 0 && piece < js.length;
+      const t = (inner ? tones[r * 4 + piece] ?? (mix(r * 4 + piece, 7, seed) < 0.7 ? TERRACOTTA.faded : mix(r * 4 + piece, 8, seed) < 0.5 ? TERRACOTTA.warm : TERRACOTTA.pale) : TERRACOTTA.faded);
+      for (let j = 0; j < 15; j++) p.px(x, y0 + j, js.includes(x + 1) && j > 0 ? t.speck : t.face);
+      p.px(x, y0 + 15, "cream3");
+    }
   }
-  // A few two-pixel firing marks per tile, the dark specks old terracotta has.
-  for (let k = 0; k < 8; k++) {
-    const x = 2 + Math.floor(hash(k, 1, seed + 5) * 28), y = 2 + Math.floor(hash(k, 2, seed + 5) * 28);
-    if (x % 16 < 13 && y % 16 < 13) p.px(x, y, squareTone((x >> 4) + (y >> 4) * 2, seed).shade).px(x + 1, y, squareTone((x >> 4) + (y >> 4) * 2, seed).shade);
+  // Firing specks, two pixels each, sparse.
+  for (const [x, y, v] of jitter(8, seed + 5, 2)) if (v < 0.3 && y % 16 < 14 && p.get(x, y) !== "cream3" && p.get(x + 1, y) !== "cream3") {
+    const c = p.get(x, y) === "tan3" ? "tan2" : p.get(x, y) === "stone4" ? "stone3" : "cream1";
+    p.px(x, y, c).px(x + 1, y, c);
   }
 }
 
-function groutMoss(p: Px, seed: number, inside: (x: number, y: number) => boolean, grout: Color = "cream1") {
-  p.each((x, y, c) => (c === grout && inside(x, y) && hash(x >> 1, y >> 1, seed) < 0.7 ? (hash(x, y, seed + 1) < 0.25 ? "leaf2" : "jade2") : undefined));
+function groutMoss(p: Px, seed: number, inside: (x: number, y: number) => boolean) {
+  p.each((x, y, c) => (c === "cream3" && inside(x, y) && hash(x >> 1, y >> 1, seed) < 0.7 ? (hash(x, y, seed + 1) < 0.25 ? "leaf2" : "jade2") : undefined));
 }
 
 // ── roof-concrete: poured bays ──────────────────────────────────────────────
 
 /**
- * Pale screed, a bay per tile: the sealed joint runs along the bay's top and left edge, a bead that
- * wanders a pixel and has spilt in places. Float marks and grit in the face.
+ * Pale screed. Bays span two or three tiles: their sealed joints are drawn by the `roof-concrete-bay`
+ * band, not here. Float marks and grit in the face.
  */
 function concrete(p: Px, seed: number) {
   p.rect(0, 0, T, T, "stone4");
@@ -78,33 +81,40 @@ function concrete(p: Px, seed: number) {
     if (r < 0.3) stamp(p, x, y, ["cc"], { c: "stone3" });
     else if (r < 0.45) stamp(p, x, y, ["e", "e"], { e: "stone5" });
   }
-  // Float marks: a couple of faint straight streaks where the screed was smoothed.
   for (let k = 0; k < 2; k++) {
     const x0 = 4 + Math.floor(hash(k, 4, seed) * 16), y = 6 + Math.floor(hash(k, 5, seed) * 20);
     p.hline(x0, y, 7 + Math.floor(hash(k, 6, seed) * 6), "stone5");
   }
-  // The bay joint, shared by every variant: tar along the top and left, a lit lip just inside it.
-  for (let i = 0; i < T; i++) {
-    const wob = Math.round(Math.sin(i * 0.45) * 0.6);
-    p.px(i, 0, "stone1").px(0, i, "stone1");
-    if (wob > 0) { p.px(i, 1, "stone2"); p.px(1, i, "stone2"); }
-    else { p.px(i, 1, "stone5"); p.px(1, i, "stone5"); }
-  }
-  // Where the sealant spilt over the joint.
-  for (const [x, y] of [[9, 1], [24, 1], [1, 17]] as const) stamp(p, x, y, x < 3 ? ["i", "i", "i"] : ["iii"], { i: "stone1" });
 }
 
-// ── roof-brick: quarry tiles ────────────────────────────────────────────────
+/**
+ * A bay joint through the middle of a tile: each corner of the tile stands for the quarter nearest it,
+ * and where neighbouring quarters lie in different bays a sealed joint runs between them, a dark bead
+ * with a lit lip, wandering a pixel and spilt here and there.
+ */
+function bayJoints(p: Px, bits: string) {
+  const [nw, ne, sw, se] = [...bits].map(Number);
+  const v = (y0: number) => { for (let y = y0; y < y0 + 16; y++) { p.px(16, y, "stone1"); p.px(17, y, Math.sin(y * 0.5) > 0.4 ? "stone2" : "stone5"); } };
+  const h = (x0: number) => { for (let x = x0; x < x0 + 16; x++) { p.px(x, 16, "stone1"); p.px(x, 17, Math.sin(x * 0.5) > 0.4 ? "stone2" : "stone5"); } };
+  if (nw !== ne) v(0);
+  if (sw !== se) v(16);
+  if (nw !== sw) h(0);
+  if (ne !== se) h(16);
+  if ((nw !== ne || sw !== se) && hash(bits.length, Number(bits), 3) < 0.5) stamp(p, 15, 7, ["iii"], { i: "stone1" }, false);
+}
 
-const QUARRY: readonly [Color, number][] = [["tan2", 0.5], ["cream1", 0.78], ["tan1", 0.9], ["stone2", 1]];
-/** 8 px quarry tiles, light grout on their right and bottom, one flat face each. */
-function quarry(p: Px, seed: number, face?: (i: number, j: number) => Color | undefined) {
+// ── roof-brick: quarry-tile walkways ────────────────────────────────────────
+
+/**
+ * 16 px quarry tiles in a grey grout close to their own value, one flat red-grey face each. Tone runs along the walkway come from
+ * bands (sun-bleached down the middle where feet go), so the tiles themselves stay calm.
+ */
+function quarry(p: Px, seed: number, face?: (key: number) => Color | undefined) {
   for (let y = 0; y < T; y++) for (let x = 0; x < T; x++) {
-    const i = x >> 3, j = y >> 3;
-    if (x % 8 === 7 || y % 8 === 7) { p.px(x, y, "stone3"); continue; }
-    const f = face?.(i, j) ?? QUARRY.find(([, upTo]) => mix(i, j, seed) < upTo)![0];
-    p.px(x, y, f);
+    if (x % 16 === 15 || y % 16 === 15) { p.px(x, y, "cream1"); continue; }
+    p.px(x, y, face?.((x >> 4) + (y >> 4) * 2) ?? "tan2");
   }
+  for (const [x, y, v] of jitter(8, seed + 5, 2)) if (v < 0.35 && x % 16 < 13 && y % 16 < 14) p.px(x, y, "tan1").px(x + 1, y, "tan1");
 }
 
 // ── roof-wood: silvered decking ─────────────────────────────────────────────
@@ -157,24 +167,33 @@ function pantiles(p: Px, seed: number) {
 
 // ── bands and edges ─────────────────────────────────────────────────────────
 
-/** Sun-faded tiles: squares whose middle lies in the band a step paler and greyer; grout untouched. */
+/** Sun-faded deck: a soft pale wash, stronger in the band's heart, over whatever tiles lie below. */
 function fadedTiles(p: Px, bits: string, seed: number) {
   const inside = bandMask(bits, seed);
-  const full = new Px(T, T);
-  roofTiles(full, seed, (key) => (mix(key, 9, seed) < 0.75 ? TERRACOTTA.pale : TERRACOTTA.faded));
   for (let y = 0; y < T; y++) for (let x = 0; x < T; x++) {
-    const cx = (x >> 4) * 16 + 7, cy = (y >> 4) * 16 + 7;
-    if (x % 16 !== 15 && y % 16 !== 15 && inside(cx, cy)) p.px(x, y, full.get(x, y));
+    if (!inside(x, y)) continue;
+    const deep = inside(x - 3, y) && inside(x + 3, y) && inside(x, y - 3) && inside(x, y + 3);
+    p.faded(deep ? 0.32 : 0.16, () => p.px(x, y, "cream4"));
   }
 }
 
-/** Damp by the parapet: moss along the joints and the tiles darkened a step. */
+/** Damp by the parapet: moss along the bed joints and a dark green wash on the tiles. */
 function mossTiles(p: Px, bits: string, seed: number) {
   const inside = bandMask(bits, seed);
   for (let y = 0; y < T; y++) for (let x = 0; x < T; x++) {
     if (!inside(x, y)) continue;
-    if (x % 16 === 15 || y % 16 === 15) { if (hash(x >> 1, y >> 1, seed) < 0.7) p.px(x, y, hash(x, y, seed + 1) < 0.3 ? "leaf2" : "jade2"); }
-    else if (hash(x >> 2, y >> 2, seed + 2) < 0.3) p.faded(0.35, () => p.px(x, y, "jade1"));
+    if (y % 16 === 15) { if (hash(x >> 1, y, seed) < 0.7) p.px(x, y, hash(x, y, seed + 1) < 0.3 ? "leaf2" : "jade2"); }
+    else p.faded(0.18, () => p.px(x, y, "jade1"));
+  }
+}
+
+/** The bleached middle of a walkway, where feet go: a pale wash, stronger in the band's heart. */
+function bleached(p: Px, bits: string, seed: number) {
+  const inside = bandMask(bits, seed);
+  for (let y = 0; y < T; y++) for (let x = 0; x < T; x++) {
+    if (!inside(x, y) || x % 16 === 15 || y % 16 === 15) continue;
+    const deep = inside(x - 4, y) && inside(x + 4, y) && inside(x, y - 4) && inside(x, y + 4);
+    p.faded(deep ? 0.3 : 0.15, () => p.px(x, y, "cream3"));
   }
 }
 
@@ -245,32 +264,32 @@ function dropCorner(p: Px, corner: Corner) {
 // ── sprites ─────────────────────────────────────────────────────────────────
 
 const sprites: Record<string, SpriteDef> = {
-  /** Faded terracotta roof tiles. */
-  "ground/roof-tile-a": tile((p) => roofTiles(p, 1)),
-  /** Roof tiles, another lie of tones. */
-  "ground/roof-tile-b": tile((p) => roofTiles(p, 2)),
-  /** A tile cracked across where the water tank's crate was dropped, moss in its crack and the joint beside it. */
+  /** The deck: faded tiles in two courses, joints at 11 and 27. */
+  "ground/roof-tile-a": tile((p) => deck(p, 1, [[11], [27]])),
+  /** The deck, joints elsewhere and a short tile in the lower course. */
+  "ground/roof-tile-b": tile((p) => deck(p, 2, [[23], [7, 19]])),
+  /** A tile cracked across where the water tank's crate was dropped, moss in its crack and the grout beside it. */
   "ground/roof-tile-c": tile((p) => {
-    roofTiles(p, 3);
-    for (let x = 17; x < 30; x++) p.px(x, 4 + Math.round((x - 17) * 0.6 + Math.sin(x)), "cream1");
-    groutMoss(p, 31, (x, y) => inBlob(x, y, 16, 15, 9, 6));
+    deck(p, 3, [[4, 20], [13]]);
+    for (let x = 6; x < 19; x++) p.px(x, 3 + Math.round((x - 6) * 0.6 + Math.sin(x)), "cream1");
+    groutMoss(p, 31, (x, y) => inBlob(x, y, 14, 15, 10, 5));
   }),
-  /** One tile gone, the hole filled with a square of grey cement by someone in a hurry. */
+  /** One tile gone, the hole filled with grey cement by someone in a hurry. */
   "ground/roof-tile-d": tile((p) => {
-    roofTiles(p, 4);
-    for (let y = 16; y < 31; y++) for (let x = 0; x < 15; x++) p.px(x, y, y === 16 || x === 0 ? "stone4" : hash(x >> 1, y >> 1, 41) < 0.2 ? "stone2" : "stone3");
+    deck(p, 4, [[15], [5, 26]]);
+    for (let y = 16; y < 31; y++) for (let x = 6; x < 26; x++) p.px(x, y, y === 16 ? "stone4" : hash(x >> 1, y >> 1, 41) < 0.2 ? "stone2" : "stone3");
   }),
 
-  /** A poured bay. */
+  /** Poured screed. */
   "ground/roof-concrete-a": tile((p) => concrete(p, 1)),
-  /** A poured bay, another scatter of grit. */
+  /** Poured screed, another scatter of grit. */
   "ground/roof-concrete-b": tile((p) => concrete(p, 2)),
-  /** A bay with a tide-marked water stain where a puddle sits after every rain. */
+  /** Screed with a tide-marked water stain where a puddle sits after every rain. */
   "ground/roof-concrete-c": tile((p) => {
     concrete(p, 3);
     p.each((x, y, c) => (c && x > 2 && y > 2 && inBlob(x, y, 17, 18, 10, 7) ? (inBlob(x, y, 17, 18, 8.8, 5.8) ? (c === "stone4" ? "stone3" : undefined) : "stone2") : undefined));
   }),
-  /** A bay with a little cast-iron outlet, the screed dished toward it and rust weeping out. */
+  /** A little cast-iron outlet, the screed dished toward it and rust weeping out. */
   "ground/roof-concrete-d": tile((p) => {
     concrete(p, 4);
     p.each((x, y, c) => (c === "stone4" && inBlob(x, y, 16, 16, 9, 7) && !inBlob(x, y, 16, 16, 6, 4.5) ? "stone3" : undefined));
@@ -279,16 +298,16 @@ const sprites: Record<string, SpriteDef> = {
 
   /** Quarry-tile walkway. */
   "ground/roof-brick-a": tile((p) => quarry(p, 1)),
-  /** Quarry tiles, another mix. */
+  /** Quarry tiles, another scatter of firing marks. */
   "ground/roof-brick-b": tile((p) => quarry(p, 2)),
-  /** A tile cracked in four and moss in the grout round it. */
+  /** A tile cracked across and moss in the grout round it. */
   "ground/roof-brick-c": tile((p) => {
-    quarry(p, 3, (i, j) => (i === 2 && j === 1 ? "tan2" : undefined));
-    p.line(17, 9, 22, 13, "tan1").line(22, 9, 17, 13, "tan1");
-    p.each((x, y, c) => (c === "stone3" && inBlob(x, y, 20, 12, 8, 6) && hash(x, y, 33) < 0.6 ? "jade2" : undefined));
+    quarry(p, 3);
+    p.line(18, 3, 28, 11, "tan1");
+    p.each((x, y, c) => (c === "cream1" && inBlob(x, y, 22, 14, 10, 6) && hash(x, y, 33) < 0.6 ? "jade2" : undefined));
   }),
-  /** Two tiles replaced with grey ones from another job. */
-  "ground/roof-brick-d": tile((p) => quarry(p, 4, (i, j) => ((i === 1 && j === 2) || (i === 2 && j === 2) ? "stone4" : undefined))),
+  /** One tile replaced with a grey one from another job. */
+  "ground/roof-brick-d": tile((p) => quarry(p, 4, (key) => (key === 3 ? "stone3" : undefined))),
 
   /** Silvered decking. */
   "ground/roof-wood-a": tile((p) => decking(p, 1, [[], [19], [], [9]])),
@@ -344,11 +363,17 @@ for (let m = 1; m < 16; m++) {
   sprites[`ground/roof-tile-faded-${bits}`] = tile((p) => fadedTiles(p, bits, 200 + m));
   /** On roof tiles: damp and moss by the parapet. */
   sprites[`ground/roof-tile-moss-${bits}`] = tile((p) => mossTiles(p, bits, 220 + m));
+  /** On concrete: the bays' sealed joints, through the middle of a tile. */
+  sprites[`ground/roof-concrete-bay-${bits}`] = tile((p) => bayJoints(p, bits));
+  /** On quarry tiles: the bleached middle of the walkway. */
+  sprites[`ground/roof-brick-worn-${bits}`] = tile((p) => bleached(p, bits, 270 + m));
   /** On concrete: water stains. */
   sprites[`ground/roof-concrete-stain-${bits}`] = tile((p) => stain(p, bits, 240 + m));
 }
 sprites["ground/roof-tile-faded-1111b"] = tile((p) => fadedTiles(p, "1111", 261));
 sprites["ground/roof-tile-moss-1111b"] = tile((p) => mossTiles(p, "1111", 262));
+sprites["ground/roof-concrete-bay-1111b"] = tile(() => undefined);
+sprites["ground/roof-brick-worn-1111b"] = tile((p) => bleached(p, "1111", 291));
 sprites["ground/roof-concrete-stain-1111b"] = tile((p) => stain(p, "1111", 263));
 
 export default defineSprites(sprites);

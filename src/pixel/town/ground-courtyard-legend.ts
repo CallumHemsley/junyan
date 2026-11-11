@@ -43,6 +43,9 @@ export type BandContext = {
   mapEdge(distance: number): boolean;
   /** Smooth value noise in 0..1 at the corner, lattice every `scale` tiles. */
   noise(scale: number, seed: number): number;
+  /** The corner's own grid position, 0..width and 0..height, for bands laid out on a plan. */
+  x: number;
+  y: number;
 };
 
 export type GroundBand = { prefix: string; inBand(c: BandContext): boolean };
@@ -150,6 +153,8 @@ export function bandCorners(grid: readonly (readonly string[])[], band: GroundBa
     },
     mapEdge: (d) => cx < d || cy < d || cx > w - d || cy > h - d,
     noise: (scale, seed) => valueNoise(cx, cy, scale, seed),
+    x: cx,
+    y: cy,
   })));
 }
 
