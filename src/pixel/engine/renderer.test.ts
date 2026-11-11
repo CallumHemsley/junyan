@@ -51,6 +51,15 @@ describe("draw order", () => {
     expect(at(frame, 1, lampY - 2)).toEqual(rgb("red3"));
   });
 
+  it("fades props named in state.fade, by id, and leaves the rest opaque", () => {
+    const north: Prop = { id: "tree", sprite: "t/red", at: [1, 1] }, other: Prop = { id: "post", sprite: "t/blue", at: [3, 1] };
+    const frame = draw(room({ props: [north, other] }), { fade: { tree: 0.5 } });
+    const pixel = at(frame, T, T - 4), red = rgb("red3"), floor = rgb("oak4");
+    pixel.forEach((v, i) => expect(v).toBeCloseTo((red[i] + floor[i]) / 2, -0.5));
+    expect(at(frame, 3 * T, T - 4)).toEqual(rgb("blue3"));
+    expect(at(draw(room({ props: [north] })), T, T - 4)).toEqual(red);
+  });
+
   it("honours sortY for things that sit on other things", () => {
     const table: Prop = { sprite: "t/red", at: [1, 1] }, bowl: Prop = { sprite: "t/blue", at: [1, 0.9], sortY: 1.01 };
     expect(at(draw(room({ props: [bowl, table] })), T, T - 4)).toEqual(rgb("blue3"));

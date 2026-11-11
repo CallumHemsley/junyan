@@ -14,10 +14,12 @@ import {
 import { PixelView } from "./engine/PixelView.tsx";
 import { sprites } from "./registry.ts";
 import { scenes } from "./scenes/index.ts";
+import { townPlaceholderOptions } from "./town/placeholders.ts";
 
 if (!import.meta.env.DEV) throw new Error("Development harness only");
 
-const atlas = createAtlas(sprites);
+// Town art still being drawn shows as placeholder boxes (listed once in the console).
+const atlas = createAtlas(sprites, townPlaceholderOptions((message) => console.warn(message)));
 const params = new URLSearchParams(location.search);
 const warn = (message: string) => console.warn(message);
 

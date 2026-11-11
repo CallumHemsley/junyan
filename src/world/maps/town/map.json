@@ -24,39 +24,33 @@
       "height": 4
     },
     {
-      "x": 19,
-      "y": 8,
-      "width": 7,
-      "height": 24
-    },
-    {
-      "x": 21,
-      "y": 8,
-      "width": 43,
-      "height": 6
-    },
-    {
-      "x": 59,
-      "y": 11,
-      "width": 7,
-      "height": 45
-    },
-    {
-      "x": 23,
-      "y": 49,
-      "width": 42,
-      "height": 7
-    },
-    {
-      "x": 23,
-      "y": 35,
-      "width": 6,
-      "height": 18
-    },
-    {
-      "x": 40,
-      "y": 12,
+      "x": 18,
+      "y": 7,
       "width": 5,
+      "height": 22
+    },
+    {
+      "x": 17,
+      "y": 7,
+      "width": 45,
+      "height": 4
+    },
+    {
+      "x": 3,
+      "y": 7,
+      "width": 15,
+      "height": 3
+    },
+    {
+      "x": 23,
+      "y": 16,
+      "width": 20,
+      "height": 2
+    },
+    {
+      "x": 39,
+      "y": 11,
+      "width": 4,
       "height": 18
     },
     {
@@ -66,34 +60,40 @@
       "height": 14
     },
     {
-      "x": 10,
-      "y": 21,
-      "width": 12,
-      "height": 4
+      "x": 43,
+      "y": 20,
+      "width": 6,
+      "height": 2
     },
     {
-      "x": 28,
-      "y": 37,
-      "width": 12,
+      "x": 49,
+      "y": 11,
+      "width": 9,
       "height": 8
     },
     {
-      "x": 37,
-      "y": 36,
-      "width": 9,
+      "x": 58,
+      "y": 7,
+      "width": 4,
+      "height": 22
+    },
+    {
+      "x": 62,
+      "y": 7,
+      "width": 5,
+      "height": 2
+    },
+    {
+      "x": 58,
+      "y": 14,
+      "width": 22,
       "height": 4
     },
     {
-      "x": 43,
-      "y": 36,
-      "width": 6,
-      "height": 17
-    },
-    {
-      "x": 64,
-      "y": 44,
-      "width": 16,
-      "height": 7
+      "x": 4,
+      "y": 21,
+      "width": 14,
+      "height": 4.5
     },
     {
       "x": 17,
@@ -102,16 +102,94 @@
       "height": 13
     },
     {
-      "x": 49,
-      "y": 14,
-      "width": 9,
-      "height": 5
+      "x": 4,
+      "y": 28,
+      "width": 13,
+      "height": 1
+    },
+    {
+      "x": 28,
+      "y": 28,
+      "width": 11,
+      "height": 1
     },
     {
       "x": 32.5,
       "y": 28,
       "width": 3,
       "height": 2
+    },
+    {
+      "x": 20,
+      "y": 37,
+      "width": 3.5,
+      "height": 12
+    },
+    {
+      "x": 28.5,
+      "y": 37,
+      "width": 11.5,
+      "height": 8
+    },
+    {
+      "x": 39,
+      "y": 37,
+      "width": 4,
+      "height": 12.5
+    },
+    {
+      "x": 43,
+      "y": 37,
+      "width": 9,
+      "height": 4
+    },
+    {
+      "x": 52,
+      "y": 47,
+      "width": 6,
+      "height": 2
+    },
+    {
+      "x": 58,
+      "y": 37,
+      "width": 4.5,
+      "height": 12
+    },
+    {
+      "x": 60,
+      "y": 44,
+      "width": 20,
+      "height": 7
+    },
+    {
+      "x": 1,
+      "y": 49,
+      "width": 63.5,
+      "height": 4
+    },
+    {
+      "x": 19,
+      "y": 53,
+      "width": 6,
+      "height": 9.5
+    },
+    {
+      "x": 45,
+      "y": 53,
+      "width": 4,
+      "height": 6
+    },
+    {
+      "x": 1,
+      "y": 59,
+      "width": 63.5,
+      "height": 3.5
+    },
+    {
+      "x": 7,
+      "y": 37,
+      "width": 73,
+      "height": 1
     }
   ],
   "colliders": [
@@ -155,7 +233,7 @@
       "id": "town.corner-store",
       "rect": {
         "x": 67,
-        "y": 5,
+        "y": 4,
         "width": 10,
         "height": 10
       }
@@ -172,7 +250,7 @@
     {
       "id": "town.linen-house",
       "rect": {
-        "x": 50,
+        "x": 48,
         "y": 2,
         "width": 8,
         "height": 6
@@ -191,7 +269,7 @@
       "id": "town.south-residence",
       "rect": {
         "x": 7,
-        "y": 38,
+        "y": 37.5,
         "width": 13,
         "height": 12
       }
@@ -209,7 +287,7 @@
       "id": "town.south-bakery",
       "rect": {
         "x": 30,
-        "y": 56,
+        "y": 53,
         "width": 10,
         "height": 6
       }
@@ -218,7 +296,7 @@
       "id": "town.south-studio",
       "rect": {
         "x": 49,
-        "y": 56,
+        "y": 53,
         "width": 9,
         "height": 6
       }
@@ -251,9 +329,198 @@
       }
     },
     {
+      "id": "town.back-row-west",
+      "rect": {
+        "x": 1.5,
+        "y": 0.5,
+        "width": 8,
+        "height": 6.5
+      }
+    },
+    {
+      "id": "town.back-row-east",
+      "rect": {
+        "x": 9.5,
+        "y": 0.5,
+        "width": 6.5,
+        "height": 6.5
+      }
+    },
+    {
+      "id": "town.hot-water-house",
+      "rect": {
+        "x": 16,
+        "y": 2,
+        "width": 3.5,
+        "height": 5
+      }
+    },
+    {
+      "id": "town.well-row",
+      "rect": {
+        "x": 19.5,
+        "y": 2,
+        "width": 7.5,
+        "height": 5
+      }
+    },
+    {
+      "id": "town.ne-row",
+      "rect": {
+        "x": 56,
+        "y": 1.5,
+        "width": 6,
+        "height": 6.5
+      }
+    },
+    {
+      "id": "town.nook-row",
+      "rect": {
+        "x": 62,
+        "y": 1,
+        "width": 5,
+        "height": 6
+      }
+    },
+    {
+      "id": "town.kitchen-row-west",
+      "rect": {
+        "x": 23,
+        "y": 11,
+        "width": 7.5,
+        "height": 5
+      }
+    },
+    {
+      "id": "town.kitchen-row-east",
+      "rect": {
+        "x": 30.5,
+        "y": 11.5,
+        "width": 8.5,
+        "height": 4.5
+      }
+    },
+    {
+      "id": "town.junction-shop",
+      "rect": {
+        "x": 23,
+        "y": 18,
+        "width": 5,
+        "height": 9
+      }
+    },
+    {
+      "id": "town.lantern-row",
+      "rect": {
+        "x": 43,
+        "y": 14,
+        "width": 6,
+        "height": 6
+      }
+    },
+    {
+      "id": "town.lantern-shop",
+      "rect": {
+        "x": 43,
+        "y": 22,
+        "width": 6,
+        "height": 7
+      }
+    },
+    {
+      "id": "town.alley-row",
+      "rect": {
+        "x": 62,
+        "y": 9.5,
+        "width": 5,
+        "height": 4.5
+      }
+    },
+    {
+      "id": "town.east-shop",
+      "rect": {
+        "x": 62,
+        "y": 18,
+        "width": 5,
+        "height": 11
+      }
+    },
+    {
+      "id": "town.market-row",
+      "rect": {
+        "x": 23.5,
+        "y": 40,
+        "width": 5.5,
+        "height": 9
+      }
+    },
+    {
+      "id": "town.service-row",
+      "rect": {
+        "x": 43,
+        "y": 40,
+        "width": 9,
+        "height": 9
+      }
+    },
+    {
+      "id": "town.canal-row",
+      "rect": {
+        "x": 62.5,
+        "y": 37.5,
+        "width": 6.5,
+        "height": 6.5
+      }
+    },
+    {
+      "id": "town.fig-house",
+      "rect": {
+        "x": 1,
+        "y": 53,
+        "width": 13.5,
+        "height": 6
+      }
+    },
+    {
+      "id": "town.fig-shop",
+      "rect": {
+        "x": 14.5,
+        "y": 53.5,
+        "width": 4.5,
+        "height": 5.5
+      }
+    },
+    {
+      "id": "town.bakery-row",
+      "rect": {
+        "x": 25,
+        "y": 53,
+        "width": 5,
+        "height": 6
+      }
+    },
+    {
+      "id": "town.grove-row",
+      "rect": {
+        "x": 40,
+        "y": 53.5,
+        "width": 5,
+        "height": 5.5
+      }
+    },
+    {
+      "id": "town.canal-end-row",
+      "rect": {
+        "x": 58,
+        "y": 53,
+        "width": 6,
+        "height": 6
+      }
+    },
+    {
       "id": "town.restaurant-open-leaf",
       "rect": {
-        "x": 33.04,
+        "x": 32.78,
         "y": 28.28,
         "width": 0.18,
         "height": 0.7
@@ -262,7 +529,7 @@
     {
       "id": "town.residence-open-leaf",
       "rect": {
-        "x": 10.54,
+        "x": 10.28,
         "y": 21.28,
         "width": 0.18,
         "height": 0.7
@@ -271,7 +538,7 @@
     {
       "id": "town.workshop-open-leaf",
       "rect": {
-        "x": 72.29,
+        "x": 71.78,
         "y": 29.28,
         "width": 0.18,
         "height": 0.7
@@ -325,8 +592,8 @@
     {
       "id": "town.courtyard-left",
       "rect": {
-        "x": 37.8,
-        "y": 3,
+        "x": 39.8,
+        "y": 5,
         "width": 2,
         "height": 2
       }
@@ -343,8 +610,8 @@
     {
       "id": "town.east-lane",
       "rect": {
-        "x": 65.6,
-        "y": 39.5,
+        "x": 60.4,
+        "y": 51.2,
         "width": 1.5,
         "height": 1.5
       }
@@ -352,10 +619,10 @@
     {
       "id": "town.river-view",
       "rect": {
-        "x": 73.5,
-        "y": 41,
-        "width": 2,
-        "height": 2
+        "x": 72.2,
+        "y": 48.9,
+        "width": 1.8,
+        "height": 1.8
       }
     },
     {
@@ -379,8 +646,8 @@
     {
       "id": "town.west-shade",
       "rect": {
-        "x": 15.5,
-        "y": 6,
+        "x": 18.2,
+        "y": 12.4,
         "width": 2,
         "height": 2
       }
@@ -397,8 +664,8 @@
     {
       "id": "town.east-corner",
       "rect": {
-        "x": 77,
-        "y": 15.2,
+        "x": 59.5,
+        "y": 40.4,
         "width": 1.8,
         "height": 1.8
       }
@@ -406,8 +673,8 @@
     {
       "id": "town.south-grove",
       "rect": {
-        "x": 59.4,
-        "y": 60,
+        "x": 46,
+        "y": 56.2,
         "width": 2,
         "height": 2
       }
@@ -415,45 +682,45 @@
     {
       "id": "town.hedge-0",
       "rect": {
-        "x": 1,
-        "y": 6,
-        "width": 15,
-        "height": 1.3
+        "x": 4.5,
+        "y": 62.7,
+        "width": 9.5,
+        "height": 1.1
       }
     },
     {
       "id": "town.hedge-1",
       "rect": {
         "x": 1,
-        "y": 7,
+        "y": 10,
         "width": 1.2,
-        "height": 16
+        "height": 13
       }
     },
     {
       "id": "town.hedge-2",
       "rect": {
-        "x": 27,
-        "y": 15,
-        "width": 1,
-        "height": 12
+        "x": 26,
+        "y": 62.8,
+        "width": 4,
+        "height": 1
       }
     },
     {
       "id": "town.hedge-3",
       "rect": {
         "x": 49,
-        "y": 15,
-        "width": 4,
+        "y": 11.4,
+        "width": 3,
         "height": 1
       }
     },
     {
       "id": "town.hedge-4",
       "rect": {
-        "x": 66.5,
-        "y": 15.5,
-        "width": 12,
+        "x": 67.5,
+        "y": 2.4,
+        "width": 9.5,
         "height": 1
       }
     },
@@ -461,26 +728,26 @@
       "id": "town.hedge-5",
       "rect": {
         "x": 1,
-        "y": 51,
-        "width": 18,
-        "height": 1
+        "y": 62.7,
+        "width": 3.2,
+        "height": 1.1
       }
     },
     {
       "id": "town.hedge-6",
       "rect": {
-        "x": 21,
-        "y": 58,
-        "width": 1.2,
-        "height": 5
+        "x": 23.6,
+        "y": 54,
+        "width": 1,
+        "height": 4.2
       }
     },
     {
       "id": "town.hedge-7",
       "rect": {
         "x": 41,
-        "y": 58,
-        "width": 6,
+        "y": 62.8,
+        "width": 7,
         "height": 1
       }
     },
@@ -496,10 +763,10 @@
     {
       "id": "town.hedge-9",
       "rect": {
-        "x": 77.5,
-        "y": 36.5,
+        "x": 78.3,
+        "y": 37,
         "width": 1.2,
-        "height": 7
+        "height": 6
       }
     },
     {
@@ -524,26 +791,26 @@
       "id": "town.fence-0",
       "rect": {
         "x": 1,
-        "y": 9,
+        "y": 11,
         "width": 2,
-        "height": 14
+        "height": 12
       }
     },
     {
       "id": "town.fence-1",
       "rect": {
         "x": 3,
-        "y": 8,
-        "width": 14,
-        "height": 0.35
+        "y": 7.1,
+        "width": 0.35,
+        "height": 2.9
       }
     },
     {
       "id": "town.fence-2",
       "rect": {
         "x": 27,
-        "y": 14,
-        "width": 11,
+        "y": 0.8,
+        "width": 12,
         "height": 0.3
       }
     },
@@ -551,7 +818,7 @@
       "id": "town.fence-3",
       "rect": {
         "x": 49,
-        "y": 14,
+        "y": 11,
         "width": 3,
         "height": 0.35
       }
@@ -560,7 +827,7 @@
       "id": "town.fence-4",
       "rect": {
         "x": 56,
-        "y": 14,
+        "y": 11,
         "width": 2,
         "height": 0.35
       }
@@ -568,9 +835,9 @@
     {
       "id": "town.fence-5",
       "rect": {
-        "x": 66.5,
-        "y": 16,
-        "width": 12,
+        "x": 67.5,
+        "y": 3.5,
+        "width": 9.5,
         "height": 0.25
       }
     },
@@ -578,26 +845,26 @@
       "id": "town.fence-6",
       "rect": {
         "x": 1,
-        "y": 53,
-        "width": 19,
+        "y": 63.5,
+        "width": 13,
         "height": 0.3
       }
     },
     {
       "id": "town.fence-7",
       "rect": {
-        "x": 21,
-        "y": 57,
-        "width": 7,
+        "x": 15.5,
+        "y": 63.5,
+        "width": 9,
         "height": 0.3
       }
     },
     {
       "id": "town.fence-8",
       "rect": {
-        "x": 40,
-        "y": 62,
-        "width": 7,
+        "x": 31,
+        "y": 63.5,
+        "width": 9,
         "height": 0.3
       }
     },
@@ -631,8 +898,8 @@
     {
       "id": "town.planter-2",
       "rect": {
-        "x": 48.2,
-        "y": 27.2,
+        "x": 43.3,
+        "y": 29.15,
         "width": 0.65,
         "height": 0.65
       }
@@ -650,7 +917,7 @@
       "id": "town.planter-4",
       "rect": {
         "x": 66.2,
-        "y": 28.2,
+        "y": 29.15,
         "width": 0.65,
         "height": 0.65
       }
@@ -658,8 +925,8 @@
     {
       "id": "town.planter-5",
       "rect": {
-        "x": 77.5,
-        "y": 28.8,
+        "x": 78.5,
+        "y": 28.2,
         "width": 0.65,
         "height": 0.65
       }
@@ -685,8 +952,8 @@
     {
       "id": "town.planter-8",
       "rect": {
-        "x": 29.2,
-        "y": 55.8,
+        "x": 38.9,
+        "y": 59.2,
         "width": 0.65,
         "height": 0.65
       }
@@ -712,8 +979,8 @@
     {
       "id": "town.bike-1",
       "rect": {
-        "x": 47.8,
-        "y": 39.5,
+        "x": 45.4,
+        "y": 38.3,
         "width": 1.8,
         "height": 0.6
       }
@@ -730,8 +997,8 @@
     {
       "id": "town.bike-3",
       "rect": {
-        "x": 64.6,
-        "y": 53,
+        "x": 62.4,
+        "y": 52.2,
         "width": 1.8,
         "height": 0.6
       }
@@ -802,8 +1069,8 @@
     {
       "id": "town.lamp-3",
       "rect": {
-        "x": 65.9,
-        "y": 13.5,
+        "x": 61.5,
+        "y": 12.6,
         "width": 0.35,
         "height": 0.35
       }
@@ -973,8 +1240,8 @@
     {
       "id": "town.south-utility",
       "rect": {
-        "x": 61.8,
-        "y": 57,
+        "x": 63.9,
+        "y": 59.7,
         "width": 0.3,
         "height": 0.3
       }
@@ -1007,21 +1274,246 @@
       }
     },
     {
-      "id": "town.river-rail-left",
-      "rect": {
-        "x": 71,
-        "y": 43.3,
-        "width": 7,
-        "height": 0.25
-      }
-    },
-    {
       "id": "town.tea-stone-table",
       "rect": {
         "x": 50,
         "y": 16.5,
         "width": 1.7,
         "height": 1.2
+      }
+    },
+    {
+      "id": "town.lamp-back-lane",
+      "rect": {
+        "x": 8.6,
+        "y": 7.05,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.lamp-north-lane",
+      "rect": {
+        "x": 35,
+        "y": 8.05,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.lamp-lantern-passage",
+      "rect": {
+        "x": 39.05,
+        "y": 19.5,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.lamp-corner-alley",
+      "rect": {
+        "x": 70.5,
+        "y": 14.05,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.lamp-south-lane",
+      "rect": {
+        "x": 21,
+        "y": 49.1,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.lamp-market-row",
+      "rect": {
+        "x": 26,
+        "y": 49.05,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.lamp-back-street",
+      "rect": {
+        "x": 27.5,
+        "y": 59.05,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.lamp-grove",
+      "rect": {
+        "x": 44.6,
+        "y": 59.1,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.lamp-fig-court",
+      "rect": {
+        "x": 19.1,
+        "y": 59.1,
+        "width": 0.35,
+        "height": 0.35
+      }
+    },
+    {
+      "id": "town.back-lane-pot",
+      "rect": {
+        "x": 12.4,
+        "y": 7.15,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.well-pot",
+      "rect": {
+        "x": 22.3,
+        "y": 7.3,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.kitchen-pot",
+      "rect": {
+        "x": 33.6,
+        "y": 16.15,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.lantern-pot",
+      "rect": {
+        "x": 48.2,
+        "y": 20.15,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.nook-pot",
+      "rect": {
+        "x": 66.2,
+        "y": 7.2,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.market-row-pot",
+      "rect": {
+        "x": 28.2,
+        "y": 49.15,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.fig-row-pot",
+      "rect": {
+        "x": 18.2,
+        "y": 59.15,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.canal-end-pot",
+      "rect": {
+        "x": 58.2,
+        "y": 59.15,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.canal-row-pot",
+      "rect": {
+        "x": 68.2,
+        "y": 44.15,
+        "width": 0.65,
+        "height": 0.65
+      }
+    },
+    {
+      "id": "town.north-lane-bike",
+      "rect": {
+        "x": 30,
+        "y": 8.1,
+        "width": 1.8,
+        "height": 0.6
+      }
+    },
+    {
+      "id": "town.back-street-bike",
+      "rect": {
+        "x": 50.5,
+        "y": 59.15,
+        "width": 1.8,
+        "height": 0.6
+      }
+    },
+    {
+      "id": "town.south-lane-bike",
+      "rect": {
+        "x": 36.5,
+        "y": 49.15,
+        "width": 1.8,
+        "height": 0.6
+      }
+    },
+    {
+      "id": "town.lantern-bike",
+      "rect": {
+        "x": 41.1,
+        "y": 25.6,
+        "width": 1.8,
+        "height": 0.6
+      }
+    },
+    {
+      "id": "town.fig-bench",
+      "rect": {
+        "x": 20.1,
+        "y": 59.6,
+        "width": 2.4,
+        "height": 0.6
+      }
+    },
+    {
+      "id": "town.yard-crates",
+      "rect": {
+        "x": 50.6,
+        "y": 37.3,
+        "width": 1.2,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "town.alley-crates",
+      "rect": {
+        "x": 29.6,
+        "y": 16.2,
+        "width": 1.4,
+        "height": 0.8
+      }
+    },
+    {
+      "id": "town.nook-crates",
+      "rect": {
+        "x": 77.4,
+        "y": 15.1,
+        "width": 1.6,
+        "height": 0.9
       }
     }
   ],
@@ -1074,7 +1566,7 @@
       "id": "town.corner-store",
       "rect": {
         "x": 67,
-        "y": 5,
+        "y": 4,
         "width": 10,
         "height": 10
       },
@@ -1095,7 +1587,7 @@
     {
       "id": "town.linen-house",
       "rect": {
-        "x": 50,
+        "x": 48,
         "y": 2,
         "width": 8,
         "height": 6
@@ -1118,7 +1610,7 @@
       "id": "town.south-residence",
       "rect": {
         "x": 7,
-        "y": 38,
+        "y": 37.5,
         "width": 13,
         "height": 12
       },
@@ -1140,7 +1632,7 @@
       "id": "town.south-bakery",
       "rect": {
         "x": 30,
-        "y": 56,
+        "y": 53,
         "width": 10,
         "height": 6
       },
@@ -1151,7 +1643,7 @@
       "id": "town.south-studio",
       "rect": {
         "x": 49,
-        "y": 56,
+        "y": 53,
         "width": 9,
         "height": 6
       },
@@ -1192,9 +1684,240 @@
       "fadeWhenPlayerBehind": true
     },
     {
+      "id": "town.back-row-west",
+      "rect": {
+        "x": 1.5,
+        "y": 0.5,
+        "width": 8,
+        "height": 6.5
+      },
+      "height": 7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.back-row-east",
+      "rect": {
+        "x": 9.5,
+        "y": 0.5,
+        "width": 6.5,
+        "height": 6.5
+      },
+      "height": 7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.hot-water-house",
+      "rect": {
+        "x": 16,
+        "y": 2,
+        "width": 3.5,
+        "height": 5
+      },
+      "height": 4.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.well-row",
+      "rect": {
+        "x": 19.5,
+        "y": 2,
+        "width": 7.5,
+        "height": 5
+      },
+      "height": 7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.ne-row",
+      "rect": {
+        "x": 56,
+        "y": 1.5,
+        "width": 6,
+        "height": 6.5
+      },
+      "height": 7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.nook-row",
+      "rect": {
+        "x": 62,
+        "y": 1,
+        "width": 5,
+        "height": 6
+      },
+      "height": 7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.kitchen-row-west",
+      "rect": {
+        "x": 23,
+        "y": 11,
+        "width": 7.5,
+        "height": 5
+      },
+      "height": 6.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.kitchen-row-east",
+      "rect": {
+        "x": 30.5,
+        "y": 11.5,
+        "width": 8.5,
+        "height": 4.5
+      },
+      "height": 6.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.junction-shop",
+      "rect": {
+        "x": 23,
+        "y": 18,
+        "width": 5,
+        "height": 9
+      },
+      "height": 6,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lantern-row",
+      "rect": {
+        "x": 43,
+        "y": 14,
+        "width": 6,
+        "height": 6
+      },
+      "height": 7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lantern-shop",
+      "rect": {
+        "x": 43,
+        "y": 22,
+        "width": 6,
+        "height": 7
+      },
+      "height": 5.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.alley-row",
+      "rect": {
+        "x": 62,
+        "y": 9.5,
+        "width": 5,
+        "height": 4.5
+      },
+      "height": 5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.east-shop",
+      "rect": {
+        "x": 62,
+        "y": 18,
+        "width": 5,
+        "height": 11
+      },
+      "height": 6,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.market-row",
+      "rect": {
+        "x": 23.5,
+        "y": 40,
+        "width": 5.5,
+        "height": 9
+      },
+      "height": 7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.service-row",
+      "rect": {
+        "x": 43,
+        "y": 40,
+        "width": 9,
+        "height": 9
+      },
+      "height": 7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.canal-row",
+      "rect": {
+        "x": 62.5,
+        "y": 37.5,
+        "width": 6.5,
+        "height": 6.5
+      },
+      "height": 7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.fig-house",
+      "rect": {
+        "x": 1,
+        "y": 53,
+        "width": 13.5,
+        "height": 6
+      },
+      "height": 8,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.fig-shop",
+      "rect": {
+        "x": 14.5,
+        "y": 53.5,
+        "width": 4.5,
+        "height": 5.5
+      },
+      "height": 5.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.bakery-row",
+      "rect": {
+        "x": 25,
+        "y": 53,
+        "width": 5,
+        "height": 6
+      },
+      "height": 7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.grove-row",
+      "rect": {
+        "x": 40,
+        "y": 53.5,
+        "width": 5,
+        "height": 5.5
+      },
+      "height": 7,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.canal-end-row",
+      "rect": {
+        "x": 58,
+        "y": 53,
+        "width": 6,
+        "height": 6
+      },
+      "height": 5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
       "id": "town.restaurant-open-leaf",
       "rect": {
-        "x": 33.04,
+        "x": 32.78,
         "y": 28.28,
         "width": 0.18,
         "height": 0.7
@@ -1205,7 +1928,7 @@
     {
       "id": "town.residence-open-leaf",
       "rect": {
-        "x": 10.54,
+        "x": 10.28,
         "y": 21.28,
         "width": 0.18,
         "height": 0.7
@@ -1216,7 +1939,7 @@
     {
       "id": "town.workshop-open-leaf",
       "rect": {
-        "x": 72.29,
+        "x": 71.78,
         "y": 29.28,
         "width": 0.18,
         "height": 0.7
@@ -1315,8 +2038,8 @@
     {
       "id": "town.courtyard-left",
       "rect": {
-        "x": 37.8,
-        "y": 3,
+        "x": 39.8,
+        "y": 5,
         "width": 2,
         "height": 2
       },
@@ -1337,8 +2060,8 @@
     {
       "id": "town.east-lane",
       "rect": {
-        "x": 65.6,
-        "y": 39.5,
+        "x": 60.4,
+        "y": 51.2,
         "width": 1.5,
         "height": 1.5
       },
@@ -1348,10 +2071,10 @@
     {
       "id": "town.river-view",
       "rect": {
-        "x": 73.5,
-        "y": 41,
-        "width": 2,
-        "height": 2
+        "x": 72.2,
+        "y": 48.9,
+        "width": 1.8,
+        "height": 1.8
       },
       "height": 5.5,
       "fadeWhenPlayerBehind": true
@@ -1381,8 +2104,8 @@
     {
       "id": "town.west-shade",
       "rect": {
-        "x": 15.5,
-        "y": 6,
+        "x": 18.2,
+        "y": 12.4,
         "width": 2,
         "height": 2
       },
@@ -1403,8 +2126,8 @@
     {
       "id": "town.east-corner",
       "rect": {
-        "x": 77,
-        "y": 15.2,
+        "x": 59.5,
+        "y": 40.4,
         "width": 1.8,
         "height": 1.8
       },
@@ -1414,8 +2137,8 @@
     {
       "id": "town.south-grove",
       "rect": {
-        "x": 59.4,
-        "y": 60,
+        "x": 46,
+        "y": 56.2,
         "width": 2,
         "height": 2
       },
@@ -1425,10 +2148,10 @@
     {
       "id": "town.hedge-0",
       "rect": {
-        "x": 1,
-        "y": 6,
-        "width": 15,
-        "height": 1.3
+        "x": 4.5,
+        "y": 62.7,
+        "width": 9.5,
+        "height": 1.1
       },
       "height": 1,
       "fadeWhenPlayerBehind": true
@@ -1437,9 +2160,9 @@
       "id": "town.hedge-1",
       "rect": {
         "x": 1,
-        "y": 7,
+        "y": 10,
         "width": 1.2,
-        "height": 16
+        "height": 13
       },
       "height": 1,
       "fadeWhenPlayerBehind": true
@@ -1447,10 +2170,10 @@
     {
       "id": "town.hedge-2",
       "rect": {
-        "x": 27,
-        "y": 15,
-        "width": 1,
-        "height": 12
+        "x": 26,
+        "y": 62.8,
+        "width": 4,
+        "height": 1
       },
       "height": 1,
       "fadeWhenPlayerBehind": true
@@ -1459,8 +2182,8 @@
       "id": "town.hedge-3",
       "rect": {
         "x": 49,
-        "y": 15,
-        "width": 4,
+        "y": 11.4,
+        "width": 3,
         "height": 1
       },
       "height": 1,
@@ -1469,9 +2192,9 @@
     {
       "id": "town.hedge-4",
       "rect": {
-        "x": 66.5,
-        "y": 15.5,
-        "width": 12,
+        "x": 67.5,
+        "y": 2.4,
+        "width": 9.5,
         "height": 1
       },
       "height": 1,
@@ -1481,9 +2204,9 @@
       "id": "town.hedge-5",
       "rect": {
         "x": 1,
-        "y": 51,
-        "width": 18,
-        "height": 1
+        "y": 62.7,
+        "width": 3.2,
+        "height": 1.1
       },
       "height": 1,
       "fadeWhenPlayerBehind": true
@@ -1491,10 +2214,10 @@
     {
       "id": "town.hedge-6",
       "rect": {
-        "x": 21,
-        "y": 58,
-        "width": 1.2,
-        "height": 5
+        "x": 23.6,
+        "y": 54,
+        "width": 1,
+        "height": 4.2
       },
       "height": 1,
       "fadeWhenPlayerBehind": true
@@ -1503,8 +2226,8 @@
       "id": "town.hedge-7",
       "rect": {
         "x": 41,
-        "y": 58,
-        "width": 6,
+        "y": 62.8,
+        "width": 7,
         "height": 1
       },
       "height": 1,
@@ -1524,10 +2247,10 @@
     {
       "id": "town.hedge-9",
       "rect": {
-        "x": 77.5,
-        "y": 36.5,
+        "x": 78.3,
+        "y": 37,
         "width": 1.2,
-        "height": 7
+        "height": 6
       },
       "height": 1,
       "fadeWhenPlayerBehind": true
@@ -1558,9 +2281,9 @@
       "id": "town.fence-0",
       "rect": {
         "x": 1,
-        "y": 9,
+        "y": 11,
         "width": 2,
-        "height": 14
+        "height": 12
       },
       "height": 1.2,
       "fadeWhenPlayerBehind": true
@@ -1569,9 +2292,9 @@
       "id": "town.fence-1",
       "rect": {
         "x": 3,
-        "y": 8,
-        "width": 14,
-        "height": 0.35
+        "y": 7.1,
+        "width": 0.35,
+        "height": 2.9
       },
       "height": 1.2,
       "fadeWhenPlayerBehind": true
@@ -1580,8 +2303,8 @@
       "id": "town.fence-2",
       "rect": {
         "x": 27,
-        "y": 14,
-        "width": 11,
+        "y": 0.8,
+        "width": 12,
         "height": 0.3
       },
       "height": 1.2,
@@ -1591,7 +2314,7 @@
       "id": "town.fence-3",
       "rect": {
         "x": 49,
-        "y": 14,
+        "y": 11,
         "width": 3,
         "height": 0.35
       },
@@ -1602,7 +2325,7 @@
       "id": "town.fence-4",
       "rect": {
         "x": 56,
-        "y": 14,
+        "y": 11,
         "width": 2,
         "height": 0.35
       },
@@ -1612,9 +2335,9 @@
     {
       "id": "town.fence-5",
       "rect": {
-        "x": 66.5,
-        "y": 16,
-        "width": 12,
+        "x": 67.5,
+        "y": 3.5,
+        "width": 9.5,
         "height": 0.25
       },
       "height": 1.2,
@@ -1624,8 +2347,8 @@
       "id": "town.fence-6",
       "rect": {
         "x": 1,
-        "y": 53,
-        "width": 19,
+        "y": 63.5,
+        "width": 13,
         "height": 0.3
       },
       "height": 1.2,
@@ -1634,9 +2357,9 @@
     {
       "id": "town.fence-7",
       "rect": {
-        "x": 21,
-        "y": 57,
-        "width": 7,
+        "x": 15.5,
+        "y": 63.5,
+        "width": 9,
         "height": 0.3
       },
       "height": 1.2,
@@ -1645,9 +2368,9 @@
     {
       "id": "town.fence-8",
       "rect": {
-        "x": 40,
-        "y": 62,
-        "width": 7,
+        "x": 31,
+        "y": 63.5,
+        "width": 9,
         "height": 0.3
       },
       "height": 1.2,
@@ -1689,8 +2412,8 @@
     {
       "id": "town.planter-2",
       "rect": {
-        "x": 48.2,
-        "y": 27.2,
+        "x": 43.3,
+        "y": 29.15,
         "width": 0.65,
         "height": 0.65
       },
@@ -1712,7 +2435,7 @@
       "id": "town.planter-4",
       "rect": {
         "x": 66.2,
-        "y": 28.2,
+        "y": 29.15,
         "width": 0.65,
         "height": 0.65
       },
@@ -1722,8 +2445,8 @@
     {
       "id": "town.planter-5",
       "rect": {
-        "x": 77.5,
-        "y": 28.8,
+        "x": 78.5,
+        "y": 28.2,
         "width": 0.65,
         "height": 0.65
       },
@@ -1755,8 +2478,8 @@
     {
       "id": "town.planter-8",
       "rect": {
-        "x": 29.2,
-        "y": 55.8,
+        "x": 38.9,
+        "y": 59.2,
         "width": 0.65,
         "height": 0.65
       },
@@ -1788,8 +2511,8 @@
     {
       "id": "town.bike-1",
       "rect": {
-        "x": 47.8,
-        "y": 39.5,
+        "x": 45.4,
+        "y": 38.3,
         "width": 1.8,
         "height": 0.6
       },
@@ -1810,8 +2533,8 @@
     {
       "id": "town.bike-3",
       "rect": {
-        "x": 64.6,
-        "y": 53,
+        "x": 62.4,
+        "y": 52.2,
         "width": 1.8,
         "height": 0.6
       },
@@ -1898,8 +2621,8 @@
     {
       "id": "town.lamp-3",
       "rect": {
-        "x": 65.9,
-        "y": 13.5,
+        "x": 61.5,
+        "y": 12.6,
         "width": 0.35,
         "height": 0.35
       },
@@ -2108,7 +2831,7 @@
       "id": "town.south-laundry",
       "rect": {
         "x": 7.8,
-        "y": 50.35,
+        "y": 49.85,
         "width": 10.5,
         "height": 0.2
       },
@@ -2118,9 +2841,9 @@
     {
       "id": "town.alley-laundry",
       "rect": {
-        "x": 39.5,
-        "y": 17,
-        "width": 5.7,
+        "x": 39,
+        "y": 23.6,
+        "width": 4,
         "height": 0.2
       },
       "height": 4,
@@ -2140,8 +2863,8 @@
     {
       "id": "town.south-utility",
       "rect": {
-        "x": 61.8,
-        "y": 57,
+        "x": 63.9,
+        "y": 59.7,
         "width": 0.3,
         "height": 0.3
       },
@@ -2182,17 +2905,6 @@
       "fadeWhenPlayerBehind": true
     },
     {
-      "id": "town.river-rail-left",
-      "rect": {
-        "x": 71,
-        "y": 43.3,
-        "width": 7,
-        "height": 0.25
-      },
-      "height": 1.2,
-      "fadeWhenPlayerBehind": true
-    },
-    {
       "id": "town.canal-rail",
       "rect": {
         "x": 64.3,
@@ -2212,6 +2924,358 @@
         "height": 1.2
       },
       "height": 1.1,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lamp-back-lane",
+      "rect": {
+        "x": 8.6,
+        "y": 7.05,
+        "width": 0.35,
+        "height": 0.35
+      },
+      "height": 4.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lamp-north-lane",
+      "rect": {
+        "x": 35,
+        "y": 8.05,
+        "width": 0.35,
+        "height": 0.35
+      },
+      "height": 4.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lamp-lantern-passage",
+      "rect": {
+        "x": 39.05,
+        "y": 19.5,
+        "width": 0.35,
+        "height": 0.35
+      },
+      "height": 4.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lamp-corner-alley",
+      "rect": {
+        "x": 70.5,
+        "y": 14.05,
+        "width": 0.35,
+        "height": 0.35
+      },
+      "height": 4.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lamp-south-lane",
+      "rect": {
+        "x": 21,
+        "y": 49.1,
+        "width": 0.35,
+        "height": 0.35
+      },
+      "height": 4.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lamp-market-row",
+      "rect": {
+        "x": 26,
+        "y": 49.05,
+        "width": 0.35,
+        "height": 0.35
+      },
+      "height": 4.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lamp-back-street",
+      "rect": {
+        "x": 27.5,
+        "y": 59.05,
+        "width": 0.35,
+        "height": 0.35
+      },
+      "height": 4.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lamp-grove",
+      "rect": {
+        "x": 44.6,
+        "y": 59.1,
+        "width": 0.35,
+        "height": 0.35
+      },
+      "height": 4.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lamp-fig-court",
+      "rect": {
+        "x": 19.1,
+        "y": 59.1,
+        "width": 0.35,
+        "height": 0.35
+      },
+      "height": 4.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.back-lane-laundry",
+      "rect": {
+        "x": 3.3,
+        "y": 8.4,
+        "width": 6,
+        "height": 0.2
+      },
+      "height": 4,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.kitchen-laundry",
+      "rect": {
+        "x": 24,
+        "y": 16.9,
+        "width": 5.5,
+        "height": 0.2
+      },
+      "height": 4,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.nook-laundry",
+      "rect": {
+        "x": 62.3,
+        "y": 8,
+        "width": 4.4,
+        "height": 0.2
+      },
+      "height": 4,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.back-street-laundry",
+      "rect": {
+        "x": 2,
+        "y": 60.1,
+        "width": 5.6,
+        "height": 0.2
+      },
+      "height": 4,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.grove-laundry",
+      "rect": {
+        "x": 45.2,
+        "y": 58.1,
+        "width": 3.6,
+        "height": 0.2
+      },
+      "height": 4,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.south-lane-laundry",
+      "rect": {
+        "x": 43.4,
+        "y": 49.4,
+        "width": 8.2,
+        "height": 0.2
+      },
+      "height": 4,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.back-lane-pot",
+      "rect": {
+        "x": 12.4,
+        "y": 7.15,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.well-pot",
+      "rect": {
+        "x": 22.3,
+        "y": 7.3,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.kitchen-pot",
+      "rect": {
+        "x": 33.6,
+        "y": 16.15,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lantern-pot",
+      "rect": {
+        "x": 48.2,
+        "y": 20.15,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.nook-pot",
+      "rect": {
+        "x": 66.2,
+        "y": 7.2,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.market-row-pot",
+      "rect": {
+        "x": 28.2,
+        "y": 49.15,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.fig-row-pot",
+      "rect": {
+        "x": 18.2,
+        "y": 59.15,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.canal-end-pot",
+      "rect": {
+        "x": 58.2,
+        "y": 59.15,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.canal-row-pot",
+      "rect": {
+        "x": 68.2,
+        "y": 44.15,
+        "width": 0.65,
+        "height": 0.65
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.north-lane-bike",
+      "rect": {
+        "x": 30,
+        "y": 8.1,
+        "width": 1.8,
+        "height": 0.6
+      },
+      "height": 1.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.back-street-bike",
+      "rect": {
+        "x": 50.5,
+        "y": 59.15,
+        "width": 1.8,
+        "height": 0.6
+      },
+      "height": 1.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.south-lane-bike",
+      "rect": {
+        "x": 36.5,
+        "y": 49.15,
+        "width": 1.8,
+        "height": 0.6
+      },
+      "height": 1.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.lantern-bike",
+      "rect": {
+        "x": 41.1,
+        "y": 25.6,
+        "width": 1.8,
+        "height": 0.6
+      },
+      "height": 1.5,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.fig-bench",
+      "rect": {
+        "x": 20.1,
+        "y": 59.6,
+        "width": 2.4,
+        "height": 0.6
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.yard-crates",
+      "rect": {
+        "x": 50.6,
+        "y": 37.3,
+        "width": 1.2,
+        "height": 0.9
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.alley-crates",
+      "rect": {
+        "x": 29.6,
+        "y": 16.2,
+        "width": 1.4,
+        "height": 0.8
+      },
+      "height": 1.2,
+      "fadeWhenPlayerBehind": true
+    },
+    {
+      "id": "town.nook-crates",
+      "rect": {
+        "x": 77.4,
+        "y": 15.1,
+        "width": 1.6,
+        "height": 0.9
+      },
+      "height": 1.2,
       "fadeWhenPlayerBehind": true
     }
   ],
@@ -2280,7 +3344,6 @@
     },
     {
       "id": "to-residential-hall",
-      "cueWordId": "apartment.home",
       "rect": {
         "x": 10.5,
         "y": 21,
@@ -2289,7 +3352,8 @@
       },
       "targetMapId": "residential-hall",
       "targetEntranceId": "from-town",
-      "kind": "door"
+      "kind": "door",
+      "cueWordId": "apartment.home"
     },
     {
       "id": "to-courtyard",
@@ -2428,10 +3492,10 @@
     {
       "id": "town.west-lane",
       "rect": {
-        "x": 19,
-        "y": 8,
-        "width": 7,
-        "height": 24
+        "x": 18,
+        "y": 7,
+        "width": 5,
+        "height": 22
       },
       "material": "paving",
       "variant": 45
@@ -2439,53 +3503,42 @@
     {
       "id": "town.north-lane",
       "rect": {
-        "x": 21,
-        "y": 8,
-        "width": 43,
-        "height": 6
+        "x": 17,
+        "y": 7,
+        "width": 45,
+        "height": 4
       },
       "material": "brick",
       "variant": 45
     },
     {
-      "id": "town.east-lane",
+      "id": "town.back-lane",
       "rect": {
-        "x": 59,
-        "y": 11,
-        "width": 7,
-        "height": 45
-      },
-      "material": "paving",
-      "variant": 45
-    },
-    {
-      "id": "town.south-lane",
-      "rect": {
-        "x": 23,
-        "y": 49,
-        "width": 42,
-        "height": 7
+        "x": 3,
+        "y": 7,
+        "width": 15,
+        "height": 3
       },
       "material": "brick",
       "variant": 45
     },
     {
-      "id": "town.south-west",
+      "id": "town.kitchen-alley",
       "rect": {
         "x": 23,
-        "y": 35,
-        "width": 6,
-        "height": 18
+        "y": 16,
+        "width": 20,
+        "height": 2
       },
-      "material": "paving",
+      "material": "brick",
       "variant": 45
     },
     {
       "id": "town.lantern-passage",
       "rect": {
-        "x": 40,
-        "y": 12,
-        "width": 5,
+        "x": 39,
+        "y": 11,
+        "width": 4,
         "height": 18
       },
       "material": "brick",
@@ -2503,56 +3556,67 @@
       "variant": 45
     },
     {
-      "id": "town.residence-landing",
+      "id": "town.lantern-alley",
       "rect": {
-        "x": 10,
-        "y": 21,
-        "width": 12,
-        "height": 4
+        "x": 43,
+        "y": 20,
+        "width": 6,
+        "height": 2
       },
-      "material": "paving",
+      "material": "brick",
       "variant": 45
     },
     {
-      "id": "town.market-pocket",
+      "id": "town.tea-terrace",
       "rect": {
-        "x": 28,
-        "y": 37,
-        "width": 12,
+        "x": 49,
+        "y": 11,
+        "width": 9,
         "height": 8
       },
       "material": "brick",
       "variant": 45
     },
     {
-      "id": "town.market-link",
+      "id": "town.east-lane",
       "rect": {
-        "x": 37,
-        "y": 36,
-        "width": 9,
-        "height": 4
-      },
-      "material": "brick",
-      "variant": 45
-    },
-    {
-      "id": "town.service-lane",
-      "rect": {
-        "x": 43,
-        "y": 36,
-        "width": 6,
-        "height": 17
+        "x": 58,
+        "y": 7,
+        "width": 4,
+        "height": 22
       },
       "material": "paving",
       "variant": 45
     },
     {
-      "id": "town.river-path",
+      "id": "town.east-nook",
       "rect": {
-        "x": 64,
-        "y": 44,
-        "width": 16,
-        "height": 7
+        "x": 62,
+        "y": 7,
+        "width": 5,
+        "height": 2
+      },
+      "material": "brick",
+      "variant": 45
+    },
+    {
+      "id": "town.corner-alley",
+      "rect": {
+        "x": 58,
+        "y": 14,
+        "width": 22,
+        "height": 4
+      },
+      "material": "paving",
+      "variant": 45
+    },
+    {
+      "id": "town.residence-landing",
+      "rect": {
+        "x": 4,
+        "y": 21,
+        "width": 14,
+        "height": 4.5
       },
       "material": "paving",
       "variant": 45
@@ -2569,14 +3633,25 @@
       "variant": 45
     },
     {
-      "id": "town.tea-terrace",
+      "id": "town.store-front",
       "rect": {
-        "x": 49,
-        "y": 14,
-        "width": 9,
-        "height": 5
+        "x": 4,
+        "y": 28,
+        "width": 13,
+        "height": 1
       },
-      "material": "brick",
+      "material": "paving",
+      "variant": 45
+    },
+    {
+      "id": "town.restaurant-front",
+      "rect": {
+        "x": 28,
+        "y": 28,
+        "width": 11,
+        "height": 1
+      },
+      "material": "paving",
       "variant": 45
     },
     {
@@ -2586,6 +3661,138 @@
         "y": 28,
         "width": 3,
         "height": 2
+      },
+      "material": "paving",
+      "variant": 45
+    },
+    {
+      "id": "town.south-west",
+      "rect": {
+        "x": 20,
+        "y": 37,
+        "width": 3.5,
+        "height": 12
+      },
+      "material": "paving",
+      "variant": 45
+    },
+    {
+      "id": "town.market-pocket",
+      "rect": {
+        "x": 28.5,
+        "y": 37,
+        "width": 11.5,
+        "height": 8
+      },
+      "material": "brick",
+      "variant": 45
+    },
+    {
+      "id": "town.service-lane",
+      "rect": {
+        "x": 39,
+        "y": 37,
+        "width": 4,
+        "height": 12.5
+      },
+      "material": "paving",
+      "variant": 45
+    },
+    {
+      "id": "town.service-yard",
+      "rect": {
+        "x": 43,
+        "y": 37,
+        "width": 9,
+        "height": 4
+      },
+      "material": "paving",
+      "variant": 45
+    },
+    {
+      "id": "town.pump-apron",
+      "rect": {
+        "x": 52,
+        "y": 47,
+        "width": 6,
+        "height": 2
+      },
+      "material": "paving",
+      "variant": 45
+    },
+    {
+      "id": "town.east-lane-south",
+      "rect": {
+        "x": 58,
+        "y": 37,
+        "width": 4.5,
+        "height": 12
+      },
+      "material": "paving",
+      "variant": 45
+    },
+    {
+      "id": "town.river-path",
+      "rect": {
+        "x": 60,
+        "y": 44,
+        "width": 20,
+        "height": 7
+      },
+      "material": "paving",
+      "variant": 45
+    },
+    {
+      "id": "town.south-lane",
+      "rect": {
+        "x": 1,
+        "y": 49,
+        "width": 63.5,
+        "height": 4
+      },
+      "material": "brick",
+      "variant": 45
+    },
+    {
+      "id": "town.fig-court",
+      "rect": {
+        "x": 19,
+        "y": 53,
+        "width": 6,
+        "height": 9.5
+      },
+      "material": "paving",
+      "variant": 45
+    },
+    {
+      "id": "town.grove-court",
+      "rect": {
+        "x": 45,
+        "y": 53,
+        "width": 4,
+        "height": 6
+      },
+      "material": "brick",
+      "variant": 45
+    },
+    {
+      "id": "town.back-street",
+      "rect": {
+        "x": 1,
+        "y": 59,
+        "width": 63.5,
+        "height": 3.5
+      },
+      "material": "paving",
+      "variant": 45
+    },
+    {
+      "id": "town.south-pavement",
+      "rect": {
+        "x": 7,
+        "y": 37,
+        "width": 73,
+        "height": 1
       },
       "material": "paving",
       "variant": 45
@@ -2678,7 +3885,7 @@
       "kind": "building-shop",
       "position": {
         "x": 67,
-        "y": 5
+        "y": 4
       },
       "width": 10,
       "height": 10,
@@ -2701,7 +3908,7 @@
       "id": "town.linen-house",
       "kind": "building-row",
       "position": {
-        "x": 50,
+        "x": 48,
         "y": 2
       },
       "width": 8,
@@ -2726,7 +3933,7 @@
       "kind": "building-residence",
       "position": {
         "x": 7,
-        "y": 38
+        "y": 37.5
       },
       "width": 13,
       "height": 12,
@@ -2750,7 +3957,7 @@
       "kind": "building-shop",
       "position": {
         "x": 30,
-        "y": 56
+        "y": 53
       },
       "width": 10,
       "height": 6,
@@ -2762,7 +3969,7 @@
       "kind": "building-row",
       "position": {
         "x": 49,
-        "y": 56
+        "y": 53
       },
       "width": 9,
       "height": 6,
@@ -2804,6 +4011,258 @@
       "height": 6,
       "layer": "object",
       "variant": 6
+    },
+    {
+      "id": "town.back-row-west",
+      "kind": "building-row",
+      "position": {
+        "x": 1.5,
+        "y": 0.5
+      },
+      "width": 8,
+      "height": 6.5,
+      "layer": "object",
+      "variant": 49
+    },
+    {
+      "id": "town.back-row-east",
+      "kind": "building-row",
+      "position": {
+        "x": 9.5,
+        "y": 0.5
+      },
+      "width": 6.5,
+      "height": 6.5,
+      "layer": "object",
+      "variant": 50
+    },
+    {
+      "id": "town.hot-water-house",
+      "kind": "building-utility",
+      "position": {
+        "x": 16,
+        "y": 2
+      },
+      "width": 3.5,
+      "height": 5,
+      "layer": "object",
+      "variant": 69
+    },
+    {
+      "id": "town.well-row",
+      "kind": "building-row",
+      "position": {
+        "x": 19.5,
+        "y": 2
+      },
+      "width": 7.5,
+      "height": 5,
+      "layer": "object",
+      "variant": 51
+    },
+    {
+      "id": "town.ne-row",
+      "kind": "building-row",
+      "position": {
+        "x": 56,
+        "y": 1.5
+      },
+      "width": 6,
+      "height": 6.5,
+      "layer": "object",
+      "variant": 52
+    },
+    {
+      "id": "town.nook-row",
+      "kind": "building-row",
+      "position": {
+        "x": 62,
+        "y": 1
+      },
+      "width": 5,
+      "height": 6,
+      "layer": "object",
+      "variant": 53
+    },
+    {
+      "id": "town.kitchen-row-west",
+      "kind": "building-row",
+      "position": {
+        "x": 23,
+        "y": 11
+      },
+      "width": 7.5,
+      "height": 5,
+      "layer": "object",
+      "variant": 54
+    },
+    {
+      "id": "town.kitchen-row-east",
+      "kind": "building-row",
+      "position": {
+        "x": 30.5,
+        "y": 11.5
+      },
+      "width": 8.5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 55
+    },
+    {
+      "id": "town.junction-shop",
+      "kind": "building-tea",
+      "position": {
+        "x": 23,
+        "y": 18
+      },
+      "width": 5,
+      "height": 9,
+      "layer": "object",
+      "variant": 56
+    },
+    {
+      "id": "town.lantern-row",
+      "kind": "building-row",
+      "position": {
+        "x": 43,
+        "y": 14
+      },
+      "width": 6,
+      "height": 6,
+      "layer": "object",
+      "variant": 57
+    },
+    {
+      "id": "town.lantern-shop",
+      "kind": "building-shutter",
+      "position": {
+        "x": 43,
+        "y": 22
+      },
+      "width": 6,
+      "height": 7,
+      "layer": "object",
+      "variant": 58
+    },
+    {
+      "id": "town.alley-row",
+      "kind": "building-shutter",
+      "position": {
+        "x": 62,
+        "y": 9.5
+      },
+      "width": 5,
+      "height": 4.5,
+      "layer": "object",
+      "variant": 70
+    },
+    {
+      "id": "town.east-shop",
+      "kind": "building-shop",
+      "position": {
+        "x": 62,
+        "y": 18
+      },
+      "width": 5,
+      "height": 11,
+      "layer": "object",
+      "variant": 60
+    },
+    {
+      "id": "town.market-row",
+      "kind": "building-row",
+      "position": {
+        "x": 23.5,
+        "y": 40
+      },
+      "width": 5.5,
+      "height": 9,
+      "layer": "object",
+      "variant": 61
+    },
+    {
+      "id": "town.service-row",
+      "kind": "building-row",
+      "position": {
+        "x": 43,
+        "y": 40
+      },
+      "width": 9,
+      "height": 9,
+      "layer": "object",
+      "variant": 62
+    },
+    {
+      "id": "town.canal-row",
+      "kind": "building-row",
+      "position": {
+        "x": 62.5,
+        "y": 37.5
+      },
+      "width": 6.5,
+      "height": 6.5,
+      "layer": "object",
+      "variant": 63
+    },
+    {
+      "id": "town.fig-house",
+      "kind": "building-residence",
+      "position": {
+        "x": 1,
+        "y": 53
+      },
+      "width": 13.5,
+      "height": 6,
+      "layer": "object",
+      "variant": 64
+    },
+    {
+      "id": "town.fig-shop",
+      "kind": "building-shop",
+      "position": {
+        "x": 14.5,
+        "y": 53.5
+      },
+      "width": 4.5,
+      "height": 5.5,
+      "layer": "object",
+      "variant": 71
+    },
+    {
+      "id": "town.bakery-row",
+      "kind": "building-row",
+      "position": {
+        "x": 25,
+        "y": 53
+      },
+      "width": 5,
+      "height": 6,
+      "layer": "object",
+      "variant": 66
+    },
+    {
+      "id": "town.grove-row",
+      "kind": "building-row",
+      "position": {
+        "x": 40,
+        "y": 53.5
+      },
+      "width": 5,
+      "height": 5.5,
+      "layer": "object",
+      "variant": 67
+    },
+    {
+      "id": "town.canal-end-row",
+      "kind": "building-workshop",
+      "position": {
+        "x": 58,
+        "y": 53
+      },
+      "width": 6,
+      "height": 6,
+      "layer": "object",
+      "variant": 68
     },
     {
       "id": "town.restaurant-steps",
@@ -2869,7 +4328,7 @@
       "id": "town.restaurant-open-leaf",
       "kind": "open-door-leaf",
       "position": {
-        "x": 33.04,
+        "x": 32.78,
         "y": 28.28
       },
       "width": 0.18,
@@ -2893,7 +4352,7 @@
       "id": "town.residence-open-leaf",
       "kind": "open-door-leaf",
       "position": {
-        "x": 10.54,
+        "x": 10.28,
         "y": 21.28
       },
       "width": 0.18,
@@ -2917,7 +4376,7 @@
       "id": "town.workshop-open-leaf",
       "kind": "open-door-leaf",
       "position": {
-        "x": 72.29,
+        "x": 71.78,
         "y": 29.28
       },
       "width": 0.18,
@@ -3037,8 +4496,8 @@
       "id": "town.courtyard-left",
       "kind": "tree",
       "position": {
-        "x": 37.8,
-        "y": 3
+        "x": 39.8,
+        "y": 5
       },
       "width": 2,
       "height": 2,
@@ -3061,8 +4520,8 @@
       "id": "town.east-lane",
       "kind": "tree",
       "position": {
-        "x": 65.6,
-        "y": 39.5
+        "x": 60.4,
+        "y": 51.2
       },
       "width": 1.5,
       "height": 1.5,
@@ -3073,11 +4532,11 @@
       "id": "town.river-view",
       "kind": "tree",
       "position": {
-        "x": 73.5,
-        "y": 41
+        "x": 72.2,
+        "y": 48.9
       },
-      "width": 2,
-      "height": 2,
+      "width": 1.8,
+      "height": 1.8,
       "layer": "object",
       "variant": 27
     },
@@ -3109,8 +4568,8 @@
       "id": "town.west-shade",
       "kind": "tree",
       "position": {
-        "x": 15.5,
-        "y": 6
+        "x": 18.2,
+        "y": 12.4
       },
       "width": 2,
       "height": 2,
@@ -3133,8 +4592,8 @@
       "id": "town.east-corner",
       "kind": "tree",
       "position": {
-        "x": 77,
-        "y": 15.2
+        "x": 59.5,
+        "y": 40.4
       },
       "width": 1.8,
       "height": 1.8,
@@ -3145,8 +4604,8 @@
       "id": "town.south-grove",
       "kind": "tree",
       "position": {
-        "x": 59.4,
-        "y": 60
+        "x": 46,
+        "y": 56.2
       },
       "width": 2,
       "height": 2,
@@ -3157,11 +4616,11 @@
       "id": "town.hedge-0",
       "kind": "hedge",
       "position": {
-        "x": 1,
-        "y": 6
+        "x": 4.5,
+        "y": 62.7
       },
-      "width": 15,
-      "height": 1.3,
+      "width": 9.5,
+      "height": 1.1,
       "layer": "object",
       "variant": 28
     },
@@ -3170,10 +4629,10 @@
       "kind": "hedge",
       "position": {
         "x": 1,
-        "y": 7
+        "y": 10
       },
       "width": 1.2,
-      "height": 16,
+      "height": 13,
       "layer": "object",
       "variant": 28
     },
@@ -3181,11 +4640,11 @@
       "id": "town.hedge-2",
       "kind": "hedge",
       "position": {
-        "x": 27,
-        "y": 15
+        "x": 26,
+        "y": 62.8
       },
-      "width": 1,
-      "height": 12,
+      "width": 4,
+      "height": 1,
       "layer": "object",
       "variant": 28
     },
@@ -3194,9 +4653,9 @@
       "kind": "hedge",
       "position": {
         "x": 49,
-        "y": 15
+        "y": 11.4
       },
-      "width": 4,
+      "width": 3,
       "height": 1,
       "layer": "object",
       "variant": 28
@@ -3205,10 +4664,10 @@
       "id": "town.hedge-4",
       "kind": "hedge",
       "position": {
-        "x": 66.5,
-        "y": 15.5
+        "x": 67.5,
+        "y": 2.4
       },
-      "width": 12,
+      "width": 9.5,
       "height": 1,
       "layer": "object",
       "variant": 28
@@ -3218,10 +4677,10 @@
       "kind": "hedge",
       "position": {
         "x": 1,
-        "y": 51
+        "y": 62.7
       },
-      "width": 18,
-      "height": 1,
+      "width": 3.2,
+      "height": 1.1,
       "layer": "object",
       "variant": 28
     },
@@ -3229,11 +4688,11 @@
       "id": "town.hedge-6",
       "kind": "hedge",
       "position": {
-        "x": 21,
-        "y": 58
+        "x": 23.6,
+        "y": 54
       },
-      "width": 1.2,
-      "height": 5,
+      "width": 1,
+      "height": 4.2,
       "layer": "object",
       "variant": 28
     },
@@ -3242,9 +4701,9 @@
       "kind": "hedge",
       "position": {
         "x": 41,
-        "y": 58
+        "y": 62.8
       },
-      "width": 6,
+      "width": 7,
       "height": 1,
       "layer": "object",
       "variant": 28
@@ -3265,11 +4724,11 @@
       "id": "town.hedge-9",
       "kind": "hedge",
       "position": {
-        "x": 77.5,
-        "y": 36.5
+        "x": 78.3,
+        "y": 37
       },
       "width": 1.2,
-      "height": 7,
+      "height": 6,
       "layer": "object",
       "variant": 28
     },
@@ -3302,10 +4761,10 @@
       "kind": "fence",
       "position": {
         "x": 1,
-        "y": 9
+        "y": 11
       },
       "width": 2,
-      "height": 14,
+      "height": 12,
       "layer": "object",
       "variant": 29
     },
@@ -3314,10 +4773,10 @@
       "kind": "fence",
       "position": {
         "x": 3,
-        "y": 8
+        "y": 7.1
       },
-      "width": 14,
-      "height": 0.35,
+      "width": 0.35,
+      "height": 2.9,
       "layer": "object",
       "variant": 30
     },
@@ -3326,9 +4785,9 @@
       "kind": "fence",
       "position": {
         "x": 27,
-        "y": 14
+        "y": 0.8
       },
-      "width": 11,
+      "width": 12,
       "height": 0.3,
       "layer": "object",
       "variant": 29
@@ -3338,7 +4797,7 @@
       "kind": "fence",
       "position": {
         "x": 49,
-        "y": 14
+        "y": 11
       },
       "width": 3,
       "height": 0.35,
@@ -3350,7 +4809,7 @@
       "kind": "fence",
       "position": {
         "x": 56,
-        "y": 14
+        "y": 11
       },
       "width": 2,
       "height": 0.35,
@@ -3361,10 +4820,10 @@
       "id": "town.fence-5",
       "kind": "fence",
       "position": {
-        "x": 66.5,
-        "y": 16
+        "x": 67.5,
+        "y": 3.5
       },
-      "width": 12,
+      "width": 9.5,
       "height": 0.25,
       "layer": "object",
       "variant": 30
@@ -3374,9 +4833,9 @@
       "kind": "fence",
       "position": {
         "x": 1,
-        "y": 53
+        "y": 63.5
       },
-      "width": 19,
+      "width": 13,
       "height": 0.3,
       "layer": "object",
       "variant": 29
@@ -3385,10 +4844,10 @@
       "id": "town.fence-7",
       "kind": "fence",
       "position": {
-        "x": 21,
-        "y": 57
+        "x": 15.5,
+        "y": 63.5
       },
-      "width": 7,
+      "width": 9,
       "height": 0.3,
       "layer": "object",
       "variant": 30
@@ -3397,10 +4856,10 @@
       "id": "town.fence-8",
       "kind": "fence",
       "position": {
-        "x": 40,
-        "y": 62
+        "x": 31,
+        "y": 63.5
       },
-      "width": 7,
+      "width": 9,
       "height": 0.3,
       "layer": "object",
       "variant": 29
@@ -3445,8 +4904,8 @@
       "id": "town.planter-2",
       "kind": "planter",
       "position": {
-        "x": 48.2,
-        "y": 27.2
+        "x": 43.3,
+        "y": 29.15
       },
       "width": 0.65,
       "height": 0.65,
@@ -3470,7 +4929,7 @@
       "kind": "planter",
       "position": {
         "x": 66.2,
-        "y": 28.2
+        "y": 29.15
       },
       "width": 0.65,
       "height": 0.65,
@@ -3481,8 +4940,8 @@
       "id": "town.planter-5",
       "kind": "planter",
       "position": {
-        "x": 77.5,
-        "y": 28.8
+        "x": 78.5,
+        "y": 28.2
       },
       "width": 0.65,
       "height": 0.65,
@@ -3517,8 +4976,8 @@
       "id": "town.planter-8",
       "kind": "planter",
       "position": {
-        "x": 29.2,
-        "y": 55.8
+        "x": 38.9,
+        "y": 59.2
       },
       "width": 0.65,
       "height": 0.65,
@@ -3553,8 +5012,8 @@
       "id": "town.bike-1",
       "kind": "bicycle",
       "position": {
-        "x": 47.8,
-        "y": 39.5
+        "x": 45.4,
+        "y": 38.3
       },
       "width": 1.8,
       "height": 0.6,
@@ -3577,8 +5036,8 @@
       "id": "town.bike-3",
       "kind": "bicycle",
       "position": {
-        "x": 64.6,
-        "y": 53
+        "x": 62.4,
+        "y": 52.2
       },
       "width": 1.8,
       "height": 0.6,
@@ -3673,8 +5132,8 @@
       "id": "town.lamp-3",
       "kind": "street-lamp",
       "position": {
-        "x": 65.9,
-        "y": 13.5
+        "x": 61.5,
+        "y": 12.6
       },
       "width": 0.35,
       "height": 0.35,
@@ -3757,11 +5216,11 @@
       "id": "town.drain-3",
       "kind": "drain",
       "position": {
-        "x": 25.8,
-        "y": 18
+        "x": 25.5,
+        "y": 17.1
       },
-      "width": 0.25,
-      "height": 2,
+      "width": 2,
+      "height": 0.25,
       "layer": "ground",
       "variant": 29
     },
@@ -3781,7 +5240,7 @@
       "id": "town.drain-5",
       "kind": "drain",
       "position": {
-        "x": 43.5,
+        "x": 42.5,
         "y": 43
       },
       "width": 0.25,
@@ -3829,11 +5288,11 @@
       "id": "town.gutter-3",
       "kind": "gutter",
       "position": {
-        "x": 25.8,
-        "y": 15
+        "x": 22.75,
+        "y": 11
       },
       "width": 0.18,
-      "height": 11,
+      "height": 16,
       "layer": "ground",
       "variant": 36
     },
@@ -3841,11 +5300,11 @@
       "id": "town.gutter-4",
       "kind": "gutter",
       "position": {
-        "x": 64.7,
-        "y": 17
+        "x": 61.75,
+        "y": 8
       },
       "width": 0.18,
-      "height": 24,
+      "height": 21,
       "layer": "ground",
       "variant": 36
     },
@@ -4000,20 +5459,8 @@
         "x": 40.2,
         "y": 40
       },
-      "width": 2,
+      "width": 1.6,
       "height": 4,
-      "layer": "ground",
-      "variant": 28
-    },
-    {
-      "id": "town.workshop-verge",
-      "kind": "flowerbed",
-      "position": {
-        "x": 67.2,
-        "y": 37.4
-      },
-      "width": 1.5,
-      "height": 6,
       "layer": "ground",
       "variant": 28
     },
@@ -4058,7 +5505,7 @@
       "kind": "laundry",
       "position": {
         "x": 7.8,
-        "y": 50.35
+        "y": 49.85
       },
       "width": 10.5,
       "height": 0.2,
@@ -4069,10 +5516,10 @@
       "id": "town.alley-laundry",
       "kind": "laundry",
       "position": {
-        "x": 39.5,
-        "y": 17
+        "x": 39,
+        "y": 23.6
       },
-      "width": 5.7,
+      "width": 4,
       "height": 0.2,
       "layer": "object",
       "variant": 41
@@ -4093,8 +5540,8 @@
       "id": "town.south-utility",
       "kind": "utility-pole",
       "position": {
-        "x": 61.8,
-        "y": 57
+        "x": 63.9,
+        "y": 59.7
       },
       "width": 0.3,
       "height": 0.3,
@@ -4138,18 +5585,6 @@
       "variant": 14
     },
     {
-      "id": "town.river-rail-left",
-      "kind": "fence",
-      "position": {
-        "x": 71,
-        "y": 43.3
-      },
-      "width": 7,
-      "height": 0.25,
-      "layer": "object",
-      "variant": 29
-    },
-    {
       "id": "town.canal-rail",
       "kind": "fence",
       "position": {
@@ -4172,6 +5607,414 @@
       "height": 1.2,
       "layer": "object",
       "variant": 14
+    },
+    {
+      "id": "town.lamp-back-lane",
+      "kind": "street-lamp",
+      "position": {
+        "x": 8.6,
+        "y": 7.05
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 35
+    },
+    {
+      "id": "town.lamp-north-lane",
+      "kind": "street-lamp",
+      "position": {
+        "x": 35,
+        "y": 8.05
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 35
+    },
+    {
+      "id": "town.lamp-lantern-passage",
+      "kind": "street-lamp",
+      "position": {
+        "x": 39.05,
+        "y": 19.5
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 35
+    },
+    {
+      "id": "town.lamp-corner-alley",
+      "kind": "street-lamp",
+      "position": {
+        "x": 70.5,
+        "y": 14.05
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 35
+    },
+    {
+      "id": "town.lamp-south-lane",
+      "kind": "street-lamp",
+      "position": {
+        "x": 21,
+        "y": 49.1
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 35
+    },
+    {
+      "id": "town.lamp-market-row",
+      "kind": "street-lamp",
+      "position": {
+        "x": 26,
+        "y": 49.05
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 35
+    },
+    {
+      "id": "town.lamp-back-street",
+      "kind": "street-lamp",
+      "position": {
+        "x": 27.5,
+        "y": 59.05
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 35
+    },
+    {
+      "id": "town.lamp-grove",
+      "kind": "street-lamp",
+      "position": {
+        "x": 44.6,
+        "y": 59.1
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 35
+    },
+    {
+      "id": "town.lamp-fig-court",
+      "kind": "street-lamp",
+      "position": {
+        "x": 19.1,
+        "y": 59.1
+      },
+      "width": 0.35,
+      "height": 0.35,
+      "layer": "object",
+      "variant": 35
+    },
+    {
+      "id": "town.back-lane-laundry",
+      "kind": "laundry",
+      "position": {
+        "x": 3.3,
+        "y": 8.4
+      },
+      "width": 6,
+      "height": 0.2,
+      "layer": "object",
+      "variant": 42
+    },
+    {
+      "id": "town.kitchen-laundry",
+      "kind": "laundry",
+      "position": {
+        "x": 24,
+        "y": 16.9
+      },
+      "width": 5.5,
+      "height": 0.2,
+      "layer": "object",
+      "variant": 41
+    },
+    {
+      "id": "town.nook-laundry",
+      "kind": "laundry",
+      "position": {
+        "x": 62.3,
+        "y": 8
+      },
+      "width": 4.4,
+      "height": 0.2,
+      "layer": "object",
+      "variant": 42
+    },
+    {
+      "id": "town.back-street-laundry",
+      "kind": "laundry",
+      "position": {
+        "x": 2,
+        "y": 60.1
+      },
+      "width": 5.6,
+      "height": 0.2,
+      "layer": "object",
+      "variant": 41
+    },
+    {
+      "id": "town.grove-laundry",
+      "kind": "laundry",
+      "position": {
+        "x": 45.2,
+        "y": 58.1
+      },
+      "width": 3.6,
+      "height": 0.2,
+      "layer": "object",
+      "variant": 42
+    },
+    {
+      "id": "town.south-lane-laundry",
+      "kind": "laundry",
+      "position": {
+        "x": 43.4,
+        "y": 49.4
+      },
+      "width": 8.2,
+      "height": 0.2,
+      "layer": "object",
+      "variant": 41
+    },
+    {
+      "id": "town.back-lane-pot",
+      "kind": "planter",
+      "position": {
+        "x": 12.4,
+        "y": 7.15
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 32
+    },
+    {
+      "id": "town.well-pot",
+      "kind": "planter",
+      "position": {
+        "x": 22.3,
+        "y": 7.3
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 31
+    },
+    {
+      "id": "town.kitchen-pot",
+      "kind": "planter",
+      "position": {
+        "x": 33.6,
+        "y": 16.15
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 33
+    },
+    {
+      "id": "town.lantern-pot",
+      "kind": "planter",
+      "position": {
+        "x": 48.2,
+        "y": 20.15
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 31
+    },
+    {
+      "id": "town.nook-pot",
+      "kind": "planter",
+      "position": {
+        "x": 66.2,
+        "y": 7.2
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 32
+    },
+    {
+      "id": "town.market-row-pot",
+      "kind": "planter",
+      "position": {
+        "x": 28.2,
+        "y": 49.15
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 31
+    },
+    {
+      "id": "town.fig-row-pot",
+      "kind": "planter",
+      "position": {
+        "x": 18.2,
+        "y": 59.15
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 32
+    },
+    {
+      "id": "town.canal-end-pot",
+      "kind": "planter",
+      "position": {
+        "x": 58.2,
+        "y": 59.15
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 33
+    },
+    {
+      "id": "town.canal-row-pot",
+      "kind": "planter",
+      "position": {
+        "x": 68.2,
+        "y": 44.15
+      },
+      "width": 0.65,
+      "height": 0.65,
+      "layer": "object",
+      "variant": 31
+    },
+    {
+      "id": "town.north-lane-bike",
+      "kind": "bicycle",
+      "position": {
+        "x": 30,
+        "y": 8.1
+      },
+      "width": 1.8,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 5
+    },
+    {
+      "id": "town.back-street-bike",
+      "kind": "bicycle",
+      "position": {
+        "x": 50.5,
+        "y": 59.15
+      },
+      "width": 1.8,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 34
+    },
+    {
+      "id": "town.south-lane-bike",
+      "kind": "bicycle",
+      "position": {
+        "x": 36.5,
+        "y": 49.15
+      },
+      "width": 1.8,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 5
+    },
+    {
+      "id": "town.lantern-bike",
+      "kind": "bicycle",
+      "position": {
+        "x": 41.1,
+        "y": 25.6
+      },
+      "width": 1.8,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 6
+    },
+    {
+      "id": "town.fig-bench",
+      "kind": "bench",
+      "position": {
+        "x": 20.1,
+        "y": 59.6
+      },
+      "width": 2.4,
+      "height": 0.6,
+      "layer": "object",
+      "variant": 30
+    },
+    {
+      "id": "town.yard-crates",
+      "kind": "crates",
+      "position": {
+        "x": 50.6,
+        "y": 37.3
+      },
+      "width": 1.2,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 38
+    },
+    {
+      "id": "town.alley-crates",
+      "kind": "crates",
+      "position": {
+        "x": 29.6,
+        "y": 16.2
+      },
+      "width": 1.4,
+      "height": 0.8,
+      "layer": "object",
+      "variant": 38
+    },
+    {
+      "id": "town.nook-crates",
+      "kind": "crates",
+      "position": {
+        "x": 77.4,
+        "y": 15.1
+      },
+      "width": 1.6,
+      "height": 0.9,
+      "layer": "object",
+      "variant": 38
+    },
+    {
+      "id": "town.back-street-gutter",
+      "kind": "gutter",
+      "position": {
+        "x": 1,
+        "y": 62.3
+      },
+      "width": 63.5,
+      "height": 0.18,
+      "layer": "ground",
+      "variant": 36
+    },
+    {
+      "id": "town.south-lane-gutter",
+      "kind": "gutter",
+      "position": {
+        "x": 1,
+        "y": 52.8
+      },
+      "width": 13.5,
+      "height": 0.18,
+      "layer": "ground",
+      "variant": 36
     }
   ],
   "palette": {

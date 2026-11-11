@@ -16,7 +16,8 @@ export type ResolvedActor = {
 /**
  * Which sprite draws an actor. Tries, in order:
  * `${sprite}/${action}-${facing}`; for `left`, the mirrored `-right`; the same two with `idle`;
- * `${sprite}/idle-down`; `sprite` itself as a plain sprite id; and finally `ex/waiter`.
+ * `${sprite}/idle-down`; `sprite` itself as a plain sprite id; a placeholder box for `sprite` if the
+ * atlas makes one (see `AtlasOptions.placeholder`); and finally `ex/waiter`.
  */
 export function resolveActorSprite(atlas: Atlas, sprite: string, action = "idle", facing: Facing = "down"): ResolvedActor {
   const tries: [string, boolean][] = [];
@@ -30,6 +31,11 @@ export function resolveActorSprite(atlas: Atlas, sprite: string, action = "idle"
   const wanted = `${sprite}/${action}-${facing}`;
   for (let i = 0; i < tries.length; i++) {
     const [id, flipX] = tries[i];
+    // Before the stand-in character, a placeholder box for the character itself, when the atlas has one.
+    if (id === FALLBACK_CHARACTER && sprite !== FALLBACK_CHARACTER) {
+      const box = atlas.find(sprite);
+      if (box?.placeholder) return { sprite: box, flipX: false, fallback: `${wanted} → placeholder` };
+    }
     if (!atlas.has(id)) continue;
     // A mirrored right is the documented way to draw left, not a fallback worth warning about.
     const expected = i === 0 || (i === 1 && facing === "left") || (id === sprite && !sprite.startsWith("char/"));
@@ -61,7 +67,8 @@ export function createActorResolver(atlas: Atlas, warn?: (message: string) => vo
       cache.set(key, hit);
       // A wholly missing character warns once, not once per action and facing.
       const topic = hit.sprite.id === FALLBACK_CHARACTER && actor.sprite !== FALLBACK_CHARACTER ? `missing:${actor.sprite}` : key;
-      if (hit.fallback && !warned.has(topic)) {
+      // A placeholder is reported by the atlas's own `onPlaceholder`, once.
+      if (hit.fallback && !hit.sprite.placeholder && !warned.has(topic)) {
         warned.add(topic);
         warn?.(`[pixel] actor "${actor.id}": ${hit.fallback}${topic.startsWith("missing:") ? ` (no ${actor.sprite}/* sprites yet)` : ""}`);
       }

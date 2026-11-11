@@ -3,10 +3,11 @@
  * tables and the food they were served. Thin: everything it draws comes from `./cafe.ts`.
  * DOM overlays (labels, the target cue) stay in `WorldViewport`, positioned with `onApi`'s `toScreen`.
  */
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { chooseZoom, createAtlas, createSceneRenderer, type Camera, type SceneRenderer, type Vec, type ZoomTargets } from "../../pixel/engine/index.ts";
 import { TILE } from "../../pixel/kit/index.ts";
-import { PixelView, type PixelViewApi } from "../../pixel/engine/PixelView.tsx";
+import type { PixelViewApi } from "../../pixel/engine/PixelView.tsx";
+import { Surface, usePrefersReducedMotion } from "./PixelSurface";
 import { sprites } from "../../pixel/registry.ts";
 import { restoreLife } from "../life";
 import { serviceDayPhase } from "../lighting";
@@ -20,22 +21,8 @@ function cafeRenderer(): SceneRenderer {
   return shared ??= createSceneRenderer(liveCafe, createAtlas(sprites), { warn: import.meta.env.DEV ? message => console.warn(message) : undefined });
 }
 
-function usePrefersReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(() => typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches);
-  useEffect(() => {
-    if (typeof matchMedia !== "function") return;
-    const query = matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setReduced(query.matches);
-    update();
-    query.addEventListener("change", update);
-    return () => query.removeEventListener("change", update);
-  }, []);
-  return reduced;
-}
 /** Phones show about nine tiles across, so faces read; landscape screens keep the engine's twenty. */
 const TARGETS: ZoomTargets = { portraitTiles: 9 };
-/** Under reduced motion the room holds still (no steam, no flicker); only the player's own walking moves. */
-const frozenClock = () => 0;
 
 export type CafeViewProps = {
   game: GameState;
@@ -77,37 +64,8 @@ export default function CafeView({ game, world, motion, size, inset, onPointerDo
   useEffect(() => () => api.current(null), []);
   return (
     // Under a bottom sheet the view shrinks to what stays visible, so the camera keeps the waiter in it.
-    <div className="pixel-cafe" style={{ bottom: inset.bottom }} data-pixel-camera={camera ? JSON.stringify({ x: camera.x, y: camera.y, zoom: camera.zoom, dpr: camera.dpr, tile: TILE }) : undefined}>
+    <div className="pixel-map pixel-cafe" style={{ bottom: inset.bottom }} data-pixel-camera={camera ? JSON.stringify({ x: camera.x, y: camera.y, zoom: camera.zoom, dpr: camera.dpr, tile: TILE }) : undefined}>
       <Surface renderer={renderer} actors={actors} props={service.dishes} phase={phase} focus={focus} zoom={zoom} reducedMotion={reducedMotion} onPointerDown={down} onCamera={setCamera} onApi={api} />
     </div>
   );
-}
-
-type SurfaceProps = {
-  renderer: SceneRenderer;
-  actors: ReturnType<typeof cafeCast>;
-  props: ReturnType<typeof cafeDishes>;
-  phase: ReturnType<typeof cafePhase>;
-  focus: Vec;
-  zoom: number;
-  reducedMotion: boolean;
-  onPointerDown: (point: [number, number]) => void;
-  onCamera: (camera: Camera) => void;
-  onApi: { current: (api: PixelViewApi | null) => void };
-};
-
-/** Memoised so the world clock's re-renders never mark the canvas dirty; only real changes redraw. */
-const Surface = memo(function Surface({ renderer, actors, props, phase, focus, zoom, reducedMotion, onPointerDown, onCamera, onApi }: SurfaceProps) {
-  return (
-    <PixelView renderer={renderer} actors={actors} props={props} phase={phase} focus={focus} zoom={zoom} reducedMotion={reducedMotion}
-      clock={reducedMotion ? frozenClock : undefined} onPointerDown={onPointerDown} onCamera={onCamera}>
-      {api => <ApiBridge api={api} onApi={onApi} />}
-    </PixelView>
-  );
-});
-
-/** Hands the camera's `toScreen` to the overlays without rendering anything. */
-function ApiBridge({ api, onApi }: { api: PixelViewApi; onApi: { current: (api: PixelViewApi | null) => void } }) {
-  useEffect(() => { onApi.current(api); }, [api]);
-  return null;
 }

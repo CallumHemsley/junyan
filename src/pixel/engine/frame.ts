@@ -22,19 +22,21 @@ export function fill(frame: Frame, rgb: Rgb): void {
 /**
  * Straight-alpha "source over" of `image` with its top-left at (left, top) in frame pixels,
  * clipped to the frame. Fully opaque pixels are copied, translucent ones blended, transparent
- * skipped. The destination stays opaque.
+ * skipped. The destination stays opaque. `opacity` (0..1, default 1) fades the whole image.
  */
-export function blit(frame: Frame, image: Image, left: number, top: number): void {
+export function blit(frame: Frame, image: Image, left: number, top: number, opacity = 1): void {
   const x0 = Math.max(0, -left), y0 = Math.max(0, -top);
   const x1 = Math.min(image.w, frame.w - left), y1 = Math.min(image.h, frame.h - top);
-  if (x0 >= x1 || y0 >= y1) return;
+  if (x0 >= x1 || y0 >= y1 || opacity <= 0) return;
   const src = image.data, srcWords = image.words, dst = frame.data, dstWords = frame.words;
+  const whole = opacity >= 1;
   for (let y = y0; y < y1; y++) {
     let s = y * image.w + x0, d = (top + y) * frame.w + left + x0;
     for (let x = x0; x < x1; x++, s++, d++) {
-      const a = src[s * 4 + 3];
+      let a = src[s * 4 + 3];
       if (a === 0) continue;
-      if (a === 255) { dstWords[d] = srcWords[s]; continue; }
+      if (a === 255 && whole) { dstWords[d] = srcWords[s]; continue; }
+      if (!whole) a = Math.round(a * opacity);
       const si = s * 4, di = d * 4, keep = 255 - a;
       // Uint8ClampedArray rounds to nearest on store.
       dst[di] = (src[si] * a + dst[di] * keep) / 255;

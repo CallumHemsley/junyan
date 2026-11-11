@@ -52,8 +52,8 @@ const px = (t: number) => Math.round(t * TILE);
 
 /** Place a prop: its anchor lands on `prop.at`, rounded to whole art pixels. */
 export function placeProp(prop: Prop, atlas: Atlas): Placed {
-  if (!atlas.has(prop.sprite)) throw new Error(`Prop${prop.id ? ` "${prop.id}"` : ""} uses unknown sprite "${prop.sprite}"`);
-  const sprite = atlas.get(prop.sprite);
+  const sprite = atlas.find(prop.sprite);
+  if (!sprite) throw new Error(`Prop${prop.id ? ` "${prop.id}"` : ""} uses unknown sprite "${prop.sprite}"`);
   const ax = px(prop.at[0]), ay = px(prop.at[1]);
   // A flipped sprite's anchor mirrors too, so the feet stay put.
   const anchorX = prop.flipX ? sprite.w - sprite.anchor[0] : sprite.anchor[0];
@@ -96,15 +96,15 @@ export function compileScene(scene: Scene, atlas: Atlas): CompiledScene {
         if (entry === null || entry === undefined) continue;
         const tx = ox + i, ty = oy + j;
         const id = typeof entry === "string" ? entry : entry[Math.floor(hash(tx, ty, layer.seed ?? 0) * entry.length)];
-        if (!atlas.has(id)) throw new Error(`Scene "${scene.id}" layer ${name}: "${key}" maps to unknown sprite "${id}"`);
-        const sprite = atlas.get(id);
+        const sprite = atlas.find(id);
+        if (!sprite) throw new Error(`Scene "${scene.id}" layer ${name}: "${key}" maps to unknown sprite "${id}"`);
         floor.push({ sprite, left: tx * TILE, top: ty * TILE, ax: tx * TILE, ay: ty * TILE, sortY: ty * TILE, flipX: false, phase: 0, frame: -1, layer: "floor", tile: true });
       }
     });
   });
 
   for (const prop of scene.props ?? []) {
-    if (prop.hidden) continue;
+    if (prop.hidden || (prop.optional && !atlas.has(prop.sprite))) continue;
     const placed = placeProp(prop, atlas);
     (placed.layer === "floor" ? floor : placed.layer === "over" ? over : objects).push(placed);
   }

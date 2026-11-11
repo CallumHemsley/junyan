@@ -2,7 +2,7 @@
  * Render a registered scene to PNG through the same compositor the game uses.
  *
  *   node src/pixel/tools/render-scene.ts <sceneId> [--scale 3] [--time ms] [--phase morning]
- *     [--view WxH] [--focus tx,ty] [--debug] [--reduced-motion] [--out file.png]
+ *     [--view WxH] [--focus tx,ty] [--debug] [--reduced-motion] [--strict] [--out file.png]
  *
  * Without `--view` the whole scene is rendered. `--view` is in art pixels and follows `--focus`
  * (tile units, default the first actor, else the scene centre) with the game camera's clamping.
@@ -13,6 +13,7 @@ import { dirname, resolve } from "node:path";
 import { TILE } from "../kit/index.ts";
 import { DAY_PHASES, createAtlas, createSceneRenderer, followPoint, renderToFrame, type DayPhase } from "../engine/index.ts";
 import { scenes } from "../scenes/index.ts";
+import { townPlaceholderOptions } from "../town/placeholders.ts";
 import { loadSprites } from "./load.ts";
 import { encodePng, upscale } from "./png.ts";
 
@@ -28,6 +29,7 @@ const focusArg = flag("focus", "");
 const outArg = flag("out", "");
 const debug = toggle("debug");
 const reducedMotion = toggle("reduced-motion");
+const strict = toggle("strict");
 const sceneId = args[0];
 
 if (!sceneId || !scenes[sceneId]) {
@@ -37,7 +39,8 @@ if (!sceneId || !scenes[sceneId]) {
 if (!DAY_PHASES.includes(phase)) { console.error(`--phase must be one of ${DAY_PHASES.join(", ")}`); process.exit(1); }
 
 const scene = scenes[sceneId];
-const atlas = createAtlas(await loadSprites());
+// Art still being drawn renders as placeholder boxes, listed once on stderr (`--strict` throws instead).
+const atlas = createAtlas(await loadSprites(), strict ? {} : townPlaceholderOptions((m) => console.warn(m)));
 const renderer = createSceneRenderer(scene, atlas, { warn: (m) => console.warn(m) });
 const sceneW = scene.size[0] * TILE, sceneH = scene.size[1] * TILE;
 const [w, h] = viewArg ? viewArg.split("x").map(Number) : [sceneW, sceneH];

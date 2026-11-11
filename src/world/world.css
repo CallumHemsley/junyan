@@ -112,4 +112,4 @@
 }
 
 /* The pixel cafe fills the viewport; the scene paints its own void beyond the room. */
-.pixel-cafe{position:absolute;inset:0}
+.pixel-map{position:absolute;inset:0}

@@ -17,6 +17,20 @@ describe("blending", () => {
     expect(rgbAt(frame, 0, 0)).toEqual([0, 0, 0, 255]);
   });
 
+  it("fades a whole image by an opacity, and skips it at zero", () => {
+    const frame = createFrame(8, 8);
+    fill(frame, [0, 0, 0]);
+    const red = atlas.get("t/red").frame(0);
+    blit(frame, red, 0, 0, 0.5);
+    const [r, g, b] = Array.from(red.data.subarray(0, 3)), a = Math.round(255 * 0.5) / 255;
+    expect(rgbAt(frame, 2, 2)).toEqual([Math.round(r * a), Math.round(g * a), Math.round(b * a), 255]);
+    const before = hashFrame(frame);
+    blit(frame, red, 0, 0, 0);
+    expect(hashFrame(frame)).toBe(before);
+    blit(frame, red, 0, 0, 1);
+    expect(rgbAt(frame, 2, 2)).toEqual([r, g, b, 255]);
+  });
+
   it("copies opaque pixels exactly and skips transparent ones", () => {
     const frame = createFrame(4, 2);
     fill(frame, [10, 20, 30]);

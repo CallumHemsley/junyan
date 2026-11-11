@@ -102,7 +102,7 @@ export async function walkTo(page: Page, destination: Point) {
     if (isPixelMap(map.id)) {
       // Pixel maps publish their camera; tile units → CSS px from the canvas's top-left corner.
       // Closing a bottom sheet resizes the view, so wait until the camera holds still for a few frames.
-      const readCamera = () => page.locator(".pixel-cafe").evaluate(async element => {
+      const readCamera = () => page.locator(".pixel-map").evaluate(async element => {
         const frame = () => new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
         let before = element.getAttribute("data-pixel-camera");
         for (let stable = 0; stable < 3;) { await frame(); const now = element.getAttribute("data-pixel-camera"); stable = now === before ? stable + 1 : 0; before = now; }

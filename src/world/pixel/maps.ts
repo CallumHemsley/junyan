@@ -5,7 +5,7 @@
 import type { Point } from "../schema";
 
 /** Maps drawn top-down by `src/pixel`; every other map keeps the isometric painter until redrawn. */
-export const PIXEL_MAPS: ReadonlySet<string> = new Set(["restaurant"]);
+export const PIXEL_MAPS: ReadonlySet<string> = new Set(["restaurant", "town"]);
 export const isPixelMap = (mapId: string) => PIXEL_MAPS.has(mapId);
 
 /** Top-down maps walk on the screen's axes: up is north, one tile per unit. */
