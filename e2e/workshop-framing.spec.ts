@@ -15,22 +15,37 @@ async function seedWorkshop(page:Page){
  await page.reload();
  await expect(page.getByTestId('world-viewport')).toHaveAttribute('data-map','workshop');
  const opening=page.getByRole('button',{name:'开门迎客',exact:true});if(await opening.isVisible())await opening.click();
- await expect(page.locator('.connected-world canvas')).toHaveAttribute('data-rendered','true');
+ // The workshop is walked in the top-down pixel engine (ticket 0182): it is ready once its camera is published.
+ await expect(page.locator('.pixel-workshop')).toHaveAttribute('data-pixel-camera',/zoom/);
 }
 
+/** The pixel camera once it has held still for a few frames (closing a sheet resizes the view). */
+const stableCamera=(page:Page)=>page.locator('.pixel-workshop').evaluate(async element=>{
+ const frame=()=>new Promise<void>(resolve=>requestAnimationFrame(()=>resolve()));
+ let before=element.getAttribute('data-pixel-camera');
+ for(let stable=0;stable<3;){await frame();const now=element.getAttribute('data-pixel-camera');stable=now===before?stable+1:0;before=now;}
+ return JSON.parse(before!) as {x:number;y:number;zoom:number;dpr:number;tile:number};
+});
+
 async function visiblePlayerAndCue(page:Page){
- await expect.poll(()=>page.locator('.connected-world canvas').evaluate((canvas:HTMLCanvasElement)=>{const box=canvas.getBoundingClientRect();return canvas.width===Math.ceil(box.width/2)&&canvas.height===Math.ceil(box.height/2);})).toBe(true);
+ // One canvas, drawn at a whole-number zoom of the art (the pixel engine's resolution rule).
+ await expect(page.locator('.pixel-workshop canvas')).toHaveCount(1);
+ expect(Number.isInteger((await stableCamera(page)).zoom)).toBe(true);
  const world=(await savedGame(page)).world!;
- const measure=()=>page.evaluate(async(world)=>{
-  const {explorationCamera,project}=await import('/src/world/camera.ts'),{workshopFrame}=await import('/src/world/art/workshop/framing.ts'),{worldMaps}=await import('/src/world/registry.ts');
-  const canvas=document.querySelector<HTMLCanvasElement>('.connected-world canvas')!,box=canvas.getBoundingClientRect(),panel=document.querySelector('.world-context')?.getBoundingClientRect();
-  const camera=explorationCamera(worldMaps.workshop.bounds,world.position,canvas.width,canvas.height,innerWidth<800&&panel?(panel.height+84)/2:0,innerWidth>=800&&panel?(panel.width+32)/2:0,0,workshopFrame);
-  const foot=project(world.position,camera),head=project(world.position,camera,2);
-  const cueElement=document.querySelector<HTMLElement>('.world-target-cue'),cue=cueElement?.getBoundingClientRect();
-  const anchor=worldMaps.workshop.anchors.find(anchor=>anchor.id===cueElement?.dataset.targetId);
-  const target=anchor?project(anchor.position,camera):null;
-  return {foot:{x:box.x+foot.x*box.width/canvas.width,y:box.y+foot.y*box.height/canvas.height},headY:box.y+head.y*box.height/canvas.height,box:box.toJSON(),panel:panel?.toJSON(),cue:cue?.toJSON(),target:target?{x:box.x+target.x*box.width/canvas.width,y:box.y+target.y*box.height/canvas.height}:null};
- },world);
+ const measure=async()=>{
+  const camera=await stableCamera(page);
+  return page.evaluate(async({world,camera})=>{
+   const {worldMaps}=await import('/src/world/registry.ts');
+   const canvas=document.querySelector<HTMLCanvasElement>('.pixel-workshop canvas')!,box=canvas.getBoundingClientRect(),panel=document.querySelector('.world-context')?.getBoundingClientRect();
+   // Tile units → CSS px from the canvas's top-left; a person stands about 54 art px tall.
+   const scale=camera.zoom/camera.dpr,project=(p:{x:number;y:number})=>({x:box.x+(p.x*camera.tile-camera.x)*scale,y:box.y+(p.y*camera.tile-camera.y)*scale});
+   const foot=project(world.position),headY=foot.y-54*scale;
+   const cueElement=document.querySelector<HTMLElement>('.world-target-cue'),cue=cueElement?.getBoundingClientRect();
+   const anchor=worldMaps.workshop.anchors.find(anchor=>anchor.id===cueElement?.dataset.targetId);
+   const target=anchor?project(anchor.position):null;
+   return {foot,headY,box:box.toJSON(),panel:panel?.toJSON(),cue:cue?.toJSON(),target};
+  },{world,camera});
+ };
  await expect.poll(async()=>{const metrics=await measure();return !world.activeActivity&&metrics.cue?.width&&metrics.target?Math.max(Math.abs(metrics.cue.x+metrics.cue.width/2-metrics.target.x),Math.abs(metrics.cue.y+metrics.cue.height/2-metrics.target.y)):0;}).toBeLessThan(1);
  const metrics=await measure();
  expect(metrics.foot.x).toBeGreaterThan(0);expect(metrics.foot.x).toBeLessThan(metrics.box.right);

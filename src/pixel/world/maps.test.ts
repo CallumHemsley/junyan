@@ -15,12 +15,13 @@ import water from "../sprites/ground/water.ts";
 import edges from "../sprites/ground/edges.ts";
 import courtyardGround from "../sprites/ground/courtyard.ts";
 import rooftopGround from "../sprites/ground/rooftop.ts";
+import workshopGround from "../sprites/ground/workshop.ts";
 import { treeSprites } from "../sprites/plant/trees.ts";
 import {
   OUTDOOR_MAPS, OUTDOOR_MAP_IDS, footprintPx, mapProps, openingsOn, outdoorMap, propAnchor, propSpriteId, propsBySprite, spriteIdOf, type MapProp,
 } from "./maps.ts";
 
-const groundSprites = new Set(Object.keys({ ...grass, ...paving, ...road, ...brick, ...stone, ...water, ...edges, ...courtyardGround, ...rooftopGround }));
+const groundSprites = new Set(Object.keys({ ...grass, ...paving, ...road, ...brick, ...stone, ...water, ...edges, ...courtyardGround, ...rooftopGround, ...workshopGround }));
 /** Outdoor maps still on the old painter: their ground must already compile for the day they are registered. */
 const LATER = [rooftop] as unknown as (GroundMap & { id: string; props: { kind: string }[] })[];
 
@@ -134,7 +135,11 @@ describe("ground for any outdoor map", () => {
     const roofIds = Object.values(groundLayers(roof)[0].legend ?? {}).map(String);
     expect(roofIds.some((id) => id.startsWith("ground/roof-tile-"))).toBe(true);
     expect(roofIds.some((id) => id.startsWith("ground/roof-below-"))).toBe(true);
-    for (const map of [yard, ...LATER]) {
+    // And the workshop (ticket 0182): boards indoors, flags at the door, the lane's cobbles round it.
+    const shop = outdoorMap("workshop");
+    const shopIds = groundLayers(shop).flatMap((layer) => Object.values(layer.legend ?? {}).map(String));
+    for (const prefix of ["ground/workshop-planks-", "ground/workshop-cobbles-", "ground/workshop-rug-", "ground/edge-workshop-rug-"]) expect(shopIds.some((id) => id.startsWith(prefix)), prefix).toBe(true);
+    for (const map of [yard, shop, ...LATER]) {
       const layers = groundLayers(map);
       for (const layer of layers) {
         expect(layer.rows, `${map.id} ${layer.name}`).toHaveLength(map.bounds.height);

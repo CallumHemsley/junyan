@@ -800,7 +800,7 @@
       },
       "width": 2,
       "height": 1,
-      "layer": "object",
+      "layer": "ground",
       "variant": 0
     },
     {
@@ -860,7 +860,7 @@
       },
       "width": 4,
       "height": 1.5,
-      "layer": "object",
+      "layer": "ground",
       "variant": 0
     },
     {
