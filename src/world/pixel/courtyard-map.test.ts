@@ -56,7 +56,9 @@ describe("the courtyard scene is the courtyard map", () => {
       expect(prop.layer).toBe(p.layer === "ground" ? "floor" : "object");
       expect(props.find(q => q.id === `${p.id}-shade`)?.sprite).toBe(shadeSpriteId("courtyard", p.id));
     }
-    expect(compiled.objects.length + compiled.over.length + compiled.floor.filter(f => !f.tile).length).toBe(map.props.length);
+    // Trees ship a floor shade; any shade that is drawn is placed too, exactly as the town test counts them.
+    const shades = map.props.filter(p => atlas.has(shadeSpriteId("courtyard", p.id))).length;
+    expect(compiled.objects.length + compiled.over.length + compiled.floor.filter(f => !f.tile).length).toBe(map.props.length + shades);
   });
 
   it("marks every exit, entrance, anchor and landmark where the map has it", () => {
